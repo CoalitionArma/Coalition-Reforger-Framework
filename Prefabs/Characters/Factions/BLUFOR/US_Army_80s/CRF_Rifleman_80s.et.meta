@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{A199DB6345B626B5}Prefabs/Characters/Factions/BLUFOR/US_Army/CRF_Rifleman_80s.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

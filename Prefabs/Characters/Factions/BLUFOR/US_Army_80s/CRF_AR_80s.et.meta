@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{1E36306B7A6E4902}Prefabs/Characters/Factions/BLUFOR/US_Army/CRF_AR_80s.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

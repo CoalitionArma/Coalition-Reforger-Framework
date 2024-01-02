@@ -1,0 +1,9 @@
+SCR_LoadoutManager {
+ ID "60453EDEC06CCB72"
+ components {
+  RplComponent "{60453EDEC06CCB7A}" {
+   Streamable Disabled
+  }
+ }
+ Flags 0
+}

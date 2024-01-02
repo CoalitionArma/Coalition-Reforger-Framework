@@ -1,0 +1,8 @@
+GameProject {
+ ID "COALITIONFramework"
+ GUID "5EB3564A02CE294F"
+ TITLE "COALITION Framework"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}

@@ -1,0 +1,94 @@
+SCR_FactionManager FactionManager_Zeus_COOP1 : "{2209623ABDDE9A71}Prefabs/MP/Managers/Factions/FactionManager_Zeus_COOP.et" {
+ coords 6962.491 116.908 5994.52
+}
+SCR_GameModeEditor Zeus_COOP1 : "{857A09A38BDE5231}Prefabs/MP/Modes/Editor/Zeus_COOP.et" {
+ components {
+  CRF_TNK_SafestartComponent "{60443056255DA9C8}" {
+   Enabled 0
+  }
+  SCR_RespawnTimerComponent "{56C2DDA6EE0E4071}" {
+   m_fRespawnTime 120
+  }
+ }
+ coords 6962.491 116.908 5994.52
+ m_GameMasterTarget NOBODY
+ {
+  TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+   coords 0 0 0
+  }
+  SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
+   coords 0 0 0
+  }
+ }
+}
+SCR_LoadoutManager : "{61A15C70209FF46B}Prefabs/MP/Managers/Loadouts/LoadoutManager_Zeus_COOP_80s.et" {
+ coords 6962.491 116.908 5994.52
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{60456AEED89997E7}" {
+   m_sLoadoutName "Rifleman"
+   m_sLoadoutResource "{A199DB6345B626B5}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_Rifleman_80s.et"
+   m_sLoadoutImage "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF06023224}" {
+   m_sLoadoutName "Rifleman (AT)"
+   m_sLoadoutResource "{1D512068EEF3E3EB}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_RiflemanAT_80s.et"
+   m_sLoadoutImage "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF04E7BCBF}" {
+   m_sLoadoutName "Assistant Automatic Rifleman"
+   m_sLoadoutResource "{CF99096725CE0B6D}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_AAR_80s.et"
+   m_sLoadoutImage "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF3A4A42FF}" {
+   m_sLoadoutName "Automatic Rifleman"
+   m_sLoadoutResource "{1E36306B7A6E4902}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_AR_80s.et"
+   m_sLoadoutImage "{43EA535E240F0B17}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_AR.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF3936CF6F}" {
+   m_sLoadoutName "Fireteam Leader"
+   m_sLoadoutResource "{47200F060384CF8E}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_FTL_80s.et"
+   m_sLoadoutImage "{34E9DBD5693E1B7F}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_TL.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF3FA4A65D}" {
+   m_sLoadoutName "Squad Leader"
+   m_sLoadoutResource "{F0A67F5355F30021}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_SL_80s.et"
+   m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEFA556E494}" {
+   m_sLoadoutName "Platoon Leader"
+   m_sLoadoutResource "{FEB83B1B68040FFB}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_PL_80s.et"
+   m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF5B75F5DE}" {
+   m_sLoadoutName "Pilot"
+   m_sLoadoutResource "{781829EDF08B4819}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_Pilot_80s.et"
+   m_sLoadoutImage "{F293529C376FB00C}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_HeliPilot.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF5E2AF925}" {
+   m_sLoadoutName "Crewman"
+   m_sLoadoutResource "{A4149A2207B08BF8}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_Crew_80s.et"
+   m_sLoadoutImage "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{60456AEF5CC3627C}" {
+   m_sLoadoutName "Crew Commander"
+   m_sLoadoutResource "{BC6D04FDEC466031}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_CrewCommander_80s.et"
+   m_sLoadoutImage "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+  SCR_FactionPlayerLoadout "{604572D7E7D55BFA}" {
+   m_sLoadoutName "Medic"
+   m_sLoadoutResource "{C9E4FEAF5AAC8D8C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic.et"
+   m_sLoadoutImage "{8D3E9B959DCE2B60}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Medic.edds"
+   m_sAffiliatedFaction "BLUFOR"
+  }
+ }
+}
