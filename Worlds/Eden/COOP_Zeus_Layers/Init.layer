@@ -1,25 +1,8 @@
-SCR_FactionManager FactionManager_Zeus_COOP1 : "{2209623ABDDE9A71}Prefabs/MP/Managers/Factions/FactionManager_Zeus_COOP.et" {
- coords 6962.491 116.908 5994.52
+SCR_FactionManager FactionManager_COA1 : "{4AB53E8919D89BC2}Prefabs/MP/Managers/Factions/FactionManager_COA.et" {
+ coords 3269.395 80.342 6660.394
 }
-SCR_GameModeEditor Zeus_COOP1 : "{857A09A38BDE5231}Prefabs/MP/Modes/Editor/Zeus_COOP.et" {
- components {
-  CRF_TNK_SafestartComponent "{60443056255DA9C8}" {
-   Enabled 0
-  }
-  SCR_RespawnTimerComponent "{56C2DDA6EE0E4071}" {
-   m_fRespawnTime 120
-  }
- }
- coords 6962.491 116.908 5994.52
- m_GameMasterTarget NOBODY
- {
-  TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
-   coords 0 0 0
-  }
-  SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
-   coords 0 0 0
-  }
- }
+SCR_GameModeEditor GameMode_COOP_Zeus_80s1 : "{BA90EF3B8C2921E5}Prefabs/MP/Modes/Editor/GameMode_COOP_Zeus_80s.et" {
+ coords 3268.979 80.247 6660.701
 }
 SCR_LoadoutManager : "{61A15C70209FF46B}Prefabs/MP/Managers/Loadouts/LoadoutManager_Zeus_COOP_80s.et" {
  coords 6962.491 116.908 5994.52

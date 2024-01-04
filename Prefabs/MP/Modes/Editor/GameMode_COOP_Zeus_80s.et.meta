@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{BA90EF3B8C2921E5}Prefabs/MP/Modes/Editor/GameMode_COOP_Zeus_80s.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
