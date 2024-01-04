@@ -35,7 +35,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    }
    m_aPredefinedGroups {
     SCR_GroupPreset "{604611E7E9BD7324}" {
-     m_sGroupName "1PLT"
+     m_sGroupName "1PLT / HQ"
      m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
      m_sGroupDescription "1st Platoon Element"
      m_iGroupSize 5
