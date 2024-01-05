@@ -1,0 +1,30 @@
+SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ coords 7416.337 141.192 4660.02
+ Factions {
+  SCR_Faction "{604908380CE7FC08}" {
+   FactionKey "Racists"
+   FactionColor 1 1 1 0
+   UIInfo SCR_FactionUIInfo "{604908381915FA0F}" {
+    Name "Racists"
+   }
+  }
+ }
+}
+SCR_BaseGameMode GameMode_Deathmatch_Automatic1 : "{B00D51315A1C7150}Prefabs/MP/Modes/Deathmatch/GameMode_Deathmatch_Automatic.et" {
+ coords 7414.057 141.318 4657.892
+}
+SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
+ coords 7423.483 140.546 4672.205
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{604908382CD3EC08}" {
+   m_sLoadoutName "Driver"
+   m_sLoadoutResource "{2F912ED6E399FF47}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et"
+   m_sAffiliatedFaction "Racists"
+  }
+  SCR_FactionPlayerLoadout "{604978C7070AE103}" {
+   m_sLoadoutName "Co-Driver"
+   m_sLoadoutResource "{2F912ED6E399FF47}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et"
+   m_sAffiliatedFaction "Racists"
+  }
+ }
+}
