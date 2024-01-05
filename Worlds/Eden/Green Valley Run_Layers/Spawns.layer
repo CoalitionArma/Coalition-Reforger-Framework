@@ -1,0 +1,4 @@
+SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
+ coords 7460.592 137.972 4722.483
+ m_sFaction "Racists"
+}
