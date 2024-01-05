@@ -1,3 +1,19 @@
-SCR_GameModeEditor GameMode_ZBM_80s1 : "{6CF4176173D84D2B}Prefabs/MP/Modes/Editor/GameMode_ZBM_80s.et" {
- coords 8357.951 358.25 6587.396
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{18A4FA411884C005}worlds/GameMasterChernarusReforged/GM_Lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 8374.63 358.711 6589.12
+}
+SCR_GameModeEditor GameMode_ZBM_Sections_80s1 : "{DA3986AF1B5032B8}Prefabs/MP/Modes/Editor/GameMode_ZBM_Sections_80s.et" {
+ coords 8375.137 358.723 6588.884
 }

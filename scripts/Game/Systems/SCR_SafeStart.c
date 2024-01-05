@@ -8,10 +8,13 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	[RplProp()]
 	protected bool m_SafeStartEnabled;
 	
+	// Temporary for jam testing
+	ref RandomGenerator rand = new RandomGenerator();
+	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_ToggleSafeStartServer(bool status) 
+	void ToggleSafeStartServer(bool status) 
 	{
-		Print("[CRF Safestart] Enabling safestart server", LogLevel.NORMAL);
+		Print("[CRF Safestart] Enabling safestart server");
 		
 		if (status) {
 			if (m_SafeStartEnabled)
@@ -19,15 +22,15 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 				Print("[CRF Safestart] Safestart already enabled. Exiting.");
 				return;
 			}
-					
-			/*SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(owner.FindComponent(SCR_DamageManagerComponent));
-			if (!damageManager) 
-			{
-				Print("[CRF Safestart] Cannot find damage manager. Exiting.");
-				return;
-			};
 			
-			damageManager.EnableDamageHandling(false);*/	
+			// Disable damage - server-wide
+			/*ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
+			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.Cast(character.FindComponent(SCR_DamageManagerComponent));
+			if (damageManager) 
+			{
+				Print("[CRF Safestart] Disabling damage");
+			}*/
+					
 			m_SafeStartEnabled = true;
 		} else {
 			if (!m_SafeStartEnabled)
@@ -49,16 +52,16 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	}
 	
 	protected void OnWeaponFired(int playerID, BaseWeaponComponent weapon, IEntity entity)
-	{
+	{		
 		Print("[CRF Safestart] Gun shot");
-		// Get projectile and delete it		
-		/*weapon.GetCurrentMuzzle().ClearChamber(0);
-		weapon.GetCurrentMagazine().SetAmmoCount(0);
-		weapon.GetCurrentMuzzle();*/
 		
-		// Set safe
-		/*CharacterControllerComponent charComp = CharacterControllerComponent.Cast(entity.FindComponent(CharacterControllerComponent));
-		charComp.SetSafety(true, true);*/
+		// Get projectile and delete it		
+		
+		// Small test for future mod
+		// Adds jamming
+		if ((rand.RandInt(1,200)) == 1) {
+			weapon.GetCurrentMuzzle().ClearChamber(0);
+		}
 	}
 	
 	protected void OnGrenadeThrown(int playerID, BaseWeaponComponent weapon, IEntity entity)
@@ -87,14 +90,23 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		Print("[CRF Safestart] OnPostInit");
 		if (Replication.IsServer())
 		{
-			RpcDo_ToggleSafeStartServer(true);
-		}	
+			ToggleSafeStartServer(true);
+		}
 	}
 	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{	
 		super.OnPlayerSpawned(playerId, controlledEntity);
 		Print("[CRF Safestart] Enabling safestart local");
+		
+		// Set safe/lowered
+		CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
+		if (charComp) 
+		{
+			Print("[CRF Safestart] Enabling safety");
+			charComp.SetSafety(true, true);
+		}
+
 		
 		EventHandlerManagerComponent m_eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
 		if (!m_eventHandler) 
