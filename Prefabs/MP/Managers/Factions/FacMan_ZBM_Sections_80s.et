@@ -1,0 +1,567 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_Faction "{56B2B46E999BF3BF}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+   FactionKey "BLUFOR"
+   UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+    Name "BLUFOR"
+    m_sNameUpper "BLUFOR"
+   }
+   m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+    m_aSquadNames {
+     SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+      m_sCallsign "1PLT"
+     }
+     SCR_CallsignInfo "{55CCB792D13759D8}" {
+      m_sCallsign "1st Section"
+     }
+     SCR_CallsignInfo "{55CCB792D1218E95}" {
+      m_sCallsign "2nd Section"
+     }
+     SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+      m_sCallsign "3rd Section"
+     }
+     SCR_CallsignInfo "{604974AB26B55872}" {
+      m_sCallsign "4th Section"
+     }
+     SCR_CallsignInfo "{604974AB26B586EF}" {
+      m_sCallsign "5th Section"
+     }
+     SCR_CallsignInfo "{604974AB26B586E9}" {
+      m_sCallsign "Admin / Zeus"
+     }
+    }
+    m_sCallsignGroupFormat "%3"
+   }
+   m_aPredefinedGroups {
+    SCR_GroupPreset "{604974AB26B586EB}" {
+     m_sGroupName "1PLT / HQ"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_sGroupDescription "1st Platoon Element"
+     m_iGroupSize 5
+    }
+    SCR_GroupPreset "{604974AB26B586EA}" {
+     m_sGroupName "1st Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B58DF0}" {
+     m_sGroupName "2nd Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B58DCF}" {
+     m_sGroupName "3rd Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B58DCE}" {
+     m_sGroupName "4th Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B425B3}" {
+     m_sGroupName "5th Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 5
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B425B0}" {
+     m_sGroupName "Admin / Zeus"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 2
+     m_iRadioFrequency 0
+    }
+   }
+   m_bCreateOnlyPredefinedGroups 1
+  }
+  SCR_Faction "{604974AB26B425B1}" {
+   FactionKey "OPFOR"
+   FactionColor 0.561 0.054 0.042 1
+   UIInfo SCR_FactionUIInfo "{604974AB26B425B6}" {
+    Name "OPFOR"
+    Icon "{40B12B0DF911B856}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USSR.edds"
+    m_sNameUpper "OPFOR"
+   }
+   m_OutlineFactionColor 0 0 0 1
+   m_sFactionFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
+   m_FactionFlagMaterial "{B47B52D9DA68905D}Assets/Props/Fabric/Flags/Data/Flag_1_2_SovietArmy.emat"
+   m_FactionLabel FACTION_USSR
+   m_CallsignInfo SCR_FactionCallsignInfo "{604974AB26B425B7}" {
+    m_bIsAssignedRandomly 0
+    m_aCompanyNames {
+     SCR_CallsignInfo "{604974AB26B461C5}" {
+     }
+     SCR_CallsignInfo "{604974AB26B461C6}" {
+     }
+     SCR_CallsignInfo "{604974AB26B461C7}" {
+     }
+     SCR_CallsignInfo "{604974AB26B446C9}" {
+     }
+     SCR_CallsignInfo "{604974AB26B446C6}" {
+     }
+     SCR_CallsignInfo "{604974AB26B446C7}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4954E}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4954D}" {
+     }
+    }
+    m_aPlatoonNames {
+     SCR_CallsignInfo "{604974AB26B4954C}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4FCE0}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4FCE7}" {
+     }
+     SCR_CallsignInfo "{604974AB26B76171}" {
+     }
+    }
+    m_aSquadNames {
+     SCR_CallsignInfo "{604974AB26B76170}" {
+      m_sCallsign "1PLT"
+     }
+     SCR_CallsignInfo "{604974AB26B76173}" {
+      m_sCallsign "1st Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7A467}" {
+      m_sCallsign "2nd Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7A466}" {
+      m_sCallsign "3rd Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7DD45}" {
+      m_sCallsign "4th Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7DD5A}" {
+      m_sCallsign "5th Section"
+     }
+     SCR_CallsignInfo "{604974AB26B65361}" {
+      m_sCallsign "Admin / Zeus"
+     }
+    }
+    m_sCallsignGroupFormat "%3"
+    m_sCallsignCharacterFormat "%1 %2 %3: %4"
+    m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+    m_aCharacterRoleCallsigns {
+     SCR_LeaderRoleCallsign "{604974AB26B65360}" {
+     }
+     SCR_RadioOperatorRoleCallsign "{604974AB26B65365}" {
+     }
+     SCR_PlayerLeaderRoleCallsign "{604974AB26B65364}" {
+     }
+    }
+   }
+   m_aPredefinedGroups {
+    SCR_GroupPreset "{604974AB26B65367}" {
+     m_sGroupName "1PLT / HQ"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_sGroupDescription "1st Platoon Element"
+     m_iGroupSize 5
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B65366}" {
+     m_sGroupName "1st Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B65369}" {
+     m_sGroupName "2nd Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B6F311}" {
+     m_sGroupName "3rd Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B6F310}" {
+     m_sGroupName "4th Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B91D28}" {
+     m_sGroupName "5th Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 5
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B91D2B}" {
+     m_sGroupName "Admin / Zeus"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 2
+     m_iRadioFrequency 0
+    }
+   }
+   m_bCreateOnlyPredefinedGroups 1
+   m_sFactionRadioEncryptionKey "russiaSucks"
+   m_iFactionRadioFrequency 48000
+   m_aRanks {
+    SCR_CharacterRank "{604974AB26B91D2C}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D2F}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D51}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D53}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D55}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D54}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D59}" {
+    }
+   }
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{604974AB26B97358}" {
+    }
+    SCR_EntityCatalogMultiList "{604974AB26B9735A}" {
+    }
+    SCR_EntityCatalogMultiList "{604974AB26B9735B}" {
+    }
+    SCR_EntityCatalog "{604974AB26B9735C}" {
+    }
+    SCR_EntityCatalogMultiList "{604974AB26B9735D}" {
+    }
+    SCR_EntityCatalog "{604974AB26B9735E}" {
+    }
+   }
+   m_sGroupFlagsImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+   m_aFlagNames {
+    "infantry-blufor" "Air-defence-blufor" "Air-defence-misile-blufor" "Antitank-blufor" "Antitank-motorized-blufor" "Artilery-blufor" "Combat-flight-blufor" "Combined-blufor" "Helicopter-blufor" "Medical-blufor" "Mortar-blufor" "Motorized-rifle-blufor" "Recon-blufor" "Transport-flight-blufor" "Undefined-blufor" "air-blufor" "amphibious-blufor" "armored-blufor" "chaparral-blufor" "Air-defence-artillery-blufor" "maintenance-blufor" "motorized-blufor" "signal-blufor" "vulcan-blufor"
+   }
+   m_aBaseCallsigns {
+    SCR_MilitaryBaseCallsign "{604974AB26B9735F}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97340}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97341}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97342}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97343}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97344}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97345}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97346}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97347}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B95073}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B9507C}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B9D306}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B9D307}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B801FD}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B801FE}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B88764}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B88762}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB2EF9}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB2EF8}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB4DE7}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB4DE4}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BBBD66}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BBBD67}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB9D50}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB9D6F}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA2B31}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA2B30}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA573F}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA573D}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BAECF1}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BAECF6}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD35C8}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD35C9}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD5451}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD5453}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD81E2}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD81ED}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BDD987}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BDD986}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BC54F4}" {
+    }
+   }
+  }
+  SCR_Faction "{604974AB1BC26B42}" {
+   FactionKey "INDFOR"
+   FactionColor 0.561 0.054 0.042 1
+   UIInfo SCR_FactionUIInfo "{604974AB26B425B6}" {
+    Name "INDFOR"
+    Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+    m_sNameUpper "INDFOR"
+   }
+   m_OutlineFactionColor 0 0 0 1
+   m_sFactionFlag "{B784E694BA4A7D40}UI/Textures/Flags/Everon-flag-base-3it.edds"
+   m_FactionFlagMaterial "{77300AF5F8A8B2A2}Assets/Props/Fabric/Flags/Data/Flag_2_3_Everon.emat"
+   m_FactionLabel FACTION_FIA
+   m_CallsignInfo SCR_FactionCallsignInfo "{604974AB26B425B7}" {
+    m_bIsAssignedRandomly 0
+    m_aCompanyNames {
+     SCR_CallsignInfo "{604974AB26B461C5}" {
+     }
+     SCR_CallsignInfo "{604974AB26B461C6}" {
+     }
+     SCR_CallsignInfo "{604974AB26B461C7}" {
+     }
+     SCR_CallsignInfo "{604974AB26B446C9}" {
+     }
+     SCR_CallsignInfo "{604974AB26B446C6}" {
+     }
+     SCR_CallsignInfo "{604974AB26B446C7}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4954E}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4954D}" {
+     }
+    }
+    m_aPlatoonNames {
+     SCR_CallsignInfo "{604974AB26B4954C}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4FCE0}" {
+     }
+     SCR_CallsignInfo "{604974AB26B4FCE7}" {
+     }
+     SCR_CallsignInfo "{604974AB26B76171}" {
+     }
+    }
+    m_aSquadNames {
+     SCR_CallsignInfo "{604974AB26B76170}" {
+      m_sCallsign "1PLT"
+     }
+     SCR_CallsignInfo "{604974AB26B76173}" {
+      m_sCallsign "1st Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7A467}" {
+      m_sCallsign "2nd Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7A466}" {
+      m_sCallsign "3rd Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7DD45}" {
+      m_sCallsign "4th Section"
+     }
+     SCR_CallsignInfo "{604974AB26B7DD5A}" {
+      m_sCallsign "5th Section"
+     }
+     SCR_CallsignInfo "{604974AB26B65361}" {
+      m_sCallsign "Admin / Zeus"
+     }
+    }
+    m_sCallsignGroupFormat "%3"
+    m_sCallsignCharacterFormat "%1 %2 %3: %4"
+    m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+    m_aCharacterRoleCallsigns {
+     SCR_LeaderRoleCallsign "{604974AB26B65360}" {
+     }
+     SCR_RadioOperatorRoleCallsign "{604974AB26B65365}" {
+     }
+     SCR_PlayerLeaderRoleCallsign "{604974AB26B65364}" {
+     }
+    }
+   }
+   m_aPredefinedGroups {
+    SCR_GroupPreset "{604974AB26B65367}" {
+     m_sGroupName "1PLT / HQ"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_sGroupDescription "1st Platoon Element"
+     m_iGroupSize 5
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B65366}" {
+     m_sGroupName "1st Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B65369}" {
+     m_sGroupName "2nd Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B6F311}" {
+     m_sGroupName "3rd Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B6F310}" {
+     m_sGroupName "4th Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B91D28}" {
+     m_sGroupName "5th Section"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 5
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{604974AB26B91D2B}" {
+     m_sGroupName "Admin / Zeus"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 2
+     m_iRadioFrequency 0
+    }
+   }
+   m_bCreateOnlyPredefinedGroups 1
+   m_sFactionRadioEncryptionKey "russiaSucks"
+   m_iFactionRadioFrequency 48000
+   m_aRanks {
+    SCR_CharacterRank "{604974AB26B91D2C}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D2F}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D51}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D53}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D55}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D54}" {
+    }
+    SCR_CharacterRank "{604974AB26B91D59}" {
+    }
+   }
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{604974AB26B97358}" {
+    }
+    SCR_EntityCatalogMultiList "{604974AB26B9735A}" {
+    }
+    SCR_EntityCatalogMultiList "{604974AB26B9735B}" {
+    }
+    SCR_EntityCatalog "{604974AB26B9735C}" {
+    }
+    SCR_EntityCatalogMultiList "{604974AB26B9735D}" {
+    }
+    SCR_EntityCatalog "{604974AB26B9735E}" {
+    }
+   }
+   m_sGroupFlagsImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+   m_aFlagNames {
+    "infantry-blufor" "Air-defence-blufor" "Air-defence-misile-blufor" "Antitank-blufor" "Antitank-motorized-blufor" "Artilery-blufor" "Combat-flight-blufor" "Combined-blufor" "Helicopter-blufor" "Medical-blufor" "Mortar-blufor" "Motorized-rifle-blufor" "Recon-blufor" "Transport-flight-blufor" "Undefined-blufor" "air-blufor" "amphibious-blufor" "armored-blufor" "chaparral-blufor" "Air-defence-artillery-blufor" "maintenance-blufor" "motorized-blufor" "signal-blufor" "vulcan-blufor"
+   }
+   m_aBaseCallsigns {
+    SCR_MilitaryBaseCallsign "{604974AB26B9735F}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97340}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97341}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97342}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97343}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97344}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97345}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97346}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B97347}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B95073}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B9507C}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B9D306}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B9D307}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B801FD}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B801FE}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B88764}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26B88762}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB2EF9}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB2EF8}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB4DE7}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB4DE4}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BBBD66}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BBBD67}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB9D50}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BB9D6F}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA2B31}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA2B30}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA573F}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BA573D}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BAECF1}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BAECF6}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD35C8}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD35C9}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD5451}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD5453}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD81E2}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BD81ED}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BDD987}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BDD986}" {
+    }
+    SCR_MilitaryBaseCallsign "{604974AB26BC54F4}" {
+    }
+   }
+  }
+ }
+}

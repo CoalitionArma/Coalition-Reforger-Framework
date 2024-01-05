@@ -1,7 +1,10 @@
 SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.et" {
  ID "56B2B479C6B96951"
  components {
-  SCR_CampaignBuildingManagerComponent "{604611E5DB2631B9}" {
+  CRF_TNK_SafestartComponent "{604974BE3D87CCD0}" {
+   Enabled 0
+  }
+  SCR_CampaignBuildingManagerComponent "{604974BE2D324701}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_BudgetType CAMPAIGN
    m_iCompositionRefundPercentage 100
@@ -9,18 +12,37 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
    }
    m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
   }
-  SCR_CommandingManagerComponent "{604611E5DB263183}" {
+  SCR_CommandingManagerComponent "{604974BE2D324705}" {
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   Enabled 0
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType SAME_FACTION_ONLY
   }
  }
  {
+  TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+   ID "604974B5C19C8533"
+   coords 0 0 0
+  }
   RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
-   ID "604611E5DB2631AE"
+   ID "604974BE2D31C3E4"
+  }
+  SCR_FactionManager : "{D2D85E5B9688F26D}Prefabs/MP/Managers/Factions/FacMan_ZBM_Sections_80s.et" {
+   ID "604974AB21031177"
+   coords 0 0 0
   }
   ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
-   ID "604611E5DB2631A8"
+   ID "604974BE2D31C3E9"
+  }
+  SCR_LoadoutManager : "{61A15C70209FF46B}Prefabs/MP/Managers/Loadouts/LoadoutManager_ZBM_80s.et" {
+   ID "604974B45182555E"
+   coords 0 0 0
   }
   SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
-   ID "604611E5DB2631AA"
+   ID "604974BE2D324718"
   }
  }
 }

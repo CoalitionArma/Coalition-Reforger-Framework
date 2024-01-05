@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{00FC351D23B1209B}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_AAR_80s.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

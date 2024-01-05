@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{EA3A2E7750E5EB00}Prefabs/MP/Modes/Editor/GameMode_TvT_80s.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

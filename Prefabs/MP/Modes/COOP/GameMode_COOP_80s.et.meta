@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{857A09A38BDE5231}Prefabs/MP/Modes/Editor/Zeus_COOP.et"
+ Name "{123D903793AADCEB}Prefabs/MP/Modes/Editor/GameMode_COOP_80s.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
