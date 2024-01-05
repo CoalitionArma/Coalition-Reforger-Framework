@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{16DD0C87B29F3DB1}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_FTL_Modern.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
