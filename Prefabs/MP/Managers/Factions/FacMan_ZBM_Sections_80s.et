@@ -2,7 +2,6 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
  ID "56B2B4776E6E4499"
  Factions {
   SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
-   FactionKey "BLUFOR"
    UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
     Name "BLUFOR"
     m_sNameUpper "BLUFOR"
@@ -74,7 +73,6 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    m_bCreateOnlyPredefinedGroups 1
   }
   SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
-   FactionKey "OPFOR"
    UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
     Name "OPFOR"
     m_sNameUpper "OPFOR"

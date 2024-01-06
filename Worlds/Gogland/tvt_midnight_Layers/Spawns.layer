@@ -1,0 +1,16 @@
+SCR_SpawnPoint : "{0CAE96554C7FEB3D}PrefabsEditable/SpawnPoints/E_SpawnPoint_US_USMC.et" {
+ coords 7067.645 4.548 5115.881
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "MAIN"
+ }
+}
+SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
+ coords 6223.483 47.077 4164.968
+ m_sFaction ""
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "Spectator"
+ }
+}
+SCR_SpawnPoint : "{E86B0E337506B044}PrefabsEditable/SpawnPoints/E_SpawnPoint_RF_MSV.et" {
+ coords 6928.813 90.667 3979.305
+}

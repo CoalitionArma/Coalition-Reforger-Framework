@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{4ACEB4CC02A0A156}Worlds/Arland/Arland_ZBM.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+ }
+}

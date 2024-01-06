@@ -1,3 +1,6 @@
+TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+ coords 6397.118 158.678 6416.937
+}
 SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
  coords 7416.337 141.192 4660.02
  Factions {
@@ -11,7 +14,29 @@ SCR_FactionManager FactionManager_Base1 : "{A242612865F2A48E}Prefabs/MP/Managers
  }
 }
 SCR_BaseGameMode GameMode_Deathmatch_Automatic1 : "{B00D51315A1C7150}Prefabs/MP/Modes/Deathmatch/GameMode_Deathmatch_Automatic.et" {
+ components {
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{604C52E59C012828}" {
+   m_SpawnLogic GRAD_SpectatorSpawnLogic "{604C52E59E047073}" {
+    m_aSpectatorLoadoutAssignments {
+     GRAD_SpectatorLoadoutAssignment "{604C52E5E72947B0}" {
+      m_sFactionKey "US"
+      m_sLoadoutName "Spectator"
+     }
+    }
+    m_sForcedSpawnPoint "Spectator"
+   }
+  }
+ }
  coords 7414.057 141.318 4657.892
+}
+RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+ coords 6397.707 158.302 6414.966
+}
+ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
+ coords 6401.915 158.359 6416.264
 }
 SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
  coords 7423.483 140.546 4672.205
@@ -19,12 +44,17 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
   SCR_FactionPlayerLoadout "{604908382CD3EC08}" {
    m_sLoadoutName "Driver"
    m_sLoadoutResource "{2F912ED6E399FF47}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et"
-   m_sAffiliatedFaction "Racists"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604978C7070AE103}" {
    m_sLoadoutName "Co-Driver"
    m_sLoadoutResource "{2F912ED6E399FF47}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et"
-   m_sAffiliatedFaction "Racists"
+   m_sAffiliatedFaction "US"
+  }
+  SCR_FactionPlayerLoadout "{604C52E527EC8ADC}" {
+   m_sLoadoutName "Spectator"
+   m_sLoadoutResource "{854C04F0EA2129CC}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Unarmed.et"
+   m_sAffiliatedFaction "US"
   }
  }
 }

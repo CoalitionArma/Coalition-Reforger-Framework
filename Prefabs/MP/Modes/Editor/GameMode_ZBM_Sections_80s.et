@@ -13,6 +13,10 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
   }
  }
  {
+  PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+   ID "604C0D508ACB4457"
+   coords 0 0 0
+  }
   TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
    ID "604A4378262B4C69"
    coords 0 0 0
@@ -25,6 +29,7 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
      FactionKey "US"
     }
     SCR_Faction "{56DEAC40D3C2E623}" {
+     FactionKey "USSR"
     }
    }
   }
@@ -44,6 +49,10 @@ SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.
     Style BaseChatChannelStyle "{604A43782C797423}" {
     }
    }
+  }
+  HitRegistrationManager : "{0EDA3D48791120DD}Prefabs/MP/HitRegManager.et" {
+   ID "604C0D5094056213"
+   coords 0 0 0
   }
   SCR_LoadoutManager : "{61A15C70209FF46B}Prefabs/MP/Managers/Loadouts/LoadoutManager_ZBM_80s.et" {
    ID "604A4378641FA461"

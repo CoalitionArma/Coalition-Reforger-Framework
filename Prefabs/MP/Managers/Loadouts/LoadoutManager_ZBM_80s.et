@@ -11,133 +11,133 @@ SCR_LoadoutManager {
    m_sLoadoutName "Rifleman"
    m_sLoadoutResource "{A199DB6345B626B5}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_Rifleman_80s.et"
    m_sLoadoutImage "{2B0877799B9B6C66}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Rifleman.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AE4EEE1551}" {
    m_sLoadoutName "Rifleman (AT)"
    m_sLoadoutResource "{1D512068EEF3E3EB}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_RiflemanAT_80s.et"
    m_sLoadoutImage "{278C426C1D3B4C27}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_LAT.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AEAB6FEC79}" {
    m_sLoadoutName "Assistant Automatic Rifleman"
    m_sLoadoutResource "{CF99096725CE0B6D}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_AAR_80s.et"
    m_sLoadoutImage "{2FC02D4957E7A86E}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_AMG.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AEE787FC75}" {
    m_sLoadoutName "Automatic Rifleman"
    m_sLoadoutResource "{1E36306B7A6E4902}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_AR_80s.et"
    m_sLoadoutImage "{43EA535E240F0B17}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_AR.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AEE119462E}" {
    m_sLoadoutName "Fireteam Leader"
    m_sLoadoutResource "{47200F060384CF8E}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_FTL_80s.et"
    m_sLoadoutImage "{34E9DBD5693E1B7F}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_TL.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AD3BD9C66A}" {
    m_sLoadoutName "Squad Leader"
    m_sLoadoutResource "{F0A67F5355F30021}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_SL_80s.et"
    m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AD05CEE9B5}" {
    m_sLoadoutName "Platoon Leader"
    m_sLoadoutResource "{FEB83B1B68040FFB}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_PL_80s.et"
    m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AD1B1F6262}" {
    m_sLoadoutName "Medic"
    m_sLoadoutResource "{DB59EF284D91BCDA}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_Medic_80s.et"
    m_sLoadoutImage "{8D3E9B959DCE2B60}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_Medic.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AD6169B8D4}" {
    m_sLoadoutName "Pilot"
    m_sLoadoutResource "{781829EDF08B4819}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_Pilot_80s.et"
    m_sLoadoutImage "{F293529C376FB00C}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_HeliPilot.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AD65291554}" {
    m_sLoadoutName "Crewman"
    m_sLoadoutResource "{A4149A2207B08BF8}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_Crew_80s.et"
    m_sLoadoutImage "{F293529C376FB00C}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_HeliPilot.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974AD67028721}" {
    m_sLoadoutName "Crew Commander"
    m_sLoadoutResource "{BC6D04FDEC466031}Prefabs/Characters/Factions/BLUFOR/US_Army_80s/CRF_CrewCommander_80s.et"
    m_sLoadoutImage "{F293529C376FB00C}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_HeliPilot.edds"
-   m_sAffiliatedFaction "BLUFOR"
+   m_sAffiliatedFaction "US"
   }
   SCR_FactionPlayerLoadout "{604974A0DCDDB7B9}" {
    m_sLoadoutName "Rifleman"
    m_sLoadoutResource "{8A3AFF8CDC253998}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_Rifleman_80s.et"
    m_sLoadoutImage "{6A8FF7A3F9007CD0}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Rifleman.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A731E766B9}" {
    m_sLoadoutName "Rifleman (AT)"
    m_sLoadoutResource "{8961766177240C42}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_RiflemanAT_80s.et"
    m_sLoadoutImage "{64E4072188808E92}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_AT.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A706E48A91}" {
    m_sLoadoutName "Assistant Automatic Rifleman"
    m_sLoadoutResource "{00FC351D23B1209B}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_AAR_80s.et"
    m_sLoadoutImage "{768647F861FC76D4}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_AMG.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A71658D661}" {
    m_sLoadoutName "Automatic Rifleman"
    m_sLoadoutResource "{8175D642CC6D1CB6}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_AR_80s.et"
    m_sLoadoutImage "{4C599E27DA612715}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_MG.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A766A0C5A6}" {
    m_sLoadoutName "Fireteam Leader"
    m_sLoadoutResource "{8845337C05FBE479}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_FTL_80s.et"
    m_sLoadoutImage "{030E2E704B1974C2}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_GL.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A77DB6DFC1}" {
    m_sLoadoutName "Squad Leader"
    m_sLoadoutResource "{6FE5997AE3F05595}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_SL_80s.et"
    m_sLoadoutImage "{7CB1ED2B23DD26E6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_SL.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A77FEAE4A6}" {
    m_sLoadoutName "Platoon Leader"
    m_sLoadoutResource "{8845337C05FBE478}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_PL_80s.et"
    m_sLoadoutImage "{7CB1ED2B23DD26E6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_SL.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A75F22BD70}" {
    m_sLoadoutName "Medic"
    m_sLoadoutResource "{D106164EACB337C6}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_Medic_80s.et"
    m_sLoadoutImage "{9225D8E3CFAD7926}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Medic.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A75CE6A331}" {
    m_sLoadoutName "Crewman"
    m_sLoadoutResource "{F1938F02073C46CE}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_Crew_80s.et"
    m_sLoadoutImage "{6A73F75531DF6AD6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Unarmed.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A753456A3C}" {
    m_sLoadoutName "Crew Commander"
    m_sLoadoutResource "{A542A91961DDEE9A}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_CrewCommander_80s.et"
    m_sLoadoutImage "{6A73F75531DF6AD6}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Unarmed.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
   SCR_FactionPlayerLoadout "{604974A7513F7110}" {
    m_sLoadoutName "Pilot"
    m_sLoadoutResource "{48F6F4A9A1630095}Prefabs/Characters/Factions/OPFOR/USSR_Army/CRF_USSR_Pilot_80s.et"
    m_sLoadoutImage "{EDE66B00EFF911B0}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_HeliPilot.edds"
-   m_sAffiliatedFaction "OPFOR"
+   m_sAffiliatedFaction "USSR"
   }
  }
 }

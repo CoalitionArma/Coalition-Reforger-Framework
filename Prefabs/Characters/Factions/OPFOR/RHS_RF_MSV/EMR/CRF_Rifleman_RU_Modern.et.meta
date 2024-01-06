@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_Modern.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

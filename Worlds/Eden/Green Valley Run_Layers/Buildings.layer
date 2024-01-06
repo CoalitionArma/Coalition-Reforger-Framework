@@ -1,3 +1,25 @@
+$grp ParticleEffectEntity {
+ {
+  coords 7465.023 136.864 4740.758
+  EffectPath "{47CA9C7F1E75DBE3}Particles/Weapon/Smoke_grenade_M18_Purple.ptc"
+ }
+ {
+  coords 7465.051 137.244 4752.09
+  EffectPath "{47CA9C7F1E75DBE3}Particles/Weapon/Smoke_grenade_M18_Purple.ptc"
+ }
+ {
+  coords 7699.27 134.385 4794.817
+  EffectPath "{E1E084593B8A05D2}Particles/Weapon/Smoke_grenade_M18_Yellow.ptc"
+ }
+ {
+  coords 8120.86 200.764 4317.837
+  EffectPath "{E1E084593B8A05D2}Particles/Weapon/Smoke_grenade_M18_Yellow.ptc"
+ }
+ {
+  coords 8567.995 185.612 3908.529
+  EffectPath "{E1E084593B8A05D2}Particles/Weapon/Smoke_grenade_M18_Yellow.ptc"
+ }
+}
 Vehicle Ural4320_transport1 : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
  coords 8819.999 94.73 2756.048
  angleX 0.451
@@ -234,19 +256,19 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   angleZ 0.636
  }
  {
-  coords 8134.057 201.77 4326.198
+  coords 8134.114 201.793 4327.164
   angleX 6.015
   angleY 116.107
   angleZ 3.928
  }
  {
-  coords 8119.498 200.617 4321.411
+  coords 8119.746 200.677 4323.152
   angleX 3.456
   angleY 33.235
   angleZ -2.009
  }
  {
-  coords 8562.765 185.641 3902.014
+  coords 8564.271 185.71 3902.86
   angleX 9.576
   angleY 28.493
   angleZ 10.091
@@ -359,12 +381,77 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   angleY 36.797
   angleZ 1.072
  }
+ {
+  coords 8132.414 201.487 4324.392
+  angleX 6.015
+  angleY 116.107
+  angleZ 3.928
+ }
 }
 Vehicle Ural4320_transport_covered_CIV_orange1 : "{66241E0CEDFCEDFF}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_orange.et" {
  coords 8801.521 204.284 3652.384
  angleX -3.545
  angleY 0.333
  angleZ -5.366
+}
+$grp GenericEntity : "{71EEB296232F4FA9}PrefabsEditable/Auto/Props/VehicleParts/Tires/E_Tire_M998_pile.et" {
+ {
+  coords 7453.014 137.355 4735.298
+ }
+ {
+  coords 7452.493 137.363 4734.385
+ }
+ {
+  coords 7451.91 137.359 4733.511
+ }
+ {
+  coords 7451.216 137.352 4732.633
+ }
+ {
+  coords 7450.479 137.345 4731.697
+ }
+ {
+  coords 7449.789 137.339 4730.775
+ }
+ {
+  coords 7449.176 137.334 4729.859
+ }
+ {
+  coords 7448.437 137.325 4728.971
+ }
+ {
+  coords 7447.733 137.318 4728.031
+ }
+ {
+  coords 7447.008 137.31 4727.112
+ }
+ {
+  coords 7446.231 137.301 4726.171
+ }
+ {
+  coords 7445.584 137.283 4725.382
+ }
+ {
+  coords 7444.786 137.369 4724.573
+ }
+ {
+  coords 7443.878 137.354 4723.497
+ }
+ {
+  coords 7452.865 137.303 4736.595
+ }
+ {
+  coords 7452.838 137.194 4737.623
+ }
+ {
+  coords 7453.093 137.033 4738.69
+ }
+ {
+  coords 7453.406 136.973 4739.714
+ }
+ {
+  coords 7454.136 136.959 4740.642
+ }
 }
 Vehicle UAZ469_covered_CIV_teal1 : "{870EB660433857D3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_teal.et" {
  coords 9875.335 30.728 1051.918
@@ -413,6 +500,11 @@ $grp Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et
   angleY 86.268
   angleZ -0.116
  }
+}
+SCR_DestructibleBuildingEntity : "{9A65CCCB4931060B}PrefabLibrary/Infrastructure/Bridges/ConcreteBridge_01_Narrow_PillarBig.et" {
+ coords 7850.253 158.69 4580.323
+ angleY 15
+ angleZ -20.287
 }
 Vehicle UAZ469_covered_CIV_red1 : "{A4D16A62B432451A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_red.et" {
  coords 8557.591 185.918 3900.369
@@ -469,4 +561,27 @@ Vehicle UAZ469_covered_CIV_blue1 : "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/U
  angleX -5.306
  angleY -54.628
  angleZ -4.844
+}
+SCR_DestructibleBuildingEntity : "{D37621D353F71987}PrefabsEditable/Auto/Structures/Infrastructure/Bridges/E_ConcreteBridge_01_Narrow_PillarSmall.et" {
+ coords 8833.102 100.752 2421.262
+ angleY 85
+ angleZ -16.739
+}
+$grp SCR_DestructibleBuildingEntity : "{E370FBB388E2B15E}PrefabsEditable/Auto/Structures/Agriculture/Gates/E_GateCollectiveFarm_01_Montignac.et" {
+ {
+  coords 7464.014 0.011 4745.955
+  angleY -95
+ }
+ {
+  coords 8126.449 0.01 4321.109
+  angleY -16
+ }
+ {
+  coords 7696.502 -0.422 4800.733
+  angleY -111
+ }
+ {
+  coords 8778.976 0.01 3913.3
+  angleY -4
+ }
 }

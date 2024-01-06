@@ -1,4 +1,9 @@
 SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
  coords 7460.592 137.972 4722.483
- m_sFaction "Racists"
+}
+SCR_SpawnPoint : "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et" {
+ coords 7346.092 140.962 4655.466
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "Spectator"
+ }
 }

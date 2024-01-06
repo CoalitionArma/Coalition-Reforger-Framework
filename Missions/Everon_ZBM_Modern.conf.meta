@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{66BA6AFC1E1538FE}Missions/Everon_ZBM_Modern.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

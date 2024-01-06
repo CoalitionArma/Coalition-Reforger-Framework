@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{92FE820BE4CDD6CB}Prefabs/MP/Managers/Factions/FactionManager_COOP_Sections_Modern.et"
+ Name "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

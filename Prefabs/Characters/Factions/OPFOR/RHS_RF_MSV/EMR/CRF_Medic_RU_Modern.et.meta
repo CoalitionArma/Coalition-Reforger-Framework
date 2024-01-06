@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8F479C725FA07919}Prefabs/MP/Managers/Factions/FactionManager_TvT_Sections_Modern.et"
+ Name "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

@@ -1,0 +1,15 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{5E19E60F26327356}worlds/MP/Navmeshes/LowResEden.nmn"
+    }
+   }
+  }
+ }
+ coords 5859.435 145.435 6200.888
+}
+SCR_GameModeEditor GameMode_ZBM_Modern1 : "{801C6B34798FEAEA}Prefabs/MP/Modes/Editor/GameMode_ZBM_Modern.et" {
+ coords 5885.715 146.273 6199.959
+}
