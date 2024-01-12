@@ -1,0 +1,37 @@
+FrameWidgetClass {
+ {
+  ImageWidgetClass "{567AC9B18A0CA7E8}" {
+   Prefab "{567AC9B18A0CA7E8}"
+   Slot FrameWidgetSlot "{564CCDA7823A3F2B}" {
+    PositionX 1.043
+    OffsetLeft 1.043
+    PositionY 1.043
+    OffsetTop 1.043
+    SizeX 0
+    OffsetRight -1.043
+    SizeY 0
+    OffsetBottom -1.043
+   }
+  }
+  TextWidgetClass "{567AC9B18A0CA6DB}" {
+   Prefab "{567AC9B18A0CA6DB}"
+   Text "discord.gg/the-coalition"
+  }
+  ImageWidgetClass "{60584D3183F9C002}" {
+   Name "m_CoalitionLogo"
+   Slot FrameWidgetSlot "{60584D3183F9C04E}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -79.939
+    OffsetLeft -79.939
+    PositionY 47.118
+    OffsetTop 47.118
+    SizeX 164.349
+    OffsetRight -84.41
+    SizeY 153.932
+    OffsetBottom -201.05
+   }
+   Texture "{56B63D9413011A75}CRF Images/Coalition.edds"
+   Size 1000 1000
+  }
+ }
+}

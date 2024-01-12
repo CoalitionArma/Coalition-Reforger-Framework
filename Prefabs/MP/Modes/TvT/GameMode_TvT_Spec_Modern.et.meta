@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{7AFD926715CFAEE5}Prefabs/MP/Modes/TvT/GameMode_TvT_Spec_Modern.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
