@@ -1,0 +1,157 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{6058112C73B2D6CA}" {
+   Name "TimerDescription"
+   Slot FrameWidgetSlot "{6058112C73B2D710}" {
+    PositionX 161.257
+    OffsetLeft 161.257
+    PositionY 123.39
+    OffsetTop 123.39
+    SizeX 156.702
+    OffsetRight -317.959
+    SizeY 23.102
+    OffsetBottom -146.492
+   }
+   Opacity 0
+   Text "Safe Start Enabled"
+   "Font Size" 20
+   "Min Font Size" 20
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112EE814CCD6}" {
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{6058112AEF7BFB9D}" {
+   Name "TimerImage"
+   Slot FrameWidgetSlot "{6058112AEF7BFBF7}" {
+    PositionX 202.432
+    OffsetLeft 202.432
+    PositionY 149.064
+    OffsetTop 149.064
+    SizeX 22.181
+    OffsetRight -224.613
+    SizeY 25.738
+    OffsetBottom -174.802
+   }
+   Opacity 0.015
+   Texture "{0B2A63596D36430B}UI/Timer.edds"
+   Size 42 50
+   "Shadow Offset" 0.5 0.5
+  }
+  TextWidgetClass "{6058112AD17BEB9F}" {
+   Name "TimerText"
+   Slot FrameWidgetSlot "{6058112AD17BEBE4}" {
+    PositionX 224.546
+    OffsetLeft 224.546
+    PositionY 146.367
+    OffsetTop 146.367
+    SizeX 47.28
+    OffsetRight -271.826
+    SizeY 27.73
+    OffsetBottom -174.097
+   }
+   Opacity 0
+   Text "00:00"
+   "Font Size" 18
+   "Min Font Size" 18
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112E1E81905B}" {
+    Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+    ForceFont 1
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  TextWidgetClass "{60581123F1E9E3DD}" {
+   Name "MissionStart"
+   Slot FrameWidgetSlot "{6058112C73B2D710}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -64.954
+    OffsetLeft -64.954
+    PositionY -13.007
+    OffsetTop -13.007
+    SizeX 134.527
+    OffsetRight -69.573
+    SizeY 11.424
+    OffsetBottom 1.582
+   }
+   Opacity 0
+   Text "Safe Start Ended"
+   "Font Size" 14
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112EE814CCD6}" {
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  TextWidgetClass "{60581123E93719AD}" {
+   Name "MissionStart2"
+   Slot FrameWidgetSlot "{6058112C73B2D710}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -65.181
+    OffsetLeft -65.181
+    PositionY -0.549
+    OffsetTop -0.549
+    SizeX 134.22
+    OffsetRight -69.039
+    SizeY 14.591
+    OffsetBottom -14.042
+   }
+   Opacity 0
+   Color 0.502 0 0 1
+   Text "Start Mission!"
+   "Font Size" 14
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112EE814CCD6}" {
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{60581139610847A3}" {
+   Name "HintBackground"
+   Slot FrameWidgetSlot "{6058112AEF7BFBF7}" {
+    Anchor 1 0 1 0
+    PositionX -379.961
+    OffsetLeft -379.961
+    PositionY 90.349
+    OffsetTop 90.349
+    SizeX 334.603
+    OffsetRight 45.358
+    SizeY 97.317
+    OffsetBottom -187.666
+   }
+   Opacity 0
+   Color 0 0 0 1
+   Size 42 50
+   "Shadow Offset" 0.5 0.5
+  }
+  RichTextWidgetClass "{6058113883931A40}" {
+   Name "Hint"
+   Slot FrameWidgetSlot "{6058113883931AAB}" {
+    Anchor 1 0 1 0
+    PositionX -369.429
+    OffsetLeft -369.429
+    PositionY 100.255
+    OffsetTop 100.255
+    SizeX 313.663
+    OffsetRight 55.766
+    SizeY 75.625
+    OffsetBottom -175.88
+   }
+   Opacity 0
+   Text ""
+   "Font Size" 20
+   "Min Font Size" 12
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+  }
+ }
+}
