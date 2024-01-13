@@ -1,10 +1,7 @@
-$grp Tank : "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A3_APC.et" {
- M113A3_APC2 {
-  coords 7091.413 5.394 5104.337
-  angleY -174
- }
- M113A3_APC1 {
-  coords 7086.296 5.02 5104.812
-  angleY -174
- }
+Vehicle Ural4320_command2 : "{1BABF6B33DA0AEB6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command.et" {
+ coords 6960.767 88.784 3973.211
+ angleY 59
+}
+GenericEntity : "{68ED84218EA1BDC3}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_USSR_01.et" {
+ coords 6966.79 87.826 3980.971
 }

@@ -50,7 +50,7 @@ SCR_ChimeraCharacter : "{1E8265C4FCFC787B}Prefabs/Characters/Factions/OPFOR/RHS_
     ItemsInitConfigurationItem "{597D24F89042474A}" {
      TargetStorage "Prefabs/Characters/Uniforms/Jacket_6b51_VKPO.et"
      PrefabsToSpawn {
-      "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_USSR_01.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{C55821E8E86C074E}Prefabs/Items/Equipment/Radios/Radio_ANPRC152.et" "{BCEA0EB0D764D8DD}Prefabs/Items/Equipment/Binoculars/Rangefinder_PDU4.et"
+      "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_USSR_01.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{54C68E438DD34265}Prefabs/Items/Equipment/Radios/Radio_R107M.et" "{BCEA0EB0D764D8DD}Prefabs/Items/Equipment/Binoculars/Rangefinder_PDU4.et"
      }
     }
     ItemsInitConfigurationItem "{5D487DFF08C5F460}" {
