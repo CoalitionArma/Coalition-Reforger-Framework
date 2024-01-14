@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{CA27CA71B3AF2FCF}Prefabs/Characters/Uniforms/Jacket_M70_base.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
