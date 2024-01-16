@@ -1,0 +1,9 @@
+GenericEntity : "{93690AE7A4BAD926}Prefabs/Characters/Core/Vest_Base.et" {
+ ID "50D8C49B3558F152"
+ components {
+  SCR_UniversalInventoryStorageComponent "{52E894B6F0065EAC}" {
+   MaxCumulativeVolume 3500
+   m_fMaxWeight 40
+  }
+ }
+}

@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{3FB82CD81FCBB9A0}Prefabs/Characters/Uniforms/Crye_Shirt/crye_shirt_base.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

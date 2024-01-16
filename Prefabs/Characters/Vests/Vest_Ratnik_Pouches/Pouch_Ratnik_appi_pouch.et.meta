@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{ADF17AE969E9C691}Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_appi_pouch.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

@@ -1,0 +1,9 @@
+GenericEntity : "{2149560A9BEFBAC2}Prefabs/Items/Core/Equip_Accessory_base.et" {
+ ID "5184C9E8F822439D"
+ components {
+  SCR_UniversalInventoryStorageComponent "{52A09474497068A0}" {
+   MaxCumulativeVolume 1500
+   m_fMaxWeight 25
+  }
+ }
+}

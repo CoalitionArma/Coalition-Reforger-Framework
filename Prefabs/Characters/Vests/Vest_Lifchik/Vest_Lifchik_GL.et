@@ -1,0 +1,9 @@
+GenericEntity : "{9713FE6DDCC9510D}Prefabs/Characters/Vests/Vest_Lifchik/Vest_Lifchik.et" {
+ ID "50E0B40D7407B664"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03D1147687}" {
+   MaxCumulativeVolume 6000
+   m_fMaxWeight 40
+  }
+ }
+}

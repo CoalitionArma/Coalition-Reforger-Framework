@@ -1,0 +1,9 @@
+GenericEntity : "{FDC0074A9D46125F}Prefabs/Items/Equipment/Accessories/Pouch_Soviet_100rnd_PKM/Pouch_Soviet_100rnd_PKM_base.et" {
+ ID "51EAE4EBB3FF9591"
+ components {
+  SCR_UniversalInventoryStorageComponent "{54FAC2B5C5043CAF}" {
+   MaxCumulativeVolume 4000
+   m_fMaxWeight 30
+  }
+ }
+}

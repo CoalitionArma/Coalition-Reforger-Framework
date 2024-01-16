@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{03FF161D3AC1E1DF}Prefabs/Characters/Uniforms/VKPO/Field_Jacket_VKPO.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
