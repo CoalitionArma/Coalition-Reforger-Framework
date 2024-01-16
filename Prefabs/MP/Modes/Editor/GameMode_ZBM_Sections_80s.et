@@ -1,6 +1,8 @@
 SCR_GameModeEditor : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.et" {
  ID "56B2B479C6B96951"
  components {
+  CRF_TNK_SafestartComponent "{60603B9F2551CE8D}" {
+  }
   SCR_CampaignBuildingManagerComponent "{604A437FDD684AC6}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_BudgetType CAMPAIGN

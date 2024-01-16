@@ -24,7 +24,7 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	[RplProp(onRplName: "ShowMessage")]
 	protected string m_sMessageContent = "";
 	
-	protected int m_iSafeStartTimeRemaining = 30;
+	protected int m_iSafeStartTimeRemaining = 35;
 	
 	private ref array<IEntity> m_aControlledEntityArray = new array<IEntity>;
 	
@@ -141,12 +141,12 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			factionsReadyCount = factionsReadyCount + 1;
 		};
 		
-		if (factionsReadyCount == 0 && playedFactions == 0 || factionsReadyCount != playedFactions && m_iSafeStartTimeRemaining == 30) return;
+		if (factionsReadyCount == 0 && playedFactions == 0 || factionsReadyCount != playedFactions && m_iSafeStartTimeRemaining == 35) return;
 				
-		if (factionsReadyCount != playedFactions && m_iSafeStartTimeRemaining != 30) {
+		if (factionsReadyCount != playedFactions && m_iSafeStartTimeRemaining != 35) {
 			m_sMessageContent = "[CRF] : Game Live Countdown Canceled!";
 			Replication.BumpMe();
-			m_iSafeStartTimeRemaining = 30;
+			m_iSafeStartTimeRemaining = 35;
 			return;
 		};
 		
@@ -193,7 +193,7 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			
 			m_iTimeSafeStartBegan = GetGame().GetWorld().GetWorldTime();
 			m_SafeStartEnabled = true;
-			m_iSafeStartTimeRemaining = 30;
+			m_iSafeStartTimeRemaining = 35;
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			ToggleSafeStartEHs();
 		} else { // Turn off safestart
