@@ -1,0 +1,253 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{6058112C73B2D6CA}" {
+   Name "TimerDescription"
+   Slot FrameWidgetSlot "{6058112C73B2D710}" {
+    PositionX 134.155
+    OffsetLeft 134.155
+    PositionY 189.375
+    OffsetTop 189.375
+    SizeX 156.702
+    OffsetRight -290.857
+    SizeY 23.102
+    OffsetBottom -212.477
+   }
+   Opacity 0
+   Text "Safe Start Enabled"
+   "Font Size" 20
+   "Min Font Size" 20
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112EE814CCD6}" {
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{6058112AEF7BFB9D}" {
+   Name "TimerImage"
+   Slot FrameWidgetSlot "{6058112AEF7BFBF7}" {
+    PositionX 162.409
+    OffsetLeft 162.409
+    PositionY 214.798
+    OffsetTop 214.798
+    SizeX 22.181
+    OffsetRight -184.59
+    SizeY 25.738
+    OffsetBottom -240.536
+   }
+   Opacity 0
+   Texture "{0B2A63596D36430B}UI/Timer.edds"
+   Size 42 50
+   "Shadow Offset" 0.5 0.5
+  }
+  TextWidgetClass "{6058112AD17BEB9F}" {
+   Name "TimerText"
+   Slot FrameWidgetSlot "{6058112AD17BEBE4}" {
+    PositionX 183.015
+    OffsetLeft 183.015
+    PositionY 212.352
+    OffsetTop 212.352
+    SizeX 69.085
+    OffsetRight -252.1
+    SizeY 27.73
+    OffsetBottom -240.082
+   }
+   Opacity 0
+   Text "00:00:00"
+   "Font Size" 18
+   "Min Font Size" 18
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112E1E81905B}" {
+    Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+    ForceFont 1
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  TextWidgetClass "{60581123F1E9E3DD}" {
+   Name "MissionStart"
+   Slot FrameWidgetSlot "{6058112C73B2D710}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -64.954
+    OffsetLeft -64.954
+    PositionY -13.007
+    OffsetTop -13.007
+    SizeX 134.527
+    OffsetRight -69.573
+    SizeY 11.424
+    OffsetBottom 1.582
+   }
+   Opacity 0
+   Text "Safe Start Ended"
+   "Font Size" 14
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112EE814CCD6}" {
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  TextWidgetClass "{60581123E93719AD}" {
+   Name "MissionStart2"
+   Slot FrameWidgetSlot "{6058112C73B2D710}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -65.181
+    OffsetLeft -65.181
+    PositionY -0.549
+    OffsetTop -0.549
+    SizeX 134.22
+    OffsetRight -69.039
+    SizeY 14.591
+    OffsetBottom -14.042
+   }
+   Opacity 0
+   Color 0.502 0 0 1
+   Text "Start Mission!"
+   "Font Size" 14
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{6058112EE814CCD6}" {
+    ShadowSize 8
+    ShadowOffset 0.5 0.5
+   }
+  }
+  ImageWidgetClass "{605D76D78F83ACA6}" {
+   Name "FactionsBackground"
+   Slot FrameWidgetSlot "{605D76D78F83AC87}" {
+    Anchor 0 1 0 1
+    PositionX 0.15
+    OffsetLeft 0.15
+    PositionY -366.405
+    OffsetTop -366.405
+    SizeX 137.449
+    OffsetRight -137.599
+    SizeY 80.776
+    OffsetBottom 285.629
+   }
+   Opacity 0
+   Color 0.013 0.013 0.013 0.608
+   "Shadow Offset" 0.5 0.5
+  }
+  TextWidgetClass "{605D76D640C3A66A}" {
+   Name "Blufor"
+   Slot FrameWidgetSlot "{605D76D640C3A71B}" {
+    Anchor 0 1 0 1
+    PositionX 4.144
+    OffsetLeft 4.144
+    PositionY -361.057
+    OffsetTop -361.057
+    SizeX 55.348
+    OffsetRight -59.492
+    SizeY 19.88
+    OffsetBottom 341.177
+   }
+   Opacity 0
+   Color 0.753 0.753 0.753 0.608
+   Text "Blufor :"
+   "Font Size" 18
+   "Min Font Size" 18
+  }
+  TextWidgetClass "{605D76D18F3226E8}" {
+   Name "Opfor"
+   Slot FrameWidgetSlot "{605D76D640C3A71B}" {
+    Anchor 0 1 0 1
+    PositionX 2.86
+    OffsetLeft 2.86
+    PositionY -334.953
+    OffsetTop -334.953
+    SizeX 56.48
+    OffsetRight -59.339
+    SizeY 19.879
+    OffsetBottom 315.074
+   }
+   Opacity 0
+   Color 0.753 0.753 0.753 0.608
+   Text "Opfor :"
+   "Font Size" 18
+   "Min Font Size" 18
+   "Horizontal Alignment" Center
+  }
+  TextWidgetClass "{605D76D189C8C7E5}" {
+   Name "Indfor"
+   Slot FrameWidgetSlot "{605D76D640C3A71B}" {
+    Anchor 0 1 0 1
+    PositionX 4.419
+    OffsetLeft 4.419
+    PositionY -310.773
+    OffsetTop -310.773
+    SizeX 55.348
+    OffsetRight -59.767
+    SizeY 19.879
+    OffsetBottom 290.894
+   }
+   Opacity 0
+   Color 0.753 0.753 0.753 0.608
+   Text "Indfor :"
+   "Font Size" 18
+   "Min Font Size" 18
+  }
+  TextWidgetClass "{605D76D11DE47E82}" {
+   Name "BluforReady"
+   Slot FrameWidgetSlot "{605D76D640C3A71B}" {
+    Anchor 0 1 0 1
+    PositionX 59.23
+    OffsetLeft 59.23
+    PositionY -360.6
+    OffsetTop -360.6
+    SizeX 75.743
+    OffsetRight -134.973
+    SizeY 19.88
+    OffsetBottom 340.72
+   }
+   Opacity 0
+   Color 0.753 0.753 0.753 0.608
+   Text "Not Ready"
+   "Font Size" 18
+   "Min Font Size" 18
+   "Horizontal Alignment" Center
+  }
+  TextWidgetClass "{605D76D11DE47EA5}" {
+   Name "OpforReady"
+   Slot FrameWidgetSlot "{605D76D640C3A71B}" {
+    Anchor 0 1 0 1
+    PositionX 59.616
+    OffsetLeft 59.616
+    PositionY -335.154
+    OffsetTop -335.154
+    SizeX 75.524
+    OffsetRight -135.14
+    SizeY 19.879
+    OffsetBottom 315.275
+   }
+   Opacity 0
+   Color 0.753 0.753 0.753 0.608
+   Text "Not Ready"
+   "Font Size" 18
+   "Min Font Size" 18
+   "Horizontal Alignment" Center
+  }
+  TextWidgetClass "{605D76D11DE47E6A}" {
+   Name "IndforReady"
+   Slot FrameWidgetSlot "{605D76D640C3A71B}" {
+    Anchor 0 1 0 1
+    PositionX 59.341
+    OffsetLeft 59.341
+    PositionY -310.316
+    OffsetTop -310.316
+    SizeX 75.292
+    OffsetRight -134.633
+    SizeY 19.879
+    OffsetBottom 290.437
+   }
+   Opacity 0
+   Color 0.753 0.753 0.753 0.608
+   Text "Not Ready"
+   "Font Size" 18
+   "Min Font Size" 18
+   "Horizontal Alignment" Center
+  }
+ }
+}
