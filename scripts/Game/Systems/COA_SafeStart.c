@@ -104,12 +104,27 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	}
 	
 	//Call from server
-	void ToggleSideReady(string setReady) {
+	void ToggleSideReady(string setReady, string playerName) {
 		switch (setReady)
 		{
-			case("Blufor") : {m_bBluforReady = !m_bBluforReady; break;};
-			case("Opfor")  : {m_bOpforReady = !m_bOpforReady;   break;};
-			case("Indfor") : {m_bIndforReady = !m_bIndforReady; break;};
+			case("Blufor") : {
+				m_bBluforReady = !m_bBluforReady; 
+				if (m_bBluforReady) {m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Blufor", playerName);};
+				if (!m_bBluforReady) {m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Blufor", playerName);};
+				break;
+			};
+			case("Opfor")  : {
+				m_bOpforReady = !m_bOpforReady;
+				if (m_bOpforReady) {m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Opfor", playerName);};
+				if (!m_bOpforReady) {m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Opfor", playerName);};
+				break;
+			};
+			case("Indfor") : {
+				m_bIndforReady = !m_bIndforReady; 
+				if (m_bIndforReady) {m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Indfor", playerName);};
+				if (!m_bIndforReady) {m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Indfor", playerName);};
+				break;
+			};
 		};
 		Replication.BumpMe();
 	}
