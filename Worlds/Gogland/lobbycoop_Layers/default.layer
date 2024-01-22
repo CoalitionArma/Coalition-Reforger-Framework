@@ -1,0 +1,70 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{A32430981C1ACB9C}Worlds/Gamemaster/Navmeshes/lowres_navmesh/gogland_lowres_navmesh.nmn"
+    }
+   }
+  }
+ }
+ coords 6923.173 95.26 4089.024
+}
+PS_GameModeCoop GameMode_ZBM_Modern_Lobby1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Editor/GameMode_ZBM_Modern_Lobby.et" {
+ coords 6921.826 96.223 4096.926
+ {
+  PS_MissionDescription {
+   ID "60670B11C55706E3"
+   m_sTitle "Welcome (read me)"
+   m_sTextData "This is a test of the new lobby system for Reforger and Coalition. It utilizes spectator and predetermined slots, selectable on the next screen. Read your briefing below this one to understand the mission."
+  }
+ }
+}
+SCR_AIGroup : "{00B3F8C607FF8155}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_2ndSection.et" {
+ coords 5944.782 39.625 5653.42
+}
+SCR_AIGroup : "{0D33F57BD5B869B5}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_5thSection.et" {
+ coords 5981.734 39.625 5633.213
+}
+PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ coords 5985.961 39.625 5649.063
+ m_sTitle "Briefing"
+ m_sTextData "We have arrived approximately 2 clicks south of Suurlinaa, a known FIA hold out area. Utilize MSR Mustard and the surrounding trees to sweep Northward towards Suurlinaa. In doing so, destroy all ammunition caches and any contact you may find along the way."\
+ ""\
+ "Mission is complete once 5 ammunition caches are destroyed."
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+ m_bEmptyFactionVisibility 1
+}
+SCR_AIGroup : "{32AC9B19C3B4C748}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_4thSection.et" {
+ coords 5936.775 39.039 5628.928
+}
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 5965.71 39.543 5611.588
+}
+SCR_AIGroup : "{6F1D8A0C0DD43BE3}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_1stSection.et" {
+ coords 5977.177 39.605 5619.878
+}
+SCR_AIGroup : "{99A455FAD2290118}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_3rdSection.et" {
+ coords 5938.201 39.253 5612.181
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 5972.108 39.625 5644.767
+  angleY 0
+  m_sDescription "Forward HQ"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 5874.932 78.563 4261.271
+  angleY 0
+  m_MarkerColor 0.791 0.019 0.019 1
+  m_sDescription "FIA Cell HQ"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+}

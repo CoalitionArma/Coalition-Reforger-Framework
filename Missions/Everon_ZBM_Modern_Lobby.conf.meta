@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{74E07F9E3BBA5097}Missions/Everon_ZBM_Modern_Lobby.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

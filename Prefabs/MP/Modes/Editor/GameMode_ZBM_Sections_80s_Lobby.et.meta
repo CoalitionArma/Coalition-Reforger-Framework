@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{ECA4D8E8A13A6CDD}Prefabs/MP/Modes/Editor/GameMode_ZBM_Sections_80s_Lobby.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

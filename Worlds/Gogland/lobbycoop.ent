@@ -1,0 +1,3 @@
+SubScene {
+ Parent "Worlds/Gogland/Gogland.ent"
+}

@@ -196,9 +196,7 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 		if(!groupManager) return;
 		SCR_AIGroup playersGroup = groupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
 		if(!playersGroup) return;
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId());
-		if (!playerName || playerName == "") return;
 		if (playersGroup.IsPlayerLeader(SCR_PlayerController.GetLocalPlayerId())) 
-			COA_SafeStartPlayerComponent.GetInstance().Owner_ToggleSideReady(playerName);
+			COA_SafeStartPlayerComponent.GetInstance().Owner_ToggleSideReady();
 	}
 }

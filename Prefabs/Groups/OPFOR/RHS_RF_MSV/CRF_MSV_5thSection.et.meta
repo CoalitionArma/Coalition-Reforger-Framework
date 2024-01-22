@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{5F70D3CE62D5D5CE}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_5thSection.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

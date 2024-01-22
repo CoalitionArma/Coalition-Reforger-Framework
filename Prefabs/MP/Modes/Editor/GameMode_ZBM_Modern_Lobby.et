@@ -1,0 +1,112 @@
+PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
+ ID "56B2B479C6B96951"
+ components {
+  CRF_TNK_SafestartComponent "{60670B0DCA949751}" {
+  }
+  PS_MissionDataManager "{606429BC12BAB774}" {
+  }
+  PS_MissionDescriptionManager "{606429BC12BAB778}" {
+  }
+  PS_PlayableManager "{606429BC12BAB779}" {
+  }
+  PS_VoNRoomsManager "{606429BC12BAB77E}" {
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{606429BC12BAB762}" {
+   m_fDuration 0
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{606429BC12BAB767}" {
+   }
+  }
+  SCR_SaveLoadComponent "{606429BC12BAB764}" {
+   m_Struct SCR_MissionStruct "{606429BC12BAB76A}" {
+    m_Struct0 SCR_EditorStruct "{606429BC12BAB76B}" {
+     m_AttributeList SCR_EditorAttributeList "{590C7881C296FA7D}" : "{F3D6C6D25642352C}Configs/Editor/AttributeLists/Edit.conf" {
+     }
+    }
+   }
+   m_iAutosavePeriod 600
+  }
+  SCR_TimeAndWeatherHandlerComponent "{606429BC12BAB769}" {
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
+ }
+ coords 0 0 0
+ PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/Core/DefaultPlayerControllerMP_Coop.et"
+ m_bAutoPlayerRespawn 0
+ m_bAllowFactionChange 0
+ m_bCanOpenLobbyInGame 1
+ m_iFreezeTime 0
+ {
+  PerceptionManager "606429BC749048E1" : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+   ID "606429BC12BAB749"
+   coords 0 0 0
+  }
+  TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+   ID "606429BC12BAB74F"
+   coords 0 0 0
+  }
+  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+   ID "606429BC12BAB743"
+   coords 3.654 -1.112 -0.996
+  }
+  SCR_FactionManager "606429BC7490497C" : "{CBC8E6C5F3A90A76}Prefabs/MP/Managers/Factions/FacMan_ZBM_Sections_Modern.et" {
+   ID "606429BC12BAB747"
+   coords 0 0 0
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+    }
+    SCR_Faction "{606429B21C09F350}" {
+    }
+    SCR_Faction "{606429B21ED2977F}" {
+    }
+   }
+  }
+  ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
+   ID "606429BC12BAB75C"
+   coords 3.654 -1.112 -0.996
+  }
+  HitRegistrationManager "60670B11268DF740" : "{0EDA3D48791120DD}Prefabs/MP/HitRegManager.et" {
+   ID "606429BC4222E75B"
+   coords 0 0 0
+  }
+  PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+   ID "60670B11C55706E3"
+   coords 3.219 -2.376 0.159
+   m_sTitle "Zeus Battle Mission"
+   m_sTextData "This is a zeus battle mission used to build a scenario as the zeus sees fit. It utilizes the reforger lobby system, spectator (1 life), and CRF to create a mission flow."
+   m_aVisibleForFactions {
+    "RHS_US_USMC" "RHS_RF_MSV"
+   }
+   m_bEmptyFactionVisibility 1
+  }
+  SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
+   ID "606429BC4AB6C612"
+   coords 0 0 0
+  }
+  ItemPreviewManagerEntity "60670B11268DFAB2" : "{9F18C476AB860F3B}Prefabs/World/Game/ItemPreviewManager.et" {
+   ID "606429BCAE435E96"
+   coords 0 0 0
+  }
+  SCR_LoadoutManager : "{C041EE94D8AB16C4}Prefabs/MP/Managers/Loadouts/LoadoutManager_ZBM_Modern.et" {
+   ID "606429BC12BAB744"
+   coords 0 0 0
+  }
+ }
+}
