@@ -19,7 +19,6 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	
 	protected float m_fCurrentOpacity = 0;
 	protected bool  m_bAlreadyActivated = false;
-	protected int m_iTimeSafeStartBegan;
 
 	protected bool m_bBluforReady = false;
 	protected bool m_bOpforReady = false;
@@ -85,10 +84,6 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 				m_bAlreadyActivated = true;
 			};
 			
-			if (m_iTimeSafeStartBegan == -1 && !m_bAlreadyActivated) {
-		  		m_iTimeSafeStartBegan = m_SafestartComponent.GetTimeSafeStartBegan();
-			};
-			
 			UpdatePlayedFactions();
 			UpdateTimer();
 		};
@@ -96,7 +91,6 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 		if (!m_SafestartComponent.GetSafestartStatus() && m_bAlreadyActivated) {
 			StartMission();
 			m_bAlreadyActivated = false;
-			m_iTimeSafeStartBegan = -1;
 		};
 	}
 	
@@ -142,12 +136,8 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	
 	protected void UpdateTimer()
 	{	
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_iTimeSafeStartBegan - currentTime;
 		
-    int totalSeconds = (millis / 1000);
-		
-		m_wTimerText.SetText(SCR_FormatHelper.FormatTime(totalSeconds));
+		m_wTimerText.SetText(m_SafestartComponent.GetServerWorldTime());
 	}
 
 	protected void StopMission()
