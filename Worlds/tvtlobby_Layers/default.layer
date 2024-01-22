@@ -1,0 +1,86 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{18A4FA411884C005}worlds/GameMasterChernarusReforged/GM_Lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 6008.169 267.343 10329.348
+}
+PS_GameModeCoop GameMode_ZBM_Modern_Lobby1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Editor/GameMode_ZBM_Modern_Lobby.et" {
+ coords 6016.208 267.68 10331.111
+ {
+  PS_MissionDescription {
+   ID "60670B11C55706E3"
+   m_sTitle "Welcome (read me)"
+   m_sTextData "This a TvT test to ensure tvts are possible on the lobby system. "\
+   ""\
+   "Attacking (BLU):"\
+   "1st, 3rd, and 5th"\
+   ""\
+   "Defending (OPF):"\
+   "2nd, 4th, and HQ"
+  }
+ }
+}
+SCR_AIGroup : "{0D33F57BD5B869B5}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_5thSection.et" {
+ coords 4165.777 339.125 10504.771
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 6148.469 0 10020.234
+  m_sTitle "OPFOR Briefing"
+  m_sTextData "We must defend Grishino against BLUFOR aggression. They are attempting to steal our laptop and that's just not fucking cool."\
+  ""\
+  "Set up defensive positions in the town of Grishino and be ready to repel any attack that comes."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 6031.983 271.146 10405.1
+  m_sTitle "BLU Briefing"
+  m_sTextData "The Russian cucks in Grishino have been using the towns electricity to farm bitcoin. We must steal their laptop controlling the server farm."\
+  ""\
+  "Assault Grishino and find the laptop. Once found, extract any direction away from the town."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+}
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+ coords 6004.214 267.093 10407.509
+}
+SCR_AIGroup : "{52F0DE73B0923D2E}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_2ndSection.et" {
+ coords 6020.746 267.102 10410.201
+}
+SCR_AIGroup : "{60EFBDAC74D97B33}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_4thSection.et" {
+ coords 6001.522 267.071 10413.635
+}
+SCR_AIGroup : "{6F1D8A0C0DD43BE3}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_1stSection.et" {
+ coords 4213.409 368.369 10501.673
+}
+$grp Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
+ UH1H1 {
+  coords 4128.704 339.124 10535.743
+ }
+ UH1H2 {
+  coords 4155.643 339.125 10544.013
+ }
+}
+SCR_AIGroup : "{99A455FAD2290118}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_3rdSection.et" {
+ coords 4213.545 368.243 10502.162
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 5963.909 268.07 10351.871
+ angleY 0
+ m_MarkerColor 0.772 0.015 0.015 1
+ m_sDescription "OBJ"
+ m_aVisibleForFactions {
+  "RHS_US_USMC" "RHS_RF_MSV"
+ }
+ m_bVisibleForEmptyFaction 1
+}

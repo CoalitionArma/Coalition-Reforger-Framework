@@ -12,6 +12,10 @@ SCR_ChimeraCharacter : "{D774AFD56F8E7B1F}Prefabs/Characters/Factions/BLUFOR/RHS
     }
    }
   }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Crewman"
+   m_bIsPlayable 1
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate "{D2C367D173B99BCC}Prefabs/Weapons/Rifles/M4A1/Rifle_M4_RAS.et"
   }
