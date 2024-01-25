@@ -26,7 +26,7 @@ class COA_SafeStartPlayerComponent: ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	
-	void Owner_ToggleSideReady(string playerName)
+	void Owner_ToggleSideReady()
 	{	
 		string setReady = "";
 		
@@ -44,13 +44,13 @@ class COA_SafeStartPlayerComponent: ScriptComponent
 		};
 		
 		if (setReady == "") return;
-		Rpc(RpcAsk_ToggleSideReady, setReady, playerName);
+		Rpc(RpcAsk_ToggleSideReady, setReady);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleSideReady(string setReady, string playerName)
+	void RpcAsk_ToggleSideReady(string setReady)
 	{
 		CRF_TNK_SafestartComponent safestartComponent = CRF_TNK_SafestartComponent.GetInstance();
-		safestartComponent.ToggleSideReady(setReady, playerName);
+		safestartComponent.ToggleSideReady(setReady);
 	}
 }

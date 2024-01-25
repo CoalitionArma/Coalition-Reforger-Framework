@@ -134,7 +134,6 @@ FrameWidgetClass {
     OffsetBottom 288.932
    }
    "Z Order" -1
-   Opacity 0
    Color 0.013 0.013 0.013 0.608
    "Shadow Offset" 0.5 0.5
   }

@@ -1,0 +1,465 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+   FactionKey "RHS_US_USMC"
+   UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+    Name "BLUFOR"
+    Icon "{ED1038E34084270B}UI/Textures/Editor/EditableEntities/Factions/rhs_faction_us_usmc.edds"
+    m_sNameUpper "BLUFOR"
+   }
+   m_bIsPlayable 0
+   m_FactionLabel FACTION_RHS_US_USMC
+   m_aFriendlyFactionsIds {
+    "US"
+   }
+   m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+    m_aSquadNames {
+     SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+      m_sCallsign "1 PLT"
+     }
+     SCR_CallsignInfo "{55CCB792D13759D8}" {
+      m_sCallsign "1 Squad"
+     }
+     SCR_CallsignInfo "{55CCB792D1218E95}" {
+      m_sCallsign "2 Squad"
+     }
+     SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+      m_sCallsign "3 Squad"
+     }
+     SCR_CallsignInfo "{6071748FD98ED104}" {
+      m_sCallsign "Armor1"
+     }
+     SCR_CallsignInfo "{6071748FD98ED100}" {
+      m_sCallsign "Armor2"
+     }
+     SCR_CallsignInfo "{6071748DC04D5D5E}" {
+      m_sCallsign "Logi"
+     }
+    }
+    m_sCallsignGroupFormat "%3"
+   }
+   m_aPredefinedGroups {
+    SCR_GroupPreset "{6071748FD98ED101}" {
+     m_sGroupName "1PLT"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 5
+    }
+    SCR_GroupPreset "{6071748FD98ED0FF}" {
+     m_sGroupName "1st Squad"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98ED0FC}" {
+     m_sGroupName "2nd Squad"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98E2EB2}" {
+     m_sGroupName "3rd Squad"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98E2EB5}" {
+     m_sGroupName "Armor1"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 3
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98F918B}" {
+     m_sGroupName "Armor2"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 3
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748EA7EB8D18}" {
+     m_sGroupName "Logistics / Eng"
+     m_iGroupSize 4
+    }
+   }
+  }
+  SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+   FactionKey "RHS_RF_MSV"
+   UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+    Name "OPFOR"
+    Icon "{326730A407D7B7C9}UI/Textures/Editor/EditableEntities/Factions/rhs_faction_rf_msv.edds"
+    m_sNameUpper "OPFOR"
+   }
+   m_bIsPlayable 0
+   m_sFactionFlag "{72E8159766C00C3D}UI/Textures/Flags/rhs_flag_rus.edds"
+   m_FactionFlagMaterial "{15AB376863D1724E}Assets/Props/Fabric/Flags/Data/Flag_1_2_Russia.emat"
+   m_FactionLabel FACTION_RHS_RF_MSV
+   m_aFriendlyFactionsIds {
+    "USSR"
+   }
+   m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+    m_bIsAssignedRandomly 0
+    m_aCompanyNames {
+     SCR_CallsignInfo "{55CCB792CD021D5C}" {
+     }
+     SCR_CallsignInfo "{55CCB792CCD598D3}" {
+     }
+     SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+     }
+     SCR_CallsignInfo "{55CCB792CCB4D441}" {
+     }
+     SCR_CallsignInfo "{55CCB792CC5F08F3}" {
+     }
+     SCR_CallsignInfo "{55CCB792CC49B7DB}" {
+     }
+     SCR_CallsignInfo "{55CCB792CC711A37}" {
+     }
+     SCR_CallsignInfo "{55CCB792CC33211C}" {
+     }
+    }
+    m_aPlatoonNames {
+     SCR_CallsignInfo "{55CCB792CE6E998D}" {
+     }
+     SCR_CallsignInfo "{55CCB792CE18FB44}" {
+     }
+     SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+     }
+     SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+     }
+    }
+    m_aSquadNames {
+     SCR_CallsignInfo "{6071748C07198A9F}" {
+      m_sCallsign "1PLT"
+     }
+     SCR_CallsignInfo "{6071748C06D3A869}" {
+      m_sCallsign "1 Squad"
+     }
+     SCR_CallsignInfo "{6071748C0682CF37}" {
+      m_sCallsign "2 Squad"
+     }
+     SCR_CallsignInfo "{6071748C06449B95}" {
+      m_sCallsign "3 Squad"
+     }
+     SCR_CallsignInfo "{6071748C06247201}" {
+      m_sCallsign "Armor1"
+     }
+     SCR_CallsignInfo "{6071748C0193670F}" {
+      m_sCallsign "Armor2"
+     }
+     SCR_CallsignInfo "{6071748C01530124}" {
+      m_sCallsign "Logi"
+     }
+    }
+    m_sCallsignGroupFormat "%3"
+    m_sCallsignCharacterFormat "%1 %2 %3: %4"
+    m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+    m_aCharacterRoleCallsigns {
+     SCR_LeaderRoleCallsign "{55CA746925A7EB29}" {
+     }
+     SCR_RadioOperatorRoleCallsign "{55CA79ECD4CC1F73}" {
+     }
+     SCR_PlayerLeaderRoleCallsign "{5D9E9ECA7C7EBEA2}" {
+     }
+    }
+   }
+   m_aPredefinedGroups {
+    SCR_GroupPreset "{6071748FD98F9186}" {
+     m_sGroupName "1PLT"
+     m_sGroupFlag "{AEA07460606095ED}UI/Textures/FieldManual/Gameplay/Navigation/Images/MilitarySymbol/FM_Milsymbol_Infantry_UI.edds"
+     m_iGroupSize 5
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98FAA99}" {
+     m_sGroupName "1st Squad"
+     m_iGroupSize 12
+    }
+    SCR_GroupPreset "{6071748FD98FAA98}" {
+     m_sGroupName "2nd Squad"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98FAA9B}" {
+     m_sGroupName "3rd Squad"
+     m_iGroupSize 12
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98FAA9A}" {
+     m_sGroupName "Armor1"
+     m_iGroupSize 3
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748FD98FAA9D}" {
+     m_sGroupName "Armor2"
+     m_iGroupSize 3
+     m_iRadioFrequency 0
+    }
+    SCR_GroupPreset "{6071748EF1EBE841}" {
+     m_sGroupName "Logistics / Eng"
+     m_iGroupSize 5
+    }
+   }
+  }
+  SCR_Faction "{56DEAC40D132400B}" : "{8053DB656DD18B14}Configs/Factions/FIA.conf" {
+   m_bIsPlayable 0
+  }
+  SCR_Faction "{6071748FD98FAA9C}" {
+   FactionKey "US"
+   FactionColor 0.016 0.552 0.905 1
+   m_OutlineFactionColor 0.005 0.044 0.114 1
+   m_bIsPlayable 0
+   m_sFactionFlag "{46FB2FB2C2125A3C}UI/Textures/Flags/US-flag-base-3it.edds"
+   m_FactionFlagMaterial "{610803CC3F3D6649}Assets/Props/Fabric/Flags/Data/Flag_1_2_USA.emat"
+   m_FactionLabel FACTION_US
+   m_aFriendlyFactionsIds {
+    "RHS_US_USMC"
+   }
+   m_sFactionRadioEncryptionKey "chickenNuggets"
+   m_iFactionRadioFrequency 48000
+   m_aRanks {
+    SCR_CharacterRank "{6071748FD98FAA9F}" {
+    }
+    SCR_CharacterRank "{6071748FD98FAA9E}" {
+    }
+    SCR_CharacterRank "{6071748FD98FAA81}" {
+    }
+    SCR_CharacterRank "{6071748FD98FEC84}" {
+    }
+    SCR_CharacterRank "{6071748FD98FEC85}" {
+    }
+    SCR_CharacterRank "{6071748FD98F3DEF}" {
+    }
+    SCR_CharacterRank "{6071748FD98F3DEC}" {
+    }
+   }
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{6071748FD98F3DED}" {
+    }
+    SCR_EntityCatalogMultiList "{6071748FD98F3DEA}" {
+    }
+    SCR_EntityCatalogMultiList "{6071748FD99099FB}" {
+    }
+    SCR_EntityCatalog "{6071748FD99099FA}" {
+    }
+    SCR_EntityCatalogMultiList "{6071748FD9901051}" {
+    }
+    SCR_EntityCatalog "{6071748FD9901052}" {
+    }
+   }
+   m_sGroupFlagsImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+   m_aFlagNames {
+    "infantry-blufor" "Air-defence-blufor" "Air-defence-misile-blufor" "Antitank-blufor" "Antitank-motorized-blufor" "Artilery-blufor" "Combat-flight-blufor" "Combined-blufor" "Helicopter-blufor" "Medical-blufor" "Mortar-blufor" "Motorized-rifle-blufor" "Recon-blufor" "Transport-flight-blufor" "Undefined-blufor" "air-blufor" "amphibious-blufor" "armored-blufor" "chaparral-blufor" "Air-defence-artillery-blufor" "maintenance-blufor" "motorized-blufor" "signal-blufor" "vulcan-blufor"
+   }
+   m_aBaseCallsigns {
+    SCR_MilitaryBaseCallsign "{6071748FD99010E5}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99010E4}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99010EB}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9903BB5}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9903BB4}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99053F5}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99053F6}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99069C7}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99069C6}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD991BA7D}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99112D4}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99112D3}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99112D2}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9911C8C}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9911C8F}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9913593}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9913592}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9929C66}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9929C59}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD992CE4A}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD992CE4B}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD992D3E4}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD992D3E7}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD992EC8A}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9923E32}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9923E33}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9923E34}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9924D65}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9924D64}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD993C6DF}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD993FF85}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD993FF86}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9934542}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9934543}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD993454C}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD994ABE2}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD994ABE3}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9940D6F}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9940D6C}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9942197}" {
+    }
+   }
+  }
+  SCR_Faction "{6071748FD9942196}" {
+   FactionKey "USSR"
+   FactionColor 0.855 0.031 0.028 1
+   m_iOrder 1000
+   m_OutlineFactionColor 0.168 0.006 0.007 1
+   m_bIsPlayable 0
+   m_sFactionFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
+   m_FactionFlagMaterial "{B47B52D9DA68905D}Assets/Props/Fabric/Flags/Data/Flag_1_2_SovietArmy.emat"
+   m_FactionLabel FACTION_USSR
+   m_aFriendlyFactionsIds {
+    "RHS_RF_MSV"
+   }
+   m_sFactionRadioEncryptionKey "coldBorscht"
+   m_iFactionRadioFrequency 42000
+   m_aRanks {
+    SCR_CharacterRank "{6071748FD9942191}" {
+    }
+    SCR_CharacterRank "{6071748FD9942190}" {
+    }
+    SCR_CharacterRank "{6071748FD9943F2D}" {
+    }
+    SCR_CharacterRank "{6071748FD9943F2E}" {
+    }
+    SCR_CharacterRank "{6071748FD995A176}" {
+    }
+    SCR_CharacterRank "{6071748FD995A177}" {
+    }
+    SCR_CharacterRank "{6071748FD9951FDD}" {
+    }
+   }
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{6071748FD9951FC2}" {
+    }
+    SCR_EntityCatalogMultiList "{6071748FD9968545}" {
+    }
+    SCR_EntityCatalogMultiList "{6071748FD9968544}" {
+    }
+    SCR_EntityCatalog "{6071748FD996BEAD}" {
+    }
+    SCR_EntityCatalogMultiList "{6071748FD996BEAE}" {
+    }
+    SCR_EntityCatalog "{6071748FD996FF5F}" {
+    }
+   }
+   m_sGroupFlagsImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+   m_aFlagNames {
+    "infantry-opfor" "Air-defence-misile-opfor" "Air-defence-opfor" "Antitank-motorized-opfor" "Antitank-opfor" "Artilery-opfor" "Combat-flight-opfor" "Combined-opfor" "Helicopter-opfor" "Medical-opfor" "Mortar-indfor" "Motorized-rifle-opfor" "Recon-indfor" "Transport-flight-opfor" "Undefined-opfor" "air-opfor" "amphibious-opfor" "armored-opfor" "chaparral-opfor" "Air-defence-artillery-opfor" "maintenance-opfor" "motorized-opfor" "signal-opfor" "vulcan-opfor"
+   }
+   m_aBaseCallsigns {
+    SCR_MilitaryBaseCallsign "{6071748FD996FF5E}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD996FF59}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD996705B}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD996705A}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD997F24A}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD997F249}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99720C5}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99720C4}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9989071}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD998907E}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD998B2FE}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD998B2FF}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD998FEB7}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9984FBD}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9984FBE}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9984FBF}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD9998DB5}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD999E354}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD999E353}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD999E352}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99951FE}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99951FD}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A8176}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A8177}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99AB077}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99AB008}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A15DF}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A15DE}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A138D}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A138E}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A1388}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A138B}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A5D13}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A5D1C}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A76AC}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99A76AD}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99BB34A}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99BF2FB}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99BF2F8}" {
+    }
+    SCR_MilitaryBaseCallsign "{6071748FD99BF2F9}" {
+    }
+   }
+  }
+ }
+}
