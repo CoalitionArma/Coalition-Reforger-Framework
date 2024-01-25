@@ -10,6 +10,11 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  }
  coords 8351.232 358.175 6589.991
 }
-SCR_GameModeEditor GameMode_ZBM_Modern1 : "{801C6B34798FEAEB}Prefabs/MP/Modes/Editor/GameMode_ZBM_Modern.et" {
- coords 13713.991 45.789 12773.957
+SCR_GameModeEditor GameMode_ZBM_Modern1 : "{801C6B34798FEAEA}Prefabs/MP/Modes/Editor/GameMode_ZBM_Sections_Modern.et" {
+ components {
+  SCR_SaveLoadComponent "{58FA739CBE3E9FC5}" {
+   m_DebugHeaderResourceName "{3295234059464AAA}Missions/Cherna_ZBM_Modern.conf"
+  }
+ }
+ coords 8351.4 358.184 6590.38
 }
