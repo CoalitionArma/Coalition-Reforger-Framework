@@ -19,10 +19,6 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	
 	protected float m_fCurrentOpacity = 0;
 	protected bool  m_bAlreadyActivated = false;
-
-	protected bool m_bBluforReady = false;
-	protected bool m_bOpforReady = false;
-	protected bool m_bIndforReady = false;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -72,15 +68,6 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 		if (m_SafestartComponent.GetSafestartStatus()) {
 			if (!m_bAlreadyActivated) {
 				StopMission();
-				m_wOpforReady.SetText("N/A");
-				m_wIndforReady.SetText("N/A");
-				m_wBluforReady.SetText("N/A");
-				m_wOpforReady.SetColorInt(ARGB(185, 135, 135, 135));
-				m_wIndforReady.SetColorInt(ARGB(185, 135, 135, 135));
-				m_wBluforReady.SetColorInt(ARGB(185, 135, 135, 135));
-				m_bBluforReady = false;
-				m_bOpforReady = false;
-				m_bIndforReady = false;
 				m_bAlreadyActivated = true;
 			};
 			
@@ -102,36 +89,22 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	
 	protected void UpdatePlayedFactions() 
 	{
-		array<bool> outFactionsReady = m_SafestartComponent.GetWhosReady();
+		array<string> outFactionsReady = m_SafestartComponent.GetWhosReady();
 		
-		m_bBluforReady = outFactionsReady[0];
-		m_bOpforReady = outFactionsReady[1];
-		m_bIndforReady = outFactionsReady[2];
+		if (!outFactionsReady || outFactionsReady.IsEmpty()) return;
 		
-		SCR_SortedArray<SCR_Faction> outFaction = new SCR_SortedArray<SCR_Faction>;
-		m_FactionManager.GetSortedFactionsList(outFaction);
+		foreach (int i, string factionReady : outFactionsReady) {
+			int colorToSet = 0;
+			if (factionReady == "Ready")     {colorToSet = ARGB(185, 0, 190, 85);   };
+			if (factionReady == "Not Ready") {colorToSet = ARGB(185, 200, 65, 65);  };
+			if (factionReady == "N/A")       {colorToSet = ARGB(185, 135, 135, 135);};
 		
-		if (!outFaction || outFaction.IsEmpty()) return;
-		
-		array<SCR_Faction> outArray = new array<SCR_Faction>;
-		outFaction.ToArray(outArray);
-		
-		foreach(SCR_Faction faction : outArray) {
-			if (faction.GetPlayerCount() == 0) continue;
-			
-			Color factionColor = faction.GetOutlineFactionColor();
-			float rg = Math.Max(factionColor.R(), factionColor.G());
-			float rgb = Math.Max(rg, factionColor.B());
-			
-			switch (true) {
-				case(!m_bOpforReady && rgb == factionColor.R())  : {m_wOpforReady.SetText("Not Ready");  m_wOpforReady.SetColorInt(ARGB(185, 200, 65, 65));  break;};
-				case(m_bOpforReady && rgb == factionColor.R())   : {m_wOpforReady.SetText("Ready");      m_wOpforReady.SetColorInt(ARGB(185, 0, 190, 85));   break;};
-				case(!m_bIndforReady && rgb == factionColor.G()) : {m_wIndforReady.SetText("Not Ready"); m_wIndforReady.SetColorInt(ARGB(185, 200, 65, 65)); break;};
-				case(m_bIndforReady && rgb == factionColor.G())  : {m_wIndforReady.SetText("Ready");     m_wIndforReady.SetColorInt(ARGB(185, 0, 190, 85));  break;};
-				case(!m_bBluforReady && rgb == factionColor.B()) : {m_wBluforReady.SetText("Not Ready"); m_wBluforReady.SetColorInt(ARGB(185, 200, 65, 65)); break;};
-				case(m_bBluforReady && rgb == factionColor.B())  : {m_wBluforReady.SetText("Ready");     m_wBluforReady.SetColorInt(ARGB(185, 0, 190, 85));  break;};
+			switch (i) {
+				case (0)  : {m_wBluforReady.SetText(factionReady); m_wBluforReady.SetColorInt(colorToSet); break;};
+				case (1)  : {m_wOpforReady.SetText(factionReady);  m_wOpforReady.SetColorInt(colorToSet);  break;};
+				case (2)  : {m_wIndforReady.SetText(factionReady); m_wIndforReady.SetColorInt(colorToSet); break;};
 			};
-		};
+		}
 	}
 	
 	protected void UpdateTimer()
