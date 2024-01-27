@@ -10,30 +10,22 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	protected bool m_SafeStartEnabled;
 	
 	[RplProp()]
-	protected int m_iTimeSafeStartBegan;
-	
-	[RplProp()]
-	protected bool m_bBluforReady = false;
-	
-	[RplProp()]
-	protected bool m_bOpforReady = false;
-	
-	[RplProp()]
-	protected bool m_bIndforReady = false;
-	
-	// We use every m_sServerWorldTime update to check all players EHs. (NOTE: this only updates when the string updates, so even though the loop m_sServerWorldTime refreshes every 250ms in practice it's every second)
-	[RplProp(onRplName: "ToggleSafeStartEHs")]
 	protected string m_sServerWorldTime;
+	
+	[RplProp()]
+	protected ref array<string> m_aFactionsStatusArray;
 	
 	[RplProp(onRplName: "ShowMessage")]
 	protected string m_sMessageContent = "";
 	
-	protected int m_iSafeStartTimeRemaining = 35;
+	protected int m_iTimeSafeStartBegan;
+	protected int m_iSafeStartTimeRemaining;
 	
-	protected int playedFactions = 0;
-	protected bool m_bBluforExists = false;
-	protected bool m_bOpforExists = false;
-	protected bool m_bIndforExists = false;
+	protected bool m_bBluforReady = false;
+	protected bool m_bOpforReady = false;
+	protected bool m_bIndforReady = false;
+	
+	protected int m_iPlayedFactionsCount;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -50,6 +42,7 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			return null;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -68,34 +61,76 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		} 
 	}
 	
+	
+	
 	//------------------------------------------------------------------------------------------------
 
 	// Ready Up functions
 
 	//------------------------------------------------------------------------------------------------
 	
-	TBoolArray GetWhosReady() {
-		array<bool> outFactionsReady = {m_bBluforReady, m_bOpforReady, m_bIndforReady};
-		return outFactionsReady;
+	TStringArray GetWhosReady() {
+		return m_aFactionsStatusArray;
 	}
 	
 	//Call from server
+	//------------------------------------------------------------------------------------------------
 	void UpdateServerWorldTime()
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();
 		float millis = m_iTimeSafeStartBegan - currentTime;
 		
-  		int totalSeconds = (millis / 1000);
+  	int totalSeconds = (millis / 1000);
 		
 		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
-		
-		// We also use this loop to check all players EHs
-		ToggleSafeStartEHs();
 		
 		Replication.BumpMe();
 	};
 	
+	//------------------------------------------------------------------------------------------------
+	protected void UpdatePlayedFactions() 
+	{
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		
+		SCR_SortedArray<SCR_Faction> outFaction = new SCR_SortedArray<SCR_Faction>;
+		factionManager.GetSortedFactionsList(outFaction);
+		
+		if (!outFaction || outFaction.IsEmpty()) return;
+		
+		array<SCR_Faction> outArray = new array<SCR_Faction>;
+		outFaction.ToArray(outArray);
+		
+		m_iPlayedFactionsCount = 0;
+		string bluforString = "N/A";
+		string opforString = "N/A";
+		string indforString = "N/A";
+		
+		foreach(SCR_Faction faction : outArray) {
+			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;
+			
+			m_iPlayedFactionsCount = m_iPlayedFactionsCount + 1;
+			
+			Color factionColor = faction.GetOutlineFactionColor();
+			float rg = Math.Max(factionColor.R(), factionColor.G());
+			float rgb = Math.Max(rg, factionColor.B());
+			
+			switch (true) {
+				case(!m_bBluforReady && rgb == factionColor.B()) : {bluforString = "Not Ready"; break;};
+				case(m_bBluforReady && rgb == factionColor.B())  : {bluforString = "Ready";     break;};
+				case(!m_bOpforReady && rgb == factionColor.R())  : {opforString = "Not Ready";  break;};
+				case(m_bOpforReady && rgb == factionColor.R())   : {opforString = "Ready";      break;};
+				case(!m_bIndforReady && rgb == factionColor.G()) : {indforString = "Not Ready"; break;};
+				case(m_bIndforReady && rgb == factionColor.G())  : {indforString = "Ready";     break;};
+			};
+		};
+		
+		m_aFactionsStatusArray = {bluforString, opforString, indforString};
+		
+		Replication.BumpMe();
+	}
+	
 	//Call from server
+	//------------------------------------------------------------------------------------------------
 	void ToggleSideReady(string setReady, string playerName) {
 		if (!GetSafestartStatus()) return;
 		
@@ -105,21 +140,18 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 				m_bBluforReady = !m_bBluforReady; 
 				if (m_bBluforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Blufor", playerName);
 				if (!m_bBluforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Blufor", playerName);
-				if (!m_bBluforExists) {m_bBluforExists = true; playedFactions = playedFactions + 1;};
 				break;
 			};
 			case("Opfor")  : {
 				m_bOpforReady = !m_bOpforReady;
 				if (m_bOpforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Opfor", playerName);
 				if (!m_bOpforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Opfor", playerName);
-				if (!m_bOpforExists) {m_bOpforExists = true; playedFactions = playedFactions + 1;};
 				break;
 			};
 			case("Indfor") : {
 				m_bIndforReady = !m_bIndforReady; 
 				if (m_bIndforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Indfor", playerName);
 				if (!m_bIndforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Indfor", playerName);
-				if (!m_bIndforExists) {m_bIndforExists = true; playedFactions = playedFactions + 1;};
 				break;
 			};
 		};
@@ -127,26 +159,25 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	}
 	
 	//Call from server
+	//------------------------------------------------------------------------------------------------
 	protected void CheckStartCountDown()
-	{		
-		array<bool> factionsReady = {m_bBluforReady, m_bOpforReady, m_bIndforReady};
-		
+	{
 		int factionsReadyCount = 0;
-		foreach(bool factionready : factionsReady) {
-			if (!factionready) continue;
+		foreach(string factionCheckReadyString : m_aFactionsStatusArray) {
+			if (factionCheckReadyString != "Ready") continue;
 			factionsReadyCount = factionsReadyCount + 1;
 		};
 		
-		if (factionsReadyCount == 0 && playedFactions == 0 || factionsReadyCount != playedFactions && m_iSafeStartTimeRemaining == 35) return;
+		if (factionsReadyCount == 0 && m_iPlayedFactionsCount == 0 || factionsReadyCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining == 35) return;
 				
-		if (factionsReadyCount != playedFactions && m_iSafeStartTimeRemaining != 35) {
+		if (factionsReadyCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining != 35) {
 			m_sMessageContent = "[CRF] : Game Live Countdown Canceled!";
 			Replication.BumpMe();
 			m_iSafeStartTimeRemaining = 35;
 			return;
 		};
 		
-		if (factionsReadyCount == playedFactions) {
+		if (factionsReadyCount == m_iPlayedFactionsCount) {
 			m_iSafeStartTimeRemaining = m_iSafeStartTimeRemaining - 5;
 			m_sMessageContent = string.Format("[CRF] : Game Live In: %1 Seconds!", m_iSafeStartTimeRemaining);
 			if (m_iSafeStartTimeRemaining == 0) {
@@ -158,6 +189,7 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	};
 	
 	//Called from server to all clients
+	//------------------------------------------------------------------------------------------------
 	void ShowMessage()
 	{
 		PlayerController pc = GetGame().GetPlayerController();
@@ -168,6 +200,8 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		
 		chatComponent.ShowMessage(m_sMessageContent);
 	};
+	
+	
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -180,11 +214,13 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		return m_sServerWorldTime;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	bool GetSafestartStatus()
 	{
 		return m_SafeStartEnabled;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void ToggleSafeStartServer(bool status) 
 	{
@@ -197,6 +233,8 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 250, true);
+			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 1250, true);
+			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 500, true);
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
@@ -210,17 +248,20 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			
 			GetGame().GetCallqueue().Remove(CheckStartCountDown);
 			GetGame().GetCallqueue().Remove(UpdateServerWorldTime);
+			GetGame().GetCallqueue().Remove(ToggleSafeStartEHs);
+			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
-			// Use UpdateServerWorldTime to essentially delay the call for the removal of EHs so the changes to m_SafeStartEnabled can propagate.
-			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 2850);
+			// Use CallLater to delay the call for the removal of EHs so the changes so m_SafeStartEnabled can propagate.
+			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 2850);
 			
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
-			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 12500);
+			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 12500);
 		}
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	protected void ToggleSafeStartEHs()
 	{	
 		array<int> outPlayers = {};
@@ -265,12 +306,14 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		};
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void OnWeaponFired(int playerID, BaseWeaponComponent weapon, IEntity entity)
 	{		
 		// Get projectile and delete it
 		delete entity;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void OnGrenadeThrown(int playerID, BaseWeaponComponent weapon, IEntity entity)
 	{
 		if (!weapon)
