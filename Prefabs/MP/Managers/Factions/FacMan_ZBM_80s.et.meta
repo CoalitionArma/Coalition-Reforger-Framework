@@ -1,0 +1,15 @@
+MetaFileClass {
+ Name "{467054362A79D955}Prefabs/MP/Managers/Factions/FacMan_ZBM_80s.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
