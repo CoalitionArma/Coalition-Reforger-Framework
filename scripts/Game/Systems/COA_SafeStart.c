@@ -26,6 +26,7 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	protected bool m_bIndforReady = false;
 	
 	protected int m_iPlayedFactionsCount;
+	protected ref map<int,bool> m_mPlayersWithEHsMap = new map<int,bool>;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -254,7 +255,7 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
 			// Use CallLater to delay the call for the removal of EHs so the changes so m_SafeStartEnabled can propagate.
-			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 2850);
+			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 1500);
 			
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
 			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 12500);
@@ -267,8 +268,6 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		array<int> outPlayers = {};
 		GetGame().GetPlayerManager().GetPlayers(outPlayers);
 		
-		array<string> eventHandlerStrings = {"OnProjectileShot", "OnGrenadeThrown"};
-		
 		foreach (int playerID : outPlayers)
 		{
 			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
@@ -277,31 +276,23 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			EventHandlerManagerComponent m_eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
 			if (!m_eventHandler) continue;
 		
-			array<BaseEventHandler> outEventHandlers = {};
-			m_eventHandler.GetEventHandlers(outEventHandlers);
-		
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
 			if (!charComp) continue;
 			
-			bool alreadyHasEventHandlers = false;
-			foreach (BaseEventHandler eventHandlers : outEventHandlers) {
-				string eventHandlerName = eventHandlers.GetEventName();
-				if (eventHandlerStrings.Contains(eventHandlerName)) {
-					alreadyHasEventHandlers = true;
-					continue;
-				};
-			};
+			bool alreadyHasEventHandlers = m_mPlayersWithEHsMap.Get(playerID);
 		
 			if (!alreadyHasEventHandlers && GetSafestartStatus()) {
 				charComp.SetSafety(true, true);
 				m_eventHandler.RegisterScriptHandler("OnProjectileShot", this, OnWeaponFired);
 				m_eventHandler.RegisterScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
+				m_mPlayersWithEHsMap.Set(playerID, true);
 			};
 		
 			if (alreadyHasEventHandlers && !GetSafestartStatus()) {
 				charComp.SetSafety(false, false);
 				m_eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 				m_eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
+				m_mPlayersWithEHsMap.Set(playerID, false);
 			};
 		};
 	}
