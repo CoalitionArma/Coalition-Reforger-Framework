@@ -1,6 +1,0 @@
-SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
- coords 5883.174 146.852 6211.099
-}
-SCR_GameModeEditor GameMode_ZBM_80s1 : "{AE45B7A6158FD338}Prefabs/MP/Modes/Editor/GameMode_ZBM_80s.et" {
- coords 5856.224 146.957 6244.802
-}

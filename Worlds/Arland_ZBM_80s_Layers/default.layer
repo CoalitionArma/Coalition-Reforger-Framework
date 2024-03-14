@@ -1,6 +1,0 @@
-SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
- coords 2518.324 147.596 2263.85
-}
-SCR_GameModeEditor GameMode_ZBM_80s1 : "{AE45B7A6158FD338}Prefabs/MP/Modes/Editor/GameMode_ZBM_80s.et" {
- coords 2519.88 147.318 2263.298
-}
