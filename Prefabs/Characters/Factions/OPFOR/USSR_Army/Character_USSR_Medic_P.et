@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{AB9726163EC1BD81}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic.et" {
+ ID "51FAD317FC20EC1B"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Medic"
+  }
+ }
+}

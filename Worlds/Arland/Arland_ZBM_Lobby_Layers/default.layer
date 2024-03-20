@@ -1,6 +1,0 @@
-SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
- coords 2513.907 147.646 2278.764
-}
-PS_GameModeCoop GameMode_ZBM_Modern_Lobby1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Editor/GameMode_ZBM_Modern_Lobby.et" {
- coords 2512.734 148.366 2275.555
-}

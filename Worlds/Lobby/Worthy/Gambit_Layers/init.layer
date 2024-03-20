@@ -1,0 +1,174 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60E15DDAC5F014D5}" {
+     NavmeshFile "{C6F0E17D7BEA1501}Navmesh/WorthyIslands_Navmesh.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{E42B1721F86EB18D}Navmesh/WorthyIslands_Navmesh_LOWRES.nmn"
+    }
+   }
+  }
+ }
+ coords 1408.164 15.917 1387.339
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  SCR_CampaignBuildingManagerComponent "{60E15DD5134A8AF9}" {
+  }
+ }
+ coords 787.296 27.844 1392.374
+ m_bAdminMode 1
+ {
+  SCR_FactionManager "60E15DD84A6D6285" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "IFV1"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 825.772 27.653 1401.745
+  m_sTitle "Situation"
+  m_sTextData "Soviet forces have managed to secure a power station in the middle of the worth islands civil unrest. US forces have been deployed to the region in order to ensure Soviets do not interfere with the local government. "
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 1
+ }
+ {
+  coords 823.2 27.825 1405.703
+  m_sTitle "Welcome! (read me first)"
+  m_sTextData "This is a TVT mission on the COALITION framework, using the reforger lobby system. If you've joined after the mission as started, you will be put into spectator. If you are confused, open your chat and ask an admin for help."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 0
+ }
+ {
+  coords 824.228 27.863 1402.57
+  m_sTitle "BLU Briefing"
+  m_sTextData "Utilize your M113 and personnel advantage to maneuver and attack the substation in any way you see fit. The power station is considered secure once all OPFOR players are KIA, retreating, or the objective is completed by the admin."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 5
+ }
+ {
+  coords 824.615 27.614 1400.074
+  m_sTitle "OPF Briefing"
+  m_sTextData "Setup defensive positions within the substation and the direct area surrounding it. Pay attention to your LOA - limit of advance - and do not cross that area. The defense of the substation is considered complete if BLUFOR players are destroyed."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 6
+ }
+}
+GenericEntity : "{473DB1C66CAD5088}Prefabs/Props/Military/Compositions/USSR/BuildingService_USSR.et" {
+ components {
+  SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+   m_fBuildingRadius 250
+   m_aAvailableTraits {
+    28
+   }
+  }
+ }
+ coords 2055.069 6.14 962.384
+ angleY 179
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 2055.087 6.139 958.357
+  m_sTitle "Secure Stronghold"
+  m_sDescription "Soviets have dug in here at a power station. Secure it."
+  m_sFactionKey "US"
+ }
+ {
+  coords 2067.836 6.218 947.19
+  m_sTitle "Defend Powerstation"
+  m_sDescription "We have intel that Americans are planning to attack this power station. Dig in and repel any attacks that may come."
+  m_sFactionKey "USSR"
+ }
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 2039.946 6.282 956.999
+  angleY 0
+  m_MarkerColor 0.81 0.022 0.022 1
+  m_sQuadName "fortification"
+  m_fWorldSize 80
+  m_sDescription "Soviet Stronghold"
+  m_aVisibleForFactions {
+   "US"
+  }
+ }
+ {
+  coords 2046.893 6.236 957.73
+  angleY 0
+  m_MarkerColor 0.81 0.022 0.022 1
+  m_sQuadName "fortification"
+  m_fWorldSize 80
+  m_sDescription "Defend"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 1782.143 10.848 1288.696
+  angleY 0
+  m_MarkerColor 0.81 0.022 0.022 1
+  m_sQuadName "join-3"
+  m_fWorldSize 80
+  m_sDescription "LOA"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 762.797 98.155 1158.528
+  angleY 0
+  m_MarkerColor 0.059 0.244 0.7 1
+  m_sQuadName "objective-marker-2"
+  m_fWorldSize 80
+  m_sDescription "US"
+  m_aVisibleForFactions {
+   "USSR" "US"
+  }
+ }
+}
+GenericEntity : "{EBCA486128BD1F0D}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_SupplyStack_01_V3_storage_USSR_covered.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 1000
+     m_fResourceValueMax 1000
+    }
+   }
+  }
+ }
+ coords 2056.261 6.125 963.147
+}

@@ -1,0 +1,54 @@
+SCR_CampaignFactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_CampaignFaction "{50B30C3AF4BFD934}" : "{15B582F8FA0B0940}Configs/Factions/USSR_Campaign.conf" {
+  }
+  SCR_CampaignFaction "{50B30C3ADB052C80}" : "{ADFDBDA163950168}Configs/Factions/US_Campaign.conf" {
+  }
+  SCR_CampaignFaction "{56F0C3A6336375DC}" : "{CF9447B87AB774DB}Configs/Factions/FIA_Campaign.conf" {
+  }
+ }
+ m_bCanChangeFactionsPlayable 0
+ m_aRanks {
+  SCR_RankIDCampaign "{5CB0777E83631136}" {
+   m_iRequestCD -1
+   m_iRadioRespawnCooldown 600
+   m_iFastTravelCooldown 3600
+   m_eRadioMsg DEMOTION_RENEGADE
+  }
+  SCR_RankIDCampaign "{5CB0777E828E61F3}" {
+   m_iRequestCD 105
+   m_iRadioRespawnCooldown 45
+   m_iFastTravelCooldown 600
+   m_eRadioMsg PROMOTION_PRIVATE
+  }
+  SCR_RankIDCampaign "{5CB0777E803B7EA2}" {
+   m_iRequestCD 75
+   m_iRadioRespawnCooldown 42
+   m_iFastTravelCooldown 540
+   m_eRadioMsg PROMOTION_CORPORAL
+  }
+  SCR_RankIDCampaign "{5CB0777E8F0E82AF}" {
+   m_iRequestCD 50
+   m_iRadioRespawnCooldown 39
+   m_iFastTravelCooldown 480
+   m_eRadioMsg PROMOTION_SERGEANT
+  }
+  SCR_RankIDCampaign "{5CB0777E8BE66EC2}" {
+   m_iRequestCD 30
+   m_iRadioRespawnCooldown 36
+   m_iFastTravelCooldown 420
+   m_eRadioMsg PROMOTION_LIEUTENANT
+  }
+  SCR_RankIDCampaign "{5CB0777E8AD658D6}" {
+   m_iRequestCD 30
+   m_iRadioRespawnCooldown 33
+   m_iFastTravelCooldown 360
+   m_eRadioMsg PROMOTION_CAPTAIN
+  }
+  SCR_RankIDCampaign "{5CB0777E88380770}" {
+   m_iRequestCD 5
+   m_eRadioMsg PROMOTION_MAJOR
+  }
+ }
+}
