@@ -1,0 +1,8 @@
+$grp SCR_AIGroup : "{218445F83827D929}Prefabs/Groups/OPFOR/RHS_RF_MSV/EMR/Group_MSV_EMR_RifleSquad.et" {
+ {
+  coords 6635.463 39.03 5403.166
+ }
+ {
+  coords 6718.283 58.226 5521.845
+ }
+}

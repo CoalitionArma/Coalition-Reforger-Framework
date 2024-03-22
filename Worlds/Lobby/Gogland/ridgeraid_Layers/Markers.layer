@@ -1,0 +1,38 @@
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 6459.389 63.06 6041.31
+  angleY 91
+  m_MarkerColor 0.011 0.113 0.608 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 90
+  m_sDescription "BLUFOR Start"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 7051.609 5.635 5077.672
+  angleY 87
+  m_MarkerColor 0.727 0.01 0.01 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 90
+  m_sDescription "Crossroads"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 6979.885 101.438 3999.572
+  angleY 69
+  m_MarkerColor 0.727 0.01 0.01 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 90
+  m_sDescription "Communications"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+}

@@ -1,0 +1,56 @@
+SCR_AIGroup : "{218445F83827D929}Prefabs/Groups/OPFOR/RHS_RF_MSV/EMR/Group_MSV_EMR_RifleSquad.et" {
+ coords 6986.721 12.803 5279.522
+}
+$grp Tank : "{24223D0679CDD612}Prefabs/Vehicles/Tracked/BFV/M2A2_OD.et" {
+ M2A2_OD1 {
+  coords 6447.907 64.856 6025.888
+  angleY -173
+ }
+ M2A2_OD2 {
+  coords 6448.852 64.37 6037.679
+  angleY -173
+ }
+ M2A2_OD3 {
+  coords 6449.732 65.166 6051.264
+  angleY -178
+ }
+}
+SCR_AIGroup : "{4C9E0D9CD321F3B1}Prefabs/Groups/OPFOR/RHS_RF_MSV/EMR/Group_MSV_EMR_Team_AT.et" {
+ coords 6937.014 12.869 5258.468
+}
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 6460.113 63.559 6035.266
+ m_aUnitPrefabSlots {
+  "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{A44F0EF1EFD07F00}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PSG_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern.et" "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern.et"
+ }
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+   {
+    coords 36.267 -4.155 18.05
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 25.397 -1.278 39.579
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 67.15 -15.857 28.869
+    m_sCustomNameSet "3rd Squad"
+   }
+  }
+ }
+}
+$grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Armor3man.et" {
+ {
+  coords 6456.321 64.976 6050.231
+  m_sCustomNameSet "M2A3 Bradley"
+ }
+ {
+  coords 6455.523 64.481 6042.792
+  m_sCustomNameSet "M2A3 Bradley"
+ }
+ {
+  coords 6454.737 64.223 6037.585
+  m_sCustomNameSet "M2A3 Bradley"
+ }
+}

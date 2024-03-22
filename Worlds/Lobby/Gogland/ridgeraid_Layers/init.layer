@@ -1,0 +1,125 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60ECFE6DE0F9B23D}" {
+     NavmeshFile "{20E5B728C88940C2}Worlds/Gamemaster/Navmeshes/gogland_navmesh.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{A32430981C1ACB9C}Worlds/Gamemaster/Navmeshes/lowres_navmesh/gogland_lowres_navmesh.nmn"
+    }
+   }
+  }
+ }
+ coords 6450.425 64.379 6038.221
+}
+PS_GameModeCoop Lobby_COOP_Mode1 : "{4281A768CB4E8864}Prefabs/MP/Modes/COOP/Lobby_COOP_Mode.et" {
+ coords 6451.002 64.454 6041.09
+ m_bAdminMode 1
+ {
+  SCR_FactionManager "60ECFE6A845D64D4" {
+   ID "60ECFE697676124E"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "US Marines"
+      m_sNameUpper "US MARINES"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{60ECFE6125463F8E}" {
+        m_sCallsign "IFV1"
+       }
+       SCR_CallsignInfo "{60ECFE612578FA0D}" {
+        m_sCallsign "IFV2"
+       }
+       SCR_CallsignInfo "{60ECFE613F2DC0CD}" {
+        m_sCallsign "IFV3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 6480.451 65.226 6009.825
+  m_sTitle "Welcome! (read me)"
+  m_sTextData "This is a Reforger lobby mission on the COALITION Reforger Framework (CRF). "\
+  ""\
+  "If you just joined, the mission will start momentarily. If you joined after the mission started, you can go to the Lobby page at the top of your screen and select a role."\
+  ""\
+  "If you have any questions, message an admin in the in-game chat. "
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6478.953 65.21 6010.274
+  m_sTitle "Situation"
+  m_sTextData "Gogland has been divided in half by NATO and Russian forces. Your platoon has been tasked with pushing South and securing a key Russian communication station."\
+  ""\
+  "To get to the station, you must push through the town of Kiiskinkyla and the crossroads on the edge of the town."\
+  ""\
+  "An armored battalion has loaned three bradleys to help support the assault."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
+ {
+  coords 6477.083 65.214 6010.6
+  m_sTitle "Objectives"
+  m_sTextData "OBJ1: Push into and secure the crossroads at Kiiskinkyla. Once all enemy forces have been suppressed at the crossroads, the objective is considered complete."\
+  ""\
+  "OBJ2: Destroy the generators inside the communications building at the communication site."\
+  ""\
+  ""
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 3
+ }
+ {
+  coords 6475.531 65.253 6010.285
+  m_sTitle "Important Notes"
+  m_sTextData "'U' key opens up the lobby menu, however, this may be disabled by default and only accessible by admins."\
+  ""\
+  "Spectator is enabled. Upon dying, you will instantly go into spectator. Use the right side of the screen to switch your voice channel."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 1
+ }
+}
