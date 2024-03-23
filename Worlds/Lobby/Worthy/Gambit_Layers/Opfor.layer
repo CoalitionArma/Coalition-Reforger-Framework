@@ -1,26 +1,23 @@
 SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Group_USSR_Platoon_p.et" {
-<<<<<<< Updated upstream
- coords 2069.928 6.188 938.089
-}
-SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
- coords 2063.466 7.532 960.731
- m_aUnitPrefabSlots {
-  "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
-=======
- coords 2054.948 6.142 960.132
+ coords 2054.107 6.155 960.251
  m_sCustomNameSet "Platoon Command"
  {
   $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
    {
-    coords 9.897 0.171 22.446
+    coords 11.527 1.627 14.326
+    m_aUnitPrefabSlots + {
+     "==" "==" "==" "=" "coords" "2054.948" "6.142" "960.132" "m_sCustomNameSet" "Platoon Command"
+    }
     m_sCustomNameSet "1st Squad"
    }
    {
-    coords 11.717 -0.344 -35.044
-    angleY 128
+    coords 10.911 -0.483 -37.763
+    angleY 144
+    m_aUnitPrefabSlots + {
+     "==" "==" "==" "=" "coords" "2054.948" "6.142" "960.132" "m_sCustomNameSet" "Platoon Command"
+    }
     m_sCustomNameSet "2nd Squad"
    }
   }
->>>>>>> Stashed changes
  }
 }

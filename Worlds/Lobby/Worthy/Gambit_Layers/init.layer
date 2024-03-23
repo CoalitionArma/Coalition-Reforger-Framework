@@ -19,15 +19,9 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
-<<<<<<< Updated upstream
-  SCR_CampaignBuildingManagerComponent "{60E15DD5134A8AF9}" {
-=======
-  SCR_CampaignBuildingGadgetToolComponent "{60ED644FF74ACE52}" {
-   m_eAnimVariable NONE
-  }
-  SCR_CampaignBuildingManagerComponent "{60E15DD5134A8AF9}" {
+  SCR_CampaignBuildingManagerComponent "{60EE262DA53D4915}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
-   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{60ED644FD9C57511}" {
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{60EE262DA3B60BA8}" {
     m_sSlotFlatSmallLayout "{7FD4E6A668B4537A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFLatSmall.et"
     m_sSlotFlatMediumLayout "{579FF731013436B5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFlatMedium.et"
     m_sSlotFlatLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
@@ -160,20 +154,16 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_
     }
    }
    m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
->>>>>>> Stashed changes
   }
  }
- coords 787.296 27.844 1392.374
+ coords 2039.657 6.312 960.244
  m_bAdminMode 1
+ m_bTeamSwitch 1
  {
-  SCR_FactionManager "60E15DD84A6D6285" {
+  SCR_FactionManager "60EE262FAB9FEE45" {
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
-<<<<<<< Updated upstream
-=======
-     m_bIsPlayable 1
->>>>>>> Stashed changes
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
@@ -186,52 +176,40 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_
         m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-<<<<<<< Updated upstream
-=======
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{60ED5CDBE3AB191B}" {
->>>>>>> Stashed changes
+       SCR_CallsignInfo "{60EE262C67BF1804}" {
         m_sCallsign "IFV1"
        }
       }
       m_sCallsignGroupFormat "%3"
      }
     }
-<<<<<<< Updated upstream
-=======
     SCR_Faction "{56DEAC40D3C2E623}" {
+     m_bIsPlayable 1
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_bIsAssignedRandomly 0
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB79287E901BC}" {
-        m_sCallsign "1PLT"
+        m_sCallsign "BURAN10"
        }
        SCR_CallsignInfo "{55CCB79287936EBD}" {
-        m_sCallsign "1-1"
+        m_sCallsign "BURAN11"
        }
        SCR_CallsignInfo "{55CCB79287BAFBD6}" {
-        m_sCallsign "1-2"
+        m_sCallsign "BURAN12"
        }
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
-        m_sCallsign "1-3"
+        m_sCallsign "BURAN13"
        }
       }
       m_sCallsignGroupFormat "%3"
      }
-     m_aPredefinedGroups {
-      SCR_GroupPreset "{60ED644E5442D4BA}" {
-       m_sGroupName "1PLT"
-      }
-     }
     }
->>>>>>> Stashed changes
    }
   }
  }
 }
-<<<<<<< Updated upstream
-=======
 GenericEntity : "{228E21AB029B40DC}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/BuildingService_USSR_NoAffiliation.et" {
  components {
   SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
@@ -242,131 +220,85 @@ GenericEntity : "{228E21AB029B40DC}Prefabs/Compositions/Misc/CustomEntities/Inte
    }
   }
  }
- coords 2054.232 6.153 962.582
- angleY 175
+ coords 2053.758 6.156 962.38
+ angleY 170
 }
->>>>>>> Stashed changes
 $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  {
-  coords 825.772 27.653 1401.745
-  m_sTitle "Situation"
-  m_sTextData "Soviet forces have managed to secure a power station in the middle of the worth islands civil unrest. US forces have been deployed to the region in order to ensure Soviets do not interfere with the local government. "
+  coords 767.556 27.841 1382.248
+  m_sTitle "Important Notes"
+  m_sTextData "'U' key opens up the lobby menu, however, this may be disabled by default and only accessible by admins."\
+  ""\
+  "Spectator is enabled. Upon dying, you will instantly go into spectator. Use the right side of the screen to switch your voice channel."
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 1
  }
  {
-  coords 823.2 27.825 1405.703
-  m_sTitle "Welcome! (read me first)"
-  m_sTextData "This is a TVT mission on the COALITION framework, using the reforger lobby system. If you've joined after the mission as started, you will be put into spectator. If you are confused, open your chat and ask an admin for help."
+  coords 772.477 27.814 1381.788
+  m_sTitle "Welcome! (read me)"
+  m_sTextData "This is a Reforger lobby mission on the COALITION Reforger Framework (CRF). "\
+  ""\
+  "If you just joined, the mission will start momentarily. If you joined after the mission started, you can go to the Lobby page at the top of your screen and select a role."\
+  ""\
+  "If you have any questions, message an admin in the in-game chat. "
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
-  m_iOrder 0
  }
  {
-  coords 824.228 27.863 1402.57
-  m_sTitle "BLU Briefing"
-  m_sTextData "Utilize your M113 and personnel advantage to maneuver and attack the substation in any way you see fit. The power station is considered secure once all OPFOR players are KIA, retreating, or the objective is completed by the admin."
+  coords 770.979 27.798 1382.237
+  m_sTitle "Situation"
+  m_sTextData "Soviet forces have invaded the worthy islands and secured key infrastructure. As such, NATO has deployed to the islands in order to help stabilize the region."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
+ {
+  coords 769.109 27.802 1382.563
+  m_sTitle "Objectives"
+  m_sTextData "OBJ1: Secure the power station in any means necessary."\
+  ""
   m_aVisibleForFactions {
    "US"
   }
-  m_iOrder 5
+  m_iOrder 3
  }
  {
-  coords 824.615 27.614 1400.074
-  m_sTitle "OPF Briefing"
-  m_sTextData "Setup defensive positions within the substation and the direct area surrounding it. Pay attention to your LOA - limit of advance - and do not cross that area. The defense of the substation is considered complete if BLUFOR players are destroyed."
+  coords 771.949 27.842 1381.958
+  m_sTitle "Objectives"
+  m_sTextData "OBJ1: Defend the power station against US incursion"\
+  ""\
+  "Do not go past any LOA markers"
   m_aVisibleForFactions {
    "USSR"
   }
-  m_iOrder 6
+  m_iOrder 3
  }
 }
-<<<<<<< Updated upstream
-GenericEntity : "{473DB1C66CAD5088}Prefabs/Props/Military/Compositions/USSR/BuildingService_USSR.et" {
- components {
-  SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
-   m_fBuildingRadius 250
-   m_aAvailableTraits {
-    28
-   }
-  }
- }
- coords 2055.069 6.14 962.384
- angleY 179
-}
-=======
->>>>>>> Stashed changes
-$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
- {
-  coords 2055.087 6.139 958.357
-  m_sTitle "Secure Stronghold"
-  m_sDescription "Soviets have dug in here at a power station. Secure it."
-  m_sFactionKey "US"
- }
- {
-  coords 2067.836 6.218 947.19
-  m_sTitle "Defend Powerstation"
-  m_sDescription "We have intel that Americans are planning to attack this power station. Dig in and repel any attacks that may come."
-  m_sFactionKey "USSR"
- }
-}
-$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
- {
-  coords 2039.946 6.282 956.999
-  angleY 0
-  m_MarkerColor 0.81 0.022 0.022 1
-  m_sQuadName "fortification"
-  m_fWorldSize 80
-  m_sDescription "Soviet Stronghold"
-  m_aVisibleForFactions {
-   "US"
-  }
- }
- {
-  coords 2046.893 6.236 957.73
-  angleY 0
-  m_MarkerColor 0.81 0.022 0.022 1
-  m_sQuadName "fortification"
-  m_fWorldSize 80
-  m_sDescription "Defend"
-  m_aVisibleForFactions {
-   "USSR"
-  }
- }
- {
-  coords 1782.143 10.848 1288.696
-  angleY 0
-  m_MarkerColor 0.81 0.022 0.022 1
-  m_sQuadName "join-3"
-  m_fWorldSize 80
-  m_sDescription "LOA"
-  m_aVisibleForFactions {
-   "USSR"
-  }
- }
- {
-  coords 762.797 98.155 1158.528
-  angleY 0
-  m_MarkerColor 0.059 0.244 0.7 1
-  m_sQuadName "objective-marker-2"
-  m_fWorldSize 80
-  m_sDescription "US"
-  m_aVisibleForFactions {
-   "USSR" "US"
-  }
- }
-}
-GenericEntity : "{EBCA486128BD1F0D}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_SupplyStack_01_V3_storage_USSR_covered.et" {
+GenericEntity : "{5B62CDB64C513F64}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_SupplyStack_01_V5_storage_USSR_covered.et" {
  components {
   SCR_ResourceComponent "{5D247A59598D71AE}" {
    m_aContainers {
     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_fResourceValueCurrent 1000
-     m_fResourceValueMax 1000
+     m_fResourceValueCurrent 400
+     m_fResourceValueMax 400
     }
    }
   }
  }
- coords 2056.261 6.125 963.147
+ coords 2055.487 6.133 962.749
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 2045.474 6.25 957.736
+  m_sTitle "Secure the Power Station"
+  m_sDescription "BLUFOR needs to resecure the power station under Soviet control"
+  m_sFactionKey "US"
+ }
+ {
+  coords 2046.972 6.235 957.555
+  m_sTitle "Defend Power Station"
+  m_sDescription "OPFOR needs to defend the power station against US incursion"
+  m_sFactionKey "USSR"
+ }
 }
