@@ -1,0 +1,92 @@
+Vehicle Ural4320_transport1 : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ coords 4032.115 369.938 11622.845
+ angleY 20.431
+}
+$grp Vehicle : "{2BE1F8B9299B67C1}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.et" {
+ M923A1_tanker2 {
+  coords 2709.846 229.31 12104.055
+  angleY -122.707
+ }
+ M923A1_tanker4 {
+  coords 2717.207 230.481 12094.052
+  angleY -122.707
+ }
+ M923A1_tanker3 {
+  coords 2713.304 229.791 12098.635
+  angleY -122.707
+ }
+ M923A1_tanker1 {
+  coords 2706.025 228.86 12110.076
+  angleY -122.707
+ }
+}
+Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et" {
+ coords 4026.059 369.937 11624.739
+ angleY 21.61
+}
+Vehicle Ural4320_tanker1 : "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et" {
+ coords 4019.793 369.937 11626.766
+ angleY 22.668
+}
+Vehicle M151A2_M2HB_MERDC1 : "{5168FEA3054D6D15}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB_MERDC.et" {
+ coords 1655.547 269.77 12050.925
+ angleY 81.55
+}
+$grp Vehicle : "{6E9142CD2471741C}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer.et" {
+ Ural4320_engineer1 {
+  coords 4013.299 369.937 11628.983
+  angleY 21.267
+ }
+ Ural4320_engineer2 {
+  coords 4017.056 369.864 11638.459
+  angleY 21.267
+ }
+}
+$grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
+ M923A1_transport_covered2 {
+  coords 2751.19 229.839 12104.079
+  angleX 2.268
+  angleY 147.659
+  angleZ -1.435
+ }
+ M923A1_transport_covered3 {
+  coords 2755.605 229.689 12106.64
+  angleX 2.268
+  angleY 147.659
+  angleZ -1.435
+ }
+ M923A1_transport_covered1 {
+  coords 2747.068 230.024 12100.82
+  angleX 2.268
+  angleY 147.659
+  angleZ -1.435
+ }
+}
+Vehicle Ural4320_repair1 : "{A5647958579A4149}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_repair.et" {
+ coords 4035.639 369.937 11638.788
+ angleY 127.835
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 4060.811 369.906 11611.617
+  angleY 21.135
+ }
+ BTR2 {
+  coords 4054.768 369.885 11613.94
+  angleX 1.992
+  angleY 21.128
+  angleZ -0.19
+ }
+ BTR3 {
+  coords 4048.666 369.905 11615.948
+  angleX 0.835
+  angleY 21.14
+  angleZ 0.323
+ }
+ BTR4 {
+  coords 4042.882 369.973 11618.253
+  angleX 0.827
+  angleY 22.545
+  angleZ 0.343
+ }
+}
