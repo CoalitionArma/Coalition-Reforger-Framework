@@ -15,6 +15,42 @@ PS_GameModeCoop Lobby_Spcl_Mode1 : "{65B1AAF0045513DF}Prefabs/MP/Modes/Spcl/Lobb
   }
  }
 }
+SCR_BaseTriggerEntity EndTrigger {
+ coords 1037.423 0 6100.169
+ EOnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Meaux\", 90, \"Racers should all board their vehicles now.\");"\
+ "	"
+ TriggerShapeType Sphere
+ SphereRadius 50
+ BoxMins -0.5 -0.5 -50
+ BoxMaxs 50 50 20
+ DrawShape 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ PrefabsFilter {
+  PrefabFilter "{60ED74DE39D4A0AF}" {
+   Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+   CheckPrefabHierarchy 1
+  }
+ }
+ OnActivate ""\
+ "		// Probably lacking locality tbh"\
+ "		// Get player data"\
+ "		PlayerManager playerManager = GetGame().GetPlayerManager();"\
+ "		if (!playerManager)"\
+ "			return;"\
+ "		int entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+ "		string playerName = playerManager.GetPlayerName(entityPlayerID);"\
+ "		"\
+ "		// Notify player finished"\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
+ "		"\
+ "		// Send player to spec"\
+ "		SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+ "		damMan.Kill(damMan.GetInstigator());"\
+ "	"
+ RunDefaultQueryFirst 0
+}
 Vehicle Ural4320_FIA_transport1 : "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et" {
  coords 4475.833 13.562 10704.212
  angleY 79.502
@@ -1658,6 +1694,24 @@ $grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
   coords 4436.212 9.083 10834.425
   angleY 78.958
  }
+ S105_rally44 {
+  coords 1037.99 2.65 6024.54
+  angleY -3.201
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
 }
 $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/RoadBlock_01.et" {
  {
@@ -2198,6 +2252,47 @@ $grp GenericEntity : "{8DD27AE84BD3C70B}Prefabs/Structures/Signs/Warnings/SignMa
 GenericEntity : "{A09E0BAFA5EF5A66}Prefabs/Structures/Signs/Warnings/SignSteepHillUp_01_pole.et" {
  coords 4399.72 11.393 10696.178
  angleY 29.314
+}
+$grp GenericEntity : "{AA3F295D8E086A6D}Prefabs/Compositions/Misc/SubCompositions/TireStack_M939A1_02.et" {
+ {
+  coords 1033.837 2.701 6019.114
+ }
+ {
+  coords 1033.813 2.664 6022.254
+ }
+ {
+  coords 1033.427 2.719 6025.883
+ }
+ {
+  coords 1033.271 2.719 6029.896
+ }
+ {
+  coords 1033.397 2.75 6035.235
+ }
+ {
+  coords 1033.482 2.808 6039.732
+ }
+ {
+  coords 1041.55 2.786 6040.283
+ }
+ {
+  coords 1042.688 2.75 6037.367
+ }
+ {
+  coords 1042.735 2.747 6033.81
+ }
+ {
+  coords 1042.48 2.72 6030.053
+ }
+ {
+  coords 1042.11 2.747 6025.679
+ }
+ {
+  coords 1042.295 2.662 6021.788
+ }
+ {
+  coords 1042.737 2.711 6018.475
+ }
 }
 $grp GenericEntity : "{ABF4ECEBA3F1B4FD}Prefabs/Structures/Signs/Warnings/SignBendRight_01_pole.et" {
  {
