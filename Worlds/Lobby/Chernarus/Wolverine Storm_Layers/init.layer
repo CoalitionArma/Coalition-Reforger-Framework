@@ -32,6 +32,10 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_
    }
    m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
   }
+  SCR_InitWeatherComponent "{60EEF5DAD6C5AA37}" {
+   m_sInitialStartingWeatherId "Rainy"
+   m_iSetWeatherConstant 1
+  }
  }
  coords 7569.663 331.344 7706.438
  {
