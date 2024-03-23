@@ -1,0 +1,46 @@
+$grp SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Group_USSR_Platoon_p.et" {
+ {
+  coords 4045.41 370.094 11635.205
+  m_aUnitPrefabSlots {
+   "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+  }
+  m_sCustomNameSet "1st Platoon"
+  {
+   $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
+    {
+     coords 34.593 0 -13.194
+     m_aUnitPrefabSlots {
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+     }
+     m_sCustomNameSet "Squad 1"
+    }
+    {
+     coords 40.311 0 -13.724
+     m_aUnitPrefabSlots {
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+     }
+     m_sCustomNameSet "Squad 2"
+    }
+   }
+  }
+ }
+ {
+  coords 4049.212 370 11634.452
+  m_aUnitPrefabSlots {
+   "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+  }
+  m_sCustomNameSet "2nd Platoon"
+  {
+   $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
+    {
+     coords 41.286 0.148 -13.02
+     m_sCustomNameSet "Squad 3"
+    }
+    {
+     coords 46.006 0.319 -13.041
+     m_sCustomNameSet "Squad 4"
+    }
+   }
+  }
+ }
+}

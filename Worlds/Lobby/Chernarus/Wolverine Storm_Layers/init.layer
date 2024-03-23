@@ -1,0 +1,105 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60ED35E3C8F83833}" {
+     NavmeshFile "{59996219A908933A}Terrains/NavMesh/NavmeshChernarus.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{18A4FA411884C005}worlds/GameMasterChernarusReforged/GM_Lowres.nmn"
+    }
+    GenerateCoverPoints 1
+   }
+  }
+ }
+ coords 7267.317 294.514 7670.934
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  SCR_CampaignBuildingManagerComponent "{60EE37E2617E1258}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{60EE37E18CF0113F}" {
+    m_sSlotFlatSmallLayout "{7FD4E6A668B4537A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFLatSmall.et"
+    m_sSlotFlatMediumLayout "{579FF731013436B5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFlatMedium.et"
+    m_sSlotFlatLargeLayout "{ED9D7F29497B9BF7}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFlatLarge.et"
+    m_sSlotRoadSmallLayout "{8DBA7E7BF662A393}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadSmall.et"
+    m_sSlotRoadMediumLayout "{3A5E87ADA26C6940}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadMedium.et"
+    m_sSlotRoadLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  SCR_InitWeatherComponent "{60EEF5DAD6C5AA37}" {
+   m_sInitialStartingWeatherId "Rainy"
+   m_iSetWeatherConstant 1
+  }
+ }
+ coords 7569.663 331.344 7706.438
+ {
+  SCR_FactionManager "60ED35E87DCEC40C" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{60EE37C6B471CA88}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{60EE37C6B4EB1D90}" {
+        m_sCallsign "2-2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalog "{5C9EDDD378BA3298}" {
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 3395.919 194.263 12995.884
+  m_sTitle "Objectives"
+  m_sTextData "OBJ1: Push into Novaya Petrovka and assault the enemy field HQ. Secure any intelligence found and return it to your platoon leader."\
+  ""\
+  "OBJ2: Move to Topolniki and locate the fuel dump there. Destroy it and any other assets in the area."\
+  ""\
+  "OBJ3: Establish a roadblock at the crossroads Southeast of Sinystok. Prepare for enemy counterattack from the South."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3999.112 369.612 11633.796
+  m_sTitle "Roadblock"
+  m_sTextData "Two engineering vehicles are available at base. Supplies are generated a stockpile at base. Each truck can carry 550 supplies and allows you to build a variety of fortifications. "
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+}

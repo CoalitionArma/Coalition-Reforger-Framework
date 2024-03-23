@@ -1,0 +1,51 @@
+GenericEntity : "{207442723F49FC41}Prefabs/Compositions/Misc/SubCompositions/Sandbag_MG_US_02_M60.et" {
+ coords 3414.628 223.818 12729.228
+ angleY -179.006
+ {
+  Turret Tripod_M122_MG_M60_60ED35EFF1341A28 {
+   ID "59B6900AB04C3A46"
+  }
+ }
+}
+$grp StaticModelEntity : "{5B5D8AEA342E1AAB}Prefabs/Compositions/Misc/CustomEntities/DestructionEntities/Sandbag_01_bunker_burlap_camonet_CompositionDestruction.et" {
+ {
+  coords 3425.211 205.182 12674.748
+  angleY 179.286
+ }
+ {
+  coords 2726.981 225.639 12179.107
+  angleY -41.099
+ }
+ {
+  coords 3644.317 190.352 13038.315
+  angleY 90.869
+ }
+ {
+  coords 3443.325 197.287 13160.505
+  angleY 16.963
+ }
+ {
+  coords 2860.428 224.916 12213.615
+  angleY 101.299
+ }
+}
+StaticModelEntity : "{5FB3A1755261CA59}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Bunker_Camouflaged_US_01.et" {
+ coords 3470.303 198.1 12864.619
+ angleY 77.836
+}
+GenericEntity : "{8FC3F39E83DD6BD6}Prefabs/Compositions/Misc/SubCompositions/Storage/Slotted/Storage_Arsenal_USSR_01.et" {
+ components {
+  SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+   m_aContainers {
+    SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+     m_fResourceValueMax 1100
+     m_bEnableResourceGain 1
+     m_fResourceGain 100
+     m_fResourceGainTickrate 1
+    }
+   }
+  }
+ }
+ coords 4096.861 370.437 11641.079
+ angleY 85.786
+}

@@ -1,0 +1,43 @@
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 3248.148 200.169 13044.052
+  angleY 0
+  m_MarkerColor 0.726 0.012 0.012 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 80
+  m_sDescription "Enemy HQ"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2727.317 229.103 12120.414
+  angleY 0
+  m_MarkerColor 0.726 0.012 0.012 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 80
+  m_sDescription "Fuel Dump"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1855.99 259.459 11491.776
+  angleX 2.673
+  angleY 0.167
+  angleZ 3.58
+  m_MarkerColor 0.726 0.012 0.012 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 80
+  m_sDescription "Establish Roadblock"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
