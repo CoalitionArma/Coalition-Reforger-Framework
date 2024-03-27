@@ -71,6 +71,8 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
  PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/Core/DefaultPlayerControllerMP_Coop.et"
  m_bAutoPlayerRespawn 0
  m_bAllowFactionChange 0
+ m_bAdminMode 1
+ m_bTeamSwitch 1
  m_iFreezeTime 0
  m_bDisableChat 1
  {

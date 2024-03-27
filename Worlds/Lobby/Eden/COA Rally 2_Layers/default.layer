@@ -3,6 +3,8 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 PS_GameModeCoop Lobby_Spcl_Mode1 : "{65B1AAF0045513DF}Prefabs/MP/Modes/Spcl/Lobby_Spcl_Mode.et" {
  coords 4791.579 25.125 12002.499
+ m_bAdminMode 1
+ m_bTeamSwitch 1
  {
   SCR_FactionManager "60EA29A5B282B625" {
    ID "60EA29A41A2FF552"
