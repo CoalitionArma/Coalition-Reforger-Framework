@@ -79,34 +79,34 @@ StringTable {
   }
   CustomStringTableItem "{60F896A0F0D0AD67}" {
    Id "#Coal_SS_Faction_Unreadied"
-   Target_en_us "[CRF] : Faction UNREADY - %1"
+   Target_en_us "[CRF] : Faction NOT READY - %1"
    Target_de_de "[CRF] : Fraktion nicht bereit - %1"
    Comment "Generic version of unreadied string in case a certain side/faction is not represented in the other strings"
-   Modified 1626928650
+   Modified 1626928837
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0C8E44A59}" {
    Id "#Coal_SS_Faction_Unreadied_Blufor"
-   Target_en_us "[CRF] : BLUFOR UNREADY - %1"
+   Target_en_us "[CRF] : BLUFOR NOT READY - %1"
    Target_de_de "[CRF] : BLUFOR nicht breit - %1"
-   Modified 1626928513
+   Modified 1626928827
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0CF9391A8}" {
    Id "#Coal_SS_Faction_Unreadied_Indfor"
-   Target_en_us "[CRF] : INDFOR UNREADY - %1"
+   Target_en_us "[CRF] : INDFOR NOT READY - %1"
    Target_de_de "[CRF] : INDFOR nicht breit - %1"
-   Modified 1626928524
+   Modified 1626928822
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0CE385C91}" {
    Id "#Coal_SS_Faction_Unreadied_Opfor"
-   Target_en_us "[CRF] : OPFOR UNREADY - %1"
+   Target_en_us "[CRF] : OPFOR NOT READY - %1"
    Target_de_de "[CRF] : OPFOR nicht breit - %1"
-   Modified 1626928520
+   Modified 1626928817
    Author "pi123"
    LastChanged "pi123"
   }
