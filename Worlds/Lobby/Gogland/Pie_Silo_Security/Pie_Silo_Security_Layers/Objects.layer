@@ -1,0 +1,10 @@
+$grp GenericEntity : "{DC4B11930753ABC2}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_base.et" {
+ {
+  coords 6866.385 138.547 2473.651
+  angleY 24.514
+ }
+ {
+  coords 6866.496 138.547 2468.877
+  angleY 137.367
+ }
+}
