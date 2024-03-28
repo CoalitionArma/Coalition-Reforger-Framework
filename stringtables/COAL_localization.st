@@ -38,34 +38,34 @@ StringTable {
   }
   CustomStringTableItem "{60F896A0F2448B7A}" {
    Id "#Coal_SS_Faction_Readied"
-   Target_en_us "[CRF] : %1 Has Readied Up a faction"
-   Target_de_de "[CRF] : %1 hat eine Fraktion für bereit erklärt"
+   Target_en_us "[CRF] : Faction Ready - %1"
+   Target_de_de "[CRF] : Fraktion bereit - %1"
    Comment "Generic version of ready string in case a certain side/faction is not represented in the other strings"
-   Modified 1626905909
+   Modified 1626928635
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0C5CAEB3E}" {
    Id "#Coal_SS_Faction_Readied_Blufor"
-   Target_en_us "[CRF] : %1 Has Readied Up Blufor"
-   Target_de_de "[CRF] : %1 hat Blufor für bereit erklärt"
-   Modified 1626905777
+   Target_en_us "[CRF] : BLUFOR READY - %1"
+   Target_de_de "[CRF] : BLUFOR bereit - %1"
+   Modified 1626928666
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0D88FF976}" {
    Id "#Coal_SS_Faction_Readied_Indfor"
-   Target_en_us "[CRF] : %1 Has Readied Up Indfor"
-   Target_de_de "[CRF] : %1 hat Indfor für bereit erklärt"
-   Modified 1626905782
+   Target_en_us "[CRF] : INDFOR READY - %1"
+   Target_de_de "[CRF] : INDFOR bereit - %1"
+   Modified 1626928661
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0DB27AEB5}" {
    Id "#Coal_SS_Faction_Readied_Opfor"
-   Target_en_us "[CRF] : %1 Has Readied Up Opfor"
-   Target_de_de "[CRF] : %1 hat Opfor für bereit erklärt"
-   Modified 1626905795
+   Target_en_us "[CRF] : OPFOR READY - %1"
+   Target_de_de "[CRF] : OPFOR bereit - %1"
+   Modified 1626928655
    Author "pi123"
    LastChanged "pi123"
   }
@@ -79,34 +79,34 @@ StringTable {
   }
   CustomStringTableItem "{60F896A0F0D0AD67}" {
    Id "#Coal_SS_Faction_Unreadied"
-   Target_en_us "[CRF] : %1 Has Unreadied a faction"
-   Target_de_de "[CRF] : %1 hat eine Fraktion für nicht bereit erklärt"
+   Target_en_us "[CRF] : Faction UNREADY - %1"
+   Target_de_de "[CRF] : Fraktion nicht bereit - %1"
    Comment "Generic version of unreadied string in case a certain side/faction is not represented in the other strings"
-   Modified 1626905895
+   Modified 1626928650
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0C8E44A59}" {
    Id "#Coal_SS_Faction_Unreadied_Blufor"
-   Target_en_us "[CRF] : %1 Has Unreadied Blufor"
-   Target_de_de "[CRF] : %1 hat Blufor für nicht bereit erklärt"
-   Modified 1626905824
+   Target_en_us "[CRF] : BLUFOR UNREADY - %1"
+   Target_de_de "[CRF] : BLUFOR nicht breit - %1"
+   Modified 1626928513
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0CF9391A8}" {
    Id "#Coal_SS_Faction_Unreadied_Indfor"
-   Target_en_us "[CRF] : %1 Has Unreadied Indfor"
-   Target_de_de "[CRF] : %1 hat Indfor für nicht bereit erklärt"
-   Modified 1626905831
+   Target_en_us "[CRF] : INDFOR UNREADY - %1"
+   Target_de_de "[CRF] : INDFOR nicht breit - %1"
+   Modified 1626928524
    Author "pi123"
    LastChanged "pi123"
   }
   CustomStringTableItem "{60F896A0CE385C91}" {
    Id "#Coal_SS_Faction_Unreadied_Opfor"
-   Target_en_us "[CRF] : %1 Has Unreadied Opfor"
-   Target_de_de "[CRF] : %1 hat Opfor für nicht bereit erklärt"
-   Modified 1626905846
+   Target_en_us "[CRF] : OPFOR UNREADY - %1"
+   Target_de_de "[CRF] : OPFOR nicht breit - %1"
+   Modified 1626928520
    Author "pi123"
    LastChanged "pi123"
   }
