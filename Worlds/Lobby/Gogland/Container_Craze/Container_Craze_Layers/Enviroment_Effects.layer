@@ -1,0 +1,196 @@
+$grp GenericEntity : "{342AA153837E89E5}Prefabs/Weapons/Warheads/Fires/Fire_Generic_Large.et" {
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7354.971 38.078 5534.74
+  scale 2
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7338.265 39.368 5537.467
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7345.178 38.588 5531.239
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7413.997 10.827 5389.314
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7371.087 38.735 5539.877
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7328.626 8.485 5349.988
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7211.714 10.499 5238.594
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7353.343 8.289 5499.84
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7373.597 8.289 5500.248
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7354.718 8.289 5496.958
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7305.666 5.561 5293.102
+  scale 2
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7278.71 5.56 5294.074
+  scale 2
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7296.717 5.56 5297.621
+  scale 2
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7275.206 1.862 5237.086
+  scale 2
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7276.047 1.916 5242.583
+  scale 2
+ }
+}
+$grp GameEntity : "{6597847D2AC253F5}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01.et" {
+ {
+  coords 7371.525 8.289 5475.179
+ }
+ {
+  coords 7367.864 8.289 5482.884
+ }
+}
