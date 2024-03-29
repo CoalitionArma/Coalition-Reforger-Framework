@@ -1,0 +1,45 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60F77D4571DC39E8}" {
+    }
+   }
+  }
+ }
+ coords 1467.2 38 2903.435
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 18
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+  }
+ }
+ coords 1811.444 39.255 2849.722
+ m_bTeamSwitch 0
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{60F9773C1648B8F5}" {
+   m_sFactionKey "RHS_RF_MSV"
+   m_iCount 5
+  }
+ }
+}
+TimeAndWeatherManagerEntity TimeAndWeatherManager_60FA1448F29F7B33 : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
+ coords 1352.09 38 2926.116
+ Enabled 1
+ WeatherStateMachine "{74CE6917EBE78518}Terrains/Common/WeatherPresets/StateMachine/WeatherStatesOPDrew.conf"
+ "Automatic Time Advancement" 0
+ "Initial Day Time" 18.086
+ "Day of the Month" 23
+ "Internal variant transition" 0
+ "Internal subvariant 0" 0
+ "Internal subvariant 1" 0
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 1493.985 38 2903.781
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1495.003 38 2901.38
+}

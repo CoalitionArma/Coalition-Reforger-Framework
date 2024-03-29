@@ -1,0 +1,18 @@
+SCR_ChimeraCharacter : "{714F66A4D204D971}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_SL_Modern.et" {
+ ID "520EC961A090B1EE"
+ components {
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{9B31686D98426031}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_SU230_PEQ_BLOCK_II_NT4.et"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{60F93EDE1C153680}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/FILBE_hydration_pack.et"
+     PrefabsToSpawn {
+      "{B7BA7694F821F556}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual.et"
+     }
+    }
+   }
+  }
+ }
+}

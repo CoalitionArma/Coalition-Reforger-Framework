@@ -1,0 +1,140 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1028.208 38.104 2936.474
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 100
+  m_sDescription "Possible Intel Location"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 1361.009 42.809 2965.762
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 100
+  m_sDescription "Possible Intel Location"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 1391.61 47.059 2365.033
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 100
+  m_sDescription "Possible Intel Location"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2508.517 149.336 2268.387
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 100
+  m_sDescription "Communication Tower"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 3189.351 13.509 2832.181
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 100
+  m_sDescription "Base Commander Villia"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1118.037 1.156 3371.298
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 100
+  m_sDescription "Destory Fuel Dump"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1684.06 42.507 3019.274
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 100
+  m_sDescription "Base Power Plant"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 3114.787 5.361 3003.464
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 100
+  m_sDescription "Base Aux Power"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1578.118 1.142 3502.164
+  angleY 0
+  m_MarkerColor 0.017 0.114 0.523 1
+  m_sQuadName "pick-up-2"
+  m_fWorldSize 100
+  m_sDescription "Extraction Point"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 1361.688 39 2273.061
+  angleY 0
+  m_MarkerColor 1 0 0 1
+  m_fWorldSize 100
+  m_sDescription "Ammo Dump"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1272.746 37.485 2937.677
+ angleY 0
+ m_fWorldSize 100
+ m_bUseWorldScale 0
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2092.155 85.24 2256.434
+ angleY 0
+ m_fWorldSize 100
+ m_bUseWorldScale 0
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+}

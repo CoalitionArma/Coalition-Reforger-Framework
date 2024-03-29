@@ -1,0 +1,52 @@
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  coords 1265.824 37.467 2939.685
+  angleY 82.631
+ }
+ UAZ3 {
+  coords 1265.659 37.481 2935.203
+  angleY 82.631
+ }
+ UAZ2 {
+  coords 1276.344 37.501 2956.896
+  angleY 2.505
+ }
+}
+Vehicle Ural4320_Arsenal1 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
+ coords 1265.251 37.416 2945.424
+ angleY 86.703
+}
+Vehicle Mi8MTC_A1 : "{35D4CCC400E04FC0}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MTC-A.et" {
+ coords 1319.714 38.166 2867.985
+}
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+ coords 1275.486 38 2922.402
+ m_aUnitPrefabSlots {
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
+ }
+ m_sCustomNameSet "HQ"
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 1282.372 37.648 2946.18
+}
+GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
+ coords 1320.999 37.829 2867.471
+ angleY -11.342
+}
+$grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+ {
+  coords 1279.069 41.667 2942.699
+  m_sCustomNameSet "1st Section"
+ }
+ {
+  coords 1277.637 37.691 2929.946
+  m_sCustomNameSet "2st Section"
+ }
+}
+SCR_AIGroup : "{CBE7734F6544BD63}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_3rdSection.et" {
+ coords 1301.93 37.202 2867.352
+ m_aUnitPrefabSlots {
+  "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et" "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
+ }
+ m_sCustomNameSet "Helicopter Crew"
+}

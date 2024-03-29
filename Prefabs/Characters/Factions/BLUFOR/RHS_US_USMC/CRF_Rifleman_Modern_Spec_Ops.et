@@ -1,0 +1,22 @@
+SCR_ChimeraCharacter : "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern.et" {
+ ID "520EC961A090B1EE"
+ components {
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{63C32F46014F708C}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_1_NT4_ACOG.et"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5CC8B5EF85FB5080}" {
+     PrefabsToSpawn + {
+      "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et"
+     }
+    }
+    ItemsInitConfigurationItem "{604B029AF448AF89}" {
+     PrefabsToSpawn + {
+      "{B7BA7694F821F556}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual.et"
+     }
+    }
+   }
+  }
+ }
+}

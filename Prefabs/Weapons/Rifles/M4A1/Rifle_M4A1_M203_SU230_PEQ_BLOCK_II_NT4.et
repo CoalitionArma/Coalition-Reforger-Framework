@@ -1,0 +1,43 @@
+GenericEntity : "{00D6DCF68C664480}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_BLOCK_II.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{0B7CADA8F1774FA0}Sounds/Weapons/Rifles/M4A1/Suppressed/RHS_Weapons_Rifles_M4A1_Shot_Suppressed.acp" "{9FE8ECD9A435366A}Sounds/Weapons/Rifles/M27IAR/RHS_Weapons_Rifles_M27IAR_Handling.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{07E8D425196745F4}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_Plastic.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5E0EEDA5B623AB37}" {
+     AttachmentSlot InventoryStorageSlot Handguard_lower {
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDB0BD59EE7D}" {
+     AttachmentSlot InventoryStorageSlot Optics {
+      Prefab "{7DB681643152613C}Prefabs/Weapons/Attachments/Optics/su230/Optic_SU230_MRDS.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE9573F14F0C}" {
+      Prefab "{5AE8F3A22BDB534F}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_black.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE953838E77C}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE95244FA719}" {
+      PivotID "barrel_chamber"
+      Offset 0 0 0
+      Angles 0 0 0
+      Prefab "{852FB88E8AD446C8}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight.et"
+     }
+     ShowInInspection 0
+    }
+    AttachmentSlotComponent "{60988582B19CD9BD}" {
+     AttachmentSlot InventoryStorageSlot FLASHHIDER {
+      Prefab "{B9C41AAC90570E50}Prefabs/Weapons/Attachments/Muzzle/KAC_NT4_QDSS/KAC_NT4_QDSS.et"
+     }
+    }
+   }
+  }
+ }
+ coords 36.718 1.358 128.357
+}
