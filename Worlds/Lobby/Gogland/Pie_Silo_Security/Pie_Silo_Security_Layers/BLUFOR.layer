@@ -1,0 +1,27 @@
+SCR_AIGroup : "{65F428A42E8AD574}Prefabs/Groups/BLUFOR/1980s/Group_US80s_PLT_p.et" {
+ coords 6833.108 138.547 2439.389
+ angleY 161.241
+ m_bSnapToTerrain 0
+}
+SCR_AIGroup : "{7A1B1873E6B4A74A}Prefabs/Groups/BLUFOR/1980s/Group_US80s_ArmorCrew_p.et" {
+ coords 6837.67 138.273 2455.571
+ angleY -158.05
+ m_aUnitPrefabSlots {
+  "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et"
+ }
+ m_bSnapToTerrain 0
+ m_sCustomNameSet "MG Element"
+}
+$grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Group_US80s_RifleSquad_p.et" {
+ {
+  coords 6832.693 138.547 2444.983
+  angleY -162.109
+  m_bSnapToTerrain 0
+ }
+ {
+  coords 6834.676 138.38 2449.821
+  angleY -162.109
+  m_bSnapToTerrain 0
+  m_sCustomNameSet "2nd Squad"
+ }
+}

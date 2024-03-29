@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E0B897BBD379DB14}Worlds/Lobby/Gogland/Pie_Silo_Security/Pie_Silo_Security.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}
