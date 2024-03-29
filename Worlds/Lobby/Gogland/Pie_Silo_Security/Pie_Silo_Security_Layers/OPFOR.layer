@@ -1,14 +1,22 @@
 SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Group_USSR_Platoon_p.et" {
  coords 7292.602 49.067 3009.469
  angleY 176.373
+ m_sCustomNameSet "Plt"
 }
 $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
  {
   coords 7291.891 49.335 3020.738
   angleY 176.373
+  m_sCustomNameSet "1-1"
  }
  {
   coords 7290.929 49.276 3028.342
   angleY 176.373
+  m_sCustomNameSet "1-2"
+ }
+ {
+  coords 7290.253 49.121 3036.23
+  angleY 176.373
+  m_sCustomNameSet "1-3"
  }
 }
