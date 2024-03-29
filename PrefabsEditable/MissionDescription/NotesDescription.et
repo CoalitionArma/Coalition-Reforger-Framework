@@ -33,11 +33,9 @@ PS_MissionDescription {
    Streamable Disabled
   }
  }
- m_sTitle "Important Notes"
+ m_sTitle "#Coal_Missions_Lobby_Important_Notes_Title"
  m_sDescriptionLayout "{41DAF7B7061DC0BC}UI/MissionDescription/DescriptionEditable.layout"
- m_sTextData "'U' key opens up the lobby menu, however, this may be disabled by default and only accessible by admins."\
- ""\
- "Spectator is enabled. Upon dying, you will instantly go into spectator. Use the right side of the screen to switch your voice channel."
+ m_sTextData "#Coal_Missions_Lobby_WinConditions_Title"
  m_bEmptyFactionVisibility 1
  m_bShowForAnyFaction 1
  m_iOrder 1

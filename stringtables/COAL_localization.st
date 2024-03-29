@@ -12,6 +12,62 @@ StringTable {
    Author "pi123"
    LastChanged "pi123"
   }
+  CustomStringTableItem "{60FB7C0B6F7094F2}" {
+   Id "#Coal_Missions_Lobby_Assets_Title"
+   Modified 1627094261
+   Author "pi123"
+   LastChanged "pi123"
+  }
+  CustomStringTableItem "{60FB7C0B6A1323E4}" {
+   Id "#Coal_Missions_Lobby_Important_Notes_Text"
+   Target_en_us "'U' key opens up the lobby menu, however, this may be disabled by default and only accessible by admins."\
+   ""\
+   "Spectator is enabled. Upon dying, you will instantly go into spectator. Use the right side of the screen to switch your voice channel."
+   Modified 1627094305
+   Author "pi123"
+   LastChanged "pi123"
+  }
+  CustomStringTableItem "{60FB7C0B94B547A6}" {
+   Id "#Coal_Missions_Lobby_Important_Notes_Title"
+   Target_en_us "Important Notes"
+   Target_de_de "Wichtige Informationen"
+   Modified 1627094366
+   Author "pi123"
+   LastChanged "pi123"
+  }
+  CustomStringTableItem "{60FB7C0B62FA62E8}" {
+   Id "#Coal_Missions_Lobby_Situation_Title"
+   Target_en_us "Situation"
+   Target_de_de "Situation"
+   Modified 1627094315
+   Author "pi123"
+   LastChanged "pi123"
+  }
+  CustomStringTableItem "{60FB7C0BA42EC425}" {
+   Id "#Coal_Missions_Lobby_Welcome_Text"
+   Target_en_us "This is a Reforger lobby mission on the COALITION Reforger Framework (CRF). "\
+   ""\
+   "If you just joined, the mission will start momentarily. If you joined after the mission started, you can go to the Lobby page at the top of your screen and select a role."\
+   ""\
+   "If you have any questions, message an admin in the in-game chat. "
+   Modified 1627094210
+   Author "pi123"
+   LastChanged "pi123"
+  }
+  CustomStringTableItem "{60FB7C0BA681C146}" {
+   Id "#Coal_Missions_Lobby_Welcome_Title"
+   Target_en_us "Welcome!"
+   Target_de_de "Willkommen!"
+   Modified 1627094191
+   Author "pi123"
+   LastChanged "pi123"
+  }
+  CustomStringTableItem "{60FB7C0B6750685F}" {
+   Id "#Coal_Missions_Lobby_WinConditions_Title"
+   Modified 1627094279
+   Author "pi123"
+   LastChanged "pi123"
+  }
   CustomStringTableItem "{60F896A0B88B7B4C}" {
    Id "#Coal_SS_Countdown_Cancelled"
    Target_en_us "[CRF] : Game Live Countdown Canceled!"
