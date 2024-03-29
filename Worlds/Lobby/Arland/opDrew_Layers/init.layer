@@ -37,8 +37,72 @@ TimeAndWeatherManagerEntity TimeAndWeatherManager_60FA1448F29F7B33 : "{A3BAF78F6
  "Internal subvariant 0" 0
  "Internal subvariant 1" 0
 }
-PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
- coords 1493.985 38 2903.781
+$grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ {
+  coords 1493.985 38 2903.781
+  m_aVisibleForFactions {
+   ""
+  }
+ }
+ {
+  coords 1279.376 37.47 2938.546
+  m_sTitle "Objective"
+  m_sTextData "Your mission is to operate as a stealthy saboteur group, tasked with completing critical objectives deep within enemy territory while minimizing direct confrontations with Opfor forces. Equipped with night vision and thermal imaging technology, you have a significant advantage in the low visibility environment."\
+  ""\
+  "Your primary objectivesis to destroying vital targets such as the:"\
+  "- Communication Tower"\
+  "- Base Power"\
+  "- Base Commander"\
+  "- Ammo Dump"\
+  "- Fuel Dump "\
+  ""\
+  "Additionally, secure one or more Intel Folders containing valuable information."\
+  ""\
+  "Blufor's victory conditions are met by accomplishing at least three main objectives, acquiring one Intel Folder, and successfully reaching the extraction point. Remember, avoid engaging Opfor unless absolutely necessary."\
+  ""\
+  "Exercise stealth, communication, and decisive action to achieve success in this high-stakes mission. Good luck, Blufor!"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 1276.402 37.549 2934.872
+  m_sTitle "Objective"
+  m_sTextData "Blufor saboteurs attempting to infiltrate and disrupt our operations under cover of darkness. While Blufor has advanced gear to assist them in low light conditions"\
+  ""\
+  "Your mission is to defend key targets such as the Communication Tower, Base Power, Aux Base Power, Base Commander, Ammo Dump, and Fuel Dump against Blufor's sabotage attempts. Utilize patrols, strategic positioning, and the available helicopter for Quick Reaction Force (QRF) deployments to counter any incursions. Good luck, Opfor!"\
+  ""\
+  ""
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 1276.086 37.552 2934.69
+  m_sTitle "Important Rules/Notes"
+  m_sTextData "To destroy objectives, utilize M67 grenades or GP explosives. You should get a pop up saying the objective is destoryed."\
+  ""\
+  "You can adjust you night vision and thermal brightness by holding shift and scrolling up and down."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 1276.253 37.556 2934.431
+  m_sTitle "Important Rules/Notes"
+  m_sTextData "You are not allowed to pickup NVG and radio, and if respawns are enabled, adhere to the \"New Life Rule\" to ensure fair play."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+ }
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 1495.003 38 2901.38
