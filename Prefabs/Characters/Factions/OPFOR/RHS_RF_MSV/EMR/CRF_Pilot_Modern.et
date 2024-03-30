@@ -63,9 +63,10 @@ SCR_ChimeraCharacter : "{3ECA3A935BC069B9}Prefabs/Characters/Factions/OPFOR/USSR
     }
     ItemsInitConfigurationItem "{5D7CC173E6675BF5}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_Ratnik3K_6B48/Vest_Ratnik_6B48.et"
+     TargetPurpose 1
     }
     ItemsInitConfigurationItem "{605A2252E1464C4A}" {
-     TargetStorage "Prefabs/Characters/Uniforms/VKPO/Undershirt_Demiseason_VKPO.et"
+     TargetStorage "Prefabs/Characters/Vests/Vest_Ratnik3K_6B48/Vest_Ratnik_6B48.et"
      PrefabsToSpawn {
       "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et" "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et" "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et" "{0A84AA5A3884176F}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Last_5Tracer.et"
      }

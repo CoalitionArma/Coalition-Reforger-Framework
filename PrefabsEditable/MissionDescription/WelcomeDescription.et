@@ -33,13 +33,9 @@ PS_MissionDescription {
    Streamable Disabled
   }
  }
- m_sTitle "Welcome!"
+ m_sTitle "#Coal_Missions_Lobby_Welcome_Title"
  m_sDescriptionLayout "{41DAF7B7061DC0BC}UI/MissionDescription/DescriptionEditable.layout"
- m_sTextData "This is a Reforger lobby mission on the COALITION Reforger Framework (CRF). "\
- ""\
- "If you just joined, the mission will start momentarily. If you joined after the mission started, you can go to the Lobby page at the top of your screen and select a role."\
- ""\
- "If you have any questions, message an admin in the in-game chat. "
+ m_sTextData "#Coal_Missions_Lobby_Welcome_Text"
  m_bEmptyFactionVisibility 1
  m_bShowForAnyFaction 1
 }
