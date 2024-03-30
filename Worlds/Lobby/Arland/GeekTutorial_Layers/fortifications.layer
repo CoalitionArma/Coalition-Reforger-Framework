@@ -1,0 +1,326 @@
+$grp GenericEntity : "{A3A7C365E845B1B6}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_high_burlap.et" {
+ {
+  coords 1299.036 37.792 2849.353
+  angleY 29
+ }
+ {
+  coords 1306.501 37.866 2845.104
+  angleY 29
+ }
+ {
+  coords 1387.947 38.584 2841.307
+  angleY -16
+ }
+ {
+  coords 1379.663 38.571 2839.033
+  angleY -16
+ }
+ {
+  coords 1418.44 38.024 2864.49
+  angleY -54
+ }
+ {
+  coords 1413.312 38.175 2857.599
+  angleY -54
+ }
+ {
+  coords 1334.891 39 2770.749
+  angleY 167
+ }
+ {
+  coords 1343.283 39 2772.585
+  angleY 167
+ }
+ {
+  coords 1240.597 39 2751.901
+  angleY -155
+ }
+ {
+  coords 1248.341 39 2748.182
+  angleY -155
+ }
+ {
+  coords 1421.455 39 2784.809
+  angleY 143
+ }
+ {
+  coords 1428.374 39 2789.9
+  angleY 143
+ }
+ {
+  coords 1509.227 39 2818.802
+  angleY 126
+ }
+ {
+  coords 1514.356 39 2825.694
+  angleY 126
+ }
+ {
+  coords 1343.356 38.169 2839.067
+  angleY 7
+ }
+ {
+  coords 1334.843 38.041 2840.21
+  angleY 7
+ }
+ {
+  coords 1419.366 38 2900.354
+  angleY -102
+ }
+ {
+  coords 1421.055 38 2891.932
+  angleY -102
+ }
+ {
+  coords 1404.074 38 2924.905
+  angleY -154
+ }
+ {
+  coords 1396.396 38.083 2928.757
+  angleY -154
+ }
+ {
+  coords 1291.68 38 2902.02
+  angleY 114
+ }
+ {
+  coords 1288.099 38 2894.212
+  angleY 114
+ }
+}
+$grp GenericEntity : "{AE73676ABA995907}Prefabs/Structures/BuildingParts/Entry/Entry_Block_Platform_01_3x12.et" {
+ {
+  coords 1275.086 41.538 2806.159
+  angleY -16
+ }
+ {
+  coords 1273.25 41.622 2812.073
+  angleY -16
+ }
+ {
+  coords 1276.125 41.587 2800.384
+  angleY -16
+ }
+ {
+  coords 1274.065 41.527 2809.133
+  angleY -16
+ }
+ {
+  coords 1275.712 41.725 2803.145
+  angleY -16
+ }
+ {
+  coords 1303.073 38.248 2918.661
+  angleY -15
+ }
+ {
+  coords 1301.341 38.191 2924.605
+  angleY -15
+ }
+ {
+  coords 1302.104 38.248 2921.653
+  angleY -15
+ }
+ {
+  coords 1303.646 38.247 2915.636
+  angleY -15
+ }
+ {
+  coords 1304.36 38.192 2912.598
+  angleY -15
+ }
+ {
+  coords 1305.044 38.236 2909.605
+  angleY -15
+ }
+ {
+  coords 1296.602 38.311 2911.81
+  angleY 76
+ }
+ {
+  coords 1294.951 38.314 2919.446
+  angleY -104
+ }
+ {
+  coords 1258.296 43.35 2930.415
+  angleY -100
+ }
+ {
+  coords 1255.94 43.286 2942.709
+  angleY -100
+ }
+ {
+  coords 1241.215 40.425 2941.416
+  angleY -102
+ }
+ {
+  coords 1243.12 40.359 2929.09
+  angleY -102
+ }
+ {
+  coords 1326.026 41.389 2971.906
+  angleY 166
+ }
+ {
+  coords 1333.757 41.175 2968.106
+  angleY -105
+ }
+ {
+  coords 1337.586 40.773 2953.571
+  angleY -105
+ }
+ {
+  coords 1334.679 40.84 2946.46
+  angleY -15
+ }
+ {
+  coords 1326.494 41.033 2949.146
+  angleY -105
+ }
+ {
+  coords 1323.419 41.025 2960.519
+  angleY -105
+ }
+ {
+  coords 1321.973 40.581 2966.045
+  angleY -105
+ }
+ {
+  coords 1261.118 39.596 2965.278
+  angleY -100
+ }
+}
+$grp GenericEntity : "{D2299274C13B1169}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_wall_solid_burlap.et" {
+ {
+  coords 1301.622 37.814 2847.897
+  angleY 28.727
+ }
+ {
+  coords 1303.932 37.836 2846.547
+  angleY 28.727
+ }
+ {
+  coords 1382.522 38.576 2839.831
+  angleY -16.273
+ }
+ {
+  coords 1385.11 38.587 2840.51
+  angleY -16.273
+ }
+ {
+  coords 1415.073 38.11 2859.988
+  angleY -54.273
+ }
+ {
+  coords 1416.694 38.058 2862.118
+  angleY -54.273
+ }
+ {
+  coords 1340.386 39 2771.938
+  angleY 166.727
+ }
+ {
+  coords 1337.766 39 2771.395
+  angleY 166.727
+ }
+ {
+  coords 1245.66 39 2749.455
+  angleY -155.273
+ }
+ {
+  coords 1243.26 39 2750.641
+  angleY -155.273
+ }
+ {
+  coords 1425.991 39 2788.131
+  angleY 142.727
+ }
+ {
+  coords 1423.818 39 2786.568
+  angleY 142.727
+ }
+ {
+  coords 1512.594 39 2823.304
+  angleY 125.727
+ }
+ {
+  coords 1510.973 39 2821.175
+  angleY 125.727
+ }
+ {
+  coords 1337.786 38.096 2839.828
+  angleY 6.727
+ }
+ {
+  coords 1340.433 38.118 2839.442
+  angleY 6.727
+ }
+ {
+  coords 1371.269 38.013 2964.485
+  angleY 69.727
+ }
+ {
+  coords 1371.324 40.139 2964.517
+  angleY 72.727
+ }
+ {
+  coords 1361.802 46.927 2967.281
+  angleY -15.039
+ }
+ {
+  coords 1371.294 44.481 2964.579
+  angleY 72.727
+ }
+ {
+  coords 1371.239 42.355 2964.548
+  angleY 69.727
+ }
+ {
+  coords 1338.171 53.115 2912.496
+  angleY -17.273
+ }
+ {
+  coords 1338.492 38.035 2912.455
+  angleY -17.273
+ }
+ {
+  coords 1419.961 38 2897.469
+  angleY -102.273
+ }
+ {
+  coords 1420.458 38 2894.84
+  angleY -102.273
+ }
+ {
+  coords 1399.037 38 2927.451
+  angleY -154.273
+ }
+ {
+  coords 1401.415 38 2926.225
+  angleY -154.273
+ }
+ {
+  coords 1289.311 38 2896.899
+  angleY 113.727
+ }
+ {
+  coords 1290.455 38 2899.318
+  angleY 113.727
+ }
+ {
+  coords 1364.238 46.903 2968.02
+  angleY -15.039
+ }
+ {
+  coords 1364.165 44.329 2968.125
+  angleY -15.039
+ }
+ {
+  coords 1365.943 44.899 2967.121
+  angleY -15.039
+ }
+ {
+  coords 1371.255 46.625 2964.524
+  angleY 72.727
+ }
+}

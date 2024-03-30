@@ -1,0 +1,104 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    GenerateCoverPoints 1
+   }
+  }
+ }
+ coords 1131.539 38.243 2429.165
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ coords 1152.462 36.573 2456.921
+ {
+  SCR_FactionManager "60FC028CDBB97A2B" {
+   ID "60E1584A0994EEB9"
+   coords -15.353 -4.705 -18.777
+  }
+  PerceptionManager "60FC028CDBB97A4A" {
+   ID "60E1584ADF58C5A4"
+   coords 0 0 0
+  }
+  SCR_BaseTaskManager {
+   ID "60E1584B0B298FDB"
+   coords 0 0 0
+   {
+    SCR_BaseTaskSupportEntity {
+     ID "5A0AA0B0D37D2B35"
+     coords 0 0 0
+    }
+    SCR_EditorTaskSupportEntity {
+     ID "5A0AA0B0D37D2BC3"
+     coords 0 0 0
+    }
+    SCR_TriggerTaskSupportEntity {
+     ID "5A0AA0B0D37D2BFF"
+     coords 0 0 0
+    }
+   }
+  }
+  HitRegistrationManager "60FC028CDBB97995" {
+   ID "60E1584B2411D72B"
+   coords 0 0 0
+  }
+ }
+}
+PS_MissionDescription : "{08236EA33069B312}PrefabsEditable/MissionDescription/OPFOR_Brief.et" {
+ coords 1281.43 38.983 2271.084
+ m_sTitle "OPFOR Brief"
+ m_sTextData "Attack the US Headquarters and eliminate all enemies. Their HQ is the ATC tower and they may be posted up inside or outside. We can use their exterior defences as cover but there is ample forest surrounding the North of their HQ and that may be a better direction to attack."
+ m_aVisibleForFactions {
+  "USSR"
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 3
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 1294.115 41.092 2272.325
+}
+PS_MissionDescription : "{214171F2E24F89AB}PrefabsEditable/MissionDescription/BLUFOR_Brief.et" {
+ coords 1283.786 39.652 2275.492
+ m_sTitle "BLUFOR Brief"
+ m_sTextData "The USSR have discovered our Headquarters and sent a force to wipe us out, reinforce the HQ, the ATC Tower, at all costs as their only objecive is to wipe us out, we have reinforced the ladder and roof access but we were unable to get any extra defences up aside from our exterior defences."
+ m_aVisibleForFactions {
+  "US"
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 3
+}
+PS_MissionDescription : "{4A1DC00570B90DDD}PrefabsEditable/MissionDescription/SITREP.et" {
+ coords 1291.792 41.34 2272.985
+ m_sTitle "Sitrep"
+ m_sTextData "USSR Assault Force attacks a US Army Headquarters in an Air Traffic Control Tower."
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1286.104 40.594 2284.631
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1350.543 37.823 2969.864
+  m_sTitle "Survive USSR Attack"
+  m_sTextData "The USSR have discovered our Headquarters and sent a force to wipe us out, reinforce the HQ, the ATC Tower, at all costs as their only objecive is to wipe us out, we have reinforced the ladder and roof access but we were unable to get any extra defences up aside from our exterior defences."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+  m_sFactionKey "US"
+ }
+ {
+  coords 1344.388 37.816 2967.767
+  m_sTitle "Attack US HQ"
+  m_sTextData "Attack the US Headquarters and eliminate all enemies. Their HQ is the ATC tower and they may be posted up inside or outside. We can use their exterior defences as cover but there is ample forest surrounding the North of their HQ and that may be a better direction to attack."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 4
+  m_sFactionKey "USSR"
+ }
+}
+SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
+ coords 1321.868 39 2230.804
+}

@@ -1,0 +1,13 @@
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 1346.328 37.892 2962.941
+ angleY 90
+ m_sQuadName "point-of-interest"
+ m_fWorldSize 40
+ m_sDescription "OBJ - BLUFOR Defence"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1341.536 39 2238.748
+ angleY 90
+}
