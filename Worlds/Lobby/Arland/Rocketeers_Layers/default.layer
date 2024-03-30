@@ -1,27 +1,11 @@
-SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
- components {
-  NavmeshWorldComponent "{5584F30E67F617AD}" {
-   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{60E15DDAC5F014D5}" {
-     NavmeshFile "{C6F0E17D7BEA1501}Navmesh/WorthyIslands_Navmesh.nmn"
-    }
-   }
-  }
-  NavmeshWorldComponent "{5C8C9B750D124A63}" {
-   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
-    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
-     NavmeshFile "{E42B1721F86EB18D}Navmesh/WorthyIslands_Navmesh_LOWRES.nmn"
-    }
-   }
-  }
- }
- coords 1408.164 15.917 1387.339
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 1174.767 39 2718.787
 }
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
-  SCR_CampaignBuildingManagerComponent "{60EE262DA53D4915}" {
+  SCR_CampaignBuildingManagerComponent "{60FCEBC9FA43B887}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
-   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{60EE262DA3B60BA8}" {
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{60FCEBC9C0213FF2}" {
     m_sSlotFlatSmallLayout "{7FD4E6A668B4537A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFLatSmall.et"
     m_sSlotFlatMediumLayout "{579FF731013436B5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFlatMedium.et"
     m_sSlotFlatLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
@@ -155,60 +139,15 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_
    }
    m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
   }
- }
- coords 2039.657 6.312 960.244
- m_bAdminMode 1
- m_bTeamSwitch 1
- {
-  SCR_FactionManager "60EE262FAB9FEE45" {
-   ID "60E1584A0994EEB9"
-   Factions {
-    SCR_Faction "{56DEAC40D2DBC8B1}" {
-     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
-      m_aSquadNames {
-       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
-        m_sCallsign "1PLT"
-       }
-       SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign "1-1"
-       }
-       SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "1-2"
-       }
-       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "1-3"
-       }
-       SCR_CallsignInfo "{60EE262C67BF1804}" {
-        m_sCallsign "IFV1"
-       }
-      }
-      m_sCallsignGroupFormat "%3"
-     }
-    }
-    SCR_Faction "{56DEAC40D3C2E623}" {
-     m_bIsPlayable 1
-     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
-      m_bIsAssignedRandomly 0
-      m_aSquadNames {
-       SCR_CallsignInfo "{55CCB79287E901BC}" {
-        m_sCallsign "BURAN10"
-       }
-       SCR_CallsignInfo "{55CCB79287936EBD}" {
-        m_sCallsign "BURAN11"
-       }
-       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
-        m_sCallsign "BURAN12"
-       }
-       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
-        m_sCallsign "BURAN13"
-       }
-      }
-      m_sCallsignGroupFormat "%3"
-     }
-    }
-   }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 4
   }
  }
+ coords 1731.78 39.01 2854.988
+ m_iFreezeTime 600
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 1175.323 39 2711.454
 }
 GenericEntity : "{228E21AB029B40DC}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/BuildingService_USSR_NoAffiliation.et" {
  components {
@@ -216,7 +155,7 @@ GenericEntity : "{228E21AB029B40DC}Prefabs/Compositions/Misc/CustomEntities/Inte
    m_sProviderDisplayName "Power Station"
    m_bRegisterAtBase 0
    m_aAvailableTraits {
-    28
+    28 108
    }
   }
   ActionsManagerComponent "{5CB66A0F7D87DD32}" {
@@ -227,83 +166,118 @@ GenericEntity : "{228E21AB029B40DC}Prefabs/Compositions/Misc/CustomEntities/Inte
    }
   }
  }
- coords 2053.758 6.156 962.38
- angleY 170
+ coords 1727.275 38.989 2854.527
+ angleY 68
 }
-$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+$grp GenericEntity : "{5B62CDB64C513F64}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_SupplyStack_01_V5_storage_USSR_covered.et" {
  {
-  coords 767.556 27.841 1382.248
-  m_sTitle "Important Notes"
-  m_sTextData "'U' key opens up the lobby menu, however, this may be disabled by default and only accessible by admins."\
-  ""\
-  "Spectator is enabled. Upon dying, you will instantly go into spectator. Use the right side of the screen to switch your voice channel."
-  m_bEmptyFactionVisibility 1
-  m_bShowForAnyFaction 1
-  m_iOrder 1
- }
- {
-  coords 772.477 27.814 1381.788
-  m_sTitle "Welcome! (read me)"
-  m_sTextData "This is a Reforger lobby mission on the COALITION Reforger Framework (CRF). "\
-  ""\
-  "If you just joined, the mission will start momentarily. If you joined after the mission started, you can go to the Lobby page at the top of your screen and select a role."\
-  ""\
-  "If you have any questions, message an admin in the in-game chat. "
-  m_bEmptyFactionVisibility 1
-  m_bShowForAnyFaction 1
- }
- {
-  coords 770.979 27.798 1382.237
-  m_sTitle "Situation"
-  m_sTextData "Soviet forces have invaded the worthy islands and secured key infrastructure. As such, NATO has deployed to the islands in order to help stabilize the region."
-  m_bEmptyFactionVisibility 1
-  m_bShowForAnyFaction 1
-  m_iOrder 2
- }
- {
-  coords 769.109 27.802 1382.563
-  m_sTitle "Objectives"
-  m_sTextData "OBJ1: Secure the power station in any means necessary."\
-  ""
-  m_aVisibleForFactions {
-   "US"
-  }
-  m_iOrder 3
- }
- {
-  coords 771.949 27.842 1381.958
-  m_sTitle "Objectives"
-  m_sTextData "OBJ1: Defend the power station against US incursion"\
-  ""\
-  "Do not go past any LOA markers"
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_iOrder 3
- }
-}
-GenericEntity : "{5B62CDB64C513F64}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_SupplyStack_01_V5_storage_USSR_covered.et" {
- components {
-  SCR_ResourceComponent "{5D247A59598D71AE}" {
-   m_aContainers {
-    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_fResourceValueCurrent 400
-     m_fResourceValueMax 400
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 5000
+      m_fResourceValueMax 5000
+     }
     }
    }
   }
+  coords 1726.553 38.966 2856.141
+  angleY -102
  }
- coords 2055.487 6.133 962.749
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 5000
+      m_fResourceValueMax 5000
+     }
+    }
+   }
+  }
+  coords 1182.03 39 2711.689
+  angleY 83
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ {
+  coords 1738.779 40.011 2854.61
+ }
+ {
+  coords 1176.911 39 2710.861
+ }
+}
+$grp GenericEntity : "{7C93700E1AC4C388}Prefabs/Props/Military/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Launcher_USSR.et" {
+ {
+  coords 1724.637 39 2862.997
+ }
+ {
+  coords 1183.604 39 2703.818
+ }
+ {
+  coords 1178.561 39 2720.354
+ }
+ {
+  coords 1729.484 39 2846.427
+ }
+}
+$grp PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ {
+  coords 1174.772 39.01 2709.888
+ }
+ {
+  coords 1174.934 39 2708.65
+  m_sTitle "BRIEFING"
+  m_sTextData "THOSE RUFFIANS ACROSS THE RUNWAY FROM US ARE BUILDING A GOT DAYUM FORT"\
+  ""\
+  "BUILD A BETTER ONE"\
+  ""\
+  "WHEN SAFESTART DISABLES, UNLEASH ALL HELL."
+  m_iOrder 3
+ }
+}
+GenericEntity : "{9B0CBFA9E66DE2DA}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/BuildingService_US_NoAffiliation.et" {
+ components {
+  SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+   m_aAvailableTraits {
+    28 108
+   }
+  }
+ }
+ coords 1181.54 39 2713.293
+ angleY -112
 }
 $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  {
-  coords 2045.474 6.25 957.736
-  m_sTitle "Secure the Power Station"
-  m_sFactionKey "US"
- }
- {
-  coords 2046.972 6.235 957.555
-  m_sTitle "Defend Power Station"
+  coords 1694.807 39 2848.517
+  m_sTitle "Ruffians Wiped Out"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
   m_sFactionKey "USSR"
  }
+ {
+  coords 1703.901 39.01 2850.144
+  m_sTitle "Ruffians Wiped Out"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_sFactionKey "US"
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1728.396 39 2851.496
+ angleY 0
+ m_sDescription "OPFOR"
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1184.269 39 2710.304
+ angleY 0
+ m_sDescription "BLUFOR"
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
 }

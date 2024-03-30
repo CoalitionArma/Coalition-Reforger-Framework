@@ -1,0 +1,11 @@
+$grp SCR_AIGroup : "{9D160E35384CAA19}Prefabs/Groups/BLUFOR/1980s/Specials/SPCL_Rockateer.et" {
+ {
+  coords 1173.281 39 2710.514
+ }
+ {
+  coords 1188.318 57.496 2715.501
+ }
+ {
+  coords 1172.519 38.271 2700.666
+ }
+}
