@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{6DA49D0449E79605}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_HeloCrew_p.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
