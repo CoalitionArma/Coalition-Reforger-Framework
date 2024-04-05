@@ -1,0 +1,58 @@
+SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Group_USSR_Platoon_p.et" {
+ coords 4192.565 46.595 7729.442
+ m_aUnitPrefabSlots {
+  "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{951CA4F244097071}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG_P.et" "{D1786D7659BC2E7C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+ }
+ m_sCustomNameSet "Platoon Command"
+}
+Vehicle BTR1 : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ coords 4221.481 48.208 7730.227
+ angleY 146.454
+}
+SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Group_US80s_RifleSquad_p.et" {
+ coords 4716.313 161.823 6983.097
+ angleY -34.085
+}
+$grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
+ {
+  coords 4190.83 44.948 7705.951
+  angleY 19.53
+  m_sCustomNameSet "1st Squad"
+ }
+ {
+  coords 4189.545 44.843 7703.209
+  angleY 19.53
+  m_sCustomNameSet "2nd Squad"
+ }
+ {
+  coords 4188.329 44.759 7700.032
+  angleY 19.53
+  m_sCustomNameSet "3rd Squad"
+ }
+ {
+  coords 4186.948 44.698 7696.463
+  angleY 19.53
+ }
+ {
+  coords 4185.702 44.614 7693.148
+  angleY 19.53
+ }
+ {
+  coords 4184.698 44.581 7690.216
+  angleY 19.53
+ }
+ {
+  coords 4183.403 44.515 7687.125
+  angleY 19.53
+ }
+ {
+  coords 4182.315 44.513 7683.847
+  angleY 19.53
+ }
+ {
+  coords 4193.399 44.885 7739.136
+  m_aUnitPrefabSlots {
+   "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et"
+  }
+ }
+}

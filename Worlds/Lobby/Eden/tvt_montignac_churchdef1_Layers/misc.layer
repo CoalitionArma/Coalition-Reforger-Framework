@@ -1,0 +1,55 @@
+$grp Vehicle : "{36BDCC88B17B3BFA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_command.et" {
+ M923A1_command1 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 1000
+    m_fFuelConsumptionIdle 1000
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      MaxFuel 0
+      m_fInitialFuelTankState 0
+     }
+    }
+   }
+  }
+  coords 4756.604 169.386 6987.712
+ }
+ M923A1_command2 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 1000
+    m_fFuelConsumptionIdle 1000
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      MaxFuel 0
+      m_fInitialFuelTankState 0
+     }
+    }
+   }
+  }
+  coords 4698.436 160.96 7079.702
+  angleY 146.073
+ }
+ M923A1_command3 {
+  components {
+   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+    m_fFuelConsumption 1000
+    m_fFuelConsumptionIdle 1000
+   }
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      MaxFuel 0
+      m_fInitialFuelTankState 0
+     }
+    }
+   }
+  }
+  coords 4794.021 163.177 7116.712
+  angleY 150.549
+ }
+}

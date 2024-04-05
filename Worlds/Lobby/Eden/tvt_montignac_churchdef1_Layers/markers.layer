@@ -1,0 +1,47 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 4728.402 162.076 6987.531
+  angleY 90
+  m_MarkerColor 0.571 0.042 0.03 1
+  m_sDescription "OBJ - Locate and Destroy 3 US Command Trucks"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4756.634 173.258 6985.41
+  angleY 90
+  m_MarkerColor 0.023 0.089 0.366 1
+  m_sDescription "OBJ - Defend Vehicle"
+  m_aVisibleForFactions {
+   "US"
+  }
+ }
+ {
+  coords 4793.13 167.043 7118.522
+  angleY 90
+  m_MarkerColor 0.023 0.089 0.366 1
+  m_sDescription "OBJ - Defend Vehicle"
+  m_aVisibleForFactions {
+   "US"
+  }
+ }
+ {
+  coords 4697.635 164.915 7081.016
+  angleY 90
+  m_MarkerColor 0.023 0.089 0.366 1
+  m_sDescription "OBJ - Defend Vehicle"
+  m_aVisibleForFactions {
+   "US"
+  }
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 4194.405 45.34 7707.932
+ angleY 90
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4709.931 162.027 6978.173
+ m_fWorldSize 45
+}

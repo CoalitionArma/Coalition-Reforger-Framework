@@ -1,0 +1,30 @@
+PS_MissionDescription : "{08236EA33069B312}PrefabsEditable/MissionDescription/OPFOR_Brief.et" {
+ coords 4913.943 167.359 7186.926
+ m_sTitle "OPFOR Briefing"
+ m_sTextData "Assault Montignac and recover the URAL4320 Command Vehicle. Eliminating the US Force there is an optional requirement."
+ m_aVisibleForFactions +{
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 3
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 4913.943 167.359 7186.926
+}
+PS_MissionDescription : "{214171F2E24F89AB}PrefabsEditable/MissionDescription/BLUFOR_Brief.et" {
+ coords 4913.943 167.359 7186.926
+ m_sTitle "BLUFOR Briefing"
+ m_sTextData "Defend Motignac, the Town containing the command vehicles. The Soviets may come from any direction so be prepared. The Vehicles are Located: 1) Church Courtyard, 2) Car Park, 3) In front of a Buidling. (They all have Objective Markers)"
+ m_aVisibleForFactions +{
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 3
+}
+PS_MissionDescription : "{4A1DC00570B90DDD}PrefabsEditable/MissionDescription/SITREP.et" {
+ coords 4742.662 164.064 6971.968
+ m_sTextData "USSR Forces attack the US-controlled Montignac to Destroy 3 Command Vehicles."
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4913.943 167.359 7186.926
+}

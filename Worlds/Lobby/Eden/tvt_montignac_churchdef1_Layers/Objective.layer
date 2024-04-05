@@ -1,0 +1,28 @@
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ BLUFOR_Obj_1 {
+  coords 4738.218 163.607 6969.886
+  m_sTitle "Defend Target Vehicles"
+  m_sTextData "Defend the M923A1 Command Trucks until either the time expires or the Soviets are all eliminated."
+  m_sFactionKey "US"
+ }
+ OPFOR_Obj_1 {
+  coords 4734.138 163.974 6964.063
+  m_sTitle "Locate and Destroy Target Vehicles"
+  m_sTextData "Destroy the 3 US M923A1 Command Trucks."
+  m_sFactionKey "USSR"
+ }
+ OPFOR_Obj_2 {
+  coords 4732.372 163.896 6959.833
+  m_sTitle "Eliminate US Forces"
+  m_sTextData "Eliminate US Forces"
+  m_iScore 50
+  m_sFactionKey "USSR"
+ }
+ BLUFOR_Obj_2 {
+  coords 4729.895 163.74 6960.803
+  m_sTitle "Eliminate Soviets "
+  m_sTextData "Eliminate the Soviets"
+  m_iScore 50
+  m_sFactionKey "US"
+ }
+}
