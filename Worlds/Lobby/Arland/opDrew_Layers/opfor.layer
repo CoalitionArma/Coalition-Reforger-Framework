@@ -1,50 +1,307 @@
 $grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
  UAZ1 {
-  coords 1265.824 37.467 2939.685
+  coords 1062.391 38 2837.062
   angleY 82.631
  }
  UAZ3 {
-  coords 1265.659 37.481 2935.203
+  coords 1055.09 38 2834.915
   angleY 82.631
  }
  UAZ2 {
-  coords 1276.344 37.501 2956.896
-  angleY 2.505
+  coords 1047.541 38.133 2833.131
+  angleY 84.505
  }
 }
 Vehicle Ural4320_Arsenal1 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
- coords 1265.251 37.416 2945.424
+ coords 1058.75 38.001 2827.521
  angleY 86.703
 }
 Vehicle Mi8MTC_A1 : "{35D4CCC400E04FC0}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MTC-A.et" {
- coords 1319.714 38.166 2867.985
+ coords 958.263 39.701 2751.779
+ angleY 69
 }
 SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
- coords 1275.486 38 2922.402
+ coords 1022.85 37.793 2820.662
  m_aUnitPrefabSlots {
   "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
  }
  m_sCustomNameSet "HQ"
 }
 Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
- coords 1282.372 37.648 2946.18
+ coords 1044.498 37.904 2823.114
+ angleY 55
 }
 GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
- coords 1320.999 37.829 2867.471
- angleY -11.342
+ coords 958.244 39.346 2750.395
+ angleY 57.658
+ {
+  GenericEntity {
+   ID "5D1EB45CF2DF7D55"
+   {
+    GenericEntity {
+     ID "5A26B380A8E7BDB9"
+     coords -0 0.303 0.063
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45CF2DF7D94"
+   {
+    GenericEntity {
+     ID "5A26B380A8E7BDB9"
+     coords 0 0.904 0.063
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45CF2DF7DA2"
+   {
+    GenericEntity {
+     ID "5A26B380A8E7BDB9"
+     coords 0 0.296 0.062
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45CF2DF7DBB"
+   {
+    GenericEntity {
+     ID "5A26B380A8E7BDB9"
+     coords 0 0.597 0.063
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45CF2DF7DC3"
+   {
+    GenericEntity {
+     ID "5A26B380A8E7BDB9"
+     coords 0 0.054 0.063
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45CF2DF7DE6"
+   {
+    GenericEntity {
+     ID "5A26B380A8E7BDB9"
+     coords 0 0.182 0.062
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D1EB45CF2DF7DF0"
+   {
+    GenericEntity {
+     ID "5A26B380A8E7BDB9"
+     coords 0 0.087 0.063
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E64C0F6B629B0D8"
+   coords 8.083 -0.112 -7.007
+  }
+  GenericEntity {
+   ID "5E69068BDA9E9D25"
+   coords 0 -0.002 0
+  }
+  GenericEntity {
+   ID "5E64C0F163C27820"
+   coords 9.827 -0.117 -6.737
+   angleY 77.065
+   {
+    DecalEntity {
+     ID "56E0B29E01E2AC90"
+     coords 0 0 0
+     angleX -89.96
+     angleY 180
+     angleZ -180
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E64C0F163C279D3"
+   coords -10.362 -0.025 7.624
+   {
+    DecalEntity {
+     ID "56E0B29E01E2AC90"
+     coords 0 0 0
+     angleX -89.972
+     angleY 180
+     angleZ -180
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E6A93840A294BB7"
+   coords -9.866 0.088 0.557
+   angleY 180
+   {
+    GenericEntity {
+     ID "5E6A90B022FE573D"
+     coords -6.5 -0.059 0
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E64C0F163C27853"
+   coords -11.356 0.09 2.383
+   angleY 32.028
+   {
+    DecalEntity {
+     ID "56DEFDB4A9499F9B"
+     coords 0 0 -0
+     angleX -90
+     angleY 180
+     angleZ -180
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E64C0F163C2786A"
+   coords -10.327 0.12 -7.787
+   angleY -16.285
+   {
+    DecalEntity {
+     ID "56DEFDB4A9499F9B"
+     coords -0 0 0
+     angleX -89.972
+     angleY 180
+     angleZ -180
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E64C0F163C2787F"
+   coords 8.483 -0.035 7.96
+   angleY 53.149
+   {
+    DecalEntity {
+     ID "56DEFDB4A9499F9B"
+     coords 0 0 0
+     angleX -89.966
+     angleY 180
+     angleZ -180
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E64C0F1F0F1FB50"
+   coords -9.253 -0.082 9.773
+   angleY 109.639
+  }
+  GenericEntity {
+   ID "5E64C0F1F0F1FB07"
+   coords -10.755 -0.03 7.601
+  }
+  GenericEntity {
+   ID "5E64C0F3CBBCFD8E"
+   coords -12.083 -0.03 7.378
+   angleY -176.099
+  }
+  GenericEntity {
+   ID "5E64C0F3CBBCFDE6"
+   coords -10.523 0.066 2.437
+   angleY 14.417
+  }
+  StaticModelEntity {
+   ID "5D1EB45CF2DF7D18"
+   coords -0.462 0.006 0
+   {
+    GenericEntity {
+     ID "5D1EB45A4E161DE0"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords 0 0.429 0.063
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D1EB45A4E161DE9"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords 0.001 0.282 0.063
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D1EB45A4E161DEA"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords 0 0.41 0.064
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D1EB45A4E161DEB"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords 0 0.316 0.064
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D1EB45A4E161DED"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords -0 0.225 0.064
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D1EB45A4E161DEE"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords 0 0.263 0.063
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D1EB45A4E161DEF"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords 0 0.315 0.062
+      }
+     }
+    }
+    GenericEntity {
+     ID "5D1EB45A4E161DF5"
+     {
+      GenericEntity {
+       ID "5A26B380A63C2147"
+       coords -0 0.251 0.062
+      }
+     }
+    }
+    GenericEntity {
+     ID "5E92E7227A7E45AB"
+     coords -0 0.85 0.251
+    }
+   }
+  }
+ }
 }
 $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
  {
-  coords 1279.069 41.667 2942.699
+  coords 1026.433 38.781 2840.959
   m_sCustomNameSet "1st Section"
  }
  {
-  coords 1277.637 37.691 2929.946
+  coords 1025.001 37.557 2828.206
   m_sCustomNameSet "2st Section"
  }
 }
 SCR_AIGroup : "{CBE7734F6544BD63}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_3rdSection.et" {
- coords 1301.93 37.202 2867.352
+ coords 951.3 38.89 2768.155
+ angleY 69
  m_aUnitPrefabSlots {
   "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et" "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
  }

@@ -124,6 +124,10 @@ SCR_AIGroup BaseCommander : "{218445F83827D929}Prefabs/Groups/OPFOR/RHS_RF_MSV/E
  }
  m_bSnapToTerrain 0
 }
+Vehicle Ural4320_Arsenal2 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
+ coords 1075.8 38 2831.343
+ angleY 86.703
+}
 $grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et" {
  IntelligenceFolder_E_01_60FAD33C7593031B {
   coords 1360.453 43.715 2966.861

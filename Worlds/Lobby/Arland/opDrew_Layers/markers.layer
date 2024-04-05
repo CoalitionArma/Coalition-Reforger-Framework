@@ -109,7 +109,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
  }
 }
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 1272.746 37.485 2937.677
+ coords 1021.293 37.539 2827.74
  angleY 0
  m_fWorldSize 100
  m_bUseWorldScale 0
@@ -118,7 +118,7 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
  }
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 2092.155 85.24 2256.434
+ coords 2085.624 9.136 1637.705
  angleY 0
  m_fWorldSize 100
  m_bUseWorldScale 0
