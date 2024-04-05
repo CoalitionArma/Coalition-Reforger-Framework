@@ -22,7 +22,7 @@ $grp SCR_BaseTriggerEntity {
   }
   OnActivate ""\
   "		// Notify player finished"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Power Destoryed!\");"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Power Destroyed!\");"\
   "		"\
   "	"
   RunDefaultQueryFirst 0
@@ -50,7 +50,7 @@ $grp SCR_BaseTriggerEntity {
   }
   OnActivate ""\
   "		// Notify player finished"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Communication Tower Destoryed!\");"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Communication Tower Destroyed!\");"\
   "		"\
   "	"
   RunDefaultQueryFirst 0
@@ -78,7 +78,7 @@ $grp SCR_BaseTriggerEntity {
   }
   OnActivate ""\
   "		// Notify player finished"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel Destoryed!\");"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel Dump Destroyed!\");"\
   "		"\
   "	"
   RunDefaultQueryFirst 0
@@ -106,7 +106,7 @@ $grp SCR_BaseTriggerEntity {
   }
   OnActivate ""\
   "		// Notify player finished"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Ammo Dump Destoryed!\");"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Ammo Dump Destroyed!\");"\
   "		"\
   "	"
   RunDefaultQueryFirst 0
@@ -133,6 +133,24 @@ $grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_
  }
  IntelligenceFolder_E_01_60FAD33CE9136F12 {
   coords 1374.797 41.686 2346.87
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1292.167 39.981 2324.368
+  m_sTitle "Find Blufor Saboteur Group"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 1289.27 39 2312.271
+  m_sTitle "Find Blufor Saboteur Group"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_sFactionKey "RHS_US_USMC"
  }
 }
 GenericEntity : "{D215BC98417FA3CB}Prefabs/Vehicles/Airplanes/IL76/Plane_IL76USSR_Open.et" {

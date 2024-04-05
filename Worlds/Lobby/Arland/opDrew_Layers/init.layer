@@ -22,7 +22,9 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{60F9773C1648B8F5}" {
    m_sFactionKey "RHS_RF_MSV"
-   m_iCount 5
+   m_iCount 6
+   m_iTime 600000
+   m_bWaveMode 1
   }
  }
 }
@@ -43,6 +45,8 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   m_aVisibleForFactions {
    ""
   }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
  }
  {
   coords 1279.376 37.47 2938.546
@@ -70,9 +74,9 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
  {
   coords 1276.402 37.549 2934.872
   m_sTitle "Objective"
-  m_sTextData "Blufor saboteurs attempting to infiltrate and disrupt our operations under cover of darkness. While Blufor has advanced gear to assist them in low light conditions"\
+  m_sTextData "Blufor saboteurs are attempting to infiltrate and disrupt our operations under cover of darkness. While Blufor has advanced gear to assist them in low light conditions"\
   ""\
-  "Your mission is to defend key targets such as the Communication Tower, Base Power, Aux Base Power, Base Commander, Ammo Dump, and Fuel Dump against Blufor's sabotage attempts. Utilize patrols, strategic positioning, and the available helicopter for Quick Reaction Force (QRF) deployments to counter any incursions. Good luck, Opfor!"\
+  "Your mission is to defend key targets such as the Communication Tower, Base Power, Base Commander, Ammo Dump, and Fuel Dump against Blufor's sabotage attempts. Utilize patrols, strategic positioning, and the available helicopter for Quick Reaction Force (QRF) deployments to counter any incursions. Good luck, Opfor!"\
   ""\
   ""
   m_aVisibleForFactions {
