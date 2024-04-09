@@ -19,6 +19,8 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
+  CRF_SafestartGameModeComponent "{610F4DC3B23E9DE8}" {
+  }
   SCR_CampaignBuildingManagerComponent "{60EE262DA53D4915}" {
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{60EE262DA3B60BA8}" {

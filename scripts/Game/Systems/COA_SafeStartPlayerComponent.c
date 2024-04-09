@@ -50,7 +50,7 @@ class COA_SafeStartPlayerComponent: ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_ToggleSideReady(string setReady, string playerName)
 	{
-		CRF_TNK_SafestartComponent safestartComponent = CRF_TNK_SafestartComponent.GetInstance();
+		CRF_SafestartGameModeComponent safestartComponent = CRF_SafestartGameModeComponent.GetInstance();
 		safestartComponent.ToggleSideReady(setReady, playerName);
 	}
 }
