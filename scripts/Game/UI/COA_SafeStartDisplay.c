@@ -14,7 +14,7 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	protected TextWidget m_wOpforReady;
 	protected TextWidget m_wIndforReady;
 	
-	protected CRF_TNK_SafestartComponent m_SafestartComponent = null;
+	protected CRF_SafestartGameModeComponent m_SafestartComponent = null;
 	protected SCR_FactionManager m_FactionManager = null;
 	
 	protected float m_fCurrentOpacity = 0;
@@ -29,14 +29,13 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	override protected void OnInit(IEntity owner)
 	{
 		super.OnInit(owner);
-		GetGame().GetInputManager().ActivateContext("CoalitionReforgerFrameworkContext", 36000000);
 		GetGame().GetInputManager().AddActionListener("ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
 	}
 	
 	override protected void UpdateValues(IEntity owner, float timeSlice)
 	{
 		if (!m_SafestartComponent || !m_FactionManager) {
-			m_SafestartComponent = CRF_TNK_SafestartComponent.GetInstance();
+			m_SafestartComponent = CRF_SafestartGameModeComponent.GetInstance();
 			m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 			return;
 		};

@@ -1,10 +1,10 @@
-class CRF_TNK_SafestartComponentClass: SCR_BaseGameModeComponentClass
+class CRF_SafestartGameModeComponentClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-// really should be CRF_TNK_SafestartComponentManager because it's on the game mode, but i'm not going through and changing everthing.
-class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
+// really should be CRF_SafestartGameModeComponentManager because it's on the game mode, but i'm not going through and changing everthing.
+class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 {
 	[RplProp()]
 	protected bool m_SafeStartEnabled;
@@ -25,8 +25,10 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	protected bool m_bOpforReady = false;
 	protected bool m_bIndforReady = false;
 	
+	protected SCR_BaseGameMode m_GameMode;
+	
 	protected int m_iPlayedFactionsCount;
-	protected ref map<int,bool> m_mPlayersWithEHsMap = new map<int,bool>;
+	protected ref map<IEntity,bool> m_mPlayersWithEHsMap = new map<IEntity,bool>;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -34,11 +36,11 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	
-	static CRF_TNK_SafestartComponent GetInstance()
+	static CRF_SafestartGameModeComponent GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
 		if (gameMode)
-			return CRF_TNK_SafestartComponent.Cast(gameMode.FindComponent(CRF_TNK_SafestartComponent));
+			return CRF_SafestartGameModeComponent.Cast(gameMode.FindComponent(CRF_SafestartGameModeComponent));
 		else
 			return null;
 	}
@@ -58,11 +60,10 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		//Print("[CRF Safestart] OnPostInit");
 		if (Replication.IsServer())
 		{
-			ToggleSafeStartServer(true);
+			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		} 
 	}
-	
-	
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -202,8 +203,6 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 		chatComponent.ShowMessage(m_sMessageContent);
 	};
 	
-	
-	
 	//------------------------------------------------------------------------------------------------
 
 	// SafeStart functions
@@ -222,6 +221,16 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void WaitTillGameStart()
+	{
+		if (!m_GameMode.IsRunning()) 
+			return;
+		
+		GetGame().GetCallqueue().Remove(WaitTillGameStart);
+		ToggleSafeStartServer(true);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void ToggleSafeStartServer(bool status) 
 	{
@@ -234,7 +243,7 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 250, true);
-			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 1250, true);
+			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 1250, true);
 			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 500, true);
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
@@ -249,21 +258,23 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			
 			GetGame().GetCallqueue().Remove(CheckStartCountDown);
 			GetGame().GetCallqueue().Remove(UpdateServerWorldTime);
-			GetGame().GetCallqueue().Remove(ToggleSafeStartEHs);
+			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
+			DisableSafeStartEHs();
+			
 			// Use CallLater to delay the call for the removal of EHs so the changes so m_SafeStartEnabled can propagate.
-			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 1500);
+			GetGame().GetCallqueue().CallLater(DisableSafeStartEHs, 1500);
 			
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
-			GetGame().GetCallqueue().CallLater(ToggleSafeStartEHs, 12500);
+			GetGame().GetCallqueue().CallLater(DisableSafeStartEHs, 12500);
 		}
 	};
 	
 	//------------------------------------------------------------------------------------------------
-	protected void ToggleSafeStartEHs()
+	protected void ActivateSafeStartEHs()
 	{	
 		array<int> outPlayers = {};
 		GetGame().GetPlayerManager().GetPlayers(outPlayers);
@@ -273,29 +284,43 @@ class CRF_TNK_SafestartComponent: SCR_BaseGameModeComponent
 			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
 			if (!controlledEntity) continue;
 			
-			EventHandlerManagerComponent m_eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
-			if (!m_eventHandler) continue;
+			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
+			if (!eventHandler) continue;
 		
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
 			if (!charComp) continue;
 			
-			bool alreadyHasEventHandlers = m_mPlayersWithEHsMap.Get(playerID);
+			bool alreadyHasEventHandlers = m_mPlayersWithEHsMap.Get(controlledEntity);
 		
-			if (!alreadyHasEventHandlers && GetSafestartStatus()) {
+			if (!alreadyHasEventHandlers) {
 				charComp.SetSafety(true, true);
-				m_eventHandler.RegisterScriptHandler("OnProjectileShot", this, OnWeaponFired);
-				m_eventHandler.RegisterScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
-				m_mPlayersWithEHsMap.Set(playerID, true);
-			};
-		
-			if (alreadyHasEventHandlers && !GetSafestartStatus()) {
-				charComp.SetSafety(false, false);
-				m_eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
-				m_eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
-				m_mPlayersWithEHsMap.Set(playerID, false);
+				eventHandler.RegisterScriptHandler("OnProjectileShot", this, OnWeaponFired);
+				eventHandler.RegisterScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
+				m_mPlayersWithEHsMap.Set(controlledEntity, true);
 			};
 		};
 	}
+	
+	protected void DisableSafeStartEHs()
+	{	
+		for (int i = 0; i < m_mPlayersWithEHsMap.Count(); i++)
+		{
+			IEntity controlledEntityKey = m_mPlayersWithEHsMap.GetKey(i);
+			
+			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntityKey.FindComponent(CharacterControllerComponent));
+			if (!charComp) continue;
+			
+			charComp.SetSafety(false, false);
+			
+			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntityKey.FindComponent(EventHandlerManagerComponent));
+			if (!eventHandler) continue;
+			
+			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
+			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
+			
+			m_mPlayersWithEHsMap.Set(controlledEntityKey, false);
+		};
+	};
 	
 	//------------------------------------------------------------------------------------------------
 	protected void OnWeaponFired(int playerID, BaseWeaponComponent weapon, IEntity entity)
