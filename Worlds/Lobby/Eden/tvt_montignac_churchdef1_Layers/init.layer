@@ -3,4 +3,80 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  coords 4899.614 168.319 7125.822
+ {
+  SCR_FactionManager "610CC45CFF173BF9" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2nd"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3rd"
+       }
+       SCR_CallsignInfo "{610CA6C646AD05E9}" {
+        m_sCallsign "4th"
+       }
+       SCR_CallsignInfo "{610CA6C64A64AD95}" {
+        m_sCallsign "MG"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "BTR1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "BTR2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1st"
+       }
+       SCR_CallsignInfo "{610CA6C5F90FF12B}" {
+        m_sCallsign "2nd"
+       }
+       SCR_CallsignInfo "{610CA6C5FA3CCF3F}" {
+        m_sCallsign "3rd"
+       }
+       SCR_CallsignInfo "{610CA6C5FF853068}" {
+        m_sCallsign "4th"
+       }
+       SCR_CallsignInfo "{610CA6C5E0524E0E}" {
+        m_sCallsign "5th"
+       }
+       SCR_CallsignInfo "{610CA6C5EF17795F}" {
+        m_sCallsign "6th"
+       }
+       SCR_CallsignInfo "{610CA6C5EF44773A}" {
+        m_sCallsign "7th"
+       }
+       SCR_CallsignInfo "{610CA6C5D1A00561}" {
+        m_sCallsign "8th"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+   }
+  }
+ }
 }

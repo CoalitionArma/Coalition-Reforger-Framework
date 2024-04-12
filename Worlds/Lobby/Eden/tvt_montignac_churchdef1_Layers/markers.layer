@@ -10,7 +10,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_bVisibleForEmptyFaction 1
  }
  {
-  coords 4756.634 173.258 6985.41
+  coords 4771.953 173.476 7003.145
   angleY 90
   m_MarkerColor 0.023 0.089 0.366 1
   m_sDescription "OBJ - Defend Vehicle"

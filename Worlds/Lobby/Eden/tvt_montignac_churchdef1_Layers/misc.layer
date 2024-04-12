@@ -14,7 +14,8 @@ $grp Vehicle : "{36BDCC88B17B3BFA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_command
     }
    }
   }
-  coords 4756.604 169.386 6987.712
+  coords 4770.001 169.569 7002.696
+  angleY -103.7
  }
  M923A1_command2 {
   components {

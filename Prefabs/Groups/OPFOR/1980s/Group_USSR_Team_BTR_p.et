@@ -1,0 +1,9 @@
+SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
+ ID "0000000000000001"
+ coords 4191.654 44.743 7735.87
+ angleY 169.885
+ m_aUnitPrefabSlots {
+  "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE0E3B8859E34B5C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Engineer_P.et"
+ }
+ m_sCustomNameSet "BTR Team"
+}
