@@ -94,9 +94,9 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 		
 		foreach (int i, string factionReady : outFactionsReady) {
 			int colorToSet = 0;
-			if (factionReady == "Ready")     {colorToSet = ARGB(185, 0, 190, 85);   };
-			if (factionReady == "Not Ready") {colorToSet = ARGB(185, 200, 65, 65);  };
-			if (factionReady == "N/A")       {colorToSet = ARGB(185, 135, 135, 135);};
+			if (factionReady == "#Coal_SS_Faction_Ready")     {colorToSet = ARGB(185, 0, 190, 85);   };
+			if (factionReady == "#Coal_SS_Faction_Not_Ready") {colorToSet = ARGB(185, 200, 65, 65);  };
+			if (factionReady == "#Coal_SS_No_Faction")       {colorToSet = ARGB(185, 135, 135, 135);};
 		
 			switch (i) {
 				case (0)  : {m_wBluforReady.SetText(factionReady); m_wBluforReady.SetColorInt(colorToSet); break;};

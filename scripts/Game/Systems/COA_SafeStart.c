@@ -103,10 +103,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		outFaction.ToArray(outArray);
 		
 		m_iPlayedFactionsCount = 0;
-		string bluforString = "N/A";
-		string opforString = "N/A";
-		string indforString = "N/A";
-		
+		string bluforString, opforString, indforString = "#Coal_SS_No_Faction";
+
 		foreach(SCR_Faction faction : outArray) {
 			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;
 			
@@ -117,12 +115,12 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			float rgb = Math.Max(rg, factionColor.B());
 			
 			switch (true) {
-				case(!m_bBluforReady && rgb == factionColor.B()) : {bluforString = "Not Ready"; break;};
-				case(m_bBluforReady && rgb == factionColor.B())  : {bluforString = "Ready";     break;};
-				case(!m_bOpforReady && rgb == factionColor.R())  : {opforString = "Not Ready";  break;};
-				case(m_bOpforReady && rgb == factionColor.R())   : {opforString = "Ready";      break;};
-				case(!m_bIndforReady && rgb == factionColor.G()) : {indforString = "Not Ready"; break;};
-				case(m_bIndforReady && rgb == factionColor.G())  : {indforString = "Ready";     break;};
+				case(!m_bBluforReady && rgb == factionColor.B()) : {bluforString = "#Coal_SS_Faction_Not_Ready"; break;};
+				case(m_bBluforReady && rgb == factionColor.B())  : {bluforString = "#Coal_SS_Faction_Ready";     break;};
+				case(!m_bOpforReady && rgb == factionColor.R())  : {opforString = "#Coal_SS_Faction_Not_Ready";  break;};
+				case(m_bOpforReady && rgb == factionColor.R())   : {opforString = "#Coal_SS_Faction_Ready";      break;};
+				case(!m_bIndforReady && rgb == factionColor.G()) : {indforString = "#Coal_SS_Faction_Not_Ready"; break;};
+				case(m_bIndforReady && rgb == factionColor.G())  : {indforString = "#Coal_SS_Faction_Ready";     break;};
 			};
 		};
 		
@@ -140,20 +138,20 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		{
 			case("Blufor") : {
 				m_bBluforReady = !m_bBluforReady; 
-				if (m_bBluforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Blufor", playerName);
-				if (!m_bBluforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Blufor", playerName);
+				if (m_bBluforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Blufor", playerName);
+				if (!m_bBluforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Blufor", playerName);
 				break;
 			};
 			case("Opfor")  : {
 				m_bOpforReady = !m_bOpforReady;
-				if (m_bOpforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Opfor", playerName);
-				if (!m_bOpforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Opfor", playerName);
+				if (m_bOpforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Opfor", playerName);
+				if (!m_bOpforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Opfor", playerName);
 				break;
 			};
 			case("Indfor") : {
 				m_bIndforReady = !m_bIndforReady; 
-				if (m_bIndforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Readied Up Indfor", playerName);
-				if (!m_bIndforReady) m_sMessageContent = string.Format("[CRF] : %1 Has Unreadied Up Indfor", playerName);
+				if (m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Indfor", playerName);
+				if (!m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Indfor", playerName);
 				break;
 			};
 		};
@@ -173,7 +171,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		if (factionsReadyCount == 0 && m_iPlayedFactionsCount == 0 || factionsReadyCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining == 35) return;
 				
 		if (factionsReadyCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining != 35) {
-			m_sMessageContent = "[CRF] : Game Live Countdown Canceled!";
+			m_sMessageContent = "#Coal_SS_Countdown_Cancelled";
 			Replication.BumpMe();
 			m_iSafeStartTimeRemaining = 35;
 			return;
@@ -181,10 +179,10 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		
 		if (factionsReadyCount == m_iPlayedFactionsCount) {
 			m_iSafeStartTimeRemaining = m_iSafeStartTimeRemaining - 5;
-			m_sMessageContent = string.Format("[CRF] : Game Live In: %1 Seconds!", m_iSafeStartTimeRemaining);
+			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started", m_iSafeStartTimeRemaining);
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
-				m_sMessageContent = string.Format("[CRF] : GAME LIVE!", m_iSafeStartTimeRemaining);
+				m_sMessageContent = string.Format("#Coal_SS_Game_Live" );
 			};
 		};
 		Replication.BumpMe();
