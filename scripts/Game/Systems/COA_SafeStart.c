@@ -182,23 +182,21 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started", m_iSafeStartTimeRemaining);
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
-				m_sMessageContent = string.Format("#Coal_SS_Game_Live" );
+				m_sMessageContent = string.Format("#Coal_SS_Game_Live");
 			};
 		};
 		Replication.BumpMe();
 	};
 	
-	//Called from server to all clients
+	// Called from server to all clients
 	//------------------------------------------------------------------------------------------------
+	// Locality needs verified for workbench and local server hosting
 	void ShowMessage()
 	{
 		PlayerController pc = GetGame().GetPlayerController();
 		if (!pc) return;
 
-		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
-		if (!chatComponent) return;
-		
-		chatComponent.ShowMessage(m_sMessageContent);
+		SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 4, "Any leader can toggle ready to cancel the countdown");
 	};
 	
 	//------------------------------------------------------------------------------------------------
