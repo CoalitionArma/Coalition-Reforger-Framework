@@ -61,6 +61,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		if (Replication.IsServer())
 		{
 			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		} 
 	}
