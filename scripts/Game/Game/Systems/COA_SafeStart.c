@@ -104,7 +104,9 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		outFaction.ToArray(outArray);
 		
 		m_iPlayedFactionsCount = 0;
-		string bluforString, opforString, indforString = "#Coal_SS_No_Faction";
+		string bluforString = "#Coal_SS_No_Faction";
+		string opforString = "#Coal_SS_No_Faction"; 
+		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
 			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;

@@ -1,0 +1,16 @@
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  CRF_GameMode_SearchAndDestroyComponent "{61243400A9FED738}" {
+  }
+ }
+ coords 6243.637 48.875 5076.812
+}
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 6251.462 48.875 5082.108
+  TriggerShapeType Sphere
+ }
+ bSiteTrigger {
+  coords 6440.699 38.617 5135.743
+ }
+}
