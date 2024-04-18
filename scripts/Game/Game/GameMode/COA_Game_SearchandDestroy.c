@@ -22,16 +22,6 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		
 	}
 	
-	void addActions()
-	{
-		// Create addActions
-		
-		// Assign to each site 
-		
-		// Ensure each action can only be used by the attacking side 
-		
-	}
-	
 	void initBombSites()
 	{
 		aSiteTrigger = GetGame().GetWorld().FindEntityByName("aSiteTrigger");
@@ -45,12 +35,10 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		
 		// Spawn destructible "site" at each trigger point
 		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
-		spawnParams.Transform[3] = bSiteSpawn;
+		spawnParams.Transform[3] = bSiteSpawn; // change to bsite
 		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
 		// Create markers on each bomb site
 		createMarkers();
-		// Attach actions to each bomb site
-		addActions();
 	}
 	
 	void siteDestroyed(IEntity site) 
