@@ -16,14 +16,22 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	IEntity aSite, bSite;
 	
 	IEntity aSiteTrigger, bSiteTrigger;
-	AudioSystem as;
 	protected int BOMBTIMER = 120;
 	bool aSitePlanted = false;
 	bool bSitePlanted = false;
-	bool countDownActive = false;
 	vector aSiteSpawn;
 	vector bSiteSpawn;
 	
+	[RplProp(onRplName: "ShowMessage")]
+	protected string m_sMessageContent = "";
+	
+	[RplProp(onRplName: "PlaySound")]
+	protected string m_SoundString = "";
+	
+	[RplProp()]
+	bool countDownActive = false;
+	
+	//------------------------------------------------------------------------------------------------
 	override protected void OnWorldPostProcess(World world)
 	{
 		if (!GetGame().InPlayMode()) 
@@ -41,6 +49,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		
 	}*/
 	
+	//------------------------------------------------------------------------------------------------
 	void initBombSites()
 	{
 		SCR_PopUpNotification.GetInstance().PopupMsg("Initializing Search and Destroy",10);
@@ -62,6 +71,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	}
 	
 	// Acts as a loop method spawned via calllater, every 1 sec
+	//------------------------------------------------------------------------------------------------
 	void startCountdown(IEntity bombSitePlanted)
 	{
 		// Check if defused
@@ -77,18 +87,19 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		string timetoshow = SCR_FormatHelper.FormatTime(BOMBTIMER);
 		// Show message
 		if (aSitePlanted)
-			SCR_PopUpNotification.GetInstance().PopupMsg("Bomb Planted", 1, "A SITE: " + timetoshow);
+			m_sMessageContent = "Bomb Planted╣0.5╣A SITE: " + timetoshow;
 		else
-			SCR_PopUpNotification.GetInstance().PopupMsg("Bomb Planted", 1, "B SITE: " + timetoshow);
+			m_sMessageContent = "Bomb Planted╣0.5╣B SITE: " + timetoshow;
 		
 		// Bomb goes off
-		if (BOMBTIMER <= 0) {
-			if (aSitePlanted) {
-				SCR_PopUpNotification.GetInstance().PopupMsg("A SITE DESTROYED!");
+		if (BOMBTIMER <= 0) 
+		{
+			if (aSitePlanted) 
+			{
+				m_sMessageContent = "A SITE DESTROYED!╣15╣";
 			} else {
-				SCR_PopUpNotification.GetInstance().PopupMsg("B SITE DESTROYED!");
+				m_sMessageContent = "B SITE DESTROYED!╣15╣";
 			}
-				
 			
 			// Remove timer
 			GetGame().GetCallqueue().Remove(startCountdown);
@@ -100,8 +111,11 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 			aSitePlanted = false;
 			bSitePlanted = false;
 		}
+		
+		Replication.BumpMe();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void siteDestroyed(IEntity bombSitePlanted) 
 	{
 		sitesDestroyed++;
@@ -117,12 +131,37 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		
 		if (sitesDestroyed == 2)
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg("Attackers have destroyed both sites!",30,"Attacker victory!");
-			as.PlaySound("{349D4D7CC242131D}Sounds/Music/Ingame/Samples/Jingles/MU_EndCard_Drums.wav");
+			m_sMessageContent = "Attackers have destroyed both sites!╣30╣Attacker victory!";
+			m_SoundString = "{349D4D7CC242131D}Sounds/Music/Ingame/Samples/Jingles/MU_EndCard_Drums.wav";
 		}
 		
 		countDownActive = false;
 		aSitePlanted = false;
 		bSitePlanted = false;
+		
+		Replication.BumpMe();
 	}
+	
+	// Called from server to all clients
+	//------------------------------------------------------------------------------------------------
+	// Locality needs verified for workbench and local server hosting
+	void ShowMessage()
+	{
+		array<string> messageSplitArray = {};
+		m_sMessageContent.Split("╣", messageSplitArray, false);
+
+		string mainMessage = messageSplitArray[0];
+		string time = messageSplitArray[1];
+		string subMessage = messageSplitArray[2];
+
+		SCR_PopUpNotification.GetInstance().PopupMsg(mainMessage, time.ToFloat(), subMessage);
+	};
+	
+	// Called from server to all clients
+	//------------------------------------------------------------------------------------------------
+	// Locality needs verified for workbench and local server hosting
+	void PlaySound()
+	{
+		AudioSystem.PlaySound(m_SoundString);
+	};
 }

@@ -28,17 +28,7 @@ class COA_PlantBombAction : ScriptedUserAction
 			return;
 		}
 		
-		// Set which site is planted
-		gameMode.countDownActive = true;
-		if (!gameMode.aSite.IsDeleted() && pOwnerEntity.GetID() == gameMode.aSite.GetID())
-			gameMode.aSitePlanted = true;
-		else	
-			gameMode.bSitePlanted = true;
-		
-		PrintFormat("aSitePlanted: %1\nbSitePlanted: %2",gameMode.aSitePlanted,gameMode.bSitePlanted);
-		
-		// Spawn countdown thread
-		GetGame().GetCallqueue().CallLater(gameMode.startCountdown, 1000, true, pOwnerEntity);
+		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(pOwnerEntity.GetID(), true);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}
@@ -58,13 +48,14 @@ class COA_PlantBombAction : ScriptedUserAction
 		return true;
 	}	
 	
-	/*override bool HasLocalEffectOnlyScript()
+	override bool HasLocalEffectOnlyScript()
 	{
 		return true;
-	}*/
+	}
 
+	//------------------------------------------------------------------------------------------------
 	override bool CanBroadcastScript()
 	{
-		return true;
+		return false;
 	}
 };

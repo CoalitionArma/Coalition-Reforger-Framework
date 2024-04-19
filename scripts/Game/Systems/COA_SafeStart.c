@@ -61,7 +61,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		if (Replication.IsServer())
 		{
 			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		} 
 	}
@@ -140,20 +139,20 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		{
 			case("Blufor") : {
 				m_bBluforReady = !m_bBluforReady; 
-				if (m_bBluforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Blufor", playerName);
-				if (!m_bBluforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Blufor", playerName);
+				if (m_bBluforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Blufor - %1", playerName);
+				if (!m_bBluforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Blufor - %1", playerName);
 				break;
 			};
 			case("Opfor")  : {
 				m_bOpforReady = !m_bOpforReady;
-				if (m_bOpforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Opfor", playerName);
-				if (!m_bOpforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Opfor", playerName);
+				if (m_bOpforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Opfor - %1", playerName);
+				if (!m_bOpforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Opfor - %1", playerName);
 				break;
 			};
 			case("Indfor") : {
 				m_bIndforReady = !m_bIndforReady; 
-				if (m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Indfor", playerName);
-				if (!m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Indfor", playerName);
+				if (m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Indfor - %1", playerName);
+				if (!m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Indfor - %1", playerName);
 				break;
 			};
 		};
@@ -166,7 +165,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		int factionsReadyCount = 0;
 		foreach(string factionCheckReadyString : m_aFactionsStatusArray) {
-			if (factionCheckReadyString != "Ready") continue;
+			if (factionCheckReadyString != "#Coal_SS_Faction_Ready") continue;
 			factionsReadyCount = factionsReadyCount + 1;
 		};
 		
@@ -181,7 +180,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		
 		if (factionsReadyCount == m_iPlayedFactionsCount) {
 			m_iSafeStartTimeRemaining = m_iSafeStartTimeRemaining - 5;
-			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started", m_iSafeStartTimeRemaining);
+			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started %1 Seconds!", m_iSafeStartTimeRemaining);
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
 				m_sMessageContent = string.Format("#Coal_SS_Game_Live");
@@ -198,7 +197,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		PlayerController pc = GetGame().GetPlayerController();
 		if (!pc) return;
 
-		SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 4, "Any leader can toggle ready to cancel the countdown");
+		SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 4, "#Coal_SS_Countdown_Started_Subtext");
 	};
 	
 	//------------------------------------------------------------------------------------------------

@@ -21,8 +21,6 @@ class COA_DefuseBombAction : ScriptedUserAction
 		if (!character)
 			return;
 		
-		PrintFormat("aSitePlanted: %1\nbSitePlanted: %2",gameMode.aSitePlanted,gameMode.bSitePlanted);
-		
 		// We only want to defuse if a site is active
 		if (!gameMode.countDownActive)
 		{
@@ -30,15 +28,7 @@ class COA_DefuseBombAction : ScriptedUserAction
 			return;
 		}
 		
-		// Set which site is planted
-		GetGame().GetCallqueue().Remove(gameMode.startCountdown);
-		gameMode.countDownActive = false;
-		if (gameMode.aSitePlanted)
-			gameMode.aSitePlanted = false;
-		else	
-			gameMode.bSitePlanted = false;
-		
-		PrintFormat("aSitePlanted: %1\nbSitePlanted: %2",gameMode.aSitePlanted,gameMode.bSitePlanted);
+		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(pOwnerEntity.GetID(), false);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}
@@ -58,13 +48,13 @@ class COA_DefuseBombAction : ScriptedUserAction
 		return true;
 	}	
 	
-	/*override bool HasLocalEffectOnlyScript()
+	override bool HasLocalEffectOnlyScript()
 	{
 		return true;
-	}*/
+	}
 
 	override bool CanBroadcastScript()
 	{
-		return true;
+		return false;
 	}
 };
