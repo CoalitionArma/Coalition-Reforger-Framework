@@ -1,7 +1,7 @@
 SCR_PlayerController {
  ID "1A9BA6BEFA06E3B1"
  components {
-  COA_GameModePlayerComponent "{61261516BC27B54D}" {
+  COA_GameModePlayerComponent "{612711C4FC397937}" {
   }
   COA_SafeStartPlayerComponent "{605C855D1DA9C3F2}" {
   }

@@ -23,13 +23,13 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	protected vector bSiteSpawn;
 	
 	[RplProp(onRplName: "ShowMessage")]
-	string m_sMessageContent = "";
+	string m_sMessageContent;
 	
 	[RplProp(onRplName: "PlaySound")]
-	string m_SoundString = "";
+	string m_SoundString;
 	
 	[RplProp(onRplName: "SiteDestroyedClient")]
-	EntityID destroyedBombSiteID = null;
+	string m_sDestroyedBombSiteString;
 	
 	[RplProp()]
 	bool aSitePlanted = false;
@@ -88,11 +88,10 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 
 	// Acts as a loop method spawned via calllater, every 1 sec
 	//------------------------------------------------------------------------------------------------
-	void StartCountdown(IEntity bombSitePlanted)
+	void StartCountdown()
 	{
 		// Check if defused
-		if (!countDownActive) 
-		{
+		if (!countDownActive) {
 			aSitePlanted = false;
 			bSitePlanted = false;
 			return;
@@ -101,10 +100,10 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		// Show message
 		if (aSitePlanted) {
 			aSiteTimer--;
-			m_sMessageContent = "Bomb Planted╣1╣A SITE: " + SCR_FormatHelper.FormatTime(aSiteTimer);
+			m_sMessageContent = "Bomb Planted╣0.685╣A SITE: " + SCR_FormatHelper.FormatTime(aSiteTimer);
 		} else {
 			bSiteTimer--;
-			m_sMessageContent = "Bomb Planted╣1╣B SITE: " + SCR_FormatHelper.FormatTime(bSiteTimer);
+			m_sMessageContent = "Bomb Planted╣0.685╣B SITE: " + SCR_FormatHelper.FormatTime(bSiteTimer);
 		};
 		
 		// Bomb goes off
@@ -121,8 +120,10 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 			// Remove timer
 			GetGame().GetCallqueue().Remove(StartCountdown);
 			countDownActive = false;
+			
 			// Destroy site
-			SiteDestroyed(bombSitePlanted);
+			SiteDestroyed();
+			
 			aSitePlanted = false;
 			bSitePlanted = false;
 		}
@@ -131,20 +132,29 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SiteDestroyed(IEntity bombSitePlanted) 
+	void SiteDestroyed() 
 	{
 		sitesDestroyed++;
+		
+		IEntity bombSitePlanted = null;
+		
+		if (aSitePlanted) {
+			m_sDestroyedBombSiteString = "SiteA";
+			bombSitePlanted = aSite;
+		} else {
+			m_sDestroyedBombSiteString = "SiteB";
+			bombSitePlanted = bSite;
+		};
 		
 		// Spawn explosion at site
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		spawnParams.Transform[3] = bombSitePlanted.GetOrigin();
-	
-		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
+		
 		// Delete entity
 		delete bombSitePlanted;
-		
-		destroyedBombSiteID = bombSitePlanted.GetID();
+	
+		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
 		
 		if (sitesDestroyed == 2)
 		{
@@ -156,7 +166,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ToggleBombPlanted(EntityID entityID, bool togglePlanted) 
+	void ToggleBombPlanted(string stiePlanted, bool togglePlanted) 
 	{
 		if (!togglePlanted) 
 		{
@@ -172,7 +182,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		} else {
 			// Set which site is planted
 			countDownActive = true;
-			if (!aSite.IsDeleted() && entityID == aSite.GetID()) {
+			if (!aSite.IsDeleted() && stiePlanted == "SiteA") {
 				aSitePlanted = true;
 				m_sMessageContent = "Attackers have placed a bomb at A!╣10╣";
 			} else {
@@ -181,7 +191,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 			};
 		
 			// Spawn countdown thread
-			GetGame().GetCallqueue().CallLater(StartCountdown, 1000, true, GetGame().GetWorld().FindEntityByID(entityID));
+			GetGame().GetCallqueue().CallLater(StartCountdown, 1000, true);
 		};
 		
 		Replication.BumpMe();
@@ -192,7 +202,12 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	// Locality needs verified for workbench and local server hosting
 	void SiteDestroyedClient() 
 	{
-		IEntity destroyedBombSiteEntity = GetGame().GetWorld().FindEntityByID(destroyedBombSiteID);
+		IEntity destroyedBombSiteEntity = null;
+		
+		if(m_sDestroyedBombSiteString == "SiteA")
+			destroyedBombSiteEntity = aSite;
+		else
+			destroyedBombSiteEntity = bSite;
 		
 		// Spawn explosion at site
 		EntitySpawnParams spawnParams = new EntitySpawnParams();

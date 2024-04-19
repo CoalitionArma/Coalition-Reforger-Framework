@@ -21,11 +21,12 @@ class COA_SafeStartPlayerComponent: ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected void EOnInit(IEntity owner) {
-		super.EOnInit(owner);
+	override protected void OnPostInit(IEntity owner) 
+	{
+		super.OnPostInit(owner);
 		
-		GetGame().GetInputManager().AddActionListener("ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
-	};
+		GetGame().GetInputManager().AddActionListener("COA_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 

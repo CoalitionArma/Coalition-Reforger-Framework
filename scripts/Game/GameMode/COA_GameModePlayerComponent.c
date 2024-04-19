@@ -26,14 +26,14 @@ class COA_GameModePlayerComponent: ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	
-	void Owner_ToggleBombPlanted(EntityID entityID, bool togglePlanted)
+	void Owner_ToggleBombPlanted(string stiePlanted, bool togglePlanted)
 	{	
-		Rpc(RpcAsk_ToggleBombPlanted, entityID, togglePlanted);
+		Rpc(RpcAsk_ToggleBombPlanted, stiePlanted, togglePlanted);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleBombPlanted(EntityID entityID, bool togglePlanted)
+	void RpcAsk_ToggleBombPlanted(string stiePlanted, bool togglePlanted)
 	{
-		CRF_GameMode_SearchAndDestroyComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GameMode_SearchAndDestroyComponent)).ToggleBombPlanted(entityID, togglePlanted);
+		CRF_GameMode_SearchAndDestroyComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GameMode_SearchAndDestroyComponent)).ToggleBombPlanted(stiePlanted, togglePlanted);
 	}
 }

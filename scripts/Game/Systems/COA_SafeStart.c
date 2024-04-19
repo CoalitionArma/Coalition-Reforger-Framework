@@ -3,7 +3,6 @@ class CRF_SafestartGameModeComponentClass: SCR_BaseGameModeComponentClass
 	
 }
 
-// really should be CRF_SafestartGameModeComponentManager because it's on the game mode, but i'm not going through and changing everthing.
 class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 {
 	[RplProp()]
@@ -200,7 +199,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		if (m_sMessageContent == "#Coal_SS_Game_Live") {
 			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
 		} else {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 4, "#Coal_SS_Countdown_Started_Subtext");
+			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 3.65, "#Coal_SS_Countdown_Started_Subtext");
 		};
 	};
 	
