@@ -26,7 +26,7 @@ SCR_ChimeraCharacter : "{1E8265C4FCFC787B}Prefabs/Characters/Factions/OPFOR/RHS_
    WeaponSlotIndex 0
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
-   WeaponTemplate "{AFEAEFADE2607FA7}Prefabs/Weapons/Launchers/M72/Launcher_RPG26_base.et"
+   WeaponTemplate "{E8A55396050E1762}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7.et"
    WeaponSlotIndex 1
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
