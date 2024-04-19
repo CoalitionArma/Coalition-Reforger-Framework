@@ -21,14 +21,14 @@ class COA_PlantBombAction : ScriptedUserAction
 		if (!character)
 			return;
 		
-		string stiePlanted = "";
+		string sitePlanted = "";
 		
 		if (pOwnerEntity.GetID() == gameMode.aSiteID)
-			stiePlanted = "SiteA";
+			sitePlanted = "SiteA";
 		else
-			stiePlanted = "SiteB";
+			sitePlanted = "SiteB";
 		
-		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(stiePlanted, true);
+		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(sitePlanted, true);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}

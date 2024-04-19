@@ -100,10 +100,10 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		// Show message
 		if (aSitePlanted) {
 			aSiteTimer--;
-			m_sMessageContent = "Bomb Planted╣0.685╣A SITE: " + SCR_FormatHelper.FormatTime(aSiteTimer);
+			m_sMessageContent = SCR_FormatHelper.FormatTime(aSiteTimer);
 		} else {
 			bSiteTimer--;
-			m_sMessageContent = "Bomb Planted╣0.685╣B SITE: " + SCR_FormatHelper.FormatTime(bSiteTimer);
+			m_sMessageContent = SCR_FormatHelper.FormatTime(bSiteTimer);
 		};
 		
 		// Bomb goes off
@@ -158,7 +158,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		
 		if (sitesDestroyed == 2)
 		{
-			m_sMessageContent = "Attackers have destroyed both sites!╣30╣Attacker victory!";
+			m_sMessageContent = "Attackers have destroyed both sites!╣60╣Attacker victory!";
 			m_SoundString = "{349D4D7CC242131D}Sounds/Music/Ingame/Samples/Jingles/MU_EndCard_Drums.wav";
 		}
 		
@@ -168,27 +168,27 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void ToggleBombPlanted(string sitePlanted, bool togglePlanted) 
 	{
-		PlaySound("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav");
+		m_SoundString = "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav";
 		if (!togglePlanted) 
 		{
 			GetGame().GetCallqueue().Remove(StartCountdown);
 			countDownActive = false;
 			if (aSitePlanted) {
 				aSitePlanted = false;
-				m_sMessageContent = "Defenders have defused the bomb at A!╣10╣";
+				m_sMessageContent = "Defenders have defused the bomb at A!╣15╣";
 			} else {
 				bSitePlanted = false;
-				m_sMessageContent = "Defenders have defused the bomb at B!╣10╣";
+				m_sMessageContent = "Defenders have defused the bomb at B!╣15╣";
 			};
 		} else {
 			// Set which site is planted
 			countDownActive = true;
 			if (!aSite.IsDeleted() && sitePlanted == "SiteA") {
 				aSitePlanted = true;
-				m_sMessageContent = "Attackers have placed a bomb at A!╣10╣";
+				m_sMessageContent = "Attackers have placed a bomb at A!╣15╣";
 			} else {
 				bSitePlanted = true;
-				m_sMessageContent = "Attackers have placed a bomb at B!╣10╣";
+				m_sMessageContent = "Attackers have placed a bomb at B!╣15╣";
 			};
 		
 			// Spawn countdown thread
@@ -231,6 +231,8 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		string mainMessage = messageSplitArray[0];
 		string time = messageSplitArray[1];
 		string subMessage = messageSplitArray[2];
+		
+		if(mainMessage.IsEmpty() || time.IsEmpty()) return;
 
 		SCR_PopUpNotification.GetInstance().PopupMsg(mainMessage, time.ToFloat(), subMessage);
 	};

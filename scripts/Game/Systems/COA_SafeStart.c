@@ -199,7 +199,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		if (m_sMessageContent == "#Coal_SS_Game_Live") {
 			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
 		} else {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 3.65, "#Coal_SS_Countdown_Started_Subtext");
+			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
 		};
 	};
 	

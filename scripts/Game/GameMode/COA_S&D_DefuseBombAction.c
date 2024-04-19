@@ -27,14 +27,14 @@ class COA_DefuseBombAction : ScriptedUserAction
 		if (!character)
 			return;
 		
-		string stieDefused = "";
+		string siteDefused = "";
 		
 		if (pOwnerEntity.GetID() == gameMode.aSiteID)
-			stieDefused = "SiteA";
+			siteDefused = "SiteA";
 		else
-			stieDefused = "SiteB";
+			siteDefused = "SiteB";
 		
-		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(stieDefused, false);
+		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(siteDefused, false);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}
