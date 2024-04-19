@@ -166,8 +166,9 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ToggleBombPlanted(string stiePlanted, bool togglePlanted) 
+	void ToggleBombPlanted(string sitePlanted, bool togglePlanted) 
 	{
+		PlaySound("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav");
 		if (!togglePlanted) 
 		{
 			GetGame().GetCallqueue().Remove(StartCountdown);
@@ -182,7 +183,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		} else {
 			// Set which site is planted
 			countDownActive = true;
-			if (!aSite.IsDeleted() && stiePlanted == "SiteA") {
+			if (!aSite.IsDeleted() && sitePlanted == "SiteA") {
 				aSitePlanted = true;
 				m_sMessageContent = "Attackers have placed a bomb at A!╣10╣";
 			} else {
