@@ -82,8 +82,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();
 		float millis = m_iTimeSafeStartBegan - currentTime;
-		
-  	int totalSeconds = (millis / 1000);
+  		int totalSeconds = (millis / 1000);
 		
 		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
 		

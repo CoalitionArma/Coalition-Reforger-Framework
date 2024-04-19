@@ -19,11 +19,18 @@ GenericEntity : "{FCAEC0CB2F8FF8BD}Prefabs/Structures/Military/Radar/ApproachRad
      UIInfo UIInfo "{6124464DD6818F94}" {
       Name "Blow Generator"
      }
-     Duration 3
+     Duration 5
     }
-    SCR_GetInUserAction "{612446493CD95ADF}" {
+    COA_DefuseBombAction "{61251727E8CB339F}" {
+     ParentContextList {
+      "default"
+     }
+     Duration 7
     }
    }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
   }
  }
 }
