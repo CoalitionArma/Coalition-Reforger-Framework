@@ -1,6 +1,6 @@
 $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {
-  coords 6250.521 48.987 5083.757
+  coords 6251.051 48.875 5083.277
   angleY 0
   m_sDescription "SITE A"
   m_bVisibleForEmptyFaction 1

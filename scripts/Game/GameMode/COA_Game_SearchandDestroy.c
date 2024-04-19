@@ -46,23 +46,11 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	override protected void OnWorldPostProcess(World world)
 	{
 		if (!GetGame().InPlayMode()) 
-		{
 			return;
-		}
-		
-		// Debugging in workbench
-		//GetGame().GetCallqueue().CallLater(Debugging, 250, true);
 	
 		if (Replication.IsServer())
 			initBombSites();
 	}
-	
-	/*void createMarkers()
-	// No easy way to do this so we use PS marker for now
-	{
-		// Create markers on each bombsite
-		
-	}*/
 	
 	//------------------------------------------------------------------------------------------------
 	void initBombSites()
@@ -98,6 +86,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	void Debugging() {
 		if (m_sStoredMessageContent != m_sMessageContent) {
 			m_sStoredMessageContent = m_sMessageContent;
+	
 			Print(m_sMessageContent);
 		};
 	}

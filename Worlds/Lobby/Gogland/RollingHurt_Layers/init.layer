@@ -16,11 +16,6 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_
    attackingSide "RHS_RF_MSV"
    defendingSide "RHS_US_USMC"
   }
-  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
-   m_iStartingHours 17
-   m_bRandomStartingWeather 1
-   m_bRandomWeatherChanges 1
-  }
  }
  coords 6243.637 48.875 5076.812
  {
