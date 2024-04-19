@@ -181,10 +181,10 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 			countDownActive = false;
 			if (aSitePlanted) {
 				aSitePlanted = false;
-				m_sMessageContent = "Deffenders have defused the bomb at A!╣10╣";
+				m_sMessageContent = "Defenders have defused the bomb at A!╣10╣";
 			} else {
 				bSitePlanted = false;
-				m_sMessageContent = "Deffenders have defused the bomb at B!╣10╣";
+				m_sMessageContent = "Defenders have defused the bomb at B!╣10╣";
 			};
 		} else {
 			// Set which site is planted
