@@ -21,13 +21,6 @@ class COA_PlantBombAction : ScriptedUserAction
 		if (!character)
 			return;
 		
-		// We only want one site planted at a time
-		if (gameMode.countDownActive)
-		{
-			SCR_PopUpNotification.GetInstance().PopupMsg("A Bomb Is Already Active!", 10, "Only one bomb site can be active at a time");
-			return;
-		}
-		
 		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(pOwnerEntity.GetID(), true);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
@@ -48,6 +41,17 @@ class COA_PlantBombAction : ScriptedUserAction
 		return true;
 	}	
 	
+	//------------------------------------------------------------------------------------------------
+	override bool CanBePerformedScript(IEntity user)
+	{
+		if (gameMode.countDownActive)
+			return false;
+		
+		// else true
+		return true;
+	}	
+	
+	//------------------------------------------------------------------------------------------------
 	override bool HasLocalEffectOnlyScript()
 	{
 		return true;
