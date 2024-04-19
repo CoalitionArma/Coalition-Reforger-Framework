@@ -226,15 +226,15 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	void ShowMessage()
 	{
 		array<string> messageSplitArray = {};
-		m_sMessageContent.Split("╣", messageSplitArray, false);
+		string stasisStr = m_sMessageContent;
+		stasisStr.Split("╣", messageSplitArray, false);
 
 		string mainMessage = messageSplitArray[0];
 		string time = messageSplitArray[1];
 		string subMessage = messageSplitArray[2];
 		
-		if(mainMessage.IsEmpty() || time.IsEmpty()) return;
-
-		SCR_PopUpNotification.GetInstance().PopupMsg(mainMessage, time.ToFloat(), subMessage);
+		if(!mainMessage.IsEmpty() || !time.IsEmpty())
+			SCR_PopUpNotification.GetInstance().PopupMsg(mainMessage, time.ToFloat(), subMessage);
 	};
 	
 	// Called from server to all clients
