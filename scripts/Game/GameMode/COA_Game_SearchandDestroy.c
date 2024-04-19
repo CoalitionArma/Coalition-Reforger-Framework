@@ -14,6 +14,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	protected bool aSiteDestroyed, bSiteDestroyed = false;
 	protected int sitesDestroyed = 0;
 	protected IEntity aSite, bSite;
+	EntityID aSiteID, bSiteID = null;
 	
 	protected IEntity aSiteTrigger, bSiteTrigger;
 	protected int aSiteTimer = 120;
@@ -27,17 +28,14 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	[RplProp(onRplName: "PlaySound")]
 	string m_SoundString = "";
 	
+	[RplProp(onRplName: "SiteDestroyedClient")]
+	EntityID destroyedBombSiteID = null;
+	
 	[RplProp()]
 	bool aSitePlanted = false;
 	
 	[RplProp()]
 	bool bSitePlanted = false;
-	
-	[RplProp()]
-	EntityID aSiteID = null;
-	
-	[RplProp()]
-	EntityID bSiteID = null;
 	
 	[RplProp()]
 	bool countDownActive = false;
@@ -48,12 +46,11 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode()) 
 			return;
 	
-		if (Replication.IsServer())
-			initBombSites();
+		InitBombSites();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void initBombSites()
+	void InitBombSites()
 	{
 		SCR_PopUpNotification.GetInstance().PopupMsg("Initializing Search and Destroy",10);
 		aSiteTrigger = GetGame().GetWorld().FindEntityByName("aSiteTrigger");
@@ -73,8 +70,6 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
 		bSiteID = bSite.GetID();
 		
-		Replication.BumpMe();
-		
 		// Create markers on each bomb site
 		// createMarkers();
 	}
@@ -86,7 +81,6 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	void Debugging() {
 		if (m_sStoredMessageContent != m_sMessageContent) {
 			m_sStoredMessageContent = m_sMessageContent;
-	
 			Print(m_sMessageContent);
 		};
 	}
@@ -94,7 +88,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 
 	// Acts as a loop method spawned via calllater, every 1 sec
 	//------------------------------------------------------------------------------------------------
-	void startCountdown(IEntity bombSitePlanted)
+	void StartCountdown(IEntity bombSitePlanted)
 	{
 		// Check if defused
 		if (!countDownActive) 
@@ -125,10 +119,10 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 			};
 			
 			// Remove timer
-			GetGame().GetCallqueue().Remove(startCountdown);
+			GetGame().GetCallqueue().Remove(StartCountdown);
 			countDownActive = false;
 			// Destroy site
-			siteDestroyed(bombSitePlanted);
+			SiteDestroyed(bombSitePlanted);
 			aSitePlanted = false;
 			bSitePlanted = false;
 		}
@@ -137,7 +131,7 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void siteDestroyed(IEntity bombSitePlanted) 
+	void SiteDestroyed(IEntity bombSitePlanted) 
 	{
 		sitesDestroyed++;
 		
@@ -150,23 +144,23 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		// Delete entity
 		delete bombSitePlanted;
 		
+		destroyedBombSiteID = bombSitePlanted.GetID();
+		
 		if (sitesDestroyed == 2)
 		{
 			m_sMessageContent = "Attackers have destroyed both sites!╣30╣Attacker victory!";
 			m_SoundString = "{349D4D7CC242131D}Sounds/Music/Ingame/Samples/Jingles/MU_EndCard_Drums.wav";
 		}
 		
-		countDownActive = false;
-		aSitePlanted = false;
-		bSitePlanted = false;
-		
 		Replication.BumpMe();
 	}
 	
-	void ToggleBombPlanted(EntityID entityID, bool togglePlanted) {
+	//------------------------------------------------------------------------------------------------
+	void ToggleBombPlanted(EntityID entityID, bool togglePlanted) 
+	{
 		if (!togglePlanted) 
 		{
-			GetGame().GetCallqueue().Remove(startCountdown);
+			GetGame().GetCallqueue().Remove(StartCountdown);
 			countDownActive = false;
 			if (aSitePlanted) {
 				aSitePlanted = false;
@@ -187,10 +181,27 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 			};
 		
 			// Spawn countdown thread
-			GetGame().GetCallqueue().CallLater(startCountdown, 1000, true, GetGame().GetWorld().FindEntityByID(entityID));
+			GetGame().GetCallqueue().CallLater(StartCountdown, 1000, true, GetGame().GetWorld().FindEntityByID(entityID));
 		};
 		
 		Replication.BumpMe();
+	}
+	
+	// Called from server to all clients
+	//------------------------------------------------------------------------------------------------
+	// Locality needs verified for workbench and local server hosting
+	void SiteDestroyedClient() 
+	{
+		IEntity destroyedBombSiteEntity = GetGame().GetWorld().FindEntityByID(destroyedBombSiteID);
+		
+		// Spawn explosion at site
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform[3] = destroyedBombSiteEntity.GetOrigin();
+	
+		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
+		// Delete entity
+		delete destroyedBombSiteEntity;
 	}
 	
 	// Called from server to all clients
