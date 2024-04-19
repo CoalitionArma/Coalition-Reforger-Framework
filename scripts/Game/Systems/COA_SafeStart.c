@@ -183,7 +183,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started %1 Seconds!", m_iSafeStartTimeRemaining);
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
-				m_sMessageContent = string.Format("#Coal_SS_Game_Live");
+				m_sMessageContent = "#Coal_SS_Game_Live";
 			};
 		};
 		Replication.BumpMe();
@@ -197,7 +197,11 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		PlayerController pc = GetGame().GetPlayerController();
 		if (!pc) return;
 
-		SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 4, "#Coal_SS_Countdown_Started_Subtext");
+		if (m_sMessageContent == "#Coal_SS_Game_Live") {
+			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
+		} else {
+			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 4, "#Coal_SS_Countdown_Started_Subtext");
+		};
 	};
 	
 	//------------------------------------------------------------------------------------------------
