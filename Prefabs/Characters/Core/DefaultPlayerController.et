@@ -1,12 +1,14 @@
 SCR_PlayerController {
  ID "1A9BA6BEFA06E3B1"
  components {
+  COA_GameModePlayerComponent "{61261516BC27B54D}" {
+  }
   COA_SafeStartPlayerComponent "{605C855D1DA9C3F2}" {
   }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
    InfoDisplays {
     COA_SafeStartDisplay "{605C39DF10EF1F75}" {
-     m_LayoutPath "{533092FF68C19D59}UI/Layouts/COA_SafeStartDisplay.layout"
+     m_LayoutPath "{533092FF68C19D59}UI/layouts/COA_SafeStartDisplay.layout"
     }
    }
   }
