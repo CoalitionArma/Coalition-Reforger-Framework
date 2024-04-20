@@ -3,7 +3,7 @@ GameProject {
  GUID "5EB3564A02CE294F"
  TITLE "COALITION Framework"
  Dependencies {
-  "58D0FB3206B6F859" "5D0551624969C92E" "5EE9238E61637E47" "5EAF2B0473DB5A99" "5D6EA74A94173EDF" "5D6EBC81EB1842EF" "596CB4A0AE84C08E" "5CD4956FB405C585" "5E389BB9F58B79A6" "5AAF6D5352E5FCAB" "5E5C154FEE1094BB" "6094495EBB851B75" "595F2BF2F44836FB" "5994AD5A9F33BE57" "5A56FA0AC53F8C80" "5E193315C8E82019" "5E5EE20DFDEDE5F0"
+  "58D0FB3206B6F859" "5D0551624969C92E" "5EE9238E61637E47" "5EAF2B0473DB5A99" "5D6EA74A94173EDF" "5D6EBC81EB1842EF" "596CB4A0AE84C08E" "5CD4956FB405C585" "5E389BB9F58B79A6" "5AAF6D5352E5FCAB" "5E5C154FEE1094BB" "6094495EBB851B75" "595F2BF2F44836FB" "5994AD5A9F33BE57" "5A56FA0AC53F8C80" "5E193315C8E82019"
  }
  Configurations {
   GameProjectConfig PC {
@@ -11,67 +11,6 @@ GameProject {
     ResourceManagerUserSettings ResourceManagerUserSettings "{604B76EF044C576A}" {
     }
     UserInterfaceSettings UserInterfaceSettings "{604B76EF0155D113}" {
-    }
-   }
-   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
-    StringTables {
-     StringTableDefinition "{60F896A36A92703A}" {
-      StringTableSource "{44C0935F53D620BF}stringtables/COAL_localization.st"
-      Languages {
-       LanguageDefinition "{60F896A368300451}" {
-        Code "cs_cz"
-        StringTableRuntime "{B3899A18910E8B49}stringtables/COAL_localization.cs_cz.conf"
-       }
-       LanguageDefinition "{60F896A36830041E}" {
-        Code "de_de"
-        StringTableRuntime "{66F7802B82AD9A69}stringtables/COAL_localization.de_de.conf"
-       }
-       LanguageDefinition "{60F896A3683003EB}" {
-        Code "en_us"
-        StringTableRuntime "{38070A60E85E9F68}stringtables/COAL_localization.en_us.conf"
-       }
-       LanguageDefinition "{60F896A3683003FA}" {
-        Code "es_es"
-        StringTableRuntime "{FD4B47E9065CF477}stringtables/COAL_localization.es_es.conf"
-       }
-       LanguageDefinition "{60F896A3683003C9}" {
-        Code "fr_fr"
-        StringTableRuntime "{46E3B2DEE0DF1775}stringtables/COAL_localization.fr_fr.conf"
-       }
-       LanguageDefinition "{60F896A3683003A5}" {
-        Code "it_it"
-        StringTableRuntime "{C6FF3DEA4DFD948C}stringtables/COAL_localization.it_it.conf"
-       }
-       LanguageDefinition "{60F896A3683003B0}" {
-        Code "ja_jp"
-        StringTableRuntime "{D6E48078738CA427}stringtables/COAL_localization.ja_jp.conf"
-       }
-       LanguageDefinition "{60F896A368300388}" {
-        Code "ko_kr"
-        StringTableRuntime "{765AA8D4E0A1A718}stringtables/COAL_localization.ko_kr.conf"
-       }
-       LanguageDefinition "{60F896A368300363}" {
-        Code "pl_pl"
-        StringTableRuntime "{2A2B0E2E5E4E3B64}stringtables/COAL_localization.pl_pl.conf"
-       }
-       LanguageDefinition "{60F896A36830037D}" {
-        Code "pt_br"
-        StringTableRuntime "{FF5C94E265B0F1DE}stringtables/COAL_localization.pt_br.conf"
-       }
-       LanguageDefinition "{60F896A368300354}" {
-        Code "ru_ru"
-        StringTableRuntime "{AA1D804AF8C994A8}stringtables/COAL_localization.ru_ru.conf"
-       }
-       LanguageDefinition "{60F896A36830027F}" {
-        Code "uk_ua"
-        StringTableRuntime "{2045D5BC94E72AFD}stringtables/COAL_localization.uk_ua.conf"
-       }
-       LanguageDefinition "{60F896A36830024D}" {
-        Code "zh_cn"
-        StringTableRuntime "{FAF5BB81AD47FAE0}stringtables/COAL_localization.zh_cn.conf"
-       }
-      }
-     }
     }
    }
   }

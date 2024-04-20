@@ -21,36 +21,11 @@ class COA_SafeStartPlayerComponent: ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override protected void OnPostInit(IEntity owner) 
-	{
-		super.OnPostInit(owner);
-		
-		GetGame().GetInputManager().AddActionListener("COA_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
-	}
-	
-	//------------------------------------------------------------------------------------------------
 
 	// Functions for ready up replication
 	
 	//------------------------------------------------------------------------------------------------
 	
-	void ToggleSideReady() 
-	{
-		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
-		if(!groupManager) return;
-		
-		SCR_AIGroup playersGroup = groupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
-		if(!playersGroup) return;
-		
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId());
-		
-		if (!playerName || playerName == "") return;
-		
-		if (playersGroup.IsPlayerLeader(SCR_PlayerController.GetLocalPlayerId())) 
-			Owner_ToggleSideReady(playerName);
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	void Owner_ToggleSideReady(string playerName)
 	{	
 		string setReady = "";
@@ -72,11 +47,10 @@ class COA_SafeStartPlayerComponent: ScriptComponent
 		Rpc(RpcAsk_ToggleSideReady, setReady, playerName);
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_ToggleSideReady(string setReady, string playerName)
 	{
-		CRF_SafestartGameModeComponent safestartComponent = CRF_SafestartGameModeComponent.GetInstance();
+		CRF_TNK_SafestartComponent safestartComponent = CRF_TNK_SafestartComponent.GetInstance();
 		safestartComponent.ToggleSideReady(setReady, playerName);
 	}
 }
