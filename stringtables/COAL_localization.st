@@ -81,11 +81,18 @@ StringTable {
   }
   CustomStringTableItem "{60F896A0A7205480}" {
    Id "Coal_SS_Countdown_Started"
-   Target_en_us "[CRF] : Game Live In: %1 Seconds!"
-   Target_de_de "[CRF] : Spiel startet in %1 Sekunden!"
-   Modified 1627130187
+   Target_en_us "[CRF] : Game Live In:"
+   Target_de_de "[CRF] : Spiel startet in:"
+   Modified 1629886169
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
+  }
+  CustomStringTableItem "{61261510B6F5FDE9}" {
+   Id "Coal_SS_Countdown_Started_Subtext"
+   Target_en_us "Any leader can toggle ready to cancel the countdown"
+   Modified 1629886243
+   Author "Njpatman"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0E6620551}" {
    Id "Coal_SS_Faction_Not_Ready"
@@ -97,36 +104,36 @@ StringTable {
   }
   CustomStringTableItem "{60F896A0F2448B7A}" {
    Id "Coal_SS_Faction_Readied"
-   Target_en_us "[CRF] : Faction Ready - %1"
-   Target_de_de "[CRF] : Fraktion bereit - %1"
+   Target_en_us "[CRF] : Faction Ready"
+   Target_de_de "[CRF] : Fraktion bereit"
    Comment "Generic version of ready string in case a certain side/faction is not represented in the other strings"
-   Modified 1627130194
+   Modified 1629886119
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0C5CAEB3E}" {
    Id "Coal_SS_Faction_Readied_Blufor"
-   Target_en_us "[CRF] : BLUFOR READY - %1"
-   Target_de_de "[CRF] : BLUFOR bereit - %1"
-   Modified 1627130197
+   Target_en_us "[CRF] : BLUFOR READY"
+   Target_de_de "[CRF] : BLUFOR bereit"
+   Modified 1629886122
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0D88FF976}" {
    Id "Coal_SS_Faction_Readied_Indfor"
-   Target_en_us "[CRF] : INDFOR READY - %1"
-   Target_de_de "[CRF] : INDFOR bereit - %1"
-   Modified 1627130199
+   Target_en_us "[CRF] : INDFOR READY"
+   Target_de_de "[CRF] : INDFOR bereit"
+   Modified 1629886124
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0DB27AEB5}" {
    Id "Coal_SS_Faction_Readied_Opfor"
-   Target_en_us "[CRF] : OPFOR READY - %1"
-   Target_de_de "[CRF] : OPFOR bereit - %1"
-   Modified 1627130202
+   Target_en_us "[CRF] : OPFOR READY"
+   Target_de_de "[CRF] : OPFOR bereit"
+   Modified 1629886126
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0E3AF119F}" {
    Id "Coal_SS_Faction_Ready"
@@ -138,36 +145,36 @@ StringTable {
   }
   CustomStringTableItem "{60F896A0F0D0AD67}" {
    Id "Coal_SS_Faction_Unreadied"
-   Target_en_us "[CRF] : Faction NOT READY - %1"
-   Target_de_de "[CRF] : Fraktion nicht bereit - %1"
+   Target_en_us "[CRF] : Faction NOT READY"
+   Target_de_de "[CRF] : Fraktion nicht bereit"
    Comment "Generic version of unreadied string in case a certain side/faction is not represented in the other strings"
-   Modified 1627130208
+   Modified 1629886098
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0C8E44A59}" {
    Id "Coal_SS_Faction_Unreadied_Blufor"
-   Target_en_us "[CRF] : BLUFOR NOT READY - %1"
-   Target_de_de "[CRF] : BLUFOR nicht breit - %1"
-   Modified 1627130211
+   Target_en_us "[CRF] : BLUFOR NOT READY"
+   Target_de_de "[CRF] : BLUFOR nicht breit"
+   Modified 1629886101
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0CF9391A8}" {
    Id "Coal_SS_Faction_Unreadied_Indfor"
-   Target_en_us "[CRF] : INDFOR NOT READY - %1"
-   Target_de_de "[CRF] : INDFOR nicht breit - %1"
-   Modified 1627130214
+   Target_en_us "[CRF] : INDFOR NOT READY"
+   Target_de_de "[CRF] : INDFOR nicht breit"
+   Modified 1629886103
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0CE385C91}" {
    Id "Coal_SS_Faction_Unreadied_Opfor"
-   Target_en_us "[CRF] : OPFOR NOT READY - %1"
-   Target_de_de "[CRF] : OPFOR nicht breit - %1"
-   Modified 1627130158
+   Target_en_us "[CRF] : OPFOR NOT READY"
+   Target_de_de "[CRF] : OPFOR nicht breit"
+   Modified 1629886106
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0BC23E5A7}" {
    Id "Coal_SS_Game_Live"
@@ -184,6 +191,13 @@ StringTable {
    Modified 1627130151
    Author "pi123"
    LastChanged "pi123"
+  }
+  CustomStringTableItem "{61264D4652E8FD9F}" {
+   Id "Coal_SS_SafeStart_Started_Subtext"
+   Target_en_us "Safestart has ended, weapons are now live!"
+   Modified 1629905194
+   Author "Njpatman"
+   LastChanged "Njpatman"
   }
  }
 }
