@@ -1,5 +1,5 @@
 SCR_BaseTriggerEntity Finish_Trigger {
- coords 1038.947 24.092 620.169
+ coords 1038.681 24.753 619.947
  EOnInit ""\
  "		if (Replication.IsServer())"\
  "        {"\
@@ -23,9 +23,15 @@ SCR_BaseTriggerEntity Finish_Trigger {
  "        // Notify player finished"\
  "        SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
  "        "\
- "        // Send player to spec"\
+ "        // Send player to spec - vanilla"\
  "        SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
- "        damMan.Kill(damMan.GetInstigator());"\
+ "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
+ "		SCR_CharacterDamageManagerComponent ACEdamMan = SCR_CharacterDamageManagerComponent.Cast(ent.FindComponent(SCR_CharacterDamageManagerComponent));"\
+ "		if (damMan && ACEdamMan)"\
+ "		{"\
+ "			ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
+ "			damMan.Kill(damMan.GetInstigator());"\
+ "		}	"\
  "    }"\
  "	"\
  "	void WaitTillGameStart()"\
@@ -47,6 +53,7 @@ SCR_BaseTriggerEntity Finish_Trigger {
  SphereRadius 20
  BoxMins 10 10 10
  BoxMaxs 10 10 10
+ DrawShape 1
  TriggerActivationType "All changes"
  PeriodicQueries 1
  PrefabsFilter {
