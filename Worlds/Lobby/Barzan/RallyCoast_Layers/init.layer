@@ -1,0 +1,40 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6129327C30EA31F6}" {
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{49153A2B2DBDE0F4}Worlds/BarzanMapRemake/Navmeshes/LowResBarzanMapRemake.nmn"
+    }
+   }
+  }
+ }
+ coords 2854.672 1.487 1940.513
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_bRandomWeatherChanges 1
+  }
+ }
+ coords 2843.228 1.5 1942.621
+ m_bRemoveRedundantUnits 1
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2963.968 2.558 1931.727
+}
+PS_ManualMarker : "{D4F0DA86DB75A76B}PrefabsEditable/Markers/RallyTurnMarker.et" {
+ coords 3014.984 2.469 1949.89
+ angleY 6
+ m_fWorldSize 30
+ m_sDescription "Turn 2 Left 30"
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2970.028 2.593 1932.122
+ m_sTitle ""
+}
