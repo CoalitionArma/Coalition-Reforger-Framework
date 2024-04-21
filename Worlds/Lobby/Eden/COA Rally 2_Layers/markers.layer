@@ -1,0 +1,304 @@
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 4751.409 27.844 11253.767
+  angleY -134.506
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4698.879 27.844 11133.231
+  angleY -90.508
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4585.132 24.26 11135.747
+  angleY 174.579
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4496.436 7.362 11011.882
+  angleY -119.64
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4424.721 6.966 10918.912
+  angleY 166.126
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4472.01 13.182 10719.183
+  angleY -99.235
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4299.689 4.883 10696.802
+  angleY -134.506
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4257.506 12.25 10604.513
+  angleY 91.736
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4490.406 16.553 10632.58
+  angleY 172.226
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4537.66 15.319 10430.863
+  angleY 111.107
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4596.825 14.937 10418.979
+  angleY -174.921
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4550.181 17.483 10005.1
+  angleY 172.199
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4491.614 13.297 9449.002
+  angleY 177.226
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4638.977 8.78 9279.604
+  angleY -159.486
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4475.177 23.549 9118.745
+  angleY -28.441
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4210.243 31.838 8973.771
+  angleY -27.758
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 3960.089 13.88 8610.845
+  angleY 161.262
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4004.996 26.743 7786.781
+  angleY -114.201
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4004.455 58.611 7152.831
+  angleY -96.105
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 3142.998 19.437 7013.366
+  angleY -94.485
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 3000.471 26.724 6967.565
+  angleY -128.835
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 2772.557 44.858 6831.625
+  angleY -121.393
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 2245.829 27.104 7065.169
+  angleY -175.408
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 2383.111 32.097 6420.203
+  angleY 156.697
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 2274.451 91.807 6035.511
+  angleY -134.506
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1547.783 54.431 5968.216
+  angleY -86.086
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1409.592 48.318 5997.312
+  angleY -99.477
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1280.747 37.518 5940.402
+  angleY -123.352
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "arrow-large"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1038.937 2.732 6028.825
+  angleY 1.976
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "flag-2"
+  m_sDescription "Finish Line"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 4771.634 23.45 12045.118
+  angleY -0.457
+  m_MarkerColor 0.733 0.01 0.01 1
+  m_sQuadName "flag-2"
+  m_sDescription "Start"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+}

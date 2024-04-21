@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{795184CF9AD764DB}Configs/System/chimeraInputCommon.conf"
+ Name "{6A6BBC56F05B1B54}Missions/CRF_CO47_Ridgeline.conf"
  Configurations {
   CONFResourceClass PC {
   }
@@ -9,7 +9,11 @@ MetaFileClass {
   }
   CONFResourceClass PS4 : PC {
   }
+  CONFResourceClass PS5 : PC {
+  }
   CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
   }
  }
 }
