@@ -1,0 +1,180 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 6251.051 48.875 5083.277
+  angleY 0
+  m_sDescription "SITE A"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6439.555 38.616 5135.538
+  angleY 0
+  m_sDescription "SITE B"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 6700.528 26.121 5067.075
+  angleY 0
+ }
+ {
+  coords 6678.228 43.563 5208.021
+  angleY 0
+ }
+ {
+  coords 6664.351 47.481 5285.888
+  angleY 0
+ }
+ {
+  coords 6664.633 38.392 5384.346
+  angleY 0
+ }
+ {
+  coords 6633.674 53.807 5470.519
+  angleY 0
+ }
+ {
+  coords 6601.22 52.405 5577.665
+  angleY 0
+ }
+ {
+  coords 6565.579 62.896 5681.873
+  angleY 0
+ }
+ {
+  coords 6531.74 81.358 5820.792
+  angleY 0
+ }
+ {
+  coords 6542.176 66.8 5909.343
+  angleY 0
+ }
+ {
+  coords 6575.128 39.804 6086.655
+  angleY 0
+ }
+ {
+  coords 6471.435 64.896 6094.365
+  angleY 0
+ }
+ {
+  coords 6367.261 74.517 6086.967
+  angleY 0
+ }
+ {
+  coords 6270.072 78.965 6080.984
+  angleY 0
+ }
+ {
+  coords 6170.21 84.472 6052.153
+  angleY 0
+ }
+ {
+  coords 6084.424 77.692 6045.396
+  angleY 0
+ }
+ {
+  coords 6065.332 48.547 5898.529
+  angleY 0
+ }
+ {
+  coords 6057.642 54.188 5782.899
+  angleY 0
+ }
+ {
+  coords 6028.108 69.368 5716.04
+  angleY 0
+ }
+ {
+  coords 5966.045 45.236 5587.258
+  angleY 0
+ }
+ {
+  coords 5914.489 36.143 5419.34
+  angleY 0
+ }
+ {
+  coords 5894.936 35.976 5270.78
+  angleY 0
+ }
+ {
+  coords 5904.429 41.86 5117.604
+  angleY 0
+ }
+ {
+  coords 5977.619 61.042 5096.461
+  angleY 0
+ }
+ {
+  coords 6097.756 62.138 5064.528
+  angleY 0
+ }
+ {
+  coords 6260.417 54.071 5013.907
+  angleY 0
+ }
+ {
+  coords 6336.987 75.07 5021.439
+  angleY 0
+ }
+ {
+  coords 6534.069 42.474 5030.558
+  angleY 0
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 6342.39 75.211 6008.707
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 6308.503 37.581 5267.377
+  angleY 0
+  m_sQuadName "dot"
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 6192.952 31.69 5264.504
+  angleY 0
+  m_sQuadName "dot"
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 6096.162 29.204 5257.242
+  angleY 0
+  m_sQuadName "dot"
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 6429.921 41.989 5244.988
+  angleY 0
+  m_sQuadName "dot"
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 6539.176 42.655 5243.054
+  angleY 0
+  m_sQuadName "dot"
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+}

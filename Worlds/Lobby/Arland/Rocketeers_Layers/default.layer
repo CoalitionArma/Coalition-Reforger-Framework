@@ -1,0 +1,283 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 1174.767 39 2718.787
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  SCR_CampaignBuildingManagerComponent "{60FCEBC9FA43B887}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{60FCEBC9C0213FF2}" {
+    m_sSlotFlatSmallLayout "{7FD4E6A668B4537A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFLatSmall.et"
+    m_sSlotFlatMediumLayout "{579FF731013436B5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFlatMedium.et"
+    m_sSlotFlatLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
+    m_sSlotRoadSmallLayout "{8DBA7E7BF662A393}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadSmall.et"
+    m_sSlotRoadMediumLayout "{3A5E87ADA26C6940}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadMedium.et"
+    m_sSlotRoadLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
+    m_aCompositionLayouts {
+     SCR_CampaignBuildingCompositionOutline "{5D34D094366A7550}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72F0270133FB37}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E5F0CB45E2A23A7}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72F02746156600}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D34D092A3936AEF}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D62992D16358CB8}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D66BBDB8EC3B5AB}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D6C8153F1E8DE35}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D6C90E24B82ACDA}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70BA35862CBAFA}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E0D34990A444}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E6DFBDA31CD7}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E6DFBD43B548}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF17063959}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF1720B169}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF08F63D30}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72CCC764A2F661}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E04FAF9C}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E39D1C18}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E3AD6268}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72F0241E59B4E6}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64B54CA767DC45}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64CB149EC493F2}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64CB1491E75290}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E76DD003E31C9B9}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B741B345270B}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B741F2EDD817}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B928D2DC9B20}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84C8B46847646C}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84C8B4680E1AE5}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84D70A8FCD3C63}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84D70A8FEA660C}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE08853459C4}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0885209F52}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0886C48CC7}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0886EA1694}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE088695C569}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0CF28B4478}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98DBC39DC37}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98DBDDCE7AB}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98BB2A97FE4}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98BB2558DB9}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B9874A7B27EA}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B9874A0B7600}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AECC1CA3}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AE8B0AAD}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AE171BE0}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A7701A2A8}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A77205ED6}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A5552879A}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B0489E3AA298}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B0489FDBAB79}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F1D6FD63}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F1F57EA3}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F18FA42C}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B07DCA32C81F}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B07DCBD32DB3}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E1480BD64}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E14A6F5FF}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E760349A1}" {
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E77DFEFBE}" {
+     }
+    }
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 4
+  }
+ }
+ coords 1731.78 39.01 2854.988
+ m_iFreezeTime 600
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 1175.323 39 2711.454
+}
+GenericEntity : "{228E21AB029B40DC}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/BuildingService_USSR_NoAffiliation.et" {
+ components {
+  SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+   m_sProviderDisplayName "Power Station"
+   m_bRegisterAtBase 0
+   m_aAvailableTraits {
+    28 108
+   }
+  }
+  ActionsManagerComponent "{5CB66A0F7D87DD32}" {
+   additionalActions {
+    SCR_CampaignBuildingStartUserAction "{5D7CEAB35C598542}" {
+     Duration 1
+    }
+   }
+  }
+ }
+ coords 1727.275 38.989 2854.527
+ angleY 68
+}
+$grp GenericEntity : "{5B62CDB64C513F64}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_SupplyStack_01_V5_storage_USSR_covered.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 5000
+      m_fResourceValueMax 5000
+     }
+    }
+   }
+  }
+  coords 1726.553 38.966 2856.141
+  angleY -102
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 5000
+      m_fResourceValueMax 5000
+     }
+    }
+   }
+  }
+  coords 1182.03 39 2711.689
+  angleY 83
+ }
+}
+$grp SCR_EditorRestrictionZoneEntity : "{6144B0BE2EAC6897}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneMedium.et" {
+ {
+  coords 1738.779 40.011 2854.61
+ }
+ {
+  coords 1176.911 39 2710.861
+ }
+}
+$grp GenericEntity : "{7C93700E1AC4C388}Prefabs/Props/Military/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Launcher_USSR.et" {
+ {
+  coords 1724.637 39 2862.997
+ }
+ {
+  coords 1183.604 39 2703.818
+ }
+ {
+  coords 1178.561 39 2720.354
+ }
+ {
+  coords 1729.484 39 2846.427
+ }
+}
+$grp PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ {
+  coords 1174.772 39.01 2709.888
+ }
+ {
+  coords 1174.934 39 2708.65
+  m_sTitle "BRIEFING"
+  m_sTextData "THOSE RUFFIANS ACROSS THE RUNWAY FROM US ARE BUILDING A GOT DAYUM FORT"\
+  ""\
+  "BUILD A BETTER ONE"\
+  ""\
+  "WHEN SAFESTART DISABLES, UNLEASH ALL HELL."
+  m_iOrder 3
+ }
+}
+GenericEntity : "{9B0CBFA9E66DE2DA}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/BuildingService_US_NoAffiliation.et" {
+ components {
+  SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+   m_aAvailableTraits {
+    28 108
+   }
+  }
+ }
+ coords 1181.54 39 2713.293
+ angleY -112
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1694.807 39 2848.517
+  m_sTitle "Ruffians Wiped Out"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 1703.901 39.01 2850.144
+  m_sTitle "Ruffians Wiped Out"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_sFactionKey "US"
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1728.396 39 2851.496
+ angleY 0
+ m_sDescription "OPFOR"
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1184.269 39 2710.304
+ angleY 0
+ m_sDescription "BLUFOR"
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

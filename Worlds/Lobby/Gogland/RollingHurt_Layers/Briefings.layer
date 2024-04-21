@@ -1,0 +1,77 @@
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 6267.35 48.875 5093.97
+}
+$grp PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ {
+  coords 6273.254 48.875 5092.35
+  m_sTitle "Situation"
+  m_sTextData "BLUFOR (USMC) have been tasked with the defense of two generators, marked on the map as 'SITE A' and 'SITE B'."\
+  ""\
+  "BLUFOR must defend these generators at all cost and for 45 minutes."\
+  ""\
+  "OPFOR (RU MSV) have been tasked with the destruction of said generators."\
+  ""\
+  "Total game length: 45 minutes"
+  m_iOrder 1
+ }
+ WinConds {
+  coords 6269.769 48.875 5093.08
+  m_sTitle "Win Conditions"
+  m_sTextData "BLUFOR:"\
+  ""\
+  "Total Victory "\
+  "Defend both generators for 45 minutes"\
+  "Destroy all OPFOR forces"\
+  ""\
+  "Draw"\
+  "One generator remains after 45 minutes"\
+  "Both sides not destroyed"\
+  ""\
+  "Total Defeat"\
+  "Both generators are destroyed"\
+  "Lose 90% of your forces"\
+  ""\
+  "OPFOR:"\
+  ""\
+  "Total Victory"\
+  "Destroy both generators"\
+  "Destroy all of BLUFOR"\
+  ""\
+  "Draw"\
+  "Destroy one generator after 45 minutes"\
+  ""\
+  "Total Defeat"\
+  "Time runs out"\
+  "Fail to destroy any generator"\
+  "Lose 90% of your forces"\
+  ""
+  m_iOrder 3
+ }
+ Assets {
+  coords 6270.217 48.875 5092.908
+  m_sTitle "Assets"
+  m_sTextData "BLUFOR:"\
+  ""\
+  "Anti-tank weaponry"\
+  "Emplacements"\
+  ""\
+  "OPFOR:"\
+  ""\
+  "2x BMP-2"
+  m_iOrder 2
+ }
+ Gameplay {
+  coords 6261.574 48.875 5093.755
+  m_sTitle "Gameplay Instructions"
+  m_sTextData "Gametype: Search and Destroy"\
+  ""\
+  "The attackers must get to both bomb sites and interact with them to plant a bomb. Once the bomb is planted, the attackers must defend the site from defender counterattack for 2 minutes."\
+  ""\
+  "If the bomb is defused, the timer saves and does not reset."\
+  ""\
+  "If the bomb is not defused, the site will explode."\
+  ""\
+  "Only one bomb site can be active at a time. Attackers cannot plant both bombs at once."
+  m_iOrder 4
+ }
+}
