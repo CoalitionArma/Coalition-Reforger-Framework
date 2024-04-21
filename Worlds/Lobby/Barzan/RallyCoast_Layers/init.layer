@@ -18,21 +18,338 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+  }
+  PS_ObjectiveManager "{60E1584A0994EE9A}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{60E1584A0994EEE4}" {
+     m_iScore 0
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{60E1584A0994EEE7}" {
+     m_iScore 25
+     m_sName "#PS-ObjectiveLevel_MinorLoss"
+    }
+    PS_ObjectiveLevel "{60E1584A0994EEE6}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_Draw"
+    }
+    PS_ObjectiveLevel "{60E1584A0997019A}" {
+     m_iScore 75
+     m_sName "#PS-ObjectiveLevel_MinorVictory"
+    }
+    PS_ObjectiveLevel "{60E1584A0997019D}" {
+     m_iScore 100
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{60E1584A09970193}" {
+   m_fDuration 0
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{60E1584A09970194}" {
+   }
+  }
+  SCR_SaveLoadComponent "{60E1584A09970197}" {
+   m_Struct SCR_MissionStruct "{60E1584A0997B933}" {
+    m_Struct0 SCR_EditorStruct "{60E1584A0997B932}" {
+     m_AttributeList SCR_EditorAttributeList "{590C7881C296FA7D}" : "{F3D6C6D25642352C}Configs/Editor/AttributeLists/Edit.conf" {
+     }
+    }
+   }
+   m_iAutosavePeriod 600
+  }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_bRandomWeatherChanges 1
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
   }
  }
  coords 2843.228 1.5 1942.621
  m_bRemoveRedundantUnits 1
 }
+$grp GenericEntity : "{0CA57DAC081DF11A}Prefabs/Props/Fabric/Flags/Flag_1_2_Green_01.et" {
+ {
+  coords 1048.528 21.874 640.387
+ }
+ {
+  coords 1044.927 22.011 641.675
+ }
+}
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 2963.968 2.558 1931.727
 }
-PS_ManualMarker : "{D4F0DA86DB75A76B}PrefabsEditable/Markers/RallyTurnMarker.et" {
- coords 3014.984 2.469 1949.89
- angleY 6
- m_fWorldSize 30
- m_sDescription "Turn 2 Left 30"
+$grp PS_ManualMarker : "{D4F0DA86DB75A76B}PrefabsEditable/Markers/RallyTurnMarker.et" {
+ {
+  coords 3014.984 2.469 1949.89
+  angleY 6
+  m_fWorldSize 30
+  m_sDescription "Left 2 90"
+ }
+ {
+  coords 3042.835 9.994 2039.911
+  angleY 64.544
+  m_fWorldSize 30
+  m_sDescription "Right 4 40"
+ }
+ {
+  coords 2965.332 3.607 2312.413
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Left 5 320"
+ }
+ {
+  coords 3032.74 4.245 2202.409
+  angleY -47.896
+  m_fWorldSize 30
+  m_sDescription "Right 4 115"
+ }
+ {
+  coords 2421.531 6.668 2677.886
+  angleY -42.658
+  m_fWorldSize 30
+  m_sDescription "Right 3 45"
+ }
+ {
+  coords 2349.78 4.028 2769.562
+  angleY -75.503
+  m_fWorldSize 30
+  m_sDescription "Turn 2 Left 30"
+ }
+ {
+  coords 2264.597 7.693 2736.429
+  angleY -78.033
+  m_fWorldSize 30
+  m_sDescription "Left 3 170"
+ }
+ {
+  coords 2094.158 5.031 2766.761
+  angleY 15.107
+  m_fWorldSize 30
+  m_sDescription "Square Right 30"
+ }
+ {
+  coords 1768.63 3.722 2846.388
+  angleY -168.326
+  m_fWorldSize 30
+  m_sDescription "Left Square 20"
+ }
+ {
+  coords 1861.112 7.872 2373.096
+  angleY -107.888
+  m_fWorldSize 30
+  m_sDescription "Right Square 230"
+ }
+ {
+  coords 1281.395 8.89 2071.271
+  angleY -168.665
+  m_fWorldSize 30
+  m_sDescription "Left Square 470"
+ }
+ {
+  coords 1256.375 5.867 1437.489
+  angleY 145.713
+  m_fWorldSize 30
+  m_sDescription "Left 2 30"
+ }
+ {
+  coords 1369.566 2.469 1219.717
+  angleY -154.887
+  m_fWorldSize 30
+  m_sDescription "RIght 2 60"
+ }
+ {
+  coords 1350.582 2.5 1166.136
+  angleY -68.196
+  m_fWorldSize 30
+  m_sDescription "Right Square 280"
+ }
+ {
+  coords 994.5 4.305 1277.935
+  angleY -113.985
+  m_fWorldSize 30
+  m_sDescription "Left 1 80"
+ }
+ {
+  coords 947.145 14.277 1118.784
+  angleY 92.031
+  m_fWorldSize 30
+  m_sDescription "Left Square 170"
+ }
+ {
+  coords 1259.271 5.541 1041.912
+  angleY -136.421
+  m_fWorldSize 30
+  m_sDescription "Right Square 320"
+ }
+ {
+  coords 1109.923 3.102 755.84
+  angleY -90.342
+  m_fWorldSize 30
+  m_sDescription "Right 1 70"
+ }
+ {
+  coords 1049.454 7.932 737.139
+  angleY 179.592
+  m_fWorldSize 30
+  m_sDescription "Right 3 20"
+ }
+ {
+  coords 2085.85 4.278 2824.671
+  angleY -48.114
+  m_fWorldSize 30
+  m_sDescription "Left 4 100"
+ }
+ {
+  coords 1998.49 3.93 2867.32
+  angleY -103.343
+  m_fWorldSize 30
+  m_sDescription "Right 5 DC 160"
+ }
+ {
+  coords 1833.943 3.906 2889.81
+  angleY -105.446
+  m_fWorldSize 30
+  m_sDescription "Left 2 CAUTION 60"
+ }
+ {
+  coords 3081.898 9.412 2058.309
+  angleY 49.125
+  m_fWorldSize 30
+  m_sDescription "Right 4 Opens 5 160"
+ }
+ {
+  coords 2690.527 3.173 2486.563
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Left 2 20"
+ }
+ {
+  coords 2667.332 3.027 2494.352
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Right 2 20"
+ }
+ {
+  coords 2640.832 2.688 2520.417
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Left 3 40"
+ }
+ {
+  coords 2568.222 2.735 2551.28
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Right 2 CAUTION 100"
+ }
+ {
+  coords 2520.549 3.859 2620.957
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Left 3 115"
+ }
+ {
+  coords 2392.514 5.96 2738.347
+  angleY -42.658
+  m_fWorldSize 30
+  m_sDescription "Left 3 TIGHTENS 2 130"
+ }
+ {
+  coords 1786.265 4.187 2852.185
+  angleY -105.446
+  m_fWorldSize 30
+  m_sDescription "Right 3 CAUTION 10"
+ }
+ {
+  coords 1762.328 4.459 2824.634
+  angleY -143.146
+  m_fWorldSize 30
+  m_sDescription "Right 5 10"
+ }
+ {
+  coords 1751.616 1.917 2805.038
+  angleY -143.146
+  m_fWorldSize 30
+  m_sDescription "Left 4 60"
+ }
+ {
+  coords 1751.099 8.051 2755.81
+  angleY -143.146
+  m_fWorldSize 30
+  m_sDescription "Right 3 40"
+ }
+ {
+  coords 1721.565 9.978 2714.627
+  angleY -143.146
+  m_fWorldSize 30
+  m_sDescription "Left 4 OPENS 6 370"
+ }
+ {
+  coords 1636.656 8.25 2284.579
+  angleY -107.888
+  m_fWorldSize 30
+  m_sDescription "Left 6 170"
+ }
+ {
+  coords 1466.663 7.232 2228.517
+  angleY -125.304
+  m_fWorldSize 30
+  m_sDescription "Left 6 250"
+ }
+ {
+  coords 1265.244 3.852 1596.287
+  angleY 175.939
+  m_fWorldSize 30
+  m_sDescription "Right 6 170 CAUTION"
+ }
+ {
+  coords 1295.024 4.39 1388.837
+  angleY 145.713
+  m_fWorldSize 30
+  m_sDescription "Right 6 180"
+ }
+ {
+  coords 1086.689 4.048 1256.943
+  angleY -68.196
+  m_fWorldSize 30
+  m_sDescription "Left 4 30"
+ }
+ {
+  coords 1044.737 4.375 1260.862
+  angleY -68.196
+  m_fWorldSize 30
+  m_sDescription "Right 4 30"
+ }
+ {
+  coords 934.951 7.561 1221.369
+  angleY -169.415
+  m_fWorldSize 30
+  m_sDescription "Left 3 100"
+ }
+ {
+  coords 1114.666 10.669 1117.503
+  angleY 101.212
+  m_fWorldSize 30
+  m_sDescription "Right 5 100"
+ }
+ {
+  coords 1218.534 6.876 1076.563
+  angleY 129.096
+  m_fWorldSize 30
+  m_sDescription "Right 4 40"
+ }
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 2970.028 2.593 1932.122
