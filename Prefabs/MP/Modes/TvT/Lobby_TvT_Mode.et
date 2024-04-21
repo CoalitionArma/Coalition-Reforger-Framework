@@ -1,7 +1,7 @@
 PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
  ID "56B2B479C6B96951"
  components {
-  CRF_TNK_SafestartComponent "{60E1584A1B74B109}" {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
   }
   PS_MissionDataManager "{60E1584A0994EE9F}" {
   }
@@ -71,10 +71,12 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
  PlayerControllerPrefab "{4E5DAC62A374950F}Prefabs/Characters/Core/DefaultPlayerControllerMP_Coop.et"
  m_bAutoPlayerRespawn 0
  m_bAllowFactionChange 0
+ m_bAdminMode 1
+ m_bTeamSwitch 1
  m_iFreezeTime 0
  m_bDisableChat 1
  {
-  PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+  PerceptionManager "60EEFA0D7F5E8A78" : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
    ID "60E1584ADF58C5A4"
    coords 0 0 0
   }
@@ -87,7 +89,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
   ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
    ID "60E1584A0994EE86"
   }
-  HitRegistrationManager : "{0EDA3D48791120DD}Prefabs/MP/HitRegManager.et" {
+  HitRegistrationManager "60EEFA0D7F597244" : "{0EDA3D48791120DD}Prefabs/MP/HitRegManager.et" {
    ID "60E1584B2411D72B"
    coords 0 0 0
   }
