@@ -219,13 +219,6 @@ GenericEntity : "{228E21AB029B40DC}Prefabs/Compositions/Misc/CustomEntities/Inte
     28
    }
   }
-  ActionsManagerComponent "{5CB66A0F7D87DD32}" {
-   additionalActions {
-    SCR_CampaignBuildingStartUserAction "{5D7CEAB35C598542}" {
-     Duration 1
-    }
-   }
-  }
  }
  coords 2053.758 6.156 962.38
  angleY 170
@@ -299,11 +292,13 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  {
   coords 2045.474 6.25 957.736
   m_sTitle "Secure the Power Station"
+  m_sDescription "BLUFOR needs to resecure the power station under Soviet control"
   m_sFactionKey "US"
  }
  {
   coords 2046.972 6.235 957.555
   m_sTitle "Defend Power Station"
+  m_sDescription "OPFOR needs to defend the power station against US incursion"
   m_sFactionKey "USSR"
  }
 }

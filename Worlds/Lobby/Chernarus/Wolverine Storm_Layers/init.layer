@@ -38,8 +38,6 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_
   }
  }
  coords 7569.663 331.344 7706.438
- m_bAdminMode 1
- m_bTeamSwitch 1
  {
   SCR_FactionManager "60ED35E87DCEC40C" {
    ID "60E1584A0994EEB9"
