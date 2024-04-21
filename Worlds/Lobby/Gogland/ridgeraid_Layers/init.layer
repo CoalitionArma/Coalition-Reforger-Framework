@@ -20,6 +20,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PS_GameModeCoop Lobby_COOP_Mode1 : "{4281A768CB4E8864}Prefabs/MP/Modes/COOP/Lobby_COOP_Mode.et" {
  coords 6451.002 64.454 6041.09
  m_bAdminMode 1
+ m_bTeamSwitch 1
  {
   SCR_FactionManager "60ECFE6A845D64D4" {
    ID "60ECFE697676124E"

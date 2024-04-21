@@ -26,7 +26,7 @@ SCR_ChimeraCharacter : "{F39178D190269C70}Prefabs/Characters/Factions/BLUFOR/RHS
    WeaponSlotIndex 0
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
-   WeaponTemplate "{D0B1954ADADE4BFF}Prefabs/Weapons/Launchers/M72/Launcher_AT4_base.et"
+   WeaponTemplate "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
    WeaponSlotIndex 1
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {

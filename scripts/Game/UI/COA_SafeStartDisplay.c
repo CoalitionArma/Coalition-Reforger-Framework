@@ -14,7 +14,7 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	protected TextWidget m_wOpforReady;
 	protected TextWidget m_wIndforReady;
 	
-	protected CRF_TNK_SafestartComponent m_SafestartComponent = null;
+	protected CRF_SafestartGameModeComponent m_SafestartComponent = null;
 	protected SCR_FactionManager m_FactionManager = null;
 	
 	protected float m_fCurrentOpacity = 0;
@@ -25,18 +25,11 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	// override/static functions
 
 	//------------------------------------------------------------------------------------------------
-
-	override protected void OnInit(IEntity owner)
-	{
-		super.OnInit(owner);
-		GetGame().GetInputManager().ActivateContext("CoalitionReforgerFrameworkContext", 36000000);
-		GetGame().GetInputManager().AddActionListener("ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
-	}
 	
 	override protected void UpdateValues(IEntity owner, float timeSlice)
 	{
 		if (!m_SafestartComponent || !m_FactionManager) {
-			m_SafestartComponent = CRF_TNK_SafestartComponent.GetInstance();
+			m_SafestartComponent = CRF_SafestartGameModeComponent.GetInstance();
 			m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 			return;
 		};
@@ -95,9 +88,9 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 		
 		foreach (int i, string factionReady : outFactionsReady) {
 			int colorToSet = 0;
-			if (factionReady == "Ready")     {colorToSet = ARGB(185, 0, 190, 85);   };
-			if (factionReady == "Not Ready") {colorToSet = ARGB(185, 200, 65, 65);  };
-			if (factionReady == "N/A")       {colorToSet = ARGB(185, 135, 135, 135);};
+			if (factionReady == "#Coal_SS_Faction_Ready")     {colorToSet = ARGB(185, 0, 190, 85);   };
+			if (factionReady == "#Coal_SS_Faction_Not_Ready") {colorToSet = ARGB(185, 200, 65, 65);  };
+			if (factionReady == "#Coal_SS_No_Faction")       {colorToSet = ARGB(185, 135, 135, 135);};
 		
 			switch (i) {
 				case (0)  : {m_wBluforReady.SetText(factionReady); m_wBluforReady.SetColorInt(colorToSet); break;};
@@ -151,17 +144,5 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 		m_wMissionStart2.SetOpacity(1);
 		
 		m_fCurrentOpacity = 1;
-	}
-	
-	void ToggleSideReady() 
-	{
-		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
-		if(!groupManager) return;
-		SCR_AIGroup playersGroup = groupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
-		if(!playersGroup) return;
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId());
-		if (!playerName || playerName == "") return;
-		if (playersGroup.IsPlayerLeader(SCR_PlayerController.GetLocalPlayerId())) 
-			COA_SafeStartPlayerComponent.GetInstance().Owner_ToggleSideReady(playerName);
 	}
 }
