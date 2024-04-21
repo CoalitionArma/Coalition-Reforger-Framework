@@ -18,8 +18,6 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
-  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
-  }
   PS_ObjectiveManager "{60E1584A0994EE9A}" {
    m_aObjectiveLavels {
     PS_ObjectiveLevel "{60E1584A0994EEE4}" {
@@ -90,6 +88,17 @@ $grp GenericEntity : "{0CA57DAC081DF11A}Prefabs/Props/Fabric/Flags/Flag_1_2_Gree
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 2963.968 2.558 1931.727
+ m_sTextData "Billions must drive"\
+ ""\
+ "If you're a co-driver, use your map and hover over the turn markers to get information about the track."\
+ ""\
+ "Quick Guide on how to read this:"\
+ ""\
+ "The direction of the turn is given first, then the number that follows is the recommended gear for that turn. Ex: Left 1 would be a very tight turn that you would need to slow down for. Left 6 would be a very gradual turn that you could safely go full throttle for."\
+ ""\
+ "Occasionally you may see \"DC\" or \"CAUTION\". This is a warning, expect some form of hazard or dangerous object."\
+ ""\
+ "Opens means that the road goes from a tight turn to a long gradual turn. Tightens means that the road goes from a long gradual turn to a tight turn. "
 }
 $grp PS_ManualMarker : "{D4F0DA86DB75A76B}PrefabsEditable/Markers/RallyTurnMarker.et" {
  {
