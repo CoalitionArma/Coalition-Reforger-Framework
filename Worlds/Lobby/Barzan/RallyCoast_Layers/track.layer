@@ -16982,4 +16982,322 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
    }
   }
  }
+ {
+  coords 1775.209 3.987 2844.422
+  angleY -84
+  {
+   GenericEntity {
+    ID "552C73976795067A"
+    coords -0.018 0.375 -0.016
+    angleX 0.009
+    angleY 64.095
+    angleZ 0.13
+   }
+   GenericEntity {
+    ID "552C73976795067D"
+    coords -0.001 0.749 -0.009
+    angleX -0.026
+    angleY 89.361
+    angleZ 0.17
+   }
+   GenericEntity {
+    ID "552C73976795067E"
+    coords 0.01 1.115 -0.004
+    angleX 0.013
+    angleY 59.333
+    angleZ 0.12
+   }
+   GenericEntity {
+    ID "552C73976795067F"
+    coords 0.019 1.491 -0.017
+    angleX 0.023
+    angleY 41.895
+    angleZ 0.084
+   }
+   $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_TireStack_M939A1_02.et" {
+    {
+     coords -4.081 -0.083 0.523
+     {
+      GenericEntity {
+       ID "552C739767950670"
+       coords 0 0 0
+      }
+      GenericEntity {
+       ID "552C73976795067A"
+       coords -0.018 0.375 -0.016
+       angleX 0.009
+       angleY 64.095
+       angleZ 0.13
+      }
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.001 0.749 -0.009
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+      GenericEntity {
+       ID "552C73976795067E"
+       coords 0.01 1.115 -0.004
+       angleX 0.013
+       angleY 59.333
+       angleZ 0.12
+      }
+      GenericEntity {
+       ID "552C73976795067F"
+       coords 0.019 1.491 -0.017
+       angleX 0.023
+       angleY 41.895
+       angleZ 0.084
+      }
+     }
+    }
+    {
+     coords -2.725 -0.066 0.479
+     {
+      GenericEntity {
+       ID "552C739767950670"
+       coords 0 0 0
+      }
+      GenericEntity {
+       ID "552C73976795067A"
+       coords -0.018 0.375 -0.016
+       angleX 0.009
+       angleY 64.095
+       angleZ 0.13
+      }
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.001 0.749 -0.009
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+      GenericEntity {
+       ID "552C73976795067E"
+       coords 0.01 1.115 -0.004
+       angleX 0.013
+       angleY 59.333
+       angleZ 0.12
+      }
+      GenericEntity {
+       ID "552C73976795067F"
+       coords 0.019 1.491 -0.017
+       angleX 0.023
+       angleY 41.895
+       angleZ 0.084
+      }
+     }
+    }
+    {
+     coords -1.384 -0.081 0.249
+     {
+      GenericEntity {
+       ID "552C739767950670"
+       coords 0 0 0
+      }
+      GenericEntity {
+       ID "552C73976795067A"
+       coords -0.018 0.375 -0.016
+       angleX 0.009
+       angleY 64.095
+       angleZ 0.13
+      }
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.001 0.749 -0.009
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+      GenericEntity {
+       ID "552C73976795067E"
+       coords 0.01 1.115 -0.004
+       angleX 0.013
+       angleY 59.333
+       angleZ 0.12
+      }
+      GenericEntity {
+       ID "552C73976795067F"
+       coords 0.019 1.491 -0.017
+       angleX 0.023
+       angleY 41.895
+       angleZ 0.084
+      }
+     }
+    }
+    {
+     coords -5.368 -0.09 0.528
+     {
+      GenericEntity {
+       ID "552C739767950670"
+       coords 0 0 0
+      }
+      GenericEntity {
+       ID "552C73976795067A"
+       coords -0.017 0.375 -0.016
+       angleX 0.009
+       angleY 64.095
+       angleZ 0.13
+      }
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.001 0.749 -0.009
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 1781.236 4.089 2846.757
+  angleY -22.828
+  {
+   GenericEntity {
+    ID "552C73976795067A"
+    coords -0.018 0.375 -0.016
+    angleX 0.009
+    angleY 64.095
+    angleZ 0.13
+   }
+   $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_TireStack_M939A1_02.et" {
+    {
+     coords -4.081 -0.083 0.523
+     {
+      GenericEntity {
+       ID "552C73976795067A"
+       coords -0.018 0.375 -0.016
+       angleX 0.009
+       angleY 64.095
+       angleZ 0.13
+      }
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.001 0.749 -0.009
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+      GenericEntity {
+       ID "552C73976795067E"
+       coords 0.01 1.115 -0.004
+       angleX 0.013
+       angleY 59.333
+       angleZ 0.12
+      }
+      GenericEntity {
+       ID "552C73976795067F"
+       coords 0.019 1.491 -0.017
+       angleX 0.023
+       angleY 41.895
+       angleZ 0.084
+      }
+     }
+    }
+    {
+     coords -2.725 -0.066 0.479
+     {
+      GenericEntity {
+       ID "552C739767950670"
+       coords -0 0 -0
+      }
+      GenericEntity {
+       ID "552C73976795067A"
+       coords -0.018 0.375 -0.016
+       angleX 0.009
+       angleY 64.095
+       angleZ 0.13
+      }
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.002 0.749 -0.01
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+      GenericEntity {
+       ID "552C73976795067E"
+       coords 0.01 1.115 -0.004
+       angleX 0.013
+       angleY 59.333
+       angleZ 0.12
+      }
+      GenericEntity {
+       ID "552C73976795067F"
+       coords 0.019 1.491 -0.018
+       angleX 0.023
+       angleY 41.895
+       angleZ 0.084
+      }
+     }
+    }
+    {
+     coords -1.384 -0.081 0.249
+     {
+      GenericEntity {
+       ID "552C739767950670"
+       coords 0 0 -0
+      }
+      GenericEntity {
+       ID "552C73976795067A"
+       coords -0.018 0.375 -0.016
+       angleX 0.009
+       angleY 64.095
+       angleZ 0.13
+      }
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.001 0.749 -0.009
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+      GenericEntity {
+       ID "552C73976795067E"
+       coords 0.01 1.115 -0.004
+       angleX 0.013
+       angleY 59.333
+       angleZ 0.12
+      }
+      GenericEntity {
+       ID "552C73976795067F"
+       coords 0.019 1.491 -0.018
+       angleX 0.023
+       angleY 41.895
+       angleZ 0.084
+      }
+     }
+    }
+    {
+     coords -5.368 -0.09 0.528
+     {
+      GenericEntity {
+       ID "552C73976795067D"
+       coords -0.001 0.749 -0.009
+       angleX -0.026
+       angleY 89.361
+       angleZ 0.17
+      }
+      GenericEntity {
+       ID "552C73976795067E"
+       coords 0.01 1.115 -0.004
+       angleX 0.013
+       angleY 59.333
+       angleZ 0.12
+      }
+      GenericEntity {
+       ID "552C73976795067F"
+       coords 0.019 1.491 -0.017
+       angleX 0.023
+       angleY 41.895
+       angleZ 0.084
+      }
+     }
+    }
+   }
+  }
+ }
 }
