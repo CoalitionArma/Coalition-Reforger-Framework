@@ -16,7 +16,7 @@ PS_GameModeCoop Lobby_Spcl_Mode1 : "{65B1AAF0045513DF}Prefabs/MP/Modes/Spcl/Lobb
  }
 }
 SCR_BaseTriggerEntity EndTrigger {
- coords 1037.423 0 6100.169
+ coords 1036.675 0.496 6100.988
  EOnActivate ""\
  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Meaux\", 90, \"Racers should all board their vehicles now.\");"\
  "	"
@@ -45,9 +45,15 @@ SCR_BaseTriggerEntity EndTrigger {
  "		// Notify player finished"\
  "		SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
  "		"\
- "		// Send player to spec"\
- "		SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
- "		damMan.Kill(damMan.GetInstigator());"\
+ "		// Send player to spec - vanilla"\
+ "        SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+ "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
+ "		SCR_CharacterDamageManagerComponent ACEdamMan = SCR_CharacterDamageManagerComponent.Cast(ent.FindComponent(SCR_CharacterDamageManagerComponent));"\
+ "		if (damMan && ACEdamMan)"\
+ "		{"\
+ "			ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
+ "			damMan.Kill(damMan.GetInstigator());"\
+ "		}	"\
  "	"
  RunDefaultQueryFirst 0
 }
