@@ -1,3 +1,6 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 4721.409 161.95 6977.689
+}
 $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  BLUFOR_Assets {
   coords 4836.851 164.527 7193.119
