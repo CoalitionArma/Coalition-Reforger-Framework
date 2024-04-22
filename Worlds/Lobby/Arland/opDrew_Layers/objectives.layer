@@ -1,0 +1,163 @@
+$grp SCR_BaseTriggerEntity {
+ BasePowerObj {
+  coords 1685.899 40.941 3021.921
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 5
+  BoxMins -0.5 -0.5 0
+  BoxMaxs 2 1 0
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Power Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
+ }
+ BasePowerObj2 {
+  coords 2509.292 148.938 2267.26
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 5
+  BoxMins -0.5 -0.5 0
+  BoxMaxs 2 1 0
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Communication Tower Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
+ }
+ BasePowerObj3 {
+  coords 1121.982 3.144 3363.323
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 8.3
+  BoxMins 1 1 1
+  BoxMaxs 5 5 5
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel Dump Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
+ }
+ BasePowerObj5 {
+  coords 1363.183 39 2274.945
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 16
+  BoxMins -0.5 -0.5 0
+  BoxMaxs 2 1 0
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Ammo Dump Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
+ }
+}
+SCR_AIGroup BaseCommander : "{218445F83827D929}Prefabs/Groups/OPFOR/RHS_RF_MSV/EMR/Group_MSV_EMR_RifleSquad.et" {
+ components {
+  AIPathfindingComponent "{518A98842FFC190E}" {
+   IgnoreFlags 126
+  }
+ }
+ coords 3178.678 17.94 2831.194
+ m_aUnitPrefabSlots {
+  "{A67F5A2E875AEB72}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Officer.et"
+ }
+ m_bSnapToTerrain 0
+}
+Vehicle Ural4320_Arsenal2 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
+ coords 1075.8 38 2831.343
+ angleY 86.703
+}
+$grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_01/IntelligenceFolder_E_01.et" {
+ IntelligenceFolder_E_01_60FAD33C7593031B {
+  coords 1360.453 43.715 2966.861
+ }
+ IntelligenceFolder_E_01_60FAD33CBCA08949 {
+  coords 1027.793 38.332 2993.526
+ }
+ IntelligenceFolder_E_01_60FAD33CE9136F12 {
+  coords 1374.797 41.686 2346.87
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1292.167 39.981 2324.368
+  m_sTitle "Find Blufor Saboteur Group"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 1289.27 39 2312.271
+  m_sTitle "Find Blufor Saboteur Group"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_sFactionKey "RHS_US_USMC"
+ }
+}
+GenericEntity : "{D215BC98417FA3CB}Prefabs/Vehicles/Airplanes/IL76/Plane_IL76USSR_Open.et" {
+ coords 1338.063 39 2258.231
+ angleY -34.835
+}

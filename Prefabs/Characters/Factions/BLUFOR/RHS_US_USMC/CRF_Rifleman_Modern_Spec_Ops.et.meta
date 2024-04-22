@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{8FFD7752FFB6D590}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern_Spec_Ops.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

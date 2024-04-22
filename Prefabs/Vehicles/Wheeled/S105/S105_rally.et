@@ -1,0 +1,25 @@
+Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  VehicleWheeledSimulation_SA "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     MaxPower 300
+     MaxTorque 370
+     RpmMaxTorque 7000
+     Steepness 30
+    }
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
+       MaxSteeringAngle 46.75
+       SpringRate 35
+       MaxTravelUp 0.095
+       MaxTravelDown 0.032
+      }
+     }
+    }
+   }
+  }
+ }
+}
