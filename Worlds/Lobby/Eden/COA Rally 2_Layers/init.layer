@@ -3,6 +3,11 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 PS_GameModeCoop Lobby_Spcl_Mode1 : "{65B1AAF0045513DF}Prefabs/MP/Modes/Spcl/Lobby_Spcl_Mode.et" {
  coords 4791.579 25.125 12002.499
+<<<<<<< Updated upstream
+=======
+ m_bAdminMode 1
+ m_bTeamSwitch 1
+>>>>>>> Stashed changes
  {
   SCR_FactionManager "60EA29A5B282B625" {
    ID "60EA29A41A2FF552"
@@ -16,7 +21,12 @@ PS_GameModeCoop Lobby_Spcl_Mode1 : "{65B1AAF0045513DF}Prefabs/MP/Modes/Spcl/Lobb
  }
 }
 SCR_BaseTriggerEntity EndTrigger {
+<<<<<<< Updated upstream
  coords 1036.675 0.496 6100.988
+=======
+ coords 1037.423 0 6100.169
+ Flags 2
+>>>>>>> Stashed changes
  EOnActivate ""\
  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Meaux\", 90, \"Racers should all board their vehicles now.\");"\
  "	"
@@ -45,6 +55,7 @@ SCR_BaseTriggerEntity EndTrigger {
  "		// Notify player finished"\
  "		SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
  "		"\
+<<<<<<< Updated upstream
  "		// Send player to spec - vanilla"\
  "        SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
  "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
@@ -54,13 +65,48 @@ SCR_BaseTriggerEntity EndTrigger {
  "			ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
  "			damMan.Kill(damMan.GetInstigator());"\
  "		}	"\
+=======
+ "		// Send player to spec"\
+ "		SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+ "		damMan.Kill(damMan.GetInstigator());"\
+>>>>>>> Stashed changes
  "	"
  RunDefaultQueryFirst 0
 }
 $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  {
+<<<<<<< Updated upstream
   coords 4801.281 27.846 11572.187
   m_sTitle "Pace Notes Pt. 2"
+=======
+  coords 4805.703 23.524 12028.44
+  m_sTitle "Pace Notes"
+  m_sTextData "R3 70, L3 60, R2 thru gates into L1."\
+  "After exiting airport gates"\
+  "R2 40, L3 50, R4 100, L2 long."\
+  "Crossed short bridge, nearing church"\
+  "R1 into R5 170, L3 70 into L2 long."\
+  "After curve by ocean, in St.Philipe "\
+  "R1 slippery into R3 100, R2 into L3 50, R1 grip."\
+  "On asphalt, after dirt near factory"\
+  "R3 60, L6 very long tightens over bridge, R3 60 chicanes!!"\
+  "Entering Meaux "\
+  "R3 80, L5 200, L3 120, R2 into R1 slippery."\
+  "Exiting Meaux"\
+  "L3 80, R1 into L3 40, L2 40, R3 50, R1 into L3 70 tightens dip."\
+  "After dip between rocks"\
+  "L2 into R4 70, R2 into L2 into R3 50, R1 grip."\
+  "Back on pavement, nearing the coast"\
+  "L4 50, L3 60 tightens, L2 into L5 200, L3 160, R3 50."\
+  ""\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4811.405 23.618 12026.615
+  m_sTitle "Pace Notes 2"
+>>>>>>> Stashed changes
   m_sTextData "Onto dirt, near military base"\
   "L3 100, R4 100, R3 190, L3 100, L2 50, R1 into L3 60."\
   "Past the tight corner on the coast"\
@@ -80,6 +126,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "Coastal road to Lamentin"\
   "R6 200, R4 180, R4 100, L4 80, R5 200 tightens bridge! L4 150, L3 120."\
   "Graveyard entering Lamentin"\
+<<<<<<< Updated upstream
   "R3 70 tightens, R3 50, L2 50, L3 100 chicanes! L3 50, R1 into R2 80, L2 60, R1 into R6 ramp/finish line."
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
@@ -411,4 +458,12 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
   }
   m_bVisibleForEmptyFaction 1
  }
+=======
+  "R3 70 tightens, R3 50, L2 50, L3 100 chicanes! L3 50, R1 into R2 80, L2 60, R1 into R6 ramp/finish line. "\
+  ""\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+>>>>>>> Stashed changes
 }

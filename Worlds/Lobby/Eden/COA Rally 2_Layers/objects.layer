@@ -3,6 +3,7 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   coords 4683.461 27.806 11155.142
  }
  {
+<<<<<<< Updated upstream
   coords 4569.398 20.894 9769.512
  }
  {
@@ -13,22 +14,44 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
  }
  {
   coords 4563.577 21.14 9759.758
+=======
+  coords 4568.548 20.894 9760.044
+ }
+ {
+  coords 4571.445 20.907 9759.804
+ }
+ {
+  coords 4565.824 20.965 9760.287
+ }
+ {
+  coords 4555.851 21.643 9747.495
+>>>>>>> Stashed changes
   angleX -1.789
   angleY -0.028
   angleZ 0.896
  }
  {
+<<<<<<< Updated upstream
   coords 4560.947 21.158 9759.873
   angleX -0.895
  }
  {
   coords 4558.002 21.147 9760.312
   angleX -1.79
+=======
+  coords 4559.315 21.363 9746.771
+  angleX -0.895
+ }
+ {
+  coords 4562.677 21.37 9746.364
+  angleX -0.895
+>>>>>>> Stashed changes
  }
  {
   coords 1285.093 37.72 5947.424
  }
  {
+<<<<<<< Updated upstream
   coords 1284.804 37.669 5945.982
  }
  {
@@ -42,6 +65,21 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
  }
  {
   coords 1278.568 37.451 5937.375
+=======
+  coords 1286.011 37.669 5945.53
+ }
+ {
+  coords 1283.847 37.701 5948.929
+ }
+ {
+  coords 1278.138 37.449 5934.108
+ }
+ {
+  coords 1279.51 37.475 5931.77
+ }
+ {
+  coords 1276.663 37.451 5936.225
+>>>>>>> Stashed changes
  }
  {
   coords 4761.574 28.313 11447.211
@@ -953,7 +991,11 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
+<<<<<<< Updated upstream
   coords 4563.91 20.698 9777.771
+=======
+  coords 4563.52 20.698 9777.847
+>>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -978,7 +1020,11 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
+<<<<<<< Updated upstream
   coords 4561.884 20.692 9777.894
+=======
+  coords 4561.375 20.692 9778.006
+>>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -1003,10 +1049,14 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
+<<<<<<< Updated upstream
   coords 4557.718 20.831 9778.356
   angleX 0.874
   angleY 0.137
   angleZ 8.882
+=======
+  coords 4558.734 20.902 9778.233
+>>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -1031,10 +1081,14 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
+<<<<<<< Updated upstream
   coords 4559.773 20.702 9778.187
   angleX 0.893
   angleY 0.042
   angleZ 2.684
+=======
+  coords 4556.849 21.106 9778.573
+>>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -1078,22 +1132,35 @@ $grp GenericEntity : "{3A75EF80872F770F}Prefabs/Structures/Signs/Warnings/SignOn
 }
 $grp GenericEntity : "{4A8829F6DD2162F7}Prefabs/Structures/Signs/Warnings/SignAheadOnly_01.et" {
  {
+<<<<<<< Updated upstream
   coords 4563.986 21.754 9778.351
+=======
+  coords 4563.579 21.738 9778.392
+>>>>>>> Stashed changes
   angleX -2.937
   angleY 5.367
   angleZ 87.818
  }
  {
+<<<<<<< Updated upstream
   coords 4569.478 21.965 9770.123
   angleZ -91.746
  }
  {
   coords 4561.027 22.239 9760.535
+=======
+  coords 4568.615 21.939 9760.683
+  angleZ -91.746
+ }
+ {
+  coords 4559.36 22.256 9747.334
+>>>>>>> Stashed changes
   angleX -0.099
   angleY 9.883
   angleZ 90.568
  }
 }
+<<<<<<< Updated upstream
 $grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
  S105_rally3 {
   coords 4376.617 11.906 10690.555
@@ -1406,6 +1473,8 @@ $grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
   angleZ 5.367
  }
 }
+=======
+>>>>>>> Stashed changes
 $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/RoadBlock_01.et" {
  {
   coords 4701.215 27.844 11117.171
@@ -1767,10 +1836,17 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   angleZ -0.236
  }
  {
+<<<<<<< Updated upstream
   coords 2387.975 47.602 6841.315
   angleX 1.586
   angleY -4.261
   angleZ -2.808
+=======
+  coords 2387.634 47.508 6835.5
+  angleX -4.319
+  angleY -13.693
+  angleZ -2.622
+>>>>>>> Stashed changes
  }
  {
   coords 2244.229 27.989 7080.423
@@ -1806,9 +1882,13 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
  }
  {
   coords 1542.961 55.479 5956.482
+<<<<<<< Updated upstream
   angleX -4.932
   angleY 37.911
   angleZ -3.831
+=======
+  angleX -6.242
+>>>>>>> Stashed changes
  }
  {
   coords 1401.178 47.629 6012.042
@@ -1877,6 +1957,7 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   coords 4432.487 12.504 10649.109
  }
  {
+<<<<<<< Updated upstream
   coords 2392.341 47.781 6841.319
   angleX 0.761
   angleY -4.221
@@ -1887,6 +1968,24 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   angleX 0.761
   angleY -4.221
   angleZ -1.851
+=======
+  coords 2390.78 47.68 6836.865
+  angleX -1.105
+  angleY -21.174
+  angleZ -5.316
+ }
+ {
+  coords 2382.93 47.317 6838.736
+  angleX 2.181
+  angleY 8.84
+  angleZ -2.376
+ }
+ {
+  coords 2394.15 47.796 6838.356
+  angleX -0.362
+  angleY -19.657
+  angleZ -3.668
+>>>>>>> Stashed changes
  }
 }
 $grp GenericEntity : "{6D34A807690ABB34}Prefabs/Structures/Signs/Warnings/SignAheadOnly_01_pole.et" {
@@ -2383,12 +2482,23 @@ $grp GenericEntity : "{CD18971542C21223}Prefabs/Structures/Signs/Warnings/SignDa
  }
  {
   coords 3896.538 21.456 7587.243
+<<<<<<< Updated upstream
   angleY -138.834
+=======
+  angleY -135.605
+>>>>>>> Stashed changes
  }
  {
   coords 3948.415 24.182 7544.162
   angleY -47
  }
+<<<<<<< Updated upstream
+=======
+ {
+  coords 3934.583 24.639 7563.963
+  angleY -111.451
+ }
+>>>>>>> Stashed changes
 }
 $grp GenericEntity : "{D5EDAE4701DC439B}Prefabs/Structures/Signs/Warnings/SignBendLeft_01_pole.et" {
  {
