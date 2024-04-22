@@ -9,6 +9,16 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
      RpmMaxTorque 7000
      Steepness 30
     }
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
+       MaxSteeringAngle 46.75
+       SpringRate 35
+       MaxTravelUp 0.095
+       MaxTravelDown 0.032
+      }
+     }
+    }
    }
   }
  }
