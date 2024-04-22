@@ -1,0 +1,58 @@
+SCR_AIGroup Group_USSR80s_Command_Platoon_p_1 : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 5645.073 217.098 7114.207
+ m_sCustomNameSet "Platoon Command"
+}
+SCR_AIGroup Group_USSR80s_Support_MGTeam_p_1 : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+ coords 5657.048 217.72 7127.346
+ angleY -88.516
+ m_sCustomNameSet "MG Team"
+}
+$grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+ Group_USSR80s_Infantry_RifleSquad_p_1 {
+  coords 5640.093 217.032 7135.767
+  angleY -177.988
+  m_sCustomNameSet "1st Squad"
+ }
+ Group_USSR80s_Infantry_RifleSquad_p_2 {
+  coords 5640.408 217.12 7140.429
+  angleY -177.988
+  m_sCustomNameSet "2nd Squad"
+ }
+ Group_USSR80s_Infantry_RifleSquad_p_3 {
+  coords 5640.508 217.237 7145.631
+  angleY -177.988
+  m_sCustomNameSet "3rd Squad"
+ }
+ Group_USSR80s_Infantry_RifleSquad_p_4 {
+  coords 5640.816 217.351 7152.319
+  angleY -177.988
+  m_sCustomNameSet "4th Squad"
+ }
+ Group_USSR80s_Infantry_RifleSquad_p_5 {
+  coords 5642.017 217.47 7158.267
+  angleY -177.988
+  m_sCustomNameSet "5th Squad"
+ }
+}
+$grp SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+ Group_USSR80s_Vehicles_ArmorCrew_p_1 {
+  coords 5630.047 216.018 7122.915
+  angleY 87.199
+  m_sCustomNameSet "BTR Team 1"
+ }
+ Group_USSR80s_Vehicles_ArmorCrew_p_2 {
+  coords 5629.359 216.157 7131.944
+  angleY 87.199
+  m_sCustomNameSet "BTR Team 2"
+ }
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 5642.977 216.315 7095.623
+  angleY -79.789
+ }
+ BTR2 {
+  coords 5632.363 214.956 7097.739
+  angleY -79.789
+ }
+}
