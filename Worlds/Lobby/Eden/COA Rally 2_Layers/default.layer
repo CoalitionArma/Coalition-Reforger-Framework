@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 $grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
  S105_rally3 {
   coords 4376.617 11.906 10690.555
@@ -324,4 +322,3 @@ $grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
   angleZ 3.013
  }
 }
->>>>>>> Stashed changes

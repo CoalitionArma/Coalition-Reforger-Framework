@@ -1,0 +1,296 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{6129327C30EA31F6}" {
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{49153A2B2DBDE0F4}Worlds/BarzanMapRemake/Navmeshes/LowResBarzanMapRemake.nmn"
+    }
+   }
+  }
+ }
+ coords 2854.672 1.487 1940.513
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  PS_ObjectiveManager "{60E1584A0994EE9A}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{60E1584A0994EEE4}" {
+     m_iScore 0
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{60E1584A0994EEE7}" {
+     m_iScore 25
+     m_sName "#PS-ObjectiveLevel_MinorLoss"
+    }
+    PS_ObjectiveLevel "{60E1584A0994EEE6}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_Draw"
+    }
+    PS_ObjectiveLevel "{60E1584A0997019A}" {
+     m_iScore 75
+     m_sName "#PS-ObjectiveLevel_MinorVictory"
+    }
+    PS_ObjectiveLevel "{60E1584A0997019D}" {
+     m_iScore 100
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{60E1584A09970193}" {
+   m_fDuration 0
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{60E1584A09970194}" {
+   }
+  }
+  SCR_SaveLoadComponent "{60E1584A09970197}" {
+   m_Struct SCR_MissionStruct "{60E1584A0997B933}" {
+    m_Struct0 SCR_EditorStruct "{60E1584A0997B932}" {
+     m_AttributeList SCR_EditorAttributeList "{590C7881C296FA7D}" : "{F3D6C6D25642352C}Configs/Editor/AttributeLists/Edit.conf" {
+     }
+    }
+   }
+   m_iAutosavePeriod 600
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_bRandomWeatherChanges 1
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
+ }
+ coords 2843.228 1.5 1942.621
+ m_bRemoveRedundantUnits 1
+}
+$grp GenericEntity : "{0CA57DAC081DF11A}Prefabs/Props/Fabric/Flags/Flag_1_2_Green_01.et" {
+ {
+  coords 1048.528 21.874 640.387
+ }
+ {
+  coords 1044.927 22.011 641.675
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2963.968 2.558 1931.727
+ m_sTextData "Billions must drive"\
+ ""\
+ "If you're a co-driver, use your map and hover over the turn markers to get information about the track."\
+ ""\
+ "Quick Guide on how to read this:"\
+ ""\
+ "The direction of the turn is given first, then the number that follows is the recommended gear for that turn. Ex: Left 1 would be a very tight turn that you would need to slow down for. Left 6 would be a very gradual turn that you could safely go full throttle for."\
+ ""\
+ "Occasionally you may see \"DC\" or \"CAUTION\". This is a warning, expect some form of hazard or dangerous object."\
+ ""\
+ "Opens means that the road goes from a tight turn to a long gradual turn. Tightens means that the road goes from a long gradual turn to a tight turn. "
+}
+$grp PS_ManualMarker : "{D4F0DA86DB75A76B}PrefabsEditable/Markers/RallyTurnMarker.et" {
+ {
+  coords 3014.984 2.469 1949.89
+  angleY 6
+  m_fWorldSize 30
+  m_sDescription "Left 2 90"
+ }
+ {
+  coords 3042.835 9.994 2039.911
+  angleY 64.544
+  m_fWorldSize 30
+  m_sDescription "Right 4 40"
+ }
+ {
+  coords 2965.332 3.607 2312.413
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Left 5 Long"
+ }
+ {
+  coords 3032.74 4.245 2202.409
+  angleY -47.896
+  m_fWorldSize 30
+  m_sDescription "Right 4 115"
+ }
+ {
+  coords 2545.745 2.783 2567.615
+  angleY -34.476
+  m_fWorldSize 30
+  m_sDescription "Right 5 CAUTION 40"
+ }
+ {
+  coords 2421.531 6.668 2677.886
+  angleY -42.658
+  m_fWorldSize 30
+  m_sDescription "Right 3 30"
+ }
+ {
+  coords 2404.413 5.757 2722.285
+  angleY -75.503
+  m_fWorldSize 30
+  m_sDescription "Left 5 150"
+ }
+ {
+  coords 2265.454 7.664 2737.261
+  angleY -78.033
+  m_fWorldSize 30
+  m_sDescription "Right 4 Opens 5 100"
+ }
+ {
+  coords 2094.158 5.031 2766.761
+  angleY 15.107
+  m_fWorldSize 30
+  m_sDescription "Square Right 30"
+ }
+ {
+  coords 1768.63 3.722 2846.388
+  angleY -168.326
+  m_fWorldSize 30
+  m_sDescription "Left 1 20"
+ }
+ {
+  coords 1861.112 7.872 2373.096
+  angleY -107.888
+  m_fWorldSize 30
+  m_sDescription "Right Square Long"
+ }
+ {
+  coords 1281.395 8.89 2071.271
+  angleY -168.665
+  m_fWorldSize 30
+  m_sDescription "Left Square Long"
+ }
+ {
+  coords 1256.375 5.867 1437.489
+  angleY 145.713
+  m_fWorldSize 30
+  m_sDescription "Left 3 30"
+ }
+ {
+  coords 1281.395 8.865 2071.271
+  angleY -168.665
+  m_fWorldSize 30
+  m_sDescription "Left Square Long"
+ }
+ {
+  coords 1369.566 2.469 1219.717
+  angleY -154.887
+  m_fWorldSize 30
+  m_sDescription "Right 3 20"
+ }
+ {
+  coords 1350.582 2.5 1166.136
+  angleY -68.196
+  m_fWorldSize 30
+  m_sDescription "Right Square Long"
+ }
+ {
+  coords 994.5 4.305 1277.935
+  angleY -113.985
+  m_fWorldSize 30
+  m_sDescription "Left 1 60"
+ }
+ {
+  coords 947.145 14.277 1118.784
+  angleY 92.031
+  m_fWorldSize 30
+  m_sDescription "Left Square 100"
+ }
+ {
+  coords 1259.271 5.541 1041.912
+  angleY -136.421
+  m_fWorldSize 30
+  m_sDescription "Right Square Long"
+ }
+ {
+  coords 1109.923 3.102 755.84
+  angleY -90.342
+  m_fWorldSize 30
+  m_sDescription "Right 1 70"
+ }
+ {
+  coords 2085.85 4.278 2824.671
+  angleY -48.114
+  m_fWorldSize 30
+  m_sDescription "Left 4 100"
+ }
+ {
+  coords 1998.49 3.93 2867.32
+  angleY -103.343
+  m_fWorldSize 30
+  m_sDescription "Right 5 DC 160"
+ }
+ {
+  coords 1833.943 3.906 2889.81
+  angleY -105.446
+  m_fWorldSize 30
+  m_sDescription "Left 3 100"
+ }
+ {
+  coords 1054.545 7.425 740.055
+  angleY 179.592
+  m_fWorldSize 30
+  m_sDescription "Left 2 50 FINISH"
+ }
+ {
+  coords 3081.898 9.412 2058.309
+  angleY 49.125
+  m_fWorldSize 30
+  m_sDescription "Right 4 Opens 5 160"
+ }
+ {
+  coords 2690.527 3.173 2486.563
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Left 2 20"
+ }
+ {
+  coords 2667.332 3.027 2494.352
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Right 2 20"
+ }
+ {
+  coords 2640.832 2.688 2520.417
+  angleY -37.279
+  m_fWorldSize 30
+  m_sDescription "Left 3 40"
+ }
+ {
+  coords 1789.138 4.187 2854.04
+  angleY -105.446
+  m_fWorldSize 30
+  m_sDescription "Right 4 10"
+ }
+ {
+  coords 936.174 7.406 1226.191
+  angleY 179.592
+  m_fWorldSize 30
+  m_sDescription "Left 4 150"
+ }
+ {
+  coords 1115.426 10.673 1118.52
+  angleY 103.598
+  m_fWorldSize 30
+  m_sDescription "Right 5 75"
+ }
+ {
+  coords 1209.046 7.326 1081.986
+  angleY 112.496
+  m_fWorldSize 30
+  m_sDescription "Right 4 30"
+ }
+}

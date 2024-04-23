@@ -3,18 +3,6 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   coords 4683.461 27.806 11155.142
  }
  {
-<<<<<<< Updated upstream
-  coords 4569.398 20.894 9769.512
- }
- {
-  coords 4567.247 20.907 9769.007
- }
- {
-  coords 4571.761 20.965 9769.727
- }
- {
-  coords 4563.577 21.14 9759.758
-=======
   coords 4568.548 20.894 9760.044
  }
  {
@@ -25,47 +13,22 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
  }
  {
   coords 4555.851 21.643 9747.495
->>>>>>> Stashed changes
   angleX -1.789
   angleY -0.028
   angleZ 0.896
  }
  {
-<<<<<<< Updated upstream
-  coords 4560.947 21.158 9759.873
-  angleX -0.895
- }
- {
-  coords 4558.002 21.147 9760.312
-  angleX -1.79
-=======
   coords 4559.315 21.363 9746.771
   angleX -0.895
  }
  {
   coords 4562.677 21.37 9746.364
   angleX -0.895
->>>>>>> Stashed changes
  }
  {
   coords 1285.093 37.72 5947.424
  }
  {
-<<<<<<< Updated upstream
-  coords 1284.804 37.669 5945.982
- }
- {
-  coords 1283.875 37.701 5946.842
- }
- {
-  coords 1279.249 37.449 5936.081
- }
- {
-  coords 1280.26 37.475 5937.334
- }
- {
-  coords 1278.568 37.451 5937.375
-=======
   coords 1286.011 37.669 5945.53
  }
  {
@@ -79,7 +42,6 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
  }
  {
   coords 1276.663 37.451 5936.225
->>>>>>> Stashed changes
  }
  {
   coords 4761.574 28.313 11447.211
@@ -991,11 +953,7 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
-<<<<<<< Updated upstream
-  coords 4563.91 20.698 9777.771
-=======
   coords 4563.52 20.698 9777.847
->>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -1020,11 +978,7 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
-<<<<<<< Updated upstream
-  coords 4561.884 20.692 9777.894
-=======
   coords 4561.375 20.692 9778.006
->>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -1049,14 +1003,7 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
-<<<<<<< Updated upstream
-  coords 4557.718 20.831 9778.356
-  angleX 0.874
-  angleY 0.137
-  angleZ 8.882
-=======
   coords 4558.734 20.902 9778.233
->>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -1081,14 +1028,7 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
   }
  }
  {
-<<<<<<< Updated upstream
-  coords 4559.773 20.702 9778.187
-  angleX 0.893
-  angleY 0.042
-  angleZ 2.684
-=======
   coords 4556.849 21.106 9778.573
->>>>>>> Stashed changes
   {
    GenericEntity {
     ID "552C739767950670"
@@ -1132,349 +1072,22 @@ $grp GenericEntity : "{3A75EF80872F770F}Prefabs/Structures/Signs/Warnings/SignOn
 }
 $grp GenericEntity : "{4A8829F6DD2162F7}Prefabs/Structures/Signs/Warnings/SignAheadOnly_01.et" {
  {
-<<<<<<< Updated upstream
-  coords 4563.986 21.754 9778.351
-=======
   coords 4563.579 21.738 9778.392
->>>>>>> Stashed changes
   angleX -2.937
   angleY 5.367
   angleZ 87.818
  }
  {
-<<<<<<< Updated upstream
-  coords 4569.478 21.965 9770.123
-  angleZ -91.746
- }
- {
-  coords 4561.027 22.239 9760.535
-=======
   coords 4568.615 21.939 9760.683
   angleZ -91.746
  }
  {
   coords 4559.36 22.256 9747.334
->>>>>>> Stashed changes
   angleX -0.099
   angleY 9.883
   angleZ 90.568
  }
 }
-<<<<<<< Updated upstream
-$grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
- S105_rally3 {
-  coords 4376.617 11.906 10690.555
-  angleY 84.074
- }
- S105_rally4 {
-  coords 4261.961 1.406 10687.714
-  angleY 52.577
- }
- S105_rally5 {
-  coords 4518.366 16.024 10646.627
-  angleY 172.627
- }
- S105_rally6 {
-  coords 4548.684 14.717 10398.257
-  angleY 118.579
- }
- S105_rally7 {
-  coords 4444.056 15.094 9582.022
- }
- S105_rally8 {
-  coords 4461.668 13.499 9462.917
- }
- S105_rally9 {
-  coords 3916.18 15.219 8416.516
- }
- S105_rally10 {
-  coords 3905.481 15.219 8417.732
- }
- S105_rally11 {
-  coords 4064.668 30.843 7780.647
-  angleX -3.766
-  angleY -141.793
-  angleZ 0.448
- }
- S105_rally12 {
-  coords 3826.287 2.384 7783.557
-  angleY 87.674
- }
- S105_rally13 {
-  coords 2375.15 47.273 6876.669
-  angleY -85.403
- }
- S105_rally14 {
-  coords 1486.457 53.787 5991.401
-  angleY -171.381
- }
- S105_rally15 {
-  coords 1295.165 38.674 5907.076
-  angleY -39.406
- }
- S105_rally41 {
-  coords 4595.848 25.446 11178.745
-  angleY 89.658
- }
- S105_rally42 {
-  coords 4603.1 25.344 11203.224
-  angleY -89.945
- }
- S105_rally43 {
-  coords 4436.212 9.083 10834.425
-  angleY 78.958
- }
- S105_rally44 {
-  coords 4656.67 9.91 9278.46
-  angleX -2.713
-  angleY -33.307
-  angleZ -2.497
- }
- S105_rally45 {
-  coords 4656.917 9.947 9273.849
-  angleX -3.968
-  angleY -117.392
-  angleZ 2.054
- }
- S105_rally46 {
-  coords 4651.119 27.843 11160.351
-  angleY -100.8
- }
- S105_rally47 {
-  coords 4650.669 27.843 11166.339
-  angleY -104.116
- }
- S105_rally48 {
-  coords 4680.223 27.812 11175.063
-  angleY 96.473
- }
- S105_rally49 {
-  coords 4503.668 8.748 10989.082
-  angleX -3.276
-  angleY 25.334
-  angleZ -3.523
- }
- S105_rally50 {
-  coords 4488.469 6.697 11024.469
-  angleX 1.912
-  angleY -135.241
-  angleZ 3.152
- }
- S105_rally51 {
-  coords 4404.192 6.662 10909.817
-  angleX 1.174
-  angleY 113.02
-  angleZ -0.474
- }
- S105_rally52 {
-  coords 4477.994 13.564 10703.952
-  angleX -0.77
-  angleY 30.66
-  angleZ -0.456
- }
- S105_rally53 {
-  coords 4472.136 13.563 10703.271
-  angleY -64.573
- }
- S105_rally54 {
-  coords 4302.553 4.884 10712.979
-  angleX -0.748
-  angleY -123.369
-  angleZ 0.492
- }
- S105_rally55 {
-  coords 4315.304 13.489 10617.1
-  angleX -0.355
-  angleY -156.609
-  angleZ 0.822
- }
- S105_rally56 {
-  coords 4506.174 16.448 10636.977
-  angleX 1.585
-  angleY -154.191
-  angleZ -1.222
- }
- S105_rally57 {
-  coords 4507.413 16.446 10632.4
-  angleX 0.855
-  angleY -107.296
-  angleZ -0.266
- }
- S105_rally58 {
-  coords 4594.133 15.294 10438.939
-  angleX -1.243
-  angleY 124.208
-  angleZ 0.237
- }
- S105_rally59 {
-  coords 4476.837 25.998 9098.591
-  angleX -6.242
- }
- S105_rally60 {
-  coords 4215.121 33.173 8959.854
-  angleX -5.191
-  angleY -41.606
-  angleZ 2.218
- }
- S105_rally61 {
-  coords 3863.942 11.901 8178.371
-  angleX -12.659
-  angleY -64.902
-  angleZ -2.022
- }
- S105_rally62 {
-  coords 3886.751 9.604 8045.804
-  angleX -7.89
-  angleY -99.522
-  angleZ 6.684
- }
- S105_rally63 {
-  coords 3889.417 17.097 7858.414
-  angleX -5.288
-  angleY -143.676
-  angleZ 7.145
- }
- S105_rally64 {
-  coords 4017.208 27.669 7784.411
-  angleX -2.292
-  angleY -101.043
-  angleZ 2.269
- }
- S105_rally65 {
-  coords 3810.294 9.016 7636.146
-  angleX 6.462
-  angleY 87.928
-  angleZ 5.976
- }
- S105_rally66 {
-  coords 3944.752 24.15 7523.635
-  angleX -5.484
-  angleY -87.092
-  angleZ 2.397
- }
- S105_rally67 {
-  coords 3885.254 23.365 7389.964
-  angleX 7.062
-  angleY 141.74
-  angleZ 4.618
- }
- S105_rally68 {
-  coords 3983.008 47.893 7232.839
-  angleX -1.483
-  angleY 84.576
-  angleZ -6.128
- }
- S105_rally69 {
-  coords 4018.251 59.615 7156.075
-  angleX -4.555
-  angleY -100.958
-  angleZ -0.028
- }
- S105_rally70 {
-  coords 3880.52 47.772 7107.264
-  angleX -5.643
-  angleY -19.5
-  angleZ 0.105
- }
- S105_rally71 {
-  coords 3673.199 46.398 7092.87
-  angleX -6.751
-  angleY -17.299
-  angleZ -0.696
- }
- S105_rally72 {
-  coords 3381.528 33.339 7004.895
-  angleX 9.785
-  angleY 177.015
-  angleZ 0.376
- }
- S105_rally73 {
-  coords 3147.148 16.847 7035.923
-  angleX 10.321
-  angleY -165.305
-  angleZ -0.95
- }
- S105_rally74 {
-  coords 2979.84 26.792 6973.324
-  angleX 0.511
-  angleY 124.785
-  angleZ -0.735
- }
- S105_rally75 {
-  coords 2764.374 46.878 6810.036
-  angleX -3.054
-  angleY -59.262
-  angleZ 3.381
- }
- S105_rally76 {
-  coords 2396.346 48.132 6847.896
-  angleX -2.49
-  angleY -124.758
-  angleZ -0.45
- }
- S105_rally77 {
-  coords 2241.239 6.863 6514.033
-  angleX 8.748
-  angleY 23.362
-  angleZ -0.091
- }
- S105_rally78 {
-  coords 2402.719 33.166 6421.489
-  angleX -4.805
-  angleY -70.837
-  angleZ 0.221
- }
- S105_rally79 {
-  coords 2279.243 94.33 6016.922
-  angleX -13.608
-  angleY -18.573
-  angleZ 0.858
- }
- S105_rally80 {
-  coords 1682.087 60.908 5919.939
-  angleX -1.759
-  angleY -10.68
-  angleZ 0.332
- }
- S105_rally81 {
-  coords 1542.38 55.782 5951.965
-  angleX -1.789
-  angleY 1.293
-  angleZ -0.04
- }
- S105_rally82 {
-  coords 1937.23 72.248 5894.036
-  angleX -2.68
-  angleY 2.911
-  angleZ -0.136
- }
- S105_rally83 {
-  coords 2245.732 28.24 7085.788
-  angleX -2.027
-  angleY -139.042
-  angleZ -1.759
- }
- S105_rally84 {
-  coords 4572.284 16.567 9921.664
-  angleX 5.852
-  angleY -156.928
-  angleZ -2.35
- }
- S105_rally85 {
-  coords 3826.671 2.95 7770.972
-  angleX 5.385
-  angleY 163.202
-  angleZ -0.692
- }
- S105_rally86 {
-  coords 3988.934 37.144 7320.369
-  angleX 1.961
-  angleY -161.353
-  angleZ 5.367
- }
-}
-=======
->>>>>>> Stashed changes
 $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/RoadBlock_01.et" {
  {
   coords 4701.215 27.844 11117.171
@@ -1836,17 +1449,10 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   angleZ -0.236
  }
  {
-<<<<<<< Updated upstream
-  coords 2387.975 47.602 6841.315
-  angleX 1.586
-  angleY -4.261
-  angleZ -2.808
-=======
   coords 2387.634 47.508 6835.5
   angleX -4.319
   angleY -13.693
   angleZ -2.622
->>>>>>> Stashed changes
  }
  {
   coords 2244.229 27.989 7080.423
@@ -1882,13 +1488,7 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
  }
  {
   coords 1542.961 55.479 5956.482
-<<<<<<< Updated upstream
-  angleX -4.932
-  angleY 37.911
-  angleZ -3.831
-=======
   angleX -6.242
->>>>>>> Stashed changes
  }
  {
   coords 1401.178 47.629 6012.042
@@ -1957,18 +1557,6 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   coords 4432.487 12.504 10649.109
  }
  {
-<<<<<<< Updated upstream
-  coords 2392.341 47.781 6841.319
-  angleX 0.761
-  angleY -4.221
-  angleZ -1.851
- }
- {
-  coords 2383.982 47.423 6841.131
-  angleX 0.761
-  angleY -4.221
-  angleZ -1.851
-=======
   coords 2390.78 47.68 6836.865
   angleX -1.105
   angleY -21.174
@@ -1985,7 +1573,6 @@ $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/
   angleX -0.362
   angleY -19.657
   angleZ -3.668
->>>>>>> Stashed changes
  }
 }
 $grp GenericEntity : "{6D34A807690ABB34}Prefabs/Structures/Signs/Warnings/SignAheadOnly_01_pole.et" {
@@ -2482,23 +2069,16 @@ $grp GenericEntity : "{CD18971542C21223}Prefabs/Structures/Signs/Warnings/SignDa
  }
  {
   coords 3896.538 21.456 7587.243
-<<<<<<< Updated upstream
-  angleY -138.834
-=======
   angleY -135.605
->>>>>>> Stashed changes
  }
  {
   coords 3948.415 24.182 7544.162
   angleY -47
  }
-<<<<<<< Updated upstream
-=======
  {
   coords 3934.583 24.639 7563.963
   angleY -111.451
  }
->>>>>>> Stashed changes
 }
 $grp GenericEntity : "{D5EDAE4701DC439B}Prefabs/Structures/Signs/Warnings/SignBendLeft_01_pole.et" {
  {

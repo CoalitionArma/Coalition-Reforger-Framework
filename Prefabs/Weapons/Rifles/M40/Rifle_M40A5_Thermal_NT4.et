@@ -1,0 +1,25 @@
+GenericEntity : "{B65DCFEFE63F121D}Prefabs/Weapons/Rifles/M40/Rifle_M40A5_Thermal.et" {
+ ID "5260C45AAAA407F4"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{EAFB3896F2113356}Sounds/Weapons/Rifles/AN94/Suppressed/RHS_Weapons_Rifles_AN-94_Suppressed.acp" "{F6F479AE77E7A573}Sounds/Weapons/Rifles/M21/Weapons_Rifles_M21_Handling.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{60F9573569E4E0A7}" {
+       AttachmentSlot InventoryStorageSlot NT4 {
+        PivotID "barrel_muzzle"
+        Offset 0 0 -0.0711
+        Prefab "{94909AABD52A245E}Prefabs/Weapons/Attachments/Muzzle/SR3M_Supressor/Supressor_SR3M.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
