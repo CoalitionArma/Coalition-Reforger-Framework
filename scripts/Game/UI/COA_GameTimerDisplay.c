@@ -51,7 +51,7 @@ class COA_GameTimerDisplay : SCR_InfoDisplay
 		--m_iCountDown;
 		// get time left in mission 
 		m_sTimeLeft = SCR_FormatHelper.FormatTime(m_iCountDown);
-		m_wTimer.SetText(m_sTimeLeft);
+		m_wTimer.SetText("Time left: " + m_sTimeLeft);
 		
 		// if map is on screen
 		if (m_MapEntity && m_MapEntity.IsOpen())
