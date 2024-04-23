@@ -51,19 +51,33 @@ class COA_GameTimerDisplay : SCR_InfoDisplay
 		--m_iCountDown;
 		// get time left in mission 
 		m_sTimeLeft = SCR_FormatHelper.FormatTime(m_iCountDown);
-		m_wTimer.SetText("Time left: " + m_sTimeLeft);
+		m_wTimer.SetText("Mission End: " + m_sTimeLeft);
 		
-		// if map is on screen
-		if (m_MapEntity && m_MapEntity.IsOpen())
+		// If the map is open and more than five minutes remaining or no time limit
+		if (m_MapEntity && m_MapEntity.IsOpen() && (m_iCountDown > 300 || m_Safestart.timeLimitMinutes == -1))
 		{
-			// Display it 
+			// if no time limit
+			if (m_Safestart.timeLimitMinutes == -1)
+			{
+				// then show no time limit
+				m_wTimer.SetText("No Mission Time Limit");
+			}
+
+			// only show the timer when map is open
 			m_wTimer.SetOpacity(1);
-			m_wBackground.SetOpacity(1);
-		} else {
+			m_wBackground.SetOpacity(1);	
+		} else { // otherwise hide the timer
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);
 		}
-			
+		
+		// Otherwise always show time limit with less than 5mins remaining
+		if (m_iCountDown <= 300 && m_Safestart.timeLimitMinutes != -1)
+		{
+			m_wTimer.SetOpacity(1);
+			m_wBackground.SetOpacity(1);
+		}
+				
 		// 15m / 5m warning	/ end warning													
 		if (m_iCountDown == 900 || m_iCountDown == 300 || m_iCountDown == 0)
 		{
@@ -83,11 +97,12 @@ class COA_GameTimerDisplay : SCR_InfoDisplay
 					return;
 				default: {}
 			}
+
 			
 		}
 		
 		// Mission timer up
-		if (m_iCountDown <= 0)
+		if (m_iCountDown <= 0 && m_Safestart.timeLimitMinutes != -1)
 		{
 			m_wTimer.SetText("Mission Time Expired");
 			m_wTimer.SetOpacity(1);

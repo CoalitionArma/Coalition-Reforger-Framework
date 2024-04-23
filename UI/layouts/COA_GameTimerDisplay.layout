@@ -4,15 +4,15 @@ FrameWidgetClass {
   ImageWidgetClass "{612ED7C369056035}" {
    Name "timeLeftBackground"
    Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 0.75 1 0.75 1
-    PositionX -60.808
-    OffsetLeft -60.808
-    PositionY -45.708
-    OffsetTop -45.708
-    SizeX 119.998
-    OffsetRight -59.19
-    SizeY 44.78
-    OffsetBottom 0.928
+    Anchor 0.85 1 0.85 1
+    PositionX -123.988
+    OffsetLeft -123.988
+    PositionY -22.848
+    OffsetTop -22.848
+    SizeX 145.269
+    OffsetRight -21.28
+    SizeY 23.763
+    OffsetBottom -0.915
    }
    Opacity 0
    Color 0 0 0 0.333
@@ -21,24 +21,26 @@ FrameWidgetClass {
   TextWidgetClass "{612ED7C369056034}" {
    Name "timeLeftTimer"
    Slot FrameWidgetSlot "{612734D4E397B329}" {
-    Anchor 0.75 1 0.75 1
-    PositionX -65.936
-    OffsetLeft -65.936
-    PositionY -43.7
-    OffsetTop -43.7
-    SizeX 129.998
-    OffsetRight -64.062
-    SizeY 39.55
-    OffsetBottom 4.15
+    Anchor 0.85 1 0.85 1
+    PositionX -118.132
+    OffsetLeft -118.132
+    PositionY -17.698
+    OffsetTop -17.698
+    SizeX 210.972
+    OffsetRight -92.84
+    SizeY 44.999
+    OffsetBottom -27.301
+    SizeToContent 1
    }
    Opacity 0
    Color 0.928 0.862 0.862 1
    Text "Game not live"
-   "Min Font Size" 24
+   "Font Size" 15
+   "Min Font Size" 14
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
    FontProperties FontProperties "{612734D416229D9E}" {
-    Font "{0E041C5B1F27DCEA}ui/fonts/robotomono_msdf_28.fnt"
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
     OutlineSize 1
     ShadowSize 2
     ShadowOffset 0.8 0.8
