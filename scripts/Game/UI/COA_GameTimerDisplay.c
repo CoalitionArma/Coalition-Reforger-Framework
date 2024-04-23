@@ -6,27 +6,49 @@ class COA_GameTimerDisplay : SCR_InfoDisplay
 	protected TextWidget m_wTimer = null;
 	protected ImageWidget m_wBackground = null;
 	protected CRF_SafestartGameModeComponent m_Safestart = null;
+	protected SCR_BaseGameMode m_GameMode;
+	protected string m_sTimeLeft;
+	protected int m_iCountDown;
 	
 	override protected void UpdateValues(IEntity owner, float timeSlice)
 	{
-		Print("UpdateValues");
-		m_Safestart = CRF_SafestartGameModeComponent.GetInstance();
-		if (!m_Safestart || !m_Safestart.GetSafestartStatus())
-			return;
-		
-		if (!m_Safestart || m_wTimer || m_wBackground)
+		// Respawn support
+		if (!m_Safestart || !m_wTimer || !m_wBackground)
 		{
 			m_Safestart = CRF_SafestartGameModeComponent.GetInstance();
 			m_wTimer      = TextWidget.Cast(m_wRoot.FindWidget("timeLeftTimer"));
 			m_wBackground = ImageWidget.Cast(m_wRoot.FindWidget("timeLeftBackground"));
+			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+			m_iCountDown = m_Safestart.timeLimitMinutes * 60;
 			return;
 		}
 		
-		Print("All modules found");
+		// Main timer, which we wait until safestart is over to begin
+		GetGame().GetCallqueue().CallLater(GameLive, 1000, true);
+	}	
+	
+	void GameLive()
+	{
+		if(!m_GameMode.IsRunning() || m_Safestart.GetSafestartStatus())
+			return;
+		
+		Print("[COA] Safestart: " + m_Safestart.GetSafestartStatus());
+		GetGame().GetCallqueue().Remove(GameLive);
+		StartTimer();
+	}
+	
+	void StartTimer()
+	{
+		Print("[COA] StartTimer");
+		--m_iCountDown;
+		// get time left in mission 
+		m_sTimeLeft = SCR_FormatHelper.FormatTime(m_iCountDown);
+		m_wTimer.SetText(m_sTimeLeft);
+		
 		// if map is on screen
-		if (m_MapEntity && m_MapEntity.IsOpen())
+		if (m_MapEntity && m_MapEntity.IsOpen()) // TODO: fix
 		{
-			Print("map open");
+			Print("[COA] map open");
 			// Display it 
 			m_wTimer.SetOpacity(1);
 			m_wBackground.SetOpacity(1);
@@ -34,13 +56,6 @@ class COA_GameTimerDisplay : SCR_InfoDisplay
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);
 		}
-	}	
-	
-	void TimerLoop(int timeLeft)
-	{
-		timeLeft--;
-		// get time left in mission 
-		string timeLeftString = SCR_FormatHelper.FormatTime(timeLeft); // must be in seconds
-		m_wTimer.SetText(timeLeftString);
+		PrintFormat("[COA] Timer: %1",m_sTimeLeft);
 	}
 }
