@@ -40,7 +40,6 @@ class COA_GameTimerDisplay : SCR_InfoDisplay
 		if(!m_GameMode.IsRunning() || m_Safestart.GetSafestartStatus())
 			return;
 		
-		Print("[COA] Safestart: " + m_Safestart.GetSafestartStatus());
 		GetGame().GetCallqueue().Remove(GameLive);
 		
 		// Main timer - runs after safestart
@@ -49,23 +48,50 @@ class COA_GameTimerDisplay : SCR_InfoDisplay
 	
 	void StartTimer()
 	{
-		Print("[COA] StartTimer");
 		--m_iCountDown;
 		// get time left in mission 
 		m_sTimeLeft = SCR_FormatHelper.FormatTime(m_iCountDown);
 		m_wTimer.SetText(m_sTimeLeft);
-		PrintFormat("[COA] Timer: %1",m_sTimeLeft);
 		
 		// if map is on screen
 		if (m_MapEntity && m_MapEntity.IsOpen())
 		{
-			Print("[COA] map open");
 			// Display it 
 			m_wTimer.SetOpacity(1);
 			m_wBackground.SetOpacity(1);
 		} else {
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);
+		}
+			
+		// 15m / 5m warning	/ end warning													
+		if (m_iCountDown == 900 || m_iCountDown == 300 || m_iCountDown == 0)
+		{
+			// Change timer text to red
+			m_wTimer.SetColor(Color.Red);
+			AudioSystem.PlaySound("{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav");
+			switch (m_iCountDown) 
+			{
+				case 900:
+					SCR_PopUpNotification.GetInstance().PopupMsg("15 minute warning!", 5);
+					return;
+				case 300:
+					SCR_PopUpNotification.GetInstance().PopupMsg("5 minute warning!", 5);
+					return;
+				case 0:
+					SCR_PopUpNotification.GetInstance().PopupMsg("Mission time expired!", 5);
+					return;
+				default: {}
+			}
+			
+		}
+		
+		// Mission timer up
+		if (m_iCountDown <= 0)
+		{
+			m_wTimer.SetText("Mission Time Expired");
+			m_wTimer.SetOpacity(1);
+			m_wBackground.SetOpacity(1);
 		}
 	}
 }
