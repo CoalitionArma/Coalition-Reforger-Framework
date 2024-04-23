@@ -3,8 +3,7 @@ class COA_SD_Display : SCR_InfoDisplay
 	protected string storageString;
 	protected TextWidget m_wTimer;
 	protected ImageWidget m_wBackground;
-	
-protected CRF_GameMode_SearchAndDestroyComponent m_SDComponent = null;
+	protected CRF_GameMode_SearchAndDestroyComponent m_SDComponent = null;
 	
 	//------------------------------------------------------------------------------------------------
 

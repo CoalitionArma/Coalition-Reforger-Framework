@@ -5,6 +5,9 @@ class CRF_SafestartGameModeComponentClass: SCR_BaseGameModeComponentClass
 
 class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 {
+	[Attribute("45")]
+	int timeLimitMinutes;
+	
 	[RplProp()]
 	protected bool m_SafeStartEnabled;
 	
