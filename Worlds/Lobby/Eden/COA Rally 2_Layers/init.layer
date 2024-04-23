@@ -1,0 +1,111 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4775.619 24.249 12006.058
+}
+PS_GameModeCoop Lobby_Spcl_Mode1 : "{65B1AAF0045513DF}Prefabs/MP/Modes/Spcl/Lobby_Spcl_Mode.et" {
+ coords 4791.579 25.125 12002.499
+ m_bAdminMode 1
+ m_bTeamSwitch 1
+ {
+  SCR_FactionManager "60EA29A5B282B625" {
+   ID "60EA29A41A2FF552"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bIsPlayable 1
+    }
+   }
+   m_bCanChangeFactionsPlayable 0
+  }
+ }
+}
+SCR_BaseTriggerEntity EndTrigger {
+ coords 1037.423 0 6100.169
+ Flags 2
+ EOnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Meaux\", 90, \"Racers should all board their vehicles now.\");"\
+ "	"
+ TriggerShapeType Sphere
+ SphereRadius 50
+ BoxMins -0.5 -0.5 -50
+ BoxMaxs 50 50 20
+ DrawShape 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ PrefabsFilter {
+  PrefabFilter "{60ED74DE39D4A0AF}" {
+   Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+   CheckPrefabHierarchy 1
+  }
+ }
+ OnActivate ""\
+ "		// Probably lacking locality tbh"\
+ "		// Get player data"\
+ "		PlayerManager playerManager = GetGame().GetPlayerManager();"\
+ "		if (!playerManager)"\
+ "			return;"\
+ "		int entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+ "		string playerName = playerManager.GetPlayerName(entityPlayerID);"\
+ "		"\
+ "		// Notify player finished"\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
+ "		"\
+ "		// Send player to spec"\
+ "		SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+ "		damMan.Kill(damMan.GetInstigator());"\
+ "	"
+ RunDefaultQueryFirst 0
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 4805.703 23.524 12028.44
+  m_sTitle "Pace Notes"
+  m_sTextData "R3 70, L3 60, R2 thru gates into L1."\
+  "After exiting airport gates"\
+  "R2 40, L3 50, R4 100, L2 long."\
+  "Crossed short bridge, nearing church"\
+  "R1 into R5 170, L3 70 into L2 long."\
+  "After curve by ocean, in St.Philipe "\
+  "R1 slippery into R3 100, R2 into L3 50, R1 grip."\
+  "On asphalt, after dirt near factory"\
+  "R3 60, L6 very long tightens over bridge, R3 60 chicanes!!"\
+  "Entering Meaux "\
+  "R3 80, L5 200, L3 120, R2 into R1 slippery."\
+  "Exiting Meaux"\
+  "L3 80, R1 into L3 40, L2 40, R3 50, R1 into L3 70 tightens dip."\
+  "After dip between rocks"\
+  "L2 into R4 70, R2 into L2 into R3 50, R1 grip."\
+  "Back on pavement, nearing the coast"\
+  "L4 50, L3 60 tightens, L2 into L5 200, L3 160, R3 50."\
+  ""\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4811.405 23.618 12026.615
+  m_sTitle "Pace Notes 2"
+  m_sTextData "Onto dirt, near military base"\
+  "L3 100, R4 100, R3 190, L3 100, L2 50, R1 into L3 60."\
+  "Past the tight corner on the coast"\
+  "L2 into L4 140, L3 130, R1 grip into R3 100."\
+  "Past the hairpin back onto asphalt"\
+  "L3 60, L1 into slippery L3 100 tightens L2 tightens trees."\
+  "Off the coast, into the woods"\
+  "R2 50, R1 rock into L3 90 opens, L4 120, L2 into R1 into R4 150."\
+  "Approaching pavement west of Montigac"\
+  "R1 grip into R4 190, L3 40, R4 190, L3 60, L4 tightens 170."\
+  "Over the bridge."\
+  "R2 into R5 180, L3 80, L5 90, L4 130, R4 140 slippery."\
+  "Into the woods north of Villeneuf"\
+  "R4 140, R3 50, R5 long tight R1!!! into L3 80, L2 60, L3 60, R1 50 L1 into L6 long."\
+  "Hairpin back onto pavement"\
+  "R4 170, L2 40 tightens bridge! R5 long, R3 40, R4 90 tightens."\
+  "Coastal road to Lamentin"\
+  "R6 200, R4 180, R4 100, L4 80, R5 200 tightens bridge! L4 150, L3 120."\
+  "Graveyard entering Lamentin"\
+  "R3 70 tightens, R3 50, L2 50, L3 100 chicanes! L3 50, R1 into R2 80, L2 60, R1 into R6 ramp/finish line. "\
+  ""\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+}
