@@ -14,7 +14,8 @@ SCR_PlayerController {
      m_LayoutPath "{5985DF4F166BDEB9}UI/layouts/COA_SD_Display.layout"
     }
     COA_GameTimerDisplay "{612ED7CB04BA4191}" {
-     m_LayoutPath "{BBFA8257E348897C}UI/layouts/COA_GameTimer.layout"
+     m_LayoutPath "{BBFA8257E348897C}UI/layouts/COA_GameTimerDisplay.layout"
+     m_eLayer ALWAYS_TOP
     }
    }
   }

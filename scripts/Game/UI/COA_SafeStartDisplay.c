@@ -28,6 +28,8 @@ class COA_SafeStartDisplay : SCR_InfoDisplay
 	
 	override protected void UpdateValues(IEntity owner, float timeSlice)
 	{
+		super.UpdateValues(owner, timeSlice);
+		
 		if (!m_SafestartComponent || !m_FactionManager) {
 			m_SafestartComponent = CRF_SafestartGameModeComponent.GetInstance();
 			m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());

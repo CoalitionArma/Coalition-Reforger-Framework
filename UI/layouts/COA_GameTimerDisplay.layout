@@ -1,18 +1,18 @@
 FrameWidgetClass {
- Name "rootFrame"
+ Name "gameTimerFrame"
  {
   ImageWidgetClass "{612ED7C369056035}" {
    Name "timeLeftBackground"
    Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 0.75 0.995 0.75 0.995
+    Anchor 0.75 1 0.75 1
     PositionX -60.808
     OffsetLeft -60.808
-    PositionY -40.308
-    OffsetTop -40.308
+    PositionY -45.708
+    OffsetTop -45.708
     SizeX 119.998
     OffsetRight -59.19
     SizeY 44.78
-    OffsetBottom -4.472
+    OffsetBottom 0.928
    }
    Opacity 0
    Color 0 0 0 0.333
@@ -21,25 +21,25 @@ FrameWidgetClass {
   TextWidgetClass "{612ED7C369056034}" {
    Name "timeLeftTimer"
    Slot FrameWidgetSlot "{612734D4E397B329}" {
-    Anchor 0.75 0.995 0.75 0.995
+    Anchor 0.75 1 0.75 1
     PositionX -65.936
     OffsetLeft -65.936
-    PositionY -38.3
-    OffsetTop -38.3
+    PositionY -43.7
+    OffsetTop -43.7
     SizeX 129.998
     OffsetRight -64.062
     SizeY 39.55
-    OffsetBottom -1.25
+    OffsetBottom 4.15
    }
    Opacity 0
-   Color 0.578 0.053 0.053 1
-   Text "--:--"
-   "Font Size" 32
-   "Min Font Size" 32
+   Color 0.928 0.862 0.862 1
+   Text "Game not live"
+   "Min Font Size" 24
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
    FontProperties FontProperties "{612734D416229D9E}" {
     Font "{0E041C5B1F27DCEA}ui/fonts/robotomono_msdf_28.fnt"
+    OutlineSize 1
     ShadowSize 2
     ShadowOffset 0.8 0.8
    }

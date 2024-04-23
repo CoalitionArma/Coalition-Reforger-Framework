@@ -105,7 +105,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		
 		m_iPlayedFactionsCount = 0;
 		string bluforString = "#Coal_SS_No_Faction";
-		string opforString = "#Coal_SS_No_Faction"; 
+		string opforString = "#Coal_SS_No_Faction";
 		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
