@@ -47,6 +47,11 @@ GenericEntity : "{4D69F9D77C372BE5}Prefabs/Compositions/Slotted/SlotFlatSmall/Ma
  {
   GenericEntity {
    ID "5CCCBEC1C8877BB1"
+   {
+    Turret Tripod_M122_MG_M60_61305762A769ED92 {
+     ID "5CB0D9912C9F8B8C"
+    }
+   }
   }
  }
 }
@@ -56,6 +61,11 @@ GenericEntity : "{55D508179EF5E64A}Prefabs/Compositions/Slotted/SlotRoadMedium/C
  {
   GenericEntity {
    ID "5CC6B4B11E89342B"
+   {
+    Turret Tripod_M122_MG_M60_61305762A769FCCD {
+     ID "5CB0D9912C9F8B8C"
+    }
+   }
   }
  }
 }
@@ -149,6 +159,26 @@ $grp GenericEntity : "{C7D38772154D45BB}Prefabs/Compositions/Slotted/SlotFlatSma
    GenericEntity {
     ID "5CCCBECA91C25D50"
     coords 3.361 -0.033 -2.75
+   }
+   GenericEntity {
+    ID "5CCCBECA91C25DCB"
+    coords -0.094 0.664 -0.913
+   }
+   GenericEntity {
+    ID "5CCCBECA91C25D84"
+    coords 0.265 -1.202 -2.735
+   }
+   StaticModelEntity {
+    ID "5CCCBECA91C262AA"
+    coords 2.702 0 -2.754
+   }
+   StaticModelEntity {
+    ID "5CCCBECA91C262DA"
+    coords -2.811 0 -2.758
+   }
+   StaticModelEntity {
+    ID "5CCCBECA91C2628A"
+    coords 0.124 -0.575 -2.805
    }
   }
  }

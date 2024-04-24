@@ -1,0 +1,39 @@
+GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  ActionsManagerComponent "{613048A3A6DEB899}" {
+   ActionContexts {
+    UserActionContext "{613048A3A6DEB88C}" {
+     ContextName "default"
+     Position PointInfo "{613048A3A6DEB889}" {
+      Offset 1.3045 1.1016 0.842
+     }
+     Radius 1.25
+    }
+   }
+   additionalActions {
+    CRF_PlantBombAction "{613048A3A6DEB8F6}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{613048A3A6DEB8F4}" {
+      Name "Place Bomb"
+     }
+     Duration 5
+    }
+    CRF_DefuseBombAction "{613048A3A6DEB8F2}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{613048A3A6DE4E78}" {
+      Name "Defuse Bomb"
+     }
+     Duration 7
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+}

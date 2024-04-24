@@ -1,9 +1,10 @@
-class CRF_GameMode_SearchAndDestroyComponentClass: SCR_BaseGameModeComponentClass
+[ComponentEditorProps(category: "Game Mode Component", description: "")]
+class CRF_SearchAndDestroyGameModeComponentClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
+class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 {
 	[Attribute("US")]
 	FactionKey attackingSide;
@@ -67,30 +68,18 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		spawnParams.Transform[3] = aSiteSpawn;
 		
 		// Spawn destructible "site" at each trigger point
-		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
+		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
 		aSite.SetYawPitchRoll(aSiteYawPitchRoll);
 		aSiteID = aSite.GetID();
 		
 		spawnParams.Transform[3] = bSiteSpawn; // change to bsite
-		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
+		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
 		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
 		bSiteID = bSite.GetID();
 		
 		// Create markers on each bomb site
 		// createMarkers();
 	}
-	
-	// Debugging in workbench
-	//------------------------------------------------------------------------------------------------
-	/*
-	protected string m_sStoredMessageContent;
-	void Debugging() {
-		if (m_sStoredMessageContent != m_sMessageContent) {
-			m_sStoredMessageContent = m_sMessageContent;
-			Print(m_sMessageContent);
-		};
-	}
-	*/
 
 	// Acts as a loop method spawned via calllater, every 1 sec
 	//------------------------------------------------------------------------------------------------

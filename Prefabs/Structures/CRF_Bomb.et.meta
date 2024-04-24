@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et"
+ Name "{3E562E27A2B86F47}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/CRF_Bomb2.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
