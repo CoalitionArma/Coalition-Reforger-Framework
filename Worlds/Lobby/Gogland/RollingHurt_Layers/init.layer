@@ -13,8 +13,8 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
   CRF_SearchAndDestroyGameModeComponent "{6130576489FCD0CB}" {
-   attackingSide "USSR"
-   defendingSide "US"
+   attackingSide "RHS_RF_MSV"
+   defendingSide "RHS_US_USMC"
   }
  }
  coords 6243.637 48.875 5076.812
