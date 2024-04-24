@@ -3,8 +3,7 @@ class COA_SD_Display : SCR_InfoDisplay
 	protected string storageString;
 	protected TextWidget m_wTimer;
 	protected ImageWidget m_wBackground;
-	
-protected CRF_GameMode_SearchAndDestroyComponent m_SDComponent = null;
+	protected CRF_GameMode_SearchAndDestroyComponent m_SDComponent = null;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -14,6 +13,8 @@ protected CRF_GameMode_SearchAndDestroyComponent m_SDComponent = null;
 	
 	override protected void UpdateValues(IEntity owner, float timeSlice)
 	{
+		super.UpdateValues(owner, timeSlice);
+		
 		if (!m_SDComponent || !m_wTimer || !m_wBackground) {
 			m_SDComponent = CRF_GameMode_SearchAndDestroyComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GameMode_SearchAndDestroyComponent));
 			m_wTimer      = TextWidget.Cast(m_wRoot.FindWidget("Timer"));

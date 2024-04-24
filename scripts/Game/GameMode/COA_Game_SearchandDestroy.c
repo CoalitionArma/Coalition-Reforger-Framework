@@ -21,6 +21,8 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 	protected int bSiteTimer = 120;
 	protected vector aSiteSpawn;
 	protected vector bSiteSpawn;
+	protected vector aSiteYawPitchRoll;
+	protected vector bSiteYawPitchRoll;
 	
 	[RplProp(onRplName: "ShowMessage")]
 	string m_sMessageContent;
@@ -56,7 +58,9 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		aSiteTrigger = GetGame().GetWorld().FindEntityByName("aSiteTrigger");
 		bSiteTrigger = GetGame().GetWorld().FindEntityByName("bSiteTrigger");
 		aSiteSpawn = aSiteTrigger.GetOrigin();
+		aSiteYawPitchRoll = aSiteTrigger.GetYawPitchRoll();
 		bSiteSpawn = bSiteTrigger.GetOrigin();
+		bSiteYawPitchRoll = bSiteTrigger.GetYawPitchRoll();
 		
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
@@ -64,10 +68,12 @@ class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 		
 		// Spawn destructible "site" at each trigger point
 		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
+		aSite.SetYawPitchRoll(aSiteYawPitchRoll);
 		aSiteID = aSite.GetID();
 		
 		spawnParams.Transform[3] = bSiteSpawn; // change to bsite
 		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
+		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
 		bSiteID = bSite.GetID();
 		
 		// Create markers on each bomb site

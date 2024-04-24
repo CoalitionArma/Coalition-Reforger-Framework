@@ -75,19 +75,19 @@ FrameWidgetClass {
    Name "MissionStart"
    Slot FrameWidgetSlot "{6058112C73B2D710}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -64.954
-    OffsetLeft -64.954
-    PositionY -13.007
-    OffsetTop -13.007
-    SizeX 134.527
+    PositionX -65.453
+    OffsetLeft -65.453
+    PositionY -15.504
+    OffsetTop -15.504
+    SizeX 135.026
     OffsetRight -69.573
-    SizeY 11.424
+    SizeY 13.922
     OffsetBottom 1.582
    }
    Opacity 0
    Text "Safe Start Ended"
-   "Font Size" 14
-   "Min Font Size" 14
+   "Font Size" 16
+   "Min Font Size" 16
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
    FontProperties FontProperties "{6058112EE814CCD6}" {
@@ -99,20 +99,20 @@ FrameWidgetClass {
    Name "MissionStart2"
    Slot FrameWidgetSlot "{6058112C73B2D710}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -65.181
-    OffsetLeft -65.181
-    PositionY -0.549
-    OffsetTop -0.549
-    SizeX 134.22
-    OffsetRight -69.039
-    SizeY 14.591
-    OffsetBottom -14.042
+    PositionX -65.348
+    OffsetLeft -65.348
+    PositionY -0.216
+    OffsetTop -0.216
+    SizeX 134.847
+    OffsetRight -69.499
+    SizeY 15.257
+    OffsetBottom -15.041
    }
    Opacity 0
    Color 0.502 0 0 1
    Text "Start Mission!"
-   "Font Size" 14
-   "Min Font Size" 14
+   "Font Size" 16
+   "Min Font Size" 16
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
    FontProperties FontProperties "{6058112EE814CCD6}" {
@@ -215,7 +215,7 @@ FrameWidgetClass {
    }
    Opacity 0
    Color 0.753 0.753 0.753 0.608
-   Text "Not Ready"
+   Text "N/A"
    "Font Size" 18
    "Min Font Size" 18
    "Horizontal Alignment" Center
@@ -236,7 +236,7 @@ FrameWidgetClass {
    }
    Opacity 0
    Color 0.753 0.753 0.753 0.608
-   Text "Not Ready"
+   Text "N/A"
    "Font Size" 18
    "Min Font Size" 18
    "Horizontal Alignment" Center
@@ -257,7 +257,7 @@ FrameWidgetClass {
    }
    Opacity 0
    Color 0.753 0.753 0.753 0.608
-   Text "Not Ready"
+   Text "N/A"
    "Font Size" 18
    "Min Font Size" 18
    "Horizontal Alignment" Center
