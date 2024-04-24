@@ -1,6 +1,6 @@
 $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {
-  coords 4788.396 169.906 6994.618
+  coords 4729.288 162.166 6993.372
   m_fWorldSize 60
   m_sDescription "OBJ - A Bomb"
   m_bShowForAnyFaction 1

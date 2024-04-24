@@ -1,10 +1,10 @@
 [ComponentEditorProps(category: "Safe Start Component", description: "")]
-class CRF_SafeStartPlayerComponentClass: ScriptComponentClass
+class COA_SafeStartPlayerComponentClass: ScriptComponentClass
 {
 	
 }
 
-class CRF_SafeStartPlayerComponent: ScriptComponent
+class COA_SafeStartPlayerComponent: ScriptComponent
 {
 	//------------------------------------------------------------------------------------------------
 
@@ -12,10 +12,10 @@ class CRF_SafeStartPlayerComponent: ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	
-	static CRF_SafeStartPlayerComponent GetInstance()
+	static COA_SafeStartPlayerComponent GetInstance()
 	{
 		if (GetGame().GetPlayerController())
-			return CRF_SafeStartPlayerComponent.Cast(GetGame().GetPlayerController().FindComponent(CRF_SafeStartPlayerComponent));
+			return COA_SafeStartPlayerComponent.Cast(GetGame().GetPlayerController().FindComponent(COA_SafeStartPlayerComponent));
 		else
 			return null;
 	}
@@ -25,7 +25,7 @@ class CRF_SafeStartPlayerComponent: ScriptComponent
 	{
 		super.OnPostInit(owner);
 		
-		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
+		GetGame().GetInputManager().AddActionListener("COA_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
 	}
 	
 	//------------------------------------------------------------------------------------------------

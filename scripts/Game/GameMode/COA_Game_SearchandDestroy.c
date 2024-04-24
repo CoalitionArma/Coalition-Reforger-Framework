@@ -1,10 +1,9 @@
-[ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_SearchAndDestroyGameModeComponentClass: SCR_BaseGameModeComponentClass
+class CRF_GameMode_SearchAndDestroyComponentClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
+class CRF_GameMode_SearchAndDestroyComponent: SCR_BaseGameModeComponent
 {
 	[Attribute("US")]
 	FactionKey attackingSide;
@@ -22,8 +21,6 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	protected int bSiteTimer = 120;
 	protected vector aSiteSpawn;
 	protected vector bSiteSpawn;
-	protected vector aSiteYawPitchRoll;
-	protected vector bSiteYawPitchRoll;
 	
 	[RplProp(onRplName: "ShowMessage")]
 	string m_sMessageContent;
@@ -59,27 +56,35 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		aSiteTrigger = GetGame().GetWorld().FindEntityByName("aSiteTrigger");
 		bSiteTrigger = GetGame().GetWorld().FindEntityByName("bSiteTrigger");
 		aSiteSpawn = aSiteTrigger.GetOrigin();
-		aSiteYawPitchRoll = aSiteTrigger.GetYawPitchRoll();
 		bSiteSpawn = bSiteTrigger.GetOrigin();
-		bSiteYawPitchRoll = bSiteTrigger.GetYawPitchRoll();
 		
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		spawnParams.Transform[3] = aSiteSpawn;
 		
 		// Spawn destructible "site" at each trigger point
-		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
-		aSite.SetYawPitchRoll(aSiteYawPitchRoll);
+		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
 		aSiteID = aSite.GetID();
 		
 		spawnParams.Transform[3] = bSiteSpawn; // change to bsite
-		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
-		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
+		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et"),GetGame().GetWorld(),spawnParams);
 		bSiteID = bSite.GetID();
 		
 		// Create markers on each bomb site
 		// createMarkers();
 	}
+	
+	// Debugging in workbench
+	//------------------------------------------------------------------------------------------------
+	/*
+	protected string m_sStoredMessageContent;
+	void Debugging() {
+		if (m_sStoredMessageContent != m_sMessageContent) {
+			m_sStoredMessageContent = m_sMessageContent;
+			Print(m_sMessageContent);
+		};
+	}
+	*/
 
 	// Acts as a loop method spawned via calllater, every 1 sec
 	//------------------------------------------------------------------------------------------------

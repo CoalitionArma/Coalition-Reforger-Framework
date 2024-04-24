@@ -1,18 +1,21 @@
 //------------------------------------------------------------------------------------------------
-class CRF_DefuseBombAction : ScriptedUserAction
+class COA_DefuseBombAction : ScriptedUserAction
 {	
-	SCR_FactionManager factionManager;
-	CRF_SearchAndDestroyGameModeComponent gameMode;
+	SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+	CRF_GameMode_SearchAndDestroyComponent gameMode = CRF_GameMode_SearchAndDestroyComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GameMode_SearchAndDestroyComponent));
 	EntityID siteID = null;
 	
 	//------------------------------------------------------------------------------------------------
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent) {
-		if (!GetGame().InPlayMode()) return;
-		
 		siteID = pOwnerEntity.GetID();
-		factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		gameMode = CRF_SearchAndDestroyGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGameModeComponent));
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	override bool GetActionNameScript(out string outName)
+	{
+		outName = "Defuse Bomb";
+		return true;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
@@ -31,7 +34,7 @@ class CRF_DefuseBombAction : ScriptedUserAction
 		else
 			siteDefused = "SiteB";
 		
-		CRF_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(siteDefused, false);
+		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(siteDefused, false);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}

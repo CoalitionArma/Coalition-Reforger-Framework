@@ -1,10 +1,10 @@
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_GameModePlayerComponentClass: ScriptComponentClass
+class COA_GameModePlayerComponentClass: ScriptComponentClass
 {
 	
 }
 
-class CRF_GameModePlayerComponent: ScriptComponent
+class COA_GameModePlayerComponent: ScriptComponent
 {	
 	//------------------------------------------------------------------------------------------------
 
@@ -12,10 +12,10 @@ class CRF_GameModePlayerComponent: ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	
-	static CRF_GameModePlayerComponent GetInstance()
+	static COA_GameModePlayerComponent GetInstance()
 	{
 		if (GetGame().GetPlayerController())
-			return CRF_GameModePlayerComponent.Cast(GetGame().GetPlayerController().FindComponent(CRF_GameModePlayerComponent));
+			return COA_GameModePlayerComponent.Cast(GetGame().GetPlayerController().FindComponent(COA_GameModePlayerComponent));
 		else
 			return null;
 	}
@@ -34,6 +34,6 @@ class CRF_GameModePlayerComponent: ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
 	{
-		CRF_SearchAndDestroyGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGameModeComponent)).ToggleBombPlanted(sitePlanted, togglePlanted);
+		CRF_GameMode_SearchAndDestroyComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GameMode_SearchAndDestroyComponent)).ToggleBombPlanted(sitePlanted, togglePlanted);
 	}
 }

@@ -3,7 +3,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
-  CRF_SearchAndDestroyGameModeComponent "{61305762AE18DDEB}" {
+  CRF_GameMode_SearchAndDestroyComponent "{612B4A819DEA15DE}" {
    attackingSide "USSR"
    defendingSide "US"
   }

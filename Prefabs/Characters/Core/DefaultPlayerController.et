@@ -1,23 +1,17 @@
 SCR_PlayerController {
  ID "1A9BA6BEFA06E3B1"
  components {
-  CRF_GameModePlayerComponent "{61303B991D92F9B3}" {
+  COA_GameModePlayerComponent "{612711C4FC397937}" {
   }
-  CRF_SafeStartPlayerComponent "{61303B991FCA4CF1}" {
+  COA_SafeStartPlayerComponent "{605C855D1DA9C3F2}" {
   }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
    InfoDisplays {
-    CRF_SafeStartDisplay "{61303B9E05796EC7}" {
-     m_LayoutPath "{533092FF68C19D59}UI/layouts/CRF_SafeStartDisplay.layout"
-     m_eLayer ALWAYS_TOP
+    COA_SafeStartDisplay "{605C39DF10EF1F75}" {
+     m_LayoutPath "{533092FF68C19D59}UI/layouts/COA_SafeStartDisplay.layout"
     }
-    CRF_GameTimerDisplay "{61303B9E065107C1}" {
-     m_LayoutPath "{BBFA8257E348897C}UI/layouts/CRF_GameTimerDisplay.layout"
-     m_eLayer ALWAYS_TOP
-    }
-    CRF_SearchAndDestroyDisplay "{61303B9EA39FC27F}" {
-     m_LayoutPath "{5985DF4F166BDEB9}UI/layouts/CRF_S&D_Display.layout"
-     m_eLayer ALWAYS_TOP
+    COA_SD_Display "{612734D58C620D5E}" {
+     m_LayoutPath "{5985DF4F166BDEB9}UI/layouts/COA_SD_Display.layout"
     }
    }
   }
