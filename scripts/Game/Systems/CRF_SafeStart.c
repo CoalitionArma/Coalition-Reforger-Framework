@@ -1,3 +1,4 @@
+[ComponentEditorProps(category: "Safe Start Component", description: "")]
 class CRF_SafestartGameModeComponentClass: SCR_BaseGameModeComponentClass
 {
 	
@@ -55,10 +56,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		
 		// Only run on in-game post init
 		// Is the the right way to do this? WHO KNOWS !
-		if (!GetGame().InPlayMode()) 
-		{
-			return;
-		}
+		if (!GetGame().InPlayMode()) return;
 			
 		//Print("[CRF Safestart] OnPostInit");
 		if (Replication.IsServer())

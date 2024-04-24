@@ -1,4 +1,4 @@
-class COA_SafeStartDisplay : SCR_InfoDisplay
+class CRF_SafeStartDisplay : SCR_InfoDisplay
 {
 	protected ImageWidget m_wTimerImage;
 	protected TextWidget m_wTimerDescription;
