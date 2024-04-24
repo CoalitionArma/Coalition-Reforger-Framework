@@ -1,0 +1,22 @@
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 6829.626 138.609 2437.003
+  m_sTitle "Defend Rocket Silo Compound"
+  m_sFactionKey "US"
+ }
+ {
+  coords 6832.354 138.63 2435.835
+  m_sTitle "Capture Rocket Silo Compound"
+  m_sFactionKey "USSR"
+ }
+}
+$grp GenericEntity : "{DC4B11930753ABC2}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_base.et" {
+ {
+  coords 6866.385 138.547 2473.651
+  angleY 24.514
+ }
+ {
+  coords 6866.496 138.547 2468.877
+  angleY 137.367
+ }
+}
