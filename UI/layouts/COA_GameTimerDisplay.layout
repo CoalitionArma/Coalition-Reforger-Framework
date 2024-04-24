@@ -22,20 +22,19 @@ FrameWidgetClass {
    Name "timeLeftTimer"
    Slot FrameWidgetSlot "{612734D4E397B329}" {
     Anchor 0.85 1 0.85 1
-    PositionX -118.132
-    OffsetLeft -118.132
-    PositionY -17.698
-    OffsetTop -17.698
-    SizeX 210.972
-    OffsetRight -92.84
-    SizeY 44.999
-    OffsetBottom -27.301
-    SizeToContent 1
+    PositionX -123.347
+    OffsetLeft -123.347
+    PositionY -22.076
+    OffsetTop -22.076
+    SizeX 144.024
+    OffsetRight -20.677
+    SizeY 22.215
+    OffsetBottom -0.139
    }
    Opacity 0
    Color 0.928 0.862 0.862 1
    Text "Game not live"
-   "Font Size" 15
+   "Font Size" 16
    "Min Font Size" 14
    "Horizontal Alignment" Center
    "Vertical Alignment" Center

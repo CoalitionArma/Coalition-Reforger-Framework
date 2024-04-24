@@ -9,7 +9,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	int timeLimitMinutes;
 	
 	[RplProp()]
-	protected bool m_SafeStartEnabled;
+	protected bool m_SafeStartEnabled = false;
 	
 	[RplProp()]
 	protected string m_sServerWorldTime;
@@ -21,6 +21,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected string m_sMessageContent = "";
 	
 	protected int m_iTimeSafeStartBegan;
+	protected int m_iTimeMissionEnds;
 	protected int m_iSafeStartTimeRemaining;
 	
 	protected bool m_bBluforReady = false;
@@ -90,6 +91,24 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		Replication.BumpMe();
 	};
 	
+	//Call from server
+	//------------------------------------------------------------------------------------------------
+	void UpdateMissionEndTimer()
+	{
+		float currentTime = GetGame().GetWorld().GetWorldTime();
+		float millis = m_iTimeMissionEnds - currentTime;
+  		int totalSeconds = (millis / 1000);
+		
+		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
+		
+		if (totalSeconds == 0) {
+			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
+			m_sServerWorldTime = "Mission Time Expired!";
+		};
+		
+		Replication.BumpMe();
+	};
+	
 	//------------------------------------------------------------------------------------------------
 	protected void UpdatePlayedFactions() 
 	{
@@ -105,7 +124,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		
 		m_iPlayedFactionsCount = 0;
 		string bluforString = "#Coal_SS_No_Faction";
-		string opforString = "#Coal_SS_No_Faction";
+		string opforString = "#Coal_SS_No_Faction"; 
 		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
@@ -244,6 +263,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			m_SafeStartEnabled = true;
 			m_iSafeStartTimeRemaining = 35;
 			
+			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
+			
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 250, true);
 			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 1250, true);
@@ -263,6 +284,13 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(UpdateServerWorldTime);
 			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
+			
+			if (timeLimitMinutes > 0) {
+				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (timeLimitMinutes * 60000);
+				GetGame().GetCallqueue().CallLater(UpdateMissionEndTimer, 250, true);
+			} else {
+				m_sServerWorldTime = "N/A";
+			}
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
