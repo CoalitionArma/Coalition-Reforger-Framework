@@ -185,6 +185,45 @@ $grp GenericEntity : "{342AA153837E89E5}Prefabs/Weapons/Warheads/Fires/Fire_Gene
   coords 7276.047 1.916 5242.583
   scale 2
  }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7287.074 5.56 5295.763
+  scale 2
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7283.934 5.259 5238.776
+  scale 2
+ }
+ {
+  components {
+   TimerTriggerComponent "{55129E81CBAA1390}" {
+    PROJECTILE_EFFECTS {
+     SpawnParticleEffect "{5E24C63471F26FAE}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  coords 7276.295 5.259 5239.221
+  scale 2
+ }
 }
 $grp GameEntity : "{6597847D2AC253F5}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01.et" {
  {
