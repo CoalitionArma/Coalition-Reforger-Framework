@@ -1,4 +1,4 @@
-class COA_GameTimerDisplay : SCR_InfoDisplay
+class CRF_GameTimerDisplay : SCR_InfoDisplay
 {
 	// Get premade game timer widget and background 
 	

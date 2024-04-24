@@ -1,14 +1,16 @@
 //------------------------------------------------------------------------------------------------
-class COA_PlantBombAction : ScriptedUserAction
+class CRF_PlantBombAction : ScriptedUserAction
 {	
-	SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-	CRF_GameMode_SearchAndDestroyComponent gameMode = CRF_GameMode_SearchAndDestroyComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GameMode_SearchAndDestroyComponent));
+	SCR_FactionManager factionManager;
+	CRF_SearchAndDestroyGameModeComponent gameMode;
 	
 	//------------------------------------------------------------------------------------------------
-	override bool GetActionNameScript(out string outName)
+	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
 	{
-		outName = "Plant Bomb";
-		return true;
+		if (!GetGame().InPlayMode()) return;
+		
+		factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		gameMode = CRF_SearchAndDestroyGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGameModeComponent));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -28,7 +30,7 @@ class COA_PlantBombAction : ScriptedUserAction
 		else
 			sitePlanted = "SiteB";
 		
-		COA_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(sitePlanted, true);
+		CRF_GameModePlayerComponent.GetInstance().Owner_ToggleBombPlanted(sitePlanted, true);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}
