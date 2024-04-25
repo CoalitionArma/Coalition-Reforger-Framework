@@ -29,8 +29,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected int m_iTimeMissionEnds;
 	protected int m_iSafeStartTimeRemaining;
 	
-	protected ref array<IEntity> m_aInitialAIEntitys = new array<IEntity>;
-	
 	protected bool m_bBluforReady = false;
 	protected bool m_bOpforReady = false;
 	protected bool m_bIndforReady = false;
@@ -206,14 +204,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		if (!m_GameMode.IsRunning()) 
 			return;
 		
-		GetGame().GetCallqueue().Remove(WaitTillGameStart);
-		
-		array<AIAgent> agents = {};
-		GetGame().GetAIWorld().GetAIAgents(agents);
-		foreach (AIAgent agent : agents) {
-			m_aInitialAIEntitys.Insert(agent.GetControlledEntity());
-		};
-		
+		GetGame().GetCallqueue().Remove(WaitTillGameStart);		
 		ToggleSafeStartServer(true);
 	}
 	
