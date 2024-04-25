@@ -1,19 +1,56 @@
 Tank M113_APC1 : "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et" {
  coords 7033.888 100.714 3948.276
 }
-SCR_AIGroup : "{65F428A42E8AD574}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_PLT_p.et" {
- coords 7013.439 100.64 4007.528
-}
-SCR_AIGroup : "{7A1B1873E6B4A74A}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_ArmorCrew_p.et" {
- coords 7033.448 100.693 3954.364
-}
-$grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_RifleSquad_p.et" {
- {
-  coords 7014.801 100.781 3998.415
+$grp SCR_AIGroup : "{65F428A42E8AD574}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_PLT_p.et" {
+ US_Plt {
+  coords 7013.439 100.64 4007.528
+  {
+   $grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_RifleSquad_p.et" {
+    US_Rifle_1 {
+     coords 4.938 0.141 -24.105
+    }
+    US_Rifle_2 {
+     coords 1.362 0.141 -9.113
+     m_sCustomNameSet "2nd Squad"
+    }
+    US_Rifle_3 {
+     coords 2.748 0.141 -13.906
+     m_sCustomNameSet "3rd Squad"
+    }
+   }
+  }
  }
- {
-  coords 7018.377 100.781 3983.423
+ US_Plt2 {
+  coords 7013.73 100.627 4007.946
+  m_sCustomNameSet "2nd Platoon"
+  {
+   SCR_AIGroup US_HeloCrew : "{6C80B624CF88FC65}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_HeloCrew_p.et" {
+    coords 9.368 0.154 -20.299
+    angleX 0.893
+    angleY 0.042
+    angleZ 2.684
+    m_sCustomNameSet "Helo Crew"
+   }
+   SCR_AIGroup US_Armor_Crew : "{7A1B1873E6B4A74A}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_ArmorCrew_p.et" {
+    coords 19.718 0.066 -53.582
+    m_sCustomNameSet "Armor Crew"
+   }
+   $grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_RifleSquad_p.et" {
+    US_Rifle_4 {
+     coords 0.961 3.39 -18.597
+     m_sCustomNameSet "4th Squad"
+    }
+    US_Rifle_5 {
+     coords 4.717 0.155 -24.143
+     m_sCustomNameSet "5th Squad"
+    }
+   }
+  }
  }
+}
+Vehicle Mi8MT1 : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT.et" {
+ coords 7316.369 8.974 5639.531
+ angleY 153.868
 }
 $grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
  M923A1_transport1 {

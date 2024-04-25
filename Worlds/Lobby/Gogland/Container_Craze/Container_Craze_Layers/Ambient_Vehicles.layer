@@ -1,0 +1,118 @@
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  coords 7390.728 8.289 5467.519
+  angleY 151.528
+ }
+ UAZ2 {
+  coords 7394.337 8.289 5461.501
+  angleY 151.528
+ }
+ UAZ3 {
+  coords 7385.983 8.289 5464.507
+  angleY 151.528
+ }
+ UAZ4 {
+  coords 7389.25 8.289 5458.703
+  angleY 151.528
+ }
+}
+$grp Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ Ural3 {
+  coords 7448.674 8.286 5337.244
+  angleY -108.203
+ }
+ Ural1 {
+  coords 7444.983 8.288 5349.288
+  angleY -108.203
+ }
+ Ural2 {
+  coords 7446.862 8.287 5343.47
+  angleY -108.203
+ }
+ Ural4 {
+  coords 7436.129 8.288 5345.898
+  angleY -108.203
+ }
+ Ural6 {
+  coords 7440.015 8.287 5334.661
+  angleY -108.203
+ }
+ Ural5 {
+  coords 7437.758 8.287 5340.307
+  angleY -108.203
+ }
+}
+$grp Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
+ UAZ469_base3 {
+  coords 7401.498 8.289 5442.119
+  angleY -116.102
+ }
+ UAZ469_base1 {
+  coords 7398.118 8.289 5451.755
+  angleY -116.102
+ }
+ UAZ469_base2 {
+  coords 7399.925 8.289 5446.793
+  angleY -116.102
+ }
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR3 {
+  components {
+   SlotManagerComponent "{55BCE45E438E4CFF}" {
+    Slots {
+     RegisteringComponentSlotInfo Turret {
+      Enabled 0
+     }
+    }
+   }
+  }
+  coords 7374.639 8.289 5487.019
+  angleY 153.338
+ }
+ BTR1 {
+  components {
+   SlotManagerComponent "{55BCE45E438E4CFF}" {
+    Slots {
+     RegisteringComponentSlotInfo Turret {
+      Enabled 0
+     }
+    }
+   }
+  }
+  coords 7382.352 8.289 5490.444
+  angleY 153.338
+ }
+ BTR4 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 0
+     }
+     SCR_FuelNode "{5628CA8E08F1AAF4}" {
+      m_fInitialFuelTankState 0
+     }
+    }
+   }
+  }
+  coords 7380.356 8.288 5475.621
+  angleY 153.338
+ }
+ BTR2 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 0
+     }
+     SCR_FuelNode "{5628CA8E08F1AAF4}" {
+      m_fInitialFuelTankState 0
+     }
+    }
+   }
+  }
+  coords 7387.808 8.289 5479.416
+  angleY 153.338
+ }
+}

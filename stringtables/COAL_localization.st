@@ -48,12 +48,11 @@ StringTable {
    Id "Coal_Missions_Lobby_Welcome_Text"
    Target_en_us "This is a Reforger lobby mission on the COALITION Reforger Framework (CRF). "\
    ""\
-   "If you just joined, the mission will start momentarily. If you joined after the mission started, you can go to the Lobby page at the top of your screen and select a role."\
-   ""\
+   "If you just joined, the mission will start momentarily. If you joined after the mission started, you can go to the Lobby page at the top of your screen and select a role. If there are no roles, then you are required to spectate until next mission."\
    "If you have any questions, message an admin in the in-game chat. "
-   Modified 1627130074
+   Modified 1630682375
    Author "pi123"
-   LastChanged "pi123"
+   LastChanged "tanaKa"
   }
   CustomStringTableItem "{60FB7C0BA681C146}" {
    Id "Coal_Missions_Lobby_Welcome_Title"

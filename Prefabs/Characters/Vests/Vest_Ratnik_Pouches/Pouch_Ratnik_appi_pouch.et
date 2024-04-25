@@ -2,8 +2,8 @@ GenericEntity : "{09DEA8153A0C312D}Prefabs/Characters/Core/EquipmentPart_Base.et
  ID "50E0B40D7407B664"
  components {
   SCR_UniversalInventoryStorageComponent "{5222CB03D1147687}" {
-   MaxCumulativeVolume 2000
-   m_fMaxWeight 40
+   MaxCumulativeVolume 5000
+   m_fMaxWeight 100
   }
  }
 }

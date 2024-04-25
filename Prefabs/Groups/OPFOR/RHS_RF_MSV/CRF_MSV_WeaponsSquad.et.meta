@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{400DDA65C33303FE}Prefabs/MP/Modes/Conflict/COA_Campaign.et"
+ Name "{BD8D0D16E1EA353F}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_WeaponsSquad.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -8,6 +8,8 @@ MetaFileClass {
   EntityTemplateResourceClass XBOX_SERIES : PC {
   }
   EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
   }

@@ -70,8 +70,6 @@ SCR_ChimeraCharacter : "{1E8265C4FCFC787B}Prefabs/Characters/Factions/OPFOR/RHS_
      TargetStorage "Prefabs/Characters/Uniforms/Pants_6b51_VKPO.et"
     }
     ItemsInitConfigurationItem "{5A3C01FB93DD1CA3}" {
-     PrefabsToSpawn +{
-     }
     }
     ItemsInitConfigurationItem "{5DF8AE2F63E20FC5}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_ak_1_pouch.et"
