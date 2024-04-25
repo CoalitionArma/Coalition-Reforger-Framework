@@ -1,58 +1,18 @@
 SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 4775.619 24.249 12006.058
 }
-PS_GameModeCoop Lobby_Spcl_Mode1 : "{65B1AAF0045513DF}Prefabs/MP/Modes/Spcl/Lobby_Spcl_Mode.et" {
- coords 4791.579 25.125 12002.499
- m_bAdminMode 1
- m_bTeamSwitch 1
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 4745.203 24.116 12011.265
  {
-  SCR_FactionManager "60EA29A5B282B625" {
-   ID "60EA29A41A2FF552"
+  SCR_FactionManager {
+   ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
      m_bIsPlayable 1
     }
    }
-   m_bCanChangeFactionsPlayable 0
   }
  }
-}
-SCR_BaseTriggerEntity EndTrigger {
- coords 1037.423 0 6100.169
- Flags 2
- EOnActivate ""\
- "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Meaux\", 90, \"Racers should all board their vehicles now.\");"\
- "	"
- TriggerShapeType Sphere
- SphereRadius 50
- BoxMins -0.5 -0.5 -50
- BoxMaxs 50 50 20
- DrawShape 1
- TriggerActivationType "All changes"
- PeriodicQueries 1
- PrefabsFilter {
-  PrefabFilter "{60ED74DE39D4A0AF}" {
-   Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
-   CheckPrefabHierarchy 1
-  }
- }
- OnActivate ""\
- "		// Probably lacking locality tbh"\
- "		// Get player data"\
- "		PlayerManager playerManager = GetGame().GetPlayerManager();"\
- "		if (!playerManager)"\
- "			return;"\
- "		int entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
- "		string playerName = playerManager.GetPlayerName(entityPlayerID);"\
- "		"\
- "		// Notify player finished"\
- "		SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
- "		"\
- "		// Send player to spec"\
- "		SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
- "		damMan.Kill(damMan.GetInstigator());"\
- "	"
- RunDefaultQueryFirst 0
 }
 $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
  {
