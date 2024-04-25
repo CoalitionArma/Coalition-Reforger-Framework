@@ -1,0 +1,47 @@
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et" {
+ coords 1101.348 7.201 2322.751
+ angleX -1.961
+ angleY -141.989
+ angleZ -0.397
+}
+GenericEntity : "{2B24356C351A2538}Prefabs/Props/Wrecks/M113_wreck.et" {
+ coords 1129.104 5.56 2453.819
+ angleX 0.895
+}
+Vehicle M923A1_command1 : "{36BDCC88B17B3BFA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_command.et" {
+ components {
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent_SA "{20FB66C5BC92275B}" {
+     ThrottleReactionTime 1
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   Enabled 0
+  }
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   EnableDamage 0
+  }
+  VehicleWheeledSimulation_SA "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+    }
+   }
+  }
+ }
+ coords 1165.551 7.67 2361.18
+ angleX 1.788
+ angleY -87.07
+ angleZ 0.091
+}
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
+ coords 1245.031 6.953 2319.472
+ angleX 0.445
+ angleY -150.171
+ angleZ -0.777
+}
+GenericEntity : "{B90E5414AB7C325B}Prefabs/Props/Wrecks/BTR70_wreck_static.et" {
+ coords 1304.12 6.156 2323.891
+ angleY -121.228
+}
