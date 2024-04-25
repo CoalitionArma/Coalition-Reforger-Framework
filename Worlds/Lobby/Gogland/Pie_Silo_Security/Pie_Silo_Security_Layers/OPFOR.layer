@@ -1,22 +1,80 @@
-SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Group_USSR_Platoon_p.et" {
- coords 7292.602 49.067 3009.469
- angleY 176.373
- m_sCustomNameSet "Plt"
-}
-$grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
- {
-  coords 7291.891 49.335 3020.738
-  angleY 176.373
-  m_sCustomNameSet "1-1"
+$grp SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Legacy/Group_USSR_Platoon_p.et" {
+ USSR_Plt2 {
+  coords 7289.017 49.504 3013.427
+  angleX 3.923
+  angleY 155.49
+  angleZ 2.138
+  m_aUnitPrefabSlots {
+   "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+  }
+  m_bSnapToTerrain 0
+  m_sCustomNameSet "2nd Plt"
+  {
+   $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Legacy/Group_USSR_RifleSquad_p.et" {
+    USSR_Rifle_4 {
+     coords 0.096 0.483 -6.075
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "4th Squad"
+    }
+    USSR_Rifle_5 {
+     coords 1.327 0.803 -10.97
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "5th Squad"
+    }
+    USSR_Rifle_6 {
+     coords 1.71 0.972 -14.33
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "6th Squad"
+    }
+    USSR_Rifle_7 {
+     coords -9.137 0.252 -18.713
+     angleY 1.084
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "7th Squad"
+    }
+   }
+  }
  }
- {
-  coords 7290.929 49.276 3028.342
-  angleY 176.373
-  m_sCustomNameSet "1-2"
- }
- {
-  coords 7290.253 49.121 3036.23
-  angleY 176.373
-  m_sCustomNameSet "1-3"
+ USSR_Plt {
+  coords 7298.811 49.554 3015.263
+  angleX 1.627
+  angleY 155.323
+  angleZ -0.747
+  m_aUnitPrefabSlots {
+   "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+  }
+  m_bSnapToTerrain 0
+  m_sCustomNameSet "1st Plt"
+  {
+   SCR_AIGroup USSR_HeloCrew : "{6DA49D0449E79605}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_HeloCrew_p.et" {
+    coords 3.615 0.937 -24.393
+    angleY -5.805
+    m_bSnapToTerrain 0
+    m_sCustomNameSet "Helo Crew"
+   }
+   $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Legacy/Group_USSR_RifleSquad_p.et" {
+    USSR_Rifle_1 {
+     coords 0.115 0.074 -6.105
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "1st Squad"
+    }
+    USSR_Rifle_2 {
+     coords 1.36 0.126 -11.021
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "2nd Squad"
+    }
+    USSR_Rifle_3 {
+     coords 1.75 0.15 -14.392
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "3rd Squad"
+    }
+   }
+  }
  }
 }

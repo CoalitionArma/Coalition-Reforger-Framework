@@ -1,27 +1,76 @@
-SCR_AIGroup : "{65F428A42E8AD574}Prefabs/Groups/BLUFOR/1980s/Group_US80s_PLT_p.et" {
- coords 6833.108 138.547 2439.389
- angleY 161.241
- m_bSnapToTerrain 0
-}
-SCR_AIGroup : "{7A1B1873E6B4A74A}Prefabs/Groups/BLUFOR/1980s/Group_US80s_ArmorCrew_p.et" {
- coords 6837.67 138.273 2455.571
- angleY -158.05
- m_aUnitPrefabSlots {
-  "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et"
- }
- m_bSnapToTerrain 0
- m_sCustomNameSet "MG Element"
-}
-$grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Group_US80s_RifleSquad_p.et" {
- {
-  coords 6832.693 138.547 2444.983
-  angleY -162.109
+$grp SCR_AIGroup : "{65F428A42E8AD574}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_PLT_p.et" {
+ US_Plt2 {
+  coords 6837.484 138.598 2484.588
+  angleX -3.252
+  angleY 0.192
+  angleZ -0.011
   m_bSnapToTerrain 0
+  m_sCustomNameSet "2nd Platoon"
+  {
+   SCR_AIGroup US_HeloCrew : "{6C80B624CF88FC65}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_HeloCrew_p.et" {
+    coords 9.441 -1.203 -20.23
+    angleX 3.252
+    angleY -0.149
+    angleZ 0.002
+    m_bSnapToTerrain 0
+    m_sCustomNameSet "Helo Crew"
+   }
+   SCR_AIGroup US_Armor_Crew : "{7A1B1873E6B4A74A}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_ArmorCrew_p.et" {
+    coords 19.897 -3.314 -53.413
+    angleX -0.119
+    angleY -1.653
+    angleZ 7.995
+    m_bSnapToTerrain 0
+    m_sCustomNameSet "Armor Crew"
+   }
+   $grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_RifleSquad_p.et" {
+    US_Rifle_4 {
+     coords 1.022 -0.989 -16.504
+     angleX 3.252
+     angleY -0.191
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "4th Squad"
+    }
+    US_Rifle_5 {
+     coords 4.8 -1.454 -24.082
+     angleX 6.066
+     angleY -0.191
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "5th Squad"
+    }
+   }
+  }
  }
- {
-  coords 6834.676 138.38 2449.821
-  angleY -162.109
+ US_Plt {
+  coords 6837.19 138.621 2484.172
+  angleX -3.252
+  angleY 0.192
+  angleZ -0.011
   m_bSnapToTerrain 0
-  m_sCustomNameSet "2nd Squad"
+  {
+   $grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/Legacy/Group_US80s_RifleSquad_p.et" {
+    US_Rifle_1 {
+     coords 5.021 -1.494 -24.041
+     angleX 6.066
+     angleY -0.191
+     m_bSnapToTerrain 0
+    }
+    US_Rifle_2 {
+     coords 1.394 -0.417 -9.101
+     angleX 6.492
+     angleY 0.001
+     angleZ 3.4
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "2nd Squad"
+    }
+    US_Rifle_3 {
+     coords 2.798 -0.863 -13.87
+     angleX 3.252
+     angleY -0.191
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "3rd Squad"
+    }
+   }
+  }
  }
 }
