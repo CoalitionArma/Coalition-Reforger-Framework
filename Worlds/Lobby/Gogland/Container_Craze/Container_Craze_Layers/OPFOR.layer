@@ -1,192 +1,80 @@
-SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Group_USSR_Platoon_p.et" {
- coords 7335.657 8.289 5610.652
- angleY 155.344
- m_aUnitPrefabSlots {
-  "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
- }
- m_bSnapToTerrain 0
-}
-$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
- UAZ1 {
-  coords 7390.728 8.289 5467.519
-  angleY 151.528
- }
- UAZ2 {
-  coords 7394.337 8.289 5461.501
-  angleY 151.528
- }
- UAZ3 {
-  coords 7385.983 8.289 5464.507
-  angleY 151.528
- }
- UAZ4 {
-  coords 7389.25 8.289 5458.703
-  angleY 151.528
- }
-}
-$grp GenericEntity : "{342AA153837E89E5}Prefabs/Weapons/Warheads/Fires/Fire_Generic_Large.et" {
- {
-  components {
-   TimerTriggerComponent "{55129E81CBAA1390}" {
-    PROJECTILE_EFFECTS {
-     SpawnParticleEffect "{5E24C63471F26FAE}" {
-      Enabled 1
-     }
+$grp SCR_AIGroup : "{11CFB6B0138281F6}Prefabs/Groups/OPFOR/1980s/Legacy/Group_USSR_Platoon_p.et" {
+ USSR_Plt {
+  coords 7338.978 8.289 5612.09
+  angleY 155.344
+  m_aUnitPrefabSlots {
+   "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+  }
+  m_bSnapToTerrain 0
+  m_sCustomNameSet "1st Plt"
+  {
+   SCR_AIGroup USSR_HeloCrew : "{6DA49D0449E79605}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_HeloCrew_p.et" {
+    coords 3.605 0 -24.42
+    angleY -5.805
+    m_bSnapToTerrain 0
+    m_sCustomNameSet "Helo Crew"
+   }
+   $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Legacy/Group_USSR_RifleSquad_p.et" {
+    USSR_Rifle_1 {
+     coords 0.114 0 -6.108
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "1st Squad"
+    }
+    USSR_Rifle_2 {
+     coords 1.359 0 -11.026
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "2nd Squad"
+    }
+    USSR_Rifle_3 {
+     coords 1.749 0 -14.398
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "3rd Squad"
     }
    }
   }
-  coords 7287.074 5.56 5295.763
-  scale 2
  }
- {
-  components {
-   TimerTriggerComponent "{55129E81CBAA1390}" {
-    PROJECTILE_EFFECTS {
-     SpawnParticleEffect "{5E24C63471F26FAE}" {
-      Enabled 1
-     }
+ USSR_Plt2 {
+  coords 7329.682 8.289 5609.571
+  angleY 155.344
+  m_aUnitPrefabSlots {
+   "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+  }
+  m_bSnapToTerrain 0
+  m_sCustomNameSet "2nd Plt"
+  {
+   $grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Legacy/Group_USSR_RifleSquad_p.et" {
+    USSR_Rifle_4 {
+     coords 0.115 0 -6.107
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "4th Squad"
+    }
+    USSR_Rifle_5 {
+     coords 1.358 0 -11.026
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "5th Squad"
+    }
+    USSR_Rifle_6 {
+     coords 1.749 0 -14.396
+     angleY -1.476
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "6th Squad"
+    }
+    USSR_Rifle_7 {
+     coords -9.126 0 -18.73
+     angleY 1.084
+     m_bSnapToTerrain 0
+     m_sCustomNameSet "7th Squad"
     }
    }
   }
-  coords 7283.934 5.259 5238.776
-  scale 2
- }
- {
-  components {
-   TimerTriggerComponent "{55129E81CBAA1390}" {
-    PROJECTILE_EFFECTS {
-     SpawnParticleEffect "{5E24C63471F26FAE}" {
-      Enabled 1
-     }
-    }
-   }
-  }
-  coords 7276.295 5.259 5239.221
-  scale 2
- }
-}
-$grp Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
- Ural3 {
-  coords 7448.674 8.286 5337.244
-  angleY -108.203
- }
- Ural1 {
-  coords 7444.983 8.288 5349.288
-  angleY -108.203
- }
- Ural2 {
-  coords 7446.862 8.287 5343.47
-  angleY -108.203
- }
- Ural4 {
-  coords 7436.129 8.288 5345.898
-  angleY -108.203
- }
- Ural6 {
-  coords 7440.015 8.287 5334.661
-  angleY -108.203
- }
- Ural5 {
-  coords 7437.758 8.287 5340.307
-  angleY -108.203
- }
-}
-$grp GenericEntity : "{777C176677786B31}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_blue.et" {
- {
-  coords 7387.673 8.289 5472.237
- }
- {
-  coords 7384.865 8.289 5475.254
-  angleY 59.268
- }
-}
-$grp Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
- UAZ469_base3 {
-  coords 7401.498 8.289 5442.119
-  angleY -116.102
- }
- UAZ469_base1 {
-  coords 7398.118 8.289 5451.755
-  angleY -116.102
- }
- UAZ469_base2 {
-  coords 7399.925 8.289 5446.793
-  angleY -116.102
- }
-}
-$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
- BTR3 {
-  components {
-   SlotManagerComponent "{55BCE45E438E4CFF}" {
-    Slots {
-     RegisteringComponentSlotInfo Turret {
-      Enabled 0
-     }
-    }
-   }
-  }
-  coords 7374.639 8.289 5487.019
-  angleY 153.338
- }
- BTR1 {
-  components {
-   SlotManagerComponent "{55BCE45E438E4CFF}" {
-    Slots {
-     RegisteringComponentSlotInfo Turret {
-      Enabled 0
-     }
-    }
-   }
-  }
-  coords 7382.352 8.289 5490.444
-  angleY 153.338
- }
- BTR4 {
-  components {
-   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
-    FuelNodes {
-     SCR_FuelNode "{5622A70CD4036C5A}" {
-      m_fInitialFuelTankState 0
-     }
-     SCR_FuelNode "{5628CA8E08F1AAF4}" {
-      m_fInitialFuelTankState 0
-     }
-    }
-   }
-  }
-  coords 7380.356 8.288 5475.621
-  angleY 153.338
- }
- BTR2 {
-  components {
-   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
-    FuelNodes {
-     SCR_FuelNode "{5622A70CD4036C5A}" {
-      m_fInitialFuelTankState 0
-     }
-     SCR_FuelNode "{5628CA8E08F1AAF4}" {
-      m_fInitialFuelTankState 0
-     }
-    }
-   }
-  }
-  coords 7387.808 8.289 5479.416
-  angleY 153.338
  }
 }
 Vehicle Mi8MT1 : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT.et" {
  coords 7316.358 8.974 5639.715
  angleY 161.074
-}
-$grp SCR_AIGroup : "{E3545CFEDD312D55}Prefabs/Groups/OPFOR/1980s/Group_USSR_RifleSquad_p.et" {
- {
-  coords 7333.003 8.289 5616.154
-  angleY 153.868
-  m_bSnapToTerrain 0
- }
- {
-  coords 7329.821 8.289 5620.104
-  angleY 153.868
-  m_bSnapToTerrain 0
- }
 }
