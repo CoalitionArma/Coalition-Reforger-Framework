@@ -23,7 +23,8 @@ class CRF_LinearAASGameModeComponent: SCR_BaseGameModeComponent
 	
 	protected int zonesCapped = 0;
 	EntityID aSiteID, bSiteID;
-	protected IEntity zone1, zone2, zone3;
+	protected SCR_FactionDominanceTriggerEntity zone1, zone2, zone3;
+	
 	
 	//------------------------------------------------------------------------------------------------
 	override protected void OnWorldPostProcess(World world)
@@ -40,6 +41,8 @@ class CRF_LinearAASGameModeComponent: SCR_BaseGameModeComponent
 		zone1 = GetGame().GetWorld().FindEntityByName("zone1");
 		zone2 = GetGame().GetWorld().FindEntityByName("zone2");
 		zone3 = GetGame().GetWorld().FindEntityByName("zone3");
+		
+		// Markers 
 		
 		//PrintFormat("[COA] zone1: %1",zone1);
 	}
