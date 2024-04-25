@@ -35,11 +35,11 @@ PS_MissionDescription {
  }
  m_sTitle "Game Type"
  m_sDescriptionLayout "{41DAF7B7061DC0BC}UI/MissionDescription/DescriptionEditable.layout"
- m_sTextData "Search and Destroy"\
+ m_sTextData "Neutral Escort"\
  ""\
- "The attackers must find and plant bombs on both A and B bomb site in order to win."\
+ "Both teams fight over the same objective. Capture it, and move it to your extraction zone to win."\
  ""\
- "Only one bomb site can be active at a time."
+ "Your extraction zone will be roughly opposite of your spawn zone."
  m_bEmptyFactionVisibility 1
  m_bShowForAnyFaction 1
  m_iOrder 2
