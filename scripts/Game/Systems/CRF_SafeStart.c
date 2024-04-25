@@ -6,8 +6,11 @@ class CRF_SafestartGameModeComponentClass: SCR_BaseGameModeComponentClass
 
 class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 {
-	[Attribute("45")]
-	int timeLimitMinutes;
+	[Attribute("45", "auto", "Mission Time (set to -1 to disable)")]
+	int m_iTimeLimitMinutes;
+	
+	[Attribute("0", "auto", "Time after safestart turns off that JIPs will be allowed to spawn (set to -1 to disable)")]
+	float m_fJIPTimeLimitMinutes;
 	
 	[RplProp()]
 	protected bool m_SafeStartEnabled = false;
@@ -21,9 +24,15 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	[RplProp(onRplName: "ShowMessage")]
 	protected string m_sMessageContent = "";
 	
+	[RplProp(onRplName: "KillRedundantUnits")]
+	protected bool m_bKillRedundantUnitsBool;
+	
 	protected int m_iTimeSafeStartBegan;
+	protected int m_iJIPTimeRemaining;
 	protected int m_iTimeMissionEnds;
 	protected int m_iSafeStartTimeRemaining;
+	
+	protected ref array<IEntity> m_aInitialAIEntitys = new array<IEntity>;
 	
 	protected bool m_bBluforReady = false;
 	protected bool m_bOpforReady = false;
@@ -75,37 +84,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	TStringArray GetWhosReady() {
 		return m_aFactionsStatusArray;
 	}
-	
-	//Call from server
-	//------------------------------------------------------------------------------------------------
-	void UpdateServerWorldTime()
-	{
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_iTimeSafeStartBegan - currentTime;
-  		int totalSeconds = (millis / 1000);
-		
-		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
-		
-		Replication.BumpMe();
-	};
-	
-	//Call from server
-	//------------------------------------------------------------------------------------------------
-	void UpdateMissionEndTimer()
-	{
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_iTimeMissionEnds - currentTime;
-  		int totalSeconds = (millis / 1000);
-		
-		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
-		
-		if (totalSeconds == 0) {
-			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
-			m_sServerWorldTime = "Mission Time Expired!";
-		};
-		
-		Replication.BumpMe();
-	};
 	
 	//------------------------------------------------------------------------------------------------
 	protected void UpdatePlayedFactions() 
@@ -208,21 +186,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		Replication.BumpMe();
 	};
 	
-	// Called from server to all clients
-	//------------------------------------------------------------------------------------------------
-	// Locality needs verified for workbench and local server hosting
-	void ShowMessage()
-	{
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc) return;
-
-		if (m_sMessageContent == "#Coal_SS_Game_Live") {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
-		} else {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
-		};
-	};
-	
 	//------------------------------------------------------------------------------------------------
 
 	// SafeStart functions
@@ -247,6 +210,13 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			return;
 		
 		GetGame().GetCallqueue().Remove(WaitTillGameStart);
+		
+		array<AIAgent> agents = {};
+		GetGame().GetAIWorld().GetAIAgents(agents);
+		foreach (AIAgent agent : agents) {
+			m_aInitialAIEntitys.Insert(agent.GetControlledEntity());
+		};
+		
 		ToggleSafeStartServer(true);
 	}
 	
@@ -283,12 +253,17 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
 			
-			if (timeLimitMinutes > 0) {
-				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (timeLimitMinutes * 60000);
+			if (m_iTimeLimitMinutes > 0) {
+				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (m_iTimeLimitMinutes * 60000);
 				GetGame().GetCallqueue().CallLater(UpdateMissionEndTimer, 250, true);
 			} else {
 				m_sServerWorldTime = "N/A";
-			}
+			};
+			
+			if (m_fJIPTimeLimitMinutes != -1) {
+				m_iJIPTimeRemaining = GetGame().GetWorld().GetWorldTime() + (m_fJIPTimeLimitMinutes * 60000);
+				GetGame().GetCallqueue().CallLater(UpdateJIPTimeRemaining, 2500, true);
+			};
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
@@ -302,7 +277,83 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		}
 	};
 	
+	//Call from server
 	//------------------------------------------------------------------------------------------------
+	void UpdateServerWorldTime()
+	{
+		float currentTime = GetGame().GetWorld().GetWorldTime();
+		float millis = m_iTimeSafeStartBegan - currentTime;
+  		int totalSeconds = (millis / 1000);
+		
+		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
+		
+		Replication.BumpMe();
+	};
+	
+	//Call from server
+	//------------------------------------------------------------------------------------------------
+	void UpdateMissionEndTimer()
+	{
+		float currentTime = GetGame().GetWorld().GetWorldTime();
+		float millis = m_iTimeMissionEnds - currentTime;
+  		int totalSeconds = (millis / 1000);
+		
+		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
+		
+		if (totalSeconds == 0) {
+			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
+			m_sServerWorldTime = "Mission Time Expired!";
+		};
+		
+		Replication.BumpMe();
+	};
+	
+	//Call from server
+	//------------------------------------------------------------------------------------------------
+	void UpdateJIPTimeRemaining()
+	{
+		float currentTime = GetGame().GetWorld().GetWorldTime();
+		float millis = m_iJIPTimeRemaining - currentTime;
+  	int totalSeconds = (millis / 1000);
+		if (totalSeconds == 0 || millis < 0) {
+			GetGame().GetCallqueue().Remove(UpdateJIPTimeRemaining);
+			KillRedundantUnits();
+			m_bKillRedundantUnitsBool = true;
+			Replication.BumpMe();
+		};
+	};
+	
+	// Called from server to all clients
+	//------------------------------------------------------------------------------------------------
+	// Locality needs verified for workbench and local server hosting
+	void KillRedundantUnits() {
+		PS_PlayableManager playableManager = PS_PlayableManager.GetInstance();
+		
+		if(playableManager)
+			playableManager.KillRedundantUnits();
+	}
+	
+	// Called from server to all clients
+	//------------------------------------------------------------------------------------------------
+	// Locality needs verified for workbench and local server hosting
+	void ShowMessage()
+	{
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc) return;
+
+		if (m_sMessageContent == "#Coal_SS_Game_Live") {
+			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
+		} else {
+			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
+		};
+	};
+	
+	//------------------------------------------------------------------------------------------------
+
+	// SafeStart EHs
+
+	//------------------------------------------------------------------------------------------------
+	
 	protected void ActivateSafeStartEHs()
 	{	
 		array<int> outPlayers = {};
