@@ -1,0 +1,255 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{287F5B4D8EB4AD96}worlds/GameMaster/Navmeshes/GM_Seitenbuch_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 2779.558 422.328 1774.318
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 3324.437 381.236 1794.979
+}
+$grp SCR_FactionDominanceTriggerEntity {
+ zone1 {
+  coords 2822.224 438.959 1564.751
+  angleX 4.516
+  angleY -33.661
+  angleZ -83.257
+  TriggerShapeType Sphere
+  SphereRadius 100
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  m_sOwnerFactionKey "us"
+ }
+ zone2 {
+  coords 2194.969 412.14 1527.204
+  angleX -17.35
+  angleY -0.28
+  angleZ 0.938
+  TriggerShapeType Sphere
+  SphereRadius 100
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  m_sOwnerFactionKey "us"
+ }
+ zone3 {
+  coords 1848.311 413.837 1156.676
+  angleZ -4.467
+  TriggerShapeType Sphere
+  SphereRadius 100
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  m_sOwnerFactionKey "us"
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 3008.879 417.521 1766.307
+  angleY 0
+ }
+ {
+  coords 3105.247 399.069 1817.285
+  angleY 0
+ }
+ {
+  coords 3158.304 395.865 1830.528
+  angleY 0
+ }
+ {
+  coords 3211.8 393.239 1846.78
+  angleY 0
+ }
+ {
+  coords 3249.125 387.596 1794.063
+  angleY 0
+ }
+ {
+  coords 3294.282 384.753 1765.203
+  angleY 0
+ }
+ {
+  coords 3316.539 396.657 1716.596
+  angleY 0
+ }
+ {
+  coords 3313.128 419.132 1619.923
+  angleY 0
+ }
+ {
+  coords 3302.013 421.555 1523.189
+  angleY 0
+ }
+ {
+  coords 3290.436 435.322 1465.35
+  angleY 0
+ }
+ {
+  coords 3251.558 418.678 1378.49
+  angleY 0
+ }
+ {
+  coords 3210.988 419.543 1301.405
+  angleY 0
+ }
+ {
+  coords 3114.633 417.844 1300.156
+  angleY 0
+ }
+ {
+  coords 3011.05 424.927 1307.263
+  angleY 0
+ }
+ {
+  coords 2909.533 430.164 1315.991
+  angleY 0
+ }
+ {
+  coords 2801.264 430.034 1313.58
+  angleY 0
+ }
+ {
+  coords 2699.492 435.946 1289.438
+  angleY 0
+ }
+ {
+  coords 2531.086 434.866 1275.226
+  angleY 0
+ }
+ {
+  coords 2354.445 433.181 1192.149
+  angleY 0
+ }
+ {
+  coords 2200.075 429.632 1124.449
+  angleY 0
+ }
+ {
+  coords 2105.96 434.366 1074.764
+  angleY 0
+ }
+ {
+  coords 1986.371 442.71 995.308
+  angleY 0
+ }
+ {
+  coords 1881.42 431.54 1015.354
+  angleY 0
+ }
+ {
+  coords 1728.678 421.179 1035.521
+  angleY 0
+ }
+ {
+  coords 1715.093 411.252 1158.728
+  angleY 0
+ }
+ {
+  coords 1727.338 397.825 1268.649
+  angleY 0
+ }
+ {
+  coords 1799.913 419.034 1389.847
+  angleY 0
+ }
+ {
+  coords 1882.174 425.388 1469.276
+  angleY 0
+ }
+ {
+  coords 1966.558 443.179 1564.276
+  angleY 0
+ }
+ {
+  coords 2045.969 441.099 1611.706
+  angleY 0
+ }
+ {
+  coords 2088.673 438.464 1656.038
+  angleY 0
+ }
+ {
+  coords 2162.517 428.23 1695.513
+  angleY 0
+ }
+ {
+  coords 2250.569 396.203 1707.287
+  angleY 0
+ }
+ {
+  coords 2337.04 397.215 1633.674
+  angleY 0
+ }
+ {
+  coords 2472.526 401.425 1674.704
+  angleY 0
+ }
+ {
+  coords 2626.457 409.3 1729.275
+  angleY 0
+ }
+ {
+  coords 2785.084 430.029 1771.821
+  angleY 0
+ }
+ {
+  coords 2902.355 426.997 1763.475
+  angleY 0
+ }
+ {
+  coords 3050.108 403.208 1790.085
+  angleY 0
+ }
+ loa {
+  coords 2854.901 424.75 1388.6
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+ loa2 {
+  coords 2902.355 421.098 1443.792
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+ loa3 {
+  coords 2930.239 416.718 1507.942
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+ loa4 {
+  coords 2943.86 415.849 1557.81
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+ loa5 {
+  coords 2962.028 422.282 1608.105
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+ loa6 {
+  coords 2976.051 415.459 1669.136
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+ loa7 {
+  coords 2999.249 420.522 1720.6
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+ loa8 {
+  coords 2802.163 453.608 1359.126
+  angleY 0
+  m_MarkerColor 0.031 0.025 0.7 1
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 3216.5 391.687 1771.174
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1921.672 431.76 1030.72
+}
