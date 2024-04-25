@@ -25,11 +25,6 @@ class CRF_LinearAASGameModeComponent: SCR_BaseGameModeComponent
 	EntityID aSiteID, bSiteID;
 	protected IEntity zone1, zone2, zone3;
 	
-	[RplProp(onRplName: "PlaySound")]
-	string m_SoundString;
-	
-
-	
 	//------------------------------------------------------------------------------------------------
 	override protected void OnWorldPostProcess(World world)
 	{
