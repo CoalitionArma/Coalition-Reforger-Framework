@@ -37,7 +37,11 @@ class CRF_LinearAASGameModeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void InitZones()
 	{
+		zone1 = GetGame().GetWorld().FindEntityByName("zone1");
+		zone2 = GetGame().GetWorld().FindEntityByName("zone2");
+		zone3 = GetGame().GetWorld().FindEntityByName("zone3");
 		
+		//PrintFormat("[COA] zone1: %1",zone1);
 	}
 	
 	
