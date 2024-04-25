@@ -25,7 +25,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected bool m_bKillRedundantUnitsBool;
 	
 	protected int m_iTimeSafeStartBegan;
-	protected int m_iJIPTimeRemaining;
 	protected int m_iTimeMissionEnds;
 	protected int m_iSafeStartTimeRemaining;
 	
