@@ -16,5 +16,19 @@ SCR_ChimeraCharacter : "{2B0F3996B07194C4}Prefabs/Characters/Factions/OPFOR/USSR
     }
    }
   }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173E6675BF7}" {
+    }
+    ItemsInitConfigurationItem "{5E6A901AA67B29CA}" {
+    }
+    ItemsInitConfigurationItem "{61310E8FAD85718E}" {
+     TargetStorage "Prefabs/Items/Equipment/Accessories/Scabbard_Bayonet_6Kh4/Scabbard_Bayonet_6Kh4.et"
+     PrefabsToSpawn {
+      "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12/Binoculars_B12.et"
+     }
+    }
+   }
+  }
  }
 }

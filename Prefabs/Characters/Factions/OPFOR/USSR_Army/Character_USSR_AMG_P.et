@@ -4,5 +4,14 @@ SCR_ChimeraCharacter : "{E9AEEF2D9E41321B}Prefabs/Characters/Factions/OPFOR/USSR
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "MG Assistant"
   }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{554AE55DB4147348}" {
+     PrefabsToSpawn + {
+      "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12/Binoculars_B12.et"
+     }
+    }
+   }
+  }
  }
 }
