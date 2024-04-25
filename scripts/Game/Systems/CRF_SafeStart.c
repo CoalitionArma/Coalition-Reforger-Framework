@@ -9,9 +9,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)")]
 	int m_iTimeLimitMinutes;
 	
-	[Attribute("0", "auto", "Time after safestart turns off that JIPs will be allowed to spawn (set to -1 to disable)")]
-	float m_fJIPTimeLimitMinutes;
-	
 	[RplProp()]
 	protected bool m_SafeStartEnabled = false;
 	
@@ -243,6 +240,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		} else { // Turn off safestart
 			if (!m_SafeStartEnabled) return;	
 			
+			m_bKillRedundantUnitsBool = true;
 			m_SafeStartEnabled = false;
 			m_bBluforReady = false;
 			m_bOpforReady = false;
@@ -260,10 +258,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 				m_sServerWorldTime = "N/A";
 			};
 			
-			if (m_fJIPTimeLimitMinutes != -1) {
-				m_iJIPTimeRemaining = GetGame().GetWorld().GetWorldTime() + (m_fJIPTimeLimitMinutes * 60000);
-				GetGame().GetCallqueue().CallLater(UpdateJIPTimeRemaining, 2500, true);
-			};
+			KillRedundantUnits();
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
@@ -306,21 +301,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		};
 		
 		Replication.BumpMe();
-	};
-	
-	//Call from server
-	//------------------------------------------------------------------------------------------------
-	void UpdateJIPTimeRemaining()
-	{
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_iJIPTimeRemaining - currentTime;
-  	int totalSeconds = (millis / 1000);
-		if (totalSeconds == 0 || millis < 0) {
-			GetGame().GetCallqueue().Remove(UpdateJIPTimeRemaining);
-			KillRedundantUnits();
-			m_bKillRedundantUnitsBool = true;
-			Replication.BumpMe();
-		};
 	};
 	
 	// Called from server to all clients
