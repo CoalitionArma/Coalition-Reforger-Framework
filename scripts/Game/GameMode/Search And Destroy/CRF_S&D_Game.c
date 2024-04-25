@@ -6,10 +6,10 @@ class CRF_SearchAndDestroyGameModeComponentClass: SCR_BaseGameModeComponentClass
 
 class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 {
-	[Attribute("US")]
+	[Attribute("US", "auto", "The side assaulting the bomb sites")]
 	FactionKey attackingSide;
 	
-	[Attribute("USSR")]
+	[Attribute("USSR", "auto", "The side deffending the bomb sites")]
 	FactionKey defendingSide;
 	
 	protected bool aSiteDestroyed, bSiteDestroyed = false;
@@ -55,7 +55,6 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void InitBombSites()
 	{
-		SCR_PopUpNotification.GetInstance().PopupMsg("Initializing Search and Destroy",10);
 		aSiteTrigger = GetGame().GetWorld().FindEntityByName("aSiteTrigger");
 		bSiteTrigger = GetGame().GetWorld().FindEntityByName("bSiteTrigger");
 		aSiteSpawn = aSiteTrigger.GetOrigin();
