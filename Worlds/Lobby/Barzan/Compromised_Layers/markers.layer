@@ -1,0 +1,40 @@
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1857.532 2 2964.63
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 993.676 4.291 1278.646
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 60
+  m_sDescription "Extraction"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 1150.872 8.011 2363.586
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 60
+  m_sDescription "Command Truck Location"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1958.416 2 2893.016
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 60
+  m_sDescription "Extraction"
+  m_aVisibleForFactions {
+   "US"
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 995.252 4.171 1408.266
+}

@@ -1,0 +1,120 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 998.66 5.335 1388.767
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 21
+  }
+ }
+ coords 996.41 4.859 1398.154
+ m_bRemoveRedundantUnits 1
+ {
+  SCR_FactionManager "61317DC81B700E15" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{613141150477071B}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6131411505FDED0D}" {
+        m_sCallsign "2-2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Anton10"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Anton11"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Anton12"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Boris10"
+       }
+       SCR_CallsignInfo "{6131411588002E65}" {
+        m_sCallsign "Boris11"
+       }
+       SCR_CallsignInfo "{6131411589C7BD96}" {
+        m_sCallsign "Boris12"
+       }
+       SCR_CallsignInfo "{6131411589841744}" {
+        m_sCallsign "Chekov10"
+       }
+       SCR_CallsignInfo "{61314115A73B1464}" {
+        m_sCallsign "Chekov11"
+       }
+       SCR_CallsignInfo "{61314115F11908D5}" {
+        m_sCallsign "Chekov12"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 1336.868 8.654 2071.601
+  m_sTitle "Objective"
+  m_sTextData "A US command vehicle containing sensitive intelligence was abandoned in a cemetery nearby. Recover the command vehicle and return it to your respective extraction point at any cost."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 3
+ }
+ {
+  coords 1335.459 8.668 2079.829
+  m_sTitle "Extraction"
+  m_sTextData "Your extraction point is the dock at Chivres Point."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 3
+ }
+ {
+  coords 1103.925 6.812 1526.252
+  m_sTitle "Extraction"
+  m_sTextData "Your extraction point is across the bridge West of Chaspinhac. "
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 3
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1149.507 7.743 2412.512
+}
+PS_MissionDescription : "{CF3B30C535DDF54C}PrefabsEditable/MissionDescription/GametypeEscort.et" {
+ coords 1138.738 7.308 2410.243
+ m_sTextData "Neutral Escort"\
+ ""\
+ "Both teams fight over one objective, secure it and return it to your extraction zone."\
+ ""\
+ "Your extraction is opposite of your spawn location."
+ m_iOrder 1
+}
