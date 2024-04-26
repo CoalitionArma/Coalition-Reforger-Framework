@@ -26,6 +26,11 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 4836.851 164.527 7193.119
 }
+SCR_AIGroup Group_USSR80s_Vehicles_ArmorCrew_p_3 : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+ coords 5631.726 216.246 7127.688
+ angleY 87.199
+ m_sCustomNameSet "BTR Team 3"
+}
 $grp PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
  BLUFOR_Win_Cond {
   coords 4836.851 164.527 7193.119
