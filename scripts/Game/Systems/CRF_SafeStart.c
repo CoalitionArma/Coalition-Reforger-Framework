@@ -9,6 +9,9 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)")]
 	int m_iTimeLimitMinutes;
 	
+	[Attribute("true", "auto", "Should we delete all JIP slots after SafeStart turns off?")]
+	bool m_bDeleteJIPSlots;
+	
 	[RplProp()]
 	protected bool m_SafeStartEnabled = false;
 	
@@ -21,7 +24,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	[RplProp(onRplName: "ShowMessage")]
 	protected string m_sMessageContent = "";
 	
-	[RplProp(onRplName: "KillRedundantUnits")]
+	[RplProp(onRplName: "CallDeleteRedundantUnits")]
 	protected bool m_bKillRedundantUnitsBool;
 	
 	protected int m_iTimeSafeStartBegan;
@@ -36,6 +39,10 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	
 	protected int m_iPlayedFactionsCount;
 	protected ref map<IEntity,bool> m_mPlayersWithEHsMap = new map<IEntity,bool>;
+	
+	protected PS_PlayableManager m_PlayableManager;
+	protected ref map<RplId, PS_PlayableComponent> m_mPlayables = new map<RplId, PS_PlayableComponent>;
+	protected int m_mPlayablesCount = 0;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -197,6 +204,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		return m_SafeStartEnabled;
 	}
 	
+	//Call from server
 	//------------------------------------------------------------------------------------------------
 	void WaitTillGameStart()
 	{
@@ -207,8 +215,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		ToggleSafeStartServer(true);
 	}
 	
+	//Call from server
 	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void ToggleSafeStartServer(bool status) 
 	{
 		if (status) { // Turn on safestart
@@ -230,8 +238,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		} else { // Turn off safestart
 			if (!m_SafeStartEnabled) return;	
 			
+			CallDeleteRedundantUnits();
 			m_bKillRedundantUnitsBool = true;
-			m_SafeStartEnabled = false;
 			m_bBluforReady = false;
 			m_bOpforReady = false;
 			m_bIndforReady = false;
@@ -248,9 +256,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 				m_sServerWorldTime = "N/A";
 			};
 			
-			KillRedundantUnits();
-			
-			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
+			Replication.BumpMe();//Broadcast change
 			
 			DisableSafeStartEHs();
 			
@@ -259,7 +265,15 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
 			GetGame().GetCallqueue().CallLater(DisableSafeStartEHs, 12500);
+			
+			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
 		}
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	void DelayChangeSafeStartDisabled() {
+		m_SafeStartEnabled = false;
+		Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 	};
 	
 	//Call from server
@@ -296,11 +310,44 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	// Called from server to all clients
 	//------------------------------------------------------------------------------------------------
 	// Locality needs verified for workbench and local server hosting
-	void KillRedundantUnits() {
-		PS_PlayableManager playableManager = PS_PlayableManager.GetInstance();
-		
-		if(playableManager)
-			playableManager.KillRedundantUnits();
+	void CallDeleteRedundantUnits() 
+	{
+		m_PlayableManager = PS_PlayableManager.GetInstance();
+		if(m_PlayableManager && m_bDeleteJIPSlots) {
+			if (m_SafeStartEnabled) {
+				// Slowly delete AI on another thread so we dont create any massive lag spikes.
+				m_mPlayables = m_PlayableManager.GetPlayables();
+				m_mPlayablesCount = m_mPlayables.Count();
+				GetGame().GetCallqueue().CallLater(DeleteRedundantUnitsSlowly, 125, true);
+			} else {
+				// Quickly delete AI on the main thread if they are a JIP and have come in after safestart has been turned off.
+				map<RplId, PS_PlayableComponent> playables = m_PlayableManager.GetPlayables();
+				for (int i = 0; i < playables.Count(); i++) {
+					PS_PlayableComponent playable = playables.GetElement(i);
+					if (m_PlayableManager.GetPlayerByPlayable(playable.GetId()) <= 0)
+					{
+						SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playable.GetOwner());
+						SCR_EntityHelper.DeleteEntityAndChildren(character);
+					};
+				}
+			};
+		};
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void DeleteRedundantUnitsSlowly() 
+	{
+		if (m_mPlayablesCount > 0) {
+			PS_PlayableComponent playable = m_mPlayables.GetElement(m_mPlayablesCount - 1);
+			m_mPlayablesCount--;
+			if (m_PlayableManager.GetPlayerByPlayable(playable.GetId()) <= 0)
+			{
+				SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playable.GetOwner());
+				SCR_EntityHelper.DeleteEntityAndChildren(character);
+			}
+		} else {
+			GetGame().GetCallqueue().Remove(DeleteRedundantUnitsSlowly);
+		}
 	}
 	
 	// Called from server to all clients
