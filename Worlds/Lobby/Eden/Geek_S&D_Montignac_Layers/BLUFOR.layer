@@ -1,40 +1,3 @@
-$grp SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
- {
-  coords 4716.647 161.972 6976.417
-  angleY -16.77
-  m_sCustomNameSet "1st Squad"
- }
- {
-  coords 4717.498 161.91 6973.97
-  angleY -16.77
-  m_sCustomNameSet "2nd Squad"
- }
- {
-  coords 4718.12 162.015 6971.809
-  angleY -16.77
-  m_sCustomNameSet "3rd Squad"
- }
- {
-  coords 4718.637 162.047 6970.086
-  angleY -16.77
-  m_sCustomNameSet "4th Squad"
- }
- {
-  coords 4719.149 162.122 6968.348
-  angleY -16.77
-  m_sCustomNameSet "5th Squad"
- }
- {
-  coords 4720.123 162.209 6966.775
-  angleY -16.77
-  m_sCustomNameSet "6th Squad"
- }
-}
-SCR_AIGroup : "{1AFA02A4E31F1AD8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MGTeam.et" {
- coords 4701.744 163.144 6976.531
- angleY 52.58
- m_sCustomNameSet "MG Team"
-}
 SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
  coords 4713.638 161.542 6984.711
  angleY 167.073
@@ -42,4 +5,33 @@ SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s
   "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et"
  }
  m_sCustomNameSet "Platoon Command"
+ {
+  $grp SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+   {
+    coords -1.077 0.43 8.757
+    angleY 176.157
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -1.359 0.368 11.332
+    angleY 176.157
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -1.482 0.473 13.578
+    angleY 176.157
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -1.6 0.505 15.373
+    angleY 176.157
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+  SCR_AIGroup : "{1AFA02A4E31F1AD8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MGTeam.et" {
+   coords 13.423 1.602 5.312
+   angleY -114.493
+   m_sCustomNameSet "MG Team"
+  }
+ }
 }
