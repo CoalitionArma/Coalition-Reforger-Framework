@@ -1,0 +1,78 @@
+GenericEntity {
+ components {
+  MeshObject "{6135090F50258CC4}" {
+   Object "{F0C50CEECEB16029}Assets/Props/Wrecks/BMP1/BMP1_wreck_hull.xob"
+  }
+ }
+ coords 2893.105 390.429 887.435
+ angleX 0.644
+ angleY -44.007
+ angleZ -0.622
+}
+$grp ParticleEffectEntity {
+ {
+  coords 2729.245 405.345 892.207
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2727.258 407.125 871.059
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2699.292 403.653 942.296
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2689.047 407.404 934.351
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2897.979 390.406 884.631
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2894.292 390.406 884.543
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2894.072 391.858 887.087
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+}
+Turret Tripod_6T5_6134491B50C31B0D : "{01D0A039972D90D7}TOWtripod.et" {
+ coords 2104.179 436.502 1111.034
+ angleX -2.964
+ angleY 129.458
+ angleZ 2.192
+}
+SCR_DestructibleBuildingEntity : "{501A020C34E2FB63}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp_Camo.et" {
+ coords 2019.292 0.929 1025.152
+ angleY 85
+}
+$grp GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ {
+  coords 2094.627 435.991 1106.01
+  angleY 158
+ }
+ {
+  coords 2049.408 435.073 1058.038
+  angleY 119
+ }
+}
+Turret m119tripod_6134491AFB1CD413 : "{8FEA8A6BC510B1C9}M119/m119tripod.et" {
+ coords 1621.74 417.429 1037.438
+ angleY 116
+}
+GenericEntity Rangetables_6135090938FA5DDE : "{A774E4B5388CB6BD}Artythings/Rangetables.et" {
+ coords 1622.567 417.258 1043.364
+}
+GenericEntity : "{CD0935F9AA1BAA7C}Artythings/artybox.et" {
+ coords 1993.335 432.947 866.675
+}
+StaticModelEntity : "{D4177594212A056F}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_plastic_foundation.et" {
+ coords 2072.775 435.95 1094.185
+ angleY 137
+}
+GenericEntity "105mmHEAT_6134491AC162A4F3" : "{F1DAB4A2C61D8F94}M119/105mmHEAT.et" {
+ coords 1622.725 416.373 1043.724
+}
