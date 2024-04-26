@@ -1,7 +1,7 @@
 SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 998.66 5.335 1388.767
 }
-PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_iStartingHours 21
@@ -109,8 +109,8 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 1149.507 7.743 2412.512
 }
-PS_MissionDescription : "{CF3B30C535DDF54C}PrefabsEditable/MissionDescription/GametypeEscort.et" {
- coords 1138.738 7.308 2410.243
+PS_MissionDescription : "{8D61878E9F924406}PrefabsEditable/MissionDescription/GametypeNeutralEscort.et" {
+ coords 1154.953 7.771 2350.331
  m_sTextData "Neutral Escort"\
  ""\
  "Both teams fight over one objective, secure it and return it to your extraction zone."\
