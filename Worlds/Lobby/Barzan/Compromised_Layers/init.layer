@@ -96,6 +96,14 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   }
   m_iOrder 3
  }
+ {
+  coords 1157.27 7.895 2364.542
+  m_sTitle "Objective"
+  m_sTextData "A US command vehicle containing sensitive intelligence was abandoned in a cemetery nearby. Recover the command vehicle and return it to your respective extraction point at any cost."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 1149.507 7.743 2412.512
@@ -109,11 +117,17 @@ PS_MissionDescription : "{8D61878E9F924406}PrefabsEditable/MissionDescription/Ga
  "Your extraction is opposite of your spawn location."
  m_iOrder 1
 }
-PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
- coords 1157.353 7.771 2354.706
- m_sTitle "Objective"
- m_sTextData "A US command vehicle containing sensitive intelligence was abandoned in a cemetery nearby. Recover the command vehicle and return it to your respective extraction point at any cost."
- m_bEmptyFactionVisibility 1
- m_bShowForAnyFaction 1
- m_iOrder 1
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1157.353 7.771 2354.706
+  m_sTitle "Objective: Extract Truck"
+  m_iOrder 1
+  m_sFactionKey "US"
+ }
+ {
+  coords 1156.758 7.911 2365.077
+  m_sTitle "Objective: Extract Truck"
+  m_iOrder 1
+  m_sFactionKey "USSR"
+ }
 }
