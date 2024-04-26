@@ -119,9 +119,11 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_MarkerColor 0.122 0.105 0.871 1
   m_sQuadName "fortification-2"
   m_sDescription "Defensive Ridgeline"
+  m_bUseWorldScale 0
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }
+  m_bVisibleForEmptyFaction 0
  }
  defense2 {
   coords 2105.948 435.979 1109.543
@@ -129,9 +131,11 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_MarkerColor 0.121 0.106 0.868 1
   m_sQuadName "defend-2"
   m_sDescription "TOW Launcher"
+  m_bUseWorldScale 0
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }
+  m_bVisibleForEmptyFaction 0
  }
  defense3 {
   coords 1626.396 416.388 1037.643
@@ -139,9 +143,11 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_MarkerColor 0.121 0.106 0.868 1
   m_sQuadName "defend-2"
   m_sDescription "M119"
+  m_bUseWorldScale 0
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }
+  m_bVisibleForEmptyFaction 0
  }
 }
 $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {

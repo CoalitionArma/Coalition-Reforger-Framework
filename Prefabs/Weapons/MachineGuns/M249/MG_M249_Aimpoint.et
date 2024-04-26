@@ -1,0 +1,29 @@
+GenericEntity : "{A598035257A5D0BC}Prefabs/Weapons/MachineGuns/M249/MG_M249_Handguard_RISTop_base.et" {
+ ID "60949BE796E811C6"
+ components {
+  WeaponSoundComponent "{60949BE6766C829F}" {
+   Filenames {
+    "{DF7202A00392B0B7}Sounds/Weapons/Rifles/M27IAR/Suppressed/RHS_Weapons_Rifles_M27IAR_Shot_Suppressed.acp" "{D815ACC8D793A669}Sounds/Weapons/Machineguns/M249/Weapons_Machineguns_M249_Handling.acp" "{E08211071D0175E2}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_LMG.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{214445E9606EFCD0}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_LMG.acp" "{5DB34B1BB17CA63B}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_LMG.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  WeaponComponent "{60949BE6767386F3}" {
+   components {
+    MuzzleComponent "{60949BE67673854A}" {
+     components {
+      AttachmentSlotComponent "{60949BE676738BD9}" {
+       AttachmentSlot InventoryStorageSlot RHS_M249_RIS_VFG_Slot {
+        Prefab "{4268B2077766E8C7}Prefabs/Weapons/Attachments/Optics/aimpoint_t1/Optic_t1_high.et"
+       }
+      }
+      SCR_MuzzleEffectComponent "{60949BE676738B4E}" {
+       ParticleEffect "{D629F2C4D494BE80}Particles/Weapon/Muzzle_M16A2_flashHider.ptc"
+       EffectPosition EntitySlotInfo "{C9B3271BB85B5D32}" {
+        Offset 0 0 0.1444
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
