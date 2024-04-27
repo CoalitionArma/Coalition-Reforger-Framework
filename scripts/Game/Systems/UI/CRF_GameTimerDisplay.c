@@ -40,7 +40,8 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 			return;
 		};
 		
-		if (m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
+		if (m_Safestart.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
+		
 		m_sStoredServerWorldTime = m_sServerWorldTime;
 		
 		// 15m / 5m warning / end warning
