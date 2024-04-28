@@ -1,0 +1,50 @@
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+ coords 2751.249 3.827 1224.379
+ angleY 90.174
+ m_aUnitPrefabSlots {
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{0D90CFD8D45258A6}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_SL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
+ }
+}
+$grp SCR_AIGroup : "{42B89C4662189118}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_MMGTeam.et" {
+ {
+  coords 2766.906 2 1213.443
+  m_sCustomNameSet "MMG 1"
+ }
+ {
+  coords 2757.586 2 1214.007
+  m_sCustomNameSet "MMG 2"
+ }
+ {
+  coords 2747.55 2 1214.678
+  m_sCustomNameSet "MMG 3"
+ }
+}
+$grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+ {
+  coords 2772.696 2 1223.474
+  angleY -88.989
+  m_sCustomNameSet "1st Squad"
+ }
+ {
+  coords 2780.854 2 1223.747
+  angleY -90.468
+  m_sCustomNameSet "2nd Squad"
+ }
+ {
+  coords 2788.599 2 1223.76
+  angleY -89.289
+  m_sCustomNameSet "3rd Squad"
+ }
+}
+$grp SCR_AIGroup : "{E0178F8CC1EEF491}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_MATTeam.et" {
+ {
+  coords 2755.168 2 1232.82
+  angleY 178.117
+  m_sCustomNameSet "MAT 1"
+ }
+ {
+  coords 2764.739 2 1233.522
+  angleY 178.117
+  m_sCustomNameSet "MAT 2"
+ }
+}

@@ -1,0 +1,42 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 2546.157 1.595 1425.248
+}
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 2821.946 0 1155.541
+ m_iOrder 3
+}
+$grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ BLUFOR_Assets {
+  coords 2755.179 0 1356.649
+  m_sTextData "2x M113A3"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 5
+ }
+ OPFOR_Assets {
+  coords 2771.176 0 1340.908
+  m_sTextData "3x MMG Team, 2x MAT Team"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 5
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2549.205 4.406 1395.412
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 2609.65 3.922 1414.702
+ m_sTextData "USMC forces detonate both bombs within the 30 minute time limit whilst the Russians attempt to stop them from doing so."
+ m_iOrder 4
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2566.466 0 1451.636
+ m_sTextData "US Marine Corps assault a Russian controlled port to detonate 2 bombs, disrupting Russian supply lines in the region."
+ m_iOrder 2
+}

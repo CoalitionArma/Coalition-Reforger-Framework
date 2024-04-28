@@ -1,0 +1,59 @@
+$grp Tank : "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A3_APC.et" {
+ M113A3_APC1 {
+  coords 2048.704 53.336 1323.384
+  angleX -7.626
+  angleY -124.161
+ }
+ M113A3_APC2 {
+  coords 2040.209 51.215 1318.803
+  angleY -122.483
+ }
+}
+$grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+ {
+  coords 2047.016 51.176 1282.817
+  angleY 97.511
+  m_sCustomNameSet "1st Squad"
+ }
+ {
+  coords 2041.81 51.004 1283.664
+  angleY 97.511
+  m_sCustomNameSet "2nd Squad"
+ }
+ {
+  coords 2037.721 50.726 1284.051
+  angleY 97.511
+  m_sCustomNameSet "3rd Squad"
+ }
+ {
+  coords 2033.048 50.285 1284.647
+  angleY 97.511
+  m_sCustomNameSet "4th Squad"
+ }
+ {
+  coords 2030.262 49.997 1284.743
+  angleY 88.103
+  m_sCustomNameSet "5th Squad"
+ }
+ {
+  coords 2023.571 49.115 1284.752
+  angleY 88.103
+  m_sCustomNameSet "6th Squad"
+ }
+}
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 2069.385 53.979 1298.893
+ angleY -119.183
+}
+$grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Armor3man.et" {
+ {
+  coords 2054.049 54.05 1318.102
+  angleY -43.528
+  m_sCustomNameSet "M113A3 1"
+ }
+ {
+  coords 2047.521 52.231 1312.686
+  angleY -35.455
+  m_sCustomNameSet "M113A3 2"
+ }
+}
