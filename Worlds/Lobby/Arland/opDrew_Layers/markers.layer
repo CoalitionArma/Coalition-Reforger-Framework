@@ -48,18 +48,6 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_bVisibleForEmptyFaction 1
  }
  {
-  coords 3189.351 13.509 2832.181
-  angleY 0
-  m_MarkerColor 1 0 0 1
-  m_fWorldSize 100
-  m_sDescription "Base Commander Villia"
-  m_bUseWorldScale 0
-  m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
-  }
-  m_bVisibleForEmptyFaction 1
- }
- {
   coords 1118.037 1.156 3371.298
   angleY 0
   m_MarkerColor 1 0 0 1
