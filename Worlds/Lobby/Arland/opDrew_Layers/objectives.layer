@@ -127,6 +127,10 @@ $grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_
   coords 1374.797 41.686 2346.87
  }
 }
+SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+ coords 1020.993 38.409 2813.471
+ m_sCustomNameSet "3st Section"
+}
 $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  {
   coords 1292.167 39.981 2324.368
