@@ -1,7 +1,6 @@
 $grp Tank : "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A3_APC.et" {
  M113A3_APC1 {
   coords 1750.714 5.127 1394.07
-  angleX 0
   angleY 145.767
   angleZ 8.004
  }
@@ -12,41 +11,51 @@ $grp Tank : "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A3_APC.et" {
   angleZ 8.291
  }
 }
-$grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
- {
-  coords 1772.253 11.183 1424.673
-  angleY 165.49
-  m_sCustomNameSet "1st Squad"
- }
- {
-  coords 1771.085 11.47 1429.817
-  angleY 165.49
-  m_sCustomNameSet "2nd Squad"
- }
- {
-  coords 1769.91 11.664 1433.753
-  angleY 165.49
-  m_sCustomNameSet "3rd Squad"
- }
- {
-  coords 1768.711 11.884 1438.308
-  angleY 165.49
-  m_sCustomNameSet "4th Squad"
- }
- {
-  coords 1767.756 11.961 1440.928
-  angleY 156.081
-  m_sCustomNameSet "5th Squad"
- }
- {
-  coords 1765.256 12.27 1447.133
-  angleY 156.081
-  m_sCustomNameSet "6th Squad"
- }
-}
 SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
  coords 1795.543 16.729 1409.964
  angleY -51.204
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+   {
+    coords -3.129 -5.546 27.368
+    angleY -143.306
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 0.149 -5.259 31.501
+    angleY -143.306
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 2.48 -5.065 34.883
+    angleY -143.306
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 5.279 -4.845 38.671
+    angleY -143.306
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords 6.723 -4.768 41.057
+    angleY -152.715
+    m_sCustomNameSet "5th Squad"
+   }
+   {
+    coords 9.993 -4.459 46.893
+    angleY -152.715
+    m_sCustomNameSet "6th Squad"
+   }
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1769.483 11.256 1422.041
+ angleY 90
+ m_fWorldSize 65
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
 }
 $grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Armor3man.et" {
  {

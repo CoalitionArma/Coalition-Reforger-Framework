@@ -18,17 +18,3 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_bShowForAnyFaction 1
  }
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 2759.395 2 1225.274
- m_fWorldSize 65
- m_aVisibleForFactions {
-  "RHS_RF_MSV"
- }
-}
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 2051.623 51.385 1281.427
- m_fWorldSize 65
- m_aVisibleForFactions {
-  "RHS_US_USMC"
- }
-}
