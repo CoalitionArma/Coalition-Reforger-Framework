@@ -84,7 +84,9 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   m_sTitle "Important Rules/Notes"
   m_sTextData "To destroy objectives, utilize M67 grenades or GP explosives. You should get a pop up saying the objective is destoryed."\
   ""\
-  "You can adjust you night vision and thermal brightness by holding shift and scrolling up and down."
+  "You can adjust you night vision and thermal brightness by holding shift and scrolling up and down."\
+  ""\
+  "You should have NVGs in your backpack."
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }
