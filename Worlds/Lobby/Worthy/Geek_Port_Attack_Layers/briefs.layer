@@ -1,5 +1,7 @@
 PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
- coords 2546.157 1.595 1425.248
+ coords 2787.049 0 1132.677
+ m_sTextData "40 minute time limit."\
+ "One life- no respawn."
 }
 PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
  coords 2821.946 0 1155.541
@@ -32,11 +34,12 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
 }
 PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
  coords 2609.65 3.922 1414.702
- m_sTextData "USMC forces detonate both bombs within the 30 minute time limit whilst the Russians attempt to stop them from doing so."
+ m_sTextData "USMC forces detonate both bombs within the 40 minute time limit whilst the Russians attempt to stop them from doing so."
  m_iOrder 4
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 2566.466 0 1451.636
- m_sTextData "US Marine Corps assault a Russian controlled port to detonate 2 bombs, disrupting Russian supply lines in the region."
+ m_sTextData "With the United States preparing to complete their invasion of the Worthy Islands, they need to remove the Russian forces. The first step is to assault the port, fight the Russian platoon garrisoned there and detonate two explosive devices located on-site before they are used against the US. The US sent a USMC platoon to assault the position whilst the Russians left a platoon has been left to defend the port."\
+ ""
  m_iOrder 2
 }

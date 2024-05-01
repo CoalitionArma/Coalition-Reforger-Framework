@@ -1,7 +1,6 @@
 $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {
   coords 2636.315 2 1193.564
-  m_MarkerColor 1 0 0.905 1
   m_sDescription "OBJ - A Bomb Site"
   m_aVisibleForFactions {
    "RHS_US_USMC" "RHS_RF_MSV"
@@ -11,7 +10,6 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
  }
  {
   coords 2588.193 2 968.702
-  m_MarkerColor 1 0 0.905 1
   m_sDescription "OBJ - B Bomb Site"
   m_aVisibleForFactions {
    "RHS_RF_MSV" "RHS_US_USMC"
@@ -29,7 +27,6 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 2051.623 51.385 1281.427
- angleY -174.824
  m_fWorldSize 65
  m_aVisibleForFactions {
   "RHS_US_USMC"

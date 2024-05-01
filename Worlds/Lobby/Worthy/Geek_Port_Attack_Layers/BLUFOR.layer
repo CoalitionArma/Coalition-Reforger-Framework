@@ -1,59 +1,62 @@
 $grp Tank : "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A3_APC.et" {
  M113A3_APC1 {
-  coords 2048.704 53.336 1323.384
-  angleX -7.626
-  angleY -124.161
+  coords 1750.714 5.127 1394.07
+  angleX 0
+  angleY 145.767
+  angleZ 8.004
  }
  M113A3_APC2 {
-  coords 2040.209 51.215 1318.803
-  angleY -122.483
+  coords 1745.26 5.441 1403.193
+  angleX 7.313
+  angleY 148.51
+  angleZ 8.291
  }
 }
 $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
  {
-  coords 2047.016 51.176 1282.817
-  angleY 97.511
+  coords 1772.253 11.183 1424.673
+  angleY 165.49
   m_sCustomNameSet "1st Squad"
  }
  {
-  coords 2041.81 51.004 1283.664
-  angleY 97.511
+  coords 1771.085 11.47 1429.817
+  angleY 165.49
   m_sCustomNameSet "2nd Squad"
  }
  {
-  coords 2037.721 50.726 1284.051
-  angleY 97.511
+  coords 1769.91 11.664 1433.753
+  angleY 165.49
   m_sCustomNameSet "3rd Squad"
  }
  {
-  coords 2033.048 50.285 1284.647
-  angleY 97.511
+  coords 1768.711 11.884 1438.308
+  angleY 165.49
   m_sCustomNameSet "4th Squad"
  }
  {
-  coords 2030.262 49.997 1284.743
-  angleY 88.103
+  coords 1767.756 11.961 1440.928
+  angleY 156.081
   m_sCustomNameSet "5th Squad"
  }
  {
-  coords 2023.571 49.115 1284.752
-  angleY 88.103
+  coords 1765.256 12.27 1447.133
+  angleY 156.081
   m_sCustomNameSet "6th Squad"
  }
 }
 SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
- coords 2069.385 53.979 1298.893
- angleY -119.183
+ coords 1795.543 16.729 1409.964
+ angleY -51.204
 }
 $grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Armor3man.et" {
  {
-  coords 2054.049 54.05 1318.102
-  angleY -43.528
+  coords 1766.47 8.567 1409.232
+  angleY 46.216
   m_sCustomNameSet "M113A3 1"
  }
  {
-  coords 2047.521 52.231 1312.686
-  angleY -35.455
+  coords 1761.028 7.927 1415.736
+  angleY 54.289
   m_sCustomNameSet "M113A3 2"
  }
 }

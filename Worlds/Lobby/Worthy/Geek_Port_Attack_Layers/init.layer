@@ -4,7 +4,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
-   m_iTimeLimitMinutes 30
+   m_iTimeLimitMinutes 40
   }
   CRF_SearchAndDestroyGameModeComponent "{61395B236C9092AA}" {
    attackingSide "RHS_US_USMC"
@@ -19,7 +19,7 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
  }
  coords 2617.679 2.001 1356.731
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6142EBFAFD72E9F8" {
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
