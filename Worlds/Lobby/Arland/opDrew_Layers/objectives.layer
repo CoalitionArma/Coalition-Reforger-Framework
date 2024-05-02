@@ -112,18 +112,6 @@ $grp SCR_BaseTriggerEntity {
   RunDefaultQueryFirst 0
  }
 }
-SCR_AIGroup BaseCommander : "{218445F83827D929}Prefabs/Groups/OPFOR/RHS_RF_MSV/EMR/Group_MSV_EMR_RifleSquad.et" {
- components {
-  AIPathfindingComponent "{518A98842FFC190E}" {
-   IgnoreFlags 126
-  }
- }
- coords 3178.678 17.94 2831.194
- m_aUnitPrefabSlots {
-  "{A67F5A2E875AEB72}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Officer.et"
- }
- m_bSnapToTerrain 0
-}
 Vehicle Ural4320_Arsenal2 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
  coords 1075.8 38 2831.343
  angleY 86.703
@@ -139,6 +127,10 @@ $grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_
   coords 1374.797 41.686 2346.87
  }
 }
+SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+ coords 1020.993 38.409 2813.471
+ m_sCustomNameSet "3st Section"
+}
 $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  {
   coords 1292.167 39.981 2324.368
@@ -150,7 +142,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  }
  {
   coords 1289.27 39 2312.271
-  m_sTitle "Find Blufor Saboteur Group"
+  m_sTitle "Destroy 3 Objectives, Collect One Intel & Exfil"
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }

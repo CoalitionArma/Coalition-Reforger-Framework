@@ -40,7 +40,7 @@ GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/He
    {
     GenericEntity {
      ID "5A26B380A8E7BDB9"
-     coords -0 0.303 0.063
+     coords 0 0.303 0.063
     }
    }
   }
@@ -151,7 +151,7 @@ GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/He
    {
     DecalEntity {
      ID "56DEFDB4A9499F9B"
-     coords 0 0 -0
+     coords 0 0 0
      angleX -90
      angleY 180
      angleZ -180
@@ -165,7 +165,7 @@ GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/He
    {
     DecalEntity {
      ID "56DEFDB4A9499F9B"
-     coords -0 0 0
+     coords 0 0 0
      angleX -89.972
      angleY 180
      angleZ -180
@@ -250,7 +250,7 @@ GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/He
      {
       GenericEntity {
        ID "5A26B380A63C2147"
-       coords -0 0.225 0.064
+       coords 0 0.225 0.064
       }
      }
     }
@@ -277,13 +277,13 @@ GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/He
      {
       GenericEntity {
        ID "5A26B380A63C2147"
-       coords -0 0.251 0.062
+       coords 0 0.251 0.062
       }
      }
     }
     GenericEntity {
      ID "5E92E7227A7E45AB"
-     coords -0 0.85 0.251
+     coords 0 0.85 0.251
     }
    }
   }

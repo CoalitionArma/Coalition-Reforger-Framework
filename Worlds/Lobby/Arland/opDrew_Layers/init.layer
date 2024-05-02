@@ -22,14 +22,6 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
  }
  coords 1811.444 39.255 2849.722
  m_bTeamSwitch 0
- m_aFactionRespawnCount {
-  PS_FactionRespawnCount "{60F9773C1648B8F5}" {
-   m_sFactionKey "RHS_RF_MSV"
-   m_iCount 6
-   m_iTime 600000
-   m_bWaveMode 1
-  }
- }
 }
 TimeAndWeatherManagerEntity TimeAndWeatherManager_60FA1448F29F7B33 : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
  coords 1352.09 38 2926.116
@@ -59,7 +51,6 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   "Your primary objectivesis to destroying vital targets such as the:"\
   "- Communication Tower"\
   "- Base Power"\
-  "- Base Commander"\
   "- Ammo Dump"\
   "- Fuel Dump "\
   ""\
@@ -93,7 +84,9 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   m_sTitle "Important Rules/Notes"
   m_sTextData "To destroy objectives, utilize M67 grenades or GP explosives. You should get a pop up saying the objective is destoryed."\
   ""\
-  "You can adjust you night vision and thermal brightness by holding shift and scrolling up and down."
+  "You can adjust you night vision and thermal brightness by holding shift and scrolling up and down."\
+  ""\
+  "You should have NVGs in your backpack."
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }
