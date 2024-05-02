@@ -4,7 +4,8 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
-   m_iStartingHours 21
+   m_iStartingHours 7
+   m_iStartingMinutes 30
   }
  }
  coords 996.41 4.859 1398.154
