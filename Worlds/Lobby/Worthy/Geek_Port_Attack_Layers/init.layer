@@ -83,10 +83,10 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "1-6"
        }
        SCR_CallsignInfo "{6138E98A2D218542}" {
-        m_sCallsign "M113A3 1"
+        m_sCallsign "STRYKER 1"
        }
        SCR_CallsignInfo "{6138E98A2D957E35}" {
-        m_sCallsign "M113A3 2"
+        m_sCallsign "STRYKER 2"
        }
       }
       m_sCallsignGroupFormat "%3"
