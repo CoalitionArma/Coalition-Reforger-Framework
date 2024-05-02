@@ -1,0 +1,98 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2805.259 2 1164.718
+}
+PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 40
+  }
+  CRF_SearchAndDestroyGameModeComponent "{61395B236C9092AA}" {
+   attackingSide "RHS_US_USMC"
+   defendingSide "RHS_RF_MSV"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 10
+   m_iStartingMinutes 30
+   m_fDayTimeAcceleration 0.5
+   m_fNightTimeAcceleration 12
+  }
+ }
+ coords 2617.679 2.001 1356.731
+ {
+  SCR_FactionManager "6142EBFAFD72E9F8" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6138E982CA2C26EC}" {
+        m_sCallsign "MMG 1"
+       }
+       SCR_CallsignInfo "{6138E982CD03886C}" {
+        m_sCallsign "MMG 2"
+       }
+       SCR_CallsignInfo "{61395B22AFE4A4EF}" {
+        m_sCallsign "MMG 3"
+       }
+       SCR_CallsignInfo "{6138E982CD607AEE}" {
+        m_sCallsign "MAT 1"
+       }
+       SCR_CallsignInfo "{6138E982CD9DF830}" {
+        m_sCallsign "MAT 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3: %4"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6138E98A28A8DAA5}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6138E98A2CB9B8DA}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{61395B22123BD7D1}" {
+        m_sCallsign "1-6"
+       }
+       SCR_CallsignInfo "{6138E98A2D218542}" {
+        m_sCallsign "STRYKER 1"
+       }
+       SCR_CallsignInfo "{6138E98A2D957E35}" {
+        m_sCallsign "STRYKER 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
