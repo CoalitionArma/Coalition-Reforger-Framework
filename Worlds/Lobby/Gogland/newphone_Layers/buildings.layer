@@ -1,0 +1,192 @@
+$grp StaticModelEntity : "{07F043DD6AACCD0B}Prefabs/Structures/Infrastructure/Barriers/BarGate_01/BarGate_01.et" {
+ {
+  coords 7813.703 0 3685.831
+ }
+ {
+  coords 7911.622 -0.116 2608.852
+  {
+   GenericEntity {
+    ID "5EE111167686B083"
+    coords 0 0 0
+   }
+  }
+ }
+}
+$grp GenericEntity : "{3001B0C35F835714}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Wall_BarbedWire_USSR_01.et" {
+ {
+  coords 7790.98 44.517 3680.476
+ }
+ {
+  coords 7785.586 45.513 3680.156
+ }
+}
+SCR_DestructibleBuildingEntity : "{4DD5F16D919A99F4}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp_Base.et" {
+ coords 7930.144 0.899 2613.297
+}
+GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ coords 7803.392 43.712 3684.524
+ angleX -5.799
+ angleY 162.666
+ angleZ -6.562
+}
+$grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
+ {
+  coords 7808.425 0 3662.747
+ }
+ {
+  coords 7819.032 0 3668.296
+ }
+ {
+  coords 7808.457 0 3671.663
+ }
+ {
+  coords 7818.391 0 3678.741
+ }
+}
+SCR_DestructibleBuildingEntity : "{906CB40C3D7DBA68}Prefabs/Structures/Military/Houses/GuardHouse_02/GuardHouse_02_base.et" {
+ coords 8051.794 0 3166.687
+}
+$grp SCR_DestructibleBuildingEntity : "{A9195A7D1F744209}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_Base.et" {
+ {
+  coords 8007.614 0.372 3183.273
+ }
+ {
+  coords 8079.035 0.159 3106.323
+  angleY -157
+ }
+}
+GenericEntity : "{C762BA61BAD5B536}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Corner_BarbedWire_USSR_01.et" {
+ coords 7795.35 44.027 3680.902
+ angleY -120
+}
+GenericEntity : "{C7D38772154D45BB}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_US_01.et" {
+ coords 7903.658 40.749 2604.153
+ angleX -4.487
+ angleY -0.32
+ angleZ -3.54
+ {
+  GenericEntity {
+   ID "5CCCBECA91C25D11"
+   coords -3.813 -0.63 -0.815
+   angleX 16.881
+   angleY 80.485
+   angleZ 2.233
+  }
+ }
+}
+GenericEntity : "{CDD0712FD6215F03}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ coords 8021.943 5.847 3163.702
+ {
+  GameEntity {
+   ID "5D088D1F96898F45"
+   coords 6.613 -0.764 10.07
+   angleY -173.766
+  }
+  GenericEntity {
+   ID "5E38F8672CC7853F"
+   {
+    GenericEntity {
+     ID "5E3303B3034FAE0F"
+     coords 0 -1.036 0
+    }
+    StaticModelEntity {
+     ID "5CB0D9969A114CAD"
+     coords -0.033 -1.461 -0.131
+     angleY -3.456
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D1F96898F56"
+   coords -2.326 -0.096 3.513
+   angleX 9.805
+   angleY -98.388
+   angleZ 5.676
+  }
+  GenericEntity {
+   ID "5D088D1F96898F87"
+   coords 9.223 -0.206 3.549
+   angleX -8.139
+   angleY -95.659
+   angleZ -0.977
+  }
+  GenericEntity {
+   ID "5D088D1F96898FA6"
+   coords 1.595 -0.302 3.59
+   angleY -88.329
+  }
+  GenericEntity {
+   ID "5D088D1F96898FB7"
+   coords 5.427 -0.347 3.634
+   angleY -91.505
+  }
+ }
+}
+$grp StaticModelEntity : "{D4177594212A056F}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_plastic_foundation.et" {
+ {
+  coords 8037.117 6.343 3165.944
+  {
+   GenericEntity {
+    ID "5A532DCF3ECE312F"
+    coords 4.547 -0.521 -9.765
+    angleY 48
+   }
+  }
+ }
+ {
+  coords 8036.723 6.921 3171.71
+  {
+   GenericEntity {
+    ID "5A532DCF3ECE312F"
+    coords -0.929 1.094 11.928
+   }
+  }
+ }
+ {
+  coords 8035.206 5.876 3160.365
+  {
+   GenericEntity {
+    ID "5A532DCF3ECE312F"
+    coords -17.411 1.026 -14.445
+   }
+  }
+ }
+}
+$grp GenericEntity : "{F3DE8994BAE6915A}Prefabs/Compositions/Misc/FreeRoamBuilding/CzechHedgehogPainted_S_01.et" {
+ {
+  coords 7913.117 39.908 2616.019
+ }
+ {
+  coords 7944.233 42.843 2632.303
+ }
+ {
+  coords 7902.824 39.669 2616.339
+ }
+ {
+  coords 7900.024 39.144 2628.537
+ }
+ {
+  coords 7910.073 39.196 2630.762
+ }
+ {
+  coords 7923.163 39.749 2631.192
+  angleX 7.265
+  angleY -18.709
+  angleZ -11.666
+ }
+ {
+  coords 7932.743 40.607 2630.194
+ }
+}
+$grp GenericEntity : "{F5B35489488081E4}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Corner_BarbedWire_US_01.et" {
+ {
+  coords 7894.335 38.369 2628.112
+ }
+ {
+  coords 7891.351 38.013 2625.894
+  angleY 39
+ }
+}
+GenericEntity : "{FB26A800AC01D85A}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_FIA_01.et" {
+ coords 8000.56 8.62 3156.786
+}

@@ -1,0 +1,13 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 8134.323 10.512 3108.611
+ m_sTextData "Uplink"\
+ ""\
+ "Two teams attack and area in order to attempt to steal a laptop with data. If stolen, each team most move to the others base to upload the data."
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 8112.944 11.631 3107.453
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 8132.072 11.475 3117.353
+ m_sTextData "BLU and OPF have found sensitive data on a Gogland army laptop. Both teams have dispatched a platoon to recover the data and upload it off the laptop."
+}
