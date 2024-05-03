@@ -1,6 +1,6 @@
 PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
  coords 8134.323 10.512 3108.611
- m_sTextData "Secure"\
+ m_sTextData "Uplink"\
  ""\
  "Two teams attack and area in order to attempt to steal a laptop with data. If stolen, each team most move to the others base to upload the data."
 }

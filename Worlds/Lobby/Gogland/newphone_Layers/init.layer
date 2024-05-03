@@ -15,6 +15,10 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
    m_iTimeLimitMinutes 60
   }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 21
+   m_iStartingMinutes 30
+  }
  }
  coords 8085.827 8.79 3158.618
  {
@@ -81,7 +85,8 @@ $grp SCR_BaseFactionTriggerEntity {
   coords 7812.354 44.623 3718.969
   TriggerShapeType Sphere
   SphereRadius 30
-  DrawShape 1
+  PeriodicQueries 1
+  UpdatePeriod 5
   PrefabsFilter {
    PrefabFilter "{6146412919C38C77}" {
     Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
@@ -93,7 +98,8 @@ $grp SCR_BaseFactionTriggerEntity {
   coords 7912.302 41.775 2593.341
   TriggerShapeType Sphere
   SphereRadius 30
-  DrawShape 1
+  PeriodicQueries 1
+  UpdatePeriod 5
   PrefabsFilter {
    PrefabFilter "{614641291694EB58}" {
     Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
@@ -103,14 +109,31 @@ $grp SCR_BaseFactionTriggerEntity {
  }
 }
 GenericEntity intellaptop : "{5ACEF046A61903CE}Prefabs/Items/Equipment/Compass/Intel_01.et" {
- coords 8031.121 6.905 3160.93
+ coords 8031.121 6.901 3160.93
  angleY 148
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 7917.603 42.275 2587.497
- angleX -0.262
- angleY 90.004
- angleZ 179.093
- m_sQuadName "point-of-interest"
- m_sDescription "OPFOR Extract Location"
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 7917.603 42.275 2587.497
+  angleX -0.262
+  angleY 90.004
+  angleZ 179.093
+  m_sQuadName "point-of-interest"
+  m_sDescription "OPFOR Extract Location"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 7813.79 44.696 3720.131
+  angleX -0.262
+  angleY 90.004
+  angleZ 179.093
+  m_MarkerColor 0.023 0.089 0.366 1
+  m_sQuadName "point-of-interest"
+  m_sDescription "BLU Extract Location"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
 }
