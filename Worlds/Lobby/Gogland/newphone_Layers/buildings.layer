@@ -1,0 +1,93 @@
+SCR_DestructibleBuildingEntity : "{906CB40C3D7DBA68}Prefabs/Structures/Military/Houses/GuardHouse_02/GuardHouse_02_base.et" {
+ coords 8051.794 0 3166.687
+}
+$grp SCR_DestructibleBuildingEntity : "{A9195A7D1F744209}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_Base.et" {
+ {
+  coords 8007.614 0.372 3183.273
+ }
+ {
+  coords 8079.035 0.159 3106.323
+  angleY -157
+ }
+}
+GenericEntity : "{CDD0712FD6215F03}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ coords 8021.943 5.847 3163.702
+ {
+  GameEntity {
+   ID "5D088D1F96898F45"
+   coords 6.613 -0.764 10.07
+   angleY -173.766
+  }
+  GenericEntity {
+   ID "5E38F8672CC7853F"
+   {
+    GenericEntity {
+     ID "5E3303B3034FAE0F"
+     coords 0 -1.036 0
+    }
+    StaticModelEntity {
+     ID "5CB0D9969A114CAD"
+     coords -0.033 -1.461 -0.131
+     angleY -3.456
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D088D1F96898F56"
+   coords -2.326 -0.096 3.513
+   angleX 9.805
+   angleY -98.388
+   angleZ 5.676
+  }
+  GenericEntity {
+   ID "5D088D1F96898F87"
+   coords 9.223 -0.206 3.549
+   angleX -8.139
+   angleY -95.659
+   angleZ -0.977
+  }
+  GenericEntity {
+   ID "5D088D1F96898FA6"
+   coords 1.595 -0.302 3.59
+   angleY -88.329
+  }
+  GenericEntity {
+   ID "5D088D1F96898FB7"
+   coords 5.427 -0.347 3.634
+   angleY -91.505
+  }
+ }
+}
+$grp StaticModelEntity : "{D4177594212A056F}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_plastic_foundation.et" {
+ {
+  coords 8037.117 6.343 3165.944
+  {
+   GenericEntity {
+    ID "5A532DCF3ECE312F"
+    coords 4.547 -0.521 -9.765
+    angleY 48
+   }
+  }
+ }
+ {
+  coords 8036.723 6.921 3171.71
+  {
+   GenericEntity {
+    ID "5A532DCF3ECE312F"
+    coords -0.929 1.094 11.928
+   }
+  }
+ }
+ {
+  coords 8035.206 5.876 3160.365
+  {
+   GenericEntity {
+    ID "5A532DCF3ECE312F"
+    coords -17.411 1.026 -14.445
+   }
+  }
+ }
+}
+GenericEntity : "{FB26A800AC01D85A}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_FIA_01.et" {
+ coords 8000.56 8.62 3156.786
+}

@@ -1,0 +1,21 @@
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 7675.54 -5.401 3742.871
+ angleX -0.262
+ angleY 90.004
+ angleZ 179.093
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ coords 8015.767 5.953 3186.199
+ angleY 0
+ m_fWorldSize 90
+ m_sDescription "Laptop"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 8007.904 36.484 2579.413
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
