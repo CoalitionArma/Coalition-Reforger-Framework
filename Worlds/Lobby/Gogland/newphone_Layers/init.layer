@@ -22,7 +22,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
  }
  coords 8085.827 8.79 3158.618
  {
-  SCR_FactionManager {
+  SCR_FactionManager "614646FD2C6A85CB" {
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
@@ -80,32 +80,80 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   }
  }
 }
-$grp SCR_BaseFactionTriggerEntity {
- {
-  coords 7812.354 44.623 3718.969
+$grp SCR_BaseTriggerEntity {
+ bluforDropoff {
+  coords 7812.207 44.872 3718.115
   TriggerShapeType Sphere
   SphereRadius 30
+  "Polyline Height" 10
+  TriggerActivationType "All changes"
   PeriodicQueries 1
   UpdatePeriod 5
   PrefabsFilter {
-   PrefabFilter "{6146412919C38C77}" {
+   PrefabFilter "{614726898D57F0D8}" {
     Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+    CheckPrefabHierarchy 1
    }
   }
-  m_sOwnerFactionKey "RHS_US_USMC"
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		// Get players inventory component"\
+  "		SCR_InventoryStorageManagerComponent characterInventory = SCR_InventoryStorageManagerComponent.Cast(ent.FindComponent(SCR_InventoryStorageManagerComponent));"\
+  "		"\
+  "		if (!characterInventory) return;"\
+  ""\
+  "		// Get all of players inventory items"\
+  "		array<IEntity> allPlayerItems = {};"\
+  "		characterInventory.GetAllRootItems(allPlayerItems);"\
+  ""\
+  "		// Parse through players entire inventory."\
+  "		foreach (IEntity item : allPlayerItems)"\
+  "		{"\
+  "			if (item.GetName() == \"intellaptop\") {"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor has secured the Intel!\", 20);"\
+  "				AudioSystem.PlaySound(\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\");"\
+  "				return;"\
+  "			};"\
+  "		};"\
+  "	"
+  RunDefaultQueryFirst 0
  }
- {
-  coords 7912.302 41.775 2593.341
+ opforDropoff {
+  coords 7916.089 43.01 2574.931
   TriggerShapeType Sphere
   SphereRadius 30
+  "Polyline Height" 10
+  TriggerActivationType "All changes"
   PeriodicQueries 1
   UpdatePeriod 5
   PrefabsFilter {
-   PrefabFilter "{614641291694EB58}" {
+   PrefabFilter "{614726898D57F0D8}" {
     Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+    CheckPrefabHierarchy 1
    }
   }
-  m_sOwnerFactionKey "RHS_AF_MSV"
+  OnActivate ""\
+  "		super.OnActivate(ent);"\
+  "		// Get players inventory component"\
+  "		SCR_InventoryStorageManagerComponent characterInventory = SCR_InventoryStorageManagerComponent.Cast(ent.FindComponent(SCR_InventoryStorageManagerComponent));"\
+  "		"\
+  "		if (!characterInventory) return;"\
+  ""\
+  "		// Get all of players inventory items"\
+  "		array<IEntity> allPlayerItems = {};"\
+  "		characterInventory.GetAllRootItems(allPlayerItems);"\
+  ""\
+  "		// Parse through players entire inventory."\
+  "		foreach (IEntity item : allPlayerItems)"\
+  "		{"\
+  "			if (item.GetName() == \"intellaptop\") {"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Opfor has secured the Intel!\", 20);"\
+  "				AudioSystem.PlaySound(\"{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav\");"\
+  "				return;"\
+  "			};"\
+  "		};"\
+  "	"
+  RunDefaultQueryFirst 0
  }
 }
 GenericEntity intellaptop : "{5ACEF046A61903CE}Prefabs/Items/Equipment/Compass/Intel_01.et" {

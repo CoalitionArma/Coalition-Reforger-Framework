@@ -3,7 +3,13 @@ $grp StaticModelEntity : "{07F043DD6AACCD0B}Prefabs/Structures/Infrastructure/Ba
   coords 7813.703 0 3685.831
  }
  {
-  coords 7911.622 0.459 2608.852
+  coords 7911.622 -0.116 2608.852
+  {
+   GenericEntity {
+    ID "5EE111167686B083"
+    coords 0 0 0
+   }
+  }
  }
 }
 $grp GenericEntity : "{3001B0C35F835714}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Wall_BarbedWire_USSR_01.et" {
@@ -25,7 +31,7 @@ GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bu
 }
 $grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
  {
-  coords 7808.425 -0 3662.747
+  coords 7808.425 0 3662.747
  }
  {
   coords 7819.032 0 3668.296
@@ -34,7 +40,7 @@ $grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification
   coords 7808.457 0 3671.663
  }
  {
-  coords 7818.391 -0 3678.741
+  coords 7818.391 0 3678.741
  }
 }
 SCR_DestructibleBuildingEntity : "{906CB40C3D7DBA68}Prefabs/Structures/Military/Houses/GuardHouse_02/GuardHouse_02_base.et" {
