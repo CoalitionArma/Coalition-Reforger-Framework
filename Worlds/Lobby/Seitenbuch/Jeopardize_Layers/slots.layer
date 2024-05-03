@@ -1,0 +1,120 @@
+$grp SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ {
+  coords 1963.995 436.292 818.135
+  angleY 29.708
+  m_sCustomNameSet "Anton10"
+  {
+   $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+    {
+     coords -0.046 0 -2.324
+     angleY 0.094
+     m_aUnitPrefabSlots {
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL_P.et" "{951CA4F244097071}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG_P.et" "{D1786D7659BC2E7C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG_P.et"
+     }
+     m_sCustomNameSet "Anton11"
+    }
+    {
+     coords -0.257 0 -4.766
+     angleY -0.001
+     m_sCustomNameSet "Anton12"
+    }
+   }
+  }
+ }
+ {
+  coords 1975.38 435.157 825.282
+  angleX -1.796
+  angleY 0.405
+  angleZ 0.882
+  m_sCustomNameSet "Boris10"
+  {
+   $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+    {
+     coords -2.581 0 0.804
+     m_aUnitPrefabSlots {
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL_P.et" "{951CA4F244097071}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG_P.et" "{D1786D7659BC2E7C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG_P.et"
+     }
+     m_sCustomNameSet "Boris11"
+    }
+    {
+     coords -2.634 0 -0.636
+     m_sCustomNameSet "Boris12"
+    }
+   }
+  }
+ }
+ {
+  coords 1972.919 435.289 823.289
+  angleX -1.789
+  angleY -0.028
+  angleZ 0.896
+  m_sCustomNameSet "Chekov10"
+  {
+   $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+    {
+     coords -2.935 0 1.784
+     m_aUnitPrefabSlots {
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL_P.et" "{951CA4F244097071}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG_P.et" "{D1786D7659BC2E7C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG_P.et"
+     }
+     m_sCustomNameSet "Chekov11"
+    }
+    {
+     coords -2.999 0 -4.337
+     m_sCustomNameSet "Chekov12"
+    }
+   }
+  }
+ }
+}
+$grp SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+ {
+  coords 3112.587 387.458 900.386
+  angleX -3.573
+  angleY -0.112
+  angleZ 1.793
+  m_sCustomNameSet "1st Platoon"
+  {
+   $grp SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+    {
+     coords -7.66 -0.305 -7.168
+     angleX 2.675
+     angleY -0.07
+     angleZ -2.688
+     m_sCustomNameSet "1st Squad"
+    }
+    {
+     coords 12.602 -0.082 -7.631
+     angleX 1.826
+     angleY 2.803
+     angleZ -0.806
+     m_sCustomNameSet "2nd Squad"
+    }
+   }
+  }
+ }
+ {
+  coords 3114.244 387.225 904.365
+  angleX -2.681
+  angleY -0.084
+  angleZ 1.792
+  m_sCustomNameSet "2nd Platoon"
+  {
+   $grp SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+    {
+     coords -1.902 -0.059 -11.433
+     angleX 1.792
+     angleY 0.306
+     angleZ -0.885
+     m_sCustomNameSet "1st Squad"
+    }
+    {
+     coords 6.862 0.002 -11.37
+     angleX 0.892
+     angleY -0.014
+     angleZ -0.895
+     m_sCustomNameSet "2nd Squad"
+    }
+   }
+  }
+ }
+}
