@@ -1,0 +1,43 @@
+GenericEntity : "{2A27606856B8A914}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_USSR_01.et" {
+ coords 7689.725 134.059 4809.306
+ angleY -154.914
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 7320.153 134.974 4743.486
+ angleY 85.738
+ {
+  GenericEntity {
+   ID "5E2E7C60E0F9B3F4"
+   coords 0 0 0
+   angleY -90
+  }
+ }
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 7375.927 135.594 4742.212
+  angleY 88.393
+ }
+ BTR2 {
+  coords 7366.177 135.562 4741.863
+  angleY 89.766
+ }
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered5 {
+  coords 7353.234 135.531 4747.591
+  angleY 83.938
+ }
+ Ural4320_transport_covered6 {
+  coords 7344.196 135.45 4746.422
+  angleY 83.938
+ }
+ Ural4320_transport_covered3 {
+  coords 7331.021 135.204 4739.85
+  angleY 83.938
+ }
+ Ural4320_transport_covered2 {
+  coords 7321.982 135.031 4738.682
+  angleY 83.938
+ }
+}
