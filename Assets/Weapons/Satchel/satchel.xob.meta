@@ -1,0 +1,150 @@
+MetaFileClass {
+ Name "{BFDCABAFC8BC2F59}Assets/Weapons/Satchel/satchel.xob"
+ Configurations {
+  FBXResourceClass PC {
+   ExportSkinning 1
+   MaterialAssigns {
+    MaterialAssignClass "{6132F4CE5BE5FF0B}" {
+     SourceMaterial "Charge_Texture"
+     AssignedMaterial "{30E4060692FA082A}Assets/Weapons/Satchel/Data/Charge_Texture.emat"
+    }
+    MaterialAssignClass "{6132F4CE5BE5FF18}" {
+     SourceMaterial "Tape_Texture"
+     AssignedMaterial "{ADB17CA149A4B2C7}Assets/Weapons/Satchel/Data/Tape_Texture.emat"
+    }
+    MaterialAssignClass "{6132F4CE5BE5FEE2}" {
+     SourceMaterial "Screen_Texture"
+     AssignedMaterial "{B561D1CFA1B96AE8}Assets/Weapons/Satchel/Data/Screen_Texture.emat"
+    }
+    MaterialAssignClass "{6132F4CE5BE5FEE0}" {
+     SourceMaterial "Cable_Texture"
+     AssignedMaterial "{686CAC8E84BD5E0E}Assets/Weapons/Satchel/Data/Cable_Texture.emat"
+    }
+    MaterialAssignClass "{6133456742504941}" {
+     SourceMaterial "Button_Numbers_Texture"
+     AssignedMaterial "{A945E7CFC9B93940}Assets/Weapons/Satchel/Data/Button_Numbers_Texture.emat"
+    }
+    MaterialAssignClass "{613345674250495A}" {
+     SourceMaterial "Cable_Small_Texture"
+     AssignedMaterial "{ED441D8132686F29}Assets/Weapons/Satchel/Data/Cable_Small_Texture.emat"
+    }
+    MaterialAssignClass "{6133456742504926}" {
+     SourceMaterial "Button_Green_Texture"
+     AssignedMaterial "{C966558D6FE63A3E}Assets/Weapons/Satchel/Data/Button_Green_Texture.emat"
+    }
+    MaterialAssignClass "{6133456742504921}" {
+     SourceMaterial "Button_Red_Texture"
+     AssignedMaterial "{722A548634E47EC8}Assets/Weapons/Satchel/Data/Button_Red_Texture.emat"
+    }
+   }
+   MeshParams {
+    MeshParam Cables {
+    }
+    MeshParam LeftCharge {
+    }
+    MeshParam RightCharge {
+    }
+    MeshParam Screen {
+    }
+    MeshParam Tape {
+    }
+    MeshParam Button0 {
+    }
+    MeshParam Button1 {
+    }
+    MeshParam Button2 {
+    }
+    MeshParam Button3 {
+    }
+    MeshParam Button4 {
+    }
+    MeshParam Button5 {
+    }
+    MeshParam Button6 {
+    }
+    MeshParam Button7 {
+    }
+    MeshParam Button8 {
+    }
+    MeshParam Button9 {
+    }
+    MeshParam Cable2 {
+    }
+    MeshParam LargeButtonLeft {
+    }
+    MeshParam LargeButtonRight {
+    }
+    MeshParam Touchpad {
+    }
+    MeshParam Button0_lodx {
+    }
+    MeshParam Cable2_lodx {
+    }
+    MeshParam Cables_lodx {
+    }
+    MeshParam Satchel {
+    }
+   }
+   GeometryParams {
+    GeometryParam UBX_component01 {
+     LayerPreset "Prop"
+     SurfaceProperties {
+      "{36B4F5FA76C9ADCE}Common/Materials/Game/fabric_military_plastic.gamemat"
+     }
+     Mass 0
+     Margin 0
+    }
+    GeometryParam UBX_component02 {
+     LayerPreset "FireView"
+     SurfaceProperties {
+      "{36B4F5FA76C9ADCE}Common/Materials/Game/fabric_military_plastic.gamemat"
+     }
+     Mass 0
+     Margin 0
+    }
+    GeometryParam "UBX_component02.001" {
+     LayerPreset "PropFireView"
+     SurfaceProperties {
+      "{36B4F5FA76C9ADCE}Common/Materials/Game/fabric_military_plastic.gamemat"
+     }
+     Mass 0
+     Margin 0
+    }
+    GeometryParam "UBX_component02.002" {
+     LayerPreset "FireGeo"
+     SurfaceProperties {
+      "{36B4F5FA76C9ADCE}Common/Materials/Game/fabric_military_plastic.gamemat"
+     }
+     Mass 0
+     Margin 0
+    }
+   }
+   Common TXOCommonClass "{6132F4CE5BE963E1}" : "{0877E7C4BB2B2C9A}Configs/System/ResourceTypes/PC/MeshObjectCommon.conf" {
+   }
+  }
+  FBXResourceClass XBOX_ONE : PC {
+   Common TXOCommonClass "{6132F4CE5BE96341}" : "{9D5B6207F7628CE2}Configs/System/ResourceTypes/XBOX_ONE/MeshObjectCommon.conf" {
+   }
+  }
+  FBXResourceClass XBOX_SERIES : PC {
+   Common TXOCommonClass "{6132F4CE5BE962E3}" : "{DD9F02115C764647}Configs/System/ResourceTypes/XBOX_SERIES/MeshObjectCommon.conf" {
+   }
+  }
+  FBXResourceClass PS4 : PC {
+   Common TXOCommonClass "{6132F4CE5BE962D9}" : "{53EC476BC921D99A}Configs/System/ResourceTypes/PS4/MeshObjectCommon.conf" {
+   }
+  }
+  FBXResourceClass PS5 : PC {
+   Common TXOCommonClass "{6132F4CE5BE96295}" : "{F62AA8E7B8EA9D26}configs/ResourceTypes/PS5/MeshObjectCommon.conf" {
+   }
+  }
+  FBXResourceClass HEADLESS : PC {
+   Common TXOCommonClass "{6132F4CE5BE96242}" : "{3A5B3356978039E8}Configs/System/ResourceTypes/HEADLESS/MeshObjectCommon.conf" {
+   }
+  }
+  FBXResourceClass Xbox : PC {
+   Common TXOCommonClass "{6132F4CE5BE96232}" {
+   }
+  }
+ }
+}
