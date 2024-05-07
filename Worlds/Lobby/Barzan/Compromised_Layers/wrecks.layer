@@ -32,30 +32,101 @@ GenericEntity : "{3386EAA823BE462E}Prefabs/Props/Wrecks/UAZ469_wreck_static.et" 
 }
 Vehicle M923A1_command1 : "{36BDCC88B17B3BFA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_command.et" {
  components {
-  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
-   components {
-    SCR_CarControllerComponent_SA "{20FB66C5BC92275B}" {
-     ThrottleReactionTime 1
-    }
-   }
-  }
-  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
-   Enabled 0
-  }
   SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
-   EnableDamage 0
-  }
-  VehicleWheeledSimulation_SA "{731B26FCA2F19855}" {
-   Simulation Wheeled "{4D8B26DEA5F25978}" {
-    Engine Engine Engine {
+   "Additional hit zones" {
+    SCR_FlammableHitZone Hull {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Explosive multiplier" 0
+     "Incendiary multiplier" 0
+    }
+    SCR_EngineHitZone Engine_01 {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_GearboxHitZone Gearbox_01 {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_FuelHitZone FuelTank_01 {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_BatteryHitZone Battery_01 {
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     "Incendiary multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_BatteryHitZone Battery_02 {
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     "Incendiary multiplier" 0
     }
    }
+   "Fall damage min speed" 99999
+   "Fall damage max speed" 99999
+   CollisionVelocityThreshold 99999997952
+   "Heavy damage threshold" 99999997952
+   m_fFrontMultiplier 0.01
+   m_fBottomMultiplier 0.01
+   m_fRearMultiplier 0.01
+   m_fLeftMultiplier 0.01
+   m_fRightMultiplier 0.01
+   m_fTopMultiplier 0.01
+   m_fVehicleDamageSpeedThreshold 10000000000
+   m_fVehicleSpeedDestroy 99999997952
+   m_fFuelTankFireDamageRate 0
+   m_fSuppliesFireDamageRate 0
+   m_fSecondaryFireDamageDelay 0
   }
  }
- coords 1165.551 7.67 2361.18
- angleX 1.788
- angleY -87.07
- angleZ 0.091
+ coords 1164.907 7.691 2361.647
+ angleY -86.238
 }
 $grp GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
  {
