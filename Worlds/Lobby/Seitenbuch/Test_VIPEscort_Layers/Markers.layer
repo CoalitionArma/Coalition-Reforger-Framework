@@ -1,0 +1,99 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2555.522 403.414 899.208
+  angleY 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 885.142 435.471 1223.509
+  angleY 0
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 1741.253 422.431 1069.583
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1746.174 421.623 1035.861
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1724.075 406.379 1204.133
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 2009.344 447.63 1172.07
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1951.106 432.172 1027.381
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1729.923 411.406 1161.979
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1926.891 415.405 1211.66
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1981.099 445.71 1022.331
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1736.119 418.652 1115.799
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1822.499 409.134 1217.46
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1751.28 406.052 1219.997
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1812.119 426.544 1028.974
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1896.639 430.911 1027.449
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1993.989 449.08 1112.209
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+ {
+  coords 1987.911 445.958 1071.841
+  angleY 0
+  m_MarkerColor 0.529 0 0 1
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 872.174 436.018 1215.487
+ angleY 0
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2457.34 406.718 873.387
+ angleY 0
+}

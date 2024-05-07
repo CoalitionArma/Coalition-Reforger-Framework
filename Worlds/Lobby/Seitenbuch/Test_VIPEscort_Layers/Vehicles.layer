@@ -1,0 +1,72 @@
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 914.925 432.194 1219.713
+  angleY 104.907
+ }
+ Ural4320_transport2 {
+  coords 932.437 430.748 1218.515
+  angleY 72.36
+ }
+ Ural4320_transport3 {
+  coords 940.953 430.175 1215.223
+  angleY 103.344
+ }
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 2495.775 405.311 876.58
+ m_sTextData "Note: Red Markers show the search zone for the backpack"
+}
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  coords 914.502 432.242 1215.459
+  angleY 105.335
+ }
+ UAZ2 {
+  coords 923.066 431.516 1218.572
+  angleY 94.887
+ }
+}
+Vehicle M1 : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ coords 1867.729 411.781 1197.311
+ angleY 63.576
+}
+$grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et" {
+ M998_covered_long_MERDC1 {
+  coords 2438.729 407.462 876.134
+  angleY -103.423
+ }
+ M998_covered_long_MERDC2 {
+  coords 2434.52 407.715 872.717
+  angleY -100.031
+ }
+}
+Vehicle UAZ469_covered_CIV_base1 : "{7524FB186D534ACA}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_base.et" {
+ coords 922.579 431.58 1212.004
+ angleY 90.118
+}
+Vehicle UAZ469_base1 : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
+ coords 930.18 430.955 1212.87
+ angleY 113.854
+}
+Vehicle M998_covered_MERDC1 : "{AF0578D66D51946B}Prefabs/Vehicles/Wheeled/M998/M998_covered_MERDC.et" {
+ coords 2444.138 407.185 877.766
+ angleY -118.416
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport1 {
+  coords 2454.685 406.671 880.97
+  angleY -106.321
+ }
+ M923A1_transport2 {
+  coords 2463.965 406.216 884.281
+  angleY -112.976
+ }
+ M923A1_transport3 {
+  coords 2474.133 405.804 884.871
+  angleY -80.043
+ }
+}
+Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ coords 1875.502 412.392 1197.084
+ angleY 119.392
+}

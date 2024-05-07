@@ -1,0 +1,34 @@
+$grp SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+ {
+  coords 2448.679 407.006 875.586
+  m_bPlayable 1
+ }
+ {
+  coords 2448.51 407.12 869.392
+  m_bPlayable 1
+ }
+ {
+  coords 2448.823 407.021 874.193
+  m_bPlayable 1
+ }
+ {
+  coords 2448.417 407.159 868.294
+  m_bPlayable 1
+ }
+ {
+  coords 2448.425 407.182 867.08
+  m_bPlayable 1
+ }
+}
+SCR_AIGroup : "{4F7F7E8B05ADE07C}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_Pilots_p.et" {
+ coords 2448.601 407.064 872.079
+ m_bPlayable 1
+}
+SCR_AIGroup : "{51C2539A6A713CCF}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_ArmorCrew_p.et" {
+ coords 2448.582 407.049 873.148
+ m_bPlayable 1
+}
+SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+ coords 2448.643 406.984 877.077
+ m_bPlayable 1
+}

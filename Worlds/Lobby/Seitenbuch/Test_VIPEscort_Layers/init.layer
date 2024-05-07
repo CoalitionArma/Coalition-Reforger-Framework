@@ -1,0 +1,17 @@
+SCR_AIWorld {
+ coords 2406.615 410.159 828.763
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 2402.15 408.556 889.09
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2914.905 389.997 856.209
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 2917.274 390.456 830.795
+ m_sTextData "Secure the EC-1000 Backpack and bring it into the other teams base"
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2918.688 391.354 816.842
+ m_sTextData "Someone left a big explosive backpack laying around carelessly and its your task to find it and destroy the enemies base with it!"
+}
