@@ -1,0 +1,73 @@
+GenericEntity : "{7B6990100263E2B3}Prefabs/Items/Core/Map_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "Placable Satchel"
+     Description "A placeable satchel"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.1
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 200
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{6132F4CA4392E77A}" {
+     AnimationAttachments {
+      AnimationAttachmentInfo "{6132F4CA4392E761}" {
+       AnimGraph "{83675D0B0AB1B2C3}Assets/Items/Equipment/workspaces/paper_map.agr"
+       AnimInstance "{56794534F6B8C3D7}Assets/Items/Equipment/workspaces/player_map.asi"
+       BindingName "Gadget"
+      }
+     }
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6132F4CA4392E762}" {
+      CameraPreset Top
+      CameraOrbitAngles 0 0 0
+      CameraDistanceToItem 1.4
+      CameraOffset 0 0 0
+      FOV 10
+     }
+     CharacterModifierAttributes "{6132F4CA4392E769}" {
+      ADSSpeedLimit 1
+     }
+    }
+    m_Size SLOT_2x2
+    m_eQuickSlotSize SLOT_2x2
+    m_SlotType SLOT_BACKPACK
+   }
+  }
+  MeshObject "{6132F4CA4392E755}" {
+   Object "{BFDCABAFC8BC2F59}Assets/Weapons/Satchel/satchel.xob"
+  }
+  RigidBody "{6132F4CA4392E757}" {
+   LinearDamping 0.5
+   AngularDamping 0.5
+   ModelGeometry 1
+  }
+  SCR_SoundDataComponent "{5B18D20ED0099A17}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    SCR_EquipWeaponAction "{6132F4D489583D59}" {
+     ParentContextList {
+      "default"
+     }
+     m_sEquipActionString "Arm satchel (equip)"
+    }
+    SCR_FlushToilet "{6132F4D4848E3306}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{6132F4D498410E7D}" {
+      Name "Arm Satchel(flush)"
+     }
+    }
+   }
+  }
+ }
+ coords 1251.57 51.001 1427.637
+}

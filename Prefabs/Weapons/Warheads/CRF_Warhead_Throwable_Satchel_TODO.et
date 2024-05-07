@@ -1,0 +1,40 @@
+GenericEntity : "{9B5FF7EECAD376FA}Prefabs/Weapons/Warheads/Warhead_Base.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  SoundComponent "{D092A75ECEFAE456}" {
+   Filenames {
+    "{DB39A785FAA82E94}Sounds/Weapons/Grenades/Weapons_Grenade_Generic.acp"
+   }
+  }
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{6133457B3D1C718B}" {
+     ExplosionDamageEffects {
+      BaseExplosionDamageEffect "{567CB8E02278854F}" : "{3BE7AB8C8BD42E9B}Prefabs/Weapons/Core/Damage/BlastDamageEffect.conf" {
+       DamageValue 80
+       DamageDistance 30
+      }
+      ExplosionImpulseEffect "{5DE4C524E0A59FDE}" : "{FB1F33936312F72B}Prefabs/Weapons/Core/Damage/BlastImpulseEffect.conf" {
+       DamageDistance 30
+      }
+      BaseExplosionDamageEffect "{588883BA92EA6A31}" : "{ACBA86677A85EA46}Prefabs/Weapons/Core/Damage/IncendiaryDamageEffect.conf" {
+       DamageDistance 26
+      }
+      ExplosionFragmentationEffect "{567CB8E0247B859A}" : "{D865ECB9F1A819E9}Prefabs/Weapons/Core/Damage/FragmentationDamageEffect.conf" {
+       DamageValue 2
+       DamageDistance 60
+      }
+     }
+    }
+    SpawnDecalEffect "{6133457B3D1C719C}" {
+     Stretch 3
+     Scale 3
+     Material "{9EC972F6E6DD4842}Assets/Decals/Logistics/Impact/Data/Decal_Logistics_Grenade_01.emat"
+    }
+   }
+  }
+  HitEffectComponent "{9D9BE68D6F65A10F}" {
+   ParticleEffect "{C87114D5A8531CEE}Particles/Weapons/CRF_Explosion_ThrowableSatchel.ptc"
+  }
+ }
+}

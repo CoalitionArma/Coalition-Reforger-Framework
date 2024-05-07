@@ -1,0 +1,46 @@
+GenericEntity {
+ ID "6132BB44D495E329"
+ components {
+  InventoryItemComponent "{6132F4CDF84824F1}" {
+   Attributes SCR_ItemAttributeCollection "{6132F4CDC889B3A3}" {
+    ItemDisplayName WeaponUIInfo "{6132F4CDDAC7681C}" {
+     Name "test"
+     Description "test"
+    }
+    m_Size SLOT_2x2
+    m_eQuickSlotSize SLOT_2x2
+    m_SlotType SLOT_BACKPACK
+    m_bStackable 0
+   }
+  }
+  MeshObject "{6132BB44D495E320}" {
+   Object "{BFDCABAFC8BC2F59}Assets/Weapons/Satchel/satchel.xob"
+  }
+  RigidBody "{6132BB44D495E33E}" {
+   Static 1
+  }
+  ActionsManagerComponent "{6132F4CDBDEC336F}" {
+   ActionContexts {
+    UserActionContext "{6132F4CD67058BDA}" {
+     ContextName "default"
+     Position PointInfo "{6132F4CD73FF7B80}" {
+      Offset 0 0.025 0
+     }
+    }
+   }
+   additionalActions {
+    SCR_PickUpItemAction "{6132F4CD5F8B6CF5}" {
+     UIInfo UIInfo "{6132F4CD51DA0232}" {
+      Name "test"
+     }
+    }
+    BaseUserAction "{6132F4CD0DAC1794}" {
+     UIInfo UIInfo "{6132F4CD01E3A0EA}" {
+      Name "Arm Satchel"
+     }
+    }
+   }
+  }
+ }
+ Flags 1027
+}

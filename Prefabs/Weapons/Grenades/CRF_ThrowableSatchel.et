@@ -1,0 +1,160 @@
+GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  SoundComponent "{57227A5D228316FB}" {
+   Filenames + {
+    "{91AEEEEE5656F9FE}Sounds/Weapons/Grenades/_SharedData/Weapons_Grenade_Pin_Unpin.acp" "{E4EB771E7DAB9522}Sounds/Weapons/Grenades/RGD5/Weapons_RGD5_Fuze.acp"
+   }
+  }
+  TimerTriggerComponent "{6132BB58D9D4C037}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{6132BB58D9D4C030}" {
+     EffectPrefab "{9E11BE126E9FB48E}Prefabs/Weapons/Warheads/CRF_Warhead_Throwable_Satchel_TODO.et"
+     ParticleEffect "{C87114D5A8531CEE}Particles/Weapons/CRF_Explosion_ThrowableSatchel.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+    AIExplosionEffect "{6132BB58D9D4C03D}" {
+    }
+   }
+   TIMER 4
+  }
+  AICombatPropertiesComponent "{59D121C3C9577470}" {
+   UsedAgainst 7
+   IndirectlyUsedAgainst 7
+  }
+  GrenadeMoveComponent "{1F80A73ADE35BFF1}" {
+   InitSpeed 20
+   Mass 0.9
+   TimeToLive 20
+   ProjectileEffects {
+    BaseDamageEffect "{59396C0BA2D37AE0}" {
+     DamageValue 10
+    }
+   }
+  }
+  InventoryItemComponent "{51FAA3E3CF6F087A}" {
+   Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
+    ItemDisplayName WeaponUIInfo "{6132BB58D9D4C006}" {
+     Name "Throwable satchel"
+     Description "A throwable satchel"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6132BB58D9D4C004}" {
+     Weight 1
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     RestingUP Up
+     RestingAdditiveOffsetLS 0.035 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284A988FFFB3DAC}" {
+     AnimationIKPose "{3E5C93E85F05C6B5}Assets/Weapons/Grenades/RGD5/anims/anm/p_rgd5_ik.anm"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52D2D341931DB0B8}" {
+      CameraPreset Left
+     }
+    }
+    m_Size SLOT_2x2
+    m_eQuickSlotSize SLOT_1x1
+    m_SlotType SLOT_BACKPACK
+    m_bStackable 0
+   }
+   WbPlacementFromAttributes 1
+  }
+  MeshObject "{51EC93F29BA5F234}" {
+   Object "{BFDCABAFC8BC2F59}Assets/Weapons/Satchel/satchel.xob"
+   LODFactors {
+    1000 0 0 0 0
+   }
+  }
+  RigidBody "{0F2AA6AEC948C9D6}" {
+   Mass 0.31
+  }
+  SCR_WeaponAttachmentsStorageComponent "{6132BB58D9D4C00D}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{6132BB58D9D4C00C}" {
+    ItemDisplayName WeaponUIInfo "{6132BB58D9D4C00B}" {
+     Name "#AR-Weapon_RGD5_Name"
+     Description "#AR-Weapon_RGD5_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6132BB58D9D4C00A}" {
+     Weight 0.31
+     SizeSetupStrategy Volume
+     ItemVolume 100
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{6132BB58D9D4C009}" {
+     IkSettings {
+      ItemIKSettings "{6132BB58D9D4C017}" {
+       MovementSpeedRange 0 3
+      }
+      ItemIKSettings "{6132BB58D9D4C016}" {
+       Lowered 1
+       InAds 0
+       OutAds 0
+      }
+      ItemIKSettings "{6132BB58D9D4C011}" {
+       Jumping 1
+       InAds 0
+       OutAds 0
+      }
+     }
+     AnimationInstance "{4FCBEA45CAEBC9C0}anims/workspaces/player/player_main_1h.asi"
+     AnimInstanceBlendDuration 0.3
+     ExcludeBonesBlend {
+      "RightHandProp"
+     }
+     AnimationIKPose "{3E5C93E85F05C6B5}Assets/Weapons/Grenades/RGD5/anims/anm/p_rgd5_ik.anm"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{6132BB58D9D4C01F}" {
+      CameraPreset Left
+      CameraDistanceToItem 1
+      FOV 8
+      AnimationInstance "{CD706CDA25024989}anims/workspaces/player/player_inventory_1handed.asi"
+     }
+    }
+    m_Size SLOT_1x1
+   }
+   StoragePurpose 32
+  }
+  WeaponComponent "{6D23670EA18BF513}" {
+   components {
+    BaseItemAnimationComponent "{6132BB58D9D4C01B}" {
+     AnimGraph "{FE49E462683C1D86}Assets/Weapons/Grenades/workspaces/Grenade.agr"
+     AnimInstance "{BF0FA69B8080C3ED}Assets/Weapons/Grenades/workspaces/Grenade_RGD5.asi"
+     AnimInjection AnimationAttachmentInfo "{6132BB58D9D4C019}" {
+      AnimGraph "{5265F3409C899103}Assets/Weapons/Grenades/workspaces/Grenade_RGD5.agr"
+      AnimInstance "{87E3824D9E6513D5}Assets/Weapons/Grenades/workspaces/Player_RDG5.asi"
+      BindingName "Grenade"
+     }
+     BindWithInjection 1
+     AutoVariablesBind 1
+     AnimVariablesToBind {
+      ""
+     }
+     MeshVisibilityConfigurations {
+      MeshesVisibilitySwitchConfig "{6132BB58D9D4FFE6}" {
+       Event "HidePin"
+       Meshes {
+        "FragGrenade_01_Ring"
+       }
+      }
+      MeshesVisibilitySwitchConfig "{6132BB58D9D4C7EC}" {
+       Event "ShowPin"
+       Meshes {
+        "FragGrenade_01_Ring"
+       }
+       HideMesh 0
+      }
+     }
+    }
+   }
+   UIInfo GrenadeUIInfo "{172367262E10E042}" {
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{5874CA4BDF39B205}" : "{3E16FE5B8FFF0FC5}Configs/WeaponInfo/MagazineIndicators/frag_rgd5.conf" {
+    }
+    m_sAmmoType "Throwable Satchel"
+   }
+  }
+  Hierarchy "{6132BB58D9D4C7E4}" {
+  }
+ }
+}
