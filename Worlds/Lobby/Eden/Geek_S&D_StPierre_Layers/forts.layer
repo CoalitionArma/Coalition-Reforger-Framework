@@ -40,17 +40,16 @@ $grp GenericEntity : "{258D0520BA0FC415}Prefabs/Compositions/Slotted/SlotFlatSma
   angleY -129.99
  }
 }
+GenericEntity : "{2A27606856B8A914}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_USSR_01.et" {
+ coords 7689.725 134.059 4809.306
+ angleY -154.914
+}
 GenericEntity : "{55D508179EF5E64A}Prefabs/Compositions/Slotted/SlotRoadMedium/Checkpoint_M_US_01.et" {
- coords 9066.546 80.201 2323.17
+ coords 9074.646 80.157 2312.682
  angleY -40.155
  {
   GenericEntity {
    ID "5CC6B4B11E89342B"
-   {
-    Turret Tripod_M122_MG_M60_614949E25FC377E5 {
-     ID "5CB0D9912C9F8B8C"
-    }
-   }
   }
  }
 }

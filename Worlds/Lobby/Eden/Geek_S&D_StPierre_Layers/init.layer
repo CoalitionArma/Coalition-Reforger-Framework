@@ -41,7 +41,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "MG"
        }
        SCR_CallsignInfo "{61490188BC5C3DEB}" {
-        m_sCallsign "SNIPER 1"
+        m_sCallsign "VIC"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -81,14 +81,14 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        SCR_CallsignInfo "{61473EE603AF0AD8}" {
         m_sCallsign "MG"
        }
-       SCR_CallsignInfo "{61473EE6020D7B45}" {
-        m_sCallsign "BTR 1"
-       }
-       SCR_CallsignInfo "{61473EE6029A63DF}" {
-        m_sCallsign "BTR 2"
-       }
        SCR_CallsignInfo "{61473EE605432480}" {
         m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{61473EE6020D7B45}" {
+        m_sCallsign "Mi8 1"
+       }
+       SCR_CallsignInfo "{61473EE6029A63DF}" {
+        m_sCallsign "Mi8 2"
        }
       }
       m_sCallsignGroupFormat "%3"
