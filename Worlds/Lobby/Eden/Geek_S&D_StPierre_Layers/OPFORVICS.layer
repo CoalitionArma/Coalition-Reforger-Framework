@@ -1,0 +1,41 @@
+Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ coords 7314.373 135.122 4743.153
+ angleY 85.108
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 7320.153 134.974 4743.486
+ angleY 85.738
+ {
+  GenericEntity {
+   ID "5E2E7C60E0F9B3F4"
+   coords 0 0 0
+   angleY -90
+  }
+ }
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered5 {
+  coords 7353.234 135.531 4747.591
+  angleY 83.938
+ }
+ Ural4320_transport_covered6 {
+  coords 7344.196 135.45 4746.422
+  angleY 83.938
+ }
+ Ural4320_transport_covered3 {
+  coords 7331.021 135.204 4739.85
+  angleY 83.938
+ }
+ Ural4320_transport_covered2 {
+  coords 7321.982 135.031 4738.682
+  angleY 83.938
+ }
+}
+$grp Vehicle : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT.et" {
+ Mi8MT1 {
+  coords 7313.139 135.688 4721.235
+ }
+ Mi8MT2 {
+  coords 7342.136 135.688 4706.705
+ }
+}
