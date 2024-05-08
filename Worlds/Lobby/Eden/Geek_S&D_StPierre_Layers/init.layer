@@ -1,0 +1,112 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4455.23 143.139 6708.416
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 50
+  }
+  CRF_SearchAndDestroyGameModeComponent "{61470EBF33C2B988}" {
+   attackingSide "USSR"
+   defendingSide "US"
+  }
+ }
+ coords 4392.844 147.394 6827.588
+ {
+  SCR_FactionManager "614733A8ED411439" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61470EB9E38AA5ED}" {
+        m_sCallsign "AT 1"
+       }
+       SCR_CallsignInfo "{61470EB9EEBE91F6}" {
+        m_sCallsign "AT 2"
+       }
+       SCR_CallsignInfo "{61473EE4EEFF8B73}" {
+        m_sCallsign "MG"
+       }
+       SCR_CallsignInfo "{61490188BC5C3DEB}" {
+        m_sCallsign "VIC"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61473EE76FD114FE}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61473EE61ADA9368}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{61473EE61E115E99}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61473EE6003FE412}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61473EE60054669A}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{61473EE603AF0AD8}" {
+        m_sCallsign "MG"
+       }
+       SCR_CallsignInfo "{61473EE605432480}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{61473EE6020D7B45}" {
+        m_sCallsign "Mi8 1"
+       }
+       SCR_CallsignInfo "{61473EE6029A63DF}" {
+        m_sCallsign "Mi8 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3: %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5612D998B673DA16}" {
+      m_bIsAssignedRandomly 0
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+     }
+    }
+   }
+  }
+ }
+}
