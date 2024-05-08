@@ -4,6 +4,9 @@ SCR_ChimeraCharacter : "{3ECA3A935BC069B9}Prefabs/Characters/Factions/OPFOR/USSR
   CharacterWeaponManagerComponent "{5C9CA676383262FD}" {
    DefaultWeaponIndex 0
   }
+  FactionAffiliationComponent "{520EC9618276DF23}" {
+   "faction affiliation" "RHS_RF_MSV"
+  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Pilot"
    m_bIsPlayable 1

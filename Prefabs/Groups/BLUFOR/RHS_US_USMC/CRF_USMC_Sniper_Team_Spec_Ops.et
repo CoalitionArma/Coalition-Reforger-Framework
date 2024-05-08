@@ -1,0 +1,7 @@
+SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+ ID "0000000000000001"
+ m_aUnitPrefabSlots {
+  "{AE4928881FE9DB62}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Marksman_Modern_Spec_Ops.et" "{AE4928881FE9DB62}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Marksman_Modern_Spec_Ops.et"
+ }
+ m_sCustomNameSet "Sniper Team"
+}

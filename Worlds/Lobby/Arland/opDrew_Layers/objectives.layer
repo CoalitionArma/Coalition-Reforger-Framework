@@ -111,6 +111,62 @@ $grp SCR_BaseTriggerEntity {
   "	"
   RunDefaultQueryFirst 0
  }
+ BasePowerObj4 {
+  coords 1141.794 1.156 3332.09
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 8.3
+  BoxMins 1 1 1
+  BoxMaxs 5 5 5
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel Dump Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
+ }
+ BasePowerObj6 {
+  coords 1113.321 1.156 3379.06
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 8.3
+  BoxMins 1 1 1
+  BoxMaxs 5 5 5
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel Dump Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
+ }
 }
 Vehicle Ural4320_Arsenal2 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
  coords 1075.8 38 2831.343
@@ -126,10 +182,6 @@ $grp GenericEntity : "{6D56FED1E55A8F84}Prefabs/Items/Misc/IntelligenceFolder_E_
  IntelligenceFolder_E_01_60FAD33CE9136F12 {
   coords 1374.797 41.686 2346.87
  }
-}
-SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
- coords 1020.993 38.409 2813.471
- m_sCustomNameSet "3st Section"
 }
 $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  {
