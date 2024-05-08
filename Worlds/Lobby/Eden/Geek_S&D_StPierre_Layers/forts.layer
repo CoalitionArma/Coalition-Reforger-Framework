@@ -50,11 +50,6 @@ GenericEntity : "{55D508179EF5E64A}Prefabs/Compositions/Slotted/SlotRoadMedium/C
  {
   GenericEntity {
    ID "5CC6B4B11E89342B"
-   {
-    Turret Tripod_M122_MG_M60_615150DFE88443E2 {
-     ID "5CB0D9912C9F8B8C"
-    }
-   }
   }
  }
 }

@@ -10,9 +10,7 @@ PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/Ga
 $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  {
   coords 9476.343 55.646 1949.035
-  m_sTextData "1xM997 Ambulance"\
-  "1xM1025 Armed Vehicle (for anti-air purposes)"\
-  ""
+  m_sTextData "1xM997 Ambulance"
   m_aVisibleForFactions {
    "US"
   }
@@ -23,8 +21,8 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
  {
   coords 9474.583 55.646 1947.383
   m_sTextData "4xURAL Transport Trucks (2 for 1PLT, 2 for 2PLT)"\
-  "1xUAZ Medical Car+UAZ1 for the rest of the MEDIC Team"\
-  "2xMi8 (Used for transport alongside the URALs)"
+  "1xUAZ Medical Car"\
+  "2xBTR70 (Used for transport of the MG Team)"
   m_aVisibleForFactions {
    "USSR"
   }
