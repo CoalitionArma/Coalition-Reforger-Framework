@@ -11,6 +11,10 @@ $grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
   coords 1047.541 38.133 2833.131
   angleY 84.505
  }
+ UAZ4 {
+  coords 1040.761 36.709 2833.719
+  angleY 84.505
+ }
 }
 Vehicle Ural4320_Arsenal1 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
  coords 1058.75 38.001 2827.521
@@ -21,11 +25,10 @@ Vehicle Mi8MTC_A1 : "{35D4CCC400E04FC0}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MTC
  angleY 69
 }
 SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
- coords 1022.85 37.793 2820.662
+ coords 1015.015 38.044 2814.577
  m_aUnitPrefabSlots {
   "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
  }
- m_sCustomNameSet "HQ"
 }
 Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
  coords 1044.498 37.904 2823.114
@@ -289,21 +292,23 @@ GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/He
   }
  }
 }
-$grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
- {
-  coords 1026.433 38.781 2840.959
-  m_sCustomNameSet "1st Section"
- }
- {
-  coords 1025.001 37.557 2828.206
-  m_sCustomNameSet "2st Section"
- }
-}
 SCR_AIGroup : "{CBE7734F6544BD63}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_3rdSection.et" {
- coords 951.3 38.89 2768.155
- angleY 69
+ coords 1001.054 45.969 2763.267
  m_aUnitPrefabSlots {
   "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et" "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
  }
- m_sCustomNameSet "Helicopter Crew"
+}
+$grp SCR_AIGroup : "{E941EC1A55AEA6C1}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stSection.et" {
+ {
+  coords 1016.804 38.175 2803.016
+ }
+ {
+  coords 1048.353 50.683 2784.561
+ }
+ {
+  coords 1037.08 50.692 2784.023
+ }
+ {
+  coords 1066.975 70.757 2762.922
+ }
 }
