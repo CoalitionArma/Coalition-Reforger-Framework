@@ -1,0 +1,46 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 9476.343 55.646 1949.035
+ m_sTextData "50 minute time limit."\
+ "One life- no respawn."\
+ "Medical Vehicles provided for both sides."
+}
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 9476.343 55.646 1949.035
+}
+$grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ {
+  coords 9476.343 55.646 1949.035
+  m_sTextData "1xM997 Ambulance"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 5
+ }
+ {
+  coords 9474.583 55.646 1947.383
+  m_sTextData "4xURAL Transport Trucks (2 for 1PLT, 2 for 2PLT)"\
+  "1xUAZ Medical Car"\
+  "2xBTR70 (Used for transport of the MG Team)"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 5
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 9476.343 55.646 1949.035
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 9476.343 55.646 1949.035
+ m_sTextData "OPFOR has to either detonate the two bombs or eliminate BLUFOR within the 50 minute time limit whilst BLUFOR has to prevent OPFOR from defusing the bombs by eliminating them all."
+ m_iOrder 4
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 9476.343 55.646 1949.035
+ m_sTextData "Following several skimishes between US and USSR forces on Everon, the USSR moves to attack the US controlled towns of St. Pierre and Vernon and detonate two bombs present in the towns. A US Platoon is stationed in the region and the USSR have a pair of their own platoons to assault the area with."
+ m_iOrder 3
+}

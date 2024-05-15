@@ -1,0 +1,172 @@
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et" {
+ coords 1101.348 7.201 2322.751
+ angleX -1.961
+ angleY -141.989
+ angleZ -0.397
+}
+$grp GenericEntity : "{2B24356C351A2538}Prefabs/Props/Wrecks/M113_wreck.et" {
+ {
+  coords 1129.104 5.56 2453.819
+  angleX 0.895
+ }
+ {
+  coords 1350.897 8.088 2374.371
+  angleX -0.606
+  angleY 47.411
+  angleZ -0.659
+ }
+ {
+  coords 1377.517 7.843 2462.849
+  angleY 96.609
+ }
+ {
+  coords 1177.473 7.477 2325.068
+  angleZ 0.895
+ }
+}
+GenericEntity : "{3386EAA823BE462E}Prefabs/Props/Wrecks/UAZ469_wreck_static.et" {
+ coords 1355.509 8.456 2502.231
+ angleX 1.986
+ angleY -56.373
+ angleZ 0.246
+}
+Vehicle M923A1_command1 : "{36BDCC88B17B3BFA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_command.et" {
+ components {
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   "Additional hit zones" {
+    SCR_FlammableHitZone Hull {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Explosive multiplier" 0
+     "Incendiary multiplier" 0
+    }
+    SCR_EngineHitZone Engine_01 {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_GearboxHitZone Gearbox_01 {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_FuelHitZone FuelTank_01 {
+     IgnoreExplosions 1
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Collision multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_BatteryHitZone Battery_01 {
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     "Incendiary multiplier" 0
+     m_vParticleOffset 0 0 0
+    }
+    SCR_BatteryHitZone Battery_02 {
+     BaseDamageMultiplier 0
+     MaxHealth 65535
+     DamageReduction 999999995904
+     DamageThreshold 999999995904
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0
+     "Incendiary multiplier" 0
+    }
+   }
+   "Fall damage min speed" 99999
+   "Fall damage max speed" 99999
+   CollisionVelocityThreshold 99999997952
+   "Heavy damage threshold" 99999997952
+   m_fFrontMultiplier 0.01
+   m_fBottomMultiplier 0.01
+   m_fRearMultiplier 0.01
+   m_fLeftMultiplier 0.01
+   m_fRightMultiplier 0.01
+   m_fTopMultiplier 0.01
+   m_fVehicleDamageSpeedThreshold 10000000000
+   m_fVehicleSpeedDestroy 99999997952
+   m_fFuelTankFireDamageRate 0
+   m_fSuppliesFireDamageRate 0
+   m_fSecondaryFireDamageDelay 0
+  }
+ }
+ coords 1164.907 7.691 2361.647
+ angleY -86.238
+}
+$grp GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
+ {
+  coords 1245.031 6.953 2319.472
+  angleX 0.445
+  angleY -150.171
+  angleZ -0.777
+ }
+ {
+  coords 1374.481 7.968 2374.412
+  angleY 139.59
+ }
+ {
+  coords 1397.461 7.853 2439.204
+  angleX 0.325
+  angleY -158.691
+  angleZ -0.834
+ }
+}
+SCR_DestructibleBuildingEntity : "{4DD5F16D919A99F4}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp_Base.et" {
+ coords 1420.979 1.046 2497.883
+ angleY -137.032
+}
+GenericEntity : "{6BE5C753730DBFED}Prefabs/Props/Wrecks/M923A1_wreck_static.et" {
+ coords 1394.348 7.812 2480.033
+ angleY 45.095
+}
+GenericEntity : "{AE300E34EA8FF40C}Prefabs/Props/Wrecks/Ural4320_wreck_static.et" {
+ coords 1366.043 7.937 2488.791
+ angleX 1.764
+ angleY -80.243
+ angleZ 0.303
+}
+GenericEntity : "{B90E5414AB7C325B}Prefabs/Props/Wrecks/BTR70_wreck_static.et" {
+ coords 1304.12 6.156 2323.891
+ angleY -121.228
+}
+GenericEntity : "{D99955DFCF7D3962}Prefabs/Props/Wrecks/CannonWreck_01.et" {
+ coords 1405.612 7.807 2501.258
+ angleX -0.204
+ angleY -166.809
+ angleZ 0.872
+}

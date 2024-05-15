@@ -12,6 +12,9 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("USSR", "auto", "The side deffending the bomb sites")]
 	FactionKey defendingSide;
 	
+	[Attribute("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et", "auto", "The object to spawn as a bomb")]
+	string bombSitePrefab;
+	
 	protected bool aSiteDestroyed, bSiteDestroyed = false;
 	protected int sitesDestroyed = 0;
 	protected IEntity aSite, bSite;
@@ -67,12 +70,12 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		spawnParams.Transform[3] = aSiteSpawn;
 		
 		// Spawn destructible "site" at each trigger point
-		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
+		aSite = GetGame().SpawnEntityPrefab(Resource.Load(bombSitePrefab),GetGame().GetWorld(),spawnParams);
 		aSite.SetYawPitchRoll(aSiteYawPitchRoll);
 		aSiteID = aSite.GetID();
 		
 		spawnParams.Transform[3] = bSiteSpawn; // change to bsite
-		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
+		bSite = GetGame().SpawnEntityPrefab(Resource.Load(bombSitePrefab),GetGame().GetWorld(),spawnParams);
 		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
 		bSiteID = bSite.GetID();
 		

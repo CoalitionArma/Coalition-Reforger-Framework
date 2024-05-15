@@ -1,0 +1,60 @@
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 9332.762 55.593 2019.989
+  m_sTitle "Detonate the bombs"
+  m_sTextData "Detonate both of BLUFORs bombs before the end of the 50 minute time limit."\
+  ""
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 6
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 9751.59 5.343 1511.4
+  m_sTitle "Defend the bombs"
+  m_sTextData "Defend both of your bombs from an OPFOR attack for 50 minutes."\
+  ""
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 6
+  m_sFactionKey "US"
+ }
+ {
+  coords 9757.457 5.677 1528.179
+  m_sTitle "Detonate one bomb"
+  m_sTextData "Detonate one of the two of the BLUFOR explosives before the 50 minute time limit expires."
+  m_iOrder 7
+  m_iScore 50
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 9756.565 5.677 1529.781
+  m_sTitle "Defend one bomb"
+  m_sTextData "Defend one of the two of the explosives from OPFOR attack before the 50 minute time limit expires."
+  m_iOrder 7
+  m_iScore 50
+  m_sFactionKey "US"
+ }
+ {
+  coords 9750.621 5.404 1535.996
+  m_sTitle "Eliminate BLUFOR"
+  m_sTextData "Eliminate all BLUFOR forces within the 50 minute time limit."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 7
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 9750.979 5.404 1537.576
+  m_sTitle "Eliminate OPFOR"
+  m_sTextData "Eliminate all OPFOR forces within the 50 minute time limit."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 7
+  m_sFactionKey "US"
+ }
+}

@@ -32,6 +32,8 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	
 	void UpdateTimer()
 	{
+		if (!m_Safestart || !m_wTimer || !m_wBackground || !m_MapEntity) return;
+		
 		// get time left in mission
 		m_sServerWorldTime = m_Safestart.GetServerWorldTime();
 		

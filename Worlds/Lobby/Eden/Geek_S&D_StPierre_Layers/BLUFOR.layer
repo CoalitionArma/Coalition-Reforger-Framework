@@ -1,0 +1,77 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 9410.299 52.34 1941.191
+ angleY -73.631
+}
+Vehicle M1025_armed_M2HB1 : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ components {
+  SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+   m_fFuelConsumption 50
+   m_fFuelConsumptionIdle 0
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     MaxFuel 8
+     m_fInitialFuelTankState 8
+    }
+   }
+  }
+ }
+ coords 9426.082 53.682 1948.932
+ angleY -113.348
+}
+SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+ coords 9402.102 52.441 1946.642
+ angleY 14.718
+ m_aUnitPrefabSlots {
+  "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et"
+ }
+ m_sCustomNameSet "Platoon Command"
+ {
+  SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+   coords -0.285 2.83 24.888
+   angleY 179.195
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+     coords 0.049 0.564 -5.341
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+       coords 0.038 0.758 -6.869
+       angleY -0.414
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_ATTeam.et" {
+         coords 20.03 -4.754 34.56
+         angleY -76.653
+         m_sCustomNameSet "AT Team 1"
+         {
+          SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_ATTeam.et" {
+           coords -0.085 -0.115 -5.076
+           m_sCustomNameSet "AT Team 2"
+           {
+            SCR_AIGroup : "{1AFA02A4E31F1AD8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MGTeam.et" {
+             coords -18.025 2.054 0.801
+             angleY 13.863
+             m_sCustomNameSet "MG Team"
+             {
+              SCR_AIGroup : "{51C2539A6A713CCF}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_ArmorCrew_p.et" {
+               coords -12.748 0.732 38.696
+               angleY 159.358
+               m_sCustomNameSet "M1025"
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
