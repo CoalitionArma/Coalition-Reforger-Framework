@@ -7,6 +7,13 @@ SCR_ChimeraCharacter : "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
    WeaponTemplate "{958E88913CBDD0BF}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_1pn93.et"
   }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{ADE19B33DCBB9005}Prefabs/Characters/Vests/Vest_6B2/Vest_6B2.et"
+    }
+   }
+  }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
     ItemsInitConfigurationItem "{54A68D62A07358B0}" {

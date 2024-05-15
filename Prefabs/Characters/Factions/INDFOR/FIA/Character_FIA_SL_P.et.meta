@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DF46A12838F399B3}Prefabs/Characters/Factions/INDFOR/FIA/Talib_sui.et"
+ Name "{5E10F18AF4717623}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -8,6 +8,8 @@ MetaFileClass {
   EntityTemplateResourceClass XBOX_SERIES : PC {
   }
   EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
   }

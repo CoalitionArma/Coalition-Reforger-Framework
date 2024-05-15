@@ -1,13 +1,13 @@
 SCR_ChimeraCharacter : "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et" {
  ID "520EC961A090B1EE"
  components {
-  FactionAffiliationComponent "{555C98D1CD949F3E}" {
-   "faction affiliation" "USSR"
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_bIsPlayable 1
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
-    LoadoutSlotInfo Hat {
-     Prefab "{C0D30A0B0078FDE2}Prefabs/Characters/HeadGear/Hat_Turbant/Hat_Turbant_01.et"
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{ADE19B33DCBB9005}Prefabs/Characters/Vests/Vest_6B2/Vest_6B2.et"
     }
    }
   }

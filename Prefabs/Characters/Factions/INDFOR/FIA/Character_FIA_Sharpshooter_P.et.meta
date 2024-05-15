@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{17AAB2199828732D}Prefabs/Characters/Factions/INDFOR/FIA/Talib_rifleman.et"
+ Name "{950D59E028D3F269}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Sharpshooter_P.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -8,6 +8,8 @@ MetaFileClass {
   EntityTemplateResourceClass XBOX_SERIES : PC {
   }
   EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
   }
   EntityTemplateResourceClass HEADLESS : PC {
   }
