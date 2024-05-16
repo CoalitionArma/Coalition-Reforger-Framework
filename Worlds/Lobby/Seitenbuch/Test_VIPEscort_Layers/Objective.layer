@@ -14,38 +14,94 @@ $grp SCR_BaseTriggerEntity {
   "	override void OnActivate(IEntity ent)"\
   "    {"\
   "		//code partially sourced from rally mission"\
-  "        // Probably lacking locality tbh"\
-  "        // Get player data"\
-  "        PlayerManager playerManager = GetGame().GetPlayerManager();"\
-  "		PlayerController playercontroler = GetGame().GetPlayerController();"\
-  "        if (!playerManager)"\
-  "            return;"\
-  "        int entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
-  "        string playerName = playerManager.GetPlayerName(entityPlayerID);"\
+  "		PlayerManager playerManager;"\
+  "        PlayerController playerController;"\
+  "		int entityPlayerID;"\
+  "		string playerName;"\
+  "		SCR_ChimeraCharacter playerChimeraCharacter;"\
+  "		Faction playerFaction;"\
   "        "\
-  "        "\
-  "		SCR_ChimeraCharacter player = SCR_ChimeraCharacter.Cast(playercontroler.GetControlledEntity());"\
-  "		EquipedLoadoutStorageComponent loadoutStorage = EquipedLoadoutStorageComponent.Cast(player.FindComponent(EquipedLoadoutStorageComponent));"\
+  "		GetPlayerData(ent, playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction);"\
   "		"\
-  "		IEntity backpack = loadoutStorage.GetClothFromArea(LoadoutBackpackArea);"\
-  "		EntityPrefabData backpackPrefabData = backpack.GetPrefabData();"\
-  "		string backpackPrefabName = backpackPrefabData.GetPrefabName();"\
+  "        string playerBackpackPrefabName = GetBackpack(playerChimeraCharacter);"\
+  "		bool backpackCorrect = CheckBackpack(playerBackpackPrefabName);"\
+  "		bool factionUSSR = CheckSide(playerFaction);"\
   "		"\
-  "		if(backpackPrefabName == \"{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et\") {"\
+  "		/*"\
+  "		if(backpackCorrect){"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with explosive backpack!\", 5);"\
-  "			//GetGame().GetCallqueue().CallLater(BaseDestruction, 1, true);"\
-  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 1);"\
-  "			//spawn explosion"\
-  "			EntitySpawnParams spawnParams = new EntitySpawnParams();"\
-  "			spawnParams.TransformMode = ETransformMode.WORLD;"\
-  "			spawnParams.Transform[3] = player.GetOrigin();"\
-  "		"\
-  "			GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
+  "			if(factionUSSR) {"\
+  "				SimpleBaseDestruction(playerChimeraCharacter);"\
+  "			}"\
   "		} else {"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with wrong backpack!\", 5);"\
   "		}"\
-  ""\
+  "		*/"\
+  "		"\
+  "		if(backpackCorrect && !factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with explosive backpack!\", 5);"\
+  "			SimpleBaseDestruction(playerChimeraCharacter);"\
+  "		}"\
+  "		if(backpackCorrect && factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with wrong backpack!\", 5);"\
+  "		}"\
+  "		"\
   "    }"\
+  "	void GetPlayerData(IEntity ent, out PlayerManager playerManager, out PlayerController playerController, out int entityPlayerID, out string playerName, out SCR_ChimeraCharacter playerChimeraCharacter, out Faction playerFaction) {"\
+  "		// Probably lacking locality tbh"\
+  "        // Get playermanager + playercontroller"\
+  "		playerManager = GetGame().GetPlayerManager();"\
+  "		playerController = GetGame().GetPlayerController();"\
+  "		//get name"\
+  "		if (!playerManager)"\
+  "            return;"\
+  "		entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+  "        playerName = playerManager.GetPlayerName(entityPlayerID);"\
+  "		"\
+  "		//get chimera character"\
+  "		playerChimeraCharacter = SCR_ChimeraCharacter.Cast(playerController.GetControlledEntity());"\
+  "		"\
+  "		//get faction "\
+  "		playerFaction = playerChimeraCharacter.GetFaction();"\
+  "		"\
+  "		//return [playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction];"\
+  "	}"\
+  "	string GetBackpack(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		EquipedLoadoutStorageComponent loadoutStorage = EquipedLoadoutStorageComponent.Cast(playerChimeraCharacter.FindComponent(EquipedLoadoutStorageComponent));"\
+  "		IEntity backpack = loadoutStorage.GetClothFromArea(LoadoutBackpackArea);"\
+  "		if(!backpack) {return \"\";}"\
+  "		EntityPrefabData backpackPrefabData = backpack.GetPrefabData();"\
+  "		string backpackPrefabName = backpackPrefabData.GetPrefabName();"\
+  "		return backpackPrefabName;"\
+  "	}"\
+  "	bool CheckBackpack(string backpackPrefabName) "\
+  "	{"\
+  "		if(backpackPrefabName == \"{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	bool CheckSide(Faction playerFaction) "\
+  "	{"\
+  "		string FactionName = playerFaction.GetFactionName();"\
+  "		//string FactionName = '#AR-Faction_USSR'"\
+  "		if(FactionName == \"#AR-Faction_USSR\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	void SimpleBaseDestruction(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 10);"\
+  "		//spawn explosion"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = playerChimeraCharacter.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
+  "	}"\
   "	"\
   "	void WaitTillGameStart()"\
   "    {"\
@@ -56,38 +112,6 @@ $grp SCR_BaseTriggerEntity {
   "        SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Coast\", 10, \"Racists should all board their vehicles now.\");"\
   "        GetGame().GetCallqueue().CallLater(DoAThing, 10000, false);*/"\
   "    }"\
-  "	void BaseDestruction(){"\
-  "		PlayerController playercontroler = GetGame().GetPlayerController();"\
-  "		SCR_ChimeraCharacter player = SCR_ChimeraCharacter.Cast(playercontroler.GetControlledEntity());"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 5\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 4\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 3\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 2\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 1\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 1);"\
-  "		//spawn explosion"\
-  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
-  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
-  "		spawnParams.Transform[3] = player.GetOrigin();"\
-  "	"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
-  "		"\
-  "		//// Send player to spec - vanilla"\
-  "        //SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
-  "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
-  "		//SCR_CharacterDamageManagerComponent ACEdamMan = SCR_CharacterDamageManagerComponent.Cast(ent.FindComponent(SCR_CharacterDamageManagerComponent));"\
-  "		//if (damMan && ACEdamMan)"\
-  "		//{"\
-  "		//	ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
-  "		//	damMan.Kill(damMan.GetInstigator());"\
-  "		//}"\
-  "	}"\
   "	"\
   "	void DoAThing()"\
   "	{"\
@@ -124,38 +148,94 @@ $grp SCR_BaseTriggerEntity {
   "	override void OnActivate(IEntity ent)"\
   "    {"\
   "		//code partially sourced from rally mission"\
-  "        // Probably lacking locality tbh"\
-  "        // Get player data"\
-  "        PlayerManager playerManager = GetGame().GetPlayerManager();"\
-  "		PlayerController playercontroler = GetGame().GetPlayerController();"\
-  "        if (!playerManager)"\
-  "            return;"\
-  "        int entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
-  "        string playerName = playerManager.GetPlayerName(entityPlayerID);"\
+  "		PlayerManager playerManager;"\
+  "        PlayerController playerController;"\
+  "		int entityPlayerID;"\
+  "		string playerName;"\
+  "		SCR_ChimeraCharacter playerChimeraCharacter;"\
+  "		Faction playerFaction;"\
   "        "\
-  "        "\
-  "		SCR_ChimeraCharacter player = SCR_ChimeraCharacter.Cast(playercontroler.GetControlledEntity());"\
-  "		EquipedLoadoutStorageComponent loadoutStorage = EquipedLoadoutStorageComponent.Cast(player.FindComponent(EquipedLoadoutStorageComponent));"\
+  "		GetPlayerData(ent, playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction);"\
   "		"\
-  "		IEntity backpack = loadoutStorage.GetClothFromArea(LoadoutBackpackArea);"\
-  "		EntityPrefabData backpackPrefabData = backpack.GetPrefabData();"\
-  "		string backpackPrefabName = backpackPrefabData.GetPrefabName();"\
+  "        string playerBackpackPrefabName = GetBackpack(playerChimeraCharacter);"\
+  "		bool backpackCorrect = CheckBackpack(playerBackpackPrefabName);"\
+  "		bool factionUSSR = CheckSide(playerFaction);"\
   "		"\
-  "		if(backpackPrefabName == \"{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et\") {"\
+  "		/*"\
+  "		if(backpackCorrect){"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with explosive backpack!\", 5);"\
-  "			//GetGame().GetCallqueue().CallLater(BaseDestruction, 1, true);"\
-  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 1);"\
-  "			//spawn explosion"\
-  "			EntitySpawnParams spawnParams = new EntitySpawnParams();"\
-  "			spawnParams.TransformMode = ETransformMode.WORLD;"\
-  "			spawnParams.Transform[3] = player.GetOrigin();"\
-  "		"\
-  "			GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
+  "			if(factionUSSR) {"\
+  "				SimpleBaseDestruction(playerChimeraCharacter);"\
+  "			}"\
   "		} else {"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with wrong backpack!\", 5);"\
   "		}"\
-  ""\
+  "		*/"\
+  "		"\
+  "		if(backpackCorrect && !factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with explosive backpack!\", 5);"\
+  "			SimpleBaseDestruction(playerChimeraCharacter);"\
+  "		}"\
+  "		if(backpackCorrect && factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with wrong backpack!\", 5);"\
+  "		}"\
+  "		"\
   "    }"\
+  "	void GetPlayerData(IEntity ent, out PlayerManager playerManager, out PlayerController playerController, out int entityPlayerID, out string playerName, out SCR_ChimeraCharacter playerChimeraCharacter, out Faction playerFaction) {"\
+  "		// Probably lacking locality tbh"\
+  "        // Get playermanager + playercontroller"\
+  "		playerManager = GetGame().GetPlayerManager();"\
+  "		playerController = GetGame().GetPlayerController();"\
+  "		//get name"\
+  "		if (!playerManager)"\
+  "            return;"\
+  "		entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+  "        playerName = playerManager.GetPlayerName(entityPlayerID);"\
+  "		"\
+  "		//get chimera character"\
+  "		playerChimeraCharacter = SCR_ChimeraCharacter.Cast(playerController.GetControlledEntity());"\
+  "		"\
+  "		//get faction "\
+  "		playerFaction = playerChimeraCharacter.GetFaction();"\
+  "		"\
+  "		//return [playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction];"\
+  "	}"\
+  "	string GetBackpack(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		EquipedLoadoutStorageComponent loadoutStorage = EquipedLoadoutStorageComponent.Cast(playerChimeraCharacter.FindComponent(EquipedLoadoutStorageComponent));"\
+  "		IEntity backpack = loadoutStorage.GetClothFromArea(LoadoutBackpackArea);"\
+  "		if(!backpack) {return \"\";}"\
+  "		EntityPrefabData backpackPrefabData = backpack.GetPrefabData();"\
+  "		string backpackPrefabName = backpackPrefabData.GetPrefabName();"\
+  "		return backpackPrefabName;"\
+  "	}"\
+  "	bool CheckBackpack(string backpackPrefabName) "\
+  "	{"\
+  "		if(backpackPrefabName == \"{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	bool CheckSide(Faction playerFaction) "\
+  "	{"\
+  "		string FactionName = playerFaction.GetFactionName();"\
+  "		//string FactionName = '#AR-Faction_USSR'"\
+  "		if(FactionName == \"#AR-Faction_US\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	void SimpleBaseDestruction(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 10);"\
+  "		//spawn explosion"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = playerChimeraCharacter.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
+  "	}"\
   "	"\
   "	void WaitTillGameStart()"\
   "    {"\
@@ -166,38 +246,6 @@ $grp SCR_BaseTriggerEntity {
   "        SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Coast\", 10, \"Racists should all board their vehicles now.\");"\
   "        GetGame().GetCallqueue().CallLater(DoAThing, 10000, false);*/"\
   "    }"\
-  "	void BaseDestruction(){"\
-  "		PlayerController playercontroler = GetGame().GetPlayerController();"\
-  "		SCR_ChimeraCharacter player = SCR_ChimeraCharacter.Cast(playercontroler.GetControlledEntity());"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 5\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 4\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 3\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 2\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destruction Countdown: 1\", 1);"\
-  "		Sleep(1);"\
-  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 1);"\
-  "		//spawn explosion"\
-  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
-  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
-  "		spawnParams.Transform[3] = player.GetOrigin();"\
-  "	"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
-  "		"\
-  "		//// Send player to spec - vanilla"\
-  "        //SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
-  "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
-  "		//SCR_CharacterDamageManagerComponent ACEdamMan = SCR_CharacterDamageManagerComponent.Cast(ent.FindComponent(SCR_CharacterDamageManagerComponent));"\
-  "		//if (damMan && ACEdamMan)"\
-  "		//{"\
-  "		//	ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
-  "		//	damMan.Kill(damMan.GetInstigator());"\
-  "		//}"\
-  "	}"\
   "	"\
   "	void DoAThing()"\
   "	{"\

@@ -30,6 +30,9 @@ Vehicle M1 : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
  coords 1867.729 411.781 1197.311
  angleY 63.576
 }
+GenericEntity CRF_Backpack_Satchel_61608C7B53402C89 : "{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et" {
+ coords 909.494 432.672 1213.331
+}
 $grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et" {
  M998_covered_long_MERDC1 {
   coords 2438.729 407.462 876.134
