@@ -1,0 +1,33 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5844.717 145.669 6233.226
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_RushGameModeComponent "{615F542F528763DC}" {
+  }
+ }
+ coords 5853.475 145.905 6217.063
+}
+$grp SCR_BaseTriggerEntity {
+ w1s1Trigger {
+  coords 5820.55 143.82 6295.985
+ }
+ w1s2Trigger {
+  coords 5882.349 149.545 6270.153
+ }
+ w2s1Trigger {
+  coords 5866.189 141.365 6410.303
+ }
+ w2s2Trigger {
+  coords 5804.39 135.64 6436.135
+ }
+ w3s2Trigger {
+  coords 5906.81 147.565 6519.766
+ }
+ w3s1Trigger {
+  coords 5968.609 153.29 6493.934
+ }
+}
+SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+ coords 5839.45 142.622 6172.848
+}
