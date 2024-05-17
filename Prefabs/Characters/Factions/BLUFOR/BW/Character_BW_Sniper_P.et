@@ -1,0 +1,36 @@
+SCR_ChimeraCharacter : "{B452527EA042DFF0}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Sniper_P.et" {
+ ID "520EC961A090BBD5"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Sniper"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{AFE0A43C4E94996F}Prefabs/Weapons/Rifles/G95/G95KV3.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{45F0019A1F4F7D89}Prefabs/Characters/HeadGear/Hat_Boonie_GER/Hat_Boonie_Flecktarn.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{5213446C19B594CC}Prefabs/Characters/Uniforms/Jacket_FROG_Combat_Shirt_Flecktarn.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{E566B3970D935FC4}Prefabs/Characters/Uniforms/Pants_FROG_Trousers_Flecktarn.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{114E67CAD39F8514}Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_Flecktarn_Rifle.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{54A49B42D138207E}" {
+     PrefabsToSpawn {
+      "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et" "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et"
+     }
+    }
+   }
+  }
+ }
+}

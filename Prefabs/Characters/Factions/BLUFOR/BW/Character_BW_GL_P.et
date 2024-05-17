@@ -1,0 +1,24 @@
+SCR_ChimeraCharacter : "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" {
+ ID "51FA8A5FA6C2005C"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Grenadier"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{D5499179E62E78E1}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_MICH_SHROUD_Cov_Flecktarn.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{5213446C19B594CC}Prefabs/Characters/Uniforms/Jacket_FROG_Combat_Shirt_Flecktarn.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{E566B3970D935FC4}Prefabs/Characters/Uniforms/Pants_FROG_Trousers_Flecktarn.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{5CF56C7460F5573F}Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_CAG_MG_Flecktarn.et"
+    }
+   }
+  }
+ }
+}
