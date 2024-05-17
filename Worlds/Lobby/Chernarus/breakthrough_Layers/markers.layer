@@ -1,0 +1,272 @@
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 7950.826 342.075 7172.89
+ m_sDescription "OPF Breakthrough"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 9106.693 315.438 5923.398
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9119.139 314.924 5933.988
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9160.28 336.505 5951.972
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9186.712 345.278 5972.736
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9210.194 325.995 6012.842
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9229.742 328.905 6025.648
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9250.464 333.77 6041.252
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9262.317 336.274 6050.962
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9283.893 337.329 6072.634
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9298.32 335.544 6091.567
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9238.315 342.492 6131.956
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9197.003 344.859 6167.214
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9118.189 343.112 6218.815
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 9041.482 346.533 6289.675
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8983.815 346.201 6331.693
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8928.834 346.941 6364.92
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8867.249 351.452 6408.049
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8836.684 362.464 6440.718
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8752.534 351.972 6506.549
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8681.133 349.011 6562.291
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8597.462 352.314 6639.536
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8540.682 367.828 6713.729
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8478.029 345.652 6806.032
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8408.659 344.79 6913.443
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8312.735 354.278 7064.732
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8250.43 369.958 7163.01
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8186.585 388.492 7248.245
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8103.564 374.85 7370.129
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8069.767 390.227 7418.673
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7991.25 360.44 7401.082
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7908.921 345.105 7316.746
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7855.137 335.581 7249.178
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7800.946 327.264 7193.724
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7800.7 348.579 7096.482
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7747.566 340.39 7053.317
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7839.937 337.934 6903.229
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7897.907 341.873 6809.511
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 7957.143 368.336 6692.326
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8022.533 346.943 6513.35
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8109.696 319.716 6364.161
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8189.643 316.125 6205.089
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8273.896 295.482 6046.661
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8293.423 291.737 5973.112
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8316.479 291.251 5909.293
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8399.923 287.809 5918.158
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8479.07 287.74 5947.579
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8578.44 289.108 5961.599
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8634.539 301.641 5960.622
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8744.105 303.796 5951.707
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8812.26 320.689 5941.889
+  angleY 0
+  m_fWorldSize 90
+ }
+ {
+  coords 8904.559 331.15 5937.902
+  angleY 0
+  m_fWorldSize 90
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 9056.806 321.922 5959.41
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 8360.095 357.824 6728.611
+}
