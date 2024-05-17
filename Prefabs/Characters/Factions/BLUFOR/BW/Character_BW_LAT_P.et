@@ -1,0 +1,44 @@
+SCR_ChimeraCharacter : "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" {
+ ID "51FA8A5F28FD04BA"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman AT"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{0FEABE7669BAECAE}Prefabs/Weapons/Rifles/G36KA4/G36KA4V2.et"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{B5C2334ADFB038FF}Prefabs/Weapons/Launchers/Panzerfaust 3/Launcher_Panzerfaust3_Besser.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{D5499179E62E78E1}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_MICH_SHROUD_Cov_Flecktarn.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{5213446C19B594CC}Prefabs/Characters/Uniforms/Jacket_FROG_Combat_Shirt_Flecktarn.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{E566B3970D935FC4}Prefabs/Characters/Uniforms/Pants_FROG_Trousers_Flecktarn.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{5CF56C7460F5573F}Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_CAG_MG_Flecktarn.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{54A49B42D138207E}" {
+     PrefabsToSpawn {
+      "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et"
+     }
+    }
+    ItemsInitConfigurationItem "{5538C040738A83D1}" {
+     PrefabsToSpawn {
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et"
+     }
+    }
+   }
+  }
+ }
+}

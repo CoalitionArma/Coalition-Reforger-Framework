@@ -1,0 +1,40 @@
+SCR_ChimeraCharacter : "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL_P.et" {
+ ID "51FA90A5D40EA513"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Team Leader"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{AFE0A43C4E94996F}Prefabs/Weapons/Rifles/G95/G95KV3.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{5213446C19B594CC}Prefabs/Characters/Uniforms/Jacket_FROG_Combat_Shirt_Flecktarn.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{E566B3970D935FC4}Prefabs/Characters/Uniforms/Pants_FROG_Trousers_Flecktarn.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{E91F9565FC1A7D1F}Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_Rifle_Flecktarn_KAGWERK.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{54A49B42D138207E}" {
+     PrefabsToSpawn {
+      "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et" "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et" "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et"
+     }
+    }
+    ItemsInitConfigurationItem "{5538C29DADB44836}" {
+     PrefabsToSpawn {
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et" "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et" "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et"
+     }
+    }
+   }
+  }
+ }
+}
