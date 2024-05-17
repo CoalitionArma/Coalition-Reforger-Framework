@@ -1,0 +1,81 @@
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 4760.176 27.844 11108.85
+ angleY -0.227
+ m_aUnitPrefabSlots {
+  "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et"
+ }
+ m_sCustomNameSet "1st Platoon"
+ {
+  SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   coords 12.484 1.834 47.774
+   angleY -177.353
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+     coords 0.324 0 -9.292
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+       coords 0.699 0 -10.735
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+         coords 0.445 0 -11.696
+         m_sCustomNameSet "4th Sqaud"
+         {
+          SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+           coords -14.253 -2.053 50.633
+           angleY 87.443
+           m_aUnitPrefabSlots {
+            "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+           }
+           m_sCustomNameSet "Anti-Air 1"
+           {
+            SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+             coords 9.394 0 0.448
+             m_aUnitPrefabSlots {
+              "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+             }
+             m_sCustomNameSet "Anti-Air 2"
+             {
+              SCR_AIGroup : "{7281E79A895296DA}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MedicTeam_p.et" {
+               coords -30.521 2.053 4.602
+               angleY 90.137
+               m_aUnitPrefabSlots {
+                "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+               }
+               m_sCustomNameSet "Medical Team"
+               {
+                SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+                 coords -18.671 -2.053 29.587
+                 angleY 88.765
+                 m_aUnitPrefabSlots {
+                  "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{951CA4F244097071}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG_P.et" "{D1786D7659BC2E7C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG_P.et"
+                 }
+                 m_sCustomNameSet "MG Team 1"
+                 {
+                  SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+                   coords 11.651 0 -1.584
+                   m_aUnitPrefabSlots {
+                    "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{951CA4F244097071}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG_P.et" "{D1786D7659BC2E7C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG_P.et"
+                   }
+                   m_sCustomNameSet "MG Team 2"
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,122 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4455.23 143.139 6708.416
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 60
+  }
+  CRF_SearchAndDestroyGameModeComponent "{615CCC8126503D72}" {
+  }
+ }
+ coords 4392.844 147.394 6827.588
+ {
+  SCR_FactionManager "615CCC8159DBC1F5" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-MG"
+       }
+       SCR_CallsignInfo "{615EE6D1458D5BF5}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{615EE6D1441D396E}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{615EE6D144AF3D61}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{615EE6D144C98C9B}" {
+        m_sCallsign "2-MG"
+       }
+       SCR_CallsignInfo "{615EE6D146A70B9E}" {
+        m_sCallsign "UH1 1"
+       }
+       SCR_CallsignInfo "{615EE6D146C5F0B5}" {
+        m_sCallsign "UH1 2"
+       }
+       SCR_CallsignInfo "{615EE6D1493854A8}" {
+        m_sCallsign "UH1 3"
+       }
+       SCR_CallsignInfo "{615EE6D1497A8836}" {
+        m_sCallsign "UH1 4"
+       }
+       SCR_CallsignInfo "{615EE6D149B45CEA}" {
+        m_sCallsign "UH1 5"
+       }
+       SCR_CallsignInfo "{615EE6D148E440FC}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{615EE6D14B793369}" {
+        m_sCallsign "SNIPER"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{615CCC893BF98410}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{615CCC893C0F27D5}" {
+        m_sCallsign "AA 1"
+       }
+       SCR_CallsignInfo "{615CCC893E2499BB}" {
+        m_sCallsign "AA 2"
+       }
+       SCR_CallsignInfo "{615CCC893E82D91D}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{615CCC892133A407}" {
+        m_sCallsign "MG 1"
+       }
+       SCR_CallsignInfo "{615CCC89211F156A}" {
+        m_sCallsign "MG 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5612D998B673DA16}" {
+      m_bIsAssignedRandomly 0
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+     }
+    }
+   }
+  }
+ }
+}
