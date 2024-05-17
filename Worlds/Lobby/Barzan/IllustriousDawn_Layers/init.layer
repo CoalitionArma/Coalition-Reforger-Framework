@@ -91,13 +91,6 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   }
  }
 }
-TimeAndWeatherManagerEntity TimeAndWeatherManager_61620A8D35C80E37 : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
- coords 1500.496 1.781 1399.247
- "Initial Day Time" 1.5
- "Internal variant transition" 0
- "Internal subvariant 0" 0
- "Internal subvariant 1" 0
-}
 $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  Objective_US {
   coords 1496.797 1.8 1404.312

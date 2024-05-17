@@ -5,7 +5,7 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
  Blufor_Assets {
   coords 1066.824 3.094 1407.167
   m_sTextData "1x M113 (.50 cal)"\
-  "2x Transport Cars"
+  "3x Transport Vehicles"
   m_aVisibleForFactions {
    "US"
   }
@@ -17,8 +17,9 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
   coords 1071.034 3.116 1403.569
   m_sTextData "1x BMP-1"\
   "1x BTR-70"\
-  "1x Medic Van"\
-  "3x Transport Vehicles"
+  "2x Medic Vans"\
+  "1x UAZ Car"\
+  "4x Transport Trucks"
   m_aVisibleForFactions {
    "USSR"
   }
