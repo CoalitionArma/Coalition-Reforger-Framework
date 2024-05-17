@@ -139,7 +139,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{D253AF40C2587509}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_SL_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et"
+  "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et"
  }
  m_bSetPlayable 1
 }
