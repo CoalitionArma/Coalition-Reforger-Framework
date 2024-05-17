@@ -1,0 +1,83 @@
+$grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ OPFOR_BRIEF {
+  coords 1081.344 2.997 1404.437
+  m_sTitle "Opfor Briefing"
+  m_sTextData "SAFE START RULES: Do not leave the premises of Opfor spawn until safestart ends."\
+  ""\
+  "Comrades!"\
+  ""\
+  "Your IL-76, that NATO shot down, has safely crashed on the NATO-controlled island of Barzan. Attack and destroy sites A and B under NATO control in order to gain an advantage and claim control of the island for USSR before reinforcments arrive."\
+  ""\
+  "Good luck."\
+  ""\
+  "Love,"\
+  "Mikhail Gorbachev"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 9
+ }
+ BLUFOR_BRIEF {
+  coords 1080.181 2.999 1404.944
+  m_sTitle "Blufor Briefing"
+  m_sTextData "SAFE START RULES: Do not leave the premises of both sites A and B UNTIL safe start ends. Blufor is free to move wherever on the island once game starts."\
+  ""\
+  "Soldiers!"\
+  ""\
+  "An IL-76, that NATO shot down, has safely crashed on the NATO-controlled island of Barzan. Protect the sites on the island at all costs from whatever remaining alive USSR forces that are active."\
+  ""\
+  "Good luck."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 9
+ }
+}
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 1076.85 2.874 1413.224
+}
+$grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ Blufor_Assets {
+  coords 1066.824 3.094 1407.167
+  m_sTextData "1x M113 (.50 cal)"\
+  "3x Transport Vehicles"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 6
+ }
+ Opfor_Assets {
+  coords 1071.034 3.116 1403.569
+  m_sTextData "2x BMP-1"\
+  "2x Medic Vans"\
+  "1x UAZ Car"\
+  "4x Transport Trucks"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 6
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1084.549 3.031 1400.739
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 1077.887 3.031 1404.007
+ m_sTextData "Opfor: Find and destroy sites A and B before timer hits zero. | Or, kill all blufor players."\
+ ""\
+ "Blufor: Make sure at least on site remains intact before timer hits zero. | Or, kill all opfor players."
+ m_iOrder 4
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1083.314 2.981 1405.241
+ m_sTextData "Blufor hold control over two sites. Opfor seeks to destroy both of these sites. Good luck."
+ m_iOrder 3
+}
