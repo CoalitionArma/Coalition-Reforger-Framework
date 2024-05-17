@@ -1,0 +1,152 @@
+GenericEntity : "{A84AEA8E8B3318BD}Prefabs/5AB890B71D748750/Weapon_Variants/Rifle_M4_Variant_Block2_Tan.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{1247D2850B08FE46}Assets/Weapons/Rifles/G95/G95K_Base.xob"
+   LODFactors {
+    0.005 0.005 0.1 0.2
+   }
+   PixelSizeScale 6.25
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "HK G95K"
+     Description ""
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BAB5E48C906DB8}" {
+      LodModel 0
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5534745C44D1EF58}" {
+     AttachmentSlot InventoryStorageSlot Stock {
+      Prefab "{9B22111988991B4B}Prefabs/Weapons/Attachments/Stock/Stock_G95_Tan.et"
+     }
+     AttachmentType BW_Mod_AttachmentStock "{5A5CDB17A85868B7}" {
+     }
+    }
+    AttachmentSlotComponent "{56DE9C900611C1AF}" {
+     AttachmentSlot InventoryStorageSlot Upper {
+      Prefab "{627FAD7AC9C8DFB3}Prefabs/Weapons/Attachments/Upper/Receiver_Upper_G95_Tan.et"
+     }
+     AttachmentType BW_Mod_AttachmentUpperReceiver "{60A4B045D1BB26C9}" {
+     }
+    }
+    AttachmentSlotComponent "{60A4B045D1BB26B9}" {
+     AttachmentSlot InventoryStorageSlot Lower {
+      ChildPivotID ""
+      Prefab "{F548DE49E287C177}Prefabs/Weapons/Attachments/Lower/Receiver_Lower_G95_Tan.et"
+     }
+     AttachmentType BW_Mod_AttachmentLowerReceiver "{60FF3A362BEF4821}" {
+     }
+    }
+    AttachmentSlotComponent "{60A4B045D1BB26C1}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      PivotID "slot_hand_guard"
+      Offset 0 -0.0015 0.0007
+      Prefab "{6CF0853CC9E0745C}Prefabs/Weapons/Attachments/Handguard/Handguard_G95_LHG_Tan.et"
+     }
+     AttachmentType BW_Mod_AttachmentHandguard "{60A4B045D1BB26C2}" {
+     }
+    }
+    AttachmentSlotComponent "{60A4B045D1BB26C3}" {
+     AttachmentSlot InventoryStorageSlot Grip {
+      Prefab "{85A8461E492F25A1}Prefabs/Weapons/Attachments/Grip/Grip_G95_Tan.et"
+     }
+     AttachmentType BW_Mod_AttachmentGrip "{60A4B045D1BB26C0}" {
+     }
+    }
+    AttachmentSlotComponent "{60A4B045D1BB26C7}" {
+     AttachmentSlot InventoryStorageSlot Optics {
+      Offset 0 0 -0.038
+      Prefab "{4268B2077766E8C7}Prefabs/Weapons/Attachments/Optics/aimpoint_t1/Optic_t1_high.et"
+     }
+    }
+    AttachmentSlotComponent "{60A4B045D1BB26CB}" {
+     AttachmentSlot InventoryStorageSlot Underbarrel {
+      Offset 0 0.0445 0.3078
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{60A4B045D1BB26CE}" {
+     Enabled 0
+    }
+    AttachmentSlotComponent "{60A4B045D1BBDA79}" {
+     AttachmentSlot InventoryStorageSlot Attachment {
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{60A4B045D1BBE051}" {
+     Enabled 0
+    }
+    AttachmentSlotComponent "{60A4B045D1BBE054}" {
+     AttachmentSlot InventoryStorageSlot Muzzle {
+      PivotID "barrel_muzzle"
+     }
+    }
+    SightsComponent "{60A4B045D1BBDA7D}" {
+     SightsPosition PointInfo "{60A4B045D1BBDA7C}" {
+      Offset 0 0 0
+     }
+     m_bIsNVGCompatible 1
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       EffectPosition EntitySlotInfo "{5122BA87B56F471A}" {
+        Offset 0 0 0
+       }
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{F640B136F9AFA06A}Particles/Weapon/Muzzle_M16A2.ptc"
+      }
+     }
+     ProjectileSpawnPositions {
+      PointInfo "{50F64C476EC435CA}" {
+       PivotID "barrel_muzzle"
+      }
+     }
+     FireModes {
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       RoundsPerMinute 850
+      }
+      BaseFireMode "{506B20D1476BA99E}" {
+       RoundsPerMinute 850
+      }
+      BaseFireMode "{5534745C44D1EF22}" {
+       RoundsPerMinute 850
+      }
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset 0 0 -0.0019
+     }
+     MagazineTemplate "{AB7AB616D46DDF11}Prefabs/Weapons/Magazines/G95Mag/Gen3_PMag_M995.et"
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "HK G95K"
+    Description ""
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{5A1E5C474348FA82}" {
+      Offset 0 0.0381 -0.0495
+     }
+    }
+    UserActionContext "{60A4B045D1BA60DE}" {
+     ContextName "0"
+     Position PointInfo "{60A4B045D1BA60DF}" {
+      Offset 0.05 17.8026 -27.6021
+     }
+    }
+   }
+  }
+ }
+}
