@@ -96,16 +96,12 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   coords 1496.797 1.8 1404.312
   m_sTitle "Defend Sites"
   m_sTextData "Succesfully defend at least one of the sites from the aggressors by end of match timer."
-  m_bEmptyFactionVisibility 1
-  m_bShowForAnyFaction 1
   m_sFactionKey "US"
  }
  Objective_USSR {
   coords 1499.943 1.781 1400.826
   m_sTitle "Destroy Both Sites"
   m_sTextData "Successfully attack and destroy both objective sites."
-  m_bEmptyFactionVisibility 1
-  m_bShowForAnyFaction 1
   m_sFactionKey "USSR"
  }
 }
