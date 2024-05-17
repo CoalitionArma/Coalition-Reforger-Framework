@@ -153,17 +153,39 @@ class CRF_RushGameModeComponent: SCR_BaseGameModeComponent
 	void SiteDestroyed(string bombSite) 
 	{	
 		sitesDestroyed++;
+		IEntity bombSiteToBlowwwwwww;
 		
 		// Determine bomb site since we cant pass entities in rpc 
+		switch (bombSite) 
+		{
+			case "CRF_Rush_Site_w1s1":
+				bombSiteToBlowwwwwww = w1s1;
+				break;
+			case "CRF_Rush_Site_w1s2":	
+				bombSiteToBlowwwwwww = w1s2;
+				break;
+			case "CRF_Rush_Site_w2s1":
+				bombSiteToBlowwwwwww = w2s1;
+				break;
+			case "CRF_Rush_Site_w2s2":	
+				bombSiteToBlowwwwwww = w2s2;
+				break;
+			case "CRF_Rush_Site_w3s1":
+				bombSiteToBlowwwwwww = w3s1;
+				break;
+			case "CRF_Rush_Site_w3s1":
+				bombSiteToBlowwwwwww = w3s2;
+				break;
+			default: {}
+		}
 		
-		
-		// Spawn explosion at site
+		// TODO: Fix || Spawn explosion at site
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
-		spawnParams.Transform[3] = bombSite.GetOrigin();
+		spawnParams.Transform[3] = bombSiteToBlowwwwwww.GetOrigin();
 		
 		// Delete entity
-		delete bombSite;
+		delete bombSiteToBlowwwwwww;
 	
 		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
 		
@@ -174,6 +196,45 @@ class CRF_RushGameModeComponent: SCR_BaseGameModeComponent
 		}
 		
 		Replication.BumpMe();
+	}
+	
+	void ShowMessage()
+	{
+		array<string> messageSplitArray = {};
+		string stasisStr = m_sMessageContent;
+		stasisStr.Split("╣", messageSplitArray, false);
+
+		string mainMessage = messageSplitArray[0];
+		string time = messageSplitArray[1];
+		string subMessage = messageSplitArray[2];
+		
+		if(!mainMessage.IsEmpty() && !time.IsEmpty())
+			SCR_PopUpNotification.GetInstance().PopupMsg(mainMessage, time.ToFloat(), subMessage);
+	}
+	
+	void PlaySound()
+	{
+		AudioSystem.PlaySound(m_SoundString);
+	}
+
+	// TODO
+	void SiteDestroyedClient() 
+	{
+		/*IEntity destroyedBombSiteEntity = null;
+		
+		if(m_sDestroyedBombSiteString == "SiteA")
+			destroyedBombSiteEntity = aSite;
+		else
+			destroyedBombSiteEntity = bSite;
+		
+		// Spawn explosion at site
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform[3] = destroyedBombSiteEntity.GetOrigin();
+	
+		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
+		// Delete entity
+		delete destroyedBombSiteEntity;*/
 	}
 }
 
