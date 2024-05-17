@@ -22,7 +22,7 @@ SCR_ChimeraCharacter : "{F39178D190269C70}Prefabs/Characters/Factions/BLUFOR/RHS
    WeaponTemplate "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{FBC74E6E8023856B}Prefabs/Weapons/MachineGuns/M240B/backup/MG_M240B_black.et"
+   WeaponTemplate "{F1BC1872DFCCF0A3}Prefabs/Weapons/MachineGuns/M240B/MG_M240B_Magnified.et"
    WeaponSlotIndex 0
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
