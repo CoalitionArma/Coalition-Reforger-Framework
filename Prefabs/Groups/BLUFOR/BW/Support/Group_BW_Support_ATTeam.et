@@ -139,7 +139,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{D253AF40C2587509}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_SL_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et"
+  "{D253AF40C2587509}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_SL_P.et" "{09CABFB253F196B8}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_MATG_P.et" "{2D23A6CC7447540F}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_MATAG_P.et"
  }
  m_bSetPlayable 1
 }

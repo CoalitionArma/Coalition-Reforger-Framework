@@ -1,0 +1,4 @@
+Vehicle Stryker_APC1 : "{249A75FB99B24A57}Prefabs/Vehicles/Wheeled/Stryker/Stryker_APC.et" {
+ coords 8358.249 358.781 6711.159
+ angleY 59
+}
