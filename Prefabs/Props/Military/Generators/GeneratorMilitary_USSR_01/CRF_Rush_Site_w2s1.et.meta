@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B7E5066DABB4C8B2}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/CRF_Rush_Site_w2s1.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

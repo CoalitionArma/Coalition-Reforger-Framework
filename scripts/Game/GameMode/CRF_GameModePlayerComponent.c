@@ -22,7 +22,7 @@ class CRF_GameModePlayerComponent: ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 
-	// Functions for ready up replication
+	// Functions for replication
 	
 	//------------------------------------------------------------------------------------------------
 	
@@ -30,10 +30,19 @@ class CRF_GameModePlayerComponent: ScriptComponent
 	{	
 		Rpc(RpcAsk_ToggleBombPlanted, sitePlanted, togglePlanted);
 	}
-	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
 	{
 		CRF_SearchAndDestroyGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGameModeComponent)).ToggleBombPlanted(sitePlanted, togglePlanted);
+	}
+	
+	void Owner_ToggleRushPlanted(string bombSite, bool togglePlanted)
+	{	
+		Rpc(RpcAsk_ToggleRushPlanted, bombSite, togglePlanted);
+	}
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ToggleRushPlanted(string bombSite, bool togglePlanted)
+	{
+		CRF_RushGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGameModeComponent)).ToggleBombPlanted(bombSite, togglePlanted);
 	}
 }

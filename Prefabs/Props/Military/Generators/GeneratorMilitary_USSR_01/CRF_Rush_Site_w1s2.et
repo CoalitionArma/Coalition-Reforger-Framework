@@ -4,26 +4,25 @@ GameEntity : "{103CBF9E0B0BC124}Prefabs/Props/Military/Generators/GeneratorMilit
   MeshObject "{5872F0EB7FA40561}" {
    Object "{ED35DF1183510613}Assets/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01_open.xob"
   }
-  ActionsManagerComponent "{615F5417A1BA9867}" {
+  ActionsManagerComponent "{61620C543B0836C6}" {
    ActionContexts {
-    UserActionContext "{615F5417A385B4AB}" {
+    UserActionContext "{61620C543B0836CC}" {
      ContextName "default"
-     Position PointInfo "{615F5417F54B25BD}" {
+     Position PointInfo "{61620C543B0836CE}" {
       Offset -0.4711 1.5069 -0.239
      }
      Radius 3
     }
    }
    additionalActions {
-    CRF_PlantBombAction "{615F5417B990045D}" {
+    CRF_RushPlantAction "{61620C543B0836C8}" {
      ParentContextList {
       "default"
      }
-    }
-    CRF_DefuseBombAction "{615F541412FBB49C}" {
-     ParentContextList {
-      "default"
+     UIInfo UIInfo "{61620C543B0836CA}" {
+      Name "Plant Bomb"
      }
+     Duration 5
     }
    }
   }

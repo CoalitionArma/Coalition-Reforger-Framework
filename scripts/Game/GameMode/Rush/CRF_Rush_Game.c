@@ -14,15 +14,31 @@ class CRF_RushGameModeComponent: SCR_BaseGameModeComponent
 	
 	[Attribute("{1260D6425C37BDF2}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/CRF_Rush_Site.et", "auto", "The object to spawn as a Rush site")]
 	string bombSitePrefab;
-
-	// Rush site spawns locations
-	protected vector w1s1Spawn, w1s2Spawn, w2s1Spawn, w2s2Spawn, w3s1Spawn, w3s2Spawn;
-	protected ref array<vector> m_aSiteSpawnList = {};
+	
+	[RplProp(onRplName: "ShowMessage")]
+	string m_sMessageContent;
+	
+	[RplProp(onRplName: "PlaySound")]
+	string m_SoundString;
+	
+	[RplProp(onRplName: "SiteDestroyedClient")]
+	string m_sDestroyedBombSiteString;
 	
 	// Rush physical sites 
-	protected IEntity w1s1Site, w1s2Site, w2s1Site, w2s2Site, w3s1Site, w3s2Site;
-	protected ref array<IEntity> m_aSiteList = {};
-	IEntity rushSite;
+	IEntity w1s1, w1s2, w2s1, w2s2, w3s1, w3s2;
+	
+	// Game logic 
+	bool site1Planted = false;
+	bool site2Planted = false;
+	bool countDownActive = false;
+	bool wave1Clear = false;
+	bool wave2Clear = false;
+	int sitesDestroyed = 0;
+	
+	// CONSTANTS 
+	int BOMBSITETIMER = 60;
+	int site1Timer = BOMBSITETIMER;
+	int site2Timer = BOMBSITETIMER;
 	
 	override protected void OnWorldPostProcess(World world)
 	{
@@ -30,31 +46,134 @@ class CRF_RushGameModeComponent: SCR_BaseGameModeComponent
 			return;
 	
 		InitRushSites();
+		PrintFormat("[CRF] w1s1: %1",w1s1.GetName());
 	}
 	
 	void InitRushSites()
 	{
-		w1s1Spawn = GetGame().GetWorld().FindEntityByName("w1s1Trigger").GetOrigin(); m_aSiteSpawnList.Insert(w1s1Spawn);
-		w1s2Spawn = GetGame().GetWorld().FindEntityByName("w1s2Trigger").GetOrigin(); m_aSiteSpawnList.Insert(w1s2Spawn);
-		w2s1Spawn = GetGame().GetWorld().FindEntityByName("w2s1Trigger").GetOrigin(); m_aSiteSpawnList.Insert(w2s1Spawn);
-		w2s2Spawn = GetGame().GetWorld().FindEntityByName("w2s2Trigger").GetOrigin(); m_aSiteSpawnList.Insert(w2s2Spawn);
-		w3s1Spawn = GetGame().GetWorld().FindEntityByName("w3s1Trigger").GetOrigin(); m_aSiteSpawnList.Insert(w3s1Spawn);
-		w3s2Spawn = GetGame().GetWorld().FindEntityByName("w3s2Trigger").GetOrigin(); m_aSiteSpawnList.Insert(w3s2Spawn);
+		w1s1 = GetGame().FindEntity("CRF_Rush_Site_w1s1");
+		w1s2 = GetGame().FindEntity("CRF_Rush_Site_w1s2");
+		w2s1 = GetGame().FindEntity("CRF_Rush_Site_w2s1");
+		w2s2 = GetGame().FindEntity("CRF_Rush_Site_w2s2");
+		w3s1 = GetGame().FindEntity("CRF_Rush_Site_w3s1");
+		w3s2 = GetGame().FindEntity("CRF_Rush_Site_w3s2");
+	}
+	
+	// Checks to ensure sites can be planted at
+	bool VerifySites(string bombSite)
+	{
+		if (!wave1Clear)
+		{
+			if (bombSite == w2s1.GetName() || bombSite == w2s2.GetName() || bombSite == w3s1.GetName() || bombSite == w3s2.GetName())
+				return false;
+		} else if (wave1Clear && !wave2Clear) {
+			if (bombSite == w3s1.GetName() || bombSite == w3s2.GetName())
+				return false;
+		}
 		
+		return true;
+	}
+	
+	// TODO 
+	void ToggleBombPlanted(string bombSite, bool togglePlanted) 
+	{
+		m_SoundString = "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav";
+		if (togglePlanted && VerifySites(bombSite)) // bomb planted
+		{
+			if (bombSite == w1s1.GetName() || bombSite == w2s1.GetName() || bombSite == w3s1.GetName()) {
+				site1Planted = true;
+				m_sMessageContent = "Attackers have placed a bomb at site 1!";
+			} else {
+				site2Planted = true;
+				m_sMessageContent = "Attackers have placed a bomb at site 2!";
+			};
+		
+			// Spawn countdown thread
+			GetGame().GetCallqueue().CallLater(StartCountdown, 1000, true, bombSite);
+		} else { // bomb defused
+			// Remove countdown
+			GetGame().GetCallqueue().Remove(StartCountdown);
+			
+			if (bombSite == w1s1.GetName() || bombSite == w2s1.GetName() || bombSite == w3s1.GetName()) {
+				site1Planted = false;
+				m_sMessageContent = "Defenders have defused the bomb site 1!";
+			} else {
+				site2Planted = false;
+				m_sMessageContent = "Defenders have defused the bomb site 2!";
+			};
+		};
+		
+		Replication.BumpMe();
+	}
+	
+	// TODO LOOP, every 1 sec
+	void StartCountdown(string bombSite)
+	{
+		// Check if defused
+		if (!countDownActive) {
+			site1Planted = false;
+			site2Planted = false;
+			return;
+		}
+		
+		// Show message
+		if (site1Planted) {
+			site1Timer--;
+			m_sMessageContent = SCR_FormatHelper.FormatTime(site1Timer);
+		} else {
+			site2Timer--;
+			m_sMessageContent = SCR_FormatHelper.FormatTime(site2Timer);
+		};
+		
+		// Bomb goes off
+		if (site1Timer <= 0 || site2Timer <= 0) 
+		{
+			if (site1Planted) {
+				m_sMessageContent = "SITE 1 DESTROYED!";
+				site1Timer = 60;
+			} else {
+				m_sMessageContent = "SITE 2 DESTROYED!";
+				site2Timer = 60;
+			};
+			
+			// Remove timer
+			GetGame().GetCallqueue().Remove(StartCountdown);
+			countDownActive = false;
+			
+			// Destroy site
+			SiteDestroyed(bombSite);
+			
+			site1Planted = false;
+			site2Planted = false;
+		}
+		
+		Replication.BumpMe();
+	}
+	
+	void SiteDestroyed(string bombSite) 
+	{	
+		sitesDestroyed++;
+		
+		// Determine bomb site since we cant pass entities in rpc 
+		
+		
+		// Spawn explosion at site
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform[3] = bombSite.GetOrigin();
 		
-		for (int i = 0, count = m_aSiteSpawnList.Count(); i < count; i++)
+		// Delete entity
+		delete bombSite;
+	
+		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
+		
+		if (sitesDestroyed == 6)
 		{
-			// Change spawn param location vector to current loop vector
-			spawnParams.Transform[3] = m_aSiteSpawnList[i];
-			
-			// Spawn destructible "site" at each trigger point
-			rushSite = GetGame().SpawnEntityPrefab(Resource.Load(bombSitePrefab),GetGame().GetWorld(),spawnParams);
-			m_aSiteList.InsertAt(rushSite, i);
-			
-			// Create markers on each site
-			// createMarkers();
+			m_sMessageContent = "Attackers have destroyed all Rush sites! Attacker victory!";
+			m_SoundString = "{349D4D7CC242131D}Sounds/Music/Ingame/Samples/Jingles/MU_EndCard_Drums.wav";
 		}
+		
+		Replication.BumpMe();
 	}
 }
+
