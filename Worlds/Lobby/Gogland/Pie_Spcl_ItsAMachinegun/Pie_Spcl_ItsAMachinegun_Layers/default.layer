@@ -1,0 +1,37 @@
+SCR_AIWorld {
+ coords 4517.611 45.775 9527.971
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 4526.413 43.708 9548.431
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 4343.744 2.934 9076.565
+ angleY 0
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4475.031 12.679 9252.06
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 4462.917 3.397 9229.627
+ m_sTextData "OPFOR:"\
+ "Kill Blufor"\
+ "Defend Submarine"\
+ ""\
+ "BLUFOR:"\
+ "Kill Opfor"\
+ "Take Submarine"
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 4310.019 9.358 9100.67
+ angleY 0
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4489.329 48.854 9542.68
+ angleY 0
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 4464.374 19.304 9285.053
+ m_sTextData "Lots of people with machineguns somehow found themselves near a submarine and are now angry and shooting eachother!"
+}
