@@ -1,0 +1,20 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ bSiteMarker {
+  coords 1193.128 6.15 1017.251
+  m_sDescription "OBJ - B Site"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ aSiteMarker {
+  coords 1502.46 1.774 1413.235
+  m_sDescription "OBJ - A Site"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1528.921 2.124 2796.386
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1349.29 4.747 1034.411
+}
