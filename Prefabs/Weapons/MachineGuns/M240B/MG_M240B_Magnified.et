@@ -1,0 +1,312 @@
+GenericEntity : "{F54F6C453A8CB478}Prefabs/Weapons/Core/MachineGun_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{FE8279CA292FC6EE}Sounds/Weapons/Machineguns/M60/Weapons_Machineguns_M60_Shot.acp" "{9654992A68125DDF}Sounds/Weapons/Machineguns/M60/Weapons_Machineguns_M60_Handling.acp" "{E08211071D0175E2}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_LMG.acp" "{214445E9606EFCD0}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_LMG.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{5DB34B1BB17CA63B}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_LMG.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{78EA328A0BCD5F43}Assets/Weapons/MachineGuns/M240B/m240b.xob"
+  }
+  RigidBody "{615F4ECC6E70C5A5}" {
+   SimState None
+   ModelGeometry 1
+  }
+  SCR_MeleeWeaponProperties "{615F4ECC6E70C5A3}" {
+   m_fDamage 45
+   m_fRange 1.2
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07E1D123E9}" {
+     Name "M240B"
+     Description "The M240B is the first ground variant, made by Fabrique Nationale of Herstal, Beligum, (the same manufacturer of the M249 squad automatic weapon). A European version, called the FN MAG 58, is used by over 100 different nations throughout the world and is the premier machine gun used in NATO. The M240B is fitted with improvements for ground mounting such as a forward heat shield, ammunition adapter, and a hydraulic buffer. The M240B is a battle-proven machine gun that has demonstrated many times the highest possible performance levels in combat throughout the world."
+     m_MagIndicator SCR_MagazineIndicatorConfiguration "{615F4ECC6E70C5A8}" {
+     }
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{615F4ECC6E70C5AA}" {
+     Weight 12.5
+     SizeSetupStrategy Volume
+     ItemDimensions 30 30 30
+     ItemVolume 3000
+     RestingUP Right
+     PivotBoneName "barrel_muzzle"
+     RestingAdditiveOffsetLS 0.37 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     AnimationInstance "{60945F10BF15FC09}anims/workspaces/player/player_main_machinegun.asi"
+     AnimationIKPose "{11DD040100E988E0}Assets/Weapons/MachineGuns/M240B/anims/anm/p_lmg_m240b_01_ik.anm"
+     OverrideDefaultIkBonesBlend 1
+     AnimRecoilRecoveryTime 0.45
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{615F4ECC6E70C5B1}" {
+        "Point info" DeploymentPointInfo ppii {
+         Offset 0 0.0552 0.4447
+        }
+        StabilizationSize 0.1 0.15 0.55
+       }
+       PivotPointInfoItem "{615F4ECC6E70C5B2}" {
+        "Point info" DeploymentPointInfo ppii1 {
+         PivotID "Scene_Root"
+         Offset 0 0.0379 0.5385
+        }
+        SystemIdentifier 2
+        StabilizationPoints {
+         DeploymentPointInfo LeftLeg {
+          PivotID "w_bipodleg_left"
+          Offset -0.0318 -0.0098 -0.2525
+         }
+         DeploymentPointInfo RightLeg {
+          PivotID "w_bipodleg_right"
+          Offset 0.0318 -0.0098 -0.2525
+         }
+        }
+       }
+      }
+     }
+     CharacterModifierAttributes "{561C0C2DF9ABA9A5}" {
+      SpeedLimit 2
+      ADSSpeedLimit 1
+      SpeedLimitItemPrimaryAction 1.5
+      SpeedLimitHighready 1.2
+      AllowReloadingWithRoll 0
+      AllowJumping 0
+     }
+     PreviewRenderAttributes "{5534BB9B9A3E369E}" {
+      CameraPreset Right
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{615F4ECC6E70C581}" {
+     AttachmentSlot InventoryStorageSlot RisLeft {
+      PivotID "slot_ris_left"
+      Angles 0 0 -90
+      ChildPivotID "snap_weapon"
+      Name "RIS left"
+      InspectionWidgetOffset -0.0446 0.0795 0.4453
+     }
+     AttachmentType AttachmentRIS1913 "{615F4ECC6E70C583}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{615F4ECC6E70C582}" {
+     AttachmentSlot InventoryStorageSlot RisRight {
+      PivotID "slot_ris_right"
+      Angles 0 0 90
+      ChildPivotID "snap_weapon"
+      Name "RIS right"
+      InspectionWidgetOffset 0.0446 0.0795 0.3911
+     }
+     AttachmentType AttachmentRIS1913 "{615F4ECC6E70C58C}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{615F4ECC6E70C58F}" {
+     AttachmentSlot InventoryStorageSlot Muzzle {
+      PivotID "barrel_muzzle"
+      Offset 0 0 -0.0423
+      ChildPivotID "snap_weapon"
+      InspectionWidgetOffset 0 0.1048 0.7927
+     }
+     AttachmentType AttachmentMuzzle762_51 "{615F4ECC6E70C58E}" {
+     }
+    }
+    AttachmentSlotComponent "{615F4ECC6E70C5BB}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      PivotID "slot_ris_top"
+      Offset 0 0 -0.0055
+      ChildPivotID "snap_weapon"
+      Prefab "{7DB681643152613C}Prefabs/Weapons/Attachments/Optics/su230/Optic_SU230_MRDS.et"
+      Name "RIS Optics"
+      InspectionWidgetOffset 0 0.155 0
+     }
+     AttachmentType AttachmentOpticsRIS1913 "{615F4ECC6E70C587}" {
+     }
+     ShowInInspection 1
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      PivotID "eye"
+      Offset 0 0.0015 0
+     }
+     SightsPointFront PointInfo "{615F4ECC6E70C58B}" {
+      PivotID "sight_point_front"
+      Offset 0 0 0
+     }
+     SightsPointRear PointInfo "{615F4ECC6E70C595}" {
+      PivotID "sight_point_rear"
+      Offset 0 0 0
+     }
+     CameraRecoilAmount 0.42
+     SightsSwitchSkip 1
+    }
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     components {
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{6A0F068A792EA37C}Particles/Weapon/Casing_762x51.ptc"
+       EffectPosition EntitySlotInfo "{513A938439231378}" {
+        PivotID "barrel_chamber"
+        Offset 0.035 0.0074 -0.018
+        Angles 0 90 0
+       }
+      }
+      CaseEjectingEffectComponent "{615F4ECC6E70C590}" {
+       ParticleEffect "{E7ACDE0ACCBCB07A}Particles/Weapon/Casing_Holder.ptc"
+       EffectPosition EntitySlotInfo casing_holder {
+        PivotID "barrel_chamber"
+        Offset 0.035 0.025 -0.005
+        Angles 0 90 0
+       }
+       HasSound 0
+      }
+      CaseEjectingEffectComponent "{615F4ECC6E70C596}" {
+       ParticleEffect "{EB2E119AC95CF4BD}Particles/Weapon/Smoke_M60.ptc"
+       EffectPosition EntitySlotInfo "{52C8A66BF7416F3F}" {
+        PivotID "barrel_muzzle"
+       }
+       HasSound 0
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{1991E0492F618D77}Particles/Weapon/Muzzle_M60_flashHider.ptc"
+      }
+     }
+     FireModes {
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       MaxBurst -1
+       RoundsPerMinute 850
+       UIName "Auto"
+      }
+     }
+     MagazineWell MagazineWellM60 "{615F4ECC6E70C59F}" {
+     }
+     DispersionDiameter 0.4
+     DispersionRange 500
+     WeaponAimModifiers {
+      RecoilWeaponAimModifier "{615F4ECC6E70C599}" {
+       LinearData RecoilData "{615F4ECC6E70C59B}" {
+        "Curve X" {
+         0 0.5 1 0.5
+        }
+        "Curve Y" {
+         0 0.5 0.032 0.55 0.045 0.75 0.065 0.7 0.071 0.65 0.095 0.5 0.25 0.45 0.45 0.52 0.7 0.495 1 0.5
+        }
+        "Curve Z" {
+         0 0.5 0.032 0.65 0.045 0.95 0.065 0.95 0.071 0.85 0.095 0.7 0.25 0.35 0.45 0.55 0.7 0.485 1 0.5
+        }
+        "Curve Magnitudes" 1 1 1
+        "Curve Mins" -0.001 -0.006 -0.022
+        "Curve Maxs" 0 -0.005 -0.018
+       }
+       AngularData RecoilData "{615F4ECC6E70C59A}" {
+        "Curve X" {
+         0 0.5 0.019 0.411 0.055 0.539 0.11 0.474 0.216 0.497 1 0.5
+        }
+        "Curve Y" {
+         0 0.5 0.032 0.55 0.045 0.8 0.065 0.95 0.071 0.9 0.095 0.75 0.25 0.45 0.45 0.52 0.7 0.49 1 0.5
+        }
+        "Curve Z" {
+         0 0.5 0.034 0.431 0.045 0.85 0.095 0.7 0.238 0.487 0.443 0.5 0.7 0.5 1 0.5
+        }
+        "Curve Magnitudes" 1 1 1
+        "Curve Mins" -0.002 0.6 -4
+        "Curve Maxs" 0.001 1.2 4
+       }
+       TurnOffsetData RecoilData "{615F4ECC6E70C5E5}" {
+        "Curve X" {
+         0 0.5 0.06 1 0.121 0.499 1 0.5
+        }
+        "Curve Y" {
+         0 0.5 0.014 0.578 0.035 0.937 0.042 0.998 0.123 0.441 0.236 0.5 1 0.5
+        }
+        "Curve Time Scale" 1
+        "Curve Magnitudes" 1 1 0
+        "Curve Mins" -9.75 45 0
+        "Curve Maxs" 9.75 90 0
+        "Base Recoil Scale" 1
+       }
+      }
+      ZeroingWeaponAimModifier "{615F4ECC6E70C5E4}" {
+      }
+     }
+     UIInfo MuzzleUIInfo "{2FBBA72C906C627E}" {
+      m_bShowCaliber 1
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+      PivotID "slot_magazine"
+      Offset 0 0 -0.1765
+      Angles 0 0 0
+     }
+     RIGHT_HAND_TARGET DeploymentPointInfo rht {
+      PivotID "snap_hand_right"
+     }
+     BUTSTOCK_TRANSFORMATION DeploymentPointInfo bt {
+      PivotID "Scene_Root"
+      Offset 0 0.0592 -0.3654
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset -0.0055 0 0.0056
+      InspectionWidgetOffset -0.1111 0.0503 -0.0111
+     }
+     MagazineTemplate "{4D2C1E8F3A81F894}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4Ball_1Tracer.et"
+    }
+    WeaponAnimationComponent "{615F4ECC6E70C5ED}" {
+     AnimGraph "{2CEB8F15E51AA7F3}Assets/Weapons/MachineGuns/workspaces/m60.agr"
+     AnimInstance "{5901E9F8B599550E}Assets/Weapons/MachineGuns/workspaces/m240_weapon.asi"
+     AlwaysActive 1
+     AnimInjection AnimationAttachmentInfo "{615F4ECC6E70C5EF}" {
+      AnimGraph "{2CEB8F15E51AA7F3}Assets/Weapons/MachineGuns/workspaces/m60.agr"
+      AnimInstance "{A25F78C92D9831E2}Assets/Weapons/MachineGuns/workspaces/m240_player.asi"
+      BindingName "Weapon"
+     }
+     BindWithInjection 1
+    }
+   }
+   SoundInt 1040200
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "M240-B"
+    Icon ""
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+      Offset 0 -0.0233 -0.0226
+     }
+    }
+    UserActionContext "{5956E32BAAADE657}" {
+     Position PointInfo "{5956E329E6B11261}" {
+      PivotID "bipod"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Position PointInfo "{615F4ECC6E70C5EB}" {
+      PivotID "slot_magazine"
+      Offset -0.0425 -0.0728 0.0002
+     }
+    }
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{615F4ECC6E70C5EA}" {
+      PivotID "root"
+      Offset 0 0.0338 -0.062
+      Angles 0 -90 0
+     }
+     Radius 0.05
+     Omnidirectional 0
+    }
+   }
+   additionalActions {
+    SCR_FireModeSwitchUserAction "{5A1E74156C2DB00D}" {
+    }
+   }
+  }
+ }
+}
