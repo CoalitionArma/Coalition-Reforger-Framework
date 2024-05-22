@@ -133,10 +133,20 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	void ToggleSideReady(string setReady, string playerName, bool adminForced) {
 		if (!GetSafestartStatus()) return;
 		
-		// Prevent people from unreadying if admin forced
+		// if it's an admin forced action
 		if (adminForced)
-			GetGame().GetInputManager().RemoveActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
-		
+		{
+			// Prevent people from unreadying if admin forced
+			GetGame().GetInputManager().RemoveActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady); // not functioning
+			
+			m_bBluforReady = true;
+			m_bOpforReady = true;
+			m_bIndforReady = true;
+			
+			m_sMessageContent = string.Format("An admin has force readied all sides");
+			return;
+		}
+			
 		switch (setReady)
 		{
 			case("Blufor") : {
