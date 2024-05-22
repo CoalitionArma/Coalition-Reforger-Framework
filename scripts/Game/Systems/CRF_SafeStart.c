@@ -130,8 +130,12 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	
 	//Call from server
 	//------------------------------------------------------------------------------------------------
-	void ToggleSideReady(string setReady, string playerName) {
+	void ToggleSideReady(string setReady, string playerName, bool adminForced) {
 		if (!GetSafestartStatus()) return;
+		
+		// Prevent people from unreadying if admin forced
+		if (adminForced)
+			GetGame().GetInputManager().RemoveActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
 		
 		switch (setReady)
 		{
