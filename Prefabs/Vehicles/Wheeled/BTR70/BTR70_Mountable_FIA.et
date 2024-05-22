@@ -1,0 +1,23 @@
+Vehicle : "{0700E1528AEAC774}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Mountable_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{616C0CC9F00BF0C4}" {
+     SourceMaterial "BTR_70_base_exterior_Body"
+     AssignedMaterial "{8F718BB17EA4CCC7}Assets/Vehicles/Wheeled/BTR70/Data/BTR_70_base_exterior_Body_FIA.emat"
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "FIA"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{A31F0FF0EF0B74C8}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Turret/BTR70_FIA_Turret.et"
+    }
+   }
+  }
+ }
+}
