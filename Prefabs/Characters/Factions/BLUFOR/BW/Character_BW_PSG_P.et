@@ -1,0 +1,54 @@
+SCR_ChimeraCharacter : "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" {
+ ID "51FA90A59C87A851"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Squad Leader"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{0FEABE7669BAECAE}Prefabs/Weapons/Rifles/G36KA4/G36KA4V2.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{D5499179E62E78E1}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_MICH_SHROUD_Cov_Flecktarn.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{5213446C19B594CC}Prefabs/Characters/Uniforms/Jacket_FROG_Combat_Shirt_Flecktarn.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{21FE3673D7EE1A64}Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_Rifle_NoPhone_Flecktarn.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{E566B3970D935FC4}Prefabs/Characters/Uniforms/Pants_FROG_Trousers_Flecktarn.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{5CF56C7460F5573F}Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_CAG_MG_Flecktarn.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CAAFB9235E902}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Jacket_US_BDU.et"
+    }
+    ItemsInitConfigurationItem "{5D7CAAFB9235E903}" {
+    }
+    ItemsInitConfigurationItem "{54A49B42D138207E}" {
+     TargetStorage "Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_CAG_MG_Flecktarn.et"
+     PrefabsToSpawn {
+      "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et"
+     }
+    }
+    ItemsInitConfigurationItem "{5538C29C2FC6375B}" {
+     TargetStorage "Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_CAG_MG_Flecktarn.et"
+     PrefabsToSpawn {
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et" "{A6ADA3AD1788995A}Prefabs/Weapons/Magazines/G36Mag/556x45_G36.et"
+     }
+    }
+    ItemsInitConfigurationItem "{5538C29C2FA41111}" {
+     TargetStorage "Prefabs/Characters/Vests/3RBN_PlateCarrier_AVS_CAG_MG_Flecktarn.et"
+    }
+   }
+  }
+ }
+}

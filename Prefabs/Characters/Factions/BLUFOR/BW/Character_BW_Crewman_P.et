@@ -1,0 +1,38 @@
+SCR_ChimeraCharacter : "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et" {
+ ID "52092032B0E62200"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Crewman"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{DF92C8E8FF8BC9AD}Prefabs/Weapons/SMGs/MP7/SMG_MP7.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{B137B7CE988557D2}Prefabs/Characters/Uniforms/Suit_Pilot_US_01/Suit_Pilot_US_01.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CAAFB9235E902}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Suit_Pilot_US_01/Suit_Pilot_US_01.et"
+    }
+    ItemsInitConfigurationItem "{54A49B42D138207E}" {
+     PrefabsToSpawn {
+      "{437FD97C2B36B314}Prefabs/Weapons/Magazines/MP7Mag/MP7_Mag.et" "{437FD97C2B36B314}Prefabs/Weapons/Magazines/MP7Mag/MP7_Mag.et" "{437FD97C2B36B314}Prefabs/Weapons/Magazines/MP7Mag/MP7_Mag.et"
+     }
+    }
+    ItemsInitConfigurationItem "{5538C040738A83D1}" {
+     PrefabsToSpawn {
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{437FD97C2B36B314}Prefabs/Weapons/Magazines/MP7Mag/MP7_Mag.et" "{437FD97C2B36B314}Prefabs/Weapons/Magazines/MP7Mag/MP7_Mag.et" "{437FD97C2B36B314}Prefabs/Weapons/Magazines/MP7Mag/MP7_Mag.et"
+     }
+    }
+   }
+  }
+ }
+}

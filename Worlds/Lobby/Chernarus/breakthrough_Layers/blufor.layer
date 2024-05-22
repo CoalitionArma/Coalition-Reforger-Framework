@@ -1,0 +1,35 @@
+SCR_AIGroup : "{D5AF34C09B08EFE9}Prefabs/Groups/BLUFOR/BW/Command/Group_BW_Command_PLT_p.et" {
+ coords 8376.145 358.548 6716.116
+ m_aUnitPrefabSlots {
+  "{02BCA38F4A161C36}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_PL_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{1EA52F545EAC63B6}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Rifleman_P.et"
+ }
+ m_sCustomNameSet "1st Platoon"
+ {
+  $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+   {
+    coords -28.922 -2.288 42.161
+    angleY 172
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -2.677 -4.396 45.238
+    angleY -138
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -61.947 -0.235 17.353
+    m_sCustomNameSet "3rd Squad"
+   }
+  }
+  $grp SCR_AIGroup : "{E3D996315C27584A}Prefabs/Groups/BLUFOR/BW/Support/Group_BW_Support_ATTeam.et" {
+   {
+    coords -4.047 0.178 -12.284
+    m_sCustomNameSet "Medium Anti-tank Team"
+   }
+   {
+    coords 9.203 -0.625 1.297
+    m_sCustomNameSet "Medium Anti-tank Team"
+   }
+  }
+ }
+}

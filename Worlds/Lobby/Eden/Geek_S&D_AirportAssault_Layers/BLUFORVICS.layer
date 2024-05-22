@@ -1,0 +1,32 @@
+$grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ M997_maxi_ambulance2 {
+  coords 5011.265 38.27 9202.033
+  angleY -111.267
+ }
+ M997_maxi_ambulance1 {
+  coords 5010.007 38.281 9207.25
+  angleY -111.267
+ }
+}
+$grp Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
+ UH1H4 {
+  coords 5076.23 37.503 9121.494
+  angleY -92.864
+ }
+ UH1H5 {
+  coords 5058.464 38.667 9167.132
+  angleY -92.864
+ }
+ UH1H3 {
+  coords 5073.562 38.025 9144.79
+  angleY -92.864
+ }
+ UH1H2 {
+  coords 5045.826 37.867 9144.83
+  angleY -92.864
+ }
+ UH1H1 {
+  coords 5048.495 37.5 9121.535
+  angleY -92.864
+ }
+}

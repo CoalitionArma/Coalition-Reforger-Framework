@@ -1,0 +1,98 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 4793.624 27.692 10929.088
+ m_sTextData "60 Minute Time Limit."\
+ ""\
+ "One Life, No Respawn."\
+ ""
+}
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 4793.624 27.692 10929.088
+}
+$grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ BLUFOR_Assets {
+  coords 4793.624 27.692 10929.088
+  m_sTextData "2x M997 Maxi Ambulance Cars - One for each trio with the SL in one and the RTO in the other."\
+  ""\
+  "5x UH1H Helicopters for troop transport."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 7
+ }
+ OPFOR_Assets {
+  coords 4814.215 27.692 10916.184
+  m_sTextData "2x UAZ452 Ambulance Cars - One for each trio with the SL in one and the RTO in the other."\
+  ""\
+  "2x base UAZ469s attached to the AA team."\
+  "15x UAZ469 immobile Anti-Air Trucks - marked on map, for AA Team use only."\
+  ""
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 7
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4793.624 27.692 10929.088
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 4795.458 27.689 10940.841
+  m_sTitle "Detonate all bombs/kill all OPFOR"
+  m_sTextData "Detonate both bombs within the 60 minute time limit."\
+  ""\
+  "OR "\
+  ""\
+  "Eliminate all of OPFOR within the 60 minute time limit."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 5
+  m_sFactionKey "US"
+ }
+ {
+  coords 4793.547 27.611 10942.254
+  m_sTitle "Detonate one bomb"
+  m_sTextData "Destroy one of the two bombs after the 60 minute time limit."
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "US"
+ }
+ {
+  coords 4791.678 27.552 10943.252
+  m_sTitle "Protect all bombs/kill all BLUFOR"
+  m_sTextData "Protect both of the bomb sites from BLUFOR after the 60 minute time limit."\
+  ""\
+  "OR "\
+  ""\
+  "kill all of BLUFOR within the 60 minute time limit."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 5
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 4789.696 27.495 10943.794
+  m_sTextData "Protect one of the two bombs within the 60 minute time limit."
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "USSR"
+ }
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 4793.624 27.692 10929.088
+ m_sTextData "BLUFOR need to plant bombs on both sites and detonate them or eliminate OPFOR within the 60 minute time limit."\
+ ""\
+ "OPFOR need to prevent BLUFOR from planting the explosives on the bomb sites either by killing them or delaying them from doing so for the 60 minute time limit."
+ m_iOrder 3
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 4793.624 27.692 10929.088
+ m_sTextData "The US and USSR have been battling over the island of Everon for many months and now the US have a chance to deal a devastating blow to the USSR by assaulting and destroying a pair of explosives, delivered to the island by the \"Metallurg Anosov\", a Soviet merchant ship that docked in St. Phillipe recently. US Inteligence, spotting a platoons worth of infantry unloading alongside two large containers, deduced that these were similar devices recently found in St Piere and surrounding towns and decided an attack was best, after many weeks of watching they chose the best time to attack whilst the containers were in St Phillipe itself, and the nearby airport. Meanwhile Soviet inteligence discovered and destroyed a motorpool of US transport vehicles. This means that, for the US and discovered by USSR inteligence, the only means of directly traveling to St Philippe and the airport, is by an aerial assault."
+ m_iOrder 4
+}

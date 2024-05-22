@@ -1,0 +1,157 @@
+Vehicle UAZ469_PKM1 : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ components {
+  SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+   m_fFuelConsumption 0
+   m_fFuelConsumptionIdle 0
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     MaxFuel 0
+     m_fInitialFuelTankState 0
+    }
+   }
+  }
+  SCR_VehicleBuoyancyComponent "{5ECC936F0C77E390}" {
+   Buoyancy 1
+  }
+ }
+ coords 4715.967 29.133 10920.381
+ angleY 169.928
+ {
+  GenericEntity : "{21D83950DF36F250}Prefabs/Props/Military/Sandbags/Sandbag_01_long_burlap.et" {
+   coords 0.203 1.175 3.008
+   angleX 0.003
+   angleY -178.939
+   angleZ 0.417
+  }
+  $grp GenericEntity : "{9C9C4BED9E19C374}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_burlap.et" {
+   {
+    coords 0.117 -0.145 -2.848
+    angleY 179.966
+   }
+   {
+    coords -2.568 -0.172 -2.85
+    angleY 179.966
+   }
+   {
+    coords 2.88 -0.05 -2.872
+    angleY 179.966
+   }
+  }
+  GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+   coords 0.188 -0.027 2.971
+   angleY -178.385
+  }
+  PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+   coords 0.296 0.94 0.284
+   angleY -79.928
+   m_MarkerColor 0.571 0.042 0.03 1
+   m_fWorldSize 40
+   m_sDescription "AA Vehicle, for AA Team only."
+   m_aVisibleForFactions {
+    "USSR"
+   }
+  }
+ }
+}
+$grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ UAZ452_ambulance1 {
+  coords 4781.521 27.844 11105.872
+  angleY 179.725
+  {
+   GenericEntity {
+    ID "5E2E7C60E0F9B3F4"
+    coords 0 0 0
+   }
+  }
+ }
+ UAZ452_ambulance2 {
+  coords 4776.768 27.844 11106.005
+  angleY 179.725
+  {
+   GenericEntity {
+    ID "5E2E7C60E0F9B3F4"
+    coords 0 0 0
+   }
+  }
+ }
+}
+$grp Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
+ UAZ469_base2 {
+  coords 4785.566 27.844 11144.58
+  angleY -90.174
+ }
+ UAZ469_base3 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5AD4F813E67ECB5D}" {
+    m_aSlotsToShow {
+    }
+   }
+  }
+  coords 4785.789 27.844 11134.859
+  angleY -90.174
+ }
+}
+$grp Vehicle : "{BBAC1324323E564B}Prefabs/Compositions/Misc/AA/UAZ469_PKM_AA.et" {
+ UAZ469_PKM_AA1 {
+  coords 5107.409 26.562 10830.782
+  angleY 136.877
+ }
+ UAZ469_PKM_AA2 {
+  coords 4861.664 27.843 11156.563
+  angleY 90.102
+ }
+ UAZ469_PKM_AA3 {
+  coords 4907.343 28.594 11659.872
+  angleY 121.31
+ }
+ UAZ469_PKM_AA4 {
+  coords 4886.759 28.468 11982.454
+  angleY 31.523
+ }
+ UAZ469_PKM_AA5 {
+  coords 4773.086 23.219 12069.064
+  angleY 0
+ }
+ UAZ469_PKM_AA6 {
+  coords 4657.222 29.454 11919.531
+  angleY -25.241
+ }
+ UAZ469_PKM_AA7 {
+  coords 4505.573 41.74 11885.033
+  angleY -89.94
+ }
+ UAZ469_PKM_AA8 {
+  coords 4735.51 27.524 11750.064
+  angleY -131.835
+ }
+ UAZ469_PKM_AA9 {
+  coords 4653.628 27.84 11216.554
+  angleY 0
+ }
+ UAZ469_PKM_AA10 {
+  coords 4647.323 27.844 11175.782
+  angleY -136.1
+ }
+ UAZ469_PKM_AA11 {
+  coords 4460.342 10.915 11279.067
+  angleY -61.183
+ }
+ UAZ469_PKM_AA12 {
+  coords 4446.326 5.736 11176.922
+  angleY 178.479
+ }
+ UAZ469_PKM_AA13 {
+  coords 4382.843 1.676 11066.819
+  angleY -158.071
+ }
+ UAZ469_PKM_AA14 {
+  coords 4353.824 4.344 10782.212
+  angleY -150.156
+ }
+ UAZ469_PKM_AA15 {
+  coords 4962.537 30.575 10897.777
+  angleY 165.481
+ }
+}

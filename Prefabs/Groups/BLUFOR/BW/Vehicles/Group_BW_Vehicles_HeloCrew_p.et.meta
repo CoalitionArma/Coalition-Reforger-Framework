@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{DB4B073A7E00499E}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_HeloCrew_p_2.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
