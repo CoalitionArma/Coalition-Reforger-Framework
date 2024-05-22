@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8AD0242ABADBAFEA}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Mountable.et"
+ Name "{C628AC3C87CA64AF}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Mountable_RF.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
