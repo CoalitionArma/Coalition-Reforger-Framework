@@ -53,6 +53,9 @@ class CRF_SafeStartPlayerComponent: ScriptComponent
 	
 	void AdminForceReady()
 	{
+		// Prevent people from unreadying if admin forced
+		GetGame().GetInputManager().RemoveActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
+		
 		Rpc(RpcAsk_ToggleSideReady, "Opfor", "An Admin", true);
 		Rpc(RpcAsk_ToggleSideReady, "Blufor", "An Admin", true);
 		Rpc(RpcAsk_ToggleSideReady, "Indfor", "An Admin", true);
