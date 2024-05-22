@@ -9,6 +9,9 @@ Vehicle : "{0700E1528AEAC774}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Mountable_Base
     }
    }
   }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "FIA"
+  }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo Turret {
