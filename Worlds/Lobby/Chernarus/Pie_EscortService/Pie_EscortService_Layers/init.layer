@@ -1,0 +1,72 @@
+AIWorld {
+ coords 3172.801 229.714 13755.111
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 3177.552 228.883 13753.757
+}
+Tank T72A_FIA1 : "{2B9DB09AC8BEA673}Prefabs/Vehicles/Tracked/T-72A/T72A_FIA.et" {
+ components {
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     MaxFuel 1
+     m_fInitialFuelTankState 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 2277.477 271.021 10879.76
+ angleY 136.185
+}
+GenericEntity : "{3C9119EDA99AAA76}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Large_Top_Soviet.et" {
+ coords 2276.294 269.771 10880.979
+ angleY 134.183
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 3856.827 185.74 13147.36
+ m_sTextData "BLUFOR:"\
+ "1x Armed Jeep"\
+ "Unarmed Transport Vehicles"\
+ "2x Fuel Truck (one needs to reach Tank)"\
+ ""\
+ "Opfor:"\
+ "Unarmed Transport Vehicles"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 3884.251 185.984 13152.68
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 3916.998 185.339 13150.34
+ m_sTextData "BLUFOR: "\
+ "-Get at least 1 Truck to tank location, 2 is even better"\
+ "-Kill all Opfor"\
+ ""\
+ "OPFOR:"\
+ "-Capture 1 Fuel Truck and destroy the other"\
+ "-Kill all Blufor"\
+ "or:"\
+ "-Capture both Fuel Trucks"\
+ "-Kill all Blufor"
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 3892.848 185.065 13145.242
+ m_sTextData "BLUFOR Forces recently disabled a russian tank in the AO. They're currently trying to move up fuel trucks to refuel the tank and move it back to one of their bases, OPFOR is trying to prevent this."\
+ "However OPFOR forces are running seriously low on fuel due to BLUFOR Airstrikes and must do their best to capture at least one of the trucks."
+}
+$grp GenericEntity : "{F9910219711EC4FE}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Camo_long_high_US.et" {
+ {
+  coords 2277.164 271.078 10875.115
+  angleY 0
+ }
+ {
+  coords 2280.046 270.931 10876.321
+  angleY -46.462
+ }
+ {
+  coords 2282.763 271.042 10878.447
+  angleY -20.022
+ }
+}
