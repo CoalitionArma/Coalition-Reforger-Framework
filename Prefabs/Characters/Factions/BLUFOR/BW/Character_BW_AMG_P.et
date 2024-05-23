@@ -5,7 +5,7 @@ SCR_ChimeraCharacter : "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_
    m_name "Assistant MG"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{0FEABE7669BAECAE}Prefabs/Weapons/Rifles/G36KA4/G36KA4V2.et"
+   WeaponTemplate "{8C13081C5F45A893}Prefabs/Weapons/Rifles/G36KA4/CRF_G36K_XPS3_Holosight.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
