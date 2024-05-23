@@ -1,0 +1,12 @@
+GenericEntity : "{DF92C8E8FF8BC9AD}Prefabs/Weapons/SMGs/MP7/SMG_MP7.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{60F7282E28353F61}" {
+     Enabled 0
+    }
+   }
+  }
+ }
+}
