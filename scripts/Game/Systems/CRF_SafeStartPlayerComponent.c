@@ -26,6 +26,7 @@ class CRF_SafeStartPlayerComponent: ScriptComponent
 		super.OnPostInit(owner);
 		
 		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
+		GetGame().GetInputManager().AddActionListener("CRF_AdminForceReady", EActionTrigger.DOWN, AdminForceReady);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -50,6 +51,12 @@ class CRF_SafeStartPlayerComponent: ScriptComponent
 			Owner_ToggleSideReady(playerName);
 	}
 	
+	void AdminForceReady()
+	{		
+		if (!SCR_Global.IsAdmin()) return;
+		Rpc(RpcAsk_ToggleSideReady, "", "", true);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	void Owner_ToggleSideReady(string playerName)
 	{	
@@ -69,14 +76,14 @@ class CRF_SafeStartPlayerComponent: ScriptComponent
 		};
 		
 		if (setReady == "") return;
-		Rpc(RpcAsk_ToggleSideReady, setReady, playerName);
+		Rpc(RpcAsk_ToggleSideReady, setReady, playerName, false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleSideReady(string setReady, string playerName)
+	void RpcAsk_ToggleSideReady(string setReady, string playerName, bool adminForced)
 	{
 		CRF_SafestartGameModeComponent safestartComponent = CRF_SafestartGameModeComponent.GetInstance();
-		safestartComponent.ToggleSideReady(setReady, playerName);
+		safestartComponent.ToggleSideReady(setReady, playerName, adminForced);
 	}
 }
