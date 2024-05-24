@@ -53,6 +53,7 @@ class CRF_SafeStartPlayerComponent: ScriptComponent
 	
 	void AdminForceReady()
 	{		
+		if (!SCR_Global.IsAdmin()) return;
 		Rpc(RpcAsk_ToggleSideReady, "", "", true);
 	}
 	
