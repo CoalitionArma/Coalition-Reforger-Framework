@@ -35,6 +35,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected bool m_bOpforReady = false;
 	protected bool m_bIndforReady = false;
 	
+	protected bool m_bAdminForcedReady = false;
+	
 	protected SCR_BaseGameMode m_GameMode;
 	
 	protected int m_iPlayedFactionsCount;
@@ -131,7 +133,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	//Call from server
 	//------------------------------------------------------------------------------------------------
 	void ToggleSideReady(string setReady, string playerName, bool adminForced) {
-		if (!GetSafestartStatus()) return;
+		if (!GetSafestartStatus() || m_bAdminForcedReady) return;
 		
 		// if it's an admin forced action
 		if (adminForced)
@@ -139,8 +141,10 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			m_bBluforReady = true;
 			m_bOpforReady = true;
 			m_bIndforReady = true;
+			m_bAdminForcedReady = true;
 			
-			m_sMessageContent = "An admin has force readied all sides";
+			m_sMessageContent = "An Admin Has Force Readied All Sides!";
+			Replication.BumpMe();
 			return;
 		}
 			
@@ -251,6 +255,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			
 			CallDeleteRedundantUnits();
 			m_bKillRedundantUnitsBool = true;
+			m_bAdminForcedReady = false;
 			m_bBluforReady = false;
 			m_bOpforReady = false;
 			m_bIndforReady = false;
