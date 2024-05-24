@@ -1,0 +1,40 @@
+AIWorld {
+ coords 6858.936 399.119 11535.045
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 6866.871 394.846 11551.126
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 6898.06 406.138 11428.72
+ angleY 0
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 6762.57 381.157 11537.531
+ m_sTextData "Both sides:"\
+ "2 Platoons"\
+ "2 Squads Each"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 6769.19 385.809 11461.166
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 6775.222 387.741 11470.756
+ m_sTextData "BLUFOR:"\
+ "-Kill Opfor"\
+ "OPFOR:"\
+ "-Kill Blufor"
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 6889.372 406.074 11430.103
+ angleY 0
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 6504.638 312.819 11628.897
+ angleY 0
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 6764.857 385.933 11487.993
+ m_sTextData "Reatreating OPFOR forces have holed themselves up in an old castle, BLUFOR have to take them out."
+}
