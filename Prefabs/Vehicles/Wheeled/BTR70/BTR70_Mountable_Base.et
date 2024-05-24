@@ -1,0 +1,493 @@
+Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    CargoCompartmentSlot passenger_l06 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_l06"
+      }
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_l06"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_l06"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset -0.8225 1.7839 0.5588
+      Angles 0 -90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_l06"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset -2 1 0.6878
+       }
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_l07 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_l07"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_l07"
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset -0.8225 1.7839 -0.022
+      Angles 0 -90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_l07"
+       EntryPositionInfo PointInfo "{50B8D5DD78963937}" {
+       }
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset -2 1 0
+        Angles 0 -90 0
+       }
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_l08 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_l08"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_l08"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_l08"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset -0.8225 1.7839 -0.5869
+      Angles 0 -90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_l08"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset -2.0001 1 -0.6437
+        Angles 0 -90 0
+       }
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_l09 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_l09"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_l09"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_l09"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset -0.8226 1.8439 -1.134
+      Angles 0 -90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_l09"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset -2 1 -1.1438
+        Angles 0 -90 0
+       }
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_l10 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_l10"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_l10"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_l10"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset -0.7554 1.9134 -1.6695
+      Angles 0 -90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_l10"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset -1.9999 1 -1.6338
+        Angles 0 -90 0
+       }
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_l11 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_l11"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_l11"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_l11"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset -0.7555 1.9134 -2.2114
+      Angles 0 -90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_l11"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset -2 1 -2.2278
+        Angles 0 -90 0
+       }
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_r06 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_r06"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_r06"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_r06"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset 0.8225 1.7839 0.5588
+      Angles 0 90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_r06"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset 1.9999 1 0.6878
+        Angles 0 90 0
+       }
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_r07 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_r07"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_r07"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_r07"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      Offset 0.8225 1.7839 -0.022
+      Angles 0 90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_r07"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset 2 1 0.0049
+        Angles 0 90 0
+       }
+       GetOutAligningTeleport 1
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_r08 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_r08"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_r08"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_r08"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset 0.8225 1.7839 -0.5869
+      Angles 0 90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_r08"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset 2 1 -0.6042
+        Angles 0 90 0
+       }
+       GetOutAligningTeleport 1
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_r09 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_r09"
+      }
+      "Sort Priority" 0
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_r09"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_r09"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset 0.8226 1.8439 -1.134
+      Angles 0 90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_r09"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset 2 1 -1.1345
+        Angles 0 90 0
+       }
+       GetOutAligningTeleport 1
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_r10 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_r10"
+      }
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{509D56665850650D}" {
+      ParentContextList {
+       "passenger_r10"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_r10"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset 0.7554 1.9134 -1.6695
+      Angles 0 90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_r10"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset 2 1 -1.6677
+        Angles 0 90 0
+       }
+       GetOutAligningTeleport 1
+      }
+     }
+    }
+    CargoCompartmentSlot passenger_r11 : "{D2EB5E5531BD7CA6}Prefabs/Vehicles/Wheeled/BTR70/CargoCompartment_BTR70_Top.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "passenger_r11"
+      }
+      "Sort Priority" 0
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_r11"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "v_root"
+      Offset 0.7555 1.9134 -2.2114
+      Angles 0 90 0
+     }
+     DoorInfoList {
+      CompartmentDoorInfo "{50B8D5DD7BC767A1}" {
+       ContextName "passenger_r11"
+       ExitPositionInfo PointInfo "{616B23E52817709C}" {
+        PivotID "v_root"
+        Offset 2 1 -2.155
+        Angles 0 90 0
+       }
+      }
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{616A23F0B3826A54}" {
+     ContextName "passenger_l06"
+     Position PointInfo "{616A23F068595D4D}" {
+      Offset -0.7581 1.8358 0.5588
+     }
+    }
+    UserActionContext "{616A23F0B5F5FD26}" {
+     ContextName "passenger_l07"
+     Position PointInfo "{616A23F03AA173BC}" {
+      Offset -0.7579 1.8358 -0.004
+     }
+    }
+    UserActionContext "{616A23F0B50912EF}" {
+     ContextName "passenger_l08"
+     Position PointInfo "{616A23F1CC42813C}" {
+      Offset -0.7582 1.8358 -0.5854
+     }
+    }
+    UserActionContext "{616A23F0B555C954}" {
+     ContextName "passenger_l09"
+     Position PointInfo "{616A23F1E6789274}" {
+      Offset -0.7581 1.897 -1.1301
+     }
+    }
+    UserActionContext "{616A23F0B4E7E9DC}" {
+     ContextName "passenger_l10"
+     Position PointInfo "{616A23F165525085}" {
+      Offset -0.7584 1.9777 -1.6518
+     }
+    }
+    UserActionContext "{616B23D0705FDE53}" {
+     ContextName "passenger_l11"
+     Position PointInfo "{616B23D013132E07}" {
+      Offset -0.7584 1.9777 -2.2114
+     }
+    }
+    UserActionContext "{616A23F0B42F5330}" {
+     ContextName "passenger_r06"
+     Position PointInfo "{616A23F136430787}" {
+      Offset 0.7581 1.8358 0.5588
+     }
+    }
+    UserActionContext "{616A23F0B4474121}" {
+     ContextName "passenger_r07"
+     Position PointInfo "{616A23F6C882F28E}" {
+      Offset 0.7579 1.8358 -0.004
+     }
+    }
+    UserActionContext "{616A23F0B620F870}" {
+     ContextName "passenger_r08"
+     Position PointInfo "{616A23F6B15B2343}" {
+      Offset 0.7582 1.8358 -0.5854
+     }
+    }
+    UserActionContext "{616A23F0B6583228}" {
+     ContextName "passenger_r09"
+     Position PointInfo "{616A23F6A7C98257}" {
+      Offset 0.7581 1.897 -1.1301
+     }
+    }
+    UserActionContext "{616A23F0A98D3256}" {
+     ContextName "passenger_r10"
+     Position PointInfo "{616A23F673E6031A}" {
+      Offset 0.7584 1.9777 -1.6518
+     }
+    }
+    UserActionContext "{616B23D07400AE55}" {
+     ContextName "passenger_r11"
+     Position PointInfo "{616B23DB6B497A14}" {
+      Offset 0.7584 1.9777 -2.2114
+     }
+    }
+   }
+  }
+ }
+}
