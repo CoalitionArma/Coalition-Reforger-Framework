@@ -17,6 +17,15 @@ class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass
 
 class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 {
+	static CRF_LoggingServerComponent GetInstance() 
+	{
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		if (gameMode)
+			return CRF_LoggingServerComponent.Cast(gameMode.FindComponent(CRF_LoggingServerComponent));
+		else
+			return null;
+	}
+	
 	string m_sLogPath = "$profile:COAServerLog.txt";
 	private ref FileHandle m_handle;
 	string m_sKillerName;
@@ -26,15 +35,21 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	string m_sMissionName;
 	float m_fRange;
 	SCR_FactionManager m_FM;
+	string m_sWeaponName;
+	BaseWeaponManagerComponent m_WMC;
 	
 	override void OnPostInit(IEntity owner)
 	{
+		super.OnPostInit(owner);
+		
 		// Only run if in a real game and always in workbench
 		#ifdef WORKBENCH
+			Print("CRF::Workbench");
 		#else 
-			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
-				return;
-		#endif			
+			// Uncomment for release
+			/*if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
+				return;*/
+		#endif		
 	}
 
 	// Setup
@@ -43,21 +58,21 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		super.OnWorldPostProcess(world);
 		m_sMissionName = GetGame().GetMissionName();
 		
-		bool serverLogExists = FileIO.FileExists(m_sLogPath);
-		
-		if (serverLogExists)
+		if (FileIO.FileExists(m_sLogPath))
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
 		else
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.WRITE);
-
-		//PrintFormat("[CRF] Handle: %1",m_handle);
+		
+		m_handle.WriteLine("mission:beginning:" + m_sMissionName);
 	}
 	
 	// Killfeed log
 	override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
+		Print("CRF OnPlayerKilled");
 		
+		// Killer
 		// Check if killer is AI
 		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity) == 0)
 		{
@@ -67,12 +82,26 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
 			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
 		}
+		
+		// Killed 
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
-		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
-		// TODO: determine weapon used, damage location IE "headshot", roles for both killer and killed, and if a vehicle was involved
 		
-		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange);
+		// Range
+		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
+		
+		// Killer Weapon 
+		m_WMC = BaseWeaponManagerComponent.Cast(killerEntity.FindComponent(BaseWeaponManagerComponent));
+		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();
+		
+		/* TODO: 
+			damage location IE "headshot", 
+			roles for both killer and killed, 
+			and if a vehicle was involved
+		*/
+		
+		Print("CRF:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
+		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
 	}
 	
 	// Player Connected
@@ -125,12 +154,14 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 				m_handle.WriteLine("mission:ended:" + m_sMissionName);
 				break;
 			}
-			default: // no ongamestate for loading a mission in reforger lobby 
-			{
-				m_handle.WriteLine("mission:beginning:" + m_sMissionName);
-				break;
-			}
 		}
+	}
+	
+	override void OnGameModeEnd(SCR_GameModeEndData data)
+	{
+		super.OnGameModeEnd(data);
+		
+		m_handle.Close(); // lets avoid a mem leak
 	}
 	
 	// Method called from safestart to annotate a game has begun
