@@ -13,8 +13,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	string m_sKilledName;
 	string m_sKilledFaction;
 	string m_sMissionName;
-	IEntity m_KillerEnt;
-	SCR_ChimeraAIAgent m_CA;
+	IEntity m_eKillerEnt;
+	SCR_FactionManager m_FM;
 
 	// Setup
 	override void OnWorldPostProcess(World world)
@@ -37,11 +37,11 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
-		m_KillerEnt = killer.GetInstigatorEntity();
+		m_eKillerEnt = killer.GetInstigatorEntity();
 		m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
-		m_sKillerFaction = m_CA.GetFaction(m_KillerEnt).GetFactionName();
+		m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_sKilledFaction = m_CA.GetFaction(playerEntity).GetFactionName();
+		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
 		// TODO: determine weapon used, damage location IE "headshot", and roles for both killer and killed
 		// string weaponUsed 
 		// string damageLocation
@@ -82,7 +82,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			case 3: //slotting
 			{
 				m_handle.WriteLine("mission:" + m_sMissionName + " is now slotting!");
-				Print("CRF SLotting");
 				break;
 			}
 			case 5: //briefing
