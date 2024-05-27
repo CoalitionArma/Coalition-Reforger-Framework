@@ -279,7 +279,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			DisableSafeStartEHs();
 			
 			// Send notification message 
-			m_Logging.GameStarted();
+			if (GetGame().GetPlayerManager().GetPlayerCount() >= 10)
+				m_Logging.GameStarted();
 			
 			// Use CallLater to delay the call for the removal of EHs so the changes so m_SafeStartEnabled can propagate.
 			GetGame().GetCallqueue().CallLater(DisableSafeStartEHs, 1500);

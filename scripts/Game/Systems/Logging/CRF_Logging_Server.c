@@ -1,3 +1,14 @@
+/*
+*	Logging component for COALITION games
+*	Component overrides base game mode so it always runs
+*
+*	Note that write files seem weird because they are parsed by an external program
+*	which splits strings via colons
+*
+*	Server only
+*/
+
+
 [ComponentEditorProps(category: "CRF Logging Component", description: "")]
 class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass
 {
@@ -13,8 +24,20 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	string m_sKilledName;
 	string m_sKilledFaction;
 	string m_sMissionName;
-	IEntity m_eKillerEnt;
 	SCR_FactionManager m_FM;
+	
+	override void OnPostInit(IEntity owner)
+	{
+		// Only run if in a real game and always in workbench
+		#ifdef WORKBENCH
+		#else 
+			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
+			{
+				Print("CRF < 10 players");
+				return;
+			}
+		#endif			
+	}
 
 	// Setup
 	override void OnWorldPostProcess(World world)
@@ -37,7 +60,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
-		m_eKillerEnt = killer.GetInstigatorEntity();
 		m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
 		m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
