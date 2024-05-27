@@ -1,0 +1,30 @@
+GenericEntity : "{3F2D1FB239682B87}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_plastic.et" {
+ coords 2802.444 63.32 1809.727
+ angleY -51.506
+}
+$grp SCR_DestructibleBuildingEntity : "{BFBD94F65277304F}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_1fp_Base.et" {
+ {
+  coords 3153.491 0.597 1149.938
+  angleY -36.752
+ }
+ {
+  coords 3223.068 0.906 1203.099
+  angleY -36.752
+ }
+}
+$grp StaticModelEntity : "{C2ACB740ED1CEB46}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap_foundation_camonet.et" {
+ {
+  coords 2958.526 61.857 1838.518
+ }
+ {
+  coords 2977.857 62.459 1807.638
+  angleY 127.95
+ }
+}
+StaticModelEntity : "{D4177594212A056F}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_plastic_foundation.et" {
+ coords 2888.657 27.925 1307.844
+ angleY -21.809
+}
+GenericEntity : "{F0EC223F2A1094C0}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap.et" {
+ coords 2693.167 78.903 1742.909
+}
