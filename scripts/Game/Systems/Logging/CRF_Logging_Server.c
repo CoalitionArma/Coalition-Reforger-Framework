@@ -9,9 +9,13 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	string m_sLogPath = "$profile:COAServerLog.txt";
 	private ref FileHandle m_handle;
 	string m_sKillerName;
+	string m_sKillerFaction;
 	string m_sKilledName;
+	string m_sKilledFaction;
 	string m_sMissionName;
-	
+	IEntity m_KillerEnt;
+	SCR_ChimeraAIAgent m_CA;
+
 	// Setup
 	override void OnWorldPostProcess(World world)
 	{
@@ -33,13 +37,16 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
+		m_KillerEnt = killer.GetInstigatorEntity();
 		m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
+		m_sKillerFaction = m_CA.GetFaction(m_KillerEnt).GetFactionName();
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		// TODO: determine weapon used and damage location IE "headshot" 
+		m_sKilledFaction = m_CA.GetFaction(playerEntity).GetFactionName();
+		// TODO: determine weapon used, damage location IE "headshot", and roles for both killer and killed
 		// string weaponUsed 
 		// string damageLocation
 		
-		m_handle.WriteLine("kill:" + m_sKilledName + " was killed by " + m_sKillerName);
+		m_handle.WriteLine("kill:" + m_sKilledName + " (" + m_sKilledFaction + ")" + " was killed by " + m_sKillerName + " (" + m_sKillerFaction + ")");
 	}
 	
 	// Player Connected
