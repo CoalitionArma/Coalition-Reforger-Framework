@@ -37,6 +37,12 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	SCR_FactionManager m_FM;
 	string m_sWeaponName;
 	BaseWeaponManagerComponent m_WMC;
+	PS_GameModeCoop m_GameModeCoop;
+	int m_iPlayerCount;
+	int m_iBluforCount;
+	int m_iOpforCount;
+	int m_iIndforCount;
+	ref ScriptInvoker m_OnPlayerKilled = new ScriptInvoker();
 	
 	override void OnPostInit(IEntity owner)
 	{
@@ -49,7 +55,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			// Uncomment for release
 			/*if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
 				return;*/
-		#endif		
+		#endif	
 	}
 
 	// Setup
@@ -134,22 +140,22 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		
 		switch (state)
 		{
-			case 3: //slotting
+			case SCR_EGameModeState.SLOTSELECTION:
 			{
 				m_handle.WriteLine("mission:slotting:" + m_sMissionName);
 				break;
 			}
-			case 5: //briefing
+			case SCR_EGameModeState.BRIEFING:
 			{
 				m_handle.WriteLine("mission:briefing:" + m_sMissionName);
 				break;
 			}
-			case 1: //game
+			case SCR_EGameModeState.GAME:
 			{
 				m_handle.WriteLine("mission:safestart:" + m_sMissionName);
 				break;
 			}
-			case 6: //debrief
+			case SCR_EGameModeState.DEBRIEFING:
 			{
 				m_handle.WriteLine("mission:ended:" + m_sMissionName);
 				break;
@@ -167,6 +173,11 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	// Method called from safestart to annotate a game has begun
 	void GameStarted()
 	{
-		m_handle.WriteLine("mission:started:" + m_sMissionName);
+		// Collect mission data 
+		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		//m_iBluforCount = m_FM.SGetFactionPlayerCount(Faction
+		
+		// log
+		m_handle.WriteLine("mission:started:" + m_sMissionName + ":" + m_iPlayerCount);
 	}
 }
