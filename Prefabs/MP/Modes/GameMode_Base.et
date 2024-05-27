@@ -1,0 +1,7 @@
+SCR_BaseGameMode {
+ ID "56B2B479C6B96951"
+ components {
+  CRF_LoggingServerComponent "{61761C7B221DBCD4}" {
+  }
+ }
+}
