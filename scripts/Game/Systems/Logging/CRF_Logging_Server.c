@@ -60,18 +60,17 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		
 		// Check if killer is AI
 		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity) == 0)
-			m_sKillerName = "AI";
-		else
 		{
+			m_sKillerName = "AI";
+			m_sKillerFaction = "AI";
+		} else {
 			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
 			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
 		}
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
 		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
-		// TODO: determine weapon used, damage location IE "headshot", and roles for both killer and killed
-		// string weaponUsed 
-		// string damageLocation
+		// TODO: determine weapon used, damage location IE "headshot", roles for both killer and killed, and if a vehicle was involved
 		
 		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange);
 	}
