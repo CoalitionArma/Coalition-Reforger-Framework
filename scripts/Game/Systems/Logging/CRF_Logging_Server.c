@@ -58,8 +58,14 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
-		m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
-		m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
+		// Check if killer is AI
+		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity) == 0)
+			m_sKillerName = "AI";
+		else
+		{
+			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
+			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
+		}
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
 		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
