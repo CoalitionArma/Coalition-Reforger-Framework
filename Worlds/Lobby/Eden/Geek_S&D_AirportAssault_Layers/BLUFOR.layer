@@ -1,25 +1,21 @@
 $grp SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
  {
-  coords 4946.225 37.182 9204.444
-  angleY 63.209
+  coords 4947.175 36.794 9200.796
+  angleY 61.955
   m_aUnitPrefabSlots {
    "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et"
   }
-  m_sCustomNameSet "1st Platoon Command"
   {
    SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
-    coords 0.189 -0.308 7.511
-    angleY -176.893
-    m_sCustomNameSet "1st Squad"
+    coords -0.469 1.888 8.244
+    angleY 178.244
     {
      SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
-      coords 0.082 0 -8.89
-      m_sCustomNameSet "2nd Squad"
+      coords -0.078 0.031 -6.062
       {
        SCR_AIGroup : "{1AFA02A4E31F1AD8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MGTeam.et" {
-        coords -0.037 2.087 -7.465
-        angleY 2.074
-        m_sCustomNameSet "1st Platoon MG Team"
+        coords 0.362 -1.808 -7.819
+        angleY -1.006
        }
       }
      }
@@ -28,62 +24,44 @@ $grp SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_
   }
  }
  {
-  coords 4970.145 36.917 9160.53
-  angleY 63.209
+  coords 4968.7 36.886 9160.879
+  angleY 61.955
   m_aUnitPrefabSlots {
    "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et"
   }
-  m_sCustomNameSet "2nd Platoon Command"
   {
    SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
-    coords -0.178 -0.308 7.522
-    angleY 178.965
-    m_sCustomNameSet "1st Squad"
+    coords -0.367 1.716 6.988
+    angleY 178.244
     {
      SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
-      coords 0.278 0.678 -8.646
-      angleY -0.665
-      m_sCustomNameSet "2nd Squad"
+      coords 0.072 -0.931 -6.46
       {
        SCR_AIGroup : "{1AFA02A4E31F1AD8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MGTeam.et" {
-        coords 0.318 1.674 -8.289
-        angleY 0.408
-        m_sCustomNameSet "2nd Platoon MG Team"
+        coords 0.567 -0.234 -10.318
+        angleY -3.258
         {
          SCR_AIGroup : "{4F7F7E8B05ADE07C}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_Pilots_p.et" {
-          coords -31.013 -0.188 -16.873
-          angleY 23.881
-          m_sCustomNameSet "Pilot 1"
+          coords -63.385 0.056 -8.204
+          angleY 32.354
           {
            SCR_AIGroup : "{4F7F7E8B05ADE07C}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_Pilots_p.et" {
-            coords -8.518 0 -0.575
-            m_sCustomNameSet "Pilot 2"
+            coords 6.934 0.006 -0.05
             {
              SCR_AIGroup : "{4F7F7E8B05ADE07C}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_Pilots_p.et" {
-              coords -7.478 0 -0.577
-              m_sCustomNameSet "Pilot 3"
+              coords 6.745 0.045 -0.164
               {
                SCR_AIGroup : "{4F7F7E8B05ADE07C}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_Pilots_p.et" {
-                coords -7.944 0 -0.308
-                m_sCustomNameSet "Pilot 4"
+                coords 8.834 0.178 -0.648
                 {
                  SCR_AIGroup : "{4F7F7E8B05ADE07C}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_Pilots_p.et" {
-                  coords -8.579 0 -0.224
-                  m_sCustomNameSet "Pilot 5"
+                  coords 9.559 0.268 -0.87
                   {
                    SCR_AIGroup : "{88E111678DB95B86}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MedicTeam.et" {
-                    coords 81.451 -0.782 19.739
-                    angleY -15.468
+                    coords 42.717 -0.016 32.037
+                    angleY -22.319
                     m_aUnitPrefabSlots {
                      "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et"
-                    }
-                    m_sCustomNameSet "Medical Team"
-                    {
-                     SCR_AIGroup : "{080FEB9F64017EF8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_SniperTeam.et" {
-                      coords -33.215 -0.278 -10.245
-                      angleY 24.269
-                      m_sCustomNameSet "Sniper Team"
-                     }
                     }
                    }
                   }
