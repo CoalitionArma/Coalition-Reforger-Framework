@@ -24,6 +24,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	string m_sKilledName;
 	string m_sKilledFaction;
 	string m_sMissionName;
+	float m_fRange;
 	SCR_FactionManager m_FM;
 	
 	override void OnPostInit(IEntity owner)
@@ -32,10 +33,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		#ifdef WORKBENCH
 		#else 
 			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
-			{
-				Print("CRF < 10 players");
 				return;
-			}
 		#endif			
 	}
 
@@ -64,11 +62,12 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
+		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
 		// TODO: determine weapon used, damage location IE "headshot", and roles for both killer and killed
 		// string weaponUsed 
 		// string damageLocation
 		
-		m_handle.WriteLine("kill:" + m_sKilledName + " (" + m_sKilledFaction + ")" + " was killed by " + m_sKillerName + " (" + m_sKillerFaction + ")");
+		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange);
 	}
 	
 	// Player Connected
@@ -80,7 +79,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		
 		// Log to file
-		m_handle.WriteLine("connect:" + playerName + " connected");
+		m_handle.WriteLine("connect:" + playerName);
 	}
 	
 	// Player Disconnected 
@@ -91,7 +90,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		// Get player name
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		
-		m_handle.WriteLine("disconnect:" + playerName + " disconnected");
+		m_handle.WriteLine("disconnect:" + playerName);
 	}
 	
 	// Mission status messages 
@@ -103,27 +102,27 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		{
 			case 3: //slotting
 			{
-				m_handle.WriteLine("mission:" + m_sMissionName + " is now slotting!");
+				m_handle.WriteLine("mission:slotting:" + m_sMissionName);
 				break;
 			}
 			case 5: //briefing
 			{
-				m_handle.WriteLine("mission:" + m_sMissionName + " is now in the briefing phase!");
+				m_handle.WriteLine("mission:briefing:" + m_sMissionName);
 				break;
 			}
 			case 1: //game
 			{
-				m_handle.WriteLine("mission:" + m_sMissionName + " is now in the safestart phase!");
+				m_handle.WriteLine("mission:safestart:" + m_sMissionName);
 				break;
 			}
 			case 6: //debrief
 			{
-				m_handle.WriteLine("mission:" + m_sMissionName + " has ended!");
+				m_handle.WriteLine("mission:ended:" + m_sMissionName);
 				break;
 			}
 			default: // no ongamestate for loading a mission in reforger lobby 
 			{
-				m_handle.WriteLine("mission:" + "A new mission is now beginning: " + m_sMissionName);
+				m_handle.WriteLine("mission:beginning:" + m_sMissionName);
 				break;
 			}
 		}
@@ -132,6 +131,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	// Method called from safestart to annotate a game has begun
 	void GameStarted()
 	{
-		m_handle.WriteLine("started:" + m_sMissionName + " is now live!");
+		m_handle.WriteLine("mission:started:" + m_sMissionName);
 	}
 }
