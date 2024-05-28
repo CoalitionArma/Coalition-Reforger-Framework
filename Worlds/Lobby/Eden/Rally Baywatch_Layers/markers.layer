@@ -1,0 +1,381 @@
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 7669.257 2.054 6665.336
+  angleY 90.23
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 80
+  m_sDescription "Finish Line"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4768.608 23.679 12034.26
+  angleY 90.064
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 80
+  m_sDescription "Start"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn2 {
+  coords 4771.445 28.714 11726.896
+  angleY 89.118
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn3 {
+  coords 4957.177 28.594 11722.351
+  angleY -179.361
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn4 {
+  coords 4943.132 29.675 11326.494
+  angleY 80.136
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn5 {
+  coords 5083.989 36.563 11324.918
+  angleY 135.853
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right 1"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn6 {
+  coords 5144.187 37.437 11287.054
+  angleY 112.745
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn7 {
+  coords 5424.668 41.875 11033.798
+  angleY -112.809
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn8 {
+  coords 5354.556 42.953 11011.577
+  angleY 162.275
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square, Stay Left"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn9 {
+  coords 5409.777 37.843 10790.354
+  angleY -121.346
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn10 {
+  coords 5058.73 37.578 10521.492
+  angleY 128.958
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn11 {
+  coords 5150.068 40.235 10431
+  angleY 140.66
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn12 {
+  coords 5284.183 26.618 10214.541
+  angleY 81.959
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right 2"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn13 {
+  coords 5721.425 29.819 10218.3
+  angleY 179.581
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right 1"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn14 {
+  coords 5767.425 22.214 10050.461
+  angleY -170.45
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn15 {
+  coords 5756.48 15.771 9928.597
+  angleY 103.843
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn16 {
+  coords 5837.949 7.875 9883.159
+  angleY -174.229
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn17 {
+  coords 5836.184 4.562 9818.706
+  angleY -87.805
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn18 {
+  coords 5774.25 6.962 9763.606
+  angleY -90.905
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right Square, Narrows"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn19 {
+  coords 5750.01 8.818 9762.339
+  angleY -178.727
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square Narrow"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn20 {
+  coords 5703.841 13.172 9597.283
+  angleY -173.742
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn21 {
+  coords 5648.154 31.352 9370.731
+  angleY -139.201
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Stay Left"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn22 {
+  coords 5391.512 11.92 8921.223
+  angleY -21.311
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right 2"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn23 {
+  coords 5277.574 26.572 9263.037
+  angleY -167.975
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn24 {
+  coords 5003.007 39.031 9051.992
+  angleY 164.711
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn25 {
+  coords 5021.745 41.563 9011.032
+  angleY 146.189
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn26 {
+  coords 5343.204 24.077 8408.05
+  angleY 170.931
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn27 {
+  coords 5597.152 71.5 8124.706
+  angleY 28.313
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Hairpin"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn28 {
+  coords 6367.182 74.713 8461.305
+  angleY 65.248
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn29 {
+  coords 6701.08 15.889 8854.367
+  angleY 16.744
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left 2"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn30 {
+  coords 6787.538 2.341 9058.31
+  angleY 53.45
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Caution: Rocks"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn31 {
+  coords 7586.884 4.416 8891.767
+  angleY -148.313
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right 2"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn32 {
+  coords 7494.484 14.289 8793.255
+  angleY -138.806
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn33 {
+  coords 7247.498 56.696 8603.984
+  angleY 131.691
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left Square"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn34 {
+  coords 7269.908 55.639 8415.494
+  angleY 166.405
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn35 {
+  coords 7178.817 45.213 8182.872
+  angleY -151.139
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn36 {
+  coords 7285.51 44.379 7695.775
+  angleY 172.842
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn37 {
+  coords 7117.892 59.138 7066.552
+  angleY 156.553
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Left 3"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ turn38 {
+  coords 7585.585 2.567 6727.896
+  angleY 127.977
+  m_MarkerColor 0.624 0.157 0.157 1
+  m_sQuadName "arrow-medium"
+  m_fWorldSize 60
+  m_sDescription "Right Square to tightens finish"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
