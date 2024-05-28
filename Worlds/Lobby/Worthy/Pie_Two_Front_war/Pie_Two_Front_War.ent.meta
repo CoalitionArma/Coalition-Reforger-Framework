@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{DF5DDBFCEDCDB202}Worlds/Lobby/Worthy/Pie_Two_Front_war/Pie_Two_Front_War.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}
