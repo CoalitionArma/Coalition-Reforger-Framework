@@ -8,6 +8,6 @@ The currently up to date version on the github release branch/Reforger framework
 Discord:
 The fastest way to report vulnerabilities is through the Coalitiongroup discord, which you can join using [discord.gg/coalition](https://discord.com/invite/the-coalition) and DMing one of the HQ/Admin staff.
 E-Mail:
-Alternatively you can report vulnerabilities to us by sending us an E-Mail to <enter-e-mail-here>.
+Alternatively you can report vulnerabilities to us by sending us an E-Mail to <armacoalition@gmail.com>.
 
 
