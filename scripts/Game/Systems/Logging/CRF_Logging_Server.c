@@ -42,7 +42,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	int m_iBluforCount;
 	int m_iOpforCount;
 	int m_iIndforCount;
-	ref ScriptInvoker m_OnPlayerKilled = new ScriptInvoker();
 	
 	override void OnPostInit(IEntity owner)
 	{
@@ -56,6 +55,9 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			/*if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
 				return;*/
 		#endif	
+		
+		m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
+		m_GameModeCoop.GetOnHandlePlayerKilled().Insert(OnPlayerKilled);
 	}
 
 	// Setup
