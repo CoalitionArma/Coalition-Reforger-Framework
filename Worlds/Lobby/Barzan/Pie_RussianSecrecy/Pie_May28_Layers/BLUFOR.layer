@@ -1,0 +1,88 @@
+$grp Vehicle : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ M1 {
+  coords 1175.704 9.089 1701.242
+  angleZ -0.895
+ }
+ M2 {
+  coords 1175.345 9.037 1695.854
+  angleX 1.788
+  angleY -0.056
+  angleZ -1.791
+ }
+}
+Vehicle M3 : "{5674FAEB9AB7BDD0}Prefabs/Vehicles/Wheeled/M998/M998.et" {
+ coords 1175.611 8.825 1689.997
+ angleX 2.678
+ angleY -0.126
+ angleZ -2.687
+}
+Vehicle UH1H1 : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
+ coords 1187.794 8.225 1674.081
+ angleX 2.683
+ angleY 0.042
+ angleZ 0.896
+}
+Vehicle M998_covered_long1 : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
+ coords 1175.789 8.564 1684.336
+ angleX 3.545
+ angleY -0.333
+ angleZ -5.366
+}
+SCR_AIGroup : "{B7BC0654B7771592}Prefabs/Groups/BLUFOR/BW/Vehicles/Group_BW_Vehicles_Pilots_p.et" {
+ coords 1182.139 8.568 1680.11
+ angleX 3.576
+ angleY 0.056
+ angleZ 0.897
+ m_sCustomNameSet "Pilots"
+}
+$grp SCR_AIGroup : "{D5AF34C09B08EFE9}Prefabs/Groups/BLUFOR/BW/Command/Group_BW_Command_PLT_p.et" {
+ {
+  coords 1179.77 9.094 1696.01
+  m_sCustomNameSet "Platoon 1"
+  {
+   $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+    {
+     coords 1.084 -0.095 -4.954
+     m_sCustomNameSet "Bravo"
+    }
+    {
+     coords 0.589 -0.042 -2.541
+     m_sCustomNameSet "Alpha"
+    }
+   }
+   SCR_AIGroup : "{E3D996315C27584A}Prefabs/Groups/BLUFOR/BW/Support/Group_BW_Support_ATTeam.et" {
+    coords 16.514 -0.24 -4.07
+   }
+  }
+ }
+ {
+  coords 1181.386 8.931 1688.089
+  m_sCustomNameSet "Platoon 2"
+  {
+   $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+    {
+     coords 0.385 -0.082 -1.905
+     m_sCustomNameSet "Charlie"
+    }
+    {
+     coords 0.717 -0.155 -3.582
+     m_sCustomNameSet "Delta"
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport1 {
+  coords 1176.046 8.208 1676.404
+  angleX 2.678
+  angleY -0.126
+  angleZ -2.687
+ }
+ M923A1_transport2 {
+  coords 1176.216 7.753 1665.931
+  angleX 2.681
+  angleY -0.084
+  angleZ -1.792
+ }
+}

@@ -1,0 +1,67 @@
+AIWorld {
+ coords 990.795 13.045 776.946
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 1037.749 11.951 695.824
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 1194.129 9.199 1702.974
+ m_sTitle "Helo Note"
+ m_sTextData "Note:"\
+ "The Helo is mainly intended to be used to spot OPFOR movements, however it can be used for other purposes as well."
+ m_aVisibleForFactions {
+  "US"
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 3097.02 9.575 2053.644
+ angleY 0
+ m_sDescription "AFRF Exfil Location"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 1221.739 5.875 1536.084
+ m_sTextData "BLUFOR:"\
+ "2 Infantry Platoons"\
+ "1x UH-1H"\
+ ""\
+ "OPFOR:"\
+ "2 Infantry Platoons"\
+ "1x BTR-70(PIE Variant)"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1221.925 6.13 1532.937
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 1220.947 6.348 1528.905
+ m_sTextData "BLUFOR:"\
+ "-Eliminate Opfor HVT"\
+ ""\
+ "OPFOR:"\
+ "-Get Pilot to Exfil Location and fly out"
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1047.631 13.074 685.391
+ angleY 0
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
+Vehicle Mi8MT1 : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT.et" {
+ coords 3123.188 10.263 2042.011
+ angleX 0.944
+ angleY -93.226
+ angleZ 0.843
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1192.479 8.626 1682.504
+ angleY 0
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1220.277 6.447 1524.835
+ m_sTextData "BW 3rd InfBt as part of a local coalition force has managed to shoot down and corner a Russion Pilot carrying High Value Information, in response the AFRF have sent in 2 Platoons of Infantry and an IFV to protect and exfil the Pilot aswell as eliminate the BW forces."\
+ ""
+}
