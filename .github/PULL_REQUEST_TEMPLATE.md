@@ -1,6 +1,7 @@
 Mission Pull Request Template
 
 This Pull Request will:
+
 Add the mission <mission name!> made by <author name!> to the repository.
 
 **Mission Creation Checklist:**
@@ -34,22 +35,29 @@ INDFOR - Attacking/Defending/NA
 - [ ] BUNDESWEHR (US)
 
 **Objectives/Win Conditions:**
+
 <mission objectives>
 
 **Terrain:**
+
 <What terrain is it on>
 
 **Short mission description:**
+
 <short description here>
 
 **Slotting Ratio:**
+
 <3:2>
 
 **Time limit:**
+
 <60min>
 
 **Design concept/thoughts:**
+
 <enter text here>
 
 **Other Notes:**
+
 <Assets? Admin notes? Anything else?>
