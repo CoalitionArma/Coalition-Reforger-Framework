@@ -1,0 +1,89 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4775.619 24.249 12006.058
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 4745.203 24.116 12011.265
+ {
+  SCR_FactionManager "613432B824F4CFEF" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bIsPlayable 1
+    }
+   }
+  }
+ }
+}
+SCR_BaseTriggerEntity Finish_Trigger {
+ coords 7679.913 2.213 6613.892
+ EOnInit ""\
+ "		if (Replication.IsServer())"\
+ "        {"\
+ "			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());"\
+ "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);"\
+ "        }"\
+ "	}"\
+ "	"\
+ "	protected SCR_BaseGameMode m_GameMode;"\
+ "	"\
+ "	override void OnActivate(IEntity ent)"\
+ "    {"\
+ "        // Probably lacking locality tbh"\
+ "        // Get player data"\
+ "        PlayerManager playerManager = GetGame().GetPlayerManager();"\
+ "        if (!playerManager)"\
+ "            return;"\
+ "        int entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+ "        string playerName = playerManager.GetPlayerName(entityPlayerID);"\
+ "        "\
+ "        // Notify player finished"\
+ "        SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
+ "        "\
+ "        // Send player to spec - vanilla"\
+ "        SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+ "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
+ "		SCR_CharacterDamageManagerComponent ACEdamMan = SCR_CharacterDamageManagerComponent.Cast(ent.FindComponent(SCR_CharacterDamageManagerComponent));"\
+ "		if (damMan && ACEdamMan)"\
+ "		{"\
+ "			ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
+ "			damMan.Kill(damMan.GetInstigator());"\
+ "		}	"\
+ "    }"\
+ "	"\
+ "	void WaitTillGameStart()"\
+ "    {"\
+ "        if (!m_GameMode.IsRunning()) "\
+ "        	return;"\
+ "        "\
+ "        GetGame().GetCallqueue().Remove(WaitTillGameStart);"\
+ "        SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Baywatch\", 10, \"Racists should all board their vehicles now.\");"\
+ "        GetGame().GetCallqueue().CallLater(DoAThing, 10000, false);"\
+ "    }"\
+ "	"\
+ "	void DoAThing()"\
+ "	{"\
+ "		CRF_SafestartGameModeComponent gmComp = CRF_SafestartGameModeComponent.GetInstance();"\
+ "		gmComp.ToggleSideReady(\"Blufor\", \"ur mom\", true);"\
+ "	"
+ TriggerShapeType Sphere
+ SphereRadius 50
+ BoxMins 10 10 10
+ BoxMaxs 10 10 10
+ DrawShape 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ PrefabsFilter {
+  PrefabFilter "{612A54C890CD1AE7}" {
+   Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+   CheckPrefabHierarchy 1
+  }
+ }
+ RunDefaultQueryFirst 0
+}
+PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ coords 4805.703 23.524 12028.44
+ m_sTitle "Race Notes"
+ m_sTextData "Welcome to Rally Baywatch! You are starting at Saint Phillipe Airport, and are headed to the finish line in Fisherman's Bay, to the Southeast. The track is marked on your map with red arrows. There are spare cars spread along the track if yours breaks. Remember: The only losers are those who DNF!"
+ m_bEmptyFactionVisibility 1
+ m_bShowForAnyFaction 1
+}
