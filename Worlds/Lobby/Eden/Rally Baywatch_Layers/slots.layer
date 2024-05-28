@@ -1,0 +1,488 @@
+$grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ S105_rally1 {
+  coords 4788.333 23.556 12038.966
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally2 {
+  coords 4783.444 23.525 12038.935
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally16 {
+  coords 4778.887 23.558 12038.716
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally17 {
+  coords 4774.369 23.613 12038.646
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally18 {
+  coords 4769.961 23.587 12038.404
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally19 {
+  coords 4765.743 23.584 12038.729
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally20 {
+  coords 4758.315 23.579 12038.504
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally21 {
+  coords 4754.112 23.652 12038.79
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally22 {
+  coords 4762.042 23.596 12038.521
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally23 {
+  coords 4790.466 23.336 12045.44
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally24 {
+  coords 4756.244 23.432 12045.265
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally25 {
+  coords 4760.448 23.359 12044.979
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally26 {
+  coords 4764.175 23.376 12044.995
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally27 {
+  coords 4767.875 23.364 12045.203
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally28 {
+  coords 4772.094 23.367 12044.877
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally29 {
+  coords 4776.501 23.393 12045.119
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally30 {
+  coords 4781.02 23.337 12045.189
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally31 {
+  coords 4785.576 23.305 12045.408
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally32 {
+  coords 4787.853 23.358 12051.951
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally33 {
+  coords 4753.631 23.454 12051.775
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally34 {
+  coords 4757.834 23.381 12051.489
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally35 {
+  coords 4761.562 23.398 12051.506
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally36 {
+  coords 4765.263 23.386 12051.714
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally37 {
+  coords 4769.481 23.389 12051.39
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally38 {
+  coords 4773.888 23.415 12051.631
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally39 {
+  coords 4778.406 23.36 12051.701
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+ S105_rally40 {
+  coords 4782.963 23.327 12051.92
+  angleY 179.799
+  {
+   SCR_AIGroup : "{15BBBEDC74CBEBF0}Prefabs/Groups/BLUFOR/1980s/Legacy/Special_P_One_Unit.et" {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Line"
+     }
+    }
+    coords -1.392 0.792 0.537
+    m_aUnitPrefabSlots {
+     "{3A9FCB4953A75790}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_Driver_P.et" "{EE494EB1CCFEF582}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed_CoDriver_P.et"
+    }
+    m_sCustomNameSet "Racists"
+   }
+  }
+ }
+}

@@ -6,31 +6,25 @@ $grp Vehicle : "{2BE1F8B9299B67C1}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.
   angleZ 1.944
  }
  M923A1_tanker2 {
-  components {
-   SlotManagerComponent "{55BCE45E438E4CFF}" {
-    Slots {
-     RegisteringComponentSlotInfo Tank {
-     }
-     RegisteringComponentSlotInfo Arsenal {
-      MergePhysics 1
-      Prefab "{2ED880E020D7A0D9}Prefabs/Vehicles/Wheeled/M923A1/M923A1_cargo_canvas_MERDC.et"
-     }
-     RegisteringComponentSlotInfo Cargo {
-     }
-    }
-   }
-  }
-  coords 5618.81 189.967 13127.141
-  angleX -3.654
-  angleY -150.553
-  angleZ 1.016
+  coords 5618.577 189.963 13127.302
+  angleX -3.694
+  angleY -148.15
+  angleZ 0.862
  }
 }
-Vehicle M923A1_transport_covered1 : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
- coords 5624.672 190.505 13136.605
- angleX -4.613
- angleY -141.714
- angleZ -1.363
+$grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
+ M923A1_transport_covered1 {
+  coords 5624.672 190.505 13136.605
+  angleX -4.613
+  angleY -141.714
+  angleZ -1.363
+ }
+ M923A1_transport_covered2 {
+  coords 5627.751 191.166 13144.785
+  angleX -2.626
+  angleY 139.703
+  angleZ 1.053
+ }
 }
 $grp Vehicle : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
  M151A1 {
