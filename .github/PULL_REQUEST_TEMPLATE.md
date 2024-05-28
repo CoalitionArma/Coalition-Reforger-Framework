@@ -18,12 +18,14 @@ BLUFOR - Attacking/Defending/NA
 - [ ] RHS_RF_MSV
 - [ ] RHS_US_USMC
 - [ ] BUNDESWEHR (US)
+
 OPFOR - Attacking/Defending/NA
 - [ ] USSR
 - [ ] US
 - [ ] RHS_RF_MSV
 - [ ] RHS_US_USMC
 - [ ] BUNDESWEHR (US)
+
 INDFOR - Attacking/Defending/NA
 - [ ] USSR
 - [ ] US
