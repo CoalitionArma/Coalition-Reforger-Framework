@@ -101,6 +101,21 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   }
  }
 }
+SCR_BaseTriggerEntity exfil_trigger {
+ coords 3119.128 9.881 2044.068
+ TriggerShapeType Sphere
+ SphereRadius 27.5
+ DrawShape 1
+ PeriodicQueries 1
+ PrefabsFilter {
+  PrefabFilter "{61797140D60AF26A}" {
+   Prefab "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
+  }
+ }
+ OnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Pilot has reachd the Exfil Helo!\", 5);"\
+ "	"
+}
 $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
  {
   coords 1194.129 9.199 1702.974

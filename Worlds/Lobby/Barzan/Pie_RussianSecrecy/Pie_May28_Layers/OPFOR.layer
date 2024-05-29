@@ -13,6 +13,13 @@ $grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
  }
 }
 $grp SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+ rus_hvt {
+  coords 1043.671 9.28 720.478
+  m_aUnitPrefabSlots {
+   "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
+  }
+  m_sCustomNameSet "HVT"
+ }
  rus_plt1 {
   coords 1041.118 9.65 716.083
   {
@@ -51,13 +58,6 @@ $grp SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1s
     }
    }
   }
- }
- rus_hvt {
-  coords 1043.671 9.28 720.478
-  m_aUnitPrefabSlots {
-   "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
-  }
-  m_sCustomNameSet "HVT"
  }
 }
 Vehicle UAZ469_base1 : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
