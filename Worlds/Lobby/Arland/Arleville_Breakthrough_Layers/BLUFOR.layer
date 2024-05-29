@@ -19,13 +19,19 @@ SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s
        coords 0.109 -0.375 -3.827
        m_sCustomNameSet "3rd Squad"
        {
-        SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_LATTeam.et" {
-         coords 10.882 0.958 14.118
-         angleY -92.705
-         m_aUnitPrefabSlots {
-          "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et"
+        SCR_AIGroup : "{25CF16A866EA7B50}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_HATTeam.et" {
+         coords 9.687 1.643 15.741
+         angleY -97.405
+         {
+          SCR_AIGroup : "{88E111678DB95B86}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MedicTeam.et" {
+           coords -0.004 1.49 20.221
+           angleY -175.846
+           m_aUnitPrefabSlots {
+            "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et"
+           }
+           m_sCustomNameSet "Medical Team"
+          }
          }
-         m_sCustomNameSet "Anti-Tank Team"
         }
        }
       }
