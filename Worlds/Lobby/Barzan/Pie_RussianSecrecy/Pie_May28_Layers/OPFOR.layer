@@ -13,32 +13,38 @@ $grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
  }
 }
 $grp SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
- {
+ rus_plt1 {
   coords 1041.118 9.65 716.083
   {
    $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
-    {
+    rus_squad1 {
      coords -2.934 0.308 -3.304
      m_sCustomNameSet "Alpha"
     }
-    {
+    rus_squad2 {
      coords -3.255 0.376 -4.333
      m_sCustomNameSet "Bravo"
     }
    }
+   SCR_AIGroup rus_mat : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_ArmorTeam.et" {
+    coords 1.014 1.765 -18.129
+    m_aUnitPrefabSlots + {
+     "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et"
+    }
+   }
   }
  }
- {
+ rus_plt2 {
   coords 1038.783 10.349 708.526
   m_sCustomNameSet "2nd Platoon"
   {
    $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
-    {
+    rus_squad3 {
      coords -0.361 0.166 -1.354
      angleX -5.356
      m_sCustomNameSet "Charlie"
     }
-    {
+    rus_squad4 {
      coords -0.52 0.343 -3.243
      angleX -5.356
      m_sCustomNameSet "Delta"
@@ -46,18 +52,12 @@ $grp SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1s
    }
   }
  }
- {
+ rus_hvt {
   coords 1043.671 9.28 720.478
   m_aUnitPrefabSlots {
    "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
   }
   m_sCustomNameSet "HVT"
- }
-}
-SCR_AIGroup : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_ArmorTeam.et" {
- coords 1042.132 11.415 697.954
- m_aUnitPrefabSlots + {
-  "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et"
  }
 }
 Vehicle UAZ469_base1 : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
