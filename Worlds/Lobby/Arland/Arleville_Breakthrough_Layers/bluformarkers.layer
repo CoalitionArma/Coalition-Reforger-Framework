@@ -1,0 +1,123 @@
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 2619.149 86.041 1944.917
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2675.563 86.041 1925.98
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2720.451 86.041 1928.012
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2764.29 86.041 1928.07
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2807.409 86.041 1927.531
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2859.728 86.041 1928.26
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2916.101 86.041 1932.505
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2986.031 86.041 1933.152
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 3034.467 86.041 1922.013
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 3101.339 86.041 1908.853
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2564.845 86.041 1978.22
+  angleY 0
+  m_MarkerColor 0.023 0.088 0.364 1
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}

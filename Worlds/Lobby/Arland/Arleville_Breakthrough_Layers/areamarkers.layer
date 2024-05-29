@@ -36,15 +36,15 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
  {
-  coords 2453.646 0 1526.822
+  coords 2418.134 0 1516.787
   angleY 0
  }
  {
-  coords 2471.312 0 1677.964
+  coords 2413.324 0 1682.486
   angleY 0
  }
  {
-  coords 2486.212 0 1825.132
+  coords 2437.731 0 1864.112
   angleY 0
  }
  {
@@ -108,7 +108,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
  {
-  coords 3177.999 0 1949.508
+  coords 3177.999 41.616 1949.508
   angleY 0
  }
  {
@@ -133,6 +133,10 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
  }
  {
   coords 2505.597 0 1966.653
+  angleY 0
+ }
+ {
+  coords 3151.901 41.616 1838.985
   angleY 0
  }
 }

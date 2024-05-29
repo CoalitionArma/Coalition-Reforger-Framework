@@ -6,7 +6,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_aVisibleForFactions {
    "USSR"
   }
-  m_iOrder 5
+  m_iOrder 4
   m_sFactionKey "USSR"
  }
  {
@@ -16,7 +16,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_aVisibleForFactions {
    "US"
   }
-  m_iOrder 5
+  m_iOrder 4
   m_sFactionKey "US"
  }
 }
