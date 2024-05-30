@@ -1,0 +1,13 @@
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 3185.404 0.922 1165.201
+ m_sDescription "OPF Breakthrough"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 3035.745 37.46 2502.813
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2675.14 77.11 1657.245
+ angleY 90
+}
