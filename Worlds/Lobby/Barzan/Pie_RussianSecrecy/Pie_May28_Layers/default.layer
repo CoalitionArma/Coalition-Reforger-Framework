@@ -74,7 +74,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "HVT"
        }
        SCR_CallsignInfo "{5977478D568C092D}" {
-        m_sCallsign "Plt1"
+        m_sCallsign "1PLT"
        }
        SCR_CallsignInfo "{5977478D568D935E}" {
         m_sCallsign "1-1"
@@ -83,7 +83,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{617971C3F0765665}" {
-        m_sCallsign "Plt2"
+        m_sCallsign "2PLT"
        }
        SCR_CallsignInfo "{617971C3F05697B4}" {
         m_sCallsign "2-1"
