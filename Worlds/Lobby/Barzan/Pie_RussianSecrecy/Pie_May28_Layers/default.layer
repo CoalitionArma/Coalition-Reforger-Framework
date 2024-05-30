@@ -158,8 +158,8 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
 $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  {
   coords 1035.553 9.677 717.344
-  m_sTitle "Exfil Pilot"
-  m_sTextData "You have to exfil the pilot to a waiting helicopter to the islands North West."
+  m_sTitle "Objective: Exfil Pilot"
+  m_sTextData "Your Pilot is carrying important Intel which the germans want to get by killing him, you have to exfil him to a helicopter waiting to the islands North West (marked 'Exfil Location')."
   m_aVisibleForFactions {
    "RHS_RF_MSV"
   }
@@ -167,8 +167,8 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  }
  {
   coords 1187.186 9.215 1702.211
-  m_sTitle "Kill Pilot"
-  m_sTextData "You have to find and kill the enemy HVT Pilot."
+  m_sTitle "Objective: Kill Pilot"
+  m_sTextData "The Enemy is escorting a Pilot carrying important Intel to a waiting Helicopter (marked 'Exfil Location'), you have to find and kill that Pilot."
   m_aVisibleForFactions {
    "US"
   }
