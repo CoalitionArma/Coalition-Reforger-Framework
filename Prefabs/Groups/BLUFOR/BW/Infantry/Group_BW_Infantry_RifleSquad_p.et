@@ -139,7 +139,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{D253AF40C2587509}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_SL_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{CB9AE41752E4900B}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_TL_P.et" "{3CC3E078EDC53C2A}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_MG_P.et" "{A227EC7845B6DEE0}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_AMG_P.et" "{1EA52F545EAC63B6}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Rifleman_P.et" "{CB9AE41752E4900B}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_TL_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et" "{1EA52F545EAC63B6}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Rifleman_P.et"
+  "{D253AF40C2587509}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_SL_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{CB9AE41752E4900B}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_TL1_P.et" "{3CC3E078EDC53C2A}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_MG_P.et" "{A227EC7845B6DEE0}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_AMG_P.et" "{D2B7B410589F11BD}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_TL2_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et" "{BFB8DA8A628AE8AA}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_LAT_P.et" "{1EA52F545EAC63B6}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Rifleman_P.et"
  }
  m_bSetPlayable 1
 }

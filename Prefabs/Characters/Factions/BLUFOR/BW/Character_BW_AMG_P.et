@@ -12,6 +12,9 @@ SCR_ChimeraCharacter : "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_
     }
    }
   }
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingColorTeam Red
+  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Assistant MG"
   }
