@@ -31,28 +31,28 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
       }
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
-        m_sCallsign "Pilots"
-       }
-       SCR_CallsignInfo "{55CCB792D13759D8}" {
         m_sCallsign "Plt1"
        }
-       SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "MAT"
-       }
-       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{617971C2C9DDE4A0}" {
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{617971C2CE616C13}" {
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
         m_sCallsign "Plt2"
        }
-       SCR_CallsignInfo "{617971C2CEF23F63}" {
+       SCR_CallsignInfo "{617971C2C9DDE4A0}" {
         m_sCallsign "2-1"
        }
-       SCR_CallsignInfo "{617971C2778E4C00}" {
+       SCR_CallsignInfo "{617971C2CE616C13}" {
         m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{617971C2CEF23F63}" {
+        m_sCallsign "MAT"
+       }
+       SCR_CallsignInfo "{617971C2778E4C00}" {
+        m_sCallsign "Pilots"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -60,6 +60,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
     }
     SCR_Faction "{5978B9CE6585BBE8}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
       m_aPlatoonNames {
        SCR_CallsignInfo "{5977478D568C092A}" {
         m_sCallsign "Plt1"
@@ -76,22 +77,22 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "Plt1"
        }
        SCR_CallsignInfo "{5977478D568D935E}" {
-        m_sCallsign "MAT1"
-       }
-       SCR_CallsignInfo "{5977478D568D935F}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{617971C3F0765665}" {
+       SCR_CallsignInfo "{5977478D568D935F}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{617971C3F05697B4}" {
+       SCR_CallsignInfo "{617971C3F0765665}" {
         m_sCallsign "Plt2"
        }
-       SCR_CallsignInfo "{617971C3F02BDAEE}" {
+       SCR_CallsignInfo "{617971C3F05697B4}" {
         m_sCallsign "2-1"
        }
-       SCR_CallsignInfo "{617971C3F0FEAC60}" {
+       SCR_CallsignInfo "{617971C3F02BDAEE}" {
         m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{617971C3F0FEAC60}" {
+        m_sCallsign "IFV"
        }
       }
       m_sCallsignGroupFormat "%3"
