@@ -51,13 +51,12 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		#ifdef WORKBENCH
 			Print("CRF::Workbench");
 		#else 
-			// Uncomment for release
-			/*if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
-				return;*/
+			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
+				return;
 		#endif	
 		
-		m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
-		m_GameModeCoop.GetOnHandlePlayerKilled().Insert(OnPlayerKilled);
+		//m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
+		//m_GameModeCoop.GetOnHandlePlayerKilled().Insert(this.OnPlayerKilled);
 	}
 
 	// Setup
@@ -75,7 +74,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	}
 	
 	// Killfeed log
-	override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
+	/*override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
 	{
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		Print("CRF OnPlayerKilled");
@@ -106,11 +105,11 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			damage location IE "headshot", 
 			roles for both killer and killed, 
 			and if a vehicle was involved
-		*/
+		
 		
 		Print("CRF:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
 		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
-	}
+	}*/
 	
 	// Player Connected
 	override void OnPlayerConnected(int playerId)
@@ -173,6 +172,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	}
 	
 	// Method called from safestart to annotate a game has begun
+	// TODO: Mission stats get logged here
 	void GameStarted()
 	{
 		// Collect mission data 
