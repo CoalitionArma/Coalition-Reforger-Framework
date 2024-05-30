@@ -1,0 +1,9 @@
+SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_LATTeam.et" {
+ ID "0000000000000001"
+ coords 10.882 0.958 14.118
+ angleY -92.705
+ m_aUnitPrefabSlots {
+  "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et" "{39A6C40D091AAEDF}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HAT_P.et"
+ }
+ m_sCustomNameSet "Anti-Tank Team"
+}
