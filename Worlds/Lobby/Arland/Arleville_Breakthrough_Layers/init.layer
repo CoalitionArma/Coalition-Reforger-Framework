@@ -2,11 +2,6 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  coords 2077.041 75.799 2497.226
 }
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
- components {
-  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
-   m_iTimeLimitMinutes 60
-  }
- }
  coords 1918.689 39.604 2730.25
  {
   SCR_FactionManager "6176CC6E2FB38D1D" {

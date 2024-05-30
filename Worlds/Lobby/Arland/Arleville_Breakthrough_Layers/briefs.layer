@@ -1,6 +1,6 @@
 PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
  coords 3186.984 42.299 2464.968
- m_sTextData "60 Minute Time Limit."\
+ m_sTextData "45 Minute Time Limit."\
  "One Life, No Respawn."\
  "Mines are surrounding the AO."
 }
@@ -45,7 +45,7 @@ $grp PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescripti
   m_sTitle "Briefing"
   m_sTextData "Greetings comrade! We've been tasked with moving through the hils and forests towards the town of Arleville and take the harbour on the other side of town."\
   ""\
-  "Remain to the north of the \"OPFOR Safe Start Border\" markers during safe start."\
+  "Remain inside your spawn area during safe start."\
   "Move through BLUFOR and reach the \"OPF Breakthrough\" marker on the harbour."\
   "The area outside of the AO is mined to keep the fighting inside the AO."
   m_aVisibleForFactions {

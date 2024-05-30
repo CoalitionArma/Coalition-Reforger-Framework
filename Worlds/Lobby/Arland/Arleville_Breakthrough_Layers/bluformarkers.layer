@@ -1,6 +1,6 @@
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
-  coords 2619.149 86.041 1944.917
+  coords 2609.429 86.041 1927.379
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -11,7 +11,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2675.563 86.041 1925.98
+  coords 2665.844 86.041 1908.442
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -22,7 +22,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2720.451 86.041 1928.012
+  coords 2710.732 86.041 1910.474
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -33,7 +33,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2764.29 86.041 1928.07
+  coords 2754.571 86.041 1910.532
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -44,7 +44,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2807.409 86.041 1927.531
+  coords 2797.69 86.041 1909.993
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -55,7 +55,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2859.728 86.041 1928.26
+  coords 2850.009 86.041 1910.722
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -66,7 +66,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2916.101 86.041 1932.505
+  coords 2906.382 86.041 1914.967
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -77,7 +77,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2986.031 86.041 1933.152
+  coords 2976.312 86.041 1915.614
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -88,7 +88,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 3034.467 86.041 1922.013
+  coords 3024.748 86.041 1904.475
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -99,7 +99,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 3101.339 86.041 1908.853
+  coords 3091.62 86.041 1891.315
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
@@ -110,7 +110,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 2564.845 86.041 1978.22
+  coords 2555.126 86.041 1960.682
   angleY 0
   m_MarkerColor 0.023 0.088 0.364 1
   m_sDescription "BLUFOR Safe Start Border"
