@@ -70,7 +70,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		else
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.WRITE);
 		
-		m_handle.WriteLine("mission:beginning:" + m_sMissionName);
+		if (GetGame().GetPlayerManager().GetPlayerCount() > 10)
+			m_handle.WriteLine("mission:beginning:" + m_sMissionName);
 	}
 	
 	// Killfeed log
