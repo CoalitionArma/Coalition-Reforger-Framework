@@ -1,6 +1,9 @@
 SCR_ChimeraCharacter : "{1E8265C4FCFC787B}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_Armored_Base.et" {
  ID "520EC961A090B1EE"
  components {
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingColorTeam Red
+  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Automatic Rifleman"
    m_bIsPlayable 1
