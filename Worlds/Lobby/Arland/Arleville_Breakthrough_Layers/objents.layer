@@ -1,0 +1,22 @@
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 3261.48 38.275 2524.03
+  m_sTitle "Reach the Harbour"
+  m_sTextData "Reach the Arleville Harbour without being completely wiped out, within the 45 minute time limit."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 4
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 3260.829 40.453 2502.662
+  m_sTitle "Defend the Harbour"
+  m_sTextData "Prevent OPFOR from reaching the harbour by either running out the time limit of 45 minutes, or eliminate all of OPFOR."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+  m_sFactionKey "US"
+ }
+}
