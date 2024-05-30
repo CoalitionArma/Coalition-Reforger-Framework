@@ -1,0 +1,108 @@
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  coords 1052.054 15.44 653.915
+  angleX -2.8
+  angleY 10.326
+  angleZ 0.399
+ }
+ UAZ2 {
+  coords 1053.972 15.146 660.225
+  angleX -2.683
+  angleY -0.042
+  angleZ 0.896
+ }
+}
+Vehicle UAZ469_base1 : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
+ coords 1054.121 14.756 667.921
+ angleX -3.576
+ angleY 0.056
+ angleZ -0.897
+}
+$grp Vehicle : "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et" {
+ Ural4320_transport_covered_closed1 {
+  coords 1046.92 16.428 639.539
+  angleX -4.517
+  angleY 18.74
+  angleZ -0.588
+ }
+ Ural4320_transport_covered_closed3 {
+  coords 1038.085 18.816 617.915
+  angleX -7.176
+  angleY 27.942
+  angleZ 0.225
+ }
+ Ural4320_transport_covered_closed2 {
+  coords 1042.645 17.434 628.376
+  angleX -5.958
+  angleY 21.295
+  angleZ 0.549
+ }
+}
+Vehicle BTR70_Mountable_AFRF1 : "{C628AC3C87CA64AF}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Mountable_AFRF.et" {
+ components {
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Offset -0.0001 0.1781 1.0444
+     Prefab "{8021A4D1ADFCF506}Prefabs/Vehicles/Tracked/BMP1/VehParts/Turret/BMP1_Turret.et"
+     DisablePhysicsInteraction 1
+    }
+    EntitySlotInfo SupplyStorage_01 {
+     Enabled 0
+    }
+    EntitySlotInfo SupplyStorage_02 {
+    }
+    EntitySlotInfo SupplyStorage_03 {
+    }
+    EntitySlotInfo SupplyStorage_06 {
+     Enabled 0
+    }
+    EntitySlotInfo SupplyStorage_07 {
+     Enabled 0
+    }
+    EntitySlotInfo SupplyStorage_08 {
+     Enabled 0
+    }
+    EntitySlotInfo SupplyStorage_09 {
+     Enabled 0
+    }
+    EntitySlotInfo SupplyStorage_10 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo turret2 {
+     PivotID "v_root"
+     Offset -0.0002 0.0203 -0.5821
+     Angles 0 -180 0
+     MergePhysics 1
+     Prefab "{66596659FB0F645B}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Turret/BTR70_Turret.et"
+     DisablePhysicsInteraction 1
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterWeapons 1
+     RegisterCompartments 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{6178F8506E504025}" {
+     ContextName "gunner2"
+     Position PointInfo "{6178F85064811637}" {
+      Offset 0 0 -1.6457
+     }
+    }
+   }
+  }
+ }
+ coords 1049.455 14.138 676.634
+ angleX -4.467
+ angleY -0.112
+ angleZ 0.009
+}
+Vehicle Ural4320_TESTBEB1 : "{F49398F8182A0551}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_TESTBEB.et" {
+ coords 1032.264 19.994 609.836
+ angleX -5.05
+ angleY 46.095
+ angleZ -0.096
+}

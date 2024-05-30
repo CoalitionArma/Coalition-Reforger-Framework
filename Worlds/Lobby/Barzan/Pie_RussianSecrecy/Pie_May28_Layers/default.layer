@@ -1,0 +1,200 @@
+AIWorld {
+ coords 990.795 13.045 776.946
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 1037.749 11.951 695.824
+ {
+  SCR_FactionManager "617971C117756D0B" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "Bundeswehr"
+      Icon "{1025F2D2CEB3B133}Assets/Props/Fabric/Flags/Data/GERFlag_waving.edds"
+     }
+     m_sFactionFlag "{1025F2D2CEB3B133}Assets/Props/Fabric/Flags/Data/GERFlag_waving.edds"
+     m_FactionFlagMaterial "{E92D592A4C91779F}Assets/Props/Fabric/Flags/Data/Flag_GER.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "Plt1"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "Plt2"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "Plt3"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "Plt4"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Plt1"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Plt2"
+       }
+       SCR_CallsignInfo "{617971C2C9DDE4A0}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{617971C2CE616C13}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{617971C2CEF23F63}" {
+        m_sCallsign "MAT"
+       }
+       SCR_CallsignInfo "{617971C2778E4C00}" {
+        m_sCallsign "Pilots"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{5977478D568C092A}" {
+        m_sCallsign "Plt1"
+       }
+       SCR_CallsignInfo "{5977478D568C0929}" {
+        m_sCallsign "Plt2"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{617971C3F0765665}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{617971C3F05697B4}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{617971C3F02BDAEE}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{617971C3F0FEAC60}" {
+        m_sCallsign "IFV"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_BaseTriggerEntity exfil_trigger {
+ coords 3119.128 9.881 2044.068
+ TriggerShapeType Sphere
+ SphereRadius 27.5
+ DrawShape 1
+ PeriodicQueries 1
+ PrefabsFilter {
+  PrefabFilter "{61797140D60AF26A}" {
+   Prefab "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
+  }
+ }
+ OnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Pilot has reachd the Exfil Helo!\", 5);"\
+ "	"
+}
+$grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ {
+  coords 1194.129 9.199 1702.974
+  m_sTitle "Helo Note"
+  m_sTextData "Note:"\
+  "The Helo is mainly intended to be used to spot OPFOR movements, however it can be used for other purposes as well."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 1040.146 9.267 720.952
+  m_sTitle "Pilot Note"
+  m_sTextData "The Pilot is not allowed to change his uniform or equipment from his starting equipment in any visually meaningful way (picking up ammo, medicing, etc. is allowed)."
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 3097.02 9.575 2053.644
+ angleY 0
+ m_sDescription "AFRF Exfil Location"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 1221.739 5.875 1536.084
+ m_sTextData "BLUFOR:"\
+ "2 Infantry Platoons"\
+ "1x UH-1H"\
+ ""\
+ "OPFOR:"\
+ "2 Infantry Platoons"\
+ "1x BTR-70(PIE Variant)"
+ m_iOrder 10
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1221.925 6.13 1532.937
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1035.553 9.677 717.344
+  m_sTitle "Objective: Exfil Pilot"
+  m_sTextData "Your Pilot is carrying important Intel which the germans want to get by killing him, you have to exfil him to a helicopter waiting to the islands North West (marked 'Exfil Location')."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 1187.186 9.215 1702.211
+  m_sTitle "Objective: Kill Pilot"
+  m_sTextData "The Enemy is escorting a Pilot carrying important Intel to a waiting Helicopter (marked 'Exfil Location'), you have to find and kill that Pilot."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_sFactionKey "US"
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1047.631 13.074 685.391
+ angleY 0
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
+Vehicle Mi8MT1 : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT.et" {
+ coords 3123.188 10.263 2042.011
+ angleX 0.944
+ angleY -93.226
+ angleZ 0.843
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1192.479 8.626 1682.504
+ angleY 0
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1220.277 6.447 1524.835
+ m_sTextData "BW 3rd InfBt as part of a local coalition force has managed to shoot down and corner a Russion Pilot carrying High Value Information, in response the AFRF have sent in 2 Platoons of Infantry and an IFV to protect and exfil the Pilot aswell as eliminate the BW forces."\
+ ""
+}

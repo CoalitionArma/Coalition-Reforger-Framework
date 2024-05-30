@@ -1,0 +1,51 @@
+SCR_AIGroup : "{B7BC0654B7771592}Prefabs/Groups/BLUFOR/BW/Vehicles/Group_BW_Vehicles_Pilots_p.et" {
+ coords 1182.139 8.568 1680.11
+ angleX 3.576
+ angleY 0.056
+ angleZ 0.897
+ m_sCustomNameSet "Pilots"
+}
+$grp SCR_AIGroup : "{D5AF34C09B08EFE9}Prefabs/Groups/BLUFOR/BW/Command/Group_BW_Command_PLT_p.et" {
+ {
+  coords 1179.77 9.094 1696.01
+  m_aUnitPrefabSlots {
+   "{02BCA38F4A161C36}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_PL_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{DEE870821BAE5D20}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_RTO_P.et" "{1EA52F545EAC63B6}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Rifleman_P.et"
+  }
+  m_sCustomNameSet "Platoon 1"
+  {
+   $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+    {
+     coords 0.589 -0.042 -2.541
+     m_sCustomNameSet "1st Squad"
+    }
+    {
+     coords 1.084 -0.095 -4.954
+     m_sCustomNameSet "2nd Squad"
+    }
+   }
+  }
+ }
+ {
+  coords 1181.386 8.931 1688.089
+  m_aUnitPrefabSlots {
+   "{02BCA38F4A161C36}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_PL_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{DEE870821BAE5D20}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_RTO_P.et" "{1EA52F545EAC63B6}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Rifleman_P.et"
+  }
+  m_sCustomNameSet "Platoon 2"
+  {
+   $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+    {
+     coords 0.385 -0.082 -1.905
+     m_sCustomNameSet "Charlie"
+    }
+    {
+     coords 0.717 -0.155 -3.582
+     m_sCustomNameSet "Delta"
+    }
+   }
+  }
+ }
+}
+SCR_AIGroup : "{E3D996315C27584A}Prefabs/Groups/BLUFOR/BW/Support/Group_BW_Support_ATTeam.et" {
+ coords 1196.284 8.854 1691.94
+ m_sCustomNameSet "MAT"
+}
