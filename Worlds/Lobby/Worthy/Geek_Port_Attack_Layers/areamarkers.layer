@@ -1,3 +1,21 @@
+$grp GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
+ {
+  coords 2667.613 2 1097.18
+  angleY 138.014
+ }
+ {
+  coords 2667.402 2 1151.671
+  angleY 4.701
+ }
+ {
+  coords 2750.232 2 951.577
+  angleY -174.595
+ }
+ {
+  coords 2749.869 2 975.159
+  angleY 74.296
+ }
+}
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
   coords 2458.942 83.219 618.477
@@ -72,7 +90,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
  {
-  coords 3157.484 -0 1024.302
+  coords 3157.484 0 1024.302
   angleY 0
  }
  {
@@ -107,4 +125,8 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   coords 1744.326 16.985 1268.786
   angleY 0
  }
+}
+GenericEntity : "{E249C09D69AAE6C8}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_02.et" {
+ coords 2723.313 2 973.462
+ angleY -91.322
 }
