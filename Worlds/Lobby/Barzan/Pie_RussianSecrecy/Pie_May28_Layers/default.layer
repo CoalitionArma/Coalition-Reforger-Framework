@@ -151,6 +151,7 @@ PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/As
  "OPFOR:"\
  "2 Infantry Platoons"\
  "1x BTR-70(PIE Variant)"
+ m_iOrder 10
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 1221.925 6.13 1532.937
