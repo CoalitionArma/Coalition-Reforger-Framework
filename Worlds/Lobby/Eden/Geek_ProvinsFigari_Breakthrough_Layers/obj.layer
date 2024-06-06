@@ -1,8 +1,7 @@
 SCR_BaseFactionTriggerEntity endTrig {
- coords 5146.893 106.289 4848.458
+ coords 5148.678 106.289 4841.797
  TriggerShapeType Sphere
  SphereRadius 150
- DrawShape 1
  TriggerActivationType "All changes"
  PeriodicQueries 1
  OnActivate ""\

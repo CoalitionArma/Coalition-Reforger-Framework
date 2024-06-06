@@ -25,7 +25,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_aVisibleForFactions {
    "US"
   }
-  m_iOrder 4
+  m_iOrder 5
   m_sFactionKey "US"
  }
  {
@@ -35,12 +35,43 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_aVisibleForFactions {
    "USSR"
   }
-  m_iOrder 4
+  m_iOrder 5
   m_sFactionKey "USSR"
  }
 }
-PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
- coords 6630.378 88.249 5411.735
- m_sTextData "US Armed Forces move through Provins and Figari to dislodge Soviet Armed Forces in the area."
- m_iOrder 2
+$grp PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ {
+  coords 6630.378 88.249 5411.735
+  m_sTextData "US Armed Forces move through Provins and Figari to dislodge Soviet Armed Forces in the area."
+  m_iOrder 2
+ }
+ BLU_Brief {
+  coords 6623.387 87.985 5410.369
+  m_sTitle "BLUFOR Brief"
+  m_sTextData "Move through the towns of Provins and Figari, watching out for Soviet forces in the area, reaching the marker on the south side of Figari inside the 60 minute time limit."\
+  ""\
+  "Do not leave the Area of Operation as there is a minefield surrounding the area, especially in the large forest nearby."\
+  ""\
+  "DO NOT LEAVE SPAWN DURING SAFE START."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+ }
+ OPF_Brief {
+  coords 6623.827 87.985 5413.146
+  m_sTitle "OPFOR Brief"
+  m_sTextData "Within the 60 minute time limit, prevent US Armed Forces from moving through the towns of Provins and Figari by any means mecessary. "\
+  ""\
+  "Do not leave the Area of Operation as there is a minefield surrounding the area, especially in the large forest nearby."\
+  ""\
+  "DO NOT CROSS THE MARKERS LABELLED \"OPFOR Safe Srart Border\" UNTIL SAFESTART IS OVER."\
+  ""
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 4
+ }
 }
