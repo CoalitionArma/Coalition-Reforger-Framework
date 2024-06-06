@@ -1,11 +1,12 @@
 SCR_BaseFactionTriggerEntity endTrig {
- coords 5148.678 106.289 4841.797
+ coords 4732.132 138.476 6977.89
  TriggerShapeType Sphere
- SphereRadius 150
+ SphereRadius 75.4
+ DrawShape 1
  TriggerActivationType "All changes"
  PeriodicQueries 1
  OnActivate ""\
- "		SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR forces have made it through both Provins and Figari!\", 10, \"BLUFOR Victory\");"\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR forces have made it through both Provins and Motignac!\", 10, \"BLUFOR Victory\");"\
  "	"
  m_sOwnerFactionKey "US"
 }

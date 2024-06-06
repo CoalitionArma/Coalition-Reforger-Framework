@@ -1,0 +1,7 @@
+PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ ID "60B551D06017C504"
+ coords 5425.063 151.595 6807.068
+ m_sTitle "Objective"
+ m_sTextData "<objective here>"
+ m_sFactionKey "<faction here>"
+}

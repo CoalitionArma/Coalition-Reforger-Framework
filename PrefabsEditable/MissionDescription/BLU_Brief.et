@@ -6,5 +6,7 @@ PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Si
  m_aVisibleForFactions {
   "US"
  }
- m_iOrder 4
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 0
 }

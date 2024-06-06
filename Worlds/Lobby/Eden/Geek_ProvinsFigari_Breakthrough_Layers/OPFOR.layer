@@ -1,46 +1,25 @@
 SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
- coords 5186.635 55.879 5425.925
- angleY -51.893
- m_sCustomNameSet "1st Platoon Command"
+ coords 5292.731 80.936 6397.906
+ angleY -175.214
  {
   SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-   coords 0.347 0.089 6.122
-   angleY -177.164
-   m_sCustomNameSet "1st Squad"
+   coords -0.231 -1.532 12.409
+   angleY 175.832
    {
     SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-     coords 0.045 0.012 -4.204
-     m_sCustomNameSet "2nd Squad"
+     coords -0.417 0 -4.894
      {
       SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-       coords 0.004 -0.086 -4.953
-       m_sCustomNameSet "3rd Squad"
+       coords 0.094 0 -4.258
        {
         SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-         coords 0.39 1.608 -5.232
-         angleY -2.81
-         m_sCustomNameSet "4th Squad"
+         coords -0.139 0 -4.129
          {
           SCR_AIGroup : "{7281E79A895296DA}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MedicTeam_p.et" {
-           coords 11.569 -0.907 15.512
-           angleY -90.185
+           coords -4.936 1.447 25.021
+           angleY 99.56
            m_aUnitPrefabSlots {
             "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
-           }
-           m_sCustomNameSet "Medical Team"
-           {
-            SCR_AIGroup : "{0B2F593211D6E115}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_ATTeam_p.et" {
-             coords -0.192 -1.329 21.178
-             angleY -176.404
-             m_sCustomNameSet "Anti-Tank Team"
-             {
-              SCR_AIGroup : "{DA9758113F23E2A7}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_SniperTeam_p.et" {
-               coords 0.115 -0.165 -4.538
-               angleY -1.859
-               m_sCustomNameSet "Sniper Team"
-              }
-             }
-            }
            }
           }
          }
