@@ -1,0 +1,46 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 6630.378 88.249 5411.735
+ m_sTextData "60 minute time limit."\
+ "One life, no respawn."\
+ "No medical vehicles."
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 6630.378 88.249 5411.735
+ m_sTextData "3x M113A3 Armoured Personnel Carrier."
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 3
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 6630.378 88.249 5411.735
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 6633.186 88.594 5407.172
+  m_sTitle "Reach the Objective Marker."
+  m_sTextData "Reach the objective marker within the 60 minute time limit, either by eliminating all of OPFOR or reaching the marker itself."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+  m_sFactionKey "US"
+ }
+ {
+  coords 6629.353 88.58 5404.747
+  m_sTitle "Stop BLUFOR from reaching the Objective."
+  m_sTextData "Prevent BLUFOR from reaching the objective marker by eliminating them or holding them off for the 60 minute time limit."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 4
+  m_sFactionKey "USSR"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 6630.378 88.249 5411.735
+ m_sTextData "US Armed Forces move through Provins and Figari to dislodge Soviet Armed Forces in the area."
+ m_iOrder 2
+}

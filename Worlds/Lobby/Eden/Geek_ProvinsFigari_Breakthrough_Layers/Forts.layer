@@ -1,0 +1,43 @@
+$grp GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ {
+  coords 5730.647 92.625 5874.307
+ }
+ {
+  coords 5439.454 89.947 5991.304
+  angleY 177.038
+ }
+ {
+  coords 5685.675 118.703 6119.329
+  angleY 101.871
+ }
+ {
+  coords 5454.917 87.827 5284.238
+  angleY 68.203
+ }
+ {
+  coords 5294.165 62.175 5373.326
+  angleY 38.484
+ }
+ {
+  coords 5230.953 54.777 5449.343
+  angleY -6.586
+ }
+ {
+  coords 5110.914 58.164 5374.231
+  angleY -65.224
+ }
+}
+GenericEntity : "{9F9924B626C5FA2C}Prefabs/Compositions/Slotted/SlotRoadLarge/Checkpoint_L_USSR_01.et" {
+ coords 5698.094 105.631 6027.813
+ angleY 112.198
+ {
+  GenericEntity {
+   ID "5CC72E06418CFE24"
+   {
+    Turret Tripod_6T7_NSV_618CDCA894F5718E {
+     ID "5CCCBEDD771835C6"
+    }
+   }
+  }
+ }
+}
