@@ -80,7 +80,7 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		bSiteID = bSite.GetID();
 		
 		// Create markers on each bomb site
-		// createMarkers();
+		CRF_MapMarkerComponent mm = new CRF_MapMarkerComponent("{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds", "aSiteTrigger", "Bomb Site A", -1);
 	}
 
 	// Acts as a loop method spawned via calllater, every 1 sec
