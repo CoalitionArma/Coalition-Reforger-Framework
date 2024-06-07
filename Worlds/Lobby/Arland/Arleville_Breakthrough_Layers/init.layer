@@ -51,9 +51,6 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{617B0B639F99F220}" {
-        m_sCallsign "COY"
-       }
        SCR_CallsignInfo "{61770BD978239948}" {
         m_sCallsign "1-4"
        }
@@ -70,19 +67,16 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{61770BD97D264347}" {
-        m_sCallsign "2-4"
+        m_sCallsign "2-MG"
        }
        SCR_CallsignInfo "{61770BD9FF0FF60F}" {
         m_sCallsign "MEDIC"
        }
-       SCR_CallsignInfo "{61770BD9FF3BD4AF}" {
-        m_sCallsign "MG"
-       }
        SCR_CallsignInfo "{61770BD9FDB147F5}" {
-        m_sCallsign "BTR1"
+        m_sCallsign "ARMOR 1"
        }
        SCR_CallsignInfo "{61770BD9FDDCD295}" {
-        m_sCallsign "BTR2"
+        m_sCallsign "ARMOR 2"
        }
       }
       m_sCallsignGroupFormat "%3"
