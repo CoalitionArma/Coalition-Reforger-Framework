@@ -1,0 +1,69 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 6630.378 88.249 5411.735
+ m_sTextData "60 minute time limit."\
+ "One life, no respawn."\
+ "No medical vehicles."
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 6630.378 88.249 5411.735
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 6633.186 88.594 5407.172
+  m_sTitle "Objective"
+  m_sTextData "Reach the objective marker within the 60 minute time limit, either by eliminating all of OPFOR or reaching the marker itself."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+  m_sFactionKey "US"
+ }
+ {
+  coords 6629.353 88.58 5404.747
+  m_sTitle "Objective"
+  m_sTextData "Prevent BLUFOR from reaching the objective marker by eliminating them or holding them off for the 60 minute time limit."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 4
+  m_sFactionKey "USSR"
+ }
+}
+$grp PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ {
+  coords 6630.378 88.249 5411.735
+  m_sTextData "US Armed Forces move through Provins and Montignac to dislodge Soviet Armed Forces in the area."
+  m_iOrder 2
+ }
+ BLU_Brief {
+  coords 6623.387 87.985 5410.369
+  m_sTitle "BLUFOR Brief"
+  m_sTextData "Move through the towns of Provins and Motignac, watching out for Soviet forces in the area, reaching the marker in the centre of Montignac inside the 60 minute time limit."\
+  "Intel reports that the Soviets have not yet fully entered the town of Provins and the town may be contestable."\
+  ""\
+  "Do not leave the Area of Operation as there is a minefield surrounding the area, especially in the large forest nearby."\
+  "DO NOT LEAVE SPAWN DURING SAFE START."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 3
+ }
+ OPF_Brief {
+  coords 6623.827 87.985 5413.146
+  m_sTitle "OPFOR Brief"
+  m_sTextData "Within the 60 minute time limit, prevent US Armed Forces from moving through the towns of Provins and Motignac and reaching the town centre by any means mecessary. "\
+  ""\
+  "Do not leave the Area of Operation as there is a minefield surrounding the area, especially in the large forest nearby."\
+  ""\
+  "DO NOT CROSS THE MARKERS LABELLED \"OPFOR Safe Srart Border\" UNTIL SAFESTART IS OVER."\
+  ""
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 3
+ }
+}

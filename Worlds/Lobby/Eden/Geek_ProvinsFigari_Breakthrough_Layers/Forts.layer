@@ -1,0 +1,224 @@
+$grp GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ {
+  coords 5380.924 84.471 6071.089
+  angleY -85.006
+ }
+ {
+  coords 5604.127 95.926 6017.351
+  angleY 177.431
+ }
+ {
+  coords 5534.143 89.651 5905.555
+  angleY -179.053
+ }
+ {
+  coords 4922.015 168.108 6922.813
+  angleY 177.419
+ }
+ {
+  coords 4733.419 157.095 6832.584
+  angleY 150.873
+ }
+}
+GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
+ coords 5439.117 94.957 6130.984
+ angleY -125.991
+}
+GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_US_01.et" {
+ coords 5219.859 71.355 5155.656
+ {
+  GenericEntity : "{76167BEC292DCF79}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_Warzone_US_01.et" {
+   components {
+    Hierarchy "{5CB0D9910F7995D5}" {
+     Enabled 1
+    }
+   }
+   coords -0.598 0.34 -1.423
+  }
+  GenericEntity : "{D0E4F05E07E40B24}Prefabs/Structures/Signs/Military/SignMinefield_01/SignMinefield_01.et" {
+   coords -2.443 -0.037 -1.227
+  }
+ }
+}
+$grp GenericEntity : "{D0E4F05E07E40B24}Prefabs/Structures/Signs/Military/SignMinefield_01/SignMinefield_01.et" {
+ {
+  coords 5190.818 69.48 5147.637
+  {
+   $grp GenericEntity : "{D0E4F05E07E40B24}Prefabs/Structures/Signs/Military/SignMinefield_01/SignMinefield_01.et" {
+    {
+     coords -2.999 -0.192 -0.024
+    }
+    {
+     coords -7.111 -0.458 0.079
+    }
+    {
+     coords -9.525 -0.615 0.129
+    }
+    {
+     coords -12.843 -0.821 0.08
+    }
+    {
+     coords -14.542 -0.9 0.101
+    }
+    {
+     coords -18 -1.073 0.552
+    }
+    {
+     coords -20.143 -1.192 0.582
+    }
+    {
+     coords -24.185 -1.408 0.256
+    }
+    {
+     coords -30.089 -1.758 -0.314
+    }
+    {
+     coords -32.214 -1.885 -0.465
+    }
+    {
+     coords -40.33 -2.339 -0.169
+    }
+    {
+     coords -42.717 -2.45 -0.842
+    }
+    {
+     coords -45.652 -2.556 -0.863
+    }
+    {
+     coords -49.539 -2.743 -0.755
+    }
+    {
+     coords -56.774 -2.924 -0.839
+    }
+    {
+     coords -55.395 -2.896 -0.966
+    }
+    {
+     coords -51.657 -2.757 -0.523
+     angleX -9.777
+    }
+   }
+  }
+ }
+ {
+  coords 5124.449 63.825 5186.633
+  angleY 89.932
+  {
+   $grp GenericEntity : "{D0E4F05E07E40B24}Prefabs/Structures/Signs/Military/SignMinefield_01/SignMinefield_01.et" {
+    {
+     coords -2.999 -0.213 -0.022
+    }
+    {
+     coords -45.652 -3.106 -0.862
+    }
+    {
+     coords -42.715 -3.02 -0.842
+    }
+    {
+     coords -40.33 -2.89 -0.167
+    }
+    {
+     coords -18 -1.444 0.554
+    }
+    {
+     coords -12.84 -1.063 0.081
+    }
+    {
+     coords -20.142 -1.607 0.584
+    }
+    {
+     coords -7.111 -0.539 0.081
+    }
+    {
+     coords -24.183 -1.875 0.257
+    }
+    {
+     coords -30.089 -2.342 -0.312
+    }
+    {
+     coords -14.542 -1.231 0.101
+    }
+    {
+     coords -9.523 -0.757 0.13
+    }
+    {
+     coords -32.212 -2.506 -0.464
+    }
+    {
+     coords -51.657 -3.179 -0.522
+     angleX -9.777
+    }
+    {
+     coords -56.773 -3.284 -0.837
+    }
+    {
+     coords -49.539 -3.162 -0.754
+    }
+    {
+     coords -55.395 -3.281 -0.965
+    }
+   }
+  }
+ }
+ {
+  coords 5276.27 71.214 5212.446
+  angleY -84.208
+  angleZ 0.793
+  {
+   $grp GenericEntity : "{D0E4F05E07E40B24}Prefabs/Structures/Signs/Military/SignMinefield_01/SignMinefield_01.et" {
+    {
+     coords -3.002 0.383 -0.026
+    }
+    {
+     coords -45.706 5.832 -0.864
+    }
+    {
+     coords -42.765 5.337 -0.845
+    }
+    {
+     coords -40.368 4.442 -0.171
+    }
+    {
+     coords -18.014 1.792 0.55
+    }
+    {
+     coords -12.854 1.456 0.08
+    }
+    {
+     coords -20.158 1.982 0.58
+    }
+    {
+     coords -7.12 0.891 0.077
+    }
+    {
+     coords -24.203 2.336 0.256
+    }
+    {
+     coords -30.109 2.842 -0.315
+    }
+    {
+     coords -14.555 1.576 0.099
+    }
+    {
+     coords -9.537 1.161 0.126
+    }
+    {
+     coords -32.237 3.056 -0.468
+    }
+    {
+     coords -51.708 5.796 -0.526
+     angleX 2.63
+    }
+    {
+     coords -56.82 5.909 -0.839
+    }
+    {
+     coords -49.591 5.839 -0.756
+    }
+    {
+     coords -55.444 5.919 -0.968
+    }
+   }
+  }
+ }
+}
