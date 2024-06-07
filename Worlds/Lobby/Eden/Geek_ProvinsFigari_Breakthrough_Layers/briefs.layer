@@ -32,16 +32,16 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
 $grp PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  {
   coords 6630.378 88.249 5411.735
-  m_sTextData "US Armed Forces move through Provins and Figari to dislodge Soviet Armed Forces in the area."
+  m_sTextData "US Armed Forces move through Provins and Montignac to dislodge Soviet Armed Forces in the area."
   m_iOrder 2
  }
  BLU_Brief {
   coords 6623.387 87.985 5410.369
   m_sTitle "BLUFOR Brief"
   m_sTextData "Move through the towns of Provins and Motignac, watching out for Soviet forces in the area, reaching the marker in the centre of Montignac inside the 60 minute time limit."\
+  "Intel reports that the Soviets have not yet fully entered the town of Provins and the town may be contestable."\
   ""\
   "Do not leave the Area of Operation as there is a minefield surrounding the area, especially in the large forest nearby."\
-  ""\
   "DO NOT LEAVE SPAWN DURING SAFE START."
   m_aVisibleForFactions {
    "US"
