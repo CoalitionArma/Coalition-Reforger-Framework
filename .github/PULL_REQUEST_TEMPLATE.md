@@ -54,6 +54,8 @@ INDFOR - Attacking/Defending/NA
 
 <60min>
 
+**Mission Briefing Screenshot:**
+
 **Design concept/thoughts:**
 
 <enter text here>
