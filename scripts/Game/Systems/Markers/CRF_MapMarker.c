@@ -17,12 +17,14 @@ class CRF_MapMarkerComponent: SCR_MapUIBaseComponent
 		m_eObjectiveEnt = GetGame().GetWorld().FindEntityByName(objectiveName);
 		m_sMarkerText = markertext;
 		m_iUpdateRate = markerUpdate;
+		PrintFormat("CRF %1\n%2\n%3\n%4",m_sMarkerName,m_eObjectiveEnt,m_sMarkerText,m_iUpdateRate);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnMapOpen(MapConfiguration config)
 	{
 		super.OnMapOpen(config);
+		Print("CRF Map Open");
 		
 		if (!m_isMapOpen)
 		{
@@ -54,6 +56,7 @@ class CRF_MapMarkerComponent: SCR_MapUIBaseComponent
 		int screenPosY;		
 			
 		vector pos = m_eObjectiveEnt.GetOrigin();
+		PrintFormat("CRF Pos: %1",pos);
 		
 		m_MapUnitEntity.WorldToScreen(pos[0], pos[2], screenPosX, screenPosY, true);
 		ImageWidget m_UnitImage = ImageWidget.Cast(m_widget.FindAnyWidget("Image"));
