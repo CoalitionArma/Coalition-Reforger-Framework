@@ -1,0 +1,12 @@
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ ID "60FB7DEBCBB4D379"
+ coords 6623.387 87.985 5410.369
+ m_sTitle "BLUFOR Brief"
+ m_sTextData "<Insert brief here>"
+ m_aVisibleForFactions {
+  "US"
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 0
+}
