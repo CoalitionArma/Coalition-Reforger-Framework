@@ -1,0 +1,13 @@
+GenericEntity : "{B9050CD07513AE2B}Prefabs/Items/Equipment/Binoculars/Binoculars_B8/Binoculars_B8_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.1
+     ItemVolume 1
+    }
+   }
+  }
+ }
+}

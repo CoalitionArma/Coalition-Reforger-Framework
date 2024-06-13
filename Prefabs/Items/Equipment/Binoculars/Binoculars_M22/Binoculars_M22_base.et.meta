@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7AC107CA7AFC9B59}Prefabs/Items/Equipment/Backpacks/Backpack_Medical_Soviet.et"
+ Name "{E4E4CA52CCB2D22C}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22_base.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
