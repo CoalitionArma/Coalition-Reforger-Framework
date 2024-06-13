@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{7AC107CA7AFC9B59}Prefabs/Items/Equipment/Backpacks/Backpack_Medical_Soviet.et"
+ Name "{F051151C98DB30CD}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_Medic.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
