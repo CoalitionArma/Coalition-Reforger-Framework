@@ -7,7 +7,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
    "FIA"
   }
  }
- {
+ cache1marker {
   coords 792.07 233.872 6139.045
   angleY 90
   m_MarkerColor 0 0.13 0.003 1
@@ -17,7 +17,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
    "FIA"
   }
  }
- {
+ cache2marker {
   coords 1263.945 283.96 8904.929
   angleY 90
   m_MarkerColor 0 0.13 0.003 1
@@ -27,7 +27,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
    "FIA"
   }
  }
- {
+ cache3marker {
   coords 2641.48 358.298 7788.586
   angleY 90
   m_MarkerColor 0 0.13 0.003 1
@@ -48,7 +48,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
  }
 }
 $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- cachemarker1 {
+ cachemarker1global {
   coords 1222.682 149.763 6279.563
   m_MarkerColor 0.364 0.057 0.023 1
   m_fWorldSize 100
@@ -56,7 +56,7 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
  }
- cachemarker2 {
+ cachemarker2global {
   coords 1205.513 279.309 8742.206
   m_MarkerColor 0.364 0.057 0.023 1
   m_fWorldSize 100
@@ -64,7 +64,7 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
  }
- cachemarker3 {
+ cachemarker3global {
   coords 2991.036 316.923 7789.545
   m_MarkerColor 0.364 0.057 0.023 1
   m_fWorldSize 100
