@@ -199,7 +199,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  {
   coords 865.346 166.91 6001.469
   m_sTitle "OBJ: Destroy Cache 1"
-  m_sTextData "We believe cache 1 is located in the vicinity of the EEZ dam due to rpg attacks that have destroyed supply trucks near the dam."
+  m_sTextData "We believe cache 1 is located in the vicinity of the EEZ dam (SW of Myshkino) due to rpg attacks that have destroyed supply trucks near the dam."
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }
