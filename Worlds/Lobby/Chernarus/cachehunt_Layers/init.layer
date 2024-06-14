@@ -20,13 +20,15 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{619C1E7794CDF00C}" {
    m_sFactionKey "FIA"
-   m_iCount 30
+   m_iCount 45
    m_iTime 60000
+   m_bWaveMode 1
   }
   PS_FactionRespawnCount "{619C1E7763A7A5B6}" {
    m_sFactionKey "RHS_US_USMC"
-   m_iCount 30
+   m_iCount 15
    m_iTime 60000
+   m_bWaveMode 1
   }
  }
  {
