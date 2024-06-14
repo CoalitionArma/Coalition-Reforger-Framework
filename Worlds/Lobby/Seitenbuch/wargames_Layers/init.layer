@@ -139,7 +139,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  {
   coords 2514.596 429.718 878.485
   m_sTitle "Extraction"
-  m_sTextData "Your extraction point is on the MSR West of Neuses. "
+  m_sTextData "Your extraction point is on the MSR East of Neuses. "
   m_aVisibleForFactions {
    "US"
   }
