@@ -1,44 +1,25 @@
-class CRF_MapMarkerComponent: SCR_MapUIBaseComponent
+modded class SCR_MapUIBaseComponent
 {
-	const string XX_MISSION_LAYOUT = "{DD15734EB89D74E2}UI/layouts/Map/MapMarkerBase.layout";
 	static SCR_MapEntity m_MapUnitEntity;
 	static bool m_isMapOpen = false;
-	static ref Widget m_widget;
 	
-	// constructor vars
-	string m_sMarkerName;
-	IEntity m_eObjectiveEnt;
-	string m_sMarkerText;
-	int m_iUpdateRate;
-	
-	void CRF_MapMarkerComponent(string markerName, string objectiveName, string markertext, int markerUpdate)
-	{
-		m_sMarkerName = markerName;
-		m_eObjectiveEnt = GetGame().GetWorld().FindEntityByName(objectiveName);
-		m_sMarkerText = markertext;
-		m_iUpdateRate = markerUpdate;
-		PrintFormat("CRF %1\n%2\n%3\n%4",m_sMarkerName,m_eObjectiveEnt,m_sMarkerText,m_iUpdateRate);
-	}
+	protected ref array<Widget> m_aStoredWidgetArray = {};
+	protected CRF_GameModePlayerComponent m_GameModePlayerComponent;
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnMapOpen(MapConfiguration config)
 	{
-		super.OnMapOpen(config);
-		Print("CRF Map Open");
-		
+		super.OnMapOpen(config);		
+		m_aStoredWidgetArray.Clear();
 		if (!m_isMapOpen)
-		{
-			CreateMarker();
 			m_isMapOpen = true;
-		}
 	}
 	//------------------------------------------------------------------------------------------------
 	override protected void OnMapClose(MapConfiguration config)
 	{
 		m_isMapOpen = false;
+		m_aStoredWidgetArray.Clear();
 		super.OnMapClose(config);
-		
-		// Delete marker when closed
 	}
 	//------------------------------------------------------------------------------------------------
 	override void Update(float timeSlice)
@@ -51,48 +32,85 @@ class CRF_MapMarkerComponent: SCR_MapUIBaseComponent
 		m_MapUnitEntity = SCR_MapEntity.GetMapInstance();
 		if (!m_MapUnitEntity) 
 			return;
-
-		int screenPosX;
-		int screenPosY;		
+		
+		m_GameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
+		if (!m_GameModePlayerComponent) 
+			return;
+		
+		if(m_aStoredWidgetArray.Count() > 2)
+		{
+			delete m_aStoredWidgetArray.Get(0);
+			m_aStoredWidgetArray.Remove(0);
 			
-		vector pos = m_eObjectiveEnt.GetOrigin();
-		PrintFormat("CRF Pos: %1",pos);
+			delete m_aStoredWidgetArray.Get(1);
+			m_aStoredWidgetArray.Remove(1);
+		}
+		
+		TStringArray markerArray = m_GameModePlayerComponent.GetScriptedMarkersArray();
+		
+		foreach(int i, string markerString : markerArray)
+		{
+			TStringArray markerStringArray = {};
+			markerString.Split("||", markerStringArray, false);
+			
+			int timedelay = markerStringArray[2];
+			
+			if(timedelay <= 0) {
+				SetMarker(i, markerStringArray[0], markerStringArray[1].ToVector(), markerStringArray[3], markerStringArray[4]);
+			} else {
+				
+			};
+		};
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetMarker(int markerInt, string markerEntityName, vector markerOffset, string markerText, string markerImage) 
+	{
+		IEntity entity = GetGame().GetWorld().FindEntityByName(markerEntityName);
+		if (!entity)
+			return;
+			
+		vector pos = entity.GetOrigin();
+		pos = pos + markerOffset;
+			
+		Widget widget = GetGame().GetWorkspace().CreateWidgets("{DD15734EB89D74E2}UI/layouts/Map/MapMarkerBase.layout", m_RootWidget);
+		
+		if (!widget)
+			return;
+
+		ImageWidget m_UnitImage = ImageWidget.Cast(widget.FindAnyWidget("MarkerIcon"));		
+		if(m_UnitImage)
+		{
+			m_UnitImage.LoadImageTexture(0, markerImage);
+			m_UnitImage.SetVisible(true);
+		}
+		
+		TextWidget m_UnitText = TextWidget.Cast(widget.FindAnyWidget("MarkerText"));
+		if(m_UnitText)
+		{
+			m_UnitText.SetText(markerText);
+			m_UnitText.SetVisible(true);
+		}
+		
+		if (m_aStoredWidgetArray.Get(markerInt))
+		{
+			delete m_aStoredWidgetArray.Get(markerInt);
+			m_aStoredWidgetArray.Remove(markerInt);
+		};
+		m_aStoredWidgetArray.InsertAt(widget, markerInt);
+		
+		int screenPosX;
+		int screenPosY;
 		
 		m_MapUnitEntity.WorldToScreen(pos[0], pos[2], screenPosX, screenPosY, true);
-		ImageWidget m_UnitImage = ImageWidget.Cast(m_widget.FindAnyWidget("Image"));
 		
 		screenPosX = GetGame().GetWorkspace().DPIUnscale(screenPosX);
 		screenPosY = GetGame().GetWorkspace().DPIUnscale(screenPosY);
 				
 		FrameSlot.SetPos(
-				m_widget, 
+				widget,
 				screenPosX,
 				screenPosY
 		);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void CreateMarker()
-	{
-		m_widget = GetGame().GetWorkspace().CreateWidgets(XX_MISSION_LAYOUT, m_RootWidget);
-		
-		if (!m_widget) 
-			return;
-
-		ImageWidget m_UnitImage = ImageWidget.Cast(m_widget.FindAnyWidget("MarkerIcon"));		
-		if(m_UnitImage)
-		{
-			m_UnitImage.LoadImageTexture(0, m_sMarkerName);
-			//m_UnitImage.SetColor(Color.FromRGBA(255, 0, 0, 255));
-			m_UnitImage.SetVisible(true);
-		}
-		
-		TextWidget m_UnitText = TextWidget.Cast(m_widget.FindAnyWidget("MarkerText"));
-		if(m_UnitText)
-		{
-			m_UnitText.SetText(m_sMarkerText);
-			//m_UnitText.SetColor(Color.FromRGBA(0, 255, 0, 255));
-			m_UnitText.SetVisible(true);
-		}		
 	}
 }
