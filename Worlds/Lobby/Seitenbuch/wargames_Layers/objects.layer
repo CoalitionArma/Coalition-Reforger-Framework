@@ -1,0 +1,38 @@
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et" {
+ coords 2549.762 403.503 896.584
+ angleX -0.887
+ angleY 82.181
+ angleZ 0.122
+}
+$grp GenericEntity : "{2B24356C351A2538}Prefabs/Props/Wrecks/M113_wreck.et" {
+ {
+  coords 2651.822 401.912 895.282
+  angleX 1.736
+  angleY -75.88
+  angleZ 0.437
+ }
+ {
+  coords 2634.645 401.184 798.578
+  angleX 2.202
+  angleY -34.88
+  angleZ -1.534
+ }
+}
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
+ coords 2569.037 402.046 994.034
+ angleX -0.872
+ angleY 103.053
+ angleZ -0.202
+}
+GenericEntity : "{6BE5C753730DBFED}Prefabs/Props/Wrecks/M923A1_wreck_static.et" {
+ coords 2582.801 401.525 974.267
+ angleX 2.683
+ angleY -0.042
+ angleZ -0.896
+}
+GenericEntity : "{B90E5414AB7C325B}Prefabs/Props/Wrecks/BTR70_wreck_static.et" {
+ coords 2508.403 404.137 893.919
+ angleX -1.589
+ angleY 117.446
+ angleZ -0.825
+}
