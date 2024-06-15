@@ -1,7 +1,0 @@
-SCR_AIGroup {
- ID "0000000000000001"
- coords 2045.622 44.24 2062.764
- m_aUnitPrefabSlots {
-  "{714F66A4D204D971}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_SL_Modern.et" "{6B0EB37D136C5A1C}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_MMGG_Modern.et" "{3097D77C89DB7899}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_MMGAG_Modern.et" "{6B0EB37D136C5A1C}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_MMGG_Modern.et" "{3097D77C89DB7899}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_MMGAG_Modern.et"
- }
-}
