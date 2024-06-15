@@ -1,8 +1,7 @@
 SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
  ID "0000000000000001"
- coords 2052.752 43.775 2060.584
- angleY 0
+ coords 2043.028 44.783 2064.622
  m_aUnitPrefabSlots {
-  "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
+  "{714F66A4D204D971}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_SL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
  }
 }
