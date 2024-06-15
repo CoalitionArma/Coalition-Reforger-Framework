@@ -1,0 +1,40 @@
+Vehicle M1025_armed_M2HB1 : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ coords 2942.948 369.781 6753.349
+ angleX -0.854
+ angleY -98.415
+ angleZ 0.268
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 2948.22 369.782 6741.541
+ angleX -1.118
+ angleY -49.988
+ angleZ -0.595
+}
+Vehicle S105_white1 : "{63880E311299A016}Prefabs/Vehicles/Wheeled/S105/S105_white.et" {
+ coords 2976.391 369.939 6748.393
+ angleX -1.169
+ angleY -70.843
+ angleZ 1.624
+}
+Vehicle S105_red1 : "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et" {
+ coords 2965.338 370.038 6752.458
+ angleX -1.109
+ angleY -67.879
+ angleZ 0.611
+}
+Vehicle S1203_transport_brown1 : "{ACED839A6C5BE657}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_brown.et" {
+ coords 2970.196 369.938 6750.729
+ angleX 0.008
+ angleY -64.599
+ angleZ 2.829
+}
+Vehicle UAZ469_covered_CIV_blue1 : "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et" {
+ coords 2960.558 370.188 6754.748
+ angleY -65.017
+}
+Vehicle UAZ469_covered_CIV_brown1 : "{D7C51A961BF675B2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_brown.et" {
+ coords 2980.848 369.952 6746.408
+ angleX -0.453
+ angleY -66.574
+ angleZ 0.772
+}

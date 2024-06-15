@@ -1,0 +1,40 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 4747.835 339.125 10386.018
+ m_aUnitPrefabSlots {
+  "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
+ }
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+   {
+    coords -18.78 0 58.396
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 64.042 0.177 -31.327
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 40.927 -0.001 -49.693
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -26.834 0 43.7
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+ }
+}
+$grp SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_THCrew.et" {
+ {
+  coords 4746.407 339.125 10378.337
+  m_sCustomNameSet "Transport Heli 1"
+ }
+ {
+  coords 4753.054 339.125 10381.478
+  m_sCustomNameSet "Transport Heli 2"
+ }
+ {
+  coords 4742.409 339.126 10385.528
+  m_sCustomNameSet "Transport Heli 3"
+ }
+}
