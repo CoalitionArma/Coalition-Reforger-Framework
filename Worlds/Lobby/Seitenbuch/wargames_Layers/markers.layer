@@ -30,7 +30,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
   m_bShowForAnyFaction 1
  }
  {
-  coords 1666.819 440.656 612.871
+  coords 1950.698 440.656 805.188
   angleY 0
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "objective-marker"
