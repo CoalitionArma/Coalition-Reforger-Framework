@@ -10,6 +10,11 @@ GenericEntity : "{A598035257A5D0BC}Prefabs/Weapons/MachineGuns/M249/MG_M249_Hand
    components {
     MuzzleComponent "{60949BE67673854A}" {
      components {
+      AttachmentSlotComponent "{60949BE676738BD9}" {
+       AttachmentSlot InventoryStorageSlot RHS_M249_RIS_VFG_Slot {
+        Prefab "{482B9B157016B0DC}Prefabs/Weapons/Attachments/Optics/aimpoint_t1/Optic_t1_base.et"
+       }
+      }
       AttachmentSlotComponent "{60F9573BBF9F6D5B}" {
        AttachmentSlot InventoryStorageSlot NT4 {
         PivotID "barrel_muzzle_short"
