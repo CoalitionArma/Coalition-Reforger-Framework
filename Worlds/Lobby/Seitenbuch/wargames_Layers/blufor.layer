@@ -1,0 +1,43 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 3151.353 387.019 865.294
+ m_aUnitPrefabSlots {
+  "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{714F66A4D204D971}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_SL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
+ }
+ m_sCustomNameSet ""
+ {
+  $grp SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+   {
+    coords 11.555 -0.582 -2.617
+    m_sCustomNameSet ""
+    {
+     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+      {
+       coords -8.212 0.228 -6.707
+       m_sCustomNameSet ""
+      }
+      {
+       coords -12.265 0.486 -6.223
+       m_sCustomNameSet ""
+      }
+     }
+    }
+   }
+   {
+    coords 24.389 -1.306 -10.176
+    m_sCustomNameSet ""
+    {
+     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+      {
+       coords 3.254 -0.287 -8.455
+       m_sCustomNameSet ""
+      }
+      {
+       coords -0.549 -0.103 -6.397
+       m_sCustomNameSet ""
+      }
+     }
+    }
+   }
+  }
+ }
+}
