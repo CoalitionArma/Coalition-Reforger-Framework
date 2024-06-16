@@ -26,10 +26,12 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
+     FactionColor 0.957 0.02 0.024 1
      UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
       Name "Bundeswehr"
       Icon "{FACAC6D3DB7779D0}Assets/Props/Fabric/Flags/Data/GermanFlag.edds"
      }
+     m_OutlineFactionColor 0.168 0.006 0.007 1
      m_bIsPlayable 1
      m_sFactionFlag "{FACAC6D3DB7779D0}Assets/Props/Fabric/Flags/Data/GermanFlag.edds"
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {

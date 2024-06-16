@@ -1,5 +1,5 @@
 ---
-name: Genberal Bug report
+name: General Bug report
 about: Report a general bug in the Coalition Reforger Framework
 title: "[CRF General Bug]"
 labels: ''
