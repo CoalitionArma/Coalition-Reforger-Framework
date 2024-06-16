@@ -79,9 +79,10 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
 		bSiteID = bSite.GetID();
 		
-		GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);
+		//GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);
 	}
 	
+	/*
 	void CheckAddMarkers()
 	{
 		// Create markers on each bomb site
@@ -91,8 +92,10 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		
 		gameModePlayerComponent.AddScriptedMarker("aSiteTrigger", "0 0 0", 0, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 		gameModePlayerComponent.AddScriptedMarker("bSiteTrigger", "0 0 0", 0, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+		
 		GetGame().GetCallqueue().Remove(CheckAddMarkers);
 	}
+	*/
 
 	// Acts as a loop method spawned via calllater, every 1 sec
 	//------------------------------------------------------------------------------------------------
@@ -146,16 +149,18 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		
 		IEntity bombSitePlanted = null;
 		
+		/*
 		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
 		if (!gameModePlayerComponent) 
 			return;
+		*/
 		
 		if (aSitePlanted) {
-			gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 0, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+			//gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 0, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			m_sDestroyedBombSiteString = "SiteA";
 			bombSitePlanted = aSite;
 		} else {
-			gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 0, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+			//gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 0, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			m_sDestroyedBombSiteString = "SiteB";
 			bombSitePlanted = bSite;
 		};

@@ -4,13 +4,14 @@ modded class SCR_MapUIBaseComponent
 	static bool m_isMapOpen = false;
 	
 	protected ref array<Widget> m_aStoredWidgetArray = {};
+	protected ref array<float> m_aStoredTimeSliceArray = {};
+	protected ref array<vector> m_aStoredPosArray = {};
 	protected CRF_GameModePlayerComponent m_GameModePlayerComponent;
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnMapOpen(MapConfiguration config)
 	{
-		super.OnMapOpen(config);		
-		m_aStoredWidgetArray.Clear();
+		super.OnMapOpen(config);
 		if (!m_isMapOpen)
 			m_isMapOpen = true;
 	}
@@ -19,6 +20,7 @@ modded class SCR_MapUIBaseComponent
 	{
 		m_isMapOpen = false;
 		m_aStoredWidgetArray.Clear();
+		m_aStoredTimeSliceArray.Clear();
 		super.OnMapClose(config);
 	}
 	//------------------------------------------------------------------------------------------------
@@ -37,15 +39,6 @@ modded class SCR_MapUIBaseComponent
 		if (!m_GameModePlayerComponent) 
 			return;
 		
-		if(m_aStoredWidgetArray.Count() > 2)
-		{
-			delete m_aStoredWidgetArray.Get(0);
-			m_aStoredWidgetArray.Remove(0);
-			
-			delete m_aStoredWidgetArray.Get(1);
-			m_aStoredWidgetArray.Remove(1);
-		}
-		
 		TStringArray markerArray = m_GameModePlayerComponent.GetScriptedMarkersArray();
 		
 		foreach(int i, string markerString : markerArray)
@@ -53,25 +46,50 @@ modded class SCR_MapUIBaseComponent
 			TStringArray markerStringArray = {};
 			markerString.Split("||", markerStringArray, false);
 			
-			int timedelay = markerStringArray[2];
-			
-			if(timedelay <= 0) {
-				SetMarker(i, markerStringArray[0], markerStringArray[1].ToVector(), markerStringArray[3], markerStringArray[4]);
-			} else {
-				
-			};
+			SetMarker(i, markerStringArray[0], markerStringArray[1].ToVector(), markerStringArray[2].ToFloat(), markerStringArray[3], markerStringArray[4]);
 		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetMarker(int markerInt, string markerEntityName, vector markerOffset, string markerText, string markerImage) 
+	void SetMarker(int markerInt, string markerEntityName, vector markerOffset, float timeDelay, string markerText, string markerImage) 
 	{
-		IEntity entity = GetGame().GetWorld().FindEntityByName(markerEntityName);
-		if (!entity)
-			return;
+		vector pos;
+		
+		if(markerEntityName != "Static Marker") {
+			IEntity entity = GetGame().GetWorld().FindEntityByName(markerEntityName);
+			if (!entity)
+				return;
 			
-		vector pos = entity.GetOrigin();
-		pos = pos + markerOffset;
+			if(timeDelay > 0) {
+				float ts = GetGame().GetWorld().GetWorldTime();
+				
+				if (!m_aStoredTimeSliceArray.IsIndexValid(markerInt) || ts >= m_aStoredTimeSliceArray.Get(markerInt)) {
+					float finalTimeDelay = ts + (timeDelay * 1000);
+					
+					if (m_aStoredTimeSliceArray.IsIndexValid(markerInt))
+						m_aStoredTimeSliceArray.Set(markerInt, finalTimeDelay);
+					else
+						m_aStoredTimeSliceArray.Insert(finalTimeDelay);
+					
+					pos = entity.GetOrigin() + markerOffset;
+					
+					if (m_aStoredPosArray.IsIndexValid(markerInt))
+						m_aStoredPosArray.Set(markerInt, pos);
+					else
+						m_aStoredPosArray.Insert(pos);
+					
+				} else {
+					if (m_aStoredPosArray.IsIndexValid(markerInt))
+						pos = m_aStoredPosArray.Get(markerInt);
+					else
+						pos = entity.GetOrigin() + markerOffset;
+				};
+			} else {
+				pos = entity.GetOrigin() + markerOffset;
+			};
+		} else {
+			pos = markerOffset;
+		};
 			
 		Widget widget = GetGame().GetWorkspace().CreateWidgets("{DD15734EB89D74E2}UI/layouts/Map/MapMarkerBase.layout", m_RootWidget);
 		
@@ -92,12 +110,13 @@ modded class SCR_MapUIBaseComponent
 			m_UnitText.SetVisible(true);
 		}
 		
-		if (m_aStoredWidgetArray.Get(markerInt))
+		if (m_aStoredWidgetArray.IsIndexValid(markerInt))
 		{
 			delete m_aStoredWidgetArray.Get(markerInt);
-			m_aStoredWidgetArray.Remove(markerInt);
-		};
-		m_aStoredWidgetArray.InsertAt(widget, markerInt);
+			m_aStoredWidgetArray.Set(markerInt, widget);
+		} else {
+			m_aStoredWidgetArray.Insert(widget);
+		}
 		
 		int screenPosX;
 		int screenPosY;

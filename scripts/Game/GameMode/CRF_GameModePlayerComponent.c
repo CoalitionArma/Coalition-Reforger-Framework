@@ -52,11 +52,11 @@ class CRF_GameModePlayerComponent: ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	//! !LOCAL! Adds a scripted marker on the users map which will follow the specified entity
-	//! \param markerEntityName is the name of the entity the marker will track.
-	//! \param markerOffset is the offset from the marker entity. (This can also be the vector pos for a static marker, simply set the "markerEntityName" param to "Static Marker").
-	//! \param timeDelay is the delay between marker updates.
-	//! \param markerImage is the image that will be displayed on the map.
-	//! \param markerText is the text that will be displayed on the map just under the image.
+	//! \param[in] markerEntityName is the name of the entity the marker will track.
+	//! \param[in] markerOffset is the offset from the marker entity. (This can also be the vector pos for a static marker, simply set the "markerEntityName" param to "Static Marker").
+	//! \param[in] timeDelay is the delay between marker updates.
+	//! \param[in] markerImage is the image that will be displayed on the map.
+	//! \param[in] markerText is the text that will be displayed on the map just under the image.
 	void AddScriptedMarker(string markerEntityName, vector markerOffset, int timeDelay, string markerText, string markerImage)
 	{
 		m_aScriptedMarkers.Insert(string.Format("%1||%2||%3||%4||%5", markerEntityName, markerOffset.ToString(), timeDelay.ToString(), markerText, markerImage));
