@@ -19,8 +19,6 @@ modded class SCR_MapUIBaseComponent
 	override protected void OnMapClose(MapConfiguration config)
 	{
 		m_isMapOpen = false;
-		m_aStoredWidgetArray.Clear();
-		m_aStoredTimeSliceArray.Clear();
 		super.OnMapClose(config);
 	}
 	//------------------------------------------------------------------------------------------------
@@ -40,6 +38,15 @@ modded class SCR_MapUIBaseComponent
 			return;
 		
 		TStringArray markerArray = m_GameModePlayerComponent.GetScriptedMarkersArray();
+		
+		if(markerArray.Count() != m_aStoredWidgetArray.Count())
+		{
+			foreach(int i, Widget marker : m_aStoredWidgetArray)
+			{
+				delete marker;
+				m_aStoredWidgetArray.Remove(i);
+			};
+		};
 		
 		foreach(int i, string markerString : markerArray)
 		{

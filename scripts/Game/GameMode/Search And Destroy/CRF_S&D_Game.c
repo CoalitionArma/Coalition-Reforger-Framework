@@ -90,8 +90,8 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		if (!gameModePlayerComponent) 
 			return;
 		
-		gameModePlayerComponent.AddScriptedMarker("aSiteTrigger", "0 0 0", 0, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
-		gameModePlayerComponent.AddScriptedMarker("bSiteTrigger", "0 0 0", 0, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+		gameModePlayerComponent.AddScriptedMarker("aSiteTrigger", "0 0 0", 15, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+		gameModePlayerComponent.AddScriptedMarker("bSiteTrigger", "0 0 0", 15, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 		
 		GetGame().GetCallqueue().Remove(CheckAddMarkers);
 	}
@@ -156,11 +156,11 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		*/
 		
 		if (aSitePlanted) {
-			//gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 0, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+			//gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 15, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			m_sDestroyedBombSiteString = "SiteA";
 			bombSitePlanted = aSite;
 		} else {
-			//gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 0, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+			//gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 15, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			m_sDestroyedBombSiteString = "SiteB";
 			bombSitePlanted = bSite;
 		};
