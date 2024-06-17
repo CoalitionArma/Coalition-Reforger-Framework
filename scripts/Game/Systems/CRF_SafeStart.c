@@ -113,7 +113,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			
 			m_iPlayedFactionsCount = m_iPlayedFactionsCount + 1;
 			
-			Color factionColor = faction.GetOutlineFactionColor();
+			Color factionColor = faction.GetFactionColor();
 			float rg = Math.Max(factionColor.R(), factionColor.G());
 			float rgb = Math.Max(rg, factionColor.B());
 			

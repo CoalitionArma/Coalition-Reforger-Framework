@@ -71,7 +71,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 		m_sServerWorldTime.Split(":", messageSplitArray, false);
 		
 		// If the map isn't open and more than five minutes remaining or no time limit
-		if (m_Safestart.GetSafestartStatus() || (messageSplitArray[1].ToInt() >= 5 && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
+		if (m_Safestart.GetSafestartStatus() || ((messageSplitArray[0] != "00" || messageSplitArray[1].ToInt() >= 5) && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);
 			return;
@@ -86,8 +86,8 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 		m_wTimer.SetText("Mission End: " + m_sServerWorldTime);
 		
 		switch (true) {
-			case (messageSplitArray[1].ToInt() < 15 && messageSplitArray[1].ToInt() > 4): {m_wTimer.SetColorInt(ARGB(255, 230, 230, 0)); break;};
-			case (messageSplitArray[1].ToInt() < 5):                                      {m_wTimer.SetColorInt(ARGB(255, 200, 65, 65)); break;};
+			case (messageSplitArray[0] == "00" && messageSplitArray[1].ToInt() < 15 && messageSplitArray[1].ToInt() > 4): {m_wTimer.SetColorInt(ARGB(255, 230, 230, 0)); break;};
+			case (messageSplitArray[0] == "00" && messageSplitArray[1].ToInt() < 5):                                      {m_wTimer.SetColorInt(ARGB(255, 200, 65, 65)); break;};
 		};
 	}
 }
