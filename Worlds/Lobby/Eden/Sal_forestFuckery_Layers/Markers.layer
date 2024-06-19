@@ -1,5 +1,6 @@
 PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
- coords 4712.733 162.124 6965.654
+ coords 4838.165 139.73 6712.089
+ angleY 0
 }
 PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 4907.573 37.207 9073.581
@@ -187,5 +188,6 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
  coords 4920.388 36.474 9086.479
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 4713.029 162.288 6963.417
+ coords 4830.807 140.886 6718.521
+ angleY 90
 }

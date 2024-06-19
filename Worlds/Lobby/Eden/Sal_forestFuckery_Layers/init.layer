@@ -4,7 +4,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  coords 4710.565 162.513 6955.403
  {
-  SCR_FactionManager {
+  SCR_FactionManager "61A6FE5D6411FC9A" {
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -20,16 +20,16 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "MMG 1"
-       }
-       SCR_CallsignInfo "{619D1557FDCD1761}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{619D1557FD2E7BFF}" {
+       SCR_CallsignInfo "{619D1557FDCD1761}" {
         m_sCallsign "1-4"
        }
+       SCR_CallsignInfo "{619D1557FD2E7BFF}" {
+        m_sCallsign "MMG 1"
+       }
        SCR_CallsignInfo "{619D1557FC81DA96}" {
-        m_sCallsign "MMG2"
+        m_sCallsign "MMG 2"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -48,13 +48,10 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "1-2 (Heavy)"
        }
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
-        m_sCallsign "Sniper Section"
-       }
-       SCR_CallsignInfo "{619D15550958346E}" {
         m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{619D1555089474B9}" {
-        m_sCallsign "1-4 (Heavy)"
+        m_sCallsign "Sniper Section"
        }
        SCR_CallsignInfo "{619D155508D3005F}" {
         m_sCallsign "MMG Section"

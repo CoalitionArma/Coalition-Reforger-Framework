@@ -1,6 +1,8 @@
 PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  coords 4912.239 37.204 9070.177
- m_sTextData "We must defend the town of Tyrone at all costs, BLUFOR forces are mobilizing to our south for a decisive engagment to capture this town. Company sees it that we not lose this town and its strategic importance in this region."
+ m_sTextData "We must defend the town of Tyrone at all costs, BLUFOR forces are mobilizing to our south for a decisive engagment to capture this town. Company sees it that we not lose this town and its strategic importance in this region."\
+ ""\
+ "You may not go south of the town of Gorey until after safestart."
  m_iOrder 5
 }
 $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
@@ -57,11 +59,13 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
 }
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
  coords 4730.337 162.238 6991.918
- m_sTextData "Soviet forces are concentrating their forces around the defense of the town of Tyron."\
+ m_sTextData "Soviet forces are concentrating their forces around the defense of the town of Tyrone."\
  ""\
- "Your mission is to destroy any Soviet forces acting as a blocking force between our platoon and the town of Tyron."\
+ "Your mission is to destroy any Soviet forces acting as a blocking force between our platoon and the town of Tyrone."\
  ""\
- "Once at least 50% of Blufor has entered the area of Tyron we will consider this mission a success."
+ "Once at least 50% of Blufor has entered the area of Tyron we will consider this mission a success."\
+ ""\
+ "You may not move past Montignac till after safestart. "
  m_iOrder 4
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
