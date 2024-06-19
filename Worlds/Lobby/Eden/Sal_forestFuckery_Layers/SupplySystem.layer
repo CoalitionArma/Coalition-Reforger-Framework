@@ -30,7 +30,6 @@ GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Ten
       SCR_ResourceComponent "{5D247A59598D71AE}" {
        m_aContainers {
         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 0
         }
        }
       }
@@ -46,7 +45,6 @@ GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Ten
       SCR_ResourceComponent "{5D247A59598D71AE}" {
        m_aContainers {
         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-         m_fResourceValueCurrent 0
         }
        }
       }
