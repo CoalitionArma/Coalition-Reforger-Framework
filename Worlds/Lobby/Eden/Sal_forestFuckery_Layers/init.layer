@@ -67,24 +67,3 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   }
  }
 }
-SCR_FactionControlTriggerEntity TyroneOBJ {
- coords 4920.471 36.56 9083.658
- TriggerShapeType Sphere
- SphereRadius 129.8
- TriggerActivationType "Every query"
- PeriodicQueries 1
- OnActivate ""\
- "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Tyrone has been captured by Blufor\", 10);"\
- "		GetGame().GetCallqueue().CallLater(endGame, 5000, false);"\
- "	}"\
- "	void endGame()"\
- "	{"\
- "		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());"\
- "        Faction faction = GetGame().GetFactionManager().GetFactionByKey(\"US\");"\
- "        int fIndex = GetGame().GetFactionManager().GetFactionIndex(faction);"\
- "        gameMode.EndGameMode(SCR_GameModeEndData.CreateSimple(EGameOverTypes.EDITOR_FACTION_VICTORY, -1, fIndex));"\
- "	"
- m_sOwnerFactionKey "US"
- m_iRatioMethod "More than"
- m_fFriendlyRatioLimit 0.75
-}
