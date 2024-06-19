@@ -56,6 +56,9 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        SCR_CallsignInfo "{619D155508D3005F}" {
         m_sCallsign "MMG Section"
        }
+       SCR_CallsignInfo "{61A70AD2A8C97FC1}" {
+        m_sCallsign "Pilots"
+       }
       }
       m_sCallsignGroupFormat "%3"
      }

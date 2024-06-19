@@ -1,14 +1,90 @@
-PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
- coords 4838.165 139.73 6712.089
- angleY 0
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 4438.565 155.133 7023.518
+  angleY 0
+ }
+ {
+  coords 4457.362 129.501 7136.594
+  angleY 0
+ }
+ {
+  coords 4527.378 136.253 7209.551
+  angleY 0
+ }
+ {
+  coords 4618.236 150.861 7240.531
+  angleY 0
+ }
+ {
+  coords 4714.721 161.034 7256.297
+  angleY 0
+ }
+ {
+  coords 4807.941 164.46 7236.675
+  angleY 0
+ }
+ {
+  coords 4936.498 169.46 7147.6
+  angleY 0
+ }
+ {
+  coords 4984.743 175.187 7068.009
+  angleY 0
+ }
+ {
+  coords 4427.409 149.052 6910.148
+  angleY 0
+ }
 }
 PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 4907.573 37.207 9073.581
  angleY 0
 }
-PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
- coords 5106.99 75.92 9128.522
- angleY 0
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 5570.988 71.502 8094.941
+  angleY 0
+ }
+ {
+  coords 5400.857 47.73 8121.015
+  angleY 0
+ }
+ {
+  coords 5203.898 68.608 8101.91
+  angleY 0
+ }
+ {
+  coords 5025.797 114.051 8098.663
+  angleY 0
+ }
+ {
+  coords 4839.352 113.345 8102.002
+  angleY 0
+ }
+ {
+  coords 4680.773 124.441 8106.12
+  angleY 0
+ }
+ {
+  coords 4487.689 108.528 8136.73
+  angleY 0
+ }
+ {
+  coords 4311.667 84.652 8177.633
+  angleY 0
+ }
+ {
+  coords 4179.625 74.783 8183.232
+  angleY 0
+ }
+ {
+  coords 4006.187 35.984 8202.833
+  angleY 0
+ }
+ {
+  coords 3822.155 1.164 8234.043
+  angleY 0
+ }
 }
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
@@ -184,8 +260,22 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 4920.388 36.474 9086.479
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 4920.388 36.474 9086.479
+ }
+ TyroneSupplyMarker {
+  coords 4953.344 36.84 9217.767
+  angleY 0
+  m_sQuadName "retain"
+  m_sDescription "Tyrone Supply Point"
+ }
+ AirfieldSupplyMarker {
+  coords 4700.206 27.844 11200.532
+  angleY 0
+  m_sQuadName "retain"
+  m_sDescription "Airfield Supply Point"
+ }
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 4830.807 140.886 6718.521
