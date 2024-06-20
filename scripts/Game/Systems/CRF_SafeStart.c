@@ -103,15 +103,12 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		array<SCR_Faction> outArray = new array<SCR_Faction>;
 		outFaction.ToArray(outArray);
 		
-		m_iPlayedFactionsCount = 0;
 		string bluforString = "#Coal_SS_No_Faction";
 		string opforString = "#Coal_SS_No_Faction"; 
 		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
 			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;
-			
-			m_iPlayedFactionsCount = m_iPlayedFactionsCount + 1;
 			
 			Color factionColor = faction.GetFactionColor();
 			float rg = Math.Max(factionColor.R(), factionColor.G());
@@ -128,6 +125,15 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		};
 		
 		m_aFactionsStatusArray = {bluforString, opforString, indforString};
+		m_iPlayedFactionsCount = 0;
+		
+		foreach (string factionString : m_aFactionsStatusArray)
+		{
+			if (factionString == "#Coal_SS_No_Faction")
+				continue;
+			
+			m_iPlayedFactionsCount = m_iPlayedFactionsCount + 1;
+		}
 		
 		Replication.BumpMe();
 	}
@@ -248,7 +254,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 250, true);
 			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 1250, true);
-			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 500, true);
+			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 1000, true);
 			
 			Replication.BumpMe();//Broadcast m_SafeStartEnabled change
 			
