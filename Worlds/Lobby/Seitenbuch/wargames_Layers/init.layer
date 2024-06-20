@@ -60,6 +60,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
       }
       m_sCallsignGroupFormat "%3"
      }
+     m_sFactionRadioEncryptionKey "borgor"
     }
     SCR_Faction "{56DEAC40D3C2E623}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
@@ -97,6 +98,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
      }
     }
     SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_bIsPlayable 1
      m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {

@@ -1,5 +1,5 @@
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 1972.919 435.29 823.289
+ coords 1972.186 430.721 969.868
  angleX -0.894
  angleY 90.028
  angleZ -1.79
@@ -9,7 +9,7 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
 }
 $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
  {
-  coords 3527.969 378.5 699.379
+  coords 3161.375 378.5 873.416
   angleY 0
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "objective-marker"
@@ -30,7 +30,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
   m_bShowForAnyFaction 1
  }
  {
-  coords 1950.698 440.656 805.188
+  coords 1928.576 440.656 780.996
   angleY 0
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "objective-marker"
@@ -42,7 +42,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
  }
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 3239.234 383.399 812.571
+ coords 3111 387.406 901.75
  angleX -1.79
  angleY 90
  m_aVisibleForFactions {
