@@ -149,18 +149,10 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		
 		IEntity bombSitePlanted = null;
 		
-		
-		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
-		if (!gameModePlayerComponent) 
-			return;
-		
-		
 		if (aSitePlanted) {
-			gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 15, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			m_sDestroyedBombSiteString = "SiteA";
 			bombSitePlanted = aSite;
 		} else {
-			gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 15, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			m_sDestroyedBombSiteString = "SiteB";
 			bombSitePlanted = bSite;
 		};
@@ -224,10 +216,17 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	{
 		IEntity destroyedBombSiteEntity = null;
 		
-		if(m_sDestroyedBombSiteString == "SiteA")
+		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
+		if (!gameModePlayerComponent) 
+			return;
+		
+		if(m_sDestroyedBombSiteString == "SiteA") {
+			gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 15, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			destroyedBombSiteEntity = aSite;
-		else
+		} else {
+			gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 15, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			destroyedBombSiteEntity = bSite;
+		};
 		
 		// Spawn explosion at site
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
