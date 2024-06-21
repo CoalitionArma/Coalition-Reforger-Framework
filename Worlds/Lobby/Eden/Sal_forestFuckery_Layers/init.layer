@@ -185,7 +185,7 @@ $grp SCR_BaseTriggerEntity {
   UpdatePeriod 10
   OnQueryFinished ""\
   "		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;"\
-  "		Faction USSR = GetGame().GetFactionManager().GetFactionByKey(\"USSR\");"\
+  "		Faction USSR;"\
   "		int playerCount = GetCharacterCountByFactionInsideTrigger(USSR);"\
   "		int overallCount = countAlivePlayers(\"USSR\");"\
   "		"\
