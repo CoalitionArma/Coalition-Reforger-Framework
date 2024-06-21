@@ -180,7 +180,6 @@ $grp SCR_BaseTriggerEntity {
   "	}"
   TriggerShapeType Sphere
   SphereRadius 604.3
-  DrawShape 1
   TriggerActivationType "All changes"
   PeriodicQueries 1
   UpdatePeriod 10
@@ -199,7 +198,7 @@ $grp SCR_BaseTriggerEntity {
   "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets have extracted all resources but have been decisively defeated!\", 10);"\
   "        	GetGame().GetCallqueue().CallLater(endGameDraw, 10000, false);"\
   "		}"\
-  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() == false && overallCount == 0) "\
+  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() == false && overallCount < 8) "\
   "		{"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets have been decisively defeated!\", 10);"\
   "        	GetGame().GetCallqueue().CallLater(endGame, 10000, false, \"US\");"\
