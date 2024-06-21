@@ -19,6 +19,11 @@ SCR_ChimeraCharacter : "{5117311FB822FD1F}Prefabs/Characters/Factions/OPFOR/USSR
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173E6675BF7}" {
+     PrefabsToSpawn + {
+      "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+     }
+    }
     ItemsInitConfigurationItem "{60E15DD47D4F3E00}" {
      TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_Veshmeshok.et"
      PrefabsToSpawn {
