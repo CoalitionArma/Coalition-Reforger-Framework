@@ -188,23 +188,56 @@ $grp SCR_BaseTriggerEntity {
   "		Faction USSR;"\
   "		int playerCount = GetCharacterCountByFactionInsideTrigger(USSR);"\
   "		int overallCount = countAlivePlayers(\"USSR\");"\
+  "		"\
   "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() && playerCount >= 8) "\
   "		{"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets have successfully extracted from the AO!\", 10);"\
   "        	GetGame().GetCallqueue().CallLater(endGame, 10000, false, \"USSR\");"\
   "		}"\
+  "		"\
   "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() && overallCount == 0) "\
   "		{"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets have extracted all resources but have been decisively defeated!\", 10);"\
   "        	GetGame().GetCallqueue().CallLater(endGameDraw, 10000, false);"\
   "		}"\
-  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() == false && overallCount < 8) SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets forces do not have the manpower to retreat!\", 10);"\
-  "			"\
+  "		"\
   "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() == false && overallCount == 0) "\
   "		{"\
   "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets forces have been decisively defeated!\", 10);"\
   "        	GetGame().GetCallqueue().CallLater(endGame, 10000, false, \"US\");"\
   "		}"\
+  "	"
+ }
+ ManpowerTrigger {
+  coords 4769.224 163.44 7110.26
+  userScript "	static int countAlivePlayers(string filter)"\
+  "	{"\
+  "		int players = 0;"\
+  "		array<int> outPlayers = {};"\
+  "		GetGame().GetPlayerManager().GetPlayers(outPlayers);"\
+  "		foreach(int playerId : outPlayers)"\
+  "		{"\
+  "		 	PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId); if (!pc) continue;"\
+  "		  	IEntity controlled = pc.GetControlledEntity();"\
+  "		  	SCR_ChimeraCharacter ch = SCR_ChimeraCharacter.Cast(controlled); if (!ch) continue;"\
+  "			CharacterControllerComponent ccc = ch.GetCharacterController();"\
+  "			if (filter == ch.GetFactionKey() && !ccc.IsDead()) ++players;"\
+  "		}"\
+  "		return players;"\
+  "	}"
+  TriggerShapeType Sphere
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		int overallCount = countAlivePlayers(\"USSR\");"\
+  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && overallCount < 8) "\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets forces do not have the manpower to retreat!\", 10);"\
+  "			IEntity trigger = GetGame().GetWorld().FindEntityByName(\"ManpowerTrigger\");"\
+  "			delete trigger;"\
+  "		}"\
+  "		"\
   "	"
  }
 }
