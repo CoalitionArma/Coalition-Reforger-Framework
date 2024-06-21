@@ -1,38 +1,22 @@
 $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  {
-  coords 4438.565 155.133 7023.518
+  coords 4458.573 150.735 6838.221
   angleY 0
  }
  {
-  coords 4457.362 129.501 7136.594
+  coords 4605.097 174.582 6914.991
   angleY 0
  }
  {
-  coords 4527.378 136.253 7209.551
+  coords 4762.796 181.413 6970.063
   angleY 0
  }
  {
-  coords 4618.236 150.861 7240.531
+  coords 4880.018 171.016 7023.248
   angleY 0
  }
  {
-  coords 4714.721 161.034 7256.297
-  angleY 0
- }
- {
-  coords 4807.941 164.46 7236.675
-  angleY 0
- }
- {
-  coords 4936.498 169.46 7147.6
-  angleY 0
- }
- {
-  coords 4984.743 175.187 7068.009
-  angleY 0
- }
- {
-  coords 4427.409 149.052 6910.148
+  coords 5052.351 175.187 7050.718
   angleY 0
  }
 }
