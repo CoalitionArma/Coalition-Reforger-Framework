@@ -1,34 +1,33 @@
-SCR_AIGroup : "{D5AF34C09B08EFE9}Prefabs/Groups/BLUFOR/BW/Command/Group_BW_Command_PLT_p.et" {
- coords 8376.145 358.548 6716.116
- m_aUnitPrefabSlots {
-  "{02BCA38F4A161C36}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_PL_P.et" "{068484503456C8C9}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Medic_P.et" "{1EA52F545EAC63B6}Prefabs/Characters/Factions/BLUFOR/BW/Character_BW_Rifleman_P.et"
- }
- m_sCustomNameSet "1st Platoon"
+SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+ coords 8378.67 358.338 6717.568
  {
-  $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+  $grp SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
    {
-    coords -28.922 -2.288 42.161
-    angleY 172
-    m_sCustomNameSet "1st Squad"
+    coords -44.325 0.45 -17.99
+    angleX -0.895
+    angleY -0.481
+    angleZ 0.007
    }
    {
-    coords -2.677 -4.396 45.238
-    angleY -138
+    coords -72.559 2.525 0.256
+    angleX -11.883
+    angleY -0.483
+    angleZ 2.344
     m_sCustomNameSet "2nd Squad"
    }
    {
-    coords -61.947 -0.235 17.353
+    coords -17.33 -1.555 21.521
     m_sCustomNameSet "3rd Squad"
    }
   }
-  $grp SCR_AIGroup : "{E3D996315C27584A}Prefabs/Groups/BLUFOR/BW/Support/Group_BW_Support_ATTeam.et" {
+  $grp SCR_AIGroup : "{CDA4D305886F199D}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_MAT.et" {
    {
-    coords -4.047 0.178 -12.284
-    m_sCustomNameSet "Medium Anti-tank Team"
+    coords -18.888 0.311 1.572
+    m_sCustomNameSet "MAT Team 1"
    }
    {
-    coords 9.203 -0.625 1.297
-    m_sCustomNameSet "Medium Anti-tank Team"
+    coords -9.646 0.381 -11.466
+    m_sCustomNameSet "MAT Team 2"
    }
   }
  }
