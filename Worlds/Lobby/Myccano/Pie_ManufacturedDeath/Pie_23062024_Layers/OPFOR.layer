@@ -1,8 +1,8 @@
 SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
- coords 5482.789 52.114 3962.673
- angleX -6.921
- angleY 1.196
- angleZ -9.825
+ coords 4700.3 2.952 4389.346
+ angleX 1.131
+ angleY -178.109
+ angleZ -7.091
  m_sCustomNameSet "1st Platoon"
  {
   SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
@@ -10,7 +10,7 @@ SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80
    m_sCustomNameSet "1st Squad"
    {
     SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-     coords -0.254 -0 -2.238
+     coords -0.254 0 -2.238
      m_sCustomNameSet "2nd Squad"
      {
       SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
@@ -51,9 +51,39 @@ SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80
   }
  }
 }
+$grp Vehicle : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ UAZ469_PKM1 {
+  coords 4708.794 2.641 4333.857
+  angleY 157.35
+ }
+ UAZ469_PKM2 {
+  coords 4706.208 2.619 4328.792
+  angleY -176.452
+ }
+}
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 4715.067 2.431 4336.753
+  angleX -0.684
+  angleY -175.553
+  angleZ -2.745
+ }
+ Ural4320_transport3 {
+  coords 4717.587 2.842 4357.412
+  angleX -0.684
+  angleY -175.553
+  angleZ -2.745
+ }
+ Ural4320_transport2 {
+  coords 4716.277 2.688 4347.722
+  angleX -0.684
+  angleY -175.553
+  angleZ -2.745
+ }
+}
 Vehicle Mi8_base1 : "{AFF6067A5CE8A852}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8_base.et" {
- coords 5520.73 58.563 3943.35
- angleX 3.882
- angleY -159.719
- angleZ 2.384
+ coords 4744.196 1.855 4369.841
+ angleX -1.223
+ angleY -160.024
+ angleZ 3.361
 }

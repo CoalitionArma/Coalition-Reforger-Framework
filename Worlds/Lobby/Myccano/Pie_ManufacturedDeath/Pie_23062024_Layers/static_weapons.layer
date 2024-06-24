@@ -1,0 +1,104 @@
+Turret Tripod_6T5_61B0FE1ADE5A305E : "{0D742ABD55FE1FDC}Metistripod.et" {
+ coords 5408.434 14.125 2850.678
+ angleX -0.944
+ angleY -17.306
+ angleZ 3.283
+}
+$grp Turret : "{29F0CC704A582154}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV.et" {
+ Tripod_6T7_NSV_61B0FE1F95B94FAC {
+  coords 5401.413 1.625 2875.716
+ }
+ Tripod_6T7_NSV_61B0FE1F765FF390 {
+  coords 5392.196 29.923 2776.302
+ }
+ Tripod_6T7_NSV_61B0FE1F4A094CF6 {
+  coords 5421.164 29.924 2741.129
+  angleY 113.403
+ }
+ Tripod_6T7_NSV_61B0FE1F47EA26AD {
+  coords 5446.85 17.988 2744.937
+  angleY -7.975
+ }
+ Tripod_6T7_NSV_61B0FE1F587A6FAC {
+  coords 5452.162 17.988 2724.343
+  angleY 117.528
+ }
+}
+$grp Turret : "{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et" {
+ Tripod_6T7_NSV_SPP_61B0FE1F6D8E11E8 {
+  coords 5383.964 13.412 2850.387
+  angleX -3.404
+  angleY -56.18
+  angleZ 1.433
+ }
+ Tripod_6T7_NSV_SPP_61B0FE1F64BD1A0A {
+  coords 5394.843 13.649 2862.92
+  angleX -1.321
+  angleY -10.609
+  angleZ 3.151
+ }
+}
+$grp Turret : "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et" {
+ Tripod_6T5_PKM_61B0FE1BCF3E237E {
+  coords 5560.079 20.505 2875.03
+  angleY -41.524
+ }
+ Tripod_6T5_PKM_61B0FE1BCF3E237E2 {
+  coords 5555.503 20.561 2856.154
+  angleY -83.166
+ }
+ Tripod_6T5_PKM_61B0FE1BCF3E237E3 {
+  coords 5567.043 20.87 2869.75
+  angleY 31.969
+ }
+}
+Turret D30tripod_61B0FE1AA57AB725 : "{B4B9FCFD0BF40E7E}D30/D30tripod.et" {
+ coords 5524.174 3.931 2709.426
+ angleY -9.496
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 5394.525 13.664 2846.611
+  angleY 0
+  m_fWorldSize 25
+  m_sDescription "Static Weapons"
+  m_aVisibleForFactions {
+   "CDF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 5443.377 17.989 2728.467
+  angleY 0
+  m_fWorldSize 25
+  m_sDescription "Static Weapons"
+  m_aVisibleForFactions {
+   "CDF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 5403.631 29.924 2757.609
+  angleY 0
+  m_fWorldSize 25
+  m_sDescription "Static Weapons"
+  m_aVisibleForFactions {
+   "CDF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 5571.613 20.957 2860.487
+  angleY 0
+  m_fWorldSize 25
+  m_sDescription "Static Weapons"
+  m_aVisibleForFactions {
+   "CDF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}

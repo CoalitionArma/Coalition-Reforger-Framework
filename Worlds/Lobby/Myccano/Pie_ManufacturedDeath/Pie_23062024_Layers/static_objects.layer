@@ -1,0 +1,328 @@
+$grp GenericEntity : "{0DD88200DD957B53}Prefabs/Props/Vehicles/Truck Wreck.et" {
+ {
+  coords 5365.177 4.962 3115.479
+  angleX 2.319
+  angleY 149.738
+  angleZ -1.352
+ }
+ {
+  coords 5365.83 5.377 3106.473
+  angleX 2.658
+  angleY -172.038
+  angleZ 0.372
+ }
+}
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et" {
+ coords 5360.356 7.006 3065.061
+ angleY -112.245
+}
+$grp GenericEntity : "{33748AC23F947B6E}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_round_burlap.et" {
+ {
+  coords 5448.096 17.989 2745.46
+  angleY 44.809
+ }
+ {
+  coords 5454.265 17.988 2725.674
+  angleY 83.407
+ }
+ {
+  coords 5450.252 17.988 2730.541
+  angleY -3.27
+ }
+ {
+  coords 5450.859 17.988 2722.138
+  angleY -164.75
+ }
+ {
+  coords 5421.257 29.923 2743.01
+  angleY 64.23
+ }
+ {
+  coords 5420.332 29.924 2739.251
+  angleY 148.279
+ }
+ {
+  coords 5417.855 29.924 2738.412
+  angleY 164.237
+ }
+ {
+  coords 5393.927 29.926 2776.542
+  angleY 44.809
+ }
+ {
+  coords 5417.447 13.311 2838.855
+  angleX -3.28
+  angleY 72.892
+  angleZ -0.954
+ }
+ {
+  coords 5453.347 11.275 2781.151
+ }
+ {
+  coords 5451.768 11.275 2775.057
+  angleY 177.622
+ }
+ {
+  coords 5448.377 11.275 2779.283
+  angleY -93.409
+ }
+}
+$grp GenericEntity : "{420E14DDFE57AF53}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_end_burlap.et" {
+ {
+  coords 5392.904 13.699 2862.899
+  angleY -73.042
+ }
+ {
+  coords 5393.017 13.677 2861.013
+  angleX 3.301
+  angleY 57.136
+  angleZ -0.407
+ }
+ {
+  coords 5398.91 13.344 2866.243
+  angleX -3.17
+  angleY 57.194
+  angleZ -0.635
+ }
+}
+$grp GenericEntity : "{496DDD80744F2C44}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_single_burlap.et" {
+ {
+  coords 5381.841 13.797 2850.308
+  angleY -70.259
+ }
+ {
+  coords 5382.206 13.798 2849.479
+  angleY -121.142
+ }
+ {
+  coords 5382.552 13.353 2850.913
+  angleY 106.53
+ }
+ {
+  coords 5383.057 13.355 2851.264
+  angleY -18.771
+ }
+ {
+  coords 5382.263 13.375 2850.465
+  angleY -138.865
+ }
+ {
+  coords 5382.445 13.508 2850.64
+  angleY 106.53
+ }
+ {
+  coords 5382.854 13.479 2851.15
+  angleY -26.361
+ }
+ {
+  coords 5393.977 13.8 2864.542
+  angleY -161.625
+ }
+ {
+  coords 5393.714 13.8 2864.307
+  angleY 67.773
+ }
+ {
+  coords 5393.229 13.8 2864.15
+  angleY 152.97
+ }
+ {
+  coords 5394.402 13.8 2864.926
+  angleY -12.312
+ }
+ {
+  coords 5394.972 13.8 2865.211
+  angleY -37.026
+ }
+ {
+  coords 5395.458 13.8 2865.411
+  angleY 63.182
+ }
+ {
+  coords 5395.845 13.8 2865.694
+  angleY -12.312
+ }
+}
+GenericEntity : "{4ED8BBC0E6679FBE}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_end_high_burlap.et" {
+ coords 5384.078 13.361 2852.107
+ angleY 147.808
+}
+$grp GenericEntity : "{75FEF1CA582431F3}Prefabs/Props/Wrecks/BTR70_wreck.et" {
+ {
+  coords 5397.688 1.631 2877.843
+  angleX 7.874
+  angleY 163.345
+  angleZ -1.503
+ }
+ {
+  coords 5363.517 4.672 3127.541
+  angleY 154.304
+ }
+ {
+  coords 5366.334 5.989 3094.3
+  angleY 176.786
+ }
+}
+$grp GenericEntity : "{7E7297D61A6BE805}Prefabs/Composition/Trenches/Trenches_01.et" {
+ {
+  coords 5561.042 19.956 2861.025
+  angleX -4.676
+  angleY -81.744
+  angleZ 1.125
+ }
+ {
+  coords 5562.283 19.72 2867.398
+  angleX -6.06
+  angleY -75.871
+  angleZ 2.148
+ }
+}
+$grp GenericEntity : "{BDAA871A06DABD74}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_burlap.et" {
+ {
+  coords 5389.963 29.924 2775.271
+  angleY -32.991
+ }
+ {
+  coords 5400.445 13.356 2864.182
+  angleX -3.268
+  angleY 54.543
+  angleZ 0.385
+ }
+ {
+  coords 5408.325 13.383 2850.75
+  angleX -0.466
+  angleY -32.118
+  angleZ 3.407
+ }
+ {
+  coords 5410.541 13.311 2849.629
+  angleX -3.399
+  angleY 54.569
+  angleZ 0.518
+ }
+ {
+  coords 5412.231 13.323 2846.9
+  angleX -3.245
+  angleY 59.172
+  angleZ -0.633
+ }
+ {
+  coords 5414.011 13.336 2844.078
+  angleX -3.204
+  angleY 59.174
+  angleZ 0.018
+ }
+ {
+  coords 5415.765 13.32 2841.285
+  angleX -3.243
+  angleY 56.293
+  angleZ 0.589
+ }
+ {
+  coords 5596.793 23.8 2844.85
+  angleX -0.895
+  angleY 91.605
+  angleZ -0.025
+ }
+ {
+  coords 5598.406 23.764 2847.563
+  angleX 1.586
+  angleY 152.367
+  angleZ -0.83
+ }
+ {
+  coords 5598.501 23.667 2849.928
+  angleX -1.804
+  angleY 31.974
+  angleZ -2.18
+ }
+ {
+  coords 5596.811 23.388 2852.605
+  angleX 2.809
+  angleY 91.345
+  angleZ -5.286
+ }
+ {
+  coords 5596.228 23.16 2854.891
+  angleX 0.233
+  angleY 61.59
+  angleZ -5.201
+ }
+ {
+  coords 5592.374 22.201 2861.625
+  angleX 1.746
+  angleY 61.617
+  angleZ -8.01
+ }
+ {
+  coords 5595.176 22.588 2860.145
+  angleX -6.09
+  angleY 2.37
+  angleZ -3.81
+ }
+ {
+  coords 5596.273 22.878 2858.047
+  angleX 4.842
+  angleY 122.188
+  angleZ -4.326
+ }
+}
+$grp GenericEntity : "{C61B76E5EF5FE46B}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_bunker_burlap_camonet.et" {
+ {
+  coords 5561.468 19.604 2873.781
+  angleX -3.384
+  angleY -47.934
+  angleZ -4.248
+ }
+ {
+  coords 5557.461 19.7 2855.807
+  angleX -5.339
+  angleY -85.466
+  angleZ -0.423
+ }
+ {
+  coords 5590.708 21.722 2865.223
+  angleX -0.926
+  angleY 42.581
+  angleZ -6.896
+ }
+ {
+  coords 5597.346 23.657 2840.476
+  angleX -1.625
+  angleY 106.617
+  angleZ 2.315
+ }
+}
+$grp GenericEntity : "{D8C2B968F3C757C0}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_short_burlap.et" {
+ {
+  coords 5564.007 20.308 2856.931
+  angleY -19.234
+ }
+ {
+  coords 5566.665 20.209 2870.115
+  angleY 44.538
+ }
+}
+$grp GenericEntity : "{D99955DFCF7D3962}Prefabs/Props/Wrecks/CannonWreck_01.et" {
+ {
+  coords 5532.008 3.022 2702.207
+ }
+ {
+  coords 5521.236 3.096 2702.033
+  angleY -18.309
+ }
+}
+$grp GenericEntity : "{DDCC4099D0355C9F}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_short_high_burlap.et" {
+ {
+  coords 5562.52 20.174 2856.838
+  angleX 0.715
+  angleY 7.65
+  angleZ -5.308
+ }
+ {
+  coords 5565.262 19.913 2870.857
+  angleX 2.15
+  angleY 13.804
+  angleZ -4.987
+ }
+}

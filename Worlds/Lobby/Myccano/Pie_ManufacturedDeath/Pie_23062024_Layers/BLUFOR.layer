@@ -1,3 +1,9 @@
+Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et" {
+ coords 5526.691 3.106 2701.171
+ angleX 0.882
+ angleY 170.054
+ angleZ -0.155
+}
 SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
  coords 5469.843 1.625 2780.411
  {

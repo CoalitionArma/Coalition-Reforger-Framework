@@ -1,0 +1,11 @@
+$grp ParticleEffectEntity : "{899360C930DA3EE3}Prefabs/Particles/Campfire_burning.et" {
+ {
+  coords 5532.486 3.479 2701.786
+ }
+ {
+  coords 5398.78 3.745 2876.203
+ }
+ {
+  coords 5359.663 8.772 3065.002
+ }
+}

@@ -1,78 +1,110 @@
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
-  coords 4753.215 4.285 2635.103
+  coords 4463.671 4.285 2614.81
   angleY 0
  }
  {
-  coords 4887.025 11.098 2292.842
+  coords 4546.591 2.739 2459.673
   angleY 0
  }
  {
-  coords 5172.537 2.656 2038.583
+  coords 4642.979 1.438 2349.637
   angleY 0
  }
  {
-  coords 5553.508 2.654 1972.14
+  coords 4822.142 2.848 2216.817
   angleY 0
  }
  {
-  coords 5837.467 -0 1970.667
+  coords 5021.904 2.406 2105.099
   angleY 0
  }
  {
-  coords 6266.635 0 1960.053
+  coords 5278.021 2.656 1974.063
   angleY 0
  }
  {
-  coords 6603.935 0 2210.453
+  coords 5444.538 2.657 1983.417
   angleY 0
  }
  {
-  coords 6747.99 0 2527.549
+  coords 5608.219 2.656 2056.038
   angleY 0
  }
  {
-  coords 6712.941 0 3143.253
+  coords 5735.956 2.656 2118.932
   angleY 0
  }
  {
-  coords 6547.718 0 3456.528
+  coords 5952.359 2.657 2114.065
   angleY 0
  }
  {
-  coords 6296.584 0 3784.733
+  coords 6196.499 1.317 2120.896
   angleY 0
  }
  {
-  coords 6027.122 -0 4377.39
+  coords 6364.577 0 2183.406
   angleY 0
  }
  {
-  coords 5529.531 0 4626.514
+  coords 6536.468 0 2511.713
   angleY 0
  }
  {
-  coords 5033.59 4.262 4555.585
+  coords 6550.459 0 2941.388
   angleY 0
  }
  {
-  coords 4706.792 3.919 4207.182
+  coords 6506.473 0 3330.045
   angleY 0
  }
  {
-  coords 4522.348 5.431 3786.835
+  coords 6492.537 0 3200.501
   angleY 0
  }
  {
-  coords 4288.651 5.4 3488.936
+  coords 6305.025 -0 3506.856
   angleY 0
  }
  {
-  coords 4342.864 2.986 3109.107
+  coords 6098.659 0 3638.827
   angleY 0
  }
  {
-  coords 4689.674 3.485 2732.482
+  coords 5886.866 0 3720.64
+  angleY 0
+ }
+ {
+  coords 5673.489 34.062 3754.587
+  angleY 0
+ }
+ {
+  coords 5460.433 23.896 3752.104
+  angleY 0
+ }
+ {
+  coords 5268.244 30.737 3715.643
+  angleY 0
+ }
+ {
+  coords 5090.165 52.733 3629.985
+  angleY 0
+ }
+ {
+  coords 4958.819 52.206 3459.974
+  angleY 0
+ }
+ {
+  coords 4882.745 43.674 3268.707
+  angleY 0
+ }
+ {
+  coords 4783.142 0 2993.911
+  angleY 0
+ }
+ {
+  coords 4596.946 4.45 2787.051
   angleY 0
  }
 }
