@@ -26,17 +26,19 @@ SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/Command/CRF_U
   $grp SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/Command/CRF_USMC_Platoon.et" {
    {
     coords 11.146 0 -25.404
-    m_sCustomNameSet "2nd Platoon"
+    m_aUnitPrefabSlots {
+     "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
+    }
     {
      $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/Infantry/CRF_USMC_RifleSquad.et" {
       {
        coords -16.981 0.001 12.521
       }
       {
-       coords -8.223 -0 16.839
+       coords -8.223 0 16.839
       }
       {
-       coords -2.312 -0 19.463
+       coords -2.312 0 19.463
       }
      }
     }
@@ -46,17 +48,18 @@ SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/Command/CRF_U
     m_aUnitPrefabSlots {
      "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
     }
+    m_sCustomNameSet "2nd Platoon"
     {
      $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/Infantry/CRF_USMC_RifleSquad.et" {
       {
-       coords 1.354 -0 17.164
+       coords 1.354 0 17.164
       }
       {
-       coords -6.935 -0 10.19
+       coords -6.935 0 10.19
        angleY -35.042
       }
       {
-       coords -5.067 -0 11.046
+       coords -5.067 0 11.046
        angleY -32.743
       }
      }
