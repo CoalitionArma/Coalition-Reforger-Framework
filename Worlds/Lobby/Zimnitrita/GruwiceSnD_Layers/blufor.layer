@@ -73,8 +73,8 @@ $grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transpo
  }
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 9802.156 2.156 4572.796
- angleY 0
+ coords 9802.155 2.156 4572.796
+ angleY 90.084
  m_aVisibleForFactions {
   "RHS_US_USMC"
  }
