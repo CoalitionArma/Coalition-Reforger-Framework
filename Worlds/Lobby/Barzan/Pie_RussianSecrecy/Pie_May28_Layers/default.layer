@@ -98,6 +98,34 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
       m_sCallsignGroupFormat "%3"
      }
     }
+    SCR_Faction "{5E5106B25048F22B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5E5106B0E940AF39}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1Plt"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2Plt"
+       }
+       SCR_CallsignInfo "{61B126313A3A8680}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61B126313AEAF8E5}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61B12631366AF647}" {
+        m_sCallsign "MAT"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
    }
   }
  }
@@ -190,7 +218,7 @@ Vehicle Mi8MT1 : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT.et"
  angleZ 0.843
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 1192.479 8.626 1682.504
+ coords 1290.025 9.659 2521.065
  angleY 0
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
