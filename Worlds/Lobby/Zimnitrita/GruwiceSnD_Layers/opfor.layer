@@ -1,0 +1,27 @@
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/Command/CRF_MSV_1stPlatoon.et" {
+ coords 10338.94 15 5319.411
+ angleY -94.69
+ m_aUnitPrefabSlots {
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
+ }
+ {
+  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/Infantry/CRF_MSV_RifleSquad.et" {
+   {
+    coords 1.706 0 -11.058
+    angleY 4.545
+   }
+   {
+    coords 0.866 0 -11.635
+    angleY 2.978
+   }
+   {
+    coords 1.584 0 -9.354
+    angleY -2.286
+   }
+   {
+    coords 3.172 0 -9.29
+    angleY 1.759
+   }
+  }
+ }
+}
