@@ -16,12 +16,6 @@ Vehicle M3 : "{5674FAEB9AB7BDD0}Prefabs/Vehicles/Wheeled/M998/M998.et" {
  angleY -0.126
  angleZ -2.687
 }
-Vehicle UH1H1 : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
- coords 1187.794 8.225 1674.081
- angleX 2.683
- angleY 0.042
- angleZ 0.896
-}
 Vehicle M998_covered_long1 : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
  coords 1175.789 8.564 1684.336
  angleX 3.545

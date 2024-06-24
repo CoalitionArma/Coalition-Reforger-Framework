@@ -29,14 +29,6 @@ SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_Ri
            {
             SCR_AIGroup : "{CDA4D305886F199D}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_MAT.et" {
              coords 10.152 -0.016 1.479
-             {
-              SCR_AIGroup : "{4F7F7E8B05ADE07C}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_Pilots_p.et" {
-               coords -12.13 -0.468 -12.594
-               angleX 2.678
-               angleY -0.126
-               angleZ -2.687
-              }
-             }
             }
            }
           }
