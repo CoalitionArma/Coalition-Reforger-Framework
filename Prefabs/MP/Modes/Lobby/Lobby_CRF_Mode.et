@@ -83,10 +83,160 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
   SCR_FactionManager "5EA8C932C68D400F" : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
    ID "60E1584A0994EEB9"
    Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{61B0759DA59F52D7}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{61B0759DBA4A6715}" {
+        m_sCallsign "4th Squad"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
     SCR_Faction "{56DEAC40D3C2E623}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{61B0759D62409C8B}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{61B0759D623777E8}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "4th Squad"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
      }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5612D998B673DA16}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{588F0D539C04D3C9}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{588F0D539FD7829D}" {
+        m_sCallsign "4th Squad"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{61B0759D25919F87}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{61B0759D3A794A7A}" {
+        m_sCallsign "4th Squad"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{61B0759D0DFD7B06}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{61B0759D0DE2ED1E}" {
+        m_sCallsign "4th Squad"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+     m_sFactionRadioEncryptionKey "pieBluppers"
+    }
+    SCR_Faction "{5E5106B25048F22B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5E5106B0E940AF39}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{61B0759D16B07F58}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{61B0759D169C2841}" {
+        m_sCallsign "4th Squad"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+     m_sFactionRadioEncryptionKey "wickenChuckets"
     }
    }
   }
