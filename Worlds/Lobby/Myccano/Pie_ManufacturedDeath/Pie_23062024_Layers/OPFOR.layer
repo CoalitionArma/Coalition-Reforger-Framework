@@ -1,0 +1,59 @@
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 5482.789 52.114 3962.673
+ angleX -6.921
+ angleY 1.196
+ angleZ -9.825
+ m_sCustomNameSet "1st Platoon"
+ {
+  SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   coords -0.69 0 -1.904
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+     coords -0.254 -0 -2.238
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+       coords 2.935 -0.039 -5.515
+       angleX -0.016
+       angleY -0.107
+       angleZ 0.865
+       m_sCustomNameSet "2nd Platoon"
+       {
+        SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+         coords -0.217 -0.006 -1.472
+         angleX 0.873
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+           coords -0.235 0.003 -1.789
+           angleX 0.08
+           angleY 0.367
+           angleZ -3.438
+           m_sCustomNameSet "4th Squad"
+           {
+            SCR_AIGroup : "{9CDAF20E0505DADE}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_Pilots_p.et" {
+             coords 14.039 -0.632 8.958
+             angleX 0.83
+             angleY -0.346
+             angleZ 2.571
+             m_sCustomNameSet "Pilots"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle Mi8_base1 : "{AFF6067A5CE8A852}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8_base.et" {
+ coords 5520.73 58.563 3943.35
+ angleX 3.882
+ angleY -159.719
+ angleZ 2.384
+}

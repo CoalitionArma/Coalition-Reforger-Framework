@@ -1,0 +1,37 @@
+SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+ coords 5469.843 1.625 2780.411
+ {
+  SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+   coords 0.036 -0.001 -1.731
+   {
+    SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+     coords 0.121 0.001 -1.966
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+       coords 0.142 0 -4.033
+       m_sCustomNameSet "2nd Platoon"
+       {
+        SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+         coords -0.069 -0.001 -1.691
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+           coords -0.032 0 -1.312
+           m_sCustomNameSet "4th Squad"
+           {
+            SCR_AIGroup : "{CDA4D305886F199D}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_MAT.et" {
+             coords 0.002 0.001 -2.39
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
