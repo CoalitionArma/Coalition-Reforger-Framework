@@ -1,0 +1,182 @@
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ mapBoundary {
+  coords 10742.938 25.281 5345.366
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary2 {
+  coords 10732.988 15.322 5201.776
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary3 {
+  coords 10717.116 9.52 5065.619
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary4 {
+  coords 10658.932 6.941 4976.387
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary5 {
+  coords 10551.347 2.868 4966.087
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary6 {
+  coords 10401.25 22.647 4964.014
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary7 {
+  coords 10279.868 15.759 4970.675
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary8 {
+  coords 10135.521 4.77 4974.344
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary9 {
+  coords 10043.843 11.84 5024.121
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary10 {
+  coords 9943.837 9.948 5132.749
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary11 {
+  coords 9887.891 6.024 5274.61
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary12 {
+  coords 9915.65 4.003 5429.672
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary13 {
+  coords 9922.832 5.853 5575.988
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary14 {
+  coords 9936.018 10.002 5795.757
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary15 {
+  coords 10052.828 11.154 5931.228
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary16 {
+  coords 10192.083 10.215 6002.014
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary17 {
+  coords 10360.318 10.001 5975.325
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary18 {
+  coords 10521.172 30.292 5974.286
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary19 {
+  coords 10597.865 30.355 5858.265
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ mapBoundary20 {
+  coords 10726.256 27.719 5696.301
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 80
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
