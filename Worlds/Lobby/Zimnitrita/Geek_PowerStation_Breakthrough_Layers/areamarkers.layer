@@ -1,0 +1,222 @@
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 9696.924 10.188 10119.196
+  angleY 0
+ }
+ {
+  coords 9701.611 9.321 10110.987
+  angleY 0
+ }
+ {
+  coords 9705.966 8.583 10103.774
+  angleY 0
+ }
+ {
+  coords 9711.339 7.853 10093.038
+  angleY 0
+ }
+ {
+  coords 9714.68 7.446 10085.65
+  angleY 0
+ }
+ {
+  coords 9719.784 5.555 10067.309
+  angleY 0
+ }
+ {
+  coords 9729.922 8.013 10051.995
+  angleY 0
+ }
+ {
+  coords 9772.772 3.004 10037.35
+  angleY 0
+ }
+ {
+  coords 9765.953 2.805 10015.261
+  angleY 0
+ }
+ {
+  coords 9750.658 3.685 9983.284
+  angleY 0
+ }
+ {
+  coords 9732.943 0.795 9954.328
+  angleY 0
+ }
+ {
+  coords 9712.477 5.197 9918.452
+  angleY 0
+ }
+ {
+  coords 9673.259 3.278 9849.483
+  angleY 0
+ }
+ {
+  coords 9628.585 13.703 9780.719
+  angleY 0
+ }
+ {
+  coords 9588.354 21.227 9722.834
+  angleY 0
+ }
+ {
+  coords 9570.752 37.834 9675.089
+  angleY 0
+ }
+ {
+  coords 9513.704 67.057 9611.835
+  angleY 0
+ }
+ {
+  coords 9490.912 63.831 9539.264
+  angleY 0
+ }
+ {
+  coords 9447.298 61.918 9475.096
+  angleY 0
+ }
+ {
+  coords 9400.045 56.228 9421.192
+  angleY 0
+ }
+ {
+  coords 9336.696 55.129 9336.484
+  angleY 0
+ }
+ {
+  coords 9285.277 59.652 9252.448
+  angleY 0
+ }
+ {
+  coords 9228.286 64.229 9155.431
+  angleY 0
+ }
+ {
+  coords 9161.061 62.594 9064.686
+  angleY 0
+ }
+ {
+  coords 9078.59 71.722 8974.609
+  angleY 0
+ }
+ {
+  coords 8948.547 49.006 8828.694
+  angleY 0
+ }
+ {
+  coords 8835.641 63.572 8885.123
+  angleY 0
+ }
+ {
+  coords 8757 58.846 8916.091
+  angleY 0
+ }
+ {
+  coords 8683.178 48.925 8976.693
+  angleY 0
+ }
+ {
+  coords 8635.901 44.192 9049.903
+  angleY 0
+ }
+ {
+  coords 8644.187 70.65 9128.569
+  angleY 0
+ }
+ {
+  coords 8674.12 75.232 9180.474
+  angleY 0
+ }
+ {
+  coords 8679.226 58.287 9284.676
+  angleY 0
+ }
+ {
+  coords 8725.1 56.567 9377.493
+  angleY 0
+ }
+ {
+  coords 8771.232 69.866 9422.37
+  angleY 0
+ }
+ {
+  coords 8825.721 76.926 9482.78
+  angleY 0
+ }
+ {
+  coords 8879.716 77.297 9549.222
+  angleY 0
+ }
+ {
+  coords 8954.208 48.049 9636.678
+  angleY 0
+ }
+ {
+  coords 9018.426 45.677 9706.221
+  angleY 0
+ }
+ {
+  coords 9154.516 1.576 9875.971
+  angleY 0
+ }
+ {
+  coords 9200.274 5.44 9925.604
+  angleY 0
+ }
+ {
+  coords 9251.778 24.674 9982.226
+  angleY 0
+ }
+ {
+  coords 9328.903 10.747 10059.938
+  angleY 0
+ }
+ {
+  coords 9361.035 27.049 10092.559
+  angleY 0
+ }
+ {
+  coords 9430.746 32.708 10139.975
+  angleY 0
+ }
+ {
+  coords 9526.582 19.218 10197.581
+  angleY 0
+ }
+ {
+  coords 9599.081 17.922 10222.389
+  angleY 0
+ }
+ {
+  coords 9687.621 12.123 10212.659
+  angleY 0
+ }
+ {
+  coords 9695.077 10.502 10185.75
+  angleY 0
+ }
+ {
+  coords 9696.278 10.179 10175.681
+  angleY 0
+ }
+ {
+  coords 9693.858 10.438 10161.605
+  angleY 0
+ }
+ {
+  coords 9694.132 10.533 10145.331
+  angleY 0
+ }
+ {
+  coords 9694.758 10.61 10136.78
+  angleY 0
+ }
+ {
+  coords 9697.338 10.25 10126.021
+  angleY 0
+ }
+ {
+  coords 9703.245 9.073 10114.085
+  angleY 0
+ }
+}

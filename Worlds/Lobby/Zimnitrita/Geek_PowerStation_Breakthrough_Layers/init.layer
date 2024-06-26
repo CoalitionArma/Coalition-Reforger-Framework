@@ -1,0 +1,11 @@
+SCR_AIWorld : "{551907F0C9AE6F12}Prefabs/AI/SCR_AIWorld_Zimnitrita.et" {
+ coords 8909.503 101.802 9358.972
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 40
+  }
+ }
+ coords 8915.752 90.381 9320.735
+}
