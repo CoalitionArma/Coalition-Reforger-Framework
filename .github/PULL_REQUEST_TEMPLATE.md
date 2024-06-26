@@ -14,25 +14,16 @@ Add the mission <mission name!> made by <author name!> to the repository.
 
 **Faction(s):**
 BLUFOR - Attacking/Defending/NA
-- [ ] USSR
 - [ ] US
-- [ ] RHS_RF_MSV
 - [ ] RHS_US_USMC
 - [ ] CDF
 
 OPFOR - Attacking/Defending/NA
 - [ ] USSR
-- [ ] US
 - [ ] RHS_RF_MSV
-- [ ] RHS_US_USMC
-- [ ] BUNDESWEHR (US)
 
 INDFOR - Attacking/Defending/NA
-- [ ] USSR
-- [ ] US
-- [ ] RHS_RF_MSV
-- [ ] RHS_US_USMC
-- [ ] BUNDESWEHR (US)
+- [ ] FIA
 
 **Objectives/Win Conditions:**
 
