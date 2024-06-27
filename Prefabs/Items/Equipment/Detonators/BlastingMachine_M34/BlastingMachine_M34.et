@@ -1,0 +1,8 @@
+GenericEntity : "{CE0AF733722B3977}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SCR_DetonatorGadgetComponent "{5F1A794D87CB704C}" {
+   m_fMaxDetonationRange 500
+  }
+ }
+}
