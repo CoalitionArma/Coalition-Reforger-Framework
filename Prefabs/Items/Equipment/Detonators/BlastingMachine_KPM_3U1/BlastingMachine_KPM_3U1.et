@@ -1,0 +1,8 @@
+GenericEntity : "{36117D7F423AB44E}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  SCR_DetonatorGadgetComponent "{5F1A794D87CB704C}" {
+   m_fMaxDetonationRange 500
+  }
+ }
+}
