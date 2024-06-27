@@ -1,7 +1,0 @@
-GameEntity : "{482B9B157016B0DC}Prefabs/Weapons/Attachments/Optics/aimpoint_t1/Optic_t1_base.et" {
- ID "4BA426CBAED42A14"
- components {
-  RplComponent "{61B7013AD87D2627}" {
-  }
- }
-}
