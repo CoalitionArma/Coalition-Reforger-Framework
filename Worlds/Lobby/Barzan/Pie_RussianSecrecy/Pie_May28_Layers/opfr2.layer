@@ -38,68 +38,6 @@ $grp Vehicle : "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tra
   angleZ 0.549
  }
 }
-Vehicle BTR70_Mountable_AFRF1 : "{C628AC3C87CA64AF}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Mountable_AFRF.et" {
- components {
-  SlotManagerComponent "{55BCE45E438E4CFF}" {
-   Slots {
-    RegisteringComponentSlotInfo Turret {
-     Offset -0.0001 0.1781 1.0444
-     Prefab "{8021A4D1ADFCF506}Prefabs/Vehicles/Tracked/BMP1/VehParts/Turret/BMP1_Turret.et"
-     DisablePhysicsInteraction 1
-    }
-    EntitySlotInfo SupplyStorage_01 {
-     Enabled 0
-    }
-    EntitySlotInfo SupplyStorage_02 {
-    }
-    EntitySlotInfo SupplyStorage_03 {
-    }
-    EntitySlotInfo SupplyStorage_06 {
-     Enabled 0
-    }
-    EntitySlotInfo SupplyStorage_07 {
-     Enabled 0
-    }
-    EntitySlotInfo SupplyStorage_08 {
-     Enabled 0
-    }
-    EntitySlotInfo SupplyStorage_09 {
-     Enabled 0
-    }
-    EntitySlotInfo SupplyStorage_10 {
-     Enabled 0
-    }
-    RegisteringComponentSlotInfo turret2 {
-     PivotID "v_root"
-     Offset -0.0002 0.0203 -0.5821
-     Angles 0 -180 0
-     MergePhysics 1
-     Prefab "{66596659FB0F645B}Prefabs/Vehicles/Wheeled/BTR70/VehParts/Turret/BTR70_Turret.et"
-     DisablePhysicsInteraction 1
-     RegisterActions 1
-     RegisterDamage 1
-     RegisterControllers 1
-     RegisterWeapons 1
-     RegisterCompartments 1
-    }
-   }
-  }
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   ActionContexts {
-    UserActionContext "{6178F8506E504025}" {
-     ContextName "gunner2"
-     Position PointInfo "{6178F85064811637}" {
-      Offset 0 0 -1.6457
-     }
-    }
-   }
-  }
- }
- coords 1049.455 14.138 676.634
- angleX -4.467
- angleY -0.112
- angleZ 0.009
-}
 Vehicle Ural4320_TESTBEB1 : "{F49398F8182A0551}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_TESTBEB.et" {
  coords 1032.264 19.994 609.836
  angleX -5.05
