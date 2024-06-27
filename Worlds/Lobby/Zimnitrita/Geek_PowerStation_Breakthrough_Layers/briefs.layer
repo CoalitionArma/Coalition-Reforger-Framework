@@ -19,6 +19,8 @@ PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/As
  m_aVisibleForFactions {
   "USSR"
  }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
  m_iOrder 5
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {

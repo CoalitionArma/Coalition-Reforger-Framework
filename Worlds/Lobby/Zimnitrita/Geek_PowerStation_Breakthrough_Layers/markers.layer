@@ -5,7 +5,7 @@ PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et"
  m_bShowForAnyFaction 1
 }
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 9671.849 8.117 10073.248
+ coords 9335.848 4.262 9831.244
  angleY 0
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
