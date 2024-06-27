@@ -1,0 +1,7 @@
+GameEntity : "{C4B57488909B3B63}Prefabs/Weapons/Attachments/Optics/1p87/Optic_1P87.et" {
+ ID "4BA426CBAED42A14"
+ components {
+  RplComponent "{61B701385B117206}" {
+  }
+ }
+}
