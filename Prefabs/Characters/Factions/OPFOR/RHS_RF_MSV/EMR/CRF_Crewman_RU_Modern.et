@@ -1,6 +1,17 @@
 SCR_ChimeraCharacter : "{1E8265C4FCFC787B}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_Armored_Base.et" {
  ID "520EC961A090B1EE"
  components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+       Prefab "{BCEA0EB0D764D8DD}Prefabs/Items/Equipment/Binoculars/Rangefinder_PDU4.et"
+      }
+     }
+    }
+   }
+  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Crewman"
    m_bIsPlayable 1
@@ -34,18 +45,29 @@ SCR_ChimeraCharacter : "{1E8265C4FCFC787B}Prefabs/Characters/Factions/OPFOR/RHS_
     ItemsInitConfigurationItem "{597D24F89042474A}" {
      TargetStorage "Prefabs/Characters/Uniforms/Jacket_VKPO.et"
      PrefabsToSpawn {
-      "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_USSR_01.et" "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
+      "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et" "{E1A5D4B878AA8980}Prefabs/Items/Equipment/Radios/Radio_R148.et"
      }
     }
     ItemsInitConfigurationItem "{5D487DFF08C5F460}" {
      TargetPurpose 1
     }
     ItemsInitConfigurationItem "{5EA4980D427B6964}" {
-     PrefabsToSpawn + {
-      "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et"
+     PrefabsToSpawn {
+      "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et"
      }
     }
     ItemsInitConfigurationItem "{5A3C01FB93DD1CA3}" {
+     PrefabsToSpawn {
+      "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_USSR_01.et" "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_USSR_01.et" "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et" "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+     }
+    }
+    ItemsInitConfigurationItem "{5DF8AE2F69063B5C}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{5DF8AE2F766AA32B}" {
+     PrefabsToSpawn {
+     }
     }
    }
   }
