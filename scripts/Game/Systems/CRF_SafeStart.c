@@ -1,8 +1,5 @@
 [ComponentEditorProps(category: "Safe Start Component", description: "")]
-class CRF_SafestartGameModeComponentClass: SCR_BaseGameModeComponentClass
-{
-	
-}
+class CRF_SafestartGameModeComponentClass: SCR_BaseGameModeComponentClass {}
 
 class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 {
@@ -12,14 +9,16 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("true", "auto", "Should we delete all JIP slots after SafeStart turns off?")]
 	bool m_bDeleteJIPSlots;
 	
-	[RplProp()]
+	[RplProp(onRplName: "OnSafeStartChange")]
 	protected bool m_SafeStartEnabled = false;
+	ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
 	
 	[RplProp()]
 	protected string m_sServerWorldTime;
 	
 	[RplProp()]
 	protected ref array<string> m_aFactionsStatusArray;
+	protected ref array<SCR_Faction> m_aPlayedFactionsArray = new array<SCR_Faction> ;
 	
 	[RplProp(onRplName: "ShowMessage")]
 	protected string m_sMessageContent = "";
@@ -103,12 +102,15 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		array<SCR_Faction> outArray = new array<SCR_Faction>;
 		outFaction.ToArray(outArray);
 		
+		m_aPlayedFactionsArray.Clear();
 		string bluforString = "#Coal_SS_No_Faction";
 		string opforString = "#Coal_SS_No_Faction"; 
 		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
 			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;
+			
+			m_aPlayedFactionsArray.Insert(faction);
 			
 			Color factionColor = faction.GetFactionColor();
 			float rg = Math.Max(factionColor.R(), factionColor.G());
@@ -238,6 +240,11 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		ToggleSafeStartServer(true);
 	}
 	
+	void OnSafeStartChange() 
+	{
+		m_OnSafeStartChange.Invoke(m_SafeStartEnabled);
+	}
+	
 	//Call from server
 	//------------------------------------------------------------------------------------------------
 	protected void ToggleSafeStartServer(bool status) 
@@ -250,6 +257,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			m_iSafeStartTimeRemaining = 35;
 			
 			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
+			GetGame().GetCallqueue().Remove(CheckPlayersAlive);
 			
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 250, true);
@@ -272,6 +280,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(UpdateServerWorldTime);
 			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
+			
+			GetGame().GetCallqueue().CallLater(CheckPlayersAlive, 5000, true);
 			
 			if (m_iTimeLimitMinutes > 0) {
 				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (m_iTimeLimitMinutes * 60000);
@@ -337,7 +347,6 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	
 	// Called from server to all clients
 	//------------------------------------------------------------------------------------------------
-	// Locality needs verified for workbench and local server hosting
 	void CallDeleteRedundantUnits() 
 	{
 		m_PlayableManager = PS_PlayableManager.GetInstance();
@@ -392,6 +401,23 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
 		};
 	};
+	
+	void CheckPlayersAlive()
+	{
+		foreach(SCR_Faction faction : m_aPlayedFactionsArray) {
+			Color factionColor = faction.GetFactionColor();
+			float rg = Math.Max(factionColor.R(), factionColor.G());
+			float rgb = Math.Max(rg, factionColor.B());
+			
+			switch (true) {
+				case(rgb == factionColor.B() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Killed!"; break;};
+				case(rgb == factionColor.R() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Killed!";  break;};
+				case(rgb == factionColor.G() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Killed!";  break;};
+			};
+		};
+		
+		Replication.BumpMe();
+	}
 	
 	//------------------------------------------------------------------------------------------------
 
