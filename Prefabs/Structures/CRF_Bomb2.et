@@ -1,0 +1,28 @@
+GenericEntity : "{0958E6B949501D00}Prefabs/Props/Military/Generators/GeneratorPortable_US_01.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  ActionsManagerComponent "{5298C80DC0D5555E}" {
+   additionalActions {
+    CRF_PlantBombAction "{61B77EE297B75D5E}" {
+     ParentContextList {
+      "powerswitch"
+     }
+     UIInfo UIInfo "{61B77EE2538A2C71}" {
+      Name "Place Bomb"
+     }
+     Duration 5
+    }
+    CRF_DefuseBombAction "{61B77EE29485660B}" {
+     ParentContextList {
+      "powerswitch"
+     }
+     UIInfo UIInfo "{61B77EE22FC8A5B3}" {
+      Name "Defuse Bomb"
+     }
+     Duration 7
+    }
+   }
+  }
+ }
+ coords 4597.382 15.055 10426.906
+}
