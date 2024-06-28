@@ -1,0 +1,29 @@
+GenericEntity : "{2B18494875AF9C42}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_b10m_b19.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#RHS-Weapon_AK74M_Name (B10M/B19N)"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{60CC8875532C0317}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{8DB150C7732EC843}Prefabs/Weapons/Attachments/Handguards/Handguard_AK74M/Handguard_Zenitco_B10M_B19N.et"
+     }
+    }
+    AttachmentSlotComponent "{60D68A0B811635A2}" {
+     AttachmentSlot InventoryStorageSlot "{60D68A0B82AD4963}" {
+      Offset 0 0.1086 0.2631
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#RHS-Weapon_AK74M_Name (B10M/B19N)"
+   }
+  }
+ }
+}
