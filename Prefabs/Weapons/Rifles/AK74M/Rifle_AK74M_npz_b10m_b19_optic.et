@@ -1,0 +1,61 @@
+GenericEntity : "{B02FA54EB2427627}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_npz_rail.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#RHS-Weapon_AK74M_Name (B10M/B19)"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{51F6738D2EC74BE1}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+     }
+     ShowInInspection 0
+    }
+    AttachmentSlotComponent "{60CC8875532C0317}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{86E71F45F9238778}Prefabs/Weapons/Attachments/Handguards/Handguard_AK74M/Handguard_Zenitco_B10M_B19.et"
+     }
+    }
+    AttachmentSlotComponent "{61B7685F7B718254}" {
+     AttachmentSlot InventoryStorageSlot "{60D6BDAA23534844}" {
+      Offset 0 0.1163 0.2631
+      Name "MidRis"
+      InspectionWidgetOffset 0 0.1087 0.2664
+     }
+     AttachmentType AttachmentRIS1913 "{61B7685F7B718243}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{61B7685F7B718241}" {
+     AttachmentSlot InventoryStorageSlot "{60D6BDAA442C904A}" {
+      Offset 0.0237 0.0758 0.2413
+      Angles 0 0 90
+      Name "SideRis"
+      InspectionWidgetOffset 0.0261 0.0769 0.2441
+     }
+     AttachmentType AttachmentRIS1913 "{61B7685F7B718247}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{61B7685F7B718246}" {
+     AttachmentSlot InventoryStorageSlot "{60D6BDAA7004C0CA}" {
+      Offset -0.0243 0.0758 0.2413
+      Angles 0 0 -90
+      Name "SideRisLeft"
+      InspectionWidgetOffset -0.0249 0.0769 0.2414
+     }
+     AttachmentType AttachmentRIS1913 "{61B7685F7B718244}" {
+     }
+     ShowInInspection 1
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#RHS-Weapon_AK74M_Name (B10M/B19)"
+   }
+  }
+ }
+}
