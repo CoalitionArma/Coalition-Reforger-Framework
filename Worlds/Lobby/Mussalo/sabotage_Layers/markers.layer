@@ -1,186 +1,96 @@
 $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  {
   coords 4054.716 31.357 2444.302
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4004.177 1.96 2426.062
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4082.228 2.937 2489.95
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4114.613 2.928 2521.972
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4139.52 3.046 2546.458
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4168.539 3.062 2572.054
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4198.012 2.844 2598.304
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4232.359 1.072 2627.426
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4263.005 1.641 2655.894
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4297.437 1.49 2693.391
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4320.273 19.448 2698.024
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4335.217 25.186 2708.678
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4375.304 1.168 2766.72
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4389.864 23.579 2778.138
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4436.258 0.958 2842.625
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4468.57 2.74 2873.713
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
  {
   coords 4494.874 18.946 2898.706
-  m_aVisibleForFactions {
-   "RHS_US_USMC"
-  }
  }
 }
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  {
   coords 4938.841 1.727 1923.335
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 4931.283 2.399 1954.269
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 4934.399 7.839 1975.872
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 4952.719 12.89 1989.047
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 4948.51 1.933 1998.231
   angleY 0
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 4991.482 15.9 2014.349
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 5020.273 24.646 2003.203
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 5045.292 19.542 2009.119
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 5065.917 23.011 1998.555
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 5092.816 18.122 1995.306
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 5119.069 13.833 1983.148
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 5140.211 19.345 1960.99
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
  {
   coords 5175.806 2.437 1960.513
-  m_aVisibleForFactions {
-   "RHS_RF_MSV"
-  }
  }
 }
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
@@ -472,14 +382,22 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  coords 5005.479 0.946 1926.125
  m_fWorldSize 100
- m_aVisibleForFactions {
-  "RHS_RF_MSV"
- }
 }
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 4281.514 12.946 3733.592
- m_fWorldSize 100
- m_aVisibleForFactions {
-  "RHS_US_USMC"
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 4281.514 12.946 3733.592
+  m_fWorldSize 100
+ }
+ {
+  coords 4030.459 5.255 2777.576
+  angleY 90
+  m_sQuadName "fortification"
+  m_sDescription "Build Console"
+ }
+ {
+  coords 4331.552 9.339 3704.827
+  angleY 90
+  m_sQuadName "fortification"
+  m_sDescription "Build Console"
  }
 }
