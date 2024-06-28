@@ -2,71 +2,27 @@ Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/
  coords 9758.866 2.155 4608.107
  angleY -31.249
 }
-$grp Tank : "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A3_APC.et" {
- M113A3_APC1 {
-  coords 9794.633 2.156 4607.679
-  angleY -30.619
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_armed_M2HB1 {
+  coords 9793.131 2.156 4607.751
+  angleY -31.079
  }
- M113A3_APC2 {
-  coords 9799.717 2.149 4610.728
-  angleY -30.891
+ M1025_armed_M2HB2 {
+  coords 9797.188 2.156 4610.373
+  angleY -31.079
+ }
+ M1025_armed_M2HB3 {
+  coords 9789.02 2.138 4614.38
+  angleY -31.079
+ }
+ M1025_armed_M2HB4 {
+  coords 9793.363 2.156 4616.837
+  angleY -31.079
  }
 }
 Vehicle M1 : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
  coords 9755.326 2.125 4614.228
  angleY -28.194
-}
-SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/Command/CRF_USMC_Platoon.et" {
- coords 9789.941 2.156 4592.707
- m_aUnitPrefabSlots {
-  "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
- }
- m_sCustomNameSet "Company"
- {
-  $grp SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/Command/CRF_USMC_Platoon.et" {
-   {
-    coords 11.146 0 -25.404
-    m_aUnitPrefabSlots {
-     "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
-    }
-    {
-     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/Infantry/CRF_USMC_RifleSquad.et" {
-      {
-       coords -16.981 0.001 12.521
-      }
-      {
-       coords -8.223 0 16.839
-      }
-      {
-       coords -2.312 0 19.463
-      }
-     }
-    }
-   }
-   {
-    coords 14.194 0 -24.201
-    m_aUnitPrefabSlots {
-     "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
-    }
-    m_sCustomNameSet "2nd Platoon"
-    {
-     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/Infantry/CRF_USMC_RifleSquad.et" {
-      {
-       coords 1.354 0 17.164
-      }
-      {
-       coords -6.935 0 10.19
-       angleY -35.042
-      }
-      {
-       coords -5.067 0 11.046
-       angleY -32.743
-      }
-     }
-    }
-   }
-  }
- }
 }
 $grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
  M923A1_transport_covered1 {
@@ -94,6 +50,55 @@ $grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transpo
   angleY -30.518
  }
 }
+SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_Company.et" {
+ coords 9789.165 2.156 4595.479
+ angleY -33.585
+ {
+  $grp SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_Platoon.et" {
+   {
+    coords -1.238 0 -2.318
+    angleY 6.654
+    {
+     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+      {
+       coords -2.531 0 -4.359
+       angleY -5.035
+      }
+      {
+       coords 0.018 0 -4.693
+       angleY -3.615
+      }
+      {
+       coords 5.116 0 -4.183
+       angleY 26.931
+      }
+     }
+    }
+   }
+   {
+    coords -2.642 0 -5.124
+    angleY 3.757
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+      {
+       coords 0.356 0 -5.498
+       angleY 0.652
+      }
+      {
+       coords 1.695 0 -5.462
+       angleY 0.423
+      }
+      {
+       coords 3.177 0 -5.688
+       angleY -4.07
+      }
+     }
+    }
+   }
+  }
+ }
+}
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 9802.155 2.156 4572.796
  angleY 90.084
@@ -101,17 +106,33 @@ PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.e
   "RHS_US_USMC"
  }
 }
-$grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/Vehicles/CRF_USMC_Armor3man.et" {
+$grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Vehicles/CRF_USMC_Armor3man.et" {
  {
-  coords 9804.195 2.156 4591.172
+  coords 9799.839 2.156 4594.893
+  angleY -25.299
   m_aUnitPrefabSlots {
-   "{DD97064D7C5C8553}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Crew_Modern.et" "{DD97064D7C5C8553}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Crew_Modern.et"
+   "{57B0D86885215F88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCommander.et" "{A2247991FB213EE9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCrew.et"
   }
  }
  {
-  coords 9806.047 2.156 4596.032
+  coords 9803.972 2.156 4596.073
+  angleY -25.101
   m_aUnitPrefabSlots {
-   "{DD97064D7C5C8553}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Crew_Modern.et" "{DD97064D7C5C8553}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Crew_Modern.et"
+   "{57B0D86885215F88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCommander.et" "{A2247991FB213EE9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCrew.et"
+  }
+ }
+ {
+  coords 9802.647 2.156 4592.106
+  angleY -25.101
+  m_aUnitPrefabSlots {
+   "{57B0D86885215F88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCommander.et" "{A2247991FB213EE9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCrew.et"
+  }
+ }
+ {
+  coords 9801.418 2.156 4591.076
+  angleY -25.101
+  m_aUnitPrefabSlots {
+   "{57B0D86885215F88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCommander.et" "{A2247991FB213EE9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_VehicleCrew.et"
   }
  }
 }
