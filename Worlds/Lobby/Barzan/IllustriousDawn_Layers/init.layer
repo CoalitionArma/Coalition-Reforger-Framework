@@ -1,0 +1,111 @@
+SCR_AIWorld : "{AE8F6612BCAC2BE2}Prefabs/AI/SCR_AIWorld_BarzanMapRemake.et" {
+ coords 1078.806 2.862 1411.99
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{61620A8869D9FD05}" {
+   attackingSide "USSR"
+   defendingSide "US"
+  }
+ }
+ coords 1089.053 2.855 1421.653
+ {
+  SCR_FactionManager "6160ABDC0BC6126F" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61603D54C19B5595}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61603D54C3F3D044}" {
+        m_sCallsign "MG-1"
+       }
+       SCR_CallsignInfo "{61603D54C32F4429}" {
+        m_sCallsign "AT-1"
+       }
+       SCR_CallsignInfo "{61620A9C3354DE15}" {
+        m_sCallsign "Armor-1"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61603D424CA90917}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61603D424C1FBA76}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{61603D424FA0F2D1}" {
+        m_sCallsign "1-6"
+       }
+       SCR_CallsignInfo "{61603D42790C70FA}" {
+        m_sCallsign "MG-1"
+       }
+       SCR_CallsignInfo "{61603D560F3C7384}" {
+        m_sCallsign "MG-2"
+       }
+       SCR_CallsignInfo "{61620A8069C86284}" {
+        m_sCallsign "Armor-1"
+       }
+       SCR_CallsignInfo "{6162D3D4D2AD57DC}" {
+        m_sCallsign "Armor-2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3: %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+   }
+  }
+ }
+}
+TimeAndWeatherManagerEntity TimeAndWeatherManager_6162D3D10D3DA6F6 : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
+ coords 1328.198 2.346 1831.275
+ "Initial Day Time" 1.57
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ Objective_US {
+  coords 1496.797 1.8 1404.312
+  m_sTitle "Defend Sites"
+  m_sTextData "Succesfully defend at least one of the sites from the aggressors by end of match timer."
+  m_sFactionKey "US"
+ }
+ Objective_USSR {
+  coords 1499.943 1.781 1400.826
+  m_sTitle "Destroy Both Sites"
+  m_sTextData "Successfully attack and destroy both objective sites."
+  m_sFactionKey "USSR"
+ }
+}

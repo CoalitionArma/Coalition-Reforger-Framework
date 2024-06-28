@@ -1,0 +1,107 @@
+AIWorld {
+ coords 6858.936 399.119 11535.045
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 6866.871 394.846 11551.126
+ {
+  SCR_FactionManager "618E2CE62FC585E4" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{618E2CE9408F5C89}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{618E2CE94052ACCD}" {
+        m_sCallsign "2-2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{618E2CE95954D254}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{618E2CE959009121}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{618E2CE9A7743895}" {
+        m_sCallsign "MTR"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 6898.06 406.138 11428.72
+ angleY 0
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 6762.57 381.157 11537.531
+ m_sTextData "Both sides:"\
+ "2 Platoons"\
+ "2 Squads Each"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 6769.19 385.809 11461.166
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 6775.222 387.741 11470.756
+ m_sTextData "BLUFOR:"\
+ "-Kill Opfor"\
+ "OPFOR:"\
+ "-Kill Blufor"
+}
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 6889.372 406.074 11430.103
+  angleY 0
+ }
+ {
+  coords 6904.24 406.062 11410.667
+  m_sQuadName "mine-single"
+  m_sDescription "Podnos"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 7308.192 360.205 11942.604
+ angleY 90
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 6764.857 385.933 11487.993
+ m_sTextData "Reatreating OPFOR forces have holed themselves up in an old castle, BLUFOR have to take them out."
+}

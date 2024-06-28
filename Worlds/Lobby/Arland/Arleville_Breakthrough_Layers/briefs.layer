@@ -1,0 +1,58 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 3186.984 42.299 2464.968
+ m_sTextData "45 Minute Time Limit."\
+ "One Life, No Respawn."\
+ "Mines are surrounding the AO."
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 3186.984 42.299 2464.968
+ m_sTextData "2x BTR70"\
+ "1x Medical Vehicle"
+ m_aVisibleForFactions {
+  "USSR"
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 5
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 3186.984 42.299 2464.968
+}
+$grp PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ {
+  coords 3186.984 42.299 2464.968
+  m_sTextData "USSR Forces move to secure the Harbour near Arleville and dislodge US Army forces in the area."\
+  ""
+  m_iOrder 2
+ }
+ BLUBrief {
+  coords 3227.986 40.098 2491.461
+  m_sTitle "Briefing"
+  m_sTextData "Greetings trooper. We've been tasked with defeating the soviet forces attempting to move through the town of Arleville and take the harbour on the other side of town."\
+  ""\
+  "Remain to the south of the \"BLUFOR Safe Start Border\" markers during safe start."\
+  "Prevent OPFOR from moving to the \"OPF Breakthrough\" marker on the harbour."\
+  "The area outside of the AO is mined to keep the fighting inside the AO."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 3
+ }
+ OPFBrief {
+  coords 3195.683 41.553 2474.719
+  m_sTitle "Briefing"
+  m_sTextData "Greetings comrade! We've been tasked with moving through the hils and forests towards the town of Arleville and take the harbour on the other side of town."\
+  ""\
+  "Remain inside your spawn area during safe start."\
+  "Move through BLUFOR and reach the \"OPF Breakthrough\" marker on the harbour."\
+  "The area outside of the AO is mined to keep the fighting inside the AO."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 3
+ }
+}

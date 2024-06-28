@@ -1,0 +1,117 @@
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 3063.758 38.057 2504.844
+ angleY -154.402
+ m_aUnitPrefabSlots + {
+  "{A8A47F001DA13B73}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter_P.et"
+ }
+ m_sCustomNameSet "Company Command"
+ {
+  SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+   coords -15.782 0.624 -5.221
+   angleY -0.407
+   m_sCustomNameSet "1st Platoon Command"
+   {
+    SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+     coords -2.256 0.773 13.155
+     angleY 173.734
+     m_sCustomNameSet "1st Squad"
+     {
+      SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+       coords 0.802 0.181 -4.844
+       m_sCustomNameSet "2nd Squad"
+       {
+        SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+         coords 0.585 0.135 -5.653
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+           coords -0.337 0.175 -5.771
+           angleY 1.179
+           m_sCustomNameSet "4th Squad"
+           {
+            SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+             coords -33.08 -2.737 29.879
+             angleY -174.806
+             m_sCustomNameSet "2nd Platoon Command"
+             {
+              SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+               coords -1.438 0.822 13.895
+               angleY 173.627
+               m_sCustomNameSet "1st Squad"
+               {
+                SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+                 coords 0.104 0.317 -4.762
+                 m_sCustomNameSet "2nd Squad"
+                 {
+                  SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+                   coords -0.451 0.306 -5.417
+                   m_sCustomNameSet "3rd Squad"
+                   {
+                    SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+                     coords -0.502 0.67 -6.885
+                     angleY -3.049
+                     m_sCustomNameSet "Machine Gun Team"
+                     {
+                      SCR_AIGroup : "{7281E79A895296DA}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MedicTeam_p.et" {
+                       coords -15.844 -1.296 32.399
+                       angleY 99.839
+                       m_sCustomNameSet "Medical Team"
+                       {
+                        SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+                         coords 19.698 -1.24 -7.286
+                         angleY -5.977
+                         m_aUnitPrefabSlots {
+                          "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+                         }
+                         m_sCustomNameSet "BTR 1"
+                         {
+                          SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+                           coords 6.92 1.015 0.869
+                           m_aUnitPrefabSlots {
+                            "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+                           }
+                           m_sCustomNameSet "BTR 2"
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 3013.965 34.926 2522.674
+ angleX -6.366
+ angleY 14.862
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 3007.506 38.522 2495.226
+  angleX -7.71
+  angleY 8.388
+ }
+ BTR2 {
+  coords 3009.433 37.22 2504.718
+  angleX -7.71
+  angleY 8.388
+ }
+}

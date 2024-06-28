@@ -1,0 +1,50 @@
+SCR_AIGroup : "{D5AF34C09B08EFE9}Prefabs/Groups/BLUFOR/BW/Command/Group_BW_Command_PLT_p.et" {
+ coords 1972.507 433.383 967.538
+ angleX 0.094
+ angleY 6.056
+ angleZ -0.89
+ {
+  $grp SCR_AIGroup : "{D5AF34C09B08EFE9}Prefabs/Groups/BLUFOR/BW/Command/Group_BW_Command_PLT_p.et" {
+   {
+    coords 0.743 0.001 -2.558
+    angleY -0.042
+    {
+     $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+      {
+       coords -12.194 -0.138 -2.552
+       angleX 0.198
+       angleY 0.327
+       angleZ -1.778
+      }
+      {
+       coords -11.171 -0.108 -3.737
+       angleX -0.791
+       angleY 0.298
+       angleZ -0.988
+      }
+     }
+    }
+   }
+   {
+    coords -1.142 0.029 4.529
+    angleX 0.098
+    angleY 0.207
+    angleZ -0.889
+    {
+     $grp SCR_AIGroup : "{06A0FEBACEBEE971}Prefabs/Groups/BLUFOR/BW/Infantry/Group_BW_Infantry_RifleSquad_p.et" {
+      {
+       coords -7.429 0.032 -9.338
+       angleY 2.836
+      }
+      {
+       coords -13.161 0.045 -14.607
+       angleX -0.889
+       angleY 0.231
+       angleZ -0.101
+      }
+     }
+    }
+   }
+  }
+ }
+}

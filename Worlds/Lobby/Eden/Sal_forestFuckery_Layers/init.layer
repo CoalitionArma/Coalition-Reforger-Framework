@@ -1,0 +1,243 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5871.335 205.814 6984.762
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ coords 4710.565 162.513 6955.403
+ {
+  SCR_FactionManager "61A6FE5D6411FC9A" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "PLT HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{619D1557FDCD1761}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{619D1557FD2E7BFF}" {
+        m_sCallsign "MMG 1"
+       }
+       SCR_CallsignInfo "{619D1557FC81DA96}" {
+        m_sCallsign "MMG 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "PLT HQ"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2 (Heavy)"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{619D1555089474B9}" {
+        m_sCallsign "Sniper Section"
+       }
+       SCR_CallsignInfo "{619D155508D3005F}" {
+        m_sCallsign "MMG Section"
+       }
+       SCR_CallsignInfo "{61A70AD2A8C97FC1}" {
+        m_sCallsign "Pilots"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ SuppliesTrigger {
+  coords 4701.018 27.844 11192.62
+  TriggerShapeType Sphere
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;"\
+  "		IEntity depot1 = GetGame().GetWorld().FindEntityByName(\"depot1\");"\
+  "		IEntity depot2 = GetGame().GetWorld().FindEntityByName(\"depot2\");"\
+  "		if (!depot1 || !depot2) return;"\
+  "		SCR_ResourceComponent rc1 = SCR_ResourceComponent.FindResourceComponent(depot1, false);"\
+  "		SCR_ResourceComponent rc2 = SCR_ResourceComponent.FindResourceComponent(depot2, false);"\
+  "		if (!rc1 || !rc2) return;"\
+  "		float resource1 = 0.0;"\
+  "		float resource2 = 0.0;"\
+  "		SCR_ResourceSystemHelper.GetStoredResources(rc1, resource1);"\
+  "		SCR_ResourceSystemHelper.GetStoredResources(rc2, resource2);"\
+  "		if ((resource1 + resource2) >= 3000) "\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"All Soviet Supplies have been evacuated from Tyrone!\", 10);"\
+  "			IEntity trigger = GetGame().GetWorld().FindEntityByName(\"SuppliesTrigger\");"\
+  "			delete trigger;"\
+  "		}"\
+  "	"
+ }
+ ExtractionTrigger {
+  coords 4660.014 2.78 11528.264
+  userScript "	"\
+  "	int m_playercount;"\
+  "	protected ref array<IEntity> 	m_aEntitiesInside = {};"\
+  "	protected ref map<int, int> m_PlayerCount = new map<int, int>();"\
+  "	"\
+  "	int GetCharacterCountByFactionInsideTrigger(Faction faction, int targetCount = -1)"\
+  "	{"\
+  "		int iCnt = 0;"\
+  "		SCR_ChimeraCharacter chimeraCharacter;"\
+  "		GetEntitiesInside(m_aEntitiesInside);"\
+  "		foreach (IEntity entity : m_aEntitiesInside)"\
+  "		{"\
+  "			if (!entity)"\
+  "				continue;"\
+  "			"\
+  "			chimeraCharacter = SCR_ChimeraCharacter.Cast(entity);"\
+  "			if (!chimeraCharacter)"\
+  "				continue;"\
+  ""\
+  "			if (faction && chimeraCharacter.GetFaction() != faction)"\
+  "				continue;"\
+  "			"\
+  "			iCnt++;"\
+  "			if (iCnt == targetCount)"\
+  "				break;"\
+  "		}"\
+  ""\
+  "		return iCnt;"\
+  "	}"\
+  "	"\
+  "	"\
+  "	bool GetSuppliesinDepot()"\
+  "	{"\
+  "		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return false;"\
+  "		IEntity depot1 = GetGame().GetWorld().FindEntityByName(\"depot1\");"\
+  "		IEntity depot2 = GetGame().GetWorld().FindEntityByName(\"depot2\");"\
+  "		if (!depot1 || !depot2) return false;"\
+  "		SCR_ResourceComponent rc1 = SCR_ResourceComponent.FindResourceComponent(depot1, false);"\
+  "		SCR_ResourceComponent rc2 = SCR_ResourceComponent.FindResourceComponent(depot2, false);"\
+  "		if (!rc1 || !rc2) return false;"\
+  "		float resource1 = 0.0;"\
+  "		float resource2 = 0.0;"\
+  "		SCR_ResourceSystemHelper.GetStoredResources(rc1, resource1);"\
+  "		SCR_ResourceSystemHelper.GetStoredResources(rc2, resource2);"\
+  "		if ((resource1 + resource2) >= 3000) "\
+  "		{"\
+  "			return true;"\
+  "		}"\
+  "		return false;"\
+  "	}"\
+  "	"\
+  "    void endGame(string factionInput)"\
+  "    {"\
+  "        SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());"\
+  "        Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionInput);"\
+  "        int fIndex = GetGame().GetFactionManager().GetFactionIndex(faction);"\
+  "        gameMode.EndGameMode(SCR_GameModeEndData.CreateSimple(EGameOverTypes.EDITOR_FACTION_VICTORY, -1, fIndex));"\
+  "    }"\
+  "	"\
+  "	void endGameDraw()"\
+  "    {"\
+  "        SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());"\
+  "        Faction faction = GetGame().GetFactionManager().GetFactionByKey(\"USSR\");"\
+  "        int fIndex = GetGame().GetFactionManager().GetFactionIndex(faction);"\
+  "		gameMode.EndGameMode(SCR_GameModeEndData.CreateSimple(EGameOverTypes.EDITOR_FACTION_DRAW, -1, fIndex));"\
+  "    }"\
+  "	"\
+  "	static int countAlivePlayers(string filter)"\
+  "	{"\
+  "		int players = 0;"\
+  "		array<int> outPlayers = {};"\
+  "		GetGame().GetPlayerManager().GetPlayers(outPlayers);"\
+  "		foreach(int playerId : outPlayers)"\
+  "		{"\
+  "		 	PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId); if (!pc) continue;"\
+  "		  	IEntity controlled = pc.GetControlledEntity();"\
+  "		  	SCR_ChimeraCharacter ch = SCR_ChimeraCharacter.Cast(controlled); if (!ch) continue;"\
+  "			CharacterControllerComponent ccc = ch.GetCharacterController();"\
+  "			if (filter == ch.GetFactionKey() && !ccc.IsDead()) ++players;"\
+  "		}"\
+  "		return players;"\
+  "	}"
+  TriggerShapeType Sphere
+  SphereRadius 604.3
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;"\
+  "		Faction USSR;"\
+  "		int playerCount = GetCharacterCountByFactionInsideTrigger(USSR);"\
+  "		int overallCount = countAlivePlayers(\"USSR\");"\
+  "		"\
+  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() && playerCount >= 8) "\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets have successfully extracted from the AO!\", 10);"\
+  "        	GetGame().GetCallqueue().CallLater(endGame, 10000, false, \"USSR\");"\
+  "		}"\
+  "		"\
+  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() && overallCount == 0) "\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets have extracted all resources but have been decisively defeated!\", 10);"\
+  "        	GetGame().GetCallqueue().CallLater(endGameDraw, 10000, false);"\
+  "		}"\
+  "		"\
+  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && GetSuppliesinDepot() == false && overallCount == 0) "\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets forces have been decisively defeated!\", 10);"\
+  "        	GetGame().GetCallqueue().CallLater(endGame, 10000, false, \"US\");"\
+  "		}"\
+  "	"
+ }
+ ManpowerTrigger {
+  coords 4769.224 163.44 7110.26
+  userScript "	static int countAlivePlayers(string filter)"\
+  "	{"\
+  "		int players = 0;"\
+  "		array<int> outPlayers = {};"\
+  "		GetGame().GetPlayerManager().GetPlayers(outPlayers);"\
+  "		foreach(int playerId : outPlayers)"\
+  "		{"\
+  "		 	PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId); if (!pc) continue;"\
+  "		  	IEntity controlled = pc.GetControlledEntity();"\
+  "		  	SCR_ChimeraCharacter ch = SCR_ChimeraCharacter.Cast(controlled); if (!ch) continue;"\
+  "			CharacterControllerComponent ccc = ch.GetCharacterController();"\
+  "			if (filter == ch.GetFactionKey() && !ccc.IsDead()) ++players;"\
+  "		}"\
+  "		return players;"\
+  "	}"
+  TriggerShapeType Sphere
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		int overallCount = countAlivePlayers(\"USSR\");"\
+  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() && overallCount < 8) "\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Soviets forces do not have the manpower to retreat!\", 10);"\
+  "			IEntity trigger = GetGame().GetWorld().FindEntityByName(\"ManpowerTrigger\");"\
+  "			delete trigger;"\
+  "		}"\
+  "		"\
+  "	"
+ }
+}

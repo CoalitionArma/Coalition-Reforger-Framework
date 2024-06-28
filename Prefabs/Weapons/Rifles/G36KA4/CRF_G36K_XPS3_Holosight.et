@@ -1,0 +1,15 @@
+GenericEntity : "{0FEABE7669BAECAE}Prefabs/Weapons/Rifles/G36KA4/G36KA4V2.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{60A4B045D1BB26C7}" {
+     AttachmentSlot InventoryStorageSlot Optics {
+      Offset 0 0 -0.075
+      Prefab "{311393C82B783721}Prefabs/5ABD0CB57F7E9EB1/Optics/Optic_XPS3.et"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,47 @@
+SCR_BaseFactionTriggerEntity endTrig {
+ coords 7862.904 335.943 7252.725
+ angleY -47
+ TriggerShapeType Sphere
+ SphereRadius 150
+ BoxMins -200 -200 50
+ BoxMaxs 200 200 0.5
+ DrawShape 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OPFOR forces have made it through Guglovo!\", 10, \"OPFOR Victory\");"\
+ "	"
+ m_sOwnerFactionKey "RHS_RF_MSV"
+}
+GenericEntity : "{2D60BA8C416641F9}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_bunker_plastic.et" {
+ coords 8173.797 357.464 6654.453
+ angleY -147
+}
+$grp StaticModelEntity : "{37FC48C81903B557}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_bunker_burlap_foundation_camonet.et" {
+ {
+  coords 8190.226 357.586 6638.835
+  angleY 178
+ }
+ {
+  coords 8079.792 355.544 6659.911
+  angleY 139
+ }
+ {
+  coords 8080.348 355.443 6564.62
+  angleY 142
+ }
+}
+SCR_DestructibleBuildingEntity : "{4DD5F16D919A99F4}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp_Base.et" {
+ coords 8428.4 0.001 6542.167
+ angleY 167
+}
+$grp SCR_DestructibleBuildingEntity : "{EE5219B38424AB12}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_3fp.et" {
+ {
+  coords 8521.387 0.81 6654.341
+  angleY 138
+ }
+ {
+  coords 8322.629 0 6570.858
+  angleY -167
+ }
+}

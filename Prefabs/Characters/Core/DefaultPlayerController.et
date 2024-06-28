@@ -7,6 +7,9 @@ SCR_PlayerController {
   }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
    InfoDisplays {
+    SCR_InfoDisplayExtended "{5CEAB7FB9DF29AC5}" {
+     m_bShowWhenCreated 0
+    }
     CRF_SafeStartDisplay "{61303B9E05796EC7}" {
      m_LayoutPath "{533092FF68C19D59}UI/layouts/CRF_SafeStartDisplay.layout"
      m_eLayer ALWAYS_TOP

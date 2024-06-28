@@ -1,0 +1,40 @@
+$grp Vehicle : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ M1 {
+  coords 1309.184 9.721 2530.093
+  angleX -1.209
+  angleY 96.469
+  angleZ 3.765
+ }
+ M2 {
+  coords 1303.874 10.018 2531.052
+  angleX 0.577
+  angleY 96.559
+  angleZ 2.869
+ }
+}
+Vehicle M3 : "{5674FAEB9AB7BDD0}Prefabs/Vehicles/Wheeled/M998/M998.et" {
+ coords 1298.023 10.094 2531.458
+ angleX 1.47
+ angleY 96.561
+ angleZ 1.976
+}
+Vehicle M998_covered_long1 : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
+ coords 1292.378 9.912 2531.931
+ angleX 2.351
+ angleY 96.426
+ angleZ -0.696
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport1 {
+  coords 1284.466 9.671 2532.589
+  angleX 1.47
+  angleY 96.561
+  angleZ 1.976
+ }
+ M923A1_transport2 {
+  coords 1274.041 9.632 2533.608
+  angleX 1.47
+  angleY 96.603
+  angleZ 2.87
+ }
+}

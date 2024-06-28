@@ -1,0 +1,86 @@
+Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  RigidBody "{51DAA09FECF52BBF}" {
+   Mass 11402
+   CenterOfMass 0 0.2 -1.4
+   LinearDamping 0.011
+   AngularDamping 0.011
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Ammo_Name"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    IconSetName ""
+    m_Image "{4C3B89AE70636D52}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_ammo.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels + {
+     27 280 210
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 380
+     }
+     SCR_EntityBudgetValue "{61B8F80ADB039B25}" {
+      m_BudgetType RANK_CORPORAL
+      m_Value 2
+     }
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_ResourceComponent "{61B8F80AD473DE1F}" {
+   m_aContainers {
+    SCR_ResourceContainer "{61B8F80AD2344150}" {
+     m_eStorageType CARGO_VEHICLE
+     m_fResourceValueCurrent 150
+     m_fResourceValueMax 150
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   Attributes SCR_ItemAttributeCollection "{5916C580F04BA310}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5916C580F32A682A}" {
+    }
+   }
+  }
+  SCR_VehiclePerceivableComponent "{566CD04B8A6107DD}" {
+   "Additional aim points" {
+    AimPoint "{5A44DB098ADDB55E}" : "{94ED6806120FB600}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Hull_Truck.conf" {
+     AimPointPosition PointInfo "{5A44DB148C16BF03}" {
+      Offset 0 2.25 -2.25
+     }
+    }
+   }
+  }
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo AmmoBox {
+     MergePhysics 1
+     Prefab "{402274CE2FB0720D}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_ammo_box.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo AmmoDecal {
+     Prefab "{DEF0930DED57D4B5}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_ammo_decal.et"
+     InheritParentSkeleton 1
+     RegisterDamage 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   additionalActions {
+    SCR_OpenVehicleStorageAction "{5E58A8A3F402DDF4}" {
+    }
+   }
+  }
+ }
+}

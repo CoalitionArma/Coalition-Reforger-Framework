@@ -1,0 +1,24 @@
+GenericEntity : "{B02FA54EB2427627}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_npz_rail.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{51F6738D2EC74BE1}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
+     }
+    }
+    AttachmentSlotComponent "{5D5100CE8CA5075D}" {
+     AttachmentSlot InventoryStorageSlot RIS_Slot {
+      Prefab "{349DE19C84303C7B}Prefabs/Weapons/Attachments/Optics/1p87/Optic_1P87_new.et"
+     }
+    }
+    AttachmentSlotComponent "{5E9CA21FA76B5BFB}" {
+     AttachmentSlot InventoryStorageSlot gp_buttpad {
+      Prefab "{D901305DD97960AD}Prefabs/Weapons/Attachments/Misc/AkGpButtPad/akGPbutt.et"
+     }
+    }
+   }
+  }
+ }
+}

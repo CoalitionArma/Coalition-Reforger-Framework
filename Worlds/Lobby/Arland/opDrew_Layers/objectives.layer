@@ -111,18 +111,62 @@ $grp SCR_BaseTriggerEntity {
   "	"
   RunDefaultQueryFirst 0
  }
-}
-SCR_AIGroup BaseCommander : "{218445F83827D929}Prefabs/Groups/OPFOR/RHS_RF_MSV/EMR/Group_MSV_EMR_RifleSquad.et" {
- components {
-  AIPathfindingComponent "{518A98842FFC190E}" {
-   IgnoreFlags 126
+ BasePowerObj4 {
+  coords 1141.794 1.156 3332.09
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 8.3
+  BoxMins 1 1 1
+  BoxMaxs 5 5 5
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
   }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel Dump Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
  }
- coords 3178.678 17.94 2831.194
- m_aUnitPrefabSlots {
-  "{A67F5A2E875AEB72}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/Flora/Character_RHS_RF_MSV_Flora_Officer.et"
+ BasePowerObj6 {
+  coords 1113.321 1.156 3379.06
+  scale 1.62
+  TriggerShapeType Sphere
+  SphereRadius 8.3
+  BoxMins 1 1 1
+  BoxMaxs 5 5 5
+  "Polyline Height" 13
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{60ED74DE39D4A0AF}" {
+    Prefab "{9C7B7B7ECDC3A596}Prefabs/Weapons/Warheads/Warhead_Grenade_M67.et"
+    CheckPrefabHierarchy 1
+   }
+   PrefabFilter "{60FAD33BCC12995C}" {
+    Prefab "{7D969E6B3209529C}Prefabs/Weapons/Warheads/Warhead_Grenade_HEDP_M433.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  OnActivate ""\
+  "		// Notify player finished"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Fuel Dump Destroyed!\");"\
+  "		"\
+  "	"
+  RunDefaultQueryFirst 0
  }
- m_bSnapToTerrain 0
 }
 Vehicle Ural4320_Arsenal2 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
  coords 1075.8 38 2831.343
@@ -150,7 +194,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
  }
  {
   coords 1289.27 39 2312.271
-  m_sTitle "Find Blufor Saboteur Group"
+  m_sTitle "Destroy 3 Objectives, Collect One Intel & Exfil"
   m_aVisibleForFactions {
    "RHS_US_USMC"
   }

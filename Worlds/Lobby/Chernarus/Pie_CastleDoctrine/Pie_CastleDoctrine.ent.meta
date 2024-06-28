@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{8E3E98AE1FFD5FE3}Worlds/Lobby/Chernarus/Pie_CastleDoctrine/Pie_CastleDoctrine.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}

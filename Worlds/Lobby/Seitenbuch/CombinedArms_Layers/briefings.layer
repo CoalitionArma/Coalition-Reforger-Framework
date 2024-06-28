@@ -1,0 +1,46 @@
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 3500.788 391.938 525.564
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 3498.598 391.981 529.951
+  m_sTitle "OBJ1: Secure the Road to Seitenbuch"
+  m_sTextData "Secure the road linking the two towns before assault Seitenbuch"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 4
+  m_iScore 50
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 3500.312 391.959 524.616
+  m_sTitle "OBJ2: Secure BLU HQ"
+  m_sTextData "Clear out the BLU HQ and eliminate all threats in the vicinity"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 5
+  m_iScore 50
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 3504.412 391.8 522.056
+  m_sTitle "OBJ1: Defend Seitenbuch"
+  m_sTextData "Defend the town and surrounding area of Seitenbuch from Russian attack"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_iOrder 3
+  m_sFactionKey "RHS_US_USMC"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 3503.858 391.819 522.777
+ m_sTextData "Russia has invaded Poland and Germany."\
+ ""\
+ "On the outskirts of Seitenbuch, a rotational US Marine unit has sprung into action defending the hillside of the town."\
+ ""\
+ "Russian forces, while splintered, are attempting to push through and control the village."
+ m_iOrder 1
+}

@@ -1,0 +1,79 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 4360.04 4.906 3482.015
+ m_sTitle "Mission Notes (read me)"
+ m_sTextData "FLARES ARE HERE! USE THEM!"\
+ ""\
+ "This mission employs a new logistical system and specialty. Logi elements on both sides of the mission have dedicated supplies to redistribute via Supply Truck."\
+ ""\
+ "Both platoon medical officers also receive their own ambulances which can fully restore a player from near death if they are stable."
+ m_iOrder 4
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 4345.72 4.844 3491.801
+ m_sTitle "Mission Briefing"
+ m_sTextData "Push through the bottleneck region of Mussalo and destroy any power generators you find in the area."
+ m_iOrder 5
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 4322.053 9.387 3698.39
+ m_sTextData "BLU:"\
+ "3x Truck"\
+ "1x HMMWV"\
+ "1x Supply Vehicle"\
+ ""\
+ "OPF:"\
+ "3x Truck"\
+ "1x UAZ"\
+ "1x Supply Vehicle"
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4321.796 9.471 3700.633
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 4361.58 4.831 3471.117
+  m_sTitle "OBJ: Destroy A Site"
+  m_sTextData "Destoy the A bomb site"
+  m_iOrder 8
+  m_iScore 50
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 4350.32 4.904 3473.742
+  m_sTitle "OBJ: Destroy B Site"
+  m_sTextData "Destoy the B bomb site"
+  m_iOrder 9
+  m_iScore 50
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 4338.257 4.966 3477.923
+  m_sTitle "OBJ: Defend A Site"
+  m_sTextData "Defend the A bomb site from being destroyed"
+  m_iOrder 8
+  m_iScore 50
+  m_sFactionKey "US"
+ }
+ {
+  coords 4327.783 5.258 3478.051
+  m_sTitle "OBJ: Defend B Site"
+  m_sTextData "Defend the B bomb site from being destroyed"
+  m_iOrder 9
+  m_iScore 50
+  m_sFactionKey "US"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 4342.121 4.844 3504.645
+ m_sTitle "Mission Briefing"
+ m_sTextData "During safestart, establish defensive lines and dig in where briefed by PL."\
+ ""\
+ "Once safestart has ended, conduct defense in depth to prevent both A and B bomb sites from being destroyed by the encroaching Soviet  forces."
+ m_iOrder 5
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 4320.406 9.495 3700.696
+ m_sTitle "Situation"
+ m_sTextData "In preparation for a full invasion of Mussalo, a foward Soviet element has been deployed to the region to destroy key power infrastructure. A US military training detachment is in the region and responds."
+}

@@ -1,0 +1,50 @@
+Vehicle Mi8MTT1 : "{1547EB34123B4AE3}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MTT.et" {
+ components {
+  SCR_FuelConsumptionComponent "{5CCCEEA12FE59D93}" {
+   m_fFuelConsumption 1
+  }
+ }
+ coords 4968.018 36.875 9220.831
+ angleX 4.925
+ angleY -0.215
+ angleZ -1.796
+}
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ2 {
+  coords 4941.576 36.125 9147.016
+  angleY 178
+ }
+ UAZ1 {
+  coords 4942.295 36.094 9139.429
+  angleY -176
+ }
+ UAZ3 {
+  coords 4937.098 36.111 9141.081
+  angleX 0.895
+  angleY -175
+ }
+ UAZ7 {
+  coords 4937.16 36.144 9163.2
+  angleY 160
+ }
+ UAZ6 {
+  coords 4935.236 36.125 9153.763
+  angleY 166
+ }
+ UAZ5 {
+  coords 4939.752 36.126 9154.927
+  angleY 167
+ }
+ UAZ4 {
+  coords 4936.626 36.125 9146.423
+  angleY 174
+ }
+ UAZ9 {
+  coords 4933.332 36.197 9168.163
+  angleY 159
+ }
+ UAZ8 {
+  coords 4932.844 36.125 9161.178
+  angleY 165
+ }
+}

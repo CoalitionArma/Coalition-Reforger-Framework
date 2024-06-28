@@ -1,0 +1,30 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 7981.207 38.446 2566.137
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+   {
+    coords -16.416 -0.484 -26.821
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 26.487 -0.298 -48.724
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 53.51 -3.779 -34.952
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 16.58 -0.494 -75.383
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+ }
+}
+SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Armor3man.et" {
+ coords 7989.935 37.973 2569.775
+ m_aUnitPrefabSlots {
+  "{16DD0C87B29F3DB1}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_FTL_Modern.et" "{6B0EB37D136C5A1C}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_MMGG_Modern.et" "{3097D77C89DB7899}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_MMGAG_Modern.et"
+ }
+ m_sCustomNameSet "MMG Team"
+}

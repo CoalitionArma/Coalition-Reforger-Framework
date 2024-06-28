@@ -1,0 +1,77 @@
+$grp Vehicle : "{2B15F98903994DA3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_camo1.et" {
+ Ural4320_transport_covered_camo1 {
+  coords 3526.977 390.394 543.823
+  angleY -102
+ }
+ Ural4320_transport_covered_camo2 {
+  coords 3538.092 389.801 546.345
+  angleY -109
+ }
+ Ural4320_transport_covered_camo3 {
+  coords 3552.359 388.954 551.854
+  angleY -115
+ }
+ Ural4320_transport_covered_camo4 {
+  coords 3563.586 388.362 556.072
+  angleY -102
+ }
+ Ural4320_transport_covered_camo5 {
+  coords 3572.348 388.38 554.353
+  angleY -54
+ }
+}
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+ coords 3490.01 404.091 512.039
+ angleZ 1.79
+ m_aUnitPrefabSlots {
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{25647ECE38BDDFAD}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PSG_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_RU_Modern.et"
+ }
+ {
+  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+   {
+    coords -31.515 16.885 -19.189
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 48.943 -11.889 4.546
+    angleZ -1.79
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 74.06 -11.441 14.157
+    angleZ -1.79
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 92.109 -11.235 22.159
+    angleZ -1.79
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+  SCR_AIGroup : "{BD8D0D16E1EA353F}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_WeaponsSquad.et" {
+   coords 68.383 -1.984 -25.246
+   angleZ -1.79
+  }
+ }
+}
+$grp SCR_AIGroup : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_ArmorTeam.et" {
+ {
+  coords 3502.12 398.408 540.576
+  m_sCustomNameSet "Tank Crew 1"
+ }
+ {
+  coords 3510.033 391.28 540.76
+  m_sCustomNameSet "Tank Crew 2"
+ }
+}
+$grp Tank : "{D9EB40D7AD0966EC}Prefabs/Vehicles/Tracked/T-72B/T72B_FIA.et" {
+ T72B_FIA1 {
+  coords 3510.543 391.034 547.901
+ }
+ T72B_FIA2 {
+  coords 3503.349 391.459 546.5
+  angleX -1.786
+  angleY -0.084
+  angleZ 2.685
+ }
+}

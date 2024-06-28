@@ -1,0 +1,47 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 1699.164 419.429 1097.383
+ {
+  SCR_AIGroup : "{212DC9424EE62A11}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_ArtilleryTeam.et" {
+   coords 0.798 0.693 -8.197
+  }
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+   {
+    coords 8.469 -0.029 -82.61
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -23.78 -1.176 -92.342
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -25.22 15.519 -108.352
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 31.222 0.711 -81.986
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+  SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Armor3man.et" {
+   coords 1.4 -0.223 5.67
+   m_sCustomNameSet "MGS Stryker"
+  }
+ }
+}
+Vehicle Stryker_MGS_Base1 : "{A6B0CF93E155D820}Prefabs/Vehicles/Wheeled/Stryker/Stryker_MGS_Base.et" {
+ coords 1709.022 420.378 1095.48
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport1 {
+  coords 1703.03 419.99 1032.308
+  angleY 71
+ }
+ M923A1_transport2 {
+  coords 1691.384 419.22 1028.535
+  angleY 71
+ }
+ M923A1_transport3 {
+  coords 1679.804 418.47 1024.846
+  angleY 71
+ }
+}

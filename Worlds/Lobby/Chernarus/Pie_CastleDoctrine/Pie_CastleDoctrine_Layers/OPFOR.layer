@@ -1,0 +1,42 @@
+SCR_AIGroup : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_Large_p.et" {
+ coords 6893.065 396.366 11505.826
+ m_sCustomNameSet "1st Platoon"
+ {
+  $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   {
+    coords -0.047 0.445 -1.892
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -0.199 0.968 -4.03
+    m_sCustomNameSet "2nd Squad"
+   }
+  }
+ }
+}
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 6893.283 395.139 11513.76
+ m_sCustomNameSet "2nd Platoon"
+ {
+  $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   {
+    coords -0.078 0.182 -1.921
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -0.126 0.451 -4.312
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+ }
+}
+Turret Podnos_82mm_618E2CE82427F85F : "{E06B1D67177ABB87}Mortars/82/Podnos_82mm.et" {
+ coords 6907.319 406.064 11412.294
+}
+SCR_AIGroup : "{E0CAE53CE730EE6A}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleTeam_p.et" {
+ coords 6890.802 398.81 11494.747
+ m_aUnitPrefabSlots {
+  "{5452195DB17E9859}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MTRL_P.et" "{24DA48A79464E29C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MTRG_P.et"
+ }
+ m_sCustomNameSet "Mortar Team"
+}

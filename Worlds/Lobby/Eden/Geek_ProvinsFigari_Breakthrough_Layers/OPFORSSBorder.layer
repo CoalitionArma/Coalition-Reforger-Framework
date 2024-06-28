@@ -1,0 +1,20 @@
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 5213.649 64.116 6109
+ }
+ {
+  coords 5457.654 98.731 6406.813
+ }
+ {
+  coords 5406.431 88.665 6345.629
+ }
+ {
+  coords 5363.188 81.93 6289.232
+ }
+ {
+  coords 5308.591 77.71 6238.377
+ }
+ {
+  coords 5255.745 72.286 6177.27
+ }
+}

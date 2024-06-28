@@ -1,6 +1,9 @@
 SCR_ChimeraCharacter : "{E9AEEF2D9E41321B}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG.et" {
  ID "522AAC667BF61423"
  components {
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingColorTeam Red
+  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "MG Assistant"
   }

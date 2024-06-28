@@ -1,0 +1,11 @@
+SCR_ChimeraCharacter : "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" {
+ ID "51C707EFDE2A1213"
+ components {
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingColorTeam Green
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Grenadier"
+  }
+ }
+}

@@ -1,0 +1,184 @@
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ LOA {
+  coords 2413.578 410.773 587.823
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_sDescription "LOA"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA2 {
+  coords 2472.004 402.575 641.546
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA3 {
+  coords 2530.651 399.28 706.091
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA4 {
+  coords 2572.51 400.369 758.883
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA5 {
+  coords 2627.043 401.078 797.069
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA6 {
+  coords 2681.899 401.396 835.55
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA7 {
+  coords 2728.59 399.298 863.747
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA8 {
+  coords 2748.124 397.46 891.638
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA9 {
+  coords 2737.611 397.429 952.631
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA10 {
+  coords 2718.284 400.28 1002.808
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA11 {
+  coords 2683.754 405.564 1062.03
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA12 {
+  coords 2652.14 415.243 1156.668
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA13 {
+  coords 2621.078 427.95 1228.197
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ LOA14 {
+  coords 2584.887 437.46 1303.391
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_sDescription "LOA"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ defense {
+  coords 2055.792 435.294 1067.289
+  angleY 0
+  m_MarkerColor 0.122 0.105 0.871 1
+  m_sQuadName "fortification-2"
+  m_sDescription "Defensive Ridgeline"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bVisibleForEmptyFaction 0
+ }
+ defense2 {
+  coords 2105.948 435.979 1109.543
+  angleY 121
+  m_MarkerColor 0.121 0.106 0.868 1
+  m_sQuadName "defend-2"
+  m_sDescription "TOW Launcher"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bVisibleForEmptyFaction 0
+ }
+ defense3 {
+  coords 1626.396 416.388 1037.643
+  angleY 121
+  m_MarkerColor 0.121 0.106 0.868 1
+  m_sQuadName "defend-2"
+  m_sDescription "M119"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_bVisibleForEmptyFaction 0
+ }
+}
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 3513.247 390.684 554.406
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2268.281 417.747 825.61
+  m_sQuadName "objective-marker-2"
+  m_sDescription "OBJ1: Road to Seitenbuch"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 1697.523 419.868 1089.6
+  m_sQuadName "objective-marker-2"
+  m_sDescription "OBJ2: Secure BLU HQ"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1714.268 426.679 1103.534
+ m_sDescription "BLUFOR HQ"
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

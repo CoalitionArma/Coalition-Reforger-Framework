@@ -1,0 +1,75 @@
+Tank M113A3_APC1 : "{0A41E8DF1F680496}Prefabs/Vehicles/Tracked/M113/M113A3_APC.et" {
+ coords 1358.79 5.001 1049.899
+ angleY 40
+}
+Vehicle M998_MERDC1 : "{6B24D5AFD884D64C}Prefabs/Vehicles/Wheeled/M998/M998_MERDC.et" {
+ coords 1353.327 5.392 1053.68
+ angleY 38
+}
+Vehicle M923A1_transport_covered1 : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
+ coords 1341.589 5.72 1059.726
+ angleY 68
+}
+Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ coords 1346.674 5.303 1048.016
+ angleY -1
+}
+SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+ coords 1346.797 5.057 1044.677
+ angleY 176.604
+ m_aUnitPrefabSlots {
+  "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et"
+ }
+ m_sCustomNameSet "Platoon HQ"
+ {
+  SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+   coords 2.582 -0.234 5.427
+   angleY -176.604
+   m_sCustomNameSet "Squad 1"
+   {
+    SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+     coords 0.029 -0.043 -1.665
+     m_sCustomNameSet "Squad 2"
+     {
+      SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+       coords 0.03 -0.017 -1.111
+       m_sCustomNameSet "Squad 3"
+       {
+        SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+         coords -0.009 -0.017 -1.08
+         m_sCustomNameSet "Squad 4"
+         {
+          SCR_AIGroup : "{1AFA02A4E31F1AD8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MGTeam.et" {
+           coords 24.314 -0.599 -21.845
+           angleY -59
+           m_aUnitPrefabSlots {
+            "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et"
+           }
+           m_sCustomNameSet "MG Team"
+           {
+            SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_ATTeam.et" {
+             coords 0.279 -0.07 5.64
+             angleY 3
+             m_aUnitPrefabSlots {
+              "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et"
+             }
+             m_sCustomNameSet "AT Team"
+             {
+              SCR_AIGroup : "{51C2539A6A713CCF}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_ArmorCrew_p.et" {
+               coords 26.921 0.92 18.379
+               angleY 56
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

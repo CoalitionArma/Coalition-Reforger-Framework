@@ -1,0 +1,51 @@
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1972.186 430.721 969.868
+ angleX -0.894
+ angleY 90.028
+ angleZ -1.79
+ m_aVisibleForFactions {
+  "US"
+ }
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 3161.375 378.5 873.416
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 60
+  m_sDescription "Extraction"
+  m_aVisibleForFactions {
+   "US"
+  }
+ }
+ {
+  coords 2581.078 403.678 925.431
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 60
+  m_sDescription "Laptop Approximate Location"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1928.576 440.656 780.996
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 60
+  m_sDescription "Extraction"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 3111 387.406 901.75
+ angleX -1.79
+ angleY 90
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+}

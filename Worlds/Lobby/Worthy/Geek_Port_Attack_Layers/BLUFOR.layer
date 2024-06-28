@@ -1,0 +1,68 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+ coords 1795.543 14.911 1409.964
+ angleY -51.204
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+   {
+    coords -3.129 -3.728 27.368
+    angleY -143.306
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 0.149 -3.441 31.501
+    angleY -143.306
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 2.48 -3.247 34.883
+    angleY -143.306
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 5.279 -3.027 38.671
+    angleY -143.306
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords 6.723 -2.95 41.057
+    angleY -152.715
+    m_sCustomNameSet "5th Squad"
+   }
+   {
+    coords 9.993 -2.64 46.893
+    angleY -152.715
+    m_sCustomNameSet "6th Squad"
+   }
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1769.483 10.156 1422.041
+ angleY 90
+ m_fWorldSize 65
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+}
+$grp Vehicle : "{E3DD72FD06BA2320}Prefabs/Vehicles/Wheeled/Stryker/Stryker_CROWS.et" {
+ Stryker_CROWS1 {
+  coords 1753.016 5.67 1397.415
+  angleY 146.668
+ }
+ Stryker_CROWS2 {
+  coords 1746.08 5.41 1408.94
+  angleY 147.454
+ }
+}
+$grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Armor3man.et" {
+ {
+  coords 1766.47 7.954 1409.232
+  angleY 46.216
+  m_sCustomNameSet "STRYKER 1"
+ }
+ {
+  coords 1761.028 7.497 1415.736
+  angleY 54.289
+  m_sCustomNameSet "STRYKER 2"
+ }
+}

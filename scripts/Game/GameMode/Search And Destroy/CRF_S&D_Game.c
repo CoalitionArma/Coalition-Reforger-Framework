@@ -12,6 +12,9 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("USSR", "auto", "The side deffending the bomb sites")]
 	FactionKey defendingSide;
 	
+	[Attribute("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et", "auto", "The object to spawn as a bomb")]
+	string bombSitePrefab;
+	
 	protected bool aSiteDestroyed, bSiteDestroyed = false;
 	protected int sitesDestroyed = 0;
 	protected IEntity aSite, bSite;
@@ -67,18 +70,32 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		spawnParams.Transform[3] = aSiteSpawn;
 		
 		// Spawn destructible "site" at each trigger point
-		aSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
+		aSite = GetGame().SpawnEntityPrefab(Resource.Load(bombSitePrefab),GetGame().GetWorld(),spawnParams);
 		aSite.SetYawPitchRoll(aSiteYawPitchRoll);
 		aSiteID = aSite.GetID();
 		
 		spawnParams.Transform[3] = bSiteSpawn; // change to bsite
-		bSite = GetGame().SpawnEntityPrefab(Resource.Load("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et"),GetGame().GetWorld(),spawnParams);
+		bSite = GetGame().SpawnEntityPrefab(Resource.Load(bombSitePrefab),GetGame().GetWorld(),spawnParams);
 		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
 		bSiteID = bSite.GetID();
 		
-		// Create markers on each bomb site
-		// createMarkers();
+		GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);
 	}
+	
+	
+	void CheckAddMarkers()
+	{
+		// Create markers on each bomb site
+		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
+		if (!gameModePlayerComponent) 
+			return;
+		
+		gameModePlayerComponent.AddScriptedMarker("aSiteTrigger", "0 0 0", 15, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+		gameModePlayerComponent.AddScriptedMarker("bSiteTrigger", "0 0 0", 15, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
+		
+		GetGame().GetCallqueue().Remove(CheckAddMarkers);
+	}
+	
 
 	// Acts as a loop method spawned via calllater, every 1 sec
 	//------------------------------------------------------------------------------------------------
@@ -199,10 +216,17 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	{
 		IEntity destroyedBombSiteEntity = null;
 		
-		if(m_sDestroyedBombSiteString == "SiteA")
+		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
+		if (!gameModePlayerComponent) 
+			return;
+		
+		if(m_sDestroyedBombSiteString == "SiteA") {
+			gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 15, "Bomb Site A", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			destroyedBombSiteEntity = aSite;
-		else
+		} else {
+			gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 15, "Bomb Site B", "{2984D5F19FA61B6E}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesAvailable.edds");
 			destroyedBombSiteEntity = bSite;
+		};
 		
 		// Spawn explosion at site
 		EntitySpawnParams spawnParams = new EntitySpawnParams();

@@ -1,0 +1,29 @@
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+ coords 7783.344 41.906 3770.1
+ {
+  SCR_AIGroup : "{42B89C4662189118}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_MMGTeam.et" {
+   coords -6.991 -0.897 7.334
+  }
+  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+   {
+    coords -42.274 -3.951 55.341
+    angleX 6.618
+    angleY -0.234
+    angleZ -2.029
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -59.108 -10.606 103.717
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -104.136 -17.922 169.118
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -71.502 -14.951 148.019
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+ }
+}

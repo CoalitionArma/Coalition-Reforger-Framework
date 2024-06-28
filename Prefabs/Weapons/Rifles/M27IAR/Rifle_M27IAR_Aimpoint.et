@@ -1,0 +1,24 @@
+GenericEntity : "{0761CE8644BBB28E}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR_TA31RCO.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5CC8E73BB698D287}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      Prefab "{4268B2077766E8C7}Prefabs/Weapons/Attachments/Optics/aimpoint_t1/Optic_t1_high.et"
+     }
+    }
+    AttachmentSlotComponent "{5D873BE1CB1DD9C4}" {
+     AttachmentSlot InventoryStorageSlot attachment_grip {
+      Prefab "{A62F1332EFC35258}Prefabs/Weapons/Attachments/Misc/KacRailCover/KacRailCover_grip.et"
+     }
+    }
+    AttachmentSlotComponent "{5D873BE26346E4D7}" {
+     AttachmentSlot InventoryStorageSlot attachment_railcover {
+      Prefab "{520CDC6ADA90F51E}Prefabs/Weapons/Attachments/Misc/KacRailCover/KacRailCover_kit2.et"
+     }
+    }
+   }
+  }
+ }
+}

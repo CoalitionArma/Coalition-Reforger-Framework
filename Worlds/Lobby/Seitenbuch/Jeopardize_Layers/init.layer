@@ -1,0 +1,146 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{287F5B4D8EB4AD96}worlds/GameMaster/Navmeshes/GM_Seitenbuch_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 998.66 5.335 1388.767
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 22
+   m_iStartingMinutes 20
+  }
+ }
+ coords 1450.959 410.255 1288.902
+ angleX -0.89
+ angleY -0.069
+ angleZ 4.468
+ {
+  SCR_FactionManager "61317DC81B700E15" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{613141150477071B}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6131411505FDED0D}" {
+        m_sCallsign "2-2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Anton10"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Anton11"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Anton12"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Boris10"
+       }
+       SCR_CallsignInfo "{6131411588002E65}" {
+        m_sCallsign "Boris11"
+       }
+       SCR_CallsignInfo "{6131411589C7BD96}" {
+        m_sCallsign "Boris12"
+       }
+       SCR_CallsignInfo "{6131411589841744}" {
+        m_sCallsign "Chekov10"
+       }
+       SCR_CallsignInfo "{61314115A73B1464}" {
+        m_sCallsign "Chekov11"
+       }
+       SCR_CallsignInfo "{61314115F11908D5}" {
+        m_sCallsign "Chekov12"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 2542.987 414.571 829.174
+  m_sTitle "Extraction"
+  m_sTextData "Your extraction point is the MSR South of Seitenbuch."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 3
+ }
+ {
+  coords 2514.596 429.718 878.485
+  m_sTitle "Extraction"
+  m_sTextData "Your extraction point is on the MSR West of Neuses. "
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 3
+ }
+ {
+  coords 2470.715 425.234 847.918
+  m_sTitle "Objective"
+  m_sTextData "A US command vehicle containing sensitive intelligence was abandoned in the town of Neuses. Recover the command vehicle and return it to your extraction point at any cost."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2488.126 414.642 837.206
+}
+PS_MissionDescription : "{8D61878E9F924406}PrefabsEditable/MissionDescription/GametypeNeutralEscort.et" {
+ coords 2489.519 406.006 853.368
+ m_sTextData "Neutral Escort"\
+ ""\
+ "Both teams fight over one objective, secure it and return it to your extraction zone."\
+ ""\
+ "Your extraction is opposite of your spawn location."
+ m_iOrder 1
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 2487.833 406.771 863.493
+  m_sTitle "Objective: Extract Truck"
+  m_iOrder 1
+  m_sFactionKey "US"
+ }
+ {
+  coords 2490.19 411.593 850.288
+  m_sTitle "Objective: Extract Truck"
+  m_iOrder 1
+  m_sFactionKey "USSR"
+ }
+}

@@ -1,0 +1,47 @@
+SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+ coords 1306.453 9.346 2523.741
+ angleX -1.209
+ angleY 96.469
+ angleZ 4.66
+ m_aUnitPrefabSlots {
+  "{E7B82DA39E13951D}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_SL.et" "{F051151C98DB30CD}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_Medic.et"
+ }
+ m_sCustomNameSet "1st Platoon"
+ {
+  SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+   coords -0.152 0 -1.163
+   {
+    SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+     coords 0.119 -0.018 -1.235
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+       coords 0.304 -0.073 -3.083
+       m_aUnitPrefabSlots {
+        "{E7B82DA39E13951D}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_SL.et" "{F051151C98DB30CD}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_Medic.et"
+       }
+       m_sCustomNameSet "2nd Platoon"
+       {
+        SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+         coords 0.148 -0.025 -1.198
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+           coords 0.243 -0.022 -1.428
+           m_sCustomNameSet "4th Squad"
+           {
+            SCR_AIGroup : "{CDA4D305886F199D}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_MAT.et" {
+             coords 10.152 -0.016 1.479
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

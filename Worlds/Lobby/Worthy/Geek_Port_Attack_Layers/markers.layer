@@ -1,0 +1,20 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2651.927 2 1107
+  m_sDescription "OBJ - A Bomb Site"
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2743.217 2 971.568
+  m_sDescription "OBJ - B Bomb Site"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV" "RHS_US_USMC"
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

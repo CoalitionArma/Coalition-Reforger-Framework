@@ -1,0 +1,68 @@
+$grp Tank : "{0144F571F1998FC4}Prefabs/Vehicles/Tracked/BMP1/BMP1_FIA.et" {
+ BMP1_FIA1 {
+  coords 9043.938 322.779 5963.649
+  angleX 2.82
+  angleY -66.989
+  angleZ 0.226
+ }
+ BMP1_FIA2 {
+  coords 9054.769 322.021 5958.217
+  angleX 3.971
+  angleY -70.032
+  angleZ -0.459
+ }
+}
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+ coords 9051.751 322.739 5955.406
+ angleX 6.618
+ angleY -0.234
+ angleZ -2.029
+ m_aUnitPrefabSlots {
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_RU_Modern.et"
+ }
+ {
+  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+   {
+    coords 14.049 -0.127 -22.671
+    angleX -3.972
+    angleY 0.343
+    angleZ 7.339
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -9.441 11.243 -42.819
+    angleX -6.622
+    angleZ 2.015
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 16.79 5.294 -46.933
+    angleX -6.622
+    angleZ 2.015
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -17.457 10.067 -29.957
+    angleX -6.622
+    angleZ 2.015
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+  $grp SCR_AIGroup : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_ArmorTeam.et" {
+   {
+    coords 3.921 -2.067 12.879
+    angleX 6.91
+    angleY -159.86
+    angleZ 0.382
+    m_sCustomNameSet "BMP Crew"
+   }
+   {
+    coords 10.475 -2.455 9.49
+    angleX 13.819
+    angleY -159.67
+    angleZ 0.789
+    m_sCustomNameSet "BMP Crew"
+   }
+  }
+ }
+}
