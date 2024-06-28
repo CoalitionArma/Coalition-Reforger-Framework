@@ -1,0 +1,15 @@
+SCR_ChimeraCharacter : "{3662286A13252E45}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rally_Driver.et" {
+ ID "520EC961A090BBD5"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "VIP"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Jacket {
+     Prefab "{27162F1F6EE6581A}Prefabs/Characters/Uniforms/Jacket_Denim_01/Jacket_Denim_01_brownShirt.et"
+    }
+   }
+  }
+ }
+}
