@@ -10,7 +10,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
      coords 4.494 0 -3.103
      m_sTextData "Search and Destroy"\
      ""\
-     "The attackers must find and plant the bomb on either A or B bomb site in order to win."\
+     "The attackers must find and plant the bombs on both A and B bomb site in order to win."\
      ""\
      "Only one bomb site can be active at a time."
      {
@@ -29,7 +29,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
           PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
            coords 14.351 0 3.449
            m_sTitle "OPFOR Objective"
-           m_sTextData "Defend both bombs, BLUFOR only need to detonate one to complete their mission."\
+           m_sTextData "Defend both bombs from OPFOR for 40 minutes."\
            ""\
            "OR"\
            ""\
@@ -52,7 +52,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
           PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
            coords 12.218 0.001 0.914
            m_sTitle "BLUFOR Objective"
-           m_sTextData "Plant and detonate one of OPFORs two marked bombs."\
+           m_sTextData "Plant and detonate both of OPFORs two marked bombs within 40 minutes."\
            ""\
            "OR"\
            ""\
