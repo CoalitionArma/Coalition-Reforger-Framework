@@ -7,7 +7,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
    "One Life, No Respawn."
    {
     PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
-     coords 4.494 -0 -3.103
+     coords 4.494 0 -3.103
      m_sTextData "Search and Destroy"\
      ""\
      "The attackers must find and plant the bomb on either A or B bomb site in order to win."\
@@ -15,8 +15,8 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
      "Only one bomb site can be active at a time."
      {
       PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
-       coords 0.35 -0 0.055
-       m_sTextData "US Armed Forces move to assault a Soviet controlled factory whilst there is a 25 minute window."
+       coords 0.35 0 0.055
+       m_sTextData "US Armed Forces move to assault a Soviet controlled factory to detonate one of the explosives stored there within a 25 minute window."
        m_iOrder 3
        {
         PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
