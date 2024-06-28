@@ -1,6 +1,0 @@
-SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
- ID "0000000000000001"
- m_aUnitPrefabSlots {
-  "{84EDDC39E6F1E9EC}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_SL_Modern_Spec_Ops.et" "{A5E6D5D2686C68A4}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern_Spec_Ops.et" "{8FFD7752FFB6D590}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern_Spec_Ops.et" "{FB293EA17586AE14}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_AR_Modern_Spec_Ops.et" "{85E2433F86741A7F}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_AAR_Modern_Spec_Ops.et" "{8FFD7752FFB6D590}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern_Spec_Ops.et" "{8FFD7752FFB6D590}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern_Spec_Ops.et"
- }
-}
