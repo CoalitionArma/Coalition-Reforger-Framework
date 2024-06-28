@@ -11,6 +11,7 @@ PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/No
 PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  coords 4345.72 4.844 3491.801
  m_sTitle "Mission Briefing"
+ m_sTextData "Push through the bottleneck region of Mussalo and destroy any power generators you find in the area."
  m_aVisibleForFactions {
   "RHS_RF_MSV"
  }
