@@ -4,6 +4,17 @@ PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/No
  "One life, no respawn."\
  "No medical vehicles."
 }
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 5192.521 68.728 5172.869
+ m_sTitle "US Assets"
+ m_sTextData "1x M1025 Armed Vehicle"
+ m_aVisibleForFactions {
+  "US"
+ }
+ m_bEmptyFactionVisibility 0
+ m_bShowForAnyFaction 0
+ m_iOrder 7
+}
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 6630.378 88.249 5411.735
 }
