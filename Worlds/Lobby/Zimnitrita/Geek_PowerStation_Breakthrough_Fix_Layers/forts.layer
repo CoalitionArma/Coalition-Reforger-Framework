@@ -1,0 +1,52 @@
+$grp GenericEntity : "{3F2D1FB239682B87}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_plastic.et" {
+ {
+  components {
+   Hierarchy "{5A58883F88AF3C76}" {
+   }
+  }
+  coords 9003.916 101.398 9248.1
+  angleX -14.687
+  angleY 45.899
+ }
+ {
+  components {
+   Hierarchy "{5A58883F88AF3C76}" {
+   }
+  }
+  coords 8809.218 104.77 9195.507
+  angleX -14.726
+  angleY -87.938
+  angleZ -6.385
+ }
+ {
+  components {
+   Hierarchy "{5A58883F88AF3C76}" {
+   }
+  }
+  coords 8999.404 102.319 9075.268
+  angleX -23.326
+  angleY 140.432
+  angleZ -1.787
+ }
+ {
+  components {
+   Hierarchy "{5A58883F88AF3C76}" {
+   }
+  }
+  coords 8865.229 105.91 9087.314
+  angleX -9.712
+  angleY -136.112
+  angleZ -0.56
+ }
+}
+$grp GenericEntity : "{917158017F425567}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_01.et" {
+ {
+  coords 8818.674 105.403 9199.387
+  angleY -15.985
+  angleZ -1.745
+ }
+ {
+  coords 9043.563 103.272 9187.563
+  angleY 65.743
+ }
+}

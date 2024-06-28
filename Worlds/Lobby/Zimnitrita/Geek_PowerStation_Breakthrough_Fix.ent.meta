@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{BABF3132EBA9299F}Worlds/Lobby/Zimnitrita/Geek_PowerStation_Breakthrough_Fix.ent"
+ Configurations {
+  ENTResourceClass PC {
+  }
+  ENTResourceClass XBOX_ONE : PC {
+  }
+  ENTResourceClass XBOX_SERIES : PC {
+  }
+  ENTResourceClass PS4 : PC {
+  }
+  ENTResourceClass PS5 : PC {
+  }
+  ENTResourceClass HEADLESS : PC {
+  }
+  ENTResourceClass Xbox : PC {
+  }
+ }
+}
