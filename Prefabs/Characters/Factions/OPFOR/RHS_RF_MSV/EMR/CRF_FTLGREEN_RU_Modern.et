@@ -14,6 +14,7 @@ SCR_ChimeraCharacter : "{1E8265C4FCFC787B}Prefabs/Characters/Factions/OPFOR/RHS_
   }
   CSI_CharacterComponent "{617A0517A9B25B23}" {
    m_iStartingColorTeam Green
+   m_iStartingIcon "Team Lead"
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Fireteam Leader"
