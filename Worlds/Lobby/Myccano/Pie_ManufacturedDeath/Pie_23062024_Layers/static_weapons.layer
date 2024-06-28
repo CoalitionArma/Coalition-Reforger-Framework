@@ -1,8 +1,6 @@
-Turret Tripod_6T5_61B0FE1ADE5A305E : "{0D742ABD55FE1FDC}Metistripod.et" {
- coords 5408.434 14.125 2850.678
- angleX -0.944
- angleY -17.306
- angleZ 3.283
+Turret D30tripod_61B0FE1AA57AB725 {
+ coords 5524.174 3.931 2709.426
+ angleY -9.496
 }
 $grp Turret : "{29F0CC704A582154}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV.et" {
  Tripod_6T7_NSV_61B0FE1F95B94FAC {
@@ -51,10 +49,6 @@ $grp Turret : "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et" {
   coords 5567.043 20.87 2869.75
   angleY 31.969
  }
-}
-Turret D30tripod_61B0FE1AA57AB725 : "{B4B9FCFD0BF40E7E}D30/D30tripod.et" {
- coords 5524.174 3.931 2709.426
- angleY -9.496
 }
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {

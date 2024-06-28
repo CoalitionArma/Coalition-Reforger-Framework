@@ -4,30 +4,79 @@ Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ur
  angleY 170.054
  angleZ -0.155
 }
-SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
- coords 5469.843 1.625 2780.411
+$grp Vehicle : "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" {
+ S1203_transport_randomized1 {
+  coords 5462.889 1.625 2772.352
+  angleY 54.468
+ }
+ S1203_transport_randomized2 {
+  coords 5458.697 1.625 2768.362
+  angleY 54.468
+ }
+}
+Vehicle M1 : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ coords 5460.896 1.624 2787.751
+ angleY -19.115
+}
+Vehicle Ural4320_FIA_transport_covered1 : "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et" {
+ coords 5461.698 1.624 2761.485
+ angleY -10.348
+}
+Vehicle UAZ469_covered_CIV_PTS1 : "{BDFB2377B6B4ABBB}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_PTS.et" {
+ coords 5465.354 1.624 2776.985
+}
+Vehicle BTR1 : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ coords 4698.152 2.664 4416.289
+ angleX -0.598
+ angleY -167.126
+ angleZ 2.616
+}
+Vehicle UAZ469_covered_CIV_blue1 : "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et" {
+ coords 5463.455 1.626 2782.016
+ angleY -34.355
+}
+SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+ coords 5463.637 1.625 2824.36
+ m_aUnitPrefabSlots {
+  "{66072DE57F62DA0C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_VIP_P.et"
+ }
+ m_sCustomNameSet "VIP"
  {
-  SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
-   coords 0.036 -0.001 -1.731
+  SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+   coords -0.009 0 -2.081
+   m_sCustomNameSet "1st Platoon"
    {
-    SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
-     coords 0.121 0.001 -1.966
-     m_sCustomNameSet "2nd Squad"
+    SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+     coords -0.064 0 -1.472
+     m_sCustomNameSet "1st Squad"
      {
-      SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
-       coords 0.142 0 -4.033
-       m_sCustomNameSet "2nd Platoon"
+      SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+       coords -0.149 0 -2.165
+       m_sCustomNameSet "2nd  Squad"
        {
-        SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
-         coords -0.069 -0.001 -1.691
-         m_sCustomNameSet "3rd Squad"
+        SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+         coords -0.06 0 -1.931
+         m_sCustomNameSet "2nd Platoon"
          {
-          SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
-           coords -0.032 0 -1.312
-           m_sCustomNameSet "4th Squad"
+          SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+           coords -1.458 0 -1.466
+           m_sCustomNameSet "3rd Squad"
            {
-            SCR_AIGroup : "{CDA4D305886F199D}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_MAT.et" {
-             coords 0.002 0.001 -2.39
+            SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+             coords -1.435 0 -1.739
+             m_sCustomNameSet "4th Squad"
+             {
+              SCR_AIGroup : "{25CF16A866EA7B50}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_HATTeam.et" {
+               coords 0 0 0
+               angleY 0
+               m_sCustomNameSet "HAT Team"
+               {
+                SCR_AIGroup : "{080FEB9F64017EF8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_SniperTeam.et" {
+                 coords 0.186 0 -2.058
+                }
+               }
+              }
+             }
             }
            }
           }
