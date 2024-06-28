@@ -1,0 +1,46 @@
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 5349.924 140.531 5281.357
+ "Map Geometry Data" "{77581FAB01CA680B}UI/SerhiivkaConflict.topo"
+ "Satellite background image" "{CA1E3E0D2184760B}UI/gtt_satmap.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 6219.333 187.878 6556.071
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{61B90C9EC29F62F7}" {
+   attackingSide "RHS_RF_MSV"
+  }
+ }
+ coords 6211.133 187.836 6555.729
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 5087.984 149.132 4907.972
+  angleY 0
+ }
+ {
+  coords 5154.462 156.506 4961.588
+  angleY 0
+ }
+ {
+  coords 5202.116 160.626 5000.834
+  angleY 0
+ }
+ {
+  coords 5285.358 149.779 5077.885
+  angleY 0
+ }
+ {
+  coords 5352.508 147.7 5134.696
+  angleY 0
+ }
+ {
+  coords 5449.06 143.704 5218.4
+  angleY 0
+ }
+ {
+  coords 5590.699 149.599 5349.057
+  angleY 0
+ }
+}

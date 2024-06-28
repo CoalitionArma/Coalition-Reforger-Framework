@@ -1,0 +1,52 @@
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 6296.507 179.931 6197.313
+  angleY 0
+  m_sQuadName "fortification-2"
+  m_fWorldSize 100
+  m_sDescription "Trench line"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 6092.795 176.181 6209.465
+  angleY 0
+  m_sQuadName "fortification-2"
+  m_fWorldSize 100
+  m_sDescription "Trench line"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 5654.076 174.025 6362.552
+  angleY 0
+  m_sQuadName "fortification-2"
+  m_fWorldSize 100
+  m_sDescription "Trench line"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 5392.641 173.62 5836.82
+  angleY 0
+  m_sQuadName "fortification-2"
+  m_fWorldSize 100
+  m_sDescription "Trench line"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 5623.986 172.449 6196.881
+  angleY 0
+  m_sQuadName "fortification-2"
+  m_fWorldSize 100
+  m_sDescription "Trench line"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+}

@@ -1,0 +1,43 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ {
+  coords 4799.407 144.791 4987.217
+  m_sTitle "Missions Description"
+  m_sTextData "US Forces have been deployed to Ukraine to help repel the Russian offensive by defending key Ukrainian installations."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4802.449 144.813 4989.234
+  m_sTitle "Blurfor Briefing"
+  m_sTextData "Russian forces are targeting Ukraine drone signal boosters. These booster are key to Ukraines use of drones in the area so defend them at all cost!"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 4829.34 146.35 5033.466
+  m_sTitle "Opfor Briefing"
+  m_sTextData "We have located two drone signal boosters, if we can destroy them the Ukrainian forces will no longer be able to use drones in the area to target our tanks."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 4822.375 145.261 5008.895
+  m_sTextData "Destroy Drone Boosters"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 4820.963 145.065 5005.077
+  m_sTextData "Defend Drone Boosters"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_sFactionKey "RHS_US_USMC"
+ }
+}
