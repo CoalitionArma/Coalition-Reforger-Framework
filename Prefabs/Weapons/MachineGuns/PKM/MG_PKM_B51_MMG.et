@@ -1,0 +1,14 @@
+GenericEntity : "{5D6226C0B4631749}Prefabs/Weapons/MachineGuns/PKM/MG_PKM_B51.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5DA8E03749BFAE5C}" {
+     AttachmentSlot InventoryStorageSlot rail1913 {
+      Prefab "{969F74903AFFCABE}Prefabs/Weapons/Attachments/Optics/bravo4/Optic_bravo4.et"
+     }
+    }
+   }
+  }
+ }
+}

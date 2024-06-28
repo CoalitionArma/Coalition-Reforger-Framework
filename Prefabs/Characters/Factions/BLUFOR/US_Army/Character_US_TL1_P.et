@@ -3,6 +3,7 @@ SCR_ChimeraCharacter : "{E398E44759DA1A43}Prefabs/Characters/Factions/BLUFOR/US_
  components {
   CSI_CharacterComponent "{617A0517A9B25B23}" {
    m_iStartingColorTeam Red
+   m_iStartingIcon "Team Lead"
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Team Leader"

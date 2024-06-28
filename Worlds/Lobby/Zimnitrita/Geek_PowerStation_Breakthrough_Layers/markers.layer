@@ -1,0 +1,14 @@
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 8901.513 106.53 9184.689
+ m_sDescription "OBJ - Reach the Electric Power Station"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 9335.848 4.262 9831.244
+ angleY 0
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 8840.792 106.593 9166.569
+ angleY 0
+}

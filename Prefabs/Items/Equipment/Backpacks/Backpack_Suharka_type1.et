@@ -1,0 +1,8 @@
+GenericEntity : "{D693417ED79D8202}Prefabs/Items/Equipment/Backpacks/Backpack_Suharka_base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   m_fMaxWeight 250
+  }
+ }
+}

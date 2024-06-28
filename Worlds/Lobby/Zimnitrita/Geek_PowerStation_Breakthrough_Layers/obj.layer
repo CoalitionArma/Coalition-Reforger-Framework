@@ -1,0 +1,11 @@
+SCR_BaseFactionTriggerEntity endTrig {
+ coords 8930.854 106.531 9158.725
+ TriggerShapeType Sphere
+ SphereRadius 80
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"<atk> forces have made it to the Electric Power Station!\", 10, \"<atk> Victory\");"\
+ "	"
+ m_sOwnerFactionKey "USSR"
+}

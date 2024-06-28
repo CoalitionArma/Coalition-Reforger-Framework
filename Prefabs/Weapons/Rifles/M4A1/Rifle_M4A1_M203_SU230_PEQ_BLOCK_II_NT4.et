@@ -14,7 +14,7 @@ GenericEntity : "{00D6DCF68C664480}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_B
     }
     AttachmentSlotComponent "{5E0EEDB0BD59EE7D}" {
      AttachmentSlot InventoryStorageSlot Optics {
-      Prefab "{7DB681643152613C}Prefabs/Weapons/Attachments/Optics/su230/Optic_SU230_MRDS.et"
+      Prefab "{979AF6CFF2AAAE26}Prefabs/Weapons/Attachments/Optics/aimpoint_t1/Optic_su278pvs_high.et"
      }
     }
     AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
@@ -33,7 +33,7 @@ GenericEntity : "{00D6DCF68C664480}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_B
     }
     AttachmentSlotComponent "{60988582B19CD9BD}" {
      AttachmentSlot InventoryStorageSlot FLASHHIDER {
-      Prefab "{B9C41AAC90570E50}Prefabs/Weapons/Attachments/Muzzle/KAC_NT4_QDSS/KAC_NT4_QDSS.et"
+      Prefab ""
      }
     }
    }
