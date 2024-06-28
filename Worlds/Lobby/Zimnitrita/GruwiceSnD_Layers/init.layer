@@ -16,6 +16,7 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
    ID "5ED9088735FF2D8B"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
+     m_bIsPlayable 1
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
       m_bIsAssignedRandomly 0
       m_aSquadNames {
@@ -70,10 +71,16 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{61B1035EFA893F1F}" {
-        m_sCallsign "Rhino 1"
+        m_sCallsign "Rhino Lead"
        }
        SCR_CallsignInfo "{61B1035EFA34BFEE}" {
+        m_sCallsign "Rhino 1"
+       }
+       SCR_CallsignInfo "{61B827116D363471}" {
         m_sCallsign "Rhino 2"
+       }
+       SCR_CallsignInfo "{61B827116AF7426A}" {
+        m_sCallsign "Rhino 3"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -103,7 +110,7 @@ PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/Ga
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  coords 10621.383 28.406 5658.147
  m_sTextData "Blufor:"\
- "2x M113A3"
+ "4x M1025 M2HB"
  m_iOrder 3
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
