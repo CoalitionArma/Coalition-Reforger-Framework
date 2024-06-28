@@ -210,6 +210,10 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR (ATK)"
+      m_sNameUpper "OPFOR (ATK)"
+     }
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
       m_bIsAssignedRandomly 0
       m_aSquadNames {
@@ -242,6 +246,10 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
      }
     }
     SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "BLUFOR (DEF)"
+      m_sNameUpper "BLUFOR (DEF)"
+     }
      m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
