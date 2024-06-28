@@ -4,7 +4,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
-   m_iTimeLimitMinutes 25
+   m_iTimeLimitMinutes 40
   }
   CRF_SearchAndDestroyGameModeComponent "{61B77EEBA1924D2A}" {
    bombSitePrefab "{690F012127F996C7}Prefabs/Structures/CRF_Bomb2.et"
