@@ -1,415 +1,321 @@
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  {
-  coords 4581.601 18.643 10471.562
-  angleY 90
+  coords 4504.648 19.139 10569.598
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4577.933 16.309 10507.541
-  angleY 90
+  coords 4509.079 17.48 10550.11
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4576.785 17.483 10520.979
-  angleY 90
+  coords 4512.097 17.813 10526.046
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4580.103 17.195 10562.639
-  angleY 90
+  coords 4515.042 24.712 10513.85
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4576.766 17.245 10552.423
-  angleY 90
+  coords 4517.078 27.145 10500.353
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4575.843 19.178 10531.618
-  angleY 90
+  coords 4518.5 27.827 10490.402
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4579.681 15.916 10489.409
-  angleY 90
+  coords 4518.397 16.503 10480.474
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4577.057 20.78 10535.279
-  angleY 90
+  coords 4518.792 17.022 10473.762
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4577.121 17.161 10517.136
-  angleY 90
+  coords 4519.774 16.996 10467.842
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4580.202 16.867 10484.857
-  angleY 90
+  coords 4516.285 16.814 10462.238
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4577.398 16.65 10514.12
-  angleY 90
+  coords 4512.652 16.594 10452.863
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4579.056 17.387 10496.739
-  angleY 90
+  coords 4508.811 22.57 10446.604
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4582.974 19.989 10562.443
-  angleY 90
+  coords 4500.935 23.999 10441.237
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4578.8 17.17 10503.652
-  angleY 90
+  coords 4494.197 18.633 10434.139
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4579.447 18.086 10556.771
-  angleY 90
+  coords 4489.67 19.167 10426.719
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4574.315 18.836 10548.36
-  angleY 90
+  coords 4485.673 16.907 10412.354
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4582.325 17.505 10569.023
-  angleY 90
+  coords 4484.231 15.808 10403.686
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4581.719 17.397 10571.89
-  angleY 90
+  coords 4486.708 16.039 10389.977
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4581.028 16.859 10578.019
-  angleY 90
+  coords 4495.527 14.782 10377.821
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4580.35 18.472 10579.616
-  angleY 90
+  coords 4503.83 15.011 10371.179
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4579.973 16.751 10581.42
-  angleY 90
+  coords 4518.433 15.959 10362.813
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4571.337 16.947 10578.467
-  angleY 90
+  coords 4533.711 14.313 10355.151
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4576.02 17.156 10579.403
-  angleY 90
+  coords 4544.165 14.312 10349.51
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4566.052 16.689 10577.571
-  angleY 90
+  coords 4552.342 20.011 10358.787
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4561.091 17.146 10577.283
-  angleY 90
+  coords 4564.121 14.814 10361.454
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4555.159 18.047 10576.417
-  angleY 90
+  coords 4577.125 14.777 10369.112
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4545.273 16.603 10574.24
-  angleY 90
+  coords 4590.551 14.718 10378.915
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4537.738 17.12 10573.954
-  angleY 90
+  coords 4599.917 14.425 10387.291
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4530.347 18.77 10573.064
-  angleY 90
+  coords 4608.327 15.104 10398.308
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4519.119 17.03 10572.431
-  angleY 90
+  coords 4616.773 14.896 10412.34
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4507.995 17.312 10567.324
-  angleY 90
+  coords 4622.96 14.532 10422.461
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4510.429 17.312 10550.202
-  angleY 90
+  coords 4630.125 14.68 10431.904
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4511.662 17.367 10538.298
-  angleY 90
+  coords 4636.972 14.969 10437.709
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4512.686 23.979 10532.199
-  angleY 90
+  coords 4645.455 15.057 10443.655
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4513.048 17.678 10522.514
-  angleY 90
+  coords 4645.902 15.012 10452.193
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4516.587 17.04 10505.753
-  angleY 90
+  coords 4644.958 15.429 10460.839
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4512.416 17.938 10515.634
-  angleY 90
+  coords 4665.129 15.08 10472.607
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4519.165 16.494 10497.246
-  angleY 90
+  coords 4682.393 15.167 10473.928
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4518.803 16.529 10490.655
-  angleY 90
+  coords 4688.78 14.705 10487.998
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4519.018 16.424 10485.825
-  angleY 90
+  coords 4689.923 14.936 10512.688
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4519.639 16.419 10479.684
-  angleY 90
+  coords 4690.358 14.715 10527.193
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4520.878 16.774 10470.547
-  angleY 90
+  coords 4691.278 14.909 10544.468
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4522.239 16.725 10466.257
-  angleY 90
+  coords 4687.978 15.688 10558.806
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4524.98 16.457 10461.319
-  angleY 90
+  coords 4683.23 16.25 10567.75
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4528.06 16.295 10456.916
-  angleY 90
+  coords 4675.125 15.846 10575.553
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4530.837 16.305 10452.636
-  angleY 90
+  coords 4667.392 17.278 10582.608
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4533.565 16.305 10448.326
-  angleY 90
+  coords 4662.818 17.456 10586.879
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4537.309 16.268 10444.116
-  angleY 90
+  coords 4652.453 17.801 10590.035
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4541.356 16.029 10438.579
-  angleY 90
+  coords 4641.797 18.179 10597.267
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4543.198 16.003 10437.123
-  angleY 90
+  coords 4634.265 18.425 10600.691
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4546.888 15.931 10434.89
-  angleY 90
+  coords 4617.36 17.967 10604.977
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4550.188 15.738 10431.873
-  angleY 90
+  coords 4607.099 17.563 10599.617
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4553.977 15.635 10430.3
-  angleY 90
+  coords 4598.75 17.531 10592.591
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4558.889 15.465 10427.806
-  angleY 90
+  coords 4590.796 16.675 10584.458
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4564.465 15.461 10428.52
-  angleY 90
+  coords 4580.323 18.428 10579.756
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4568.253 15.414 10428.743
-  angleY 90
+  coords 4570.012 20.356 10582.466
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4573.477 15.421 10430.437
-  angleY 90
+  coords 4562.371 19.837 10580.556
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4578.139 15.455 10431.715
-  angleY 90
+  coords 4555.993 16.498 10577.04
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4579.295 15.474 10432.438
-  angleY 90
+  coords 4551.512 16.566 10576.093
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4579.797 16.225 10437.511
-  angleY 90
+  coords 4546.152 16.577 10575.619
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4579.126 15.789 10440.841
-  angleY 90
+  coords 4542.417 18.344 10577.164
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4584.56 15.875 10461.76
-  angleY 90
+  coords 4536.12 19.926 10576.847
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4583.571 15.721 10457.266
-  angleY 90
+  coords 4528.568 16.512 10573.931
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }
  {
-  coords 4584.919 15.616 10452.69
-  angleY 90
-  m_fWorldSize 30
-  m_sDescription "OPFOR Game Zone Border"
- }
- {
-  coords 4585.275 15.56 10446.792
-  angleY 90
-  m_fWorldSize 30
-  m_sDescription "OPFOR Game Zone Border"
- }
- {
-  coords 4585.555 15.507 10444.343
-  angleY 90
-  m_fWorldSize 30
-  m_sDescription "OPFOR Game Zone Border"
- }
- {
-  coords 4581.373 15.811 10442.59
-  angleY 90
-  m_fWorldSize 30
-  m_sDescription "OPFOR Game Zone Border"
- }
- {
-  coords 4577.003 17.483 10525.472
-  angleY 90
-  m_fWorldSize 30
-  m_sDescription "OPFOR Game Zone Border"
- }
- {
-  coords 4580.599 15.82 10479.828
-  angleY 90
+  coords 4516.433 17.106 10572.259
   m_fWorldSize 30
   m_sDescription "OPFOR Game Zone Border"
  }

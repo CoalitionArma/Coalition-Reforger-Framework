@@ -21,7 +21,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
        {
         PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
          coords -4.363 -0.001 6.394
-         m_sTextData "US Armed Forces are advancing on our factory location intending to detonate one of our two remaining high explosive munitions. We must hold them off for 25 minutes, until backup arrives."\
+         m_sTextData "US Armed Forces are advancing on our factory location intending to detonate one of our two remaining generators. We must hold them off for 25 minutes, until backup arrives."\
          ""\
          "DO NOT LEAVE THE AREA MARKED OPFOR GAME ZONE MARKER."
          m_iOrder 4
@@ -44,7 +44,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
         }
         PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
          coords -4.363 -0.001 6.394
-         m_sTextData "Move to the Soviet controlled factory and detonate one of their two high explosive devices within the 25 minute time limit."\
+         m_sTextData "Move to the Soviet controlled factory and detonate one of their two generators within the 25 minute time limit."\
          ""\
          "DO NOT LEAVE SPAWN BEFORE SAFE START END."
          m_iOrder 4
