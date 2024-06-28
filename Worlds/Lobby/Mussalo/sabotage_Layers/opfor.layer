@@ -1,0 +1,87 @@
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 5003.676 1.062 1990.667
+  angleY -55
+ }
+ Ural4320_transport2 {
+  coords 5014.412 1.024 1983.794
+  angleY -55
+ }
+ Ural4320_transport3 {
+  coords 5025.508 0.969 1977.255
+  angleY -72
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 5062.654 0.937 1976.144
+ angleY -145
+}
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 5066.589 0.928 1963.544
+ {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   {
+    coords 34.909 0.72 3.628
+   }
+   {
+    coords 63.579 2.505 6.78
+    angleX 6.618
+    angleY -0.234
+    angleZ -2.029
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -61.165 1.877 -26.209
+    angleX 6.618
+    angleY -0.234
+    angleZ -2.029
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -87.921 0.437 -9.305
+    angleX 0.005
+    angleY -0.338
+    angleZ 0.895
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+  $grp SCR_AIGroup : "{E529E3794CF18F34}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_MMG.et" {
+   {
+    coords -18.682 0.01 -0.815
+    m_sCustomNameSet "MMG Team Alpha"
+   }
+   {
+    coords -11.759 0.627 -6.671
+    angleX 6.618
+    angleY -0.234
+    angleZ -2.029
+    m_sCustomNameSet "MMG Team Bravo"
+    {
+     SCR_AIGroup zLogi : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Logi.et" {
+      coords 8.167 -2.497 13.655
+      angleX -6.622
+      angleY 0
+      angleZ 2.016
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle Ural4320_LogiTruck1 : "{7EEE66863BE19562}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_LogiTruck.et" {
+ components {
+  SCR_ResourceComponent "{61B8F801223E78E1}" {
+   m_aContainers {
+    SCR_ResourceContainer "{61B8F801218CFAE5}" {
+     m_eResourceRights ALL
+    }
+   }
+  }
+ }
+ coords 5051.957 0.938 1971.682
+ angleY -92
+}
+Vehicle UAZ469_Camo1 : "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et" {
+ coords 5034.72 0.938 1974.871
+ angleY -74
+}

@@ -38,4 +38,5 @@ PS_MissionDescription {
  m_sTextData "<Insert Situation here>"
  m_bEmptyFactionVisibility 1
  m_bShowForAnyFaction 1
+ m_iOrder 1
 }
