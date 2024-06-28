@@ -37,7 +37,7 @@ PS_ManualMarker {
  m_sImageSetGlow "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
  m_MarkerColor 0 0 0 1
  m_sQuadName "dot"
- m_fWorldSize 75
+ m_fWorldSize 100
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
 }

@@ -1,0 +1,61 @@
+Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
+ coords 4321.158 9.725 3706.533
+ angleY -64
+}
+$grp Vehicle : "{3F2AA823B6C65E1E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_MERDC.et" {
+ M923A1_transport_MERDC1 {
+  coords 4302.138 11.155 3719.181
+  angleY -62
+ }
+ M923A1_transport_MERDC2 {
+  coords 4304.976 11.179 3723.347
+  angleY -62
+ }
+ M923A1_transport_MERDC3 {
+  coords 4307.404 11.262 3727.45
+  angleY -62
+ }
+}
+Vehicle M1 : "{5674FAEB9AB7BDD0}Prefabs/Vehicles/Wheeled/M998/M998.et" {
+ coords 4298.654 11.058 3713.163
+ angleY -62
+}
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_Platoon.et" {
+ coords 4308.015 10.67 3718.225
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+   {
+    coords -24.129 1.592 -3.802
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -24.495 2.244 14.349
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -43.565 -106.034 -12.533
+    m_sCustomNameSet "3rd Squad"
+   }
+  }
+  SCR_AIGroup : "{BCA32CC991EF0DCD}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Support/CRF_USMC_Logistics.et" {
+   coords 5.06 0.089 4.451
+   m_sCustomNameSet "Logistics"
+  }
+ }
+}
+Vehicle M923A1_ammo1 : "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et" {
+ components {
+  SCR_ResourceComponent "{61B8F80B1912EC62}" {
+   m_aContainers {
+    SCR_ResourceContainer "{61B8F80B161CEA5D}" {
+     m_eResourceRights ALL
+     m_eStorageType CARGO_VEHICLE
+     m_fResourceValueCurrent 200
+     m_fResourceValueMax 200
+    }
+   }
+  }
+ }
+ coords 4309.46 11.532 3733.249
+ angleY -59
+}

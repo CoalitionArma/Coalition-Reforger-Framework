@@ -1,0 +1,97 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  RigidBody "{51DAA09FECF52BBF}" {
+   Mass 8570
+   CenterOfMass 0 0.15 0.4
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_Ural4320_Ammo_Name"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    m_Image "{05D6B4F71F80CA25}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_ammo.edds"
+    m_sFaction "USSR"
+    m_aAuthoredLabels + {
+     27 280 210
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 380
+     }
+     SCR_EntityBudgetValue "{61B8F8012FE05857}" {
+      m_BudgetType RANK_CORPORAL
+      m_Value 2
+     }
+    }
+    m_bEditorPlaceAsOneGroup 0
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_ResourceComponent "{61B8F801223E78E1}" {
+   m_aContainers {
+    SCR_ResourceContainer "{61B8F801218CFAE5}" {
+     m_eStorageType CARGO_VEHICLE
+     m_fResourceValueCurrent 200
+     m_fResourceValueMax 200
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   Attributes SCR_ItemAttributeCollection "{5916C58172622508}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5916C5816FDAFC22}" {
+    }
+   }
+   MaxCumulativeVolume 1000000
+   MaxItemSize 40 40 40
+   m_fMaxWeight 4500
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "RHS_RF_MSV"
+  }
+  SCR_VehiclePerceivableComponent "{566CD04B8A6107DD}" {
+   "Additional aim points" {
+    AimPoint "{5A44DB0B1645E80A}" : "{94ED6806120FB600}Prefabs/Vehicles/Core/Configs/AimPoints/AimPoint_Hull_Truck.conf" {
+     AimPointPosition PointInfo "{5A44DB148C16BF03}" {
+      Offset 0 2 -1.75
+     }
+    }
+   }
+  }
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Ammo {
+     MergePhysics 1
+     Prefab "{03FFD2B45BEE8A17}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_ammo_box.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo AmmoDecal {
+     Prefab "{A0AB9EDD3932367D}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_ammo_decal.et"
+     InheritParentSkeleton 1
+     RegisterDamage 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{61B8F8012FE058B9}" {
+     ContextName "cargo_open"
+     Position PointInfo "{61B8F8012FE058BE}" {
+      Offset 0 1.8 -3.9
+     }
+    }
+   }
+  }
+ }
+ coords 112.423 1.001 186.905
+ m_eVehicleType SUPPLY_TRUCK
+}
