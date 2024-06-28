@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{A0C732553658E78D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Summer/CRF_RF_MSV_VKPO_Rifleman.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
