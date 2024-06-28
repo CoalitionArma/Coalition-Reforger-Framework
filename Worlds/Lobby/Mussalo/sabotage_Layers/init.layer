@@ -198,7 +198,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    m_bUsePredefineStartingTimeAndWeatehr 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{61B8F812862B141D}" {
-     m_sWeatherPresetName "Clear"
+     m_sWeatherPresetName "Cloudy"
      m_iStartingHour 23
     }
    }
