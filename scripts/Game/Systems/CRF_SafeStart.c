@@ -11,7 +11,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	
 	[RplProp(onRplName: "OnSafeStartChange")]
 	protected bool m_SafeStartEnabled = false;
-	protected ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
+	ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
 	
 	[RplProp()]
 	protected string m_sServerWorldTime;
