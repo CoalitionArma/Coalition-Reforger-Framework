@@ -71,10 +71,16 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{61B1035EFA893F1F}" {
-        m_sCallsign "Rhino 1"
+        m_sCallsign "Rhino Lead"
        }
        SCR_CallsignInfo "{61B1035EFA34BFEE}" {
+        m_sCallsign "Rhino 1"
+       }
+       SCR_CallsignInfo "{61B827116D363471}" {
         m_sCallsign "Rhino 2"
+       }
+       SCR_CallsignInfo "{61B827116AF7426A}" {
+        m_sCallsign "Rhino 3"
        }
       }
       m_sCallsignGroupFormat "%3"
