@@ -1,8 +1,8 @@
 SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
  coords 2678.308 77.332 1658.343
  angleY -122.185
- m_aUnitPrefabSlots {
-  "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et"
+ m_aUnitPrefabSlots + {
+  "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et"
  }
  m_sCustomNameSet "1st Platoon Command"
  {
@@ -19,13 +19,14 @@ SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s
        coords 0.109 -0.375 -3.827
        m_sCustomNameSet "3rd Squad"
        {
-        SCR_AIGroup : "{25CF16A866EA7B50}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_HATTeam.et" {
-         coords 9.687 1.643 15.741
-         angleY -97.405
+        SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_LATTeam.et" {
+         coords 8.59 1.2 14.52
+         angleY -100.512
+         m_sCustomNameSet "Anti-Tank Team"
          {
           SCR_AIGroup : "{88E111678DB95B86}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MedicTeam.et" {
-           coords -0.004 1.49 20.221
-           angleY -175.846
+           coords 2.093 1.933 18.89
+           angleY -172.739
            m_aUnitPrefabSlots {
             "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et"
            }
