@@ -20,6 +20,7 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	protected IEntity aSite, bSite;
 	EntityID aSiteID, bSiteID = null;
 	
+	protected SCR_PopUpNotification m_PopUpNotification = null;
 	protected IEntity aSiteTrigger, bSiteTrigger;
 	protected int aSiteTimer = 120;
 	protected int bSiteTimer = 120;
@@ -30,6 +31,7 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	
 	[RplProp(onRplName: "ShowMessage")]
 	string m_sMessageContent;
+	protected string m_sStoredMessageContent;
 	
 	[RplProp(onRplName: "PlaySound")]
 	string m_SoundString;
@@ -121,10 +123,10 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		if (aSiteTimer <= 0 || bSiteTimer <= 0) 
 		{
 			if (aSitePlanted) {
-				m_sMessageContent = "A SITE DESTROYED!╣15╣";
+				m_sMessageContent = "SITE A DESTROYED!|15|";
 				aSiteTimer = 120;
 			} else {
-				m_sMessageContent = "B SITE DESTROYED!╣15╣";
+				m_sMessageContent = "SITE B DESTROYED!|15|";
 				bSiteTimer = 120;
 			};
 			
@@ -140,6 +142,7 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		}
 		
 		Replication.BumpMe();
+		ShowMessage();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -169,11 +172,12 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		
 		if (sitesDestroyed == 2)
 		{
-			m_sMessageContent = "Attackers have destroyed both sites!╣60╣Attacker victory!";
+			m_sMessageContent = "Attackers Have Destroyed Both Sites!|60|Attacker Victory!";
 			m_SoundString = "{349D4D7CC242131D}Sounds/Music/Ingame/Samples/Jingles/MU_EndCard_Drums.wav";
 		}
 		
 		Replication.BumpMe();
+		ShowMessage();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -186,20 +190,20 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 			countDownActive = false;
 			if (aSitePlanted) {
 				aSitePlanted = false;
-				m_sMessageContent = "Defenders have defused the bomb at A!╣15╣";
+				m_sMessageContent = "Defenders Have Defused a Bomb at Site A!|15|";
 			} else {
 				bSitePlanted = false;
-				m_sMessageContent = "Defenders have defused the bomb at B!╣15╣";
+				m_sMessageContent = "Defenders Have Defused a Bomb at Site B!|15|";
 			};
 		} else {
 			// Set which site is planted
 			countDownActive = true;
 			if (!aSite.IsDeleted() && sitePlanted == "SiteA") {
 				aSitePlanted = true;
-				m_sMessageContent = "Attackers have placed a bomb at A!╣15╣";
+				m_sMessageContent = "Attackers Have Placed a Bomb at Site A!|15|";
 			} else {
 				bSitePlanted = true;
-				m_sMessageContent = "Attackers have placed a bomb at B!╣15╣";
+				m_sMessageContent = "Attackers Have Placed a Bomb at Site B!|15|";
 			};
 		
 			// Spawn countdown thread
@@ -207,6 +211,7 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		};
 		
 		Replication.BumpMe();
+		ShowMessage();
 	}
 	
 	// Called from server to all clients
@@ -243,16 +248,26 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	// Locality needs verified for workbench and local server hosting
 	void ShowMessage()
 	{
+		if (m_sMessageContent == m_sStoredMessageContent)
+			return;
+		
+		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+		//m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+		
+		m_sStoredMessageContent = m_sMessageContent;
+		
 		array<string> messageSplitArray = {};
 		string stasisStr = m_sMessageContent;
-		stasisStr.Split("╣", messageSplitArray, false);
+		stasisStr.Split("|", messageSplitArray, false);
+		
+		if(messageSplitArray.Count() == 1)
+			return;
 
 		string mainMessage = messageSplitArray[0];
 		string time = messageSplitArray[1];
 		string subMessage = messageSplitArray[2];
 		
-		if(!mainMessage.IsEmpty() && !time.IsEmpty())
-			SCR_PopUpNotification.GetInstance().PopupMsg(mainMessage, time.ToFloat(), subMessage);
+		m_PopUpNotification.PopupMsg(mainMessage, time.ToFloat(), subMessage);
 	};
 	
 	// Called from server to all clients

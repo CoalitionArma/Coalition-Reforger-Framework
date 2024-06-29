@@ -21,7 +21,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected ref array<SCR_Faction> m_aPlayedFactionsArray = new array<SCR_Faction> ;
 	
 	[RplProp(onRplName: "ShowMessage")]
-	protected string m_sMessageContent = "";
+	protected string m_sMessageContent;
+	protected string m_sStoredMessageContent;
 	
 	[RplProp(onRplName: "CallDeleteRedundantUnits")]
 	protected bool m_bKillRedundantUnitsBool;
@@ -45,6 +46,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected PS_PlayableManager m_PlayableManager;
 	protected ref map<RplId, PS_PlayableComponent> m_mPlayables = new map<RplId, PS_PlayableComponent>;
 	protected int m_mPlayablesCount = 0;
+	
+	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -180,6 +183,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			};
 		};
 		Replication.BumpMe();
+		ShowMessage();
 	}
 	
 	//Call from server
@@ -210,6 +214,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			};
 		};
 		Replication.BumpMe();
+		ShowMessage();
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -389,19 +394,28 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	
 	// Called from server to all clients
 	//------------------------------------------------------------------------------------------------
-	// Locality needs verified for workbench and local server hosting
 	void ShowMessage()
-	{
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc) return;
-
-		if (m_sMessageContent == "#Coal_SS_Game_Live") {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
-		} else {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
+	{	
+		if (m_sMessageContent == m_sStoredMessageContent)
+			return;
+		
+		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+		
+		m_sStoredMessageContent = m_sMessageContent;
+		
+		if (m_sMessageContent == "All Blufor Players Have Been Eliminated!" || m_sMessageContent == "All Opfor Players Have Been Eliminated!" || m_sMessageContent == "All Indfor Players Have Been Eliminated!") 
+		{
+			m_PopUpNotification.PopupMsg(m_sMessageContent, 30);
+			return;
 		};
+
+		if (m_sMessageContent == "#Coal_SS_Game_Live")
+			m_PopUpNotification.PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
+		else
+			m_PopUpNotification.PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	void CheckPlayersAlive()
 	{
 		foreach(SCR_Faction faction : m_aPlayedFactionsArray) {
@@ -410,13 +424,14 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			float rgb = Math.Max(rg, factionColor.B());
 			
 			switch (true) {
-				case(rgb == factionColor.B() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Killed!"; break;};
-				case(rgb == factionColor.R() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Killed!";  break;};
-				case(rgb == factionColor.G() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Killed!";  break;};
+				case(rgb == factionColor.B() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Eliminated!"; break;};
+				case(rgb == factionColor.R() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Eliminated!";  break;};
+				case(rgb == factionColor.G() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Eliminated!";  break;};
 			};
 		};
 		
 		Replication.BumpMe();
+		ShowMessage();
 	}
 	
 	//------------------------------------------------------------------------------------------------

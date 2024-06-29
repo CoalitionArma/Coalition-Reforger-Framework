@@ -8,6 +8,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	protected CRF_SafestartGameModeComponent m_Safestart;
 	protected string m_sStoredServerWorldTime;
 	protected string m_sServerWorldTime;
+	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
 	override protected void OnInit(IEntity owner)
 	{
@@ -28,6 +29,8 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 			m_MapEntity = SCR_MapEntity.GetMapInstance();
 			return;
 		};
+		
+		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
 	}
 	
 	void UpdateTimer()
@@ -51,16 +54,16 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 			AudioSystem.PlaySound("{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav");
 			switch (m_sServerWorldTime) {
 			 case "00:15:00": {
-					SCR_PopUpNotification.GetInstance().PopupMsg("Mission Ends In 15 Minutes!", 10);
+					m_PopUpNotification.PopupMsg("Mission Ends In 15 Minutes!", 10);
 					break;
 				};
 			 case "00:05:00": {
-					SCR_PopUpNotification.GetInstance().PopupMsg("Mission Ends In 5 Minutes!", 10);
+					m_PopUpNotification.PopupMsg("Mission Ends In 5 Minutes!", 10);
 					break;
 				};
 			 case "Mission Time Expired!": {
 					GetGame().GetCallqueue().Remove(UpdateTimer);
-					SCR_PopUpNotification.GetInstance().PopupMsg(m_sServerWorldTime, 10);
+					m_PopUpNotification.PopupMsg(m_sServerWorldTime, 10);
 					m_wTimer.SetText(m_sServerWorldTime);
 					return;
 				};
