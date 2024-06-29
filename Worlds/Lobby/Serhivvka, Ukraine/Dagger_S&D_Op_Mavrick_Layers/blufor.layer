@@ -1,57 +1,23 @@
-Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
- coords 4824.013 146.429 5031.829
- angleY 52
-}
-$grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
- {
-  coords 4783.852 146.801 5043.512
- }
- {
-  coords 4782.461 181.861 5034.101
- }
- {
-  coords 4780.953 155.359 5021.821
- }
-}
-Vehicle M1025_armed_M2HB1 : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
- coords 4828.927 145.981 5025.309
- angleY 45
-}
-GenericEntity : "{5AE16ACB2083B812}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_US_02.et" {
- coords 4796.891 145.041 4988.626
-}
 SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_Platoon.et" {
  coords 4776.381 145.219 4999.434
-}
-$grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
- M923A1_transport_covered1 {
-  coords 4811.359 145.246 5010.345
-  angleY 46
- }
- M923A1_transport_covered2 {
-  coords 4820.823 145.764 5018.409
-  angleY 48
- }
- M923A1_transport_covered3 {
-  coords 4815.635 146.11 5024.27
-  angleY 48
- }
-}
-Vehicle M923A1_LogiTruck1 : "{867B11EE50F7C3F8}Prefabs/Vehicles/Wheeled/M923A1/M923A1_LogiTruck.et" {
- components {
-  SCR_ResourceComponent "{61B8F80AD473DE1F}" {
-   m_aContainers {
-    SCR_ResourceContainer "{61B8F80AD2344150}" {
-     m_eResourceRights ALL
-     m_fResourceValueCurrent 200
-     m_fResourceValueMax 200
-    }
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+   {
+    coords 7.471 1.582 44.078
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 6.08 36.642 34.667
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 4.572 10.14 22.387
+    m_sCustomNameSet "3rd Squad"
    }
   }
+  SCR_AIGroup : "{BCA32CC991EF0DCD}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Support/CRF_USMC_Logistics.et" {
+   coords 25.655 1.96 39.504
+   m_sCustomNameSet "Logistics"
+  }
  }
- coords 4801.073 145.215 5003.821
- angleY 51.406
-}
-SCR_AIGroup : "{BCA32CC991EF0DCD}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Support/CRF_USMC_Logistics.et" {
- coords 4802.036 147.179 5038.938
 }

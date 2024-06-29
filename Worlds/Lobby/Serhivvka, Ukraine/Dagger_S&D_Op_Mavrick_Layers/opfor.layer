@@ -1,55 +1,45 @@
-Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
- coords 6173.909 191.874 7049.947
-}
 SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Platoon.et" {
- coords 6184.251 199.612 7043.856
-}
-GenericEntity : "{5A25DAC561B3BFF8}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_USSR_01.et" {
- coords 6160.086 191.676 7045.273
-}
-Vehicle Ural4320_LogiTruck1 : "{7EEE66863BE19562}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_LogiTruck.et" {
- components {
-  SCR_ResourceComponent "{61B8F801223E78E1}" {
-   m_aContainers {
-    SCR_ResourceContainer "{61B8F801218CFAE5}" {
-     m_eResourceRights ALL
+ coords 6156.275 190.583 7002.808
+ m_sCustomNameSet "Company"
+ {
+  $grp SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Platoon.et" {
+   {
+    coords 0.361 0.331 5.002
+    {
+     $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RifleSquad.et" {
+      {
+       coords 81.992 1.18 14.279
+       m_sCustomNameSet "1-1 Rifle Squad"
+      }
+      {
+       coords 84.466 1.166 26.95
+       m_sCustomNameSet "1-2 Rifle Squad"
+      }
+     }
+    }
+   }
+   {
+    coords 56.132 1.236 8.699
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RifleSquad.et" {
+      {
+       coords -0.659 0.052 11.227
+       m_sCustomNameSet "2-1 Rifle Squad"
+      }
+      {
+       coords 1.117 0.08 15.363
+       m_sCustomNameSet "2-2 Rifle Squad"
+      }
+     }
     }
    }
   }
+  SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Logi.et" {
+   coords -14.552 0.14 3.669
+  }
+  SCR_AIGroup : "{E529E3794CF18F34}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_MMG.et" {
+   coords -11.796 0.099 -1.403
+  }
  }
- coords 6197.77 191.781 7029.115
-}
-SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Logi.et" {
- coords 6196.574 191.718 7023.365
-}
-$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
- Ural4320_transport_covered1 {
-  coords 6233.31 191.944 7063.274
- }
- Ural4320_transport_covered2 {
-  coords 6201.361 191.969 7060.107
- }
- Ural4320_transport_covered3 {
-  coords 6226.218 191.999 7031.952
- }
- Ural4320_transport_covered4 {
-  coords 6164.204 191.414 7028.511
- }
-}
-$grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RifleSquad.et" {
- {
-  coords 6201.015 162.612 7053.724
- }
- {
-  coords 6226.267 204.352 7023.95
- }
- {
-  coords 6233.063 234.294 7054.55
- }
- {
-  coords 6165.125 191.26 7019.51
- }
-}
-SCR_AIGroup : "{E529E3794CF18F34}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_MMG.et" {
- coords 6174.759 191.819 7044.389
 }

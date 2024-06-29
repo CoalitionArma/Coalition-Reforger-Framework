@@ -1,0 +1,146 @@
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 6157.887 191.676 7047.328
+}
+GenericEntity : "{5A25DAC561B3BFF8}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Medical_USSR_01.et" {
+ coords 6151.319 191.61 7047.103
+ {
+  GenericEntity {
+   ID "5CC4E286B5B3482F"
+   coords -2.003 0.183 -1.106
+   angleY 36.69
+  }
+  GenericEntity {
+   ID "5CC4E286B5B34844"
+   coords 2.378 0.32 -0.436
+   angleX -78.231
+   angleY -34.553
+  }
+  GenericEntity {
+   ID "5CC4E286B5B34856"
+   coords -1.68 0.21 0.835
+   angleY 41.182
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34829"
+   coords -1.48 0.19 -2.124
+   angleY 12.248
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34847"
+   coords -2.456 0.181 0.013
+   angleY 90
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B3485E"
+   coords -1.044 0.2 -2.377
+   angleY -2.493
+   {
+    GameEntity {
+     ID "5CB0F589903FBFBF"
+     coords 0.279 0.897 -0.251
+     angleY 11.569
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34828"
+   coords -2.391 0.189 -1.798
+   angleY 91.91
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34872"
+   coords -2.395 0.177 1.797
+   angleY -90.728
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B3487D"
+   coords 2.437 0.181 -1.749
+   angleY 89.272
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34824"
+   coords 0.001 0.001 0
+   {
+    GenericEntity {
+     ID "5CC49DC456581BA7"
+     coords 0 0.1 0
+    }
+    SCR_DestructibleBuildingEntity {
+     ID "5A5344E1BED63C5B"
+     {
+      GenericEntity {
+       ID "5A04A8A784D18831"
+       coords 0 0 0
+      }
+      GenericEntity {
+       ID "54FAC13F64B3CE23"
+       coords 0 0 0
+      }
+     }
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B34878"
+   coords 2.394 0.187 1.739
+   angleY -87.794
+   {
+    GenericEntity {
+     ID "5CB0F585380C48B0"
+     coords -0.468 0.487 0.027
+     angleY -90
+    }
+    GenericEntity {
+     ID "5CB0F585380C48B1"
+     coords -0.468 0.564 0.027
+     angleY -90
+    }
+    GenericEntity {
+     ID "5CB0F585380C48B2"
+     coords 0.366 0.564 0.027
+     angleY 90
+    }
+    GenericEntity {
+     ID "5CB0F585380C48B3"
+     coords 0.366 0.487 0.027
+     angleY 90
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "5CC4E286B5B3484F"
+   coords 2.362 0.206 0.247
+   angleY -11.986
+  }
+ }
+}
+Vehicle Ural4320_LogiTruck1 : "{7EEE66863BE19562}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_LogiTruck.et" {
+ components {
+  SCR_ResourceComponent "{61B8F801223E78E1}" {
+   m_aContainers {
+    SCR_ResourceContainer "{61B8F801218CFAE5}" {
+     m_eResourceRights ALL
+    }
+   }
+  }
+ }
+ coords 6144.052 191.184 7027.499
+ angleY -178
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered1 {
+  coords 6233.31 191.944 7063.274
+ }
+ Ural4320_transport_covered2 {
+  coords 6168.458 191.456 7027.296
+  angleY -176
+ }
+ Ural4320_transport_covered3 {
+  coords 6188.347 191.686 7027.601
+  angleY -174
+ }
+ Ural4320_transport_covered4 {
+  coords 6174.97 191.57 7026.441
+  angleY -180
+ }
+}

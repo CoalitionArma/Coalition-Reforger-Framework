@@ -184,31 +184,31 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
  {
-  coords 5566.003 169.437 6107.372
+  coords 5479.225 169.304 6162.609
   angleY 0
  }
  {
-  coords 5451.822 183.712 6089.344
+  coords 5392.5 167.509 6114.817
   angleY 0
  }
  {
-  coords 5341.45 165.206 6086.175
+  coords 5326.842 181.947 6096.162
   angleY 0
  }
  {
-  coords 5255.965 159.062 6004.444
+  coords 5203.548 160.35 6048.962
   angleY 0
  }
  {
-  coords 5190.356 162.386 5944.551
+  coords 5172.22 162.284 5997.352
   angleY 0
  }
  {
-  coords 5086.854 163.63 5899.691
+  coords 5144.473 164.822 5907.696
   angleY 0
  }
  {
-  coords 5035.648 179.921 5867.347
+  coords 5064.229 162.057 5843.841
   angleY 0
  }
  {
@@ -260,143 +260,175 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
  {
-  coords 4710.001 133.69 4823.027
+  coords 4704.879 133.976 4833.131
   angleY 0
  }
  {
-  coords 4751.417 134.238 4776.239
+  coords 4733.988 134.118 4769.251
   angleY 0
  }
  {
-  coords 4828.735 136.59 4839.345
+  coords 4780.296 139.098 4714.515
   angleY 0
  }
  {
-  coords 4923.253 143.126 4893.321
+  coords 4845.425 144.275 4660.957
   angleY 0
  }
  {
-  coords 5003.466 143.093 4922.645
+  coords 4932.822 143.373 4747.81
   angleY 0
  }
  {
   coords 5545.553 174.188 6422.005
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 5602.455 193.128 6426.117
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 5699.818 175.319 6425.828
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 5805.184 175.873 6428.944
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 5904.753 176.964 6430.719
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 5993.014 179.73 6435.332
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 6075.96 184.688 6442.019
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 6170.995 183.512 6445.376
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 6255.983 185.458 6451.875
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 6310.777 185.248 6455.846
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 6388.346 197.494 6459.382
   angleY 0
-  m_MarkerColor 1 0 0 1
+  m_MarkerColor 0 0.251 1 1
  }
  {
   coords 6305.049 214.974 6956.018
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 6232.354 192.255 6948.956
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 6163.677 190.058 6944.347
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 6118.977 190.78 6941.904
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 6062.947 190.07 6942.493
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5997.382 191.654 6940.417
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5929.292 190.665 6936.688
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5867.313 190.115 6934.843
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5793.438 191.219 6933.482
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5714.931 191.533 6924.109
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5654.24 191.356 6922.499
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5574.705 191.318 6919.658
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
  }
  {
   coords 5524.507 192.469 6910.036
   angleY 0
-  m_MarkerColor 0 0.251 1 1
+  m_MarkerColor 1 0 0 1
+ }
+ {
+  coords 5087.188 150.481 4868.312
+  angleY 0
+ }
+ {
+  coords 5188.269 156.421 4960.089
+  angleY 0
+ }
+ {
+  coords 5266.287 158.625 5026.075
+  angleY 0
+ }
+ {
+  coords 5334.583 154.157 5080.339
+  angleY 0
+ }
+ {
+  coords 5374.114 148.736 5121.449
+  angleY 0
+ }
+ {
+  coords 5471.49 145.205 5209.142
+  angleY 0
+ }
+ {
+  coords 5590.699 149.599 5349.057
+  angleY 0
+ }
+ {
+  coords 5534.183 142.621 5273.682
+  angleY 0
  }
 }
