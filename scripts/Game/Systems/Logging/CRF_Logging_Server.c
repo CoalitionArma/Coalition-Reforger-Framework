@@ -38,7 +38,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	{
 		super.OnPostInit(owner);
 		
-		/*
+		
 		// Only run if in a real game and always in workbench
 		#ifdef WORKBENCH
 			Print("CRF::Workbench");
@@ -46,7 +46,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
 				return;
 		#endif	
-		*/
+		
 		
 		//m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
 		//m_GameModeCoop.GetOnHandlePlayerKilled().Insert(this.OnPlayerKilled);
@@ -106,7 +106,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnGameStateChanged(SCR_EGameModeState state)
 	{
 		super.OnGameStateChanged(state);
-		if (!Replication.IsServer())
+		if (!Replication.IsServer() || GetGame().GetPlayerManager().GetPlayerCount() < 10)
 			return;
 		
 		switch (state)
