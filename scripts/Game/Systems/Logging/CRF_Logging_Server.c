@@ -7,8 +7,6 @@
 *
 *	Server only
 */
-
-
 [ComponentEditorProps(category: "CRF Logging Component", description: "")]
 class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass
 {
@@ -16,7 +14,17 @@ class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass
 }
 
 class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
-{
+{	
+	string m_sLogPath = "$profile:COAServerLog.txt";
+	private ref FileHandle m_handle;
+	string m_sMissionName;
+	SCR_FactionManager m_FM;
+	PS_GameModeCoop m_GameModeCoop;
+	int m_iPlayerCount;
+	int m_iBluforCount;
+	int m_iOpforCount;
+	int m_iIndforCount;
+	
 	static CRF_LoggingServerComponent GetInstance() 
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
@@ -26,27 +34,11 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return null;
 	}
 	
-	string m_sLogPath = "$profile:COAServerLog.txt";
-	private ref FileHandle m_handle;
-	string m_sKillerName;
-	string m_sKillerFaction;
-	string m_sKilledName;
-	string m_sKilledFaction;
-	string m_sMissionName;
-	float m_fRange;
-	SCR_FactionManager m_FM;
-	string m_sWeaponName;
-	BaseWeaponManagerComponent m_WMC;
-	PS_GameModeCoop m_GameModeCoop;
-	int m_iPlayerCount;
-	int m_iBluforCount;
-	int m_iOpforCount;
-	int m_iIndforCount;
-	
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
 		
+		/*
 		// Only run if in a real game and always in workbench
 		#ifdef WORKBENCH
 			Print("CRF::Workbench");
@@ -54,15 +46,24 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
 				return;
 		#endif	
+		*/
 		
 		//m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
 		//m_GameModeCoop.GetOnHandlePlayerKilled().Insert(this.OnPlayerKilled);
+	}
+	
+	FileHandle ReturnFileHandle()
+	{
+		return m_handle;
 	}
 
 	// Setup
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
+		if (!Replication.IsServer())
+			return;
+		
 		m_sMissionName = GetGame().GetMissionName();
 		
 		if (FileIO.FileExists(m_sLogPath))
@@ -74,48 +75,12 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			m_handle.WriteLine("mission:beginning:" + m_sMissionName);
 	}
 	
-	// Killfeed log
-	/*override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
-	{
-		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
-		Print("CRF OnPlayerKilled");
-		
-		// Killer
-		// Check if killer is AI
-		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity) == 0)
-		{
-			m_sKillerName = "AI";
-			m_sKillerFaction = "AI";
-		} else {
-			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
-			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
-		}
-		
-		// Killed 
-		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
-		
-		// Range
-		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
-		
-		// Killer Weapon 
-		m_WMC = BaseWeaponManagerComponent.Cast(killerEntity.FindComponent(BaseWeaponManagerComponent));
-		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();
-		
-		/* TODO: 
-			damage location IE "headshot", 
-			roles for both killer and killed, 
-			and if a vehicle was involved
-		
-		
-		Print("CRF:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
-		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
-	}*/
-	
 	// Player Connected
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
+		if (!Replication.IsServer())
+			return;
 		
 		// Get player name
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
@@ -128,6 +93,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		super.OnPlayerDisconnected(playerId, cause, timeout);
+		if (!Replication.IsServer())
+			return;
 		
 		// Get player name
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
@@ -139,6 +106,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnGameStateChanged(SCR_EGameModeState state)
 	{
 		super.OnGameStateChanged(state);
+		if (!Replication.IsServer())
+			return;
 		
 		switch (state)
 		{
@@ -168,6 +137,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
 		super.OnGameModeEnd(data);
+		if (!Replication.IsServer())
+			return;
 		
 		m_handle.Close(); // lets avoid a mem leak
 	}
@@ -176,11 +147,61 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	// TODO: Mission stats get logged here
 	void GameStarted()
 	{
+		if (!Replication.IsServer())
+			return;
 		// Collect mission data 
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		//m_iBluforCount = m_FM.SGetFactionPlayerCount(Faction
 		
 		// log
 		m_handle.WriteLine("mission:started:" + m_sMissionName + ":" + m_iPlayerCount);
+	}
+}
+
+modded class SCR_BaseGameMode
+{
+	string m_sKillerName;
+	string m_sKillerFaction;
+	string m_sKilledName;
+	string m_sKilledFaction;
+	float m_fRange;
+	SCR_FactionManager m_FM;
+	string m_sWeaponName;
+	BaseWeaponManagerComponent m_WMC;
+	private ref FileHandle m_handle;
+	
+	// Killfeed log
+    override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
+    {
+		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
+		//if (!Replication.IsServer())
+		//	return;
+		
+		m_handle = CRF_LoggingServerComponent.GetInstance().ReturnFileHandle();
+		
+		// Killer
+		// Check if killer is AI
+		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity) == 0)
+		{
+			m_sKillerName = "AI";
+			m_sKillerFaction = "AI";
+		} else {
+			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
+			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
+		}
+		
+		// Killed 
+		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
+		
+		// Range
+		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
+		
+		// Killer Weapon 
+		m_WMC = BaseWeaponManagerComponent.Cast(killerEntity.FindComponent(BaseWeaponManagerComponent));
+		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();		
+		
+		Print("CRF:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
+		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
 	}
 }
