@@ -54,5 +54,20 @@ modded class SCR_PopUpNotification : GenericEntity
 			if (mapWidget)
 				root.SetZOrder(mapWidget.GetZOrder() - 1);
 		}
+		
+		// Initialize Interface settings
+		SCR_HUDManagerComponent hudManager = GetGame().GetHUDManager();
+		if (!hudManager)
+			return;
+		
+		BaseContainer interfaceSettings = GetGame().GetGameUserSettings().GetModule(hudManager.GetInterfaceSettingsClass());
+		if (!interfaceSettings)
+			return;
+		
+		bool state;
+		interfaceSettings.Get(INTERFACE_SETTINGS_NAME, state);
+		m_bIsEnabledInSettings = state;
+		
+		GetGame().OnUserSettingsChangedInvoker().Insert(OnSettingsChanged);	
 	}
 }
