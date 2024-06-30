@@ -1,0 +1,102 @@
+Vehicle BTR70_Base1 : "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et" {
+ coords 4841.684 145.848 5033.312
+ angleX -1.269
+ angleY 45.067
+ angleZ 2.528
+}
+$grp Vehicle : "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" {
+ UAZ469_covered_CIV_Randomized1 {
+  coords 4823.397 146.19 5026.978
+  angleX -0.602
+  angleY 67.059
+  angleZ 3.168
+ }
+ UAZ469_covered_CIV_Randomized2 {
+  coords 4818.148 146.023 5022.532
+  angleX 1.356
+  angleY 42.932
+  angleZ 2.483
+ }
+}
+$grp Vehicle : "{6C9E196676394DE2}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered_closed.et" {
+ Ural4320_FIA_transport_covered_closed1 {
+  coords 4835.647 145.817 5025.792
+  angleX 0.705
+  angleY 28.844
+  angleZ 2.431
+ }
+ Ural4320_FIA_transport_covered_closed2 {
+  coords 4828.353 145.863 5022.523
+  angleX 0.665
+  angleY 57.974
+  angleZ 2.75
+ }
+}
+SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+ coords 4845.181 146.2 5050.765
+ angleX -1.512
+ angleY 48.756
+ angleZ 3.701
+ {
+  SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+   coords -0.075 0 -1.911
+   {
+    SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+     coords -0.019 -0 -1.586
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{A4867EADB45C3876}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+       coords -0.013 -0.004 -2.316
+       angleX 1.26
+       angleZ 0.085
+       m_sCustomNameSet "2nd Platoon"
+       {
+        SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+         coords 0.14 0.015 -1.929
+         angleX -1.26
+         angleY 0.002
+         angleZ -0.085
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+           coords 0.02 -0 -1.977
+           m_sCustomNameSet "4th Squad"
+           {
+            SCR_AIGroup : "{CDA4D305886F199D}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_MAT.et" {
+             coords -0.032 -0.031 -2.17
+             {
+              SCR_AIGroup : "{4D4AF13F5C38BA4F}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+               coords 0.038 -0.031 -2.225
+               angleX 1.26
+               angleZ 0.085
+               m_aUnitPrefabSlots {
+                "{E7B82DA39E13951D}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_SL.et" "{9DE22FB5586591CC}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_Rifleman.et" "{9DE22FB5586591CC}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_Rifleman.et" "{9DE22FB5586591CC}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Character_CDF_Rifleman.et"
+               }
+               m_sCustomNameSet "BTR Crew"
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ469_covered_CIV_blue1 : "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et" {
+ coords 4828.433 146.246 5030.882
+ angleX 0.643
+ angleY 44.82
+ angleZ 3.16
+}
+Vehicle Ural4320_transport_CIV_randomized1 : "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" {
+ coords 4822.127 145.556 5014.571
+ angleX 1.235
+ angleY 45.695
+ angleZ 2.545
+}

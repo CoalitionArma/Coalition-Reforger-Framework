@@ -1,0 +1,334 @@
+$grp SCR_BaseTriggerEntity {
+ opforBaseTrigger {
+  coords 3569.037 151.11 5845.514
+  angleX 0.009
+  angleY -84.02
+  angleZ 0.002
+  EOnInit ""\
+  "		if (Replication.IsServer())"\
+  "        {"\
+  "			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());"\
+  "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);"\
+  "        }"\
+  "	}"\
+  "	"\
+  "	protected SCR_BaseGameMode m_GameMode;"\
+  "	protected SCR_PlayerController m_PlayerController;"\
+  "	override void OnActivate(IEntity ent)"\
+  "    {"\
+  "		//code partially sourced from rally mission"\
+  "		PlayerManager playerManager;"\
+  "        PlayerController playerController;"\
+  "		int entityPlayerID;"\
+  "		string playerName;"\
+  "		SCR_ChimeraCharacter playerChimeraCharacter;"\
+  "		Faction playerFaction;"\
+  "        "\
+  "		GetPlayerData(ent, playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction);"\
+  "		"\
+  "        string playerBackpackPrefabName = GetBackpack(playerChimeraCharacter);"\
+  "		bool backpackCorrect = CheckBackpack(playerBackpackPrefabName);"\
+  "		bool factionUSSR = CheckSide(playerFaction);"\
+  "		"\
+  "		/*"\
+  "		if(backpackCorrect){"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with explosive backpack!\", 5);"\
+  "			if(factionUSSR) {"\
+  "				SimpleBaseDestruction(playerChimeraCharacter);"\
+  "			}"\
+  "		} else {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with wrong backpack!\", 5);"\
+  "		}"\
+  "		*/"\
+  "		"\
+  "		if(backpackCorrect && !factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with explosive backpack!\", 5);"\
+  "			SimpleBaseDestruction(playerChimeraCharacter);"\
+  "		}"\
+  "		if(backpackCorrect && factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with wrong backpack!\", 5);"\
+  "		}"\
+  "		"\
+  "    }"\
+  "	void GetPlayerData(IEntity ent, out PlayerManager playerManager, out PlayerController playerController, out int entityPlayerID, out string playerName, out SCR_ChimeraCharacter playerChimeraCharacter, out Faction playerFaction) {"\
+  "		// Probably lacking locality tbh"\
+  "        // Get playermanager + playercontroller"\
+  "		playerManager = GetGame().GetPlayerManager();"\
+  "		playerController = GetGame().GetPlayerController();"\
+  "		//get name"\
+  "		if (!playerManager)"\
+  "            return;"\
+  "		entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+  "        playerName = playerManager.GetPlayerName(entityPlayerID);"\
+  "		"\
+  "		//get chimera character"\
+  "		playerChimeraCharacter = SCR_ChimeraCharacter.Cast(playerController.GetControlledEntity());"\
+  "		"\
+  "		//get faction "\
+  "		playerFaction = playerChimeraCharacter.GetFaction();"\
+  "		"\
+  "		//return [playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction];"\
+  "	}"\
+  "	string GetBackpack(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		EquipedLoadoutStorageComponent loadoutStorage = EquipedLoadoutStorageComponent.Cast(playerChimeraCharacter.FindComponent(EquipedLoadoutStorageComponent));"\
+  "		IEntity backpack = loadoutStorage.GetClothFromArea(LoadoutBackpackArea);"\
+  "		if(!backpack) {return \"\";}"\
+  "		EntityPrefabData backpackPrefabData = backpack.GetPrefabData();"\
+  "		string backpackPrefabName = backpackPrefabData.GetPrefabName();"\
+  "		return backpackPrefabName;"\
+  "	}"\
+  "	bool CheckBackpack(string backpackPrefabName) "\
+  "	{"\
+  "		if(backpackPrefabName == \"{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	bool CheckSide(Faction playerFaction) "\
+  "	{"\
+  "		string FactionName = playerFaction.GetFactionName();"\
+  "		//string FactionName = '#AR-Faction_USSR'"\
+  "		if(FactionName == \"#AR-Faction_USSR\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	void SimpleBaseDestruction(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 10);"\
+  "		//spawn explosion"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = playerChimeraCharacter.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
+  "		"\
+  "		//yoinked from rally"\
+  "		/*"\
+  "		// Send player to spec - vanilla"\
+  "        SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+  "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
+  "		SCR_CharacterDamageManagerComponent ACEdamMan = SCR_CharacterDamageManagerComponent.Cast(ent.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (damMan && ACEdamMan)"\
+  "		{"\
+  "			ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
+  "			damMan.Kill(damMan.GetInstigator());"\
+  "		}	"\
+  "		*/"\
+  "		//SCR_DamageManagerComponent Pie_damageManager = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+  "		//Pie_damageManager.kill(playerChimeraCharacter);"\
+  "		"\
+  "		"\
+  "		"\
+  "	}"\
+  "	"\
+  "	void WaitTillGameStart()"\
+  "    {"\
+  "        /*if (!m_GameMode.IsRunning()) "\
+  "        	return;"\
+  "        "\
+  "        GetGame().GetCallqueue().Remove(WaitTillGameStart);"\
+  "        SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Coast\", 10, \"Racists should all board their vehicles now.\");"\
+  "        GetGame().GetCallqueue().CallLater(DoAThing, 10000, false);*/"\
+  "    }"\
+  "	"\
+  "	void DoAThing()"\
+  "	{"\
+  "		//CRF_SafestartGameModeComponent gmComp = CRF_SafestartGameModeComponent.GetInstance();"\
+  "		//gmComp.ToggleSideReady(\"Blufor\", \"ur mom\");"\
+  "	"
+  TriggerShapeType Sphere
+  SphereRadius 20
+  BoxMins 10 10 10
+  BoxMaxs 10 10 10
+  DrawShape 1
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{612A54C890CD1AE7}" {
+    Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  RunDefaultQueryFirst 0
+ }
+ bluforBaseTrigger {
+  coords 4746.416 145.213 4985.488
+  angleX 4.456
+  angleY -0.351
+  angleZ -1.812
+  EOnInit ""\
+  "		if (Replication.IsServer())"\
+  "        {"\
+  "			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());"\
+  "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);"\
+  "        }"\
+  "	}"\
+  "	"\
+  "	protected SCR_BaseGameMode m_GameMode;"\
+  "	protected SCR_PlayerController m_PlayerController;"\
+  "	override void OnActivate(IEntity ent)"\
+  "    {"\
+  "		//code partially sourced from rally mission"\
+  "		PlayerManager playerManager;"\
+  "        PlayerController playerController;"\
+  "		int entityPlayerID;"\
+  "		string playerName;"\
+  "		SCR_ChimeraCharacter playerChimeraCharacter;"\
+  "		Faction playerFaction;"\
+  "        "\
+  "		GetPlayerData(ent, playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction);"\
+  "		"\
+  "        string playerBackpackPrefabName = GetBackpack(playerChimeraCharacter);"\
+  "		bool backpackCorrect = CheckBackpack(playerBackpackPrefabName);"\
+  "		bool factionUSSR = CheckSide(playerFaction);"\
+  "		"\
+  "		/*"\
+  "		if(backpackCorrect){"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with explosive backpack!\", 5);"\
+  "			if(factionUSSR) {"\
+  "				SimpleBaseDestruction(playerChimeraCharacter);"\
+  "			}"\
+  "		} else {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside base zone with wrong backpack!\", 5);"\
+  "		}"\
+  "		*/"\
+  "		"\
+  "		if(backpackCorrect && !factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with explosive backpack!\", 5);"\
+  "			SimpleBaseDestruction(playerChimeraCharacter);"\
+  "		}"\
+  "		if(backpackCorrect && factionUSSR) {"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" inside enemy base zone with wrong backpack!\", 5);"\
+  "		}"\
+  "		"\
+  "    }"\
+  "	void GetPlayerData(IEntity ent, out PlayerManager playerManager, out PlayerController playerController, out int entityPlayerID, out string playerName, out SCR_ChimeraCharacter playerChimeraCharacter, out Faction playerFaction) {"\
+  "		// Probably lacking locality tbh"\
+  "        // Get playermanager + playercontroller"\
+  "		playerManager = GetGame().GetPlayerManager();"\
+  "		playerController = GetGame().GetPlayerController();"\
+  "		//get name"\
+  "		if (!playerManager)"\
+  "            return;"\
+  "		entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+  "        playerName = playerManager.GetPlayerName(entityPlayerID);"\
+  "		"\
+  "		//get chimera character"\
+  "		playerChimeraCharacter = SCR_ChimeraCharacter.Cast(playerController.GetControlledEntity());"\
+  "		"\
+  "		//get faction "\
+  "		playerFaction = playerChimeraCharacter.GetFaction();"\
+  "		"\
+  "		//return [playerManager, playerController, entityPlayerID, playerName, playerChimeraCharacter, playerFaction];"\
+  "	}"\
+  "	string GetBackpack(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		EquipedLoadoutStorageComponent loadoutStorage = EquipedLoadoutStorageComponent.Cast(playerChimeraCharacter.FindComponent(EquipedLoadoutStorageComponent));"\
+  "		IEntity backpack = loadoutStorage.GetClothFromArea(LoadoutBackpackArea);"\
+  "		if(!backpack) {return \"\";}"\
+  "		EntityPrefabData backpackPrefabData = backpack.GetPrefabData();"\
+  "		string backpackPrefabName = backpackPrefabData.GetPrefabName();"\
+  "		return backpackPrefabName;"\
+  "	}"\
+  "	bool CheckBackpack(string backpackPrefabName) "\
+  "	{"\
+  "		if(backpackPrefabName == \"{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	bool CheckSide(Faction playerFaction) "\
+  "	{"\
+  "		string FactionName = playerFaction.GetFactionName();"\
+  "		//string FactionName = '#AR-Faction_USSR'"\
+  "		if(FactionName == \"#AR-Faction_US\") {"\
+  "			return true;"\
+  "		} else {"\
+  "			return false;"\
+  "		}"\
+  "	}"\
+  "	void SimpleBaseDestruction(SCR_ChimeraCharacter playerChimeraCharacter) "\
+  "	{"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Base Destroyed!\", 10);"\
+  "		//spawn explosion"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = playerChimeraCharacter.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et\"),GetGame().GetWorld(),spawnParams);"\
+  "	}"\
+  "	"\
+  "	void WaitTillGameStart()"\
+  "    {"\
+  "        /*if (!m_GameMode.IsRunning()) "\
+  "        	return;"\
+  "        "\
+  "        GetGame().GetCallqueue().Remove(WaitTillGameStart);"\
+  "        SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Coast\", 10, \"Racists should all board their vehicles now.\");"\
+  "        GetGame().GetCallqueue().CallLater(DoAThing, 10000, false);*/"\
+  "    }"\
+  "	"\
+  "	void DoAThing()"\
+  "	{"\
+  "		//CRF_SafestartGameModeComponent gmComp = CRF_SafestartGameModeComponent.GetInstance();"\
+  "		//gmComp.ToggleSideReady(\"Blufor\", \"ur mom\");"\
+  "	"
+  TriggerShapeType Sphere
+  SphereRadius 20
+  BoxMins 10 10 10
+  BoxMaxs 10 10 10
+  DrawShape 1
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  PrefabsFilter {
+   PrefabFilter "{612A54C890CD1AE7}" {
+    Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+    CheckPrefabHierarchy 1
+   }
+  }
+  RunDefaultQueryFirst 0
+ }
+}
+GenericEntity : "{21B4CFCFAE632E30}PrefabsEditable/Auto/Props/Wrecks/E_T62_wreck.et" {
+ coords 4280.554 148.278 5581.877
+ angleX 2.801
+ angleY 116.431
+ angleZ 0.393
+}
+GenericEntity CRF_Backpack_Satchel_614F0854B02868CB : "{5AF5BEE14B7DB2AC}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Satchel.et" {
+ coords 4282.754 150.36 5569.188
+ angleX 50.483
+ angleY 24.401
+ angleZ -1.204
+}
+$grp GenericEntity : "{A41F1EC4E72108AA}PrefabsEditable/Auto/Props/Wrecks/E_BTR70_wreck.et" {
+ {
+  coords 4284.146 148.767 5569.602
+  angleX 2.428
+  angleY 118.632
+  angleZ -0.713
+ }
+ {
+  coords 4275.71 148.72 5563.647
+  angleX 2.509
+  angleY 127.454
+  angleZ -0.332
+ }
+}
+$grp GenericEntity : "{ACA1BADA1C09110A}PrefabsEditable/Auto/Props/Wrecks/E_BMP1_wreck.et" {
+ {
+  coords 4258.667 148.534 5561.268
+  angleX 1.767
+  angleY 125.429
+  angleZ -0.939
+ }
+ {
+  coords 4255.812 148.235 5568.997
+  angleX 2.668
+  angleY -173.87
+  angleZ 0.287
+ }
+}

@@ -1,0 +1,207 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 4058.548 150.274 5571.357
+  angleY 0
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4053.697 145.48 5517.24
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4130.191 145.5 5463.911
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4177.921 144.388 5419.358
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4206.946 143.457 5386.23
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4243.771 140.978 5343.463
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4288.941 140.39 5317.544
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4336.886 141.769 5339.899
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4389.778 144.675 5374.369
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4443.894 147.036 5421.24
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4502.381 150.068 5467.309
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4517.138 169.502 5500.509
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4507.117 164.04 5562.417
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4459.762 160.081 5617.984
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4436.684 153.72 5661.77
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4373.807 159.744 5716.947
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4338.653 160.694 5750.285
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4290.365 158.018 5813.701
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4234.731 158.031 5827.111
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4177.876 157.983 5820.311
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4132.793 154.479 5757.548
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4106.48 152.592 5696.166
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4087.871 168.973 5608.647
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4077.243 150.491 5604.428
+  angleY 0
+  m_sDescription "BombBackpack Search Zone"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+$grp ParticleEffectEntity : "{899360C930DA3EE3}Prefabs/Particles/Campfire_burning.et" {
+ {
+  coords 4286.059 150.652 5569.038
+ }
+ {
+  coords 4255.355 150.146 5568.469
+  angleX -2.151
+  angleY 0.002
+  angleZ -0.058
+ }
+}

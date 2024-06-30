@@ -1,0 +1,95 @@
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 3656.991 151.489 5812.423
+ angleX 0.165
+ angleY 86.487
+ angleZ 2.679
+ m_sCustomNameSet "1st Platoon"
+ {
+  SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   coords 0 0 -1.572
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+     coords 0 0 -1.298
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+       coords 0 0 -1.474
+       m_sCustomNameSet "2nd Platoon"
+       {
+        SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+         coords 0 0 -1.573
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+           coords 0 0 -1.569
+           m_sCustomNameSet "4th Squad"
+           {
+            SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+             coords 0 0 -1.288
+             m_sCustomNameSet "1st MG Team"
+             {
+              SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+               coords -0.001 0 -1.509
+               m_sCustomNameSet "2nd MG Team"
+               {
+                SCR_AIGroup : "{0B2F593211D6E115}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MATTeam_p.et" {
+                 coords 0 0 -1.494
+                 m_sCustomNameSet "MAT Team"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  coords 3662.936 151.035 5800.118
+  angleX -0.047
+  angleY 91.508
+  angleZ 1.789
+ }
+ UAZ2 {
+  coords 3663.242 150.871 5796.177
+  angleX 0.822
+  angleY 91.549
+  angleZ 2.707
+ }
+ UAZ3 {
+  coords 3663.233 150.651 5790.813
+  angleX 0.822
+  angleY 91.549
+  angleZ 2.707
+ }
+}
+Vehicle Ural4320_transport_covered_closed1 : "{9DD4FD3527CB46C8}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed.et" {
+ coords 3655.216 150.622 5790.592
+ angleX -0.06
+ angleY 91.28
+ angleZ 2.683
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered1 {
+  coords 3655.456 150.843 5795.978
+  angleX -0.055
+  angleY 91.167
+  angleZ 2.683
+ }
+ Ural4320_transport_covered2 {
+  coords 3656.362 151.036 5800.759
+  angleX -0.055
+  angleY 91.167
+  angleZ 2.683
+ }
+}
