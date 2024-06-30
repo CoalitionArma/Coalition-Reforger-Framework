@@ -38,14 +38,13 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	{
 		super.OnPostInit(owner);
 		
-		
 		// Only run if in a real game and always in workbench
-		#ifdef WORKBENCH
+		/*#ifdef WORKBENCH
 			Print("CRF::Workbench");
 		#else 
 			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
 				return;
-		#endif	
+		#endif*/
 		
 		
 		//m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
