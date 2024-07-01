@@ -1,0 +1,61 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4455.23 143.139 6708.416
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 60
+  }
+ }
+ coords 5221.93 70.357 5181.721
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61BD61348AAB9AF7}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{61BD61348C65D303}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{61BD61348017D925}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61BD613487A04E05}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61BD613486BAE76F}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{61BD613485BD2A55}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{61BD613485E93F03}" {
+        m_sCallsign "ARMOR"
+       }
+      }
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61BD61344273A9DF}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61BD6134418464CD}" {
+        m_sCallsign "MEDIC"
+       }
+      }
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+   }
+  }
+ }
+}

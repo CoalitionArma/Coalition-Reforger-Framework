@@ -42,12 +42,12 @@ SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s
        angleY -0.414
        m_sCustomNameSet "3rd Squad"
        {
-        SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_ATTeam.et" {
+        SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_LATTeam.et" {
          coords 20.03 -4.754 34.56
          angleY -76.653
          m_sCustomNameSet "AT Team 1"
          {
-          SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_ATTeam.et" {
+          SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_LATTeam.et" {
            coords -0.085 -0.115 -5.076
            m_sCustomNameSet "AT Team 2"
            {
