@@ -70,8 +70,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		else
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.WRITE);
 		
-		if (GetGame().GetPlayerManager().GetPlayerCount() > 10)
-			m_handle.WriteLine("mission:beginning:" + m_sMissionName);
+		m_handle.WriteLine("mission:beginning:" + m_sMissionName);
 	}
 	
 	// Player Connected
@@ -191,7 +190,7 @@ modded class SCR_BaseGameMode
 		
 		// Killed 
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
+		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName(); // not working yet
 		
 		// Range
 		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
