@@ -110,7 +110,7 @@ PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/Ga
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  coords 10621.383 28.406 5658.147
  m_sTextData "Blufor:"\
- "4x M1025 M2HB"
+ "4x M1025 M2HB + enough trucks for the infantry"
  m_iOrder 3
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
