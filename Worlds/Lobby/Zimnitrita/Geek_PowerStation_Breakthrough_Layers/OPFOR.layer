@@ -82,7 +82,3 @@ SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80
   }
  }
 }
-Vehicle BTR1 : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
- coords 9332.671 1.945 9886.203
- angleY 90.651
-}
