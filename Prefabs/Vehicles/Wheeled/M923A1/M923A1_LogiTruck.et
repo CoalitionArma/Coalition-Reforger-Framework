@@ -9,7 +9,7 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
   }
   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
    m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
-    Name "#AR-Vehicle_M923A1_Ammo_Name"
+    Name "COALITION Logi Truck"
     Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
     IconSetName ""
     m_Image "{4C3B89AE70636D52}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_ammo.edds"
@@ -36,8 +36,8 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
    m_aContainers {
     SCR_ResourceContainer "{61B8F80AD2344150}" {
      m_eStorageType CARGO_VEHICLE
-     m_fResourceValueCurrent 150
-     m_fResourceValueMax 150
+     m_fResourceValueCurrent 250
+     m_fResourceValueMax 250
     }
    }
   }
