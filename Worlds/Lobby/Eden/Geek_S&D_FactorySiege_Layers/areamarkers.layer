@@ -148,11 +148,11 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
  {
-  coords 4335.466 -0 11058.512
+  coords 4335.466 0 11058.512
   angleY 0
  }
  {
-  coords 4326.051 -0 11023.882
+  coords 4326.051 0 11023.882
   angleY 0
  }
  {
