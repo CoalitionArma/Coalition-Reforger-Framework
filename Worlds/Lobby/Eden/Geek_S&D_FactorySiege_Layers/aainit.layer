@@ -1,0 +1,57 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4455.23 143.139 6708.416
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 40
+  }
+  CRF_SearchAndDestroyGameModeComponent "{61BD6135C0DECB74}" {
+   bombSitePrefab "{690F012127F996C7}Prefabs/Structures/CRF_Bomb2.et"
+  }
+ }
+ coords 4487.436 20.706 10497.829
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61BD61350BAF331F}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{61BD613507886BAA}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{61BD613507D29DD9}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61BD6135074A52D4}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61BD61351AB690F4}" {
+        m_sCallsign "2-3"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61BD6136FA202B95}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61BD6136FA709EA7}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{61BD6136FEAB3916}" {
+        m_sCallsign "MG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
