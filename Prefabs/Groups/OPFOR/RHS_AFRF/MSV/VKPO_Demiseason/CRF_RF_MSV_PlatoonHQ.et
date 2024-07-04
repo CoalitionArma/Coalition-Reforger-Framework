@@ -80,7 +80,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
   }
  }
  m_aUnitPrefabSlots {
-  "{9E206F0856187564}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_PL.et" "{7FC79689DCF0C9D7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_PSG.et" "{08E9E678E137CA9D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_MG.et" "{C45C7DC025476AEA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_AMG.et" "{3902AEDAC9026562}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_Sharpshooter.et" "{526216CC20B559F8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_Medic.et"
+  "{660FBA8855DEA977}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_PL.et" "{44CCB4D520D5D8BA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_PSG.et" "{245F7E8F3CA46219}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_MMG.et" "{3F6FA6680ACFF28D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_MMGAG.et" "{3902AEDAC9026562}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Sharpshooter.et" "{BD13D9F5D4E7C337}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Medic.et"
  }
  m_sCustomNameSet "Mot. Rifle Platoon HQ"
  m_bSetPlayable 1

@@ -1,0 +1,159 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{61C754A7093115C2}" {
+     NavmeshFile "{3C028682B8E59A55}Sourcefiles/mussalonav.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{A73A2ED9C33F08DC}Sourcefiles/mussalonav_low.nmn"
+    }
+   }
+  }
+ }
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 17
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{61C7548227D26A2C}" {
+     m_sWeatherPresetName "Rainy"
+     m_iStartingHour 17
+    }
+   }
+  }
+ }
+ {
+  SCR_FactionManager {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{5977478D568C0922}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568C0921}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568C0920}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{5977478D568C0927}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{5977478D568C0926}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{5977478D568C0925}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{5977478D568C0924}" {
+        m_sCallsign "7"
+       }
+       SCR_CallsignInfo "{5977478D568C092B}" {
+        m_sCallsign "8"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{5977478D568C092A}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{5977478D568C0929}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568C0928}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568C092F}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792CCB4D441}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{55CCB792CC5F08F3}" {
+        m_sCallsign "5"
+       }
+       SCR_CallsignInfo "{55CCB792CC49B7DB}" {
+        m_sCallsign "6"
+       }
+       SCR_CallsignInfo "{55CCB792CC711A37}" {
+        m_sCallsign "7"
+       }
+       SCR_CallsignInfo "{55CCB792CC33211C}" {
+        m_sCallsign "8"
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+        m_sCallsign "3"
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "0"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3"
+       }
+      }
+      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignCharacterFormat "%2-%3: %4"
+     }
+    }
+   }
+  }
+ }
+}

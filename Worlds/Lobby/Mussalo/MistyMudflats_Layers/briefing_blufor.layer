@@ -1,0 +1,34 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Description_Situation_US {
+  coords 0 0 0
+  m_sTitle "Situation"
+  m_sTextData "a. Enemy Forces"\
+  ""\
+  "Two Russian Motor Rifle Platoons equipped with amphibious BTR-70s are currently located to our SSE, likely preparing to assault and seize Räski airfield."\
+  ""\
+  ""\
+  "b. Friendly Forces"\
+  ""\
+  "We are a USMC Rifle Platoon, motorized with M998 and M1025 HMWVVs. We are located at the airfield, preparing to defend it against a Russian assault. Three medics have been attached to the platoon."\
+  ""\
+  ""\
+  "c. Terrain and Weather"\
+  ""\
+  "Coastal terrain shaped by pine forests and mudflats. The Russians may be able to cross straits using their amphibious BTRs."\
+  "It is late afternoon, the weather is rainy with slight fog."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_iOrder 2
+ }
+ Description_Mission_US {
+  coords 0 0 0
+  m_sTitle "II. MISSION"
+  m_sTextData "Prevent the Russians from seizing the airfield."\
+  "It is especially important that they do not reach control tower and hangar."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_iOrder 3
+ }
+}
