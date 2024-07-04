@@ -30,7 +30,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   }
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "61C97176247C04F9" {
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {

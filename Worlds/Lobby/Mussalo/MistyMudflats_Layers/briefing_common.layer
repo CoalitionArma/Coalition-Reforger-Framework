@@ -5,9 +5,13 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTextData "Mission notes:"\
   ""\
   "- BLUFOR has to stay within its AO marked in blue"\
+  ""\
   "- While BLUFOR can move through its entire AO during safe start and prepare defensive lines, OPFOR has to stay within 200m of its spawn location"\
+  ""\
   "- Safe start ends when BLUFOR has indicated that its forces are in position"\
+  ""\
   "- Both BLUFOR and OPFOR should not use armed vehicles from groups that have not been slotted"\
+  ""\
   "- 1h time limit, no respawns"
   m_bShowForAnyFaction 1
   m_iOrder 6

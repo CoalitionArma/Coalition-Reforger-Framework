@@ -7,10 +7,6 @@ $grp GenericEntity : "{010D5FBC85347C38}Prefabs/Compositions/Misc/SubComposition
     ID "570CFD7584B8ECE0"
     Flags 2622467
    }
-   Turret {
-    ID "58FEB9990956355A"
-    Flags 2097155
-   }
    GenericEntity : "{35F2A674E602198F}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_plastic.et" {
     coords -3.142 0 0
     angleY -180
@@ -24,10 +20,6 @@ $grp GenericEntity : "{010D5FBC85347C38}Prefabs/Compositions/Misc/SubComposition
    StaticModelEntity {
     ID "570CFD7584B8ECE0"
     Flags 2622467
-   }
-   Turret {
-    ID "58FEB9990956355A"
-    Flags 2097155
    }
    GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
     coords -1.742 0 -2.111
