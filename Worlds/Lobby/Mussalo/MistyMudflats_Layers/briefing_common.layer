@@ -1,0 +1,52 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Description_Notes {
+  coords 0 0 0
+  m_sTitle "Notes"
+  m_sTextData "Mission notes:"\
+  ""\
+  "- BLUFOR has to stay within its AO marked in blue"\
+  ""\
+  "- While BLUFOR can move through its entire AO during safe start and prepare defensive lines, OPFOR has to stay within 200m of its spawn location"\
+  ""\
+  "- Safe start ends when BLUFOR has indicated that its forces are in position"\
+  ""\
+  "- Both BLUFOR and OPFOR should not use armed vehicles from groups that have not been slotted"\
+  ""\
+  "- 1h time limit, no respawns"
+  m_bShowForAnyFaction 1
+  m_iOrder 6
+ }
+ Description_Info {
+  coords 0 0 0
+  m_sTitle "CRF SWP104 Misty Mudflats"
+  m_sTextData "CRF SWP104 Misty Mudflats"\
+  ""\
+  "Russian Motor Rifles assault an airfield defended by a motorized USMC Rifle Platoon."\
+  ""\
+  "2:3 BLU:OP"
+  m_bEmptyFactionVisibility 1
+  m_iOrder 1
+ }
+ Description_Assets {
+  coords 0 0 0
+  m_sTitle "Assets"
+  m_sTextData "BLUFOR:"\
+  ""\
+  "1x M998 for HQ"\
+  "1x M997 for Medics"\
+  "1x M1025 and 2x M998 per squad (one for each fireteam)"\
+  ""\
+  ""\
+  "OPFOR:"\
+  ""\
+  "1x BTR-70 (AFRF) per section"\
+  ""\
+  ""\
+  "Vehicle spawns are currently disabled due to a potential framework issue and will have to be spawned manually by a GM."
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 4
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+}

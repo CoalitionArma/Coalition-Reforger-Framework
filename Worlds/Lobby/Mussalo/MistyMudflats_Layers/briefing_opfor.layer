@@ -1,0 +1,33 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Description_Mission_MSV {
+  coords 0 0 0
+  m_sTitle "Mission"
+  m_sTextData "Assault and seize the airfield, in particular the area around hangar and control tower."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 3
+ }
+ Description_Situation_MSV {
+  coords 0 0 0
+  m_sTitle "Situation"
+  m_sTextData "a. Enemy Forces"\
+  ""\
+  "A USMC Rifle Platoon, motorized with both unarmed and armed HMWVVs, is defending Räski airfield."\
+  ""\
+  ""\
+  "b. Friendly Forces"\
+  ""\
+  "Two Russian Motor Rifle platoons, using BTR-70s. We are located to the SSE of the airfield, preparing to assault and seize it, in order to gain a foothold on the peninsula and eventually enable aerial resupply."\
+  ""\
+  ""\
+  "c. Terrain and Weather"\
+  ""\
+  "Coastal terrain shaped by pine forests and mudflats. We should be able to cross most straits using our amphibious BTRs."\
+  "It is late afternoon, the weather is rainy with slight fog."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 2
+ }
+}
