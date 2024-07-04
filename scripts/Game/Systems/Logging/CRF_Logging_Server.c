@@ -45,9 +45,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 				return;
 		#endif*/
 		
-		
-		//m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
-		//m_GameModeCoop.GetOnHandlePlayerKilled().Insert(this.OnPlayerKilled);
 	}
 	
 	FileHandle ReturnFileHandle()
