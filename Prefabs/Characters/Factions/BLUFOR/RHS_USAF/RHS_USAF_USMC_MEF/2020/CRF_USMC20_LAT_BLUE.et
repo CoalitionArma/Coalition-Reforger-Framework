@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{551992711A5BD02F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/2020/CRF_USMC20_LAT.et" {
+ ID "520EC961A090BBD5"
+ components {
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingColorTeam Blue
+  }
+ }
+}

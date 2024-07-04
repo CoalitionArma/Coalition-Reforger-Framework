@@ -1,0 +1,97 @@
+Vehicle M997_0B : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 903.805 3.063 6403.613
+ angleY -90
+}
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_M2HB_1A {
+  coords 893.805 3.063 6413.614
+  angleY -90
+ }
+ M1025_M2HB_3A {
+  coords 893.805 3.063 6433.612
+  angleY -90
+ }
+ M1025_M2HB_2A {
+  coords 893.805 3.063 6423.612
+  angleY -90
+ }
+}
+$grp SCR_AIGroup : "{3EDD55795C91213A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad2020.et" {
+ USMC_RifleSquad_1 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BCC22F6AA6}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 1
+   }
+  }
+  coords 890.805 3.063 6410.613
+  angleY -90
+  m_sCustomNameSet "1st Rifle Squad (Mot.)"
+ }
+ USMC_RifleSquad_3 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BB393C0BB6}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 3
+   }
+  }
+  coords 890.805 3.063 6430.612
+  angleY -90
+  m_sCustomNameSet "3rd Rifle Squad (Mot.)"
+ }
+ USMC_RifleSquad_2 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BC95297BE5}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 2
+   }
+  }
+  coords 890.805 3.063 6420.612
+  angleY -90
+  m_sCustomNameSet "2nd Rifle Squad (Mot.)"
+ }
+}
+SCR_AIGroup USMC_PlatoonHQ_0 : "{62990CF36C70D69A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_RiflePHQ2020.et" {
+ components {
+  PS_GroupCallsignAssigner "{61C754BB342B0A38}" {
+   m_iCompanyCallsign 1
+   m_iPlatoonCallsign 1
+  }
+ }
+ coords 890.805 3.063 6400.613
+ angleY -90
+ m_sCustomNameSet "Platoon HQ (Mot.)"
+}
+Vehicle M998_0A : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
+ coords 893.805 3.063 6403.614
+ angleY -90
+}
+$grp Vehicle : "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et" {
+ M998_1B {
+  coords 903.805 3.063 6413.613
+  angleY -90
+ }
+ M998_1C {
+  coords 913.805 3.063 6413.613
+  angleY -90
+ }
+ M998_3B {
+  coords 903.805 3.063 6433.612
+  angleY -90
+ }
+ M998_3C {
+  coords 913.805 3.031 6433.612
+  angleY -90
+ }
+ M998_2B {
+  coords 903.805 3.063 6423.612
+  angleY -90
+ }
+ M998_2C {
+  coords 913.805 3.063 6423.612
+  angleY -90
+ }
+}

@@ -1,0 +1,91 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Description_Service_MSV {
+  coords 0 0 0
+  m_sTitle "IV. SERVICE / SUPPORT"
+  m_sTextData "IV. SERVICE / SUPPORT"\
+  ""\
+  ""\
+  "a. Logistics"\
+  ""\
+  "(1) Each squad has a BTR-70 for transportation. "\
+  ""\
+  "(2) Platoon HQ load plan. 1st BTR: PLC + Medic. 2nd BTR: PSG/DPLC + Sharpshooter. 3rd BTR: MG + AMG."\
+  ""\
+  "(3) Extra ammunition and other supplies are in the BTRs."\
+  ""\
+  ""\
+  "b. Support"\
+  ""\
+  "(1) Medical evacuation is not available."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 4
+ }
+ Description_Command_MSV {
+  coords 0 0 0
+  m_sTitle "V. COMMAND & SIGNAL"
+  m_sTextData "V. COMMAND & SIGNAL"\
+  ""\
+  ""\
+  "a. Signal"\
+  ""\
+  "Frequencies: See radio wheel"\
+  ""\
+  ""\
+  "b. Command"\
+  ""\
+  "Succession of command: 2nd PL, 1stP SLs, 2ndP SLs..."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 5
+ }
+ Description_Execution_MSV {
+  coords 0 0 0
+  m_sTitle "III. EXECUTION"
+  m_sTextData "III. EXECUTION"\
+  ""\
+  "-"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 3
+ }
+ Description_Mission_MSV {
+  coords 0 0 0
+  m_sTitle "II. MISSION"
+  m_sTextData "II. MISSION"\
+  ""\
+  "Assault and seize the airfield, in particular the area around hangar and control tower."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 2
+ }
+ Description_Situation_MSV {
+  coords 0 0 0
+  m_sTitle "I. SITUATION"
+  m_sTextData "I. SITUATION"\
+  ""\
+  ""\
+  "a. Enemy Forces"\
+  ""\
+  "A USMC Rifle Platoon, motorized with both unarmed and armed HMWVVs, is defending Räski airfield."\
+  ""\
+  ""\
+  "b. Friendly Forces"\
+  ""\
+  "Two Russian Motor Rifle platoons, using BTR-70s. We are located to the SSE of the airfield, preparing to assault and seize it, in order to gain a foothold on the peninsula and eventually enable aerial resupply."\
+  ""\
+  ""\
+  "c. Terrain and Weather"\
+  ""\
+  "Coastal terrain shaped by pine forests and mudflats. We should be able to cross most straits using our amphibious BTRs."\
+  "It is late afternoon, the weather is rainy with slight fog."
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 1
+ }
+}

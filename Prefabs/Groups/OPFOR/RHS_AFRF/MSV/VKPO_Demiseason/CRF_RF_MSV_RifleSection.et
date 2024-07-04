@@ -1,0 +1,15 @@
+SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Base.et" {
+ ID "0000000000000001"
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+  SCR_PreviewEntityComponent "{61C754ABED198D0A}" {
+  }
+ }
+ m_aUnitPrefabSlots {
+  "{3776C97DBDFC7C6D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_SL.et" "{825651A3F6F1C022}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_AT.et" "{4EE3CA1B32816055}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_AAT.et" "{5AFE38628F78DE7E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_AR.et" "{216C23B189728CA6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_SR_GL.et" "{F3BCCB7088847237}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_Rifleman.et" "{311E500DC9F9A4BB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_Crew.et" "{311E500DC9F9A4BB}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/2020/CRF_RF_MSV_Crew.et"
+ }
+ m_sCustomNameSet "Mot. Rifle Section"
+ m_bSetPlayable 1
+}

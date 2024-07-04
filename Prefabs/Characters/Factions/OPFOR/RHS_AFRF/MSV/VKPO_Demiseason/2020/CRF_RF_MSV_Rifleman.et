@@ -1,0 +1,11 @@
+SCR_ChimeraCharacter : "{5A1F1BD88FC6C6E9}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Rifleman.et" {
+ ID "520EC961A090B1EE"
+ components {
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingColorTeam Green
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_bIsPlayable 1
+  }
+ }
+}

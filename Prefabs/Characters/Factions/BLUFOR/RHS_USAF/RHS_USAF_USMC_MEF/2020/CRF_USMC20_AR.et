@@ -1,0 +1,11 @@
+SCR_ChimeraCharacter : "{66876AB6DB22430B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Character_RHS_USAF_USMC_AR.et" {
+ ID "520EC961A090BBD5"
+ components {
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingIcon "Machine Gunner"
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_bIsPlayable 1
+  }
+ }
+}
