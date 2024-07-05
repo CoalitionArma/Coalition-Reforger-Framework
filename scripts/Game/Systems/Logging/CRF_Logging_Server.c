@@ -60,14 +60,14 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return;
 		
 		m_sMissionName = GetGame().GetMissionName();
+		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		if (FileIO.FileExists(m_sLogPath))
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
 		else
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.WRITE);
 		
-		if (GetGame().GetPlayerManager().GetPlayerCount() > 10)
-			m_handle.WriteLine("mission:beginning:" + m_sMissionName);
+		m_handle.WriteLine("mission:beginning:" + m_sMissionName);
 	}
 	
 	// Player Connected
@@ -101,29 +101,29 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnGameStateChanged(SCR_EGameModeState state)
 	{
 		super.OnGameStateChanged(state);
-		if (!Replication.IsServer()/* || GetGame().GetPlayerManager().GetPlayerCount() < 10*/)
+		if (!Replication.IsServer() || GetGame().GetPlayerManager().GetPlayerCount() < 10)
 			return;
 		
 		switch (state)
 		{
 			case SCR_EGameModeState.SLOTSELECTION:
 			{
-				m_handle.WriteLine("mission:slotting:" + m_sMissionName);
+				m_handle.WriteLine("mission:slotting:" + m_sMissionName + ":" + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.BRIEFING:
 			{
-				m_handle.WriteLine("mission:briefing:" + m_sMissionName);
+				m_handle.WriteLine("mission:briefing:" + m_sMissionName + ":" + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.GAME:
 			{
-				m_handle.WriteLine("mission:safestart:" + m_sMissionName);
+				m_handle.WriteLine("mission:safestart:" + m_sMissionName + ":" + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.DEBRIEFING:
 			{
-				m_handle.WriteLine("mission:ended:" + m_sMissionName);
+				m_handle.WriteLine("mission:ended:" + m_sMissionName + ":" + m_iPlayerCount);
 				break;
 			}
 		}
