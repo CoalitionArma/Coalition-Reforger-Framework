@@ -101,7 +101,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnGameStateChanged(SCR_EGameModeState state)
 	{
 		super.OnGameStateChanged(state);
-		if (!Replication.IsServer() || GetGame().GetPlayerManager().GetPlayerCount() < 10)
+		if (!Replication.IsServer()/* || GetGame().GetPlayerManager().GetPlayerCount() < 10*/)
 			return;
 		
 		switch (state)
