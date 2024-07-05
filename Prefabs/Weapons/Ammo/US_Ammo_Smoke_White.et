@@ -55,7 +55,7 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
     m_sAmmoCaliber "#AR-AmmunitionID_40mm"
     m_sAmmoType "#AR-AmmoType_M661"
     m_bShowAmmoTypeText 1
-    m_eAmmoTypeFlags ILLUMINATION
+    m_eAmmoTypeFlags SMOKE
     m_MagIndicator SCR_MagazineIndicatorConfiguration "{5874FAA7B6D57051}" : "{BE317699690AD7C3}Configs/WeaponInfo/MagazineIndicators/ugl_m406.conf" {
     }
    }
