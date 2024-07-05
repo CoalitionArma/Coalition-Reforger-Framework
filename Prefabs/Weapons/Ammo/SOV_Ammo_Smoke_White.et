@@ -55,7 +55,7 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
     m_sAmmoCaliber "#AR-AmmunitionID_40mm"
     m_sAmmoType "#AR-AmmoType_VG40OP"
     m_bShowAmmoTypeText 1
-    m_eAmmoTypeFlags ILLUMINATION
+    m_eAmmoTypeFlags SMOKE
     m_MagIndicator SCR_MagazineIndicatorConfiguration "{5874FAA7B6D57051}" : "{50A057521DC5C821}Configs/WeaponInfo/MagazineIndicators/ugl_vog25.conf" {
     }
    }
