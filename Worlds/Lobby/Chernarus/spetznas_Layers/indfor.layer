@@ -1,0 +1,40 @@
+SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+ coords 4558.27 233.41 4536.747
+ m_sCustomNameSet "Cell Leader"
+ {
+  $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+   {
+    coords 11.372 0 1.685
+    m_sCustomNameSet "Cell 1"
+   }
+   {
+    coords 0.022 0 13.118
+    m_sCustomNameSet "Cell 2"
+   }
+   {
+    coords 10.427 0 -10.556
+    m_sCustomNameSet "Cell 3"
+   }
+   {
+    coords 26.051 -0.234 -29.355
+    m_sCustomNameSet "Cell 4"
+   }
+   {
+    coords 26.892 0.833 12.818
+    m_sCustomNameSet "Cell 5"
+   }
+   {
+    coords -16.214 0.012 31.035
+    m_sCustomNameSet "Cell 6"
+   }
+   {
+    coords -20.754 -0.259 3.493
+    m_sCustomNameSet "Cell 7"
+   }
+   {
+    coords -6.747 -0.472 -20.757
+    m_sCustomNameSet "Cell 8"
+   }
+  }
+ }
+}
