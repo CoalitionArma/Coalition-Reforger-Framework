@@ -26,6 +26,16 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 80
   }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 0
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{61CB1D2C54386BC2}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 0
+    }
+   }
+  }
  }
  coords 7673.924 344.678 7703.01
  m_aFactionRespawnCount {

@@ -2,7 +2,9 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  coords 7679.25 344.759 7695.562
  m_sTextData "Use your superior movement capability and firesupport with the MI-8s to move the spetsnaz element around the AO, search for and find the caches, and destroy them."\
  ""\
- "Caches must be destroyed with demolition blocks."
+ "Caches must be destroyed with demolition blocks."\
+ ""\
+ "25 respawns available."
  m_aVisibleForFactions {
   "RHS_RF_MSV"
  }
