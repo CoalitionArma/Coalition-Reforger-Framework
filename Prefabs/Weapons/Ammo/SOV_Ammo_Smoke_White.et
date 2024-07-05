@@ -1,0 +1,79 @@
+Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.et" {
+ ID "50C6F965BA00F9FA"
+ components {
+  TimerTriggerComponent "{61CAF43E6D135013}" {
+   PROJECTILE_EFFECTS {
+    SubmunitionEffect "{61CAF43E6D135003}" {
+     Prefab "{D3847C910CCE8C7C}Prefabs/Weapons/Ammo/Smoke_Effect_White.et"
+     SoundEvent "SOUND_DEPLOY"
+    }
+   }
+   TIMER 0.1
+  }
+  AICombatPropertiesComponent "{59C92CB12877478B}" {
+   Priority 0
+   PriorityAgainstVehicles 0
+   UsedAgainst 0
+   IndirectlyUsedAgainst 0
+   Traits 1
+  }
+  BaseProjectileComponent "{61CAF43E6D135030}" {
+   Enabled 0
+  }
+  CollisionTriggerComponent "{61CAF43E6D135033}" {
+   Enabled 0
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{61CAF43E6D13502D}" {
+     EffectPrefab "{729D7EE679AD97E7}Prefabs/Weapons/Warheads/Warhead_Grenade_HE_VOG25.et"
+     ParticleEffect "{728768DE31C8D1DE}Particles/Weapon/Explosion_VOG25.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+   ArmingTime 0
+   SafetyDistance 10
+  }
+  InventoryItemComponent "{52627A12350994B6}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1234AD20A4}" {
+    ItemDisplayName UIInfo "{61CAF43E6D135026}" {
+     Name "[COAL] Smoke White VOG"
+     Description "White Smoke"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{61CAF43E6D135022}" {
+     Weight 0.25
+     SizeSetupStrategy Manual
+     ItemDimensions 5 5 5
+     ItemVolume 100
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MagazineComponent "{61CAF43E6D1350DF}" {
+   MagazineWell MagazineWellRU_GP "{61CAF43E6D1350D9}" {
+   }
+   UIInfo MagazineUIInfo "{61CAF43E6D1350DA}" {
+    Name "#AR-AmmunitionID_40mm"
+    m_sAmmoCaliber "#AR-AmmunitionID_40mm"
+    m_sAmmoType "#AR-AmmoType_VG40OP"
+    m_bShowAmmoTypeText 1
+    m_eAmmoTypeFlags ILLUMINATION
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{5874FAA7B6D57051}" : "{50A057521DC5C821}Configs/WeaponInfo/MagazineIndicators/ugl_vog25.conf" {
+    }
+   }
+   MaxAmmo 1
+  }
+  MeshObject "{851AA4A2AE0A56BF}" {
+   Object "{52512E76CB91B0B1}Assets/Weapons/Ammo/Grenades/Flare_40mm_VOG40OP_White/Flare_40mm_VG40OP_White.xob"
+  }
+  ShellMoveComponent "{20FB66C5FA209A29}" {
+   InitSpeed 77
+   InitSpeedVariation 0
+   Mass 0.25
+   TimeToLive 40
+  }
+  Hierarchy "{61CAF43E6D1350C8}" {
+  }
+ }
+ ProjectileModel "{52512E76CB91B0B1}Assets/Weapons/Ammo/Grenades/Flare_40mm_VOG40OP_White/Flare_40mm_VG40OP_White.xob"
+ CartridgeModel "{52512E76CB91B0B1}Assets/Weapons/Ammo/Grenades/Flare_40mm_VOG40OP_White/Flare_40mm_VG40OP_White.xob"
+ CartridgeLayerPreset "ItemFireView"
+}
