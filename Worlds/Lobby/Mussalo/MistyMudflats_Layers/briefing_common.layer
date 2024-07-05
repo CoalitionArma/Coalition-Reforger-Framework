@@ -23,6 +23,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "Russian Motor Rifles assault an airfield defended by a motorized USMC Rifle Platoon."\
   ""\
+  ""\
   "2:3 BLU:OP"
   m_bEmptyFactionVisibility 1
   m_iOrder 1
@@ -32,17 +33,13 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Assets"
   m_sTextData "BLUFOR:"\
   ""\
-  "1x M998 for HQ"\
-  "1x M997 for Medics"\
-  "1x M1025 and 2x M998 per squad (one for each fireteam)"\
+  "2x M998 for HQ and Medics"\
+  "1x M1025 (M2HB) and 2x M998 per squad, so one HMWVV for each fireteam"\
   ""\
   ""\
   "OPFOR:"\
   ""\
-  "1x BTR-70 (AFRF) per section"\
-  ""\
-  ""\
-  "Vehicle spawns are currently disabled due to a potential framework issue and will have to be spawned manually by a GM."
+  "1x BTR-70 (AFRF) per section"
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 4

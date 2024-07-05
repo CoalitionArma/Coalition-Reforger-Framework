@@ -1,0 +1,22 @@
+Projectile : "{7018A917ED080F86}Prefabs/Weapons/Core/FlareEffect_Base.et" {
+ ID "5A52CD9231D8AB66"
+ components {
+  TimerTriggerComponent "{60F2D6E8520B1C8B}" {
+   TIMER 60
+  }
+  FlareMoveComponent "{5A52CD9231D8AB6E}" {
+   Mass 5
+   WindInfluenceMultiplier 0.1
+   TimeToLive 60
+   AirDrag 0.2
+   DeflectionSlowdown 1
+   DeployTime 3
+   RotationSpeed 0
+   SmokeParticleDirection 0 0 74.2
+   SmokeParticle "{47CA9C7F1E75DBE3}Particles/Weapon/Smoke_grenade_M18_Purple.ptc"
+  }
+  SCR_FlareEffectComponent "{611868B460E2F003}" {
+   Enabled 0
+  }
+ }
+}

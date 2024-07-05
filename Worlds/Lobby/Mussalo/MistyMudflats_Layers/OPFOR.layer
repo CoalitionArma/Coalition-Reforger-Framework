@@ -22,7 +22,6 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
   angleX -0.771
   angleY -7.514
   angleZ 1.004
-  Flags 2097155
  }
  BTR70_12 {
   components {
@@ -47,7 +46,6 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
   angleX -1.421
   angleY -7.572
   angleZ 2.895
-  Flags 2097155
  }
  BTR70_13 {
   components {
@@ -72,7 +70,6 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
   angleX -0.419
   angleY -7.527
   angleZ 3.662
-  Flags 2097155
  }
  BTR70_21 {
   components {
@@ -97,7 +94,6 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
   angleX -0.536
   angleY -7.526
   angleZ 2.778
-  Flags 2097155
  }
  BTR70_22 {
   components {
@@ -122,7 +118,6 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
   angleX -1.421
   angleY -7.572
   angleZ 2.895
-  Flags 2097155
  }
  BTR70_23 {
   components {
@@ -147,7 +142,6 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
   angleX -1.421
   angleY -7.572
   angleZ 2.895
-  Flags 2097155
  }
 }
 $grp SCR_AIGroup : "{844ED4C0DD333179}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_PlatoonHQ.et" {
