@@ -38,6 +38,7 @@ PS_ManualMarker {
  m_MarkerColor 0 0 0 1
  m_sQuadName "dot"
  m_fWorldSize 100
+ m_sDescription "AO Limit"
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
 }

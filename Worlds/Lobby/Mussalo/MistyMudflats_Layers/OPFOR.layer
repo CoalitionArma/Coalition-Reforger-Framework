@@ -1,0 +1,244 @@
+$grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" {
+ BTR70_11 {
+  components {
+   RHS_GroupMaterialController "{609EA3D1CA4AD40C}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43B}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD438}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43F}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+    }
+   }
+  }
+  coords 1909.851 0.922 4703.133
+  angleX -0.771
+  angleY -7.514
+  angleZ 1.004
+ }
+ BTR70_12 {
+  components {
+   RHS_GroupMaterialController "{609EA3D1CA4AD40C}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43B}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD438}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43F}" {
+      m_iTextureID 2
+      m_bRandomize 0
+     }
+    }
+   }
+  }
+  coords 1912.964 1.281 4683.542
+  angleX -1.421
+  angleY -7.572
+  angleZ 2.895
+ }
+ BTR70_13 {
+  components {
+   RHS_GroupMaterialController "{609EA3D1CA4AD40C}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43B}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD438}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43F}" {
+      m_iTextureID 3
+      m_bRandomize 0
+     }
+    }
+   }
+  }
+  coords 1915.519 1.657 4663.876
+  angleX -0.419
+  angleY -7.527
+  angleZ 3.662
+ }
+ BTR70_21 {
+  components {
+   RHS_GroupMaterialController "{609EA3D1CA4AD40C}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43B}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD438}" {
+      m_iTextureID 2
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43F}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+    }
+   }
+  }
+  coords 1921.141 1.812 4624.616
+  angleX -0.536
+  angleY -7.526
+  angleZ 2.778
+ }
+ BTR70_22 {
+  components {
+   RHS_GroupMaterialController "{609EA3D1CA4AD40C}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43B}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD438}" {
+      m_iTextureID 2
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43F}" {
+      m_iTextureID 2
+      m_bRandomize 0
+     }
+    }
+   }
+  }
+  coords 1923.867 1.914 4604.974
+  angleX -1.421
+  angleY -7.572
+  angleZ 2.895
+ }
+ BTR70_23 {
+  components {
+   RHS_GroupMaterialController "{609EA3D1CA4AD40C}" {
+    m_aGroups {
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43B}" {
+      m_iTextureID 1
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD438}" {
+      m_iTextureID 2
+      m_bRandomize 0
+     }
+     RHS_MaterialGroupProperties "{609EA3D1CA4AD43F}" {
+      m_iTextureID 3
+      m_bRandomize 0
+     }
+    }
+   }
+  }
+  coords 1926.38 2.378 4585.305
+  angleX -1.421
+  angleY -7.572
+  angleZ 2.895
+ }
+}
+$grp SCR_AIGroup : "{844ED4C0DD333179}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_PlatoonHQ.et" {
+ MSV_PlatoonHQ_10 {
+  components {
+   PS_GroupCallsignAssigner "{61C754831A41E714}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+   }
+  }
+  coords 1908.556 0.968 4712.962
+  angleY 172.5
+  m_sCustomNameSet "1st Mot. Rifle Platoon HQ"
+ }
+ MSV_PlatoonHQ_20 {
+  components {
+   PS_GroupCallsignAssigner "{61C7548312F6C66B}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 2
+   }
+  }
+  coords 1919.786 1.822 4634.435
+  angleY 172.5
+  m_sCustomNameSet "2nd Mot. Rifle Platoon HQ"
+ }
+}
+$grp SCR_AIGroup : "{CCDED47C69F28FED}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_RifleSection.et" {
+ MSV_RifleSection_11 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BA657D9D5B}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 1
+   }
+  }
+  coords 1902.416 1.107 4702.154
+  angleY 82.5
+  m_sCustomNameSet "1st Mot. Rifle Section (BTR)"
+ }
+ MSV_RifleSection_12 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BA657D9D5B}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 2
+   }
+  }
+  coords 1905.529 1.762 4682.563
+  angleY 82.5
+  m_sCustomNameSet "2nd Mot. Rifle Section (BTR)"
+ }
+ MSV_RifleSection_13 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BA657D9D5B}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 1
+    m_iSquadCallsign 3
+   }
+  }
+  coords 1908.084 2.168 4662.898
+  angleY 82.5
+  m_sCustomNameSet "3rd Mot. Rifle Section (BTR)"
+ }
+ MSV_RifleSection_21 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BA657D9D5B}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 2
+    m_iSquadCallsign 1
+   }
+  }
+  coords 1913.706 2.139 4623.637
+  angleY 82.5
+  m_sCustomNameSet "1st Mot. Rifle Section (BTR)"
+ }
+ MSV_RifleSection_22 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BA657D9D5B}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 2
+    m_iSquadCallsign 2
+   }
+  }
+  coords 1916.432 2.237 4603.995
+  angleY 82.5
+  m_sCustomNameSet "2nd Mot. Rifle Section (BTR)"
+ }
+ MSV_RifleSection_23 {
+  components {
+   PS_GroupCallsignAssigner "{61C754BA657D9D5B}" {
+    m_iCompanyCallsign 1
+    m_iPlatoonCallsign 2
+    m_iSquadCallsign 3
+   }
+  }
+  coords 1918.946 2.741 4584.326
+  angleY 82.5
+  m_sCustomNameSet "3rd Mot. Rifle Section (BTR)"
+ }
+}

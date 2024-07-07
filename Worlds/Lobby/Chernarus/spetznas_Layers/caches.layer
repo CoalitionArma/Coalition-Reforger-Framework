@@ -1,0 +1,104 @@
+$grp GenericEntity : "{6B52C6B5FEC3E369}Prefabs/Destructible/GMFX_Destructible_AmmoDump.et" {
+ dump3 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 1000
+   }
+  }
+  coords 6556.845 393.116 5600.12
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache3 Destroyed!\", 8);"\
+  "		"\
+  "		// Get cache 1 global marker "\
+  "		IEntity cache3MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker3global\");"\
+  "		IEntity cache3Marker = GetWorld().FindEntityByName(\"cache3marker\");"\
+  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache3\");"\
+  "		// Delete it"\
+  "		delete cache3MarkerGlobal;"\
+  "		delete cache3Marker;"\
+  "		delete ammoCache;"\
+  "	"
+ }
+ dump1 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 1000
+   }
+  }
+  coords 3688.207 406.985 5984.127
+  angleY -4
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache1 Destroyed!\", 8);"\
+  "		"\
+  "		// Get cache 1 global marker "\
+  "		IEntity cache1MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker1global\");"\
+  "		IEntity cache1Marker = GetWorld().FindEntityByName(\"cache1marker\");"\
+  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache1\");"\
+  "		// Delete it"\
+  "		delete cache1MarkerGlobal;"\
+  "		delete cache1Marker;"\
+  "		delete ammoCache;"\
+  "	"
+ }
+ dump2 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 100
+   }
+  }
+  coords 4998.28 280.366 6442.614
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache2 Destroyed!\", 8);"\
+  "		"\
+  "		// Get cache 1 global marker "\
+  "		IEntity cache2MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker2global\");"\
+  "		IEntity cache2Marker = GetWorld().FindEntityByName(\"cache2marker\");"\
+  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache2\");"\
+  "		// Delete it"\
+  "		delete cache2MarkerGlobal;"\
+  "		delete cache2Marker;"\
+  "		delete ammoCache;"\
+  "	"
+ }
+}
+GenericEntity : "{A817454D4372DBCA}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Tent_Soviet.et" {
+ coords 4999.853 281.014 6444.585
+ angleX -6.181
+ angleY -0.092
+ angleZ 5.674
+}
+$grp GenericEntity : "{EA34AA1A128DDF6E}Prefabs/Props/Military/Arsenal/AmmoBoxes/AmmoBoxCache_CP.et" {
+ cache1 {
+  components {
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 3686.853 406.985 5985.385
+  angleX 0
+  angleY -1.672
+  angleZ 0
+ }
+ cache2 {
+  components {
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 5000.248 280.204 6443.814
+  angleX 6.255
+  angleY -179.086
+  angleZ -0.79
+ }
+ cache3 {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 6556.443 393.116 5597.868
+ }
+}

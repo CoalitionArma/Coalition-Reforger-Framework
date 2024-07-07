@@ -1,0 +1,43 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 7679.25 344.759 7695.562
+ m_sTextData "Use your superior movement capability and firesupport with the MI-8s to move the spetsnaz element around the AO, search for and find the caches, and destroy them."\
+ ""\
+ "Caches must be destroyed with demolition blocks."\
+ ""\
+ "25 respawns available."
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+ m_iOrder 3
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 7675.158 344.395 7697.775
+ m_sTextData "OPFOR:"\
+ "3x Mi-8"\
+ "Trucks"\
+ ""\
+ "INDFOR:"\
+ "Civilian vehicles"\
+ "2x AAA Trucks"
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 7677.088 344.567 7696.719
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 7671.744 343.694 7694.891
+ m_sTitle "FIA Briefing"
+ m_sTextData "Utilize your superior numbers and movement capability to defend the three caches marked on the map."\
+ ""\
+ "The red 'cache?' markers are shown to OPFOR and they will search that area."\
+ ""\
+ "You have 50 respawns."
+ m_aVisibleForFactions {
+  "FIA"
+ }
+ m_iOrder 3
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 7680.777 345.21 7698.646
+ m_sTextData "A specialized element from the RU VDV have been dispatched to deal with a FIA problem on Chernarus. FIA have been performing ambushes in the central Chernarus region and disrupting trade flow to the Northern Russian states."
+}

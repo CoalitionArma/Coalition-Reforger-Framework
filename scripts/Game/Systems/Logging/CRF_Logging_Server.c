@@ -19,7 +19,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	private ref FileHandle m_handle;
 	string m_sMissionName;
 	SCR_FactionManager m_FM;
-	PS_GameModeCoop m_GameModeCoop;
 	int m_iPlayerCount;
 	int m_iBluforCount;
 	int m_iOpforCount;
@@ -46,9 +45,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 				return;
 		#endif*/
 		
-		
-		//m_GameModeCoop = PS_GameModeCoop.Cast(GetOwner());
-		//m_GameModeCoop.GetOnHandlePlayerKilled().Insert(this.OnPlayerKilled);
 	}
 	
 	FileHandle ReturnFileHandle()
@@ -64,14 +60,14 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return;
 		
 		m_sMissionName = GetGame().GetMissionName();
+		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		if (FileIO.FileExists(m_sLogPath))
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
 		else
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.WRITE);
 		
-		if (GetGame().GetPlayerManager().GetPlayerCount() > 10)
-			m_handle.WriteLine("mission:beginning:" + m_sMissionName);
+		m_handle.WriteLine("mission,beginning," + m_sMissionName);
 	}
 	
 	// Player Connected
@@ -85,7 +81,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		
 		// Log to file
-		m_handle.WriteLine("connect:" + playerName);
+		m_handle.WriteLine("connect," + playerName);
 	}
 	
 	// Player Disconnected 
@@ -98,7 +94,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		// Get player name
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		
-		m_handle.WriteLine("disconnect:" + playerName);
+		m_handle.WriteLine("disconnect," + playerName + "," + cause);
 	}
 	
 	// Mission status messages 
@@ -112,22 +108,22 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		{
 			case SCR_EGameModeState.SLOTSELECTION:
 			{
-				m_handle.WriteLine("mission:slotting:" + m_sMissionName);
+				m_handle.WriteLine("mission,slotting," + m_sMissionName + "," + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.BRIEFING:
 			{
-				m_handle.WriteLine("mission:briefing:" + m_sMissionName);
+				m_handle.WriteLine("mission,briefing," + m_sMissionName + "," + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.GAME:
 			{
-				m_handle.WriteLine("mission:safestart:" + m_sMissionName);
+				m_handle.WriteLine("mission,safestart," + m_sMissionName + "," + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.DEBRIEFING:
 			{
-				m_handle.WriteLine("mission:ended:" + m_sMissionName);
+				m_handle.WriteLine("mission,ended," + m_sMissionName + "," + m_iPlayerCount);
 				break;
 			}
 		}
@@ -153,7 +149,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		//m_iBluforCount = m_FM.SGetFactionPlayerCount(Faction
 		
 		// log
-		m_handle.WriteLine("mission:started:" + m_sMissionName + ":" + m_iPlayerCount);
+		m_handle.WriteLine("mission,started," + m_sMissionName + "," + m_iPlayerCount);
 	}
 }
 
@@ -163,9 +159,13 @@ modded class SCR_BaseGameMode
 	string m_sKillerFaction;
 	string m_sKilledName;
 	string m_sKilledFaction;
-	float m_fRange;
-	SCR_FactionManager m_FM;
+	string m_sTime;
 	string m_sWeaponName;
+	float m_fRange;
+	float m_fTotalTime;
+	int m_iTotalSeconds;
+	
+	SCR_FactionManager m_FM;
 	BaseWeaponManagerComponent m_WMC;
 	private ref FileHandle m_handle;
 	
@@ -173,9 +173,8 @@ modded class SCR_BaseGameMode
     override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
     {
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
-		//if (!Replication.IsServer())
-		//	return;
 		
+		m_FM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		m_handle = CRF_LoggingServerComponent.GetInstance().ReturnFileHandle();
 		
 		// Killer
@@ -189,7 +188,7 @@ modded class SCR_BaseGameMode
 			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
 		}
 		
-		// Killed 
+		// Killed
 		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
 		
@@ -198,9 +197,15 @@ modded class SCR_BaseGameMode
 		
 		// Killer Weapon 
 		m_WMC = BaseWeaponManagerComponent.Cast(killerEntity.FindComponent(BaseWeaponManagerComponent));
-		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();		
+		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();	
+		if (m_sWeaponName == "")
+			m_sWeaponName = "Unknown Weapon";
+			
+		// Time
+		m_fTotalTime = GetGame().GetWorld().GetWorldTime();
+  		m_iTotalSeconds = (m_fTotalTime / 1000);
+		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
 		
-		Print("CRF:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
-		m_handle.WriteLine("kill:" + m_sKilledName + ":" + m_sKilledFaction + ":" + m_sKillerName + ":" + m_sKillerFaction + ":" + m_fRange + ":" + m_sWeaponName);
+		m_handle.WriteLine("kill," + m_sKilledName + "," + m_sKilledFaction + "," + m_sKillerName + "," + m_sKillerFaction + "," + m_fRange + "," + m_sWeaponName + "," + m_sTime);
 	}
 }

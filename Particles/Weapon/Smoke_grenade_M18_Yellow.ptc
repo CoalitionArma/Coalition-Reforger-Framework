@@ -1,0 +1,227 @@
+EffectDef {
+ Version 1
+ Emitters {
+  EmitterDef smoke_01 {
+   ShapeType Point
+   ShapeSize 0 0 0.2
+   ConeAngle 180 0 120
+   MaxNum 100
+   BirthRate 10
+   BirthRateRND 0
+   BirthRateVel 7
+   Offset 0 0 0
+   LodMin 0
+   LodMax 0
+   Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
+   StretchMultiplier 0
+   SizeMultiplier 4
+   SizeRND 3
+   RotMultiplier 15
+   RandomRotDir 1
+   BillboardingType Full
+   VelAngle 0
+   RandomAngle 1
+   RandomUFlip 1
+   Velocity 0
+   VelocityRND 0.2
+   VelAffect 0.2
+   AirResistance 0.1
+   AirResistanceRND 0
+   WindInfluence 0.25
+   ParentVelRelToAir 0.05
+   GravityMultiplyRND 0
+   Spring 0
+   AnimOnce 1
+   AnimFPS 25
+   LifetimeByAnim 0
+   RandomFrame 1
+   Lifetime 5
+   LifetimeRND 0
+   LifetimeVelFactor 1
+   Color {
+    0 0.823 0.643 0.165 1 0.823 0.643 0.165
+   }
+   Alpha {
+    0 0.407 0.029 1 1 0
+   }
+   RotationSpeed {
+    0 1 1 1
+   }
+   Size {
+    0 0 1 0.644
+   }
+   EmittingTime 90
+   Repeat 0
+   ColorMast {
+    0 1 1 1 0.431 1 1 1 1 1 1 1
+   }
+   AlphaMast {
+    0 0 0.055 1 0.821 1 1 0
+   }
+   RotationSpeedMast {
+    0 1 0.15 1 0.354 1 0.65 1 1 1
+   }
+   SizeMast {
+    0 1 1 1
+   }
+   BRateMast {
+    0 0 0.028 0.363 1 0
+   }
+   VelocityMast {
+    0 1 0.15 1 0.324 1 0.65 1 1 1
+   }
+  }
+  EmitterDef smoke_01_long {
+   ShapeType Sphere
+   ShapeSize 1 1 1
+   ConeAngle 360 0 360
+   ConeAngleMinDist 30
+   ConeAngleRndRange 30
+   Occlusion 12
+   MaxNum 100
+   BirthRate 3
+   BirthRateRND 0
+   BirthRateVel 1
+   Offset 0 0 0.1
+   LocalTransform 0
+   LodMin 0
+   LodMax 1
+   Material "{029D33C344E15DFB}Particles/_Materials/Gas/Smoke_loop_01.emat"
+   StretchMultiplier 0
+   StreakFullUV 0
+   SizeMultiplier 11
+   SizeRND 5
+   RotMultiplier 20
+   RandomRotDir 1
+   BillboardingType Full
+   VelAngle 0
+   RandomAngle 1
+   RandomUFlip 1
+   Velocity 1
+   VelocityRND 0.3
+   VelAffect 0
+   AirResistance 0.1
+   AirResistanceRND 0.05
+   WindInfluence 0.5
+   GravityMultiply -0.01
+   GravityMultiplyRND 0
+   EnableCollisions 1
+   NormalRestitution 0.2
+   TagentialRestitution 1
+   AnimOnce 0
+   AnimFPS 60
+   LifetimeByAnim 0
+   Lifetime 11
+   LifetimeRND 4
+   LifetimeVelFactor 0.15
+   Color {
+    0 0.823 0.643 0.165 1 0.823 0.643 0.165
+   }
+   Alpha {
+    0 0 0.244 0.85 1 0
+   }
+   RotationSpeed {
+    0 0.25 0.075 0.6 0.488 0.437 1 0.306
+   }
+   Size {
+    0 0.148 1 1
+   }
+   EmittingTime 90
+   Repeat 0
+   ColorMast {
+    0 1 1 1 0.431 1 1 1 1 1 1 1
+   }
+   AlphaMast {
+    0 0 0.041 1 0.739 1 1 0
+   }
+   RotationSpeedMast {
+    0 1 0.15 1 0.354 1 0.65 1 1 1
+   }
+   SizeMast {
+    0 1 1 1
+   }
+   BRateMast {
+    0 1 1 1
+   }
+   VelocityMast {
+    0 1 0.15 1 0.324 1 0.65 1 1 1
+   }
+  }
+  EmitterDef smoke_01_long_FAR {
+   ShapeType Sphere
+   ShapeSize 1 1 1
+   ConeAngle 360 0 360
+   ConeAngleMinDist 30
+   ConeAngleRndRange 30
+   Occlusion 12
+   MaxNum 100
+   BirthRate 0.8
+   BirthRateRND 0
+   BirthRateVel 1
+   Offset 0 0 0.1
+   LocalTransform 0
+   LodMin 2
+   LodMax 2
+   Material "{029D33C344E15DFB}Particles/_Materials/Gas/Smoke_loop_01.emat"
+   StretchMultiplier 0
+   StreakFullUV 0
+   SizeMultiplier 12
+   SizeRND 5
+   RotMultiplier 20
+   RandomRotDir 1
+   BillboardingType Full
+   VelAngle 0
+   RandomAngle 1
+   RandomUFlip 1
+   Velocity 1
+   VelocityRND 0.3
+   VelAffect 0
+   AirResistance 0.1
+   AirResistanceRND 0.05
+   WindInfluence 0.5
+   GravityMultiply 0
+   GravityMultiplyRND 0
+   EnableCollisions 1
+   NormalRestitution 0.2
+   TagentialRestitution 1
+   AnimOnce 0
+   AnimFPS 60
+   LifetimeByAnim 0
+   Lifetime 11
+   LifetimeRND 4
+   LifetimeVelFactor 0.15
+   Color {
+    0 0.823 0.643 0.165 1 0.823 0.643 0.165
+   }
+   Alpha {
+    0 0 0.244 0.85 1 0
+   }
+   RotationSpeed {
+    0 0.25 0.075 0.6 0.488 0.437 1 0.306
+   }
+   Size {
+    0 0.148 1 1
+   }
+   EmittingTime 90
+   Repeat 0
+   ColorMast {
+    0 1 1 1 0.431 1 1 1 1 1 1 1
+   }
+   AlphaMast {
+    0 0 0.041 1 0.739 1 1 0
+   }
+   RotationSpeedMast {
+    0 1 0.15 1 0.354 1 0.65 1 1 1
+   }
+   SizeMast {
+    0 1 1 1
+   }
+   BRateMast {
+    0 1 1 1
+   }
+   VelocityMast {
+    0 1 0.15 1 0.324 1 0.65 1 1 1
+   }
+  }
+ }
+}

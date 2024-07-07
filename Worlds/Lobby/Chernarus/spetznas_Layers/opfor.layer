@@ -1,0 +1,27 @@
+SCR_AIGroup : "{844ED4C0DD333179}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_PlatoonHQ.et" {
+ coords 4222.161 340.052 10426.098
+ m_aUnitPrefabSlots {
+  "{660FBA8855DEA977}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_PL.et" "{44CCB4D520D5D8BA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_PSG.et" "{3902AEDAC9026562}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Sharpshooter.et" "{BD13D9F5D4E7C337}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Medic.et"
+ }
+ {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   {
+    coords 37.809 -0.46 31.774
+   }
+   {
+    coords 6.141 -0.01 60.315
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -63.284 -0.835 82.227
+    m_sCustomNameSet "3rd Squad"
+   }
+  }
+ }
+}
+SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Logi.et" {
+ coords 4190.355 339.09 10451.138
+ m_aUnitPrefabSlots + {
+  "{FB9F4731ED842F25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Pilot.et" "{FB9F4731ED842F25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Pilot.et" "{FB9F4731ED842F25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Pilot.et"
+ }
+}

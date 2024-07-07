@@ -1,0 +1,82 @@
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ cache3marker {
+  coords 6553.172 393.188 5598.314
+  angleY 90
+  m_MarkerColor 0 0.13 0.003 1
+  m_sQuadName "fortification-2"
+  m_sDescription "Cache3"
+  m_aVisibleForFactions +{
+  }
+ }
+ cache1marker {
+  coords 3684.829 411.062 5990.147
+  angleY 90
+  m_MarkerColor 0 0.13 0.003 1
+  m_sQuadName "fortification-2"
+  m_sDescription "Cache1"
+  m_aVisibleForFactions +{
+  }
+ }
+ cache2marker {
+  coords 4999.928 274.59 6444.284
+  angleY 90
+  m_MarkerColor 0 0.13 0.003 1
+  m_sQuadName "fortification-2"
+  m_sDescription "Cache2"
+  m_aVisibleForFactions +{
+  }
+ }
+ {
+  coords 4536.48 233.217 4566.656
+  angleX -0.894
+  angleY 89.972
+  angleZ 1.79
+ }
+}
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 4318.411 339.239 10433.845
+  angleY 90
+  m_sDescription "OPFOR Spawn"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cachemarker1global {
+  coords 3504.577 373.343 5991.139
+  angleX 2.678
+  angleY 90.126
+  angleZ 2.687
+  m_MarkerColor 0.364 0.057 0.023 1
+  m_fWorldSize 100
+  m_sDescription "Cache 1 Area"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ cachemarker2global {
+  coords 4627.408 285.106 6890.31
+  angleY 90
+  m_MarkerColor 0.364 0.057 0.023 1
+  m_fWorldSize 100
+  m_sDescription "Cache 2 Area"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ cachemarker3global {
+  coords 6580.016 321.831 6013.089
+  angleX 37.072
+  angleY 102.639
+  angleZ 20.405
+  m_MarkerColor 0.364 0.057 0.023 1
+  m_fWorldSize 100
+  m_sDescription "Cache 3 Area"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
