@@ -1,0 +1,97 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{18A4FA411884C005}worlds/GameMasterChernarusReforged/GM_Lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 815.025 174.589 5988.647
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 75
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 15
+   m_iRangeHoursStart 0
+   m_iRangeHoursEnd 0
+   m_fDayTimeAcceleration 1.5
+   m_fNightTimeAcceleration 1.5
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{61CD3A1CBB4829A4}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 6
+     m_iStartingMinutes 15
+    }
+   }
+  }
+ }
+ coords 800.608 199.676 6075.599
+ {
+  SCR_FactionManager "619C3E964FD6E5C6" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5612D998B673DA16}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{588F0D539C04D3C9}" {
+        m_sCallsign "1-4"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{619C3E975784064D}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{619C3E9756187232}" {
+        m_sCallsign "TH1"
+       }
+       SCR_CallsignInfo "{619C3E9756F45A0A}" {
+        m_sCallsign "TH2"
+       }
+       SCR_CallsignInfo "{619C3E9756CC011B}" {
+        m_sCallsign "TH3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}

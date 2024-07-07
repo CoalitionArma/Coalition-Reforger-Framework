@@ -1,0 +1,1027 @@
+PS_ManualMarker : "{9CEA6A7F2B68B6F8}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4035.885 376.094 11733.837
+ angleY 90
+ m_fWorldSize 250
+}
+PS_ManualMarker : "{C906A1466D06B689}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+ coords 5769.475 474.049 15219.388
+ angleY 90
+ m_fWorldSize 250
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ GamezoneBorder_Markers {
+  coords 3791.787 348.873 11442.781
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 300
+  m_sDescription "Gamezone border"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    GamezoneBorder_Markers2 {
+     coords -227.009 0.639 -179.562
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers3 {
+     coords 174.092 19.345 226.101
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers4 {
+     coords 308.902 -10.105 478.247
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers5 {
+     coords 480.913 -31.14 1037.056
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers6 {
+     coords 268.687 -82.47 1415.04
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers7 {
+     coords -42.166 -104.845 1916.072
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers8 {
+     coords -384.022 -112.441 2235.17
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers9 {
+     coords -555.364 -93.685 2527.562
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers10 {
+     coords -780.345 -134.394 2996.341
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers11 {
+     coords -1266.242 -218.252 3318.265
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers12 {
+     coords -1760.799 -152.463 3397.467
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers13 {
+     coords -2466.313 -89.055 3475.294
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers14 {
+     coords -3193.535 7.813 3579.243
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers15 {
+     coords -3748.452 103.79 3486.044
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers16 {
+     coords -3903.391 109.558 2919.719
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers17 {
+     coords -3900.955 118.235 2302.541
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers18 {
+     coords -3907.99 120.891 1857.505
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers19 {
+     coords -3915.242 127.263 1310.053
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers20 {
+     coords -3915.523 150.798 944.385
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers21 {
+     coords -3913.281 126.866 508.919
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers22 {
+     coords -3905.075 55.757 -20.202
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers23 {
+     coords -3771.898 15.23 -620.239
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers24 {
+     coords -3370.331 18.46 -580.556
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers25 {
+     coords -2790.431 -56.243 -694.491
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers26 {
+     coords -2105.57 -125.577 -675.489
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers27 {
+     coords -1585.175 -145.807 -626.713
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    GamezoneBorder_Markers28 {
+     coords -1015.823 -128.451 -494.282
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 300
+     m_sDescription "Gamezone border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+   }
+  }
+ }
+ BLUFORSafeStartBorder_Markers {
+  coords 3944.123 365.062 11628.341
+  angleY 90
+  m_MarkerColor 0.259 0.365 0.686 1
+  m_sQuadName "dot"
+  m_fWorldSize 150
+  m_sDescription "BLUFOR SafeStart Border"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    BLUFORSafeStartBorder_Markers2 {
+     coords 62.296 2.289 100.727
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORSafeStartBorder_Markers3 {
+     coords -4.845 6.544 212.643
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORSafeStartBorder_Markers4 {
+     coords -121.446 18.709 213.24
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORSafeStartBorder_Markers5 {
+     coords -208.18 24.147 179.506
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORSafeStartBorder_Markers6 {
+     coords -260.92 10.418 94.037
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORSafeStartBorder_Markers7 {
+     coords -249.999 1.894 -5.974
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORSafeStartBorder_Markers8 {
+     coords -168.152 -4.15 -51.168
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORSafeStartBorder_Markers9 {
+     coords -101.677 17.74 -34.492
+     angleY 0
+     m_MarkerColor 0.259 0.365 0.686 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "BLUFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+   }
+  }
+ }
+ INDFORSafeStartBorder_Markers {
+  coords 5752.808 473.878 15284.064
+  angleY 90
+  m_MarkerColor 0 0.381 0.099 1
+  m_sQuadName "dot"
+  m_fWorldSize 150
+  m_sDescription "INDFOR SafeStart Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    INDFORSafeStartBorder_Markers2 {
+     coords 28.128 1.961 -79.571
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORSafeStartBorder_Markers3 {
+     coords 96.4 2.524 -92.103
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORSafeStartBorder_Markers4 {
+     coords 159.978 3.257 -65.956
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORSafeStartBorder_Markers5 {
+     coords 152.664 2.469 2.456
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORSafeStartBorder_Markers6 {
+     coords 143.2 20.255 46.15
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORSafeStartBorder_Markers7 {
+     coords 105.838 7.522 117.932
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORSafeStartBorder_Markers8 {
+     coords 26.616 16.25 104.271
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORSafeStartBorder_Markers9 {
+     coords -17.954 -4.15 55.489
+     angleY 0
+     m_MarkerColor 0 0.381 0.099 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "INDFOR SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+   }
+  }
+ }
+ BLUFORCrashZoneBorder_Markers {
+  coords 4062.883 284.764 14393.762
+  angleY 90
+  m_MarkerColor 0.561 0.071 0.439 1
+  m_sQuadName "dot"
+  m_fWorldSize 225
+  m_sDescription "Rough Crash Zone"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    BLUFORCrashZoneBorder_Markers2 {
+     coords -124.06 71.391 122.738
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers3 {
+     coords -159.219 89.59 357.51
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers4 {
+     coords -94.158 80.903 563.549
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers5 {
+     coords -86.674 94.764 775.569
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers6 {
+     coords -130.152 88.274 1078.292
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers7 {
+     coords -104.24 75.858 1376.206
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers8 {
+     coords 81.94 97.137 1676.885
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers9 {
+     coords 285.389 58.041 2199.987
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers10 {
+     coords 577.91 28.421 2283.962
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers11 {
+     coords 792.579 0.068 2119.513
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers12 {
+     coords 940.773 -28.733 1919.965
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers13 {
+     coords 861.855 -37.511 1554.836
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers14 {
+     coords 808.212 -44.266 1139.907
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers15 {
+     coords 804.97 -56.916 780.214
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers16 {
+     coords 773.562 -60.79 356.579
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers17 {
+     coords 710.862 -55.705 97.586
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers18 {
+     coords 564.355 -36.792 -245.557
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers19 {
+     coords 290.783 -26.031 -373.161
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+    BLUFORCrashZoneBorder_Markers20 {
+     coords 41.311 -14.419 -226.773
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "RHS_US_USMC"
+     }
+    }
+   }
+  }
+ }
+ INDFORCrashZoneBorder_Markers {
+  coords 4509.073 181.308 13246.383
+  angleY 90
+  m_MarkerColor 0.561 0.071 0.439 1
+  m_sQuadName "dot"
+  m_fWorldSize 225
+  m_sDescription "Rough Crash Zone"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    INDFORCrashZoneBorder_Markers2 {
+     coords -1032.721 194.774 2275.216
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers3 {
+     coords -870.583 163.278 2435.438
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers4 {
+     coords -624.803 138.297 2418.54
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers5 {
+     coords -501.073 93.471 2146.17
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers6 {
+     coords -485.359 98.576 1911.984
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers7 {
+     coords -199.259 63.741 1732.395
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers8 {
+     coords -98.593 35.365 1500.954
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers9 {
+     coords -1026.531 195.39 2056.308
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers10 {
+     coords -1132.438 183.935 1789.154
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers11 {
+     coords -1179.902 166.221 1512.804
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers12 {
+     coords -1204.886 168.9 1285.049
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers13 {
+     coords -1279.896 169.757 991.42
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers14 {
+     coords -1330.862 199.775 749.523
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers15 {
+     coords -1202.844 183.258 441.371
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers16 {
+     coords -1132.904 163.907 232.029
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers17 {
+     coords -1117.573 122.173 -34.377
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers18 {
+     coords -1152.95 93.107 -291.541
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers19 {
+     coords -1113.714 90.319 -590.326
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers20 {
+     coords -912.24 71.15 -756.493
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers21 {
+     coords -613.77 44.544 -604.786
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers22 {
+     coords -361.097 19.629 -443.874
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers23 {
+     coords -151.106 5.806 -197.299
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers24 {
+     coords 27.583 -3.322 368.266
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers25 {
+     coords -73.168 22.933 1199.699
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers26 {
+     coords -55.437 39.008 909.085
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORCrashZoneBorder_Markers27 {
+     coords -27.32 2.426 509.675
+     angleY 0
+     m_MarkerColor 0.561 0.071 0.439 1
+     m_sQuadName "dot"
+     m_fWorldSize 225
+     m_sDescription "Rough Crash Zone"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+   }
+  }
+ }
+}

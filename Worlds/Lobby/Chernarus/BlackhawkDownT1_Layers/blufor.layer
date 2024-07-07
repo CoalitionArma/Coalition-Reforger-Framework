@@ -1,0 +1,31 @@
+SCR_AIGroup : "{53FE2516C950DDD0}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_Platoon_Large.et" {
+ coords 4063.583 382.416 11757.732
+ angleY -44.251
+ m_sCustomNameSet "Platoon Command"
+ {
+  $grp SCR_AIGroup : "{3EDD55795C91213A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad2020.et" {
+   {
+    coords 5.051 6.57 9.84
+    angleY -79.286
+    m_sCustomNameSet "1-1"
+   }
+   {
+    coords 6.441 -2.935 19.576
+    angleY -80.435
+    m_sCustomNameSet "1-2"
+   }
+   ReconTeam {
+    coords 5.68 -2.891 14.391
+    angleY -80.878
+    m_aUnitPrefabSlots {
+     "{44332234EE0A52CC}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_SL.et" "{CAC490A7A2EEDC78}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_JTAC.et" "{AB0CBC86FF596E34}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_RiflemanAT.et" "{E27FC191F703D40F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_Medic.et" "{198E7DA381B97145}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_TLRED.et" "{CEAE3068C4B38D31}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_Sniper.et" "{BA15096F8DC64105}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_Spotter.et"
+    }
+    m_sCustomNameSet "Recon Team"
+   }
+  }
+ }
+}
+SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Vehicles/CRF_USMC_THCrew.et" {
+ coords 4057.499 378.923 11752.178
+ m_sCustomNameSet "Helicopter Crew"
+}

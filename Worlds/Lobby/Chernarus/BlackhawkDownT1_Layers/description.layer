@@ -1,0 +1,119 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 807.434 195.573 6082.499
+ m_sTextData "This is a one-life mission. If you die, please patiently wait for the mission to end."\
+ ""\
+ "If you stumbled into our server and the mission has already began, you will need to spectate or wait until the next mission in order to take part."\
+ ""\
+ "HOTKEYS"\
+ "'U' - Open spawning/slotting menu"\
+ "HOME - CSI Settings"
+ m_iOrder 51
+}
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ FIAbrief_1 {
+  coords 807.434 195.573 6082.499
+  m_sTitle "FIA Briefing"
+  m_sTextData "*Background*"\
+  "A USAAF helicopter was shot down by friendly forces at a ZU-23 AA emplacement 30 minutes ago. A platoon at our northen MOB has been scambled to locate the crash site."\
+  "We know that the helicopter was east-bound and headed to the Krasnostav Airfield. Based on reports by the ZU-23 crew, we have created a rough crash zone."\
+  ""\
+  "*Objectives*"\
+  "Based on intercepted radio transmissions, we know the UH-60 was carrying some sort of valuable asset. If we are able to retrieve it, we could sell it to any number of buyers for a high price."\
+  "Alongside that, we have been waiting for weeks for the perfect time to strike the US on our own terms. This is the perfect opportunity, so command wants at least 10 enemy Marines killed. Once that is done, bring all friendly troops back to base."\
+  ""\
+  "Use your AA capabilites, numerical superiority, and guerilla tactics to quickly locate the asset and inflict casualties."
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  m_iOrder 4
+ }
+ USMCbrief_1 {
+  coords 807.434 195.573 6082.499
+  m_sTitle "USMC Briefing"
+  m_sTextData "*Make sure to grab your NVG's from the arsenal box located at your spawn*"\
+  ""\
+  "*Background*"\
+  "A UH-60 Black Hawk helicopter was shot down by FIA guerillas 30 minutes ago. A USMC platoon from the Vyborg Air Base has been scrambled to respond to the crash."\
+  "We know that the helicopter was east-bound and headed to the Krasnostav Airfield. Based on the last transmission of the helicopters, we have created a rough crash zone."\
+  ""\
+  "*Objectives*"\
+  "The UH-60 was carrying a stolen secret Russian prototype weapon set to ship back to the US for testing. US high command wants this weapon back to our base immediately."\
+  "Alongside that, we have been searching for the FIA forces in the area for weeks. We can be assured that this crash will draw them out from wherever they are hiding, so command wants at least 15 of these guerillas dead. Once that is done, bring all friendly troops back to base."\
+  ""\
+  "Use your night vision capabilities, air superiority, and better technology to quickly locate the weapon and inflict casualties."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_iOrder 3
+ }
+ FIA_Objectives {
+  coords 807.434 195.573 6082.498
+  m_sTitle "FIA Objectives"
+  m_sTextData "Objective 1: Locate the top-secret US valuable asset and return it to our base."\
+  "Objective 2*: Eliminate at least 10 US Marines."\
+  "Objective 3*: Return all troops to base."\
+  ""\
+  "-Leeway can be provided, for example Obj 2, if 9 Marines were killed, or Obj 3, if 2 guys are lost in a forest holding up the mission end."
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  m_iOrder 7
+ }
+ USMC_Objectives {
+  coords 807.434 195.573 6082.498
+  m_sTitle "USMC Objectives"
+  m_sTextData "Objective 1: Locate the top-secret Russian weapon and return it to our base."\
+  "Objective 2*: Eliminate at least 15 FIA guerillas."\
+  "Objective 3*: Return all troops to base."\
+  ""\
+  "-Leeway can be provided, for example Obj 2, if 14 guerillas were killed, or Obj 3, if 2 guys are lost in a forest holding up the mission end."
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_iOrder 6
+ }
+ FIA_Assets_1 {
+  coords 807.434 195.573 6082.498
+  m_sTitle "FIA Assets"
+  m_sTextData "1x Ural-4320 (Civilian)"\
+  "1x UAZ-452 (Ambulance)"\
+  "1x UAZ-469"\
+  "1x UAZ-469 (UK-59)"\
+  ""
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  m_iOrder 12
+ }
+ USMC_ASSETS_1 {
+  coords 807.434 195.573 6082.498
+  m_sTitle "USMC Assets"
+  m_sTextData "1x UH-1H"\
+  "2x M1025 (M2HB)"\
+  "1x M997 (Ambulance)"\
+  "4x M998 (Softshell)"\
+  "1x M923A1 (Transport)"
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+  m_iOrder 23
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 805.005 196.298 6082.305
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 4195.765 338.614 9600.191
+ m_sTitle "Win Conditions"
+ m_sTextData "1. Locate the UH-60 crash site and the valuable cargo, then return it to your base."\
+ "2. Inflict casualties upon the opposing forces."\
+ "3. Exfil and get all/most of surviving troops back to your base."
+ m_iOrder 50
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 818.905 196.169 6090.418
+ m_sTextData "Date: 11/17/2012"\
+ "Time: 0615"\
+ "Location: South Zagoria, Republic of Chernarus"\
+ "Situation: A USAAF UH-60 Blackhawk helicopter was shot down 30 minutes prior by a FIA guerilla ZU-23 AA emplacement. The aircraft was east-bound and headed towards the Krasnostav Airfield. The helicopter was known to be carrying assets valuable to US high command. The UH-60's crash site is currently unknown to both parties."
+}
