@@ -22,6 +22,11 @@ SCR_AIGroup : "{53FE2516C950DDD0}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF
     }
     m_sCustomNameSet "Recon Team"
    }
+   {
+    coords 6.947 -2.927 21.871
+    angleY -80.794
+    m_sCustomNameSet "1-3"
+   }
   }
  }
 }

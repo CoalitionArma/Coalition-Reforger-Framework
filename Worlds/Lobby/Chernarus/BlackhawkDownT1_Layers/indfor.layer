@@ -71,6 +71,30 @@ SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_F
     }
     m_sCustomNameSet "Cell 7"
    }
+   {
+    coords 33.51 -0.426 -5.509
+    angleY -82.09
+    m_aUnitPrefabSlots {
+     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
+    }
+    m_sCustomNameSet "Cell 8"
+   }
+   {
+    coords 36.973 -0.476 -6.531
+    angleY -83.595
+    m_aUnitPrefabSlots {
+     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
+    }
+    m_sCustomNameSet "Cell 9"
+   }
+   {
+    coords 33.694 -0.272 12.402
+    angleY -79.477
+    m_aUnitPrefabSlots {
+     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
+    }
+    m_sCustomNameSet "Cell 10"
+   }
   }
  }
 }

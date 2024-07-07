@@ -1021,6 +1021,11 @@ GenericEntity FIABase : "{F35FFCC271B2E4FB}Prefabs/Compositions/Misc/SubComposit
  coords 5768.898 474.029 15233.513
  angleY 0
  {
+  GameEntity : "{616F4E93658E5A3A}Prefabs/Props/Military/Generators/GeneratorFloodlight_USSR_01.et" {
+   coords -24.187 0.413 -27.345
+   angleY -101.661
+   scale 0.81
+  }
   $grp GenericEntity : "{8F130A320B6CEB6F}PrefabsEditable/Auto/Structures/Infrastructure/Lamps/LampStreet_E_02/E_LampStreet_E_02_single.et" {
    {
     coords -14.073 0.338 -32.212
