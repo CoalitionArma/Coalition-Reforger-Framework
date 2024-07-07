@@ -1,0 +1,9 @@
+GenericEntity {
+ ID "61CD2894D13BFB3D"
+ components {
+  MeshObject "{61CD2894B4D797F7}" {
+   Object "{5B2FCD91E003CD3B}Assets/Vehicles/Helicopters/R3D_UH-60/UH60Wreck.xob"
+  }
+ }
+ coords 3.485 3.62 3.173
+}

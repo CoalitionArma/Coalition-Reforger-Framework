@@ -1,0 +1,9 @@
+GenericEntity {
+ ID "61CD2894E98F8B3F"
+ components {
+  MeshObject "{61CD2894E0058AAB}" {
+   Object "{4EA5227744DD98E4}Assets/Vehicles/Helicopters/R3D_UH-60/MinigunMount.xob"
+  }
+ }
+ coords -3.77 7.382 4.443
+}
