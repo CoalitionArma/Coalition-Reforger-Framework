@@ -111,7 +111,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
-			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;
+			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) 
+				continue;
 			
 			m_aPlayedFactionsArray.Insert(faction);
 			
@@ -192,7 +193,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		int factionsReadyCount = 0;
 		foreach(string factionCheckReadyString : m_aFactionsStatusArray) {
-			if (factionCheckReadyString != "#Coal_SS_Faction_Ready") continue;
+			if (factionCheckReadyString != "#Coal_SS_Faction_Ready") 
+				continue;
 			factionsReadyCount = factionsReadyCount + 1;
 		};
 		
@@ -381,15 +383,16 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		if (m_mPlayablesCount > 0) {
 			PS_PlayableComponent playable = m_mPlayables.GetElement(m_mPlayablesCount - 1);
-			m_mPlayablesCount--;
+			if(!playable)
+				return;
+			m_mPlayablesCount = m_mPlayablesCount - 1;
 			if (m_PlayableManager.GetPlayerByPlayable(playable.GetId()) <= 0)
 			{
 				SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playable.GetOwner());
 				SCR_EntityHelper.DeleteEntityAndChildren(character);
 			}
-		} else {
+		} else
 			GetGame().GetCallqueue().Remove(DeleteRedundantUnitsSlowly);
-		}
 	}
 	
 	// Called from server to all clients
@@ -448,13 +451,16 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		foreach (int playerID : outPlayers)
 		{
 			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-			if (!controlledEntity) continue;
+			if (!controlledEntity) 
+				continue;
 			
 			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
-			if (!eventHandler) continue;
+			if (!eventHandler) 
+				continue;
 		
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
-			if (!charComp) continue;
+			if (!charComp) 
+				continue;
 			
 			bool alreadyHasEventHandlers = m_mPlayersWithEHsMap.Get(controlledEntity);
 		
@@ -473,13 +479,18 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		{
 			IEntity controlledEntityKey = m_mPlayersWithEHsMap.GetKey(i);
 			
+			if(!controlledEntityKey)
+				continue;
+			
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntityKey.FindComponent(CharacterControllerComponent));
-			if (!charComp) continue;
+			if (!charComp) 
+				continue;
 			
 			charComp.SetSafety(false, false);
 			
 			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntityKey.FindComponent(EventHandlerManagerComponent));
-			if (!eventHandler) continue;
+			if (!eventHandler) 
+				continue;
 			
 			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
