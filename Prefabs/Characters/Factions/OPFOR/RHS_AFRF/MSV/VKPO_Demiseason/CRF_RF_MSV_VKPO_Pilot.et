@@ -14,6 +14,7 @@ SCR_ChimeraCharacter : "{4CD88E5A61AE773D}Prefabs/Characters/Factions/OPFOR/RHS_
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Pilot"
+   m_bIsPlayable 1
   }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {

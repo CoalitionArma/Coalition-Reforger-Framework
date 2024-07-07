@@ -21,7 +21,7 @@ GenericEntity : "{0761CE8644BBB28E}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR_TA
     AttachmentSlotComponent "{6174A7A88B1F8EF5}" {
      AttachmentSlot InventoryStorageSlot bayonet {
       PivotID "barrel_chamber"
-      Prefab "{852FB88E8AD446C8}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight.et"
+      Prefab "{43FDAF3FA0FF2299}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203_long.et"
      }
     }
    }
