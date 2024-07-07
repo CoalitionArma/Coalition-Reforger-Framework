@@ -1,0 +1,57 @@
+GenericEntity : "{BE99D77D1155B127}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_US.et" {
+ ID "56F2C6D6F7C6DAFA"
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemModes 246
+   m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{61CEE336EAA3320F}" {
+    m_aArsenalItems {
+     SCR_ArsenalItemStandalone "{61CEE336EBA43C04}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{64322D5D501B7D79}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14_Base.et"
+     }
+     SCR_ArsenalItemStandalone "{61CEE336E97C5198}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{9A9555D10664B8CB}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14_WP.et"
+     }
+     SCR_ArsenalItemStandalone "{61CEE336E944B404}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{B7BA7694F821F556}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual.et"
+     }
+     SCR_ArsenalItemStandalone "{61CEE336E9139AF8}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{B385064A383A384B}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual_WP.et"
+     }
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+   "faction affiliation" "RHS_US_USMC"
+  }
+  SCR_ResourceComponent "{5D7D07D2F7A252D2}" {
+   m_aConsumers {
+    SCR_ResourceConsumer "{5E5AE189C57A9FD7}" {
+     m_fBuyMultiplier 0
+    }
+   }
+   m_aGenerators {
+    SCR_ResourceGenerator "{5E5ECCF59701966C}" {
+     m_fResourceMultiplier 0
+    }
+   }
+  }
+ }
+ {
+  GenericEntity : "{94E96FA55D9B2353}Prefabs/Props/Military/SupplyBox/SupplyPortableContainers/SupplyPortableContainer_01/SupplyPortableContainers_01_small_storage.et" {
+   ID "61CEE336BA811539"
+   coords -0.176 0.888 -0.285
+  }
+  GenericEntity : "{A818BF34BFD8FCF2}Prefabs/Props/Decorations/Prop_RHSStatue_blue.et" {
+   ID "61CEE336BA81153A"
+   components {
+    Hierarchy "{61CEE336BA811519}" {
+    }
+   }
+   coords -0.18 0.885 0.245
+  }
+ }
+}
