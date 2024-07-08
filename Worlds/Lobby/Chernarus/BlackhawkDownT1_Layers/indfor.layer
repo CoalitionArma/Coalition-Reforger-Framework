@@ -1,99 +1,109 @@
-SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
- coords 5783.154 474.406 15187.031
+SCR_AIGroup FIAComp_Command : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+ coords 5783.63 479.53 15185.432
  angleY -107.784
  m_aUnitPrefabSlots {
-  "{76CB1C99D4DED2F1}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_PL_P_BD.et" "{4098FA3F975A831B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MO_P.et"
+  "{76CB1C99D4DED2F1}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_PL_P_BD.et" "{4098FA3F975A831B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MO_P.et" "{447FB39B16809156}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RADIO_P_BD.et"
  }
- m_sCustomNameSet "Platoon Command"
+ m_sCustomNameSet "[1st Company] - Company Command"
  {
-  $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
-   {
-    coords 6.26 0.266 16.727
-    angleY -154.081
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
+  $grp SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+   FIAPlat1_Command {
+    coords -1.113 -1.542 -2.547
+    angleY 5.747
+    m_sCustomNameSet "[1st Platoon] - Platoon Command"
+    {
+     $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+      FIARifleSquad_1_2 {
+       coords 3.39 -3.37 13.115
+       angleY -137.12
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[1-1] - Infantry Cell (Light)"
+      }
+      FIARifleSquad_1_1 {
+       coords 2.005 0.125 11.498
+       angleY -137.508
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[1-2] - Infantry Cell (Light)"
+      }
+      FIARifleSquad_1_3 {
+       coords 4.224 -3.315 14.097
+       angleY -138.404
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[1-3] - Infantry Cell (Light)"
+      }
+      FIARifleSquad_1_4 {
+       coords 5.226 -6.859 15.13
+       angleY -136.596
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MAT_P_BD.et" "{7BE2FAD48ECDE588}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MATASS_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et"
+       }
+       m_sCustomNameSet "[1-4] - Infantry Cell (Heavy)"
+      }
+      FIARifleSquad_1_5 {
+       coords 6.745 -3.26 16.486
+       angleY -136.643
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{18457AA1080575CD}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_RPK_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[1-5] - Infantry Cell (Support)"
+      }
+     }
     }
-    m_sCustomNameSet "Cell 1"
    }
-   {
-    coords 0.523 0.375 9.021
-    angleY -131.761
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
+   FIAPlat2_Command {
+    coords 2.356 -4.78 -0.835
+    angleY -173.574
+    m_sCustomNameSet "[2nd Platoon] - Platoon Command"
+    {
+     $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+      FIARifleSquad_2_1 {
+       coords -0.086 5.038 6.183
+       angleY -177.162
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[2-1] - Infantry Cell (Light)"
+      }
+      FIARifleSquad_2_2 {
+       coords -0.483 3.272 8.667
+       angleY -174.885
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[2-2] - Infantry Cell (Light)"
+      }
+      FIARifleSquad_2_3 {
+       coords -0.354 5.007 10.751
+       angleY -176.509
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[2-3] - Infantry Cell (Light)"
+      }
+      FIARifleSquad_2_4 {
+       coords -0.569 5.038 12.289
+       angleY -179.235
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MAT_P_BD.et" "{7BE2FAD48ECDE588}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MATASS_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et"
+       }
+       m_sCustomNameSet "[2-4] - Infantry Cell (Heavy)"
+      }
+      FIARifleSquad_2_5 {
+       coords -0.68 3.163 13.675
+       angleY -177.468
+       m_aUnitPrefabSlots {
+        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{18457AA1080575CD}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_RPK_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       }
+       m_sCustomNameSet "[2-5] - Infantry Cell (Support)"
+      }
+     }
     }
-    m_sCustomNameSet "Cell 2"
-   }
-   {
-    coords 6.238 0.288 12.142
-    angleY -157.121
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 3"
-   }
-   {
-    coords 7.32 11.69 23.158
-    angleY -143.435
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 4"
-   }
-   {
-    coords 10.807 18.784 25.933
-    angleY -153.417
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 5"
-   }
-   {
-    coords 12.593 0.431 33.765
-    angleY -172.686
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 6"
-   }
-   FIAReconTeam {
-    coords 23.306 -0.05 11.795
-    angleY -64.366
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{447FB39B16809156}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RADIO_P_BD.et" "{F7D4F71085E34DB9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SCOUT_P_BD.et" "{E4009438233E67CE}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SNIP_P_BD.et"
-    }
-    m_sCustomNameSet "Recon Team"
-   }
-   {
-    coords 13.012 0.452 39.3
-    angleY 178.748
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 7"
-   }
-   {
-    coords 33.51 -0.426 -5.509
-    angleY -82.09
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 8"
-   }
-   {
-    coords 36.973 -0.476 -6.531
-    angleY -83.595
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 9"
-   }
-   {
-    coords 33.694 -0.272 12.402
-    angleY -79.477
-    m_aUnitPrefabSlots {
-     "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P_BD.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
-    }
-    m_sCustomNameSet "Cell 10"
    }
   }
  }
