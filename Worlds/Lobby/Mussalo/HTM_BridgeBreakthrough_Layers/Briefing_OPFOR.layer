@@ -1,0 +1,59 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ OPF_Execution {
+  coords 6353.514 1.473 5098.851
+  m_sTitle "III. Execution"
+  m_sTextData "Execution:"\
+  "Up to the unit in Charge (Company or Platoon leader), it is recommended though to be swift in the attack towards the bridge to secure them but be aware that the enemy have access to AT Mines, the western bridge next to the main highway could be used as a attack point OR across the tiny lake on the east side."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 3
+ }
+ OPF_Mission {
+  coords 6361.372 1.149 5094.754
+  m_sTitle "II. Mission"
+  m_sTextData "Mission:"\
+  "Move & Secure the First, Second & Third bridge along the Main Railway & Highway leading through the peninsula of Hirssaari to gain access across the river towards our Battalion's Attack Vector."\
+  ""\
+  "We cannot let the americans wait for their engineer unit to blow these vital bridges up."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 2
+ }
+ OPF_Situation {
+  coords 6366.757 0.756 5091.572
+  m_sTitle "I. Situation"
+  m_sTextData "Situation:"\
+  "We've been ordered by our Battalion to move & secure the peninsula of Hirssaari and to prevent the americans to blow up the vital railway & highway bridges that'll slow down our glorious advance against these capitalist pigs."\
+  ""\
+  "They have access the AT Mines"\
+  ""\
+  "Reach & Secure the bridges before their engineer units can show up to blow them up."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 1
+ }
+ OPF_Sustainment {
+  coords 4182.892 7.558 3445.081
+  m_sTitle "IV. Sustainment"
+  m_sTextData "Vehicle Loads:"\
+  "- BTR-70"\
+  "26x 30rnd Magazines"\
+  "4x 100rnd PKM Box "\
+  "9x 50rnd KPVT Box (Vehicle Use)"\
+  "7x 250rnd PKM Box (Vehicle Use)"\
+  "4x Smoke"\
+  "2x HE Grenade"\
+  "12x Mine Flags"\
+  "1x Backpack"\
+  "2x Field Dressings"\
+  "1x Fuelcan"\
+  "1x Repair Tool"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 4
+ }
+}

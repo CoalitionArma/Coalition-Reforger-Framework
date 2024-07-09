@@ -1,0 +1,64 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ BLU_Situation {
+  coords 6370.435 1.312 5095.98
+  m_sTitle "I. Situation"
+  m_sTextData "Situation:"\
+  "We've been ordered by COY to setup a security perimiter on the penisula of Hirssaari to delay the Soviet's advance as our engineers from COY prep explosives and arrive to detonate these bridges."\
+  ""\
+  "Until then we are to hold for as long as we can."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 1
+ }
+ BLU_Mission {
+  coords 6365.05 1.705 5099.163
+  m_sTitle "II. Mission"
+  m_sTextData "Mission:"\
+  "Defend the First, Second & Third Bridge along the main Railway & Highway leading through the peninsula of Hirssaari to deny them access across the river."\
+  ""\
+  "They are not to secure them or have any forced within 100m of them, at any cost."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 2
+ }
+ BLU_Execution {
+  coords 6357.192 2.029 5103.26
+  m_sTitle "III. Execution"
+  m_sTextData "Execution:"\
+  "Up to Platoon leader in charge, it is recommended to set forward some picket forces across the river & first bridge to engage & delay the enemy should they move straight through the highway, however be aware of the potential use of ambibhious assault knowing that the BTRs can traverse through water."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 3
+ }
+ BLU_Sustainment {
+  coords 6359.961 1.875 5100.669
+  m_sTitle "IV. Sustainment"
+  m_sTextData "Vehicle Loads:"\
+  "- HMMWV"\
+  "24x Stanag Magazines"\
+  "3x 200rnd m249 Box"\
+  "4x 50.cal Box (only in 50.cal HMMWVs)"\
+  "2x M72A3 AT Rocketlaunchers"\
+  "12x Mine Flags"\
+  "6x White Smoke"\
+  "4x Red Smoke"\
+  "4x Green Smoke"\
+  "2x HE Grenades"\
+  "2x Field Dressings"\
+  "1x Fuelcan"\
+  "1x Repair Tool"\
+  ""\
+  "- Truck"\
+  "30x AT Mines"\
+  "2x Field Dressings"\
+  "1x Fuelcan"\
+  "1x Repair Tool"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+ }
+}

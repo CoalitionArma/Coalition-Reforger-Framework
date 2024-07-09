@@ -1,0 +1,48 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Assets {
+  coords 6370.86 1.788 5107.879
+  m_sTitle "Global Assets"
+  m_sTextData "BLUFOR:"\
+  "1x Platoon (-) + HMWWV Medical:"\
+  "- 2x Rifle SQD + 2x HMMWV 50.cal"\
+  "- 1x Weapon SQD + 2x HMMWV 50.cal"\
+  "- 1x Truck (Contains AT Mines)"\
+  ""\
+  "OPFOR:"\
+  "1x Company (-) + BTR-70:"\
+  "- 2x Platoon HQ (Drives in their SQDs vehicles)"\
+  "- 6x Rifle Squads + 6x BTR-70s"\
+  ""\
+  "Ratio: 2:1 / 60:30"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 20
+ }
+ Mission_Notes {
+  coords 6365.731 2.033 5109.627
+  m_sTitle "Mission Notes"
+  m_sTextData "Mission Notes:"\
+  ""\
+  "- 90min Timelimit"\
+  "- OPFOR 2:1 BLUFOR"\
+  ""\
+  "- OPFOR please do not hug the AO limt to cheese it"\
+  "- OPFOR cannot leave their safe zone until the game starts."\
+  ""\
+  "- BLUFOR cannot leave their AO Limit and must stay inside it, with the encouragement to stay close to the Bridges."\
+  "- BLUFOR always has access to the Truck with AT Mines in it."\
+  "-- If you're OPFOR, you can \"shoot\" the AT Mines if you find them OR Place a AT Mine Flag to make it more visable for the Drivers"\
+  ""\
+  "- No one can use excess amount of Armed Vehicles than what is assigned to them, I.E BTR per squad or COY HQ, and HMWWV per Squad (2x for Weapon Squad)."\
+  "--You can give vehicles to another group if you don't want to manage them & the other unit wish to have it. "\
+  "-- Vehicle Ratio of BTR-70 1.75:1 HMMWV, always round the number upwards I.E 1.75 ~ 2x BTRs"\
+  ""\
+  "Notes for Admn/Game Master:"\
+  ""\
+  "- Each Trigger on the bridge is 100m Wide and will trigger once OPFOR has 0.8 Ratio over BLUFOR."\
+  "- It checks every 20sec"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 21
+ }
+}
