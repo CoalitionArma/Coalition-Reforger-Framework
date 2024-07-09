@@ -37,7 +37,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "--You can give vehicles to another group if you don't want to manage them & the other unit wish to have it. "\
   "-- Vehicle Ratio of BTR-70 1.75:1 HMMWV, always round the number upwards I.E 1.75 ~ 2x BTRs"\
   ""\
-  "Notes for Admn/Game Master:"\
+  "Notes for Admin/Game Master:"\
   ""\
   "- Each Trigger on the bridge is 100m Wide and will trigger once OPFOR has 0.8 Ratio over BLUFOR."\
   "- It checks every 20sec"

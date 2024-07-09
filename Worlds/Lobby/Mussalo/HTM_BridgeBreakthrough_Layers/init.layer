@@ -12,7 +12,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    m_bUsePredefineStartingTimeAndWeatehr 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{61CE59C47CE04E8A}" {
-     m_sWeatherPresetName "Rainy"
+     m_sWeatherPresetName "Thunderstorm"
      m_iStartingHour 3
      m_iStartingMinutes 15
     }
