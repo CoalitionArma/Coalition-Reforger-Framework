@@ -8,10 +8,7 @@
 *	Server only
 */
 [ComponentEditorProps(category: "CRF Logging Component", description: "")]
-class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass
-{
-	
-}
+class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass {}
 
 class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 {	
@@ -33,20 +30,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return null;
 	}
 	
-	override void OnPostInit(IEntity owner)
-	{
-		super.OnPostInit(owner);
-		
-		// Only run if in a real game and always in workbench
-		/*#ifdef WORKBENCH
-			Print("CRF::Workbench");
-		#else 
-			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
-				return;
-		#endif*/
-		
-	}
-	
 	FileHandle ReturnFileHandle()
 	{
 		return m_handle;
@@ -56,7 +39,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
-		if (!Replication.IsServer())
+		if (!Replication.IsServer() || RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
 		m_sMissionName = GetGame().GetMissionName();
@@ -74,7 +57,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
-		if (!Replication.IsServer())
+		if (!Replication.IsServer() || RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
 		// Get player name
@@ -88,7 +71,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		super.OnPlayerDisconnected(playerId, cause, timeout);
-		if (!Replication.IsServer())
+		if (!Replication.IsServer() || RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
 		// Get player name
@@ -101,7 +84,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnGameStateChanged(SCR_EGameModeState state)
 	{
 		super.OnGameStateChanged(state);
-		if (!Replication.IsServer() || GetGame().GetPlayerManager().GetPlayerCount() < 10)
+		if (!Replication.IsServer() || GetGame().GetPlayerManager().GetPlayerCount() < 10 || RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
 		switch (state)
@@ -132,8 +115,10 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
 		super.OnGameModeEnd(data);
-		if (!Replication.IsServer())
+		if (!Replication.IsServer() || RplSession.Mode() != RplMode.Dedicated)
 			return;
+		
+		CRF_LoggingSQLComponent.GetInstance().UpdateStats();
 		
 		m_handle.Close(); // lets avoid a mem leak
 	}
@@ -142,7 +127,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	// TODO: Mission stats get logged here
 	void GameStarted()
 	{
-		if (!Replication.IsServer())
+		if (!Replication.IsServer() || RplSession.Mode() != RplMode.Dedicated)
 			return;
 		// Collect mission data 
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
@@ -197,7 +182,7 @@ modded class SCR_BaseGameMode
 		
 		// Killer Weapon 
 		m_WMC = BaseWeaponManagerComponent.Cast(killerEntity.FindComponent(BaseWeaponManagerComponent));
-		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();	
+		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();
 		if (m_sWeaponName == "")
 			m_sWeaponName = "Unknown Weapon";
 			
