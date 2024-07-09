@@ -26,15 +26,14 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "- 90min Timelimit"\
   "- OPFOR 2:1 BLUFOR"\
   ""\
-  "- OPFOR please do not hug the AO limt to cheese it"\
+  "- OPFOR please do not hug the AO limit to cheese it"\
   "- OPFOR cannot leave their safe zone until the game starts."\
   ""\
   "- BLUFOR cannot leave their AO Limit and must stay inside it, with the encouragement to stay close to the Bridges."\
   "- BLUFOR always has access to the Truck with AT Mines in it."\
   "-- If you're OPFOR, you can \"shoot\" the AT Mines if you find them OR Place a AT Mine Flag to make it more visable for the Drivers"\
   ""\
-  "- No one can use excess amount of Armed Vehicles than what is assigned to them, I.E BTR per squad or COY HQ, and HMWWV per Squad (2x for Weapon Squad)."\
-  "--You can give vehicles to another group if you don't want to manage them & the other unit wish to have it. "\
+  "- No one can use excess amount of Armed Vehicles than what is assigned to them (Check Global Assets)"\
   "-- Vehicle Ratio of BTR-70 1.75:1 HMMWV, always round the number upwards I.E 1.75 ~ 2x BTRs"\
   ""\
   "Notes for Admin/Game Master:"\
@@ -44,5 +43,23 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 21
+ }
+ BLU_Situation {
+  coords 6370.435 1.312 5095.98
+  m_sTitle "I. Situation"
+  m_sTextData "BLUFOR Situation:"\
+  "We've been ordered by COY to setup a security perimiter on the penisula of Hirssaari to delay the Soviet's advance as our engineers from COY prep explosives and arrive to detonate these bridges."\
+  ""\
+  "Until then we are to hold for as long as we can."\
+  ""\
+  ""\
+  "OPFOR Situation:"\
+  "We've been ordered by our Battalion to move & secure the peninsula of Hirssaari and to prevent the americans to blow up the vital railway & highway bridges that'll slow down our glorious advance against these capitalist pigs."\
+  ""\
+  "Reach & Secure the bridges before their engineer units can show up to blow them up."\
+  "They have access the AT Mines"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 1
  }
 }

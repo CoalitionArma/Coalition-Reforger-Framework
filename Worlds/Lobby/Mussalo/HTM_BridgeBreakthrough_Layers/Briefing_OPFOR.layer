@@ -21,20 +21,6 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   }
   m_iOrder 2
  }
- OPF_Situation {
-  coords 6366.757 0.756 5091.572
-  m_sTitle "I. Situation"
-  m_sTextData "Situation:"\
-  "We've been ordered by our Battalion to move & secure the peninsula of Hirssaari and to prevent the americans to blow up the vital railway & highway bridges that'll slow down our glorious advance against these capitalist pigs."\
-  ""\
-  "They have access the AT Mines"\
-  ""\
-  "Reach & Secure the bridges before their engineer units can show up to blow them up."
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_iOrder 1
- }
  OPF_Sustainment {
   coords 4182.892 7.558 3445.081
   m_sTitle "IV. Sustainment"
