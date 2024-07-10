@@ -1,33 +1,7 @@
 $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
- BLU_Mission {
-  coords 6365.05 1.705 5099.163
-  m_sTitle "II. Mission"
-  m_sTextData "Mission:"\
-  "Defend the First, Second & Third Bridge along the main Railway & Highway leading through the peninsula of Hirssaari to deny them access across the river."\
-  ""\
-  "Use the remaining mines in the truck to better fortify your position"\
-  ""\
-  "They are not to secure them or have any forced within 100m of them, at any cost."
-  m_aVisibleForFactions {
-   "US"
-  }
-  m_iOrder 2
- }
- BLU_Execution {
-  coords 6357.192 2.029 5103.26
-  m_sTitle "III. Execution"
-  m_sTextData "Execution:"\
-  "Up to Platoon leader in charge, it is recommended to set forward some picket forces across the river & first bridge to engage & delay the enemy should they move straight through the highway, however be aware of the potential use of ambibhious assault knowing that the BTRs can traverse through water."\
-  ""\
-  "Do not forget to use mines where you deem necessary"
-  m_aVisibleForFactions {
-   "US"
-  }
-  m_iOrder 3
- }
  BLU_Sustainment {
   coords 6359.961 1.875 5100.669
-  m_sTitle "IV. Sustainment"
+  m_sTitle "Vehicle Inventory"
   m_sTextData "Vehicle Loads:"\
   "- HMMWV"\
   "24x Stanag Magazines"\
@@ -48,114 +22,13 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   }
   m_iOrder 4
  }
-}
-Vehicle S1203_transport_beige1 : "{543799AC5C52989C}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_beige.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{607097C321D5128E}" {
-   MultiSlots {
-    MultiSlotConfiguration "{6072948F4DEC1046}" {
-     NumSlots 80
-    }
-    MultiSlotConfiguration "{61D3457C0BED6276}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et"
-     }
-     NumSlots 30
-    }
-    MultiSlotConfiguration "{61D3457C0C10EC0D}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et"
-     }
-     NumSlots 25
-    }
-    MultiSlotConfiguration "{61D3457C0C6611E4}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{3238FC0BDB67AA78}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01_base.et"
-     }
-     NumSlots 40
-    }
-    MultiSlotConfiguration "{61D3457C0CA5F971}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{21EF98BFC1EB3793}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_USSR.et"
-      Name "5"
-     }
-    }
-    MultiSlotConfiguration "{61D3457C0CFEEC71}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
-     }
-     NumSlots 40
-    }
-   }
+ BLU_Objective {
+  coords 6370.453 1.313 5096.315
+  m_sTitle "Objective"
+  m_sTextData "Defend the 3x Bridges from the OPFOR for 60min or kill them all"
+  m_aVisibleForFactions {
+   "US"
   }
+  m_iOrder 3
  }
- coords 4115.615 9.575 3413.602
- angleY 128
-}
-Vehicle M998_3 : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
-   MultiSlots {
-    MultiSlotConfiguration "{61D0A2D2567D3917}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et"
-     }
-     NumSlots 4
-    }
-    MultiSlotConfiguration "{61D0A2D2564C786A}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et"
-     }
-     NumSlots 4
-    }
-    MultiSlotConfiguration "{61D0A2D256998336}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
-     }
-     NumSlots 2
-    }
-    MultiSlotConfiguration "{61D0A2D256E9AE7B}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
-     }
-     NumSlots 6
-    }
-    MultiSlotConfiguration "{61D0A2D25735716B}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
-     }
-     NumSlots 24
-    }
-    MultiSlotConfiguration "{61D0A2D2571F4F37}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et"
-     }
-     NumSlots 6
-    }
-    MultiSlotConfiguration "{61D0A2D2576C86DD}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{EC13D4E934B2ADD8}Prefabs/Items/Demining/MineFlags/MineFlag_US.et"
-     }
-     NumSlots 12
-    }
-    MultiSlotConfiguration "{61D2CE6CCDA8E0D3}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
-     }
-     NumSlots 2
-    }
-   }
-  }
-  SCR_VehicleInventoryStorageManagerComponent "{591056FA3B752FE6}" {
-   InitialInventoryItems {
-    ItemsInitConfigurationItem "{61D05903E8B344DC}" {
-     PrefabsToSpawn {
-      "{37F022D0CDC84C11}Prefabs/Weapons/Launchers/M72/Launcher_M72A3_base.et" "{37F022D0CDC84C11}Prefabs/Weapons/Launchers/M72/Launcher_M72A3_base.et"
-     }
-    }
-   }
-  }
- }
- coords 4991.093 10.884 5317.698
- angleY 137.158
 }

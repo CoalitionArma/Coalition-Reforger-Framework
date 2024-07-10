@@ -11,7 +11,7 @@ Vehicle M923A1_MineLogi_Truck : "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923
    }
   }
  }
- coords 5000.355 10.687 5320.864
+ coords 5002.597 10.673 5322.272
  angleY -132.456
 }
 Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
@@ -82,7 +82,7 @@ $grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_lon
     }
    }
   }
-  coords 5015.513 10.875 5291.942
+  coords 5020.457 10.872 5288.216
   angleY -48.168
  }
  M998_2 {
@@ -149,8 +149,8 @@ $grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_lon
     }
    }
   }
-  coords 5034.132 11.445 5313.413
-  angleY -42.861
+  coords 5039.941 11.098 5307.519
+  angleY -44.861
  }
 }
 $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
@@ -205,7 +205,7 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 5037.106 11.235 5316.911
+  coords 5043.174 11.069 5311.045
   angleY -45.462
  }
  M1025_M2HB_2 {
@@ -259,7 +259,7 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 5018.229 10.747 5295.763
+  coords 5023.739 10.723 5291.732
   angleY -48.462
  }
  M1025_M2HB_3 {
@@ -313,7 +313,7 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 4998.18 10.687 5271.666
+  coords 5002.616 10.656 5267.927
   angleY -48.462
  }
  M1025_M2HB_4 {
@@ -367,7 +367,7 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 5001.888 10.72 5275.329
+  coords 5006.252 10.717 5271.809
   angleY -48.462
  }
 }
@@ -375,7 +375,7 @@ SCR_AIGroup US1980s_1st_PlatoonHQ : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/198
  coords 4994.723 10.833 5313.743
  angleY 140.57
  m_aUnitPrefabSlots {
-  "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PL_P.et" "{AEA6AAC37FDD9FEE}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PLSGT_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MedicalOfficer_P.et"
+  "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PL_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MedicalOfficer_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MedicalOfficer_P.et"
  }
  m_bPlayable 1
  m_sCustomNameSet "1st Platoon Command"
