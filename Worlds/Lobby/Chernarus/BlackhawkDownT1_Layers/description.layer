@@ -1,8 +1,6 @@
 PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
  coords 807.434 195.573 6082.499
- m_sTextData "*Please Ignore the callsigns found in parentheses on the right side of each squad in the lobby. Please use the callsigns found in brackets on the left side of each squad.*"\
- ""\
- "This is a one-life mission. If you die, please patiently wait for the mission to end."\
+ m_sTextData "This is a one-life mission. If you die, please patiently wait for the mission to end."\
  ""\
  "If you stumbled into our server and the mission has already began, you will need to spectate or wait until the next mission in order to take part."\
  ""\
@@ -101,8 +99,8 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "1x UH-1H"\
   "1x M997 Ambulance"\
   "1x M923A1 (Transport)"\
-  "2x M1025 (M2 HMG)"\
-  "5x M998 (any variant)"
+  "3x M1025 (M2 HMG)"\
+  "6x M998 (any variant)"
   m_bShowForAnyFaction 1
   m_iOrder 12
  }

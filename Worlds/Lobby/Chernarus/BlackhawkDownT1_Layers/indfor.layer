@@ -2,105 +2,117 @@ SCR_AIGroup FIAComp_Command : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s
  coords 5783.63 479.53 15185.432
  angleY -107.784
  m_aUnitPrefabSlots {
-  "{76CB1C99D4DED2F1}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_PL_P_BD.et" "{4098FA3F975A831B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MO_P.et" "{447FB39B16809156}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RADIO_P_BD.et"
+  "{76CB1C99D4DED2F1}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_PL_P_BD.et" "{4098FA3F975A831B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MO_P.et"
  }
- m_sCustomNameSet "[1st Company] - Company Command"
+ m_sCustomNameSet "Company Command"
  {
-  $grp SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
-   FIAPlat1_Command {
-    coords -1.113 -1.542 -2.547
-    angleY 5.747
-    m_sCustomNameSet "[1st Platoon] - Platoon Command"
-    {
-     $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
-      FIARifleSquad_1_2 {
-       coords 3.39 -3.37 13.115
-       angleY -137.12
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
-       }
-       m_sCustomNameSet "[1-1] - Infantry Cell (Light)"
-      }
-      FIARifleSquad_1_1 {
-       coords 2.005 0.125 11.498
-       angleY -137.508
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
-       }
-       m_sCustomNameSet "[1-2] - Infantry Cell (Light)"
-      }
-      FIARifleSquad_1_3 {
-       coords 4.224 -3.315 14.097
-       angleY -138.404
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
-       }
-       m_sCustomNameSet "[1-3] - Infantry Cell (Light)"
-      }
-      FIARifleSquad_1_4 {
-       coords 5.226 -6.859 15.13
-       angleY -136.596
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MAT_P_BD.et" "{7BE2FAD48ECDE588}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MATASS_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et"
-       }
-       m_sCustomNameSet "[1-4] - Infantry Cell (Heavy)"
-      }
-      FIARifleSquad_1_5 {
-       coords 6.745 -3.26 16.486
-       angleY -136.643
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{18457AA1080575CD}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_RPK_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
-       }
-       m_sCustomNameSet "[1-5] - Infantry Cell (Support)"
-      }
+  SCR_AIGroup FIAPlat1_Command : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+   coords -1.113 -1.542 -2.547
+   angleY 5.747
+   m_sCustomNameSet "Platoon Command"
+   {
+    SCR_AIGroup FIARifleSquad_1_1 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+     coords 2.005 0.125 11.498
+     angleY -137.508
+     m_aUnitPrefabSlots {
+      "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
      }
-    }
-   }
-   FIAPlat2_Command {
-    coords 2.356 -4.78 -0.835
-    angleY -173.574
-    m_sCustomNameSet "[2nd Platoon] - Platoon Command"
-    {
-     $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
-      FIARifleSquad_2_1 {
-       coords -0.086 5.038 6.183
-       angleY -177.162
+     m_sCustomNameSet "Infantry Cell (Light)"
+     {
+      SCR_AIGroup FIARifleSquad_1_2 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+       coords 0.073 -3.495 -2.128
+       angleY 0.388
        m_aUnitPrefabSlots {
         "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
        }
-       m_sCustomNameSet "[2-1] - Infantry Cell (Light)"
-      }
-      FIARifleSquad_2_2 {
-       coords -0.483 3.272 8.667
-       angleY -174.885
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+       m_sCustomNameSet "Infantry Cell (Light)"
+       {
+        SCR_AIGroup FIARifleSquad_1_3 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+         coords 0.056 0.055 -1.288
+         angleY -1.284
+         m_aUnitPrefabSlots {
+          "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+         }
+         m_sCustomNameSet "Infantry Cell (Light)"
+         {
+          SCR_AIGroup FIARifleSquad_1_4 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+           coords -0.063 -3.544 -1.437
+           angleY 1.808
+           m_aUnitPrefabSlots {
+            "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MAT_P_BD.et" "{7BE2FAD48ECDE588}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MATASS_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et"
+           }
+           m_sCustomNameSet "Infantry Cell (Heavy)"
+           {
+            SCR_AIGroup FIARifleSquad_1_5 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+             coords -0.173 3.599 -2.029
+             angleY -0.047
+             m_aUnitPrefabSlots {
+              "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+             }
+             m_sCustomNameSet "Infantry Cell (Support)"
+             {
+              SCR_AIGroup FIAPlat2_Command : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+               coords -7.39 0.022 12.875
+               angleY -42.678
+               m_sCustomNameSet "Platoon Command"
+               {
+                SCR_AIGroup FIARifleSquad_2_1 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+                 coords -0.086 5.038 6.183
+                 angleY -177.162
+                 m_aUnitPrefabSlots {
+                  "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+                 }
+                 m_sCustomNameSet "Infantry Cell (Light)"
+                 {
+                  SCR_AIGroup FIARifleSquad_2_2 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+                   coords 0.52 -1.766 -2.461
+                   angleY 2.277
+                   m_aUnitPrefabSlots {
+                    "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+                   }
+                   m_sCustomNameSet "Infantry Cell (Light)"
+                   {
+                    SCR_AIGroup FIARifleSquad_2_3 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+                     coords 0.056 1.735 -2.088
+                     angleY -1.624
+                     m_aUnitPrefabSlots {
+                      "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+                     }
+                     m_sCustomNameSet "Infantry Cell (Light)"
+                     {
+                      SCR_AIGroup FIARifleSquad_2_4 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+                       coords 0.309 0.031 -1.521
+                       angleY -2.726
+                       m_aUnitPrefabSlots {
+                        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MAT_P_BD.et" "{7BE2FAD48ECDE588}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MATASS_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et"
+                       }
+                       m_sCustomNameSet "Infantry Cell (Heavy)"
+                       {
+                        SCR_AIGroup FIARifleSquad_2_5 : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+                         coords 0.131 -1.875 -1.385
+                         angleY 1.767
+                         m_aUnitPrefabSlots {
+                          "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
+                         }
+                         m_sCustomNameSet "Infantry Cell (Support)"
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
        }
-       m_sCustomNameSet "[2-2] - Infantry Cell (Light)"
-      }
-      FIARifleSquad_2_3 {
-       coords -0.354 5.007 10.751
-       angleY -176.509
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{198ADD162190C0E9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_UK59_P_BD.et" "{E0A087B947A762A0}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_UK59_P_BD.et" "{1A7DCBCDB9D312F9}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_LAT_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
-       }
-       m_sCustomNameSet "[2-3] - Infantry Cell (Light)"
-      }
-      FIARifleSquad_2_4 {
-       coords -0.569 5.038 12.289
-       angleY -179.235
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{5DE4587E4A96D94C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MAT_P_BD.et" "{7BE2FAD48ECDE588}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MATASS_P_BD.et" "{6856A89545C6691C}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P_BD.et"
-       }
-       m_sCustomNameSet "[2-4] - Infantry Cell (Heavy)"
-      }
-      FIARifleSquad_2_5 {
-       coords -0.68 3.163 13.675
-       angleY -177.468
-       m_aUnitPrefabSlots {
-        "{363B3DBC62C250B6}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P_BD.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{18457AA1080575CD}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_RPK_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{AAAF9A21DD69BC52}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AmmoBearer_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et" "{FD21FBF4A390B9FB}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SAPPER_P_BD.et"
-       }
-       m_sCustomNameSet "[2-5] - Infantry Cell (Support)"
       }
      }
     }
