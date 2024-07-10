@@ -29,6 +29,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "Notes for Admin/Game Master:"\
   "- Spawn S1203 Ambulance for OPFOR"\
+  "- Spawn HMMWV Ambulance for BLUFOR"\
   "- Each Trigger on the bridge is 100m Wide and will trigger once OPFOR has 0.8 Ratio over BLUFOR, it checks every 20sec"
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
