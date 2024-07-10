@@ -1,0 +1,168 @@
+$grp SCR_FactionControlTriggerEntity {
+ RailBridge_1 {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 4944.471 6.288 4767.51
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 100
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            Print(\"Russian Forces have secured the first bridge!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"First Bridge Secured\", 15, \"Russian Forces have secured the first bridge!\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "USSR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+  {
+   PS_ManualMarker RailBridge_1_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords -0.575 6.288 -1.919
+    m_MarkerColor 1 0 0.029 1
+    m_sQuadName "target-reference-point"
+    m_fWorldSize 125
+    m_sDescription "First Bridge"
+   }
+  }
+ }
+ RailBridge_2 {
+  components {
+   RplComponent "{61D2CE5A2F8F2B3F}" {
+    Streamable Disabled
+   }
+  }
+  coords 5285.257 15.781 5008.193
+  angleY -42.969
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 100
+  BoxMaxs 215 40 60
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            Print(\"Russian Forces have secured the second bridge!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Second Bridge Secured\", 15, \"Russian Forces have secured the second bridge!\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "USSR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+  {
+   PS_ManualMarker RailBridge_2_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords -1.837 1.194 0.491
+    angleY 132.969
+    m_MarkerColor 1 0 0 1
+    m_sQuadName "target-reference-point"
+    m_fWorldSize 125
+    m_sDescription "Second Bridge"
+   }
+  }
+ }
+ RailBridge_3 {
+  components {
+   RplComponent "{61D2CE5A2538F2A7}" {
+    Streamable Disabled
+   }
+  }
+  coords 5548.159 13.805 5198.058
+  scale 1.26
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 100
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            Print(\"Russian Forces have secured the third bridge!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Third Bridge Secured\", 15, \"Russian Forces have secured the third bridge!\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "USSR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+  {
+   PS_ManualMarker RailBridge_3_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords -0.218 -4.657 5.243
+    angleY 90
+    m_MarkerColor 1 0 0 1
+    m_sQuadName "target-reference-point"
+    m_fWorldSize 125
+    m_sDescription "Third Bridge"
+   }
+  }
+ }
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 4947.221 6.187 4770.333
+  m_sTitle "OBJ: Secure First Bridge"
+  m_sTextData "Secure the First Bridge"
+  m_iScore 30
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 4943.086 6.288 4765.561
+  m_sTitle "OBJ: Defend First Bridge"
+  m_sTextData "Defend the First Bridge"
+  m_iScore 30
+  m_sFactionKey "US"
+ }
+ {
+  coords 5288.543 11.834 5012.318
+  m_sTitle "OBJ: Secure Second Bridge"
+  m_sTextData "Secure the Second Bridge"
+  m_iScore 30
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 5280.419 11.834 5007.868
+  m_sTitle "OBJ: Defend Second Bridge"
+  m_sTextData "Defend the Second Bridge"
+  m_iScore 30
+  m_sFactionKey "US"
+ }
+ {
+  coords 5556.809 7.799 5199.377
+  m_sTitle "OBJ: Secure Third Bridge"
+  m_sTextData "Secure the Third Bridge"
+  m_iScore 30
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 5548.685 7.799 5194.927
+  m_sTitle "OBJ: Defend Third Bridge"
+  m_sTextData "Defend the Third Bridge"
+  m_iScore 30
+  m_sFactionKey "US"
+ }
+}
