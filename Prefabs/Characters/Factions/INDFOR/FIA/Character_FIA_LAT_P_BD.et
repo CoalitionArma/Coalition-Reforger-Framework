@@ -40,12 +40,6 @@ SCR_ChimeraCharacter : "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA
       "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{A827B610B7CD4158}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Last_5Tracer.et" "{A827B610B7CD4158}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Last_5Tracer.et"
      }
     }
-    ItemsInitConfigurationItem "{61D120192AC09F0F}" {
-     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_RPG_Gunner.et"
-     PrefabsToSpawn {
-      "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et" "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
-     }
-    }
    }
   }
  }
