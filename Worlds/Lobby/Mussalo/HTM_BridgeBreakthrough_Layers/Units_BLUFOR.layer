@@ -11,15 +11,11 @@ Vehicle M923A1_MineLogi_Truck : "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923
    }
   }
  }
- coords 4951.801 11.535 5290.203
- angleY 96.544
+ coords 5000.355 10.687 5320.864
+ angleY -132.456
 }
 Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
  coords 4854.587 2.937 4599.679
-}
-Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
- coords 4982.855 10.758 5327.533
- angleY -130
 }
 $grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et" {
  M998_1 {
@@ -86,8 +82,8 @@ $grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_lon
     }
    }
   }
-  coords 4953.038 11.988 5282.886
-  angleY 75.832
+  coords 5015.513 10.875 5291.942
+  angleY -48.168
  }
  M998_2 {
   components {
@@ -153,8 +149,8 @@ $grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_lon
     }
    }
   }
-  coords 4955.393 11.997 5277.233
-  angleY 62.139
+  coords 5034.132 11.445 5313.413
+  angleY -42.861
  }
 }
 $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
@@ -209,8 +205,8 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 4960.576 10.719 5309.317
-  angleY 103.538
+  coords 5037.106 11.235 5316.911
+  angleY -45.462
  }
  M1025_M2HB_2 {
   components {
@@ -263,8 +259,8 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 4959.708 10.719 5305.978
-  angleY 103.538
+  coords 5018.229 10.747 5295.763
+  angleY -48.462
  }
  M1025_M2HB_3 {
   components {
@@ -317,8 +313,8 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 4958.911 10.75 5302.57
-  angleY 103.538
+  coords 4998.18 10.687 5271.666
+  angleY -48.462
  }
  M1025_M2HB_4 {
   components {
@@ -371,12 +367,12 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
     }
    }
   }
-  coords 4957.909 10.833 5298.821
-  angleY 103.538
+  coords 5001.888 10.72 5275.329
+  angleY -48.462
  }
 }
 SCR_AIGroup US1980s_1st_PlatoonHQ : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
- coords 4989.825 11.163 5317.918
+ coords 4994.723 10.833 5313.743
  angleY 140.57
  m_aUnitPrefabSlots {
   "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PL_P.et" "{AEA6AAC37FDD9FEE}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PLSGT_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MedicalOfficer_P.et"

@@ -4,7 +4,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
-   m_iTimeLimitMinutes 90
+   m_iTimeLimitMinutes 70
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_iStartingHours 3

@@ -33,10 +33,11 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "4x Smoke"\
   "2x HE Grenade"\
   "12x Mine Flags"\
-  "1x Backpack"\
   "2x Field Dressings"\
-  "1x Fuelcan"\
-  "1x Repair Tool"
+  ""\
+  "- S1203"\
+  "Medical Supplies"\
+  "Shit Ton"
   m_aVisibleForFactions {
    "USSR"
   }

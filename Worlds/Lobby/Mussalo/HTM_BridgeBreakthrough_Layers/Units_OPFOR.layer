@@ -2,7 +2,7 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
  coords 4128.048 8.839 3411.309
  angleY 127.067
  m_aUnitPrefabSlots {
-  "{A9E561650F1356A0}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_COY_Officer_P.et" "{337B08523D8F3B95}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Deputy_Officer_P.et" "{0B6F57D57B09D521}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_1stSergeant_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
+  "{A9E561650F1356A0}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_COY_Officer_P.et" "{337B08523D8F3B95}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Deputy_Officer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
  }
  m_sCustomNameSet "1st Motor Rifle Company (-)"
  {
@@ -163,30 +163,6 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
    }
   }
  }
-}
-Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5D7E924E84B181BC}" {
-   MultiSlots {
-    MultiSlotConfiguration "{5D7EA3CA68FB9515}" {
-     NumSlots 4
-    }
-    MultiSlotConfiguration "{5D84B47FDEF684C1}" {
-     NumSlots 2
-    }
-    MultiSlotConfiguration "{5D84B47F3360BA6B}" {
-     NumSlots 2
-    }
-    MultiSlotConfiguration "{5D84B47F341951B5}" {
-     NumSlots 2
-    }
-    MultiSlotConfiguration "{5E3AC1AE9A7BEDB8}" {
-    }
-   }
-  }
- }
- coords 4115.924 9.728 3415.722
- angleY 126.771
 }
 $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" {
  BTR70_1 {
