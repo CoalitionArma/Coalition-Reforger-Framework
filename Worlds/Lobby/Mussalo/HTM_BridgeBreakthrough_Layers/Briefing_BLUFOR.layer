@@ -1,0 +1,34 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ BLU_Sustainment {
+  coords 6359.961 1.875 5100.669
+  m_sTitle "Vehicle Inventory"
+  m_sTextData "Vehicle Loads:"\
+  "- HMMWV"\
+  "24x Stanag Magazines"\
+  "3x 200rnd m249 Box"\
+  "4x 50.cal Box (only in 50.cal HMMWVs)"\
+  "2x M72A3 AT Rocketlaunchers"\
+  "12x Mine Flags"\
+  "6x White Smoke"\
+  "4x Red Smoke"\
+  "4x Green Smoke"\
+  "2x HE Grenades"\
+  "2x Field Dressings"\
+  ""\
+  "- Truck"\
+  "30x AT Mines"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+ }
+ BLU_Objective {
+  coords 6370.453 1.313 5096.315
+  m_sTitle "Objective"
+  m_sTextData "Defend the 3x Bridges from the OPFOR for 60min or kill them all"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 3
+ }
+}
