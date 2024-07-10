@@ -3,17 +3,14 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   coords 6370.86 1.788 5107.879
   m_sTitle "Assets"
   m_sTextData "BLUFOR:"\
-  "1x Platoon (-) + HMWWV Medical:"\
-  "- 2x Rifle SQD + 2x HMMWV 50.cal"\
-  "- 1x Weapon SQD + 2x HMMWV 50.cal"\
-  "- 1x Truck (Contains AT Mines)"\
+  "4x HMMWV 50.cal"\
+  "2x HMMWV Unarmed"\
+  "1x HMMWV Ambulance"\
+  "1x Truck (AT Mines)"\
   ""\
   "OPFOR:"\
-  "1x Company (-) + BTR-70:"\
-  "- 2x Platoon HQ (Drives in their SQDs vehicles)"\
-  "- 6x Rifle Squads + 6x BTR-70s"\
-  ""\
-  "Ratio: 2:1 / 60:30"
+  "7x BTR-70s"\
+  "1x S1203 Ambulance"
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 2
