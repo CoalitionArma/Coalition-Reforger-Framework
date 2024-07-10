@@ -28,6 +28,28 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
   "Make sure to check your inventory for extra if you're in need of it."
   m_iOrder 2
  }
+ BLU_Briefing {
+  coords 1678.161 5.822 2727.547
+  m_sTitle "US Misison Briefing"
+  m_sTextData "Find a gap in the USSR's defences and push across the river, locate the Enemy Generators & destroy them"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 4
+ }
+ OPF_Briefing {
+  coords 1682.112 5.606 2732.734
+  m_sTitle "USSR Misison Briefing"
+  m_sTextData "During Safestart establish a defensive line to prevent the US from crossing the river and destroying our valubale power generators"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bEmptyFactionVisibility 0
+  m_bShowForAnyFaction 0
+  m_iOrder 4
+ }
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 1686.857 5.411 2745.433
