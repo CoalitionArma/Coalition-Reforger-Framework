@@ -30,25 +30,31 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
-        m_sCallsign "1-6 HQ"
+        m_sCallsign "ALPHA"
        }
        SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign "1-1"
+        m_sCallsign "1-6"
        }
        SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "1-2"
+        m_sCallsign "1-1"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "1-3"
+        m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{61D4F7F9775292E6}" {
-        m_sCallsign "1-4"
+        m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{61D4F7F9778C4B1B}" {
-        m_sCallsign "1-7"
+        m_sCallsign "2-6"
        }
        SCR_CallsignInfo "{61D4F7F968335B9A}" {
-        m_sCallsign "1-8"
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61D565D40FB93DDA}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61D565D400142072}" {
+        m_sCallsign "2-3"
        }
       }
       m_sCallsignGroupFormat "%3"
