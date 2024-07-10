@@ -1,0 +1,18 @@
+$grp SCR_BaseTriggerEntity {
+ bSiteTrigger {
+  components {
+   RplComponent "{61D4A9242ABC45BC}" {
+    Streamable Disabled
+   }
+  }
+  coords 1756.857 15.624 2226.205
+ }
+ aSiteTrigger {
+  components {
+   RplComponent "{61D4A92434D2DA16}" {
+    Streamable Disabled
+   }
+  }
+  coords 1947.581 6.628 1898.327
+ }
+}

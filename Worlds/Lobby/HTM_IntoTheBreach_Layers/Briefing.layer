@@ -1,0 +1,74 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 1703.443 3.782 2725.234
+ m_sTitle "Mission Notes (Must Read)"
+ m_sTextData "- 60min Timelimit"\
+ "- Ratio BLUFOR 2:1 OPFOR"\
+ "- Spawn HMMWV Ambulance for BLUFOR"\
+ "- Spawn S1203 Ambulance for OPFOR"\
+ "- - Do Not Use Vehicles Not Assigned To Your Squad or Slot"
+ m_iOrder 3
+}
+$grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ {
+  coords 1683.341 5.609 2738.324
+  m_sTextData "BLUFOR:"\
+  "4x HMMWV 50.cal Per Squad"\
+  "8x HMMWV Unarmed Per Squad"\
+  "1x HMMWV Ambulance"\
+  ""\
+  "OPFOR:"\
+  "3x BTR-70 Per Squad"\
+  "1x S1203 Ambulance"
+  m_iOrder 2
+ }
+ VehicleInventory {
+  coords 1683.107 5.618 2736.736
+  m_sTitle "Vehicle Inventory"
+  m_sTextData "Both Sides' vehicles has extra items in their vehicles, Ammo, Smoke, etc. "\
+  "Make sure to check your inventory for extra if you're in need of it."
+  m_iOrder 2
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1686.857 5.411 2745.433
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 1759.496 15.623 2228.514
+  m_sTitle "OBJ: Destroy B Site"
+  m_sTextData "Destroy the B bomb site"
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "US"
+ }
+ {
+  coords 1755.5 15.623 2224.991
+  m_sTitle "OBJ: Defend B Site"
+  m_sTextData "Defend the B Bomb Site"
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 1945.325 6.656 1899.822
+  m_sTitle "OBJ: Destroy A Site"
+  m_sTextData "Destroy the A bomb site"
+  m_iOrder 5
+  m_iScore 50
+  m_sFactionKey "US"
+ }
+ {
+  coords 1949.868 6.596 1896.101
+  m_sTitle "OBJ: Defend A Site"
+  m_sTextData "Defend the A bomb site"
+  m_iOrder 5
+  m_iScore 50
+  m_sFactionKey "USSR"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1684.126 5.497 2734.287
+ m_sTextData "A US Platoon (+) with additional attached squads have been ordered to destroy 2x Power Generators to distrupt the USSR's communication system in the trenches outside the town of Zarichne."\
+ ""\
+ "While the USSR Platoon have been ordered to repel any attack conducted by the opposition, especially to maintain the communication lines with the other units in the area."
+}
