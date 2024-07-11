@@ -4,7 +4,7 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  coords 2682.278 77.552 1666.083
  {
-  SCR_FactionManager {
+  SCR_FactionManager "61D6BEB7F6C97C33" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -43,7 +43,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{61BD5AEC125F4AB9}" {
-        m_sCallsign "2-MG"
+        m_sCallsign "MG"
        }
        SCR_CallsignInfo "{61BD5AEC11E48AA9}" {
         m_sCallsign "MEDIC"

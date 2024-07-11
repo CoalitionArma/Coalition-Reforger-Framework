@@ -1,23 +1,50 @@
-$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  {
-  coords 3134.462 41.841 2252.966
+  coords 3318.012 20.51 2181.6
+  angleY 0
  }
  {
-  coords 2786.122 78.65 2426.494
+  coords 2543.599 147.965 2410.218
+  angleY 0
  }
  {
-  coords 3107.628 34.99 2285.252
+  coords 3210.64 34.031 2166.729
+  angleY 0
  }
  {
-  coords 3052.627 45.57 2311.706
+  coords 3154.818 37.104 2186.899
+  angleY 0
  }
  {
-  coords 2987.213 53.275 2347.975
+  coords 3081.649 33.214 2215.413
+  angleY 0
  }
  {
-  coords 2893.993 58.983 2385.594
+  coords 2996.7 42.907 2234.938
+  angleY 0
  }
  {
-  coords 2832.496 65.329 2403.678
+  coords 2930.383 56.241 2242.721
+  angleY 0
+ }
+ {
+  coords 2834.678 73.085 2275.163
+  angleY 0
+ }
+ {
+  coords 2785.992 89.9 2279.184
+  angleY 0
+ }
+ {
+  coords 2613.875 139.88 2341.745
+  angleY 0
+ }
+ {
+  coords 2654.694 106.598 2314.56
+  angleY 0
+ }
+ {
+  coords 2741.802 100.475 2277.814
+  angleY 0
  }
 }
