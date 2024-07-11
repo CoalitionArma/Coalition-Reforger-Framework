@@ -1,0 +1,32 @@
+GenericEntity : "{21B4CFCFAE632E30}PrefabsEditable/Auto/Props/Wrecks/E_T62_wreck.et" {
+ coords 4839.902 167.87 6923.846
+ angleX 3.133
+ angleY -47.412
+ angleZ -0.765
+}
+$grp GenericEntity : "{A41F1EC4E72108AA}PrefabsEditable/Auto/Props/Wrecks/E_BTR70_wreck.et" {
+ {
+  coords 4880.916 170.969 7036.442
+  angleY -136.73
+ }
+ {
+  coords 4824.385 169.831 6982.773
+  angleX 0.167
+  angleY 127.403
+  angleZ 1.255
+ }
+}
+$grp GenericEntity : "{ACA1BADA1C09110A}PrefabsEditable/Auto/Props/Wrecks/E_BMP1_wreck.et" {
+ {
+  coords 4804.489 169.464 6988.123
+  angleX 1.78
+  angleY -173.873
+  angleZ 0.191
+ }
+ {
+  coords 4884.707 170.958 7032.642
+  angleX 0.877
+  angleY -101.501
+  angleZ -0.178
+ }
+}

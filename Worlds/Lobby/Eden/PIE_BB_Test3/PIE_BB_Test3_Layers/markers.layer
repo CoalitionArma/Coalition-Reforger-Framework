@@ -1,0 +1,434 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 5888.88 239.237 7187.34
+ }
+ {
+  coords 5762.397 227.719 7217.069
+ }
+ {
+  coords 5628.266 204.171 6959.17
+ }
+ {
+  coords 5635.152 235.611 6993.234
+ }
+ {
+  coords 5664.834 218.039 7118.475
+  angleY 0
+ }
+ {
+  coords 5684.083 197.825 6900.744
+ }
+ {
+  coords 5637.961 211.811 7244.42
+ }
+ {
+  coords 5640.817 229.156 7055.98
+ }
+ {
+  coords 5872.491 178.957 6853.091
+ }
+ {
+  coords 5757.734 186.028 6877.071
+ }
+ {
+  coords 4008.752 37.785 7709.039
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4058.115 33.4 7666.546
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4115.073 39.22 7618.677
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4168.68 50.211 7572.648
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4224.081 49.345 7636.214
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4271.449 57.183 7681.743
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4317.418 66.069 7734.073
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4271.164 51.149 7817.5
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4235.048 63.391 7883.646
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4200.371 62.628 7972.515
+  angleY 0
+  m_MarkerColor 0.561 0.071 0.071 1
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 4826.062 169.024 6949.778
+ angleY 0
+ m_sDescription "Bomb Backpack Searchzon"
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 3942.615 47.841 7611.148
+  angleY 0
+ }
+ {
+  coords 3913.857 28.99 7380.313
+  angleY 0
+ }
+ {
+  coords 3919.648 24.554 7470.082
+  angleY 0
+ }
+ {
+  coords 3912.625 32.903 7284.798
+  angleY 0
+ }
+ {
+  coords 3900.013 44.04 7171.442
+  angleY 0
+ }
+ {
+  coords 3901.406 76.482 7101.811
+  angleY 0
+ }
+ {
+  coords 3931.167 88.886 6985.642
+  angleY 0
+ }
+ {
+  coords 3967.143 85.021 6906.847
+  angleY 0
+ }
+ {
+  coords 3991.121 101.11 6816.107
+  angleY 0
+ }
+ {
+  coords 4015.573 121.269 6771.706
+  angleY 0
+ }
+ {
+  coords 4038.343 128.867 6692.448
+  angleY 0
+ }
+ {
+  coords 4169.756 126.842 6586.312
+  angleY 0
+ }
+ {
+  coords 4262.802 123.802 6527.396
+  angleY 0
+ }
+ {
+  coords 4347.912 111.887 6469.322
+  angleY 0
+ }
+ {
+  coords 4423.385 88.539 6421.971
+  angleY 0
+ }
+ {
+  coords 4525.157 73.467 6347.621
+  angleY 0
+ }
+ {
+  coords 4623.82 82.632 6275.549
+  angleY 0
+ }
+ {
+  coords 4685.353 75.6 6174.315
+  angleY 0
+ }
+ {
+  coords 4732.42 50.711 6113.964
+  angleY 0
+ }
+ {
+  coords 4828.74 50.711 6114.822
+  angleY 0
+ }
+ {
+  coords 4999.08 50.711 6135.338
+  angleY 0
+ }
+ {
+  coords 5220.246 70.173 6179.944
+  angleY 0
+ }
+ {
+  coords 5364.835 81.211 6237.203
+  angleY 0
+ }
+ {
+  coords 5532.452 97.429 6305.6
+  angleY 0
+ }
+ {
+  coords 5678.738 116.753 6396.831
+  angleY 0
+ }
+ {
+  coords 5837.747 135.261 6466.902
+  angleY 0
+ }
+ {
+  coords 5999.929 159.798 6556.128
+  angleY 0
+ }
+ {
+  coords 6062.452 183.501 6600.835
+  angleY 0
+ }
+ {
+  coords 6137.885 191.46 6686.299
+  angleY 0
+ }
+ {
+  coords 6213.25 181.437 6821.182
+  angleY 0
+ }
+ {
+  coords 6207.943 196.328 6955.316
+  angleY 0
+ }
+ {
+  coords 6192.363 201.256 7080.225
+  angleY 0
+ }
+ {
+  coords 6185.037 204.626 7166.764
+  angleY 0
+ }
+ {
+  coords 6164.076 203.233 7284.429
+  angleY 0
+ }
+ {
+  coords 6063.434 192.133 7482.132
+  angleY 0
+ }
+ {
+  coords 5905.369 194.389 7618.275
+  angleY 0
+ }
+ {
+  coords 5852.238 168.678 7730.698
+  angleY 0
+ }
+ {
+  coords 5785.259 137.457 7822.318
+  angleY 0
+ }
+ {
+  coords 5690.329 106.431 7929.566
+  angleY 0
+ }
+ {
+  coords 5567.441 80.479 8017.01
+  angleY 0
+ }
+ {
+  coords 5459.438 57.869 8074.106
+  angleY 0
+ }
+ {
+  coords 5294.007 65.543 8192.479
+  angleY 0
+ }
+ {
+  coords 5140.03 60.41 8240.745
+  angleY 0
+ }
+ {
+  coords 5055.162 103.305 8242.174
+  angleY 0
+ }
+ {
+  coords 4953.17 118.766 8229.511
+  angleY 0
+ }
+ {
+  coords 4865.102 129.472 8194.741
+  angleY 0
+ }
+ {
+  coords 4702.624 113.948 8218.981
+  angleY 0
+ }
+ {
+  coords 4501.33 105.566 8222.251
+  angleY 0
+ }
+ {
+  coords 4426.161 101.467 8222.632
+  angleY 0
+ }
+ {
+  coords 4284.51 101.611 8237.05
+  angleY 0
+ }
+ {
+  coords 4129.604 69.434 8219.272
+  angleY 0
+ }
+ {
+  coords 4001.405 34.827 8219.738
+  angleY 0
+ }
+ {
+  coords 3929.041 40.315 8226.649
+  angleY 0
+ }
+ {
+  coords 3807.606 0.501 8205.784
+  angleY 0
+ }
+ {
+  coords 3799.986 0 8088.27
+  angleY 0
+ }
+ {
+  coords 3777.349 -0 7974.548
+  angleY 0
+ }
+ {
+  coords 3765.112 -0 7852.775
+  angleY 0
+ }
+ {
+  coords 3753.877 0 7720.669
+  angleY 0
+ }
+ {
+  coords 3884.924 37.872 7659.835
+  angleY 0
+ }
+ {
+  coords 4736.929 168.017 7104.987
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4756.783 164.182 7013.512
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4766.662 178.158 6944.62
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4804.109 165.033 6858.678
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4867.879 178.431 6869.172
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4892.441 168.928 6934.673
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4859.753 178.414 6999.348
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4818.737 183.038 7075.833
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4801.777 162.323 7173.29
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+ {
+  coords 4747.792 161.11 7146.269
+  angleY 0
+  m_sDescription "Backpack Searchzone"
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 4125.337 35.583 7795.981
+ angleX 0.885
+ angleY -0.097
+ angleZ -6.243
+ m_sDescription "OPFOR Base"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 5764.531 217.309 7060.75
+ angleX 4.466
+ angleY -0.07
+ angleZ -0.898
+ m_sDescription "BLUFOR Base"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

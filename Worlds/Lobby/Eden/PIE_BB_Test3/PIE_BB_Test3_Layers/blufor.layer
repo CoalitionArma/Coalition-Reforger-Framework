@@ -1,0 +1,112 @@
+SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+ coords 5862.264 210.452 7011.995
+ angleX 5.19
+ angleY 14.116
+ angleZ 4.968
+ m_sCustomNameSet "1st Platoon"
+ {
+  SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+   coords 0.06 -0.022 -1.455
+   angleX 0.856
+   angleY 0.022
+   angleZ 0.209
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+     coords 0.06 -0.006 -1.565
+     angleX 0.215
+     angleY -0.094
+     angleZ -0.859
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+       coords 0.032 -0.006 -1.512
+       angleX 0.854
+       angleY 0.026
+       angleZ 0.209
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+         coords -0.008 -0.018 -1.93
+         angleX 0.214
+         angleY -0.111
+         angleZ -0.859
+         m_sCustomNameSet "2nd Platoon"
+         {
+          SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+           coords 0.257 -0.005 -2.093
+           angleX 0.85
+           angleY 0.03
+           angleZ 0.209
+           m_sCustomNameSet "4th Squad"
+           {
+            SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+             coords 0.176 -0.026 -1.908
+             angleX 0.213
+             angleY -0.127
+             angleZ -0.858
+             m_sCustomNameSet "5th Squad"
+             {
+              SCR_AIGroup : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+               coords 0.05 -0.029 -1.882
+               angleX 0.631
+               angleY 0.169
+               angleZ 1.066
+               m_sCustomNameSet "6th Squad"
+               {
+                SCR_AIGroup : "{25CF16A866EA7B50}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_HATTeam.et" {
+                 coords -8.489 0.001 10.082
+                 angleX -1.504
+                 angleY 0.312
+                 angleZ 2.349
+                 m_sCustomNameSet "HAT Team"
+                 {
+                  SCR_AIGroup : "{1AFA02A4E31F1AD8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_MGTeam.et" {
+                   coords -0.015 -0.02 -2.49
+                   angleX 1.063
+                   angleY -0.097
+                   angleZ -0.645
+                   m_sCustomNameSet "MG Team"
+                   {
+                    SCR_AIGroup : "{080FEB9F64017EF8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_SniperTeam.et" {
+                     coords -0.002 0 -2.063
+                     m_sCustomNameSet "Sniper Team"
+                     {
+                      SCR_AIGroup : "{51C2539A6A713CCF}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_ArmorCrew_p.et" {
+                       coords -5.749 0.07 4.722
+                       angleX 0.619
+                       angleY 0.171
+                       angleZ 1.056
+                       m_aUnitPrefabSlots + {
+                        "{D1B688EADF76D196}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crewman_P.et" "{D1B688EADF76D196}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Crewman_P.et"
+                       }
+                       m_sCustomNameSet "Armor Crew"
+                       {
+                        SCR_AIGroup : "{6C80B624CF88FC65}Prefabs/Groups/BLUFOR/1980s/Vehicles/Group_US80s_Vehicles_HeloCrew_p.et" {
+                         coords -0.094 -0 -1.7
+                         m_sCustomNameSet "Helo Crew"
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

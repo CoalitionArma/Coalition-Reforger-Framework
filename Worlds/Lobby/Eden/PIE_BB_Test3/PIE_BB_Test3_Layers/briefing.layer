@@ -1,0 +1,81 @@
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 6054.488 191.576 6539.795
+ m_sTextData "BLUFOR:"\
+ "2x Infantry Platoon"\
+ "(3 Squads Each)"\
+ "1x MAT Team"\
+ "1x MG Team"\
+ "1x Sniper Team"\
+ "1x Armor Crew (2x M2 Car)"\
+ "1x Helo Crew (1x Armed UH1H)"\
+ "Unarmed Transport Vehicles"\
+ ""\
+ "OPFOR:"\
+ "2x Infantry Platoons"\
+ "(3 Squads Each)"\
+ "1x MAT Team"\
+ "1x MG Team"\
+ "1x Sniper Team"\
+ "1x Armor Crew (1x BTR-70)"\
+ "1x Helo Crew (1x Armed Mi-8)"\
+ "Unarmed Transport Vehicles"
+ m_iOrder 3
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 6050.415 191.265 6551.795
+}
+PS_MissionDescription : "{8D61878E9F924406}PrefabsEditable/MissionDescription/GametypeNeutralEscort.et" {
+ coords 6046.967 191.114 6552.175
+ m_sTitle "Gamemode: BombBackpack(WÌP)"
+ m_sTextData "BombBackpack Gamemode(WIP):"\
+ "Both sides (Blufor, Opfor) spawn at their own base, with the primary objective of destroying the other teams base or alternatively killing the enemy team, while not letting their own base get destroyed."\
+ ""\
+ "To destroy the enemies base, a side has to pick up a bomb backpack, which is marked on the map and equipped as a backpack, and bring it into the enemies base."\
+ ""\
+ "Note: This gamemode is still quite work in progress, if you find any problems please dont hesitate to share them either on the discord or by contacting me (Pi123263) directly."
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 5761.987 226.431 7050.056
+  m_sTitle "Obj: Destroy the US Base"
+  m_sTextData "Find the Bomb Backpack and destroy the US base using it."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 5494.871 95.87 6092.508
+  angleX 0.895
+  angleY 0.014
+  angleZ 0.895
+  m_sTitle "Obj: Destroy the Soviet Base"
+  m_sTextData "Find the Bomb Backpack and destroy the Soviet base using it."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_sFactionKey "US"
+ }
+ {
+  coords 5760.514 228.768 7064.391
+  m_sTitle "Obj: Defend your own base"
+  m_sTextData "Defend your own base against any enemy attacks."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_sFactionKey "US"
+ }
+ {
+  coords 5482.057 121.814 6078.611
+  m_sTitle "Obj: Defend your own base"
+  m_sTextData "Defend your own base against any enemy attacks."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_sFactionKey "USSR"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 6044.707 191.023 6551.356
+ m_sTextData "Soviet and US forces have met along a small semi-urban part of the front and both set up local HQs to coordinate attacks in the region. To prevent these attacks, both sides have to venture out and find a lost bomb backpack and use it to destroy the enemy base."
+}
