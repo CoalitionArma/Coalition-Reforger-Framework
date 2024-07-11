@@ -1,0 +1,13 @@
+SCR_BaseFactionTriggerEntity endTrig {
+ coords 3306.484 2 2938.017
+ angleY -155.432
+ TriggerShapeType Sphere
+ SphereRadius 77.3
+ DrawShape 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OPFOR forces have made it through Arleville!\", 10, \"OPFOR Victory\");"\
+ "	"
+ m_sOwnerFactionKey "USSR"
+}
