@@ -38,8 +38,8 @@ PS_ManualMarker {
  m_MarkerColor 0.569 0.042 0.029 1
  m_sQuadName "flag-2"
  m_fWorldSize 90
- m_sDescription "OPFOR Spawn"
+ m_sDescription "FIA Spawn"
  m_aVisibleForFactions {
-  "USSR"
+  "FIA"
  }
 }

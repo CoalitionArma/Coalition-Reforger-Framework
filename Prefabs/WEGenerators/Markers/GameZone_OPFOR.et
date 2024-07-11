@@ -1,0 +1,7 @@
+PrefabGeneratorEntity : "{105F52275F81E690}Prefabs/WEGenerators/Markers/GameZone_common.et" {
+ ID "61C8C4163721D4F9"
+ Flags 1048579
+ m_PrefabNames {
+  "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et"
+ }
+}

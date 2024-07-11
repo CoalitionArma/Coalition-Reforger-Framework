@@ -1,0 +1,153 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 10598.746 28.407 5629.511
+}
+PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_GameMode_Lobby.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61B02440E2D02DA0}" {
+  }
+  CRF_SearchAndDestroyGameModeComponent "{61B0245AF3BA10BE}" {
+   attackingSide "RHS_US_USMC"
+   defendingSide "RHS_RF_MSV"
+  }
+ }
+ coords 10616.903 28.406 5663.15
+ {
+  SCR_FactionManager "61B0244CF09D37AD" {
+   ID "5ED9088735FF2D8B"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "Platoon"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61B02443DC895DBC}" {
+        m_sCallsign "1-4"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{61B024439CF55BC6}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61B024439D7DB2AD}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{61B024439AA666A6}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61B02443917A3A76}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61B024438E844F91}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{61B1035EFA893F1F}" {
+        m_sCallsign "Rhino Lead"
+       }
+       SCR_CallsignInfo "{61B1035EFA34BFEE}" {
+        m_sCallsign "Rhino 1"
+       }
+       SCR_CallsignInfo "{61B827116D363471}" {
+        m_sCallsign "Rhino 2"
+       }
+       SCR_CallsignInfo "{61B827116AF7426A}" {
+        m_sCallsign "Rhino 3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 10454.121 15 5234.663
+  angleY -105.136
+ }
+ bSiteTrigger {
+  coords 10236.401 25 5601.375
+  angleY -179.43
+ }
+}
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 10624.395 28.406 5656.649
+ m_sTextData "Defenders must stay within the marked map boundary. Attackers may move freely in and out of the play area."
+}
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 10621.408 28.407 5658.58
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 10621.383 28.406 5658.147
+ m_sTextData "Blufor:"\
+ "4x M1025 M2HB + enough trucks for the infantry"
+ m_iOrder 3
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 10621.446 28.406 5655.592
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 10616.847 28.406 5658.823
+  m_sTitle "Bomb Site A"
+  m_sTextData ""
+  m_iScore 50
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 10617.006 28.406 5658.642
+  m_sTitle "Bomb Site A"
+  m_sTextData ""
+  m_iScore 50
+  m_sFactionKey "RHS_US_USMC"
+ }
+ {
+  coords 10631.626 28.406 5656.323
+  m_sTitle "Bomb Site B"
+  m_sTextData ""
+  m_iScore 50
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 10633.608 28.406 5652.688
+  m_sTitle "Bomb Site B"
+  m_sTextData ""
+  m_iScore 50
+  m_sFactionKey "RHS_US_USMC"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 10620.487 28.406 5659.77
+ m_sTextData "US forces make a daring push into Gruwice to dislodge MSV forces from the city."
+ m_iOrder 1
+}

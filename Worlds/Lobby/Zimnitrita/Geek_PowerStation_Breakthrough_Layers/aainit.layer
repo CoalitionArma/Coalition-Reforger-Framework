@@ -1,0 +1,39 @@
+SCR_AIWorld : "{551907F0C9AE6F12}Prefabs/AI/SCR_AIWorld_Zimnitrita.et" {
+ coords 8909.503 101.802 9358.972
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 40
+  }
+ }
+ coords 9316.947 0.415 9869.264
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61BD612EC129E7D6}" {
+        m_sCallsign "LAT"
+       }
+       SCR_CallsignInfo "{61BD612EC17E93BC}" {
+        m_sCallsign "MG"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61BD612EDEE49D8C}" {
+        m_sCallsign "COY"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

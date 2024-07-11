@@ -21,7 +21,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected ref array<SCR_Faction> m_aPlayedFactionsArray = new array<SCR_Faction> ;
 	
 	[RplProp(onRplName: "ShowMessage")]
-	protected string m_sMessageContent = "";
+	protected string m_sMessageContent;
+	protected string m_sStoredMessageContent;
 	
 	[RplProp(onRplName: "CallDeleteRedundantUnits")]
 	protected bool m_bKillRedundantUnitsBool;
@@ -45,6 +46,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	protected PS_PlayableManager m_PlayableManager;
 	protected ref map<RplId, PS_PlayableComponent> m_mPlayables = new map<RplId, PS_PlayableComponent>;
 	protected int m_mPlayablesCount = 0;
+	
+	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -108,7 +111,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
-			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;
+			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) 
+				continue;
 			
 			m_aPlayedFactionsArray.Insert(faction);
 			
@@ -180,6 +184,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			};
 		};
 		Replication.BumpMe();
+		ShowMessage();
 	}
 	
 	//Call from server
@@ -188,7 +193,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		int factionsReadyCount = 0;
 		foreach(string factionCheckReadyString : m_aFactionsStatusArray) {
-			if (factionCheckReadyString != "#Coal_SS_Faction_Ready") continue;
+			if (factionCheckReadyString != "#Coal_SS_Faction_Ready") 
+				continue;
 			factionsReadyCount = factionsReadyCount + 1;
 		};
 		
@@ -210,6 +216,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			};
 		};
 		Replication.BumpMe();
+		ShowMessage();
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -376,32 +383,42 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		if (m_mPlayablesCount > 0) {
 			PS_PlayableComponent playable = m_mPlayables.GetElement(m_mPlayablesCount - 1);
-			m_mPlayablesCount--;
+			if(!playable)
+				return;
+			m_mPlayablesCount = m_mPlayablesCount - 1;
 			if (m_PlayableManager.GetPlayerByPlayable(playable.GetId()) <= 0)
 			{
 				SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playable.GetOwner());
 				SCR_EntityHelper.DeleteEntityAndChildren(character);
 			}
-		} else {
+		} else
 			GetGame().GetCallqueue().Remove(DeleteRedundantUnitsSlowly);
-		}
 	}
 	
 	// Called from server to all clients
 	//------------------------------------------------------------------------------------------------
-	// Locality needs verified for workbench and local server hosting
 	void ShowMessage()
-	{
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc) return;
-
-		if (m_sMessageContent == "#Coal_SS_Game_Live") {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
-		} else {
-			SCR_PopUpNotification.GetInstance().PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
+	{	
+		if (m_sMessageContent == m_sStoredMessageContent)
+			return;
+		
+		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+		
+		m_sStoredMessageContent = m_sMessageContent;
+		
+		if (m_sMessageContent == "All Blufor Players Have Been Eliminated!" || m_sMessageContent == "All Opfor Players Have Been Eliminated!" || m_sMessageContent == "All Indfor Players Have Been Eliminated!") 
+		{
+			m_PopUpNotification.PopupMsg(m_sMessageContent, 30);
+			return;
 		};
+
+		if (m_sMessageContent == "#Coal_SS_Game_Live")
+			m_PopUpNotification.PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
+		else
+			m_PopUpNotification.PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
 	};
 	
+	//------------------------------------------------------------------------------------------------
 	void CheckPlayersAlive()
 	{
 		foreach(SCR_Faction faction : m_aPlayedFactionsArray) {
@@ -410,13 +427,14 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			float rgb = Math.Max(rg, factionColor.B());
 			
 			switch (true) {
-				case(rgb == factionColor.B() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Killed!"; break;};
-				case(rgb == factionColor.R() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Killed!";  break;};
-				case(rgb == factionColor.G() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Killed!";  break;};
+				case(rgb == factionColor.B() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Eliminated!"; break;};
+				case(rgb == factionColor.R() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Eliminated!";  break;};
+				case(rgb == factionColor.G() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Eliminated!";  break;};
 			};
 		};
 		
 		Replication.BumpMe();
+		ShowMessage();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -433,13 +451,16 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		foreach (int playerID : outPlayers)
 		{
 			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-			if (!controlledEntity) continue;
+			if (!controlledEntity) 
+				continue;
 			
 			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
-			if (!eventHandler) continue;
+			if (!eventHandler) 
+				continue;
 		
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
-			if (!charComp) continue;
+			if (!charComp) 
+				continue;
 			
 			bool alreadyHasEventHandlers = m_mPlayersWithEHsMap.Get(controlledEntity);
 		
@@ -458,13 +479,18 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		{
 			IEntity controlledEntityKey = m_mPlayersWithEHsMap.GetKey(i);
 			
+			if(!controlledEntityKey)
+				continue;
+			
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntityKey.FindComponent(CharacterControllerComponent));
-			if (!charComp) continue;
+			if (!charComp) 
+				continue;
 			
 			charComp.SetSafety(false, false);
 			
 			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntityKey.FindComponent(EventHandlerManagerComponent));
-			if (!eventHandler) continue;
+			if (!eventHandler) 
+				continue;
 			
 			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);

@@ -1,0 +1,9 @@
+PrefabGeneratorEntity {
+ ID "61C8C4163721D4F9"
+ coords 842.833 3.063 6072.054
+ Flags 1048579
+ m_PrefabNames {
+  "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et"
+ }
+ m_fDistance 50
+}
