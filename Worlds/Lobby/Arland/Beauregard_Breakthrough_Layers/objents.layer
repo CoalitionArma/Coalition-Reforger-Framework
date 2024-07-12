@@ -1,0 +1,24 @@
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 2200.776 45.385 1762.937
+  angleY -155.432
+  m_sTitle "Reach the Harbour"
+  m_sTextData "Reach the Beauregard Harbour without being completely wiped out, within the 45 minute time limit."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 4
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 2210.253 48.888 1782.1
+  angleY -155.432
+  m_sTitle "Defend the Harbour"
+  m_sTextData "Prevent OPFOR from reaching the Beauregard Harbour by either running out the time limit of 45 minutes, or eliminate all of OPFOR."
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 4
+  m_sFactionKey "US"
+ }
+}
