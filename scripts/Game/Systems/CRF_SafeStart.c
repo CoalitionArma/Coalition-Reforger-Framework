@@ -147,11 +147,23 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	//Call from server
 	//------------------------------------------------------------------------------------------------
 	void ToggleSideReady(string setReady, string playerName, bool adminForced) {
-		if (!GetSafestartStatus() || m_bAdminForcedReady) return;
+		if (!GetSafestartStatus()) return;
 		
-		// if it's an admin forced action
+		// If it's an admin-forced action
 		if (adminForced)
 		{
+			if(m_bAdminForcedReady) 
+			{
+				m_bBluforReady = false;
+				m_bOpforReady = false;
+				m_bIndforReady = false;
+				m_bAdminForcedReady = false;
+			
+				m_sMessageContent = string.Format("An Admin (%1) Has Force Unreadied All Sides!", playerName);
+				Replication.BumpMe();
+				return;
+			};
+		
 			m_bBluforReady = true;
 			m_bOpforReady = true;
 			m_bIndforReady = true;
