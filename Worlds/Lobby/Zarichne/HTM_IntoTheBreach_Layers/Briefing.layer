@@ -12,12 +12,12 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
  {
   coords 1683.341 5.609 2738.324
   m_sTextData "BLUFOR:"\
-  "4x HMMWV 50.cal Per Squad"\
-  "11x HMMWV Unarmed Per Squad"\
-  "2x HMMWV Ambulance"\
+  "11x HMMWV Unarmed"\
+  "6x 50.call HMMWVs"\
+  "1x HMMWV Ambulance"\
   ""\
   "OPFOR:"\
-  "3x BTR-70 Per Squad"\
+  "1x BTR-70"\
   "1x S1203 Ambulance"
   m_iOrder 2
  }

@@ -75,6 +75,9 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
         m_sCallsign "1-3"
        }
+       SCR_CallsignInfo "{61DAAC60CD2EA561}" {
+        m_sCallsign "BTR"
+       }
       }
       m_sCallsignGroupFormat "%3"
      }
