@@ -8,14 +8,17 @@ Vehicle M923A1_MineLogi_Truck : "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923
      }
      NumSlots 30
     }
+    MultiSlotConfiguration "{61DAAC6D4179B36E}" {
+     SlotTemplate InventoryStorageSlot test {
+      Prefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+     }
+     NumSlots 12
+    }
    }
   }
  }
- coords 5002.597 10.673 5322.272
- angleY -132.456
-}
-Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
- coords 4854.587 2.937 4599.679
+ coords 5019.882 11.188 5336.156
+ angleY -170.456
 }
 $grp Vehicle : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et" {
  M998_1 {
@@ -385,7 +388,7 @@ SCR_AIGroup US1980s_1st_PlatoonHQ : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/198
    coords -30.981 0.578 21.792
    angleY 170.562
    m_aUnitPrefabSlots {
-    "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et"
+    "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{B452527EA042DFF0}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Sniper_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et"
    }
    m_bPlayable 1
    m_sCustomNameSet "1st Rifle Squad"
@@ -398,13 +401,25 @@ SCR_AIGroup US1980s_1st_PlatoonHQ : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/198
      m_bPlayable 1
      m_sCustomNameSet "2nd Rifle Squad"
      {
-      SCR_AIGroup US1980s_3rd_WeaponsSquad : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
-       coords -26.969 -0.063 -0.156
+      SCR_AIGroup US1980s_3rd_RifleSquad : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+       coords -25.699 0.312 0.108
+       angleY 2
        m_aUnitPrefabSlots {
-        "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et"
+        "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et"
        }
        m_bPlayable 1
-       m_sCustomNameSet "3rd Weapon Squad"
+       m_sCustomNameSet "3rd Rifle Squad"
+       {
+        SCR_AIGroup US1980s_4th_RifleSquad : "{039A368957D48A7E}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_US80s_Infantry_RifleSquad_p.et" {
+         coords 49.252 0.533 18.711
+         angleY -122.984
+         m_aUnitPrefabSlots {
+          "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et"
+         }
+         m_bPlayable 1
+         m_sCustomNameSet "4th Rifle Squad"
+        }
+       }
       }
      }
     }
