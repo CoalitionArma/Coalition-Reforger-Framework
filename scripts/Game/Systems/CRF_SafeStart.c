@@ -161,6 +161,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			
 				m_sMessageContent = string.Format("An Admin (%1) Has Force Unreadied All Sides!", playerName);
 				Replication.BumpMe();
+				ShowMessage();
 				return;
 			};
 		
@@ -171,8 +172,12 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			
 			m_sMessageContent = string.Format("An Admin (%1) Has Force Readied All Sides!", playerName);
 			Replication.BumpMe();
+			ShowMessage();
 			return;
 		}
+		
+		if(m_bAdminForcedReady) 
+			return;
 			
 		switch (setReady)
 		{
