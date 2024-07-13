@@ -60,7 +60,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return;
 		
 		m_sMissionName = GetGame().GetMissionName();
-		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		if (FileIO.FileExists(m_sLogPath))
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
@@ -103,6 +102,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		super.OnGameStateChanged(state);
 		if (!Replication.IsServer() || GetGame().GetPlayerManager().GetPlayerCount() < 10)
 			return;
+		
+		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		switch (state)
 		{
@@ -206,6 +207,7 @@ modded class SCR_BaseGameMode
   		m_iTotalSeconds = (m_fTotalTime / 1000);
 		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
 		
+		Print("kill," + m_sKilledName + "," + m_sKilledFaction + "," + m_sKillerName + "," + m_sKillerFaction + "," + m_fRange + "," + m_sWeaponName + "," + m_sTime);
 		m_handle.WriteLine("kill," + m_sKilledName + "," + m_sKilledFaction + "," + m_sKillerName + "," + m_sKillerFaction + "," + m_fRange + "," + m_sWeaponName + "," + m_sTime);
 	}
 }
