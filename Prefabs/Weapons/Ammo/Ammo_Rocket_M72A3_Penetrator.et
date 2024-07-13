@@ -1,0 +1,12 @@
+Projectile : "{165D6196250A1320}Prefabs/Weapons/Core/Ammo_Penetrator_Base.et" {
+ ID "DA5C6308000CDEF2"
+ components {
+  ShellMoveComponent "{851AA4A2AE0A5691}" {
+   ProjectileEffects {
+    ProjectileDamage "{5168BBF3DBD79134}" {
+     DamageValue 750
+    }
+   }
+  }
+ }
+}
