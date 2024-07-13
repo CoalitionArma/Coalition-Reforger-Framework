@@ -157,7 +157,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			m_bIndforReady = true;
 			m_bAdminForcedReady = true;
 			
-			m_sMessageContent = "An Admin Has Force Readied All Sides!";
+			m_sMessageContent = string.Format("An Admin (%1) Has Force Readied All Sides!", playerName);
 			Replication.BumpMe();
 			return;
 		}
