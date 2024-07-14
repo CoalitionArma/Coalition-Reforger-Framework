@@ -1,0 +1,12 @@
+Projectile : "{C0BDA86B5AA5648C}Prefabs/Weapons/Core/Ammo_Rocket_Base.et" {
+ ID "DA5C6308000CDEF2"
+ components {
+  MissileMoveComponent "{0EF36690881261EF}" {
+   ProjectileEffects {
+    ProjectileDamage "{56829D01651CE9A7}" {
+     DamageValue 400
+    }
+   }
+  }
+ }
+}
