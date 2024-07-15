@@ -4,5 +4,12 @@ SCR_ChimeraCharacter : "{A62FA97C4EC64F14}Prefabs/Characters/Factions/OPFOR/USSR
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Heli Pilot"
   }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{85ADC5E1BE7FACDB}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet_CVC_Shroud_0_NVG.et"
+    }
+   }
+  }
  }
 }
