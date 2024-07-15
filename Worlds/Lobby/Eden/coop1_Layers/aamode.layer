@@ -1,6 +1,3 @@
-SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
- coords 6380.59 158.488 6428.744
-}
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  coords 6377.719 158.299 6423.97
  m_aFactionRespawnCount {
@@ -12,7 +9,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "61DD1E7628BA75E8" {
    ID "61BCFEC02D38B83E"
    coords 0 0 0
   }
