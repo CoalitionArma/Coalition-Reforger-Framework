@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et" {
+SCR_ChimeraCharacter : "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_Rifleman_P.et" {
  ID "52092032B0E62200"
  components {
   PS_PlayableComponent "{5EFCC1946F475F15}" {
@@ -35,8 +35,8 @@ SCR_ChimeraCharacter : "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_
      }
     }
     ItemsInitConfigurationItem "{5538C040737C0BE0}" {
-     PrefabsToSpawn {
-      "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et" "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et"
+     PrefabsToSpawn + {
+      "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et" "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et"
      }
     }
     ItemsInitConfigurationItem "{61DF72F968B07A8C}" {

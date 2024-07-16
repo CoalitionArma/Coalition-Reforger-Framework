@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7C7753D17A9B7E23}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Vehicles/Group_US80s_Support_3manVehicleCrew.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
