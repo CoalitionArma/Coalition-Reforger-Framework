@@ -13,7 +13,7 @@ SCR_ChimeraCharacter : "{3967948B72443B25}Prefabs/Characters/Factions/BLUFOR/RHS
    }
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Commander"
+   m_name "Driver"
    m_bIsPlayable 1
   }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
@@ -63,13 +63,16 @@ SCR_ChimeraCharacter : "{3967948B72443B25}Prefabs/Characters/Factions/BLUFOR/RHS
       "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et"
      }
     }
-    ItemsInitConfigurationItem "{61B748C12FACEC5D}" {
+    ItemsInitConfigurationItem "{61DF72CF9809930D}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_PCGen_III_Pouches/Pouch_OpenTop_M27_1_pouch.et"
     }
-    ItemsInitConfigurationItem "{61B748C12FACEC53}" {
+    ItemsInitConfigurationItem "{61DF72CF98099314}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_PCGen_III_Pouches/Pouch_PCGEN3_takoPouch.et"
+     PrefabsToSpawn {
+      ""
+     }
     }
-    ItemsInitConfigurationItem "{61B748C12FACEC50}" {
+    ItemsInitConfigurationItem "{61DF72CF98099312}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_PCGen_III_Pouches/Pouch_PCGEN3_util.et"
      PrefabsToSpawn {
       "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "" ""
