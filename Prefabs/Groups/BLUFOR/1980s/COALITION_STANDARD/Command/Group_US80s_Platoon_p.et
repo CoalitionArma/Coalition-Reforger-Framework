@@ -139,7 +139,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{D164278FD7D9C81B}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PL_P.et" "{0248B6CF048C50C5}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MedicalOfficer_P.et"
+  "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_PL_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_MedicalOfficer_P.et"
  }
  m_sCustomNameSet "1st Platoon"
  m_bSetPlayable 1

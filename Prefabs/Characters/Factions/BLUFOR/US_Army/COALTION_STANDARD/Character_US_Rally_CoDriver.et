@@ -1,8 +1,0 @@
-SCR_ChimeraCharacter : "{3662286A13252E45}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rally_Driver.et" {
- ID "520EC961A090BBD5"
- components {
-  PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Co-Driver"
-  }
- }
-}

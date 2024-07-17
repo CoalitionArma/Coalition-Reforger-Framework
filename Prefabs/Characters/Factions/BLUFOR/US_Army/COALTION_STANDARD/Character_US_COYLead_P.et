@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_PL_P.et" {
+SCR_ChimeraCharacter : "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_PL_P.et" {
  ID "520EC961A090B1EE"
  components {
   PS_PlayableComponent "{5EFCC1946F475F15}" {
@@ -19,14 +19,14 @@ SCR_ChimeraCharacter : "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_
      }
     }
     ItemsInitConfigurationItem "{5D9AD3A036D1618E}" {
-     PrefabsToSpawn +{
+     PrefabsToSpawn + {
+      ""
      }
     }
     ItemsInitConfigurationItem "{6114D5D9B657B9F4}" {
     }
     ItemsInitConfigurationItem "{5D9AD3A01786EDD7}" {
-     PrefabsToSpawn + {
-      "{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Tracer.et"
+     PrefabsToSpawn +{
      }
     }
    }

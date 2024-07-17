@@ -18,9 +18,6 @@ SCR_ChimeraCharacter : "{5B1996C05B1E51A4}Prefabs/Characters/Factions/BLUFOR/US_
      }
     }
     ItemsInitConfigurationItem "{5A24B6035F7619E7}" {
-     PrefabsToSpawn {
-      "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et" "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et"
-     }
     }
     ItemsInitConfigurationItem "{54A49B42D138207E}" {
      PrefabsToSpawn {
@@ -28,10 +25,11 @@ SCR_ChimeraCharacter : "{5B1996C05B1E51A4}Prefabs/Characters/Factions/BLUFOR/US_
     }
     ItemsInitConfigurationItem "{5538C2905CBA5359}" {
      PrefabsToSpawn + {
-      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et" "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et"
      }
     }
    }
   }
  }
+ coords 0 0 0
 }

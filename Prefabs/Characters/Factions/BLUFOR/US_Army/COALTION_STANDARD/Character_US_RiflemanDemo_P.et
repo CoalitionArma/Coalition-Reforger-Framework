@@ -1,11 +1,11 @@
-SCR_ChimeraCharacter : "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et" {
+SCR_ChimeraCharacter : "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et" {
  ID "52092032B0E62200"
  components {
   CSI_CharacterComponent "{617A0517A9B25B23}" {
    m_iStartingColorTeam Green
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Rifleman"
+   m_name "Rifleman (Demo)"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
@@ -16,6 +16,15 @@ SCR_ChimeraCharacter : "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
+    ItemsInitConfigurationItem "{5A24B6035F7619E7}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{5538C040737C0BE0}" {
+     PrefabsToSpawn + {
+      "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
+     }
+    }
     ItemsInitConfigurationItem "{61B94750C1AE70BC}" {
      TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
      PrefabsToSpawn {

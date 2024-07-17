@@ -15,13 +15,15 @@ SCR_ChimeraCharacter : "{E45F1E163F5CA080}Prefabs/Characters/Factions/BLUFOR/US_
      }
     }
     ItemsInitConfigurationItem "{5A24B6035F7619E7}" {
+    }
+    ItemsInitConfigurationItem "{5538C29C2FC6375B}" {
      PrefabsToSpawn {
-      "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
      }
     }
     ItemsInitConfigurationItem "{5538C29C2FA41111}" {
      PrefabsToSpawn {
-      "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{0AF10C206CF1A282}Prefabs/Weapons/Ammo/US_Ammo_Smoke_Green.et" "{2B0C4280078D96B6}Prefabs/Weapons/Ammo/US_Ammo_Smoke_Red.et"
+      "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{3343A055A83CB30D}Prefabs/Weapons/Grenades/M18/Smoke_M18_Red.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{0AF10C206CF1A282}Prefabs/Weapons/Ammo/US_Ammo_Smoke_Green.et" "{2B0C4280078D96B6}Prefabs/Weapons/Ammo/US_Ammo_Smoke_Red.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
      }
     }
    }

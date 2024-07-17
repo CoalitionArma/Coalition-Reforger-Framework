@@ -16,6 +16,11 @@ SCR_ChimeraCharacter : "{0F6689B491641155}Prefabs/Characters/Factions/BLUFOR/US_
       "{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et" "{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et"
      }
     }
+    ItemsInitConfigurationItem "{5538C29D4709645E}" {
+     PrefabsToSpawn + {
+      "{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et"
+     }
+    }
    }
   }
  }
