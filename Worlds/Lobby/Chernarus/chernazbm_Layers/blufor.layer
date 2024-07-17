@@ -1,0 +1,104 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_Platoon.et" {
+ coords 4131.968 339.125 10546.32
+ m_aUnitPrefabSlots + {
+  "{5369C45E85F7A52B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_LogiLeader.et" "{B31629975CBD821C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_LogiRunner.et"
+ }
+ {
+  SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+   coords 4.334 -0.091 -50.67
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+     coords -48.867 0.091 -12.377
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+       coords 30.32 27.984 5.687
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad.et" {
+         coords 56.115 -27.769 36.819
+         m_sCustomNameSet "4th Squad"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
+ coords 4191.917 339.124 10493.405
+ angleY -37
+ {
+  GenericEntity {
+   ID "5E64C0FB916EAC93"
+   components {
+    SCR_ResourceComponent "{5E3298BE225F0743}" {
+     m_aContainers {
+      SCR_ResourceContainer "{61DD5433BD1079D2}" {
+       m_eResourceRights ALL
+       m_eStorageType STORED
+       m_fResourceValueCurrent 1000
+       m_fResourceValueMax 1000
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E64C0FB916EAF90"
+   components {
+    SCR_CatalogEntitySpawnerComponent "{5D22B968F23A847A}" {
+     m_aAllowedLabels {
+      1677929688
+     }
+    }
+    SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+     "faction affiliation" "RHS_US_USMC"
+    }
+    SCR_ResourceComponent "{5D7CC617B33EF1CF}" {
+     m_aContainers {
+      SCR_ResourceContainer "{61DD5433854CBF41}" {
+       m_eResourceRights ALL
+       m_eStorageType STORED
+       m_fResourceValueCurrent 1000
+       m_fResourceValueMax 1000
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E6A9384DDD03956"
+   components {
+    SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+     "faction affiliation" "RHS_US_USMC"
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E6906884A85A3A3"
+   components {
+    SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+     "faction affiliation" "RHS_US_USMC"
+    }
+   }
+  }
+ }
+}
+$grp SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Vehicles/CRF_USMC_THCrew.et" {
+ {
+  coords 4146.66 339.125 10545.502
+  m_sCustomNameSet "Transport Heli 1 - MH60"
+ }
+ {
+  coords 4140.439 339.124 10539.174
+  m_sCustomNameSet "Transport Heli 2 - MH60"
+ }
+ {
+  coords 4132.827 339.125 10534.237
+  m_sCustomNameSet "Transport Heli 3 - MH60"
+ }
+}
