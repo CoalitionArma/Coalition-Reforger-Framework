@@ -1,0 +1,18 @@
+SCR_ChimeraCharacter : "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" {
+ ID "51FA8A5F28FD04BA"
+ components {
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{B5C2334ADFB038FF}Prefabs/Weapons/Launchers/Panzerfaust 3/Launcher_Panzerfaust3_Besser.et"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5A24B6035F7619E7}" {
+     PrefabsToSpawn {
+      "{31069EAFCA7AC221}Prefabs/Weapons/Ammo/Ammo_Rocket_Bunkerfaust_Besser.et" "{31069EAFCA7AC221}Prefabs/Weapons/Ammo/Ammo_Rocket_Bunkerfaust_Besser.et"
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}
