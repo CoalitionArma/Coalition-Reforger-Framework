@@ -25,19 +25,6 @@ SCR_AIGroup : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s
            coords -12.052 0.001 17.926
            angleY 95.167
            m_sCustomNameSet "Medical Team"
-           {
-            SCR_AIGroup : "{102485D30C39BF21}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_LATTeam.et" {
-             coords 0.556 -0.001 -8.619
-             angleY -5.377
-             m_sCustomNameSet "Light Anti-Tank Team"
-             {
-              SCR_AIGroup : "{080FEB9F64017EF8}Prefabs/Groups/BLUFOR/1980s/Support/Group_US80s_Support_SniperTeam.et" {
-               coords 0.51 0.001 30.506
-               angleY 172.849
-              }
-             }
-            }
-           }
           }
          }
         }
