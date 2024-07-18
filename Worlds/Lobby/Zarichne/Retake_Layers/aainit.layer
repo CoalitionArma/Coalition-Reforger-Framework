@@ -1,7 +1,7 @@
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
-   m_iTimeLimitMinutes 75
+   m_iTimeLimitMinutes 90
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_iStartingHours 22
@@ -36,6 +36,9 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR (DEF)"
+     }
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
       m_bIsAssignedRandomly 0
       m_aSquadNames {
@@ -55,7 +58,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{61E42E7262A64499}" {
-        m_sCallsign "Logi"
+        m_sCallsign "MAT"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -63,6 +66,9 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
      }
     }
     SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "BLUFOR (ATK)"
+     }
      m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
@@ -99,7 +105,10 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "TH2"
        }
        SCR_CallsignInfo "{61E42E7B71FB47FE}" {
-        m_sCallsign "TH3"
+        m_sCallsign "Armor1"
+       }
+       SCR_CallsignInfo "{61E53A88F4C9E3F4}" {
+        m_sCallsign "Armor2"
        }
       }
       m_sCallsignGroupFormat "%3"

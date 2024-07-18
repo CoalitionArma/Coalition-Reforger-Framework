@@ -1,9 +1,14 @@
-$grp Vehicle : "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et" {
- AUS_UH60_unarmed1 {
-  coords 4205.58 28.03 4191.155
+Vehicle AUS_UH60_unarmed1 : "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et" {
+ coords 4205.58 28.03 4191.155
+}
+$grp SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
+ {
+  coords 4142.952 28.484 4171.013
+  m_sCustomNameSet "Stryker 1"
  }
- AUS_UH60_unarmed2 {
-  coords 4147.241 28.126 4191.882
+ {
+  coords 4128.241 28.532 4170.66
+  m_sCustomNameSet "Stryker 2"
  }
 }
 SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Command/CRF_USMC_Company.et" {
@@ -67,15 +72,19 @@ SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_S
 $grp SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_THCrew.et" {
  {
   coords 4182.681 28.416 4161.682
-  m_sCustomNameSet "Helo Crew"
+  m_sCustomNameSet "Transport Heli 1"
  }
  {
   coords 4176.214 28.406 4160.071
-  m_sCustomNameSet "Helo Crew"
+  m_sCustomNameSet "Transport Heli 2"
  }
- {
-  coords 4169.509 28.406 4158.488
-  m_sCustomNameSet "Helo Crew"
+}
+$grp Vehicle : "{E3DD72FD06BA2320}Prefabs/Vehicles/Wheeled/Stryker/Stryker_CROWS.et" {
+ Stryker_CROWS1 {
+  coords 4140.716 28.445 4162.458
+ }
+ Stryker_CROWS2 {
+  coords 4127.673 28.445 4162.458
  }
 }
 Vehicle AUS_UH60_armed1 : "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et" {

@@ -67,7 +67,7 @@ $grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
  }
 }
 SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Command/CRF_RF_MSV_VKPO_Platoon.et" {
- coords 1133.882 92.878 1410.852
+ coords 1133.882 21.311 1410.852
  m_aUnitPrefabSlots {
   "{660FBA8855DEA977}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_PL.et" "{624E0FA587A22225}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MO.et" "{3902AEDAC9026562}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_Sharpshooter.et"
  }
@@ -94,9 +94,6 @@ SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
   }
  }
 }
-SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Support/CRF_RF_MSV_VKPO_Logi.et" {
- coords 1131.754 21.15 1394.046
-}
 $grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
  Ural4320_transport_covered1 {
   coords 1119.374 21.156 1434.556
@@ -114,8 +111,8 @@ $grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tra
   coords 1116.346 21.156 1441.749
   angleY 67.995
  }
- Ural4320_transport_covered5 {
-  coords 1109.512 20.391 1395.239
-  angleY 67.995
- }
+}
+SCR_AIGroup : "{ED04C9DEA30AC1FE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Support/CRF_RF_MSV_VKPO_MAT.et" {
+ coords 1137.587 21.337 1397.708
+ m_sCustomNameSet "MAT Team"
 }
