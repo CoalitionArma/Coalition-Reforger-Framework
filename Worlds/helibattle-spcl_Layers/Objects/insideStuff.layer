@@ -1,0 +1,7 @@
+Tree : "{CCAB9CE2D5FD851E}Prefabs/Vegetation/Tree/t_picea_abies_3f_high.et" {
+ coords 8547.337 6.662 3360.193
+ scale 26.198
+}
+Vehicle UH1H_armed26 : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
+ coords 8310.131 404.27 3852.094
+}

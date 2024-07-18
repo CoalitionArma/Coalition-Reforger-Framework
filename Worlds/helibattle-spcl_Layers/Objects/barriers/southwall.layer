@@ -1,0 +1,92 @@
+$grp GenericEntity : "{5108922392AE7139}PrefabsEditable/Auto/Rocks/Granite/E_GraniteCliff_01.et" {
+ {
+  coords 9461.491 331.111 521.159
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10216.057 331.111 1298.015
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10376.929 331.111 1463.638
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10536.438 331.111 1627.858
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 9612.058 331.111 676.176
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10068.015 331.111 1145.602
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 9932.442 331.111 1006.018
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 9772.935 331.111 841.802
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10672.015 331.111 1767.44
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 9461.491 -75.409 521.159
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10216.056 -75.409 1298.015
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10376.927 -75.409 1463.637
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10536.437 -75.409 1627.858
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 9612.058 -75.409 676.176
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10068.015 -75.409 1145.602
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 9932.442 -75.409 1006.018
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 9772.935 -75.409 841.802
+  angleY 134.166
+  scale 18.081
+ }
+ {
+  coords 10672.015 -75.409 1767.44
+  angleY 134.166
+  scale 18.081
+ }
+}

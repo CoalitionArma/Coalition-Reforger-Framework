@@ -1,0 +1,14 @@
+SCR_DestructibleBuildingEntity : "{FD91931F589C05BF}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03_Base.et" {
+ ID "F0DBA538AC2A0552"
+ {
+  GenericEntity : "{8BF0BF5989A14148}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03_furniture_02.et" {
+   ID "61E5519825AF27DD"
+   coords 0 0 0
+  }
+  Building : "{F0A7B88BEB15F682}Prefabs/Structures/BuildingParts/Windows/Win_WoodenHouse_E/Win_HouseWooden_E_A_70x72_M1.et" {
+   ID "61E551985C21815C"
+   coords -4.337 2.625 5.275
+   scale 5.4
+  }
+ }
+}

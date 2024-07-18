@@ -1,0 +1,44 @@
+SCR_AIGroup : "{770661B4BD84AEEB}Prefabs/Groups/BLUFOR/1980s/Specials/Special_HeliBattle_Blufor_Crew.et" {
+ coords 9451.174 42.894 1646.08
+}
+$grp Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
+ UH1H_armed5 {
+  coords 7833.515 341.071 3396.683
+ }
+ UH1H_armed6 {
+  coords 9774.834 74.923 1232.101
+ }
+ UH1H_armed7 {
+  coords 7864.855 342.291 3188.436
+ }
+ UH1H_armed4 {
+  coords 7720.163 330.354 3406.333
+ }
+ UH1H_armed3 {
+  coords 7808.305 335.013 3473.909
+ }
+ UH1H_armed8 {
+  coords 7773.48 330.909 3183.9
+ }
+ UH1H_armed2 {
+  coords 7714.333 321.587 3476.873
+ }
+ UH1H_armed1 {
+  coords 10274.244 20.04 1686.777
+ }
+ UH1H_armed9 {
+  coords 7810.817 342.914 3100.864
+ }
+ UH1H_armed10 {
+  coords 7860.218 338.318 3297.858
+ }
+ UH1H_armed11 {
+  coords 7669.563 301.154 3593.585
+ }
+ UH1H_armed12 {
+  coords 7882.333 354.75 3080.797
+ }
+ UH1H_armed13 {
+  coords 9354.442 52.691 1713.897
+ }
+}

@@ -1,0 +1,5 @@
+SCR_DestructibleBuildingEntity : "{856F6F97CFA5160D}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03_HeliBattleSpecial.et" {
+ coords 9802.363 -19.628 1575.588
+ angleY 45
+ scale 45.596
+}
