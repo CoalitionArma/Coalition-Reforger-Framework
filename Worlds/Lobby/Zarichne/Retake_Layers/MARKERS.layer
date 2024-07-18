@@ -53,32 +53,32 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   angleY 0
   m_sDescription "Cache?"
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
   }
+  m_bVisibleForEmptyFaction 1
  }
  cachemarker2global {
   coords 2108.231 9.078 2637.892
   angleY 0
   m_sDescription "Cache?"
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
   }
+  m_bVisibleForEmptyFaction 1
  }
  cachemarker3global {
   coords 1041.102 31.018 2741.916
   angleY 0
   m_sDescription "Cache?"
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
   }
+  m_bVisibleForEmptyFaction 1
  }
  cachemarker4global {
   coords 1423.104 26.778 2209.611
   angleY 0
   m_sDescription "Cache?"
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
   }
+  m_bVisibleForEmptyFaction 1
  }
 }
 PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
