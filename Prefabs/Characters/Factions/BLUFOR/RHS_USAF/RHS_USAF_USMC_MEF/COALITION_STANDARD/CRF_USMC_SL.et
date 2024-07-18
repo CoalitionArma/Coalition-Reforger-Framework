@@ -40,7 +40,7 @@ SCR_ChimeraCharacter : "{3967948B72443B25}Prefabs/Characters/Factions/BLUFOR/RHS
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
-     Prefab "{E6A63966ED252156}Prefabs/Characters/HeadGear/Helmet_ECH/variants/Helmet_ECH_lc_c_l.et"
+     Prefab "{E6A63966ED252156}Prefabs/Characters/HeadGear/Helmet_ECH/variants/Helmet_ECH_lc_c_l_PVS14.et"
     }
     LoadoutSlotInfo ArmoredVest {
      Prefab "{1300A5F6CA51B206}Prefabs/Characters/Vests/Vest_PCGen_III/Vest_PCGen_III.et"
@@ -60,7 +60,7 @@ SCR_ChimeraCharacter : "{3967948B72443B25}Prefabs/Characters/Factions/BLUFOR/RHS
     ItemsInitConfigurationItem "{61B52C4506FFE973}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_PCGen_III_Pouches/Pouch_152_Radio.et"
      PrefabsToSpawn {
-      "{73950FBA2D7DB5C5}Prefabs/Items/Equipment/Radios/Radio_ANPRC68.et"
+      "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et"
      }
     }
     ItemsInitConfigurationItem "{61B710C8152616FF}" {
