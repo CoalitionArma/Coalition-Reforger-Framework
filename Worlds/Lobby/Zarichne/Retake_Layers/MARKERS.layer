@@ -1,0 +1,91 @@
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 1140.867 -183.13 1280.543
+  angleY 0
+  m_sDescription "OPFOR Spawn"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cache1marker {
+  coords 2076.735 10.611 1292.441
+  angleY 0
+  m_sDescription "Cache 1"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cache2marker {
+  coords 2468.062 9.067 2467.285
+  angleY 0
+  m_sDescription "Cache 2"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cache3marker {
+  coords 1384.663 22.918 2924.558
+  angleY 0
+  m_sDescription "Cache 3"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cache4marker {
+  coords 1512.444 30.713 2216.891
+  angleY 0
+  m_sDescription "Cache 4"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+}
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 4373.557 27.656 4230.364
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ cachemarker1global {
+  coords 1931.232 13.771 1533.204
+  angleY 0
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+ }
+ cachemarker2global {
+  coords 2108.231 9.078 2637.892
+  angleY 0
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+ }
+ cachemarker3global {
+  coords 1041.102 31.018 2741.916
+  angleY 0
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+ }
+ cachemarker4global {
+  coords 1423.104 26.778 2209.611
+  angleY 0
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+   "RHS_US_USMC" "RHS_RF_MSV"
+  }
+ }
+}
+PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+ coords 1264.678 22.188 1399.597
+ angleY 0
+ m_sDescription "EXTRA VEHICLES"
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
