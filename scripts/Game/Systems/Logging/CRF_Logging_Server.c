@@ -16,13 +16,26 @@ class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass
 class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 {	
 	string m_sLogPath = "$profile:COAServerLog.txt";
-	private ref FileHandle m_handle;
 	string m_sMissionName;
-	SCR_FactionManager m_FM;
+	string m_sKillerName;
+	string m_sKillerFaction;
+	string m_sKilledName;
+	string m_sKilledFaction;
+	string m_sTime;
+	string m_sWeaponName;
+	
 	int m_iPlayerCount;
 	int m_iBluforCount;
 	int m_iOpforCount;
 	int m_iIndforCount;
+	int m_iTotalSeconds;
+	
+	float m_fRange;
+	float m_fTotalTime;
+	
+	SCR_FactionManager m_FM;
+	BaseWeaponManagerComponent m_WMC;
+	FileHandle m_handle;
 	
 	static CRF_LoggingServerComponent GetInstance() 
 	{
@@ -44,23 +57,16 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
 				return;
 		#endif*/
-		
-	}
-	
-	FileHandle ReturnFileHandle()
-	{
-		return m_handle;
 	}
 
 	// Setup
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
-		if (!Replication.IsServer())
+		if (!Replication.IsServer()) // TODO: add check to exit if in workbench
 			return;
 		
 		m_sMissionName = GetGame().GetMissionName();
-		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		if (FileIO.FileExists(m_sLogPath))
 			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
@@ -103,6 +109,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		super.OnGameStateChanged(state);
 		if (!Replication.IsServer() || GetGame().GetPlayerManager().GetPlayerCount() < 10)
 			return;
+		
+		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
 		
 		switch (state)
 		{
@@ -151,23 +159,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		// log
 		m_handle.WriteLine("mission,started," + m_sMissionName + "," + m_iPlayerCount);
 	}
-}
-
-modded class SCR_BaseGameMode
-{
-	string m_sKillerName;
-	string m_sKillerFaction;
-	string m_sKilledName;
-	string m_sKilledFaction;
-	string m_sTime;
-	string m_sWeaponName;
-	float m_fRange;
-	float m_fTotalTime;
-	int m_iTotalSeconds;
-	
-	SCR_FactionManager m_FM;
-	BaseWeaponManagerComponent m_WMC;
-	private ref FileHandle m_handle;
 	
 	// Killfeed log
     override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
@@ -175,7 +166,6 @@ modded class SCR_BaseGameMode
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
 		m_FM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		m_handle = CRF_LoggingServerComponent.GetInstance().ReturnFileHandle();
 		
 		// Killer
 		// Check if killer is AI
@@ -206,6 +196,7 @@ modded class SCR_BaseGameMode
   		m_iTotalSeconds = (m_fTotalTime / 1000);
 		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
 		
+		Print("kill," + m_sKilledName + "," + m_sKilledFaction + "," + m_sKillerName + "," + m_sKillerFaction + "," + m_fRange + "," + m_sWeaponName + "," + m_sTime);
 		m_handle.WriteLine("kill," + m_sKilledName + "," + m_sKilledFaction + "," + m_sKillerName + "," + m_sKillerFaction + "," + m_fRange + "," + m_sWeaponName + "," + m_sTime);
 	}
 }
