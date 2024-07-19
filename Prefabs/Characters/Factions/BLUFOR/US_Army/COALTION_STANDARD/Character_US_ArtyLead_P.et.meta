@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4CCCC93AA4A4D6AD}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyLead_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,147 @@
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 22
+   m_fDayTimeAcceleration 4
+   m_fNightTimeAcceleration 4
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{61E62D9027BA07D5}" {
+     m_sWeatherPresetName "overcast"
+     m_iStartingHour 22
+    }
+   }
+  }
+ }
+ coords 272.728 17.426 629.516
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      m_sNameUpper "OPFOR (DEF)"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61E62D9073ACDB2E}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61E62D9073E6A414}" {
+        m_sCallsign "MAT"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      m_sNameUpper "BLUFOR (ATK)"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{61E62D9018F52432}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{61E62D90198B661A}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{61E62D9019A1F541}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61E62D9019D02E1C}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61E62D900B2432D7}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{61E62D900D94683B}" {
+        m_sCallsign "TH1"
+       }
+       SCR_CallsignInfo "{61E62D900D8D2075}" {
+        m_sCallsign "TH2"
+       }
+       SCR_CallsignInfo "{61E62D900DA12490}" {
+        m_sCallsign "Armor 1"
+       }
+       SCR_CallsignInfo "{61E62D900B584391}" {
+        m_sCallsign "Armor 2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ Objective_1 {
+  coords 1101.55 19.532 1372.491
+  m_sTitle "OBJ 1: Cache 1"
+  m_sTextData "Find and destroy the cache near the 'Cache 1 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 5
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_2 {
+  coords 1102.176 18.562 1369.261
+  m_sTitle "OBJ 2: Cache 2"
+  m_sTextData "Find and destroy the cache near the 'Cache 2 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 6
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_3 {
+  coords 1103.444 16.818 1363.211
+  m_sTitle "OBJ 3: Cache 3"
+  m_sTextData "Find and destroy the cache near the 'Cache 3 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 7
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_5 {
+  coords 1092.643 19.636 1380.25
+  m_sTitle "Defend Cache 1"
+  m_sTextData "Prevent Cache 1 from being secured"
+  m_iOrder 5
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ Objective_6 {
+  coords 1095.455 18.207 1374.08
+  m_sTitle "Defend Cache 2"
+  m_sTextData "Prevent Cache 2 from being secured"
+  m_iOrder 6
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ Objective_7 {
+  coords 1091.948 17.81 1376.021
+  m_sTitle "Defend Cache 3"
+  m_sTextData "Prevent Cache 3 from being secured"
+  m_iOrder 7
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ Objective_4 {
+  coords 917.453 17.282 1472.22
+  m_sTitle "OBJ 4: Cache 4"
+  m_sTextData "Find and destroy the cache near the 'Cache 4 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 8
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_8 {
+  coords 922.202 17.409 1471.61
+  m_sTitle "Defend Cache 4"
+  m_sTextData "Prevent Cache 4 from being secured"
+  m_iOrder 8
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+}

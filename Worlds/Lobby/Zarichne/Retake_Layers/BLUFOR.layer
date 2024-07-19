@@ -1,0 +1,94 @@
+Vehicle AUS_UH60_unarmed1 : "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et" {
+ coords 4205.58 28.03 4191.155
+}
+SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Command/CRF_USMC_Company.et" {
+ coords 4177.829 28.406 4151.177
+ {
+  $grp SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Command/CRF_USMC_Platoon.et" {
+   {
+    coords 9.678 -0.035 -11.599
+    m_aUnitPrefabSlots {
+     "{4BD0BFA3FC850A88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_PL.et" "{8F67D1B35C9DDE00}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_MedicalOfficer.et"
+    }
+    {
+     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Infantry/CRF_USMC_RifleSquad.et" {
+      {
+       coords 29.215 0.15 -15
+       m_sCustomNameSet "1st Squad"
+      }
+      {
+       coords 1.274 0.028 -15.355
+       m_sCustomNameSet "2nd Squad"
+      }
+      {
+       coords -31.142 -0.037 -18.994
+       m_aUnitPrefabSlots {
+        "{44332234EE0A52CC}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_SL.et" "{E27FC191F703D40F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_Medic.et" "{198E7DA381B97145}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_TLRED.et" "{12A9A23EAF55B360}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_MGRED.et" "{12A9A23EAF55B35F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_AMGRED.et" "{5EFA745B860ED008}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_TLGREEN.et" "{802A7F6B15805C26}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_RiflemanAT_NLAW.et" "{802A7F6B15805C26}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_RiflemanAT_NLAW.et" "{3B5C579EE15CCC61}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_RiflemanDemo.et"
+       }
+       m_sCustomNameSet "3rd Squad"
+      }
+     }
+    }
+   }
+   {
+    coords -11.585 0.063 -10.74
+    m_aUnitPrefabSlots {
+     "{4BD0BFA3FC850A88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_PL.et" "{8F67D1B35C9DDE00}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_MedicalOfficer.et"
+    }
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Infantry/CRF_USMC_RifleSquad.et" {
+      {
+       coords -37.529 -0.219 -21.087
+       m_sCustomNameSet "4th Squad"
+      }
+      {
+       coords 37.183 -0.165 -39.135
+       m_sCustomNameSet "5th Squad"
+      }
+      {
+       coords -24.371 -0.108 -41.476
+       m_aUnitPrefabSlots {
+        "{44332234EE0A52CC}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_SL.et" "{E27FC191F703D40F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_Medic.et" "{198E7DA381B97145}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_TLRED.et" "{12A9A23EAF55B360}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_MGRED.et" "{12A9A23EAF55B35F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_AMGRED.et" "{5EFA745B860ED008}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_TLGREEN.et" "{802A7F6B15805C26}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_RiflemanAT_NLAW.et" "{802A7F6B15805C26}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_RiflemanAT_NLAW.et" "{3B5C579EE15CCC61}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_RiflemanDemo.et"
+       }
+       m_sCustomNameSet "6th Squad"
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_THCrew.et" {
+ {
+  coords 4182.681 28.416 4161.682
+  m_sCustomNameSet "Transport Heli 1"
+ }
+ {
+  coords 4176.214 28.406 4160.071
+  m_sCustomNameSet "Transport Heli 2"
+  {
+   SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
+    coords -33.262 0.078 10.942
+    m_sCustomNameSet "Stryker 1"
+    {
+     SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
+      coords -14.711 0.048 -0.353
+      m_sCustomNameSet "Stryker 2"
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{E3DD72FD06BA2320}Prefabs/Vehicles/Wheeled/Stryker/Stryker_CROWS.et" {
+ Stryker_CROWS1 {
+  coords 4140.716 28.445 4162.458
+ }
+ Stryker_CROWS2 {
+  coords 4127.673 28.445 4162.458
+ }
+}
+Vehicle AUS_UH60_armed1 : "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et" {
+ coords 4176.001 28.125 4190.708
+}
