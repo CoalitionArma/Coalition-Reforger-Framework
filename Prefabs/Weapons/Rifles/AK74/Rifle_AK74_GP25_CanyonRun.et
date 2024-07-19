@@ -1,0 +1,22 @@
+GenericEntity : "{63E8322E2ADD4AA7}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25.et" {
+ ID "51F6738D2CCD18E0"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{51F6738D2EC74BE1}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+      Prefab "{076DD31D8310E76D}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25_CanyonRun.et"
+     }
+    }
+    AttachmentSlotComponent "{5E9CA21DCAA7E66A}" {
+     AttachmentSlot InventoryStorageSlot butt {
+      Prefab "{D901305DD97960AD}Prefabs/Weapons/Attachments/Misc/AkGpButtPad/akGPbutt.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate "{7DD4759A10D449CE}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Tracer.et"
+    }
+   }
+  }
+ }
+}
