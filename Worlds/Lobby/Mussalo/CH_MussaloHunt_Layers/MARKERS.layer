@@ -1,0 +1,80 @@
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ cache1marker {
+  coords 3137.47 13.781 5463.674
+  angleY 90.361
+  m_sDescription "Cache 1"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cache2marker {
+  coords 4300.267 41.465 4614.934
+  angleY 90.361
+  m_sDescription "Cache 2"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cache3marker {
+  coords 3496.768 6.713 5214.622
+  angleY 90.361
+  m_sDescription "Cache 3"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ cache4marker {
+  coords 3350.634 19.241 4317.324
+  angleY 90.361
+  m_sDescription "Cache 4"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+}
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ cachemarker1global {
+  coords 3456.782 6.789 5555.443
+  angleY 90.847
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ cachemarker2global {
+  coords 4419.362 13.031 4720.718
+  angleY 90.847
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ cachemarker3global {
+  coords 3562.065 15.443 5377.056
+  angleY 90.847
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ cachemarker4global {
+  coords 3227.979 6.837 4391.53
+  angleY 90.847
+  m_sDescription "Cache?"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+ coords 3413.055 2.906 6089.395
+ angleY 0
+ m_sDescription "Extra Vehicles"
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}

@@ -1,124 +1,89 @@
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
-  coords 5405.027 2.906 4312.638
+  coords 5075.564 2.111 4369.886
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5410.789 0 4536.181
+  coords 5283.864 0 4624.772
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5391.444 0.339 4747.675
+  coords 5329.282 0 4784.991
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5446.607 0 4956.623
+  coords 5428.337 0 4982.063
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5554.181 0 5082.944
+  coords 5560.811 0 5056.609
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5679.338 0 5038.608
+  coords 5736.675 0.001 5168.062
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5752.697 0 5110.272
+  coords 5594.624 0 5292.376
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5665.847 0 5212.109
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 5551.247 0 5365.034
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 5433.492 0 5517.783
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 5305.687 0 5665.22
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 5078.838 0 5776.344
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 4846.602 0 5848.419
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 4639.027 0 5878.111
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 4454.033 0 5880.771
+  coords 5255.583 10.616 5445.361
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4315.033 9.397 5717.258
+  coords 5019.063 25.884 5409.073
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4187.119 3.428 5551.233
+  coords 4856.224 18.873 5289.839
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4128.219 7.02 5364.708
+  coords 4717.227 19.676 5216.278
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4124.236 6.07 5158.91
+  coords 4542.958 0 5085.304
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4109.218 23.616 4994.208
+  coords 4439.88 4.864 4946.432
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4072.242 39.329 4811.18
+  coords 4259.078 50.435 4813.907
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4052.718 75.865 4638.273
+  coords 4148.94 62.876 4611.856
   angleY 0
   scale 2
   m_fWorldSize 200
  }
  {
-  coords 4024.647 61.332 4453.298
+  coords 4049.255 75.494 4443.925
   angleY 0
   scale 2
   m_fWorldSize 200
@@ -134,77 +99,57 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_fWorldSize 200
  }
  {
-  coords 3753.591 24.646 3988.378
+  coords 3809.887 27.083 3983.013
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 3746.229 9.084 3819.678
+  coords 3830.757 16.23 3857.189
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 3843.933 -66.398 3570.98
+  coords 3973.005 -53.318 3761.651
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 3950.584 -102.207 3429.132
+  coords 4168.034 -105.096 3636.949
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 4075.812 7.524 3286.615
+  coords 4327.508 5.541 3559.771
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 4247.817 -90.401 3208.638
+  coords 4487.353 28.885 3501.479
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 4779.42 36.796 3364.212
+  coords 4709.237 34.807 3467.191
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 4929.313 47.482 3450.544
+  coords 4912.368 22.475 3588.396
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5012.452 48.45 3538.705
+  coords 5012.769 48.735 3796.185
   angleY 0
   m_fWorldSize 200
  }
  {
-  coords 5078.438 60.766 3661.655
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 5175.479 13.898 3830.365
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 5295.164 32.098 4095.285
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 4402.936 2.937 3199.907
-  angleY 0
-  m_fWorldSize 200
- }
- {
-  coords 4598.341 4.556 3279.136
+  coords 5109.172 11.235 4094.149
   angleY 0
   m_fWorldSize 200
  }
  BLUFOR_Platoon_Marker {
-  coords 5151.295 0.013 5528.494
+  coords 5611.106 0.013 5420.224
   angleY 90
   scale 3
   m_sImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
@@ -212,11 +157,10 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_MarkerColor 0 0.186 0.694 1
   m_sQuadName "infantry"
   m_fWorldSize 200
-  m_sDescription "US Motorized Platoon (-)"
+  m_sDescription "US Motorized Platoon (+)"
  }
  OPFOR_Company_Marker {
-  coords 4149.367 7.105 3388.614
-  angleY 90
+  coords 4188.274 7.963 3463.75
   scale 3
   m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
   m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
@@ -224,5 +168,20 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_sQuadName "motorized-infantry"
   m_fWorldSize 400
   m_sDescription "USSR Motorized Company (-)"
+ }
+ {
+  coords 5133.256 0 4525.433
+  angleY 0
+  m_fWorldSize 200
+ }
+ GameZoneMarker_7 {
+  coords 5421.102 0 5370.106
+  angleY 0
+  m_fWorldSize 200
+ }
+ {
+  coords 5724.146 0 5048.378
+  angleY 0
+  m_fWorldSize 200
  }
 }
