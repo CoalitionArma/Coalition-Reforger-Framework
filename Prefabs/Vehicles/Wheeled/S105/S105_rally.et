@@ -13,7 +13,6 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
   SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
    CompartmentSlots {
     PilotCompartmentSlot PilotCompartment {
-     MouseSteering 1
     }
    }
   }
