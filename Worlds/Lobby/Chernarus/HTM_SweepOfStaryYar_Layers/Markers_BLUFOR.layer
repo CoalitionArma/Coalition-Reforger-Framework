@@ -1,0 +1,102 @@
+$grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+ {
+  coords 6407.922 467.687 15063.53
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6380.047 468.218 15042.668
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6345.07 469.061 15012.59
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6361.172 467.938 14983.54
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6389.049 468.34 14952.856
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6425.949 466.72 14934.194
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6455.975 465.657 14960.595
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6477.562 464.842 14999.501
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6472.158 466.28 15038.083
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 6444.861 467.019 15065.186
+  angleY 0
+  m_sDescription "Safestart BLUFOR"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}
