@@ -1,8 +1,18 @@
+$grp Vehicle : "{00AED68EFBF251BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_closed_camo1.et" {
+ Ural4320_transport_covered_closed_camo1 {
+  coords 4197.192 23.262 3864.088
+  angleY 120.795
+ }
+ Ural4320_transport_covered_closed_camo2 {
+  coords 4193.495 22.957 3857.358
+  angleY 120.795
+ }
+}
 SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_Large_p.et" {
- coords 4128.048 8.839 3411.309
- angleY 127.067
+ coords 4189.899 17.276 3796.945
+ angleY -60.503
  m_aUnitPrefabSlots {
-  "{A9E561650F1356A0}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_COY_Officer_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+  "{A9E561650F1356A0}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_COY_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et"
  }
  m_sCustomNameSet "1st Motor Rifle Company (-)"
  {
@@ -14,10 +24,10 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
      }
     }
    }
-   coords -20.199 -0.632 6.274
+   coords -17.666 0.578 7.28
    angleY -10.116
    m_aUnitPrefabSlots {
-    "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+    "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
    }
    m_bPlayable 1
    m_sCustomNameSet "1st Motor Rifle Platoon"
@@ -33,10 +43,10 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
        }
       }
      }
-     coords -5.868 -0.803 21.429
+     coords -4.652 -2.157 13.52
      angleY -169.778
      m_aUnitPrefabSlots {
-      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
      }
      m_bPlayable 1
      m_sCustomNameSet "1st Motor Rifle Squad"
@@ -52,9 +62,9 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
          }
         }
        }
-       coords -12.746 -0.262 -0.436
+       coords -12.744 0.957 -0.434
        m_aUnitPrefabSlots {
-        "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+        "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
        }
        m_bPlayable 1
        m_sCustomNameSet "2nd Motor Rifle Squad"
@@ -70,49 +80,49 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
            }
           }
          }
-         coords -12.477 0.077 -0.459
+         coords -12.481 0.73 -0.46
          m_aUnitPrefabSlots {
-          "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+          "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
          }
          m_bPlayable 1
          m_sCustomNameSet "3rd Motor Rifle Squad"
          {
-          SCR_AIGroup USSR1980s_20_PlatoonHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_Large_p.et" {
+          SCR_AIGroup USSR1980s_14_InfantrySquad : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
            components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Column"
+            }
             SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
              m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
               m_Icons MOTORIZED
              }
             }
            }
-           coords -34.097 0.188 17.487
-           angleY 169.778
+           coords -8.665 1.106 1.042
+           angleY -0.386
            m_aUnitPrefabSlots {
-            "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
+            "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
            }
            m_bPlayable 1
-           m_sCustomNameSet "2nd Motor Rifle Platoon"
+           m_sCustomNameSet "4th Motor Rifle Squad"
            {
-            SCR_AIGroup USSR1980s_21_InfantrySquad : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+            SCR_AIGroup USSR1980s_20_PlatoonHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_Large_p.et" {
              components {
-              AIFormationComponent "{507E9DC12F541FE6}" {
-               DefaultFormation "Column"
-              }
               SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
                m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
                 m_Icons MOTORIZED
                }
               }
              }
-             coords -4.333 -0.764 21.491
-             angleY -169.778
+             coords -17.528 1.891 12.285
+             angleY 170.164
              m_aUnitPrefabSlots {
-              "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+              "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et"
              }
              m_bPlayable 1
-             m_sCustomNameSet "4th Motor Rifle Squad"
+             m_sCustomNameSet "2nd Motor Rifle Platoon"
              {
-              SCR_AIGroup USSR1980s_22_InfantrySquad : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+              SCR_AIGroup USSR1980s_21_InfantrySquad : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
                components {
                 AIFormationComponent "{507E9DC12F541FE6}" {
                  DefaultFormation "Column"
@@ -123,14 +133,15 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
                  }
                 }
                }
-               coords -10.687 -0.236 0.361
+               coords -6.347 -0.907 13.29
+               angleY -169.778
                m_aUnitPrefabSlots {
-                "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+                "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
                }
                m_bPlayable 1
-               m_sCustomNameSet "5th Motor Rifle Squad"
+               m_sCustomNameSet "1st Motor Rifle Squad"
                {
-                SCR_AIGroup USSR1980s_23_InfantrySquad : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+                SCR_AIGroup USSR1980s_22_InfantrySquad : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
                  components {
                   AIFormationComponent "{507E9DC12F541FE6}" {
                    DefaultFormation "Column"
@@ -141,12 +152,61 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
                    }
                   }
                  }
-                 coords -11.107 0.026 -0.178
+                 coords -10.689 1.052 0.359
                  m_aUnitPrefabSlots {
-                  "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+                  "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
                  }
                  m_bPlayable 1
-                 m_sCustomNameSet "6th Motor Rifle Squad"
+                 m_sCustomNameSet "2nd Motor Rifle Squad"
+                 {
+                  SCR_AIGroup USSR1980s_23_InfantrySquad : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+                   components {
+                    AIFormationComponent "{507E9DC12F541FE6}" {
+                     DefaultFormation "Column"
+                    }
+                    SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+                     m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+                      m_Icons MOTORIZED
+                     }
+                    }
+                   }
+                   coords -11.107 1.053 -0.177
+                   m_aUnitPrefabSlots {
+                    "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
+                   }
+                   m_bPlayable 1
+                   m_sCustomNameSet "3rd Motor Rifle Squad"
+                   {
+                    SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+                     coords -17.464 1.14 11.799
+                     angleY -128.621
+                     m_aUnitPrefabSlots {
+                      "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+                     }
+                     m_sCustomNameSet "1st BTR-70"
+                     {
+                      SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+                       coords -5.907 -0.484 -6.816
+                       m_aUnitPrefabSlots {
+                        "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+                       }
+                       m_sCustomNameSet "2nd BTR-70"
+                       {
+                        SCR_AIGroup : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+                         coords -5.785 -0.218 -6.61
+                         angleY 9.018
+                         m_aUnitPrefabSlots {
+                          "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+                         }
+                         m_sCustomNameSet "3rd BTR-70"
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
                 }
                }
               }
@@ -165,6 +225,46 @@ SCR_AIGroup USSR1980s_ALPHA_CompanyHQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/
  }
 }
 $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" {
+ BTR70_2 {
+  components {
+   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
+    MultiSlots {
+     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
+      NumSlots 2
+     }
+     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
+      SlotTemplate InventoryStorageSlot Morphine {
+       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      }
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{5A60D38E3DAEB055}" {
+      NumSlots 1
+     }
+     MultiSlotConfiguration "{5A60D38E3D91D053}" {
+      NumSlots 18
+     }
+     MultiSlotConfiguration "{5A60D38E3DCB490D}" {
+      SlotTemplate InventoryStorageSlot RPKammunition {
+       Prefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
+      }
+      NumSlots 6
+     }
+     MultiSlotConfiguration "{60EB3061E5B6F277}" {
+      SlotTemplate InventoryStorageSlot ATMine {
+       Prefab "{63C1E699345B24F9}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Base.et"
+      }
+      NumSlots 2
+     }
+    }
+   }
+  }
+  coords 4212.11 21.876 3844.859
+  angleY -59.354
+ }
  BTR70_1 {
   components {
    SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
@@ -202,168 +302,8 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
     }
    }
   }
-  coords 4170.927 7.329 3420.36
-  angleY -54.784
- }
- BTR70_4 {
-  components {
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
-      SlotTemplate InventoryStorageSlot Morphine {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3DAEB055}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3D91D053}" {
-      NumSlots 18
-     }
-     MultiSlotConfiguration "{5A60D38E3DCB490D}" {
-      SlotTemplate InventoryStorageSlot RPKammunition {
-       Prefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
-      }
-      NumSlots 6
-     }
-     MultiSlotConfiguration "{60EB3061E5B6F277}" {
-      SlotTemplate InventoryStorageSlot ATMine {
-       Prefab "{63C1E699345B24F9}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Base.et"
-      }
-      NumSlots 2
-     }
-    }
-   }
-  }
-  coords 4143.213 6.748 3377.398
-  angleY -54.784
- }
- BTR70_5 {
-  components {
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
-      SlotTemplate InventoryStorageSlot Morphine {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3DAEB055}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3D91D053}" {
-      NumSlots 18
-     }
-     MultiSlotConfiguration "{5A60D38E3DCB490D}" {
-      SlotTemplate InventoryStorageSlot RPKammunition {
-       Prefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
-      }
-      NumSlots 6
-     }
-     MultiSlotConfiguration "{60EB3061E5B6F277}" {
-      SlotTemplate InventoryStorageSlot ATMine {
-       Prefab "{63C1E699345B24F9}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Base.et"
-      }
-      NumSlots 2
-     }
-    }
-   }
-  }
-  coords 4136.724 6.46 3368.357
-  angleY -54.784
- }
- BTR70_6 {
-  components {
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
-      SlotTemplate InventoryStorageSlot Morphine {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3DAEB055}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3D91D053}" {
-      NumSlots 18
-     }
-     MultiSlotConfiguration "{5A60D38E3DCB490D}" {
-      SlotTemplate InventoryStorageSlot RPKammunition {
-       Prefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
-      }
-      NumSlots 6
-     }
-     MultiSlotConfiguration "{60EB3061E5B6F277}" {
-      SlotTemplate InventoryStorageSlot ATMine {
-       Prefab "{63C1E699345B24F9}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Base.et"
-      }
-      NumSlots 2
-     }
-    }
-   }
-  }
-  coords 4130.771 6.384 3359.378
-  angleY -54.784
- }
- BTR70_7 {
-  components {
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
-      SlotTemplate InventoryStorageSlot Morphine {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3DAEB055}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3D91D053}" {
-      NumSlots 18
-     }
-     MultiSlotConfiguration "{5A60D38E3DCB490D}" {
-      SlotTemplate InventoryStorageSlot RPKammunition {
-       Prefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
-      }
-      NumSlots 6
-     }
-     MultiSlotConfiguration "{60EB3061E5B6F277}" {
-      SlotTemplate InventoryStorageSlot ATMine {
-       Prefab "{63C1E699345B24F9}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Base.et"
-      }
-      NumSlots 2
-     }
-    }
-   }
-  }
-  coords 4120.426 9.723 3417.427
-  angleY 127.714
+  coords 4216.734 22.369 3851.359
+  angleY -59.354
  }
  BTR70_3 {
   components {
@@ -402,47 +342,7 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
     }
    }
   }
-  coords 4156.222 7.239 3398.966
-  angleY -54.784
- }
- BTR70_2 {
-  components {
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3CF4827A}" {
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{5A60D38E3C6A4E2F}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3C46CBE8}" {
-      SlotTemplate InventoryStorageSlot Morphine {
-       Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
-      }
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3DAEB055}" {
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{5A60D38E3D91D053}" {
-      NumSlots 18
-     }
-     MultiSlotConfiguration "{5A60D38E3DCB490D}" {
-      SlotTemplate InventoryStorageSlot RPKammunition {
-       Prefab "{E5912E45754CD421}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Tracer.et"
-      }
-      NumSlots 6
-     }
-     MultiSlotConfiguration "{60EB3061E5B6F277}" {
-      SlotTemplate InventoryStorageSlot ATMine {
-       Prefab "{63C1E699345B24F9}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Base.et"
-      }
-      NumSlots 2
-     }
-    }
-   }
-  }
-  coords 4163.891 7.065 3409.809
-  angleY -54.784
+  coords 4207.432 21.615 3837.424
+  angleY -59.354
  }
 }
