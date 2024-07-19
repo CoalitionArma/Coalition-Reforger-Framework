@@ -1,15 +1,53 @@
+Vehicle UAZ469_PKM1 : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ coords 3379.089 2.906 6152.544
+ angleY 67.303
+}
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 3408.131 2.906 6155.242
+  angleY 97.516
+ }
+ Ural4320_transport2 {
+  coords 3399.44 2.906 6156.389
+  angleY 97.516
+ }
+ Ural4320_transport3 {
+  coords 3390.524 2.906 6157.565
+  angleY 97.516
+ }
+ Ural4320_transport4 {
+  coords 3380.971 2.906 6158.072
+  angleY 97.516
+ }
+ Ural4320_transport5 {
+  coords 3398.411 2.956 6092.676
+  angleY 14.215
+ }
+}
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  coords 3381.608 2.906 6148.165
+  angleY 47.371
+ }
+ UAZ2 {
+  coords 3384.211 2.906 6145.335
+  angleY 32.351
+ }
+ UAZ3 {
+  coords 3397.246 2.956 6065.956
+  angleY -66.093
+ }
+ UAZ4 {
+  coords 3399.394 2.956 6074.092
+  angleY -114.021
+ }
+ UAZ5 {
+  coords 3396.15 2.956 6070
+  angleY -89.666
+ }
+}
 Vehicle AUS_UH60_unarmed1 : "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et" {
  coords 5591.314 3.429 2330.238
-}
-SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
- coords 5592.218 2.656 2024.476
- m_sCustomNameSet "Armor 1"
- {
-  SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
-   coords -1.316 -0 -17.79
-   m_sCustomNameSet "Armor 2"
-  }
- }
 }
 SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Command/CRF_USMC_Company.et" {
  coords 5551.365 2.657 2104.953
@@ -17,6 +55,9 @@ SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_S
   $grp SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Command/CRF_USMC_Platoon.et" {
    {
     coords 25.363 -0.001 32.278
+    m_aUnitPrefabSlots {
+     "{4BD0BFA3FC850A88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_PL.et" "{8F67D1B35C9DDE00}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_MedicalOfficer.et"
+    }
     {
      $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Infantry/CRF_USMC_RifleSquad.et" {
       {
@@ -39,6 +80,9 @@ SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_S
    }
    {
     coords 18.415 -0.001 -29.355
+    m_aUnitPrefabSlots {
+     "{4BD0BFA3FC850A88}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_PL.et" "{8F67D1B35C9DDE00}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/COALITION_STANDARD/CRF_USMC_MedicalOfficer.et"
+    }
     m_sCustomNameSet "2nd Platoon"
     {
      $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Infantry/CRF_USMC_RifleSquad.et" {
@@ -63,6 +107,20 @@ SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_S
   }
  }
 }
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered1 {
+  coords 3425.735 2.956 6087.782
+  angleY 4.118
+ }
+ Ural4320_transport_covered2 {
+  coords 3425.119 2.956 6079.225
+  angleY 4.118
+ }
+ Ural4320_transport_covered3 {
+  coords 3424.394 2.956 6069.154
+  angleY 4.118
+ }
+}
 SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_THCrew.et" {
  coords 5532.818 2.656 2028.462
  m_sCustomNameSet "Transport Helo 1"
@@ -70,6 +128,18 @@ SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_S
   SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_THCrew.et" {
    coords -2.365 0 -14.939
    m_sCustomNameSet "Transport Helo 2"
+   {
+    SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
+     coords 61.765 0 10.953
+     m_sCustomNameSet "Armor 1"
+     {
+      SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
+       coords -1.316 0 -17.79
+       m_sCustomNameSet "Armor 2"
+      }
+     }
+    }
+   }
   }
  }
 }
