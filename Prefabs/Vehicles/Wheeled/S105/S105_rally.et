@@ -10,6 +10,13 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
     }
    }
   }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     MouseSteering 1
+    }
+   }
+  }
   VehicleWheeledSimulation "{731B26FCA2F19855}" {
    Simulation Wheeled "{4D8B26DEA5F25978}" {
     Engine Engine Engine {
