@@ -63,8 +63,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
-		if (!Replication.IsServer()) // TODO: add check to exit if in workbench
-			return;
 		
 		m_sMissionName = GetGame().GetMissionName();
 		
