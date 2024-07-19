@@ -1,0 +1,22 @@
+SCR_DestructibleBuildingEntity : "{3FFDA3F44D951DF9}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03_NoWindows.et" {
+ coords 9889.41 -24.163 1616.758
+ angleY 45
+ scale 89.924
+}
+$grp SCR_DestructibleBuildingEntity : "{F09400CC1A27BE39}PrefabLibrary/Infrastructure/Naval/PierConcrete_01_20m.et" {
+ {
+  coords 10918.1 -132.421 1869.58
+  angleY 45
+  scale 58.553
+ }
+ {
+  coords 10245.563 69.297 2542.117
+  angleY 45
+  scale 58.553
+ }
+ {
+  coords 9055.786 -204.098 838.46
+  angleY -135
+  scale 100
+ }
+}
