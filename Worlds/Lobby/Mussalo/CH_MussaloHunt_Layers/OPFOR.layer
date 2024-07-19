@@ -1,0 +1,74 @@
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 3399.879 2.906 6140.335
+ m_aUnitPrefabSlots {
+  "{660FBA8855DEA977}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_PL.et" "{624E0FA587A22225}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MO.et" "{3902AEDAC9026562}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_Sharpshooter.et"
+ }
+ {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column "
+     }
+    }
+    coords 8.539 0 -10.763
+    angleY 90.48
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column "
+     }
+    }
+    coords 2.897 0 -10.853
+    angleY 90.749
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column "
+     }
+    }
+    coords -2.826 0 -10.278
+    angleY 90.699
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column "
+     }
+    }
+    coords -6.799 0 -10.23
+    angleY 90.699
+    m_aUnitPrefabSlots {
+     "{FF110311483998E7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_SL.et" "{BD13D9F5D4E7C337}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_Medic.et" "{6C8FFA2123F314EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_FTL_R.et" "{245F7E8F3CA46219}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MMG.et" "{3F6FA6680ACFF28D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MMGAG.et" "{2BA54F2817C87EFD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_FTL_G.et" "{BA2F0D9C0BBC5791}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_RiflemanAA.et" "{EBC046F446C0223C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MAT_G.et" "{961E7F8CF5492A1D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_RiflemanAAT.et"
+    }
+    m_sCustomNameSet "4th Squad"
+    {
+     SCR_AIGroup : "{ED04C9DEA30AC1FE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Support/CRF_RF_MSV_VKPO_MAT.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "column "
+       }
+      }
+      coords -0.486 0 -4.187
+      angleY -0.726
+      m_sCustomNameSet "MAT Team"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 3404.421 2.906 6126.498
+  angleY 0
+ }
+ {
+  coords 3404.421 2.906 6126.497
+  angleY -90.638
+ }
+}

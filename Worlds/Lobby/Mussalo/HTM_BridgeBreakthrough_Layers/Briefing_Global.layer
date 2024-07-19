@@ -9,7 +9,8 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "1x Truck (AT Mines)"\
   ""\
   "OPFOR:"\
-  "7x BTR-70s"\
+  "3x BTR-70s"\
+  "2x Ural Trucks"\
   "1x S1203 Ambulance"
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
@@ -19,10 +20,9 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   coords 6365.731 2.033 5109.627
   m_sTitle "Mission Notes"
   m_sTextData "Mission Notes:"\
-  "- 70min Timelimit / OPFOR 2:1 BLUFOR"\
+  "- 60min Timelimit / OPFOR 2:1 BLUFOR"\
   "- OPFOR cannot leave their safe zone until the game starts."\
   "- BLUFOR cannot leave their AO Limit and must stay inside it, with the encouragement to stay close to the Bridges."\
-  "- No excess use of Armed Vehicles than what is assigned to them (Check Global Assets)"\
   ""\
   "Notes for Admin/Game Master:"\
   "- Spawn S1203 Ambulance for OPFOR"\
@@ -35,8 +35,9 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  Situation {
   coords 6370.435 1.312 5095.98
   m_sTitle "Situation"
-  m_sTextData "BLUFOR finds itself isolated on the peninsula of Hirssari whilst they wait for a engineer unit to blow up the 3x bridges whilst OPFOR is on their heels to secure the 3x bridges to continue their advance deeper into the territory. "\
-  "Thankfully BLUFOR managed to maintain their supply truck with AT Mines whilst OPFOR is still fairly operational to proceed to take the 3x bridges."
+  m_sTextData "BLUFOR finds itself isolated on the peninsula of Hirssari as they were pulling back from the approaching OPFOR, now left to defend the two bridges & the village of Hirssaari whilst OPFOR is on their heels to secure the 2x bridges & village to continue their advance deeper into the territory. "\
+  ""\
+  "Thankfully BLUFOR managed to maintain their supply truck with AT Mines whilst OPFOR is still fairly operational to proceed to take the objectives."
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 1
