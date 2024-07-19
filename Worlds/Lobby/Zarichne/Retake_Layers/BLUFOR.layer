@@ -1,16 +1,6 @@
 Vehicle AUS_UH60_unarmed1 : "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et" {
  coords 4205.58 28.03 4191.155
 }
-$grp SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
- {
-  coords 4142.952 28.484 4171.013
-  m_sCustomNameSet "Stryker 1"
- }
- {
-  coords 4128.241 28.532 4170.66
-  m_sCustomNameSet "Stryker 2"
- }
-}
 SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Command/CRF_USMC_Company.et" {
  coords 4177.829 28.406 4151.177
  {
@@ -77,6 +67,18 @@ $grp SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALIT
  {
   coords 4176.214 28.406 4160.071
   m_sCustomNameSet "Transport Heli 2"
+  {
+   SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
+    coords -33.262 0.078 10.942
+    m_sCustomNameSet "Stryker 1"
+    {
+     SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/COALITION_STANDARD/Vehicles/CRF_USMC_ArmorCrew.et" {
+      coords -14.711 0.048 -0.353
+      m_sCustomNameSet "Stryker 2"
+     }
+    }
+   }
+  }
  }
 }
 $grp Vehicle : "{E3DD72FD06BA2320}Prefabs/Vehicles/Wheeled/Stryker/Stryker_CROWS.et" {
