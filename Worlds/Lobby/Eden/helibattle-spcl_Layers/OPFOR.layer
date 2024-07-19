@@ -1,0 +1,306 @@
+$grp SCR_AIGroup : "{E192BA64E43B50B4}Prefabs/Groups/OPFOR/1980s/Specials/Special_HeliBattle_Opfor_Crew.et" {
+ {
+  coords 10342.838 307.642 2407.54
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10370.953 307.642 2379.43
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10397.209 307.642 2353.169
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10423.857 307.641 2326.52
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10446.471 336.404 2303.912
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10763.075 103.271 1780.35
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10793.162 103.263 1750.26
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10819.299 103.26 1724.127
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10848.145 103.26 1695.281
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 11086.604 97.847 1849.129
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 11062.043 97.494 1873.694
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 11033.063 97.795 1902.668
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 11006.882 98.122 1928.852
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10983.185 98.417 1952.549
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10959.794 98.708 1975.941
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10932.309 99.05 2003.429
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10223.345 301.362 2728.705
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10199.263 301.768 2752.787
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10176.547 302.149 2775.504
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10150.688 302.585 2801.359
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10121.941 303.069 2830.105
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10096.018 303.505 2856.031
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10073.718 303.776 2878.332
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10297.245 307.063 2453.136
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+ {
+  coords 10325.354 307.485 2425.027
+  angleY -45
+  m_bSnapToTerrain 0
+  m_bPlayable 1
+ }
+}
+$grp Vehicle : "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialTan.et" {
+ UH1H_armed25 {
+  coords 10401.525 307.566 2343.152
+  angleX -1.046
+  angleY -135
+ }
+ UH1H_armed26 {
+  coords 10127.684 302.933 2819.504
+  angleX 2.188
+  angleY -135
+  angleZ -0.011
+ }
+ UH1H_armed27 {
+  coords 10079.675 303.742 2867.514
+  angleX 2.208
+  angleY -135
+  angleZ -0.001
+ }
+ UH1H_armed28 {
+  coords 10103.518 303.341 2843.677
+  angleX 2.208
+  angleY -135
+  angleZ -0.001
+ }
+ UH1H_armed29 {
+  coords 10155.319 302.469 2791.87
+  angleX 2.188
+  angleY -135
+  angleZ -0.011
+ }
+ UH1H_armed30 {
+  coords 10229.806 301.214 2717.384
+  angleX 2.179
+  angleY -134.947
+  angleZ 1.395
+ }
+ UH1H_armed31 {
+  coords 10181.796 302.023 2765.395
+  angleX 2.188
+  angleY -135
+  angleZ -0.011
+ }
+ UH1H_armed32 {
+  coords 10205.631 301.622 2741.558
+  angleX 2.179
+  angleY -134.947
+  angleZ 1.395
+ }
+ UH1H_armed33 {
+  coords 10938.576 98.958 1992.301
+  angleX -2.519
+  angleY -134.957
+  angleZ -0.97
+ }
+ UH1H_armed34 {
+  coords 11013.059 98.029 1917.816
+  angleX -2.519
+  angleY -134.957
+  angleZ -0.97
+ }
+ UH1H_armed35 {
+  coords 10965.046 98.627 1965.828
+  angleX -2.519
+  angleY -134.957
+  angleZ -0.97
+ }
+ UH1H_armed36 {
+  coords 10769.189 103.194 1768.522
+  angleX -1.046
+  angleY -134.982
+  angleZ -0.97
+ }
+ UH1H_armed37 {
+  coords 10988.886 98.33 1941.99
+  angleX -2.519
+  angleY -134.957
+  angleZ -0.97
+ }
+ UH1H_armed38 {
+  coords 11090.188 98.098 1840.685
+  angleX -0.129
+  angleY -135.001
+  angleZ 0.405
+ }
+ UH1H_armed39 {
+  coords 11066.353 97.57 1864.521
+  angleX -2.521
+  angleY -134.965
+  angleZ -0.8
+ }
+ UH1H_armed40 {
+  coords 10852.896 103.182 1684.528
+  angleX -0.129
+  angleY -135.001
+  angleZ 0.405
+ }
+ UH1H_armed41 {
+  coords 11039.878 97.694 1890.994
+  angleX -2.521
+  angleY -134.965
+  angleZ -0.8
+ }
+ UH1H_armed42 {
+  coords 10427.997 307.566 2316.679
+  angleX -1.046
+  angleY -134.982
+  angleZ -0.97
+ }
+ UH1H_armed43 {
+  coords 10745.023 103.2 1792.695
+  angleX -1.046
+  angleY -134.982
+  angleZ -0.97
+ }
+ UH1H_armed44 {
+  coords 10799.294 103.186 1738.427
+  angleX -1.046
+  angleY -134.982
+  angleZ -0.97
+ }
+ UH1H_armed45 {
+  coords 10376.356 307.602 2371.025
+  angleX -1.046
+  angleY -135
+ }
+ UH1H_armed46 {
+  coords 10825.773 103.186 1711.953
+  angleX 0.891
+  angleY -135
+ }
+ UH1H_armed47 {
+  coords 10352.188 307.601 2395.199
+  angleX -1.067
+  angleY -135
+  angleZ -0.011
+ }
+ UH1H_armed48 {
+  coords 10053.19 303.76 2893.988
+  angleX 2.206
+  angleY -134.977
+  angleZ 0.607
+ }
+ UH1H_armed49 {
+  coords 10330.76 307.593 2416.622
+  angleX -1.046
+  angleY -135
+ }
+ UH1H_armed50 {
+  coords 10306.588 307.231 2440.795
+  angleX -1.067
+  angleY -135
+  angleZ -0.011
+ }
+}
