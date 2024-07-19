@@ -1,4 +1,4 @@
-SCR_DestructibleBuildingEntity : "{3FFDA3F44D951DF9}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Town_E_2I03_NoWindows.et" {
+SCR_DestructibleBuildingEntity : "{50DC2A0204D26261}Prefabs/Structures/Houses/Town/House_Town_E_2I03/House_Test.et" {
  coords 9889.41 -24.163 1616.758
  angleY 45
  scale 89.924

@@ -1,30 +1,30 @@
 $grp SCR_AIGroup : "{E192BA64E43B50B4}Prefabs/Groups/OPFOR/1980s/Specials/Special_HeliBattle_Opfor_Crew.et" {
  {
-  coords 9901.323 306.689 2768.393
+  coords 10342.838 307.642 2407.54
   angleY -45
   m_bSnapToTerrain 0
   m_bPlayable 1
  }
  {
-  coords 9929.438 306.689 2740.283
+  coords 10370.953 307.642 2379.43
   angleY -45
   m_bSnapToTerrain 0
   m_bPlayable 1
  }
  {
-  coords 9955.694 306.689 2714.022
+  coords 10397.209 307.642 2353.169
   angleY -45
   m_bSnapToTerrain 0
   m_bPlayable 1
  }
  {
-  coords 9982.344 306.688 2687.373
+  coords 10423.857 307.641 2326.52
   angleY -45
   m_bSnapToTerrain 0
   m_bPlayable 1
  }
  {
-  coords 10004.955 335.451 2664.765
+  coords 10446.471 336.404 2303.912
   angleY -45
   m_bSnapToTerrain 0
   m_bPlayable 1
@@ -138,13 +138,13 @@ $grp SCR_AIGroup : "{E192BA64E43B50B4}Prefabs/Groups/OPFOR/1980s/Specials/Specia
   m_bPlayable 1
  }
  {
-  coords 9855.73 306.11 2813.989
+  coords 10297.245 307.063 2453.136
   angleY -45
   m_bSnapToTerrain 0
   m_bPlayable 1
  }
  {
-  coords 9883.841 306.532 2785.88
+  coords 10325.354 307.485 2425.027
   angleY -45
   m_bSnapToTerrain 0
   m_bPlayable 1
@@ -152,7 +152,7 @@ $grp SCR_AIGroup : "{E192BA64E43B50B4}Prefabs/Groups/OPFOR/1980s/Specials/Specia
 }
 $grp Vehicle : "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBattleSpecialTan.et" {
  UH1H_armed25 {
-  coords 9960.012 306.613 2704.005
+  coords 10401.525 307.566 2343.152
   angleX -1.046
   angleY -135
  }
@@ -253,7 +253,7 @@ $grp Vehicle : "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBat
   angleZ -0.8
  }
  UH1H_armed42 {
-  coords 9986.482 306.613 2677.532
+  coords 10427.997 307.566 2316.679
   angleX -1.046
   angleY -134.982
   angleZ -0.97
@@ -271,7 +271,7 @@ $grp Vehicle : "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBat
   angleZ -0.97
  }
  UH1H_armed45 {
-  coords 9934.843 306.649 2731.878
+  coords 10376.356 307.602 2371.025
   angleX -1.046
   angleY -135
  }
@@ -281,7 +281,7 @@ $grp Vehicle : "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBat
   angleY -135
  }
  UH1H_armed47 {
-  coords 9910.673 306.648 2756.052
+  coords 10352.188 307.601 2395.199
   angleX -1.067
   angleY -135
   angleZ -0.011
@@ -293,12 +293,12 @@ $grp Vehicle : "{FE118D38E97E04D3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_HeliBat
   angleZ 0.607
  }
  UH1H_armed49 {
-  coords 9889.245 306.64 2777.475
+  coords 10330.76 307.593 2416.622
   angleX -1.046
   angleY -135
  }
  UH1H_armed50 {
-  coords 9865.073 306.278 2801.648
+  coords 10306.588 307.231 2440.795
   angleX -1.067
   angleY -135
   angleZ -0.011
