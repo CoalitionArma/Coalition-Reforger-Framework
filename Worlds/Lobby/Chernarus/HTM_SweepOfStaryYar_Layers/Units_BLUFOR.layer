@@ -5,8 +5,10 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
   userScript "	// code here"\
   "	string mortar = \"{0374F390B22D0D1E}Mortars/81/M252new.et\";"\
   "	vector mortar1spawn, mortar2spawn;"\
-  "	IEntity mortar1trig, mortar2trig;"
-  EOnInit ""\
+  "	IEntity mortar1trig, mortar2trig;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
   "		mortar1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
   "		mortar2trig = GetGame().GetWorld().FindEntityByName(\"trig2\");"\
   "		mortar1spawn = mortar1trig.GetOrigin();"\
@@ -19,7 +21,9 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
   "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
   "		spawnParams.Transform[3] = mortar2spawn;"\
   "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
-  "		"\
+  "	}"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
   "	"
  }
  M1025_armed_M2HB_MERDC1 {
