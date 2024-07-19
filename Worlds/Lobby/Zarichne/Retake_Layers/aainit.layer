@@ -1,0 +1,186 @@
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 90
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 22
+   m_fDayTimeAcceleration 4
+   m_fNightTimeAcceleration 4
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{61E42E6A75D0041A}" {
+     m_sWeatherPresetName "Overcast"
+     m_iStartingHour 22
+    }
+   }
+  }
+ }
+ coords 2540.469 -1248.015 1291.557
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{61E42E6469EFB8F0}" {
+   m_sFactionKey "RHS_US_USMC"
+   m_iCount 50
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+  PS_FactionRespawnCount "{61E42E64694822F4}" {
+   m_sFactionKey "RHS_RF_MSV"
+   m_iCount 35
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+ }
+ {
+  SCR_FactionManager "61E42E71918BF97D" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR (DEF)"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61E42E7277EA6BBF}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61E42E7262A64499}" {
+        m_sCallsign "MAT"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3: %4"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "BLUFOR (ATK)"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Coy"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{61E42E77A8E746C3}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61E42E77A8240D1F}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{61E42E77A847BBFA}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{61E42E77A86000A8}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61E42E77A9981462}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{61E42E7B719D513A}" {
+        m_sCallsign "TH1"
+       }
+       SCR_CallsignInfo "{61E42E7B71D808EB}" {
+        m_sCallsign "TH2"
+       }
+       SCR_CallsignInfo "{61E42E7B71FB47FE}" {
+        m_sCallsign "Armor1"
+       }
+       SCR_CallsignInfo "{61E53A88F4C9E3F4}" {
+        m_sCallsign "Armor2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ Objective_1 {
+  coords 1101.55 19.532 1372.491
+  m_sTitle "OBJ 1: Cache 1"
+  m_sTextData "Find and destroy the cache near the 'Cache 1 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 5
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_2 {
+  coords 1102.176 18.562 1369.261
+  m_sTitle "OBJ 2: Cache 2"
+  m_sTextData "Find and destroy the cache near the 'Cache 2 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 6
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_3 {
+  coords 1103.444 16.818 1363.211
+  m_sTitle "OBJ 3: Cache 3"
+  m_sTextData "Find and destroy the cache near the 'Cache 3 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 7
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_5 {
+  coords 1092.643 19.636 1380.25
+  m_sTitle "Defend Cache 1"
+  m_sTextData "Prevent Cache 1 from being secured"
+  m_iOrder 5
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ Objective_6 {
+  coords 1095.455 18.207 1374.08
+  m_sTitle "Defend Cache 2"
+  m_sTextData "Prevent Cache 2 from being secured"
+  m_iOrder 6
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ Objective_7 {
+  coords 1091.948 17.81 1376.021
+  m_sTitle "Defend Cache 3"
+  m_sTextData "Prevent Cache 3 from being secured"
+  m_iOrder 7
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ Objective_4 {
+  coords 917.453 17.282 1472.22
+  m_sTitle "OBJ 4: Cache 4"
+  m_sTextData "Find and destroy the cache near the 'Cache 4 Area' marker. It can be 500m2 around that marker."
+  m_iOrder 8
+  m_iScore 25
+  m_sFactionKey "RHS_US_USMC"
+ }
+ Objective_8 {
+  coords 922.202 17.409 1471.61
+  m_sTitle "Defend Cache 4"
+  m_sTextData "Prevent Cache 4 from being secured"
+  m_iOrder 8
+  m_iScore 25
+  m_sFactionKey "RHS_RF_MSV"
+ }
+}
