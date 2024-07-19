@@ -1,3 +1,11 @@
+Turret mtr1 : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
+ coords 6416.835 467.051 15003.878
+ angleY -88
+ constructor ""\
+ "		//SetEventMask(EntityEvent.SIMULATE);"\
+ "		GetGame().GetCallqueue().CallLater(EOnInit, 3000, false, parent);"\
+ "	"
+}
 PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  coords 6658.291 461.481 15285.798
  m_sTitle "Mission"
