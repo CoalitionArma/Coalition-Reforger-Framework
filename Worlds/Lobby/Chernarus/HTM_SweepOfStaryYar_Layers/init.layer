@@ -30,28 +30,28 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "ALPHA"
        }
        SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign "Mortar"
-       }
-       SCR_CallsignInfo "{55CCB792D1218E95}" {
         m_sCallsign "1-6"
        }
-       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{61E31916A93CCEBA}" {
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{61E31916A9103BD3}" {
+       SCR_CallsignInfo "{61E31916A93CCEBA}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{61E31916A9033F2A}" {
+       SCR_CallsignInfo "{61E31916A9103BD3}" {
         m_sCallsign "2-6"
        }
-       SCR_CallsignInfo "{61E31916A9750BCA}" {
+       SCR_CallsignInfo "{61E31916A9033F2A}" {
         m_sCallsign "2-1"
        }
-       SCR_CallsignInfo "{61E31916A9682942}" {
+       SCR_CallsignInfo "{61E31916A9750BCA}" {
         m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61E31916A9682942}" {
+        m_sCallsign "Mortar"
        }
       }
       m_sCallsignGroupFormat "%3"
