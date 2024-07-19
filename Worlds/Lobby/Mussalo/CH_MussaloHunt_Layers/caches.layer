@@ -13,11 +13,11 @@ $grp GenericEntity : "{6B52C6B5FEC3E369}Prefabs/Destructible/GMFX_Destructible_A
   "		// Get cache 1 global marker "\
   "		IEntity cache1MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker1global\");"\
   "		IEntity cache1Marker = GetWorld().FindEntityByName(\"cache1marker\");"\
-  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache1\");"\
+  "		IEntity ammoCache1 = GetWorld().FindEntityByName(\"cache1\");"\
   "		// Delete it"\
   "		delete cache1MarkerGlobal;"\
   "		delete cache1Marker;"\
-  "		delete ammoCache;"\
+  "		delete ammoCache1;"\
   "	"
  }
  dump2 {
@@ -34,11 +34,11 @@ $grp GenericEntity : "{6B52C6B5FEC3E369}Prefabs/Destructible/GMFX_Destructible_A
   "		// Get cache 1 global marker "\
   "		IEntity cache2MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker2global\");"\
   "		IEntity cache2Marker = GetWorld().FindEntityByName(\"cache2marker\");"\
-  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache2\");"\
+  "		IEntity ammoCache2 = GetWorld().FindEntityByName(\"cache2\");"\
   "		// Delete it"\
   "		delete cache2MarkerGlobal;"\
   "		delete cache2Marker;"\
-  "		delete ammoCache;"\
+  "		delete ammoCache2;"\
   "	"
  }
  dump3 {
@@ -55,11 +55,11 @@ $grp GenericEntity : "{6B52C6B5FEC3E369}Prefabs/Destructible/GMFX_Destructible_A
   "		// Get cache 1 global marker "\
   "		IEntity cache3MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker3global\");"\
   "		IEntity cache3Marker = GetWorld().FindEntityByName(\"cache3marker\");"\
-  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache3\");"\
+  "		IEntity ammoCache3 = GetWorld().FindEntityByName(\"cache3\");"\
   "		// Delete it"\
   "		delete cache3MarkerGlobal;"\
   "		delete cache3Marker;"\
-  "		delete ammoCache;"\
+  "		delete ammoCache3;"\
   "	"
  }
  dump4 {
@@ -76,11 +76,11 @@ $grp GenericEntity : "{6B52C6B5FEC3E369}Prefabs/Destructible/GMFX_Destructible_A
   "		// Get cache 1 global marker "\
   "		IEntity cache4MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker4global\");"\
   "		IEntity cache4Marker = GetWorld().FindEntityByName(\"cache4marker\");"\
-  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache4\");"\
+  "		IEntity ammoCache4 = GetWorld().FindEntityByName(\"cache4\");"\
   "		// Delete it"\
   "		delete cache4MarkerGlobal;"\
   "		delete cache4Marker;"\
-  "		delete ammoCache;"\
+  "		delete ammoCache4;"\
   "	"
  }
 }
