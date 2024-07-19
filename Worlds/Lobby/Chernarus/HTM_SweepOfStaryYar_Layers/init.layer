@@ -7,13 +7,13 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    m_iTimeLimitMinutes 60
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
-   m_iStartingHours 14
-   m_iRangeHoursStart 14
+   m_iStartingHours 15
+   m_iRangeHoursStart 15
    m_bUsePredefineStartingTimeAndWeatehr 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{61E3190097CF7291}" {
      m_sWeatherPresetName "Cloudy"
-     m_iStartingHour 14
+     m_iStartingHour 15
     }
    }
   }

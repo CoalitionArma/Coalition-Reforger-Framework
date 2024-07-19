@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" {
+SCR_ChimeraCharacter : "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" {
  ID "51FA8A5F28FD04BA"
  components {
   PS_PlayableComponent "{5EFCC1946F475F15}" {
@@ -17,14 +17,16 @@ SCR_ChimeraCharacter : "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
     ItemsInitConfigurationItem "{5A24B6035F7619E7}" {
+    }
+    ItemsInitConfigurationItem "{5538C040737C0BE0}" {
      PrefabsToSpawn {
-      "{31069EAFCA7AC221}Prefabs/Weapons/Ammo/Ammo_Rocket_Bunkerfaust_Besser.et" "{31069EAFCA7AC221}Prefabs/Weapons/Ammo/Ammo_Rocket_Bunkerfaust_Besser.et"
+      "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
      }
     }
     ItemsInitConfigurationItem "{61E3191EF04FFFC5}" {
      TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
      PrefabsToSpawn {
-      "{4D44C563104F77BB}Prefabs/Weapons/Ammo/Ammo_Rocket_M37A1.et" ""
+      "{4D44C563104F77BB}Prefabs/Weapons/Ammo/Ammo_Rocket_M37A1.et"
      }
     }
    }

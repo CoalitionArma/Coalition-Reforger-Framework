@@ -38,31 +38,31 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
   angleY -120
  }
 }
-SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_US80s_Command_PLT_p.et" {
  coords 6378.084 468.145 15021.346
  angleY 93.573
  m_aUnitPrefabSlots {
-  "{4E6F75B5BD23A5D9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_COYLead_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_RTO_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MedicalOfficer_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MedicalOfficer_P.et"
+  "{4E6F75B5BD23A5D9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_COYLead_P.et" "{EC7EDB04B4C7B73A}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_RTO_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MedicalOfficer_P.et" "{0248B6CF048C50C4}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MedicalOfficer_P.et"
  }
  m_sCustomNameSet "Alpha Company"
  {
-  SCR_AIGroup US80s_Mortar_Battery : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+  SCR_AIGroup US80s_Mortar_Battery : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_US80s_Command_PLT_p.et" {
    coords 15.86 0.341 -11.674
    angleY -167.978
    m_aUnitPrefabSlots {
-    "{F292322AE75EEE42}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Artillery_MortarGunner_P.et" "{F292322AE75EEE42}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Artillery_MortarGunner_P.et"
+    "{074713C8779D24DA}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyGunner_P.et" "{074713C8779D24DA}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyGunner_P.et"
    }
    m_sCustomNameSet "Mortar Batery (-)"
    {
-    SCR_AIGroup US80s_Platoon_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+    SCR_AIGroup US80s_Platoon_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_US80s_Command_PLT_p.et" {
      coords 12.679 -0.674 -20.07
      angleY 162.608
      m_aUnitPrefabSlots {
-      "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PL_P.et" "{3D5A0D4743D6A4BA}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_FO_P.et"
+      "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_PL_P.et" "{BDF3B4A862AFD553}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_FO_P.et"
      }
      m_sCustomNameSet "1st Platoon"
      {
-      SCR_AIGroup US80s_RifleSquad_1 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_USMC_Infantry_RifleSquad_p.et" {
+      SCR_AIGroup US80s_RifleSquad_1 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_USMC_Infantry_RifleSquad_p.et" {
        components {
         AIFormationComponent "{507E9DC12F541FE6}" {
          DefaultFormation "Column"
@@ -71,11 +71,11 @@ SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/
        coords 4.908 -0.357 6.494
        angleY -178.019
        m_aUnitPrefabSlots {
-        "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et"
+        "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et"
        }
        m_sCustomNameSet "1st Rifle Squad"
        {
-        SCR_AIGroup US80s_RifleSquad_2 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_USMC_Infantry_RifleSquad_p.et" {
+        SCR_AIGroup US80s_RifleSquad_2 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_USMC_Infantry_RifleSquad_p.et" {
          components {
           AIFormationComponent "{507E9DC12F541FE6}" {
            DefaultFormation "Column"
@@ -83,11 +83,11 @@ SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/
          }
          coords 4.42 0.058 -0.325
          m_aUnitPrefabSlots {
-          "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et"
+          "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et"
          }
          m_sCustomNameSet "2nd Rifle Squad"
          {
-          SCR_AIGroup US80s_WeaponSquad_1 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_USMC_Infantry_RifleSquad_p.et" {
+          SCR_AIGroup US80s_WeaponSquad_1 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_USMC_Infantry_RifleSquad_p.et" {
            components {
             AIFormationComponent "{507E9DC12F541FE6}" {
              DefaultFormation "Column"
@@ -95,19 +95,19 @@ SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/
            }
            coords 4.42 0.122 0.49
            m_aUnitPrefabSlots {
-            "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MG_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMG_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMAT_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMAT_P.et"
+            "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_SL_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MG_R_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMG_R_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MG_R_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMG_R_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMAT_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMAT_P.et"
            }
            m_sCustomNameSet "3rd Weapon Squad"
            {
-            SCR_AIGroup US80s_Platoon_HQ_2 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/Command/Group_US80s_Command_PLT_p.et" {
+            SCR_AIGroup US80s_Platoon_HQ_2 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_US80s_Command_PLT_p.et" {
              coords 15.098 0.305 6.648
              angleY 178.019
              m_aUnitPrefabSlots {
-              "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PL_P.et" "{3D5A0D4743D6A4BA}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_FO_P.et"
+              "{D164278FD7D9C81A}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_PL_P.et" "{BDF3B4A862AFD553}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_FO_P.et"
              }
              m_sCustomNameSet "2nd Platoon"
              {
-              SCR_AIGroup US80s_RifleSquad_3 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_USMC_Infantry_RifleSquad_p.et" {
+              SCR_AIGroup US80s_RifleSquad_3 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_USMC_Infantry_RifleSquad_p.et" {
                components {
                 AIFormationComponent "{507E9DC12F541FE6}" {
                  DefaultFormation "Column"
@@ -116,11 +116,11 @@ SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/
                coords 4.908 -0.357 6.494
                angleY -178.019
                m_aUnitPrefabSlots {
-                "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et"
+                "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et"
                }
                m_sCustomNameSet "1st Rifle Squad"
                {
-                SCR_AIGroup US80s_RifleSquad_4 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/Infantry/Group_USMC_Infantry_RifleSquad_p.et" {
+                SCR_AIGroup US80s_RifleSquad_4 : "{FF4113C2FB4BCA7D}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_USMC_Infantry_RifleSquad_p.et" {
                  components {
                   AIFormationComponent "{507E9DC12F541FE6}" {
                    DefaultFormation "Column"
@@ -128,7 +128,7 @@ SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/
                  }
                  coords 4.42 0.058 -0.325
                  m_aUnitPrefabSlots {
-                  "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_TL1_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman_P.et"
+                  "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_SL_P.et" "{547BA14003A67C04}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et" "{094747C4F8BE9F9F}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_TL_R_P.et" "{7E44CF4FB58F8FF7}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AR_P.et" "{C262DC827577226C}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_LAT_P.et" "{64AD55FF89C97DF9}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Rifleman_P.et"
                  }
                  m_sCustomNameSet "2nd Rifle Squad"
                 }
