@@ -205,3 +205,41 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
 }
+$grp GenericEntity : "{ED511224477B9B85}M252_placeable.et" {
+ {
+  coords 6362.218 468.587 15007.934
+  angleY -86.539
+  {
+   Turret {
+    ID "61C7064F8A1089A8"
+    components {
+     SCR_UniversalInventoryStorageComponent "{61C7064DDAD1CDE3}" {
+      MultiSlots {
+       MultiSlotConfiguration "{61C7064DDAD1CD13}" {
+        NumSlots 3
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 6367.536 468.406 15012.864
+  angleY -86.539
+  {
+   Turret {
+    ID "61C7064F8A1089A8"
+    components {
+     SCR_UniversalInventoryStorageComponent "{61C7064DDAD1CDE3}" {
+      MultiSlots {
+       MultiSlotConfiguration "{61C7064DDAD1CD13}" {
+        NumSlots 3
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

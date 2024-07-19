@@ -1,33 +1,3 @@
-$grp Turret : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{61C7064DDAD1CDE3}" {
-    MultiSlots {
-     MultiSlotConfiguration "{61C7064DDAD1CD13}" {
-      NumSlots 3
-     }
-    }
-   }
-  }
-  coords 6361.578 468.613 15007.853
-  angleY -85.394
-  Flags 1048576
- }
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{61C7064DDAD1CDE3}" {
-    MultiSlots {
-     MultiSlotConfiguration "{61C7064DDAD1CD13}" {
-      NumSlots 3
-     }
-    }
-   }
-  }
-  coords 6368.481 468.391 15011.791
-  angleY -85.394
-  Flags 1048576
- }
-}
 $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
  M1025_armed_M2HB_MERDC2 {
   coords 6408.293 467.24 14988.736
