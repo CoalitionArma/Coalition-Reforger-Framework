@@ -1,0 +1,17 @@
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ coords 6377.719 158.299 6423.97
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{61BCFED0254B8F72}" {
+   m_sFactionKey "RHS_US_USMC"
+   m_iCount 50
+   m_iTime 120000
+   m_bWaveMode 1
+  }
+ }
+ {
+  SCR_FactionManager "61DD1E7628BA75E8" {
+   ID "61BCFEC02D38B83E"
+   coords 0 0 0
+  }
+ }
+}

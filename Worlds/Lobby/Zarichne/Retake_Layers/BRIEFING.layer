@@ -1,0 +1,47 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 2008.999 7.239 2254.756
+ m_sTitle "MSV Brief"
+ m_sTextData "Utilize your superior numbers and movement capability to defend the Four caches marked on the map."\
+ ""\
+ "The blue 'cache?' markers are shown to BLUFOR and they will search that area."\
+ ""\
+ "extra vehicles can be found marked on the map near spawn."\
+ ""\
+ "You have 35 respawns."
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+ m_iOrder 3
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 2004.907 6.875 2256.969
+ m_sTextData "OPFOR:"\
+ "1x UAZ-PKM"\
+ "Unarmed UAZs"\
+ "Trucks"\
+ ""\
+ "BLUFOR:"\
+ "2x Unarmed UH-60"\
+ "1X Armed UH-60"
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2006.837 7.047 2255.914
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 2001.493 6.174 2254.085
+ m_sTitle "USMC Briefing"
+ m_sTextData "Use your superior movement capability and fire support with the UH-60s to move the Marine element around the AO, search for and find the caches, and destroy them."\
+ ""\
+ "Caches must be destroyed with demolition blocks."\
+ ""\
+ "You have 50 respawns."
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+ m_iOrder 3
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2010.526 7.69 2257.84
+ m_sTextData "An air mobile USMC company has been tasked with engaging a rear element of MSV and eliminating their supply caches to make way for the main force."
+}

@@ -1,0 +1,201 @@
+$grp GenericEntity : "{6B52C6B5FEC3E369}Prefabs/Destructible/GMFX_Destructible_AmmoDump.et" {
+ dump1 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 1000
+   }
+  }
+  coords 2078.725 10.611 1292.226
+  angleY -89.094
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache1 Destroyed!\", 8);"\
+  "		"\
+  "		// Get cache 1 global marker "\
+  "		IEntity cache1MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker1global\");"\
+  "		IEntity cache1Marker = GetWorld().FindEntityByName(\"cache1marker\");"\
+  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache1\");"\
+  "		// Delete it"\
+  "		delete cache1MarkerGlobal;"\
+  "		delete cache1Marker;"\
+  "		delete ammoCache;"\
+  "	"
+ }
+ dump2 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 1000
+   }
+  }
+  coords 2470.677 8.955 2466.895
+  angleY -4
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache2 Destroyed!\", 8);"\
+  "		"\
+  "		// Get cache 1 global marker "\
+  "		IEntity cache1MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker2global\");"\
+  "		IEntity cache1Marker = GetWorld().FindEntityByName(\"cache2marker\");"\
+  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache2\");"\
+  "		// Delete it"\
+  "		delete cache1MarkerGlobal;"\
+  "		delete cache1Marker;"\
+  "		delete ammoCache;"\
+  "	"
+ }
+ dump3 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 1000
+   }
+  }
+  coords 1382.929 15.717 2917.858
+  angleY -137.622
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache3 Destroyed!\", 8);"\
+  "		"\
+  "		// Get cache 1 global marker "\
+  "		IEntity cache1MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker3global\");"\
+  "		IEntity cache1Marker = GetWorld().FindEntityByName(\"cache3marker\");"\
+  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache3\");"\
+  "		// Delete it"\
+  "		delete cache1MarkerGlobal;"\
+  "		delete cache1Marker;"\
+  "		delete ammoCache;"\
+  "	"
+ }
+ dump4 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 1000
+   }
+  }
+  coords 1509.218 28.748 2215.082
+  angleY 39.627
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache4 Destroyed!\", 8);"\
+  "		"\
+  "		// Get cache 1 global marker "\
+  "		IEntity cache1MarkerGlobal = GetWorld().FindEntityByName(\"cachemarker4global\");"\
+  "		IEntity cache1Marker = GetWorld().FindEntityByName(\"cache4marker\");"\
+  "		IEntity ammoCache = GetWorld().FindEntityByName(\"cache4\");"\
+  "		// Delete it"\
+  "		delete cache1MarkerGlobal;"\
+  "		delete cache1Marker;"\
+  "		delete ammoCache;"\
+  "	"
+ }
+}
+GenericEntity : "{A817454D4372DBCA}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Tent_Soviet.et" {
+ coords 2469.767 9.17 2466.539
+ angleX 5.201
+ angleY -85.54
+ angleZ 6.583
+}
+$grp GenericEntity : "{EA34AA1A128DDF6E}Prefabs/Props/Military/Arsenal/AmmoBoxes/AmmoBoxCache_CP.et" {
+ cache1 {
+  components {
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 2078.206 10.611 1293.571
+  angleY -86.766
+  {
+   GenericEntity {
+    ID "58C4A255C2BC3015"
+    coords -0.349 0 0.866
+   }
+   GenericEntity {
+    ID "58C4A255C2BC31E7"
+    coords -1.132 0 -0.057
+   }
+   GenericEntity {
+    ID "58C4A255C2BC31D4"
+    coords 0.036 0 -1.064
+   }
+   GenericEntity {
+    ID "58C4A255C2BC30C8"
+    coords 0.533 0 0.922
+   }
+   GenericEntity {
+    ID "58C4A255C2BC30E4"
+    coords 1.104 0 0.282
+   }
+   GenericEntity {
+    ID "58C4A6B41F6088BA"
+    coords 0.438 0 0.315
+    {
+     DecalEntity {
+      ID "56DEFDB4A2C87F38"
+      coords 0 0 -0.001
+     }
+    }
+   }
+  }
+ }
+ cache2 {
+  components {
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 2469.353 8.919 2466.813
+  angleX 6.255
+  angleY 95.82
+  angleZ -0.79
+ }
+ cache3 {
+  components {
+   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+    m_eArsenalSaveType SAVING_DISABLED
+   }
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 1382.195 15.718 2918.375
+  angleY 141.284
+  {
+   GenericEntity {
+    ID "58C4A255C2BC3015"
+    coords -0.349 -0.074 0.866
+    angleY -45.82
+   }
+   GenericEntity {
+    ID "58C4A255C2BC31E7"
+    coords -1.132 -0.014 -0.057
+    angleY 89.179
+   }
+   GenericEntity {
+    ID "58C4A255C2BC31D4"
+    coords 0.036 0.098 -1.064
+    angleY 177.707
+   }
+   GenericEntity {
+    ID "58C4A255C2BC30C8"
+    coords 0.532 -0.065 0.922
+    angleY -19.083
+   }
+   GenericEntity {
+    ID "58C4A255C2BC30E4"
+    coords 1.104 -0.005 0.282
+    angleY 39.419
+   }
+   GenericEntity {
+    ID "58C4A6B41F6088BA"
+    coords 0.437 -0.019 0.315
+    angleY 54.557
+   }
+  }
+ }
+ cache4 {
+  components {
+   SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+    "faction affiliation" "FIA"
+   }
+  }
+  coords 1508.173 28.748 2215.827
+  angleX 6.255
+  angleY 139.447
+  angleZ -0.79
+ }
+}

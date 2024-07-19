@@ -1,0 +1,423 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ GameZoneSafeStart_BLUFOR_3 {
+  coords 3225.877 21.073 2336.234
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_4 {
+  coords 3285.404 19.422 2309.149
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_5 {
+  coords 3339.397 17.27 2300.175
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_6 {
+  coords 3405.242 20.164 2322.94
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_7 {
+  coords 3425.104 20.875 2365.685
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_8 {
+  coords 3427.017 21.034 2412.193
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_9 {
+  coords 3385.086 21.536 2480.32
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_10 {
+  coords 3316.611 21.344 2491.646
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_11 {
+  coords 3254.256 21.531 2465.855
+  angleY 0
+  m_fWorldSize 60
+ }
+ GameZoneSafeStart_BLUFOR_12 {
+  coords 3218.801 21.461 2406.755
+  angleY 0
+  m_fWorldSize 60
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ x_AO_Limit_1 {
+  coords 1650.677 16.836 2272.589
+  angleY 0
+  m_fWorldSize 125
+ }
+ GameZoneMarker_OPFOR_1 {
+  coords 2127.072 0 2348.528
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_2 {
+  coords 2149.493 0 2266.372
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_3 {
+  coords 2156.672 0 2183.786
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_4 {
+  coords 2183.015 0 2114.12
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_5 {
+  coords 2214.029 0 2048.701
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_6 {
+  coords 2218.878 0 1954.405
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_7 {
+  coords 2228.64 0 1861.668
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_8 {
+  coords 2242.163 0 1763.147
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_9 {
+  coords 2261.925 0 1649.359
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ PathMarker_1 {
+  coords 2243.791 0 1698.484
+  angleY -98.582
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "arrow-medium-3"
+  m_fWorldSize 50
+  m_sDescription "Crossing Delta"
+ }
+ PathMarker_2 {
+  coords 2197.854 0.324 2082.161
+  angleY -119.176
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "arrow-medium-3"
+  m_fWorldSize 50
+  m_sDescription "Crossing Charlie"
+ }
+ PathMarker_3 {
+  coords 2155.195 0 2222.64
+  angleY -102.148
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "arrow-medium-3"
+  m_fWorldSize 50
+  m_sDescription "Crossing Bravo"
+ }
+ PathMarker_4 {
+  coords 2059.827 0 2451.485
+  angleY -115.538
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "arrow-medium-3"
+  m_fWorldSize 50
+  m_sDescription "Crossing Alpha"
+ }
+ x_AO_Limit_2 {
+  coords 1668.815 32.668 2186.94
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_3 {
+  coords 1686.471 15.094 2076.175
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_4 {
+  coords 1708.008 19.838 1992.907
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_5 {
+  coords 1722.474 7.938 1892.412
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_6 {
+  coords 1741.527 7.133 1795.721
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_7 {
+  coords 1769.532 9.794 1689.799
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_8 {
+  coords 1839.676 7.479 1642.257
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_9 {
+  coords 1900.199 7.197 1614.623
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_10 {
+  coords 1971.298 7.438 1605.955
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_11 {
+  coords 2042.967 7.309 1605.274
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_12 {
+  coords 2115.302 6.626 1605.983
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_13 {
+  coords 2173.839 4.339 1603.031
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_14 {
+  coords 2236.527 2.651 1593.674
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_15 {
+  coords 2322.579 0 1630.298
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_16 {
+  coords 2418.878 0 1602.931
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_17 {
+  coords 2537.073 7.001 1622.169
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_18 {
+  coords 2613.709 20.043 1632.003
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_19 {
+  coords 2714.769 13.522 1634.471
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_20 {
+  coords 2814.872 15.562 1631.695
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_21 {
+  coords 2932.274 16.151 1635.694
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_22 {
+  coords 3019.2 16.769 1656.563
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_23 {
+  coords 3123.224 17.25 1692.203
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_24 {
+  coords 3255.884 17.562 1735.968
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_25 {
+  coords 3345.677 18.713 1803.929
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_26 {
+  coords 3380.913 19.592 1921.899
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_27 {
+  coords 3412.265 20.781 2043.938
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_28 {
+  coords 3434.093 20.17 2176.881
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_29 {
+  coords 3453.894 20.156 2290.185
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_30 {
+  coords 3434.547 21.464 2451.676
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_31 {
+  coords 3352.453 22.188 2597.599
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_32 {
+  coords 3204.136 22.44 2700.195
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_33 {
+  coords 3033.705 22.313 2725.955
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_34 {
+  coords 2921.174 21.022 2715.039
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_35 {
+  coords 2782.073 15.262 2684.25
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_36 {
+  coords 2665.958 13.319 2654.447
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_37 {
+  coords 2524.85 8.35 2677.597
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_38 {
+  coords 2371.774 9.534 2659.292
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_39 {
+  coords 2249.35 8.602 2635.15
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_40 {
+  coords 2115.959 8.326 2550.918
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_41 {
+  coords 2028.152 0 2523.044
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_42 {
+  coords 1962.474 0.817 2476.958
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_43 {
+  coords 1892.764 2.909 2445.813
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_44 {
+  coords 1825.326 9.031 2438.061
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_45 {
+  coords 1752.98 14.374 2446.134
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_46 {
+  coords 1700.154 32.953 2432.84
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_47 {
+  coords 1684.773 22.234 2372.429
+  angleY 0
+  m_fWorldSize 125
+ }
+ x_AO_Limit_48 {
+  coords 1648.121 16.363 2325.254
+  angleY 0
+  m_fWorldSize 125
+ }
+ GameZoneMarker_OPFOR_10 {
+  coords 2078.921 0 2414.411
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ GameZoneMarker_OPFOR_11 {
+  coords 2036.627 0 2495.555
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 60
+  m_sDescription "OPFOR AO Limit"
+ }
+ Unit_BLUFOR {
+  coords 3601.248 21.199 2405.673
+  angleY 90
+  m_sImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+  m_sImageSetGlow "{D1BFDF90DD7A4E01}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor-outline.imageset"
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "motorized-infantry"
+  m_fWorldSize 250
+  m_sDescription "US Motorized Infantry Platoon (+)"
+ }
+ Unit_OPFOR {
+  coords 1609.837 14.002 1924.164
+  angleY 90
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "motorized-infantry"
+  m_fWorldSize 250
+  m_sDescription "USSR Motorized Infantry Platoon"
+ }
+}

@@ -1,0 +1,211 @@
+$grp SCR_FactionControlTriggerEntity {
+ Capture {
+  coords 4965.617 474.188 15099.867
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "    static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 130
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            Print(\"American Forces have secured Stary Yar!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Stary Yar Secured\", 15, \"American Forces have secured Stary Yar!\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "	"
+  m_sOwnerFactionKey "US"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+  {
+   PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords 4.128 -0.004 19.485
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "flag-3"
+    m_fWorldSize 50
+    m_sDescription "Stary Yar"
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0.576 0.219 2.435
+     m_sTitle "OBJ: Defend Stary Yar"
+     m_sTextData "Defend Stary Yar"
+     m_iOrder 2
+     m_iScore 20
+     m_sFactionKey "USSR"
+    }
+    {
+     coords 0.117 0.223 -2.66
+     m_sTitle "OBJ: Secure Stary Yar"
+     m_sTextData "Secure Stary Yar"
+     m_iOrder 2
+     m_iScore 20
+     m_sFactionKey "US"
+    }
+   }
+  }
+ }
+ Capture2 {
+  coords 5291.242 478.78 15147.805
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "    static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 41.8
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            Print(\"American Forces have secured the Northern Checkpoint!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Northern Checkpoint Secured\", 15, \"American Forces have secured the Northern Checkpoint!\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "	"
+  m_sOwnerFactionKey "US"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+  {
+   PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords 7.842 0.179 -0.574
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification-2"
+    m_fWorldSize 50
+    m_sDescription "Northern Checkpoint"
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0.116 0.202 -2.661
+     m_sTitle "OBJ: Secure Northern Checkpoint"
+     m_sTextData "Secure Northern Checkpint"
+     m_iOrder 1
+     m_iScore 20
+     m_sFactionKey "US"
+    }
+    {
+     coords 0.575 0.193 2.435
+     m_sTitle "OBJ: Defend Northern Checkpoint"
+     m_sTextData "Defend Northern Checkpoint"
+     m_iOrder 1
+     m_iScore 20
+     m_sFactionKey "USSR"
+    }
+   }
+  }
+ }
+ Capture3 {
+  coords 5357.721 481.81 14922.522
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "    static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 41.8
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            Print(\"American Forces have secured the Southern Checkpoint!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Southern Checkpoint Secured\", 15, \"American Forces have secured the Southern Checkpoint!\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "	"
+  m_sOwnerFactionKey "US"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.8
+  {
+   PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords 1.187 -0.444 -12.217
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification-2"
+    m_fWorldSize 50
+    m_sDescription "Southern Checkpoint"
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0.575 0.38 2.436
+     m_sTitle "OBJ: Defend Southern Checkpoint"
+     m_sTextData "Defend Southern Checkpoint"
+     m_iScore 60
+     m_sFactionKey "USSR"
+    }
+    {
+     coords 0.115 0.11 -2.661
+     m_sTitle "OBJ: Secure Southern Checkpoint"
+     m_sTextData "Secure Southern Checkpint"
+     m_iScore 60
+     m_sFactionKey "US"
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{1ABA1239EEA6FAC6}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Bunker_Soviet.et" {
+ coords 5281.052 477.895 15181.8
+ angleY 26.134
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 5043.166 477.985 15109.538
+  angleY 0
+  m_MarkerColor 1 0.752 0 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 50
+  m_sDescription "Fortification 1"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4971.743 476.992 15155.217
+  angleY 0
+  m_MarkerColor 1 0.752 0 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 50
+  m_sDescription "Fortification 2"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4926.125 480.305 14999.213
+  angleY 0
+  m_MarkerColor 1 0.752 0 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 50
+  m_sDescription "Fortification 3"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4860.434 477.21 15192.538
+  angleY 0
+  m_MarkerColor 1 0.752 0 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 50
+  m_sDescription "Fortification 4"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}

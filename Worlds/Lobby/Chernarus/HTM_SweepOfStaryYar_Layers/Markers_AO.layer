@@ -1,0 +1,182 @@
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 6370.67 457.995 14732.714
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6253.365 464.416 15356.973
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5713.904 469.255 15356.818
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5883.535 468.291 15356.309
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6038.345 470.014 15356.284
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5368.637 472.411 15357.249
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5540.427 470.633 15357.025
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6436.875 479.292 15318.301
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6509.152 471.528 15106.176
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6486.388 472.426 15213.516
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6447.77 464.89 14857.143
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6504.653 472.815 14973.046
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5576.281 483.369 14817.181
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6192.671 465.395 14731.666
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 6033.254 477.073 14753.094
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5883.116 477.424 14767.992
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5716.294 473.39 14793.379
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 4781.971 463.942 14944.436
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5297.824 479.54 14918.309
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5424.678 471.773 14860.13
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5229.373 470.962 14848.118
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5108.649 468.738 14880.424
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 4994.242 469.03 14898.486
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 4865.872 458.556 14884.943
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5013.018 477.653 15356.219
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 4782.708 474.156 15188.669
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 4748.612 474.204 15070.912
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 4815.18 474.157 15283.901
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 4869.708 474.52 15337.31
+  angleY 0
+  m_fWorldSize 125
+ }
+ {
+  coords 5212.16 472.417 15356.66
+  angleY 0
+  m_fWorldSize 125
+ }
+ UnitMarkers_1 {
+  coords 6698.853 465.001 15096.639
+  angleY 90
+  m_sImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+  m_sImageSetGlow "{D1BFDF90DD7A4E01}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor-outline.imageset"
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "infantry"
+  m_fWorldSize 150
+  m_sDescription "US Infantry Company (-)"
+ }
+ UnitMarkers_2 {
+  coords 6667.31 459.295 14939.014
+  angleY 90
+  m_sImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+  m_sImageSetGlow "{D1BFDF90DD7A4E01}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor-outline.imageset"
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "mortar"
+  m_fWorldSize 150
+  m_sDescription "US Mortar Battery (-)"
+ }
+ UnitMarkers_3 {
+  coords 4666.056 475.563 15163.421
+  angleY 90
+  m_sImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
+  m_sImageSetGlow "{B9356E7B2E974DCD}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor-outline.imageset"
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "infantry"
+  m_fWorldSize 175
+  m_sDescription "USSR Infantry Platoon"
+ }
+}

@@ -1,0 +1,1150 @@
+$grp GenericEntity : "{0D20C7931CB82F34}PrefabLibrary/Rocks/Granite/Granite_Boulder_01/Granite_Boulder_01_Fucus.et" {
+ {
+  coords 4800.597 0 11474.417
+  angleX 34.34
+  angleY -143.312
+  angleZ 71.327
+  scale 0.325
+ }
+ {
+  coords 4816.512 0.15 11539.336
+  angleX 34.34
+  angleY -143.312
+  angleZ 71.327
+  scale 0.325
+ }
+ {
+  coords 4817.781 0.275 11414.608
+  angleX 34.34
+  angleY -143.312
+  angleZ 71.327
+  scale 0.325
+ }
+ {
+  coords 4801.781 0 11422.309
+  angleY -143.312
+  scale 0.325
+ }
+ {
+  coords 4825.035 -0.001 11492.682
+  angleX 0.183
+  angleY -143.31
+  angleZ 1.253
+  scale 0.325
+ }
+ {
+  coords 4827.863 -0.001 11493.001
+  angleX 0.214
+  angleY -144.743
+  angleZ 1.248
+  scale 0.325
+ }
+}
+$grp GenericEntity : "{0DBE058F13F0C7E8}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V1_US.et" {
+ {
+  coords 4821.62 27.469 11633.104
+ }
+ {
+  coords 4800.661 27.469 11633.229
+ }
+}
+$grp GenericEntity : "{0E9A4FF62219106F}Prefabs/Rocks/Granite/GraniteCliff_03_Fucus.et" {
+ {
+  coords 4790.784 27.845 11274.266
+  angleY 92.583
+ }
+ {
+  coords 4830.697 29.193 11287.313
+  angleY -90.104
+ }
+ {
+  coords 4830.661 29.193 11306.916
+  angleY -90.104
+ }
+ {
+  coords 4834.389 29.591 11369.023
+  angleY -90.104
+ }
+ {
+  coords 4794.213 28.043 11369.055
+  angleY 92.583
+ }
+ {
+  coords 4793.072 28.043 11388.112
+  angleY 92.583
+ }
+ {
+  coords 4828.96 29.421 11441.179
+  angleY -90.104
+ }
+ {
+  coords 4792.628 28.226 11589.104
+  angleY 92.583
+ }
+ {
+  coords 4793.847 27.911 11609.626
+  angleY -90.104
+ }
+ {
+  coords 4829.743 27.47 11602.631
+  angleY -90.104
+ }
+ {
+  coords 4835.861 27.725 11528.737
+  angleY -90.104
+ }
+}
+$grp GenericEntity : "{14B2D417839BF8A3}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V1_USSR.et" {
+ {
+  coords 4821.983 28.119 11281.818
+ }
+ {
+  coords 4800.317 27.844 11281.108
+ }
+}
+GenericEntity : "{1E76B51555BFD029}PrefabLibrary/Props/Military/CannonWreck_01.et" {
+ coords 4817.162 28.971 11358.757
+ angleX 1.794
+ angleY 0.088
+ angleZ -2.68
+}
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
+ coords 4823.181 28.547 11453.218
+ angleY 60.111
+}
+GenericEntity : "{38CC50480D29CCFD}PrefabLibrary/Rocks/Granite/Granite_Boulder_01/Granite_Boulder_01.et" {
+ coords 4820.976 0.284 11602.195
+ angleX -16.095
+ angleY 89.151
+ angleZ 54.483
+ scale 0.6
+}
+$grp GenericEntity : "{39509EECDF44B5FB}Prefabs/Props/Industrial/Train/wagon_flat/wagon_flat_base.et" {
+ {
+  coords 4810.858 29.193 11470.162
+ }
+ {
+  coords 4810.857 29.193 11487.282
+ }
+}
+GenericEntity : "{549864A8B1ED43D3}PrefabLibrary/Rocks/Granite/Granite_Boulder_02/Granite_Boulder_02.et" {
+ coords 4820.748 0 11440.777
+ angleX -8.872
+ angleY 151.001
+ angleZ 158.444
+ scale 0.543
+}
+GenericEntity : "{6B623E396F94778F}Prefabs/Props/Industrial/Train/loco_chme3/loco_chme3_base.et" {
+ coords 4810.804 29.116 11396.298
+}
+$grp GameEntity : "{95EFB2EE402F81DB}PrefabsEditable/Auto/Props/Military/Generators/E_GeneratorFloodlight_US_01.et" {
+ {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 4856.467 27.728 11656.791
+  angleY -89.225
+ }
+ {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 4855.718 28.594 11697.279
+  angleY -89.856
+ }
+ {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 4855.961 28.399 11679.522
+  angleY -89.856
+ }
+ {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 4857.784 27.844 11226.417
+  angleY -88.329
+ }
+ {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 4857.179 27.844 11190.522
+  angleY -89.856
+ }
+ {
+  components {
+   SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+    m_eInitialLightState LIT
+   }
+  }
+  coords 4857.771 27.844 11207.228
+  angleY -89.856
+ }
+}
+$grp GenericEntity : "{96FEC29379CC13FE}Prefabs/Props/Industrial/Train/wagon_box/wagon_box_base.et" {
+ {
+  coords 4810.867 29.177 11421.083
+  angleY -179.884
+ }
+ {
+  coords 4810.868 29.177 11433.145
+ }
+ {
+  coords 4810.868 29.177 11409.035
+ }
+ {
+  coords 4810.868 29.177 11524.505
+ }
+ {
+  coords 4810.867 29.177 11536.44
+  angleY 179.725
+ }
+}
+GenericEntity : "{A237EA45CED8EBFA}PrefabsEditable/Auto/Props/Wrecks/E_M113_wreck.et" {
+ coords 4825.565 27.469 11546.901
+ angleY -152.428
+}
+$grp GenericEntity : "{B06A2E966157FE64}Prefabs/Rocks/Granite/GraniteCliff_01_Fucus.et" {
+ {
+  coords 4794.904 27.938 11307.3
+  angleY -90.057
+ }
+ {
+  coords 4794.891 27.938 11319.961
+  angleY -90.057
+ }
+ {
+  coords 4792.891 27.843 11258.154
+  angleY 91.063
+ }
+ {
+  coords 4792.651 27.843 11245.255
+  angleY 91.063
+ }
+ {
+  coords 4792.205 27.843 11221.253
+  angleY 91.063
+ }
+ {
+  coords 4792.445 27.843 11234.151
+  angleY 91.063
+ }
+ {
+  coords 4791.32 27.843 11173.596
+  angleY 91.063
+ }
+ {
+  coords 4791.56 27.843 11186.494
+  angleY 91.063
+ }
+ {
+  coords 4791.766 27.843 11197.598
+  angleY 91.063
+ }
+ {
+  coords 4792.006 27.843 11210.497
+  angleY 91.063
+ }
+ {
+  coords 4790.436 27.843 11125.971
+  angleY 91.063
+ }
+ {
+  coords 4790.676 27.843 11138.867
+  angleY 91.063
+ }
+ {
+  coords 4790.882 27.843 11149.973
+  angleY 91.063
+ }
+ {
+  coords 4791.122 27.843 11162.871
+  angleY 91.063
+ }
+ {
+  coords 4789.535 27.843 11077.443
+  angleY 91.063
+ }
+ {
+  coords 4789.775 27.843 11090.34
+  angleY 91.063
+ }
+ {
+  coords 4789.981 27.843 11101.445
+  angleY 91.063
+ }
+ {
+  coords 4790.221 27.843 11114.344
+  angleY 91.063
+ }
+ {
+  coords 4788.875 27.843 11041.86
+  angleY 91.063
+ }
+ {
+  coords 4789.321 27.843 11065.864
+  angleY 91.063
+ }
+ {
+  coords 4789.081 27.843 11052.967
+  angleY 91.063
+ }
+ {
+  coords 4788.396 27.843 11016.027
+  angleY 91.063
+ }
+ {
+  coords 4788.635 27.843 11028.926
+  angleY 91.063
+ }
+ {
+  coords 4831.025 29.318 11324.037
+  angleY -90.057
+ }
+ {
+  coords 4832.731 29.455 11384.928
+  angleY -90.057
+ }
+ {
+  coords 4832.047 29.455 11397.594
+  angleY -90.057
+ }
+ {
+  coords 4826.633 29.065 11425.511
+  angleY -90.057
+ }
+ {
+  coords 4794.108 27.945 11334.613
+  angleY 91.063
+ }
+ {
+  coords 4795.545 28.148 11438.348
+  angleY 91.063
+ }
+ {
+  coords 4791.986 27.961 11464.706
+  angleY 91.063
+ }
+ {
+  coords 4789.693 27.962 11542.811
+  angleY 91.063
+ }
+ {
+  coords 4789.944 27.962 11556.364
+  angleY 91.063
+ }
+ {
+  coords 4795.277 28.027 11626.196
+  angleY -90.057
+ }
+ {
+  coords 4834.827 27.469 11568.588
+  angleY -90.057
+ }
+ {
+  coords 4833.823 27.544 11556.935
+  angleY 91.063
+ }
+ {
+  coords 4834.003 27.544 11544.118
+  angleY 91.063
+ }
+ {
+  coords 4832.257 28.048 11496.635
+  angleY -90.057
+ }
+ {
+  coords 4832.27 28.048 11483.541
+  angleY -90.057
+ }
+ {
+  coords 4831.222 29.19 11455.771
+  angleY -90.057
+ }
+ {
+  coords 4792.331 28.263 11658.214
+  angleY 91.063
+ }
+ {
+  coords 4793.902 28.263 11742.773
+  angleY 91.063
+ }
+ {
+  coords 4793.663 28.263 11729.872
+  angleY 91.063
+ }
+ {
+  coords 4793.457 28.263 11718.771
+  angleY 91.063
+ }
+ {
+  coords 4793.217 28.263 11705.87
+  angleY 91.063
+ }
+ {
+  coords 4793.018 28.263 11695.113
+  angleY 91.063
+ }
+ {
+  coords 4792.778 28.263 11682.217
+  angleY 91.063
+ }
+ {
+  coords 4792.572 28.263 11671.111
+  angleY 91.063
+ }
+ {
+  coords 4792.53 27.083 11838.656
+  angleY 91.063
+ }
+ {
+  coords 4792.29 27.259 11825.757
+  angleY 91.063
+ }
+ {
+  coords 4795.354 27.494 11813.817
+  angleY 91.063
+ }
+ {
+  coords 4796.279 28.263 11801.37
+  angleY 91.063
+ }
+ {
+  coords 4794.795 28.263 11790.942
+  angleY 91.063
+ }
+ {
+  coords 4794.557 28.263 11778.043
+  angleY 91.063
+ }
+ {
+  coords 4794.351 28.263 11766.939
+  angleY 91.063
+ }
+ {
+  coords 4794.109 28.263 11754.04
+  angleY 91.063
+ }
+ {
+  coords 4794.347 25.585 11936.572
+  angleY 91.063
+ }
+ {
+  coords 4794.107 25.817 11923.667
+  angleY 91.063
+ }
+ {
+  coords 4793.901 25.991 11912.567
+  angleY 91.063
+ }
+ {
+  coords 4793.663 26.161 11899.665
+  angleY 91.063
+ }
+ {
+  coords 4793.461 26.33 11888.913
+  angleY 91.063
+ }
+ {
+  coords 4793.224 26.531 11876.016
+  angleY 91.063
+ }
+ {
+  coords 4793.019 26.687 11864.91
+  angleY 91.063
+ }
+ {
+  coords 4792.775 26.874 11852.013
+  angleY 91.063
+ }
+ {
+  coords 4794.575 25.362 11948.801
+  angleY 91.063
+ }
+}
+GenericEntity : "{B8AFE63C458E65E2}Prefabs/Rocks/Granite/Granite_Boulder_01_Fucus.et" {
+ coords 4830.13 -0.021 11543.966
+}
+$grp GenericEntity : "{BBDBFDFAD5276562}PrefabsEditable/Auto/Rocks/Granite/E_Granite_Boulder_01.et" {
+ {
+  coords 4828.908 -0.071 11539.432
+ }
+ {
+  coords 4792.903 -0.105 11538.338
+ }
+ {
+  coords 4801.121 0 11276.923
+  scale 0.348
+ }
+ {
+  coords 4805.628 0 11272.521
+  scale 0.319
+ }
+ {
+  coords 4816.849 0 11260.946
+  scale 0.314
+ }
+ {
+  coords 4822.901 0 11254.73
+  scale 0.313
+ }
+ {
+  coords 4814.908 0.078 11233.642
+  scale 0.285
+ }
+ {
+  coords 4820.666 0 11227.807
+  scale 0.317
+ }
+ {
+  coords 4826.349 0 11222.176
+  scale 0.285
+ }
+ {
+  coords 4831.96 0 11216.403
+  scale 0.317
+ }
+ {
+  coords 4798.342 0 11737.062
+  scale 0.363
+ }
+ {
+  coords 4806.356 0 11716.224
+  scale 0.314
+ }
+ {
+  coords 4798.145 0 11716.221
+  scale 0.314
+ }
+ {
+  coords 4807.383 0 11737.21
+  scale 0.314
+ }
+ {
+  coords 4815.426 0 11737.262
+  scale 0.314
+ }
+ {
+  coords 4822.347 0 11738.568
+  scale 0.314
+ }
+ {
+  coords 4815.161 0.027 11716.177
+  scale 0.314
+ }
+ {
+  coords 4823.271 0.261 11716.208
+  scale 0.314
+ }
+ {
+  coords 4828.847 0.12 11741.629
+  scale 0.314
+ }
+ {
+  coords 4818.908 0.001 11080.428
+  scale 0.285
+ }
+ {
+  coords 4819.732 0 11059.765
+  scale 0.285
+ }
+ {
+  coords 4799.04 0.25 11059.468
+  scale 0.285
+ }
+ {
+  coords 4801.427 0 11080.769
+  scale 0.285
+ }
+ {
+  coords 4794.794 0 11086.153
+  scale 0.285
+ }
+ {
+  coords 4806.448 0 11200.093
+  scale 0.516
+ }
+ {
+  coords 4803.722 0 11199.92
+  scale 0.516
+ }
+}
+$grp GenericEntity : "{BDAA871A06DABD74}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_burlap.et" {
+ {
+  coords 4801.838 27.844 11281.394
+ }
+ {
+  coords 4805.074 27.844 11281.394
+ }
+ {
+  coords 4816.788 27.941 11281.416
+ }
+ {
+  coords 4820.024 28.015 11281.416
+ }
+ {
+  coords 4823.125 28.15 11281.416
+ }
+ {
+  coords 4817.095 27.422 11632.102
+ }
+ {
+  coords 4820.342 27.443 11632.102
+ }
+ {
+  coords 4804.69 27.467 11631.979
+ }
+ {
+  coords 4801.564 27.621 11631.98
+ }
+}
+$grp GenericEntity : "{CEB7486188004842}Prefabs/Props/Industrial/Train/wagon_tanker/wagon_tanker_grey.et" {
+ {
+  coords 4810.831 29.202 11501.507
+ }
+ {
+  coords 4810.831 29.202 11512.771
+ }
+ {
+  coords 4810.831 29.202 11455.989
+ }
+ {
+  coords 4810.831 29.202 11444.687
+ }
+}
+$grp GenericEntity : "{D78FC91A69E3EA4C}PrefabsEditable/Auto/Rocks/Granite/E_Granite_Boulder_02.et" {
+ {
+  coords 4827.936 -0.031 11542.006
+ }
+ {
+  coords 4795.432 -0.007 11560.078
+ }
+ {
+  coords 4797.464 -0.153 11557.41
+ }
+ {
+  coords 4801.946 0 11247.136
+  scale 0.381
+ }
+ {
+  coords 4797.06 0 11251.89
+  scale 0.356
+ }
+ {
+  coords 4827.104 -0.741 11480.541
+ }
+ {
+  coords 4797.798 0.177 11482.9
+ }
+ {
+  coords 4823.551 -0.011 11359.522
+ }
+}
+GenericEntity : "{D99955DFCF7D3962}Prefabs/Props/Wrecks/CannonWreck_01.et" {
+ coords 4803.526 27.657 11570.833
+ angleY -178.507
+}
+$grp GenericEntity : "{E4BE27AA5AD0C035}Prefabs/Infrastructure/Railways/Railway 25M.et" {
+ {
+  coords 4810.864 28.59 11304.188
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11329.05
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11353.964
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11378.825
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11403.761
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11428.622
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11453.537
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11478.397
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11503.039
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11527.9
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11552.814
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11577.676
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11602.338
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11627.198
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11652.112
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11676.976
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11776.531
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11751.667
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11726.754
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11701.894
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11801.459
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11826.318
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11851.232
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11876.097
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11900.981
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11925.841
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11950.755
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11975.618
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11278.879
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11254.018
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11229.104
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11204.241
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11179.195
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11154.335
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11129.421
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11104.559
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11079.922
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11055.062
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11030.146
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 11005.285
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 10955.388
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 4810.864 28.59 10980.249
+  angleX 0
+  angleY 0
+ }
+}
+$grp GenericEntity : "{F09A0FB3D74B7C23}Prefabs/Rocks/Granite/GraniteCliff_02_Fucus.et" {
+ {
+  coords 4832.371 27.878 11270.647
+  angleY -89.978
+ }
+ {
+  coords 4792.011 27.907 11294.553
+  angleY 91.396
+ }
+ {
+  coords 4832.365 27.878 11254.957
+  angleY -89.978
+ }
+ {
+  coords 4839.788 27.844 11249.083
+  angleY 179.349
+ }
+ {
+  coords 4856.157 27.844 11248.622
+  angleY 179.349
+ }
+ {
+  coords 4866.26 28.055 11238.443
+  angleY -89.978
+ }
+ {
+  coords 4866.253 28.055 11220.608
+  angleY -89.978
+ }
+ {
+  coords 4866.239 28.055 11185.602
+  angleY -89.978
+ }
+ {
+  coords 4866.247 28.055 11203.438
+  angleY -89.978
+ }
+ {
+  coords 4829.789 28.055 11152.749
+  angleY -89.978
+ }
+ {
+  coords 4866.234 28.055 11170.571
+  angleY -89.978
+ }
+ {
+  coords 4838.65 27.844 11166.156
+  angleY 179.349
+ }
+ {
+  coords 4855.018 27.844 11165.696
+  angleY 179.349
+ }
+ {
+  coords 4829.856 27.843 11120.265
+  angleY -89.978
+ }
+ {
+  coords 4829.863 27.843 11135.955
+  angleY -89.978
+ }
+ {
+  coords 4830.05 27.843 11105.852
+  angleY -89.978
+ }
+ {
+  coords 4830.043 27.843 11090.159
+  angleY -89.978
+ }
+ {
+  coords 4830.038 27.843 11074.431
+  angleY -89.978
+ }
+ {
+  coords 4830.031 27.843 11058.737
+  angleY -89.978
+ }
+ {
+  coords 4830.025 27.843 11042.496
+  angleY -89.978
+ }
+ {
+  coords 4830.019 27.843 11026.803
+  angleY -89.978
+ }
+ {
+  coords 4830.565 28.324 11619.53
+  angleY -89.978
+ }
+ {
+  coords 4840.792 28.325 11715.854
+  angleY 179.349
+ }
+ {
+  coords 4857.158 28.325 11715.392
+  angleY 179.349
+ }
+ {
+  coords 4833.294 28.536 11737.724
+  angleY -89.978
+ }
+ {
+  coords 4833.739 28.536 11725.273
+  angleY -89.978
+ }
+ {
+  coords 4866.956 28.536 11702.703
+  angleY -89.978
+ }
+ {
+  coords 4866.947 28.536 11684.866
+  angleY -89.978
+ }
+ {
+  coords 4866.943 28.536 11669.837
+  angleY -89.978
+ }
+ {
+  coords 4866.935 28.536 11652.001
+  angleY -89.978
+ }
+ {
+  coords 4855.947 28.325 11645.499
+  angleY 179.349
+ }
+ {
+  coords 4839.58 28.325 11645.957
+  angleY 179.349
+ }
+ {
+  coords 4833.073 28.359 11754.224
+  angleY -89.978
+ }
+ {
+  coords 4833.08 28.359 11769.912
+  angleY -89.978
+ }
+ {
+  coords 4830.57 28.324 11635.222
+  angleY -89.978
+ }
+ {
+  coords 4832.07 29.279 11337.933
+  angleY -89.978
+ }
+ {
+  coords 4832.076 29.279 11354.44
+  angleY -89.978
+ }
+ {
+  coords 4830.455 29.478 11410.774
+  angleY -89.978
+ }
+ {
+  coords 4793.298 27.969 11350.318
+  angleY 91.396
+ }
+ {
+  coords 4792.001 28.026 11408.021
+  angleY 91.396
+ }
+ {
+  coords 4792.092 28.026 11425.031
+  angleY 91.396
+ }
+ {
+  coords 4789.146 27.961 11452.22
+  angleY 91.396
+ }
+ {
+  coords 4788.962 28.106 11480.713
+  angleY 91.396
+ }
+ {
+  coords 4789.357 28.106 11496.958
+  angleY 91.396
+ }
+ {
+  coords 4791.251 28.081 11513.184
+  angleY 91.396
+ }
+ {
+  coords 4789.085 28.213 11528.627
+  angleY 91.396
+ }
+ {
+  coords 4791.908 28.218 11571.197
+  angleY 91.396
+ }
+ {
+  coords 4792.709 28.193 11642.681
+  angleY 91.396
+ }
+ {
+  coords 4833.61 27.469 11582.491
+  angleY -89.978
+ }
+ {
+  coords 4836.812 27.951 11508.893
+  angleY -89.978
+ }
+ {
+  coords 4832.868 28.642 11469.172
+  angleY -89.978
+ }
+ {
+  coords 4834.06 28.595 11819.467
+  angleY -89.978
+ }
+ {
+  coords 4834.048 28.595 11787.532
+  angleY -89.978
+ }
+ {
+  coords 4834.054 28.595 11803.226
+  angleY -89.978
+ }
+ {
+  coords 4834.066 28.595 11834.115
+  angleY -89.978
+ }
+ {
+  coords 4834.072 28.595 11849.81
+  angleY -89.978
+ }
+ {
+  coords 4834.078 28.595 11866.051
+  angleY -89.978
+ }
+ {
+  coords 4834.084 28.595 11882.279
+  angleY -89.978
+ }
+ {
+  coords 4834.09 28.595 11897.975
+  angleY -89.978
+ }
+ {
+  coords 4834.096 28.595 11914.215
+  angleY -89.978
+ }
+ {
+  coords 4834.1 28.595 11923.624
+  angleY -89.978
+ }
+ {
+  coords 4834.106 28.595 11939.319
+  angleY -89.978
+ }
+ {
+  coords 4821.625 28.187 11015.379
+  angleY -1.652
+ }
+ {
+  coords 4806.518 28.187 11014.943
+  angleY -1.652
+ }
+ {
+  coords 4796.508 28.187 11014.653
+  angleY -1.652
+ }
+ {
+  coords 4805.627 25.793 11947.262
+  angleY -1.652
+ }
+ {
+  coords 4821.324 26.618 11947.021
+  angleY -1.652
+ }
+}
+$grp GenericEntity : "{F85FC719F392E7A5}Prefabs/Rocks/Granite/Granite_Boulder_02_Fucus.et" {
+ {
+  coords 4799.393 0 11443.179
+  scale 0.48
+ }
+ {
+  coords 4801.499 0.027 11389.429
+  scale 0.48
+ }
+}

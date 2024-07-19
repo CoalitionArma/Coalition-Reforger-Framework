@@ -111,7 +111,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		string indforString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
-			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) continue;
+			if (faction.GetPlayerCount() == 0 || faction.GetFactionLabel() == EEditableEntityLabel.FACTION_NONE) 
+				continue;
 			
 			m_aPlayedFactionsArray.Insert(faction);
 			
@@ -146,20 +147,37 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	//Call from server
 	//------------------------------------------------------------------------------------------------
 	void ToggleSideReady(string setReady, string playerName, bool adminForced) {
-		if (!GetSafestartStatus() || m_bAdminForcedReady) return;
+		if (!GetSafestartStatus()) return;
 		
-		// if it's an admin forced action
+		// If it's an admin-forced action
 		if (adminForced)
 		{
+			if(m_bAdminForcedReady) 
+			{
+				m_bBluforReady = false;
+				m_bOpforReady = false;
+				m_bIndforReady = false;
+				m_bAdminForcedReady = false;
+			
+				m_sMessageContent = string.Format("An Admin (%1) Has Force Unreadied All Sides!", playerName);
+				Replication.BumpMe();
+				ShowMessage();
+				return;
+			};
+		
 			m_bBluforReady = true;
 			m_bOpforReady = true;
 			m_bIndforReady = true;
 			m_bAdminForcedReady = true;
 			
-			m_sMessageContent = "An Admin Has Force Readied All Sides!";
+			m_sMessageContent = string.Format("An Admin (%1) Has Force Readied All Sides!", playerName);
 			Replication.BumpMe();
+			ShowMessage();
 			return;
 		}
+		
+		if(m_bAdminForcedReady) 
+			return;
 			
 		switch (setReady)
 		{
@@ -192,7 +210,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		int factionsReadyCount = 0;
 		foreach(string factionCheckReadyString : m_aFactionsStatusArray) {
-			if (factionCheckReadyString != "#Coal_SS_Faction_Ready") continue;
+			if (factionCheckReadyString != "#Coal_SS_Faction_Ready") 
+				continue;
 			factionsReadyCount = factionsReadyCount + 1;
 		};
 		
@@ -381,15 +400,16 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	{
 		if (m_mPlayablesCount > 0) {
 			PS_PlayableComponent playable = m_mPlayables.GetElement(m_mPlayablesCount - 1);
-			m_mPlayablesCount--;
+			if(!playable)
+				return;
+			m_mPlayablesCount = m_mPlayablesCount - 1;
 			if (m_PlayableManager.GetPlayerByPlayable(playable.GetId()) <= 0)
 			{
 				SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playable.GetOwner());
 				SCR_EntityHelper.DeleteEntityAndChildren(character);
 			}
-		} else {
+		} else
 			GetGame().GetCallqueue().Remove(DeleteRedundantUnitsSlowly);
-		}
 	}
 	
 	// Called from server to all clients
@@ -448,13 +468,16 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		foreach (int playerID : outPlayers)
 		{
 			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-			if (!controlledEntity) continue;
+			if (!controlledEntity) 
+				continue;
 			
 			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
-			if (!eventHandler) continue;
+			if (!eventHandler) 
+				continue;
 		
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
-			if (!charComp) continue;
+			if (!charComp) 
+				continue;
 			
 			bool alreadyHasEventHandlers = m_mPlayersWithEHsMap.Get(controlledEntity);
 		
@@ -473,13 +496,18 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		{
 			IEntity controlledEntityKey = m_mPlayersWithEHsMap.GetKey(i);
 			
+			if(!controlledEntityKey)
+				continue;
+			
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntityKey.FindComponent(CharacterControllerComponent));
-			if (!charComp) continue;
+			if (!charComp) 
+				continue;
 			
 			charComp.SetSafety(false, false);
 			
 			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntityKey.FindComponent(EventHandlerManagerComponent));
-			if (!eventHandler) continue;
+			if (!eventHandler) 
+				continue;
 			
 			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
