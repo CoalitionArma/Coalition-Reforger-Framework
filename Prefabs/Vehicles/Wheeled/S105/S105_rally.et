@@ -1,23 +1,51 @@
 Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
  ID "BBCBA43A9778AE21"
  components {
-  VehicleWheeledSimulation_SA "{731B26FCA2F19855}" {
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     ClutchUncoupleTime 0.1
+     ClutchCoupleTime 0.1
+     Latency 0.1
+    }
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
    Simulation Wheeled "{4D8B26DEA5F25978}" {
     Engine Engine Engine {
-     MaxPower 300
-     MaxTorque 370
-     RpmMaxTorque 7000
-     Steepness 30
+     MaxPower 530
+     MaxTorque 550
+     RpmMaxPower 9000
+     RpmMaxTorque 7700
+     Steepness 18
+     Friction 95
+     RpmMax 9500
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 550
+    }
+    Gearbox Gearbox Gearbox {
+     Forward + {
+      0.75
+     }
     }
     Axles {
      Axle "{4D8B26DF957A8E1C}" {
       Suspension Suspension "{4D8B26DFF8859A7B}" {
-       MaxSteeringAngle 46.75
-       SpringRate 35
-       MaxTravelUp 0.095
-       MaxTravelDown 0.032
+       SpringRate 40
       }
      }
+     Axle "{4D8B26DF8CF2F3D8}" {
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
+       SpringRate 45
+       MaxTravelDown 0.02
+      }
+     }
+    }
+    Aerodynamics Aerodynamics "{5562A623B55A4C07}" {
+     DragCoefficient 0.49
+    }
+    Pacejka Pacejka "{54D561D473F27BA1}" {
     }
    }
   }
