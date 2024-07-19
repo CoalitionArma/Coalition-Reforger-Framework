@@ -45,7 +45,6 @@ $grp SCR_FactionControlTriggerEntity {
   "    static bool m_actionPerformed = false;"
   TriggerShapeType Sphere
   SphereRadius 41.8
-  DrawShape 1
   PeriodicQueries 1
   UpdatePeriod 20
   OnActivate ""\
@@ -94,7 +93,6 @@ $grp SCR_FactionControlTriggerEntity {
   "    static bool m_actionPerformed = false;"
   TriggerShapeType Sphere
   SphereRadius 41.8
-  DrawShape 1
   PeriodicQueries 1
   UpdatePeriod 20
   OnActivate ""\
