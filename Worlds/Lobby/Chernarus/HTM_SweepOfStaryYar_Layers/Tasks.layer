@@ -35,12 +35,16 @@ $grp SCR_FactionControlTriggerEntity {
      coords 0.576 0.219 2.435
      m_sTitle "OBJ: Defend Stary Yar"
      m_sTextData "Defend Stary Yar"
+     m_iOrder 2
+     m_iScore 20
      m_sFactionKey "USSR"
     }
     {
      coords 0.117 0.223 -2.66
      m_sTitle "OBJ: Secure Stary Yar"
      m_sTextData "Secure Stary Yar"
+     m_iOrder 2
+     m_iScore 20
      m_sFactionKey "US"
     }
    }
@@ -82,12 +86,16 @@ $grp SCR_FactionControlTriggerEntity {
      coords 0.116 0.202 -2.661
      m_sTitle "OBJ: Secure Northern Checkpoint"
      m_sTextData "Secure Northern Checkpint"
+     m_iOrder 1
+     m_iScore 20
      m_sFactionKey "US"
     }
     {
      coords 0.575 0.193 2.435
      m_sTitle "OBJ: Defend Northern Checkpoint"
      m_sTextData "Defend Northern Checkpoint"
+     m_iOrder 1
+     m_iScore 20
      m_sFactionKey "USSR"
     }
    }
@@ -129,12 +137,14 @@ $grp SCR_FactionControlTriggerEntity {
      coords 0.575 0.38 2.436
      m_sTitle "OBJ: Defend Southern Checkpoint"
      m_sTextData "Defend Southern Checkpoint"
+     m_iScore 60
      m_sFactionKey "USSR"
     }
     {
      coords 0.115 0.11 -2.661
      m_sTitle "OBJ: Secure Southern Checkpoint"
      m_sTextData "Secure Southern Checkpint"
+     m_iScore 60
      m_sFactionKey "US"
     }
    }
