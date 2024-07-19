@@ -151,6 +151,10 @@ $grp SCR_FactionControlTriggerEntity {
   }
  }
 }
+GenericEntity : "{1ABA1239EEA6FAC6}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Bunker_Soviet.et" {
+ coords 5281.052 477.895 15181.8
+ angleY 26.134
+}
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
   coords 5043.166 477.985 15109.538

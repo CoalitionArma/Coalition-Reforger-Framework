@@ -8,7 +8,7 @@ GenericEntity : "{1200F6499BA275FB}PrefabsEditable/Auto/Compositions/Slotted/Slo
 }
 $grp StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Long.et" {
  {
-  coords 5357.016 -0 14889.831
+  coords 5357.016 0 14889.831
   angleX 0.125
   angleY 40.722
   angleZ 5.975
@@ -121,7 +121,7 @@ $grp GenericEntity : "{BCF4F3411D3B2075}Prefabs/Props/Military/Bunkers/Bunker_To
   angleZ 1.188
  }
  {
-  coords 5297.126 479.063 15156.29
+  coords 5297.126 479.632 15156.29
   angleY 169.143
  }
 }
