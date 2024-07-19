@@ -9,7 +9,7 @@ $grp SCR_FactionControlTriggerEntity {
   userScript "    // Static boolean variable to track whether the action has been performed"\
   "	static bool m_actionPerformed = false;"
   TriggerShapeType Sphere
-  SphereRadius 100
+  SphereRadius 125
   TriggerActivationType "First change"
   PeriodicQueries 1
   UpdatePeriod 20
@@ -27,7 +27,7 @@ $grp SCR_FactionControlTriggerEntity {
   "    "
   m_sOwnerFactionKey "USSR"
   m_iRatioMethod "More than"
-  m_fFriendlyRatioLimit 0.8
+  m_fFriendlyRatioLimit 0.9
   {
    PS_ManualMarker RailBridge_1_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
     coords -0.575 6.288 -1.919
@@ -44,12 +44,12 @@ $grp SCR_FactionControlTriggerEntity {
     Streamable Disabled
    }
   }
-  coords 5285.257 15.781 5008.193
+  coords 5552.102 7.799 5195.15
   angleY -42.969
   userScript "    // Static boolean variable to track whether the action has been performed"\
   "	static bool m_actionPerformed = false;"
   TriggerShapeType Sphere
-  SphereRadius 100
+  SphereRadius 125
   BoxMaxs 215 40 60
   TriggerActivationType "First change"
   PeriodicQueries 1
@@ -59,8 +59,8 @@ $grp SCR_FactionControlTriggerEntity {
   "        if (!m_actionPerformed)"\
   "        {"\
   "            // Perform the action"\
-  "            Print(\"Russian Forces have secured the second bridge!\");"\
-  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Second Bridge Secured\", 15, \"Russian Forces have secured the second bridge!\");"\
+  "            Print(\"Russian Forces have secured the last bridge!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Last Bridge Secured\", 15, \"Russian Forces have secured the last bridge!\");"\
   ""\
   "            // Set the boolean variable to true to prevent further execution"\
   "            m_actionPerformed = true;"\
@@ -68,15 +68,15 @@ $grp SCR_FactionControlTriggerEntity {
   "    "
   m_sOwnerFactionKey "USSR"
   m_iRatioMethod "More than"
-  m_fFriendlyRatioLimit 0.8
+  m_fFriendlyRatioLimit 0.9
   {
    PS_ManualMarker RailBridge_2_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
-    coords -1.837 1.194 0.491
+    coords -1.836 1.85 0.491
     angleY 132.969
     m_MarkerColor 1 0 0 1
     m_sQuadName "target-reference-point"
     m_fWorldSize 125
-    m_sDescription "Second Bridge"
+    m_sDescription "Last Bridge"
    }
   }
  }
@@ -86,12 +86,12 @@ $grp SCR_FactionControlTriggerEntity {
     Streamable Disabled
    }
   }
-  coords 5548.159 13.805 5198.058
+  coords 5118.015 8.681 5087.519
   scale 1.26
   userScript "    // Static boolean variable to track whether the action has been performed"\
   "	static bool m_actionPerformed = false;"
   TriggerShapeType Sphere
-  SphereRadius 100
+  SphereRadius 135
   TriggerActivationType "First change"
   PeriodicQueries 1
   UpdatePeriod 20
@@ -100,8 +100,8 @@ $grp SCR_FactionControlTriggerEntity {
   "        if (!m_actionPerformed)"\
   "        {"\
   "            // Perform the action"\
-  "            Print(\"Russian Forces have secured the third bridge!\");"\
-  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Third Bridge Secured\", 15, \"Russian Forces have secured the third bridge!\");"\
+  "            Print(\"Russian Forces have secured the Hirssaari Village!\");"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"Hirssaari Village Secured\", 15, \"Russian Forces have secured the Hirssaari Village!\");"\
   ""\
   "            // Set the boolean variable to true to prevent further execution"\
   "            m_actionPerformed = true;"\
@@ -109,7 +109,7 @@ $grp SCR_FactionControlTriggerEntity {
   "    "
   m_sOwnerFactionKey "USSR"
   m_iRatioMethod "More than"
-  m_fFriendlyRatioLimit 0.8
+  m_fFriendlyRatioLimit 0.9
   {
    PS_ManualMarker RailBridge_3_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
     coords -0.218 -4.657 5.243
@@ -117,7 +117,7 @@ $grp SCR_FactionControlTriggerEntity {
     m_MarkerColor 1 0 0 1
     m_sQuadName "target-reference-point"
     m_fWorldSize 125
-    m_sDescription "Third Bridge"
+    m_sDescription "Hirssaari Village"
    }
   }
  }
@@ -138,30 +138,30 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
   m_sFactionKey "US"
  }
  {
-  coords 5288.543 11.834 5012.318
-  m_sTitle "OBJ: Secure Second Bridge"
-  m_sTextData "Secure the Second Bridge"
+  coords 5568.563 7.287 5212.189
+  m_sTitle "OBJ: Secure The Village"
+  m_sTextData "Secure the Village"
   m_iScore 30
   m_sFactionKey "USSR"
  }
  {
-  coords 5280.419 11.834 5007.868
-  m_sTitle "OBJ: Defend Second Bridge"
-  m_sTextData "Defend the Second Bridge"
+  coords 5560.438 7.621 5207.741
+  m_sTitle "OBJ: Defend The Village"
+  m_sTextData "Defend the Village"
   m_iScore 30
   m_sFactionKey "US"
  }
  {
-  coords 5556.809 7.799 5199.377
-  m_sTitle "OBJ: Secure Third Bridge"
-  m_sTextData "Secure the Third Bridge"
+  coords 5126.665 8.246 5088.838
+  m_sTitle "OBJ: Secure Last Bridge"
+  m_sTextData "Secure the Last Bridge"
   m_iScore 30
   m_sFactionKey "USSR"
  }
  {
-  coords 5548.685 7.799 5194.927
-  m_sTitle "OBJ: Defend Third Bridge"
-  m_sTextData "Defend the Third Bridge"
+  coords 5118.541 6.964 5084.387
+  m_sTitle "OBJ: Defend Last Bridge"
+  m_sTextData "Defend the Last Bridge"
   m_iScore 30
   m_sFactionKey "US"
  }

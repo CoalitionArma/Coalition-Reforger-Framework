@@ -7,12 +7,12 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    m_iTimeLimitMinutes 60
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
-   m_iStartingHours 4
+   m_iStartingHours 5
    m_bUsePredefineStartingTimeAndWeatehr 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{61CE59C47CE04E8A}" {
      m_sWeatherPresetName "Rainy"
-     m_iStartingHour 4
+     m_iStartingHour 5
     }
    }
   }
@@ -57,19 +57,22 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
       }
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
-        m_sCallsign "6"
+        m_sCallsign "1-6"
        }
        SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign "1"
+        m_sCallsign "1-1"
        }
        SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "2"
+        m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "3"
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61DAAC6F38135A31}" {
+        m_sCallsign "1-4"
        }
       }
-      m_sCallsignGroupFormat "%2-%3"
+      m_sCallsignGroupFormat "%3"
      }
     }
     SCR_Faction "{56DEAC40D3C2E623}" {
@@ -103,16 +106,28 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{61CEFE55413918B3}" {
-        m_sCallsign "2-6"
+        m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{61CEFE5541797069}" {
-        m_sCallsign "2-1"
+        m_sCallsign "2-6"
        }
        SCR_CallsignInfo "{61CEFE5541B5502A}" {
-        m_sCallsign "2-2"
+        m_sCallsign "2-1"
        }
        SCR_CallsignInfo "{61CF195940C1F322}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{61DAAC6F284A6881}" {
         m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{61DAAC6F2C1A87B1}" {
+        m_sCallsign "BTR 1"
+       }
+       SCR_CallsignInfo "{61DAAC6F2C7DB9F9}" {
+        m_sCallsign "BTR 2"
+       }
+       SCR_CallsignInfo "{61DAAC6F28AFBE89}" {
+        m_sCallsign "BTR 3"
        }
       }
       m_sCallsignGroupFormat "%3"
