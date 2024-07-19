@@ -11,7 +11,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    m_bUsePredefineStartingTimeAndWeatehr 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{61D4A928934AD4C3}" {
-     m_sWeatherPresetName "Overcast"
+     m_sWeatherPresetName "Rainy"
      m_iStartingHour 5
      m_iStartingMinutes 20
     }
@@ -52,6 +52,9 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        }
        SCR_CallsignInfo "{61D565D400142072}" {
         m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{61E6F7B38A7CB387}" {
+        m_sCallsign "Mortar"
        }
       }
       m_sCallsignGroupFormat "%3"
