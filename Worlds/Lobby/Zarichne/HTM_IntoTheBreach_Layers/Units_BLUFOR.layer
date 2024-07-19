@@ -599,19 +599,6 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
 GenericEntity : "{ED511224477B9B85}M252_placeable.et" {
  coords 3244.886 21.003 2386.744
  angleY -89.115
- {
-  Turret {
-   ID "61C7064F8A1089A8"
-   components {
-    SCR_UniversalInventoryStorageComponent "{61C7064DDAD1CDE3}" {
-     MultiSlots {
-      MultiSlotConfiguration "{61C7064DDAD1CD13}" {
-      }
-     }
-    }
-   }
-  }
- }
 }
 SCR_AIGroup US1980s_Company_HQ : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_US80s_Command_PLT_p.et" {
  coords 3298.942 21.19 2436.139
