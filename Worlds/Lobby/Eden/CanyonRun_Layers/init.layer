@@ -1,0 +1,174 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5673.27 202.676 6940.119
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 0
+   m_iRangeHoursStart 1
+   m_iRangeHoursEnd 2
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{61E55A146AAC3D19}" {
+     m_sWeatherPresetName "Foggy"
+     m_iStartingHour 0
+    }
+   }
+  }
+ }
+ coords 5694.007 255.955 7144.075
+ {
+  SCR_FactionManager "61E63CAF8CBE8977" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61E63CAA527B942A}" {
+        m_sCallsign "1-5"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61E63CAA6CE75C42}" {
+        m_sCallsign "1-5"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity {
+ {
+  components {
+   MeshObject "{61E55A07BB846DC4}" {
+    Object "{CB616193C10DD426}Assets/Props/Wrecks/T62/T62_wreck_hull.xob"
+   }
+  }
+  coords 4822.601 28.895 11453.374
+  angleY 50.513
+ }
+ {
+  components {
+   MeshObject "{61E55A0719B88D18}" {
+    Object "{0B197078A1BA3662}Assets/Props/Industrial/Train/loco_ChME3.xob"
+   }
+  }
+  coords 4810.858 29.184 11406.735
+ }
+ {
+  components {
+   MeshObject "{61E55A0700FE9A67}" {
+    Object "{3EF3DD84590B54E3}Assets/Props/Industrial/Train/wagon_box.xob"
+   }
+  }
+  coords 4810.779 29.153 11419.488
+ }
+ {
+  components {
+   MeshObject "{61E55A06F23039AC}" {
+    Object "{3EF3DD84590B54E3}Assets/Props/Industrial/Train/wagon_box.xob"
+   }
+  }
+  coords 4810.773 29.179 11431.559
+ }
+ {
+  components {
+   MeshObject "{61E55A06F23039AC}" {
+    Object "{3EF3DD84590B54E3}Assets/Props/Industrial/Train/wagon_box.xob"
+   }
+  }
+  coords 4810.773 29.179 11443.591
+ }
+ {
+  components {
+   MeshObject "{61E55A06F23039AC}" {
+    Object "{3EF3DD84590B54E3}Assets/Props/Industrial/Train/wagon_box.xob"
+   }
+  }
+  coords 4810.773 29.179 11455.653
+ }
+ {
+  components {
+   MeshObject "{61E55A06E210271F}" {
+    Object "{21B1272FC00705E9}Assets/Props/Industrial/Train/wagon_flat.xob"
+   }
+  }
+  coords 4810.822 29.178 11470.208
+ }
+ {
+  components {
+   MeshObject "{61E55A06E210271F}" {
+    Object "{21B1272FC00705E9}Assets/Props/Industrial/Train/wagon_flat.xob"
+   }
+  }
+  coords 4810.822 29.178 11487.438
+ }
+ {
+  components {
+   MeshObject "{61E55A06D7D22642}" {
+    Object "{3E9956339CEF7941}Assets/Props/Industrial/Train/wagon_tanker.xob"
+   }
+  }
+  coords 4810.835 29.222 11501.692
+ }
+ {
+  components {
+   MeshObject "{61E55A06D7D22642}" {
+    Object "{3E9956339CEF7941}Assets/Props/Industrial/Train/wagon_tanker.xob"
+   }
+  }
+  coords 4810.835 29.222 11512.903
+ }
+ {
+  components {
+   MeshObject "{61E55A06D7D22642}" {
+    Object "{3E9956339CEF7941}Assets/Props/Industrial/Train/wagon_tanker.xob"
+   }
+  }
+  coords 4810.835 29.222 11524.158
+ }
+ {
+  components {
+   MeshObject "{61E55A0159847D82}" {
+    Object "{41C0A899269E25F8}Assets/Rocks/Granite/GraniteBoulder_01.xob"
+   }
+  }
+  coords 4798.867 28.084 11618.984
+ }
+}

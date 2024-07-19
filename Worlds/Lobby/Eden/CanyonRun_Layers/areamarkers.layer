@@ -1,0 +1,8 @@
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 4840.126 31.233 11201.154
+ angleY 0
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4842.03 29.135 11685.203
+ angleY 0
+}
