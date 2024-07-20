@@ -256,3 +256,11 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
   "	"
  }
 }
+$grp GenericEntity : "{FC7427975FF6AEB1}Mortars/81/m25281mm.et" {
+ {
+  coords 6366.331 468.243 15002.472
+ }
+ {
+  coords 6366.375 468.277 15003.094
+ }
+}
