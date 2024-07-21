@@ -10,6 +10,9 @@ SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA
    }
    WeaponTemplate ""
   }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{443CEFF17E040B11}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58V.et"
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Back {
