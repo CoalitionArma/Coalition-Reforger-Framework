@@ -7,7 +7,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 2314.347 9.045 2330.279
  {
-  SCR_FactionManager {
+  SCR_FactionManager "61EB5D38E708298B" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
@@ -27,22 +27,5 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
     }
    }
   }
- }
-}
-$grp BaseGameTriggerEntity {
- trig1 {
-  coords 947.28 13.156 2277.431
- }
- trig2 {
-  coords 957.397 13.031 2252.204
- }
- trig3 {
-  coords 963.318 12.897 2228.094
-  angleX 0.895
-  angleY -0.014
-  angleZ -0.895
- }
- trig4 {
-  coords 963.726 12.687 2200.901
  }
 }
