@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{28A6FC8980ABBF9E}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AMG_R_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
