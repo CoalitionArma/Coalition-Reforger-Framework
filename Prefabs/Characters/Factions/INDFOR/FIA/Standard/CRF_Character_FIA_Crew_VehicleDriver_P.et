@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{D4C743D7B81751A7}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Driver"
+  }
+ }
+}
