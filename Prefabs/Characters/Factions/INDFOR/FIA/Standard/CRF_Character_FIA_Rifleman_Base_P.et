@@ -2,6 +2,7 @@ SCR_ChimeraCharacter : "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA
  ID "520EC961A090B1EE"
  components {
   PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman"
    m_bIsPlayable 1
   }
   CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {

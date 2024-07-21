@@ -1,0 +1,14 @@
+GameEntity : "{CA27CA71B3AF2FCF}Prefabs/Characters/Uniforms/Jacket_M70_base.et" {
+ ID "5104869D194C6243"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   components {
+    SCR_EquipmentStorageComponent "{5888DEA3429C315E}" {
+     CapacityCoefficient 0.5
+    }
+   }
+   MaxCumulativeVolume 4200
+   m_fMaxWeight 500
+  }
+ }
+}
