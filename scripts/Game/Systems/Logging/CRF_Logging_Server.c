@@ -66,15 +66,11 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		if (!Replication.IsServer())
 			return;
 		
-		if (FileIO.FileExists(m_sLogPath))
-			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
-		else
-			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.WRITE);
+		m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
 
 		PrintFormat("CRF Handle: %1",m_handle);
 		m_sMissionName = GetGame().GetMissionName();
 		m_handle.WriteLine("mission,beginning," + m_sMissionName);	
-		
 	}
 	
 	// Player Connected
