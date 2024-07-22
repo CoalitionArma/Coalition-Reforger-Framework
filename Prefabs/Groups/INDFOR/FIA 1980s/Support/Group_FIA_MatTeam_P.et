@@ -68,6 +68,6 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{61DB27140B3C13A2}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_SL_P.et" "{CB398A3E52C5E598}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_MAT_R_P.et" "{96695913B8A1476A}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AMAT_R_P.et" "{74C10089A77C9E1D}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_MAT_G_P.et" "{2991D3A44D183CEF}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AMAT_G_P.et"
+  "{E5CC9F6C12A6D721}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_SL_P.et" "{CB398A3E52C5E598}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_MAT_R_P.et" "{96695913B8A1476A}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AMAT_R_P.et" "{74C10089A77C9E1D}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_MAT_G_P.et" "{2991D3A44D183CEF}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AMAT_G_P.et"
  }
 }

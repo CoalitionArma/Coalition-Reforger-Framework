@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{76F3E7A9E384A36A}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_JTAC_P.et"
+ Name "{AFEEA3F517EB17C7}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_JTAC_P.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

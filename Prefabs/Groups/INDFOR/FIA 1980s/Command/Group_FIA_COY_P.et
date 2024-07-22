@@ -78,7 +78,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{45C7617FB0E4DB9A}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_COY_P.et" "{7F532CA16817E69B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_MO_P.et"
+  "{EDB69AE35950C088}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_Coy_P.et" "{FB4494D9718D2218}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_MO_P.et"
  }
  m_bSetPlayable 1
 }
