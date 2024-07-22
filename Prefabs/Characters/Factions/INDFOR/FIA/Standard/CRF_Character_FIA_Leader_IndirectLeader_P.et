@@ -1,3 +1,8 @@
-SCR_ChimeraCharacter : "{33F0AE068069D4AC}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_P.et" {
+SCR_ChimeraCharacter : "{33F0AE068069D4AC}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_TL_Base_P.et" {
  ID "520EC961A090B1EE"
+ components {
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingIcon None
+  }
+ }
 }

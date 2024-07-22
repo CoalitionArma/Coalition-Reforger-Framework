@@ -12,8 +12,11 @@ SCR_ChimeraCharacter : "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA
     }
    }
   }
+  CSI_CharacterComponent "{617A0517A9B25B23}" {
+   m_iStartingIcon "Team Lead"
+  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Leader"
+   m_name "Team Lead"
    m_bIsPlayable 1
   }
   CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
