@@ -8,6 +8,7 @@ SCR_FactionControlTriggerEntity endTrig {
  TriggerShapeType Sphere
  SphereRadius 65
  TriggerActivationType "First change"
+ PeriodicQueries 1
  UpdatePeriod 10
  OnActivate ""\
  "		Print(\"Russian forces won by seizing the airfield!\");"\
