@@ -68,7 +68,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{715D726C77EA2C15}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehicleCommander_P.et" "{A858A69AE1F75962}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehicleGunner_P.et" "{792C58944477F401}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehicleDriver_P.et"
+  "{D25A2B45247FAC81}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehCommander_P.et" "{58B36F558741B10F}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehGunner_P.et" "{030C9910868D4F1B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_Base_VehDriver_P.et"
  }
  m_sCustomNameSet "Vehicle Crew"
 }
