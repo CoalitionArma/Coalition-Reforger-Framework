@@ -1,0 +1,37 @@
+SCR_ChimeraCharacter : "{A3C9811329054C00}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_Base_TL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Company Leader"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{3523CB7D5961246B}Prefabs/Characters/HeadGear/Hat_PeakedCap_USSR_01/Hat_PeakedCap_USSR_01.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab ""
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{D8DDD4941197A929}Prefabs/Characters/Vests/Vest_SovietHarness/Variants/Vest_SovietHarness_Commander.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{61EF2E42CB387965}" {
+     TargetStorage "Prefabs/Items/Equipment/Accessories/Pouch_Soviet_30rnd_AK74/Pouch_Soviet_30rnd_AK74.et"
+    }
+    ItemsInitConfigurationItem "{61EF2E4FE3D10198}" {
+     TargetStorage "Prefabs/Characters/Vests/Vest_SovietHarness/Vest_SovietHarness_GrenadePouch.et"
+     PrefabsToSpawn {
+      "{262F0D09C4130826}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_VOG25.et" "{262F0D09C4130826}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_VOG25.et" "{262F0D09C4130826}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_VOG25.et" "{262F0D09C4130826}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_VOG25.et" "{906F07BD0366E08F}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_VG40OP_White.et" "{906F07BD0366E08F}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_VG40OP_White.et" "{B4CFBAF48A598F45}Prefabs/Weapons/Ammo/SOV_Ammo_Smoke_White.et" "{B4CFBAF48A598F45}Prefabs/Weapons/Ammo/SOV_Ammo_Smoke_White.et" "{4D358DC7649B5CEA}Prefabs/Weapons/Ammo/SOV_Ammo_Smoke_Red.et" "{21335500CF96B660}Prefabs/Weapons/Ammo/SOV_Ammo_Smoke_Green.et"
+     }
+    }
+    ItemsInitConfigurationItem "{61EF2E5B420028A0}" {
+     TargetStorage ""
+    }
+   }
+  }
+ }
+}
