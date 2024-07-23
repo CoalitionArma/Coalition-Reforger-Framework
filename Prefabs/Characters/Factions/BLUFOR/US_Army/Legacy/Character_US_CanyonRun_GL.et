@@ -27,12 +27,12 @@ SCR_ChimeraCharacter : "{A47EB499090D69B9}Prefabs/Characters/Factions/BLUFOR/US_
     }
     ItemsInitConfigurationItem "{54A49B42D138207E}" {
      PrefabsToSpawn {
-      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
      }
     }
     ItemsInitConfigurationItem "{5538C2998B16D40D}" {
      PrefabsToSpawn {
-      "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et"
+      "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{98DB57ECEDC81CC2}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_M583A1_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et" "{AABE8FE0BA33DC8A}Prefabs/Weapons/Ammo/US_Ammo_Smoke_White.et"
      }
     }
     ItemsInitConfigurationItem "{61E63CAD6F498C1D}" {

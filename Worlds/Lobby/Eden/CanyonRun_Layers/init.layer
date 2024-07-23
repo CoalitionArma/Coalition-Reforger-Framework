@@ -5,14 +5,14 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
  components {
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_iStartingHours 0
-   m_iRangeHoursStart 1
-   m_iRangeHoursEnd 2
+   m_iRangeHoursStart 0
+   m_iRangeHoursEnd 0
    m_fDayTimeAcceleration 0.1
    m_fNightTimeAcceleration 0.1
    m_bUsePredefineStartingTimeAndWeatehr 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{61E55A146AAC3D19}" {
-     m_sWeatherPresetName "Foggy"
+     m_sWeatherPresetName "Rainy"
      m_iStartingHour 0
     }
    }
