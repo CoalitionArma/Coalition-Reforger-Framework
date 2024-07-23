@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{9CDAF20E0505DADE}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_Pilots_p.et"
+ Name "{6FEA7CB968F51E93}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Crew_Pilot_P.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
