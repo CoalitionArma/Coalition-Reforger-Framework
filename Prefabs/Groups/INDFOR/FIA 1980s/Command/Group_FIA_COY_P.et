@@ -12,12 +12,12 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      71
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{619B4D26B1300A55}" {
+     SCR_EntityBudgetValue "{61EB404A4069DB63}" {
       m_BudgetType AI
       m_Value 3
      }
     }
-    m_MilitarySymbol SCR_MilitarySymbol "{619B4D26B1300A57}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{61EB404A4069DC98}" {
      m_Identity INDFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -34,7 +34,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   SCR_PreviewEntityComponent "{56FCFA56AC2219F3}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{619B4D26B1300A5B}" {
+    SCR_BasePreviewEntry "{61EB404A4069DC8E}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -44,7 +44,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{619B4D26B1300A5A}" {
+    SCR_BasePreviewEntry "{61EB404A4069DC8C}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -54,7 +54,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{619B4D26B1300A5D}" {
+    SCR_BasePreviewEntry "{61EB404A4069DC86}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -64,7 +64,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{619B4D26B1319743}" {
+    SCR_BasePreviewEntry "{61EB404A4069DC85}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -78,7 +78,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{EF69CF21A4B624A6}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_PL_P.et" "{FB4494D9718D2218}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_MO_P.et"
+  "{EDB69AE35950C088}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_Coy_P.et" "{FB4494D9718D2218}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_MO_P.et"
  }
  m_bSetPlayable 1
 }

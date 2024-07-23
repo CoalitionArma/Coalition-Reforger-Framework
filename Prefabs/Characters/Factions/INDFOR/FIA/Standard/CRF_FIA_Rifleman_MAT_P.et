@@ -1,0 +1,28 @@
+SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Medium Anti-Tank"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{AC4C33E8AE72A9F9}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7_rhs_CRF.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{0D39750E5695B9D8}Prefabs/Items/Equipment/Backpacks/Backpack_RPG_Gunner.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{61EB404E729ED9CD}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_RPG_Gunner.et"
+     PrefabsToSpawn {
+      "{86A7681BD1D4E4BB}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VR.et" "{12AFA740BE9ED3CD}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_TBG7V.et"
+     }
+    }
+   }
+  }
+ }
+}
