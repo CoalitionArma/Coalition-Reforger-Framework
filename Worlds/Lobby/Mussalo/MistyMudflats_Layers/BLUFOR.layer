@@ -1,7 +1,6 @@
 Vehicle M997_0B : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
  coords 903.805 3.063 6403.613
  angleY -90
- Flags 2097155
 }
 $grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
  M1025_M2HB_1A {
@@ -17,7 +16,7 @@ $grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
   angleY -90
  }
 }
-$grp SCR_AIGroup : "{3EDD55795C91213A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infantry/CRF_USMC_RifleSquad2020.et" {
+$grp SCR_AIGroup : "{3EDD55795C91213A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/2020/Infantry/CRF_USMC_RifleSquad2020.et" {
  USMC_RifleSquad_1 {
   components {
    PS_GroupCallsignAssigner "{61C754BCC22F6AA6}" {
@@ -55,7 +54,7 @@ $grp SCR_AIGroup : "{3EDD55795C91213A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Infant
   m_sCustomNameSet "2nd Rifle Squad (Mot.)"
  }
 }
-SCR_AIGroup USMC_PlatoonHQ_0 : "{62990CF36C70D69A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_RiflePHQ2020.et" {
+SCR_AIGroup USMC_PlatoonHQ_0 : "{62990CF36C70D69A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/2020/Command/CRF_USMC_RiflePHQ2020.et" {
  components {
   PS_GroupCallsignAssigner "{61C754BB342B0A38}" {
    m_iCompanyCallsign 1
@@ -66,39 +65,24 @@ SCR_AIGroup USMC_PlatoonHQ_0 : "{62990CF36C70D69A}Prefabs/Groups/BLUFOR/RHS_USAF
  angleY -90
  m_sCustomNameSet "Platoon HQ (Mot.)"
 }
-$grp Vehicle : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
- M998_0A {
-  coords 893.805 3.063 6403.614
-  angleY -90
- }
- M998_0B {
+Vehicle M998_0A : "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et" {
+ coords 893.805 3.063 6403.614
+ angleY -90
+}
+$grp Vehicle : "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et" {
+ M998_1B {
   components {
    SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
     MultiSlots {
-     MultiSlotConfiguration "{5A60CECB549327C1}" {
-      NumSlots 10
-     }
-     MultiSlotConfiguration "{61CAFD9B2EC37A7C}" {
-      SlotTemplate InventoryStorageSlot b {
-       Prefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+     MultiSlotConfiguration "{61ED118DB42E2F88}" {
+      SlotTemplate InventoryStorageSlot law {
+       Prefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
       }
-      NumSlots 5
-     }
-     MultiSlotConfiguration "{61CAFD9B1214CE54}" {
-      SlotTemplate InventoryStorageSlot c {
-       Prefab "{00E36F41CA310E2A}Prefabs/Items/Medicine/SalineBag_01/SalineBag_US_01.et"
-      }
-      NumSlots 5
+      NumSlots 1
      }
     }
    }
   }
-  coords 903.805 3.063 6403.612
-  angleY -90
- }
-}
-$grp Vehicle : "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et" {
- M998_1B {
   coords 903.805 3.063 6413.613
   angleY -90
  }
@@ -107,6 +91,18 @@ $grp Vehicle : "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
   angleY -90
  }
  M998_3B {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
+    MultiSlots {
+     MultiSlotConfiguration "{61ED118D449CFA84}" {
+      SlotTemplate InventoryStorageSlot law {
+       Prefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
   coords 903.805 3.063 6433.612
   angleY -90
  }
@@ -115,6 +111,18 @@ $grp Vehicle : "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
   angleY -90
  }
  M998_2B {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
+    MultiSlots {
+     MultiSlotConfiguration "{61ED118DB232ED52}" {
+      SlotTemplate InventoryStorageSlot law {
+       Prefab "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+      }
+      NumSlots 1
+     }
+    }
+   }
+  }
   coords 903.805 3.063 6423.612
   angleY -90
  }

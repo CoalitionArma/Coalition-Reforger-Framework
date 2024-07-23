@@ -1,0 +1,74 @@
+SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "#AR-Group_Guerrilla_MGTeam"
+    m_Image "{06D2E53702B60C4B}UI/Textures/EditorPreviews/Groups/INDFOR/Group_FIA_MachineGunTeam.edds"
+    m_aAuthoredLabels + {
+     34 27
+    }
+    m_aAutoLabels {
+     70
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{61EB40530EFF7C3E}" {
+      m_BudgetType AI
+      m_Value 2
+     }
+    }
+    m_MilitarySymbol SCR_MilitarySymbol "{61EB40530EFF7C33}" {
+     m_Identity INDFOR
+     m_Dimension LAND
+     m_Icons 8193
+     m_Amplifier TEAM
+    }
+   }
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Icons 8193
+    m_Amplifier TEAM
+   }
+  }
+  SCR_PreviewEntityComponent "{56FCFA56AC775862}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{61EB40530EFF7C29}" {
+     m_iParentID -1
+     m_Mesh ""
+     m_Flags 3
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{61EB40530EFF7C27}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{61EB40530EFF7C24}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 3 0 -3
+     m_vAngles 0 0 0
+    }
+   }
+  }
+ }
+ m_aUnitPrefabSlots {
+  "{58B36F558741B10F}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehGunner_P.et" "{030C9910868D4F1B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_Base_VehDriver_P.et"
+ }
+ m_sCustomNameSet "Vehicle Crew"
+}
