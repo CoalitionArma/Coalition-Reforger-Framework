@@ -12,9 +12,6 @@ SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA
     }
    }
   }
-  CSI_CharacterComponent "{617A0517A9B25B23}" {
-   m_iStartingColorTeam Red
-  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Assistant Automatic Rifleman"
   }
