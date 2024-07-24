@@ -12,12 +12,12 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      72
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{61E1235F3A683135}" {
+     SCR_EntityBudgetValue "{61E1235F3A691E7B}" {
       m_BudgetType AI
       m_Value 9
      }
     }
-    m_MilitarySymbol SCR_MilitarySymbol "{61E1235F3A683148}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{61E1235F3A691E6F}" {
      m_Identity BLUFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -34,7 +34,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{61E1235F3A683142}" {
+    SCR_BasePreviewEntry "{61E1235F3A691E97}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -44,7 +44,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A68315D}" {
+    SCR_BasePreviewEntry "{61E1235F3A691E92}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -54,7 +54,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A68315F}" {
+    SCR_BasePreviewEntry "{61E1235F3A691E9F}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -64,7 +64,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A683158}" {
+    SCR_BasePreviewEntry "{61E1235F3A691E98}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -74,7 +74,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A684440}" {
+    SCR_BasePreviewEntry "{61E1235F3A691E99}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -84,7 +84,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A684443}" {
+    SCR_BasePreviewEntry "{61E1235F3A69BD07}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -94,7 +94,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A68444C}" {
+    SCR_BasePreviewEntry "{61E1235F3A69BD05}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -104,7 +104,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 9 0 -9
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A68444D}" {
+    SCR_BasePreviewEntry "{61E1235F3A69BD1A}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -114,7 +114,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -9 0 -9
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A68444E}" {
+    SCR_BasePreviewEntry "{61E1235F3A69BD1B}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -124,7 +124,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 12 0 -12
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61E1235F3A68444F}" {
+    SCR_BasePreviewEntry "{61E1235F3A69BD18}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -139,8 +139,8 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{0248B6CF048C50C5}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MedicalOfficer_P.et" "{547BA14003A67C05}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et" "{547BA14003A67C05}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et" "{547BA14003A67C05}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et" "{547BA14003A67C05}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_Medic_P.et"
+  "{B959A2CC8F207E21}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_SL_P.et" "{28B2AEDB6D297690}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_MMG_P.et" "{CCAFBAE1D407AA5C}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AMMG_P.et" "{28B2AEDB6D297690}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_MMG_P.et" "{CCAFBAE1D407AA5C}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AMMG_P.et"
  }
- m_sCustomNameSet "Medic Team"
+ m_sCustomNameSet "MMG Team"
  m_bSetPlayable 1
 }
