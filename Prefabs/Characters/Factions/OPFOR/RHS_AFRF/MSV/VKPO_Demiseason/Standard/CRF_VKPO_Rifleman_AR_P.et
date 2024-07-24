@@ -1,6 +1,9 @@
 SCR_ChimeraCharacter : "{5FB031490A5E5155}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Base_P.et" {
  ID "520EC961A090B1EE"
  components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Automatic Rifleman"
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate "{5D6226C0B4631749}Prefabs/Weapons/MachineGuns/PKM/MG_PKM_B51.et"
   }

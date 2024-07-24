@@ -12,12 +12,12 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      72
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{61B76BB66168FEC3}" {
+     SCR_EntityBudgetValue "{61DF72D554FE0064}" {
       m_BudgetType AI
       m_Value 6
      }
     }
-    m_MilitarySymbol SCR_MilitarySymbol "{61B76BB66168FEDC}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{61DF72D554FE019D}" {
      m_Identity OPFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -34,7 +34,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
   SCR_PreviewEntityComponent "{56368A4E2AE45029}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{61B76BB66168FED4}" {
+    SCR_BasePreviewEntry "{61DF72D554FE0195}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -44,7 +44,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61B76BB66168FED2}" {
+    SCR_BasePreviewEntry "{61DF72D554FE0193}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -54,7 +54,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61B76BB66168FEAF}" {
+    SCR_BasePreviewEntry "{61DF72D554FE018F}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -64,7 +64,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61B76BB66168FEAE}" {
+    SCR_BasePreviewEntry "{61DF72D554FE018E}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -74,7 +74,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition -3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61B76BB66168FEAD}" {
+    SCR_BasePreviewEntry "{61DF72D554FE018C}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -84,7 +84,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61B76BB66168FEAB}" {
+    SCR_BasePreviewEntry "{61DF72D554FE018B}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -94,7 +94,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition -6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61B76BB66168DFE3}" {
+    SCR_BasePreviewEntry "{61DF72D554FE44B2}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -109,8 +109,8 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{FF110311483998E7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_SL.et" "{BD13D9F5D4E7C337}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_Medic.et" "{6C8FFA2123F314EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_FTL_R.et" "{9299F20E7ABD3AF4}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_AR.et" "{4F18E47005377855}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_AAR.et" "{2BA54F2817C87EFD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_FTL_G.et" "{159049CF272FA72E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RiflemanAT.et" "{961E7F8CF5492A1D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RiflemanAAT.et" "{0963A3428724DE04}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RiflemanDemo.et"
+  "{2142C776C4C5DF21}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Crew_VehGunner_P.et" "{4ADDA22285E093CD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Crew_Base_VehDriver_P.et"
  }
- m_sCustomNameSet "1st Squad"
+ m_sCustomNameSet "Vehicle Crew"
  m_bSetPlayable 1
 }
