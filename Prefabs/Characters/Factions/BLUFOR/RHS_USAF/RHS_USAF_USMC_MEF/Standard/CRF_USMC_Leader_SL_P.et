@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{372C2A8BC0C553E8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_Base_TL_P.et" {
+ ID "520EC961A090BBD5"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Squad Leader"
+  }
+ }
+}

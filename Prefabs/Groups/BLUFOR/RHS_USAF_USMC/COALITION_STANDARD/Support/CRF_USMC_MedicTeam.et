@@ -1,8 +1,0 @@
-SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Command/CRF_USMC_Platoon.et" {
- ID "0000000000000001"
- coords 2043.028 44.783 2064.622
- m_aUnitPrefabSlots {
-  "{8F67D1B35C9DDE00}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_MedicalOfficer.et" "{E27FC191F703D40F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_Medic.et" "{E27FC191F703D40F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_Medic.et" "{E27FC191F703D40F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_Medic.et" "{E27FC191F703D40F}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/CRF_USMC_Medic.et"
- }
- m_sCustomNameSet "Medic Team"
-}
