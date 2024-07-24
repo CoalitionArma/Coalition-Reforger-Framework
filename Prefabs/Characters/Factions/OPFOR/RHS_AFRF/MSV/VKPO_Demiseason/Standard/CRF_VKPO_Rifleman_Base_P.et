@@ -1,9 +1,6 @@
 SCR_ChimeraCharacter : "{4CD88E5A61AE773D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_BaseLoadout.et" {
  ID "520EC961A090B1EE"
  components {
-  CSI_CharacterComponent "{617A0517A9B25B23}" {
-   m_iStartingColorTeam Green
-  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Rifleman"
    m_bIsPlayable 1
@@ -67,7 +64,7 @@ SCR_ChimeraCharacter : "{4CD88E5A61AE773D}Prefabs/Characters/Factions/OPFOR/RHS_
     ItemsInitConfigurationItem "{61B76BBAC4FD5AD2}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_appi_pouch.et"
      PrefabsToSpawn {
-      "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+      "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et"
      }
     }
    }
