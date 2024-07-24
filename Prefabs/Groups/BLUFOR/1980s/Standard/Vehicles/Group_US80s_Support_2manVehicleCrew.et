@@ -139,7 +139,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{A97EE2900EAD8D76}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_VGunner_P.et" "{780A1C9EAB2D2015}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_VDriver_P.et"
+  "{FA1215F5710ADF24}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Crew_VehGunner_P.et" "{D201ED63C117B146}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Crew_Base_VehDriver_P.et"
  }
  m_sCustomNameSet "Vehicle Crew"
  m_bSetPlayable 1
