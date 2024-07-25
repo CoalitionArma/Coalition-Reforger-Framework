@@ -109,7 +109,7 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{6970C3E461A18709}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_LogiLeader_P.et" "{8D2C25D4DEE224FF}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_LogiRunner_P.et" "{8D2C25D4DEE224FF}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_LogiRunner_P.et"
+  "{2169C6C6BC52EA41}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_LogiLead_P.et" "{2B968BB0642C68A1}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_LogiRunner_P.et" "{2B968BB0642C68A1}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_LogiRunner_P.et"
  }
  m_sCustomNameSet "Logistics"
  m_bSetPlayable 1

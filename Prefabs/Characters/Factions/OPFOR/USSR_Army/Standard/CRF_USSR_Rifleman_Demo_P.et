@@ -1,0 +1,25 @@
+SCR_ChimeraCharacter : "{29786A5DBA2EC48A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Demo"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{61EF2E5DE8871A49}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+     PrefabsToSpawn {
+      "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et"
+     }
+    }
+   }
+  }
+ }
+}

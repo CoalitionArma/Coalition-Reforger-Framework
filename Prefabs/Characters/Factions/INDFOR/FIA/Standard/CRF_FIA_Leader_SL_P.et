@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_TL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Squad Leader"
+  }
+ }
+}

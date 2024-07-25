@@ -78,7 +78,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{DF988EC898B18C44}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_PL_P.et" "{4098FA3F975A831B}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_MO_P.et"
+  "{EF69CF21A4B624A6}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_PL_P.et" "{FB4494D9718D2218}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_MO_P.et"
  }
  m_bSetPlayable 1
 }

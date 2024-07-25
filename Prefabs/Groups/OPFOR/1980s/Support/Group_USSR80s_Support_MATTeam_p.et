@@ -109,7 +109,8 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et"
+  "{714FB115B072E802}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_SL_P.et" "{4E525C5CF6FF4FB7}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_MAT_P.et" "{3DC8C9231A09DAB3}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_AMAT_P.et" "{4E525C5CF6FF4FB7}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_MAT_P.et" "{3DC8C9231A09DAB3}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_AMAT_P.et"
  }
+ m_sCustomNameSet "Mat Team"
  m_bSetPlayable 1
 }
