@@ -33,6 +33,8 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
  m_sTitle "USMC Briefing"
  m_sTextData "Use your superior movement capability and fire support with the UH-60s to move the Marine element around the AO, search for and find the caches, and destroy them."\
  ""\
+ "Caches can be within 300m of the \"Cache?\" Markers"\
+ ""\
  "Caches must be destroyed with demolition blocks."\
  ""\
  "You have 50 respawns."

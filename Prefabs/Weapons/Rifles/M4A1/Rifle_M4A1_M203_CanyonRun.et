@@ -1,0 +1,53 @@
+GenericEntity : "{068C2EB42635973F}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_RAS.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#RHS-Weapon_M4A1_Name (#RHS-Weapon_M203_Name)"
+     Description "#RHS-Weapon_M4A1_Description #RHS-Weapon_M320_UGL_Description"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5E0ED058CD731B24}" {
+        "Point info" DeploymentPointInfo dp {
+         Offset 0 -0.0074 0.4384
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5E0EEDA5B623AB37}" {
+     AttachmentSlot InventoryStorageSlot Handguard_lower {
+      Enabled 0
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
+     Enabled 0
+     AttachmentSlot InventoryStorageSlot "{5EA2BE9573F14F0C}" {
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE953838E77C}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE95244FA719}" {
+      PivotID "barrel_chamber"
+      Offset 0 0 0
+      Angles 0 0 0
+      Prefab "{CB5498FD4428CB18}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_CanyonRun.et"
+     }
+     AttachmentType AttachmentUnderBarrelM203 "{5EA2BE9520A33E05}" {
+     }
+     ShowInInspection 0
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate "{A9A385FE1F7BF4BD}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Tracer.et"
+    }
+   }
+  }
+ }
+ coords 36.767 1.257 128.244
+}

@@ -1,118 +1,47 @@
 $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  {
-  coords 5100.763 0 4431.385
+  coords 5140.625 0 4523.519
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 4429.583 0 5693.134
+  coords 5054.95 0 4577.876
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 5050.213 0 4391.416
+  coords 4996.754 0 4666.654
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 4462.307 6.692 4760.919
+  coords 4964.488 0 4730.13
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 5174.5 0 4496.125
+  coords 4872.792 0 4784.749
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 4380.047 1.455 5011.743
+  coords 4775.172 0 4827.105
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 4363.972 8.468 4924.781
+  coords 4698.609 0 4868.36
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 4469.983 0 5236.335
+  coords 4635.273 0 4907.014
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
  {
-  coords 4689.941 3.718 4459.214
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4534.525 10.506 4534.688
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4421.377 0 5791.428
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4390.924 12.436 4860.585
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4431.062 4.275 4817.73
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4424.326 0 5106.031
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4584.002 7.67 4489.39
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4411.024 0 5447.313
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4839.342 6.011 4382.709
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 5308.297 0.115 4582.274
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4637.214 7.511 4481.659
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4482.978 9.844 4671.592
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4796.305 4.029 4398.164
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4451.744 0 5152.916
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 5235.895 0 4532.985
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4515.902 8.046 4599.648
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4742.472 3.206 4431.11
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4440.343 0 5328.158
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4982.587 13.869 4348.51
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4410.987 0 5584.297
-  m_sDescription "AO Limit (BLU)"
- }
- {
-  coords 4900.205 5.403 4346.494
+  coords 4579.658 -0 4988.213
+  angleY 0
   m_sDescription "AO Limit (BLU)"
  }
 }

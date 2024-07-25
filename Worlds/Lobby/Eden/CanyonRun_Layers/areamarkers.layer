@@ -1,0 +1,32 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 4810.727 29.193 11631.127
+  angleY 90.257
+  m_MarkerColor 0.562 0.07 0.07 1
+  m_sDescription "Reach the Opposite Side"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ {
+  coords 4810.821 29.147 11281.873
+  angleY 90.237
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Reach the Opposite Side"
+  m_aVisibleForFactions {
+   "US"
+  }
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 4840.126 31.233 11201.152
+ angleY 90.003
+ m_sDescription "OPFOR Spawn"
+ m_aVisibleForFactions {
+  "USSR"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4842.03 29.135 11685.203
+ angleY 90.123
+}

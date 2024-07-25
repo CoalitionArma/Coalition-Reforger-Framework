@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{1DF1291C7BF63429}Prefabs/Characters/Factions/BLUFOR/US_Army/HeliBattleSpecial_Blufor_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Pilot"
+  }
+ }
+}

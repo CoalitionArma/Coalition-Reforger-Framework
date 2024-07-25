@@ -1,0 +1,66 @@
+$grp SCR_AIGroup : "{DB2DAE76F55500F1}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Legacy/Group_US80s_RifleSquad_p.et" {
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Column"
+   }
+  }
+  coords 4829.507 27.704 11675.29
+  angleY 179.931
+  m_aUnitPrefabSlots {
+   "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Column"
+   }
+  }
+  coords 4834.334 28.047 11675.246
+  angleY 178.992
+  m_aUnitPrefabSlots {
+   "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et"
+  }
+  m_sCustomNameSet "2nd Squad"
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Column"
+   }
+  }
+  coords 4840.359 28.182 11675.206
+  angleY -179.848
+  m_aUnitPrefabSlots {
+   "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et"
+  }
+  m_sCustomNameSet "3rd Squad"
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Column"
+   }
+  }
+  coords 4845.385 28.238 11675.049
+  angleY 179.073
+  m_aUnitPrefabSlots {
+   "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et"
+  }
+  m_sCustomNameSet "4th Squad"
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Column"
+   }
+  }
+  coords 4850.725 28.499 11675.021
+  angleY -179.837
+  m_aUnitPrefabSlots {
+   "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et" "{754C79ECEF31C70B}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_US_CanyonRun_GL.et"
+  }
+  m_sCustomNameSet "5th Squad"
+ }
+}

@@ -1,0 +1,65 @@
+SCR_BaseTriggerEntity trig2 {
+ coords 6415.515 467.223 14997.792
+ angleX 0.895
+ angleY 0.014
+ angleZ 0.895
+}
+SCR_PlayersPresentTriggerEntity trig1 {
+ coords 6413.221 467.097 15004.193
+ angleX -2.683
+ angleY -0.042
+ angleZ 0.896
+ TriggerShapeType Sphere
+ SphereRadius 100
+ TriggerActivationType "First change"
+ RunDefaultQueryFirst 0
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 6658.291 461.481 15285.798
+ m_sTitle "Mission"
+ m_sTextData "Defend Stary Yar and our 2 Checkpoints from the American Menace within 60min, they have Mortar support it's recommended to use buildings to stay safe whilst also staying mobile so the mortars hit old reports."
+ m_iOrder 2
+}
+$grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ {
+  coords 6670.503 460.826 15294.359
+  m_sTextData "BLUFOR:"\
+  "2x HMMWV 50.call"\
+  "1x HMMWV Ambulance"\
+  "2x 81mm Mortars"\
+  ""\
+  "OPFOR:"\
+  "2x BTR-70s"\
+  "1x UAZ452 Ambulance"
+  m_iOrder 3
+ }
+ MissionNotes {
+  coords 6676.642 460.832 15292.7
+  m_sTitle "Mission Notes"
+  m_sTextData "Mission Notes:"\
+  "- 60min Timelimit / OPFOR 3:2 BLUFOR"\
+  "- BLUFOR cannot leave their safe zone until the game starts."\
+  "- OPFOR cannot leave their AO Limit and must stay inside it"\
+  "- Mortars can be ignored if necessary (no one having the skills for it)"\
+  ""\
+  "Notes for Admin/Game Master:"\
+  "- Spawn S1203 Ambulance for OPFOR"\
+  "- Spawn HMMWV Ambulance for BLUFOR"\
+  "- Trigger on in the village is 130m Wide while checkpoints are 41m and will trigger once BLUFOR has 0.8 Ratio over OPFOR, it checks every 20sec"
+  m_iOrder 4
+ }
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 6683.057 460.423 15295.976
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 6680.896 460.757 15291.944
+ m_sTitle "Mission"
+ m_sTextData "Move in & secure Stary Yar and the 2 Forward checkpoints from the Soviet Menace within 60min, they have BTRs and structures to hide behind."
+ m_iOrder 2
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 6675.556 460.713 15294.568
+ m_sTitle "Situation"
+ m_sTextData "A Soviet Infantry Platoon with attached BTRs have been tasked with defending Stary Yar & repel a US Company (-) with a attached mortar battery for support whose tasked with securing the village of Stary Yar."
+}

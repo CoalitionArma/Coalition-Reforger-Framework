@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{EF91EAFBD9456727}Worlds/Lobby/Eden/helibattle-spcl_Layers/Colors/HeliBattleTan.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}

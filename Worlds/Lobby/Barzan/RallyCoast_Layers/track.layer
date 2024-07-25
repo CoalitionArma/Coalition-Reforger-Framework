@@ -47,7 +47,7 @@ SCR_BaseTriggerEntity Finish_Trigger {
  "	void DoAThing()"\
  "	{"\
  "		CRF_SafestartGameModeComponent gmComp = CRF_SafestartGameModeComponent.GetInstance();"\
- "		gmComp.ToggleSideReady(\"Blufor\", \"ur mom\");"\
+ "		gmComp.ToggleSideReady(\"Blufor\", \"ur mom\", true);"\
  "	"
  TriggerShapeType Sphere
  SphereRadius 20
@@ -17202,7 +17202,7 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
      {
       GenericEntity {
        ID "552C739767950670"
-       coords -0 0 -0
+       coords 0 0 0
       }
       GenericEntity {
        ID "552C73976795067A"
@@ -17239,7 +17239,7 @@ $grp GenericEntity : "{2113100E3207EE25}PrefabsEditable/Auto/Compositions/Misc/S
      {
       GenericEntity {
        ID "552C739767950670"
-       coords 0 0 -0
+       coords 0 0 0
       }
       GenericEntity {
        ID "552C73976795067A"
