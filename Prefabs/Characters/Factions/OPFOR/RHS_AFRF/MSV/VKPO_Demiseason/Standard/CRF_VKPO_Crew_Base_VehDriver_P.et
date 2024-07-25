@@ -1,0 +1,43 @@
+SCR_ChimeraCharacter : "{5FB031490A5E5155}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Driver"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{BBBD9F366D118FDF}Prefabs/Weapons/Rifles/SR3M/Rifle_SR3M_blk.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{85ADC5E1BE7FACDB}Prefabs/Characters/HeadGear/Helmet_CVC_01/Helmet_CVC_Shroud_0_NVG.et"
+    }
+    LoadoutSlotInfo Jacket {
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{F2850639D26CB41D}Prefabs/Characters/Vests/Vest_Ratnik3K_6B48/Variants/Vest_Ratnik-ZK_6B48_crewman.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{61B76BBAC4FD665D}" {
+     TargetStorage "Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_ak_3_pouch.et"
+     PrefabsToSpawn {
+      "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et"
+     }
+    }
+    ItemsInitConfigurationItem "{61B76BBAC4FD6646}" {
+     TargetStorage "Prefabs/Characters/Vests/Vest_Ratnik_Pouches/Pouch_Ratnik_ak_3_pouch.et"
+     PrefabsToSpawn {
+      "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et"
+     }
+    }
+    ItemsInitConfigurationItem "{61B76BBAC4FD664B}" {
+     PrefabsToSpawn {
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,10 +1,18 @@
-Turret mtr1 : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
- coords 6416.835 467.051 15003.878
- angleY -88
- constructor ""\
- "		//SetEventMask(EntityEvent.SIMULATE);"\
- "		GetGame().GetCallqueue().CallLater(EOnInit, 3000, false, parent);"\
- "	"
+SCR_BaseTriggerEntity trig2 {
+ coords 6415.515 467.223 14997.792
+ angleX 0.895
+ angleY 0.014
+ angleZ 0.895
+}
+SCR_PlayersPresentTriggerEntity trig1 {
+ coords 6413.221 467.097 15004.193
+ angleX -2.683
+ angleY -0.042
+ angleZ 0.896
+ TriggerShapeType Sphere
+ SphereRadius 100
+ TriggerActivationType "First change"
+ RunDefaultQueryFirst 0
 }
 PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  coords 6658.291 461.481 15285.798

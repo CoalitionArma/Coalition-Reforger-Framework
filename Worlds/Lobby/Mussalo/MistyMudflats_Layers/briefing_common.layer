@@ -33,7 +33,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Assets"
   m_sTextData "BLUFOR:"\
   ""\
-  "2x M998 for HQ and Medics"\
+  "1x M998 for HQ and 1x M997 Medics"\
   "1x M1025 (M2HB) and 2x M998 per squad, so one HMWVV for each fireteam"\
   ""\
   ""\

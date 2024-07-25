@@ -13,6 +13,32 @@ $grp GenericEntity : "{0D20C7931CB82F34}PrefabLibrary/Rocks/Granite/Granite_Boul
   angleZ 71.327
   scale 0.325
  }
+ {
+  coords 4817.781 0.275 11414.608
+  angleX 34.34
+  angleY -143.312
+  angleZ 71.327
+  scale 0.325
+ }
+ {
+  coords 4801.781 0 11422.309
+  angleY -143.312
+  scale 0.325
+ }
+ {
+  coords 4825.035 -0.001 11492.682
+  angleX 0.183
+  angleY -143.31
+  angleZ 1.253
+  scale 0.325
+ }
+ {
+  coords 4827.863 -0.001 11493.001
+  angleX 0.214
+  angleY -144.743
+  angleZ 1.248
+  scale 0.325
+ }
 }
 $grp GenericEntity : "{0DBE058F13F0C7E8}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V1_US.et" {
  {
@@ -82,11 +108,9 @@ GenericEntity : "{1E76B51555BFD029}PrefabLibrary/Props/Military/CannonWreck_01.e
  angleY 0.088
  angleZ -2.68
 }
-GenericEntity : "{31B5A3C26644F4A5}PrefabLibrary/Props/Military/T62_wreck_turret.et" {
- coords 4821.129 28.587 11457.1
- angleX -0.706
- angleY 2.415
- angleZ -4.5
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
+ coords 4823.181 28.547 11453.218
+ angleY 60.111
 }
 GenericEntity : "{38CC50480D29CCFD}PrefabLibrary/Rocks/Granite/Granite_Boulder_01/Granite_Boulder_01.et" {
  coords 4820.976 0.284 11602.195
@@ -95,12 +119,23 @@ GenericEntity : "{38CC50480D29CCFD}PrefabLibrary/Rocks/Granite/Granite_Boulder_0
  angleZ 54.483
  scale 0.6
 }
+$grp GenericEntity : "{39509EECDF44B5FB}Prefabs/Props/Industrial/Train/wagon_flat/wagon_flat_base.et" {
+ {
+  coords 4810.858 29.193 11470.162
+ }
+ {
+  coords 4810.857 29.193 11487.282
+ }
+}
 GenericEntity : "{549864A8B1ED43D3}PrefabLibrary/Rocks/Granite/Granite_Boulder_02/Granite_Boulder_02.et" {
  coords 4820.748 0 11440.777
  angleX -8.872
  angleY 151.001
  angleZ 158.444
  scale 0.543
+}
+GenericEntity : "{6B623E396F94778F}Prefabs/Props/Industrial/Train/loco_chme3/loco_chme3_base.et" {
+ coords 4810.804 29.116 11396.298
 }
 $grp GameEntity : "{95EFB2EE402F81DB}PrefabsEditable/Auto/Props/Military/Generators/E_GeneratorFloodlight_US_01.et" {
  {
@@ -156,6 +191,25 @@ $grp GameEntity : "{95EFB2EE402F81DB}PrefabsEditable/Auto/Props/Military/Generat
   }
   coords 4857.771 27.844 11207.228
   angleY -89.856
+ }
+}
+$grp GenericEntity : "{96FEC29379CC13FE}Prefabs/Props/Industrial/Train/wagon_box/wagon_box_base.et" {
+ {
+  coords 4810.867 29.177 11421.083
+  angleY -179.884
+ }
+ {
+  coords 4810.868 29.177 11433.145
+ }
+ {
+  coords 4810.868 29.177 11409.035
+ }
+ {
+  coords 4810.868 29.177 11524.505
+ }
+ {
+  coords 4810.867 29.177 11536.44
+  angleY 179.725
  }
 }
 GenericEntity : "{A237EA45CED8EBFA}PrefabsEditable/Auto/Props/Wrecks/E_M113_wreck.et" {
@@ -556,6 +610,20 @@ $grp GenericEntity : "{BDAA871A06DABD74}PrefabsEditable/Auto/Props/Military/Sand
   coords 4801.564 27.621 11631.98
  }
 }
+$grp GenericEntity : "{CEB7486188004842}Prefabs/Props/Industrial/Train/wagon_tanker/wagon_tanker_grey.et" {
+ {
+  coords 4810.831 29.202 11501.507
+ }
+ {
+  coords 4810.831 29.202 11512.771
+ }
+ {
+  coords 4810.831 29.202 11455.989
+ }
+ {
+  coords 4810.831 29.202 11444.687
+ }
+}
 $grp GenericEntity : "{D78FC91A69E3EA4C}PrefabsEditable/Auto/Rocks/Granite/E_Granite_Boulder_02.et" {
  {
   coords 4827.936 -0.031 11542.006
@@ -579,6 +647,9 @@ $grp GenericEntity : "{D78FC91A69E3EA4C}PrefabsEditable/Auto/Rocks/Granite/E_Gra
  }
  {
   coords 4797.798 0.177 11482.9
+ }
+ {
+  coords 4823.551 -0.011 11359.522
  }
 }
 GenericEntity : "{D99955DFCF7D3962}Prefabs/Props/Wrecks/CannonWreck_01.et" {
@@ -1067,7 +1138,13 @@ $grp GenericEntity : "{F09A0FB3D74B7C23}Prefabs/Rocks/Granite/GraniteCliff_02_Fu
   angleY -1.652
  }
 }
-GenericEntity : "{F85FC719F392E7A5}Prefabs/Rocks/Granite/Granite_Boulder_02_Fucus.et" {
- coords 4799.393 0 11443.179
- scale 0.48
+$grp GenericEntity : "{F85FC719F392E7A5}Prefabs/Rocks/Granite/Granite_Boulder_02_Fucus.et" {
+ {
+  coords 4799.393 0 11443.179
+  scale 0.48
+ }
+ {
+  coords 4801.499 0.027 11389.429
+  scale 0.48
+ }
 }

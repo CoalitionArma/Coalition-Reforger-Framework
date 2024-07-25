@@ -2,6 +2,29 @@ $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB
  M1025_armed_M2HB_MERDC2 {
   coords 6408.293 467.24 14988.736
   angleY -89
+  userScript "	// code here"\
+  "	string mortar = \"{0374F390B22D0D1E}Mortars/81/M252new.et\";"\
+  "	vector mortar1spawn, mortar2spawn;"\
+  "	IEntity mortar1trig, mortar2trig;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		mortar1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
+  "		mortar2trig = GetGame().GetWorld().FindEntityByName(\"trig2\");"\
+  "		mortar1spawn = mortar1trig.GetOrigin();"\
+  "		mortar2spawn = mortar2trig.GetOrigin();"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = mortar1spawn;"\
+  "		"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = mortar2spawn;"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
  }
  M1025_armed_M2HB_MERDC1 {
   coords 6396.435 467.646 14985.823
@@ -57,7 +80,7 @@ SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/
          }
          coords 4.42 0.122 0.49
          m_aUnitPrefabSlots {
-          "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_SL_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MG_R_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMG_R_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MG_R_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMG_R_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMAT_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_AMAT_P.et"
+          "{DBC177C261C93B9D}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_SL_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MG_R_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMG_R_P.et" "{EB2904CE98753A6E}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MG_R_P.et" "{CA2EB3A73FABC625}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMG_R_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMAT_P.et" "{AC2FE2DB4016CCE4}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_MAT_P.et" "{E5577A16D206D536}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_AMAT_P.et"
          }
          m_sCustomNameSet "3rd Weapon Squad"
          {

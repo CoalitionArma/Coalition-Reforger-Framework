@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{5FB031490A5E5155}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Logi Runner"
+  }
+ }
+}

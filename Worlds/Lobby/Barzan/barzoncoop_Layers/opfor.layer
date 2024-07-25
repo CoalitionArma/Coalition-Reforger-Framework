@@ -1,0 +1,35 @@
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 2276.767 14.038 2461.577
+ {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   {
+    coords -40.247 -0.814 -24.624
+   }
+   {
+    coords -73.41 -0.928 -21.347
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -96.102 -0.563 -19.504
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -127.611 -0.165 -19.129
+    m_sCustomNameSet "4th Squad"
+    {
+     SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Support/CRF_RF_MSV_VKPO_Logi.et" {
+      coords 122.442 0.141 41.656
+      m_aUnitPrefabSlots {
+       "{FF110311483998E7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_SL.et" "{0D8ADCDE84CB4B06}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_LogiRunner.et" "{0D8ADCDE84CB4B06}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_LogiRunner.et"
+      }
+      {
+       SCR_AIGroup : "{3F96CC77DFBBE8FE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Support/CRF_RF_MSV_VKPO_Arty.et" {
+        coords -12.665 -0.04 -4.847
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

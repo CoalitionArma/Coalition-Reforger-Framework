@@ -15,7 +15,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 272.728 17.426 629.516
  {
-  SCR_FactionManager {
+  SCR_FactionManager "61F1546F460573DB" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {

@@ -1,0 +1,12 @@
+$grp GenericEntity : "{5108922392AE7139}PrefabsEditable/Auto/Rocks/Granite/E_GraniteCliff_01.et" {
+ {
+  coords 9063.295 17.606 3574.328
+  angleY 70.912
+  scale 18.081
+ }
+ {
+  coords 8930.181 17.606 3959.006
+  angleY 70.912
+  scale 18.081
+ }
+}

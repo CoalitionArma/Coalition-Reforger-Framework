@@ -16,7 +16,8 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "2x Field Dressings"\
   ""\
   "- Truck"\
-  "30x AT Mines"
+  "30x AT Mines"\
+  "12x M72A3"
   m_aVisibleForFactions {
    "US"
   }
@@ -25,7 +26,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  BLU_Objective {
   coords 6370.453 1.313 5096.315
   m_sTitle "Objective"
-  m_sTextData "Defend the 3x Bridges from the OPFOR for 60min or kill them all"
+  m_sTextData "Defend the 2x Bridges & Village from OPFOR for 60min or kill them all. Takes 20-30sec to secure a objective if you've cleared the area (check mission notes)"
   m_aVisibleForFactions {
    "US"
   }
