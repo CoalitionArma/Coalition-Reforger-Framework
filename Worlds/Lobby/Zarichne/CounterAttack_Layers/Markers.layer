@@ -1,0 +1,12 @@
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1507.918 17.033 359
+ angleY 90.571
+ m_sDescription "OPFOR Spawn"
+ m_aVisibleForFactions {
+  "USSR"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2348.436 4.611 1819.633
+ angleY -179.019
+}
