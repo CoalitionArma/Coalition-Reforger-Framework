@@ -1,0 +1,294 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{61F3638567387459}" {
+     NavmeshFile "{098CC0568690AAD9}Worlds/BarzanMapRemake/Navmeshes/GM_BarzanMapRemake.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{FBA34481A7E1A9FF}Worlds/BarzanMapRemake/Navmeshes/GM_BarzanMapRemake_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{49153A2B2DBDE0F4}Worlds/BarzanMapRemake/Navmeshes/LowResBarzanMapRemake.nmn"
+    }
+   }
+  }
+ }
+ coords 2065.297 7.753 2438.147
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_LoggingServerComponent "{61761C7B221DBCD4}" {
+   Enabled 0
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 100
+  }
+  PS_ObjectiveManager "{61BCFEC02D3898F3}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{61BCFEC02D3898F7}" {
+     m_iScore 0
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F5}" {
+     m_iScore 25
+     m_sName "#PS-ObjectiveLevel_MinorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F4}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_Draw"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D38988B}" {
+     m_iScore 75
+     m_sName "#PS-ObjectiveLevel_MinorVictory"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D389EAB}" {
+     m_iScore 100
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  RHS_RadialMenuItemsComponent "{5DCEFDBDF94DEFA0}" {
+   m_MenuController RHS_RadialMenuController "{5DCEFDBDF7FAC37A}" {
+    m_RMControls SCR_RadialMenuControllerInputs "{5DCEFDBDF2E715A3}" {
+     m_sControllerContext "RadialMenuContext"
+     m_sOpenAction "RHS_CharacterOpenRadial"
+     m_bCloseOnReleaseOpen 0
+     m_bPerformOnClose 0
+     m_bCloseOnPerform 1
+     m_bPreventEmptyMenuOpen 1
+    }
+   }
+  }
+  SCR_CampaignBuildingManagerComponent "{61BCFEC02D389EA7}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{5DF6FBB5913F3245}" : "{96A8B496A076F1C0}scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  SCR_CaptureAndHoldManager "{61F363991DAE46C7}" {
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   m_aModules {
+    SCR_DataCollectorBasicActionsModule "{5AE097A82ED69A98}" {
+    }
+    SCR_DataCollectorDriverModule "{5AE097BB69284302}" {
+    }
+    SCR_DataCollectorShootingModule "{5AE097BB6217A2F8}" {
+    }
+    SCR_DataCollectorHealingItemsModule "{5CECE314484120F4}" {
+     m_aConsumableTypes {
+      ConsumableTypeStats "{5CECE316446057A9}" {
+       m_eConsumableType BANDAGE
+       m_eDataStatsSelf BANDAGE_SELF
+       m_eDataStatsFriend BANDAGE_FRIENDLIES
+      }
+      ConsumableTypeStats "{5CECE31644CBD9C5}" {
+       m_eConsumableType TOURNIQUET
+       m_eDataStatsSelf TOURNIQUET_SELF
+       m_eDataStatsFriend TOURNIQUET_FRIENDLIES
+      }
+      ConsumableTypeStats "{5CECE316453FD0FC}" {
+       m_eConsumableType SALINE
+       m_eDataStatsSelf SALINE_SELF
+       m_eDataStatsFriend SALINE_FRIENDLIES
+      }
+      ConsumableTypeStats "{5CECE316451EC89B}" {
+       m_eConsumableType MORPHINE
+       m_eDataStatsSelf MORPHINE_SELF
+       m_eDataStatsFriend MORPHINE_FRIENDLIES
+      }
+     }
+    }
+    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
+     m_aLightBanPunishments +{
+     }
+     m_aHeavyBanPunishments +{
+     }
+    }
+    SCR_DataCollectorAchievementsModule "{5DE86E4CB99B3FFB}" {
+    }
+   }
+  }
+  SCR_EntityCatalogManagerComponent "{5C9AD18D91F9E87E}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C9AD18D9D38E99E}" : "{EAD206A79A774696}Configs/EntityCatalog/FactionLess/Characters_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{5C9AD18D9B68853E}" : "{77243A71AF0E5A75}Configs/EntityCatalog/FactionLess/Vehicles_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{61C8EED3993E46B7}" : "{2E8FFD9558E26113}Configs/EntityCatalog/FactionLess/Groups_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{61C8EED39E8B0DC3}" : "{0CC054C7DEDC766E}Configs/EntityCatalog/FactionLess/WeaponTripod_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{5C9AD18D98F9181C}" : "{BB12292052E2F5B8}Configs/EntityCatalog/FactionLess/InventoryItems_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalog "{5C9EDDD29E61EF44}" : "{B80293331FB7BFCF}Configs/EntityCatalog/FactionLess/SupplyContainerItems_EntityCatalog_Factionless.conf" {
+    }
+   }
+  }
+  SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
+   m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" : "{651583FFFB7FC765}Configs/GameOverScreen/GameOverScreensConfig.conf" {
+   }
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{61BCFEC02D389EB5}" {
+   m_fDuration 0
+  }
+  SCR_RadialMenuGameModeComponent "{5C7E75494DC4CB62}" {
+   Enabled 0
+   m_Menu SCR_RadialMenu "{5C7E7549355B981C}" {
+    m_Inputs SCR_RadialMenuInputs "{5B26E2FE7B2FF1D4}" {
+     m_iGamepadDeselectionDelay 400
+    }
+   }
+  }
+  SCR_RadialMenuItemsComponent "{5C92B03271ABD8AA}" {
+   m_MenuController SCR_RadialMenuController "{5C92B0326E1334FB}" {
+   }
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{61BCFEC02D389E8A}" {
+   }
+  }
+  SCR_SaveLoadComponent "{61BCFEC02D389E88}" {
+   m_Struct SCR_MissionStruct "{61BCFEC02D389E8F}" {
+    m_Struct0 SCR_EditorStruct "{61BCFEC02D389E8E}" {
+     m_AttributeList SCR_EditorAttributeList "{590C7881C296FA7D}" : "{F3D6C6D25642352C}Configs/Editor/AttributeLists/Edit.conf" {
+     }
+    }
+   }
+   m_iAutosavePeriod 600
+  }
+  SCR_ScoringSystemComponent "{61F3639BEE5F8CC0}" {
+   m_aActions {
+    IScoringAction "{61F533B0770942B0}" {
+     m_eScoringMode SLM_Faction
+    }
+    EndGameAction "{61F533B072594862}" {
+     m_eScoringMode SLM_Faction
+     m_iScoreLimit 5000
+    }
+   }
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
+  RplComponent "{56B2B4793BF2E1B4}" {
+   "Rpl State Override" None
+   Streamable Disabled
+  }
+ }
+ coords 1882.728 3.956 2898.417
+ PlayerControllerPrefab "{4AC4F3916D9B8F4F}Prefabs/Characters/Core/CAHControllerMP_Coop.et"
+ m_bUseSpawnPreload 0
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{61F533B2A7F5046B}" {
+   m_sFactionKey "RHS_US_USMC"
+   m_iCount 50
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+  PS_FactionRespawnCount "{61F533B2BD927AF1}" {
+   m_sFactionKey "RHS_RF_MSV"
+   m_iCount 50
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+ }
+ {
+  SCR_FactionManager "61F54637983CCA16" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61F546373BDA1893}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61F546373A1D6E9A}" {
+        m_sCallsign "HAT"
+       }
+       SCR_CallsignInfo "{61F546373ABB0940}" {
+        m_sCallsign "LOGI"
+       }
+       SCR_CallsignInfo "{61F54637396E9F0D}" {
+        m_sCallsign "IFVA"
+       }
+       SCR_CallsignInfo "{61F546370AAC2119}" {
+        m_sCallsign "IFVB"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61F5463718BA38CF}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61F54637176F2D36}" {
+        m_sCallsign "HAT"
+       }
+       SCR_CallsignInfo "{61F5463717229833}" {
+        m_sCallsign "LOGI"
+       }
+       SCR_CallsignInfo "{61F5463717DB5EB4}" {
+        m_sCallsign "IFVA"
+       }
+       SCR_CallsignInfo "{61F54634EF337A0C}" {
+        m_sCallsign "IFVB"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_CaptureAndHoldArea : "{11E28821DF729BEC}Prefabs/MP/Modes/CaptureAndHold/Areas/CaptureAndHoldArea_Minor.et" {
+ {
+  coords 1467.069 8.524 2519.889
+  TriggerShapeType Sphere
+  SphereRadius 45
+  m_sAreaSymbol "B"
+  m_iScorePerTick 1
+ }
+ {
+  coords 1923.783 12.554 2266.292
+  TriggerShapeType Sphere
+  SphereRadius 45
+  m_sAreaSymbol "C"
+  m_iScorePerTick 1
+ }
+}
+SCR_CaptureAndHoldArea : "{F4649500E51DF810}Prefabs/MP/Modes/CaptureAndHold/Areas/CaptureAndHoldArea_Major.et" {
+ coords 1700.224 8.789 2507.428
+ angleY 68.063
+ SphereRadius 50
+ BoxMins -150 -5 -100
+ BoxMaxs 200 5 100
+ m_sAreaSymbol "A"
+ m_vObjectiveCenter 25 25 25
+ m_iScorePerTick 2
+}

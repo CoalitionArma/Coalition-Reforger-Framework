@@ -1,0 +1,103 @@
+$grp Vehicle : "{45DDFA40E1CB6B82}Prefabs/Vehicles/Wheeled/Stryker/Stryker_Dragoon.et" {
+ Stryker_Dragoon1 {
+  coords 900.937 1.142 2636.586
+  angleY 64
+ }
+ Stryker_Dragoon2 {
+  coords 890.3 1.219 2632.68
+  angleY 72
+ }
+}
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Platoon.et" {
+ coords 880.328 1.214 2633.025
+ angleX 2.652
+ angleY 0.29
+ angleZ 6.249
+ {
+  SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
+   coords -20.135 -0.901 -25.85
+   angleX -2.668
+   angleY 0
+   angleZ -6.242
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
+     coords 16.494 0.276 48.535
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
+       coords 60.355 -0.029 -45.962
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
+         coords -25.08 -0.038 32.678
+         m_sCustomNameSet "4th Squad"
+         {
+          SCR_AIGroup : "{2A27F6179C97CE40}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Support/CRF_USMC_HATTeam.et" {
+           coords 57.064 -0.049 43.438
+           m_aUnitPrefabSlots {
+            "{B6DCC9119FEB6139}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_SL_P.et" "{9BEE17AC9F58F609}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_HAT_P.et" "{4729CBC012B21CA7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_AHAT_P.et"
+           }
+           m_sCustomNameSet "Heavy Anti-tank (HAT)"
+           {
+            SCR_AIGroup : "{BCA32CC991EF0DCD}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Support/CRF_USMC_Logistics.et" {
+             coords -104.634 -0.334 -117.044
+             angleX 0.895
+             m_aUnitPrefabSlots {
+              "{B6DCC9119FEB6139}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_SL_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et"
+             }
+             {
+              SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Vehicles/CRF_USMC_ArmorCrew.et" {
+               coords 50.049 0.602 -4.944
+               m_sCustomNameSet "IFV A (Stryker 30mm)"
+               {
+                SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Vehicles/CRF_USMC_ArmorCrew.et" {
+                 coords -0.703 0.915 -9.033
+                 m_sCustomNameSet "IFV B (Stryker 30mm)"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle M923A1_ammo1 : "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et" {
+ components {
+  SCR_ResourceComponent "{61F5463A381FF485}" {
+   m_aContainers {
+    SCR_ResourceContainer "{61F5463A36114E62}" {
+     m_eResourceRights ALL
+     m_eStorageType CARGO_VEHICLE
+     m_fResourceValueCurrent 1000
+     m_fResourceValueMax 1000
+    }
+   }
+  }
+ }
+ coords 888.681 1.393 2565.064
+ angleY 28
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport2 {
+  coords 878.471 1.339 2567.253
+  angleY 31
+ }
+ M923A1_transport3 {
+  coords 882.939 1.355 2564.713
+  angleY 30
+ }
+ M923A1_transport1 {
+  coords 874.479 1.234 2569.564
+  angleY 32
+ }
+}

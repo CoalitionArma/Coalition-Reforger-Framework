@@ -1,0 +1,100 @@
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 2485.281 4 2650.812
+  angleY -63
+ }
+ Ural4320_transport2 {
+  coords 2495.42 3.969 2645.809
+  angleY -61
+ }
+ Ural4320_transport3 {
+  coords 2506.925 3.907 2638.314
+  angleY -50
+ }
+}
+Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et" {
+ components {
+  SCR_ResourceComponent "{61F5588CE0CF2D11}" {
+   m_aContainers {
+    SCR_ResourceContainer "{61F5588CFE481F22}" {
+     m_eResourceRights ALL
+     m_eStorageType CARGO_VEHICLE
+     m_fResourceValueCurrent 1000
+     m_fResourceValueMax 1000
+    }
+   }
+  }
+ }
+ coords 2477.502 5.174 2639.632
+ angleX -5.351
+ angleY -0.168
+ angleZ 1.798
+}
+$grp Vehicle : "{5277EEE45FB383F5}Prefabs/Vehicles/Wheeled/BTR90/BTR90.et" {
+ BTR1 {
+  coords 2445.214 4.067 2673.922
+  angleX 13.727
+  angleY -122.381
+  angleZ 6.793
+ }
+ BTR2 {
+  coords 2453.244 3.814 2670.656
+  angleX 13.727
+  angleY -122.381
+  angleZ 6.793
+ }
+}
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 2447.107 4.46 2666.748
+ {
+  SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   coords -30.498 2.381 12.327
+   angleX 0.894
+   angleY 0.028
+   angleZ 1.79
+   {
+    SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+     coords -10.837 4.476 -26.323
+     angleX -0.895
+     angleZ -1.79
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+       coords 15.371 -1.315 -11.549
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+         coords 28.303 1.627 -27.094
+         m_sCustomNameSet "4th Squad"
+         {
+          SCR_AIGroup : "{8748BF6550869FF3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_HAT.et" {
+           coords 16.249 -7.742 45.279
+           m_sCustomNameSet "Heavy Anti-tank"
+           {
+            SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_Logi.et" {
+             coords 2.651 0.008 -0.004
+             {
+              SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+               coords -9.788 0.117 7.568
+               m_sCustomNameSet "IFV A (BTR-90A)"
+               {
+                SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+                 coords -20.957 1.332 3.922
+                 m_sCustomNameSet "IFV B (BTR-90A)"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

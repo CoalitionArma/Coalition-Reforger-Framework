@@ -1,0 +1,18 @@
+PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ coords 1347.952 8.076 2668.587
+ m_sDescription "OPFOR LOA"
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 2435.496 6.342 2659.361
+ angleY 0
+ m_sDescription "OPFOR Spawn"
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 882.52 1.5 2645.476
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+}
