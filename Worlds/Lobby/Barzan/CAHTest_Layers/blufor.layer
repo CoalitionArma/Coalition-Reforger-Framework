@@ -60,33 +60,3 @@ SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Co
   }
  }
 }
-Vehicle M923A1_ammo1 : "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et" {
- components {
-  SCR_ResourceComponent "{61F5463A381FF485}" {
-   m_aContainers {
-    SCR_ResourceContainer "{61F5463A36114E62}" {
-     m_eResourceRights ALL
-     m_eStorageType CARGO_VEHICLE
-     m_fResourceValueCurrent 1000
-     m_fResourceValueMax 1000
-    }
-   }
-  }
- }
- coords 888.681 1.393 2565.064
- angleY 28
-}
-$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
- M923A1_transport2 {
-  coords 878.471 1.339 2567.253
-  angleY 31
- }
- M923A1_transport3 {
-  coords 882.939 1.355 2564.713
-  angleY 30
- }
- M923A1_transport1 {
-  coords 874.479 1.234 2569.564
-  angleY 32
- }
-}

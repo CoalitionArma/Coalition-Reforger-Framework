@@ -1,35 +1,3 @@
-$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
- Ural4320_transport1 {
-  coords 2485.281 4 2650.812
-  angleY -63
- }
- Ural4320_transport2 {
-  coords 2495.42 3.969 2645.809
-  angleY -61
- }
- Ural4320_transport3 {
-  coords 2506.925 3.907 2638.314
-  angleY -50
- }
-}
-Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et" {
- components {
-  SCR_ResourceComponent "{61F5588CE0CF2D11}" {
-   m_aContainers {
-    SCR_ResourceContainer "{61F5588CFE481F22}" {
-     m_eResourceRights ALL
-     m_eStorageType CARGO_VEHICLE
-     m_fResourceValueCurrent 1000
-     m_fResourceValueMax 1000
-    }
-   }
-  }
- }
- coords 2477.502 5.174 2639.632
- angleX -5.351
- angleY -0.168
- angleZ 1.798
-}
 SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
  coords 2447.107 4.46 2666.748
  {
