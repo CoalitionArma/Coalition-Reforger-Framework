@@ -30,20 +30,6 @@ Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ur
  angleY -0.168
  angleZ 1.798
 }
-$grp Vehicle : "{5277EEE45FB383F5}Prefabs/Vehicles/Wheeled/BTR90/BTR90.et" {
- BTR1 {
-  coords 2445.214 4.067 2673.922
-  angleX 13.727
-  angleY -122.381
-  angleZ 6.793
- }
- BTR2 {
-  coords 2453.244 3.814 2670.656
-  angleX 13.727
-  angleY -122.381
-  angleZ 6.793
- }
-}
 SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
  coords 2447.107 4.46 2666.748
  {

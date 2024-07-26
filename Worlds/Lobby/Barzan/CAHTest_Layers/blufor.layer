@@ -1,13 +1,3 @@
-$grp Vehicle : "{45DDFA40E1CB6B82}Prefabs/Vehicles/Wheeled/Stryker/Stryker_Dragoon.et" {
- Stryker_Dragoon1 {
-  coords 900.937 1.142 2636.586
-  angleY 64
- }
- Stryker_Dragoon2 {
-  coords 890.3 1.219 2632.68
-  angleY 72
- }
-}
 SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Platoon.et" {
  coords 880.328 1.214 2633.025
  angleX 2.652
