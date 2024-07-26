@@ -17,7 +17,6 @@ SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Co
   SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
    coords -20.135 -0.901 -25.85
    angleX -2.668
-   angleY 0
    angleZ -6.242
    m_sCustomNameSet "1st Squad"
    {
@@ -38,13 +37,13 @@ SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Co
            m_aUnitPrefabSlots {
             "{B6DCC9119FEB6139}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_SL_P.et" "{9BEE17AC9F58F609}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_HAT_P.et" "{4729CBC012B21CA7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_AHAT_P.et"
            }
-           m_sCustomNameSet "Heavy Anti-tank (HAT)"
+           m_sCustomNameSet "Heavy Anti-tank"
            {
             SCR_AIGroup : "{BCA32CC991EF0DCD}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Support/CRF_USMC_Logistics.et" {
              coords -104.634 -0.334 -117.044
              angleX 0.895
              m_aUnitPrefabSlots {
-              "{B6DCC9119FEB6139}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_SL_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et"
+              "{1D36A5559FDC1FBC}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_LogiLead_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et"
              }
              {
               SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Vehicles/CRF_USMC_ArmorCrew.et" {

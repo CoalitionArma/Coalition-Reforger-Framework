@@ -142,6 +142,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{B6DCC9119FEB6139}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_SL_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et"
  }
- m_sCustomNameSet "Arty Team"
+ m_sCustomNameSet "Logistics"
  m_bSetPlayable 1
 }

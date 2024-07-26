@@ -4,7 +4,7 @@ PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorde
 }
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  coords 2435.496 6.342 2659.361
- angleY 0
+ angleY 90.421
  m_sDescription "OPFOR Spawn"
  m_aVisibleForFactions {
   "RHS_RF_MSV"
