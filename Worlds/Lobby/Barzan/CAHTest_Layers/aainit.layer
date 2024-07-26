@@ -31,6 +31,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 100
+   m_bDeleteJIPSlots 0
   }
   PS_ObjectiveManager "{61BCFEC02D3898F3}" {
    m_aObjectiveLavels {
