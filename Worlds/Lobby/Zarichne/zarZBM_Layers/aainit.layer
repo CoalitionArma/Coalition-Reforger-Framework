@@ -1,0 +1,35 @@
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 90
+   m_bDeleteJIPSlots 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 15
+  }
+ }
+ coords 2314.347 9.045 2330.279
+ {
+  SCR_FactionManager "61EB5D38E708298B" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61EB4C4868B11F07}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{61EB4C486738AC9D}" {
+        m_sCallsign "LOGI"
+       }
+       SCR_CallsignInfo "{61EB4C4867FAB2D1}" {
+        m_sCallsign "ARTY"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

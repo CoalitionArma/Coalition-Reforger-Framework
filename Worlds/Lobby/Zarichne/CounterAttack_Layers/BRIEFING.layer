@@ -1,0 +1,34 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 2682.136 6.729 1546.683
+ m_sTextData "BLUFOR is likely to be hold up in defensive positions."\
+ ""\
+ "Counter attack and secure the crossings, then push through and capture their final defensive line."\
+ ""
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 2682.136 6.729 1546.683
+ m_sTextData "BLUFOR: "\
+ ""\
+ "2x armed Humvee per squad."\
+ "1x for MAT, MMG, and PLT"\
+ ""\
+ "OPFOR"\
+ ""\
+ "1x BTR per platoon"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2682.136 6.729 1546.683
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 2682.136 6.729 1546.683
+ m_sTextData "OPFOR can counter attack from any from a wide area."\
+ ""\
+ "Hold the two crossing leading across the river, don't let them take the final trench line on the east side."\
+ ""
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2682.136 6.729 1546.683
+ m_sTextData "BLUFOR has just pushed west across the river to gain a foothold along the trenches. "\
+ ""\
+ "OPFOR aims to counter attack and regain their lost territory and then push BLUFOR out of their eastern defenses."
+}

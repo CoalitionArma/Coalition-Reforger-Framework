@@ -63,17 +63,14 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
-		if (!Replication.IsServer()) // TODO: add check to exit if in workbench
+		if (!Replication.IsServer())
 			return;
 		
+		m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
+
+		PrintFormat("CRF Handle: %1",m_handle);
 		m_sMissionName = GetGame().GetMissionName();
-		
-		if (FileIO.FileExists(m_sLogPath))
-			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
-		else
-			m_handle = FileIO.OpenFile(m_sLogPath, FileMode.WRITE);
-		
-		m_handle.WriteLine("mission,beginning," + m_sMissionName);
+		m_handle.WriteLine("mission,beginning," + m_sMissionName);	
 	}
 	
 	// Player Connected

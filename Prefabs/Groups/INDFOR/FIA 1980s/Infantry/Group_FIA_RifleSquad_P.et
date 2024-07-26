@@ -118,7 +118,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{5BF48C02F5B40540}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_SL_P.et" "{F93D2B11566D65AA}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Medic_P.et" "{FB9549072037C248}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AR_P.et" "{73FC52DD7086623D}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_AAR_P.et" "{E1FC1EABD9709C4F}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_RAT_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et" "{BF44997B8982C00A}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman_P.et"
+  "{E5CC9F6C12A6D721}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_SL_P.et" "{EEF17040E7760576}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_Medic_P.et" "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_TL_P.et" "{DDC052F64F325E58}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AR_P.et" "{264FF7DF094FF81A}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AAR_P.et" "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_TL_P.et" "{236051A6ECE5DA9E}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AT_P.et" "{30E0402B94420E9C}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_AAT_P.et" "{38DCB0FE95975B54}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_Demo_P.et"
  }
  m_sCustomNameSet "1st Squad"
  m_bSetPlayable 1

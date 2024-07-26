@@ -109,7 +109,7 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{FFE45AFCB29CD014}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliPilot_P.et" "{FFE45AFCB29CD014}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliPilot_P.et" "{2B0F3996B07194C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliCrew_P.et" "{2B0F3996B07194C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_HeliCrew_P.et"
+  "{6FEA7CB968F51E93}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Crew_Pilot_P.et" "{77F83883AB5FCDCD}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Crew_CrewChief_P.et"
  }
  m_bSetPlayable 1
 }

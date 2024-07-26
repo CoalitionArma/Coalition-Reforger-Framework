@@ -66,30 +66,33 @@ $grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
   angleY 113.907
  }
 }
-SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Command/CRF_RF_MSV_VKPO_Platoon.et" {
- coords 1133.882 21.311 1410.852
- m_aUnitPrefabSlots {
-  "{660FBA8855DEA977}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_PL.et" "{624E0FA587A22225}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MO.et" "{3902AEDAC9026562}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_Sharpshooter.et"
- }
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 1135.075 21.298 1401.168
  {
-  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
    {
-    coords 10.862 -71.478 -38.764
+    coords 16.689 0.382 -7.54
    }
    {
-    coords -18.464 -72.835 -40.323
+    coords 1.062 -0.012 -5.473
     m_sCustomNameSet "2nd Squad"
    }
    {
-    coords 11.889 -71.95 -60.174
+    coords -14.948 -0.513 -5.532
     m_sCustomNameSet "3rd Squad"
    }
    {
-    coords -20.597 -73.97 -63.293
+    coords -29.681 -1.06 -5.643
     m_aUnitPrefabSlots {
-     "{FF110311483998E7}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_SL.et" "{BD13D9F5D4E7C337}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_Medic.et" "{6C8FFA2123F314EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_FTL_R.et" "{245F7E8F3CA46219}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MMG.et" "{3F6FA6680ACFF28D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MMGAG.et" "{2BA54F2817C87EFD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_FTL_G.et" "{BA2F0D9C0BBC5791}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_RiflemanAA.et" "{EBC046F446C0223C}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_MAT_G.et" "{961E7F8CF5492A1D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/CRF_RF_MSV_VKPO_RiflemanAAT.et"
+     "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_SL_P.et" "{E19CFA6DAD646D70}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Medic_P.et" "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_TL_P.et" "{C6BAD49B440FDCDF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_MMG_P.et" "{7AE485FA0523E327}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AMMG_P.et" "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_TL_P.et" "{EE074D9D16EE7558}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_MAT_P.et" "{52591CFC57C24AA0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AMAT_P.et" "{3DB6CA33873896C2}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AA_P.et"
     }
     m_sCustomNameSet "4th Squad"
+    {
+     SCR_AIGroup : "{ED04C9DEA30AC1FE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_MAT.et" {
+      coords 17.002 0.75 10.919
+      m_sCustomNameSet "MAT Team"
+     }
+    }
    }
   }
  }
@@ -111,8 +114,4 @@ $grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tra
   coords 1116.346 21.156 1441.749
   angleY 67.995
  }
-}
-SCR_AIGroup : "{ED04C9DEA30AC1FE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/COALITION_STANDARD/Support/CRF_RF_MSV_VKPO_MAT.et" {
- coords 1137.587 21.337 1397.708
- m_sCustomNameSet "MAT Team"
 }

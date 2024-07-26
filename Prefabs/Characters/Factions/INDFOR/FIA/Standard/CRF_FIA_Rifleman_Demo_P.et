@@ -1,0 +1,25 @@
+SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Demo"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{FDA7B6630DB87991}Prefabs/Items/Equipment/Backpacks/Backpack_M70_Swiss.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{61EB158902579937}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_M70_Swiss.et"
+     PrefabsToSpawn {
+      "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et"
+     }
+    }
+   }
+  }
+ }
+}

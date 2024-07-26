@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{A3C9811329054C00}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_Base_TL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Squad Leader"
+  }
+ }
+}

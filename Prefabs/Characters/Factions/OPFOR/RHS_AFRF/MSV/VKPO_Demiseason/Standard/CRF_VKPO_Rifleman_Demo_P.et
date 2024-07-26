@@ -1,0 +1,25 @@
+SCR_ChimeraCharacter : "{5FB031490A5E5155}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Demo"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{CAEDE923EF4071AE}Prefabs/Items/Equipment/Backpacks/Backpack_Suharka_type1.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{61F0E4FF90FE21D3}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_Suharka_type1.et"
+     PrefabsToSpawn {
+      "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et"
+     }
+    }
+   }
+  }
+ }
+}

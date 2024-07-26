@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Logi Runner"
+  }
+ }
+}

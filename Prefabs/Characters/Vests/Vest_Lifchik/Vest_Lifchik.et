@@ -5,5 +5,11 @@ GenericEntity : "{93690AE7A4BAD926}Prefabs/Characters/Core/Vest_Base.et" {
    MaxCumulativeVolume 3000
    m_fMaxWeight 40
   }
+  BaseLoadoutClothComponent "{5312D798A71DFBB1}" {
+   Slots {
+    LoadoutSlotInfo Canteen {
+    }
+   }
+  }
  }
 }
