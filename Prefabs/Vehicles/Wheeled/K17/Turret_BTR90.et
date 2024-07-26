@@ -1,0 +1,12 @@
+Turret : "{5137C3E923C1CC7C}Prefabs/Vehicles/Wheeled/K17/Turret_BTR90_Base.et" {
+ ID "51ACD0965653D003"
+ components {
+  TurretComponent "{5C829B12B0DE6BCA}" {
+   components {
+    RHS_VehicleNightVisionComponent "{5E7C86A542463356}" {
+     Enabled 0
+    }
+   }
+  }
+ }
+}
