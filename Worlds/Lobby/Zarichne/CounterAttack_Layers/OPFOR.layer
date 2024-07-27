@@ -1,3 +1,6 @@
+SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+ coords 1522.18 16.935 320.792
+}
 Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
  coords 1500.318 17.214 384.56
 }
@@ -6,10 +9,25 @@ $grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulan
   coords 1507.226 17.105 383.872
  }
  UAZ452_ambulance2 {
-  coords 1549.147 16.387 374.933
+  coords 1549.303 16.387 374.933
+  {
+   GenericEntity {
+    ID "5E2E7C60E0F9B3F4"
+    coords 0 0 0
+   }
+  }
  }
  UAZ452_ambulance3 {
   coords 1481.695 17.411 374.933
+ }
+ UAZ452_ambulance4 {
+  coords 1518.014 16.937 332.003
+  {
+   GenericEntity {
+    ID "5E2E7C60E0F9B3F4"
+    coords 0 0 0
+   }
+  }
  }
 }
 $grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
@@ -18,6 +36,9 @@ $grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
  }
  BTR2 {
   coords 1474.013 17.5 376.107
+ }
+ BTR3 {
+  coords 1508.545 17.023 333.553
  }
 }
 SCR_AIGroup : "{E27D8A921EE36F1F}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Company_p.et" {
@@ -70,6 +91,22 @@ SCR_AIGroup : "{E27D8A921EE36F1F}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80
          m_sCustomNameSet "Armor 2"
         }
        }
+      }
+     }
+    }
+   }
+   {
+    coords 11.153 -0.161 -52.555
+    m_sCustomNameSet "3rd Platoon"
+    {
+     $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+      {
+       coords 18.686 -0.118 -10.761
+       m_sCustomNameSet "5th Squad"
+      }
+      {
+       coords -14.025 0.063 -10.079
+       m_sCustomNameSet "6th Squad"
       }
      }
     }
