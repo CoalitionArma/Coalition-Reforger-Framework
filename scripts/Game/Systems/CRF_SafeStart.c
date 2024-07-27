@@ -73,11 +73,10 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		// Is the the right way to do this? WHO KNOWS !
 		if (!GetGame().InPlayMode()) return;
 			
-		//Print("[CRF Safestart] OnPostInit");
 		if (Replication.IsServer())
 		{
 			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
-			m_Logging = CRF_LoggingServerComponent.Cast(m_GameMode.FindComponent(CRF_LoggingServerComponent));
+			//m_Logging = CRF_LoggingServerComponent.Cast(m_GameMode.FindComponent(CRF_LoggingServerComponent));
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		} 
 	}
@@ -319,8 +318,7 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			DisableSafeStartEHs();
 			
 			// Send notification message 
-			if (GetGame().GetPlayerManager().GetPlayerCount() >= 10)
-				m_Logging.GameStarted();
+			m_Logging.GameStarted();
 			
 			// Use CallLater to delay the call for the removal of EHs so the changes so m_SafeStartEnabled can propagate.
 			GetGame().GetCallqueue().CallLater(DisableSafeStartEHs, 1500);

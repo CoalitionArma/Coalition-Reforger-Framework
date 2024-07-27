@@ -15,27 +15,18 @@ class CRF_LoggingServerComponentClass: SCR_BaseGameModeComponentClass
 
 class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 {	
-	string m_sLogPath = "$profile:COAServerLog.txt";
+	const string SEPARATOR = ",";
+	const string m_sLogPath = "$profile:COAServerLog.txt";
 	string m_sMissionName;
-	string m_sKillerName;
-	string m_sKillerFaction;
-	string m_sKilledName;
-	string m_sKilledFaction;
-	string m_sTime;
-	string m_sWeaponName;
+	string playerName;
 	
 	int m_iPlayerCount;
 	int m_iBluforCount;
 	int m_iOpforCount;
 	int m_iIndforCount;
-	int m_iTotalSeconds;
 	
-	float m_fRange;
-	float m_fTotalTime;
-	
+	private ref FileHandle m_handle;
 	SCR_FactionManager m_FM;
-	BaseWeaponManagerComponent m_WMC;
-	FileHandle m_handle;
 	
 	static CRF_LoggingServerComponent GetInstance() 
 	{
@@ -46,31 +37,24 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return null;
 	}
 	
-	override void OnPostInit(IEntity owner)
+	FileHandle ReturnFileHandle()
 	{
-		super.OnPostInit(owner);
-		
-		// Only run if in a real game and always in workbench
-		/*#ifdef WORKBENCH
-			Print("CRF::Workbench");
-		#else 
-			if (GetGame().GetPlayerManager().GetPlayerCount() < 10)
-				return;
-		#endif*/
+		return m_handle;
 	}
 
 	// Setup
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
-		if (!Replication.IsServer())
+		if (!Replication.IsServer() || !GetGame().InPlayMode())
 			return;
 		
-		m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
-
-		PrintFormat("CRF Handle: %1",m_handle);
 		m_sMissionName = GetGame().GetMissionName();
-		m_handle.WriteLine("mission,beginning," + m_sMissionName);	
+		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		
+		m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
+		
+		m_handle.WriteLine("mission" + SEPARATOR + "beginning" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 	}
 	
 	// Player Connected
@@ -80,11 +64,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		if (!Replication.IsServer())
 			return;
 		
-		// Get player name
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		
-		// Log to file
-		m_handle.WriteLine("connect," + playerName);
+		playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		m_handle.WriteLine("connect" + SEPARATOR + playerName);
 	}
 	
 	// Player Disconnected 
@@ -95,9 +76,8 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return;
 		
 		// Get player name
-		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		
-		m_handle.WriteLine("disconnect," + playerName + "," + cause);
+		playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		m_handle.WriteLine("disconnect" + SEPARATOR + playerName + SEPARATOR + cause);
 	}
 	
 	// Mission status messages 
@@ -108,27 +88,26 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 			return;
 		
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
-		
 		switch (state)
 		{
 			case SCR_EGameModeState.SLOTSELECTION:
 			{
-				m_handle.WriteLine("mission,slotting," + m_sMissionName + "," + m_iPlayerCount);
+				m_handle.WriteLine("mission" + SEPARATOR + "slotting" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.BRIEFING:
 			{
-				m_handle.WriteLine("mission,briefing," + m_sMissionName + "," + m_iPlayerCount);
+				m_handle.WriteLine("mission" + SEPARATOR + "briefing" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.GAME:
 			{
-				m_handle.WriteLine("mission,safestart," + m_sMissionName + "," + m_iPlayerCount);
+				m_handle.WriteLine("mission" + SEPARATOR + "safestart" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;
 			}
 			case SCR_EGameModeState.DEBRIEFING:
 			{
-				m_handle.WriteLine("mission,ended," + m_sMissionName + "," + m_iPlayerCount);
+				m_handle.WriteLine("mission" + SEPARATOR + "ended" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;
 			}
 		}
@@ -144,18 +123,36 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	}
 	
 	// Method called from safestart to annotate a game has begun
-	// TODO: Mission stats get logged here
 	void GameStarted()
 	{
 		if (!Replication.IsServer())
 			return;
+		
 		// Collect mission data 
+		// TODO: Get playercount per faction here
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
-		//m_iBluforCount = m_FM.SGetFactionPlayerCount(Faction
 		
 		// log
-		m_handle.WriteLine("mission,started," + m_sMissionName + "," + m_iPlayerCount);
+		m_handle.WriteLine("mission" + SEPARATOR + "started" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 	}
+}
+
+modded class SCR_BaseGameMode
+{
+	const string SEPARATOR = ",";
+	string m_sKillerName;
+	string m_sKillerFaction;
+	string m_sKilledName;
+	string m_sKilledFaction;
+	string m_sTime;
+	string m_sWeaponName;
+	float m_fRange;
+	float m_fTotalTime;
+	int m_iTotalSeconds;
+	
+	SCR_FactionManager m_FM;
+	BaseWeaponManagerComponent m_WMC;
+	private ref FileHandle m_handle;
 	
 	// Killfeed log
     override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
@@ -163,6 +160,7 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
 		
 		m_FM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		m_handle = CRF_LoggingServerComponent.GetInstance().ReturnFileHandle();
 		
 		// Killer
 		// Check if killer is AI
@@ -193,7 +191,6 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
   		m_iTotalSeconds = (m_fTotalTime / 1000);
 		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
 		
-		Print("kill," + m_sKilledName + "," + m_sKilledFaction + "," + m_sKillerName + "," + m_sKillerFaction + "," + m_fRange + "," + m_sWeaponName + "," + m_sTime);
-		m_handle.WriteLine("kill," + m_sKilledName + "," + m_sKilledFaction + "," + m_sKillerName + "," + m_sKillerFaction + "," + m_fRange + "," + m_sWeaponName + "," + m_sTime);
+		m_handle.WriteLine("kill" + SEPARATOR + m_sKilledName + SEPARATOR + m_sKilledFaction + SEPARATOR + m_sKillerName + SEPARATOR + m_sKillerFaction + SEPARATOR + m_fRange + SEPARATOR + m_sWeaponName + SEPARATOR + m_sTime);
 	}
 }
