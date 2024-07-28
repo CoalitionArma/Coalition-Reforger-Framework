@@ -1,8 +1,0 @@
-SCR_ChimeraCharacter : "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_TL_P.et" {
- ID "520EC961A090B1EE"
- components {
-  PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Squad Leader"
-  }
- }
-}

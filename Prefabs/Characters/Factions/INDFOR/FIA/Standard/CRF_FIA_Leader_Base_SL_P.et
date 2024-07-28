@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Rifleman_Base_P.et" {
+SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" {
  ID "520EC961A090B1EE"
  components {
   SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
@@ -13,7 +13,7 @@ SCR_ChimeraCharacter : "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA
    }
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Team Leader"
+   m_name "Squad Leader"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate "{63E8322E2ADD4AA7}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_GP25.et"

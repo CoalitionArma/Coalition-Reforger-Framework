@@ -29,7 +29,7 @@ SCR_ChimeraCharacter : "{5FB031490A5E5155}Prefabs/Characters/Factions/OPFOR/RHS_
    InitialInventoryItems {
     ItemsInitConfigurationItem "{61F546361D07333F}" {
      PrefabsToSpawn {
-      "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et" "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et" "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et"
+      "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et" "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et"
      }
     }
    }

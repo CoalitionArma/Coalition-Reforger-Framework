@@ -139,7 +139,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{B959A2CC8F207E21}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_SL_P.et" "{28B2AEDB6D297690}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_MMG_P.et" "{CCAFBAE1D407AA5C}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AMMG_P.et" "{28B2AEDB6D297690}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_MMG_P.et" "{CCAFBAE1D407AA5C}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AMMG_P.et"
+  "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_Base_SL_P.et" "{28B2AEDB6D297690}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_MMG_P.et" "{CCAFBAE1D407AA5C}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AMMG_P.et" "{28B2AEDB6D297690}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_MMG_P.et" "{CCAFBAE1D407AA5C}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AMMG_P.et"
  }
  m_sCustomNameSet "MMG Team"
  m_bSetPlayable 1

@@ -109,7 +109,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{2142C776C4C5DF21}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Crew_VehGunner_P.et" "{4ADDA22285E093CD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Crew_Base_VehDriver_P.et"
+  "{ECED66CE0338E66A}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Crew_VehCommander_P.et" "{4ADDA22285E093CD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Crew_Base_VehDriver_P.et"
  }
  m_sCustomNameSet "Vehicle Crew"
  m_bSetPlayable 1

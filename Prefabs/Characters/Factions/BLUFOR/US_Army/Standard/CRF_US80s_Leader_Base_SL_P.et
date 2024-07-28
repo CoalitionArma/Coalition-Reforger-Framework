@@ -13,7 +13,7 @@ SCR_ChimeraCharacter : "{088007F2432BD496}Prefabs/Characters/Factions/BLUFOR/US_
    }
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Team Lead"
+   m_name "Squad Leader"
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
