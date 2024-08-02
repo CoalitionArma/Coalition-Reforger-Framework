@@ -7,6 +7,6 @@ modded class PS_SpectatorMenu
 		super.OnMenuOpen();
 		
 		m_Sender = SCR_NotificationSenderComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent));
-		m_Sender.SetKillFeedType(EKillFeedType.FULL);
+		m_Sender.SetKillFeedTypeDeadLocal();
 	}
 }
