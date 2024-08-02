@@ -1,0 +1,12 @@
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2866.165 16.232 2418.057
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2867.74 17.924 2389.431
+ m_sTextData "US marines have been tasked with the control of two key points on the outskirts of Zarichne. Russian forces have decided they need to hold the outskirts in order for easy supply reinforcement."\
+ ""\
+ "Gametype: Domination"\
+ "Ratio: BLU 3:2 OPF"\
+ ""\
+ "Attackers must clear out the defensive points entirely in order to capture them."
+}

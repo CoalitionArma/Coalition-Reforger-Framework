@@ -1,0 +1,122 @@
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  SCR_InitWeatherComponent "{61BCFEC02D389EB2}" {
+   m_sInitialStartingWeatherId "Foggy"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 40
+  }
+ }
+ coords 2746.768 19.936 4518.432
+ {
+  SCR_FactionManager "6203474CF1D4B013" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{6203474C9DFE5D9A}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6203474C9CC846F8}" {
+        m_sCallsign "MAT"
+       }
+       SCR_CallsignInfo "{6203474C14D889BB}" {
+        m_sCallsign "MTR"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{620347480633C8E9}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6203474806C8A187}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{620347480688D214}" {
+        m_sCallsign "1-6"
+       }
+       SCR_CallsignInfo "{620347480552E5CD}" {
+        m_sCallsign "GT1"
+       }
+       SCR_CallsignInfo "{620347481D202815}" {
+        m_sCallsign "GT2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_FactionDominanceTriggerEntity {
+ obj1 {
+  coords 3582.948 25.221 3138.14
+  userScript "	// code here"
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0)"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Radio Tower has been captured by BLUFOR\", 10);"\
+  "	"
+  m_sOwnerFactionKey "RHS_US_USMC"
+  m_fFriendlyRatioLimit 1
+ }
+ obj2 {
+  coords 2746.169 16.936 2339.067
+  userScript "	// code here"
+  TriggerShapeType Sphere
+  SphereRadius 40
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0)"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Village has been captured by BLUFOR\", 10);"\
+  "	"
+  m_sOwnerFactionKey "RHS_US_USMC"
+  m_fFriendlyRatioLimit 1
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 2772.123 17.415 2304.478
+  m_sTitle "OBJ: Secure Radio Tower"
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "RHS_US_USMC"
+ }
+ {
+  coords 2773.511 17.437 2301.306
+  m_sTitle "OBJ: Defend Radio Tower"
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 2776.938 17.406 2295.461
+  m_sTitle "OBJ: Secure Village"
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "RHS_US_USMC"
+ }
+ {
+  coords 2776.875 17.375 2290.743
+  m_sTitle "OBJ: Defend Village"
+  m_iOrder 6
+  m_iScore 50
+  m_sFactionKey "RHS_RF_MSV"
+ }
+}
