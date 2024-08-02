@@ -71,4 +71,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_Base_SL_P.et" "{74C10089A77C9E1D}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MAT_P.et" "{2991D3A44D183CEF}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMAT_P.et" "{74C10089A77C9E1D}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MAT_P.et" "{2991D3A44D183CEF}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMAT_P.et"
  }
  m_sCustomNameSet "Mat Team"
+ m_aUnitPrefabColorTeams {
+  "None" "Blue" "Blue" "Yellow" "Yellow"
+ }
 }

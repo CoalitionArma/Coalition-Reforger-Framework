@@ -113,4 +113,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
  }
  m_sCustomNameSet "HAT Team"
  m_bSetPlayable 1
+ m_aUnitPrefabColorTeams {
+  "None" "Blue" "Blue" "Yellow" "Yellow"
+ }
 }

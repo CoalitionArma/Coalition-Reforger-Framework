@@ -71,4 +71,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_Base_SL_P.et" "{D66E1343048AFB94}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MMG_P.et" "{975E763E7512C41B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMG_P.et" "{D66E1343048AFB94}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MMG_P.et" "{975E763E7512C41B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMG_P.et"
  }
  m_sCustomNameSet "MMG Team"
+ m_aUnitPrefabColorTeams {
+  "None" "Blue" "Blue" "Yellow" "Yellow"
+ }
 }
