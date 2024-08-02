@@ -1,0 +1,685 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 2846.76 26.671 4393.338
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2790.637 32.982 4380.025
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2727.112 26.444 4375.603
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2662.855 31.101 4364.385
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2632.861 24.018 4426.657
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2622.181 21.392 4488.983
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2608.255 17.278 4558.374
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2643.301 16.863 4594.417
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2678.356 17.588 4595.592
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2732.526 18.141 4592.933
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2763.76 20.455 4542.138
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2784.754 20.919 4506.984
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2797.767 21.677 4486.289
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2823.767 22.466 4480.653
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2832.401 24.979 4455.009
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2841.378 23.723 4425.878
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+}
+GenericEntity : "{3F2D1FB239682B87}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_plastic.et" {
+ coords 3557.062 24.702 3116.03
+ angleY -66
+}
+$grp SCR_DestructibleBuildingEntity : "{44B2776836744D69}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_1fp.et" {
+ {
+  coords 2928.746 1.931 2429.547
+ }
+ {
+  coords 3059.279 0 2351.764
+  angleY 77
+ }
+ {
+  coords 2713.444 0 2427.153
+  angleY 55
+ }
+}
+$grp GenericEntity : "{6B1695F01143BCBE}Mortars/AmmoBox_82mm_mortawzr_3rnd.et" {
+ {
+  coords 2729.495 17.217 2335.878
+ }
+ {
+  coords 2729.096 17.217 2335.797
+ }
+ {
+  coords 2728.716 17.217 2335.727
+ }
+ {
+  coords 2728.275 17.217 2335.669
+ }
+ {
+  coords 2727.878 17.217 2335.684
+ }
+ {
+  coords 2727.401 17.217 2335.64
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 2802.49 17.437 2294.416
+ angleY 0
+ m_sQuadName "dot-2"
+ m_fWorldSize 75
+ m_sDescription "Mortar"
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 2016.85 6.258 2790.772
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2128.423 8.702 2820.007
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2215.778 12.676 2846.836
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2305.328 15.389 2871.573
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2373.038 16.534 2885.111
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2424.255 19.199 2934.757
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2472.956 29.43 2953.84
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2574.588 21.165 2986.694
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2640.074 36.024 3006.225
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2742.819 38.999 3037.023
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2817.216 32.502 3062.311
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 2898.526 40.531 3085.994
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3067.093 29.529 3124.156
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3179.583 24.688 3142.666
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3284.684 24.229 3157.474
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3400.127 24.904 3175.628
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3548.251 24.783 3193.861
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3621.631 24.411 3203.892
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3724.899 23.901 3219.76
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3837.682 22.607 3235.124
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3870.474 22.371 3155.271
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3901.834 22.186 3096.757
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3945.914 21.687 3018.077
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3991.788 20.874 2932.477
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3997.034 20.51 2870.57
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3993.421 20.259 2796.773
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3982.388 20.494 2741.604
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3962.15 20.238 2663.376
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3935.408 19.444 2573.239
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3906.76 18.75 2478.728
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3886.303 38.727 2440.531
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ {
+  coords 3876.951 26.5 2384.107
+  m_fWorldSize 80
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+}
+$grp GenericEntity : "{BCF4F3411D3B2075}Prefabs/Props/Military/Bunkers/Bunker_Tower.et" {
+ {
+  coords 3600.056 25.153 3137.594
+  angleY 146
+ }
+ {
+  coords 3574.085 25.538 3142.643
+  angleY 49
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 4583.127 28.552 2207.587
+  angleY 0
+ }
+ {
+  coords 4490.751 19.98 2215.005
+  angleY 0
+ }
+ {
+  coords 4406.781 19.824 2214.605
+  angleY 0
+ }
+ {
+  coords 4311.4 19.656 2215.714
+  angleY 0
+ }
+ {
+  coords 4209.917 19.774 2209.513
+  angleY 0
+ }
+ {
+  coords 4123.451 19.601 2210.358
+  angleY 0
+ }
+ {
+  coords 4053.393 41.769 2195.238
+  angleY 0
+ }
+ {
+  coords 3945.099 18.163 2218.685
+  angleY 0
+ }
+ {
+  coords 3839.046 18.953 2223.946
+  angleY 0
+ }
+ {
+  coords 3763.222 19.82 2232.436
+  angleY 0
+ }
+ {
+  coords 3665.806 20.029 2231.818
+  angleY 0
+ }
+ {
+  coords 3562.484 20.032 2236.828
+  angleY 0
+ }
+ {
+  coords 3486.948 19.969 2244.942
+  angleY 0
+ }
+ {
+  coords 3380.943 19.741 2238.683
+  angleY 0
+ }
+ {
+  coords 3283.014 20.249 2233.544
+  angleY 0
+ }
+ {
+  coords 3184.195 20.282 2230.483
+  angleY 0
+ }
+ {
+  coords 3063.918 19.058 2221.787
+  angleY 0
+ }
+ {
+  coords 2938.021 17.593 2208.238
+  angleY 0
+ }
+ {
+  coords 2809.708 16.503 2186.625
+  angleY 0
+ }
+ {
+  coords 2704.698 27.943 2155.263
+  angleY 0
+ }
+ {
+  coords 2620.939 29.709 2128.318
+  angleY 0
+ }
+ {
+  coords 2523.498 10.37 2123.639
+  angleY 0
+ }
+ {
+  coords 2465.821 8.396 2107.937
+  angleY 0
+ }
+ {
+  coords 2432.133 7.499 2096.029
+  angleY 0
+ }
+ {
+  coords 2384.173 7.854 2162.649
+  angleY 0
+ }
+ {
+  coords 2336.074 8.905 2231.132
+  angleY 0
+ }
+ {
+  coords 2292.241 7.957 2274.742
+  angleY 0
+ }
+ {
+  coords 2256.628 8.799 2324.45
+  angleY 0
+ }
+ {
+  coords 2216.092 7.687 2329.429
+  angleY 0
+ }
+ {
+  coords 2195.351 24.996 2308.856
+  angleY 0
+ }
+ {
+  coords 2144.849 19.923 2390.493
+  angleY 0
+ }
+ {
+  coords 2100.118 12.481 2458.102
+  angleY 0
+ }
+ {
+  coords 2078.554 11.319 2543.691
+  angleY 0
+ }
+ {
+  coords 2019.902 0.453 2630.445
+  angleY 0
+ }
+ {
+  coords 1985.943 0.9 2741.624
+  angleY 0
+ }
+ {
+  coords 1932.113 1.159 2847.132
+  angleY 0
+ }
+ {
+  coords 1893.396 4.002 2911.92
+  angleY 0
+ }
+ {
+  coords 1896.587 2.203 2982.598
+  angleY 0
+ }
+ {
+  coords 1879.235 1.039 3066.51
+  angleY 0
+ }
+ {
+  coords 1891.128 4.848 3126.115
+  angleY 0
+ }
+ {
+  coords 1911.877 3.811 3204.589
+  angleY 0
+ }
+ {
+  coords 1865.2 4.248 3290.308
+  angleY 0
+ }
+ {
+  coords 1819.149 3.106 3351.587
+  angleY 0
+ }
+ {
+  coords 1788.631 20.909 3385.984
+  angleY 0
+ }
+ {
+  coords 1745.302 7.938 3510.509
+  angleY 0
+ }
+ {
+  coords 1717.523 8.521 3568.694
+  angleY 0
+ }
+ {
+  coords 1701.491 19.977 3629.568
+  angleY 0
+ }
+ {
+  coords 1674.941 12.545 3737.233
+  angleY 0
+ }
+ {
+  coords 1655.151 3.41 3800.002
+  angleY 0
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 2807.492 17.456 2350.108
+ angleY 0
+ m_sDescription "OPFOR Spawn"
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+}
+SCR_DestructibleBuildingEntity : "{C373D5359D9F2644}Prefabs/Structures/Agriculture/Barn Large.et" {
+ coords 3594.266 25 3096.347
+ angleY -102
+}
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ {
+  coords 2743.872 16.562 2341.456
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 100
+  m_sDescription "OBJ: Village"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3577.382 25.341 3137.666
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 100
+  m_sDescription "OBJ: Radio Tower"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3529.561 25.874 3571.315
+  angleY 180
+  m_MarkerColor 0.017 0.001 0.38 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 100
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2580.568 12.392 3557.837
+  angleY 175
+  m_MarkerColor 0.017 0.001 0.38 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 100
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4393.514 20.563 2312.37
+  angleY 270
+  m_MarkerColor 0.017 0.001 0.38 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 100
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4409.233 23.363 3009.296
+  angleY 270
+  m_MarkerColor 0.017 0.001 0.38 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 100
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2755.195 21.921 4464.753
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+}
+$grp GenericEntity : "{E86E2C320BF1F524}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_base.et" {
+ {
+  coords 3384.748 24.321 2861.379
+  angleY -2
+ }
+ {
+  coords 3525.351 24.906 3181.023
+  angleY -17
+ }
+ {
+  coords 3663.631 24.462 3183.396
+  angleY 85
+ }
+}
+GenericEntity : "{F0EC223F2A1094C0}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap.et" {
+ coords 2646.964 12.949 2694.907
+ angleY 23
+}
