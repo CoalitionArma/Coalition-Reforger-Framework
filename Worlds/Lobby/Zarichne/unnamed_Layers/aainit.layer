@@ -118,7 +118,7 @@ $grp SCR_FactionDominanceTriggerEntity {
   m_fFriendlyRatioLimit 1
  }
  obj2 {
-  coords 2746.169 16.936 2339.067
+  coords 2743.81 16.562 2339.811
   userScript "	// code here"\
   "	bool zoneCaptured = false;"
   TriggerShapeType Sphere
