@@ -1,7 +1,3 @@
-Turret : "{2A473C531D075905}Mortars/82/Podnosnew.et" {
- coords 2800.226 17.42 2294.633
- angleY 25
-}
 SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
  coords 2746.627 16.552 2344.656
  {

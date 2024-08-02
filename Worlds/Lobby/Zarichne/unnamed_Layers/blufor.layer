@@ -46,13 +46,3 @@ SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Co
   }
  }
 }
-$grp Vehicle : "{78CD65D4B24D0139}Prefabs/Vehicles/M1114/kiok_m1114_armed_m2tower_green.et" {
- kiok_m1114_armed_m2tower_green1 {
-  coords 2781.938 21.53 4481.016
-  angleY -171
- }
- kiok_m1114_armed_m2tower_green2 {
-  coords 2776.898 21.466 4481.511
-  angleY -171
- }
-}

@@ -57,27 +57,70 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
 }
+$grp SCR_BaseTriggerEntity {
+ spawn1 {
+  coords 2788.926 22.275 4465.108
+ }
+ spawn2 {
+  coords 2794.875 22.934 4439.113
+ }
+ spawnMortar {
+  coords 2799.927 17.418 2294.762
+ }
+}
 $grp SCR_FactionDominanceTriggerEntity {
  obj1 {
   coords 3582.948 25.221 3138.14
-  userScript "	// code here"
+  userScript "	string veh = \"{78CD65D4B24D0139}Prefabs/Vehicles/M1114/kiok_m1114_armed_m2tower_green.et\";"\
+  "	string mortar = \"{2A473C531D075905}Mortars/82/Podnosnew.et\";"\
+  "	IEntity spawn1, spawn2, spawnMortar;"\
+  "	bool zoneCaptured = false;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawn1 = GetGame().GetWorld().FindEntityByName(\"spawn1\");"\
+  "		spawn2 = GetGame().GetWorld().FindEntityByName(\"spawn2\");"\
+  "		spawnMortar = GetGame().GetWorld().FindEntityByName(\"spawnMortar\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+  "		"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(veh),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(veh),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnMortar.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
   TriggerShapeType Sphere
   SphereRadius 40
   DrawShape 1
   TriggerActivationType "Every query"
   PeriodicQueries 1
-  OnQueryFinished ""\
+  OnQueryFinished "	"\
   "		super.OnQueryFinished(bIsEmpty);"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Radio Tower has been captured by BLUFOR\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
   "		"\
-  "		if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0)"\
-  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Radio Tower has been captured by BLUFOR\", 10);"\
   "	"
   m_sOwnerFactionKey "RHS_US_USMC"
   m_fFriendlyRatioLimit 1
  }
  obj2 {
   coords 2746.169 16.936 2339.067
-  userScript "	// code here"
+  userScript "	// code here"\
+  "	bool zoneCaptured = false;"
   TriggerShapeType Sphere
   SphereRadius 40
   DrawShape 1
@@ -86,8 +129,15 @@ $grp SCR_FactionDominanceTriggerEntity {
   OnQueryFinished ""\
   "		super.OnQueryFinished(bIsEmpty);"\
   "		"\
-  "		if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0)"\
-  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Village has been captured by BLUFOR\", 10);"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Village has been captured by BLUFOR\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
   "	"
   m_sOwnerFactionKey "RHS_US_USMC"
   m_fFriendlyRatioLimit 1
