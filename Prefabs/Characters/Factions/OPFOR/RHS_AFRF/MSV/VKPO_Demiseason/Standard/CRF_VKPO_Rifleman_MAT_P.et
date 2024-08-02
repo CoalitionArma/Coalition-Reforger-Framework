@@ -5,7 +5,7 @@ SCR_ChimeraCharacter : "{5FB031490A5E5155}Prefabs/Characters/Factions/OPFOR/RHS_
    m_name "Medium Anti-Tank"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
-   WeaponTemplate "{B1EE42092A2906D7}Prefabs/Weapons/Launchers/Metis_Shoulder.et"
+   WeaponTemplate "{AC4C33E8AE72A9F9}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7_rhs_CRF.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
@@ -19,7 +19,7 @@ SCR_ChimeraCharacter : "{5FB031490A5E5155}Prefabs/Characters/Factions/OPFOR/RHS_
     ItemsInitConfigurationItem "{61F0FD746D3D51B9}" {
      TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_RPG_Gunner.et"
      PrefabsToSpawn {
-      "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et" "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et"
+      "{86A7681BD1D4E4BB}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VR.et" "{12AFA740BE9ED3CD}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_TBG7V.et"
      }
     }
    }
