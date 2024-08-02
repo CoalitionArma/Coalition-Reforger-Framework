@@ -113,4 +113,7 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  }
  m_sCustomNameSet "Mat Team"
  m_bSetPlayable 1
+ m_aUnitPrefabColorTeams {
+  "None" "Blue" "Blue" "Yellow" "Yellow"
+ }
 }

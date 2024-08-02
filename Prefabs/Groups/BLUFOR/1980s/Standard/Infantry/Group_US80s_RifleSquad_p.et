@@ -143,4 +143,10 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  m_sCustomNameSet "1st Squad"
  m_bSetPlayable 1
+ m_aUnitPrefabColorTeams {
+  "None" "None" "Red" "Red" "Red" "Green" "Green" "Green" "Green"
+ }
+ m_aUnitPrefabOverrideIcons {
+  "None" "None" "Team Lead" "None" "None" "Team Lead" "None" "None" "None"
+ }
 }

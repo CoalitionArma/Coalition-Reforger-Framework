@@ -113,4 +113,10 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
  }
  m_sCustomNameSet "1st Squad"
  m_bSetPlayable 1
+ m_aUnitPrefabColorTeams {
+  "None" "None" "Red" "Red" "Red" "Green" "Green" "Green" "Green"
+ }
+ m_aUnitPrefabOverrideIcons {
+  "None" "None" "Team Lead" "None" "None" "Team Lead" "None" "None" "None"
+ }
 }
