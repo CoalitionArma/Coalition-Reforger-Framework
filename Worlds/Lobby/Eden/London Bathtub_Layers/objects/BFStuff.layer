@@ -1,0 +1,115 @@
+$grp SCR_DestructibleBuildingEntity : "{1019A7AC0A86CC7B}PrefabLibrary/Infrastructure/Naval/Pier_04.et" {
+ {
+  coords 8425.233 145.519 3327.975
+  angleY 103.568
+ }
+ {
+  coords 8424.327 142.701 3324.222
+  angleY 103.568
+ }
+ {
+  coords 8430.993 162.843 3351.867
+  angleY 103.568
+ }
+ {
+  coords 8430.007 160.01 3347.772
+  angleY 103.568
+ }
+ {
+  coords 8427.099 151.073 3335.713
+  angleY 103.568
+ }
+ {
+  coords 8429.004 157.011 3343.613
+  angleY 103.568
+ }
+ {
+  coords 8426.134 148.193 3331.721
+  angleY 103.568
+ }
+ {
+  coords 8428.049 154.001 3339.637
+  angleY 103.568
+ }
+ {
+  coords 8462.612 157.011 3290.257
+  angleY -166.432
+ }
+ {
+  coords 8458.636 154.001 3291.212
+  angleY -166.432
+ }
+ {
+  coords 8450.721 148.193 3293.126
+  angleY -166.432
+ }
+ {
+  coords 8443.222 142.701 3294.934
+  angleY -166.432
+ }
+ {
+  coords 8470.865 162.843 3288.268
+  angleY -166.432
+ }
+ {
+  coords 8466.771 160.01 3289.254
+  angleY -166.432
+ }
+ {
+  coords 8446.975 145.519 3294.029
+  angleY -166.432
+ }
+ {
+  coords 8454.713 151.073 3292.162
+  angleY -166.432
+ }
+ {
+  coords 8456.183 136.992 3309.92
+  angleY -36.745
+ }
+ {
+  coords 8462.691 131.054 3314.784
+  angleY -36.745
+ }
+ {
+  coords 8465.92 128.19 3317.164
+  angleY -36.745
+ }
+ {
+  coords 8452.756 139.991 3307.362
+  angleY -36.745
+ }
+ {
+  coords 8459.457 133.982 3312.369
+  angleY -36.745
+ }
+ {
+  coords 8449.381 142.824 3304.841
+  angleY -36.745
+ }
+ {
+  coords 8440.388 136.992 3331.077
+  angleY -36.745
+ }
+ {
+  coords 8433.586 142.824 3325.998
+  angleY -36.745
+ }
+ {
+  coords 8446.896 131.054 3335.941
+  angleY -36.745
+ }
+ {
+  coords 8436.96 139.991 3328.519
+  angleY -36.745
+ }
+ {
+  coords 8443.66 133.982 3333.526
+  angleY -36.745
+ }
+}
+SCR_DestructibleBuildingEntity : "{F09400CC1A27BE39}PrefabLibrary/Infrastructure/Naval/PierConcrete_01_20m.et" {
+ coords 8425.683 131.315 3303.323
+ angleY 55.626
+ scale 4.176
+}

@@ -1,0 +1,16 @@
+$grp SCR_ChimeraCharacter : "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" {
+ {
+  coords 8590.076 127.019 3308.065
+  angleY -82.474
+  scale 100
+ }
+ {
+  coords 8487.383 127.019 3249.376
+  scale 100
+ }
+}
+SCR_DestructibleBuildingEntity : "{5CADC96916FF1CC4}Prefabs/Structures/Houses/Villa/Villa_E_2I01/Villa_E_2I01.et" {
+ coords 8200.666 -602.136 2819.064
+ angleY 55.922
+ scale 100
+}

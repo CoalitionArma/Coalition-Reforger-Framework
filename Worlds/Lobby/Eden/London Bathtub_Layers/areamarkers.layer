@@ -1,0 +1,5 @@
+SCR_ChimeraCharacter : "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" {
+ coords 8386.093 205.299 3273.849
+ angleY 43.19
+ scale 100
+}
