@@ -9,7 +9,9 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  briefSituation {
   coords 3472.848 178.851 5842.863
   m_sTitle "Situation"
-  m_sTextData "US forces will defend Lamentin harbor from attacking USSR forces for 90 minutes before a ship can arrive to extract them from the island."\
+  m_sTextData "3:2 OPFOR:BLUFOR slotting ratio"\
+  ""\
+  "US forces will defend Lamentin harbor from attacking USSR forces for 90 minutes before a ship can arrive to extract them from the island."\
   "(ship evac is not ingame lol)"
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
