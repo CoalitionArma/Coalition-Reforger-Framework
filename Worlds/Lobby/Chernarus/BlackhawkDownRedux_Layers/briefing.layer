@@ -18,7 +18,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  coords 7675.158 344.395 7697.775
  m_sTitle "Assets"
- m_sTextData "No respawns, 3:2 INDFOR:BLUFOR slotting ratio"\
+ m_sTextData "No respawns"\
  ""\
  "BLUFOR:"\
  "1x UH-60 Blackhawk (Unarmed)"\
@@ -54,7 +54,8 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 7680.777 345.21 7698.646
- m_sTextData "A US UH-60 Blackhawk helicopter carrying a secret Russian prototype weapon has been shot down by a missile in northern Chernarus. USMC Marines and FIA guerillas race to be the first to locate the wreck and retrieve the valuable asset."\
+ m_sTextData "100 minute timer, 3:2 INDFOR:BLUFOR slotting ratio"\
  ""\
- "100 minute timer"
+ "A US UH-60 Blackhawk helicopter carrying a secret Russian prototype weapon has been shot down by a missile in northern Chernarus. USMC Marines and FIA guerillas race to be the first to locate the wreck and retrieve the valuable asset."\
+ ""
 }
