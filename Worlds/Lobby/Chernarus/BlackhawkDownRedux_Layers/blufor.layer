@@ -1,0 +1,27 @@
+SCR_AIGroup : "{62990CF36C70D69A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/2020/Command/CRF_USMC_RiflePHQ2020.et" {
+ coords 4050.684 378.077 11755.121
+ m_sCustomNameSet "Platoon Command"
+ {
+  $grp SCR_AIGroup : "{3EDD55795C91213A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/2020/Infantry/CRF_USMC_RifleSquad2020.et" {
+   {
+    coords 9.591 1.455 15.739
+    angleY 58.835
+    m_sCustomNameSet "Infantry Squad"
+   }
+   {
+    coords 4.05 1.423 25.572
+    angleY 58.835
+    m_sCustomNameSet "Infantry Squad"
+   }
+   {
+    coords 6.433 1.441 20.683
+    angleY 58.835
+    m_sCustomNameSet "Infantry Squad"
+   }
+  }
+ }
+}
+SCR_AIGroup : "{DD00EF71029D9F1F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Vehicles/CRF_USMC_THCrew.et" {
+ coords 4070.23 379.516 11744.775
+ m_sCustomNameSet "Helo Crew"
+}
