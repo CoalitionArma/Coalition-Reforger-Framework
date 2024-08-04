@@ -1,0 +1,37 @@
+SCR_AIGroup US_Platoon_Command_1 : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+ coords 1073.249 2.762 6056.491
+ m_sCustomNameSet "Platoon Command"
+ {
+  $grp SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+   US_RifleSquad_1_1 {
+    coords 9.504 0.013 -23.726
+    m_sCustomNameSet "Infantry Squad"
+   }
+   US_RifleSquad_1_2 {
+    coords -15.832 -0.043 -24.833
+    m_sCustomNameSet "Infantry Squad"
+   }
+   US_RifleSquad_1_3 {
+    coords -39.782 -0.026 -25.345
+    m_sCustomNameSet "Infantry Squad"
+   }
+   US_RifleSquad_1_4 {
+    coords -62.965 0.082 -20.39
+    m_sCustomNameSet "Infantry Squad"
+   }
+  }
+  SCR_AIGroup zzUS_HeloCrew_1 : "{C05A0194D1579606}Prefabs/Groups/BLUFOR/1980s/Standard/Vehicles/Group_US80s_Support_HeloCrew.et" {
+   coords 14.821 0.08 24.92
+  }
+ }
+}
+SCR_AIGroup zUS_MortarTeam_1 : "{205C762616F796B6}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_IndirectTeam.et" {
+ coords 1082.067 2.785 6044.181
+ m_aUnitPrefabSlots {
+  "{27582FB0F5A7D917}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_IndirectLead_P.et" "{D6E4398BC37191A9}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_IndirectGunner_P.et" "{D6E4398BC37191A9}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_IndirectGunner_P.et"
+ }
+ m_sCustomNameSet "Mortar Team"
+}
+SCR_AIGroup zUS_Logistics_Team_1 : "{85E3AF1BB56CE089}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Logistics.et" {
+ coords 1084.021 2.825 6072.815
+}

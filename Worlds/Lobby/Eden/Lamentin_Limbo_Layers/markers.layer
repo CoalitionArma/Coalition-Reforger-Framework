@@ -1,0 +1,1092 @@
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ AOBorder_1 {
+  coords 806.529 0 6522.814
+  angleY 0
+  m_fWorldSize 200
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    AOBorder_10 {
+     coords 828.42 0 593.436
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_11 {
+     coords 901.269 0 699.984
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_12 {
+     coords 972.028 0 811.132
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_13 {
+     coords 1042.778 0 902.597
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_14 {
+     coords 1146.808 0 1070.967
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_15 {
+     coords 1289.822 0 1204.061
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_16 {
+     coords 1363.623 0 1279.189
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_17 {
+     coords 1491.124 0 1354.429
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_18 {
+     coords 1622.41 0 1262.422
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_19 {
+     coords 1739.476 0 1202.801
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_2 {
+     coords 167.548 0 23.393
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_20 {
+     coords 1858.388 0 1111.58
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_21 {
+     coords 1962.423 0 1037.469
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_22 {
+     coords 2075.111 0 952.264
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_23 {
+     coords 2143.045 0 864.659
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_24 {
+     coords 2216.12 0 763.197
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_25 {
+     coords 2361.885 0 718.357
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_26 {
+     coords 2557.132 1.369 674.247
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_27 {
+     coords 2739.607 29.233 602.615
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_28 {
+     coords 2915.482 35.967 649.66
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_29 {
+     coords 3076.692 43.882 635.924
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_3 {
+     coords 250.237 0 93.704
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_30 {
+     coords 3232.289 84.021 683.182
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_31 {
+     coords 3375.82 92.142 746.9
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_32 {
+     coords 3515.297 104.288 724.049
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_33 {
+     coords 3636.462 124.527 662
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_34 {
+     coords 3721.095 155.422 615.147
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_35 {
+     coords 3781.223 164.186 566.785
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_36 {
+     coords 3824.888 158.663 480.65
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_37 {
+     coords 3866.354 160.33 356.201
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_38 {
+     coords 3822.729 156.989 290.643
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_39 {
+     coords 3780.454 151.944 237.579
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_4 {
+     coords 339.276 0 155.447
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_40 {
+     coords 3711.075 141.464 174.317
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_41 {
+     coords 3675.805 136.522 141.05
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_42 {
+     coords 3568.961 129.666 70.049
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_43 {
+     coords 3498.54 129.384 10.568
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_44 {
+     coords 3407.641 110.425 -75.657
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_45 {
+     coords 3362.832 126.132 -146.577
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_46 {
+     coords 3316.001 115.531 -246.67
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_47 {
+     coords 3213.265 101.491 -326.343
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_48 {
+     coords 3135.067 108.536 -408.107
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_49 {
+     coords 3083.096 122.677 -477.586
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_5 {
+     coords 452.58 0 222.148
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_50 {
+     coords 3025.173 132.751 -523.439
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_51 {
+     coords 2977.835 140.712 -567.844
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_52 {
+     coords 2891.295 148.866 -632.937
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_53 {
+     coords 2827.565 163.474 -693.646
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_54 {
+     coords 2775.173 173.625 -728.259
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_55 {
+     coords 2699.715 175.494 -766.667
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_56 {
+     coords 2622.263 156.079 -881.308
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_57 {
+     coords 2569.483 133.914 -962.28
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_58 {
+     coords 2513.957 123.344 -1038.972
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_59 {
+     coords 2398.335 118.933 -1184.29
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_6 {
+     coords 549.666 0 272.123
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_60 {
+     coords 2407.855 115.519 -1357.163
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_61 {
+     coords 2302.698 104.43 -1493.64
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_62 {
+     coords 2314.843 125.732 -1638.943
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_63 {
+     coords 2258.783 99.166 -1749.381
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_64 {
+     coords 2236.714 118.803 -1855.25
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_65 {
+     coords 2182.078 110.83 -1966.431
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_66 {
+     coords 2086.036 83.581 -2095.433
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_67 {
+     coords 2060.841 76.763 -2148.314
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_68 {
+     coords 2012.723 59.988 -2218.983
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_69 {
+     coords 1927.351 31.671 -2322.353
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_7 {
+     coords 643.374 0 307.452
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_70 {
+     coords 1880.197 13.274 -2372.518
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_71 {
+     coords 1822.202 0.481 -2442.47
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_72 {
+     coords 1736.084 0 -2520.008
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_73 {
+     coords 1597.317 0 -2622.736
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_74 {
+     coords 1483.809 0 -2691.494
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_75 {
+     coords 1206.026 0 -2757.3
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_76 {
+     coords 1074.169 0 -2732.521
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_77 {
+     coords 821.571 0 -2666.874
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_78 {
+     coords 654.858 0 -2571.786
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_79 {
+     coords 457.573 0 -2447.597
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_8 {
+     coords 702.889 0 405.817
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_80 {
+     coords 356.794 0 -2293.873
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_81 {
+     coords 199.299 0 -1966.778
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_82 {
+     coords 98.657 0 -1775.896
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_83 {
+     coords -67.199 0 -1387.055
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_84 {
+     coords -164.931 0 -1049.075
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_85 {
+     coords -233.818 0 -797.549
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_86 {
+     coords -223.03 0 -597.712
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_87 {
+     coords -179 0 -350.199
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_88 {
+     coords -84.844 0 -98.908
+     angleY 0
+     m_fWorldSize 200
+    }
+    AOBorder_9 {
+     coords 777.29 0 504.42
+     angleY 0
+     m_fWorldSize 200
+    }
+   }
+  }
+ }
+ OPFORGameZoneBorder_1 {
+  coords 4287.295 134.872 6717.042
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 125
+  m_sDescription "OPFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    OPFORGameZoneBorder_2 {
+     coords 49.349 7.857 5.448
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_3 {
+     coords 96.486 10.352 7.826
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_4 {
+     coords 136.697 9.74 11.987
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_5 {
+     coords 162 14.069 53.154
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_6 {
+     coords 165.699 14.722 92.934
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_7 {
+     coords 160.439 14.718 135.622
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_8 {
+     coords 147.371 14.462 150.792
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_9 {
+     coords 93.195 11.513 175.693
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_10 {
+     coords 60.078 8.529 183.111
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_11 {
+     coords 19.148 3.378 178.603
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_12 {
+     coords -13.014 1.254 146.691
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_13 {
+     coords -18.043 6.88 101.821
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    OPFORGameZoneBorder_14 {
+     coords 0.022 14.27 55.833
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 125
+     m_sDescription "OPFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+   }
+  }
+ }
+ BLUFORGameZoneBorder_1 {
+  coords 913.324 1.104 6289.424
+  angleY 0
+  m_MarkerColor 0.157 0.275 0.624 1
+  m_fWorldSize 125
+  m_sDescription "BLUFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    BLUFORGameZoneBorder_2 {
+     coords 64.357 -1.104 109.662
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_3 {
+     coords 208.549 -1.104 237.148
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_4 {
+     coords 360.949 -1.104 230.714
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_5 {
+     coords 480.538 -1.104 158.536
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_6 {
+     coords 608.408 -1.104 98.186
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_7 {
+     coords 741.129 -1.104 23.906
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_8 {
+     coords 809.018 -1.104 41.431
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_9 {
+     coords 877.476 -1.104 72.5
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_10 {
+     coords 952.712 -1.104 -4.267
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_11 {
+     coords 1056.828 21.913 -92.572
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_12 {
+     coords 1160.216 45.57 -164.413
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_13 {
+     coords 1258.618 74.286 -199.388
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_14 {
+     coords 1354.306 90.957 -249.533
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_15 {
+     coords 1417.07 109.832 -352.61
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_16 {
+     coords 1550.555 123.324 -397.343
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_17 {
+     coords 1569.451 121.093 -521.335
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_18 {
+     coords 1537.691 137.644 -637.524
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_19 {
+     coords 1498.832 116.024 -736.083
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_20 {
+     coords 1463.536 125.923 -843.679
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_21 {
+     coords 1369.319 129.282 -959.286
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_22 {
+     coords 1289.504 95.548 -1040.815
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_23 {
+     coords 1201.978 90.019 -1144.587
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_24 {
+     coords 1135.787 60.395 -1212.122
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_25 {
+     coords 1035.876 51.946 -1319.791
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_26 {
+     coords 935.375 48.56 -1362.098
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_27 {
+     coords 836.168 41.788 -1381.374
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_28 {
+     coords 698.123 20.717 -1396.874
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_29 {
+     coords 574.14 0.216 -1409.012
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_30 {
+     coords 520.742 -1.104 -1365.765
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_31 {
+     coords 395.102 -1.104 -1188.794
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_32 {
+     coords 311.983 -1.104 -1084.115
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_33 {
+     coords 146.249 -1.104 -867.947
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_34 {
+     coords 4.403 -1.104 -683.135
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_35 {
+     coords -114.981 -1.104 -494.981
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_36 {
+     coords -183.266 -1.104 -347.461
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    BLUFORGameZoneBorder_37 {
+     coords -175.551 -1.104 -156.36
+     angleY 0
+     m_MarkerColor 0.157 0.275 0.624 1
+     m_fWorldSize 125
+     m_sDescription "BLUFOR Safe Start Border"
+     m_aVisibleForFactions {
+      "US"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+   }
+  }
+ }
+ BLUFORSpawnMarker {
+  coords 1026.495 2.749 6033.966
+  angleY 90
+  m_MarkerColor 0.157 0.275 0.624 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 175
+  m_sDescription "BLUFOR Spawn"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ OPFORSpawnMarker {
+  coords 4341.262 141.013 6792.322
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 175
+  m_sDescription "OPFOR Spawn"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}
