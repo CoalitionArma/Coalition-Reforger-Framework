@@ -1,0 +1,58 @@
+SCR_AIGroup : "{196A5941072AC47C}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_MatTeam_P.et" {
+ coords 5766.323 474.321 15207.776
+ m_sCustomNameSet "MAT Team"
+}
+SCR_AIGroup : "{2ED2173F09D38D65}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_COY_P.et" {
+ coords 5755.8 474.463 15197.194
+ m_sCustomNameSet "Company Command"
+ {
+  $grp SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+   {
+    coords -4.006 -0.009 -0.435
+    m_sCustomNameSet "1st Platoon Command"
+    {
+     $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+      {
+       coords 26.062 0.328 -13.776
+       angleY 166.981
+       m_sCustomNameSet "Infantry Cell"
+      }
+      {
+       coords 31.039 0.327 -12.635
+       angleY 172.972
+       m_sCustomNameSet "Infantry Cell"
+      }
+      {
+       coords 35.25 0.305 -11.683
+       angleY 172.972
+       m_sCustomNameSet "Infantry Cell"
+      }
+     }
+    }
+   }
+   {
+    coords -7.227 0.02 -2.066
+    m_sCustomNameSet "2nd Platoon Command"
+    {
+     $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+      {
+       coords 20.795 -0.497 27.805
+       angleY 172.972
+       m_sCustomNameSet "Infantry Cell"
+      }
+      {
+       coords 26.636 -0.562 28.835
+       angleY 172.972
+       m_sCustomNameSet "Infantry Cell"
+      }
+      {
+       coords 31.495 -0.59 29.709
+       angleY 172.972
+       m_sCustomNameSet "Infantry Cell"
+      }
+     }
+    }
+   }
+  }
+ }
+}
