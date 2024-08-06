@@ -1,0 +1,67 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 2866.208 19.227 2758.859
+ m_sTextData "An enemy attack is coming this morning. We must hold the lines at all costs. They will be attempting to take our 3 command bunkers and the church at the rear of the trenchline. Use our superior defenses to decisively defeat the enemy before they can even near our positions."\
+ ""\
+ "Note: OPFOR Safe start borders are further out than game zone borders. You are permitted to go past the trenches into no man's land to clear bushes, trees, and lay traps. You are not permitted to go into or near the enemy trenchline."\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+ m_iOrder 4
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2866.165 16.232 2418.057
+}
+$grp PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ FIA_brief {
+  coords 2881.156 20.736 2788.819
+  m_sTitle "FIA Brief"
+  m_sTextData "This morning, we will make a full-scale frontal assualt across no man's land onto enemy Russian positions. We expect heavy casualties, but that will not stop us from achieveing our mission. Our targets are the 3 enemy command bunkers and the church at the rear of their lines. Use our artillery assets and superior numbers to quickly cross no man's land and reach the enemy trenches before casualties are too heavy."\
+  ""\
+  "Notes: -Gamezone is very narrow, simply because you are expected to move along the trenches."\
+  "-More ammo for mortar located in command bunker closet"\
+  ""\
+  ""
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  m_iOrder 4
+ }
+ objbrief {
+  coords 2985.66 22.906 2823.522
+  m_sTitle "Objectives"
+  m_sTextData "FIA:"\
+  "Capture CB Alpha"\
+  "Capture CB Bravo"\
+  "Capture CB Charlie"\
+  "Capture Church"\
+  ""\
+  "MSV:"\
+  "Defend CB Alpha"\
+  "Defend CB Bravo"\
+  "Defend Charlie"\
+  "Defend Church"\
+  ""\
+  ""
+  m_aVisibleForFactions {
+  }
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 7
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2867.74 17.924 2389.431
+ m_sTextData "\"What follows is frontline combat. You are not expected to survive.\""\
+ ""\
+ "1:3 OPFOR:INDFOR"\
+ "45 minute timer"\
+ ""\
+ "FIA forces must make a frontal trench assualt to force Russian MSV forces out of their positions and gain ground. The key targets are 3 underground Russian command bunkers and the Church of Ascension, located at the rear of the trenchline."\
+ ""\
+ "If you die very early on, I'm sorry, but this mission is intended to be brutal."\
+ ""\
+ ""\
+ ""
+}

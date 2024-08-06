@@ -1,0 +1,1666 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ FIASafestartmarker {
+  coords 3177.856 21.65 3514.332
+  angleY 0
+  m_MarkerColor 0 0.502 0.125 1
+  m_fWorldSize 50
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  {
+   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+    FIASafestartmarker2 {
+     coords -16.645 -1.217 10.24
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker3 {
+     coords -30.801 8.772 40.562
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker4 {
+     coords -24.028 -2.379 70.449
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker5 {
+     coords 15.491 -5.392 89.29
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker6 {
+     coords 59.331 -4.568 90.794
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker7 {
+     coords 88.647 -1.265 76.699
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker8 {
+     coords 101.574 0.872 47.916
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker9 {
+     coords 88.315 1.197 21.792
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker10 {
+     coords 67.226 0.914 14.635
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker11 {
+     coords 32.247 0.422 7.134
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    FIASafestartmarker12 {
+     coords 13.619 0.101 7.078
+     angleY 0
+     m_MarkerColor 0 0.502 0.125 1
+     m_fWorldSize 50
+     m_sDescription "FIA Safe Start Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+   }
+  }
+ }
+ AOBorder_marker {
+  coords 2277.891 7.719 2315.929
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_fWorldSize 75
+  m_sDescription "AO Border"\
+  ""
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+    AOBorder_marker2 {
+     coords 72.953 1.343 54.688
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker3 {
+     coords 63.289 1.512 80.145
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker4 {
+     coords 42.656 10.935 23.834
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker5 {
+     coords 102.24 1.28 115.792
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker6 {
+     coords 136.984 1.128 146.948
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker7 {
+     coords 179.753 1.281 188.275
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker8 {
+     coords 224.463 1.414 231.886
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker9 {
+     coords 266.188 1.342 271.092
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker10 {
+     coords 286.278 1.179 291.593
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker11 {
+     coords 277.847 3.258 329.943
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker12 {
+     coords 278.081 8.885 344.979
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker13 {
+     coords 296.808 2.619 398.735
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker14 {
+     coords 322.362 5.369 445.465
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker15 {
+     coords 347.094 7.934 491.538
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker16 {
+     coords 372.622 9.07 540.889
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker17 {
+     coords 395.092 8.636 578.294
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker18 {
+     coords 415.377 10.531 618.985
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker19 {
+     coords 453.332 10.981 630.875
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker20 {
+     coords 503.763 13.453 646.011
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker21 {
+     coords 561.835 27.546 658.427
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker22 {
+     coords 591.677 15.531 649.65
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker23 {
+     coords 640.013 14.981 616.95
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker24 {
+     coords 664.298 15.053 630.829
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker25 {
+     coords 719.007 15.468 664.447
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker26 {
+     coords 744.867 15.941 705.79
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker27 {
+     coords 773.492 16.187 735.232
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker28 {
+     coords 805.588 16.601 763.153
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker29 {
+     coords 843.308 16.594 787.4
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker30 {
+     coords 840.179 17.032 836.53
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker31 {
+     coords 841.846 16.787 868.739
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker32 {
+     coords 860.809 16.588 898.895
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker33 {
+     coords 873.493 16.239 933.719
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker34 {
+     coords 877.106 15.703 963.972
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker35 {
+     coords 892.289 15.601 1005.599
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker36 {
+     coords 901.225 15.52 1052.668
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker37 {
+     coords 903.123 15.028 1119.321
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker38 {
+     coords 905.422 14.702 1158.426
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker39 {
+     coords 869.245 10.756 1195.425
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker40 {
+     coords 845.682 20.043 1226.229
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker41 {
+     coords 847.795 14.126 1274.62
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker42 {
+     coords 869.04 15.527 1300.942
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker43 {
+     coords 929.523 16.177 1321.53
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker44 {
+     coords 989.27 5.468 1319.054
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker45 {
+     coords 1013.497 8.122 1293.582
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker46 {
+     coords 1030.49 14.403 1252.25
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker47 {
+     coords 1019.54 22.236 1219.211
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker48 {
+     coords 989.279 15.513 1196.376
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker49 {
+     coords 965.801 15.251 1185.715
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker50 {
+     coords 966.091 15.609 1153.063
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker51 {
+     coords 961.902 15.746 1114.765
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker52 {
+     coords 960.277 16.002 1061.085
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker53 {
+     coords 949.746 16.531 1003.909
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker54 {
+     coords 937.936 17.059 961.716
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker55 {
+     coords 929.652 17.142 929.515
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker56 {
+     coords 919.406 16.999 878.601
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker57 {
+     coords 913.481 16.992 836.592
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker58 {
+     coords 916.766 16.937 799.362
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker59 {
+     coords 896.258 17.147 765.483
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker60 {
+     coords 878.659 16.254 743.238
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker61 {
+     coords 859.404 16.407 726.663
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker62 {
+     coords 833.957 16.031 706.269
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker63 {
+     coords 803.861 16.031 688.389
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker64 {
+     coords 794.828 15.875 660.559
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker65 {
+     coords 774.244 15.903 628.651
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker66 {
+     coords 746.23 15.833 605.692
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker67 {
+     coords 723.909 15.499 587.954
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker68 {
+     coords 722.098 15.343 535.364
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker69 {
+     coords 733.506 15.406 482.908
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker70 {
+     coords 700.944 14.599 442.682
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker71 {
+     coords 722.396 14.595 394.208
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker72 {
+     coords 662.312 13.449 368.429
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker73 {
+     coords 623.178 12.145 361.259
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker74 {
+     coords 587.722 10.396 344.614
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker75 {
+     coords 600.132 9.346 296.181
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker76 {
+     coords 613.955 9.648 245.497
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker77 {
+     coords 627.482 9.998 193.646
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker78 {
+     coords 644.099 11.343 134.643
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker79 {
+     coords 652.781 11.714 87.028
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker80 {
+     coords 636.151 11.188 41.863
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker81 {
+     coords 575.595 10.472 23.423
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker82 {
+     coords 535.845 9.679 14.615
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker83 {
+     coords 484.675 8.915 4.141
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker84 {
+     coords 437.548 8.21 0.01
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker85 {
+     coords 392.69 7.54 -9.982
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker86 {
+     coords 346.515 6.881 -22.833
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker87 {
+     coords 280.376 6.035 -42.668
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker88 {
+     coords 223.087 4.984 -62.773
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker89 {
+     coords 170.205 3.556 -76.401
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker90 {
+     coords 108.41 1.281 -49.292
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker91 {
+     coords 77.902 11.145 -63.588
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker92 {
+     coords 43.88 1.246 -83.185
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker93 {
+     coords 6.473 -0.127 -112.044
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker94 {
+     coords -52.016 -1.291 -135.61
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker95 {
+     coords -88.636 -7.004 -121.184
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker96 {
+     coords -93.344 -7.194 -76.059
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker97 {
+     coords -73.834 1.103 -48.704
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker98 {
+     coords -33.111 -0.144 -27.179
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AOBorder_marker99 {
+     coords -6.739 0.031 -14.357
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_fWorldSize 75
+     m_sDescription "AO Border"\
+     ""
+     m_aVisibleForFactions {
+     }
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2723.007 12.889 2561.57
+  angleY 0
+  m_MarkerColor 0.502 0 0.376 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 50
+  m_sDescription "CB Alpha"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2681.032 11.089 2487.051
+  angleY 0
+  m_MarkerColor 0.502 0 0.376 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 50
+  m_sDescription "CB Bravo"\
+  ""
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2470.449 9.448 2434.291
+  angleY 0
+  m_MarkerColor 0.502 0 0.376 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 50
+  m_sDescription "CB Charlie"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2346.82 24.667 2307.253
+  angleY 0
+  m_MarkerColor 0.502 0 0.376 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 50
+  m_sDescription "Church of Ascension"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3119.023 23.797 3055.034
+  angleY 0
+  m_MarkerColor 0 0.502 0.125 1
+  m_sQuadName "circle"
+  m_fWorldSize 50
+  m_sDescription "Mortar pit"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 3138.54 28.727 3149.221
+  angleY 0
+  m_MarkerColor 0 0.502 0.125 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 50
+  m_sDescription "Command bunker"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 2913.079 20.237 2672.945
+  angleY 0
+  m_MarkerColor 0.686 0.259 0.259 1
+  m_fWorldSize 50
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  {
+   $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+    {
+     coords -8.78 0.027 34.857
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -19.298 1.329 62.038
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -30.923 -0.255 83.381
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -47.258 -1.497 106.702
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -66.855 -0.494 131.375
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -97.222 -1.27 147.812
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -123.894 -1.673 167.724
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -146.85 -3.137 182.268
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -177.618 -4.405 205.864
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -197.618 -4.705 221.62
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    {
+     coords -218.358 -3.879 238.575
+     angleY 0
+     m_MarkerColor 0.686 0.259 0.259 1
+     m_fWorldSize 50
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+   }
+  }
+ }
+ OPforgamezoneborder {
+  coords 2574.89 10.108 2714.263
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_fWorldSize 50
+  m_sDescription "OPFOR Game Zone Border"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  {
+   $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+    OPforgamezoneborder2 {
+     coords 45.058 2.859 -5.223
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder3 {
+     coords 77.644 3.139 -0.87
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder4 {
+     coords 113.702 1.749 -15.149
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder5 {
+     coords 146.61 1.733 -45.182
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder6 {
+     coords 175.994 2.347 -88.97
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder7 {
+     coords 178.66 2.616 -136.735
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder8 {
+     coords 186.404 2.061 -173.521
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder9 {
+     coords 180.496 2.454 -199.712
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder10 {
+     coords 165.797 2.062 -236.125
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder11 {
+     coords 177.76 1.684 -267.651
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder12 {
+     coords 187.931 5.08 -312.383
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder13 {
+     coords 248.953 5.149 -307.993
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder14 {
+     coords 274.818 7.887 -342.059
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+    OPforgamezoneborder15 {
+     coords 275.825 8.773 -376.632
+     angleY 0
+     m_MarkerColor 0.502 0 0 1
+     m_fWorldSize 50
+     m_sDescription "OPFOR Game Zone Border"
+     m_aVisibleForFactions {
+      "RHS_RF_MSV"
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ OPFORSpawnMarker {
+  coords 2284.673 7.971 2256.851
+  angleY 90
+  m_sDescription "OPFOR Spawn"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+ }
+ OPFORSpawnMarker2 {
+  coords 3214.109 19.619 3559.254
+  angleY 90
+  m_MarkerColor 0 0.502 0.125 1
+ }
+}

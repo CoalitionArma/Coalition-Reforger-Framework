@@ -1,0 +1,18 @@
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 2285.261 7.635 2244.684
+ m_sCustomNameSet "Platoon Command"
+}
+$grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+ {
+  coords 2275.754 7.364 2236.572
+  m_sCustomNameSet "Infantry Squad"
+ }
+ {
+  coords 2265.264 7.115 2227.355
+  m_sCustomNameSet "Infantry Squad"
+ }
+ {
+  coords 2253.782 6.045 2218.766
+  m_sCustomNameSet "Infantry Squad"
+ }
+}

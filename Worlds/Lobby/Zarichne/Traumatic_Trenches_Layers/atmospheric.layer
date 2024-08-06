@@ -1,0 +1,50 @@
+$grp Bacon_FakeArtillery : "{0ADA5C371391FAE4}Prefabs/Systems/Artillery/ArtilleryBarrage_Large.et" {
+ {
+  components {
+   Bacon_RuntimeCustomAreaMeshComponent "{59B11DD1AEF0990A}" {
+    m_fRadius 40
+   }
+  }
+  coords 2933.844 22.718 2835.182
+  m_numberOfProjectiles 1
+  m_infinite 1
+  m_rofRPM 2
+  m_areaRadius 40
+ }
+ {
+  components {
+   Bacon_RuntimeCustomAreaMeshComponent "{59B11DD1AEF0990A}" {
+    m_fRadius 100
+   }
+  }
+  coords 2876.563 23.29 2989.304
+  m_numberOfProjectiles 1
+  m_infinite 1
+  m_rofRPM 2
+  m_areaRadius 100
+ }
+ {
+  components {
+   Bacon_RuntimeCustomAreaMeshComponent "{59B11DD1AEF0990A}" {
+    m_fRadius 115
+   }
+  }
+  coords 2779.483 18.996 2727.859
+  m_numberOfProjectiles 1
+  m_infinite 1
+  m_rofRPM 3
+  m_areaRadius 115
+ }
+}
+Bacon_FakeArtillery : "{35E0DB90D652D713}Prefabs/Systems/Artillery/ArtilleryBarrage_Huge.et" {
+ components {
+  Bacon_RuntimeCustomAreaMeshComponent "{59B11DD1AEF0990A}" {
+   m_fRadius 200
+  }
+ }
+ coords 2975.108 20.984 2575.874
+ m_numberOfProjectiles 1
+ m_infinite 1
+ m_rofRPM 1
+ m_areaRadius 200
+}

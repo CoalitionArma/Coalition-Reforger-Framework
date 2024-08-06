@@ -1,0 +1,277 @@
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 50
+  }
+  SCR_InitWeatherComponent "{61BCFEC02D389EB2}" {
+   m_sInitialStartingWeatherId "Foggy"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 20
+  }
+ }
+ coords 2746.768 19.936 4518.432
+ {
+  SCR_FactionManager "6203474CF1D4B013" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "1stCOY"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1stPLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{620C3B9833A6293A}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{620C3B98306265BE}" {
+        m_sCallsign "2ndPLT"
+       }
+       SCR_CallsignInfo "{620C3B9830466C86}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{620C3B983004FC92}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{620C3B983FF8D251}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{620D02AA8CF998BF}" {
+        m_sCallsign "2-4"
+       }
+       SCR_CallsignInfo "{620D02AA8CB475DF}" {
+        m_sCallsign "MORTAR"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1stPLT"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{620347480633C8E9}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6203474806C8A187}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{620347480688D214}" {
+        m_sCallsign "1-6"
+       }
+       SCR_CallsignInfo "{620347480552E5CD}" {
+        m_sCallsign "GT1"
+       }
+       SCR_CallsignInfo "{620347481D202815}" {
+        m_sCallsign "GT2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_BaseTriggerEntity spawnMortar {
+ coords 3118.442 23.806 3053.118
+ angleY 131.615
+}
+$grp SCR_FactionDominanceTriggerEntity {
+ obj1 {
+  coords 3119.416 23.79 3046.526
+  userScript "	string mortar = \"{2A473C531D075905}Mortars/82/Podnosnew.et\";"\
+  "	IEntity spawnMortar;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnMortar = GetGame().GetWorld().FindEntityByName(\"spawnMortar\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = spawnMortar.GetOrigin();"\
+  "		"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+  TriggerShapeType Sphere
+  SphereRadius 40
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  m_sOwnerFactionKey "RHS_US_USMC"
+  m_fFriendlyRatioLimit 1
+ }
+ objcbA {
+  coords 2721.426 8.334 2558.49
+  userScript "	// code here"\
+  "	bool zoneCaptured = false;"
+  TriggerShapeType Sphere
+  SphereRadius 8
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Command Bunker Alpha has been captured by the FIA\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "FIA"
+  m_fFriendlyRatioLimit 1
+ }
+ objcbB {
+  coords 2679.413 5.936 2486.375
+  userScript "	// code here"\
+  "	bool zoneCaptured = false;"
+  TriggerShapeType Sphere
+  SphereRadius 8
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Command Bunker Bravo has been captured by the FIA\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "FIA"
+  m_fFriendlyRatioLimit 1
+ }
+ objcbC {
+  coords 2472.862 4.731 2434.695
+  userScript "	// code here"\
+  "	bool zoneCaptured = false;"
+  TriggerShapeType Sphere
+  SphereRadius 8
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Command Bunker Charlie has been captured by the FIA\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "FIA"
+  m_fFriendlyRatioLimit 1
+ }
+ objChurch {
+  coords 2344.419 9.468 2304.455
+  userScript "	// code here"\
+  "	bool zoneCaptured = false;"
+  TriggerShapeType Sphere
+  SphereRadius 20
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"The Church of Ascension has been captured by the FIA\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "FIA"
+  m_fFriendlyRatioLimit 1
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 2772.123 17.415 2304.478
+  m_sTitle "Seize CB Alpha"
+  m_iOrder 6
+  m_iScore 20
+ }
+ {
+  coords 2773.511 17.437 2301.306
+  m_sTitle "Seize CB Bravo"
+  m_iOrder 7
+  m_iScore 20
+ }
+ {
+  coords 2776.938 17.406 2295.461
+  m_sTitle "Seize CB Charlie"
+  m_iOrder 8
+  m_iScore 30
+ }
+ {
+  coords 2776.875 17.375 2290.743
+  m_sTitle "Seize the Church"
+  m_iOrder 9
+  m_iScore 30
+ }
+ {
+  coords 2685.311 11.658 2671.622
+  m_sTitle "Defend CB Alpha"
+  m_iOrder 70
+  m_iScore 20
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 2692.014 11.657 2675.159
+  m_sTitle "Defend CB Bravo"
+  m_iOrder 80
+  m_iScore 20
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 2700.451 11.656 2681.491
+  m_sTitle "Defend CB Charlie"
+  m_iOrder 90
+  m_iScore 30
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 2706.544 11.75 2689.345
+  m_sTitle "Defend the Church"
+  m_iOrder 100
+  m_iScore 30
+  m_sFactionKey "RHS_RF_MSV"
+ }
+}

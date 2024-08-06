@@ -1,0 +1,47 @@
+SCR_DestructibleEntity : "{027CEF1B935A4D42}Prefabs/Structures/Walls/Concrete/ConcreteWall_01/ConcreteWall_01_Base.et" {
+ ID "51E2F0F09703F07B"
+ components {
+  MeshObject "{56DE7C8DCD0F4E0A}" {
+   Object "{DF2A041CCCA321A2}Assets/Structures/Walls/Concrete/ConcreteWall_01_6m_B.xob"
+  }
+  NavmeshCustomLinkComponent "{5088C72B466E73FA}" {
+   LinkType NavmeshJumpLink "{5088C72B44859B28}" {
+    "Navmesh setting presets" {
+     NavmeshCustomLinkSetting "{5C90EA9654F713FE}" {
+      BeginPoint 2 0.957 1.5
+      EndPoint 2 0.957 -1.5
+     }
+    }
+   }
+  }
+  RigidBody "{56DE7C8DDE282E03}" {
+   ModelGeometry 1
+   Static 1
+  }
+ }
+ FirstDestructionPhase SCR_BaseDestructionPhase "{5A18F297698A2425}" {
+  m_sPhaseModel "{DF2A041CCCA321A2}Assets/Structures/Walls/Concrete/ConcreteWall_01_6m_B.xob"
+  m_aPhaseDestroySpawnObjects {
+   SCR_DebrisSpawnable "{5AA6B132A8E75829}" {
+    m_ModelPrefabs {
+     "{AF0679111FBF2C45}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_01.xob" "{3618C08802581DD5}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_02.xob" "{4112A800F6FAF2A5}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_03.xob" "{46D55251907C4866}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_04.xob" "{31DF3AD964DEA716}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_05.xob" "{A8C1834079399686}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_06.xob" "{DFCBEBC88D9B79F6}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_07.xob" "{A74E77E2B434E300}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_08.xob" "{D0441F6A40960C70}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_09.xob" "{2C045601E6C0AB41}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_10.xob" "{5B0E3E8912624431}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_11.xob" "{C21087100F8575A1}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_12.xob" "{B51AEF98FB279AD1}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_13.xob" "{B2DD15C99DA12012}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_14.xob" "{2B611FE126F0BFE5}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_15.xob" "{B27FA6783B178E75}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_16.xob" "{C575CEF0CFB56105}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01_debris_17.xob"
+    }
+   }
+  }
+ }
+ DamagePhases {
+  SCR_BaseDestructionPhase "{5AA6B132D7457896}" {
+   m_sPhaseModel "{98AA71FDFF86D949}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_01.xob"
+   m_aPhaseDestroySpawnObjects {
+    SCR_DebrisSpawnable "{5AA6B1303FC4C6D5}" {
+     m_ModelPrefabs {
+      "{3D97334D3D6C2E50}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_01.xob" "{A4898AD4208B1FC0}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_02.xob" "{D444180DB2AF4A73}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_04.xob" "{A34E7085460DA503}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_05.xob" "{4D5AA194AF487BE3}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_07.xob" "{35DF3DBE96E7E115}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_08.xob" "{42D5553662450E65}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_09.xob" "{BE951C5DC413A954}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_10.xob" "{5081CD4C2D5677B4}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_12.xob" "{204C5F95BF722207}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_14.xob" "{5746371D4BD0CD77}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_15.xob" "{CE588E845637FCE7}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_16.xob" "{B952E60CA2951397}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_17.xob" "{B6DD12AE6F986611}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_19.xob" "{E07D351E7B9E275B}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02_debris_20.xob"
+     }
+    }
+   }
+  }
+ }
+ LastDestructionPhase SCR_BaseDestructionPhase "{5A18F297606BF928}" {
+  m_sPhaseModel "{01B4C864E261E8D9}Assets/Structures/Walls/Concrete/Dst/ConcreteWall_01/ConcreteWall_01_6m_B_dst_02.xob"
+ }
+}
