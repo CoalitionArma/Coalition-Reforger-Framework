@@ -22,6 +22,9 @@ SCR_AIGroup US_Platoon_Command_1 : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980
   }
   SCR_AIGroup zzUS_HeloCrew_1 : "{C05A0194D1579606}Prefabs/Groups/BLUFOR/1980s/Standard/Vehicles/Group_US80s_Support_HeloCrew.et" {
    coords 14.821 0.08 24.92
+   m_aUnitPrefabSlots + {
+    "{5FC2D849AD3FE106}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_FO_P.et"
+   }
   }
  }
 }
@@ -31,7 +34,4 @@ SCR_AIGroup zUS_MortarTeam_1 : "{205C762616F796B6}Prefabs/Groups/BLUFOR/1980s/St
   "{27582FB0F5A7D917}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_IndirectLead_P.et" "{D6E4398BC37191A9}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_IndirectGunner_P.et" "{D6E4398BC37191A9}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_IndirectGunner_P.et"
  }
  m_sCustomNameSet "Mortar Team"
-}
-SCR_AIGroup zUS_Logistics_Team_1 : "{85E3AF1BB56CE089}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Logistics.et" {
- coords 1084.021 2.825 6072.815
 }

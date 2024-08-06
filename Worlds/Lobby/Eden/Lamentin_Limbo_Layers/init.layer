@@ -4,30 +4,16 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
-   m_iTimeLimitMinutes 90
+   m_iTimeLimitMinutes 70
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_iStartingHours 6
-   m_iRangeHoursStart 6
-   m_iRangeHoursEnd 6
+   m_iRangeHoursStart 15
+   m_iRangeHoursEnd 15
   }
  }
  coords 3479.58 181.114 5829.136
  m_fAutoReloadTime 0
- m_aFactionRespawnCount {
-  PS_FactionRespawnCount "{620843CF27D0AB60}" {
-   m_sFactionKey "US"
-   m_iCount 15
-   m_iTime 2
-   m_bWaveMode 1
-  }
-  PS_FactionRespawnCount "{620843CF2D1F0D39}" {
-   m_sFactionKey "USSR"
-   m_iCount 15
-   m_iTime 2
-   m_bWaveMode 1
-  }
- }
  {
   SCR_FactionManager "620868CA23E81D8E" {
    ID "60E1584A0994EEB9"
@@ -36,7 +22,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
-        m_sCallsign "1stPLT"
+        m_sCallsign "1PLT"
        }
        SCR_CallsignInfo "{55CCB792D13759D8}" {
         m_sCallsign "1-1"
@@ -51,13 +37,10 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{620843D64BFE22F2}" {
-        m_sCallsign "AH1"
+        m_sCallsign "TH1"
        }
        SCR_CallsignInfo "{620843D64BB7E20A}" {
         m_sCallsign "MORTAR"
-       }
-       SCR_CallsignInfo "{620843D64B81254D}" {
-        m_sCallsign "LOGI"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -67,10 +50,10 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB79287E901BC}" {
-        m_sCallsign "1stCOM"
+        m_sCallsign "1COY"
        }
        SCR_CallsignInfo "{55CCB79287936EBD}" {
-        m_sCallsign "1stPLT"
+        m_sCallsign "1PLT"
        }
        SCR_CallsignInfo "{55CCB79287BAFBD6}" {
         m_sCallsign "1-1"
@@ -85,7 +68,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
         m_sCallsign "BTR1"
        }
        SCR_CallsignInfo "{620843D67DFD74FB}" {
-        m_sCallsign "2ndPLT"
+        m_sCallsign "2PLT"
        }
        SCR_CallsignInfo "{620843D67DD2E300}" {
         m_sCallsign "2-1"

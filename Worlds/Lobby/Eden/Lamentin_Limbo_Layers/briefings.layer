@@ -11,7 +11,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Situation"
   m_sTextData "3:2 OPFOR:BLUFOR slotting ratio"\
   ""\
-  "US forces will defend Lamentin harbor from attacking USSR forces for 90 minutes before a ship can arrive to extract them from the island."\
+  "US forces will defend Lamentin harbor from attacking USSR forces for 70 minutes before a ship can arrive to extract them from the island."\
   "(ship evac is not ingame lol)"
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
@@ -20,14 +20,11 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  briefAssets {
   coords 3457.221 177.457 5828.72
   m_sTitle "Assets"
-  m_sTextData "Both teams have 15 respawn tickets each"\
-  ""\
-  "BLUFOR Assets:"\
-  "2x M1025 (M2HB)"\
-  "6x M998"\
+  m_sTextData "BLUFOR Assets:"\
+  "3x M1025 (M2HB)"\
+  "8x M998"\
   "1x M997 Ambulance"\
-  "1x M998 Logistics"\
-  "1x M923A1 (Construction)"\
+  "1x M923A1 Transport"\
   "1x UH-1H (Armed)"\
   "2x M252 Mortar"\
   ""\
@@ -61,11 +58,6 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTextData "You have been backed into a corner and must hold Lamentin harbor at all costs until an evacuation ship can arrive. The town is unfortified and unprepared, but southeast of the town is FOB Raleigh. "\
   "The FOB is well fortified and has 2x M252 mortars inside of it. However, it is poorly positioned and separated from Lamentin. Holding the FOB will be difficult, but the M252s are very powerful tools."\
   ""\
-  "Reccomended plan of action:"\
-  "-Decide whether holding FOB Raleigh and the M252s is worth the risk"\
-  "-Keep your infantry mobile, the AO is too big and your force too small"\
-  "-Use the UH-1H for reconnaissance, not as a gunship, to let you place your infantry in the most important spots and defeat in detail"\
-  ""\
   "Good luck!"
   m_aVisibleForFactions {
    "US"
@@ -77,11 +69,6 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "OPFOR Briefing"
   m_sTextData "We have backed the enemy into a corner and must crush them before they can escape. We know an evacuation ship is on route to do so. The town is unfortified and if we move quickly, we can overrun them. A confounding issue is southeast of the town, FOB Raleigh."\
   "The FOB is well fortified yet poorly positioned. Inside it is two M252 mortars, which could be devastating to our assault. Taking the FOB may not be difficult, but would waste valuable time."\
-  ""\
-  "Reccomended plan of action:"\
-  "-Decide whether the M252's at FOB Raleigh are an important enough threat to divert time towards"\
-  "-Move quickly to invalidate the enemies helicopter"\
-  "-Leverage your numerical superiority and defeat the enemy forces in detail"\
   ""\
   "Good luck!"
   m_aVisibleForFactions {
