@@ -21,6 +21,9 @@ modded class SCR_MapMarkersUI
 	void AddInitialMarkers()
 	{
 		array<string> storedMarkerArray = CRF_GameModePlayerComponent.GetInstance().GetScriptedMarkersArray();
+
+		if(SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+			GetGame().GetCallqueue().Remove(AddInitialMarkers);
 		
 		if(!storedMarkerArray || storedMarkerArray.IsEmpty())
 			return;
