@@ -1,4 +1,4 @@
-class CRF_LinearAAS_UI : SCR_InfoDisplay
+class CRF_Frontline_HUD : SCR_InfoDisplay
 {
 	protected ImageWidget m_wASite;
 	protected ImageWidget m_wBSite;
@@ -18,7 +18,7 @@ class CRF_LinearAAS_UI : SCR_InfoDisplay
 	protected bool m_bStoredProgressBarBoolean;
 
 	protected CRF_GameModePlayerComponent m_GameModePlayerComponent = null;
-	protected CRF_LinearAASGameModeComponent m_LinearAASGameModeComponent = null;
+	protected CRF_FrontlineGameModeComponent m_FrontlineGameModeComponent = null;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -30,9 +30,9 @@ class CRF_LinearAAS_UI : SCR_InfoDisplay
 	{
 		super.UpdateValues(owner, timeSlice);
 		
-		if(!m_LinearAASGameModeComponent)
+		if(!m_FrontlineGameModeComponent)
 		{
-			m_LinearAASGameModeComponent = CRF_LinearAASGameModeComponent.GetInstance();
+			m_FrontlineGameModeComponent = CRF_FrontlineGameModeComponent.GetInstance();
 			m_wRoot.SetOpacity(0);
 			return;
 		}
@@ -60,14 +60,14 @@ class CRF_LinearAAS_UI : SCR_InfoDisplay
 		else
 			m_wRoot.SetOpacity(1);
 		
-		string siteCaptureBarText = m_LinearAASGameModeComponent.m_sHudMessage;
+		string siteCaptureBarText = m_FrontlineGameModeComponent.m_sHudMessage;
 		m_wSiteCaptureText.SetText(siteCaptureBarText);
 		
 		m_bStoredProgressBarBoolean = false;
 		
-		foreach(int i, string zoneName : m_LinearAASGameModeComponent.m_aZoneObjectNames)
+		foreach(int i, string zoneName : m_FrontlineGameModeComponent.m_aZoneObjectNames)
 		{
-			string status = m_LinearAASGameModeComponent.m_aZonesStatus[i];
+			string status = m_FrontlineGameModeComponent.m_aZonesStatus[i];
 			string imageTexture;
 			int imageColor;
 			
@@ -116,14 +116,14 @@ class CRF_LinearAAS_UI : SCR_InfoDisplay
 			
 			switch(zonefaction)
 			{
-				case m_LinearAASGameModeComponent.m_BluforSide : {
+				case m_FrontlineGameModeComponent.m_BluforSide : {
 					widget.SetColorInt(ARGB(255, 0, 25, 225)); 
-					nickname = m_LinearAASGameModeComponent.m_sBluforSideNickname; 
+					nickname = m_FrontlineGameModeComponent.m_sBluforSideNickname; 
 					break;
 				}; //Blufor
-				case m_LinearAASGameModeComponent.m_OpforSide  : {
+				case m_FrontlineGameModeComponent.m_OpforSide  : {
 					widget.SetColorInt(ARGB(255, 225, 25, 0)); 
-					nickname = m_LinearAASGameModeComponent.m_sOpforSideNickname;   
+					nickname = m_FrontlineGameModeComponent.m_sOpforSideNickname;   
 					break;
 				}; //Opfor
 				default : { 
@@ -142,15 +142,15 @@ class CRF_LinearAAS_UI : SCR_InfoDisplay
 				m_wSiteCaptureBar.SetCurrent(zoneState.ToInt());
 				m_bStoredProgressBarBoolean = true;
 				
-				if(zoneState.ToInt() > m_LinearAASGameModeComponent.m_iZoneCaptureTime)
-					m_wSiteCaptureBar.SetMax(m_LinearAASGameModeComponent.m_iInitialTime); // Only other time we use the progress bar
+				if(zoneState.ToInt() > m_FrontlineGameModeComponent.m_iZoneCaptureTime)
+					m_wSiteCaptureBar.SetMax(m_FrontlineGameModeComponent.m_iInitialTime); // Only other time we use the progress bar
 				else
-					m_wSiteCaptureBar.SetMax(m_LinearAASGameModeComponent.m_iZoneCaptureTime);
+					m_wSiteCaptureBar.SetMax(m_FrontlineGameModeComponent.m_iZoneCaptureTime);
 				
 				switch(zonefaction)
 				{
-					case m_LinearAASGameModeComponent.m_BluforSide : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 0, 25, 225));    break;}; //Blufor
-					case m_LinearAASGameModeComponent.m_OpforSide  : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 225, 25, 0));    break;}; //Opfor
+					case m_FrontlineGameModeComponent.m_BluforSide : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 0, 25, 225));    break;}; //Blufor
+					case m_FrontlineGameModeComponent.m_OpforSide  : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 225, 25, 0));    break;}; //Opfor
 					default                                        : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 225, 225, 225)); break;}; //Uncaptured
 				}
 				

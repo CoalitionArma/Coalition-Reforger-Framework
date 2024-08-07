@@ -160,15 +160,7 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 			bombSitePlanted = bSite;
 		};
 		
-		// Spawn explosion at site
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
-		spawnParams.Transform[3] = bombSitePlanted.GetOrigin();
-		
-		// Delete entity
-		delete bombSitePlanted;
-	
-		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
+		SiteDestroyedClient();
 		
 		if (sitesDestroyed == 2)
 		{
