@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{227C3956B91F16D5}UI/layouts/CRF_LAAS_Display.layout"
+ Name "{57C8559AEDAEFF2D}UI/layouts/CCO19_OBJ.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -12,8 +12,6 @@ MetaFileClass {
   LayoutResourceClass PS5 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
-  }
-  LayoutResourceClass Xbox : PC {
   }
  }
 }

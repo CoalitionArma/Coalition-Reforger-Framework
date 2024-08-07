@@ -1,0 +1,213 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Opacity 0
+ {
+  TextWidgetClass "{62080BF138A8EE60}" {
+   Name "SiteCaptureText"
+   Slot FrameWidgetSlot "{62080BF138A8EE54}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -100
+    OffsetLeft -100
+    PositionY 52
+    OffsetTop 52
+    SizeX 200
+    OffsetRight -100
+    SizeY 16
+    OffsetBottom -68
+   }
+   Text ""
+   "Font Size" 16
+   "Min Font Size" 16
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  ProgressBarWidgetClass "{62080BF22B256F5E}" {
+   Name "SiteCaptureBar"
+   Slot FrameWidgetSlot "{62080BF22B256FB1}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -100
+    OffsetLeft -100
+    PositionY 42
+    OffsetTop 42
+    SizeX 200
+    OffsetRight -100
+    SizeY 8
+    OffsetBottom -50
+   }
+   Opacity 0
+   Color 0.68 0.68 0.68 0.843
+   Maximum 60
+   Current 0
+  }
+  ImageWidgetClass "{62080BF271278881}" {
+   Name "ASite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -104
+    OffsetLeft -104
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 69
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0 0.01 1 1
+   Texture "{E5AC2ABE05771CA1}UI/Objectives/A.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF27F152548}" {
+   Name "BSite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -60.75
+    OffsetLeft -60.8
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 25.8
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0 0.011 0.914 1
+   Texture "{BB4403FDBAFA92AE}UI/Objectives/B.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF296F8D660}" {
+   Name "CSite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -17.5
+    OffsetLeft -17.5
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -17.5
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.753 0.753 0.753 1
+   Texture "{4F4C4465B727FADA}UI/Objectives/C.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF24050D52F}" {
+   Name "DSite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 26.25
+    OffsetLeft 26.2
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -61.2
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 1 0.01 0 1
+   Texture "{0694517AC5E18EB0}UI/Objectives/D.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF258B83533}" {
+   Name "ESite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 70
+    OffsetLeft 70
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -105
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 1 0.01 0 1
+   Texture "{F29C16E2C83CE6C4}UI/Objectives/E.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177AB4C29DFE}" {
+   Name "ASiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -104
+    OffsetLeft -104
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 69
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A9D86FF5A}" {
+   Name "BSiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -60.75
+    OffsetLeft -60.8
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 25.8
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A938D4128}" {
+   Name "CSiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -17.5
+    OffsetLeft -17.5
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -17.5
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A6620885C}" {
+   Name "DSiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 26.25
+    OffsetLeft 26.2
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -61.2
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A7DAB392D}" {
+   Name "ESiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 70
+    OffsetLeft 70
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -105
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+ }
+}

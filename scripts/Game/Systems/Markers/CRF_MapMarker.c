@@ -1,12 +1,11 @@
-modded class SCR_MapUIBaseComponent
+modded class SCR_MapMarkersUI
 {
 	static SCR_MapEntity m_MapUnitEntity;
 	static bool m_isMapOpen = false;
 	
-	protected ref array<Widget> m_aStoredWidgetArray = {};
 	protected ref array<float> m_aStoredTimeSliceArray = {};
 	protected ref array<vector> m_aStoredPosArray = {};
-	protected CRF_GameModePlayerComponent m_GameModePlayerComponent;
+	protected ref map<Widget, string> m_mStoredWidgetSettingsMap = new map<Widget, string>;
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnMapOpen(MapConfiguration config)
@@ -14,13 +13,59 @@ modded class SCR_MapUIBaseComponent
 		super.OnMapOpen(config);
 		if (!m_isMapOpen)
 			m_isMapOpen = true;
+		
+		GetGame().GetCallqueue().CallLater(AddInitialMarkers, 0, true);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AddInitialMarkers()
+	{
+		array<string> storedMarkerArray = CRF_GameModePlayerComponent.GetInstance().GetScriptedMarkersArray();
+		
+		if(!storedMarkerArray || storedMarkerArray.IsEmpty())
+			return;
+		
+		GetGame().GetCallqueue().Remove(AddInitialMarkers);
+		
+		m_mStoredWidgetSettingsMap.Clear();
+		
+		foreach(int i, string markerString : storedMarkerArray)
+		{	
+			TStringArray markerStringArray = {};
+			markerString.Split("||", markerStringArray, false);
+			
+			Widget widget = GetGame().GetWorkspace().CreateWidgets("{DD15734EB89D74E2}UI/layouts/Map/MapMarkerBase.layout", m_RootWidget);
+			widget.SetZOrder(markerStringArray[5].ToInt());
+		
+			if (!widget)
+				return;
+
+			ImageWidget m_UnitImage = ImageWidget.Cast(widget.FindAnyWidget("MarkerIcon"));		
+			if(m_UnitImage)
+			{
+				m_UnitImage.LoadImageTexture(0, markerStringArray[4]);
+				m_UnitImage.SetColorInt(markerStringArray[6].ToInt());
+				m_UnitImage.SetVisible(true);
+			};
+		
+			TextWidget m_UnitText = TextWidget.Cast(widget.FindAnyWidget("MarkerText"));
+			if(m_UnitText)
+			{
+				m_UnitText.SetText(markerStringArray[3]);
+				m_UnitText.SetVisible(true);
+			};
+		
+			m_mStoredWidgetSettingsMap.Set(widget, markerString);
+		};
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	override protected void OnMapClose(MapConfiguration config)
 	{
 		m_isMapOpen = false;
 		super.OnMapClose(config);
 	}
+	
 	//------------------------------------------------------------------------------------------------
 	override void Update(float timeSlice)
 	{
@@ -33,110 +78,68 @@ modded class SCR_MapUIBaseComponent
 		if (!m_MapUnitEntity) 
 			return;
 		
-		m_GameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
-		if (!m_GameModePlayerComponent) 
-			return;
+		int i = 0;
 		
-		TStringArray markerArray = m_GameModePlayerComponent.GetScriptedMarkersArray();
-		
-		if(markerArray.Count() != m_aStoredWidgetArray.Count())
+		foreach(Widget marker, string markerString : m_mStoredWidgetSettingsMap)
 		{
-			foreach(int i, Widget marker : m_aStoredWidgetArray)
-			{
-				delete marker;
-				m_aStoredWidgetArray.Remove(i);
-			};
-		};
-		
-		foreach(int i, string markerString : markerArray)
-		{
+			i = i + 1;
+			vector pos;
+			
 			TStringArray markerStringArray = {};
 			markerString.Split("||", markerStringArray, false);
 			
-			SetMarker(i, markerStringArray[0], markerStringArray[1].ToVector(), markerStringArray[2].ToFloat(), markerStringArray[3], markerStringArray[4]);
-		};
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetMarker(int markerInt, string markerEntityName, vector markerOffset, float timeDelay, string markerText, string markerImage) 
-	{
-		vector pos;
-		
-		if(markerEntityName != "Static Marker") {
-			IEntity entity = GetGame().GetWorld().FindEntityByName(markerEntityName);
-			if (!entity)
-				return;
+			if(!markerStringArray || markerStringArray.IsEmpty() || !marker)
+				continue;
 			
-			if(timeDelay > 0) {
-				float ts = GetGame().GetWorld().GetWorldTime();
+			if(markerStringArray[0] != "Static Marker") {
+				IEntity entity = GetGame().GetWorld().FindEntityByName(markerStringArray[0]);
+				if (!entity)
+					continue;
+			
+				if(markerStringArray[2].ToFloat() > 0) {
+					float ts = GetGame().GetWorld().GetWorldTime();
 				
-				if (!m_aStoredTimeSliceArray.IsIndexValid(markerInt) || ts >= m_aStoredTimeSliceArray.Get(markerInt)) {
-					float finalTimeDelay = ts + (timeDelay * 1000);
+					if (!m_aStoredTimeSliceArray.IsIndexValid(i) || ts >= m_aStoredTimeSliceArray.Get(i)) {
+						float finalTimeDelay = ts + (markerStringArray[2].ToFloat() * 1000);
 					
-					if (m_aStoredTimeSliceArray.IsIndexValid(markerInt))
-						m_aStoredTimeSliceArray.Set(markerInt, finalTimeDelay);
-					else
-						m_aStoredTimeSliceArray.Insert(finalTimeDelay);
+						if (m_aStoredTimeSliceArray.IsIndexValid(i))
+							m_aStoredTimeSliceArray.Set(i, finalTimeDelay);
+						else
+							m_aStoredTimeSliceArray.Insert(finalTimeDelay);
 					
-					pos = entity.GetOrigin() + markerOffset;
+						pos = entity.GetOrigin() + markerStringArray[1].ToVector();
 					
-					if (m_aStoredPosArray.IsIndexValid(markerInt))
-						m_aStoredPosArray.Set(markerInt, pos);
-					else
-						m_aStoredPosArray.Insert(pos);
+						if (m_aStoredPosArray.IsIndexValid(i))
+							m_aStoredPosArray.Set(i, pos);
+						else
+							m_aStoredPosArray.Insert(pos);
 					
+					} else {
+						if (m_aStoredPosArray.IsIndexValid(i))
+							pos = m_aStoredPosArray.Get(i);
+						else
+							pos = entity.GetOrigin() + markerStringArray[1].ToVector();
+					};
 				} else {
-					if (m_aStoredPosArray.IsIndexValid(markerInt))
-						pos = m_aStoredPosArray.Get(markerInt);
-					else
-						pos = entity.GetOrigin() + markerOffset;
+					pos = entity.GetOrigin() + markerStringArray[1].ToVector();
 				};
 			} else {
-				pos = entity.GetOrigin() + markerOffset;
+				pos = markerStringArray[1].ToVector();
 			};
-		} else {
-			pos = markerOffset;
-		};
 			
-		Widget widget = GetGame().GetWorkspace().CreateWidgets("{DD15734EB89D74E2}UI/layouts/Map/MapMarkerBase.layout", m_RootWidget);
+			int screenPosX;
+			int screenPosY;
 		
-		if (!widget)
-			return;
-
-		ImageWidget m_UnitImage = ImageWidget.Cast(widget.FindAnyWidget("MarkerIcon"));		
-		if(m_UnitImage)
-		{
-			m_UnitImage.LoadImageTexture(0, markerImage);
-			m_UnitImage.SetVisible(true);
-		}
+			m_MapUnitEntity.WorldToScreen(pos[0], pos[2], screenPosX, screenPosY, true);
 		
-		TextWidget m_UnitText = TextWidget.Cast(widget.FindAnyWidget("MarkerText"));
-		if(m_UnitText)
-		{
-			m_UnitText.SetText(markerText);
-			m_UnitText.SetVisible(true);
-		}
-		
-		if (m_aStoredWidgetArray.IsIndexValid(markerInt))
-		{
-			delete m_aStoredWidgetArray.Get(markerInt);
-			m_aStoredWidgetArray.Set(markerInt, widget);
-		} else {
-			m_aStoredWidgetArray.Insert(widget);
-		}
-		
-		int screenPosX;
-		int screenPosY;
-		
-		m_MapUnitEntity.WorldToScreen(pos[0], pos[2], screenPosX, screenPosY, true);
-		
-		screenPosX = GetGame().GetWorkspace().DPIUnscale(screenPosX);
-		screenPosY = GetGame().GetWorkspace().DPIUnscale(screenPosY);
+			screenPosX = GetGame().GetWorkspace().DPIUnscale(screenPosX);
+			screenPosY = GetGame().GetWorkspace().DPIUnscale(screenPosY);
 				
-		FrameSlot.SetPos(
-				widget,
+			FrameSlot.SetPos(
+				marker,
 				screenPosX,
 				screenPosY
-		);
+			);
+		};
 	}
 }
