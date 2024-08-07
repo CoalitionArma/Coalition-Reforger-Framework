@@ -1,0 +1,35 @@
+SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Command/Group_US80s_Platoon_p.et" {
+ coords 1041.178 2.709 6023.928
+ angleY -88.758
+ {
+  SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Infantry/Group_US80s_RifleSquad_p.et" {
+   coords 8.615 0.071 29.731
+   angleY 88.758
+   {
+    SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Infantry/Group_US80s_RifleSquad_p.et" {
+     coords -4.678 0 -0.296
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Infantry/Group_US80s_RifleSquad_p.et" {
+       coords -5.591 0 0.062
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Infantry/Group_US80s_RifleSquad_p.et" {
+         coords -5.455 0 0.138
+         m_sCustomNameSet "4th Squad"
+         {
+          SCR_AIGroup : "{EF56323F873DAB17}Prefabs/Groups/BLUFOR/1980s/COALITION_STANDARD/Support/Group_US80s_Support_LATTeam.et" {
+           coords 56.83 -0.061 0.811
+           angleY -92.296
+           m_sCustomNameSet "Anti-Tank Team"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
