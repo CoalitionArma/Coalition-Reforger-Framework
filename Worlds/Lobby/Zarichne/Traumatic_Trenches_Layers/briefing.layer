@@ -1,8 +1,8 @@
 PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  coords 2866.208 19.227 2758.859
- m_sTextData "An enemy attack is coming this morning. We must hold the lines at all costs. They will be attempting to take our 3 command bunkers and the church at the rear of the trenchline. Use our superior defenses to decisively defeat the enemy before they can even near our positions."\
+ m_sTextData "An enemy attack is coming this morning. We must hold the lines at all costs. They will be attempting to take our 3 command bunkers and the church at the rear of the trenchline. "\
  ""\
- "Note: OPFOR Safe start borders are further out than game zone borders. You are permitted to go past the trenches into no man's land to clear bushes, trees, and lay traps. You are not permitted to go into or near the enemy trenchline."\
+ "Note: OPFOR Game zone borders are also safe-start borders."\
  ""\
  ""
  m_aVisibleForFactions {
@@ -17,10 +17,10 @@ $grp PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescripti
  FIA_brief {
   coords 2881.156 20.736 2788.819
   m_sTitle "FIA Brief"
-  m_sTextData "This morning, we will make a full-scale frontal assualt across no man's land onto enemy Russian positions. We expect heavy casualties, but that will not stop us from achieveing our mission. Our targets are the 3 enemy command bunkers and the church at the rear of their lines. Use our artillery assets and superior numbers to quickly cross no man's land and reach the enemy trenches before casualties are too heavy."\
+  m_sTextData "This morning, we will make a full-scale frontal assualt across no man's land.We expect heavy casualties. Our targets are the 3 enemy command bunkers and the church at the rear of their lines. "\
   ""\
   "Notes: -Gamezone is very narrow, simply because you are expected to move along the trenches."\
-  "-More ammo for mortar located in command bunker closet"\
+  "-As soon as safestart ends, mortars can shell you"\
   ""\
   ""
   m_aVisibleForFactions {
@@ -53,9 +53,9 @@ $grp PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescripti
  assetsbrief {
   coords 3047.504 23.366 2918.574
   m_sTitle "Assets"
-  m_sTextData "FIA: 1x 82mm \"Podnos\" mortar"\
+  m_sTextData "OPFOR: 1x 82mm \"Podnos\" mortar"\
   ""\
-  "OPFOR: none"\
+  "FIA: none"\
   ""\
   ""
   m_aVisibleForFactions {
@@ -74,7 +74,6 @@ PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Si
  ""\
  "FIA forces must make a frontal trench assualt to force Russian MSV forces out of their positions and gain ground. The key targets are 3 underground Russian command bunkers and the Church of Ascension, located at the rear of the trenchline."\
  ""\
- "If you die very early on, I'm sorry, but this mission is intended to be brutal."\
  ""\
  ""\
  ""

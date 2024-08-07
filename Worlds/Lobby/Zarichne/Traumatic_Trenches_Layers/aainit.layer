@@ -1,7 +1,7 @@
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
-   m_iTimeLimitMinutes 45
+   m_iTimeLimitMinutes 30
   }
   SCR_InitWeatherComponent "{61BCFEC02D389EB2}" {
    m_sInitialStartingWeatherId "Foggy"
@@ -21,10 +21,10 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_aSquadNames {
        SCR_CallsignInfo "{58B2B630FDD64B6D}" {
-        m_sCallsign "1stCOY"
+        m_sCallsign "1COY"
        }
        SCR_CallsignInfo "{58B2B630FDD64B53}" {
-        m_sCallsign "1stPLT"
+        m_sCallsign "1PLT"
        }
        SCR_CallsignInfo "{58B2B630FDD64B51}" {
         m_sCallsign "1-1"
@@ -39,7 +39,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{620C3B98306265BE}" {
-        m_sCallsign "2ndPLT"
+        m_sCallsign "2PLT"
        }
        SCR_CallsignInfo "{620C3B9830466C86}" {
         m_sCallsign "2-1"
@@ -53,9 +53,6 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
        SCR_CallsignInfo "{620D02AA8CF998BF}" {
         m_sCallsign "2-4"
        }
-       SCR_CallsignInfo "{620D02AA8CB475DF}" {
-        m_sCallsign "MORTAR"
-       }
       }
      }
     }
@@ -63,7 +60,9 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
       m_aSquadNames {
        SCR_CallsignInfo "{5977478D568C092E}" {
-        m_sCallsign "1stPLT"
+       }
+       SCR_CallsignInfo "{620D6A13391B839B}" {
+        m_sCallsign "MORTAR"
        }
       }
      }
@@ -94,7 +93,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
 }
 SCR_BaseTriggerEntity spawnMortar {
- coords 3118.442 23.806 3053.118
+ coords 2458.302 13.695 2271.522
  angleY 131.615
 }
 $grp SCR_FactionDominanceTriggerEntity {

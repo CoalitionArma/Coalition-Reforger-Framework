@@ -1,3 +1,1015 @@
+PS_ManualMarker AOBorder_marker2 : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ coords 3108.277 24.281 3111.836
+ angleY 0
+ m_MarkerColor 0 0 0 1
+ m_fWorldSize 75
+ m_sDescription "AO Border"\
+ ""
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+ {
+  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   AOBorder_marker3 {
+    coords 5.984 1.596 35.546
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker4 {
+    coords 9.042 0.429 63.628
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker5 {
+    coords 31.006 -0.242 79.774
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker6 {
+    coords 63.607 1.978 101.761
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker7 {
+    coords 107.874 0.595 110.203
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker8 {
+    coords 145.943 -0.214 95.937
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker9 {
+    coords 172.062 -0.088 52.834
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker10 {
+    coords 177.079 -0.019 0.588
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker11 {
+    coords 174.043 0.156 -52.079
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker12 {
+    coords 142.555 -0.187 -80.874
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker13 {
+    coords 94.099 -0.318 -154.324
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker14 {
+    coords 59.842 -0.66 -192.783
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker15 {
+    coords -17.659 -0.791 -235.566
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker16 {
+    coords -85.896 -1.006 -270.943
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker17 {
+    coords -97.041 -1.202 -296.881
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker18 {
+    coords -133.313 1.685 -331.196
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker19 {
+    coords -93.455 17.1 -389.414
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker20 {
+    coords -162.841 -3.048 -430.414
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker21 {
+    coords -234.015 -5.849 -454.983
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker22 {
+    coords -222.211 -6.984 -523.156
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker23 {
+    coords -205.461 -6.875 -593.393
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker24 {
+    coords -188.043 -5.305 -654.021
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker25 {
+    coords -177.792 -4.867 -707.133
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker26 {
+    coords -165.111 -4.336 -755.8
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker27 {
+    coords -217.783 -5.467 -764.64
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker28 {
+    coords -268.877 -6.457 -775.883
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker29 {
+    coords -301.234 -6.983 -785.676
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker30 {
+    coords -343.905 -7.619 -790.858
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker31 {
+    coords -384.505 -8.253 -799.527
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker32 {
+    coords -428.693 -8.897 -804.868
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker33 {
+    coords -466.765 -9.468 -817.441
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker34 {
+    coords -507.071 -10.002 -829.237
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker35 {
+    coords -559.796 -10.649 -845.476
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker36 {
+    coords -602.932 -11.495 -860.158
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker37 {
+    coords -659.393 -13.114 -880.928
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker38 {
+    coords -690.544 -0.573 -854.511
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker39 {
+    coords -725.106 -15.282 -846.887
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker40 {
+    coords -781.537 -15.317 -880.138
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker41 {
+    coords -809.099 -2.25 -893.201
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker42 {
+    coords -855.621 -14.256 -921.755
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker43 {
+    coords -884.503 -13.092 -928.683
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker44 {
+    coords -923.275 -22.031 -913.655
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker45 {
+    coords -933.991 -21.714 -879.979
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker46 {
+    coords -932.017 -23.848 -848.213
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker47 {
+    coords -887.003 -5.005 -827.108
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker48 {
+    coords -848.337 -16.956 -810.919
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker49 {
+    coords -822.832 -4.45 -793.033
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker50 {
+    coords -804.286 -1.589 -778.026
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker51 {
+    coords -781.557 -7.726 -760.343
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker52 {
+    coords -756.628 -15.218 -742.368
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker53 {
+    coords -767.141 -15.049 -716.814
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker54 {
+    coords -750.996 -15.25 -700.269
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker55 {
+    coords -716.129 -15.25 -670.819
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker56 {
+    coords -687.692 -15.692 -642.534
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker57 {
+    coords -658.23 -15.281 -619.377
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker58 {
+    coords -640.379 -15.281 -606.657
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker59 {
+    coords -616.489 -15.094 -586.838
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker60 {
+    coords -600.321 -14.963 -564.244
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker61 {
+    coords -580.999 -6.842 -551.426
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker62 {
+    coords -553.725 -15.284 -524.928
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker63 {
+    coords -542.225 -15.461 -512.444
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker64 {
+    coords -540.6 -9.414 -491.026
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker65 {
+    coords -544.42 -15.584 -458.115
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker66 {
+    coords -541.901 -15.755 -424.842
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker67 {
+    coords -517.49 -12.333 -381.322
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker68 {
+    coords -504.479 -11.159 -351.814
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker69 {
+    coords -474.969 -8.177 -300.666
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker70 {
+    coords -450.976 -7.842 -250.749
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker71 {
+    coords -432.692 -7.716 -208.865
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker72 {
+    coords -412.798 -6.376 -180.466
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker73 {
+    coords -368.735 -5.4 -164.024
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker74 {
+    coords -328.292 -3.512 -154.792
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker75 {
+    coords -284.002 -1.923 -144.489
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker76 {
+    coords -265.424 5.06 -139.974
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker77 {
+    coords -245.12 -0.905 -129.437
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker78 {
+    coords -218.793 -0.968 -120.444
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker79 {
+    coords -190.363 -1.067 -111.38
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker80 {
+    coords -163.35 -0.987 -102.613
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker81 {
+    coords -115.273 -1.001 -81.683
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker82 {
+    coords -91.837 -0.691 -58.028
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker83 {
+    coords -74.342 -0.397 -41.331
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker84 {
+    coords -53.642 -0.209 -21.294
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   AOBorder_marker85 {
+    coords -12.58 -0.067 -7.143
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_fWorldSize 75
+    m_sDescription "AO Border"\
+    ""
+    m_aVisibleForFactions {
+    }
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+}
 GenericEntity indfortrenchline : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et" {
  coords 3073.075 24.094 3106.114
  angleY -87.109
@@ -529,10 +1541,6 @@ GenericEntity indfortrenchline : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wr
    angleX 0
    angleY 87.109
    angleZ 0
-  }
-  GenericEntity : "{48D88E385C227340}Prefabs/Compositions/Misc/SubCompositions/Barrel_Filled_01.et" {
-   coords -205.028 -1.365 114.208
-   angleY 87.109
   }
   $grp DecalEntity : "{4AD6EB80A8B1FA3A}Prefabs/Decals/Dirt/Decal_Dirt_Patch_03.et" {
    {
@@ -3092,6 +4100,24 @@ GenericEntity indfortrenchline : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wr
    {
     coords -82.844 -0.438 226.889
     angleY 87.109
+   }
+  }
+  $grp StaticModelEntity : "{A7714C2274969A61}PrefabsEditable/Auto/Compositions/Misc/CustomEntities/DestructionEntities/E_ShelterStorage_USSR_01_CompositionDestruction.et" {
+   {
+    coords -211.067 -4.561 267.933
+    angleY 116.925
+   }
+   {
+    coords -195.945 -5.857 301.397
+    angleY 110.451
+   }
+   {
+    coords -296.051 -2.237 165.721
+    angleY 105.405
+   }
+   {
+    coords -259.437 -1.833 181.209
+    angleY 114.216
    }
   }
   $grp GenericEntity : "{A8C049689FADE44F}PrefabLibrary/Infrastructure/Sings/SignJunctionMain.et" {
@@ -8693,6 +9719,20 @@ GenericEntity OPFORtrenchline : "{5D663A6D07D5F72E}PrefabsEditable/Auto/Structur
    angleY 28.292
    angleZ 5.503
   }
+  $grp GenericEntity : "{34416FBE8AEBD028}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_round_high_burlap.et" {
+   {
+    coords 29.854 4.964 -307.793
+    angleX -1.049
+    angleY 34.962
+    angleZ -2.627
+   }
+   {
+    coords 25.516 4.891 -309.635
+    angleX -7.332
+    angleY -80.986
+    angleZ 5.102
+   }
+  }
   $grp GenericEntity : "{5D663A6D07D5F72E}PrefabsEditable/Auto/Structures/Signs/Military/E_Sign_CommandPost_USSR_01.et" {
    {
     coords -36.952 2.144 78.412
@@ -8703,9 +9743,19 @@ GenericEntity OPFORtrenchline : "{5D663A6D07D5F72E}PrefabsEditable/Auto/Structur
     angleY -164.257
    }
   }
+  StaticModelEntity : "{5FAED0FC492C0AED}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Table_Ashtray_US_01.et" {
+   coords 32.169 4.989 -309.951
+   angleY 60.894
+  }
   GenericEntity : "{BCF4F3411D3B2075}Prefabs/Props/Military/Bunkers/Bunker_Tower.et" {
    coords -178.378 3.028 73.914
    angleY -159.197
+  }
+  GenericEntity : "{BDAA871A06DABD74}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_burlap.et" {
+   coords 27.37 4.884 -307.911
+   angleX -7.217
+   angleY -18.892
+   angleZ -3.583
   }
   StaticModelEntity : "{C3A444B415256FC9}Prefabs/Structures/Military/Fortifications/Trenches/TrenchOld_01/TrenchOld_01_roof_2m.et" {
    coords -5.215 2.682 5.381
@@ -8713,75 +9763,91 @@ GenericEntity OPFORtrenchline : "{5D663A6D07D5F72E}PrefabsEditable/Auto/Structur
   }
  }
 }
-GenericEntity : "{64B634889F7AB67C}Mortars/82/podnos82mm.et" {
- coords 3120.694 24.657 3059.087
- angleY -31.259
+$grp GenericEntity : "{64B634889F7AB67C}Mortars/82/podnos82mm.et" {
  {
-  GenericEntity : "{2B1D0128ED660BE9}Prefabs/Props/Crates/BoxWooden_01.et" {
-   coords 57.347 -0.13 69.57
-   angleY -70.335
+  coords 3120.694 24.657 3059.087
+  angleY -31.259
+  {
+   GenericEntity : "{2B1D0128ED660BE9}Prefabs/Props/Crates/BoxWooden_01.et" {
+    coords 57.347 -0.13 69.57
+    angleY -70.335
+   }
+   GenericEntity : "{3C44DBCDA1FD917A}Prefabs/Props/Construction/BoxMortar_01/BoxMortar_01.et" {
+    coords 57.713 -0.13 70.942
+    angleY 111.578
+   }
+   $grp GenericEntity : "{6B1695F01143BCBE}Mortars/AmmoBox_82mm_mortawzr_3rnd.et" {
+    {
+     coords 57.339 -0.116 69.548
+     angleY 19.313
+    }
+    {
+     coords 57.341 -0.019 69.581
+     angleY 19.313
+    }
+    {
+     coords 57.359 0.078 69.567
+     angleY 19.313
+    }
+    {
+     coords 57.349 0.176 69.607
+     angleY 19.313
+    }
+    {
+     coords 57.476 -0.121 71.052
+     angleY 19.313
+    }
+    {
+     coords 57.825 -0.121 70.946
+     angleY 19.313
+    }
+    {
+     coords 57.494 -0.024 71.029
+     angleY 19.313
+    }
+    {
+     coords 57.818 -0.024 70.944
+     angleY 19.313
+    }
+    {
+     coords 57.511 0.073 71.012
+     angleY -72.428
+    }
+    {
+     coords 57.889 0.073 70.92
+     angleY 19.313
+    }
+    {
+     coords 57.52 0.171 71.003
+     angleY 19.313
+    }
+    {
+     coords 57.881 0.171 70.894
+     angleY 110.675
+    }
+   }
   }
-  GenericEntity : "{3C44DBCDA1FD917A}Prefabs/Props/Construction/BoxMortar_01/BoxMortar_01.et" {
-   coords 57.713 -0.13 70.942
-   angleY 111.578
-  }
-  $grp GenericEntity : "{6B1695F01143BCBE}Mortars/AmmoBox_82mm_mortawzr_3rnd.et" {
-   {
-    coords 57.339 -0.116 69.548
-    angleY 19.313
-   }
-   {
-    coords 57.341 -0.019 69.581
-    angleY 19.313
-   }
-   {
-    coords 57.359 0.078 69.567
-    angleY 19.313
-   }
-   {
-    coords 57.349 0.176 69.607
-    angleY 19.313
-   }
-   {
-    coords 57.476 -0.121 71.052
-    angleY 19.313
-   }
-   {
-    coords 57.825 -0.121 70.946
-    angleY 19.313
-   }
-   {
-    coords 57.494 -0.024 71.029
-    angleY 19.313
-   }
-   {
-    coords 57.818 -0.024 70.944
-    angleY 19.313
-   }
-   {
-    coords 57.511 0.073 71.012
-    angleY -72.428
-   }
-   {
-    coords 57.889 0.073 70.92
-    angleY 19.313
-   }
-   {
-    coords 57.52 0.171 71.003
-    angleY 19.313
-   }
-   {
-    coords 57.881 0.171 70.894
-    angleY 110.675
-   }
-  }
+ }
+ {
+  coords 2460.939 14.563 2268.848
+  angleX 0.216
+  angleY -71.555
+  angleZ -3.036
+ }
+ {
+  coords 2461.134 14.543 2269.241
+  angleY -71.544
+ }
+ {
+  coords 2461.251 14.543 2269.622
+  angleY -71.544
  }
 }
 SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_Wall.et" {
  components {
   MeshObject "{56DE7C8DCD0F4E0A}" {
    Materials {
-    MaterialAssignClass "{620D02B4C7A0FA65}" {
+    MaterialAssignClass "{620D6A1B81065F42}" {
      SourceMaterial "ConcreteWall_01"
      AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
     }
@@ -8800,7 +9866,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7F892DD}" {
+       MaterialAssignClass "{620D6A1B815C1937}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8814,7 +9880,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A203D3}" {
+       MaterialAssignClass "{620D6A1B8101E05A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8828,7 +9894,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2145B}" {
+       MaterialAssignClass "{620D6A1B8101F2BE}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8842,7 +9908,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A21F0B}" {
+       MaterialAssignClass "{620D6A1B8101FCD0}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8856,7 +9922,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A228CF}" {
+       MaterialAssignClass "{620D6A1B8101869E}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8871,7 +9937,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A231C5}" {
+       MaterialAssignClass "{620D6A1B81018FC1}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8886,7 +9952,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A23A12}" {
+       MaterialAssignClass "{620D6A1B810198EF}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8901,7 +9967,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2C4A5}" {
+       MaterialAssignClass "{620D6A1B8101A2DE}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8916,7 +9982,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2CD7B}" {
+       MaterialAssignClass "{620D6A1B8101AA3B}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8931,7 +9997,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2D7EC}" {
+       MaterialAssignClass "{620D6A1B8101B331}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8946,7 +10012,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2E190}" {
+       MaterialAssignClass "{620D6A1B8101BC3B}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8961,7 +10027,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2EAB6}" {
+       MaterialAssignClass "{620D6A1B8100453C}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8976,7 +10042,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2F22A}" {
+       MaterialAssignClass "{620D6A1B81004EAA}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -8991,7 +10057,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2FA70}" {
+       MaterialAssignClass "{620D6A1B81005622}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9006,7 +10072,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A28232}" {
+       MaterialAssignClass "{620D6A1B81005F99}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9021,7 +10087,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A28A0C}" {
+       MaterialAssignClass "{620D6A1B81006723}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9036,7 +10102,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2927C}" {
+       MaterialAssignClass "{620D6A1B81007037}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9051,7 +10117,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A29BED}" {
+       MaterialAssignClass "{620D6A1B810079AD}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9066,7 +10132,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2A4EB}" {
+       MaterialAssignClass "{620D6A1B8100014A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9081,7 +10147,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2ADD3}" {
+       MaterialAssignClass "{620D6A1B81000AE8}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9096,7 +10162,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2B6D1}" {
+       MaterialAssignClass "{620D6A1B8100127E}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9111,7 +10177,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A2BFAD}" {
+       MaterialAssignClass "{620D6A1B81001BB3}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9126,7 +10192,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A148BD}" {
+       MaterialAssignClass "{620D6A1B81002382}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9141,7 +10207,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A150D8}" {
+       MaterialAssignClass "{620D6A1B81002B1F}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9156,7 +10222,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A159EC}" {
+       MaterialAssignClass "{620D6A1B810033FA}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9171,7 +10237,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1611E}" {
+       MaterialAssignClass "{620D6A1B81003BD5}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9186,7 +10252,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A16A11}" {
+       MaterialAssignClass "{620D6A1B8100C3D8}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9201,7 +10267,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A17339}" {
+       MaterialAssignClass "{620D6A1B8100CBCF}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9217,7 +10283,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A17CEC}" {
+       MaterialAssignClass "{620D6A1B8100D4F6}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9233,7 +10299,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A105F0}" {
+       MaterialAssignClass "{620D6A1B8100DC6A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9249,7 +10315,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A10EF3}" {
+       MaterialAssignClass "{620D6A1B8100E5FE}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9265,7 +10331,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A11644}" {
+       MaterialAssignClass "{620D6A1B8100ED0B}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9281,7 +10347,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A11F51}" {
+       MaterialAssignClass "{620D6A1B8100F6C9}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9297,7 +10363,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A129B1}" {
+       MaterialAssignClass "{620D6A1B810080C3}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9313,7 +10379,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1329C}" {
+       MaterialAssignClass "{620D6A1B81008959}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9329,7 +10395,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A13BC6}" {
+       MaterialAssignClass "{620D6A1B810094AF}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9345,7 +10411,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1C46B}" {
+       MaterialAssignClass "{620D6A1B81009EC5}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9361,7 +10427,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1CDD1}" {
+       MaterialAssignClass "{620D6A1B8100A85A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9378,7 +10444,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1D62E}" {
+       MaterialAssignClass "{620D6A1B8100B25E}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9395,7 +10461,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1DE38}" {
+       MaterialAssignClass "{620D6A1B8100BC31}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9412,7 +10478,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1E671}" {
+       MaterialAssignClass "{620D6A1B81074506}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9429,7 +10495,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1EFB7}" {
+       MaterialAssignClass "{620D6A1B81074F89}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9446,7 +10512,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1F706}" {
+       MaterialAssignClass "{620D6A1B8107581A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9463,7 +10529,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A18031}" {
+       MaterialAssignClass "{620D6A1B8107614F}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9480,7 +10546,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A18A95}" {
+       MaterialAssignClass "{620D6A1B81076D82}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9497,7 +10563,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1936D}" {
+       MaterialAssignClass "{620D6A1B81077647}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9514,7 +10580,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A19D8F}" {
+       MaterialAssignClass "{620D6A1B810701DB}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9531,7 +10597,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1A572}" {
+       MaterialAssignClass "{620D6A1B81070BB3}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9548,7 +10614,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1AFCA}" {
+       MaterialAssignClass "{620D6A1B81071482}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9565,7 +10631,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A1B82A}" {
+       MaterialAssignClass "{620D6A1B81071C6B}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9582,7 +10648,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A04190}" {
+       MaterialAssignClass "{620D6A1B81072526}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9599,7 +10665,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A04A82}" {
+       MaterialAssignClass "{620D6A1B81072E28}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9616,7 +10682,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A05360}" {
+       MaterialAssignClass "{620D6A1B81073886}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9633,7 +10699,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A05C18}" {
+       MaterialAssignClass "{620D6A1B8107C22A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9650,7 +10716,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A0655A}" {
+       MaterialAssignClass "{620D6A1B8107CCD1}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9667,7 +10733,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A06FBC}" {
+       MaterialAssignClass "{620D6A1B8107D520}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9684,7 +10750,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A078B4}" {
+       MaterialAssignClass "{620D6A1B8107DEDC}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9701,7 +10767,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A00187}" {
+       MaterialAssignClass "{620D6A1B8107E64A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9716,7 +10782,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A00A07}" {
+       MaterialAssignClass "{620D6A1B8107EF50}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9731,7 +10797,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A01335}" {
+       MaterialAssignClass "{620D6A1B8107F80A}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9746,7 +10812,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A01E9D}" {
+       MaterialAssignClass "{620D6A1B81078112}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9761,7 +10827,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A028CB}" {
+       MaterialAssignClass "{620D6A1B81078BC9}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9778,7 +10844,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A032DC}" {
+       MaterialAssignClass "{620D6A1B81079569}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9795,7 +10861,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A03CF1}" {
+       MaterialAssignClass "{620D6A1B81079FC7}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9812,7 +10878,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A0C5F9}" {
+       MaterialAssignClass "{620D6A1B8107A8D0}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9829,7 +10895,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A0CE47}" {
+       MaterialAssignClass "{620D6A1B8107B104}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9846,7 +10912,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A0D78E}" {
+       MaterialAssignClass "{620D6A1B8107BA17}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9863,7 +10929,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A0DF49}" {
+       MaterialAssignClass "{620D6A1B81064332}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9880,7 +10946,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A0E82F}" {
+       MaterialAssignClass "{620D6A1B81064C01}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9897,7 +10963,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A0F2E0}" {
+       MaterialAssignClass "{620D6A1B810656FB}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
@@ -9914,7 +10980,7 @@ SCR_DestructibleEntity : "{D816B938753BE40F}Prefabs/Structures/Walls/Invisible_W
     components {
      MeshObject "{56DE7C8DCD0F4E0A}" {
       Materials {
-       MaterialAssignClass "{620D02B4C7A760B7}" {
+       MaterialAssignClass "{620D6A1B81063829}" {
         SourceMaterial "ConcreteWall_01"
         AssignedMaterial "{9668A21511C6F791}Assets/_SharedData/Decals/Invisible_Material.emat"
        }
