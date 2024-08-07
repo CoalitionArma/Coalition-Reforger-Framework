@@ -82,7 +82,6 @@ modded class SCR_MapMarkersUI
 		
 		foreach(Widget marker, string markerString : m_mStoredWidgetSettingsMap)
 		{
-			i = i + 1;
 			vector pos;
 			
 			TStringArray markerStringArray = {};
@@ -140,6 +139,8 @@ modded class SCR_MapMarkersUI
 				screenPosX,
 				screenPosY
 			);
+
+			i = i + 1;
 		};
 	}
 }
