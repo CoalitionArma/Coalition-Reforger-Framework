@@ -1,39 +1,39 @@
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_LinearAASGameModeComponentClass: SCR_BaseGameModeComponentClass
+class CRF_FrontlineGameModeComponentClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-class CRF_LinearAASGameModeComponent: SCR_BaseGameModeComponent
+class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 {
-	[Attribute("US", "auto", "The side designated as blufor, this faction will have control of the beginning half of the total zones at game start. \n\n In Example: If the total zones were [A, B, C, D, E] this faction would have control of [A, B] at game start", category: "Linear AAS Faction Settings")]
+	[Attribute("US", "auto", "The side designated as blufor, this faction will have control of the beginning half of the total zones at game start. \n\n In Example: If the total zones were [A, B, C, D, E] this faction would have control of [A, B] at game start", category: "Frontline Faction Settings")]
 	FactionKey m_BluforSide;
 	
-	[Attribute("USA", "auto", "Nickname for the side designated as blufor", category: "Linear AAS Faction Settings")]
+	[Attribute("USA", "auto", "Nickname for the side designated as blufor", category: "Frontline Faction Settings")]
 	string m_sBluforSideNickname;
 	
-	[Attribute("USSR", "auto", "The side designated as opfor, this faction will have control of the last half of the total zones at game start. \n\n In Example: If the total zones were [A, B, C, D, E] this faction would have control of [D, E] at game start", category: "Linear AAS Faction Settings")]
+	[Attribute("USSR", "auto", "The side designated as opfor, this faction will have control of the last half of the total zones at game start. \n\n In Example: If the total zones were [A, B, C, D, E] this faction would have control of [D, E] at game start", category: "Frontline Faction Settings")]
 	FactionKey m_OpforSide;
 	
-	[Attribute("USSR", "auto", "Nickname for the side designated as opfor", category: "Linear AAS Faction Settings")]
+	[Attribute("USSR", "auto", "Nickname for the side designated as opfor", category: "Frontline Faction Settings")]
 	string m_sOpforSideNickname;
 	
-	[Attribute("", UIWidgets.EditBox, desc: "Array of all zone object names, !MAKE SURE ALL OBJECTS LISTED ARE INVINCIBLE!", category: "Linear AAS Zone Settings")]
+	[Attribute("", UIWidgets.EditBox, desc: "Array of all zone object names, !MAKE SURE ALL OBJECTS LISTED ARE INVINCIBLE!", category: "Frontline Zone Settings")]
 	ref array<string> m_aZoneObjectNames;
 	
-	[Attribute("30", "auto", "[Seconds] The amount of time it takes to cap a zone", category: "Linear AAS Zone Settings")]
+	[Attribute("30", "auto", "[Seconds] The amount of time it takes to cap a zone", category: "Frontline Zone Settings")]
 	int m_iZoneCaptureTime;
 	
-	[Attribute("600", "auto", "[Seconds] Time until the frontline zones are unlocked after being locked, recommend you stick to on of these: [5 minutes, 10 minutes, 15 minutes, 20 minutes]", category: "Linear AAS Zone Settings")]
+	[Attribute("600", "auto", "[Seconds] Time until the frontline zones are unlocked after being locked, recommend you stick to on of these: [5 minutes, 10 minutes, 15 minutes, 20 minutes]", category: "Frontline Zone Settings")]
 	int m_iZoneUnlockTime;
 	
-	[Attribute("5", "auto", "Min number of players needed to cap a zone", category: "Linear AAS Zone Settings")]
+	[Attribute("5", "auto", "Min number of players needed to cap a zone", category: "Frontline Zone Settings")]
 	int m_iMinNumberOfPlayersNeeded;
 	
-	[Attribute("600", "auto", "[Seconds] When all zones are captured by a side, it'll take this set time to declare that side a victor", category: "Linear AAS Zone Settings")]
+	[Attribute("600", "auto", "[Seconds] When all zones are captured by a side, it'll take this set time to declare that side a victor", category: "Frontline Zone Settings")]
 	int m_iTimeToWin;
 	
-	[Attribute("900", "auto", "[Seconds] Time until the middle zone is unlocked", category: "Linear AAS Zone Settings")]
+	[Attribute("900", "auto", "[Seconds] Time until the middle zone is unlocked", category: "Frontline Zone Settings")]
 	int m_iInitialTime;
 	
 	// - All players within a zones range
@@ -60,11 +60,11 @@ class CRF_LinearAASGameModeComponent: SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 
-	static CRF_LinearAASGameModeComponent GetInstance()
+	static CRF_FrontlineGameModeComponent GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
 		if (gameMode)
-			return CRF_LinearAASGameModeComponent.Cast(gameMode.FindComponent(CRF_LinearAASGameModeComponent));
+			return CRF_FrontlineGameModeComponent.Cast(gameMode.FindComponent(CRF_FrontlineGameModeComponent));
 		else
 			return null;
 	}
@@ -87,7 +87,7 @@ class CRF_LinearAASGameModeComponent: SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 
-	// Linear AAS functions
+	// Frontline functions
 
 	//------------------------------------------------------------------------------------------------
 	
