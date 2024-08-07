@@ -11,7 +11,7 @@ SCR_PlayerController {
      m_bShowWhenCreated 0
     }
     CRF_LinearAAS_UI "{620E57D8E646ADBE}" {
-     m_LayoutPath "{57C8559AEDAEFF2D}UI/layouts/CCO19_OBJ.layout"
+     m_LayoutPath "{57C8559AEDAEFF2D}UI/layouts/CRF_LinearAAS_HUD.layout"
      m_eLayer ALWAYS_TOP
     }
     CRF_SafeStartDisplay "{61303B9E05796EC7}" {
