@@ -25,12 +25,49 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
          {
           PS_Objective OPF_Obj : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
            coords -4.254 -0.141 3.198
+           m_sTitle "Objective 1"
+           m_sTextData "Destroy portable generator A"
+           m_aVisibleForFactions {
+            "USSR"
+           }
            m_iOrder 5
+           m_iScore 50
+           m_sFactionKey "USSR"
            {
-            PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
-             coords 4.254 0.141 -3.198
-             m_sTextData "2x BTR"
+            PS_Objective OPF_Obj2 : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+             coords -0.098 -0 -1.084
+             m_sTitle "Objective 2"
+             m_sTextData "Destroy portable generator B"
+             m_aVisibleForFactions {
+              "USSR"
+             }
              m_iOrder 6
+             m_iScore 50
+             m_sFactionKey "USSR"
+             {
+              PS_Objective OPF_Obj3 : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+               coords -0.025 0 -0.888
+               m_sTitle "Secondary Objective"
+               m_sTextData "Eliminate BLUFOR"
+               m_aVisibleForFactions {
+                "USSR"
+               }
+               m_iOrder 7
+               m_sFactionKey "USSR"
+               {
+                PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+                 coords 4.377 0.141 -1.227
+                 m_sTextData "2x BTR"
+                 m_aVisibleForFactions {
+                  "USSR"
+                 }
+                 m_bEmptyFactionVisibility 0
+                 m_bShowForAnyFaction 0
+                 m_iOrder 8
+                }
+               }
+              }
+             }
             }
            }
           }
@@ -46,12 +83,39 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
          {
           PS_Objective BLU_Obj : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
            coords -1.546 -0.078 4.476
-           m_sTextData "Att"
+           m_sTitle "Objective 1"
+           m_sTextData "Defend portable Generator A"
            m_aVisibleForFactions {
             "US"
            }
            m_iOrder 5
+           m_iScore 50
            m_sFactionKey "US"
+           {
+            PS_Objective BLU_Obj2 : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+             coords -1.955 0 -0.053
+             m_sTitle "Objective 2"
+             m_sTextData "Defend portable Generator B"
+             m_aVisibleForFactions {
+              "US"
+             }
+             m_iOrder 6
+             m_iScore 50
+             m_sFactionKey "US"
+             {
+              PS_Objective BLU_Obj3 : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+               coords 0.195 0 -1.49
+               m_sTitle "Secondary Objective"
+               m_sTextData "Eliminate OPFOR"
+               m_aVisibleForFactions {
+                "US"
+               }
+               m_iOrder 7
+               m_sFactionKey "US"
+              }
+             }
+            }
+           }
           }
          }
         }
