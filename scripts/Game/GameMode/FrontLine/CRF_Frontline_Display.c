@@ -35,27 +35,27 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			m_FrontlineGameModeComponent = CRF_FrontlineGameModeComponent.GetInstance();
 			m_wRoot.SetOpacity(0);
 			return;
-		}
+		};
 		
 		if (!m_GameModePlayerComponent || !m_wASite || !m_wBSite || !m_wCSite || !m_wDSite || !m_wESite || !m_wASiteLock || !m_wBSiteLock || !m_wCSiteLock || !m_wDSiteLock || !m_wESiteLock || !m_wSiteCaptureBar || !m_wSiteCaptureText) {
-			m_GameModePlayerComponent    = CRF_GameModePlayerComponent.GetInstance();
-			m_wASite                     = ImageWidget.Cast(m_wRoot.FindWidget("ASite"));
-			m_wBSite                     = ImageWidget.Cast(m_wRoot.FindWidget("BSite"));
-			m_wCSite                     = ImageWidget.Cast(m_wRoot.FindWidget("CSite"));
-			m_wDSite                     = ImageWidget.Cast(m_wRoot.FindWidget("DSite"));
-			m_wESite                     = ImageWidget.Cast(m_wRoot.FindWidget("ESite"));
-			m_wASiteLock                 = ImageWidget.Cast(m_wRoot.FindWidget("ASiteLock"));
-			m_wBSiteLock                 = ImageWidget.Cast(m_wRoot.FindWidget("BSiteLock"));
-			m_wCSiteLock                 = ImageWidget.Cast(m_wRoot.FindWidget("CSiteLock"));
-			m_wDSiteLock                 = ImageWidget.Cast(m_wRoot.FindWidget("DSiteLock"));
-			m_wESiteLock                 = ImageWidget.Cast(m_wRoot.FindWidget("ESiteLock"));
-			m_wSiteCaptureBar            = ProgressBarWidget.Cast(m_wRoot.FindWidget("SiteCaptureBar"));
-			m_wSiteCaptureText           = TextWidget.Cast(m_wRoot.FindWidget("SiteCaptureText"));
+			m_GameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
+			m_wASite                  = ImageWidget.Cast(m_wRoot.FindWidget("ASite"));
+			m_wBSite                  = ImageWidget.Cast(m_wRoot.FindWidget("BSite"));
+			m_wCSite                  = ImageWidget.Cast(m_wRoot.FindWidget("CSite"));
+			m_wDSite                  = ImageWidget.Cast(m_wRoot.FindWidget("DSite"));
+			m_wESite                  = ImageWidget.Cast(m_wRoot.FindWidget("ESite"));
+			m_wASiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("ASiteLock"));
+			m_wBSiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("BSiteLock"));
+			m_wCSiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("CSiteLock"));
+			m_wDSiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("DSiteLock"));
+			m_wESiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("ESiteLock"));
+			m_wSiteCaptureBar         = ProgressBarWidget.Cast(m_wRoot.FindWidget("SiteCaptureBar"));
+			m_wSiteCaptureText        = TextWidget.Cast(m_wRoot.FindWidget("SiteCaptureText"));
 			return;
 		};
 		
 		CRF_SafestartGameModeComponent safestart = CRF_SafestartGameModeComponent.GetInstance();
-		if(safestart.GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+		if(safestart.GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !safestart.m_bHUDVisible)
 			m_wRoot.SetOpacity(0);
 		else
 			m_wRoot.SetOpacity(1);
