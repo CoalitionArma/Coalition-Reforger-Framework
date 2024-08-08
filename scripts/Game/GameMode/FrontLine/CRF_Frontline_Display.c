@@ -10,8 +10,15 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 	protected ImageWidget m_wCSiteLock;
 	protected ImageWidget m_wDSiteLock;
 	protected ImageWidget m_wESiteLock;
+	protected ImageWidget m_wASiteInZone;
+	protected ImageWidget m_wBSiteInZone;
+	protected ImageWidget m_wCSiteInZone;
+	protected ImageWidget m_wDSiteInZone;
+	protected ImageWidget m_wESiteInZone;
 	protected ProgressBarWidget m_wSiteCaptureBar;
 	protected TextWidget m_wSiteCaptureText;
+	
+	protected ImageWidget m_wInZoneWidget;
 	
 	protected float m_fStoredOpcaity;
 	protected bool m_bStoredFadeInBoolean;
@@ -37,7 +44,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			return;
 		};
 		
-		if (!m_GameModePlayerComponent || !m_wASite || !m_wBSite || !m_wCSite || !m_wDSite || !m_wESite || !m_wASiteLock || !m_wBSiteLock || !m_wCSiteLock || !m_wDSiteLock || !m_wESiteLock || !m_wSiteCaptureBar || !m_wSiteCaptureText) {
+		if (!m_GameModePlayerComponent || !m_wASite) {
 			m_GameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
 			m_wASite                  = ImageWidget.Cast(m_wRoot.FindWidget("ASite"));
 			m_wBSite                  = ImageWidget.Cast(m_wRoot.FindWidget("BSite"));
@@ -49,6 +56,11 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			m_wCSiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("CSiteLock"));
 			m_wDSiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("DSiteLock"));
 			m_wESiteLock              = ImageWidget.Cast(m_wRoot.FindWidget("ESiteLock"));
+			m_wASiteInZone            = ImageWidget.Cast(m_wRoot.FindWidget("ASiteInZone"));
+			m_wBSiteInZone            = ImageWidget.Cast(m_wRoot.FindWidget("BSiteInZone"));
+			m_wCSiteInZone            = ImageWidget.Cast(m_wRoot.FindWidget("CSiteInZone"));
+			m_wDSiteInZone            = ImageWidget.Cast(m_wRoot.FindWidget("DSiteInZone"));
+			m_wESiteInZone            = ImageWidget.Cast(m_wRoot.FindWidget("ESiteInZone"));
 			m_wSiteCaptureBar         = ProgressBarWidget.Cast(m_wRoot.FindWidget("SiteCaptureBar"));
 			m_wSiteCaptureText        = TextWidget.Cast(m_wRoot.FindWidget("SiteCaptureText"));
 			return;
@@ -67,6 +79,11 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 		
 		foreach(int i, string zoneName : m_FrontlineGameModeComponent.m_aZoneObjectNames)
 		{
+			IEntity zone = GetGame().GetWorld().FindEntityByName(zoneName);
+			
+			if(!zone)
+				continue;
+			
 			string status = m_FrontlineGameModeComponent.m_aZonesStatus[i];
 			string imageTexture;
 			int imageColor;
@@ -85,32 +102,39 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 				case "aZone" : {
 					widget = m_wASite; 
 					lockWidget = m_wASiteLock; 
+					m_wInZoneWidget = m_wASiteInZone;
 					break;
 				};
 				case "bZone" : {
 					widget = m_wBSite; 
 					lockWidget = m_wBSiteLock; 
+					m_wInZoneWidget = m_wBSiteInZone;
 					break;
 				};
 				case "cZone" : {
 					widget = m_wCSite; 
 					lockWidget = m_wCSiteLock; 
+					m_wInZoneWidget = m_wCSiteInZone;
 					break;
 				};
 				case "dZone" : {
 					widget = m_wDSite; 
 					lockWidget = m_wDSiteLock; 
+					m_wInZoneWidget = m_wDSiteInZone;
 					break;
 				};
 				case "eZone" : {
 					widget = m_wESite; 
 					lockWidget = m_wESiteLock; 
+					m_wInZoneWidget = m_wESiteInZone;
 					break;
 				};
 			}
 			
 			if(!widget || !lockWidget)
 				return;
+			
+			GetGame().GetWorld().QueryEntitiesBySphere(zone.GetOrigin(), 75, ProcessEntity, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT); // get all entitys within a 50m radius around the zone
 			
 			string nickname;
 			
@@ -177,5 +201,18 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 		
 		if(!m_bStoredProgressBarBoolean) 
 			m_wSiteCaptureBar.SetOpacity(0);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected bool ProcessEntity(IEntity processEntity)
+	{
+		if(processEntity == SCR_PlayerController.GetLocalMainEntity())
+		{
+			m_wInZoneWidget.SetOpacity(1);
+			return false;
+		} else {
+			m_wInZoneWidget.SetOpacity(0);
+			return true;
+		};
 	}
 }

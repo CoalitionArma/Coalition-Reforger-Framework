@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4F4C4465B727FADA}Images/UI/Objectives/C.edds"
+ Name "{8B42CA8C0F5EA4BA}UI/Objectives/C.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }
@@ -12,6 +12,8 @@ MetaFileClass {
   PNGResourceClass PS5 : "{6248F71B9D7C1E93}configs/ResourceTypes/PS5/TextureUnspecified.conf" {
   }
   PNGResourceClass HEADLESS : "{699C82A6807668A7}Configs/System/ResourceTypes/HEADLESS/TextureUnspecified.conf" {
+  }
+  PNGResourceClass Xbox : PC {
   }
  }
 }

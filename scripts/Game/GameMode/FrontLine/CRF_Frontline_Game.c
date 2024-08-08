@@ -178,7 +178,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 			if(!zone)
 				continue;
 			
-			GetGame().GetWorld().QueryEntitiesBySphere(zone.GetOrigin(), 75, ProcessEntity, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT); // get all entitys withing a 50m radius around the zone
+			GetGame().GetWorld().QueryEntitiesBySphere(zone.GetOrigin(), 75, ProcessEntity, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT); // get all entitys within a 50m radius around the zone
 			
 			float bluforInZone = 0;
 			float opforInZone = 0;
