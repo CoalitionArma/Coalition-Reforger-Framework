@@ -1,0 +1,26 @@
+$grp SCR_AIGroup : "{6A273A2113911D86}Prefabs/Groups/OPFOR/1980s/Specials/LondonBathtub_Group_ShirtsBayonets_10Man.et" {
+ {
+  coords 8557.874 147.718 3392.491
+  angleY -122.126
+ }
+ {
+  coords 8558.452 147.718 3392.884
+  angleY -122.126
+ }
+ {
+  coords 8559.354 147.718 3393.385
+  angleY -122.126
+ }
+ {
+  coords 8560.273 147.718 3393.949
+  angleY -122.126
+ }
+ {
+  coords 8561.148 147.718 3394.651
+  angleY -122.126
+ }
+ {
+  coords 8562.271 147.718 3395.465
+  angleY -122.126
+ }
+}

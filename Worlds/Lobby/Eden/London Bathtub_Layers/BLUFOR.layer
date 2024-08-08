@@ -1,3 +1,26 @@
-SCR_AIGroup : "{62990CF36C70D69A}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/2020/Command/CRF_USMC_RiflePHQ2020.et" {
- coords 8468.975 132.93 3311.31
+$grp SCR_AIGroup : "{66EE0A12808BF9AC}Prefabs/Groups/BLUFOR/1980s/Specials/LondonBathtub_Group_NoShirtsBayonets_10Man.et" {
+ {
+  coords 8432.521 147.709 3306.674
+  angleY 55.007
+ }
+ {
+  coords 8431.768 147.709 3306.187
+  angleY 55.007
+ }
+ {
+  coords 8430.78 147.709 3305.509
+  angleY 55.007
+ }
+ {
+  coords 8429.898 147.709 3304.827
+  angleY 55.007
+ }
+ {
+  coords 8428.892 147.709 3304.259
+  angleY 55.007
+ }
+ {
+  coords 8428.062 147.709 3303.475
+  angleY 55.007
+ }
 }

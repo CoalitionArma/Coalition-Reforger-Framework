@@ -1,11 +1,112 @@
-$grp SCR_ChimeraCharacter : "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et" {
+$grp GenericEntity {
  {
-  coords 8590.076 127.019 3308.065
-  angleY -82.474
+  components {
+   MeshObject "{6208E2996AB92898}" {
+    Object "{9F3AF591CD6DFE1A}Assets/Characters/Basebody/Basebody_Male_01.xob"
+   }
+  }
+  coords 8464.331 134.464 3247.442
   scale 100
  }
  {
-  coords 8487.383 127.019 3249.376
+  components {
+   MeshObject "{6208E299999B7830}" {
+    Object "{787C8218FC491004}Assets/Characters/Basebody/Basebody_Male_Head_01.xob"
+   }
+  }
+  coords 8464.331 134.465 3247.437
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E2996AB92898}" {
+    Object "{9F3AF591CD6DFE1A}Assets/Characters/Basebody/Basebody_Male_01.xob"
+   }
+  }
+  coords 8581.146 134.464 3311.246
+  angleY -48.269
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E299999B7830}" {
+    Object "{787C8218FC491004}Assets/Characters/Basebody/Basebody_Male_Head_01.xob"
+   }
+  }
+  coords 8581.149 134.465 3311.243
+  angleY -48.269
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E2996AB92898}" {
+    Object "{9F3AF591CD6DFE1A}Assets/Characters/Basebody/Basebody_Male_01.xob"
+   }
+  }
+  coords 8428.151 277.143 3216.144
+  angleX -6.816
+  angleY -30.426
+  angleZ 80.297
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E299999B7830}" {
+    Object "{787C8218FC491004}Assets/Characters/Basebody/Basebody_Male_Head_01.xob"
+   }
+  }
+  coords 8428.154 277.144 3216.14
+  angleX -6.816
+  angleY -30.426
+  angleZ 80.297
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E299999B7830}" {
+    Object "{787C8218FC491004}Assets/Characters/Basebody/Basebody_Male_Head_01.xob"
+   }
+  }
+  coords 8424.25 167.558 3294.755
+  angleX 36.722
+  angleY 56.129
+  angleZ 3.803
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E2996AB92898}" {
+    Object "{9F3AF591CD6DFE1A}Assets/Characters/Basebody/Basebody_Male_01.xob"
+   }
+  }
+  coords 8424.254 167.558 3294.757
+  angleX 36.722
+  angleY 56.129
+  angleZ 3.803
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E299999B7830}" {
+    Object "{787C8218FC491004}Assets/Characters/Basebody/Basebody_Male_Head_01.xob"
+   }
+  }
+  coords 8420.27 186.308 3290.385
+  angleX -86.336
+  angleY -2.393
+  angleZ 56.3
+  scale 100
+ }
+ {
+  components {
+   MeshObject "{6208E2996AB92898}" {
+    Object "{9F3AF591CD6DFE1A}Assets/Characters/Basebody/Basebody_Male_01.xob"
+   }
+  }
+  coords 8420.268 186.304 3290.383
+  angleX -86.336
+  angleY -2.393
+  angleZ 56.3
   scale 100
  }
 }

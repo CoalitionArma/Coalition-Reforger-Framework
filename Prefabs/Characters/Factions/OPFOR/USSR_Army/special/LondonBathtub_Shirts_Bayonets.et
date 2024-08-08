@@ -1,0 +1,57 @@
+SCR_ChimeraCharacter : "{2657D0BBB4307C18}Prefabs/Characters/Factions/OPFOR/USSR_Army/special/HeliBattleSpecial_USSR_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+       Prefab ""
+      }
+     }
+    }
+   }
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Bayonetist"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{54C2B935F7C82441}Prefabs/Weapons/Rifles/AK74/LondonBathtub_AK74_Bayonet.et"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   WeaponTemplate ""
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{75C92359E352391E}Prefabs/Characters/HeadGear/Hat_RadiovkaBeret_01/Hat_RadiovkaBeret_01_brown_Dirty.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{23A15812C40D34C2}Prefabs/Characters/Uniforms/Jacket_Denim_01/Jacket_Denim_01_strippedShirt_dirty.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{D8BD52A3138A0E62}Prefabs/Characters/Uniforms/Pants_Suit_01/Pants_Suit_01_base.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173E6675BF7}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{5D7CC173E6675BF5}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{5E6A901AA67B29CA}" {
+     PrefabsToSpawn {
+     }
+    }
+   }
+  }
+ }
+}
