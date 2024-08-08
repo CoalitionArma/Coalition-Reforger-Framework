@@ -30,6 +30,9 @@ modded class SCR_MapMarkersUI
 		
 		GetGame().GetCallqueue().Remove(AddInitialMarkers);
 		
+		foreach(Widget marker, string s : m_mStoredWidgetSettingsMap)
+			delete marker;
+		
 		m_mStoredWidgetSettingsMap.Clear();
 		
 		foreach(int i, string markerString : storedMarkerArray)
