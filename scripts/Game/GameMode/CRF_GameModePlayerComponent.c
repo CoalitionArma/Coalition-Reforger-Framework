@@ -63,11 +63,11 @@ class CRF_GameModePlayerComponent: ScriptComponent
 			
 			switch(i)
 			{
-				case 0 : {imageTexture = "{E5AC2ABE05771CA1}UI\Objectives\A.edds"; break;};
-				case 1 : {imageTexture = "{BB4403FDBAFA92AE}UI\Objectives\B.edds"; break;};
-				case 2 : {imageTexture = "{4F4C4465B727FADA}UI\Objectives\C.edds"; break;};
-				case 3 : {imageTexture = "{0694517AC5E18EB0}UI\Objectives\D.edds"; break;};
-				case 4 : {imageTexture = "{F29C16E2C83CE6C4}UI\Objectives\E.edds"; break;};
+				case 0 : {imageTexture = "{21A2A457BD0E42C1}UI\Objectives\A.edds"; break;};
+				case 1 : {imageTexture = "{7F4A8D140283CCCE}UI\Objectives\B.edds"; break;};
+				case 2 : {imageTexture = "{8B42CA8C0F5EA4BA}UI\Objectives\C.edds"; break;};
+				case 3 : {imageTexture = "{C29ADF937D98D0D0}UI\Objectives\D.edds"; break;};
+				case 4 : {imageTexture = "{3692980B7045B8A4}UI\Objectives\E.edds"; break;};
 			}
 			
 			if(zoneLocked == "Locked")
