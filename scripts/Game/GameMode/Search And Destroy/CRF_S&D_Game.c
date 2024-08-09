@@ -92,8 +92,8 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		if (!gameModePlayerComponent) 
 			return;
 		
-		gameModePlayerComponent.AddScriptedMarker("aSiteTrigger", "0 0 0", 1, "Bomb Site A", "{E5AC2ABE05771CA1}UI\Objectives\A.edds", 50, ARGB(255, 225, 225, 225));
-		gameModePlayerComponent.AddScriptedMarker("bSiteTrigger", "0 0 0", 1, "Bomb Site B", "{BB4403FDBAFA92AE}UI\Objectives\B.edds", 50, ARGB(255, 225, 225, 225));
+		gameModePlayerComponent.AddScriptedMarker("aSiteTrigger", "0 0 0", 1, "Bomb Site A", "{21A2A457BD0E42C1}UI\Objectives\A.edds", 50, ARGB(255, 225, 225, 225));
+		gameModePlayerComponent.AddScriptedMarker("bSiteTrigger", "0 0 0", 1, "Bomb Site B", "{7F4A8D140283CCCE}UI\Objectives\B.edds", 50, ARGB(255, 225, 225, 225));
 		
 		GetGame().GetCallqueue().Remove(CheckAddMarkers);
 	}
@@ -218,10 +218,10 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 			return;
 		
 		if(m_sDestroyedBombSiteString == "SiteA") {
-			gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 1, "Bomb Site A", "{E5AC2ABE05771CA1}UI\Objectives\A.edds", 50, ARGB(255, 225, 225, 225));
+			gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 1, "Bomb Site A", "{21A2A457BD0E42C1}UI\Objectives\A.edds", 50, ARGB(255, 225, 225, 225));
 			destroyedBombSiteEntity = aSite;
 		} else {
-			gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 1, "Bomb Site B", "{BB4403FDBAFA92AE}UI\Objectives\B.edds", 50, ARGB(255, 225, 225, 225));
+			gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 1, "Bomb Site B", "{7F4A8D140283CCCE}UI\Objectives\B.edds", 50, ARGB(255, 225, 225, 225));
 			destroyedBombSiteEntity = bSite;
 		};
 		
