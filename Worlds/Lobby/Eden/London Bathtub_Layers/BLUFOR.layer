@@ -1,0 +1,26 @@
+$grp SCR_AIGroup : "{66EE0A12808BF9AC}Prefabs/Groups/BLUFOR/1980s/Specials/LondonBathtub_Group_NoShirtsBayonets_10Man.et" {
+ {
+  coords 8428.739 147.709 3312.351
+  angleY 55.007
+ }
+ {
+  coords 8436.296 147.709 3301.816
+  angleY 55.007
+ }
+ {
+  coords 8423.938 147.709 3309.141
+  angleY 55.007
+ }
+ {
+  coords 8431.652 147.709 3297.646
+  angleY 55.007
+ }
+ {
+  coords 8427.727 147.709 3294.754
+  angleY 55.007
+ }
+ {
+  coords 8418.754 147.709 3306.593
+  angleY 55.007
+ }
+}
