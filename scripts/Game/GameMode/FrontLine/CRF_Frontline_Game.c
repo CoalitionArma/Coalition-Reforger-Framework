@@ -184,7 +184,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 			if(!zone)
 				continue;
 			
-			GetGame().GetWorld().QueryEntitiesBySphere(zone.GetOrigin(), 75, ProcessEntity, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT); // get all entitys within a 50m radius around the zone
+			GetGame().GetWorld().QueryEntitiesBySphere(zone.GetOrigin(), 75, ProcessEntity, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT); // get all entitys within a 150m radius around the zone
 			
 			float bluforInZone = 0;
 			float opforInZone = 0;
@@ -439,9 +439,9 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 			if (checkIfTimerArray.Count() <= 3)
 			{
 				if(zoneText != zoneTextTwo)
-					m_sHudMessage = zoneText + " & " + zoneTextTwo + " are now unlocked!";
+					m_sHudMessage = zoneText + " & " + zoneTextTwo + " Are Now Unlocked!";
 				else
-					m_sHudMessage = zoneText + " is now unlocked!";
+					m_sHudMessage = zoneText + " Is Now Unlocked!";
 			
 				m_sRadioSoundString = m_sHudMessage;
 				GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
@@ -568,6 +568,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 		if (checkIfTimerArray.Count() <= 3)
 		{
 			m_sHudMessage = "";
+			m_sAlertSoundString = "";
 			Replication.BumpMe();
 		};
 	}
