@@ -42,16 +42,22 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	[RplProp(onRplName: "UpdateClients")]
 	string m_sHudMessage;
 	
-	[RplProp(onRplName: "PlaySound")]
-	string m_sSoundString;
+	[RplProp(onRplName: "PlayRadioSound")]
+	string m_sRadioSoundString;
+	
+	[RplProp(onRplName: "PlayAlertSound")]
+	string m_sAlertSoundString;
 	
 	[RplProp(onRplName: "UpdateClients")]
 	ref array<string> m_aZonesStatus = new array<string>;
 	
+	[RplProp()]
 	bool m_bGameStarted = false;
+	
 	bool m_bAnyZonesBeingCaptured = false;
 	int m_iWhichZoneCaptureIsInProgress = -1;
 	int m_iZoneUnlockTimeIteratorInt = m_iZoneUnlockTime + 1;
+	int m_iTimeToWinIteratorInt = m_iTimeToWin;
 	int m_iInitialTimeIteratorInt = m_iInitialTime;
 	
 	//------------------------------------------------------------------------------------------------
@@ -136,7 +142,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 		if(m_iInitialTimeIteratorInt != 0)
 		{
 			m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", "N/A", m_iInitialTimeIteratorInt, "N/A"));
-			m_sHudMessage = string.Format("%1 Unlocked: %2", zoneText, SCR_FormatHelper.FormatTime(m_iInitialTimeIteratorInt));
+			m_sHudMessage = string.Format("%1 Unlocks In: %2", zoneText, SCR_FormatHelper.FormatTime(m_iInitialTimeIteratorInt));
 			m_iInitialTimeIteratorInt = m_iInitialTimeIteratorInt - 1;
 			Replication.BumpMe();
 			return;
@@ -144,8 +150,8 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 		
 		m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", "N/A", "Unlocked", "N/A"));
 		m_sHudMessage = string.Format("%1 Unlocked!", zoneText);
-		m_sSoundString = m_sHudMessage;
-		PlaySound();
+		m_sRadioSoundString = m_sHudMessage;
+		PlayRadioSound();
 		m_bGameStarted = true;
 		UpdateClients();
 		Replication.BumpMe();
@@ -256,15 +262,15 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 		
 		if(zonesCapturedBlufor == m_aZoneObjectNames.Count() && zonesFullyCapturedBlufor == m_aZoneObjectNames.Count())
 		{
-			m_iTimeToWin = m_iTimeToWin - 1;
+			m_iTimeToWinIteratorInt = m_iTimeToWinIteratorInt - 1;
 			
-			if(m_iTimeToWin <= 0)
+			if(m_iTimeToWinIteratorInt <= 0)
 			{
 				m_sHudMessage = string.Format("%1 Victory!", m_sBluforSideNickname);
-				m_sSoundString = m_sHudMessage;
-				PlaySound();
+				m_sRadioSoundString = m_sHudMessage;
+				PlayRadioSound();
 			} else {
-				m_sHudMessage = string.Format("%1 Victory In: %2", m_sBluforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWin));
+				m_sHudMessage = string.Format("%1 Victory In: %2", m_sBluforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWinIteratorInt));
 			};
 
 			Replication.BumpMe();
@@ -273,15 +279,15 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 		
 		if(zonesCapturedOpfor == m_aZoneObjectNames.Count() && zonesFullyCapturedOpfor == m_aZoneObjectNames.Count())
 		{
-			m_iTimeToWin = m_iTimeToWin - 1;
+			m_iTimeToWinIteratorInt = m_iTimeToWinIteratorInt - 1;
 
-			if(m_iTimeToWin <= 0)
+			if(m_iTimeToWinIteratorInt <= 0)
 			{
 				m_sHudMessage = string.Format("%1 Victory!", m_sOpforSideNickname);
-				m_sSoundString = m_sHudMessage;
-				PlaySound();
+				m_sRadioSoundString = m_sHudMessage;
+				PlayRadioSound();
 			} else {
-				m_sHudMessage = string.Format("%1 Victory In: %2", m_sOpforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWin));
+				m_sHudMessage = string.Format("%1 Victory In: %2", m_sOpforSideNickname, SCR_FormatHelper.FormatTime(m_iTimeToWinIteratorInt));
 			};
 
 			Replication.BumpMe();
@@ -289,7 +295,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 		};
 		
 		if(zonesFullyCapturedBlufor != m_aZoneObjectNames.Count() && zonesFullyCapturedOpfor != m_aZoneObjectNames.Count())
-			m_iTimeToWin = 180;
+			m_iTimeToWinIteratorInt = m_iTimeToWin;
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -321,6 +327,22 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 			m_iWhichZoneCaptureIsInProgress = -1;
 			return;
 		};
+		
+		if (zoneState.ToInt() == 1)
+		{
+			string nickname;
+			switch(side)
+			{
+				case m_BluforSide : { nickname = m_sBluforSideNickname; break;}; //Blufor
+				case m_OpforSide  : { nickname = m_sOpforSideNickname;  break;}; //Opfor
+			}
+			
+			m_sHudMessage = nickname + " Is Capturing " + ConvertIndexToZoneString(zoneIndex) + "!";
+			m_sAlertSoundString = m_sHudMessage;
+			PlayAlertSound();
+			
+			GetGame().GetCallqueue().CallLater(ResetMessage, 8500);
+		};
 		 
 		m_iWhichZoneCaptureIsInProgress = zoneIndex;
 		m_aZonesStatus.Set(zoneIndex, string.Format("%1:%2:%3", side, zoneState.ToInt() + 1, zoneFactionStored));
@@ -344,8 +366,8 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 		}
 		
 		m_sHudMessage = string.Format("%1 Captured %2!", nickname, zoneText);
-		m_sSoundString = m_sHudMessage;
-		PlaySound();
+		m_sRadioSoundString = m_sHudMessage;
+		PlayRadioSound();
 		
 		Replication.BumpMe();
 		GetGame().GetCallqueue().CallLater(ResetMessage, 7250);
@@ -421,9 +443,9 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 				else
 					m_sHudMessage = zoneText + " is now unlocked!";
 			
-				m_sSoundString = m_sHudMessage;
+				m_sRadioSoundString = m_sHudMessage;
 				GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-				PlaySound();
+				PlayRadioSound();
 			};
 			
 			UpdateClients();
@@ -438,62 +460,62 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 			{
 				case 1200: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " unlock in 20 minute(s)";
+						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 20 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " unlocks in 20 minute(s)";
+						m_sHudMessage = zoneText + " Unlocks In 20 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sSoundString = m_sHudMessage;
-					PlaySound();
+					m_sRadioSoundString = m_sHudMessage;
+					PlayRadioSound();
 					break;
 				};
 				case 900: {
 				if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " unlock in 15 minute(s)";
+						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 15 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " unlocks in 15 minute(s)";
+						m_sHudMessage = zoneText + " Unlocks In 15 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sSoundString = m_sHudMessage;
-					PlaySound();
+					m_sRadioSoundString = m_sHudMessage;
+					PlayRadioSound();
 					break;
 				};
 				case 600: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " unlock in 10 minute(s)";
+						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 10 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " unlocks in 10 minute(s)";
+						m_sHudMessage = zoneText + " Unlocks In 10 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sSoundString = m_sHudMessage;
-					PlaySound();
+					m_sRadioSoundString = m_sHudMessage;
+					PlayRadioSound();
 					break;
 				};
 				case 300: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " unlock in 5 minute(s)";
+						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 5 Minute(s)";
 					else
-						m_sHudMessage = zoneText + " unlocks in 5 minute(s)";
+						m_sHudMessage = zoneText + " Unlocks In 5 Minute(s)";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sSoundString = m_sHudMessage;
-					PlaySound();
+					m_sRadioSoundString = m_sHudMessage;
+					PlayRadioSound();
 					break;
 				}
 				case 60: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " unlock in 1 minute!";
+						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 1 Minute!";
 					else
-						m_sHudMessage = zoneText + " unlocks in 1 minute";
+						m_sHudMessage = zoneText + " Unlocks In 1 Minute";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sSoundString = m_sHudMessage;
-					PlaySound();
+					m_sRadioSoundString = m_sHudMessage;
+					PlayRadioSound();
 					break;
 				}
 				case 15: {
 					if(zoneText != zoneTextTwo)
-						m_sHudMessage = zoneText + " & " + zoneTextTwo + " unlock in 15 seconds!";
+						m_sHudMessage = zoneText + " & " + zoneTextTwo + " Unlock In 15 seconds!";
 					else
-						m_sHudMessage = zoneText + " unlocks in 15 seconds!";
+						m_sHudMessage = zoneText + " Unlocks In 15 Seconds!";
 					GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
-					m_sSoundString = m_sHudMessage;
-					PlaySound();
+					m_sRadioSoundString = m_sHudMessage;
+					PlayRadioSound();
 					break;
 				}
 			}
@@ -557,8 +579,14 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void PlaySound()
+	void PlayRadioSound()
 	{
 		AudioSystem.PlaySound("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav");
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	void PlayAlertSound()
+	{
+		AudioSystem.PlaySound("{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav");
 	};
 };

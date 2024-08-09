@@ -23,6 +23,8 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 	protected float m_fStoredOpcaity;
 	protected bool m_bStoredFadeInBoolean;
 	protected bool m_bStoredProgressBarBoolean;
+	protected string m_sStoredFrontlineHudMessage;
+	protected string m_sStoredHudMessage;
 
 	protected CRF_GameModePlayerComponent m_GameModePlayerComponent = null;
 	protected CRF_FrontlineGameModeComponent m_FrontlineGameModeComponent = null;
@@ -72,8 +74,11 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 		else
 			m_wRoot.SetOpacity(1);
 		
-		string siteCaptureBarText = m_FrontlineGameModeComponent.m_sHudMessage;
-		m_wSiteCaptureText.SetText(siteCaptureBarText);
+		if(m_sStoredFrontlineHudMessage != m_FrontlineGameModeComponent.m_sHudMessage)
+		{
+			m_wSiteCaptureText.SetText(m_FrontlineGameModeComponent.m_sHudMessage);
+			m_sStoredFrontlineHudMessage = m_FrontlineGameModeComponent.m_sHudMessage;
+		};
 		
 		m_bStoredProgressBarBoolean = false;
 		
@@ -140,20 +145,9 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			
 			switch(zonefaction)
 			{
-				case m_FrontlineGameModeComponent.m_BluforSide : {
-					widget.SetColorInt(ARGB(255, 0, 25, 225)); 
-					nickname = m_FrontlineGameModeComponent.m_sBluforSideNickname; 
-					break;
-				}; //Blufor
-				case m_FrontlineGameModeComponent.m_OpforSide  : {
-					widget.SetColorInt(ARGB(255, 225, 25, 0)); 
-					nickname = m_FrontlineGameModeComponent.m_sOpforSideNickname;   
-					break;
-				}; //Opfor
-				default : { 
-					widget.SetColorInt(ARGB(255, 225, 225, 225)); 
-					break; 
-				}; //Uncaptured
+				case m_FrontlineGameModeComponent.m_BluforSide : { widget.SetColorInt(ARGB(255, 0, 25, 225));    break; }; //Blufor 
+				case m_FrontlineGameModeComponent.m_OpforSide  : { widget.SetColorInt(ARGB(255, 225, 25, 0));    break; }; //Opfor
+				default                                        : { widget.SetColorInt(ARGB(255, 225, 225, 225)); break; }; //Uncaptured
 			}
 			
 			if(zoneState == "Locked")
@@ -166,10 +160,11 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 				m_wSiteCaptureBar.SetCurrent(zoneState.ToInt());
 				m_bStoredProgressBarBoolean = true;
 				
-				if(zoneState.ToInt() > m_FrontlineGameModeComponent.m_iZoneCaptureTime)
+				if(!m_FrontlineGameModeComponent.m_bGameStarted) {
 					m_wSiteCaptureBar.SetMax(m_FrontlineGameModeComponent.m_iInitialTime); // Only other time we use the progress bar
-				else
+				} else {
 					m_wSiteCaptureBar.SetMax(m_FrontlineGameModeComponent.m_iZoneCaptureTime);
+				};
 				
 				switch(zonefaction)
 				{
