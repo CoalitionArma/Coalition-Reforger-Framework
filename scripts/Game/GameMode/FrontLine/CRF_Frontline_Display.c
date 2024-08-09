@@ -44,7 +44,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			return;
 		};
 		
-		if (!m_GameModePlayerComponent || !m_wASite) {
+		if (!m_GameModePlayerComponent || !m_wASite || !m_wSiteCaptureBar || !m_wASiteInZone || !m_wASiteLock) {
 			m_GameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();
 			m_wASite                  = ImageWidget.Cast(m_wRoot.FindWidget("ASite"));
 			m_wBSite                  = ImageWidget.Cast(m_wRoot.FindWidget("BSite"));
@@ -97,33 +97,33 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			FactionKey zonefaction = zoneStatusArray[0];
 			string zoneState = zoneStatusArray[1];
 			
-			switch(zoneName)
+			switch(i)
 			{
-				case "aZone" : {
+				case 0 : {
 					widget = m_wASite; 
 					lockWidget = m_wASiteLock; 
 					m_wInZoneWidget = m_wASiteInZone;
 					break;
 				};
-				case "bZone" : {
+				case 1 : {
 					widget = m_wBSite; 
 					lockWidget = m_wBSiteLock; 
 					m_wInZoneWidget = m_wBSiteInZone;
 					break;
 				};
-				case "cZone" : {
+				case 2 : {
 					widget = m_wCSite; 
 					lockWidget = m_wCSiteLock; 
 					m_wInZoneWidget = m_wCSiteInZone;
 					break;
 				};
-				case "dZone" : {
+				case 3 : {
 					widget = m_wDSite; 
 					lockWidget = m_wDSiteLock; 
 					m_wInZoneWidget = m_wDSiteInZone;
 					break;
 				};
-				case "eZone" : {
+				case 4 : {
 					widget = m_wESite; 
 					lockWidget = m_wESiteLock; 
 					m_wInZoneWidget = m_wESiteInZone;
@@ -134,7 +134,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			if(!widget || !lockWidget)
 				return;
 			
-			GetGame().GetWorld().QueryEntitiesBySphere(zone.GetOrigin(), 75, ProcessEntity, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT); // get all entitys within a 50m radius around the zone
+			GetGame().GetWorld().QueryEntitiesBySphere(zone.GetOrigin(), 75, ProcessEntity, null, EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT); // get all entitys within a 150m radius around the zone
 			
 			string nickname;
 			
