@@ -71,24 +71,24 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
 }
-GenericEntity zoned : "{4EBC47B8D0D10809}Prefabs/Structures/LinearAAS/FlagPole_Zone_D.et" {
- coords 5242.822 76.291 6305.284
+GenericEntity zoned : "{4EBC47B8D0D10809}Prefabs/Structures/Frontline/FlagPole_Zone_D.et" {
+ coords 5242.822 76.327 6305.284
 }
-GenericEntity zonec : "{73886280A5BD813E}Prefabs/Structures/LinearAAS/FlagPole_Zone_C.et" {
- coords 4919.876 54.82 5874.089
+GenericEntity zonec : "{73886280A5BD813E}Prefabs/Structures/Frontline/FlagPole_Zone_C.et" {
+ coords 4919.875 55.099 5874.089
 }
-GenericEntity zoneb : "{96142E79A9581655}Prefabs/Structures/LinearAAS/FlagPole_Zone_B.et" {
- coords 4621.458 51.596 5449.417
+GenericEntity zoneb : "{96142E79A9581655}Prefabs/Structures/Frontline/FlagPole_Zone_B.et" {
+ coords 4621.458 51.845 5449.417
 }
-GenericEntity zonee : "{AB200B41DC349F62}Prefabs/Structures/LinearAAS/FlagPole_Zone_E.et" {
- coords 4670.843 60.256 6238.286
+GenericEntity zonee : "{AB200B41DC349F62}Prefabs/Structures/Frontline/FlagPole_Zone_E.et" {
+ coords 4670.833 60.407 6238.277
  angleX 3.562
  angleY -0.223
  angleZ -3.583
 }
-GenericEntity zonea : "{FA401A99159C997B}Prefabs/Structures/LinearAAS/FlagPole_Zone_A.et" {
- coords 4273.64 63.517 5817.565
- angleX 3.504
- angleY 0.665
- angleZ 6.271
+GenericEntity zonea : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zone_A.et" {
+ coords 4273.655 63.655 5817.555
+ angleX -0.314
+ angleY 0.246
+ angleZ 6.259
 }
