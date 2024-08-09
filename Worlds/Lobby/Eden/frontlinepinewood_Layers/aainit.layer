@@ -28,7 +28,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 3867.569 125.439 5284.455
  {
-  SCR_FactionManager {
+  SCR_FactionManager "62122640E74E96FB" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -72,7 +72,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
 }
 GenericEntity zoned : "{4EBC47B8D0D10809}Prefabs/Structures/LinearAAS/FlagPole_Zone_D.et" {
- coords 5242.81 76.772 6305.313
+ coords 5242.822 76.291 6305.284
 }
 GenericEntity zonec : "{73886280A5BD813E}Prefabs/Structures/LinearAAS/FlagPole_Zone_C.et" {
  coords 4919.876 54.82 5874.089

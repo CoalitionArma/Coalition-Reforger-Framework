@@ -1,3 +1,7 @@
+SCR_VehicleSpawn {
+ coords 5635.438 140.089 6669.751
+ m_rnPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+}
 SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
  coords 5618.669 141.792 6693.801
  m_aUnitPrefabSlots + {
@@ -45,4 +49,8 @@ SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80
    }
   }
  }
+}
+Turret : "{2A473C531D075905}Mortars/82/Podnosnew.et" {
+ coords 5650.185 138.94 6640.687
+ angleY -118
 }
