@@ -1,0 +1,31 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 3646.843 113.635 5159.785
+ m_sTextData "Utlize your positioning and weaponry to capture the five points around the lake in linear order."
+ m_iOrder 3
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 3646.949 113.655 5159.439
+ m_sTextData "BLUFOR:"\
+ "1x Mortar"\
+ "1x Jeep"\
+ ""\
+ "OPFOR:"\
+ "1x Mortar"\
+ "1x UAZ"
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 3656.675 114.646 5142.003
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 3646.517 113.629 5159.155
+ m_sTextData "Utlize your positioning and weaponry to capture the five points around the lake in linear order."
+ m_iOrder 3
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 3640.241 113.29 5150.637
+ m_sTextData "There's no situation. This is a test mission for the CCO which utilizes the same logic as a game mode. Both sides must capture and/or defend the five points in LINEAR ORDER."\
+ ""\
+ "Gametype: Frontline"\
+ "Ratio: 1:1"
+}

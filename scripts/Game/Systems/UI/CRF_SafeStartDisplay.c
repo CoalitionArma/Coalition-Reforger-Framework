@@ -26,6 +26,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 
 	//------------------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	override protected void UpdateValues(IEntity owner, float timeSlice)
 	{
 		super.UpdateValues(owner, timeSlice);
@@ -49,9 +50,43 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 			m_wBluforReady        = TextWidget.Cast(m_wRoot.FindWidget("BluforReady"));
 			m_wOpforReady         = TextWidget.Cast(m_wRoot.FindWidget("OpforReady"));
 			m_wIndforReady        = TextWidget.Cast(m_wRoot.FindWidget("IndforReady"));
+			return;
 		};
 		
+		if(!m_SafestartComponent.m_bHUDVisible)
+		{
+			m_wTimerDescription.SetVisible(false);
+			m_wTimerText.SetVisible(false);
+			m_wTimerImage.SetVisible(false);
+		
+			m_wFactionsBackground.SetVisible(false);
+			m_wBlufor.SetVisible(false);
+			m_wOpfor.SetVisible(false);
+			m_wIndfor.SetVisible(false);
+			m_wBluforReady.SetVisible(false);
+			m_wOpforReady.SetVisible(false);
+			m_wIndforReady.SetVisible(false);
 			
+			m_wMissionStart.SetVisible(false);
+			m_wMissionStart2.SetVisible(false);
+			return;
+		} else {
+			m_wTimerDescription.SetVisible(true);
+			m_wTimerText.SetVisible(true);
+			m_wTimerImage.SetVisible(true);
+		
+			m_wFactionsBackground.SetVisible(true);
+			m_wBlufor.SetVisible(true);
+			m_wOpfor.SetVisible(true);
+			m_wIndfor.SetVisible(true);
+			m_wBluforReady.SetVisible(true);
+			m_wOpforReady.SetVisible(true);
+			m_wIndforReady.SetVisible(true);
+			
+			m_wMissionStart.SetVisible(true);
+			m_wMissionStart2.SetVisible(true);
+		};
+		
 		if (m_fCurrentOpacity > 0)
 		{
 		 	m_fCurrentOpacity = m_fCurrentOpacity - 0.0025;
@@ -102,12 +137,14 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void UpdateTimer()
 	{	
 		
 		m_wTimerText.SetText(m_SafestartComponent.GetServerWorldTime());
 	}
 
+	//------------------------------------------------------------------------------------------------
 	protected void StopMission()
 	{
 		m_wTimerDescription.SetOpacity(1);
@@ -128,6 +165,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 		m_fCurrentOpacity = 0;
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	protected void StartMission()
 	{
 		m_wTimerDescription.SetOpacity(0);

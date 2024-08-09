@@ -1,0 +1,16 @@
+GenericEntity : "{E4A20C9CE20EEC0B}Prefabs/Structures/LinearAAS/FlagPole_Zone_Base.et" {
+ ID "50C6D20663830070"
+ components {
+  SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+   m_sDefaultMaterial "{A813D897413F5532}Prefabs/Structures/LinearAAS/Flags/Zone_B_mat.emat"
+  }
+  SlotManagerComponent "{55DAE04E55ECE7FA}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Enabled 1
+     Prefab "{D8035CF5E1709BDC}Prefabs/Structures/LinearAAS/Flags/Flag_Zone_B.et"
+    }
+   }
+  }
+ }
+}

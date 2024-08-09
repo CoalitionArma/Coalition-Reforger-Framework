@@ -1,0 +1,147 @@
+GenericEntity : "{2C166D8DBBA47738}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_base.et" {
+ ID "50C6D20663830070"
+ components {
+  SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+   m_sDefaultMaterial ""
+  }
+  SlotManagerComponent "{55DAE04E55ECE7FA}" {
+   Slots {
+    EntitySlotInfo Flag {
+     Enabled 0
+    }
+   }
+  }
+ }
+ {
+  GenericEntity : "{15E2C79DC2F8DFC4}Prefabs/Compositions/Misc/SubCompositions/Decorations/BarbedCoil_Light_US_01.et" {
+   ID "621256DCC5AEDE22"
+   coords -0.123 -1.211 -2.055
+   angleY 0
+  }
+  $grp GenericEntity : "{1D21753C484817D1}Prefabs/Compositions/Misc/SubCompositions/Tire_M151A2_stack_01.et" {
+   {
+    ID "620F525893BF543A"
+    coords 0 -0.545 0
+   }
+   {
+    ID "620F52589903193B"
+    coords 0 -0.135 0
+   }
+  }
+  GenericEntity : "{1F415A3F7ECBE13A}Prefabs/Props/Furniture/Piano_01_brown.et" {
+   ID "62125B198AADCD74"
+   coords -1.107 -0.369 0.829
+   angleY -126.141
+   scale 0.152
+  }
+  $grp StaticModelEntity : "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et" {
+   {
+    ID "620F62FA26A45838"
+    components {
+     Hierarchy "{5712BD047F3F8203}" {
+      Enabled 1
+     }
+    }
+    coords -1.592 -1.243 0.928
+    angleY 98.147
+   }
+   {
+    ID "621256DCC5AEDE42"
+    components {
+     Hierarchy "{5712BD047F3F8203}" {
+      Enabled 1
+     }
+    }
+    coords 1.606 -1.243 -1.308
+    angleY -60.794
+   }
+  }
+  GenericEntity : "{5BD7E085DFB4DB35}Prefabs/Compositions/Misc/SubCompositions/CrateClutteredCombined_US_04.et" {
+   ID "620F5D9EF66CF637"
+   coords -1.305 -1.237 -0.652
+   angleY 131.365
+   {
+    GenericEntity {
+     ID "552A73090EF56F07"
+     coords -1.659 0.046 -0.859
+    }
+    StaticModelEntity {
+     ID "5712BD0472910F43"
+     coords -0.544 -0.006 -0.194
+    }
+   }
+  }
+  GenericEntity : "{5DA11A95EEB02443}Prefabs/Compositions/Misc/SubCompositions/BoxWooden_Cluttered_01.et" {
+   ID "620F5259E98509DB"
+   coords -0.992 -0.373 1.134
+   angleY 17.844
+  }
+  StaticModelEntity : "{785F322AC3DFD4B9}Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_Light_US_01.et" {
+   ID "621256DF4F30B0FC"
+   coords -0.93 -1.278 1.75
+   angleY 0
+  }
+  PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   ID "620F4924E2376B14"
+   coords 0 -0.952 0
+   angleY 0
+   m_sImageSet "{BF61453F5B5C33BB}UI/Objectives/Zone.imageset"
+   m_sImageSetGlow ""
+   m_MarkerColor 1 1 1 0.647
+   m_sQuadName "Zone"
+   m_fWorldSize 150
+   m_sDescription ""
+   m_bVisibleForEmptyFaction 1
+   m_aHideOnGameModeStates {
+   }
+   m_iZOrder 0
+   m_bShowForAnyFaction 1
+  }
+  StaticModelEntity : "{9E437E72C0F6A6DC}Prefabs/Compositions/Misc/SubCompositions/Furniture/Table_Desk_US_06.et" {
+   ID "621256DCC5AEDE73"
+   coords 0.991 -1.251 -1.642
+   angleY 93.971
+  }
+  GenericEntity : "{A9CF5E8C5D91C476}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Crate_01.et" {
+   ID "621256DF8BE67180"
+   coords 1.098 -1.175 -0.07
+   angleY 38.685
+  }
+  StaticModelEntity : "{AE28D47CF26E91EA}Prefabs/Props/Military/Fortification/CzechHedgehog_01_rusty.et" {
+   ID "62125B198977C4D0"
+   coords 0.212 -1.291 2.577
+  }
+  GenericEntity : "{B60865AB934AB9A6}Prefabs/Props/Furniture/StoolPiano_01.et" {
+   ID "62125B198AADCD21"
+   coords -1.239 -0.37 0.718
+   scale 0.14
+  }
+  StaticModelEntity : "{BAAEB8CBA64C9CF6}Prefabs/Compositions/Misc/SubCompositions/Furniture/Cabinet_MRE_US_01.et" {
+   ID "621256DFC450584A"
+   coords 0.988 -1.234 1.457
+   angleY 90
+  }
+  GenericEntity : "{D93EF3E97E06D435}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_04.et" {
+   ID "620F62FBF6F59CDD"
+   coords -0.917 -1.164 -1.346
+   angleY -91.527
+  }
+  StaticModelEntity : "{ED4439D23F40A165}Prefabs/Compositions/Misc/SubCompositions/Furniture/Table_Food_US_01.et" {
+   ID "620F62FA279C9CF1"
+   coords -0.966 -1.267 0.892
+   angleY 90
+  }
+  $grp GenericEntity : "{F64448992B0D71C6}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Cluttered_USSR_01.et" {
+   {
+    ID "621256DE2446035C"
+    coords 0.026 -1.228 -0.51
+    angleY -89.4
+   }
+   {
+    ID "621256DE5F386FF5"
+    coords 0.037 -1.228 0.594
+    angleY 90.6
+   }
+  }
+ }
+}

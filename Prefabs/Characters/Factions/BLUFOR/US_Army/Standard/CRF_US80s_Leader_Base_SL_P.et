@@ -15,6 +15,9 @@ SCR_ChimeraCharacter : "{088007F2432BD496}Prefabs/Characters/Factions/BLUFOR/US_
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Squad Leader"
   }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{5A987A8A13763769}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203.et"
+  }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
     ItemsInitConfigurationItem "{5D7CAAFB9235E902}" {

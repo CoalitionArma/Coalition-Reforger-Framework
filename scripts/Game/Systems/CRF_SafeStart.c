@@ -49,6 +49,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
+	bool m_bHUDVisible = true;
+	
 	//------------------------------------------------------------------------------------------------
 
 	// override/static functions
@@ -72,6 +74,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		// Only run on in-game post init
 		// Is the the right way to do this? WHO KNOWS !
 		if (!GetGame().InPlayMode()) return;
+		
+		GetGame().GetInputManager().AddActionListener("SwitchSpectatorUI", EActionTrigger.DOWN, UpdateHUDVisible);
 			
 		if (Replication.IsServer())
 		{
@@ -87,6 +91,13 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
+	void UpdateHUDVisible()
+	{	
+		m_bHUDVisible = !m_bHUDVisible;
+	};
+	
+	//------------------------------------------------------------------------------------------------
 	TStringArray GetWhosReady() {
 		return m_aFactionsStatusArray;
 	}

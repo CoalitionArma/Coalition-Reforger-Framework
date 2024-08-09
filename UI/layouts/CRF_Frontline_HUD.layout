@@ -1,0 +1,296 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{62080BF138A8EE60}" {
+   Name "SiteCaptureText"
+   Slot FrameWidgetSlot "{62080BF138A8EE54}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -100
+    OffsetLeft -100
+    PositionY 52
+    OffsetTop 52
+    SizeX 200
+    OffsetRight -100
+    SizeY 16
+    OffsetBottom -68
+   }
+   Text ""
+   "Font Size" 16
+   "Min Font Size" 16
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  ProgressBarWidgetClass "{62080BF22B256F5E}" {
+   Name "SiteCaptureBar"
+   Slot FrameWidgetSlot "{62080BF22B256FB1}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -100
+    OffsetLeft -100
+    PositionY 42
+    OffsetTop 42
+    SizeX 200
+    OffsetRight -100
+    SizeY 8
+    OffsetBottom -50
+   }
+   Color 0.68 0.68 0.68 0.843
+   Maximum 60
+   Current 0
+  }
+  ImageWidgetClass "{62080BF271278881}" {
+   Name "ASite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -104
+    OffsetLeft -104
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 69
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0 0.01 1 1
+   Texture "{21A2A457BD0E42C1}UI/Objectives/A.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF27F152548}" {
+   Name "BSite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -60.75
+    OffsetLeft -60.8
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 25.8
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0 0.011 0.914 1
+   Texture "{7F4A8D140283CCCE}UI/Objectives/B.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF296F8D660}" {
+   Name "CSite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -17.5
+    OffsetLeft -17.5
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -17.5
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.753 0.753 0.753 1
+   Texture "{8B42CA8C0F5EA4BA}UI/Objectives/C.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF24050D52F}" {
+   Name "DSite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 26.25
+    OffsetLeft 26.2
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -61.2
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 1 0.01 0 1
+   Texture "{C29ADF937D98D0D0}UI/Objectives/D.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{62080BF258B83533}" {
+   Name "ESite"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 70
+    OffsetLeft 70
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -105
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 1 0.01 0 1
+   Texture "{3692980B7045B8A4}UI/Objectives/E.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177AB4C29DFE}" {
+   Name "ASiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -104
+    OffsetLeft -104
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 69
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A9D86FF5A}" {
+   Name "BSiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -60.75
+    OffsetLeft -60.8
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight 25.8
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A938D4128}" {
+   Name "CSiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -17.5
+    OffsetLeft -17.5
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -17.5
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A6620885C}" {
+   Name "DSiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 26.25
+    OffsetLeft 26.2
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -61.2
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6208177A7DAB392D}" {
+   Name "ESiteLock"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 70
+    OffsetLeft 70
+    PositionY 8
+    OffsetTop 8
+    SizeX 35
+    OffsetRight -105
+    SizeY 35
+    OffsetBottom -43
+   }
+   Color 0.27 0.27 0.27 1
+   Texture "{91427B7866707601}UI/Objectives/lock.edds"
+   Size 500 500
+  }
+  ImageWidgetClass "{6211070EFD91E08E}" {
+   Name "ASiteInZone"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -100.75
+    OffsetLeft -100.8
+    PositionY 11
+    OffsetTop 11
+    SizeX 28.75
+    OffsetRight 72
+    SizeY 28.75
+    OffsetBottom -39.8
+   }
+   Texture "{8479B3B5347DF5CF}UI/Imagesets/MilitarySymbol/ID_D.imageset"
+   Image "Generic_Select"
+   Size 64 64
+  }
+  ImageWidgetClass "{6211070C9744D98F}" {
+   Name "BSiteInZone"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -57.5
+    OffsetLeft -57.5
+    PositionY 11
+    OffsetTop 11
+    SizeX 28.75
+    OffsetRight 28.8
+    SizeY 28.75
+    OffsetBottom -39.8
+   }
+   Texture "{8479B3B5347DF5CF}UI/Imagesets/MilitarySymbol/ID_D.imageset"
+   Image "Generic_Select"
+   Size 64 64
+  }
+  ImageWidgetClass "{6211070C2E35882A}" {
+   Name "CSiteInZone"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -14.25
+    OffsetLeft -14.2
+    PositionY 11
+    OffsetTop 11
+    SizeX 28.75
+    OffsetRight -14.5
+    SizeY 28.75
+    OffsetBottom -39.8
+   }
+   Texture "{8479B3B5347DF5CF}UI/Imagesets/MilitarySymbol/ID_D.imageset"
+   Image "Generic_Select"
+   Size 64 64
+  }
+  ImageWidgetClass "{6211070BEDD612C2}" {
+   Name "DSiteInZone"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 29.5
+    OffsetLeft 29.5
+    PositionY 11
+    OffsetTop 11
+    SizeX 28.7
+    OffsetRight -58.2
+    SizeY 28.8
+    OffsetBottom -39.8
+   }
+   Texture "{8479B3B5347DF5CF}UI/Imagesets/MilitarySymbol/ID_D.imageset"
+   Image "Generic_Select"
+   Size 64 64
+  }
+  ImageWidgetClass "{6211070BA0A2A9C4}" {
+   Name "ESiteInZone"
+   Slot FrameWidgetSlot "{62080BF33FE8089B}" {
+    Anchor 0.5 0 0.5 0
+    PositionX 73.25
+    OffsetLeft 73.2
+    PositionY 11
+    OffsetTop 11
+    SizeX 28.75
+    OffsetRight -102
+    SizeY 28.75
+    OffsetBottom -39.8
+   }
+   Texture "{8479B3B5347DF5CF}UI/Imagesets/MilitarySymbol/ID_D.imageset"
+   Image "Generic_Select"
+   Size 64 64
+  }
+ }
+}
