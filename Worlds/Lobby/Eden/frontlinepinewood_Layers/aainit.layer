@@ -1,0 +1,94 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 3402.789 110.122 5300.21
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_FrontlineGameModeComponent "{6211265DA85F4769}" {
+   m_sBluforSideNickname "BLUFOR"
+   m_sOpforSideNickname "OPFOR"
+   m_aZoneObjectNames {
+    "zonea" "zoneb" "zonec" "zoned" "zonee"
+   }
+   m_iZoneCaptureTime 60
+  }
+  SCR_InitWeatherComponent "{61BCFEC02D389EB2}" {
+   m_sInitialStartingWeatherId "Foggy"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 18
+   m_fDayTimeAcceleration 0.1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6211265A9E928341}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 18
+    }
+   }
+   m_bRandomWeatherChanges 1
+  }
+ }
+ coords 3867.569 125.439 5284.455
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{6211265B14A213DC}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6211265B1370961E}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{6211265B134769CC}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{6211265B1310FE0B}" {
+        m_sCallsign "MTR"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{6211265B052F71E4}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6211265B05E951C8}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{6211265B05BB8929}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{6211265B047AB279}" {
+        m_sCallsign "MTR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity zoned : "{4EBC47B8D0D10809}Prefabs/Structures/LinearAAS/FlagPole_Zone_D.et" {
+ coords 5242.81 76.772 6305.313
+}
+GenericEntity zonec : "{73886280A5BD813E}Prefabs/Structures/LinearAAS/FlagPole_Zone_C.et" {
+ coords 4919.876 54.82 5874.089
+}
+GenericEntity zoneb : "{96142E79A9581655}Prefabs/Structures/LinearAAS/FlagPole_Zone_B.et" {
+ coords 4621.458 51.596 5449.417
+}
+GenericEntity zonee : "{AB200B41DC349F62}Prefabs/Structures/LinearAAS/FlagPole_Zone_E.et" {
+ coords 4670.843 60.256 6238.286
+ angleX 3.562
+ angleY -0.223
+ angleZ -3.583
+}
+GenericEntity zonea : "{FA401A99159C997B}Prefabs/Structures/LinearAAS/FlagPole_Zone_A.et" {
+ coords 4273.64 63.517 5817.565
+ angleX 3.504
+ angleY 0.665
+ angleZ 6.271
+}

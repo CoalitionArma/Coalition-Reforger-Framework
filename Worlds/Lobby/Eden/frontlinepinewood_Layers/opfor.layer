@@ -1,0 +1,48 @@
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 5618.669 141.792 6693.801
+ m_aUnitPrefabSlots + {
+  "{97D4CB90926D7725}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_FO_P.et"
+ }
+ m_sCustomNameSet "1st Platoon"
+ {
+  $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   {
+    coords -47.671 11.291 68.003
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 22.362 25.257 99.042
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 45.412 19.016 59.414
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 45.816 3.17 -0.628
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords 21.076 -3.304 -49.674
+    m_sCustomNameSet "5th Squad"
+    {
+     SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+      coords 12.437 11.292 75.822
+      m_aUnitPrefabSlots {
+       "{A3C9811329054C00}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_Base_SL_P.et" "{66EFC55AA41EE630}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_MMG_P.et" "{1575502548E87334}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_AMMG_P.et"
+      }
+      {
+       SCR_AIGroup : "{7726B189C0DAF717}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_IndirectTeam_p.et" {
+        coords -20.648 -2.257 -2.615
+        m_aUnitPrefabSlots {
+         "{95F45AC5ACC93B43}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_IndirectLeader_P.et" "{4477C584D7C1029D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_IndirectGunner_P.et" "{03F604C18500CAA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_IndirectLoader_P.et"
+        }
+        m_sCustomNameSet "Mortar Team"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
