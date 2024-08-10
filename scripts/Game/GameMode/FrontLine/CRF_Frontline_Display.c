@@ -23,8 +23,6 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 	protected float m_fStoredOpcaity;
 	protected bool m_bStoredFadeInBoolean;
 	protected bool m_bStoredProgressBarBoolean;
-	protected string m_sStoredFrontlineHudMessage;
-	protected string m_sStoredHudMessage;
 
 	protected CRF_GameModePlayerComponent m_GameModePlayerComponent = null;
 	protected CRF_FrontlineGameModeComponent m_FrontlineGameModeComponent = null;
@@ -74,11 +72,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 		else
 			m_wRoot.SetOpacity(1);
 		
-		if(m_sStoredFrontlineHudMessage != m_FrontlineGameModeComponent.m_sHudMessage)
-		{
-			m_wSiteCaptureText.SetText(m_FrontlineGameModeComponent.m_sHudMessage);
-			m_sStoredFrontlineHudMessage = m_FrontlineGameModeComponent.m_sHudMessage;
-		};
+		m_wSiteCaptureText.SetText(m_FrontlineGameModeComponent.m_sHudMessage);
 		
 		m_bStoredProgressBarBoolean = false;
 		
