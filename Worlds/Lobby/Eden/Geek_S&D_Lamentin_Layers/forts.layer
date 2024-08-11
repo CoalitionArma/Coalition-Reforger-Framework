@@ -26,6 +26,30 @@ $grp GenericEntity : "{C7D38772154D45BB}Prefabs/Compositions/Slotted/SlotFlatSma
   angleY 76.519
  }
 }
+$grp GenericEntity : "{F29A05EBA7063E7C}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_plastic.et" {
+ {
+  coords 1071.021 10.29 6005.174
+ }
+ {
+  coords 1072.956 10.29 6006.008
+  angleY -89.549
+ }
+ {
+  coords 1084.345 10.29 6007.737
+ }
+ {
+  coords 1085.297 10.29 6009.663
+  angleY -88.686
+ }
+ {
+  coords 1076.322 10.29 6017.199
+  angleY 0.153
+ }
+ {
+  coords 1070.28 10.29 6012.37
+  angleY -88.686
+ }
+}
 $grp GenericEntity : "{FD256CE1C386DA49}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_02.et" {
  {
   coords 1088.316 2.781 6025.803
