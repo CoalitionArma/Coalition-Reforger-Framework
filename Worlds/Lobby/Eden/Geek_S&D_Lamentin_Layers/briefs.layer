@@ -25,7 +25,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
          {
           PS_Objective OPF_Obj : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
            coords -4.254 -0.141 3.198
-           m_sTitle "Objective 1"
+           m_sTitle "Objective"
            m_sTextData "Destroy both portable generators"
            m_aVisibleForFactions {
             "USSR"
@@ -59,7 +59,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
          {
           PS_Objective BLU_Obj : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
            coords -1.546 -0.078 4.476
-           m_sTitle "Objective 1"
+           m_sTitle "Objective"
            m_sTextData "Defend both portable generators"
            m_aVisibleForFactions {
             "US"
