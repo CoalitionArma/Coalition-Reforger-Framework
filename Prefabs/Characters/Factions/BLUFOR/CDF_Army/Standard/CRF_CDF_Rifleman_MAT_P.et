@@ -2,10 +2,10 @@ SCR_ChimeraCharacter : "{9DE22FB5586591CD}Prefabs/Characters/Factions/BLUFOR/CDF
  ID "200D264F0EEA1A28"
  components {
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Rifleman Anti-Tank"
+   m_name "Medium Anti-Tank"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
-   WeaponTemplate "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et"
+   WeaponTemplate "{AC4C33E8AE72A9F9}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_pgo7_rhs_CRF.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
    WeaponTemplate "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et"
@@ -19,10 +19,10 @@ SCR_ChimeraCharacter : "{9DE22FB5586591CD}Prefabs/Characters/Factions/BLUFOR/CDF
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
-    ItemsInitConfigurationItem "{621D606A8DD9CC28}" {
+    ItemsInitConfigurationItem "{621EF857ABFA2E9A}" {
      TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_RPG_Gunner.et"
      PrefabsToSpawn {
-      "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et" "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
+      "{86A7681BD1D4E4BB}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VR.et" "{9535D6E39DCA78FB}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_TBG7VL.et"
      }
     }
    }

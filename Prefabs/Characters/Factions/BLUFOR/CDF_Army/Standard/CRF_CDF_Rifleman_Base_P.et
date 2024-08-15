@@ -16,6 +16,8 @@ SCR_ChimeraCharacter : "{DCB41B3746FDD1BE}Prefabs/Characters/Factions/OPFOR/USSR
      70 2 46994
     }
    }
+   m_VariantData SCR_EditableEntityVariantData "{621EF8573EB9889A}" {
+   }
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
