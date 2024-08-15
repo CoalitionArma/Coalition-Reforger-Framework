@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{84DD109DA0DAF61F}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et"
+ Name "{0B6C394613866F2B}Prefabs/Groups/BLUFOR/CDF/Support/Group_CDF_MAT.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

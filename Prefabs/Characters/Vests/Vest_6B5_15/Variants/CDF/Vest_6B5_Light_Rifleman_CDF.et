@@ -1,0 +1,11 @@
+GenericEntity : "{03932E3278C4F648}Prefabs/Characters/Vests/Vest_6B5_15/Vest_6B5_15.et" {
+ ID "50D8C49B3558F152"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5EA88C58CC73838E}" {
+   Attributes SCR_ItemAttributeCollection "{5EA88C58CC7383F0}" {
+   }
+   MaxCumulativeVolume 11000
+   m_fMaxWeight 40
+  }
+ }
+}

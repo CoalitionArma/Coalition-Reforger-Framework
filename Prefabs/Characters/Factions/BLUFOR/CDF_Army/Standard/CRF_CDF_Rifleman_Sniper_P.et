@@ -1,0 +1,23 @@
+SCR_ChimeraCharacter : "{9DE22FB5586591CD}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_Base_P.et" {
+ ID "200D264F0EEA1A28"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Sniper"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{6415B7923DE28C1B}Prefabs/Weapons/Rifles/SVD/Rifle_SVD_PSO.et"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   WeaponTemplate "{C0F7DD85A86B2900}Prefabs/Weapons/Handguns/PM/Handgun_PM.et"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{54A68D64D7F9124F}" {
+     PrefabsToSpawn {
+      "{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et" "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et" "{8B853CDD11BA916E}Prefabs/Weapons/Magazines/Magazine_9x18_PM_8rnd_Ball.et" "{8B853CDD11BA916E}Prefabs/Weapons/Magazines/Magazine_9x18_PM_8rnd_Ball.et" "{8B853CDD11BA916E}Prefabs/Weapons/Magazines/Magazine_9x18_PM_8rnd_Ball.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et" "{9CCB46C6EE632C1A}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_Sniper.et"
+     }
+    }
+   }
+  }
+ }
+}
