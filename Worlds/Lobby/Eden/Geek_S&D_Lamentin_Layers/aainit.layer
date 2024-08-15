@@ -1,0 +1,87 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 6364.18 158.262 6440.785
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{620EFE7702FB3AFC}" {
+   attackingSide "USSR"
+   defendingSide "US"
+   bombSitePrefab "{690F012127F996C7}Prefabs/Structures/CRF_Bomb2.et"
+  }
+ }
+ coords 6364.192 158.269 6440.576
+ {
+  SCR_FactionManager "62114627F65EFE9A" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{620EFE7921073B36}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{620EFE79215B1993}" {
+        m_sCallsign "MAT"
+       }
+       SCR_CallsignInfo "{62114624B550C59C}" {
+        m_sCallsign "MEDIC"
+       }
+      }
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6211462264F2DF6C}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{620EFE7D0B51DB15}" {
+        m_sCallsign "1MG"
+       }
+       SCR_CallsignInfo "{620EFE7D07C6C80D}" {
+        m_sCallsign "1BTR"
+       }
+       SCR_CallsignInfo "{620EFE7D06A643E1}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6211462266DC7B32}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{620EFE7D05B16BC8}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{620EFE7D052EA7FE}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{620EFE7CEDB0C009}" {
+        m_sCallsign "2MG"
+       }
+       SCR_CallsignInfo "{620EFE7CEDCF7ED2}" {
+        m_sCallsign "2BTR"
+       }
+       SCR_CallsignInfo "{620EFE7CEDEA21AF}" {
+        m_sCallsign "MEDIC"
+       }
+      }
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+   }
+  }
+ }
+}
