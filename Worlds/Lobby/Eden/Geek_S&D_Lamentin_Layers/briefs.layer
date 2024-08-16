@@ -20,24 +20,52 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
        {
         $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
          OPF_Obj {
-          coords -4.254 -0.141 3.199
-          m_sTitle "Objective"
-          m_sTextData "Destroy both portable generators"
+          coords -5.928 -0.141 4.681
+          m_sTitle "Objective - Destroy A Site"
+          m_sTextData "Destroy the Portable Generator located on A Site"
           m_aVisibleForFactions {
            "USSR"
           }
           m_iOrder 4
+          m_iScore 50
           m_sFactionKey "USSR"
+          {
+           PS_Objective OPF_Obj2 : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+            coords 1.86 -0 -2.858
+            m_sTitle "Objective - Destroy B Site"
+            m_sTextData "Destroy the Portable Generator located on B Site"
+            m_aVisibleForFactions {
+             "USSR"
+            }
+            m_iOrder 4
+            m_iScore 50
+            m_sFactionKey "USSR"
+           }
+          }
          }
          BLU_Obj {
-          coords -1.546 -0.078 4.477
-          m_sTitle "Objective"
-          m_sTextData "Defend both portable generators"
+          coords -3.22 -0.078 5.958
+          m_sTitle "Objective - Defend A Site"
+          m_sTextData "Defend the Portable Generator located on A Site"
           m_aVisibleForFactions {
            "US"
           }
           m_iOrder 4
+          m_iScore 50
           m_sFactionKey "US"
+          {
+           PS_Objective BLU_Obj2 : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+            coords 1.86 0 -2.858
+            m_sTitle "Objective - Defend B Site"
+            m_sTextData "Defend the Portable Generator located on B Site"
+            m_aVisibleForFactions {
+             "US"
+            }
+            m_iOrder 5
+            m_iScore 50
+            m_sFactionKey "US"
+           }
+          }
          }
         }
        }
