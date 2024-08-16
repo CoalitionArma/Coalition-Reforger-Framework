@@ -9,19 +9,6 @@ $grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulan
 Tank T55olive1 : "{6484A98F55C6AA9E}T-55/T55olive.et" {
  coords 2975.667 305.669 7992.718
 }
-SCR_AIGroup : "{A47D2A49D4615973}Prefabs/Groups/BLUFOR/CDF/Vehicles/Group_CDF_VehCrew2man.et" {
- coords 2960.195 306.605 7970.963
- m_aUnitPrefabSlots {
-  "{C8B1CC4DC1ADF379}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehCommander_P.et" "{00B7AF2A2CA4467B}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehDriver_P.et"
- }
- m_sCustomNameSet "Armor"
- m_aUnitPrefabColorTeams {
-  "None" "None"
- }
- m_aUnitPrefabOverrideIcons {
-  "None" "None"
- }
-}
 SCR_AIGroup : "{A8C45A6C7F12DED3}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Company.et" {
  coords 2965.846 308.033 7954.468
  {
@@ -105,6 +92,21 @@ SCR_AIGroup : "{A8C45A6C7F12DED3}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Com
           }
           m_aUnitPrefabOverrideIcons {
            "None" "None"
+          }
+          {
+           SCR_AIGroup : "{A47D2A49D4615973}Prefabs/Groups/BLUFOR/CDF/Vehicles/Group_CDF_VehCrew2man.et" {
+            coords 22.858 -1.346 5.911
+            m_aUnitPrefabSlots {
+             "{C8B1CC4DC1ADF379}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehCommander_P.et" "{00B7AF2A2CA4467B}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehDriver_P.et"
+            }
+            m_sCustomNameSet "Armor"
+            m_aUnitPrefabColorTeams {
+             "None" "None"
+            }
+            m_aUnitPrefabOverrideIcons {
+             "None" "None"
+            }
+           }
           }
          }
         }

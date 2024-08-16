@@ -12,12 +12,13 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
     "zonea" "zoneb" "zonec" "zoned" "zonee"
    }
    m_iZoneCaptureTime 60
+   m_iMinNumberOfPlayersNeeded 3
    m_iInitialTime 600
   }
  }
  coords 3816.953 311.094 8904.896
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6220DE4E03442799" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{56DEAC40D132400B}" {
@@ -99,6 +100,11 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
 }
 $grp GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zone_A.et" {
  zoneb {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{A813D897413F5532}Prefabs/Structures/Frontline/Flags/Zone_B_Mat.emat"
+   }
+  }
   coords 3640.978 299.157 8572.042
   angleX -0.314
   angleY 0.246
@@ -198,6 +204,11 @@ $grp GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zo
   }
  }
  zonee {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{D7F3DA99D8543DF0}Prefabs/Structures/Frontline/Flags/Zone_E_Mat.emat"
+   }
+  }
   coords 4532.262 339.125 9627.49
   angleX -0.314
   angleY 0.246
@@ -396,6 +407,11 @@ $grp GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zo
   }
  }
  zoned {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{29F39ADC2D0651BC}Prefabs/Structures/Frontline/Flags/Zone_D_Mat.emat"
+   }
+  }
   coords 4120.815 324.583 8933.095
   angleX -0.314
   angleY 0.246
@@ -495,6 +511,11 @@ $grp GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zo
   }
  }
  zonec {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{561398D2B46D397E}Prefabs/Structures/Frontline/Flags/Zone_C_Mat.emat"
+   }
+  }
   coords 3805.43 311.094 8899.872
   angleX -0.314
   angleY 0.246
