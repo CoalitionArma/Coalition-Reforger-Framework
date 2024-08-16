@@ -2,10 +2,6 @@ SCR_AIGroup : "{2ED2173F09D38D65}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_F
  coords 4683.876 339.125 9737.422
  m_sCustomNameSet "Company"
  {
-  SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
-   coords -11.496 0.505 -9.619
-   m_sCustomNameSet "Armor"
-  }
   $grp SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
    {
     coords 2.063 -0.001 14.24
@@ -32,7 +28,7 @@ SCR_AIGroup : "{2ED2173F09D38D65}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_F
     }
    }
    {
-    coords 15.069 -0 -5.223
+    coords 15.069 0 -5.223
     m_sCustomNameSet "2nd Platoon"
     {
      SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
@@ -47,8 +43,14 @@ SCR_AIGroup : "{2ED2173F09D38D65}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_F
         m_sCustomNameSet "4th Squad"
         {
          SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
-          coords -4.493 -0 -23.243
+          coords -4.493 0 -23.243
           m_sCustomNameSet "BTR 2"
+          {
+           SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
+            coords -30.325 0.505 9.015
+            m_sCustomNameSet "Armor"
+           }
+          }
          }
         }
        }
