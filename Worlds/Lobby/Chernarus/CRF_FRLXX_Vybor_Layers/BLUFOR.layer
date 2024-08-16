@@ -1,0 +1,126 @@
+$grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ UAZ452_ambulance1 {
+  coords 2971.894 305.848 7974.716
+ }
+ UAZ452_ambulance2 {
+  coords 2954.391 306.303 7990.311
+ }
+}
+Tank T55olive1 : "{6484A98F55C6AA9E}T-55/T55olive.et" {
+ coords 2975.667 305.669 7992.718
+}
+SCR_AIGroup : "{A47D2A49D4615973}Prefabs/Groups/BLUFOR/CDF/Vehicles/Group_CDF_VehCrew2man.et" {
+ coords 2960.195 306.605 7970.963
+ m_aUnitPrefabSlots {
+  "{C8B1CC4DC1ADF379}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehCommander_P.et" "{00B7AF2A2CA4467B}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehDriver_P.et"
+ }
+ m_sCustomNameSet "Armor"
+ m_aUnitPrefabColorTeams {
+  "None" "None"
+ }
+ m_aUnitPrefabOverrideIcons {
+  "None" "None"
+ }
+}
+SCR_AIGroup : "{A8C45A6C7F12DED3}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Company.et" {
+ coords 2965.846 308.033 7954.468
+ {
+  $grp SCR_AIGroup : "{84DD109DA0DAF61F}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+   {
+    coords 3.484 1.41 -12.669
+    m_sCustomNameSet "1st Platoon"
+    {
+     SCR_AIGroup : "{63CCF1B438A4F949}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Row"
+       }
+      }
+      coords 1.68 0.781 -11.279
+      {
+       SCR_AIGroup : "{63CCF1B438A4F949}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Row"
+         }
+        }
+        coords -9.454 0.157 7.521
+        m_aUnitPrefabSlots {
+         "{0F302BE837C792EA}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Leader_Base_SL_P.et" "{9744496B9756C7ED}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_Medic_P.et" "{DDB61BEEAEB036E8}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Leader_TL_P.et" "{B8143112927C9369}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_MMG_P.et" "{FAF7EE216C31A27E}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_AMMG_P.et" "{DDB61BEEAEB036E8}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Leader_TL_P.et" "{90A9A814C09D3AEE}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_MAT_P.et" "{D24A77273ED00BF9}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_AMAT_P.et" "{73CD8AB5E18E692F}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_Demo_P.et"
+        }
+        m_sCustomNameSet "2nd Squad"
+        {
+         SCR_AIGroup : "{A47D2A49D4615973}Prefabs/Groups/BLUFOR/CDF/Vehicles/Group_CDF_VehCrew2man.et" {
+          coords 18.185 -0.331 -3.901
+          m_aUnitPrefabSlots {
+           "{C8B1CC4DC1ADF379}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehCommander_P.et" "{00B7AF2A2CA4467B}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehDriver_P.et"
+          }
+          m_sCustomNameSet "BTR 1"
+          m_aUnitPrefabColorTeams {
+           "None" "None"
+          }
+          m_aUnitPrefabOverrideIcons {
+           "None" "None"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   {
+    coords -16.26 0.282 4.578
+    m_sCustomNameSet "2nd Platoon"
+    {
+     SCR_AIGroup : "{63CCF1B438A4F949}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Row"
+       }
+      }
+      coords -11.796 1.532 -5.004
+      m_sCustomNameSet "3rd Squad"
+      {
+       SCR_AIGroup : "{63CCF1B438A4F949}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Row"
+         }
+        }
+        coords 9.454 0.62 -7.521
+        m_aUnitPrefabSlots {
+         "{0F302BE837C792EA}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Leader_Base_SL_P.et" "{9744496B9756C7ED}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_Medic_P.et" "{DDB61BEEAEB036E8}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Leader_TL_P.et" "{B8143112927C9369}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_MMG_P.et" "{FAF7EE216C31A27E}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_AMMG_P.et" "{DDB61BEEAEB036E8}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Leader_TL_P.et" "{90A9A814C09D3AEE}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_MAT_P.et" "{D24A77273ED00BF9}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_AMAT_P.et" "{73CD8AB5E18E692F}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_Demo_P.et"
+        }
+        m_sCustomNameSet "4th Squad"
+        {
+         SCR_AIGroup : "{A47D2A49D4615973}Prefabs/Groups/BLUFOR/CDF/Vehicles/Group_CDF_VehCrew2man.et" {
+          coords -9.907 -2.516 18.531
+          m_aUnitPrefabSlots {
+           "{C8B1CC4DC1ADF379}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehCommander_P.et" "{00B7AF2A2CA4467B}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehDriver_P.et"
+          }
+          m_sCustomNameSet "BTR 2"
+          m_aUnitPrefabColorTeams {
+           "None" "None"
+          }
+          m_aUnitPrefabOverrideIcons {
+           "None" "None"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 2962.45 306.243 7990.08
+ }
+ BTR2 {
+  coords 2981.26 305.444 7973.867
+ }
+}
