@@ -1,6 +1,34 @@
+GenericEntity {
+ components {
+  MeshObject "{62233AAA85A0558E}" {
+   Object "{2CE8F0F4FE18CCBC}Assets/Props/Industrial/CargoContainer_01/Dst/CargoContainer_01_20ft_Ruin.xob"
+  }
+ }
+ coords 960.868 39 2655.746
+}
 GenericEntity : "{01969A28078FCA69}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_02.et" {
- coords 942.625 39 2622.406
- angleY -68.732
+ coords 949.495 39 2631.27
+ angleY -69.638
+ {
+  GenericEntity {
+   ID "552A7733B8B30470"
+   coords 0.068 -0.062 -0.381
+   angleY -80.757
+  }
+  GenericEntity {
+   ID "552A7733B8B30471"
+   coords 0.3 -0.062 0.225
+   angleY -88.298
+  }
+  GenericEntity {
+   ID "552A7733B8B30474"
+   coords -0.347 -0.062 0.157
+   angleY -2.333
+  }
+ }
+}
+GenericEntity : "{0C765D6C7ECEECB3}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/Dst/SupplyShippingContainers_01_20ft_Ruin.et" {
+ coords 978.462 39 2638.863
 }
 $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_ammo.et" {
  {
@@ -13,8 +41,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 922.313 39 2633.489
-  angleY -14.874
+  coords 934.728 39.01 2656.05
+  angleY -15.721
  }
  {
   components {
@@ -26,8 +54,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 924.661 39 2634.123
-  angleY -14.874
+  coords 937.227 39.01 2656.738
+  angleY -15.721
  }
  {
   components {
@@ -39,8 +67,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 932.266 39.01 2643.088
-  angleY -14.874
+  coords 939.6 39.01 2640.104
+  angleY -15.781
  }
  {
   components {
@@ -52,8 +80,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 934.775 39.01 2643.739
-  angleY -14.874
+  coords 942.099 39.01 2640.795
+  angleY -15.781
  }
  {
   components {
@@ -65,8 +93,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 935.705 39.01 2632.312
-  angleY -14.874
+  coords 939.6 41.573 2640.104
+  angleY -15.781
  }
  {
   components {
@@ -78,8 +106,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 938.214 39.01 2632.963
-  angleY -14.874
+  coords 942.099 41.573 2640.795
+  angleY -15.781
  }
  {
   components {
@@ -91,8 +119,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 935.705 41.573 2632.312
-  angleY -14.874
+  coords 977.334 39.01 2655.866
+  angleY 165.237
  }
  {
   components {
@@ -104,8 +132,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 938.214 41.573 2632.963
-  angleY -14.874
+  coords 974.823 39.01 2655.22
+  angleY 165.237
  }
  {
   components {
@@ -117,8 +145,8 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 957.787 39 2642.407
-  angleY 164.558
+  coords 977.334 41.573 2655.866
+  angleY 165.237
  }
  {
   components {
@@ -130,94 +158,187 @@ $grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 955.492 39 2641.763
-  angleY 164.558
+  coords 974.823 41.573 2655.22
+  angleY 165.237
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 974.823 44.138 2655.22
+  angleY 165.237
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 923.292 39 2643.077
+  angleY -13.847
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 920.772 39 2642.471
+  angleY -13.847
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 979.731 39 2656.498
+  angleY 165.237
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 918.317 39 2641.799
+  angleY 165.237
  }
 }
-GenericEntity : "{1CF33A86C184B00B}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Duvanblade.et" {
- coords 921.549 46.679 2659.567
- angleY 76.691
-}
-$grp GenericEntity : "{3533DB963FA9C81F}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_Base.et" {
+$grp GenericEntity : "{1CF33A86C184B00B}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Duvanblade.et" {
  {
-  coords 918.298 41.555 2638.359
-  angleY -14.512
+  coords 924.034 44.146 2621.53
+  angleY -15.309
  }
  {
-  coords 961.745 41.555 2637.289
-  angleY 164.92
+  coords 925.065 44.146 2615.54
+  angleY -15.309
  }
 }
-$grp GenericEntity : "{3E9EDDFC51BB3410}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_olive.et" {
- {
-  coords 917.952 44.12 2639.773
-  angleY -15.336
- }
- {
-  coords 925.022 44.075 2613.186
-  angleY -15.336
- }
- {
-  coords 958.373 44.18 2650.387
-  angleY -15.336
- }
- {
-  coords 954.261 41.573 2664.95
-  angleY -104.56
- }
- {
-  coords 966.3 41.533 2621.285
-  angleY -15.336
- }
- {
-  coords 967.515 39 2617.315
-  angleY -15.336
- }
- {
-  coords 954.3 44.138 2664.952
-  angleY -104.56
- }
- {
-  coords 967.14 41.565 2618.414
-  angleY -15.336
- }
+GenericEntity : "{35B9DE7639F3355A}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_KAL.et" {
+ coords 920.676 46.703 2627.428
+ angleY 19.787
 }
-$grp GenericEntity : "{41F2EFF5B1118336}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_BaltaShipping.et" {
- {
-  coords 943.455 39 2620.879
-  angleY -103.424
- }
- {
-  coords 952.176 46.694 2664.085
-  angleY -53.064
- }
- {
-  coords 961.4 39 2656.395
-  angleY 20.103
- }
+GenericEntity : "{41F2EFF5B1118336}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_BaltaShipping.et" {
+ coords 950.349 39 2629.756
+ angleY -104.33
 }
 $grp GenericEntity : "{4BE795374BE3D67E}Prefabs/Props/Industrial/BarrelFuel_01_closed.et" {
  {
-  coords 932.01 39 2622.112
+  coords 938.886 39 2630.808
+  angleY -0.906
  }
  {
-  coords 932.187 39 2622.774
+  coords 939.052 39 2631.473
+  angleY -0.906
  }
  {
-  coords 932.817 39 2622.627
+  coords 939.685 39 2631.335
+  angleY -0.906
  }
  {
-  coords 932.668 39 2621.978
+  coords 939.546 39 2630.684
+  angleY -0.906
  }
+ {
+  coords 934.639 39 2629.592
+  angleY -0.906
+ }
+ {
+  coords 934.805 39 2630.257
+  angleY -0.906
+ }
+ {
+  coords 935.438 39 2630.119
+  angleY -0.906
+ }
+ {
+  coords 935.299 39 2629.468
+  angleY -0.906
+ }
+ {
+  coords 929.469 39 2631.239
+  angleY -0.906
+ }
+ {
+  coords 929.635 39 2631.904
+  angleY -0.906
+ }
+ {
+  coords 930.268 39 2631.766
+  angleY -0.906
+ }
+ {
+  coords 930.129 39 2631.115
+  angleY -0.906
+ }
+ {
+  coords 931.979 39 2625.042
+  angleY -0.906
+ }
+ {
+  coords 932.145 39 2625.707
+  angleY -0.906
+ }
+ {
+  coords 932.778 39 2625.569
+  angleY -0.906
+ }
+ {
+  coords 932.639 39 2624.918
+  angleY -0.906
+ }
+ {
+  coords 930.836 39 2630.847
+  angleY -0.906
+ }
+ {
+  coords 931.002 39 2631.512
+  angleY -0.906
+ }
+ {
+  coords 931.635 39 2631.374
+  angleY -0.906
+ }
+ {
+  coords 931.496 39 2630.723
+  angleY -0.906
+ }
+}
+GenericEntity : "{560846735799794D}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Emerald.et" {
+ coords 941.02 44.091 2619.538
+ angleY 76.019
 }
 $grp GenericEntity : "{5B17515707F080E0}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Starline.et" {
  {
-  coords 968.239 39 2630.102
-  angleY -56.074
+  coords 955.803 44.097 2644.511
+  angleY -15.002
  }
  {
-  coords 945.144 44.097 2634.553
-  angleY -14.096
+  coords 983.127 46.735 2644.682
+  angleY -12.541
  }
 }
 $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_supplies.et" {
@@ -231,8 +352,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 944.772 44.129 2646.295
-  angleY -14.075
+  coords 953.209 44.129 2660.21
+  angleY -14.922
  }
  {
   components {
@@ -244,8 +365,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 944.772 41.564 2646.295
-  angleY -14.075
+  coords 953.209 41.564 2660.21
+  angleY -14.922
  }
  {
   components {
@@ -257,8 +378,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 944.707 39 2646.27
-  angleY -14.075
+  coords 953.145 39 2660.186
+  angleY -14.922
  }
  {
   components {
@@ -270,8 +391,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 942.244 39 2645.655
-  angleY -14.075
+  coords 950.691 39 2659.533
+  angleY -14.922
  }
  {
   components {
@@ -283,8 +404,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 942.309 41.564 2645.68
-  angleY -14.075
+  coords 950.756 41.564 2659.56
+  angleY -14.922
  }
  {
   components {
@@ -296,8 +417,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 942.285 44.129 2645.772
-  angleY -14.075
+  coords 950.78 44.129 2659.595
+  angleY -14.922
  }
  {
   components {
@@ -309,8 +430,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 947.62 41.564 2635.309
-  angleY -14.075
+  coords 958.267 41.564 2645.306
+  angleY -14.981
  }
  {
   components {
@@ -322,8 +443,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 947.555 39 2635.283
-  angleY -14.075
+  coords 958.203 39 2645.279
+  angleY -14.981
  }
  {
   components {
@@ -335,8 +456,8 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 944.962 39 2634.644
-  angleY -14.075
+  coords 955.62 39 2644.599
+  angleY -14.981
  }
  {
   components {
@@ -348,328 +469,558 @@ $grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 945.027 41.564 2634.668
-  angleY -14.075
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 925.3 44.129 2631.206
-  angleY -13.994
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 924.648 41.564 2634.086
-  angleY -15.237
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 923.851 44.129 2636.795
-  angleY -15.237
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 955.511 41.564 2641.733
-  angleY 164.195
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 956.203 44.129 2638.721
-  angleY 164.195
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 954.589 44.129 2644.678
-  angleY 165.438
+  coords 955.685 41.564 2644.624
+  angleY -14.981
  }
 }
 $grp GenericEntity : "{7D52C517720EF2F5}Prefabs/Props/Industrial/BarrelMetal_01_blue.et" {
  {
-  coords 942.465 39 2649.413
+  coords 950.857 39 2663.294
+  angleY -0.847
  }
  {
-  coords 942.927 39 2650.027
+  coords 951.31 39 2663.914
+  angleY -0.847
  }
 }
 $grp GenericEntity : "{7D52C517720EF2F6}Prefabs/Props/Industrial/BarrelMetal_01_grey.et" {
  {
-  coords 943.227 39 2637.724
+  coords 953.836 39 2647.651
+  angleY -0.906
  }
  {
-  coords 943.046 39 2638.467
+  coords 953.644 39 2648.391
+  angleY -0.906
  }
 }
-GenericEntity : "{82008EE10AB80D6E}PrefabsEditable/Auto/Props/Wrecks/E_UAZ469_wreck.et" {
- coords 924.932 38.65 2649.187
- angleY 0.336
+$grp GenericEntity : "{82008EE10AB80D6E}PrefabsEditable/Auto/Props/Wrecks/E_UAZ469_wreck.et" {
+ {
+  coords 923.517 38.65 2661.534
+  angleY -0.511
+ }
+ {
+  coords 923.827 38.65 2648.329
+  angleY -0.511
+ }
+ {
+  coords 926.644 38.65 2638.113
+  angleY -45.148
+ }
 }
 GenericEntity : "{82DDDA574CB4F0D9}Prefabs/Props/Industrial/BarrelFuel_01_Base.et" {
- coords 942.862 39 2618.232
+ coords 949.798 39 2627.1
+ angleY -0.906
 }
 $grp GenericEntity : "{887780D497AADE00}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_Base.et" {
  {
-  coords 955.304 39 2667.925
-  angleY -103.914
+  coords 953.268 39 2678.336
+  angleY -104.761
  }
  {
-  coords 943.731 39 2665.058
-  angleY -103.914
+  coords 941.739 39 2675.296
+  angleY -104.761
  }
  {
-  coords 931.971 39 2662.145
-  angleY -103.914
+  coords 930.023 39 2672.211
+  angleY -104.761
  }
  {
-  coords 920.223 39 2659.235
-  angleY -103.914
+  coords 918.32 39 2669.128
+  angleY -104.761
  }
  {
-  coords 959.7 39 2617.732
-  angleY -103.914
+  coords 953.268 41.558 2678.336
+  angleY -104.761
  }
  {
-  coords 948.127 39 2614.866
-  angleY -103.914
+  coords 941.739 41.558 2675.296
+  angleY -104.761
  }
  {
-  coords 936.367 39 2611.953
-  angleY -103.914
+  coords 918.32 41.558 2669.128
+  angleY -104.761
  }
  {
-  coords 936.367 41.558 2611.953
-  angleY -103.914
+  coords 953.268 44.115 2678.336
+  angleY -104.761
  }
  {
-  coords 948.127 41.558 2614.866
-  angleY -103.914
+  coords 941.739 44.115 2675.296
+  angleY -104.761
  }
  {
-  coords 959.7 41.558 2617.732
-  angleY -103.914
+  coords 929.946 44.115 2672.121
+  angleY -104.761
  }
  {
-  coords 936.367 44.116 2611.953
-  angleY -103.914
+  coords 918.242 44.115 2669.041
+  angleY -104.761
  }
  {
-  coords 948.127 44.116 2614.866
-  angleY -103.914
+  coords 965.117 39 2681.484
+  angleY -105.166
  }
  {
-  coords 959.7 44.116 2617.732
-  angleY -103.914
+  coords 965.096 41.558 2681.479
+  angleY -105.166
  }
  {
-  coords 955.304 41.558 2667.925
-  angleY -103.914
+  coords 979.502 41.558 2629.751
+  angleY -105.226
  }
  {
-  coords 943.731 41.558 2665.058
-  angleY -103.914
+  coords 979.499 39 2629.75
+  angleY -105.226
  }
  {
-  coords 931.971 41.558 2662.145
-  angleY -103.914
+  coords 979.468 44.116 2629.677
+  angleY -105.226
  }
  {
-  coords 920.223 41.558 2659.235
-  angleY -103.914
+  coords 967.68 39 2626.522
+  angleY -104.821
  }
  {
-  coords 955.304 44.115 2667.925
-  angleY -103.914
+  coords 956.154 39 2623.47
+  angleY -104.821
  }
  {
-  coords 943.731 44.115 2665.058
-  angleY -103.914
+  coords 944.442 39 2620.373
+  angleY -104.821
  }
  {
-  coords 931.971 44.115 2662.145
-  angleY -103.914
+  coords 932.741 39 2617.278
+  angleY -104.821
  }
  {
-  coords 920.223 44.115 2659.235
-  angleY -103.914
+  coords 967.68 41.558 2626.522
+  angleY -104.821
  }
  {
-  coords 972.488 39 2626.704
-  angleY 76.146
+  coords 956.154 41.558 2623.47
+  angleY -104.821
  }
  {
-  coords 872.556 41.509 2640.653
-  angleY -104.788
+  coords 944.442 41.558 2620.373
+  angleY -104.821
  }
  {
-  coords 998.407 39 2670.856
-  angleY 76.146
+  coords 932.741 41.558 2617.278
+  angleY -104.821
  }
  {
-  coords 882.17 41.509 2605.017
-  angleY -104.788
+  coords 973.023 41.575 2680.343
+  angleY 164.458
  }
  {
-  coords 882.17 38.957 2605.017
-  angleY -104.788
+  coords 973.004 44.133 2680.343
+  angleY 164.458
  }
  {
-  coords 998.407 41.558 2670.856
-  angleY 76.146
+  coords 976.499 39.018 2668.559
+  angleY 164.863
  }
  {
-  coords 1007.657 39 2635.041
-  angleY 76.146
+  coords 982.862 39.055 2645.038
+  angleY 164.863
  }
  {
-  coords 1007.657 41.558 2635.041
-  angleY 76.146
+  coords 986.055 39.055 2633.236
+  angleY 164.863
  }
  {
-  coords 872.556 38.957 2640.653
-  angleY -104.788
- }
-}
-$grp GenericEntity : "{88A64A32F78CFB77}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_blue.et" {
- {
-  coords 921.365 41.561 2626.833
-  angleY -14.081
+  coords 976.499 41.576 2668.559
+  angleY 164.863
  }
  {
-  coords 958.67 41.561 2649.073
-  angleY 165.351
+  coords 979.7 41.573 2656.735
+  angleY 164.863
+ }
+ {
+  coords 982.862 41.613 2645.038
+  angleY 164.863
+ }
+ {
+  coords 986.055 41.613 2633.236
+  angleY 164.863
+ }
+ {
+  coords 976.499 44.133 2668.559
+  angleY 164.863
+ }
+ {
+  coords 979.7 44.131 2656.735
+  angleY 164.863
+ }
+ {
+  coords 982.953 44.17 2644.963
+  angleY 164.863
+ }
+ {
+  coords 986.144 44.17 2633.157
+  angleY 164.863
+ }
+ {
+  coords 973.023 39.017 2680.343
+  angleY 164.458
+ }
+ {
+  coords 921.448 41.613 2630.339
+  angleY 164.863
+ }
+ {
+  coords 915.085 41.576 2653.86
+  angleY 164.863
+ }
+ {
+  coords 924.641 41.613 2618.538
+  angleY 164.863
+ }
+ {
+  coords 921.539 44.17 2630.265
+  angleY 164.863
+ }
+ {
+  coords 915.085 44.133 2653.86
+  angleY 164.863
+ }
+ {
+  coords 918.286 44.131 2642.037
+  angleY 164.863
+ }
+ {
+  coords 911.68 39.017 2665.577
+  angleY 164.458
+ }
+ {
+  coords 918.286 41.573 2642.037
+  angleY 164.863
+ }
+ {
+  coords 921.448 39.055 2630.339
+  angleY 164.863
+ }
+ {
+  coords 924.641 39.055 2618.538
+  angleY 164.863
+ }
+ {
+  coords 911.609 41.575 2665.645
+  angleY 164.458
+ }
+ {
+  coords 911.661 44.133 2665.577
+  angleY 164.458
+ }
+ {
+  coords 915.085 39.018 2653.86
+  angleY 164.863
+ }
+ {
+  coords 915.738 39.055 2623.504
+  angleY 74.54
+ }
+ {
+  coords 915.738 41.613 2623.504
+  angleY 74.54
+ }
+ {
+  coords 915.812 44.17 2623.595
+  angleY 74.54
+ }
+ {
+  coords 903.959 39.055 2620.246
+  angleY 74.54
+ }
+ {
+  coords 903.959 41.613 2620.246
+  angleY 74.54
+ }
+ {
+  coords 904.033 44.17 2620.337
+  angleY 74.54
+ }
+ {
+  coords 892.205 39.055 2616.995
+  angleY 74.54
+ }
+ {
+  coords 892.205 41.613 2616.995
+  angleY 74.54
+ }
+ {
+  coords 892.279 44.17 2617.086
+  angleY 74.54
+ }
+ {
+  coords 880.586 39.055 2613.781
+  angleY 74.54
+ }
+ {
+  coords 880.586 41.613 2613.781
+  angleY 74.54
+ }
+ {
+  coords 880.66 44.17 2613.873
+  angleY 74.54
+ }
+ {
+  coords 871.567 44.17 2646.749
+  angleY 74.54
+ }
+ {
+  coords 871.493 39.055 2646.657
+  angleY 74.54
+ }
+ {
+  coords 894.866 39.055 2653.122
+  angleY 74.54
+ }
+ {
+  coords 883.112 39.055 2649.87
+  angleY 74.54
+ }
+ {
+  coords 894.94 44.17 2653.213
+  angleY 74.54
+ }
+ {
+  coords 906.719 44.17 2656.471
+  angleY 74.54
+ }
+ {
+  coords 894.866 41.613 2653.122
+  angleY 74.54
+ }
+ {
+  coords 871.493 41.613 2646.657
+  angleY 74.54
+ }
+ {
+  coords 883.186 44.17 2649.962
+  angleY 74.54
+ }
+ {
+  coords 883.112 41.613 2649.87
+  angleY 74.54
+ }
+ {
+  coords 906.645 39.055 2656.38
+  angleY 74.54
+ }
+ {
+  coords 906.645 41.613 2656.38
+  angleY 74.54
+ }
+ {
+  coords 865.948 44.17 2639.564
+  angleY 164.259
+ }
+ {
+  coords 865.856 39.055 2639.638
+  angleY 164.259
+ }
+ {
+  coords 869.126 41.613 2628.034
+  angleY 164.259
+ }
+ {
+  coords 869.218 44.17 2627.961
+  angleY 164.259
+ }
+ {
+  coords 869.126 39.055 2628.034
+  angleY 164.259
+ }
+ {
+  coords 865.856 41.613 2639.638
+  angleY 164.259
+ }
+ {
+  coords 872.427 44.17 2616.267
+  angleY 164.259
+ }
+ {
+  coords 872.335 39.055 2616.342
+  angleY 164.259
+ }
+ {
+  coords 872.335 41.613 2616.342
+  angleY 164.259
+ }
+ {
+  coords 1026.312 44.17 2651.655
+  angleY -105.296
+ }
+ {
+  coords 1017.314 44.17 2684.558
+  angleY -105.296
+ }
+ {
+  coords 1017.388 39.055 2684.649
+  angleY -105.296
+ }
+ {
+  coords 1026.387 39.055 2651.747
+  angleY -105.296
+ }
+ {
+  coords 1014.759 41.613 2648.567
+  angleY -105.296
+ }
+ {
+  coords 1002.995 39.055 2645.349
+  angleY -105.296
+ }
+ {
+  coords 1014.684 44.17 2648.476
+  angleY -105.296
+ }
+ {
+  coords 1014.759 39.055 2648.567
+  angleY -105.296
+ }
+ {
+  coords 1026.387 41.613 2651.747
+  angleY -105.296
+ }
+ {
+  coords 1002.921 44.17 2645.258
+  angleY -105.296
+ }
+ {
+  coords 991.133 44.17 2642.035
+  angleY -105.296
+ }
+ {
+  coords 1002.995 41.613 2645.349
+  angleY -105.296
+ }
+ {
+  coords 1005.759 41.613 2681.468
+  angleY -105.296
+ }
+ {
+  coords 1025.631 41.613 2682.064
+  angleY -15.578
+ }
+ {
+  coords 1005.685 44.17 2681.377
+  angleY -105.296
+ }
+ {
+  coords 993.997 39.055 2678.251
+  angleY -105.296
+ }
+ {
+  coords 1032.043 41.613 2658.749
+  angleY -15.578
+ }
+ {
+  coords 1005.759 39.055 2681.468
+  angleY -105.296
+ }
+ {
+  coords 993.922 44.17 2678.16
+  angleY -105.296
+ }
+ {
+  coords 1028.716 44.17 2670.437
+  angleY -15.578
+ }
+ {
+  coords 982.134 44.17 2674.936
+  angleY -105.296
+ }
+ {
+  coords 993.997 41.613 2678.251
+  angleY -105.296
+ }
+ {
+  coords 1028.807 41.613 2670.364
+  angleY -15.578
+ }
+ {
+  coords 1017.388 41.613 2684.649
+  angleY -105.296
+ }
+ {
+  coords 1031.952 44.17 2658.824
+  angleY -15.578
+ }
+ {
+  coords 982.208 39.055 2675.026
+  angleY -105.296
+ }
+ {
+  coords 1028.807 39.055 2670.364
+  angleY -15.578
+ }
+ {
+  coords 1032.043 39.055 2658.749
+  angleY -15.578
+ }
+ {
+  coords 1025.631 39.055 2682.064
+  angleY -15.578
+ }
+ {
+  coords 991.207 39.055 2642.125
+  angleY -105.296
+ }
+ {
+  coords 1025.539 44.17 2682.14
+  angleY -15.578
+ }
+ {
+  coords 991.207 41.613 2642.125
+  angleY -105.296
+ }
+ {
+  coords 982.208 41.613 2675.026
+  angleY -105.296
  }
 }
 $grp GenericEntity : "{8F08705D73A7C711}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_red.et" {
  {
-  coords 924.765 39 2613.559
-  angleY -14.871
+  coords 935.042 44.123 2617.987
+  angleY 75.636
  }
  {
-  coords 920.441 39 2612.552
-  angleY 75.012
- }
- {
-  coords 921.083 39 2610.148
-  angleY 75.012
- }
- {
-  coords 927.52 39 2609.796
-  angleY 75.012
- }
- {
-  coords 927.516 41.564 2609.76
-  angleY 75.012
- }
- {
-  coords 927.516 44.129 2609.76
-  angleY 75.012
- }
- {
-  coords 920.441 41.565 2612.552
-  angleY 75.012
- }
- {
-  coords 921.081 41.565 2610.163
-  angleY 75.012
- }
- {
-  coords 920.441 44.129 2612.552
-  angleY 75.012
- }
- {
-  coords 921.081 44.129 2610.163
-  angleY 75.012
- }
- {
-  coords 924.937 46.695 2610.893
-  angleY -61.564
+  coords 929.144 44.123 2616.499
+  angleY 75.636
  }
 }
 $grp GenericEntity : "{939E032C3B6E837A}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Chernarussian.et" {
  {
-  coords 944.926 39 2617.623
-  angleY 55.577
+  coords 951.871 39 2626.524
+  angleY 54.671
  }
  {
-  coords 934.814 46.68 2662.885
-  angleY 75.401
+  coords 946.95 44.091 2621.043
+  angleY 75.3
  }
  {
-  coords 921.693 49.286 2633.791
-  angleY 20.033
+  coords 976.601 46.666 2672.031
+  angleY 8.236
  }
 }
-$grp GenericEntity : "{9A3ADECE49EF8993}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_green.et" {
- {
-  coords 964.217 41.565 2628.489
-  angleY -15.8
- }
- {
-  coords 923.711 41.533 2617.928
-  angleY -14.42
- }
- {
-  coords 923.143 44.066 2620.61
-  angleY -14.42
- }
- {
-  coords 963.563 44.126 2631.224
-  angleY -14.42
- }
+GenericEntity : "{9A3ADECE49EF8993}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_green.et" {
+ coords 929.973 41.533 2672.076
+ angleY 74.345
 }
 $grp GenericEntity : "{B6B2AD00E71AD0B5}Prefabs/Props/Industrial/BarrelMetal_01_Base.et" {
  {
-  coords 925.833 39 2640
+  coords 930.847 39 2651.832
+  angleY -0.847
  }
  {
-  coords 925.057 39 2639.931
+  coords 930.072 39 2651.753
+  angleY -0.847
  }
+}
+GenericEntity : "{BC914C56435AC081}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/Dst/CargoContainer_01_10ft_Ruin_base.et" {
+ coords 967.277 39 2675.076
 }
 $grp GenericEntity : "{CAD13AC8DAFEB0E8}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_USSR_supplies.et" {
  {
@@ -682,8 +1033,8 @@ $grp GenericEntity : "{CAD13AC8DAFEB0E8}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 935.676 39 2657.775
-  angleY 74.131
+  coords 940.426 39 2669.752
+  angleY 73.284
  }
  {
   components {
@@ -695,630 +1046,131 @@ $grp GenericEntity : "{CAD13AC8DAFEB0E8}Prefabs/Props/Military/CargoContainers/C
     }
    }
   }
-  coords 935.095 39 2660.023
-  angleY 75.117
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 918.104 39 2654.336
-  angleY 22.52
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 950.72 39 2662.194
-  angleY -53.945
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 961.543 39 2622.545
-  angleY 31.561
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 928.976 39 2614.467
-  angleY -61.044
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 928.976 41.565 2614.467
-  angleY -61.044
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 961.543 41.565 2622.545
-  angleY 31.561
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 928.976 44.129 2614.467
-  angleY -61.044
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 961.543 44.129 2622.545
-  angleY 31.561
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 950.72 41.565 2662.194
-  angleY -53.945
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 918.104 41.565 2654.336
-  angleY 22.52
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 950.72 44.129 2662.194
-  angleY -53.945
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 918.104 44.129 2654.336
-  angleY 22.52
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 959.333 39 2663.795
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 958.76 41.565 2666.195
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 959.333 41.565 2663.795
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 958.76 44.129 2666.195
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 959.333 44.129 2663.795
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 958.76 46.693 2666.195
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 959.333 46.693 2663.795
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 913.495 44.098 2656.055
-  angleY -16.255
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 913.495 41.533 2656.055
-  angleY -16.255
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 915.72 46.663 2655.242
-  angleY 22.52
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 958.76 39 2666.195
-  angleY -103.639
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 966.077 44.098 2622.343
-  angleY -14.576
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 963.558 46.694 2621.252
-  angleY 31.561
+  coords 939.812 39 2671.99
+  angleY 74.27
  }
 }
 $grp GenericEntity : "{D93EF3E97E06D435}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_04.et" {
  {
-  coords 944.644 39 2658.495
+  coords 949.382 39 2670.603
+  angleY -0.847
+  {
+   GenericEntity {
+    ID "552C7390253853C9"
+    coords -0.317 -0.099 -0.041
+    angleY 8.681
+   }
+   GenericEntity {
+    ID "552C7390253853CA"
+    coords 0.044 0.864 0.052
+   }
+   GenericEntity {
+    ID "552C7390253853F6"
+    coords 0.512 0.077 0.578
+   }
+   GenericEntity {
+    ID "552C7390253853C8"
+    coords 0.354 -0.1 0.049
+    angleY -46.484
+   }
+  }
  }
  {
-  coords 943.645 39 2618.929
-  angleY 21.867
+  coords 950.57 39 2627.809
+  angleY 20.961
+  {
+   GenericEntity {
+    ID "552C7390253853C9"
+    coords -0.316 -0.099 -0.041
+    angleY 8.681
+   }
+   GenericEntity {
+    ID "552C7390253853CA"
+    coords 0.044 0.864 0.051
+   }
+   GenericEntity {
+    ID "552C7390253853F6"
+    coords 0.512 0.077 0.578
+   }
+   GenericEntity {
+    ID "552C7390253853C8"
+    coords 0.354 -0.1 0.047
+    angleY -46.484
+   }
+  }
  }
  {
-  coords 942.128 39 2618.833
-  angleY 167.6
+  coords 949.054 39 2627.688
+  angleY 166.693
+  {
+   GenericEntity {
+    ID "552C7390253853C9"
+    coords -0.318 -0.099 -0.041
+    angleY 8.681
+   }
+   GenericEntity {
+    ID "552C7390253853CA"
+    coords 0.044 0.864 0.051
+   }
+   GenericEntity {
+    ID "552C7390253853F6"
+    coords 0.512 0.077 0.577
+   }
+   GenericEntity {
+    ID "552C7390253853C8"
+    coords 0.354 -0.1 0.046
+    angleY -46.484
+   }
+  }
  }
 }
 $grp GenericEntity : "{DB403F1A9E7B0B4F}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_red.et" {
  {
-  coords 919.267 39 2634.237
-  angleY -14.947
+  coords 967.668 44.091 2626.438
+  angleY 74.519
  }
  {
-  coords 916.139 39 2646.027
-  angleY -14.947
- }
- {
-  coords 912.981 39 2657.815
-  angleY -14.947
- }
- {
-  coords 965.471 39 2624.622
-  angleY 164.485
- }
- {
-  coords 962.227 39 2636.381
-  angleY 164.485
- }
- {
-  coords 915.98 41.558 2647.176
-  angleY -14.947
- }
- {
-  coords 915.98 44.115 2647.176
-  angleY -14.947
- }
- {
-  coords 956.401 41.618 2657.79
-  angleY -14.947
- }
- {
-  coords 956.401 44.175 2657.79
-  angleY -14.947
- }
- {
-  coords 957.175 46.713 2647.17
-  angleY -105.597
- }
- {
-  coords 957.829 46.713 2644.732
-  angleY -105.597
- }
- {
-  coords 958.478 46.713 2642.341
-  angleY -105.597
- }
- {
-  coords 959.139 46.713 2639.972
-  angleY -105.597
- }
- {
-  coords 959.808 46.713 2637.577
-  angleY -105.597
- }
- {
-  coords 923.129 46.713 2628.431
-  angleY -105.597
- }
- {
-  coords 922.46 46.713 2630.826
-  angleY -105.597
- }
- {
-  coords 921.799 46.713 2633.195
-  angleY -105.597
- }
- {
-  coords 921.15 46.713 2635.586
-  angleY -105.597
- }
- {
-  coords 920.496 46.713 2638.024
-  angleY -105.597
+  coords 965.095 44.091 2681.57
+  angleY 73.579
  }
 }
 GenericEntity : "{DF3EF41CE4D441DE}Prefabs/Props/Industrial/BarrelMetal_01_rust.et" {
- coords 948.48 39 2638.181
+ coords 959.082 39 2648.192
+ angleY -0.906
 }
 $grp GenericEntity : "{E24A324BDAA2EEE3}Prefabs/Props/Industrial/BarrelMetal_01_blue_open.et" {
  {
-  coords 936.804 39 2642.694
+  coords 939.272 39 2655.723
+  angleY -0.847
  }
  {
-  coords 937.554 39 2642.916
+  coords 940.018 39 2655.955
+  angleY -0.847
  }
 }
-$grp GenericEntity : "{EF2962FC3EFD9C17}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_grey.et" {
+GenericEntity : "{F2C5628C6D12840C}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_HansaAtlantic.et" {
+ coords 952.153 46.649 2678.717
+ angleY 105.939
+}
+$grp GenericEntity : "{FA34D99C60B233F0}PrefabsEditable/Auto/Props/Wrecks/E_S105_wreck.et" {
  {
-  coords 919.959 44.094 2632.402
-  angleY -14.892
+  coords 973.083 39 2636.809
+  angleY 30.626
  }
  {
-  coords 960.379 44.154 2643.016
-  angleY -14.892
+  coords 971.87 39 2660.034
+  angleY -44.795
+ }
+ {
+  coords 973.332 39 2650.701
+  angleY 76.161
  }
 }
-$grp GenericEntity : "{EF490B50F7E11EBA}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_US_supplies.et" {
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 923.288 39 2628.931
-  angleY 165.186
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 920.902 39 2637.799
-  angleY 166.577
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 925.695 39 2629.59
-  angleY 165.558
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 925.68 41.565 2629.615
-  angleY 165.558
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 923.383 41.565 2638.346
-  angleY 165.558
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 923.38 39 2638.431
-  angleY 165.558
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 956.785 39 2637.327
-  angleY -15.01
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 959.197 39 2637.966
-  angleY -15.01
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 956.723 39 2646.875
-  angleY -15.382
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 954.283 41.565 2646.192
-  angleY -15.01
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 956.809 41.565 2637.322
-  angleY -15.01
- }
- {
-  components {
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      Duration 100000000
-     }
-    }
-   }
-  }
-  coords 954.331 39 2646.172
-  angleY -15.01
- }
+GenericEntity : "{FD016719F98775F9}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_SZD.et" {
+ coords 912.147 46.68 2655.549
+ angleY -50.324
 }
-GenericEntity : "{FA34D99C60B233F0}PrefabsEditable/Auto/Props/Wrecks/E_S105_wreck.et" {
- coords 954.958 39 2625.188
- angleY 31.533
-}
-$grp GenericEntity : "{FD016719F98775F9}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_SZD.et" {
- {
-  coords 958.116 49.286 2641.892
-  angleY -15.521
- }
- {
-  coords 927.729 46.681 2612.318
-  angleY -61.643
- }
-}
-$grp GenericEntity : "{FF7C0A161F852119}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_olive.et" {
- {
-  coords 922.412 39.009 2622.397
-  angleY -14.774
- }
- {
-  coords 958.964 39.009 2648.188
-  angleY 164.658
- }
- {
-  coords 955.721 39.009 2659.981
-  angleY 164.658
- }
+GenericEntity : "{FF7C0A161F852119}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_olive.et" {
+ coords 955.842 44.123 2623.299
+ angleY -104.87
 }

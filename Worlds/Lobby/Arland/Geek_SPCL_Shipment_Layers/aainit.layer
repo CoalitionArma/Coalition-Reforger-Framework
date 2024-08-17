@@ -1,5 +1,5 @@
 SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
- coords 979.23 39 2619.764
+ coords 1299.641 39 2066.657
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
@@ -7,17 +7,17 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    m_iTimeLimitMinutes 10
   }
  }
- coords 988.184 38.975 2620.584
+ coords 1308.595 38.975 2067.477
  {
   RadioManagerEntity {
    ID "61BCFEC02D38B821"
-   coords -26.889 7.693 -2.478
+   coords -40.367 7.693 -25.52
   }
   ScriptedChatEntity {
    ID "61BCFEC02D38B827"
    coords -318.967 1.826 1.838
   }
-  SCR_FactionManager {
+  SCR_FactionManager "62233AAC4E12266C" {
    ID "61BCFEC02D38B83E"
    coords 0 0 0
    Factions {
@@ -25,12 +25,16 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
       m_aSquadNames {
        SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1"
        }
        SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "2"
        }
        SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "3"
        }
        SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "4"
        }
        SCR_CallsignInfo "{62216AB11D9FFF1A}" {
         m_sCallsign "5"
@@ -69,7 +73,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    ID "61BCFEC02D389A5B"
    coords 0 0 0
   }
-  ItemPreviewManagerEntity {
+  ItemPreviewManagerEntity "62233AAC4E12184F" {
    ID "61BCFEC02D389A57"
    coords -12.245 -0.037 -7.529
   }
