@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{D98805C88CAB8AE2}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Specials/CRF_USMC_RiflemanOnlySquad.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

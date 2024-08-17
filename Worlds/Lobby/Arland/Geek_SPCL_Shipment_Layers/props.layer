@@ -1,0 +1,1324 @@
+GenericEntity : "{01969A28078FCA69}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_02.et" {
+ coords 942.625 39 2622.406
+ angleY -68.732
+}
+$grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_ammo.et" {
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 922.313 39 2633.489
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 924.661 39 2634.123
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 932.266 39.01 2643.088
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 934.775 39.01 2643.739
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 935.705 39.01 2632.312
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 938.214 39.01 2632.963
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 935.705 41.573 2632.312
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 938.214 41.573 2632.963
+  angleY -14.874
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 957.787 39 2642.407
+  angleY 164.558
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 955.492 39 2641.763
+  angleY 164.558
+ }
+}
+GenericEntity : "{1CF33A86C184B00B}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Duvanblade.et" {
+ coords 921.549 46.679 2659.567
+ angleY 76.691
+}
+$grp GenericEntity : "{3533DB963FA9C81F}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_Base.et" {
+ {
+  coords 918.298 41.555 2638.359
+  angleY -14.512
+ }
+ {
+  coords 961.745 41.555 2637.289
+  angleY 164.92
+ }
+}
+$grp GenericEntity : "{3E9EDDFC51BB3410}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_olive.et" {
+ {
+  coords 917.952 44.12 2639.773
+  angleY -15.336
+ }
+ {
+  coords 925.022 44.075 2613.186
+  angleY -15.336
+ }
+ {
+  coords 958.373 44.18 2650.387
+  angleY -15.336
+ }
+ {
+  coords 954.261 41.573 2664.95
+  angleY -104.56
+ }
+ {
+  coords 966.3 41.533 2621.285
+  angleY -15.336
+ }
+ {
+  coords 967.515 39 2617.315
+  angleY -15.336
+ }
+ {
+  coords 954.3 44.138 2664.952
+  angleY -104.56
+ }
+ {
+  coords 967.14 41.565 2618.414
+  angleY -15.336
+ }
+}
+$grp GenericEntity : "{41F2EFF5B1118336}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_BaltaShipping.et" {
+ {
+  coords 943.455 39 2620.879
+  angleY -103.424
+ }
+ {
+  coords 952.176 46.694 2664.085
+  angleY -53.064
+ }
+ {
+  coords 961.4 39 2656.395
+  angleY 20.103
+ }
+}
+$grp GenericEntity : "{4BE795374BE3D67E}Prefabs/Props/Industrial/BarrelFuel_01_closed.et" {
+ {
+  coords 932.01 39 2622.112
+ }
+ {
+  coords 932.187 39 2622.774
+ }
+ {
+  coords 932.817 39 2622.627
+ }
+ {
+  coords 932.668 39 2621.978
+ }
+}
+$grp GenericEntity : "{5B17515707F080E0}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Starline.et" {
+ {
+  coords 968.239 39 2630.102
+  angleY -56.074
+ }
+ {
+  coords 945.144 44.097 2634.553
+  angleY -14.096
+ }
+}
+$grp GenericEntity : "{63CBCCD35D82066C}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_supplies.et" {
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 944.772 44.129 2646.295
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 944.772 41.564 2646.295
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 944.707 39 2646.27
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 942.244 39 2645.655
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 942.309 41.564 2645.68
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 942.285 44.129 2645.772
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 947.62 41.564 2635.309
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 947.555 39 2635.283
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 944.962 39 2634.644
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 945.027 41.564 2634.668
+  angleY -14.075
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 925.3 44.129 2631.206
+  angleY -13.994
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 924.648 41.564 2634.086
+  angleY -15.237
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 923.851 44.129 2636.795
+  angleY -15.237
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 955.511 41.564 2641.733
+  angleY 164.195
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 956.203 44.129 2638.721
+  angleY 164.195
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 954.589 44.129 2644.678
+  angleY 165.438
+ }
+}
+$grp GenericEntity : "{7D52C517720EF2F5}Prefabs/Props/Industrial/BarrelMetal_01_blue.et" {
+ {
+  coords 942.465 39 2649.413
+ }
+ {
+  coords 942.927 39 2650.027
+ }
+}
+$grp GenericEntity : "{7D52C517720EF2F6}Prefabs/Props/Industrial/BarrelMetal_01_grey.et" {
+ {
+  coords 943.227 39 2637.724
+ }
+ {
+  coords 943.046 39 2638.467
+ }
+}
+GenericEntity : "{82008EE10AB80D6E}PrefabsEditable/Auto/Props/Wrecks/E_UAZ469_wreck.et" {
+ coords 924.932 38.65 2649.187
+ angleY 0.336
+}
+GenericEntity : "{82DDDA574CB4F0D9}Prefabs/Props/Industrial/BarrelFuel_01_Base.et" {
+ coords 942.862 39 2618.232
+}
+$grp GenericEntity : "{887780D497AADE00}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_Base.et" {
+ {
+  coords 955.304 39 2667.925
+  angleY -103.914
+ }
+ {
+  coords 943.731 39 2665.058
+  angleY -103.914
+ }
+ {
+  coords 931.971 39 2662.145
+  angleY -103.914
+ }
+ {
+  coords 920.223 39 2659.235
+  angleY -103.914
+ }
+ {
+  coords 959.7 39 2617.732
+  angleY -103.914
+ }
+ {
+  coords 948.127 39 2614.866
+  angleY -103.914
+ }
+ {
+  coords 936.367 39 2611.953
+  angleY -103.914
+ }
+ {
+  coords 936.367 41.558 2611.953
+  angleY -103.914
+ }
+ {
+  coords 948.127 41.558 2614.866
+  angleY -103.914
+ }
+ {
+  coords 959.7 41.558 2617.732
+  angleY -103.914
+ }
+ {
+  coords 936.367 44.116 2611.953
+  angleY -103.914
+ }
+ {
+  coords 948.127 44.116 2614.866
+  angleY -103.914
+ }
+ {
+  coords 959.7 44.116 2617.732
+  angleY -103.914
+ }
+ {
+  coords 955.304 41.558 2667.925
+  angleY -103.914
+ }
+ {
+  coords 943.731 41.558 2665.058
+  angleY -103.914
+ }
+ {
+  coords 931.971 41.558 2662.145
+  angleY -103.914
+ }
+ {
+  coords 920.223 41.558 2659.235
+  angleY -103.914
+ }
+ {
+  coords 955.304 44.115 2667.925
+  angleY -103.914
+ }
+ {
+  coords 943.731 44.115 2665.058
+  angleY -103.914
+ }
+ {
+  coords 931.971 44.115 2662.145
+  angleY -103.914
+ }
+ {
+  coords 920.223 44.115 2659.235
+  angleY -103.914
+ }
+ {
+  coords 972.488 39 2626.704
+  angleY 76.146
+ }
+ {
+  coords 872.556 41.509 2640.653
+  angleY -104.788
+ }
+ {
+  coords 998.407 39 2670.856
+  angleY 76.146
+ }
+ {
+  coords 882.17 41.509 2605.017
+  angleY -104.788
+ }
+ {
+  coords 882.17 38.957 2605.017
+  angleY -104.788
+ }
+ {
+  coords 998.407 41.558 2670.856
+  angleY 76.146
+ }
+ {
+  coords 1007.657 39 2635.041
+  angleY 76.146
+ }
+ {
+  coords 1007.657 41.558 2635.041
+  angleY 76.146
+ }
+ {
+  coords 872.556 38.957 2640.653
+  angleY -104.788
+ }
+}
+$grp GenericEntity : "{88A64A32F78CFB77}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_blue.et" {
+ {
+  coords 921.365 41.561 2626.833
+  angleY -14.081
+ }
+ {
+  coords 958.67 41.561 2649.073
+  angleY 165.351
+ }
+}
+$grp GenericEntity : "{8F08705D73A7C711}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_20ft_red.et" {
+ {
+  coords 924.765 39 2613.559
+  angleY -14.871
+ }
+ {
+  coords 920.441 39 2612.552
+  angleY 75.012
+ }
+ {
+  coords 921.083 39 2610.148
+  angleY 75.012
+ }
+ {
+  coords 927.52 39 2609.796
+  angleY 75.012
+ }
+ {
+  coords 927.516 41.564 2609.76
+  angleY 75.012
+ }
+ {
+  coords 927.516 44.129 2609.76
+  angleY 75.012
+ }
+ {
+  coords 920.441 41.565 2612.552
+  angleY 75.012
+ }
+ {
+  coords 921.081 41.565 2610.163
+  angleY 75.012
+ }
+ {
+  coords 920.441 44.129 2612.552
+  angleY 75.012
+ }
+ {
+  coords 921.081 44.129 2610.163
+  angleY 75.012
+ }
+ {
+  coords 924.937 46.695 2610.893
+  angleY -61.564
+ }
+}
+$grp GenericEntity : "{939E032C3B6E837A}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_Chernarussian.et" {
+ {
+  coords 944.926 39 2617.623
+  angleY 55.577
+ }
+ {
+  coords 934.814 46.68 2662.885
+  angleY 75.401
+ }
+ {
+  coords 921.693 49.286 2633.791
+  angleY 20.033
+ }
+}
+$grp GenericEntity : "{9A3ADECE49EF8993}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_green.et" {
+ {
+  coords 964.217 41.565 2628.489
+  angleY -15.8
+ }
+ {
+  coords 923.711 41.533 2617.928
+  angleY -14.42
+ }
+ {
+  coords 923.143 44.066 2620.61
+  angleY -14.42
+ }
+ {
+  coords 963.563 44.126 2631.224
+  angleY -14.42
+ }
+}
+$grp GenericEntity : "{B6B2AD00E71AD0B5}Prefabs/Props/Industrial/BarrelMetal_01_Base.et" {
+ {
+  coords 925.833 39 2640
+ }
+ {
+  coords 925.057 39 2639.931
+ }
+}
+$grp GenericEntity : "{CAD13AC8DAFEB0E8}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_USSR_supplies.et" {
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 935.676 39 2657.775
+  angleY 74.131
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 935.095 39 2660.023
+  angleY 75.117
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 918.104 39 2654.336
+  angleY 22.52
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 950.72 39 2662.194
+  angleY -53.945
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 961.543 39 2622.545
+  angleY 31.561
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 928.976 39 2614.467
+  angleY -61.044
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 928.976 41.565 2614.467
+  angleY -61.044
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 961.543 41.565 2622.545
+  angleY 31.561
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 928.976 44.129 2614.467
+  angleY -61.044
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 961.543 44.129 2622.545
+  angleY 31.561
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 950.72 41.565 2662.194
+  angleY -53.945
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 918.104 41.565 2654.336
+  angleY 22.52
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 950.72 44.129 2662.194
+  angleY -53.945
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 918.104 44.129 2654.336
+  angleY 22.52
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 959.333 39 2663.795
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 958.76 41.565 2666.195
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 959.333 41.565 2663.795
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 958.76 44.129 2666.195
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 959.333 44.129 2663.795
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 958.76 46.693 2666.195
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 959.333 46.693 2663.795
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 913.495 44.098 2656.055
+  angleY -16.255
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 913.495 41.533 2656.055
+  angleY -16.255
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 915.72 46.663 2655.242
+  angleY 22.52
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 958.76 39 2666.195
+  angleY -103.639
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 966.077 44.098 2622.343
+  angleY -14.576
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 963.558 46.694 2621.252
+  angleY 31.561
+ }
+}
+$grp GenericEntity : "{D93EF3E97E06D435}Prefabs/Compositions/Misc/SubCompositions/BarrelClutter_04.et" {
+ {
+  coords 944.644 39 2658.495
+ }
+ {
+  coords 943.645 39 2618.929
+  angleY 21.867
+ }
+ {
+  coords 942.128 39 2618.833
+  angleY 167.6
+ }
+}
+$grp GenericEntity : "{DB403F1A9E7B0B4F}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_red.et" {
+ {
+  coords 919.267 39 2634.237
+  angleY -14.947
+ }
+ {
+  coords 916.139 39 2646.027
+  angleY -14.947
+ }
+ {
+  coords 912.981 39 2657.815
+  angleY -14.947
+ }
+ {
+  coords 965.471 39 2624.622
+  angleY 164.485
+ }
+ {
+  coords 962.227 39 2636.381
+  angleY 164.485
+ }
+ {
+  coords 915.98 41.558 2647.176
+  angleY -14.947
+ }
+ {
+  coords 915.98 44.115 2647.176
+  angleY -14.947
+ }
+ {
+  coords 956.401 41.618 2657.79
+  angleY -14.947
+ }
+ {
+  coords 956.401 44.175 2657.79
+  angleY -14.947
+ }
+ {
+  coords 957.175 46.713 2647.17
+  angleY -105.597
+ }
+ {
+  coords 957.829 46.713 2644.732
+  angleY -105.597
+ }
+ {
+  coords 958.478 46.713 2642.341
+  angleY -105.597
+ }
+ {
+  coords 959.139 46.713 2639.972
+  angleY -105.597
+ }
+ {
+  coords 959.808 46.713 2637.577
+  angleY -105.597
+ }
+ {
+  coords 923.129 46.713 2628.431
+  angleY -105.597
+ }
+ {
+  coords 922.46 46.713 2630.826
+  angleY -105.597
+ }
+ {
+  coords 921.799 46.713 2633.195
+  angleY -105.597
+ }
+ {
+  coords 921.15 46.713 2635.586
+  angleY -105.597
+ }
+ {
+  coords 920.496 46.713 2638.024
+  angleY -105.597
+ }
+}
+GenericEntity : "{DF3EF41CE4D441DE}Prefabs/Props/Industrial/BarrelMetal_01_rust.et" {
+ coords 948.48 39 2638.181
+}
+$grp GenericEntity : "{E24A324BDAA2EEE3}Prefabs/Props/Industrial/BarrelMetal_01_blue_open.et" {
+ {
+  coords 936.804 39 2642.694
+ }
+ {
+  coords 937.554 39 2642.916
+ }
+}
+$grp GenericEntity : "{EF2962FC3EFD9C17}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_grey.et" {
+ {
+  coords 919.959 44.094 2632.402
+  angleY -14.892
+ }
+ {
+  coords 960.379 44.154 2643.016
+  angleY -14.892
+ }
+}
+$grp GenericEntity : "{EF490B50F7E11EBA}Prefabs/Props/Military/CargoContainers/CargoContainer_01_10ft_US_supplies.et" {
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 923.288 39 2628.931
+  angleY 165.186
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 920.902 39 2637.799
+  angleY 166.577
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 925.695 39 2629.59
+  angleY 165.558
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 925.68 41.565 2629.615
+  angleY 165.558
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 923.383 41.565 2638.346
+  angleY 165.558
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 923.38 39 2638.431
+  angleY 165.558
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 956.785 39 2637.327
+  angleY -15.01
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 959.197 39 2637.966
+  angleY -15.01
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 956.723 39 2646.875
+  angleY -15.382
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 954.283 41.565 2646.192
+  angleY -15.01
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 956.809 41.565 2637.322
+  angleY -15.01
+ }
+ {
+  components {
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      Duration 100000000
+     }
+    }
+   }
+  }
+  coords 954.331 39 2646.172
+  angleY -15.01
+ }
+}
+GenericEntity : "{FA34D99C60B233F0}PrefabsEditable/Auto/Props/Wrecks/E_S105_wreck.et" {
+ coords 954.958 39 2625.188
+ angleY 31.533
+}
+$grp GenericEntity : "{FD016719F98775F9}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_SZD.et" {
+ {
+  coords 958.116 49.286 2641.892
+  angleY -15.521
+ }
+ {
+  coords 927.729 46.681 2612.318
+  angleY -61.643
+ }
+}
+$grp GenericEntity : "{FF7C0A161F852119}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_40ft_olive.et" {
+ {
+  coords 922.412 39.009 2622.397
+  angleY -14.774
+ }
+ {
+  coords 958.964 39.009 2648.188
+  angleY 164.658
+ }
+ {
+  coords 955.721 39.009 2659.981
+  angleY 164.658
+ }
+}

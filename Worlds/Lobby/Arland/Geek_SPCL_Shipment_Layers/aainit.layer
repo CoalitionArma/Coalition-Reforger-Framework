@@ -1,0 +1,77 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 979.23 39 2619.764
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{62216AB1F8385362}" {
+   m_iTimeLimitMinutes 10
+  }
+ }
+ coords 988.184 38.975 2620.584
+ {
+  RadioManagerEntity {
+   ID "61BCFEC02D38B821"
+   coords -26.889 7.693 -2.478
+  }
+  ScriptedChatEntity {
+   ID "61BCFEC02D38B827"
+   coords -318.967 1.826 1.838
+  }
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   coords 0 0 0
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+       }
+       SCR_CallsignInfo "{62216AB11D9FFF1A}" {
+        m_sCallsign "5"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "2"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "3"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "4"
+       }
+       SCR_CallsignInfo "{62216AB107973004}" {
+        m_sCallsign "5"
+       }
+      }
+     }
+    }
+   }
+  }
+  SCR_BaseTaskManager {
+   ID "61BCFEC2802D709E"
+   coords 0 0 0
+  }
+  SCR_EditorSettingsEntity {
+   ID "61BCFEC02D389A5B"
+   coords 0 0 0
+  }
+  ItemPreviewManagerEntity {
+   ID "61BCFEC02D389A57"
+   coords -12.245 -0.037 -7.529
+  }
+ }
+}

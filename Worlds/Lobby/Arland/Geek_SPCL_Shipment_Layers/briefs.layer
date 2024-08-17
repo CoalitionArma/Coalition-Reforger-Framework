@@ -1,0 +1,10 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 957.505 39.01 2608.409
+ m_sTextData "10 minutes."\
+ "Special."\
+ "Don't sit in spawn like a giant pussy."\
+ ""
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 929.779 39 2597.245
+}
