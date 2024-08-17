@@ -116,6 +116,9 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
       m_sNameUpper "BLUFOR"
      }
     }
+    SCR_Faction "{5E5106B25048F22B}" {
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
    }
   }
   RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
