@@ -499,12 +499,12 @@ $grp GenericEntity : "{82008EE10AB80D6E}PrefabsEditable/Auto/Props/Wrecks/E_UAZ4
   angleY -0.511
  }
  {
-  coords 923.827 38.65 2648.329
+  coords 931.402 38.65 2645.644
   angleY -0.511
  }
  {
-  coords 926.644 38.65 2638.113
-  angleY -45.148
+  coords 961.474 38.65 2633.755
+  angleY -64.815
  }
 }
 GenericEntity : "{82DDDA574CB4F0D9}Prefabs/Props/Industrial/BarrelFuel_01_Base.et" {
@@ -1158,12 +1158,12 @@ $grp GenericEntity : "{FA34D99C60B233F0}PrefabsEditable/Auto/Props/Wrecks/E_S105
   angleY 30.626
  }
  {
-  coords 971.87 39 2660.034
+  coords 942.03 39 2664.33
   angleY -44.795
  }
  {
-  coords 973.332 39 2650.701
-  angleY 76.161
+  coords 967.083 39 2654.426
+  angleY 5.275
  }
 }
 GenericEntity : "{FD016719F98775F9}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_SZD.et" {
