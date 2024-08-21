@@ -1,0 +1,37 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 10136.384 2.563 1542.988
+ angleY -73.078
+}
+SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+ coords 10156.189 2.781 1552.509
+ {
+  SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+   coords -2.743 -0.186 -11.355
+   {
+    SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+     coords -2.818 0 -9.624
+     {
+      SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+       coords -2.763 0 -9.371
+       {
+        SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+         coords -2.621 0 -9.149
+         {
+          SCR_AIGroup : "{EF56323F873DAB17}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_MATTeam.et" {
+           coords 17.779 -0.064 -6.816
+           {
+            SCR_AIGroup : "{EF56323F873DAB17}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_MATTeam.et" {
+             coords 2.458 0 11.264
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

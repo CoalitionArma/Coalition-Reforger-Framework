@@ -1,0 +1,290 @@
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ INDFORSafeStartBorderMarker {
+  coords 7526.039 167.567 4354.801
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker2 {
+  coords 7523.097 167.567 4344.112
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker3 {
+  coords 7518.137 167.567 4328.659
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker4 {
+  coords 7512.844 167.567 4311.58
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker5 {
+  coords 7509.583 167.567 4299.306
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker6 {
+  coords 7505.934 167.567 4285.254
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker7 {
+  coords 7499.75 167.567 4270.461
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker8 {
+  coords 7494.833 167.567 4252.078
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker9 {
+  coords 7491.273 167.567 4241.444
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker10 {
+  coords 7475.151 167.567 4244.418
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker11 {
+  coords 7457.345 167.567 4248.794
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker12 {
+  coords 7440.455 167.567 4254.174
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker13 {
+  coords 7418.641 167.567 4259.745
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker14 {
+  coords 7404.896 167.567 4263.897
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker15 {
+  coords 7389.719 167.567 4269.217
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker16 {
+  coords 7373.998 167.567 4275.304
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker17 {
+  coords 7366.444 167.567 4277.157
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker18 {
+  coords 7372.875 167.567 4287.101
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker19 {
+  coords 7378.355 167.567 4297.183
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker20 {
+  coords 7384.172 167.567 4310.463
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker21 {
+  coords 7390.854 167.567 4323.471
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker22 {
+  coords 7399.099 167.567 4342.489
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker23 {
+  coords 7408.106 167.567 4357.225
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker24 {
+  coords 7417.896 167.567 4376.494
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker25 {
+  coords 7420.744 167.567 4384.504
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker26 {
+  coords 7431.632 167.567 4381.098
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker27 {
+  coords 7444.845 167.567 4376.89
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker28 {
+  coords 7459.333 167.567 4373.115
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker29 {
+  coords 7470.957 167.567 4370.408
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker30 {
+  coords 7482.25 167.567 4366.531
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker31 {
+  coords 7497.785 167.567 4362.053
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORSafeStartBorderMarker32 {
+  coords 7511.856 167.567 4358.477
+  angleY 0
+  m_MarkerColor 0.503 0 0 1
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+}

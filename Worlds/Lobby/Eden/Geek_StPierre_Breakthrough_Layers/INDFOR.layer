@@ -1,0 +1,83 @@
+SCR_AIGroup : "{2ED2173F09D38D65}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_COY_P.et" {
+ coords 7473.964 164.605 4339.313
+ angleY 180
+ m_sCustomNameSet "Cell Command"
+ {
+  SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+   coords -6.72 -0.105 9.114
+   angleY 180
+   m_sCustomNameSet "1st Platoon"
+   {
+    SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+     coords -1.671 0.1 -6.58
+     {
+      SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+       coords -1.842 0 -7.778
+       m_sCustomNameSet "2nd Squad"
+       {
+        SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+         coords -1.767 0 -7.742
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+           coords -9.658 -0.1 26.94
+           m_sCustomNameSet "2nd Platoon"
+           {
+            SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+             coords -2.333 0.063 -6.527
+             {
+              SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+               coords -3.232 0 -7.877
+               m_sCustomNameSet "2nd Squad"
+               {
+                SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+                 coords -2.549 0 -5.934
+                 m_sCustomNameSet "3rd Squad"
+                 {
+                  SCR_AIGroup : "{734B886D3D2AB351}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_MMGTeam_P.et" {
+                   coords -26.468 -1.619 14.004
+                   {
+                    SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
+                     coords 3.583 -0.014 8.986
+                     m_sCustomNameSet "BTR 1"
+                     {
+                      SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
+                       coords 2.662 0 5.361
+                       m_sCustomNameSet "BTR 2"
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 7425.392 163.013 4315.181
+ angleY -153.202
+}
+$grp Vehicle : "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et" {
+ BTR70_FIA1 {
+  coords 7420.98 163.001 4317.35
+  angleY -154.23
+ }
+ BTR70_FIA2 {
+  coords 7430.669 163.001 4312.672
+  angleY -154.23
+ }
+}
