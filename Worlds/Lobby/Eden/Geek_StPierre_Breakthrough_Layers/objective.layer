@@ -12,7 +12,7 @@ SCR_BaseFactionTriggerEntity endTrig {
  {
   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
    coords 1.227 10.033 -2.694
-   angleY 0
+   m_bVisibleForEmptyFaction 1
   }
  }
 }
