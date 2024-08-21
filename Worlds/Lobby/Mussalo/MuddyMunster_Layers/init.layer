@@ -1,0 +1,208 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 4395.578 6.066 3650.503
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{622B31BFEDBB85B6}" {
+   defendingSide "FIA"
+  }
+ }
+ coords 5475.584 7.1 3294.248
+ {
+  SCR_FactionManager {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "A Co HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Platoon HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{622B31A86D877ADF}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{622B31A86B2E40DB}" {
+        m_sCallsign "2nd Platoon HQ"
+       }
+       SCR_CallsignInfo "{622B31A86AF51688}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{622B31A86A230317}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{622B31A8699F29C3}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{622B31A8694B93C7}" {
+        m_sCallsign "A Co Fires (Mortars)"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "Sniper Section"
+       }
+       SCR_CallsignInfo "{622B31A9DB1D31C8}" {
+        m_sCallsign "Mortar Team"
+       }
+       SCR_CallsignInfo "{622B31AF7CF934AC}" {
+        m_sCallsign "RPG Section"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 5483.765 7.1 3298.739
+ }
+ bSiteTrigger {
+  coords 5418.754 1.924 2758.34
+ }
+}
+$grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ M997_maxi_ambulance1 {
+  coords 4370.229 14.441 3725.201
+  angleX -1.021
+  angleY 118.682
+  angleZ 16.33
+ }
+ M997_maxi_ambulance2 {
+  coords 4416.885 11.536 3696.732
+  angleX 0.145
+  angleY 121.021
+  angleZ 8.384
+ }
+}
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_armed_M2HB1 {
+  coords 4458.204 13.238 3669.157
+  angleX 0.384
+  angleY 137.047
+  angleZ 6.947
+ }
+ M1025_armed_M2HB2 {
+  coords 4446.003 12.62 3676.924
+  angleX 2.398
+  angleY 126.306
+  angleZ 7.272
+ }
+ M1025_armed_M2HB3 {
+  coords 4410.573 11.627 3700.381
+  angleX -3.707
+  angleY 134.444
+  angleZ 8.81
+ }
+ M1025_armed_M2HB4 {
+  coords 4398.109 12.356 3707.718
+  angleX -4.358
+  angleY 123.095
+  angleZ 9.851
+ }
+ M1025_armed_M2HB5 {
+  coords 4434.797 12.007 3685.347
+  angleX 2.398
+  angleY 126.306
+  angleZ 7.272
+ }
+ M1025_armed_M2HB6 {
+  coords 4386.754 13.432 3714.995
+  angleX -5.65
+  angleY 124.728
+  angleZ 11.124
+ }
+}
+$grp Vehicle : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ M1 {
+  coords 4451.991 12.986 3673.044
+  angleX 2.579
+  angleY 129.303
+  angleZ 6.703
+ }
+ M2 {
+  coords 4441.521 12.39 3680.59
+  angleX 2.135
+  angleY 129.324
+  angleZ 8.622
+ }
+ M3 {
+  coords 4429.592 11.824 3689.198
+  angleX 0.91
+  angleY 128.12
+  angleZ 7.498
+ }
+ M6 {
+  coords 4404.229 11.894 3704.05
+  angleX -4.169
+  angleY 126.192
+  angleZ 10.122
+ }
+ M7 {
+  coords 4392.381 13.022 3711.918
+  angleX -4.503
+  angleY 126.378
+  angleZ 16.194
+ }
+ M8 {
+  coords 4381.643 13.865 3718.327
+  angleX -4.577
+  angleY 125.149
+  angleZ 13.96
+ }
+ M9 {
+  coords 4361.974 14.683 3730.077
+  angleX 3.338
+  angleY 118.954
+  angleZ -8.19
+ }
+ M10 {
+  coords 4423.716 11.589 3692.474
+  angleX 1.349
+  angleY 121.192
+  angleZ 8.086
+ }
+ M11 {
+  coords 4376.565 14.164 3721.363
+  angleX 1.349
+  angleY 121.192
+  angleZ 8.086
+ }
+}
+GenericEntity : "{B3BCE4B6920ED5C0}Prefabs/Structures/Signs/Military/Sign_AmmoStorage_US_01.et" {
+ coords 4338.91 10.236 3708.318
+ angleY -156
+}

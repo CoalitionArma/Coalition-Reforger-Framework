@@ -1,0 +1,202 @@
+$grp Turret : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
+ {
+  coords 4245.654 12.446 3714.171
+  angleX -1.381
+  angleY 120.945
+  angleZ 2.302
+ }
+ {
+  coords 4248.293 12.6 3719.208
+  angleX -1.381
+  angleY 120.945
+  angleZ 2.302
+ }
+}
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 4360.088 4.474 3449.358
+ }
+ {
+  coords 4389.992 4.953 3493.504
+ }
+ {
+  coords 4451.08 3.028 3584.149
+ }
+ {
+  coords 4482.773 12.304 3661.136
+ }
+}
+$grp GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/AmmoBoxArsenal_Ammunition_FIA.et" {
+ {
+  components {
+   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+    Enabled 0
+    m_bArsenalEnabled 0
+   }
+   SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+    Enabled 0
+   }
+   SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
+    Enabled 0
+   }
+   UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
+    Attributes SCR_ItemAttributeCollection "{58A17A346E386320}" {
+     ItemDisplayName SCR_InventoryUIInfo "{58A17A3474A3430E}" {
+      Name "Mortar Ammobox"
+      Description ""
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{622B31AAF37B69B5}" {
+     }
+     m_Size SLOT_3x3
+     m_SlotType SLOT_WEAPONS_STORAGE
+    }
+    UseCapacityCoefficient 0
+    MaxCumulativeVolume 50000
+    MultiSlots {
+     MultiSlotConfiguration "{622B31B5DCEAF549}" {
+      SlotTemplate InventoryStorageSlot Ammo {
+       Prefab "{FC7427975FF6AEB1}Mortars/81/m25281mm.et"
+      }
+      NumSlots 10
+     }
+    }
+   }
+   SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+    Enabled 0
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      UIInfo UIInfo "{52E6EC759A11C684}" {
+       Name "Open Ammobox"
+      }
+     }
+    }
+   }
+  }
+  coords 4339.387 10.236 3707.981
+  angleY -154
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+    Enabled 0
+    m_bArsenalEnabled 0
+   }
+   SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+    Enabled 0
+   }
+   SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
+    Enabled 0
+   }
+   UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
+    Attributes SCR_ItemAttributeCollection "{58A17A346E386320}" {
+     ItemDisplayName SCR_InventoryUIInfo "{58A17A3474A3430E}" {
+      Name "Mortar Ammobox"
+      Description ""
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{622B31AAF37B69B5}" {
+     }
+     m_Size SLOT_3x3
+     m_SlotType SLOT_WEAPONS_STORAGE
+    }
+    UseCapacityCoefficient 0
+    MaxCumulativeVolume 50000
+    MultiSlots {
+     MultiSlotConfiguration "{622B31B5DCEAF549}" {
+      SlotTemplate InventoryStorageSlot Ammo {
+       Prefab "{FC7427975FF6AEB1}Mortars/81/m25281mm.et"
+      }
+      NumSlots 10
+     }
+    }
+   }
+   SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+    Enabled 0
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      UIInfo UIInfo "{52E6EC759A11C684}" {
+       Name "Open Ammobox"
+      }
+     }
+    }
+   }
+  }
+  coords 4340.156 10.236 3707.607
+  angleY -154
+ }
+}
+SCR_AIGroup : "{782321E88C1F2F23}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Company_p.et" {
+ coords 4377.437 6.956 3654.275
+ m_aUnitPrefabSlots + {
+  "{5FC2D849AD3FE106}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_FO_P.et"
+ }
+ m_sCustomNameSet ""
+ {
+  SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+   coords 1.514 0.715 12.458
+   m_sCustomNameSet ""
+   {
+    SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+     coords 12.048 -5.105 -3.204
+     m_sCustomNameSet ""
+     {
+      SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+       coords -21.409 4.16 -34.09
+       m_sCustomNameSet ""
+       {
+        SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+         coords 2.63 0.651 33.336
+         m_sCustomNameSet ""
+         {
+          SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+           coords -23.571 -0.689 -39.782
+           m_sCustomNameSet ""
+           {
+            SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+             coords -14.594 -0.001 -7.533
+             m_sCustomNameSet ""
+             {
+              SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+               coords 20.188 -1.144 -11.235
+               m_sCustomNameSet ""
+               {
+                SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+                 coords -17.857 0.104 -4.195
+                 m_sCustomNameSet ""
+                 {
+                  SCR_AIGroup : "{205C762616F796B6}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_IndirectTeam.et" {
+                   coords -78.541 6.614 110.785
+                   m_sCustomNameSet ""
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 4355.067 6.842 3646.159
+ }
+ {
+  coords 4339.671 10.37 3707.654
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mine-single"
+  m_sDescription "Mortar Ammo Point"
+ }
+}
