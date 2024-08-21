@@ -6,10 +6,18 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   CRF_SearchAndDestroyGameModeComponent "{622B31BFEDBB85B6}" {
    defendingSide "FIA"
   }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{622B6922FC9E6F8F}" {
+     m_sWeatherPresetName "Rainy"
+    }
+   }
+  }
  }
  coords 5475.584 7.1 3294.248
  {
-  SCR_FactionManager {
+  SCR_FactionManager "622B6923EFAB5C61" {
    ID "60E1584A0994EEB9"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -92,114 +100,6 @@ $grp SCR_BaseTriggerEntity {
  }
  bSiteTrigger {
   coords 5418.754 1.924 2758.34
- }
-}
-$grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
- M997_maxi_ambulance1 {
-  coords 4370.229 14.441 3725.201
-  angleX -1.021
-  angleY 118.682
-  angleZ 16.33
- }
- M997_maxi_ambulance2 {
-  coords 4416.885 11.536 3696.732
-  angleX 0.145
-  angleY 121.021
-  angleZ 8.384
- }
-}
-$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
- M1025_armed_M2HB1 {
-  coords 4458.204 13.238 3669.157
-  angleX 0.384
-  angleY 137.047
-  angleZ 6.947
- }
- M1025_armed_M2HB2 {
-  coords 4446.003 12.62 3676.924
-  angleX 2.398
-  angleY 126.306
-  angleZ 7.272
- }
- M1025_armed_M2HB3 {
-  coords 4410.573 11.627 3700.381
-  angleX -3.707
-  angleY 134.444
-  angleZ 8.81
- }
- M1025_armed_M2HB4 {
-  coords 4398.109 12.356 3707.718
-  angleX -4.358
-  angleY 123.095
-  angleZ 9.851
- }
- M1025_armed_M2HB5 {
-  coords 4434.797 12.007 3685.347
-  angleX 2.398
-  angleY 126.306
-  angleZ 7.272
- }
- M1025_armed_M2HB6 {
-  coords 4386.754 13.432 3714.995
-  angleX -5.65
-  angleY 124.728
-  angleZ 11.124
- }
-}
-$grp Vehicle : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
- M1 {
-  coords 4451.991 12.986 3673.044
-  angleX 2.579
-  angleY 129.303
-  angleZ 6.703
- }
- M2 {
-  coords 4441.521 12.39 3680.59
-  angleX 2.135
-  angleY 129.324
-  angleZ 8.622
- }
- M3 {
-  coords 4429.592 11.824 3689.198
-  angleX 0.91
-  angleY 128.12
-  angleZ 7.498
- }
- M6 {
-  coords 4404.229 11.894 3704.05
-  angleX -4.169
-  angleY 126.192
-  angleZ 10.122
- }
- M7 {
-  coords 4392.381 13.022 3711.918
-  angleX -4.503
-  angleY 126.378
-  angleZ 16.194
- }
- M8 {
-  coords 4381.643 13.865 3718.327
-  angleX -4.577
-  angleY 125.149
-  angleZ 13.96
- }
- M9 {
-  coords 4361.974 14.683 3730.077
-  angleX 3.338
-  angleY 118.954
-  angleZ -8.19
- }
- M10 {
-  coords 4423.716 11.589 3692.474
-  angleX 1.349
-  angleY 121.192
-  angleZ 8.086
- }
- M11 {
-  coords 4376.565 14.164 3721.363
-  angleX 1.349
-  angleY 121.192
-  angleZ 8.086
  }
 }
 GenericEntity : "{B3BCE4B6920ED5C0}Prefabs/Structures/Signs/Military/Sign_AmmoStorage_US_01.et" {
