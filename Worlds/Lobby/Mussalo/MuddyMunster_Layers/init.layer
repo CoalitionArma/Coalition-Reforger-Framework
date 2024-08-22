@@ -50,8 +50,8 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        SCR_CallsignInfo "{622B31A8699F29C3}" {
         m_sCallsign "2-3"
        }
-       SCR_CallsignInfo "{622B31A8694B93C7}" {
-        m_sCallsign "A Co Fires (Mortars)"
+       SCR_CallsignInfo "{622C1D3341F0C650}" {
+        m_sCallsign "Recon Section"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -64,6 +64,9 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
       m_bIsAssignedRandomly 0
       m_aSquadNames {
        SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Senior Cell Leader"
+       }
+       SCR_CallsignInfo "{622C1D32880BBD77}" {
         m_sCallsign "Cell 1"
        }
        SCR_CallsignInfo "{58B2B630FDD64B53}" {
@@ -101,8 +104,4 @@ $grp SCR_BaseTriggerEntity {
  bSiteTrigger {
   coords 5418.754 1.924 2758.34
  }
-}
-GenericEntity : "{B3BCE4B6920ED5C0}Prefabs/Structures/Signs/Military/Sign_AmmoStorage_US_01.et" {
- coords 4338.91 10.236 3708.318
- angleY -156
 }

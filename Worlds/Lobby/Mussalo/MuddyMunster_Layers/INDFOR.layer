@@ -29,7 +29,7 @@ $grp GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes
       SlotTemplate InventoryStorageSlot Ammo {
        Prefab "{64B634889F7AB67C}Mortars/82/podnos82mm.et"
       }
-      NumSlots 10
+      NumSlots 5
      }
     }
    }
@@ -46,7 +46,7 @@ $grp GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes
     }
    }
   }
-  coords 5447.201 1.989 2719.024
+  coords 5719.707 2.617 2748.285
   angleY -123
  }
  {
@@ -79,7 +79,7 @@ $grp GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes
       SlotTemplate InventoryStorageSlot Ammo {
        Prefab "{64B634889F7AB67C}Mortars/82/podnos82mm.et"
       }
-      NumSlots 10
+      NumSlots 5
      }
     }
    }
@@ -96,47 +96,8 @@ $grp GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes
     }
    }
   }
-  coords 5447.697 1.989 2718.251
+  coords 5720.203 2.644 2747.512
   angleY -123
- }
-}
-SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
- coords 5647.124 1.375 2713.845
- m_sCustomNameSet ""
- {
-  SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
-   coords -10.74 1.475 17.705
-   m_sCustomNameSet ""
-   {
-    SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
-     coords -7.125 0.024 -13.145
-     m_sCustomNameSet ""
-     {
-      SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
-       coords -11.539 -0.129 18.074
-       m_sCustomNameSet ""
-       {
-        SCR_AIGroup : "{5001EE57D243A0E1}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_SniperTeam_P.et" {
-         coords 8.376 -0.025 6.118
-         m_sCustomNameSet ""
-         {
-          SCR_AIGroup : "{C402FC1C37B40123}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_Indirect_P.et" {
-           coords 35.657 0.185 7.378
-           m_sCustomNameSet ""
-           {
-            SCR_AIGroup : "{196A5941072AC47C}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_MatTeam_P.et" {
-             coords -42.491 0.002 -31.005
-            }
-           }
-          }
-         }
-        }
-       }
-      }
-     }
-    }
-   }
-  }
  }
 }
 $grp Turret : "{2A473C531D075905}Mortars/82/Podnosnew.et" {
@@ -180,10 +141,6 @@ $grp Turret : "{2A473C531D075905}Mortars/82/Podnosnew.et" {
   coords 5715.235 2.606 2749.981
   angleY -50
  }
-}
-GenericEntity : "{3468AF596DC101D5}Prefabs/Structures/Signs/Military/Sign_AmmoStorage_FIA_01.et" {
- coords 5448.11 1.989 2718.642
- angleY -125
 }
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  {
@@ -258,15 +215,54 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
   }
  }
 }
-$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 5642.071 1.375 2721.937
+}
+SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+ coords 5650.132 1.375 2728.539
  {
-  coords 5642.071 1.375 2721.937
- }
- {
-  coords 5447.417 1.989 2718.637
-  angleY 90
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "mine-single"
-  m_sDescription "Mortar Ammo Point"
+  SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+   coords -3.008 -0 -14.694
+   m_sCustomNameSet ""
+   {
+    SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+     coords -10.74 1.475 17.705
+     m_sCustomNameSet ""
+     {
+      SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+       coords -7.125 0.024 -13.145
+       m_sCustomNameSet ""
+       {
+        SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+         coords -11.539 -0.129 18.074
+         m_sCustomNameSet ""
+         {
+          SCR_AIGroup : "{5001EE57D243A0E1}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_SniperTeam_P.et" {
+           coords 8.376 -0.025 6.118
+           m_sCustomNameSet ""
+           {
+            SCR_AIGroup : "{C402FC1C37B40123}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_Indirect_P.et" {
+             coords 35.657 0.185 7.378
+             m_aUnitPrefabSlots {
+              "{6A1CC2F56CD38006}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_IndirectLeader_P.et" "{7BC851B8C62730CC}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_IndirectGunner_P.et" "{7BC851B8C62730CC}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_IndirectGunner_P.et"
+             }
+             m_sCustomNameSet ""
+             {
+              SCR_AIGroup : "{196A5941072AC47C}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_MatTeam_P.et" {
+               coords -42.491 0.002 -31.005
+               m_sCustomNameSet ""
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }

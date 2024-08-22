@@ -1,15 +1,15 @@
 $grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
  M997_maxi_ambulance1 {
-  coords 4370.229 14.441 3725.201
-  angleX -1.021
-  angleY 118.682
-  angleZ 16.33
+  coords 4445.655 9.769 4732.443
+  angleX 1.185
+  angleY 155.65
+  angleZ 0.446
  }
  M997_maxi_ambulance2 {
-  coords 4416.885 11.536 3696.732
-  angleX 0.145
-  angleY 121.021
-  angleZ 8.384
+  coords 4465.782 11.167 4681.629
+  angleX 1.66
+  angleY 158.007
+  angleZ -0.67
  }
 }
 $grp Turret : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
@@ -28,255 +28,172 @@ $grp Turret : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
 }
 $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  {
-  coords 4360.088 4.474 3449.358
+  coords 4266.501 38.611 4797.333
  }
  {
-  coords 4389.992 4.953 3493.504
+  coords 4323.589 24.969 4863.207
  }
  {
-  coords 4451.08 3.028 3584.149
+  coords 4396.141 5.313 4908.867
  }
  {
-  coords 4482.773 12.304 3661.136
- }
-}
-$grp GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/AmmoBoxArsenal_Ammunition_FIA.et" {
- {
-  components {
-   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
-    Enabled 0
-    m_bArsenalEnabled 0
-   }
-   SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
-    Enabled 0
-   }
-   SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
-    Enabled 0
-   }
-   UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
-    Attributes SCR_ItemAttributeCollection "{58A17A346E386320}" {
-     ItemDisplayName SCR_InventoryUIInfo "{58A17A3474A3430E}" {
-      Name "Mortar Ammobox"
-      Description ""
-     }
-     ItemPhysAttributes ItemPhysicalAttributes "{622B31AAF37B69B5}" {
-     }
-     m_Size SLOT_3x3
-     m_SlotType SLOT_WEAPONS_STORAGE
-    }
-    UseCapacityCoefficient 0
-    MaxCumulativeVolume 50000
-    MultiSlots {
-     MultiSlotConfiguration "{622B31B5DCEAF549}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{FC7427975FF6AEB1}Mortars/81/m25281mm.et"
-      }
-      NumSlots 10
-     }
-    }
-   }
-   SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
-    Enabled 0
-   }
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      UIInfo UIInfo "{52E6EC759A11C684}" {
-       Name "Open Ammobox"
-      }
-     }
-    }
-   }
-  }
-  coords 4339.387 10.236 3707.981
-  angleY -154
+  coords 4493.698 6.681 4870.254
  }
  {
-  components {
-   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
-    Enabled 0
-    m_bArsenalEnabled 0
-   }
-   SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
-    Enabled 0
-   }
-   SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
-    Enabled 0
-   }
-   UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
-    Attributes SCR_ItemAttributeCollection "{58A17A346E386320}" {
-     ItemDisplayName SCR_InventoryUIInfo "{58A17A3474A3430E}" {
-      Name "Mortar Ammobox"
-      Description ""
-     }
-     ItemPhysAttributes ItemPhysicalAttributes "{622B31AAF37B69B5}" {
-     }
-     m_Size SLOT_3x3
-     m_SlotType SLOT_WEAPONS_STORAGE
-    }
-    UseCapacityCoefficient 0
-    MaxCumulativeVolume 50000
-    MultiSlots {
-     MultiSlotConfiguration "{622B31B5DCEAF549}" {
-      SlotTemplate InventoryStorageSlot Ammo {
-       Prefab "{FC7427975FF6AEB1}Mortars/81/m25281mm.et"
-      }
-      NumSlots 10
-     }
-    }
-   }
-   SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
-    Enabled 0
-   }
-   ActionsManagerComponent "{5476B36C403D4CC0}" {
-    additionalActions {
-     SCR_OpenStorageAction "{5476DE57AA50402F}" {
-      UIInfo UIInfo "{52E6EC759A11C684}" {
-       Name "Open Ammobox"
-      }
-     }
-    }
-   }
-  }
-  coords 4340.156 10.236 3707.607
-  angleY -154
+  coords 4562.687 4.634 4786.862
+ }
+ {
+  coords 4593.246 1.827 4684.97
+ }
+ {
+  coords 4577.941 3.716 4608.636
+ }
+ {
+  coords 4472.745 39.875 4548.656
+ }
+ {
+  coords 4386.901 31.917 4569.957
+ }
+ {
+  coords 4271.714 38.728 4673.517
+  angleY 0
  }
 }
 $grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
  M1025_armed_M2HB1 {
-  coords 4458.204 13.238 3669.157
-  angleX 0.384
-  angleY 137.047
-  angleZ 6.947
+  coords 4482.186 12.144 4634.74
+  angleX 0.89
+  angleY 174.04
+  angleZ -0.093
  }
  M1025_armed_M2HB2 {
-  coords 4446.003 12.62 3676.924
-  angleX 2.398
-  angleY 126.306
-  angleZ 7.272
+  coords 4477.116 11.995 4648.287
+  angleX 0.857
+  angleY 163.269
+  angleZ -0.258
  }
  M1025_armed_M2HB3 {
-  coords 4410.573 11.627 3700.381
-  angleX -3.707
-  angleY 134.444
-  angleZ 8.81
+  coords 4462.938 10.978 4688.343
+  angleX 1.019
+  angleY 171.423
+  angleZ 0.752
  }
  M1025_armed_M2HB4 {
-  coords 4398.109 12.356 3707.718
-  angleX -4.358
-  angleY 123.095
-  angleZ 9.851
+  coords 4457.397 10.62 4701.704
+  angleX 1.147
+  angleY 160.04
+  angleZ 0.536
  }
  M1025_armed_M2HB5 {
-  coords 4434.797 12.007 3685.347
-  angleX 2.398
-  angleY 126.306
-  angleZ 7.272
+  coords 4473.236 11.71 4661.759
+  angleX 1.115
+  angleY 163.303
+  angleZ 0.6
  }
  M1025_armed_M2HB6 {
-  coords 4386.754 13.432 3714.995
-  angleX -5.65
-  angleY 124.728
-  angleZ 11.124
+  coords 4452.71 10.27 4714.347
+  angleX 1.699
+  angleY 161.675
+  angleZ -0.563
  }
 }
 $grp Vehicle : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
  M1 {
-  coords 4451.991 12.986 3673.044
-  angleX 2.579
-  angleY 129.303
-  angleZ 6.703
+  coords 4479.564 12.069 4641.585
+  angleX 0.87
+  angleY 166.307
+  angleZ -0.212
  }
  M2 {
-  coords 4441.521 12.39 3680.59
-  angleX 2.135
-  angleY 129.324
-  angleZ 8.622
+  coords 4475.743 11.903 4653.912
+  angleX 1.082
+  angleY 166.318
+  angleZ 0.658
  }
  M3 {
-  coords 4429.592 11.824 3689.198
-  angleX 0.91
-  angleY 128.12
-  angleZ 7.498
+  coords 4471.396 11.554 4667.965
+  angleX 1.095
+  angleY 165.108
+  angleZ 0.635
  }
  M6 {
-  coords 4404.229 11.894 3704.05
-  angleX -4.169
-  angleY 126.192
-  angleZ 10.122
+  coords 4460.078 10.796 4695.092
+  angleX 1.116
+  angleY 163.147
+  angleZ 0.597
  }
  M7 {
-  coords 4392.381 13.022 3711.918
-  angleX -4.503
-  angleY 126.378
-  angleZ 16.194
+  coords 4455.35 10.422 4708.506
+  angleX 1.715
+  angleY 163.339
+  angleZ -0.513
  }
  M8 {
-  coords 4381.643 13.865 3718.327
-  angleX -4.577
-  angleY 125.149
-  angleZ 13.96
+  coords 4450.633 10.123 4720.086
+  angleX 1.703
+  angleY 162.105
+  angleZ -0.55
  }
  M9 {
-  coords 4361.974 14.683 3730.077
-  angleX 3.338
-  angleY 118.954
-  angleZ -8.19
+  coords 4441.995 9.542 4741.305
+  angleX 1.182
+  angleY 155.933
+  angleZ 0.452
  }
  M10 {
-  coords 4423.716 11.589 3692.474
-  angleX 1.349
-  angleY 121.192
-  angleZ 8.086
+  coords 4468.676 11.371 4674.118
+  angleX 1.662
+  angleY 158.183
+  angleZ -0.665
  }
  M11 {
-  coords 4376.565 14.164 3721.363
-  angleX 1.349
-  angleY 121.192
-  angleZ 8.086
+  coords 4448.404 9.951 4725.565
+  angleX 1.662
+  angleY 158.183
+  angleZ -0.665
  }
 }
 SCR_AIGroup : "{782321E88C1F2F23}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Company_p.et" {
- coords 4377.437 6.956 3654.275
- m_aUnitPrefabSlots + {
-  "{5FC2D849AD3FE106}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_FO_P.et"
- }
+ coords 4466.072 8.341 4782.871
  m_sCustomNameSet ""
  {
   SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
-   coords 1.514 0.715 12.458
+   coords -8.844 -0.046 -3.359
    m_sCustomNameSet ""
    {
     SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
-     coords 12.048 -5.105 -3.204
+     coords -10.001 0.426 -1.755
      m_sCustomNameSet ""
      {
       SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
-       coords -21.409 4.16 -34.09
+       coords -10.649 0.837 0.967
        m_sCustomNameSet ""
        {
         SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
-         coords 2.63 0.651 33.336
+         coords -7.688 0.667 1.87
          m_sCustomNameSet ""
          {
           SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
-           coords -23.571 -0.689 -39.782
+           coords 18.711 0.607 21.139
            m_sCustomNameSet ""
            {
             SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
-             coords -14.594 -0.001 -7.533
+             coords -11.223 1.007 4.065
              m_sCustomNameSet ""
              {
               SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
-               coords 20.188 -1.144 -11.235
+               coords -18.547 0.734 12.565
                m_sCustomNameSet ""
                {
                 SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
-                 coords -17.857 0.104 -4.195
+                 coords -6.077 -0.396 4.942
                  m_sCustomNameSet ""
                  {
-                  SCR_AIGroup : "{205C762616F796B6}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_IndirectTeam.et" {
-                   coords -78.541 6.614 110.785
+                  SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+                   coords 60.091 -5.357 -57.077
+                   m_aUnitPrefabSlots {
+                    "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_Base_SL_P.et" "{4B10669727EFDC46}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Sniper_P.et" "{57F403462D64FD00}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AR_P.et" "{EA2451C1527FE11E}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AT_P.et" "{4595DE7559B8610D}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Demo_P.et"
+                   }
                    m_sCustomNameSet ""
                   }
                  }
@@ -297,14 +214,6 @@ SCR_AIGroup : "{782321E88C1F2F23}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Gr
   }
  }
 }
-$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- {
-  coords 4355.067 6.842 3646.159
- }
- {
-  coords 4339.671 10.37 3707.654
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "mine-single"
-  m_sDescription "Mortar Ammo Point"
- }
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4355.067 6.842 3646.159
 }
