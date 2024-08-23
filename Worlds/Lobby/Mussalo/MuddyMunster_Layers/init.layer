@@ -1,0 +1,115 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 4395.578 6.066 3650.503
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{622B31BFEDBB85B6}" {
+   defendingSide "FIA"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_bUsePredefineStartingTimeAndWeatehr 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{622B6922FC9E6F8F}" {
+     m_sWeatherPresetName "Rainy"
+    }
+   }
+  }
+ }
+ coords 5475.584 7.1 3294.248
+ {
+  SCR_FactionManager "622B6923EFAB5C61" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "A Co HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Platoon HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{622B31A86D877ADF}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{622B31A86B2E40DB}" {
+        m_sCallsign "2nd Platoon HQ"
+       }
+       SCR_CallsignInfo "{622B31A86AF51688}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{622B31A86A230317}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{622B31A8699F29C3}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{622C1D3341F0C650}" {
+        m_sCallsign "Recon Section"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Senior Cell Leader"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "Sniper Section"
+       }
+       SCR_CallsignInfo "{622C1D32880BBD77}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{622B31A9DB1D31C8}" {
+        m_sCallsign "Mortar Team"
+       }
+       SCR_CallsignInfo "{622B31AF7CF934AC}" {
+        m_sCallsign "RPG Section"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 5483.765 7.1 3298.739
+ }
+ bSiteTrigger {
+  coords 5418.754 1.924 2758.34
+ }
+ trig1 {
+  coords 5833.715 3.056 2628.696
+  angleY -0.581
+ }
+ trig2 {
+  coords 5837.716 3.004 2631.201
+  angleY -1.231
+ }
+}

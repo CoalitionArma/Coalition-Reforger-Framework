@@ -1,0 +1,234 @@
+$grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ M997_maxi_ambulance1 {
+  coords 4445.655 9.769 4732.443
+  angleX 1.185
+  angleY 155.65
+  angleZ 0.446
+ }
+ M997_maxi_ambulance2 {
+  coords 4465.782 11.167 4681.629
+  angleX 1.66
+  angleY 158.007
+  angleZ -0.67
+ }
+}
+$grp Turret : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
+ {
+  coords 4245.654 12.446 3714.171
+  angleX -1.381
+  angleY 120.945
+  angleZ 2.302
+ }
+ {
+  coords 4248.293 12.6 3719.208
+  angleX -1.381
+  angleY 120.945
+  angleZ 2.302
+ }
+}
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 4266.501 38.611 4797.333
+ }
+ {
+  coords 4323.589 24.969 4863.207
+ }
+ {
+  coords 4396.141 5.313 4908.867
+ }
+ {
+  coords 4493.698 6.681 4870.254
+ }
+ {
+  coords 4562.687 4.634 4786.862
+ }
+ {
+  coords 4593.246 1.827 4684.97
+ }
+ {
+  coords 4577.941 3.716 4608.636
+ }
+ {
+  coords 4472.745 39.875 4548.656
+ }
+ {
+  coords 4386.901 31.917 4569.957
+ }
+ {
+  coords 4271.714 38.728 4673.517
+  angleY 0
+ }
+}
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_armed_M2HB1 {
+  coords 4482.186 12.144 4634.74
+  angleX 0.89
+  angleY 174.04
+  angleZ -0.093
+ }
+ M1025_armed_M2HB2 {
+  coords 4477.116 11.995 4648.287
+  angleX 0.857
+  angleY 163.269
+  angleZ -0.258
+ }
+ M1025_armed_M2HB3 {
+  coords 4462.938 10.978 4688.343
+  angleX 1.019
+  angleY 171.423
+  angleZ 0.752
+ }
+ M1025_armed_M2HB4 {
+  coords 4457.397 10.62 4701.704
+  angleX 1.147
+  angleY 160.04
+  angleZ 0.536
+ }
+ M1025_armed_M2HB5 {
+  coords 4473.236 11.71 4661.759
+  angleX 1.115
+  angleY 163.303
+  angleZ 0.6
+ }
+ M1025_armed_M2HB6 {
+  coords 4452.71 10.27 4714.347
+  angleX 1.699
+  angleY 161.675
+  angleZ -0.563
+ }
+}
+$grp Vehicle : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ M1 {
+  coords 4479.564 12.069 4641.585
+  angleX 0.87
+  angleY 166.307
+  angleZ -0.212
+ }
+ M2 {
+  coords 4475.743 11.903 4653.912
+  angleX 1.082
+  angleY 166.318
+  angleZ 0.658
+ }
+ M3 {
+  coords 4471.396 11.554 4667.965
+  angleX 1.095
+  angleY 165.108
+  angleZ 0.635
+ }
+ M6 {
+  coords 4460.078 10.796 4695.092
+  angleX 1.116
+  angleY 163.147
+  angleZ 0.597
+ }
+ M7 {
+  coords 4455.35 10.422 4708.506
+  angleX 1.715
+  angleY 163.339
+  angleZ -0.513
+ }
+ M8 {
+  coords 4450.633 10.123 4720.086
+  angleX 1.703
+  angleY 162.105
+  angleZ -0.55
+ }
+ M9 {
+  coords 4441.995 9.542 4741.305
+  angleX 1.182
+  angleY 155.933
+  angleZ 0.452
+ }
+ M10 {
+  coords 4468.676 11.371 4674.118
+  angleX 1.662
+  angleY 158.183
+  angleZ -0.665
+ }
+ M11 {
+  coords 4448.404 9.951 4725.565
+  angleX 1.662
+  angleY 158.183
+  angleZ -0.665
+ }
+}
+SCR_AIGroup : "{782321E88C1F2F23}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Company_p.et" {
+ coords 4466.072 8.341 4782.871
+ m_sCustomNameSet "COY"
+ {
+  SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+   coords -8.844 -0.046 -3.359
+   m_sCustomNameSet "1st PLT HQ"
+   {
+    SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+     coords -10.001 0.426 -1.755
+     m_sCustomNameSet "1-1"
+     {
+      SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+       coords -10.649 0.837 0.967
+       m_sCustomNameSet "1-2"
+       {
+        SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+         coords -7.688 0.667 1.87
+         m_sCustomNameSet "1-3"
+         {
+          SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+           coords 18.711 0.607 21.139
+           m_sCustomNameSet "2nd PLT HQ"
+           {
+            SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+             coords -11.223 1.007 4.065
+             m_sCustomNameSet "2-1"
+             {
+              SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+               coords -18.547 0.734 12.565
+               m_sCustomNameSet "2-2"
+               {
+                SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+                 coords -6.077 -0.396 4.942
+                 m_sCustomNameSet "2-3"
+                 {
+                  SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+                   components {
+                    SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+                     m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+                      m_MilitarySymbol SCR_MilitarySymbol "{61E119134DB616C0}" {
+                       m_Icons RECON
+                      }
+                     }
+                    }
+                   }
+                   coords 60.091 -5.357 -57.077
+                   m_aUnitPrefabSlots {
+                    "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_Base_SL_P.et" "{4B10669727EFDC46}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Sniper_P.et" "{57F403462D64FD00}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AR_P.et" "{EA2451C1527FE11E}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AT_P.et" "{4595DE7559B8610D}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Demo_P.et"
+                   }
+                   m_sCustomNameSet "Recon"
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 5836.017 3.055 2628.464
+ m_MarkerColor 0 0 0 1
+ m_sQuadName "target-reference-point-2"
+ m_sDescription "MFP"
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 4467.262 7.421 4774.574
+}
