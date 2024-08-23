@@ -1,0 +1,54 @@
+$grp Tank : "{1DC01AAACFFA8B63}Prefabs/Vehicles/Tracked/BMP1/BMP1_base.et" {
+ BMP1_base1 {
+  coords 4216.454 308.848 8015.337
+  angleY 168
+ }
+ BMP1_base2 {
+  coords 4211.005 308.582 8013.204
+  angleY 166
+ }
+}
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 4216.17 308.35 7986.897
+ angleZ -1.79
+ {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   {
+    coords -38.565 0.082 16.872
+    angleZ 1.79
+   }
+   {
+    coords 30.02 0.525 34.573
+    angleZ 1.79
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -8.94 0.675 51.403
+    angleZ 1.79
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 20.492 0.634 59.263
+    angleZ 1.79
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords -39.131 0.284 44.79
+    angleZ 1.79
+    m_sCustomNameSet "5th Squad"
+    {
+     SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+      coords 48.821 1.392 -37.956
+      m_sCustomNameSet "BMP Crew 1"
+      {
+       SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+        coords -8.996 -0.294 4.274
+        m_sCustomNameSet "BMP Crew 2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

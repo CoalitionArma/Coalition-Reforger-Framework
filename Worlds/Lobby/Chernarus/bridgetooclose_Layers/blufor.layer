@@ -1,0 +1,43 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Platoon.et" {
+ coords 4781.045 264.229 6667.843
+ angleX 7.118
+ angleY 0.224
+ angleZ 1.804
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
+   {
+    coords -82.333 -0.722 41.582
+    angleX -7.122
+    angleZ -1.79
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 11.092 -1.904 33.175
+    angleX -7.122
+    angleZ -1.79
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 64.505 -5.17 48.108
+    angleX -7.122
+    angleZ -1.79
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 90.801 -2.156 -15.869
+    angleX -7.122
+    angleZ -1.79
+    m_sCustomNameSet "4th Squad"
+    {
+     SCR_AIGroup : "{EB37957946B24889}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Support/CRF_USMC_MATTeam.et" {
+      coords -91.2 5.909 5.925
+      m_aUnitPrefabSlots {
+       "{372C2A8BC0C553E8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_Base_SL_P.et" "{0E67317AD6549432}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_MAT_P.et" "{D2A0ED165BBE7E9C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_AMAT_P.et"
+      }
+      m_sCustomNameSet "MAAWS Anti-tank Team"
+     }
+    }
+   }
+  }
+ }
+}
