@@ -12,20 +12,6 @@ $grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambula
   angleZ -0.67
  }
 }
-$grp Turret : "{0374F390B22D0D1E}Mortars/81/M252new.et" {
- {
-  coords 4245.654 12.446 3714.171
-  angleX -1.381
-  angleY 120.945
-  angleZ 2.302
- }
- {
-  coords 4248.293 12.6 3719.208
-  angleX -1.381
-  angleY 120.945
-  angleZ 2.302
- }
-}
 $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  {
   coords 4266.501 38.611 4797.333
