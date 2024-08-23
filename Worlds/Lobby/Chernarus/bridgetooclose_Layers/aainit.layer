@@ -12,6 +12,9 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 60
+  }
   SCR_InitWeatherComponent "{61BCFEC02D389EB2}" {
    m_sInitialStartingWeatherId "Clear"
    m_iSetWeatherConstant 1
@@ -33,6 +36,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
     }
     SCR_Faction "{5978B9CE6585BBE8}" {
      UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR (ATK)"
       m_sNameUpper "OPFOR (ATK)"
      }
      m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
