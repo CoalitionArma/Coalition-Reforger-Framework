@@ -109,7 +109,7 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{7F1A6772F6F9CFA7}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Crew_VehGunner_P.et" "{20FC9F05C5582B1E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Crew_Base_VehDriver_P.et"
+  "{F082E8F1AA792D4D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Crew_VehCommander_P.et" "{20FC9F05C5582B1E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Crew_Base_VehDriver_P.et"
  }
  m_sCustomNameSet "Armor Crew"
  m_bSetPlayable 1

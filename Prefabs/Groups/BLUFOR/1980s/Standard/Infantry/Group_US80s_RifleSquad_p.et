@@ -139,8 +139,14 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  coords 0 0 0
  m_aUnitPrefabSlots {
-  "{B959A2CC8F207E21}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_SL_P.et" "{3ACC28EE18AB6D75}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Medic_P.et" "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_Base_TL_P.et" "{57F403462D64FD00}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AR_P.et" "{F363AD206D8F604F}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AAR_P.et" "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_Base_TL_P.et" "{EA2451C1527FE11E}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AT_P.et" "{EA2451C1527FE11E}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AT_P.et" "{4595DE7559B8610D}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Demo_P.et"
+  "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_Base_SL_P.et" "{3ACC28EE18AB6D75}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Medic_P.et" "{B959A2CC8F207E21}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_TL_P.et" "{57F403462D64FD00}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AR_P.et" "{F363AD206D8F604F}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AAR_P.et" "{B959A2CC8F207E21}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_TL_P.et" "{EA2451C1527FE11E}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AT_P.et" "{EA2451C1527FE11E}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_AT_P.et" "{4595DE7559B8610D}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Rifleman_Demo_P.et"
  }
  m_sCustomNameSet "1st Squad"
  m_bSetPlayable 1
+ m_aUnitPrefabColorTeams {
+  "None" "None" "Red" "Red" "Red" "Green" "Green" "Green" "Green"
+ }
+ m_aUnitPrefabOverrideIcons {
+  "None" "None" "Team Lead" "None" "None" "Team Lead" "None" "None" "None"
+ }
 }

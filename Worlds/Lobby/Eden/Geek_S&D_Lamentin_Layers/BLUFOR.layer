@@ -1,0 +1,44 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 984.78 2.844 6030.465
+}
+SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+ coords 1041.178 2.709 6023.928
+ angleY -88.758
+ {
+  SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+   coords 8.615 0.071 29.731
+   angleY 88.758
+   {
+    SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+     coords -4.678 0 -0.296
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+       coords -5.591 0 0.062
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+         coords -5.455 0 0.138
+         m_sCustomNameSet "4th Squad"
+         {
+          SCR_AIGroup : "{EF56323F873DAB17}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_MATTeam.et" {
+           coords 56.83 -0.061 0.811
+           angleY -92.296
+           m_sCustomNameSet "Medium Anti-Tank Team"
+           {
+            SCR_AIGroup : "{74E101EC8D8A26C2}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_MedicTeam.et" {
+             coords -9.009 0 1.038
+             angleY 92.296
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

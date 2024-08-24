@@ -1,0 +1,88 @@
+SCR_VehicleSpawn s1 {
+ coords 5635.438 140.089 6669.751
+ userScript "	// code here"\
+ "	string podnos = \"{2A473C531D075905}Mortars/82/Podnosnew.et\";"\
+ "	string m252 = \"{0374F390B22D0D1E}Mortars/81/M252new.et\";"\
+ "	IEntity spawn1, spawn2;"\
+ "	"\
+ "	void spawnthings()"\
+ "	{"\
+ "		spawn1 = GetGame().GetWorld().FindEntityByName(\"spawn1\");"\
+ "		spawn2 = GetGame().GetWorld().FindEntityByName(\"spawn2\");"\
+ "		"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+ "		"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(podnos),GetGame().GetWorld(),spawnParams);"\
+ "		spawnParams.Transform[3] = spawn2.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(m252),GetGame().GetWorld(),spawnParams);"\
+ "	}"
+ EOnInit ""\
+ "		super.EOnInit(owner);"\
+ "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+ "	"
+ m_rnPrefab "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+}
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 5618.669 141.792 6693.801
+ angleX -6.715
+ angleY 156.2
+ angleZ 6.81
+ m_aUnitPrefabSlots + {
+  "{97D4CB90926D7725}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_FO_P.et"
+ }
+ m_sCustomNameSet "1st Platoon"
+ {
+  $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   {
+    coords -47.671 11.291 68.003
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords 22.362 25.257 99.042
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 45.412 19.016 59.414
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 45.816 3.17 -0.628
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords 21.076 -3.304 -49.674
+    m_sCustomNameSet "5th Squad"
+    {
+     SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+      coords 12.437 11.292 75.822
+      m_aUnitPrefabSlots {
+       "{A3C9811329054C00}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_Base_SL_P.et" "{66EFC55AA41EE630}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_MMG_P.et" "{1575502548E87334}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_AMMG_P.et"
+      }
+      {
+       SCR_AIGroup : "{7726B189C0DAF717}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_IndirectTeam_p.et" {
+        coords -20.648 -2.257 -2.615
+        m_aUnitPrefabSlots {
+         "{95F45AC5ACC93B43}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_IndirectLeader_P.et" "{4477C584D7C1029D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_IndirectGunner_P.et" "{03F604C18500CAA9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_IndirectLoader_P.et"
+        }
+        m_sCustomNameSet "Mortar Team"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{64B634889F7AB67C}Mortars/82/podnos82mm.et" {
+ spawn1 {
+  coords 5648.519 138.953 6642.221
+ }
+ {
+  coords 5649.484 139.049 6642.809
+ }
+ {
+  coords 5650.352 139.133 6643.359
+ }
+}

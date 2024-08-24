@@ -1,8 +1,7 @@
 //------------------------------------------------------------------------------------------------
 //! Takes care of dynamic and static onscreen popups
 modded class SCR_PopUpNotification : GenericEntity
-{
-	//------------------------------------------------------------------------------------------------
+{	
 	override protected void ProcessInit()
 	{
 		if (!GetGame().GetHUDManager())
@@ -13,8 +12,12 @@ modded class SCR_PopUpNotification : GenericEntity
 		if (!pc || !pc.GetControlledEntity())
 			return;
 
-		Widget root = GetGame().GetHUDManager().CreateLayout(LAYOUT_NAME, EHudLayers.ALWAYS_TOP, 0);
-
+		Widget root;
+		if(CRF_SafestartGameModeComponent.GetInstance().m_bHUDVisible)
+			root = GetGame().GetHUDManager().CreateLayout(LAYOUT_NAME, EHudLayers.ALWAYS_TOP, 0);
+		else
+			root = GetGame().GetHUDManager().CreateLayout(LAYOUT_NAME, EHudLayers.LOW, 0);
+		
 		if (!root)
 			return;
 

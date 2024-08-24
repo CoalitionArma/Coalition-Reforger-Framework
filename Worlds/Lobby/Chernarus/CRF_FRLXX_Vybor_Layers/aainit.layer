@@ -1,0 +1,617 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 3804.256 318.552 8903.423
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_FrontlineGameModeComponent "{6220DE5A5117267D}" {
+   m_BluforSide "CDF"
+   m_sBluforSideNickname "BLUFOR"
+   m_OpforSide "FIA"
+   m_sOpforSideNickname "INDFOR"
+   m_aZoneObjectNames {
+    "zonea" "zoneb" "zonec" "zoned" "zonee"
+   }
+   m_iZoneCaptureTime 60
+   m_iMinNumberOfPlayersNeeded 3
+   m_iInitialTime 600
+  }
+ }
+ coords 3816.953 311.094 8904.896
+ {
+  SCR_FactionManager "6220DE4E03442799" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "BTR 1"
+       }
+       SCR_CallsignInfo "{6220DE55AEA0FD25}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6220DE55AEDBE64B}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6220DE55AEF0C515}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6220DE55AEE81311}" {
+        m_sCallsign "BTR 2"
+       }
+       SCR_CallsignInfo "{6220DE55AE1EE55A}" {
+        m_sCallsign "Armor"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5E5106B25048F22B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5E5106B0E940AF39}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6220DE57C563127D}" {
+        m_sCallsign "BTR 1"
+       }
+       SCR_CallsignInfo "{6220DE57CA96C42D}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6220DE57CA8D2527}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6220DE57CAA1319C}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6220DE57CAD538FD}" {
+        m_sCallsign "BTR 2"
+       }
+       SCR_CallsignInfo "{6220DE57CAC7D7E9}" {
+        m_sCallsign "Armor"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{FA401A99159C997B}Prefabs/Structures/Frontline/FlagPole_Zone_A.et" {
+ zoneb {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{A813D897413F5532}Prefabs/Structures/Frontline/Flags/Zone_B_Mat.emat"
+   }
+  }
+  coords 3640.978 299.157 8572.042
+  angleX -0.314
+  angleY 0.246
+  angleZ 6.259
+  {
+   GenericEntity {
+    ID "621256DCC5AEDE22"
+    coords -0.252 -0.039 -2.062
+    angleY 0
+   }
+   GenericEntity {
+    ID "620F525893BF543A"
+    coords -0.059 -0.007 -0.003
+   }
+   GenericEntity {
+    ID "620F52589903193B"
+    coords -0.015 -0.002 -0.001
+   }
+   GenericEntity {
+    ID "62125B198AADCD74"
+    coords -1.134 -0.12 0.828
+    angleY -126.141
+   }
+   GenericEntity {
+    ID "620F5D9EF66CF637"
+    coords -1.423 -0.16 -0.658
+    angleY 131.365
+   }
+   GenericEntity {
+    ID "620F5259E98509DB"
+    coords -1.021 -0.106 1.132
+    angleY 17.844
+   }
+   GenericEntity {
+    ID "621256DF8BE67180"
+    coords 0.958 0.105 -0.077
+    angleY 38.685
+   }
+   GenericEntity {
+    ID "62125B198AADCD21"
+    coords -1.265 -0.135 0.716
+   }
+   GenericEntity {
+    ID "620F62FBF6F59CDD"
+    coords -1.031 -0.121 -1.351
+    angleY -91.527
+   }
+   GenericEntity {
+    ID "621256DE2446035C"
+    coords -0.107 -0.015 -0.516
+    angleY -89.4
+   }
+   GenericEntity {
+    ID "621256DE5F386FF5"
+    coords -0.097 -0.007 0.588
+    angleY 90.6
+   }
+   PS_ManualMarker {
+    ID "620F4924E2376B14"
+    coords -0.103 -0.011 -0.005
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "620F62FA26A45838"
+    coords -1.708 -0.182 0.922
+    angleY 98.147
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE42"
+    coords 1.453 0.152 -1.315
+    angleY -60.794
+   }
+   StaticModelEntity {
+    ID "621256DF4F30B0FC"
+    coords -1.058 -0.106 1.744
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE73"
+    coords 0.845 0.084 -1.649
+    angleY 93.971
+   }
+   StaticModelEntity {
+    ID "62125B198977C4D0"
+    coords 0.068 0.022 2.57
+   }
+   StaticModelEntity {
+    ID "621256DFC450584A"
+    coords 0.842 0.1 1.45
+    angleY 90
+   }
+   StaticModelEntity {
+    ID "620F62FA279C9CF1"
+    coords -1.092 -0.115 0.885
+    angleY 90
+   }
+  }
+ }
+ zonee {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{D7F3DA99D8543DF0}Prefabs/Structures/Frontline/Flags/Zone_E_Mat.emat"
+   }
+  }
+  coords 4532.262 339.125 9627.49
+  angleX -0.314
+  angleY 0.246
+  angleZ 6.259
+  {
+   GenericEntity {
+    ID "621256DCC5AEDE22"
+    coords -0.251 -0.039 -2.062
+    angleY 0
+   }
+   GenericEntity {
+    ID "620F525893BF543A"
+    coords -0.059 -0.007 -0.003
+   }
+   GenericEntity {
+    ID "620F52589903193B"
+    coords -0.014 -0.002 -0.001
+   }
+   GenericEntity {
+    ID "62125B198AADCD74"
+    coords -1.134 -0.12 0.828
+    angleY -126.141
+   }
+   GenericEntity {
+    ID "620F5D9EF66CF637"
+    coords -1.423 -0.16 -0.659
+    angleY 131.365
+   }
+   GenericEntity {
+    ID "620F5259E98509DB"
+    coords -1.021 -0.106 1.133
+    angleY 17.844
+   }
+   GenericEntity {
+    ID "621256DF8BE67180"
+    coords 0.958 0.105 -0.077
+    angleY 38.685
+   }
+   GenericEntity {
+    ID "62125B198AADCD21"
+    coords -1.265 -0.135 0.716
+   }
+   GenericEntity {
+    ID "620F62FBF6F59CDD"
+    coords -1.032 -0.121 -1.35
+    angleY -91.527
+   }
+   GenericEntity {
+    ID "621256DE2446035C"
+    coords -0.107 -0.015 -0.516
+    angleY -89.4
+   }
+   GenericEntity {
+    ID "621256DE5F386FF5"
+    coords -0.097 -0.007 0.587
+    angleY 90.6
+   }
+   PS_ManualMarker {
+    ID "620F4924E2376B14"
+    coords -0.103 -0.011 -0.006
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "620F62FA26A45838"
+    coords -1.708 -0.182 0.923
+    angleY 98.147
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE42"
+    coords 1.453 0.152 -1.315
+    angleY -60.794
+   }
+   StaticModelEntity {
+    ID "621256DF4F30B0FC"
+    coords -1.059 -0.106 1.743
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE73"
+    coords 0.845 0.084 -1.649
+    angleY 93.971
+   }
+   StaticModelEntity {
+    ID "62125B198977C4D0"
+    coords 0.068 0.022 2.57
+   }
+   StaticModelEntity {
+    ID "621256DFC450584A"
+    coords 0.842 0.1 1.45
+    angleY 90
+   }
+   StaticModelEntity {
+    ID "620F62FA279C9CF1"
+    coords -1.092 -0.115 0.885
+    angleY 90
+   }
+  }
+ }
+ zonea {
+  coords 3063.365 307.43 7898.609
+  angleX -0.314
+  angleY 0.246
+  angleZ 6.259
+  {
+   GenericEntity {
+    ID "621256DCC5AEDE22"
+    coords -0.273 0.156 -2.063
+    angleY 0
+   }
+   GenericEntity {
+    ID "620F525893BF543A"
+    coords -0.06 -0.003 -0.003
+   }
+   GenericEntity {
+    ID "620F52589903193B"
+    coords -0.015 0 -0.001
+   }
+   GenericEntity {
+    ID "62125B198AADCD74"
+    coords -1.135 -0.113 0.827
+    angleY -126.141
+   }
+   GenericEntity {
+    ID "620F5D9EF66CF637"
+    coords -1.439 -0.018 -0.659
+    angleY 131.365
+   }
+   GenericEntity {
+    ID "620F5259E98509DB"
+    coords -1.018 -0.131 1.132
+    angleY 17.844
+   }
+   GenericEntity {
+    ID "621256DF8BE67180"
+    coords 0.964 0.043 -0.076
+    angleY 38.685
+   }
+   GenericEntity {
+    ID "62125B198AADCD21"
+    coords -1.267 -0.112 0.715
+   }
+   GenericEntity {
+    ID "620F62FBF6F59CDD"
+    coords -1.051 0.055 -1.352
+    angleY -91.527
+   }
+   GenericEntity {
+    ID "621256DE2446035C"
+    coords -0.112 0.033 -0.517
+    angleY -89.4
+   }
+   GenericEntity asdasdasdasd {
+    ID "621256DE5F386FF5"
+    coords -0.092 -0.055 0.587
+    angleY 90.6
+   }
+   PS_ManualMarker {
+    ID "620F4924E2376B14"
+    coords -0.104 -0.005 -0.006
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "620F62FA26A45838"
+    coords -1.714 -0.137 0.921
+    angleY 98.147
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE42"
+    coords 1.45 0.176 -1.315
+    angleY -60.794
+   }
+   StaticModelEntity {
+    ID "621256DF4F30B0FC"
+    coords -1.052 -0.164 1.743
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE73"
+    coords 0.834 0.176 -1.649
+    angleY 93.971
+   }
+   StaticModelEntity {
+    ID "62125B198977C4D0"
+    coords 0.087 -0.15 2.57
+   }
+   StaticModelEntity {
+    ID "621256DFC450584A"
+    coords 0.863 -0.096 1.451
+    angleY 90
+   }
+   StaticModelEntity {
+    ID "620F62FA279C9CF1"
+    coords -1.092 -0.116 0.884
+    angleY 90
+   }
+  }
+ }
+ zoned {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{29F39ADC2D0651BC}Prefabs/Structures/Frontline/Flags/Zone_D_Mat.emat"
+   }
+  }
+  coords 4120.815 324.583 8933.095
+  angleX -0.314
+  angleY 0.246
+  angleZ 6.259
+  {
+   GenericEntity {
+    ID "621256DCC5AEDE22"
+    coords -0.251 -0.039 -2.062
+    angleY 0
+   }
+   GenericEntity {
+    ID "620F525893BF543A"
+    coords -0.059 -0.007 -0.003
+   }
+   GenericEntity {
+    ID "620F52589903193B"
+    coords -0.014 -0.002 -0.001
+   }
+   GenericEntity {
+    ID "62125B198AADCD74"
+    coords -1.134 -0.12 0.828
+    angleY -126.141
+   }
+   GenericEntity {
+    ID "620F5D9EF66CF637"
+    coords -1.423 -0.16 -0.659
+    angleY 131.365
+   }
+   GenericEntity {
+    ID "620F5259E98509DB"
+    coords -1.021 -0.106 1.133
+    angleY 17.844
+   }
+   GenericEntity {
+    ID "621256DF8BE67180"
+    coords 0.958 0.105 -0.077
+    angleY 38.685
+   }
+   GenericEntity {
+    ID "62125B198AADCD21"
+    coords -1.265 -0.135 0.716
+   }
+   GenericEntity {
+    ID "620F62FBF6F59CDD"
+    coords -1.032 -0.121 -1.35
+    angleY -91.527
+   }
+   GenericEntity {
+    ID "621256DE2446035C"
+    coords -0.107 -0.015 -0.516
+    angleY -89.4
+   }
+   GenericEntity {
+    ID "621256DE5F386FF5"
+    coords -0.097 -0.007 0.587
+    angleY 90.6
+   }
+   PS_ManualMarker {
+    ID "620F4924E2376B14"
+    coords -0.103 -0.011 -0.006
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "620F62FA26A45838"
+    coords -1.708 -0.182 0.923
+    angleY 98.147
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE42"
+    coords 1.453 0.152 -1.315
+    angleY -60.794
+   }
+   StaticModelEntity {
+    ID "621256DF4F30B0FC"
+    coords -1.059 -0.106 1.743
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE73"
+    coords 0.845 0.084 -1.649
+    angleY 93.971
+   }
+   StaticModelEntity {
+    ID "62125B198977C4D0"
+    coords 0.068 0.022 2.57
+   }
+   StaticModelEntity {
+    ID "621256DFC450584A"
+    coords 0.842 0.1 1.45
+    angleY 90
+   }
+   StaticModelEntity {
+    ID "620F62FA279C9CF1"
+    coords -1.092 -0.115 0.885
+    angleY 90
+   }
+  }
+ }
+ zonec {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{561398D2B46D397E}Prefabs/Structures/Frontline/Flags/Zone_C_Mat.emat"
+   }
+  }
+  coords 3805.43 311.094 8899.872
+  angleX -0.314
+  angleY 0.246
+  angleZ 6.259
+  {
+   GenericEntity {
+    ID "621256DCC5AEDE22"
+    coords -0.252 -0.039 -2.062
+    angleY 0
+   }
+   GenericEntity {
+    ID "620F525893BF543A"
+    coords -0.059 -0.007 -0.003
+   }
+   GenericEntity {
+    ID "620F52589903193B"
+    coords -0.015 -0.002 -0.001
+   }
+   GenericEntity {
+    ID "62125B198AADCD74"
+    coords -1.134 -0.12 0.828
+    angleY -126.141
+   }
+   GenericEntity {
+    ID "620F5D9EF66CF637"
+    coords -1.423 -0.16 -0.658
+    angleY 131.365
+   }
+   GenericEntity {
+    ID "620F5259E98509DB"
+    coords -1.021 -0.106 1.132
+    angleY 17.844
+   }
+   GenericEntity {
+    ID "621256DF8BE67180"
+    coords 0.958 0.105 -0.077
+    angleY 38.685
+   }
+   GenericEntity {
+    ID "62125B198AADCD21"
+    coords -1.265 -0.135 0.716
+   }
+   GenericEntity {
+    ID "620F62FBF6F59CDD"
+    coords -1.031 -0.121 -1.351
+    angleY -91.527
+   }
+   GenericEntity {
+    ID "621256DE2446035C"
+    coords -0.107 -0.015 -0.516
+    angleY -89.4
+   }
+   GenericEntity {
+    ID "621256DE5F386FF5"
+    coords -0.097 -0.007 0.588
+    angleY 90.6
+   }
+   PS_ManualMarker {
+    ID "620F4924E2376B14"
+    coords -0.103 -0.011 -0.005
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "620F62FA26A45838"
+    coords -1.708 -0.182 0.922
+    angleY 98.147
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE42"
+    coords 1.453 0.152 -1.315
+    angleY -60.794
+   }
+   StaticModelEntity {
+    ID "621256DF4F30B0FC"
+    coords -1.058 -0.106 1.744
+    angleY 0
+   }
+   StaticModelEntity {
+    ID "621256DCC5AEDE73"
+    coords 0.845 0.084 -1.649
+    angleY 93.971
+   }
+   StaticModelEntity {
+    ID "62125B198977C4D0"
+    coords 0.068 0.022 2.57
+   }
+   StaticModelEntity {
+    ID "621256DFC450584A"
+    coords 0.842 0.1 1.45
+    angleY 90
+   }
+   StaticModelEntity {
+    ID "620F62FA279C9CF1"
+    coords -1.092 -0.115 0.885
+    angleY 90
+   }
+  }
+ }
+}

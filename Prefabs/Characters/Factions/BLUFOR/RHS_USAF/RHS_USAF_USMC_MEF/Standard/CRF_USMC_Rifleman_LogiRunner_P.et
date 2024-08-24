@@ -4,5 +4,12 @@ SCR_ChimeraCharacter : "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Logi Runner"
   }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{48602F57998AB597}Prefabs/Items/Equipment/Backpacks/FILBE_Backpack.et"
+    }
+   }
+  }
  }
 }

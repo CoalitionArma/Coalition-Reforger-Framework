@@ -1,0 +1,79 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ briefWelcome {
+  coords 3370.692 166.945 5867.951
+  m_sTitle "Welcome!"
+  m_sTextData "#Coal_Missions_Lobby_Welcome_Text"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ briefSituation {
+  coords 3472.848 178.851 5842.863
+  m_sTitle "Situation"
+  m_sTextData "3:2 OPFOR:BLUFOR slotting ratio"\
+  ""\
+  "US forces will defend Lamentin harbor from attacking USSR forces for 70 minutes before a ship can arrive to extract them from the island."\
+  "(ship evac is not ingame lol)"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 1
+ }
+ briefAssets {
+  coords 3457.221 177.457 5828.72
+  m_sTitle "Assets"
+  m_sTextData "BLUFOR Assets:"\
+  "3x M1025 (M2HB)"\
+  "8x M998"\
+  "1x M997 Ambulance"\
+  "1x M923A1 Transport"\
+  "1x UH-1H (Armed)"\
+  "2x M252 Mortar"\
+  ""\
+  "OPFOR Assets:"\
+  "2x BTR70"\
+  "2x Ural-4320 Transport"\
+  "3x UAZ-452 Ambulance"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 3
+ }
+ briefObjectives {
+  coords 3346.517 162.547 5881.197
+  m_sTitle "Objectives"
+  m_sTextData "*IF at the end of the mission, BLUFOR has lost FOB Raleigh, but still holds Lamentin harbor, it is a BLUFOR Victory*"\
+  ""\
+  "BLUFOR:"\
+  "-Hold Lamentin Harbor (Mandatory)"\
+  "-Hold FOB Raleigh (Optional)"\
+  ""\
+  "OPFOR:"\
+  "-Capture Lamentin Harbor (Mandatory)"\
+  "-Capture FOB Raleigh (Optional)"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
+ briefBLUFOR {
+  coords 3331.42 161.74 5882.695
+  m_sTitle "BLUFOR Briefing"
+  m_sTextData "You have been backed into a corner and must hold Lamentin harbor at all costs until an evacuation ship can arrive. The town is unfortified and unprepared, but southeast of the town is FOB Raleigh. "\
+  "The FOB is well fortified and has 2x M252 mortars inside of it. However, it is poorly positioned and separated from Lamentin. Holding the FOB will be difficult, but the M252s are very powerful tools."\
+  ""\
+  "Good luck!"
+  m_aVisibleForFactions {
+   "US"
+  }
+  m_iOrder 5
+ }
+ briefOPFOR {
+  coords 3328.538 161.673 5872.327
+  m_sTitle "OPFOR Briefing"
+  m_sTextData "We have backed the enemy into a corner and must crush them before they can escape. We know an evacuation ship is on route to do so. The town is unfortified and if we move quickly, we can overrun them. A confounding issue is southeast of the town, FOB Raleigh."\
+  "The FOB is well fortified yet poorly positioned. Inside it is two M252 mortars, which could be devastating to our assault. Taking the FOB may not be difficult, but would waste valuable time."\
+  ""\
+  "Good luck!"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 4
+ }
+}

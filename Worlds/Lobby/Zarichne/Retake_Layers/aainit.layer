@@ -1,5 +1,8 @@
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 90
+  }
   SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
    m_iStartingHours 22
    m_fDayTimeAcceleration 4

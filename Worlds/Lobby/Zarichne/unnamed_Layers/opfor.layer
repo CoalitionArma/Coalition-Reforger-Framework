@@ -1,0 +1,48 @@
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 2746.627 16.552 2344.656
+ {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   {
+    coords 38.947 -1.239 57.266
+    m_aUnitPrefabSlots {
+     "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_SL_P.et" "{E19CFA6DAD646D70}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Medic_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{3F9E12030D9AF159}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AR_P.et" "{1D6BD76044A9CA00}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AAR_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{824E40847281ED47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AT_P.et" "{F3DEE16E889C2876}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Demo_P.et"
+    }
+   }
+   {
+    coords 12.889 -0.884 53.297
+    m_aUnitPrefabSlots {
+     "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_SL_P.et" "{E19CFA6DAD646D70}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Medic_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{3F9E12030D9AF159}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AR_P.et" "{1D6BD76044A9CA00}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AAR_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{824E40847281ED47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AT_P.et" "{F3DEE16E889C2876}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Demo_P.et"
+    }
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 103.616 0.91 43.923
+    m_aUnitPrefabSlots {
+     "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_SL_P.et" "{E19CFA6DAD646D70}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Medic_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{3F9E12030D9AF159}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AR_P.et" "{1D6BD76044A9CA00}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AAR_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{824E40847281ED47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AT_P.et" "{F3DEE16E889C2876}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Demo_P.et"
+    }
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 65.909 0.833 -14.176
+    m_aUnitPrefabSlots {
+     "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_SL_P.et" "{E19CFA6DAD646D70}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Medic_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{3F9E12030D9AF159}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AR_P.et" "{1D6BD76044A9CA00}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AAR_P.et" "{EAA1154158B4BF27}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_TL_P.et" "{824E40847281ED47}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AT_P.et" "{F3DEE16E889C2876}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_Demo_P.et"
+    }
+    m_sCustomNameSet "4th Squad"
+    {
+     SCR_AIGroup : "{ED04C9DEA30AC1FE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_MAT.et" {
+      coords -63.104 -0.822 5.73
+      m_aUnitPrefabSlots {
+       "{38272547C1C31B25}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_Base_SL_P.et" "{EE074D9D16EE7558}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_MAT_P.et" "{52591CFC57C24AA0}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_AMAT_P.et"
+      }
+      m_sCustomNameSet "MAT Team"
+      {
+       SCR_AIGroup : "{4D5CCB1C936DC737}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_Mortar.et" {
+        coords 50.59 0.874 -37.568
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

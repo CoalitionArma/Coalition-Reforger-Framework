@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{49B5E9D8A829F16E}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_IndirectGunner_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

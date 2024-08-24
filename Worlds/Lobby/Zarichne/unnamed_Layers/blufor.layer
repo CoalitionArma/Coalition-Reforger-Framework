@@ -1,0 +1,48 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Platoon.et" {
+ coords 2768.409 21.738 4472.931
+ {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
+   {
+    coords -16.986 -2.232 62.084
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    coords -52.888 -2.387 54.623
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords -68.891 -1.618 26.341
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords -63.362 0.047 -22.038
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords -82.435 -1.286 10.592
+    m_sCustomNameSet "5th Squad"
+   }
+   {
+    coords -76.701 -2.924 55.71
+    m_sCustomNameSet "6th Squad"
+    {
+     SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Vehicles/CRF_USMC_ArmorCrew.et" {
+      coords 76.452 2.742 -51.343
+      angleX -0.895
+      angleY 0.014
+      angleZ -0.895
+      m_sCustomNameSet "Gun Truck 1"
+      {
+       SCR_AIGroup : "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Vehicles/CRF_USMC_ArmorCrew.et" {
+        coords -1.266 0.208 -7.35
+        angleX 0.895
+        angleZ 0.895
+        m_sCustomNameSet "Gun Truck 2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

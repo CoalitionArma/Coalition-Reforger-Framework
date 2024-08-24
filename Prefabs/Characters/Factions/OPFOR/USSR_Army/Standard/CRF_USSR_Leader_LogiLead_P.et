@@ -4,5 +4,12 @@ SCR_ChimeraCharacter : "{A3C9811329054C00}Prefabs/Characters/Factions/OPFOR/USSR
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Logi Lead"
   }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
+    }
+   }
+  }
  }
 }

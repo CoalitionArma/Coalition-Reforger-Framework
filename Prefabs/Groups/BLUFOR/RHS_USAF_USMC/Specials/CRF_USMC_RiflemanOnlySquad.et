@@ -1,0 +1,8 @@
+SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Infantry/CRF_USMC_RifleSquad.et" {
+ ID "0000000000000001"
+ coords 967.439 39 2645.17
+ angleY 165.071
+ m_aUnitPrefabSlots {
+  "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et" "{3411E2AC76C778C2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_Base_P.et"
+ }
+}

@@ -1,0 +1,70 @@
+SCR_AIGroup USSR_Company_Command : "{E27D8A921EE36F1F}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Company_p.et" {
+ coords 4341.151 141.305 6780.809
+ angleX -1.427
+ angleY 175.088
+ angleZ 4.801
+ m_sCustomNameSet "Company Command"
+ {
+  SCR_AIGroup USSR_Platoon_Command_1 : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+   coords -33.718 0.76 0.757
+   m_sCustomNameSet "1st Platoon Command"
+   {
+    SCR_AIGroup USSR_RifleSquad_1_1 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+     coords -1.01 0.564 -22.541
+     m_sCustomNameSet "Infantry Squad"
+     {
+      SCR_AIGroup USSR_RifleSquad_1_2 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+       coords 0.395 0.133 -4.296
+       m_sCustomNameSet "Infantry Squad"
+       {
+        SCR_AIGroup USSR_RifleSquad_1_3 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+         coords 0.139 0.115 -4.277
+         m_sCustomNameSet "Infantry Squad"
+         {
+          SCR_AIGroup zUSSR_BTR_Crew_1 : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+           coords 0.221 -0.847 24.674
+           {
+            SCR_AIGroup USSR_Platoon_Command_2 : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+             coords 63.954 -0.594 6.022
+             m_sCustomNameSet "2nd Platoon Command"
+             {
+              SCR_AIGroup USSR_RifleSquad_2_1 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+               coords 0.572 0.097 -21.607
+               m_sCustomNameSet "Infantry Squad"
+               {
+                SCR_AIGroup USSR_RifleSquad_2_2 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+                 coords 0.313 -0.01 -4.421
+                 m_sCustomNameSet "Infantry Squad"
+                 {
+                  SCR_AIGroup USSR_RifleSquad_2_3 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+                   coords 0.213 0.029 -3.953
+                   m_sCustomNameSet "Infantry Squad"
+                   {
+                    SCR_AIGroup zUSSR_BTR_Crew_2 : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+                     coords -1.427 -0.102 24.185
+                     {
+                      SCR_AIGroup zUSSR_MMG_Team : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
+                       coords -30.102 -0.665 -12.439
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

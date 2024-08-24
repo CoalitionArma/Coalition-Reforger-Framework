@@ -1,0 +1,95 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 3489.049 185.824 5822.225
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 70
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_iStartingHours 6
+   m_iRangeHoursStart 15
+   m_iRangeHoursEnd 15
+  }
+ }
+ coords 3479.58 181.114 5829.136
+ m_fAutoReloadTime 0
+ {
+  SCR_FactionManager "620868CA23E81D8E" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{620843D64B2CE3F3}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{620843D64BFE22F2}" {
+        m_sCallsign "TH1"
+       }
+       SCR_CallsignInfo "{620843D64BB7E20A}" {
+        m_sCallsign "MORTAR"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{620843D67D22C2B7}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{620843D67D05EA54}" {
+        m_sCallsign "BTR1"
+       }
+       SCR_CallsignInfo "{620843D67DFD74FB}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{620843D67DD2E300}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{620843D67DCB7D51}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{620843D67DB98200}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{620843D682675CC3}" {
+        m_sCallsign "BTR2"
+       }
+       SCR_CallsignInfo "{620843D682466FFD}" {
+        m_sCallsign "MMG"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,63 @@
+$grp Tank : "{6484A98F55C6AA9E}T-55/T55olive.et" {
+ T55olive1 {
+  coords 2406.433 190.062 5340.385
+  angleY -179.186
+ }
+ T55olive2 {
+  coords 2397.88 190.062 5340.506
+  angleY -179.186
+ }
+}
+SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+ coords 2379.647 194.555 5383.789
+ m_sCustomNameSet "Platoon"
+ {
+  SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+   coords -11.661 0.973 7.794
+   {
+    SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+     coords 27.934 0.22 -0.099
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+       coords -16.886 3.056 29.084
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{734B886D3D2AB351}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_MMGTeam_P.et" {
+         coords 16.823 -5.156 -43.129
+         m_sCustomNameSet "MMG"
+         {
+          SCR_AIGroup : "{66E115D05D39F553}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_3manVehicleCrew_P.et" {
+           coords -13.987 -2.956 -15.338
+           m_sCustomNameSet "Armor 1"
+           {
+            SCR_AIGroup : "{66E115D05D39F553}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_3manVehicleCrew_P.et" {
+             coords 20.57 -0.415 -4.58
+             m_sCustomNameSet "Armor 2"
+             {
+              SCR_AIGroup : "{5C4985419C6060D3}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_Logi_P.et" {
+               coords -46.697 -0.274 -0.433
+               {
+                SCR_AIGroup : "{C402FC1C37B40123}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_Indirect_P.et" {
+                 coords 57.198 2.654 15.577
+                 m_aUnitPrefabSlots {
+                  "{6A1CC2F56CD38006}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_IndirectLeader_P.et"
+                 }
+                 m_sCustomNameSet "ZEUS"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

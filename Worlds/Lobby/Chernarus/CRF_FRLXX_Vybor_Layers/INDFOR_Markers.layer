@@ -1,0 +1,111 @@
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 4621.906 339.125 9685.271
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4590.103 339.125 9722.307
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4589.317 339.125 9770.894
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4617.827 339.125 9816.009
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4642.313 339.125 9835.728
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4686.217 339.125 9826.214
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4719.6 339.125 9798.88
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4739.222 339.125 9759.645
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4742.426 339.125 9696.928
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4716.797 339.125 9654.572
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4689.138 339.125 9620.196
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4649.896 339.125 9620.563
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 4632.552 339.125 9643.043
+  m_MarkerColor 0.067 0.207 0.073 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 4657.497 340.428 9728.659
+ angleY 89.297
+ m_MarkerColor 0.067 0.207 0.073 1
+}

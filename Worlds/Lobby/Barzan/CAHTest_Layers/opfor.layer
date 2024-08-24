@@ -1,0 +1,54 @@
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 2447.107 4.46 2666.748
+ {
+  SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   coords -30.498 2.381 12.327
+   angleX 0.894
+   angleY 0.028
+   angleZ 1.79
+   {
+    SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+     coords -10.837 4.476 -26.323
+     angleX -0.895
+     angleZ -1.79
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+       coords 15.371 -1.315 -11.549
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+         coords 28.303 1.627 -27.094
+         m_sCustomNameSet "4th Squad"
+         {
+          SCR_AIGroup : "{8748BF6550869FF3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_HAT.et" {
+           coords 16.249 -7.742 45.279
+           m_sCustomNameSet "Heavy Anti-tank"
+           {
+            SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_Logi.et" {
+             coords 2.651 0.008 -0.004
+             {
+              SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+               coords -9.788 0.117 7.568
+               m_sCustomNameSet "IFV A (BTR-90A)"
+               {
+                SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+                 coords -20.957 1.332 3.922
+                 m_sCustomNameSet "IFV B (BTR-90A)"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
