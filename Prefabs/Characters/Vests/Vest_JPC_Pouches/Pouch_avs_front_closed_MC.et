@@ -1,0 +1,49 @@
+GenericEntity : "{4FD233CEA1B85F8A}Prefabs/Characters/Vests/Vest_JPC_Pouches/Pouch_avs_front_closed_base.et" {
+ ID "50E0B40D7407B664"
+ components {
+  RHS_EquipmentStorageComponent "{5222CB03D1147687}" {
+   InitialStorageSlots {
+    RHS_EquipmentStorageSlot pouch3 {
+     Offset -0.1061 -0.0212 0.0122
+     Angles 6.9623 -95.083 174.32146
+     ChildPivotID "snap_weapon"
+     DisablePhysicsInteraction 1
+     DeactivatePhysicsOnAtaching 1
+     AllowedItemTypes {
+      "RHS_RIFLE_AMMO"
+     }
+    }
+    RHS_EquipmentStorageSlot pouch4 {
+     Offset -0.1061 -0.212 0.0122
+     Angles 6.9624 -95.083 174.32146
+     ChildPivotID "snap_weapon"
+     DisablePhysicsInteraction 1
+     DeactivatePhysicsOnAtaching 1
+     AllowedItemTypes {
+      "RHS_RIFLE_AMMO"
+     }
+    }
+    RHS_EquipmentStorageSlot pouch5 {
+     Offset -0.1061 -0.0212 0.0122
+     Angles 6.9624 -95.083 174.32146
+     ChildPivotID "snap_weapon"
+     DisablePhysicsInteraction 1
+     DeactivatePhysicsOnAtaching 1
+     AllowedItemTypes {
+      "RHS_RIFLE_AMMO"
+     }
+    }
+    RHS_EquipmentStorageSlot pouch6 {
+     Offset -0.1061 -0.0212 0.0122
+     Angles 6.9624 -95.083 174.32146
+     ChildPivotID "snap_weapon"
+     DisablePhysicsInteraction 1
+     DeactivatePhysicsOnAtaching 1
+     AllowedItemTypes {
+      "RHS_RIFLE_AMMO"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,33 @@
+GameEntity : "{926F2D2ED4D286EB}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_MICH_Cov_MarpatWD.et" {
+ ID "50D485E1435D6C72"
+ components {
+  RHS_HelmetNodeStorageComponent "{5DB13C5777E6E695}" {
+   Attributes SCR_ItemAttributeCollection "{5DB13C5760610D64}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_ACH_Name  #RHS-Attachment_Shroud"
+     Description "#RHS-Headgear_ACH_Description"
+    }
+    CustomAttributes {
+     RHS_CustomAttributes "{5DB8F5B9ACB547EA}" {
+      m_sShortName "#RHS-Headgear_ACH_Name"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo Goggles {
+     Offset 0 0 0
+    }
+    RHS_LoadoutSlotInfo NVG {
+     Offset 0 0.1544 -0.1356
+     Enabled 1
+     Prefab "{64322D5D501B7D79}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14_Base.et"
+    }
+   }
+   WornModel "{942BB93A7E7E4D84}Assets/Characters/HeadGear/Helmet_ACH_MICH/rhs_ach_cov_shroud.xob"
+   ItemModel "{24B3272B405FC7B7}Assets/Characters/HeadGear/Helmet_ACH_MICH/rhs_ach_cov_shroud_item.xob"
+  }
+ }
+ coords 747.614 51 2297.649
+}
