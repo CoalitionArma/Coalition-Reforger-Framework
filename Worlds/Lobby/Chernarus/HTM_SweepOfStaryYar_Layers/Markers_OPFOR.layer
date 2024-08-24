@@ -2,154 +2,69 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
  {
   coords 5616.644 469.697 15357.591
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5633.643 490.975 15296.696
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5640.695 482.343 15238.818
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5674.733 476.426 15200.078
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5714.76 482.875 15158.642
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5770.524 474.865 15158.65
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5829.439 474.139 15169.213
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5829.483 477.362 15124.764
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5826.145 478.176 15098.567
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5843.676 478.421 15063.002
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5854.122 479.394 15023.769
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5868.048 480.075 14977.196
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5879.042 480.364 14928.671
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5893.453 480.313 14890.505
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5907.779 480.365 14849.517
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5910.226 479.708 14817.622
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
  {
   coords 5913.321 478.585 14776.07
   angleY 0
-  m_aVisibleForFactions {
-   "USSR"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
 }

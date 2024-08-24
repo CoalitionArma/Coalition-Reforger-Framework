@@ -1,6 +1,6 @@
 $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
  M1025_armed_M2HB_MERDC2 {
-  coords 6408.293 467.24 14988.736
+  coords 6406.361 467.301 14988.558
   angleY -89
   userScript "	// code here"\
   "	string mortar = \"{0374F390B22D0D1E}Mortars/81/M252new.et\";"\
@@ -121,7 +121,7 @@ SCR_AIGroup US80s_Company_HQ_1 : "{FFCD1FC588C72B77}Prefabs/Groups/BLUFOR/1980s/
                  coords -25.888 0.845 29.549
                  angleY 15.411
                  m_aUnitPrefabSlots {
-                  "{074713C8779D24DA}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyGunner_P.et" "{074713C8779D24DA}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyGunner_P.et"
+                  "{4CCCC93AA4A4D6AD}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyLead_P.et" "{074713C8779D24DA}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyGunner_P.et" "{074713C8779D24DA}Prefabs/Characters/Factions/BLUFOR/US_Army/COALTION_STANDARD/Character_US_ArtyGunner_P.et"
                  }
                  m_sCustomNameSet "Mortar Batery (-)"
                 }

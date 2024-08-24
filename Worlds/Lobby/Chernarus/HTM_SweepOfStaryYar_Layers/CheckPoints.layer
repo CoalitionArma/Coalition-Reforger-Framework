@@ -1,6 +1,8 @@
 GenericEntity : "{0D99D135D46EC969}Prefabs/Props/Military/H Barrier/Hesco barrier Triple.et" {
- coords 5379.38 481.481 14913.695
- angleX 3.576
+ coords 5446.315 477.302 14891.216
+ angleX 3.215
+ angleY 26.009
+ angleZ 1.567
 }
 GenericEntity : "{1200F6499BA275FB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_03.et" {
  coords 5285.927 478.256 15177.123
@@ -14,10 +16,10 @@ $grp StaticModelEntity : "{18822FB3F0D2ED00}Prefabs/Structures/Walls/BarbedWire/
   angleZ 5.975
  }
  {
-  coords 5360.709 0 14894.114
-  angleX -0.113
-  angleY 43
-  angleZ 5.975
+  coords 5437.877 0 14931.219
+  angleX 1.861
+  angleY -24.579
+  angleZ 4.062
  }
  {
   coords 5374.811 0 14922.895
@@ -47,14 +49,15 @@ $grp StaticModelEntity : "{367F172BA690BB48}PrefabsEditable/Auto/Compositions/Mi
  }
 }
 GenericEntity : "{3EF310C373E39AAB}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Wall_BarbedWire_USSR_01.et" {
- coords 5365.105 483.225 14934.413
- angleY -105.067
- angleZ -4.274
+ coords 5444.498 478.853 14912.315
+ angleX -1.342
+ angleY -104.289
+ angleZ -8.824
 }
 $grp StaticModelEntity : "{51AB40A39B944585}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Bunker_Camouflaged_USSR_01.et" {
  {
-  coords 5352.27 484.041 14947.711
-  angleY 30.962
+  coords 5443.894 480.023 14919.397
+  angleY 65.57
  }
  {
   coords 5293.07 478.427 15129.906
@@ -89,8 +92,8 @@ $grp GenericEntity : "{7C85836D444E3797}Prefabs/Compositions/Slotted/SlotRoadMed
   angleY 76.667
  }
  {
-  coords 5378.556 480.766 14902.745
-  angleY 108.796
+  coords 5432.573 477.551 14885.373
+  angleY 106.156
  }
 }
 $grp GenericEntity : "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_01.et" {
@@ -99,15 +102,17 @@ $grp GenericEntity : "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotte
   angleY 127.851
  }
  {
-  coords 5368.076 482.659 14925.622
-  angleY 44.363
+  coords 5444.831 478.036 14903.549
+  angleX -0.376
+  angleY 74.26
+  angleZ 1.965
  }
 }
 GenericEntity : "{9E00652AE367C051}Prefabs/Props/Military/H Barrier/Hesco Barrier Rounded.et" {
- coords 5376.756 481.984 14920.347
- angleX -3.024
- angleY -132.545
- angleZ -3.29
+ coords 5447.436 477.701 14898.327
+ angleX -0.791
+ angleY -100.183
+ angleZ -4.397
 }
 StaticModelEntity : "{A7714C2274969A61}PrefabsEditable/Auto/Compositions/Misc/CustomEntities/DestructionEntities/E_ShelterStorage_USSR_01_CompositionDestruction.et" {
  coords 5347.12 481.972 14923.215
@@ -115,7 +120,7 @@ StaticModelEntity : "{A7714C2274969A61}PrefabsEditable/Auto/Compositions/Misc/Cu
 }
 $grp GenericEntity : "{BCF4F3411D3B2075}Prefabs/Props/Military/Bunkers/Bunker_Tower.et" {
  {
-  coords 5357.129 481.675 14901.057
+  coords 5368.61 480.556 14897.122
   angleX 0.438
   angleY -155.257
   angleZ 1.188
@@ -130,16 +135,16 @@ GenericEntity : "{BF9902D6FC4E450B}PrefabsEditable/Auto/Compositions/Misc/SubCom
  angleY 59.862
 }
 GenericEntity : "{C762BA61BAD5B536}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Corner_BarbedWire_USSR_01.et" {
- coords 5355.519 481.516 14890.965
- angleX -12.381
- angleY -151.413
- angleZ -6.664
+ coords 5365.21 479.833 14885.884
+ angleX -5.128
+ angleY -153.169
+ angleZ -13.336
 }
 GenericEntity : "{D61611B41BDB921B}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Barricade_USSR_04.et" {
- coords 5351.863 480.774 14888.103
- angleX 3.228
- angleY -73.411
- angleZ -13.694
+ coords 5362.125 479.424 14883.052
+ angleX 4.16
+ angleY -73.694
+ angleZ -16.884
 }
 GenericEntity : "{EB22348C6EB71B2C}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Barricade_USSR_03.et" {
  coords 5291.832 478.352 15172.314
@@ -151,7 +156,9 @@ $grp GenericEntity : "{F79CBAB09747E291}PrefabsEditable/Auto/Compositions/Slotte
   angleY 29.805
  }
  {
-  coords 5359.444 484.156 14941.243
-  angleY 52.448
+  coords 5439.42 480.903 14925.382
+  angleX -0.298
+  angleY 47.697
+  angleZ 6.298
  }
 }

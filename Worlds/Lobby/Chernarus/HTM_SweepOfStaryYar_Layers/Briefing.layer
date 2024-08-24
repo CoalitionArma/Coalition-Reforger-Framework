@@ -1,11 +1,11 @@
 SCR_BaseTriggerEntity trig2 {
- coords 6415.515 467.223 14997.792
+ coords 6370.146 467.052 14993.74
  angleX 0.895
  angleY 0.014
  angleZ 0.895
 }
 SCR_PlayersPresentTriggerEntity trig1 {
- coords 6413.221 467.097 15004.193
+ coords 6367.852 467.844 15000.142
  angleX -2.683
  angleY -0.042
  angleZ 0.896
