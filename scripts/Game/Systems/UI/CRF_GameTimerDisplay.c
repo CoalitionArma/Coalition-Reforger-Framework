@@ -10,12 +10,14 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
+	//------------------------------------------------------------------------------------------------
 	override protected void OnInit(IEntity owner)
 	{
 		super.OnInit(owner);
-		GetGame().GetCallqueue().CallLater(UpdateTimer, 250, true);
-	}
+		GetGame().GetCallqueue().CallLater(UpdateTimer, 100, true);
+	};
 
+	//------------------------------------------------------------------------------------------------
 	override protected void UpdateValues(IEntity owner, float timeSlice)
 	{
 		super.UpdateValues(owner, timeSlice);
@@ -33,9 +35,20 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	void UpdateTimer()
-	{
+	{	
 		if (!m_Safestart || !m_wTimer || !m_wBackground || !m_MapEntity) return;
+		
+		if(!m_Safestart.m_bHUDVisible)
+		{
+			m_wTimer.SetVisible(false);
+			m_wBackground.SetVisible(false);
+			return;
+		} else {
+			m_wTimer.SetVisible(true);
+			m_wBackground.SetVisible(true);
+		}
 		
 		// get time left in mission
 		m_sServerWorldTime = m_Safestart.GetServerWorldTime();

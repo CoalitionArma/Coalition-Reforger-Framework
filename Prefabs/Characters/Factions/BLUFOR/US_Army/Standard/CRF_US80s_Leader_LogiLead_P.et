@@ -4,5 +4,12 @@ SCR_ChimeraCharacter : "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Logi Lead"
   }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{06B68C58B72EAAC6}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium.et"
+    }
+   }
+  }
  }
 }

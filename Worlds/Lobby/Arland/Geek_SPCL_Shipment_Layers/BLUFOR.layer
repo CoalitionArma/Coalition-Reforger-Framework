@@ -1,0 +1,33 @@
+SCR_AIGroup : "{D98805C88CAB8AE2}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Specials/CRF_USMC_RiflemanOnlySquad.et" {
+ coords 989.678 39 2659.202
+ angleY -105.479
+ m_sCustomNameSet ""
+ {
+  SCR_AIGroup : "{D98805C88CAB8AE2}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Specials/CRF_USMC_RiflemanOnlySquad.et" {
+   coords -0.026 0 -6.385
+   angleY -0.66
+   m_sCustomNameSet ""
+   {
+    SCR_AIGroup : "{D98805C88CAB8AE2}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Specials/CRF_USMC_RiflemanOnlySquad.et" {
+     coords -0.025 0 -5.927
+     angleY -0.106
+     m_sCustomNameSet ""
+     {
+      SCR_AIGroup : "{D98805C88CAB8AE2}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Specials/CRF_USMC_RiflemanOnlySquad.et" {
+       coords -0.217 0 -5.877
+       angleY -0.465
+       m_sCustomNameSet ""
+       {
+        SCR_AIGroup : "{D98805C88CAB8AE2}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Specials/CRF_USMC_RiflemanOnlySquad.et" {
+         coords -0.343 0 -7.334
+         angleY 1.137
+         m_sCustomNameSet ""
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

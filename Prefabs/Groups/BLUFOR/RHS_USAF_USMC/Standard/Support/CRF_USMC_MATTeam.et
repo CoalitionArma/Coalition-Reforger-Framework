@@ -1,0 +1,11 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Platoon.et" {
+ ID "0000000000000001"
+ coords 2043.028 44.783 2064.622
+ m_aUnitPrefabSlots {
+  "{372C2A8BC0C553E8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_Base_SL_P.et" "{0E67317AD6549432}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_MAT_P.et" "{D2A0ED165BBE7E9C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_AMAT_P.et" "{0E67317AD6549432}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_MAT_P.et" "{D2A0ED165BBE7E9C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_AMAT_P.et"
+ }
+ m_sCustomNameSet "MAT Team"
+ m_aUnitPrefabColorTeams {
+  "None" "Blue" "Blue" "Yellow" "Yellow"
+ }
+}

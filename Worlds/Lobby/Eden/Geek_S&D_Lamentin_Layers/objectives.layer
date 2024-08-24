@@ -1,0 +1,29 @@
+$grp SCR_BaseTriggerEntity {
+ bSiteTrigger {
+  coords 1078.114 10.29 6012.773
+  angleY 2.49
+  {
+   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.005 0 0.01
+    angleY 90
+    m_fWorldSize 30
+    m_sDescription "OBJ - B Site "
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ aSiteTrigger {
+  coords 1282.514 41.352 6028.862
+  {
+   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.01 0 0.001
+    angleY 90
+    m_fWorldSize 30
+    m_sDescription "OBJ- A Site"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+}

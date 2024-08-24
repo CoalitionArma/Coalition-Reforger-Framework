@@ -1,0 +1,230 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 2001.967 0.984 2170.994
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2016.449 3.87 2214.706
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2038.289 18.205 2231.901
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2054.012 6.524 2299.541
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2046.476 5.654 2357.319
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2034.185 5.875 2412.901
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2024.135 13.929 2485.25
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2018.112 8.917 2588.837
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2007.104 14.771 2653.46
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2009.078 14.977 2679.626
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2022.349 23.688 2731.295
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2040.22 26.525 2772.161
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2058.615 17.219 2823.813
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+ {
+  coords 2073.444 13.954 2855.473
+  m_aVisibleForFactions {
+   "RHS_US_USMC"
+  }
+ }
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 844.074 2.583 2633.028
+ m_sTextData "Both teams have exact identical compositions and attacking capability. Due to the linearity of the mission and the fact that the objectives are easily captured, the team with the best tactics should win."\
+ ""\
+ "As such, use the terrain to maneuver and capture as many control points as possible in order to gain a point advantage."\
+ ""\
+ "The mission is won if you fill your capture bar or exhaust enemy tickets."
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
+ m_iOrder 5
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 860.434 3.27 2651.636
+ m_sTextData "BLUFOR: "\
+ "2x Stryker Dragoon"\
+ "Trucks"\
+ ""\
+ "OPFOR:"\
+ "2x BTR90A"\
+ "Trucks"
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 871.678 3.866 2672.35
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 1353.591 6.109 2705.797
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1358.863 3.528 2746.832
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1365.132 1.308 2785.517
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1343.377 8.789 2635.513
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1339.118 9.437 2602.04
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1336.404 9.656 2577.021
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1329.574 9.557 2545.625
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1325.419 9.287 2528.396
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1324.341 8.937 2498.974
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1319.01 13.176 2457.795
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1317.914 8.071 2426.28
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1314.643 6.972 2392.778
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1306.946 6.188 2353.54
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1304.022 6.219 2311.996
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1300.41 6.406 2279.832
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1293.735 6.656 2230.317
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1292.519 6.985 2188.948
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1286.849 7.375 2159.956
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1280.857 7.884 2125.451
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1315.723 8.325 2093.059
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1346.415 7.862 2057.747
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1381.699 4.531 2015.172
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1409.322 6.45 1984.681
+  m_sDescription "OPFOR LOA"
+ }
+ {
+  coords 1452.569 0.389 1935.228
+  m_sDescription "OPFOR LOA"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 843.542 3.527 2658.923
+ m_sTextData "Both teams have exact identical compositions and attacking capability. Due to the linearity of the mission and the fact that the objectives are easily captured, the team with the best tactics should win."\
+ ""\
+ "As such, use the terrain to maneuver and capture as many control points as possible in order to gain a point advantage."\
+ ""\
+ "The mission is won if you fill your capture bar or exhaust enemy tickets."
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
+ m_iOrder 5
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 869.241 3.092 2664.84
+ m_sTextData "Two motorized elements of BLUFOR and OPFOR are ordered to attack a hold a key crossroad on the island of barzan."\
+ ""\
+ "Gametype: Capture and Hold"\
+ "Ratio: 1:1 Attack/Attack"\
+ "Respawns: 50"
+}

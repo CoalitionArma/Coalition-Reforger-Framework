@@ -1,0 +1,14 @@
+SCR_ChimeraCharacter : "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Team Lead"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173FAA7C00E}" {
+    }
+   }
+  }
+ }
+}

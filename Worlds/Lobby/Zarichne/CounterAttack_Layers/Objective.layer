@@ -1,0 +1,155 @@
+$grp SCR_FactionDominanceTriggerEntity {
+ obj2 {
+  coords 2094.488 6.138 2201.2
+  userScript "	// code here"\
+  "	bool zoneCaptured = false;"
+  TriggerShapeType Sphere
+  SphereRadius 80
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Russia has captured the northern crossing\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "USSR"
+  m_fFriendlyRatioLimit 1
+  {
+   PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords -3.153 5.472 2.379
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification-2"
+    m_fWorldSize 50
+    m_sDescription "Northern Crossing"
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 42.65 5.495 342.416
+     m_sTitle "OBJ: Defend North Crossing"
+     m_sTextData "Defend Northern Crossing"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "US"
+    }
+    {
+     coords 43.109 5.486 347.512
+     m_sTitle "OBJ: Capture North Crossing"
+     m_sTextData "Capture Northern Crossing"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "USSR"
+    }
+   }
+  }
+ }
+ obj1 {
+  coords 2221.677 6.294 1594.431
+  userScript "	bool zoneCaptured = false;"
+  TriggerShapeType Sphere
+  SphereRadius 150
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished "	"\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Russia has captured the southern crossing\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
+  "		"\
+  "	"
+  m_sOwnerFactionKey "USSR"
+  m_fFriendlyRatioLimit 1
+  {
+   PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords 7.578 2.344 -6.275
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification-2"
+    m_fWorldSize 50
+    m_sDescription "Southern Crossing"
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 143.213 2.567 -270.041
+     m_sTitle "OBJ: Defend South Crossing"
+     m_sTextData "Defend Southern Crossing"
+     m_iOrder 2
+     m_iScore 25
+     m_sFactionKey "US"
+    }
+    {
+     coords 142.754 2.571 -275.136
+     m_sTitle "OBJ: Capture South Crossing"
+     m_sTextData "Capture Southern Crossing"
+     m_iOrder 2
+     m_iScore 25
+     m_sFactionKey "USSR"
+    }
+   }
+  }
+ }
+ obj3 {
+  coords 2696.71 12.377 2574.273
+  userScript "	// code here"\
+  "	bool zoneCaptured = false;"
+  TriggerShapeType Sphere
+  SphereRadius 80
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		if (!zoneCaptured) "\
+  "		{"\
+  "			if (m_iFriendlyCount >= 1 && m_iEnemyCount == 0) "\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Russians have driven the americans out of the final defensive line\", 10);"\
+  "				zoneCaptured = true;"\
+  "			}"\
+  "				"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "USSR"
+  m_fFriendlyRatioLimit 1
+  {
+   PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    coords 3.235 -0.238 -5.146
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification-2"
+    m_fWorldSize 50
+    m_sDescription "Final Defensive Line"
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0.275 0.586 2.725
+     m_sTitle "OBJ: Defend Final Defensive Line"
+     m_sTextData "Defend Final Defensive Line"
+     m_iScore 50
+     m_sFactionKey "US"
+    }
+    {
+     coords -0.185 0.316 -2.372
+     m_sTitle "OBJ: Capture Final Defensive Line"
+     m_sTextData "Capture Final Defensive Line"
+     m_iScore 50
+     m_sFactionKey "USSR"
+    }
+   }
+  }
+ }
+}

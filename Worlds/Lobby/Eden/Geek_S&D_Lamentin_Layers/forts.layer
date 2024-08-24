@@ -1,0 +1,66 @@
+GenericEntity : "{18B92018CF634D22}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_03.et" {
+ coords 1088.619 2.781 6043.709
+ angleY 85.935
+}
+$grp GenericEntity : "{917158017F425567}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_01.et" {
+ {
+  coords 1074.631 2.781 6042.64
+  angleY -53.102
+ }
+ {
+  coords 1064.855 2.719 6025.68
+  angleY -95.314
+ }
+ {
+  coords 1266.339 36.204 6058.071
+  angleY -113.169
+ }
+}
+$grp GenericEntity : "{C7D38772154D45BB}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_US_01.et" {
+ {
+  coords 1225.609 35.839 5993.105
+  angleY -113.281
+ }
+ {
+  coords 1098.849 2.805 6091.539
+  angleY 76.519
+ }
+}
+$grp GenericEntity : "{F29A05EBA7063E7C}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_plastic.et" {
+ {
+  coords 1071.021 10.29 6005.174
+ }
+ {
+  coords 1072.956 10.29 6006.008
+  angleY -89.549
+ }
+ {
+  coords 1084.345 10.29 6007.737
+ }
+ {
+  coords 1085.297 10.29 6009.663
+  angleY -88.686
+ }
+ {
+  coords 1076.322 10.29 6017.199
+  angleY 0.153
+ }
+ {
+  coords 1070.28 10.29 6012.37
+  angleY -88.686
+ }
+}
+$grp GenericEntity : "{FD256CE1C386DA49}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_02.et" {
+ {
+  coords 1088.316 2.781 6025.803
+  angleY 92.332
+ }
+ {
+  coords 1301.708 38.174 6032.192
+  angleY 90.003
+ }
+ {
+  coords 1267.893 37.156 6013.992
+  angleY -135.916
+ }
+}

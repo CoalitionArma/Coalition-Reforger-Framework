@@ -1,0 +1,67 @@
+SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
+ coords 3155.844 21.781 2543.157
+ {
+  $grp SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+   {
+    coords 23.294 -0.53 -15.155
+   }
+   {
+    coords -19.365 0.4 -16.89
+    {
+     SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
+      coords 62.172 -0.93 1.735
+      m_sCustomNameSet "3rd Squad"
+     }
+    }
+   }
+  }
+  SCR_AIGroup : "{EF56323F873DAB17}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_MATTeam.et" {
+   coords 26.965 -0.783 -52.249
+  }
+  SCR_AIGroup : "{F7F9A5378C5DE8A5}Prefabs/Groups/BLUFOR/1980s/Standard/Support/Group_US80s_Support_MGTeam.et" {
+   coords -18.583 0.04 -48.963
+  }
+ }
+}
+Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
+ coords 3150.722 21.781 2559.297
+ angleY -86.992
+}
+Vehicle M151A2_transport_MERDC1 : "{94DE32169691AC34}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.et" {
+ coords 3160.323 21.776 2559.416
+ angleY -96.238
+}
+$grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+ M1025_armed_M2HB_MERDC1 {
+  coords 3138.61 21.718 2534.014
+  angleY -90.821
+ }
+ M1025_armed_M2HB_MERDC2 {
+  coords 3132.82 21.831 2533.931
+  angleY -90.821
+ }
+ M1025_armed_M2HB_MERDC3 {
+  coords 3175.579 21.475 2536.217
+  angleY -90.821
+ }
+ M1025_armed_M2HB_MERDC5 {
+  coords 3138.486 21.968 2500.672
+  angleY -90.821
+ }
+ M1025_armed_M2HB_MERDC6 {
+  coords 3180.689 21.781 2500.144
+  angleY -88.949
+ }
+ M1025_armed_M2HB_MERDC4 {
+  coords 3180.982 21.469 2536.293
+  angleY -90.821
+ }
+ M1025_armed_M2HB_MERDC7 {
+  coords 3195.698 21.5 2536.363
+  angleY -90.821
+ }
+ M1025_armed_M2HB_MERDC8 {
+  coords 3201.099 21.5 2536.439
+  angleY -90.821
+ }
+}

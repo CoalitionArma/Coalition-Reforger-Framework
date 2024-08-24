@@ -218,6 +218,14 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
       m_sCallsignGroupFormat "%3"
      }
     }
+    SCR_Faction "{5E5106B25048F22B}" {
+     UIInfo SCR_FactionUIInfo "{5E5106B6FC0CCF01}" {
+      Name "BLUFOR"
+     }
+     m_NotificationFactionColor 0.016 0.552 0.905 1
+     m_NotificationTextFactionColor 0.013 0.395 0.651 1
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
    }
   }
   RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {

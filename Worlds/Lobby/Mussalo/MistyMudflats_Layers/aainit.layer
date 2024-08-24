@@ -20,6 +20,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
  components {
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
    m_iTimeLimitMinutes 60
+   m_bDeleteJIPSlots 0
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_iStartingHours 17

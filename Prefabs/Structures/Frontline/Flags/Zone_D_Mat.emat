@@ -1,0 +1,3 @@
+MatPBRBasic : "{91E0C16C079A6D05}Assets/Props/Fabric/Flags/Data/Flag_1_2_emat_base.emat" {
+ BCRMap "{8478C7ACD5DABDDA}Prefabs/Structures/LinearAAS/Flags/Flag_Zone_D_texture.edds"
+}

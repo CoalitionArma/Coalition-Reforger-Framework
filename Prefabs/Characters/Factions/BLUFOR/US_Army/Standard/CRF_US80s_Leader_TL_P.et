@@ -1,0 +1,14 @@
+SCR_ChimeraCharacter : "{E377F7C4740C1B20}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Team Leader"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CAAFB9235E902}" {
+    }
+   }
+  }
+ }
+}

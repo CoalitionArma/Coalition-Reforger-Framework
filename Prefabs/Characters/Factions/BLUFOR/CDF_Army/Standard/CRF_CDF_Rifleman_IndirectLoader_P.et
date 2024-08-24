@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{9DE22FB5586591CD}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Rifleman_Base_P.et" {
+ ID "200D264F0EEA1A28"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Loader"
+  }
+ }
+}
