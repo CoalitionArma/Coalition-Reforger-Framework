@@ -38,7 +38,7 @@ Tree : "{5D765B912A33A615}PrefabLibrary/Vegetation/Trees/t_salix_fragilis_2s.et"
  scale 0.938
 }
 Tree : "{68C5231808D63103}PrefabLibrary/Vegetation/Trees/t_betula_pendula_2f.et" {
- coords 1889.807 -0 1789.099
+ coords 1889.807 0 1789.099
  angleY 33.454
  scale 1.156
 }
@@ -97,13 +97,13 @@ $grp Tree : "{DA7492F3E6B63251}PrefabLibrary/Vegetation/Bushes/b_corylus_avellan
   scale 1.04
  }
  {
-  coords 1878.274 -0 1785.227
+  coords 1878.274 0 1785.227
   angleY -34.828
   scale 0.981
  }
 }
 Tree : "{DB49D8B142D18E86}PrefabLibrary/Vegetation/Trees/t_betula_pendula_2s.et" {
- coords 1865.534 -0 1795.283
+ coords 1865.534 0 1795.283
  angleY -60.657
  scale 1.13
 }

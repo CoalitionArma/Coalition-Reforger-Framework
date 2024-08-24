@@ -1,8 +1,7 @@
-SCR_AIGroup USSR1980s_Platoon_HQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_Large_p.et" {
- coords 1840.482 7.18 1955.397
- angleY 169.005
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 1839.213 7.2 1961.536
  m_aUnitPrefabSlots {
-  "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{951CA4F244097071}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MG_P.et" "{D1786D7659BC2E7C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AMG_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et"
+  "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Officer_P.et" "{337B08523D8F3B95}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Deputy_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_RTO_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_MedicalOfficer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_MedicalOfficer_P.et"
  }
  m_sCustomNameSet "1st Motor Rifle Platoon HQ"
  {
@@ -11,40 +10,349 @@ SCR_AIGroup USSR1980s_Platoon_HQ : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s
     AIFormationComponent "{507E9DC12F541FE6}" {
      DefaultFormation "Column"
     }
+    SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+     m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+      Name "#AR-Group_Squad"
+      m_Image "{E4745904C45FC059}UI/Textures/EditorPreviews/Groups/OPFOR/Group_USSR_RifleSquad.edds"
+      m_aAuthoredLabels +{
+      }
+      m_aAutoLabels +{
+      }
+      m_EntityChildrenBudgetCost {
+       SCR_EntityBudgetValue "{60FC20EB3FFCC2C7}" {
+        m_BudgetType AI
+        m_Value 6
+       }
+      }
+      m_MilitarySymbol SCR_MilitarySymbol "{60FC20EB3FFCC2DA}" {
+       m_Identity OPFOR
+       m_Dimension LAND
+       m_Icons INFANTRY
+       m_Amplifier SQUAD
+      }
+     }
+    }
+    SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+     m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+      m_Icons INFANTRY
+      m_Amplifier SQUAD
+     }
+    }
+    SCR_PreviewEntityComponent "{56368A4E2AE45029}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+     m_bRuntime 0
+     m_aEntries {
+      SCR_BasePreviewEntry "{60FC20EB3FFCC2DC}" {
+       m_iParentID -1
+       m_Mesh ""
+       m_Flags 3
+       m_Shape MESH
+       m_iPivotID ""
+       m_vScale 1 1 1
+       m_vPosition 0 0 0
+       m_vAngles 0 0 0
+      }
+      SCR_BasePreviewEntry "{60FC20EB3FFCC2D3}" {
+       m_iParentID 0
+       m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+       m_Flags 0
+       m_Shape PREFAB
+       m_iPivotID ""
+       m_vScale 1 1 1
+       m_vPosition 0 0 0
+       m_vAngles 0 0 0
+      }
+      SCR_BasePreviewEntry "{60FC20EB3FFCC2D1}" {
+       m_iParentID 0
+       m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+       m_Flags 0
+       m_Shape PREFAB
+       m_iPivotID ""
+       m_vScale 1 1 1
+       m_vPosition 3 0 -3
+       m_vAngles 0 0 0
+      }
+      SCR_BasePreviewEntry "{60FC20EB3FFCC2D0}" {
+       m_iParentID 0
+       m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+       m_Flags 0
+       m_Shape PREFAB
+       m_iPivotID ""
+       m_vScale 1 1 1
+       m_vPosition -3 0 -3
+       m_vAngles 0 0 0
+      }
+      SCR_BasePreviewEntry "{60FC20EB3FFCC2D7}" {
+       m_iParentID 0
+       m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+       m_Flags 0
+       m_Shape PREFAB
+       m_iPivotID ""
+       m_vScale 1 1 1
+       m_vPosition 6 0 -6
+       m_vAngles 0 0 0
+      }
+      SCR_BasePreviewEntry "{60FC20EB3FFCC2D6}" {
+       m_iParentID 0
+       m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+       m_Flags 0
+       m_Shape PREFAB
+       m_iPivotID ""
+       m_vScale 1 1 1
+       m_vPosition -6 0 -6
+       m_vAngles 0 0 0
+      }
+      SCR_BasePreviewEntry "{60FC20EB3FFCC2D5}" {
+       m_iParentID 0
+       m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+       m_Flags 0
+       m_Shape PREFAB
+       m_iPivotID ""
+       m_vScale 1 1 1
+       m_vPosition 9 0 -9
+       m_vAngles 0 0 0
+      }
+     }
+    }
    }
-   coords 13.403 0.07 9.146
-   angleY -179.621
+   coords -10.143 0.05 -17.674
+   angleY -10.616
    m_aUnitPrefabSlots {
-    "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+    "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{0C7C4B0C6323ADBA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_VGunner_P.et" "{DD08B502C6A300D9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_VDriver_P.et"
    }
    m_bPlayable 1
-   m_sCustomNameSet "1st Motor Rifle Squad (BTR)"
+   m_sCustomNameSet "1st Motor Rifle Squad (BTR-70)"
    {
     SCR_AIGroup USSR1980s_RifleSquad_2 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
      components {
       AIFormationComponent "{507E9DC12F541FE6}" {
        DefaultFormation "Column"
       }
+      SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+       m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+        Name "#AR-Group_Squad"
+        m_Image "{E4745904C45FC059}UI/Textures/EditorPreviews/Groups/OPFOR/Group_USSR_RifleSquad.edds"
+        m_aAuthoredLabels +{
+        }
+        m_aAutoLabels +{
+        }
+        m_EntityChildrenBudgetCost {
+         SCR_EntityBudgetValue "{60FC20EB3FFCC2C7}" {
+          m_BudgetType AI
+          m_Value 6
+         }
+        }
+        m_MilitarySymbol SCR_MilitarySymbol "{60FC20EB3FFCC2DA}" {
+         m_Identity OPFOR
+         m_Dimension LAND
+         m_Icons INFANTRY
+         m_Amplifier SQUAD
+        }
+       }
+      }
+      SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+       m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+        m_Icons INFANTRY
+        m_Amplifier SQUAD
+       }
+      }
+      SCR_PreviewEntityComponent "{56368A4E2AE45029}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+       m_bRuntime 0
+       m_aEntries {
+        SCR_BasePreviewEntry "{60FC20EB3FFCC2DC}" {
+         m_iParentID -1
+         m_Mesh ""
+         m_Flags 3
+         m_Shape MESH
+         m_iPivotID ""
+         m_vScale 1 1 1
+         m_vPosition 0 0 0
+         m_vAngles 0 0 0
+        }
+        SCR_BasePreviewEntry "{60FC20EB3FFCC2D3}" {
+         m_iParentID 0
+         m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+         m_Flags 0
+         m_Shape PREFAB
+         m_iPivotID ""
+         m_vScale 1 1 1
+         m_vPosition 0 0 0
+         m_vAngles 0 0 0
+        }
+        SCR_BasePreviewEntry "{60FC20EB3FFCC2D1}" {
+         m_iParentID 0
+         m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+         m_Flags 0
+         m_Shape PREFAB
+         m_iPivotID ""
+         m_vScale 1 1 1
+         m_vPosition 3 0 -3
+         m_vAngles 0 0 0
+        }
+        SCR_BasePreviewEntry "{60FC20EB3FFCC2D0}" {
+         m_iParentID 0
+         m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+         m_Flags 0
+         m_Shape PREFAB
+         m_iPivotID ""
+         m_vScale 1 1 1
+         m_vPosition -3 0 -3
+         m_vAngles 0 0 0
+        }
+        SCR_BasePreviewEntry "{60FC20EB3FFCC2D7}" {
+         m_iParentID 0
+         m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+         m_Flags 0
+         m_Shape PREFAB
+         m_iPivotID ""
+         m_vScale 1 1 1
+         m_vPosition 6 0 -6
+         m_vAngles 0 0 0
+        }
+        SCR_BasePreviewEntry "{60FC20EB3FFCC2D6}" {
+         m_iParentID 0
+         m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+         m_Flags 0
+         m_Shape PREFAB
+         m_iPivotID ""
+         m_vScale 1 1 1
+         m_vPosition -6 0 -6
+         m_vAngles 0 0 0
+        }
+        SCR_BasePreviewEntry "{60FC20EB3FFCC2D5}" {
+         m_iParentID 0
+         m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+         m_Flags 0
+         m_Shape PREFAB
+         m_iPivotID ""
+         m_vScale 1 1 1
+         m_vPosition 9 0 -9
+         m_vAngles 0 0 0
+        }
+       }
+      }
      }
      coords 13.352 -0.201 0.072
      m_aUnitPrefabSlots {
-      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{0C7C4B0C6323ADBA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_VGunner_P.et" "{DD08B502C6A300D9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_VDriver_P.et"
      }
      m_bPlayable 1
-     m_sCustomNameSet "2nd Motor Rifle Squad (BTR)"
+     m_sCustomNameSet "2nd Motor Rifle Squad (BTR-70)"
      {
       SCR_AIGroup USSR1980s_RifleSquad_3 : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
        components {
         AIFormationComponent "{507E9DC12F541FE6}" {
          DefaultFormation "Column"
         }
+        SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+         m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+          Name "#AR-Group_Squad"
+          m_Image "{E4745904C45FC059}UI/Textures/EditorPreviews/Groups/OPFOR/Group_USSR_RifleSquad.edds"
+          m_aAuthoredLabels +{
+          }
+          m_aAutoLabels +{
+          }
+          m_EntityChildrenBudgetCost {
+           SCR_EntityBudgetValue "{60FC20EB3FFCC2C7}" {
+            m_BudgetType AI
+            m_Value 6
+           }
+          }
+          m_MilitarySymbol SCR_MilitarySymbol "{60FC20EB3FFCC2DA}" {
+           m_Identity OPFOR
+           m_Dimension LAND
+           m_Icons INFANTRY
+           m_Amplifier SQUAD
+          }
+         }
+        }
+        SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+         m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+          m_Icons INFANTRY
+          m_Amplifier SQUAD
+         }
+        }
+        SCR_PreviewEntityComponent "{56368A4E2AE45029}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+         m_bRuntime 0
+         m_aEntries {
+          SCR_BasePreviewEntry "{60FC20EB3FFCC2DC}" {
+           m_iParentID -1
+           m_Mesh ""
+           m_Flags 3
+           m_Shape MESH
+           m_iPivotID ""
+           m_vScale 1 1 1
+           m_vPosition 0 0 0
+           m_vAngles 0 0 0
+          }
+          SCR_BasePreviewEntry "{60FC20EB3FFCC2D3}" {
+           m_iParentID 0
+           m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+           m_Flags 0
+           m_Shape PREFAB
+           m_iPivotID ""
+           m_vScale 1 1 1
+           m_vPosition 0 0 0
+           m_vAngles 0 0 0
+          }
+          SCR_BasePreviewEntry "{60FC20EB3FFCC2D1}" {
+           m_iParentID 0
+           m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+           m_Flags 0
+           m_Shape PREFAB
+           m_iPivotID ""
+           m_vScale 1 1 1
+           m_vPosition 3 0 -3
+           m_vAngles 0 0 0
+          }
+          SCR_BasePreviewEntry "{60FC20EB3FFCC2D0}" {
+           m_iParentID 0
+           m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+           m_Flags 0
+           m_Shape PREFAB
+           m_iPivotID ""
+           m_vScale 1 1 1
+           m_vPosition -3 0 -3
+           m_vAngles 0 0 0
+          }
+          SCR_BasePreviewEntry "{60FC20EB3FFCC2D7}" {
+           m_iParentID 0
+           m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+           m_Flags 0
+           m_Shape PREFAB
+           m_iPivotID ""
+           m_vScale 1 1 1
+           m_vPosition 6 0 -6
+           m_vAngles 0 0 0
+          }
+          SCR_BasePreviewEntry "{60FC20EB3FFCC2D6}" {
+           m_iParentID 0
+           m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+           m_Flags 0
+           m_Shape PREFAB
+           m_iPivotID ""
+           m_vScale 1 1 1
+           m_vPosition -6 0 -6
+           m_vAngles 0 0 0
+          }
+          SCR_BasePreviewEntry "{60FC20EB3FFCC2D5}" {
+           m_iParentID 0
+           m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+           m_Flags 0
+           m_Shape PREFAB
+           m_iPivotID ""
+           m_vScale 1 1 1
+           m_vPosition 9 0 -9
+           m_vAngles 0 0 0
+          }
+         }
+        }
        }
        coords 13.66 -0.095 -0.592
        m_aUnitPrefabSlots {
-        "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+        "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AAT_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et"
        }
        m_bPlayable 1
-       m_sCustomNameSet "3rd Motor Rifle Squad (BTR)"
+       m_sCustomNameSet "3rd Motor Rifle Squad"
       }
      }
     }
@@ -87,45 +395,8 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
     }
    }
   }
-  coords 1836.558 7.334 1921.836
-  angleY -10.367
- }
- BTR70_AFRF3 {
-  components {
-   SCR_UniversalInventoryStorageComponent "{59168B38F20DFF74}" {
-    MultiSlots {
-     MultiSlotConfiguration "{5A60D38E3DAEB055}" {
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{5A60D38E3D89BD31}" {
-      NumSlots 8
-     }
-     MultiSlotConfiguration "{5A60D38E3DE4B1EA}" {
-      NumSlots 2
-     }
-     MultiSlotConfiguration "{5A60D38E3DCB490D}" {
-      SlotTemplate InventoryStorageSlot RPKammunition {
-       Prefab "{BEEA49E27174B224}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_Tracer.et"
-      }
-      NumSlots 6
-     }
-     MultiSlotConfiguration "{5A60D38E3DD3F9D0}" {
-      SlotTemplate InventoryStorageSlot PKMammunition {
-       Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
-      }
-      NumSlots 1
-     }
-     MultiSlotConfiguration "{60EB3061E5B6F277}" {
-      SlotTemplate InventoryStorageSlot ATMine {
-       Prefab "{41A9C55B61F375F0}Prefabs/Items/Equipment/Backpacks/Backpack_Kolobok.et"
-      }
-      NumSlots 1
-     }
-    }
-   }
-  }
-  coords 1863.447 6.711 1926.357
-  angleY -10.367
+  coords 1820.689 7.218 1981.549
+  angleY 170.633
  }
  BTR70_AFRF2 {
   components {
@@ -161,35 +432,7 @@ $grp Vehicle : "{447CFE8D73F95C3E}Prefabs/Vehicles/Wheeled/BTR70/BTR70_AFRF.et" 
     }
    }
   }
-  coords 1849.348 7.135 1924.648
-  angleY -10.367
+  coords 1827.821 7.251 1982.377
+  angleY 170.633
  }
-}
-Vehicle M998_covered_long_MERDC9 : "{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
-   MultiSlots {
-    MultiSlotConfiguration "{61D4F7FE6AB332A3}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et"
-     }
-     NumSlots 3
-    }
-    MultiSlotConfiguration "{61D4F7FE6A823E82}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
-     }
-     NumSlots 24
-    }
-    MultiSlotConfiguration "{61D4F7FE6ADB62F6}" {
-     SlotTemplate InventoryStorageSlot test {
-      Prefab "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
-     }
-     NumSlots 8
-    }
-   }
-  }
- }
- coords 3285.724 21.183 2423.583
- angleY 176.871
 }
