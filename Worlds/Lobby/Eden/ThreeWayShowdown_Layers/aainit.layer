@@ -1,17 +1,13 @@
-SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
- coords 1002.977 38.999 2639.343
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 978.525 39 2659.939
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
- coords 981.65 39.001 2621.529
-}
-SCR_EditorRestrictionZoneEntity : "{EF72FA7CD87618D5}PrefabsEditable/RestrictionZone/E_EditorRestrictionZoneSmall.et" {
- components {
-  SCR_EditableDescriptorComponent "{56D8A3C5A31496AC}" {
-   m_fMaxLocationSize 194
+ coords 905.785 40.174 2683.502
+ {
+  RadioManagerEntity {
+   ID "61BCFEC02D38B821"
+   coords -43.051 -1.174 -58.544
+   angleY -19.326
   }
  }
- coords 1012.923 39 2663.922
- m_fWarnRadius 100
- m_fZoneRadius 0
- m_fZoneTeleportedRadius 0
 }
