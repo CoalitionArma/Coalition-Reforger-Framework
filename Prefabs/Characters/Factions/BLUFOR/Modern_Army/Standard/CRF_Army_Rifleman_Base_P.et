@@ -29,16 +29,16 @@ SCR_ChimeraCharacter : "{3967948B72443B25}Prefabs/Characters/Factions/BLUFOR/RHS
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
-     Prefab "{BBFEA6F0D2F4564D}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_XP_MC_PELTOR.et"
+     Prefab "{BBFEA6F0D2F4564D}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_XP_MC_PELTOR_COAL.et"
     }
     LoadoutSlotInfo Jacket {
-     Prefab "{51E6ADD2FE1EBFFF}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC.et"
+     Prefab "{51E6ADD2FE1EBFFF}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC_COAL.et"
     }
     LoadoutSlotInfo ArmoredVest {
      Prefab "{AF355DA3D9927C36}Prefabs/Characters/Vests/Vest_JPC/Vest_JPC_base.et"
     }
     LoadoutSlotInfo Pants {
-     Prefab "{2FDEBA2FF1B7759F}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_mc.et"
+     Prefab "{2FDEBA2FF1B7759F}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_mc_COAL.et"
     }
     LoadoutSlotInfo Boots {
      Prefab "{21B331B5FA807997}Prefabs/Characters/Footwear/Boots_Rocky_SV2/Footwear_Rocky_SV2.et"
@@ -46,20 +46,20 @@ SCR_ChimeraCharacter : "{3967948B72443B25}Prefabs/Characters/Factions/BLUFOR/RHS
     LoadoutSlotInfo Back {
     }
     LoadoutSlotInfo Vest {
-     Prefab "{A8866A9389018D3C}Prefabs/Characters/Vests/Vest_JPC/variants/Vest_JPC_okinawa_Coy2.et"
+     Prefab "{A8866A9389018D3C}Prefabs/Characters/Vests/Vest_JPC/variants/Vest_JPC_COAL.et"
     }
    }
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
     ItemsInitConfigurationItem "{6063106E91310A3D}" {
-     TargetStorage "Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_mc.et"
+     TargetStorage "Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_mc_COAL.et"
      PrefabsToSpawn {
       "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et" "{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et"
      }
     }
     ItemsInitConfigurationItem "{6063106E91310A26}" {
-     TargetStorage "Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC.et"
+     TargetStorage "Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC_COAL.et"
     }
     ItemsInitConfigurationItem "{61B52C4506FFE973}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_JPC_Pouches/Pouch_AVS_MBITR_Radio_Coy.et"
@@ -68,7 +68,7 @@ SCR_ChimeraCharacter : "{3967948B72443B25}Prefabs/Characters/Factions/BLUFOR/RHS
      }
     }
     ItemsInitConfigurationItem "{62313602586D8F2B}" {
-     TargetStorage "Prefabs/Characters/Vests/Vest_JPC_Pouches/Pouch_avs_front_closed_MC.et"
+     TargetStorage "Prefabs/Characters/Vests/Vest_JPC_Pouches/Pouch_avs_front_closed_MC_COAL.et"
      PrefabsToSpawn {
       "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et" "{BD30BE4A3D8B9DAC}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1_last5tracer.et"
      }
