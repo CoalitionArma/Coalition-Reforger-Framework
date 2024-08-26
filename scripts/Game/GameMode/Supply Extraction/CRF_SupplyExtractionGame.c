@@ -56,6 +56,11 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	
 	[RplProp(onRplName: "GameMessages")]
 	protected int messageInput = 0;
+	protected string clientManpowerMessageString = manpowerMessageString;
+	protected string clientSuppliesExtractedString = suppliesExtractedString;
+	protected string clientGameMessageString1 = gameMessageString1;
+	protected string clientGameMessageString2 = gameMessageString2;
+	protected string clientGameMessageString3 = gameMessageString3;
 	
 	protected int totalSupply;
 	protected ref array<IEntity> m_entities;
@@ -181,29 +186,29 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	{
 		if (messageInput == 0)
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(suppliesExtractedString, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientSuppliesExtractedString, 10);
 			supplyMessage = true;
 		}
 		if (messageInput == 1) 
         {
-            SCR_PopUpNotification.GetInstance().PopupMsg(manpowerMessageString, 10);
+            SCR_PopUpNotification.GetInstance().PopupMsg(clientManpowerMessageString, 10);
 			manpowerMessage = true;
         }	
 		if (messageInput == 2) 
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(gameMessageString1, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString1, 10);
 			gameMessage1 = true;
 		}
 		
 		if (messageInput == 3) 
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(gameMessageString2, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString2, 10);
 			gameMessage2 = true;
 		}
 		
 		if (messageInput == 4) 
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(gameMessageString3, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString3, 10);
 			gameMessage3 = true;
 		}
 	}
