@@ -1,0 +1,14 @@
+GenericEntity : "{73C1C37B8A2A1545}Prefabs/Weapons/MachineGuns/M240/MG_M240_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{60FF5961466DAFF8}" {
+     AttachmentSlot InventoryStorageSlot optic {
+      Prefab "{158AF827F9114A36}Prefabs/Weapons/Attachments/Optics/exps/Optic_EXPS3-3.et"
+     }
+    }
+   }
+  }
+ }
+}

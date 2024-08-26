@@ -4,7 +4,7 @@ GameEntity : "{8D2A87974105B86A}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helme
   BaseLoadoutClothComponent "{5112706CD4157AF8}" {
    Slots {
     RHS_LoadoutSlotInfo NVG {
-     Prefab "{59E0D9B5B6967152}Prefabs/Items/Equipment/Nightvision/PVS31/NVG_PVS31_WP.et"
+     Prefab "{9A9555D10664B8CB}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14_WP.et"
     }
     RHS_LoadoutSlotInfo Rail_Right {
     }

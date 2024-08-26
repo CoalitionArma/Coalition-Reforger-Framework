@@ -1,0 +1,24 @@
+GenericEntity : "{A598035257A5D0BC}Prefabs/Weapons/MachineGuns/M249/MG_M249_Handguard_RISTop_base.et" {
+ ID "60949BE796E811C6"
+ components {
+  WeaponComponent "{60949BE6767386F3}" {
+   components {
+    MuzzleComponent "{60949BE67673854A}" {
+     components {
+      AttachmentSlotComponent "{60949BE676738BD9}" {
+       AttachmentSlot InventoryStorageSlot RHS_M249_RIS_VFG_Slot {
+        Prefab "{0A697FF8CA33F9A5}Prefabs/Weapons/Attachments/Optics/exps/Optic_EXPS3-1_tan.et"
+       }
+      }
+      SCR_MuzzleEffectComponent "{60949BE676738B4E}" {
+       ParticleEffect "{D629F2C4D494BE80}Particles/Weapon/Muzzle_M16A2_flashHider.ptc"
+       EffectPosition EntitySlotInfo "{C9B3271BB85B5D32}" {
+        Offset 0 0 0.1444
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

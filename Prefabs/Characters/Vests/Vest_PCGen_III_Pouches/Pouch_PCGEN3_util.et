@@ -2,8 +2,8 @@ GenericEntity : "{003B03329FCC336A}Prefabs/Characters/Vests/Vest_PCGen_III_Pouch
  ID "50E0B40D7407B664"
  components {
   SCR_UniversalInventoryStorageComponent "{5222CB03D1147687}" {
-   MaxCumulativeVolume 4000
-   m_fMaxWeight 30
+   MaxCumulativeVolume 14000
+   m_fMaxWeight 60
   }
  }
 }
