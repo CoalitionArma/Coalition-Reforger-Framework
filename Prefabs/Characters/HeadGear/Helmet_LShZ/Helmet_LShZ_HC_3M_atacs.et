@@ -1,0 +1,17 @@
+GameEntity : "{69081AB88E0C7FFD}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_HC_base.et" {
+ ID "50D485E1435D6C72"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo BackVelcro {
+     Prefab "{FEDC7DA627D89A65}Prefabs/Items/Equipment/Patches/Patch_RU_Flag_Reflective.et"
+    }
+    RHS_LoadoutSlotInfo NVG {
+     Prefab "{B0534A120633D08D}Prefabs/Items/Equipment/Nightvision/1PN138/NVG_1PN138.et"
+    }
+    RHS_LoadoutSlotInfo RightVelcro {
+    }
+   }
+  }
+ }
+}
