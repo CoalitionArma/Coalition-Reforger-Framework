@@ -140,7 +140,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "RHS_US_USMC"
  m_aUnitPrefabSlots {
-  "{A4845C9A5A24BF72}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Crew_Pilot_P.et" "{E31D931B429FD225}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Crew_CrewChief_P.et"
+  "{00FBC8C745416C8B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Pilot_P.et" "{E5C4C67FF37B16AE}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_CrewChief_P.et"
  }
  m_sCustomNameSet "Pilot Crew"
  m_bSetPlayable 1

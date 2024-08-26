@@ -140,7 +140,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "RHS_US_USMC"
  m_aUnitPrefabSlots {
-  "{4AB238189B1147CC}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Crew_VehCommander_P.et" "{2E49C8BAC5C397EC}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Crew_VehGunner_P.et" "{ACACAE54AA26E9F3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Crew_Base_VehDriver_P.et"
+  "{50DB52E9B11CA9D9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Base_VehCommander_P.et" "{7D0FA93F8D687C8B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Base_VehGunner_P.et" "{50DB52E9B11CA9D9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Base_VehCommander_P.et"
  }
  m_sCustomNameSet "Armor Team"
  m_bSetPlayable 1
