@@ -4,9 +4,6 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   CRF_SupplyExtractionGameModeComponent "{6231364BADA79CD3}" {
-   winningNumber 1200
-   manpower 1
-   enableGameMessage3 0
   }
  }
  coords 4710.565 162.513 6955.403
