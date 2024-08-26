@@ -1,0 +1,31 @@
+SCR_ChimeraCharacter : "{62CFE96F1F61403D}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Base_P.et" {
+ ID "520EC961A090BBD5"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Heavy Anti-Tank"
+  }
+  CharacterGrenadeSlotComponent "{5A6CDA0CCF43068E}" {
+   WeaponTemplate ""
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{9CCEF30FF0491EE0}Prefabs/Weapons/Launchers/M47_Dragon.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{4A93B3F0B33FF104}Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_MC.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{6234ED03A97610BE}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_MC.et"
+     PrefabsToSpawn {
+      "{34A69F4BF484928D}Prefabs/Weapons/Ammo/Ammo_Missile_M47.et" "{34A69F4BF484928D}Prefabs/Weapons/Ammo/Ammo_Missile_M47.et"
+     }
+    }
+   }
+  }
+ }
+}

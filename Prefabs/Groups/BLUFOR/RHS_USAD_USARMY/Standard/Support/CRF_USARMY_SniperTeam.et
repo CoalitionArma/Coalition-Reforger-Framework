@@ -1,0 +1,8 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+ ID "0000000000000001"
+ coords 2043.028 44.783 2064.622
+ m_aUnitPrefabSlots {
+  "{619E3C311CFBB665}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Sniper_P.et" "{D7254E1855DB5E19}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Spotter_P.et"
+ }
+ m_sCustomNameSet "Sniper Team"
+}

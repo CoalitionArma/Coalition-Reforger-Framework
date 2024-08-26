@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{00FBC8C745416C8B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Pilot_P.et" {
+ ID "520EC961A090BBD5"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Crew Chief"
+  }
+ }
+}

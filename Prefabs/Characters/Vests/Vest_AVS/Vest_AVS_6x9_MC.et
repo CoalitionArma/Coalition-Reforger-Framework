@@ -1,0 +1,13 @@
+GenericEntity : "{255ED0C0B4DB3A77}Prefabs/Characters/Vests/Vest_AVS/Vest_AVS_6x9_base.et" {
+ ID "50D8C49B3558F152"
+ components {
+  RHS_ClothNodeStorageComponent "{5E8ECC6318C07954}" {
+   Attributes SCR_ItemAttributeCollection "{5E8ECC63152ECC55}" {
+    ItemDisplayName UIInfo "{5E8ECC6310D5F5D3}" {
+     Name "#RHS-Vest_AVS_Name (6×9 #RHS-Plates_sideplates_Name) - #RHS-Camo_MULTICAM"
+    }
+   }
+  }
+ }
+ coords 100.054 1 149.431
+}

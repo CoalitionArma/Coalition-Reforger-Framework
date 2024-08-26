@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{62CFE96F1F61403D}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Base_P.et" {
+ ID "520EC961A090BBD5"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Gunner"
+  }
+ }
+}

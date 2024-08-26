@@ -1,4 +1,4 @@
-GameEntity : "{B89432A8B5F489E5}Prefabs/Characters/Core/Uniform_Base.et" {
+GameEntity : "{92B915606F93CA84}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_base.et" {
  ID "5104869D194C6243"
  components {
   SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
