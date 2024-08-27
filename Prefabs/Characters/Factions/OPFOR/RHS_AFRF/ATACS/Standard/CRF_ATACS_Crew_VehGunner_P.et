@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{92D47A34B9579FCD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Crew_Base_VehDriver_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Gunner"
+  }
+ }
+}
