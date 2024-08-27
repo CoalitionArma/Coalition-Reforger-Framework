@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{344F5304B4DCAF3F}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Platoon Leader"
+  }
+ }
+}

@@ -2,8 +2,8 @@ GenericEntity : "{FDC0074A9D46125F}Prefabs/Items/Equipment/Accessories/Pouch_Sov
  ID "51EAE4EBB3FF9591"
  components {
   SCR_UniversalInventoryStorageComponent "{54FAC2B5C5043CAF}" {
-   MaxCumulativeVolume 4000
-   m_fMaxWeight 30
+   MaxCumulativeVolume 14000
+   m_fMaxWeight 60
   }
  }
 }

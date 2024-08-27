@@ -1,0 +1,9 @@
+GenericEntity : "{EFC2793C85B4A7BE}Prefabs/Characters/Vests/Vest_TV110_Pouches/Pouch_UP118_fannypack_base.et" {
+ ID "50E0B40D7407B664"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03D1147687}" {
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 3000
+  }
+ }
+}

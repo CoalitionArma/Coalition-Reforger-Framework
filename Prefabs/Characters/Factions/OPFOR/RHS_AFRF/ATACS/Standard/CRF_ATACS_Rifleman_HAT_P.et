@@ -1,0 +1,28 @@
+SCR_ChimeraCharacter : "{3057F44E6BF05026}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Heavy Anti-Tank"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{B1EE42092A2906D7}Prefabs/Weapons/Launchers/Metis_Shoulder.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{99B347D92F16A6D3}Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_od.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{6236CBBD76041964}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_od.et"
+     PrefabsToSpawn {
+      "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et" "{E692616D76B9479A}Prefabs/Weapons/Ammo/Ammo_Missile_Metis.et"
+     }
+    }
+   }
+  }
+ }
+}
