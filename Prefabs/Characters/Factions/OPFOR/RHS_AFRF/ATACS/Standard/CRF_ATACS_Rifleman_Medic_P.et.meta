@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{3F72BC28410C7D68}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_Medic_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

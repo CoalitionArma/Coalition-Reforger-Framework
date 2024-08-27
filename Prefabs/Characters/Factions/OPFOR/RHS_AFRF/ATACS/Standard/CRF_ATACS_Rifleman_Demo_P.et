@@ -1,0 +1,25 @@
+SCR_ChimeraCharacter : "{3057F44E6BF05026}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Demo"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{99B347D92F16A6D3}Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_od.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{62353E4E707046C5}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_od.et"
+     PrefabsToSpawn {
+      "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et"
+     }
+    }
+   }
+  }
+ }
+}

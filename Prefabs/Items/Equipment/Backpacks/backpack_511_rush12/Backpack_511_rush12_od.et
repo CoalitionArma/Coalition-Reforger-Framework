@@ -1,0 +1,9 @@
+GenericEntity : "{95CB42A26DE581B0}Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   MaxCumulativeVolume 24000
+   m_fMaxWeight 80
+  }
+ }
+}

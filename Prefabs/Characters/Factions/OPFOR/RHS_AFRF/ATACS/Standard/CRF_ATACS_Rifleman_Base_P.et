@@ -21,7 +21,7 @@ SCR_ChimeraCharacter : "{4CD88E5A61AE773D}Prefabs/Characters/Factions/OPFOR/RHS_
    WeaponTemplate "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{805927DD98352C9B}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_npz_rail_1p87.et"
+   WeaponTemplate "{26EEACEC835BA8EC}Prefabs/Weapons/Rifles/AK74M/Rifle_AK74M_npz_rail_1p87_camo.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
@@ -59,19 +59,19 @@ SCR_ChimeraCharacter : "{4CD88E5A61AE773D}Prefabs/Characters/Factions/OPFOR/RHS_
     ItemsInitConfigurationItem "{62353CE61CC67153}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_Taktika_Pouches/Pouch_Taktika_magpouch_base.et"
      PrefabsToSpawn {
-      "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et" "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et" "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et" "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et" "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et"
+      "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et" "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et" "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et" "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et" "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et"
      }
     }
     ItemsInitConfigurationItem "{62353CE61CC67146}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_Taktika_Pouches/Pouch_ArsArma_magouch_morphed_ATACS.et"
      PrefabsToSpawn {
-      "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et" "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et"
+      "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et" "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et"
      }
     }
     ItemsInitConfigurationItem "{62353CE61CC67141}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_TV110_Pouches/Pouch_UP118_fannypack_FG.et"
      PrefabsToSpawn {
-      "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et" "{FD34D121FA55CB10}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer.et"
+      "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et" "{0FD71EAC637C1624}Prefabs/Weapons/Magazines/6l23_plastic/Magazine_545x39_plastic_AK_30rnd_Last_5Tracer_camo.et"
      }
     }
     ItemsInitConfigurationItem "{62353CE61CC67142}" {
