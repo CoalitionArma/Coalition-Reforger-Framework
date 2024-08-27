@@ -1,9 +1,6 @@
 $grp SCR_AIGroup : "{9D160E35384CAA19}Prefabs/Groups/BLUFOR/1980s/Standard/Specials/SPCL_Rockateer.et" {
  {
   coords 1173.281 39 2710.514
-  m_aUnitPrefabSlots {
-   "{3057F44E6BF05026}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/SOF/Standard/CRF_SOF_Rifleman_Base_P.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et" "{947355A69454C1DB}Prefabs/Characters/Factions/BLUFOR/US_Army/Legacy/Character_SPCL_Rockateer.et"
-  }
  }
  {
   coords 1188.318 57.496 2715.501
