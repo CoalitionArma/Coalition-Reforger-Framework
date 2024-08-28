@@ -1,0 +1,26 @@
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SupplyExtractionGameModeComponent "{62372B9ED7BB10DD}" {
+   winningSupplyCount 3000
+   factionKey "RHS_RF_MSV"
+   manpowerMessageString "Russian forces do not have the manpower to retreat!"
+   suppliesExtractedString "Enough Russian Supplies have been evacuated from the town to retreat!"
+   gameMessageString1 "The Russians have successfully extracted from the AO!"
+   gameMessageString2 "The Russians have extracted enough resources but have been decisively defeated!"
+   gameMessageString3 "Russian forces have been decisively defeated!"
+  }
+ }
+ coords 2498.86 6.857 1884.059
+ {
+  SCR_FactionManager {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+     }
+    }
+   }
+  }
+ }
+}

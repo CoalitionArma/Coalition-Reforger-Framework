@@ -1,0 +1,49 @@
+SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Company.et" {
+ coords 3232.879 14.907 882.858
+ {
+  SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+   coords 3.185 -0.26 -16.625
+   {
+    SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USaARMY_RifleSquad.et" {
+     coords 4.185 0.02 -0.799
+     {
+      SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USaARMY_RifleSquad.et" {
+       coords 3.288 0 -0.616
+       {
+        SCR_AIGroup : "{5D10C2DDB5D67EA4}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Support/CRF_USARMY_MGTeam.et" {
+         coords 3.683 0.003 -0.801
+         m_aUnitPrefabSlots + {
+          "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et"
+         }
+         {
+          SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+           coords -0.06 0.217 49.725
+           {
+            SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USaARMY_RifleSquad.et" {
+             coords 3.199 0 -0.523
+             {
+              SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USaARMY_RifleSquad.et" {
+               coords 2.451 0 -0.401
+               {
+                SCR_AIGroup : "{5D10C2DDB5D67EA4}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Support/CRF_USARMY_MGTeam.et" {
+                 coords 2.893 -0.031 -0.339
+                 m_aUnitPrefabSlots + {
+                  "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
