@@ -48,11 +48,8 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("Soviets have extracted all resources but have been decisively defeated!", "auto", "Message given to players when the extracting force has extracted all supplies but got wiped out.")]
 	string gameMessageString2;
 	
-	[Attribute("true", "auto", "Enables message given to players when the extracting force has been wiped out.")]
-	bool enableGameMessage3;
-	
-	[Attribute("Soviets forces have been decisively defeated!", "auto", "Message given to players when the extracting force has been wiped out.")]
-	string gameMessageString3;
+	[Attribute("10000", "auto", "Every time the server should check the game status in miliseconds.")]
+	int gameUpdateTime;
 	
 	[RplProp(onRplName: "GameMessages")]
 	protected int messageInput = 0;
@@ -60,7 +57,6 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected string clientSuppliesExtractedString = suppliesExtractedString;
 	protected string clientGameMessageString1 = gameMessageString1;
 	protected string clientGameMessageString2 = gameMessageString2;
-	protected string clientGameMessageString3 = gameMessageString3;
 	
 	protected int totalSupply;
 	protected ref array<IEntity> m_entities;
@@ -72,7 +68,6 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected bool supplyMessage;
 	protected bool gameMessage1;
 	protected bool gameMessage2;
-	protected bool gameMessage3;
 	//------------------------------------------------------------------------------------------------
 	override protected void OnWorldPostProcess(World world)
 	{
@@ -83,12 +78,13 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
   		Faction faction = fm.GetFactionByKey(factionKey);
 		extractionLocation = GetGame().GetWorld().FindEntityByName(extractionObject).GetOrigin();
 		
-		GetGame().GetCallqueue().CallLater(SupplyInit, 1000, true);
+		GetGame().GetCallqueue().CallLater(SupplyInit, gameUpdateTime, true);
 	}
 	
 	protected void SupplyInit()
 	{
-		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
+		CRF_SafestartGameModeComponent safestart = CRF_SafestartGameModeComponent.GetInstance();
+		if (safestart.GetSafestartStatus()) return;
 		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
 		int overallCount = countAlivePlayers(factionKey);
 		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
@@ -117,13 +113,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 			gameMessage2 = true;
 		}
 		
-		if (GetSuppliesinDepot() == false && overallCount == 0 && !gameMessage3 && enableGameMessage3) 
-		{
-			messageInput = 4;
-			GameMessages();
-			gameMessage3 = true;
-		}
-		messageInput = 5;
+		messageInput = 4;
 		
 	}
 	
@@ -204,12 +194,6 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		{
 			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString2, 10);
 			gameMessage2 = true;
-		}
-		
-		if (messageInput == 4) 
-		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString3, 10);
-			gameMessage3 = true;
 		}
 	}
 	
