@@ -54,6 +54,14 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("Soviets forces have been decisively defeated!", "auto", "Message given to players when the extracting force has been wiped out.")]
 	string gameMessageString3;
 	
+	[RplProp(onRplName: "GameMessages")]
+	protected int messageInput = 0;
+	protected string clientManpowerMessageString = manpowerMessageString;
+	protected string clientSuppliesExtractedString = suppliesExtractedString;
+	protected string clientGameMessageString1 = gameMessageString1;
+	protected string clientGameMessageString2 = gameMessageString2;
+	protected string clientGameMessageString3 = gameMessageString3;
+	
 	protected int totalSupply;
 	protected ref array<IEntity> m_entities;
 	protected string m_tempString;
@@ -70,10 +78,53 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	{
 		if (!GetGame().InPlayMode()) 
 			return;
+		
 		FactionManager fm = GetGame().GetFactionManager();
   		Faction faction = fm.GetFactionByKey(factionKey);
 		extractionLocation = GetGame().GetWorld().FindEntityByName(extractionObject).GetOrigin();
-		GetGame().GetCallqueue().CallLater(GameMessages, 1000, true);
+		
+		GetGame().GetCallqueue().CallLater(SupplyInit, 1000, true);
+	}
+	
+	protected void SupplyInit()
+	{
+		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
+		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
+		int overallCount = countAlivePlayers(factionKey);
+		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
+		{
+			messageInput = 0;
+			GameMessages();
+			supplyMessage = true;
+		}
+		if (overallCount < manpower && !manpowerMessage && enableManpowerMessage) 
+        {
+			messageInput = 1;
+            GameMessages();
+			manpowerMessage = true;
+        }	
+		if (GetSuppliesinDepot() && playerCount >= manpower && !gameMessage1 && enableGameMessage1) 
+		{
+			messageInput = 2;
+			GameMessages();
+			gameMessage1 = true;
+		}
+		
+		if (GetSuppliesinDepot() && overallCount == 0 && !gameMessage2 && enableGameMessage2) 
+		{
+			messageInput = 3;
+			GameMessages();
+			gameMessage2 = true;
+		}
+		
+		if (GetSuppliesinDepot() == false && overallCount == 0 && !gameMessage3 && enableGameMessage3) 
+		{
+			messageInput = 4;
+			GameMessages();
+			gameMessage3 = true;
+		}
+		messageInput = 5;
+		
 	}
 	
 	protected bool GetSuppliesinDepot()
@@ -133,35 +184,33 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	
 	protected void GameMessages()
 	{
-		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
-		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
-		int overallCount = countAlivePlayers(factionKey);
-		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
+		if (messageInput == 0)
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(suppliesExtractedString, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientSuppliesExtractedString, 10);
 			supplyMessage = true;
 		}
-		if (overallCount < manpower && !manpowerMessage && enableManpowerMessage) 
+		if (messageInput == 1) 
         {
-            SCR_PopUpNotification.GetInstance().PopupMsg(manpowerMessageString, 10);
+            SCR_PopUpNotification.GetInstance().PopupMsg(clientManpowerMessageString, 10);
 			manpowerMessage = true;
         }	
-		if (GetSuppliesinDepot() && playerCount >= manpower && !gameMessage1 && enableGameMessage1) 
+		if (messageInput == 2) 
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(gameMessageString1, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString1, 10);
 			gameMessage1 = true;
 		}
 		
-		if (GetSuppliesinDepot() && overallCount == 0 && !gameMessage2 && enableGameMessage2) 
+		if (messageInput == 3) 
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(gameMessageString2, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString2, 10);
 			gameMessage2 = true;
 		}
 		
-		if (GetSuppliesinDepot() == false && overallCount == 0 && !gameMessage3 && enableGameMessage3) 
+		if (messageInput == 4) 
 		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(gameMessageString3, 10);
+			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString3, 10);
 			gameMessage3 = true;
 		}
 	}
+	
 }
