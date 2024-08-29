@@ -123,18 +123,33 @@ PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorde
   $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    {
     coords 129.225 -1.817 87.567
+    m_aVisibleForFactions {
+     "RHS_RF_MSV"
+    }
    }
    {
     coords 204.113 8.291 137.524
+    m_aVisibleForFactions {
+     "RHS_RF_MSV"
+    }
    }
    {
     coords 373.806 7.075 301.781
+    m_aVisibleForFactions {
+     "RHS_RF_MSV"
+    }
    }
    {
     coords 539.717 7.996 362.739
+    m_aVisibleForFactions {
+     "RHS_RF_MSV"
+    }
    }
    {
     coords 692.445 11.325 421.191
+    m_aVisibleForFactions {
+     "RHS_RF_MSV"
+    }
    }
   }
  }
