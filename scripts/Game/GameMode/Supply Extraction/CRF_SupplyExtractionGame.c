@@ -74,11 +74,14 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode()) 
 			return;
 		
-		FactionManager fm = GetGame().GetFactionManager();
-  		Faction faction = fm.GetFactionByKey(factionKey);
-		extractionLocation = GetGame().GetWorld().FindEntityByName(extractionObject).GetOrigin();
+		if (Replication.IsServer())
+		{
+			FactionManager fm = GetGame().GetFactionManager();
+  			Faction faction = fm.GetFactionByKey(factionKey);
+			extractionLocation = GetGame().GetWorld().FindEntityByName(extractionObject).GetOrigin();
 		
-		GetGame().GetCallqueue().CallLater(SupplyInit, gameUpdateTime, true);
+			GetGame().GetCallqueue().CallLater(SupplyInit, gameUpdateTime, true);
+		}
 	}
 	
 	protected void SupplyInit()
@@ -87,6 +90,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		if (!safestart.GetSafestartStatus()) return;
 		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
 		int overallCount = countAlivePlayers(factionKey);
+		Print(manpower);
 		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
 		{
 			messageInput = 0;
