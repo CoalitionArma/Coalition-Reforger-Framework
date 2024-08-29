@@ -67,6 +67,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected bool gameMessage2;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	CRF_SafestartGameModeComponent safestart = CRF_SafestartGameModeComponent.GetInstance();
+
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
 	{
@@ -75,10 +76,6 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		
 		if (Replication.IsServer())
 		{
-			FactionManager fm = GetGame().GetFactionManager();
-  			Faction faction = fm.GetFactionByKey(factionKey);
-			extractionLocation = GetGame().GetWorld().FindEntityByName(extractionObject).GetOrigin();
-		
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
 	}
@@ -124,6 +121,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	{
 		if (!safestart.GetSafestartStatus()) 
 		{
+			extractionLocation = GetGame().GetWorld().FindEntityByName(extractionObject).GetOrigin();
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
 			GetGame().GetCallqueue().CallLater(SupplyInit, gameUpdateTime, true);
 		}
