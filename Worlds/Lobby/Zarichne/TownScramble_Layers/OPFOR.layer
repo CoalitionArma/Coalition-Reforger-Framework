@@ -2,21 +2,7 @@ Vehicle UAZ469_PKM1 : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_
  coords 2001.367 7.365 2923.372
  angleY 77
 }
-$grp Tank : "{45727E50E27698C2}Prefabs/Vehicles/Tracked/BMP2/BMP2M.et" {
- BMP2M1 {
-  coords 1994.138 7.221 2920.227
-  angleX 0.846
-  angleY 70.996
-  angleZ -0.292
- }
- BMP2M2 {
-  coords 1985.455 7.085 2918.854
-  angleX 0.846
-  angleY 83.996
-  angleZ -0.292
- }
-}
-SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Command/CRF_RF_ATACS_Platoon.et" {
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
  coords 1966.827 6.732 2915.85
  m_aUnitPrefabSlots +{
  }
@@ -46,9 +32,9 @@ SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Co
         SCR_AIGroup : "{E529E3794CF18F34}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_MMG.et" {
          coords -5.435 -0.324 -0.609
          m_aUnitPrefabSlots {
-          "{344F5304B4DCAF3F}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Leader_Base_SL_P.et" "{9F7DCBD5730C68B6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_MMG_P.et" "{D1559C46C975C1CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_AMMG_P.et" "{9F7DCBD5730C68B6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_MMG_P.et" "{D1559C46C975C1CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_AMMG_P.et" "{B7C052D321EDC131}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_MAT_P.et" "{F9E805409B94684D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_AMAT_P.et" "{B7C052D321EDC131}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_MAT_P.et" "{F9E805409B94684D}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_AMAT_P.et"
+          "{344F5304B4DCAF3F}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Leader_Base_SL_P.et" "{9F7DCBD5730C68B6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_MMG_P.et" "{D1559C46C975C1CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_AMMG_P.et" "{9F7DCBD5730C68B6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_MMG_P.et" "{D1559C46C975C1CA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_AMMG_P.et"
          }
-         m_sCustomNameSet "1-4 W"
+         m_sCustomNameSet "1-4 MMG"
          {
           SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_Logi.et" {
            coords 53.362 0.991 12.616
@@ -58,14 +44,14 @@ SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Co
            m_sCustomNameSet "Supply Runners"
            {
             SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
-             coords -8.156 0.205 -1.268
+             coords -8.005 0.172 2.968
              m_aUnitPrefabSlots {
               "{182235CF4B06E4EA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Crew_VehCommander_P.et" "{92D47A34B9579FCD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Crew_Base_VehDriver_P.et"
              }
              m_sCustomNameSet "BMP-2 Crew 1"
              {
               SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
-               coords -7.666 -0.132 -1.695
+               coords -10.533 -0.257 -2.312
                m_aUnitPrefabSlots {
                 "{182235CF4B06E4EA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Crew_VehCommander_P.et" "{92D47A34B9579FCD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Crew_Base_VehDriver_P.et"
                }

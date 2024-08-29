@@ -1,3 +1,39 @@
+$grp BaseGameTriggerEntity {
+ trig1 {
+  coords 1991.518 7.18 2920.201
+  angleX 0.884
+  angleY 80.908
+  angleZ -0.141
+  userScript "		string mortar = \"{45727E50E27698C2}Prefabs/Vehicles/Tracked/BMP2/BMP2M.et\";"\
+  "    	vector mortar1spawn, mortar2spawn;"\
+  "    	IEntity mortar1trig, mortar2trig;"\
+  "	"\
+  "        void spawnthings()"\
+  "            {"\
+  "                mortar1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
+  "                mortar2trig = GetGame().GetWorld().FindEntityByName(\"trig2\");"\
+  "                mortar1spawn = mortar1trig.GetOrigin();"\
+  "                mortar2spawn = mortar2trig.GetOrigin();"\
+  "                "\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = mortar1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "                spawnParams.Transform[3] = mortar2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ trig2 {
+  coords 1981.066 6.988 2918.168
+  angleX 1.819
+  angleY 78.075
+  angleZ 0.834
+ }
+}
 PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
  coords 2147.923 3.187 2456.573
  m_sTextData "Supply Extraction"\
@@ -37,7 +73,9 @@ PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/Wi
  "OPFOR"\
  ""\
  "Extract enough resources to extract."\
- "Extract at least 8 Soldiers."
+ "Extract at least 8 Soldiers."\
+ ""\
+ "Both sides have 75 minutes to complete these objectives."
 }
 $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
  {
@@ -80,5 +118,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 2577.847 6.531 1387.584
- m_sTextData "Russian forces have deemed the far side of the River Zherebets is no longer tenable, a Russian platoon has been tasked with extracting all resources from the far side of the river and get back across with minimal casualties. A CO, 2nd Batallion, 75th Ranger Regiment has been tasked to exploit their current vunerability and ensure the Russian don't get the valuable supplies left on this side of the river. As well as they have been tasked to eliminate the Russian Platoon."
+ m_sTextData "Russian forces have deemed the far side of the River Zherebets is no longer tenable, a Russian platoon has been tasked with extracting all resources from the far side of the river and get back across with minimal casualties. "\
+ ""\
+ "A CO, 2nd Batallion, 75th Ranger Regiment has been tasked to exploit their current vunerability and ensure the Russian don't get the valuable supplies left on this side of the river."
 }

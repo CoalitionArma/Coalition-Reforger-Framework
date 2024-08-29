@@ -1,5 +1,8 @@
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 75
+  }
   CRF_SupplyExtractionGameModeComponent "{62372B9ED7BB10DD}" {
    winningSupplyCount 3000
    factionKey "RHS_RF_MSV"

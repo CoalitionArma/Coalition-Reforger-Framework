@@ -59,6 +59,9 @@ PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBord
 $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  {
   coords 1994.494 7.579 2918.923
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
  }
  {
   coords 1601.924 11.158 2843.989

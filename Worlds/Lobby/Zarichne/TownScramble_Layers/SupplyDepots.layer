@@ -352,7 +352,7 @@ $grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Suppli
   angleY 61
  }
 }
-GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+GenericEntity extractionObject : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
  coords 1603.392 8.052 2843.328
  angleX 0
  angleY 62
