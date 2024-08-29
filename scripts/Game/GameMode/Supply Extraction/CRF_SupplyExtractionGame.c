@@ -66,6 +66,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected bool gameMessage1;
 	protected bool gameMessage2;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
+	CRF_SafestartGameModeComponent safestart = CRF_SafestartGameModeComponent.GetInstance();
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
 	{
@@ -78,13 +79,12 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
   			Faction faction = fm.GetFactionByKey(factionKey);
 			extractionLocation = GetGame().GetWorld().FindEntityByName(extractionObject).GetOrigin();
 		
-			GetGame().GetCallqueue().CallLater(SupplyInit, gameUpdateTime, true);
+			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
 	}
 	
 	protected void SupplyInit()
 	{
-		CRF_SafestartGameModeComponent safestart = CRF_SafestartGameModeComponent.GetInstance();
 		if (safestart.GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
 		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
 		int overallCount = countAlivePlayers(factionKey);
@@ -118,6 +118,16 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 			gameMessage2 = true;
 		}
 		
+	}
+	
+	void WaitTillGameStart()
+	{
+		if (!safestart.GetSafestartStatus()) 
+		{
+			GetGame().GetCallqueue().Remove(WaitTillGameStart);
+			GetGame().GetCallqueue().CallLater(SupplyInit, gameUpdateTime, true);
+		}
+		return;
 	}
 	
 	protected bool GetSuppliesinDepot()
