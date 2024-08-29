@@ -87,6 +87,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		if (safestart.GetSafestartStatus()) return;
 		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
 		int overallCount = countAlivePlayers(factionKey);
+		Print(overallCount);
 		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
 		{
 			messageInput = 0;
@@ -128,7 +129,6 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 			float depotSupply = 0.0;
 			SCR_ResourceSystemHelper.GetStoredResources(rc, depotSupply);
 			totalSupply = totalSupply + depotSupply;
-			Print(totalSupply);
 		}
 		if (totalSupply >= winningSupplyCount) 
 		{

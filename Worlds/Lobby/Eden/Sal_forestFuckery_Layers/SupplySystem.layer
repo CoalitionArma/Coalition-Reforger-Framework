@@ -1,112 +1,3 @@
-GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Medium_A_USSR_01.et" {
- coords 4946.269 36.845 9223.286
- angleX 0
- angleY 0
- angleZ 0
- {
-  GenericEntity {
-   ID "5DB6D404249F7F5C"
-   coords 0.001 0 0
-  }
-  GenericEntity {
-   ID "5DB6D404249F7F67"
-   components {
-    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
-     m_aGenerators {
-      SCR_ResourceGenerator "{5DE4B6C45FC967FC}" {
-       m_fStorageRange 50
-      }
-     }
-    }
-   }
-   coords 1.485 -0.007 0.002
-   angleX -1.096
-   angleY 0.012
-   angleZ -1.572
-   {
-    GenericEntity {
-     ID "5DB6D404128C5B8F"
-     components {
-      SCR_ResourceComponent "{5D247A59598D71AE}" {
-       m_aContainers {
-        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-        }
-       }
-      }
-     }
-     coords -0.275 0.023 1.227
-     angleX 1.377
-     angleY -87.063
-     angleZ -2.123
-    }
-    GenericEntity {
-     ID "5DB6D404128C5479"
-     components {
-      SCR_ResourceComponent "{5D247A59598D71AE}" {
-       m_aContainers {
-        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-        }
-       }
-      }
-     }
-     coords -0.666 0.023 -0.211
-     angleX -1.074
-     angleY -178.025
-     angleZ -0.67
-    }
-    GenericEntity {
-     ID "5DB6D404128C547B"
-     coords -1.758 0.011 -1.45
-     angleX -0.67
-     angleY 91.962
-     angleZ 1.074
-    }
-    GenericEntity {
-     ID "5DB6D404128C5B85"
-     coords -2.876 0.092 -0.274
-     angleX -2.122
-     angleY -177.003
-     angleZ -1.378
-    }
-    GenericEntity {
-     ID "5DB6D404128C5B87"
-     coords -2.51 0.073 0.917
-     angleX -1.34
-     angleY 91.937
-     angleZ 2.147
-    }
-    GenericEntity {
-     ID "5DB6D404128C5B8A"
-     coords 0.262 -0.002 -1.45
-     angleX 0.708
-     angleY -86.025
-     angleZ -1.05
-    }
-    GenericEntity {
-     ID "5DB6D404128C5470"
-     coords -1.788 0.035 -0.26
-     angleX 0.689
-     angleY -87.025
-     angleZ -1.062
-    }
-    GenericEntity {
-     ID "5DB6D404128C5475"
-     coords -0.745 0.011 -1.379
-     angleX 0.689
-     angleY -87.025
-     angleZ -1.062
-    }
-    GenericEntity {
-     ID "5DB6D404128C547F"
-     coords -1.389 0.046 0.975
-     angleX 2.121
-     angleY 3.039
-     angleZ 1.38
-    }
-   }
-  }
- }
-}
 $grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_ConstructionMat_USSR.et" {
  {
   components {
@@ -180,7 +71,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -196,7 +86,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -212,7 +101,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -228,7 +116,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -244,7 +131,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -260,7 +146,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -276,7 +161,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -292,7 +176,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -306,7 +189,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -322,7 +204,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -338,7 +219,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -354,7 +234,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -370,7 +249,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -386,7 +264,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -402,7 +279,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -418,7 +294,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -434,7 +309,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -450,7 +324,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -466,7 +339,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -482,7 +354,6 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-          m_fResourceValueCurrent 0
          }
         }
        }
@@ -525,6 +396,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -536,6 +408,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -547,6 +420,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -558,6 +432,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -569,6 +444,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -580,6 +456,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -591,6 +468,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -602,6 +480,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -804,6 +683,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -815,6 +695,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -826,6 +707,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
@@ -837,6 +719,7 @@ $grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubComposition
        SCR_ResourceComponent "{5D247A59598D71AE}" {
         m_aContainers {
          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
          }
         }
        }
