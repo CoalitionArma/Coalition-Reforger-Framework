@@ -69,7 +69,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected bool gameMessage1;
 	protected bool gameMessage2;
 	//------------------------------------------------------------------------------------------------
-	override protected void OnWorldPostProcess(World world)
+	override protected void OnPostInit(IEntity owner)
 	{
 		if (!GetGame().InPlayMode()) 
 			return;
@@ -84,10 +84,9 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected void SupplyInit()
 	{
 		CRF_SafestartGameModeComponent safestart = CRF_SafestartGameModeComponent.GetInstance();
-		if (safestart.GetSafestartStatus()) return;
+		if (!safestart.GetSafestartStatus()) return;
 		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
 		int overallCount = countAlivePlayers(factionKey);
-		Print(overallCount);
 		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
 		{
 			messageInput = 0;
@@ -177,23 +176,19 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		if (messageInput == 0)
 		{
 			SCR_PopUpNotification.GetInstance().PopupMsg(clientSuppliesExtractedString, 10);
-			supplyMessage = true;
 		}
 		if (messageInput == 1) 
         {
             SCR_PopUpNotification.GetInstance().PopupMsg(clientManpowerMessageString, 10);
-			manpowerMessage = true;
         }	
 		if (messageInput == 2) 
 		{
 			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString1, 10);
-			gameMessage1 = true;
 		}
 		
 		if (messageInput == 3) 
 		{
 			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString2, 10);
-			gameMessage2 = true;
 		}
 	}
 	
