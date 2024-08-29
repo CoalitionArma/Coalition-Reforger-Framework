@@ -51,12 +51,9 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("10000", "auto", "Every time the server should check the game status in miliseconds.")]
 	int gameUpdateTime;
 	
-	[RplProp(onRplName: "GameMessages")]
-	protected int messageInput = 0;
-	protected string clientManpowerMessageString = manpowerMessageString;
-	protected string clientSuppliesExtractedString = suppliesExtractedString;
-	protected string clientGameMessageString1 = gameMessageString1;
-	protected string clientGameMessageString2 = gameMessageString2;
+	[RplProp(onRplName: "ShowMessage")]
+	protected string m_sMessageContent;
+	protected string m_sStoredMessageContent;
 	
 	protected int totalSupply;
 	protected ref array<IEntity> m_entities;
@@ -68,6 +65,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected bool supplyMessage;
 	protected bool gameMessage1;
 	protected bool gameMessage2;
+	protected SCR_PopUpNotification m_PopUpNotification = null;
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
 	{
@@ -90,34 +88,35 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		if (!safestart.GetSafestartStatus()) return;
 		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
 		int overallCount = countAlivePlayers(factionKey);
-		Print(manpower);
 		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
 		{
-			messageInput = 0;
-			GameMessages();
+			m_sMessageContent = suppliesExtractedString;
+			Replication.BumpMe();
+			ShowMessage();
 			supplyMessage = true;
 		}
 		if (overallCount < manpower && !manpowerMessage && enableManpowerMessage) 
         {
-			messageInput = 1;
-            GameMessages();
+			m_sMessageContent = manpowerMessageString;
+			Replication.BumpMe();
+            ShowMessage();
 			manpowerMessage = true;
         }	
 		if (GetSuppliesinDepot() && playerCount >= manpower && !gameMessage1 && enableGameMessage1) 
 		{
-			messageInput = 2;
-			GameMessages();
+			m_sMessageContent = gameMessageString1;
+			Replication.BumpMe();
+			ShowMessage();
 			gameMessage1 = true;
 		}
 		
 		if (GetSuppliesinDepot() && overallCount == 0 && !gameMessage2 && enableGameMessage2) 
 		{
-			messageInput = 3;
-			GameMessages();
+			m_sMessageContent = gameMessageString2;
+			Replication.BumpMe();
+			ShowMessage();
 			gameMessage2 = true;
 		}
-		
-		messageInput = 4;
 		
 	}
 	
@@ -175,25 +174,16 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		return players;
 	}
 	
-	protected void GameMessages()
-	{
-		if (messageInput == 0)
-		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(clientSuppliesExtractedString, 10);
-		}
-		if (messageInput == 1) 
-        {
-            SCR_PopUpNotification.GetInstance().PopupMsg(clientManpowerMessageString, 10);
-        }	
-		if (messageInput == 2) 
-		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString1, 10);
-		}
+	void ShowMessage()
+	{	
+		if (m_sMessageContent == m_sStoredMessageContent)
+			return;
 		
-		if (messageInput == 3) 
-		{
-			SCR_PopUpNotification.GetInstance().PopupMsg(clientGameMessageString2, 10);
-		}
-	}
+		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+		
+		m_sStoredMessageContent = m_sMessageContent;
+		
+		m_PopUpNotification.PopupMsg(m_sMessageContent, 10);
+	};
 	
 }
