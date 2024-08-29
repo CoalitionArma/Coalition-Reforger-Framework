@@ -85,7 +85,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected void SupplyInit()
 	{
 		CRF_SafestartGameModeComponent safestart = CRF_SafestartGameModeComponent.GetInstance();
-		if (safestart.GetSafestartStatus()) return;
+		if (!safestart.GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
 		int playerCount = CountFactionPlayers(extractionLocation, extractionDistance, factionKey);
 		int overallCount = countAlivePlayers(factionKey);
 		if (GetSuppliesinDepot() == true && !supplyMessage && enableSuppliesExtracted)
@@ -122,7 +122,6 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	
 	protected bool GetSuppliesinDepot()
 	{
-		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return false;
 		for (int i = 1; i <= totalDepots; i++)
 		{
 			string depot = "depot" + i;
