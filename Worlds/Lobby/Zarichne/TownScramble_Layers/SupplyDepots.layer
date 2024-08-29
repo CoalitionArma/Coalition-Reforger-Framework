@@ -249,12 +249,10 @@ $grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Suppli
     }
     {
      coords -5.879 0.014 -8.776
-     angleX -0
      angleY -92.962
     }
     {
      coords -5.927 0.014 -7.468
-     angleX -0
      angleY -92.962
     }
     {
@@ -263,12 +261,10 @@ $grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Suppli
     }
     {
      coords -6.485 0.014 -4.635
-     angleX -0
      angleY -92.962
     }
     {
      coords -7.49 0.014 -3.545
-     angleX -0
      angleY -92.962
     }
     {
@@ -318,12 +314,10 @@ $grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Suppli
     }
     {
      coords -6.636 0.014 -8.947
-     angleX -0
      angleY -92.962
     }
     {
      coords -8.499 -0.017 -1.624
-     angleX -0
      angleY -92.962
     }
     {
@@ -340,12 +334,10 @@ $grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Suppli
     }
     {
      coords -18.007 -0.03 -3.863
-     angleX -0
      angleY -92.962
     }
     {
      coords -10.122 0.014 -1.573
-     angleX -0
      angleY -92.962
     }
     {
