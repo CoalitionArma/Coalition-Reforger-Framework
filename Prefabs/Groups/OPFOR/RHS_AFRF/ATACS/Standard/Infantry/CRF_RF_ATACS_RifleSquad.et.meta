@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/CRF_RF_MSV_VKPO_RifleSquad.et"
+ Name "{3E115BC5EB76E179}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Infantry/CRF_RF_ATACS_RifleSquad1.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

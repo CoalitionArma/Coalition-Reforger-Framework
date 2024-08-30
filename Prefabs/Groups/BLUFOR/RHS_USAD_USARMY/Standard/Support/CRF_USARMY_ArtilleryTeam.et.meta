@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{212DC9424EE62A11}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_ArtilleryTeam.et"
+ Name "{C0F16B7B4F15B3E0}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Support/CRF_USARMY_ArtilleryTeam_2.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

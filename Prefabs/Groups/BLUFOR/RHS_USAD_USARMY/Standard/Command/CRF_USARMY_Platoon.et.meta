@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et"
+ Name "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon_2.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -9,7 +9,11 @@ MetaFileClass {
   }
   EntityTemplateResourceClass PS4 : PC {
   }
+  EntityTemplateResourceClass PS5 : PC {
+  }
   EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

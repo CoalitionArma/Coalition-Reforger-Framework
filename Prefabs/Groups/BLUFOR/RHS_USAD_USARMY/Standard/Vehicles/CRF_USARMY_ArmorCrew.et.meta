@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4B466FAF3AA44C6F}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Vehicles/CRF_USMC_ArmorCrew.et"
+ Name "{018A91B8A7DD5639}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_ArmorCrew_2.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
