@@ -51,19 +51,6 @@ PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et
   }
  }
 }
-SCR_AIGroup : "{8336B70C45AC6651}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Company.et" {
- coords 3849.734 2.156 5713.063
- {
-  $grp SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Platoon.et" {
-   {
-    coords -5.339 0 1.308
-   }
-   {
-    coords 1.587 0 5.171
-   }
-  }
- }
-}
 PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  coords 2776.447 0 5870.979
  angleY 0
@@ -82,23 +69,23 @@ PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" 
     angleY 0
    }
    {
-    coords 202.8 -0 -518.164
+    coords 202.8 0 -518.164
     angleY 0
    }
    {
-    coords 245.778 -0 -647.414
+    coords 245.778 0 -647.414
     angleY 0
    }
    {
-    coords 281.633 -0 -757.103
+    coords 281.633 0 -757.103
     angleY 0
    }
    {
-    coords 341.995 -0 -888.767
+    coords 341.995 0 -888.767
     angleY 0
    }
    {
-    coords 273.502 -0 -912.937
+    coords 273.502 0 -912.937
     angleY 0
    }
    {
