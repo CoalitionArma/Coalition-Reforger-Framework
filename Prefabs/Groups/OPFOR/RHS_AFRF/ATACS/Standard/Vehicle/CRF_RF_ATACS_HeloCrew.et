@@ -12,12 +12,12 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      72
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{61DF72CF3F60AB92}" {
+     SCR_EntityBudgetValue "{623C055B9FD9AD96}" {
       m_BudgetType AI
       m_Value 6
      }
     }
-    m_MilitarySymbol SCR_MilitarySymbol "{61DF72CF3F60AB9C}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{623C055B9FD9AD80}" {
      m_Identity OPFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -34,7 +34,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
   SCR_PreviewEntityComponent "{56368A4E2AE45029}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{61DF72CF3F60ABE5}" {
+    SCR_BasePreviewEntry "{623C055B9FD9AD7B}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -44,7 +44,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61DF72CF3F60ABE3}" {
+    SCR_BasePreviewEntry "{623C055B9FD9AD7D}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -54,7 +54,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61DF72CF3F60ABEE}" {
+    SCR_BasePreviewEntry "{623C055B9FD9AD70}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -64,7 +64,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61DF72CF3F60ABEF}" {
+    SCR_BasePreviewEntry "{623C055B9FD9605D}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -74,7 +74,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition -3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61DF72CF3F60ABED}" {
+    SCR_BasePreviewEntry "{623C055B9FD96058}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -84,7 +84,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition 6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61DF72CF3F60ABEA}" {
+    SCR_BasePreviewEntry "{623C055B9FD96059}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -94,7 +94,7 @@ SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseas
      m_vPosition -6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{61DF72CF3F60ABEB}" {
+    SCR_BasePreviewEntry "{623C055B9FD93926}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
