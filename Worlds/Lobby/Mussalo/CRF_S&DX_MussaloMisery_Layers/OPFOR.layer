@@ -1,0 +1,171 @@
+$grp SCR_BaseTriggerEntity {
+ spawnT72_1 {
+  coords 2868.58 2.581 4814.557
+  angleY 44.399
+ }
+ spawnOPFORVics {
+  coords 2860.21 2.6 4826.909
+  userScript "	string t72a = \"{BC07885176C7FF8A}Prefabs/Vehicles/Tracked/T-72A/T72A_base.et\";"\
+  "	IEntity spawnT72_1,spawnT72_2;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnT72_1 = GetGame().GetWorld().FindEntityByName(\"spawnT72_1\");"\
+  "		spawnT72_2 = GetGame().GetWorld().FindEntityByName(\"spawnT72_2\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawnT72_1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(t72a),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnT72_2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(t72a),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ spawnT72_2 {
+  coords 2879.757 3.187 4817.668
+  angleY 44.399
+ }
+}
+Vehicle UAZ1 : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ coords 2782.155 1.387 4786.651
+ angleY 79.682
+}
+$grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ UAZ452_ambulance1 {
+  coords 2801.183 1.541 4791.646
+  angleY 74.728
+ }
+ UAZ452_ambulance2 {
+  coords 2794.157 1.205 4789.727
+  angleY 74.728
+ }
+ UAZ452_ambulance3 {
+  coords 2788.116 1.214 4788.077
+  angleY 74.728
+ }
+}
+SCR_AIGroup : "{87C7848A69244BF1}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Company.et" {
+ coords 2807.756 1.249 4829.828
+ {
+  $grp SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+   {
+    coords -10.092 -0.025 9.176
+    {
+     $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -18.337 1.396 27.333
+       angleY -25.693
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -25.827 1.463 23.73
+       angleY -25.693
+       m_sCustomNameSet "2nd Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -9.207 1.144 31.727
+       angleY -25.693
+       m_sCustomNameSet "3rd Squad"
+      }
+     }
+    }
+   }
+   {
+    coords 5.648 -0.02 15.47
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -6.193 0.454 33.381
+       angleY -25.693
+       m_sCustomNameSet "4th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -13.683 0.696 29.778
+       angleY -25.693
+       m_sCustomNameSet "5th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords 2.936 0.209 37.774
+       angleY -25.693
+       m_sCustomNameSet "6th Squad"
+       {
+        SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+         coords -11.513 -0.137 -40.041
+         angleY 25.693
+         m_sCustomNameSet "Tank 1"
+         {
+          SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+           coords -9.039 -0.016 -4.825
+           m_sCustomNameSet "Tank 2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered1 {
+  coords 2856.964 2.377 4810.924
+  angleY 67.496
+ }
+ Ural4320_transport_covered4 {
+  coords 2828.929 3.035 4799.252
+  angleY 67.496
+ }
+ Ural4320_transport_covered2 {
+  coords 2848.182 2.563 4807.285
+  angleY 67.496
+ }
+ Ural4320_transport_covered3 {
+  coords 2838.904 2.776 4803.442
+  angleY 67.496
+ }
+ Ural4320_transport_covered6 {
+  coords 2811.161 2.572 4791.874
+  angleY 67.496
+ }
+ Ural4320_transport_covered5 {
+  coords 2820.199 3.095 4795.618
+  angleY 67.496
+ }
+}
