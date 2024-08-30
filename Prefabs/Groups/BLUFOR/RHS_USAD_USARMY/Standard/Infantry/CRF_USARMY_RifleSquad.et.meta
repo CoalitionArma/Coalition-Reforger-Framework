@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/CRF_USMC_RifleSquad.et"
+ Name "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -9,7 +9,11 @@ MetaFileClass {
   }
   EntityTemplateResourceClass PS4 : PC {
   }
+  EntityTemplateResourceClass PS5 : PC {
+  }
   EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }
