@@ -71,7 +71,7 @@ $grp BaseGameTriggerEntity {
  }
  tigr1 {
   coords 4603.259 339.125 9528.118
-  userScript "	    string tigr = \"{E1288C24A903F64B}Prefabs/Vehicles/Wheeled/TIGR/GAZ_TIGR_v2_Arbalet_PKM_Green.et\";"\
+  userScript "	    string tigr = \"{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et\";"\
   "        vector tigr1spawn, tigr2spawn;"\
   "        IEntity tigr1trig, tigr2trig;"\
   "            "\
@@ -100,36 +100,47 @@ $grp BaseGameTriggerEntity {
 }
 SCR_AIGroup : "{87C7848A69244BF1}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Company.et" {
  coords 4607.597 339.123 9518.838
+ m_sCustomNameSet "COY"
  {
   SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
    coords -0.017 0.002 -4.412
+   m_sCustomNameSet "1st PLT HQ"
    {
     SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
      coords -0.504 -0 -6.028
+     m_sCustomNameSet "1-1"
      {
       SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
        coords -0.3 -0 -3.313
+       m_sCustomNameSet "1-1 Crew"
        {
         SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
          coords -0.333 0 -5.023
+         m_sCustomNameSet "1-2"
          {
           SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
            coords -0.3 -0 -3.313
+           m_sCustomNameSet "1-2 Crew"
            {
             SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
              coords -0.101 0 -3.552
+             m_sCustomNameSet "1-3"
              {
               SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
                coords -0.3 -0 -3.313
+               m_sCustomNameSet "1-3 Crew"
                {
                 SCR_AIGroup : "{6A2944163310F096}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle3Man.et" {
                  coords 15.067 -0.001 29.978
+                 m_sCustomNameSet "Armor 6"
                  {
                   SCR_AIGroup : "{6A2944163310F096}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle3Man.et" {
                    coords -0.288 0.002 -5.641
+                   m_sCustomNameSet "Armor 1"
                    {
                     SCR_AIGroup : "{6A2944163310F096}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle3Man.et" {
                      coords -0.648 -0.001 -4.861
+                     m_sCustomNameSet "Armor 2"
                     }
                    }
                   }

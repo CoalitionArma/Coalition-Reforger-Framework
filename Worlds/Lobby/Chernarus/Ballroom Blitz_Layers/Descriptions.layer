@@ -7,18 +7,21 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  "If you break contact and retreat at least 300m from an objective you will encure 1x Respawn wave that will consist of "\
  "1. Enough BMP-2s to hold the respawning Infantry"\
  "2. Enough Squads to fill the dead players"
+ m_aVisibleForFactions {
+  "RHS_RF_MSV"
+ }
 }
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  coords 3438.838 291.766 8289.513
  m_sTextData "BLUFOR"\
- "6x Styker MGS"\
+ "6x Styker Dragoons"\
  "4x M1A2 Abrams"\
  "2x HMMWV M2"\
  ""\
  "OPFOR"\
  "3x BMP-2"\
  "3x T-72"\
- "2x TIGR"\
+ "2x UAZ PKMs"\
  ""\
  ""
 }
@@ -104,8 +107,11 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
  "There is a Recon Platoon behind enemy lines you can utilize them to scout out the enemies before you attack them but they may not move until after safestart."\
  ""\
  "If you break contact and retreat at least 300m from an objective you will encure 1x Respawn wave that will consist of "\
- "1. Enough Stryker MGS to hold the respawning Infantry"\
+ "1. Enough Stryker Dragoons to hold the respawning Infantry"\
  "2. Enough Squads to fill the dead players"
+ m_aVisibleForFactions {
+  "RHS_US_USMC"
+ }
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 4537.646 339.136 9505.479
