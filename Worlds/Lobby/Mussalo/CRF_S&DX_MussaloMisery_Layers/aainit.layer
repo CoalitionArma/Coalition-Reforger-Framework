@@ -1,0 +1,20 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 3761.118 2.404 5596.967
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{623C2E54766BAF15}" {
+   attackingSide "RHS_RF_MSV"
+   defendingSide "RHS_US_USMC"
+  }
+ }
+ coords 3753.629 1.67 5601.202
+}
+$grp SCR_BaseTriggerEntity {
+ bSiteTrigger {
+  coords 3604.922 4.031 6052.946
+ }
+ aSiteTrigger {
+  coords 3858.178 1.279 5627.979
+ }
+}
