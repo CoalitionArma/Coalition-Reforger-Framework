@@ -3,10 +3,10 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  components {
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
-    Name "#AR-Group_Squad"
-    m_Image "{ABA2D60082FFC2A4}UI/Textures/EditorPreviews/Groups/BLUFOR/Group_US_RifleSquad.edds"
-    m_aAuthoredLabels + {
-     25 34 38
+    Name "CRF 1980s 2 Man Crew"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_aAuthoredLabels {
+     4 51870 25 34 38
     }
     m_aAutoLabels {
      72
@@ -17,6 +17,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
       m_Value 9
      }
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{61E1235852B6671E}" {
      m_Identity BLUFOR
      m_Dimension LAND

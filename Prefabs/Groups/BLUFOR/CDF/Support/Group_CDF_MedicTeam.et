@@ -3,12 +3,12 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
  components {
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
-    Name "#AR-Group_Squad"
+    Name "CRF CDF Medic Team"
     Icon "{0F4B6077ACB2FC1D}UI/Textures/Editor/EditableEntities/Groups/EditableEntity_Group_Opfor_Infantry.edds"
-    m_Image "{607F347D5FF13EE9}UI/Textures/EditorPreviews/Auto/CDF_AutoPreview/Groups/Group_CDF_RifleSquad.edds"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
     m_sFaction "CDF"
     m_aAuthoredLabels {
-     4 46994 25 34 38 27
+     4 51871 25 34 38 27
     }
     m_aAutoLabels {
      72
@@ -19,6 +19,7 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
       m_Value 6
      }
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{621EF85B920B5197}" {
      m_Identity BLUFOR
      m_Dimension LAND
