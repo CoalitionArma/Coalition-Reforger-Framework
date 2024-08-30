@@ -3,10 +3,10 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  components {
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
-    Name "#AR-Group_Guerrilla_MGTeam"
-    m_Image "{06D2E53702B60C4B}UI/Textures/EditorPreviews/Groups/INDFOR/Group_FIA_MachineGunTeam.edds"
-    m_aAuthoredLabels + {
-     34 27
+    Name "CRF FIA 3 Man Crew"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_aAuthoredLabels {
+     4 51874 34 27
     }
     m_aAutoLabels {
      70
@@ -17,6 +17,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
       m_Value 2
      }
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{61EB405315C8D6BB}" {
      m_Identity INDFOR
      m_Dimension LAND
@@ -68,7 +69,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{D25A2B45247FAC81}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehCommander_P.et" "{58B36F558741B10F}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_VehGunner_P.et" "{030C9910868D4F1B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Crew_Base_VehDriver_P.et"
+  "{D25A2B45247FAC81}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Crew_VehCommander_P.et" "{58B36F558741B10F}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Crew_VehGunner_P.et" "{030C9910868D4F1B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Crew_Base_VehDriver_P.et"
  }
  m_sCustomNameSet "Vehicle Crew"
 }

@@ -8,7 +8,7 @@ SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
     m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
     m_sFaction "CDF"
     m_aAuthoredLabels {
-     4 46994 25 34 38 27
+     4 51871 25 34 38 27
     }
     m_aAutoLabels {
      72
