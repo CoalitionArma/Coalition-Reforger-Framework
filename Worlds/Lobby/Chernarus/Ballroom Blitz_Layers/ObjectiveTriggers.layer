@@ -28,7 +28,7 @@ $grp BaseGameTriggerEntity {
   TriggerShapeType Sphere
   SphereRadius 185.5
   PeriodicQueries 1
-  UpdatePeriod 1
+  UpdatePeriod 10
   OnQueryFinished ""\
   "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_RF_MSV\");"\
   "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_US_USMC\");"\
@@ -79,7 +79,7 @@ $grp BaseGameTriggerEntity {
   TriggerShapeType Sphere
   SphereRadius 185.5
   PeriodicQueries 1
-  UpdatePeriod 1
+  UpdatePeriod 10
   OnQueryFinished ""\
   "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_RF_MSV\");"\
   "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_US_USMC\");"\
@@ -131,7 +131,7 @@ $grp BaseGameTriggerEntity {
   TriggerShapeType Sphere
   SphereRadius 184.8
   PeriodicQueries 1
-  UpdatePeriod 1
+  UpdatePeriod 10
   OnQueryFinished ""\
   "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_RF_MSV\");"\
   "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_US_USMC\");"\
@@ -183,7 +183,7 @@ $grp BaseGameTriggerEntity {
   TriggerShapeType Sphere
   SphereRadius 120
   PeriodicQueries 1
-  UpdatePeriod 1
+  UpdatePeriod 10
   OnQueryFinished ""\
   "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_RF_MSV\");"\
   "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_US_USMC\");"\
