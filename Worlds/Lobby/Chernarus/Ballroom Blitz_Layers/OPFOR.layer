@@ -1,0 +1,164 @@
+$grp BaseGameTriggerEntity {
+ Bmp1 {
+  coords 4580.944 339.125 9529.03
+  userScript "	    string bmp = \"{45727E50E27698C2}Prefabs/Vehicles/Tracked/BMP2/BMP2M.et\";"\
+  "        vector bmp1spawn, bmp2spawn, bmp3spawn;"\
+  "        IEntity bmp1trig, bmp2trig, bmp3trig;"\
+  "            "\
+  "        void spawnthings()"\
+  "            {"\
+  "                bmp1trig = GetGame().GetWorld().FindEntityByName(\"Bmp1\");"\
+  "                bmp2trig = GetGame().GetWorld().FindEntityByName(\"Bmp2\");"\
+  "				bmp3trig = GetGame().GetWorld().FindEntityByName(\"Bmp3\");"\
+  "                bmp1spawn = bmp1trig.GetOrigin();"\
+  "                bmp2spawn = bmp2trig.GetOrigin();"\
+  "		        bmp3spawn = bmp3trig.GetOrigin();"\
+  "		"\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = bmp1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(bmp),GetGame().GetWorld(),spawnParams);"\
+  "        		spawnParams.Transform[3] = bmp2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(bmp),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = bmp3spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(bmp),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ Bmp2 {
+  coords 4582.19 339.125 9520.008
+ }
+ Bmp3 {
+  coords 4582.245 339.125 9511.022
+ }
+ tank1 {
+  coords 4574.15 339.157 9471.824
+  userScript "	    string tank = \"{726286E1F9570EA1}Prefabs/Vehicles/Tracked/T-72B/T72B_base.et\";"\
+  "        vector tank1spawn, tank2spawn, tank3spawn;"\
+  "        IEntity tank1trig, tank2trig, tank3trig;"\
+  "            "\
+  "        void spawnthings()"\
+  "            {"\
+  "                tank1trig = GetGame().GetWorld().FindEntityByName(\"tank1\");"\
+  "                tank2trig = GetGame().GetWorld().FindEntityByName(\"tank2\");"\
+  "				tank3trig = GetGame().GetWorld().FindEntityByName(\"tank3\");"\
+  "                tank1spawn = tank1trig.GetOrigin();"\
+  "                tank2spawn = tank2trig.GetOrigin();"\
+  "		        tank3spawn = tank3trig.GetOrigin();"\
+  "		"\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = tank1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(tank),GetGame().GetWorld(),spawnParams);"\
+  "        		spawnParams.Transform[3] = tank2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(tank),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = tank3spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(tank),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ tank2 {
+  coords 4571.06 339.188 9457.837
+ }
+ tank3 {
+  coords 4563.921 339.187 9442.829
+ }
+ tigr1 {
+  coords 4603.259 339.125 9528.118
+  userScript "	    string tigr = \"{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et\";"\
+  "        vector tigr1spawn, tigr2spawn;"\
+  "        IEntity tigr1trig, tigr2trig;"\
+  "            "\
+  "        void spawnthings()"\
+  "            {"\
+  "                tigr1trig = GetGame().GetWorld().FindEntityByName(\"tigr1\");"\
+  "                tigr2trig = GetGame().GetWorld().FindEntityByName(\"tigr2\");"\
+  "                tigr1spawn = tigr1trig.GetOrigin();"\
+  "                tigr2spawn = tigr2trig.GetOrigin();"\
+  "		"\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = tigr1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(tigr),GetGame().GetWorld(),spawnParams);"\
+  "        		spawnParams.Transform[3] = tigr2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(tigr),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ tigr2 {
+  coords 4617.833 339.125 9528.364
+ }
+}
+SCR_AIGroup : "{87C7848A69244BF1}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Company.et" {
+ coords 4607.597 339.123 9518.838
+ m_sCustomNameSet "COY"
+ {
+  SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+   coords -0.017 0.002 -4.412
+   m_sCustomNameSet "1st PLT HQ"
+   {
+    SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+     coords -0.504 -0 -6.028
+     m_sCustomNameSet "1-1"
+     {
+      SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+       coords -0.3 -0 -3.313
+       m_sCustomNameSet "1-1 Crew"
+       {
+        SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+         coords -0.333 0 -5.023
+         m_sCustomNameSet "1-2"
+         {
+          SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+           coords -0.3 -0 -3.313
+           m_sCustomNameSet "1-2 Crew"
+           {
+            SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+             coords -0.101 0 -3.552
+             m_sCustomNameSet "1-3"
+             {
+              SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+               coords -0.3 -0 -3.313
+               m_sCustomNameSet "1-3 Crew"
+               {
+                SCR_AIGroup : "{6A2944163310F096}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle3Man.et" {
+                 coords 15.067 -0.001 29.978
+                 m_sCustomNameSet "Armor 6"
+                 {
+                  SCR_AIGroup : "{6A2944163310F096}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle3Man.et" {
+                   coords -0.288 0.002 -5.641
+                   m_sCustomNameSet "Armor 1"
+                   {
+                    SCR_AIGroup : "{6A2944163310F096}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle3Man.et" {
+                     coords -0.648 -0.001 -4.861
+                     m_sCustomNameSet "Armor 2"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

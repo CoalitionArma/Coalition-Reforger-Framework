@@ -1,0 +1,238 @@
+$grp BaseGameTriggerEntity {
+ Stryker1 {
+  coords 1927.112 264.822 7476.949
+  userScript "	    string stryker = \"{44E2468321E19451}Prefabs/Vehicles/Wheeled/stryker/stryker_Dragoon_Cage.et\";"\
+  "        vector stryker1spawn, stryker2spawn, stryker3spawn, stryker4spawn, stryker5spawn, stryker6spawn;"\
+  "        IEntity stryker1trig, stryker2trig, stryker3trig, stryker4trig, stryker5trig, stryker6trig;"\
+  "            "\
+  "        void spawnthings()"\
+  "            {"\
+  "                stryker1trig = GetGame().GetWorld().FindEntityByName(\"Stryker1\");"\
+  "                stryker2trig = GetGame().GetWorld().FindEntityByName(\"Stryker2\");"\
+  "				stryker3trig = GetGame().GetWorld().FindEntityByName(\"Stryker3\");"\
+  "				stryker4trig = GetGame().GetWorld().FindEntityByName(\"Stryker4\");"\
+  "				stryker5trig = GetGame().GetWorld().FindEntityByName(\"Stryker5\");"\
+  "				stryker6trig = GetGame().GetWorld().FindEntityByName(\"Stryker6\");"\
+  "                stryker1spawn = stryker1trig.GetOrigin();"\
+  "                stryker2spawn = stryker2trig.GetOrigin();"\
+  "		        stryker3spawn = stryker3trig.GetOrigin();"\
+  "		        stryker4spawn = stryker4trig.GetOrigin();"\
+  "		        stryker5spawn = stryker5trig.GetOrigin();"\
+  "		        stryker6spawn = stryker6trig.GetOrigin();"\
+  "		"\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = stryker1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "        		spawnParams.Transform[3] = stryker2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = stryker3spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = stryker4spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = stryker5spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = stryker6spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ Stryker2 {
+  coords 1922.327 265.629 7489.142
+ }
+ Stryker3 {
+  coords 1918.887 266.096 7500.6
+ }
+ Stryker4 {
+  coords 3198.51 356.283 10453.458
+  angleX 0.86
+  angleY -0.175
+  angleZ -11.483
+ }
+ Stryker5 {
+  coords 3185.91 354.41 10469.18
+  angleX 1.789
+  angleY -0.028
+  angleZ -0.896
+ }
+ Stryker6 {
+  coords 3209.741 358.488 10472.165
+  angleX -1.009
+  angleY 2.935
+  angleZ -14.94
+ }
+ Abrams1 {
+  coords 1943.521 261.18 7431.317
+  userScript "	    string abrams = \"{12F73C9958E56455}Prefabs/Vehicles/Tracked/M1A2/M1A2.et\";"\
+  "        vector abrams1spawn, abrams2spawn, abrams3spawn, abrams4spawn;"\
+  "        IEntity abrams1trig, abrams2trig, abrams3trig, abrams4trig;"\
+  "            "\
+  "        void spawnthings()"\
+  "            {"\
+  "                abrams1trig = GetGame().GetWorld().FindEntityByName(\"Abrams1\");"\
+  "                abrams2trig = GetGame().GetWorld().FindEntityByName(\"Abrams2\");"\
+  "				abrams3trig = GetGame().GetWorld().FindEntityByName(\"Abrams3\");"\
+  "				abrams4trig = GetGame().GetWorld().FindEntityByName(\"Abrams4\");"\
+  "                abrams1spawn = abrams1trig.GetOrigin();"\
+  "                abrams2spawn = abrams2trig.GetOrigin();"\
+  "		        abrams3spawn = abrams3trig.GetOrigin();"\
+  "		        abrams4spawn = abrams4trig.GetOrigin();"\
+  "		"\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = abrams1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(abrams),GetGame().GetWorld(),spawnParams);"\
+  "        		spawnParams.Transform[3] = abrams2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(abrams),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = abrams3spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(abrams),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = abrams4spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(abrams),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ Abrams2 {
+  coords 1940.601 262.342 7442.831
+ }
+ Abrams3 {
+  coords 1937.223 263.214 7451.343
+ }
+ Abrams4 {
+  coords 1933.573 263.808 7460.302
+ }
+ hmmwv1 {
+  coords 1952.641 261.164 7434.336
+  userScript "	    string hmmwv = \"{78CD65D4B24D0139}Prefabs/Vehicles/M1114/kiok_m1114_armed_m2tower_green.et\";"\
+  "        vector hmmwv1spawn, hmmwv2spawn;"\
+  "        IEntity hmmwv1trig, hmmwv2trig;"\
+  "            "\
+  "        void spawnthings()"\
+  "            {"\
+  "                hmmwv1trig = GetGame().GetWorld().FindEntityByName(\"hmmwv1\");"\
+  "                hmmwv2trig = GetGame().GetWorld().FindEntityByName(\"hmmwv2\");"\
+  "                hmmwv1spawn = hmmwv1trig.GetOrigin();"\
+  "                hmmwv2spawn = hmmwv2trig.GetOrigin();"\
+  "		"\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = hmmwv1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(hmmwv),GetGame().GetWorld(),spawnParams);"\
+  "        		spawnParams.Transform[3] = hmmwv2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(hmmwv),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ hmmwv2 {
+  coords 1967.476 260.477 7429.994
+ }
+}
+SCR_AIGroup : "{330A6F2079000399}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Company.et" {
+ coords 1959.57 264.447 7459.574
+ m_sCustomNameSet "COY"
+ {
+  SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+   coords -10.335 0.401 13.005
+   m_sCustomNameSet "1PLT HQ"
+   {
+    SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+     coords -2.947 0.74 7.094
+     m_sCustomNameSet "1-1"
+     {
+      SCR_AIGroup : "{018A91B8A7DD5639}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_ArmorCrew.et" {
+       coords -1.046 0.952 4.791
+       m_sCustomNameSet "1-1 Stryker"
+       {
+        SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+         coords -2.573 0.424 11.509
+         m_sCustomNameSet "1-2"
+         {
+          SCR_AIGroup : "{018A91B8A7DD5639}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_ArmorCrew.et" {
+           coords -0.989 -0.489 4.323
+           m_sCustomNameSet "1-2 Stryker"
+           {
+            SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+             coords -1.317 -0.247 3.977
+             m_sCustomNameSet "1-3"
+             {
+              SCR_AIGroup : "{018A91B8A7DD5639}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_ArmorCrew.et" {
+               coords -1.545 -1.689 4.7
+               m_sCustomNameSet "1-3 Stryker"
+               {
+                SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+                 coords 1261.858 91.643 2966.616
+                 angleX -17.76
+                 angleY -39.02
+                 angleZ 98.377
+                 m_aUnitPrefabSlots + {
+                  "{872F9D2BF1B2A52C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Base_VehDriver_P.et" "{7D0FA93F8D687C8B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_VehGunner_P.et"
+                 }
+                 m_sCustomNameSet "Scout Platoon Lead"
+                 {
+                  SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+                   coords 1.119 0.648 4.758
+                   angleX 20.438
+                   angleY -8.019
+                   angleZ -21.972
+                   m_aUnitPrefabSlots {
+                    "{6BACF93226AED9E2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_COY_SL_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{DAA06784F618C4D4}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MMG_P.et" "{619E3C311CFBB665}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Sniper_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{872F9D2BF1B2A52C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Base_VehDriver_P.et" "{7D0FA93F8D687C8B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_VehGunner_P.et"
+                   }
+                   m_sCustomNameSet "1st Scout Section"
+                   {
+                    SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+                     coords -0.519 -0.352 1.825
+                     m_aUnitPrefabSlots {
+                      "{6BACF93226AED9E2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_COY_SL_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{DAA06784F618C4D4}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MMG_P.et" "{619E3C311CFBB665}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Sniper_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{872F9D2BF1B2A52C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_Base_VehDriver_P.et" "{7D0FA93F8D687C8B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Crew_VehGunner_P.et"
+                     }
+                     m_sCustomNameSet "2nd Scout Section"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_AIGroup : "{550FA1A3F18DEB82}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_Armor3man.et" {
+ coords 1975.859 261.29 7451.726
+ m_sCustomNameSet "Armor 6"
+ {
+  SCR_AIGroup : "{550FA1A3F18DEB82}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_Armor3man.et" {
+   coords 7.773 0.441 -1.883
+   m_sCustomNameSet "Armor 1"
+   {
+    SCR_AIGroup : "{550FA1A3F18DEB82}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_Armor3man.et" {
+     coords 1.554 1.456 6.219
+     m_sCustomNameSet "Armor 2"
+     {
+      SCR_AIGroup : "{550FA1A3F18DEB82}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_Armor3man.et" {
+       coords 6.416 -1.557 -11.334
+       m_sCustomNameSet "Armor 3"
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,120 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2147.834 278.326 7350.383
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 75
+  }
+  SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{623D123412B1AD6C}" {
+    }
+   }
+  }
+ }
+ coords 2119.631 270.854 7336.568
+ {
+  SCR_FactionManager {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1st PLT HQ"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-1 BMP"
+       }
+       SCR_CallsignInfo "{623D123DF293F153}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{623D123DF27AE761}" {
+        m_sCallsign "1-2 BMP"
+       }
+       SCR_CallsignInfo "{623D123DF1AAD97B}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{623D123DF1F7DDEB}" {
+        m_sCallsign "1-3 BMP"
+       }
+       SCR_CallsignInfo "{623D123DD63CF931}" {
+        m_sCallsign "Armor 6 (Lead)"
+       }
+       SCR_CallsignInfo "{623D123DD6742788}" {
+        m_sCallsign "Armor 1"
+       }
+       SCR_CallsignInfo "{623D123DD582BE88}" {
+        m_sCallsign "Armor 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1 Stryker"
+       }
+       SCR_CallsignInfo "{623D12021E1DA300}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{623D12021E7EF254}" {
+        m_sCallsign "1-2 Stryker"
+       }
+       SCR_CallsignInfo "{623D12021DADC46F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{623D12021D247BEA}" {
+        m_sCallsign "1-3 Stryker"
+       }
+       SCR_CallsignInfo "{623D120208C6BFD2}" {
+        m_sCallsign "Scout Platoon Lead"
+       }
+       SCR_CallsignInfo "{623D1202038A32F6}" {
+        m_sCallsign "1st Scout Section"
+       }
+       SCR_CallsignInfo "{623D1203FE64F650}" {
+        m_sCallsign "2nd Scout Section"
+       }
+       SCR_CallsignInfo "{623D1203F9C0B9E6}" {
+        m_sCallsign "Armor 6 (Lead)"
+       }
+       SCR_CallsignInfo "{623D1203F94CC67C}" {
+        m_sCallsign "Armor 1"
+       }
+       SCR_CallsignInfo "{623D1203F8B86A63}" {
+        m_sCallsign "Armor 2"
+       }
+       SCR_CallsignInfo "{623D1203F8C09BAA}" {
+        m_sCallsign "Armor 3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
