@@ -4,7 +4,8 @@ Vehicle UAZ469_PKM1 : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_
 }
 SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
  coords 1966.827 6.732 2915.85
- m_aUnitPrefabSlots +{
+ m_aUnitPrefabSlots {
+  "{3EEA034902CC5CB8}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Leader_PL_P.et" "{48107731A5DF46CD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/ATACS/Standard/CRF_ATACS_Rifleman_Medic_MO_P.et"
  }
  m_sCustomNameSet "1st PLT HQ"
  {
