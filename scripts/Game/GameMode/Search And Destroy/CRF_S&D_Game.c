@@ -230,7 +230,7 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		spawnParams.Transform[3] = destroyedBombSiteEntity.GetOrigin();
 	
-		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
+		GetGame().SpawnEntityPrefab(Resource.Load("{A79737B19CBFD5EC}Prefabs/Systems/Explosions/Wrapper_Bomb_Large.et"),GetGame().GetWorld(),spawnParams);
 		// Delete entity
 		delete destroyedBombSiteEntity;
 	}
