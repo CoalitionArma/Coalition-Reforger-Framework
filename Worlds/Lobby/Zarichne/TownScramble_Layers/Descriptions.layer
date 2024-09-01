@@ -46,7 +46,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  coords 2114.651 2.494 2479.078
  m_sTextData "An American SF company seeks to eliminate our platoon and prevent our extraction across the river we must prevent this and take up a defensive posture. "\
  ""\
- "We must extract at least 3000 supplies and have at least 8 men alive at the extraction point to consider this a mission success."\
+ "We must extract at least 1700 supplies and have at least 8 men alive at the extraction point to consider this a mission success."\
  ""\
  "If it comes to it you can break contact and retreat from the objective at least 200m to get reinforcements. This only can be done once so use it wisely."
  m_aVisibleForFactions {
