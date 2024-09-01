@@ -1,0 +1,26 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{624318ADBB1AB286}" {
+   Name "hintText"
+   Slot FrameWidgetSlot "{624318ADBB1AB2E9}" {
+    Anchor 0.831 0.057 0.831 0.057
+    PositionX -174
+    OffsetLeft -174
+    PositionY 2
+    OffsetTop 2
+    SizeX 352
+    OffsetRight -178
+    SizeY 38
+    OffsetBottom -40
+   }
+   Opacity 0
+   Text ""
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+   FontProperties FontProperties "{624318AD7A1B9FFE}" {
+   }
+  }
+ }
+}
