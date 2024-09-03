@@ -29,7 +29,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	CRF_SafestartGameModeComponent m_safestart;
-	protected ref array<int> m_respawnedGroups;
+	ref array<int> m_respawnedGroups;
 	
 	protected ref map<IEntity, int> m_entitySlots = new map<IEntity, int>();
 	protected ref map<IEntity, string> m_entityPrefabs = new map<IEntity, string>();
@@ -110,18 +110,18 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RPC_SpawnGroup(int groupID)
 	{
-		m_respawnedGroups.Insert(groupID);
-		int timesRespawned;
-		foreach (int wave : m_respawnedGroups)
-		{
-			if(wave == groupID)
-			{
-				timesRespawned++;
-			}
-		}
+		//m_respawnedGroups.Insert(groupID);
+		//int timesRespawned;
+		//foreach (int wave : m_respawnedGroups)
+		//{
+		//	if(wave == groupID)
+		//	{
+		//		timesRespawned++;
+		//	}
+		//}
 		
-		if(timesRespawned >= m_respawnWaves)
-			return;
+		//if(timesRespawned >= m_respawnWaves)
+		//	return;
 		
 		for(int i, count = m_entitySlots.Count(); i < count; ++i)
 		{
@@ -133,16 +133,14 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			
 			if (!tempEntity)
 				return;
-			
 			if(SCR_AIDamageHandling.IsAlive(tempEntity))
 				return;
-			
 			Faction faction = SCR_FactionManager.SGetPlayerFaction(m_tempPlayerID);
 			Color factionColor = faction.GetFactionColor();
 			float rg = Math.Max(factionColor.R(), factionColor.G());
 			float rgb = Math.Max(rg, factionColor.B());
 			
-			switch (rgb)
+			switch (true)
 			{
 				case (rgb == factionColor.B()):
 					GetSpawnParamsByFaction(0);
@@ -157,8 +155,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 					break;
 			}
 			
-			
-			string m_tempPrefab = m_entityPrefabs.Get(tempEntity);
+			m_tempPrefab = m_entityPrefabs.Get(tempEntity);
 			Replication.BumpMe();
 			
 			SpawnPrefabs();
@@ -173,7 +170,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SpawnPrefabs()
 	{
-		IEntity tempEnt = GetGame().SpawnEntityPrefab(Resource.Load(m_tempPrefab),GetGame().GetWorld(),bluforspawnParams);
+		tempEnt = GetGame().SpawnEntityPrefab(Resource.Load(m_tempPrefab),GetGame().GetWorld(),bluforspawnParams);
 		m_GroupsManagerComponent.AddPlayerToGroup(m_groupID, m_tempPlayerID);
 	}
 	
