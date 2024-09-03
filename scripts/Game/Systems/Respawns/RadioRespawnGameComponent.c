@@ -14,11 +14,33 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected ref map<IEntity, ref array<string>> m_entitySlots = new map<IEntity, ref array<string>>();
+	CRF_SafestartGameModeComponent m_safestart;
+	
 	override protected void OnPostInit(IEntity owner)
 	{
 		if (!GetGame().InPlayMode()) 
 			return;
 		
+		if (Replication.IsServer())
+		{
+			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
+			Print("Checking if safestart is enabled");
+		}
+		
+	}
+	
+	void RespawnInit()
+	{
+		if (m_safestart.GetSafestartStatus())
+		{
+			Print("Safestart was canceled");
+			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
+		}
+		if (!m_safestart.GetSafestartStatus())
+		{
+			Print("Safestart still disabled getting slots");
+			GetGroups();
+		}
 	}
 	
 	void GetGroups()
@@ -39,6 +61,29 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				m_entitySlots.Insert(controlledEntity, {groupIDString, prefabName});
 			}
 		}
+	}
+	
+	void WaitTillGameStart()
+	{
+		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
+		if (m_safestart.GetSafestartStatus()) 
+		{
+			Print("Safestart enabled");
+			GetGame().GetCallqueue().Remove(WaitTillGameStart);
+			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
+		}
+		return;
+	}
+	
+	void WaitSafeStartEnd()
+	{
+		if (!m_safestart.GetSafestartStatus()) 
+		{
+			Print("Safestart disabled");
+			GetGame().GetCallqueue().Remove(WaitSafeStartEnd);
+			GetGame().GetCallqueue().CallLater(RespawnInit, 1000);
+		}
+		return;
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
