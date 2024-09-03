@@ -4,12 +4,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
   CRF_RadioRespawnSystemComponent "{62432761876791F5}" {
-   m_bluforRespawns {
-    "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et"
-   }
-   m_bluforSpawnPoints {
-    "respawn1" "respawn2"
-   }
+   m_bluforSpawnPoint "respawn1"
   }
  }
  coords 2051.485 50.42 2083.405
@@ -28,4 +23,7 @@ $grp BaseGameTriggerEntity {
 SCR_AIGroup : "{330A6F2079000399}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Company.et" {
  coords 1544.587 48.62 3207.543
  m_bPlayable 1
+}
+SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+ coords 1536.317 47.484 3220.213
 }
