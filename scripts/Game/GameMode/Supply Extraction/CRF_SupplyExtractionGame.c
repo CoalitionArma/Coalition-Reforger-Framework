@@ -72,7 +72,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 
 	//For checking to see if safestart is running
 	protected SCR_PopUpNotification m_PopUpNotification = null;
-	CRF_SafestartGameModeComponent m_safestart = CRF_SafestartGameModeComponent.GetInstance();
+	CRF_SafestartGameModeComponent m_safestart;
 
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
@@ -138,6 +138,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	//Cause it starts not running and can fuck up some init code
 	void WaitTillGameStart()
 	{
+		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
 		if (!m_safestart.GetSafestartStatus()) 
 		{
 			m_extractionLocation = GetGame().GetWorld().FindEntityByName(m_extractionObject).GetOrigin();
