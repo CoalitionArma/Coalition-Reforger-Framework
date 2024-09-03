@@ -16,8 +16,13 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 		IEntity gamemode = GetGame().GetWorld().FindEntityByName("CRF_GameMode_Lobby_1");
 		CRF_RadioRespawnSystemComponent RadioComponent = CRF_RadioRespawnSystemComponent.Cast(gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
 		SCR_SoundManagerEntity soundMan = GetGame().GetSoundManagerEntity();
+		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
 		
-		RadioComponent.GetGroups();
+		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(pUserEntity);
+		
+		SCR_AIGroup playerGroup = groupManager.GetPlayerGroup(playerID);
+		int groupID = playerGroup.GetGroupID();
+		RadioComponent.SpawnGroup(groupID);
 
 		if (!soundMan)
 			return;

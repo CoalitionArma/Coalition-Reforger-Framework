@@ -6,15 +6,15 @@ class CRF_RadioRespawnSystemComponentClass: SCR_BaseGameModeComponentClass
 
 class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 {
-	[Attribute(desc: "Prefabs for Blufor", category: "Blufor Respawns")];
-	protected ref array<string> m_bluforRespawns;
-	
+
 	[Attribute(desc: "Prefabs for Blufor", category: "Blufor Respawns")];
 	protected ref array<string> m_bluforSpawnPoints;
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
-	protected ref map<IEntity, ref array<string>> m_entitySlots = new map<IEntity, ref array<string>>();
+	protected ref map<int, int> m_entitySlots = new map<int, int>();
+	protected ref map<int, string> m_entityPrefabs = new map<int, string>();
 	CRF_SafestartGameModeComponent m_safestart;
+	protected ref array<int> m_respawnedGroups;
 	
 	override protected void OnPostInit(IEntity owner)
 	{
@@ -24,7 +24,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		if (Replication.IsServer())
 		{
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
-			Print("Checking if safestart is enabled");
 		}
 		
 	}
@@ -33,12 +32,10 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		if (m_safestart.GetSafestartStatus())
 		{
-			Print("Safestart was canceled");
 			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
 		}
 		if (!m_safestart.GetSafestartStatus())
 		{
-			Print("Safestart still disabled getting slots");
 			GetGroups();
 		}
 	}
@@ -53,12 +50,16 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		{
 			array<int> groupPlayersIDs = group.GetPlayerIDs();
 			int groupID = group.GetGroupID();
-			string groupIDString = groupID.ToString();
 			foreach (int playerID: groupPlayersIDs)
 			{
 				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
 				string prefabName = controlledEntity.GetPrefabData().GetPrefabName();
-				m_entitySlots.Insert(controlledEntity, {groupIDString, prefabName});
+				m_entitySlots.Insert(1, groupID);
+				m_entitySlots.Insert(2, groupID);
+				m_entitySlots.Insert(3, 1);
+				m_entityPrefabs.Insert(1, prefabName);
+				m_entityPrefabs.Insert(2, prefabName);
+				m_entityPrefabs.Insert(3, prefabName);
 			}
 		}
 	}
@@ -68,7 +69,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
 		if (m_safestart.GetSafestartStatus()) 
 		{
-			Print("Safestart enabled");
+			GetGroups();
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
 			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
 		}
@@ -79,15 +80,29 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		if (!m_safestart.GetSafestartStatus()) 
 		{
-			Print("Safestart disabled");
 			GetGame().GetCallqueue().Remove(WaitSafeStartEnd);
 			GetGame().GetCallqueue().CallLater(RespawnInit, 1000);
 		}
 		return;
 	}
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RPC_SpawnGroup(array<string> prefabs, array<string> spawnpoints)
+	void SpawnGroup(int groupID)
 	{
+		RPC_SpawnGroup(groupID);
+		Rpc(RPC_SpawnGroup, groupID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RPC_SpawnGroup(int groupID)
+	{
+		for(int i, count = m_entitySlots.Count(); i < count; ++i)
+		{
+			int tempEntity = m_entitySlots.GetKeyByValue(groupID);
+			if (!tempEntity)
+				return;
+			
+			Print("hello");
+			m_entitySlots.Remove(tempEntity);
+		}
 	}
 }
