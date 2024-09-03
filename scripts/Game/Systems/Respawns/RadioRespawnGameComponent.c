@@ -12,6 +12,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	[Attribute(desc: "Prefabs for Blufor", category: "Blufor Respawns")];
 	protected ref array<string> m_bluforSpawnPoints;
 	
+	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
+	protected ref map<IEntity, ref array<string>> m_entitySlots = new map<IEntity, ref array<string>>();
 	override protected void OnPostInit(IEntity owner)
 	{
 		if (!GetGame().InPlayMode()) 
@@ -19,30 +21,28 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		
 	}
 	
-	//Sides are as follows
-	//BLUFOR = 0
-	//OPFOR = 1
-	//INDFOR = 2
-	void SpawnGroup(int side)
+	void GetGroups()
 	{
-		if (side == 0)
+		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
+		array<SCR_AIGroup> outAllGroups;
+		m_GroupsManagerComponent.GetAllPlayableGroups(outAllGroups);
+		
+		foreach (SCR_AIGroup group : outAllGroups)
 		{
-			RPC_SpawnGroup(m_bluforRespawns, m_bluforSpawnPoints);
-			Rpc(RPC_SpawnGroup, m_bluforRespawns, m_bluforSpawnPoints);
+			array<int> groupPlayersIDs = group.GetPlayerIDs();
+			int groupID = group.GetGroupID();
+			string groupIDString = groupID.ToString();
+			foreach (int playerID: groupPlayersIDs)
+			{
+				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
+				string prefabName = controlledEntity.GetPrefabData().GetPrefabName();
+				m_entitySlots.Insert(controlledEntity, {groupIDString, prefabName});
+			}
 		}
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RPC_SpawnGroup(array<string> prefabs, array<string> spawnpoints)
 	{
-		protected vector spawnVector;
-		foreach (int index, string prefab : prefabs)
-		{
-			spawnVector = GetGame().GetWorld().FindEntityByName(spawnpoints[index]).GetOrigin();
-			EntitySpawnParams spawnParams = new EntitySpawnParams();
-            spawnParams.TransformMode = ETransformMode.WORLD;
-            spawnParams.Transform[3] = spawnVector;
-			GetGame().SpawnEntityPrefab(Resource.Load(prefab),GetGame().GetWorld(),spawnParams);
-		}
 	}
 }

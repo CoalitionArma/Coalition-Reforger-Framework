@@ -27,4 +27,5 @@ $grp BaseGameTriggerEntity {
 }
 SCR_AIGroup : "{330A6F2079000399}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Company.et" {
  coords 1544.587 48.62 3207.543
+ m_bPlayable 1
 }

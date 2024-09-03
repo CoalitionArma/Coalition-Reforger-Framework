@@ -14,17 +14,10 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 	override protected void PerformActionInternal(SCR_InventoryStorageManagerComponent manager, IEntity pOwnerEntity, IEntity pUserEntity)
 	{
 		IEntity gamemode = GetGame().GetWorld().FindEntityByName("CRF_GameMode_Lobby_1");
-		CRF_RadioRespawnSystemComponent RadioComponent = CRF_RadioRespawnSystemComponent.Cast(gamemode .FindComponent(CRF_RadioRespawnSystemComponent));
+		CRF_RadioRespawnSystemComponent RadioComponent = CRF_RadioRespawnSystemComponent.Cast(gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
 		SCR_SoundManagerEntity soundMan = GetGame().GetSoundManagerEntity();
 		
-		SCR_ChimeraCharacter cc = SCR_ChimeraCharacter.Cast(pUserEntity);
-		if (cc && cc.GetFactionKey() == m_tempString) m_entities.Insert(ent);
-		
-		Color factionColor = faction.GetFactionColor();
-		float rg = Math.Max(factionColor.R(), factionColor.G());
-		float rgb = Math.Max(rg, factionColor.B());
-		
-		RadioComponent.SpawnGroup();
+		RadioComponent.GetGroups();
 
 		if (!soundMan)
 			return;
