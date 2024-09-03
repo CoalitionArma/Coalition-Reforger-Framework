@@ -29,7 +29,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	CRF_SafestartGameModeComponent m_safestart;
-	ref array<int> m_respawnedGroups;
+	protected ref array<int> m_respawnedGroups = {};
 	
 	protected ref map<IEntity, int> m_entitySlots = new map<IEntity, int>();
 	protected ref map<IEntity, string> m_entityPrefabs = new map<IEntity, string>();
@@ -47,6 +47,23 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		
 	}
 	
+	int GetAmountofWave()
+	{
+		return m_respawnWaves;
+	}
+	
+	int GetRespawnedGroups(int groupID)
+	{
+		int timesRespawned;
+		foreach (int wave : m_respawnedGroups)
+		{
+			if(wave == groupID)
+			{
+				timesRespawned++;
+			}
+		}
+		return timesRespawned;
+	}
 	void RespawnInit()
 	{
 		if (m_safestart.GetSafestartStatus())
@@ -110,18 +127,29 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RPC_SpawnGroup(int groupID)
 	{
-		//m_respawnedGroups.Insert(groupID);
-		//int timesRespawned;
-		//foreach (int wave : m_respawnedGroups)
-		//{
-		//	if(wave == groupID)
-		//	{
-		//		timesRespawned++;
-		//	}
-		//}
+		int timesRespawned;
+		foreach (int wave : m_respawnedGroups)
+		{
+			if(wave == groupID)
+			{
+				timesRespawned++;
+			}
+		}
 		
-		//if(timesRespawned >= m_respawnWaves)
-		//	return;
+		if(timesRespawned >= m_respawnWaves)
+		{
+			Print("Out of respawns");
+			return;
+		}
+		m_respawnedGroups.Insert(groupID);
+		
+		IEntity factionEntity = m_entitySlots.GetKeyByValue(groupID);
+		int factionPlayerID = m_entityID.Get(factionEntity);
+		Faction faction = SCR_FactionManager.SGetPlayerFaction(factionPlayerID);
+		
+		Color factionColor = faction.GetFactionColor();
+		float rg = Math.Max(factionColor.R(), factionColor.G());
+		float rgb = Math.Max(rg, factionColor.B());
 		
 		for(int i, count = m_entitySlots.Count(); i < count; ++i)
 		{
@@ -135,11 +163,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				return;
 			if(SCR_AIDamageHandling.IsAlive(tempEntity))
 				return;
-			Faction faction = SCR_FactionManager.SGetPlayerFaction(m_tempPlayerID);
-			Color factionColor = faction.GetFactionColor();
-			float rg = Math.Max(factionColor.R(), factionColor.G());
-			float rgb = Math.Max(rg, factionColor.B());
-			
+				
 			switch (true)
 			{
 				case (rgb == factionColor.B()):

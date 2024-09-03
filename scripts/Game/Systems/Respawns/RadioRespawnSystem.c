@@ -22,10 +22,18 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 		
 		SCR_AIGroup playerGroup = groupManager.GetPlayerGroup(playerID);
 		int groupID = playerGroup.GetGroupID();
+		int groupRespawns = RadioComponent.GetRespawnedGroups(groupID);
+		int respawnWaves = RadioComponent.GetAmountofWave();
+		
 		RadioComponent.SpawnGroup(groupID);
-
+		
 		if (!soundMan)
 			return;
+		if (groupRespawns >= respawnWaves)
+		{
+			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
+			return;
+		}
 		
 		soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
 	}
