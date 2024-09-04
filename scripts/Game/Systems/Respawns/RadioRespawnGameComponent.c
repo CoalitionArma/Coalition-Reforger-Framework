@@ -21,11 +21,13 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	[RplProp(onRplName: "SpawnPrefabs")]
 	string m_tempPrefab;
-	ref EntitySpawnParams bluforspawnParams = new EntitySpawnParams();
+	ref EntitySpawnParams spawnParams = new EntitySpawnParams();
 	int m_groupID;
-	int m_tempPlayerID;
+	IEntity tempEntity;
 	
 	IEntity tempEnt;
+	
+	PS_PlayableManager playableManager;
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	CRF_SafestartGameModeComponent m_safestart;
@@ -142,7 +144,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			return;
 		}
 		m_respawnedGroups.Insert(groupID);
-		
+		PS_PlayableManager playableManager = PS_PlayableManager.GetInstance();
 		IEntity factionEntity = m_entitySlots.GetKeyByValue(groupID);
 		int factionPlayerID = m_entityID.Get(factionEntity);
 		Faction faction = SCR_FactionManager.SGetPlayerFaction(factionPlayerID);
@@ -155,9 +157,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		{
 			m_groupID = groupID;
 			Replication.BumpMe();
-			IEntity tempEntity = m_entitySlots.GetKeyByValue(groupID);
-			m_tempPlayerID = m_entityID.Get(tempEntity);
+			tempEntity = m_entitySlots.GetKeyByValue(groupID);
 			Replication.BumpMe();
+			int m_tempPlayerID = m_entityID.Get(tempEntity);
 			
 			if (!tempEntity)
 				return;
@@ -194,8 +196,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SpawnPrefabs()
 	{
-		tempEnt = GetGame().SpawnEntityPrefab(Resource.Load(m_tempPrefab),GetGame().GetWorld(),bluforspawnParams);
-		m_GroupsManagerComponent.AddPlayerToGroup(m_groupID, m_tempPlayerID);
+		tempEnt = GetGame().SpawnEntityPrefab(Resource.Load(m_tempPrefab),GetGame().GetWorld(),spawnParams);
+		SCR_AIGroup playablegroup = m_GroupsManagerComponent.FindGroup(m_groupID);
+		playablegroup.AddAIEntityToGroup(tempEnt);
 	}
 	
 	//0 = BLUFOR
@@ -205,23 +208,23 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		if (factionNumber == 0)
 		{
-			protected vector bluforSpawn = GetGame().GetWorld().FindEntityByName(m_bluforSpawnPoint).GetOrigin();
-        	bluforspawnParams.TransformMode = ETransformMode.WORLD;
-        	bluforspawnParams.Transform[3] = bluforSpawn;
+			protected vector spawnPoint = GetGame().GetWorld().FindEntityByName(m_bluforSpawnPoint).GetOrigin();
+        	spawnParams.TransformMode = ETransformMode.WORLD;
+        	spawnParams.Transform[3] = spawnPoint;
 			Replication.BumpMe();
 		}
 		if (factionNumber == 1)
 		{
 			protected vector spawnPoint = GetGame().GetWorld().FindEntityByName(m_opforSpawnPoint).GetOrigin();
-        	bluforspawnParams.TransformMode = ETransformMode.WORLD;
-        	bluforspawnParams.Transform[3] = spawnPoint;
+        	spawnParams.TransformMode = ETransformMode.WORLD;
+        	spawnParams.Transform[3] = spawnPoint;
 			Replication.BumpMe();
 		}
 		if (factionNumber == 2)
 		{
 			protected vector spawnPoint = GetGame().GetWorld().FindEntityByName(m_indforSpawnPoint).GetOrigin();
-        	bluforspawnParams.TransformMode = ETransformMode.WORLD;
-        	bluforspawnParams.Transform[3] = spawnPoint;
+        	spawnParams.TransformMode = ETransformMode.WORLD;
+        	spawnParams.Transform[3] = spawnPoint;
 			Replication.BumpMe();
 		}
 	}
