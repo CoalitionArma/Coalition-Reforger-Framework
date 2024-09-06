@@ -15,8 +15,22 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
  coords 814.884 4.909 6017.655
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{624CDB829BBC95EF}" {
+   m_sFactionKey "CDF"
+   m_iCount 30
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+  PS_FactionRespawnCount "{624CDB829BFE48B6}" {
+   m_sFactionKey "RHS_RF_MSV"
+   m_iCount 40
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+ }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "624CDB82EC5EEE7F" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {

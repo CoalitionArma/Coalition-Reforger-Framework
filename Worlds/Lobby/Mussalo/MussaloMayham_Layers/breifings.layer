@@ -78,5 +78,8 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 3431.179 2.613 5302.542
  m_sTextData "Russian forces took a beating but still managed to capture a foothold in their invasion. In an attempt to salvage the situation they are going to attempt to steal supplies from the local defense forces."\
- ""
+ ""\
+ "Both sides have respawns:"\
+ "OPFOR: 40 tickets"\
+ "BLUFOR: 30 tickets"
 }
