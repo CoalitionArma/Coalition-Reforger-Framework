@@ -3,6 +3,8 @@ SCR_PlayerController {
  components {
   CRF_GameModePlayerComponent "{61303B991D92F9B3}" {
   }
+  CRF_HintSenderComponent "{624D1C15064C6C7E}" {
+  }
   CRF_SafeStartPlayerComponent "{61303B991FCA4CF1}" {
   }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {

@@ -1,0 +1,59 @@
+FrameWidgetClass {
+ Name "hintRoot"
+ components {
+  CRF_Hint "{624D2AA83C559DC6}" {
+  }
+ }
+ {
+  SizeLayoutWidgetClass "{624D2AAF695A42A1}" {
+   Name "SizeLayout0"
+   Slot FrameWidgetSlot "{624D2AAF695A429F}" {
+    Anchor 0.866 0.089 0.866 0.089
+    PositionX -151.36
+    OffsetLeft -151.36
+    PositionY -0.501
+    OffsetTop -0.501
+    SizeX 299.649
+    OffsetRight -148.289
+    SizeY 131.976
+    OffsetBottom -131.475
+   }
+   "Z Order" 99
+   {
+    TextWidgetClass "{624D2AAEAEE0C295}" {
+     Name "hintText"
+     Slot AlignableSlot "{624D2AAF68244230}" {
+     }
+     "Z Order" 99
+     Text ""
+     "Font Size" 20
+     "Min Font Size" 20
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     Wrap 1
+     FontProperties FontProperties "{624D2AAE88801B62}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+      OutlineSize 2
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{624D2AA9D74A7885}" {
+   Name "hintBG"
+   Slot FrameWidgetSlot "{624D2AA9D74A78F9}" {
+    Anchor 0.867 0.087 0.867 0.089
+    PositionX -152.97
+    OffsetLeft -152.97
+    PositionY 1.638
+    OffsetTop 1.638
+    SizeX 299.64
+    OffsetRight -146.67
+    SizeY 130.452
+    OffsetBottom -132.09
+   }
+   "Z Order" 98
+   Opacity 0.5
+   Color 0.053 0.053 0.053 1
+  }
+ }
+}
