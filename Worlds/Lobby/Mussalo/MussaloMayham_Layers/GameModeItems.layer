@@ -102,6 +102,10 @@ GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Ten
        }
       }
      }
+     coords -0.744 -0.003 -1.378
+     angleX 0.689
+     angleY -87.025
+     angleZ -1.062
     }
     GenericEntity {
      ID "5DB6D404128C547F"
