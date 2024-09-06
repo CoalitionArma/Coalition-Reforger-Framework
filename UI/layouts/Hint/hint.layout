@@ -1,26 +1,59 @@
 FrameWidgetClass {
- Name "rootFrame"
+ Name "hintRoot"
+ components {
+  CRF_Hint "{624D2AA83C559DC6}" {
+  }
+ }
  {
-  TextWidgetClass "{624318ADBB1AB286}" {
-   Name "hintText"
-   Slot FrameWidgetSlot "{624318ADBB1AB2E9}" {
-    Anchor 0.831 0.057 0.831 0.057
-    PositionX -174
-    OffsetLeft -174
-    PositionY 2
-    OffsetTop 2
-    SizeX 352
-    OffsetRight -178
-    SizeY 38
-    OffsetBottom -40
+  SizeLayoutWidgetClass "{624D2AAF695A42A1}" {
+   Name "SizeLayout0"
+   Slot FrameWidgetSlot "{624D2AAF695A429F}" {
+    Anchor 0.866 0.089 0.866 0.089
+    PositionX -151.36
+    OffsetLeft -151.36
+    PositionY -0.501
+    OffsetTop -0.501
+    SizeX 299.649
+    OffsetRight -148.289
+    SizeY 131.976
+    OffsetBottom -131.475
    }
-   Opacity 0
-   Text ""
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   Wrap 1
-   FontProperties FontProperties "{624318AD7A1B9FFE}" {
+   "Z Order" 99
+   {
+    TextWidgetClass "{624D2AAEAEE0C295}" {
+     Name "hintText"
+     Slot AlignableSlot "{624D2AAF68244230}" {
+     }
+     "Z Order" 99
+     Text ""
+     "Font Size" 20
+     "Min Font Size" 20
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     Wrap 1
+     FontProperties FontProperties "{624D2AAE88801B62}" {
+      Font "{3E7733BAC8C831F6}UI/Fonts/RobotoCondensed/RobotoCondensed_Regular.fnt"
+      OutlineSize 2
+     }
+    }
    }
+  }
+  ImageWidgetClass "{624D2AA9D74A7885}" {
+   Name "hintBG"
+   Slot FrameWidgetSlot "{624D2AA9D74A78F9}" {
+    Anchor 0.867 0.087 0.867 0.089
+    PositionX -152.97
+    OffsetLeft -152.97
+    PositionY 1.638
+    OffsetTop 1.638
+    SizeX 299.64
+    OffsetRight -146.67
+    SizeY 130.452
+    OffsetBottom -132.09
+   }
+   "Z Order" 98
+   Opacity 0.5
+   Color 0.053 0.053 0.053 1
   }
  }
 }

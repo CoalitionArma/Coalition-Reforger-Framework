@@ -7,8 +7,6 @@ class CRF_HintManagerClass: ScriptComponentClass
 [ComponentEditorProps(icon: HYBRID_COMPONENT_ICON)]
 class CRF_HintManager : ScriptComponent
 {
-	VerticalLayoutWidget m_wBigMsgList;
-	
 	static CRF_HintManager GetInstance() 
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
@@ -28,27 +26,35 @@ class CRF_HintManager : ScriptComponent
 		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
 		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("hint");
 		invoker.Insert(SendHint_Callback);
+		ChatCommandInvoker invoker2 = chatPanelManager.GetCommandInvoker("h");
+		invoker2.Insert(SendHint_Callback);
 	}
 	
 	void SendHint_Callback(SCR_ChatPanel panel, string data)
 	{
 		if (data == "") return;
-		Print("CRF SendHint_Callback: " + data);
-		Rpc(RPC_SendHint, data)
+		PlayerController playerController = GetGame().GetPlayerController();
+		CRF_HintSenderComponent hintSender = CRF_HintSenderComponent.Cast(playerController.FindComponent(CRF_HintSenderComponent));
+		hintSender.SendHint(data);
+	}
+	
+	void SendHintClients(string msg)
+	{
+		RPC_SendHint(msg); // local
+		Rpc(RPC_SendHint, msg); // global
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RPC_SendHint(string data)
 	{
 		Widget widget;
-		widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout", m_wBigMsgList);
+		widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
 		
 		if (!widget)
 			return;
 		
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
-		float duration = 10;
-		Print("CRF RPC_SendHint: " + data);
+		float duration = 8000;
 		hint.ShowHint(data, duration);
 	}
 }
