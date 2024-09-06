@@ -18,7 +18,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 1010.331 34.19 4531.253
  {
-  SCR_FactionManager {
+  SCR_FactionManager "624D6061DD9DABCB" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -162,5 +162,27 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
     }
    }
   }
+ }
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1153.859 6.816 3235.607
+  m_sTitle "OBJ: Reach Zarichne"
+  m_sTextData "Reach the outskirts of Zarichne with the truck"
+  m_aVisibleForFactions {
+   "RHS_RF_MSV"
+  }
+  m_iOrder 5
+  m_sFactionKey "RHS_RF_MSV"
+ }
+ {
+  coords 1159.767 7.231 3240.262
+  m_sTitle "OBJ: Steal Truck"
+  m_sTextData "Prevent the RF forces from reaching Zarichne and steal their truck"
+  m_aVisibleForFactions {
+   "CDF"
+  }
+  m_iOrder 5
+  m_sFactionKey "CDF"
  }
 }
