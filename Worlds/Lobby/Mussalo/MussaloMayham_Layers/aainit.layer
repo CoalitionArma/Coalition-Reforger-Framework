@@ -1,0 +1,19 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 837.258 3.549 6018.296
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SupplyExtractionGameModeComponent "{624C20B92A536883}" {
+   m_totalDepots 4
+   m_winningSupplyCount 3000
+   m_manpower 10
+   m_extractionDistance 300
+   m_factionKey "RHS_RF_MSV"
+   m_manpowerMessageString "Russian forces no longer have enough manpower to prove a threat!"
+   m_suppliesExtractedString "Russians have extracted enough supplies from the island!"
+   m_gameMessageString1 "Russian forces have evacuated!"
+   m_gameMessageString2 "Russians have extracted enough supplies, But lack the manpower to prove a threat."
+  }
+ }
+ coords 814.884 4.909 6017.655
+}
