@@ -4,12 +4,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    m_iTimeLimitMinutes 75
   }
   CRF_SupplyExtractionGameModeComponent "{62372B9ED7BB10DD}" {
-   m_winningSupplyCount 3000
-   m_factionKey "RHS_RF_MSV"
-   m_manpowerMessageString "Russian forces do not have the manpower to retreat!"
-   m_suppliesExtractedString "All Russian Supplies have been evacuated from the AO!"
-   m_gameMessageString1 "The Russians have successfully extracted from the AO!"
-   m_gameMessageString2 "The Russians have extracted all resources but have been decisively defeated!"
+   winningSupplyCount 1700
   }
  }
  coords 2498.86 6.857 1884.059

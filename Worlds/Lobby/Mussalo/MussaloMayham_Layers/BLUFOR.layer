@@ -1,0 +1,132 @@
+$grp Vehicle : "{45B4F354E7A3B4E2}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_CDF_Ambulance_CDF.et" {
+ UAZ452_CDF_Ambulance_CDF1 {
+  coords 3378.63 2.906 6181.461
+  angleY 88.94
+ }
+ UAZ452_CDF_Ambulance_CDF2 {
+  coords 3396.486 2.956 6065.255
+  angleY -90.169
+ }
+}
+SCR_AIGroup : "{84DD109DA0DAF61F}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+ coords 3398.234 2.906 6142.258
+ {
+  $grp SCR_AIGroup : "{63CCF1B438A4F949}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column"
+     }
+    }
+    coords -9.844 0 -8.555
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column"
+     }
+    }
+    coords -9.903 0 -13.093
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column"
+     }
+    }
+    coords -9.819 0 -18.638
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "column"
+     }
+    }
+    coords -10.093 0 -24.916
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+  $grp SCR_AIGroup : "{A47D2A49D4615973}Prefabs/Groups/BLUFOR/CDF/Vehicles/Group_CDF_VehCrew2man.et" {
+   {
+    coords -3.033 0 -0.117
+    m_aUnitPrefabSlots {
+     "{C8B1CC4DC1ADF379}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehCommander_P.et" "{00B7AF2A2CA4467B}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehDriver_P.et"
+    }
+    m_sCustomNameSet "BTR 1"
+    m_aUnitPrefabColorTeams {
+     "None" "None"
+    }
+    m_aUnitPrefabOverrideIcons {
+     "None" "None"
+    }
+   }
+   {
+    coords -6.508 0 -0.034
+    m_aUnitPrefabSlots {
+     "{C8B1CC4DC1ADF379}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehCommander_P.et" "{00B7AF2A2CA4467B}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_VehDriver_P.et"
+    }
+    m_sCustomNameSet "BTR 2"
+    m_aUnitPrefabColorTeams {
+     "None" "None"
+    }
+    m_aUnitPrefabOverrideIcons {
+     "None" "None"
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{BF74B9CBE42EF4EA}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_CDF.et" {
+ UAZ469_CDF1 {
+  coords 3395.337 2.956 6069.364
+  angleY -83.933
+ }
+ UAZ469_CDF2 {
+  coords 3395.636 2.956 6072.18
+  angleY -83.933
+ }
+ UAZ469_CDF3 {
+  coords 3400.976 2.956 6074.662
+  angleY -128.969
+ }
+ UAZ469_CDF4 {
+  coords 3402.21 2.956 6079.677
+  angleY -172.222
+ }
+}
+$grp Vehicle : "{F10C3707D4835945}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_CDF_transport_covered.et" {
+ Ural4320_CDF_transport_covered1 {
+  coords 3402.153 2.956 6086.591
+  angleY -15.436
+ }
+ Ural4320_CDF_transport_covered2 {
+  coords 3399.403 2.956 6095.315
+ }
+}
+$grp Vehicle : "{FCEC036D7F903A66}Prefabs/Vehicles/Wheeled/BTR70/BTR70_CDF.et" {
+ BTR70_CDF1 {
+  coords 3381.591 2.906 6192.978
+  angleY 87.619
+ }
+ BTR70_CDF2 {
+  coords 3393.547 2.923 6193.475
+  angleY 87.619
+ }
+ BTR70_CDF3 {
+  coords 3425.087 2.956 6076.641
+  angleY 3.491
+ }
+ BTR70_CDF4 {
+  coords 3424.692 2.956 6068.126
+ }
+ BTR70_CDF5 {
+  coords 3425.588 2.956 6084.857
+  angleY 3.491
+ }
+ BTR70_CDF6 {
+  coords 3426.074 2.956 6092.83
+  angleY 3.491
+ }
+}
