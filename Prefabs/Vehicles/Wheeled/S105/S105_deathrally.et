@@ -1,0 +1,102 @@
+Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     ClutchUncoupleTime 0.1
+     ClutchCoupleTime 0.1
+     Latency 0.1
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{607097C4DCC32AFC}" {
+   MultiSlots {
+    MultiSlotConfiguration "{624D37E9433246F9}" {
+     SlotTemplate InventoryStorageSlot "{624D37E94140E891}" {
+      Prefab "{A02222D2536CFF82}mk19/Mk19_40mm_32rnd.et"
+     }
+     NumSlots 1
+    }
+    MultiSlotConfiguration "{624D37E95058B102}" {
+     SlotTemplate InventoryStorageSlot "{624D37E92F0D33E8}" {
+      Prefab "{A02222D2536CFF82}mk19/Mk19_40mm_32rnd.et"
+     }
+     NumSlots 1
+    }
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     MaxPower 530
+     MaxTorque 550
+     RpmMaxPower 9000
+     RpmMaxTorque 7700
+     Steepness 18
+     Friction 95
+     RpmMax 9500
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 550
+    }
+    Gearbox Gearbox Gearbox {
+     Forward + {
+      0.75
+     }
+    }
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      Suspension Suspension "{4D8B26DFF8859A7B}" {
+       SpringRate 40
+      }
+     }
+     Axle "{4D8B26DF8CF2F3D8}" {
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
+       SpringRate 45
+       MaxTravelDown 0.02
+      }
+     }
+    }
+    Aerodynamics Aerodynamics "{5562A623B55A4C07}" {
+     DragCoefficient 0.49
+    }
+    Pacejka Pacejka "{54D561D473F27BA1}" {
+    }
+   }
+  }
+ }
+ {
+  Turret : "{892983848E4077A8}mk19/Tripod_M122_mk19.et" {
+   ID "624D37EA5EC7CA63"
+   components {
+    RigidBody "{51ACD09C423F175F}" {
+     SimState None
+    }
+    SCR_UniversalInventoryStorageComponent "{570EACF4F2F94F1B}" {
+     MultiSlots {
+      MultiSlotConfiguration "{624D37E926FC966F}" {
+       SlotTemplate InventoryStorageSlot "{624D37E925C41E43}" {
+        Prefab "{A02222D2536CFF82}mk19/Mk19_40mm_32rnd.et"
+       }
+       NumSlots 1
+      }
+      MultiSlotConfiguration "{624D37E922F34B3F}" {
+       SlotTemplate InventoryStorageSlot "{624D37E93E6481CB}" {
+        Prefab "{A02222D2536CFF82}mk19/Mk19_40mm_32rnd.et"
+       }
+       NumSlots 1
+      }
+     }
+    }
+   }
+   coords -0.052 1.487 -0.245
+  }
+ }
+}

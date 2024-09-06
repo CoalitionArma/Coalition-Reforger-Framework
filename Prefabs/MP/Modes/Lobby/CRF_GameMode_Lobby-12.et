@@ -52,6 +52,12 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
   }
   SCR_CommandingManagerComponent "{61BCFEC02D389EBD}" {
   }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fDOTScale 0.35
+   m_fRegenScale 0.75
+   m_fTourniquetStrengthMultiplier 0.7
+   m_fRegenerationDelay 30
+  }
   SCR_GameModeSFManager "{61BCFEC02D389EBC}" {
   }
   SCR_InitWeatherComponent "{61BCFEC02D389EB2}" {
