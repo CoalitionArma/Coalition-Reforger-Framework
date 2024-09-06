@@ -24,8 +24,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	ref EntitySpawnParams spawnParams = new EntitySpawnParams();
 	int m_groupID;
 	IEntity tempEntity;
-	
+	int m_tempPlayerID;
 	IEntity tempEnt;
+	
 	
 	PS_PlayableManager playableManager;
 	
@@ -159,7 +160,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			Replication.BumpMe();
 			tempEntity = m_entitySlots.GetKeyByValue(groupID);
 			Replication.BumpMe();
-			int m_tempPlayerID = m_entityID.Get(tempEntity);
+			m_tempPlayerID = m_entityID.Get(tempEntity);
+			Replication.BumpMe();
 			
 			if (!tempEntity)
 				return;
@@ -188,7 +190,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			m_entitySlots.Remove(tempEntity);
 			m_entityPrefabs.Remove(tempEntity);
 			m_entityID.Remove(tempEntity);
-			m_entitySlots.Insert(tempEnt, groupID);
+			m_entitySlots.Insert(tempEnt, m_groupID);
 			m_entityPrefabs.Insert(tempEnt, m_tempPrefab);
 			m_entityID.Insert(tempEnt, m_tempPlayerID);
 		}
@@ -197,8 +199,33 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	void SpawnPrefabs()
 	{
 		tempEnt = GetGame().SpawnEntityPrefab(Resource.Load(m_tempPrefab),GetGame().GetWorld(),spawnParams);
+		Replication.BumpMe();
 		SCR_AIGroup playablegroup = m_GroupsManagerComponent.FindGroup(m_groupID);
 		playablegroup.AddAIEntityToGroup(tempEnt);
+	}
+	
+	void IsPlayerInGroup()
+	{
+		
+		
+		if(EntityUtils.IsPlayer(tempEnt))
+		{
+			Print("Adding player to group");
+			SCR_PlayerControllerGroupComponent playerComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(m_tempPlayerID);
+			int newGroupID = playerComponent.GetGroupID();
+			m_GroupsManagerComponent.MovePlayerToGroup(m_tempPlayerID, newGroupID, m_groupID);
+		}
+		
+	}
+	
+	void testCallQueue(string text)
+	{
+		if (text == "end")
+		{
+			Print(text);
+			GetGame().GetCallqueue().Remove(testCallQueue);
+		}
+		Print(text);
 	}
 	
 	//0 = BLUFOR
