@@ -26,7 +26,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	IEntity tempEntity;
 	int m_tempPlayerID;
 	IEntity tempEnt;
-	
+
 	
 	PS_PlayableManager playableManager;
 	
@@ -105,11 +105,33 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
 		if (m_safestart.GetSafestartStatus()) 
 		{
-			GetGroups();
+			GetGroups();			
+			CreateRespawnGroups();
+			Rpc(CreateRespawnGroups);
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
 			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
 		}
 		return;
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void CreateRespawnGroups()
+	{
+			protected vector spawnPoint1 = GetGame().GetWorld().FindEntityByName(m_bluforSpawnPoint).GetOrigin();
+			ref EntitySpawnParams spawnParams1 = new EntitySpawnParams();
+        	spawnParams1.TransformMode = ETransformMode.WORLD;
+        	spawnParams1.Transform[3] = spawnPoint1;
+			IEntity cursedEnt = GetGame().SpawnEntityPrefab(Resource.Load("{D201ED63C117B146}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Crew_Base_VehDriver_P.et"),GetGame().GetWorld(),spawnParams1);
+			FactionManager factionManager = GetGame().GetFactionManager();
+			Faction blufor = factionManager.GetFactionByKey("US");
+			SCR_AIGroup respawngroup = m_GroupsManagerComponent.CreateNewPlayableGroup(blufor);
+			respawngroup.SetGroupID(100);
+			respawngroup.AddAIEntityToGroup(cursedEnt);
+			respawngroup.SetCustomName("Respawns", 0);
+			respawngroup.SetRadioFrequency(50);
+			respawngroup.SetMaxGroupMembers(50);
+			respawngroup.SetPrivate(true);
+			respawngroup.SetCustomDescription("For Respawns", 0);
 	}
 	
 	void WaitSafeStartEnd()
@@ -200,7 +222,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		tempEnt = GetGame().SpawnEntityPrefab(Resource.Load(m_tempPrefab),GetGame().GetWorld(),spawnParams);
 		Replication.BumpMe();
-		SCR_AIGroup playablegroup = m_GroupsManagerComponent.FindGroup(m_groupID);
+		SCR_AIGroup playablegroup = m_GroupsManagerComponent.FindGroup(100);
 		playablegroup.AddAIEntityToGroup(tempEnt);
 	}
 	
