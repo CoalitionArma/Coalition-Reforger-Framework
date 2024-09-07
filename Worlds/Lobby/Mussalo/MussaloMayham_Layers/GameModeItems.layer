@@ -1,0 +1,748 @@
+GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Medium_A_USSR_01.et" {
+ coords 826.242 3.062 6372.732
+ angleX 0
+ angleY -177.518
+ angleZ 0
+ {
+  GenericEntity depot1 {
+   ID "5DB6D404249F7F67"
+   {
+    GenericEntity {
+     ID "5DB6D404128C5B8F"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404128C5479"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404128C547B"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404128C5B85"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404128C5B87"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404128C5B8A"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404128C5470"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404128C5475"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+     coords -0.744 -0.003 -1.378
+     angleX 0.689
+     angleY -87.025
+     angleZ -1.062
+    }
+    GenericEntity {
+     ID "5DB6D404128C547F"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_ConstructionMat_USSR.et" {
+ SupplyPoint1 {
+  components {
+   SCR_ResourceComponent "{5E3298BE225F0743}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5E3298A9D628A54F}" {
+      m_fResourceRange 20
+     }
+    }
+   }
+  }
+  coords 3417.918 10.659 4866.527
+  angleY -85.341
+  {
+   $grp GenericEntity : "{1F7AE3AAD6198021}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V3_storage_USSR_covered.et" {
+    {
+     coords 0.523 -0.013 -1.612
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords 0.536 -0.034 -2.969
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.714 -0.093 -1.879
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.563 -0.108 -3.277
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -2.271 -0.038 -1.572
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -6.754 -0.056 -1.899
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -5.285 -0.033 -3.467
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -7.801 -0.034 -3.347
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -6.233 -0.015 -4.637
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -1.73 -0.104 -4.181
+     angleX -0.895
+     angleY -2.659
+    }
+   }
+   $grp GenericEntity : "{49ADEF17D3D91B4F}Prefabs/Structures/Military/Camps/Canvas_Covers/Soviet/CanvasCover_Medium_A_Soviet.et" {
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -0.685 -0.05 -2.86
+     angleY 175.464
+    }
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -6.908 -0.014 -3.354
+     angleY -135.099
+    }
+   }
+  }
+ }
+ SupplyPoint2 {
+  components {
+   SCR_ResourceComponent "{5E3298BE225F0743}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5E3298A9D628A54F}" {
+      m_fResourceRange 20
+     }
+    }
+   }
+  }
+  coords 3796.993 2.963 5535.388
+  angleY 118.561
+  {
+   $grp GenericEntity : "{1F7AE3AAD6198021}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V3_storage_USSR_covered.et" {
+    {
+     coords 0.523 -0.013 -1.612
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords 0.536 -0.034 -2.969
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.714 -0.093 -1.879
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.563 -0.108 -3.277
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -2.271 -0.038 -1.572
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -6.754 -0.056 -1.899
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -5.285 -0.033 -3.467
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -7.801 -0.034 -3.347
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -6.233 -0.015 -4.637
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -1.73 -0.104 -4.181
+     angleX -0.895
+     angleY -2.659
+    }
+   }
+   $grp GenericEntity : "{49ADEF17D3D91B4F}Prefabs/Structures/Military/Camps/Canvas_Covers/Soviet/CanvasCover_Medium_A_Soviet.et" {
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -0.685 -0.05 -2.86
+     angleY 175.464
+    }
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -6.908 -0.014 -3.354
+     angleY -135.099
+    }
+   }
+  }
+ }
+ SupplyPoint3 {
+  components {
+   SCR_ResourceComponent "{5E3298BE225F0743}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5E3298A9D628A54F}" {
+      m_fResourceRange 20
+     }
+    }
+   }
+  }
+  coords 3218.485 1.399 5804.95
+  angleY -80.217
+  {
+   $grp GenericEntity : "{1F7AE3AAD6198021}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V3_storage_USSR_covered.et" {
+    {
+     coords 0.523 -0.013 -1.612
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords 0.536 -0.034 -2.969
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.714 -0.093 -1.879
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.563 -0.108 -3.277
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -2.271 -0.038 -1.572
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -6.754 -0.056 -1.899
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -5.285 -0.033 -3.467
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -7.801 -0.034 -3.347
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -6.233 -0.015 -4.637
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -1.73 -0.104 -4.181
+     angleX -0.895
+     angleY -2.659
+    }
+   }
+   $grp GenericEntity : "{49ADEF17D3D91B4F}Prefabs/Structures/Military/Camps/Canvas_Covers/Soviet/CanvasCover_Medium_A_Soviet.et" {
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -0.685 -0.05 -2.86
+     angleY 175.464
+    }
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -6.908 -0.014 -3.354
+     angleY -135.099
+    }
+   }
+  }
+ }
+ SupplyPoint4 {
+  components {
+   SCR_ResourceComponent "{5E3298BE225F0743}" {
+    m_aConsumers {
+     SCR_ResourceConsumer "{5E3298A9D628A54F}" {
+      m_fResourceRange 20
+     }
+    }
+   }
+  }
+  coords 4216.529 2.982 5693.884
+  angleY -49.633
+  {
+   $grp GenericEntity : "{1F7AE3AAD6198021}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V3_storage_USSR_covered.et" {
+    {
+     coords 0.523 -0.013 -1.612
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords 0.536 -0.034 -2.969
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.714 -0.093 -1.879
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -0.563 -0.108 -3.277
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -2.271 -0.038 -1.572
+     angleX -0.895
+     angleY -88
+    }
+    {
+     coords -6.754 -0.056 -1.899
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -5.285 -0.033 -3.467
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -7.801 -0.034 -3.347
+     angleX -0.7
+     angleY 35.877
+     angleZ -0.558
+    }
+    {
+     coords -6.233 -0.015 -4.637
+     angleX -0.669
+     angleY 39.006
+     angleZ -0.595
+    }
+    {
+     coords -1.73 -0.104 -4.181
+     angleX -0.895
+     angleY -2.659
+    }
+   }
+   $grp GenericEntity : "{49ADEF17D3D91B4F}Prefabs/Structures/Military/Camps/Canvas_Covers/Soviet/CanvasCover_Medium_A_Soviet.et" {
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -0.685 -0.05 -2.86
+     angleY 175.464
+    }
+    {
+     components {
+      Hierarchy "{5DD8F4F21DE39179}" {
+      }
+     }
+     coords -6.908 -0.014 -3.354
+     angleY -135.099
+    }
+   }
+  }
+ }
+}
+GenericEntity extractionObject : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+ coords 824.878 3.093 6378.797
+ angleX 0
+ angleY -85.518
+ angleZ 0
+ {
+  GenericEntity depot2 {
+   ID "5DB6D4045311E2D7"
+   {
+    GenericEntity {
+     ID "5DB6D4044014FB9C"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014FB9D"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014FB9F"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440147303"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014731C"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014731D"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440148958"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440148959"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014895A"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014895E"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014895F"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014FB90"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014FB99"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D4044014FB9E"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404401458A0"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D404401458AE"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440147300"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440147301"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440147304"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440147306"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+    GenericEntity {
+     ID "5DB6D40440147307"
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

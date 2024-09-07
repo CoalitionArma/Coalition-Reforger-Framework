@@ -1,0 +1,177 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 1628.703 4.319 878.686
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 100
+  }
+  PS_ObjectiveManager "{61BCFEC02D3898F3}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{61BCFEC02D3898F7}" {
+     m_iScore 0
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F5}" {
+     m_iScore 25
+     m_sName "#PS-ObjectiveLevel_MinorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F4}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_Draw"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D38988B}" {
+     m_iScore 75
+     m_sName "#PS-ObjectiveLevel_MinorVictory"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D389EAB}" {
+     m_iScore 100
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  RHS_RadialMenuItemsComponent "{5DCEFDBDF94DEFA0}" {
+   m_MenuController RHS_RadialMenuController "{5DCEFDBDF7FAC37A}" {
+    m_RMControls SCR_RadialMenuControllerInputs "{5DCEFDBDF2E715A3}" {
+     m_sControllerContext "RadialMenuContext"
+     m_sOpenAction "RHS_CharacterOpenRadial"
+     m_bCloseOnReleaseOpen 0
+     m_bPerformOnClose 0
+     m_bCloseOnPerform 1
+     m_bPreventEmptyMenuOpen 1
+    }
+   }
+  }
+  SCR_CampaignBuildingManagerComponent "{61BCFEC02D389EA7}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{5DF6FBB5913F3245}" : "{96A8B496A076F1C0}scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   m_aModules {
+    SCR_DataCollectorBasicActionsModule "{5AE097A82ED69A98}" {
+    }
+    SCR_DataCollectorDriverModule "{5AE097BB69284302}" {
+    }
+    SCR_DataCollectorShootingModule "{5AE097BB6217A2F8}" {
+    }
+    SCR_DataCollectorHealingItemsModule "{5CECE314484120F4}" {
+     m_aConsumableTypes {
+      ConsumableTypeStats "{5CECE316446057A9}" {
+       m_eConsumableType BANDAGE
+       m_eDataStatsSelf BANDAGE_SELF
+       m_eDataStatsFriend BANDAGE_FRIENDLIES
+      }
+      ConsumableTypeStats "{5CECE31644CBD9C5}" {
+       m_eConsumableType TOURNIQUET
+       m_eDataStatsSelf TOURNIQUET_SELF
+       m_eDataStatsFriend TOURNIQUET_FRIENDLIES
+      }
+      ConsumableTypeStats "{5CECE316453FD0FC}" {
+       m_eConsumableType SALINE
+       m_eDataStatsSelf SALINE_SELF
+       m_eDataStatsFriend SALINE_FRIENDLIES
+      }
+      ConsumableTypeStats "{5CECE316451EC89B}" {
+       m_eConsumableType MORPHINE
+       m_eDataStatsSelf MORPHINE_SELF
+       m_eDataStatsFriend MORPHINE_FRIENDLIES
+      }
+     }
+    }
+    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
+     m_aLightBanPunishments +{
+     }
+     m_aHeavyBanPunishments +{
+     }
+    }
+    SCR_DataCollectorAchievementsModule "{5DE86E4CB99B3FFB}" {
+    }
+   }
+  }
+  SCR_EntityCatalogManagerComponent "{5C9AD18D91F9E87E}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C9AD18D9D38E99E}" : "{EAD206A79A774696}Configs/EntityCatalog/FactionLess/Characters_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{5C9AD18D9B68853E}" : "{77243A71AF0E5A75}Configs/EntityCatalog/FactionLess/Vehicles_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{61C8EED3993E46B7}" : "{2E8FFD9558E26113}Configs/EntityCatalog/FactionLess/Groups_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{61C8EED39E8B0DC3}" : "{0CC054C7DEDC766E}Configs/EntityCatalog/FactionLess/WeaponTripod_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalogMultiList "{5C9AD18D98F9181C}" : "{BB12292052E2F5B8}Configs/EntityCatalog/FactionLess/InventoryItems_EntityCatalog_Factionless.conf" {
+    }
+    SCR_EntityCatalog "{5C9EDDD29E61EF44}" : "{B80293331FB7BFCF}Configs/EntityCatalog/FactionLess/SupplyContainerItems_EntityCatalog_Factionless.conf" {
+    }
+   }
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fDOTScale 0.35
+   m_fRegenScale 0.75
+  }
+  SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
+   m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" : "{651583FFFB7FC765}Configs/GameOverScreen/GameOverScreensConfig.conf" {
+   }
+  }
+  SCR_GroupsManagerComponent "{5706EC99934496F5}" {
+   m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
+   m_iPlayableGroupFrequencyOffset 500
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NightModeGameModeComponent "{5D50E84688D5A408}" {
+   m_bAllowGlobalNightMode 1
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{61BCFEC02D389EB5}" {
+   m_fDuration 0
+  }
+  SCR_RadialMenuGameModeComponent "{5C7E75494DC4CB62}" {
+   Enabled 0
+   m_Menu SCR_RadialMenu "{5C7E7549355B981C}" {
+    m_Inputs SCR_RadialMenuInputs "{5B26E2FE7B2FF1D4}" {
+     m_iGamepadDeselectionDelay 400
+    }
+   }
+  }
+  SCR_RadialMenuItemsComponent "{5C92B03271ABD8AA}" {
+   m_MenuController SCR_RadialMenuController "{5C92B0326E1334FB}" {
+   }
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{61BCFEC02D389E8A}" {
+   }
+  }
+  SCR_SaveLoadComponent "{61BCFEC02D389E88}" {
+   m_Struct SCR_MissionStruct "{61BCFEC02D389E8F}" {
+    m_Struct0 SCR_EditorStruct "{61BCFEC02D389E8E}" {
+     m_AttributeList SCR_EditorAttributeList "{590C7881C296FA7D}" : "{F3D6C6D25642352C}Configs/Editor/AttributeLists/Edit.conf" {
+     }
+    }
+   }
+   m_iAutosavePeriod 600
+  }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 30
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
+  RplComponent "{56B2B4793BF2E1B4}" {
+   "Rpl State Override" None
+   Streamable Disabled
+  }
+ }
+ coords 1648.859 3.377 889.263
+}

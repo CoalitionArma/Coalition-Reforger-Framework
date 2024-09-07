@@ -1,0 +1,22 @@
+SCR_AIGroup : "{782321E88C1F2F23}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Company_p.et" {
+ coords 1707.695 39 2842.303
+}
+Vehicle S105_deathrally1 : "{C2AB7F550FED8566}Prefabs/Vehicles/Wheeled/S105/S105_deathrally.et" {
+ coords 1703.119 39 2848.854
+ angleY -1.652
+ {
+  GenericEntity {
+   ID "624D37EB48A10A5A"
+   {
+    Turret {
+     ID "61CB01A5F8AC235C"
+     components {
+      RigidBody "{51ACD09C423F175F}" {
+       SimState None
+      }
+     }
+    }
+   }
+  }
+ }
+}

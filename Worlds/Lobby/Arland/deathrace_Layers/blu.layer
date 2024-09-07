@@ -1,0 +1,404 @@
+$grp SCR_AIGroup : "{67FDBB473F1721CC}Prefabs/Groups/BLUFOR/1980s/Standard/Specials/Group_DeathRace.et" {
+ {
+  coords 1697.047 11.399 3450.106
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1685.53 8.8 3444.934
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1677.617 8.234 3442.328
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1672.113 8.568 3440.873
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1663.242 10.573 3439.283
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1658.298 11.475 3439.802
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1654.72 11.972 3439.595
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1647.76 12.302 3439.151
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1642.696 12.281 3438.894
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1635.483 12.226 3437.652
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1630.432 11.944 3437.52
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1624.248 11.71 3435.868
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1617.547 11.401 3433.97
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1612.976 11.192 3432.634
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1603.356 10.763 3430.179
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1596.645 10.441 3429.309
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1590.18 10.173 3428.861
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1584.698 10.186 3428.062
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1574.341 10.721 3426.202
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 1566.473 11.205 3426.284
+  m_sCustomNameSet "Car Team"
+ }
+}
+$grp Vehicle : "{C2AB7F550FED8566}Prefabs/Vehicles/Wheeled/S105/S105_deathrally.et" {
+ S105_deathrally21 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1697.406 12.057 3446.477
+  angleX 2.937
+  angleY 173.401
+  angleZ -5.721
+ }
+ S105_deathrally22 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1685.739 9.498 3440.339
+  angleX 10.913
+  angleY 175.36
+  angleZ 13.837
+ }
+ S105_deathrally23 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1678.151 9.456 3438.311
+  angleX 16.741
+  angleY 172.021
+  angleZ -5.756
+ }
+ S105_deathrally24 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1672.625 9.818 3436.791
+  angleX 16.872
+  angleY 172.228
+  angleZ -4.852
+ }
+ S105_deathrally25 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1663.872 11.274 3435.309
+  angleX 9.356
+  angleY 172.262
+  angleZ -10.075
+ }
+ S105_deathrally26 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1659.005 12.087 3434.55
+  angleX 6.204
+  angleY 172.948
+  angleZ -7.89
+ }
+ S105_deathrally27 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1655.109 12.503 3434.759
+  angleX 6.317
+  angleY 172.985
+  angleZ -7.016
+ }
+ S105_deathrally28 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1648.25 12.984 3434.565
+  angleX 6.867
+  angleY 173.222
+  angleZ -2.603
+ }
+ S105_deathrally29 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1642.719 13.098 3434.22
+  angleX 9.789
+  angleY 173.372
+  angleZ -0.244
+ }
+ S105_deathrally30 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1635.402 13.091 3433.2
+  angleX 10.844
+  angleY 173.6
+  angleZ 1.445
+ }
+ S105_deathrally31 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1630.505 13.007 3432.275
+  angleX 11.79
+  angleY 173.747
+  angleZ 2.243
+ }
+ S105_deathrally32 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1623.648 12.589 3431.153
+  angleX 11.184
+  angleY 174.124
+  angleZ 5.024
+ }
+ S105_deathrally33 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1617.956 12.314 3429.3
+  angleX 11.184
+  angleY 174.124
+  angleZ 5.024
+ }
+ S105_deathrally34 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1613.902 12.227 3427.562
+  angleX 11.184
+  angleY 174.124
+  angleZ 5.024
+ }
+ S105_deathrally35 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1603.866 11.599 3425.76
+  angleX 11.957
+  angleY 174.036
+  angleZ 4.037
+ }
+ S105_deathrally36 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1597.424 11.169 3425.3
+  angleX 10.164
+  angleY 173.821
+  angleZ 3.333
+ }
+ S105_deathrally37 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1590.925 10.974 3424.318
+  angleX 9.888
+  angleY 173.48
+  angleZ 0.651
+ }
+ S105_deathrally38 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1585.41 10.994 3423.486
+  angleX 9.686
+  angleY 173.267
+  angleZ -1.138
+ }
+ S105_deathrally39 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1575.625 11.408 3422.69
+  angleX 11.072
+  angleY 172.828
+  angleZ -4.034
+ }
+ S105_deathrally40 {
+  components {
+   MeshObject "{51DAA09FEFBFC0E7}" {
+    Materials {
+     MaterialAssignClass "{624D37ECDBD0A18A}" {
+      SourceMaterial "S105Body_mat"
+      AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+     }
+    }
+   }
+  }
+  coords 1567.613 12.169 3422.115
+  angleX 13.899
+  angleY 171.856
+  angleZ -8.061
+ }
+}

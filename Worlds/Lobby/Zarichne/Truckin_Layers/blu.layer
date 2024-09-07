@@ -1,0 +1,24 @@
+SCR_AIGroup : "{84DD109DA0DAF61F}Prefabs/Groups/BLUFOR/CDF/Command/Group_CDF_Platoon.et" {
+ coords 1180.716 7.713 3208.167
+ m_sCustomNameSet "1st Platoon"
+ {
+  $grp SCR_AIGroup : "{63CCF1B438A4F949}Prefabs/Groups/BLUFOR/CDF/Infantry/Group_CDF_RifleSquad.et" {
+   {
+    coords -35.985 -0.796 -22.373
+   }
+   {
+    coords -51.136 -0.807 -54.147
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 51.208 -0.307 10.873
+    m_sCustomNameSet "3rd Squad"
+    {
+     SCR_AIGroup : "{471B64DE9FA91322}Prefabs/Groups/BLUFOR/CDF/Support/Group_CDF_MMG.et" {
+      coords -58.954 0.17 -6.477
+     }
+    }
+   }
+  }
+ }
+}
