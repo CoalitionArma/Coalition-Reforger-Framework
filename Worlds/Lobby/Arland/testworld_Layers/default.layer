@@ -9,6 +9,13 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
  coords 2051.485 50.42 2083.405
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{624F6C058B4EFA87}" {
+   m_sFactionKey "US"
+   m_iCount 5
+   m_iTime 5
+  }
+ }
  {
   SCR_FactionManager "624F4559E67550F2" {
    ID "61BCFEC02D38B83E"
