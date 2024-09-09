@@ -5,19 +5,33 @@ class CRF_RadioRespawnSystemComponentClass: SCR_BaseGameModeComponentClass
 }
 
 class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
-{
-
-	[Attribute("respawn", "auto", "BLUFOR Respawn Point")];
-	protected string m_bluforSpawnPoint;
+{	
+	[Attribute("false", "auto", "Can Blufor Respawn")];
+	protected bool m_canBluforRespawn;
 	
-	[Attribute("respawn", "auto", "OFPOR Respawn Point")];
-	protected string m_opforSpawnPoint;
+	[Attribute("US", "auto", "Blufor Faction Key")];
+	protected string m_bluforFactionKey;
 	
-	[Attribute("respawn", "auto", "INDFOR Respawn Point")];
-	protected string m_indforSpawnPoint;
+	[Attribute("1", "auto", "Amount of times SLs can call in reinforcements on Blufor.")];
+	protected int m_bluforRespawnWaves;
 	
-	[Attribute("1", "auto", "Amount of times SLs can call in reinforcements.")];
-	protected int m_respawnWaves;
+	[Attribute("false", "auto", "Can Opfor Respawn")];
+	protected bool m_canOpforRespawn;
+	
+	[Attribute("USSR", "auto", "Opfor Faction Key")];
+	protected string m_opforFactionKey;
+	
+	[Attribute("1", "auto", "Amount of times SLs can call in reinforcements on Opfor.")];
+	protected int m_opforRespawnWaves;
+	
+	[Attribute("false", "auto", "Can Indfor Respawn")];
+	protected bool m_canIndforRespawn;
+	
+	[Attribute("CDF", "auto", "Indfor Faction Key")];
+	protected string m_indforFactionKey;
+	
+	[Attribute("1", "auto", "Amount of times SLs can call in reinforcements on Indfor.")];
+	protected int m_indforRespawnWaves;
 	
 	[RplProp(onRplName: "SpawnPrefabs")]
 	string m_tempPrefab;
@@ -25,7 +39,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	RplId m_tempPlayableID;
 	
 	IEntity m_tempEntity;
-	int m_groupID;
 	PS_PlayableManager m_playableManager;
 	protected PS_GameModeCoop m_GameModeCoop;
 	
@@ -53,23 +66,28 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		}
 	}
 	
-	int GetAmountofWave()
+	void WaitTillGameStart()
 	{
-		return m_respawnWaves;
+		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
+		if (m_safestart.GetSafestartStatus()) 
+		{	
+			GetGame().GetCallqueue().Remove(WaitTillGameStart);
+			GetGroups();
+			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
+		}
+		return;
 	}
 	
-	int GetRespawnedGroups(int groupID)
+	void WaitSafeStartEnd()
 	{
-		int timesRespawned;
-		foreach (int wave : m_respawnedGroups)
+		if (!m_safestart.GetSafestartStatus()) 
 		{
-			if(wave == groupID)
-			{
-				timesRespawned++;
-			}
+			GetGame().GetCallqueue().Remove(WaitSafeStartEnd);
+			GetGame().GetCallqueue().CallLater(RespawnInit, 1000);
 		}
-		return timesRespawned;
+		return;
 	}
+	
 	void RespawnInit()
 	{
 		if (m_safestart.GetSafestartStatus())
@@ -79,8 +97,49 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		if (!m_safestart.GetSafestartStatus())
 		{
 			GetGroups();
-			//GetGame().GetCallqueue().CallLater(SpawnGroup, 10000, false, 0);
 		}
+	}
+	
+	int GetAmountofWave(string factionKey)
+	{
+		if(factionKey == m_bluforFactionKey)
+			return m_bluforRespawnWaves;
+		else if(factionKey == m_opforFactionKey)
+			return m_opforRespawnWaves;
+		else
+			return m_indforFactionKey;
+	}
+	
+	int GetRespawnedGroups(int groupID)
+	{
+		int timesRespawned = 0;
+		foreach (int wave : m_respawnedGroups)
+		{
+			if(wave == groupID)
+			{
+				timesRespawned++;
+			}
+		}
+		return timesRespawned;
+	}
+	
+	bool CanFactionRespawn(string factionID)
+	{
+		if(factionID == m_bluforFactionKey)
+		{
+			return m_canBluforRespawn;
+		}
+		else if(factionID == m_opforFactionKey)
+			return m_canOpforRespawn;
+		else
+			return m_canIndforRespawn;
+	}
+	
+	bool InRespawnTimeout(int groupID)
+	{
+		bool canRespawn;
+		m_respawnTimeout.Find(groupID, canRespawn);
+		return canRespawn;
 	}
 	
 	void GetGroups()
@@ -100,36 +159,12 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
 				ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
 				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
-				Print(playerPlayableID);
 				m_entitySlots.Insert(controlledEntity, groupID);
 				m_entityPrefabs.Insert(controlledEntity, prefabName);
 				m_entityID.Insert(controlledEntity, playerID);
 				m_entityPlayable.Insert(controlledEntity, playerPlayableID);
 			}
 		}
-	}
-	
-	void WaitTillGameStart()
-	{
-		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
-		if (m_safestart.GetSafestartStatus()) 
-		{
-			GetGroups();	
-			GetGame().GetCallqueue().Remove(WaitTillGameStart);
-			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
-		}
-		return;
-	}
-	
-	
-	void WaitSafeStartEnd()
-	{
-		if (!m_safestart.GetSafestartStatus()) 
-		{
-			GetGame().GetCallqueue().Remove(WaitSafeStartEnd);
-			GetGame().GetCallqueue().CallLater(RespawnInit, 1000);
-		}
-		return;
 	}
 	
 	void SpawnGroup(int groupID)
@@ -140,41 +175,24 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RPC_SpawnGroup(int groupID)
 	{
-		int timesRespawned;
-		foreach (int wave : m_respawnedGroups)
-		{
-			if(wave == groupID)
-			{
-				timesRespawned++;
-			}
-		}
-		
-		if(timesRespawned >= m_respawnWaves)
-			return;
-
 		m_respawnedGroups.Insert(groupID);
-		
-		bool canRespawn;
-		m_respawnTimeout.Find(groupID, canRespawn);
-		
-		if(!canRespawn)
-			return;
-		
 		m_respawnTimeout.Set(groupID, true);
 		
 		m_playableManager = PS_PlayableManager.GetInstance();
 		
 		for(int i, count = m_entitySlots.Count(); i < count; ++i)
 		{
-			m_groupID = groupID;
 			m_tempEntity = m_entitySlots.GetKeyByValue(groupID);
+			
+			if (!m_tempEntity)
+				continue;
+			
 			m_tempPlayerID = m_entityID.Get(m_tempEntity);
 			Replication.BumpMe();
 			m_tempPlayableID = m_entityPlayable.Get(m_tempEntity);
 			Replication.BumpMe();
-			
-			if (!m_tempEntity)
-				return;
+			m_tempPrefab = m_entityPrefabs.Get(m_tempEntity);
+			Replication.BumpMe();
 			
 			if(SCR_AIDamageHandling.IsAlive(m_tempEntity))
 				{
@@ -182,18 +200,16 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 					m_entityPrefabs.Remove(m_tempEntity);
 					m_entityID.Remove(m_tempEntity);
 					m_entityPlayable.Remove(m_tempEntity);
-					m_entitySlots.Insert(m_tempEntity, m_groupID);
+					m_entitySlots.Insert(m_tempEntity, groupID);
 					m_entityPrefabs.Insert(m_tempEntity, m_tempPrefab);
 					m_entityID.Insert(m_tempEntity, m_tempPlayerID);
 					m_entityPlayable.Insert(m_tempEntity, m_tempPlayableID);
-					return;
+					continue;
 				}	
-						
-			m_tempPrefab = m_entityPrefabs.Get(m_tempEntity);
-			Replication.BumpMe();
 			
 			SpawnPrefabs();
-			
+			GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, m_tempEntity, groupID, m_tempPrefab, m_tempPlayerID);
+			GetGame().GetCallqueue().CallLater(InitDeleteRedundantUnitsSlowly, 5000, false, groupID);
 		}
 	}
 	
@@ -209,46 +225,70 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		m_GameModeCoop.Respawn(m_tempPlayerID, respawnData);
 	}
 	
-	void SetNewPlayerValues(int groupID)
+	void SetNewPlayerValues(IEntity oldEntity, int groupID, string prefab, int playerID)
 	{
-		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
-		array<int> groupPlayersIDs = group.GetPlayerIDs();
-		m_respawnTimeout.Insert(groupID, false);
-		foreach (int playerID: groupPlayersIDs)
-		{
-			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
-			ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
-			RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
-			m_entitySlots.Insert(controlledEntity, groupID);
-			m_entityPrefabs.Insert(controlledEntity, prefabName);
-			m_entityID.Insert(controlledEntity, playerID);
-			m_entityPlayable.Insert(controlledEntity, playerPlayableID);
-		}	
+		IEntity newEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
+		RplId newPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
+		m_entitySlots.Remove(oldEntity);
+		m_entityPrefabs.Remove(oldEntity);
+		m_entityID.Remove(oldEntity);
+		m_entityPlayable.Remove(oldEntity);
+		if(!newEntity)
+			return;
+		m_entitySlots.Insert(newEntity, groupID);
+		m_entityPrefabs.Insert(newEntity, prefab);
+		m_entityID.Insert(newEntity, playerID);
+		m_entityPlayable.Insert(newEntity, newPlayableID);
+			
 	}
 	
-	void InitDeleteRedundantUnitsSlowly() 
+	void InitDeleteRedundantUnitsSlowly(int groupID) 
 	{
 	  // Slowly delete AI on another thread so we dont create any massive lag spikes.
-	  m_playableManager = PS_PlayableManager.GetInstance();
-	  m_mPlayables = m_playableManager.GetPlayables();
-	  m_mPlayablesCount = m_mPlayables.Count();
-	  GetGame().GetCallqueue().CallLater(DeleteRedundantUnitsSlowly, 125, true);
+		m_playableManager = PS_PlayableManager.GetInstance();
+		m_mPlayables = m_playableManager.GetPlayables();
+		m_mPlayablesCount = m_mPlayables.Count();
+		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
+		array<int> groupPlayersIDs = group.GetPlayerIDs();
+			m_respawnTimeout.Insert(groupID, false);
+			foreach (int playerID: groupPlayersIDs)
+			{
+				
+				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);	
+				if(m_entitySlots.Get(controlledEntity))
+					continue;		
+				ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
+				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
+				m_entitySlots.Insert(controlledEntity, groupID);
+				m_entityPrefabs.Insert(controlledEntity, prefabName);
+				m_entityID.Insert(controlledEntity, playerID);
+				m_entityPlayable.Insert(controlledEntity, playerPlayableID);
+			}
+	  GetGame().GetCallqueue().CallLater(DeleteRedundantUnitsSlowly, 125, true, groupID);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void DeleteRedundantUnitsSlowly() 
+	void DeleteRedundantUnitsSlowly(int groupID) 
 	{
-	  if (m_mPlayablesCount > 0) {
-	    PS_PlayableComponent playable = m_mPlayables.GetElement(m_mPlayablesCount - 1);
-	    if(!playable)
-	      return;
-	    m_mPlayablesCount = m_mPlayablesCount - 1;
-	    if (m_playableManager.GetPlayerByPlayable(playable.GetId()) <= 0)
-	    {
-	      SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playable.GetOwner());
-	      SCR_EntityHelper.DeleteEntityAndChildren(character);            
-	    }        
-	  } else
-	    GetGame().GetCallqueue().Remove(DeleteRedundantUnitsSlowly);
+	  if (m_mPlayablesCount > 0) 
+		{
+	    	PS_PlayableComponent playable = m_mPlayables.GetElement(m_mPlayablesCount - 1);
+			
+	    	if(!playable)
+	    		return;
+			
+	    	m_mPlayablesCount = m_mPlayablesCount - 1;
+	   		if (m_playableManager.GetPlayerByPlayable(playable.GetId()) <= 0)
+	    	{
+	    		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(playable.GetOwner());
+				int characterGroupID = m_playableManager.GetPlayerGroupByPlayable(playable.GetId()).GetGroupID();
+				if(characterGroupID == groupID)
+				{
+	     			 SCR_EntityHelper.DeleteEntityAndChildren(character); 
+				} else
+					m_mPlayables.RemoveElement(m_mPlayablesCount);
+	    	}        
+	  	} else
+	    	GetGame().GetCallqueue().Remove(DeleteRedundantUnitsSlowly);
 	}
 }

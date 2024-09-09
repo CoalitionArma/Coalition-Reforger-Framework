@@ -17,25 +17,37 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 		CRF_RadioRespawnSystemComponent RadioComponent = CRF_RadioRespawnSystemComponent.Cast(gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
 		SCR_SoundManagerEntity soundMan = GetGame().GetSoundManagerEntity();
 		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
-		
-		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(pUserEntity);
-		
-		SCR_AIGroup playerGroup = groupManager.GetPlayerGroup(playerID);
-		int groupID = playerGroup.GetGroupID();
-		int groupRespawns = RadioComponent.GetRespawnedGroups(groupID);
-		int respawnWaves = RadioComponent.GetAmountofWave();
-		
-		RadioComponent.SpawnGroup(groupID);
-		
-		if (!soundMan)
-			return;
-		if (groupRespawns >= respawnWaves)
+		if(RadioComponent)
 		{
-			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
-			return;
-		}
 		
-		soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
+			int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(pUserEntity);
+		
+			SCR_AIGroup playerGroup = groupManager.GetPlayerGroup(playerID);
+			string factionKey = playerGroup.GetFaction().GetFactionKey();
+			int groupID = playerGroup.GetGroupID();
+			int groupRespawns = RadioComponent.GetRespawnedGroups(groupID);
+			int respawnWaves = RadioComponent.GetAmountofWave(factionKey);
+			bool canRespawn = RadioComponent.CanFactionRespawn(factionKey);
+		
+			if (!soundMan)
+				return;
+			
+			if (groupRespawns >= respawnWaves)
+			{
+				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
+				return;
+			}
+			
+			if (!canRespawn)
+			{
+				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
+				return;
+			}
+		
+			RadioComponent.SpawnGroup(groupID);
+			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
+		} else
+			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
 	}
 	
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
