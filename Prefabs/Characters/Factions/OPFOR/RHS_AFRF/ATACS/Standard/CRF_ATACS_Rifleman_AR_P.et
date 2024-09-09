@@ -12,6 +12,9 @@ SCR_ChimeraCharacter : "{3057F44E6BF05026}Prefabs/Characters/Factions/OPFOR/RHS_
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+    }
     LoadoutSlotInfo Vest {
      Prefab "{54E8E1A933B59AA2}Prefabs/Characters/Vests/Vest_Taktika/Variants/Vest_Taktika_preset_taktika_PKM.et"
     }
@@ -20,7 +23,7 @@ SCR_ChimeraCharacter : "{3057F44E6BF05026}Prefabs/Characters/Factions/OPFOR/RHS_
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
     ItemsInitConfigurationItem "{62353CE61CC67153}" {
-     TargetStorage "Prefabs/Items/Equipment/Accessories/Pouch_Soviet_100rnd_PKM/Pouch_Soviet_100rnd_PKM.et"
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
      PrefabsToSpawn {
       "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et" "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et" "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et" "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et" "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et" "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et" "{0110F6D92703114A}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_7N13_4Ball_1Tracer.et"
      }
