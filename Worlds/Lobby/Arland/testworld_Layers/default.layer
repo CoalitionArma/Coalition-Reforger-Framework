@@ -3,8 +3,12 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
-  CRF_RadioRespawnSystemComponent "{62432761876791F5}" {
+  CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
+   Enabled 1
    m_canBluforRespawn 1
+   m_bluforRespawnWaves 5
+   m_opforRespawnWaves 0
+   m_indforRespawnWaves 0
   }
  }
  coords 2051.485 50.42 2083.405

@@ -5,6 +5,9 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
   }
   SCR_CommunicationSoundComponent "{61BCFEC02D389A7B}" {
   }
+  CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
+   Enabled 0
+  }
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 100
   }

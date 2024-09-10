@@ -72,7 +72,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		if (m_safestart.GetSafestartStatus()) 
 		{	
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
-			GetGroups();
 			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
 		}
 		return;
@@ -104,10 +103,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		if(factionKey == m_bluforFactionKey)
 			return m_bluforRespawnWaves;
-		else if(factionKey == m_opforFactionKey)
+		if(factionKey == m_opforFactionKey)
 			return m_opforRespawnWaves;
-		else
-			return m_indforFactionKey;
+		return m_indforFactionKey;
 	}
 	
 	int GetRespawnedGroups(int groupID)
@@ -121,6 +119,54 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			}
 		}
 		return timesRespawned;
+	}
+	
+	void AddRespawnWaves(string factionKey, int amount)
+	{
+		if(factionKey == m_bluforFactionKey)
+		{
+			m_bluforRespawnWaves = m_bluforRespawnWaves + amount;
+			return;
+		}
+		if(factionKey == m_opforFactionKey)
+		{
+			m_opforRespawnWaves = m_opforRespawnWaves + amount;
+			return;
+		}
+		m_indforRespawnWaves = m_indforRespawnWaves + amount;
+		return;
+	}
+	
+	void RemoveRespawnWaves(string factionKey, int amount)
+	{
+		if(factionKey == m_bluforFactionKey)
+		{
+			m_bluforRespawnWaves = m_bluforRespawnWaves - amount;
+			return;
+		}
+		if(factionKey == m_opforFactionKey)
+		{
+			m_opforRespawnWaves = m_opforRespawnWaves - amount;
+			return;
+		}
+		m_indforRespawnWaves = m_indforRespawnWaves - amount;
+		return;
+	}
+	
+	void SetCanFactionRespawn(string factionKey, bool canRespawn)
+	{
+		if(factionKey == m_bluforFactionKey)
+		{
+			m_canBluforRespawn = canRespawn;
+			return;
+		}
+		if(factionKey == m_opforFactionKey)
+		{
+			m_canOpforRespawn = canRespawn;
+			return;
+		}
+		m_canIndforRespawn = canRespawn;
+		return;
 	}
 	
 	bool CanFactionRespawn(string factionID)
@@ -209,7 +255,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			
 			SpawnPrefabs();
 			GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, m_tempEntity, groupID, m_tempPrefab, m_tempPlayerID);
-			GetGame().GetCallqueue().CallLater(InitDeleteRedundantUnitsSlowly, 5000, false, groupID);
+			GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 300000, false, groupID, 300000);
 		}
 	}
 	
@@ -242,6 +288,41 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			
 	}
 	
+	void SetLatePlayerValues(int groupID, int time)
+	{
+		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
+		array<int> groupPlayersIDs = group.GetPlayerIDs();
+			m_respawnTimeout.Insert(groupID, false);
+			foreach (int playerID: groupPlayersIDs)
+			{
+				
+				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);	
+				if(m_entitySlots.Get(controlledEntity))
+					continue;		
+				ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
+				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
+				IEntity oldEntity = m_entityID.GetKeyByValue(playerID);
+				if(oldEntity)
+				{
+					m_entitySlots.Remove(oldEntity);
+					m_entityPrefabs.Remove(oldEntity);
+					m_entityID.Remove(oldEntity);
+					m_entityPlayable.Remove(oldEntity);
+				}
+				m_entitySlots.Insert(controlledEntity, groupID);
+				m_entityPrefabs.Insert(controlledEntity, prefabName);
+				m_entityID.Insert(controlledEntity, playerID);
+				m_entityPlayable.Insert(controlledEntity, playerPlayableID);
+			}
+		time = time - 60000;
+		if(time > 0)
+		{
+			GetGame().GetCallqueue().CallLater(SetLatePlayerValues, time, false, groupID, time);
+			return;
+		}
+		GetGame().GetCallqueue().CallLater(InitDeleteRedundantUnitsSlowly, 1000, false, groupID);
+	}
+	
 	void InitDeleteRedundantUnitsSlowly(int groupID) 
 	{
 	  // Slowly delete AI on another thread so we dont create any massive lag spikes.
@@ -259,6 +340,14 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 					continue;		
 				ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
 				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
+				IEntity oldEntity = m_entityID.GetKeyByValue(playerID);
+				if(oldEntity)
+				{
+					m_entitySlots.Remove(oldEntity);
+					m_entityPrefabs.Remove(oldEntity);
+					m_entityID.Remove(oldEntity);
+					m_entityPlayable.Remove(oldEntity);
+				}
 				m_entitySlots.Insert(controlledEntity, groupID);
 				m_entityPrefabs.Insert(controlledEntity, prefabName);
 				m_entityID.Insert(controlledEntity, playerID);
