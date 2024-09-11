@@ -1,0 +1,34 @@
+GenericEntity : "{BD048236F83D85DA}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5534C502CAF4F519}" {
+     SizeSetupStrategy Manual
+     ItemDimensions 30 30 30
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960DAA53DDFC}" {
+     IkSettings {
+      ItemIKSettings "{5526E345D0462B03}" {
+       IkSettingsStand 4
+      }
+      ItemIKSettings "{625220182F280BF5}" {
+       ProneTurn 1
+       IkSettingsStand 4
+      }
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    SCR_MuzzleInMagComponent "{50F65D04F21F7633}" {
+     AllowWeaponDeployment 0
+     AmmoTemplate "{FBBF84E3B447D822}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_PG7VL.et"
+     AllowDetachingProjectile 1
+    }
+   }
+   obstructionTestBBScale 0.05 0.05 0.025
+  }
+ }
+}
