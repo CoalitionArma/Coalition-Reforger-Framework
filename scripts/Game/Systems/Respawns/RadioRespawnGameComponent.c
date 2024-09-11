@@ -71,6 +71,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
 		if (m_safestart.GetSafestartStatus()) 
 		{	
+			Print("Safestart has begun");
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
 			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
 		}
@@ -81,6 +82,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		if (!m_safestart.GetSafestartStatus()) 
 		{
+			Print("Safestart is over");
 			GetGame().GetCallqueue().Remove(WaitSafeStartEnd);
 			GetGame().GetCallqueue().CallLater(RespawnInit, 1000);
 		}
@@ -95,6 +97,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		}
 		if (!m_safestart.GetSafestartStatus())
 		{
+			Print("Safestart is really over");
 			GetGroups();
 		}
 	}
@@ -215,17 +218,21 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SpawnGroup(int groupID)
 	{
+		Print(groupID);
+		Print("RPC");
 		Rpc(RPC_SpawnGroup, groupID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RPC_SpawnGroup(int groupID)
 	{
+		Print("Spawning Group server side");
+		Print(groupID);
 		m_respawnedGroups.Insert(groupID);
 		m_respawnTimeout.Set(groupID, true);
 		
 		m_playableManager = PS_PlayableManager.GetInstance();
-		
+		Print(m_playableManager);
 		for(int i, count = m_entitySlots.Count(); i < count; ++i)
 		{
 			m_tempEntity = m_entitySlots.GetKeyByValue(groupID);
@@ -235,10 +242,13 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			
 			m_tempPlayerID = m_entityID.Get(m_tempEntity);
 			Replication.BumpMe();
+			Print(m_tempPlayerID);
 			m_tempPlayableID = m_entityPlayable.Get(m_tempEntity);
 			Replication.BumpMe();
+			Print(m_tempPlayableID);
 			m_tempPrefab = m_entityPrefabs.Get(m_tempEntity);
 			Replication.BumpMe();
+			Print(m_tempPrefab);
 			
 			if(SCR_AIDamageHandling.IsAlive(m_tempEntity))
 				{
@@ -261,6 +271,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SpawnPrefabs()
 	{
+		Print("Spawning Prefabs to all");
 		m_playableManager = PS_PlayableManager.GetInstance();
 		if(m_tempPlayableID == RplId.Invalid())
 			return;
