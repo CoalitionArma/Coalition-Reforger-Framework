@@ -220,11 +220,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		Print(groupID);
 		Print("RPC");
-		Rpc(RPC_SpawnGroup, groupID);
+		Rpc(RpcAsk_SpawnGroup, groupID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RPC_SpawnGroup(int groupID)
+	void RpcAsk_SpawnGroup(int groupID)
 	{
 		Print("Spawning Group server side");
 		Print(groupID);

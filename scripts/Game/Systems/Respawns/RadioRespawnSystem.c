@@ -36,7 +36,6 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 		m_groupManager = SCR_GroupsManagerComponent.GetInstance();
 		m_gamemode = GetGame().GetWorld().FindEntityByName("CRF_GameMode_Lobby_1");
 		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(m_gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
-		Print(m_radioComponent);
 		if(m_radioComponent)
 		{
 		
@@ -47,14 +46,9 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 			m_groupRespawns = m_radioComponent.GetRespawnedGroups(m_groupID);
 			m_respawnWaves = m_radioComponent.GetAmountofWave(m_factionKey);
 			bool canRespawn = m_radioComponent.CanFactionRespawn(m_factionKey);
-			Print(m_radioComponent);
-			m_radioComponent.SpawnGroup(m_groupID);
-			Print(m_radioComponent.SpawnGroup(m_groupID));
+		
 			if (!soundMan)
-			{
-				Print("No Sound Man");
 				return;
-			}
 			
 			if (!canRespawn)
 			{
