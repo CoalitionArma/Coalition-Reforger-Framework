@@ -34,6 +34,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 	{
 		SCR_SoundManagerEntity soundMan = GetGame().GetSoundManagerEntity();
 		m_groupManager = SCR_GroupsManagerComponent.GetInstance();
+		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(m_gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
 		if(m_radioComponent)
 		{
 		
