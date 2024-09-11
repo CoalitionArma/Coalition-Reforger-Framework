@@ -34,6 +34,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 	{
 		SCR_SoundManagerEntity soundMan = GetGame().GetSoundManagerEntity();
 		m_groupManager = SCR_GroupsManagerComponent.GetInstance();
+		m_gamemode = GetGame().GetWorld().FindEntityByName("CRF_GameMode_Lobby_1");
 		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(m_gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
 		if(m_radioComponent)
 		{
@@ -61,8 +62,10 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
 				return;
 			}
-		
+			Print(m_radioComponent);
 			m_radioComponent.SpawnGroup(m_groupID);
+			Print(m_radioComponent.SpawnGroup(m_groupID));
+			
 			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
 		} else
 			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
