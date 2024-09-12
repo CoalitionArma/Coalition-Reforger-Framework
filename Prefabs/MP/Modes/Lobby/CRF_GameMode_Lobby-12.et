@@ -158,6 +158,8 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
       Name "INDFOR"
       m_sNameUpper "INDFOR"
      }
+     m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+     m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_bIsAssignedRandomly 0
       m_aSquadNames {
