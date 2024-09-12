@@ -7,7 +7,7 @@ SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/G
  coords 1066.649 39 2684.772
  angleY -19.571
  m_aUnitPrefabSlots {
-  "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et"
+  "{4A29AE1848437793}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{4A29AE1848437793}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{4A29AE1848437793}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Base_P.et" "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" "{4A29AE1848437793}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Base_P.et"
  }
  m_sCustomNameSet "Squad"
  m_aUnitPrefabColorTeams {
