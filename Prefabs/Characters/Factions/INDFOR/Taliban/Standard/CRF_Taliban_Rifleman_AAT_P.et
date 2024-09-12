@@ -4,9 +4,6 @@ SCR_ChimeraCharacter : "{863B8330CE14D2CA}Prefabs/Characters/Factions/INDFOR/Tal
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Assistant Anti-Tank"
   }
-  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
-   WeaponTemplate "{B1EFE8E23B8C3B8F}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_CRF.et"
-  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Back {

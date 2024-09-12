@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{F7EDF4ACE6F158E1}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_Base_SL_P.et"
+ Name "{863B8330CE14D2CA}Prefabs/Characters/Factions/CIV/MECIV/Character_MECIV_Armed1.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
