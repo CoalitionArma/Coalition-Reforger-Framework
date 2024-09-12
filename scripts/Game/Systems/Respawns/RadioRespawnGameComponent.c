@@ -216,15 +216,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		}
 	}
 	
-	void SpawnGroup(int groupID, PlayerController playerController)
-	{
-		Print(groupID);
-		Print("RPC");
-		playerController.Rpc(RpcAsk_SpawnGroup, groupID);
-	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SpawnGroup(int groupID)
+	void SpawnGroupServer(int groupID)
 	{
 		Print("Spawning Group server side");
 		Print(groupID);

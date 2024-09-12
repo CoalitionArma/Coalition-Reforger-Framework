@@ -8,7 +8,6 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 	protected int m_groupID;
 	protected CRF_SafestartGameModeComponent m_safestart;
 	protected IEntity m_player;
-	protected IEntity m_gamemode;
 	protected int m_playerID = -1;
 	protected SCR_GroupsManagerComponent m_groupManager;
 	SCR_AIGroup m_playerGroup;
@@ -34,8 +33,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 	{
 		SCR_SoundManagerEntity soundMan = GetGame().GetSoundManagerEntity();
 		m_groupManager = SCR_GroupsManagerComponent.GetInstance();
-		m_gamemode = GetGame().GetWorld().FindEntityByName("CRF_GameMode_Lobby_1");
-		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(m_gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
+		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioRespawnSystemComponent));
 		if(m_radioComponent)
 		{
 		
@@ -63,10 +61,8 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 				return;
 			}
 			Print(m_radioComponent);
-			
-			PlayerController playerController = GetGame().GetPlayerController();
-			//playerController.m_radioComponent.SpawnGroup(m_groupID);
-			Print(m_radioComponent.SpawnGroup(m_groupID, playerController));
+			CRF_ClientRadioRespawnComponent.GetInstance().SpawnGroup(m_groupID);
+			Print(CRF_ClientRadioRespawnComponent.GetInstance().SpawnGroup(m_groupID));
 			
 			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
 		} else
@@ -97,8 +93,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 	
 	void valueinit()
 	{
-		m_gamemode = GetGame().GetWorld().FindEntityByName("CRF_GameMode_Lobby_1");
-		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(m_gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
+		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioRespawnSystemComponent));
 		m_playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(m_player);
 		m_groupManager = SCR_GroupsManagerComponent.GetInstance();
 		m_playerGroup = m_groupManager.GetPlayerGroup(m_playerID);
