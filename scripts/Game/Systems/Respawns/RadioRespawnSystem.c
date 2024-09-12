@@ -103,4 +103,6 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 		m_factionKey = m_playerGroup.GetFaction().GetFactionKey();
 		m_groupID = m_playerGroup.GetGroupID();
 	}
+	
+	
 }
