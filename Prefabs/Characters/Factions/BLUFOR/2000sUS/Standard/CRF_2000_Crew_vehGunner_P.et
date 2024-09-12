@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{D2FB1DE76F024DD9}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Crew_Base_VehDriver_P.et" {
+ ID "52092032B0E62200"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Gunner"
+  }
+ }
+}

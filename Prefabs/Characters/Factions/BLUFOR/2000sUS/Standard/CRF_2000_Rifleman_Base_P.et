@@ -28,7 +28,7 @@ SCR_ChimeraCharacter : "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_
      Prefab "{B08100A8DC75064F}Prefabs/Characters/HeadGear/Helmet_MICH_01/Helmet_MICH_DCU_cover.et"
     }
     LoadoutSlotInfo Jacket {
-     Prefab "{7D91B7C7CCAEEAD3}Prefabs/Characters/Uniforms/Jacket_US_DCU.et"
+     Prefab "{66D45971BD16AEBD}Prefabs/Characters/Uniforms/Jacket_US_DCU_w_flag.et"
     }
     LoadoutSlotInfo ArmoredVest {
      Prefab "{6C50BA2E443870E3}Prefabs/Characters/Vests/Vest_PASGT/Vest_PASGT_DCU.et"
