@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{0AD62DA0592DE3DA}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AR_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

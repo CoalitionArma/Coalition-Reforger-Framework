@@ -1,0 +1,27 @@
+SCR_ChimeraCharacter : "{863B8330CE14D2CA}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Demo"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+    }
+    LoadoutSlotInfo Jacket {
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{6258434EC7D9CD5D}" {
+    }
+    ItemsInitConfigurationItem "{6258434E97C83ADE}" {
+     PrefabsToSpawn + {
+      "{73F69547963CAEE0}PrefabsEditable/Explosives/E_DemoBlock_TSh400g.et" "{73F69547963CAEE0}PrefabsEditable/Explosives/E_DemoBlock_TSh400g.et" "{73F69547963CAEE0}PrefabsEditable/Explosives/E_DemoBlock_TSh400g.et" "{90976DC90A223095}Prefabs/Items/Equipment/Detonators/BlastingMachine_KPM_3U1/BlastingMachine_KPM_3U1.et"
+     }
+    }
+   }
+  }
+ }
+}
