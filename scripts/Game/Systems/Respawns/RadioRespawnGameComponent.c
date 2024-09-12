@@ -246,7 +246,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 					m_entityPrefabs.Insert(m_tempEntity, m_tempPrefab);
 					m_entityID.Insert(m_tempEntity, m_tempPlayerID);
 					m_entityPlayable.Insert(m_tempEntity, m_tempPlayableID);
-					continue;
+					break;
 				}	
 			//Replication.BumpMe();
 			SpawnPrefabs();
