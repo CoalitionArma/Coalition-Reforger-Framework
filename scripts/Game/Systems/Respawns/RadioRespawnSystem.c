@@ -63,8 +63,10 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 				return;
 			}
 			Print(m_radioComponent);
-			m_radioComponent.SpawnGroup(m_groupID);
-			Print(m_radioComponent.SpawnGroup(m_groupID));
+			
+			PlayerController playerController = GetGame().GetPlayerController();
+			//playerController.m_radioComponent.SpawnGroup(m_groupID);
+			Print(m_radioComponent.SpawnGroup(m_groupID, playerController));
 			
 			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
 		} else

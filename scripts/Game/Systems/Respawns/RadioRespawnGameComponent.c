@@ -216,13 +216,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		}
 	}
 	
-	void SpawnGroup(int groupID)
+	void SpawnGroup(int groupID, PlayerController playerController)
 	{
 		Print(groupID);
 		Print("RPC");
-		IEntity m_gamemode = GetGame().GetWorld().FindEntityByName("CRF_GameMode_Lobby_1");
-		CRF_RadioRespawnSystemComponent m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(m_gamemode.FindComponent(CRF_RadioRespawnSystemComponent));
-		Rpc(m_radioComponent.RpcAsk_SpawnGroup, groupID);
+		playerController.Rpc(RpcAsk_SpawnGroup, groupID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
