@@ -298,7 +298,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				
 				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);	
 				if(m_entitySlots.Get(controlledEntity))
-					continue;		
+					break;		
 				ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
 				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
 				IEntity oldEntity = m_entityID.GetKeyByValue(playerID);
