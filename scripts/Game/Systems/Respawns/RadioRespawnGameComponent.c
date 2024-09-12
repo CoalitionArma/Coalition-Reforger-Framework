@@ -33,7 +33,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	[Attribute("1", "auto", "Amount of times SLs can call in reinforcements on Indfor.")];
 	protected int m_indforRespawnWaves;
 	
-	[RplProp(onRplName: "SpawnPrefabs")]
+	//[RplProp(onRplName: "SpawnPrefabs")]
 	string m_tempPrefab;
 	int m_tempPlayerID;
 	RplId m_tempPlayableID;
@@ -229,17 +229,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		{
 			m_tempEntity = m_entitySlots.GetKeyByValue(groupID);
 			
-			if (!m_tempEntity)
-				continue;
-			
 			m_tempPlayerID = m_entityID.Get(m_tempEntity);
-			Replication.BumpMe();
 			Print(m_tempPlayerID);
 			m_tempPlayableID = m_entityPlayable.Get(m_tempEntity);
-			Replication.BumpMe();
 			Print(m_tempPlayableID);
 			m_tempPrefab = m_entityPrefabs.Get(m_tempEntity);
-			Replication.BumpMe();
 			Print(m_tempPrefab);
 			
 			if(SCR_AIDamageHandling.IsAlive(m_tempEntity))
@@ -254,7 +248,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 					m_entityPlayable.Insert(m_tempEntity, m_tempPlayableID);
 					continue;
 				}	
-			
+			//Replication.BumpMe();
 			SpawnPrefabs();
 			GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, m_tempEntity, groupID, m_tempPrefab, m_tempPlayerID);
 			GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 300000, false, groupID, 300000);
