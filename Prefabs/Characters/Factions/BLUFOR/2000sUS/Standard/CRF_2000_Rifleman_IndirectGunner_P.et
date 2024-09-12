@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{62DF528A4FF16F25}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Base_P.et" {
+ ID "52092032B0E62200"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Gunner"
+  }
+ }
+}
