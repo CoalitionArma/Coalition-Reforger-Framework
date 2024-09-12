@@ -229,6 +229,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		{
 			m_tempEntity = m_entitySlots.GetKeyByValue(groupID);
 			
+			if(!m_tempEntity)
+				break;
+			
 			m_tempPlayerID = m_entityID.Get(m_tempEntity);
 			Print(m_tempPlayerID);
 			m_tempPlayableID = m_entityPlayable.Get(m_tempEntity);
