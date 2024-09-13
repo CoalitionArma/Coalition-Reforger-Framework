@@ -1,0 +1,29 @@
+GenericEntity : "{599A1E833BEF3A43}Prefabs/Weapons/MachineGuns/M249/MG_M249_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     AnimationIKPose "{9091BBA8DB3CDF20}Assets/Weapons/MachineGuns/M249/anims/anm/p_M249_ik.anm"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     MagazineWell MagazineWellM203 "{5534C496A19A521F}" {
+     }
+     MagazineTemplate "{40103F2F8564C1C4}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_Ball_SPCLboom.et"
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{5C41727F96285D4E}Assets/Weapons/MachineGuns/workspaces/M249.agr"
+     AnimInstance "{23E7B8806482C9FA}Assets/Weapons/MachineGuns/workspaces/M249_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{5534C496A19A52D7}" {
+      AnimGraph "{5C41727F96285D4E}Assets/Weapons/MachineGuns/workspaces/M249.agr"
+      AnimInstance "{D8B929B1FC83AD16}Assets/Weapons/MachineGuns/workspaces/M249_player.asi"
+     }
+    }
+   }
+  }
+ }
+}
