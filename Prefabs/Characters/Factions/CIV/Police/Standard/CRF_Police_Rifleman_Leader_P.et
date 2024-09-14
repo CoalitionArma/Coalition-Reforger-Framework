@@ -1,0 +1,68 @@
+SCR_ChimeraCharacter : "{39B7CC56688D20B4}Prefabs/Characters/Core/Character_AFCIV_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  FactionAffiliationComponent "{61A2E10A4AFDAF9B}" {
+   "faction affiliation" "US"
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Police Sargeant"
+   m_bIsPlayable 1
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Police 1"
+    Icon "{53E7AB5887CFFE00}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_Armed.edds"
+    m_Image "{1C156E0E5CE19EA0}Images/UI/EUCIV/P1.edds"
+    m_sFaction "EUCIV"
+    m_aAuthoredLabels + {
+     5681
+    }
+   }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   WeaponTemplate "{E998FA484B0C4BFF}Prefabs/Weapons/Handguns/Glock/Handgun_Glock17.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{28185F0BFA3148BB}Prefabs/Characters/HeadGear/Hat_M70_01/Hat_M70_Police.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{66CBDE9E7F4D467B}Prefabs/Characters/Uniforms/Shirt_CottonShirt_01/Shirt_Police1.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{5AF144E74C4B6F6B}Prefabs/Characters/Vests/Vest_NAZ/Vest_NAZ_Police1.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{01A26630020FDBD9}Prefabs/Characters/Uniforms/Pants_M88_Police.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{DAAFD15478BDE1C3}Prefabs/Characters/Footwear/CombatBoots_US_01.et"
+    }
+    LoadoutSlotInfo Back {
+     Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+    }
+    LoadoutSlotInfo Vest {
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{625D5478635ACEFA}" {
+     TargetStorage "Prefabs/Characters/Vests/Vest_NAZ/Vest_NAZ_Police1.et"
+     PrefabsToSpawn {
+      "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et" "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et"
+     }
+    }
+    ItemsInitConfigurationItem "{625D5478635ACEE4}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+     PrefabsToSpawn {
+      "{F20D1122BC5CD9F2}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd.et" "{F20D1122BC5CD9F2}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd.et" "{F20D1122BC5CD9F2}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd.et" "{F20D1122BC5CD9F2}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd.et" "{F20D1122BC5CD9F2}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd.et"
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ angleY 163.899
+}
