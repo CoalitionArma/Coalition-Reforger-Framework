@@ -253,28 +253,26 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			m_tempPrefab = m_entityPrefabs.Get(m_tempEntity);
 			Print(m_tempPrefab);
 			
+			m_entitySlots.Remove(m_tempEntity);
+			m_entityPrefabs.Remove(m_tempEntity);
+			m_entityID.Remove(m_tempEntity);
+			m_entityPlayable.Remove(m_tempEntity);
+			
 			if(SCR_AIDamageHandling.IsAlive(m_tempEntity))
 				{
 					Print("----------------------------------------------");
 					Print("Players alive");
-					m_entitySlots.Remove(m_tempEntity);
-					m_entityPrefabs.Remove(m_tempEntity);
-					m_entityID.Remove(m_tempEntity);
-					m_entityPlayable.Remove(m_tempEntity);
-					m_entitySlots.Insert(m_tempEntity, groupID);
-					m_entityPrefabs.Insert(m_tempEntity, m_tempPrefab);
-					m_entityID.Insert(m_tempEntity, m_tempPlayerID);
-					m_entityPlayable.Insert(m_tempEntity, m_tempPlayableID);
 					break;
 				}	
-			//Replication.BumpMe();
+			
 			Print("----------------------------------------------");
 			Print("Players Dead");
 			Print("Spawning Player");
+			
 			SpawnPrefabs();
-			GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, m_tempEntity, groupID, m_tempPrefab, m_tempPlayerID);
 		}
-		GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 300000, false, groupID, 300000);
+		GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, groupID);
+		GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 60000, false, groupID, 60000);
 	}
 	
 	void SpawnPrefabs()
@@ -291,23 +289,24 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		m_GameModeCoop.Respawn(m_tempPlayerID, respawnData);
 	}
 	
-	void SetNewPlayerValues(IEntity oldEntity, int groupID, string prefab, int playerID)
+	void SetNewPlayerValues(int groupID)
 	{
 		Print("----------------------------------------------");
 		Print("Setting new player values");
-		IEntity newEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-		RplId newPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
-		m_entitySlots.Remove(oldEntity);
-		m_entityPrefabs.Remove(oldEntity);
-		m_entityID.Remove(oldEntity);
-		m_entityPlayable.Remove(oldEntity);
-		if(!newEntity)
-			return;
-		m_entitySlots.Insert(newEntity, groupID);
-		m_entityPrefabs.Insert(newEntity, prefab);
-		m_entityID.Insert(newEntity, playerID);
-		m_entityPlayable.Insert(newEntity, newPlayableID);
-			
+		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
+		array<int> groupPlayersIDs = group.GetPlayerIDs();
+		foreach (int playerID: groupPlayersIDs)
+		{
+			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
+			ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
+			RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
+			Print("----------------------------------------------");
+			PrintFormat("Logging new player %1", playerID);
+			m_entitySlots.Insert(controlledEntity, groupID);
+			m_entityPrefabs.Insert(controlledEntity, prefabName);
+			m_entityID.Insert(controlledEntity, playerID);
+			m_entityPlayable.Insert(controlledEntity, playerPlayableID);
+		}		
 	}
 	
 	void SetLatePlayerValues(int groupID, int time)
@@ -337,8 +336,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				m_entityID.Insert(controlledEntity, playerID);
 				m_entityPlayable.Insert(controlledEntity, playerPlayableID);
 			}
-		time = time - 60000;
-		if(time > 0)
+		time = time + 1;
+		if(time < 60004)
 		{
 			GetGame().GetCallqueue().CallLater(SetLatePlayerValues, time, false, groupID, time);
 			return;
