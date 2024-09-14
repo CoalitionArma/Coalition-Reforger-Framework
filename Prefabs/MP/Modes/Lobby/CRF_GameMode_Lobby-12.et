@@ -204,6 +204,12 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
       m_sCallsignGroupFormat "%3"
      }
     }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
+      m_sCallsignGroupFormat "%3"
+     }
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
     SCR_Faction "{5978B9CE6585BBE8}" {
      UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
       Name "OPFOR"

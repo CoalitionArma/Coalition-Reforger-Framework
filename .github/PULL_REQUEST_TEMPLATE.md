@@ -15,7 +15,8 @@ Add the mission <mission name!> made by <author name!> to the repository.
 **Faction(s):**
 BLUFOR - Attacking/Defending/NA
 - [ ] US
-- [ ] RHS_USAF
+- [ ] UK
+- [ ] RHS_USAF 
 - [ ] CDF
 
 OPFOR - Attacking/Defending/NA
@@ -24,6 +25,8 @@ OPFOR - Attacking/Defending/NA
 
 INDFOR - Attacking/Defending/NA
 - [ ] FIA
+- [ ] RHS_ION
+- [ ] TALIBAN
 
 **Objectives/Win Conditions:**
 
