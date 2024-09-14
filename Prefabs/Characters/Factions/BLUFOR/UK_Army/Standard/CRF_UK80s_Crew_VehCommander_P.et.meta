@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{B334A770E2A05D39}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Crew_Base_VehCommander_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
