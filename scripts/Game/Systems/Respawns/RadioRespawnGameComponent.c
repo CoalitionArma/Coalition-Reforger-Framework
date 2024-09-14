@@ -33,7 +33,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	[Attribute("1", "auto", "Amount of times SLs can call in reinforcements on Indfor.")];
 	protected int m_indforRespawnWaves;
 	
-	//[RplProp(onRplName: "SpawnPrefabs")]
+	[RplProp(onRplName: "SpawnPrefabs")]
 	string m_tempPrefab;
 	int m_tempPlayerID;
 	RplId m_tempPlayableID;
@@ -268,7 +268,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			Print("----------------------------------------------");
 			Print("Players Dead");
 			Print("Spawning Player");
-			
+			Replication.BumpMe();
 			SpawnPrefabs();
 		}
 		GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, groupID);
