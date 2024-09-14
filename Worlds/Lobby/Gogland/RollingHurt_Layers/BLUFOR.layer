@@ -1,10 +1,10 @@
-SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Platoon.et" {
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF/CRF_USMC_Platoon.et" {
  coords 6234.163 48.974 5065.01
  m_aUnitPrefabSlots {
-  "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et" "{A44F0EF1EFD07F00}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PSG_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et" "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern.et" "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern.et"
+  "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_PL_Modern.et" "{A44F0EF1EFD07F00}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_PSG_Modern.et" "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_Medic_Modern.et" "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_Rifleman_Modern.et" "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_Rifleman_Modern.et"
  }
  {
-  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad.et" {
+  $grp SCR_AIGroup : "{2E8518E483DD08BF}Prefabs/Groups/BLUFOR/RHS_USAF/CRF_USMC_RifleSquad.et" {
    {
     coords -20.071 -1.154 -11.099
     m_sCustomNameSet "1st Squad"

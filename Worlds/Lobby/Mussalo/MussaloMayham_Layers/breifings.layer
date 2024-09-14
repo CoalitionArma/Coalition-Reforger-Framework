@@ -4,7 +4,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  ""\
  "Using our MI8 to move the supplies out of the depots we must steal 3000 supplies from the 4 located depots across the island. our intel indicates each depot contains 1000 supplies."
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
@@ -55,7 +55,7 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
   m_sTitle "Capture 3000 supplies"
   m_sTextData "Capture 3000 supplies"
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 3419.531 2.613 5318.752
@@ -63,7 +63,7 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
   m_sTextData "Evacuate with at least 10 people"
   m_iOrder 1
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
 }
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {

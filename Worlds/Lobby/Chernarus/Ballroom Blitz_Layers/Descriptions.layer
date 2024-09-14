@@ -8,7 +8,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  "1. Enough BMP-2s to hold the respawning Infantry"\
  "2. Enough Squads to fill the dead players"
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
@@ -55,49 +55,49 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
   coords 4537.269 339.125 9505.357
   m_sTextData "OBJ A | Pustoshka"
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 3465.182 292.685 8310.834
   m_sTextData "OBJ B | Vybor"
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 3493.953 294.924 8284.875
   m_sTextData "OBJ C | North West Airfield Barracks"
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 3523.582 295.109 8335.128
   m_sTextData "OBJ D | North West Airfield Hangers"
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 3506.244 295.843 8274.947
   m_sTextData "OBJ A | Pustoshka"
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 2434.157 249.404 7080.424
   m_sTextData "OBJ B | Vybor"
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 2462.928 251.642 7054.465
   m_sTextData "OBJ C | North West Airfield Barracks"
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 2492.556 251.827 7104.718
   m_sTextData "OBJ D | North West Airfield Hangers"
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
 }
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
@@ -110,7 +110,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
  "1. Enough Stryker Dragoons to hold the respawning Infantry"\
  "2. Enough Squads to fill the dead players"
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {

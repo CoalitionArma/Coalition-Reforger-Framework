@@ -4,7 +4,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.361
   m_sDescription "Cache 1"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cache2marker {
@@ -12,7 +12,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.361
   m_sDescription "Cache 2"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cache3marker {
@@ -20,7 +20,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.361
   m_sDescription "Cache 3"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cache4marker {
@@ -28,7 +28,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.361
   m_sDescription "Cache 4"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
 }
@@ -75,6 +75,6 @@ PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFO
  angleY 0
  m_sDescription "Extra Vehicles"
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }

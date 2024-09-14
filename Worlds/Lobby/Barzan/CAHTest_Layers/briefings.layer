@@ -2,85 +2,85 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
  {
   coords 2001.967 0.984 2170.994
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2016.449 3.87 2214.706
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2038.289 18.205 2231.901
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2054.012 6.524 2299.541
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2046.476 5.654 2357.319
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2034.185 5.875 2412.901
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2024.135 13.929 2485.25
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2018.112 8.917 2588.837
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2007.104 14.771 2653.46
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2009.078 14.977 2679.626
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2022.349 23.688 2731.295
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2040.22 26.525 2772.161
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2058.615 17.219 2823.813
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2073.444 13.954 2855.473
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
 }
@@ -92,7 +92,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  ""\
  "The mission is won if you fill your capture bar or exhaust enemy tickets."
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
  m_iOrder 5
 }
@@ -216,7 +216,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
  ""\
  "The mission is won if you fill your capture bar or exhaust enemy tickets."
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
  m_iOrder 5
 }

@@ -10,7 +10,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    m_winningSupplyCount 3000
    m_manpower 10
    m_extractionDistance 300
-   m_factionKey "RHS_RF_MSV"
+   m_factionKey "RHS_AFRF"
    m_manpowerMessageString "Russian forces no longer have enough manpower to prove a threat!"
    m_suppliesExtractedString "Russians have extracted enough supplies from the island!"
    m_gameMessageString1 "Russian forces have evacuated!"
@@ -26,7 +26,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    m_bWaveMode 1
   }
   PS_FactionRespawnCount "{624CDB829BFE48B6}" {
-   m_sFactionKey "RHS_RF_MSV"
+   m_sFactionKey "RHS_AFRF"
    m_iCount 40
    m_iTime 60000
    m_bWaveMode 1

@@ -17,7 +17,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "Coastal terrain shaped by pine forests and mudflats. The Russians may be able to cross straits using their amphibious BTRs."\
   "It is late afternoon, the weather is rainy with slight fog."
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_iOrder 2
  }
@@ -27,7 +27,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTextData "Prevent the Russians from seizing the airfield."\
   "It is especially important that they do not reach control tower and hangar."
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_iOrder 3
  }

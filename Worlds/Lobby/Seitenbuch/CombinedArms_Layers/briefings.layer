@@ -7,32 +7,32 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTitle "OBJ1: Secure the Road to Seitenbuch"
   m_sTextData "Secure the road linking the two towns before assault Seitenbuch"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_iOrder 4
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 3500.312 391.959 524.616
   m_sTitle "OBJ2: Secure BLU HQ"
   m_sTextData "Clear out the BLU HQ and eliminate all threats in the vicinity"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_iOrder 5
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 3504.412 391.8 522.056
   m_sTitle "OBJ1: Defend Seitenbuch"
   m_sTextData "Defend the town and surrounding area of Seitenbuch from Russian attack"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_iOrder 3
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {

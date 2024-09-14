@@ -7,7 +7,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
   m_fWorldSize 90
   m_sDescription "BLUFOR Start"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 1
  }
@@ -19,7 +19,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
   m_fWorldSize 90
   m_sDescription "Crossroads"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 1
  }
@@ -31,7 +31,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
   m_fWorldSize 90
   m_sDescription "Communications"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 1
  }

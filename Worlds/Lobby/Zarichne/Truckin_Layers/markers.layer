@@ -82,91 +82,91 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
   coords 1009.706 33.088 4504.203
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 987.984 35.282 4500.497
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 959.049 35.861 4504.256
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 942.662 38.113 4536.895
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 976.031 55.191 4588.021
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 985.021 48.602 4599.9
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 1004.501 51.849 4599.475
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 1028.536 32.739 4594.102
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 1042.391 50.649 4597.565
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 1065.976 43.448 4586.138
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 1091.234 22.402 4528.033
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 1059.819 24.395 4500.467
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 1024.624 29.891 4494.909
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
 }

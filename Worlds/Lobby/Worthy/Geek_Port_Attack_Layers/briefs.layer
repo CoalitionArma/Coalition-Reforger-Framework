@@ -12,7 +12,7 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
   coords 2755.179 0 1356.649
   m_sTextData "2x M113A3"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bEmptyFactionVisibility 0
   m_bShowForAnyFaction 0
@@ -22,7 +22,7 @@ $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescripti
   coords 2771.176 0 1340.908
   m_sTextData "3x MMG Team, 2x MAT Team"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bEmptyFactionVisibility 0
   m_bShowForAnyFaction 0

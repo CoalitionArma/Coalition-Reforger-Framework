@@ -2,14 +2,14 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
  ID "56B2B4776E6E4499"
  Factions {
   SCR_Faction "{56DEAC40D2DBC8B1}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
-   FactionKey "RHS_US_USMC"
+   FactionKey "RHS_USAF"
    UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
     Name "BLUFOR"
     Icon "{ED1038E34084270B}UI/Textures/Editor/EditableEntities/Factions/rhs_faction_us_usmc.edds"
     m_sNameUpper "BLUFOR"
    }
    m_bIsPlayable 0
-   m_FactionLabel FACTION_RHS_US_USMC
+   m_FactionLabel FACTION_RHS_USAF
    m_aFriendlyFactionsIds {
     "US"
    }
@@ -82,7 +82,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    }
   }
   SCR_Faction "{56DEAC40D3C2E623}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
-   FactionKey "RHS_RF_MSV"
+   FactionKey "RHS_AFRF"
    UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
     Name "OPFOR"
     Icon "{326730A407D7B7C9}UI/Textures/Editor/EditableEntities/Factions/rhs_faction_rf_msv.edds"
@@ -91,7 +91,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    m_bIsPlayable 0
    m_sFactionFlag "{72E8159766C00C3D}UI/Textures/Flags/rhs_flag_rus.edds"
    m_FactionFlagMaterial "{15AB376863D1724E}Assets/Props/Fabric/Flags/Data/Flag_1_2_Russia.emat"
-   m_FactionLabel FACTION_RHS_RF_MSV
+   m_FactionLabel FACTION_RHS_AFRF
    m_aFriendlyFactionsIds {
     "USSR"
    }
@@ -209,7 +209,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    m_FactionFlagMaterial "{610803CC3F3D6649}Assets/Props/Fabric/Flags/Data/Flag_1_2_USA.emat"
    m_FactionLabel FACTION_US
    m_aFriendlyFactionsIds {
-    "RHS_US_USMC"
+    "RHS_USAF"
    }
    m_sFactionRadioEncryptionKey "chickenNuggets"
    m_iFactionRadioFrequency 48000
@@ -340,7 +340,7 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    m_FactionFlagMaterial "{B47B52D9DA68905D}Assets/Props/Fabric/Flags/Data/Flag_1_2_SovietArmy.emat"
    m_FactionLabel FACTION_USSR
    m_aFriendlyFactionsIds {
-    "RHS_RF_MSV"
+    "RHS_AFRF"
    }
    m_sFactionRadioEncryptionKey "coldBorscht"
    m_iFactionRadioFrequency 42000

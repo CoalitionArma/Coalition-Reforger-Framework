@@ -9,105 +9,105 @@ SCR_LoadoutManager {
  m_aPlayerLoadouts {
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6CA}" {
    m_sLoadoutName "Rifleman"
-   m_sLoadoutResource "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Rifleman_Modern.et"
-   m_sLoadoutImage "{121E10BEF67925B0}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_Rifleman.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{6C6C88D555A13408}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_Rifleman_Modern.et"
+   m_sLoadoutImage "{121E10BEF67925B0}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_Rifleman.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6C9}" {
    m_sLoadoutName "Rifleman (AT)"
-   m_sLoadoutResource "{D486EB2E7DE2A09C}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_RiflemanAT_Modern.et"
-   m_sLoadoutImage "{40653A609A3D3E13}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_AT.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{D486EB2E7DE2A09C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_RiflemanAT_Modern.et"
+   m_sLoadoutImage "{40653A609A3D3E13}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_AT.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6C8}" {
    m_sLoadoutName "Assistant Automatic Rifleman"
-   m_sLoadoutResource "{33F6063C313C0CB3}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_AAR_Modern.et"
-   m_sLoadoutImage "{E79F5AD1DE37A54C}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_AAR.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{33F6063C313C0CB3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_AAR_Modern.et"
+   m_sLoadoutImage "{E79F5AD1DE37A54C}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_AAR.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6D6}" {
    m_sLoadoutName "Automatic Rifleman"
-   m_sLoadoutResource "{C31A57E683762B2C}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_AR_Modern.et"
-   m_sLoadoutImage "{FDB568E7E526220D}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_AR.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{C31A57E683762B2C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_AR_Modern.et"
+   m_sLoadoutImage "{FDB568E7E526220D}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_AR.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6D5}" {
    m_sLoadoutName "Fireteam Leader"
-   m_sLoadoutResource "{16DD0C87B29F3DB1}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_FTL_Modern.et"
-   m_sLoadoutImage "{8AB6E06CA8173265}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_TL.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{16DD0C87B29F3DB1}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_FTL_Modern.et"
+   m_sLoadoutImage "{8AB6E06CA8173265}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_TL.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6D4}" {
    m_sLoadoutName "Squad Leader"
-   m_sLoadoutResource "{714F66A4D204D971}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_SL_Modern.et"
-   m_sLoadoutImage "{5830D06A31609667}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_SL.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{714F66A4D204D971}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_SL_Modern.et"
+   m_sLoadoutImage "{5830D06A31609667}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_SL.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6D3}" {
    m_sLoadoutName "Platoon Leader"
-   m_sLoadoutResource "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_PL_Modern.et"
-   m_sLoadoutImage "{5830D06A31609667}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_SL.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{8E953BF052F04937}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_PL_Modern.et"
+   m_sLoadoutImage "{5830D06A31609667}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_SL.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7F6D2}" {
    m_sLoadoutName "Medic"
-   m_sLoadoutResource "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_US_USMC/CRF_Medic_Modern.et"
-   m_sLoadoutImage "{EB73FEC71524972F}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_US_USMC/Character_US_USMC_Corpsman.edds"
-   m_sAffiliatedFaction "RHS_US_USMC"
+   m_sLoadoutResource "{318D8B2A56533687}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/CRF_Medic_Modern.et"
+   m_sLoadoutImage "{EB73FEC71524972F}UI/Textures/EditorPreviews/Characters/Factions/BLUFOR/RHS_USAF/Character_US_USMC_Corpsman.edds"
+   m_sAffiliatedFaction "RHS_USAF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A4A0}" {
    m_sLoadoutName "Rifleman"
-   m_sLoadoutResource "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_RU_Modern.et"
-   m_sLoadoutImage "{1328800F780364DA}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_Rifleman.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Rifleman_RU_Modern.et"
+   m_sLoadoutImage "{1328800F780364DA}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_Rifleman.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A4A6}" {
    m_sLoadoutName "Rifleman (AT)"
-   m_sLoadoutResource "{9A16AB9FD20F1DAA}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_RiflemanAT_RU_Modern.et"
-   m_sLoadoutImage "{D9A33C5953CAF83F}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_AT.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{9A16AB9FD20F1DAA}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_RiflemanAT_RU_Modern.et"
+   m_sLoadoutImage "{D9A33C5953CAF83F}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_AT.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A4A4}" {
    m_sLoadoutName "Assistant Automatic Rifleman"
-   m_sLoadoutResource "{FF029A318FDFED40}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_AAR_RU_Modern.et"
-   m_sLoadoutImage "{F4A518C75CB722DA}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_AMG.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{FF029A318FDFED40}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_AAR_RU_Modern.et"
+   m_sLoadoutImage "{F4A518C75CB722DA}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_AMG.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A4A5}" {
    m_sLoadoutName "Automatic Rifleman"
-   m_sLoadoutResource "{959C2F9401A5D589}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_AR_RU_Modern.et"
-   m_sLoadoutImage "{64736EDE2CD1E421}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_AR.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{959C2F9401A5D589}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_AR_RU_Modern.et"
+   m_sLoadoutImage "{64736EDE2CD1E421}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_AR.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A75A}" {
    m_sLoadoutName "Fireteam Leader"
-   m_sLoadoutResource "{86F0738567911D33}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_FTL_RU_Modern.et"
-   m_sLoadoutImage "{BE4915089053026F}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_GL.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{86F0738567911D33}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_FTL_RU_Modern.et"
+   m_sLoadoutImage "{BE4915089053026F}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_GL.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A75B}" {
    m_sLoadoutName "Squad Leader"
-   m_sLoadoutResource "{0D90CFD8D45258A6}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_SL_RU_Modern.et"
-   m_sLoadoutImage "{C1F6D653F897504B}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_SL.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{0D90CFD8D45258A6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_SL_RU_Modern.et"
+   m_sLoadoutImage "{C1F6D653F897504B}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_SL.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A758}" {
    m_sLoadoutName "Platoon Leader"
-   m_sLoadoutResource "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et"
-   m_sLoadoutImage "{C1F6D653F897504B}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_SL.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_PL_RU_Modern.et"
+   m_sLoadoutImage "{C1F6D653F897504B}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_SL.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A759}" {
    m_sLoadoutName "Medic"
-   m_sLoadoutResource "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
-   m_sLoadoutImage "{45DA6E5B919753AB}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_Unarmed.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Medic_RU_Modern.et"
+   m_sLoadoutImage "{45DA6E5B919753AB}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_Unarmed.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
   SCR_FactionPlayerLoadout "{604C0D68EDB7A75E}" {
    m_sLoadoutName "Crewman"
-   m_sLoadoutResource "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et"
-   m_sLoadoutImage "{45DA6E5B919753AB}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/Character_RF_MSV_EMR_Unarmed.edds"
-   m_sAffiliatedFaction "RHS_RF_MSV"
+   m_sLoadoutResource "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Crewman_RU_Modern.et"
+   m_sLoadoutImage "{45DA6E5B919753AB}UI/Textures/EditorPreviews/Characters/Factions/OPFOR/RHS_AFRF/EMR/Character_RF_MSV_EMR_Unarmed.edds"
+   m_sAffiliatedFaction "RHS_AFRF"
   }
  }
 }

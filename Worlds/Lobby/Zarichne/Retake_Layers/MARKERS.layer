@@ -4,7 +4,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 91.091
   m_sDescription "OPFOR Spawn"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cache1marker {
@@ -12,7 +12,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.9
   m_sDescription "Cache 1"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cache2marker {
@@ -20,7 +20,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.338
   m_sDescription "Cache 2"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cache3marker {
@@ -28,7 +28,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.16
   m_sDescription "Cache 3"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cache4marker {
@@ -36,7 +36,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 90.71
   m_sDescription "Cache 4"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
 }
@@ -45,7 +45,7 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   coords 4373.557 27.656 4230.364
   angleY 90.887
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  cachemarker1global {
@@ -90,6 +90,6 @@ PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFO
  angleY 90.005
  m_sDescription "EXTRA VEHICLES"
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }

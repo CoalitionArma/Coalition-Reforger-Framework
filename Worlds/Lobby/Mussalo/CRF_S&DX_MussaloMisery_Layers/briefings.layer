@@ -5,7 +5,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  coords 3818.637 1.857 5310.579
  m_sTextData "The last American forces are in the city, fight using our superior armor to dislodge and destroy the Americans and their two remaining supply hubs"
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {

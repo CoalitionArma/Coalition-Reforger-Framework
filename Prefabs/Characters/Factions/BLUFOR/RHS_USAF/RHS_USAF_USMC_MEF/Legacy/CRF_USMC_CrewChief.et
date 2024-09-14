@@ -16,7 +16,7 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_
    DefaultWeaponIndex 2
   }
   FactionAffiliationComponent "{520EC961FB0A2E90}" {
-   "faction affiliation" "RHS_US_USMC"
+   "faction affiliation" "RHS_USAF"
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Crew Cheif"

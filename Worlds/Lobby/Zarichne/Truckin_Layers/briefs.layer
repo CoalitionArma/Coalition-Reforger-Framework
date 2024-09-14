@@ -4,7 +4,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  ""\
  "All friendly forces must make it across into the town to be considered victorious. If the truck makes becomes separated from friendly forces, it's considered a major defeat."
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
  m_iOrder 4
 }

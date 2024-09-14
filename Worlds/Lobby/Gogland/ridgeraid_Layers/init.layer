@@ -75,7 +75,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "If you have any questions, message an admin in the in-game chat. "
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
@@ -89,7 +89,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "An armored battalion has loaned three bradleys to help support the assault."
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
@@ -104,7 +104,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   ""
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
@@ -117,7 +117,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "Spectator is enabled. Upon dying, you will instantly go into spectator. Use the right side of the screen to switch your voice channel."
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1

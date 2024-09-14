@@ -20,14 +20,14 @@ $grp Vehicle : "{2B15F98903994DA3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tra
   angleY -54
  }
 }
-SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_1stPlatoon.et" {
  coords 3490.01 404.091 512.039
  angleZ 1.79
  m_aUnitPrefabSlots {
-  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{25647ECE38BDDFAD}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PSG_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Rifleman_RU_Modern.et"
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_PL_RU_Modern.et" "{25647ECE38BDDFAD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_PSG_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Medic_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Rifleman_RU_Modern.et" "{951139AE0E64D15E}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Rifleman_RU_Modern.et"
  }
  {
-  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_RifleSquad.et" {
    {
     coords -31.515 16.885 -19.189
     m_sCustomNameSet "1st Squad"
@@ -48,13 +48,13 @@ SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlat
     m_sCustomNameSet "4th Squad"
    }
   }
-  SCR_AIGroup : "{BD8D0D16E1EA353F}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_WeaponsSquad.et" {
+  SCR_AIGroup : "{BD8D0D16E1EA353F}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_WeaponsSquad.et" {
    coords 68.383 -1.984 -25.246
    angleZ -1.79
   }
  }
 }
-$grp SCR_AIGroup : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_ArmorTeam.et" {
+$grp SCR_AIGroup : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_ArmorTeam.et" {
  {
   coords 3502.12 398.408 540.576
   m_sCustomNameSet "Tank Crew 1"

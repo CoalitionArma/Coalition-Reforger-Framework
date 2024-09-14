@@ -5,7 +5,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Name "CRF Army Logi Team"
     m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
-    m_sFaction "RHS_US_USMC"
+    m_sFaction "RHS_USAF"
     m_aAuthoredLabels {
      4 51872 25 34 38
     }
@@ -140,7 +140,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "RHS_US_USMC"
+ m_faction "RHS_USAF"
  m_aUnitPrefabSlots {
   "{6F944928647D814D}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_LogiLead_P.et" "{A7114384899C9257}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_LogiRunner_P.et" "{A7114384899C9257}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_LogiRunner_P.et" "{A7114384899C9257}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_LogiRunner_P.et"
  }

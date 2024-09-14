@@ -1,7 +1,7 @@
-SCR_AIGroup : "{0B29D2875E143A8C}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_Sniper_Team_Spec_Ops.et" {
+SCR_AIGroup : "{0B29D2875E143A8C}Prefabs/Groups/BLUFOR/RHS_USAF/CRF_USMC_Sniper_Team_Spec_Ops.et" {
  coords 2094.445 11.133 1648.245
 }
-$grp SCR_AIGroup : "{57F859681AF8B824}Prefabs/Groups/BLUFOR/RHS_US_USMC/CRF_USMC_RifleSquad_Spec_Ops.et" {
+$grp SCR_AIGroup : "{57F859681AF8B824}Prefabs/Groups/BLUFOR/RHS_USAF/CRF_USMC_RifleSquad_Spec_Ops.et" {
  {
   coords 2093.534 11.398 1647.488
  }

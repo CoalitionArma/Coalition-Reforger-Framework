@@ -5,7 +5,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Name "CRF Army Rifle Squad"
     m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
-    m_sFaction "RHS_US_USMC"
+    m_sFaction "RHS_USAF"
     m_aAuthoredLabels {
      4 51872 25 34 38
     }
@@ -140,7 +140,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "RHS_US_USMC"
+ m_faction "RHS_USAF"
  m_aUnitPrefabSlots {
   "{85CEC792CE82F95E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Base_SL_P.et" "{8EF328BE3B522B09}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Medic_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{34D77F5EA4CE5DC3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AR_P.et" "{0171647FF6BED20B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AAR_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{54052CEC1DA293F8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Demo_P.et"
  }

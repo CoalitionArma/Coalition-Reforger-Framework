@@ -156,7 +156,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
  coords 7661.839 377.411 7770.244
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{619C1E7763A7A5B6}" {
-   m_sFactionKey "RHS_US_USMC"
+   m_sFactionKey "RHS_USAF"
    m_iCount 50
    m_iTime 60000
    m_bWaveMode 1
@@ -240,7 +240,7 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
 GenericEntity : "{7C367E9261376345}Prefabs/Compositions/Slotted/SlotFlatSmall/AmmoStorage_S_US_01.et" {
  components {
   FactionAffiliationComponent "{5D06E95D3BF135DB}" {
-   "faction affiliation" "RHS_US_USMC"
+   "faction affiliation" "RHS_USAF"
   }
  }
  coords 4100.852 339.125 10528.145
@@ -259,7 +259,7 @@ GenericEntity : "{7C367E9261376345}Prefabs/Compositions/Slotted/SlotFlatSmall/Am
        m_eSupportedArsenalItemModes 178
       }
       SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
-       "faction affiliation" "RHS_US_USMC"
+       "faction affiliation" "RHS_USAF"
       }
       SCR_ResourceComponent "{5D7D07D2F7A252D2}" {
        m_aContainers {
@@ -280,7 +280,7 @@ GenericEntity : "{7C367E9261376345}Prefabs/Compositions/Slotted/SlotFlatSmall/Am
 GenericEntity : "{CDD0712FD6215F03}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
  components {
   FactionAffiliationComponent "{5D06E95AFB171C7A}" {
-   "faction affiliation" "RHS_US_USMC"
+   "faction affiliation" "RHS_USAF"
   }
  }
  coords 4237.858 340.019 10487.504
@@ -289,7 +289,7 @@ GenericEntity : "{CDD0712FD6215F03}Prefabs/Compositions/Slotted/SlotFlatMedium/F
 GenericEntity : "{FB18EFE9C1A81E29}Prefabs/Compositions/Slotted/SlotFlatMedium/VehicleMaintenance_M_US_01.et" {
  components {
   FactionAffiliationComponent "{5E38DC8C378BCC8A}" {
-   "faction affiliation" "RHS_US_USMC"
+   "faction affiliation" "RHS_USAF"
   }
  }
  coords 4188.263 339.138 10563.719
@@ -298,7 +298,7 @@ GenericEntity : "{FB18EFE9C1A81E29}Prefabs/Compositions/Slotted/SlotFlatMedium/V
    ID "5D22B941BA4ECAA0"
    components {
     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
-     "faction affiliation" "RHS_US_USMC"
+     "faction affiliation" "RHS_USAF"
     }
    }
   }
@@ -306,7 +306,7 @@ GenericEntity : "{FB18EFE9C1A81E29}Prefabs/Compositions/Slotted/SlotFlatMedium/V
    ID "5E690688EBC16840"
    components {
     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
-     "faction affiliation" "RHS_US_USMC"
+     "faction affiliation" "RHS_USAF"
     }
    }
   }
