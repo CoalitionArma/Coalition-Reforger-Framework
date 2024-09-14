@@ -275,7 +275,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4403.954 284.157 6934.282
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -284,7 +284,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4430.506 282.982 6954.543
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -293,7 +293,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4463.32 289.662 6976.317
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -302,7 +302,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4493.353 294.466 6993.987
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -311,7 +311,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4532.454 296.246 7021.537
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -320,7 +320,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4577.411 297.283 7053.126
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -329,7 +329,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4620.008 297.321 7069.526
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -338,7 +338,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4674.828 298.425 7087.268
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -347,7 +347,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4745.976 295.618 7103.778
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -356,7 +356,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4833.958 298.196 7121.121
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -365,7 +365,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4891.275 298.372 7131.835
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -374,7 +374,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 4976.763 293.143 7139.814
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -383,7 +383,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   coords 5036.276 295.125 7142.421
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
@@ -394,7 +394,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4292.205 309.462 7946.632
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -405,7 +405,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4268.938 308.282 7913.272
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -416,7 +416,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4242.962 307.252 7879.014
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -427,7 +427,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4211.726 306.817 7894.799
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -438,7 +438,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4163.327 305.675 7921.997
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -449,7 +449,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4126.454 304.957 7942.551
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -460,7 +460,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4087.402 304.587 7971.835
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -471,7 +471,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4061.012 304.623 7990.51
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -482,7 +482,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4089.304 305.562 8027.49
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -493,7 +493,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4112.448 306.23 8052.892
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -504,7 +504,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4149.774 306.443 8102.877
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -515,7 +515,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4198.031 308.042 8075.352
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -526,7 +526,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4239.905 309.746 8051.387
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -537,7 +537,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4270.508 311.374 8030.007
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {
@@ -548,7 +548,7 @@ $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker
   coords 4310.055 312.229 8002.611
   angleY 0
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 0
   m_aHideOnGameModeStates {

@@ -15,12 +15,12 @@ Add the mission <mission name!> made by <author name!> to the repository.
 **Faction(s):**
 BLUFOR - Attacking/Defending/NA
 - [ ] US
-- [ ] RHS_US_USMC
+- [ ] RHS_USAF
 - [ ] CDF
 
 OPFOR - Attacking/Defending/NA
 - [ ] USSR
-- [ ] RHS_RF_MSV
+- [ ] RHS_AFRF
 
 INDFOR - Attacking/Defending/NA
 - [ ] FIA

@@ -49,7 +49,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
    m_fMaxWeight 4500
   }
   SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
-   "faction affiliation" "RHS_RF_MSV"
+   "faction affiliation" "RHS_AFRF"
   }
   SCR_VehiclePerceivableComponent "{566CD04B8A6107DD}" {
    "Additional aim points" {

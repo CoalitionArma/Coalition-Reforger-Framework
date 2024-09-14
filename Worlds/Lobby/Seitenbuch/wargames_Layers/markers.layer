@@ -37,7 +37,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
   m_fWorldSize 60
   m_sDescription "Extraction"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
 }
@@ -46,6 +46,6 @@ PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.e
  angleX -1.79
  angleY 90
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
 }

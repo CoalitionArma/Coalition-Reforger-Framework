@@ -37,13 +37,13 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  coords 4111.833 12.954 3758.534
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{61E725D77DC838CE}" {
-   m_sFactionKey "RHS_US_USMC"
+   m_sFactionKey "RHS_USAF"
    m_iCount 50
    m_iTime 60000
    m_bWaveMode 1
   }
   PS_FactionRespawnCount "{61E725D77DE66BD5}" {
-   m_sFactionKey "RHS_RF_MSV"
+   m_sFactionKey "RHS_AFRF"
    m_iCount 35
    m_iTime 60000
    m_bWaveMode 1
@@ -121,7 +121,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 1 Area' marker. It can be 500m2 around that marker."
   m_iOrder 5
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_2 {
   coords 3393.719 2.309 6195.838
@@ -129,7 +129,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 2 Area' marker. It can be 500m2 around that marker."
   m_iOrder 6
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_3 {
   coords 3394.987 0.565 6189.789
@@ -137,7 +137,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 3 Area' marker. It can be 500m2 around that marker."
   m_iOrder 7
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_4 {
   coords 3208.996 1.029 6298.797
@@ -145,7 +145,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 4 Area' marker. It can be 500m2 around that marker."
   m_iOrder 8
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_5 {
   coords 3384.186 3.383 6206.827
@@ -153,7 +153,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 1 from being secured"
   m_iOrder 5
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  Objective_6 {
   coords 3386.998 1.954 6200.657
@@ -161,7 +161,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 2 from being secured"
   m_iOrder 6
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  Objective_7 {
   coords 3383.491 1.557 6202.599
@@ -169,7 +169,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 3 from being secured"
   m_iOrder 7
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  Objective_8 {
   coords 3213.745 1.156 6298.188
@@ -177,6 +177,6 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 4 from being secured"
   m_iOrder 8
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
 }

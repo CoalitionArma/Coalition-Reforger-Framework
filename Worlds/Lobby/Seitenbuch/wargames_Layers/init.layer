@@ -136,7 +136,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Extraction"
   m_sTextData "Your extraction point is the MSR South of Seitenbuch."
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_iOrder 3
  }
@@ -185,6 +185,6 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   coords 2490.19 411.593 850.288
   m_sTitle "Objective: Extract Laptop"
   m_iOrder 1
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
 }

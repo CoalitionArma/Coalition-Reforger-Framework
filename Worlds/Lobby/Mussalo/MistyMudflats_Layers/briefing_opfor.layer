@@ -4,7 +4,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_sTitle "Mission"
   m_sTextData "Assault and seize the airfield, in particular the area around hangar and control tower."
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_iOrder 3
  }
@@ -26,7 +26,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "Coastal terrain shaped by pine forests and mudflats. We should be able to cross most straits using our amphibious BTRs."\
   "It is late afternoon, the weather is rainy with slight fog."
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_iOrder 2
  }

@@ -1,4 +1,4 @@
-SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_RF_MSV_VKPO_DS_Base.et" {
+SCR_AIGroup : "{B50B7BF31273C2A6}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Group_RHS_AFRF_VKPO_DS_Base.et" {
  ID "0000000000000001"
  components {
   AIFormationComponent "{507E9DC12F541FE6}" {

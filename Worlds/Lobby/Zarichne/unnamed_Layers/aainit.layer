@@ -114,7 +114,7 @@ $grp SCR_FactionDominanceTriggerEntity {
   "		}"\
   "		"\
   "	"
-  m_sOwnerFactionKey "RHS_US_USMC"
+  m_sOwnerFactionKey "RHS_USAF"
   m_fFriendlyRatioLimit 1
  }
  obj2 {
@@ -139,7 +139,7 @@ $grp SCR_FactionDominanceTriggerEntity {
   "				"\
   "		}"\
   "	"
-  m_sOwnerFactionKey "RHS_US_USMC"
+  m_sOwnerFactionKey "RHS_USAF"
   m_fFriendlyRatioLimit 1
  }
 }
@@ -149,27 +149,27 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTitle "OBJ: Secure Radio Tower"
   m_iOrder 6
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 2773.511 17.437 2301.306
   m_sTitle "OBJ: Defend Radio Tower"
   m_iOrder 6
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 2776.938 17.406 2295.461
   m_sTitle "OBJ: Secure Village"
   m_iOrder 6
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 2776.875 17.375 2290.743
   m_sTitle "OBJ: Defend Village"
   m_iOrder 6
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
 }

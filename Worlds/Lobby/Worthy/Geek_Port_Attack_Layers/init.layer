@@ -7,8 +7,8 @@ PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
    m_iTimeLimitMinutes 40
   }
   CRF_SearchAndDestroyGameModeComponent "{61395B236C9092AA}" {
-   attackingSide "RHS_US_USMC"
-   defendingSide "RHS_RF_MSV"
+   attackingSide "RHS_USAF"
+   defendingSide "RHS_AFRF"
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
    m_iStartingHours 10

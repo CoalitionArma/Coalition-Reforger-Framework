@@ -9,7 +9,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  ""\
  "You have 35 respawns."
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
  m_iOrder 3
 }
@@ -39,7 +39,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
  ""\
  "You have 50 respawns."
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
  m_iOrder 3
 }

@@ -3,112 +3,112 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
   coords 2846.76 26.671 4393.338
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2790.637 32.982 4380.025
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2727.112 26.444 4375.603
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2662.855 31.101 4364.385
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2632.861 24.018 4426.657
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2622.181 21.392 4488.983
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2608.255 17.278 4558.374
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2643.301 16.863 4594.417
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2678.356 17.588 4595.592
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2732.526 18.141 4592.933
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2763.76 20.455 4542.138
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2784.754 20.919 4506.984
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2797.767 21.677 4486.289
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2823.767 22.466 4480.653
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2832.401 24.979 4455.009
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 2841.378 23.723 4425.878
   angleY 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
 }
@@ -156,7 +156,7 @@ PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et"
  m_fWorldSize 75
  m_sDescription "Mortar"
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
@@ -164,224 +164,224 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
   coords 2016.85 6.258 2790.772
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2128.423 8.702 2820.007
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2215.778 12.676 2846.836
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2305.328 15.389 2871.573
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2373.038 16.534 2885.111
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2424.255 19.199 2934.757
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2472.956 29.43 2953.84
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2574.588 21.165 2986.694
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2640.074 36.024 3006.225
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2742.819 38.999 3037.023
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2817.216 32.502 3062.311
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 2898.526 40.531 3085.994
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3067.093 29.529 3124.156
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3179.583 24.688 3142.666
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3284.684 24.229 3157.474
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3400.127 24.904 3175.628
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3548.251 24.783 3193.861
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3621.631 24.411 3203.892
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3724.899 23.901 3219.76
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3837.682 22.607 3235.124
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3870.474 22.371 3155.271
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3901.834 22.186 3096.757
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3945.914 21.687 3018.077
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3991.788 20.874 2932.477
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3997.034 20.51 2870.57
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3993.421 20.259 2796.773
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3982.388 20.494 2741.604
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3962.15 20.238 2663.376
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3935.408 19.444 2573.239
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3906.76 18.75 2478.728
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3886.303 38.727 2440.531
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
   coords 3876.951 26.5 2384.107
   m_fWorldSize 80
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
 }
@@ -598,7 +598,7 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
  angleY 0
  m_sDescription "OPFOR Spawn"
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 SCR_DestructibleBuildingEntity : "{C373D5359D9F2644}Prefabs/Structures/Agriculture/Barn Large.et" {
@@ -662,7 +662,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 2755.195 21.921 4464.753
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
 }
 $grp GenericEntity : "{E86E2C320BF1F524}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_base.et" {

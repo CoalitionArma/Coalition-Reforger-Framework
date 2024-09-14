@@ -169,7 +169,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   m_sQuadName "point-of-interest"
   m_sDescription "OPFOR Extract Location"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
@@ -181,7 +181,7 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMark
   m_sQuadName "point-of-interest"
   m_sDescription "BLU Extract Location"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
 }

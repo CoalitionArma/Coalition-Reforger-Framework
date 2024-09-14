@@ -13,8 +13,8 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 PS_GameModeCoop Lobby_TvT_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/TvT/Lobby_TvT_Mode.et" {
  components {
   CRF_SearchAndDestroyGameModeComponent "{6130576489FCD0CB}" {
-   attackingSide "RHS_RF_MSV"
-   defendingSide "RHS_US_USMC"
+   attackingSide "RHS_AFRF"
+   defendingSide "RHS_USAF"
   }
  }
  coords 6243.637 48.875 5076.812
@@ -100,39 +100,39 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTitle "Defend A Site"
   m_sTextData "Defend the A Site"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 6442.644 38.792 5132.653
   m_sTitle "Defend B Site"
   m_sTextData "Defend the B Site"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 6252.406 48.875 5088.881
   m_sTitle "Destroy A Site"
   m_sTextData "Destroy A Site"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 6442.211 38.781 5132.749
   m_sTitle "Destroy B Site"
   m_sTextData "Destroy B Site"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
 }

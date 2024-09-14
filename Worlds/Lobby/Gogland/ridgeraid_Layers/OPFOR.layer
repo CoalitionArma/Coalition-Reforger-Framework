@@ -12,23 +12,23 @@ $grp Tank : "{69FFB9E072E66315}Prefabs/Vehicles/Tracked/BMP2/BMP2.et" {
   angleY -15
  }
 }
-$grp SCR_AIGroup : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_ArmorTeam.et" {
+$grp SCR_AIGroup : "{868AEF0E361D040E}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_ArmorTeam.et" {
  {
   coords 6984.733 101.437 3986.195
   m_aUnitPrefabSlots {
-   "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et" "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et"
+   "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Crewman_RU_Modern.et" "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Crewman_RU_Modern.et"
   }
  }
  {
   coords 6984.809 101.438 3991.094
   m_aUnitPrefabSlots {
-   "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et" "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et"
+   "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Crewman_RU_Modern.et" "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Crewman_RU_Modern.et"
   }
  }
  {
   coords 6994.236 108.309 3989.357
   m_aUnitPrefabSlots {
-   "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et" "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Crewman_RU_Modern.et"
+   "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Crewman_RU_Modern.et" "{08FE46D9F62E49EF}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Crewman_RU_Modern.et"
   }
  }
 }

@@ -56,7 +56,7 @@ GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/He
      }
     }
     SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
-     "faction affiliation" "RHS_US_USMC"
+     "faction affiliation" "RHS_USAF"
     }
     SCR_ResourceComponent "{5D7CC617B33EF1CF}" {
      m_aContainers {
@@ -74,7 +74,7 @@ GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/He
    ID "5E6A9384DDD03956"
    components {
     SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
-     "faction affiliation" "RHS_US_USMC"
+     "faction affiliation" "RHS_USAF"
     }
    }
   }
@@ -82,7 +82,7 @@ GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/He
    ID "5E6906884A85A3A3"
    components {
     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
-     "faction affiliation" "RHS_US_USMC"
+     "faction affiliation" "RHS_USAF"
     }
    }
   }

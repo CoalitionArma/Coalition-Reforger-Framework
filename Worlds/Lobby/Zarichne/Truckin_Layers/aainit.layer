@@ -170,10 +170,10 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTitle "OBJ: Reach Zarichne"
   m_sTextData "Reach the outskirts of Zarichne with the truck"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_iOrder 5
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 1159.767 7.231 3240.262

@@ -1,0 +1,122 @@
+$grp GenericEntity : "{0B31DF40DF62F895}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall_half.et" {
+ {
+  coords 4731.721 0 10828.388
+  angleY -94.966
+  scale 5.172
+ }
+ {
+  coords 4738.517 -0.001 10750.166
+  angleY -94.966
+  scale 5.172
+ }
+ {
+  coords 4745.852 0 10665.756
+  angleY -94.966
+  scale 5.172
+ }
+ {
+  coords 4752.297 0 10591.597
+  angleY -66.206
+  scale 5.172
+ }
+ {
+  coords 4721.323 0 10521.351
+  angleY -66.206
+  scale 5.172
+ }
+ {
+  coords 4688.432 0 10446.755
+  angleY -66.206
+  scale 5.172
+ }
+ {
+  coords 4654.968 0 10411.147
+  angleY -10.734
+  scale 5.172
+ }
+ {
+  coords 4581.883 0.898 10397.295
+  angleY -10.734
+  scale 5.172
+ }
+ {
+  coords 4512.694 0 10399.71
+  angleY 26.926
+  scale 5.172
+ }
+ {
+  coords 4443.897 0 10434.648
+  angleY 26.926
+  scale 5.172
+ }
+ {
+  coords 4376.229 -0.001 10469.02
+  angleY 26.926
+  scale 5.172
+ }
+ {
+  coords 4313.406 -0.001 10517.455
+  angleY 68.623
+  scale 5.172
+ }
+ {
+  coords 4282.157 0 10597.284
+  angleY 68.623
+  scale 5.172
+ }
+ {
+  coords 4256.906 0.001 10661.793
+  angleY 68.623
+  scale 5.172
+ }
+ {
+  coords 4232.782 4.002 10723.424
+  angleY 68.623
+  scale 5.172
+ }
+ {
+  coords 4722.931 0 10929.537
+  angleY -94.966
+  scale 5.172
+ }
+ {
+  coords 4702.208 0 10981.371
+  angleY -141.889
+  scale 5.172
+ }
+ {
+  coords 4612.388 0 11051.822
+  angleY -170.776
+  scale 5.172
+ }
+ {
+  coords 4524.178 4.352 11066.147
+  angleY -170.776
+  scale 5.172
+ }
+ {
+  coords 4436.658 -0.001 11080.358
+  angleY -170.776
+  scale 5.172
+ }
+ {
+  coords 4358.377 14.301 11093.071
+  angleY 119.995
+  scale 5.172
+ }
+ {
+  coords 4323.872 9.854 11033.294
+  angleY 119.995
+  scale 5.172
+ }
+ {
+  coords 4272.423 2.256 10944.16
+  angleY 119.995
+  scale 5.172
+ }
+ {
+  coords 4219.046 8.48 10851.689
+  angleY 95.545
+  scale 5.172
+ }
+}
