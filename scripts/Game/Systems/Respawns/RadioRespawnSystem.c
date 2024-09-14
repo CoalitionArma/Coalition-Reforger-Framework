@@ -94,7 +94,11 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 		if(m_playerID == -1)
 			valueinit();
 		m_groupRespawns = m_radioComponent.GetRespawnedGroups(m_groupID);
-		m_respawnWaves = m_radioComponent.GetAmountofWave(m_factionKey);		
+		m_respawnWaves = m_radioComponent.GetAmountofWave(m_factionKey);	
+		Print("----------------------------------------------");
+		Print(m_groupRespawns);
+		Print(m_respawnWaves);
+		Print(m_respawnWaves - m_groupRespawns);	
 		return m_respawnWaves - m_groupRespawns;
 	}
 	

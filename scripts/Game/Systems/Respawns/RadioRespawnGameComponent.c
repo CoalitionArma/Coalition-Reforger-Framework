@@ -71,6 +71,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		m_safestart = CRF_SafestartGameModeComponent.GetInstance();
 		if (m_safestart.GetSafestartStatus()) 
 		{	
+			Print("----------------------------------------------");
 			Print("Safestart has begun");
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
 			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
@@ -82,6 +83,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		if (!m_safestart.GetSafestartStatus()) 
 		{
+			Print("----------------------------------------------");
 			Print("Safestart is over");
 			GetGame().GetCallqueue().Remove(WaitSafeStartEnd);
 			GetGame().GetCallqueue().CallLater(RespawnInit, 1000);
@@ -97,6 +99,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		}
 		if (!m_safestart.GetSafestartStatus())
 		{
+			Print("----------------------------------------------");
 			Print("Safestart is really over");
 			GetGroups();
 		}
@@ -208,22 +211,33 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
 				ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
 				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
+				Print("----------------------------------------------");
+				PrintFormat("Logging player %1", playerID);
 				m_entitySlots.Insert(controlledEntity, groupID);
 				m_entityPrefabs.Insert(controlledEntity, prefabName);
 				m_entityID.Insert(controlledEntity, playerID);
 				m_entityPlayable.Insert(controlledEntity, playerPlayableID);
 			}
 		}
+		Print("----------------------------------------------");
+		for(int i, count = m_entitySlots.Count(); i < count; ++i)
+		{
+			Print(m_entitySlots.GetKey(i));
+		}
+		Print("----------------------------------------------");
+		
 	}
 	
 	void SpawnGroupServer(int groupID)
 	{
+		Print("----------------------------------------------");
 		Print("Spawning Group server side");
 		Print(groupID);
 		m_respawnedGroups.Insert(groupID);
 		m_respawnTimeout.Set(groupID, true);
 		
 		m_playableManager = PS_PlayableManager.GetInstance();
+		Print("----------------------------------------------");
 		Print(m_playableManager);
 		for(int i, count = m_entitySlots.Count(); i < count; ++i)
 		{
@@ -241,6 +255,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			
 			if(SCR_AIDamageHandling.IsAlive(m_tempEntity))
 				{
+					Print("----------------------------------------------");
+					Print("Players alive");
 					m_entitySlots.Remove(m_tempEntity);
 					m_entityPrefabs.Remove(m_tempEntity);
 					m_entityID.Remove(m_tempEntity);
@@ -252,6 +268,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 					break;
 				}	
 			//Replication.BumpMe();
+			Print("----------------------------------------------");
+			Print("Players Dead");
+			Print("Spawning Player");
 			SpawnPrefabs();
 			GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, m_tempEntity, groupID, m_tempPrefab, m_tempPlayerID);
 		}
@@ -260,6 +279,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SpawnPrefabs()
 	{
+		Print("----------------------------------------------");
 		Print("Spawning Prefabs to all");
 		m_playableManager = PS_PlayableManager.GetInstance();
 		if(m_tempPlayableID == RplId.Invalid())
@@ -273,6 +293,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SetNewPlayerValues(IEntity oldEntity, int groupID, string prefab, int playerID)
 	{
+		Print("----------------------------------------------");
+		Print("Setting new player values");
 		IEntity newEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
 		RplId newPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
 		m_entitySlots.Remove(oldEntity);
@@ -290,6 +312,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SetLatePlayerValues(int groupID, int time)
 	{
+		Print("----------------------------------------------");
+		Print("Setting late player values");
 		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
 		array<int> groupPlayersIDs = group.GetPlayerIDs();
 			foreach (int playerID: groupPlayersIDs)
