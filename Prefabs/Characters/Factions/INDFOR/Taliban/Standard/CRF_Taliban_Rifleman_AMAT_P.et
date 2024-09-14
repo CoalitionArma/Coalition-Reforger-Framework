@@ -13,6 +13,9 @@ SCR_ChimeraCharacter : "{863B8330CE14D2CA}Prefabs/Characters/Factions/INDFOR/Tal
   }
   SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
    InitialInventoryItems {
+    ItemsInitConfigurationItem "{6258434EC7D9CD5D}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Jacket_UrbanTaliban.et"
+    }
     ItemsInitConfigurationItem "{6258434E97C83ADE}" {
      TargetStorage "Prefabs/Items/Equipment/Backpacks/Backpack_RPG_Assistant.et"
      PrefabsToSpawn + {
