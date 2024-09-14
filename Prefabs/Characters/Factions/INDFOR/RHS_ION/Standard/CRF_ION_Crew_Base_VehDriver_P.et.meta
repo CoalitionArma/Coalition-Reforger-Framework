@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{2D385DC4D3BA8E89}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Crew_Base_VehDriver_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
