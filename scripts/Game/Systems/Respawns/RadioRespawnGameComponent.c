@@ -254,8 +254,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			//Replication.BumpMe();
 			SpawnPrefabs();
 			GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, m_tempEntity, groupID, m_tempPrefab, m_tempPlayerID);
-			GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 300000, false, groupID, 300000);
 		}
+		GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 300000, false, groupID, 300000);
 	}
 	
 	void SpawnPrefabs()
@@ -292,7 +292,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	{
 		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
 		array<int> groupPlayersIDs = group.GetPlayerIDs();
-			m_respawnTimeout.Insert(groupID, false);
 			foreach (int playerID: groupPlayersIDs)
 			{
 				
