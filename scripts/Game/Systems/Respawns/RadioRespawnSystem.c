@@ -55,6 +55,13 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 				return;
 			}
 			
+			if(m_radioComponent.InRespawnTimeout(m_groupID))
+			{
+				Print("in timeout");
+				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
+				return;
+			}
+			
 			if (m_groupRespawns >= m_respawnWaves)
 			{
 				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
