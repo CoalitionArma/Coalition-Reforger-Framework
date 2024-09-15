@@ -1,0 +1,66 @@
+GenericEntity : "{80C8C9227D2C7CF5}Prefabs/Characters/Core/Footwear_Base.et" {
+ ID "5244C46FA7C5E08C"
+ components {
+  InventoryItemComponent "{5244C46AD695742D}" {
+   Attributes SCR_ItemAttributeCollection "{625831F793CA5142}" {
+    ItemDisplayName UIInfo "{625831F793CA5178}" {
+     Name "#AR-Boots_USCombatBoots_Name"
+     Description "#RAS-Boots_US_CombatBoots_DCU_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{625831F793CA5173}" {
+     Weight 2
+     SizeSetupStrategy Manual
+     ItemDimensions 15 15 15
+     ItemVolume 2500
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{625831F793CA516F}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 2.5
+      FOV 10
+      PreviewPrefab "{09A73A75E54F3FF5}Prefabs/Characters/Footwear/CombatBoots_US_LightTan_Preview.et"
+     }
+    }
+   }
+  }
+  MeshObject "{5244C34DEE7DBFB4}" {
+   Object "{A0E0E888D2DA4D6C}Assets/Characters/Footwear/JungleBoots_01/JungleBoots_01_item.xob"
+   Materials {
+    MaterialAssignClass "{625831F793CA5167}" {
+     SourceMaterial "ColorPallete1"
+     AssignedMaterial "{352136D79453D5D4}Assets/Characters/Footwear/CombatBoots_US_LightTan/Data/CombatBoots_US_LightTan.emat"
+    }
+    MaterialAssignClass "{625831F793CA5164}" {
+     SourceMaterial "JungleBoots_01"
+     AssignedMaterial "{352136D79453D5D4}Assets/Characters/Footwear/CombatBoots_US_LightTan/Data/CombatBoots_US_LightTan.emat"
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5244C34DEE7DBFB2}" {
+   AreaType LoadoutBootsArea "{625831F793CA529E}" {
+   }
+   WornModel "{75E1063BE4BABBC6}Assets/Characters/Footwear/JungleBoots_01/JungleBoots_01.xob"
+   WornMaterialsOverride {
+    "{352136D79453D5D4}Assets/Characters/Footwear/CombatBoots_US_LightTan/Data/CombatBoots_US_LightTan.emat"
+   }
+   ItemModel "{A0E0E888D2DA4D6C}Assets/Characters/Footwear/JungleBoots_01/JungleBoots_01_item.xob"
+   ItemMaterialsOverride {
+    "{352136D79453D5D4}Assets/Characters/Footwear/CombatBoots_US_LightTan/Data/CombatBoots_US_LightTan.emat"
+   }
+   SoundInt 610
+   OverrideMeshesToHide {
+    "Foot_L" "Foot_R"
+   }
+  }
+  ActionsManagerComponent "{5244C34DEE7DBF9F}" {
+   ActionContexts {
+    UserActionContext "{5244C34DEE7DBF83}" {
+     Position PointInfo "{5244C34DEE7DBF80}" {
+      Offset 0 0.1 0
+     }
+    }
+   }
+  }
+ }
+ coords 1212.622 39.094 2839.711
+}

@@ -1,0 +1,19 @@
+SCR_ChimeraCharacter : "{EC7F85150BBE8F7A}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Medic_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+       Prefab "{243948B23D90BECB}Prefabs/Items/Equipment/Binoculars/Binoculars_B8/Binoculars_B8.et"
+      }
+     }
+    }
+   }
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Medical Officer"
+  }
+ }
+}

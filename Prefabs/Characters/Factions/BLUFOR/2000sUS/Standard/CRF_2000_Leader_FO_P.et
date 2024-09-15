@@ -1,0 +1,19 @@
+SCR_ChimeraCharacter : "{83C64C0E40717D26}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_Base_SL_P.et" {
+ ID "52092032B0E62200"
+ components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+       Prefab "{03810BEF182ADA0B}Prefabs/Items/Equipment/Binoculars/Rangefinder_Vector21.et"
+      }
+     }
+    }
+   }
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Forward Observer"
+  }
+ }
+}

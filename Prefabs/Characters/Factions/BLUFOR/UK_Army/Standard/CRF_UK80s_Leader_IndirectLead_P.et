@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{E7426A39FE6E5D2D}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Commander"
+  }
+ }
+}

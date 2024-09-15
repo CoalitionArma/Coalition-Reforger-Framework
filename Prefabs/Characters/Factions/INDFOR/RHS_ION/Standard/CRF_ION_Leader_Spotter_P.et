@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{D48AD4A4E92970B9}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Spotter"
+  }
+ }
+}

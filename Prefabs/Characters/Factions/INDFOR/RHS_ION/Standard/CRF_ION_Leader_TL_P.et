@@ -1,0 +1,17 @@
+SCR_ChimeraCharacter : "{D48AD4A4E92970B9}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Team Leader"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{623A72F12B547C81}" {
+     PrefabsToSpawn {
+      "{2F19DBB99A359B48}Prefabs/Items/Equipment/Radios/INDFOR_Radio_GI.et"
+     }
+    }
+   }
+  }
+ }
+}

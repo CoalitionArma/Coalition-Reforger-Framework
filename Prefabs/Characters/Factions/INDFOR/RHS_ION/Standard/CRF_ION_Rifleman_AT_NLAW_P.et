@@ -1,0 +1,11 @@
+SCR_ChimeraCharacter : "{3CD75D07C03AC192}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Rifleman_AT_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Anti-Tank (NLAW)"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{8F63EC272C18E00C}Prefabs/Weapons/Launchers/NLAW/NLAW.et"
+  }
+ }
+}

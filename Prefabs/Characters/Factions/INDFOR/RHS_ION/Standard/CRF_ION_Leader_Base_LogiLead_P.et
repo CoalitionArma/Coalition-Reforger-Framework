@@ -1,0 +1,15 @@
+SCR_ChimeraCharacter : "{D48AD4A4E92970B9}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Logistics Leader"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{DF886C6B22F49828}Prefabs/Items/Equipment/Backpacks/backpack_511_rush12/Backpack_511_rush12_black.et"
+    }
+   }
+  }
+ }
+}

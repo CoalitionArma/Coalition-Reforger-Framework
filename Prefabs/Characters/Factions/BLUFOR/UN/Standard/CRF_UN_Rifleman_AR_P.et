@@ -1,0 +1,29 @@
+SCR_ChimeraCharacter : "{64E64B189E1F9F00}Prefabs/Characters/Factions/BLUFOR/UN/Standard/CRF_UN_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Automatic Rifleman"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{E6D4287208589401}Prefabs/Weapons/MachineGuns/L4LMG/MG_L4_LMG.et"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{625D256ABF4D4C02}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{625D256ABF4D4C3D}" {
+     PrefabsToSpawn {
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     }
+    }
+    ItemsInitConfigurationItem "{625D256ABF4D4C3C}" {
+     PrefabsToSpawn {
+      "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et" "{0D8D8FF54D0CF1A9}Prefabs/Weapons/Magazines/Magazine_762x51_Bren_Commonwealth_30rnd_BattleMix.et"
+     }
+    }
+   }
+  }
+ }
+}

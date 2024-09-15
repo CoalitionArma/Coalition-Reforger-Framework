@@ -1,0 +1,61 @@
+SCR_ChimeraCharacter : "{EDECFE7965364082}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Driver"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{9918C00DD74978A5}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_RAS_xp3_Peq_Aimpoint.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{72785390F723C7DA}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_MID_GRAY_AMP_NVG.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{E3CF7D0A9D08022E}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_Black.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{3EE5D06F1BB8F48F}Prefabs/Characters/Vests/Vest_Taktika/Vest_Taktika_black.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{9C624FF37082B70A}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_black.et"
+    }
+    LoadoutSlotInfo Back {
+    }
+    LoadoutSlotInfo Vest {
+     Prefab ""
+    }
+    LoadoutSlotInfo HandWear {
+     Prefab "{8D4A4DF9111F0682}Prefabs/Characters/Handwear/Gloves_MechanixMpact/Gloves_mpack_Blk.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{623964240D7374CE}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_Black.et"
+     PrefabsToSpawn {
+      "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et" "{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et" "{2F19DBB99A359B48}Prefabs/Items/Equipment/Radios/INDFOR_Radio_GI.et"
+     }
+    }
+    ItemsInitConfigurationItem "{623A72F12B547C81}" {
+     TargetStorage "Prefabs/Characters/Vests/Vest_Taktika/Vest_Taktika_black.et"
+    }
+    ItemsInitConfigurationItem "{623964240D7374FE}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_Black.et"
+    }
+    ItemsInitConfigurationItem "{625D256DC85EFF90}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{625D256DC85EFF8C}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_black.et"
+    }
+    ItemsInitConfigurationItem "{625D256DC85EFF87}" {
+     TargetStorage "Prefabs/Characters/Vests/Vest_Taktika/Vest_Taktika_black.et"
+    }
+   }
+  }
+ }
+}

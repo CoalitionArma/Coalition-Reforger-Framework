@@ -1,0 +1,22 @@
+GenericEntity : "{271D10D6B06A7F83}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_RAS_NT4.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  RHS_SGC_RadialMenuComponent "{5E0ED058CD731BC8}" {
+   m_sDisplayName "#RHS-Weapon_M4A1_Name"
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5E0EEDB0BD59EE7D}" {
+     AttachmentSlot InventoryStorageSlot Optics {
+      Prefab "{158AF827F9114A36}Prefabs/Weapons/Attachments/Optics/exps/Optic_EXPS3-3.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE9573F14F0C}" {
+      Prefab "{5AE8F3A22BDB534F}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_black.et"
+     }
+    }
+   }
+  }
+ }
+}

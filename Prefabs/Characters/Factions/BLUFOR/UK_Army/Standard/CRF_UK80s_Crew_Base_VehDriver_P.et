@@ -1,0 +1,56 @@
+SCR_ChimeraCharacter : "{E7426A39FE6E5D2D}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+       Prefab ""
+      }
+     }
+    }
+   }
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Driver"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{ADDB4062CA2910CB}Prefabs/Weapons/Rifles/L2A3/Rifle_L2A3_Sterling.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{001141A9132DF583}Prefabs/Characters/HeadGear/Helmet_Mk5_01/Helmet_Mk5_net_01.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{C0FF8A6F0EE9ECB0}Prefabs/Characters/Uniforms/Smock_Combat_84Pat_DPM_01.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{20D80A4DAA97F6CF}Prefabs/Characters/Uniforms/Trousers_Combat_84Pat_DPM_01.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{610CC31428816D50}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Smock_Combat_84Pat_DPM_01.et"
+     PrefabsToSpawn {
+      "{C8B6565467AA8CB7}Prefabs/Items/Equipment/Compass/Compass_Baseplate.et" "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{E67E7932C86FBB96}Prefabs/Items/Medicine/FieldDressing_UK_01.et" "{E67E7932C86FBB96}Prefabs/Items/Medicine/FieldDressing_UK_01.et" "{842E93279EA18647}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_UK_01.et" "{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et" "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et"
+     }
+    }
+    ItemsInitConfigurationItem "{625831F0B8AF8D9F}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Smock_Combat_84Pat_DPM_01.et"
+    }
+    ItemsInitConfigurationItem "{625831F0B8AF8D9A}" {
+     PrefabsToSpawn {
+      "{91EA3DF1BA0AB1EF}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_Ball.et" "{91EA3DF1BA0AB1EF}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_Ball.et" "{91EA3DF1BA0AB1EF}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_Ball.et" "{91EA3DF1BA0AB1EF}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_Ball.et" "{CE179546A16382BA}Prefabs/Weapons/Grenades/Grenade_L2A2.et" "{96FFE213B19D1D57}Prefabs/Weapons/Grenades/Smoke_No80_WP.et"
+     }
+    }
+   }
+  }
+ }
+}

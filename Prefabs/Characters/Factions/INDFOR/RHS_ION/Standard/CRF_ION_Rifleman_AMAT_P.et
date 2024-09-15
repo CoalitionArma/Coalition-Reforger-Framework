@@ -1,0 +1,17 @@
+SCR_ChimeraCharacter : "{867F510A7286BDBB}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Rifleman_AAR_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Assistant Medium Anti-Tank"
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{625D546D314DDCFA}" {
+     PrefabsToSpawn {
+      "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et" "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et" "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et"
+     }
+    }
+   }
+  }
+ }
+}
