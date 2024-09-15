@@ -354,8 +354,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		EntitySpawnParams params = new EntitySpawnParams();
 		Math3D.MatrixCopy(respawnData.m_aSpawnTransform, params.Transform);
 		IEntity entity = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params);
+		Print(entity);
 		SCR_AIGroup aiGroup = m_playableManager.GetPlayerGroupByPlayable(respawnData.m_iId);
+		Print(aiGroup);
 		SCR_AIGroup playabelGroup = aiGroup.GetSlave();
+		Print(playabelGroup);
 		playabelGroup.AddAIEntityToGroup(entity);
 		
 		PS_PlayableComponent playableComponentNew = PS_PlayableComponent.Cast(entity.FindComponent(PS_PlayableComponent));
