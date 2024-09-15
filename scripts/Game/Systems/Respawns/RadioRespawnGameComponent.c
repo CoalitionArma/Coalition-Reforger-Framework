@@ -322,14 +322,14 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			Print("Spawning Player");
 			//Replication.BumpMe();
 			//SpawnPrefabs(m_tempPlayerID, m_tempPrefab);
-			Rpc(SpawnPrefabs, m_tempPlayerID, m_tempPrefab);
+			Rpc(SpawnPrefabs, m_tempPlayerID, m_tempPrefab, m_tempPlayableID);
 		}
 		GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, groupID);
 		GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 60000, false, groupID, 60000);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void SpawnPrefabs(int playerID, string loadoutPrefab)
+	void SpawnPrefabs(int playerID, string loadoutPrefab, RplId playerPlayableID)
 	{
 		if(playerID != SCR_PlayerController.GetLocalPlayerId())
 			return;
@@ -338,7 +338,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		Print("Spawning Prefabs on Client");
 		PS_PlayableManager clientplayableManager = PS_PlayableManager.GetInstance();
 		Print(clientplayableManager);
-		RplId playerPlayableID = clientplayableManager.GetPlayableByPlayer(playerID);
 		Print(playerPlayableID);
 		if(playerPlayableID == RplId.Invalid())
 			return;
