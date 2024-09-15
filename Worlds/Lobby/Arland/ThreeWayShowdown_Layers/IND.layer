@@ -1,0 +1,116 @@
+$grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 827.378 40.55 2681.687
+  angleY 20.95
+  m_aUnitPrefabSlots {
+   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+  }
+  m_sCustomNameSet "Squad"
+  m_aUnitPrefabColorTeams {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 829.872 40.55 2688.2
+  angleY 20.95
+  m_aUnitPrefabSlots {
+   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+  }
+  m_sCustomNameSet "Squad"
+  m_aUnitPrefabColorTeams {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 832.621 40.55 2695.38
+  angleY 20.95
+  m_aUnitPrefabSlots {
+   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+  }
+  m_sCustomNameSet "Squad"
+  m_aUnitPrefabColorTeams {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 824.974 40.55 2675.408
+  angleY 20.95
+  m_aUnitPrefabSlots {
+   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+  }
+  m_sCustomNameSet "Squad"
+  m_aUnitPrefabColorTeams {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 835.318 40.55 2702.424
+  angleY 20.95
+  m_aUnitPrefabSlots {
+   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+  }
+  m_sCustomNameSet "Squad"
+  m_aUnitPrefabColorTeams {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 822.895 40.55 2669.978
+  angleY 20.95
+  m_aUnitPrefabSlots {
+   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+  }
+  m_sCustomNameSet "Squad"
+  m_aUnitPrefabColorTeams {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None" "None" "None" "None" "None" "None"
+  }
+ }
+}
