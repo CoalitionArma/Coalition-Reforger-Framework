@@ -107,6 +107,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			m_clientCanIndforRespawn = m_canIndforRespawn;
 			m_clientIndforRespawnWaves = m_indforRespawnWaves;
 			Replication.BumpMe();
+			GetGroups();
+			GetGame().GetCallqueue().CallLater(SpawnGroupServer, 10000, false, 0);
 		}
 		return;
 	}
@@ -322,6 +324,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			Print("Spawning Player");
 			//Replication.BumpMe();
 			//SpawnPrefabs(m_tempPlayerID, m_tempPrefab);
+			if(!GetGame().GetPlayerManager().IsPlayerConnected(m_tempPlayerID))
+				continue;
 			Rpc(SpawnPrefabs, m_tempPlayerID, m_tempPrefab, m_tempPlayableID);
 		}
 		GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, groupID);
@@ -354,19 +358,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		EntitySpawnParams params = new EntitySpawnParams();
 		Math3D.MatrixCopy(respawnData.m_aSpawnTransform, params.Transform);
 		IEntity entity = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params);
-		Print(entity);
-		SCR_AIGroup aiGroup = m_playableManager.GetPlayerGroupByPlayable(respawnData.m_iId);
-		Print(aiGroup);
-		SCR_AIGroup playabelGroup = aiGroup.GetSlave();
-		Print(playabelGroup);
-		//playabelGroup.AddAIEntityToGroup(entity);		
-		AIControlComponent control = AIControlComponent.Cast(entity.FindComponent(AIControlComponent));
-		Print(control);
-		AIAgent agent = control.GetControlAIAgent();
-		Print(agent);
-		control.ActivateAI();
-		playabelGroup.AddAgent(agent);
-		
 		PS_PlayableComponent playableComponentNew = PS_PlayableComponent.Cast(entity.FindComponent(PS_PlayableComponent));
 		playableComponentNew.SetPlayable(true);
 		
@@ -392,6 +383,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			playableManager.SetPlayerPlayable(playerId, playableId);
 			playableManager.ForceSwitch(playerId);
 		}
+		SCR_AIGroup aiGroup = m_playableManager.GetPlayerGroupByPlayable(respawnData.m_iId);
+		Print(aiGroup.GetGroupID());
+		m_GroupsManagerComponent.AddPlayerToGroup(aiGroup.GetGroupID(), playerId);
 	}
 	
 	void SetNewPlayerValues(int groupID)
