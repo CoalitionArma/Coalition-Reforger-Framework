@@ -34,17 +34,27 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	protected int m_indforRespawnWaves;
 	
 	[RplProp()]
-	protected string m_clientBluforFactionKey;
-	protected bool m_clientCanBluforRespawn;
-	protected int m_clientBluforRespawnWaves;
-	protected string m_clientOpforFactionKey;
-	protected bool m_clientCanOpforRespawn;
-	protected int m_clientOpforRespawnWaves;
-	protected string m_clientIndforFactionKey;
-	protected bool m_clientCanIndforRespawn;
-	protected int m_clientIndforRespawnWaves;
-	protected ref array<int> m_respawnedGroups = {};
-	protected ref map<int, bool> m_respawnTimeout = new map<int, bool>();
+	private string m_clientBluforFactionKey;
+	[RplProp()]
+	private bool m_clientCanBluforRespawn;
+	[RplProp()]
+	private int m_clientBluforRespawnWaves;
+	[RplProp()]
+	private string m_clientOpforFactionKey;
+	[RplProp()]
+	private bool m_clientCanOpforRespawn;
+	[RplProp()]
+	private int m_clientOpforRespawnWaves;
+	[RplProp()]
+	private string m_clientIndforFactionKey;
+	[RplProp()]
+	private bool m_clientCanIndforRespawn;
+	[RplProp()]
+	private int m_clientIndforRespawnWaves;
+	[RplProp()]
+	private ref array<int> m_respawnedGroups = {};
+	[RplProp()]
+	private ref array<int> m_respawnTimeout = {};
 	
 	
 	//[RplProp(onRplName: "SpawnPrefabs")]
@@ -230,8 +240,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	bool InRespawnTimeout(int groupID)
 	{
 		bool canRespawn;
-		m_respawnTimeout.Find(groupID, canRespawn);
-		return canRespawn;
+		if(m_respawnTimeout.Find(groupID) != -1)
+			return true;
+		return false;
 	}
 	
 	void GetGroups()
@@ -245,7 +256,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		{
 			array<int> groupPlayersIDs = group.GetPlayerIDs();
 			int groupID = group.GetGroupID();
-			m_respawnTimeout.Insert(groupID, false);
 			Replication.BumpMe();
 			foreach (int playerID: groupPlayersIDs)
 			{
@@ -278,7 +288,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		Print("Spawning Group server side");
 		Print(groupID);
 		m_respawnedGroups.Insert(groupID);
-		m_respawnTimeout.Set(groupID, true);
+		m_respawnTimeout.Insert(groupID);
 		Replication.BumpMe();
 		
 		m_playableManager = PS_PlayableManager.GetInstance();
@@ -401,7 +411,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		m_mPlayablesCount = m_mPlayables.Count();
 		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
 		array<int> groupPlayersIDs = group.GetPlayerIDs();
-			m_respawnTimeout.Insert(groupID, false);
+			m_respawnTimeout.Remove(m_respawnTimeout.Find(groupID));
 			Replication.BumpMe();
 			foreach (int playerID: groupPlayersIDs)
 			{
