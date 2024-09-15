@@ -337,14 +337,21 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		Print("----------------------------------------------");
 		Print("Spawning Prefabs on Client");
 		PS_PlayableManager clientplayableManager = PS_PlayableManager.GetInstance();
+		Print(clientplayableManager);
 		RplId playerPlayableID = clientplayableManager.GetPlayableByPlayer(playerID);
+		Print(playerPlayableID);
 		if(playerPlayableID == RplId.Invalid())
 			return;
+		Print("playable id is good");
 		PS_PlayableComponent playableComponent = clientplayableManager.GetPlayableById(playerPlayableID);
+		Print(playableComponent);
 		ResourceName prefabToSpawn = loadoutPrefab;
+		Print(prefabToSpawn);
 		PS_RespawnData respawnData = new PS_RespawnData(playableComponent, prefabToSpawn);
-		m_GameModeCoop = PS_GameModeCoop.Cast(GetGame().GetGameMode());
-		m_GameModeCoop.Respawn(playerID, respawnData);
+		Print(respawnData);
+		PS_GameModeCoop ClientGameModeCoop = PS_GameModeCoop.Cast(GetGame().GetGameMode());
+		Print(ClientGameModeCoop);
+		ClientGameModeCoop.Respawn(playerID, respawnData);
 	}
 	
 	void SetNewPlayerValues(int groupID)
