@@ -363,7 +363,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		Print(playabelGroup);
 		//playabelGroup.AddAIEntityToGroup(entity);		
 		AIControlComponent control = AIControlComponent.Cast(entity.FindComponent(AIControlComponent));
+		Print(control);
 		AIAgent agent = control.GetControlAIAgent();
+		Print(agent);
 		control.ActivateAI();
 		playabelGroup.AddAgent(agent);
 		
