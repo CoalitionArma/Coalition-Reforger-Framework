@@ -384,8 +384,12 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			playableManager.ForceSwitch(playerId);
 		}
 		SCR_AIGroup aiGroup = m_playableManager.GetPlayerGroupByPlayable(respawnData.m_iId);
-		Print(aiGroup.GetGroupID());
-		m_GroupsManagerComponent.AddPlayerToGroup(aiGroup.GetGroupID(), playerId);
+		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, aiGroup, playerId);
+	}
+	
+	void SetPlayerGroup(SCR_AIGroup group, int playerID)
+	{
+		m_GroupsManagerComponent.AddPlayerToGroup(group.GetGroupID(), playerID);
 	}
 	
 	void SetNewPlayerValues(int groupID)
