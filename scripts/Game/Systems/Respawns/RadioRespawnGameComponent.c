@@ -107,6 +107,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			m_clientCanIndforRespawn = m_canIndforRespawn;
 			m_clientIndforRespawnWaves = m_indforRespawnWaves;
 			Replication.BumpMe();
+			GetGroups();
+			GetGame().GetCallqueue().CallLater(SpawnGroupServer, 10000, false, 0);
 		}
 		return;
 	}
@@ -359,7 +361,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		Print(aiGroup);
 		SCR_AIGroup playabelGroup = aiGroup.GetSlave();
 		Print(playabelGroup);
-		playabelGroup.AddAIEntityToGroup(entity);
+		//playabelGroup.AddAIEntityToGroup(entity);		
+		AIControlComponent control = AIControlComponent.Cast(entity.FindComponent(AIControlComponent));
+		AIAgent agent = control.GetControlAIAgent();
+		control.ActivateAI();
+		playabelGroup.AddAgent(agent);
 		
 		PS_PlayableComponent playableComponentNew = PS_PlayableComponent.Cast(entity.FindComponent(PS_PlayableComponent));
 		playableComponentNew.SetPlayable(true);
