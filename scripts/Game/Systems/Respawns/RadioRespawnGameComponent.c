@@ -33,7 +33,21 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	[Attribute("1", "auto", "Amount of times SLs can call in reinforcements on Indfor.")];
 	protected int m_indforRespawnWaves;
 	
-	[RplProp(onRplName: "SpawnPrefabs")]
+	[RplProp()]
+	protected string m_clientBluforFactionKey;
+	protected bool m_clientCanBluforRespawn;
+	protected int m_clientBluforRespawnWaves;
+	protected string m_clientOpforFactionKey;
+	protected bool m_clientCanOpforRespawn;
+	protected int m_clientOpforRespawnWaves;
+	protected string m_clientIndforFactionKey;
+	protected bool m_clientCanIndforRespawn;
+	protected int m_clientIndforRespawnWaves;
+	protected ref array<int> m_respawnedGroups = {};
+	protected ref map<int, bool> m_respawnTimeout = new map<int, bool>();
+	
+	
+	//[RplProp(onRplName: "SpawnPrefabs")]
 	string m_tempPrefab;
 	int m_tempPlayerID;
 	RplId m_tempPlayableID;
@@ -44,13 +58,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	CRF_SafestartGameModeComponent m_safestart;
-	protected ref array<int> m_respawnedGroups = {};
 	
 	protected ref map<IEntity, int> m_entitySlots = new map<IEntity, int>();
 	protected ref map<IEntity, ResourceName> m_entityPrefabs = new map<IEntity, ResourceName>();
 	protected ref map<IEntity, int> m_entityID = new map<IEntity, int>();
 	protected ref map<IEntity, RplId> m_entityPlayable = new map<IEntity, RplId>();
-	protected ref map<int, bool> m_respawnTimeout = new map<int, bool>();
 		
 	protected ref map<RplId, PS_PlayableComponent> m_mPlayables = new map<RplId, PS_PlayableComponent>;
 	protected int m_mPlayablesCount = 0;
@@ -75,6 +87,16 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			Print("Safestart has begun");
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
 			GetGame().GetCallqueue().CallLater(WaitSafeStartEnd, 1000, true);
+			m_clientBluforFactionKey = m_bluforFactionKey;
+			m_clientCanBluforRespawn = m_canBluforRespawn;
+			m_clientBluforRespawnWaves = m_bluforRespawnWaves;
+			m_clientOpforFactionKey = m_opforFactionKey;
+			m_clientCanOpforRespawn = m_canOpforRespawn;
+			m_clientOpforRespawnWaves = m_opforRespawnWaves;
+			m_clientIndforFactionKey = m_indforFactionKey;
+			m_clientCanIndforRespawn = m_canIndforRespawn;
+			m_clientIndforRespawnWaves = m_indforRespawnWaves;
+			Replication.BumpMe();
 		}
 		return;
 	}
@@ -107,11 +129,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	int GetAmountofWave(string factionKey)
 	{
-		if(factionKey == m_bluforFactionKey)
-			return m_bluforRespawnWaves;
-		if(factionKey == m_opforFactionKey)
-			return m_opforRespawnWaves;
-		return m_indforFactionKey;
+		if(factionKey == m_clientBluforFactionKey)
+			return m_clientBluforRespawnWaves;
+		if(factionKey == m_clientOpforFactionKey)
+			return m_clientOpforRespawnWaves;
+		return m_clientIndforFactionKey;
 	}
 	
 	int GetRespawnedGroups(int groupID)
@@ -132,14 +154,20 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		if(factionKey == m_bluforFactionKey)
 		{
 			m_bluforRespawnWaves = m_bluforRespawnWaves + amount;
+			m_clientBluforRespawnWaves = m_bluforRespawnWaves;
+			Replication.BumpMe();
 			return;
 		}
 		if(factionKey == m_opforFactionKey)
 		{
 			m_opforRespawnWaves = m_opforRespawnWaves + amount;
+			m_clientOpforRespawnWaves = m_opforRespawnWaves;
+			Replication.BumpMe();
 			return;
 		}
 		m_indforRespawnWaves = m_indforRespawnWaves + amount;
+		m_clientIndforRespawnWaves = m_indforRespawnWaves;
+		Replication.BumpMe();
 		return;
 	}
 	
@@ -148,14 +176,20 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		if(factionKey == m_bluforFactionKey)
 		{
 			m_bluforRespawnWaves = m_bluforRespawnWaves - amount;
+			m_clientBluforRespawnWaves = m_bluforRespawnWaves;
+			Replication.BumpMe();
 			return;
 		}
 		if(factionKey == m_opforFactionKey)
 		{
 			m_opforRespawnWaves = m_opforRespawnWaves - amount;
+			m_clientOpforRespawnWaves = m_opforRespawnWaves;
+			Replication.BumpMe();
 			return;
 		}
 		m_indforRespawnWaves = m_indforRespawnWaves - amount;
+		m_clientIndforRespawnWaves = m_indforRespawnWaves;
+		Replication.BumpMe();
 		return;
 	}
 	
@@ -164,27 +198,33 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		if(factionKey == m_bluforFactionKey)
 		{
 			m_canBluforRespawn = canRespawn;
+			m_clientCanBluforRespawn = m_canBluforRespawn;
+			Replication.BumpMe();
 			return;
 		}
 		if(factionKey == m_opforFactionKey)
 		{
 			m_canOpforRespawn = canRespawn;
+			m_clientCanOpforRespawn = m_canOpforRespawn;
+			Replication.BumpMe();
 			return;
 		}
 		m_canIndforRespawn = canRespawn;
+		m_clientCanIndforRespawn = m_canIndforRespawn;
+		Replication.BumpMe();
 		return;
 	}
 	
 	bool CanFactionRespawn(string factionID)
 	{
-		if(factionID == m_bluforFactionKey)
+		if(factionID == m_clientBluforFactionKey)
 		{
-			return m_canBluforRespawn;
+			return m_clientCanBluforRespawn;
 		}
-		else if(factionID == m_opforFactionKey)
-			return m_canOpforRespawn;
+		else if(factionID == m_clientOpforFactionKey)
+			return m_clientCanOpforRespawn;
 		else
-			return m_canIndforRespawn;
+			return m_clientCanIndforRespawn;
 	}
 	
 	bool InRespawnTimeout(int groupID)
@@ -206,6 +246,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			array<int> groupPlayersIDs = group.GetPlayerIDs();
 			int groupID = group.GetGroupID();
 			m_respawnTimeout.Insert(groupID, false);
+			Replication.BumpMe();
 			foreach (int playerID: groupPlayersIDs)
 			{
 				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
@@ -213,6 +254,9 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
 				Print("----------------------------------------------");
 				PrintFormat("Logging player %1", playerID);
+				Print(controlledEntity);
+				Print(prefabName);
+				Print(playerPlayableID);
 				m_entitySlots.Insert(controlledEntity, groupID);
 				m_entityPrefabs.Insert(controlledEntity, prefabName);
 				m_entityID.Insert(controlledEntity, playerID);
@@ -235,6 +279,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		Print(groupID);
 		m_respawnedGroups.Insert(groupID);
 		m_respawnTimeout.Set(groupID, true);
+		Replication.BumpMe();
 		
 		m_playableManager = PS_PlayableManager.GetInstance();
 		Print("----------------------------------------------");
@@ -242,9 +287,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		for(int i, count = m_entitySlots.Count(); i < count; ++i)
 		{
 			m_tempEntity = m_entitySlots.GetKeyByValue(groupID);
-			
-			if(!m_tempEntity)
-				break;
 			
 			m_tempPlayerID = m_entityID.Get(m_tempEntity);
 			Print(m_tempPlayerID);
@@ -268,25 +310,31 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			Print("----------------------------------------------");
 			Print("Players Dead");
 			Print("Spawning Player");
-			Replication.BumpMe();
-			SpawnPrefabs();
+			//Replication.BumpMe();
+			//SpawnPrefabs(m_tempPlayerID, m_tempPrefab);
+			Rpc(SpawnPrefabs, m_tempPlayerID, m_tempPrefab);
 		}
 		GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, groupID);
 		GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 60000, false, groupID, 60000);
 	}
 	
-	void SpawnPrefabs()
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void SpawnPrefabs(int playerID, string loadoutPrefab)
 	{
-		Print("----------------------------------------------");
-		Print("Spawning Prefabs to all");
-		m_playableManager = PS_PlayableManager.GetInstance();
-		if(m_tempPlayableID == RplId.Invalid())
+		if(playerID != SCR_PlayerController.GetLocalPlayerId())
 			return;
-		PS_PlayableComponent playableComponent = m_playableManager.GetPlayableById(m_tempPlayableID);
-		ResourceName prefabToSpawn = m_tempPrefab;
+		
+		Print("----------------------------------------------");
+		Print("Spawning Prefabs on Client");
+		PS_PlayableManager clientplayableManager = PS_PlayableManager.GetInstance();
+		RplId playerPlayableID = clientplayableManager.GetPlayableByPlayer(playerID);
+		if(playerPlayableID == RplId.Invalid())
+			return;
+		PS_PlayableComponent playableComponent = clientplayableManager.GetPlayableById(playerPlayableID);
+		ResourceName prefabToSpawn = loadoutPrefab;
 		PS_RespawnData respawnData = new PS_RespawnData(playableComponent, prefabToSpawn);
 		m_GameModeCoop = PS_GameModeCoop.Cast(GetGame().GetGameMode());
-		m_GameModeCoop.Respawn(m_tempPlayerID, respawnData);
+		m_GameModeCoop.Respawn(playerID, respawnData);
 	}
 	
 	void SetNewPlayerValues(int groupID)
@@ -354,6 +402,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
 		array<int> groupPlayersIDs = group.GetPlayerIDs();
 			m_respawnTimeout.Insert(groupID, false);
+			Replication.BumpMe();
 			foreach (int playerID: groupPlayersIDs)
 			{
 				
