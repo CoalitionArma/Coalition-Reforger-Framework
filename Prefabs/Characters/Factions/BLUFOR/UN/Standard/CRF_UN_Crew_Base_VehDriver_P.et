@@ -1,0 +1,46 @@
+SCR_ChimeraCharacter : "{64E64B189E1F9F00}Prefabs/Characters/Factions/BLUFOR/UN/Standard/CRF_UN_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Driver"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{ADDB4062CA2910CB}Prefabs/Weapons/Rifles/L2A3/Rifle_L2A3_Sterling.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{D876152B9B9BAA4E}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_UN1.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CAAFB9235E903}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Smock_Combat_Rolled_84Pat_DPM_01.et"
+    }
+    ItemsInitConfigurationItem "{625D256ABF4D4C02}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Trousers_Combat_68Pat_DPM_Tropical_01.et"
+     PrefabsToSpawn {
+      "{01F56F6D9A15D96A}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_BattleMix.et" "{01F56F6D9A15D96A}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_BattleMix.et" "{01F56F6D9A15D96A}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_BattleMix.et" "{01F56F6D9A15D96A}Prefabs/Weapons/Magazines/Magazine_9x19_L2A3_34rnd_BattleMix.et"
+     }
+    }
+    ItemsInitConfigurationItem "{625D256ABF4D4C3D}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Trousers_Combat_68Pat_DPM_Tropical_01.et"
+     PrefabsToSpawn {
+      "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     }
+    }
+    ItemsInitConfigurationItem "{625D256ABF4D4C3C}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Trousers_Combat_68Pat_DPM_Tropical_01.et"
+     PrefabsToSpawn {
+      "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
+     }
+    }
+   }
+  }
+ }
+}
