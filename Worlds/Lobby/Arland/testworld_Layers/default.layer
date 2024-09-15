@@ -41,4 +41,6 @@ $grp BaseGameTriggerEntity {
 }
 SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
  coords 2025.163 54.18 2128.87
+ m_iMaxMembers 8
+ m_bPlayable 1
 }

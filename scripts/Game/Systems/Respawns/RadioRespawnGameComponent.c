@@ -107,6 +107,8 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			m_clientCanIndforRespawn = m_canIndforRespawn;
 			m_clientIndforRespawnWaves = m_indforRespawnWaves;
 			Replication.BumpMe();
+			GetGroups();
+			GetGame().GetCallqueue().CallLater(SpawnGroupServer, 10000, false, 0);
 		}
 		return;
 	}
@@ -314,7 +316,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				{
 					Print("----------------------------------------------");
 					Print("Players alive");
-					break;
+					continue;
 				}	
 			
 			Print("----------------------------------------------");
@@ -416,7 +418,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 				
 				IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);	
 				if(m_entitySlots.Get(controlledEntity))
-					break;		
+					continue;		
 				ResourceName prefabName = controlledEntity.GetPrefabData().GetPrefabName();
 				RplId playerPlayableID = m_playableManager.GetPlayableByPlayer(playerID);
 				IEntity oldEntity = m_entityID.GetKeyByValue(playerID);
