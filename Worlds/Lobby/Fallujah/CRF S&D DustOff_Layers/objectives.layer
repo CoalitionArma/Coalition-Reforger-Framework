@@ -1,0 +1,9 @@
+$grp SCR_BaseTriggerEntity {
+ bSiteTrigger {
+  coords 1859.375 8.312 2176.073
+ }
+ aSiteTrigger {
+  coords 1889.37 8.156 1976.402
+  angleY -3.497
+ }
+}

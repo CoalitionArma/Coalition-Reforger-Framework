@@ -1,0 +1,53 @@
+SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
+ coords 3280.614 10.375 760.869
+ m_aUnitPrefabSlots {
+  "{18E198DDC7DABAE8}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_PL_P.et" "{94C2898BF4FBDA0A}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_JTAC_P.et" "{84FC8FECEF20666B}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MO_P.et"
+ }
+ m_sCustomNameSet "Platoon"
+ {
+  $grp SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords 22.034 0 -2.795
+    angleY -34.031
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords 28.156 0 -9.193
+    angleY -35.257
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords 15.643 0 7.214
+    angleY -35.83
+    m_aUnitPrefabSlots {
+     "{83C64C0E40717D26}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_Base_SL_P.et" "{88FBA322B5A1AF71}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Medic_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{A99403CE93D9BDDF}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MMG_P.et" "{5E08AB34F014A702}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMMG_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{81299AC8C1381458}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MAT_P.et" "{76B53232A2F50E85}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMAT_P.et" "{D732CFA07DAB6C53}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Demo_P.et"
+    }
+    m_sCustomNameSet "3rd Squad (Weapons)"
+    {
+     SCR_AIGroup : "{8221E6C32FBF1E53}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_AirCrew_p.et" {
+      coords -11.127 0 15.082
+      angleY 35.83
+      m_sCustomNameSet "Transport"
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle H47_base1 : "{7CF0A16FA3AED298}Prefabs/Vehicles/Helicopters/H47/H47_base.et" {
+ coords 3233.917 11.176 765.356
+}

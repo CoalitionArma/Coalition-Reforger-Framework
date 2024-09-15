@@ -1,0 +1,33 @@
+SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
+ coords 1805.347 8.156 2003.583
+ m_sCustomNameSet "Platoon"
+ {
+  $grp SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+   {
+    coords 7.811 -0 -8.348
+   }
+   {
+    coords 7.471 0 0.514
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 6.419 0 10.107
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 14.678 0 -7.309
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords 13.275 0 6.682
+    m_sCustomNameSet "5th Squad"
+    {
+     SCR_AIGroup : "{69DFF9BDB5B70D77}Prefabs/Groups/INDFOR/Taliban/Vehicle/CRF_Group_Taliban_2manCrew_P.et" {
+      coords -13.126 0 -15.887
+      m_sCustomNameSet "AA Team (ZU-23)"
+     }
+    }
+   }
+  }
+ }
+}
