@@ -1,56 +1,56 @@
 PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  coords 3169.865 10.059 811.65
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
  {
   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
    {
     coords 74.293 1.397 -30.595
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 159.892 6.177 -16.23
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 232.162 2.817 20.88
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 242.614 4.088 97.095
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 213.95 8.674 148.793
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 160.361 10.407 158.645
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 63.529 8.536 153.229
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords -9.441 3.891 70.527
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
   }
@@ -60,7 +60,7 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
  {
   coords 1994.494 7.579 2918.923
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  {
@@ -69,7 +69,7 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
   m_sQuadName "retain"
   m_sDescription "Extraction Depot"
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
+   "RHS_USAF" "RHS_AFRF"
   }
   {
    $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
@@ -80,7 +80,7 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
      m_sQuadName "retain"
      m_sDescription "Supply Depot 4 (1200)"
      m_aVisibleForFactions {
-      "RHS_RF_MSV" "RHS_US_USMC"
+      "RHS_AFRF" "RHS_USAF"
      }
     }
     {
@@ -90,7 +90,7 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
      m_sQuadName "retain"
      m_sDescription "Supply Depot 3 (1200)"
      m_aVisibleForFactions {
-      "RHS_RF_MSV" "RHS_US_USMC"
+      "RHS_AFRF" "RHS_USAF"
      }
     }
     {
@@ -100,7 +100,7 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
      m_sQuadName "retain"
      m_sDescription "Supply Depot 2 (500)"
      m_aVisibleForFactions {
-      "RHS_RF_MSV" "RHS_US_USMC"
+      "RHS_AFRF" "RHS_USAF"
      }
     }
     {
@@ -110,7 +110,7 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
      m_sQuadName "retain"
      m_sDescription "Supply Depot 1 (500)"
      m_aVisibleForFactions {
-      "RHS_RF_MSV" "RHS_US_USMC"
+      "RHS_AFRF" "RHS_USAF"
      }
     }
    }
@@ -120,38 +120,38 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
 PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  coords 2470.677 8.348 1260.835
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
  {
   $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    {
     coords 129.225 -1.817 87.567
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 204.113 8.291 137.524
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 373.806 7.075 301.781
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 539.717 7.996 362.739
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 692.445 11.325 421.191
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
   }
@@ -292,6 +292,6 @@ PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" 
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 3285.147 15 871.194
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
 }

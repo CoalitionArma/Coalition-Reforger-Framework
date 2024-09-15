@@ -5,7 +5,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Name "CRF Army Company HQ"
     m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
-    m_sFaction "RHS_US_USMC"
+    m_sFaction "RHS_USAF"
     m_aAuthoredLabels {
      4 51872 25 34 38
     }
@@ -140,7 +140,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "RHS_US_USMC"
+ m_faction "RHS_USAF"
  m_aUnitPrefabSlots {
   "{6BACF93226AED9E2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_COY_SL_P.et" "{8FDACC6613A31C90}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MO_P.et"
  }

@@ -60,7 +60,7 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   ""\
   "Exercise stealth, communication, and decisive action to achieve success in this high-stakes mission. Good luck, Blufor!"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bEmptyFactionVisibility 0
   m_bShowForAnyFaction 0
@@ -74,7 +74,7 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   ""\
   ""
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bEmptyFactionVisibility 0
   m_bShowForAnyFaction 0
@@ -88,7 +88,7 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   ""\
   "You should have NVGs in your backpack."
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
   m_bEmptyFactionVisibility 0
   m_bShowForAnyFaction 0
@@ -98,7 +98,7 @@ $grp PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescripti
   m_sTitle "Important Rules/Notes"
   m_sTextData "You are not allowed to pickup NVG and radio, and if respawns are enabled, adhere to the \"New Life Rule\" to ensure fair play."
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
   m_bEmptyFactionVisibility 0
   m_bShowForAnyFaction 0

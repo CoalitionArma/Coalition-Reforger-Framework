@@ -1,0 +1,98 @@
+GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  RHS_SGC_RadialMenuComponent "{5E0ED058CD731BC8}" {
+   m_sDisplayName "#RHS-Weapon_M4A1_BLOCK_II_Name"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#RHS-Weapon_M4A1_BLOCK_II_Name"
+     Description "#RHS-Weapon_M4A1_BLOCK_II_Description"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5E0EEDA2E5FAA2B6}" {
+     AttachmentSlot InventoryStorageSlot Buttstock {
+      Prefab "{BC68AE520F42BF35}Prefabs/Weapons/Attachments/Stocks/Buttstock_AR15_SOPMOD/RHS_M4_SOPMOD_Black.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA47E3F452D}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{E212EC1E74B86D73}Prefabs/Weapons/Attachments/Handguards/Handguard_AR15_DD/BLK/RHS_M4A1_DD12_5_Upper_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDA5B623AB37}" {
+     AttachmentSlot InventoryStorageSlot Handguard_lower {
+      Prefab "{BE5A55D33E115AD8}Prefabs/Weapons/Attachments/Handguards/Handguard_AR15_DD/BLK/RHS_M4A1_DD12_5_Lower_BLK.et"
+     }
+    }
+    AttachmentSlotComponent "{5E0EEDB0BD59EE7D}" {
+     AttachmentSlot InventoryStorageSlot Optics {
+      Prefab "{158AF827F9114A36}Prefabs/Weapons/Attachments/Optics/exps/Optic_EXPS3-3.et"
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE949ECF03E3}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE9573F14F0C}" {
+      Offset 0 0.1115 0.3184
+      Prefab "{5AE8F3A22BDB534F}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_black.et"
+      InspectionWidgetOffset 0 0.1115 0.3184
+     }
+     AttachmentType AttachmentRIS1913 "{5EA2BE94941B23EB}" {
+     }
+    }
+    AttachmentSlotComponent "{5EA2BE953838E77C}" {
+     AttachmentSlot InventoryStorageSlot "{5EA2BE95244FA719}" {
+     }
+    }
+    AttachmentSlotComponent "{60988582B19CD9BD}" {
+     AttachmentSlot InventoryStorageSlot FLASHHIDER {
+      Offset 0 0 -0.0075
+      Prefab "{F26F7B0B4BC513E2}Prefabs/Weapons/Attachments/Muzzle/RHS_M4_SF_4P.et"
+     }
+    }
+    AttachmentSlotComponent "{61749A66C4BA094E}" {
+     AttachmentSlot InventoryStorageSlot bayonet {
+      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
+     }
+    }
+    AttachmentSlotComponent "{625D5460B1C1B620}" {
+     AttachmentSlot InventoryStorageSlot "{5EB2C96A8030BC9E}" {
+      Offset 0 0.0558 0.3259
+      MergePhysics 1
+      Enabled 0
+      Name "Bipod"
+      InspectionWidgetOffset 0 0.0546 0.3683
+     }
+     AttachmentType AttachmentUnderbarrelRIS1913Short "{625D5460B1C1B656}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{FC0B8025D80CFEA5}Particles/Weapon/Muzzle_SF3Prong_LongBarrel.ptc"
+       EffectPosition EntitySlotInfo "{C9B3271BB85B5D32}" {
+        Offset 0 0 0.0371
+       }
+      }
+     }
+     MagazineTemplate "{C632D04DD25D3ABF}Prefabs/Weapons/Magazines/Pmag/Magazine_556x45_PmagWindowed_30rnd_M855A1.et"
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#RHS-Weapon_M4A1_BLOCK_II_Name"
+    Description "#RHS-Weapon_M4A1_BLOCK_II_Description"
+   }
+  }
+  Hierarchy "{E893278B93B2D937}" {
+   Enabled 0
+  }
+ }
+ coords 618.901 51.436 2264.643
+}

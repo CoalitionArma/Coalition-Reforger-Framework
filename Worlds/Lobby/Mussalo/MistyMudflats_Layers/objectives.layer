@@ -14,7 +14,7 @@ SCR_FactionControlTriggerEntity endTrig {
  "		Print(\"Russian forces won by seizing the airfield!\");"\
  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Russian forces have seized the airfield!\", 10, \"Russian Victory\");"\
  "	"
- m_sOwnerFactionKey "RHS_RF_MSV"
+ m_sOwnerFactionKey "RHS_AFRF"
  m_fFriendlyRatioLimit 1
  {
   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {

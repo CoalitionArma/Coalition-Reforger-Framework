@@ -6,8 +6,8 @@ PS_GameModeCoop PS_GameMode_Lobby1 : "{9C2001FE7A2F2281}Prefabs/MP/Modes/PS_Game
   CRF_SafestartGameModeComponent "{61B02440E2D02DA0}" {
   }
   CRF_SearchAndDestroyGameModeComponent "{61B0245AF3BA10BE}" {
-   attackingSide "RHS_US_USMC"
-   defendingSide "RHS_RF_MSV"
+   attackingSide "RHS_USAF"
+   defendingSide "RHS_AFRF"
   }
  }
  coords 10616.903 28.406 5663.15
@@ -122,28 +122,28 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
   m_sTitle "Bomb Site A"
   m_sTextData ""
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 10617.006 28.406 5658.642
   m_sTitle "Bomb Site A"
   m_sTextData ""
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 10631.626 28.406 5656.323
   m_sTitle "Bomb Site B"
   m_sTextData ""
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 10633.608 28.406 5652.688
   m_sTitle "Bomb Site B"
   m_sTextData ""
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {

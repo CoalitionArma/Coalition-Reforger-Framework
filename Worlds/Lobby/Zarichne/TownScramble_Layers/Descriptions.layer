@@ -50,7 +50,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  ""\
  "If it comes to it you can break contact and retreat from the objective at least 200m to get reinforcements. This only can be done once so use it wisely."
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
@@ -83,28 +83,28 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
   m_sTitle "Extract all resources."
   m_sTextData "Extract all resources."
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 2600.002 6.594 1438.911
   m_sTitle "Extract 8 Soldiers to the extraction point."
   m_sTextData "Extract 8 Soldiers to the extraction point."
   m_iScore 50
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 2605.683 6.594 1428.782
   m_sTitle "Prevent Russians evacuating enough supplies."
   m_sTextData "Prevent Russians evacuating enough supplies."
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  {
   coords 2615.152 6.594 1434.953
   m_sTitle "Eliminate all Russian forces."
   m_sTextData "Eliminate all Russian forces."
   m_iScore 50
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
 }
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
@@ -113,7 +113,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
  ""\
  "If it comes to it you can break contact and retreat from the objective at least 200m to get reinforcements. This only can be done once so use it wisely."
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {

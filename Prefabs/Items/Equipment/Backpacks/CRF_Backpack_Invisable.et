@@ -2,11 +2,19 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
  ID "511E9C6ADE70F798"
  components {
   MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{96E4CCC9D5BC33A5}Assets/Empty_pants.xob"
    Materials {
-    MaterialAssignClass "{62431D7558C1D9CF}" {
-     SourceMaterial "Common/Materials/Default"
-     AssignedMaterial ""
+    MaterialAssignClass "{625917C51E196DDE}" {
+     SourceMaterial "Color_palette"
+     AssignedMaterial "{6D37C24205DACCE0}Assets/Characters/Vests/Vest_Common/Data/EmptyMaterial.emat"
     }
+    MaterialAssignClass "{625917C51E196D36}" {
+     SourceMaterial "Medium_Combat_Field_Pack_M"
+     AssignedMaterial "{6D37C24205DACCE0}Assets/Characters/Vests/Vest_Common/Data/EmptyMaterial.emat"
+    }
+   }
+   LODFactors {
+    0 0 0 0
    }
    PixelSizeScale 0
    CastShadow 0
@@ -56,4 +64,5 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
   }
  }
  coords 1251.515 51.001 1420.505
+ Flags 2
 }

@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{83C64C0E40717D26}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_Base_SL_P.et" {
+ ID "52092032B0E62200"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Commander"
+  }
+ }
+}

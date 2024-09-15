@@ -2,7 +2,7 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  coords 2866.208 19.227 2758.859
  m_sTextData "Use the trenches, emplacements, and treelines to set up crossfires and defend the two control points from BLUFOR agression. "
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
  m_iOrder 4
 }
@@ -13,7 +13,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
  coords 2881.156 20.736 2788.819
  m_sTextData "Use your motorized support to surround and seize the two control points on the map. Once clear, flush out all of the defenders to clear and capture the point."
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
  m_iOrder 4
 }

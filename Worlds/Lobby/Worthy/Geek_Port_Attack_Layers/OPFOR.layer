@@ -1,11 +1,11 @@
-SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_1stPlatoon.et" {
  coords 2751.249 3.827 1224.379
  angleY 90.174
  m_aUnitPrefabSlots {
-  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{0D90CFD8D45258A6}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_SL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_PL_RU_Modern.et" "{0D90CFD8D45258A6}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_SL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Medic_RU_Modern.et"
  }
  {
-  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_RifleSquad.et" {
+  $grp SCR_AIGroup : "{841371CDBADF4A81}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_RifleSquad.et" {
    {
     coords 0.84 -1.827 21.45
     angleY -179.163
@@ -24,7 +24,7 @@ SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlat
   }
  }
 }
-$grp SCR_AIGroup : "{42B89C4662189118}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_MMGTeam.et" {
+$grp SCR_AIGroup : "{42B89C4662189118}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_MMGTeam.et" {
  {
   coords 2766.906 2 1213.443
   m_sCustomNameSet "MMG 1"
@@ -42,10 +42,10 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
  coords 2759.395 2 1225.274
  m_fWorldSize 65
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
-$grp SCR_AIGroup : "{E0178F8CC1EEF491}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_MATTeam.et" {
+$grp SCR_AIGroup : "{E0178F8CC1EEF491}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_MATTeam.et" {
  {
   coords 2755.168 2 1232.82
   angleY 178.117

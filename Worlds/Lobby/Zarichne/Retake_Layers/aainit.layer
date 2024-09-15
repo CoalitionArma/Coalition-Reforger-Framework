@@ -89,7 +89,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 1 Area' marker. It can be 500m2 around that marker."
   m_iOrder 5
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_2 {
   coords 1102.176 18.562 1369.261
@@ -97,7 +97,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 2 Area' marker. It can be 500m2 around that marker."
   m_iOrder 6
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_3 {
   coords 1103.444 16.818 1363.211
@@ -105,7 +105,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 3 Area' marker. It can be 500m2 around that marker."
   m_iOrder 7
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_5 {
   coords 1092.643 19.636 1380.25
@@ -113,7 +113,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 1 from being secured"
   m_iOrder 5
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  Objective_6 {
   coords 1095.455 18.207 1374.08
@@ -121,7 +121,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 2 from being secured"
   m_iOrder 6
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  Objective_7 {
   coords 1091.948 17.81 1376.021
@@ -129,7 +129,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 3 from being secured"
   m_iOrder 7
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  Objective_4 {
   coords 917.453 17.282 1472.22
@@ -137,7 +137,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 4 Area' marker. It can be 500m2 around that marker."
   m_iOrder 8
   m_iScore 25
-  m_sFactionKey "RHS_US_USMC"
+  m_sFactionKey "RHS_USAF"
  }
  Objective_8 {
   coords 922.202 17.409 1471.61
@@ -145,6 +145,6 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Prevent Cache 4 from being secured"
   m_iOrder 8
   m_iScore 25
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
 }

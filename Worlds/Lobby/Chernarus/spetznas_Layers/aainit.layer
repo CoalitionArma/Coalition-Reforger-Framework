@@ -40,7 +40,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  coords 7673.924 344.678 7703.01
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{61CB1D276B3D926C}" {
-   m_sFactionKey "RHS_RF_MSV"
+   m_sFactionKey "RHS_AFRF"
    m_iCount 25
    m_iTime 120000
    m_bWaveMode 1
@@ -109,7 +109,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 1 Area' marker. It can be 500m2 around that marker."
   m_iOrder 5
   m_iScore 33
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 4571.97 236.796 4569.542
@@ -117,7 +117,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 2 Area' marker. It can be 500m2 around that marker."
   m_iOrder 6
   m_iScore 33
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 4573.239 235.052 4563.492
@@ -125,7 +125,7 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTextData "Find and destroy the cache near the 'Cache 3 Area' marker. It can be 500m2 around that marker."
   m_iOrder 7
   m_iScore 33
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 4562.438 237.87 4580.531

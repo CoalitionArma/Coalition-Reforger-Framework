@@ -138,7 +138,7 @@ SCR_BaseTriggerEntity exfil_trigger {
  PeriodicQueries 1
  PrefabsFilter {
   PrefabFilter "{61797140D60AF26A}" {
-   Prefab "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
+   Prefab "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Pilot_Modern.et"
   }
  }
  OnActivate ""\
@@ -190,9 +190,9 @@ $grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
   m_sTitle "Objective: Exfil Pilot"
   m_sTextData "Your Pilot is carrying important Intel which the germans want to get by killing him, you have to exfil him to a helicopter waiting to the islands North West (marked 'Exfil Location')."
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
-  m_sFactionKey "RHS_RF_MSV"
+  m_sFactionKey "RHS_AFRF"
  }
  {
   coords 1187.186 9.215 1702.211
@@ -208,7 +208,7 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
  coords 1047.631 13.074 685.391
  angleY 0
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 Vehicle Mi8MT1 : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT.et" {

@@ -8,7 +8,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Possible Intel Location"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
@@ -20,7 +20,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Possible Intel Location"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
@@ -32,7 +32,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Possible Intel Location"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
@@ -43,7 +43,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Communication Tower"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
+   "RHS_USAF" "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 1
  }
@@ -55,7 +55,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Destory Fuel Dump"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
+   "RHS_USAF" "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 1
  }
@@ -67,7 +67,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Base Power Plant"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
+   "RHS_USAF" "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 1
  }
@@ -80,7 +80,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Extraction Point"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
@@ -91,7 +91,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_sDescription "Ammo Dump"
   m_bUseWorldScale 0
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
+   "RHS_USAF" "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 1
  }
@@ -102,7 +102,7 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et
  m_fWorldSize 100
  m_bUseWorldScale 0
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
@@ -111,6 +111,6 @@ PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.e
  m_fWorldSize 100
  m_bUseWorldScale 0
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
 }

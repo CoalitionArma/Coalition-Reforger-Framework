@@ -1,0 +1,28 @@
+SCR_ChimeraCharacter : "{EDECFE7965364082}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Medium Anti-Tank"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{146001995E36BBC4}Carl_Gustaf.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{625D546DFFCEC312}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+     PrefabsToSpawn {
+      "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et" "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et"
+     }
+    }
+   }
+  }
+ }
+}

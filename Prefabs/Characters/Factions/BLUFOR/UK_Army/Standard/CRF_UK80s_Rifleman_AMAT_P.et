@@ -1,0 +1,36 @@
+SCR_ChimeraCharacter : "{4A29AE1848437793}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+       Prefab "{9065E77698E63C1B}Prefabs/Items/Equipment/Binoculars/Binoculars_L12A1_Avimo.et"
+      }
+     }
+    }
+   }
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Assistant Medium Anti-Tank"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Back {
+     Prefab "{816B4F309B3B3D39}Prefabs/Items/Equipment/Backpacks/Rucksack_GS_assembled.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{625831F0B8AF8D9A}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/Rucksack_GS_assembled.et"
+     PrefabsToSpawn + {
+      "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et" "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et" "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et"
+     }
+    }
+   }
+  }
+ }
+}

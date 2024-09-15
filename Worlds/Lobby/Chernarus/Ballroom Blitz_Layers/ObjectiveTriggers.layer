@@ -30,8 +30,8 @@ $grp BaseGameTriggerEntity {
   PeriodicQueries 1
   UpdatePeriod 10
   OnQueryFinished ""\
-  "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_RF_MSV\");"\
-  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_US_USMC\");"\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_USAF\");"\
   "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage)"\
   "		{"\
   "			if (BLUFORPlayers/OPFORPlayers >= 0.7 && !OBJMessage)"\
@@ -81,8 +81,8 @@ $grp BaseGameTriggerEntity {
   PeriodicQueries 1
   UpdatePeriod 10
   OnQueryFinished ""\
-  "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_RF_MSV\");"\
-  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_US_USMC\");"\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_USAF\");"\
   "		IEntity OBJ1 = GetGame().GetWorld().FindEntityByName(\"OBJ1\");"\
   "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage && OBJ1 == null)"\
   "		{"\
@@ -133,8 +133,8 @@ $grp BaseGameTriggerEntity {
   PeriodicQueries 1
   UpdatePeriod 10
   OnQueryFinished ""\
-  "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_RF_MSV\");"\
-  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_US_USMC\");"\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_USAF\");"\
   "		IEntity OBJ3 = GetGame().GetWorld().FindEntityByName(\"OBJ3\");"\
   "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage && OBJ3 == null)"\
   "		{"\
@@ -185,8 +185,8 @@ $grp BaseGameTriggerEntity {
   PeriodicQueries 1
   UpdatePeriod 10
   OnQueryFinished ""\
-  "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_RF_MSV\");"\
-  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_US_USMC\");"\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_USAF\");"\
   "		IEntity OBJ2 = GetGame().GetWorld().FindEntityByName(\"OBJ2\");"\
   "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage && OBJ2 == null)"\
   "		{"\

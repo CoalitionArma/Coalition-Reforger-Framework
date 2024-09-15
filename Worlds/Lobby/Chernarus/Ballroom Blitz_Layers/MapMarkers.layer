@@ -1,104 +1,104 @@
 PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  coords 1877.772 275.851 7635.686
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
  {
   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
    {
     coords 128.992 27.639 71.591
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 212.704 45.542 113.198
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 264.92 57.082 51.403
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 306.459 52.274 3.372
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 302.871 44.832 -65.422
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 385.285 60.101 -117.485
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 466.583 68.725 -161.179
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 477.436 58.089 -254.983
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 494.975 28.044 -333.348
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 460.562 24.629 -411.965
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 304.889 -13.014 -434.104
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 174.064 -16.56 -483.134
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 106.701 -40.683 -487.371
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords 55.632 -27.09 -459.307
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords -16.481 -2.905 -278.082
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
    {
     coords -33.47 -6.133 -160.932
     m_aVisibleForFactions {
-     "RHS_US_USMC"
+     "RHS_USAF"
     }
    }
   }
@@ -107,74 +107,74 @@ PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBord
 PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  coords 4605.53 339.125 9521.667
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
 }
 PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  coords 1985.42 291.468 8985.94
  m_aVisibleForFactions {
-  "RHS_RF_MSV"
+  "RHS_AFRF"
  }
  {
   $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    {
     coords 160.409 7.892 -122.754
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 358.657 25.176 -333.099
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 582.737 41.021 -689.76
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 676.994 38.783 -880.445
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 698.714 67.588 -1064.15
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 854.38 65.816 -1262.622
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 1036.482 52.051 -1502.793
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 1207.401 71.572 -1578.789
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 1408.028 42.601 -1755.908
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
    {
     coords 1645.263 50.459 -2043.14
     m_aVisibleForFactions {
-     "RHS_RF_MSV"
+     "RHS_AFRF"
     }
    }
   }
@@ -390,14 +390,14 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
  {
   coords 1990.669 254.254 7338.183
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
  {
   coords 3196.895 355.376 10469.131
   m_sDescription "BLUFOR Scout Spawn"
   m_aVisibleForFactions {
-   "RHS_US_USMC"
+   "RHS_USAF"
   }
  }
 }

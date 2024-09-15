@@ -39,7 +39,7 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   angleY 90
   m_sDescription "OPFOR Spawn"
   m_aVisibleForFactions {
-   "RHS_RF_MSV"
+   "RHS_AFRF"
   }
  }
  cachemarker1global {

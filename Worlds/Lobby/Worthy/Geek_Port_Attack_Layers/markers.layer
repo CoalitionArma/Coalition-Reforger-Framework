@@ -3,7 +3,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   coords 2651.927 2 1107
   m_sDescription "OBJ - A Bomb Site"
   m_aVisibleForFactions {
-   "RHS_US_USMC" "RHS_RF_MSV"
+   "RHS_USAF" "RHS_AFRF"
   }
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
@@ -12,7 +12,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   coords 2743.217 2 971.568
   m_sDescription "OBJ - B Bomb Site"
   m_aVisibleForFactions {
-   "RHS_RF_MSV" "RHS_US_USMC"
+   "RHS_AFRF" "RHS_USAF"
   }
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1

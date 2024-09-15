@@ -24,10 +24,10 @@ Vehicle Mi8MTC_A1 : "{35D4CCC400E04FC0}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MTC
  coords 958.263 39.701 2751.779
  angleY 69
 }
-SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stPlatoon.et" {
+SCR_AIGroup : "{36BF7E51A8B8EBD7}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_1stPlatoon.et" {
  coords 1015.015 38.044 2814.577
  m_aUnitPrefabSlots {
-  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_PL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Medic_RU_Modern.et"
+  "{9F018584F6815AB3}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_PL_RU_Modern.et" "{3E6ECC9453EDAD26}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Medic_RU_Modern.et"
  }
 }
 Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
@@ -292,13 +292,13 @@ GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/He
   }
  }
 }
-SCR_AIGroup : "{CBE7734F6544BD63}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_3rdSection.et" {
+SCR_AIGroup : "{CBE7734F6544BD63}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_3rdSection.et" {
  coords 1001.054 45.969 2763.267
  m_aUnitPrefabSlots {
-  "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et" "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_RF_MSV/EMR/CRF_Pilot_Modern.et"
+  "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Pilot_Modern.et" "{2023F6405D5379CE}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/EMR/CRF_Pilot_Modern.et"
  }
 }
-$grp SCR_AIGroup : "{E941EC1A55AEA6C1}Prefabs/Groups/OPFOR/RHS_RF_MSV/CRF_MSV_1stSection.et" {
+$grp SCR_AIGroup : "{E941EC1A55AEA6C1}Prefabs/Groups/OPFOR/RHS_AFRF/CRF_MSV_1stSection.et" {
  {
   coords 1016.804 38.175 2803.016
  }
