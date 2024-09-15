@@ -58,7 +58,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	
 	//[RplProp(onRplName: "SpawnPrefabs")]
-	string m_tempPrefab;
+	ResourceName m_tempPrefab;
 	int m_tempPlayerID;
 	RplId m_tempPlayableID;
 	
@@ -329,7 +329,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void SpawnPrefabs(int playerID, string loadoutPrefab, RplId playerPlayableID)
+	void SpawnPrefabs(int playerID, ResourceName loadoutPrefab, RplId playerPlayableID)
 	{
 		if(playerID != SCR_PlayerController.GetLocalPlayerId())
 			return;
