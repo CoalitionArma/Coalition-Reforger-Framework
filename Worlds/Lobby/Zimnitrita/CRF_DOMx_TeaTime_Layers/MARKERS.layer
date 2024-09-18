@@ -1,0 +1,58 @@
+SCR_FactionControlTriggerEntity fobRaleighTrigger {
+ components {
+  RplComponent "{61D2CE5A29C4B4DD}" {
+   Streamable Disabled
+  }
+ }
+ coords 14085.039 29.433 14923.878
+ userScript "    // Static boolean variable to track whether the action has been performed"\
+ "	static bool m_actionPerformed = false;"
+ TriggerShapeType Sphere
+ SphereRadius 35
+ TriggerActivationType "First change"
+ PeriodicQueries 1
+ UpdatePeriod 20
+ OnActivate ""\
+ "        // Check if the action has already been performed"\
+ "        if (!m_actionPerformed)"\
+ "        {"\
+ "            // Perform the action"\
+ "            Print(\"The USSR has taken FOB Raleigh!\");"\
+ "            SCR_PopUpNotification.GetInstance().PopupMsg(\"FOB Raleigh Secured\", 15, \"The USSR has taken FOB Raleigh!\");"\
+ ""\
+ "            // Set the boolean variable to true to prevent further execution"\
+ "            m_actionPerformed = true;"\
+ "        }"\
+ "    "
+ m_sOwnerFactionKey "USSR"
+ m_iRatioMethod "More than"
+ m_fFriendlyRatioLimit 0.9
+ {
+  PS_ManualMarker RailBridge_1_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   coords -0.575 -5.654 -1.919
+   m_MarkerColor 0.157 0.275 0.624 1
+   m_sQuadName "flag-2"
+   m_fWorldSize 125
+   m_sDescription "FOB Raleigh"
+  }
+ }
+}
+$grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 13789.278 26.625 14494.884
+  angleY 90.795
+ }
+ {
+  coords 14057.161 28.962 14908.309
+  angleY 0
+  m_sQuadName "circle"
+  m_sDescription "Motars"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 11851.826 34.092 15779.706
+ angleY 90.937
+ m_aVisibleForFactions {
+  "UK"
+ }
+}
