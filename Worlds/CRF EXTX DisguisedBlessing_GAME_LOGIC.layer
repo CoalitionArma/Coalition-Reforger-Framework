@@ -1,0 +1,936 @@
+$grp GenericEntity : "{D47E2344A7883A53}Prefabs/Structures/Signs/Military/Supplies/Sign_SupplyStorage_01_ConstructionMat_USSR.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5E3298BE225F0743}" {
+    m_aGenerators {
+     SCR_ResourceGenerator "{5E3298A9DB3BDCA7}" {
+      m_fStorageRange 5
+     }
+    }
+   }
+  }
+  coords 1937.269 15.994 3823.528
+  angleY -18.087
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5E3298BE225F0743}" {
+    m_aGenerators {
+     SCR_ResourceGenerator "{5E3298A9DB3BDCA7}" {
+      m_fStorageRange 5
+     }
+    }
+   }
+  }
+  coords 1625.601 24.058 3552.659
+  angleY 88
+ }
+}
+$grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+ extractionObject {
+  coords 1619.453 24.17 3549.291
+  angleX 0
+  angleY -82
+  angleZ 0
+  {
+   GenericEntity depot1 {
+    ID "5DB6D4045311E2D7"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_sDebugName "depot1"
+       }
+      }
+      m_aEncapsulators {
+       SCR_ResourceEncapsulator "{5DAD1D48DACE9DE8}" {
+        m_sDebugName "depot1"
+       }
+      }
+      m_aGenerators {
+       SCR_ResourceGenerator "{5DE4B6C45FC967FC}" {
+        m_fStorageRange 50
+       }
+      }
+     }
+    }
+    {
+     GenericEntity {
+      ID "5DB6D40440147307"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147306"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147304"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147301"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147300"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D404401458AE"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D404401458A0"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9E"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB99"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB90"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014895F"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014895E"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014895A"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440148959"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440148958"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014731D"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014731C"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147303"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9F"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9D"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9C"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 1938.918 15.866 3819.842
+  angleX 0
+  angleY 75.504
+  angleZ 0
+  {
+   GenericEntity {
+    ID "5DB6D4045311E2D7"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aGenerators {
+       SCR_ResourceGenerator "{5DE4B6C45FC967FC}" {
+        m_fStorageRange 50
+       }
+      }
+     }
+    }
+    coords -0.243 0.035 -1.119
+    angleX 0.461
+    angleY -5
+    angleZ 0.768
+    {
+     GenericEntity {
+      ID "5DB6D40440147307"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+      coords 1.885 0.067 -3.088
+      angleX -0.775
+      angleY -89.026
+      angleZ 0.448
+     }
+     GenericEntity {
+      ID "5DB6D40440147306"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -2.519 0.001 -0.669
+      angleX -0.378
+      angleY 6.034
+      angleZ -0.812
+     }
+     GenericEntity {
+      ID "5DB6D40440147304"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 0.125 0.407 3.839
+      angleX 0.434
+      angleY -178.016
+      angleZ 0.783
+     }
+     GenericEntity {
+      ID "5DB6D40440147301"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 1.788 0.027 -0.777
+      angleX -0.12
+      angleY 1.006
+      angleZ -1.997
+     }
+     GenericEntity {
+      ID "5DB6D40440147300"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 1.3 0.061 -2.023
+      angleX -0.775
+      angleY -89.026
+      angleZ 0.448
+     }
+     GenericEntity {
+      ID "5DB6D404401458AE"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -0.947 0.451 3.274
+      angleX 0.434
+      angleY -178.016
+      angleZ 0.783
+     }
+     GenericEntity {
+      ID "5DB6D404401458A0"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -2.187 0.448 3.655
+      angleX -0.783
+      angleY -87.971
+      angleZ 0.434
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9E"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 0.181 0.367 4.846
+      angleX 0.421
+      angleY -177.017
+      angleZ 0.79
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB99"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 2.893 0.064 -3.123
+      angleY -88.017
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB90"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 0.211 0.058 -2.077
+      angleX 0.448
+      angleY -179.017
+      angleZ 0.775
+     }
+     GenericEntity {
+      ID "5DB6D4044014895F"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 2.423 0.045 -1.937
+      angleX 0.461
+      angleY 179.968
+      angleZ 0.767
+     }
+     GenericEntity {
+      ID "5DB6D4044014895E"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 0.75 0.07 -3.196
+      angleX 0.767
+      angleY 89.961
+      angleZ -0.461
+     }
+     GenericEntity {
+      ID "5DB6D4044014895A"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -1.016 0.403 4.398
+      angleX 0.775
+      angleY 90.972
+      angleZ -0.448
+     }
+     GenericEntity {
+      ID "5DB6D40440148959"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -2.636 0.016 -1.722
+      angleX 0.804
+      angleY 94.931
+      angleZ -0.393
+     }
+     GenericEntity {
+      ID "5DB6D40440148958"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 0.673 0.04 -0.86
+      angleX 0.767
+      angleY 85.927
+      angleZ -0.462
+     }
+     GenericEntity {
+      ID "5DB6D4044014731D"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -2.102 -0.101 2.529
+      angleX -0.449
+      angleY 0.937
+      angleZ -0.775
+     }
+     GenericEntity {
+      ID "5DB6D4044014731C"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -0.906 -0.078 2.182
+      angleX 0.783
+      angleY 91.987
+      angleZ -0.434
+     }
+     GenericEntity {
+      ID "5DB6D40440147303"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 0.215 0.447 2.702
+      angleX -0.448
+      angleY 0.971
+      angleZ -0.775
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9F"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords 2.878 0.018 -0.803
+      angleX -1.223
+      angleY -89.054
+      angleZ -0.326
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9D"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -2.145 0.404 4.809
+      angleX 0.435
+      angleY -178.064
+      angleZ 0.782
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9C"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         }
+        }
+       }
+      }
+      coords -2.58 0.025 -2.794
+      angleX -0.379
+      angleY 5.935
+      angleZ -0.811
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 1619.844 24.069 3557.32
+  angleX 0
+  angleY -81
+  angleZ 0
+  {
+   GenericEntity depot2 {
+    ID "5DB6D4045311E2D7"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aEncapsulators {
+       SCR_ResourceEncapsulator "{5DAD1D48DACE9DE8}" {
+        m_sDebugName "depot2"
+       }
+      }
+      m_aGenerators {
+       SCR_ResourceGenerator "{5DE4B6C45FC967FC}" {
+        m_fStorageRange 50
+       }
+      }
+     }
+    }
+    {
+     GenericEntity {
+      ID "5DB6D40440147307"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147306"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147304"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147301"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147300"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D404401458AE"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D404401458A0"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9E"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB99"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB90"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014895F"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014895E"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014895A"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440148959"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440148958"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014731D"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014731C"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D40440147303"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9F"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9D"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+     GenericEntity {
+      ID "5DB6D4044014FB9C"
+      components {
+       SCR_ResourceComponent "{5D247A59598D71AE}" {
+        m_aContainers {
+         SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+          m_fResourceValueCurrent 0
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   GenericEntity {
+    ID "5DB6D4045311E2CD"
+   }
+  }
+ }
+}

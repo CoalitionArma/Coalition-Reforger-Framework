@@ -1,0 +1,6 @@
+SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
+ coords 1933.85 15.761 3829.036
+}
+Vehicle M998_covered_long_D_1 : "{55A3575FAE3ED7C4}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_D_2004.et" {
+ coords 1936.127 15.823 3826.64
+}

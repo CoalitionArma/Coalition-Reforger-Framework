@@ -1,0 +1,11 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2129.546 28.216 3446.854
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SupplyExtractionGameModeComponent "{626425ABA7DFBF77}" {
+   m_factionKey "US"
+  }
+ }
+ coords 2058.616 15.406 3555.608
+}
