@@ -1,39 +1,122 @@
-SCR_FactionControlTriggerEntity fobRaleighTrigger {
- components {
-  RplComponent "{61D2CE5A29C4B4DD}" {
-   Streamable Disabled
-  }
+PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ coords 11867.166 25.257 15886.134
+ m_aVisibleForFactions {
+  "UK"
  }
- coords 14085.039 29.433 14923.878
- userScript "    // Static boolean variable to track whether the action has been performed"\
- "	static bool m_actionPerformed = false;"
- TriggerShapeType Sphere
- SphereRadius 35
- TriggerActivationType "First change"
- PeriodicQueries 1
- UpdatePeriod 20
- OnActivate ""\
- "        // Check if the action has already been performed"\
- "        if (!m_actionPerformed)"\
- "        {"\
- "            // Perform the action"\
- "            Print(\"The USSR has taken FOB Raleigh!\");"\
- "            SCR_PopUpNotification.GetInstance().PopupMsg(\"FOB Raleigh Secured\", 15, \"The USSR has taken FOB Raleigh!\");"\
- ""\
- "            // Set the boolean variable to true to prevent further execution"\
- "            m_actionPerformed = true;"\
- "        }"\
- "    "
- m_sOwnerFactionKey "USSR"
- m_iRatioMethod "More than"
- m_fFriendlyRatioLimit 0.9
  {
-  PS_ManualMarker RailBridge_1_Marker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
-   coords -0.575 -5.654 -1.919
-   m_MarkerColor 0.157 0.275 0.624 1
-   m_sQuadName "flag-2"
-   m_fWorldSize 125
-   m_sDescription "FOB Raleigh"
+  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   {
+    coords 26.148 5.136 -46.6
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords 40.53 13.293 -89.171
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords 51.477 15.447 -125.835
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords 41.834 15.875 -155.706
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords 16.24 16.431 -184.911
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -20.902 29.987 -181.793
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -58.291 7.813 -168.335
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -99.193 2.128 -141.165
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -135.283 1.565 -109.3
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -168.422 6.681 -75.197
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -179.969 19.911 -18.593
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -156.055 22.474 18.164
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -130.685 11.126 44.951
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -92.628 9.682 46.725
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -49.976 1.723 27.598
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
+   {
+    coords -25.271 -0.354 18.167
+    angleY 0
+    m_aVisibleForFactions {
+     "UK"
+    }
+   }
   }
  }
 }
@@ -49,10 +132,390 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
   m_sDescription "Motars"
  }
 }
+PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 14141.303 40.164 14538.248
+ angleY 0
+ {
+  $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   {
+    coords 71.155 -9.725 129.875
+    angleY 0
+   }
+   {
+    coords 190.48 -10.902 351.177
+    angleY 0
+   }
+   {
+    coords 294.921 -7.147 576.703
+    angleY 0
+   }
+   {
+    coords 409.371 -7.361 775.149
+    angleY 0
+   }
+   {
+    coords 424.142 -7.979 850.729
+    angleY 0
+   }
+   {
+    coords 520.656 -40.163 1268.656
+    angleY 0
+   }
+   {
+    coords 481.528 -34.975 1166.096
+    angleY 0
+   }
+   {
+    coords 460.042 -24.111 1061.439
+    angleY 0
+   }
+   {
+    coords -92.35 -8.149 -98.434
+    angleY 0
+   }
+   {
+    coords -243.819 -6.82 -158.151
+    angleY 0
+   }
+   {
+    coords -449.559 -13.461 -259.902
+    angleY 0
+   }
+   {
+    coords -768.741 -14.998 -249.169
+    angleY 0
+   }
+   {
+    coords -940.353 -17.547 -175.044
+    angleY 0
+   }
+   {
+    coords -1207.794 -20.125 -181.898
+    angleY 0
+   }
+   {
+    coords -1381.755 -27.739 -107.688
+    angleY 0
+   }
+   {
+    coords -1593.386 -34.336 -17.015
+    angleY 0
+   }
+   {
+    coords -1692.1 -37.063 75.556
+    angleY 0
+   }
+   {
+    coords -1795.145 -36.813 77.053
+    angleY 0
+   }
+   {
+    coords -2874.627 -40.164 1580.786
+    angleY 0
+   }
+   {
+    coords -2952.698 -40.164 1736.477
+    angleY 0
+   }
+   {
+    coords -2922.132 -77.949 1617.671
+    angleY 0
+   }
+   {
+    coords -2876.416 -892.039 1336.685
+    angleY 0
+   }
+   {
+    coords -2805.817 18.436 1066.675
+    angleY 0
+   }
+   {
+    coords -2723.52 17.645 772.273
+    angleY 0
+   }
+   {
+    coords -2619.956 27.879 581.048
+    angleY 0
+   }
+   {
+    coords -2482.969 23.707 446.325
+    angleY 0
+   }
+   {
+    coords -2357.373 28.436 304.625
+    angleY 0
+   }
+   {
+    coords -2196.185 -21.264 138.606
+    angleY 0
+   }
+   {
+    coords -2023.346 -35.791 62.762
+    angleY 0
+   }
+  }
+ }
+}
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 11851.826 34.092 15779.706
  angleY 90.937
  m_aVisibleForFactions {
   "UK"
+ }
+}
+PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+ coords 13288.906 14.628 15464.668
+ angleY 0
+ m_aVisibleForFactions {
+  "USSR"
+ }
+ m_bVisibleForEmptyFaction 0
+ m_bShowForAnyFaction 0
+ {
+  $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+   {
+    coords -20.82 -0.062 -51.896
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -43.785 2.93 -116.85
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -75.805 2.105 -180.521
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -118.691 -3.77 -272.647
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -124.609 1.687 -343.605
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -102.406 -7.992 -428.056
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -160.308 2.59 -507.107
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -220.944 -6.7 -621.728
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -272.988 -0.422 -707.54
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -316.691 1.9 -793.945
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -343.927 4.115 -862.179
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -319.728 8.471 -949.058
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -294.972 7.825 -1051.202
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -277.375 5.135 -1145.368
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 27.018 -3.659 65.804
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 72.002 15.807 132.654
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 151.198 15.776 149.523
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 257.155 1.644 143.516
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 361.505 4.118 119.646
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 444.44 20.176 78.598
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 564.604 11.859 66.63
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 679.728 10.842 24.602
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 771.136 11.087 -61.782
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 855.008 12.324 -174.379
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 927.903 17.203 -264.771
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 994.206 21.187 -349.084
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 1072.457 15.732 -443.627
+    angleY 0
+    m_aVisibleForFactions {
+     "USSR"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+  }
  }
 }
