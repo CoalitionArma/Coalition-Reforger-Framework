@@ -1,0 +1,31 @@
+Vehicle M1025_armed_M2HB_USAF1 : "{3277F8B1FA06A2BC}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF.et" {
+ coords 1175.104 579.511 2249.507
+ angleY 89.666
+}
+SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+ coords 1176.029 579.432 2241.909
+ {
+  SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+   coords 34.243 -0.913 26.982
+   {
+    SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+     coords -3.171 0.261 -6.476
+     {
+      SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+       coords -2.707 0.064 -5.956
+       {
+        SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+         coords -2.622 -0.011 -5.909
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle M1025_armed_M2HB_MDO_USAF1 : "{FA6820A9A52CD05B}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF.et" {
+ coords 1184.434 578.464 2254.077
+ angleY 21.393
+}

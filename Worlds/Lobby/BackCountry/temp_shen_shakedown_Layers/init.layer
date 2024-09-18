@@ -1,0 +1,64 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1225.465 548.435 2074.208
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 274.141 618.107 987.845
+}
+SCR_CameraManager SCR_CameraManager1 : "{33F9FD881E3700CC}Prefabs/World/Game/SCR_CameraManager.et" {
+ coords 313.468 619.81 992.261
+}
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{62656D046E2999D4}" {
+   attackingSide "RHS_ION"
+   defendingSide "RHS_USAF"
+  }
+ }
+ coords 966.172 555.776 2279.891
+ {
+  SCR_FactionManager "625F761422B686A6" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{623962205CE2B89C}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{625F34F801A65BD3}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{625F34F8067CE971}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{625F34F8063C475E}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{625F34F806F94FAC}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{625F34F83E5A7941}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{625F34F83E1D5483}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{625F34F83EC1CFC8}" {
+        m_sCallsign "2-4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
