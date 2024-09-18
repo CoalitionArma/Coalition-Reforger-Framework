@@ -1,0 +1,65 @@
+SCR_ChimeraCharacter : "{A6E0BCBA8A7D3F1B}Prefabs/Characters/Core/Character_EUCIV_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  FactionAffiliationComponent "{61A2E10A4AFDAF9B}" {
+   "faction affiliation" "FIA"
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "SUs"
+   m_bIsPlayable 1
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Civilian Casual 4 V1"
+    Icon "{AF4C4018F9208B74}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_Unarmed.edds"
+    m_Image "{B77580D96BBCE73A}Images/UI/EUCIV/C4V1.edds"
+    m_sFaction "EUCIV"
+    m_aAuthoredLabels + {
+     5681
+    }
+    m_aAutoLabels {
+     22
+    }
+   }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   WeaponTemplate "{528AEE2B8A058D9F}Prefabs/Weapons/Handguns/Glock/Handgun_Glock17_tan.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{D3220688AB229812}Prefabs/Characters/Uniforms/Shirt2_4.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{A683DF5C03A0D1BD}Prefabs/Characters/Uniforms/Jeans_3.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{FD0709AD2DE0D67C}Prefabs/Characters/Footwear/Shoes2.et"
+    }
+    LoadoutSlotInfo Back {
+     Prefab "{CE832B86D234AD62}Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+    }
+    LoadoutSlotInfo Face {
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{625F74E02F729F09}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+     PrefabsToSpawn {
+      "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et" "{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et" "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et" "{2F19DBB99A359B48}Prefabs/Items/Equipment/Radios/INDFOR_Radio_GI.et"
+     }
+    }
+    ItemsInitConfigurationItem "{625F74E02F686B48}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+     PrefabsToSpawn {
+      "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et" "{0CAD83389EE8E3DC}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd_tan.et"
+     }
+    }
+   }
+  }
+ }
+}
