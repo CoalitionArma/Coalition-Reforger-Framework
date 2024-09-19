@@ -14,7 +14,11 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   "- 3:2 slotting ratio"\
   "- One-life mission"\
   "- 70 minute time limit"\
-  "- ION must destroy both generators to win"
+  "- ION must destroy both generators to win"\
+  ""\
+  "\"And the hills move like lungs,"\
+  "the river speaks in tongues"\
+  "and I am not alone.\""
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 1
@@ -34,5 +38,27 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   m_bEmptyFactionVisibility 1
   m_bShowForAnyFaction 1
   m_iOrder 2
+ }
+ INDFORbrief {
+  coords 242.163 607.698 892.236
+  m_sTitle "ION Briefing"
+  m_sTextData "We must destroy 2 generators in order to knock out the power supply of the town. Our staging point is at 002-009."\
+  ""\
+  "Note:"\
+  "- ION must destroy *both* generators to win"
+  m_aVisibleForFactions {
+   "RHS_ION"
+  }
+  m_iOrder 6
+ }
+ BLUFORbrief {
+  coords 1195.426 578.844 2239.14
+  m_sTitle "USA Briefing"
+  m_sTextData "We must defend two generators to protect the towns power supply. Bombsite B has some light fortifications. Our staging point is at 011-022."\
+  ""
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_iOrder 7
  }
 }
