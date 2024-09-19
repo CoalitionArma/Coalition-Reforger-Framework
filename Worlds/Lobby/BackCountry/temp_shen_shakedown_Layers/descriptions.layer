@@ -1,0 +1,38 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Welcome {
+  coords 1180.254 575.237 2281.849
+  m_sTitle "Welcome!"
+  m_sTextData "#Coal_Missions_Lobby_Welcome_Text"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ Summary {
+  coords 1181.957 575.353 2281.214
+  m_sTitle "Summary"
+  m_sTextData "ION Services, Inc. security forces will assualt two generators held by US Army forces in the Shenandoah Valley and destroy them."\
+  ""\
+  "- 3:2 slotting ratio"\
+  "- One-life mission"\
+  "- 70 minute time limit"\
+  "- ION must destroy both generators to win"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 1
+ }
+ Assets {
+  coords 1184.828 575.575 2279.503
+  m_sTitle "Assets"
+  m_sTextData "ION:"\
+  "1x GAZ TIGR (PKM Arbalet)"\
+  "1x GAZ TIGR (PKP)"\
+  "1x UAZ452 (Ambulance)"\
+  ""\
+  "US Army:"\
+  "1x M1025 (M2 MDO)"\
+  "1x M1025 (M2)"\
+  "1x M997 (Ambulance)"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
+}
