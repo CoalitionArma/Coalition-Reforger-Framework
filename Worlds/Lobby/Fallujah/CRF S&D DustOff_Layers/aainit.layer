@@ -18,8 +18,26 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
     SCR_Faction "{56DEAC40D2DBC8B1}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
+       SCR_CallsignInfo "{62657A4228F0125A}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{62657A422802F274}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{62657A422848FA98}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{62657A42299B4F97}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{62657A42D9829865}" {
+        m_sCallsign "2-3"
+       }
        SCR_CallsignInfo "{625F486CB62825A0}" {
         m_sCallsign "TH1"
+       }
+       SCR_CallsignInfo "{62657A42D9A81E3D}" {
+        m_sCallsign "TH2"
        }
       }
      }
@@ -41,9 +59,6 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
        }
        SCR_CallsignInfo "{625F486A45EB18DE}" {
         m_sCallsign "1-4"
-       }
-       SCR_CallsignInfo "{625F486A45005D4F}" {
-        m_sCallsign "1-5"
        }
        SCR_CallsignInfo "{625F486A453ACFBF}" {
         m_sCallsign "AA"

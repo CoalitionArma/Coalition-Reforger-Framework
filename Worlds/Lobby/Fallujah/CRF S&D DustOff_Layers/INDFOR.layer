@@ -37,18 +37,9 @@ SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group
     }
     coords -18.161 0 -10.3
     m_sCustomNameSet "4th Squad"
-   }
-   {
-    components {
-     AIFormationComponent "{507E9DC12F541FE6}" {
-      DefaultFormation "Row"
-     }
-    }
-    coords -18.492 0 -4.781
-    m_sCustomNameSet "5th Squad"
     {
      SCR_AIGroup : "{69DFF9BDB5B70D77}Prefabs/Groups/INDFOR/Taliban/Vehicle/CRF_Group_Taliban_2manCrew_P.et" {
-      coords 19.347 0 -7.203
+      coords 19.016 0 -1.684
       m_sCustomNameSet "AA Team (ZU-23)"
      }
     }
