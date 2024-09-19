@@ -14,6 +14,9 @@ SCR_CameraManager SCR_CameraManager1 : "{33F9FD881E3700CC}Prefabs/World/Game/SCR
 }
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 70
+  }
   CRF_SearchAndDestroyGameModeComponent "{62656D046E2999D4}" {
    attackingSide "RHS_ION"
    defendingSide "RHS_USAF"
