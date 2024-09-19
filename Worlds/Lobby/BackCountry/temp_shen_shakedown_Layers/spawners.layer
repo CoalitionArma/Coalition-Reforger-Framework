@@ -1,0 +1,60 @@
+$grp SCR_BaseTriggerEntity {
+ vehicleSpawner {
+  coords 1079.117 571.27 2320.289
+  userScript "	string humveeMDO = \"{FA6820A9A52CD05B}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF.et\";"\
+  "	string humveeM2 = \"{3277F8B1FA06A2BC}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF.et\";"\
+  "	string maxiAmbu = \"{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et\";"\
+  "	string tigrArbalet = \"{E1288C24A903F64B}Prefabs/Vehicles/Wheeled/TIGR/GAZ_TIGR_v2_Arbalet_PKM_Green.et\";"\
+  "	string tigrPKP = \"{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/GAZ_TIGR_v2_PKM_Green.et\";"\
+  "	string uazAmbu = \"{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et\";"\
+  "	IEntity spawn1, spawn2, spawn3, spawn4, spawn5, spawn6;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawn1 = GetGame().GetWorld().FindEntityByName(\"humveeMDOspawner\");"\
+  "		spawn2 = GetGame().GetWorld().FindEntityByName(\"humveeM2spawner\");"\
+  "		spawn3 = GetGame().GetWorld().FindEntityByName(\"maxiSpawner\");"\
+  "		spawn4 = GetGame().GetWorld().FindEntityByName(\"tigrArbaletSpawner\");"\
+  "		spawn5 = GetGame().GetWorld().FindEntityByName(\"tigrPKPspawner\");"\
+  "		spawn6 = GetGame().GetWorld().FindEntityByName(\"UAZamboSpawner\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humveeMDO),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humveeM2),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(maxiAmbu),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn4.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(tigrArbalet),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn5.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(tigrPKP),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn6.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(uazAmbu),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  OnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ humveeMDOspawner {
+  coords 1157.756 573.994 2287.716
+ }
+ humveeM2spawner {
+  coords 1172.335 574.863 2280.931
+ }
+ maxiSpawner {
+  coords 1163.47 579.703 2252.969
+ }
+ tigrArbaletSpawner {
+  coords 220.286 611.039 963.517
+ }
+ tigrPKPspawner {
+  coords 220.277 611.434 948.238
+ }
+ UAZamboSpawner {
+  coords 221.581 611.438 930.791
+ }
+}
