@@ -1,0 +1,87 @@
+$grp SCR_DestructibleEntity : "{FD72B13B7EF4CB8A}Prefabs/Structures/Walls/Brick/BrickWallOld_01/BrickWallOld_01_old_8m_A.et" {
+ {
+  coords 10293.875 1.718 5628.175
+  scale 1.36
+ }
+ {
+  coords 10300.771 1.818 5628.175
+  scale 1.36
+ }
+ {
+  coords 10308.786 1.601 5628.175
+  scale 1.36
+ }
+ {
+  coords 10318.123 1.678 5628.175
+  scale 1.36
+ }
+ {
+  coords 10326.835 1.674 5628.175
+  scale 1.36
+ }
+ {
+  coords 10331.641 1.613 5628.175
+  angleY 90.512
+  scale 1.36
+ }
+ {
+  coords 10331.554 1.332 5618.428
+  angleY 90.512
+  scale 1.36
+ }
+ {
+  coords 10331.497 1.332 5612.135
+  angleY 90.512
+  scale 1.36
+ }
+ {
+  coords 10331.433 1.332 5604.847
+  angleY 90.512
+  scale 1.36
+ }
+ {
+  coords 10331.379 1.332 5598.857
+  angleY 90.512
+  scale 1.36
+ }
+ {
+  coords 10331.327 1.332 5593.248
+  angleY -179.021
+  scale 1.36
+ }
+ {
+  coords 10321.076 1.332 5593.423
+  angleY -179.021
+  scale 1.36
+ }
+ {
+  coords 10311.604 1.332 5593.584
+  angleY -179.021
+  scale 1.36
+ }
+ {
+  coords 10301.622 1.332 5593.754
+  angleY -179.021
+  scale 1.36
+ }
+ {
+  coords 10296.407 1.332 5593.843
+  angleY -89.7
+  scale 1.36
+ }
+ {
+  coords 10296.46 1.332 5603.868
+  angleY -89.7
+  scale 1.36
+ }
+ {
+  coords 10296.511 1.332 5613.668
+  angleY -89.7
+  scale 1.36
+ }
+ {
+  coords 10296.543 1.332 5619.778
+  angleY -89.7
+  scale 1.36
+ }
+}
