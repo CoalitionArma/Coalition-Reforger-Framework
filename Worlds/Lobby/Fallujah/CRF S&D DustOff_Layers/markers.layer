@@ -1,6 +1,16 @@
 $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
  {
-  coords 1920.161 8.156 1907.105
+  coords 1494.822 3.408 1378.195
+  angleY 0
+  m_MarkerColor 0 0.502 0.027 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2206.234 8.158 2037.62
   angleY 0
   m_MarkerColor 0 0.502 0.027 1
   m_aVisibleForFactions {
@@ -11,7 +21,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   {
    $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
     {
-     coords 70.214 6.929 18.773
+     coords -7.893 0 92.082
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -21,7 +31,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 165.87 0.024 36.884
+     coords -23.788 0 188.435
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -31,7 +41,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 230.97 9.549 43.615
+     coords -24.065 0.125 266.94
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -41,7 +51,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 221.289 4.951 115.059
+     coords -38.19 -0 360.109
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -51,7 +61,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 214.481 1.133 216.289
+     coords -58.382 -0 442.696
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -61,7 +71,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 205.812 2.278 279.41
+     coords -141.503 -0 438.636
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -71,7 +81,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 195.975 4.851 338.577
+     coords -221.578 0 432.704
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -81,7 +91,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 185.918 0.024 422.837
+     coords -317.323 -0 418.116
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -91,7 +101,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 175.395 2.163 494.434
+     coords -433.364 -0 406.012
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -101,7 +111,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 163.687 2.876 576.703
+     coords -540.719 -0.001 399.617
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -111,7 +121,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 102.116 0.025 565.626
+     coords -631.882 -0.001 398.937
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -121,7 +131,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords 15.01 0.025 557.033
+     coords -740.635 -0.001 391.823
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -131,7 +141,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -80.702 0.024 539.872
+     coords -846.066 -0.001 391.503
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -141,7 +151,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -177.716 0.273 533.588
+     coords -969.042 0.201 381.65
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -151,7 +161,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -251.423 0.024 513.919
+     coords -1019.289 -0.001 360.41
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -161,7 +171,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -323.117 0.024 514.685
+     coords -952.854 0.221 252.867
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -171,7 +181,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -420.16 0.023 501.73
+     coords -863.374 12.639 151.912
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -181,7 +191,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -499.178 0.023 491.633
+     coords -817.276 -6.731 60.694
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -191,7 +201,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -565.613 10.651 487.084
+     coords -795.812 -8.157 -25.634
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -201,7 +211,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -630.219 3.123 478.638
+     coords -782.115 -4.58 -90.621
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -211,7 +221,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -680.799 0.023 468.563
+     coords -747.02 -8.157 -228.873
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -221,7 +231,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -710.531 0.023 450.352
+     coords -703.103 -8.157 -343.107
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -231,7 +241,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -611.731 -0.064 318.462
+     coords -714.852 -8.157 -439.436
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -241,7 +251,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -535.312 0.124 230.442
+     coords 6.525 -0 -66.672
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -251,7 +261,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -504.6 12.553 178.376
+     coords -711.366 -8.157 -559.576
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -261,7 +271,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -495.563 -4.146 104.816
+     coords -24.677 -0 -149.406
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -271,7 +281,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -484.227 10.943 17.581
+     coords -8.92 0.023 -337.747
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -281,7 +291,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -462.295 -2.024 -51.693
+     coords 10.314 0.024 -445.788
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -291,7 +301,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -428.617 -3.198 -144.04
+     coords 24.434 0.023 -523.416
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -301,7 +311,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -406.73 1.516 -213.946
+     coords -3.099 11.62 -569.561
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -311,7 +321,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -316 0.366 -192.31
+     coords -119.222 0.021 -597.347
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -321,7 +331,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -214.353 0.025 -147.33
+     coords -248.143 1.032 -616.216
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -331,7 +341,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -163.18 4.377 -128.373
+     coords -342.907 0.023 -631.506
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -341,7 +351,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -101.047 1.079 -96.605
+     coords -426.93 0.023 -671.114
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -351,7 +361,37 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
      m_bShowForAnyFaction 0
     }
     {
-     coords -60.112 -0.038 -64.636
+     coords -508.746 0.023 -686.556
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -597.398 16.916 -685.935
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -673.499 2.296 -685.168
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -10.555 2.619 -245.813
      angleY 0
      m_MarkerColor 0 0.502 0.027 1
      m_aVisibleForFactions {
@@ -362,16 +402,6 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
     }
    }
   }
- }
- {
-  coords 1232.742 10.787 2327.58
-  angleY 0
-  m_MarkerColor 0 0.502 0.027 1
-  m_aVisibleForFactions {
-   "Tali"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
  }
 }
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {

@@ -1,3 +1,6 @@
+SCR_BaseTriggerEntity ZU {
+ coords 1850.077 8.156 1976.522
+}
 SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
  coords 1823.124 8.156 2018.426
  m_sCustomNameSet "Platoon"
@@ -46,8 +49,4 @@ SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group
    }
   }
  }
-}
-Vehicle Ural4320_ZU1 : "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et" {
- coords 1851.034 8.156 1978.447
- angleY 176.601
 }
