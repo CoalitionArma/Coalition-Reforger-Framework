@@ -6,7 +6,7 @@ EffectDef {
    ShapeSize 0 0 0.2
    ConeAngle 180 0 120
    MaxNum 100
-   BirthRate 10
+   BirthRate 50
    BirthRateRND 0
    BirthRateVel 7
    Offset 0 0 0
@@ -34,7 +34,7 @@ EffectDef {
    AnimFPS 25
    LifetimeByAnim 0
    RandomFrame 1
-   Lifetime 5
+   Lifetime 30
    LifetimeRND 0
    LifetimeVelFactor 1
    Color {
