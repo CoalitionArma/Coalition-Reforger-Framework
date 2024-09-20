@@ -10,7 +10,7 @@ Projectile : "{7018A917ED080F86}Prefabs/Weapons/Core/FlareEffect_Base.et" {
    TimeToLive 60
    AirDrag 0.2
    DeflectionSlowdown 1
-   DeployTime 3
+   DeployTime 6
    RotationSpeed 0
    SmokeParticleDirection 0 0 74.2
    SmokeParticle "{D9E301D28125234A}Particles/Weapon/Smoke_grenade_AN-M8_HC.ptc"
