@@ -1,0 +1,26 @@
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 1193.572 575.583 2284.541
+  m_sTitle "Defend Bombsite A"
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 1194.225 576.074 2281.622
+  m_sTitle "Defend Bombsite B"
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 1195.241 576.156 2276.991
+  m_sTitle "Destroy Bombsite A"
+  m_iScore 50
+  m_sFactionKey "RHS_ION"
+ }
+ {
+  coords 1195.813 576.493 2273.537
+  m_sTitle "Destroy Bombsite B"
+  m_iScore 50
+  m_sFactionKey "RHS_ION"
+ }
+}

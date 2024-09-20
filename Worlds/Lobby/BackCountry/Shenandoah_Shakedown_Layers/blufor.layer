@@ -1,0 +1,28 @@
+SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+ coords 1176.029 579.432 2241.909
+ m_sCustomNameSet "Platoon Command"
+ {
+  SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+   coords 34.243 -0.913 26.982
+   m_sCustomNameSet "1st Squad"
+   {
+    SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+     coords -3.171 0.261 -6.476
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+       coords -2.707 0.064 -5.956
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+         coords -2.622 -0.011 -5.909
+         m_sCustomNameSet "4th Squad"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,64 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ Welcome {
+  coords 1180.254 575.237 2281.849
+  m_sTitle "Welcome!"
+  m_sTextData "#Coal_Missions_Lobby_Welcome_Text"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ Summary {
+  coords 1181.957 575.353 2281.214
+  m_sTitle "Summary"
+  m_sTextData "ION Services, Inc. security forces will assualt two generators held by US Army forces in the Shenandoah Valley and destroy them."\
+  ""\
+  "- 3:2 slotting ratio"\
+  "- One-life mission"\
+  "- 70 minute time limit"\
+  "- ION must destroy both generators to win"\
+  ""\
+  "\"And the hills move like lungs,"\
+  "the river speaks in tongues"\
+  "and I am not alone.\""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 1
+ }
+ Assets {
+  coords 1184.828 575.575 2279.503
+  m_sTitle "Assets"
+  m_sTextData "ION:"\
+  "1x GAZ TIGR (PKM Arbalet)"\
+  "1x GAZ TIGR (PKP)"\
+  "1x UAZ452 (Ambulance)"\
+  ""\
+  "US Army:"\
+  "1x M1025 (M2 MDO)"\
+  "1x M1025 (M2)"\
+  "1x M997 (Ambulance)"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
+ INDFORbrief {
+  coords 242.163 607.698 892.236
+  m_sTitle "ION Briefing"
+  m_sTextData "We must destroy 2 generators in order to knock out the power supply of the town. Our staging point is at 002-009."\
+  ""\
+  "Note:"\
+  "- ION must destroy *both* generators to win"
+  m_aVisibleForFactions {
+   "RHS_ION"
+  }
+  m_iOrder 6
+ }
+ BLUFORbrief {
+  coords 1195.426 578.844 2239.14
+  m_sTitle "USA Briefing"
+  m_sTextData "We must defend two generators to protect the towns power supply. Bombsite B has some light fortifications. Our staging point is at 011-022."\
+  ""
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_iOrder 7
+ }
+}
