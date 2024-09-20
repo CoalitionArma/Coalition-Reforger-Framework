@@ -1,0 +1,164 @@
+$grp SCR_AIGroup : "{67FDBB473F1721CC}Prefabs/Groups/BLUFOR/1980s/Standard/Specials/Group_DeathRace.et" {
+ {
+  coords 11520.313 45.719 9158.566
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11520.736 45.719 9148.976
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11521.219 45.719 9138.476
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11521.498 45.719 9124.704
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11520.887 45.718 9113.681
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11520.172 45.718 9100.743
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11519.698 45.718 9085.406
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11518.612 45.719 9075.646
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11518.588 45.719 9063.197
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11518.186 45.719 9051.992
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11516.474 45.719 9020.567
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11517.161 45.719 9040.892
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11517.182 45.719 9031.182
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11516.14 45.719 9009.066
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11516.167 45.718 8998.119
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11515.056 45.718 8989.298
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11516.141 45.719 8980.354
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11516.567 45.718 8970.988
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11518.005 45.719 8958.521
+  m_sCustomNameSet "Car Team"
+ }
+ {
+  coords 11518.524 45.719 8945.494
+  m_sCustomNameSet "Car Team"
+ }
+}
+$grp Vehicle : "{79C704C221E9D033}Prefabs/Vehicles/Wheeled/S105/S105_deathrally_blue.et" {
+ S105_deathrally_blue1 {
+  coords 11525.582 45.719 8945.568
+  angleY 91
+ }
+ S105_deathrally_blue2 {
+  coords 11525.851 45.719 8959.278
+  angleY 91
+ }
+ S105_deathrally_blue3 {
+  coords 11525.429 45.718 8971.422
+  angleY 91
+ }
+ S105_deathrally_blue4 {
+  coords 11526.537 45.719 8981.838
+  angleY 91
+ }
+ S105_deathrally_blue5 {
+  coords 11523.943 45.719 8989.438
+  angleY 91
+ }
+ S105_deathrally_blue6 {
+  coords 11522.552 45.719 8998.107
+  angleY 91
+ }
+ S105_deathrally_blue7 {
+  coords 11522.986 45.719 9010.116
+  angleY 91
+ }
+ S105_deathrally_blue8 {
+  coords 11523.365 45.719 9020.71
+  angleY 91
+ }
+ S105_deathrally_blue9 {
+  coords 11524.067 45.719 9031.53
+  angleY 91
+ }
+ S105_deathrally_blue10 {
+  coords 11523.336 45.718 9041.911
+  angleY 91
+ }
+ S105_deathrally_blue11 {
+  coords 11523.197 45.719 9052.196
+  angleY 91
+ }
+ S105_deathrally_blue12 {
+  coords 11524.05 45.719 9063.003
+  angleY 91
+ }
+ S105_deathrally_blue13 {
+  coords 11524.219 45.719 9075.142
+  angleY 91
+ }
+ S105_deathrally_blue14 {
+  coords 11526.961 45.719 9085.738
+  angleY 91
+ }
+ S105_deathrally_blue15 {
+  coords 11526.103 45.718 9101.174
+  angleY 91
+ }
+ S105_deathrally_blue16 {
+  coords 11525.379 45.719 9113.736
+  angleY 91
+ }
+ S105_deathrally_blue17 {
+  coords 11526.655 45.719 9124.855
+  angleY 91
+ }
+ S105_deathrally_blue18 {
+  coords 11526.825 45.719 9138.935
+  angleY 91
+ }
+ S105_deathrally_blue19 {
+  coords 11527.093 45.719 9148.637
+  angleY 91
+ }
+ S105_deathrally_blue20 {
+  coords 11527.75 45.719 9159.068
+  angleY 91
+ }
+}
