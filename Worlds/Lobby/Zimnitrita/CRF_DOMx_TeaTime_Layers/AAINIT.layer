@@ -1,0 +1,67 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 12089.064 64.812 15729.205
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 60
+  }
+ }
+ coords 12024.422 69.69 15624.788
+ {
+  SCR_FactionManager "626425A4E3F9DE0C" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{626425A0BEBD9D96}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{626425A0BF573152}" {
+        m_sCallsign "Mortar"
+       }
+      }
+     }
+    }
+    SCR_Faction "{61500924662B6062}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{626425A15591847C}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{626425A155A14605}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{626425A158678BA3}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{626425A15999C19A}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{626425A1456CDB03}" {
+        m_sCallsign "2-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
