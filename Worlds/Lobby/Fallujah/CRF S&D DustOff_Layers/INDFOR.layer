@@ -1,0 +1,52 @@
+SCR_BaseTriggerEntity ZU {
+ coords 1850.077 8.156 1976.522
+}
+SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
+ coords 1823.124 8.156 2018.426
+ m_sCustomNameSet "Platoon"
+ {
+  $grp SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -16.171 0 -28.008
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -16.952 0 -22.099
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -17.494 0 -16.393
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -18.161 0 -10.3
+    m_sCustomNameSet "4th Squad"
+    {
+     SCR_AIGroup : "{69DFF9BDB5B70D77}Prefabs/Groups/INDFOR/Taliban/Vehicle/CRF_Group_Taliban_2manCrew_P.et" {
+      coords 19.016 0 -1.684
+      m_sCustomNameSet "AA Team (ZU-23)"
+     }
+    }
+   }
+  }
+ }
+}

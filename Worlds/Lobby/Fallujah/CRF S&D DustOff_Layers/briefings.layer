@@ -1,0 +1,36 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 1301.421 4.755 2049.199
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTitle "INDFOR Brief"
+ m_sTextData "Locals have told us about in an incoming American attack, we suspect they will be air inserting nearby and attempting to eliminate equipment vital to our abilty to operate in the city."\
+ ""\
+ "You cannot leave the game barrier on the map, even after safe start."
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTextData "BLUFOR:"\
+ ""\
+ "2x H-47 Chinook"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "1X ZU-23 Truck"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1301.421 4.755 2049.199
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTextData "Launching an attack from Fort Freedom we hope to take the enemy off guard allowing us to slip in and destroy their equipment in an effort to maintain control of the city."\
+ ""\
+ "You have free reign to plan the direction you want to attack the objectives from."
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTextData "The United States army in a bid to remain in control of the city of Fallujah sends in a platoon to eliminate vital infrastructure in the Taliban controlled areas."
+}
