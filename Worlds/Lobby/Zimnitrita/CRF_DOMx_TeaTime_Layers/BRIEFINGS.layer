@@ -1,0 +1,34 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 13576.534 24.331 14581.471
+ m_sTextData "We just took Sokyyiv, but British forces are positioning for a counterattack from the north-west."\
+ ""\
+ "Use are mortars and prevent them from retaking the town."
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 13576.534 24.331 14581.471
+ m_sTextData "BLUFOR: "\
+ ""\
+ "1x Armed HMMWV Per Squad"\
+ "1X UnArmed HMMWV Per Squad"\
+ ""\
+ "OPFOR:"\
+ ""\
+ "Trucks"\
+ "2x Mortars"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 13576.534 24.331 14581.471
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 13576.534 24.331 14581.471
+ m_sTextData "Soviet forces have just captured the town of Sokyyiv."\
+ ""\
+ "We need to counterattack and prevent them from being reinforced and fortifying the town."
+ m_aVisibleForFactions {
+  "UK"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 13576.534 24.331 14581.471
+ m_sTextData "A British mortarized platoon attempts to storm the town of Sokyyiv"
+}
