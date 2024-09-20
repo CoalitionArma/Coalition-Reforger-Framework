@@ -1,0 +1,144 @@
+$grp SCR_AIGroup : "{200697DBB023906E}Prefabs/Groups/OPFOR/1980s/Specials/Special_DeathRace_Red.et" {
+ {
+  coords 12789.391 32 9121.082
+ }
+ {
+  coords 12788.764 32 9110.694
+ }
+ {
+  coords 12789.327 32 9099.826
+ }
+ {
+  coords 12788.519 32 9091.537
+ }
+ {
+  coords 12788.481 32 9083.729
+ }
+ {
+  coords 12788.185 32 9074.619
+ }
+ {
+  coords 12787.55 32 9066.898
+ }
+ {
+  coords 12787.337 31.947 9059.089
+ }
+ {
+  coords 12785.325 31.979 9049.495
+ }
+ {
+  coords 12783.972 32 9041.108
+ }
+ {
+  coords 12783.964 31.986 9034.098
+ }
+ {
+  coords 12785.038 31.96 9024.181
+ }
+ {
+  coords 12785.948 31.954 9016.511
+ }
+ {
+  coords 12785.189 31.959 9009.113
+ }
+ {
+  coords 12784.302 31.966 8998.924
+ }
+ {
+  coords 12784.161 31.967 8989.072
+ }
+ {
+  coords 12785.187 31.937 8978.491
+ }
+ {
+  coords 12786.034 31.922 8969.025
+ }
+ {
+  coords 12786.56 31.918 8958.25
+ }
+ {
+  coords 12787.045 31.914 8948.287
+ }
+}
+$grp Vehicle : "{EC287FC25540334B}Prefabs/Vehicles/Wheeled/S105/S105_deathrally_red.et" {
+ S105_deathrally_red1 {
+  coords 12777.773 32 8947.349
+  angleY -91
+ }
+ S105_deathrally_red2 {
+  coords 12779.333 32.001 8957.745
+  angleY -91
+ }
+ S105_deathrally_red3 {
+  coords 12779.7 31.994 8969.082
+  angleY -91
+ }
+ S105_deathrally_red4 {
+  coords 12777.956 31.985 8979.106
+  angleY -91
+ }
+ S105_deathrally_red5 {
+  coords 12778.509 31.981 8989.645
+  angleY -91
+ }
+ S105_deathrally_red6 {
+  coords 12779.357 31.973 8999.924
+  angleY -91
+ }
+ S105_deathrally_red7 {
+  coords 12778.932 32 9009.071
+  angleY -91
+ }
+ S105_deathrally_red8 {
+  coords 12779.509 32 9016.459
+  angleY -91
+ }
+ S105_deathrally_red9 {
+  coords 12778.141 31.999 9024.736
+  angleY -91
+ }
+ S105_deathrally_red10 {
+  coords 12777.962 32 9033.787
+  angleY -91
+ }
+ S105_deathrally_red11 {
+  coords 12777.484 32.001 9040.925
+  angleY -91
+ }
+ S105_deathrally_red12 {
+  coords 12779.074 31.999 9049.891
+  angleY -91
+ }
+ S105_deathrally_red13 {
+  coords 12780.878 32 9059.576
+  angleY -91
+ }
+ S105_deathrally_red14 {
+  coords 12780.311 32 9067.476
+  angleY -91
+ }
+ S105_deathrally_red15 {
+  coords 12781.048 32 9076.056
+  angleY -91
+ }
+ S105_deathrally_red16 {
+  coords 12782.226 32 9085.372
+  angleY -91
+ }
+ S105_deathrally_red17 {
+  coords 12781.9 32 9092.071
+  angleY -91
+ }
+ S105_deathrally_red18 {
+  coords 12782.595 32 9100.491
+  angleY -91
+ }
+ S105_deathrally_red19 {
+  coords 12783.939 32.001 9110.781
+  angleY -91
+ }
+ S105_deathrally_red20 {
+  coords 12784.016 32 9120.554
+  angleY -91
+ }
+}
