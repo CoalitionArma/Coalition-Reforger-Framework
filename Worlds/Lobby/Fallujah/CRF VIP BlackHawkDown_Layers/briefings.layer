@@ -1,0 +1,48 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTextData "Search and Rescue"\
+ ""\
+ "The attackers must find and rescue the crew from the downed helicopter to win."\
+ ""\
+ "The defenders must find and kill the downed crew to win."
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTitle "INDFOR Brief"
+ m_sTextData "Locals have told us about a helicopter that was downed by our aa before it was destroyed in the center of town. We must not the enemy QRF extract them without a fight."\
+ ""\
+ "Don't leave your spawn till safe start ends."\
+ "You cannot leave the city, even after safe start."\
+ ""
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTextData "BLUFOR:"\
+ ""\
+ "1x UH-60"\
+ "2x Armed M1025"\
+ "2x M923A1 Transport Trucks"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "1x UAZ Armed"\
+ "4x URAL"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1301.421 4.755 2049.199
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTextData "After last weeks failed attack one of our helicopter was shotdown. We must locate and extract any survivors back to base."\
+ ""\
+ "The downed helicopter crew must stay within the city."\
+ ""\
+ "QRF have free reign to plan the direction you want to handle the objectives from."
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1301.421 4.755 2049.199
+ m_sTextData "After the failed attempt from United States army to destroy vital infrastructure in the Taliban controlled areas one of their helicopter was shotdown. They have sent a QRF to rescue them hopefully before the Taliban find them."
+}
