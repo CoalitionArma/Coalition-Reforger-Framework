@@ -1,0 +1,196 @@
+$grp SCR_BaseTriggerEntity {
+ TH1 {
+  coords 3197.568 11.177 765.232
+ }
+ vehicleSpawner {
+  coords 3188.444 10.409 810.12
+  userScript "	string mh60 = \"{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et\";"\
+  "	string M923A1_transport = \"{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et\";"\
+  "	string M1025_armed = \"{89C655409139E252}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_D_2004_V1.et\";"\
+  "	string M1025_command = \"{55A3575FAE3ED7C4}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_D_2004.et\";"\
+  "	string UAZ = \"{A4D16A62B432451A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_red.et\";"\
+  "	string URAL = \"{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_JZD.et\";"\
+  "	string UAZ_armed = \"{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et\";"\
+  "	IEntity spawn1, spawn2, spawn3, spawn4, spawn5, spawn6, spawn7, spawn8, spawn9, spawn10, spawn11"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawn1 = GetGame().GetWorld().FindEntityByName(\"TH1\");"\
+  "		spawn2 = GetGame().GetWorld().FindEntityByName(\"transport1\");"\
+  "		spawn3 = GetGame().GetWorld().FindEntityByName(\"transport2\");"\
+  "		spawn4 = GetGame().GetWorld().FindEntityByName(\"escort1\");"\
+  "		spawn5 = GetGame().GetWorld().FindEntityByName(\"escort2\");"\
+  "		spawn6 = GetGame().GetWorld().FindEntityByName(\"command\");"\
+  "		"\
+  "		spawn7 = GetGame().GetWorld().FindEntityByName(\"transport3\");"\
+  "		spawn8 = GetGame().GetWorld().FindEntityByName(\"transport4\");"\
+  "		spawn9 = GetGame().GetWorld().FindEntityByName(\"transport5\");"\
+  "		spawn10 = GetGame().GetWorld().FindEntityByName(\"transport6\");"\
+  "		spawn11 = GetGame().GetWorld().FindEntityByName(\"escort3\");"\
+  "		"\
+  "		"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mh60),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(M923A1_transport),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(M923A1_transport),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn4.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(M1025_armed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn5.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(M1025_armed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn6.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(M1025_command),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn7.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn8.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn9.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn10.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn11.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(UAZ_armed),GetGame().GetWorld(),spawnParams);"\
+  "		"\
+  "	}"
+  OnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ transport1 {
+  coords 3323.964 10.376 748.101
+  angleY 47.943
+ }
+ transport2 {
+  coords 3309.252 10.376 740.663
+  angleY -16.356
+ }
+ escort1 {
+  coords 3327.525 10.376 759.305
+  angleY 106.397
+ }
+ escort2 {
+  coords 3300.349 10.376 731.666
+  angleY -13.266
+ }
+ command {
+  coords 3288.115 10.375 735.415
+  angleY -117.094
+ }
+}
+GenericEntity : "{520CC573CA9FBC4F}Prefabs/Structures/Wreck/uh60.et" {
+ coords 1979.235 8.157 2020.276
+ angleY -28.083
+}
+SCR_AIGroup : "{C654769C2D326CBC}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Company_p.et" {
+ coords 3262.018 10.375 756.117
+ {
+  $grp SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
+   {
+    coords 18.596 0 4.752
+    m_aUnitPrefabSlots {
+     "{18E198DDC7DABAE8}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_PL_P.et" "{94C2898BF4FBDA0A}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_JTAC_P.et" "{84FC8FECEF20666B}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MO_P.et"
+    }
+    {
+     $grp SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 22.034 0 -2.795
+       angleY -34.031
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 28.156 0 -9.193
+       angleY -35.257
+       m_sCustomNameSet "2nd Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 15.643 0 7.214
+       angleY -35.83
+       m_aUnitPrefabSlots {
+        "{83C64C0E40717D26}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_Base_SL_P.et" "{88FBA322B5A1AF71}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Medic_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{A99403CE93D9BDDF}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MMG_P.et" "{5E08AB34F014A702}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMMG_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{81299AC8C1381458}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MAT_P.et" "{76B53232A2F50E85}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMAT_P.et" "{D732CFA07DAB6C53}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Demo_P.et"
+       }
+       m_sCustomNameSet "3rd Squad (Weapons)"
+      }
+     }
+    }
+   }
+   {
+    coords 3.25 -1.654 15.495
+    m_aUnitPrefabSlots {
+     "{18E198DDC7DABAE8}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_PL_P.et" "{94C2898BF4FBDA0A}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_JTAC_P.et" "{84FC8FECEF20666B}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MO_P.et"
+    }
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 14.872 -3.138 14.155
+       angleY -34.031
+       m_sCustomNameSet "4th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 25.2 -7.614 5.247
+       angleY -35.257
+       m_sCustomNameSet "5th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 10.961 -2.55 18.812
+       angleY -35.83
+       m_aUnitPrefabSlots {
+        "{83C64C0E40717D26}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_Base_SL_P.et" "{88FBA322B5A1AF71}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Medic_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{A99403CE93D9BDDF}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MMG_P.et" "{5E08AB34F014A702}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMMG_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{81299AC8C1381458}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MAT_P.et" "{76B53232A2F50E85}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMAT_P.et" "{D732CFA07DAB6C53}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Demo_P.et"
+       }
+       m_sCustomNameSet "6th Squad (Weapons)"
+       {
+        SCR_AIGroup : "{8221E6C32FBF1E53}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_AirCrew_p.et" {
+         coords -24.057 4.204 10.121
+         angleY 35.83
+         m_sCustomNameSet "Transport 1"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  SCR_AIGroup : "{B2F84EF8E7500407}Prefabs/Groups/BLUFOR/2000s US/Standard/Support/CRF_Group_2000_SniperTeam_p.et" {
+   coords -1275.911 -2.218 1265.532
+   m_aUnitPrefabSlots + {
+    "{68ADA20CCBDF7438}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Crew_Pilot_P.et"
+   }
+   m_sCustomNameSet "Stranded Crew"
+  }
+ }
+}
