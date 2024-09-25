@@ -22,12 +22,6 @@ $grp SCR_BaseTriggerEntity {
   "		spawn5 = GetGame().GetWorld().FindEntityByName(\"escort2\");"\
   "		spawn6 = GetGame().GetWorld().FindEntityByName(\"command\");"\
   "		"\
-  "		spawn7 = GetGame().GetWorld().FindEntityByName(\"transport3\");"\
-  "		spawn8 = GetGame().GetWorld().FindEntityByName(\"transport4\");"\
-  "		spawn9 = GetGame().GetWorld().FindEntityByName(\"transport5\");"\
-  "		spawn10 = GetGame().GetWorld().FindEntityByName(\"transport6\");"\
-  "		spawn11 = GetGame().GetWorld().FindEntityByName(\"escort3\");"\
-  "		"\
   "		"\
   "		"\
   "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
@@ -45,16 +39,6 @@ $grp SCR_BaseTriggerEntity {
   "		GetGame().SpawnEntityPrefab(Resource.Load(M1025_armed),GetGame().GetWorld(),spawnParams);"\
   "		spawnParams.Transform[3] = spawn6.GetOrigin();"\
   "		GetGame().SpawnEntityPrefab(Resource.Load(M1025_command),GetGame().GetWorld(),spawnParams);"\
-  "		spawnParams.Transform[3] = spawn7.GetOrigin();"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
-  "		spawnParams.Transform[3] = spawn8.GetOrigin();"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
-  "		spawnParams.Transform[3] = spawn9.GetOrigin();"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
-  "		spawnParams.Transform[3] = spawn10.GetOrigin();"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(URAL),GetGame().GetWorld(),spawnParams);"\
-  "		spawnParams.Transform[3] = spawn11.GetOrigin();"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(UAZ_armed),GetGame().GetWorld(),spawnParams);"\
   "		"\
   "	}"
   OnInit ""\
@@ -86,6 +70,24 @@ $grp SCR_BaseTriggerEntity {
 GenericEntity : "{520CC573CA9FBC4F}Prefabs/Structures/Wreck/uh60.et" {
  coords 1979.235 8.157 2020.276
  angleY -28.083
+}
+SCR_ChimeraCharacter downedPilot : "{68ADA20CCBDF7438}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Crew_Pilot_P.et" {
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_bIsPlayable 0
+  }
+  SCR_CallsignGroupComponent "{62720B4446F27E2C}" {
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFDC}" {
+   Enabled 0
+  }
+ }
+ coords 1984.433 8.156 2012.778
+ EOnInit ""\
+ "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(owner.FindComponent(SCR_CharacterControllerComponent));"\
+ "		characterController.SetUnconscious(true);"\
+ "	"
+ m_bRecruitable 0
 }
 SCR_AIGroup : "{C654769C2D326CBC}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Company_p.et" {
  coords 3262.018 10.375 756.117
@@ -184,13 +186,6 @@ SCR_AIGroup : "{C654769C2D326CBC}Prefabs/Groups/BLUFOR/2000s US/Standard/Command
      }
     }
    }
-  }
-  SCR_AIGroup : "{B2F84EF8E7500407}Prefabs/Groups/BLUFOR/2000s US/Standard/Support/CRF_Group_2000_SniperTeam_p.et" {
-   coords -1275.911 -2.218 1265.532
-   m_aUnitPrefabSlots + {
-    "{68ADA20CCBDF7438}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Crew_Pilot_P.et"
-   }
-   m_sCustomNameSet "Stranded Crew"
   }
  }
 }

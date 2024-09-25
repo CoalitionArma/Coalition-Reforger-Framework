@@ -3,30 +3,8 @@ ParticleEffectEntity {
  angleY 152
  EffectPath "{B073169BAA0BDD62}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_Medium.ptc"
 }
-$grp SCR_BaseTriggerEntity {
- transport3 {
-  coords 1207.628 8.156 2434.412
-  angleY -16.356
- }
- transport4 {
-  coords 1219.217 8.156 2419.223
-  angleY -16.356
- }
- transport5 {
-  coords 1229.286 8.156 2405.348
-  angleY -16.356
- }
- transport6 {
-  coords 1235.898 8.156 2399.769
-  angleY -16.356
- }
- escort3 {
-  coords 1240.73 8.157 2394.628
-  angleY 78.612
- }
-}
 SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
- coords 1206.943 8.155 2426.51
+ coords 2008.393 8.156 2020.736
  m_sCustomNameSet "Platoon"
  {
   $grp SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
@@ -36,7 +14,7 @@ SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group
       DefaultFormation "Row"
      }
     }
-    coords -16.171 0 -28.008
+    coords 13.549 0 3.409
    }
    {
     components {
@@ -44,7 +22,7 @@ SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group
       DefaultFormation "Row"
      }
     }
-    coords -16.952 0 -22.099
+    coords 4.986 0 2.933
     m_sCustomNameSet "2nd Squad"
    }
    {
@@ -53,7 +31,7 @@ SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group
       DefaultFormation "Row"
      }
     }
-    coords -17.494 0 -16.393
+    coords -2.41 0 2.034
     m_sCustomNameSet "3rd Squad"
    }
    {
@@ -62,7 +40,7 @@ SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group
       DefaultFormation "Row"
      }
     }
-    coords -18.161 0 -10.3
+    coords -10.389 0 0.893
     m_sCustomNameSet "4th Squad"
    }
   }
