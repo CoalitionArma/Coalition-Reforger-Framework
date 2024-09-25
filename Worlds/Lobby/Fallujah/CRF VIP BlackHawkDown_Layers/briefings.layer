@@ -11,7 +11,6 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  m_sTitle "INDFOR Brief"
  m_sTextData "Locals have told us about a helicopter that was downed by our aa before it was destroyed in the center of town. We must not the enemy QRF extract them without a fight."\
  ""\
- "Don't leave your spawn till safe start ends."\
  "You cannot leave the city, even after safe start."\
  ""
  m_aVisibleForFactions {
@@ -44,5 +43,5 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 1301.421 4.755 2049.199
- m_sTextData "After the failed attempt from United States army to destroy vital infrastructure in the Taliban controlled areas one of their helicopter was shotdown. They have sent a QRF to rescue them hopefully before the Taliban find them."
+ m_sTextData "After the failed attempt from United States army to destroy vital infrastructure in the Taliban controlled areas one of their helicopter was shotdown. They have sent a QRF to rescue them hopefully before the Taliban excute them."
 }

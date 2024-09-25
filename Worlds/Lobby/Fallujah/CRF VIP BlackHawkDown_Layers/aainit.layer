@@ -78,3 +78,29 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
 }
+SCR_BaseTriggerEntity pilotTransponder {
+ coords 1986.478 8.157 2017.94
+ userScript "	void CheckAddMarkers()"\
+ "	{"\
+ "		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();"\
+ "	  	if (!gameModePlayerComponent) "\
+ "	  	return;"\
+ "		"\
+ "		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());"\
+ "		if (!factionManager)"\
+ "		return;"\
+ "		"\
+ "		Faction faction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());"\
+ "		if (!faction)"\
+ "		return;"\
+ "		"\
+ "	    if (faction.GetFactionKey() == \"US\")    "\
+ "	  	gameModePlayerComponent.AddScriptedMarker(\"downedPilot\", \"0 0 0\", 360, \"Pilot Last Know POS\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
+ "	  	GetGame().GetCallqueue().Remove(CheckAddMarkers);"\
+ "		"\
+ "		"\
+ "	}"
+ OnInit ""\
+ "		GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);"\
+ "	"
+}
