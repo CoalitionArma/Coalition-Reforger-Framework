@@ -2,9 +2,18 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
  coords 12121.001 14.118 11994.224
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 60
+  }
+  CRF_SearchAndDestroyGameModeComponent "{6274D40DD05B1594}" {
+   attackingSide "RHS_AFRF"
+   defendingSide "RHS_USAF"
+  }
+ }
  coords 12242.009 17.19 12147.789
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6274D40EDDDB563B" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{5978B9CE6585BBE8}" {
@@ -52,4 +61,24 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    }
   }
  }
+}
+SCR_BaseTriggerEntity vehicleSpawner {
+ coords 13476.131 60.294 11889.39
+ userScript "	string t72 = \"{726286E1F9570EA1}Prefabs/Vehicles/Tracked/T-72B/T72B_base.et\";"\
+ "	IEntity spawn1;"\
+ "	"\
+ "	void spawnthings()"\
+ "	{"\
+ "		spawn1 = GetGame().GetWorld().FindEntityByName(\"tank\");"\
+ "		"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "		"\
+ "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(t72),GetGame().GetWorld(),spawnParams);"\
+ "	}"
+ OnInit ""\
+ "		super.EOnInit(owner);"\
+ "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+ "	"
 }
