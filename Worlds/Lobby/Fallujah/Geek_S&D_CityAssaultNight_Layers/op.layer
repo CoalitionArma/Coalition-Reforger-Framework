@@ -1,0 +1,41 @@
+SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
+ coords 2446.106 8.125 2015.785
+ angleY -97.094
+ m_sCustomNameSet "Platoon"
+ {
+  SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+   coords 0.475 0.031 14.475
+   angleY -179.422
+   {
+    SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+     coords -0.001 0 -4.274
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+       coords 0 0 -5.22
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+         coords 0.002 0 -6.098
+         m_sCustomNameSet "4th Squad"
+         {
+          SCR_AIGroup : "{5CDE10E6AAA56D88}Prefabs/Groups/INDFOR/Taliban/Support/CRF_Group_Taliban_MATTeam_P.et" {
+           coords 0.33 0 -6.181
+           angleY -2.547
+           {
+            SCR_AIGroup : "{783A89E1332A1440}Prefabs/Groups/INDFOR/Taliban/Support/CRF_Group_Taliban_MMGTeam_P.et" {
+             coords -0.315 0 -6.638
+             angleY 3.017
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

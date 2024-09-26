@@ -1,0 +1,31 @@
+Vehicle kiok_m1114_ambulance_tan1 : "{32AA1DFF9F49F870}Prefabs/M1114/kiok_m1114_ambulance_tan.et" {
+ coords 1336.184 3.31 1198.113
+}
+$grp Vehicle : "{5F17F054025E8B30}Prefabs/Vehicles/Wheeled/Stryker/Stryker_CROWS_Cage.et" {
+ Stryker_CROWS_Cage1 {
+  coords 1338.906 2.026 1216.468
+  angleY -109.145
+ }
+ Stryker_CROWS_Cage2 {
+  coords 1341.179 2.061 1210.46
+  angleY -109.145
+ }
+}
+$grp Vehicle : "{D1383479A70717D9}Prefabs/M1025/kiok_m1025_armed_M2_guncover_tan.et" {
+ kiok_m1025_armed_M2_guncover_tan2 {
+  coords 1314.781 2.762 1225.653
+  angleY -76.304
+ }
+ kiok_m1025_armed_M2_guncover_tan3 {
+  coords 1302.592 3.112 1228.518
+  angleY -72.912
+ }
+ kiok_m1025_armed_M2_guncover_tan1 {
+  coords 1322.123 2.579 1223.708
+  angleY -76.304
+ }
+ kiok_m1025_armed_M2_guncover_tan4 {
+  coords 1296.945 3.258 1230.254
+  angleY -72.912
+ }
+}
