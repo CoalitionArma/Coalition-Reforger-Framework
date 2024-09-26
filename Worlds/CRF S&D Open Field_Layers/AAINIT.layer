@@ -1,0 +1,55 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 12121.001 14.118 11994.224
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ coords 12242.009 17.19 12147.789
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{6274091DC7B6251A}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{6274091DC7ACF5D7}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6274091DC7C58CFD}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6274091DC7F9B1C1}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6274091DC7ECEA69}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6274091DF8CC32AB}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{6274091DF8FEF44A}" {
+        m_sCallsign "2-4"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{6274091C9D5AADE1}" {
+        m_sCallsign "1-4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,76 @@
+$grp Vehicle : "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et" {
+ M923A1_transport_covered_MERDC1 {
+  coords 11708.167 28.554 12147.747
+  angleY 13.405
+ }
+ M923A1_transport_covered_MERDC2 {
+  coords 11701.98 28.969 12138.004
+  angleY 13.405
+ }
+ M923A1_transport_covered_MERDC3 {
+  coords 11703.533 29.042 12126.647
+  angleY 13.405
+ }
+ M923A1_transport_covered_MERDC4 {
+  coords 11706.824 28.616 12157.598
+  angleY 13.405
+ }
+}
+SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+ coords 11668.15 29.812 12122.362
+ angleY 12.127
+ {
+  $grp SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -22.524 0 -7.545
+    angleY 3.449
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -22.365 0 -1.134
+    angleY 0.856
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -22.417 0 7.362
+    angleY 3.108
+    m_sCustomNameSet "3rd Squad"
+    {
+     SCR_AIGroup : "{E6BC4F5BB16DCE5F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Support/CRF_USARMY_MATTeam.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Row"
+       }
+      }
+      coords -0.041 0 10.055
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+ M1025_armed_M2HB_MERDC1 {
+  coords 11689.273 29.516 12133.633
+  angleY 10.838
+ }
+ M1025_armed_M2HB_MERDC2 {
+  coords 11695.415 29.256 12139.562
+  angleY 18.748
+ }
+}

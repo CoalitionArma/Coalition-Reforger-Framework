@@ -1,0 +1,59 @@
+SCR_AIGroup : "{87C7848A69244BF1}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Company.et" {
+ coords 13460.917 59.478 11877.693
+ {
+  SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+   coords -3.136 -1.036 0.427
+   {
+    SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+     coords -16.48 -0.167 -30.465
+     {
+      SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+       coords 13.646 -0.495 -1.292
+       m_sCustomNameSet "2nd Squad"
+       {
+        SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+         coords 11.229 -0.609 -2.036
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+           coords 14.435 0.609 2.035
+           m_sCustomNameSet "4th Squad"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+     coords -20.78 0.272 -44.065
+     m_sCustomNameSet "2nd Platoon (t72)"
+     {
+      SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+       coords 10.237 -0.24 -0.615
+       m_sCustomNameSet "BTR 1"
+       {
+        SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+         coords 34.525 0 0
+         m_sCustomNameSet "BTR 2"
+         {
+          SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+           coords -10.238 0.24 0.615
+           m_sCustomNameSet "BTR 3"
+           {
+            SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+             coords -14.483 1.314 -14.168
+             m_sCustomNameSet "BTR 4"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
