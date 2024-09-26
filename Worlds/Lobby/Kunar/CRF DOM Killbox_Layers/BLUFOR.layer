@@ -1,0 +1,101 @@
+SCR_AIGroup : "{B37C32FB4F5D3F00}Prefabs/Groups/BLUFOR/UN/Standard/Command/CRF_Group_UN_Company_p.et" {
+ coords 2165.361 13.972 3577.211
+ {
+  SCR_AIGroup : "{5992A87A4E8BA592}Prefabs/Groups/BLUFOR/UN/Standard/Command/CRF_Group_UN_Platoon_p.et" {
+   coords -4.522 -0.208 -5.699
+   {
+    SCR_AIGroup : "{644FBF70C778DF11}Prefabs/Groups/BLUFOR/UN/Standard/Infantry/CRF_Group_UN_RifleSquad_p.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Row"
+      }
+     }
+     coords -13.097 0.13 -12.231
+     {
+      SCR_AIGroup : "{644FBF70C778DF11}Prefabs/Groups/BLUFOR/UN/Standard/Infantry/CRF_Group_UN_RifleSquad_p.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 1.14 -0.064 5.679
+       m_sCustomNameSet "2nd Squad"
+       {
+        SCR_AIGroup : "{644FBF70C778DF11}Prefabs/Groups/BLUFOR/UN/Standard/Infantry/CRF_Group_UN_RifleSquad_p.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Row"
+          }
+         }
+         coords 0.485 -0.039 5.467
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{5992A87A4E8BA592}Prefabs/Groups/BLUFOR/UN/Standard/Command/CRF_Group_UN_Platoon_p.et" {
+           coords 10.927 0.417 11.045
+           m_sCustomNameSet "2nd Platoon"
+           {
+            SCR_AIGroup : "{644FBF70C778DF11}Prefabs/Groups/BLUFOR/UN/Standard/Infantry/CRF_Group_UN_RifleSquad_p.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "Row"
+              }
+             }
+             coords -12.248 0.061 -0.919
+             m_sCustomNameSet "4th Squad"
+             {
+              SCR_AIGroup : "{644FBF70C778DF11}Prefabs/Groups/BLUFOR/UN/Standard/Infantry/CRF_Group_UN_RifleSquad_p.et" {
+               components {
+                AIFormationComponent "{507E9DC12F541FE6}" {
+                 DefaultFormation "Row"
+                }
+               }
+               coords -0.251 0.812 7.087
+               m_sCustomNameSet "5th Squad"
+               {
+                SCR_AIGroup : "{644FBF70C778DF11}Prefabs/Groups/BLUFOR/UN/Standard/Infantry/CRF_Group_UN_RifleSquad_p.et" {
+                 components {
+                  AIFormationComponent "{507E9DC12F541FE6}" {
+                   DefaultFormation "Row"
+                  }
+                 }
+                 coords 0.329 0.845 5.908
+                 m_sCustomNameSet "6th Squad"
+                 {
+                  SCR_AIGroup : "{8A1A8D7146F77874}Prefabs/Groups/BLUFOR/UN/Standard/Vehicles/CRF_Group_UN_2manCrew_p.et" {
+                   coords 25.008 -1.658 -13.948
+                   m_sCustomNameSet "HMMWV 1"
+                   {
+                    SCR_AIGroup : "{8A1A8D7146F77874}Prefabs/Groups/BLUFOR/UN/Standard/Vehicles/CRF_Group_UN_2manCrew_p.et" {
+                     coords -1.43 -0.347 -6.005
+                     m_sCustomNameSet "HMMWV 2"
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{BAEA51529E858C47}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_UN.et" {
+ M1025_armed_M2HB_UN1 {
+  coords 2170.714 13.576 3547.228
+  angleY 110.123
+ }
+ M1025_armed_M2HB_UN2 {
+  coords 2161.2 13.5 3544.796
+  angleY 96.459
+ }
+}
