@@ -8,7 +8,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
    "Medical Vehicles Provided."
    {
     PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
-     coords 0.705 -0 -0.4
+     coords 0.705 0 -0.4
      {
       PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
        coords -0.239 0 0.187
@@ -18,7 +18,10 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
        {
         PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
          coords 1.762 0 0.617
-         m_sTextData "We have moved up into the US controlled zones and have captured several of their emplacements including 2 generators that we are using to transmit captured data back to our brothers at base. We must defend from the enemy who are moving to attack us."
+         m_sTextData "We have moved up into the US controlled zones and have captured several of their emplacements including 2 small portable generators that we are using to transmit captured data back to our brothers at base. We must defend from the enemy who are moving to attack us."\
+         ""\
+         "DO NOT LEAVE THE MARKED SAFE START AREA UNTIL GAME IS LIVE."\
+         ""
          m_aVisibleForFactions {
           "Tali"
          }
@@ -37,7 +40,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
             m_sFactionKey "Tali"
            }
            {
-            coords 0.343 -0 -2.62
+            coords 0.343 0 -2.62
             m_sTitle "Objective - Defend Site B."
             m_sTextData "Defend Site B."
             m_aVisibleForFactions {
@@ -52,7 +55,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
         }
         PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
          coords 0.525 0 0.156
-         m_sTextData "We have been pushed out of Fallujah by the Taliban, who have siezed our holdings in the Hospital and College as well as our generators there, which are being used to transmit data to their leadership. We must move in and try to destroy both objectives to halt the upload."\
+         m_sTextData "We have been pushed out of Fallujah by the Taliban, who have siezed our holdings in the Hospital and College as well as our small portable generators there, which are being used to transmit data to their leadership. We must move in and try to destroy both objectives to halt the upload. They have captured some of our emplacements and the fortifications we had in town."\
          ""\
          "DO NOT LEAVE THE MARKED SAFE START AREA UNTIL GAME IS LIVE."\
          "THE SECOND STRYKER IS THERE IN CASE IT BUGS OUT OR GETS STUCK ON TERRAIN OUT OF SPAWN, IT IS NOT TO BE USED IF THE STRYKER IS DESTROYED."
@@ -72,7 +75,7 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
             m_sFactionKey "US"
            }
            {
-            coords -0.056 -0 -1.59
+            coords -0.056 0 -1.59
             m_sTitle "Objective - Destroy Site B."
             m_sTextData "Destroy Site B."\
             ""
