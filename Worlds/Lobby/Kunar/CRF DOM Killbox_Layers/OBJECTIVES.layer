@@ -1,0 +1,231 @@
+$grp SCR_FactionControlTriggerEntity {
+ UpperKandaru {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 1388.971 69.562 3215.707
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 55
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"UN Forces have Seized Upper Kandaru\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "US"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "Upper Kandaru"
+     m_aVisibleForFactions {
+      "US"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 91.123
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "Upper Kandaru"
+     m_aVisibleForFactions {
+      "Tali"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control Upper Kandaru"
+     m_sTextData "Control Upper Kandaru"
+     m_iScore 50
+     m_sFactionKey "US"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend Upper Kandaru"
+     m_sTextData "Defend Upper Kandaru"
+     m_iScore 50
+     m_sFactionKey "Tali"
+    }
+   }
+  }
+ }
+ LowerKandaru {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 1360.375 31.948 3440.201
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 55
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"UN Forces have Seized Lower Kandaru\", 15);"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "US"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "Lower Kandaru"
+     m_aVisibleForFactions {
+      "US"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 89.905
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "Lower Kandaru"
+     m_aVisibleForFactions {
+      "Tali"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend Lower Kandaru"
+     m_sTextData "Defend Lower Kandaru"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "Tali"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control Lower Kandaru"
+     m_sTextData "Control Lower Kandaru"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "US"
+    }
+   }
+  }
+ }
+ Weradesh {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 1486.092 31.948 3641.993
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 55
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"UN Forces have Seized Weradesh\");"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "US"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "Upper Kandaru"
+     m_aVisibleForFactions {
+      "US"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 90.693
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "Upper Kandaru"
+     m_aVisibleForFactions {
+      "Tali"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend Weradesh"
+     m_sTextData "Defend Weradesh"
+     m_iOrder 2
+     m_iScore 25
+     m_sFactionKey "Tali"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control Weradesh"
+     m_sTextData "Control Weradesh"
+     m_iOrder 2
+     m_iScore 25
+     m_sFactionKey "US"
+    }
+   }
+  }
+ }
+}
