@@ -6,9 +6,6 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 60
   }
-  CRF_SearchAndDestroyGameModeComponent "{625F486E5589F13E}" {
-   defendingSide "Tali"
-  }
  }
  coords 1849.854 8.156 1992.071
  {
@@ -69,19 +66,19 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
     }
    }
   }
-  TimeAndWeatherManagerEntity : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
-   coords 0 0 0
-   "Initial Day Time" 2.299
-   "Internal variant transition" 0
-   "Internal subvariant 0" 0
-   "Internal subvariant 1" 0
-  }
  }
 }
 SCR_BaseTriggerEntity pilotTransponder {
  coords 1986.478 8.157 2017.94
- userScript "	void CheckAddMarkers()"\
- "	{"\
+ userScript "		CRF_SafestartGameModeComponent m_safestart;"\
+ "	//------------------------------------------------------------------------------------------------"\
+ "	"\
+ "	void CheckAddMarkers()"\
+ "	{	"\
+ "		m_safestart = CRF_SafestartGameModeComponent.GetInstance();"\
+ "		if (m_safestart.GetSafestartStatus()) return;"\
+ "		Print(\"S&R: Transponder Actived\");"\
+ "		"\
  "		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();"\
  "	  	if (!gameModePlayerComponent) "\
  "	  	return;"\
@@ -95,12 +92,27 @@ SCR_BaseTriggerEntity pilotTransponder {
  "		return;"\
  "		"\
  "	    if (faction.GetFactionKey() == \"US\")    "\
- "	  	gameModePlayerComponent.AddScriptedMarker(\"downedPilot\", \"0 0 0\", 360, \"Pilot Last Know POS\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
+ "	  	gameModePlayerComponent.AddScriptedMarker(\"downedPilot\", \"0 0 0\", 360, \"Transponder Signal\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
  "	  	GetGame().GetCallqueue().Remove(CheckAddMarkers);"\
  "		"\
+ "			"\
  "		"\
+ "	}"\
+ "	"\
+ "	void WaitTillGameStart()"\
+ "	{"\
+ "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) "\
+ "		{"\
+ "			Print(\"S&R: Night Night Mr Pilot\");"\
+ "			IEntity pilot = GetGame().FindEntity(\"downedPilot\");"\
+ "			SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(pilot.FindComponent(SCR_CharacterControllerComponent));"\
+ "			characterController.SetUnconscious(true);	"\
+ "			GetGame().GetCallqueue().Remove(WaitTillGameStart);"\
+ "			GetGame().GetCallqueue().CallLater(CheckAddMarkers, 6000, true);"\
+ "		}"\
+ "		return;"\
  "	}"
  OnInit ""\
- "		GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);"\
+ "		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1, true);"\
  "	"
 }
