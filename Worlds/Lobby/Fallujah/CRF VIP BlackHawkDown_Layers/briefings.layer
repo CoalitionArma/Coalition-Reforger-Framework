@@ -27,8 +27,7 @@ PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/As
  ""\
  "INDFOR:"\
  ""\
- "1x UAZ Armed"\
- "4x URAL"
+ "2x URAL"
 }
 PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
  coords 1301.421 4.755 2049.199
