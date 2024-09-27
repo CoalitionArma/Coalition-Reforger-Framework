@@ -1,0 +1,94 @@
+$grp SCR_BaseTriggerEntity {
+ BMP2 {
+  coords 2466.743 8.281 1897.999
+ }
+ BMP1 {
+  coords 2456.75 8.281 1897.999
+ }
+}
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 2425.094 8.281 1893.372
+ m_sCustomNameSet "Platoon"
+ {
+  $grp SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -28.251 0 -25.296
+    angleY -3.509
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -28.436 0 -20.697
+    angleY -3.509
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -26.168 0 18.776
+    angleY -3.852
+    m_sCustomNameSet "3rd Squad"
+    {
+     SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Row"
+       }
+      }
+      coords 0.186 0 5.03
+      m_sCustomNameSet "4th Squad"
+      {
+       SCR_AIGroup : "{DA9758113F23E2A7}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_SniperTeam_p.et" {
+        coords 21.127 0 -31.289
+        m_sCustomNameSet "Recon"
+        {
+         SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+          coords 11.683 0 1.337
+          m_sCustomNameSet "BMP 1"
+          {
+           SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+            coords 0.184 0 4.854
+            m_sCustomNameSet "BMP 2"
+            {
+             SCR_AIGroup : "{760CC1B5BA03BB34}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Logistics_p.et" {
+              coords -9.66 0 22.676
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 2449.386 8.281 1910.417
+ angleY -170.093
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered1 {
+  coords 2442.635 8.281 1892.541
+  angleY 71.611
+ }
+ Ural4320_transport_covered2 {
+  coords 2446.502 8.281 1900.261
+  angleY 102.848
+ }
+}
