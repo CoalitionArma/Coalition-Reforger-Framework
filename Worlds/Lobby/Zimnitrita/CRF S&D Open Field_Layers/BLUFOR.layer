@@ -16,6 +16,17 @@ $grp Vehicle : "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transpo
   angleY 13.405
  }
 }
+Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
+ coords 11691.152 29.262 12123.278
+}
+$grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ UAZ452_ambulance1 {
+  coords 13341.705 63.079 11903.249
+ }
+ UAZ452_ambulance2 {
+  coords 13335.447 63.309 11895.952
+ }
+}
 SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
  coords 11668.15 29.812 12122.362
  angleY 12.127
