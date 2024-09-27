@@ -8,7 +8,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
   {
    $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
     {
-     coords 13.315 0.001 -0
+     coords 13.315 0.001 0
     }
     {
      coords 13.315 0.001 18.019
@@ -72,7 +72,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      angleY -1.18
     }
     {
-     coords -12.079 0.001 -0
+     coords -12.079 0.001 0
     }
    }
   }
@@ -87,7 +87,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
   {
    $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
     {
-     coords -21.616 -0 95.77
+     coords -21.616 0 95.77
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -95,7 +95,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords -89.773 -0 228.686
+     coords -89.773 0 228.686
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -103,7 +103,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords -172.993 -0 346.543
+     coords -172.993 0 346.543
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -111,7 +111,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords -237.815 -0 459.443
+     coords -237.815 0 459.443
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -119,7 +119,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords -237.815 -0 536.169
+     coords -237.815 0 536.169
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -127,7 +127,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords -126.159 -0 536.169
+     coords -126.159 0 536.169
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -135,7 +135,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords -25.79 -0 556.437
+     coords -25.79 0 556.437
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -143,7 +143,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords 101.269 -0 579.947
+     coords 101.269 0 579.947
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -151,7 +151,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords 101.269 -0 739.417
+     coords 101.269 0 739.417
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -159,7 +159,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords 101.269 -0 877.272
+     coords 101.269 0 877.272
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -167,7 +167,7 @@ $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStart
      }
     }
     {
-     coords 101.269 -0 960.286
+     coords 101.269 0 960.286
      m_MarkerColor 0.085 1 0.001 1
      m_sDescription "INDFOR Safe Start Border"
      m_aVisibleForFactions {
@@ -338,12 +338,58 @@ PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" 
   }
  }
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
- coords 1733.388 8.156 2214.851
- angleY 90.886
- m_MarkerColor 0.008 1 0 1
- m_sDescription "INDFOR SPAWN"
- m_aVisibleForFactions {
-  "Tali"
+$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ {
+  coords 1733.388 8.156 2214.851
+  angleY 90.886
+  m_MarkerColor 0.008 1 0 1
+  m_sDescription "INDFOR SPAWN"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ Depot1 {
+  coords 1735.254 8.156 2193.515
+  angleY 90.886
+  m_MarkerColor 0 0.119 1 1
+  m_sQuadName "cross-2"
+  m_sDescription "DEPOT 1"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Depot2 {
+  coords 1917.772 8.156 2030.286
+  angleY 90.886
+  m_MarkerColor 0 0.119 1 1
+  m_sQuadName "cross-2"
+  m_sDescription "DEPOT 2"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Depot3 {
+  coords 2059.029 8.455 2295.17
+  angleY 90.886
+  m_MarkerColor 0 0.119 1 1
+  m_sQuadName "cross-2"
+  m_sDescription "DEPOT 3"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Depot4 {
+  coords 1800.858 8.156 1700.189
+  angleY 90.886
+  m_MarkerColor 0 0.119 1 1
+  m_sQuadName "cross-2"
+  m_sDescription "DEPOT 4"
+  m_aVisibleForFactions {
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
  }
 }
