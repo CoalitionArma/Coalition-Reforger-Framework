@@ -87,6 +87,7 @@ $grp SCR_BaseTriggerEntity {
   "	{	"\
   "		m_safestart = CRF_SafestartGameModeComponent.GetInstance();"\
   "		if (m_safestart.GetSafestartStatus()) return;"\
+  "		Print(\"Pilot Transpoder Active\");"\
   "		"\
   "		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();"\
   "	  	if (!gameModePlayerComponent) "\
@@ -101,7 +102,7 @@ $grp SCR_BaseTriggerEntity {
   "		return;"\
   "		"\
   "	    if (faction.GetFactionKey() == \"US\")    "\
-  "	  	gameModePlayerComponent.AddScriptedMarker(\"downedPilot\", \"0 0 0\", 360, \"Transponder Signal\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
+  "	  	gameModePlayerComponent.AddScriptedMarker(\"downedPilot\", \"0 0 0\", 1, \"Transponder Signal\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
   "	  	GetGame().GetCallqueue().Remove(CheckAddMarkers);"\
   "		"\
   "			"\
@@ -112,23 +113,22 @@ $grp SCR_BaseTriggerEntity {
   "	{"\
   "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) "\
   "		{"\
-  "			Print(\"S&R: Night Night Mr Pilot\");"\
-  "			IEntity pilot = GetGame().FindEntity(\"downedPilot\");"\
-  "			SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(pilot.FindComponent(SCR_CharacterControllerComponent));"\
-  "			characterController.SetUnconscious(true);	"\
+  "			if (Replication.IsServer())"\
+  "			{"\
+  "				Print(\"S&R: Night Night Mr Pilot\");"\
+  "				IEntity pilot = GetGame().FindEntity(\"downedPilot\");"\
+  "				SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(pilot.FindComponent(SCR_CharacterControllerComponent));"\
+  "				characterController.SetUnconscious(true);"\
+  "			}"\
   "			GetGame().GetCallqueue().Remove(WaitTillGameStart);"\
   "			GetGame().GetCallqueue().CallLater(CheckAddMarkers, 6000, true);"\
   "		}"\
   "		return;"\
   "	}"
   OnInit ""\
-  "		if (!GetGame().InPlayMode()) "\
-  "			return;"\
-  "		"\
-  "		if (Replication.IsServer())"\
-  "		{"\
+  ""\
   "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);"\
-  "		}"\
+  "		"\
   "	"
  }
 }
