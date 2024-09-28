@@ -1,0 +1,165 @@
+SCR_AIGroup : "{07FFB519637221B6}Prefabs/Groups/BLUFOR/UK80s/Standard/Command/CRF_Group_UK80s_COY_p.et" {
+ coords 11786.721 34.612 15832.704
+ m_sCustomNameSet "Company"
+ m_aUnitPrefabColorTeams {
+  "None" "None"
+ }
+ m_aUnitPrefabOverrideIcons {
+  "None" "None"
+ }
+ {
+  $grp SCR_AIGroup : "{1B84F0AABFF03583}Prefabs/Groups/BLUFOR/UK80s/Standard/Command/CRF_Group_UK80s_Platoon_p.et" {
+   {
+    coords 5.254 -2.002 -18.87
+    m_aUnitPrefabColorTeams {
+     "None" "None"
+    }
+    m_aUnitPrefabOverrideIcons {
+     "None" "None"
+    }
+    {
+     $grp SCR_AIGroup : "{8D162560B0BA6869}Prefabs/Groups/BLUFOR/UK80s/Standard/Infantry/CRF_Group_UK80s_RifleSquad_p.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 11 -1.813 -7.187
+       m_aUnitPrefabSlots {
+        "{E7426A39FE6E5D2D}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_Base_SL_P.et" "{EC7F85150BBE8F7A}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Medic_P.et" "{35C45A3F6719F92F}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_TL_P.et" "{98778555B0402DC3}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_MMG_P.et" "{553958FC714C03A0}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_AMMG_P.et" "{35C45A3F6719F92F}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_TL_P.et" "{98778555B0402DC3}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_MMG_P.et" "{553958FC714C03A0}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_AMMG_P.et" "{DC033C68FCF3C8F1}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Demo_P.et"
+       }
+       m_sCustomNameSet "1st Squad (Weapons)"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 10.632 -1.875 -0.199
+       m_sCustomNameSet "2nd Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 10.76 -1.902 6.317
+       m_sCustomNameSet "3rd Squad"
+      }
+     }
+    }
+   }
+   {
+    coords 6.601 -3.177 10.792
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{8D162560B0BA6869}Prefabs/Groups/BLUFOR/UK80s/Standard/Infantry/CRF_Group_UK80s_RifleSquad_p.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 9.339 -1.394 -6.665
+       m_aUnitPrefabSlots {
+        "{E7426A39FE6E5D2D}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_Base_SL_P.et" "{EC7F85150BBE8F7A}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Medic_P.et" "{35C45A3F6719F92F}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_TL_P.et" "{98778555B0402DC3}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_MMG_P.et" "{553958FC714C03A0}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_AMMG_P.et" "{35C45A3F6719F92F}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Leader_TL_P.et" "{98778555B0402DC3}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_MMG_P.et" "{553958FC714C03A0}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_AMMG_P.et" "{DC033C68FCF3C8F1}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Rifleman_Demo_P.et"
+       }
+       m_sCustomNameSet "4th Squad (Weapons)"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 9.099 -1.351 0.213
+       m_sCustomNameSet "5th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 9.547 -1.301 8.775
+       m_sCustomNameSet "6th Squad"
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle M1025_MERDC1 : "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et" {
+ coords 11816.065 31.422 15871.162
+ angleY 86.769
+ {
+  $grp Vehicle : "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et" {
+   M1025_MERDC2 {
+    coords 0.41 -1.419 11.945
+    angleY 6.735
+   }
+   M1025_MERDC3 {
+    coords 5.021 -2.909 24.391
+    angleY 26.504
+   }
+   M1025_MERDC4 {
+    coords 11.195 -3.418 34.977
+    angleY 32.722
+   }
+   M1025_MERDC5 {
+    coords 18.024 -3.154 45.603
+    angleY 48.796
+   }
+   M1025_MERDC6 {
+    coords 27.748 -2.537 54.116
+    angleY 64.887
+   }
+  }
+ }
+}
+Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
+ coords 11808.185 31.948 15864.932
+ angleY 96.172
+ {
+  $grp Vehicle : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
+   M997_maxi_ambulance_MERDC2 {
+    coords 0 0.641 -7.591
+   }
+   M997_maxi_ambulance_MERDC3 {
+    coords 0.001 1 -14.924
+   }
+  }
+ }
+}
+Vehicle M1025_armed_M2HB_MERDC1 : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+ coords 11821.68 30.762 15871.238
+ angleY 86.234
+ {
+  $grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+   M1025_armed_M2HB_MERDC2 {
+    coords 1.178 -1.474 11.861
+    angleY 6.735
+   }
+   M1025_armed_M2HB_MERDC3 {
+    coords 7.716 -2.57 23.618
+    angleY 26.504
+   }
+   M1025_armed_M2HB_MERDC4 {
+    coords 14.504 -2.693 33.824
+    angleY 32.722
+   }
+   M1025_armed_M2HB_MERDC5 {
+    coords 22.567 -2.301 43.302
+    angleY 48.795
+   }
+   M1025_armed_M2HB_MERDC6 {
+    coords 33.16 -1.284 50.364
+    angleY 64.887
+   }
+  }
+ }
+}

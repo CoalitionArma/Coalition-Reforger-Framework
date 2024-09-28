@@ -1,0 +1,121 @@
+SCR_BaseTriggerEntity tank {
+ coords 13449.163 57.773 11862.323
+ angleY -81.401
+}
+SCR_AIGroup : "{87C7848A69244BF1}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Company.et" {
+ coords 13476.131 58.46 11825.426
+ {
+  SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+   coords 6.255 1.72 -11.019
+   {
+    SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "column"
+      }
+     }
+     coords -7.123 -3.142 47.493
+     {
+      SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "column"
+        }
+       }
+       coords -0.231 -0.585 -4.714
+       m_sCustomNameSet "2nd Squad"
+       {
+        SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "column"
+          }
+         }
+         coords 30.357 0.495 -1.655
+         m_sCustomNameSet "3rd Squad"
+         {
+          SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "column"
+            }
+           }
+           coords -0.089 -0.319 -4.597
+           m_sCustomNameSet "4th Squad"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+    SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+     coords -20.78 -0.051 4.248
+     m_sCustomNameSet "2nd Platoon (t72)"
+     {
+      SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "column"
+        }
+       }
+       coords -36.953 -1.559 52.389
+       m_sCustomNameSet "BTR 1"
+       {
+        SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "column"
+          }
+         }
+         coords -0.479 0.179 -5.653
+         m_sCustomNameSet "BTR 2"
+         {
+          SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "column"
+            }
+           }
+           coords -25.811 1.255 15.043
+           m_sCustomNameSet "BTR 3"
+           {
+            SCR_AIGroup : "{F9113C101ACDD5DE}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Vehicle/CRF_RF_MSV_VKPO_Vehicle2Man.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "column"
+              }
+             }
+             coords 1.993 0.105 -5.823
+             m_sCustomNameSet "BTR 4"
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 13380.681 61.352 11882.852
+  angleY -56.184
+ }
+ BTR2 {
+  coords 13372.729 61.883 11894.705
+  angleY -48.98
+ }
+ BTR3 {
+  coords 13360.383 62.615 11898.522
+  angleY -44.527
+ }
+ BTR4 {
+  coords 13354.201 62.486 11913.351
+  angleY -42.085
+ }
+}

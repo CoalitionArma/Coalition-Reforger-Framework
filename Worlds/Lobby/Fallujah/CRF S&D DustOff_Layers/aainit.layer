@@ -1,0 +1,73 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1858.537 8.156 1992.723
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 60
+  }
+  CRF_SearchAndDestroyGameModeComponent "{625F486E5589F13E}" {
+   defendingSide "Tali"
+  }
+ }
+ coords 1849.854 8.156 1992.071
+ {
+  SCR_FactionManager "62640C0F3337829B" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{62657A4228F0125A}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{62657A422802F274}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{62657A422848FA98}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{62657A42299B4F97}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{62657A42D9829865}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{625F486CB62825A0}" {
+        m_sCallsign "TH1"
+       }
+       SCR_CallsignInfo "{62657A42D9A81E3D}" {
+        m_sCallsign "TH2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{623507721849E36C}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{61A2E10CD5A79B52}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{625F486A45EB18DE}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{625F486A453ACFBF}" {
+        m_sCallsign "AA"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}

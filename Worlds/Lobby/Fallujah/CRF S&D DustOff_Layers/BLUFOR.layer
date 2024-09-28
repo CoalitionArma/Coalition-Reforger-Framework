@@ -1,0 +1,141 @@
+$grp SCR_BaseTriggerEntity {
+ TH1 {
+  coords 3197.568 11.177 765.232
+ }
+ vehicleSpawner {
+  coords 3188.444 10.409 810.12
+  userScript "	string h47 = \"{7CF0A16FA3AED298}Prefabs/Vehicles/Helicopters/H47/H47_base.et\";"\
+  "	string zu = \"{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et\";"\
+  "	IEntity spawn1, spawn2, spawn3;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawn1 = GetGame().GetWorld().FindEntityByName(\"TH1\");"\
+  "		spawn2 = GetGame().GetWorld().FindEntityByName(\"TH2\");"\
+  "		spawn3 = GetGame().GetWorld().FindEntityByName(\"ZU\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(h47),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(h47),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawn3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(zu),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  OnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ TH2 {
+  coords 3232.837 11.177 765.232
+ }
+}
+SCR_AIGroup : "{C654769C2D326CBC}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Company_p.et" {
+ coords 3262.018 10.375 756.117
+ {
+  $grp SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
+   {
+    coords 18.596 0 4.752
+    m_aUnitPrefabSlots {
+     "{18E198DDC7DABAE8}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_PL_P.et" "{94C2898BF4FBDA0A}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_JTAC_P.et" "{84FC8FECEF20666B}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MO_P.et"
+    }
+    {
+     $grp SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 22.034 0 -2.795
+       angleY -34.031
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 28.156 0 -9.193
+       angleY -35.257
+       m_sCustomNameSet "2nd Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 15.643 0 7.214
+       angleY -35.83
+       m_aUnitPrefabSlots {
+        "{83C64C0E40717D26}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_Base_SL_P.et" "{88FBA322B5A1AF71}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Medic_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{A99403CE93D9BDDF}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MMG_P.et" "{5E08AB34F014A702}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMMG_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{81299AC8C1381458}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MAT_P.et" "{76B53232A2F50E85}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMAT_P.et" "{D732CFA07DAB6C53}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Demo_P.et"
+       }
+       m_sCustomNameSet "3rd Squad (Weapons)"
+      }
+     }
+    }
+   }
+   {
+    coords 3.25 -1.654 15.495
+    m_aUnitPrefabSlots {
+     "{18E198DDC7DABAE8}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_PL_P.et" "{94C2898BF4FBDA0A}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_JTAC_P.et" "{84FC8FECEF20666B}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MO_P.et"
+    }
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 14.872 -3.138 14.155
+       angleY -34.031
+       m_sCustomNameSet "4th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 25.2 -7.614 5.247
+       angleY -35.257
+       m_sCustomNameSet "5th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Row"
+        }
+       }
+       coords 10.961 -2.55 18.812
+       angleY -35.83
+       m_aUnitPrefabSlots {
+        "{83C64C0E40717D26}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_Base_SL_P.et" "{88FBA322B5A1AF71}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Medic_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{A99403CE93D9BDDF}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MMG_P.et" "{5E08AB34F014A702}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMMG_P.et" "{C0C2F896E8BDED6D}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Leader_TL_P.et" "{81299AC8C1381458}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_MAT_P.et" "{76B53232A2F50E85}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_AMAT_P.et" "{D732CFA07DAB6C53}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Rifleman_Demo_P.et"
+       }
+       m_sCustomNameSet "6th Squad (Weapons)"
+       {
+        SCR_AIGroup : "{8221E6C32FBF1E53}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_AirCrew_p.et" {
+         coords -24.057 4.204 10.121
+         angleY 35.83
+         m_sCustomNameSet "Transport 1"
+         {
+          SCR_AIGroup : "{8221E6C32FBF1E53}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_AirCrew_p.et" {
+           coords 9.719 -4.204 5.744
+           m_sCustomNameSet "Transport 2"
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

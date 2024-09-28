@@ -263,6 +263,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
     SCR_Faction "{623962205CE2B89C}" {
      UIInfo SCR_FactionUIInfo "{62394AA4B52816D2}" {
       Name "INDFOR"
+      m_sNameUpper "INDFOR"
      }
      m_sFactionRadioEncryptionKey "candleSauce"
     }
@@ -277,6 +278,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
     SCR_Faction "{61500924662B6062}" {
      UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
       Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
      }
      m_sFactionRadioEncryptionKey "chickenNuggets"
     }
@@ -284,7 +286,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      FactionKey "Tali"
      UIInfo SCR_FactionUIInfo "{623503F81F166E81}" {
       Name "INDFOR"
-      m_sNameUpper "Taliban"
+      m_sNameUpper "INDFOR"
      }
      m_bIsPlayable 1
      m_aFriendlyFactionsIds {
