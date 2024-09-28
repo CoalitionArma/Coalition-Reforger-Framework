@@ -1,0 +1,577 @@
+PS_ManualMarker indforSSlimit : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+ coords 324.023 626.93 962.664
+ angleY 0
+ m_MarkerColor 0 0.342 0.089 1
+ m_sDescription "SafeStart Limit (ION)"
+ m_aVisibleForFactions {
+  "RHS_ION"
+ }
+ m_bVisibleForEmptyFaction 0
+ m_bShowForAnyFaction 0
+ {
+  $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+   {
+    coords 0.133 -9.419 27.595
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -35.208 -1.593 30.136
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -64.993 7.337 26.557
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -111.136 -16.591 26.945
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -114.101 -15.727 -20.672
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -96.666 -13.747 -64.061
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -55.736 -19.161 -65.981
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -8.297 -0.147 -78.805
+    angleY 0
+    m_MarkerColor 0 0.342 0.089 1
+    m_sDescription "SafeStart Limit (ION)"
+    m_aVisibleForFactions {
+     "RHS_ION"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ AOlimit {
+  coords 10.257 527.877 3236.984
+  angleY 0
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    {
+     coords 144.352 19.688 -79.633
+     angleY 0
+    }
+    {
+     coords 221.742 20.929 -77.402
+     angleY 0
+    }
+    {
+     coords 233.531 22.818 11.511
+     angleY 0
+    }
+    {
+     coords 284.493 23.38 74.418
+     angleY 0
+    }
+    {
+     coords 291.877 36.174 156.692
+     angleY 0
+    }
+    {
+     coords 390.875 38.987 173.471
+     angleY 0
+    }
+    {
+     coords 485.823 50.643 138.22
+     angleY 0
+    }
+    {
+     coords 623.881 14.43 106
+     angleY 0
+    }
+    {
+     coords 764.962 37.33 55.729
+     angleY 0
+    }
+    {
+     coords 894.616 24.106 -7.992
+     angleY 0
+    }
+    {
+     coords 981.872 35.877 -85.01
+     angleY 0
+    }
+    {
+     coords 1076.374 -14.204 -152.326
+     angleY 0
+    }
+    {
+     coords 1154.478 -31.198 -218.487
+     angleY 0
+    }
+    {
+     coords 1187.45 -18.49 -292.283
+     angleY 0
+    }
+    {
+     coords 1221.303 -20.083 -348.331
+     angleY 0
+    }
+    {
+     coords 1299.128 -42.792 -437.767
+     angleY 0
+    }
+    {
+     coords 1369.333 -56.492 -494.321
+     angleY 0
+    }
+    {
+     coords 1386.197 -21.529 -543.314
+     angleY 0
+    }
+    {
+     coords 1383.824 -36.835 -694.249
+     angleY 0
+    }
+    {
+     coords 1324.436 -11.33 -817.148
+     angleY 0
+    }
+    {
+     coords 1360.948 -2.847 -903.275
+     angleY 0
+    }
+    {
+     coords 1366.17 4.149 -971.286
+     angleY 0
+    }
+    {
+     coords 1354.27 15.131 -1043.69
+     angleY 0
+    }
+    {
+     coords 1360.044 29.534 -1115.688
+     angleY 0
+    }
+    {
+     coords 1392.663 33.414 -1156.864
+     angleY 0
+    }
+    {
+     coords 1434.371 30.085 -1184.141
+     angleY 0
+    }
+    {
+     coords 1475.841 30.437 -1236.133
+     angleY 0
+    }
+    {
+     coords 1459.083 19.588 -1297.032
+     angleY 0
+    }
+    {
+     coords 1435.26 17.64 -1347.196
+     angleY 0
+    }
+    {
+     coords 1381.66 5.227 -1383.072
+     angleY 0
+    }
+    {
+     coords 1331.649 22.225 -1419.913
+     angleY 0
+    }
+    {
+     coords 1282.795 9.78 -1476.233
+     angleY 0
+    }
+    {
+     coords 1209.125 -19.361 -1564.848
+     angleY 0
+    }
+    {
+     coords 1200.555 -47.306 -1660.537
+     angleY 0
+    }
+    {
+     coords 1174.321 -60.62 -1776.873
+     angleY 0
+    }
+    {
+     coords 1244.82 -73.823 -1905.719
+     angleY 0
+    }
+    {
+     coords 1253.029 -74.329 -1995.253
+     angleY 0
+    }
+    {
+     coords 1125.095 -76.919 -2069.174
+     angleY 0
+    }
+    {
+     coords 1012.391 -66.454 -2172.834
+     angleY 0
+    }
+    {
+     coords 944.938 -72.206 -2316.628
+     angleY 0
+    }
+    {
+     coords 911.703 -69.793 -2447.004
+     angleY 0
+    }
+    {
+     coords 901.665 -61.937 -2578.924
+     angleY 0
+    }
+    {
+     coords 916.727 -73.749 -2735.378
+     angleY 0
+    }
+    {
+     coords 857.433 -71.424 -2831.677
+     angleY 0
+    }
+    {
+     coords 809.794 -65.592 -2963.1
+     angleY 0
+    }
+    {
+     coords 742.207 -47.406 -3014.552
+     angleY 0
+    }
+    {
+     coords 689.379 -32.552 -3035.363
+     angleY 0
+    }
+    {
+     coords 606.153 -15.894 -2924.627
+     angleY 0
+    }
+    {
+     coords 520.046 36.862 -2880.215
+     angleY 0
+    }
+    {
+     coords 434.577 57.768 -2882.337
+     angleY 0
+    }
+    {
+     coords 374.161 74.235 -2923.192
+     angleY 0
+    }
+    {
+     coords 283.705 83.715 -2976.642
+     angleY 0
+    }
+    {
+     coords 172.609 110.721 -2953.123
+     angleY 0
+    }
+    {
+     coords 23.873 148.636 -2899.79
+     angleY 0
+    }
+   }
+  }
+ }
+ greenforSpawnMarker {
+  coords 276.274 617.526 956.803
+  m_MarkerColor 0.148 0.434 0.194 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 75
+  m_sDescription "ION Spawn"
+  m_aVisibleForFactions {
+   "RHS_ION"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ bluforSpawnMarker {
+  coords 1197.906 578.507 2254.197
+  m_MarkerColor 0.009 0.017 0.503 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 75
+  m_sDescription "USA Spawn"
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}
+PS_ManualMarker bluforSSlimit : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+ coords 480.502 507.723 2420.204
+ angleY 0
+ m_sDescription "SafeStart Limit (USA)"
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+ m_bVisibleForEmptyFaction 0
+ m_bShowForAnyFaction 0
+ {
+  $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+   {
+    coords -92.608 5.725 -58.095
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -180.079 13.193 -66.279
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -294.687 48.689 -119.723
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -318.926 52.192 -204.338
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -265.664 28.282 -318.675
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -210.896 55.906 -498.696
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -124.664 68.907 -571.588
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords -58.109 62.09 -608.885
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 54.52 42.497 -675.228
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 191.08 47.696 -667.717
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 328.843 31.83 -673.73
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 464.628 19.476 -622.445
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 608.24 16.032 -524.811
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 714.471 33.109 -407.944
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 776.229 41.303 -293.074
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 798.937 52.949 -146.345
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 768.819 55.406 -50.434
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 701.684 68.999 -16.375
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 535.884 49.121 10.637
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 364.2 30.504 11.235
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+   {
+    coords 168.261 7.435 -5.111
+    angleY 0
+    m_sDescription "SafeStart Limit (USA)"
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+    m_bVisibleForEmptyFaction 0
+    m_bShowForAnyFaction 0
+   }
+  }
+ }
+}

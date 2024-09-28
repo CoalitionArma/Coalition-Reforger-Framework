@@ -1,0 +1,43 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 1607.883 24.431 3572.519
+ m_sTitle "INDFOR Brief"
+ m_sTextData "We believe the so-called \"peacekeepers\" to the east are going to be attempting to clear us out of our strongholds. we must stop them."\
+ ""\
+ ""\
+ "Maintain control of the area around the three markers on the map."\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 1607.883 24.431 3572.519
+ m_sTextData "BLUFOR: "\
+ ""\
+ "2X Armed Humvee"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1607.883 24.431 3572.519
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 1607.883 24.431 3572.519
+ m_sTextData "Weradesh - 25 points"\
+ "Lower Kandaru - 25 points"\
+ "Upper Kandaru - 50 points"
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 1607.883 24.431 3572.519
+ m_sTextData "The Taliban are held out around the area of Kandaru, Leadership has made the decision to clear them out."\
+ ""\
+ ""\
+ "Gain Control of the three zones around the Kandaru area"\
+ ""\
+ ""
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1607.883 24.431 3572.519
+ m_sTextData "UN Forces move to ambush Taliban cells around the area of Kandaru in Kunar Valley. Their goal is to seize the major areas to force the Taliban to abandon the area to help stabilize the situation"\
+ ""\
+ ""
+}

@@ -1,0 +1,419 @@
+$grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+ {
+  coords 1494.822 3.408 1378.195
+  angleY 0
+  m_MarkerColor 0 0.502 0.027 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 2206.234 8.158 2037.62
+  angleY 0
+  m_MarkerColor 0 0.502 0.027 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+  {
+   $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+    {
+     coords -7.893 0 92.082
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -23.788 0 188.435
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -24.065 0.125 266.94
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -38.19 -0 360.109
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -58.382 -0 442.696
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -141.503 -0 438.636
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -221.578 0 432.704
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -317.323 -0 418.116
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -433.364 -0 406.012
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -540.719 -0.001 399.617
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -631.882 -0.001 398.937
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -740.635 -0.001 391.823
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -846.066 -0.001 391.503
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -969.042 0.201 381.65
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -1019.289 -0.001 360.41
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -952.854 0.221 252.867
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -863.374 12.639 151.912
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -817.276 -6.731 60.694
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -795.812 -8.157 -25.634
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -782.115 -4.58 -90.621
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -747.02 -8.157 -228.873
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -703.103 -8.157 -343.107
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -714.852 -8.157 -439.436
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords 6.525 -0 -66.672
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -711.366 -8.157 -559.576
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -24.677 -0 -149.406
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -8.92 0.023 -337.747
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords 10.314 0.024 -445.788
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords 24.434 0.023 -523.416
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -3.099 11.62 -569.561
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -119.222 0.021 -597.347
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -248.143 1.032 -616.216
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -342.907 0.023 -631.506
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -426.93 0.023 -671.114
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -508.746 0.023 -686.556
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -597.398 16.916 -685.935
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -673.499 2.296 -685.168
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+    {
+     coords -10.555 2.619 -245.813
+     angleY 0
+     m_MarkerColor 0 0.502 0.027 1
+     m_aVisibleForFactions {
+      "Tali"
+     }
+     m_bVisibleForEmptyFaction 0
+     m_bShowForAnyFaction 0
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 1842.303 8.156 1999.47
+ angleY 88.636
+ m_MarkerColor 0 1 0.001 1
+ m_sDescription "Taliban Spawn"
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 3262.1 10.375 758.308
+ angleY 90.771
+}

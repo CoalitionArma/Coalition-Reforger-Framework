@@ -1,0 +1,64 @@
+Vehicle S1203_transport_yellow1 : "{4C79EB5FADB89B7A}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_yellow.et" {
+ coords 1710.502 8.156 2229.563
+ angleY -37.336
+}
+SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
+ coords 1744.463 8.156 2226.082
+ m_sCustomNameSet "Platoon"
+ {
+  $grp SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -17.782 0 -3.657
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -18.164 0 -8.539
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords -18.106 0 -13.258
+    m_sCustomNameSet "3rd Squad"
+    {
+     SCR_AIGroup : "{DB4536BE64D781E5}Prefabs/Groups/INDFOR/Taliban/Support/CRF_Group_Taliban_SniperTeam_P.et" {
+      coords 9.283 0 20.192
+      m_sCustomNameSet "Recon"
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle Ural4320_transport_covered_CIV_orange1 : "{66241E0CEDFCEDFF}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_orange.et" {
+ coords 1751.589 8.156 2207.451
+ angleY -49.036
+}
+Vehicle S105_red1 : "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et" {
+ coords 1691.422 8.156 2249.472
+ angleY 156.04
+}
+Vehicle S105_green1 : "{AD80FB47D868C775}Prefabs/Vehicles/Wheeled/S105/S105_green.et" {
+ coords 1699.516 8.156 2226.954
+ angleY -36.543
+}
+Vehicle Ural4320_transport_covered_CIV_blue1 : "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et" {
+ coords 1748.299 8.156 2235.01
+ angleY -100.178
+}
+Vehicle S1203_transport_blue1 : "{F77C41245A580FD1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_blue.et" {
+ coords 1707.357 8.156 2244.851
+ angleY -121.944
+}

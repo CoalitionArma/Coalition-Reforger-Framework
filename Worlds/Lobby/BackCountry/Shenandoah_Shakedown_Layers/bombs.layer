@@ -1,0 +1,84 @@
+$grp SCR_BaseTriggerEntity {
+ aSiteTrigger {
+  coords 1158.454 579.75 2263.119
+  angleY 112.95
+ }
+ bSiteTrigger {
+  coords 524.459 512.362 2329.055
+  angleY -101.973
+ }
+}
+GenericEntity bombsiteBprops : "{B13C3ED783D3D194}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Medium_Top_FIA_01_V2.et" {
+ coords 504.326 511.959 2310.933
+ angleY 95.927
+ {
+  GenericEntity : "{350AFA8CB574F70B}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_MG_USSR_02_PKM.et" {
+   coords 14.843 8.032 5.897
+   angleY -26.181
+  }
+  $grp GenericEntity : "{420E14DDFE57AF53}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_end_burlap.et" {
+   {
+    coords 6.001 7.891 0.868
+    angleY -111.052
+   }
+   {
+    coords 12.025 7.891 -6.78
+    angleY -108.172
+   }
+  }
+  GenericEntity : "{4ED8BBC0E6679FBE}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_end_high_burlap.et" {
+   coords 19.363 7.891 -2.279
+   angleY 159.67
+  }
+  $grp GenericEntity : "{A3A7C365E845B1B6}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_high_burlap.et" {
+   {
+    coords 19.917 7.891 6.932
+    angleY -108.978
+   }
+   {
+    coords 20.969 7.891 3.967
+    angleY -108.978
+   }
+   {
+    coords 22.072 7.891 1.014
+    angleY -109.829
+   }
+   {
+    coords 21.695 7.891 -1.395
+    angleY -20.417
+   }
+   {
+    coords 17.501 7.891 7.326
+    angleY -19.721
+   }
+   {
+    coords 11.537 7.891 5.133
+    angleY -21.676
+   }
+   {
+    coords 8.583 7.891 3.969
+    angleY -21.676
+   }
+   {
+    coords 6.844 7.891 -1.258
+    angleY -110.339
+   }
+   {
+    coords 7.967 7.891 -4.22
+    angleY -110.625
+   }
+   {
+    coords 9.141 7.891 -7.09
+    angleY -110.625
+   }
+   {
+    coords 10.908 7.891 -8.561
+    angleY -21.592
+   }
+  }
+  GenericEntity : "{BDAA871A06DABD74}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_burlap.et" {
+   coords 14.472 7.891 6.266
+   angleY -19.588
+  }
+ }
+}
