@@ -107,8 +107,6 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			m_clientCanIndforRespawn = m_canIndforRespawn;
 			m_clientIndforRespawnWaves = m_indforRespawnWaves;
 			Replication.BumpMe();
-			GetGroups();
-			GetGame().GetCallqueue().CallLater(SpawnGroupServer, 10000, false, 0);
 		}
 		return;
 	}
