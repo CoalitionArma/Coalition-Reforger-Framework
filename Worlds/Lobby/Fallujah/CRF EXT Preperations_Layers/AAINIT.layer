@@ -1,0 +1,88 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2724.153 15.718 1996.464
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SupplyExtractionGameModeComponent "{627703021910F218}" {
+   m_winningSupplyCount 3000
+   m_manpower 6
+   m_manpowerMessageString "Soviets forces do not have the manpower to evacuate the city!"
+   m_suppliesExtractedString "Soviets have extracted enough supplies for their evacuation of the city!"
+   m_gameMessageString1 "Soviets have safely returned to their embassy"
+  }
+ }
+ coords 2622.959 8.156 2039.506
+ {
+  SCR_FactionManager "62770305D3E830EB" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{62770306BC0B2E46}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{62770306BC4857F3}" {
+        m_sCallsign "Recon"
+       }
+       SCR_CallsignInfo "{62770306BC4DE39D}" {
+        m_sCallsign "Armor 1"
+       }
+       SCR_CallsignInfo "{62770306BC627661}" {
+        m_sCallsign "Armor 2"
+       }
+       SCR_CallsignInfo "{62770306BD808C9E}" {
+        m_sCallsign "Logi"
+       }
+      }
+     }
+    }
+    SCR_Faction "{623507721849E36C}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{61A2E10CD5A79B52}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{627703042A70C1A8}" {
+        m_sCallsign "Recon"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+SCR_BaseTriggerEntity vehicleSpawner {
+ coords 2437.757 10.435 1838.042
+ userScript "	string BMP1 = \"{1DC01AAACFFA8B63}Prefabs/Vehicles/Tracked/BMP1/BMP1_base.et\";"\
+ "	IEntity spawn1, spawn2;"\
+ "	"\
+ "	void spawnthings()"\
+ "	{"\
+ "		spawn1 = GetGame().GetWorld().FindEntityByName(\"BMP1\");"\
+ "		spawn2 = GetGame().GetWorld().FindEntityByName(\"BMP2\");"\
+ "		"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "		"\
+ "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(BMP1),GetGame().GetWorld(),spawnParams);"\
+ "		spawnParams.Transform[3] = spawn2.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(BMP1),GetGame().GetWorld(),spawnParams);"\
+ "	}"
+ OnInit ""\
+ "		super.EOnInit(owner);"\
+ "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+ "	"
+}
