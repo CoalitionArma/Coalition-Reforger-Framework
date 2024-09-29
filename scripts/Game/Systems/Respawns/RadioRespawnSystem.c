@@ -50,14 +50,12 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 			
 			if (!canRespawn)
 			{
-				Print("can't respawn");
 				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
 				return;
 			}
 			
 			if(m_radioComponent.InRespawnTimeout(m_groupID))
 			{
-				Print("in timeout");
 				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
 				return;
 			}
@@ -67,9 +65,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
 				return;
 			}
-			Print(m_radioComponent);
 			CRF_ClientRadioRespawnComponent.GetInstance().SpawnGroup(m_groupID);
-			Print(CRF_ClientRadioRespawnComponent.GetInstance().SpawnGroup(m_groupID));
 			
 			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
 		} else
@@ -94,12 +90,11 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 		if(m_playerID == -1)
 			valueinit();
 		
+		if(m_playerID != SCR_PlayerController.GetLocalPlayerId())
+			valueinit();
+		
 		m_groupRespawns = m_radioComponent.GetRespawnedGroups(m_groupID);
-		m_respawnWaves = m_radioComponent.GetAmountofWave(m_factionKey);	
-		Print("----------------------------------------------");
-		Print(m_groupRespawns);
-		Print(m_respawnWaves);
-		Print(m_respawnWaves - m_groupRespawns);	
+		m_respawnWaves = m_radioComponent.GetAmountofWave(m_factionKey);		
 		return m_respawnWaves - m_groupRespawns;
 	}
 	

@@ -13,8 +13,7 @@ class CRF_ClientRadioRespawnComponent : ScriptComponent
 	
 	void SpawnGroup(int groupID)
 	{
-		Print(groupID);
-		Print("RPC");Rpc(RpcAsk_SpawnGroup, groupID);
+		Rpc(RpcAsk_SpawnGroup, groupID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
