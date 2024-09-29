@@ -1,0 +1,8 @@
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 1649.338 509.561 1817.088
+ "Map Geometry Data" "{275180D058CEAD2E}World/GM_BackCountry_Layers/GM_BackCountry.topo"
+ "Satellite background image" "{8C9B267169AB9326}World/GM_BackCountry_Layers/map (2) redone.edds"
+}
+SCR_CameraManager SCR_CameraManager1 : "{33F9FD881E3700CC}Prefabs/World/Game/SCR_CameraManager.et" {
+ coords 1615.404 520.919 1804.86
+}

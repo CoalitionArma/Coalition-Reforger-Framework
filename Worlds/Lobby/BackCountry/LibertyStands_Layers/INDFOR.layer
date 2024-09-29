@@ -1,0 +1,8 @@
+SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+ coords 3472.958 420.378 935.233
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 3484.146 420.788 945.968
+ m_MarkerColor 0 0.334 0 1
+ m_sDescription "INDFOR Spawn"
+}

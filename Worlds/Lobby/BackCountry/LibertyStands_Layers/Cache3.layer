@@ -1,0 +1,86 @@
+BaseGameTriggerEntity Cache3 {
+ coords 3282.565 425.333 1187.599
+ userScript "	protected ref array<IEntity> m_entities;"\
+ "	protected string m_tempString;"\
+ "	protected int m_extractedPlayers;"\
+ "	protected vector m_obj = GetGame().GetWorld().FindEntityByName(\"Cache3\").GetOrigin();"\
+ "	protected bool OBJMessage = false;"\
+ "	protected IEntity m_trigger = GetGame().GetWorld().FindEntityByName(\"Cache3\");"\
+ "	protected CRF_RadioRespawnSystemComponent m_radioComponent;"\
+ ""\
+ "	protected bool FilterFactionPlayers(IEntity ent) // Sphere Query Method"\
+ "	{"\
+ "		if (!EntityUtils.IsPlayer(ent)) return true;"\
+ "		SCR_ChimeraCharacter cc = SCR_ChimeraCharacter.Cast(ent);"\
+ "		if (cc && cc.GetFactionKey() == m_tempString) m_entities.Insert(ent);"\
+ "		return true;"\
+ "	}"\
+ "	"\
+ "	//Counts alive players around m_extractionObject"\
+ "	protected int CountFactionPlayers(vector center, int distance, string faction)"\
+ "	{"\
+ "		m_entities = new array<IEntity>;"\
+ "		m_tempString = faction;"\
+ "		GetGame().GetWorld().QueryEntitiesBySphere(center, distance, FilterFactionPlayers, null);"\
+ "		m_extractedPlayers = m_entities.Count();"\
+ "		return m_entities.Count();"\
+ "	}"
+ TriggerShapeType Sphere
+ SphereRadius 50
+ PeriodicQueries 1
+ UpdatePeriod 10
+ OnQueryFinished ""\
+ "		float OPFORPlayers = CountFactionPlayers(m_obj, 100, \"FIA\");"\
+ "		float BLUFORPlayers = CountFactionPlayers(m_obj, 100, \"RHS_USAF\");"\
+ "		IEntity cache1 = GetGame().GetWorld().FindEntityByName(\"Cache1\");"\
+ "		IEntity cache2 = GetGame().GetWorld().FindEntityByName(\"Cache2\");"\
+ "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage && !cache1 && !cache2)"\
+ "		{"\
+ "			if (BLUFORPlayers/OPFORPlayers >= 0.7 && !OBJMessage && !cache1 && !cache2)"\
+ "			{"\
+ "				OBJMessage = true;"\
+ "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache 3 has been taken by Blufor!\", 10);"\
+ "				delete m_trigger;"\
+ "			"\
+ "			} "\
+ "		}"\
+ "		if (BLUFORPlayers >= 1 && OPFORPlayers == 0 && !OBJMessage && !cache1 && !cache2)"\
+ "		{"\
+ "			OBJMessage = true;"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache 3 has been taken by Blufor!\", 10);"\
+ "			delete m_trigger;"\
+ "		} "\
+ "	"
+}
+$grp StaticModelEntity : "{3A6623EADBD13358}Prefabs/Structures/Military/Camps/TentSmallUS_01/TentSmallUS_01_Base.et" {
+ {
+  coords 3276.701 425.109 1186.218
+  angleY 27
+ }
+ {
+  coords 3270.811 424.657 1185.644
+  angleY -37
+ }
+ {
+  coords 3265.935 424.342 1181.898
+  angleY -88
+ }
+ {
+  coords 3267.67 424.605 1177.95
+  angleY 51
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 3279.658 439.348 1185.747
+ m_sDescription "Cache 3"
+ m_bShowForAnyFaction 1
+}
+GenericEntity : "{AB1A97B1BAE8C395}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_01.et" {
+ coords 3273.194 424.949 1176.39
+ angleX -1.789
+ angleY 0.028
+ angleZ -0.896
+}
+GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+ coords 3274.91 425.043 1180.399
+}

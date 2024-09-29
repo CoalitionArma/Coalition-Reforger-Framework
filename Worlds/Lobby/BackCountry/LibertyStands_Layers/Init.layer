@@ -1,0 +1,20 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1538.594 502.994 1775.472
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
+   Enabled 1
+   m_canBluforRespawn 1
+   m_bluforFactionKey "RHS_USAF"
+   m_bluforRespawnWaves 3
+   m_canIndforRespawn 1
+   m_indforFactionKey "FIA"
+   m_indforRespawnWaves 0
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 90
+  }
+ }
+ coords 1636.858 506.164 1799.031
+}
