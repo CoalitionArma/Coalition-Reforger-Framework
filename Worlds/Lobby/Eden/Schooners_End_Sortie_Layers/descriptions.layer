@@ -1,0 +1,74 @@
+$grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescription/EditableMissionDescription.et" {
+ welcomeDescription {
+  coords 7659.792 3.847 9044.39
+  m_sTitle "Welcome!"
+  m_sTextData "#Coal_Missions_Lobby_Welcome_Text"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+ }
+ assetsDescription {
+  coords 7661.81 3.949 9044.521
+  m_sTitle "Assets"
+  m_sTextData "USSR:"\
+  "- 2x UAZ (PKM)"\
+  "- 1x UAZ-452 Ambulance"\
+  ""\
+  "FIA:"\
+  "- 2x 2B14 \"Podnos\" 82mm Mortar"\
+  "- 1x UAZ-452 Ambulance (Camouflage)"\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 3
+ }
+ situationDescription {
+  coords 7663.367 3.999 9044.471
+  m_sTitle "Situation"
+  m_sTextData "USSR forces will attempt to dislodge well prepared FIA forces located at the Schooner's End military base. "\
+  ""\
+  "-1 life mission"\
+  "-100 minute timer"\
+  "-3:2 OPFOR:INDFOR slotting ratio"\
+  ""
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 1
+ }
+ objectivesDescription {
+  coords 7664.876 4.141 9044.878
+  m_sTitle "Objectives"
+  m_sTextData "USSR:"\
+  "Capture FOB Sokol (Optional)"\
+  "Capture MOB Orel (Mandatory)"\
+  ""\
+  "FIA:"\
+  "Defend FOB Sokol (Optional)"\
+  "Defend MOB Orel (Mandatory)"
+  m_bEmptyFactionVisibility 1
+  m_bShowForAnyFaction 1
+  m_iOrder 2
+ }
+ opforBriefing {
+  coords 7668.663 4.343 9044.025
+  m_sTitle "USSR Briefing"
+  m_sTextData "Our staging point is in the town of Entre-Deux. A recon team is on standby to our northeast. We must seize FOB Orel from FIA guerillas in order to cease their terrorist activites in the region. They are well prepared, and we know they have multiple defensive emplacements set up. The crux of their defense is FOB Sokal, which holds 2 2B14 82mm mortars. It is somewhat out of the way, but the mortars could cause us devastating losses if not disabled."\
+  ""\
+  "Notes:"\
+  "- We have a finger built into our safestart border, in order to get a headstart on the long walk ahead of us."
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  m_iOrder 6
+ }
+ greenforBriefing {
+  coords 7673.225 4.633 9042.392
+  m_sTitle "FIA Briefing"
+  m_sTextData "We have to defend MOB Orel at all costs from Soviet forces manuvering to destroy us. We have prepared for this day well, with defensive emplacements scattered throughout the region. The crux of our defense is FOB Sokol, which contains 2 2B14 82mm mortars. It is somewhat poorly positioned, but the mortars could be devastating to our enemies. "\
+  ""\
+  "Notes: If an admin is willing to TP FIA forces to positions within the safestart border before opstart, then that is reccomended. If not, leg it."
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  m_iOrder 7
+ }
+}
