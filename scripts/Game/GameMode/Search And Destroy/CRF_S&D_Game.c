@@ -236,10 +236,23 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	
 	void DelayExplosionToSyncSound(EntitySpawnParams spawnParams, IEntity destroyedBombSiteEntity)
 	{
+		GetGame().SpawnEntityPrefab(Resource.Load("{5A81BD9171FC3B07}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_BrickPile_Big.et"),GetGame().GetWorld(),spawnParams);
+		
+		//big boom
+		Rpc(RpcBroadcast_BigBoom, destroyedBombSiteEntity.GetOrigin());
+		RpcBroadcast_BigBoom(destroyedBombSiteEntity.GetOrigin());
+		delete destroyedBombSiteEntity;
+	}
+		
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcBroadcast_BigBoom(vector origin)
+	{
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform[3] = origin;
+		
 		GetGame().SpawnEntityPrefab(Resource.Load("{BCE4E0823FCFBCB7}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Large.et"),GetGame().GetWorld(),spawnParams);
 		GetGame().SpawnEntityPrefab(Resource.Load("{AEE259D6B5A96B61}Prefabs/Systems/Fire/Wrapper_Fire_Large.et"),GetGame().GetWorld(),spawnParams);
-		GetGame().SpawnEntityPrefab(Resource.Load("{5A81BD9171FC3B07}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_BrickPile_Big.et"),GetGame().GetWorld(),spawnParams);
-		delete destroyedBombSiteEntity;
 	}
 	
 	// Called from server to all clients
