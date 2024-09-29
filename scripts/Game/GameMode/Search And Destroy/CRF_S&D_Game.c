@@ -230,8 +230,15 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		spawnParams.Transform[3] = destroyedBombSiteEntity.GetOrigin();
 	
-		GetGame().SpawnEntityPrefab(Resource.Load("{A79737B19CBFD5EC}Prefabs/Systems/Explosions/Wrapper_Bomb_Large.et"),GetGame().GetWorld(),spawnParams);
-		// Delete entity
+		GetGame().GetCallqueue().CallLater(DelayExplosionToSyncSound, 385, false, spawnParams, destroyedBombSiteEntity);
+		GetGame().SpawnEntityPrefab(Resource.Load("{DDDDBEC77B49A995}Prefabs/Systems/Explosions/Wrapper_Bomb_Huge.et"),GetGame().GetWorld(),spawnParams);
+	}
+	
+	void DelayExplosionToSyncSound(EntitySpawnParams spawnParams, IEntity destroyedBombSiteEntity)
+	{
+		GetGame().SpawnEntityPrefab(Resource.Load("{BCE4E0823FCFBCB7}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Large.et"),GetGame().GetWorld(),spawnParams);
+		GetGame().SpawnEntityPrefab(Resource.Load("{AEE259D6B5A96B61}Prefabs/Systems/Fire/Wrapper_Fire_Large.et"),GetGame().GetWorld(),spawnParams);
+		GetGame().SpawnEntityPrefab(Resource.Load("{5A81BD9171FC3B07}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_BrickPile_Big.et"),GetGame().GetWorld(),spawnParams);
 		delete destroyedBombSiteEntity;
 	}
 	

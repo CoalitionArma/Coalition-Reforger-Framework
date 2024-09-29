@@ -1,12 +1,15 @@
 GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et" {
  ID "F0DBA538AC2A0552"
  components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{A2DE69A75CFA6D5B}Assets/Structures/Military/Radar/ApproachRadar_01/ApproachRadar_RPL5_01_generator.xob"
+  }
   ActionsManagerComponent "{613048A3A6DEB899}" {
    ActionContexts {
     UserActionContext "{613048A3A6DEB88C}" {
      ContextName "default"
      Position PointInfo "{613048A3A6DEB889}" {
-      Offset 1.3045 1.1016 0.842
+      Offset -1.3339 0.9946 1.298
      }
      Radius 1.25
     }
