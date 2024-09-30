@@ -4,6 +4,15 @@ SCR_ChimeraCharacter : "{F14A8D77D6EDE32E}Prefabs/Characters/Factions/INDFOR/USM
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Machine Gunner"
   }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_bEnabled 0
+     }
+    }
+   }
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {

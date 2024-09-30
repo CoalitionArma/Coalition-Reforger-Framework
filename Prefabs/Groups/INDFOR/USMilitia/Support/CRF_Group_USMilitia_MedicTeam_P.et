@@ -119,7 +119,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et"
+  "{7A135D31F532C374}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medical_Officer_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et"
  }
  m_sCustomNameSet "Medic Team"
  m_bSetPlayable 1

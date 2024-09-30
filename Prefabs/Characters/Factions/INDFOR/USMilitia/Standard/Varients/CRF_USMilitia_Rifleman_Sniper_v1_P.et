@@ -1,8 +1,17 @@
 SCR_ChimeraCharacter : "{62665D256557B9A5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Sniper_P.et" {
  ID "520EC961A090B1EE"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_bEnabled 0
+     }
+    }
+   }
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
-   WeaponTemplate "{455E257F80BE6C1B}Prefabs/Weapons/Rifles/SVD/Rifle_SVD_1pn93.et"
+   WeaponTemplate "{F44A9C628408B6CF}Prefabs/Weapons/Rifles/SVD/Rifle_SVD_1P21.et"
   }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {

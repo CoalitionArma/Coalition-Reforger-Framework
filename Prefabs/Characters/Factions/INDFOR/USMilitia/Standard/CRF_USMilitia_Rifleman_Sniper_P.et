@@ -34,7 +34,7 @@ SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USM
      Prefab "{E8E9C74AE9D5C52E}Prefabs/Characters/HeadGear/Head_Cover/mask.et"
     }
     LoadoutSlotInfo Extra {
-     Prefab "{BB07D1A55F87C90B}Prefabs/Characters/HeadGear/Head_Cover/balsclava3.et"
+     Prefab ""
     }
    }
   }

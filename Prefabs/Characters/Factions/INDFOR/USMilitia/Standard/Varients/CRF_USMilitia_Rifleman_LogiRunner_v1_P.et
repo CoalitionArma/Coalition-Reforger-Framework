@@ -1,6 +1,15 @@
 SCR_ChimeraCharacter : "{8FF7748AB4BA8316}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_LogiRunner_P.et" {
  ID "520EC961A090B1EE"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_bEnabled 0
+     }
+    }
+   }
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate "{CFEED4A2B35F689E}Prefabs/Weapons/Rifles/AK74M/variants/Rifle_AK74M_npz_VKPO3.0_4.et"
   }

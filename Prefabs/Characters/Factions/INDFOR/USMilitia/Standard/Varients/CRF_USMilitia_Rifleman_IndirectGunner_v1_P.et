@@ -1,6 +1,15 @@
 SCR_ChimeraCharacter : "{485B3D3664DD5247}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectGunner_P.et" {
  ID "520EC961A090B1EE"
  components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_bEnabled 0
+     }
+    }
+   }
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
    WeaponTemplate "{9B0D0029A89E343A}Prefabs/Weapons/Rifles/AK74M/variants/Rifle_AK105_npz_rail_T1.et"
   }

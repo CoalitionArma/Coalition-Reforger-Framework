@@ -5,7 +5,7 @@ $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/G
     DefaultFormation "Row"
    }
   }
-  coords 785.575 40.55 2697.692
+  coords 822.336 40.956 2683.618
   angleY 20.95
   m_aUnitPrefabSlots {
    "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
@@ -24,10 +24,10 @@ $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/G
     DefaultFormation "Row"
    }
   }
-  coords 829.872 40.55 2688.2
+  coords 824.658 41.153 2689.683
   angleY 20.95
   m_aUnitPrefabSlots {
-   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+   "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
   }
   m_sCustomNameSet "Squad"
   m_aUnitPrefabColorTeams {
@@ -43,10 +43,10 @@ $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/G
     DefaultFormation "Row"
    }
   }
-  coords 832.621 40.55 2695.38
+  coords 828.268 40.758 2699.113
   angleY 20.95
   m_aUnitPrefabSlots {
-   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+   "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
   }
   m_sCustomNameSet "Squad"
   m_aUnitPrefabColorTeams {
@@ -62,10 +62,10 @@ $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/G
     DefaultFormation "Row"
    }
   }
-  coords 824.974 40.55 2675.408
+  coords 816.824 40.132 2669.222
   angleY 20.95
   m_aUnitPrefabSlots {
-   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+   "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
   }
   m_sCustomNameSet "Squad"
   m_aUnitPrefabColorTeams {
@@ -81,10 +81,10 @@ $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/G
     DefaultFormation "Row"
    }
   }
-  coords 835.318 40.55 2702.424
+  coords 820.434 40.688 2678.652
   angleY 20.95
   m_aUnitPrefabSlots {
-   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+   "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
   }
   m_sCustomNameSet "Squad"
   m_aUnitPrefabColorTeams {
@@ -100,10 +100,10 @@ $grp SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/G
     DefaultFormation "Row"
    }
   }
-  coords 822.895 40.55 2669.978
+  coords 814.502 39.77 2663.157
   angleY 20.95
   m_aUnitPrefabSlots {
-   "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et" "{9A3C49B1AF9790E5}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Base_P.et"
+   "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
   }
   m_sCustomNameSet "Squad"
   m_aUnitPrefabColorTeams {

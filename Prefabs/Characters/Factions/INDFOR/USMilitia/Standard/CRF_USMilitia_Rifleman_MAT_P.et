@@ -8,7 +8,7 @@ SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USM
    m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
     m_aVariants {
      SCR_EditableEntityVariant "{627B490C51FAB529}" {
-      m_sVariantPrefab "{D155EF522ABD914F}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/CRF_USMilitia_Rifleman_MMG_v1_P.et"
+      m_sVariantPrefab "{C127F219D3FD0A7A}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/CRF_USMilitia_Rifleman_MAT_v1_P.et"
      }
     }
    }

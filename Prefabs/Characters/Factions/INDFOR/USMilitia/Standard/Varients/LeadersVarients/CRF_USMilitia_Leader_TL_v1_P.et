@@ -4,6 +4,15 @@ SCR_ChimeraCharacter : "{DF03725B2BAA493E}Prefabs/Characters/Factions/INDFOR/USM
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Team Leader"
   }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_bEnabled 0
+     }
+    }
+   }
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {

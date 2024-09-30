@@ -31,7 +31,7 @@ SCR_ChimeraCharacter : "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USM
      Prefab "{1300A5F6CA51B204}Prefabs/Characters/Vests/Vest_PCGen_III/Variants/Vest_PCGen_III_rifleman.et"
     }
     LoadoutSlotInfo Extra {
-     Prefab "{A2C8F895F1053B33}Prefabs/Characters/HeadGear/Head_Cover/Bandana_5.et"
+     Prefab ""
     }
    }
   }

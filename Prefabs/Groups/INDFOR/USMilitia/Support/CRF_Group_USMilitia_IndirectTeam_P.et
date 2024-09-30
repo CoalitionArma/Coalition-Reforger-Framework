@@ -119,7 +119,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" "{485B3D3664DD5247}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectGunner_P.et" "{8871167D3909E826}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectLodaer_P.et" "{485B3D3664DD5247}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectGunner_P.et" "{8871167D3909E826}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectLodaer_P.et"
+  "{71C4A2EC217EA8F8}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_IndirectLead_P.et" "{485B3D3664DD5247}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectGunner_P.et" "{8871167D3909E826}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectLodaer_P.et" "{485B3D3664DD5247}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectGunner_P.et" "{8871167D3909E826}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_IndirectLodaer_P.et"
  }
  m_sCustomNameSet "Indirect Team"
  m_bSetPlayable 1
