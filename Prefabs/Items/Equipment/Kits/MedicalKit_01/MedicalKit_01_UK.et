@@ -1,0 +1,15 @@
+GenericEntity : "{46FD263F0F368A92}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    SCR_ResupplySelfSupportStationAction "{5E3CC268E10A1B09}" {
+     m_bCheckIfItemInStorage 1
+    }
+    SCR_ResupplySelfSupportStationAction "{5E3CC268E31927C2}" {
+     m_bCheckIfItemInStorage 1
+    }
+   }
+  }
+ }
+}

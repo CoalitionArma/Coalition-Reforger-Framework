@@ -1,0 +1,51 @@
+SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Medium Anti-Tank"
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_sVariantPrefab "{C127F219D3FD0A7A}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/CRF_USMilitia_Rifleman_MAT_v1_P.et"
+     }
+    }
+   }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{146001995E36BBC4}Carl_Gustaf.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{5977C0A606B65E6D}Prefabs/Characters/HeadGear/Hat_TruckerCap_01/Hat_TruckerCap_01_moto.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{FA9F6789F885BCF8}Prefabs/Characters/Uniforms/T-Shirt_a9.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{3144DA34F6230841}Prefabs/Characters/Uniforms/Pants_5.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{25AF606C5469C820}Prefabs/Characters/Footwear/Shoes4.et"
+    }
+    LoadoutSlotInfo Face {
+     Prefab "{12D552BF5E2D64CF}Prefabs/Characters/HeadGear/Glass/Aviator_6.et"
+    }
+    LoadoutSlotInfo Extra {
+     Prefab "{57AA04158EE60E08}Prefabs/Characters/HeadGear/Head_Cover/Dogtag2.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{6064820F8177C8C0}" {
+     PrefabsToSpawn + {
+      "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et" "{85598DF2DC2E309C}Prefabs/Weapons/Ammo/Ammo_Rocket_HEDP.et"
+     }
+    }
+   }
+  }
+ }
+}

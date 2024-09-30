@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{0B7D232DC6011C99}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/LeadersVarients/CRF_USMilitia_Leader_JTAC_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

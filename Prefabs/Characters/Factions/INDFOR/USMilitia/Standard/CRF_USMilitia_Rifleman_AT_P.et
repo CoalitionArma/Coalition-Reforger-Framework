@@ -1,0 +1,42 @@
+SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Anti-Tank (M72)"
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_sVariantPrefab "{13854B7C562A65D1}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/CRF_USMilitia_Rifleman_AT_V1_P.et"
+     }
+    }
+   }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
+   WeaponTemplate "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{112EF132833109C8}Prefabs/Characters/HeadGear/Hat_Hard_01/Hat_Hard_01_green.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{C141FDA17632815A}Prefabs/Characters/Uniforms/T-Shirt_b1.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{DDF08873A2F07893}Prefabs/Characters/Uniforms/Trousers_2.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{9CEA24A1A9CC2675}Prefabs/Characters/Vests/Vest_ALICE/Variants/Vest_ALICE_sniper.et"
+    }
+    LoadoutSlotInfo Face {
+     Prefab ""
+    }
+    LoadoutSlotInfo Extra {
+     Prefab ""
+    }
+   }
+  }
+ }
+}
