@@ -137,7 +137,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 			return m_clientBluforRespawnWaves;
 		if(factionKey == m_clientOpforFactionKey)
 			return m_clientOpforRespawnWaves;
-		return m_clientIndforFactionKey;
+		return m_clientIndforRespawnWaves;
 	}
 	
 	int GetRespawnedGroups(int groupID)

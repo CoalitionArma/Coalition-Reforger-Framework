@@ -8,6 +8,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    m_canBluforRespawn 1
    m_bluforRespawnWaves 5
    m_opforRespawnWaves 0
+   m_indforFactionKey "FIA"
    m_indforRespawnWaves 0
   }
  }
@@ -39,17 +40,6 @@ $grp BaseGameTriggerEntity {
   coords 1496.212 43.443 3185.285
  }
 }
-$grp SCR_AIGroup : "{2F3E506F9FE9D397}Prefabs/Groups/BLUFOR/1980s/Standard/Infantry/Group_US80s_RifleSquad_p.et" {
- {
-  coords 2025.163 54.18 2128.87
-  m_iMaxMembers 8
-  m_bPlayable 1
-  m_bDeleteIfNoPlayer 0
- }
- {
-  coords 2009.67 50.96 2119.023
-  m_iMaxMembers 8
-  m_bPlayable 1
-  m_bDeleteIfNoPlayer 0
- }
+SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+ coords 2023.435 53.576 2127.13
 }
