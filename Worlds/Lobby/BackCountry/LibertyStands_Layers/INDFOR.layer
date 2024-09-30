@@ -1,6 +1,6 @@
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
  coords 3484.146 420.788 945.968
- m_MarkerColor 0 0.334 0 1
+ m_MarkerColor 0 0.332 0 1
  m_sDescription "INDFOR Spawn"
 }
 SCR_AIGroup : "{FBD0C11136A12FF9}Prefabs/Groups/INDFOR/USMilitia/Command/CRF_Group_USMilitia_Platoon_P.et" {

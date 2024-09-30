@@ -16,7 +16,7 @@ $grp PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescripti
   ""\
   "Respawn system is based on a set number of waves. When one of your squad members dies or if multiple die; You can now respawn them back in."\
   ""\
-  "By pulling out your radio into your hands and inspected it by holding R you will find an action to \"Call for Reinforcements\" after holding it for 5 seconds you will consume 1 Respawn Wave."\
+  "By pulling out your leaders radio into your hands and inspected it by holding R you will find an action to \"Call for Reinforcements\" after holding it for 5 seconds you will consume 1 Respawn Wave."\
   ""\
   "After calling in respawns any player in your squad connected to the server will be pulled from spectator and put back into the map and added back to your squad at the spawn."
   m_iOrder 6

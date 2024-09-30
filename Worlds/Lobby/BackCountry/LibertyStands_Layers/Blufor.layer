@@ -87,4 +87,7 @@ SCR_AIGroup : "{330A6F2079000399}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 1574.087 510.892 1797.849
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
 }
