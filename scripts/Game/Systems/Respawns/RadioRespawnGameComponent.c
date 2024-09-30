@@ -155,6 +155,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void AddRespawnWaves(string factionKey, int amount)
 	{
+		if(Replication.IsClient())
+		{
+			Print("RUN AddRespawnWaves ONLY ON THE SERVER");
+			return;
+		}
 		if(factionKey == m_bluforFactionKey)
 		{
 			m_bluforRespawnWaves = m_bluforRespawnWaves + amount;
@@ -177,6 +182,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void RemoveRespawnWaves(string factionKey, int amount)
 	{
+		if(Replication.IsClient())
+		{
+			Print("RUN RemoveRespawnWaves ONLY ON THE SERVER");
+			return;
+		}
 		if(factionKey == m_bluforFactionKey)
 		{
 			m_bluforRespawnWaves = m_bluforRespawnWaves - amount;
@@ -199,6 +209,11 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 	
 	void SetCanFactionRespawn(string factionKey, bool canRespawn)
 	{
+		if(Replication.IsClient())
+		{
+			Print("RUN SetCanFactionRespawn ONLY ON THE SERVER");
+			return;
+		}
 		if(factionKey == m_bluforFactionKey)
 		{
 			m_canBluforRespawn = canRespawn;

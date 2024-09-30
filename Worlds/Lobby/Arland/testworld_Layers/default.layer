@@ -39,6 +39,20 @@ $grp BaseGameTriggerEntity {
  respawn3 {
   coords 1496.212 43.443 3185.285
  }
+ Test {
+  coords 2036.377 57.934 2135.297
+  TriggerShapeType Sphere
+  SphereRadius 50
+  PeriodicQueries 1
+  UpdatePeriod 1
+  OnQueryFinished ""\
+  "		CRF_RadioRespawnSystemComponent radioComponent = CRF_RadioRespawnSystemComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioRespawnSystemComponent));"\
+  "		if(Replication.IsClient())"\
+  "		{"\
+  "			radioComponent.AddRespawnWaves(\"FIA\", 1);"\
+  "		}"\
+  "	"
+ }
 }
 SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
  coords 2023.435 53.576 2127.13
