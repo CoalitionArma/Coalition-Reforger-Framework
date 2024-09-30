@@ -1,0 +1,45 @@
+SCR_ChimeraCharacter : "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Team Leader"
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_sVariantPrefab "{E9B2E9CB6638372B}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/LeadersVarients/CRF_USMilitia_Leader_TL_v1_P.et"
+     }
+    }
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{93F549AC3427E206}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_XP_PELTOR.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{DD9CB456376FB01F}Prefabs/Characters/Uniforms/Shirt_flannel/flannel_shirt_brown_1.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{822B66CBF331F844}Prefabs/Characters/Vests/Vest_PCGen_II/Vest_PCGen_II_base.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{40B76B99C3F0503D}Prefabs/Characters/Uniforms/Tactical_Pants/Tactical_Pants_M81.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{1300A5F6CA51B204}Prefabs/Characters/Vests/Vest_PCGen_III/Variants/Vest_PCGen_III_rifleman.et"
+    }
+    LoadoutSlotInfo Extra {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173FAA7C00E}" {
+    }
+   }
+  }
+ }
+}
