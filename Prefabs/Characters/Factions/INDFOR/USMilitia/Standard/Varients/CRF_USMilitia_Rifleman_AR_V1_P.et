@@ -1,0 +1,36 @@
+SCR_ChimeraCharacter : "{5FBF9DA90BC3BC4C}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AR_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+      }
+     }
+    }
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{8D75122D5BF561FB}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat_Boonie_US_02.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{AD15C941CAF60E74}Prefabs/Characters/Uniforms/T-Shirt_b2.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{0C70FF0C834F8176}Prefabs/Characters/Uniforms/Pants_2.et"
+    }
+    LoadoutSlotInfo Face {
+     Prefab "{8E4DDB56A3F298E7}Prefabs/Characters/HeadGear/Headphones/Ear_piece_1.et"
+    }
+    LoadoutSlotInfo Extra {
+     Prefab "{608F66AB8B36B85D}Prefabs/Characters/Eyewear/crossbow/Eyewear_ess_crossbow_blk.et"
+    }
+   }
+  }
+ }
+}

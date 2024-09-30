@@ -1,0 +1,24 @@
+SCR_ChimeraCharacter : "{F14A8D77D6EDE32E}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_MMG_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Machine Gunner"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{7FB277F811E4AF05}Prefabs/Characters/HeadGear/Hat_Beanie/variants/Hat_beanie_green_sordin.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{0FF296D70C52D89F}Prefabs/Characters/Uniforms/LongSleeve_Shirts/Hoodie_RHS_Shirt_multicam.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{54F4BE2F9CA75DAD}Prefabs/Characters/Uniforms/Tactical_Pants/Tactical_Pants_MC.et"
+    }
+    LoadoutSlotInfo Face {
+     Prefab "{F3A8E94D38AD3D2A}Prefabs/Characters/HeadGear/Head_Cover/Bandana_1.et"
+    }
+   }
+  }
+ }
+}

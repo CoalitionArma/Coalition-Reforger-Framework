@@ -42,7 +42,7 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
     }
    }
    UseCapacityCoefficient 0
-   MaxCumulativeVolume 20000
+   MaxCumulativeVolume 25000
    m_fMaxWeight 100
   }
   BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {

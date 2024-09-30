@@ -1,0 +1,33 @@
+SCR_ChimeraCharacter : "{DF03725B2BAA493E}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/LeadersVarients/CRF_USMilitia_Leader_Base_SL_v1_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Team Leader"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{360B7E5C9A502954}Prefabs/Characters/HeadGear/Helmet_ECH/Helmet_ECH_hc_v_r_cd.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{CDAEDCACFA174F9E}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_Rolled_MARPAT_Woodland.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{037DD3060547B417}Prefabs/Characters/Vests/Vest_JPC/Vest_JPC_MCBlk.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{C749B2C1C2CF3863}Prefabs/Characters/Uniforms/Civi_Pants/Civi_Jeans_Blue_Ripped.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{9FB6D7969BB672AD}Prefabs/Characters/Vests/Vest_AVS/Variants/Vest_AVS_MCBlk_ronin.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173FAA7C00E}" {
+    }
+   }
+  }
+ }
+}
