@@ -17,4 +17,65 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
  coords 1636.858 506.164 1799.031
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "1 PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{627CA534A28EB517}" {
+        m_sCallsign "Weapons Squad"
+       }
+       SCR_CallsignInfo "{627CA534A2317CBE}" {
+        m_sCallsign "Sniper Team"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{627CA534B677351F}" {
+        m_sCallsign "1 PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3 W"
+       }
+       SCR_CallsignInfo "{627CA534C639F1A3}" {
+        m_sCallsign "2 PLT"
+       }
+       SCR_CallsignInfo "{627CA534C57A38F5}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{627CA534C4C09C6C}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{627CA534C38BD055}" {
+        m_sCallsign "2-3 W"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }

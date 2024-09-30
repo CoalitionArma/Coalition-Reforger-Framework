@@ -1,3 +1,27 @@
+$grp PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ {
+  coords 3458.366 420.163 934.769
+  m_sTextData "Objective Assault"\
+  "Players will assault objectives on the map which can be captured with having 70% control of the zone."\
+  ""\
+  "For example "\
+  "4 OPFOR to 10 BLUFOR - Zone is not captured."\
+  "3 OPFOR to 10 BLUFOR - Zone is captured."
+  m_iOrder 5
+ }
+ {
+  coords 3452.218 420.197 933.423
+  m_sTitle "Respawn System"
+  m_sTextData "Respawn System"\
+  ""\
+  "Respawn system is based on a set number of waves. When one of your squad members dies or if multiple die; You can now respawn them back in."\
+  ""\
+  "By pulling out your radio into your hands and inspected it by holding R you will find an action to \"Call for Reinforcements\" after holding it for 5 seconds you will consume 1 Respawn Wave."\
+  ""\
+  "After calling in respawns any player in your squad connected to the server will be pulled from spectator and put back into the map and added back to your squad at the spawn."
+  m_iOrder 6
+ }
+}
 PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  coords 3281.546 436.836 1166.656
  m_sTitle "INDFOR Brief"
@@ -48,6 +72,8 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
  coords 3285.227 438.288 1171.026
  m_sTextData "The local militia in the area has begun an insurgency within the mountains, killing a squad of local nation guard soldiers conducting an FTX in the region."\
+ ""\
+ "WE MUST CAPTURE CACHE 1 AND 2 BEFORE ASSAULTING THE 3RD CACHE."\
  ""\
  "Our goal is to disrupt their supplies in the region by capturing these supply caches, no need to destroy them as JAG wants to run these as a crime scene."\
  ""\

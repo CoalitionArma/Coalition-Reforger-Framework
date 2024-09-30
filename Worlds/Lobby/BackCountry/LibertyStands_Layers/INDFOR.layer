@@ -1,8 +1,79 @@
-SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
- coords 3472.958 420.378 935.233
-}
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
  coords 3484.146 420.788 945.968
  m_MarkerColor 0 0.334 0 1
  m_sDescription "INDFOR Spawn"
+}
+SCR_AIGroup : "{FBD0C11136A12FF9}Prefabs/Groups/INDFOR/USMilitia/Command/CRF_Group_USMilitia_Platoon_P.et" {
+ coords 3468.568 420.243 935.196
+ m_sCustomNameSet "1 PLT"
+ {
+  SCR_AIGroup : "{7387F73428CCA063}Prefabs/Groups/INDFOR/USMilitia/Infantry/CRF_Group_USMilitia_RifleSquad_P.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "File"
+    }
+   }
+   coords -5.041 -0.123 1.098
+   m_aUnitPrefabSlots {
+    "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{5FBF9DA90BC3BC4C}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AR_P.et" "{2A9B8E8CD64BF5F1}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AAR_P.et" "{E26FCF2E74D8A052}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AT_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
+   }
+   m_sCustomNameSet "1-1"
+   {
+    SCR_AIGroup : "{7387F73428CCA063}Prefabs/Groups/INDFOR/USMilitia/Infantry/CRF_Group_USMilitia_RifleSquad_P.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "File"
+      }
+     }
+     coords -0.297 0.166 -4.83
+     m_aUnitPrefabSlots {
+      "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{5FBF9DA90BC3BC4C}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AR_P.et" "{2A9B8E8CD64BF5F1}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AAR_P.et" "{E26FCF2E74D8A052}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AT_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
+     }
+     m_sCustomNameSet "1-2"
+     {
+      SCR_AIGroup : "{7387F73428CCA063}Prefabs/Groups/INDFOR/USMilitia/Infantry/CRF_Group_USMilitia_RifleSquad_P.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "File"
+        }
+       }
+       coords -0.165 0.152 -4.951
+       m_aUnitPrefabSlots {
+        "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{5FBF9DA90BC3BC4C}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AR_P.et" "{2A9B8E8CD64BF5F1}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AAR_P.et" "{E26FCF2E74D8A052}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AT_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
+       }
+       m_sCustomNameSet "1-3"
+       {
+        SCR_AIGroup : "{7387F73428CCA063}Prefabs/Groups/INDFOR/USMilitia/Infantry/CRF_Group_USMilitia_RifleSquad_P.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "File"
+          }
+         }
+         coords -6.089 -0.155 3.419
+         m_aUnitPrefabSlots {
+          "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" "{5FBF9DA90BC3BC4C}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AR_P.et" "{2A9B8E8CD64BF5F1}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AAR_P.et" "{E26FCF2E74D8A052}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AT_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et"
+         }
+         m_sCustomNameSet "1-4"
+         {
+          SCR_AIGroup : "{40E46D4BABCE559D}Prefabs/Groups/INDFOR/USMilitia/Support/CRF_Group_USMilitia_MMGTeam_P.et" {
+           coords -0.433 0.013 -4.987
+           m_aUnitPrefabSlots + {
+            "{E26FCF2E74D8A052}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AT_P.et" "{E26FCF2E74D8A052}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AT_P.et" "{E26FCF2E74D8A052}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_AT_P.et"
+           }
+           m_sCustomNameSet "Weapons Team"
+           {
+            SCR_AIGroup : "{6383534CE1472944}Prefabs/Groups/INDFOR/USMilitia/Support/CRF_Group_USMilitia_SniperTeam_P.et" {
+             coords 0.66 -0.173 11.169
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
