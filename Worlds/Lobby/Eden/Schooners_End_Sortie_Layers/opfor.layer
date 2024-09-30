@@ -1,6 +1,8 @@
 SCR_AIGroup : "{E27D8A921EE36F1F}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Company_p.et" {
- coords 5645.912 217.952 7160.751
- angleY -15.534
+ coords 5698.563 219.828 7315.178
+ angleX -7.17
+ angleY -14.274
+ angleZ -9.993
  m_sCustomNameSet "Company Command"
  {
   SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
@@ -36,22 +38,25 @@ SCR_AIGroup : "{E27D8A921EE36F1F}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80
                  m_sCustomNameSet "3rd Squad"
                  {
                   SCR_AIGroup : "{DA9758113F23E2A7}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_SniperTeam_p.et" {
-                   coords 704.752 -138.832 887.737
+                   coords 579.22 -153.251 778.378
+                   angleX 7.279
+                   angleZ 9.914
                    m_aUnitPrefabSlots {
                     "{714FB115B072E802}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_TL_P.et" "{6CDC8CF640EBAB9C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_Spotter_P.et" "{7A725E3945A23A55}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_Medic_P.et" "{9C4F34B1C557B867}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_Demo_P.et"
                    }
                    m_sCustomNameSet "Recon Team"
                    {
-                    $grp SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+                    SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+                     coords -650.709 133.728 -680.008
+                     angleX -4.252
+                     angleY 16.596
+                     angleZ -11.529
+                     m_sCustomNameSet "UAZ Crew"
                      {
-                      coords -739.883 136.156 -907.991
-                      angleY 15.534
-                      m_sCustomNameSet "UAZ Crew"
-                     }
-                     {
-                      coords -749.797 134.779 -903.431
-                      angleY 15.534
-                      m_sCustomNameSet "UAZ Crew"
+                      SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
+                       coords -10.771 -1.378 1.739
+                       m_sCustomNameSet "UAZ Crew"
+                      }
                      }
                     }
                    }

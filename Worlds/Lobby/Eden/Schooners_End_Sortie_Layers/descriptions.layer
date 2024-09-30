@@ -52,9 +52,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   coords 7668.663 4.343 9044.025
   m_sTitle "USSR Briefing"
   m_sTextData "Our staging point is in the town of Entre-Deux. A recon team is on standby to our northeast. We must seize FOB Orel from FIA guerillas in order to cease their terrorist activites in the region. They are well prepared, and we know they have multiple defensive emplacements set up. The crux of their defense is FOB Sokal, which holds 2 2B14 82mm mortars. It is somewhat out of the way, but the mortars could cause us devastating losses if not disabled."\
-  ""\
-  "Notes:"\
-  "- We have a finger built into our safestart border, in order to get a headstart on the long walk ahead of us."
+  ""
   m_aVisibleForFactions {
    "USSR"
   }
