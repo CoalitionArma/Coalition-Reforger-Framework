@@ -11,5 +11,22 @@ GenericEntity : "{5879D8E9C56E358D}Prefabs/Items/Core/Radio_base.et" {
     }
    }
   }
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    SCR_RadioToggleUserAction "{5A6C68D85E74BF75}" {
+     ParentContextList {
+     }
+    }
+    SCR_RadioRespawnSystem "{6243276533CB44B9}" {
+     ParentContextList {
+      "knob_toggle"
+     }
+     UIInfo UIInfo "{6243276511C88FF3}" {
+      Name "Call for reinforcments"
+     }
+     Duration 5
+    }
+   }
+  }
  }
 }

@@ -9,6 +9,9 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 	[Attribute("true", "auto", "Should we delete all JIP slots after SafeStart turns off?")]
 	bool m_bDeleteJIPSlots;
 	
+	[Attribute("true", "auto", "If safestart turns on instnatly after the lobby screen.")]
+	bool m_bSafestartInstantlyEnabled;
+	
 	[RplProp(onRplName: "OnSafeStartChange")]
 	protected bool m_SafeStartEnabled = false;
 	ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
@@ -270,8 +273,11 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 		if (!m_GameMode.IsRunning()) 
 			return;
 		
+		m_SafeStartEnabled = !m_bSafestartInstantlyEnabled;
+		Replication.BumpMe();//Broadcast m_SafeStartEnabled change
+		
 		GetGame().GetCallqueue().Remove(WaitTillGameStart);		
-		ToggleSafeStartServer(true);
+		GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_bSafestartInstantlyEnabled);
 	}
 	
 	void OnSafeStartChange() 
@@ -302,6 +308,8 @@ class CRF_SafestartGameModeComponent: SCR_BaseGameModeComponent
 			
 		} else { // Turn off safestart
 			if (!m_SafeStartEnabled) return;	
+			
+			UpdatePlayedFactions();
 			
 			CallDeleteRedundantUnits();
 			m_bKillRedundantUnitsBool = true;
