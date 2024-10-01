@@ -13,6 +13,9 @@ SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USM
     }
    }
   }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{5024FAC7A4ABCDFD}Prefabs/Weapons/Rifles/M4A1/Variants/Forecon/Rifle_M4A1_RAS_ERGO_Forecon14.et"
+  }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
    WeaponTemplate "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
   }
