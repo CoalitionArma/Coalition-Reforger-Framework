@@ -1,5 +1,6 @@
 SCR_AIGroup : "{330A6F2079000399}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Company.et" {
  coords 1566.897 514.164 1802.489
+ m_sCustomNameSet "COY"
  {
   SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
    coords -1.954 -2.876 -5.082

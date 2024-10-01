@@ -16,20 +16,19 @@ $grp PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescripti
   ""\
   "Respawn system is based on a set number of waves. When one of your squad members dies or if multiple die; You can now respawn them back in."\
   ""\
-  "By pulling out your leaders radio into your hands and inspected it by holding R you will find an action to \"Call for Reinforcements\" after holding it for 5 seconds you will consume 1 Respawn Wave."\
+  "By pulling out your leaders radio into your hands and inspecting it by holding R you will find an action to \"Call for Reinforcements\" after holding it for 5 seconds you will consume 1 Respawn Wave."\
   ""\
-  "After calling in respawns any player in your squad connected to the server will be pulled from spectator and put back into the map and added back to your squad at the spawn."
+  "After calling in respawns any player in your squad, connected to the server, will be pulled from spectator and put back into the map and added back to your squad at the spawn."
   m_iOrder 6
  }
 }
 PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  coords 3281.546 436.836 1166.656
  m_sTitle "INDFOR Brief"
- m_sTextData "The government thinks they can just threaten us by coming into our land and acting like they own it all. Brothers our goal is to defend these supplies to the last man. Ensure these stay out of the governments hands, just one last thing for these pigs to take from us."\
- ""\
- "To bolster our defense we have 3 reinforcement waves in reserve. "\
- "After Supply Cache 1s capture we will be granted 1."\
- "After Supply Cache 2s capture we will be granted 2."
+ m_sTextData "The government thinks they can just threaten us by coming into our land and acting like they own it all. Brothers, our goal is to defend these supplies to the last man. Ensure these stay out of the government's hands—just one last thing for these pigs to take from us."\
+ "To bolster our defense, we have 3 reinforcement waves in reserve."\
+ "After Supply Cache 1 capture, we will be granted 1."\
+ "After Supply Cache 2 capture, we will be granted 2."
  m_aVisibleForFactions {
   "FIA"
  }
@@ -51,33 +50,53 @@ $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Object
  {
   coords 3280.212 435.935 1169.425
   m_sTextData "Capture Supply Cache 1"
-  m_iScore 33
+  m_iScore 25
   m_sFactionKey "RHS_USAF"
  }
  {
   coords 3276.938 439.6 1166.551
   m_sTextData "Capture Supply Cache 2"
   m_iOrder 1
-  m_iScore 34
+  m_iScore 25
   m_sFactionKey "RHS_USAF"
  }
  {
   coords 3279.516 435.886 1169.108
   m_sTextData "Capture Supply Cache 3"
   m_iOrder 2
-  m_iScore 33
+  m_iScore 25
   m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 3285.895 438.025 1168.203
+  m_sTextData "Defend Supply Cache 3"
+  m_iOrder 2
+  m_iScore 25
+  m_sFactionKey "FIA"
+ }
+ {
+  coords 3286.591 438.074 1168.521
+  m_sTextData "Defend Supply Cache 1"
+  m_iScore 25
+  m_sFactionKey "FIA"
+ }
+ {
+  coords 3283.317 441.739 1165.646
+  m_sTextData "Defend Supply Cache 2"
+  m_iOrder 1
+  m_iScore 25
+  m_sFactionKey "FIA"
  }
 }
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
  coords 3285.227 438.288 1171.026
- m_sTextData "The local militia in the area has begun an insurgency within the mountains, killing a squad of local nation guard soldiers conducting an FTX in the region."\
+ m_sTextData "The local militia in the area has begun an insurgency within the mountains, killing a squad of local national guard soldiers conducting an FTX in the region."\
  ""\
  "WE MUST CAPTURE CACHE 1 AND 2 BEFORE ASSAULTING THE 3RD CACHE."\
  ""\
- "Our goal is to disrupt their supplies in the region by capturing these supply caches, no need to destroy them as JAG wants to run these as a crime scene."\
+ "Our goal is to disrupt their supplies in the region by capturing these supply caches; there is no need to destroy them as JAG wants to run these as a crime scene."\
  ""\
- "Our command has given us 2 reinforcement waves to use, use them wisely as once they're out we have no more reinforcements coming."
+ "Our command has given us 2 reinforcement waves to use; use them wisely, as once they're out we have no more reinforcements coming."
  m_aVisibleForFactions {
   "RHS_USAF"
  }
@@ -85,7 +104,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 3285.295 438.873 1168.082
- m_sTextData "Element of the North Carolina Nation Guard Special Forces have been tasked with quelling a local militias uprising in the area. Their goal is to destroy precious ammo supplies in the region supplying the militia with needed supplies to keep their insurgency in the mountains going."\
+ m_sTextData "Elements of the North Carolina National Guard Special Forces have been tasked with quelling a local militia uprising in the area. Their goal is to capture precious ammo supplies in the region, supplying the militia with needed supplies to keep their insurgency in the mountains going."\
  ""\
- "Supply Cache 1 and 2 must be capture before Supply Cache 3 can be captured."
+ "Supply Caches 1 and 2 must be captured before Supply Cache 3 can be captured."
 }
