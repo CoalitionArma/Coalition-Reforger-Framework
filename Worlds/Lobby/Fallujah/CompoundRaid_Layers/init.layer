@@ -1,0 +1,85 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 429.987 10.308 1539.706
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 23
+  }
+ }
+ coords 436.465 9.063 1551.654
+}
+$grp BaseGameTriggerEntity {
+ trig1 {
+  coords 414.143 11.264 1564.32
+  userScript "	string chinook = \"{6EE8BD07DE06EC44}Prefabs/Vehicles/Helicopters/H47/MH47G.et\";"\
+  "    vector chinook1spawn;"\
+  "    IEntity chinook1trig;"\
+  "            "\
+  "    void spawnthings()"\
+  "        {"\
+  "            chinook1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
+  "            chinook1spawn = chinook1trig.GetOrigin();"\
+  "                "\
+  "            EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "            spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "            spawnParams.Transform[3] = chinook1spawn;"\
+  "                "\
+  "            GetGame().SpawnEntityPrefab(Resource.Load(chinook),GetGame().GetWorld(),spawnParams);"\
+  "        }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ vipTrig {
+  coords 712.346 8.156 3529.206
+  userScript "	IEntity vip;"
+  TriggerShapeType Sphere
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())"\
+  "			return;"\
+  "		"\
+  "		if(vip)"\
+  "			Print(\"VIP exists\");"\
+  "		"\
+  "		if(!vip)"\
+  "		{"\
+  "			SCR_GroupsManagerComponent GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();"\
+  "			array<SCR_AIGroup> outAllGroups;"\
+  "			GroupsManagerComponent.GetAllPlayableGroups(outAllGroups);"\
+  "			Print(\"Finding VIP\");"\
+  "			foreach(SCR_AIGroup group : outAllGroups)"\
+  "			{"\
+  "				if(group.GetCustomName() == \"VIP\")"\
+  "				{"\
+  "					Print(\"Found VIP Group\");"\
+  "					array<int> groupPlayersIDs = group.GetPlayerIDs();"\
+  "					Print(groupPlayersIDs.Get(0));"\
+  "					vip = GetGame().GetPlayerManager().GetPlayerControlledEntity(groupPlayersIDs.Get(0));"\
+  "					Print(vip);"\
+  "				}"\
+  "			}"\
+  "		}"\
+  "		"\
+  "		if(!SCR_AIDamageHandling.IsAlive(vip))"\
+  "		{"\
+  "			Print(\"VIP is Dead\");"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"The VIP has been killed!\", 10);"\
+  "			IEntity trigger = GetGame().GetWorld().FindEntityByName(\"vipTrig\");"\
+  "            delete trigger;"\
+  "		}"\
+  "	"
+ }
+}
+$grp Vehicle : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ UAZ469_PKM1 {
+  coords 729.6 8.156 3553.694
+  angleY -45
+ }
+ UAZ469_PKM2 {
+  coords 733.648 8.156 3554.81
+  angleY -45
+ }
+}
