@@ -1,0 +1,27 @@
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 7565.411 0.936 8977.864
+  m_sTitle "Defend FOB Sokol"
+  m_iScore 25
+ }
+ {
+  coords 7557.63 1.507 8976.324
+  m_sTitle "Defend MOB Orel"
+  m_iOrder 2
+  m_iScore 75
+ }
+ {
+  coords 7551.772 2.208 8976.665
+  m_sTitle "Sieze FOB Sokol"
+  m_iOrder 5
+  m_iScore 25
+  m_sFactionKey "USSR"
+ }
+ {
+  coords 7540.769 1.775 8972.814
+  m_sTitle "Seize MOB Orel"
+  m_iOrder 7
+  m_iScore 75
+  m_sFactionKey "USSR"
+ }
+}

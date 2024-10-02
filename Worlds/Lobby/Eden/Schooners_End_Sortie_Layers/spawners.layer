@@ -1,0 +1,65 @@
+$grp SCR_BaseTriggerEntity {
+ mortar1 {
+  coords 6944.074 70.892 8592.352
+ }
+ mortar2 {
+  coords 6939.713 70.988 8595.844
+ }
+ uaz1 {
+  coords 5694.962 209.989 7362.617
+ }
+ uaz2 {
+  coords 5721.81 216.87 7349.164
+ }
+ ambo1 {
+  coords 5710.734 212.726 7370.939
+ }
+ ambo2 {
+  coords 7670.709 12.852 8067.437
+ }
+ spawnVics {
+  coords 7614.021 1.281 8916.58
+  userScript "	string mortar = \"{2A473C531D075905}Mortars/82/Podnosnew.et\";"\
+  "	string ambulanceFIA = \"{45B4F354E7A3B4E2}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_CDF_Ambulance_CDF.et\";"\
+  "	string ambulanceUSSR = \"{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et\";"\
+  "	string uaz = \"{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et\";"\
+  "	string ural = \"{1449105FD658EDFB}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_forest.et\";"\
+  "	IEntity mortar1, mortar2, uaz1, uaz2, ambo1, ambo2, ural1;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		mortar1 = GetGame().GetWorld().FindEntityByName(\"mortar1\");"\
+  "		mortar2 = GetGame().GetWorld().FindEntityByName(\"mortar2\");"\
+  "		ambo1 = GetGame().GetWorld().FindEntityByName(\"ambo1\");"\
+  "		ambo2 = GetGame().GetWorld().FindEntityByName(\"ambo2\");"\
+  "		uaz1 = GetGame().GetWorld().FindEntityByName(\"uaz1\");"\
+  "		uaz2 = GetGame().GetWorld().FindEntityByName(\"uaz2\");"\
+  "		ural1 = GetGame().GetWorld().FindEntityByName(\"ural1\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = mortar1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = mortar2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = ambo2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ambulanceFIA),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = ambo1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ambulanceUSSR),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = uaz1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(uaz),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = uaz2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(uaz),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = ural1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ural),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ ural1 {
+  coords 7679.281 12.969 8059.333
+ }
+}
