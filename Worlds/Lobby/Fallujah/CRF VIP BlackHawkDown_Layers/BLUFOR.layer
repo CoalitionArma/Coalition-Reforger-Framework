@@ -78,58 +78,9 @@ $grp SCR_BaseTriggerEntity {
   coords 1992.3 8.156 1992.753
   angleY 47.943
  }
- pilotTransponder {
-  coords 1986.478 8.157 2017.94
-  userScript "		CRF_SafestartGameModeComponent m_safestart;"\
-  "	//------------------------------------------------------------------------------------------------"\
-  "	"\
-  "	void CheckAddMarkers()"\
-  "	{	"\
-  "		m_safestart = CRF_SafestartGameModeComponent.GetInstance();"\
-  "		if (m_safestart.GetSafestartStatus()) return;"\
-  "		Print(\"Pilot Transpoder Active\");"\
-  "		"\
-  "		CRF_GameModePlayerComponent gameModePlayerComponent = CRF_GameModePlayerComponent.GetInstance();"\
-  "	  	if (!gameModePlayerComponent) "\
-  "	  	return;"\
-  "		"\
-  "		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());"\
-  "		if (!factionManager)"\
-  "		return;"\
-  "		"\
-  "		Faction faction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());"\
-  "		if (!faction)"\
-  "		return;"\
-  "		"\
-  "	    if (faction.GetFactionKey() == \"US\")    "\
-  "	  	gameModePlayerComponent.AddScriptedMarker(\"downedPilot\", \"0 0 0\", 1, \"Transponder Signal\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
-  "	  	GetGame().GetCallqueue().Remove(CheckAddMarkers);"\
-  "		"\
-  "			"\
-  "		"\
-  "	}"\
-  "	"\
-  "	void WaitTillGameStart()"\
-  "	{"\
-  "		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) "\
-  "		{"\
-  "			if (Replication.IsServer())"\
-  "			{"\
-  "				Print(\"S&R: Night Night Mr Pilot\");"\
-  "				IEntity pilot = GetGame().FindEntity(\"downedPilot\");"\
-  "				SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(pilot.FindComponent(SCR_CharacterControllerComponent));"\
-  "				characterController.SetUnconscious(true);"\
-  "			}"\
-  "			GetGame().GetCallqueue().Remove(WaitTillGameStart);"\
-  "			GetGame().GetCallqueue().CallLater(CheckAddMarkers, 6000, true);"\
-  "		}"\
-  "		return;"\
-  "	}"
-  OnInit ""\
-  ""\
-  "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);"\
-  "		"\
-  "	"
+ transponder {
+  coords 1990.772 8.645 2012.338
+  angleY 106.397
  }
 }
 GenericEntity : "{520CC573CA9FBC4F}Prefabs/Structures/Wreck/uh60.et" {

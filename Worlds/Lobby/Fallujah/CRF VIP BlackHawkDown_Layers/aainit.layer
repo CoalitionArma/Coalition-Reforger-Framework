@@ -6,6 +6,9 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 60
   }
+  CRF_SearchAndRescueGameModeComponent "{627766880CD9632C}" {
+   m_setUnconcious 1
+  }
  }
  coords 1849.854 8.156 1992.071
  {
@@ -70,9 +73,6 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
 }
 SCR_ChimeraCharacter downedPilot : "{68ADA20CCBDF7438}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Crew_Pilot_P.et" {
  components {
-  FactionAffiliationComponent "{520EC961FB0A2E90}" {
-   "faction affiliation" ""
-  }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_bIsPlayable 0
   }
@@ -81,5 +81,5 @@ SCR_ChimeraCharacter downedPilot : "{68ADA20CCBDF7438}Prefabs/Characters/Faction
    m_fUnconsciousRegenerationScale 0
   }
  }
- coords 1987.162 8.156 2013.704
+ coords 1990.547 8.156 2012.632
 }
