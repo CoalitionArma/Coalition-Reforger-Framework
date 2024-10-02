@@ -344,8 +344,30 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
       "USSR"
      }
     }
+    OPFORssBorderMarkers5 {
+     coords -425.617 119.842 -722.017
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers6 {
+     coords -407.161 125.86 -744.294
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
     OPFORssBorderMarkers7 {
-     coords -543.106 118.96 -1077.857
+     coords -389.313 131.509 -766.313
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -356,7 +378,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers8 {
-     coords -546.598 122.313 -1012.755
+     coords -363.892 137.622 -789.851
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -367,7 +389,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers9 {
-     coords -530.378 125.636 -944.596
+     coords -348.602 147.825 -814.458
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -378,7 +400,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers10 {
-     coords -521.486 124.421 -905.086
+     coords -321.918 143.607 -828.311
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -389,7 +411,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers11 {
-     coords -460.623 129.761 -913.211
+     coords -302.556 143.059 -850.143
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -400,7 +422,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers12 {
-     coords -415.989 133.469 -933.357
+     coords -313.458 143.193 -872.615
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -411,7 +433,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers13 {
-     coords -394.172 135.862 -964.347
+     coords -324.147 141.602 -894.938
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -422,7 +444,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers14 {
-     coords -389.095 135.868 -989.934
+     coords -342.084 137.974 -922.293
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -433,7 +455,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers15 {
-     coords -393.304 131.872 -1024.804
+     coords -366.557 135.718 -940.296
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -444,7 +466,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers16 {
-     coords -412.547 132.632 -1041.366
+     coords -386.848 134.219 -954.292
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -455,7 +477,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers17 {
-     coords -460.538 131.898 -1047.668
+     coords -408.752 132.208 -952.631
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -466,7 +488,7 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
      }
     }
     OPFORssBorderMarkers18 {
-     coords -502.899 142.59 -1061.395
+     coords -434.443 130.283 -944.983
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
@@ -476,34 +498,100 @@ $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker
       "USSR"
      }
     }
-    OPFORssBorderMarkers5 {
-     coords -513.829 122.194 -886.379
-     angleY 0
-     m_MarkerColor 0.371 0 0 1
-     m_sQuadName "dot"
-     m_fWorldSize 75
-     m_sDescription "USSR SafeStart Border"
-     m_aVisibleForFactions {
-      "USSR"
-     }
-    }
-    OPFORssBorderMarkers6 {
-     coords -492.623 117.508 -823.442
-     angleY 0
-     m_MarkerColor 0.371 0 0 1
-     m_sQuadName "dot"
-     m_fWorldSize 75
-     m_sDescription "USSR SafeStart Border"
-     m_aVisibleForFactions {
-      "USSR"
-     }
-    }
     OPFORssBorderMarkers19 {
-     coords -474.481 119.127 -774.932
+     coords -463.869 128.334 -935.509
      angleY 0
      m_MarkerColor 0.371 0 0 1
      m_sQuadName "dot"
-     m_fWorldSize 75
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers20 {
+     coords -494.932 127.508 -932.566
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers21 {
+     coords -498.39 125.56 -902.841
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers22 {
+     coords -503.535 122.707 -882.127
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers23 {
+     coords -493.502 120.466 -847.76
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers24 {
+     coords -480.636 130.053 -819.479
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers25 {
+     coords -467.952 119.953 -781.447
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers26 {
+     coords -456.462 118.311 -754.854
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers27 {
+     coords -438.273 118.204 -722.172
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
      m_sDescription "USSR SafeStart Border"
      m_aVisibleForFactions {
       "USSR"

@@ -23,7 +23,8 @@ $grp SCR_BaseTriggerEntity {
   "	string ambulanceFIA = \"{45B4F354E7A3B4E2}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_CDF_Ambulance_CDF.et\";"\
   "	string ambulanceUSSR = \"{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et\";"\
   "	string uaz = \"{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et\";"\
-  "	IEntity mortar1, mortar2, uaz1, uaz2, ambo1, ambo2;"\
+  "	string ural = \"{1449105FD658EDFB}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_forest.et\";"\
+  "	IEntity mortar1, mortar2, uaz1, uaz2, ambo1, ambo2, ural1;"\
   "	"\
   "	void spawnthings()"\
   "	{"\
@@ -33,6 +34,7 @@ $grp SCR_BaseTriggerEntity {
   "		ambo2 = GetGame().GetWorld().FindEntityByName(\"ambo2\");"\
   "		uaz1 = GetGame().GetWorld().FindEntityByName(\"uaz1\");"\
   "		uaz2 = GetGame().GetWorld().FindEntityByName(\"uaz2\");"\
+  "		ural1 = GetGame().GetWorld().FindEntityByName(\"ural1\");"\
   "		"\
   "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
   "		spawnParams.TransformMode = ETransformMode.WORLD;"\
@@ -49,10 +51,15 @@ $grp SCR_BaseTriggerEntity {
   "		GetGame().SpawnEntityPrefab(Resource.Load(uaz),GetGame().GetWorld(),spawnParams);"\
   "		spawnParams.Transform[3] = uaz2.GetOrigin();"\
   "		GetGame().SpawnEntityPrefab(Resource.Load(uaz),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = ural1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ural),GetGame().GetWorld(),spawnParams);"\
   "	}"
   EOnInit ""\
   "		super.EOnInit(owner);"\
   "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
   "	"
+ }
+ ural1 {
+  coords 7679.281 12.969 8059.333
  }
 }

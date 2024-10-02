@@ -23,7 +23,7 @@ SCR_AIGroup : "{E27D8A921EE36F1F}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80
          {
           SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
            coords 26.73 1.143 19.98
-           m_sCustomNameSet "2nd Company Command"
+           m_sCustomNameSet "2nd Platoon Command"
            {
             SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
              coords -0.097 0.033 -9.95

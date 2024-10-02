@@ -15,6 +15,7 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
   ""\
   "FIA:"\
   "- 2x 2B14 \"Podnos\" 82mm Mortar"\
+  "- 1x Ural-4320 (Civilian)"\
   "- 1x UAZ-452 Ambulance (Camouflage)"\
   ""
   m_bEmptyFactionVisibility 1
@@ -61,9 +62,8 @@ $grp PS_MissionDescription : "{3136BE42592F3B1B}PrefabsEditable/MissionDescripti
  greenforBriefing {
   coords 7673.225 4.633 9042.392
   m_sTitle "FIA Briefing"
-  m_sTextData "We have to defend MOB Orel at all costs from Soviet forces manuvering to destroy us. We have prepared for this day well, with defensive emplacements scattered throughout the region. The crux of our defense is FOB Sokol, which contains 2 2B14 82mm mortars. It is somewhat poorly positioned, but the mortars could be devastating to our enemies. "\
-  ""\
-  "Notes: If an admin is willing to TP FIA forces to positions within the safestart border before opstart, then that is reccomended. If not, leg it."
+  m_sTextData "We have to defend MOB Orel at all costs from Soviet forces maneuvering to destroy us. We have prepared for this day well, with defensive emplacements scattered throughout the region. The crux of our defense is FOB Sokol, which contains 2 2B14 82mm mortars. It is somewhat poorly positioned, but the mortars could be devastating to our enemies. "\
+  ""
   m_aVisibleForFactions {
    "FIA"
   }
