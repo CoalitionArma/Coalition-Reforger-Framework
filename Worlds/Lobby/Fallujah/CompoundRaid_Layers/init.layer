@@ -78,6 +78,9 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
        SCR_CallsignInfo "{6284E39C68FC8EC6}" {
         m_sCallsign "Crew 2"
        }
+       SCR_CallsignInfo "{628553F1D117A732}" {
+        m_sCallsign "HVT"
+       }
       }
       m_sCallsignGroupFormat "%3"
      }

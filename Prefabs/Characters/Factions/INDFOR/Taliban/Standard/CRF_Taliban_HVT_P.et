@@ -1,6 +1,9 @@
 SCR_ChimeraCharacter : "{AD6294DA4658DCA0}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_COY_P.et" {
  ID "520EC961A090B1EE"
  components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "HVT"
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
