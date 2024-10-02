@@ -1,0 +1,470 @@
+PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ coords 2156.066 14.209 3625.735
+ {
+  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   {
+    coords 21.041 0 0
+   }
+   {
+    coords 40.899 0 0
+   }
+   {
+    coords 69.754 0 0
+   }
+   {
+    coords 83.633 0 0
+   }
+   {
+    coords 83.633 0 -23.086
+   }
+   {
+    coords 83.633 0 -48.306
+   }
+   {
+    coords 83.633 0 -71.998
+   }
+   {
+    coords 83.633 0 -99.779
+   }
+   {
+    coords 83.633 0 -123.626
+   }
+   {
+    coords 83.633 0 -151.438
+   }
+   {
+    coords 60.725 0 -151.438
+   }
+   {
+    coords 32.835 0 -151.438
+   }
+   {
+    coords 6.123 0 -151.438
+   }
+   {
+    coords -15.322 0 -151.438
+   }
+   {
+    coords -38.469 0 -151.438
+   }
+   {
+    coords -63.365 0 -151.438
+   }
+   {
+    coords -82.62 0 -151.438
+   }
+   {
+    coords -82.62 0 -121.927
+   }
+   {
+    coords -82.62 0 -89.865
+   }
+   {
+    coords -82.62 0 -65.848
+   }
+   {
+    coords -82.62 0 -36.512
+   }
+   {
+    coords -82.62 0 -10.119
+   }
+   {
+    coords -54.008 0 -10.119
+   }
+   {
+    coords -23.599 0 -10.119
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 1545.658 38.963 3723.883
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1479.352 38.963 3723.883
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1400.112 38.963 3723.883
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1333.288 38.963 3723.883
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1278.306 38.963 3723.883
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1218.117 38.963 3723.883
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1175.944 38.963 3723.883
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1175.944 38.963 3676.527
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1175.944 38.963 3607.895
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1108.029 38.963 3607.895
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1104.359 38.963 3560.806
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1049.277 38.963 3523.421
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 982.722 38.963 3485.383
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 904.016 38.963 3439.907
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 819.123 38.963 3392.404
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1579.376 38.963 3661.723
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1597.746 38.963 3585.953
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1597.746 38.963 3532.987
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1563.79 38.963 3481.919
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1531.221 38.963 3432.542
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1489.834 38.963 3385.991
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1477.246 38.963 3323.615
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1505.711 38.963 3263.379
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1535.404 38.963 3190.427
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1535.404 38.963 3116.956
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1535.404 38.963 3022.024
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1535.404 38.963 2897.633
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1478.525 38.963 2800.38
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1403.164 38.963 2701.244
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1332.998 38.963 2701.244
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1242.813 38.963 2608.243
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1129.687 38.963 2493.136
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 1033.371 38.963 2493.136
+  m_MarkerColor 0.214 1 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+}
+PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 1444.523 185.713 4055.089
+ angleY 0
+ {
+  $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   {
+    coords -164.904 -124.73 -155.736
+    angleY 0
+   }
+   {
+    coords -189.179 -107.385 -226.396
+    angleY 0
+   }
+   {
+    coords -450.009 22.186 -325.208
+    angleY 0
+   }
+   {
+    coords -514.506 -27.083 -428.552
+    angleY 0
+   }
+   {
+    coords -552.282 -98.779 -579.928
+    angleY 0
+   }
+   {
+    coords -472.603 -152.247 -676.176
+    angleY 0
+   }
+   {
+    coords -386.971 -150.266 -754.94
+    angleY 0
+   }
+   {
+    coords -287.441 -115.221 -854.315
+    angleY 0
+   }
+   {
+    coords -205.64 -88.766 -970.347
+    angleY 0
+   }
+   {
+    coords -140.64 -72.071 -1036.197
+    angleY 0
+   }
+   {
+    coords -101.403 -44.106 -1096.505
+    angleY 0
+   }
+   {
+    coords -59.522 -8.888 -1168.411
+    angleY 0
+   }
+   {
+    coords -15.096 6.861 -1249.931
+    angleY 0
+   }
+   {
+    coords 65.058 -21.3 -1218.616
+    angleY 0
+   }
+   {
+    coords 146.141 -35.08 -1191.695
+    angleY 0
+   }
+   {
+    coords 224.549 21.819 -1174.505
+    angleY 0
+   }
+   {
+    coords -335.574 -48.981 -270.534
+    angleY 0
+   }
+   {
+    coords -123.273 -97.231 -113.808
+    angleY 0
+   }
+   {
+    coords 329.071 50.224 -1174.505
+    angleY 0
+   }
+   {
+    coords 426.982 8.747 -1174.505
+    angleY 0
+   }
+   {
+    coords 524.987 4.326 -1174.505
+    angleY 0
+   }
+   {
+    coords 644.253 -38.826 -1131.698
+    angleY 0
+   }
+   {
+    coords 786.986 -88.812 -1038.547
+    angleY 0
+   }
+   {
+    coords 884.11 -122.433 -952.661
+    angleY 0
+   }
+   {
+    coords 943.939 -173.375 -859.741
+    angleY 0
+   }
+   {
+    coords 1023.213 -113.644 -725.234
+    angleY 0
+   }
+  }
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 1486.119 27.254 3493.77
+ angleY 90.481
+ m_MarkerColor 0.055 0.569 0.029 1
+ m_sDescription "INDFOR SPAWN"
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2156.159 13.833 3576.438
+ angleY 90.797
+}
