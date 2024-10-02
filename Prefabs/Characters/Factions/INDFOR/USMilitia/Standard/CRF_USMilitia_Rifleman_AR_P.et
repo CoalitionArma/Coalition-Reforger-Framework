@@ -1,0 +1,58 @@
+SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Automatic Rifleman"
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_sVariantPrefab "{0FB9C3EC2DC47A65}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/CRF_USMilitia_Rifleman_AR_V1_P.et"
+     }
+    }
+   }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{599A1E833BEF3A44}Prefabs/Weapons/MachineGuns/M249/MG_M249_base.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{71E24A66AD951B7C}Prefabs/Characters/HeadGear/Glass/Glasses1_2.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{7B1806707536C22A}Prefabs/Characters/Uniforms/Sleeveless_Tshirt_6.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{963993FF6DDF559F}Prefabs/Characters/Uniforms/Sweatpants.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{156DC7109CEE6F69}Prefabs/Characters/Vests/Vest_ALICE/Variants/Vest_ALICE_AR.et"
+    }
+    LoadoutSlotInfo Face {
+     Prefab "{A76A96C42FB45E75}Prefabs/Characters/HeadGear/Head_Cover/Arafatka_4.et"
+    }
+    LoadoutSlotInfo Extra {
+     Prefab "{AF23795EE5B465EF}Prefabs/Characters/HeadGear/Disguise/Mustache_2.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173FAA7C00C}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Sleeveless_Tshirt_6.et"
+    }
+    ItemsInitConfigurationItem "{557090130BCD36B7}" {
+     PrefabsToSpawn {
+      "{BEE3897D2286992A}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_M855A1_4Ball_1Tracer.et" "{BEE3897D2286992A}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_M855A1_4Ball_1Tracer.et" "{BEE3897D2286992A}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_M855A1_4Ball_1Tracer.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     }
+    }
+    ItemsInitConfigurationItem "{6064820F8177C8C0}" {
+     PrefabsToSpawn {
+     }
+    }
+   }
+  }
+ }
+}

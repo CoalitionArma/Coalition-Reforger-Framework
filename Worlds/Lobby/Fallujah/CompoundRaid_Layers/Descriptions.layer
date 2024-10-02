@@ -1,0 +1,72 @@
+PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+ coords 776.691 8.156 3502.126
+ m_sTextData "The VIP will remain inside of the VIP building at all times."
+ m_iOrder 6
+}
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 907.255 8.155 2835.456
+ m_sTextData "HVT"\
+ "Kill the HVT to win the mission."
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 955.006 18.023 2925.293
+ m_sTitle "INDFOR Brief"
+ m_sTextData "After safestart the HVT MUST NOT leave the HVT Building."\
+ ""\
+ "The Americans attempt to kill our leader, we must stop them and show them the true might of the Taliban. "\
+ ""\
+ "We worry about American infiltration, do not leave the safestart area even after safestart is over. We must stay within the area of the compound to prevent the Americans from sneaking in."\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 830.739 8.156 2873.217
+ m_sTextData "BLUFOR"\
+ "1x Chinook"\
+ ""\
+ "INDFOR"\
+ "2x GAZ w/ PKM"\
+ ""
+ m_iOrder 3
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 927.271 8.157 2837.496
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 879.28 8.156 2899.674
+ m_sTextData "BLUFOR"\
+ "Kill the HVT"\
+ ""\
+ "INDFOR"\
+ "Kill all BLUFOR"
+ m_iOrder 4
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 763.065 8.156 3545.308
+  m_sTitle "Kill the VIP"
+  m_sTextData "Kill the HVT"
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 767.804 8.156 3545.739
+  m_sTitle "Kill all BLUFOR"
+  m_sTextData "Kill all BLUFOR"
+  m_sFactionKey "Tali"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 940.422 8.155 2849.299
+ m_sTextData "The HVT to the north must be killed; we cannot let him get out of here alive. He knows this and plans to fight to the death."\
+ " After the operations start, we must fly into the AO, and once boots are on the ground, the infantry may not leave the AO."
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 913.835 8.157 2794.633
+ m_sTextData "A high profile terrorist has been located in the compound to the north west of Fallujah. A company of Rangers have been tasked with killing the HVT."
+}

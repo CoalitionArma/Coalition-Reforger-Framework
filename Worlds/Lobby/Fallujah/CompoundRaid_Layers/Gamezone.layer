@@ -1,0 +1,257 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 382.183 9.063 1584.592
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 428.618 9.595 1596.873
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 471.098 11.437 1606.558
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 487.615 9.063 1540.341
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 500.548 10.92 1472.051
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 461.394 9.063 1458.906
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 417.673 14.893 1447.74
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 401.139 9.391 1507.075
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+}
+PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 775.016 21.264 3558.854
+ m_MarkerColor 0 0 0 1
+ m_sQuadName "point-of-interest"
+ m_sDescription "HVT Building"
+ m_bUseWorldScale 0
+ m_aVisibleForFactions {
+ }
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+$grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+ {
+  coords 626.614 14.041 3715.233
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 740.55 12.632 3760.629
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 824.641 18.198 3771.21
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 889.132 10.013 3715.192
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 913.641 12.764 3637.364
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 934.198 24.247 3548.248
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 943.338 16.634 3458.875
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 936.608 9.796 3428.346
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 874.519 20.799 3375.703
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 735.099 19.009 3313.414
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 619.504 3.082 3332.623
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 537.551 11.138 3392.075
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 508.183 19.915 3499.001
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 488.591 19.52 3624.921
+  angleY 0
+  m_MarkerColor 0.001 0.218 0 1
+  m_aVisibleForFactions {
+   "Tali"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 338.646 28.751 2455.642
+  angleY 0
+ }
+ {
+  coords 44.064 101.125 2648.838
+  angleY 0
+ }
+ {
+  coords 631.447 12.271 2483.003
+  angleY 0
+ }
+ {
+  coords 888.189 8.156 2577.554
+  angleY 0
+ }
+ {
+  coords 1161.121 31.548 2734.801
+  angleY 0
+ }
+ {
+  coords 1305.87 35.489 2864.219
+  angleY 0
+ }
+ {
+  coords 1519.426 32.526 3034.828
+  angleY 0
+ }
+ {
+  coords 1693.927 16.333 3331.079
+  angleY 0
+ }
+ {
+  coords 1816.58 46.937 3503.952
+  angleY 0
+ }
+ {
+  coords 1928.775 79.641 3792.156
+  angleY 0
+ }
+ {
+  coords 1930.859 191.03 4015.83
+  angleY 0
+ }
+}

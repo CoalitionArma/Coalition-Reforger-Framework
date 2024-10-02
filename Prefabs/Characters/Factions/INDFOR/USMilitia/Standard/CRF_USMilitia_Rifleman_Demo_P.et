@@ -1,0 +1,58 @@
+SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Base_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Rifleman Demo"
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_sVariantPrefab "{E7372D3ED7BD3379}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/CRF_USMilitia_Rifleman_Demo_v1_P.et"
+     }
+    }
+   }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{AA62330C03DAA5CA}Prefabs/Weapons/Rifles/M4A1/Variants/Forecon/Rifle_M4A1_RAS_ERGO_Forecon7.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{65314E21166C842C}Prefabs/Characters/HeadGear/Cap/Cap_4.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{656B61001EB939FD}Prefabs/Characters/Uniforms/T-Shirt_a6.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{D4D896CDFAC69F2A}Prefabs/Characters/Uniforms/Pants_4.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab "{189B455421054117}Prefabs/Characters/Footwear/Shoes3.et"
+    }
+    LoadoutSlotInfo Vest {
+     Prefab "{BD205C7B90BD399E}Prefabs/Characters/Vests/Vest_ALICE/Variants/Vest_ALICE_officer.et"
+    }
+    LoadoutSlotInfo Face {
+     Prefab "{FF8EF874FF0BB235}Prefabs/Characters/HeadGear/Glass/Glasses2.et"
+    }
+    LoadoutSlotInfo Extra {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173FAA7C00C}" {
+     TargetStorage "Prefabs/Characters/Vests/Vest_ALICE/Vest_ALICE_suspenders_1.et"
+    }
+    ItemsInitConfigurationItem "{627B490CC3C16C4D}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+     PrefabsToSpawn {
+      "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{D9B1F65D20081DEF}PrefabsEditable/Explosives/E_DemoBlock_M112.et" "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et"
+     }
+    }
+   }
+  }
+ }
+}

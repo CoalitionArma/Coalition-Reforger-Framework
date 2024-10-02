@@ -1,0 +1,233 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 1607.765 515.397 1808.285
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1629.741 526.183 1770.217
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1621.363 519.928 1743.636
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1590.258 520.012 1722.442
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1551.023 514.687 1728.747
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1526.94 500.82 1758.499
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1519.406 513.263 1793.854
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1543.972 526.14 1815.108
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 1586.608 536.087 1818.307
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 2022.535 591.984 1996.422
+  angleY 0
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2064.479 447.93 1258.453
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2075.924 467.15 1401.681
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2011.564 490.789 1488.143
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2020.817 480.55 1648.773
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2232.602 449.373 1769.402
+  angleY 0
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2492.15 451.693 1818.812
+  angleY 0
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2771.428 430.199 1916.615
+  angleY 0
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 2796.209 550.634 2133.131
+  angleY 0
+  m_MarkerColor 0 0.332 0 1
+  m_sDescription "INDFOR Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 1481.459 499.379 1761.742
+  angleY 0
+ }
+ {
+  coords 1493.548 534.05 1601.923
+  angleY 0
+ }
+ {
+  coords 1639.444 505.552 1490.359
+  angleY 0
+ }
+ {
+  coords 1791.042 484.68 1322.416
+  angleY 0
+ }
+ {
+  coords 1960.12 440.101 1192.016
+  angleY 0
+ }
+ {
+  coords 2166.127 432.156 1110.26
+  angleY 0
+ }
+ {
+  coords 2349.454 564.181 1051.397
+  angleY 0
+ }
+ {
+  coords 2599.51 552.176 985.22
+  angleY 0
+ }
+ {
+  coords 3001.825 456.385 1014.149
+  angleY 0
+ }
+ {
+  coords 3200.842 446.803 898.823
+  angleY 0
+ }
+ {
+  coords 3417.933 441.9 798.702
+  angleY 0
+ }
+ {
+  coords 3652.903 459.679 895.474
+  angleY 0
+ }
+ {
+  coords 3868.231 464.008 964.963
+  angleY 0
+ }
+ {
+  coords 3819.056 532.109 1099.899
+  angleY 0
+ }
+ {
+  coords 3892.907 547.63 1369.888
+  angleY 0
+ }
+ {
+  coords 3888.659 532.555 1608.238
+  angleY 0
+ }
+ {
+  coords 3844.057 420.35 1832.702
+  angleY 0
+ }
+ {
+  coords 3615.29 452.733 2111.402
+  angleY 0
+ }
+ {
+  coords 3266.594 538.707 2256.249
+  angleY 0
+ }
+ {
+  coords 2943.47 543.829 2231.254
+  angleY 0
+ }
+ {
+  coords 2548.935 582.031 2274.445
+  angleY 0
+ }
+ {
+  coords 2169.938 582.613 2112.765
+  angleY 0
+ }
+ {
+  coords 1838.343 571.546 1948.362
+  angleY 0
+ }
+ {
+  coords 1505.712 552.595 1988.219
+  angleY 0
+ }
+}

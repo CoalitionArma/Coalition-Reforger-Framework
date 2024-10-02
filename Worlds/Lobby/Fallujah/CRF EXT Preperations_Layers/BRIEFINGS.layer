@@ -1,0 +1,86 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 2162.908 8.157 2212.939
+ m_sTextData "Our government has decided that our time and effort would be better spent elsewhere, we are to grab the supplies we need and prepare ourselves to move to our next objective"\
+ ""\
+ "Secure 3000 Supplies total back at base. Each Depot contains 1000 supplies total"
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 2162.908 8.157 2212.939
+ m_sTextData "OPFOR: "\
+ ""\
+ "Trucks"\
+ "2x BMP1"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "Trucks"\
+ "Cars"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2162.908 8.157 2212.939
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 2162.908 8.157 2212.939
+ m_sTextData "OPFOR:"\
+ ""\
+ "Secrures 3000 supplies"\
+ "Has at least 5 surviving members"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "Prevents the return of 3000 supplies"\
+ "Reduces Soviets to less than 5 surviving members."
+}
+PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ coords 2162.908 8.157 2144.283
+ m_sTitle "Secure Supplies"
+ m_sTextData "Secure Supplies"
+ m_iScore 50
+ m_sFactionKey "USSR"
+ {
+  PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+   coords -16.7 0 0
+   m_sTitle "Evacuate 5 People"
+   m_sTextData "Evacuate 5 People"
+   m_iOrder 1
+   m_iScore 50
+   m_sFactionKey "USSR"
+   {
+    PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+     coords 0 0 -34.409
+     m_sTitle "Reduce Soviet Count"
+     m_sTextData "Reduce Soviet Count"
+     m_iOrder 1
+     m_iScore 50
+     m_sFactionKey "Tali"
+     {
+      PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+       coords 16.7 0 0
+       m_sTitle "Prevent Securing of Supplies"
+       m_sTextData "Prevent Securing of Supplies"
+       m_iScore 50
+       m_sFactionKey "Tali"
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 2162.908 8.157 2212.939
+ m_sTitle "INDFOR Brief"
+ m_sTextData "The Soviets have had enough of us and are looking to leave our city once and for all."\
+ ""\
+ ""\
+ "Stop the Soviets from Evacuating 3000 supplies from the 4 depots through the city. each depot contains 1000 supplies total"\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2162.908 8.157 2212.939
+ m_sTextData "Soviet forces after a long and bloody occupation of the city have made the decision to leave, but first they must prepare the supplies they have left for their evacuation."
+}

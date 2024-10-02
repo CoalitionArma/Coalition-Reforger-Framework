@@ -1,0 +1,21 @@
+GenericEntity : "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    SCR_RadioToggleUserAction "{61E5532BC93F4E26}" {
+     "Sort Priority" 1
+    }
+    SCR_RadioRespawnSystem "{627B5A08504D9B2B}" {
+     ParentContextList {
+      "knob_toggle"
+     }
+     UIInfo UIInfo "{627B5A09BFE5C83F}" {
+      Name "Call for Reinforcements"
+     }
+     Duration 5
+    }
+   }
+  }
+ }
+}

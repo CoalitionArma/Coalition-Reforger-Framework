@@ -1,0 +1,21 @@
+GenericEntity : "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  ActionsManagerComponent "{508AB5952B584B2E}" {
+   additionalActions {
+    SCR_RadioToggleUserAction "{61E55328B9AD0AC6}" {
+     "Sort Priority" 1
+    }
+    SCR_RadioRespawnSystem "{6243276BC188AA83}" {
+     ParentContextList {
+      "knob_toggle"
+     }
+     UIInfo UIInfo "{6243276BBB2D8E10}" {
+      Name "Call for Reinforcements"
+     }
+     Duration 5
+    }
+   }
+  }
+ }
+}

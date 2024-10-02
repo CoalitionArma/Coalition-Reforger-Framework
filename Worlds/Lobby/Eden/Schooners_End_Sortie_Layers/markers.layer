@@ -1,0 +1,915 @@
+$grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+ AO_markers {
+  coords 5584.877 -0.004 8572.746
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 150
+  m_sDescription "AO Border"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    AO_markers2 {
+     coords 5.689 56.941 -201.521
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers3 {
+     coords 23.99 71.795 -407.171
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers4 {
+     coords -64.264 74.363 -568.626
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers10 {
+     coords -73.916 197.683 -1458.771
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers11 {
+     coords -68.104 178.421 -1646.04
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers12 {
+     coords 3.366 148.286 -1845.312
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers13 {
+     coords 176.535 144.349 -1945.469
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers14 {
+     coords 360.614 150.442 -1881.389
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers15 {
+     coords 528.047 178.464 -1763.63
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers16 {
+     coords 713.314 181.596 -1700.509
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers17 {
+     coords 859.293 182.669 -1588.214
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers18 {
+     coords 1065.304 140.897 -1528.544
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers19 {
+     coords 1225.06 139.193 -1407.988
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers20 {
+     coords 1277.75 118.166 -1221.157
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers21 {
+     coords 1508.678 64.016 -1211.734
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers22 {
+     coords 1771.787 0.45 -1194.79
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers5 {
+     coords -93.685 98.226 -783.707
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers6 {
+     coords -55.752 129.508 -975.125
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers7 {
+     coords -74.27 163.73 -1163.894
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+    AO_markers8 {
+     coords -46.413 193.312 -1316.258
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 150
+     m_sDescription "AO Border"
+     m_bVisibleForEmptyFaction 1
+     m_bShowForAnyFaction 1
+    }
+   }
+  }
+ }
+ FOBsokolMarker {
+  coords 6940.283 70.97 8595.507
+  m_MarkerColor 0 0.262 0.07 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "FOB Sokol"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ FBspacekMarker2 {
+  coords 7020.912 97.028 8372.802
+  angleY 0
+  m_MarkerColor 0 0.262 0.07 1
+  m_sQuadName "observation-post-2"
+  m_fWorldSize 110
+  m_sDescription "Firebase Špaček"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ CPperkavaMarker3 {
+  coords 6644.673 152.405 7866.212
+  angleY 0
+  m_MarkerColor 0 0.262 0.07 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 110
+  m_sDescription "Checkpoint Pěnkava"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ MOBorelMarker {
+  coords 7641.686 12.081 8141.039
+  m_MarkerColor 0 0.262 0.07 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 150
+  m_sDescription "MOB Orel"
+  m_aVisibleForFactions {
+   ""
+  }
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ CPcervenkaMarker2 {
+  coords 7453.9 42.633 8274.144
+  angleY 0
+  m_MarkerColor 0 0.262 0.07 1
+  m_sQuadName "fortification-2"
+  m_fWorldSize 110
+  m_sDescription "Checkpoint Červenka"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ INDFORspawnMarker {
+  coords 7698.137 12.969 8103.161
+  m_MarkerColor 0 0.262 0.07 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 110
+  m_sDescription "FIA Spawn"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ OPFORspawnMarker {
+  coords 5654.267 217.606 7124.637
+  angleY 90
+  m_MarkerColor 0.371 0 0 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 60
+  m_sDescription "USSR Spawn"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ OPFORreconSpawnMarker {
+  coords 6104.875 79.263 8164.837
+  angleY 90
+  m_MarkerColor 0.371 0 0 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 60
+  m_sDescription "USSR Spawn (Recon)"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+ }
+ OPFORssBorderMarkers {
+  coords 6129.262 89.378 8114.375
+  angleY 0
+  m_MarkerColor 0.371 0 0 1
+  m_sQuadName "dot"
+  m_fWorldSize 100
+  m_sDescription "USSR SafeStart Border"
+  m_aVisibleForFactions {
+   "USSR"
+  }
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    OPFORssBorderMarkers2 {
+     coords 33.52 19.843 65.969
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers3 {
+     coords -22.148 -16.758 124.6
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers4 {
+     coords -86.652 -3.258 51.62
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers5 {
+     coords -425.617 119.842 -722.017
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers6 {
+     coords -407.161 125.86 -744.294
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers7 {
+     coords -389.313 131.509 -766.313
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers8 {
+     coords -363.892 137.622 -789.851
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers9 {
+     coords -348.602 147.825 -814.458
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers10 {
+     coords -321.918 143.607 -828.311
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers11 {
+     coords -302.556 143.059 -850.143
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers12 {
+     coords -313.458 143.193 -872.615
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers13 {
+     coords -324.147 141.602 -894.938
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers14 {
+     coords -342.084 137.974 -922.293
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers15 {
+     coords -366.557 135.718 -940.296
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers16 {
+     coords -386.848 134.219 -954.292
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers17 {
+     coords -408.752 132.208 -952.631
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers18 {
+     coords -434.443 130.283 -944.983
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers19 {
+     coords -463.869 128.334 -935.509
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers20 {
+     coords -494.932 127.508 -932.566
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers21 {
+     coords -498.39 125.56 -902.841
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers22 {
+     coords -503.535 122.707 -882.127
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers23 {
+     coords -493.502 120.466 -847.76
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers24 {
+     coords -480.636 130.053 -819.479
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers25 {
+     coords -467.952 119.953 -781.447
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers26 {
+     coords -456.462 118.311 -754.854
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+    OPFORssBorderMarkers27 {
+     coords -438.273 118.204 -722.172
+     angleY 0
+     m_MarkerColor 0.371 0 0 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "USSR SafeStart Border"
+     m_aVisibleForFactions {
+      "USSR"
+     }
+    }
+   }
+  }
+ }
+ INDFORssBorderMarkers {
+  coords 7161.171 1.196 9047.692
+  angleY 0
+  m_MarkerColor 0 0.262 0.07 1
+  m_sQuadName "dot"
+  m_fWorldSize 100
+  m_sDescription "FIA SafeStart Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+  {
+   $grp PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+    INDFORspawnMarker2 {
+     coords -51.057 2.372 -98.292
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker3 {
+     coords -104.414 18.176 -186.04
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker4 {
+     coords -172.537 47.278 -295.15
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker5 {
+     coords -231.669 87.157 -384.347
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker6 {
+     coords -272.249 70.288 -465.698
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker7 {
+     coords -284.978 108.268 -553.108
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker8 {
+     coords -316.597 73.408 -630.792
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker9 {
+     coords -322.322 87.654 -720.661
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker10 {
+     coords -343.475 82.603 -832.837
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker11 {
+     coords -382.712 102.272 -926.435
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker12 {
+     coords -452.898 127.869 -1013.925
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker13 {
+     coords -520.392 143.2 -1070.854
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker14 {
+     coords -542.106 148.437 -1145.836
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker15 {
+     coords -548.985 146.221 -1195.776
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker16 {
+     coords -514.917 150.101 -1226.976
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker17 {
+     coords -449.332 145.476 -1227.913
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker18 {
+     coords -414.998 142.851 -1184.322
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker19 {
+     coords -344.618 129.797 -1220.195
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker20 {
+     coords -288.184 120.946 -1226.695
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker21 {
+     coords -224.334 106.481 -1234.222
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker22 {
+     coords -151.071 94.146 -1246.168
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker23 {
+     coords -79.745 79.619 -1278.477
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker24 {
+     coords -7.092 66.954 -1281.777
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker25 {
+     coords 81.958 45.51 -1313.811
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker26 {
+     coords 178.419 32.16 -1317.33
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker27 {
+     coords 270.125 5.101 -1319.434
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+    INDFORspawnMarker28 {
+     coords 335.887 -1.196 -1309.698
+     angleY 0
+     m_MarkerColor 0 0.262 0.07 1
+     m_sQuadName "dot"
+     m_fWorldSize 100
+     m_sDescription "FIA SafeStart Border"
+     m_aVisibleForFactions {
+      "FIA"
+     }
+    }
+   }
+  }
+ }
+}
