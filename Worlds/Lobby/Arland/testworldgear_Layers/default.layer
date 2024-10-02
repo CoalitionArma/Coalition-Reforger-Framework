@@ -331,9 +331,18 @@ BaseGameTriggerEntity test {
  TriggerShapeType Sphere
  PeriodicQueries 1
 }
-SCR_ChimeraCharacter player2 : "{6BACF93226AED9E2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_COY_P.et" {
- coords 2079.258 58.958 2118.592
+SCR_ChimeraCharacter player2 : "{62CFE96F1F61403D}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Base_P.et" {
+ coords 2078.504 58.972 2118.693
 }
 SCR_ChimeraCharacter player : "{97DF23C9633DAA71}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et" {
+ components {
+  FactionAffiliationComponent "{520EC961FB0A2E90}" {
+   "faction affiliation" "RHS_USAF"
+  }
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Guy"
+   m_bIsPlayable 1
+  }
+ }
  coords 2080.895 58.91 2117.995
 }
