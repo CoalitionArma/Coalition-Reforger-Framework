@@ -1,0 +1,167 @@
+PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 724.053 8.156 3559.262
+ m_MarkerColor 0 0.194 0 1
+ m_sDescription "INDFOR Spawn"
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/AmmoBoxArsenal_Ammunition_FIA.et" {
+ components {
+  SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+   Enabled 0
+  }
+  SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+   Enabled 0
+  }
+  SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
+   Enabled 0
+  }
+  SCR_ServicePointComponent "{5C7489C2D2BCCFA0}" {
+   Enabled 0
+  }
+  UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
+   Attributes SCR_ItemAttributeCollection "{58A17A346E386320}" {
+    ItemDisplayName SCR_InventoryUIInfo "{58A17A3474A3430E}" {
+     Name "Flare Ammo Box"
+     Description ""
+     m_aItemHints {
+      SCR_SupplyAvailableItemHintUIInfo "{5E76A7E6F3D189F7}" {
+       Name ""
+      }
+     }
+    }
+   }
+   MultiSlots {
+    MultiSlotConfiguration "{628329962841059E}" {
+     SlotTemplate InventoryStorageSlot ammo {
+      Prefab "{906F07BD0366E08F}Prefabs/Weapons/Ammo/Ammo_Flare_40mm_VG40OP_White.et"
+     }
+     NumSlots 50
+    }
+   }
+  }
+  SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   additionalActions {
+    SCR_OpenStorageAction "{5476DE57AA50402F}" {
+     UIInfo UIInfo "{52E6EC759A11C684}" {
+      Name "Open Flare Ammo Box"
+     }
+    }
+   }
+  }
+ }
+ coords 716.987 8.156 3565.836
+}
+SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Line"
+  }
+ }
+ coords 708.969 8.156 3565.038
+ m_sCustomNameSet "Cell Leader"
+ {
+  SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "Line"
+    }
+   }
+   coords 0.732 0.001 -5.217
+   m_aUnitPrefabSlots {
+    "{F7EDF4ACE6F158E1}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_Base_SL_P.et" "{FCD01B8013218AB6}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Medic_P.et" "{0AD62DA0592DE3DA}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AR_P.et" "{F4D07A9AE5311D7D}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAR_P.et" "{B7067F272636FFC4}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AT_P.et" "{4900281D9A2A0163}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAT_P.et" "{7860208413B9E467}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Demo_P.et"
+   }
+   m_sCustomNameSet "Cell 1"
+   {
+    SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Line"
+      }
+     }
+     coords 0.398 0.001 -3.08
+     m_aUnitPrefabSlots {
+      "{F7EDF4ACE6F158E1}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_Base_SL_P.et" "{FCD01B8013218AB6}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Medic_P.et" "{0AD62DA0592DE3DA}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AR_P.et" "{F4D07A9AE5311D7D}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAR_P.et" "{B7067F272636FFC4}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AT_P.et" "{4900281D9A2A0163}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAT_P.et" "{7860208413B9E467}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Demo_P.et"
+     }
+     m_sCustomNameSet "Cell 2"
+     {
+      SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Line"
+        }
+       }
+       coords 0.466 0 -3.549
+       m_aUnitPrefabSlots {
+        "{F7EDF4ACE6F158E1}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_Base_SL_P.et" "{FCD01B8013218AB6}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Medic_P.et" "{0AD62DA0592DE3DA}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AR_P.et" "{F4D07A9AE5311D7D}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAR_P.et" "{B7067F272636FFC4}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AT_P.et" "{4900281D9A2A0163}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAT_P.et" "{7860208413B9E467}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Demo_P.et"
+       }
+       m_sCustomNameSet "Cell 3"
+       {
+        SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Line"
+          }
+         }
+         coords 0.296 0.001 -3.94
+         m_aUnitPrefabSlots {
+          "{F7EDF4ACE6F158E1}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_Base_SL_P.et" "{FCD01B8013218AB6}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Medic_P.et" "{0AD62DA0592DE3DA}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AR_P.et" "{F4D07A9AE5311D7D}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAR_P.et" "{B7067F272636FFC4}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AT_P.et" "{4900281D9A2A0163}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_AAT_P.et" "{7860208413B9E467}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Rifleman_Demo_P.et"
+         }
+         m_sCustomNameSet "Cell 4"
+         {
+          SCR_AIGroup : "{783A89E1332A1440}Prefabs/Groups/INDFOR/Taliban/Support/CRF_Group_Taliban_MMGTeam_P.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Line"
+            }
+           }
+           coords 11.363 0 -6.619
+           angleY -91.886
+           m_sCustomNameSet "Cell 5 MMG"
+           {
+            SCR_AIGroup : "{69DFF9BDB5B70D77}Prefabs/Groups/INDFOR/Taliban/Vehicle/CRF_Group_Taliban_2manCrew_P.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "Line"
+              }
+             }
+             coords 6.729 0 -8.233
+             angleY 91.886
+             m_sCustomNameSet "1st Crew"
+             {
+              SCR_AIGroup : "{69DFF9BDB5B70D77}Prefabs/Groups/INDFOR/Taliban/Vehicle/CRF_Group_Taliban_2manCrew_P.et" {
+               components {
+                AIFormationComponent "{507E9DC12F541FE6}" {
+                 DefaultFormation "Line"
+                }
+               }
+               coords 8.843 0 -0.288
+               m_sCustomNameSet "2nd Crew"
+               {
+                SCR_AIGroup VIP : "{9E156127CB9AD9A3}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Company_P.et" {
+                 coords -8.274 -0.003 -9.669
+                 m_aUnitPrefabSlots {
+                  "{5B59E72A01E85373}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_HVT_P.et"
+                 }
+                 m_sCustomNameSet "HVT"
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
