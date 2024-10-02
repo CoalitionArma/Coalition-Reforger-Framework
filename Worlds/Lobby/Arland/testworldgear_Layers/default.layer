@@ -3,82 +3,337 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
 }
 BaseGameTriggerEntity test {
  coords 2066.648 59.24 2126.36
- userScript "	ResourceName helmet = \"{BBFEA6F0D2F4564C}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_XP_MC_PELTOR.et\";"\
- "	ResourceName shirt = \"{7BA7FF3E9F68960E}Prefabs/Characters/Uniforms/Crye_Shirt/Jacket_Crye_Combat_Shirt_MC.et\";"\
- "	ResourceName aVest = \"{4A11957AAD447582}Prefabs/Characters/Vests/Vest_JPC/Vest_JPC_MC.et\";"\
- "	ResourceName bottoms = \"{2FDEBA2FF1B7759E}Prefabs/Characters/Uniforms/Crye_Pants/crye_pants_mc.et\";"\
- ""\
- "	ResourceName item;"\
+ userScript "	ResourceName item;"\
  "	ResourceName headgear = \"headgear\";"\
  "	ResourceName shirts = \"shirts\";"\
  "	ResourceName armoredvest = \"armoredvest\";"\
  "	ResourceName pants = \"pants\";"\
- "	ref array<ResourceName>> itemConfig = {helmet, headgear, shirt, shirts ,aVest, armoredvest, bottoms, pants};"
- TriggerShapeType Sphere
- PeriodicQueries 1
- OnQueryFinished ""\
+ "	ResourceName boots = \"boots\";"\
+ "	ResourceName backpack = \"backpack\";"\
+ "	ResourceName vest = \"vest\";"\
+ "	ResourceName handwear = \"handwear\";"\
+ "	ResourceName head = \"head\";"\
+ "	ResourceName eyes = \"eyes\";"\
+ "	ResourceName ears = \"ears\";"\
+ "	ResourceName face = \"face\";"\
+ "	ResourceName neck = \"neck\";"\
+ "	ResourceName extra1 = \"extra1\";"\
+ "	ResourceName extra2 = \"extra2\";"\
+ "	ResourceName waist = \"waist\";"\
+ "	ResourceName extra3 = \"extra3\";"\
+ "	ResourceName extra4 = \"extra4\";"\
+ "	ResourceName NULLName = \"NULL\";"\
+ "	ref array<ResourceName>> itemConfig = {};"\
+ "	"\
+ "	void WaitTillGameStart()"\
+ "	{"\
+ "		if(!GetGame().GetWorld())"\
+ "		{"\
+ "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000);"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		GetGame().GetCallqueue().CallLater(GearScriptInit, 1000);"\
+ "	}"\
+ "	"\
+ "	void GearScriptInit()"\
+ "	{"\
  "		IEntity player = GetGame().GetWorld().FindEntityByName(\"player\");"\
+ "		IEntity player2 = GetGame().GetWorld().FindEntityByName(\"player2\");"\
  "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(player.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		SCR_CharacterInventoryStorageComponent inventory2 = SCR_CharacterInventoryStorageComponent.Cast(player2.FindComponent(SCR_CharacterInventoryStorageComponent));"\
  "		InventoryStorageManagerComponent InventoryManager = InventoryStorageManagerComponent.Cast(player.FindComponent(InventoryStorageManagerComponent));"\
- "		Print(InventoryManager);"\
+ "		array<Managed> outComponents = {};"\
  "		vector gamemode = GetGame().GetWorld().FindEntityByName(\"CRF_GameMode_Lobby_1\").GetOrigin();	"\
  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
  "        spawnParams.TransformMode = ETransformMode.WORLD;"\
  "        spawnParams.Transform[3] = gamemode;"\
- "		"\
- "		Print(\"-----------------------------------------------------------\");"\
- "		//for(int i = 0; i < 18; i++)"\
- "		//{	"\
- "		//	item = inventory.Get(0).GetPrefabData().GetPrefabName();"\
- "		//	itemConfig.Insert(item);"\
- "//			itemConfig.Insert(headgear);"\
- "		//	item = inventory.Get(1).GetPrefabData().GetPrefabName();"\
- "		//	itemConfig.Insert(item);"\
- "		//	itemConfig.Insert(shirts);"\
- "		//	item = inventory.Get(2).GetPrefabData().GetPrefabName();"\
- "		//	itemConfig.Insert(item);"\
- "		//	itemConfig.Insert(armoredvest);"\
- "		//	item = inventory.Get(3).GetPrefabData().GetPrefabName();"\
- "		//	itemConfig.Insert(item);"\
- "		//	itemConfig.Insert(pants);"\
- "		//}"\
- "		Print(itemConfig);"\
- "		Print(\"-----------------------------------------------------------\");"\
+ "		player2.FindComponents(WeaponSlotComponent, outComponents);"\
+ "		//{CharacterGrenadeSlotComponent<0x000002BE92190490>,CharacterGrenadeSlotComponent<0x000002BE921905A8>,CharacterWeaponSlotComponent<0x000002BEA4AF7398>,CharacterWeaponSlotComponent<0x000002BEA4AF7510>,CharacterWeaponSlotComponent<0x000002BEA4AF7688>}"\
+ "		Print(outComponents);"\
+ "		array<Managed> outComponentsPlayer = {};"\
+ "		player.FindComponents(WeaponSlotComponent, outComponentsPlayer);"\
+ "		for(int i = 0; i < outComponents.Count(); i++)"\
+ "		{"\
+ "			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(outComponents.Get(i));"\
+ "			IEntity weapon = weaponSlotComponent.GetWeaponEntity();"\
+ "			if(!weapon)"\
+ "			{"\
+ "				Print(NULLName);"\
+ "				continue;"\
+ "			}"\
+ "			ResourceName weaponName = weapon.GetPrefabData().GetPrefabName();"\
+ "			array<AttachmentSlotComponent> attachmentSlots = {};"\
+ "			if(weaponSlotComponent.GetWeaponType() == 1)"\
+ "			{"\
+ "				weaponSlotComponent.GetAttachments(attachmentSlots);"\
+ "			}"\
+ "			array<IEntity> attatchments = {};"\
+ "			foreach (AttachmentSlotComponent attatchmentSlot : attachmentSlots)"\
+ "			{"\
+ "				attatchments.Insert(attatchmentSlot.GetAttachedEntity());"\
+ "			}"\
+ "			WeaponSlotComponent playerWeaponSlotComponent = WeaponSlotComponent.Cast(outComponentsPlayer.Get(i));"\
+ "			if(weaponSlotComponent.GetWeaponType() != 1)"\
+ "			{"\
+ "				IEntity weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(weaponName),GetGame().GetWorld(),spawnParams);"\
+ "				playerWeaponSlotComponent.SetWeapon(weaponSpawned);"\
+ "				continue;"\
+ "			}"\
+ "			IEntity weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{9B40415563B9F280}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_II_Black.et\"),GetGame().GetWorld(),spawnParams);"\
+ "			playerWeaponSlotComponent.SetWeapon(weaponSpawned);"\
+ "			array<AttachmentSlotComponent> playerAttachmentSlots = {};"\
+ "			playerWeaponSlotComponent.GetAttachments(playerAttachmentSlots);"\
+ "			for(int g = 0; g < playerAttachmentSlots.Count(); g++)"\
+ "			{"\
+ "				playerAttachmentSlots.Get(g).SetAttachment(attatchments.Get(g));"\
+ "			}"\
+ "		}"\
+ "		if(itemConfig.Count() >= 15)"\
+ "			return;"\
+ "		for(int i = 0; i < 18; i++)"\
+ "		{	"\
+ "			if(!inventory2.Get(i))"\
+ "				itemConfig.Insert(NULLName);"\
+ "			"\
+ "			if(inventory2.Get(i))"\
+ "			{"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemConfig.Insert(item);"\
+ "			}"\
+ "			"\
+ "			switch (i)"\
+ "			{"\
+ "				case 0:"\
+ "				itemConfig.Insert(headgear);"\
+ "				break;"\
+ "				case 1:"\
+ "				itemConfig.Insert(shirts);"\
+ "				break;"\
+ "				case 2:"\
+ "				itemConfig.Insert(armoredvest);"\
+ "				break;"\
+ "				case 3:"\
+ "				itemConfig.Insert(pants);"\
+ "				break;"\
+ "				case 4:"\
+ "				itemConfig.Insert(boots);"\
+ "				break;"\
+ "				case 5:"\
+ "				itemConfig.Insert(backpack);"\
+ "				break;"\
+ "				case 6:"\
+ "				itemConfig.Insert(vest);"\
+ "				break;"\
+ "				case 7:"\
+ "				itemConfig.Insert(handwear);"\
+ "				break;"\
+ "				case 8:"\
+ "				itemConfig.Insert(head);"\
+ "				break;"\
+ "				case 9:"\
+ "				itemConfig.Insert(eyes);"\
+ "				break;"\
+ "				case 10:"\
+ "				itemConfig.Insert(ears);"\
+ "				break;"\
+ "				case 11:"\
+ "				itemConfig.Insert(face);"\
+ "				break;"\
+ "				case 12:"\
+ "				itemConfig.Insert(neck);"\
+ "				break;"\
+ "				case 13:"\
+ "				itemConfig.Insert(extra1);"\
+ "				break;"\
+ "				case 14:"\
+ "				itemConfig.Insert(extra2);"\
+ "				break;"\
+ "				case 15:"\
+ "				itemConfig.Insert(waist);"\
+ "				break;"\
+ "				case 16:"\
+ "				itemConfig.Insert(extra3);"\
+ "				break;"\
+ "				case 17:"\
+ "				itemConfig.Insert(extra4);"\
+ "				break;"\
+ "			}"\
+ "		}"\
  "		for(int i = 0; i < itemConfig.Find(headgear); i++)"\
  "		{"\
- "			Print(itemConfig.Get(i));"\
- "			if(inventory.Get(0).GetPrefabData().GetPrefabName() == itemConfig.Get(i))"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(0))"\
  "				break;"\
  "			IEntity helmetSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
  "			InventoryManager.TryReplaceItem(helmetSpawned, inventory, 0);"\
  "		}"\
  "		for(int i = itemConfig.Find(headgear) + 1; i < itemConfig.Find(shirts); i++)"\
  "		{"\
- "			Print(itemConfig.Get(i));"\
- "			if(inventory.Get(1).GetPrefabData().GetPrefabName() == itemConfig.Get(i))"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(1))"\
  "				break;"\
  "			IEntity shirtSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
  "			InventoryManager.TryReplaceItem(shirtSpawned, inventory, 1);"\
  "		}"\
  "		for(int i = itemConfig.Find(shirts) + 1; i < itemConfig.Find(armoredvest); i++)"\
  "		{"\
- "			Print(itemConfig.Get(i));"\
- "			if(inventory.Get(2).GetPrefabData().GetPrefabName() == itemConfig.Get(i))"\
+ "			if(itemConfig.Get(i) == NULLName)"\
  "				break;"\
- "			IEntity avestSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
- "			InventoryManager.TryReplaceItem(avestSpawned, inventory, 2);"\
+ "			if(inventory.Get(2))"\
+ "				break;"\
+ "			IEntity armoredVestSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(armoredVestSpawned, inventory, 2);"\
  "		}"\
  "		for(int i = itemConfig.Find(armoredvest) + 1; i < itemConfig.Find(pants); i++)"\
  "		{"\
- "			if(inventory.Get(3).GetPrefabData().GetPrefabName() == itemConfig.Get(i))"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(3))"\
  "				break;"\
  "			IEntity pantsSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
  "			InventoryManager.TryReplaceItem(pantsSpawned, inventory, 3);"\
  "		}"\
+ "		for(int i = itemConfig.Find(pants) + 1; i < itemConfig.Find(boots); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(4))"\
+ "				break;"\
+ "			IEntity bootsSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(bootsSpawned, inventory, 4);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(boots) + 1; i < itemConfig.Find(backpack); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(5))"\
+ "				break;"\
+ "			IEntity backpackSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(backpackSpawned, inventory, 5);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(backpack) + 1; i < itemConfig.Find(vest); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(6))"\
+ "				break;"\
+ "			IEntity vestSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(vestSpawned, inventory, 6);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(vest) + 1; i < itemConfig.Find(handwear); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(7))"\
+ "				break;"\
+ "			IEntity handwearSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(handwearSpawned, inventory, 7);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(handwear) + 1; i < itemConfig.Find(head); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(8))"\
+ "				break;"\
+ "			IEntity headSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(headSpawned, inventory, 8);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(head) + 1; i < itemConfig.Find(eyes); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(9))"\
+ "				break;"\
+ "			IEntity eyesSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(eyesSpawned, inventory, 9);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(eyes) + 1; i < itemConfig.Find(ears); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(10))"\
+ "				break;"\
+ "			IEntity earsSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(earsSpawned, inventory, 10);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(ears) + 1; i < itemConfig.Find(face); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(11))"\
+ "				break;"\
+ "			IEntity faceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(faceSpawned, inventory, 11);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(face) + 1; i < itemConfig.Find(neck); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(12))"\
+ "				break;"\
+ "			IEntity neckSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(neckSpawned, inventory, 12);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(neck) + 1; i < itemConfig.Find(extra1); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(13))"\
+ "				break;"\
+ "			IEntity extra1Spawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(extra1Spawned, inventory, 13);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(extra1) + 1; i < itemConfig.Find(extra2); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(14))"\
+ "				break;"\
+ "			IEntity extra2Spawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(extra2Spawned, inventory, 14);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(extra2) + 1; i < itemConfig.Find(waist); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(15))"\
+ "				break;"\
+ "			IEntity waistSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(waistSpawned, inventory, 15);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(waist) + 1; i < itemConfig.Find(extra3); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(16))"\
+ "				break;"\
+ "			IEntity extra3Spawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(extra3Spawned, inventory, 16);"\
+ "		}"\
+ "		for(int i = itemConfig.Find(extra3) + 1; i < itemConfig.Find(extra4); i++)"\
+ "		{"\
+ "			if(itemConfig.Get(i) == NULLName)"\
+ "				break;"\
+ "			if(inventory.Get(17))"\
+ "				break;"\
+ "			IEntity extra4Spawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			InventoryManager.TryReplaceItem(extra4Spawned, inventory, 17);"\
+ "		}"\
  "		Print(\"-----------------------------------------------------------\");"\
  ""\
+ "	}"
+ EOnInit ""\
+ "		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000);"\
  "	"
+ TriggerShapeType Sphere
+ PeriodicQueries 1
 }
-SCR_ChimeraCharacter player : "{27582FB0F5A7D917}Prefabs/Characters/Factions/BLUFOR/US_Army/Standard/CRF_US80s_Leader_IndirectLead_P.et" {
- coords 2080.94 58.926 2119.16
+SCR_ChimeraCharacter player2 : "{6BACF93226AED9E2}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_COY_P.et" {
+ coords 2079.258 58.958 2118.592
+}
+SCR_ChimeraCharacter player : "{97DF23C9633DAA71}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et" {
+ coords 2080.895 58.91 2117.995
 }
