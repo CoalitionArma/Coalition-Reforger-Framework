@@ -24,6 +24,9 @@ SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USM
     }
    }
   }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{FB0222D4CA72A3D3}Prefabs/Weapons/Rifles/M4A1/Variants/Forecon/Rifle_M4A1_RAS_ERGO_Forecon3.et"
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
