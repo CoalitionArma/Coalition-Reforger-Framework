@@ -11,6 +11,80 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
  coords 436.465 9.063 1551.654
+ {
+  SCR_FactionManager "6284E39EC7471716" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC5BFF78F}" {
+        m_sCallsign "3rd Weapons Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC507EB82}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{6284E39CC4CC0FA1}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC46BE182}" {
+        m_sCallsign "5th Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC3AD73B2}" {
+        m_sCallsign "6th Weapons Squad"
+       }
+       SCR_CallsignInfo "{6284E39CBA72C2AD}" {
+        m_sCallsign "Helo Crew"
+       }
+      }
+     }
+    }
+    SCR_Faction "{623507721849E36C}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{61A2E10CD5A79B52}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{6284E39C782210FD}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{6284E39C745B25D1}" {
+        m_sCallsign "5th MMG Squad"
+       }
+       SCR_CallsignInfo "{6284E39C713206EB}" {
+        m_sCallsign "Crew 1"
+       }
+       SCR_CallsignInfo "{6284E39C68FC8EC6}" {
+        m_sCallsign "Crew 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
 }
 $grp BaseGameTriggerEntity {
  trig1 {
@@ -44,32 +118,24 @@ $grp BaseGameTriggerEntity {
   "		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())"\
   "			return;"\
   "		"\
-  "		if(vip)"\
-  "			Print(\"VIP exists\");"\
-  "		"\
   "		if(!vip)"\
   "		{"\
   "			SCR_GroupsManagerComponent GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();"\
   "			array<SCR_AIGroup> outAllGroups;"\
   "			GroupsManagerComponent.GetAllPlayableGroups(outAllGroups);"\
-  "			Print(\"Finding VIP\");"\
   "			foreach(SCR_AIGroup group : outAllGroups)"\
   "			{"\
-  "				if(group.GetCustomName() == \"VIP\")"\
+  "				if(group.GetCustomName() == \"HVT\")"\
   "				{"\
-  "					Print(\"Found VIP Group\");"\
   "					array<int> groupPlayersIDs = group.GetPlayerIDs();"\
-  "					Print(groupPlayersIDs.Get(0));"\
   "					vip = GetGame().GetPlayerManager().GetPlayerControlledEntity(groupPlayersIDs.Get(0));"\
-  "					Print(vip);"\
   "				}"\
   "			}"\
   "		}"\
   "		"\
   "		if(!SCR_AIDamageHandling.IsAlive(vip))"\
   "		{"\
-  "			Print(\"VIP is Dead\");"\
-  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"The VIP has been killed!\", 10);"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"The HVT has been killed!\", 10);"\
   "			IEntity trigger = GetGame().GetWorld().FindEntityByName(\"vipTrig\");"\
   "            delete trigger;"\
   "		}"\

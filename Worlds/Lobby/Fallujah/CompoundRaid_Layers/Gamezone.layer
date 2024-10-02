@@ -60,7 +60,7 @@ PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et
  coords 775.016 21.264 3558.854
  m_MarkerColor 0 0 0 1
  m_sQuadName "point-of-interest"
- m_sDescription "VIP Building"
+ m_sDescription "HVT Building"
  m_bUseWorldScale 0
  m_aVisibleForFactions {
  }
@@ -79,7 +79,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 739.005 9.1 3634.207
+  coords 740.55 12.632 3760.629
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -89,17 +89,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 850.2 8.156 3637.424
-  angleY 0
-  m_MarkerColor 0.004 0.225 0 1
-  m_aVisibleForFactions {
-   "Tali"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
- }
- {
-  coords 781.558 23.98 3398.636
+  coords 824.641 18.198 3771.21
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -109,7 +99,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 528.952 11.249 3542.313
+  coords 889.132 10.013 3715.192
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -119,7 +109,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 674.011 17.116 3667.84
+  coords 913.641 12.764 3637.364
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -129,7 +119,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 556.827 25.519 3694.414
+  coords 934.198 24.247 3548.248
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -139,7 +129,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 818.6 8.156 3652.899
+  coords 943.338 16.634 3458.875
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -149,7 +139,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 596.271 8.619 3394.769
+  coords 936.608 9.796 3428.346
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -159,7 +149,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 529.821 18.5 3467.731
+  coords 874.519 20.799 3375.703
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -169,7 +159,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 518.041 19.06 3629.794
+  coords 735.099 19.009 3313.414
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -179,7 +169,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 927.849 22.363 3522.204
+  coords 619.504 3.082 3332.623
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -189,7 +179,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 859.235 18.861 3405.885
+  coords 537.551 11.138 3392.075
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -199,7 +189,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 695.757 17.359 3380.559
+  coords 508.183 19.915 3499.001
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
@@ -209,27 +199,7 @@ $grp PS_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker
   m_bShowForAnyFaction 0
  }
  {
-  coords 881.505 8.225 3587.092
-  angleY 0
-  m_MarkerColor 0.001 0.218 0 1
-  m_aVisibleForFactions {
-   "Tali"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
- }
- {
-  coords 543.708 11.324 3416.429
-  angleY 0
-  m_MarkerColor 0.001 0.218 0 1
-  m_aVisibleForFactions {
-   "Tali"
-  }
-  m_bVisibleForEmptyFaction 0
-  m_bShowForAnyFaction 0
- }
- {
-  coords 935.912 12.159 3445.782
+  coords 488.591 19.52 3624.921
   angleY 0
   m_MarkerColor 0.001 0.218 0 1
   m_aVisibleForFactions {
