@@ -1,0 +1,114 @@
+$grp PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ {
+  coords 3458.366 420.163 934.769
+  m_sTextData "Objective Assault"\
+  "Players will assault objectives on the map which can be captured with having 70% control of the zone."\
+  ""\
+  "For example "\
+  "4 OPFOR to 10 BLUFOR - Zone is not captured."\
+  "3 OPFOR to 10 BLUFOR - Zone is captured."
+  m_iOrder 5
+ }
+ {
+  coords 3452.218 420.197 933.423
+  m_sTitle "Respawn System"
+  m_sTextData "Respawn System"\
+  ""\
+  "Respawn system is based on a set number of waves. When one of your squad members dies or if multiple die; You can now respawn them back in."\
+  ""\
+  "By pulling out your leaders radio into your hands and inspecting it by holding R you will find an action to \"Call for Reinforcements\" after holding it for 5 seconds you will consume 1 Respawn Wave."\
+  ""\
+  "After calling in respawns any player in your squad, connected to the server, will be pulled from spectator and put back into the map and added back to your squad at the spawn."
+  m_iOrder 6
+ }
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 3281.546 436.836 1166.656
+ m_sTitle "INDFOR Brief"
+ m_sTextData "The government thinks they can just threaten us by coming into our land and acting like they own it all. Brothers, our goal is to defend these supplies to the last man. Ensure these stay out of the government's hands—just one last thing for these pigs to take from us."\
+ "To bolster our defense, we have 3 reinforcement waves in reserve."\
+ "After Supply Cache 1 capture, we will be granted 1."\
+ "After Supply Cache 2 capture, we will be granted 2."
+ m_aVisibleForFactions {
+  "FIA"
+ }
+ m_iOrder 3
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 3281.875 438.82 1166.768
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 3287.648 437.407 1167.168
+ m_sTextData "BLUFOR"\
+ "Capture all 3 Supply Caches to achieve victory."\
+ ""\
+ "INDFOR"\
+ "Defend all 3 Supply Caches to achieve victory."
+ m_iOrder 4
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 3280.212 435.935 1169.425
+  m_sTitle "Capture Supply Cache 1"
+  m_sTextData "Capture Supply Cache 1"
+  m_iScore 25
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 3276.938 439.6 1166.551
+  m_sTitle "Capture Supply Cache 2"
+  m_sTextData "Capture Supply Cache 2"
+  m_iOrder 1
+  m_iScore 25
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 3279.516 435.886 1169.108
+  m_sTitle "Capture Supply Cache 3"
+  m_sTextData "Capture Supply Cache 3"
+  m_iOrder 2
+  m_iScore 25
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 3359.154 436.97 1145.102
+  m_sTitle "Defend Cache 1"
+  m_sTextData "Defend Cache 1"
+  m_iScore 25
+  m_sFactionKey "FIA"
+ }
+ {
+  coords 3308.479 433.014 1133.062
+  m_sTitle "Defend Cache 2"
+  m_sTextData "Defend Cache 2"
+  m_iScore 25
+  m_sFactionKey "FIA"
+ }
+ {
+  coords 3282.374 439.885 1181.117
+  m_sTitle "Defend Cache 3"
+  m_sTextData "Defend Cache 3"
+  m_iScore 25
+  m_sFactionKey "FIA"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 3285.227 438.288 1171.026
+ m_sTextData "The local militia in the area has begun an insurgency within the mountains, killing a squad of local national guard soldiers conducting an FTX in the region."\
+ ""\
+ "WE MUST CAPTURE CACHE 1 AND 2 BEFORE ASSAULTING THE 3RD CACHE."\
+ ""\
+ "Our goal is to disrupt their supplies in the region by capturing these supply caches; there is no need to destroy them as JAG wants to run these as a crime scene."\
+ ""\
+ "Our command has given us 2 reinforcement waves to use; use them wisely, as once they're out we have no more reinforcements coming."
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+ m_iOrder 2
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 3285.295 438.873 1168.082
+ m_sTextData "Elements of the North Carolina National Guard Special Forces have been tasked with quelling a local militia uprising in the area. Their goal is to capture precious ammo supplies in the region, supplying the militia with needed supplies to keep their insurgency in the mountains going."\
+ ""\
+ "Supply Caches 1 and 2 must be captured before Supply Cache 3 can be captured."
+}
