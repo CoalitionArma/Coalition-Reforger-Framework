@@ -9,6 +9,17 @@ class CRF_GearscriptConfig
 }
 
 [BaseContainerProps()]
+class CRF_weaponClass
+{
+	[Attribute(defvalue: "", category: "Gear")]
+	ResourceName weapon;
+	
+	[Attribute(defvalue: "", category: "Gear")]
+	array<ResourceName> attachments;
+	
+}
+
+[BaseContainerProps()]
 class CRF_gearGearscript
 {
 	[Attribute(defvalue: "", category: "Gear")]
@@ -70,25 +81,35 @@ class CRF_gearGearscript
 class CRF_weaponGearScript
 {
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_rifle;
+	ref CRF_weaponClass m_rifle;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_rifleUGL;
+	ref CRF_weaponClass m_rifleUGL;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_carbine;
+	ref CRF_weaponClass m_carbine;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_AR;
+	ref CRF_weaponClass m_AR;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_MMG;
+	ref CRF_weaponClass m_MMG;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
 	ref array<ResourceName> m_HMG;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
 	ref array<ResourceName> m_AT;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
 	ref array<ResourceName> m_MAT;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
 	ref array<ResourceName> m_HAT;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
 	ref array<ResourceName> m_AA;
+	
 	[Attribute(defvalue: "", category: "Weapons")]
 	ref array<ResourceName> m_pistol;
 }

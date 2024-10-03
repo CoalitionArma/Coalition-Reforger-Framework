@@ -80,14 +80,17 @@ BaseGameTriggerEntity test {
  "				playerWeaponSlotComponent.SetWeapon(weaponSpawned);"\
  "				continue;"\
  "			}"\
- "			IEntity weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{9B40415563B9F280}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_II_Black.et\"),GetGame().GetWorld(),spawnParams);"\
+ "			IEntity weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{00D6DCF68C664480}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_BLOCK_II.et\"),GetGame().GetWorld(),spawnParams);"\
  "			playerWeaponSlotComponent.SetWeapon(weaponSpawned);"\
  "			array<AttachmentSlotComponent> playerAttachmentSlots = {};"\
  "			playerWeaponSlotComponent.GetAttachments(playerAttachmentSlots);"\
  "			for(int g = 0; g < playerAttachmentSlots.Count(); g++)"\
  "			{"\
+ "				if(!playerAttachmentSlots.Get(g).CanSetAttachment(attatchments.Get(g)))"\
+ "					continue;"\
  "				playerAttachmentSlots.Get(g).SetAttachment(attatchments.Get(g));"\
  "			}"\
+ "			Print(attatchments);"\
  "		}"\
  "		if(itemConfig.Count() >= 15)"\
  "			return;"\
@@ -331,8 +334,8 @@ BaseGameTriggerEntity test {
  TriggerShapeType Sphere
  PeriodicQueries 1
 }
-SCR_ChimeraCharacter player2 : "{62CFE96F1F61403D}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Base_P.et" {
- coords 2078.504 58.972 2118.693
+SCR_ChimeraCharacter player2 : "{8F6B97DF78920AD9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_PL_P.et" {
+ coords 2077.911 58.961 2117.328
 }
 SCR_ChimeraCharacter player : "{97DF23C9633DAA71}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Unarmed.et" {
  components {
