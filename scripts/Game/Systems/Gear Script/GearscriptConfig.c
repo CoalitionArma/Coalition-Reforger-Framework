@@ -6,6 +6,7 @@ class CRF_GearscriptConfig
 	
 	[Attribute("")]
 	ref CRF_weaponGearScript m_weaponGearScript;
+	
 }
 
 [BaseContainerProps()]

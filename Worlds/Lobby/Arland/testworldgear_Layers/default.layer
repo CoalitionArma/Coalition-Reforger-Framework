@@ -1,8 +1,7 @@
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
   CRF_GearScriptGamemodeComponent "{628622D543CA1FC9}" {
-   m_bluforGearScript CRF_GearscriptConfig "{628622D55DF413BC}" {
-   }
+   bluforGearScript "{FFEE0B171431841D}Configs/Gearscripts/GearScriptTest.conf"
   }
  }
  coords 2055.982 61.647 2122.375
@@ -78,7 +77,6 @@ BaseGameTriggerEntity test {
  "        spawnParams.Transform[3] = gamemode;"\
  "		player2.FindComponents(WeaponSlotComponent, outComponents);"\
  "		//{CharacterGrenadeSlotComponent<0x000002BE92190490>,CharacterGrenadeSlotComponent<0x000002BE921905A8>,CharacterWeaponSlotComponent<0x000002BEA4AF7398>,CharacterWeaponSlotComponent<0x000002BEA4AF7510>,CharacterWeaponSlotComponent<0x000002BEA4AF7688>}"\
- "		Print(outComponents);"\
  "		array<Managed> outComponentsPlayer = {};"\
  "		player.FindComponents(WeaponSlotComponent, outComponentsPlayer);"\
  "		for(int i = 0; i < outComponents.Count(); i++)"\
@@ -87,7 +85,6 @@ BaseGameTriggerEntity test {
  "			IEntity weapon = weaponSlotComponent.GetWeaponEntity();"\
  "			if(!weapon)"\
  "			{"\
- "				Print(NULLName);"\
  "				continue;"\
  "			}"\
  "			ResourceName weaponName = weapon.GetPrefabData().GetPrefabName();"\
@@ -118,7 +115,6 @@ BaseGameTriggerEntity test {
  "					continue;"\
  "				playerAttachmentSlots.Get(g).SetAttachment(attatchments.Get(g));"\
  "			}"\
- "			Print(attatchments);"\
  "		}"\
  "		if(itemConfig.Count() >= 15)"\
  "			return;"\
@@ -353,24 +349,19 @@ BaseGameTriggerEntity test {
  "		string waistString = SCR_StringHelper.Join(\" \", waistArray,true);"\
  "		string extra3String = SCR_StringHelper.Join(\" \", extra3Array,true);"\
  "		string extra4String = SCR_StringHelper.Join(\" \", extra4Array,true);"\
- "		Print(eyesString);"\
  "		copyString1 = string.Format(\"CRF_GearscriptConfig {m_gearGearScript CRF_gearGearscript \\"{62855B9BE97DCE61}\\" {m_headgear {%1}m_shirts {%2}m_armoredVest {%3}m_pants {%4}m_boots {%5}m_backpack {%6}m_vest {%7}m_handwear {%8}m_head {%9}\", headgearString, shirtsString, armoredVestString, pantsString, bootsString, backpackString, vestString, handwearString, headString);"\
  "		copyString2 = string.Format(\"m_eyes {%1}m_ears {%2}m_face {%3}m_neck {%4}m_extra {%5}m_extra2 {%6}m_waist {%7}m_extra3 {%8}m_extra4 {%9}}}\", eyesString, earsString, faceString, neckString, extra1String, extra2String, waistString, extra3String, extra4String);"\
  "		finalCopy = string.Format(\"%1%2\", copyString1, copyString2);"\
- "		Print(finalCopy);"\
  "		System.ExportToClipboard(finalCopy);"\
  "		foreach (ResourceName headgears : headgearArray)"\
  "		{"\
- "			Print(headgears);"\
  "			headgears.Replace(\"\\"\", \"\");"\
- "			Print(headgears);"\
  "			if(headgears == \"\")"\
  "				break;"\
  "			if(inventory.Get(0))"\
  "				break;"\
  "			IEntity helmetSpawned = GetGame().SpawnEntityPrefab(Resource.Load(headgears),GetGame().GetWorld(),spawnParams);"\
- "			Print(headgears);"\
- "			InventoryManager.TryReplaceItem(helmetSpawned, inventory, 0);"\
+ "			//InventoryManager.TryReplaceItem(helmetSpawned, inventory, 0);"\
  "		}"\
  "		for(int i = itemConfig.Find(headgear) + 1; i < itemConfig.Find(shirts); i++)"\
  "		{"\
@@ -525,7 +516,6 @@ BaseGameTriggerEntity test {
  "			IEntity extra4Spawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
  "			InventoryManager.TryReplaceItem(extra4Spawned, inventory, 17);"\
  "		}"\
- "		Print(\"-----------------------------------------------------------\");"\
  ""\
  "	}"
  EOnInit ""\
