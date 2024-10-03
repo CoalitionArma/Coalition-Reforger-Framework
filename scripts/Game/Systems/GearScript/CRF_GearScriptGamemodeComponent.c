@@ -15,39 +15,57 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all indfor players", "conf class=CRF_GearScriptConfig")]
 	protected ResourceName m_rIndforGearScript;
 	
-	const int HEADGEAR    = 1;
-	const int SHIRT       = 2;
-	const int ARMOREDVEST = 3;
-	const int PANTS       = 4;
-	const int BOOTS       = 5;
-	const int BACKPACK    = 6;
-	const int VEST        = 7;
-	const int HANDWEAR    = 8;
-	const int HEAD        = 9;
-	const int EYES        = 10;
-	const int EARS        = 11;
-	const int FACE        = 12;	
-	const int NECK        = 13;
-	const int EXTRA       = 14;
-	const int EXTRA2      = 15;
-	const int WAIST       = 16;
-	const int EXTRA3      = 17;
-	const int EXTRA4      = 18;
+	const int HEADGEAR    = 0;
+	const int SHIRT       = 1;
+	const int ARMOREDVEST = 2;
+	const int PANTS       = 3;
+	const int BOOTS       = 4;
+	const int BACKPACK    = 5;
+	const int VEST        = 6;
+	const int HANDWEAR    = 7;
+	const int HEAD        = 8;
+	const int EYES        = 9;
+	const int EARS        = 10;
+	const int FACE        = 11;	
+	const int NECK        = 12;
+	const int EXTRA       = 13;
+	const int EXTRA2      = 14;
+	const int WAIST       = 15;
+	const int EXTRA3      = 16;
+	const int EXTRA4      = 17;
 	
 	protected SCR_CharacterInventoryStorageComponent m_Inventory;
 	protected InventoryStorageManagerComponent m_InventoryManager;
 	protected CRF_GearScriptConfig m_GearConfig;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	
+	void WaitTillGameStart(IEntity entity)
+	{
+		if(!GetGame().GetWorld())
+		{
+			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, false, entity);
+			return;
+		}
+		
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, 1000, false, entity);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	override void OnControllableSpawned(IEntity entity)
 	{
 		super.OnControllableSpawned(entity);
-		
-		if(!m_bGearScriptEnabled || !Replication.IsServer())
+		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, false, entity);
+	}
+	
+	void AddGearToEntity(IEntity entity)
+	{
+	
+	if(!m_bGearScriptEnabled || !Replication.IsServer())
 			return;
 		
 		ResourceName ResourceNameToScan = entity.GetPrefabData().GetPrefabName();
+		
+		Print(ResourceNameToScan);
 		
 		if(!ResourceNameToScan.Contains("CRF_GS_")) //I'd Prefer "CRF_" but that's require nuking all premade character prefabs.
 			return;
@@ -67,7 +85,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
         m_SpawnParams.TransformMode = ETransformMode.WORLD;
         m_SpawnParams.Transform[3] = entity.GetOrigin();
 		
-		m_GearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		Print(gearScriptResourceName);
+		Resource container = BaseContainerTools.LoadContainer(gearScriptResourceName);
+        CRF_GearScriptConfig GearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		//m_GearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
 		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
 		
@@ -82,27 +103,25 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			// All the arrays belong to us
 			switch(i)
 			{
-				case HEADGEAR     : {resourceArray = m_GearConfig.m_GearScript.m_headgear;    break;}
-				case SHIRT        : {resourceArray = m_GearConfig.m_GearScript.m_shirts;      break;}
-				case ARMOREDVEST  : {resourceArray = m_GearConfig.m_GearScript.m_armoredVest; break;}
-				case PANTS        : {resourceArray = m_GearConfig.m_GearScript.m_pants;       break;}
-				case BOOTS        : {resourceArray = m_GearConfig.m_GearScript.m_boots;       break;}
-				case BACKPACK     : {resourceArray = m_GearConfig.m_GearScript.m_backpack;    break;}
-				case VEST         : {resourceArray = m_GearConfig.m_GearScript.m_vest;        break;}
-				case HANDWEAR     : {resourceArray = m_GearConfig.m_GearScript.m_handwear;    break;}
-				case HEAD         : {resourceArray = m_GearConfig.m_GearScript.m_head;        break;}
-				case EYES         : {resourceArray = m_GearConfig.m_GearScript.m_eyes;        break;}
-				case EARS         : {resourceArray = m_GearConfig.m_GearScript.m_ears;        break;}
-				case FACE         : {resourceArray = m_GearConfig.m_GearScript.m_face;        break;}
-				case NECK         : {resourceArray = m_GearConfig.m_GearScript.m_neck;        break;}
-				case EXTRA        : {resourceArray = m_GearConfig.m_GearScript.m_extra;       break;}
-				case EXTRA2       : {resourceArray = m_GearConfig.m_GearScript.m_extra2;      break;}
-				case WAIST        : {resourceArray = m_GearConfig.m_GearScript.m_waist;       break;}
-				case EXTRA3       : {resourceArray = m_GearConfig.m_GearScript.m_extra3;      break;}
-				case EXTRA4       : {resourceArray = m_GearConfig.m_GearScript.m_extra4;      break;}
+				case HEADGEAR     : {resourceArray = GearConfig.m_GearScript.m_headgear;    break;}
+				case SHIRT        : {resourceArray = GearConfig.m_GearScript.m_shirts;      break;}
+				case ARMOREDVEST  : {resourceArray = GearConfig.m_GearScript.m_armoredVest; break;}
+				case PANTS        : {resourceArray = GearConfig.m_GearScript.m_pants;       break;}
+				case BOOTS        : {resourceArray = GearConfig.m_GearScript.m_boots;       break;}
+				case BACKPACK     : {resourceArray = GearConfig.m_GearScript.m_backpack;    break;}
+				case VEST         : {resourceArray = GearConfig.m_GearScript.m_vest;        break;}
+				case HANDWEAR     : {resourceArray = GearConfig.m_GearScript.m_handwear;    break;}
+				case HEAD         : {resourceArray = GearConfig.m_GearScript.m_head;        break;}
+				case EYES         : {resourceArray = GearConfig.m_GearScript.m_eyes;        break;}
+				case EARS         : {resourceArray = GearConfig.m_GearScript.m_ears;        break;}
+				case FACE         : {resourceArray = GearConfig.m_GearScript.m_face;        break;}
+				case NECK         : {resourceArray = GearConfig.m_GearScript.m_neck;        break;}
+				case EXTRA        : {resourceArray = GearConfig.m_GearScript.m_extra;       break;}
+				case EXTRA2       : {resourceArray = GearConfig.m_GearScript.m_extra2;      break;}
+				case WAIST        : {resourceArray = GearConfig.m_GearScript.m_waist;       break;}
+				case EXTRA3       : {resourceArray = GearConfig.m_GearScript.m_extra3;      break;}
+				case EXTRA4       : {resourceArray = GearConfig.m_GearScript.m_extra4;      break;}
 			};
-			
-			Print(resourceArray);
 			UpdateClothingSlot(resourceArray, i);
 		}
 		
