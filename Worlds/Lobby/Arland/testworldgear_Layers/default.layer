@@ -1,4 +1,10 @@
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_GearScriptGamemodeComponent "{628622D543CA1FC9}" {
+   m_bluforGearScript CRF_GearscriptConfig "{628622D55DF413BC}" {
+   }
+  }
+ }
  coords 2055.982 61.647 2122.375
 }
 BaseGameTriggerEntity test {
@@ -23,8 +29,29 @@ BaseGameTriggerEntity test {
  "	ResourceName extra3 = \"extra3\";"\
  "	ResourceName extra4 = \"extra4\";"\
  "	ResourceName NULLName = \"NULL\";"\
- "	ref array<ResourceName>> itemConfig = {};"\
- "	"\
+ "	ref array<string> headgearArray = {};"\
+ "	ref array<string> shirtsArray = {};"\
+ "	ref array<string> armoredVestArray = {};"\
+ "	ref array<string> pantsArray = {};"\
+ "	ref array<string> bootsArray = {};"\
+ "	ref array<string> backpackArray = {};"\
+ "	ref array<string> vestArray = {};"\
+ "	ref array<string> handwearArray = {};"\
+ "	ref array<string> headArray = {};"\
+ "	ref array<string> eyesArray = {};"\
+ "	ref array<string> earsArray = {};"\
+ "	ref array<string> faceArray = {};"\
+ "	ref array<string> neckArray = {};"\
+ "	ref array<string> extra1Array = {};"\
+ "	ref array<string> extra2Array = {};"\
+ "	ref array<string> waistArray = {};"\
+ "	ref array<string> extra3Array = {};"\
+ "	ref array<string> extra4Array = {};"\
+ "	ref array<string>> itemConfig = {};"\
+ "	string itemString;"\
+ "	string copyString1;"\
+ "	string copyString2;"\
+ "	string finalCopy;"\
  "	void WaitTillGameStart()"\
  "	{"\
  "		if(!GetGame().GetWorld())"\
@@ -38,6 +65,7 @@ BaseGameTriggerEntity test {
  "	"\
  "	void GearScriptInit()"\
  "	{"\
+ "		string test;"\
  "		IEntity player = GetGame().GetWorld().FindEntityByName(\"player\");"\
  "		IEntity player2 = GetGame().GetWorld().FindEntityByName(\"player2\");"\
  "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(player.FindComponent(SCR_CharacterInventoryStorageComponent));"\
@@ -108,68 +136,240 @@ BaseGameTriggerEntity test {
  "			switch (i)"\
  "			{"\
  "				case 0:"\
- "				itemConfig.Insert(headgear);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					headgearArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				headgearArray.Insert(itemString);"\
  "				break;"\
  "				case 1:"\
- "				itemConfig.Insert(shirts);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					shirtsArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				shirtsArray.Insert(itemString);"\
  "				break;"\
  "				case 2:"\
- "				itemConfig.Insert(armoredvest);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					armoredVestArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				armoredVestArray.Insert(itemString);"\
  "				break;"\
  "				case 3:"\
- "				itemConfig.Insert(pants);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					pantsArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				pantsArray.Insert(itemString);"\
  "				break;"\
  "				case 4:"\
- "				itemConfig.Insert(boots);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					bootsArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				bootsArray.Insert(itemString);"\
  "				break;"\
  "				case 5:"\
- "				itemConfig.Insert(backpack);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					backpackArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				backpackArray.Insert(itemString);"\
  "				break;"\
  "				case 6:"\
- "				itemConfig.Insert(vest);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					vestArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				vestArray.Insert(itemString);"\
  "				break;"\
  "				case 7:"\
- "				itemConfig.Insert(handwear);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					handwearArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				handwearArray.Insert(itemString);"\
  "				break;"\
  "				case 8:"\
- "				itemConfig.Insert(head);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					headArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				headArray.Insert(itemString);"\
  "				break;"\
  "				case 9:"\
- "				itemConfig.Insert(eyes);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					eyesArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				eyesArray.Insert(itemString);"\
  "				break;"\
  "				case 10:"\
- "				itemConfig.Insert(ears);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					earsArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				earsArray.Insert(itemString);"\
  "				break;"\
  "				case 11:"\
- "				itemConfig.Insert(face);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					faceArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				faceArray.Insert(itemString);"\
  "				break;"\
  "				case 12:"\
- "				itemConfig.Insert(neck);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					neckArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				neckArray.Insert(itemString);"\
  "				break;"\
  "				case 13:"\
- "				itemConfig.Insert(extra1);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					extra1Array.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				extra1Array.Insert(itemString);"\
  "				break;"\
  "				case 14:"\
- "				itemConfig.Insert(extra2);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					extra2Array.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				extra2Array.Insert(itemString);"\
  "				break;"\
  "				case 15:"\
- "				itemConfig.Insert(waist);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					waistArray.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				waistArray.Insert(itemString);"\
  "				break;"\
  "				case 16:"\
- "				itemConfig.Insert(extra3);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					extra3Array.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				extra3Array.Insert(itemString);"\
  "				break;"\
  "				case 17:"\
- "				itemConfig.Insert(extra4);"\
+ "				if(!inventory2.Get(i))"\
+ "				{"\
+ "					itemString = string.Format(\"\\"%1\\"\");"\
+ "					extra4Array.Insert(itemString);"\
+ "					break;"\
+ "				}"\
+ "				item = inventory2.Get(i).GetPrefabData().GetPrefabName();"\
+ "				itemString = string.Format(\"\\"%1\\"\", item);"\
+ "				extra4Array.Insert(itemString);"\
  "				break;"\
  "			}"\
  "		}"\
- "		for(int i = 0; i < itemConfig.Find(headgear); i++)"\
+ "		string headgearString = SCR_StringHelper.Join(\" \", headgearArray,true);"\
+ "		string shirtsString = SCR_StringHelper.Join(\" \", shirtsArray,true);"\
+ "		string armoredVestString = SCR_StringHelper.Join(\" \", armoredVestArray,true);"\
+ "		string pantsString = SCR_StringHelper.Join(\" \", pantsArray,true);"\
+ "		string bootsString = SCR_StringHelper.Join(\" \", bootsArray,true);"\
+ "		string backpackString = SCR_StringHelper.Join(\" \", backpackArray,true);"\
+ "		string vestString = SCR_StringHelper.Join(\" \", vestArray,true);"\
+ "		string handwearString = SCR_StringHelper.Join(\" \", handwearArray,true);"\
+ "		string headString = SCR_StringHelper.Join(\" \", headArray,true);"\
+ "		string eyesString = SCR_StringHelper.Join(\" \", eyesArray,true);"\
+ "		string earsString = SCR_StringHelper.Join(\" \", earsArray,true);"\
+ "		string faceString = SCR_StringHelper.Join(\" \", faceArray,true);"\
+ "		string neckString = SCR_StringHelper.Join(\" \", neckArray,true);"\
+ "		string extra1String = SCR_StringHelper.Join(\" \", extra1Array,true);"\
+ "		string extra2String = SCR_StringHelper.Join(\" \", extra2Array,true);"\
+ "		string waistString = SCR_StringHelper.Join(\" \", waistArray,true);"\
+ "		string extra3String = SCR_StringHelper.Join(\" \", extra3Array,true);"\
+ "		string extra4String = SCR_StringHelper.Join(\" \", extra4Array,true);"\
+ "		Print(eyesString);"\
+ "		copyString1 = string.Format(\"CRF_GearscriptConfig {m_gearGearScript CRF_gearGearscript \\"{62855B9BE97DCE61}\\" {m_headgear {%1}m_shirts {%2}m_armoredVest {%3}m_pants {%4}m_boots {%5}m_backpack {%6}m_vest {%7}m_handwear {%8}m_head {%9}\", headgearString, shirtsString, armoredVestString, pantsString, bootsString, backpackString, vestString, handwearString, headString);"\
+ "		copyString2 = string.Format(\"m_eyes {%1}m_ears {%2}m_face {%3}m_neck {%4}m_extra {%5}m_extra2 {%6}m_waist {%7}m_extra3 {%8}m_extra4 {%9}}}\", eyesString, earsString, faceString, neckString, extra1String, extra2String, waistString, extra3String, extra4String);"\
+ "		finalCopy = string.Format(\"%1%2\", copyString1, copyString2);"\
+ "		Print(finalCopy);"\
+ "		System.ExportToClipboard(finalCopy);"\
+ "		foreach (ResourceName headgears : headgearArray)"\
  "		{"\
- "			if(itemConfig.Get(i) == NULLName)"\
+ "			Print(headgears);"\
+ "			headgears.Replace(\"\\"\", \"\");"\
+ "			Print(headgears);"\
+ "			if(headgears == \"\")"\
  "				break;"\
  "			if(inventory.Get(0))"\
  "				break;"\
- "			IEntity helmetSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemConfig.Get(i)),GetGame().GetWorld(),spawnParams);"\
+ "			IEntity helmetSpawned = GetGame().SpawnEntityPrefab(Resource.Load(headgears),GetGame().GetWorld(),spawnParams);"\
+ "			Print(headgears);"\
  "			InventoryManager.TryReplaceItem(helmetSpawned, inventory, 0);"\
  "		}"\
  "		for(int i = itemConfig.Find(headgear) + 1; i < itemConfig.Find(shirts); i++)"\

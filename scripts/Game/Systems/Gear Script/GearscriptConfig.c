@@ -15,7 +15,7 @@ class CRF_weaponClass
 	ResourceName weapon;
 	
 	[Attribute(defvalue: "", category: "Gear")]
-	array<ResourceName> attachments;
+	ref array<ResourceName> attachments;
 	
 }
 
