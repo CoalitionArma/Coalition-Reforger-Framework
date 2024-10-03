@@ -1,11 +1,11 @@
 [BaseContainerProps(configRoot: true)]
-class CRF_GearscriptConfig
+class CRF_GearScriptConfig
 {
 	[Attribute("")]
-	ref CRF_gearGearscript m_gearGearScript;
+	ref CRF_GearScript m_GearScript;
 	
 	[Attribute("")]
-	ref CRF_weaponGearScript m_weaponGearScript;
+	ref CRF_WeaponGearScript m_WeaponGearScript;
 	
 }
 
@@ -21,7 +21,7 @@ class CRF_weaponClass
 }
 
 [BaseContainerProps()]
-class CRF_gearGearscript
+class CRF_GearScript
 {
 	[Attribute(defvalue: "", category: "Gear")]
 	ref array<ResourceName> m_headgear;
@@ -79,7 +79,7 @@ class CRF_gearGearscript
 	
 }
 [BaseContainerProps()]
-class CRF_weaponGearScript
+class CRF_WeaponGearScript
 {
 	[Attribute(defvalue: "", category: "Weapons")]
 	ref CRF_weaponClass m_rifle;

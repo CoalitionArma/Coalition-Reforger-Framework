@@ -1,6 +1,9 @@
 GenericEntity : "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et" {
  ID "508AB2013EEE1E00"
  components {
+  MeshObject "{5A30BAE7673C63D1}" {
+   Object "{E8E5E7FCEF0E01CB}Assets/Items/Equipment/Radios/Radio_R187P1/r187p1_OLD.xob"
+  }
   ActionsManagerComponent "{508AB5952B584B2E}" {
    additionalActions {
     SCR_RadioToggleUserAction "{61E5532BC93F4E26}" {

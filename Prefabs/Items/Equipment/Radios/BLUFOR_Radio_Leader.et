@@ -1,6 +1,9 @@
 GenericEntity : "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et" {
  ID "508AB2013EEE1E00"
  components {
+  MeshObject "{5A30BAE7673C63D1}" {
+   Object "{4BA3CDFE36D94905}Assets/Items/Equipment/Radios/Radio_ANPRC152A/ANPRC_152A_full.xob"
+  }
   ActionsManagerComponent "{508AB5952B584B2E}" {
    additionalActions {
     SCR_RadioToggleUserAction "{61E55328B9AD0AC6}" {
@@ -18,4 +21,8 @@ GenericEntity : "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_G
    }
   }
  }
+ coords 0 0 0
+ angleX -90
+ angleY -180
+ angleZ -180
 }
