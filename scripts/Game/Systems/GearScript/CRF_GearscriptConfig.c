@@ -97,20 +97,20 @@ class CRF_WeaponGearScript
 	ref CRF_weaponClass m_MMG;
 	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_HMG;
+	ref CRF_weaponClass m_HMG;
 	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_AT;
+	ref CRF_weaponClass m_AT;
 	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_MAT;
+	ref CRF_weaponClass m_MAT;
 	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_HAT;
+	ref CRF_weaponClass m_HAT;
 	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_AA;
+	ref CRF_weaponClass m_AA;
 	
 	[Attribute(defvalue: "", category: "Weapons")]
-	ref array<ResourceName> m_pistol;
+	ref CRF_weaponClass m_pistol;
 }
