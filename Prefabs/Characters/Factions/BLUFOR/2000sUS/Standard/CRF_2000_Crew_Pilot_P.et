@@ -4,6 +4,9 @@ SCR_ChimeraCharacter : "{D2FB1DE76F024DD9}Prefabs/Characters/Factions/BLUFOR/200
   PS_PlayableComponent "{5EFCC1946F475F15}" {
    m_name "Pilot"
   }
+  SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
+   EnableDamage 0
+  }
   CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
    WeaponTemplate ""
   }
