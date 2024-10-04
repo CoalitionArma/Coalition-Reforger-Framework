@@ -1,116 +1,236 @@
+//------------------------------------------------------------------------------------------------
+// MASTER
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------
 [BaseContainerProps(configRoot: true)]
 class CRF_GearScriptConfig
 {
-	[Attribute("")]
-	ref CRF_GearScript m_GearScript;
+	[Attribute()]
+	ref CRF_Default_Gear m_DefaultGear;
 	
-	[Attribute("")]
-	ref CRF_WeaponGearScript m_WeaponGearScript;
+	[Attribute()]
+	ref CRF_Weapons m_Weapons;
 	
+	[Attribute()]
+	ref array<ref CRF_Per_Role_Gear> m_RoleCustomGear;
 }
 
+//------------------------------------------------------------------------------------------------
+// WEAPONS
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
-class CRF_weaponClass
+class CRF_Weapon_Class
 {
-	[Attribute(defvalue: "", category: "Gear")]
-	ResourceName weapon;
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Weapon;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> attachments;
-	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ref array<ResourceName> m_Attachments;
 }
 
+//------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
-class CRF_GearScript
+class CRF_Weapons
 {
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_headgear;
-
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_shirts;
+	[Attribute()]
+	ref CRF_Weapon_Class m_Rifle;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_armoredVest;
+	[Attribute()]
+	ref CRF_Weapon_Class m_RifleUGL;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_pants;
+	[Attribute()]
+	ref CRF_Weapon_Class m_Carbine;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_boots;
+	[Attribute()]
+	ref CRF_Weapon_Class m_Pistol;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_backpack;
+	[Attribute()]
+	ref CRF_Weapon_Class m_AR;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_vest;
+	[Attribute()]
+	ref CRF_Weapon_Class m_MMG;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_handwear;
+	[Attribute()]
+	ref CRF_Weapon_Class m_HMG;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_head;
-
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_eyes;
+	[Attribute()]
+	ref CRF_Weapon_Class m_AT;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_ears;
+	[Attribute()]
+	ref CRF_Weapon_Class m_MAT;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_face;
+	[Attribute()]
+	ref CRF_Weapon_Class m_HAT;
 	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_neck;
-	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_extra;
-	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_extra2;
-	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_waist;
-	
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_extra3;
-		
-	[Attribute(defvalue: "", category: "Gear")]
-	ref array<ResourceName> m_extra4;
-	
+	[Attribute()]
+	ref CRF_Weapon_Class m_AA;
 }
+
+//------------------------------------------------------------------------------------------------
+// INVENTORY
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({ "m_sItemPrefab", "m_iItemCount" }, "%2 %1")]
+class CRF_Inventory_Item
+{
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_sItemPrefab;
+	
+	[Attribute()]
+	int m_iItemCount;
+}
+
+//------------------------------------------------------------------------------------------------
+// GEAR
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
-class CRF_WeaponGearScript
+class CRF_Default_Gear
 {
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_rifle;
+	[Attribute()]
+	ref array<ref CRF_Clothing> m_DefaultClothing;
 	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_rifleUGL;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_carbine;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_AR;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_MMG;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_HMG;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_AT;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_MAT;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_HAT;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_AA;
-	
-	[Attribute(defvalue: "", category: "Weapons")]
-	ref CRF_weaponClass m_pistol;
+	[Attribute()]
+	ref array<ref CRF_Inventory_Item> m_DefaultInventoryItems;
 }
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps()]
+class CRF_Per_Role_Gear
+{
+	[Attribute()]
+	ref array<ref CRF_Clothing> m_ClothingOverrides;
+	
+	[Attribute()]
+	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
+}
+
+//------------------------------------------------------------------------------------------------
+// CLOTHING
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sClothingType"}, "%1")]
+class CRF_Clothing
+{
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("HEADGEAR", "HEADGEAR"), ParamEnum("SHIRT", "SHIRT"), ParamEnum("ARMOREDVEST", "ARMOREDVEST"), ParamEnum("PANTS", "PANTS"), ParamEnum("BOOTS", "BOOTS"), ParamEnum("BACKPACK", "BACKPACK"), ParamEnum("VEST", "VEST"), ParamEnum("HANDWEAR", "HANDWEAR"), ParamEnum("HEAD", "HEAD"), ParamEnum("EYES", "EYES"), ParamEnum("EARS", "EARS"), ParamEnum("FACE", "FACE"), ParamEnum("NECK", "NECK"), ParamEnum("EXTRA1", "EXTRA1"), ParamEnum("EXTRA2", "EXTRA2"), ParamEnum("WAIST", "WAIST"), ParamEnum("EXTRA3", "EXTRA3"), ParamEnum("EXTRA4", "EXTRA4")})]
+	string m_sClothingType;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ref array<ResourceName> m_ClothingPrefabs;
+}
+
+//------------------------------------------------------------------------------------------------
+// Per Role Gear
+//------------------------------------------------------------------------------------------------
+
+// -- Leadership -- \\
+[BaseContainerProps(category: "Leadership")]
+class CRF_Company_Commander : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Leadership")]
+class CRF_Platoon_Commander : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Leadership")]
+class CRF_Squad_Lead : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Leadership")]
+class CRF_Indirect_Lead: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Leadership")]
+class CRF_Logi_Lead: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Leadership")]
+class CRF_Medical_Officer: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Leadership")]
+class CRF_Vehicle_Lead : CRF_Per_Role_Gear {}
+
+// -- Squad Level -- \\
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Team_Lead: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Rifleman : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Rifleman_Demo : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Rifleman_AntiTank : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Assistant_Rifleman_AntiTank : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Grenadier : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Automatic_Rifleman : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Assistant_Automatic_Rifleman : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Squad Level")]
+class CRF_Medic: CRF_Per_Role_Gear {}
+
+// -- Specialties -- \\
+[BaseContainerProps(category: "Specialties")]
+class CRF_Heavy_AntiTank : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Assistant_Heavy_AntiTank : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Medium_AntiTank : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Assistant_Medium_AntiTank : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Heavy_MachineGun : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Assistant_Heavy_MachineGun : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Pilot: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Sniper : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Spotter : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_Forward_Observer : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Specialties")]
+class CRF_JTAC : CRF_Per_Role_Gear {}
+
+// -- Crewmen/Misc -- \\
+[BaseContainerProps(category: "Crewmen/Misc")]
+class CRF_CrewChief : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Crewmen/Misc")]
+class CRF_Indirect_Gunner: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Crewmen/Misc")]
+class CRF_Indirect_Loader: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Crewmen/Misc")]
+class CRF_Logi_Runner: CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Crewmen/Misc")]
+class CRF_Vehicle_Driver : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Crewmen/Misc")]
+class CRF_Vehicle_Gunner : CRF_Per_Role_Gear {}
+
+[BaseContainerProps(category: "Crewmen/Misc")]
+class CRF_Vehicle_Loader : CRF_Per_Role_Gear {}
