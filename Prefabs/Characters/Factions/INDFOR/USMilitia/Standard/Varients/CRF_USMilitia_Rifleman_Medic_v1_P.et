@@ -1,0 +1,44 @@
+SCR_ChimeraCharacter : "{DE4CE8A5C5510AA2}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Medic_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_bEnabled 0
+     }
+    }
+   }
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate "{07115F3FCE86BDB7}Prefabs/Weapons/Rifles/SR3M/Rifle_SR3M_wd.et"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{B02281435AED8274}Prefabs/Characters/HeadGear/Hat_M70_01/Hat_M70_01.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{27162F1F6EE6581A}Prefabs/Characters/Uniforms/Jacket_Denim_01/Jacket_Denim_01_brownShirt.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{C749B2C1C2CF3863}Prefabs/Characters/Uniforms/Civi_Pants/Civi_Jeans_Blue_Ripped.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{557090130BCD36B7}" {
+     PrefabsToSpawn {
+      "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et" "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     }
+    }
+    ItemsInitConfigurationItem "{6064820F8177C8C0}" {
+     PrefabsToSpawn {
+      "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et"
+     }
+    }
+   }
+  }
+ }
+}

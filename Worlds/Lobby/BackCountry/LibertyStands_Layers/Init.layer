@@ -1,0 +1,87 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1538.594 502.994 1775.472
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
+   Enabled 1
+   m_canBluforRespawn 1
+   m_bluforFactionKey "RHS_USAF"
+   m_bluforRespawnWaves 3
+   m_canIndforRespawn 1
+   m_indforFactionKey "FIA"
+   m_indforRespawnWaves 0
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 90
+  }
+ }
+ coords 1636.858 506.164 1799.031
+ {
+  SCR_FactionManager "62831C5BEC47A32C" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{627CA534A28EB517}" {
+        m_sCallsign "5th Squad (W)"
+       }
+       SCR_CallsignInfo "{627CA534A2317CBE}" {
+        m_sCallsign "Snipers"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{627CA534B677351F}" {
+        m_sCallsign "3rd Squad (W)"
+       }
+       SCR_CallsignInfo "{627CA534C639F1A3}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{627CA534C57A38F5}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{627CA534C4C09C6C}" {
+        m_sCallsign "5th Squad"
+       }
+       SCR_CallsignInfo "{627CA534C38BD055}" {
+        m_sCallsign "6th Squad (W)"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

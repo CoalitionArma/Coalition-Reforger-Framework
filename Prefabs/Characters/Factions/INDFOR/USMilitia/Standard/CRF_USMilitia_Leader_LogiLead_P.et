@@ -1,0 +1,30 @@
+SCR_ChimeraCharacter : "{D57107893081D8F5}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Logi Leader"
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_VariantData SCR_EditableEntityVariantData "{627B490C501F88FA}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{627B490C51FAB529}" {
+      m_sVariantPrefab "{74FAA947C1FEA653}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/Varients/LeadersVarients/CRF_USMilitia_Leader_LogiLead_v1_P.et"
+     }
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173FAA7C00E}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+    }
+    ItemsInitConfigurationItem "{5D7CC173FAA7C00C}" {
+     TargetStorage "Prefabs/Characters/Uniforms/LongSleeve_Shirts/Hoodie_RHS_Shirt_multicam.et"
+    }
+    ItemsInitConfigurationItem "{6064820F8177C8C0}" {
+     TargetStorage "Prefabs/Items/Equipment/Backpacks/CRF_Backpack_Invisable.et"
+    }
+   }
+  }
+ }
+}

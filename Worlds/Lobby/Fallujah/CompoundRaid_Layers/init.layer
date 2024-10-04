@@ -1,0 +1,157 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 429.987 10.308 1539.706
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 60
+  }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 23
+  }
+ }
+ coords 436.465 9.063 1551.654
+ {
+  SCR_FactionManager "6284E39EC7471716" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC5BFF78F}" {
+        m_sCallsign "3rd Weapons Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC507EB82}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{6284E39CC4CC0FA1}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC46BE182}" {
+        m_sCallsign "5th Squad"
+       }
+       SCR_CallsignInfo "{6284E39CC3AD73B2}" {
+        m_sCallsign "6th Weapons Squad"
+       }
+       SCR_CallsignInfo "{6284E39CBA72C2AD}" {
+        m_sCallsign "Helo Crew"
+       }
+      }
+     }
+    }
+    SCR_Faction "{623507721849E36C}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{61A2E10CD5A79B52}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{6284E39C782210FD}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{6284E39C745B25D1}" {
+        m_sCallsign "5th MMG Squad"
+       }
+       SCR_CallsignInfo "{6284E39C713206EB}" {
+        m_sCallsign "Crew 1"
+       }
+       SCR_CallsignInfo "{6284E39C68FC8EC6}" {
+        m_sCallsign "Crew 2"
+       }
+       SCR_CallsignInfo "{628553F1D117A732}" {
+        m_sCallsign "HVT"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}
+$grp BaseGameTriggerEntity {
+ trig1 {
+  coords 414.143 11.264 1564.32
+  userScript "	string chinook = \"{6EE8BD07DE06EC44}Prefabs/Vehicles/Helicopters/H47/MH47G.et\";"\
+  "    vector chinook1spawn;"\
+  "    IEntity chinook1trig;"\
+  "            "\
+  "    void spawnthings()"\
+  "        {"\
+  "            chinook1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
+  "            chinook1spawn = chinook1trig.GetOrigin();"\
+  "                "\
+  "            EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "            spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "            spawnParams.Transform[3] = chinook1spawn;"\
+  "                "\
+  "            GetGame().SpawnEntityPrefab(Resource.Load(chinook),GetGame().GetWorld(),spawnParams);"\
+  "        }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ vipTrig {
+  coords 712.346 8.156 3529.206
+  userScript "	IEntity vip;"
+  TriggerShapeType Sphere
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())"\
+  "			return;"\
+  "		"\
+  "		if(!vip)"\
+  "		{"\
+  "			SCR_GroupsManagerComponent GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();"\
+  "			array<SCR_AIGroup> outAllGroups;"\
+  "			GroupsManagerComponent.GetAllPlayableGroups(outAllGroups);"\
+  "			foreach(SCR_AIGroup group : outAllGroups)"\
+  "			{"\
+  "				if(group.GetCustomName() == \"HVT\")"\
+  "				{"\
+  "					array<int> groupPlayersIDs = group.GetPlayerIDs();"\
+  "					vip = GetGame().GetPlayerManager().GetPlayerControlledEntity(groupPlayersIDs.Get(0));"\
+  "				}"\
+  "			}"\
+  "		}"\
+  "		"\
+  "		if(!SCR_AIDamageHandling.IsAlive(vip))"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"The HVT has been killed!\", 10);"\
+  "			IEntity trigger = GetGame().GetWorld().FindEntityByName(\"vipTrig\");"\
+  "            delete trigger;"\
+  "		}"\
+  "	"
+ }
+}
+$grp Vehicle : "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et" {
+ UAZ469_PKM1 {
+  coords 729.6 8.156 3553.694
+  angleY -45
+ }
+ UAZ469_PKM2 {
+  coords 733.648 8.156 3554.81
+  angleY -45
+ }
+}

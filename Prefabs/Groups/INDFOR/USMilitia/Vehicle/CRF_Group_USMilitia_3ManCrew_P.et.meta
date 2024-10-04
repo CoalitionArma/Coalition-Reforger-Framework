@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{0F8E437F7D798FF5}Prefabs/Groups/INDFOR/USMilitia/Vehicle/CRF_Group_USMilitia_3ManCrew_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

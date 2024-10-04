@@ -1,0 +1,112 @@
+SCR_AIGroup : "{330A6F2079000399}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Company.et" {
+ coords 449.546 9.062 1565.895
+ m_sCustomNameSet "COY"
+ {
+  SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "File"
+    }
+   }
+   coords -3.533 0 -9.144
+   m_sCustomNameSet "1 PLT"
+   {
+    SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "File"
+      }
+     }
+     coords 0.765 0 -2.577
+     m_sCustomNameSet "1-1"
+     {
+      SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "File"
+        }
+       }
+       coords 0.437 0 -1.888
+       m_sCustomNameSet "1-2"
+       {
+        SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "File"
+          }
+         }
+         coords 0.504 0 -2.138
+         m_aUnitPrefabSlots {
+          "{85CEC792CE82F95E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Base_SL_P.et" "{8EF328BE3B522B09}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Medic_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{DAA06784F618C4D4}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MMG_P.et" "{DD3F4878901D58A9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMMG_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et" "{54052CEC1DA293F8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Demo_P.et"
+         }
+         m_sCustomNameSet "1-3 W"
+         {
+          SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "File"
+            }
+           }
+           coords 10.092 0 9.433
+           m_sCustomNameSet "2 PLT"
+           {
+            SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "File"
+              }
+             }
+             coords 0.765 0 -2.577
+             m_sCustomNameSet "2-1"
+             {
+              SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+               components {
+                AIFormationComponent "{507E9DC12F541FE6}" {
+                 DefaultFormation "File"
+                }
+               }
+               coords 0.437 0 -1.888
+               m_sCustomNameSet "2-2"
+               {
+                SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+                 components {
+                  AIFormationComponent "{507E9DC12F541FE6}" {
+                   DefaultFormation "File"
+                  }
+                 }
+                 coords 0.504 0 -2.138
+                 m_aUnitPrefabSlots {
+                  "{85CEC792CE82F95E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Base_SL_P.et" "{8EF328BE3B522B09}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Medic_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{DAA06784F618C4D4}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MMG_P.et" "{DD3F4878901D58A9}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMMG_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et" "{54052CEC1DA293F8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Demo_P.et"
+                 }
+                 m_sCustomNameSet "2-3 W"
+                 {
+                  SCR_AIGroup : "{4300F505AF43C0B1}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Vehicles/CRF_USARMY_THCrew.et" {
+                   coords -18.004 0 14.951
+                   m_aUnitPrefabSlots {
+                    "{A4845C9A5A24BF72}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Crew_Pilot_P.et"
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 421.547 9.063 1544.169
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+}

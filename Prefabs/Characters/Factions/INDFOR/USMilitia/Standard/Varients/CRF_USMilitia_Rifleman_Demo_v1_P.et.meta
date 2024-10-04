@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E7372D3ED7BD3379}Prefabs/Characters/Factions/INDFOR/USMilitia/Standard/CRF_USMilitia_Rifleman_Demo_v1_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
