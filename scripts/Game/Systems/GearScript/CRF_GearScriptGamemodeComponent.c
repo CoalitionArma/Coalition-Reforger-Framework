@@ -52,7 +52,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, 2000, false, entity);
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, 1000, false, entity);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -300,14 +300,13 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void AddWeapons(array<Managed> WeaponSlotComponentArray, CRF_GearScriptConfig GearConfig, string WeaponType, string ATType, bool GivePistol)
 	{
-		Print(WeaponSlotComponentArray.Count());
-		Print(WeaponType);
-		Print(ATType);
 		for(int i = 0; i < WeaponSlotComponentArray.Count(); i++)
 		{
 			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(WeaponSlotComponentArray.Get(i));
 			IEntity weapon = weaponSlotComponent.GetWeaponEntity();		
 			IEntity weaponSpawned;
+			array<ResourceName> WeaponsAttachments = {};
+			array<AttachmentSlotComponent> AttatchmentSlotArray = {};
 			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
 			{
 				if(WeaponSlotComponent.Cast(WeaponSlotComponentArray.Get((WeaponSlotComponentArray.Find(weaponSlotComponent) - 1))).GetWeaponSlotType() == "primary")
@@ -326,15 +325,33 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				}
 				switch(WeaponType)
 				{
-					case "Rifle"     : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_Rifle.m_Weapon),GetGame().GetWorld(),m_SpawnParams);     break;}
-					case "RifleUGL"  : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_RifleUGL.m_Weapon),GetGame().GetWorld(),m_SpawnParams);  break;}
-					case "Carbine"   : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_Carbine.m_Weapon),GetGame().GetWorld(),m_SpawnParams);   break;}
-					case "AR"        : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_AR.m_Weapon),GetGame().GetWorld(),m_SpawnParams);        break;}
-					case "MMG"       : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_MMG.m_Weapon),GetGame().GetWorld(),m_SpawnParams);       break;}
-					case "HMG"       : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_HMG.m_Weapon),GetGame().GetWorld(),m_SpawnParams);       break;}
+					case "Rifle"     : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_Rifle.m_Weapon),GetGame().GetWorld(),m_SpawnParams); WeaponsAttachments = GearConfig.m_Weapons.m_Rifle.m_Attachments;       break;}
+					case "RifleUGL"  : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_RifleUGL.m_Weapon),GetGame().GetWorld(),m_SpawnParams); WeaponsAttachments = GearConfig.m_Weapons.m_RifleUGL.m_Attachments; break;}
+					case "Carbine"   : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_Carbine.m_Weapon),GetGame().GetWorld(),m_SpawnParams); WeaponsAttachments = GearConfig.m_Weapons.m_Carbine.m_Attachments;   break;}
+					case "AR"        : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_AR.m_Weapon),GetGame().GetWorld(),m_SpawnParams); WeaponsAttachments = GearConfig.m_Weapons.m_AR.m_Attachments;             break;}
+					case "MMG"       : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_MMG.m_Weapon),GetGame().GetWorld(),m_SpawnParams); WeaponsAttachments = GearConfig.m_Weapons.m_MMG.m_Attachments;           break;}
+					case "HMG"       : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_HMG.m_Weapon),GetGame().GetWorld(),m_SpawnParams); WeaponsAttachments = GearConfig.m_Weapons.m_HMG.m_Attachments;           break;}
 				}
 				weaponSlotComponent.SetWeapon(weaponSpawned);
-				continue;
+				weaponSlotComponent.GetAttachments(AttatchmentSlotArray);
+				if(WeaponsAttachments.Count() == 0)
+						continue;
+				Print("There are attachments");
+				foreach(ResourceName Attachment : WeaponsAttachments)
+				{
+					foreach(AttachmentSlotComponent AttachmentSlot : AttatchmentSlotArray)
+					{
+						IEntity AttachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(Attachment),GetGame().GetWorld(),m_SpawnParams);
+						if(AttachmentSlot.CanSetAttachment(AttachmentSpawned))
+						{
+							Print("Setting Attachment");
+							delete AttachmentSlot.GetAttachedEntity();
+							AttachmentSlot.SetAttachment(AttachmentSpawned);
+							break;
+						}
+						delete AttachmentSpawned;
+					} 
+				}
 			}
 			if(weaponSlotComponent.GetWeaponSlotType() == "secondary" && GivePistol == true)
 			{
