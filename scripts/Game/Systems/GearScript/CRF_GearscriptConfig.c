@@ -29,6 +29,9 @@ class CRF_Weapon_Class
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_Attachments;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Magazine;
 }
 
 //------------------------------------------------------------------------------------------------

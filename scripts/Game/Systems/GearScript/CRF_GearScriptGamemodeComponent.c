@@ -41,6 +41,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	protected InventoryStorageManagerComponent m_InventoryManager;
 	protected CRF_GearScriptConfig m_GearConfig;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
+	protected ref array<Managed> m_WeaponSlotComponentArray = {};
+
 	
 	void WaitTillGameStart(IEntity entity)
 	{
@@ -50,7 +52,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, 1000, false, entity);
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, 2000, false, entity);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -68,7 +70,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		
 		ResourceName ResourceNameToScan = entity.GetPrefabData().GetPrefabName();
 		
-		Print(ResourceNameToScan);
 		
 		if(!ResourceNameToScan.Contains("CRF_GS_")) //I'd Prefer "CRF_" but that's require nuking all premade character prefabs.
 			return;
@@ -89,10 +90,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
         m_SpawnParams.TransformMode = ETransformMode.WORLD;
         m_SpawnParams.Transform[3] = entity.GetOrigin();
 		
-		Print(gearScriptResourceName);
 		Resource container = BaseContainerTools.LoadContainer(gearScriptResourceName);
         CRF_GearScriptConfig GearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
 		//m_GearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
 		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
 		
@@ -124,130 +125,126 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			case(ResourceNameToScan.Contains("COY")) : 
 			{
 				//COY Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
 				break;
 			}
 			case(ResourceNameToScan.Contains("PLT")) : 
 			{
 				//PLT Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
 				break;
 			}
 			case(ResourceNameToScan.Contains("SL")) : 
 			{
 				//SL Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
 				break;
 			}
 			case(ResourceNameToScan.Contains("TL")) : 
 			{
 				//TL Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
 				break;
 			}
-			case(ResourceNameToScan.Contains("MED")) : 
+			case(ResourceNameToScan.Contains("Medic")) : 
 			{
 				//MED Items go here, preferebly by reading a array/set of arrays on the config.
 				
-				/*
-				UpdateClothingSlot(m_GearConfig.m_DefaultGear.m_DefaultClothing.m_MedicBackpack, BACKPACK); //update the backpack of the medic to whatever is defined in the gearscript
-				AddInventoryItems(m_GearConfig.m_DefaultGear.m_DefaultClothing.m_MedicInventory);			 //add the role specific inventory items (blood, medkit, etc)
-				AddWeapon(m_GearConfig.m_DefaultGear.m_DefaultClothing.m_CarbineWeapon)					 //add the carbine weapon and we'll want to also add the mags with this function
 				
-				We're done!
-				*/
+				//UpdateClothingSlot(m_GearConfig.m_DefaultGear.m_DefaultClothing.m_MedicBackpack, BACKPACK); //update the backpack of the medic to whatever is defined in the gearscript
+				//AddInventoryItems(m_GearConfig.m_DefaultGear.m_DefaultClothing.m_MedicInventory);			 //add the role specific inventory items (blood, medkit, etc)
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);;					 //add the carbine weapon and we'll want to also add the mags with this function
 				
 				break;
 			}
 			case(ResourceNameToScan.Contains("AR")) : 
 			{
 				//AR Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "AR", "", true);
 				break;
 			}
 			case(ResourceNameToScan.Contains("AAR")) : 
 			{
 				//AAR Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
 				break;
 			}
-			case(ResourceNameToScan.Contains("RAT")) : 
+			case(ResourceNameToScan.Contains("AT")) : 
 			{
 				//RAT Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "AT", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("GREN")) : 
 			{
 				//GREN Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("DEMO")) : 
 			{
 				//DEMO Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("MMG")) : 
 			{
 				//MMG Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "MMG", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("AMMG")) : 
 			{
 				//AMMG Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("MAT")) : 
 			{
 				//MAT Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "MAT", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("AMAT")) : 
 			{
 				//AMAT Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("HAT")) : 
 			{
 				//HAT Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "HAT", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("AHAT")) : 
 			{
 				//AHAT Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("HMG")) : 
 			{
 				//HMG Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "HMG", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("AHMG")) : 
 			{
 				//AHMG Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
 				break;
 			}
 			case(ResourceNameToScan.Contains("CREW")) : 
 			{
 				//CREW Items go here, preferebly by reading a array/set of arrays on the config.
-	
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
 				break;
 			}
 			default : 
 			{
 				//Rifleman Items go here, preferebly by reading a array/set of arrays on the config.
-			
-				
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
 			}
 		}
 	}
@@ -301,8 +298,49 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		}
 	}
 	
-	protected void AddWeapon(CRF_Weapon_Class weapon)
+	protected void AddWeapons(array<Managed> WeaponSlotComponentArray, CRF_GearScriptConfig GearConfig, string WeaponType, string ATType, bool GivePistol)
 	{
-		//idk, do whatever you need to do.
+		Print(WeaponSlotComponentArray.Count());
+		Print(WeaponType);
+		Print(ATType);
+		for(int i = 0; i < WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(WeaponSlotComponentArray.Get(i));
+			IEntity weapon = weaponSlotComponent.GetWeaponEntity();		
+			IEntity weaponSpawned;
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(WeaponSlotComponent.Cast(WeaponSlotComponentArray.Get((WeaponSlotComponentArray.Find(weaponSlotComponent) - 1))).GetWeaponSlotType() == "primary")
+				{
+					if(ATType != "")
+					{
+						switch(ATType)
+						{
+							case "AT"   : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_AT.m_Weapon),GetGame().GetWorld(),m_SpawnParams);   break;}
+							case "MAT"  : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_MAT.m_Weapon),GetGame().GetWorld(),m_SpawnParams);  break;}
+							case "HAT"  : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_HAT.m_Weapon),GetGame().GetWorld(),m_SpawnParams);  break;}
+						}
+						weaponSlotComponent.SetWeapon(weaponSpawned);
+					}
+					continue;
+				}
+				switch(WeaponType)
+				{
+					case "Rifle"     : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_Rifle.m_Weapon),GetGame().GetWorld(),m_SpawnParams);     break;}
+					case "RifleUGL"  : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_RifleUGL.m_Weapon),GetGame().GetWorld(),m_SpawnParams);  break;}
+					case "Carbine"   : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_Carbine.m_Weapon),GetGame().GetWorld(),m_SpawnParams);   break;}
+					case "AR"        : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_AR.m_Weapon),GetGame().GetWorld(),m_SpawnParams);        break;}
+					case "MMG"       : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_MMG.m_Weapon),GetGame().GetWorld(),m_SpawnParams);       break;}
+					case "HMG"       : {weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_HMG.m_Weapon),GetGame().GetWorld(),m_SpawnParams);       break;}
+				}
+				weaponSlotComponent.SetWeapon(weaponSpawned);
+				continue;
+			}
+			if(weaponSlotComponent.GetWeaponSlotType() == "secondary" && GivePistol == true)
+			{
+				weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(GearConfig.m_Weapons.m_Pistol.m_Weapon),GetGame().GetWorld(),m_SpawnParams);
+				weaponSlotComponent.SetWeapon(weaponSpawned);
+			}
+		}
 	}
 }

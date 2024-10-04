@@ -84,6 +84,9 @@ BaseGameTriggerEntity test {
  "		player2.FindComponents(WeaponSlotComponent, outComponents);"\
  "		//{CharacterGrenadeSlotComponent<0x000002BE92190490>,CharacterGrenadeSlotComponent<0x000002BE921905A8>,CharacterWeaponSlotComponent<0x000002BEA4AF7398>,CharacterWeaponSlotComponent<0x000002BEA4AF7510>,CharacterWeaponSlotComponent<0x000002BEA4AF7688>}"\
  "		array<Managed> outComponentsPlayer = {};"\
+ "		ResourceName weaponName;"\
+ "		ResourceName magazineName;"\
+ "		array<string> attatchments;"\
  "		player.FindComponents(WeaponSlotComponent, outComponentsPlayer);"\
  "		for(int i = 0; i < outComponents.Count(); i++)"\
  "		{"\
@@ -93,16 +96,19 @@ BaseGameTriggerEntity test {
  "			{"\
  "				continue;"\
  "			}"\
- "			ResourceName weaponName = weapon.GetPrefabData().GetPrefabName();"\
+ "			weaponName = weapon.GetPrefabData().GetPrefabName();"\
+ "			magazineName = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();"\
  "			array<AttachmentSlotComponent> attachmentSlots = {};"\
  "			if(weaponSlotComponent.GetWeaponType() == 1)"\
  "			{"\
  "				weaponSlotComponent.GetAttachments(attachmentSlots);"\
  "			}"\
- "			array<IEntity> attatchments = {};"\
+ "			attatchments = {};"\
  "			foreach (AttachmentSlotComponent attatchmentSlot : attachmentSlots)"\
  "			{"\
- "				attatchments.Insert(attatchmentSlot.GetAttachedEntity());"\
+ "				string nothing = \"\";"\
+ "				"\
+ "				attatchments.Insert(string.Format(\"\\"%1\\"\", attatchmentSlot.GetAttachedEntity().GetPrefabData().GetPrefabName()));"\
  "			}"\
  "			WeaponSlotComponent playerWeaponSlotComponent = WeaponSlotComponent.Cast(outComponentsPlayer.Get(i));"\
  "			if(weaponSlotComponent.GetWeaponType() != 1)"\
@@ -115,12 +121,6 @@ BaseGameTriggerEntity test {
  "			playerWeaponSlotComponent.SetWeapon(weaponSpawned);"\
  "			array<AttachmentSlotComponent> playerAttachmentSlots = {};"\
  "			playerWeaponSlotComponent.GetAttachments(playerAttachmentSlots);"\
- "			for(int g = 0; g < playerAttachmentSlots.Count(); g++)"\
- "			{"\
- "				if(!playerAttachmentSlots.Get(g).CanSetAttachment(attatchments.Get(g)))"\
- "					continue;"\
- "				playerAttachmentSlots.Get(g).SetAttachment(attatchments.Get(g));"\
- "			}"\
  "		}"\
  "		if(itemConfig.Count() >= 15)"\
  "			return;"\
@@ -337,6 +337,7 @@ BaseGameTriggerEntity test {
  "				break;"\
  "			}"\
  "		}"\
+ "		Print(headgearArray);"\
  "		string headgearString = SCR_StringHelper.Join(\" \", headgearArray,true);"\
  "		string shirtsString = SCR_StringHelper.Join(\" \", shirtsArray,true);"\
  "		string armoredVestString = SCR_StringHelper.Join(\" \", armoredVestArray,true);"\
@@ -358,7 +359,51 @@ BaseGameTriggerEntity test {
  "		copyString1 = string.Format(\"CRF_GearscriptConfig {m_gearGearScript CRF_gearGearscript \\"{62855B9BE97DCE61}\\" {m_headgear {%1}m_shirts {%2}m_armoredVest {%3}m_pants {%4}m_boots {%5}m_backpack {%6}m_vest {%7}m_handwear {%8}m_head {%9}\", headgearString, shirtsString, armoredVestString, pantsString, bootsString, backpackString, vestString, handwearString, headString);"\
  "		copyString2 = string.Format(\"m_eyes {%1}m_ears {%2}m_face {%3}m_neck {%4}m_extra {%5}m_extra2 {%6}m_waist {%7}m_extra3 {%8}m_extra4 {%9}}}\", eyesString, earsString, faceString, neckString, extra1String, extra2String, waistString, extra3String, extra4String);"\
  "		finalCopy = string.Format(\"%1%2\", copyString1, copyString2);"\
- "		System.ExportToClipboard(finalCopy);"\
+ "		"\
+ "		string rifleString = weaponName;"\
+ "		string rifleAttachments = SCR_StringHelper.Join(\" \", attatchments,true);"\
+ "		string rifleMagazine = magazineName;"\
+ "		string rifleUGLString = \"\";"\
+ "		string rifleUGLAttachments = \"\";"\
+ "		string rifleUGLMagazine = \"\";"\
+ "		string carbineString = \"\";"\
+ "		string carbineAttachments = \"\";"\
+ "		string carbineMagazine = \"\";"\
+ "		string ARString = \"\";"\
+ "		string ARAttachments = \"\";"\
+ "		string ARMagazine = \"\";"\
+ "		string MMGString = \"\";"\
+ "		string MMGAttachments = \"\";"\
+ "		string MMGMagazine = \"\";"\
+ "		string HMGString = \"\";"\
+ "		string HMGAttachments = \"\";"\
+ "		string HMGMagazine = \"\";"\
+ "		string ATString = \"\";"\
+ "		string ATAttachments = \"\";"\
+ "		string ATMagazine = \"\";"\
+ "		string MATString = \"\";"\
+ "		string MATAttachments = \"\";"\
+ "		string MATMagazine = \"\";"\
+ "		string HATString = \"\";"\
+ "		string HATAttachments = \"\";"\
+ "		string HATMagazine = \"\";"\
+ "		string AAString = \"\";"\
+ "		string AAAttachments = \"\";"\
+ "		string AAMagazine = \"\";"\
+ "		string pistolString = \"\";"\
+ "		string pistolAttachments = \"\";"\
+ "		string pistolMagazine = \"\";"\
+ "		"\
+ "		string weaponString1 = string.Format(\"m_WeaponGearScript CRF_WeaponGearScript \\"{628767438CF699B8}\\" {m_rifle CRF_weaponClass \\"{628767439A003C3E}\\" { weapon \\"%1\\" attachments {  %2 } magazine \\"%3\\"}\", rifleString, rifleAttachments, rifleMagazine);"\
+ "		string weaponString2 = string.Format(\"m_AR CRF_weaponClass \\"{6287674205C6B6CB}\\" { weapon \\"%1\\" attachments {  %2 } magazine \\"%3\\"}m_MMG CRF_weaponClass \\"{62876742072E2DB7}\\" { weapon \\"%4\\" attachments {  %5 } magazine \\"%6\\"}m_HMG CRF_weaponClass \\"{6287674206625682}\\" { weapon \\"%7\\" attachments {  %8 } magazine \\"%9\\"}\", ARString, ARAttachments, ARMagazine, MMGString, MMGAttachments, MMGMagazine, HMGString, HMGAttachments, HMGMagazine);"\
+ "		string weaponString3 = string.Format(\"m_AT CRF_weaponClass \\"{628767420189369C}\\" { weapon \\"%1\\" attachments {  %2 } magazine \\"%3\\"}m_MAT CRF_weaponClass \\"{6287674203FC831B}\\" { weapon \\"%4\\" attachments {  %5 } magazine \\"%6\\"}m_HAT CRF_weaponClass \\"{628767421D2EA55C}\\" { weapon \\"%7\\" attachments {  %8 } magazine \\"%9\\"}\", ATString, ATAttachments, ATMagazine, MATString, MATAttachments, MATMagazine, HATString, HATAttachments, HATMagazine);"\
+ "		string weaponString4 = string.Format(\"m_AA CRF_weaponClass \\"{628767421C6F6938}\\" { weapon \\"%1\\" attachments {  %2 } magazine \\"%3\\"}m_pistol CRF_weaponClass \\"{628767421FD13B65}\\" { weapon \\"%4\\" attachments {  %5 } magazine \\"%6\\"}}}\", AAString, AAAttachments, AAMagazine, pistolString, pistolAttachments, pistolMagazine);"\
+ "		string finalWeaponString = string.Format(\"%1%2%3%4%5\", finalCopy, weaponString1, weaponString2, weaponString3, weaponString4);"\
+ "		Print(rifleAttachments);"\
+ "		Print(rifleString);"\
+ "		Print(rifleMagazine);"\
+ "		GetGame().GetCallqueue().CallLater(System.ExportToClipboard, 1000, true, finalWeaponString);"\
+ "		//System.ExportToClipboard(finalWeaponString);"\
  "		foreach (ResourceName headgears : headgearArray)"\
  "		{"\
  "			headgears.Replace(\"\\"\", \"\");"\
@@ -525,12 +570,12 @@ BaseGameTriggerEntity test {
  ""\
  "	}"
  EOnInit ""\
- "		//GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000);"\
+ "//		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000);"\
  "	"
 }
-SCR_AIGroup : "{202B1DB751E27D0D}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Platoon_p.et" {
- coords 2080.027 58.943 2118.778
+SCR_AIGroup : "{782321E88C1F2F23}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Company_p.et" {
+ coords 2074.497 59.109 2122.816
  m_aUnitPrefabSlots {
-  "{97DF23C9633DAA71}Prefabs/Characters/Factions/Legacy_Prefabs/BLUFOR/US_Army/CRF_GS_BLU_Unarmed.et" "{97DF23C9633DAA71}Prefabs/Characters/Factions/Legacy_Prefabs/BLUFOR/US_Army/CRF_GS_BLU_Unarmed.et"
+  "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
  }
 }
