@@ -32,6 +32,15 @@ class CRF_Weapon_Class
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_Magazine;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	int m_MagazineCount;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_UGLMagazine;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	int m_UGLMagazineCount;
 }
 
 //------------------------------------------------------------------------------------------------
