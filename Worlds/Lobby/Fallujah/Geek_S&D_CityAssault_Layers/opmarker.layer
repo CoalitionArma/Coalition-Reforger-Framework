@@ -1,6 +1,5 @@
 PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 2436.916 8.156 2014.127
- angleY 0
+ coords 2376.068 8.156 2046.203
  m_aVisibleForFactions {
   "Tali"
  }

@@ -1,4 +1,11 @@
 Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
- coords 2389.675 8.156 2009.264
- angleY -96.013
+ coords 2370.65 8.156 2093.384
+ angleY -6.687
+ {
+  GenericEntity {
+   ID "5E2E7C60E0F9B3F4"
+   coords 0 0 0
+   angleY -90
+  }
+ }
 }

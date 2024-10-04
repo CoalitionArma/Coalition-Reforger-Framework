@@ -1,55 +1,50 @@
 SCR_AIGroup : "{C654769C2D326CBC}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Company_p.et" {
- coords 1330.133 3.093 1197.008
+ coords 1330.133 3.041 1197.008
  angleY -82.99
  m_sCustomNameSet "Company"
  {
   SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
-   coords -7.378 0.191 13.788
+   coords 0.03 -0.167 4.772
    angleY 176.23
    {
     SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-     coords 0.236 0.172 -8.255
+     coords 0.236 0.394 -8.255
      angleY 0.222
      {
       SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-       coords -0.001 -0.203 -7.116
+       coords -0.001 0.299 -7.116
        m_sCustomNameSet "2nd Squad"
        {
         SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-         coords 0 -0.489 -7.383
+         coords 0 -0.103 -7.383
          m_sCustomNameSet "3rd Squad"
          {
-          SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-           coords 0 -0.605 -8.107
-           m_sCustomNameSet "4th Squad"
+          SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
+           coords 0.69 -0.663 -8.349
+           angleY -0.222
+           m_sCustomNameSet "2nd Platoon"
            {
-            SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
-             coords -17.913 1.322 30.791
-             angleY -0.222
-             m_sCustomNameSet "2nd Platoon"
+            SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
+             coords 0.235 -0.779 -8.255
+             angleY 0.222
              {
               SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-               coords 0.236 0.472 -8.255
-               angleY 0.222
+               coords 0.001 -0.35 -7.116
+               m_sCustomNameSet "2nd Squad"
                {
                 SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-                 coords -0 -0.19 -7.116
-                 m_sCustomNameSet "2nd Squad"
+                 coords 0 -0.021 -7.383
+                 m_sCustomNameSet "3rd Squad"
                  {
-                  SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-                   coords 0 -0.718 -7.383
-                   m_sCustomNameSet "3rd Squad"
+                  SCR_AIGroup : "{C126D3281D5FE29C}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_2ManVehicle_p.et" {
+                   coords 19.041 3.052 59.615
+                   angleY -89.645
+                   m_sCustomNameSet "Stryker Crew"
                    {
-                    SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-                     coords 0 -0.865 -8.107
-                     m_sCustomNameSet "4th Squad"
-                     {
-                      SCR_AIGroup : "{C126D3281D5FE29C}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_2ManVehicle_p.et" {
-                       coords -3.899 0.378 47.149
-                       angleY 148.769
-                       m_sCustomNameSet "Stryker Crew"
-                      }
-                     }
+                    SCR_AIGroup : "{C126D3281D5FE29C}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_2ManVehicle_p.et" {
+                     coords 4.985 -0.271 0.317
+                     angleY -4.331
+                     m_sCustomNameSet "Stryker Crew"
                     }
                    }
                   }

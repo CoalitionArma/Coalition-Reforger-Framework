@@ -8,7 +8,6 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
   CRF_SearchAndDestroyGameModeComponent "{6274A01606909A61}" {
    defendingSide "Tali"
-   bombSitePrefab "{690F012127F996C7}Prefabs/Structures/CRF_Bomb2.et"
   }
   SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
    m_iStartingHours 11
@@ -17,7 +16,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 1207.553 5.468 1191.838
  {
-  SCR_FactionManager {
+  SCR_FactionManager "627675D4B4A5D6E3" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -89,6 +88,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
         m_sCallsign "MMG"
        }
       }
+      m_sCallsignGroupFormat "%3"
       m_sCallsignCharacterFormat "%1 %2 %3 %4"
       m_sCallsignCharacterWithRoleFormat ""
      }
