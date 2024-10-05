@@ -193,7 +193,7 @@ class CRF_Squad_Level_Custom_Gear
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
 class CRF_Infantry_Specialties_Custom_Gear
 {
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Heavy AntiTank", "Heavy AntiTank"), ParamEnum("Assistant Heavy AntiTank", "Assistant Heavy AntiTank"), ParamEnum("Medium AntiTank", "Medium AntiTank"), ParamEnum("Assistant Medium AntiTank", "Assistant Medium AntiTank"), ParamEnum("Heavy MachineGun", "Heavy MachineGun"), ParamEnum("Assistant Heavy MachineGun", "Assistant Heavy MachineGun"), ParamEnum("Medium MachineGun", "Medium MachineGun"), ParamEnum("Assistant Medium MachineGun", "Assistant Medium MachineGun"), ParamEnum("Anit-Air", "Anit-Air"), ParamEnum("Assistant Anit-Air", "Assistant Anit-Air"), ParamEnum("Sniper", "Sniper"), ParamEnum("Spotter", "Spotter"), ParamEnum("Forward Observer", "Forward Observer"), ParamEnum("JTAC", "JTAC"), ParamEnum("Logi Runner", "Logi Runner")})]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Heavy AntiTank", "Heavy AntiTank"), ParamEnum("Assistant Heavy AntiTank", "Assistant Heavy AntiTank"), ParamEnum("Medium AntiTank", "Medium AntiTank"), ParamEnum("Assistant Medium AntiTank", "Assistant Medium AntiTank"), ParamEnum("Heavy MachineGun", "Heavy MachineGun"), ParamEnum("Assistant Heavy MachineGun", "Assistant Heavy MachineGun"), ParamEnum("Medium MachineGun", "Medium MachineGun"), ParamEnum("Assistant Medium MachineGun", "Assistant Medium MachineGun"), ParamEnum("Anit-Air", "Anit-Air"), ParamEnum("Assistant Anit-Air", "Assistant Anit-Air"), ParamEnum("Sniper", "Sniper"), ParamEnum("Spotter", "Spotter"), ParamEnum("Forward Observer", "Forward Observer"), ParamEnum("JTAC", "JTAC")})]
 	string m_sRoleToOverride;
 	
 	[Attribute()]
@@ -207,7 +207,7 @@ class CRF_Infantry_Specialties_Custom_Gear
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
 class CRF_Vehicle_Specialties_Custom_Gear
 {
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Vehicle Driver", "Vehicle Driver"), ParamEnum("Vehicle Gunner", "Vehicle Gunner"), ParamEnum("Vehicle Loader", "Vehicle Loader"), ParamEnum("Pilot", "Pilot"), ParamEnum("Crew Chief", "Crew Chief"), ParamEnum("Indirect Gunner", "Indirect Gunner"), ParamEnum("Indirect Loader", "Indirect Loader")})]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Vehicle Driver", "Vehicle Driver"), ParamEnum("Vehicle Gunner", "Vehicle Gunner"), ParamEnum("Vehicle Loader", "Vehicle Loader"), ParamEnum("Pilot", "Pilot"), ParamEnum("Crew Chief", "Crew Chief"), ParamEnum("Logi Runner", "Logi Runner"), ParamEnum("Indirect Gunner", "Indirect Gunner"), ParamEnum("Indirect Loader", "Indirect Loader")})]
 	string m_sRoleToOverride;
 	
 	[Attribute()]
