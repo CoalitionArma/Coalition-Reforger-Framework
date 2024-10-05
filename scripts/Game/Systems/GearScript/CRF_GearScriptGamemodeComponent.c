@@ -443,7 +443,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateLeadershipCustomGear(array<ref CRF_Leadership_Custom_Gear> customGearArray, string role)
 	{
-		Print(role);
 		switch(role)
 		{
 			case "COY_P"          : {role = "Company Commander"; break;}
@@ -472,7 +471,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateSquadLevelCustomGear(array<ref CRF_Squad_Level_Custom_Gear> customGearArray, string role)
 	{
-		Print(role);
 		switch(role)
 		{
 			case "TL_P"       : {role = "Team Lead";                    break;}
@@ -501,7 +499,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateInfantrySpecialtiesCustomGear(array<ref CRF_Infantry_Specialties_Custom_Gear> customGearArray, string role)
 	{
-		Print(role);
 		switch(role)
 		{
 			case "HAT_P"     : {role = "Heavy AntiTank";              break;}
@@ -533,7 +530,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateVehicleSpecialtiesCustomGear(array<ref CRF_Vehicle_Specialties_Custom_Gear> customGearArray, string role)
 	{
-		Print(role);
 		switch(role)
 		{
 			case "VehDriver_P"      : {role = "Vehicle Driver";  break;}
