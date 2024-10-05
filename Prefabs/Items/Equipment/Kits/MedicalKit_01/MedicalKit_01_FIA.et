@@ -1,12 +1,30 @@
 GenericEntity : "{46FD263F0F368A92}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_base.et" {
  ID "508AB2013EEE1E00"
  components {
+  SCR_ArsenalComponent "{5E3CC268A92CDE62}" {
+   m_bArsenalEnabled 0
+  }
+  SCR_SupportStationGadgetComponent "{5DF4D9A1113FBAD9}" {
+   m_aSupportStationTypes {
+    300
+   }
+  }
   ActionsManagerComponent "{508AB5952B584B2E}" {
    additionalActions {
     SCR_ResupplySelfSupportStationAction "{5E3CC268E10A1B09}" {
+     VisibilityRange 0
+     m_ResupplyData SCR_ResupplyCatalogItemSupportStationData "{5E24C7773F701AE3}" {
+      m_eResupplyType NONE
+     }
+     m_iMaxResupplyCount 0
      m_bCheckIfItemInStorage 1
     }
     SCR_ResupplySelfSupportStationAction "{5E3CC268E31927C2}" {
+     VisibilityRange 0
+     m_ResupplyData SCR_ResupplyCatalogItemSupportStationData "{5E24C7773F76DD91}" {
+      m_eResupplyType NONE
+     }
+     m_iMaxResupplyCount 0
      m_bCheckIfItemInStorage 1
     }
    }
