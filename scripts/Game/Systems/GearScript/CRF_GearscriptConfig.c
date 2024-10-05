@@ -7,13 +7,13 @@
 class CRF_GearScriptConfig
 {
 	[Attribute()]
-	ref CRF_Default_Gear m_DefaultGear;
-	
-	[Attribute()]
 	ref CRF_Weapons m_Weapons;
 	
 	[Attribute()]
-	ref array<ref CRF_Per_Role_Gear> m_RoleCustomGear;
+	ref CRF_Default_Gear m_DefaultGear;
+	
+	[Attribute()]
+	ref CRF_Custom_Gear m_CustomGear;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -138,111 +138,78 @@ class CRF_Clothing
 }
 
 //------------------------------------------------------------------------------------------------
-// Per Role Gear
+// Role Custom Gear
 //------------------------------------------------------------------------------------------------
 
-// -- Leadership -- \\
-[BaseContainerProps(category: "Leadership")]
-class CRF_Company_Commander : CRF_Per_Role_Gear {}
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps()]
+class CRF_Custom_Gear
+{
+	[Attribute()]
+	ref array<ref CRF_Leadership_Custom_Gear> m_LeadershipCustomGear;
+	
+	[Attribute()]
+	ref array<ref CRF_Squad_Level_Custom_Gear> m_SquadLevelCustomGear;
+	
+	[Attribute()]
+	ref array<ref CRF_Infantry_Specialties_Custom_Gear> m_InfantrySpecialtiesCustomGear;
+	
+	[Attribute()]
+	ref array<ref CRF_Vehicle_Specialties_Custom_Gear> m_VehicleSpecialtiesCustomGear;
+}
 
-[BaseContainerProps(category: "Leadership")]
-class CRF_Platoon_Commander : CRF_Per_Role_Gear {}
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
+class CRF_Leadership_Custom_Gear
+{
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Company Commander", "Company Commander"), ParamEnum("Platoon Commander", "Platoon Commander"),  ParamEnum("Medical Officer", "Medical Officer"), ParamEnum("Squad Lead", "Squad Lead"), ParamEnum("Vehicle Lead", "Vehicle Lead"), ParamEnum("Indirect Lead", "Indirect Lead"), ParamEnum("Logi Lead", "Logi Lead")})]
+	string m_sRoleToOverride;
+	
+	[Attribute()]
+	ref array<ref CRF_Clothing> m_CustomClothing;
+	
+	[Attribute()]
+	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
+}
 
-[BaseContainerProps(category: "Leadership")]
-class CRF_Squad_Lead : CRF_Per_Role_Gear {}
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
+class CRF_Squad_Level_Custom_Gear
+{
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Team Lead", "Team Lead"), ParamEnum("Medic", "Medic"), ParamEnum("Grenadier", "Grenadier"), ParamEnum("Rifleman", "Rifleman"), ParamEnum("Rifleman Demo", "Rifleman Demo"), ParamEnum("Rifleman AntiTank", "Rifleman AntiTank"), ParamEnum("Assistant Rifleman AntiTank", "Assistant Rifleman AntiTank"), ParamEnum("Automatic Rifleman", "Automatic Rifleman"), ParamEnum("Assistant Automatic Rifleman", "Assistant Automatic Rifleman")})]
+	string m_sRoleToOverride;
+	
+	[Attribute()]
+	ref array<ref CRF_Clothing> m_CustomClothing;
+	
+	[Attribute()]
+	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
+}
 
-[BaseContainerProps(category: "Leadership")]
-class CRF_Indirect_Lead: CRF_Per_Role_Gear {}
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
+class CRF_Infantry_Specialties_Custom_Gear
+{
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Heavy AntiTank", "Heavy AntiTank"), ParamEnum("Assistant Heavy AntiTank", "Assistant Heavy AntiTank"), ParamEnum("Medium AntiTank", "Medium AntiTank"), ParamEnum("Assistant Medium AntiTank", "Assistant Medium AntiTank"), ParamEnum("Heavy MachineGun", "Heavy MachineGun"), ParamEnum("Assistant Heavy MachineGun", "Assistant Heavy MachineGun"), ParamEnum("Medium MachineGun", "Medium MachineGun"), ParamEnum("Assistant Medium MachineGun", "Assistant Medium MachineGun"), ParamEnum("Anit-Air", "Anit-Air"), ParamEnum("Assistant Anit-Air", "Assistant Anit-Air"), ParamEnum("Sniper", "Sniper"), ParamEnum("Spotter", "Spotter"), ParamEnum("Forward Observer", "Forward Observer"), ParamEnum("JTAC", "JTAC"), ParamEnum("Logi Runner", "Logi Runner")})]
+	string m_sRoleToOverride;
+	
+	[Attribute()]
+	ref array<ref CRF_Clothing> m_CustomClothing;
+	
+	[Attribute()]
+	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
+}
 
-[BaseContainerProps(category: "Leadership")]
-class CRF_Logi_Lead: CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Leadership")]
-class CRF_Medical_Officer: CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Leadership")]
-class CRF_Vehicle_Lead : CRF_Per_Role_Gear {}
-
-// -- Squad Level -- \\
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Team_Lead: CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Rifleman : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Rifleman_Demo : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Rifleman_AntiTank : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Assistant_Rifleman_AntiTank : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Grenadier : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Automatic_Rifleman : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Assistant_Automatic_Rifleman : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Squad Level")]
-class CRF_Medic: CRF_Per_Role_Gear {}
-
-// -- Specialties -- \\
-[BaseContainerProps(category: "Specialties")]
-class CRF_Heavy_AntiTank : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Assistant_Heavy_AntiTank : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Medium_AntiTank : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Assistant_Medium_AntiTank : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Heavy_MachineGun : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Assistant_Heavy_MachineGun : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Pilot: CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Sniper : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Spotter : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_Forward_Observer : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Specialties")]
-class CRF_JTAC : CRF_Per_Role_Gear {}
-
-// -- Crewmen/Misc -- \\
-[BaseContainerProps(category: "Crewmen/Misc")]
-class CRF_CrewChief : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Crewmen/Misc")]
-class CRF_Indirect_Gunner: CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Crewmen/Misc")]
-class CRF_Indirect_Loader: CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Crewmen/Misc")]
-class CRF_Logi_Runner: CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Crewmen/Misc")]
-class CRF_Vehicle_Driver : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Crewmen/Misc")]
-class CRF_Vehicle_Gunner : CRF_Per_Role_Gear {}
-
-[BaseContainerProps(category: "Crewmen/Misc")]
-class CRF_Vehicle_Loader : CRF_Per_Role_Gear {}
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
+class CRF_Vehicle_Specialties_Custom_Gear
+{
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Vehicle Driver", "Vehicle Driver"), ParamEnum("Vehicle Gunner", "Vehicle Gunner"), ParamEnum("Vehicle Loader", "Vehicle Loader"), ParamEnum("Pilot", "Pilot"), ParamEnum("Crew Chief", "Crew Chief"), ParamEnum("Indirect Gunner", "Indirect Gunner"), ParamEnum("Indirect Loader", "Indirect Loader")})]
+	string m_sRoleToOverride;
+	
+	[Attribute()]
+	ref array<ref CRF_Clothing> m_CustomClothing;
+	
+	[Attribute()]
+	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
+}

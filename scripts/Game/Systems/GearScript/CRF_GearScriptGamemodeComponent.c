@@ -64,8 +64,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	void AddGearToEntity(IEntity entity)
 	{
-	
-	if(!m_bGearScriptEnabled || !Replication.IsServer())
+		if(!m_bGearScriptEnabled || !Replication.IsServer())
 			return;
 		
 		ResourceName ResourceNameToScan = entity.GetPrefabData().GetPrefabName();
@@ -78,7 +77,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		
 		switch(true)
 		{
-			case(ResourceNameToScan.Contains("BLUFOR")) : {gearScriptResourceName = m_rBluforGearScript;  break;}
+			case(ResourceNameToScan.Contains("BLUFOR")) : {gearScriptResourceName = m_rBluforGearScript; break;}
 			case(ResourceNameToScan.Contains("OPFOR"))  : {gearScriptResourceName = m_rOpforGearScript;  break;}
 			case(ResourceNameToScan.Contains("INDFOR")) : {gearScriptResourceName = m_rIndforGearScript; break;}
 			case(ResourceNameToScan.Contains("CIV"))    : {gearScriptResourceName = m_rCivGearScript;    break;}
@@ -92,7 +91,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		
 		Resource container = BaseContainerTools.LoadContainer(gearScriptResourceName);
         CRF_GearScriptConfig GearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
-		//m_GearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
 		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
 		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
@@ -107,145 +105,265 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		//------------------------------------------------------------------------------------------------
+		// CUSTOM GEAR
+		//------------------------------------------------------------------------------------------------
+		
+		
+		//--------------------- LEADERSHIP ---------------------\\
+		switch(true)
+		{
+			case(ResourceNameToScan.Contains("COY")) : 
+			{	
+				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Company Commander");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("PLT")) : 
+			{
+				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Platoon Commander");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("SL")) : 
+			{
+				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Medical Officer");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("MO")) : 
+			{
+				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Squad Lead");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}	
+			case(ResourceNameToScan.Contains("IndirectLead")) : 
+			{
+				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Vehicle Lead");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}	
+			case(ResourceNameToScan.Contains("LogiLead")) : 
+			{
+				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Indirect Lead");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}	
+			case(ResourceNameToScan.Contains("VehLead")) : 
+			{
+				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Logi Lead");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}	
+		}
+		
+		//--------------------- Squad Level ---------------------\\
+		switch(true)
+		{
+			case(ResourceNameToScan.Contains("TL")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Team Lead");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("MED")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Medic");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("GREN")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Grenadier");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("Rifle")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Rifleman");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("DEMO")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Rifleman Demo");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AT")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Rifleman AntiTank");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "AT", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AAT")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Assistant Rifleman AntiTank");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AR")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Automatic Rifleman");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "AR", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AAR")) : 
+			{
+				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Assistant Automatic Rifleman");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+		}
+			
+		//--------------------- Infantry Specialties ---------------------\\
+		switch(true)
+		{
+			case(ResourceNameToScan.Contains("HAT")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Heavy AntiTank");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "HAT", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AHAT")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Assistant Heavy AntiTank");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("MAT")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Medium AntiTank");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "MAT", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AMAT")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Assistant Medium AntiTank");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("HMG")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Heavy MachineGun");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "HMG", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AHMG")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Assistant Heavy MachineGun");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("MMG")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Medium MachineGun");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "MMG", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AMMG")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Assistant Medium MachineGun");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AA")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Anit-Air");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "AA", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("AAA")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Assistant Anit-Air");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("Sniper")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Sniper");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Sniper", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("Spotter")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Spotter");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("FO")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Forward Observer");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("JTAC")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "JTAC");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
+				break;
+			}
+			case(ResourceNameToScan.Contains("LogiRunner")) : 
+			{
+				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Logi Runner");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+		}
+		
+		//--------------------- Vehicle Specialties ---------------------\\
+		switch(true)
+		{
+			case(ResourceNameToScan.Contains("VehDriver")) : 
+			{
+				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Vehicle Driver");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("VehGunner")) : 
+			{
+				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Vehicle Gunner");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("VehLoader")) : 
+			{
+				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Vehicle Loader");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("Pilot")) : 
+			{
+				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Pilot");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("CrewChief")) : 
+			{
+				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Crew Chief");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("IndirectGunner")) : 
+			{
+				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Indirect Gunner");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+			case(ResourceNameToScan.Contains("IndirectLoader")) : 
+			{
+				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Indirect Loader");
+				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
+				break;
+			}
+		}
+		
+		//------------------------------------------------------------------------------------------------
 		// ITEMS
 		//------------------------------------------------------------------------------------------------
 		
 		foreach(CRF_Inventory_Item item : GearConfig.m_DefaultGear.m_DefaultInventoryItems)
 		{
 			AddInventoryItems(item.m_sItemPrefab, item.m_iItemCount);
-		}
-		
-		//Patman Note for salami: would heavily recommend setting up seperate functions for common items like total bandages, weapon and ammo, etc. I'll continue fleshing this out tmrw if you'd like. 
-		//Also, naming convention of blank character prefabs should be CRF_GS_OPF_MMG, CRF_GS_BLU_RAT, CRF_GS_INF_HAT etc...
-		
-		// We could also lean into role-specific gear with the bellow method, but that'd require more config work on your end, but it would be cool..... fuck it ima write the functions and populate Medic rq so you get an idea
-		
-		switch(true)
-		{
-			case(ResourceNameToScan.Contains("COY")) : 
-			{
-				//COY Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
-				break;
-			}
-			case(ResourceNameToScan.Contains("PLT")) : 
-			{
-				//PLT Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
-				break;
-			}
-			case(ResourceNameToScan.Contains("SL")) : 
-			{
-				//SL Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
-				break;
-			}
-			case(ResourceNameToScan.Contains("TL")) : 
-			{
-				//TL Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", true);
-				break;
-			}
-			case(ResourceNameToScan.Contains("Medic")) : 
-			{
-				//MED Items go here, preferebly by reading a array/set of arrays on the config.
-				
-				
-				//UpdateClothingSlot(m_GearConfig.m_DefaultGear.m_DefaultClothing.m_MedicBackpack, BACKPACK); //update the backpack of the medic to whatever is defined in the gearscript
-				//AddInventoryItems(m_GearConfig.m_DefaultGear.m_DefaultClothing.m_MedicInventory);			 //add the role specific inventory items (blood, medkit, etc)
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);;					 //add the carbine weapon and we'll want to also add the mags with this function
-				
-				break;
-			}
-			case(ResourceNameToScan.Contains("AR")) : 
-			{
-				//AR Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "AR", "", true);
-				break;
-			}
-			case(ResourceNameToScan.Contains("AAR")) : 
-			{
-				//AAR Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("AT")) : 
-			{
-				//RAT Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "AT", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("GREN")) : 
-			{
-				//GREN Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("DEMO")) : 
-			{
-				//DEMO Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("MMG")) : 
-			{
-				//MMG Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "MMG", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("AMMG")) : 
-			{
-				//AMMG Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("MAT")) : 
-			{
-				//MAT Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "MAT", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("AMAT")) : 
-			{
-				//AMAT Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("HAT")) : 
-			{
-				//HAT Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "HAT", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("AHAT")) : 
-			{
-				//AHAT Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("HMG")) : 
-			{
-				//HMG Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "HMG", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("AHMG")) : 
-			{
-				//AHMG Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
-				break;
-			}
-			case(ResourceNameToScan.Contains("CREW")) : 
-			{
-				//CREW Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
-				break;
-			}
-			default : 
-			{
-				//Rifleman Items go here, preferebly by reading a array/set of arrays on the config.
-				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);
-			}
 		}
 	}
 	
@@ -283,7 +401,13 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			return;
 		
 		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(clothingArray.GetRandomElement()),GetGame().GetWorld(),m_SpawnParams);
-		m_InventoryManager.TryReplaceItem(resourceSpawned, m_Inventory, slotInt);
+		bool isThereSpace = m_InventoryManager.TryReplaceItem(resourceSpawned, m_Inventory, slotInt);
+		if (!isThereSpace)
+		{
+			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+			Print(string.Format("CRF: UNABLE TO INSERT CLOTHING: %1 /n INTO ENTITY: %2", resourceSpawned, m_InventoryManager.GetOwner()), LogLevel.ERROR);
+			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+		};
 	}
 	
 	protected void AddInventoryItems(ResourceName itemResource, int itemAmmount)
@@ -294,7 +418,13 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		for(int i = 1; i <= itemAmmount; i++)
 		{
 			IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(itemResource),GetGame().GetWorld(),m_SpawnParams);
-			m_InventoryManager.TryInsertItem(resourceSpawned);
+			bool isThereSpace = m_InventoryManager.TryInsertItem(resourceSpawned);
+			if (!isThereSpace)
+			{
+				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+				Print(string.Format("CRF: UNABLE TO INSERT ITEM: %1 /n INTO ENTITY: %2", resourceSpawned, m_InventoryManager.GetOwner()), LogLevel.ERROR);
+				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+			};
 		}
 	}
 	
@@ -415,6 +545,78 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 						delete AttachmentSpawned;
 					} 
 				}	
+			}
+		}
+	}
+	
+	protected void UpdateLeadershipCustomGear(array<ref CRF_Leadership_Custom_Gear> customGearArray, string role)
+	{
+		foreach(ref CRF_Leadership_Custom_Gear customGear : customGearArray)
+		{
+			if(customGear.m_sRoleToOverride == role)
+				
+			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
+			{
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+			}
+					
+			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
+			{
+				AddInventoryItems(item.m_sItemPrefab, item.m_iItemCount);
+			}
+		}
+	}
+	
+	protected void UpdateSquadLevelCustomGear(array<ref CRF_Squad_Level_Custom_Gear> customGearArray, string role)
+	{
+		foreach(ref CRF_Squad_Level_Custom_Gear customGear : customGearArray)
+		{
+			if(customGear.m_sRoleToOverride == role)
+				
+			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
+			{
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+			}
+					
+			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
+			{
+				AddInventoryItems(item.m_sItemPrefab, item.m_iItemCount);
+			}
+		}
+	}
+	
+	protected void UpdateInfantrySpecialtiesCustomGear(array<ref CRF_Infantry_Specialties_Custom_Gear> customGearArray, string role)
+	{
+		foreach(ref CRF_Infantry_Specialties_Custom_Gear customGear : customGearArray)
+		{
+			if(customGear.m_sRoleToOverride == role)
+				
+			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
+			{
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+			}
+					
+			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
+			{
+				AddInventoryItems(item.m_sItemPrefab, item.m_iItemCount);
+			}
+		}
+	}
+	
+	protected void UpdateVehicleSpecialtiesCustomGear(array<ref CRF_Vehicle_Specialties_Custom_Gear> customGearArray, string role)
+	{
+		foreach(ref CRF_Vehicle_Specialties_Custom_Gear customGear : customGearArray)
+		{
+			if(customGear.m_sRoleToOverride == role)
+				
+			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
+			{
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+			}
+					
+			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
+			{
+				AddInventoryItems(item.m_sItemPrefab, item.m_iItemCount);
 			}
 		}
 	}
