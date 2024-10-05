@@ -111,6 +111,30 @@ class CRF_Inventory_Item
 [BaseContainerProps()]
 class CRF_Default_Gear
 {
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableLeadershipRadios;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_sLeadershipRadiosPrefab;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableLeadershipBinoculars;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_sLeadershipBinocularsPrefab;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableGIRadios;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_sGIRadiosPrefab;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableAssistantBinoculars;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_sAssistantBinocularsPrefab;
+	
 	[Attribute()]
 	ref array<ref CRF_Clothing> m_DefaultClothing;
 	
@@ -151,7 +175,7 @@ class CRF_Clothing
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_Custom_Gear
-{
+{	
 	[Attribute()]
 	ref array<ref CRF_Leadership_Custom_Gear> m_LeadershipCustomGear;
 	
@@ -169,7 +193,7 @@ class CRF_Custom_Gear
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
 class CRF_Leadership_Custom_Gear
 {
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Company Commander", "Company Commander"), ParamEnum("Platoon Leader", "Platoon Leader"),  ParamEnum("Medical Officer", "Medical Officer"), ParamEnum("Squad Lead", "Squad Lead"), ParamEnum("Vehicle Lead", "Vehicle Lead"), ParamEnum("Indirect Lead", "Indirect Lead"), ParamEnum("Logi Lead", "Logi Lead")})]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Company Commander", "Company Commander"), ParamEnum("Platoon Leader", "Platoon Leader"),  ParamEnum("Medical Officer", "Medical Officer"), ParamEnum("Squad Lead", "Squad Lead"), ParamEnum("Forward Observer", "Forward Observer"), ParamEnum("JTAC", "JTAC"), ParamEnum("Vehicle Lead", "Vehicle Lead"), ParamEnum("Indirect Lead", "Indirect Lead"), ParamEnum("Logi Lead", "Logi Lead")})]
 	string m_sRoleToOverride;
 	
 	[Attribute()]
@@ -197,7 +221,7 @@ class CRF_Squad_Level_Custom_Gear
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
 class CRF_Infantry_Specialties_Custom_Gear
 {
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Heavy AntiTank", "Heavy AntiTank"), ParamEnum("Assistant Heavy AntiTank", "Assistant Heavy AntiTank"), ParamEnum("Medium AntiTank", "Medium AntiTank"), ParamEnum("Assistant Medium AntiTank", "Assistant Medium AntiTank"), ParamEnum("Heavy MachineGun", "Heavy MachineGun"), ParamEnum("Assistant Heavy MachineGun", "Assistant Heavy MachineGun"), ParamEnum("Medium MachineGun", "Medium MachineGun"), ParamEnum("Assistant Medium MachineGun", "Assistant Medium MachineGun"), ParamEnum("Anit-Air", "Anit-Air"), ParamEnum("Assistant Anit-Air", "Assistant Anit-Air"), ParamEnum("Sniper", "Sniper"), ParamEnum("Spotter", "Spotter"), ParamEnum("Forward Observer", "Forward Observer"), ParamEnum("JTAC", "JTAC")})]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Heavy AntiTank", "Heavy AntiTank"), ParamEnum("Assistant Heavy AntiTank", "Assistant Heavy AntiTank"), ParamEnum("Medium AntiTank", "Medium AntiTank"), ParamEnum("Assistant Medium AntiTank", "Assistant Medium AntiTank"), ParamEnum("Heavy MachineGun", "Heavy MachineGun"), ParamEnum("Assistant Heavy MachineGun", "Assistant Heavy MachineGun"), ParamEnum("Medium MachineGun", "Medium MachineGun"), ParamEnum("Assistant Medium MachineGun", "Assistant Medium MachineGun"), ParamEnum("Anit-Air", "Anit-Air"), ParamEnum("Assistant Anit-Air", "Assistant Anit-Air"), ParamEnum("Sniper", "Sniper"), ParamEnum("Spotter", "Spotter")})]
 	string m_sRoleToOverride;
 	
 	[Attribute()]

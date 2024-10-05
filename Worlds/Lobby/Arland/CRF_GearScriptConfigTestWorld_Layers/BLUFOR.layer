@@ -2,9 +2,43 @@ SCR_AIGroup : "{3A6F59C4F5036B7B}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_D
  coords 713.88 39 2581.655
  angleY -14.133
 }
-SCR_AIGroup : "{72EF60EF0B7BDE0D}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevGI_p.et" {
- coords 711.092 39 2592.729
- angleY -14.133
+$grp SCR_AIGroup : "{72EF60EF0B7BDE0D}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevGI_p.et" {
+ {
+  coords 711.092 39 2592.729
+  angleY -14.133
+ }
+ {
+  coords 742.063 39 2574.774
+  angleY -14.133
+ }
+ {
+  coords 740.302 39.001 2586.03
+  angleY -14.133
+ }
+ {
+  coords 736.807 39 2598.283
+  angleY -14.133
+ }
+ {
+  coords 732.83 39 2608.242
+  angleY -14.133
+ }
+ {
+  coords 730.821 39 2618.567
+  angleY -14.133
+ }
+ {
+  coords 760.791 39 2579.56
+  angleY -14.133
+ }
+ {
+  coords 759.784 39 2587.929
+  angleY -14.133
+ }
+ {
+  coords 757.188 39.001 2600.498
+  angleY -14.133
+ }
 }
 SCR_AIGroup : "{9AE81899DA0147AD}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevSpecialist_p.et" {
  coords 717.769 39 2566.208
