@@ -3,7 +3,7 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
-  CRF_GearScriptGamemodeComponent "{628B11FC67EB4B64}" {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
    m_bGearScriptEnabled 1
    m_rBluforGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
   }

@@ -13,16 +13,13 @@ class CRF_OpenStorageAction : SCR_OpenStorageAction
 		manager.OpenInventory();
 		Print(ChimeraMenuPreset.CRF_GearscriptUI);
 		Print("Opening next menu");
-		GetGame().GetMenuManager().OpenDialog(ChimeraMenuPreset.CRF_GearscriptUI, DialogPriority.INFORMATIVE, 0, true);
+		GetGame().GetCallqueue().CallLater(OpenMenu, 3000)
+		
 	}
 	
-	void CloseMenu()
+	void OpenMenu()
 	{
-		MenuManager menuManager = GetGame().GetMenuManager();
-		ChimeraMenuPreset menu = ChimeraMenuPreset.CRF_GearscriptUI;
-		
-		MenuBase gsMenu = menuManager.FindMenuByPreset(menu);
-		GetGame().GetMenuManager().CloseMenu(gsMenu);
+		GetGame().GetMenuManager().OpenDialog(ChimeraMenuPreset.CRF_GearscriptUI, DialogPriority.WARNING, 0, true);
 	}
 	
 	#endif

@@ -22,6 +22,16 @@ class CRF_GearScriptConfig
 
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
+class CRF_Magazine_Class
+{
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Magazine;
+	
+	[Attribute()]
+	int m_MagazineCount;
+}
+
+[BaseContainerProps()]
 class CRF_Weapon_Class
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
@@ -30,17 +40,8 @@ class CRF_Weapon_Class
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_Attachments;
 	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_Magazine;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	int m_MagazineCount;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_UGLMagazine;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	int m_UGLMagazineCount;
+	[Attribute()]
+	ref array<ref CRF_Magazine_Class> m_MagazineArray;
 }
 
 //------------------------------------------------------------------------------------------------

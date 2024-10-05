@@ -9,6 +9,101 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    m_rOpforGearScript "{FAACBCB9F0E852B3}Configs/Gearscripts/GearScriptBluforTest.conf"
    m_rIndforGearScript "{FAACBCB9F0E852B3}Configs/Gearscripts/GearScriptBluforTest.conf"
   }
+  CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
+   Enabled 0
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 100
+  }
+  PS_ObjectiveManager "{61BCFEC02D3898F3}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{61BCFEC02D3898F7}" {
+     m_iScore 0
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F5}" {
+     m_iScore 25
+     m_sName "#PS-ObjectiveLevel_MinorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F4}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_Draw"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D38988B}" {
+     m_iScore 75
+     m_sName "#PS-ObjectiveLevel_MinorVictory"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D389EAB}" {
+     m_iScore 100
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  SCR_CampaignBuildingManagerComponent "{61BCFEC02D389EA7}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{5DF6FBB5913F3245}" : "{96A8B496A076F1C0}scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   m_aModules {
+    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
+     m_aLightBanPunishments +{
+     }
+     m_aHeavyBanPunishments +{
+     }
+     m_bWarCrimesEnabled 0
+     m_bWarCrimesProportionalityPrincipleEnabled 0
+     MODIFIER_PROPORTIONALITY_FRIENDLY_KILLS 0
+     MODIFIER_PROPORTIONALITY_FRIENDLY_AI_KILLS 0
+     MODIFIER_PROPORTIONALITY_AI_KILLS 0
+     MODIFIER_PROPORTIONALITY_KILLS 0
+    }
+   }
+   m_iOptionalKickingFriendlyPlayerKillPenalty 9
+   m_iOptionalKickingFriendlyAIKillPenalty 9
+   m_iOptionalKickingKickPenaltyLimit 99999
+   m_iOptionalKickingBanDuration 0
+   m_iOptionalKickingPenaltySubtractionPeriod 99999
+   m_iOptionalKickingPenaltySubtractionPoints 9
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fDOTScale 0.35
+   m_fRegenScale 0.75
+   m_fTourniquetStrengthMultiplier 0.7
+   m_fRegenerationDelay 30
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{61BCFEC02D389EB5}" {
+   m_fDuration 0
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{61BCFEC02D389E8A}" {
+   }
+  }
+  SCR_SaveLoadComponent "{61BCFEC02D389E88}" {
+   m_Struct SCR_MissionStruct "{61BCFEC02D389E8F}" {
+    m_Struct0 SCR_EditorStruct "{61BCFEC02D389E8E}" {
+     m_AttributeList SCR_EditorAttributeList "{590C7881C296FA7D}" : "{F3D6C6D25642352C}Configs/Editor/AttributeLists/Edit.conf" {
+     }
+    }
+   }
+   m_iAutosavePeriod 600
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
  }
  coords 2055.982 61.647 2122.375
 }
@@ -573,12 +668,9 @@ BaseGameTriggerEntity test {
  "//		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000);"\
  "	"
 }
-SCR_AIGroup : "{782321E88C1F2F23}Prefabs/Groups/BLUFOR/1980s/Standard/Command/Group_US80s_Company_p.et" {
- coords 2074.497 59.109 2122.816
- m_aUnitPrefabSlots {
-  "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
- }
-}
 GenericEntity : "{BE99D77D1155B127}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_US.et" {
  coords 2061.993 59.233 2129.058
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 2067.428 59.228 2126.918
 }
