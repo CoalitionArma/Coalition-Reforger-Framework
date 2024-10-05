@@ -108,7 +108,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		// CUSTOM GEAR
 		//------------------------------------------------------------------------------------------------
 		
-		
 		//--------------------- LEADERSHIP ---------------------\\
 		switch(true)
 		{
@@ -153,12 +152,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				UpdateLeadershipCustomGear(GearConfig.m_CustomGear.m_LeadershipCustomGear, "Logi Lead");
 				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
 				break;
-			}	
-		}
-		
-		//--------------------- Squad Level ---------------------\\
-		switch(true)
-		{
+			}
+			//--------------------- Squad Level ---------------------\\
 			case(ResourceNameToScan.Contains("TL")) : 
 			{
 				UpdateSquadLevelCustomGear(GearConfig.m_CustomGear.m_SquadLevelCustomGear, "Team Lead");
@@ -213,11 +208,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", true);
 				break;
 			}
-		}
-			
-		//--------------------- Infantry Specialties ---------------------\\
-		switch(true)
-		{
+			//--------------------- Infantry Specialties ---------------------\\
 			case(ResourceNameToScan.Contains("HAT")) : 
 			{
 				UpdateInfantrySpecialtiesCustomGear(GearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, "Heavy AntiTank");
@@ -308,11 +299,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);
 				break;
 			}
-		}
-		
-		//--------------------- Vehicle Specialties ---------------------\\
-		switch(true)
-		{
+			//--------------------- Vehicle Specialties ---------------------\\
 			case(ResourceNameToScan.Contains("VehDriver")) : 
 			{
 				UpdateVehicleSpecialtiesCustomGear(GearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, "Vehicle Driver");
