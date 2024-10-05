@@ -79,6 +79,9 @@ class CRF_Weapons
 	
 	[Attribute()]
 	ref CRF_Weapon_Class m_AA;
+	
+	[Attribute()]
+	ref CRF_Weapon_Class m_Sniper;
 }
 
 //------------------------------------------------------------------------------------------------
