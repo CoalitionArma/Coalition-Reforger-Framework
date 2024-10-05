@@ -37,7 +37,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	const int EXTRA3      = 16;
 	const int EXTRA4      = 17;
 	
-	const ref TStringArray m_aLeadershipRolesUGL = {"COY_P", "PLT_P", "SL_P"};
+	const ref TStringArray m_aLeadershipRolesUGL = {"COY_P", "PL_P", "SL_P"};
 	const ref TStringArray m_aLeadershipRolesCarbine = {"MO_P", "IndirectLead_P", "LogiLead_P", "VehLead_P"};
 		
 	const ref TStringArray m_aSquadLevelRolesUGL = {"TL_P", "Gren_P"};
@@ -46,7 +46,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		
 	const ref TStringArray m_aInfantrySpecialtiesRolesRifle = {"AHAT_P", "AMAT_P", "AHMG_P", "AMMG_P", "AAA_P", "Spotter_P", "FO_P", "JTAC_P"};
 		
-	const ref TStringArray m_aVehicleSpecialtiesRolesCarbine = {"VehDriver_P", "VehGunner_P", "VehLoader_P", "Pilot_P", "CrewChief_P", "LogiRunner_P", "IndirectGunner_P", "IndirectLoader_P"};
+	const ref TStringArray m_aVehicleSpecialtiesRolesCarbine = {"VehDriver_P", "VehGunner_P", "VehLoader_P", "LogiRunner_P", "IndirectGunner_P", "IndirectLoader_P"};
+	const ref TStringArray m_aVehicleSpecialtiesRolesPistol = {"Pilot_P", "CrewChief_P"};
 	
 	protected SCR_CharacterInventoryStorageComponent m_Inventory;
 	protected InventoryStorageManagerComponent m_InventoryManager;
@@ -151,6 +152,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			case(role == "Sniper_P")                               : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Sniper", "", true);    isInfSpec = true; break;}
 			
 			case(m_aVehicleSpecialtiesRolesCarbine.Contains(role)) : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);  isVehSpec = true; break;}
+			case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "", "", true);          isVehSpec = true; break;}
 		}
 		
 		switch(true)
@@ -365,10 +367,11 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateLeadershipCustomGear(array<ref CRF_Leadership_Custom_Gear> customGearArray, string role)
 	{
+		Print(role);
 		switch(role)
 		{
 			case "COY_P"          : {role = "Company Commander"; break;}
-			case "PLT_P"          : {role = "Platoon Commander"; break;}
+			case "PL_P"           : {role = "Platoon Leader"; break;}
 			case "MO_P"           : {role = "Medical Officer";   break;}
 			case "SL_P"           : {role = "Squad Lead";        break;}
 			case "VehLead_P"      : {role = "Vehicle Lead";      break;}
@@ -391,6 +394,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateSquadLevelCustomGear(array<ref CRF_Squad_Level_Custom_Gear> customGearArray, string role)
 	{
+		Print(role);
 		switch(role)
 		{
 			case "TL_P"       : {role = "Team Lead";                    break;}
@@ -419,6 +423,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateInfantrySpecialtiesCustomGear(array<ref CRF_Infantry_Specialties_Custom_Gear> customGearArray, string role)
 	{
+		Print(role);
 		switch(role)
 		{
 			case "HAT_P"     : {role = "Heavy AntiTank";              break;}
@@ -452,6 +457,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected void UpdateVehicleSpecialtiesCustomGear(array<ref CRF_Vehicle_Specialties_Custom_Gear> customGearArray, string role)
 	{
+		Print(role);
 		switch(role)
 		{
 			case "VehDriver_P"      : {role = "Vehicle Driver";  break;}

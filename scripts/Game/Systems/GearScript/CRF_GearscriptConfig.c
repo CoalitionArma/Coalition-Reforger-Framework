@@ -165,7 +165,7 @@ class CRF_Custom_Gear
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
 class CRF_Leadership_Custom_Gear
 {
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Company Commander", "Company Commander"), ParamEnum("Platoon Commander", "Platoon Commander"),  ParamEnum("Medical Officer", "Medical Officer"), ParamEnum("Squad Lead", "Squad Lead"), ParamEnum("Vehicle Lead", "Vehicle Lead"), ParamEnum("Indirect Lead", "Indirect Lead"), ParamEnum("Logi Lead", "Logi Lead")})]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Company Commander", "Company Commander"), ParamEnum("Platoon Leader", "Platoon Leader"),  ParamEnum("Medical Officer", "Medical Officer"), ParamEnum("Squad Lead", "Squad Lead"), ParamEnum("Vehicle Lead", "Vehicle Lead"), ParamEnum("Indirect Lead", "Indirect Lead"), ParamEnum("Logi Lead", "Logi Lead")})]
 	string m_sRoleToOverride;
 	
 	[Attribute()]
