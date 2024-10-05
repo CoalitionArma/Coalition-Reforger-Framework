@@ -29,6 +29,9 @@ class CRF_Magazine_Class
 	
 	[Attribute()]
 	int m_MagazineCount;
+	
+	[Attribute()]
+	int m_AssistantMagazineCount;
 }
 
 [BaseContainerProps()]

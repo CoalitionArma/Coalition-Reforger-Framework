@@ -139,11 +139,11 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			
 			case(m_aSquadLevelRolesUGL.Contains(role))             : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "RifleUGL", "", false); isSquad = true; break;}
 			case(m_aSquadLevelRolesCarbine.Contains(role))         : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Carbine", "", false);  isSquad = true; break;}
-			case(m_aSquadLevelRolesRifle.Contains(role))           : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);    isSquad = true; break;}
+			case(m_aSquadLevelRolesRifle.Contains(role))           : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);    isSquad = true;   AddAssistantMagazines(GearConfig, role); break;}
 			case(role == "AT_P")                                   : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "AT", false);  isSquad = true; break;}
 			case(role == "AR_P")                                   : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "AR", "", false);       isSquad = true; break;}
 	
-			case(m_aInfantrySpecialtiesRolesRifle.Contains(role))  : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);    isInfSpec = true; break;}
+			case(m_aInfantrySpecialtiesRolesRifle.Contains(role))  : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "", false);    isInfSpec = true; AddAssistantMagazines(GearConfig, role); break;}
 			case(role == "HAT_P")                                  : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "HAT", false); isInfSpec = true; break;}
 			case(role == "MAT_P")                                  : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "Rifle", "MAT", false); isInfSpec = true; break;}
 			case(role == "HMG_P")                                  : {AddWeapons(m_WeaponSlotComponentArray, GearConfig, "HMG", "", true);       isInfSpec = true; break;}
@@ -242,6 +242,27 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
 				delete resourceSpawned;
 			};
+		}
+	}
+	
+	protected void AddAssistantMagazines(CRF_GearScriptConfig GearConfig, string WeaponType)
+	{
+		Print("Giving Assistant mags");
+		Print(WeaponType);
+		array<ref CRF_Magazine_Class> MagazineArray = {};
+		switch(WeaponType)
+		{
+			case "AAR_P" : {if(!GearConfig.m_Weapons.m_AR){return;} if(!GearConfig.m_Weapons.m_AR.m_Weapon){return;} MagazineArray = GearConfig.m_Weapons.m_AR.m_MagazineArray; break;}
+			case "AMMG_P" : {if(!GearConfig.m_Weapons.m_MMG){return;} if(!GearConfig.m_Weapons.m_MMG.m_Weapon){return;} MagazineArray = GearConfig.m_Weapons.m_MMG.m_MagazineArray; break;}
+			case "AHMG_P" : {if(!GearConfig.m_Weapons.m_HMG){return;} if(!GearConfig.m_Weapons.m_HMG.m_Weapon){return;} MagazineArray = GearConfig.m_Weapons.m_HMG.m_MagazineArray; break;}
+			case "AMAT_P" : {if(!GearConfig.m_Weapons.m_MAT){return;} if(!GearConfig.m_Weapons.m_MAT.m_Weapon){return;} MagazineArray = GearConfig.m_Weapons.m_MAT.m_MagazineArray; break;}
+			case "AHAT_P" : {if(!GearConfig.m_Weapons.m_HAT){return;} if(!GearConfig.m_Weapons.m_HAT.m_Weapon){return;} MagazineArray = GearConfig.m_Weapons.m_HAT.m_MagazineArray; break;}
+			case "AAA_P" : {if(!GearConfig.m_Weapons.m_AA){return;} if(!GearConfig.m_Weapons.m_AA.m_Weapon){return;} MagazineArray = GearConfig.m_Weapons.m_AA.m_MagazineArray; break;}
+		}
+		
+		foreach(ref CRF_Magazine_Class Magazine : MagazineArray)
+		{
+			AddInventoryItems(Magazine.m_Magazine, Magazine.m_AssistantMagazineCount);
 		}
 	}
 	
