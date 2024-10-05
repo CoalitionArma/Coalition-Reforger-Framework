@@ -135,6 +135,9 @@ class CRF_Default_Gear
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_sAssistantBinocularsPrefab;
 	
+	[Attribute("false", UIWidgets.CheckBox)]
+	bool m_bEnableMedicFrags;
+	
 	[Attribute()]
 	ref array<ref CRF_Clothing> m_DefaultClothing;
 	
