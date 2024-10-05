@@ -394,6 +394,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
 			Print(string.Format("CRF: UNABLE TO INSERT CLOTHING: %1 /n INTO ENTITY: %2", resourceSpawned, m_InventoryManager.GetOwner()), LogLevel.ERROR);
 			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+			delete resourceSpawned;
 		};
 	}
 	
@@ -411,6 +412,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
 				Print(string.Format("CRF: UNABLE TO INSERT ITEM: %1 /n INTO ENTITY: %2", resourceSpawned, m_InventoryManager.GetOwner()), LogLevel.ERROR);
 				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+				delete resourceSpawned;
 			};
 		}
 	}

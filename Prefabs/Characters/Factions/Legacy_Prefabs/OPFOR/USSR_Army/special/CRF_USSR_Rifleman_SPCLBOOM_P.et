@@ -32,6 +32,13 @@ SCR_ChimeraCharacter : "{3ECA3A935BC069B9}Prefabs/Characters/Factions/OPFOR/USSR
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
    WeaponSlotIndex 1
   }
+  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Identity Identity "{5584CBC6363C648B}" {
+    Name "Patman"
+    Alias "Was"
+    Surname "Here"
+   }
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
