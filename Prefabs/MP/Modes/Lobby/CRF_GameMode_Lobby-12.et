@@ -501,7 +501,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_bIsPlayable 0
      m_sFactionFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
      m_FactionFlagMaterial "{B47B52D9DA68905D}Assets/Props/Fabric/Flags/Data/Flag_1_2_SovietArmy.emat"
-     m_FactionLabel FACTION_USSR
+     m_FactionLabel FACTION_NONE
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_bIsAssignedRandomly 0
       m_aCompanyNames {
@@ -674,6 +674,109 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
       SCR_MilitaryBaseCallsign "{5C9108F95BFC33E5}" {
       }
      }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     FactionKey "INDFOR"
+     FactionColor 0 0.44 0.078 1
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "INDFOR"
+      Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+      m_sNameUpper "INDFOR"
+     }
+     m_iOrder 2000
+     m_OutlineFactionColor 0.001 0.082 0.023 1
+     m_NotificationFactionColor 0 0.44 0.078 1
+     m_NotificationTextFactionColor 0 0.296 0.055 1
+     m_bIsPlayable 0
+     m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+     m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
+     m_FactionLabel FACTION_NONE
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7A}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B78}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7E}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7C}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B63}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B61}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B67}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6B}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B69}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6F}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8ABED54}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8E1FFD7}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8255922}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD876D68B}" {
+       }
+       SCR_CallsignInfo "{61C8F1AC8D5F6E16}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Cell Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1-%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1-%2%3 %4"
+      m_aCharacterRoleCallsigns {
+       SCR_PlayerLeaderRoleCallsign "{5D9E9ECA7323CF3E}" {
+       }
+      }
+     }
+     m_sFactionRadioEncryptionKey "candleSauce"
+     m_iFactionRadioFrequency 52000
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EABE8B7B2A}" {
+      }
+      SCR_EntityCatalogMultiList "{5C68A0EABB80080C}" {
+      }
+      SCR_EntityCatalogMultiList "{5C68A0EAB887A0C4}" {
+      }
+      SCR_EntityCatalog "{5C68A0EAA323888C}" {
+      }
+      SCR_EntityCatalogMultiList "{5C68C44CB0CFC935}" {
+      }
+      SCR_EntityCatalog "{5C9EDDD370331114}" {
+      }
+     }
+     m_sGroupFlagsImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
+     m_sGroupFlagsImageSetOutlines "{C07D82625600BA21}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor-outline.imageset"
+     m_aFlagNames {
+      "infantry" "amphibious" "anti-air" "anti-air-artilery" "anti-armor-motorized" "antiarmor" "armored" "artillery" "combined" "helicopter" "helicopter-attack" "infantry-air" "machinegun" "maintenance" "medical" "mortar" "motorized" "motorized-infantry" "recon" "recon-motorized" "signal" "sniper" "supply-motorized" "undefined"
+     }
+     m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
     }
    }
   }
