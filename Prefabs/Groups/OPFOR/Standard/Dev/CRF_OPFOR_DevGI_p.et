@@ -1,0 +1,157 @@
+SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
+ ID "0000000000000001"
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Row"
+  }
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "CRF 1980s Rifle Squad"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_aAuthoredLabels {
+     4 51870 25 34 38
+    }
+    m_aAutoLabels {
+     72
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{628C2D2A7D4CA010}" {
+      m_BudgetType AI
+      m_Value 9
+     }
+    }
+    m_bUseUIInfoName 1
+    m_MilitarySymbol SCR_MilitarySymbol "{628C2D2A7D4CA01A}" {
+     m_Identity BLUFOR
+     m_Dimension LAND
+     m_Icons INFANTRY
+     m_Amplifier SQUAD
+    }
+   }
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Icons INFANTRY
+    m_Amplifier SQUAD
+   }
+  }
+  SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{628C2D2A7D4CA00D}" {
+     m_iParentID -1
+     m_Mesh ""
+     m_Flags 3
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4CA00F}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4CA00A}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 3 0 -3
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4CA00B}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -3 0 -3
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4CA034}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 6 0 -6
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4D6B16}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -6 0 -6
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4D6B12}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 9 0 -9
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4D6B13}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -9 0 -9
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4D2067}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 12 0 -12
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{628C2D2A7D4D2064}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition -12 0 -12
+     m_vAngles 0 0 0
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_faction "OPFOR"
+ m_aUnitPrefabSlots {
+  "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FCBD0EC1703ECD14}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Demo_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{C1E0691A952831E7}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAT_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et"
+ }
+ m_sCustomNameSet "1st Squad"
+ m_bSetPlayable 1
+ m_aUnitPrefabColorTeams {
+  "None" "None" "None" "None" "None" "None" "None" "None" "None"
+ }
+ m_aUnitPrefabOverrideIcons {
+  "None" "None" "None" "None" "None" "Team Lead" "None" "None" "None"
+ }
+}

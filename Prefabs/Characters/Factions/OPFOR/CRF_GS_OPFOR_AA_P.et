@@ -26,7 +26,7 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_
    "faction affiliation" "OPFOR"
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Anti-Air"
+   m_name "Rifleman Anti-Air"
    m_bIsPlayable 1
   }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
@@ -91,22 +91,22 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_
      PrefabsToSpawn +{
      }
     }
-    ItemsInitConfigurationItem "{62877AFF721956F2}" {
+    ItemsInitConfigurationItem "{628C2D2877B57BBC}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_ALICE/Vest_ALICE_suspenders_2.et"
     }
-    ItemsInitConfigurationItem "{62877AFF721956E9}" {
+    ItemsInitConfigurationItem "{628C2D2877B57BB2}" {
      TargetStorage "Prefabs/Items/Equipment/Accessories/Pouch_ALICE_30rnd_STANAG/Pouch_ALICE_30rnd_STANAG.et"
      PrefabsToSpawn {
       "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
      }
     }
-    ItemsInitConfigurationItem "{62877AFF721956E3}" {
+    ItemsInitConfigurationItem "{628C2D2877B57BAF}" {
      TargetStorage "Prefabs/Items/Equipment/Accessories/Pouch_ALICE_30rnd_STANAG/Pouch_ALICE_30rnd_STANAG.et"
      PrefabsToSpawn {
       "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"
      }
     }
-    ItemsInitConfigurationItem "{62877AFF721956E0}" {
+    ItemsInitConfigurationItem "{628C2D2877B57BAD}" {
      TargetStorage "Prefabs/Characters/Vests/Vest_ALICE/Vest_ALICE_buttpack.et"
      PrefabsToSpawn {
       "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et" "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Last_5Tracer.et"

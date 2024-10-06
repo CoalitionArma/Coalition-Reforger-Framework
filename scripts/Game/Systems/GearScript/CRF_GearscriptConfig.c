@@ -2,7 +2,6 @@
 // MASTER
 //------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------
 [BaseContainerProps(configRoot: true)]
 class CRF_GearScriptConfig
 {
@@ -20,21 +19,7 @@ class CRF_GearScriptConfig
 // WEAPONS
 //------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------
-[BaseContainerProps()]
-class CRF_Magazine_Class
-{
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_Magazine;
-	
-	[Attribute()]
-	int m_MagazineCount;
-	
-	[Attribute()]
-	int m_AssistantMagazineCount;
-}
-
-[BaseContainerProps()]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
 class CRF_Weapon_Class
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
@@ -48,41 +33,80 @@ class CRF_Weapon_Class
 }
 
 //------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Magazine", "m_MagazineCount"}, "%2 | %1")]
+class CRF_Magazine_Class
+{
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Magazine;
+	
+	[Attribute()]
+	int m_MagazineCount;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
+class CRF_Spec_Weapon_Class
+{
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Weapon;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ref array<ResourceName> m_Attachments;
+	
+	[Attribute()]
+	ref array<ref CRF_Spec_Magazine_Class> m_MagazineArray;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Magazine", "m_MagazineCount", "m_AssistantMagazineCount"}, "%2 | %3 | %1")]
+class CRF_Spec_Magazine_Class
+{
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Magazine;
+	
+	[Attribute()]
+	int m_MagazineCount;
+	
+	[Attribute()]
+	int m_AssistantMagazineCount;
+}
+
+//------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_Weapons
 {
 	[Attribute()]
-	ref CRF_Weapon_Class m_Rifle;
+	ref array<ref CRF_Weapon_Class> m_Rifle;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_RifleUGL;
+	ref array<ref CRF_Weapon_Class> m_RifleUGL;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_Carbine;
+	ref array<ref CRF_Weapon_Class> m_Carbine;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_Pistol;
+	ref array<ref CRF_Weapon_Class> m_Pistol;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_AR;
+	ref CRF_Spec_Weapon_Class m_AR;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_MMG;
+	ref CRF_Spec_Weapon_Class m_MMG;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_HMG;
+	ref CRF_Spec_Weapon_Class m_HMG;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_AT;
+	ref CRF_Spec_Weapon_Class m_AT;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_MAT;
+	ref CRF_Spec_Weapon_Class m_MAT;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_HAT;
+	ref CRF_Spec_Weapon_Class m_HAT;
 	
 	[Attribute()]
-	ref CRF_Weapon_Class m_AA;
+	ref CRF_Spec_Weapon_Class m_AA;
 	
 	[Attribute()]
 	ref CRF_Weapon_Class m_Sniper;
@@ -92,14 +116,13 @@ class CRF_Weapons
 // INVENTORY
 //------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({ "m_sItemPrefab", "m_iItemCount" }, "%2 %1")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({ "m_sItemPrefab", "m_iItemCount" }, "%2 | %1")]
 class CRF_Inventory_Item
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_sItemPrefab;
 	
-	[Attribute()]
+	[Attribute("")]
 	int m_iItemCount;
 }
 
@@ -107,7 +130,6 @@ class CRF_Inventory_Item
 // GEAR
 //------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_Default_Gear
 {
@@ -139,6 +161,9 @@ class CRF_Default_Gear
 	bool m_bEnableMedicFrags;
 	
 	[Attribute()]
+	ref array<ref CRF_Inventory_Item>  m_DefaultMedicMedicalItems;
+	
+	[Attribute()]
 	ref array<ref CRF_Clothing> m_DefaultClothing;
 	
 	[Attribute()]
@@ -146,21 +171,9 @@ class CRF_Default_Gear
 }
 
 //------------------------------------------------------------------------------------------------
-[BaseContainerProps()]
-class CRF_Per_Role_Gear
-{
-	[Attribute()]
-	ref array<ref CRF_Clothing> m_ClothingOverrides;
-	
-	[Attribute()]
-	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
-}
-
-//------------------------------------------------------------------------------------------------
 // CLOTHING
 //------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sClothingType"}, "%1")]
 class CRF_Clothing
 {
@@ -175,7 +188,6 @@ class CRF_Clothing
 // Role Custom Gear
 //------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_Custom_Gear
 {	
