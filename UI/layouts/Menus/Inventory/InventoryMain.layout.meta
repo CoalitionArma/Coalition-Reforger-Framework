@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{FAA80DB01DE7D157}UI/layouts/CRF_Gearscript_Overlay.layout"
+ Name "{981ACF4F45EAECAE}UI/layouts/Menus/Inventory/InventoryMain.layout"
  Configurations {
   LayoutResourceClass PC {
   }
