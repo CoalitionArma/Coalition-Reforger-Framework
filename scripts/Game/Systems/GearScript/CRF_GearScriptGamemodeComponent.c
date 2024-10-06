@@ -261,7 +261,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		if (previousClothing != null)
 		{
 			m_InventoryManager.TryRemoveItemFromStorage(previousClothing, m_Inventory);
-			delete previousClothing;
+			SCR_EntityHelper.DeleteEntityAndChildren(previousClothing);
 		};
 		
 		ref IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(clothing), GetGame().GetWorld(), m_SpawnParams);
@@ -298,7 +298,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				Print(string.Format("CRF GEAR SCRIPT : UNABLE TO INSERT ITEM: %1", item), LogLevel.ERROR);
 				Print(string.Format("CRF GEAR SCRIPT : INTO ENTITY: %1", m_InventoryManager.GetOwner().GetPrefabData().GetPrefabName()), LogLevel.ERROR);
 				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
-				delete resourceSpawned;
+				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
 			};
 			
 			if(!enableMedicFrags && (role == "Medic_P" || role == "MO_P"))
@@ -309,7 +309,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					continue;
 				
 				m_InventoryManager.TryRemoveItemFromStorage(resourceSpawned, m_Inventory);
-				delete resourceSpawned;
+				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
 			};
 		}
 	}
