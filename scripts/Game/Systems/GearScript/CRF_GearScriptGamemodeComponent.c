@@ -309,7 +309,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	protected void AddAssistantMagazines(CRF_GearScriptConfig gearConfig, string weaponType)
 	{
-		array<ref CRF_Magazine_Class> magazineArray = {};
+		array<ref CRF_Spec_Magazine_Class> magazineArray = {};
 		switch(weaponType)
 		{
 			case "AAR_P"  : {if(!gearConfig.m_Weapons.m_AR  || !gearConfig.m_Weapons.m_AR.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AR.m_MagazineArray;  break;}
@@ -321,7 +321,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			case "AAT_P"  : {if(!gearConfig.m_Weapons.m_AT  || !gearConfig.m_Weapons.m_AT.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AT.m_MagazineArray;  break;}
 		}
 		
-		foreach(ref CRF_Magazine_Class magazine : magazineArray)
+		foreach(ref CRF_Spec_Magazine_Class magazine : magazineArray)
 			AddInventoryItem(magazine.m_Magazine, magazine.m_AssistantMagazineCount);
 	}
 	
@@ -350,8 +350,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(weaponSlotComponentArray.Get(i));
 			array<AttachmentSlotComponent> attatchmentSlotArray = {};
+			array<ref CRF_Spec_Magazine_Class> specMagazineArray = {};
 			array<ref CRF_Magazine_Class> magazineArray = {};
 			array<ResourceName> weaponsAttachments = {};
+			ref CRF_Spec_Weapon_Class specWeaponToSpawn;
 			ref CRF_Weapon_Class weaponToSpawn;
 			IEntity weaponSpawned;
 			//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -367,51 +369,53 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					{
 						switch(atType)
 						{
-							case "AT"  : {weaponToSpawn = gearConfig.m_Weapons.m_AT;  break;}
-							case "MAT" : {weaponToSpawn = gearConfig.m_Weapons.m_MAT; break;}
-							case "HAT" : {weaponToSpawn = gearConfig.m_Weapons.m_HAT; break;}	
-							case "AA"  : {weaponToSpawn = gearConfig.m_Weapons.m_AA;  break;}
+							case "AT"  : {specWeaponToSpawn = gearConfig.m_Weapons.m_AT;  break;}
+							case "MAT" : {specWeaponToSpawn = gearConfig.m_Weapons.m_MAT; break;}
+							case "HAT" : {specWeaponToSpawn = gearConfig.m_Weapons.m_HAT; break;}	
+							case "AA"  : {specWeaponToSpawn = gearConfig.m_Weapons.m_AA;  break;}
 						}
 						
-						if(!weaponToSpawn || !weaponToSpawn.m_Weapon)
+						if(!specWeaponToSpawn || !specWeaponToSpawn.m_Weapon)
 							continue; 
 						
-						weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(weaponToSpawn.m_Weapon), GetGame().GetWorld(), m_SpawnParams);
+						weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(specWeaponToSpawn.m_Weapon), GetGame().GetWorld(), m_SpawnParams);
 								
 						if(!weaponSpawned)
 							continue;
 						
-						weaponsAttachments = weaponToSpawn.m_Attachments; 
-						magazineArray = weaponToSpawn.m_MagazineArray; 
+						weaponsAttachments = specWeaponToSpawn.m_Attachments; 
+						specMagazineArray = specWeaponToSpawn.m_MagazineArray; 
 						
-						if(magazineArray.Count() != 0)
+						if(specMagazineArray.Count() != 0)
 						{
-							foreach(CRF_Magazine_Class Magazine : magazineArray)
+							foreach(CRF_Spec_Magazine_Class magazine : specMagazineArray)
 							{
-								AddInventoryItem(Magazine.m_Magazine, Magazine.m_MagazineCount);
+								AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
 							}
 						}
 
 						weaponSlotComponent.SetWeapon(weaponSpawned);
 						
 						weaponSlotComponent.GetAttachments(attatchmentSlotArray);
+						
 						if(!weaponsAttachments)
 							continue;
+						
 						if(weaponsAttachments.Count() == 0)
 							continue;
 				
-						foreach(ResourceName Attachment : weaponsAttachments)
+						foreach(ResourceName attachment : weaponsAttachments)
 						{
-							foreach(AttachmentSlotComponent AttachmentSlot : attatchmentSlotArray)
+							foreach(AttachmentSlotComponent attachmentSlot : attatchmentSlotArray)
 							{
-								IEntity AttachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(Attachment),GetGame().GetWorld(),m_SpawnParams);
-								if(AttachmentSlot.CanSetAttachment(AttachmentSpawned))
+								IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachment),GetGame().GetWorld(),m_SpawnParams);
+								if(attachmentSlot.CanSetAttachment(attachmentSpawned))
 								{
-									delete AttachmentSlot.GetAttachedEntity();
-									AttachmentSlot.SetAttachment(AttachmentSpawned);
+									delete attachmentSlot.GetAttachedEntity();
+									attachmentSlot.SetAttachment(attachmentSpawned);
 									break;
 								}
-								delete AttachmentSpawned;
+								delete attachmentSpawned;
 							} 
 						}
 					}
@@ -426,59 +430,70 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					case "Rifle"    : {weaponToSpawn = SelectRandomWeapon(gearConfig.m_Weapons.m_Rifle);    break;}
 					case "RifleUGL" : {weaponToSpawn = SelectRandomWeapon(gearConfig.m_Weapons.m_RifleUGL); break;}
 					case "Carbine"  : {weaponToSpawn = SelectRandomWeapon(gearConfig.m_Weapons.m_Carbine);  break;}
-					case "AR"       : {weaponToSpawn = gearConfig.m_Weapons.m_AR;                           break;}
-					case "MMG"      : {weaponToSpawn = gearConfig.m_Weapons.m_MMG;                          break;}
-					case "HMG"      : {weaponToSpawn = gearConfig.m_Weapons.m_HMG;                          break;}
-					case "Sniper"   : {weaponToSpawn = gearConfig.m_Weapons.m_Sniper;                       break;}
+					case "AR"       : {specWeaponToSpawn = gearConfig.m_Weapons.m_AR;                       break;}
+					case "MMG"      : {specWeaponToSpawn = gearConfig.m_Weapons.m_MMG;                      break;}
+					case "HMG"      : {specWeaponToSpawn = gearConfig.m_Weapons.m_HMG;                      break;}
+					case "Sniper"   : {weaponToSpawn = gearConfig.m_Weapons.m_Sniper;                   break;}
 				}
 				
-				if(!weaponToSpawn || !weaponToSpawn.m_Weapon)
-					continue; 
-				
-				weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(weaponToSpawn.m_Weapon), GetGame().GetWorld(), m_SpawnParams);
-								
-				if(!weaponSpawned)
-					continue;
-						
-				weaponsAttachments = weaponToSpawn.m_Attachments; 
-				magazineArray = weaponToSpawn.m_MagazineArray; 
-				
-				if(magazineArray.Count() != 0)
+				if(weaponToSpawn && weaponToSpawn.m_Weapon)
 				{
-					foreach(CRF_Magazine_Class Magazine : magazineArray)
+					weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(weaponToSpawn.m_Weapon), GetGame().GetWorld(), m_SpawnParams);
+								
+					if(!weaponSpawned)
+						continue;
+						
+					weaponsAttachments = weaponToSpawn.m_Attachments; 
+					magazineArray = weaponToSpawn.m_MagazineArray; 
+				
+					if(magazineArray.Count() != 0)
 					{
-						AddInventoryItem(Magazine.m_Magazine, Magazine.m_MagazineCount);
+					foreach(CRF_Magazine_Class magazine : magazineArray)
+							AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
 					}
-				}
-
-				if(!weaponSpawned)
-					continue;
+				};
+				
+				if(specWeaponToSpawn && specWeaponToSpawn.m_Weapon)
+				{
+					weaponSpawned = GetGame().SpawnEntityPrefab(Resource.Load(specWeaponToSpawn.m_Weapon), GetGame().GetWorld(), m_SpawnParams);
+								
+					if(!weaponSpawned)
+						continue;
+						
+					weaponsAttachments = specWeaponToSpawn.m_Attachments; 
+					specMagazineArray = specWeaponToSpawn.m_MagazineArray; 
+				
+					if(specMagazineArray.Count() != 0)
+					{
+					foreach(CRF_Spec_Magazine_Class magazine : specMagazineArray)
+							AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
+					}
+				};
 				
 				weaponSlotComponent.SetWeapon(weaponSpawned);
 				
 				SCR_CharacterControllerComponent.Cast(entity.FindComponent(SCR_CharacterControllerComponent)).SelectWeapon(weaponSlotComponent);
 				
 				weaponSlotComponent.GetAttachments(attatchmentSlotArray);
-					if(!weaponsAttachments)
-						continue;
-					if(weaponsAttachments.Count() == 0)
-						continue;
+				
+				if(!weaponsAttachments)
+					continue;
 				
 				if(weaponsAttachments.Count() == 0)
-						continue;
+					continue;
 				
-				foreach(ResourceName Attachment : weaponsAttachments)
+				foreach(ResourceName attachment : weaponsAttachments)
 				{
-					foreach(AttachmentSlotComponent AttachmentSlot : attatchmentSlotArray)
+					foreach(AttachmentSlotComponent attachmentSlot : attatchmentSlotArray)
 					{
-						IEntity AttachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(Attachment), GetGame().GetWorld(), m_SpawnParams);
-						if(AttachmentSlot.CanSetAttachment(AttachmentSpawned))
+						IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachment), GetGame().GetWorld(), m_SpawnParams);
+						if(attachmentSlot.CanSetAttachment(attachmentSpawned))
 						{
-							delete AttachmentSlot.GetAttachedEntity();
-							AttachmentSlot.SetAttachment(AttachmentSpawned);
+							delete attachmentSlot.GetAttachedEntity();
+							attachmentSlot.SetAttachment(attachmentSpawned);
 							break;
 						}
-						delete AttachmentSpawned;
+						delete attachmentSpawned;
 					} 
 				}
 			}
@@ -502,33 +517,34 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				magazineArray = weaponToSpawn.m_MagazineArray;
 				if(magazineArray.Count() != 0)
 				{
-					foreach(CRF_Magazine_Class Magazine : magazineArray)
-						AddInventoryItem(Magazine.m_Magazine, Magazine.m_MagazineCount);
+					foreach(CRF_Magazine_Class magazine : magazineArray)
+						AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
 				}
 				
 				if(!weaponSpawned)
 					continue;
 	
 				weaponSlotComponent.SetWeapon(weaponSpawned);
-				
 				weaponSlotComponent.GetAttachments(attatchmentSlotArray);
-					if(!weaponsAttachments)
-						continue;
-					if(weaponsAttachments.Count() == 0)
-						continue;
 				
-				foreach(ResourceName Attachment : weaponToSpawn.m_Attachments)
+				if(!weaponsAttachments)
+					continue;
+				
+				if(weaponsAttachments.Count() == 0)
+					continue;
+				
+				foreach(ResourceName attachment : weaponToSpawn.m_Attachments)
 				{
-					foreach(AttachmentSlotComponent AttachmentSlot : attatchmentSlotArray)
+					foreach(AttachmentSlotComponent attachmentSlot : attatchmentSlotArray)
 					{
-						IEntity AttachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(Attachment), GetGame().GetWorld(), m_SpawnParams);
-						if(AttachmentSlot.CanSetAttachment(AttachmentSpawned))
+						IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachment), GetGame().GetWorld(), m_SpawnParams);
+						if(attachmentSlot.CanSetAttachment(attachmentSpawned))
 						{
-							delete AttachmentSlot.GetAttachedEntity();
-							AttachmentSlot.SetAttachment(AttachmentSpawned);
+							delete attachmentSlot.GetAttachedEntity();
+							attachmentSlot.SetAttachment(attachmentSpawned);
 							break;
 						}
-						delete AttachmentSpawned;
+						delete attachmentSpawned;
 					} 
 				}	
 			}
