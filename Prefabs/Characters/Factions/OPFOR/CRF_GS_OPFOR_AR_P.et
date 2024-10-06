@@ -26,7 +26,7 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_
    "faction affiliation" "OPFOR"
   }
   PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Rifleman Anti-Tank"
+   m_name "Automatic Rifleman"
    m_bIsPlayable 1
   }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
