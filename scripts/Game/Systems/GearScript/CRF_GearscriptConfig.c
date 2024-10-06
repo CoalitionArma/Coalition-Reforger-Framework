@@ -19,7 +19,7 @@ class CRF_GearScriptConfig
 // WEAPONS
 //------------------------------------------------------------------------------------------------
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Magazine"}, "%1")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Magazine", "m_MagazineCount"}, "%2 %1")]
 class CRF_Magazine_Class
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
