@@ -1,0 +1,28 @@
+SCR_ChimeraCharacter : "{AD6294DA4658DCA0}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_COY_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "HVT"
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab "{E27119043F3525B2}Prefabs/Characters/HeadGear/Hat_Turbant/Hat_Turbant_04_Red.et"
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{1D1DB172E4D2E695}Prefabs/Characters/Uniforms/Jacket_White.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab "{66140FED5D2285AD}Prefabs/Characters/Vests/Vest_Taliban/Vest_Taliban.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{6258434EC7D9CD5D}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Jacket_White.et"
+    }
+   }
+  }
+ }
+}

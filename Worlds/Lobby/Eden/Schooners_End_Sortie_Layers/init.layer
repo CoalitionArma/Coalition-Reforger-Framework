@@ -1,0 +1,109 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 7579.034 1.093 8994.266
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 5
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{627A1B648421DAD0}" {
+     m_sWeatherPresetName "clear"
+     m_iStartingHour 5
+    }
+   }
+  }
+ }
+ coords 7579.834 2.546 8948.968
+ m_bRemoveSquadMarkers 1
+ {
+  SCR_FactionManager "627A1B798307B389" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{627961DF9C29C1FE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{627961DF9CE01B06}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{627961DF9CCB3456}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{627961DF9CA2FC11}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{627961DF9C99AFD9}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{627961DF9D7758F9}" {
+        m_sCallsign "RECCE"
+       }
+       SCR_CallsignInfo "{627961DF9D687E62}" {
+        m_sCallsign "1TECH"
+       }
+       SCR_CallsignInfo "{627961DFB3A21E51}" {
+        m_sCallsign "2TECH"
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{627961DAB26C017E}" {
+        m_sCallsign "MORTAR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_FactionControlTriggerEntity fobSokolTrigger {
+ coords 6943.073 70.696 8598.561
+ userScript "	static bool m_actionPerformed = false;"
+ TriggerShapeType Sphere
+ SphereRadius 25
+ OnActivate ""\
+ "        // Check if the action has already been performed"\
+ "        if (!m_actionPerformed)"\
+ "        {"\
+ "            // Perform the action"\
+ "            Print(\"The USSR has taken FOB Sokol!\");"\
+ "            SCR_PopUpNotification.GetInstance().PopupMsg(\"FOB Sokol Secured\", 15, \"The USSR has taken FOB Sokol!\");"\
+ ""\
+ "            // Set the boolean variable to true to prevent further execution"\
+ "            m_actionPerformed = true;"\
+ "        }"\
+ "	"
+}

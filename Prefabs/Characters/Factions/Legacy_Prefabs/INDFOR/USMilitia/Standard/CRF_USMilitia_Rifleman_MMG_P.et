@@ -28,7 +28,7 @@ SCR_ChimeraCharacter : "{BC29F80683690024}Prefabs/Characters/Factions/INDFOR/USM
      Prefab "{585F44386BD5B0CA}Prefabs/Characters/Uniforms/T-Shirt_a1.et"
     }
     LoadoutSlotInfo Pants {
-     Prefab "{17601C5F71DD34A3}Prefabs/Characters/Uniforms/Pants_Hiking/hiking_pants_base.et"
+     Prefab "{6B7F32F1F8A191B0}Prefabs/Characters/Uniforms/Pants_Pilot_USSR_01/Pants_Pilot_USSR_01_tucked.et"
     }
     LoadoutSlotInfo Vest {
      Prefab "{477A190AF2A17B8A}Prefabs/Characters/Vests/Vest_ALICE/Variants/Vest_ALICE_MG.et"
