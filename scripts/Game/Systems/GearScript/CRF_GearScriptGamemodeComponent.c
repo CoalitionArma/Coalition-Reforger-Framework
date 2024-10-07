@@ -39,6 +39,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	const int EXTRA3      = 16;
 	const int EXTRA4      = 17;
 	
+	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
+	
 	const ref TStringArray m_aLeadershipRolesUGL = {"COY_P", "PL_P", "SL_P", "FO_P", "JTAC_P"};
 	const ref TStringArray m_aLeadershipRolesCarbine = {"MO_P", "IndirectLead_P", "LogiLead_P", "VehLead_P"};
 		
@@ -116,20 +118,9 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
 		m_SCRInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
-		
-		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		// CLOTHING
-		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-		if(gearConfig.m_DefaultGear)
-		{
-			foreach(CRF_Clothing clothing : gearConfig.m_DefaultGear.m_DefaultClothing)
-				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
-		} else
-			Print(string.Format("CRF GEAR SCRIPT : NO DEFAULT CLOTHING SET: %1", gearScriptResourceName), LogLevel.ERROR);
-		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		// CUSTOM GEAR
+		// GET ROLE
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		
 		array<string> value = {};
@@ -140,10 +131,54 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		role.Split(".", value, true);
 		role = value[0];	
 		
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// CLOTHING
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+		if(gearConfig.m_DefaultGear)
+		{
+			foreach(CRF_Clothing clothing : gearConfig.m_DefaultGear.m_DefaultClothing)
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType, role);
+		} else
+			Print(string.Format("CRF GEAR SCRIPT : NO DEFAULT CLOTHING SET: %1", gearScriptResourceName), LogLevel.ERROR);
+		
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// CUSTOM GEAR
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
 		bool isLeader = false;
 		bool isSquad = false;
 		bool isInfSpec = false;
 		bool isVehSpec = false;
+		
+		//Who we give Assistant Binos/Extra magazines
+		if(role == "AAR_P" || role == "AMMG_P" || role == "AHMG_P" || role == "AMAT_P" || role == "AHAT_P" || role == "AAA_P" || role == "AAT_P")
+			AddAssistantMagazines(gearConfig, role);
+		
+		switch(true)
+		{
+			// Leadership --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+			case(m_aLeadershipRolesUGL.Contains(role))             : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    true);  isLeader = true;  break;}
+			case(m_aLeadershipRolesCarbine.Contains(role))         : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    true);  isLeader = true;  break;}	
+			// Squad Level -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+			case(m_aSquadLevelRolesUGL.Contains(role))             : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    false); isSquad = true;   break;}
+			case(m_aSquadLevelRolesCarbine.Contains(role))         : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isSquad = true;   break;}
+			case(m_aSquadLevelRolesRifle.Contains(role))           : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "",    false); isSquad = true;   break;}
+			case(role == "AT_P")                                   : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AT",  false); isSquad = true;   break;}
+			case(role == "AR_P")                                   : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "AR",       "",    false); isSquad = true;   break;}
+			// Infantry Specialties ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+			case(m_aInfantrySpecialtiesRolesRifle.Contains(role))  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "",    false); isInfSpec = true; break;}
+			case(role == "HAT_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "HAT", false); isInfSpec = true; break;}
+			case(role == "MAT_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "MAT", false); isInfSpec = true; break;}
+			case(role == "HMG_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "HMG",      "",    true);  isInfSpec = true; break;}
+			case(role == "MMG_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "MMG",      "",    true);  isInfSpec = true; break;}
+			case(role == "AA_P")                                   : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AA",  false); isInfSpec = true; break;}
+			case(role == "Sniper_P")                               : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Sniper",   "",    true);  isInfSpec = true; break;}
+			case(role == "Spotter_P")                              : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    false); isInfSpec = true; break;}
+			// Vehicle Specialties -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+			case(m_aVehicleSpecialtiesRolesCarbine.Contains(role)) : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isVehSpec = true; break;}
+			case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "",         "",    true);  isVehSpec = true; break;}
+		}
 		
 		if(gearConfig.m_CustomGear)
 		{
@@ -157,31 +192,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		} else
 			Print(string.Format("CRF GEAR SCRIPT : NO CUSTOM GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
 		
-		switch(true)
-		{
-			// Leadership --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-			case(m_aLeadershipRolesUGL.Contains(role))             : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    true);  isLeader = true;  break;}
-			case(m_aLeadershipRolesCarbine.Contains(role))         : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    true);  isLeader = true;  break;}	
-			// Squad Level -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-			case(m_aSquadLevelRolesUGL.Contains(role))             : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    false); isSquad = true;   break;}
-			case(m_aSquadLevelRolesCarbine.Contains(role))         : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isSquad = true;   break;}
-			case(m_aSquadLevelRolesRifle.Contains(role))           : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "",    false); isSquad = true;   break;}
-			case(role == "AT_P")                                   : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AT",  false); isSquad = true;   break;}
-			case(role == "AR_P")                                   : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "AR",       "",    false); isSquad = true;   break;}
-			// Infantry Specialties ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-			case(m_aInfantrySpecialtiesRolesRifle.Contains(role))  : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "",    false); isInfSpec = true; break;}
-			case(role == "HAT_P")                                  : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "HAT", false); isInfSpec = true; break;}
-			case(role == "MAT_P")                                  : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "MAT", false); isInfSpec = true; break;}
-			case(role == "HMG_P")                                  : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "HMG",      "",    true);  isInfSpec = true; break;}
-			case(role == "MMG_P")                                  : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "MMG",      "",    true);  isInfSpec = true; break;}
-			case(role == "AA_P")                                   : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AA",  false); isInfSpec = true; break;}
-			case(role == "Sniper_P")                               : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Sniper",   "",    true);  isInfSpec = true; break;}
-			case(role == "Spotter_P")                              : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    false); isInfSpec = true; break;}
-			// Vehicle Specialties -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-			case(m_aVehicleSpecialtiesRolesCarbine.Contains(role)) : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isVehSpec = true; break;}
-			case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "",         "",    true);  isVehSpec = true; break;}
-		}
-		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// ITEMS
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -190,30 +200,28 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		{
 			//Who we give Leadership Radios
 			if(gearConfig.m_DefaultGear.m_bEnableLeadershipRadios && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "Spotter_P" || role == "Pilot_P" || role == "CrewChief_P"))
-				AddInventoryItem(gearConfig.m_DefaultGear.m_sLeadershipRadiosPrefab, 1);
+				AddInventoryItem(gearConfig.m_DefaultGear.m_sLeadershipRadiosPrefab, 1, role);
 		
 			//Who we give Leadership Binos
-			if(gearConfig.m_DefaultGear.m_bEnableLeadershipBinoculars && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "Spotter_P"))
-				AddInventoryItem(gearConfig.m_DefaultGear.m_sLeadershipBinocularsPrefab, 1);
+			if(gearConfig.m_DefaultGear.m_bEnableLeadershipBinoculars && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "Spotter_P" || role == "TL_P"))
+				AddInventoryItem(gearConfig.m_DefaultGear.m_sLeadershipBinocularsPrefab, 1, role);
 			
 			//Who we give GI Radios
 			if(gearConfig.m_DefaultGear.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "Spotter_P" || role == "Pilot_P" || role == "CrewChief_P"))
-				AddInventoryItem(gearConfig.m_DefaultGear.m_sGIRadiosPrefab, 1);
+				AddInventoryItem(gearConfig.m_DefaultGear.m_sGIRadiosPrefab, 1, role);
 			
 			//Who we give Assistant Binos/Extra magazines
 			if(role == "AAR_P" || role == "AMMG_P" || role == "AHMG_P" || role == "AMAT_P" || role == "AHAT_P" || role == "AAA_P" || role == "AAT_P")
 			{
 				if(gearConfig.m_DefaultGear.m_bEnableAssistantBinoculars)
-					AddInventoryItem(gearConfig.m_DefaultGear.m_sAssistantBinocularsPrefab, 1);
-				
-				AddAssistantMagazines(gearConfig, role);
+					AddInventoryItem(gearConfig.m_DefaultGear.m_sAssistantBinocularsPrefab, 1, role);
 			}
 			
 			//Who we give extra medical items
 			if(role == "Medic_P" || role == "MO_P")
 			{	
 				foreach(CRF_Inventory_Item item : gearConfig.m_DefaultGear.m_DefaultMedicMedicalItems)
-					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount);
+					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role);
 			}
 			
 			//What everyone gets
@@ -224,7 +232,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected void UpdateClothingSlot(array<ResourceName> clothingArray, string slot)
+	protected void UpdateClothingSlot(array<ResourceName> clothingArray, string slot, string role)
 	{
 		if(clothingArray.IsEmpty() || slot.IsEmpty())
 			return;
@@ -257,26 +265,50 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		if(slotInt == -1)
 			return;
 		
-		ResourceName clothing = clothingArray.GetRandomElement();
-		
+		array<IEntity> removedItems = {};
 		IEntity previousClothing = m_Inventory.Get(slotInt);
+		ResourceName clothing = clothingArray.GetRandomElement();
 		
 		if (previousClothing != null)
 		{
+			BaseInventoryStorageComponent oldStorage = BaseInventoryStorageComponent.Cast(previousClothing.FindComponent(BaseInventoryStorageComponent));
+			if(oldStorage)
+			{
+				array<IEntity> outItems = {};
+				oldStorage.GetAll(outItems);
+				foreach(IEntity item : outItems)
+				{
+					if(!item || !InventoryItemComponent.Cast(item.FindComponent(InventoryItemComponent)) || SCR_EquipmentStorageComponent.Cast(item.FindComponent(SCR_EquipmentStorageComponent)) ||  SCR_UniversalInventoryStorageComponent.Cast(item.FindComponent(SCR_UniversalInventoryStorageComponent)) || BaseInventoryStorageComponent.Cast(item.FindComponent(BaseInventoryStorageComponent)))
+						continue;
+					
+					m_InventoryManager.TryRemoveItemFromStorage(item, oldStorage);
+					removedItems.Insert(item);
+				}
+			};
+			
 			m_InventoryManager.TryRemoveItemFromStorage(previousClothing, m_Inventory);
 			SCR_EntityHelper.DeleteEntityAndChildren(previousClothing);
 		};
 		
-		ref IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(clothing), GetGame().GetWorld(), m_SpawnParams);
-		bool isThereSpace = m_InventoryManager.TryReplaceItem(resourceSpawned, m_Inventory, slotInt);
-		if (!isThereSpace && !clothing.IsEmpty())
+		if(!clothing.IsEmpty())
 		{
-			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
-			Print(string.Format("CRF GEAR SCRIPT : UNABLE TO INSERT CLOTHING: %1", clothing), LogLevel.ERROR);
-			Print(string.Format("CRF GEAR SCRIPT : INTO ENTITY: %1", m_InventoryManager.GetOwner().GetPrefabData().GetPrefabName()), LogLevel.ERROR);
-			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
-			SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
-		};
+			ref IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(clothing), GetGame().GetWorld(), m_SpawnParams);
+			m_InventoryManager.TryReplaceItem(resourceSpawned, m_Inventory, slotInt);
+			
+			if (!m_InventoryManager.Contains(resourceSpawned))
+			{
+				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+				Print(string.Format("CRF GEAR SCRIPT ERROR: UNABLE TO INSERT CLOTHING: %1", clothing), LogLevel.ERROR);
+				Print(string.Format("CRF GEAR SCRIPT ERROR: INTO ENTITY: %1", m_InventoryManager.GetOwner().GetPrefabData().GetPrefabName()), LogLevel.ERROR);
+				Print(" ", LogLevel.ERROR);
+				Print("CRF GEAR SCRIPT ERROR: INVALID CLOTHING ITEM!", LogLevel.ERROR);
+				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+			};
+		}
+		
+		foreach(IEntity oldItem : removedItems)
+			InsertInventoryItem(oldItem, role);
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -289,44 +321,99 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		{
 			ref IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), m_SpawnParams);
 			
+			bool isThrowable = (WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)) && WEAPON_TYPES_THROWABLE.Contains(WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType()));
+			
+			if(!enableMedicFrags && (role == "Medic_P" || role == "MO_P") && (isThrowable && WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE))
+			{
+				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				continue;
+			};
+			
 			if(m_SCRInventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
 			{
 				m_StorageComp = m_SCRInventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
 				m_SCRInventoryManager.EquipAny(m_StorageComp, resourceSpawned, -1);
-				return;
-			}
-			/*
-			if(SCR_BinocularsComponent.Cast(resourceSpawned.FindComponent(SCR_BinocularsComponent)) || SCR_WristwatchComponent.Cast(resourceSpawned.FindComponent(SCR_WristwatchComponent)) || SCR_MapGadgetComponent.Cast(resourceSpawned.FindComponent(SCR_MapGadgetComponent)) || SCR_CompassComponent.Cast(resourceSpawned.FindComponent(SCR_CompassComponent)) || SCR_FlashlightComponent.Cast(resourceSpawned.FindComponent(SCR_FlashlightComponent)) || SCR_RadioComponent.Cast(resourceSpawned.FindComponent(SCR_RadioComponent)))
-				storage = m_InventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_DEPOSIT);
-			*/
-			bool isThereSpace = m_InventoryManager.TryInsertItem(resourceSpawned);
-			
-			if (!isThereSpace)
-			{
-				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
-				Print(string.Format("CRF GEAR SCRIPT : UNABLE TO INSERT ITEM: %1", item), LogLevel.ERROR);
-				Print(string.Format("CRF GEAR SCRIPT : INTO ENTITY: %1", m_InventoryManager.GetOwner().GetPrefabData().GetPrefabName()), LogLevel.ERROR);
-				Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
-				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				continue;
 			};
 			
-			if(!enableMedicFrags && (role == "Medic_P" || role == "MO_P"))
+			InsertInventoryItem(resourceSpawned, role);
+			
+			if(isThrowable)
 			{
-				WeaponComponent weaponComp = WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent));
+				CharacterGrenadeSlotComponent grenadeSlot = CharacterGrenadeSlotComponent.Cast(m_InventoryManager.GetOwner().FindComponent(CharacterGrenadeSlotComponent));
 				
-				if(!weaponComp || weaponComp.GetWeaponType() != EWeaponType.WT_FRAGGRENADE)
-					continue;
-				
-				m_InventoryManager.TryRemoveItemFromStorage(resourceSpawned, m_Inventory);
-				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				if(grenadeSlot)
+				{
+					if(WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE)
+					{
+						grenadeSlot.SetWeapon(resourceSpawned);
+					} else {
+						if (WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_SMOKEGRENADE && !grenadeSlot.GetWeaponEntity())
+							grenadeSlot.SetWeapon(resourceSpawned);
+					};
+				};
 			};
 		}
+	}
+	
+	protected void InsertInventoryItem(IEntity item, string role)
+	{
+		ref array<int> clothingIDs = {};
+			
+		// Any magazine
+		if(MagazineComponent.Cast(item.FindComponent(MagazineComponent)) || InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)))
+			clothingIDs = {VEST, ARMOREDVEST};
+		else // Any Non-magazine
+			clothingIDs = {SHIRT, PANTS};
+			
+		// Any medical item
+		if((role == "Medic_P" || role == "MO_P") && SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent)))
+			clothingIDs = {BACKPACK};
+		
+		// Any pistol ammo
+		if(InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO)
+			clothingIDs = {PANTS, SHIRT, VEST, ARMOREDVEST};
+		
+		// Try and insert into select clothing at first
+		foreach(int clothingID : clothingIDs)
+		{			
+			IEntity clothing = m_Inventory.Get(clothingID);
+
+			if(!clothing || m_InventoryManager.Contains(item))
+				continue;
+				
+			BaseInventoryStorageComponent clothingStorage = BaseInventoryStorageComponent.Cast(clothing.FindComponent(BaseInventoryStorageComponent));
+			
+			if(!clothingStorage)
+				continue;
+			
+			bool successfulInsert = m_InventoryManager.TryInsertItemInStorage(item, clothingStorage);
+			
+			if(!successfulInsert)
+				m_SCRInventoryManager.InsertItemCRF(item, clothingStorage, null, null, false);
+		};
+			
+		// if we cant do select clothing, just slap it in wherever
+		if(!m_InventoryManager.Contains(item))
+			m_InventoryManager.TryInsertItem(item);
+			
+		if (!m_InventoryManager.Contains(item) || !InventoryItemComponent.Cast(item.FindComponent(InventoryItemComponent)))
+		{
+			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: UNABLE TO INSERT ITEM: %1", item.GetPrefabData().GetPrefabName()), LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: INTO ENTITY: %1", m_InventoryManager.GetOwner().GetPrefabData().GetPrefabName()), LogLevel.ERROR);
+			Print(" ", LogLevel.ERROR);
+			Print("CRF GEAR SCRIPT ERROR: NOT ENOUGH SPACE IN INVENTORY/INVALID INVENTORY ITEM!", LogLevel.ERROR);
+			Print("-------------------------------------------------------------------------------------------------------------", LogLevel.ERROR);
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	protected void AddAssistantMagazines(CRF_GearScriptConfig gearConfig, string role)
 	{
 		array<ref CRF_Spec_Magazine_Class> magazineArray = {};
+		
 		switch(role)
 		{
 			case "AAR_P"  : {if(!gearConfig.m_Weapons.m_AR  || !gearConfig.m_Weapons.m_AR.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AR.m_MagazineArray;  break;}
@@ -339,7 +426,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		foreach(ref CRF_Spec_Magazine_Class magazine : magazineArray)
-			AddInventoryItem(magazine.m_Magazine, magazine.m_AssistantMagazineCount);
+			AddInventoryItem(magazine.m_Magazine, magazine.m_AssistantMagazineCount, role);
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -357,7 +444,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected void AddWeapons(IEntity entity, array<Managed> weaponSlotComponentArray, CRF_GearScriptConfig gearConfig, string weaponType, string atType, bool givePistol)
+	protected void AddWeapons(string role, IEntity entity, array<Managed> weaponSlotComponentArray, CRF_GearScriptConfig gearConfig, string weaponType, string atType, bool givePistol)
 	{
 		if(!gearConfig.m_Weapons)
 			return;
@@ -404,7 +491,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 						specMagazineArray = specWeaponToSpawn.m_MagazineArray; 
 						
 						foreach(ref CRF_Spec_Magazine_Class magazine : specMagazineArray)
-							AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
+							AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, role);
 
 						weaponSlotComponent.SetWeapon(weaponSpawned);
 						
@@ -456,9 +543,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					magazineArray = weaponToSpawn.m_MagazineArray; 
 					
 					foreach(ref CRF_Magazine_Class magazine : magazineArray)
-					{
-						AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
-					};
+						AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, role);
 				};
 				
 				if(specWeaponToSpawn && specWeaponToSpawn.m_Weapon)
@@ -469,7 +554,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					specMagazineArray = specWeaponToSpawn.m_MagazineArray; 
 			
 					foreach(ref CRF_Spec_Magazine_Class magazine : specMagazineArray)
-						AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
+						AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, role);
 				};
 				
 				if(!weaponSpawned)
@@ -522,7 +607,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				magazineArray = weaponToSpawn.m_MagazineArray;
 
 				foreach(ref CRF_Magazine_Class magazine : magazineArray)
-					AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
+					AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, role);
 				
 				if(!weaponSpawned)
 					continue;
@@ -576,10 +661,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 				
 			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
-				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType, role);
 					
 			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
-				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount);
+				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role);
 		}
 	}
 	
@@ -605,10 +690,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 				
 			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
-				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType, role);
 					
 			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
-				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount);
+				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role);
 		}
 	}
 	
@@ -637,10 +722,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 				
 			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
-				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType, role);
 					
 			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
-				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount);
+				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role);
 		}
 	}
 	
@@ -665,10 +750,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 				
 			foreach(CRF_Clothing clothing : customGear.m_CustomClothing)
-				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType);
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_sClothingType, role);
 					
 			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
-				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount);
+				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role);
 		}
 	}
 }
