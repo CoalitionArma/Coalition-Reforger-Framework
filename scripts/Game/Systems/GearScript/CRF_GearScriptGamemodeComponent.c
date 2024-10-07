@@ -55,6 +55,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	protected SCR_CharacterInventoryStorageComponent m_Inventory;
 	protected InventoryStorageManagerComponent m_InventoryManager;
+	protected SCR_InventoryStorageManagerComponent m_SCRInventoryManager;
+	protected BaseInventoryStorageComponent m_StorageComp;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	protected ref array<Managed> m_WeaponSlotComponentArray = {};
 	
@@ -113,6 +115,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
 		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
+		m_SCRInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// CLOTHING
@@ -286,6 +289,12 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		{
 			ref IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(item), GetGame().GetWorld(), m_SpawnParams);
 			
+			if(m_SCRInventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
+			{
+				m_StorageComp = m_SCRInventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
+				m_SCRInventoryManager.EquipAny(m_StorageComp, resourceSpawned, -1);
+				return;
+			}
 			/*
 			if(SCR_BinocularsComponent.Cast(resourceSpawned.FindComponent(SCR_BinocularsComponent)) || SCR_WristwatchComponent.Cast(resourceSpawned.FindComponent(SCR_WristwatchComponent)) || SCR_MapGadgetComponent.Cast(resourceSpawned.FindComponent(SCR_MapGadgetComponent)) || SCR_CompassComponent.Cast(resourceSpawned.FindComponent(SCR_CompassComponent)) || SCR_FlashlightComponent.Cast(resourceSpawned.FindComponent(SCR_FlashlightComponent)) || SCR_RadioComponent.Cast(resourceSpawned.FindComponent(SCR_RadioComponent)))
 				storage = m_InventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_DEPOSIT);
