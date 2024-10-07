@@ -338,12 +338,11 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			
 			InsertInventoryItem(resourceSpawned, role);
 			
-			/*
 			if(isThrowable)
 			{
 				CharacterGrenadeSlotComponent grenadeSlot = CharacterGrenadeSlotComponent.Cast(m_InventoryManager.GetOwner().FindComponent(CharacterGrenadeSlotComponent));
 				
-				if(grenadeSlot)
+				if(grenadeSlot && !grenadeSlot.GetWeaponEntity())
 				{
 					if(WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE)
 					{
@@ -354,7 +353,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					};
 				};
 			};
-			*/
 		}
 	}
 	
