@@ -338,6 +338,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			
 			InsertInventoryItem(resourceSpawned, role);
 			
+			/*
 			if(isThrowable)
 			{
 				CharacterGrenadeSlotComponent grenadeSlot = CharacterGrenadeSlotComponent.Cast(m_InventoryManager.GetOwner().FindComponent(CharacterGrenadeSlotComponent));
@@ -353,6 +354,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					};
 				};
 			};
+			*/
 		}
 	}
 	
