@@ -135,12 +135,24 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		string role = value[3] + "_" + value[4];
 		
 		role.Split(".", value, true);
-		role = value[0];
+		role = value[0];	
 		
 		bool isLeader = false;
 		bool isSquad = false;
 		bool isInfSpec = false;
 		bool isVehSpec = false;
+		
+		if(gearConfig.m_CustomGear)
+		{
+			switch(true)
+			{
+				case(isLeader)  : {UpdateLeadershipCustomGear(gearConfig.m_CustomGear.m_LeadershipCustomGear, role);                   break;}
+				case(isSquad)   : {UpdateSquadLevelCustomGear(gearConfig.m_CustomGear.m_SquadLevelCustomGear, role);                   break;}
+				case(isInfSpec) : {UpdateInfantrySpecialtiesCustomGear(gearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, role); break;}
+				case(isVehSpec) : {UpdateVehicleSpecialtiesCustomGear(gearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, role);   break;}
+			}
+		} else
+			Print(string.Format("CRF GEAR SCRIPT : NO CUSTOM GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
 		
 		switch(true)
 		{
@@ -166,18 +178,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			case(m_aVehicleSpecialtiesRolesCarbine.Contains(role)) : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isVehSpec = true; break;}
 			case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(entity, m_WeaponSlotComponentArray, gearConfig, "",         "",    true);  isVehSpec = true; break;}
 		}
-		
-		if(gearConfig.m_CustomGear)
-		{
-			switch(true)
-			{
-				case(isLeader)  : {UpdateLeadershipCustomGear(gearConfig.m_CustomGear.m_LeadershipCustomGear, role);                   break;}
-				case(isSquad)   : {UpdateSquadLevelCustomGear(gearConfig.m_CustomGear.m_SquadLevelCustomGear, role);                   break;}
-				case(isInfSpec) : {UpdateInfantrySpecialtiesCustomGear(gearConfig.m_CustomGear.m_InfantrySpecialtiesCustomGear, role); break;}
-				case(isVehSpec) : {UpdateVehicleSpecialtiesCustomGear(gearConfig.m_CustomGear.m_VehicleSpecialtiesCustomGear, role);   break;}
-			}
-		} else
-			Print(string.Format("CRF GEAR SCRIPT : NO CUSTOM GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// ITEMS
@@ -447,7 +447,9 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 					magazineArray = weaponToSpawn.m_MagazineArray; 
 					
 					foreach(ref CRF_Magazine_Class magazine : magazineArray)
+					{
 						AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount);
+					};
 				};
 				
 				if(specWeaponToSpawn && specWeaponToSpawn.m_Weapon)
