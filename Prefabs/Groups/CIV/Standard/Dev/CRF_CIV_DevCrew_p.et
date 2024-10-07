@@ -15,13 +15,13 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      72
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{628B11FE75C86B5E}" {
+     SCR_EntityBudgetValue "{628E5DCBCF0D7FF9}" {
       m_BudgetType AI
       m_Value 9
      }
     }
     m_bUseUIInfoName 1
-    m_MilitarySymbol SCR_MilitarySymbol "{628B11FE75C86AA9}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{628E5DCBCF0D7FEF}" {
      m_Identity BLUFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -38,7 +38,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{628B11FE75C86AA2}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7FE4}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -48,7 +48,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C86AA4}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7FE3}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -58,7 +58,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C86AA6}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7FE0}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -68,7 +68,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C86AB9}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7F1F}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -78,7 +78,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -3 0 -3
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C86ABB}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7F1E}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -88,7 +88,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C86ABA}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7F1D}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -98,7 +98,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C86ABD}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7F1C}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -108,7 +108,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 9 0 -9
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C8A490}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D7F1B}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -118,7 +118,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -9 0 -9
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C8A493}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D51CC}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -128,7 +128,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 12 0 -12
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{628B11FE75C8A49C}" {
+    SCR_BasePreviewEntry "{628E5DCBCF0D51CE}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -142,16 +142,16 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "BLUFOR"
+ m_faction "CIV"
  m_aUnitPrefabSlots {
-  "{9E133FF6147DCF5A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HAT_P.et" "{B1C216E5902395EB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHAT_P.et" "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et" "{244B3033D92FF7D0}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMAT_P.et" "{B6AEA6F0469C66DD}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HMG_P.et" "{997F8FE3C2C23C6C}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHMG_P.et" "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et" "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et" "{6B23BDB84254123F}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AA_P.et" "{FADE5BED859475A2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAA_P.et" "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et" "{49CC52FEE609771E}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Spotter_P.et"
+  "{A6410407E82601E2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehDriver_P.et" "{7735FA094DA6AC81}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehGunner_P.et" "{30B43B4C1F6764B5}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehLoader_P.et" "{425F553B6F1E8E66}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Pilot_P.et" "{BA61A1A8CAFAE948}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_CrewChief_P.et" "{D5FEC649E024636E}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_IndirectGunner_P.et" "{927F070CB2E5AB5A}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_IndirectLoader_P.et" "{598D81084B4F5CDA}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_LogiRunner_P.et"
  }
  m_sCustomNameSet "1st Squad"
  m_bSetPlayable 1
  m_aUnitPrefabColorTeams {
-  "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None"
+  "None" "None" "None" "None" "None" "None" "None" "None"
  }
  m_aUnitPrefabOverrideIcons {
-  "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None"
+  "None" "None" "None" "None" "None" "None" "None" "None"
  }
 }
