@@ -342,7 +342,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			{
 				CharacterGrenadeSlotComponent grenadeSlot = CharacterGrenadeSlotComponent.Cast(m_InventoryManager.GetOwner().FindComponent(CharacterGrenadeSlotComponent));
 				
-				if(grenadeSlot)
+				if(grenadeSlot && !grenadeSlot.GetWeaponEntity())
 				{
 					if(WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE)
 					{
