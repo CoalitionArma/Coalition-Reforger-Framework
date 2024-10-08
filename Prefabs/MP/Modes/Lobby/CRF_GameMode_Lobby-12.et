@@ -308,7 +308,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_bIsPlayable 0
      m_sFactionFlag "{46FB2FB2C2125A3C}UI/Textures/Flags/US-flag-base-3it.edds"
      m_FactionFlagMaterial "{610803CC3F3D6649}Assets/Props/Fabric/Flags/Data/Flag_1_2_USA.emat"
-     m_FactionLabel FACTION_NONE
+     m_FactionLabel FACTION_US
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_bIsAssignedRandomly 0
       m_aCompanyNames {
@@ -501,7 +501,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_bIsPlayable 0
      m_sFactionFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
      m_FactionFlagMaterial "{B47B52D9DA68905D}Assets/Props/Fabric/Flags/Data/Flag_1_2_SovietArmy.emat"
-     m_FactionLabel FACTION_NONE
+     m_FactionLabel FACTION_USSR
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_bIsAssignedRandomly 0
       m_aCompanyNames {
@@ -690,7 +690,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_bIsPlayable 0
      m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
      m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
-     m_FactionLabel FACTION_NONE
+     m_FactionLabel FACTION_FIA
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_bIsAssignedRandomly 0
       m_aCompanyNames {
