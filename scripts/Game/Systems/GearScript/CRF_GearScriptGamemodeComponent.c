@@ -359,6 +359,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	protected void InsertInventoryItem(IEntity item, string role)
 	{
 		ref array<int> clothingIDs = {};
+		
+		bool isThrowable = (WeaponComponent.Cast(item.FindComponent(WeaponComponent)) && WEAPON_TYPES_THROWABLE.Contains(WeaponComponent.Cast(item.FindComponent(WeaponComponent)).GetWeaponType()));
 			
 		// Any magazine
 		if(MagazineComponent.Cast(item.FindComponent(MagazineComponent)) || InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)))
@@ -371,8 +373,17 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			clothingIDs = {BACKPACK};
 		
 		// Any pistol ammo
-		if(InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO)
+		if((InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO) || isThrowable)
 			clothingIDs = {PANTS, SHIRT, VEST, ARMOREDVEST};
+		
+		// Check if item is explosives related
+		SCR_DetonatorGadgetComponent detonator = SCR_DetonatorGadgetComponent.Cast(item.FindComponent(SCR_DetonatorGadgetComponent));
+		SCR_ExplosiveChargeComponent explosives = SCR_ExplosiveChargeComponent.Cast(item.FindComponent(SCR_ExplosiveChargeComponent));
+		SCR_MineWeaponComponent mine = SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent));
+		SCR_RepairSupportStationComponent engTool = SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent));
+		SCR_HealSupportStationComponent medTool = SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
+		if(detonator || explosives || mine || engTool || medTool)
+			clothingIDs = {BACKPACK, VEST};
 		
 		// Try and insert into select clothing at first
 		foreach(int clothingID : clothingIDs)
