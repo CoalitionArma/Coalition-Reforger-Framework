@@ -1,50 +1,105 @@
 SCR_AIGroup : "{C654769C2D326CBC}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Company_p.et" {
- coords 1330.133 3.041 1197.008
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+ }
+ coords 1327.363 3.041 1196.588
  angleY -82.99
  m_sCustomNameSet "Company"
  {
   SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
-   coords 0.03 -0.167 4.772
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "Column"
+    }
+   }
+   coords -10.279 0.233 7.656
    angleY 176.23
    {
     SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-     coords 0.236 0.394 -8.255
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Column"
+      }
+     }
+     coords -2.086 0.062 -2.463
      angleY 0.222
      {
       SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-       coords -0.001 0.299 -7.116
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -4.181 -0.036 0.33
        m_sCustomNameSet "2nd Squad"
        {
         SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-         coords 0 -0.103 -7.383
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Column"
+          }
+         }
+         coords -4.825 0.057 -0.073
          m_sCustomNameSet "3rd Squad"
          {
           SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
-           coords 0.69 -0.663 -8.349
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Column"
+            }
+           }
+           coords -6.385 -0.12 3.117
            angleY -0.222
            m_sCustomNameSet "2nd Platoon"
            {
             SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-             coords 0.235 -0.779 -8.255
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "Column"
+              }
+             }
+             coords -3.845 0.232 -2.798
              angleY 0.222
              {
               SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-               coords 0.001 -0.35 -7.116
+               components {
+                AIFormationComponent "{507E9DC12F541FE6}" {
+                 DefaultFormation "Column"
+                }
+               }
+               coords -3.453 -0.001 0.478
                m_sCustomNameSet "2nd Squad"
                {
                 SCR_AIGroup : "{11A5EDDA5609B41C}Prefabs/Groups/BLUFOR/2000s US/Standard/Infantry/CRF_Group_2000_RifleSquad_p.et" {
-                 coords 0 -0.021 -7.383
+                 components {
+                  AIFormationComponent "{507E9DC12F541FE6}" {
+                   DefaultFormation "Column"
+                  }
+                 }
+                 coords -4.048 -0.479 -0.717
                  m_sCustomNameSet "3rd Squad"
                  {
                   SCR_AIGroup : "{C126D3281D5FE29C}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_2ManVehicle_p.et" {
-                   coords 19.041 3.052 59.615
+                   components {
+                    AIFormationComponent "{507E9DC12F541FE6}" {
+                     DefaultFormation "Column"
+                    }
+                   }
+                   coords 37.959 2.098 15.062
                    angleY -89.645
-                   m_sCustomNameSet "Stryker Crew"
+                   m_sCustomNameSet "Stryker Crew 1"
                    {
                     SCR_AIGroup : "{C126D3281D5FE29C}Prefabs/Groups/BLUFOR/2000s US/Standard/Vehicles/CRF_Group_2000_2ManVehicle_p.et" {
-                     coords 4.985 -0.271 0.317
+                     components {
+                      AIFormationComponent "{507E9DC12F541FE6}" {
+                       DefaultFormation "Column"
+                      }
+                     }
+                     coords 4.985 -0.309 0.317
                      angleY -4.331
-                     m_sCustomNameSet "Stryker Crew"
+                     m_sCustomNameSet "Stryker Crew 2"
                     }
                    }
                   }

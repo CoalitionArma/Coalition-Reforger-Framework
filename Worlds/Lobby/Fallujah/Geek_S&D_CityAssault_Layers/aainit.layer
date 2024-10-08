@@ -37,9 +37,6 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
        SCR_CallsignInfo "{6274A02C4456F936}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{6274A02C46BF6AB7}" {
-        m_sCallsign "1-4"
-       }
        SCR_CallsignInfo "{6274A02BBFCE000F}" {
         m_sCallsign "2PLT"
        }
@@ -52,11 +49,11 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
        SCR_CallsignInfo "{6274A02BB8F76CEC}" {
         m_sCallsign "2-3"
        }
-       SCR_CallsignInfo "{6274A02BB8B672B6}" {
-        m_sCallsign "2-4"
-       }
        SCR_CallsignInfo "{6274A02BB8751C1F}" {
-        m_sCallsign "VIC"
+        m_sCallsign "VIC 1"
+       }
+       SCR_CallsignInfo "{62911469034F5F6D}" {
+        m_sCallsign "VIC 2"
        }
       }
       m_sCallsignCharacterFormat "%1 %2 %3 %4"
@@ -70,16 +67,16 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
         m_sCallsign "PLT"
        }
        SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign "1"
+        m_sCallsign "1-1"
        }
        SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "2"
+        m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "3"
+        m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{6274A02B96693304}" {
-        m_sCallsign "4"
+        m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{6274A02B905F673E}" {
         m_sCallsign "MAT"

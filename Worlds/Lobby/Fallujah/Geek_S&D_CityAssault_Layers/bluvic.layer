@@ -1,6 +1,6 @@
 $grp SCR_BaseTriggerEntity {
  spawnBluforVics {
-  coords 1343.206 4.668 1200.715
+  coords 1343.206 2.204 1200.715
   angleY -82.948
   userScript "	string humArm = \"{C271F121CED94150}Prefabs/M1025/kiok_m1025_armed_M2_tan.et\";"\
   "	string stryker = \"{5F17F054025E8B30}Prefabs/Vehicles/Wheeled/Stryker/Stryker_CROWS_Cage.et\";"\
@@ -48,7 +48,7 @@ $grp SCR_BaseTriggerEntity {
   "	"
  }
  spawnMaxi {
-  coords 1334.977 3.483 1195.278
+  coords 1334.977 3.482 1195.278
  }
  spawnStryker {
   coords 1317.658 5.126 1169.157
@@ -71,11 +71,11 @@ $grp SCR_BaseTriggerEntity {
   angleY -84.347
  }
  spawnM923A12 {
-  coords 1301.467 5.223 1171.36
+  coords 1301.467 5.227 1171.36
   angleY -84.439
  }
  spawnM923A13 {
-  coords 1294.049 5.25 1171.714
+  coords 1294.049 5.253 1171.714
   angleY -86.549
  }
  spawnM923A14 {

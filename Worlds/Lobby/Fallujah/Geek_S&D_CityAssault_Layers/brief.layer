@@ -16,9 +16,9 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
        m_iOrder 3
        {
         PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
-         coords -0.579 -0 -0.638
+         coords -0.579 0 -0.638
          m_sTextData "BLUFOR: 1x Ambulance, 2x Armed Humvees, 2x Stryker, 4x M923A1 Transport Trucks."\
-         "INDFOR: 1x Ambulance."
+         "INDFOR: 1x Ambulance. 2x Car, 2x Van."
          m_iOrder 4
          {
           PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
