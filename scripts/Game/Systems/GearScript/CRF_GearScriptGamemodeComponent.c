@@ -373,7 +373,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			clothingIDs = {BACKPACK};
 		
 		// Any pistol ammo
-		if((InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO) || isThrowable)
+		if((InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO) || isThrowable || BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent)))
 			clothingIDs = {PANTS, SHIRT, VEST, ARMOREDVEST};
 		
 		// Check if item is explosives related
