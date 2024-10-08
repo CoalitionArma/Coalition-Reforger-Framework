@@ -82,20 +82,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	string m_extra3ArrayString;
 	string m_extra4ArrayString;
 	
-	protected SCR_ButtonTextComponent m_ARButton;
-	protected SCR_ButtonTextComponent m_MMGButton;
-	protected SCR_ButtonTextComponent m_HMGButton;
-	protected SCR_ButtonTextComponent m_ATButton;
-	protected SCR_ButtonTextComponent m_MATButton;
-	protected SCR_ButtonTextComponent m_HATButton;
-	protected SCR_ButtonTextComponent m_AAButton;
-	protected SCR_ButtonTextComponent m_sniperButton;
 	
-	protected ref array<string> m_ARPrefab = {};
-	
-	protected ref array<Managed> m_WeaponSlotComponentArray = {};
-	
-	CRF_GearScriptEditorGamemodeComponent m_gearScriptEditor;
 	SCR_CharacterInventoryStorageComponent m_CharacterInventory = SCR_CharacterInventoryStorageComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterInventoryStorageComponent));
 	override void OnMenuOpen()
 	{
@@ -146,36 +133,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		
 		m_wRoot = GetRootWidget();
 		
-		m_gearScriptEditor = CRF_GearScriptEditorGamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeComponent));
-		
-		if(!m_gearScriptEditor)
-			{
-				while(true)
-				{
-					if(m_hudRoot.GetChildren().GetName() == "Layer_Slots")
-						break;
-					
-					Print(m_hudRoot.GetChildren());
-					m_hudRoot.GetChildren().SetEnabled(false);
-					m_hudRoot.RemoveChild(m_hudRoot.GetChildren());
-				}
-			return;
-			}
-		
-		SCR_PlayerController.GetLocalControlledEntity().FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
-		
-		//Set Weapons
-		m_ARButton = SCR_ButtonTextComponent.GetButtonText("AR", m_wRoot);
-		m_MMGButton = SCR_ButtonTextComponent.GetButtonText("MMG", m_wRoot);
-		m_HMGButton = SCR_ButtonTextComponent.GetButtonText("HMG", m_wRoot);
-		m_ATButton = SCR_ButtonTextComponent.GetButtonText("AT", m_wRoot);
-		m_MATButton = SCR_ButtonTextComponent.GetButtonText("MAT", m_wRoot);
-		m_HATButton = SCR_ButtonTextComponent.GetButtonText("HAT", m_wRoot);
-		m_AAButton = SCR_ButtonTextComponent.GetButtonText("AA", m_wRoot);
-		m_sniperButton = SCR_ButtonTextComponent.GetButtonText("Sniper", m_wRoot);
-		
-		//Add Weapons on Click
-		m_ARButton.m_OnClicked.Insert(AddAR);
+		Print("Custom inventory opened");
       
 		//Add Buttons
 		m_helemtsButton = SCR_ButtonTextComponent.GetButtonText("Helmet", m_wRoot);
@@ -297,58 +255,6 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		extra3RemoveButton.m_OnClicked.Insert(RemoveExtra3);
 		extra4RemoveButton.m_OnClicked.Insert(RemoveExtra4);
 		
-	}
-	//-------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------
-	//------------------------------------------------AR Members-----------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------------------------------------------------------------------------------------------------------
-	void AddAR()
-	{
-		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
-		{
-			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
-			
-			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
-			{
-				if(!weaponSlotComponent.GetWeaponEntity())
-					continue;
-				
-				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
-				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
-				string numberOfMags = string.ToString(Math.Round(300 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
-				m_ARPrefab.Insert(weapon);
-				m_ARPrefab.Insert(magazine);
-				m_ARPrefab.Insert(numberOfMags);
-				array<string> weaponStringArray = {};
-				string displayString;
-				weapon.Split("/", weaponStringArray, false);
-				displayString = (weaponStringArray[weaponStringArray.Count()-1]);
-				m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ARString"));
-				m_arrayWidget.SetText(displayString);
-				ref array<array<ResourceName>> finalArray = {};
-				finalArray.Insert(m_helmetsArray);
-				finalArray.Insert(m_shirtsArray);
-				finalArray.Insert(m_armoredVestArray);
-				finalArray.Insert(m_pantsArray);
-				finalArray.Insert(m_bootsArray);
-				finalArray.Insert(m_backpackArray);
-				finalArray.Insert(m_vestArray);
-				finalArray.Insert(m_handwearArray);
-				finalArray.Insert(m_headArray);
-				finalArray.Insert(m_eyesArray);
-				finalArray.Insert(m_earsArray);
-				finalArray.Insert(m_faceArray);
-				finalArray.Insert(m_neckArray);
-				finalArray.Insert(m_extra1Array);
-				finalArray.Insert(m_extra2Array);
-				finalArray.Insert(m_waistArray);
-				finalArray.Insert(m_extra3Array);
-				finalArray.Insert(m_extra4Array);
-				m_gearScriptEditor.ExportGearScript(finalArray);
-				return;
-			}
-		}
 	}
 	
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -500,7 +406,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		m_item = m_CharacterInventory.Get(3).GetPrefabData().GetPrefabName();
 		if(!m_item)
 			return;
-		m_pantsArray.Insert(m_item);
+		m_bootsArray.Insert(m_item);
 		m_item.Split("/", m_itemArray, false);
 		m_pantsArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
 		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("PantsArray"));
