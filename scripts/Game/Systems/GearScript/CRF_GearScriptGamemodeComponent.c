@@ -41,17 +41,17 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	
-	const ref TStringArray m_aLeadershipRolesUGL = {"COY_P", "PL_P", "SL_P", "FO_P", "JTAC_P"};
-	const ref TStringArray m_aLeadershipRolesCarbine = {"MO_P", "IndirectLead_P", "LogiLead_P", "VehLead_P"};
+	const ref TStringArray m_aLeadershipRolesUGL = {"_COY_P", "_PL_P", "_SL_P", "_FO_P", "_JTAC_P"};
+	const ref TStringArray m_aLeadershipRolesCarbine = {"_MO_P", "_IndirectLead_P", "_LogiLead_P", "_VehLead_P"};
 		
-	const ref TStringArray m_aSquadLevelRolesUGL = {"TL_P", "Gren_P"};
-	const ref TStringArray m_aSquadLevelRolesRifle = {"Rifleman_P", "Demo_P", "AAT_P", "AAR_P"};
-	const ref TStringArray m_aSquadLevelRolesCarbine = {"Medic_P"};
+	const ref TStringArray m_aSquadLevelRolesUGL = {"_TL_P", "_Gren_P"};
+	const ref TStringArray m_aSquadLevelRolesRifle = {"_Rifleman_P", "_Demo_P", "_AAT_P", "_AAR_P"};
+	const ref TStringArray m_aSquadLevelRolesCarbine = {"_Medic_P"};
 		
-	const ref TStringArray m_aInfantrySpecialtiesRolesRifle = {"AHAT_P", "AMAT_P", "AHMG_P", "AMMG_P", "AAA_P"};
+	const ref TStringArray m_aInfantrySpecialtiesRolesRifle = {"_AHAT_P", "_AMAT_P", "_AHMG_P", "_AMMG_P", "_AAA_P"};
 		
-	const ref TStringArray m_aVehicleSpecialtiesRolesCarbine = {"VehDriver_P", "VehGunner_P", "VehLoader_P", "LogiRunner_P", "IndirectGunner_P", "IndirectLoader_P"};
-	const ref TStringArray m_aVehicleSpecialtiesRolesPistol = {"Pilot_P", "CrewChief_P"};
+	const ref TStringArray m_aVehicleSpecialtiesRolesCarbine = {"_VehDriver_P", "_VehGunner_P", "_VehLoader_P", "_LogiRunner_P", "_IndirectGunner_P", "_IndirectLoader_P"};
+	const ref TStringArray m_aVehicleSpecialtiesRolesPistol = {"_Pilot_P", "_CrewChief_P"};
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
@@ -126,7 +126,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		array<string> value = {};
 		ResourceNameToScan.Split("_", value, true);
 		
-		string role = value[3] + "_" + value[4];
+		string role = "_" + value[3] + "_" + value[4];
 		
 		role.Split(".", value, true);
 		role = value[0];	
@@ -151,10 +151,6 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		bool isInfSpec = false;
 		bool isVehSpec = false;
 		
-		//Who we give Assistant Binos/Extra magazines
-		if(role == "AAR_P" || role == "AMMG_P" || role == "AHMG_P" || role == "AMAT_P" || role == "AHAT_P" || role == "AAA_P" || role == "AAT_P")
-			AddAssistantMagazines(gearConfig, role);
-		
 		switch(true)
 		{
 			// Leadership --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -164,17 +160,17 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			case(m_aSquadLevelRolesUGL.Contains(role))             : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    false); isSquad = true;   break;}
 			case(m_aSquadLevelRolesCarbine.Contains(role))         : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isSquad = true;   break;}
 			case(m_aSquadLevelRolesRifle.Contains(role))           : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "",    false); isSquad = true;   break;}
-			case(role == "AT_P")                                   : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AT",  false); isSquad = true;   break;}
-			case(role == "AR_P")                                   : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "AR",       "",    false); isSquad = true;   break;}
+			case(role == "_AT_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AT",  false); isSquad = true;   break;}
+			case(role == "_AR_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "AR",       "",    false); isSquad = true;   break;}
 			// Infantry Specialties ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			case(m_aInfantrySpecialtiesRolesRifle.Contains(role))  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "",    false); isInfSpec = true; break;}
-			case(role == "HAT_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "HAT", false); isInfSpec = true; break;}
-			case(role == "MAT_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "MAT", false); isInfSpec = true; break;}
-			case(role == "HMG_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "HMG",      "",    true);  isInfSpec = true; break;}
-			case(role == "MMG_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "MMG",      "",    true);  isInfSpec = true; break;}
-			case(role == "AA_P")                                   : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AA",  false); isInfSpec = true; break;}
-			case(role == "Sniper_P")                               : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Sniper",   "",    true);  isInfSpec = true; break;}
-			case(role == "Spotter_P")                              : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    false); isInfSpec = true; break;}
+			case(role == "_HAT_P")                                 : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "HAT", false); isInfSpec = true; break;}
+			case(role == "_MAT_P")                                 : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "MAT", false); isInfSpec = true; break;}
+			case(role == "_HMG_P")                                 : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "HMG",      "",    true);  isInfSpec = true; break;}
+			case(role == "_MMG_P")                                 : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "MMG",      "",    true);  isInfSpec = true; break;}
+			case(role == "_AA_P")                                  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Rifle",    "AA",  false); isInfSpec = true; break;}
+			case(role == "_Sniper_P")                              : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Sniper",   "",    true);  isInfSpec = true; break;}
+			case(role == "_Spotter_P")                             : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "RifleUGL", "",    false); isInfSpec = true; break;}
 			// Vehicle Specialties -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 			case(m_aVehicleSpecialtiesRolesCarbine.Contains(role)) : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isVehSpec = true; break;}
 			case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(role, entity, m_WeaponSlotComponentArray, gearConfig, "",         "",    true);  isVehSpec = true; break;}
@@ -199,26 +195,28 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		if(gearConfig.m_DefaultGear)
 		{
 			//Who we give Leadership Radios
-			if(gearConfig.m_DefaultGear.m_bEnableLeadershipRadios && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "Spotter_P" || role == "Pilot_P" || role == "CrewChief_P"))
+			if(gearConfig.m_DefaultGear.m_bEnableLeadershipRadios && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
 				AddInventoryItem(gearConfig.m_DefaultGear.m_sLeadershipRadiosPrefab, 1, role);
 		
 			//Who we give Leadership Binos
-			if(gearConfig.m_DefaultGear.m_bEnableLeadershipBinoculars && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "Spotter_P" || role == "TL_P"))
+			if(gearConfig.m_DefaultGear.m_bEnableLeadershipBinoculars && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_TL_P"))
 				AddInventoryItem(gearConfig.m_DefaultGear.m_sLeadershipBinocularsPrefab, 1, role);
 			
 			//Who we give GI Radios
-			if(gearConfig.m_DefaultGear.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "Spotter_P" || role == "Pilot_P" || role == "CrewChief_P"))
+			if(gearConfig.m_DefaultGear.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
 				AddInventoryItem(gearConfig.m_DefaultGear.m_sGIRadiosPrefab, 1, role);
 			
 			//Who we give Assistant Binos/Extra magazines
-			if(role == "AAR_P" || role == "AMMG_P" || role == "AHMG_P" || role == "AMAT_P" || role == "AHAT_P" || role == "AAA_P" || role == "AAT_P")
+			if(role == "_AAR_P" || role == "_AMMG_P" || role == "_AHMG_P" || role == "_AMAT_P" || role == "_AHAT_P" || role == "_AAA_P" || role == "_AAT_P")
 			{
+			 AddAssistantMagazines(gearConfig, role);
+				
 				if(gearConfig.m_DefaultGear.m_bEnableAssistantBinoculars)
 					AddInventoryItem(gearConfig.m_DefaultGear.m_sAssistantBinocularsPrefab, 1, role);
 			}
 			
 			//Who we give extra medical items
-			if(role == "Medic_P" || role == "MO_P")
+			if(role == "_Medic_P" || role == "_MO_P")
 			{	
 				foreach(CRF_Inventory_Item item : gearConfig.m_DefaultGear.m_DefaultMedicMedicalItems)
 					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role);
@@ -326,7 +324,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			
 			bool isThrowable = (WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)) && WEAPON_TYPES_THROWABLE.Contains(WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType()));
 			
-			if(!enableMedicFrags && (role == "Medic_P" || role == "MO_P") && (isThrowable && WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE))
+			if(!enableMedicFrags && (role == "_Medic_P" || role == "_MO_P") && (isThrowable && WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE))
 			{
 				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
 				continue;
@@ -375,7 +373,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			clothingIDs = {SHIRT, PANTS};
 			
 		// Any medical item
-		if((role == "Medic_P" || role == "MO_P") && SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent)))
+		if((role == "_Medic_P" || role == "_MO_P") && SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent)))
 			clothingIDs = {BACKPACK};
 		
 		// Any pistol ammo
@@ -437,13 +435,13 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		
 		switch(role)
 		{
-			case "AAR_P"  : {if(!gearConfig.m_Weapons.m_AR  || !gearConfig.m_Weapons.m_AR.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AR.m_MagazineArray;  break;}
-			case "AMMG_P" : {if(!gearConfig.m_Weapons.m_MMG || !gearConfig.m_Weapons.m_MMG.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_MMG.m_MagazineArray; break;}
-			case "AHMG_P" : {if(!gearConfig.m_Weapons.m_HMG || !gearConfig.m_Weapons.m_HMG.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_HMG.m_MagazineArray; break;}
-			case "AMAT_P" : {if(!gearConfig.m_Weapons.m_MAT || !gearConfig.m_Weapons.m_MAT.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_MAT.m_MagazineArray; break;}
-			case "AHAT_P" : {if(!gearConfig.m_Weapons.m_HAT || !gearConfig.m_Weapons.m_HAT.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_HAT.m_MagazineArray; break;}
-			case "AAA_P"  : {if(!gearConfig.m_Weapons.m_AA  || !gearConfig.m_Weapons.m_AA.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AA.m_MagazineArray;  break;}
-			case "AAT_P"  : {if(!gearConfig.m_Weapons.m_AT  || !gearConfig.m_Weapons.m_AT.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AT.m_MagazineArray;  break;}
+			case "_AAR_P"  : {if(!gearConfig.m_Weapons.m_AR  || !gearConfig.m_Weapons.m_AR.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AR.m_MagazineArray;  break;}
+			case "_AMMG_P" : {if(!gearConfig.m_Weapons.m_MMG || !gearConfig.m_Weapons.m_MMG.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_MMG.m_MagazineArray; break;}
+			case "_AHMG_P" : {if(!gearConfig.m_Weapons.m_HMG || !gearConfig.m_Weapons.m_HMG.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_HMG.m_MagazineArray; break;}
+			case "_AMAT_P" : {if(!gearConfig.m_Weapons.m_MAT || !gearConfig.m_Weapons.m_MAT.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_MAT.m_MagazineArray; break;}
+			case "_AHAT_P" : {if(!gearConfig.m_Weapons.m_HAT || !gearConfig.m_Weapons.m_HAT.m_Weapon) {return;} magazineArray = gearConfig.m_Weapons.m_HAT.m_MagazineArray; break;}
+			case "_AAA_P"  : {if(!gearConfig.m_Weapons.m_AA  || !gearConfig.m_Weapons.m_AA.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AA.m_MagazineArray;  break;}
+			case "_AAT_P"  : {if(!gearConfig.m_Weapons.m_AT  || !gearConfig.m_Weapons.m_AT.m_Weapon)  {return;} magazineArray = gearConfig.m_Weapons.m_AT.m_MagazineArray;  break;}
 		}
 		
 		foreach(ref CRF_Spec_Magazine_Class magazine : magazineArray)
@@ -665,15 +663,15 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		switch(role)
 		{
-			case "COY_P"          : {role = "Company Commander"; break;}
-			case "PL_P"           : {role = "Platoon Leader";    break;}
-			case "MO_P"           : {role = "Medical Officer";   break;}
-			case "SL_P"           : {role = "Squad Lead";        break;}
-			case "FO_P"           : {role = "Forward Observer";  break;}
-			case "JTAC_P"         : {role = "JTAC";              break;}
-			case "VehLead_P"      : {role = "Vehicle Lead";      break;}
-			case "IndirectLead_P" : {role = "Indirect Lead";     break;}
-			case "LogiLead_P"     : {role = "Logi Lead";         break;}
+			case "_COY_P"          : {role = "Company Commander"; break;}
+			case "_PL_P"           : {role = "Platoon Leader";    break;}
+			case "_MO_P"           : {role = "Medical Officer";   break;}
+			case "_SL_P"           : {role = "Squad Lead";        break;}
+			case "_FO_P"           : {role = "Forward Observer";  break;}
+			case "_JTAC_P"         : {role = "JTAC";              break;}
+			case "_VehLead_P"      : {role = "Vehicle Lead";      break;}
+			case "_IndirectLead_P" : {role = "Indirect Lead";     break;}
+			case "_LogiLead_P"     : {role = "Logi Lead";         break;}
 		}	
 		
 		foreach(ref CRF_Leadership_Custom_Gear customGear : customGearArray)
@@ -694,15 +692,15 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		switch(role)
 		{
-			case "TL_P"       : {role = "Team Lead";                    break;}
-			case "Gren_P"     : {role = "Grenadier";                    break;}
-			case "Rifleman_P" : {role = "Rifleman";                     break;}
-			case "Demo_P"     : {role = "Rifleman Demo";                break;}
-			case "AT_P"       : {role = "Rifleman AntiTank";            break;}
-			case "AAT_P"      : {role = "Assistant Rifleman AntiTank";  break;}
-			case "AR_P"       : {role = "Automatic Rifleman";           break;}
-			case "AAR_P"      : {role = "Assistant Automatic Rifleman"; break;}
-			case "Medic_P"    : {role = "Medic";                        break;}
+			case "_TL_P"       : {role = "Team Lead";                    break;}
+			case "_Gren_P"     : {role = "Grenadier";                    break;}
+			case "_Rifleman_P" : {role = "Rifleman";                     break;}
+			case "_Demo_P"     : {role = "Rifleman Demo";                break;}
+			case "_AT_P"       : {role = "Rifleman AntiTank";            break;}
+			case "_AAT_P"      : {role = "Assistant Rifleman AntiTank";  break;}
+			case "_AR_P"       : {role = "Automatic Rifleman";           break;}
+			case "_AAR_P"      : {role = "Assistant Automatic Rifleman"; break;}
+			case "_Medic_P"    : {role = "Medic";                        break;}
 		}
 		
 		foreach(ref CRF_Squad_Level_Custom_Gear customGear : customGearArray)
@@ -723,18 +721,18 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		switch(role)
 		{
-			case "HAT_P"     : {role = "Heavy AntiTank";              break;}
-			case "AHAT_P"    : {role = "Assistant Heavy AntiTank";    break;}
-			case "MAT_P"     : {role = "Medium AntiTank";             break;}
-			case "AMAT_P"    : {role = "Assistant Medium AntiTank";   break;}
-			case "HMG_P"     : {role = "Heavy MachineGun";            break;}
-			case "AHMG_P"    : {role = "Assistant Heavy MachineGun";  break;}
-			case "MMG_P"     : {role = "Medium MachineGun";           break;}
-			case "AMMG_P"    : {role = "Assistant Medium MachineGun"; break;}
-			case "AA_P"      : {role = "Anit-Air";                    break;}
-			case "AAA_P"     : {role = "Assistant Anit-Air";          break;}
-			case "Sniper_P"  : {role = "Sniper";                      break;}
-			case "Spotter_P" : {role = "Spotter";                     break;}
+			case "_HAT_P"     : {role = "Heavy AntiTank";              break;}
+			case "_AHAT_P"    : {role = "Assistant Heavy AntiTank";    break;}
+			case "_MAT_P"     : {role = "Medium AntiTank";             break;}
+			case "_AMAT_P"    : {role = "Assistant Medium AntiTank";   break;}
+			case "_HMG_P"     : {role = "Heavy MachineGun";            break;}
+			case "_AHMG_P"    : {role = "Assistant Heavy MachineGun";  break;}
+			case "_MMG_P"     : {role = "Medium MachineGun";           break;}
+			case "_AMMG_P"    : {role = "Assistant Medium MachineGun"; break;}
+			case "_AA_P"      : {role = "Anit-Air";                    break;}
+			case "_AAA_P"     : {role = "Assistant Anit-Air";          break;}
+			case "_Sniper_P"  : {role = "Sniper";                      break;}
+			case "_Spotter_P" : {role = "Spotter";                     break;}
 		}
 		
 		foreach(ref CRF_Infantry_Specialties_Custom_Gear customGear : customGearArray)
@@ -755,14 +753,14 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		switch(role)
 		{
-			case "VehDriver_P"      : {role = "Vehicle Driver";  break;}
-			case "VehGunner_P"      : {role = "Vehicle Gunner";  break;}
-			case "VehLoader_P"      : {role = "Vehicle Loader";  break;}
-			case "Pilot_P"          : {role = "Pilot";           break;}
-			case "CrewChief_P"      : {role = "Crew Chief";      break;}
-			case "LogiRunner_P"     : {role = "Logi Runner";     break;}
-			case "IndirectGunner_P" : {role = "Indirect Gunner"; break;}
-			case "IndirectLoader_P" : {role = "Indirect Loader"; break;}
+			case "_VehDriver_P"      : {role = "Vehicle Driver";  break;}
+			case "_VehGunner_P"      : {role = "Vehicle Gunner";  break;}
+			case "_VehLoader_P"      : {role = "Vehicle Loader";  break;}
+			case "_Pilot_P"          : {role = "Pilot";           break;}
+			case "_CrewChief_P"      : {role = "Crew Chief";      break;}
+			case "_LogiRunner_P"     : {role = "Logi Runner";     break;}
+			case "_IndirectGunner_P" : {role = "Indirect Gunner"; break;}
+			case "_IndirectLoader_P" : {role = "Indirect Loader"; break;}
 		}
 		
 		foreach(ref CRF_Vehicle_Specialties_Custom_Gear customGear : customGearArray)
