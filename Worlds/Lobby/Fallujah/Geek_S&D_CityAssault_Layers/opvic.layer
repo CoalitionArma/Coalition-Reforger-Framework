@@ -1,31 +1,47 @@
 $grp Vehicle : "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" {
  S105_randomized1 {
-  coords 2368.945 8.156 2087.253
-  angleY 174.1
+  coords 2353.795 8.156 2122.864
+  angleY 146.59
  }
  S105_randomized2 {
-  coords 2372.521 8.156 2087.623
-  angleY 174.1
+  coords 2356.795 8.156 2124.843
+  angleY 146.59
+ }
+ S105_randomized3 {
+  coords 2362.372 8.156 2109.693
+  angleY 146.59
+ }
+ S105_randomized4 {
+  coords 2365.373 8.156 2111.673
+  angleY 146.59
  }
 }
 Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
- coords 2369.822 8.156 2094.372
- angleY 173.84
+ coords 2361.265 8.156 2095.824
+ angleY 146.33
  {
   GenericEntity {
    ID "5E2E7C60E0F9B3F4"
-   coords -0.001 0 -0.001
+   coords 0 0 0
    angleY -90
   }
  }
 }
 $grp Vehicle : "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" {
  S1203_transport_randomized1 {
-  coords 2369.65 8.156 2080.083
-  angleY 174.434
+  coords 2357.733 8.156 2116.83
+  angleY 146.924
  }
  S1203_transport_randomized2 {
-  coords 2372.865 8.156 2080.397
-  angleY 174.434
+  coords 2360.439 8.156 2118.593
+  angleY 146.924
+ }
+ S1203_transport_randomized4 {
+  coords 2369.017 8.156 2105.423
+  angleY 146.924
+ }
+ S1203_transport_randomized3 {
+  coords 2366.31 8.156 2103.661
+  angleY 146.924
  }
 }
