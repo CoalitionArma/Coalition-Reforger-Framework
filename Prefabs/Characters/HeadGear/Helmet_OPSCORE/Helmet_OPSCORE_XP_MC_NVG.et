@@ -1,0 +1,32 @@
+GameEntity : "{4F458AB270330E54}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_XP_BASE.et" {
+ ID "50D485E1435D6C72"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{52C8D601873E6784}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_OPSCORE_XP_Name - #RHS-Camo_MULTICAM"
+    }
+   }
+  }
+  RHS_HelmetNodeStorageComponent "{5DB13C5777E6E695}" {
+   Attributes SCR_ItemAttributeCollection "{5DB13C5760610D64}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_OPSCORE_XP_Name - #RHS-Camo_MULTICAM"
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     Prefab "{9A9555D10664B8CB}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14_WP.et"
+    }
+   }
+   WornMaterialsOverride {
+    "{EB32E28D8E8264B9}Assets/Characters/HeadGear/Helmet_OPSCORE/Data/MATERIAL_XP_MC.emat"
+   }
+   ItemMaterialsOverride {
+    "{EB32E28D8E8264B9}Assets/Characters/HeadGear/Helmet_OPSCORE/Data/MATERIAL_XP_MC.emat"
+   }
+  }
+ }
+}
