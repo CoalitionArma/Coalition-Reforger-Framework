@@ -138,8 +138,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
         m_SpawnParams.Transform[3] = entity.GetOrigin();
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		Resource container = BaseContainerTools.LoadContainer(gearScriptResourceName);
         CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		
 		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
 		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
@@ -263,30 +263,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		if(clothingArray.IsEmpty() || clothingStr.IsEmpty())
 			return;
 		
-		int slotInt = -1;
-		
-		// All the arrays belong to us
-		switch(clothingStr)
-		{
-			case "HEADGEAR"     : {slotInt = HEADGEAR;    break;}
-			case "SHIRT"        : {slotInt = SHIRT;       break;}
-			case "ARMOREDVEST"  : {slotInt = ARMOREDVEST; break;}
-			case "PANTS"        : {slotInt = PANTS;       break;}
-			case "BOOTS"        : {slotInt = BOOTS;       break;}
-			case "BACKPACK"     : {slotInt = BACKPACK;    break;}
-			case "VEST"         : {slotInt = VEST;        break;}
-			case "HANDWEAR"     : {slotInt = HANDWEAR;    break;}
-			case "HEAD"         : {slotInt = HEAD;        break;}
-			case "EYES"         : {slotInt = EYES;        break;}
-			case "EARS"         : {slotInt = EARS;        break;}
-			case "FACE"         : {slotInt = FACE;        break;}
-			case "NECK"         : {slotInt = NECK;        break;}
-			case "EXTRA1"       : {slotInt = EXTRA1;      break;}
-			case "EXTRA2"       : {slotInt = EXTRA2;      break;}
-			case "WAIST"        : {slotInt = WAIST;       break;}
-			case "EXTRA3"       : {slotInt = EXTRA3;      break;}
-			case "EXTRA4"       : {slotInt = EXTRA4;      break;}
-		};
+		int slotInt = ConvertClothingStringToInt(clothingStr);
 		
 		if(slotInt == -1)
 			return;
@@ -338,7 +315,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected void AddInventoryItem(ResourceName item, int itemAmmount, string role = "", bool enableMedicFrags = false)
+	protected void AddInventoryItem(ResourceName item, int itemAmmount, string role = "", bool enableMedicFrags = false, bool isAssistant = false)
 	{	
 		if(item.IsEmpty() || itemAmmount <= 0)
 			return;
@@ -365,7 +342,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 			};
 			
-			InsertInventoryItem(resourceSpawned, role);
+			InsertInventoryItem(resourceSpawned, role, isAssistant, isThrowable);
 			
 			if(isThrowable)
 			{
@@ -385,45 +362,12 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		}
 	}
 	
-	protected void InsertInventoryItem(IEntity item, string role = "")
+	protected void InsertInventoryItem(IEntity item, string role = "", bool isAssistant = false, bool isThrowable = false)
 	{
 		if(!item) 
 			return;
 		
-		ref array<int> clothingIDs = {};
-		
-		bool isThrowable = (WeaponComponent.Cast(item.FindComponent(WeaponComponent)) && WEAPON_TYPES_THROWABLE.Contains(WeaponComponent.Cast(item.FindComponent(WeaponComponent)).GetWeaponType()));
-			
-		// Any magazine
-		if(MagazineComponent.Cast(item.FindComponent(MagazineComponent)) || InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)))
-			clothingIDs = {VEST, ARMOREDVEST, BACKPACK, PANTS, SHIRT};
-		else // Any Non-magazine
-			clothingIDs = {SHIRT, PANTS, VEST, ARMOREDVEST, BACKPACK};
-			
-		// Any medical item
-		if((role == "_Medic_P" || role == "_MO_P") && SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent)))
-			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
-		
-		// Any pistol ammo
-		if((InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO) || isThrowable)
-			clothingIDs = {PANTS, VEST, ARMOREDVEST, BACKPACK};
-		
-		// Any radio
-		if(BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent)))
-			clothingIDs = {PANTS, SHIRT, VEST, ARMOREDVEST, BACKPACK};
-		
-		// Any Assistant Mags
-		if((role == "_AHMG_P" || role == "_AMMG_P" || role == "_AAR_P") && (MagazineComponent.Cast(item.FindComponent(MagazineComponent)) && (MagazineComponent.Cast(item.FindComponent(MagazineComponent)).GetMaxAmmoCount() >= 50)))
-			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
-		
-		// Check if item is explosives related
-		SCR_DetonatorGadgetComponent detonator = SCR_DetonatorGadgetComponent.Cast(item.FindComponent(SCR_DetonatorGadgetComponent));
-		SCR_ExplosiveChargeComponent explosives = SCR_ExplosiveChargeComponent.Cast(item.FindComponent(SCR_ExplosiveChargeComponent));
-		SCR_MineWeaponComponent mine = SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent));
-		SCR_RepairSupportStationComponent engTool = SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent));
-		SCR_HealSupportStationComponent medTool = SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
-		if(detonator || explosives || mine || engTool || medTool)
-			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
+		TIntArray clothingIDs = FilterItemToClothing(item, role, isAssistant, isThrowable);
 		
 		// Try and insert into select clothing at first
 		foreach(int clothingID : clothingIDs)
@@ -477,21 +421,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		foreach(ref CRF_Spec_Magazine_Class magazine : magazineArray)
-			AddInventoryItem(magazine.m_Magazine, magazine.m_AssistantMagazineCount, role);
-	}
-	
-	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected CRF_Weapon_Class SelectRandomWeapon(array<ref CRF_Weapon_Class> weaponArray)
-	{
-		if(!weaponArray || weaponArray.IsEmpty())
-			return null; 
-								
-		ref CRF_Weapon_Class weaponToSpawn = weaponArray.GetRandomElement();
-								
-		if(!weaponToSpawn)
-			return null; 
-								
-		return weaponToSpawn;
+			AddInventoryItem(magazine.m_Magazine, magazine.m_AssistantMagazineCount, role, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -803,5 +733,89 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			foreach(CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
 				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	int ConvertClothingStringToInt(string clothingStr)
+	{
+		int slotInt = -1;
+		
+		// All the arrays belong to us
+		switch(clothingStr)
+		{
+			case "HEADGEAR"     : {slotInt = HEADGEAR;    break;}
+			case "SHIRT"        : {slotInt = SHIRT;       break;}
+			case "ARMOREDVEST"  : {slotInt = ARMOREDVEST; break;}
+			case "PANTS"        : {slotInt = PANTS;       break;}
+			case "BOOTS"        : {slotInt = BOOTS;       break;}
+			case "BACKPACK"     : {slotInt = BACKPACK;    break;}
+			case "VEST"         : {slotInt = VEST;        break;}
+			case "HANDWEAR"     : {slotInt = HANDWEAR;    break;}
+			case "HEAD"         : {slotInt = HEAD;        break;}
+			case "EYES"         : {slotInt = EYES;        break;}
+			case "EARS"         : {slotInt = EARS;        break;}
+			case "FACE"         : {slotInt = FACE;        break;}
+			case "NECK"         : {slotInt = NECK;        break;}
+			case "EXTRA1"       : {slotInt = EXTRA1;      break;}
+			case "EXTRA2"       : {slotInt = EXTRA2;      break;}
+			case "WAIST"        : {slotInt = WAIST;       break;}
+			case "EXTRA3"       : {slotInt = EXTRA3;      break;}
+			case "EXTRA4"       : {slotInt = EXTRA4;      break;}
+		};
+		
+		return slotInt;
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	protected CRF_Weapon_Class SelectRandomWeapon(array<ref CRF_Weapon_Class> weaponArray)
+	{
+		if(!weaponArray || weaponArray.IsEmpty())
+			return null; 
+								
+		ref CRF_Weapon_Class weaponToSpawn = weaponArray.GetRandomElement();
+								
+		if(!weaponToSpawn)
+			return null; 
+								
+		return weaponToSpawn;
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	TIntArray FilterItemToClothing(IEntity item, string role = "", bool isAssistant = false, bool isThrowable = false)
+	{
+		ref array<int> clothingIDs = {};
+		
+		// Any magazine
+		if(MagazineComponent.Cast(item.FindComponent(MagazineComponent)) || InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)))
+			clothingIDs = {VEST, ARMOREDVEST, BACKPACK, PANTS, SHIRT};
+		else // Any Non-magazine
+			clothingIDs = {SHIRT, PANTS, VEST, ARMOREDVEST, BACKPACK};
+			
+		// Any medical item
+		if((role == "_Medic_P" || role == "_MO_P") && SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent)))
+			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
+		
+		// Any pistol ammo
+		if((InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO) || isThrowable)
+			clothingIDs = {PANTS, VEST, ARMOREDVEST, BACKPACK};
+		
+		// Any radio
+		if(BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent)))
+			clothingIDs = {PANTS, SHIRT, VEST, ARMOREDVEST, BACKPACK};
+		
+		// Any Assistant Mags
+		if(isAssistant && MagazineComponent.Cast(item.FindComponent(MagazineComponent)))
+			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
+		
+		// Check if item is explosives related
+		SCR_DetonatorGadgetComponent detonator = SCR_DetonatorGadgetComponent.Cast(item.FindComponent(SCR_DetonatorGadgetComponent));
+		SCR_ExplosiveChargeComponent explosives = SCR_ExplosiveChargeComponent.Cast(item.FindComponent(SCR_ExplosiveChargeComponent));
+		SCR_MineWeaponComponent mine = SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent));
+		SCR_RepairSupportStationComponent engTool = SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent));
+		SCR_HealSupportStationComponent medTool = SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
+		if(detonator || explosives || mine || engTool || medTool)
+			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
+		
+		return clothingIDs;
 	}
 }
