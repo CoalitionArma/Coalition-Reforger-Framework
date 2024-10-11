@@ -62,7 +62,6 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 					if(m_hudRoot.GetChildren().GetName() == "Layer_Slots")
 						break;
 					
-					Print(m_hudRoot.GetChildren());
 					m_hudRoot.GetChildren().SetEnabled(false);
 					m_hudRoot.RemoveChild(m_hudRoot.GetChildren());
 				}
@@ -74,10 +73,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		
 		if(m_gearScriptEditor.GetGear())
 		{
-			Print("Loading Gear");
-			Print(m_gearScriptEditor.GetGear());
 			m_gearScriptEditor.GetGear().Split("|", m_loadedArray, false);
-			
 			if(m_loadedArray.Get(0))
 				m_loadedArray.Get(0).Split(",", m_helmetsArray, true);
 			if(m_loadedArray.Get(1))
@@ -364,13 +360,14 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	override void Action_CloseInventory()
 	{
 		super.Action_CloseInventory();
-		SaveGear();
+		m_gearScriptEditor = CRF_GearScriptEditorGamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeComponent));
+		if(m_gearScriptEditor)
+			SaveGear();
 	}
 	
 	
 	void SaveGear()
 	{
-		Print("Saving Gear");
 		ref array<array<string>> exportArray = {};
 		exportArray.Insert(m_helmetsArray);
 		exportArray.Insert(m_shirtsArray);
@@ -407,7 +404,6 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	
 	void Export()
 	{
-		Print("Exporting");
 		ref array<array<string>> exportArray = {};
 		exportArray.Insert(m_helmetsArray);
 		exportArray.Insert(m_shirtsArray);
@@ -444,7 +440,6 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	
 	void RefreshClothing(bool isLoading, array<string> clothingArray, string widgetName)
 	{	
-		Print(clothingArray);
 		ref array<string> itemPrefabNames = {};
 		ref array<string> displayStringArray = {};
 		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget(widgetName));
@@ -467,7 +462,6 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			displayStringArray.Insert(itemStringArray[itemStringArray.Count()-1]);	
 		}
 		string displayString = SCR_StringHelper.Join(", ", displayStringArray, true);
-		Print(displayString);
 		m_arrayWidget.SetText(displayString);
 	}
 	
