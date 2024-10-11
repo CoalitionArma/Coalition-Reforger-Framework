@@ -1,0 +1,93 @@
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2764.812 8.156 2103.64
+ {
+  PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/NotesDescription.et" {
+   coords -3.56 0 1.403
+   m_sTextData "Time Limit: 50 Minutes."\
+   "One Life, No Respawns."\
+   "Medical Vehicles Provided."
+   {
+    PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+     coords 0.705 0 -0.4
+     {
+      PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+       coords 0.34 0 0.825
+       m_sTextData "The Taliban have pushed the US out of Fallujah to the outskirts of the city, capturing 2 US positions in the hospital and college. The Taliban have also captured 2 transmitters that are being used to upload data to their brothers, the US are moving to assault the city before the 50 minutes on the upload runs out."
+       m_iOrder 3
+       {
+        PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+         coords -0.579 0 -0.638
+         m_sTextData "BLUFOR: 1x Ambulance, 2x Armed Humvees, 2x Stryker, 4x M923A1 Transport Trucks."\
+         "INDFOR: 1x Ambulance. 2x Car, 2x Van."
+         m_iOrder 4
+         {
+          PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+           coords 1.762 0 0.617
+           m_sTextData "We have moved up into the US controlled zones and have captured several of their emplacements including 2 transmitters that we are using to transmit captured data back to our brothers at base. We must defend from the enemy who are moving to attack us."\
+           ""\
+           "DO NOT LEAVE THE MARKED SAFE START AREA UNTIL GAME IS LIVE."\
+           ""
+           m_aVisibleForFactions {
+            "Tali"
+           }
+           m_iOrder 5
+           {
+            $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+             {
+              coords 0.343 0 0.432
+              m_sTitle "Defend Site A."
+              m_sTextData "Defend Site A."
+              m_iOrder 5
+              m_iScore 50
+              m_sFactionKey "Tali"
+             }
+             {
+              coords 0.343 0 -2.62
+              m_sTitle "Defend Site B."
+              m_sTextData "Defend Site B."
+              m_iOrder 6
+              m_iScore 50
+              m_sFactionKey "Tali"
+             }
+            }
+           }
+          }
+          PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+           coords 0.525 0 0.156
+           m_sTextData "We have been pushed out of Fallujah by the Taliban, who have siezed our holdings in the Hospital and College as well as our 2 transmitters there, which are being used to transmit data to their leadership. We must move in and try to destroy both objectives to halt the upload. They have captured some of our emplacements and the fortifications we had in town."\
+           ""\
+           "DO NOT LEAVE THE MARKED SAFE START AREA UNTIL GAME IS LIVE."
+           m_iOrder 5
+           {
+            $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+             {
+              coords 0.311 0 4.435
+              m_sTitle "Destroy Site A."
+              m_sTextData "Destroy Site A."\
+              ""
+              m_iOrder 5
+              m_iScore 50
+              m_sFactionKey "US"
+             }
+             {
+              coords -0.056 0 -1.59
+              m_sTitle "Destroy Site B."
+              m_sTextData "Destroy Site B."\
+              ""
+              m_iOrder 6
+              m_iScore 50
+              m_sFactionKey "US"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

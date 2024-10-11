@@ -1,0 +1,96 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1221.984 3.767 1192.751
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 50
+  }
+  CRF_SearchAndDestroyGameModeComponent "{6274A01606909A61}" {
+   defendingSide "Tali"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
+   m_iStartingHours 11
+   m_iStartingMinutes 25
+  }
+ }
+ coords 1207.553 5.468 1191.838
+ {
+  SCR_FactionManager "627675D4B4A5D6E3" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6274A02C4456F936}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6274A02BBFCE000F}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6274A02BBF790D94}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6274A02BBF0A51AB}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6274A02BB8F76CEC}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{6274A02BB8751C1F}" {
+        m_sCallsign "VIC 1"
+       }
+       SCR_CallsignInfo "{62911469034F5F6D}" {
+        m_sCallsign "VIC 2"
+       }
+      }
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+    SCR_Faction "{623507721849E36C}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{61A2E10CD5A79B52}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6274A02B96693304}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6274A02B905F673E}" {
+        m_sCallsign "MAT"
+       }
+       SCR_CallsignInfo "{6274A02B91EEE33E}" {
+        m_sCallsign "MMG"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3 %4"
+      m_sCallsignCharacterWithRoleFormat ""
+     }
+    }
+   }
+  }
+ }
+}

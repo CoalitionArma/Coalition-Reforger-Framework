@@ -1,0 +1,320 @@
+PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 2371.678 8.156 2045.649
+ m_aVisibleForFactions {
+  "Tali"
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 2130.125 8.156 1955.003
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2130.146 8.156 2002.336
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2122.416 8.156 2039.893
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2119.416 8.156 2073.074
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2113.349 8.156 2112.92
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2111.516 8.156 2141.683
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2108.59 8.156 2173.796
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2102.886 8.156 2222.056
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2092.694 8.156 2259.381
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2090.735 8.157 2303.641
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2090.395 8.156 2336.114
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2090.119 8.156 2340.44
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2097.457 8.283 2347.92
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2120.497 8.283 2351.35
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2142.65 8.283 2353.455
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2158.748 8.283 2356.404
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2174.757 8.156 2352.719
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2201.111 8.156 2353.635
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2207.25 8.157 2355.388
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2238.15 8.156 2358.263
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2258.957 8.156 2364.11
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2281.967 8.156 2364.433
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2305.51 8.156 2368.86
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2316.969 8.156 2361.517
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2325.559 8.156 2362.759
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2355.657 8.159 2369.708
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2360.791 8.156 2371.074
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2404.919 8.157 2377.237
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2445.665 8.157 2387.921
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2477.113 8.156 2387.988
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2504.953 8.157 2390.386
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2521.733 8.156 2353.592
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2576.615 8.156 2355.67
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2615.437 8.156 2359.48
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2633.839 8.156 2359.847
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2649.245 8.156 2293.511
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2661.807 8.156 2233.891
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2667.104 8.156 2179.506
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2674.857 8.156 2127.298
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2684.287 8.157 2082.524
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2683.967 8.157 2041.014
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2623.846 8.156 2019.247
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2568.798 8.156 2012.51
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2516.512 8.156 2010.513
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2458.854 8.156 2002.549
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2404.131 8.156 1995.687
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2351.542 8.156 1988.629
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2314.607 8.157 1984.859
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2277.245 8.156 1981.046
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2231.487 8.297 1980.177
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2186.285 8.157 1964.872
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+ {
+  coords 2146.719 8.156 1962.087
+  m_aVisibleForFactions {
+   "Tali"
+  }
+ }
+}
