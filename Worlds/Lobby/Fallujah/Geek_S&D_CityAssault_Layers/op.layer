@@ -1,0 +1,76 @@
+SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+ }
+ coords 2376.645 8.125 2041.89
+ angleY -7.768
+ m_sCustomNameSet "Platoon"
+ {
+  SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "Column"
+    }
+   }
+   coords -11.175 0.031 10.662
+   angleY -179.422
+   {
+    SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Column"
+      }
+     }
+     coords -3.793 0 -0.34
+     m_sCustomNameSet "2nd Squad"
+     {
+      SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -4.718 0 0.333
+       m_sCustomNameSet "3rd Squad"
+       {
+        SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Column"
+          }
+         }
+         coords -4.47 0 0.333
+         m_sCustomNameSet "4th Squad"
+         {
+          SCR_AIGroup : "{5CDE10E6AAA56D88}Prefabs/Groups/INDFOR/Taliban/Support/CRF_Group_Taliban_MATTeam_P.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Column"
+            }
+           }
+           coords -4.862 0 0.474
+           angleY -2.547
+           {
+            SCR_AIGroup : "{783A89E1332A1440}Prefabs/Groups/INDFOR/Taliban/Support/CRF_Group_Taliban_MMGTeam_P.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "Column"
+              }
+             }
+             coords -3.71 0 -0.229
+             angleY 3.017
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
