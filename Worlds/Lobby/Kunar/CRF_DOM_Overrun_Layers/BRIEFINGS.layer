@@ -1,0 +1,32 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 1949.135 18.968 3739.077
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 1949.135 18.968 3739.077
+ m_sTextData "BLUFOR:"\
+ ""\
+ "Trucks"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "None"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 1949.135 18.968 3739.077
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 1949.135 18.968 3739.077
+ m_sTextData "BLUFOR:"\
+ ""\
+ "Maintain control of all 3 points"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "Gain control of all 3 points"
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 1949.135 18.968 3739.077
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1949.135 18.968 3739.077
+}
