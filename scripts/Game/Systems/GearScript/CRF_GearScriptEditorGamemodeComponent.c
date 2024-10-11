@@ -5,7 +5,7 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 {	
 	ref CRF_GearScriptConfig m_masterConfig;
 	ref CRF_Default_Gear m_defaultGearConfig;
-	ref CRF_Weapons m_weaponsConfig;
+	ref CRF_Weapons m_FactionWeaponsConfig;
 	ref array<ref CRF_Clothing> m_clothingClassArray = {};
 	ref array<ref CRF_Weapon_Class> m_riflesClassArray = {};
 	ref array<ref CRF_Weapon_Class> m_rifleUGLClassArray = {};
@@ -80,7 +80,7 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		m_masterConfig = new CRF_GearScriptConfig();
 		m_defaultGearConfig = new CRF_Default_Gear();
-		m_weaponsConfig = new CRF_Weapons;
+		m_FactionWeaponsConfig = new CRF_Weapons;
 		m_clothingClassArray = {};
 		m_riflesClassArray = {};
 		m_rifleUGLClassArray = {};
@@ -223,8 +223,8 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 	
 	void SaveToConfig()
 	{
-		m_masterConfig.m_DefaultGear = m_defaultGearConfig;
-		m_masterConfig.m_Weapons = m_weaponsConfig;
+		m_masterConfig.m_DefaultFactionGear = m_defaultGearConfig;
+		m_masterConfig.m_FactionWeapons = m_FactionWeaponsConfig;
 		
 		if(m_clothingClassArray.Count() > 0)
 		{
@@ -233,62 +233,62 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 		
 		if(m_riflesClassArray.Count() > 0)
 		{
-			m_masterConfig.m_Weapons.m_Rifle = m_riflesClassArray;
+			m_masterConfig.m_FactionWeapons.m_Rifle = m_riflesClassArray;
 		}
 		
 		if(m_rifleUGLClassArray.Count() > 0)
 		{
-			m_masterConfig.m_Weapons.m_RifleUGL = m_rifleUGLClassArray;
+			m_masterConfig.m_FactionWeapons.m_RifleUGL = m_rifleUGLClassArray;
 		}
 		
 		if(m_carbinesClassArray.Count() > 0)
 		{
-			m_masterConfig.m_Weapons.m_Carbine = m_carbinesClassArray;
+			m_masterConfig.m_FactionWeapons.m_Carbine = m_carbinesClassArray;
 		}
 		
 		if(m_pistolsClassArray.Count() > 0)
 		{
-			m_masterConfig.m_Weapons.m_Pistol = m_pistolsClassArray;
+			m_masterConfig.m_FactionWeapons.m_Pistol = m_pistolsClassArray;
 		}
 		
 		if(m_ARClass)
 		{
-			m_masterConfig.m_Weapons.m_AR = m_ARClass;
+			m_masterConfig.m_FactionWeapons.m_AR = m_ARClass;
 		}
 		
 		if(m_MMGClass)
 		{
-			m_masterConfig.m_Weapons.m_MMG = m_MMGClass;
+			m_masterConfig.m_FactionWeapons.m_MMG = m_MMGClass;
 		}
 		
 		if(m_HMGClass)
 		{
-			m_masterConfig.m_Weapons.m_HMG = m_HMGClass;
+			m_masterConfig.m_FactionWeapons.m_HMG = m_HMGClass;
 		}
 		
 		if(m_ATClass)
 		{
-			m_masterConfig.m_Weapons.m_AT = m_ATClass;
+			m_masterConfig.m_FactionWeapons.m_AT = m_ATClass;
 		}
 		
 		if(m_MATClass)
 		{
-			m_masterConfig.m_Weapons.m_MAT = m_MATClass;
+			m_masterConfig.m_FactionWeapons.m_MAT = m_MATClass;
 		}
 		
 		if(m_HATClass)
 		{
-			m_masterConfig.m_Weapons.m_HAT = m_HATClass;
+			m_masterConfig.m_FactionWeapons.m_HAT = m_HATClass;
 		}
 		
 		if(m_AAClass)
 		{
-			m_masterConfig.m_Weapons.m_AA = m_AAClass;
+			m_masterConfig.m_FactionWeapons.m_AA = m_AAClass;
 		}
 		
 		if(m_sniperClass)
 		{
-			m_masterConfig.m_Weapons.m_Sniper = m_sniperClass;
+			m_masterConfig.m_FactionWeapons.m_Sniper = m_sniperClass;
 		}
 		
 		// save config
