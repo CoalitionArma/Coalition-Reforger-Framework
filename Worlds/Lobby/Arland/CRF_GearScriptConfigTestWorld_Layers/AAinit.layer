@@ -5,10 +5,8 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  components {
   CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
    m_bGearScriptEnabled 1
-   m_rBluforGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
-   m_rOpforGearScript "{83E186D97FF79DCF}Configs/Gearscripts/CRF_GS_USSR80s.conf"
-   m_rIndforGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/CRF_GS_FIA.conf"
-   m_rCivGearScript "{F528876B88A01733}Configs/Gearscripts/CRF_GS_CIVWithGuns.conf"
+   m_rBluforGearScript "{3FCA1378C33401ED}Configs/Gearscripts/CRF_GS_RHSUSArmyMC.conf"
+   m_rIndforGearScript "{2D140B13588E56B8}Configs/Gearscripts/CRF_GS_Taliban.conf"
   }
  }
  coords 767.684 42.044 2668.612

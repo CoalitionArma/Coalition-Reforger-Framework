@@ -6,13 +6,19 @@
 class CRF_GearScriptConfig
 {
 	[Attribute()]
-	ref CRF_Weapons m_Weapons;
+	string m_FactionName;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "edds")]
+	ResourceName m_FactionIcon;
 	
 	[Attribute()]
-	ref CRF_Default_Gear m_DefaultGear;
+	ref CRF_Weapons m_FactionWeapons;
 	
 	[Attribute()]
-	ref CRF_Custom_Gear m_CustomGear;
+	ref CRF_Default_Gear m_DefaultFactionGear;
+	
+	[Attribute()]
+	ref CRF_Custom_Gear m_CustomFactionGear;
 }
 
 //------------------------------------------------------------------------------------------------
