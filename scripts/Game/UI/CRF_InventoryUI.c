@@ -2,158 +2,257 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 {
 	protected Widget m_wRoot;
 	protected FrameWidget m_hudRoot;
-	TextWidget m_arrayWidget;
-	string m_item;
-	ref array<string> m_itemArray = {};
+	protected TextWidget m_arrayWidget;
+	protected string m_item;
+	protected ref array<string> m_itemArray = {};
 	
-	protected SCR_ButtonTextComponent m_helemtsButton;
-	protected SCR_ButtonTextComponent m_shirtsButton;
-	protected SCR_ButtonTextComponent m_armoredVestButton;
-	protected SCR_ButtonTextComponent m_pantsButton;
-	protected SCR_ButtonTextComponent m_bootsButton;
-	protected SCR_ButtonTextComponent m_backpackButton;
-	protected SCR_ButtonTextComponent m_vestButton;
-	protected SCR_ButtonTextComponent m_handwearButton;
-	protected SCR_ButtonTextComponent m_headButton;
-	protected SCR_ButtonTextComponent m_eyesButton;
-	protected SCR_ButtonTextComponent m_earsButton;
-	protected SCR_ButtonTextComponent m_faceButton;
-	protected SCR_ButtonTextComponent m_neckButton;
-	protected SCR_ButtonTextComponent m_extra1Button;
-	protected SCR_ButtonTextComponent m_extra2Button;
-	protected SCR_ButtonTextComponent m_waistButton;
-	protected SCR_ButtonTextComponent m_extra3Button;
-	protected SCR_ButtonTextComponent m_extra4Button;
+	protected ref array<string> m_helmetsArray = {};
+	protected ref array<string> m_shirtsArray = {};
+	protected ref array<string> m_armoredVestArray = {};
+	protected ref array<string> m_pantsArray = {};
+	protected ref array<string> m_bootsArray = {};
+	protected ref array<string> m_backpackArray = {};
+	protected ref array<string> m_vestArray = {};
+	protected ref array<string> m_handwearArray = {};
+	protected ref array<string> m_headArray = {};
+	protected ref array<string> m_eyesArray = {};
+	protected ref array<string> m_earsArray = {};
+	protected ref array<string> m_faceArray = {};
+	protected ref array<string> m_neckArray = {};
+	protected ref array<string> m_extra1Array = {};
+	protected ref array<string> m_extra2Array = {};
+	protected ref array<string> m_waistArray = {};
+	protected ref array<string> m_extra3Array = {};
+	protected ref array<string> m_extra4Array = {};
 	
-	ref array<string> m_helmetsArrayDisplay = {};
-	ref array<string> m_shirtsArrayDisplay = {};
-	ref array<string> m_armoredVestArrayDisplay = {};
-	ref array<string> m_pantsArrayDisplay = {};
-	ref array<string> m_bootsArrayDisplay = {};
-	ref array<string> m_backpackArrayDisplay = {};
-	ref array<string> m_vestArrayDisplay = {};
-	ref array<string> m_handwearArrayDisplay = {};
-	ref array<string> m_headArrayDisplay = {};
-	ref array<string> m_eyesArrayDisplay = {};
-	ref array<string> m_earsArrayDisplay = {};
-	ref array<string> m_faceArrayDisplay = {};
-	ref array<string> m_neckArrayDisplay = {};
-	ref array<string> m_extra1ArrayDisplay = {};
-	ref array<string> m_extra2ArrayDisplay = {};
-	ref array<string> m_waistArrayDisplay = {};
-	ref array<string> m_extra3ArrayDisplay = {};
-	ref array<string> m_extra4ArrayDisplay = {};
+	protected ref array<string> m_ARPrefab = {};
+	protected ref array<string> m_MMGPrefab = {};
+	protected ref array<string> m_HMGPrefab = {};
+	protected ref array<string> m_ATPrefab = {};
+	protected ref array<string> m_MATPrefab = {};
+	protected ref array<string> m_HATPrefab = {};
+	protected ref array<string> m_AAPrefab = {};
+	protected ref array<string> m_sniperPrefab = {};
 	
-	ref array<ResourceName> m_helmetsArray = {};
-	ref array<ResourceName> m_shirtsArray = {};
-	ref array<ResourceName> m_armoredVestArray = {};
-	ref array<ResourceName> m_pantsArray = {};
-	ref array<ResourceName> m_bootsArray = {};
-	ref array<ResourceName> m_backpackArray = {};
-	ref array<ResourceName> m_vestArray = {};
-	ref array<ResourceName> m_handwearArray = {};
-	ref array<ResourceName> m_headArray = {};
-	ref array<ResourceName> m_eyesArray = {};
-	ref array<ResourceName> m_earsArray = {};
-	ref array<ResourceName> m_faceArray = {};
-	ref array<ResourceName> m_neckArray = {};
-	ref array<ResourceName> m_extra1Array = {};
-	ref array<ResourceName> m_extra2Array = {};
-	ref array<ResourceName> m_waistArray = {};
-	ref array<ResourceName> m_extra3Array = {};
-	ref array<ResourceName> m_extra4Array = {};
-		
-	string m_helemtsArrayString;
-	string m_shirtsArrayString;
-	string m_armoredVestArrayString;
-	string m_pantsArrayString;
-	string m_bootsArrayString;
-	string m_backpackArrayString;
-	string m_vestArrayString;
-	string m_handwearArrayString;
-	string m_headArrayString;
-	string m_eyesArrayString;
-	string m_earsArrayString;
-	string m_faceArrayString;
-	string m_neckArrayString;
-	string m_extra1ArrayString;
-	string m_extra2ArrayString;
-	string m_waistArrayString;
-	string m_extra3ArrayString;
-	string m_extra4ArrayString;
+	protected ref array<string> m_riflesArray = {};
+	protected ref array<string> m_rifleUGLArray = {};
+	protected ref array<string> m_carbinesArray = {};
+	protected ref array<string> m_pistolsArray = {};
 	
+	protected ref array<Managed> m_WeaponSlotComponentArray = {};
 	
-	SCR_CharacterInventoryStorageComponent m_CharacterInventory = SCR_CharacterInventoryStorageComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterInventoryStorageComponent));
+	CRF_GearScriptEditorGamemodeComponent m_gearScriptEditor;
+	SCR_CharacterInventoryStorageComponent m_CharacterInventory;
+	
+	ref array<string> m_loadedArray = {};
+	ref array<array<string>> m_finalizedLoadedArray = {};
 	override void OnMenuOpen()
-	{
+	{	
 		super.OnMenuOpen();
 		
 		m_wRoot = GetRootWidget();
 		m_hudRoot = FrameWidget.Cast(m_wRoot.FindWidget("HudManagerLayout"));
-		if( !Init() )
-		{
-			Action_CloseInventory();
+		
+		m_gearScriptEditor = CRF_GearScriptEditorGamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeComponent));
+		
+		if(!m_gearScriptEditor)
+			{
+				while(true)
+				{
+					if(m_hudRoot.GetChildren().GetName() == "Layer_Slots")
+						break;
+					
+					Print(m_hudRoot.GetChildren());
+					m_hudRoot.GetChildren().SetEnabled(false);
+					m_hudRoot.RemoveChild(m_hudRoot.GetChildren());
+				}
 			return;
-		}
-
-		GetGame().SetViewDistance(GetGame().GetMinimumViewDistance());
-
-		ShowVicinity();
-
-		m_bProcessInitQueue = true;
-
-		if (m_pPreviewManager)
+			}
+		
+		m_CharacterInventory = SCR_CharacterInventoryStorageComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterInventoryStorageComponent));
+		SCR_PlayerController.GetLocalControlledEntity().FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
+		
+		if(m_gearScriptEditor.GetGear())
 		{
-			m_wPlayerRender = ItemPreviewWidget.Cast( m_widget.FindAnyWidget( "playerRender" ) );
-			auto collection = m_StorageManager.GetAttributes();
-			if (collection)
-				m_PlayerRenderAttributes = PreviewRenderAttributes.Cast(collection.FindAttribute(SCR_CharacterInventoryPreviewAttributes));
-
-			m_pCharacterWidgetHelper = SCR_InventoryCharacterWidgetHelper(m_wPlayerRender, GetGame().GetWorkspace() );
+			Print("Loading Gear");
+			Print(m_gearScriptEditor.GetGear());
+			m_gearScriptEditor.GetGear().Split("|", m_loadedArray, false);
+			
+			if(m_loadedArray.Get(0))
+				m_loadedArray.Get(0).Split(",", m_helmetsArray, true);
+			if(m_loadedArray.Get(1))
+				m_loadedArray.Get(1).Split(",", m_shirtsArray, true);
+			if(m_loadedArray.Get(2))
+				m_loadedArray.Get(2).Split(",", m_armoredVestArray, true);
+			if(m_loadedArray.Get(3))
+				m_loadedArray.Get(3).Split(",", m_pantsArray, true);
+			if(m_loadedArray.Get(4))
+				m_loadedArray.Get(4).Split(",", m_bootsArray, true);
+			if(m_loadedArray.Get(5))
+				m_loadedArray.Get(5).Split(",", m_backpackArray, true);
+			if(m_loadedArray.Get(6))
+				m_loadedArray.Get(6).Split(",", m_vestArray, true);
+			if(m_loadedArray.Get(7))
+				m_loadedArray.Get(7).Split(",", m_handwearArray, true);
+			if(m_loadedArray.Get(8))
+				m_loadedArray.Get(8).Split(",", m_headArray, true);
+			if(m_loadedArray.Get(9))
+				m_loadedArray.Get(9).Split(",", m_eyesArray, true);
+			if(m_loadedArray.Get(10))
+				m_loadedArray.Get(10).Split(",", m_earsArray, true);
+			if(m_loadedArray.Get(11))
+				m_loadedArray.Get(11).Split(",", m_faceArray, true);
+			if(m_loadedArray.Get(12))
+				m_loadedArray.Get(12).Split(",", m_neckArray, true);
+			if(m_loadedArray.Get(13))
+				m_loadedArray.Get(13).Split(",", m_extra1Array, true);
+			if(m_loadedArray.Get(14))
+				m_loadedArray.Get(14).Split(",", m_extra2Array, true);
+			if(m_loadedArray.Get(15))
+				m_loadedArray.Get(15).Split(",", m_waistArray, true);
+			if(m_loadedArray.Get(16))
+				m_loadedArray.Get(16).Split(",", m_extra3Array, true);
+			if(m_loadedArray.Get(17))
+				m_loadedArray.Get(17).Split(",", m_extra4Array, true);
+			if(m_loadedArray.Get(18))
+				m_loadedArray.Get(18).Split(",", m_riflesArray, true);
+			if(m_loadedArray.Get(19))
+				m_loadedArray.Get(19).Split(",", m_rifleUGLArray, true);
+			if(m_loadedArray.Get(20))
+				m_loadedArray.Get(20).Split(",", m_carbinesArray, true);
+			if(m_loadedArray.Get(21))
+				m_loadedArray.Get(21).Split(",", m_pistolsArray, true);
+			if(m_loadedArray.Get(22))
+				m_loadedArray.Get(22).Split(",", m_ARPrefab, true);
+			if(m_loadedArray.Get(23))
+				m_loadedArray.Get(23).Split(",", m_MMGPrefab, true);
+			if(m_loadedArray.Get(24))
+				m_loadedArray.Get(24).Split(",", m_HMGPrefab, true);
+			if(m_loadedArray.Get(25))
+				m_loadedArray.Get(25).Split(",", m_ATPrefab, true);
+			if(m_loadedArray.Get(26))
+				m_loadedArray.Get(26).Split(",", m_MATPrefab, true);
+			if(m_loadedArray.Get(27))
+				m_loadedArray.Get(27).Split(",", m_HATPrefab, true);
+			if(m_loadedArray.Get(28))
+				m_loadedArray.Get(28).Split(",", m_AAPrefab, true);
+			if(m_loadedArray.Get(29))
+				m_loadedArray.Get(29).Split(",", m_sniperPrefab, true);
+			RefreshClothing(true, m_helmetsArray, "HelmetArray");
+			RefreshClothing(true, m_shirtsArray, "ShirtArray");
+			RefreshClothing(true, m_armoredVestArray, "ArmoredVestArray");
+			RefreshClothing(true, m_pantsArray, "PantsArray");
+			RefreshClothing(true, m_bootsArray, "BootsArray");
+			RefreshClothing(true, m_backpackArray, "BackpackArray");
+			RefreshClothing(true, m_vestArray, "VestArray");
+			RefreshClothing(true, m_handwearArray, "HandwearArray");
+			RefreshClothing(true, m_headArray, "HeadArray");
+			RefreshClothing(true, m_eyesArray, "EyesArray");
+			RefreshClothing(true, m_earsArray, "EarsArray");
+			RefreshClothing(true, m_faceArray, "FaceArray");
+			RefreshClothing(true, m_neckArray, "NeckArray");
+			RefreshClothing(true, m_extra1Array, "Extra1Array");
+			RefreshClothing(true, m_extra2Array, "Extra2Array");
+			RefreshClothing(true, m_waistArray, "WaistArray");
+			RefreshClothing(true, m_extra3Array, "Extra3Array");
+			RefreshClothing(true, m_extra4Array, "Extra4Array");
 		}
-
-		if( m_pNavigationBar )
-			m_pNavigationBar.m_OnAction.Insert(OnAction);
-
-		GetGame().GetInputManager().AddActionListener("Inventory_Drag", EActionTrigger.DOWN, Action_DragDown);
-		GetGame().GetInputManager().AddActionListener("Inventory", EActionTrigger.DOWN, Action_CloseInventory);
-		InitAttachmentSpinBox();
-		OnInputDeviceIsGamepad(!GetGame().GetInputManager().IsUsingMouseAndKeyboard());
-		GetGame().OnInputDeviceIsGamepadInvoker().Insert(OnInputDeviceIsGamepad);		
 		
-		SetAttachmentSpinBoxActive(m_bIsUsingGamepad);
+		//Set Regular Weapons
+		SCR_ButtonTextComponent rifleButton = SCR_ButtonTextComponent.GetButtonText("Rifle", m_wRoot);
+		SCR_ButtonTextComponent rifleUGLButton = SCR_ButtonTextComponent.GetButtonText("RifleUGL", m_wRoot);
+		SCR_ButtonTextComponent carbineButton = SCR_ButtonTextComponent.GetButtonText("Carbine", m_wRoot);
+		SCR_ButtonTextComponent pistolButton = SCR_ButtonTextComponent.GetButtonText("Pistol", m_wRoot);
 		
-		ResetHighlightsOnAvailableStorages();
-		SetOpenStorage();
-		UpdateTotalWeightText();
+		//Add Regular Weapon on Click
+		rifleButton.m_OnClicked.Insert(AddRifle);
+		rifleUGLButton.m_OnClicked.Insert(AddRifleUGL);
+		carbineButton.m_OnClicked.Insert(AddCarbine);
+		pistolButton.m_OnClicked.Insert(AddPistol);
 		
-		InitializeCharacterHitZones();
-		InitializeCharacterInformation();
-		UpdateCharacterPreview();
+		//Remove Regular Weapon Buttons
+		SCR_ButtonTextComponent removeRifleButton = SCR_ButtonTextComponent.GetButtonText("RifleRemove", m_wRoot);
+		SCR_ButtonTextComponent removeRifleUGLButton = SCR_ButtonTextComponent.GetButtonText("RifleUGLRemove", m_wRoot);
+		SCR_ButtonTextComponent removeCarbineButton = SCR_ButtonTextComponent.GetButtonText("CarbineRemove", m_wRoot);
+		SCR_ButtonTextComponent removePistolButton = SCR_ButtonTextComponent.GetButtonText("PistolRemove", m_wRoot);
 		
-		m_wRoot = GetRootWidget();
+		//Remove Regular Weapon on Click
+		removeRifleButton.m_OnClicked.Insert(RemoveRifle);
+		removeRifleUGLButton.m_OnClicked.Insert(RemoveRifleUGL);
+		removeCarbineButton.m_OnClicked.Insert(RemoveCarbine);
+		removePistolButton.m_OnClicked.Insert(RemovePistol);
 		
-		Print("Custom inventory opened");
+		//Clear Regular Weapon Buttons
+		SCR_ButtonTextComponent clearRifleButton = SCR_ButtonTextComponent.GetButtonText("RifleClear", m_wRoot);
+		SCR_ButtonTextComponent clearRifleUGLButton = SCR_ButtonTextComponent.GetButtonText("RifleUGLClear", m_wRoot);
+		SCR_ButtonTextComponent clearCarbineButton = SCR_ButtonTextComponent.GetButtonText("CarbineClear", m_wRoot);
+		SCR_ButtonTextComponent clearPistolButton = SCR_ButtonTextComponent.GetButtonText("PistolClear", m_wRoot);
+		
+		//Clear Weapon on Click
+		clearRifleButton.m_OnClicked.Insert(ClearRifle);
+		clearRifleUGLButton.m_OnClicked.Insert(ClearRifleUGL);
+		clearCarbineButton.m_OnClicked.Insert(ClearCarbine);
+		clearPistolButton.m_OnClicked.Insert(ClearPistol);
+		
+		//Set Spec Weapons
+		SCR_ButtonTextComponent m_ARButton = SCR_ButtonTextComponent.GetButtonText("AR", m_wRoot);
+		SCR_ButtonTextComponent m_MMGButton = SCR_ButtonTextComponent.GetButtonText("MMG", m_wRoot);
+		SCR_ButtonTextComponent m_HMGButton = SCR_ButtonTextComponent.GetButtonText("HMG", m_wRoot);
+		SCR_ButtonTextComponent m_ATButton = SCR_ButtonTextComponent.GetButtonText("AT", m_wRoot);
+		SCR_ButtonTextComponent m_MATButton = SCR_ButtonTextComponent.GetButtonText("MAT", m_wRoot);
+		SCR_ButtonTextComponent m_HATButton = SCR_ButtonTextComponent.GetButtonText("HAT", m_wRoot);
+		SCR_ButtonTextComponent m_AAButton = SCR_ButtonTextComponent.GetButtonText("AA", m_wRoot);
+		SCR_ButtonTextComponent m_sniperButton = SCR_ButtonTextComponent.GetButtonText("Sniper", m_wRoot);
+		
+		//Add Spec Weapons on Click
+		m_ARButton.m_OnClicked.Insert(AddAR);
+		m_MMGButton.m_OnClicked.Insert(AddMMG);
+		m_HMGButton.m_OnClicked.Insert(AddHMG);
+		m_ATButton.m_OnClicked.Insert(AddAT);
+		m_MATButton.m_OnClicked.Insert(AddMAT);
+		m_HATButton.m_OnClicked.Insert(AddHAT);
+		m_AAButton.m_OnClicked.Insert(AddAA);
+		m_sniperButton.m_OnClicked.Insert(AddSniper);
+		
+		//Remove weapons
+		SCR_ButtonTextComponent m_RemoveARButton = SCR_ButtonTextComponent.GetButtonText("ARClear", m_wRoot);
+		SCR_ButtonTextComponent m_RemoveMMGButton = SCR_ButtonTextComponent.GetButtonText("MMGClear", m_wRoot);
+		SCR_ButtonTextComponent m_RemoveHMGButton = SCR_ButtonTextComponent.GetButtonText("HMGClear", m_wRoot);
+		SCR_ButtonTextComponent m_RemoveATButton = SCR_ButtonTextComponent.GetButtonText("ATClear", m_wRoot);
+		SCR_ButtonTextComponent m_RemoveMATButton = SCR_ButtonTextComponent.GetButtonText("MATClear", m_wRoot);
+		SCR_ButtonTextComponent m_RemoveHATButton = SCR_ButtonTextComponent.GetButtonText("HATClear", m_wRoot);
+		SCR_ButtonTextComponent m_RemoveAAButton = SCR_ButtonTextComponent.GetButtonText("AAClear", m_wRoot);
+		SCR_ButtonTextComponent m_RemoveSniperButton = SCR_ButtonTextComponent.GetButtonText("SniperClear", m_wRoot);
+		
+		//Remove Spec Weapons on Click
+		m_RemoveARButton.m_OnClicked.Insert(RemoveAR);
+		m_RemoveMMGButton.m_OnClicked.Insert(RemoveMMG);
+		m_RemoveHMGButton.m_OnClicked.Insert(RemoveHMG);
+		m_RemoveATButton.m_OnClicked.Insert(RemoveAT);
+		m_RemoveMATButton.m_OnClicked.Insert(RemoveMAT);
+		m_RemoveHATButton.m_OnClicked.Insert(RemoveHAT);
+		m_RemoveAAButton.m_OnClicked.Insert(RemoveAA);
+		m_RemoveSniperButton.m_OnClicked.Insert(RemoveSniper);
       
 		//Add Buttons
-		m_helemtsButton = SCR_ButtonTextComponent.GetButtonText("Helmet", m_wRoot);
-		m_shirtsButton = SCR_ButtonTextComponent.GetButtonText("Shirt", m_wRoot);
-		m_armoredVestButton = SCR_ButtonTextComponent.GetButtonText("ArmoredVest", m_wRoot);
-		m_pantsButton = SCR_ButtonTextComponent.GetButtonText("Pants", m_wRoot);
-		m_bootsButton = SCR_ButtonTextComponent.GetButtonText("Boots", m_wRoot);
-		m_backpackButton = SCR_ButtonTextComponent.GetButtonText("Backpack", m_wRoot);
-		m_vestButton = SCR_ButtonTextComponent.GetButtonText("Vest", m_wRoot);
-		m_handwearButton = SCR_ButtonTextComponent.GetButtonText("Handwear", m_wRoot);
-		m_headButton = SCR_ButtonTextComponent.GetButtonText("Head", m_wRoot);
-		m_eyesButton = SCR_ButtonTextComponent.GetButtonText("Eyes", m_wRoot);
-		m_earsButton = SCR_ButtonTextComponent.GetButtonText("Ears", m_wRoot);
-		m_faceButton = SCR_ButtonTextComponent.GetButtonText("Face", m_wRoot);
-		m_neckButton = SCR_ButtonTextComponent.GetButtonText("Neck", m_wRoot);
-		m_extra1Button = SCR_ButtonTextComponent.GetButtonText("Extra1", m_wRoot);
-		m_extra2Button = SCR_ButtonTextComponent.GetButtonText("Extra2", m_wRoot);
-		m_waistButton = SCR_ButtonTextComponent.GetButtonText("Waist", m_wRoot);
-		m_extra3Button = SCR_ButtonTextComponent.GetButtonText("Extra3", m_wRoot);
-		m_extra4Button = SCR_ButtonTextComponent.GetButtonText("Extra4", m_wRoot);
+		SCR_ButtonTextComponent m_helemtsButton = SCR_ButtonTextComponent.GetButtonText("Helmet", m_wRoot);
+		SCR_ButtonTextComponent m_shirtsButton = SCR_ButtonTextComponent.GetButtonText("Shirt", m_wRoot);
+		SCR_ButtonTextComponent m_armoredVestButton = SCR_ButtonTextComponent.GetButtonText("ArmoredVest", m_wRoot);
+		SCR_ButtonTextComponent m_pantsButton = SCR_ButtonTextComponent.GetButtonText("Pants", m_wRoot);
+		SCR_ButtonTextComponent m_bootsButton = SCR_ButtonTextComponent.GetButtonText("Boots", m_wRoot);
+		SCR_ButtonTextComponent m_backpackButton = SCR_ButtonTextComponent.GetButtonText("Backpack", m_wRoot);
+		SCR_ButtonTextComponent m_vestButton = SCR_ButtonTextComponent.GetButtonText("Vest", m_wRoot);
+		SCR_ButtonTextComponent m_handwearButton = SCR_ButtonTextComponent.GetButtonText("Handwear", m_wRoot);
+		SCR_ButtonTextComponent m_headButton = SCR_ButtonTextComponent.GetButtonText("Head", m_wRoot);
+		SCR_ButtonTextComponent m_eyesButton = SCR_ButtonTextComponent.GetButtonText("Eyes", m_wRoot);
+		SCR_ButtonTextComponent m_earsButton = SCR_ButtonTextComponent.GetButtonText("Ears", m_wRoot);
+		SCR_ButtonTextComponent m_faceButton = SCR_ButtonTextComponent.GetButtonText("Face", m_wRoot);
+		SCR_ButtonTextComponent m_neckButton = SCR_ButtonTextComponent.GetButtonText("Neck", m_wRoot);
+		SCR_ButtonTextComponent m_extra1Button = SCR_ButtonTextComponent.GetButtonText("Extra1", m_wRoot);
+		SCR_ButtonTextComponent m_extra2Button = SCR_ButtonTextComponent.GetButtonText("Extra2", m_wRoot);
+		SCR_ButtonTextComponent m_waistButton = SCR_ButtonTextComponent.GetButtonText("Waist", m_wRoot);
+		SCR_ButtonTextComponent m_extra3Button = SCR_ButtonTextComponent.GetButtonText("Extra3", m_wRoot);
+		SCR_ButtonTextComponent m_extra4Button = SCR_ButtonTextComponent.GetButtonText("Extra4", m_wRoot);
       
 		//Add Buttons on Clicked
 		m_helemtsButton.m_OnClicked.Insert(AddHelmet); 
@@ -255,8 +354,734 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		extra3RemoveButton.m_OnClicked.Insert(RemoveExtra3);
 		extra4RemoveButton.m_OnClicked.Insert(RemoveExtra4);
 		
+		//Export
+		SCR_ButtonTextComponent export = SCR_ButtonTextComponent.GetButtonText("Export", m_wRoot);
+		export.m_OnClicked.Insert(Export);
+		
+		
 	}
 	
+	override void Action_CloseInventory()
+	{
+		super.Action_CloseInventory();
+		SaveGear();
+	}
+	
+	
+	void SaveGear()
+	{
+		Print("Saving Gear");
+		ref array<array<string>> exportArray = {};
+		exportArray.Insert(m_helmetsArray);
+		exportArray.Insert(m_shirtsArray);
+		exportArray.Insert(m_armoredVestArray);
+		exportArray.Insert(m_pantsArray);
+		exportArray.Insert(m_bootsArray);
+		exportArray.Insert(m_backpackArray);
+		exportArray.Insert(m_vestArray);
+		exportArray.Insert(m_handwearArray);
+		exportArray.Insert(m_headArray);
+		exportArray.Insert(m_eyesArray);
+		exportArray.Insert(m_earsArray);
+		exportArray.Insert(m_faceArray);
+		exportArray.Insert(m_neckArray);
+		exportArray.Insert(m_extra1Array);
+		exportArray.Insert(m_extra2Array);
+		exportArray.Insert(m_waistArray);
+		exportArray.Insert(m_extra3Array);
+		exportArray.Insert(m_extra4Array);
+		exportArray.Insert(m_riflesArray);
+		exportArray.Insert(m_rifleUGLArray);
+		exportArray.Insert(m_carbinesArray);
+		exportArray.Insert(m_pistolsArray);
+		exportArray.Insert(m_ARPrefab);
+		exportArray.Insert(m_MMGPrefab);
+		exportArray.Insert(m_HMGPrefab);
+		exportArray.Insert(m_ATPrefab);
+		exportArray.Insert(m_MATPrefab);
+		exportArray.Insert(m_HATPrefab);
+		exportArray.Insert(m_AAPrefab);
+		exportArray.Insert(m_sniperPrefab);
+		m_gearScriptEditor.SaveGear(exportArray);
+	}
+	
+	void Export()
+	{
+		Print("Exporting");
+		ref array<array<string>> exportArray = {};
+		exportArray.Insert(m_helmetsArray);
+		exportArray.Insert(m_shirtsArray);
+		exportArray.Insert(m_armoredVestArray);
+		exportArray.Insert(m_pantsArray);
+		exportArray.Insert(m_bootsArray);
+		exportArray.Insert(m_backpackArray);
+		exportArray.Insert(m_vestArray);
+		exportArray.Insert(m_handwearArray);
+		exportArray.Insert(m_headArray);
+		exportArray.Insert(m_eyesArray);
+		exportArray.Insert(m_earsArray);
+		exportArray.Insert(m_faceArray);
+		exportArray.Insert(m_neckArray);
+		exportArray.Insert(m_extra1Array);
+		exportArray.Insert(m_extra2Array);
+		exportArray.Insert(m_waistArray);
+		exportArray.Insert(m_extra3Array);
+		exportArray.Insert(m_extra4Array);
+		exportArray.Insert(m_riflesArray);
+		exportArray.Insert(m_rifleUGLArray);
+		exportArray.Insert(m_carbinesArray);
+		exportArray.Insert(m_pistolsArray);
+		exportArray.Insert(m_ARPrefab);
+		exportArray.Insert(m_MMGPrefab);
+		exportArray.Insert(m_HMGPrefab);
+		exportArray.Insert(m_ATPrefab);
+		exportArray.Insert(m_MATPrefab);
+		exportArray.Insert(m_HATPrefab);
+		exportArray.Insert(m_AAPrefab);
+		exportArray.Insert(m_sniperPrefab);
+		m_gearScriptEditor.ExportGearScript(exportArray);
+	}
+	
+	void RefreshClothing(bool isLoading, array<string> clothingArray, string widgetName)
+	{	
+		Print(clothingArray);
+		ref array<string> itemPrefabNames = {};
+		ref array<string> displayStringArray = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget(widgetName));
+		if(isLoading)
+		{
+			if(clothingArray.Count() == 0)
+			{
+				m_arrayWidget.SetText("");
+				return;
+			}
+		}
+		for(int g = 0; g < clothingArray.Count(); g++)
+		{
+			itemPrefabNames.Insert(clothingArray[g]);		
+		}
+		foreach(string prefab : itemPrefabNames)
+		{
+			array<string> itemStringArray = {};
+			prefab.Split("/", itemStringArray, false);
+			displayStringArray.Insert(itemStringArray[itemStringArray.Count()-1]);	
+		}
+		string displayString = SCR_StringHelper.Join(", ", displayStringArray, true);
+		Print(displayString);
+		m_arrayWidget.SetText(displayString);
+	}
+	
+	void RefreshRegularWeapon(bool isLoading, array<string> weaponsArray, string widgetName)
+	{
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget(widgetName));
+		if(isLoading)
+		{
+			if(weaponsArray.Count() == 0)
+			{
+				m_arrayWidget.SetText("");
+				return;
+			}
+		}
+		ref array<string> weaponsPrefabNames = {};
+		for(int g = 0; g < weaponsArray.Count(); g++)
+		{
+			if(g == 0 || g%3 == 0)
+			{
+				weaponsPrefabNames.Insert(weaponsArray[g]);
+			}		
+		}
+		array<string> displayStringArray = {};
+		foreach(string prefab : weaponsPrefabNames)
+		{
+			array<string> weaponStringArray = {};
+			prefab.Split("/", weaponStringArray, false);
+			displayStringArray.Insert(weaponStringArray[weaponStringArray.Count()-1]);					
+		}
+		string displayString = SCR_StringHelper.Join(", ", displayStringArray, true);
+		m_arrayWidget.SetText(displayString);
+	}
+	
+	void RefreshUGL(bool isLoading)
+	{
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("RifleUGLArray"));
+		if(isLoading)
+		{
+			if(m_rifleUGLArray.Count() == 0)
+			{
+				m_arrayWidget.SetText("");
+				return;
+			}
+		}
+		ref array<string> weaponsPrefabNames = {};
+		ref array<string> GLMags = {};
+		for(int i = 0; i < m_rifleUGLArray.Count(); i++)
+		{
+			if(i == 0 || i%4 == 0)
+			{
+				weaponsPrefabNames.Insert(m_rifleUGLArray[i]);
+			}	
+			if(i != 0 || i%3 == 0)
+			{
+				GLMags.Insert(m_rifleUGLArray[i]);
+			}
+		}
+		Print(GLMags);
+		array<string> displayStringArray = {};
+		int index = 0;
+		foreach(string prefab : weaponsPrefabNames)
+		{
+			array<string> weaponStringArray = {};
+			prefab.Split("/", weaponStringArray, false);
+			if(GLMags[index].Contains("VOG"))
+			{
+				displayStringArray.Insert(string.Format("%1 | GP25", weaponStringArray[weaponStringArray.Count()-1]));
+			} else
+			{
+				displayStringArray.Insert(weaponStringArray[weaponStringArray.Count()-1]);
+			}	
+			index++;
+		}
+		string displayString = SCR_StringHelper.Join(", ", displayStringArray, true);
+		m_arrayWidget.SetText(displayString);
+	}
+	
+	void RefreshSpecWeapon(bool isLoading, array<string> specWeaponArray, string widgetName)
+	{
+		if(isLoading)
+		{
+			if(specWeaponArray.Count() == 0)
+			{
+				m_arrayWidget.SetText("");
+				return;
+			}
+		}
+		array<string> weaponStringArray = {};
+		string displayString;
+		specWeaponArray[0].Split("/", weaponStringArray, false);
+		displayString = (weaponStringArray[weaponStringArray.Count()-1]);
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget(widgetName));
+		m_arrayWidget.SetText(displayString);
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------Rifles Members-----------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddRifle()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(300 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_riflesArray.Insert(weapon);
+				m_riflesArray.Insert(magazine);
+				m_riflesArray.Insert(numberOfMags);
+				RefreshRegularWeapon(false, m_riflesArray, "RifleArray");
+				return;
+			}
+		}
+	}
+	void RemoveRifle()
+	{
+		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("RifleInput"));
+		int index = inputWidget.GetText().ToInt() - 1;
+		for(int i = 0; i < 3; i++)
+		{
+			m_riflesArray.RemoveOrdered(index);
+		}
+		RefreshRegularWeapon(false, m_riflesArray, "RifleArray");
+	}
+	
+	void ClearRifle()
+	{
+		m_riflesArray = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("RifleArray"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------Pistols Members----------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddPistol()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			if(weaponSlotComponent.GetWeaponSlotType() == "secondary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(300 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_pistolsArray.Insert(weapon);
+				m_pistolsArray.Insert(magazine);
+				m_pistolsArray.Insert(numberOfMags);
+				RefreshRegularWeapon(false, m_pistolsArray, "PistolArray");
+				return;
+			}
+		}
+	}
+	void RemovePistol()
+	{
+		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("PistolInput"));
+		int index = inputWidget.GetText().ToInt() - 1;
+		for(int i = 0; i < 3; i++)
+		{
+			m_pistolsArray.RemoveOrdered(index);
+		}
+		RefreshRegularWeapon(false, m_pistolsArray, "PistolArray");
+	}
+	
+	void ClearPistol()
+	{
+		m_pistolsArray = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("PistolArray"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------Carbines Members---------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddCarbine()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(240 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_carbinesArray.Insert(weapon);
+				m_carbinesArray.Insert(magazine);
+				m_carbinesArray.Insert(numberOfMags);
+				RefreshRegularWeapon(false, m_carbinesArray, "CarbineArray");
+				return;
+			}
+		}
+	}
+	void RemoveCarbine()
+	{
+		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("CarbineInput"));
+		int index = inputWidget.GetText().ToInt() - 1;
+		for(int i = 0; i < 3; i++)
+		{
+			m_carbinesArray.RemoveOrdered(index);
+		}
+		RefreshRegularWeapon(false, m_carbinesArray, "CarbineArray");
+	}
+	
+	void ClearCarbine()
+	{
+		m_carbinesArray = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("CarbineArray"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------RifleUGL Members---------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddRifleUGL()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(300 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_rifleUGLArray.Insert(weapon);
+				m_rifleUGLArray.Insert(magazine);
+				m_rifleUGLArray.Insert(numberOfMags);
+				ref array<BaseMuzzleComponent> muzzles = {};
+				string GLMag = "";
+				weaponSlotComponent.GetMuzzlesList(muzzles);
+				foreach(BaseMuzzleComponent muzzle : muzzles)
+				{
+					if(muzzle.GetMuzzleType() == EMuzzleType.MT_UGLMuzzle)
+					{
+						GLMag = muzzle.GetMagazine().GetOwner().GetPrefabData().GetPrefabName();
+					}
+				}
+				m_rifleUGLArray.Insert(GLMag);
+				RefreshUGL(false);
+				return;
+			}
+		}
+	}
+	void RemoveRifleUGL()
+	{
+		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("RifleUGLInput"));
+		int index = inputWidget.GetText().ToInt() - 1;
+		for(int i = 0; i < 4; i++)
+		{
+			m_rifleUGLArray.RemoveOrdered(index);
+		}
+		RefreshUGL(false);
+	}
+	
+	void ClearRifleUGL()
+	{
+		m_rifleUGLArray = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("RifleUGLArray"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------AR Members---------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddAR()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_ARPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(800 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				string assistantNumberOfMags = string.ToString(Math.Round(600 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_ARPrefab.Insert(weapon);
+				m_ARPrefab.Insert(magazine);
+				m_ARPrefab.Insert(numberOfMags);
+				m_ARPrefab.Insert(assistantNumberOfMags);
+				RefreshSpecWeapon(false, m_ARPrefab, "ARString");
+				return;
+			}
+		}
+	}
+	void RemoveAR()
+	{
+		m_ARPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ARString"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------MMG Members--------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddMMG()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_MMGPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(800 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				string assistantNumberOfMags = string.ToString(Math.Round(600 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_MMGPrefab.Insert(weapon);
+				m_MMGPrefab.Insert(magazine);
+				m_MMGPrefab.Insert(numberOfMags);
+				m_MMGPrefab.Insert(assistantNumberOfMags);
+				RefreshSpecWeapon(false, m_MMGPrefab, "MMGString");
+				return;
+			}
+		}
+	}
+	
+	void RemoveMMG()
+	{
+		m_MMGPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("MMGString"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------HMG Members--------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddHMG()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_HMGPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(800 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				string assistantNumberOfMags = string.ToString(Math.Round(600 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_HMGPrefab.Insert(weapon);
+				m_HMGPrefab.Insert(magazine);
+				m_HMGPrefab.Insert(numberOfMags);
+				m_HMGPrefab.Insert(assistantNumberOfMags);
+				RefreshSpecWeapon(false, m_HMGPrefab, "HMGString");
+				return;
+			}
+		}
+	}
+	
+	void RemoveHMG()
+	{
+		m_HMGPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HMGString"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------AT Members---------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddAT()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_ATPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get((m_WeaponSlotComponentArray.Find(weaponSlotComponent) - 1))).GetWeaponSlotType() == "primary")
+				{
+					if(!weaponSlotComponent.GetWeaponEntity())
+						continue;
+					
+					string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+					string magazine;
+					string numberOfMags;
+					string assistantNumberOfMags;
+					if(weaponSlotComponent.GetCurrentMuzzle().IsDisposable())
+					{
+						magazine = "none";
+						numberOfMags = "none";
+						assistantNumberOfMags= "";
+					} else
+					{
+						magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+						numberOfMags = "2";
+						assistantNumberOfMags = "3";
+					}
+					m_ATPrefab.Insert(weapon);
+					m_ATPrefab.Insert(magazine);
+					m_ATPrefab.Insert(numberOfMags);
+					m_ATPrefab.Insert(assistantNumberOfMags);
+					RefreshSpecWeapon(false, m_ATPrefab, "ATString");
+					return;
+				}
+			}
+		}
+	}
+	
+	void RemoveAT()
+	{
+		m_ATPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ATString"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------MAT Members---------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddMAT()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_MATPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get((m_WeaponSlotComponentArray.Find(weaponSlotComponent) - 1))).GetWeaponSlotType() == "primary")
+				{
+					if(!weaponSlotComponent.GetWeaponEntity())
+						continue;
+					
+					string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+					string magazine;
+					string numberOfMags;
+					string assistantNumberOfMags;
+					if(weaponSlotComponent.GetCurrentMuzzle().IsDisposable())
+					{
+						magazine = "none";
+						numberOfMags = "none";
+						assistantNumberOfMags = ""
+					} else
+					{
+						magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+						numberOfMags = "3";
+						assistantNumberOfMags = "3"
+					}
+					m_MATPrefab.Insert(weapon);
+					m_MATPrefab.Insert(magazine);
+					m_MATPrefab.Insert(numberOfMags);
+					m_MATPrefab.Insert(assistantNumberOfMags);
+					RefreshSpecWeapon(false, m_MATPrefab, "MATString");
+					return;
+				}
+			}
+		}
+	}
+	
+	void RemoveMAT()
+	{
+		m_MATPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("MATString"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------HAT Members---------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddHAT()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_HATPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get((m_WeaponSlotComponentArray.Find(weaponSlotComponent) - 1))).GetWeaponSlotType() == "primary")
+				{
+					if(!weaponSlotComponent.GetWeaponEntity())
+						continue;
+					
+					string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+					string magazine;
+					string numberOfMags;
+					string assistantNumberOfMags;
+					if(weaponSlotComponent.GetCurrentMuzzle().IsDisposable())
+					{
+						magazine = "none";
+						numberOfMags = "none";
+						assistantNumberOfMags = "none";
+					} else
+					{
+						magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+						numberOfMags = "3";
+						assistantNumberOfMags = "3";
+					}
+					m_HATPrefab.Insert(weapon);
+					m_HATPrefab.Insert(magazine);
+					m_HATPrefab.Insert(numberOfMags);
+					m_HATPrefab.Insert(assistantNumberOfMags);
+					RefreshSpecWeapon(false, m_HATPrefab, "HATString");
+					return;
+				}
+			}
+		}
+	}
+	
+	void RemoveHAT()
+	{
+		m_HATPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HATString"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------AA Members---------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddAA()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_AAPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get((m_WeaponSlotComponentArray.Find(weaponSlotComponent) - 1))).GetWeaponSlotType() == "primary")
+				{
+					if(!weaponSlotComponent.GetWeaponEntity())
+						continue;
+					
+					string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+					string magazine;
+					string numberOfMags;
+					string assistantNumberOfMags;
+					if(weaponSlotComponent.GetCurrentMuzzle().IsDisposable())
+					{
+						magazine = "none";
+						numberOfMags = "";
+						assistantNumberOfMags = "none";
+					} else
+					{
+						magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+						numberOfMags = "3";
+						assistantNumberOfMags = "3"
+					}
+					m_AAPrefab.Insert(weapon);
+					m_AAPrefab.Insert(magazine);
+					m_AAPrefab.Insert(numberOfMags);
+					m_AAPrefab.Insert(assistantNumberOfMags);
+					RefreshSpecWeapon(false, m_AAPrefab, "AAString");
+					return;
+				}
+			}
+		}
+	}
+	
+	void RemoveAA()
+	{
+		m_AAPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("AAString"));
+		m_arrayWidget.SetText("");
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//------------------------------------------------Sniper Members--------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------------------------------------------
+	void AddSniper()
+	{
+		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)
+		{
+			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));
+			m_sniperPrefab = {};
+			if(weaponSlotComponent.GetWeaponSlotType() == "primary")
+			{
+				if(!weaponSlotComponent.GetWeaponEntity())
+					continue;
+				
+				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
+				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
+				string numberOfMags = string.ToString(Math.Round(120 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				m_sniperPrefab.Insert(weapon);
+				m_sniperPrefab.Insert(magazine);
+				m_sniperPrefab.Insert(numberOfMags);
+				RefreshRegularWeapon(false, m_sniperPrefab, "SniperString");
+				return;
+			}
+		}
+	}
+	
+	void RemoveSniper()
+	{
+		m_sniperPrefab = {};
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("SniperString"));
+		m_arrayWidget.SetText("");
+	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------Helmet Members-----------------------------------------------------------------
@@ -264,15 +1089,13 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	//-------------------------------------------------------------------------------------------------------------------------------
 	void AddHelmet() 
 	{ 
+		if(!m_CharacterInventory.Get(0))
+			return;
 		m_item = m_CharacterInventory.Get(0).GetPrefabData().GetPrefabName();
 		if(!m_item)
 			return;
 		m_helmetsArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_helmetsArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HelmetArray"));
-		m_helemtsArrayString = SCR_StringHelper.Join(",", m_helmetsArrayDisplay, true);
-		m_arrayWidget.SetText(m_helemtsArrayString);
+		RefreshClothing(false, m_helmetsArray, "HelmetArray");
     }
 	
 	void RemoveHelmet()
@@ -282,24 +1105,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_helmetsArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_helmetsArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_helmetsArray.Remove(index);
-		m_helmetsArrayDisplay.Remove(index);
-		m_helemtsArrayString = SCR_StringHelper.Join(",", m_helmetsArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HelmetArray"));
-		m_arrayWidget.SetText(m_helemtsArrayString);
+		m_helmetsArray.RemoveOrdered(index);
+		RefreshClothing(false, m_helmetsArray, "HelmetArray");
 	}
 	
 	void ClearHelmets()
 	{
 		m_helmetsArray = {};
-		m_helmetsArrayDisplay = {};
-		m_helemtsArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HelmetArray"));
-		m_arrayWidget.SetText(m_helemtsArrayString);
+		RefreshClothing(false, m_helmetsArray, "HelmetArray");
 	}
 	
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -315,11 +1132,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(!m_item)
 			return;
 		m_shirtsArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_shirtsArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ShirtArray"));
-		m_shirtsArrayString = SCR_StringHelper.Join(",", m_shirtsArrayDisplay, true);
-		m_arrayWidget.SetText(m_shirtsArrayString);
+		RefreshClothing(false, m_shirtsArray, "ShirtArray");
     }
 	
 	void RemoveShirt()
@@ -329,24 +1142,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_shirtsArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_shirtsArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_shirtsArray.Remove(index);
-		m_shirtsArrayDisplay.Remove(index);
-		m_shirtsArrayString = SCR_StringHelper.Join(",", m_shirtsArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ShirtArray"));
-		m_arrayWidget.SetText(m_shirtsArrayString);
+		m_shirtsArray.RemoveOrdered(index);
+		RefreshClothing(false, m_shirtsArray, "ShirtArray");
 	}
 	
 	void ClearShirts()
 	{
 		m_shirtsArray = {};
-		m_shirtsArrayDisplay = {};
-		m_shirtsArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ShirtArray"));
-		m_arrayWidget.SetText(m_shirtsArrayString);
+		RefreshClothing(false, m_shirtsArray, "ShirtArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -361,11 +1168,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(!m_item)
 			return;
 		m_armoredVestArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_armoredVestArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ArmoredVestArray"));
-		m_armoredVestArrayString = SCR_StringHelper.Join(",", m_armoredVestArrayDisplay, true);
-		m_arrayWidget.SetText(m_armoredVestArrayString);
+		RefreshClothing(false, m_armoredVestArray, "ArmoredVestArray");
     }
 	
 	void RemoveArmoredVest()
@@ -375,24 +1178,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_shirtsArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_armoredVestArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_armoredVestArray.Remove(index);
-		m_armoredVestArrayDisplay.Remove(index);
-		m_armoredVestArrayString = SCR_StringHelper.Join(",", m_armoredVestArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ArmoredVestArray"));
-		m_arrayWidget.SetText(m_armoredVestArrayString);
+		m_armoredVestArray.RemoveOrdered(index);
+		RefreshClothing(false, m_armoredVestArray, "ArmoredVestArray");
 	}
 	
 	void ClearArmoredVests()
 	{
 		m_armoredVestArray = {};
-		m_armoredVestArrayDisplay = {};
-		m_armoredVestArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("ArmoredVestArray"));
-		m_arrayWidget.SetText(m_armoredVestArrayString);
+		RefreshClothing(false, m_armoredVestArray, "ArmoredVestArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -406,12 +1203,8 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		m_item = m_CharacterInventory.Get(3).GetPrefabData().GetPrefabName();
 		if(!m_item)
 			return;
-		m_bootsArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_pantsArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("PantsArray"));
-		m_pantsArrayString = SCR_StringHelper.Join(",", m_pantsArrayDisplay, true);
-		m_arrayWidget.SetText(m_pantsArrayString);
+		m_pantsArray.Insert(m_item);
+		RefreshClothing(false, m_pantsArray, "PantsArray");
     }
 	
 	void RemovePants()
@@ -421,24 +1214,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_pantsArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_pantsArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_pantsArray.Remove(index);
-		m_pantsArrayDisplay.Remove(index);
-		m_pantsArrayString = SCR_StringHelper.Join(",", m_pantsArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("PantsArray"));
-		m_arrayWidget.SetText(m_pantsArrayString);
+		m_pantsArray.RemoveOrdered(index);
+		RefreshClothing(false, m_pantsArray, "PantsArray");
 	}
 	
 	void ClearPants()
 	{
 		m_pantsArray = {};
-		m_pantsArrayDisplay = {};
-		m_pantsArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("PantsArray"));
-		m_arrayWidget.SetText(m_pantsArrayString);
+		RefreshClothing(false, m_pantsArray, "PantsArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -453,11 +1240,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(!m_item)
 			return;
 		m_bootsArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_bootsArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("BootsArray"));
-		m_bootsArrayString = SCR_StringHelper.Join(",", m_bootsArrayDisplay, true);
-		m_arrayWidget.SetText(m_bootsArrayString);
+		RefreshClothing(false, m_bootsArray, "BootsArray");
     }
 	
 	void RemoveBoots()
@@ -467,24 +1250,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_bootsArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_bootsArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_bootsArray.Remove(index);
-		m_bootsArrayDisplay.Remove(index);
-		m_bootsArrayString = SCR_StringHelper.Join(",", m_bootsArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("BootsArray"));
-		m_arrayWidget.SetText(m_bootsArrayString);
+		m_bootsArray.RemoveOrdered(index);
+		RefreshClothing(false, m_bootsArray, "BootsArray");
 	}
 	
 	void ClearBoots()
 	{
 		m_bootsArray = {};
-		m_bootsArrayDisplay = {};
-		m_bootsArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("BootsArray"));
-		m_arrayWidget.SetText(m_bootsArrayString);
+		RefreshClothing(false, m_bootsArray, "BootsArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -499,11 +1276,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(!m_item)
 			return;
 		m_backpackArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_backpackArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("BackpackArray"));
-		m_backpackArrayString = SCR_StringHelper.Join(",", m_backpackArrayDisplay, true);
-		m_arrayWidget.SetText(m_backpackArrayString);
+		RefreshClothing(false, m_backpackArray, "BackpackArray");
     }
 	
 	void RemoveBackpack()
@@ -513,24 +1286,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_backpackArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_backpackArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_backpackArray.Remove(index);
-		m_backpackArrayDisplay.Remove(index);
-		m_backpackArrayString = SCR_StringHelper.Join(",", m_backpackArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("BackpackArray"));
-		m_arrayWidget.SetText(m_backpackArrayString);
+		m_backpackArray.RemoveOrdered(index);
+		RefreshClothing(false, m_backpackArray, "BackpackArray");
 	}
 	
 	void ClearBackpacks()
 	{
 		m_backpackArray = {};
-		m_backpackArrayDisplay = {};
-		m_backpackArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("BackpackArray"));
-		m_arrayWidget.SetText(m_backpackArrayString);
+		RefreshClothing(false, m_backpackArray, "BackpackArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -545,11 +1312,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(!m_item)
 			return;
 		m_vestArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_vestArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("VestArray"));
-		m_vestArrayString = SCR_StringHelper.Join(",", m_vestArrayDisplay, true);
-		m_arrayWidget.SetText(m_vestArrayString);
+		RefreshClothing(false, m_vestArray, "VestArray");
     }
 	
 	void RemoveVest()
@@ -559,24 +1322,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_vestArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_vestArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_vestArray.Remove(index);
-		m_vestArrayDisplay.Remove(index);
-		m_vestArrayString = SCR_StringHelper.Join(",", m_vestArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("VestArray"));
-		m_arrayWidget.SetText(m_vestArrayString);
+		m_vestArray.RemoveOrdered(index);
+		RefreshClothing(false, m_vestArray, "VestArray");
 	}
 	
 	void ClearVests()
 	{
 		m_vestArray = {};
-		m_vestArrayDisplay = {};
-		m_vestArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("VestArray"));
-		m_arrayWidget.SetText(m_vestArrayString);
+		RefreshClothing(false, m_vestArray, "VestArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -591,11 +1348,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(!m_item)
 			return;
 		m_handwearArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_handwearArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HandwearArray"));
-		m_handwearArrayString = SCR_StringHelper.Join(",", m_handwearArrayDisplay, true);
-		m_arrayWidget.SetText(m_handwearArrayString);
+		RefreshClothing(false, m_handwearArray, "HandwearArray");
     }
 	
 	void RemoveHandwear()
@@ -605,24 +1358,18 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_handwearArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_handwearArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_handwearArray.Remove(index);
-		m_handwearArrayDisplay.Remove(index);
-		m_handwearArrayString = SCR_StringHelper.Join(",", m_handwearArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HandwearArray"));
-		m_arrayWidget.SetText(m_handwearArrayString);
+		m_handwearArray.RemoveOrdered(index);
+		RefreshClothing(false, m_handwearArray, "HandwearArray");
 	}
 	
 	void ClearHandwear()
 	{
 		m_handwearArray = {};
-		m_handwearArrayDisplay = {};
-		m_handwearArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HandwearArray"));
-		m_arrayWidget.SetText(m_handwearArrayString);
+		RefreshClothing(false, m_handwearArray, "HandwearArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -637,11 +1384,7 @@ void AddHead()
 	if(!m_item)
 		return;
 	m_headArray.Insert(m_item);
-	m_item.Split("/", m_itemArray, false);
-	m_headArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-	m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HeadArray"));
-	m_headArrayString = SCR_StringHelper.Join(",", m_headArrayDisplay, true);
-	m_arrayWidget.SetText(m_headArrayString);
+	RefreshClothing(false, m_headArray, "HeadArray");
 }
 
 void RemoveHead()
@@ -651,24 +1394,18 @@ void RemoveHead()
 	if(inputWidget.GetText().ToInt() == 0)
 		return;
 	
-	if(inputWidget.GetText().ToInt() > m_headArrayDisplay.Count())
+	if(inputWidget.GetText().ToInt() > m_headArray.Count())
 		return;
 	
 	int index = inputWidget.GetText().ToInt() - 1;
-	m_headArray.Remove(index);
-	m_headArrayDisplay.Remove(index);
-	m_headArrayString = SCR_StringHelper.Join(",", m_headArrayDisplay, true);
-	m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HeadArray"));
-	m_arrayWidget.SetText(m_headArrayString);
+	m_headArray.RemoveOrdered(index);
+	RefreshClothing(false, m_headArray, "HeadArray");
 }
 
 void ClearHead()
 {
 	m_headArray = {};
-	m_headArrayDisplay = {};
-	m_headArrayString = "";
-	m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("HeadArray"));
-	m_arrayWidget.SetText(m_headArrayString);
+	RefreshClothing(false, m_headArray, "HeadArray");
 }
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -683,11 +1420,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_eyesArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_eyesArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("EyesArray"));
-		m_eyesArrayString = SCR_StringHelper.Join(",", m_eyesArrayDisplay, true);
-		m_arrayWidget.SetText(m_eyesArrayString);
+		RefreshClothing(false, m_eyesArray, "EyesArray");
     }
 	
 	void RemoveEyes()
@@ -697,24 +1430,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_eyesArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_eyesArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_eyesArray.Remove(index);
-		m_eyesArrayDisplay.Remove(index);
-		m_eyesArrayString = SCR_StringHelper.Join(",", m_eyesArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("EyesArray"));
-		m_arrayWidget.SetText(m_eyesArrayString);
+		m_eyesArray.RemoveOrdered(index);
+		RefreshClothing(false, m_eyesArray, "EyesArray");
 	}
 	
 	void ClearEyes()
 	{
 		m_eyesArray = {};
-		m_eyesArrayDisplay = {};
-		m_eyesArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("EyesArray"));
-		m_arrayWidget.SetText(m_eyesArrayString);
+		RefreshClothing(false, m_eyesArray, "EyesArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -729,11 +1456,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_earsArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_earsArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("EarsArray"));
-		m_earsArrayString = SCR_StringHelper.Join(",", m_earsArrayDisplay, true);
-		m_arrayWidget.SetText(m_earsArrayString);
+		RefreshClothing(false, m_earsArray, "EarsArray");
     }
 	
 	void RemoveEars()
@@ -743,24 +1466,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_earsArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_earsArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_earsArray.Remove(index);
-		m_earsArrayDisplay.Remove(index);
-		m_earsArrayString = SCR_StringHelper.Join(",", m_earsArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("EarsArray"));
-		m_arrayWidget.SetText(m_earsArrayString);
+		m_earsArray.RemoveOrdered(index);
+		RefreshClothing(false, m_earsArray, "EarsArray");
 	}
 	
 	void ClearEars()
 	{
 		m_earsArray = {};
-		m_earsArrayDisplay = {};
-		m_earsArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("EarsArray"));
-		m_arrayWidget.SetText(m_earsArrayString);
+		RefreshClothing(false, m_earsArray, "EarsArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -775,11 +1492,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_faceArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_faceArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("FaceArray"));
-		m_faceArrayString = SCR_StringHelper.Join(",", m_faceArrayDisplay, true);
-		m_arrayWidget.SetText(m_faceArrayString);
+		RefreshClothing(false, m_faceArray, "FaceArray");
     }
 	
 	void RemoveFace()
@@ -789,24 +1502,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_faceArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_faceArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_faceArray.Remove(index);
-		m_faceArrayDisplay.Remove(index);
-		m_faceArrayString = SCR_StringHelper.Join(",", m_faceArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("FaceArray"));
-		m_arrayWidget.SetText(m_faceArrayString);
+		m_faceArray.RemoveOrdered(index);
+		RefreshClothing(false, m_faceArray, "FaceArray");
 	}
 	
 	void ClearFace()
 	{
 		m_faceArray = {};
-		m_faceArrayDisplay = {};
-		m_faceArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("FaceArray"));
-		m_arrayWidget.SetText(m_faceArrayString);
+		RefreshClothing(false, m_faceArray, "FaceArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -821,11 +1528,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_neckArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_neckArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("NeckArray"));
-		m_neckArrayString = SCR_StringHelper.Join(",", m_neckArrayDisplay, true);
-		m_arrayWidget.SetText(m_neckArrayString);
+		RefreshClothing(false, m_neckArray, "NeckArray");
     }
 	
 	void RemoveNeck()
@@ -835,24 +1538,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_neckArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_neckArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_neckArray.Remove(index);
-		m_neckArrayDisplay.Remove(index);
-		m_neckArrayString = SCR_StringHelper.Join(",", m_neckArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("NeckArray"));
-		m_arrayWidget.SetText(m_neckArrayString);
+		m_neckArray.RemoveOrdered(index);
+		RefreshClothing(false, m_neckArray, "NeckArray");
 	}
 	
 	void ClearNeck()
 	{
 		m_neckArray = {};
-		m_neckArrayDisplay = {};
-		m_neckArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("NeckArray"));
-		m_arrayWidget.SetText(m_neckArrayString);
+		RefreshClothing(false, m_neckArray, "NeckArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -867,11 +1564,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_extra1Array.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_extra1ArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra1Array"));
-		m_extra1ArrayString = SCR_StringHelper.Join(",", m_extra1ArrayDisplay, true);
-		m_arrayWidget.SetText(m_extra1ArrayString);
+		RefreshClothing(false, m_extra1Array, "Extra1Array");
     }
 	
 	void RemoveExtra1()
@@ -881,24 +1574,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_extra1ArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_extra1Array.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_extra1Array.Remove(index);
-		m_extra1ArrayDisplay.Remove(index);
-		m_extra1ArrayString = SCR_StringHelper.Join(",", m_extra1ArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra1Array"));
-		m_arrayWidget.SetText(m_extra1ArrayString);
+		m_extra1Array.RemoveOrdered(index);
+		RefreshClothing(false, m_extra1Array, "Extra1Array");
 	}
 	
 	void ClearExtra1()
 	{
 		m_extra1Array = {};
-		m_extra1ArrayDisplay = {};
-		m_extra1ArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra1Array"));
-		m_arrayWidget.SetText(m_extra1ArrayString);
+		RefreshClothing(false, m_extra1Array, "Extra1Array");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -913,11 +1600,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_extra2Array.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_extra2ArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra2Array"));
-		m_extra2ArrayString = SCR_StringHelper.Join(",", m_extra2ArrayDisplay, true);
-		m_arrayWidget.SetText(m_extra2ArrayString);
+		RefreshClothing(false, m_extra2Array, "Extra2Input");
     }
 	
 	void RemoveExtra2()
@@ -927,24 +1610,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_extra2ArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_extra2Array.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_extra2Array.Remove(index);
-		m_extra2ArrayDisplay.Remove(index);
-		m_extra2ArrayString = SCR_StringHelper.Join(",", m_extra2ArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra2Array"));
-		m_arrayWidget.SetText(m_extra2ArrayString);
+		m_extra2Array.RemoveOrdered(index);
+		RefreshClothing(false, m_extra2Array, "Extra2Input");
 	}
 	
 	void ClearExtra2()
 	{
 		m_extra2Array = {};
-		m_extra2ArrayDisplay = {};
-		m_extra2ArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra2Array"));
-		m_arrayWidget.SetText(m_extra2ArrayString);
+		RefreshClothing(false, m_extra2Array, "Extra2Input");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -959,11 +1636,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_waistArray.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_waistArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("WaistArray"));
-		m_waistArrayString = SCR_StringHelper.Join(",", m_waistArrayDisplay, true);
-		m_arrayWidget.SetText(m_waistArrayString);
+		RefreshClothing(false, m_waistArray, "WaistArray");
     }
 	
 	void RemoveWaist()
@@ -973,24 +1646,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_waistArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_waistArray.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_waistArray.Remove(index);
-		m_waistArrayDisplay.Remove(index);
-		m_waistArrayString = SCR_StringHelper.Join(",", m_waistArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("WaistArray"));
-		m_arrayWidget.SetText(m_waistArrayString);
+		m_waistArray.RemoveOrdered(index);
+		RefreshClothing(false, m_waistArray, "WaistArray");
 	}
 	
 	void ClearWaist()
 	{
 		m_waistArray = {};
-		m_waistArrayDisplay = {};
-		m_waistArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("WaistArray"));
-		m_arrayWidget.SetText(m_waistArrayString);
+		RefreshClothing(false, m_waistArray, "WaistArray");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -1005,11 +1672,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_extra3Array.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_extra3ArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra3Array"));
-		m_extra3ArrayString = SCR_StringHelper.Join(",", m_extra3ArrayDisplay, true);
-		m_arrayWidget.SetText(m_extra3ArrayString);
+		RefreshClothing(false, m_extra3Array, "Extra3Array");
     }
 	
 	void RemoveExtra3()
@@ -1019,24 +1682,18 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_extra3ArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_extra3Array.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_extra3Array.Remove(index);
-		m_extra3ArrayDisplay.Remove(index);
-		m_extra3ArrayString = SCR_StringHelper.Join(",", m_extra3ArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra3Array"));
-		m_arrayWidget.SetText(m_extra3ArrayString);
+		m_extra3Array.RemoveOrdered(index);
+		RefreshClothing(false, m_extra3Array, "Extra3Array");
 	}
 	
 	void ClearExtra3()
 	{
 		m_extra3Array = {};
-		m_extra3ArrayDisplay = {};
-		m_extra3ArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra3Array"));
-		m_arrayWidget.SetText(m_extra3ArrayString);
+		RefreshClothing(false, m_extra3Array, "Extra3Array");
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -1051,11 +1708,7 @@ void ClearHead()
 		if(!m_item)
 			return;
 		m_extra4Array.Insert(m_item);
-		m_item.Split("/", m_itemArray, false);
-		m_extra4ArrayDisplay.Insert(m_itemArray.Get(m_itemArray.Count() - 1));
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra4Array"));
-		m_extra4ArrayString = SCR_StringHelper.Join(",", m_extra4ArrayDisplay, true);
-		m_arrayWidget.SetText(m_extra4ArrayString);
+		RefreshClothing(false, m_extra4Array, "Extra4Array");
     }
 	
 	void RemoveExtra4()
@@ -1065,23 +1718,17 @@ void ClearHead()
 		if(inputWidget.GetText().ToInt() == 0)
 			return;
 		
-		if(inputWidget.GetText().ToInt() > m_extra4ArrayDisplay.Count())
+		if(inputWidget.GetText().ToInt() > m_extra4Array.Count())
 			return;
 		
 		int index = inputWidget.GetText().ToInt() - 1;
-		m_extra4Array.Remove(index);
-		m_extra4ArrayDisplay.Remove(index);
-		m_extra4ArrayString = SCR_StringHelper.Join(",", m_extra4ArrayDisplay, true);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra4Array"));
-		m_arrayWidget.SetText(m_extra4ArrayString);
+		m_extra4Array.RemoveOrdered(index);
+		RefreshClothing(false, m_extra4Array, "Extra4Array");
 	}
 	
 	void ClearExtra4()
 	{
 		m_extra4Array = {};
-		m_extra4ArrayDisplay = {};
-		m_extra4ArrayString = "";
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget("Extra4Array"));
-		m_arrayWidget.SetText(m_extra4ArrayString);
+		RefreshClothing(false, m_extra4Array, "Extra4Array");
 	}
 }
