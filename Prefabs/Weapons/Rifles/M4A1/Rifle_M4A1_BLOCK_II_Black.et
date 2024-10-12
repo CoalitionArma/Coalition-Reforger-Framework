@@ -59,7 +59,6 @@ GenericEntity : "{283CDF7E44B5A9F8}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_base.e
     }
     AttachmentSlotComponent "{61749A66C4BA094E}" {
      AttachmentSlot InventoryStorageSlot bayonet {
-      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
      }
     }
     AttachmentSlotComponent "{625D5460B1C1B620}" {

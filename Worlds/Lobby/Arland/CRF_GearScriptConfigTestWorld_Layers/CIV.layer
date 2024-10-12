@@ -1,0 +1,16 @@
+SCR_AIGroup : "{1782AE1B90B5A492}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevGI_p.et" {
+ coords 1066.273 39 2670.568
+ angleY -13.601
+}
+SCR_AIGroup : "{ABEEBCE6A46B4148}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevSpecialist_p.et" {
+ coords 1134.971 39 2687.824
+ angleY -16.686
+}
+SCR_AIGroup : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
+ coords 1029.064 39 2659.462
+ angleY -17.31
+}
+SCR_AIGroup : "{F3B8D85C8756F89A}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevLeader_p.et" {
+ coords 1095.339 39 2677.505
+ angleY -14.283
+}

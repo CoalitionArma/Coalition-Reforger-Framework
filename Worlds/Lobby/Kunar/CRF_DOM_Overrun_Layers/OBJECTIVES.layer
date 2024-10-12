@@ -1,0 +1,231 @@
+$grp SCR_FactionControlTriggerEntity {
+ YellowRockTRG {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 1896.939 27.931 3712.521
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 55
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"The Taliban have seized control of Yellow Rock!\", 15);"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "INDFOR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "Yellow Rock"
+     m_aVisibleForFactions {
+      "INDFOR"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 90.693
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "Yellow Rock"
+     m_aVisibleForFactions {
+      "BLUFOR"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend Yellow Rock"
+     m_sTextData "Defend Yellow Rock"
+     m_iOrder 2
+     m_iScore 25
+     m_sFactionKey "BLUFOR"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control Yellow Rock"
+     m_sTextData "Control Yellow Rock"
+     m_iOrder 2
+     m_iScore 25
+     m_sFactionKey "INDFOR"
+    }
+   }
+  }
+ }
+ NangalamTRG {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 2073.58 18.125 3621.987
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 55
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"The Taliban have seized control of Nangalam!\", 15);"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "INDFOR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "Nangalam"
+     m_aVisibleForFactions {
+      "INDFOR"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 89.905
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "Nangalam"
+     m_aVisibleForFactions {
+      "BLUFOR"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend Nangalam"
+     m_sTextData "Defend Nangalam"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "BLUFOR"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control Nangalam"
+     m_sTextData "Control Nangalam"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "INDFOR"
+    }
+   }
+  }
+ }
+ FOBBlessingTRG {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 1925.147 23.974 3823.562
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 30
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"The Taliban have seized control of FOB Blessing!\", 15);"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "INDFOR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "FOB Blessing"
+     m_aVisibleForFactions {
+      "INDFOR"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 91.123
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "FOB Blessing"
+     m_aVisibleForFactions {
+      "BLUFOR"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control FOB Blessing"
+     m_sTextData "Control FOB Blessing"
+     m_iScore 50
+     m_sFactionKey "INDFOR"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend FOB Blessing"
+     m_sTextData "Defend FOB Blessing"
+     m_iScore 50
+     m_sFactionKey "BLUFOR"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,48 @@
+SCR_AIGroup : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Company_p.et" {
+ coords 1680.028 234.799 2470.954
+ angleY 133.06
+ {
+  $grp SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+   {
+    coords -3.503 0.021 8.446
+    angleY 158.798
+    {
+     $grp SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+      {
+       coords 13.274 1.016 12.228
+       angleY 15.212
+      }
+      {
+       coords 12.699 0.486 10.112
+       angleY 15.212
+      }
+      {
+       coords 11.917 0.152 7.233
+       angleY 15.212
+      }
+     }
+    }
+   }
+   {
+    coords -3.464 0.515 -7.865
+    angleY -179.934
+    {
+     $grp SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+      {
+       coords 8.759 -0.345 -7.316
+       angleY -6.057
+      }
+      {
+       coords 9.299 -0.507 -12.414
+       angleY -6.061
+      }
+      {
+       coords 9.08 -0.364 -10.348
+       angleY -6.742
+      }
+     }
+    }
+   }
+  }
+ }
+}

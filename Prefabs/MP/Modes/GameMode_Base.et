@@ -1,6 +1,8 @@
 SCR_BaseGameMode {
  ID "56B2B479C6B96951"
  components {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+  }
   CRF_HintManager "{6243290CF19DA5FF}" {
   }
   CRF_LoggingServerComponent "{61761C7B221DBCD4}" {

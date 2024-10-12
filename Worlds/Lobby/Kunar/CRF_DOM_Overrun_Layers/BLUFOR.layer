@@ -1,0 +1,143 @@
+$grp SCR_BaseTriggerEntity {
+ mortar1 {
+  coords 1921.572 22.474 3823.824
+ }
+ spawnVics {
+  coords 2620.426 -53.339 4160.71
+  userScript "	string mortar = \"{0374F390B22D0D1E}Mortars/81/M252new.et\";"\
+  "	IEntity mortar1, mortar2;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		mortar1 = GetGame().GetWorld().FindEntityByName(\"mortar1\");"\
+  "		mortar2 = GetGame().GetWorld().FindEntityByName(\"mortar2\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = mortar1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = mortar2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ mortar2 {
+  coords 1918.947 22.467 3824.207
+ }
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "column"
+  }
+ }
+ coords 1930.21 15.691 3831.09
+ angleY -17.902
+ m_aUnitPrefabSlots {
+  "{C62B8D48AAA03249}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PL_P.et" "{2A15A7803EAF5EE9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_FO_P.et" "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et"
+ }
+ {
+  $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords 7.676 0.25 -7.618
+    angleY 88.146
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords 5.782 0.25 -7.703
+    angleY 87.914
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Row"
+     }
+    }
+    coords 2.838 0.25 -7.823
+    angleY 91.269
+    m_sCustomNameSet "3rd Squad"
+    {
+     SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Row"
+       }
+      }
+      coords -0.075 -0.145 -1.804
+      angleY -2.38
+      m_sCustomNameSet "4th Squad"
+      {
+       SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Row"
+         }
+        }
+        coords -11.163 0.055 5.228
+        angleY 89.253
+        m_aUnitPrefabSlots {
+         "{DDFC9128CBEF1AAB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLead_P.et" "{E6875FC6CEED7B4B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectGunner_P.et" "{E6875FC6CEED7B4B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectGunner_P.et"
+        }
+        m_sCustomNameSet "Mortar"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{C043170302490449}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_D_2004.et" {
+ M923A1_transport_covered_D_1 {
+  coords 1947.311 16.374 3845.805
+  angleY -13.439
+ }
+ M923A1_transport_covered_D_2 {
+  coords 1957.04 16.214 3830.576
+  angleY 174.981
+ }
+}
+Vehicle M997_maxi_ambulance_D_1 : "{D555F22BF4C0ADAC}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_D_2004.et" {
+ coords 1952.179 16.201 3828.419
+ angleY 163.688
+}
+$grp GenericEntity : "{FC7427975FF6AEB1}Mortars/81/m25281mm.et" {
+ {
+  coords 1921.819 22.476 3827.014
+  angleY -16.215
+ }
+ {
+  coords 1921.95 22.475 3826.566
+  angleY -16.215
+ }
+ {
+  coords 1921.908 22.475 3826.712
+  angleY -16.215
+ }
+ {
+  coords 1921.863 22.476 3826.865
+  angleY -16.215
+ }
+ {
+  coords 1922 22.475 3826.396
+  angleY -16.215
+ }
+ {
+  coords 1922.046 22.475 3826.24
+  angleY -16.215
+ }
+}
