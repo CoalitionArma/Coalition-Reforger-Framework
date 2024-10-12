@@ -1,0 +1,36 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2078.894 58.958 2118.189
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_GearScriptEditorGamemodeComponent "{62984A1C42B5E919}" {
+  }
+ }
+ coords 1459.457 38 2949.394
+ m_aDisabledResourceTypes {
+  0
+ }
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Gearscript Editor"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 1465.767 38 2947.493
+ m_aUnitPrefabSlots {
+  "{C62B8D48AAA03249}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PL_P.et"
+ }
+ m_sCustomNameSet "Gearscript Editor"
+}

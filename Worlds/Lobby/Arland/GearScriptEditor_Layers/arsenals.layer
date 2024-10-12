@@ -1,0 +1,98 @@
+GenericEntity : "{14D8F84B6F3146C8}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_AF.et" {
+ coords 1484.141 38 2954.807
+}
+$grp GenericEntity : "{160E4E4110803F26}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_FIA.et" {
+ {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
+   }
+  }
+  coords 1470.454 38 2955.744
+ }
+ {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{41FF5ED4614840C9}Assets/Props/Fabric/Flags/Data/Flag_1_2_CIVILIAN.emat"
+   }
+  }
+  coords 1473.824 38 2956.505
+ }
+}
+GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
+ coords 1464.296 38 2952.348
+ angleY -24
+}
+GenericEntity : "{641BE0766BB1874E}PrefabsEditable/Auto/Props/Military/Compositions/UK/E_ArsenalBox_UK.et" {
+ components {
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   m_bIsEnabled 0
+  }
+ }
+ coords 1477.138 38 2955.462
+ angleY -18
+}
+GenericEntity : "{651E545B53BBD034}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_USSR.et" {
+ coords 1467.157 38 2955.23
+}
+GenericEntity : "{6F15B1F98F574B1C}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_EUCIV.et" {
+ components {
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   m_bIsEnabled 0
+  }
+ }
+ coords 1483.112 38 2954.113
+ angleY 73
+}
+$grp GenericEntity : "{A80E80B60FEAE52D}PrefabsEditable/Auto/Structures/Military/Flags/E_FlagPole_02_V1_UK.et" {
+ {
+  coords 1476.424 38 2957.456
+ }
+ {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{1D4A447A3E34C70D}Assets/Props/Fabric/Data/CDF_Flags/Flag_1_2_CDF.emat"
+   }
+  }
+  coords 1479.714 38 2958.93
+ }
+}
+GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/ArsenalBox_USSR.et" {
+ components {
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   m_bIsEnabled 0
+  }
+ }
+ coords 1467.802 38 2953.304
+ angleY -21
+}
+GenericEntity : "{B53B98CEA2D72735}Prefabs/Props/Military/Compositions/FIA/ArsenalBox_FIA.et" {
+ components {
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   m_bIsEnabled 0
+  }
+ }
+ coords 1471.106 38 2954.099
+ angleY -20
+}
+GenericEntity : "{E55FC02F8C1518A2}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1_US.et" {
+ coords 1463.44 38 2954.029
+}
+GenericEntity : "{EB84E9BAF29160F9}PrefabsEditable/Auto/Systems/Arsenal/ArsenalBoxes/CDF/E_ArsenalBox_CDF.et" {
+ components {
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   m_bIsEnabled 0
+  }
+ }
+ coords 1479.983 38 2956.031
+ angleY 169
+}
+GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_CIV.et" {
+ components {
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   m_bIsEnabled 0
+  }
+ }
+ coords 1474.246 38 2954.782
+ angleY -13
+}
