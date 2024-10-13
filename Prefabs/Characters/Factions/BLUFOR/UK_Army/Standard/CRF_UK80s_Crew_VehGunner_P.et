@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{FDD54600C79F9048}Prefabs/Characters/Factions/BLUFOR/UK_Army/Standard/CRF_UK80s_Crew_VehDriver_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Gunner"
+  }
+ }
+}

@@ -1,8 +1,7 @@
-SCR_AIGroup USSR80s_Platoon_HQ_1 : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_Large_p.et" {
- coords 5135.233 478.719 15128.988
- angleY -87.216
+SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
+ coords 5133.79 478.731 15133.023
  m_aUnitPrefabSlots {
-  "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_RTO_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_MedicalOfficer_P.et"
+  "{B5AEDC813E4F4A58}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Officer_P.et" "{F72805D5D2D05F63}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_RTO_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_MedicalOfficer_P.et" "{74A845B32482B5C4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_MedicalOfficer_P.et"
  }
  m_sCustomNameSet "1st Platoon"
  {
@@ -12,10 +11,10 @@ SCR_AIGroup USSR80s_Platoon_HQ_1 : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s
      DefaultFormation "Column"
     }
    }
-   coords 3.641 -0.135 14.754
-   angleY 178.563
+   coords -13.117 -0.147 0.318
+   angleY 91.347
    m_aUnitPrefabSlots {
-    "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
+    "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et"
    }
    m_sCustomNameSet "1st Rifle Squad"
    {
@@ -27,7 +26,7 @@ SCR_AIGroup USSR80s_Platoon_HQ_1 : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s
      }
      coords 3.789 0.023 0.289
      m_aUnitPrefabSlots {
-      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
+      "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et"
      }
      m_sCustomNameSet "2nd Rifle Squad"
      {
@@ -39,7 +38,7 @@ SCR_AIGroup USSR80s_Platoon_HQ_1 : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s
        }
        coords 3.857 0.036 0.366
        m_aUnitPrefabSlots {
-        "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
+        "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et"
        }
        m_sCustomNameSet "3rd Rifle Squad"
        {
@@ -51,22 +50,22 @@ SCR_AIGroup USSR80s_Platoon_HQ_1 : "{01ADDE8A0A1C41CD}Prefabs/Groups/OPFOR/1980s
          }
          coords 4.032 -0.004 -0.132
          m_aUnitPrefabSlots {
-          "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et"
+          "{A5F4D7FEBDB57182}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_SL_P.et" "{DD80FA65DDFF68B9}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Medic_P.et" "{DA4B14A5D57123A6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_GL1_P.et" "{00716F7369F3C5E8}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AR_P.et" "{BDA13DF416E8D9F6}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AT_P.et" "{F9C5F4700B5D87FB}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_AAT_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et" "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_Rifleman_P.et"
          }
          m_sCustomNameSet "4th Rifle Squad"
          {
-          SCR_AIGroup USSR80s_BTR_Crew_1 : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+          SCR_AIGroup USSR80s_BTR_Crew_1 : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_3ManArmorCrew_p.et" {
            coords -51.689 -0.384 -16.858
            angleY 78.973
            m_aUnitPrefabSlots {
-            "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+            "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_ArmorCrew_P.et"
            }
            m_sCustomNameSet "BTR 1"
            {
-            SCR_AIGroup USSR80s_BTR_Crew_2 : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_ArmorCrew_p.et" {
+            SCR_AIGroup USSR80s_BTR_Crew_2 : "{A21AFCBEE98B0BF8}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_3ManArmorCrew_p.et" {
              coords -10.965 0.282 1.307
              m_aUnitPrefabSlots {
-              "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_ArmorCrew_P.et"
+              "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_ArmorCrew_P.et" "{DE22E8CE60D5C7D4}Prefabs/Characters/Factions/OPFOR/USSR_Army/legacy/Character_USSR_ArmorCrew_P.et"
              }
              m_sCustomNameSet "BTR 2"
             }

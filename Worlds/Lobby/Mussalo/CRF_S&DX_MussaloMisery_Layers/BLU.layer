@@ -1,0 +1,147 @@
+$grp SCR_BaseTriggerEntity {
+ spawnArmedHMV_1 {
+  coords 3826.402 2.156 5716.804
+  angleY 44.399
+ }
+ spawnBLUVics {
+  coords 3925.875 3.954 5730.827
+  userScript "	string Armed = \"{78CD65D4B24D0139}Prefabs/Vehicles/M1114/kiok_m1114_armed_m2tower_green.et\";"\
+  "	string UnArmed = \"{B575D68ECFC84D54}Prefabs/Vehicles/M1114/kiok_m1114_armed_m2gpk_wd.et\";"\
+  "	IEntity spawnArmedHMV_1,spawnArmedHMV_2,spawnArmedHMV_3,spawnArmedHMV_4,spawnArmedHMV_5,spawnHMV_1,spawnHMV_2,spawnHMV_3;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnArmedHMV_1 = GetGame().GetWorld().FindEntityByName(\"spawnArmedHMV_1\");"\
+  "		spawnArmedHMV_2 = GetGame().GetWorld().FindEntityByName(\"spawnArmedHMV_2\");"\
+  "		spawnArmedHMV_3 = GetGame().GetWorld().FindEntityByName(\"spawnArmedHMV_3\");"\
+  "		spawnArmedHMV_4 = GetGame().GetWorld().FindEntityByName(\"spawnArmedHMV_4\");"\
+  "		spawnArmedHMV_5 = GetGame().GetWorld().FindEntityByName(\"spawnArmedHMV_5\");"\
+  "		spawnHMV_1 = GetGame().GetWorld().FindEntityByName(\"spawnHMV_1\");"\
+  "		spawnHMV_2 = GetGame().GetWorld().FindEntityByName(\"spawnHMV_2\");"\
+  "		spawnHMV_3 = GetGame().GetWorld().FindEntityByName(\"spawnHMV_3\");"\
+  "		"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawnArmedHMV_1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(Armed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnArmedHMV_2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(Armed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnArmedHMV_3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(Armed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnArmedHMV_4.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(Armed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnArmedHMV_5.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(Armed),GetGame().GetWorld(),spawnParams);"\
+  "		"\
+  "		spawnParams.Transform[3] = spawnHMV_1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(UnArmed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnHMV_2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(UnArmed),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnHMV_3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(UnArmed),GetGame().GetWorld(),spawnParams);"\
+  ""\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ spawnArmedHMV_2 {
+  coords 3835.625 2.156 5721.434
+  angleY 44.399
+ }
+ spawnArmedHMV_3 {
+  coords 3859.137 2.156 5705.461
+  angleY 44.399
+ }
+ spawnArmedHMV_4 {
+  coords 3837.751 2.156 5694.991
+  angleY 44.399
+ }
+ spawnHMV_1 {
+  coords 3831.263 2.156 5718.485
+  angleY 44.399
+ }
+ spawnHMV_2 {
+  coords 3840.503 2.156 5724.3
+  angleY 44.399
+ }
+ spawnArmedHMV_5 {
+  coords 3864.012 2.156 5707.282
+  angleY 44.399
+ }
+ spawnHMV_3 {
+  coords 3833.761 2.165 5701.427
+  angleY 44.399
+ }
+}
+Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
+ coords 3842.375 2.171 5688.826
+ angleY -116.152
+}
+SCR_AIGroup : "{6E112BBC1CDFB41E}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Command/CRF_USARMY_Platoon.et" {
+ coords 3854.358 2.095 5714.42
+ m_sCustomNameSet "Platoon"
+ {
+  $grp SCR_AIGroup : "{9EC8EE16FCBDC09F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Infantry/CRF_USARMY_RifleSquad.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+    }
+    coords -0.326 0.028 -19.464
+    m_aUnitPrefabSlots {
+     "{85CEC792CE82F95E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Base_SL_P.et" "{8EF328BE3B522B09}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Medic_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{34D77F5EA4CE5DC3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AR_P.et" "{0171647FF6BED20B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AAR_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{54052CEC1DA293F8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Demo_P.et"
+    }
+    m_sCustomNameSet "1st Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+    }
+    coords 4.168 -0.067 -17.463
+    m_aUnitPrefabSlots {
+     "{85CEC792CE82F95E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Base_SL_P.et" "{8EF328BE3B522B09}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Medic_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{34D77F5EA4CE5DC3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AR_P.et" "{0171647FF6BED20B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AAR_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{54052CEC1DA293F8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Demo_P.et"
+    }
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+    }
+    coords 8.75 -0.068 -15.476
+    m_aUnitPrefabSlots {
+     "{85CEC792CE82F95E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Base_SL_P.et" "{8EF328BE3B522B09}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Medic_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{34D77F5EA4CE5DC3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AR_P.et" "{0171647FF6BED20B}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AAR_P.et" "{5748F79457F55D5C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_TL_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{89072DD9DBD541DD}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AT_P.et" "{54052CEC1DA293F8}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_Demo_P.et"
+    }
+    m_sCustomNameSet "3rd Squad"
+    {
+     SCR_AIGroup : "{E6BC4F5BB16DCE5F}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Support/CRF_USARMY_MATTeam.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Column"
+       }
+      }
+      coords 4.149 0.055 2.261
+      {
+       SCR_AIGroup : "{B8A2E8AB9B71D812}Prefabs/Groups/BLUFOR/RHS_USAD_USARMY/Standard/Support/CRF_USARMY_MGTeam.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Column"
+         }
+        }
+        coords 5.513 0.332 1.647
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

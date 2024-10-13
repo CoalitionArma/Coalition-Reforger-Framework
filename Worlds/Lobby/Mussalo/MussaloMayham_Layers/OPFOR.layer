@@ -1,0 +1,176 @@
+Vehicle Ural4320_tanker1 : "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et" {
+ coords 830.898 3.183 6417.111
+ angleY 96.929
+}
+SCR_AIGroup : "{6BD99D896970F83A}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Command/CRF_RF_ATACS_Company.et" {
+ coords 883.631 3.062 6371.521
+ {
+  $grp SCR_AIGroup : "{36C2D9150CAF4FBD}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Command/CRF_RF_ATACS_Platoon.et" {
+   {
+    coords 7.069 0 -5.974
+    {
+     $grp SCR_AIGroup : "{3E115BC5EB76E179}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Infantry/CRF_RF_ATACS_RifleSquad.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "column"
+        }
+       }
+       coords 5.421 0.003 -5.977
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "column"
+        }
+       }
+       coords 6.046 0.003 2.397
+       m_sCustomNameSet "2nd Squad"
+      }
+     }
+     SCR_AIGroup : "{785C3DB515444242}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Support/CRF_RF_ATACS_MMG.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "column"
+       }
+      }
+      coords 15.993 0.003 12.488
+      m_sCustomNameSet "3rd Squad"
+     }
+    }
+   }
+   {
+    coords 7.171 0 6.111
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{3E115BC5EB76E179}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Infantry/CRF_RF_ATACS_RifleSquad.et" {
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "column"
+        }
+       }
+       coords 6.566 0.003 -2.231
+       m_sCustomNameSet "4th Squad"
+      }
+      {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "column"
+        }
+       }
+       coords 7.45 0.003 3.243
+       m_sCustomNameSet "5th Squad"
+      }
+     }
+     SCR_AIGroup : "{785C3DB515444242}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Support/CRF_RF_ATACS_MMG.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "column"
+       }
+      }
+      coords 15.891 0.003 -15.834
+      m_sCustomNameSet "6th Squad"
+     }
+    }
+   }
+  }
+  SCR_AIGroup : "{5B50E5E250E64DD0}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Vehicle/CRF_RF_ATACS_HeloCrew.et" {
+   coords -1.024 0 11.14
+   m_sCustomNameSet "Logistics"
+  }
+ }
+}
+$grp Vehicle : "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et" {
+ Mi8MT_armed1 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 1130
+     }
+     SCR_FuelNode "{5A7CE769E7A9C416}" {
+      m_fInitialFuelTankState 415
+     }
+     SCR_FuelNode "{5A7CE769E7A9C414}" {
+      m_fInitialFuelTankState 1040
+     }
+    }
+   }
+  }
+  coords 902.659 3.062 6433.414
+  angleY -90.586
+ }
+ Mi8MT_armed2 {
+  coords 902.914 3.062 6408.434
+  angleY -90.586
+ }
+ Mi8MT_armed3 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 1130
+     }
+     SCR_FuelNode "{5A7CE769E7A9C416}" {
+      m_fInitialFuelTankState 415
+     }
+     SCR_FuelNode "{5A7CE769E7A9C414}" {
+      m_fInitialFuelTankState 1040
+     }
+    }
+   }
+  }
+  coords 863.041 3.062 6473.12
+  angleY 178.691
+ }
+ Mi8MT_armed4 {
+  components {
+   SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+    FuelNodes {
+     SCR_FuelNode "{5622A70CD4036C5A}" {
+      m_fInitialFuelTankState 1130
+     }
+     SCR_FuelNode "{5A7CE769E7A9C416}" {
+      m_fInitialFuelTankState 415
+     }
+     SCR_FuelNode "{5A7CE769E7A9C414}" {
+      m_fInitialFuelTankState 1040
+     }
+    }
+   }
+  }
+  coords 892.451 3.062 6284.496
+  angleY -91.251
+ }
+}
+Vehicle Ural4320_repair1 : "{A5647958579A4149}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_repair.et" {
+ coords 830.014 3.063 6410.01
+ angleY 96.468
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered2 {
+  coords 826.084 3.062 6321.608
+  angleY -177.591
+ }
+ Ural4320_transport_covered3 {
+  coords 825.612 3.062 6310.393
+  angleY -177.591
+ }
+ Ural4320_transport_covered5 {
+  coords 824.734 3.062 6289.525
+  angleY -177.591
+ }
+ Ural4320_transport_covered6 {
+  coords 824.341 3.062 6280.175
+  angleY -177.591
+ }
+ Ural4320_transport_covered1 {
+  coords 826.51 3.062 6331.726
+  angleY -177.591
+ }
+ Ural4320_transport_covered4 {
+  coords 825.177 3.062 6300.049
+  angleY -177.591
+ }
+}

@@ -1,0 +1,32 @@
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 3815.567 2.777 5548.239
+  m_sTitle "Save A Site"
+  m_sTextData "Save A Site"
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 3808.447 2.63 5546.123
+  m_sTitle "Destroy A site"
+  m_sTextData "Destroy A site"
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 3815.567 2.777 5540.15
+  m_sTitle "Save B Site"
+  m_sTextData "Save B Site"
+  m_iOrder 1
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 3808.447 2.63 5538.034
+  m_sTitle "Destroy B site"
+  m_sTextData "Destroy B site"
+  m_iOrder 1
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+}

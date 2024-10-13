@@ -3,10 +3,10 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  components {
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
-    Name "#AR-Group_Guerrilla_HQ"
-    m_Image "{DDE456572E067457}UI/Textures/EditorPreviews/Groups/INDFOR/Group_FIA_PlatoonHQ.edds"
-    m_aAuthoredLabels + {
-     35 24
+    Name "CRF FIA Platoon HQ"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_aAuthoredLabels {
+     4 51874 35 24
     }
     m_aAutoLabels {
      71
@@ -17,6 +17,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
       m_Value 3
      }
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{619B4D26B1300A57}" {
      m_Identity INDFOR
      m_Dimension LAND
@@ -78,7 +79,7 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
   }
  }
  m_aUnitPrefabSlots {
-  "{EF69CF21A4B624A6}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_PL_P.et" "{FB4494D9718D2218}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_Character_FIA_Leader_Base_MO_P.et"
+  "{EF69CF21A4B624A6}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_PL_P.et" "{FB4494D9718D2218}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_MO_P.et"
  }
  m_bSetPlayable 1
 }

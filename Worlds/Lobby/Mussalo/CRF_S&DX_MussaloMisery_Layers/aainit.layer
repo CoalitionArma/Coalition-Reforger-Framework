@@ -1,0 +1,85 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 3761.118 2.404 5596.967
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 70
+  }
+  CRF_SearchAndDestroyGameModeComponent "{623C2E54766BAF15}" {
+   attackingSide "RHS_AFRF"
+   defendingSide "RHS_USAF"
+  }
+ }
+ coords 3753.629 1.67 5601.202
+ {
+  SCR_FactionManager "623CDC4A340B94E4" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aCompanyNames {
+       SCR_CallsignInfo "{623CDC4998996595}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{623CDC499B65840A}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{623CDC499C626B70}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{623CDC499DEB1579}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{623CDC499D3F9B46}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{623CDC499D5BD345}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{623CDC499D786A2B}" {
+        m_sCallsign "Armor 1"
+       }
+       SCR_CallsignInfo "{623CDC49829B422E}" {
+        m_sCallsign "Armor 2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{623CDC47CECD347A}" {
+        m_sCallsign "MAT"
+       }
+       SCR_CallsignInfo "{623CDC47F28F7767}" {
+        m_sCallsign "MMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ bSiteTrigger {
+  coords 3604.922 4.031 6052.946
+ }
+ aSiteTrigger {
+  coords 3858.178 1.279 5627.979
+ }
+}

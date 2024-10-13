@@ -102,11 +102,11 @@ $grp SCR_FactionControlTriggerEntity {
   }
  }
  Capture3 {
-  coords 5357.721 481.81 14922.522
+  coords 5396.686 483.424 14913.76
   userScript "    // Static boolean variable to track whether the action has been performed"\
   "    static bool m_actionPerformed = false;"
   TriggerShapeType Sphere
-  SphereRadius 41.8
+  SphereRadius 60
   PeriodicQueries 1
   UpdatePeriod 20
   OnActivate ""\
@@ -154,6 +154,20 @@ $grp SCR_FactionControlTriggerEntity {
 GenericEntity : "{1ABA1239EEA6FAC6}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Bunker_Soviet.et" {
  coords 5281.052 477.895 15181.8
  angleY 26.134
+}
+$grp StaticModelEntity : "{7C3DC47E44CC9FE5}PrefabsEditable/Auto/Structures/Military/Camps/Shelters/E_ShelterStorage_USSR_01_foundation.et" {
+ {
+  coords 5413.709 479.023 14900.804
+  angleX 3.064
+  angleY 13.412
+  angleZ 2.459
+ }
+ {
+  coords 5403.708 479.916 14905.481
+  angleX 2.558
+  angleY 32.924
+  angleZ 4.134
+ }
 }
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
@@ -207,5 +221,46 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   }
   m_bVisibleForEmptyFaction 0
   m_bShowForAnyFaction 0
+ }
+}
+$grp Vehicle : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+ M1025_armed_M2HB_MERDC3 {
+  coords 6389.428 467.86 14979.516
+  angleY -137.497
+ }
+ M1025_armed_M2HB_MERDC4 {
+  coords 6415.479 466.993 14986.881
+  angleY -70.615
+  userScript "	// code here"\
+  "	string mortar = \"{0374F390B22D0D1E}Mortars/81/M252new.et\";"\
+  "	vector mortar1spawn, mortar2spawn;"\
+  "	IEntity mortar1trig, mortar2trig;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		mortar1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
+  "		mortar2trig = GetGame().GetWorld().FindEntityByName(\"trig2\");"\
+  "		mortar1spawn = mortar1trig.GetOrigin();"\
+  "		mortar2spawn = mortar2trig.GetOrigin();"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = mortar1spawn;"\
+  "		"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = mortar2spawn;"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+}
+$grp GenericEntity : "{FC7427975FF6AEB1}Mortars/81/m25281mm.et" {
+ {
+  coords 6366.331 468.243 15002.472
+ }
+ {
+  coords 6366.375 468.277 15003.094
  }
 }

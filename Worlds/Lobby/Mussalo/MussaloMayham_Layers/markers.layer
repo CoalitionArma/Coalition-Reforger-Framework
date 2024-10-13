@@ -1,0 +1,52 @@
+PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 898.041 3.063 6413.766
+ angleY 90.294
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+}
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 3221.243 1.696 5800.417
+  angleY 0
+  m_MarkerColor 1 0 0.022 1
+  m_sQuadName "target-reference-point-2"
+  m_sDescription "Depot 1"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3422.553 1.696 4861.576
+  angleY 0
+  m_MarkerColor 1 0 0.022 1
+  m_sQuadName "target-reference-point-2"
+  m_sDescription "Depot 2"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3795.745 1.696 5539.493
+  angleY 0
+  m_MarkerColor 1 0 0.022 1
+  m_sQuadName "target-reference-point-2"
+  m_sDescription "Depot 3"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4216.79 1.696 5689.213
+  angleY 0
+  m_MarkerColor 1 0 0.022 1
+  m_sQuadName "target-reference-point-2"
+  m_sDescription "Depot 3"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 3393.305 2.907 6125.266
+ angleY 91.294
+ m_aVisibleForFactions {
+  "CDF"
+ }
+}

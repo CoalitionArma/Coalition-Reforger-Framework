@@ -1,0 +1,197 @@
+$grp SCR_BaseTriggerEntity {
+ mortarSpawner {
+  coords 1951.625 82.738 5161.866
+  userScript "	string mortar = \"{0374F390B22D0D1E}Mortars/81/M252new.et\";"\
+  "	IEntity spawnMortar, spawnMortar2;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnMortar = GetGame().GetWorld().FindEntityByName(\"spawnMortar\");"\
+  "		spawnMortar2 = GetGame().GetWorld().FindEntityByName(\"spawnMortar2\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		spawnParams.Transform[3] = spawnMortar.GetOrigin();"\
+  "		"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnMortar2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ spawnMortar {
+  coords 1942.499 82.069 5154.449
+ }
+ spawnMortar2 {
+  coords 1944.688 82.245 5150.931
+ }
+ spawnOpforVics {
+  coords 4431.725 152.803 6801.4
+  userScript "	string btr = \"{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et\";"\
+  "	string ural = \"{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et\";"\
+  "	string ambu = \"{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et\";"\
+  "	IEntity spawnBtr1, spawnBtr2, spawnUral1, spawnUral2, spawnAmbu1, spawnAmbu2, spawnAmbu3;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnBtr1 = GetGame().GetWorld().FindEntityByName(\"spawnBtr1\");"\
+  "		spawnBtr2 = GetGame().GetWorld().FindEntityByName(\"spawnBtr2\");"\
+  "		spawnUral1 = GetGame().GetWorld().FindEntityByName(\"spawnUral1\");"\
+  "		spawnUral2 = GetGame().GetWorld().FindEntityByName(\"spawnUral2\");"\
+  "		spawnAmbu1 = GetGame().GetWorld().FindEntityByName(\"spawnAmbu1\");"\
+  "		spawnAmbu2 = GetGame().GetWorld().FindEntityByName(\"spawnAmbu2\");"\
+  "		spawnAmbu3 = GetGame().GetWorld().FindEntityByName(\"spawnAmbu3\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawnBtr1.GetOrigin();		"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(btr),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnBtr2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(btr),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnUral1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ural),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnUral2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ural),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnAmbu1.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ambu),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnAmbu2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ambu),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnAmbu3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(ambu),GetGame().GetWorld(),spawnParams);"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ spawnBtr1 {
+  coords 4425.409 148.915 6779.104
+ }
+ spawnBtr2 {
+  coords 4430.389 148.986 6779.372
+ }
+ spawnUral1 {
+  coords 4443.437 149.15 6780.193
+ }
+ spawnUral2 {
+  coords 4448.591 149.275 6780.219
+ }
+ spawnAmbu1 {
+  coords 4448.044 149.47 6799.744
+ }
+ spawnAmbu2 {
+  coords 4448.084 149.439 6806.71
+ }
+ spawnAmbu3 {
+  coords 4448.044 149.438 6813.903
+ }
+ spawnBluforVics {
+  coords 1054.536 3.42 5991.747
+  userScript "	string humArm = \"{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et\";"\
+  "	string humvee = \"{751AFEEA19DDFB04}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_MERDC.et\";"\
+  "	string truck = \"{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et\";"\
+  "	string maxi = \"{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et\";"\
+  "	string helo = \"{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et\";"\
+  "	IEntity spawnHumArm, spawnHumArm2, spawnHumArm3, spawnTruck, spawnM998, spawnM9982, spawnM9983, spawnM9984, spawnM9985, spawnM9986, spawnM9987, spawnM9988, spawnMaxi, spawnLogi, spawnConst, spawnHelo;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnHumArm = GetGame().GetWorld().FindEntityByName(\"spawnHumArm\");"\
+  "		spawnHumArm2 = GetGame().GetWorld().FindEntityByName(\"spawnHumArm2\");"\
+  "		spawnHumArm3 = GetGame().GetWorld().FindEntityByName(\"spawnHumArm3\");"\
+  "		spawnM998 = GetGame().GetWorld().FindEntityByName(\"spawnM998\");"\
+  "		spawnM9982 = GetGame().GetWorld().FindEntityByName(\"spawnM9982\");"\
+  "		spawnM9983 = GetGame().GetWorld().FindEntityByName(\"spawnM9983\");"\
+  "		spawnM9984 = GetGame().GetWorld().FindEntityByName(\"spawnM9984\");"\
+  "		spawnM9985 = GetGame().GetWorld().FindEntityByName(\"spawnM9985\");"\
+  "		spawnM9986 = GetGame().GetWorld().FindEntityByName(\"spawnM9986\");"\
+  "		spawnM9987 = GetGame().GetWorld().FindEntityByName(\"spawnM9987\");"\
+  "		spawnM9988 = GetGame().GetWorld().FindEntityByName(\"spawnM9988\");"\
+  "		spawnMaxi = GetGame().GetWorld().FindEntityByName(\"spawnMaxi\");"\
+  "		spawnTruck = GetGame().GetWorld().FindEntityByName(\"spawnM923A1\");"\
+  "		spawnHelo = GetGame().GetWorld().FindEntityByName(\"spawnHelo\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawnHumArm.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humArm),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnHumArm2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humArm),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnM998.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnM9982.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnM9983.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnM9984.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnM9985.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnM9986.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnMaxi.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(maxi),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnTruck.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnHelo.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(helo),GetGame().GetWorld(),spawnParams);	"\
+  "		spawnParams.Transform[3] = spawnHumArm3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humArm),GetGame().GetWorld(),spawnParams);	"\
+  "		spawnParams.Transform[3] = spawnM9987.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);	"\
+  "		spawnParams.Transform[3] = spawnM9988.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humvee),GetGame().GetWorld(),spawnParams);		"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ spawnHumArm {
+  coords 987.638 2.845 6027.495
+ }
+ spawnHumArm2 {
+  coords 979.565 2.657 6026.767
+ }
+ spawnM998 {
+  coords 1008.078 2.791 6014.435
+ }
+ spawnM9982 {
+  coords 1008.01 2.792 6005.977
+ }
+ spawnM9983 {
+  coords 1002.05 2.791 6014.977
+ }
+ spawnM9984 {
+  coords 1001.578 2.791 6006.348
+ }
+ spawnM9985 {
+  coords 995.648 2.791 6015.188
+ }
+ spawnM9986 {
+  coords 994.774 2.791 6006.812
+ }
+ spawnMaxi {
+  coords 1066.429 2.727 6013.545
+ }
+ spawnM923A1 {
+  coords 1056.235 2.754 6013.529
+ }
+ spawnHelo {
+  coords 1095.626 2.812 6091.943
+ }
+ spawnHumArm3 {
+  coords 984.603 2.844 6038.113
+ }
+ spawnM9987 {
+  coords 1016.495 2.843 6043.476
+ }
+ spawnM9988 {
+  coords 1004.612 2.896 6044.654
+ }
+}

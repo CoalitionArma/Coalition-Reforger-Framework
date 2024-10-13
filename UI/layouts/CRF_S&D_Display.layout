@@ -5,14 +5,14 @@ FrameWidgetClass {
    Name "Background"
    Slot FrameWidgetSlot "{612734D48040FA7F}" {
     Anchor 0.5 0 0.5 0
-    PositionX -60.588
-    OffsetLeft -60.588
-    PositionY 24.77
-    OffsetTop 24.77
-    SizeX 119.996
-    OffsetRight -59.408
-    SizeY 44.78
-    OffsetBottom -69.55
+    PositionX -60
+    OffsetLeft -60
+    PositionY 25
+    OffsetTop 25
+    SizeX 120
+    OffsetRight -60
+    SizeY 45
+    OffsetBottom -70
    }
    Opacity 0
    Color 0 0 0 0.333
@@ -22,14 +22,14 @@ FrameWidgetClass {
    Name "Timer"
    Slot FrameWidgetSlot "{612734D4E397B329}" {
     Anchor 0.5 0 0.5 0
-    PositionX -65.816
-    OffsetLeft -65.816
-    PositionY 24.77
-    OffsetTop 24.77
-    SizeX 129.998
-    OffsetRight -64.182
-    SizeY 39.545
-    OffsetBottom -64.315
+    PositionX -65
+    OffsetLeft -65
+    PositionY 25
+    OffsetTop 25
+    SizeX 130
+    OffsetRight -65
+    SizeY 40
+    OffsetBottom -65
    }
    Opacity 0
    Color 0.578 0.053 0.053 1

@@ -1,0 +1,34 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 3818.637 1.857 5310.579
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 3818.637 1.857 5310.579
+ m_sTextData "The last American forces are in the city, fight using our superior armor to dislodge and destroy the Americans and their two remaining supply hubs"
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 3818.637 1.857 5310.579
+ m_sTextData "OPFOR: "\
+ ""\
+ "2x T-72"\
+ "Trucks"\
+ ""\
+ "BLUFOR:"\
+ ""\
+ "1x Armed Humvee per squad"\
+ "1x Transport Humvee per squad"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 3818.637 1.857 5310.579
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 3818.637 1.857 5310.579
+ m_sTextData "A Russian company is on the way to destroy out us. Don't let me get both of our supply hubs"\
+ ""
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 3818.637 1.857 5310.579
+ m_sTextData "A Russian motorized company with tank support attempts to dislodge American forces and destroy their remaining supply hubs"
+}

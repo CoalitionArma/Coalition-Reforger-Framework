@@ -1,0 +1,124 @@
+$grp BaseGameTriggerEntity {
+ trig1 {
+  coords 1991.518 7.18 2920.201
+  angleX 0.884
+  angleY 80.908
+  angleZ -0.141
+  userScript "		string mortar = \"{45727E50E27698C2}Prefabs/Vehicles/Tracked/BMP2/BMP2M.et\";"\
+  "    	vector mortar1spawn, mortar2spawn;"\
+  "    	IEntity mortar1trig, mortar2trig;"\
+  "	"\
+  "        void spawnthings()"\
+  "            {"\
+  "                mortar1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
+  "                mortar2trig = GetGame().GetWorld().FindEntityByName(\"trig2\");"\
+  "                mortar1spawn = mortar1trig.GetOrigin();"\
+  "                mortar2spawn = mortar2trig.GetOrigin();"\
+  "                "\
+  "                EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "                spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "                spawnParams.Transform[3] = mortar1spawn;"\
+  "                "\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "                spawnParams.Transform[3] = mortar2spawn;"\
+  "                GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "            }"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ trig2 {
+  coords 1981.066 6.988 2918.168
+  angleX 1.819
+  angleY 78.075
+  angleZ 0.834
+ }
+}
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 2147.923 3.187 2456.573
+ m_sTextData "Supply Extraction"\
+ ""\
+ "One side must extract a certain amount of supplies to a final supply depot."\
+ ""\
+ "The other side must prevent the extraction of these supplies."
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 2114.651 2.494 2479.078
+ m_sTextData "An American SF company seeks to eliminate our platoon and prevent our extraction across the river we must prevent this and take up a defensive posture. "\
+ ""\
+ "We must extract at least 1700 supplies and have at least 8 men alive at the extraction point to consider this a mission success."\
+ ""\
+ "If it comes to it you can break contact and retreat from the objective at least 200m to get reinforcements. This only can be done once so use it wisely."
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 2147.175 19.616 2384.868
+ m_sTextData "OPFOR"\
+ ""\
+ "2x BMP-2"\
+ "1x UAZ Gun Truck for Supply Runners"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2615.303 6.562 1341.154
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 2590.009 6.531 1374.867
+ m_sTextData "BLUFOR"\
+ ""\
+ "Prevent OPFOR from extracting enough resources."\
+ "Eliminate all OPFOR players."\
+ ""\
+ "OPFOR"\
+ ""\
+ "Extract enough resources to extract."\
+ "Extract at least 8 Soldiers."\
+ ""\
+ "Both sides have 75 minutes to complete these objectives."
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 2588.75 6.593 1442.38
+  m_sTitle "Extract all resources."
+  m_sTextData "Extract all resources."
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 2600.002 6.594 1438.911
+  m_sTitle "Extract 8 Soldiers to the extraction point."
+  m_sTextData "Extract 8 Soldiers to the extraction point."
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 2605.683 6.594 1428.782
+  m_sTitle "Prevent Russians evacuating enough supplies."
+  m_sTextData "Prevent Russians evacuating enough supplies."
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 2615.152 6.594 1434.953
+  m_sTitle "Eliminate all Russian forces."
+  m_sTextData "Eliminate all Russian forces."
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 2133.652 3.371 2481.692
+ m_sTextData "Russian forces have occupied the town in a defensive posture to allow their supply runners to extract enough supplies to retreat across the river, we must break through and prevent this extraction. "\
+ ""\
+ "If it comes to it you can break contact and retreat from the objective at least 200m to get reinforcements. This only can be done once so use it wisely."
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2577.847 6.531 1387.584
+ m_sTextData "Russian forces have deemed the far side of the River Zherebets is no longer tenable, a Russian platoon has been tasked with extracting all resources from the far side of the river and get back across with minimal casualties. "\
+ ""\
+ "A CO, 2nd Batallion, 75th Ranger Regiment has been tasked to exploit their current vunerability and ensure the Russian don't get the valuable supplies left on this side of the river."
+}

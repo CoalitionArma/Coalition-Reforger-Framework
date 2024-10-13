@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{5D541A13BAECAB27}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Crew_Base_Pilot_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "CrewChief"
+  }
+ }
+}

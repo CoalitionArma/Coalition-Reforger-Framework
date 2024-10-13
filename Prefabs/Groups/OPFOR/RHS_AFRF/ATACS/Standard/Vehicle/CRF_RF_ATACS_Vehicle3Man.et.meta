@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{13A69A5CFE69A3B1}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Vehicle/CRF_RF_ATACS_Vehicle3Man_2.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

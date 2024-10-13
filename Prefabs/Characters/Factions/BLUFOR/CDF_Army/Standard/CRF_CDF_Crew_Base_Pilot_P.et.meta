@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{F81E2751B50AAA21}Prefabs/Characters/Factions/BLUFOR/CDF_Army/Standard/CRF_CDF_Crew_Base_Pilot_P.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

@@ -51,7 +51,7 @@ PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.e
  coords 9802.155 2.156 4572.796
  angleY 90.084
  m_aVisibleForFactions {
-  "RHS_US_USMC"
+  "RHS_USAF"
  }
 }
 $grp SCR_AIGroup : "{EE8E0955658D7E21}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Vehicles/CRF_USMC_Armor3man.et" {

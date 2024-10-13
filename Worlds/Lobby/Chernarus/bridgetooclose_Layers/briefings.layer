@@ -1,0 +1,73 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 4706.484 272.399 6829.807
+ m_sTextData "Utilize your superior movement and fire capability with the bmp's to attack and secure the bridge at all costs. Movement plan is up to PLs discretion."
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+ m_iOrder 4
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 4655.792 272.205 6718.794
+ m_sTextData "OPFOR (ATK):"\
+ "2x BMP-1"\
+ "Trucks"\
+ ""\
+ "BLUFOR (DEF):"\
+ "1x MAT Team"\
+ "Trucks"
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4640.784 273.742 6744.385
+}
+$grp PS_Objective : "{A4F0B4846EF850C4}Prefabs/Objective/Objective.et" {
+ {
+  coords 4778.3 261.819 6642.617
+  m_sTitle "OBJ: Defend Bridge"
+  m_sTextData "Defend the bridge at all costs"
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 4777.077 262.738 6652.831
+  m_sTitle "OBJ: Retake Bridge"
+  m_sTextData "In the event of the bridge being lost, retake it."
+  m_iOrder 1
+  m_iScore 50
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 4795.227 264.74 6641.527
+  m_sTitle "OBJ: Capture Bridge"
+  m_sTextData "Use all means necessary to secure the bridge"
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 4786.926 262.724 6657.158
+  m_sTitle "OBJ: Hold Bridge"
+  m_sTextData "In the event of a counter attack, hold the bridge."
+  m_iOrder 1
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 4712.32 272.231 6819.399
+ m_sTextData "Set up defense in depth or probing structures to defend the bridge from an attack in the North. Defensive posture is up to PL."
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+}
+$grp PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ {
+  coords 4655.344 272.16 6718.692
+  m_sTextData "A bridge which serves as a central crossing point deeper into Chernarus has come under attack from Russian forces. Both sides have been ordered to hold the bridge throughout the night in order to receive reinforcements."
+ }
+ Admini {
+  coords 4658.604 272.185 6716.774
+  m_sTitle "Administration"
+  m_sTextData "Both sides will have one FULL respawn wave produced via zeus if the bridge is taken. It is up to the commanding element to account for this."
+  m_iOrder 3
+ }
+}

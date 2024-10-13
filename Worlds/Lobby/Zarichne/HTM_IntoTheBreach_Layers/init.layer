@@ -1,6 +1,3 @@
-SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
- coords 881.817 12.654 1529.311
-}
 PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
  components {
   CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
@@ -9,13 +6,13 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
   CRF_SearchAndDestroyGameModeComponent "{61D4A9359A64A69D}" {
   }
   SCR_TimeAndWeatherHandlerComponent "{60E1584A0997B92C}" {
-   m_iStartingHours 3
+   m_iStartingHours 5
    m_iStartingMinutes 20
    m_bUsePredefineStartingTimeAndWeatehr 1
    m_aStartingWeatherAndTime {
     SCR_TimeAndWeatherState "{61D4A928934AD4C3}" {
      m_sWeatherPresetName "Rainy"
-     m_iStartingHour 3
+     m_iStartingHour 5
      m_iStartingMinutes 20
     }
    }
@@ -56,6 +53,9 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        SCR_CallsignInfo "{61D565D400142072}" {
         m_sCallsign "2-3"
        }
+       SCR_CallsignInfo "{61E6F7B38A7CB387}" {
+        m_sCallsign "Mortar"
+       }
       }
       m_sCallsignGroupFormat "%3"
      }
@@ -74,6 +74,15 @@ PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobb
        }
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
         m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61DAAC60CD2EA561}" {
+        m_sCallsign "BTR 1"
+       }
+       SCR_CallsignInfo "{61E6270516F9DA63}" {
+        m_sCallsign "BTR 2"
+       }
+       SCR_CallsignInfo "{61E6270516D5A86E}" {
+        m_sCallsign "BTR 3"
        }
       }
       m_sCallsignGroupFormat "%3"

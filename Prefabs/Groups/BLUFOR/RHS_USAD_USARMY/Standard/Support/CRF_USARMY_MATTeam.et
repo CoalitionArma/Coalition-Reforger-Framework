@@ -1,0 +1,24 @@
+SCR_AIGroup : "{675FBC921C62C125}Prefabs/Groups/BLUFOR/RHS_USAF_USMC/Standard/Command/CRF_USMC_Platoon.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "CRF Army MAT Team"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_sFaction "RHS_USAF"
+    m_aAuthoredLabels {
+     4 51872 25 34 38
+    }
+    m_bUseUIInfoName 1
+   }
+  }
+ }
+ coords 2043.028 44.783 2064.622
+ m_aUnitPrefabSlots {
+  "{85CEC792CE82F95E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Leader_Base_SL_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et" "{F21DFE82A4F96D53}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_MAT_P.et" "{F582D17EC2FCF12E}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_Army/Standard/CRF_USARMY_Rifleman_AMAT_P.et"
+ }
+ m_sCustomNameSet "MAT Team"
+ m_aUnitPrefabColorTeams {
+  "None" "Blue" "Blue" "Yellow" "Yellow"
+ }
+}

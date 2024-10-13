@@ -5,19 +5,21 @@ PS_MissionDescription : "{1E372CE7309AD62F}PrefabsEditable/MissionDescription/No
  "- Ratio BLUFOR 2:1 OPFOR"\
  "- Spawn 2x HMMWV Ambulance for BLUFOR"\
  "- Spawn 2x S1203 Ambulance for OPFOR"\
- "- - Do Not Use Vehicles Not Assigned To Your Squad or Slot"
+ "- - Do Not Use Vehicles Not Assigned To Your Squad or Slot"\
+ "- Mortar AMMO should be at(4x Mags or 24x Shells, 6x per mag"
  m_iOrder 3
 }
 $grp PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  {
   coords 1683.341 5.609 2738.324
   m_sTextData "BLUFOR:"\
-  "4x HMMWV 50.cal Per Squad"\
-  "11x HMMWV Unarmed Per Squad"\
-  "2x HMMWV Ambulance"\
+  "11x HMMWV Unarmed"\
+  "6x 50.call HMMWVs"\
+  "1x HMMWV Ambulance"\
+  "1x 81mm Mortar (4x Mags or 24x Shells, 6x per mag)"\
   ""\
   "OPFOR:"\
-  "3x BTR-70 Per Squad"\
+  "2x BTR-70"\
   "1x S1203 Ambulance"
   m_iOrder 2
  }

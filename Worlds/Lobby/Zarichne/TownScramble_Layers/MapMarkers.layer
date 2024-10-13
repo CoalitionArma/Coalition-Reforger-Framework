@@ -1,0 +1,297 @@
+PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ coords 3169.865 10.059 811.65
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+ {
+  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   {
+    coords 74.293 1.397 -30.595
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 159.892 6.177 -16.23
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 232.162 2.817 20.88
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 242.614 4.088 97.095
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 213.95 8.674 148.793
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 160.361 10.407 158.645
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 63.529 8.536 153.229
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -9.441 3.891 70.527
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 1994.494 7.579 2918.923
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1601.924 11.158 2843.989
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "retain"
+  m_sDescription "Extraction Depot"
+  m_aVisibleForFactions {
+   "RHS_USAF" "RHS_AFRF"
+  }
+  {
+   $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+    {
+     coords 194.653 -2.71 702.685
+     angleY 0
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "retain"
+     m_sDescription "Supply Depot 4 (1200)"
+     m_aVisibleForFactions {
+      "RHS_AFRF" "RHS_USAF"
+     }
+    }
+    {
+     coords 555.661 0.554 742.149
+     angleY -90
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "retain"
+     m_sDescription "Supply Depot 3 (1200)"
+     m_aVisibleForFactions {
+      "RHS_AFRF" "RHS_USAF"
+     }
+    }
+    {
+     coords 506.968 8.386 1155.953
+     angleY 180
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "retain"
+     m_sDescription "Supply Depot 2 (500)"
+     m_aVisibleForFactions {
+      "RHS_AFRF" "RHS_USAF"
+     }
+    }
+    {
+     coords 1008.508 -4.409 886.021
+     angleY 90
+     m_MarkerColor 0 0 0 1
+     m_sQuadName "retain"
+     m_sDescription "Supply Depot 1 (500)"
+     m_aVisibleForFactions {
+      "RHS_AFRF" "RHS_USAF"
+     }
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ coords 2470.677 8.348 1260.835
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+ {
+  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+   {
+    coords 129.225 -1.817 87.567
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 204.113 8.291 137.524
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 373.806 7.075 301.781
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 539.717 7.996 362.739
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 692.445 11.325 421.191
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 2572.332 0 624.388
+ angleY 0
+ {
+  $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   {
+    coords 98.152 2.739 14.377
+    angleY 0
+   }
+   {
+    coords 191.011 5.067 21.159
+    angleY 0
+   }
+   {
+    coords 309.967 6.281 29.78
+    angleY 0
+   }
+   {
+    coords 441.265 6.656 58.629
+    angleY 0
+   }
+   {
+    coords 626.226 9.296 99.733
+    angleY 0
+   }
+   {
+    coords 808.683 32.147 128.974
+    angleY 0
+   }
+   {
+    coords 901.992 14.58 212.141
+    angleY 0
+   }
+   {
+    coords 885.907 21.411 356.069
+    angleY 0
+   }
+   {
+    coords 766.767 58.197 460.166
+    angleY 0
+   }
+   {
+    coords 700.433 14.656 700.435
+    angleY 0
+   }
+   {
+    coords 692.36 22.355 971.21
+    angleY 0
+   }
+   {
+    coords 657.611 30.773 1078.128
+    angleY 0
+   }
+   {
+    coords 638.746 19.83 1468.59
+    angleY 0
+   }
+   {
+    coords 440.284 35.652 1879.393
+    angleY 0
+   }
+   {
+    coords 551.791 20.606 1670.876
+    angleY 0
+   }
+   {
+    coords 306.428 28.283 2245.091
+    angleY 0
+   }
+   {
+    coords 236.678 46.321 2488.134
+    angleY 0
+   }
+   {
+    coords 49.439 24.484 2876.928
+    angleY 0
+   }
+   {
+    coords -317.166 31.552 2950.108
+    angleY 0
+   }
+   {
+    coords -710.612 8.658 2824.703
+    angleY 0
+   }
+   {
+    coords -870.848 2.455 2716.297
+    angleY 0
+   }
+   {
+    coords -717.49 3.42 2489.129
+    angleY 0
+   }
+   {
+    coords -687.094 2.418 2277.837
+    angleY 0
+   }
+   {
+    coords -609.704 1.588 2022.823
+    angleY 0
+   }
+   {
+    coords -432.869 0 1680.077
+    angleY 0
+   }
+   {
+    coords -426.979 0 1593.742
+    angleY 0
+   }
+   {
+    coords -366.951 0 1297.423
+    angleY 0
+   }
+   {
+    coords -320.386 0 1024.526
+    angleY 0
+   }
+   {
+    coords -164.457 0 968.355
+    angleY 0
+   }
+   {
+    coords -133.449 47.838 822.983
+    angleY 0
+   }
+   {
+    coords -100.586 0 404.079
+    angleY 0
+   }
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 3285.147 15 871.194
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+}

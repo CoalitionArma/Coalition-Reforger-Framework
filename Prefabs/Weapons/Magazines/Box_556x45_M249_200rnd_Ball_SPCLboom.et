@@ -1,0 +1,22 @@
+GenericEntity : "{8E9682666CB56092}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   Attributes SCR_ItemAttributeCollection "{51EED12B86960275}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{548A9B044280695E}" {
+     Weight 0.1
+     ItemVolume 1
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   MagazineWell MagazineWellM203 "{548A9B0442806949}" {
+   }
+   UIInfo MagazineUIInfo "{57126733AA401586}" {
+    m_eAmmoTypeFlags FRAG
+   }
+   AmmoConfig "{73EFB8DEB84D3EF0}Configs/Weapons/Ammo/Ammo_556x45_SPCLBOOM.conf"
+  }
+ }
+}

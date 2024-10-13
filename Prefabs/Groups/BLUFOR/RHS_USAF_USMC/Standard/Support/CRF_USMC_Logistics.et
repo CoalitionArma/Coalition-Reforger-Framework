@@ -3,10 +3,11 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  components {
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
-    Name "#AR-Group_Squad"
-    m_Image "{ABA2D60082FFC2A4}UI/Textures/EditorPreviews/Groups/BLUFOR/Group_US_RifleSquad.edds"
-    m_aAuthoredLabels + {
-     25 34 38
+    Name "CRF USMC Logi Team"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_sFaction "RHS_USAF"
+    m_aAuthoredLabels {
+     4 51873 25 34 38
     }
     m_aAutoLabels {
      72
@@ -17,6 +18,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
       m_Value 9
      }
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{61B8F8175C0DE7C0}" {
      m_Identity BLUFOR
      m_Dimension LAND
@@ -138,9 +140,9 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "RHS_US_USMC"
+ m_faction "RHS_USAF"
  m_aUnitPrefabSlots {
-  "{B6DCC9119FEB6139}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_SL_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et"
+  "{B6DCC9119FEB6139}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_TL_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et" "{A7C6BAE10B52AA4C}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_LogiRunner_P.et"
  }
  m_sCustomNameSet "Logistics"
  m_bSetPlayable 1

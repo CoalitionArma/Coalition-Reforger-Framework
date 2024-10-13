@@ -1,0 +1,373 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 1290.755 0.386 3560.446
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 1237.082 6.401 3544.524
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 1184.949 7.052 3561.707
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 1129.698 7.572 3559.695
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 1084.98 8.392 3566.965
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 1035.022 9.858 3569.055
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 982.649 10.991 3582.737
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 929.076 24.042 3601.236
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 826.963 19.069 3604.038
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 738.284 26.486 3596.152
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 662.429 33.123 3593.361
+  angleY 0
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 1009.706 33.088 4504.203
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 987.984 35.282 4500.497
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 959.049 35.861 4504.256
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 942.662 38.113 4536.895
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 976.031 55.191 4588.021
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 985.021 48.602 4599.9
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1004.501 51.849 4599.475
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1028.536 32.739 4594.102
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1042.391 50.649 4597.565
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1065.976 43.448 4586.138
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1091.234 22.402 4528.033
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1059.819 24.395 4500.467
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+ {
+  coords 1024.624 29.891 4494.909
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 1406.291 0.31 3337.246
+  angleY 0
+ }
+ {
+  coords 1427.019 1.037 3306.615
+  angleY 0
+ }
+ {
+  coords 1454.103 1.654 3273.28
+  angleY 0
+ }
+ {
+  coords 1482.506 1.154 3244.342
+  angleY 0
+ }
+ {
+  coords 1504.599 0.828 3220.307
+  angleY 0
+ }
+ {
+  coords 1514.959 2.581 3198.38
+  angleY 0
+ }
+ {
+  coords 1524.318 0.973 3170.632
+  angleY 0
+ }
+ {
+  coords 1484.732 2.517 3152.755
+  angleY 0
+ }
+ {
+  coords 1440.263 6.063 3133.323
+  angleY 0
+ }
+ {
+  coords 1390.567 6.813 3110.535
+  angleY 0
+ }
+ {
+  coords 1338.504 8.744 3091.707
+  angleY 0
+ }
+ {
+  coords 1249.349 11.235 3048.276
+  angleY 0
+ }
+ {
+  coords 1201.812 14.51 3019.243
+  angleY 0
+ }
+ {
+  coords 1119.781 15.095 2977.966
+  angleY 0
+ }
+ {
+  coords 1030.184 22.729 2943.891
+  angleY 0
+ }
+ {
+  coords 882.487 15.169 2889.244
+  angleY 0
+ }
+ {
+  coords 744.148 16.926 2867.632
+  angleY 0
+ }
+ {
+  coords 694.334 17.217 2965.982
+  angleY 0
+ }
+ {
+  coords 669.881 12.381 3073.666
+  angleY 0
+ }
+ {
+  coords 633.675 4.466 3177.028
+  angleY 0
+ }
+ {
+  coords 657.623 15.117 3285.755
+  angleY 0
+ }
+ {
+  coords 643.952 17.459 3410.626
+  angleY 0
+ }
+ {
+  coords 637.154 25.887 3552.551
+  angleY 0
+ }
+ {
+  coords 666.021 50.805 3618.031
+  angleY 0
+ }
+ {
+  coords 620.374 35.623 3793.602
+  angleY 0
+ }
+ {
+  coords 640.497 49.931 3900.015
+  angleY 0
+ }
+ {
+  coords 642.113 44.118 4097.983
+  angleY 0
+ }
+ {
+  coords 637.447 45.721 4332.114
+  angleY 0
+ }
+ {
+  coords 641.459 53.559 4504.545
+  angleY 0
+ }
+ {
+  coords 653.389 65.934 4577.834
+  angleY 0
+ }
+ {
+  coords 787.761 56.325 4579.664
+  angleY 0
+ }
+ {
+  coords 947.575 41.697 4570.964
+  angleY 0
+ }
+ {
+  coords 1061.554 30.879 4583.007
+  angleY 0
+ }
+ {
+  coords 1233.385 11.953 4578.508
+  angleY 0
+ }
+ {
+  coords 1365.166 19.588 4547.57
+  angleY 0
+ }
+ {
+  coords 1510.95 21.122 4545.916
+  angleY 0
+ }
+ {
+  coords 1647.853 2.17 4525.729
+  angleY 0
+ }
+ {
+  coords 1545.059 4.053 4338.196
+  angleY 0
+ }
+ {
+  coords 1489.516 5.009 4211.307
+  angleY 0
+ }
+ {
+  coords 1446.465 2.124 4114.992
+  angleY 0
+ }
+ {
+  coords 1386.829 1.968 4019.623
+  angleY 0
+ }
+ {
+  coords 1329.149 3.23 3894.183
+  angleY 0
+ }
+ {
+  coords 1295.716 1.697 3789.75
+  angleY 0
+ }
+ {
+  coords 1285.368 3.759 3696.871
+  angleY 0
+ }
+ {
+  coords 1277.318 4.045 3652.719
+  angleY 0
+ }
+ {
+  coords 1270.328 4.374 3576.499
+  angleY 0
+ }
+ {
+  coords 1258.756 19.216 3512.095
+  angleY 0
+ }
+ {
+  coords 1340.898 9.786 3436.175
+  angleY 0
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1017.911 33.433 4572.381
+ m_sDescription "Truck Drop-off"
+ m_aVisibleForFactions {
+  "CDF"
+ }
+}

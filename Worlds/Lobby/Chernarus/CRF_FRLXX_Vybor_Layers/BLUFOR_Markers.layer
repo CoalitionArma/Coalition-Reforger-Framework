@@ -1,0 +1,93 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 2973.176 305.543 8013.626
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2995.828 305.543 8007.789
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 3015.304 305.543 7982.673
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 3009.295 305.543 7932.736
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 3018.381 305.543 7905.315
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2998.866 305.543 7874.905
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2964.502 305.543 7865.676
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2927.79 305.543 7876.472
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2906.788 305.543 7894.204
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2879.502 305.543 7921.181
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2864.336 305.543 7954.437
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2873.766 305.543 7984.273
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2905.212 305.543 8010.571
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+ {
+  coords 2941.461 305.543 8025.22
+  m_aVisibleForFactions {
+   "CDF"
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2955.579 308.773 7953.863
+ angleY 89.868
+ m_aVisibleForFactions {
+  "CDF"
+ }
+}

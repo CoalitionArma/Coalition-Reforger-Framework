@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{F7EDF4ACE6F158E1}Prefabs/Characters/Factions/INDFOR/Taliban/Standard/CRF_Taliban_Leader_Base_SL_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Forward Observer"
+  }
+ }
+}

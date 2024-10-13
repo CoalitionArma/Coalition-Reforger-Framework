@@ -1,0 +1,403 @@
+PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ coords 1877.772 275.851 7635.686
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+ {
+  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   {
+    coords 128.992 27.639 71.591
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 212.704 45.542 113.198
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 264.92 57.082 51.403
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 306.459 52.274 3.372
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 302.871 44.832 -65.422
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 385.285 60.101 -117.485
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 466.583 68.725 -161.179
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 477.436 58.089 -254.983
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 494.975 28.044 -333.348
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 460.562 24.629 -411.965
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 304.889 -13.014 -434.104
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 174.064 -16.56 -483.134
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 106.701 -40.683 -487.371
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 55.632 -27.09 -459.307
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -16.481 -2.905 -278.082
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -33.47 -6.133 -160.932
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 4605.53 339.125 9521.667
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+}
+PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ coords 1985.42 291.468 8985.94
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+ {
+  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+   {
+    coords 160.409 7.892 -122.754
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 358.657 25.176 -333.099
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 582.737 41.021 -689.76
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 676.994 38.783 -880.445
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 698.714 67.588 -1064.15
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 854.38 65.816 -1262.622
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 1036.482 52.051 -1502.793
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 1207.401 71.572 -1578.789
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 1408.028 42.601 -1755.908
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 1645.263 50.459 -2043.14
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 1560.698 266.587 7123.584
+  angleY 0
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    {
+     coords -90.98 -20.585 287.343
+     angleY 0
+    }
+    {
+     coords -94.789 5.291 631.383
+     angleY 0
+    }
+    {
+     coords -206.412 -8.091 896.643
+     angleY 0
+    }
+    {
+     coords -239.351 37.61 1222.797
+     angleY 0
+    }
+    {
+     coords -203.789 79.191 1398.28
+     angleY 0
+    }
+    {
+     coords 108.136 64.573 1747.959
+     angleY 0
+    }
+    {
+     coords 334.691 26.441 1896.452
+     angleY 0
+    }
+    {
+     coords 654.788 -2.628 2168.368
+     angleY 0
+    }
+    {
+     coords 1017.408 -8.413 2297.641
+     angleY 0
+    }
+    {
+     coords 1287.932 22.129 2350.459
+     angleY 0
+    }
+    {
+     coords 1528.358 17.053 2521.26
+     angleY 0
+    }
+    {
+     coords 1654.992 106.097 3015.77
+     angleY 0
+    }
+    {
+     coords 1607.029 29.268 2799.126
+     angleY 0
+    }
+    {
+     coords 1715.853 95.747 3350.541
+     angleY 0
+    }
+    {
+     coords 1939.627 67.173 3804.273
+     angleY 0
+    }
+    {
+     coords 2296.138 77.284 4168.063
+     angleY 0
+    }
+    {
+     coords 2634.66 105.328 4260.866
+     angleY 0
+    }
+    {
+     coords 2970.173 32.123 4160.172
+     angleY 0
+    }
+    {
+     coords 3185.813 34.404 4006.601
+     angleY 0
+    }
+    {
+     coords 3364.874 50.055 3744.324
+     angleY 0
+    }
+    {
+     coords 3413.435 86.702 3470.92
+     angleY 0
+    }
+    {
+     coords 3574.041 50.738 3196.341
+     angleY 0
+    }
+    {
+     coords 3648.111 57.565 2984.787
+     angleY 0
+    }
+    {
+     coords 3712.048 94.011 2832.565
+     angleY 0
+    }
+    {
+     coords 3802.097 89.536 2656.651
+     angleY 0
+    }
+    {
+     coords 3626.384 77.655 2440.29
+     angleY 0
+    }
+    {
+     coords 3685.475 81.186 2136.342
+     angleY 0
+    }
+    {
+     coords 3686.993 84.932 1900.074
+     angleY 0
+    }
+    {
+     coords 3564.067 79.139 1621.431
+     angleY 0
+    }
+    {
+     coords 3320.81 64.727 1341.214
+     angleY 0
+    }
+    {
+     coords 3056.73 68.448 1101.435
+     angleY 0
+    }
+    {
+     coords 2945.491 38.079 745.598
+     angleY 0
+    }
+    {
+     coords 2823.675 30.2 480.173
+     angleY 0
+    }
+    {
+     coords 2657.458 24.343 154.906
+     angleY 0
+    }
+    {
+     coords 2351.171 44.119 -145.105
+     angleY 0
+    }
+    {
+     coords 2005.113 80.309 -465.013
+     angleY 0
+    }
+    {
+     coords 1665.089 88.709 -510.559
+     angleY 0
+    }
+    {
+     coords 1487.879 96.031 -527.43
+     angleY 0
+    }
+    {
+     coords 1299.336 96.794 -544.769
+     angleY 0
+    }
+    {
+     coords 1069.267 67.551 -539.689
+     angleY 0
+    }
+    {
+     coords 838.197 96.11 -405.92
+     angleY 0
+    }
+    {
+     coords 583.002 49.735 -243.771
+     angleY 0
+    }
+    {
+     coords 241.699 -45.351 -130.719
+     angleY 0
+    }
+   }
+  }
+ }
+ {
+  coords 3087.875 303.804 7986.641
+  angleY 0
+  m_sQuadName "objective-marker"
+  m_sDescription "OBJ A | Pustoshka"
+ }
+ {
+  coords 3810.786 311.094 8892.037
+  angleY 0
+  m_sQuadName "objective-marker"
+  m_sDescription "OBJ B | Vybor"
+ }
+ {
+  coords 4533.483 339.126 9618.896
+  angleY 0
+  m_sQuadName "objective-marker"
+  m_sDescription "OBJ C | North West Airfield Barracks"
+ }
+ {
+  coords 4488.684 339.184 10759.422
+  angleY 0
+  m_sQuadName "objective-marker"
+  m_sDescription "OBJ D | North West Airfield Hangers"
+ }
+}
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 1990.669 254.254 7338.183
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+ {
+  coords 3196.895 355.376 10469.131
+  m_sDescription "BLUFOR Scout Spawn"
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+ }
+}

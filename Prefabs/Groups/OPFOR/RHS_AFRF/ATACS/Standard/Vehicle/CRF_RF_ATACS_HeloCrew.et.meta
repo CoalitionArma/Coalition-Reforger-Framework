@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{5B50E5E250E64DD0}Prefabs/Groups/OPFOR/RHS_AFRF/ATACS/Standard/Vehicle/CRF_RF_ATACS_HeloCrew_2.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

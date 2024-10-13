@@ -4,9 +4,9 @@ Projectile : "{A4E070505C87AD42}Prefabs/Weapons/Ammo/Ammo_127x99_Ball_M33.et" {
   ShellMoveComponent "{851AA4A2AE0A5691}" {
    ProjectileEffects {
     ProjectileDamage "{5168BBF3DBD79134}" {
-     DamageType Fragmentation
+     DamageType Explosive
      DamageEffects {
-      SCR_FragmentationDamageEffect "{611E7405A19DBF5F}" {
+      SCR_ExplosionDamageEffect "{611E7405A19DBF5F}" {
       }
      }
     }

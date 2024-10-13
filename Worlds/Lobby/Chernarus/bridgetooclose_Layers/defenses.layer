@@ -1,0 +1,77 @@
+StaticModelEntity : "{0C8158D9D1E0D4DD}PrefabsEditable/Auto/Compositions/Misc/CustomEntities/DestructionEntities/E_Sandbag_01_bunker_plastic_CompositionDestruction.et" {
+ coords 4693.848 272.406 6727.318
+ angleY -127
+}
+$grp SCR_DestructibleBuildingEntity : "{44B2776836744D69}Prefabs/Structures/Military/Bunkers/Bunker_01/Bunker_01_1fp.et" {
+ {
+  coords 4777.492 -0 6636.744
+ }
+ {
+  coords 4773.358 -0.001 6594.026
+  angleY -117
+ }
+ {
+  coords 4793.73 -0 6589.195
+  angleY 144
+ }
+ {
+  coords 4757.188 0.001 6631.068
+  angleY -91
+ }
+}
+$grp StaticModelEntity : "{7F8D6A0D827EA34B}Prefabs/Props/Military/Fortification/CzechHedgehog_01_base.et" {
+ {
+  coords 4782.492 -0 6599.977
+ }
+ {
+  coords 4769.6 0 6635.861
+ }
+ {
+  coords 4778.618 -0 6599.244
+ }
+ {
+  coords 4772.268 0 6636.322
+ }
+ {
+  coords 4775.258 0 6598.365
+ }
+ {
+  coords 4786.539 0 6602.274
+ }
+ {
+  coords 4763.025 0 6632.687
+ }
+ {
+  coords 4766.386 0 6634.265
+ }
+}
+$grp StaticModelEntity : "{BA3D9B20D6F62FA4}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_bunker_plastic_foundation.et" {
+ {
+  coords 4814.086 259.86 6642.448
+  angleY 50.974
+ }
+ {
+  coords 4631.991 273.277 6804.253
+  angleY -50
+ }
+ {
+  coords 4717.284 286.409 6953.864
+  angleY -0.112
+ }
+}
+$grp GenericEntity : "{BCF4F3411D3B2075}Prefabs/Props/Military/Bunkers/Bunker_Tower.et" {
+ {
+  coords 4755.557 270.093 6751.62
+  angleY 20
+ }
+ {
+  coords 4819.713 269.662 6799.841
+  angleY 150
+ }
+}
+GenericEntity : "{F9B7F64B84044F2D}PrefabsEditable/Auto/Structures/Military/CamoNets/US/E_CamoNet_Bunker_US.et" {
+ coords 4717.105 286.448 6954.175
+ angleX 8.003
+ angleY -0.126
+ angleZ -0.904
+}

@@ -1,0 +1,124 @@
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+ components {
+  CRF_SafestartGameModeComponent "{610F4DC3E3FE2FC1}" {
+   m_iTimeLimitMinutes 75
+  }
+  CRF_SupplyExtractionGameModeComponent "{62372B9ED7BB10DD}" {
+   winningSupplyCount 1700
+  }
+ }
+ coords 2498.86 6.857 1884.059
+ {
+  SCR_FactionManager "623B3781FAE2576D" {
+   ID "60E1584A0994EEB9"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{623B3780CC023094}" {
+        m_sCallsign "1-3 W"
+       }
+       SCR_CallsignInfo "{623B3780CB871B94}" {
+        m_sCallsign "2PLT HQ"
+       }
+       SCR_CallsignInfo "{623B3780CBE65B88}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{623B3780CB217F43}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{623B3780CB745494}" {
+        m_sCallsign "2-3 W"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1st PLT HQ"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{623B378091F918F4}" {
+        m_sCallsign "1-4 W"
+       }
+       SCR_CallsignInfo "{623B37808E895E6C}" {
+        m_sCallsign "Supply Runners"
+       }
+       SCR_CallsignInfo "{623B37808EEF5EC6}" {
+        m_sCallsign "Crew 1"
+       }
+       SCR_CallsignInfo "{623B37808E34D9FB}" {
+        m_sCallsign "Crew 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT HQ"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{623B378041C8E2B5}" {
+        m_sCallsign "1-3 W"
+       }
+       SCR_CallsignInfo "{623B37803F401FF0}" {
+        m_sCallsign "2PLT HQ"
+       }
+       SCR_CallsignInfo "{623B37803EB2395B}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{623B37803E148465}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{623B37803E5E0378}" {
+        m_sCallsign "2-3 W"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%3"
+      m_sCallsignCharacterWithRoleFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}

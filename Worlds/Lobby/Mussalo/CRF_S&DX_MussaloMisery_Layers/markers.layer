@@ -1,0 +1,488 @@
+PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 2777.767 1.079 4829.635
+ angleY 89.72
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+ {
+  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+   {
+    coords -82.76 -1.079 257.561
+    angleY -89.72
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 24.461 0.63 227.191
+    angleY -89.72
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 92.734 -0.917 259.256
+    angleY -89.72
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 170.135 2.092 226.775
+    angleY -89.72
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords 219.417 4.548 221.145
+    angleY -89.72
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+   {
+    coords -35.807 -1.079 249.114
+    angleY -89.72
+    m_aVisibleForFactions {
+     "RHS_AFRF"
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 2776.447 0 5870.979
+ angleY 0
+ {
+  $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   {
+    coords 29.274 0 -118.321
+    angleY 0
+   }
+   {
+    coords 74.302 0 -246.236
+    angleY 0
+   }
+   {
+    coords 129.52 0 -374.948
+    angleY 0
+   }
+   {
+    coords 202.8 0 -518.164
+    angleY 0
+   }
+   {
+    coords 245.778 0 -647.414
+    angleY 0
+   }
+   {
+    coords 281.633 0 -757.103
+    angleY 0
+   }
+   {
+    coords 341.995 0 -888.767
+    angleY 0
+   }
+   {
+    coords 273.502 0 -912.937
+    angleY 0
+   }
+   {
+    coords 198.493 0 -817.592
+    angleY 0
+   }
+   {
+    coords 113.104 0 -708.081
+    angleY 0
+   }
+   {
+    coords 17.928 0 -648.356
+    angleY 0
+   }
+   {
+    coords -105.115 16.669 -681.381
+    angleY 0
+   }
+   {
+    coords -177.361 21.545 -776.686
+    angleY 0
+   }
+   {
+    coords -203.583 8.417 -902.423
+    angleY 0
+   }
+   {
+    coords -166.513 3.174 -1034.07
+    angleY 0
+   }
+   {
+    coords -89.782 28.175 -1146.168
+    angleY 0
+   }
+   {
+    coords 18.63 6.611 -1236.155
+    angleY 0
+   }
+   {
+    coords 116.033 32.879 -1218.795
+    angleY 0
+   }
+   {
+    coords 206.684 4.208 -1262.497
+    angleY 0
+   }
+   {
+    coords 346.895 6.908 -1309.576
+    angleY 0
+   }
+   {
+    coords 472.006 5.318 -1329.167
+    angleY 0
+   }
+   {
+    coords 591.372 11.356 -1333.787
+    angleY 0
+   }
+   {
+    coords 710.323 15.085 -1339.817
+    angleY 0
+   }
+   {
+    coords 865.138 29.809 -1354.222
+    angleY 0
+   }
+   {
+    coords 984.817 47.683 -1392.923
+    angleY 0
+   }
+   {
+    coords 1138.681 60.592 -1400.687
+    angleY 0
+   }
+   {
+    coords 1268.052 69.739 -1299.217
+    angleY 0
+   }
+   {
+    coords 1367.054 75.524 -1155.229
+    angleY 0
+   }
+   {
+    coords 1434.933 52.369 -1034.064
+    angleY 0
+   }
+   {
+    coords 1542.763 12.761 -848.816
+    angleY 0
+   }
+   {
+    coords 1622.164 0.023 -741.717
+    angleY 0
+   }
+   {
+    coords 1685.735 0.023 -637.967
+    angleY 0
+   }
+   {
+    coords 1653.489 0.023 -548.982
+    angleY 0
+   }
+   {
+    coords 1608.487 0.023 -431.487
+    angleY 0
+   }
+   {
+    coords 1609.402 0.023 -209.312
+    angleY 0
+   }
+   {
+    coords 1660.014 0.023 -50.558
+    angleY 0
+   }
+   {
+    coords 1730.015 0.023 94.01
+    angleY 0
+   }
+   {
+    coords 1.745 0 159.744
+    angleY 0
+   }
+   {
+    coords -20.815 0 308.655
+    angleY 0
+   }
+   {
+    coords -55.612 0 520.906
+    angleY 0
+   }
+   {
+    coords -109.977 0 787.625
+    angleY 0
+   }
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 3863.109 2.172 5699.935
+ angleY 90.012
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+ {
+  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   {
+    coords 0.05 3.09 -596.308
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 7.613 6.583 -560.517
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 32.273 8.927 -524.645
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 51.963 7.681 -483.479
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 79.238 5.079 -444.184
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 119.111 2.448 -405.942
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 172.532 6.505 -373.413
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 204.453 7.803 -403.244
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 241.672 2.607 -432.744
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 297.135 4.659 -447.132
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 362.237 1.316 -443.388
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 433.662 -0.483 -429.37
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 493.458 0.08 -398.881
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 537.316 0.684 -370.034
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 584.574 1.056 -335.014
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 633.442 2.882 -291.453
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 677.756 8.257 -256.051
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -44.035 2.28 -605.064
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -91.011 2.467 -607.274
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -136.218 0.802 -614.066
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -174.377 0.937 -658.126
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -217.32 -2.171 -704.273
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords -253.271 -1.378 -745.773
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 643.208 4.075 -210.136
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 628.007 3.048 -162.65
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 602.792 7.551 -96.16
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 587.1 11.718 -33.839
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 548.561 6.153 16.569
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 498.66 -1.364 61.693
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 455.642 0.99 101.315
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 416.821 1.206 160.573
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 378.87 1.571 227.714
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 356.275 3.625 265.725
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 318.785 3.942 332.256
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 287.18 0.853 383.578
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+   {
+    coords 243.059 1.512 444.084
+    angleY -90.012
+    m_aVisibleForFactions {
+     "RHS_USAF"
+    }
+   }
+  }
+ }
+}

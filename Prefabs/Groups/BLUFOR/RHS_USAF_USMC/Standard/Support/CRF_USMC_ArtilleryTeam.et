@@ -3,10 +3,11 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  components {
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
-    Name "#AR-Group_Squad"
-    m_Image "{ABA2D60082FFC2A4}UI/Textures/EditorPreviews/Groups/BLUFOR/Group_US_RifleSquad.edds"
-    m_aAuthoredLabels + {
-     25 34 38
+    Name "CRF USMC IDF TEAM"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_sFaction "RHS_USAF"
+    m_aAuthoredLabels {
+     4 51873 25 34 38
     }
     m_aAutoLabels {
      72
@@ -17,6 +18,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
       m_Value 9
      }
     }
+    m_bUseUIInfoName 1
     m_MilitarySymbol SCR_MilitarySymbol "{6135090F231969A6}" {
      m_Identity BLUFOR
      m_Dimension LAND
@@ -138,7 +140,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "RHS_US_USMC"
+ m_faction "RHS_USAF"
  m_aUnitPrefabSlots {
   "{2E5F821152623CF3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Leader_IndirectLeader_P.et" "{0ABA3A9D1149C1F7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_IndirectGunner_P.et" "{4D3BFBD8438809C3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_indirectLoader_P.et" "{0ABA3A9D1149C1F7}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_IndirectGunner_P.et" "{4D3BFBD8438809C3}Prefabs/Characters/Factions/BLUFOR/RHS_USAF/RHS_USAF_USMC_MEF/Standard/CRF_USMC_Rifleman_indirectLoader_P.et"
  }

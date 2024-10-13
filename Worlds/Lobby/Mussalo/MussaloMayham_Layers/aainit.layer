@@ -1,0 +1,106 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 837.258 3.549 6018.296
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 90
+  }
+  CRF_SupplyExtractionGameModeComponent "{624C20B92A536883}" {
+   m_winningSupplyCount 3000
+   m_manpower 10
+   m_extractionDistance 300
+   m_factionKey "RHS_AFRF"
+   m_manpowerMessageString "Russian forces no longer have enough manpower to prove a threat!"
+   m_suppliesExtractedString "Russians have extracted enough supplies from the island!"
+   m_gameMessageString1 "Russian forces have evacuated!"
+   m_gameMessageString2 "Russians have extracted enough supplies, But lack the manpower to prove a threat."
+  }
+ }
+ coords 814.884 4.909 6017.655
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{624CDB829BBC95EF}" {
+   m_sFactionKey "CDF"
+   m_iCount 30
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+  PS_FactionRespawnCount "{624CDB829BFE48B6}" {
+   m_sFactionKey "RHS_AFRF"
+   m_iCount 40
+   m_iTime 60000
+   m_bWaveMode 1
+  }
+ }
+ {
+  SCR_FactionManager "624CDB82EC5EEE7F" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{624CDB888BFCF252}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{624CDB888B0F74E7}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{624CDB888B593837}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{624CDB888B75C4B4}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{624CDB888891A005}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{624CDB88B70A517F}" {
+        m_sCallsign "Logi"
+       }
+      }
+     }
+    }
+    SCR_Faction "{5E5106B25048F22B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5E5106B0E940AF39}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{624CDB8DAE9DC33B}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{624CDB8DAEF1A349}" {
+        m_sCallsign "BTR 1"
+       }
+       SCR_CallsignInfo "{624CDB8DAE1383AE}" {
+        m_sCallsign "BTR 2"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+   }
+  }
+ }
+}

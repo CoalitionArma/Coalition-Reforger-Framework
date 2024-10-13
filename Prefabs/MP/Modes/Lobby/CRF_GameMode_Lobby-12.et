@@ -5,6 +5,9 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
   }
   SCR_CommunicationSoundComponent "{61BCFEC02D389A7B}" {
   }
+  CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
+   Enabled 0
+  }
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 100
   }
@@ -51,6 +54,36 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
    m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
   }
   SCR_CommandingManagerComponent "{61BCFEC02D389EBD}" {
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   m_aModules {
+    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
+     m_aLightBanPunishments {
+      0
+     }
+     m_aHeavyBanPunishments {
+      0
+     }
+     m_bWarCrimesEnabled 0
+     m_bWarCrimesProportionalityPrincipleEnabled 0
+     MODIFIER_PROPORTIONALITY_FRIENDLY_KILLS 0
+     MODIFIER_PROPORTIONALITY_FRIENDLY_AI_KILLS 0
+     MODIFIER_PROPORTIONALITY_AI_KILLS 0
+     MODIFIER_PROPORTIONALITY_KILLS 0
+    }
+   }
+   m_iOptionalKickingFriendlyPlayerKillPenalty 9
+   m_iOptionalKickingFriendlyAIKillPenalty 9
+   m_iOptionalKickingKickPenaltyLimit 99999
+   m_iOptionalKickingBanDuration 0
+   m_iOptionalKickingPenaltySubtractionPeriod 99999
+   m_iOptionalKickingPenaltySubtractionPoints 9
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fDOTScale 0.35
+   m_fRegenScale 0.75
+   m_fTourniquetStrengthMultiplier 0.7
+   m_fRegenerationDelay 30
   }
   SCR_GameModeSFManager "{61BCFEC02D389EBC}" {
   }
@@ -150,8 +183,11 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
     SCR_Faction "{56DEAC40D132400B}" {
      UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
       Name "INDFOR"
+      Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
       m_sNameUpper "INDFOR"
      }
+     m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+     m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_bIsAssignedRandomly 0
       m_aSquadNames {
@@ -170,6 +206,12 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
       }
       m_sCallsignGroupFormat "%3"
      }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
+      m_sCallsignGroupFormat "%3"
+     }
+     m_sFactionRadioEncryptionKey "chickenNuggets"
     }
     SCR_Faction "{5978B9CE6585BBE8}" {
      UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
@@ -217,6 +259,40 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
       }
       m_sCallsignGroupFormat "%3"
      }
+    }
+    SCR_Faction "{623962205CE2B89C}" {
+     UIInfo SCR_FactionUIInfo "{62394AA4B52816D2}" {
+      Name "INDFOR"
+      m_sNameUpper "INDFOR"
+     }
+     m_sFactionRadioEncryptionKey "candleSauce"
+    }
+    SCR_Faction "{5E5106B25048F22B}" {
+     UIInfo SCR_FactionUIInfo "{5E5106B6FC0CCF01}" {
+      Name "BLUFOR"
+     }
+     m_NotificationFactionColor 0.016 0.552 0.905 1
+     m_NotificationTextFactionColor 0.013 0.395 0.651 1
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
+    SCR_Faction "{61500924662B6062}" {
+     UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
+    SCR_Faction "{623507721849E36C}" {
+     FactionKey "Tali"
+     UIInfo SCR_FactionUIInfo "{623503F81F166E81}" {
+      Name "INDFOR"
+      m_sNameUpper "INDFOR"
+     }
+     m_bIsPlayable 1
+     m_aFriendlyFactionsIds {
+      "MECIV" "CIV"
+     }
+     m_sFactionRadioEncryptionKey "candleSauce"
     }
    }
   }

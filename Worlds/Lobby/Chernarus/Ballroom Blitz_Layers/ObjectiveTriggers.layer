@@ -1,0 +1,209 @@
+$grp BaseGameTriggerEntity {
+ OBJ1 {
+  coords 3086.588 303.842 7985.34
+  userScript "	protected ref array<IEntity> m_entities;"\
+  "	protected string m_tempString;"\
+  "	protected int m_extractedPlayers;"\
+  "	protected vector m_obj = GetGame().GetWorld().FindEntityByName(\"OBJ1\").GetOrigin();"\
+  "	protected bool OBJMessage = false;"\
+  "	protected IEntity m_trigger = GetGame().GetWorld().FindEntityByName(\"OBJ1\");"\
+  "	"\
+  "	protected bool FilterFactionPlayers(IEntity ent) // Sphere Query Method"\
+  "	{"\
+  "		if (!EntityUtils.IsPlayer(ent)) return true;"\
+  "		SCR_ChimeraCharacter cc = SCR_ChimeraCharacter.Cast(ent);"\
+  "		if (cc && cc.GetFactionKey() == m_tempString) m_entities.Insert(ent);"\
+  "		return true;"\
+  "	}"\
+  "	"\
+  "	//Counts alive players around m_extractionObject"\
+  "	protected int CountFactionPlayers(vector center, int distance, string faction)"\
+  "	{"\
+  "		m_entities = new array<IEntity>;"\
+  "		m_tempString = faction;"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(center, distance, FilterFactionPlayers, null);"\
+  "		m_extractedPlayers = m_entities.Count();"\
+  "		return m_entities.Count();"\
+  "	}"
+  TriggerShapeType Sphere
+  SphereRadius 185.5
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_USAF\");"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage)"\
+  "		{"\
+  "			if (BLUFORPlayers/OPFORPlayers >= 0.7 && !OBJMessage)"\
+  "			{"\
+  "				OBJMessage = true;"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Pustoshka has been taken by Blufor!\", 10);"\
+  "				delete m_trigger;"\
+  "			"\
+  "			} "\
+  "		}"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers == 0 && !OBJMessage)"\
+  "		{"\
+  "			OBJMessage = true;"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Pustoshka has been taken by Blufor!\", 10);"\
+  "			delete m_trigger;"\
+  "		} "\
+  "	"
+ }
+ OBJ2 {
+  coords 3811.639 311.102 8892.942
+  userScript "	protected ref array<IEntity> m_entities;"\
+  "	protected string m_tempString;"\
+  "	protected int m_extractedPlayers;"\
+  "	protected vector m_obj = GetGame().GetWorld().FindEntityByName(\"OBJ2\").GetOrigin();"\
+  "	protected bool OBJMessage = false;"\
+  "	protected IEntity m_trigger = GetGame().GetWorld().FindEntityByName(\"OBJ2\");"\
+  "	"\
+  "	protected bool FilterFactionPlayers(IEntity ent) // Sphere Query Method"\
+  "	{"\
+  "		if (!EntityUtils.IsPlayer(ent)) return true;"\
+  "		SCR_ChimeraCharacter cc = SCR_ChimeraCharacter.Cast(ent);"\
+  "		if (cc && cc.GetFactionKey() == m_tempString) m_entities.Insert(ent);"\
+  "		return true;"\
+  "	}"\
+  "	"\
+  "	//Counts alive players around m_extractionObject"\
+  "	protected int CountFactionPlayers(vector center, int distance, string faction)"\
+  "	{"\
+  "		m_entities = new array<IEntity>;"\
+  "		m_tempString = faction;"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(center, distance, FilterFactionPlayers, null);"\
+  "		m_extractedPlayers = m_entities.Count();"\
+  "		return m_entities.Count();"\
+  "	}"
+  TriggerShapeType Sphere
+  SphereRadius 185.5
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 200, \"RHS_USAF\");"\
+  "		IEntity OBJ1 = GetGame().GetWorld().FindEntityByName(\"OBJ1\");"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage && OBJ1 == null)"\
+  "		{"\
+  "			if (BLUFORPlayers/OPFORPlayers >= 0.7 && !OBJMessage)"\
+  "			{"\
+  "				OBJMessage = true;"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"Vybor has been taken by Blufor!\", 10);"\
+  "				delete m_trigger;"\
+  "			"\
+  "			} "\
+  "		}"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers == 0 && !OBJMessage && OBJ1 == null)"\
+  "		{"\
+  "			OBJMessage = true;"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Vybor has been taken by Blufor!\", 10);"\
+  "			delete m_trigger;"\
+  "		} "\
+  "	"
+ }
+ OBJ4 {
+  coords 4482.922 341.341 10771.317
+  userScript "	protected ref array<IEntity> m_entities;"\
+  "	protected string m_tempString;"\
+  "	protected int m_extractedPlayers;"\
+  "	protected vector m_obj = GetGame().GetWorld().FindEntityByName(\"OBJ4\").GetOrigin();"\
+  "	protected bool OBJMessage = false;"\
+  "	protected IEntity m_trigger = GetGame().GetWorld().FindEntityByName(\"OBJ4\");"\
+  "	"\
+  "	protected bool FilterFactionPlayers(IEntity ent) // Sphere Query Method"\
+  "	{"\
+  "		if (!EntityUtils.IsPlayer(ent)) return true;"\
+  "		SCR_ChimeraCharacter cc = SCR_ChimeraCharacter.Cast(ent);"\
+  "		if (cc && cc.GetFactionKey() == m_tempString) m_entities.Insert(ent);"\
+  "		return true;"\
+  "	}"\
+  "	"\
+  "	//Counts alive players around m_extractionObject"\
+  "	protected int CountFactionPlayers(vector center, int distance, string faction)"\
+  "	{"\
+  "		m_entities = new array<IEntity>;"\
+  "		m_tempString = faction;"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(center, distance, FilterFactionPlayers, null);"\
+  "		m_extractedPlayers = m_entities.Count();"\
+  "		return m_entities.Count();"\
+  "	}"
+  TriggerShapeType Sphere
+  SphereRadius 184.8
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_USAF\");"\
+  "		IEntity OBJ3 = GetGame().GetWorld().FindEntityByName(\"OBJ3\");"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage && OBJ3 == null)"\
+  "		{"\
+  "			if (BLUFORPlayers/OPFORPlayers >= 0.7 && !OBJMessage && OBJ3 == null)"\
+  "			{"\
+  "				OBJMessage = true;"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"North West Airfield Hangars have been taken by Blufor!\", 10);"\
+  "				delete m_trigger;"\
+  "			"\
+  "			} "\
+  "		}"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers == 0 && !OBJMessage && OBJ3 == null)"\
+  "		{"\
+  "			OBJMessage = true;"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"North West Airfield Hangars have been taken by Blufor!\", 10);"\
+  "			delete m_trigger;"\
+  "		} "\
+  "	"
+ }
+ OBJ3 {
+  coords 4536.443 339.119 9620.532
+  userScript "	protected ref array<IEntity> m_entities;"\
+  "	protected string m_tempString;"\
+  "	protected int m_extractedPlayers;"\
+  "	protected vector m_obj = GetGame().GetWorld().FindEntityByName(\"OBJ3\").GetOrigin();"\
+  "	protected bool OBJMessage = false;"\
+  "	protected IEntity m_trigger = GetGame().GetWorld().FindEntityByName(\"OBJ3\");"\
+  "	"\
+  "	protected bool FilterFactionPlayers(IEntity ent) // Sphere Query Method"\
+  "	{"\
+  "		if (!EntityUtils.IsPlayer(ent)) return true;"\
+  "		SCR_ChimeraCharacter cc = SCR_ChimeraCharacter.Cast(ent);"\
+  "		if (cc && cc.GetFactionKey() == m_tempString) m_entities.Insert(ent);"\
+  "		return true;"\
+  "	}"\
+  "	"\
+  "	//Counts alive players around m_extractionObject"\
+  "	protected int CountFactionPlayers(vector center, int distance, string faction)"\
+  "	{"\
+  "		m_entities = new array<IEntity>;"\
+  "		m_tempString = faction;"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(center, distance, FilterFactionPlayers, null);"\
+  "		m_extractedPlayers = m_entities.Count();"\
+  "		return m_entities.Count();"\
+  "	}"
+  TriggerShapeType Sphere
+  SphereRadius 120
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		float OPFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_AFRF\");"\
+  "		float BLUFORPlayers = CountFactionPlayers(m_obj, 120, \"RHS_USAF\");"\
+  "		IEntity OBJ2 = GetGame().GetWorld().FindEntityByName(\"OBJ2\");"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers >= 1 && !OBJMessage && OBJ2 == null)"\
+  "		{"\
+  "			if (BLUFORPlayers/OPFORPlayers >= 0.7 && !OBJMessage && OBJ2 == null)"\
+  "			{"\
+  "				OBJMessage = true;"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"North West Airfield Barracks have been taken by Blufor!\", 10);"\
+  "				delete m_trigger;"\
+  "			"\
+  "			} "\
+  "		}"\
+  "		if (BLUFORPlayers >= 1 && OPFORPlayers == 0 && !OBJMessage && OBJ2 == null)"\
+  "		{"\
+  "			OBJMessage = true;"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"North West Airfield Barracks have been taken by Blufor!\", 10);"\
+  "			delete m_trigger;"\
+  "		} "\
+  "	"
+ }
+}

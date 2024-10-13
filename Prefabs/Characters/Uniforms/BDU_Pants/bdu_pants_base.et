@@ -3,7 +3,7 @@ GameEntity : "{B89432A8B5F489E5}Prefabs/Characters/Core/Uniform_Base.et" {
  components {
   SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
    MaxCumulativeVolume 3000
-   m_fMaxWeight 40
+   m_fMaxWeight 1000
   }
  }
 }

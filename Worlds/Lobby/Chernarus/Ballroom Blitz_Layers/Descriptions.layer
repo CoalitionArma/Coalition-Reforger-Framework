@@ -1,0 +1,121 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 2134.567 293.417 7471.942
+ m_sTextData "You must hold the objectives and prevent the Americans from capturing them. They can only capture them in a linear order, the other objectives can't be taken till the one infront of them get capture."\
+ ""\
+ "Reports of American Scouts behind our lines have popped up, assume they can come from anywhere."\
+ ""\
+ "If you break contact and retreat at least 300m from an objective you will encure 1x Respawn wave that will consist of "\
+ "1. Enough BMP-2s to hold the respawning Infantry"\
+ "2. Enough Squads to fill the dead players"
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 3438.838 291.766 8289.513
+ m_sTextData "BLUFOR"\
+ "6x Styker Dragoons"\
+ "4x M1A2 Abrams"\
+ "2x HMMWV M2"\
+ ""\
+ "OPFOR"\
+ "3x BMP-2"\
+ "3x T-72"\
+ "2x UAZ PKMs"\
+ ""\
+ ""
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4519.284 339.61 9483.277
+}
+PS_MissionDescription : "{8D61878E9F924406}PrefabsEditable/MissionDescription/GametypeNeutralEscort.et" {
+ coords 4537.14 339.125 9505.579
+ m_sTextData "Objectives"\
+ ""\
+ "There are four objectives that must be captured in a linear order from A-D. "\
+ ""\
+ "The next objective cannot be taken until the previous one has been taken."
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 3355.875 286.585 8326.837
+ m_sTextData "Objectives"\
+ "OBJ A | Pustoshka"\
+ "OBJ B | Vybor"\
+ "OBJ C | North West Airfield Barracks"\
+ "OBJ D | North West Airfield Hangers"\
+ ""\
+ "BLUFOR"\
+ "Capture all Objectives to the airfield."\
+ ""\
+ "OPFOR"\
+ "Hold all Objectives, don't let BLUFOR take the final Objective."
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 4537.269 339.125 9505.357
+  m_sTextData "OBJ A | Pustoshka"
+  m_iScore 25
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 3465.182 292.685 8310.834
+  m_sTextData "OBJ B | Vybor"
+  m_iScore 25
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 3493.953 294.924 8284.875
+  m_sTextData "OBJ C | North West Airfield Barracks"
+  m_iScore 25
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 3523.582 295.109 8335.128
+  m_sTextData "OBJ D | North West Airfield Hangers"
+  m_iScore 25
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 3506.244 295.843 8274.947
+  m_sTextData "OBJ A | Pustoshka"
+  m_iScore 25
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 2434.157 249.404 7080.424
+  m_sTextData "OBJ B | Vybor"
+  m_iScore 25
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 2462.928 251.642 7054.465
+  m_sTextData "OBJ C | North West Airfield Barracks"
+  m_iScore 25
+  m_sFactionKey "RHS_USAF"
+ }
+ {
+  coords 2492.556 251.827 7104.718
+  m_sTextData "OBJ D | North West Airfield Hangers"
+  m_iScore 25
+  m_sFactionKey "RHS_USAF"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 2028.837 262.17 7402.058
+ m_sTextData "You must capture the objectives in a linear order A-D, the other objectives won't be able to be taken until you capture the prior."\
+ ""\
+ "There is a Recon Platoon behind enemy lines you can utilize them to scout out the enemies before you attack them but they may not move until after safestart."\
+ ""\
+ "If you break contact and retreat at least 300m from an objective you will encure 1x Respawn wave that will consist of "\
+ "1. Enough Stryker Dragoons to hold the respawning Infantry"\
+ "2. Enough Squads to fill the dead players"
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 4537.646 339.136 9505.479
+ m_sTextData "A Russian Armored Company has been tasked with defending the Chernarus Airfield from an American Armor Company."\
+ ""\
+ "Earlier this morning reports came of American Scouts having infiltrated Russian lines, their position is unknown."
+}

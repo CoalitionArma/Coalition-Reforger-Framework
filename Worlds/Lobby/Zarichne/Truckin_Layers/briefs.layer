@@ -1,0 +1,33 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 1016.42 33.351 4538.152
+ m_sTextData "Reach the outskirts of the town of Zarichne while keeping the ammo truck safe. We don't know if the sepratists want to destroy or capture it so assume both situations possible."\
+ ""\
+ "All friendly forces must make it across into the town to be considered victorious. If the truck makes becomes separated from friendly forces, it's considered a major defeat."
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+ m_iOrder 4
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 954.605 35.093 4436.499
+ m_sTextData "OPFOR:"\
+ "1x Ammo Truck"
+ m_iOrder 2
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 995.071 53.113 4405.396
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 1017.434 33.19 4517.399
+ m_sTextData "Set up defense in depth along the AO in order to capture the ammunition truck."\
+ ""\
+ "Once the truck is under our control, drive it to the designated drop off point at the edge of the map."
+ m_aVisibleForFactions {
+  "CDF"
+ }
+ m_iOrder 4
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 1002.9 47.784 4420.083
+ m_sTextData "Russian forces are attempting to push across sepratist territory and into a safe area within the city of Zarichne in order to resupply exhausted troops."
+}

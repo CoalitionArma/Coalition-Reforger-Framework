@@ -1,0 +1,14 @@
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 2539.441 87.328 5344.052
+ angleY -114.527
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR2 {
+  coords 2558.818 88.282 5353.583
+  angleY -115.397
+ }
+ BTR1 {
+  coords 2549.922 87.821 5348.691
+  angleY -115.397
+ }
+}

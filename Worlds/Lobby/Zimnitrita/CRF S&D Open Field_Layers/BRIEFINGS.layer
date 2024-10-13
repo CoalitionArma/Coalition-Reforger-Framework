@@ -1,0 +1,40 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 12059.663 20.928 11864.585
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 12059.663 20.928 11864.585
+ m_sTextData "We have the Americans on the run, use our superior firepower to close the gap and wipe them out."\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 12059.663 20.928 11864.585
+ m_sTextData "BLUFOR: "\
+ ""\
+ "2x Armed Humvee"\
+ "Trucks"\
+ ""\
+ "OPFOR:"\
+ ""\
+ "1x T-72"\
+ "4X BTR70"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 12059.663 20.928 11864.585
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 12059.663 20.928 11864.585
+ m_sTextData "The Russians believe they have an overwhelming force, Use our maneuverability to our advantage and prevent them from wiping us out."\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "RHS_USAF"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 12059.663 20.928 11864.585
+ m_sTextData "The Russians have the local American garrison on the run, In an attempt to hold off the Russian wave the Americans must make a stand at their last fallback Position."
+}

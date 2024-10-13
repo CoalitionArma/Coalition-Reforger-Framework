@@ -1,0 +1,18 @@
+GenericEntity : "{D075481CB65F1AB5}Prefabs/Characters/Vests/Vest_PCGen_III_Pouches/Pouch_Shaw_Raid.et" {
+ ID "50E0B40D7407B664"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03D1147687}" {
+   MaxCumulativeVolume 10000
+   m_fMaxWeight 20
+  }
+  BaseLoadoutClothComponent "{5242D72632990471}" {
+   WornMaterialsOverride {
+    "{483656739A6F694E}Assets/Characters/Vests/Vest_PCGen_III_Pouches/Data/shawraid_MCBLk.emat"
+   }
+   ItemMaterialsOverride {
+    "{483656739A6F694E}Assets/Characters/Vests/Vest_PCGen_III_Pouches/Data/shawraid_MCBLk.emat"
+   }
+  }
+ }
+ coords 115.92 1.464 153.517
+}

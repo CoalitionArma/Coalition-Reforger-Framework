@@ -1,0 +1,558 @@
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 4774.611 261.355 6616.274
+ m_sDescription "OBJ: Bridge"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 5054.461 296.346 7145.913
+  angleY 0
+ }
+ {
+  coords 5051.96 289.616 7094.496
+  angleY 0
+ }
+ {
+  coords 5048.3 288.504 7025.261
+  angleY 0
+ }
+ {
+  coords 5043.34 275.813 6948.743
+  angleY 0
+ }
+ {
+  coords 5038.406 272.893 6879.232
+  angleY 0
+ }
+ {
+  coords 5024.549 261.607 6761.026
+  angleY 0
+ }
+ {
+  coords 5001.116 255.584 6654.681
+  angleY 0
+ }
+ {
+  coords 4983.572 268.249 6591.874
+  angleY 0
+ }
+ {
+  coords 4972.055 281.267 6542.419
+  angleY 0
+ }
+ {
+  coords 4961.655 304.094 6436.176
+  angleY 0
+ }
+ {
+  coords 4935.879 291.124 6266.455
+  angleY 0
+ }
+ {
+  coords 4916.334 302.833 6145.26
+  angleY 0
+ }
+ {
+  coords 4882.971 302.227 5933.366
+  angleY 0
+ }
+ {
+  coords 4866.573 315.009 5782.068
+  angleY 0
+ }
+ {
+  coords 4844.511 336.164 5649.109
+  angleY 0
+ }
+ {
+  coords 4731.497 327.773 5640.537
+  angleY 0
+ }
+ {
+  coords 4635.479 330.532 5693.177
+  angleY 0
+ }
+ {
+  coords 4505.922 323.752 5653.321
+  angleY 0
+ }
+ {
+  coords 4371.334 320.425 5667.623
+  angleY 0
+ }
+ {
+  coords 4305.467 325.332 5739.585
+  angleY 0
+ }
+ {
+  coords 4216.512 339.185 5819.202
+  angleY 0
+ }
+ {
+  coords 4151.419 349.973 5861.813
+  angleY 0
+ }
+ {
+  coords 4102.841 372.013 5952.664
+  angleY 0
+ }
+ {
+  coords 4145.999 348.235 6101.596
+  angleY 0
+ }
+ {
+  coords 4195.361 332.614 6235.213
+  angleY 0
+ }
+ {
+  coords 4227.314 321.257 6318.349
+  angleY 0
+ }
+ {
+  coords 4272.668 311.591 6430.127
+  angleY 0
+ }
+ {
+  coords 4309.296 307.246 6487.64
+  angleY 0
+ }
+ {
+  coords 4353.514 300.569 6553.447
+  angleY 0
+ }
+ {
+  coords 4402.264 294.779 6615.328
+  angleY 0
+ }
+ {
+  coords 4452.043 310.454 6684.866
+  angleY 0
+ }
+ {
+  coords 4493.652 282.481 6704.546
+  angleY 0
+ }
+ {
+  coords 4540.652 271.477 6744.265
+  angleY 0
+ }
+ {
+  coords 4503.107 289.39 6802.365
+  angleY 0
+ }
+ {
+  coords 4470.085 290.408 6847.69
+  angleY 0
+ }
+ {
+  coords 4403.453 292.382 6896.393
+  angleY 0
+ }
+ {
+  coords 4331.967 281.227 6948.797
+  angleY 0
+ }
+ {
+  coords 4290.678 280.374 7019.618
+  angleY 0
+ }
+ {
+  coords 4305.43 310.862 7093.431
+  angleY 0
+ }
+ {
+  coords 4260.851 283.211 7185.136
+  angleY 0
+ }
+ {
+  coords 4234.853 288.665 7279.78
+  angleY 0
+ }
+ {
+  coords 4189.267 288.608 7372.782
+  angleY 0
+ }
+ {
+  coords 4128.025 288.689 7510.815
+  angleY 0
+ }
+ {
+  coords 4074.035 307.202 7612.801
+  angleY 0
+ }
+ {
+  coords 3976.356 294.539 7740.082
+  angleY 0
+ }
+ {
+  coords 3874.319 299.495 7895.611
+  angleY 0
+ }
+ {
+  coords 3939.825 301.75 7964.643
+  angleY 0
+ }
+ {
+  coords 4012.17 304.5 8012.127
+  angleY 0
+ }
+ {
+  coords 4076.813 305.734 8064.628
+  angleY 0
+ }
+ {
+  coords 4163.853 306.721 8109.475
+  angleY 0
+ }
+ {
+  coords 4251.901 308.279 8145.057
+  angleY 0
+ }
+ {
+  coords 4329.961 318.785 8065.364
+  angleY 0
+ }
+ {
+  coords 4400.503 323.723 8025.24
+  angleY 0
+ }
+ {
+  coords 4453.89 326.538 7977.253
+  angleY 0
+ }
+ {
+  coords 4534.463 307.995 7980.273
+  angleY 0
+ }
+ {
+  coords 4606.236 314.371 7943.328
+  angleY 0
+ }
+ {
+  coords 4690.448 322.182 7923.798
+  angleY 0
+ }
+ {
+  coords 4744.83 328.154 7890.313
+  angleY 0
+ }
+ {
+  coords 4794.823 328.775 7816.435
+  angleY 0
+ }
+ {
+  coords 4827.145 331.267 7729.469
+  angleY 0
+ }
+ {
+  coords 4837.003 353.238 7674.956
+  angleY 0
+ }
+ {
+  coords 4891.109 338.14 7583.213
+  angleY 0
+ }
+ {
+  coords 4935.451 338.732 7513.916
+  angleY 0
+ }
+ {
+  coords 4984.543 332.803 7417.809
+  angleY 0
+ }
+ {
+  coords 5016.094 326 7371.778
+  angleY 0
+ }
+ {
+  coords 5033.694 309.797 7261.401
+  angleY 0
+ }
+}
+$grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+ {
+  coords 4403.954 284.157 6934.282
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4430.506 282.982 6954.543
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4463.32 289.662 6976.317
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4493.353 294.466 6993.987
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4532.454 296.246 7021.537
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4577.411 297.283 7053.126
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4620.008 297.321 7069.526
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4674.828 298.425 7087.268
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4745.976 295.618 7103.778
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4833.958 298.196 7121.121
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4891.275 298.372 7131.835
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4976.763 293.143 7139.814
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 5036.276 295.125 7142.421
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_USAF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_bShowForAnyFaction 0
+ }
+}
+$grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+ {
+  coords 4292.205 309.462 7946.632
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4268.938 308.282 7913.272
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4242.962 307.252 7879.014
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4211.726 306.817 7894.799
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4163.327 305.675 7921.997
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4126.454 304.957 7942.551
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4087.402 304.587 7971.835
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4061.012 304.623 7990.51
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4089.304 305.562 8027.49
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4112.448 306.23 8052.892
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4149.774 306.443 8102.877
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4198.031 308.042 8075.352
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4239.905 309.746 8051.387
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4270.508 311.374 8030.007
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+ {
+  coords 4310.055 312.229 8002.611
+  angleY 0
+  m_aVisibleForFactions {
+   "RHS_AFRF"
+  }
+  m_bVisibleForEmptyFaction 0
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 0
+ }
+}

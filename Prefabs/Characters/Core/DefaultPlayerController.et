@@ -1,7 +1,11 @@
 SCR_PlayerController {
  ID "1A9BA6BEFA06E3B1"
  components {
+  CRF_ClientRadioRespawnComponent "{625775C89F828701}" {
+  }
   CRF_GameModePlayerComponent "{61303B991D92F9B3}" {
+  }
+  CRF_HintSenderComponent "{624D1C15064C6C7E}" {
   }
   CRF_SafeStartPlayerComponent "{61303B991FCA4CF1}" {
   }
@@ -9,6 +13,10 @@ SCR_PlayerController {
    InfoDisplays {
     SCR_InfoDisplayExtended "{5CEAB7FB9DF29AC5}" {
      m_bShowWhenCreated 0
+    }
+    CRF_Frontline_HUD "{620F1A2B7F5F1C54}" {
+     m_LayoutPath "{57C8559AEDAEFF2D}UI/layouts/CRF_Frontline_HUD.layout"
+     m_eLayer ALWAYS_TOP
     }
     CRF_SafeStartDisplay "{61303B9E05796EC7}" {
      m_LayoutPath "{533092FF68C19D59}UI/layouts/CRF_SafeStartDisplay.layout"

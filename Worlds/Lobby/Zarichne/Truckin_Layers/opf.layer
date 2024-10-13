@@ -1,0 +1,41 @@
+SCR_AIGroup : "{52CC6713E578DCA3}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Command/CRF_RF_MSV_VKPO_Platoon.et" {
+ coords 1005.033 34.099 4511.373
+ {
+  $grp SCR_AIGroup : "{DF1D869218F901A5}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Infantry/CRF_RF_MSV_VKPO_RifleSquad.et" {
+   {
+    coords 15.519 -1.344 34.124
+   }
+   {
+    coords 46.844 -5.248 20.516
+    m_sCustomNameSet "2nd Squad"
+   }
+   {
+    coords 42.952 -3.126 45.688
+    m_sCustomNameSet "3rd Squad"
+   }
+   {
+    coords 62.653 -7.177 25.321
+    m_sCustomNameSet "4th Squad"
+   }
+   {
+    coords 43.423 -2.088 69.137
+    m_sCustomNameSet "5th Squad"
+    {
+     SCR_AIGroup : "{C23B66DAA2DDD947}Prefabs/Groups/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/Support/CRF_RF_MSV_VKPO_Logi.et" {
+      coords -44.006 2.456 -42.441
+      m_aUnitPrefabSlots {
+       "{0A7DE1A7716DBC68}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Leader_LogiLead_P.et" "{41B7B6972494D072}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Standard/CRF_VKPO_Rifleman_LogiRunner_P.et"
+      }
+      m_sCustomNameSet "Truck Team"
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle Ural4320_ammo_camo1 : "{677628B9FB43F83D}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo_camo1.et" {
+ coords 996.897 34.64 4535.064
+ angleX 2.001
+ angleY -154.015
+ angleZ -0.02
+}

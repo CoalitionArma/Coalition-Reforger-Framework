@@ -38,7 +38,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  coords 3547.041 9.894 2611.821
  m_aFactionRespawnCount {
   PS_FactionRespawnCount "{61EB709FC43D1183}" {
-   m_sFactionKey "RHS_RF_MSV"
+   m_sFactionKey "RHS_AFRF"
    m_iCount 50
    m_iTime 60000
    m_bWaveMode 1

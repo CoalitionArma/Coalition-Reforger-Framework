@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{68EB286921B4E7FD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_RF_MSV_VKPO_DS_Sharpshooter.et" {
+SCR_ChimeraCharacter : "{68EB286921B4E7FD}Prefabs/Characters/Factions/OPFOR/RHS_AFRF/MSV/VKPO_Demiseason/Character_RHS_AFRF_VKPO_DS_Sharpshooter.et" {
  ID "520EC961A090B1EE"
  components {
   CSI_CharacterComponent "{617A0517A9B25B23}" {

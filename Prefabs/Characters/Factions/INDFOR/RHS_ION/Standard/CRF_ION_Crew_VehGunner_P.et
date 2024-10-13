@@ -1,0 +1,8 @@
+SCR_ChimeraCharacter : "{2D385DC4D3BA8E89}Prefabs/Characters/Factions/INDFOR/RHS_ION/Standard/CRF_ION_Crew_Base_VehDriver_P.et" {
+ ID "520EC961A090B1EE"
+ components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_name "Gunner"
+  }
+ }
+}

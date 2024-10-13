@@ -1,0 +1,96 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 978.525 39 2659.939
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 15
+  }
+ }
+ coords 905.785 40.174 2683.502
+ {
+  RadioManagerEntity {
+   ID "61BCFEC02D38B821"
+   coords -43.051 -1.174 -58.544
+   angleY -19.326
+  }
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{6231312B231EB059}" {
+       }
+       SCR_CallsignInfo "{6231312B233D30B1}" {
+       }
+       SCR_CallsignInfo "{6231312B2353E623}" {
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{6231312B319AA4EE}" {
+       }
+       SCR_CallsignInfo "{6231312B31B977BF}" {
+       }
+       SCR_CallsignInfo "{6231312B31D521DF}" {
+       }
+      }
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign ""
+       }
+       SCR_CallsignInfo "{6231312B28E21054}" {
+       }
+       SCR_CallsignInfo "{6231312B281A5A2C}" {
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

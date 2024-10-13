@@ -1,0 +1,249 @@
+$grp GenericEntity : "{10F9EE0FB9EC0E4E}Prefabs/Props/Military/Arsenal/AmmoBoxes/FIA/AmmoBoxArsenal_Ammunition_FIA.et" {
+ box {
+  components {
+   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+    Enabled 0
+    m_bArsenalEnabled 0
+   }
+   SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+    Enabled 0
+   }
+   SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
+    Enabled 0
+   }
+   UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
+    Attributes SCR_ItemAttributeCollection "{58A17A346E386320}" {
+     ItemDisplayName SCR_InventoryUIInfo "{58A17A3474A3430E}" {
+      Name "Mortar Ammobox"
+      Description ""
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{622B31AAF37B69B5}" {
+     }
+     m_Size SLOT_3x3
+     m_SlotType SLOT_WEAPONS_STORAGE
+    }
+    UseCapacityCoefficient 0
+    MaxCumulativeVolume 50000
+    MultiSlots {
+     MultiSlotConfiguration "{622B31B5DCEAF549}" {
+      SlotTemplate InventoryStorageSlot Ammo {
+       Prefab "{64B634889F7AB67C}Mortars/82/podnos82mm.et"
+      }
+      NumSlots 5
+     }
+    }
+   }
+   SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+    Enabled 0
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      UIInfo UIInfo "{52E6EC759A11C684}" {
+       Name "Open Ammobox"
+      }
+     }
+    }
+   }
+  }
+  coords 5837.994 3.089 2625.124
+  angleY -123
+  userScript "		string mortar = \"{2A473C531D075905}Mortars/82/Podnosnew.et\";"\
+  "		vector mortar1spawn, mortar2spawn;"\
+  "		IEntity mortar1trig, mortar2trig;"\
+  "			"\
+  "		void spawnthings()"\
+  "			{"\
+  "				mortar1trig = GetGame().GetWorld().FindEntityByName(\"trig1\");"\
+  "				mortar2trig = GetGame().GetWorld().FindEntityByName(\"trig2\");"\
+  "				mortar1spawn = mortar1trig.GetOrigin();"\
+  "				mortar2spawn = mortar2trig.GetOrigin();"\
+  "				"\
+  "				EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "				spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "				spawnParams.Transform[3] = mortar1spawn;"\
+  "				"\
+  "				GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "				spawnParams.Transform[3] = mortar2spawn;"\
+  "				GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams);"\
+  "			}"
+  EOnInit ""\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ {
+  components {
+   SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+    Enabled 0
+    m_bArsenalEnabled 0
+   }
+   SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+    Enabled 0
+   }
+   SCR_ResupplySupportStationComponent "{5E2CE1BA1701C633}" {
+    Enabled 0
+   }
+   UniversalInventoryStorageComponent "{58A17A341AB8F069}" {
+    Attributes SCR_ItemAttributeCollection "{58A17A346E386320}" {
+     ItemDisplayName SCR_InventoryUIInfo "{58A17A3474A3430E}" {
+      Name "Mortar Ammobox"
+      Description ""
+     }
+     ItemPhysAttributes ItemPhysicalAttributes "{622B31AAF37B69B5}" {
+     }
+     m_Size SLOT_3x3
+     m_SlotType SLOT_WEAPONS_STORAGE
+    }
+    UseCapacityCoefficient 0
+    MaxCumulativeVolume 50000
+    MultiSlots {
+     MultiSlotConfiguration "{622B31B5DCEAF549}" {
+      SlotTemplate InventoryStorageSlot Ammo {
+       Prefab "{64B634889F7AB67C}Mortars/82/podnos82mm.et"
+      }
+      NumSlots 5
+     }
+    }
+   }
+   SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+    Enabled 0
+   }
+   ActionsManagerComponent "{5476B36C403D4CC0}" {
+    additionalActions {
+     SCR_OpenStorageAction "{5476DE57AA50402F}" {
+      UIInfo UIInfo "{52E6EC759A11C684}" {
+       Name "Open Ammobox"
+      }
+     }
+    }
+   }
+  }
+  coords 5838.49 3.106 2624.352
+  angleY -123
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 5218.488 3.821 2880.646
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5393.915 7.972 3299.538
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5352.381 2.656 2998.34
+  angleY 0
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5570.513 7.837 3319.759
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5281.542 4.717 2944.882
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5292.366 7.225 3248.925
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5334.807 5.471 3176.084
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5480.353 11.128 3351.803
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5359.551 6.246 3090.338
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+ {
+  coords 5635.937 29.48 3277.558
+  m_sDescription "FIA Safe Start Border"
+  m_aVisibleForFactions {
+   "FIA"
+  }
+ }
+}
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 5642.071 1.375 2721.937
+}
+SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+ coords 5650.132 1.375 2728.539
+ m_sCustomNameSet "Cell Leader"
+ {
+  SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+   coords -3.008 0 -14.694
+   m_sCustomNameSet "Cell 1"
+   {
+    SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+     coords -10.74 1.475 17.705
+     m_sCustomNameSet "Cell 2"
+     {
+      SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+       coords -7.125 0.024 -13.145
+       m_sCustomNameSet "Cell 3"
+       {
+        SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+         coords -11.539 -0.129 18.074
+         m_sCustomNameSet "Cell 4"
+         {
+          SCR_AIGroup : "{5001EE57D243A0E1}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_SniperTeam_P.et" {
+           coords 8.376 -0.025 6.118
+           m_sCustomNameSet "Snipers"
+           {
+            SCR_AIGroup : "{C402FC1C37B40123}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_Indirect_P.et" {
+             coords 35.657 0.185 7.378
+             m_aUnitPrefabSlots {
+              "{6A1CC2F56CD38006}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_IndirectLeader_P.et" "{7BC851B8C62730CC}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_IndirectGunner_P.et" "{7BC851B8C62730CC}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_IndirectGunner_P.et"
+             }
+             m_sCustomNameSet "Mortars"
+             {
+              SCR_AIGroup : "{196A5941072AC47C}Prefabs/Groups/INDFOR/FIA 1980s/Support/Group_FIA_MatTeam_P.et" {
+               coords -42.491 0.002 -31.005
+               m_sCustomNameSet "RPG Team"
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

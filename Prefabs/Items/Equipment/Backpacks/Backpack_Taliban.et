@@ -1,0 +1,9 @@
+GenericEntity : "{FDA7B6630DB87991}Prefabs/Items/Equipment/Backpacks/Backpack_M70_Swiss.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   MaxCumulativeVolume 30000
+   m_fMaxWeight 60
+  }
+ }
+}

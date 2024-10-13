@@ -1,0 +1,87 @@
+SCR_AIGroup : "{2ED2173F09D38D65}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_COY_P.et" {
+ coords 4683.876 339.125 9737.422
+ m_sCustomNameSet "Company"
+ {
+  $grp SCR_AIGroup : "{CA73F9230999408C}Prefabs/Groups/INDFOR/FIA 1980s/Command/Group_FIA_PlatoonHQ_P.et" {
+   {
+    coords 2.063 -0.001 14.24
+    m_sCustomNameSet "1st Platoon"
+    {
+     SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+      coords 2.166 0.001 17.685
+      {
+       SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+        coords 6.907 0.001 -14.248
+        m_aUnitPrefabSlots {
+         "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_Base_SL_P.et" "{EEF17040E7760576}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Medic_P.et" "{E5CC9F6C12A6D721}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_TL_P.et" "{D66E1343048AFB94}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MMG_P.et" "{975E763E7512C41B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMG_P.et" "{E5CC9F6C12A6D721}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_TL_P.et" "{74C10089A77C9E1D}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MAT_P.et" "{2991D3A44D183CEF}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMAT_P.et" "{38DCB0FE95975B54}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Demo_P.et"
+        }
+        m_sCustomNameSet "2nd Squad"
+        {
+         SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
+          coords -17.465 -0.002 6.664
+          m_sCustomNameSet "BTR 1"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   {
+    coords 15.069 0 -5.223
+    m_sCustomNameSet "2nd Platoon"
+    {
+     SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+      coords 15.16 0.001 -4.416
+      m_aUnitPrefabSlots {
+       "{374AAF6A8BD17323}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_Base_SL_P.et" "{EEF17040E7760576}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Medic_P.et" "{E5CC9F6C12A6D721}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_TL_P.et" "{D66E1343048AFB94}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MMG_P.et" "{975E763E7512C41B}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMG_P.et" "{E5CC9F6C12A6D721}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Leader_TL_P.et" "{74C10089A77C9E1D}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_MAT_P.et" "{2991D3A44D183CEF}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_AMAT_P.et" "{38DCB0FE95975B54}Prefabs/Characters/Factions/INDFOR/FIA/Standard/CRF_FIA_Rifleman_Demo_P.et"
+      }
+      m_sCustomNameSet "3rd Squad"
+      {
+       SCR_AIGroup : "{17C7309FFE4775B1}Prefabs/Groups/INDFOR/FIA 1980s/Infantry/Group_FIA_RifleSquad_P.et" {
+        coords -6.907 -0.001 14.248
+        m_sCustomNameSet "4th Squad"
+        {
+         SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
+          coords -4.493 0 -23.243
+          m_sCustomNameSet "BTR 2"
+          {
+           SCR_AIGroup : "{573246D77A161E73}Prefabs/Groups/INDFOR/FIA 1980s/Vehicle/Group_FIA_2manVehicleCrew_P.et" {
+            coords -30.325 0.505 9.015
+            m_sCustomNameSet "Armor"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ UAZ452_ambulance3 {
+  coords 4642.268 340.167 9719.19
+  angleY -114.256
+ }
+ UAZ452_ambulance4 {
+  coords 4633.103 340.46 9739.533
+  angleY -114.256
+ }
+}
+Tank T55wznp1 : "{99AC7D4F55C33AF7}T-55/T55wznp.et" {
+ coords 4627.598 339.352 9721.664
+ angleY -137.63
+}
+$grp Vehicle : "{B47110AA1A806556}Prefabs/Vehicles/Wheeled/BTR70/BTR70_FIA.et" {
+ BTR70_FIA1 {
+  coords 4644.351 339.702 9712.539
+  angleY -101
+ }
+ BTR70_FIA2 {
+  coords 4641.493 340.497 9732.84
+  angleY -106
+ }
+}

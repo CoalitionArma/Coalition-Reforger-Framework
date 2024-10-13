@@ -1,0 +1,150 @@
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 4322.259 6.702 3449.431
+  angleY 0
+ }
+ {
+  coords 4242.568 8.3 3484.896
+  angleY 0
+ }
+ {
+  coords 4170.709 9.26 3542.702
+  angleY 0
+ }
+ {
+  coords 4144.463 8.552 3646.861
+  angleY 0
+ }
+ {
+  coords 4194.367 34.226 3751.21
+  angleY 0
+ }
+ {
+  coords 4176.34 22.146 3881.906
+  angleY 0
+ }
+ {
+  coords 4236.497 49.652 3978.359
+  angleY 0
+ }
+ {
+  coords 4254.624 40.819 4106.23
+  angleY 0
+ }
+ {
+  coords 4278.541 54.735 4235.54
+  angleY 0
+ }
+ {
+  coords 4289.366 46.688 4367.903
+  angleY 0
+ }
+ {
+  coords 4244.1 38.576 4546.586
+  angleY 0
+ }
+ {
+  coords 4217.469 73.028 4662.483
+  angleY 0
+ }
+ {
+  coords 4238.455 70.416 4777.024
+  angleY 0
+ }
+ {
+  coords 4333.359 32.478 4861.528
+  angleY 0
+ }
+ {
+  coords 4414.601 8.521 4893.012
+  angleY 0
+ }
+ {
+  coords 4595.436 1.344 4939.058
+  angleY 0
+ }
+ {
+  coords 4862.974 2.84 4858.874
+  angleY 0
+ }
+ {
+  coords 4979.37 6.191 4797.141
+  angleY 0
+ }
+ {
+  coords 5101.806 9.437 4650.675
+  angleY 0
+ }
+ {
+  coords 5254.621 2.461 4401.743
+  angleY 0
+ }
+ {
+  coords 5555.985 0 4400.628
+  angleY 0
+ }
+ {
+  coords 5787.352 0 4254.389
+  angleY 0
+ }
+ {
+  coords 6017.397 0 3978.032
+  angleY 0
+ }
+ {
+  coords 6028.178 0 3674.806
+  angleY 0
+ }
+ {
+  coords 5979.779 -0 3397.365
+  angleY 0
+ }
+ {
+  coords 6042.432 0 3183.101
+  angleY 0
+ }
+ {
+  coords 6077.606 0 2895.701
+  angleY 0
+ }
+ {
+  coords 6077.612 0 2611.459
+  angleY 0
+ }
+ {
+  coords 6107.408 -0 2438.875
+  angleY 0
+ }
+ {
+  coords 5765.343 0 2477.174
+  angleY 0
+ }
+ {
+  coords 5416.442 0 2460.215
+  angleY 0
+ }
+ {
+  coords 5155.171 0 2548.713
+  angleY 0
+ }
+ {
+  coords 4995.942 0 2794.344
+  angleY 0
+ }
+ {
+  coords 4806.805 0 2909.518
+  angleY 0
+ }
+ {
+  coords 4582.716 -0 3023.295
+  angleY 0
+ }
+ {
+  coords 4478.182 33.637 3157.617
+  angleY 0
+ }
+ {
+  coords 4406.264 26.714 3356.254
+  angleY 0
+ }
+}

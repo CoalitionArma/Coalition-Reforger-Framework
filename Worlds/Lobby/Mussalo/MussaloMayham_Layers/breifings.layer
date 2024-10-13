@@ -1,0 +1,85 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 3431.179 2.613 5302.542
+ m_sTextData "Our invasion of the island is going perfectly, and now as planned we must steal supplies from the enemy to sustain our abilty to fight."\
+ ""\
+ "Using our MI8 to move the supplies out of the depots we must steal 3000 supplies from the 4 located depots across the island. our intel indicates each depot contains 1000 supplies."
+ m_aVisibleForFactions {
+  "RHS_AFRF"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 3431.179 2.613 5302.542
+ m_sTextData "BLUFOR:"\
+ ""\
+ "2x BTRs "\
+ "Various Cars"\
+ ""\
+ "OPFOR:"\
+ ""\
+ "1x Armed mi8"\
+ "Various Trucks"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 3431.179 2.613 5302.542
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 3431.179 2.613 5302.542
+ m_sTextData "OPFOR:"\
+ ""\
+ "- Capture enough supplies"\
+ "- Evacuate with at least 10 remaining personel"\
+ ""\
+ "BLUFOR: "\
+ ""\
+ "- Prevent the capture of supplies"\
+ "- Eliminate enough enemy manpower"
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ {
+  coords 3431.179 2.613 5302.542
+  m_sTitle "Prevent supply Capture"
+  m_sTextData "Prevent supply Capture"
+  m_iScore 50
+  m_sFactionKey "CDF"
+ }
+ {
+  coords 3431.179 2.613 5295.81
+  m_sTitle "Eliminate enough enemy manpower"
+  m_sTextData "Eliminate enough enemy manpower"
+  m_iOrder 1
+  m_iScore 50
+  m_sFactionKey "CDF"
+ }
+ {
+  coords 3419.531 2.613 5302.542
+  m_sTitle "Capture 3000 supplies"
+  m_sTextData "Capture 3000 supplies"
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+ {
+  coords 3419.531 2.613 5318.752
+  m_sTitle "Evacuate with at least 10 people"
+  m_sTextData "Evacuate with at least 10 people"
+  m_iOrder 1
+  m_iScore 50
+  m_sFactionKey "RHS_AFRF"
+ }
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 3431.179 2.613 5302.542
+ m_sTextData "The Russians are going to try and airlift our supplies out to reconstitute their invasion."\
+ ""\
+ "Prevent Russians from landing and stealing our supplies with their MI8"
+ m_aVisibleForFactions {
+  "CDF"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 3431.179 2.613 5302.542
+ m_sTextData "Russian forces took a beating but still managed to capture a foothold in their invasion. In an attempt to salvage the situation they are going to attempt to steal supplies from the local defense forces."\
+ ""\
+ "Both sides have respawns:"\
+ "OPFOR: 40 tickets"\
+ "BLUFOR: 30 tickets"
+}
