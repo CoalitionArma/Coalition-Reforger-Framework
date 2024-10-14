@@ -1,3 +1,17 @@
 SCR_ChimeraCharacter {
  ID "520EC961A090B1EE"
+ components {
+  SCR_CharacterControllerComponent "{520EA1D2F659CEA5}" {
+   SprintInterruptDuration 0.3
+   AimingSpeed 150
+   WaitForThrowResetAction 0
+   ChangeWeaponWhenNoGrenades 0
+   InputAimLimits 0 0
+   DeathTimer 10
+  }
+  SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
+   StaminaDrainRun -0.006
+   StaminaDrainSprint -0.009
+  }
+ }
 }
