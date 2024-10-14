@@ -1,82 +1,53 @@
-$grp GenericEntity : "{0879C452656F1A3C}Prefabs/Structures/Military/Slotted/SlotFlatSmall/Arsenal_NoBoxes.et" {
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
  {
-  coords 2165.223 8.156 2130.335
-  angleY -10.538
+  coords 2145.183 8.156 2134.5
+  angleY -37.439
  }
  {
-  coords 2626.083 8.156 2188.912
-  angleY 81.121
+  coords 2146.796 8.156 2129.366
+  angleY -142.999
+ }
+ {
+  coords 2159.371 8.156 2111.818
+  angleY 175.704
+ }
+ {
+  coords 2159.371 10.721 2111.818
+  angleY 175.704
  }
 }
 GenericEntity : "{19E2D4E8F2E491C3}Prefabs/Compositions/Slotted/SlotRoadMedium/CheckpointUnderConstruction_M_US_02.et" {
  coords 1533.489 8.292 1735.819
  angleY -107.558
 }
-$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ coords 2559.673 8.156 2188.488
+ angleY -5.545
  {
-  coords 2559.673 8.156 2188.488
-  angleY -5.545
-  {
-   GenericEntity {
-    ID "5D45393876460D01"
-    {
-     GenericEntity {
-      ID "5D453938619FC380"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC381"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC383"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
+  GenericEntity {
+   ID "5D45393876460D01"
+   {
+    GenericEntity {
+     ID "5D453938619FC380"
+     components {
+      ActionsManagerComponent "{5E16BA5C3D96AB20}" {
+       Enabled 0
       }
      }
     }
-   }
-  }
- }
- {
-  coords 2142.248 20.143 2131.006
-  angleY -7.603
-  {
-   GenericEntity {
-    ID "5D45393876460D01"
-    {
-     GenericEntity {
-      ID "5D453938619FC380"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
+    GenericEntity {
+     ID "5D453938619FC381"
+     components {
+      ActionsManagerComponent "{5E16BA5C3D96AB20}" {
+       Enabled 0
       }
      }
-     GenericEntity {
-      ID "5D453938619FC381"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC383"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
+    }
+    GenericEntity {
+     ID "5D453938619FC383"
+     components {
+      ActionsManagerComponent "{5E16BA5C3D96AB20}" {
+       Enabled 0
       }
      }
     }
@@ -108,7 +79,7 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
  {
   $grp GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
    {
-    coords -433.191 -13.348 22.797
+    coords -433.191 -13.474 22.797
     angleY 19.67
    }
    {
@@ -130,11 +101,11 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
     angleY 7.363
    }
    {
-    coords -449.332 -13.348 29.237
+    coords -449.332 -13.474 29.237
     angleY 13.429
    }
    {
-    coords -451.219 -13.348 29.688
+    coords -451.219 -13.474 29.688
     angleY 13.429
    }
   }
@@ -234,11 +205,11 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
   }
   $grp GenericEntity : "{B31A14BC1A0E7776}Prefabs/Props/Military/Sandbags/Sandbag_01_round_burlap.et" {
    {
-    coords -448.638 -13.348 24.599
+    coords -448.638 -13.474 24.599
     angleY -104.998
    }
    {
-    coords -434.24 -13.348 31.325
+    coords -434.24 -13.474 31.325
     angleY 120.662
    }
   }
@@ -679,10 +650,6 @@ $grp GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLar
   coords 2212.779 8.156 1993.866
   angleY 170.195
  }
-}
-GenericEntity : "{BFA52B5CAB5EC656}Prefabs/Structures/Military/Slotted/SlotFlatSmall/FieldHospial_NoStuff.et" {
- coords 2566.362 8.156 2134.983
- angleY -13.694
 }
 GenericEntity : "{C7D38772154D45BB}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_US_01.et" {
  coords 2517.164 8.156 2208.528
