@@ -1,19 +1,49 @@
 $grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
  {
-  coords 2145.183 8.156 2134.5
-  angleY -37.439
+  coords 2149.764 8.156 2139.48
  }
  {
-  coords 2146.796 8.156 2129.366
-  angleY -142.999
+  coords 2150.297 8.156 2133.083
+  angleY 171.48
  }
  {
-  coords 2159.371 8.156 2111.818
-  angleY 175.704
+  coords 2150.899 8.156 2126.648
+  angleY -178.746
  }
  {
-  coords 2159.371 10.721 2111.818
-  angleY 175.704
+  coords 2150.51 10.72 2129.782
+  angleY 171.292
+ }
+ {
+  coords 2150.679 10.72 2136.261
+  angleY -167.781
+ }
+ {
+  coords 2152.536 8.156 2139.76
+ }
+ {
+  coords 2151.325 10.72 2140.889
+  angleY -94.334
+ }
+ {
+  coords 2153.041 8.156 2122.718
+  angleY -140.768
+ }
+ {
+  coords 2152.852 10.72 2123.885
+  angleY 131.473
+ }
+ {
+  coords 2154.157 8.156 2109.011
+  angleY -94.295
+ }
+ {
+  coords 2154.157 10.721 2109.011
+  angleY -94.295
+ }
+ {
+  coords 2165.983 10.932 2090.661
+  angleY -94.295
  }
 }
 GenericEntity : "{19E2D4E8F2E491C3}Prefabs/Compositions/Slotted/SlotRoadMedium/CheckpointUnderConstruction_M_US_02.et" {
@@ -221,6 +251,72 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
    coords -425.068 -2.995 65.355
    angleY 13.429
   }
+ }
+}
+$grp GenericEntity : "{9C9C4BED9E19C374}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_burlap.et" {
+ {
+  coords 2137.68 8.156 2126.713
+  angleY -7.866
+ }
+ {
+  coords 2136.36 8.156 2125.818
+  angleY -94.702
+ }
+ {
+  coords 2136.36 10.318 2125.818
+  angleY -94.702
+ }
+ {
+  coords 2137.68 10.318 2126.713
+  angleY -7.866
+ }
+ {
+  coords 2144.168 8.156 2127.252
+  angleY -5.149
+ }
+ {
+  coords 2144.168 10.318 2127.252
+  angleY -5.149
+ }
+ {
+  coords 2146.826 10.318 2127.506
+  angleY -5.149
+ }
+ {
+  coords 2146.826 8.156 2127.506
+  angleY -5.149
+ }
+ {
+  coords 2149.189 8.156 2128.528
+  angleY -90.349
+ }
+ {
+  coords 2149.189 10.318 2128.528
+  angleY -90.349
+ }
+ {
+  coords 2159.462 10.318 2108.9
+  angleY -5.149
+ }
+ {
+  coords 2159.462 8.156 2108.9
+  angleY -5.149
+ }
+ {
+  coords 2157.734 8.156 2109.366
+  angleY -91.107
+ }
+ {
+  coords 2157.734 10.318 2109.366
+  angleY -91.107
+ }
+ {
+  coords 2159.462 12.479 2108.9
+  angleY -5.149
+ }
+ {
+  coords 2157.734 12.479 2109.366
+  angleY -91.107
  }
 }
 $grp GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_US_01.et" {

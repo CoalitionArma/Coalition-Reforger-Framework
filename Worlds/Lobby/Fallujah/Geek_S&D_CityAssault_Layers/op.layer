@@ -1,69 +1,64 @@
-SCR_AIGroup : "{5E9DBEC7B22326AC}Prefabs/Groups/Legacy/INDFOR/Taliban/Command/CRF_Group_Taliban_Platoon_P.et" {
+SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
  components {
   AIFormationComponent "{507E9DC12F541FE6}" {
    DefaultFormation "Column"
   }
  }
- coords 2338.285 8.125 2238.597
- angleY -5.752
- m_sCustomNameSet "Platoon"
+ coords 2338.282 8.156 2238.585
+ angleY -5
  {
-  SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/Legacy/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+  SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
    components {
     AIFormationComponent "{507E9DC12F541FE6}" {
      DefaultFormation "Column"
     }
    }
-   coords -5.519 0.031 6.755
-   angleY -179.188
+   coords -5.625 0 6.059
+   angleY 177.996
    {
-    SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/Legacy/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+    SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
      components {
       AIFormationComponent "{507E9DC12F541FE6}" {
        DefaultFormation "Column"
       }
      }
-     coords -1.768 0 -0.108
-     angleY -0.94
+     coords -1.849 -0 -0.186
      m_sCustomNameSet "2nd Squad"
      {
-      SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/Legacy/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+      SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
        components {
         AIFormationComponent "{507E9DC12F541FE6}" {
          DefaultFormation "Column"
         }
        }
-       coords -1.885 0 -0.189
-       angleY 0.234
+       coords -1.825 0 -0
        m_sCustomNameSet "3rd Squad"
        {
-        SCR_AIGroup : "{BEE1D0CFB90A72F4}Prefabs/Groups/Legacy/INDFOR/Taliban/Infantry/CRF_Group_Taliban_RifleSquad_P.et" {
+        SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
          components {
           AIFormationComponent "{507E9DC12F541FE6}" {
            DefaultFormation "Column"
           }
          }
-         coords -1.392 0 -0.092
-         angleY -2.753
+         coords -1.56 0 0
          m_sCustomNameSet "4th Squad"
          {
-          SCR_AIGroup : "{5CDE10E6AAA56D88}Prefabs/Groups/Legacy/INDFOR/Taliban/Support/CRF_Group_Taliban_MATTeam_P.et" {
+          SCR_AIGroup : "{1E76032AE86E25C4}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MATTeam_p.et" {
            components {
             AIFormationComponent "{507E9DC12F541FE6}" {
              DefaultFormation "Column"
             }
            }
-           coords 3.942 0 6.789
-           angleY -174.962
+           coords 6.776 0 6.524
+           angleY -177.996
            {
-            SCR_AIGroup : "{783A89E1332A1440}Prefabs/Groups/Legacy/INDFOR/Taliban/Support/CRF_Group_Taliban_MMGTeam_P.et" {
+            SCR_AIGroup : "{0A56302C3814952B}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MMGTeam_p.et" {
              components {
               AIFormationComponent "{507E9DC12F541FE6}" {
                DefaultFormation "Column"
               }
              }
-             coords -2.701 0 -0.138
-             angleY -3.429
+             coords 3.639 0 0.209
             }
            }
           }
