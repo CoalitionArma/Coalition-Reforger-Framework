@@ -10,4 +10,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
  coords 767.684 42.044 2668.612
+ m_aDisabledResourceTypes {
+  0
+ }
 }
