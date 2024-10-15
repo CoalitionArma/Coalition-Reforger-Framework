@@ -27,6 +27,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected SCR_ListBoxComponent m_list4;
 	protected SCR_ButtonTextComponent m_respawnMenuButton;
 	protected SCR_ButtonTextComponent m_resetGearMenuButton;
+	protected SCR_ButtonTextComponent m_teleportMenuButton;
 	protected SCR_ButtonTextComponent m_actionButton;
 	protected SCR_ButtonTextComponent m_menuButton1;
 	protected SCR_ButtonTextComponent m_menuButton2;
@@ -34,6 +35,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected SCR_ButtonTextComponent m_menuButton4;
 	protected TextWidget m_respawnMenuText;
 	protected TextWidget m_resetGearMenuText;
+	protected TextWidget m_teleportMenuText;
 	protected ref array<int> m_groupIDList = {};
 	protected ref array<int> m_playerIDList = {};
 	protected ref array<SCR_AIGroup> m_outGroups = {};
@@ -80,6 +82,10 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_resetGearMenuButton = SCR_ButtonTextComponent.GetButtonText("ResetGearButton", m_wRoot);
 		m_resetGearMenuButton.m_OnClicked.Insert(ResetGearButton);
 		m_resetGearMenuText = TextWidget.Cast(m_resetGearMenuButton.GetRootWidget().FindWidget("ResetGearText"));
+		
+		m_teleportMenuButton = SCR_ButtonTextComponent.GetButtonText("TeleportButton", m_wRoot);
+		m_teleportMenuButton.m_OnClicked.Insert(TeleportButton);
+		m_teleportMenuText = TextWidget.Cast(m_teleportMenuButton.GetRootWidget().FindWidget("TeleportText"));
 	}
 	
 	override void OnMenuClose()
@@ -91,16 +97,27 @@ class CRF_AdminMenu: ChimeraMenuBase
 	{
 		m_respawnMenuText.SetColor(Color.FromInt(0xffffffff));
 		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		ClearMenu();
 		InitializeRespawnMenu();
 	}
 	
 	void ResetGearButton()
 	{
-		m_resetGearMenuText.SetColor(Color.FromInt(0xffffffff));
 		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_resetGearMenuText.SetColor(Color.FromInt(0xffffffff));
+		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		ClearMenu();
 		InitializeGearMenu();
+	}
+	
+	void TeleportButton()
+	{
+		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_teleportMenuText.SetColor(Color.FromInt(0xffffffff));
+		ClearMenu();
+		InitializeTeleportMenu();
 	}
 	
 	void ClearMenu()
@@ -429,18 +446,27 @@ class CRF_AdminMenu: ChimeraMenuBase
 	
 	void AddLeaderRadio()
 	{
+		if(m_list1.GetSelectedItem() < 0)
+			return;
+		
 		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
 		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetLeadersRadio(playerID));
 	}
 	
 	void AddGIRadio()
 	{
+		if(m_list1.GetSelectedItem() < 0)
+			return;
+		
 		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
 		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetGIRadio(playerID));
 	}
 	
 	void AddBinos()
 	{
+		if(m_list1.GetSelectedItem() < 0)
+			return;
+		
 		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
 		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetBinos(playerID));
 	}
@@ -488,12 +514,18 @@ class CRF_AdminMenu: ChimeraMenuBase
 	
 	void ResetGear()
 	{
+		if(m_list1.GetSelectedItem() < 0)
+			return;
+		
+		if(m_list2.GetSelectedItem() < 0)
+			return;
+		
 		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
 		int groupID = m_groupManagerComponent.GetPlayerGroup(playerID).GetGroupID();
 		string prefab = GetPrefab(groupID, m_list2.GetSelectedItem());
+		
 		CRF_ClientAdminMenuComponent.GetInstance().ResetGear(playerID, prefab);
 	}
-	
 	//-------------------------------------------------------------------------------------------
 	//-------------------------------Resspawn Menu UI Members------------------------------------
 	//-------------------------------------------------------------------------------------------
@@ -571,12 +603,85 @@ class CRF_AdminMenu: ChimeraMenuBase
 	
 	void RespawnPlayer()
 	{
+		if(m_list1.GetSelectedItem() < 0)
+			return;
+		
+		if(m_list2.GetSelectedItem() < 0)
+			return;
+		
+		if(m_list3.GetSelectedItem() < 0)
+			return;
+		
+		if(m_list4.GetSelectedItem() < 0)
+			return;
+		
 		int playerID = m_playerIDList.Get(m_list2.GetSelectedItem());
 		int groupID = m_groupIDList.Get(m_list1.GetSelectedItem());
 		string prefab = GetPrefab(groupID, m_list3.GetSelectedItem());
 		vector spawnpoint = m_spawnPoints.Get(m_list4.GetSelectedItem());
-		
-		Print("Spawning a player from client");
 		CRF_ClientAdminMenuComponent.GetInstance().SpawnGroup(playerID, prefab, spawnpoint , groupID);
+		ClearMenu();
+		InitializeRespawnMenu();
+	}
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------Teleport Menu UI Members------------------------------------
+	//-------------------------------------------------------------------------------------------
+	void InitializeTeleportMenu()
+	{
+		m_list1Root.SetVisible(true);
+		m_list2Root.SetVisible(true);
+		m_menuButton1.SetVisible(true, false);
+		m_menuButton2.SetVisible(true, false);
+		m_menuButton1.m_OnClicked.Insert(TeleportLocal);
+		m_menuButton2.m_OnClicked.Insert(TeleportPlayers);
+		
+		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Teleport to Player 1");
+		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Teleport Player 1 to Player 2");
+		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Player 1");
+		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Player 2");
+		
+		m_playerManager.GetPlayers(m_allPlayers);
+		foreach(int playerID : m_allPlayers)
+		{ 
+			if(m_groupManagerComponent.GetPlayerGroup(playerID))
+			{
+				m_list1.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
+				m_list2.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
+				m_playerIDList.Insert(playerID);
+			}
+		}
+	}
+	
+	void TeleportLocal()
+	{
+		if(m_list1.GetSelectedItem() < 0)
+			return;
+		
+		int playerID2 = m_playerIDList.Get(m_list1.GetSelectedItem());
+		
+		if(!playerID2)
+			return;
+		
+		CRF_ClientAdminMenuComponent.GetInstance().TeleportLocalPlayer(SCR_PlayerController.GetLocalPlayerId(), playerID2);
+	}
+	
+	void TeleportPlayers()
+	{
+		if(m_list1.GetSelectedItem() < 0)
+			return;
+		
+		if(m_list2.GetSelectedItem() < 0)
+			return;
+		
+		int playerID1 = m_playerIDList.Get(m_list1.GetSelectedItem());
+		int playerID2 = m_playerIDList.Get(m_list2.GetSelectedItem());
+		
+		if(!playerID1)
+			return;
+		
+		if(!playerID2)
+			return;
+		
+		CRF_ClientAdminMenuComponent.GetInstance().TeleportPlayers(playerID1, playerID2);
 	}
 }

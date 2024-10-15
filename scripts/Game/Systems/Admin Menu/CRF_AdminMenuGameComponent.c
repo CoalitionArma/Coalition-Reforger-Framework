@@ -121,4 +121,26 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		if(!entityInventoryManager.TryInsertItem(resourceSpawned))
 			delete resourceSpawned;
 	}
+	
+	void TeleportPlayers(int playerID1, int playerID2)
+	{
+		Rpc(Rpc_TeleportPlayers, playerID1, playerID2);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void Rpc_TeleportPlayers(int playerID1, int playerID2)
+	{
+		if(SCR_PlayerController.GetLocalPlayerId() != playerID1)
+			return;
+		
+		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID2);
+		PrintFormat("Teleporting %1 to %2", playerID1, entity2);
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+	    spawnParams.TransformMode = ETransformMode.WORLD;
+		vector teleportLocation = vector.Zero;
+		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 3);
+	    spawnParams.Transform[3] = teleportLocation;
+	
+		SCR_Global.TeleportPlayer(playerID1, teleportLocation);
+	}
 }
