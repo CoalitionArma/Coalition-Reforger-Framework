@@ -374,9 +374,7 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 		
 		if(selectedFaction == "Blufor")
 		{
-			m_masterConfig.m_DefaultFactionGear.m_sLeadershipRadiosPrefab = "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et";
 			m_masterConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab = "{E4E4CA52CCB2D22C}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22_base.et";
-			m_masterConfig.m_DefaultFactionGear.m_sGIRadiosPrefab = "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et";
 			m_masterConfig.m_DefaultFactionGear.m_sAssistantBinocularsPrefab = "{E4E4CA52CCB2D22C}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22_base.et";
 			InsertItem("{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et", 10, medicalItemArray);
 			InsertItem("{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et", 3, medicalItemArray);
@@ -388,9 +386,7 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 		
 		if(selectedFaction == "Opfor")
 		{
-			m_masterConfig.m_DefaultFactionGear.m_sLeadershipRadiosPrefab = "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et";
 			m_masterConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab = "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12/Binoculars_B12.et";
-			m_masterConfig.m_DefaultFactionGear.m_sGIRadiosPrefab = "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et";
 			m_masterConfig.m_DefaultFactionGear.m_sAssistantBinocularsPrefab = "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12/Binoculars_B12.et";
 			InsertItem("{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et", 10, medicalItemArray);
 			InsertItem("{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et", 3, medicalItemArray);
@@ -400,9 +396,7 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 		
 		if(selectedFaction == "Indfor")
 		{
-			m_masterConfig.m_DefaultFactionGear.m_sLeadershipRadiosPrefab = "{72B7D9E24B495F57}Prefabs/Items/Equipment/Radios/INDFOR_Radio_Leader.et";
 			m_masterConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab = "{243948B23D90BECB}Prefabs/Items/Equipment/Binoculars/Binoculars_B8/Binoculars_B8.et";
-			m_masterConfig.m_DefaultFactionGear.m_sGIRadiosPrefab = "{2F19DBB99A359B48}Prefabs/Items/Equipment/Radios/INDFOR_Radio_GI.et";
 			m_masterConfig.m_DefaultFactionGear.m_sAssistantBinocularsPrefab = "{243948B23D90BECB}Prefabs/Items/Equipment/Binoculars/Binoculars_B8/Binoculars_B8.et";
 			InsertItem("{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et", 10, medicalItemArray);
 			InsertItem("{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et", 3, medicalItemArray);
