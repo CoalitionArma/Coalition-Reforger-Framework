@@ -3,9 +3,14 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
+  CRF_AdminMenuGameComponent "{62995276751D17AC}" {
+  }
   CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
    m_bGearScriptEnabled 1
    m_rBluforGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
+   m_rOpforGearScript "{83E186D97FF79DCF}Configs/Gearscripts/CRF_GS_USSR80s.conf"
+   m_rIndforGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/CRF_GS_FIA.conf"
+   m_rCivGearScript "{F528876B88A01733}Configs/Gearscripts/CRF_GS_CIVWithGuns.conf"
   }
   CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
    Enabled 0
@@ -118,104 +123,21 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
  }
 }
-BaseGameTriggerEntity test {
- coords 2066.648 59.24 2126.36
- userScript "	ResourceName item;"\
- "	ResourceName headgear = \"headgear\";"\
- "	ResourceName shirts = \"shirts\";"\
- "	ResourceName armoredvest = \"armoredvest\";"\
- "	ResourceName pants = \"pants\";"\
- "	ResourceName boots = \"boots\";"\
- "	ResourceName backpack = \"backpack\";"\
- "	ResourceName vest = \"vest\";"\
- "	ResourceName handwear = \"handwear\";"\
- "	ResourceName head = \"head\";"\
- "	ResourceName eyes = \"eyes\";"\
- "	ResourceName ears = \"ears\";"\
- "	ResourceName face = \"face\";"\
- "	ResourceName neck = \"neck\";"\
- "	ResourceName extra1 = \"extra1\";"\
- "	ResourceName extra2 = \"extra2\";"\
- "	ResourceName waist = \"waist\";"\
- "	ResourceName extra3 = \"extra3\";"\
- "	ResourceName extra4 = \"extra4\";"\
- "	ResourceName NULLName = \"NULL\";"\
- "	ref array<string> headgearArray = {};"\
- "	ref array<string> shirtsArray = {};"\
- "	ref array<string> armoredVestArray = {};"\
- "	ref array<string> pantsArray = {};"\
- "	ref array<string> bootsArray = {};"\
- "	ref array<string> backpackArray = {};"\
- "	ref array<string> vestArray = {};"\
- "	ref array<string> handwearArray = {};"\
- "	ref array<string> headArray = {};"\
- "	ref array<string> eyesArray = {};"\
- "	ref array<string> earsArray = {};"\
- "	ref array<string> faceArray = {};"\
- "	ref array<string> neckArray = {};"\
- "	ref array<string> extra1Array = {};"\
- "	ref array<string> extra2Array = {};"\
- "	ref array<string> waistArray = {};"\
- "	ref array<string> extra3Array = {};"\
- "	ref array<string> extra4Array = {};"\
- "	ref array<string>> itemConfig = {};"\
- "	string itemString;"\
- "	string copyString1;"\
- "	string copyString2;"\
- "	string finalCopy;"\
- "	void WaitTillGameStart()"\
- "	{"\
- "		if(!GetGame().GetWorld())"\
- "		{"\
- "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000);"\
- "			return;"\
- "		}"\
- "		"\
- "		GetGame().GetCallqueue().CallLater(GearScriptInit, 1000);"\
- "	}"\
- "	"\
- "	void GearScriptInit()"\
- "	{"\
- "		IEntity player = GetGame().FindEntity(\"player\");	"\
- "		ref array<Managed> m_WeaponSlotComponentArray = {};"\
- "		player.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);"\
- "		for(int i = 0; i < m_WeaponSlotComponentArray.Count(); i++)"\
- "		{"\
- "			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(m_WeaponSlotComponentArray.Get(i));"\
- "			ref array<BaseMuzzleComponent> muzzles = {};"\
- "			weaponSlotComponent.GetMuzzlesList(muzzles);"\
- "			foreach(BaseMuzzleComponent muzzle : muzzles)"\
- "			{"\
- "				if(muzzle.GetMuzzleType() == EMuzzleType.MT_UGLMuzzle)"\
- "				{"\
- "					ResourceName GLMag = muzzle.GetMagazine().GetOwner().GetPrefabData().GetPrefabName();"\
- "				}"\
- "			}"\
- "			"\
- "		}"\
- "		"\
- "	}"
- EOnInit ""\
- "		//GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);"\
- "	"
-}
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
- coords 2066.587 59.241 2128.913
+ coords 2063.656 59.25 2127.762
  m_aUnitPrefabSlots {
-  "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et"
+  "{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et" "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"
  }
 }
-GenericEntity : "{BE99D77D1155B127}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_US.et" {
- components {
-  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
-   m_eSupplyCostType GADGET_ARSENAL
-  }
-  SCR_ResourceComponent "{5D7D07D2F7A252D2}" {
-   Enabled 0
-  }
-  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
-   Enabled 0
-  }
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 2089.812 58.66 2116.092
+}
+SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+ coords 2080.589 58.947 2119.81
+}
+SCR_AIGroup : "{F3B8D85C8756F89A}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevLeader_p.et" {
+ coords 2071.911 59.157 2123.48
+ m_aUnitPrefabSlots {
+  "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et" "{A0249B4DA9B1CA01}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_PL_P.et"
  }
- coords 2061.993 59.233 2129.058
 }

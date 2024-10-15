@@ -83,7 +83,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(500, 2500), false, entity);
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(500, 2500), false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -114,9 +114,9 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void AddGearToEntity(IEntity entity)
+	void AddGearToEntity(IEntity entity, ResourceName prefabName)
 	{
-		ResourceName ResourceNameToScan = entity.GetPrefabData().GetPrefabName();	
+		ResourceName ResourceNameToScan = prefabName;	
 		
 		if(!ResourceNameToScan.Contains("CRF_GS_"))
 			return;

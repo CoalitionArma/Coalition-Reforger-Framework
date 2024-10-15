@@ -1,0 +1,59 @@
+FrameWidgetClass {
+ {
+  FrameWidgetClass "{629939A0B30B25F2}" {
+   Name "CoalAdminMenu"
+   Slot FrameWidgetSlot "{629939A0B149690F}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 775.13
+    OffsetLeft 775.13
+    PositionY -270.651
+    OffsetTop -270.651
+    SizeX 184.79
+    OffsetRight -959.92
+    SizeY 37.066
+    OffsetBottom 233.585
+   }
+   {
+    ButtonWidgetClass "{629929E91D0D993F}" {
+     Name "CoalAdminMenu"
+     Slot FrameWidgetSlot "{629939A0A619CFD6}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 183.787
+      OffsetRight -183.787
+      SizeY 37.066
+      OffsetBottom -37.066
+     }
+     Color 0.041 0.041 0.041 1
+     components {
+      SCR_ButtonTextComponent "{62992E46552B58AD}" {
+      }
+      CRF_AdminMenuButton "{62993E1396635C9B}" {
+      }
+     }
+    }
+    TextWidgetClass "{629929E911074A7A}" {
+     Name "CoalAdminMenuText"
+     Slot FrameWidgetSlot "{629939A0A619CF18}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 184.796
+      OffsetRight -184.796
+      SizeY 37.066
+      OffsetBottom -37.066
+     }
+     "Z Order" 1
+     Text "Coalition Admin Menu"
+     "Font Size" 20
+     "Min Font Size" 15
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+   }
+  }
+ }
+}
