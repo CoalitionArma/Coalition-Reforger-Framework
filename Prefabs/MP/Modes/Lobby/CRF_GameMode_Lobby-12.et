@@ -5,6 +5,8 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
   }
   SCR_CommunicationSoundComponent "{61BCFEC02D389A7B}" {
   }
+  CRF_ClientAdminMenuComponent "{629F6A2943BF196F}" {
+  }
   CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
    m_BLUFORGearScriptSettings CRF_GearScriptContainer "{629E5222ADE13F54}" {
     m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
