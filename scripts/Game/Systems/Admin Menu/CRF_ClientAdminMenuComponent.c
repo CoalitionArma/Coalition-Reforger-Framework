@@ -34,6 +34,6 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 	{
 		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
 		m_adminMenuComponent.ClearGear(playerID);
-		m_adminMenuComponent.SetPlayerGear(playerID, prefab);
+		m_adminMenuComponent.SetPlayerGearServer(playerID, prefab);
 	}
 }

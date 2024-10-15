@@ -68,6 +68,11 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		
 	}
 	
+	void SetPlayerGearServer(int playerID, ResourceName prefab)
+	{
+		GetGame().GetCallqueue().CallLater(SetPlayerGear, 500, false, playerID, prefab);
+	}
+	
 	void SetPlayerGear(int playerID, ResourceName prefab)
 	{
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
