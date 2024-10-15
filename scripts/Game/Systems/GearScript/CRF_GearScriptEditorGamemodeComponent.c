@@ -364,11 +364,9 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 			m_masterConfig.m_FactionWeapons.m_Sniper = m_sniperClass;
 		}
 		
-		m_masterConfig.m_DefaultFactionGear.m_bEnableLeadershipRadios = checkboxSaveArray[0];
-		m_masterConfig.m_DefaultFactionGear.m_bEnableLeadershipBinoculars = checkboxSaveArray[1];
-		m_masterConfig.m_DefaultFactionGear.m_bEnableGIRadios = checkboxSaveArray[2];
-		m_masterConfig.m_DefaultFactionGear.m_bEnableAssistantBinoculars = checkboxSaveArray[3];
-		m_masterConfig.m_DefaultFactionGear.m_bEnableMedicFrags = checkboxSaveArray[4];
+		m_masterConfig.m_DefaultFactionGear.m_bEnableLeadershipBinoculars = checkboxSaveArray[0];
+		m_masterConfig.m_DefaultFactionGear.m_bEnableAssistantBinoculars = checkboxSaveArray[1];
+		m_masterConfig.m_DefaultFactionGear.m_bEnableMedicFrags = checkboxSaveArray[2];
 		
 		ref array<ref CRF_Inventory_Item> medicalItemArray = {};
 		

@@ -173,19 +173,14 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			
 			for(int i = 0; i < m_gearScriptEditor.GetCheckedBoxes().Count(); i++)
 			{
-				if(i == 0)
-					CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipRadio")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
 				
-				if(i == 1)
+				if(i == 0)
 					CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipBinos")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
 				
-				if(i == 2)
-					CheckBoxWidget.Cast(m_hudRoot.FindWidget("GIRadios")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
-				
-				if(i == 3)
+				if(i == 1)
 					CheckBoxWidget.Cast(m_hudRoot.FindWidget("AssistantBinos")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
 				
-				if(i == 4)
+				if(i == 2)
 					CheckBoxWidget.Cast(m_hudRoot.FindWidget("MedicFrags")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
 			}
 			
@@ -501,14 +496,10 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		exportArray.Insert(m_HATPrefab);
 		exportArray.Insert(m_AAPrefab);
 		exportArray.Insert(m_sniperPrefab);
-		bool leaderRadioBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipRadio")).IsChecked();
 		bool leaderBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipBinos")).IsChecked();
-		bool GIRadioBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("GIRadios")).IsChecked();
 		bool assistantBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("AssistantBinos")).IsChecked();
 		bool medicFragsBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("MedicFrags")).IsChecked();
-		checkboxArray.Insert(leaderRadioBox);
 		checkboxArray.Insert(leaderBinoBox);
-		checkboxArray.Insert(GIRadioBox);
 		checkboxArray.Insert(assistantBinoBox);
 		checkboxArray.Insert(medicFragsBox);
 		m_gearScriptEditor.SetFileName(EditBoxWidget.Cast(m_hudRoot.FindWidget("FileNameEditBox")).GetText());
@@ -550,14 +541,10 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		exportArray.Insert(m_HATPrefab);
 		exportArray.Insert(m_AAPrefab);
 		exportArray.Insert(m_sniperPrefab);
-		bool leaderRadioBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipRadio")).IsChecked();
 		bool leaderBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipBinos")).IsChecked();
-		bool GIRadioBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("GIRadios")).IsChecked();
 		bool assistantBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("AssistantBinos")).IsChecked();
 		bool medicFragsBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("MedicFrags")).IsChecked();
-		checkboxArray.Insert(leaderRadioBox);
 		checkboxArray.Insert(leaderBinoBox);
-		checkboxArray.Insert(GIRadioBox);
 		checkboxArray.Insert(assistantBinoBox);
 		checkboxArray.Insert(medicFragsBox);
 		m_gearScriptEditor.SetFileName(EditBoxWidget.Cast(m_hudRoot.FindWidget("FileNameEditBox")).GetText());
