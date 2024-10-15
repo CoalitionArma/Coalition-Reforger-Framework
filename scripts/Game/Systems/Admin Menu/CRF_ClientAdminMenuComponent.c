@@ -36,4 +36,16 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 		m_adminMenuComponent.ClearGear(playerID);
 		m_adminMenuComponent.SetPlayerGearServer(playerID, prefab);
 	}
+	
+	void AddItem(int playerID, string prefab)
+	{
+		Rpc(RpcAsk_AddItem, playerID, prefab);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_AddItem(int playerID, string prefab)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.AddItem(playerID, prefab);
+	}
 }

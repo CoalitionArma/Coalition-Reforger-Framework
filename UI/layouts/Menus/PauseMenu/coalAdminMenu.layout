@@ -336,6 +336,130 @@ FrameWidgetClass {
       }
      }
     }
+    ButtonWidgetClass "{629E34C3CC9B2EA5}" {
+     Name "MenuButton1"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX 160.741
+      OffsetLeft 160.7
+      PositionY -165
+      OffsetTop -165
+      SizeX 144.463
+      OffsetRight -305.2
+      SizeY 30
+      OffsetBottom 135
+     }
+     Color 0.045 0.045 0.045 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{629E34C3CC9B2EA7}" {
+       Name "MenuButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+    ButtonWidgetClass "{629E34C3B3808949}" {
+     Name "MenuButton2"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX 160.741
+      OffsetLeft 160.7
+      PositionY -125
+      OffsetTop -125
+      SizeX 144.463
+      OffsetRight -305.2
+      SizeY 30.001
+      OffsetBottom 95
+     }
+     Color 0.045 0.045 0.045 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{629E34C3B380894A}" {
+       Name "MenuButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+    ButtonWidgetClass "{629E34C3B187E591}" {
+     Name "MenuButton3"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX 160.741
+      OffsetLeft 160.7
+      PositionY -85
+      OffsetTop -85
+      SizeX 144.463
+      OffsetRight -305.2
+      SizeY 30.001
+      OffsetBottom 55
+     }
+     Color 0.045 0.045 0.045 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{629E34C3B187E593}" {
+       Name "MenuButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+    ButtonWidgetClass "{629E34C3B06C6E86}" {
+     Name "MenuButton4"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX 160.741
+      OffsetLeft 160.7
+      PositionY -45
+      OffsetTop -45
+      SizeX 144.463
+      OffsetRight -305.2
+      SizeY 30.001
+      OffsetBottom 15
+     }
+     Color 0.045 0.045 0.045 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{629E34C3B06C6E80}" {
+       Name "MenuButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text ""
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
    }
   }
  }

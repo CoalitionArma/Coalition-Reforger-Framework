@@ -9,6 +9,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	protected SCR_GroupsManagerComponent m_groupsManager;
 	protected CRF_GearScriptGamemodeComponent m_GearScriptEditor;
 	protected static CRF_AdminMenuGameComponent s_Instance;
+	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	
 	static CRF_AdminMenuGameComponent GetInstance()
 	{
@@ -108,5 +109,16 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 			if(weaponSlotComponent.GetWeaponEntity())
 				delete weaponSlotComponent.GetWeaponEntity();
 		}
+	}
+	
+	void AddItem(int playerID, string prefab)
+	{
+		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
+		InventoryStorageManagerComponent entityInventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
+		m_SpawnParams.TransformMode = ETransformMode.WORLD;
+        m_SpawnParams.Transform[3] = entity.GetOrigin();
+		ref IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), m_SpawnParams);
+		if(!entityInventoryManager.TryInsertItem(resourceSpawned))
+			delete resourceSpawned;
 	}
 }

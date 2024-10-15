@@ -27,7 +27,11 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected SCR_ListBoxComponent m_list4;
 	protected SCR_ButtonTextComponent m_respawnMenuButton;
 	protected SCR_ButtonTextComponent m_resetGearMenuButton;
-	protected SCR_ButtonTextComponent m_ActionButton
+	protected SCR_ButtonTextComponent m_actionButton;
+	protected SCR_ButtonTextComponent m_menuButton1;
+	protected SCR_ButtonTextComponent m_menuButton2;
+	protected SCR_ButtonTextComponent m_menuButton3;
+	protected SCR_ButtonTextComponent m_menuButton4;
 	protected TextWidget m_respawnMenuText;
 	protected TextWidget m_resetGearMenuText;
 	protected ref array<int> m_groupIDList = {};
@@ -59,9 +63,14 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list3 = SCR_ListBoxComponent.Cast(m_list3Root.FindHandler(SCR_ListBoxComponent));
 		m_list4Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List4Box"));
 		m_list4 = SCR_ListBoxComponent.Cast(m_list4Root.FindHandler(SCR_ListBoxComponent));
-		m_ActionButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", m_adminMenuRoot);
+		m_actionButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", m_adminMenuRoot);
+		m_menuButton1 = SCR_ButtonTextComponent.GetButtonText("MenuButton1", m_adminMenuRoot);
+		m_menuButton2 = SCR_ButtonTextComponent.GetButtonText("MenuButton2", m_adminMenuRoot);
+		m_menuButton3 = SCR_ButtonTextComponent.GetButtonText("MenuButton3", m_adminMenuRoot);
+		m_menuButton4 = SCR_ButtonTextComponent.GetButtonText("MenuButton4", m_adminMenuRoot);
 		
 		//Initializes the Respawn Menu
+		ClearMenu();
 		InitializeRespawnMenu();
 	
 		m_respawnMenuButton = SCR_ButtonTextComponent.GetButtonText("RespawnButton", m_wRoot);
@@ -100,19 +109,30 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list2Root.SetVisible(false);
 		m_list3Root.SetVisible(false);
 		m_list4Root.SetVisible(false);
-		m_ActionButton.SetVisible(false);
+		m_actionButton.SetVisible(false, false);
+		m_actionButton.m_OnClicked.Clear();
+		m_menuButton1.SetVisible(false, false);
+		m_menuButton2.SetVisible(false, false);
+		m_menuButton3.SetVisible(false, false);
+		m_menuButton4.SetVisible(false, false);
+		m_menuButton1.m_OnClicked.Clear();
+		m_menuButton2.m_OnClicked.Clear();
+		m_menuButton3.m_OnClicked.Clear();
+		m_menuButton4.m_OnClicked.Clear();
 		m_list1.Clear();
 		m_list2.Clear();
 		m_list3.Clear();
 		m_list4.Clear();
+		m_list1.m_OnChanged.Clear();
+		m_list2.m_OnChanged.Clear();
+		m_list3.m_OnChanged.Clear();
+		m_list4.m_OnChanged.Clear();
 		
 		m_allPlayers.Clear();
 		m_outGroups.Clear();
 		m_spawnPoints.Clear();
-		
-		m_ActionButton.m_OnClicked.Clear();
-		m_list1.m_OnChanged.Clear();
-		TextWidget.Cast(m_ActionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("");
+	
+		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List3Text")).SetText("");
@@ -379,9 +399,18 @@ class CRF_AdminMenu: ChimeraMenuBase
 	{
 		m_list1Root.SetVisible(true);
 		m_list2Root.SetVisible(true);
-		m_ActionButton.SetVisible(true);
-		m_ActionButton.m_OnClicked.Insert(ResetGear);
-		TextWidget.Cast(m_ActionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Reset Gear");
+		m_actionButton.SetVisible(true, false);
+		m_menuButton1.SetVisible(true, false);
+		m_menuButton2.SetVisible(true, false);
+		m_menuButton3.SetVisible(true, false);
+		m_actionButton.m_OnClicked.Insert(ResetGear);
+		m_menuButton1.m_OnClicked.Insert(AddLeaderRadio);
+		m_menuButton2.m_OnClicked.Insert(AddGIRadio);
+		m_menuButton3.m_OnClicked.Insert(AddBinos);
+		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Reset Gear");
+		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add Leaders Radio");
+		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add GI Radio");
+		TextWidget.Cast(m_menuButton3.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add Binos");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Players");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Roles");
 		
@@ -397,6 +426,65 @@ class CRF_AdminMenu: ChimeraMenuBase
 		}
 		AddRoles(m_list2);
 	}
+	
+	void AddLeaderRadio()
+	{
+		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
+		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetLeadersRadio(playerID));
+	}
+	
+	void AddGIRadio()
+	{
+		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
+		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetGIRadio(playerID));
+	}
+	
+	void AddBinos()
+	{
+		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
+		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetBinos(playerID));
+	}
+	
+	string GetLeadersRadio(int playerID)
+	{
+		string factionKey = m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey();
+		string exportPrefab;
+		switch(factionKey)
+		{
+			case "BLUFOR": {exportPrefab = "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et" ;	break;}
+			case "OPFOR":  {exportPrefab = "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et";	break;}
+			case "INDFOR": {exportPrefab = "{72B7D9E24B495F57}Prefabs/Items/Equipment/Radios/INDFOR_Radio_Leader.et";	break;}
+		}
+		return exportPrefab;
+	}
+	
+	string GetGIRadio(int playerID)
+	{
+		string factionKey = m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey();
+		string exportPrefab;
+		switch(factionKey)
+		{
+			case "BLUFOR": {exportPrefab = "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et" ;	break;}
+			case "OPFOR":  {exportPrefab = "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et";	break;}
+			case "INDFOR": {exportPrefab = "{2F19DBB99A359B48}Prefabs/Items/Equipment/Radios/INDFOR_Radio_GI.et";	break;}
+		}
+		return exportPrefab;
+	}
+	
+	string GetBinos(int playerID)
+	{
+		string factionKey = m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey();
+		string exportPrefab;
+		switch(factionKey)
+		{
+			case "BLUFOR": {exportPrefab = "{0CF54B9A85D8E0D4}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22.et"; break;}
+			case "OPFOR":  {exportPrefab = "{F2539FA5706E51E4}Prefabs/Items/Equipment/Binoculars/Binoculars_B12/Binoculars_B12.et";	break;}
+			case "INDFOR": {exportPrefab = "{243948B23D90BECB}Prefabs/Items/Equipment/Binoculars/Binoculars_B8/Binoculars_B8.et";	break;}
+			case "CIV":    {exportPrefab = "{0CF54B9A85D8E0D4}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22.et"; break;}
+		}
+		return exportPrefab;
+	}
+
 	
 	void ResetGear()
 	{
@@ -415,11 +503,11 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list2Root.SetVisible(true);
 		m_list3Root.SetVisible(true);
 		m_list4Root.SetVisible(true);
-		m_ActionButton.SetVisible(true);
-		m_ActionButton.m_OnClicked.Insert(RespawnPlayer);
+		m_actionButton.SetVisible(true, false);
+		m_actionButton.m_OnClicked.Insert(RespawnPlayer);
 		m_list1.m_OnChanged.Insert(UpdateSpawnpoint);
 		
-		TextWidget.Cast(m_ActionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Respawn Player");
+		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Respawn Player");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Groups");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Dead Players");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List3Text")).SetText("Roles");
