@@ -44,6 +44,8 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	CRF_GearScriptEditorGamemodeComponent m_gearScriptEditor;
 	SCR_CharacterInventoryStorageComponent m_CharacterInventory;
 	
+	ref EntitySpawnParams spawnParams;
+	
 	ref array<string> m_loadedArray = {};
 	ref array<array<string>> m_finalizedLoadedArray = {};
 	override void OnMenuOpen()
@@ -67,6 +69,10 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				}
 			return;
 			}
+		
+		spawnParams = new EntitySpawnParams();
+        spawnParams.TransformMode = ETransformMode.WORLD;
+        spawnParams.Transform[3] = SCR_PlayerController.GetLocalControlledEntity().GetOrigin();
 		
 		m_CharacterInventory = SCR_CharacterInventoryStorageComponent.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(SCR_CharacterInventoryStorageComponent));
 		SCR_PlayerController.GetLocalControlledEntity().FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
@@ -152,6 +158,55 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			RefreshClothing(true, m_waistArray, "WaistArray");
 			RefreshClothing(true, m_extra3Array, "Extra3Array");
 			RefreshClothing(true, m_extra4Array, "Extra4Array");
+			RefreshRegularWeapon(true, m_riflesArray, "RifleArray");
+			RefreshRegularWeapon(true, m_rifleUGLArray, "RifleUGLArray");
+			RefreshRegularWeapon(true, m_carbinesArray, "CarbineArray");
+			RefreshRegularWeapon(true, m_pistolsArray, "PistolArray");
+			RefreshRegularWeapon(true, m_sniperPrefab, "SniperString");
+			RefreshSpecWeapon(true, m_ARPrefab, "ARString");
+			RefreshSpecWeapon(true, m_MMGPrefab, "MMGString");
+			RefreshSpecWeapon(true, m_HMGPrefab, "HMGString");
+			RefreshSpecWeapon(true, m_ATPrefab, "ATString");
+			RefreshSpecWeapon(true, m_MATPrefab, "MATString");
+			RefreshSpecWeapon(true, m_HATPrefab, "HATString");
+			RefreshSpecWeapon(true, m_AAPrefab, "AAString");
+			
+			for(int i = 0; i < m_gearScriptEditor.GetCheckedBoxes().Count(); i++)
+			{
+				
+				if(i == 0)
+					CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipBinos")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
+				
+				if(i == 1)
+					CheckBoxWidget.Cast(m_hudRoot.FindWidget("AssistantBinos")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
+				
+				if(i == 2)
+					CheckBoxWidget.Cast(m_hudRoot.FindWidget("MedicFrags")).SetChecked(m_gearScriptEditor.GetCheckedBoxes().Get(i));
+			}
+			
+			if(m_gearScriptEditor.GetFaction() == "Blufor")
+			{
+				TextWidget.Cast(m_hudRoot.FindWidget("BluforText")).SetText("((BLUFOR))");
+				TextWidget.Cast(m_hudRoot.FindWidget("OpforText")).SetText("OPFOR");
+				TextWidget.Cast(m_hudRoot.FindWidget("IndforText")).SetText("INDFOR");
+			}
+			
+			if(m_gearScriptEditor.GetFaction() == "Opfor")
+			{
+				TextWidget.Cast(m_hudRoot.FindWidget("BluforText")).SetText("BLUFOR");
+				TextWidget.Cast(m_hudRoot.FindWidget("OpforText")).SetText("((OPFOR))");
+				TextWidget.Cast(m_hudRoot.FindWidget("IndforText")).SetText("INDFOR");
+			}
+			
+			if(m_gearScriptEditor.GetFaction() == "Indfor")
+			{
+				TextWidget.Cast(m_hudRoot.FindWidget("BluforText")).SetText("BLUFOR");
+				TextWidget.Cast(m_hudRoot.FindWidget("OpforText")).SetText("OPFOR");
+				TextWidget.Cast(m_hudRoot.FindWidget("IndforText")).SetText("((INDFOR))");
+			}
+			
+			EditBoxWidget.Cast(m_hudRoot.FindWidget("FileNameEditBox")).SetText(m_gearScriptEditor.GetFileName());
+			EditBoxWidget.Cast(m_hudRoot.FindWidget("FactionEditBox")).SetText(m_gearScriptEditor.GetFactionName());
 		}
 		
 		//Set Regular Weapons
@@ -354,7 +409,15 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		SCR_ButtonTextComponent export = SCR_ButtonTextComponent.GetButtonText("Export", m_wRoot);
 		export.m_OnClicked.Insert(Export);
 		
+		//Faction Buttons
+		SCR_ButtonTextComponent bluforButton = SCR_ButtonTextComponent.GetButtonText("Blufor", m_wRoot);
+		SCR_ButtonTextComponent ofporButton = SCR_ButtonTextComponent.GetButtonText("Opfor", m_wRoot);
+		SCR_ButtonTextComponent indforButton = SCR_ButtonTextComponent.GetButtonText("Indfor", m_wRoot);
 		
+		//Faction Buttons on Clicked
+		bluforButton.m_OnClicked.Insert(SelectBlufor);
+		ofporButton.m_OnClicked.Insert(SelectOpfor);
+		indforButton.m_OnClicked.Insert(SelectIndfor);
 	}
 	
 	override void Action_CloseInventory()
@@ -365,10 +428,44 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			SaveGear();
 	}
 	
+	void SelectBlufor()
+	{
+		m_gearScriptEditor.SwitchFaction("Blufor");
+		TextWidget bluforTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("BluforText"));
+		TextWidget opforTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("OpforText"));
+		TextWidget indofrTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("IndforText"));
+		bluforTextWidget.SetText("((BLUFOR))");
+		opforTextWidget.SetText("OPFOR");
+		indofrTextWidget.SetText("INDFOR");
+	}
+	
+	void SelectOpfor()
+	{
+		m_gearScriptEditor.SwitchFaction("Opfor");
+		TextWidget bluforTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("BluforText"));
+		TextWidget opforTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("OpforText"));
+		TextWidget indofrTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("IndforText"));
+		bluforTextWidget.SetText("BLUFOR");
+		opforTextWidget.SetText("((OPFOR))");
+		indofrTextWidget.SetText("INDFOR");
+	}
+	
+	void SelectIndfor()
+	{
+		m_gearScriptEditor.SwitchFaction("Indfor");
+		TextWidget bluforTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("BluforText"));
+		TextWidget opforTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("OpforText"));
+		TextWidget indofrTextWidget = TextWidget.Cast(m_hudRoot.FindWidget("IndforText"));
+		bluforTextWidget.SetText("BLUFOR");
+		opforTextWidget.SetText("OPFOR");
+		indofrTextWidget.SetText("((INDFOR))");
+	}
+	
 	
 	void SaveGear()
 	{
 		ref array<array<string>> exportArray = {};
+		ref array<bool> checkboxArray = {};
 		exportArray.Insert(m_helmetsArray);
 		exportArray.Insert(m_shirtsArray);
 		exportArray.Insert(m_armoredVestArray);
@@ -399,12 +496,21 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		exportArray.Insert(m_HATPrefab);
 		exportArray.Insert(m_AAPrefab);
 		exportArray.Insert(m_sniperPrefab);
-		m_gearScriptEditor.SaveGear(exportArray);
+		bool leaderBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipBinos")).IsChecked();
+		bool assistantBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("AssistantBinos")).IsChecked();
+		bool medicFragsBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("MedicFrags")).IsChecked();
+		checkboxArray.Insert(leaderBinoBox);
+		checkboxArray.Insert(assistantBinoBox);
+		checkboxArray.Insert(medicFragsBox);
+		m_gearScriptEditor.SetFileName(EditBoxWidget.Cast(m_hudRoot.FindWidget("FileNameEditBox")).GetText());
+		m_gearScriptEditor.SetFactionName(EditBoxWidget.Cast(m_hudRoot.FindWidget("FactionEditBox")).GetText());
+		m_gearScriptEditor.SaveGear(exportArray, checkboxArray);
 	}
 	
 	void Export()
 	{
 		ref array<array<string>> exportArray = {};
+		ref array<bool> checkboxArray = {};
 		exportArray.Insert(m_helmetsArray);
 		exportArray.Insert(m_shirtsArray);
 		exportArray.Insert(m_armoredVestArray);
@@ -435,7 +541,15 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		exportArray.Insert(m_HATPrefab);
 		exportArray.Insert(m_AAPrefab);
 		exportArray.Insert(m_sniperPrefab);
-		m_gearScriptEditor.ExportGearScript(exportArray);
+		bool leaderBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("LeadershipBinos")).IsChecked();
+		bool assistantBinoBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("AssistantBinos")).IsChecked();
+		bool medicFragsBox = CheckBoxWidget.Cast(m_hudRoot.FindWidget("MedicFrags")).IsChecked();
+		checkboxArray.Insert(leaderBinoBox);
+		checkboxArray.Insert(assistantBinoBox);
+		checkboxArray.Insert(medicFragsBox);
+		m_gearScriptEditor.SetFileName(EditBoxWidget.Cast(m_hudRoot.FindWidget("FileNameEditBox")).GetText());
+		m_gearScriptEditor.SetFactionName(EditBoxWidget.Cast(m_hudRoot.FindWidget("FactionEditBox")).GetText());
+		m_gearScriptEditor.ExportGearScript(exportArray, checkboxArray);
 	}
 	
 	void RefreshClothing(bool isLoading, array<string> clothingArray, string widgetName)
@@ -477,12 +591,11 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			}
 		}
 		ref array<string> weaponsPrefabNames = {};
-		for(int g = 0; g < weaponsArray.Count(); g++)
+		int index = 0;
+		for(int g = 0; g < weaponsArray.Count()/4; g++)
 		{
-			if(g == 0 || g%3 == 0)
-			{
-				weaponsPrefabNames.Insert(weaponsArray[g]);
-			}		
+			weaponsPrefabNames.Insert(weaponsArray[index]);	
+			index = index + 4;
 		}
 		array<string> displayStringArray = {};
 		foreach(string prefab : weaponsPrefabNames)
@@ -508,20 +621,19 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		}
 		ref array<string> weaponsPrefabNames = {};
 		ref array<string> GLMags = {};
-		for(int i = 0; i < m_rifleUGLArray.Count(); i++)
+		int GLIndex = 3;
+		int prefabIndex = 0;
+		for(int i = 1; i <= m_rifleUGLArray.Count()/5; i++)
 		{
-			if(i == 0 || i%4 == 0)
-			{
-				weaponsPrefabNames.Insert(m_rifleUGLArray[i]);
-			}	
-			if(i != 0 || i%3 == 0)
-			{
-				GLMags.Insert(m_rifleUGLArray[i]);
-			}
+			weaponsPrefabNames.Insert(m_rifleUGLArray[prefabIndex]);
+			GLMags.Insert(m_rifleUGLArray[GLIndex]);
+			GLIndex = GLIndex + 5;
+			prefabIndex = prefabIndex + 5;
 		}
 		Print(GLMags);
 		array<string> displayStringArray = {};
 		int index = 0;
+		Print(weaponsPrefabNames);
 		foreach(string prefab : weaponsPrefabNames)
 		{
 			array<string> weaponStringArray = {};
@@ -535,6 +647,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			}	
 			index++;
 		}
+		Print(displayStringArray);
 		string displayString = SCR_StringHelper.Join(", ", displayStringArray, true);
 		m_arrayWidget.SetText(displayString);
 	}
@@ -576,6 +689,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				m_riflesArray.Insert(weapon);
 				m_riflesArray.Insert(magazine);
 				m_riflesArray.Insert(numberOfMags);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_riflesArray.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshRegularWeapon(false, m_riflesArray, "RifleArray");
 				return;
 			}
@@ -585,7 +720,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	{
 		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("RifleInput"));
 		int index = inputWidget.GetText().ToInt() - 1;
-		for(int i = 0; i < 3; i++)
+		for(int i = 0; i < 4; i++)
 		{
 			m_riflesArray.RemoveOrdered(index);
 		}
@@ -618,6 +753,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				m_pistolsArray.Insert(weapon);
 				m_pistolsArray.Insert(magazine);
 				m_pistolsArray.Insert(numberOfMags);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_pistolsArray.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshRegularWeapon(false, m_pistolsArray, "PistolArray");
 				return;
 			}
@@ -627,7 +784,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	{
 		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("PistolInput"));
 		int index = inputWidget.GetText().ToInt() - 1;
-		for(int i = 0; i < 3; i++)
+		for(int i = 0; i < 4; i++)
 		{
 			m_pistolsArray.RemoveOrdered(index);
 		}
@@ -660,6 +817,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				m_carbinesArray.Insert(weapon);
 				m_carbinesArray.Insert(magazine);
 				m_carbinesArray.Insert(numberOfMags);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_carbinesArray.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshRegularWeapon(false, m_carbinesArray, "CarbineArray");
 				return;
 			}
@@ -669,7 +848,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	{
 		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("CarbineInput"));
 		int index = inputWidget.GetText().ToInt() - 1;
-		for(int i = 0; i < 3; i++)
+		for(int i = 0; i < 4; i++)
 		{
 			m_carbinesArray.RemoveOrdered(index);
 		}
@@ -713,6 +892,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 					}
 				}
 				m_rifleUGLArray.Insert(GLMag);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_rifleUGLArray.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshUGL(false);
 				return;
 			}
@@ -722,7 +923,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 	{
 		EditBoxWidget inputWidget = EditBoxWidget.Cast(m_hudRoot.FindWidget("RifleUGLInput"));
 		int index = inputWidget.GetText().ToInt() - 1;
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < 5; i++)
 		{
 			m_rifleUGLArray.RemoveOrdered(index);
 		}
@@ -759,11 +960,35 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				m_ARPrefab.Insert(magazine);
 				m_ARPrefab.Insert(numberOfMags);
 				m_ARPrefab.Insert(assistantNumberOfMags);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_ARPrefab.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshSpecWeapon(false, m_ARPrefab, "ARString");
+				
 				return;
 			}
 		}
 	}
+
 	void RemoveAR()
 	{
 		m_ARPrefab = {};
@@ -794,6 +1019,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				m_MMGPrefab.Insert(magazine);
 				m_MMGPrefab.Insert(numberOfMags);
 				m_MMGPrefab.Insert(assistantNumberOfMags);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_MMGPrefab.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshSpecWeapon(false, m_MMGPrefab, "MMGString");
 				return;
 			}
@@ -830,6 +1077,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				m_HMGPrefab.Insert(magazine);
 				m_HMGPrefab.Insert(numberOfMags);
 				m_HMGPrefab.Insert(assistantNumberOfMags);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_HMGPrefab.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshSpecWeapon(false, m_HMGPrefab, "HMGString");
 				return;
 			}
@@ -879,6 +1148,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 					m_ATPrefab.Insert(magazine);
 					m_ATPrefab.Insert(numberOfMags);
 					m_ATPrefab.Insert(assistantNumberOfMags);
+					IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+					WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+					ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+					ref array<AttachmentSlotComponent> weaponAttachments = {};
+					tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+					weaponSlotComponent.GetAttachments(weaponAttachments);
+					string overridedAttachments = "";
+					ref array<string> newAttachments = {};
+					for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+					{
+						string tempAttachmentString = "";
+						string attachmentString = "";
+						if(tempWeaponAttachments[g].GetAttachedEntity())
+							tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(weaponAttachments[g].GetAttachedEntity())
+							attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(tempAttachmentString != attachmentString)
+							newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+					}
+					overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+					m_ATPrefab.Insert(overridedAttachments);
+					delete tempWeapon;
 					RefreshSpecWeapon(false, m_ATPrefab, "ATString");
 					return;
 				}
@@ -929,6 +1220,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 					m_MATPrefab.Insert(magazine);
 					m_MATPrefab.Insert(numberOfMags);
 					m_MATPrefab.Insert(assistantNumberOfMags);
+					IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+					WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+					ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+					ref array<AttachmentSlotComponent> weaponAttachments = {};
+					tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+					weaponSlotComponent.GetAttachments(weaponAttachments);
+					string overridedAttachments = "";
+					ref array<string> newAttachments = {};
+					for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+					{
+						string tempAttachmentString = "";
+						string attachmentString = "";
+						if(tempWeaponAttachments[g].GetAttachedEntity())
+							tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(weaponAttachments[g].GetAttachedEntity())
+							attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(tempAttachmentString != attachmentString)
+							newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+					}
+					overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+					m_MATPrefab.Insert(overridedAttachments);
+					delete tempWeapon;
 					RefreshSpecWeapon(false, m_MATPrefab, "MATString");
 					return;
 				}
@@ -979,6 +1292,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 					m_HATPrefab.Insert(magazine);
 					m_HATPrefab.Insert(numberOfMags);
 					m_HATPrefab.Insert(assistantNumberOfMags);
+					IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+					WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+					ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+					ref array<AttachmentSlotComponent> weaponAttachments = {};
+					tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+					weaponSlotComponent.GetAttachments(weaponAttachments);
+					string overridedAttachments = "";
+					ref array<string> newAttachments = {};
+					for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+					{
+						string tempAttachmentString = "";
+						string attachmentString = "";
+						if(tempWeaponAttachments[g].GetAttachedEntity())
+							tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(weaponAttachments[g].GetAttachedEntity())
+							attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(tempAttachmentString != attachmentString)
+							newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+					}
+					overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+					m_HATPrefab.Insert(overridedAttachments);
+					delete tempWeapon;
 					RefreshSpecWeapon(false, m_HATPrefab, "HATString");
 					return;
 				}
@@ -1029,6 +1364,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 					m_AAPrefab.Insert(magazine);
 					m_AAPrefab.Insert(numberOfMags);
 					m_AAPrefab.Insert(assistantNumberOfMags);
+					IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+					WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+					ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+					ref array<AttachmentSlotComponent> weaponAttachments = {};
+					tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+					weaponSlotComponent.GetAttachments(weaponAttachments);
+					string overridedAttachments = "";
+					ref array<string> newAttachments = {};
+					for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+					{
+						string tempAttachmentString = "";
+						string attachmentString = "";
+						if(tempWeaponAttachments[g].GetAttachedEntity())
+							tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(weaponAttachments[g].GetAttachedEntity())
+							attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+						if(tempAttachmentString != attachmentString)
+							newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+					}
+					overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+					m_AAPrefab.Insert(overridedAttachments);
+					delete tempWeapon;
 					RefreshSpecWeapon(false, m_AAPrefab, "AAString");
 					return;
 				}
@@ -1064,6 +1421,28 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 				m_sniperPrefab.Insert(weapon);
 				m_sniperPrefab.Insert(magazine);
 				m_sniperPrefab.Insert(numberOfMags);
+				IEntity tempWeapon = GetGame().SpawnEntityPrefab(Resource.Load(weapon),GetGame().GetWorld(),spawnParams);
+				WeaponComponent tempWeaponComponent = WeaponComponent.Cast(tempWeapon.FindComponent(WeaponComponent));
+				ref array<AttachmentSlotComponent> tempWeaponAttachments = {};
+				ref array<AttachmentSlotComponent> weaponAttachments = {};
+				tempWeaponComponent.GetAttachments(tempWeaponAttachments);
+				weaponSlotComponent.GetAttachments(weaponAttachments);
+				string overridedAttachments = "";
+				ref array<string> newAttachments = {};
+				for(int g = 0; g < tempWeaponAttachments.Count(); g++)
+				{
+					string tempAttachmentString = "";
+					string attachmentString = "";
+					if(tempWeaponAttachments[g].GetAttachedEntity())
+						tempAttachmentString = tempWeaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(weaponAttachments[g].GetAttachedEntity())
+						attachmentString = weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName();
+					if(tempAttachmentString != attachmentString)
+						newAttachments.Insert(weaponAttachments[g].GetAttachedEntity().GetPrefabData().GetPrefabName());
+				}
+				overridedAttachments = SCR_StringHelper.Join(",", newAttachments, true);
+				m_sniperPrefab.Insert(overridedAttachments);
+				delete tempWeapon;
 				RefreshRegularWeapon(false, m_sniperPrefab, "SniperString");
 				return;
 			}
