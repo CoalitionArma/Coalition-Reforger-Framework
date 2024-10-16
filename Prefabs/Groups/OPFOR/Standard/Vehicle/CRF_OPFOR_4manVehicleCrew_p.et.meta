@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{1300A5F6CA51B204}Prefabs/Characters/Vests/Vest_PCGen_III/Variants/Vest_PCGen_III_rifleman.et"
+ Name "{9C12FB1A98E16272}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_4manVehicleCrew_p.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
