@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7961F4B9E065FBF5}Assets/Items/Equipment/NVG/pvs14/data/NVG_WhitePhosphor_HDR.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}
