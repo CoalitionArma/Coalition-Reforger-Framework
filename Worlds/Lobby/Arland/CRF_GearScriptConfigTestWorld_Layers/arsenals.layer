@@ -20,7 +20,7 @@ $grp GenericEntity : "{160E4E4110803F26}Prefabs/Structures/Military/Flags/FlagPo
  }
 }
 GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/ArsenalBox_US.et" {
- coords 1094.153 39.232 2726.604
+ coords 1092.526 39.223 2726.164
  angleY -24
 }
 GenericEntity : "{641BE0766BB1874E}PrefabsEditable/Auto/Props/Military/Compositions/UK/E_ArsenalBox_UK.et" {
@@ -63,7 +63,7 @@ GenericEntity : "{AD59EDEAA26CE792}Prefabs/Props/Military/Compositions/USSR/Arse
    m_bIsEnabled 0
   }
  }
- coords 1097.659 39.253 2727.56
+ coords 1096.646 39.265 2727.523
  angleY -21
 }
 GenericEntity : "{B53B98CEA2D72735}Prefabs/Props/Military/Compositions/FIA/ArsenalBox_FIA.et" {
@@ -95,4 +95,8 @@ GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/Arsen
  }
  coords 1104.103 39.221 2729.038
  angleY -13
+}
+GenericEntity : "{FB95D1B918E908A9}Prefabs/Systems/Arsenal/ArsenalBoxes/USSR/ArsenalBox_RHS.et" {
+ coords 1098.624 39.293 2728.405
+ angleY 73
 }

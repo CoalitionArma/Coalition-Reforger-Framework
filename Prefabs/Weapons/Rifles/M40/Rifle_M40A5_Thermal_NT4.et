@@ -14,7 +14,7 @@ GenericEntity : "{B65DCFEFE63F121D}Prefabs/Weapons/Rifles/M40/Rifle_M40A5_Therma
        AttachmentSlot InventoryStorageSlot NT4 {
         PivotID "barrel_muzzle"
         Offset 0 0 -0.0711
-        Prefab "{94909AABD52A245E}Prefabs/Weapons/Attachments/Muzzle/SR3M_Supressor/Supressor_SR3M.et"
+        Prefab "{B591C94754DB4893}Prefabs/Weapons/Attachments/Muzzle/KAC_NT4_QDSS/KAC_NT4_QDSS_Covered_Multicam.et"
        }
       }
      }

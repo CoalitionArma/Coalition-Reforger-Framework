@@ -100,7 +100,7 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 				string gearString = gear;
 				gearArrayString.Insert(gear);
 			}
-			string gearString = SCR_StringHelper.Join(",", gearArrayString, true);
+			string gearString = SCR_StringHelper.Join(":", gearArrayString, true);
 			finalGearArray.Insert(gearString);
 		}
 		savedGearString = SCR_StringHelper.Join("|", finalGearArray, true);
@@ -369,6 +369,7 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 		m_masterConfig.m_DefaultFactionGear.m_bEnableMedicFrags = checkboxSaveArray[2];
 		
 		ref array<ref CRF_Inventory_Item> medicalItemArray = {};
+		ref array<ref CRF_Inventory_Item> defaultItemArray = {};
 		
 		if(selectedFaction == "Blufor")
 		{
@@ -380,6 +381,15 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 			InsertItem("{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et", 1, medicalItemArray);
 			InsertItem("{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et", 1, medicalItemArray);
 			InsertItem("{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et", 1, medicalItemArray);
+			InsertItem("{3A421547BC29F679}Prefabs/Items/Equipment/Flashlights/Flashlight_MX991/Flashlight_MX991.et", 1, defaultItemArray);
+			InsertItem("{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et", 2, defaultItemArray);
+			InsertItem("{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et", 1, defaultItemArray);
+			InsertItem("{61D4F80E49BF9B12}Prefabs/Items/Equipment/Compass/Compass_SY183.et", 1, defaultItemArray);
+			InsertItem("{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et", 1, defaultItemArray);
+			InsertItem("{78ED4FEF62BBA728}Prefabs/Items/Equipment/Watches/Watch_SandY184A.et{78ED4FEF62BBA728}Prefabs/Items/Equipment/Watches/Watch_SandY184A.et", 1, defaultItemArray);
+			InsertItem("{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et", 2, defaultItemArray);
+			InsertItem("{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et", 1, defaultItemArray);
+			InsertItem("{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et", 1, defaultItemArray);
 		}
 		
 		if(selectedFaction == "Opfor")
@@ -390,6 +400,15 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 			InsertItem("{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et", 3, medicalItemArray);
 			InsertItem("{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et", 5, medicalItemArray);
 			InsertItem("{21EF98BFC1EB3793}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_USSR.et", 1, medicalItemArray);
+			InsertItem("{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01/Flashlight_Soviet_01.et", 1, defaultItemArray);
+			InsertItem("{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et", 2, defaultItemArray);
+			InsertItem("{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et", 1, defaultItemArray);
+			InsertItem("{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et", 1, defaultItemArray);
+			InsertItem("{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et", 1, defaultItemArray);
+			InsertItem("{6FD6C96121905202}Prefabs/Items/Equipment/Watches/Watch_Vostok.et", 1, defaultItemArray);
+			InsertItem("{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et", 2, defaultItemArray);
+			InsertItem("{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et", 1, defaultItemArray);
+			InsertItem("{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et", 1, defaultItemArray);
 		}
 		
 		if(selectedFaction == "Indfor")
@@ -400,14 +419,27 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 			InsertItem("{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et", 3, medicalItemArray);
 			InsertItem("{527D7C5D2E476BDC}Prefabs/Items/Medicine/SalineBag_01/SalineBag_USSR_01.et", 5, medicalItemArray);
 			InsertItem("{21EF98BFC1EB3793}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_USSR.et", 1, medicalItemArray);
+			InsertItem("{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01/Flashlight_Soviet_01.et", 1, defaultItemArray);
+			InsertItem("{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et", 2, defaultItemArray);
+			InsertItem("{77EAE5E07DC4678A}Prefabs/Weapons/Grenades/Smoke_RDG2.et", 1, defaultItemArray);
+			InsertItem("{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et", 1, defaultItemArray);
+			InsertItem("{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et", 1, defaultItemArray);
+			InsertItem("{61A705D76908160C}Prefabs/Items/Equipment/Watches/Watch_Orlik38/Watch_Orlik38.et", 1, defaultItemArray);
+			InsertItem("{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et", 2, defaultItemArray);
+			InsertItem("{80E75A71C29190DB}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_USSR_01.et", 1, defaultItemArray);
+			InsertItem("{6E35D94130954509}Prefabs/Items/Equipment/Accessories/ETool_ALICE/ETool_ALICE_FreeRoamBuilding_Gadget.et", 1, defaultItemArray);
 		}
 		
 		InsertItem("{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et", 6, medicalItemArray);
 		InsertItem("{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et", 6, medicalItemArray);
+
 				
 		m_masterConfig.m_DefaultFactionGear.m_DefaultMedicMedicalItems = medicalItemArray;
+		m_masterConfig.m_DefaultFactionGear.m_DefaultInventoryItems = defaultItemArray;
 		
 		m_masterConfig.m_FactionName = factionName;
+		
+		
 		
 		// save config
 		Resource holder = BaseContainerTools.CreateContainerFromInstance(m_masterConfig);
@@ -584,6 +616,8 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 			}
 			return;
 		}
+		Print(weaponArray.Count());
+		Print(weaponArray.Count()/4);
 		for(int i = 0; i < weaponArray.Count()/4; i++)
 		{
 			CRF_Weapon_Class weaponsClass = new CRF_Weapon_Class();
@@ -591,12 +625,14 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 			CRF_Magazine_Class magazineClass = new CRF_Magazine_Class();
 			magazineClass.m_Magazine = weaponArray[1 + iteration];
 			int magCount = weaponArray[2 + iteration].ToInt();
+			Print(magCount);
 			magazineClass.m_MagazineCount = magCount;
 			ref array<ref CRF_Magazine_Class> magazineArray = {};
 			magazineArray.Insert(magazineClass);
 			weaponsClass.m_MagazineArray = magazineArray;
 			ref array<string> weaponsAttachments = {};
-			weaponArray[3 + iteration].Split(",", weaponsAttachments, true);
+			weaponArray.Get((3 + iteration)).Split(",", weaponsAttachments, true);
+			Print(weaponArray.Get((3 + iteration)));
 			ref array<ResourceName> resourceWeaponsAttachments = {};
 			foreach(string item : weaponsAttachments)
 			{
@@ -657,6 +693,16 @@ class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
 				resourceWeaponsAttachments.Insert(insertItem);
 			}
 			specWeaponsClass.m_Attachments = resourceWeaponsAttachments;
+			switch(weaponType)
+				{
+					case "AR":     {m_ARClass = specWeaponsClass;  break;}
+					case "MMG":    {m_MMGClass = specWeaponsClass; break;}
+					case "HMG":    {m_HMGClass = specWeaponsClass; break;}
+					case "AT":     {m_ATClass = specWeaponsClass;  break;}
+					case "MAT":    {m_MATClass = specWeaponsClass; break;}
+					case "HAT":    {m_HATClass = specWeaponsClass; break;}
+					case "AA":     {m_AAClass = specWeaponsClass;  break;}
+				}
 		} else
 		{
 			weaponsClass.m_Weapon = weaponArray[0];

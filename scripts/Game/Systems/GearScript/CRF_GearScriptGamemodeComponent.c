@@ -368,6 +368,16 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 			};
 			
+			if (RHS_ClothNodeStorageComponent.Cast(BaseInventoryStorageComponent.Cast(m_Inventory.Get(0).FindComponent(RHS_ClothNodeStorageComponent))))
+			{
+				InventoryStorageSlot helmetSlot = RHS_ClothNodeStorageComponent.Cast(BaseInventoryStorageComponent.Cast(m_Inventory.Get(0).FindComponent(RHS_ClothNodeStorageComponent))).GetEmptySlotForItem(resourceSpawned);
+				if(helmetSlot)
+				{
+					m_InventoryManager.TryInsertItemInStorage(resourceSpawned, BaseInventoryStorageComponent.Cast(m_Inventory.Get(0).FindComponent(RHS_ClothNodeStorageComponent)), helmetSlot.GetID());
+				}
+			}
+			
+			
 			if(m_SCRInventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
 			{
 				m_StorageComp = m_SCRInventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);

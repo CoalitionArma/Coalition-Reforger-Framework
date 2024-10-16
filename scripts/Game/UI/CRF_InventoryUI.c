@@ -53,7 +53,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		super.OnMenuOpen();
 		
 		m_wRoot = GetRootWidget();
-		m_hudRoot = FrameWidget.Cast(m_wRoot.FindWidget("HudManagerLayout"));
+		m_hudRoot = FrameWidget.Cast(m_wRoot.FindWidget("GearScriptLayout"));
 		
 		m_gearScriptEditor = CRF_GearScriptEditorGamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeComponent));
 		
@@ -61,8 +61,12 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			{
 				while(true)
 				{
-					if(m_hudRoot.GetChildren().GetName() == "Layer_Slots")
+					if(m_hudRoot.GetChildren().GetName() == "FactionNameText")
+					{
+						m_hudRoot.GetChildren().SetEnabled(false);
+						m_hudRoot.RemoveChild(m_hudRoot.GetChildren());
 						break;
+					}
 					
 					m_hudRoot.GetChildren().SetEnabled(false);
 					m_hudRoot.RemoveChild(m_hudRoot.GetChildren());
@@ -81,65 +85,65 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		{
 			m_gearScriptEditor.GetGear().Split("|", m_loadedArray, false);
 			if(m_loadedArray.Get(0))
-				m_loadedArray.Get(0).Split(",", m_helmetsArray, true);
+			m_loadedArray.Get(0).Split(":", m_helmetsArray, false);
 			if(m_loadedArray.Get(1))
-				m_loadedArray.Get(1).Split(",", m_shirtsArray, true);
+				m_loadedArray.Get(1).Split(":", m_shirtsArray, false);
 			if(m_loadedArray.Get(2))
-				m_loadedArray.Get(2).Split(",", m_armoredVestArray, true);
+				m_loadedArray.Get(2).Split(":", m_armoredVestArray, false);
 			if(m_loadedArray.Get(3))
-				m_loadedArray.Get(3).Split(",", m_pantsArray, true);
+				m_loadedArray.Get(3).Split(":", m_pantsArray, false);
 			if(m_loadedArray.Get(4))
-				m_loadedArray.Get(4).Split(",", m_bootsArray, true);
+				m_loadedArray.Get(4).Split(":", m_bootsArray, false);
 			if(m_loadedArray.Get(5))
-				m_loadedArray.Get(5).Split(",", m_backpackArray, true);
+				m_loadedArray.Get(5).Split(":", m_backpackArray, false);
 			if(m_loadedArray.Get(6))
-				m_loadedArray.Get(6).Split(",", m_vestArray, true);
+				m_loadedArray.Get(6).Split(":", m_vestArray, false);
 			if(m_loadedArray.Get(7))
-				m_loadedArray.Get(7).Split(",", m_handwearArray, true);
+				m_loadedArray.Get(7).Split(":", m_handwearArray, false);
 			if(m_loadedArray.Get(8))
-				m_loadedArray.Get(8).Split(",", m_headArray, true);
+				m_loadedArray.Get(8).Split(":", m_headArray, false);
 			if(m_loadedArray.Get(9))
-				m_loadedArray.Get(9).Split(",", m_eyesArray, true);
+				m_loadedArray.Get(9).Split(":", m_eyesArray, false);
 			if(m_loadedArray.Get(10))
-				m_loadedArray.Get(10).Split(",", m_earsArray, true);
+				m_loadedArray.Get(10).Split(":", m_earsArray, false);
 			if(m_loadedArray.Get(11))
-				m_loadedArray.Get(11).Split(",", m_faceArray, true);
+				m_loadedArray.Get(11).Split(":", m_faceArray, false);
 			if(m_loadedArray.Get(12))
-				m_loadedArray.Get(12).Split(",", m_neckArray, true);
+				m_loadedArray.Get(12).Split(":", m_neckArray, false);
 			if(m_loadedArray.Get(13))
-				m_loadedArray.Get(13).Split(",", m_extra1Array, true);
+				m_loadedArray.Get(13).Split(":", m_extra1Array, false);
 			if(m_loadedArray.Get(14))
-				m_loadedArray.Get(14).Split(",", m_extra2Array, true);
+				m_loadedArray.Get(14).Split(":", m_extra2Array, false);
 			if(m_loadedArray.Get(15))
-				m_loadedArray.Get(15).Split(",", m_waistArray, true);
+				m_loadedArray.Get(15).Split(":", m_waistArray, false);
 			if(m_loadedArray.Get(16))
-				m_loadedArray.Get(16).Split(",", m_extra3Array, true);
+				m_loadedArray.Get(16).Split(":", m_extra3Array, false);
 			if(m_loadedArray.Get(17))
-				m_loadedArray.Get(17).Split(",", m_extra4Array, true);
+				m_loadedArray.Get(17).Split(":", m_extra4Array, false);
 			if(m_loadedArray.Get(18))
-				m_loadedArray.Get(18).Split(",", m_riflesArray, true);
+				m_loadedArray.Get(18).Split(":", m_riflesArray, false);
 			if(m_loadedArray.Get(19))
-				m_loadedArray.Get(19).Split(",", m_rifleUGLArray, true);
+				m_loadedArray.Get(19).Split(":", m_rifleUGLArray, false);
 			if(m_loadedArray.Get(20))
-				m_loadedArray.Get(20).Split(",", m_carbinesArray, true);
+				m_loadedArray.Get(20).Split(":", m_carbinesArray, false);
 			if(m_loadedArray.Get(21))
-				m_loadedArray.Get(21).Split(",", m_pistolsArray, true);
+				m_loadedArray.Get(21).Split(":", m_pistolsArray, false);
 			if(m_loadedArray.Get(22))
-				m_loadedArray.Get(22).Split(",", m_ARPrefab, true);
+				m_loadedArray.Get(22).Split(":", m_ARPrefab, false);
 			if(m_loadedArray.Get(23))
-				m_loadedArray.Get(23).Split(",", m_MMGPrefab, true);
+				m_loadedArray.Get(23).Split(":", m_MMGPrefab, false);
 			if(m_loadedArray.Get(24))
-				m_loadedArray.Get(24).Split(",", m_HMGPrefab, true);
+				m_loadedArray.Get(24).Split(":", m_HMGPrefab, false);
 			if(m_loadedArray.Get(25))
-				m_loadedArray.Get(25).Split(",", m_ATPrefab, true);
+				m_loadedArray.Get(25).Split(":", m_ATPrefab, false);
 			if(m_loadedArray.Get(26))
-				m_loadedArray.Get(26).Split(",", m_MATPrefab, true);
+				m_loadedArray.Get(26).Split(":", m_MATPrefab, false);
 			if(m_loadedArray.Get(27))
-				m_loadedArray.Get(27).Split(",", m_HATPrefab, true);
+				m_loadedArray.Get(27).Split(":", m_HATPrefab, false);
 			if(m_loadedArray.Get(28))
-				m_loadedArray.Get(28).Split(",", m_AAPrefab, true);
+				m_loadedArray.Get(28).Split(":", m_AAPrefab, false);
 			if(m_loadedArray.Get(29))
-				m_loadedArray.Get(29).Split(",", m_sniperPrefab, true);
+				m_loadedArray.Get(29).Split(":", m_sniperPrefab, false);
 			RefreshClothing(true, m_helmetsArray, "HelmetArray");
 			RefreshClothing(true, m_shirtsArray, "ShirtArray");
 			RefreshClothing(true, m_armoredVestArray, "ArmoredVestArray");
@@ -630,10 +634,8 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			GLIndex = GLIndex + 5;
 			prefabIndex = prefabIndex + 5;
 		}
-		Print(GLMags);
 		array<string> displayStringArray = {};
 		int index = 0;
-		Print(weaponsPrefabNames);
 		foreach(string prefab : weaponsPrefabNames)
 		{
 			array<string> weaponStringArray = {};
@@ -647,13 +649,13 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 			}	
 			index++;
 		}
-		Print(displayStringArray);
 		string displayString = SCR_StringHelper.Join(", ", displayStringArray, true);
 		m_arrayWidget.SetText(displayString);
 	}
 	
 	void RefreshSpecWeapon(bool isLoading, array<string> specWeaponArray, string widgetName)
 	{
+		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget(widgetName));
 		if(isLoading)
 		{
 			if(specWeaponArray.Count() == 0)
@@ -666,7 +668,6 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 		string displayString;
 		specWeaponArray[0].Split("/", weaponStringArray, false);
 		displayString = (weaponStringArray[weaponStringArray.Count()-1]);
-		m_arrayWidget = TextWidget.Cast(m_hudRoot.FindWidget(widgetName));
 		m_arrayWidget.SetText(displayString);
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
@@ -749,7 +750,7 @@ class CRF_InventoryUI : SCR_InventoryMenuUI
 					continue;
 				string weapon = weaponSlotComponent.GetWeaponEntity().GetPrefabData().GetPrefabName();
 				string magazine = weaponSlotComponent.GetCurrentMagazine().GetOwner().GetPrefabData().GetPrefabName();
-				string numberOfMags = string.ToString(Math.Round(300 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
+				string numberOfMags = string.ToString(Math.Round(60 / weaponSlotComponent.GetCurrentMagazine().GetMaxAmmoCount()));
 				m_pistolsArray.Insert(weapon);
 				m_pistolsArray.Insert(magazine);
 				m_pistolsArray.Insert(numberOfMags);
