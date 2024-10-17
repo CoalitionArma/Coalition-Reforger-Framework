@@ -111,7 +111,15 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 	
 	void SendAdminMessage(string data)
 	{
-		data = string.Format("PlayerID: %1 | %2", GetGame().GetPlayerController().GetPlayerId(), data);
+		
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		if (!chatComponent)
+			return;
+		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
+		data = string.Format("PlayerID: %1 | Player Name: %3 | \"%2\"", GetGame().GetPlayerController().GetPlayerId(), data, GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
 		Rpc(RpcAsk_SendAdminMessage, data);
 	}
 	
@@ -145,7 +153,18 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
 				break;
 			}
-		}
+		}	
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		if (!chatComponent)
+			return;
+		if(!playerID)
+			chatComponent.ShowMessage("INVALID PLAYER ID");
+		
+		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", toSend, GetGame().GetPlayerManager().GetPlayerName(playerID)));
+		toSend = string.Format("Admin: \"%1\"", toSend);
 		Rpc(RpcAsk_ReplyAdminMessage, toSend, playerID);
 	}
 	

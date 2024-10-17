@@ -42,7 +42,10 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	
 	void ReplyAdminMessage_Callback(SCR_ChatPanel panel, string data)
 	{
-	CRF_ClientAdminMenuComponent.GetInstance().ReplyAdminMessage(data);
+		if(!SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId()))
+			return;
+		
+		CRF_ClientAdminMenuComponent.GetInstance().ReplyAdminMessage(data);
 	}
 	
 	void SendAdminMessage(string data)
