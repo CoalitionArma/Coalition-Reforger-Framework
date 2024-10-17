@@ -1,7 +1,8 @@
 $grp PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
  INDFOR_Brief_1 {
   coords 5427.733 61.566 10575.191
-  m_sTextData "Your efforts have mobilized Blufor to repair the local power plant. Ambush, and decimate their forces. If any significant chunk of them makes it to the harbor at St. Pierre, you will have failed. Given this, It would be inadviseable to wait for the full attack at St. Pierre."\
+  m_sTitle "INDFOR Brief"
+  m_sTextData "Your efforts have mobilized Blufor from the military facility near Gravette to repair the local power plant. Ambush, and decimate their forces. If any significant chunk of them makes it to the harbor at St. Pierre, you will have failed. Given this, It would be inadviseable to wait for the full attack at St. Pierre."\
   ""\
   "NOTE: Demo charges are NOT to be set within the power plant itself! We cannot risk permanently destroying the infrastructure here. "
   m_aVisibleForFactions {
@@ -27,9 +28,10 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
 }
 PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
  coords 4406.349 33.983 11160.461
- m_sTextData "Blufor holds the power plant for 15 minutes, and then pushes to break through the harbor at St. Pierre with a minimum of 4 players."\
+ m_sTitle "Win Conditions"
+ m_sTextData "Objective 1: Blufor captures, and holds the power plant for 15 minutes."\
  ""\
- "Indfor victory if they destroy Blufor forces to beneath 5 players."
+ "Objective 2: Blufor breaks through to the harbor with at least 4 players. "
 }
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
  coords 3908.323 39.328 8442.919

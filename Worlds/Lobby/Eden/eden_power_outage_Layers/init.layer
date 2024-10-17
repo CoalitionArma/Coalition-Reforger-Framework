@@ -12,7 +12,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 5839.797 204.335 9783.673
  {
-  SCR_FactionManager {
+  SCR_FactionManager "62A32A0E1B828EB3" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -55,10 +55,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
         m_sCallsign "Cell 4"
        }
        SCR_CallsignInfo "{62A21A90B9226729}" {
-        m_sCallsign "Demo Team"
-       }
-       SCR_CallsignInfo "{62A21A90B950F713}" {
-        m_sCallsign "Sniper Team"
+        m_sCallsign "Support Team"
        }
       }
      }
