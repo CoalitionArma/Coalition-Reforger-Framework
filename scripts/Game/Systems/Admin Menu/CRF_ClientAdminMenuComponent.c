@@ -161,7 +161,15 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 		if (!chatComponent)
 			return;
 		if(!playerID)
+		{
 			chatComponent.ShowMessage("INVALID PLAYER ID");
+			return;
+		}
+		if(!GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID))
+		{
+			chatComponent.ShowMessage("INVALID PLAYER ID");
+			return;
+		}
 		
 		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", toSend, GetGame().GetPlayerManager().GetPlayerName(playerID)));
 		toSend = string.Format("Admin: \"%1\"", toSend);
