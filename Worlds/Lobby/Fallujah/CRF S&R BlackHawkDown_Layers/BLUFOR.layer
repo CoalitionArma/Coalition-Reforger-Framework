@@ -32,6 +32,9 @@ $grp SCR_BaseTriggerEntity {
  TH2 {
   coords 3232.837 11.177 765.232
  }
+ transponder {
+  coords 1818.249 8.156 1996.296
+ }
 }
 SCR_ChimeraCharacter downedPilot : "{68ADA20CCBDF7438}Prefabs/Characters/Factions/BLUFOR/2000sUS/Standard/CRF_2000_Crew_Pilot_P.et" {
  components {
@@ -42,7 +45,7 @@ SCR_ChimeraCharacter downedPilot : "{68ADA20CCBDF7438}Prefabs/Characters/Faction
  coords 1820.573 8.156 1996.216
 }
 SCR_AIGroup : "{C654769C2D326CBC}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Company_p.et" {
- coords 3262.018 10.375 756.117
+ coords 1851.887 9.624 1996.351
  {
   $grp SCR_AIGroup : "{00F06ECA0FD8432B}Prefabs/Groups/BLUFOR/2000s US/Standard/Command/CRF_Group_2000_Platoon_p.et" {
    {

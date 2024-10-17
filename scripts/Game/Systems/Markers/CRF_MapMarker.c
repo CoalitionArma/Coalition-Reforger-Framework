@@ -15,6 +15,7 @@ modded class SCR_MapMarkersUI
 			m_isMapOpen = true;
 		
 		GetGame().GetCallqueue().CallLater(AddInitialMarkers, 0, true);
+
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -80,7 +81,7 @@ modded class SCR_MapMarkersUI
 		if (!m_isMapOpen)
 			return;
 		
-		m_MapUnitEntity = SCR_MapEntity.GetMapInstance();
+		m_MapUnitEntity = SCR_MapEntity.GetMapInstance();		
 		if (!m_MapUnitEntity) 
 			return;
 		
@@ -130,6 +131,9 @@ modded class SCR_MapMarkersUI
 			} else {
 				pos = markerStringArray[1].ToVector();
 			};
+			
+			Print(pos);
+			Print(markerStringArray);
 			
 			int screenPosX;
 			int screenPosY;

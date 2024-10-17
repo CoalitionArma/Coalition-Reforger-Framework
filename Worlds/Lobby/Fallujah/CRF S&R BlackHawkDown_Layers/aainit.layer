@@ -7,6 +7,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
    m_iTimeLimitMinutes 60
   }
   CRF_SearchAndRescueGameModeComponent "{62857B95E4D44DA1}" {
+   m_timeBetweenPings 1
    m_setUnconcious 1
   }
  }
