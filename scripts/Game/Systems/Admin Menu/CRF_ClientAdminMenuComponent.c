@@ -52,7 +52,6 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 	void TeleportLocalPlayer(int playerID1, int playerID2)
 	{
 		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID2);
-		PrintFormat("Teleporting %1 to %2", playerID1, entity2);
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 	    spawnParams.TransformMode = ETransformMode.WORLD;
 		vector teleportLocation = vector.Zero;
@@ -72,5 +71,88 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 	{
 		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
 		m_adminMenuComponent.TeleportPlayers(playerID1, playerID2);
+	}
+	
+	void SendHintAll(string data)
+	{
+		Rpc(RpcAsk_SendHintAll, data);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendHintAll(string data)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendHintAll(data);
+	}
+	
+	void SendHintPlayer(string data, int playerID)
+	{
+		Rpc(RpcAsk_SendHintPlayer, data, playerID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendHintPlayer(string data, int playerID)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendHintPlayer(data, playerID);
+	}
+	
+	void SendHintFaction(string data, string factionKey)
+	{
+		Rpc(RpcAsk_SendHintFaction, data, factionKey);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendHintFaction(string data, string factionKey)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendHintFaction(data, factionKey);
+	}
+	
+	void SendAdminMessage(string data)
+	{
+		data = string.Format("PlayerID: %1 | %2", GetGame().GetPlayerController().GetPlayerId(), data);
+		Rpc(RpcAsk_SendAdminMessage, data);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendAdminMessage(string data)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendAdminMessage(data);
+	}
+	
+	void ReplyAdminMessage(string data)
+	{
+		ref array<string> dataSplit = {};
+		data.Split(" ", dataSplit, false);
+		int playerID;
+		string toSend;
+		for(int i = 0; i < dataSplit.Count(); i++)
+		{
+			if(dataSplit[i] == "0")
+			{
+				dataSplit.RemoveOrdered(i);
+				playerID = 0;
+				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
+				break;
+			}
+			
+			if(dataSplit[i].ToInt() > 0)
+			{
+				playerID = dataSplit[i].ToInt();
+				dataSplit.RemoveOrdered(i);
+				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
+				break;
+			}
+		}
+		Rpc(RpcAsk_ReplyAdminMessage, toSend, playerID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ReplyAdminMessage(string data, int playerID)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.ReplyAdminMessage(data, playerID);
 	}
 }

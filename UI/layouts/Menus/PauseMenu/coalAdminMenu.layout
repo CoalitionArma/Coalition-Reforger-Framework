@@ -171,6 +171,41 @@ FrameWidgetClass {
       }
      }
     }
+    ButtonWidgetClass "{62A13CE5DCB3951E}" {
+     Name "HintButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX -26.346
+      OffsetLeft -26.346
+      PositionY -261.372
+      OffsetTop -261.372
+      SizeX 100.001
+      OffsetRight -73.655
+      SizeY 30
+      OffsetBottom 231.372
+     }
+     Color 0.045 0.045 0.045 1
+     components {
+      SCR_ButtonTextComponent "{629B0EA6BE25C8A5}" {
+       m_bCanBeToggled 1
+      }
+     }
+     {
+      TextWidgetClass "{62A13CE5DCB39518}" {
+       Name "HintText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Clipping False
+       Color 0.172 0.172 0.172 1
+       Text "Hint menu"
+       "Font Size" 14
+       "Min Font Size" 14
+       FontProperties FontProperties "{629B0EA7F3E8BCED}" {
+        OutlineSize 4
+       }
+      }
+     }
+    }
    }
   }
   FrameWidgetClass "{62992E44DCFB7A76}" {
@@ -188,6 +223,21 @@ FrameWidgetClass {
    }
    "Z Order" 1
    {
+    MultilineEditBoxWidgetClass "{62A13CE446740F9F}" {
+     Name "EditBox1"
+     Slot FrameWidgetSlot "{62A13CE4379A61C0}" {
+      PositionX 16.31
+      OffsetLeft 16.31
+      PositionY 383.292
+      OffsetTop 383.292
+      SizeX 597.463
+      OffsetRight -613.773
+      SizeY 64.796
+      OffsetBottom -448.087
+     }
+     Text ""
+     "Min Font Size" 12
+    }
     OverlayWidgetClass "{629B0EC9C1E06499}" {
      Name "List1Overlay"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {

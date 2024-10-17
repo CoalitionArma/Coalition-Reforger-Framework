@@ -25,9 +25,11 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected SCR_ListBoxComponent m_list1;
 	protected SCR_ListBoxComponent m_list3;
 	protected SCR_ListBoxComponent m_list4;
+	protected MultilineEditBoxWidget m_editBox1;
 	protected SCR_ButtonTextComponent m_respawnMenuButton;
 	protected SCR_ButtonTextComponent m_resetGearMenuButton;
 	protected SCR_ButtonTextComponent m_teleportMenuButton;
+	protected SCR_ButtonTextComponent m_hintMenuButton;
 	protected SCR_ButtonTextComponent m_actionButton;
 	protected SCR_ButtonTextComponent m_menuButton1;
 	protected SCR_ButtonTextComponent m_menuButton2;
@@ -36,11 +38,13 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected TextWidget m_respawnMenuText;
 	protected TextWidget m_resetGearMenuText;
 	protected TextWidget m_teleportMenuText;
+	protected TextWidget m_hintMenuText;
 	protected ref array<int> m_groupIDList = {};
-	protected ref array<int> m_playerIDList = {};
-	protected ref array<SCR_AIGroup> m_outGroups = {};
 	protected ref array<int> m_allPlayers = {};
+	protected ref array<SCR_AIGroup> m_outGroups = {};
 	protected ref array<vector> m_spawnPoints = {};
+	protected ref array<Faction> m_factions = {};
+	protected ref array<string> m_selectableFactions = {};
 	
 	//-------------------------------------------------------------------------------------------
 	//-------------------------------General UI Members------------------------------------------
@@ -70,6 +74,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_menuButton2 = SCR_ButtonTextComponent.GetButtonText("MenuButton2", m_adminMenuRoot);
 		m_menuButton3 = SCR_ButtonTextComponent.GetButtonText("MenuButton3", m_adminMenuRoot);
 		m_menuButton4 = SCR_ButtonTextComponent.GetButtonText("MenuButton4", m_adminMenuRoot);
+		m_editBox1 = MultilineEditBoxWidget.Cast(m_wRoot.FindAnyWidget("EditBox1"));
 		
 		//Initializes the Respawn Menu
 		ClearMenu();
@@ -86,6 +91,10 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_teleportMenuButton = SCR_ButtonTextComponent.GetButtonText("TeleportButton", m_wRoot);
 		m_teleportMenuButton.m_OnClicked.Insert(TeleportButton);
 		m_teleportMenuText = TextWidget.Cast(m_teleportMenuButton.GetRootWidget().FindWidget("TeleportText"));
+		
+		m_hintMenuButton = SCR_ButtonTextComponent.GetButtonText("HintButton", m_wRoot);
+		m_hintMenuButton.m_OnClicked.Insert(HintButton);
+		m_hintMenuText = TextWidget.Cast(m_hintMenuButton.GetRootWidget().FindWidget("HintText"));
 	}
 	
 	override void OnMenuClose()
@@ -98,6 +107,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_respawnMenuText.SetColor(Color.FromInt(0xffffffff));
 		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_hintMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		ClearMenu();
 		InitializeRespawnMenu();
 	}
@@ -107,6 +117,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		m_resetGearMenuText.SetColor(Color.FromInt(0xffffffff));
 		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_hintMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		ClearMenu();
 		InitializeGearMenu();
 	}
@@ -116,8 +127,19 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		m_teleportMenuText.SetColor(Color.FromInt(0xffffffff));
+		m_hintMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
 		ClearMenu();
 		InitializeTeleportMenu();
+	}
+	
+	void HintButton()
+	{
+		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		m_hintMenuText.SetColor(Color.FromInt(0xffffffff));
+		ClearMenu();
+		InitializeHintMenu();
 	}
 	
 	void ClearMenu()
@@ -126,6 +148,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list2Root.SetVisible(false);
 		m_list3Root.SetVisible(false);
 		m_list4Root.SetVisible(false);
+		m_editBox1.SetVisible(false);
 		m_actionButton.SetVisible(false, false);
 		m_actionButton.m_OnClicked.Clear();
 		m_menuButton1.SetVisible(false, false);
@@ -144,10 +167,15 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list2.m_OnChanged.Clear();
 		m_list3.m_OnChanged.Clear();
 		m_list4.m_OnChanged.Clear();
+		m_editBox1.SetText("");
 		
 		m_allPlayers.Clear();
 		m_outGroups.Clear();
 		m_spawnPoints.Clear();
+		m_groupIDList.Clear();
+		m_allPlayers.Clear();
+		m_factions.Clear();
+		m_selectableFactions.Clear();
 	
 		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("");
@@ -438,7 +466,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 			if(m_groupManagerComponent.GetPlayerGroup(playerID))
 			{
 				m_list1.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
-				m_playerIDList.Insert(playerID);
+				
 			}
 		}
 		AddRoles(m_list2);
@@ -449,7 +477,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
+		int playerID = m_allPlayers.Get(m_list1.GetSelectedItem());
 		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetLeadersRadio(playerID));
 	}
 	
@@ -458,7 +486,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
+		int playerID = m_allPlayers.Get(m_list1.GetSelectedItem());
 		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetGIRadio(playerID));
 	}
 	
@@ -467,7 +495,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
+		int playerID = m_allPlayers.Get(m_list1.GetSelectedItem());
 		CRF_ClientAdminMenuComponent.GetInstance().AddItem(playerID, GetBinos(playerID));
 	}
 	
@@ -520,7 +548,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list2.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = m_playerIDList.Get(m_list1.GetSelectedItem());
+		int playerID = m_allPlayers.Get(m_list1.GetSelectedItem());
 		int groupID = m_groupManagerComponent.GetPlayerGroup(playerID).GetGroupID();
 		string prefab = GetPrefab(groupID, m_list2.GetSelectedItem());
 		
@@ -552,7 +580,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 			if(!m_groupManagerComponent.GetPlayerGroup(playerID))
 			{
 				m_list2.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
-				m_playerIDList.Insert(playerID);
+				
 			}
 		}
 		int rowNumber = 0;
@@ -582,13 +610,14 @@ class CRF_AdminMenu: ChimeraMenuBase
 		int groupID = m_groupIDList.Get(m_list1.GetSelectedItem());
 		m_playerManager.GetPlayers(m_allPlayers);
 		m_list2.Clear();
-		m_playerIDList.Clear();
+		m_allPlayers.Clear();
+		m_playerManager.GetPlayers(m_allPlayers);
 		foreach(int playerID : m_allPlayers)
 		{
 			if(!m_groupManagerComponent.GetPlayerGroup(playerID))
 			{
 				m_list2.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
-				m_playerIDList.Insert(playerID);
+				
 			}
 			if(m_groupManagerComponent.GetPlayerGroup(playerID))
 			{
@@ -615,7 +644,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list4.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = m_playerIDList.Get(m_list2.GetSelectedItem());
+		int playerID = m_allPlayers.Get(m_list2.GetSelectedItem());
 		int groupID = m_groupIDList.Get(m_list1.GetSelectedItem());
 		string prefab = GetPrefab(groupID, m_list3.GetSelectedItem());
 		vector spawnpoint = m_spawnPoints.Get(m_list4.GetSelectedItem());
@@ -647,7 +676,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 			{
 				m_list1.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
 				m_list2.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
-				m_playerIDList.Insert(playerID);
+				
 			}
 		}
 	}
@@ -657,7 +686,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID2 = m_playerIDList.Get(m_list1.GetSelectedItem());
+		int playerID2 = m_allPlayers.Get(m_list1.GetSelectedItem());
 		
 		if(!playerID2)
 			return;
@@ -673,8 +702,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list2.GetSelectedItem() < 0)
 			return;
 		
-		int playerID1 = m_playerIDList.Get(m_list1.GetSelectedItem());
-		int playerID2 = m_playerIDList.Get(m_list2.GetSelectedItem());
+		int playerID1 = m_allPlayers.Get(m_list1.GetSelectedItem());
+		int playerID2 = m_allPlayers.Get(m_list2.GetSelectedItem());
 		
 		if(!playerID1)
 			return;
@@ -683,5 +712,69 @@ class CRF_AdminMenu: ChimeraMenuBase
 			return;
 		
 		CRF_ClientAdminMenuComponent.GetInstance().TeleportPlayers(playerID1, playerID2);
+	}
+	//-------------------------------------------------------------------------------------------
+	//-------------------------------Hint Menu UI Members----------------------------------------
+	//-------------------------------------------------------------------------------------------
+	
+	void InitializeHintMenu()
+	{
+		m_editBox1.SetVisible(true);
+		m_editBox1.SetText("Type Here");
+		m_list1Root.SetVisible(true);
+		m_list2Root.SetVisible(true);
+		m_menuButton1.SetVisible(true);
+		m_menuButton2.SetVisible(true);
+		m_menuButton3.SetVisible(true);
+		
+		m_menuButton1.m_OnClicked.Insert(SendHintAll);
+		m_menuButton2.m_OnClicked.Insert(SendHintFaction);
+		m_menuButton3.m_OnClicked.Insert(SendHintPlayer);
+		
+		TextWidget.Cast(m_wRoot.FindAnyWidget("List3Text")).SetText("Factions");
+		TextWidget.Cast(m_wRoot.FindAnyWidget("List4Text")).SetText("Players");
+		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Send to All");
+		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Send to Faction");
+		TextWidget.Cast(m_menuButton3.GetRootWidget().FindWidget("MenuButtonText")).SetText("Send to Player");
+		
+		m_playerManager.GetPlayers(m_allPlayers);
+		foreach(int playerID : m_allPlayers)
+		{ 
+			if(m_groupManagerComponent.GetPlayerGroup(playerID))
+			{
+				m_list1.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
+				
+			}
+		}
+	
+		GetGame().GetFactionManager().GetFactionsList(m_factions);
+		foreach(Faction faction : m_factions)
+		{
+			if(SCR_FactionManager.SGetFactionPlayerCount(faction) > 0)
+			{
+				m_list2.AddItem(faction.GetFactionName());
+				m_selectableFactions.Insert(faction.GetFactionKey());
+			}
+		}
+	}
+	
+	void SendHintAll()
+	{
+		string data = m_editBox1.GetText();
+		CRF_ClientAdminMenuComponent.GetInstance().SendHintAll(data);
+	}
+	
+	void SendHintFaction()
+	{
+		string data = m_editBox1.GetText();
+		string factionKey = m_selectableFactions.Get(m_list2.GetSelectedItem());
+		CRF_ClientAdminMenuComponent.GetInstance().SendHintFaction(data, factionKey);
+	}
+	
+	void SendHintPlayer()
+	{
+		string data = m_editBox1.GetText();
+		int playerID = m_allPlayers.Get(m_list1.GetSelectedItem());
+		CRF_ClientAdminMenuComponent.GetInstance().SendHintPlayer(data, playerID);
 	}
 }
