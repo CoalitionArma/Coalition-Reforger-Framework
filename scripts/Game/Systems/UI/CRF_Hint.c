@@ -1,5 +1,6 @@
 class CRF_Hint : SCR_ScriptedWidgetComponent
 {
+	protected Widget m_wMainWidget;
 	protected TextWidget m_wText;
 	protected ImageWidget m_wBG;
 	protected float m_fEndTime;
@@ -9,9 +10,11 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 		if (!GetGame().InPlayMode())
 			return;
 		
-		super.HandlerAttached(w);
-		m_wText = TextWidget.Cast(w.FindAnyWidget("hintText"));
-		m_wBG = ImageWidget.Cast(w.FindAnyWidget("hintBG"));
+		m_wMainWidget = w;
+		
+		super.HandlerAttached(m_wMainWidget);
+		m_wText = TextWidget.Cast(m_wMainWidget.FindAnyWidget("hintText"));
+		m_wBG = ImageWidget.Cast(m_wMainWidget.FindAnyWidget("hintBG"));
 	}
 	
 	void ShowHint(string hinttext, float duration)
@@ -32,8 +35,19 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 	{
 		if (GetGame().GetWorld().GetWorldTime() >= m_fEndTime) {
 			GetGame().GetCallqueue().Remove(HintLoop);
-			m_wText.SetOpacity(0);
-			m_wBG.SetOpacity(0);
+			GetGame().GetCallqueue().CallLater(FadeAndDeleteHintLoop, 0, true);
 		}
 	}
+	
+	void FadeAndDeleteHintLoop() 
+	{
+		float opacity = m_wMainWidget.GetOpacity();
+		if (opacity > 0) {
+			m_wMainWidget.SetOpacity(opacity - 0.015);
+		} else {
+			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
+			delete m_wMainWidget;
+		}
+	}
+
 }

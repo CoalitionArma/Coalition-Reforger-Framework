@@ -42,7 +42,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	
 	void ReplyAdminMessage_Callback(SCR_ChatPanel panel, string data)
 	{
-		if(!SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId()))
+		if(!SCR_Global.IsAdmin())
 			return;
 		
 		CRF_ClientAdminMenuComponent.GetInstance().ReplyAdminMessage(data);
@@ -56,7 +56,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcAsk_SendAdminMessage(string data)
 	{
-		if(!SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId()))
+		if(!SCR_Global.IsAdmin())
 			return;
 		
 		PlayerController pc = GetGame().GetPlayerController();

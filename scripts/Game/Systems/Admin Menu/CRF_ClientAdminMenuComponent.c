@@ -3,6 +3,8 @@ class CRF_ClientAdminMenuComponentClass : ScriptComponentClass {};
 
 class CRF_ClientAdminMenuComponent : ScriptComponent
 {	
+	string m_sHintText = "Type Here";
+	
 	protected CRF_AdminMenuGameComponent m_adminMenuComponent;
 	static CRF_ClientAdminMenuComponent GetInstance()
 	{
