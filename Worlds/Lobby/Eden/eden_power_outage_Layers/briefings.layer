@@ -1,5 +1,5 @@
 $grp PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
- {
+ INDFOR_Brief_1 {
   coords 5427.733 61.566 10575.191
   m_sTextData "Your efforts have mobilized Blufor to repair the local power plant. Ambush, and decimate their forces. If any significant chunk of them makes it to the harbor at St. Pierre, you will have failed. Given this, It would be inadviseable to wait for the full attack at St. Pierre."\
   ""\
@@ -8,7 +8,7 @@ $grp PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescripti
    "INDFOR"
   }
  }
- {
+ INDFOR_Brief_2 {
   coords 5427.733 61.566 10575.19
   m_sTitle "Demo Team Additional Rule"
   m_sTextData "WARNING: Demo charges are not to be placed in or near the power plant! Detonating any charges in or near it risks permanently destroying vital infrastructure, and will be seen as a loss. "
@@ -27,7 +27,9 @@ PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/We
 }
 PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
  coords 4406.349 33.983 11160.461
- m_sTextData "Objective 1: Blufor holds the power plant for 15 minutes, and then pushes to break through the harbor at St. Pierre with a minimum of 4 players."
+ m_sTextData "Blufor holds the power plant for 15 minutes, and then pushes to break through the harbor at St. Pierre with a minimum of 4 players."\
+ ""\
+ "Indfor victory if they destroy Blufor forces to beneath 5 players."
 }
 PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
  coords 3908.323 39.328 8442.919
@@ -38,7 +40,7 @@ PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BL
 }
 PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
  coords 5798.481 27.916 9799.395
- m_sTextData "Bluefor forces have been tasked to capture, and repair a damaged power plant from local insurgent fighters. Once the power plant has been retaken and repaired, Blufor must push to St. Pierre and break through to the harbor there."\
+ m_sTextData "Bluefor has been tasked to capture, and repair a damaged power plant from local insurgent fighters. Once the power plant has been retaken and repaired, Blufor must push to St. Pierre and break through to the harbor there."\
  ""\
  "Player Balance"\
  "Blufor 4: Indfor 3"

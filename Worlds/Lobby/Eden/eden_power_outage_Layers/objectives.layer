@@ -42,7 +42,7 @@ $grp SCR_FactionControlTriggerEntity {
   OnQueryFinished ""\
   "		super.OnQueryFinished(bIsEmpty);"\
   "		"\
-  "		int timerDuration = 10;"\
+  "		int timerDuration = 900000;"\
   "		"\
   "		if (m_bResult)"\
   "		{"\
@@ -80,5 +80,6 @@ $grp SCR_FactionControlTriggerEntity {
   "	"
   m_sOwnerFactionKey "BLUFOR"
   m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0
  }
 }
