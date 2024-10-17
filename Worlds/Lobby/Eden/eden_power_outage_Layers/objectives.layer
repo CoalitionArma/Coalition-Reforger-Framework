@@ -1,0 +1,84 @@
+SCR_BaseFactionTriggerEntity CountTrigger {
+ coords 5785.224 56.45 9862.971
+ TriggerShapeType Sphere
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ UpdatePeriod 15
+ OnQueryFinished ""\
+ "		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())"\
+ "			return;"\
+ "	"\
+ "		int bluforCount = SCR_FactionManager.SGetFactionPlayerCount(m_OwnerFaction);"\
+ ""\
+ "		if (bluforCount < 5)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Indfor has decimated Blufor!\", 10);"\
+ "			IEntity countTrigger = GetGame().GetWorld().FindEntityByName(\"CountTrigger\");"\
+ "			delete countTrigger;"\
+ "		}"\
+ "	"
+ m_sOwnerFactionKey "BLUFOR"
+}
+$grp SCR_FactionControlTriggerEntity {
+ PowerTrigger {
+  coords 5793.274 4.99 9781.968
+  angleY 2.173
+  userScript "	void timerCheck()"\
+  "	{"\
+  "		if (m_bResult)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor has restored power.\", 10);"\
+  "			IEntity powerTrigger = GetGame().GetWorld().FindEntityByName(\"PowerTrigger\");"\
+  "			delete powerTrigger;"\
+  "		}"\
+  "	}"
+  TriggerShapeType "Oriented Bounding Box"
+  SphereRadius 22
+  BoxMaxs 30 20 25
+  DrawShape 1
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  UpdatePeriod 15
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		int timerDuration = 10;"\
+  "		"\
+  "		if (m_bResult)"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(timerCheck, timerDuration, false);"\
+  "		}"\
+  "			"\
+  "	"
+  m_sOwnerFactionKey "BLUFOR"
+  m_iRatioMethod "More than"
+ }
+ HarborTrigger {
+  coords 4384.861 1.591 11089.009
+  angleY -3.334
+  TriggerShapeType "Oriented Bounding Box"
+  SphereRadius 80
+  BoxMaxs 50 20 150
+  DrawShape 1
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  OnQueryFinished "		"\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		IEntity powerTrigger = GetGame().GetWorld().FindEntityByName(\"PowerTrigger\");"\
+  "				"\
+  "		if (powerTrigger == null && m_iFriendlyCount >0)"\
+  "		{"\
+  "			"\
+  "			if (m_bResult)"\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"All Blufor Objectives Achieved!\", 10);"\
+  "				IEntity harborTrigger = GetGame().GetWorld().FindEntityByName(\"HarborTrigger\");"\
+  "				delete harborTrigger;"\
+  "			}"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "BLUFOR"
+  m_iRatioMethod "More than"
+ }
+}
