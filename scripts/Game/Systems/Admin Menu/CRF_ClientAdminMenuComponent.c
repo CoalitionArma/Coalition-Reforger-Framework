@@ -3,6 +3,8 @@ class CRF_ClientAdminMenuComponentClass : ScriptComponentClass {};
 
 class CRF_ClientAdminMenuComponent : ScriptComponent
 {	
+	string m_sHintText = "Type Here";
+	
 	protected CRF_AdminMenuGameComponent m_adminMenuComponent;
 	static CRF_ClientAdminMenuComponent GetInstance()
 	{
@@ -52,7 +54,6 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 	void TeleportLocalPlayer(int playerID1, int playerID2)
 	{
 		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID2);
-		PrintFormat("Teleporting %1 to %2", playerID1, entity2);
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 	    spawnParams.TransformMode = ETransformMode.WORLD;
 		vector teleportLocation = vector.Zero;
@@ -72,5 +73,115 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 	{
 		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
 		m_adminMenuComponent.TeleportPlayers(playerID1, playerID2);
+	}
+	
+	void SendHintAll(string data)
+	{
+		Rpc(RpcAsk_SendHintAll, data);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendHintAll(string data)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendHintAll(data);
+	}
+	
+	void SendHintPlayer(string data, int playerID)
+	{
+		Rpc(RpcAsk_SendHintPlayer, data, playerID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendHintPlayer(string data, int playerID)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendHintPlayer(data, playerID);
+	}
+	
+	void SendHintFaction(string data, string factionKey)
+	{
+		Rpc(RpcAsk_SendHintFaction, data, factionKey);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendHintFaction(string data, string factionKey)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendHintFaction(data, factionKey);
+	}
+	
+	void SendAdminMessage(string data)
+	{
+		
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		if (!chatComponent)
+			return;
+		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
+		data = string.Format("PlayerID: %1 | Player Name: %3 | \"%2\"", GetGame().GetPlayerController().GetPlayerId(), data, GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
+		Rpc(RpcAsk_SendAdminMessage, data);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SendAdminMessage(string data)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.SendAdminMessage(data);
+	}
+	
+	void ReplyAdminMessage(string data)
+	{
+		ref array<string> dataSplit = {};
+		data.Split(" ", dataSplit, false);
+		int playerID;
+		string toSend;
+		for(int i = 0; i < dataSplit.Count(); i++)
+		{
+			if(dataSplit[i] == "0")
+			{
+				dataSplit.RemoveOrdered(i);
+				playerID = 0;
+				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
+				break;
+			}
+			
+			if(dataSplit[i].ToInt() > 0)
+			{
+				playerID = dataSplit[i].ToInt();
+				dataSplit.RemoveOrdered(i);
+				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
+				break;
+			}
+		}	
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		if (!chatComponent)
+			return;
+		if(!playerID)
+		{
+			chatComponent.ShowMessage("INVALID PLAYER ID");
+			return;
+		}
+		if(!GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID))
+		{
+			chatComponent.ShowMessage("INVALID PLAYER ID");
+			return;
+		}
+		
+		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", toSend, GetGame().GetPlayerManager().GetPlayerName(playerID)));
+		toSend = string.Format("Admin: \"%1\"", toSend);
+		Rpc(RpcAsk_ReplyAdminMessage, toSend, playerID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ReplyAdminMessage(string data, int playerID)
+	{
+		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
+		m_adminMenuComponent.ReplyAdminMessage(data, playerID);
 	}
 }

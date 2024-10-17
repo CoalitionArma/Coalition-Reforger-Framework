@@ -4,13 +4,15 @@ class CRF_PauseMenuUI: PauseMenuUI
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		FrameWidget windowRoot = FrameWidget.Cast(m_wRoot.FindWidget("CoalAdminMenu"));
-		if (!playerManager.HasPlayerRole(SCR_PlayerController.GetLocalPlayerId(), EPlayerRole.ADMINISTRATOR))
-			windowRoot.SetVisible(false);
-		SCR_ButtonTextComponent.GetButtonText("CoalAdminMenu", windowRoot).m_OnClicked.Insert(OpenAdminMenu);
+		
+		SCR_ButtonTextComponent comp = SCR_ButtonTextComponent.GetButtonText("CoalAdminMenuButton", GetRootWidget());
+		FrameWidget frame = FrameWidget.Cast(GetRootWidget().FindAnyWidget("CoalAdminMenu"));
+		
+		if (!SCR_Global.IsAdmin())
+			frame.SetVisible(false);
+		
+		comp.m_OnClicked.Insert(OpenAdminMenu);
 	}
-
 	
 	void OpenAdminMenu()
 	{
