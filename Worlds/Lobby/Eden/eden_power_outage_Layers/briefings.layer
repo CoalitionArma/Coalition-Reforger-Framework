@@ -1,0 +1,49 @@
+$grp PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ INDFOR_Brief_1 {
+  coords 5427.733 61.566 10575.191
+  m_sTitle "INDFOR Brief"
+  m_sTextData "Your efforts have mobilized Blufor from the military facility near Gravette to repair the local power plant. Ambush, and decimate their forces. If any significant chunk of them makes it to the harbor at St. Pierre, you will have failed. Given this, It would be inadviseable to wait for the full attack at St. Pierre."\
+  ""\
+  "NOTE: Demo charges are NOT to be set within the power plant itself! We cannot risk permanently destroying the infrastructure here. "
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ INDFOR_Brief_2 {
+  coords 5427.733 61.566 10575.19
+  m_sTitle "Demo Team Additional Rule"
+  m_sTextData "WARNING: Demo charges are not to be placed in or near the power plant! Detonating any charges in or near it risks permanently destroying vital infrastructure, and will be seen as a loss. "
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 5797.499 68.753 9769.148
+ m_sTextData "Blufor"\
+ "2x Armed Humvees"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 5832.058 18.354 9800.565
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 4406.349 33.983 11160.461
+ m_sTitle "Win Conditions"
+ m_sTextData "Objective 1: Blufor captures, and holds the power plant for 15 minutes."\
+ ""\
+ "Objective 2: Blufor breaks through to the harbor with at least 4 players. "
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 3908.323 39.328 8442.919
+ m_sTextData "Blufor must travel to, capture, and hold the power plant area at objective marker 1 for 15 minutes. Then they must break through to the harbor at St. Pierre, objective marker 2, with a minimum of 4 players. Expect, and plan to foil local insurgent ambushes."
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 5798.481 27.916 9799.395
+ m_sTextData "Bluefor has been tasked to capture, and repair a damaged power plant from local insurgent fighters. Once the power plant has been retaken and repaired, Blufor must push to St. Pierre and break through to the harbor there."\
+ ""\
+ "Player Balance"\
+ "Blufor 4: Indfor 3"
+}
