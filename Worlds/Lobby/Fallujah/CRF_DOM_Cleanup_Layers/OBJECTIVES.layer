@@ -1,0 +1,231 @@
+$grp SCR_FactionControlTriggerEntity {
+ Island {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 1786.379 8.803 468.723
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 100
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"The Taliban have seized control of the Island!\", 15);"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "INDFOR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "Island"
+     m_aVisibleForFactions {
+      "INDFOR"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 90.693
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "Island"
+     m_aVisibleForFactions {
+      "OPFOR"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend the Island"
+     m_sTextData "Defend the Island"
+     m_iOrder 2
+     m_iScore 50
+     m_sFactionKey "OPFOR"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control the Island"
+     m_sTextData "Control the Island"
+     m_iOrder 2
+     m_iScore 50
+     m_sFactionKey "INDFOR"
+    }
+   }
+  }
+ }
+ DAM {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 2456.786 30.978 256.58
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 30
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"The Taliban have seized control of the Dam!\", 15);"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true;"\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "INDFOR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "DAM"
+     m_aVisibleForFactions {
+      "INDFOR"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 91.123
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "DAM"
+     m_aVisibleForFactions {
+      "OPFOR"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control The Dam"
+     m_sTextData "Control The Dam"
+     m_iScore 25
+     m_sFactionKey "INDFOR"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend The Dam"
+     m_sTextData "Defend The Dam"
+     m_iScore 25
+     m_sFactionKey "OPFOR"
+    }
+   }
+  }
+ }
+ Coastline {
+  components {
+   RplComponent "{61D2CE5A29C4B4DD}" {
+    Streamable Disabled
+   }
+  }
+  coords 2127.052 2.77 306.657
+  scale 1.52
+  userScript "    // Static boolean variable to track whether the action has been performed"\
+  "	static bool m_actionPerformed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 150
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 20
+  OnActivate ""\
+  "        // Check if the action has already been performed"\
+  "        if (!m_actionPerformed)"\
+  "        {"\
+  "            // Perform the action"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg(\"The Taliban have seized control of the Coastline!\", 15);"\
+  ""\
+  "            // Set the boolean variable to true to prevent further execution"\
+  "            m_actionPerformed = true; "\
+  "        }"\
+  "    "
+  m_sOwnerFactionKey "INDFOR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0.9
+  {
+   $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    {
+     coords 0 0 0
+     angleY 0
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "destroy"
+     m_sDescription "Coastline"
+     m_aVisibleForFactions {
+      "INDFOR"
+     }
+    }
+    {
+     coords 0 0 0
+     angleY 89.905
+     scale 0.658
+     m_MarkerColor 0 0.758 1 1
+     m_sQuadName "defend"
+     m_sDescription "Coastline"
+     m_aVisibleForFactions {
+      "OPFOR"
+     }
+    }
+   }
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Defend the Coastline"
+     m_sTextData "Defend the Coastline"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "OPFOR"
+    }
+    {
+     coords 0 0 0
+     scale 0.658
+     m_sTitle "Control the Coastline"
+     m_sTextData "Control the Coastline"
+     m_iOrder 1
+     m_iScore 25
+     m_sFactionKey "INDFOR"
+    }
+   }
+  }
+ }
+}
