@@ -82,10 +82,10 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
         m_sCallsign "3rd Squad"
        }
        SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
-        m_sCallsign "Helo Crew (AH6M Armed)"
+        m_sCallsign "4th Squad"
        }
        SCR_CallsignInfo "{62A3347F18F43968}" {
-        m_sCallsign "4th Squad"
+        m_sCallsign "Helo Crew (AH6M Armed)"
        }
        SCR_CallsignInfo "{62A3347C076CB5D6}" {
         m_sCallsign "Helo Crew (UH60)"
