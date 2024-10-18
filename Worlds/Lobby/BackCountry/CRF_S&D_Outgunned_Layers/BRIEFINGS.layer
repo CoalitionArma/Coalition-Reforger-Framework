@@ -1,0 +1,42 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 741.997 534.035 2261.519
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 741.997 534.035 2261.519
+ m_sTitle "INDFOR Brief"
+ m_sTextData "We've been hired to destroy equipment left behind when the National Guard pulled out of the area. We suspect local police forces are aware we are coming and will waiting for us."\
+ ""\
+ "The enemy has MANPADS, fly accordingly"
+ m_aVisibleForFactions {
+  "INDFOR"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 741.997 534.035 2261.519
+ m_sTextData "BLUFOR:"\
+ ""\
+ "1 Vehicle Per Team"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "1x AH6M Armed"\
+ "1x MH60 Armed (transport)"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 741.997 534.035 2261.519
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 741.997 534.035 2261.519
+ m_sTextData "We've heard rumors about PMC forces grouping in the East, we've raided the old National Guard armory to try and prepare for whatever they have planned."\
+ ""\
+ "Prevent them from destroying both bomb-sites"
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 741.997 534.035 2261.519
+ m_sTextData "After budget cuts and changing priorities, the US National Guard has abandoned the area leaving behind supplies. Local police forces are eager to use this to their advantage. Meanwhile someone has hired a PMC force to destroy what remains of these supplies"\
+ ""\
+ ""
+}

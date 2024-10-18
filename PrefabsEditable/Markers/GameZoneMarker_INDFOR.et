@@ -1,5 +1,5 @@
 PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  ID "612517386F2BD406"
- m_MarkerColor 0.502 0 0 1
+ m_MarkerColor 0.144 0.382 0.106 1
  m_sDescription "AO Limit (INDFOR)"
 }

@@ -1,0 +1,59 @@
+Vehicle AH6M_Armed_base1 : "{6CA46BC65DE861A8}Prefabs/Vehicles/Helicopters/AH6M/AH6M_Armed_base.et" {
+ coords 2533.943 572.211 843.601
+}
+SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+ coords 2576.828 568.096 850.059
+ m_aUnitPrefabSlots {
+  "{83EC6868D4319899}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PL_P.et" "{6A9D383435227F56}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_JTAC_P.et" "{97C13390010A9E27}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MO_P.et"
+ }
+ m_sCustomNameSet "PLT"
+ {
+  SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+   coords 1.005 -0.233 -7.274
+   angleY -21.621
+   m_sCustomNameSet "1-1"
+   {
+    SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+     coords 3.748 -0 -2.273
+     m_sCustomNameSet "1-2"
+     {
+      SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+       coords 4.437 0 -2.221
+       m_sCustomNameSet "1-3"
+       {
+        SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+         coords 2.447 0 -2.239
+         angleY -4.799
+         m_sCustomNameSet "1-4"
+         {
+          $grp SCR_AIGroup : "{A95EA25C8833C6BE}Prefabs/Groups/INDFOR/Standard/Vehicle/CRF_INDFOR_AirTeam_p.et" {
+           {
+            coords -44.794 3.368 26.224
+            angleY 26.42
+            Flags 67
+            m_aUnitPrefabSlots {
+             "{ED774ED0660B2DCD}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Pilot_P.et"
+            }
+            m_sCustomNameSet "AH1"
+           }
+           {
+            coords -35.279 2.492 21.076
+            angleY 26.42
+            Flags 67
+            m_sCustomNameSet "TH1"
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle AUS_UH60_armed1 : "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et" {
+ coords 2555.054 570.428 852.731
+ angleY -111.388
+}
