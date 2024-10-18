@@ -3,6 +3,9 @@ PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OP
  m_sTextData "The Taliban are on the move, our last foothold in the area is about to be challenged. We must stop their move coming from the City and prevent them from clearing us out before reinforcements can arrive."\
  ""\
  ""
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
 }
 PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
  coords 2361.188 19.13 304.234
