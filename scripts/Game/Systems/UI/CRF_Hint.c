@@ -19,6 +19,9 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 	
 	void ShowHint(string hinttext, float duration)
 	{
+		if(!m_wMainWidget)
+			return;
+		
 		m_wText.SetText(hinttext);
 		m_wText.SetOpacity(1);
 		m_wBG.SetOpacity(0.5);
@@ -33,6 +36,12 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 	
 	void HintLoop() 
 	{
+		if(!m_wMainWidget)
+		{
+			GetGame().GetCallqueue().Remove(HintLoop);
+			return;
+		}
+		
 		if (GetGame().GetWorld().GetWorldTime() >= m_fEndTime) {
 			GetGame().GetCallqueue().Remove(HintLoop);
 			GetGame().GetCallqueue().CallLater(FadeAndDeleteHintLoop, 0, true);
@@ -41,6 +50,12 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 	
 	void FadeAndDeleteHintLoop() 
 	{
+		if(!m_wMainWidget)
+		{
+			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
+			return;
+		}
+		
 		float opacity = m_wMainWidget.GetOpacity();
 		if (opacity > 0) {
 			m_wMainWidget.SetOpacity(opacity - 0.015);

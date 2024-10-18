@@ -11,6 +11,8 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	protected static CRF_AdminMenuGameComponent s_Instance;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	
+	protected Widget m_wSavedHintWidget;
+	
 	static CRF_AdminMenuGameComponent GetInstance()
 	{
 		return s_Instance;
@@ -142,13 +144,13 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		
 	}
 	
-	void SetPlayerGearServer(int playerID, ResourceName prefab)
+	void SetPlayerGearServer(int playerID, string prefab)
 	{
 		GetGame().GetCallqueue().CallLater(SetPlayerGear, 500, false, playerID, prefab);
 	}
 	
-	void SetPlayerGear(int playerID, ResourceName prefab)
-	{
+	void SetPlayerGear(int playerID, string prefab)
+	{	
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
 		m_GearScriptEditor = CRF_GearScriptGamemodeComponent.GetInstance();
 		if(m_GearScriptEditor)
@@ -159,6 +161,9 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	
 	void ClearGear(int playerID)
 	{
+		if(playerID == 0)
+			return;
+		
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
 		SCR_CharacterInventoryStorageComponent entityInventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		InventoryStorageManagerComponent entityInventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
@@ -186,6 +191,9 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	
 	void AddItem(int playerID, string prefab)
 	{
+		if(playerID == 0 || prefab.IsEmpty())
+			return;
+		
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
 		InventoryStorageManagerComponent entityInventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
 		m_SpawnParams.TransformMode = ETransformMode.WORLD;
@@ -224,15 +232,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void Rpc_SendHintAll(string data)
 	{
-		Widget widget;
-		widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
-		
-		if (!widget)
-			return;
-		
-		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
-		float duration = 8000;
-		hint.ShowHint(data, duration);
+		SendAdminHint(data);
 	}
 	
 	void SendHintPlayer(string data, int playerID)
@@ -243,19 +243,10 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void Rpc_SendHintPlayer(string data, int playerID)
 	{
-		if(SCR_PlayerController.GetLocalPlayerId() != playerID)
+		if(playerID == 0 || SCR_PlayerController.GetLocalPlayerId() != playerID)
 			return;
 		
-		Widget widget;
-		widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
-		
-		if (!widget)
-			return;
-		
-		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
-		float duration = 8000;
-		hint.ShowHint(data, duration);
-	
+		SendAdminHint(data);
 	}
 	
 	void SendHintFaction(string data, string factionKey)
@@ -266,14 +257,24 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void Rpc_SendHintFaction(string data, string factionKey)
 	{
-		if(SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction()).GetFactionKey() != factionKey)
+		if(factionKey.IsEmpty() && !SCR_FactionManager.SGetLocalPlayerFaction() && (SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction()).GetFactionKey() != factionKey))
 			return;
 		
+		SendAdminHint(data);
+	}
+	
+	void SendAdminHint(string data)
+	{
 		Widget widget;
 		widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
 		
 		if (!widget)
 			return;
+		
+		if(m_wSavedHintWidget)
+			delete m_wSavedHintWidget;
+		
+		m_wSavedHintWidget = widget;
 		
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
 		float duration = 8000;
