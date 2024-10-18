@@ -1,0 +1,35 @@
+SCR_BaseTriggerEntity T72 {
+ coords 4430.199 1.594 11047.45
+}
+Vehicle UAZ452_CDF_Ambulance_CDF1 : "{45B4F354E7A3B4E2}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_CDF_Ambulance_CDF.et" {
+ coords 4447.585 1.581 11077.744
+ angleY -149.8
+}
+SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+ coords 4406.604 1.571 11098.804
+ m_sCustomNameSet "PLT"
+ {
+  SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+   coords -4.351 0.024 -11.561
+   m_sCustomNameSet "1-1"
+   {
+    SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+     coords 0.311 0 -7.441
+     m_sCustomNameSet "1-2"
+     {
+      SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+       coords 0.342 0 -8.243
+       m_sCustomNameSet "1-3"
+       {
+        SCR_AIGroup : "{CE21A9AD1526A581}Prefabs/Groups/INDFOR/Standard/Vehicle/CRF_INDFOR_3ManCrew_p.et" {
+         coords 32.383 0.105 -12.941
+         m_sCustomNameSet "Armor"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

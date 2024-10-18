@@ -1,0 +1,41 @@
+PS_MissionDescription : "{5D890E2198A25341}PrefabsEditable/MissionDescription/GametypeSD.et" {
+ coords 4774.154 27.281 10989.698
+}
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 4774.154 27.281 10989.698
+ m_sTextData "Well we were busy elsewhere. These FIA scum have taken over one of the main ports on the island. let's get in there, clearout their supplies and show them not to mess with the USSR"\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 4774.154 27.281 10989.698
+ m_sTextData "OPFOR:"\
+ ""\
+ "2X BMP2"\
+ ""\
+ "INDFOR:"\
+ ""\
+ "1X T72A"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4774.154 27.281 10989.698
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 4774.154 27.281 10989.698
+ m_sTitle "INDFOR Brief"
+ m_sTextData "With all the chaos on the island we managed to grab a foothold in ST Phillipe. now we have to hold it, we've managed to get one of the soviets tanks working that should be enough to defend out stockpiles in the city"\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "INDFOR"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 4774.154 27.281 10989.698
+ m_sTextData "While the Soviets were occupied the FIA snuck in and took control of the town of ST Phillipe. now the USSR is attempting to take back their town and eliminate the main strongpoints of the FIA's control"\
+ ""\
+ ""
+}

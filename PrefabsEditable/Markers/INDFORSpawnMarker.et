@@ -35,7 +35,7 @@ PS_ManualMarker {
  angleY 90
  m_sImageSet "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
  m_sImageSetGlow "{67B3A6DC2D712B52}UI/Textures/Icons/icons_mapMarkersUI-glow.imageset"
- m_MarkerColor 0.144 0.382 0.106 1
+ m_MarkerColor 0.199 0.962 0.077 1
  m_sQuadName "flag-2"
  m_fWorldSize 90
  m_sDescription "INDFOR Spawn"
