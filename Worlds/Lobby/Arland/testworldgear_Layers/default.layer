@@ -3,14 +3,8 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
-  CRF_AdminMenuGameComponent "{62995276751D17AC}" {
-  }
   CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
    m_bGearScriptEnabled 1
-   m_rBluforGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
-   m_rOpforGearScript "{83E186D97FF79DCF}Configs/Gearscripts/CRF_GS_USSR80s.conf"
-   m_rIndforGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/CRF_GS_FIA.conf"
-   m_rCivGearScript "{F528876B88A01733}Configs/Gearscripts/CRF_GS_CIVWithGuns.conf"
   }
   CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
    Enabled 0
@@ -110,6 +104,17 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 2055.982 61.647 2122.375
  {
+  ScriptedChatEntity {
+   ID "61BCFEC02D38B827"
+   Channels {
+    BaseChatChannel "{559077E72C7027BC}" {
+    }
+    LocalChatChannel "{559077E6A85B7EEE}" {
+    }
+   }
+   "Whisper channel" PrivateMessageChannel "{52927B26F407CAD5}" {
+   }
+  }
   SCR_FactionManager "62912D73EF172743" {
    ID "61BCFEC02D38B83E"
    Factions {
