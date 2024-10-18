@@ -40,6 +40,6 @@ PS_ManualMarker {
  m_fWorldSize 90
  m_sDescription "BLUFOR Spawn"
  m_aVisibleForFactions {
-  "US"
+  "BLUFOR"
  }
 }
