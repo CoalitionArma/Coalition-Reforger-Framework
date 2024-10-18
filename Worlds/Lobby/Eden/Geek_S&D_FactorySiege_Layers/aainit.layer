@@ -3,6 +3,11 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
+  CRF_GearScriptGamemodeComponent "{629F127D25A0AC9B}" {
+   m_bGearScriptEnabled 1
+   m_rBluforGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
+   m_rOpforGearScript "{83E186D97FF79DCF}Configs/Gearscripts/CRF_GS_USSR80s.conf"
+  }
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 40
   }
@@ -12,7 +17,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  }
  coords 4487.436 20.706 10497.829
  {
-  SCR_FactionManager {
+  SCR_FactionManager "629F1279F6990FAD" {
    ID "61BCFEC02D38B83E"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
