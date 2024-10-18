@@ -1,8 +1,9 @@
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  ID "60F6FAB9D60D60D6"
  coords 2549.132 83.953 5283.105
+ m_MarkerColor 0.569 0.042 0.029 1
  m_sDescription "OPFOR Spawn"
  m_aVisibleForFactions {
-  "USSR"
+  "OPFOR"
  }
 }
