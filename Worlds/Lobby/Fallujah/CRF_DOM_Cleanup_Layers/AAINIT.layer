@@ -1,0 +1,84 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 2426.773 14.531 711.374
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+   m_bGearScriptEnabled 1
+   m_INDFORGearScriptSettings CRF_GearScriptContainer "{629E5222AC7F68BE}" {
+    m_rGearScript "{2D140B13588E56B8}Configs/Gearscripts/Standard/GWOT/CRF_GS_Taliban.conf"
+   }
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 90
+  }
+ }
+ coords 2442.558 8.186 575.726
+ {
+  SCR_FactionManager "62A40CD5FF64FF9A" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Platoon"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{62A40CD7F5CE0568}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{62A40CD7F502A0F5}" {
+        m_sCallsign "MAT Team"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{62A40CD4F98DF96C}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{62A40CD4FE6E0E3D}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{62A40CD4FFBAE467}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{62A40CD4FFF34A09}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{62A40CD4FF02D6EC}" {
+        m_sCallsign "T-72"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
