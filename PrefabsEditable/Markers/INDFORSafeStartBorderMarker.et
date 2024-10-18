@@ -1,0 +1,12 @@
+PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ ID "612517386F2BD406"
+ coords 2813.398 46.105 2397.481
+ angleY 0
+ m_MarkerColor 0.199 0.962 0.077 1
+ m_sDescription "INDFOR Safe Start Border"
+ m_aVisibleForFactions {
+  "INDFOR"
+ }
+ m_bVisibleForEmptyFaction 0
+ m_bShowForAnyFaction 0
+}
