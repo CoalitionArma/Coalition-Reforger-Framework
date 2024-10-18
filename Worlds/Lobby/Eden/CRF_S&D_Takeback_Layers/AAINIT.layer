@@ -1,0 +1,91 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 4483.018 23.171 10600.317
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+   m_bGearScriptEnabled 1
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 90
+  }
+  CRF_SearchAndDestroyGameModeComponent "{62A4F0242130676F}" {
+   attackingSide "OPFOR"
+   defendingSide "INDFOR"
+  }
+ }
+ coords 4533.13 20.669 10628.784
+ {
+  SCR_FactionManager {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Platoon"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{62A4F0270A7B6C41}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{62A4F0270B943EF2}" {
+        m_sCallsign "MAT Team"
+       }
+       SCR_CallsignInfo "{62A4F0270B8CF1CE}" {
+        m_sCallsign "Armor (BMP2)"
+       }
+       SCR_CallsignInfo "{62A4F0270BA5B8DF}" {
+        m_sCallsign "Armor (BMP2)"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "Armor (T-72)"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_BaseTriggerEntity vehicleSpawner {
+ coords 4418.942 1.594 11074.289
+ userScript "	string t72 = \"{2B9DB09AC8BEA673}Prefabs/Vehicles/Tracked/T-72A/T72A_FIA.et\";"\
+ "	string bmp2 = \"{45727E50E27698C2}Prefabs/Vehicles/Tracked/BMP2/BMP2M.et\";"\
+ "	IEntity spawn1, spawn2, spawn3;"\
+ "	"\
+ "	void spawnthings()"\
+ "	{"\
+ "		spawn1 = GetGame().GetWorld().FindEntityByName(\"T72\");"\
+ "		spawn2 = GetGame().GetWorld().FindEntityByName(\"BMP1\");"\
+ "		spawn3 = GetGame().GetWorld().FindEntityByName(\"BMP2\");"\
+ "		"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "		"\
+ "		spawnParams.Transform[3] = spawn1.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(t72),GetGame().GetWorld(),spawnParams);"\
+ "		spawnParams.Transform[3] = spawn2.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(bmp2),GetGame().GetWorld(),spawnParams);"\
+ "		spawnParams.Transform[3] = spawn3.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(bmp2),GetGame().GetWorld(),spawnParams);"\
+ "	}"
+ OnInit ""\
+ "		super.EOnInit(owner);"\
+ "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+ "	"
+}
