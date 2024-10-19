@@ -1,10 +1,10 @@
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
- coords 4535.626 16.031 10521.685
- angleY 90
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+ coords 4536.787 16.628 10522.283
+ angleY 85.036
  m_fWorldSize 30
 }
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 4412.47 1.594 11070.049
+ coords 4412.47 1.617 11070.049
  angleY 90
  m_fWorldSize 30
 }

@@ -1,38 +1,22 @@
-SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
- coords 4529.412 16.925 10521.339
- angleY 71.259
- m_sCustomNameSet "Platoon Command"
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 4536.652 16.599 10520.24
+ angleY 44.119
  {
-  SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-   coords -1.123 -0.187 7.466
-   angleY 160.778
-   m_sCustomNameSet "1st Squad"
+  SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+   coords 0.148 -0.138 7.575
+   angleY -178.781
    {
-    SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-     coords -0.174 -0.158 -3.922
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords -0.001 -0.06 -2.592
      m_sCustomNameSet "2nd Squad"
      {
-      SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-       coords -0.086 -0.151 -4.029
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords -0.001 -0.024 -2.802
        m_sCustomNameSet "3rd Squad"
        {
-        SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-         coords -0.174 -0.054 -3.919
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords 0.001 -0.002 -2.197
          m_sCustomNameSet "4th Squad"
-         {
-          SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-           coords 0.162 0 -2.636
-           angleY -4.266
-           m_sCustomNameSet "5th Squad"
-           {
-            SCR_AIGroup : "{38590A20F26FA4C6}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_MGTeam_p.et" {
-             coords -2.523 0.031 20.376
-             angleY 107.232
-             m_sCustomNameSet "Machine Gun Team"
-            }
-           }
-          }
-         }
         }
        }
       }

@@ -1,82 +1,83 @@
-$grp GenericEntity : "{0879C452656F1A3C}Prefabs/Structures/Military/Slotted/SlotFlatSmall/Arsenal_NoBoxes.et" {
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
  {
-  coords 2165.223 8.156 2130.335
-  angleY -10.538
+  coords 2149.764 8.156 2139.48
  }
  {
-  coords 2626.083 8.156 2188.912
-  angleY 81.121
+  coords 2150.297 8.156 2133.083
+  angleY 171.48
+ }
+ {
+  coords 2150.899 8.156 2126.648
+  angleY -178.746
+ }
+ {
+  coords 2150.51 10.72 2129.782
+  angleY 171.292
+ }
+ {
+  coords 2150.679 10.72 2136.261
+  angleY -167.781
+ }
+ {
+  coords 2152.536 8.156 2139.76
+ }
+ {
+  coords 2151.325 10.72 2140.889
+  angleY -94.334
+ }
+ {
+  coords 2153.041 8.156 2122.718
+  angleY -140.768
+ }
+ {
+  coords 2152.852 10.72 2123.885
+  angleY 131.473
+ }
+ {
+  coords 2154.157 8.156 2109.011
+  angleY -94.295
+ }
+ {
+  coords 2154.157 10.721 2109.011
+  angleY -94.295
+ }
+ {
+  coords 2165.983 10.932 2090.661
+  angleY -94.295
  }
 }
 GenericEntity : "{19E2D4E8F2E491C3}Prefabs/Compositions/Slotted/SlotRoadMedium/CheckpointUnderConstruction_M_US_02.et" {
  coords 1533.489 8.292 1735.819
  angleY -107.558
 }
-$grp GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ coords 2559.673 8.156 2188.488
+ angleY -5.545
  {
-  coords 2559.673 8.156 2188.488
-  angleY -5.545
-  {
-   GenericEntity {
-    ID "5D45393876460D01"
-    {
-     GenericEntity {
-      ID "5D453938619FC380"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC381"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC383"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
+  GenericEntity {
+   ID "5D45393876460D01"
+   {
+    GenericEntity {
+     ID "5D453938619FC380"
+     components {
+      ActionsManagerComponent "{5E16BA5C3D96AB20}" {
+       Enabled 0
       }
      }
     }
-   }
-  }
- }
- {
-  coords 2142.248 20.143 2131.006
-  angleY -7.603
-  {
-   GenericEntity {
-    ID "5D45393876460D01"
-    {
-     GenericEntity {
-      ID "5D453938619FC380"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
+    GenericEntity {
+     ID "5D453938619FC381"
+     components {
+      ActionsManagerComponent "{5E16BA5C3D96AB20}" {
+       Enabled 0
       }
      }
-     GenericEntity {
-      ID "5D453938619FC381"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
-      }
-     }
-     GenericEntity {
-      ID "5D453938619FC383"
-      components {
-       ActionsManagerComponent "{5E16BA5C3D96AB20}" {
-        Enabled 0
-       }
+    }
+    GenericEntity {
+     ID "5D453938619FC383"
+     components {
+      ActionsManagerComponent "{5E16BA5C3D96AB20}" {
+       Enabled 0
       }
      }
     }
@@ -108,7 +109,7 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
  {
   $grp GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
    {
-    coords -433.191 -13.348 22.797
+    coords -433.191 -13.474 22.797
     angleY 19.67
    }
    {
@@ -130,11 +131,11 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
     angleY 7.363
    }
    {
-    coords -449.332 -13.348 29.237
+    coords -449.332 -13.474 29.237
     angleY 13.429
    }
    {
-    coords -451.219 -13.348 29.688
+    coords -451.219 -13.474 29.688
     angleY 13.429
    }
   }
@@ -234,11 +235,11 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
   }
   $grp GenericEntity : "{B31A14BC1A0E7776}Prefabs/Props/Military/Sandbags/Sandbag_01_round_burlap.et" {
    {
-    coords -448.638 -13.348 24.599
+    coords -448.638 -13.474 24.599
     angleY -104.998
    }
    {
-    coords -434.24 -13.348 31.325
+    coords -434.24 -13.474 31.325
     angleY 120.662
    }
   }
@@ -250,6 +251,72 @@ GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_ro
    coords -425.068 -2.995 65.355
    angleY 13.429
   }
+ }
+}
+$grp GenericEntity : "{9C9C4BED9E19C374}Prefabs/Props/Military/Sandbags/Sandbag_01_wall_solid_burlap.et" {
+ {
+  coords 2137.68 8.156 2126.713
+  angleY -7.866
+ }
+ {
+  coords 2136.36 8.156 2125.818
+  angleY -94.702
+ }
+ {
+  coords 2136.36 10.318 2125.818
+  angleY -94.702
+ }
+ {
+  coords 2137.68 10.318 2126.713
+  angleY -7.866
+ }
+ {
+  coords 2144.168 8.156 2127.252
+  angleY -5.149
+ }
+ {
+  coords 2144.168 10.318 2127.252
+  angleY -5.149
+ }
+ {
+  coords 2146.826 10.318 2127.506
+  angleY -5.149
+ }
+ {
+  coords 2146.826 8.156 2127.506
+  angleY -5.149
+ }
+ {
+  coords 2149.189 8.156 2128.528
+  angleY -90.349
+ }
+ {
+  coords 2149.189 10.318 2128.528
+  angleY -90.349
+ }
+ {
+  coords 2159.462 10.318 2108.9
+  angleY -5.149
+ }
+ {
+  coords 2159.462 8.156 2108.9
+  angleY -5.149
+ }
+ {
+  coords 2157.734 8.156 2109.366
+  angleY -91.107
+ }
+ {
+  coords 2157.734 10.318 2109.366
+  angleY -91.107
+ }
+ {
+  coords 2159.462 12.479 2108.9
+  angleY -5.149
+ }
+ {
+  coords 2157.734 12.479 2109.366
+  angleY -91.107
  }
 }
 $grp GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_US_01.et" {
@@ -679,10 +746,6 @@ $grp GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLar
   coords 2212.779 8.156 1993.866
   angleY 170.195
  }
-}
-GenericEntity : "{BFA52B5CAB5EC656}Prefabs/Structures/Military/Slotted/SlotFlatSmall/FieldHospial_NoStuff.et" {
- coords 2566.362 8.156 2134.983
- angleY -13.694
 }
 GenericEntity : "{C7D38772154D45BB}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_US_01.et" {
  coords 2517.164 8.156 2208.528
