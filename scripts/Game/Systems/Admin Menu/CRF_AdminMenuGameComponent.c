@@ -8,21 +8,29 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 {
 	protected SCR_GroupsManagerComponent m_groupsManager;
 	protected CRF_GearScriptGamemodeComponent m_GearScriptEditor;
-	protected static CRF_AdminMenuGameComponent s_Instance;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	
 	protected Widget m_wSavedHintWidget;
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	static CRF_AdminMenuGameComponent GetInstance()
 	{
-		return s_Instance;
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		if (gameMode)
+			return CRF_AdminMenuGameComponent.Cast(gameMode.FindComponent(CRF_AdminMenuGameComponent));
+		else
+			return null;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		GetGame().GetCallqueue().CallLater(AddMsgAction, 0, false);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Admin Messaging
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AddMsgAction()
 	{
 		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
@@ -36,12 +44,13 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		invoker4.Insert(ReplyAdminMessage_Callback);
 	}
 	
-
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SendAdminMessage_Callback(SCR_ChatPanel panel, string data)
 	{
 		CRF_ClientAdminMenuComponent.GetInstance().SendAdminMessage(data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage_Callback(SCR_ChatPanel panel, string data)
 	{
 		if(!SCR_Global.IsAdmin())
@@ -50,11 +59,13 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		CRF_ClientAdminMenuComponent.GetInstance().ReplyAdminMessage(data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SendAdminMessage(string data)
 	{
 		Rpc(RpcAsk_SendAdminMessage, data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcAsk_SendAdminMessage(string data)
 	{
@@ -70,15 +81,17 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		chatComponent.ShowMessage(data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(string data, int playerID)
 	{
 		Rpc(RpcAsk_ReplyAdminMessage, data, playerID);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcAsk_ReplyAdminMessage(string data, int playerID)
 	{
-		if(GetGame().GetPlayerController().GetPlayerId() != playerID)
+		if(GetGame().GetPlayerController().GetPlayerId() != playerID && !SCR_Global.IsAdmin())
 			return;
 		
 		PlayerController pc = GetGame().GetPlayerController();
@@ -91,19 +104,29 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		chatComponent.ShowMessage(data);
 	}
 	
-	void SetPlayerGroup(SCR_AIGroup group, int playerID)
-	{
-		m_groupsManager.AddPlayerToGroup(group.GetGroupID(), playerID);
-	}
-		
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Respawn
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SpawnGroupServer(int playerId, string prefab, vector spawnLocation, int groupID)
 	{
 		Rpc(Respawn, playerId, prefab, spawnLocation, groupID);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void Respawn(int playerId, string prefab, vector spawnLocation, int groupID)
 	{
+		if(prefab.IsEmpty())
+		{
+			switch(m_groupsManager.FindGroup(groupID).m_faction)
+			{
+				case "BLUFOR" : {prefab = "{6F99DE8453E6B423}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Rifleman_P.et"; break;}
+				case "OPFOR"  : {prefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et";   break;}
+				case "INDFOR" : {prefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"; break;}
+				case "CIV"    : {prefab = "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et";       break;}
+			}
+		}
+		
 		RandomGenerator random = new RandomGenerator();
 		random.SetSeed(Math.Randomize(-1));
 		m_groupsManager = SCR_GroupsManagerComponent.GetInstance();
@@ -121,6 +144,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().Call(SwitchToSpawnedEntity, playerId, entity, 4, groupID);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SwitchToSpawnedEntity(int playerId, IEntity entity, int frameCounter, int groupID)
 	{
 		if (frameCounter > 0) // Await four frames
@@ -140,15 +164,21 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 			playableManager.ForceSwitch(playerId);
 		}
 		SCR_AIGroup playerGroup = m_groupsManager.FindGroup(groupID);
-		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, playerGroup, playerId);
 		
+		playableManager.SetPlayerFactionKey(playerId, playerGroup.m_faction);
+		
+		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, playerGroup, playerId);
 	}
 	
-	void SetPlayerGearServer(int playerID, string prefab)
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SetPlayerGroup(SCR_AIGroup group, int playerID)
 	{
-		GetGame().GetCallqueue().CallLater(SetPlayerGear, 500, false, playerID, prefab);
+		m_groupsManager.AddPlayerToGroup(group.GetGroupID(), playerID);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Gear
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetPlayerGear(int playerID, string prefab)
 	{	
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
@@ -159,43 +189,14 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		}
 	}
 	
-	void ClearGear(int playerID)
-	{
-		if(playerID == 0)
-			return;
-		
-		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-		SCR_CharacterInventoryStorageComponent entityInventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
-		InventoryStorageManagerComponent entityInventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
-		ref array<Managed> weaponSlotComponentArray = {};
-		
-		entity.FindComponents(WeaponSlotComponent, weaponSlotComponentArray);
-		
-		for(int i = 0; i < 18; i++)
-		{
-			if(entityInventory.Get(i))
-			{
-				IEntity item = entityInventory.Get(i);
-				entityInventoryManager.TryRemoveItemFromStorage(item, entityInventory);
-				SCR_EntityHelper.DeleteEntityAndChildren(item);
-			}
-		}
-		
-		foreach(Managed weaponSlot : weaponSlotComponentArray)
-		{
-			WeaponSlotComponent weaponSlotComponent = WeaponSlotComponent.Cast(weaponSlot);
-			if(weaponSlotComponent.GetWeaponEntity())
-				delete weaponSlotComponent.GetWeaponEntity();
-		}
-	}
-	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AddItem(int playerID, string prefab)
 	{
 		if(playerID == 0 || prefab.IsEmpty())
 			return;
 		
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-		InventoryStorageManagerComponent entityInventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
+		SCR_InventoryStorageManagerComponent entityInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
 		m_SpawnParams.TransformMode = ETransformMode.WORLD;
         m_SpawnParams.Transform[3] = entity.GetOrigin();
 		ref IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), m_SpawnParams);
@@ -203,11 +204,15 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 			delete resourceSpawned;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Teleport
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void TeleportPlayers(int playerID1, int playerID2)
 	{
 		Rpc(Rpc_TeleportPlayers, playerID1, playerID2);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void Rpc_TeleportPlayers(int playerID1, int playerID2)
 	{
@@ -224,22 +229,28 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		SCR_Global.TeleportPlayer(playerID1, teleportLocation);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Hints
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SendHintAll(string data)
 	{
 		Rpc(Rpc_SendHintAll, data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void Rpc_SendHintAll(string data)
 	{
 		SendAdminHint(data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SendHintPlayer(string data, int playerID)
 	{
 		Rpc(Rpc_SendHintPlayer, data, playerID);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void Rpc_SendHintPlayer(string data, int playerID)
 	{
@@ -249,11 +260,13 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		SendAdminHint(data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SendHintFaction(string data, string factionKey)
 	{
 		Rpc(Rpc_SendHintFaction, data, factionKey);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void Rpc_SendHintFaction(string data, string factionKey)
 	{
@@ -263,6 +276,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		SendAdminHint(data);
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SendAdminHint(string data)
 	{
 		Widget widget;

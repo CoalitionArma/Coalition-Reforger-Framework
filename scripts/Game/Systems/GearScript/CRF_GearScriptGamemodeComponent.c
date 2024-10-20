@@ -89,8 +89,14 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	protected BaseInventoryStorageComponent m_StorageComp;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	protected ref array<Managed> m_WeaponSlotComponentArray = {};
-	
 	protected ref RandomGenerator m_RNG = new RandomGenerator;
+
+	// A array we use primarily for replication of m_mAllPlayerGearScriptsMap to clients.
+	[RplProp(onRplName: "UpdateLocalPlayerGearScriptsMap")]
+	protected ref array<string> m_aAllPlayerGearScriptsArray = new array<string>;
+	
+	// A hashmap that is modified only on each client by a .BumpMe from the authority.
+	protected ref map<string, string> m_mAllPlayerGearScriptsMap = new map<string, string>;
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	static CRF_GearScriptGamemodeComponent GetInstance()
@@ -119,7 +125,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		super.OnControllableSpawned(entity);
 		
-		if(!m_bGearScriptEnabled || !Replication.IsServer())
+		if(!m_bGearScriptEnabled || RplSession.Mode() == RplMode.Client)
 			return;
 		
 		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 100, false, entity);
@@ -148,11 +154,87 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Functions to replicate and store values to each clients m_mAllPlayerGearScriptsMap
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	override protected void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		//--- Server only
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+			
+		GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(4000, 6000), true);
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	override protected void OnGameEnd()
+	{
+		super.OnGameEnd();
+		
+		//--- Server only
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		
+		GetGame().GetCallqueue().Remove(UpdatePlayerGearScriptsArray);
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	string ReturnPlayerGearScriptsMapValue(int playerID, string key)
+	{
+		// Get the players key
+		key = string.Format("%1%2", playerID, key);
+		return m_mAllPlayerGearScriptsMap.Get(key);
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SetPlayerGearScriptsMapValue(string value, int playerID, string key)
+	{
+		// Get the players key
+		key = string.Format("%1%2", playerID, key);
+		m_mAllPlayerGearScriptsMap.Set(key, value);
+	}
+
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	protected void UpdatePlayerGearScriptsArray()
+	{
+		// Create a temp array so we arent broadcasting for each change to m_aAllPlayerGearScriptsArray.
+		protected ref array<string> tempPlayerArray = new array<string>;
+
+		// Fill tempPlayerArray with all keys and values in m_mAllPlayerGearScriptsMap.
+		for (int i = 0; i < m_mAllPlayerGearScriptsMap.Count(); i++)
+		{
+			string key = m_mAllPlayerGearScriptsMap.GetKey(i);
+			string value = m_mAllPlayerGearScriptsMap.Get(key);
+			
+			tempPlayerArray.Insert(string.Format("%1~%2", key, value));
+		};
+
+		// Replicate m_aAllPlayerGearScriptsArray to all clients.
+		m_aAllPlayerGearScriptsArray = tempPlayerArray;
+		Replication.BumpMe();
+	}
+
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	protected void UpdateLocalPlayerGearScriptsMap()
+	{
+		// Fill m_mAllPlayerGearScriptsMap with all keys and values from authorities m_mAllPlayerGearScriptsMap.
+		foreach (string playerKeyAndValueToSplit : m_aAllPlayerGearScriptsArray)
+		{
+			array<string> playerKeyAndValueArray = {};
+			playerKeyAndValueToSplit.Split("~", playerKeyAndValueArray, false);
+			m_mAllPlayerGearScriptsMap.Set(playerKeyAndValueArray[0], playerKeyAndValueArray[1]);
+		};
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Functions to for Gear Script
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AddGearToEntity(IEntity entity, ResourceName prefabName)
 	{
 		ResourceName ResourceNameToScan = prefabName;	
 		
-		if(!ResourceNameToScan.Contains("CRF_GS_"))
+		if(!ResourceNameToScan.Contains("CRF_GS_") || !entity)
 			return;
 		
 		ResourceName gearScriptResourceName;
@@ -179,6 +261,18 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
 		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
 		m_SCRInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		
+		if(!m_Inventory || !m_InventoryManager || !m_SCRInventoryManager)
+		{
+			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE COMPONENTS WE NEED!", entity), LogLevel.ERROR);
+			return;
+		}
+		
+		array<IEntity> items = {};
+		m_SCRInventoryManager.GetAllRootItems(items);
+		
+		foreach(IEntity item : items)
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
 
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// GET ROLE
@@ -236,7 +330,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(m_WeaponSlotComponentArray, gearConfig, "",         "",    true);  isVehSpec = true; break;}
 			}
 		} else
-			Print(string.Format("CRF GEAR SCRIPT : NO WEAPONS SET: %1", gearScriptResourceName), LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: NO WEAPONS SET: %1", gearScriptResourceName), LogLevel.ERROR);
 			
 		if(gearConfig.m_CustomFactionGear)
 		{
@@ -248,7 +342,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				case(isVehSpec) : {UpdateVehicleSpecialtiesCustomGear(gearConfig.m_CustomFactionGear.m_VehicleSpecialtiesCustomGear, role);   break;}
 			}
 		} else
-			Print(string.Format("CRF GEAR SCRIPT : NO CUSTOM GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: NO CUSTOM GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// ITEMS
@@ -293,7 +387,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			foreach(CRF_Inventory_Item item : gearConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
 				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role, gearConfig.m_DefaultFactionGear.m_bEnableMedicFrags);
 		} else 
-			Print(string.Format("CRF GEAR SCRIPT : NO DEFAULT GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: NO DEFAULT GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
