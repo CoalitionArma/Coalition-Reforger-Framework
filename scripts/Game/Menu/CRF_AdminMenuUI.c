@@ -641,7 +641,12 @@ class CRF_AdminMenu: ChimeraMenuBase
 	void UpdateSpawnGroup()
 	{
 		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		int storedGroupID = CRF_GearScriptGamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GID").ToInt(); // GID = GROUP ID  
+		string storedGroupIDStr = CRF_GearScriptGamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GID"); // GID = GROUP ID 
+		
+		if(storedGroupIDStr.IsEmpty() || playerID == 0)
+			return;
+		
+		int storedGroupID = storedGroupIDStr.ToInt();
 		foreach(int i, SCR_AIGroup group : m_outGroups)
 		{
 			if(storedGroupID != 0 && group.GetGroupID() == storedGroupID)
@@ -697,6 +702,9 @@ class CRF_AdminMenu: ChimeraMenuBase
 		string prefab =  CRF_GearScriptGamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GSR"); // GSR = Gear Script Resource
 		vector spawnpoint = m_spawnPoints.Get(m_list3.GetSelectedItem());
 		m_clientAdminMenuComponent.SpawnGroup(playerID, prefab, spawnpoint , groupID);
+		
+		GetGame().GetCallqueue().CallLater(ClearMenu, 1250, false);
+		GetGame().GetCallqueue().CallLater(InitializeRespawnMenu, 1825, false);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -21,6 +21,23 @@ class CRF_GearScriptClientComponent: ScriptComponent
 
 		SCR_PlayerController.Cast(owner).m_OnControlledEntityChanged.Insert(OnControlledEntityChanged);
 		SCR_PlayerControllerGroupComponent.Cast(SCR_PlayerController.Cast(owner).FindComponent(SCR_PlayerControllerGroupComponent)).GetOnGroupChanged().Insert(UpdateLocalPlayerGroup);
+		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 500, true);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void WaitTillGameStart()
+	{
+		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+			return;
+		
+		GetGame().GetCallqueue().Remove(WaitTillGameStart);
+		GetGame().GetCallqueue().CallLater(DelayUpdate, 650, false);
+	}
+	
+	protected void DelayUpdate()
+	{
+		OnControlledEntityChanged(SCR_PlayerController.GetLocalMainEntity(), SCR_PlayerController.GetLocalMainEntity());
+		UpdateLocalPlayerGroup(SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId()).GetGroupID())
 	}
 	
 	//------------------------------------------------------------------------------------------------

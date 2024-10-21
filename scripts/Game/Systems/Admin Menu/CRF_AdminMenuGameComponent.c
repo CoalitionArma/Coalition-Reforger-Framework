@@ -116,6 +116,8 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void Respawn(int playerId, string prefab, vector spawnLocation, int groupID)
 	{
+		Rpc(RpcAsk_CloseMap, playerId);
+		
 		if(prefab.IsEmpty())
 		{
 			switch(m_groupsManager.FindGroup(groupID).m_faction)
@@ -145,6 +147,19 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcAsk_CloseMap(int playerID)
+	{
+		if(playerID == 0 || SCR_PlayerController.GetLocalPlayerId() != playerID)
+			return;
+		
+		PS_SpectatorMenu spectatorMenu = PS_SpectatorMenu.Cast(GetGame().GetMenuManager().GetTopMenu());
+		
+		if(spectatorMenu)
+			spectatorMenu.CloseMap();
+	}
+		
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SwitchToSpawnedEntity(int playerId, IEntity entity, int frameCounter, int groupID)
 	{
 		if (frameCounter > 0) // Await four frames
@@ -165,7 +180,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		}
 		SCR_AIGroup playerGroup = m_groupsManager.FindGroup(groupID);
 		
-		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, playerGroup, playerId, playableManager);
+		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 1250, false, playerGroup, playerId, playableManager);
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetPlayerGroup(SCR_AIGroup group, int playerID, PS_PlayableManager playableManager)
