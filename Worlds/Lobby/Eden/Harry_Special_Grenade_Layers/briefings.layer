@@ -1,0 +1,13 @@
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 4780.591 212.58 7014.728
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 4768.025 229.885 7016.509
+ m_sTitle "Win Conditions"
+ m_sTextData "Objective 1:"\
+ "Capture the church"
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 4783.92 212.044 7015.94
+ m_sTextData "You have 10 minutes to capture the church. Whoever holds it at the end wins."
+}
