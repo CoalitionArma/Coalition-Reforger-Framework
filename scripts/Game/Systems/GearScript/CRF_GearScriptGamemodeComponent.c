@@ -128,17 +128,23 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	ResourceName GetGearScriptResource(string factionKey)
 	{
-		ResourceName gearScriptResourceName = "";
+		return GetGearScriptSettings(factionKey).m_rGearScript;
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	CRF_GearScriptContainer GetGearScriptSettings(string factionKey)
+	{
+		CRF_GearScriptContainer gearScriptContainer;
 		
 		switch(factionKey)
 		{
-			case "BLUFOR" : {gearScriptResourceName = m_BLUFORGearScriptSettings.m_rGearScript;   break;}
-			case "OPFOR"  : {gearScriptResourceName = m_OPFORGearScriptSettings.m_rGearScript;    break;}
-			case "INDFOR" : {gearScriptResourceName = m_INDFORGearScriptSettings.m_rGearScript;   break;}
-			case "CIV"    : {gearScriptResourceName = m_CIVILIANGearScriptSettings.m_rGearScript; break;}
+			case "BLUFOR" : {gearScriptContainer = m_BLUFORGearScriptSettings;   break;}
+			case "OPFOR"  : {gearScriptContainer = m_OPFORGearScriptSettings;    break;}
+			case "INDFOR" : {gearScriptContainer = m_INDFORGearScriptSettings;   break;}
+			case "CIV"    : {gearScriptContainer = m_CIVILIANGearScriptSettings; break;}
 		}
 		
-		return gearScriptResourceName;
+		return gearScriptContainer;
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

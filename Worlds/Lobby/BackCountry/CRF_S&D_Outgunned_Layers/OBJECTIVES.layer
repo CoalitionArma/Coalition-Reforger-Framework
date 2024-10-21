@@ -1,0 +1,50 @@
+$grp SCR_BaseTriggerEntity {
+ bSiteTrigger {
+  coords 628.053 538.818 1916.681
+  angleY 49.641
+  {
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords -283.667 8.744 -236.573
+     m_sTitle "Destroy BombSite B"
+     m_sTextData "Destroy BombSite B"
+     m_iOrder 1
+     m_iScore 50
+     m_sFactionKey "INDFOR"
+    }
+    {
+     coords -292.196 -2.277 -220.333
+     m_sTitle "Protect BombSite B"
+     m_sTextData "Protect BombSite B"
+     m_iOrder 1
+     m_iScore 50
+     m_sFactionKey "BLUFOR"
+    }
+   }
+  }
+ }
+ aSiteTrigger {
+  coords 372.022 519.315 2305.25
+  angleY 0.621
+  {
+   $grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+    {
+     coords -582.414 -3.401 108.524
+     angleY 3.497
+     m_sTitle "Destroy BombSite A"
+     m_sTextData "Destroy BombSite A"
+     m_iScore 50
+     m_sFactionKey "INDFOR"
+    }
+    {
+     coords -589.936 -4.179 125.255
+     angleY 3.497
+     m_sTitle "Protect BombSite A"
+     m_sTextData "Protect BombSite A"
+     m_iScore 50
+     m_sFactionKey "BLUFOR"
+    }
+   }
+  }
+ }
+}
