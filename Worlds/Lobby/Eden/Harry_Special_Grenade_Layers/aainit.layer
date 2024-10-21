@@ -14,6 +14,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   }
   CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
    m_iTimeLimitMinutes 10
+   m_bSafestartInstantlyEnabled 0
   }
  }
  coords 4791.973 266.038 7004.633

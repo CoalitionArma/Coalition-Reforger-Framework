@@ -1,32 +1,59 @@
 $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  {
   coords 4635.186 149.317 7100.037
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4651.632 149.317 7075.134
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4674.828 149.317 7059.467
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4696.76 149.317 7064.611
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4714.431 149.317 7076.713
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4724.92 149.317 7099.035
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4712.826 149.317 7121.45
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4700.138 149.317 7140.854
+  m_aHideOnGameModeStates {
+   1
+  }
  }
 }
 PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  coords 4719.577 157.287 6834.623
  angleY 0
+ m_aHideOnGameModeStates {
+  1
+ }
 }
 PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 4758.15 185.077 6991.517
@@ -38,27 +65,51 @@ PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et"
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  {
   coords 4680.399 161.588 6824.04
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4683.83 161.588 6839.096
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4689.952 161.588 6851.031
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4700.711 161.588 6862.038
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4721.259 161.588 6861.366
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4737.149 161.588 6856.13
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4748.831 161.588 6845.153
+  m_aHideOnGameModeStates {
+   1
+  }
  }
  {
   coords 4755.586 161.588 6828.66
+  m_aHideOnGameModeStates {
+   1
+  }
  }
 }
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
@@ -190,4 +241,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
 PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 4679.244 160.231 7089.729
  angleY 0
+ m_aHideOnGameModeStates {
+  1
+ }
 }
