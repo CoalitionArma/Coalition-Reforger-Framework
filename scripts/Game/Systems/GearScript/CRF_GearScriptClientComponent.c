@@ -20,12 +20,25 @@ class CRF_GearScriptClientComponent: ScriptComponent
 			return;
 
 		SCR_PlayerController.Cast(owner).m_OnControlledEntityChanged.Insert(OnControlledEntityChanged);
+		SCR_PlayerControllerGroupComponent.Cast(SCR_PlayerController.Cast(owner).FindComponent(SCR_PlayerControllerGroupComponent)).GetOnGroupChanged().Insert(UpdateLocalPlayerGroup);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	protected void OnControlledEntityChanged(IEntity from, IEntity to)
 	{
+		if(!to.GetPrefabData().GetPrefabName().Contains("CRF_GS_"))
+			return;
+		
 		Rpc(RpcAsk_UpdatePlayerGearScriptMap, to.GetPrefabData().GetPrefabName(), SCR_PlayerController.GetLocalPlayerId(), "GSR"); // GSR = Gear Script Resource
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void UpdateLocalPlayerGroup(int groupId)
+	{
+		if(groupId <= 0)
+			return;
+		
+		Rpc(RpcAsk_UpdatePlayerGearScriptMap, groupId.ToString(), SCR_PlayerController.GetLocalPlayerId(), "GID"); // GID = GROUP ID    
 	}
 	
 	//------------------------------------------------------------------------------------------------

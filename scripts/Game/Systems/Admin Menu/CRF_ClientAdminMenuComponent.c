@@ -102,17 +102,17 @@ class CRF_ClientAdminMenuComponent : ScriptComponent
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Respawn
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SpawnGroup(int playerId, string prefab, vector spawnLocation, int groupID)
+	void SpawnGroup(int playerID, string prefab, vector spawnLocation, int groupID)
 	{
-		Rpc(RpcAsk_SpawnGroup, playerId, prefab, spawnLocation, groupID);
+		Rpc(RpcAsk_SpawnGroup, playerID, prefab, spawnLocation, groupID);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SpawnGroup(int playerId, string prefab, vector spawnLocation, int groupID)
+	void RpcAsk_SpawnGroup(int playerID, string prefab, vector spawnLocation, int groupID)
 	{
 		m_adminMenuComponent = CRF_AdminMenuGameComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_AdminMenuGameComponent));
-		m_adminMenuComponent.SpawnGroupServer(playerId, prefab, spawnLocation, groupID);
+		m_adminMenuComponent.SpawnGroupServer(playerID, prefab, spawnLocation, groupID);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

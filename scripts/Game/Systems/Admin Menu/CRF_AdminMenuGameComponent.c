@@ -165,14 +165,12 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		}
 		SCR_AIGroup playerGroup = m_groupsManager.FindGroup(groupID);
 		
-		playableManager.SetPlayerFactionKey(playerId, playerGroup.m_faction);
-		
-		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, playerGroup, playerId);
+		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, playerGroup, playerId, playableManager);
 	}
-	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SetPlayerGroup(SCR_AIGroup group, int playerID)
+	void SetPlayerGroup(SCR_AIGroup group, int playerID, PS_PlayableManager playableManager)
 	{
+		playableManager.SetPlayerFactionKey(playerID, group.m_faction);
 		m_groupsManager.AddPlayerToGroup(group.GetGroupID(), playerID);
 	}
 	
@@ -186,6 +184,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		if(m_GearScriptEditor)
 		{
 			m_GearScriptEditor.AddGearToEntity(entity, prefab);
+			m_GearScriptEditor.SetPlayerGearScriptsMapValue(prefab, playerID, "GSR"); // GSR = Gear Script Resource
 		}
 	}
 	

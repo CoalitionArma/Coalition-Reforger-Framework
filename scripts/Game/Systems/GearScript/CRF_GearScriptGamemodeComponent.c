@@ -269,7 +269,11 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		}
 		
 		array<IEntity> items = {};
-		m_SCRInventoryManager.GetAllRootItems(items);
+		array<IEntity> itemsRoot = {};
+		m_SCRInventoryManager.GetAllItems(items, m_Inventory);
+		m_SCRInventoryManager.GetAllRootItems(itemsRoot);
+		
+		items.InsertAll(itemsRoot);
 		
 		foreach(IEntity item : items)
 			SCR_EntityHelper.DeleteEntityAndChildren(item);
@@ -284,7 +288,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		string role = "_" + value[3] + "_" + value[4];
 		
 		role.Split(".", value, true);
-		role = value[0];	
+		role = value[0];
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// CLOTHING
