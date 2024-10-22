@@ -198,7 +198,7 @@ class CRF_AdminMenuGameComponent: SCR_BaseGameModeComponent
 		m_GearScriptEditor = CRF_GearScriptGamemodeComponent.GetInstance();
 		if(m_GearScriptEditor)
 		{
-			m_GearScriptEditor.AddGearToEntity(entity, prefab);
+			m_GearScriptEditor.SetupAddGearToEntity(entity, prefab);
 			m_GearScriptEditor.SetPlayerGearScriptsMapValue(prefab, playerID, "GSR"); // GSR = Gear Script Resource
 		}
 	}

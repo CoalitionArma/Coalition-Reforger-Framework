@@ -84,9 +84,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	protected SCR_CharacterInventoryStorageComponent m_Inventory;
-	protected InventoryStorageManagerComponent m_InventoryManager;
-	protected SCR_InventoryStorageManagerComponent m_SCRInventoryManager;
-	protected BaseInventoryStorageComponent m_StorageComp;
+	protected SCR_InventoryStorageManagerComponent m_InventoryManager;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	protected ref array<Managed> m_WeaponSlotComponentArray = {};
 	protected ref RandomGenerator m_RNG = new RandomGenerator;
@@ -117,7 +115,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(500, 2500), false, entity, entity.GetPrefabData().GetPrefabName());
+		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(500, 2500), false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -230,8 +228,12 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Functions to for Gear Script
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void AddGearToEntity(IEntity entity, ResourceName prefabName)
+	void SetupAddGearToEntity(IEntity entity, ResourceName prefabName)
 	{
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// CHECKS & DEFINING KEY VARIABLES
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+		
 		ResourceName ResourceNameToScan = prefabName;	
 		
 		if(!ResourceNameToScan.Contains("CRF_GS_") || !entity)
@@ -250,34 +252,20 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		
 		if(gearScriptResourceName.IsEmpty())
 			return;
-
-        m_SpawnParams.TransformMode = ETransformMode.WORLD;
-        m_SpawnParams.Transform[3] = entity.GetOrigin();
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		// GET COMPONENTS
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		
-		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
-		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
-		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
-		m_SCRInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
+		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
 		
-		if(!m_Inventory || !m_InventoryManager || !m_SCRInventoryManager)
+		if(!inventory || !inventoryManager)
 		{
 			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE COMPONENTS WE NEED!", entity), LogLevel.ERROR);
 			return;
 		}
 		
-		array<IEntity> items = {};
-		array<IEntity> itemsRoot = {};
-		m_SCRInventoryManager.GetAllItems(items, m_Inventory);
-		m_SCRInventoryManager.GetAllRootItems(itemsRoot);
-		
-		items.InsertAll(itemsRoot);
-		
-		foreach(IEntity item : items)
-			SCR_EntityHelper.DeleteEntityAndChildren(item);
-
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// GET ROLE
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -289,6 +277,39 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		
 		role.Split(".", value, true);
 		role = value[0];
+
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// CLEAR CHARACTER
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+		array<IEntity> items = {};
+		array<IEntity> itemsRoot = {};
+		inventoryManager.GetAllItems(items, inventory);
+		inventoryManager.GetAllRootItems(itemsRoot);
+		
+		items.InsertAll(itemsRoot);
+		
+		foreach(IEntity item : items)
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
+		
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// ADD CLOTHING/WEAPONS/ITEMS
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(650, 850), false, entity, role, gearScriptResourceName, gearScriptSettings, inventory, inventoryManager);
+	}
+		
+	protected void AddGearToEntity(IEntity entity, string role, ResourceName gearScriptResourceName, CRF_GearScriptContainer gearScriptSettings, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
+	{		
+		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		
+		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
+		
+		m_Inventory = inventory;
+		m_InventoryManager = inventoryManager;
+		
+        m_SpawnParams.TransformMode = ETransformMode.WORLD;
+        m_SpawnParams.Transform[3] = entity.GetOrigin();
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// CLOTHING
@@ -472,10 +493,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 			};
 			
-			if(m_SCRInventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
+			if(m_InventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
 			{
-				m_StorageComp = m_SCRInventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
-				m_SCRInventoryManager.EquipAny(m_StorageComp, resourceSpawned, -1);
+				BaseInventoryStorageComponent storageComp = m_InventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
+				m_InventoryManager.EquipAny(storageComp, resourceSpawned, -1);
 				continue;
 			};
 			
@@ -522,7 +543,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			bool successfulInsert = m_InventoryManager.TryInsertItemInStorage(item, clothingStorage);
 			
 			if(!successfulInsert)
-				m_SCRInventoryManager.InsertItemCRF(item, clothingStorage, null, null, false);
+				m_InventoryManager.InsertItemCRF(item, clothingStorage, null, null, false);
 		};
 			
 		// if we cant do select clothing, just slap it in wherever
