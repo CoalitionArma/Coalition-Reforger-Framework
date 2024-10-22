@@ -1,0 +1,93 @@
+$grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ M997_maxi_ambulance2 {
+  coords 3886.115 15.239 8454.167
+ }
+ M997_maxi_ambulance1 {
+  coords 3885.674 15.239 8461.077
+ }
+}
+$grp Vehicle : "{4BFB3CA9E83385D2}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_base.et" {
+ Ural4320_transport_covered_CIV_base5 {
+  coords 3942.615 15.59 8449.405
+  angleY -82.694
+ }
+ Ural4320_transport_covered_CIV_base6 {
+  coords 3943.377 16.062 8454.054
+  angleY -82.694
+ }
+ Ural4320_transport_covered_CIV_base7 {
+  coords 3943.919 15.928 8459.438
+  angleY -82.694
+ }
+ Ural4320_transport_covered_CIV_base8 {
+  coords 3944.478 15.878 8464.848
+  angleY -82.694
+ }
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 3927.528 15.523 8450.88
+ {
+  $grp SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+   {
+    coords -0.886 -0.177 -9.403
+    m_sCustomNameSet "1st Platoon"
+    {
+     $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+      {
+       coords -7.577 -0.033 -9.418
+       m_aUnitPrefabSlots {
+        "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+       }
+       m_sCustomNameSet "1-1"
+      }
+      {
+       coords -16.463 -0.033 -7.224
+       m_aUnitPrefabSlots {
+        "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+       }
+       m_sCustomNameSet "1-2"
+       {
+        SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+         coords 3.132 0 15.254
+         m_sCustomNameSet "Humvee 1"
+        }
+       }
+      }
+     }
+    }
+   }
+   {
+    coords -6.812 -0.21 -4.973
+    m_sCustomNameSet "2nd Platoon"
+    {
+     $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+      {
+       coords -17.574 0 -11.867
+       m_aUnitPrefabSlots {
+        "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+       }
+       m_sCustomNameSet "2-1"
+      }
+      {
+       coords -26.483 0.001 -11.374
+       m_aUnitPrefabSlots {
+        "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+       }
+       m_sCustomNameSet "2-2"
+       {
+        SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+         coords 19.874 0.012 23.025
+         m_sCustomNameSet "Humvee 2"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle M151A4 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ coords 3940.927 15.699 8442.296
+ angleY -86.136
+}
