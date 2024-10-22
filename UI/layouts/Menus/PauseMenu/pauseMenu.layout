@@ -1,0 +1,105 @@
+FrameWidgetClass {
+ {
+  OverlayWidgetClass "{5DB8B556919FE5F2}" {
+   Prefab "{5DB8B556919FE5F2}"
+   {
+    FrameWidgetClass "{629939A0B30B25F2}" {
+     Name "CoalAdminMenu"
+     Slot OverlayWidgetSlot "{62A28B2892C0F8BB}" {
+      HorizontalAlign 0
+      VerticalAlign 0
+      Padding 48 191 0 0
+     }
+     Clipping False
+     {
+      ButtonWidgetClass "{629929E91D0D993F}" {
+       Name "CoalAdminMenuButton"
+       Slot FrameWidgetSlot "{629939A0A619CFD6}" {
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 272
+        OffsetRight -272
+        SizeY 45
+        OffsetBottom -45
+       }
+       Clipping False
+       Color 0.502 0 0 1
+       components {
+        SCR_ButtonTextComponent "{62A2944BFAD50BB8}" {
+         m_sSoundClicked "SOUND_FE_BUTTON_CONFIRM"
+         m_bMouseOverToFocus 1
+         m_BackgroundDefault 0.761 0.392 0.078 0
+         m_BackgroundHovered 0.761 0.392 0.078 0
+         m_BackgroundSelected 1 1 1 0.196
+         m_BackgroundSelectedHovered 1 1 1 0.196
+         m_BackgroundClicked 1 1 1 0.196
+         m_bShowBorderOnFocus 0
+         m_bShowBackgroundOnFocus 1
+         m_sTextWidgetName "Text"
+         m_TextToggled 0.761 0.386 0.078 1
+        }
+        ButtonComponent "{62A2A11AF5704DEA}" {
+         m_ColorButtonDefault 0.503 0 0 0
+         m_ColorButtonFocused 0.216 0 0 0.047
+         m_ColorButtonPressed 0.216 0 0 0.3
+         m_ColorButtonHovered 0.216 0 0 0.016
+         m_ColorButtonHoveredFocused 0.216 0 0 0.047
+        }
+       }
+      }
+      ImageWidgetClass "{62A2744AF499ED8B}" {
+       Name "Image099"
+       Slot FrameWidgetSlot "{62A2744AF27F0EBA}" {
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 272
+        OffsetRight -272
+        SizeY 45
+        OffsetBottom -45
+       }
+       Color 0.502 0 0 1
+       Mask "{A1433FBA32E51BBC}UI/Textures/ProgressMasks/ProgressMaskHorizontal_1024x1.edds"
+       "Transition width" 1
+       Progress 0.5
+       "Mask Mode" "Include Range"
+      }
+      TextWidgetClass "{629929E911074A7A}" {
+       Name "CoalAdminMenuText"
+       Slot FrameWidgetSlot "{629939A0A619CF18}" {
+        OffsetLeft 0
+        PositionY 5
+        OffsetTop 5
+        SizeX 272
+        OffsetRight -272
+        SizeY 35
+        OffsetBottom -40
+       }
+       "Z Order" 1
+       Color 0.485 0.485 0.485 1
+       Text "Coalition Admin Menu"
+       "Font Size" 20
+       "Min Font Size" 15
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{5DB8B556919FE5EE}" {
+     Prefab "{5DB8B556919FE5EE}"
+     {
+      ButtonWidgetClass "{5E3F0D899867D744}" {
+       Prefab "{5E3F0D899867D744}"
+       Name "MOTD"
+       Slot LayoutSlot "{5CD890A87968D2F0}" {
+        VerticalAlign 1
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

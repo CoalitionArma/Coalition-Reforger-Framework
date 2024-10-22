@@ -140,22 +140,10 @@ class CRF_Inventory_Item
 class CRF_Default_Gear
 {
 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableLeadershipRadios;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_sLeadershipRadiosPrefab;
-	
-	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableLeadershipBinoculars;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_sLeadershipBinocularsPrefab;
-	
-	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableGIRadios;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_sGIRadiosPrefab;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableAssistantBinoculars;
@@ -228,7 +216,7 @@ class CRF_Leadership_Custom_Gear
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRoleToOverride"}, "%1")]
 class CRF_Squad_Level_Custom_Gear
 {
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Team Lead", "Team Lead"), ParamEnum("Medic", "Medic"), ParamEnum("Grenadier", "Grenadier"), ParamEnum("Rifleman", "Rifleman"), ParamEnum("Rifleman Demo", "Rifleman Demo"), ParamEnum("Rifleman AntiTank", "Rifleman AntiTank"), ParamEnum("Assistant Rifleman AntiTank", "Assistant Rifleman AntiTank"), ParamEnum("Automatic Rifleman", "Automatic Rifleman"), ParamEnum("Assistant Automatic Rifleman", "Assistant Automatic Rifleman")})]
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("Team Lead", "Team Lead"), ParamEnum("Medic", "Medic"),  ParamEnum("Radio Telephone Operator", "Radio Telephone Operator"), ParamEnum("Grenadier", "Grenadier"), ParamEnum("Rifleman", "Rifleman"), ParamEnum("Rifleman Demo", "Rifleman Demo"), ParamEnum("Rifleman AntiTank", "Rifleman AntiTank"), ParamEnum("Assistant Rifleman AntiTank", "Assistant Rifleman AntiTank"), ParamEnum("Automatic Rifleman", "Automatic Rifleman"), ParamEnum("Assistant Automatic Rifleman", "Assistant Automatic Rifleman")})]
 	string m_sRoleToOverride;
 	
 	[Attribute()]

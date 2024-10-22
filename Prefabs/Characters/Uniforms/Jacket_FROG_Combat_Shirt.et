@@ -1,9 +1,0 @@
-GameEntity : "{E44990162EBC47B7}Prefabs/Characters/Uniforms/Jacket_M88_base.et" {
- ID "5104869D194C6243"
- components {
-  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
-   MaxCumulativeVolume 5000
-   m_fMaxWeight 1000
-  }
- }
-}

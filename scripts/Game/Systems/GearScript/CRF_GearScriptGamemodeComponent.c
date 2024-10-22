@@ -1,22 +1,50 @@
+[BaseContainerProps()]
+class CRF_GearScriptContainer
+{
+	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all players on this side", "conf class=CRF_GearScriptConfig")]
+	ResourceName m_rGearScript;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableMiniArsenal;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rLeadershipRadiosPrefab;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rRTORadiosPrefab;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rGIRadiosPrefab;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableLeadershipRadios;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableRTORadios;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableGIRadios;
+};
+
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
 class CRF_GearScriptGamemodeComponentClass: SCR_BaseGameModeComponentClass {}
 
 class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 {	
-	[Attribute("false", UIWidgets.Auto, desc: "Is Gearscript Enabled")]
+	[Attribute("false", UIWidgets.Auto, desc: "Is Gearscript Enabled", category: "GENERAL")]
 	protected bool m_bGearScriptEnabled;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all blufor players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rBluforGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all opfor players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rOpforGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all indfor players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rIndforGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all civ players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rCivGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
@@ -44,7 +72,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	const ref TStringArray m_aLeadershipRolesUGL = {"_COY_P", "_PL_P", "_SL_P", "_FO_P", "_JTAC_P"};
 	const ref TStringArray m_aLeadershipRolesCarbine = {"_MO_P", "_IndirectLead_P", "_LogiLead_P", "_VehLead_P"};
 		
-	const ref TStringArray m_aSquadLevelRolesUGL = {"_TL_P", "_Gren_P"};
+	const ref TStringArray m_aSquadLevelRolesUGL = {"_TL_P", "_Gren_P", "_RTO_P"};
 	const ref TStringArray m_aSquadLevelRolesRifle = {"_Rifleman_P", "_Demo_P", "_AAT_P", "_AAR_P"};
 	const ref TStringArray m_aSquadLevelRolesCarbine = {"_Medic_P"};
 		
@@ -83,7 +111,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(500, 2500), false, entity);
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(500, 2500), false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -100,35 +128,42 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	ResourceName GetGearScriptResource(string factionKey)
 	{
-		ResourceName gearScriptResourceName = "";
-		
-		switch(factionKey)
-		{
-			case "BLUFOR" : {gearScriptResourceName = m_rBluforGearScript; break;}
-			case "OPFOR"  : {gearScriptResourceName = m_rOpforGearScript;  break;}
-			case "INDFOR" : {gearScriptResourceName = m_rIndforGearScript; break;}
-			case "CIV"    : {gearScriptResourceName = m_rCivGearScript;    break;}
-		}
-		
-		return gearScriptResourceName;
+		return GetGearScriptSettings(factionKey).m_rGearScript;
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void AddGearToEntity(IEntity entity)
+	CRF_GearScriptContainer GetGearScriptSettings(string factionKey)
 	{
-		ResourceName ResourceNameToScan = entity.GetPrefabData().GetPrefabName();	
+		CRF_GearScriptContainer gearScriptContainer;
+		
+		switch(factionKey)
+		{
+			case "BLUFOR" : {gearScriptContainer = m_BLUFORGearScriptSettings;   break;}
+			case "OPFOR"  : {gearScriptContainer = m_OPFORGearScriptSettings;    break;}
+			case "INDFOR" : {gearScriptContainer = m_INDFORGearScriptSettings;   break;}
+			case "CIV"    : {gearScriptContainer = m_CIVILIANGearScriptSettings; break;}
+		}
+		
+		return gearScriptContainer;
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void AddGearToEntity(IEntity entity, ResourceName prefabName)
+	{
+		ResourceName ResourceNameToScan = prefabName;	
 		
 		if(!ResourceNameToScan.Contains("CRF_GS_"))
 			return;
 		
 		ResourceName gearScriptResourceName;
+		CRF_GearScriptContainer gearScriptSettings;
 		
 		switch(true)
 		{
-			case(ResourceNameToScan.Contains("BLUFOR")) : {gearScriptResourceName = m_rBluforGearScript; break;}
-			case(ResourceNameToScan.Contains("OPFOR"))  : {gearScriptResourceName = m_rOpforGearScript;  break;}
-			case(ResourceNameToScan.Contains("INDFOR")) : {gearScriptResourceName = m_rIndforGearScript; break;}
-			case(ResourceNameToScan.Contains("CIV"))    : {gearScriptResourceName = m_rCivGearScript;    break;}
+			case(ResourceNameToScan.Contains("BLUFOR")) : {gearScriptResourceName = m_BLUFORGearScriptSettings.m_rGearScript;   gearScriptSettings = m_BLUFORGearScriptSettings;   break;}
+			case(ResourceNameToScan.Contains("OPFOR"))  : {gearScriptResourceName = m_OPFORGearScriptSettings.m_rGearScript;    gearScriptSettings = m_OPFORGearScriptSettings;    break;}
+			case(ResourceNameToScan.Contains("INDFOR")) : {gearScriptResourceName = m_INDFORGearScriptSettings.m_rGearScript;   gearScriptSettings = m_INDFORGearScriptSettings;   break;}
+			case(ResourceNameToScan.Contains("CIV"))    : {gearScriptResourceName = m_CIVILIANGearScriptSettings.m_rGearScript; gearScriptSettings = m_CIVILIANGearScriptSettings; break;}
 		}
 		
 		if(gearScriptResourceName.IsEmpty())
@@ -222,16 +257,20 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		if(gearConfig.m_DefaultFactionGear)
 		{
 			//Who we give Leadership Radios
-			if(gearConfig.m_DefaultFactionGear.m_bEnableLeadershipRadios && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
-				AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sLeadershipRadiosPrefab, 1);
-		
+			if(gearScriptSettings.m_bEnableLeadershipRadios && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
+				AddInventoryItem(gearScriptSettings.m_rLeadershipRadiosPrefab, 1);
+			
+			//Who we give GI Radios
+			if(gearScriptSettings.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
+				AddInventoryItem(gearScriptSettings.m_rGIRadiosPrefab, 1);
+			
+			//Who we give RTO Radios
+			if(gearScriptSettings.m_bEnableRTORadios && role == "_RTO_P")
+				AddInventoryItem(gearScriptSettings.m_rRTORadiosPrefab, 1);
+			
 			//Who we give Leadership Binos
 			if(gearConfig.m_DefaultFactionGear.m_bEnableLeadershipBinoculars && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_TL_P"))
 				AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab, 1);
-			
-			//Who we give GI Radios
-			if(gearConfig.m_DefaultFactionGear.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
-				AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sGIRadiosPrefab, 1);
 			
 			//Who we give Assistant Binos/Extra magazines
 			if(role == "_AAR_P" || role == "_AMMG_P" || role == "_AHMG_P" || role == "_AMAT_P" || role == "_AHAT_P" || role == "_AAA_P" || role == "_AAT_P")
@@ -653,6 +692,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		{
 			case "_TL_P"       : {role = "Team Lead";                    break;}
 			case "_Gren_P"     : {role = "Grenadier";                    break;}
+			case "_RTO_P"      : {role = "Radio Telephone Operator";     break;}
 			case "_Rifleman_P" : {role = "Rifleman";                     break;}
 			case "_Demo_P"     : {role = "Rifleman Demo";                break;}
 			case "_AT_P"       : {role = "Rifleman AntiTank";            break;}
