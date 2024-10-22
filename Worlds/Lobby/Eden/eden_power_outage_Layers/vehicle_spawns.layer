@@ -1,0 +1,34 @@
+$grp SCR_BaseTriggerEntity {
+ spawnHumArm {
+  coords 3902.345 15.286 8456.354
+ }
+ spawnHumArm2 {
+  coords 3893.46 15.239 8456.24
+ }
+ spawnBluforVics {
+  coords 3900.651 33.735 8465.739
+  userScript "	"\
+  "	"\
+  "	string humArm = \"{E84466B9B64D5C3F}Prefabs/M1025/kiok_m1025_armed_M2_guncover_wd.et\";"\
+  "	IEntity spawnHumArm, spawnHumArm2;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnHumArm = GetGame().GetWorld().FindEntityByName(\"spawnHumArm\");"\
+  "		spawnHumArm2 = GetGame().GetWorld().FindEntityByName(\"spawnHumArm2\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawnHumArm.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humArm),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnHumArm2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humArm),GetGame().GetWorld(),spawnParams);"\
+  "		"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+}
