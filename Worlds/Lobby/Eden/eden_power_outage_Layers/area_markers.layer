@@ -2,857 +2,347 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
  {
   coords 3942.967 18.834 8382.489
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3931.191 18.834 8383.404
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3918.728 18.834 8384.372
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3905.607 18.834 8385.392
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3890.584 18.834 8386.559
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3871.191 18.834 8388.064
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3856.164 18.834 8389.231
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3842.007 18.834 8390.331
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3828.854 18.834 8391.353
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3814.701 18.834 8392.452
   angleY -85.558
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3802.871 18.834 8393.371
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3804.214 18.834 8410.092
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3805.269 18.834 8423.228
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3806.326 18.834 8436.395
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3807.353 18.834 8449.184
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3808.495 18.834 8463.405
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3809.552 18.834 8476.566
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3810.468 18.834 8487.969
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3811.55 18.834 8501.441
   angleY 4.59
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3813.062 18.834 8520.275
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3827.051 18.834 8520.064
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3842.277 18.834 8519.836
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3857.294 18.834 8519.609
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3875.719 18.834 8519.332
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3889.41 18.834 8519.125
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3907.743 18.834 8518.85
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3921.664 18.834 8518.641
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3939.71 18.834 8518.368
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3953.877 18.834 8518.154
   angleY 90.862
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3973.475 18.834 8517.857
   angleY -176.701
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3972.485 18.834 8500.687
   angleY -176.701
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3971.094 18.834 8476.55
   angleY -166.015
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3967.303 18.834 8461.328
   angleY -166.015
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3961.893 18.834 8439.605
   angleY -166.015
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3956.805 18.834 8419.176
   angleY -166.015
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3953.154 18.834 8404.516
   angleY -166.015
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3949.55 18.834 8390.043
   angleY -166.015
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 3947.341 18.834 8381.171
   angleY -166.015
-  m_aVisibleForFactions {
-   "BLUFOR"
+  m_aVisibleForFactions +{
   }
  }
  {
   coords 5538.09 62.822 10583.841
  }
 }
-$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+$grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
  {
-  coords 5614.395 41.312 10595.034
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4459.277 15.118 9821.366
+  angleY 32.673
  }
  {
-  coords 5633.813 41.312 10561.348
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4540.096 15.118 9769.536
+  angleY 32.673
  }
  {
-  coords 5651.563 41.312 10530.554
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4590.705 15.118 9737.08
+  angleY 32.673
  }
  {
-  coords 5670.814 41.312 10497.154
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4666.23 15.118 9688.646
+  angleY 32.673
  }
  {
-  coords 5709.816 41.312 10429.493
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4715.226 15.118 9657.224
+  angleY 32.673
  }
  {
-  coords 5738.376 41.312 10379.947
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4763.373 15.118 9626.347
+  angleY 32.673
  }
  {
-  coords 5760.797 41.312 10341.053
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4829.109 15.118 9584.188
+  angleY 82.747
  }
  {
-  coords 5778.665 41.312 10310.056
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4837.66 15.118 9516.994
+  angleY 82.747
  }
  {
-  coords 5799.627 41.312 10273.69
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4849.721 15.118 9422.224
+  angleY 82.747
  }
  {
-  coords 5815.987 41.312 10245.309
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4861.315 15.118 9331.113
+  angleY 55.763
  }
  {
-  coords 5833.009 41.312 10215.779
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4899.18 15.118 9275.476
+  angleY 55.763
  }
  {
-  coords 5850.452 41.312 10185.521
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 4931.925 15.118 9227.358
+  angleY 83.741
  }
  {
-  coords 5881.704 41.312 10131.305
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5019.407 15.118 9236.953
+  angleY 83.741
  }
  {
-  coords 5899.127 41.312 10101.08
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5095.253 15.118 9245.271
+  angleY 83.741
  }
  {
-  coords 5918.996 41.312 10066.611
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5177.299 15.118 9254.271
+  angleY 83.741
  }
  {
-  coords 5941.224 41.312 10028.05
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5248.207 15.118 9262.047
+  angleY 83.741
  }
  {
-  coords 5959.323 41.312 9996.651
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5328.728 15.118 9270.878
+  angleY 83.741
  }
  {
-  coords 5980.765 41.312 9959.455
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5388.391 15.118 9277.422
+  angleY 83.741
  }
  {
-  coords 6008.388 41.312 9911.535
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5440.93 15.118 9283.185
+  angleY 83.741
  }
  {
-  coords 6028.308 41.312 9876.979
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5505.175 15.118 9290.23
+  angleY 83.741
  }
  {
-  coords 6053.107 41.312 9833.959
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5579.396 15.118 9298.371
+  angleY 83.741
  }
  {
-  coords 6073.381 41.312 9798.789
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5633.571 15.118 9304.313
+  angleY 83.741
  }
  {
-  coords 6089.904 41.312 9770.124
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5696.688 15.118 9311.235
+  angleY 83.741
  }
  {
-  coords 6111.984 41.312 9731.818
-  angleY 60.039
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5756.421 15.118 9317.786
+  angleY 83.741
  }
  {
-  coords 6129.863 41.312 9700.802
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5814.897 15.118 9324.198
+  angleY 83.741
  }
  {
-  coords 6061.847 41.312 9652.919
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5858.395 15.118 9328.969
+  angleY 83.741
  }
  {
-  coords 6005.032 41.312 9612.922
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5913.755 15.118 9335.04
+  angleY 83.741
  }
  {
-  coords 5945.228 41.312 9570.819
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5893.005 41.312 9534.055
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5848.751 41.312 9502.9
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5797.392 41.312 9466.744
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5742.945 41.312 9428.414
-  angleY -125.145
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5674.026 41.312 9379.896
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5568.865 41.312 9371.368
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5471.908 41.312 9363.507
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5404.952 41.312 9358.078
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5341.668 41.312 9352.947
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5266.657 41.312 9346.864
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5195.29 41.312 9341.077
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5141.865 41.312 9336.745
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5094.784 41.312 9332.928
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5046.966 41.312 9329.051
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5010.795 41.312 9326.117
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4958.458 41.312 9321.873
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4925.666 41.312 9319.214
-  angleY -94.636
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4900.042 41.312 9317.136
-  angleY -12.2
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4885.876 41.312 9382.648
-  angleY -12.2
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4869.365 41.312 9459.015
-  angleY -12.2
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4854.175 41.312 9529.271
-  angleY -12.2
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4839.315 41.312 9597.994
-  angleY -12.2
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4821.843 41.312 9678.803
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4828.838 41.312 9755.416
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4835.026 41.312 9823.187
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4840.332 41.312 9881.3
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4848.437 41.312 9970.063
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4853.872 41.312 10029.589
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4858.659 41.312 10082.015
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4863.801 41.312 10138.334
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4871.052 41.312 10217.751
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4879.279 41.312 10307.852
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4885.362 41.312 10374.479
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4892.657 41.312 10454.371
-  angleY 5.217
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4897.704 41.312 10509.642
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 4993.125 41.312 10537.686
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5086.25 41.312 10565.055
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5174.427 41.312 10590.971
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5265.816 41.312 10617.83
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5381.993 41.312 10651.975
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5529.45 41.312 10660.793
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5402.408 41.312 10654.03
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5565.96 41.312 10635.359
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5488.769 41.312 10674.504
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 5451.467 41.312 10666.361
-  angleY 73.622
-  m_sDescription "INDFOR Safe Start Border"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 5955.941 15.118 9339.666
+  angleY 83.741
  }
 }
 $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
@@ -1677,7 +1167,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 179.002
  }
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/FIASpawnMarker.et" {
+PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  coords 5380.935 66.373 10521.489
  angleY 0
  m_bVisibleForEmptyFaction 1
