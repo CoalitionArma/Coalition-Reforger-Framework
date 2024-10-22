@@ -1,0 +1,18 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 4377.961 1.594 11157.564
+  angleY 90.026
+  m_MarkerColor 0 0 0.223 1
+  m_sDescription "Objective 2"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5803.012 4.562 9792.993
+  angleY 89.959
+  m_MarkerColor 0 0 0.223 1
+  m_sDescription "Objective 1"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

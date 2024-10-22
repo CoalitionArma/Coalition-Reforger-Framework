@@ -1,0 +1,155 @@
+SCR_BaseFactionTriggerEntity CountTrigger {
+ coords 5785.224 56.45 9862.971
+ userScript "	static int countAlivePlayers(string filter)"\
+ "	{"\
+ "		int players = 0;"\
+ "		array<int> outPlayers = {};"\
+ "		GetGame().GetPlayerManager().GetPlayers(outPlayers);"\
+ "		foreach(int playerId : outPlayers)"\
+ "		{"\
+ "		 	PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId); if (!pc) continue;"\
+ "		  	IEntity controlled = pc.GetControlledEntity();"\
+ "		  	SCR_ChimeraCharacter ch = SCR_ChimeraCharacter.Cast(controlled); if (!ch) continue;"\
+ "			CharacterControllerComponent ccc = ch.GetCharacterController();"\
+ "			if (filter == ch.GetFactionKey() && !ccc.IsDead()) ++players;"\
+ "		}"\
+ "		return players;"\
+ "	}"
+ TriggerShapeType Sphere
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ UpdatePeriod 15
+ OnQueryFinished ""\
+ "		if(!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())"\
+ "			return;"\
+ "	"\
+ "		int bluforCount = countAlivePlayers(\"BLUFOR\");"\
+ ""\
+ "		if (bluforCount < 4)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Indfor has decimated Blufor!\", 10);"\
+ "			IEntity countTrigger = GetGame().GetWorld().FindEntityByName(\"CountTrigger\");"\
+ "			delete countTrigger;"\
+ "		}"\
+ "	"
+ m_sOwnerFactionKey "BLUFOR"
+}
+$grp SCR_FactionControlTriggerEntity {
+ PowerTrigger {
+  coords 5793.274 4.99 9781.968
+  angleY 2.173
+  userScript "	void timerCheck()"\
+  "	{"\
+  "		if (m_bResult)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor has restored power.\", 10);"\
+  "			IEntity powerTrigger = GetGame().GetWorld().FindEntityByName(\"PowerTrigger\");"\
+  "			delete powerTrigger;"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		PS_Objective indObjective = PS_Objective.Cast(GetGame().GetWorld().FindEntityByName(\"IndObj_1\"));"\
+  "		indObjective.SetCompleted(true);"\
+  "	"
+  TriggerShapeType "Oriented Bounding Box"
+  SphereRadius 22
+  BoxMaxs 30 20 25
+  DrawShape 1
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  UpdatePeriod 15
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		int timerDuration = 900000;"\
+  "		"\
+  "		if (m_bResult)"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(timerCheck, timerDuration, false);"\
+  "		"\
+  "			PS_Objective bluObjective = PS_Objective.Cast(GetGame().GetWorld().FindEntityByName(\"BluObj_1\"));"\
+  "			bluObjective.SetCompleted(true);"\
+  "				"\
+  "			PS_Objective indObjective = PS_Objective.Cast(GetGame().GetWorld().FindEntityByName(\"IndObj_1\"));"\
+  "			indObjective.SetCompleted(false);"\
+  "		}"\
+  "			"\
+  "	"
+  m_sOwnerFactionKey "BLUFOR"
+  m_iRatioMethod "More than"
+ }
+ HarborTrigger {
+  coords 4384.861 1.591 11089.009
+  angleY -3.334
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		PS_Objective indObjective = PS_Objective.Cast(GetGame().GetWorld().FindEntityByName(\"IndObj_2\"));"\
+  "		indObjective.SetCompleted(true);"\
+  "	"
+  TriggerShapeType "Oriented Bounding Box"
+  SphereRadius 80
+  BoxMaxs 50 20 150
+  DrawShape 1
+  TriggerActivationType "All changes"
+  PeriodicQueries 1
+  UpdatePeriod 15
+  OnQueryFinished "		"\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		IEntity powerTrigger = GetGame().GetWorld().FindEntityByName(\"PowerTrigger\");"\
+  "				"\
+  "		if (powerTrigger == null && m_iFriendlyCount >0)"\
+  "		{"\
+  "			"\
+  "			if (m_bResult)"\
+  "			{"\
+  "				SCR_PopUpNotification.GetInstance().PopupMsg(\"All Blufor Objectives Achieved!\", 10);"\
+  "				"\
+  "				PS_Objective bluObjective = PS_Objective.Cast(GetGame().GetWorld().FindEntityByName(\"BluObj_2\"));"\
+  "				bluObjective.SetCompleted(true);"\
+  "			"\
+  "				"\
+  "				PS_Objective indObjective = PS_Objective.Cast(GetGame().GetWorld().FindEntityByName(\"IndObj_2\"));"\
+  "				indObjective.SetCompleted(false);"\
+  "			"\
+  "				IEntity harborTrigger = GetGame().GetWorld().FindEntityByName(\"HarborTrigger\");"\
+  "				delete harborTrigger;"\
+  "			}"\
+  "		}"\
+  "	"
+  m_sOwnerFactionKey "BLUFOR"
+  m_iRatioMethod "More than"
+  m_fFriendlyRatioLimit 0
+ }
+}
+$grp PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ BluObj_1 {
+  coords 5843.688 4.561 9794.839
+  m_sTitle "Repaired power plant"
+  m_sTextData ""
+  m_iScore 75
+  m_sFactionKey "BLUFOR"
+ }
+ BluObj_2 {
+  coords 5839.139 4.531 9806.392
+  m_sTitle "Broke through to harbor"
+  m_sTextData ""
+  m_iScore 25
+  m_sFactionKey "BLUFOR"
+ }
+ IndObj_1 {
+  coords 4416.698 1.613 11116.968
+  m_sTitle "Defended power plant"
+  m_sTextData ""
+  m_iScore 75
+  m_sFactionKey "INDFOR"
+ }
+ IndObj_2 {
+  coords 4410.39 1.591 11137.398
+  m_sTitle "Stop blufor's breakthrough"
+  m_sTextData ""
+  m_iScore 25
+  m_sFactionKey "INDFOR"
+ }
+}
