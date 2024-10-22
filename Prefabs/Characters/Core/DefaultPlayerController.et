@@ -7,7 +7,7 @@ SCR_PlayerController {
   }
   CRF_GameModePlayerComponent "{61303B991D92F9B3}" {
   }
-  CRF_HintSenderComponent "{624D1C15064C6C7E}" {
+  CRF_GearScriptClientComponent "{62A63845B91B07ED}" {
   }
   CRF_SafeStartPlayerComponent "{61303B991FCA4CF1}" {
   }

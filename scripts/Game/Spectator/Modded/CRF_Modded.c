@@ -9,15 +9,11 @@ modded class PS_SpectatorMenu
 		m_Sender = SCR_NotificationSenderComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent));
 		m_Sender.SetKillFeedTypeDeadLocal();
 	}
-}
-
-modded class PS_GameModeCoop
-{
-	protected SCR_NotificationSenderComponent m_Sender;
 	
-	override void SwitchToSpawnedEntity(int playerId, PS_RespawnData respawnData, IEntity entity, int frameCounter)
+	override void OnMenuClose()
 	{
-		super.SwitchToSpawnedEntity(playerId, respawnData, entity, frameCounter);
+		super.OnMenuClose();
+		
 		m_Sender = SCR_NotificationSenderComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent));
 		m_Sender.SetKillFeedTypeNoneLocal();
 	}
