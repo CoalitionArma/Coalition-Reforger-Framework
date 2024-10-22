@@ -44,6 +44,7 @@ GenericEntity {
      UIInfo UIInfo "{62AD09022C339BF9}" {
       Name "#AR-FreeRoamBuilding_Action_Disassembly-UC"
      }
+     Duration 20
     }
    }
   }
