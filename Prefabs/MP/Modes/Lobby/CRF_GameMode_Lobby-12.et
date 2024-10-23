@@ -237,7 +237,11 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      }
     }
     SCR_Faction "{607AA5C7A94496DA}" {
+     UIInfo SCR_FactionUIInfo "{56B49118D8D0A9C5}" {
+      Icon "{6C40CAD74C2327B0}CRF Images/CIV.edds"
+     }
      m_sFactionFlag "{6C40CAD74C2327B0}CRF Images/CIV.edds"
+     m_FactionFlagMaterial "{936E6C67A71A9421}Assets/Props/Fabric/Flags/Data/Flag_2_3_White.emat"
      m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
       m_sCallsignGroupFormat "%3"
      }
@@ -329,7 +333,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      FactionColor 0.016 0.552 0.905 1
      UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
       Name "BLUFOR"
-      Icon "{EB7F65DBC9392557}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USA.edds"
+      Icon "{E5DECCCA6F4B7417}CRF Images/BLUFOR.edds"
       m_sNameUpper "BLUFOR"
      }
      m_OutlineFactionColor 0.005 0.044 0.114 1
@@ -337,7 +341,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_NotificationTextFactionColor 0.013 0.395 0.651 1
      m_bIsPlayable 0
      m_sFactionFlag "{E5DECCCA6F4B7417}CRF Images/BLUFOR.edds"
-     m_FactionFlagMaterial "{610803CC3F3D6649}Assets/Props/Fabric/Flags/Data/Flag_1_2_USA.emat"
+     m_FactionFlagMaterial "{DB52C2D4463AA0A0}Assets/Props/Fabric/Flags/Data/Flag_2_3_Blue.emat"
      m_FactionLabel FACTION_US
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_bIsAssignedRandomly 0
@@ -524,7 +528,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      FactionColor 0.855 0.031 0.028 1
      UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
       Name "OPFOR"
-      Icon "{40B12B0DF911B856}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USSR.edds"
+      Icon "{0A1F947948102E6A}CRF Images/OPFOR.edds"
       m_sNameUpper "OPFOR"
      }
      m_iOrder 1000
@@ -533,7 +537,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_NotificationTextFactionColor 0.521 0.021 0.019 1
      m_bIsPlayable 0
      m_sFactionFlag "{0A1F947948102E6A}CRF Images/OPFOR.edds"
-     m_FactionFlagMaterial "{B47B52D9DA68905D}Assets/Props/Fabric/Flags/Data/Flag_1_2_SovietArmy.emat"
+     m_FactionFlagMaterial "{362AC46447DBE58B}Assets/Props/Fabric/Flags/Data/Flag_1_2_Red.emat"
      m_FactionLabel FACTION_USSR
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_bIsAssignedRandomly 0
@@ -716,7 +720,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      FactionColor 0 0.44 0.078 1
      UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
       Name "INDFOR"
-      Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+      Icon "{2513C1E3711E50BD}CRF Images/INDFOR.edds"
       m_sNameUpper "INDFOR"
      }
      m_iOrder 2000
