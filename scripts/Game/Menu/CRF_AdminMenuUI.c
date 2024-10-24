@@ -266,7 +266,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 				case 4:    {prefab = "{C62B8D48AAA03249}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PL_P.et"; 				break;}
 				case 5:    {prefab = "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"; 			break;}
 				case 6:    {prefab = "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"; 				break;}
-				case 7:    {prefab = "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_RTO_P.et"; 			break;}
+				case 7:    {prefab = "{4BCB20FFA9A0D6BF}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_RTO_P.et"; 			break;}
 				case 8:    {prefab = "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"; 				break;}
 				case 9:    {prefab = "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"; 				break;}
 				case 10:   {prefab = "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"; 			break;}
@@ -311,7 +311,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 				case 4:    {prefab = "{9613738A003FBAD2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_PL_P.et"; 				break;}
 				case 5:    {prefab = "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"; 			break;}
 				case 6:    {prefab = "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"; 				break;}
-				case 7:    {prefab = "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_RTO_P.et"; 			    break;}
+				case 7:    {prefab = "{CF0D98BF4CA5E97F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_RTO_P.et"; 			    break;}
 				case 8:    {prefab = "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"; 				break;}
 				case 9:    {prefab = "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et"; 				break;}
 				case 10:   {prefab = "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et"; 				break;}
@@ -356,7 +356,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 				case 4:    {prefab = "{83EC6868D4319899}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PL_P.et"; 				break;}
 				case 5:    {prefab = "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"; 			break;}
 				case 6:    {prefab = "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"; 				break;}
-				case 7:    {prefab = "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_RTO_P.et"; 			break;}
+				case 7:    {prefab = "{5DE8853A75CEFDDC}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_RTO_P.et"; 			break;}
 				case 8:    {prefab = "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et"; 				break;}
 				case 9:    {prefab = "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et"; 				break;}
 				case 10:   {prefab = "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et"; 			break;}
@@ -401,7 +401,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 				case 4:    {prefab = "{A0249B4DA9B1CA01}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_PL_P.et"; 				break;}
 				case 5:    {prefab = "{8C7C798DDB2E1DDC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Medic_P.et"; 			break;}
 				case 6:    {prefab = "{AA81CB001FA13986}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_SL_P.et"; 				break;}
-				case 7:    {prefab = "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_RTO_P.et"; 			    break;}
+				case 7:    {prefab = "{9E7073842E6135B7}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_RTO_P.et"; 			    break;}
 				case 8:    {prefab = "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et"; 				break;}
 				case 9:    {prefab = "{0F04738DCBE78DEC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AR_P.et"; 				break;}
 				case 10:   {prefab = "{2D4DD0A688F7F131}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAR_P.et"; 				break;}
