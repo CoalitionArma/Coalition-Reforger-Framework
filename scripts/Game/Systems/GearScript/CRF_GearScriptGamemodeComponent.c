@@ -353,6 +353,8 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				// Vehicle Specialties -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 				case(m_aVehicleSpecialtiesRolesCarbine.Contains(role)) : {AddWeapons(m_WeaponSlotComponentArray, gearConfig, "Carbine",  "",    false); isVehSpec = true; break;}
 				case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(m_WeaponSlotComponentArray, gearConfig, "",         "",    true);  isVehSpec = true; break;}
+				// Default -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+				default                                                : {AddWeapons(m_WeaponSlotComponentArray, gearConfig, "Rifle",    "",    false); break;}
 			}
 		} else
 			Print(string.Format("CRF GEAR SCRIPT ERROR: NO WEAPONS SET: %1", gearScriptResourceName), LogLevel.ERROR);
