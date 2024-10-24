@@ -13,17 +13,250 @@ FrameWidgetClass {
     OffsetBottom 0
    }
    {
+    TextWidgetClass "{62984A112DE0DAA4}" {
+     Name "FactionNameText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 370.636
+      OffsetLeft 370.636
+      PositionY 20.775
+      OffsetTop 20.775
+      SizeX 143.75
+      OffsetRight -514.386
+      SizeY 30.003
+      OffsetBottom -50.778
+     }
+     Text "Set Faction Name"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    EditBoxWidgetClass "{62984A1169F64927}" {
+     Name "FactionEditBox"
+     Slot FrameWidgetSlot "{62984A1169F649C8}" {
+      PositionX 370.504
+      OffsetLeft 370.504
+      PositionY 53.718
+      OffsetTop 53.718
+      SizeX 143.7
+      OffsetRight -514.204
+      SizeY 30
+      OffsetBottom -83.718
+     }
+     text "BLUFOR"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{62984A11560D602B}" {
+     Name "FileNameText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 29.309
+      OffsetLeft 29.309
+      PositionY 20.817
+      OffsetTop 20.817
+      SizeX 143.75
+      OffsetRight -173.06
+      SizeY 30.003
+      OffsetBottom -50.82
+     }
+     Text "Set File Name"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Vertical Alignment" Center
+    }
+    EditBoxWidgetClass "{62984A116F6F7A14}" {
+     Name "FileNameEditBox"
+     Slot FrameWidgetSlot "{62984A116F6F7A3B}" {
+      PositionX 29.396
+      OffsetLeft 29.396
+      PositionY 53.76
+      OffsetTop 53.76
+      SizeX 328.97
+      OffsetRight -358.367
+      SizeY 30
+      OffsetBottom -83.76
+     }
+     text "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
+     "Font Size" 12
+    }
+    CheckBoxWidgetClass "{62984A77CB26EED5}" {
+     Name "AssistantBinos"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 897.669
+      OffsetTop 897.669
+      SizeX 98.6
+      OffsetRight -520.774
+      SizeY 30
+      OffsetBottom -927.669
+     }
+    }
+    TextWidgetClass "{62984A2E8B6DCF49}" {
+     Name "AssistantBinosText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 897.696
+      OffsetTop 897.696
+      SizeX 143.75
+      OffsetRight -591.875
+      SizeY 30
+      OffsetBottom -927.696
+     }
+     Text "Enable Assistant Binos"
+     "Font Size" 15
+     "Min Font Size" 14
+     "Vertical Alignment" Center
+    }
+    CheckBoxWidgetClass "{62984A77CB26EE01}" {
+     Name "MedicFrags"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 936.669
+      OffsetTop 936.669
+      SizeX 98.6
+      OffsetRight -520.774
+      SizeY 30
+      OffsetBottom -966.669
+     }
+    }
+    TextWidgetClass "{62984A2E709C5037}" {
+     Name "MedicFragsText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 936.497
+      OffsetTop 936.497
+      SizeX 143.75
+      OffsetRight -591.875
+      SizeY 30
+      OffsetBottom -966.497
+     }
+     Text "Enable Medic Frags"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Vertical Alignment" Center
+    }
+    CheckBoxWidgetClass "{6292AC50D0756BED}" {
+     Name "GIRadios"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 859.795
+      OffsetTop 859.795
+      SizeX 98.6
+      OffsetRight -520.774
+      SizeY 30.001
+      OffsetBottom -889.796
+     }
+    }
+    TextWidgetClass "{62984A767349B3A3}" {
+     Name "GIRadiosText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 859.613
+      OffsetTop 859.613
+      SizeX 143.75
+      OffsetRight -591.875
+      SizeY 30
+      OffsetBottom -889.613
+     }
+     Text "Enable GI Radios"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Vertical Alignment" Center
+    }
+    CheckBoxWidgetClass "{6292AC530A35E22B}" {
+     Name "LeadershipBinos"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 820.795
+      OffsetTop 820.795
+      SizeX 98.6
+      OffsetRight -520.774
+      SizeY 30
+      OffsetBottom -850.795
+     }
+    }
+    TextWidgetClass "{62984A768AE6FCF8}" {
+     Name "LeadershipBinoText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 820.517
+      OffsetTop 820.517
+      SizeX 143.75
+      OffsetRight -591.875
+      SizeY 30
+      OffsetBottom -850.517
+     }
+     Text "Enable Leader Binos"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Vertical Alignment" Center
+    }
+    CheckBoxWidgetClass "{6292AC5360A23AC5}" {
+     Name "LeadershipRadio"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 781.795
+      OffsetTop 781.795
+      SizeX 98.6
+      OffsetRight -520.774
+      SizeY 30
+      OffsetBottom -811.795
+     }
+    }
+    TextWidgetClass "{62984A76A19E069B}" {
+     Name "LeadershipRadioText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 781.835
+      OffsetTop 781.835
+      SizeX 143.75
+      OffsetRight -591.875
+      SizeY 30
+      OffsetBottom -811.835
+     }
+     Text "Enable Leader Radios"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{6292AC538DC5A728}" {
+     Name "SelectFaction"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 781.835
+      OffsetTop 781.835
+      SizeX 100
+      OffsetRight -408.563
+      SizeY 30
+      OffsetBottom -811.835
+     }
+     Text "Select Side"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
     ButtonWidgetClass "{628EFB16DB209197}" {
      Name "Export"
      Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 344
-      OffsetLeft 344
-      PositionY 9
-      OffsetTop 9
+      PositionX 376.222
+      OffsetLeft 376.222
+      PositionY 977.361
+      OffsetTop 977.361
       SizeX 100
-      OffsetRight -444
-      SizeY 30
-      OffsetBottom -39
+      OffsetRight -476.222
+      SizeY 30.009
+      OffsetBottom -1007.37
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -34,14 +267,14 @@ FrameWidgetClass {
     TextWidgetClass "{628EFB16DB209136}" {
      Name "ExportText"
      Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 344
-      OffsetLeft 344
-      PositionY 9
-      OffsetTop 9
+      PositionX 376.222
+      OffsetLeft 376.222
+      PositionY 977.361
+      OffsetTop 977.361
       SizeX 100
-      OffsetRight -444
-      SizeY 30
-      OffsetBottom -39
+      OffsetRight -476.222
+      SizeY 30.009
+      OffsetBottom -1007.37
      }
      Text "Export"
      "Font Size" 21
@@ -50,16 +283,16 @@ FrameWidgetClass {
      "Vertical Alignment" Center
     }
     ButtonWidgetClass "{628EFB17BF8706A1}" {
-     Name "LoadBlufor"
+     Name "Blufor"
      Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 20
-      OffsetLeft 20
-      PositionY 9
-      OffsetTop 9
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 812.534
+      OffsetTop 812.534
       SizeX 100
-      OffsetRight -120
+      OffsetRight -408.563
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -842.534
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -68,34 +301,34 @@ FrameWidgetClass {
      }
     }
     TextWidgetClass "{628EFB176CC5BD87}" {
-     Name "LoadBluforText"
+     Name "BluforText"
      Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 20
-      OffsetLeft 20
-      PositionY 9
-      OffsetTop 9
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 812.534
+      OffsetTop 812.534
       SizeX 100
-      OffsetRight -120
+      OffsetRight -408.563
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -842.534
      }
-     Text "Load BLUFOR"
+     Text "((BLUFOR))"
      "Font Size" 16
      "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
     ButtonWidgetClass "{628EFB1732949527}" {
-     Name "LoadOpfor"
+     Name "Opfor"
      Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 128
-      OffsetLeft 128
-      PositionY 9
-      OffsetTop 9
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 851.534
+      OffsetTop 851.534
       SizeX 100
-      OffsetRight -228
+      OffsetRight -408.563
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -881.534
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -104,34 +337,34 @@ FrameWidgetClass {
      }
     }
     TextWidgetClass "{628EFB173294955D}" {
-     Name "LoadOpforText"
+     Name "OpforText"
      Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 128
-      OffsetLeft 128
-      PositionY 9
-      OffsetTop 9
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 851.534
+      OffsetTop 851.534
       SizeX 100
-      OffsetRight -228
+      OffsetRight -408.563
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -881.534
      }
-     Text "Load OPFOR"
+     Text "OPFOR"
      "Font Size" 16
      "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
     ButtonWidgetClass "{628EFB1701B9A7DF}" {
-     Name "LoadIndfor"
+     Name "Indfor"
      Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 236
-      OffsetLeft 236
-      PositionY 9
-      OffsetTop 9
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 890.534
+      OffsetTop 890.534
       SizeX 100
-      OffsetRight -336
+      OffsetRight -408.563
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -920.534
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -140,18 +373,18 @@ FrameWidgetClass {
      }
     }
     TextWidgetClass "{628EFB1701B9A77F}" {
-     Name "LoadIndforText"
+     Name "IndforText"
      Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 236
-      OffsetLeft 236
-      PositionY 9
-      OffsetTop 9
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 890.534
+      OffsetTop 890.534
       SizeX 100
-      OffsetRight -336
+      OffsetRight -408.563
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -920.534
      }
-     Text "Load INDFOR"
+     Text "INDFOR"
      "Font Size" 16
      "Min Font Size" 15
      "Horizontal Alignment" Center
@@ -182,12 +415,12 @@ FrameWidgetClass {
      Slot FrameWidgetSlot "{628EA9879FA5CA8D}" {
       PositionX 592.1
       OffsetLeft 592.1
-      PositionY 39.326
-      OffsetTop 39.326
+      PositionY 39.347
+      OffsetTop 39.3
       SizeX 100
       OffsetRight -692.1
       SizeY 30
-      OffsetBottom -69.326
+      OffsetBottom -69.3
      }
      Text "Add Helmets"
      "Font Size" 16

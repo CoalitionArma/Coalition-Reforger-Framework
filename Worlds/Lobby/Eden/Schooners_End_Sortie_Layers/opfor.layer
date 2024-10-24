@@ -1,60 +1,62 @@
-SCR_AIGroup : "{E27D8A921EE36F1F}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Company_p.et" {
- coords 5698.563 219.828 7315.178
- angleX -7.17
- angleY -14.274
- angleZ -9.993
- m_sCustomNameSet "Company Command"
+SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_COY_p.et" {
+ coords 5735.146 223.234 7308.005
+ angleX -6.028
+ angleY 1.464
+ angleZ -7.312
+ m_sCustomNameSet "1st Company Command"
  {
-  SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
-   coords -11.803 -0.279 -6.676
+  SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+   coords -21.336 -1.253 2.045
    m_sCustomNameSet "1st Platoon Command"
    {
-    SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-     coords -1.748 -0.128 -7.083
-     m_sCustomNameSet "1st Squad"
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords -7.743 -0.819 -8.734
      {
-      SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-       coords -1.668 -0.186 -9.032
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords -11.734 -1.377 -10.667
        m_sCustomNameSet "2nd Squad"
        {
-        SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-         coords -2.062 -0.277 -9.772
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords -11.466 -1.412 -13.4
          m_sCustomNameSet "3rd Squad"
          {
-          SCR_AIGroup : "{01ADDE8A0A1C41CE}Prefabs/Groups/OPFOR/1980s/Command/Group_USSR80s_Command_Platoon_p.et" {
-           coords 26.73 1.143 19.98
+          SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+           coords 65.024 4.162 8.809
            m_sCustomNameSet "2nd Platoon Command"
            {
-            SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-             coords -0.097 0.033 -9.95
-             m_sCustomNameSet "1st Squad"
+            SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+             coords -7.078 0.097 -15.319
              {
-              SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-               coords -2.817 -0.155 -9.128
+              SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+               coords -12.264 -1.336 -17.196
                m_sCustomNameSet "2nd Squad"
                {
-                SCR_AIGroup : "{9D08872D94DE46D9}Prefabs/Groups/OPFOR/1980s/Infantry/Group_USSR80s_Infantry_RifleSquad_p.et" {
-                 coords 0.068 0.009 -11.038
+                SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+                 coords -10.242 -1.638 -15.618
                  m_sCustomNameSet "3rd Squad"
                  {
-                  SCR_AIGroup : "{DA9758113F23E2A7}Prefabs/Groups/OPFOR/1980s/Support/Group_USSR80s_Support_SniperTeam_p.et" {
-                   coords 579.22 -153.251 778.378
-                   angleX 7.279
-                   angleZ 9.914
+                  SCR_AIGroup OPFOR_Recon_Team_p_1 : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+                   coords 350.694 -104.926 951.366
+                   angleX 6.165
+                   angleY -0.691
+                   angleZ 7.197
                    m_aUnitPrefabSlots {
-                    "{714FB115B072E802}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_TL_P.et" "{6CDC8CF640EBAB9C}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Leader_Spotter_P.et" "{7A725E3945A23A55}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_Medic_P.et" "{9C4F34B1C557B867}Prefabs/Characters/Factions/OPFOR/USSR_Army/Standard/CRF_USSR_Rifleman_Demo_P.et"
+                    "{C7C9C22599C40225}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Spotter_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{C3569C12A6509E8A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Sniper_P.et" "{FCBD0EC1703ECD14}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Demo_P.et"
                    }
                    m_sCustomNameSet "Recon Team"
                    {
-                    SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
-                     coords -650.709 133.728 -680.008
-                     angleX -4.252
-                     angleY 16.596
-                     angleZ -11.529
+                    SCR_AIGroup OFPOR_UAZ_Crew_p_1 : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+                     coords -396.639 137.936 -827.023
+                     m_aUnitPrefabSlots {
+                      "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et" "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et"
+                     }
                      m_sCustomNameSet "UAZ Crew"
                      {
-                      SCR_AIGroup : "{00A891F0CC2CFE88}Prefabs/Groups/OPFOR/1980s/Vehicles/Group_USSR80s_Vehicles_2ManArmorCrew_p.et" {
-                       coords -10.771 -1.378 1.739
+                      SCR_AIGroup OPFOR_UAZ_Crew_p_2 : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+                       coords 4.275 0.962 -2.513
+                       m_aUnitPrefabSlots {
+                        "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et" "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et"
+                       }
                        m_sCustomNameSet "UAZ Crew"
                       }
                      }
