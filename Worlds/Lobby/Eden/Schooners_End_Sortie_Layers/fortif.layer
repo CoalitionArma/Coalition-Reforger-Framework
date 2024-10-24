@@ -190,7 +190,7 @@ GenericEntity FB_spacek_props : "{1CF2B643587718EA}PrefabsEditable/Auto/Props/Fu
  }
 }
 SCR_DestructibleBuildingEntity MOB_orel_props : "{94535842A7947BE6}Prefabs/Structures/Houses/Military/Military HQ/Military HQ.et" {
- coords 7699.835 14.022 8141.849
+ coords 7699.833 0.58 8141.849
  angleY 130.247
  {
   StaticModelEntity : "{029CE13B9B940D8C}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Table_Desk_USSR_04.et" {

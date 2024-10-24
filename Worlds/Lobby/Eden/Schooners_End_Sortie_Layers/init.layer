@@ -3,6 +3,10 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
  components {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+   m_bGearScriptEnabled 1
+   m_rIndforGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/CRF_GS_FIA.conf"
+  }
   SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
    m_iStartingHours 5
    m_aStartingWeatherAndTime {
