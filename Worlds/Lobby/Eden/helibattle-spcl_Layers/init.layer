@@ -1,6 +1,11 @@
 SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 7802.137 341.803 3103.397
 }
-PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/Lobby_CRF_Mode.et" {
+PS_GameModeCoop Lobby_CRF_Mode1 : "{51B31F162162217F}Prefabs/MP/Modes/Lobby/LEGACY_DONOTUSE_Lobby_CRF_Mode.et" {
+ components {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+   Enabled 0
+  }
+ }
  coords 7608.429 -1150.341 2389.206
 }

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0A1F947948102E6A}CRF Images/OPFOR.edds"
+ Name "{2513C1E3711E50BD}CRF Images/INDFOR.edds"
  Configurations {
   JPGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }
