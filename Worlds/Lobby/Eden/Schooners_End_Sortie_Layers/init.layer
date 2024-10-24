@@ -5,6 +5,7 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  components {
   CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
    m_bGearScriptEnabled 1
+   m_rOpforGearScript "{E22DAC2682656C91}Configs/Gearscripts/fluff/CRF_GS_80sUSSRklmk.conf"
    m_rIndforGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/CRF_GS_FIA.conf"
   }
   SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
@@ -84,6 +85,72 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{627961DAB26C017E}" {
+        m_sCallsign "MORTAR"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{62B005603BB78335}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{62B005603B973A11}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{62B005603B8D9E4C}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{62B005603864C4BD}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{62B00560487A74DE}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{62B00560485D6582}" {
+        m_sCallsign "RECCE"
+       }
+       SCR_CallsignInfo "{62B00560483F15D2}" {
+        m_sCallsign "1UAZ"
+       }
+       SCR_CallsignInfo "{62B005604815B8F3}" {
+        m_sCallsign "2UAZ"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{62B00560274ABFD0}" {
         m_sCallsign "MORTAR"
        }
       }
