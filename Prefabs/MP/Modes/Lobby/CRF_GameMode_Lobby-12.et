@@ -8,26 +8,27 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
   CRF_AdminMenuGameComponent "{629F70E06AD4F665}" {
   }
   CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+   m_bGearScriptEnabled 1
    m_BLUFORGearScriptSettings CRF_GearScriptContainer "{629E5222ADE13F54}" {
-    m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
+    m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
     m_rLeadershipRadiosPrefab "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et"
     m_rRTORadiosPrefab "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et"
     m_rGIRadiosPrefab "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et"
    }
    m_OPFORGearScriptSettings CRF_GearScriptContainer "{629E5222ACF12871}" {
-    m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/CRF_GS_USSR80s.conf"
+    m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
     m_rLeadershipRadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
     m_rRTORadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
     m_rGIRadiosPrefab "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et"
    }
    m_INDFORGearScriptSettings CRF_GearScriptContainer "{629E5222AC7F68BE}" {
-    m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/CRF_GS_FIA.conf"
+    m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
     m_rLeadershipRadiosPrefab "{72B7D9E24B495F57}Prefabs/Items/Equipment/Radios/INDFOR_Radio_Leader.et"
     m_rRTORadiosPrefab "{72B7D9E24B495F57}Prefabs/Items/Equipment/Radios/INDFOR_Radio_Leader.et"
     m_rGIRadiosPrefab "{2F19DBB99A359B48}Prefabs/Items/Equipment/Radios/INDFOR_Radio_GI.et"
    }
    m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{629E5222AC1510B5}" {
-    m_rGearScript "{F528876B88A01733}Configs/Gearscripts/CRF_GS_CIVWithGuns.conf"
+    m_rGearScript "{F528876B88A01733}Configs/Gearscripts/Custom/RandAlThor/CRF_GS_CIVWithGuns.conf"
     m_bEnableLeadershipRadios 0
     m_bEnableRTORadios 0
     m_bEnableGIRadios 0
@@ -236,6 +237,11 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      }
     }
     SCR_Faction "{607AA5C7A94496DA}" {
+     UIInfo SCR_FactionUIInfo "{56B49118D8D0A9C5}" {
+      Icon "{6C40CAD74C2327B0}CRF Images/CIV.edds"
+     }
+     m_sFactionFlag "{6C40CAD74C2327B0}CRF Images/CIV.edds"
+     m_FactionFlagMaterial "{936E6C67A71A9421}Assets/Props/Fabric/Flags/Data/Flag_2_3_White.emat"
      m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
       m_sCallsignGroupFormat "%3"
      }
@@ -327,15 +333,15 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      FactionColor 0.016 0.552 0.905 1
      UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
       Name "BLUFOR"
-      Icon "{EB7F65DBC9392557}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USA.edds"
+      Icon "{E5DECCCA6F4B7417}CRF Images/BLUFOR.edds"
       m_sNameUpper "BLUFOR"
      }
      m_OutlineFactionColor 0.005 0.044 0.114 1
      m_NotificationFactionColor 0.016 0.552 0.905 1
      m_NotificationTextFactionColor 0.013 0.395 0.651 1
      m_bIsPlayable 0
-     m_sFactionFlag "{46FB2FB2C2125A3C}UI/Textures/Flags/US-flag-base-3it.edds"
-     m_FactionFlagMaterial "{610803CC3F3D6649}Assets/Props/Fabric/Flags/Data/Flag_1_2_USA.emat"
+     m_sFactionFlag "{E5DECCCA6F4B7417}CRF Images/BLUFOR.edds"
+     m_FactionFlagMaterial "{DB52C2D4463AA0A0}Assets/Props/Fabric/Flags/Data/Flag_2_3_Blue.emat"
      m_FactionLabel FACTION_US
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_bIsAssignedRandomly 0
@@ -413,16 +419,19 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      }
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{5C68A0EE815FA292}" {
+       m_eEntityCatalogType ITEM
       }
-      SCR_EntityCatalogMultiList "{5C9E82F29B327997}" {
+      SCR_EntityCatalog "{62AD6CEE4E96B098}" {
+       m_eEntityCatalogType CHARACTER
       }
-      SCR_EntityCatalogMultiList "{5C68A0EE8B97CA50}" {
+      SCR_EntityCatalog "{62AD6CEE4E329421}" {
+       m_eEntityCatalogType VEHICLE
       }
-      SCR_EntityCatalog "{5C68A0EEB7DB3E84}" {
+      SCR_EntityCatalog "{62AD6CEE4F88E80E}" {
+       m_eEntityCatalogType GROUP
       }
-      SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" {
-      }
-      SCR_EntityCatalog "{5C9EDDD37394AD40}" {
+      SCR_EntityCatalog "{62AD6CEE4F18E678}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
       }
      }
      m_sGroupFlagsImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
@@ -519,7 +528,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      FactionColor 0.855 0.031 0.028 1
      UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
       Name "OPFOR"
-      Icon "{40B12B0DF911B856}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USSR.edds"
+      Icon "{0A1F947948102E6A}CRF Images/OPFOR.edds"
       m_sNameUpper "OPFOR"
      }
      m_iOrder 1000
@@ -527,8 +536,8 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_NotificationFactionColor 0.855 0.031 0.028 1
      m_NotificationTextFactionColor 0.521 0.021 0.019 1
      m_bIsPlayable 0
-     m_sFactionFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
-     m_FactionFlagMaterial "{B47B52D9DA68905D}Assets/Props/Fabric/Flags/Data/Flag_1_2_SovietArmy.emat"
+     m_sFactionFlag "{0A1F947948102E6A}CRF Images/OPFOR.edds"
+     m_FactionFlagMaterial "{362AC46447DBE58B}Assets/Props/Fabric/Flags/Data/Flag_1_2_Red.emat"
      m_FactionLabel FACTION_USSR
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_bIsAssignedRandomly 0
@@ -602,16 +611,19 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      }
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{5C68A0E9BD5E5DD9}" {
+       m_eEntityCatalogType ITEM
       }
-      SCR_EntityCatalogMultiList "{5C9E82F285C09E24}" {
+      SCR_EntityCatalog "{62AD6CE9AD7F5DC0}" {
+       m_eEntityCatalogType CHARACTER
       }
-      SCR_EntityCatalogMultiList "{5C68A0E9B9AA3C2D}" {
+      SCR_EntityCatalog "{62AD6CEE5039F2D3}" {
+       m_eEntityCatalogType VEHICLE
       }
-      SCR_EntityCatalog "{5C68A0E9A51460AB}" {
+      SCR_EntityCatalog "{62AD6CEE51AAFFF6}" {
+       m_eEntityCatalogType GROUP
       }
-      SCR_EntityCatalogMultiList "{5C68A0E9AFE1E631}" {
-      }
-      SCR_EntityCatalog "{5C9EDDD378BA3298}" {
+      SCR_EntityCatalog "{62AD6CEE57E86581}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
       }
      }
      m_sGroupFlagsImageSet "{7CD99D22C7AE8195}UI/Textures/GroupManagement/FlagIcons/GroupFlagsOpfor.imageset"
@@ -708,7 +720,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      FactionColor 0 0.44 0.078 1
      UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
       Name "INDFOR"
-      Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+      Icon "{2513C1E3711E50BD}CRF Images/INDFOR.edds"
       m_sNameUpper "INDFOR"
      }
      m_iOrder 2000
@@ -716,7 +728,7 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_NotificationFactionColor 0 0.44 0.078 1
      m_NotificationTextFactionColor 0 0.296 0.055 1
      m_bIsPlayable 0
-     m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+     m_sFactionFlag "{2513C1E3711E50BD}CRF Images/INDFOR.edds"
      m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
      m_FactionLabel FACTION_FIA
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
@@ -787,16 +799,19 @@ PS_GameModeCoop : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
      m_iFactionRadioFrequency 52000
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{5C68A0EABE8B7B2A}" {
+       m_eEntityCatalogType ITEM
       }
-      SCR_EntityCatalogMultiList "{5C68A0EABB80080C}" {
+      SCR_EntityCatalog "{62AD6CEE79E1F794}" {
+       m_eEntityCatalogType CHARACTER
       }
-      SCR_EntityCatalogMultiList "{5C68A0EAB887A0C4}" {
+      SCR_EntityCatalog "{62AD6CEE7975FCA2}" {
+       m_eEntityCatalogType VEHICLE
       }
-      SCR_EntityCatalog "{5C68A0EAA323888C}" {
+      SCR_EntityCatalog "{62AD6CEE7ECC0787}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
       }
-      SCR_EntityCatalogMultiList "{5C68C44CB0CFC935}" {
-      }
-      SCR_EntityCatalog "{5C9EDDD370331114}" {
+      SCR_EntityCatalog "{62AD6CEE7DED463C}" {
+       m_eEntityCatalogType GROUP
       }
      }
      m_sGroupFlagsImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
