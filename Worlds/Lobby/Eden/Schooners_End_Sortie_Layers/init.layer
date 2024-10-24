@@ -5,8 +5,101 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
  components {
   CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
    m_bGearScriptEnabled 1
-   m_rOpforGearScript "{E22DAC2682656C91}Configs/Gearscripts/fluff/CRF_GS_80sUSSRklmk.conf"
-   m_rIndforGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/CRF_GS_FIA.conf"
+   m_OPFORGearScriptSettings CRF_GearScriptContainer "{62B0E47912F67067}" {
+    m_rGearScript "{04A5B4CC08E55B25}Missions/CRF_DOM106_Cealnup.conf"
+   }
+  }
+  CRF_RadioRespawnSystemComponent "{625032709409AAD9}" {
+   Enabled 0
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 100
+  }
+  PS_ObjectiveManager "{61BCFEC02D3898F3}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{61BCFEC02D3898F7}" {
+     m_iScore 0
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F5}" {
+     m_iScore 25
+     m_sName "#PS-ObjectiveLevel_MinorLoss"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D3898F4}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_Draw"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D38988B}" {
+     m_iScore 75
+     m_sName "#PS-ObjectiveLevel_MinorVictory"
+    }
+    PS_ObjectiveLevel "{61BCFEC02D389EAB}" {
+     m_iScore 100
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  SCR_CampaignBuildingManagerComponent "{61BCFEC02D389EA7}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{5DF6FBB5913F3245}" : "{96A8B496A076F1C0}scripts/Game/Building/CampaignBuildingCompositionOutline.conf" {
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   m_aModules {
+    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
+     m_aLightBanPunishments +{
+     }
+     m_aHeavyBanPunishments +{
+     }
+     m_bWarCrimesEnabled 0
+     m_bWarCrimesProportionalityPrincipleEnabled 0
+     MODIFIER_PROPORTIONALITY_FRIENDLY_KILLS 0
+     MODIFIER_PROPORTIONALITY_FRIENDLY_AI_KILLS 0
+     MODIFIER_PROPORTIONALITY_AI_KILLS 0
+     MODIFIER_PROPORTIONALITY_KILLS 0
+    }
+   }
+   m_iOptionalKickingFriendlyPlayerKillPenalty 9
+   m_iOptionalKickingFriendlyAIKillPenalty 9
+   m_iOptionalKickingKickPenaltyLimit 99999
+   m_iOptionalKickingBanDuration 0
+   m_iOptionalKickingPenaltySubtractionPeriod 99999
+   m_iOptionalKickingPenaltySubtractionPoints 9
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fDOTScale 0.35
+   m_fRegenScale 0.75
+   m_fTourniquetStrengthMultiplier 0.7
+   m_fRegenerationDelay 30
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{61BCFEC02D389EB5}" {
+   m_fDuration 0
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{61BCFEC02D389E8A}" {
+   }
+  }
+  SCR_SaveLoadComponent "{61BCFEC02D389E88}" {
+   m_Struct SCR_MissionStruct "{61BCFEC02D389E8F}" {
+    m_Struct0 SCR_EditorStruct "{61BCFEC02D389E8E}" {
+     m_AttributeList SCR_EditorAttributeList "{590C7881C296FA7D}" : "{F3D6C6D25642352C}Configs/Editor/AttributeLists/Edit.conf" {
+     }
+    }
+   }
+   m_iAutosavePeriod 600
   }
   SCR_TimeAndWeatherHandlerComponent "{61BCFEC02D389E83}" {
    m_iStartingHours 5
@@ -17,6 +110,9 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
     }
    }
   }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
  }
  coords 7579.834 2.546 8948.968
  m_bRemoveSquadMarkers 1
@@ -24,6 +120,29 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
   SCR_FactionManager "627A1B798307B389" {
    ID "61BCFEC02D38B83E"
    Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
     SCR_Faction "{56DEAC40D3C2E623}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aSquadNames {
@@ -87,6 +206,286 @@ PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby
        SCR_CallsignInfo "{627961DAB26C017E}" {
         m_sCallsign "MORTAR"
        }
+      }
+     }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
+      m_sCallsignGroupFormat "%3"
+     }
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR"
+      m_sNameUpper "OPFOR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{623962205CE2B89C}" {
+     UIInfo SCR_FactionUIInfo "{62394AA4B52816D2}" {
+      Name "INDFOR"
+      m_sNameUpper "INDFOR"
+     }
+     m_sFactionRadioEncryptionKey "candleSauce"
+    }
+    SCR_Faction "{5E5106B25048F22B}" {
+     UIInfo SCR_FactionUIInfo "{5E5106B6FC0CCF01}" {
+      Name "BLUFOR"
+     }
+     m_NotificationFactionColor 0.016 0.552 0.905 1
+     m_NotificationTextFactionColor 0.013 0.395 0.651 1
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
+    SCR_Faction "{61500924662B6062}" {
+     UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
+    SCR_Faction "{61A2E10EB49F5D76}" : "{F423B24EB86D1474}Configs/Factions/EUCIV.conf" {
+     m_bIsPlayable 0
+    }
+    SCR_Faction "{623507721849E36C}" {
+     FactionKey "Tali"
+     UIInfo SCR_FactionUIInfo "{623503F81F166E81}" {
+      Name "INDFOR"
+      m_sNameUpper "INDFOR"
+     }
+     m_bIsPlayable 1
+     m_aFriendlyFactionsIds +{
+     }
+     m_sFactionRadioEncryptionKey "candleSauce"
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     FactionKey "BLUFOR"
+     FactionColor 0.016 0.552 0.905 1
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "BLUFOR"
+      Icon "{EB7F65DBC9392557}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_USA.edds"
+      m_sNameUpper "BLUFOR"
+     }
+     m_OutlineFactionColor 0.005 0.044 0.114 1
+     m_NotificationFactionColor 0.016 0.552 0.905 1
+     m_NotificationTextFactionColor 0.013 0.395 0.651 1
+     m_bIsPlayable 0
+     m_sFactionFlag "{46FB2FB2C2125A3C}UI/Textures/Flags/US-flag-base-3it.edds"
+     m_FactionFlagMaterial "{610803CC3F3D6649}Assets/Props/Fabric/Flags/Data/Flag_1_2_USA.emat"
+     m_FactionLabel FACTION_US
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{55CCB792CD021D5C}" {
+       }
+       SCR_CallsignInfo "{55CCB792CCD598D3}" {
+       }
+       SCR_CallsignInfo "{55CCB792CC9C7AD6}" {
+       }
+       SCR_CallsignInfo "{55CCB792CCB4D441}" {
+       }
+       SCR_CallsignInfo "{55CCB792CC5F08F3}" {
+       }
+       SCR_CallsignInfo "{55CCB792CC49B7DB}" {
+       }
+       SCR_CallsignInfo "{55CCB792CC711A37}" {
+       }
+       SCR_CallsignInfo "{55CCB792CC33211C}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{55CCB792CE6E998D}" {
+       }
+       SCR_CallsignInfo "{55CCB792CE18FB44}" {
+       }
+       SCR_CallsignInfo "{55CCB792CE02ECFA}" {
+       }
+       SCR_CallsignInfo "{55CCB792CE2A44BD}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1 %2 %3: %4"
+      m_sCallsignCharacterWithRoleFormat "%1 %2 %3: %4"
+      m_aCharacterRoleCallsigns {
+       SCR_LeaderRoleCallsign "{55CA746925A7EB29}" {
+       }
+       SCR_RadioOperatorRoleCallsign "{55CA79ECD4CC1F73}" {
+       }
+       SCR_PlayerLeaderRoleCallsign "{5D9E9ECA7C7EBEA2}" {
+       }
+      }
+     }
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+     m_iFactionRadioFrequency 48000
+     m_aRanks {
+      SCR_CharacterRank "{528E9D967C251E5F}" {
+      }
+      SCR_CharacterRank "{528E9D967C638136}" {
+      }
+      SCR_CharacterRank "{528E9D967CA0C01E}" {
+      }
+      SCR_CharacterRank "{528E9D967C9A9530}" {
+      }
+      SCR_CharacterRank "{528E9D967CD71D35}" {
+      }
+      SCR_CharacterRank "{528E9D967D0F747E}" {
+      }
+      SCR_CharacterRank "{528E9D967D8EBCCC}" {
+      }
+     }
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EE815FA292}" {
+      }
+      SCR_EntityCatalogMultiList "{5C9E82F29B327997}" {
+      }
+      SCR_EntityCatalogMultiList "{5C68A0EE8B97CA50}" {
+      }
+      SCR_EntityCatalog "{5C68A0EEB7DB3E84}" {
+      }
+      SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" {
+      }
+      SCR_EntityCatalog "{5C9EDDD37394AD40}" {
+      }
+     }
+     m_sGroupFlagsImageSet "{1228936E5DB30403}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor.imageset"
+     m_sGroupFlagsImageSetOutlines "{D1BFDF90DD7A4E01}UI/Textures/GroupManagement/FlagIcons/GroupFlagsBlufor-outline.imageset"
+     m_aFlagNames +{
+     }
+     m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
+     m_aBaseCallsigns {
+      SCR_MilitaryBaseCallsign "{5C90D92F493E764B}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F49F79967}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F482DA59B}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F483330D2}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F48170DA8}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F487834E8}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F48410A86}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F48A4E31F}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F488C6B57}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F4896F764}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F48FBD90E}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F48DFF562}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F7724C851}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F77097F3F}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F77102B55}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F777ABD04}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F775EBBC1}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F77A28EB6}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F77871C23}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F77EB96A0}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F77CC2518}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F77D3715B}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F7635D418}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F761C3FF2}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F7660CFAA}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F764A6E6B}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F76AD4D35}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F76B1EF3A}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F7695FF2F}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F76FF94B1}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F76C68EED}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F752A9F29}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F750E6FB9}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F7517240F}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F7574D867}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F755C4871}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F75A0502B}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F758ABFD3}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F75EF8263}" {
+      }
+      SCR_MilitaryBaseCallsign "{5C90D92F75F0F224}" {
       }
      }
     }

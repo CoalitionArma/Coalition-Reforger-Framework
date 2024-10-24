@@ -1,22 +1,50 @@
+[BaseContainerProps()]
+class CRF_GearScriptContainer
+{
+	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all players on this side", "conf class=CRF_GearScriptConfig")]
+	ResourceName m_rGearScript;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableMiniArsenal;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rLeadershipRadiosPrefab;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rRTORadiosPrefab;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rGIRadiosPrefab;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableLeadershipRadios;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableRTORadios;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableGIRadios;
+};
+
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
 class CRF_GearScriptGamemodeComponentClass: SCR_BaseGameModeComponentClass {}
 
 class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 {	
-	[Attribute("false", UIWidgets.Auto, desc: "Is Gearscript Enabled")]
+	[Attribute("false", UIWidgets.Auto, desc: "Is Gearscript Enabled", category: "GENERAL")]
 	protected bool m_bGearScriptEnabled;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all blufor players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rBluforGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all opfor players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rOpforGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all indfor players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rIndforGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all civ players", "conf class=CRF_GearScriptConfig")]
-	protected ResourceName m_rCivGearScript;
+	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "GENERAL")]
+	protected ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
@@ -44,7 +72,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	const ref TStringArray m_aLeadershipRolesUGL = {"_COY_P", "_PL_P", "_SL_P", "_FO_P", "_JTAC_P"};
 	const ref TStringArray m_aLeadershipRolesCarbine = {"_MO_P", "_IndirectLead_P", "_LogiLead_P", "_VehLead_P"};
 		
-	const ref TStringArray m_aSquadLevelRolesUGL = {"_TL_P", "_Gren_P"};
+	const ref TStringArray m_aSquadLevelRolesUGL = {"_TL_P", "_Gren_P", "_RTO_P"};
 	const ref TStringArray m_aSquadLevelRolesRifle = {"_Rifleman_P", "_Demo_P", "_AAT_P", "_AAR_P"};
 	const ref TStringArray m_aSquadLevelRolesCarbine = {"_Medic_P"};
 		
@@ -56,13 +84,17 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	protected SCR_CharacterInventoryStorageComponent m_Inventory;
-	protected InventoryStorageManagerComponent m_InventoryManager;
-	protected SCR_InventoryStorageManagerComponent m_SCRInventoryManager;
-	protected BaseInventoryStorageComponent m_StorageComp;
+	protected SCR_InventoryStorageManagerComponent m_InventoryManager;
 	protected ref EntitySpawnParams m_SpawnParams = new EntitySpawnParams();
 	protected ref array<Managed> m_WeaponSlotComponentArray = {};
-	
 	protected ref RandomGenerator m_RNG = new RandomGenerator;
+
+	// A array we use primarily for replication of m_mAllPlayerGearScriptsMap to clients.
+	[RplProp(onRplName: "UpdateLocalPlayerGearScriptsMap")]
+	protected ref array<string> m_aAllPlayerGearScriptsArray = new array<string>;
+	
+	// A hashmap that is modified only on each client by a .BumpMe from the authority.
+	protected ref map<string, string> m_mAllPlayerGearScriptsMap = new map<string, string>;
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	static CRF_GearScriptGamemodeComponent GetInstance()
@@ -83,7 +115,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(500, 2500), false, entity);
+		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(500, 2500), false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -91,7 +123,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	{
 		super.OnControllableSpawned(entity);
 		
-		if(!m_bGearScriptEnabled || !Replication.IsServer())
+		if(!m_bGearScriptEnabled || RplSession.Mode() == RplMode.Client)
 			return;
 		
 		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 100, false, entity);
@@ -100,51 +132,140 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	ResourceName GetGearScriptResource(string factionKey)
 	{
-		ResourceName gearScriptResourceName = "";
-		
-		switch(factionKey)
-		{
-			case "BLUFOR" : {gearScriptResourceName = m_rBluforGearScript; break;}
-			case "OPFOR"  : {gearScriptResourceName = m_rOpforGearScript;  break;}
-			case "INDFOR" : {gearScriptResourceName = m_rIndforGearScript; break;}
-			case "CIV"    : {gearScriptResourceName = m_rCivGearScript;    break;}
-		}
-		
-		return gearScriptResourceName;
+		return GetGearScriptSettings(factionKey).m_rGearScript;
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void AddGearToEntity(IEntity entity)
+	CRF_GearScriptContainer GetGearScriptSettings(string factionKey)
 	{
-		ResourceName ResourceNameToScan = entity.GetPrefabData().GetPrefabName();	
+		CRF_GearScriptContainer gearScriptContainer;
 		
-		if(!ResourceNameToScan.Contains("CRF_GS_"))
+		switch(factionKey)
+		{
+			case "BLUFOR" : {gearScriptContainer = m_BLUFORGearScriptSettings;   break;}
+			case "OPFOR"  : {gearScriptContainer = m_OPFORGearScriptSettings;    break;}
+			case "INDFOR" : {gearScriptContainer = m_INDFORGearScriptSettings;   break;}
+			case "CIV"    : {gearScriptContainer = m_CIVILIANGearScriptSettings; break;}
+		}
+		
+		return gearScriptContainer;
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Functions to replicate and store values to each clients m_mAllPlayerGearScriptsMap
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	override protected void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		//--- Server only
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+			
+		GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(4000, 6000), true);
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	override protected void OnGameEnd()
+	{
+		super.OnGameEnd();
+		
+		//--- Server only
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		
+		GetGame().GetCallqueue().Remove(UpdatePlayerGearScriptsArray);
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	string ReturnPlayerGearScriptsMapValue(int playerID, string key)
+	{
+		// Get the players key
+		key = string.Format("%1%2", playerID, key);
+		return m_mAllPlayerGearScriptsMap.Get(key);
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SetPlayerGearScriptsMapValue(string value, int playerID, string key)
+	{
+		// Get the players key
+		key = string.Format("%1%2", playerID, key);
+		m_mAllPlayerGearScriptsMap.Set(key, value);
+	}
+
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	protected void UpdatePlayerGearScriptsArray()
+	{
+		// Create a temp array so we arent broadcasting for each change to m_aAllPlayerGearScriptsArray.
+		protected ref array<string> tempPlayerArray = new array<string>;
+
+		// Fill tempPlayerArray with all keys and values in m_mAllPlayerGearScriptsMap.
+		for (int i = 0; i < m_mAllPlayerGearScriptsMap.Count(); i++)
+		{
+			string key = m_mAllPlayerGearScriptsMap.GetKey(i);
+			string value = m_mAllPlayerGearScriptsMap.Get(key);
+			
+			tempPlayerArray.Insert(string.Format("%1~%2", key, value));
+		};
+
+		// Replicate m_aAllPlayerGearScriptsArray to all clients.
+		m_aAllPlayerGearScriptsArray = tempPlayerArray;
+		Replication.BumpMe();
+	}
+
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	protected void UpdateLocalPlayerGearScriptsMap()
+	{
+		// Fill m_mAllPlayerGearScriptsMap with all keys and values from authorities m_mAllPlayerGearScriptsMap.
+		foreach (string playerKeyAndValueToSplit : m_aAllPlayerGearScriptsArray)
+		{
+			array<string> playerKeyAndValueArray = {};
+			playerKeyAndValueToSplit.Split("~", playerKeyAndValueArray, false);
+			m_mAllPlayerGearScriptsMap.Set(playerKeyAndValueArray[0], playerKeyAndValueArray[1]);
+		};
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Functions to for Gear Script
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SetupAddGearToEntity(IEntity entity, ResourceName prefabName)
+	{
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// CHECKS & DEFINING KEY VARIABLES
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+		
+		ResourceName ResourceNameToScan = prefabName;	
+		
+		if(!ResourceNameToScan.Contains("CRF_GS_") || !entity)
 			return;
 		
 		ResourceName gearScriptResourceName;
+		CRF_GearScriptContainer gearScriptSettings;
 		
 		switch(true)
 		{
-			case(ResourceNameToScan.Contains("BLUFOR")) : {gearScriptResourceName = m_rBluforGearScript; break;}
-			case(ResourceNameToScan.Contains("OPFOR"))  : {gearScriptResourceName = m_rOpforGearScript;  break;}
-			case(ResourceNameToScan.Contains("INDFOR")) : {gearScriptResourceName = m_rIndforGearScript; break;}
-			case(ResourceNameToScan.Contains("CIV"))    : {gearScriptResourceName = m_rCivGearScript;    break;}
+			case(ResourceNameToScan.Contains("BLUFOR")) : {gearScriptResourceName = m_BLUFORGearScriptSettings.m_rGearScript;   gearScriptSettings = m_BLUFORGearScriptSettings;   break;}
+			case(ResourceNameToScan.Contains("OPFOR"))  : {gearScriptResourceName = m_OPFORGearScriptSettings.m_rGearScript;    gearScriptSettings = m_OPFORGearScriptSettings;    break;}
+			case(ResourceNameToScan.Contains("INDFOR")) : {gearScriptResourceName = m_INDFORGearScriptSettings.m_rGearScript;   gearScriptSettings = m_INDFORGearScriptSettings;   break;}
+			case(ResourceNameToScan.Contains("CIV"))    : {gearScriptResourceName = m_CIVILIANGearScriptSettings.m_rGearScript; gearScriptSettings = m_CIVILIANGearScriptSettings; break;}
 		}
 		
 		if(gearScriptResourceName.IsEmpty())
 			return;
-
-        m_SpawnParams.TransformMode = ETransformMode.WORLD;
-        m_SpawnParams.Transform[3] = entity.GetOrigin();
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		// GET COMPONENTS
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		
-		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
-		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
-		m_InventoryManager = InventoryStorageManagerComponent.Cast(entity.FindComponent(InventoryStorageManagerComponent));
-		m_SCRInventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
-
+		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));
+		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));
+		
+		if(!inventory || !inventoryManager)
+		{
+			Print(string.Format("CRF GEAR SCRIPT ERROR: %1 DOESN'T HAVE COMPONENTS WE NEED!", entity), LogLevel.ERROR);
+			return;
+		}
+		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// GET ROLE
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -155,7 +276,40 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		string role = "_" + value[3] + "_" + value[4];
 		
 		role.Split(".", value, true);
-		role = value[0];	
+		role = value[0];
+
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// CLEAR CHARACTER
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+		array<IEntity> items = {};
+		array<IEntity> itemsRoot = {};
+		inventoryManager.GetAllItems(items, inventory);
+		inventoryManager.GetAllRootItems(itemsRoot);
+		
+		items.InsertAll(itemsRoot);
+		
+		foreach(IEntity item : items)
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
+		
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// ADD CLOTHING/WEAPONS/ITEMS
+		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(650, 850), false, entity, role, gearScriptResourceName, gearScriptSettings, inventory, inventoryManager);
+	}
+		
+	protected void AddGearToEntity(IEntity entity, string role, ResourceName gearScriptResourceName, CRF_GearScriptContainer gearScriptSettings, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
+	{		
+		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
+		
+		entity.FindComponents(WeaponSlotComponent, m_WeaponSlotComponentArray);
+		
+		m_Inventory = inventory;
+		m_InventoryManager = inventoryManager;
+		
+        m_SpawnParams.TransformMode = ETransformMode.WORLD;
+        m_SpawnParams.Transform[3] = entity.GetOrigin();
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// CLOTHING
@@ -201,7 +355,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				case(m_aVehicleSpecialtiesRolesPistol.Contains(role))  : {AddWeapons(m_WeaponSlotComponentArray, gearConfig, "",         "",    true);  isVehSpec = true; break;}
 			}
 		} else
-			Print(string.Format("CRF GEAR SCRIPT : NO WEAPONS SET: %1", gearScriptResourceName), LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: NO WEAPONS SET: %1", gearScriptResourceName), LogLevel.ERROR);
 			
 		if(gearConfig.m_CustomFactionGear)
 		{
@@ -213,7 +367,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				case(isVehSpec) : {UpdateVehicleSpecialtiesCustomGear(gearConfig.m_CustomFactionGear.m_VehicleSpecialtiesCustomGear, role);   break;}
 			}
 		} else
-			Print(string.Format("CRF GEAR SCRIPT : NO CUSTOM GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: NO CUSTOM GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
 		
 		//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// ITEMS
@@ -222,16 +376,20 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		if(gearConfig.m_DefaultFactionGear)
 		{
 			//Who we give Leadership Radios
-			if(gearConfig.m_DefaultFactionGear.m_bEnableLeadershipRadios && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
-				AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sLeadershipRadiosPrefab, 1);
-		
+			if(gearScriptSettings.m_bEnableLeadershipRadios && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
+				AddInventoryItem(gearScriptSettings.m_rLeadershipRadiosPrefab, 1);
+			
+			//Who we give GI Radios
+			if(gearScriptSettings.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
+				AddInventoryItem(gearScriptSettings.m_rGIRadiosPrefab, 1);
+			
+			//Who we give RTO Radios
+			if(gearScriptSettings.m_bEnableRTORadios && role == "_RTO_P")
+				AddInventoryItem(gearScriptSettings.m_rRTORadiosPrefab, 1);
+			
 			//Who we give Leadership Binos
 			if(gearConfig.m_DefaultFactionGear.m_bEnableLeadershipBinoculars && (m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_TL_P"))
 				AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab, 1);
-			
-			//Who we give GI Radios
-			if(gearConfig.m_DefaultFactionGear.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
-				AddInventoryItem(gearConfig.m_DefaultFactionGear.m_sGIRadiosPrefab, 1);
 			
 			//Who we give Assistant Binos/Extra magazines
 			if(role == "_AAR_P" || role == "_AMMG_P" || role == "_AHMG_P" || role == "_AMAT_P" || role == "_AHAT_P" || role == "_AAA_P" || role == "_AAT_P")
@@ -254,7 +412,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			foreach(CRF_Inventory_Item item : gearConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
 				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, role, gearConfig.m_DefaultFactionGear.m_bEnableMedicFrags);
 		} else 
-			Print(string.Format("CRF GEAR SCRIPT : NO DEFAULT GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
+			Print(string.Format("CRF GEAR SCRIPT ERROR: NO DEFAULT GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -335,10 +493,10 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 				continue;
 			};
 			
-			if(m_SCRInventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
+			if(m_InventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
 			{
-				m_StorageComp = m_SCRInventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
-				m_SCRInventoryManager.EquipAny(m_StorageComp, resourceSpawned, -1);
+				BaseInventoryStorageComponent storageComp = m_InventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
+				m_InventoryManager.EquipAny(storageComp, resourceSpawned, -1);
 				continue;
 			};
 			
@@ -385,7 +543,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 			bool successfulInsert = m_InventoryManager.TryInsertItemInStorage(item, clothingStorage);
 			
 			if(!successfulInsert)
-				m_SCRInventoryManager.InsertItemCRF(item, clothingStorage, null, null, false);
+				m_InventoryManager.InsertItemCRF(item, clothingStorage, null, null, false);
 		};
 			
 		// if we cant do select clothing, just slap it in wherever
@@ -653,6 +811,7 @@ class CRF_GearScriptGamemodeComponent: SCR_BaseGameModeComponent
 		{
 			case "_TL_P"       : {role = "Team Lead";                    break;}
 			case "_Gren_P"     : {role = "Grenadier";                    break;}
+			case "_RTO_P"      : {role = "Radio Telephone Operator";     break;}
 			case "_Rifleman_P" : {role = "Rifleman";                     break;}
 			case "_Demo_P"     : {role = "Rifleman Demo";                break;}
 			case "_AT_P"       : {role = "Rifleman AntiTank";            break;}

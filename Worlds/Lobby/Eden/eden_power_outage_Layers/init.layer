@@ -1,0 +1,66 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 5836.486 231.782 9784.135
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+   m_bGearScriptEnabled 1
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 60
+  }
+ }
+ coords 5839.797 204.335 9783.673
+ {
+  SCR_FactionManager "62A32A0E1B828EB3" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{62A21A96C2707CDA}" {
+        m_sCallsign "Humvee 1"
+       }
+       SCR_CallsignInfo "{62A21A91163D33B7}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{62A21A911E2963FA}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{62A21A9162B374F4}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{62A21A91437AAACB}" {
+        m_sCallsign "Humvee 2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{62A21A90B9226729}" {
+        m_sCallsign "Support Team"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

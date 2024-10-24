@@ -1,0 +1,83 @@
+$grp SCR_BaseTriggerEntity {
+ BMP1 {
+  coords 5804.153 7.439 9874.103
+ }
+ BMP2 {
+  coords 5765.909 10.34 9875.2
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 5843.512 7.875 9880.995
+ angleY -73.057
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 5800.458 10.649 9938.739
+ m_sCustomNameSet "PLT"
+ {
+  SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "column"
+    }
+   }
+   coords 11.784 -1.633 -13.157
+   m_sCustomNameSet "1-1"
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "column"
+      }
+     }
+     coords 0 0.001 16.034
+     m_sCustomNameSet "1-2"
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "column"
+        }
+       }
+       coords 0 0 11.681
+       m_sCustomNameSet "1-3"
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "column"
+          }
+         }
+         coords 0 0 12.462
+         m_sCustomNameSet "1-4"
+         {
+          SCR_AIGroup : "{A1BDE5C4CC62ACAC}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MATTeam_p.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "column"
+            }
+           }
+           coords 3.012 5.485 14.431
+           m_sCustomNameSet "1-5"
+           {
+            SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+             coords -24.217 -4.951 -54.353
+             m_sCustomNameSet "Armor 1"
+             {
+              SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+               coords 2.995 2.769 27.211
+               m_sCustomNameSet "Armor 2"
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

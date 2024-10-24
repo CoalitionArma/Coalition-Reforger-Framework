@@ -1,0 +1,122 @@
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Column"
+  }
+ }
+ coords 1327.396 2.821 1197.307
+ angleY -82.99
+ {
+  $grp SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+    }
+    coords -10.302 0.522 7.513
+    angleY -100.78
+    m_sCustomNameSet "1st Platoon"
+    {
+     SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Column"
+       }
+      }
+      coords 2.198 -0.044 -2.217
+      angleY -85.151
+      {
+       SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Column"
+         }
+        }
+        coords -3.014 -0.068 0.197
+        angleY 6.68
+        m_sCustomNameSet "2nd Squad"
+        {
+         SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+          components {
+           AIFormationComponent "{507E9DC12F541FE6}" {
+            DefaultFormation "Column"
+           }
+          }
+          coords -4.438 0.007 -0.073
+          angleY 0.365
+          m_sCustomNameSet "3rd Squad"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+   {
+    components {
+     AIFormationComponent "{507E9DC12F541FE6}" {
+      DefaultFormation "Column"
+     }
+    }
+    coords 7.167 0.333 7.793
+    angleY -100.78
+    m_sCustomNameSet "2nd Platoon"
+    {
+     SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+      components {
+       AIFormationComponent "{507E9DC12F541FE6}" {
+        DefaultFormation "Column"
+       }
+      }
+      coords 2.12 0.228 -4.033
+      angleY -82.554
+      {
+       SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+        components {
+         AIFormationComponent "{507E9DC12F541FE6}" {
+          DefaultFormation "Column"
+         }
+        }
+        coords -2.867 0.034 -0.077
+        m_sCustomNameSet "2nd Squad"
+        {
+         SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+          components {
+           AIFormationComponent "{507E9DC12F541FE6}" {
+            DefaultFormation "Column"
+           }
+          }
+          coords -2.832 -0.246 -0.045
+          m_sCustomNameSet "3rd Squad"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "Column"
+    }
+   }
+   coords -15.774 1.579 -9.545
+   angleY 82.99
+   m_sCustomNameSet "Stryker 1"
+   {
+    SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Column"
+      }
+     }
+     coords -4.391 0.101 0.08
+     m_sCustomNameSet "Stryker 2"
+    }
+   }
+  }
+ }
+}
