@@ -115,3 +115,29 @@ Vehicle M997_maxi_ambulance_D_1 : "{D555F22BF4C0ADAC}Prefabs/Vehicles/Wheeled/M9
  coords 1952.179 16.201 3828.419
  angleY 163.688
 }
+$grp GenericEntity : "{FC7427975FF6AEB1}Mortars/81/m25281mm.et" {
+ {
+  coords 1921.819 22.476 3827.014
+  angleY -16.215
+ }
+ {
+  coords 1921.95 22.475 3826.566
+  angleY -16.215
+ }
+ {
+  coords 1921.908 22.475 3826.712
+  angleY -16.215
+ }
+ {
+  coords 1921.863 22.476 3826.865
+  angleY -16.215
+ }
+ {
+  coords 1922 22.475 3826.396
+  angleY -16.215
+ }
+ {
+  coords 1922.046 22.475 3826.24
+  angleY -16.215
+ }
+}

@@ -1,0 +1,78 @@
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 5393.278 43.394 10569.795
+ angleY 165.56
+}
+$grp Vehicle : "{4BFB3CA9E83385D2}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_base.et" {
+ Ural4320_transport_covered_CIV_base1 {
+  coords 5429.184 43.156 10583.672
+  angleY 164.836
+ }
+ Ural4320_transport_covered_CIV_base2 {
+  coords 5397.415 43.394 10572.757
+  angleY 164.722
+ }
+ Ural4320_transport_covered_CIV_base3 {
+  coords 5424.083 43.216 10582.075
+  angleY 162.378
+ }
+ Ural4320_transport_covered_CIV_base4 {
+  coords 5415.277 43.292 10579.292
+  angleY 166.855
+ }
+}
+SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+ coords 5418.103 43.118 10565.546
+ m_sCustomNameSet "Platoon"
+ {
+  $grp SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_Infantry_p.et" {
+   Infantry_1 {
+    coords 4.847 -0.036 4.609
+    m_aUnitPrefabSlots {
+     "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"
+    }
+   }
+   Infantry_2 {
+    coords 6.895 -0.035 -0.293
+    m_aUnitPrefabSlots {
+     "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"
+    }
+    m_sCustomNameSet "2nd Squad"
+   }
+   Infantry_3 {
+    coords 11.282 -0.078 6.556
+    m_aUnitPrefabSlots {
+     "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"
+    }
+    m_sCustomNameSet "3rd Squad"
+   }
+   Infantry_4 {
+    coords 13.111 -0.076 0.872
+    m_aUnitPrefabSlots {
+     "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"
+    }
+    m_sCustomNameSet "4th Squad"
+   }
+  }
+  SCR_AIGroup Support_team : "{D6130EBAAA378DE2}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_SniperTeam_p.et" {
+   coords 21.799 -0.129 7.635
+   m_aUnitPrefabSlots {
+    "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{0C86D510A52DF210}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Demo_P.et" "{65F1BBC392B2B484}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Sniper_P.et" "{96BCA2BC7A89F2CF}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Spotter_P.et"
+   }
+   m_sCustomNameSet "Support Team"
+  }
+ }
+}
+$grp Vehicle : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ M151A1 {
+  coords 5375.847 43.385 10562.31
+  angleY 170.275
+ }
+ M151A2 {
+  coords 5379.176 43.362 10563.739
+  angleY 170.275
+ }
+ M151A3 {
+  coords 5382.713 43.364 10564.625
+  angleY 170.275
+ }
+}

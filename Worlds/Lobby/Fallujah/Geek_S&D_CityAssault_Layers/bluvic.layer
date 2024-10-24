@@ -1,0 +1,85 @@
+$grp SCR_BaseTriggerEntity {
+ spawnBluforVics {
+  coords 1343.206 2.204 1200.715
+  angleY -82.948
+  userScript "	string humArm = \"{C271F121CED94150}Prefabs/M1025/kiok_m1025_armed_M2_tan.et\";"\
+  "	string stryker = \"{5F17F054025E8B30}Prefabs/Vehicles/Wheeled/Stryker/Stryker_CROWS_Cage.et\";"\
+  "	string truck = \"{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et\";"\
+  "	string maxi = \"{32AA1DFF9F49F870}Prefabs/M1114/kiok_m1114_ambulance_tan.et\";"\
+  "	IEntity spawnHumArm, spawnHumArm2, spawnTruck, spawnTruck2, spawnTruck3, spawnTruck4, spawnStryker, spawnStryker2, spawnMaxi, spawnLogi, spawnConst;"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		spawnHumArm = GetGame().GetWorld().FindEntityByName(\"spawnHumArm\");"\
+  "		spawnHumArm2 = GetGame().GetWorld().FindEntityByName(\"spawnHumArm2\");"\
+  "		spawnStryker = GetGame().GetWorld().FindEntityByName(\"spawnStryker\");"\
+  "		spawnStryker2 = GetGame().GetWorld().FindEntityByName(\"spawnStryker2\");"\
+  "		spawnMaxi = GetGame().GetWorld().FindEntityByName(\"spawnMaxi\");"\
+  "		spawnTruck = GetGame().GetWorld().FindEntityByName(\"spawnM923A1\");"\
+  "		spawnTruck2 = GetGame().GetWorld().FindEntityByName(\"spawnM923A12\");"\
+  "		spawnTruck3 = GetGame().GetWorld().FindEntityByName(\"spawnM923A13\");"\
+  "		spawnTruck4 = GetGame().GetWorld().FindEntityByName(\"spawnM923A14\");"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		spawnParams.Transform[3] = spawnHumArm.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humArm),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnHumArm2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(humArm),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnStryker.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnStryker2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(stryker),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnMaxi.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(maxi),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnTruck.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnTruck2.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnTruck3.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);"\
+  "		spawnParams.Transform[3] = spawnTruck4.GetOrigin();"\
+  "		GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);	"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ spawnMaxi {
+  coords 1334.977 3.482 1195.278
+ }
+ spawnStryker {
+  coords 1317.658 5.126 1169.157
+  angleY -176.26
+ }
+ spawnStryker2 {
+  coords 1322.765 5.116 1168.865
+  angleY -174.564
+ }
+ spawnHumArm {
+  coords 1281.1 5.281 1172.105
+  angleY -83.17
+ }
+ spawnHumArm2 {
+  coords 1275.188 5.325 1171.955
+  angleY -86.246
+ }
+ spawnM923A1 {
+  coords 1308.564 5.187 1170.239
+  angleY -84.347
+ }
+ spawnM923A12 {
+  coords 1301.467 5.227 1171.36
+  angleY -84.439
+ }
+ spawnM923A13 {
+  coords 1294.049 5.253 1171.714
+  angleY -86.549
+ }
+ spawnM923A14 {
+  coords 1287.477 5.281 1171.92
+  angleY -89.411
+ }
+}

@@ -1,0 +1,99 @@
+SCR_MapEntity MapEntity1 : "{731564B66F91B107}Prefabs/World/Game/MapEntity.et" {
+ coords 513.993 512.312 2286.96
+ "Map Geometry Data" "{275180D058CEAD2E}World/GM_BackCountry_Layers/GM_BackCountry.topo"
+ "Satellite background image" "{8C9B267169AB9326}World/GM_BackCountry_Layers/map (2) redone.edds"
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 572.529 520.515 2258.898
+}
+SCR_CameraManager SCR_CameraManager1 : "{33F9FD881E3700CC}Prefabs/World/Game/SCR_CameraManager.et" {
+ coords 663.761 542.344 2272.669
+}
+PS_GameModeCoop CRF_GameMode_Lobby_1 : "{70D51A019CC9AA3F}Prefabs/MP/Modes/Lobby/CRF_GameMode_Lobby-12.et" {
+ components {
+  CRF_GearScriptGamemodeComponent "{628A6713CE1C127B}" {
+   m_bGearScriptEnabled 1
+   m_BLUFORGearScriptSettings CRF_GearScriptContainer "{629E5222ADE13F54}" {
+    m_rGearScript "{FA37429C81316EB4}Configs/Gearscripts/Custom/RandAlThor/CRF_GS_ArmedPolice.conf"
+   }
+   m_INDFORGearScriptSettings CRF_GearScriptContainer "{629E5222AC7F68BE}" {
+    m_rGearScript "{E87A99E18FA57C5C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION.conf"
+   }
+  }
+  CRF_SafestartGameModeComponent "{61BCFEC3FE6731AB}" {
+   m_iTimeLimitMinutes 80
+  }
+  CRF_SearchAndDestroyGameModeComponent "{62A33443BBF6ED74}" {
+   attackingSide "INDFOR"
+   defendingSide "BLUFOR"
+  }
+ }
+ coords 1159.528 543.363 2039.517
+ {
+  SCR_FactionManager "62A3344014A4A33F" {
+   ID "61BCFEC02D38B83E"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{62A3347DE5204B65}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{62A3347DEAA52484}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{62A3347DEF8B8D01}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{62A3347DEFBEEAB6}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{62A3347DEFD758B1}" {
+        m_sCallsign "3rd Squad"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "1st Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2nd Squad"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "3rd Squad"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "4th Squad"
+       }
+       SCR_CallsignInfo "{62A3347F18F43968}" {
+        m_sCallsign "Helo Crew (AH6M Armed)"
+       }
+       SCR_CallsignInfo "{62A3347C076CB5D6}" {
+        m_sCallsign "Helo Crew (UH60)"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -5,7 +5,7 @@ PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" 
  m_MarkerColor 0.569 0.042 0.029 1
  m_sDescription "OPFOR Safe Start Border"
  m_aVisibleForFactions {
-  "USSR"
+  "OPFOR"
  }
  m_bVisibleForEmptyFaction 0
  m_bShowForAnyFaction 0

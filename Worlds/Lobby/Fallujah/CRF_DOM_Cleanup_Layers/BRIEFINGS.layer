@@ -1,0 +1,48 @@
+PS_MissionDescription : "{79EBB4201309B9F3}PrefabsEditable/MissionDescription/OPF_Brief.et" {
+ coords 2361.188 19.13 304.234
+ m_sTextData "The Taliban are on the move, our last foothold in the area is about to be challenged. We must stop their move coming from the City and prevent them from clearing us out before reinforcements can arrive."\
+ ""\
+ ""
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+}
+PS_MissionDescription : "{7D0DD3460BE3D185}PrefabsEditable/MissionDescription/Assets.et" {
+ coords 2361.188 19.13 304.234
+ m_sTextData "INDFOR:"\
+ ""\
+ "1x T-72A"
+}
+PS_MissionDescription : "{8204C07A1B25066F}PrefabsEditable/MissionDescription/WelcomeDescription.et" {
+ coords 2361.188 19.13 304.234
+}
+PS_MissionDescription : "{AE37B19A0B021679}PrefabsEditable/MissionDescription/WinCondition.et" {
+ coords 2361.188 19.13 304.234
+ m_sTextData "INDFOR:"\
+ ""\
+ "Capture all 3 locations."\
+ "Kill all OPFOR"\
+ ""\
+ "OPFOR:"\
+ ""\
+ "Defend all 3 locations"\
+ "Kill all INDFOR"
+}
+PS_Objective : "{DC02A6E23541A99B}PrefabsEditable/MissionDescription/Objective.et" {
+ coords 2361.188 19.13 304.234
+}
+PS_MissionDescription : "{DC34D37AC97B74B0}PrefabsEditable/MissionDescription/BLU_Brief.et" {
+ coords 2361.188 19.13 304.234
+ m_sTitle "INDFOR Brief"
+ m_sTextData "The Soviets are still managing to hold onto the south half of the Eufrates along with the Dam. The tank we've stolen should be enough to clear out the pathetic group they have to the south"\
+ ""
+ m_aVisibleForFactions {
+  "INDFOR"
+ }
+}
+PS_MissionDescription : "{E600EB659F551D8E}PrefabsEditable/MissionDescription/Situation.et" {
+ coords 2361.188 19.13 304.234
+ m_sTextData "Taliban forces attempt to clear out Soviet remnants from the south side of the Eufrates."\
+ ""\
+ ""
+}
