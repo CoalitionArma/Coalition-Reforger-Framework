@@ -1,6 +1,5 @@
 class CRF_Hint : SCR_ScriptedWidgetComponent
 {
-	protected Widget m_wMainWidget;
 	protected TextWidget m_wText;
 	protected ImageWidget m_wBG;
 	protected float m_fEndTime;
@@ -10,18 +9,13 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 		if (!GetGame().InPlayMode())
 			return;
 		
-		m_wMainWidget = w;
-		
-		super.HandlerAttached(m_wMainWidget);
-		m_wText = TextWidget.Cast(m_wMainWidget.FindAnyWidget("hintText"));
-		m_wBG = ImageWidget.Cast(m_wMainWidget.FindAnyWidget("hintBG"));
+		super.HandlerAttached(w);
+		m_wText = TextWidget.Cast(w.FindAnyWidget("hintText"));
+		m_wBG = ImageWidget.Cast(w.FindAnyWidget("hintBG"));
 	}
 	
 	void ShowHint(string hinttext, float duration)
 	{
-		if(!m_wMainWidget)
-			return;
-		
 		m_wText.SetText(hinttext);
 		m_wText.SetOpacity(1);
 		m_wBG.SetOpacity(0.5);
@@ -36,33 +30,10 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 	
 	void HintLoop() 
 	{
-		if(!m_wMainWidget)
-		{
-			GetGame().GetCallqueue().Remove(HintLoop);
-			return;
-		}
-		
 		if (GetGame().GetWorld().GetWorldTime() >= m_fEndTime) {
 			GetGame().GetCallqueue().Remove(HintLoop);
-			GetGame().GetCallqueue().CallLater(FadeAndDeleteHintLoop, 0, true);
+			m_wText.SetOpacity(0);
+			m_wBG.SetOpacity(0);
 		}
 	}
-	
-	void FadeAndDeleteHintLoop() 
-	{
-		if(!m_wMainWidget)
-		{
-			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
-			return;
-		}
-		
-		float opacity = m_wMainWidget.GetOpacity();
-		if (opacity > 0) {
-			m_wMainWidget.SetOpacity(opacity - 0.015);
-		} else {
-			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
-			delete m_wMainWidget;
-		}
-	}
-
 }

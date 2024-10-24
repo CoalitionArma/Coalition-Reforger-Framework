@@ -1,175 +1,104 @@
 FrameWidgetClass {
  {
-  FrameWidgetClass "{60DCC8DF2787CC88}" {
-   Prefab "{60DCC8DF2787CC88}"
-   Slot FrameWidgetSlot "{5D8AB8F2DCC3C881}" {
-    PositionX 0
-    OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
-    SizeX 0
-    OffsetRight 0
-    SizeY 0
-    OffsetBottom 0
+  FrameWidgetClass "{629EC647CE2BBC5B}" {
+   Name "GearScriptLayout"
+   Slot FrameWidgetSlot "{629EC647CE2BBC42}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -960
+    OffsetLeft -960
+    PositionY -540
+    OffsetTop -540
+    SizeX 1920.11
+    OffsetRight -960.11
+    SizeY 1080.03
+    OffsetBottom -540.03
    }
+   "Z Order" 1
    {
-    ButtonWidgetClass "{628EFB16DB209197}" {
-     Name "Export"
-     Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 344
-      OffsetLeft 344
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -444
+    TextWidgetClass "{628EA9976FDA52F3}" {
+     Name "AAClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 57
+      OffsetRight -1306.03
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -1040.9
      }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EFB16DB209136}" {
-     Name "ExportText"
-     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 344
-      OffsetLeft 344
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -444
-      SizeY 30
-      OffsetBottom -39
-     }
-     Text "Export"
-     "Font Size" 21
-     "Min Font Size" 15
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EFB17BF8706A1}" {
-     Name "LoadBlufor"
-     Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 20
-      OffsetLeft 20
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -120
-      SizeY 30
-      OffsetBottom -39
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EFB176CC5BD87}" {
-     Name "LoadBluforText"
-     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 20
-      OffsetLeft 20
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -120
-      SizeY 30
-      OffsetBottom -39
-     }
-     Text "Load BLUFOR"
+     "Z Order" 2
+     Text "Clear"
      "Font Size" 16
-     "Min Font Size" 15
+     "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628EFB1732949527}" {
-     Name "LoadOpfor"
-     Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 128
-      OffsetLeft 128
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -228
+    ButtonWidgetClass "{628EA9976FDA52CF}" {
+     Name "AAClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 57
+      OffsetRight -1306.03
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -1040.9
      }
      Color 0.117 0.117 0.117 1
      components {
-      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
       }
      }
     }
-    TextWidgetClass "{628EFB173294955D}" {
-     Name "LoadOpforText"
-     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 128
-      OffsetLeft 128
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -228
+    TextWidgetClass "{628EA9976FDA522C}" {
+     Name "AAString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 1058.98
+      OffsetLeft 1058.98
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 185.11
+      OffsetRight -1244.09
       SizeY 30
-      OffsetBottom -39
+      OffsetBottom -1040.9
      }
-     Text "Load OPFOR"
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA9976FDA5209}" {
+     Name "AAText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 100.001
+      OffsetRight -1052.98
+      SizeY 30
+      OffsetBottom -1040.9
+     }
+     "Z Order" 2
+     Text "Set AA"
      "Font Size" 16
-     "Min Font Size" 15
+     "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628EFB1701B9A7DF}" {
-     Name "LoadIndfor"
-     Slot FrameWidgetSlot "{628EFB17BF870742}" {
-      PositionX 236
-      OffsetLeft 236
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -336
-      SizeY 30
-      OffsetBottom -39
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EFB1701B9A77F}" {
-     Name "LoadIndforText"
-     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
-      PositionX 236
-      OffsetLeft 236
-      PositionY 9
-      OffsetTop 9
-      SizeX 100
-      OffsetRight -336
-      SizeY 30
-      OffsetBottom -39
-     }
-     Text "Load INDFOR"
-     "Font Size" 16
-     "Min Font Size" 15
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DE7B9FD4FC}" {
-     Name "Helmet"
+    ButtonWidgetClass "{628EA9976FDA526F}" {
+     Name "AA"
      Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 39.347
-      OffsetTop 39.347
-      SizeX 100
-      OffsetRight -692.081
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 100.001
+      OffsetRight -1052.98
       SizeY 30
-      OffsetBottom -69.346
+      OffsetBottom -1040.9
      }
-     "Z Order" -2
      Color 0.117 0.117 0.117 1
      components {
       SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
@@ -177,102 +106,961 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C18DE448900E8}" {
-     Name "HelmetText"
-     Slot FrameWidgetSlot "{628EA9879FA5CA8D}" {
-      PositionX 592.1
-      OffsetLeft 592.1
-      PositionY 39.326
-      OffsetTop 39.326
-      SizeX 100
-      OffsetRight -692.1
-      SizeY 30
-      OffsetBottom -69.326
-     }
-     Text "Add Helmets"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C18DD910654A4}" {
-     Name "HelmetArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.081
-      OffsetLeft 698.081
-      PositionY 39.347
-      OffsetTop 39.347
-      SizeX 300
-      OffsetRight -998.081
-      SizeY 30
-      OffsetBottom -69.346
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C3057CFF1BE16}" {
-     Name "HelmetClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 39.347
-      OffsetTop 39.347
-      SizeX 57
-      OffsetRight -1061.61
-      SizeY 30
-      OffsetBottom -69.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C3056173FB960}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C305775D2A9A8}" {
-     Name "HelmetClearText"
+    TextWidgetClass "{628EA9976FDA524E}" {
+     Name "SniperClearText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 39.347
-      OffsetTop 39.347
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 1010.9
+      OffsetTop 1010.9
       SizeX 57
-      OffsetRight -1061.61
+      OffsetRight -945.393
       SizeY 30
-      OffsetBottom -69.346
+      OffsetBottom -1040.9
      }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C3056DCB57414}" {
-     Name "HelmetInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.61
-      OffsetLeft 1169.61
-      PositionY 39.347
-      OffsetTop 39.347
-      SizeX 32
-      OffsetRight -1201.61
+    ButtonWidgetClass "{628EA9976FDA51AE}" {
+     Name "SniperClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 57
+      OffsetRight -945.393
       SizeY 30
-      OffsetBottom -69.346
+      OffsetBottom -1040.9
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA9976FDA518E}" {
+     Name "SniperString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 185.116
+      OffsetRight -883.462
+      SizeY 30
+      OffsetBottom -1040.9
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA9976FDA51E8}" {
+     Name "SniperText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -1040.9
+     }
+     "Z Order" 2
+     Text "Set Sniper"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA9976FDA51C4}" {
+     Name "Sniper"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 1010.9
+      OffsetTop 1010.9
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -1040.9
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA9976FDA512E}" {
+     Name "HATClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 57
+      OffsetRight -1306.03
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA9976FDA5113}" {
+     Name "HATClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 57
+      OffsetRight -1306.03
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA9976FDA5172}" {
+     Name "HATString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 1058.98
+      OffsetLeft 1058.98
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 185.11
+      OffsetRight -1244.09
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA9976FDA514D}" {
+     Name "HATText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 100.001
+      OffsetRight -1052.98
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     "Z Order" 2
+     Text "Set HAT"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA9976FDA50AF}" {
+     Name "HAT"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 100.001
+      OffsetRight -1052.98
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA9976FDA509A}" {
+     Name "HMGClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 57
+      OffsetRight -945.393
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA9976FDA50CA}" {
+     Name "HMGClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 57
+      OffsetRight -945.393
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA9976FDA5017}" {
+     Name "HMGString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 185.116
+      OffsetRight -883.462
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA9976FDA5079}" {
+     Name "HMGText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     "Z Order" 2
+     Text "Set HMG"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA9976FDA5792}" {
+     Name "HMG"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 973.11
+      OffsetTop 973.11
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 29.995
+      OffsetBottom -1003.1
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA997B4CE696F}" {
+     Name "MATClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 57
+      OffsetRight -1306.03
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA997B4CE694C}" {
+     Name "MATClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 57
+      OffsetRight -1306.03
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA997B4CE68B3}" {
+     Name "MATString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 1058.98
+      OffsetLeft 1058.98
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 185.11
+      OffsetRight -1244.09
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA997B4CE688E}" {
+     Name "MATText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 100.001
+      OffsetRight -1052.98
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     "Z Order" 2
+     Text "Set MAT"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA997B4CE68FA}" {
+     Name "MAT"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 100.001
+      OffsetRight -1052.98
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA997B4CE6826}" {
+     Name "MMGClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 57
+      OffsetRight -945.393
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA997B4CE680A}" {
+     Name "MMGClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 57
+      OffsetRight -945.393
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA997B4CE6878}" {
+     Name "MMGString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 185.116
+      OffsetRight -883.462
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA997B4CE6FA7}" {
+     Name "MMGText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     "Z Order" 2
+     Text "Set MMG"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA997B4CE6FF6}" {
+     Name "MMG"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 934.732
+      OffsetTop 934.732
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 29.994
+      OffsetBottom -964.726
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA997E826A53B}" {
+     Name "ATClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 57
+      OffsetRight -1306.03
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA997E826A51F}" {
+     Name "ATClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1249.03
+      OffsetLeft 1249.03
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 57
+      OffsetRight -1306.03
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA997E826A54C}" {
+     Name "ATString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 1058.98
+      OffsetLeft 1058.98
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 185.116
+      OffsetRight -1244.09
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA997E826A4B9}" {
+     Name "ATText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 100
+      OffsetRight -1052.98
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     "Z Order" 2
+     Text "Set AT"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA997E826A4C7}" {
+     Name "AT"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 952.979
+      OffsetLeft 952.979
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 100
+      OffsetRight -1052.98
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA9881BCD56C9}" {
+     Name "ARClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 57
+      OffsetRight -945.393
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA9881BCD5637}" {
+     Name "ARClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 888.393
+      OffsetLeft 888.393
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 57
+      OffsetRight -945.393
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA9881BCD5665}" {
+     Name "ARString"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 185.116
+      OffsetRight -883.462
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA9881BCD5655}" {
+     Name "ARtext"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     "Z Order" 2
+     Text "Set AR"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA9881BCD55E8}" {
+     Name "AR"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 896.934
+      OffsetTop 896.934
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 29.994
+      OffsetBottom -926.928
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA98F8EB9D2E7}" {
+     Name "PistolRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 857.872
+      OffsetTop 857.872
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 29.994
+      OffsetBottom -887.866
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D2C0}" {
+     Name "PistolRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 857.872
+      OffsetTop 857.872
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 29.994
+      OffsetBottom -887.866
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628EA98F8EB9D221}" {
+     Name "PistolInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 857.872
+      OffsetTop 857.872
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 29.994
+      OffsetBottom -887.866
      }
      text "1"
      "Horizontal alignment" Center
     }
-    ButtonWidgetClass "{628C3056CD33DFF2}" {
-     Name "HelmetRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 39.347
-      OffsetTop 39.347
+    TextWidgetClass "{628EA98F8EB9D23E}" {
+     Name "PistolClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 857.872
+      OffsetTop 857.872
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 29.994
+      OffsetBottom -887.866
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D21A}" {
+     Name "PistolClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 857.872
+      OffsetTop 857.872
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 29.994
+      OffsetBottom -887.866
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA98F8EB9D274}" {
+     Name "PistolArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 857.872
+      OffsetTop 857.872
+      SizeX 300.008
+      OffsetRight -998.354
+      SizeY 29.994
+      OffsetBottom -887.866
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA98F8EB9D250}" {
+     Name "PistolText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 857.872
+      OffsetTop 857.872
       SizeX 100
-      OffsetRight -1165.61
+      OffsetRight -692.346
+      SizeY 29.994
+      OffsetBottom -887.866
+     }
+     "Z Order" 2
+     Text "Add Pistol"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D1B2}" {
+     Name "Pistol"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 857.872
+      OffsetTop 857.872
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 29.994
+      OffsetBottom -887.866
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA98F8EB9D191}" {
+     Name "CarbineRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 100
+      OffsetRight -1165.88
       SizeY 30
-      OffsetBottom -69.346
+      OffsetBottom -848.872
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D1F0}" {
+     Name "CarbineRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -848.872
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628EA98F8EB9D1D4}" {
+     Name "CarbineInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -848.872
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628EA98F8EB9D137}" {
+     Name "CarbineClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -848.872
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D118}" {
+     Name "CarbineClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -848.872
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA98F8EB9D142}" {
+     Name "CarbineArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 300.008
+      OffsetRight -998.354
+      SizeY 30
+      OffsetBottom -848.872
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA98F8EB9D158}" {
+     Name "CarbineText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -848.872
+     }
+     "Z Order" 2
+     Text "Add Carbine"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D0B9}" {
+     Name "Carbine"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 818.872
+      OffsetTop 818.872
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -848.872
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA98F8EB9D09E}" {
+     Name "RifleUGLRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 779.872
+      OffsetTop 779.872
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -809.872
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D0FD}" {
+     Name "RifleUGLRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 779.872
+      OffsetTop 779.872
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -809.872
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -281,370 +1069,51 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C3056B8383004}" {
-     Name "HelmetRemoveText"
+    EditBoxWidgetClass "{628EA98F8EB9D022}" {
+     Name "RifleUGLInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 779.872
+      OffsetTop 779.872
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -809.872
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628EA98F8EB9D001}" {
+     Name "RifleUGLClearText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 39.347
-      OffsetTop 39.347
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -69.346
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C18DE75864A57}" {
-     Name "Shirt"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 78.346
-      OffsetTop 78.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -108.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C18DE30E3F062}" {
-     Name "ShirtText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 78.346
-      OffsetTop 78.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -108.346
-     }
-     Text "Add Shirts"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C18DD84E80AE4}" {
-     Name "ShirtArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.081
-      OffsetLeft 698.081
-      PositionY 78.346
-      OffsetTop 78.346
-      SizeX 300
-      OffsetRight -998.081
-      SizeY 30
-      OffsetBottom -108.346
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C30575F054732}" {
-     Name "ShirtClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 78.346
-      OffsetTop 78.346
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 779.872
+      OffsetTop 779.872
       SizeX 57
-      OffsetRight -1061.61
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -108.346
+      OffsetBottom -809.872
      }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C30575F054792}" {
-     Name "ShirtClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 78.346
-      OffsetTop 78.346
-      SizeX 57
-      OffsetRight -1061.61
-      SizeY 30
-      OffsetBottom -108.346
-     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C3056483B17D2}" {
-     Name "ShirtInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.61
-      OffsetLeft 1169.61
-      PositionY 78.346
-      OffsetTop 78.346
-      SizeX 32
-      OffsetRight -1201.61
-      SizeY 30
-      OffsetBottom -108.346
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C3056483B1769}" {
-     Name "ShirtRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 78.346
-      OffsetTop 78.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -108.346
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C3056483B16BE}" {
-     Name "ShirtRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 78.346
-      OffsetTop 78.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -108.346
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37D99D67D78C}" {
-     Name "ArmoredVest"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 117.346
-      OffsetTop 117.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -147.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37D99D67D07C}" {
-     Name "ArmoredVestText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 117.346
-      OffsetTop 117.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -147.346
-     }
-     Text "Add Armored Vest"
-     "Font Size" 12
-     "Min Font Size" 12
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37D99D67D019}" {
-     Name "ArmoredVestArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.081
-      OffsetLeft 698.081
-      PositionY 117.346
-      OffsetTop 117.346
-      SizeX 300
-      OffsetRight -998.081
-      SizeY 30
-      OffsetBottom -147.346
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37D99D67D02D}" {
-     Name "ArmoredVestClear"
+    ButtonWidgetClass "{628EA98F8EB9D060}" {
+     Name "RifleUGLClear"
      Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 117.346
-      OffsetTop 117.346
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 779.872
+      OffsetTop 779.872
       SizeX 57
-      OffsetRight -1061.61
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -147.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37D99D67D0CE}" {
-     Name "ArmoredVestClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 117.346
-      OffsetTop 117.346
-      SizeX 57
-      OffsetRight -1061.61
-      SizeY 30
-      OffsetBottom -147.346
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37D99D67D089}" {
-     Name "ArmoredVestInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.61
-      OffsetLeft 1169.61
-      PositionY 117.346
-      OffsetTop 117.346
-      SizeX 32
-      OffsetRight -1201.61
-      SizeY 30
-      OffsetBottom -147.346
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37D99D67D0A3}" {
-     Name "ArmoredVestRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 117.346
-      OffsetTop 117.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -147.346
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37D99D67D17A}" {
-     Name "ArmoredVestRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 117.346
-      OffsetTop 117.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -147.346
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DE2094BCF2}" {
-     Name "Pants"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -186.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DFDD15D783}" {
-     Name "PantsText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -186.346
-     }
-     Text "Add Pants"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DFDD15D055}" {
-     Name "PantsArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.081
-      OffsetLeft 698.081
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 300
-      OffsetRight -998.081
-      SizeY 30
-      OffsetBottom -186.346
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DFDD15D06B}" {
-     Name "PantsClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 57
-      OffsetRight -1061.61
-      SizeY 30
-      OffsetBottom -186.346
+      OffsetBottom -809.872
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -652,50 +1121,522 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DFDD15D03D}" {
-     Name "PantsClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 57
-      OffsetRight -1061.61
+    TextWidgetClass "{628EA98F8EB9D04E}" {
+     Name "RifleUGLArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 779.872
+      OffsetTop 779.872
+      SizeX 300.008
+      OffsetRight -998.354
       SizeY 30
-      OffsetBottom -186.346
+      OffsetBottom -809.872
      }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA98F8EB9D7AD}" {
+     Name "RifleUGLText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 779.872
+      OffsetTop 779.872
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -809.872
+     }
+     "Z Order" 2
+     Text "Add Rifle UGL"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D790}" {
+     Name "RifleUGL"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 779.872
+      OffsetTop 779.872
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -809.872
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628EA98F8EB9D7FD}" {
+     Name "RifleRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -770.872
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D722}" {
+     Name "RifleRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -770.872
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628EA98F8EB9D704}" {
+     Name "RifleInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -770.872
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628EA98F8EB9D77C}" {
+     Name "RifleClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -770.872
+     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DFDD15D09D}" {
-     Name "PantsInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.61
-      OffsetLeft 1169.61
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 32
-      OffsetRight -1201.61
+    ButtonWidgetClass "{628EA98F8EB9D6B3}" {
+     Name "RifleClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 57
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -186.346
+      OffsetBottom -770.872
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628EA98F8EB9D69E}" {
+     Name "RifleArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 300.008
+      OffsetRight -998.354
+      SizeY 30
+      OffsetBottom -770.872
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628EA98F8EB9D6CE}" {
+     Name "RifleText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -770.872
+     }
+     "Z Order" 2
+     Text "Add Rifle"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628EA98F8EB9D660}" {
+     Name "Rifle"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 740.872
+      OffsetTop 740.872
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -770.872
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5ADDB}" {
+     Name "Extra4RemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -731.86
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5AD3B}" {
+     Name "Extra4Remove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -731.86
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DCEDF5AD19}" {
+     Name "Extra4Input"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -731.86
      }
      text "1"
      "Horizontal alignment" Center
     }
-    ButtonWidgetClass "{628C37DFDD15D0B1}" {
-     Name "PantsRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 100
-      OffsetRight -1165.61
+    TextWidgetClass "{628C37DCEDF5AD74}" {
+     Name "Extra4ClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 57
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -186.346
+      OffsetBottom -731.86
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5AD5B}" {
+     Name "Extra4Clear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -731.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5ACBF}" {
+     Name "Extra4Array"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 300.008
+      OffsetRight -998.354
+      SizeY 30
+      OffsetBottom -731.86
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5AC99}" {
+     Name "Extra4Text"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -731.86
+     }
+     "Z Order" 2
+     Text "Add Extra 4"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5ACF8}" {
+     Name "Extra4"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 701.86
+      OffsetTop 701.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -731.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5AC2D}" {
+     Name "Extra3RemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5AC14}" {
+     Name "Extra3Remove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DCEDF5AC78}" {
+     Name "Extra3Input"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5AC5B}" {
+     Name "Extra3ClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D3BB}" {
+     Name "Extra3Clear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5D39B}" {
+     Name "Extra3Array"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 300.008
+      OffsetRight -998.354
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5D3F5}" {
+     Name "Extra3Text"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     "Z Order" 2
+     Text "Add Extra 3"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D3D7}" {
+     Name "Extra3"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 662.86
+      OffsetTop 662.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -692.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5D33A}" {
+     Name "WaistRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 623.86
+      OffsetTop 623.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -653.86
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D31B}" {
+     Name "WaistRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 623.86
+      OffsetTop 623.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -653.86
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -704,371 +1645,51 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DFDD15D14C}" {
-     Name "PantsRemoveText"
+    EditBoxWidgetClass "{628C37DCEDF5D37A}" {
+     Name "WaistInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 623.86
+      OffsetTop 623.86
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -653.86
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5D354}" {
+     Name "WaistClearText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 156.346
-      OffsetTop 156.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -186.346
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DFDD15D165}" {
-     Name "Boots"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 195.346
-      OffsetTop 195.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -225.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DFDD15D13C}" {
-     Name "BootsText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 195.346
-      OffsetTop 195.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -225.346
-     }
-     Text "Add Boots"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DFDD15D1D6}" {
-     Name "BootsArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.081
-      OffsetLeft 698.081
-      PositionY 195.346
-      OffsetTop 195.346
-      SizeX 300
-      OffsetRight -998.081
-      SizeY 30
-      OffsetBottom -225.346
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DFDD15D1F6}" {
-     Name "BootsClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 195.346
-      OffsetTop 195.346
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 623.86
+      OffsetTop 623.86
       SizeX 57
-      OffsetRight -1061.61
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -225.346
+      OffsetBottom -653.86
      }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DFDD15D195}" {
-     Name "BootsClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 195.346
-      OffsetTop 195.346
-      SizeX 57
-      OffsetRight -1061.61
-      SizeY 30
-      OffsetBottom -225.346
-     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DFDD15D1B9}" {
-     Name "BootsInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.61
-      OffsetLeft 1169.61
-      PositionY 195.346
-      OffsetTop 195.346
-      SizeX 32
-      OffsetRight -1201.61
-      SizeY 30
-      OffsetBottom -225.346
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DFDD15D257}" {
-     Name "BootsRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 195.346
-      OffsetTop 195.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -225.346
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DFDD15D272}" {
-     Name "BootsRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 195.346
-      OffsetTop 195.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -225.346
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DFDD15D20E}" {
-     Name "Backpack"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 234.346
-      OffsetTop 234.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -264.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DFDD15D22F}" {
-     Name "BackpackText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.081
-      OffsetLeft 592.081
-      PositionY 234.346
-      OffsetTop 234.346
-      SizeX 100
-      OffsetRight -692.081
-      SizeY 30
-      OffsetBottom -264.346
-     }
-     Text "Add Backpacks"
-     "Font Size" 15
-     "Min Font Size" 15
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DFDD15D2CD}" {
-     Name "BackpackArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.081
-      OffsetLeft 698.081
-      PositionY 234.346
-      OffsetTop 234.346
-      SizeX 300
-      OffsetRight -998.081
-      SizeY 30
-      OffsetBottom -264.346
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DFDD15D2EA}" {
-     Name "BackpackClear"
+    ButtonWidgetClass "{628C37DCEDF5D2B4}" {
+     Name "WaistClear"
      Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 234.346
-      OffsetTop 234.346
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 623.86
+      OffsetTop 623.86
       SizeX 57
-      OffsetRight -1061.61
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -264.346
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DFDD15D2BC}" {
-     Name "BackpackClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.61
-      OffsetLeft 1004.61
-      PositionY 234.346
-      OffsetTop 234.346
-      SizeX 57
-      OffsetRight -1061.61
-      SizeY 30
-      OffsetBottom -264.346
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37DFDD15D35F}" {
-     Name "BackpackInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.61
-      OffsetLeft 1169.61
-      PositionY 234.346
-      OffsetTop 234.346
-      SizeX 32
-      OffsetRight -1201.61
-      SizeY 30
-      OffsetBottom -264.346
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DFDD15D37B}" {
-     Name "BackpackRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 234.346
-      OffsetTop 234.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -264.346
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DFDD15D316}" {
-     Name "BackpackRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.61
-      OffsetLeft 1065.61
-      PositionY 234.346
-      OffsetTop 234.346
-      SizeX 100
-      OffsetRight -1165.61
-      SizeY 30
-      OffsetBottom -264.346
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD042766C3}" {
-     Name "Vest"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -302.783
-     }
-     "Z Order" -2
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD042766AB}" {
-     Name "VestText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -302.783
-     }
-     Text "Add Vests"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DD0427677F}" {
-     Name "VestArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.195
-      OffsetLeft 698.195
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 300.02
-      OffsetRight -998.215
-      SizeY 30
-      OffsetBottom -302.783
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD0427670E}" {
-     Name "VestClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -302.783
+      OffsetBottom -653.86
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -1076,50 +1697,378 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DD04276720}" {
-     Name "VestClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 57
-      OffsetRight -1061.73
+    TextWidgetClass "{628C37DCEDF5D29F}" {
+     Name "WaistArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 623.86
+      OffsetTop 623.86
+      SizeX 300.008
+      OffsetRight -998.354
       SizeY 30
-      OffsetBottom -302.783
+      OffsetBottom -653.86
      }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5D2FF}" {
+     Name "WaistText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 623.86
+      OffsetTop 623.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -653.86
+     }
+     "Z Order" 2
+     Text "Add Waist"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D2DE}" {
+     Name "Waist"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 623.86
+      OffsetTop 623.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -653.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5D201}" {
+     Name "Extra2RemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -614.86
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D260}" {
+     Name "Extra2Remove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -614.86
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DCEDF5D249}" {
+     Name "Extra2Input"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -614.86
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5D1A9}" {
+     Name "Extra2ClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -614.86
+     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DD042767E9}" {
-     Name "VestInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.73
-      OffsetLeft 1169.73
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 32
-      OffsetRight -1201.73
+    ButtonWidgetClass "{628C37DCEDF5D197}" {
+     Name "Extra2Clear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 57
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -302.783
+      OffsetBottom -614.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5D1F6}" {
+     Name "Extra2Array"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 300.008
+      OffsetRight -998.354
+      SizeY 30
+      OffsetBottom -614.86
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5D1D9}" {
+     Name "Extra2Text"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -614.86
+     }
+     "Z Order" 2
+     Text "Add Extra 2"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D13C}" {
+     Name "Extra2"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 584.86
+      OffsetTop 584.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -614.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5D167}" {
+     Name "Extra1RemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -575.86
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D147}" {
+     Name "Extra1Remove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -575.86
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DCEDF5D0AF}" {
+     Name "Extra1Input"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -575.86
      }
      text "1"
      "Horizontal alignment" Center
     }
-    ButtonWidgetClass "{628C37DD04276782}" {
-     Name "VestRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 100
-      OffsetRight -1165.73
+    TextWidgetClass "{628C37DCEDF5D08B}" {
+     Name "Extra1ClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 57
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -302.783
+      OffsetBottom -575.86
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D0E5}" {
+     Name "Extra1Clear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 57
+      OffsetRight -1061.88
+      SizeY 30
+      OffsetBottom -575.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5D0CA}" {
+     Name "Extra1Array"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 300.008
+      OffsetRight -998.354
+      SizeY 30
+      OffsetBottom -575.86
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5D02A}" {
+     Name "Extra1Text"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -575.86
+     }
+     "Z Order" 2
+     Text "Add Extra 1"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D00C}" {
+     Name "Extra1"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 545.86
+      OffsetTop 545.86
+      SizeX 100
+      OffsetRight -692.346
+      SizeY 30
+      OffsetBottom -575.86
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DCEDF5D07B}" {
+     Name "NeckRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 506.86
+      OffsetTop 506.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -536.86
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DCEDF5D058}" {
+     Name "NeckRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.88
+      OffsetLeft 1065.88
+      PositionY 506.86
+      OffsetTop 506.86
+      SizeX 100
+      OffsetRight -1165.88
+      SizeY 30
+      OffsetBottom -536.86
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -1128,370 +2077,51 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DD0427605D}" {
-     Name "VestRemoveText"
+    EditBoxWidgetClass "{628C37DCEDF5D782}" {
+     Name "NeckInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.88
+      OffsetLeft 1169.88
+      PositionY 506.86
+      OffsetTop 506.86
+      SizeX 32
+      OffsetRight -1201.88
+      SizeY 30
+      OffsetBottom -536.86
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DCEDF5D7F8}" {
+     Name "NeckClearText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 272.783
-      OffsetTop 272.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -302.783
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD0427606E}" {
-     Name "Handwear"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 311.783
-      OffsetTop 311.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -341.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04276004}" {
-     Name "HandwearTextt"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 311.783
-      OffsetTop 311.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -341.783
-     }
-     Text "Add Handwear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DD04276020}" {
-     Name "HandwearArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.195
-      OffsetLeft 698.195
-      PositionY 311.783
-      OffsetTop 311.783
-      SizeX 300.02
-      OffsetRight -998.215
-      SizeY 30
-      OffsetBottom -341.783
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD042760C3}" {
-     Name "HandwearClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 311.783
-      OffsetTop 311.783
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 506.86
+      OffsetTop 506.86
       SizeX 57
-      OffsetRight -1061.73
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -341.783
+      OffsetBottom -536.86
      }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD0427609E}" {
-     Name "HandwearClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 311.783
-      OffsetTop 311.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -341.783
-     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DD042760BD}" {
-     Name "HandwearInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.73
-      OffsetLeft 1169.73
-      PositionY 311.783
-      OffsetTop 311.783
-      SizeX 32
-      OffsetRight -1201.73
-      SizeY 30
-      OffsetBottom -341.783
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD0427615A}" {
-     Name "HandwearRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 311.783
-      OffsetTop 311.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -341.783
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04276179}" {
-     Name "HandwearRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 311.783
-      OffsetTop 311.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -341.783
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD0427611A}" {
-     Name "Head"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 350.783
-      OffsetTop 350.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -380.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04276139}" {
-     Name "HeadText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 350.783
-      OffsetTop 350.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -380.783
-     }
-     Text "Add Headwear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DD042761D8}" {
-     Name "HeadArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.195
-      OffsetLeft 698.195
-      PositionY 350.783
-      OffsetTop 350.783
-      SizeX 300.02
-      OffsetRight -998.215
-      SizeY 30
-      OffsetBottom -380.783
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD042761F8}" {
-     Name "HeadClear"
+    ButtonWidgetClass "{628C37DCEDF5D7DC}" {
+     Name "NeckClear"
      Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 350.783
-      OffsetTop 350.783
+      PositionX 1004.88
+      OffsetLeft 1004.88
+      PositionY 506.86
+      OffsetTop 506.86
       SizeX 57
-      OffsetRight -1061.73
+      OffsetRight -1061.88
       SizeY 30
-      OffsetBottom -380.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD0427619A}" {
-     Name "HeadClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 350.783
-      OffsetTop 350.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -380.783
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37DD042761BC}" {
-     Name "HeadInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.73
-      OffsetLeft 1169.73
-      PositionY 350.783
-      OffsetTop 350.783
-      SizeX 32
-      OffsetRight -1201.73
-      SizeY 30
-      OffsetBottom -380.783
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD04276258}" {
-     Name "HeadRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 350.783
-      OffsetTop 350.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -380.783
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD0427627E}" {
-     Name "HeadRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 350.783
-      OffsetTop 350.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -380.783
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD0427621F}" {
-     Name "Eyes"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -419.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04276203}" {
-     Name "EyesText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -419.783
-     }
-     Text "Add Eyewear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DD04276225}" {
-     Name "EyesArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.195
-      OffsetLeft 698.195
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 300.02
-      OffsetRight -998.215
-      SizeY 30
-      OffsetBottom -419.783
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD042762C6}" {
-     Name "EyesClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -419.783
+      OffsetBottom -536.86
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -1499,353 +2129,36 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DD042762EB}" {
-     Name "EyesClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -419.783
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37DD0427628F}" {
-     Name "EyesInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.73
-      OffsetLeft 1169.73
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 32
-      OffsetRight -1201.73
-      SizeY 30
-      OffsetBottom -419.783
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD042762A8}" {
-     Name "EyesRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -419.783
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C305611EB5929}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD0427634E}" {
-     Name "EyesRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 389.783
-      OffsetTop 389.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -419.783
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD0427636C}" {
-     Name "Ears"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 428.783
-      OffsetTop 428.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -458.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04276312}" {
-     Name "EarsText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 428.783
-      OffsetTop 428.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -458.783
-     }
-     Text "Add Earwear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DD04276331}" {
-     Name "EarsArray"
+    TextWidgetClass "{628C37DCEDF5D70D}" {
+     Name "NeckArray"
      Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.195
-      OffsetLeft 698.195
-      PositionY 428.783
-      OffsetTop 428.783
-      SizeX 300.02
-      OffsetRight -998.215
+      PositionX 698.346
+      OffsetLeft 698.346
+      PositionY 506.86
+      OffsetTop 506.86
+      SizeX 300.008
+      OffsetRight -998.354
       SizeY 30
-      OffsetBottom -458.783
+      OffsetBottom -536.86
      }
      Text ""
      "Min Font Size" 1
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628C37DD042763D7}" {
-     Name "EarsClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 428.783
-      OffsetTop 428.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -458.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD042763F4}" {
-     Name "EarsClearText"
+    TextWidgetClass "{628C37DCEDF5D77B}" {
+     Name "NeckText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 428.783
-      OffsetTop 428.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -458.783
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37DD0427639D}" {
-     Name "EarsInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.73
-      OffsetLeft 1169.73
-      PositionY 428.783
-      OffsetTop 428.783
-      SizeX 32
-      OffsetRight -1201.73
-      SizeY 30
-      OffsetBottom -458.783
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD042763B5}" {
-     Name "EarsRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 428.783
-      OffsetTop 428.783
+      PositionX 592.346
+      OffsetLeft 592.346
+      PositionY 506.86
+      OffsetTop 506.86
       SizeX 100
-      OffsetRight -1165.73
+      OffsetRight -692.346
       SizeY 30
-      OffsetBottom -458.783
+      OffsetBottom -536.86
      }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04277C59}" {
-     Name "EarsRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 428.783
-      OffsetTop 428.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -458.783
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD04277C71}" {
-     Name "Face"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04277C15}" {
-     Name "FaceText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.195
-      OffsetLeft 592.195
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 100.001
-      OffsetRight -692.196
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     Text "Add Facewear"
-     "Font Size" 16
-     "Min Font Size" 15
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DD04277C3A}" {
-     Name "FaceArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.195
-      OffsetLeft 698.195
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 300.02
-      OffsetRight -998.215
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD04277CDA}" {
-     Name "FaceClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04277CFF}" {
-     Name "FaceClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.73
-      OffsetLeft 1004.73
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 57
-      OffsetRight -1061.73
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37DD04277CE2}" {
-     Name "FaceInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.73
-      OffsetLeft 1169.73
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 32
-      OffsetRight -1201.73
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DD04277C86}" {
-     Name "FaceRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DD04277CAB}" {
-     Name "FaceRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.73
-      OffsetLeft 1065.73
-      PositionY 467.783
-      OffsetTop 467.783
-      SizeX 100
-      OffsetRight -1165.73
-      SizeY 30
-      OffsetBottom -497.783
-     }
-     Text "Remove Item"
+     "Z Order" 2
+     Text "Add Neckwear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
@@ -1871,102 +2184,324 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DCEDF5D77B}" {
-     Name "NeckText"
+    TextWidgetClass "{628C37DD04277CAB}" {
+     Name "FaceRemoveText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 506.86
-      OffsetTop 506.86
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 467.783
+      OffsetTop 467.783
       SizeX 100
-      OffsetRight -692.346
+      OffsetRight -1165.73
       SizeY 30
-      OffsetBottom -536.86
+      OffsetBottom -497.783
      }
-     Text "Add Neckwear"
+     "Z Order" 2
+     Text "Remove Item"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628C37DCEDF5D70D}" {
-     Name "NeckArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 506.86
-      OffsetTop 506.86
-      SizeX 300.008
-      OffsetRight -998.354
+    ButtonWidgetClass "{628C37DD04277C86}" {
+     Name "FaceRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 467.783
+      OffsetTop 467.783
+      SizeX 100
+      OffsetRight -1165.73
       SizeY 30
-      OffsetBottom -536.86
+      OffsetBottom -497.783
      }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D7DC}" {
-     Name "NeckClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 506.86
-      OffsetTop 506.86
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -536.86
-     }
+     "Z Order" -3
      Color 0.117 0.117 0.117 1
      components {
-      SCR_ButtonTextComponent "{628C3056173FB960}" {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
       }
      }
     }
-    TextWidgetClass "{628C37DCEDF5D7F8}" {
-     Name "NeckClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 506.86
-      OffsetTop 506.86
-      SizeX 57
-      OffsetRight -1061.88
+    EditBoxWidgetClass "{628C37DD04277CE2}" {
+     Name "FaceInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.73
+      OffsetLeft 1169.73
+      PositionY 467.783
+      OffsetTop 467.783
+      SizeX 32
+      OffsetRight -1201.73
       SizeY 30
-      OffsetBottom -536.86
+      OffsetBottom -497.783
      }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DD04277CFF}" {
+     Name "FaceClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 467.783
+      OffsetTop 467.783
+      SizeX 57
+      OffsetRight -1061.73
+      SizeY 30
+      OffsetBottom -497.783
+     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DCEDF5D782}" {
-     Name "NeckInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 506.86
-      OffsetTop 506.86
-      SizeX 32
-      OffsetRight -1201.88
+    ButtonWidgetClass "{628C37DD04277CDA}" {
+     Name "FaceClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 467.783
+      OffsetTop 467.783
+      SizeX 57
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -536.86
+      OffsetBottom -497.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD04277C3A}" {
+     Name "FaceArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.195
+      OffsetLeft 698.195
+      PositionY 467.783
+      OffsetTop 467.783
+      SizeX 300.02
+      OffsetRight -998.215
+      SizeY 30
+      OffsetBottom -497.783
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DD04277C15}" {
+     Name "FaceText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 467.783
+      OffsetTop 467.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -497.783
+     }
+     "Z Order" 2
+     Text "Add Facewear"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD04277C71}" {
+     Name "Face"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 467.783
+      OffsetTop 467.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -497.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD04277C59}" {
+     Name "EarsRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -458.783
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD042763B5}" {
+     Name "EarsRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -458.783
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DD0427639D}" {
+     Name "EarsInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.73
+      OffsetLeft 1169.73
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 32
+      OffsetRight -1201.73
+      SizeY 30
+      OffsetBottom -458.783
      }
      text "1"
      "Horizontal alignment" Center
     }
-    ButtonWidgetClass "{628C37DCEDF5D058}" {
-     Name "NeckRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 506.86
-      OffsetTop 506.86
-      SizeX 100
-      OffsetRight -1165.88
+    TextWidgetClass "{628C37DD042763F4}" {
+     Name "EarsClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 57
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -536.86
+      OffsetBottom -458.783
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD042763D7}" {
+     Name "EarsClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 57
+      OffsetRight -1061.73
+      SizeY 30
+      OffsetBottom -458.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD04276331}" {
+     Name "EarsArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.195
+      OffsetLeft 698.195
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 300.02
+      OffsetRight -998.215
+      SizeY 30
+      OffsetBottom -458.783
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DD04276312}" {
+     Name "EarsText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -458.783
+     }
+     "Z Order" 2
+     Text "Add Earwear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD0427636C}" {
+     Name "Ears"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 428.783
+      OffsetTop 428.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -458.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD0427634E}" {
+     Name "EyesRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 389.783
+      OffsetTop 389.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -419.783
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD042762A8}" {
+     Name "EyesRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 389.783
+      OffsetTop 389.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -419.783
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -1975,370 +2510,51 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DCEDF5D07B}" {
-     Name "NeckRemoveText"
+    EditBoxWidgetClass "{628C37DD0427628F}" {
+     Name "EyesInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.73
+      OffsetLeft 1169.73
+      PositionY 389.783
+      OffsetTop 389.783
+      SizeX 32
+      OffsetRight -1201.73
+      SizeY 30
+      OffsetBottom -419.783
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DD042762EB}" {
+     Name "EyesClearText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 506.86
-      OffsetTop 506.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -536.86
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D00C}" {
-     Name "Extra1"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 545.86
-      OffsetTop 545.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -575.86
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D02A}" {
-     Name "Extra1Text"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 545.86
-      OffsetTop 545.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -575.86
-     }
-     Text "Add Extra 1"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DCEDF5D0CA}" {
-     Name "Extra1Array"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 545.86
-      OffsetTop 545.86
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -575.86
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D0E5}" {
-     Name "Extra1Clear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 545.86
-      OffsetTop 545.86
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 389.783
+      OffsetTop 389.783
       SizeX 57
-      OffsetRight -1061.88
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -575.86
+      OffsetBottom -419.783
      }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D08B}" {
-     Name "Extra1ClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 545.86
-      OffsetTop 545.86
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -575.86
-     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DCEDF5D0AF}" {
-     Name "Extra1Input"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 545.86
-      OffsetTop 545.86
-      SizeX 32
-      OffsetRight -1201.88
-      SizeY 30
-      OffsetBottom -575.86
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D147}" {
-     Name "Extra1Remove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 545.86
-      OffsetTop 545.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -575.86
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D167}" {
-     Name "Extra1RemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 545.86
-      OffsetTop 545.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -575.86
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D13C}" {
-     Name "Extra2"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 584.86
-      OffsetTop 584.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -614.86
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D1D9}" {
-     Name "Extra2Text"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 584.86
-      OffsetTop 584.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -614.86
-     }
-     Text "Add Extra 2"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DCEDF5D1F6}" {
-     Name "Extra2Array"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 584.86
-      OffsetTop 584.86
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -614.86
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D197}" {
-     Name "Extra2Clear"
+    ButtonWidgetClass "{628C37DD042762C6}" {
+     Name "EyesClear"
      Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 584.86
-      OffsetTop 584.86
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 389.783
+      OffsetTop 389.783
       SizeX 57
-      OffsetRight -1061.88
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -614.86
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D1A9}" {
-     Name "Extra2ClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 584.86
-      OffsetTop 584.86
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -614.86
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37DCEDF5D249}" {
-     Name "Extra2Input"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 584.86
-      OffsetTop 584.86
-      SizeX 32
-      OffsetRight -1201.88
-      SizeY 30
-      OffsetBottom -614.86
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D260}" {
-     Name "Extra2Remove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 584.86
-      OffsetTop 584.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -614.86
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D201}" {
-     Name "Extra2RemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 584.86
-      OffsetTop 584.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -614.86
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D2DE}" {
-     Name "Waist"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -653.86
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D2FF}" {
-     Name "WaistText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -653.86
-     }
-     Text "Add Waist"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DCEDF5D29F}" {
-     Name "WaistArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -653.86
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D2B4}" {
-     Name "WaistClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -653.86
+      OffsetBottom -419.783
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -2346,50 +2562,378 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DCEDF5D354}" {
-     Name "WaistClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 57
-      OffsetRight -1061.88
+    TextWidgetClass "{628C37DD04276225}" {
+     Name "EyesArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.195
+      OffsetLeft 698.195
+      PositionY 389.783
+      OffsetTop 389.783
+      SizeX 300.02
+      OffsetRight -998.215
       SizeY 30
-      OffsetBottom -653.86
+      OffsetBottom -419.783
      }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DD04276203}" {
+     Name "EyesText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 389.783
+      OffsetTop 389.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -419.783
+     }
+     "Z Order" 2
+     Text "Add Eyewear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD0427621F}" {
+     Name "Eyes"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 389.783
+      OffsetTop 389.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -419.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD0427627E}" {
+     Name "HeadRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -380.783
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD04276258}" {
+     Name "HeadRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -380.783
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DD042761BC}" {
+     Name "HeadInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.73
+      OffsetLeft 1169.73
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 32
+      OffsetRight -1201.73
+      SizeY 30
+      OffsetBottom -380.783
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DD0427619A}" {
+     Name "HeadClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 57
+      OffsetRight -1061.73
+      SizeY 30
+      OffsetBottom -380.783
+     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DCEDF5D37A}" {
-     Name "WaistInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 32
-      OffsetRight -1201.88
+    ButtonWidgetClass "{628C37DD042761F8}" {
+     Name "HeadClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 57
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -653.86
+      OffsetBottom -380.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD042761D8}" {
+     Name "HeadArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.195
+      OffsetLeft 698.195
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 300.02
+      OffsetRight -998.215
+      SizeY 30
+      OffsetBottom -380.783
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DD04276139}" {
+     Name "HeadText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -380.783
+     }
+     "Z Order" 2
+     Text "Add Headwear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD0427611A}" {
+     Name "Head"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 350.783
+      OffsetTop 350.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -380.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD04276179}" {
+     Name "HandwearRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -341.783
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD0427615A}" {
+     Name "HandwearRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -341.783
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DD042760BD}" {
+     Name "HandwearInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.73
+      OffsetLeft 1169.73
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 32
+      OffsetRight -1201.73
+      SizeY 30
+      OffsetBottom -341.783
      }
      text "1"
      "Horizontal alignment" Center
     }
-    ButtonWidgetClass "{628C37DCEDF5D31B}" {
-     Name "WaistRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 100
-      OffsetRight -1165.88
+    TextWidgetClass "{628C37DD0427609E}" {
+     Name "HandwearClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 57
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -653.86
+      OffsetBottom -341.783
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD042760C3}" {
+     Name "HandwearClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 57
+      OffsetRight -1061.73
+      SizeY 30
+      OffsetBottom -341.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD04276020}" {
+     Name "HandwearArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.195
+      OffsetLeft 698.195
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 300.02
+      OffsetRight -998.215
+      SizeY 30
+      OffsetBottom -341.783
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DD04276004}" {
+     Name "HandwearTextt"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -341.783
+     }
+     "Z Order" 2
+     Text "Add Handwear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD0427606E}" {
+     Name "Handwear"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 311.783
+      OffsetTop 311.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -341.783
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DD0427605D}" {
+     Name "VestRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 272.783
+      OffsetTop 272.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -302.783
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD04276782}" {
+     Name "VestRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.73
+      OffsetLeft 1065.73
+      PositionY 272.783
+      OffsetTop 272.783
+      SizeX 100
+      OffsetRight -1165.73
+      SizeY 30
+      OffsetBottom -302.783
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -2398,511 +2942,51 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628C37DCEDF5D33A}" {
-     Name "WaistRemoveText"
+    EditBoxWidgetClass "{628C37DD042767E9}" {
+     Name "VestInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.73
+      OffsetLeft 1169.73
+      PositionY 272.783
+      OffsetTop 272.783
+      SizeX 32
+      OffsetRight -1201.73
+      SizeY 30
+      OffsetBottom -302.783
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DD04276720}" {
+     Name "VestClearText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 623.86
-      OffsetTop 623.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -653.86
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D3D7}" {
-     Name "Extra3"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 662.86
-      OffsetTop 662.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -692.86
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5D3F5}" {
-     Name "Extra3Text"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 662.86
-      OffsetTop 662.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -692.86
-     }
-     Text "Add Extra 3"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DCEDF5D39B}" {
-     Name "Extra3Array"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 662.86
-      OffsetTop 662.86
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -692.86
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5D3BB}" {
-     Name "Extra3Clear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 662.86
-      OffsetTop 662.86
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 272.783
+      OffsetTop 272.783
       SizeX 57
-      OffsetRight -1061.88
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -692.86
+      OffsetBottom -302.783
      }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5AC5B}" {
-     Name "Extra3ClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 662.86
-      OffsetTop 662.86
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -692.86
-     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628C37DCEDF5AC78}" {
-     Name "Extra3Input"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 662.86
-      OffsetTop 662.86
-      SizeX 32
-      OffsetRight -1201.88
-      SizeY 30
-      OffsetBottom -692.86
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5AC14}" {
-     Name "Extra3Remove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 662.86
-      OffsetTop 662.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -692.86
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5AC2D}" {
-     Name "Extra3RemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 662.86
-      OffsetTop 662.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -692.86
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5ACF8}" {
-     Name "Extra4"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 701.86
-      OffsetTop 701.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -731.86
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5AC99}" {
-     Name "Extra4Text"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 701.86
-      OffsetTop 701.86
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -731.86
-     }
-     Text "Add Extra 4"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628C37DCEDF5ACBF}" {
-     Name "Extra4Array"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 701.86
-      OffsetTop 701.86
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -731.86
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5AD5B}" {
-     Name "Extra4Clear"
+    ButtonWidgetClass "{628C37DD0427670E}" {
+     Name "VestClear"
      Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 701.86
-      OffsetTop 701.86
+      PositionX 1004.73
+      OffsetLeft 1004.73
+      PositionY 272.783
+      OffsetTop 272.783
       SizeX 57
-      OffsetRight -1061.88
+      OffsetRight -1061.73
       SizeY 30
-      OffsetBottom -731.86
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5AD74}" {
-     Name "Extra4ClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 701.86
-      OffsetTop 701.86
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -731.86
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628C37DCEDF5AD19}" {
-     Name "Extra4Input"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 701.86
-      OffsetTop 701.86
-      SizeX 32
-      OffsetRight -1201.88
-      SizeY 30
-      OffsetBottom -731.86
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628C37DCEDF5AD3B}" {
-     Name "Extra4Remove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 701.86
-      OffsetTop 701.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -731.86
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628C37DCEDF5ADDB}" {
-     Name "Extra4RemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 701.86
-      OffsetTop 701.86
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -731.86
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D660}" {
-     Name "Rifle"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628EA98F8EB9D6CE}" {
-     Name "RifleText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     Text "Add Rifle"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628EA98F8EB9D69E}" {
-     Name "RifleArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D6B3}" {
-     Name "RifleClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA98F8EB9D77C}" {
-     Name "RifleClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628EA98F8EB9D704}" {
-     Name "RifleInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 32
-      OffsetRight -1201.88
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D722}" {
-     Name "RifleRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     "Z Order" -3
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560D373156}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA98F8EB9D7FD}" {
-     Name "RifleRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 740.872
-      OffsetTop 740.872
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 30
-      OffsetBottom -770.872
-     }
-     Text "Remove Item"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D790}" {
-     Name "RifleUGL"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -809.872
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628EA98F8EB9D7AD}" {
-     Name "RifleUGLText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -809.872
-     }
-     Text "Add Rifle UGL"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628EA98F8EB9D04E}" {
-     Name "RifleUGLArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -809.872
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D060}" {
-     Name "RifleUGLClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -809.872
+      OffsetBottom -302.783
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -2910,50 +2994,379 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628EA98F8EB9D001}" {
-     Name "RifleUGLClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 57
-      OffsetRight -1061.88
+    TextWidgetClass "{628C37DD0427677F}" {
+     Name "VestArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.195
+      OffsetLeft 698.195
+      PositionY 272.783
+      OffsetTop 272.783
+      SizeX 300.02
+      OffsetRight -998.215
       SizeY 30
-      OffsetBottom -809.872
+      OffsetBottom -302.783
      }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DD042766AB}" {
+     Name "VestText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 272.783
+      OffsetTop 272.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -302.783
+     }
+     "Z Order" 2
+     Text "Add Vests"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DD042766C3}" {
+     Name "Vest"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.195
+      OffsetLeft 592.195
+      PositionY 272.783
+      OffsetTop 272.783
+      SizeX 100.001
+      OffsetRight -692.196
+      SizeY 30
+      OffsetBottom -302.783
+     }
+     "Z Order" -2
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DFDD15D316}" {
+     Name "BackpackRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 100
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -264.346
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DFDD15D37B}" {
+     Name "BackpackRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 100
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -264.346
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DFDD15D35F}" {
+     Name "BackpackInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.61
+      OffsetLeft 1169.61
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 32
+      OffsetRight -1201.61
+      SizeY 30
+      OffsetBottom -264.346
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DFDD15D2BC}" {
+     Name "BackpackClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -264.346
+     }
+     "Z Order" 2
      Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    EditBoxWidgetClass "{628EA98F8EB9D022}" {
-     Name "RifleUGLInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 32
-      OffsetRight -1201.88
+    ButtonWidgetClass "{628C37DFDD15D2EA}" {
+     Name "BackpackClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 57
+      OffsetRight -1061.61
       SizeY 30
-      OffsetBottom -809.872
+      OffsetBottom -264.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DFDD15D2CD}" {
+     Name "BackpackArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.081
+      OffsetLeft 698.081
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 300
+      OffsetRight -998.081
+      SizeY 30
+      OffsetBottom -264.346
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DFDD15D22F}" {
+     Name "BackpackText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -264.346
+     }
+     "Z Order" 2
+     Text "Add Backpacks"
+     "Font Size" 15
+     "Min Font Size" 15
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DFDD15D20E}" {
+     Name "Backpack"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 234.346
+      OffsetTop 234.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -264.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DFDD15D272}" {
+     Name "BootsRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 100
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -225.346
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DFDD15D257}" {
+     Name "BootsRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 100
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -225.346
+     }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560D373156}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C37DFDD15D1B9}" {
+     Name "BootsInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.61
+      OffsetLeft 1169.61
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 32
+      OffsetRight -1201.61
+      SizeY 30
+      OffsetBottom -225.346
      }
      text "1"
      "Horizontal alignment" Center
     }
-    ButtonWidgetClass "{628EA98F8EB9D0FD}" {
-     Name "RifleUGLRemove"
-     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 100
-      OffsetRight -1165.88
+    TextWidgetClass "{628C37DFDD15D195}" {
+     Name "BootsClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 57
+      OffsetRight -1061.61
       SizeY 30
-      OffsetBottom -809.872
+      OffsetBottom -225.346
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DFDD15D1F6}" {
+     Name "BootsClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -225.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DFDD15D1D6}" {
+     Name "BootsArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.081
+      OffsetLeft 698.081
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 300
+      OffsetRight -998.081
+      SizeY 30
+      OffsetBottom -225.346
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DFDD15D13C}" {
+     Name "BootsText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -225.346
+     }
+     "Z Order" 2
+     Text "Add Boots"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DFDD15D165}" {
+     Name "Boots"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 195.346
+      OffsetTop 195.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -225.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C37DFDD15D14C}" {
+     Name "PantsRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 100
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -186.346
+     }
+     "Z Order" 2
+     Text "Remove Item"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DFDD15D0B1}" {
+     Name "PantsRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 100
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -186.346
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -2962,35 +3375,104 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628EA98F8EB9D09E}" {
-     Name "RifleUGLRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 779.872
-      OffsetTop 779.872
-      SizeX 100
-      OffsetRight -1165.88
+    EditBoxWidgetClass "{628C37DFDD15D09D}" {
+     Name "PantsInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.61
+      OffsetLeft 1169.61
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 32
+      OffsetRight -1201.61
       SizeY 30
-      OffsetBottom -809.872
+      OffsetBottom -186.346
      }
-     Text "Remove Item"
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37DFDD15D03D}" {
+     Name "PantsClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -186.346
+     }
+     "Z Order" 2
+     Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628EA98F8EB9D0B9}" {
-     Name "Carbine"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 818.872
-      OffsetTop 818.872
-      SizeX 100
-      OffsetRight -692.346
+    ButtonWidgetClass "{628C37DFDD15D06B}" {
+     Name "PantsClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 57
+      OffsetRight -1061.61
       SizeY 30
-      OffsetBottom -848.872
+      OffsetBottom -186.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C3056173FB960}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37DFDD15D055}" {
+     Name "PantsArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.081
+      OffsetLeft 698.081
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 300
+      OffsetRight -998.081
+      SizeY 30
+      OffsetBottom -186.346
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37DFDD15D783}" {
+     Name "PantsText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -186.346
+     }
+     "Z Order" 2
+     Text "Add Pants"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DE2094BCF2}" {
+     Name "Pants"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 156.346
+      OffsetTop 156.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -186.346
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -2999,102 +3481,36 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628EA98F8EB9D158}" {
-     Name "CarbineText"
+    TextWidgetClass "{628C37D99D67D17A}" {
+     Name "ArmoredVestRemoveText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 818.872
-      OffsetTop 818.872
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 117.346
+      OffsetTop 117.346
       SizeX 100
-      OffsetRight -692.346
+      OffsetRight -1165.61
       SizeY 30
-      OffsetBottom -848.872
+      OffsetBottom -147.346
      }
-     Text "Add Carbine"
+     "Z Order" 2
+     Text "Remove Item"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628EA98F8EB9D142}" {
-     Name "CarbineArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 818.872
-      OffsetTop 818.872
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 30
-      OffsetBottom -848.872
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D118}" {
-     Name "CarbineClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 818.872
-      OffsetTop 818.872
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -848.872
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA98F8EB9D137}" {
-     Name "CarbineClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 818.872
-      OffsetTop 818.872
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 30
-      OffsetBottom -848.872
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628EA98F8EB9D1D4}" {
-     Name "CarbineInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 818.872
-      OffsetTop 818.872
-      SizeX 32
-      OffsetRight -1201.88
-      SizeY 30
-      OffsetBottom -848.872
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D1F0}" {
-     Name "CarbineRemove"
+    ButtonWidgetClass "{628C37D99D67D0A3}" {
+     Name "ArmoredVestRemove"
      Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 818.872
-      OffsetTop 818.872
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 117.346
+      OffsetTop 117.346
       SizeX 100
-      OffsetRight -1165.88
+      OffsetRight -1165.61
       SizeY 30
-      OffsetBottom -848.872
+      OffsetBottom -147.346
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -3103,35 +3519,104 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628EA98F8EB9D191}" {
-     Name "CarbineRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 818.872
-      OffsetTop 818.872
-      SizeX 100
-      OffsetRight -1165.88
+    EditBoxWidgetClass "{628C37D99D67D089}" {
+     Name "ArmoredVestInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.61
+      OffsetLeft 1169.61
+      PositionY 117.346
+      OffsetTop 117.346
+      SizeX 32
+      OffsetRight -1201.61
       SizeY 30
-      OffsetBottom -848.872
+      OffsetBottom -147.346
      }
-     Text "Remove Item"
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C37D99D67D0CE}" {
+     Name "ArmoredVestClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 117.346
+      OffsetTop 117.346
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -147.346
+     }
+     "Z Order" 2
+     Text "Clear"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628EA98F8EB9D1B2}" {
-     Name "Pistol"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 857.872
-      OffsetTop 857.872
+    ButtonWidgetClass "{628C37D99D67D02D}" {
+     Name "ArmoredVestClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 117.346
+      OffsetTop 117.346
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -147.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C37D99D67D019}" {
+     Name "ArmoredVestArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.081
+      OffsetLeft 698.081
+      PositionY 117.346
+      OffsetTop 117.346
+      SizeX 300
+      OffsetRight -998.081
+      SizeY 30
+      OffsetBottom -147.346
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C37D99D67D07C}" {
+     Name "ArmoredVestText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 117.346
+      OffsetTop 117.346
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.994
-      OffsetBottom -887.866
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -147.346
+     }
+     "Z Order" 2
+     Text "Add Armored Vest"
+     "Font Size" 12
+     "Min Font Size" 12
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37D99D67D78C}" {
+     Name "ArmoredVest"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 117.346
+      OffsetTop 117.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -147.346
      }
      Color 0.117 0.117 0.117 1
      components {
@@ -3140,102 +3625,36 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628EA98F8EB9D250}" {
-     Name "PistolText"
+    TextWidgetClass "{628C3056483B16BE}" {
+     Name "ShirtRemoveText"
      Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 857.872
-      OffsetTop 857.872
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 78.346
+      OffsetTop 78.346
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.994
-      OffsetBottom -887.866
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -108.346
      }
-     Text "Add Pistol"
+     "Z Order" 2
+     Text "Remove Item"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628EA98F8EB9D274}" {
-     Name "PistolArray"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 857.872
-      OffsetTop 857.872
-      SizeX 300.008
-      OffsetRight -998.354
-      SizeY 29.994
-      OffsetBottom -887.866
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D21A}" {
-     Name "PistolClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 857.872
-      OffsetTop 857.872
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 29.994
-      OffsetBottom -887.866
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA98F8EB9D23E}" {
-     Name "PistolClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1004.88
-      OffsetLeft 1004.88
-      PositionY 857.872
-      OffsetTop 857.872
-      SizeX 57
-      OffsetRight -1061.88
-      SizeY 29.994
-      OffsetBottom -887.866
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    EditBoxWidgetClass "{628EA98F8EB9D221}" {
-     Name "PistolInput"
-     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
-      PositionX 1169.88
-      OffsetLeft 1169.88
-      PositionY 857.872
-      OffsetTop 857.872
-      SizeX 32
-      OffsetRight -1201.88
-      SizeY 29.994
-      OffsetBottom -887.866
-     }
-     text "1"
-     "Horizontal alignment" Center
-    }
-    ButtonWidgetClass "{628EA98F8EB9D2C0}" {
-     Name "PistolRemove"
+    ButtonWidgetClass "{628C3056483B1769}" {
+     Name "ShirtRemove"
      Slot FrameWidgetSlot "{628C3056CD33DF90}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 857.872
-      OffsetTop 857.872
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 78.346
+      OffsetTop 78.346
       SizeX 100
-      OffsetRight -1165.88
-      SizeY 29.994
-      OffsetBottom -887.866
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -108.346
      }
      "Z Order" -3
      Color 0.117 0.117 0.117 1
@@ -3244,36 +3663,250 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628EA98F8EB9D2E7}" {
-     Name "PistolRemoveText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1065.88
-      OffsetLeft 1065.88
-      PositionY 857.872
-      OffsetTop 857.872
-      SizeX 100
-      OffsetRight -1165.88
-      SizeY 29.994
-      OffsetBottom -887.866
+    EditBoxWidgetClass "{628C3056483B17D2}" {
+     Name "ShirtInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.61
+      OffsetLeft 1169.61
+      PositionY 78.346
+      OffsetTop 78.346
+      SizeX 32
+      OffsetRight -1201.61
+      SizeY 30
+      OffsetBottom -108.346
      }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C30575F054792}" {
+     Name "ShirtClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 78.346
+      OffsetTop 78.346
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -108.346
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C30575F054732}" {
+     Name "ShirtClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 78.346
+      OffsetTop 78.346
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -108.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C18DD84E80AE4}" {
+     Name "ShirtArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.081
+      OffsetLeft 698.081
+      PositionY 78.346
+      OffsetTop 78.346
+      SizeX 300
+      OffsetRight -998.081
+      SizeY 30
+      OffsetBottom -108.346
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C18DE30E3F062}" {
+     Name "ShirtText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 78.346
+      OffsetTop 78.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -108.346
+     }
+     "Z Order" 2
+     Text "Add Shirts"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C18DE75864A57}" {
+     Name "Shirt"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 78.346
+      OffsetTop 78.346
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -108.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
+       m_sText "Add Unfirom"
+      }
+     }
+    }
+    TextWidgetClass "{628C3056B8383004}" {
+     Name "HelmetRemoveText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 39.347
+      OffsetTop 39.347
+      SizeX 100
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -69.346
+     }
+     "Z Order" 2
      Text "Remove Item"
      "Font Size" 16
      "Min Font Size" 16
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628EA9881BCD55E8}" {
-     Name "AR"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 896.934
-      OffsetTop 896.934
+    ButtonWidgetClass "{628C3056CD33DFF2}" {
+     Name "HelmetRemove"
+     Slot FrameWidgetSlot "{628C3056CD33DF90}" {
+      PositionX 1065.61
+      OffsetLeft 1065.61
+      PositionY 39.347
+      OffsetTop 39.347
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.994
-      OffsetBottom -926.928
+      OffsetRight -1165.61
+      SizeY 30
+      OffsetBottom -69.346
      }
+     "Z Order" -3
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C305611EB5929}" {
+      }
+     }
+    }
+    EditBoxWidgetClass "{628C3056DCB57414}" {
+     Name "HelmetInput"
+     Slot FrameWidgetSlot "{628C3056DCB5743E}" {
+      PositionX 1169.61
+      OffsetLeft 1169.61
+      PositionY 39.347
+      OffsetTop 39.347
+      SizeX 32
+      OffsetRight -1201.61
+      SizeY 30
+      OffsetBottom -69.346
+     }
+     text "1"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{628C305775D2A9A8}" {
+     Name "HelmetClearText"
+     Slot FrameWidgetSlot "{628C18DE44890093}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 39.347
+      OffsetTop 39.347
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -69.346
+     }
+     "Z Order" 2
+     Text "Clear"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C3057CFF1BE16}" {
+     Name "HelmetClear"
+     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
+      PositionX 1004.61
+      OffsetLeft 1004.61
+      PositionY 39.347
+      OffsetTop 39.347
+      SizeX 57
+      OffsetRight -1061.61
+      SizeY 30
+      OffsetBottom -69.346
+     }
+     Color 0.117 0.117 0.117 1
+     components {
+      SCR_ButtonTextComponent "{628C3056173FB960}" {
+      }
+     }
+    }
+    TextWidgetClass "{628C18DD910654A4}" {
+     Name "HelmetArray"
+     Slot FrameWidgetSlot "{628C18DD91065549}" {
+      PositionX 698.081
+      OffsetLeft 698.081
+      PositionY 39.347
+      OffsetTop 39.347
+      SizeX 300
+      OffsetRight -998.081
+      SizeY 30
+      OffsetBottom -69.346
+     }
+     Text ""
+     "Min Font Size" 1
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{628C18DE448900E8}" {
+     Name "HelmetText"
+     Slot FrameWidgetSlot "{628EA9879FA5CA8D}" {
+      PositionX 592.1
+      OffsetLeft 592.1
+      PositionY 39.347
+      OffsetTop 39.3
+      SizeX 100
+      OffsetRight -692.1
+      SizeY 30
+      OffsetBottom -69.3
+     }
+     "Z Order" 2
+     Text "Add Helmets"
+     "Font Size" 16
+     "Min Font Size" 16
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+    }
+    ButtonWidgetClass "{628C37DE7B9FD4FC}" {
+     Name "Helmet"
+     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
+      PositionX 592.081
+      OffsetLeft 592.081
+      PositionY 39.347
+      OffsetTop 39.347
+      SizeX 100
+      OffsetRight -692.081
+      SizeY 30
+      OffsetBottom -69.346
+     }
+     "Z Order" -2
      Color 0.117 0.117 0.117 1
      components {
       SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
@@ -3281,699 +3914,347 @@ FrameWidgetClass {
       }
      }
     }
-    TextWidgetClass "{628EA9881BCD5655}" {
-     Name "ARtext"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 896.934
-      OffsetTop 896.934
+    TextWidgetClass "{628EFB1701B9A77F}" {
+     Name "IndforText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 890.534
+      OffsetTop 890.534
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.994
-      OffsetBottom -926.928
+      OffsetRight -408.563
+      SizeY 30
+      OffsetBottom -920.534
      }
-     Text "Set AR"
+     "Z Order" 2
+     Text "INDFOR"
      "Font Size" 16
-     "Min Font Size" 16
+     "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628EA9881BCD5665}" {
-     Name "ARString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 896.934
-      OffsetTop 896.934
-      SizeX 185.116
-      OffsetRight -883.462
-      SizeY 29.994
-      OffsetBottom -926.928
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA9881BCD5637}" {
-     Name "ARClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 896.934
-      OffsetTop 896.934
-      SizeX 57
-      OffsetRight -945.393
-      SizeY 29.994
-      OffsetBottom -926.928
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA9881BCD56C9}" {
-     Name "ARClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 896.934
-      OffsetTop 896.934
-      SizeX 57
-      OffsetRight -945.393
-      SizeY 29.994
-      OffsetBottom -926.928
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA997E826A4C7}" {
-     Name "AT"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 896.934
-      OffsetTop 896.934
+    ButtonWidgetClass "{628EFB1701B9A7DF}" {
+     Name "Indfor"
+     Slot FrameWidgetSlot "{628EFB17BF870742}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 890.534
+      OffsetTop 890.534
       SizeX 100
-      OffsetRight -1052.98
-      SizeY 29.994
-      OffsetBottom -926.928
+      OffsetRight -408.563
+      SizeY 30
+      OffsetBottom -920.534
      }
      Color 0.117 0.117 0.117 1
      components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
+      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
       }
      }
     }
-    TextWidgetClass "{628EA997E826A4B9}" {
-     Name "ATText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 896.934
-      OffsetTop 896.934
+    TextWidgetClass "{628EFB173294955D}" {
+     Name "OpforText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 851.534
+      OffsetTop 851.534
       SizeX 100
-      OffsetRight -1052.98
-      SizeY 29.994
-      OffsetBottom -926.928
+      OffsetRight -408.563
+      SizeY 30
+      OffsetBottom -881.534
      }
-     Text "Set AT"
+     "Z Order" 2
+     Text "OPFOR"
      "Font Size" 16
-     "Min Font Size" 16
+     "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628EA997E826A54C}" {
-     Name "ATString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 1058.98
-      OffsetLeft 1058.98
-      PositionY 896.934
-      OffsetTop 896.934
-      SizeX 185.116
-      OffsetRight -1244.09
-      SizeY 29.994
-      OffsetBottom -926.928
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA997E826A51F}" {
-     Name "ATClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 896.934
-      OffsetTop 896.934
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 29.994
-      OffsetBottom -926.928
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA997E826A53B}" {
-     Name "ATClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 896.934
-      OffsetTop 896.934
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 29.994
-      OffsetBottom -926.928
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA997B4CE6FF6}" {
-     Name "MMG"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 934.732
-      OffsetTop 934.732
+    ButtonWidgetClass "{628EFB1732949527}" {
+     Name "Opfor"
+     Slot FrameWidgetSlot "{628EFB17BF870742}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 851.534
+      OffsetTop 851.534
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.994
-      OffsetBottom -964.726
+      OffsetRight -408.563
+      SizeY 30
+      OffsetBottom -881.534
      }
      Color 0.117 0.117 0.117 1
      components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
+      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
       }
      }
     }
-    TextWidgetClass "{628EA997B4CE6FA7}" {
-     Name "MMGText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 934.732
-      OffsetTop 934.732
+    TextWidgetClass "{628EFB176CC5BD87}" {
+     Name "BluforText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 812.534
+      OffsetTop 812.534
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.994
-      OffsetBottom -964.726
+      OffsetRight -408.563
+      SizeY 30
+      OffsetBottom -842.534
      }
-     Text "Set MMG"
+     "Z Order" 2
+     Text "((BLUFOR))"
      "Font Size" 16
-     "Min Font Size" 16
+     "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628EA997B4CE6878}" {
-     Name "MMGString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 185.116
-      OffsetRight -883.462
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA997B4CE680A}" {
-     Name "MMGClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 57
-      OffsetRight -945.393
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA997B4CE6826}" {
-     Name "MMGClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 57
-      OffsetRight -945.393
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA997B4CE68FA}" {
-     Name "MAT"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 100.001
-      OffsetRight -1052.98
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628EA997B4CE688E}" {
-     Name "MATText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 100.001
-      OffsetRight -1052.98
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Text "Set MAT"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628EA997B4CE68B3}" {
-     Name "MATString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 1058.98
-      OffsetLeft 1058.98
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 185.11
-      OffsetRight -1244.09
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA997B4CE694C}" {
-     Name "MATClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA997B4CE696F}" {
-     Name "MATClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 934.732
-      OffsetTop 934.732
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 29.994
-      OffsetBottom -964.726
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA9976FDA5792}" {
-     Name "HMG"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 973.11
-      OffsetTop 973.11
+    ButtonWidgetClass "{628EFB17BF8706A1}" {
+     Name "Blufor"
+     Slot FrameWidgetSlot "{628EFB17BF870742}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 812.534
+      OffsetTop 812.534
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.995
-      OffsetBottom -1003.1
+      OffsetRight -408.563
+      SizeY 30
+      OffsetBottom -842.534
      }
      Color 0.117 0.117 0.117 1
      components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
+      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
       }
      }
     }
-    TextWidgetClass "{628EA9976FDA5079}" {
-     Name "HMGText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 973.11
-      OffsetTop 973.11
+    TextWidgetClass "{628EFB16DB209136}" {
+     Name "ExportText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 449.692
+      OffsetLeft 449.692
+      PositionY 908.631
+      OffsetTop 908.631
       SizeX 100
-      OffsetRight -692.346
-      SizeY 29.995
-      OffsetBottom -1003.1
+      OffsetRight -549.692
+      SizeY 30.009
+      OffsetBottom -938.64
      }
-     Text "Set HMG"
-     "Font Size" 16
-     "Min Font Size" 16
+     "Z Order" 2
+     Text "Export"
+     "Font Size" 21
+     "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628EA9976FDA5017}" {
-     Name "HMGString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 185.116
-      OffsetRight -883.462
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA9976FDA50CA}" {
-     Name "HMGClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 57
-      OffsetRight -945.393
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA9976FDA509A}" {
-     Name "HMGClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 57
-      OffsetRight -945.393
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA9976FDA50AF}" {
-     Name "HAT"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 100.001
-      OffsetRight -1052.98
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628EA9976FDA514D}" {
-     Name "HATText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 100.001
-      OffsetRight -1052.98
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Text "Set HAT"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628EA9976FDA5172}" {
-     Name "HATString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 1058.98
-      OffsetLeft 1058.98
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 185.11
-      OffsetRight -1244.09
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA9976FDA5113}" {
-     Name "HATClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA9976FDA512E}" {
-     Name "HATClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 973.11
-      OffsetTop 973.11
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 29.995
-      OffsetBottom -1003.1
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA9976FDA51C4}" {
-     Name "Sniper"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 1010.9
-      OffsetTop 1010.9
+    ButtonWidgetClass "{628EFB16DB209197}" {
+     Name "Export"
+     Slot FrameWidgetSlot "{628EFB17BF870742}" {
+      PositionX 449.692
+      OffsetLeft 449.692
+      PositionY 908.631
+      OffsetTop 908.631
       SizeX 100
-      OffsetRight -692.346
-      SizeY 30
-      OffsetBottom -1040.9
+      OffsetRight -549.692
+      SizeY 30.009
+      OffsetBottom -938.64
      }
      Color 0.117 0.117 0.117 1
      components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
+      SCR_ButtonTextComponent "{628EFB17722FEF78}" {
       }
      }
     }
-    TextWidgetClass "{628EA9976FDA51E8}" {
-     Name "SniperText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 592.346
-      OffsetLeft 592.346
-      PositionY 1010.9
-      OffsetTop 1010.9
+    TextWidgetClass "{6292AC538DC5A728}" {
+     Name "SelectFaction"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 308.563
+      OffsetLeft 308.563
+      PositionY 781.835
+      OffsetTop 781.835
       SizeX 100
-      OffsetRight -692.346
+      OffsetRight -408.563
       SizeY 30
-      OffsetBottom -1040.9
+      OffsetBottom -811.835
      }
-     Text "Set Sniper"
+     Text "Select Side"
      "Font Size" 16
-     "Min Font Size" 16
+     "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    TextWidgetClass "{628EA9976FDA518E}" {
-     Name "SniperString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 698.346
-      OffsetLeft 698.346
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 185.116
-      OffsetRight -883.462
+    TextWidgetClass "{62984A768AE6FCF8}" {
+     Name "LeadershipBinoText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 781.202
+      OffsetTop 781.202
+      SizeX 143.75
+      OffsetRight -591.875
       SizeY 30
-      OffsetBottom -1040.9
+      OffsetBottom -811.202
      }
-     Text ""
-     "Min Font Size" 1
+     "Z Order" 2
+     Text "Enable Leader Binos"
+     "Font Size" 16
+     "Min Font Size" 15
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628EA9976FDA51AE}" {
-     Name "SniperClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 57
-      OffsetRight -945.393
+    CheckBoxWidgetClass "{6292AC530A35E22B}" {
+     Name "LeadershipBinos"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 781.479
+      OffsetTop 781.479
+      SizeX 98.6
+      OffsetRight -520.774
       SizeY 30
-      OffsetBottom -1040.9
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
+      OffsetBottom -811.479
      }
     }
-    TextWidgetClass "{628EA9976FDA524E}" {
-     Name "SniperClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 888.393
-      OffsetLeft 888.393
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 57
-      OffsetRight -945.393
+    TextWidgetClass "{62984A2E709C5037}" {
+     Name "MedicFragsText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 857.948
+      OffsetTop 857.948
+      SizeX 143.75
+      OffsetRight -591.875
       SizeY 30
-      OffsetBottom -1040.9
+      OffsetBottom -887.948
      }
-     Text "Clear"
+     "Z Order" 2
+     Text "Enable Medic Frags"
      "Font Size" 16
-     "Min Font Size" 16
+     "Min Font Size" 15
+     "Vertical Alignment" Center
+    }
+    CheckBoxWidgetClass "{62984A77CB26EE01}" {
+     Name "MedicFrags"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 858.12
+      OffsetTop 858.12
+      SizeX 98.6
+      OffsetRight -520.774
+      SizeY 30
+      OffsetBottom -888.12
+     }
+    }
+    TextWidgetClass "{62984A2E8B6DCF49}" {
+     Name "AssistantBinosText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 448.125
+      OffsetLeft 448.125
+      PositionY 819.148
+      OffsetTop 819.148
+      SizeX 143.75
+      OffsetRight -591.875
+      SizeY 30
+      OffsetBottom -849.148
+     }
+     "Z Order" 2
+     Text "Enable Assistant Binos"
+     "Font Size" 15
+     "Min Font Size" 14
+     "Vertical Alignment" Center
+    }
+    CheckBoxWidgetClass "{62984A77CB26EED5}" {
+     Name "AssistantBinos"
+     Slot FrameWidgetSlot "{6292AC5360A23AEF}" {
+      PositionX 422.174
+      OffsetLeft 422.174
+      PositionY 819.12
+      OffsetTop 819.12
+      SizeX 98.6
+      OffsetRight -520.774
+      SizeY 30
+      OffsetBottom -849.12
+     }
+    }
+    EditBoxWidgetClass "{62984A116F6F7A14}" {
+     Name "FileNameEditBox"
+     Slot FrameWidgetSlot "{62984A116F6F7A3B}" {
+      PositionX 29.396
+      OffsetLeft 29.396
+      PositionY 53.76
+      OffsetTop 53.76
+      SizeX 328.97
+      OffsetRight -358.367
+      SizeY 30
+      OffsetBottom -83.76
+     }
+     text "{D3B6188EF875E2C4}Configs/Gearscripts/CRF_GS_US80s.conf"
+     "Font Size" 12
+    }
+    TextWidgetClass "{62984A11560D602B}" {
+     Name "FileNameText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 29.309
+      OffsetLeft 29.309
+      PositionY 20.817
+      OffsetTop 20.817
+      SizeX 143.75
+      OffsetRight -173.06
+      SizeY 30.003
+      OffsetBottom -50.82
+     }
+     "Z Order" 2
+     Text "Set File Name"
+     "Font Size" 16
+     "Min Font Size" 15
+     "Vertical Alignment" Center
+    }
+    EditBoxWidgetClass "{62984A1169F64927}" {
+     Name "FactionEditBox"
+     Slot FrameWidgetSlot "{62984A1169F649C8}" {
+      PositionX 370.504
+      OffsetLeft 370.504
+      PositionY 53.718
+      OffsetTop 53.718
+      SizeX 143.7
+      OffsetRight -514.204
+      SizeY 30
+      OffsetBottom -83.718
+     }
+     text "BLUFOR"
+     "Horizontal alignment" Center
+    }
+    TextWidgetClass "{62984A112DE0DAA4}" {
+     Name "FactionNameText"
+     Slot FrameWidgetSlot "{628EFB176CC5BDA9}" {
+      PositionX 370.636
+      OffsetLeft 370.636
+      PositionY 20.775
+      OffsetTop 20.775
+      SizeX 143.75
+      OffsetRight -514.386
+      SizeY 30.003
+      OffsetBottom -50.778
+     }
+     "Z Order" 2
+     Text "Set Faction Name"
+     "Font Size" 16
+     "Min Font Size" 15
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
-    ButtonWidgetClass "{628EA9976FDA526F}" {
-     Name "AA"
-     Slot FrameWidgetSlot "{628B4C08F89AEFA8}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 100.001
-      OffsetRight -1052.98
-      SizeY 30
-      OffsetBottom -1040.9
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628B4C0F0A20F745}" {
-       m_sText "Add Unfirom"
-      }
-     }
-    }
-    TextWidgetClass "{628EA9976FDA5209}" {
-     Name "AAText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 952.979
-      OffsetLeft 952.979
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 100.001
-      OffsetRight -1052.98
-      SizeY 30
-      OffsetBottom -1040.9
-     }
-     Text "Set AA"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
-    TextWidgetClass "{628EA9976FDA522C}" {
-     Name "AAString"
-     Slot FrameWidgetSlot "{628C18DD91065549}" {
-      PositionX 1058.98
-      OffsetLeft 1058.98
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 185.11
-      OffsetRight -1244.09
-      SizeY 30
-      OffsetBottom -1040.9
-     }
-     Text ""
-     "Min Font Size" 1
-     "Vertical Alignment" Center
-    }
-    ButtonWidgetClass "{628EA9976FDA52CF}" {
-     Name "AAClear"
-     Slot FrameWidgetSlot "{628C3057CFF1BECF}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 30
-      OffsetBottom -1040.9
-     }
-     Color 0.117 0.117 0.117 1
-     components {
-      SCR_ButtonTextComponent "{628C30560F2FBCE6}" {
-      }
-     }
-    }
-    TextWidgetClass "{628EA9976FDA52F3}" {
-     Name "AAClearText"
-     Slot FrameWidgetSlot "{628C18DE44890093}" {
-      PositionX 1249.03
-      OffsetLeft 1249.03
-      PositionY 1010.9
-      OffsetTop 1010.9
-      SizeX 57
-      OffsetRight -1306.03
-      SizeY 30
-      OffsetBottom -1040.9
-     }
-     Text "Clear"
-     "Font Size" 16
-     "Min Font Size" 16
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-    }
+   }
+  }
+  FrameWidgetClass "{60DCC8DF2787CC88}" {
+   Prefab "{60DCC8DF2787CC88}"
+   Slot FrameWidgetSlot "{5D8AB8F2DCC3C881}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   {
     FrameWidgetClass "{60DCC8DF2787CC8A}" {
      Prefab "{60DCC8DF2787CC8A}"
      Slot FrameWidgetSlot "{5D62A913A6057240}" {

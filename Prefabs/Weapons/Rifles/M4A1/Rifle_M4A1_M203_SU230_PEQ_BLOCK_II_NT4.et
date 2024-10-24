@@ -33,7 +33,7 @@ GenericEntity : "{00D6DCF68C664480}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_M203_B
     }
     AttachmentSlotComponent "{60988582B19CD9BD}" {
      AttachmentSlot InventoryStorageSlot FLASHHIDER {
-      Prefab ""
+      Prefab "{B591C94754DB4893}Prefabs/Weapons/Attachments/Muzzle/KAC_NT4_QDSS/KAC_NT4_QDSS_Covered_Multicam.et"
      }
     }
    }

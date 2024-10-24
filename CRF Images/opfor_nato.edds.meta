@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0A1F947948102E69}CRF Images/opfor.edds"
+ Name "{0A1F947948102E69}CRF Images/opfor_nato.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

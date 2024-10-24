@@ -1,0 +1,51 @@
+CRF_GearScriptConfig {
+ m_FactionName "BLUFOR1"
+ m_FactionIcon ""
+ m_FactionWeapons CRF_Weapons "{62984A1E2192A83E}" {
+ }
+ m_DefaultFactionGear CRF_Default_Gear "{62984A1E2192A8CD}" {
+  m_bEnableLeadershipRadios 0
+  m_sLeadershipRadiosPrefab "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et"
+  m_bEnableLeadershipBinoculars 0
+  m_sLeadershipBinocularsPrefab "{E4E4CA52CCB2D22C}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22_base.et"
+  m_bEnableGIRadios 0
+  m_sGIRadiosPrefab "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et"
+  m_bEnableAssistantBinoculars 0
+  m_sAssistantBinocularsPrefab "{E4E4CA52CCB2D22C}Prefabs/Items/Equipment/Binoculars/Binoculars_M22/Binoculars_M22_base.et"
+  m_bEnableMedicFrags 0
+  m_DefaultMedicMedicalItems {
+   CRF_Inventory_Item "{62984A1E2192A97A}" {
+    m_sItemPrefab "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+    m_iItemCount 10
+   }
+   CRF_Inventory_Item "{62984A1E2192A919}" {
+    m_sItemPrefab "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et"
+    m_iItemCount 3
+   }
+   CRF_Inventory_Item "{62984A1E2192A900}" {
+    m_sItemPrefab "{00E36F41CA310E2A}Prefabs/Items/Medicine/SalineBag_01/SalineBag_US_01.et"
+    m_iItemCount 5
+   }
+   CRF_Inventory_Item "{62984A1E2192A92E}" {
+    m_sItemPrefab "{AE578EEA4244D41F}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_US.et"
+    m_iItemCount 1
+   }
+   CRF_Inventory_Item "{62984A1E2192A9D9}" {
+    m_sItemPrefab "{D41D22DD1B8E921E}Prefabs/Weapons/Grenades/M18/Smoke_M18_Green.et"
+    m_iItemCount 1
+   }
+   CRF_Inventory_Item "{62984A1E2192A9C6}" {
+    m_sItemPrefab "{14C1A0F061D9DDEE}Prefabs/Weapons/Grenades/M18/Smoke_M18_Violet.et"
+    m_iItemCount 1
+   }
+   CRF_Inventory_Item "{62984A1E2192A9F1}" {
+    m_sItemPrefab "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+    m_iItemCount 6
+   }
+   CRF_Inventory_Item "{62984A1E2192A99D}" {
+    m_sItemPrefab "{5B2FD067D70C1E8F}Prefabs/Items/Medicine/EpinephrineInjection/ACE_Medical_EpinephrineInjection.et"
+    m_iItemCount 6
+   }
+  }
+ }
+}
