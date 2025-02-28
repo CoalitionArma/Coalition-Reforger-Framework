@@ -115,9 +115,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[RplProp()]
 	vector m_vGenericSpawn[4];
 	
-	[RplProp()]
-	RplId m_rSpectatorGroup;
-	
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
 	int m_iTimeLimitMinutes;
 	
@@ -673,7 +670,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (SCR_FactionManager.SGetPlayerFaction(playerID).GetFactionKey() == "SPEC")
 		{	
 			string respawnPrefab = CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GSR");
-			string spawnpoint;
 			
 			RplId groupID = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerID))));
 			SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());

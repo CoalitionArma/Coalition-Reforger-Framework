@@ -518,7 +518,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		}
 		for(int i = 0; i < m_Gamemode.m_aGroupRplIDs.Count(); i++)
 		{
-			int leadersInGroup = 0;
 			int playersInGroup = 0;
 			int deadPlayersInGroup = 0;
 			

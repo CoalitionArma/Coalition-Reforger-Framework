@@ -27,8 +27,11 @@ class CRF_SpectatorLabelIcon : SCR_ScriptedWidgetComponent
 	protected bool m_bForceShowName;
 	
 	vector m_vWorldPosition;
+	
 	vector GetWorldPosition()
+	{
 		return m_vWorldPosition;
+	}
 	
 	override void HandlerAttached(Widget w)
 	{

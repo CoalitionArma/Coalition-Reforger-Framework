@@ -166,12 +166,12 @@ class CRF_PlayersModel : EDF_DbEntity
 	int med_morph_others;
 
     //------------------------------------------------------------------------------------------------
-    static CRF_PlayersModel CreatePlayer(string name, string armaguid, string platform)
+    static CRF_PlayersModel CreatePlayer(string playerName, string playerArmaGUID, string playerPlatform)
     {
         CRF_PlayersModel instance();
-		instance.name = name;
-		instance.armaguid = armaguid;
-		instance.platform = platform;
+		instance.name = playerName;
+		instance.armaguid = playerArmaGUID;
+		instance.platform = playerPlatform;
 		instance.tvt_kills = 0;
 		instance.tvt_deaths = 0;
 		instance.coop_kills = 0;
@@ -202,10 +202,10 @@ class CRF_PlayersModel : EDF_DbEntity
         return instance;
     }
 	
-	static CRF_PlayersModel UpdatePlayerName(string name)
+	static CRF_PlayersModel UpdatePlayerName(string playerName)
 	{
 		CRF_PlayersModel instance();
-		instance.name = name;
+		instance.name = playerName;
 		
 		return instance;
 	}
