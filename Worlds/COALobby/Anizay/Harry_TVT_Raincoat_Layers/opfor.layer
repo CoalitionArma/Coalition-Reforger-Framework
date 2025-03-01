@@ -80,9 +80,12 @@ SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
          coords 18.246 -1.777 -25.812
          angleY -14.109
          {
-          SCR_AIGroup : "{F1CCAEAE38D65D9E}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_SniperTeam_p.et" {
-           coords -12.687 5.116 52.112
+          SCR_AIGroup : "{2A01769C204DED43}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_AATeam_p.et" {
+           coords -12.378 5.287 53.907
            angleY 14.109
+           m_aUnitPrefabSlots {
+            "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{3B1B437AE8CB9AA4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AA_P.et" "{7E18E3AD60914A62}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAA_P.et"
+           }
           }
          }
         }
