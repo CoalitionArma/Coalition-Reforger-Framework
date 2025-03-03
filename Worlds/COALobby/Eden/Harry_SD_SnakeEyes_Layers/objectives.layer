@@ -31,7 +31,7 @@ $grp SCR_BaseTriggerEntity {
   "		{"\
   "			delete m_bBox;"\
   "			delete m_bdBox;"\
-  "			delete m_bRadio;"\
+  "//			delete m_bRadio;"\
   "		"\
   "			spawnThings();"\
   "			GetGame().GetCallqueue().CallLater(replaceBox, 600000, false);			"\
@@ -41,11 +41,11 @@ $grp SCR_BaseTriggerEntity {
   "	void spawnThings()"\
   "	{"\
   "		string bboxName = \"BravoAmmo\" + m_bLoc.ToString();"\
-  "		string bradioName = \"BravoRadio\" + m_bLoc.ToString();"\
+  "//		string bradioName = \"BravoRadio\" + m_bLoc.ToString();"\
   "		string bcboxName = \"BravoCBox\" + m_bLoc.ToString();"\
   "		"\
   "		BravoAmmo = GetGame().GetWorld().FindEntityByName(bboxName);"\
-  "		BravoRadio = GetGame().GetWorld().FindEntityByName(bradioName);"\
+  "//		BravoRadio = GetGame().GetWorld().FindEntityByName(bradioName);"\
   "		BravoCBox = GetGame().GetWorld().FindEntityByName(bcboxName);"\
   "		"\
   "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
@@ -55,8 +55,8 @@ $grp SCR_BaseTriggerEntity {
   "		m_bBox = GetGame().SpawnEntityPrefab(Resource.Load(m_boxstring),GetGame().GetWorld(),spawnParams);"\
   "		spawnParams.Transform[3] = BravoCBox.GetOrigin();		"\
   "		m_bdBox = GetGame().SpawnEntityPrefab(Resource.Load(m_dboxstring),GetGame().GetWorld(),spawnParams);"\
-  "		spawnParams.Transform[3] = BravoRadio.GetOrigin();		"\
-  "		m_bRadio = GetGame().SpawnEntityPrefab(Resource.Load(radiostring),GetGame().GetWorld(),spawnParams);"\
+  "//		spawnParams.Transform[3] = BravoRadio.GetOrigin();		"\
+  "//		m_bRadio = GetGame().SpawnEntityPrefab(Resource.Load(radiostring),GetGame().GetWorld(),spawnParams);"\
   "				"\
   "	}"
   EOnInit ""\
@@ -158,7 +158,7 @@ $grp SCR_BaseTriggerEntity {
   "		{"\
   "			delete m_aBox;"\
   "			delete m_adBox;"\
-  "			delete m_aRadio;"\
+  "//			delete m_aRadio;"\
   "		"\
   "			spawnThings();"\
   ""\
@@ -169,11 +169,11 @@ $grp SCR_BaseTriggerEntity {
   "	void spawnThings()"\
   "	{"\
   "		string aboxName = \"AlphaAmmo\" + m_aLoc.ToString();"\
-  "		string aradioName = \"AlphaRadio\" + m_aLoc.ToString();"\
+  "//		string aradioName = \"AlphaRadio\" + m_aLoc.ToString();"\
   "		string acboxName = \"AlphaCBox\" + m_aLoc.ToString();"\
   "		"\
   "		AlphaAmmo = GetGame().GetWorld().FindEntityByName(aboxName);"\
-  "		AlphaRadio = GetGame().GetWorld().FindEntityByName(aradioName);"\
+  "//		AlphaRadio = GetGame().GetWorld().FindEntityByName(aradioName);"\
   "		AlphaCBox = GetGame().GetWorld().FindEntityByName(acboxName);"\
   "		"\
   "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
@@ -183,8 +183,8 @@ $grp SCR_BaseTriggerEntity {
   "		m_aBox = GetGame().SpawnEntityPrefab(Resource.Load(m_boxstring),GetGame().GetWorld(),spawnParams);"\
   "		spawnParams.Transform[3] = AlphaCBox.GetOrigin();		"\
   "		m_adBox = GetGame().SpawnEntityPrefab(Resource.Load(m_dboxstring),GetGame().GetWorld(),spawnParams);"\
-  "		spawnParams.Transform[3] = AlphaRadio.GetOrigin();		"\
-  "		m_aRadio = GetGame().SpawnEntityPrefab(Resource.Load(radiostring),GetGame().GetWorld(),spawnParams);"\
+  "//		spawnParams.Transform[3] = AlphaRadio.GetOrigin();		"\
+  "//		m_aRadio = GetGame().SpawnEntityPrefab(Resource.Load(radiostring),GetGame().GetWorld(),spawnParams);"\
   "	}"
   EOnInit ""\
   "		super.EOnInit(owner);"\
