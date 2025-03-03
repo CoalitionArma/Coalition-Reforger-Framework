@@ -54,7 +54,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		
 		if(!m_EditableCharacterComponent.GetVisibleSelf())
 		{
-			m_fMaxIconSize = 24;
+			m_fMaxIconSize = 20;
 			m_fMinIconOpacity = 1;
 			m_fMaxIconOpacity = 1;
 			m_fMaxIconDistance = 425;

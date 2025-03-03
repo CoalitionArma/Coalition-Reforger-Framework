@@ -100,20 +100,18 @@ class CRF_PlayableCharacter : ScriptComponent
 				vector mat[4];
 				m_PlayerController.m_eCamera.GetTransform(mat);
 				mat[3][1] = mat[3][1] - 1.5;
-				m_PlayerController.UpdateEntityPos(mat);
+				owner.SetOrigin(mat);
 			}
 			else {
-				vector mat[4];
-				mat[3][1] = 10000;
-				m_PlayerController.UpdateEntityPos(mat);
+				owner.SetOrigin("0 10000 0");
 			}
 		}
 		Physics physics = owner.GetPhysics();
 		if (physics) {
 			physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
 			physics.EnableGravity(false);
-			physics.SetVelocity("0 0 0");
-			physics.SetAngularVelocity("0 0 0");
+			physics.SetVelocity(vector.Zero);
+			physics.SetAngularVelocity(vector.Zero);
 			physics.SetMass(0);
 			physics.SetDamping(1, 1);
 			physics.SetActive(ActiveState.INACTIVE);
@@ -157,8 +155,8 @@ class CRF_PlayableCharacter : ScriptComponent
 			Physics physics = owner.GetPhysics();
 			if (physics)
 			{
-				physics.SetVelocity("0 0 0");
-				physics.SetAngularVelocity("0 0 0");
+				physics.SetVelocity(vector.Zero);
+				physics.SetAngularVelocity(vector.Zero);
 				physics.SetMass(0);
 				physics.SetDamping(1, 1);
 				physics.SetActive(ActiveState.INACTIVE);
