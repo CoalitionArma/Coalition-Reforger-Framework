@@ -51,14 +51,14 @@ $grp SCR_VehicleSpawn {
  {
   coords 322.489 179.63 6444.48
   angleY 172.52
-  m_rnPrefab "{953523CFE2DB9769}Prefabs/Vehicles/Tracked/M113/M113_APC_MERDC.et"
+  m_rnPrefab "{E9BEA9042617CAAD}Prefabs/Vehicles/Tracked/M113/M113A3_APC_MERDC.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 320.768 180.64 6454.857
   angleY 163.725
-  m_rnPrefab "{953523CFE2DB9769}Prefabs/Vehicles/Tracked/M113/M113_APC_MERDC.et"
+  m_rnPrefab "{E9BEA9042617CAAD}Prefabs/Vehicles/Tracked/M113/M113A3_APC_MERDC.et"
   respawnDelay 10000
   firstSpawn 1
  }
