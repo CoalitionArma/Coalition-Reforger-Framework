@@ -22,7 +22,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Assets: 2x CROWS Stryker, APCS"\
    ""\
    "INDFOR Composition: Air Assault Infantry"\
-   "INDFOR Assets: 1x AH6M, 1x Unarmed UH60"\
+   "INDFOR Assets: 1x AH6M, 1x Unarmed UH60, HMG teams"\
    ""\
    "Time: 30 min"\
    "Weather: Clear"
