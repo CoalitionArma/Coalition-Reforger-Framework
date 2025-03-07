@@ -1,0 +1,220 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 6456.942 213.479 2318.01
+ }
+ {
+  coords 6256.942 213.479 2318.01
+ }
+ {
+  coords 6056.942 213.479 2318.01
+ }
+ {
+  coords 6456.942 213.479 2518.01
+ }
+ {
+  coords 6456.942 213.479 2718.01
+ }
+ {
+  coords 6256.942 213.479 2718.01
+ }
+ {
+  coords 6056.942 213.479 2718.01
+ }
+ {
+  coords 6056.942 213.479 2518.01
+ }
+}
+$grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+ {
+  coords 10190.294 30.763 1170.671
+ }
+ {
+  coords 9990.294 30.763 1170.671
+ }
+ {
+  coords 9990.294 30.763 1370.671
+ }
+ {
+  coords 9990.294 30.763 1570.671
+ }
+ {
+  coords 10190.294 30.763 1570.671
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 10192.336 23.042 1035.472
+ angleY 0
+ m_MarkerColor 0 0 0 1
+ m_sDescription "HVT Extraction"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 5696.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 5896.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 6096.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 6296.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 6496.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 6696.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 6896.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 7096.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 7296.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 7496.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 7696.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 7896.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 8096.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 8296.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 8496.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 8696.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 8896.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 9096.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 9296.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 9496.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 9696.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 9896.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 10096.425 238.526 3581.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 3381.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 3181.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 2981.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 2781.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 2581.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 2381.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 2181.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 1981.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 1781.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 1581.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 1381.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 1181.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 981.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 781.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 581.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 381.528
+  angleY 0
+ }
+ {
+  coords 5696.425 238.526 181.528
+  angleY 0
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 6359.373 211.858 2445.69
+ angleY 0
+ m_aVisibleForFactions + {
+  "INDFOR"
+ }
+}
