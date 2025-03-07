@@ -11,7 +11,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 1278.722 235.244 6297.302
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Blufor is invading Chernarus, and has sent infantry to clear the AA net from the AO. Their goal is to capture each AA emplacement, and destroy the MCOM supporting it with demo charges on the supply box. Once the Alpha MCOM has been destroyed, Blufor will respawn up to 40 people and Opfor will fully respawn. "\
+   m_sTextData "Blufor is invading Chernarus, and has sent infantry to clear the AA net from the AO. Their goal is to capture each AA emplacement, and destroy the MCOM supporting it with demo charges on the supply box. PLANT THE BOMB ON THE MCOM, NOT THE AA. Blufor will respawn in waves every ten minutes, and starts with 20 tickets. Opfor will fully respawn, and Blufor will receive 20 tickets when Alpha is destroyed."\
    ""\
    "BLUFOR Composition: Infantry, supporting IFV "\
    "BLUFOR Assets: 2x Armed M113"\
@@ -23,13 +23,17 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Clear"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Destroy both MCOM, and control the AA sites."
+   m_sTextData "Destroy both MCOM, and control the AA sites."\
+   ""\
+   "Blufor starts with 20 tickets, and respawns in waves every 10 minutes. When Alpha is destroyed, you receive 20 tickets."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "Defend both MCOM sites, and the associated AA sites."
+   m_sTextData "Defend both MCOM sites, and the associated AA sites."\
+   ""\
+   "You will receive a full respawn when the Alpha MCOM is destroyed."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "Blufor has 40 tickets, and will receive trucks on respawn."
+   m_sTextData "Blufor will receive trucks on respawn."
   }
  }
  m_iFactionOneRatio 3
@@ -43,7 +47,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{31798400ADCA306B}Configs/Gearscripts/Custom/Harry/VibingInVybor/CRF_GS_USSR80s_RPK.conf"
  }
  m_iTimeToRespawn 0
- m_iBLUFORTickets 40
+ m_iBLUFORTickets 20
  m_iOPFORTickets -1
  {
   SCR_FactionManager "648905DE33DBEA09" {

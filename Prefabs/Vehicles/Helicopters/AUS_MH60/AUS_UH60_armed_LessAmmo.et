@@ -1,0 +1,1323 @@
+Vehicle : "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et" {
+ ID "5DB688595BAB2FD7"
+ components {
+  SCR_HelicopterSoundComponent "{5A7CE769E7A9C43E}" {
+   Filenames {
+    "{4A33B41B48CAE8E3}Sounds/Vehicles/Rotary/Vehicles_AUS_MH60_Rotor_Turbines.acp" "{BB84D1CDBB8FC70D}Sounds/Vehicles/Rotary/Vehicles_AUS_UH60_AnimSFX.acp" "{5D4DDB6D802EFD9C}Sounds/Vehicles/_SharedData/Crashes/Helicopters/Vehicles_Crashes_Helicopters.acp" "{2F7A88127617CD05}Sounds/Vehicles/Helicopters/UH1H/Vehicles_UH1H_Rain.acp" "{BA8A5BD290F5FB34}Sounds/Vehicles/_SharedData/Destruction/Vehicles_Destruction.acp" "{C475550A48EFFE20}Sounds/Vehicles/Rotary/Vehicles_AUS_UH60_Dampers.acp" "{17189463513F5EA6}Sounds/Vehicles/Helicopters/UH1H/Vehicles_UH1H_Warnings.acp" "{F41C3D53A2B69D85}Sounds/Vehicles/_SharedData/Destruction/Vehicles_Destruction_Fires.acp" "{9DD9C6279F4489B4}Sounds/SupportStations/SupportStations_Vehicles.acp" "{F1030E91E4B33E24}Sounds/Vehicles/_SharedData/WaterInteractions/Vehicles_WaterInteractions.acp" "{90CB2DCC0C95BC18}Sounds/Vehicles/Helicopters/UH1H/Vehicles_UH1H_Wind.acp"
+   }
+   SoundPoints {
+    SoundPointInfo Rain_Window_Front {
+     PivotID "v_rotor"
+     Offset 0 -0.689 3.8022
+    }
+    SoundPointInfo Engine {
+     PivotID "v_rotor"
+     Offset 0 0 -2.458
+     Angles 0 0 0
+    }
+    SoundPointInfo Warning_Speaker {
+     PivotID "Pilot_Seat"
+     Offset 0 0 0
+    }
+    SoundPointInfo FuelTank {
+     PivotID "v_rotor"
+     Offset 0 -1.3035 -2.4937
+    }
+   }
+  }
+  AUS_MultiFunctionDisplay "{64A417D07634ACC2}" {
+   m_LayoutPath "{A99AC55795FB901F}UI/layouts/AUS_MultiFunctionDisplay_Unarmed.layout"
+   m_OnMaterialPath "{A05B2E9E9D56FB3A}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Cockpit/Data/MFD_3_PIPMaterial.emat"
+   m_OffMaterialPath "{6B623C778223D5AD}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Cockpit/Data/MFD_3_Off.emat"
+  }
+  BaseLightManagerComponent "{51F88B1C7D1C1F11}" {
+   LightSlots {
+    SCR_LightSlot "{5E32ACA107A21791}" {
+     LightPositionInfo EntitySlotInfo "5DD6BB25F0B075F2" {
+      Offset 0.5968 0.6976 6.0642
+      Angles -79.1559 52.0834 -52.9864
+     }
+     LightPrefab "{378505675E535F61}Prefabs/Vehicles/Core/Lights/AUS_MH60Light_Landing_Base.et"
+     ParentSurface "Landing_Light_01"
+    }
+    SCR_LightSlot "{5E32ACA104651DD1}" {
+     LightPositionInfo EntitySlotInfo "5DD6BB25F0B075F2" {
+      Offset -0.6158 0.6849 6.0632
+      Angles -79.7412 -49.436 48.9793
+     }
+     LightPrefab "{545DF5DD32109488}Prefabs/Vehicles/Core/Lights/AUS_MH60Light_Searchlight_Base.et"
+     ParentSurface "Landing_Light_02"
+    }
+    SCR_LightSlot "{5E3EDDEBCBCE7D76}" {
+     LightPositionInfo EntitySlotInfo d {
+      Offset 0 0.445 -2.8958
+     }
+     LightPrefab "{784BE91DCD048586}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_AntiCollision.et"
+     LightShouldTick 1
+     LightPhaseTime 3
+     ParentSurface "Anticollision_01"
+    }
+    SCR_LightSlot "{5E3EDDEBC8F86F29}" {
+     LightPositionInfo EntitySlotInfo d {
+      Offset -0.0454 3.7085 -7.3997
+     }
+     LightPrefab "{784BE91DCD048586}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_AntiCollision.et"
+     LightShouldTick 1
+     LightPhaseTime 2
+     ParentSurface "Anticollision_02"
+    }
+    SCR_LightSlot "{5E427CC494B40FA6}" {
+     LightPositionInfo EntitySlotInfo s {
+      Offset -1.5514 0.6413 4.7446
+      Angles 0 -90 90
+     }
+     LightPrefab "{0A71FB4312EE8498}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_Navigating_Red.et"
+     ParentSurface "Pos_Light_L01"
+    }
+    SCR_LightSlot "{5E427CC4927A300B}" {
+     LightPositionInfo EntitySlotInfo s {
+      Offset 0.0001 3.548 -7.8743
+      Angles 0 180 -180
+      Enabled 0
+     }
+     LightPrefab "{151BE8583E8C4025}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Position_White.et"
+     ParentSurface "Pos_Light_Tail_01"
+    }
+    SCR_LightSlot "{5E427CC1E135743C}" {
+     LightFunctional 0
+     LightPositionInfo EntitySlotInfo s {
+      Offset 0.3556 2.8181 3.3218
+      Angles 0 15 0
+      Enabled 0
+     }
+     LightPrefab ""
+    }
+    SCR_LightSlot "{5E427CC4912718AE}" {
+     LightFunctional 0
+     LightPositionInfo EntitySlotInfo s {
+      PivotID ""
+      Offset -1.8992 1.4307 -6.4792
+      Angles 0 0 0
+     }
+     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     ParentSurface "Pos_Light_R02"
+    }
+    SCR_LightSlot "{5E427CC420178A0E}" {
+     LightPositionInfo EntitySlotInfo s {
+      Offset 1.5522 0.6402 4.7385
+      Angles 0 90 -90
+     }
+     LightPrefab "{16CC37949793768F}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/AUS_MH60Light_Navigating_Green.et"
+     ParentSurface "Pos_Light_L02"
+    }
+    SCR_LightSlot "{5E427CC405410FE0}" {
+     LightType Dashboard
+     LightPositionInfo EntitySlotInfo s {
+      PivotID "Pilot_Seat"
+      Offset -0.1598 0.3482 0.5557
+      Angles 11.9923 -180 180
+     }
+    }
+    SCR_LightSlot "{5E42CDD9CA9E758F}" {
+     LightType Dashboard
+     LightPositionInfo EntitySlotInfo s {
+      PivotID "Co_Pilot_Seat"
+      Offset 0.2378 0.3626 0.5515
+      Angles 11.9923 -180 180
+     }
+    }
+    SCR_LightSlot "{5E42D7318622F1A4}" {
+     LightPositionInfo EntitySlotInfo s {
+      PivotID "Scene_Root"
+      Offset 0 2.2139 4.9419
+     }
+    }
+    SCR_LightSlot "{5E42D7318524ABF4}" {
+     LightFunctional 0
+     LightPositionInfo EntitySlotInfo s {
+      Enabled 0
+     }
+    }
+    SCR_LightSlot "{64A417D07634AC8A}" {
+     LightType Rear
+     LightFunctional 0
+     LightPositionInfo EntitySlotInfo s {
+      Offset 1.9004 1.4307 -6.4792
+     }
+     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     ParentSurface "Pos_Light_R02"
+    }
+    SCR_LightSlot "{64A417D07634AC91}" {
+     LightType Rear
+     LightFunctional 0
+     LightPositionInfo EntitySlotInfo s {
+      Offset 0.0002 1.6127 -3.9639
+     }
+     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     ParentSurface "Pos_Light_R02"
+    }
+    SCR_LightSlot "{64A417D07634AC92}" {
+     LightType Rear
+     LightFunctional 0
+     LightPositionInfo EntitySlotInfo s {
+      Offset 0.0002 2.0966 -1.1455
+     }
+     LightPrefab "{CFC25A48D93F8253}Prefabs/Vehicles/Helicopters/AUS_MH60/Lights/VehicleLight_MH60_Formationx4_White.et"
+     ParentSurface "Pos_Light_R02"
+    }
+   }
+   EmissiveSurfaceSlots {
+    EmissiveLightSurfaceSlot Anticollision_01 {
+     Prefab "{BCB5317179F82BAE}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_anticollision_01.et"
+    }
+    EmissiveLightSurfaceSlot Landing_Light_01 {
+     Prefab "{E792FE00782A3A1F}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_landinglight_01.et"
+    }
+    EmissiveLightSurfaceSlot Landing_Light_02 {
+     Prefab "{8BC6CAE0C4EEB531}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_landinglight_02.et"
+     LightType 1024
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{5E6B5A9478833FC0}" {
+       ForLightType 1024
+       EmissiveColorTint 1 0.985 0.537 1
+      }
+     }
+    }
+    EmissiveLightSurfaceSlot Pos_Light_L01 {
+     Prefab "{9FF5F91EC0A2F33E}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_positionlight_L01.et"
+    }
+    EmissiveLightSurfaceSlot Pos_Light_L02 {
+     Offset 0.7644 0.3847 2.6809
+     Enabled 0
+    }
+    EmissiveLightSurfaceSlot Pos_Light_R01 {
+     Prefab "{F3A1CDFE7C667C10}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_positionlight_L02.et"
+    }
+    EmissiveLightSurfaceSlot Pos_Light_R02 {
+     Prefab "{85D6B09118050260}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_FormationLights.et"
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{5E6B5A9422FDB28E}" {
+       EmissiveColorTint 0.953 1 0.953 1
+      }
+     }
+    }
+    EmissiveLightSurfaceSlot Pos_Light_Tail_01 {
+     Prefab "{13C291FFBD47EE64}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_positionlight_tail_01.et"
+    }
+    EmissiveLightSurfaceSlot Anticollision_02 {
+     Prefab "{2F9C6EA678D07DA0}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Lights/AUS_MH60_ES_anticollision_Tail.et"
+     LightType 256
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{64A417D07634ACB1}" {
+      }
+     }
+    }
+   }
+   LightAction {
+    LightUserAction "{5E5957753AEBD29F}" {
+     m_aDefinedCompartmentSectionsOnly {
+      1
+     }
+    }
+    LightUserAction "{5E595775CFF9760B}" {
+     m_aDefinedCompartmentSectionsOnly {
+      1
+     }
+    }
+    LightUserAction "{5E5957759E16241B}" {
+     ParentContextList +{
+     }
+     UIInfo UIInfo "{5E59577602F9EA6C}" {
+      Name "#AR-UserAction_DomeLightsDim"
+     }
+     m_eLightType Dashboard
+     m_aDefinedCompartmentSectionsOnly {
+      1
+     }
+    }
+    LightUserAction "{5E59577551D99BE6}" {
+     m_aDefinedCompartmentSectionsOnly {
+      1
+     }
+    }
+    LightUserAction "{5E595776D77A51E0}" {
+     m_aDefinedCompartmentSectionsOnly {
+      1
+     }
+    }
+    LightUserAction "{64A417D07634AC45}" {
+     ParentContextList {
+      "light_dome"
+     }
+     UIInfo UIInfo "{64A417D07634AC44}" {
+      Name "#AR-UserAction_DomeLightsBright"
+     }
+     CanAggregate 1
+     m_eLightType Reverse
+     m_sBlockedByPilotText "#AR-UserAction_ControlledByPilot"
+     m_aDefinedCompartmentSectionsOnly {
+      1
+     }
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{57DA667544C3090A}" {
+   components {
+    SCR_HelicopterControllerComponent "{5CB0B40B1BD943AB}" {
+     AirIntakes {
+      PointInfo "{5E15188E34C0B8D3}" {
+       PivotID "v_engine_intake_l"
+       Offset 0 0 0
+      }
+      PointInfo "{64A417D07634AC55}" {
+       PivotID "v_engine_intake_r"
+      }
+     }
+    }
+    BaseHUDComponent "{50F09A38B4352300}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{5E16CDD43EBA9D74}" {
+       InfoDisplays {
+        SCR_AnalogGauge "{5E12DE8116DE69BF}" {
+         m_eShow 6
+        }
+        SCR_AnalogGauge360 "{5E12DE8115FE048B}" {
+         m_eShow 6
+        }
+        SCR_AnalogGaugeNonLinear "{5E12DE8113984306}" {
+         m_eShow 6
+        }
+        SCR_AnalogGauge "{5E12DE8111E23FB2}" {
+         m_eShow 6
+        }
+        SCR_AnalogGaugeMultiSignal "{5E12DE80EF903498}" {
+         m_eShow 6
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Object "{CBB2918B56DB040E}Assets/Vehicles/Helicopters/AUS_MH60/AUS_MH60_Base.xob"
+  }
+  RigidBody "{51DAA09FECF52BBF}" {
+   CenterOfMass 0 0 2.284
+   LinearDamping 0
+   AngularDamping 0
+   LinearSleepingThreashold 0
+   AngularSleepingThreashold 0
+   ResponseIndex "Normal"
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{60F8D2B583BD6505}" {
+     Coverage 0.15
+     CloseDoorAction SCR_CloseVehicleDoorUserAction "{60B8C998F02D67D1}" {
+      ParentContextList {
+       "door_r01_int"
+      }
+     }
+     EntryPositionInfo PointInfo "{50B8D5DD213DC00C}" {
+      PivotID "Pilot_Seat"
+      Offset 1.2037 -1.4681 -0.0005
+      Angles 0 -85.9864 0
+     }
+     ExitPositionInfo PointInfo "{5CAAA44AC4FFE225}" {
+      PivotID "Pilot_Seat"
+     }
+     GetInTeleport 1
+    }
+    CompartmentDoorInfo "{60F8D2B58CA24A75}" {
+     Coverage 0.15
+     CloseDoorAction SCR_CloseVehicleDoorUserAction "{60B8C998F02D67D1}" {
+      ParentContextList {
+       "door_l01_int"
+      }
+     }
+     EntryPositionInfo PointInfo "{50B8D5DD213DC00C}" {
+      PivotID "Co_Pilot_Seat"
+      Offset -1.382 -1.3713 0
+      Angles 0 90 0
+     }
+     ExitPositionInfo PointInfo "{5CAAA44AC4FFE225}" {
+      PivotID "Co_Pilot_Seat"
+     }
+     GetInTeleport 1
+     GetInAligningTeleport 1
+    }
+    CompartmentDoorInfo "{60F8D2B4A57BB87E}" {
+     Coverage 0.2
+     OpenDoorAction SCR_OpenVehicleDoorUserAction "{60B8C998D577B72E}" {
+      ParentContextList {
+       "door_l03" "door_l03_int"
+      }
+     }
+     CloseDoorAction SCR_CloseVehicleDoorUserAction "{60B8C998F02D67D1}" {
+      ParentContextList {
+       "door_l03" "door_l03_int"
+      }
+     }
+     EntryPositionInfo PointInfo "{50B8D5DD78963937}" {
+      PivotID "Scene_Root"
+      Offset -2.0447 0 2.6851
+      Angles 0 90 0
+     }
+     ExitPositionInfo PointInfo "{51D10B84FFF2C498}" {
+      PivotID "v_body"
+      Offset -2.0447 0 2.6851
+      Angles 0 -90 0
+     }
+     GetInTeleport 1
+     AlignDuringGetOut 1
+     GetInAligningTeleport 0
+     GetOutAligningTeleport 0
+     GetOutAligningOnEvent 0
+     FakeDoor 0
+    }
+    CompartmentDoorInfo "{60F8D2B4B6C9A956}" {
+     Coverage 0.2
+     OpenDoorAction SCR_OpenVehicleDoorUserAction "{60B8C998D577B72E}" {
+      ParentContextList {
+       "door_r03" "door_r03_int"
+      }
+     }
+     CloseDoorAction SCR_CloseVehicleDoorUserAction "{60B8C998F02D67D1}" {
+      ParentContextList {
+       "door_r03" "door_r03_int"
+      }
+     }
+     EntryPositionInfo PointInfo "{50B8D5DD78963937}" {
+      PivotID "Scene_Root"
+      Offset 2.1727 0 2.4751
+      Angles 0 -90 0
+     }
+     ExitPositionInfo PointInfo "{51D10B84FFF2C498}" {
+      PivotID "Scene_Root"
+      Offset 2.1727 0 2.4751
+      Angles 0 90 0
+     }
+     GetInTeleport 1
+     AlignDuringGetOut 1
+     GetInAligningTeleport 0
+     GetOutAligningTeleport 0
+     FakeDoor 0
+    }
+   }
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentAction SCR_GetInUserAction "{5086DB209BDE8253}" {
+      ParentContextList {
+       "pilot"
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{A1CB25848A3D93A8}" {
+      PivotID "Pilot_Seat"
+      Offset -0.0132 -0.1466 -0.157
+      Angles 5 0 0
+     }
+     SeatType 1
+     m_iCompartmentSection 1
+    }
+    PilotCompartmentSlot CopilotCompartment {
+     CompartmentAction SCR_GetInUserAction "{5086DB209BDE8253}" {
+      ParentContextList {
+       "copilot"
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{A1CB25848A3D93A8}" {
+      PivotID "Co_Pilot_Seat"
+      Offset 0 -0.1317 -0.1663
+      Angles 5 0 0
+     }
+     m_iCompartmentSection 1
+    }
+   }
+  }
+  SCR_BaseEffectManagerComponent "{5D4ADA33D7B11909}" {
+   m_aEffectModules {
+    SCR_EffectModule "{5D4ADA33D4E92022}" {
+     m_effectPosition PointInfo "{5D4ADA33DBAC468C}" {
+      PivotID "v_engine_exhaust_l"
+     }
+    }
+    SCR_EffectModule "{5D4ECA9481FB22A1}" {
+     m_sParticle "{FCEF6F951B5536A9}particles/RotorWash-MH60.ptc"
+     m_effectPosition PointInfo "{5D4ECA9489AD5C4D}" {
+      PivotID "v_rotor"
+      Offset 0 -2.0054 -1.4707
+      Angles 0 0 0
+     }
+    }
+    SCR_EffectModule "{64A417D07634AC2C}" {
+     m_sParticle "{C27127CC778598F4}Particles/Vehicle/Helicopter/Helicopter_exhaust_normal_01.ptc"
+     m_effectPosition PointInfo "{64A417D07634AC29}" {
+      PivotID "v_engine_exhaust_r"
+     }
+     m_bTickOnFrame 1
+     m_aEffectActions {
+      SCR_BaseEffectParticleHelicopterEventAction "{64A417D07634AC34}" {
+      }
+      SCR_BaseEffectParticleHelicopterEventAction "{64A417D07634AC37}" {
+       m_Parameter TURN_OFF
+       m_eEvent ON_ENGINE_STOP
+      }
+     }
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "MH60 Blackhawk - M134 x 2"
+    m_Image "{DBFD572C6703E03F}UI/AUS_UH60_armed.edds"
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 950
+     }
+    }
+   }
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     FuelCapPosition PointInfo "{5CAAA44AC4FFE2C1}" {
+      PivotID "v_cargo_door_left_handle"
+      Offset 0 0 -2.6538
+      Angles 0 90 0
+     }
+     m_fInitialFuelTankState 166
+    }
+    SCR_FuelNode "{5E9AE02488359898}" {
+     FuelCapPosition PointInfo "{64A417D07634A3CA}" {
+      PivotID "v_cargo_door_left_handle.001"
+      Offset 0 0 -2.6538
+     }
+     m_fInitialFuelTankState 166
+    }
+    SCR_FuelNode "{5E9AE0248D00D20B}" {
+     m_fInitialFuelTankState 166
+    }
+    SCR_FuelNode "{5E9AE0248101059B}" {
+     m_fInitialFuelTankState 166
+    }
+    SCR_FuelNode "{5E9AE02480691735}" {
+     m_fInitialFuelTankState 166
+     m_MaxFlowCapacityIn 0
+    }
+   }
+  }
+  SCR_HelicopterDamageManagerComponent "{141326E9FD94FE40}" {
+   "Additional hit zones" {
+    SCR_FlammableHitZone Hull {
+     m_pDestructionHandler SCR_DestructionBaseHandler "{5584C42C773FDFBF}" {
+      m_sWreckModel "{C4E0B4578DE326AA}Assets/Vehicles/Helicopters/AUS_MH60/AUS_MH60_Wreck.xob"
+      m_fDefaultWreckMass 5000
+      m_bDeleteAfterParentDestroyed 0
+     }
+     m_sDestructionParticle "{9A14696424EDA7DD}particles/MH60_Destruction.ptc"
+     m_fHeavySmokeThreshold 0.72
+     m_fIgnitingSmokeThreshold 0.87
+    }
+    SCR_FuelHitZone FuelTank_01 {
+     ColliderNames {
+      "UBX_FG_FuelTank_01"
+     }
+    }
+    SCR_FuelHitZone FuelTank_04 {
+     ColliderNames {
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5E1E994304F0E0D3}" {
+   MultiSlots {
+    MultiSlotConfiguration "{60F686523ED8885E}" {
+     SlotTemplate InventoryStorageSlot MGammo {
+      Prefab "{86994F47CFBD3289}Prefabs/Weapons/Magazines/Box_762x51_M134_2000rnd_2Ball_1Tracer.et"
+     }
+     NumSlots 0
+    }
+   }
+  }
+  SCR_VehicleBuoyancyComponent "{5ECC936F77AC5EA5}" {
+   Buoyancy 0.15
+  }
+  SCR_VehicleCameraDataComponent "{216DA82C75CDD94B}" {
+   m_fHeight 0.5
+   m_fDist_Max 15
+   m_fDist_Min 13.5
+   m_fDist_Desired 14.5
+   m_fAngleFirstPerson 15
+  }
+  VehicleHelicopterSimulation "{51FAEE57F7DA270E}" {
+   Animation VehicleAnimation "{5D9CEE8599E9D9BA}" {
+    AnimGraph "{B63E2B9ABFF11012}Assets/Vehicles/Helicopters/UH1H/workspace/AUS_UH60_Armed.agr"
+    AnimInstance "{2195EC1B1CE38F82}Assets/Vehicles/Helicopters/UH1H/workspace/AUS_UH60_Armed_vehicle.asi"
+    AnimVariables {
+     AnimationVariable "{5E0E908387071C4C}" {
+      VariableName "steering"
+      SignalName "steering0"
+     }
+     AnimationVariable "{64A417D07634A389}" {
+      VariableName "wheel_0"
+      SignalName "rotation0"
+     }
+     AnimationVariable "{64A417D07634A38B}" {
+      VariableName "wheel_1"
+      SignalName "rotation1"
+     }
+     AnimationVariable "{64A417D07634A38A}" {
+      VariableName "wheel_2"
+      SignalName "rotation2"
+     }
+    }
+   }
+   Simulation Helicopter "{51FAED9EF37A2D29}" {
+    Engine HelicopterEngine "{51FAED9EF37A2D2B}" {
+     RPMMax 15000
+     RPMIdle 7000
+     StartUpTime 60
+     ShutdownTime 45
+     TwinEngine 1
+    }
+    Rotors {
+     HelicopterRotorMain "{51FAED9EF37A2D2F}" {
+      TorqueForce 12500 22500
+      CyclicForwardForce 85000
+      CyclicAsideForce 80000
+     }
+     HelicopterRotorTail "{5CAAA44AC4FFE25C}" {
+      Pivot Pivot "{5CAAA44AC4FFE25D}" {
+       Bone "v_rear_rotor"
+      }
+     }
+    }
+    LandingGear LandingGear "{5E08FD406D9D8646}" {
+     Configuration {
+      LandingGearWheel "{5E08FD406B1A4E10}" {
+       Pivot Pivot "{5E0E806EE2562CE5}" {
+        Bone "v_left_suspension_wheel"
+       }
+       Suspension Suspension "{5E0E806ED86258B5}" {
+        MaxTravelDown 0.1
+        RayStartOffsetUp 0.2
+       }
+       Wheel Wheel "{64A417D07634A3A7}" {
+        Radius 0.4
+       }
+       Tyre Tyre "{64A417D07634A3A3}" {
+       }
+      }
+      LandingGearWheel "{5E08FD4069E97E54}" {
+       Pivot Pivot "{5E0E806EDEC3A708}" {
+        Bone "v_right_suspension_wheel"
+       }
+       Suspension Suspension "{5E0E806E2E08FD22}" {
+        MaxTravelDown 0.1
+        RayStartOffsetUp 0.2
+       }
+       Wheel Wheel "{64A417D07634A3AC}" {
+        Radius 0.4
+       }
+       Tyre Tyre "{64A417D07634A3AE}" {
+       }
+      }
+      LandingGearWheel "{5E0E806EE7A863D4}" {
+       Pivot Pivot "{5E0E806E29EC2679}" {
+        Bone "v_rear_suspension_wheel"
+       }
+       Suspension Suspension "{5E0E806E32CF14A5}" {
+        RayStartOffsetUp 0.05
+       }
+       Wheel Wheel "{64A417D07634A3A8}" {
+        Radius 0.2
+       }
+       Tyre Tyre "{64A417D07634A3AA}" {
+        Roughness 5
+       }
+      }
+      LandingGearWheel "{5E0E806EE465C25C}" {
+       Suspension Suspension "{5E0E806E38F0A3DE}" {
+        RayStartOffsetUp 0.2
+       }
+       Wheel Wheel "{64A417D07634A3B4}" {
+        Radius 0.1
+       }
+       Tyre Tyre "{64A417D07634A3B7}" {
+       }
+      }
+     }
+    }
+   }
+   RotorConfigs {
+    HelicopterRotorConfig "{5E3121F78F7927FB}" {
+     StaticModel "{88E119A661FA0159}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Rotor/AUS_MH60_Main_Rotor.xob"
+     SpinningModel "{BA8C7807D4A66829}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Rotor/AUS_MH60_Main_Rotor_Blur.xob"
+     DestroyedModel "{A924324FA99ADF26}Assets/Vehicles/Helicopters/AUS_MH60/Dst/AUS_MH60_Main_Rotor_Dst.xob"
+    }
+    HelicopterRotorConfig "{5E3121F78CCBA638}" {
+     StaticModel "{49481C9BF1A5DFCA}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Rotor/AUS_MH60_Tail_Rotor.xob"
+     SpinningModel "{14609C52A624440C}Assets/Vehicles/Helicopters/AUS_MH60/VehParts/Rotor/AUS_MH60_Tail_Rotor_Blur.xob"
+     DestroyedModel "{C680E5D0E5CB0B4E}Assets/Vehicles/Helicopters/AUS_MH60/Dst/AUS_MH60_Tail_Rotor_Dst.xob"
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    EntitySlotInfo ShadowAO {
+    }
+    RegisteringComponentSlotInfo RotorMain {
+     PivotID "v_rotor"
+     ChildPivotID "v_rotor"
+     Prefab "{9EC7DD023B85C1B7}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Rotor/VehPart_AUS_UH60_rotor_main.et"
+    }
+    RegisteringComponentSlotInfo RotorTail {
+     PivotID "v_rear_rotor"
+     ChildPivotID "v_rear_rotor"
+     Prefab "{34DADF3CBD4DA620}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Rotor/VehPart_AUS_MH60_rotor_tail.et"
+    }
+    RegisteringComponentSlotInfo CockpitPanel_Top {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo CockpitPanel_Main {
+     Offset 0 0 -0.02
+     Prefab "{04729AEF6F9FEB72}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Cockpit/VehPart_AUS_UH60_cockpitpanel_main.et"
+    }
+    RegisteringComponentSlotInfo CockpitPanel_Bottom {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Seat_Gunners {
+     MergePhysics 0
+     Prefab "{74047026EA5C5948}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Seats/VehPart_UH60_seats_gunners.et"
+     RegisterActions 0
+     RegisterDamage 0
+     RegisterCompartments 0
+    }
+    RegisteringComponentSlotInfo Seat_Cargo {
+     PivotID "Scene_Root"
+     Prefab "{0A6482FFC73F652B}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Seats/VehPart_UH60_seats_cargo.et"
+    }
+    RegisteringComponentSlotInfo Glass_Windshield_Right {
+     Enabled 0
+     Prefab "{4E3BF0687525DD0D}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Windscreen.et"
+    }
+    RegisteringComponentSlotInfo Glass_Windshield_Left {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_Skylight_Right {
+     Enabled 0
+     Prefab "{CF2C32CD5B1D2FD2}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Skylight_Right.et"
+    }
+    RegisteringComponentSlotInfo Glass_Skylight_Left {
+     Enabled 0
+     Prefab "{9553739B32CEC321}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Skylight_Left.et"
+    }
+    RegisteringComponentSlotInfo Glass_PostWindow_Left {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_PostWindow_Right {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_CrewSlider_Left {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_CrewSlider_Right {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_CrewForward_Left {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_CrewForward_Right {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_Crew_Left {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_Crew_Right {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_ChinBubble_Right {
+     Enabled 0
+     Prefab "{A44B8EC8F5A62D12}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Bubble_Right.et"
+    }
+    RegisteringComponentSlotInfo Glass_ChinBubble_Left {
+     Enabled 0
+     Prefab "{C5842C5DDD1AF587}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Bubble_Left.et"
+    }
+    RegisteringComponentSlotInfo Glass_CargoDoor_FrontLeft {
+     Enabled 0
+     Prefab "{AA8E40F3D9D522AD}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Left.et"
+    }
+    RegisteringComponentSlotInfo Glass_CargoDoor_FrontRight {
+     Enabled 0
+     Prefab "{3D7BA8490AAE6CA5}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Right.et"
+    }
+    RegisteringComponentSlotInfo Glass_CargoDoor_RearLeft {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Glass_CargoDoor_RearRight {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo USArmyDecal {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Interior_TieDownPoints {
+     Enabled 0
+    }
+    WCS_Armament_DispenserSlotInfo Flares_Left {
+     Enabled 0
+    }
+    WCS_Armament_DispenserSlotInfo Flares_Right {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_01 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_02 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_03 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_04 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_05 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_06 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_07 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_08 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_09 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo SupplyStorage_10 {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Mount {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo GunnerLeft {
+     PivotID "v_left_minigun_slot"
+     Offset 0 0 0.0589
+     Angles 0 -90 0
+     ChildPivotID "w_left_minigun_slot"
+     Prefab "{A2A1B4001EDCA44C}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/WeapSystems/UH60_M134_gunner_left.et"
+     DeactivatePhysicsOnAtaching 1
+    }
+    RegisteringComponentSlotInfo GunnerRight {
+     PivotID "v_right_minigun_slot"
+     Angles 0 90 0
+     ChildPivotID "w_right_minigun_slot"
+     Prefab "{198E64980C247B89}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/WeapSystems/UH60_M134_gunner_right.et"
+    }
+    RegisteringComponentSlotInfo Windscreen {
+     PivotID "Scene_Root"
+     Offset 0 -0.03 0.022
+     Prefab "{4E3BF0687525DD0D}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Windscreen.et"
+    }
+    RegisteringComponentSlotInfo Pilot_Glass {
+     PivotID "v_forward_door_right"
+     Offset -1.97 -0.9834 -5.7365
+     Angles -0.4762 7.4002 0
+     Prefab "{196632D69801A2B5}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Door_Right.et"
+     InheritParentSkeleton 1
+     RegisterActions 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Copilot_Glass {
+     PivotID "v_forward_door_left"
+     Offset 2.094 -0.7227 -5.7439
+     Angles -3.3654 -9.1886 1.2414
+     Prefab "{4241D9407AFE1CCB}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Door_Left.et"
+     InheritParentSkeleton 1
+     RegisterActions 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Skylight_Left {
+     Offset 0 -0.026 0.0144
+     Prefab "{9553739B32CEC321}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Skylight_Left.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Skylight_Right {
+     Offset 0 -0.026 0.0144
+     Prefab "{CF2C32CD5B1D2FD2}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Skylight_Right.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Bubble_Left {
+     Offset -0.0103 -0.0587 0.0181
+     Prefab "{C5842C5DDD1AF587}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Bubble_Left.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Bubble_Right {
+     Offset -0.0103 -0.0443 0.0339
+     Prefab "{A44B8EC8F5A62D12}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_Bubble_Right.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Cargo_Left {
+     PivotID "v_cargo_door_left"
+     Offset 1.4081 -1.5352 -1.6135
+     Prefab "{AA8E40F3D9D522AD}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Left.et"
+     InheritParentSkeleton 1
+     RegisterActions 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Cargo_Right {
+     PivotID "v_cargo_door_right"
+     Offset -1.4081 -1.5352 -1.6135
+     Prefab "{3D7BA8490AAE6CA5}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Glass/AUS_MH60_Glass_CargoDoor_Right.et"
+     InheritParentSkeleton 1
+     RegisterActions 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo MFD3 {
+     Offset 0 0 -0.025
+     Prefab "{9F5BF8FF8EC217B4}Prefabs/Vehicles/Helicopters/AUS_MH60/VehParts/Cockpit/AUS_VehPart_MH60_MFDs.et"
+    }
+    WCS_Armament_DispenserSlotInfo FLARE_LEFT {
+     Offset -0.4391 1.0665 -2.6729
+     Angles -26.5776 178.5699 83.8402
+     MergePhysics 1
+     Prefab "{9D6418DEED6A2682}Prefabs/Weapons/Countermeasures/Dispenser_Flare_MH60M.et"
+    }
+    WCS_Armament_DispenserSlotInfo FLARE_RIGHT {
+     Offset 0.443 1.0115 -2.5244
+     Angles -33.3803 -175.3434 -87.8605
+     MergePhysics 1
+     Prefab "{9D6418DEED6A2682}Prefabs/Weapons/Countermeasures/Dispenser_Flare_MH60M.et"
+    }
+    WCS_Armament_DispenserSlotInfo CHAFF_LEFT {
+     Offset -0.474 1.0585 -2.2017
+     Angles 64.0537 164.29919 75.8147
+     MergePhysics 1
+     Prefab "{14702E78C6C5EA17}Prefabs/Weapons/Countermeasures/Dispenser_Chaff_MH60M.et"
+    }
+    WCS_Armament_DispenserSlotInfo CHAFF_RIGHT {
+     Offset 0.4755 1.0705 -2.1323
+     Angles 71.8324 -169.85942 -84.89339
+     MergePhysics 1
+     Prefab "{14702E78C6C5EA17}Prefabs/Weapons/Countermeasures/Dispenser_Chaff_MH60M.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{5E2EC4D3A76449F8}" {
+     Position PointInfo "{5E2EBCFA94ADB9FE}" {
+      Offset 1.2953 1.2127 -0.5924
+     }
+    }
+    UserActionContext "{5EA2942B0CA46BF0}" {
+     Position PointInfo "{5EA2942B09B778E1}" {
+      PivotID "v_rotor"
+      Offset 0 0.4405 0
+      Angles 0 90 0
+     }
+    }
+    UserActionContext "{5EA2942B1446DDA6}" {
+     Position PointInfo "{5EA2942BE88E9CA8}" {
+      PivotID "v_rear_rotor"
+      Offset 0.145 0 0
+     }
+    }
+    UserActionContext "{5EA294269F991DD9}" {
+     Position PointInfo "{5EA294276782D7EE}" {
+      PivotID "v_engine_intake_l"
+      Offset 0.2554 -0.999 0
+     }
+    }
+    UserActionContext "{5EA2943E86F349E7}" {
+     Position PointInfo "{5EA2943F3246B55E}" {
+      PivotID "v_rotor"
+      Offset 0 0.4405 0
+      Angles 0 90 0
+     }
+    }
+    UserActionContext "{5EA2943E6CD65B72}" {
+     Position PointInfo "{5EA2943E68C33717}" {
+      PivotID "v_engine_intake_r"
+      Offset -0.2951 -0.999 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FFEDA2}" {
+     Position PointInfo "{5CAAA44AC4FFEDA0}" {
+      PivotID "Pilot_Seat"
+      Offset -0.006 0 -0.0088
+     }
+    }
+    UserActionContext "{615AB71565922E01}" {
+     Position PointInfo "{5CAAA44AC4FFEDA0}" {
+      PivotID "v_forward_door_right_handle_ext"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FFEDA1}" {
+     Position PointInfo "{5CAAA44AC4FFEDBE}" {
+      PivotID "Co_Pilot_Seat"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{615AB7129F480F36}" {
+     Position PointInfo "{5CAAA44AC4FFEDBE}" {
+      PivotID "v_forward_door_left_handle_ext"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FFEDBF}" {
+     Position PointInfo "{5CAAA44AC4FFEDBD}" {
+      PivotID "v_cargo_door_left_handle"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FFEDBA}" {
+     Position PointInfo "{5CAAA44AC4FF860F}" {
+      PivotID "v_cargo_door_left_handle.001"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FF860D}" {
+     Position PointInfo "{5CAAA44AC4FF860C}" {
+      PivotID "v_cargo_door_left_handle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     VisibilityAngle 0
+    }
+    UserActionContext "{5CAAA44AC4FF8603}" {
+     Position PointInfo "{5CAAA44AC4FF8602}" {
+      PivotID "v_cargo_door_left_handle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     VisibilityAngle 0
+    }
+    UserActionContext "{5CAAA44AC4FF8601}" {
+     Position PointInfo "{5CAAA44AC4FF7F5C}" {
+      PivotID "v_cargo_door_left_handle"
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     VisibilityAngle 0
+    }
+    UserActionContext "{5CAAA44AC4FF7F5B}" {
+     Position PointInfo "{5CAAA44AC4FF7F58}" {
+      PivotID "v_cargo_door_left_handle.001"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FF346D}" {
+     Position PointInfo "{5CAAA44AC4FF346C}" {
+      PivotID "v_cargo_door_left_handle.001"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FF3453}" {
+     Position PointInfo "{5CAAA44AC4FF3452}" {
+      PivotID "v_cargo_door_left_handle.001"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FCD134}" {
+     Position PointInfo "{5CAAA44AC4FCD133}" {
+      PivotID "v_forward_door_left_handle_ext"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FCD131}" {
+     Position PointInfo "{5CAAA44AC4FC9274}" {
+      PivotID "v_forward_door_left_handle_ext"
+      Offset 0.0929 0 0.0462
+      Angles 0 135 0
+     }
+     Radius 0.5
+     Omnidirectional 1
+    }
+    UserActionContext "{5CAAA44AC4FC927A}" {
+     Position PointInfo "{5CAAA44AC4FC927B}" {
+      PivotID "v_cargo_door_left_handle"
+      Offset 0.1306 0.0131 -0.3241
+     }
+    }
+    UserActionContext "{5CAAA44AC4FC9278}" {
+     Position PointInfo "{5CAAA44AC4FC927E}" {
+      PivotID "v_cargo_door_left_handle"
+      Offset 0 0 0
+      Angles 0 180 0
+     }
+    }
+    UserActionContext "{615AB728F17B98FA}" {
+     Position PointInfo "{5CAAA44AC4FC927E}" {
+      PivotID "v_cargo_door_left_handle"
+     }
+    }
+    UserActionContext "{5CAAA44AC4FC6CA7}" {
+     Position PointInfo "{5CAAA44AC4FC6CB8}" {
+      PivotID "v_forward_door_right_handle_ext"
+      Offset 0 0 0
+      Angles 0 45 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FC6CB9}" {
+     Position PointInfo "{5CAAA44AC4FC0049}" {
+      PivotID "v_forward_door_right_handle_ext"
+      Offset -0.0573 0 0.0012
+      Angles 0 -131.5407 0
+     }
+     Omnidirectional 1
+    }
+    UserActionContext "{5CAAA44AC4FC004A}" {
+     Position PointInfo "{5CAAA44AC4FC004B}" {
+      PivotID "v_cargo_door_left_handle.001"
+      Offset -0.0803 0.0123 -0.2376
+      Angles 60 -90 180
+     }
+    }
+    UserActionContext "{5CAAA44AC4FC004C}" {
+     Position PointInfo "{5CAAA44AC4FDFE5C}" {
+      PivotID "v_cargo_door_left_handle.001"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{615AB7286B8BB7A9}" {
+     Position PointInfo "{5CAAA44AC4FC927E}" {
+      PivotID "v_cargo_door_left_handle.001"
+     }
+    }
+    UserActionContext "{5CAAA44AC4FDFE5F}" {
+     Position PointInfo "{5CAAA44AC4FDFE50}" {
+      PivotID "Co_Pilot_Seat"
+      Offset 0 -0.4165 0.3786
+     }
+    }
+    UserActionContext "{5CAAA44AC4FDFE51}" {
+     Position PointInfo "{5CAAA44AC4FDA979}" {
+      PivotID "Co_Pilot_Seat"
+      Offset -0.3455 -0.3862 -0.2443
+      Angles 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FDA97A}" {
+     Position PointInfo "{5CAAA44AC4FDA97B}" {
+      PivotID "Co_Pilot_Seat"
+      Offset -0.3455 -0.3862 -0.2443
+      Angles 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FDA97C}" {
+     Position PointInfo "{5CAAA44AC4FDA97D}" {
+      PivotID "v_rotor_blade_04"
+      Offset 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FDAB65}" {
+     Position PointInfo "{5CAAA44AC4FDAB66}" {
+      PivotID "Pilot_Seat"
+      Offset 0 -0.4165 0.3786
+     }
+    }
+    UserActionContext "{5CAAA44AC4FDAB67}" {
+     Position PointInfo "{5CAAA44AC4FDAB18}" {
+      PivotID "Pilot_Seat"
+      Offset -0.3455 -0.3862 -0.2443
+     }
+    }
+    UserActionContext "{5CAAA44AC4FDAB19}" {
+     Position PointInfo "{5CAAA44AC4FDAB1A}" {
+      PivotID "Pilot_Seat"
+      Offset -0.3455 -0.3862 -0.2443
+     }
+    }
+    UserActionContext "{5CAAA44AC4FD11FB}" {
+     Position PointInfo "{5CAAA44AC4FD11FA}" {
+      PivotID "v_rotor_blade_02"
+     }
+    }
+    UserActionContext "{5CAAA44AC4FD11FD}" {
+     Position PointInfo "{5CAAA44AC4FD11FC}" {
+      PivotID "Pilot_Seat"
+      Offset -0.7829 0.7454 0.1805
+     }
+    }
+    UserActionContext "{5CAAA44AC4FD11FF}" {
+     Position PointInfo "{5CAAA44AC4FA911E}" {
+      PivotID "Pilot_Seat"
+      Offset -0.6767 0.7454 0.1805
+     }
+    }
+    UserActionContext "{5CAAA44AC4FA911F}" {
+     Position PointInfo "{5CAAA44AC4FA9112}" {
+      PivotID "Pilot_Seat"
+      Offset -0.7095 -0.1756 0.1805
+      Angles 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FA9113}" {
+     Position PointInfo "{5CAAA44AC4FA9115}" {
+      PivotID "Pilot_Seat"
+      Offset -0.6014 -0.1756 0.1805
+      Angles 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FA9116}" {
+     Position PointInfo "{5CAAA44AC4FA0613}" {
+      PivotID "Pilot_Seat"
+      Offset -0.8547 -0.1756 0.1805
+      Angles 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FA0612}" {
+     Position PointInfo "{5CAAA44AC4FA060D}" {
+      PivotID "Pilot_Seat"
+      Offset -0.7743 -0.2434 -0.1094
+      Angles 0 0 0
+     }
+    }
+    UserActionContext "{5CAAA44AC4FA060F}" {
+     Position PointInfo "{5CAAA44AC4FA060E}" {
+      Offset -0.8965 1.2943 -0.4383
+      Angles 0 -111.7079 0
+     }
+    }
+    UserActionContext "{5DA9429EB22A22CE}" {
+     Position PointInfo "{5DA9429EB9066D93}" {
+      PivotID "Pilot_Seat"
+      Offset -0.0408 0.0481 0.2048
+     }
+    }
+    UserActionContext "{5E3EDDF45F7BB6F9}" {
+     Position PointInfo "{5E3EDDF5AE1E3A62}" {
+      PivotID "Pilot_Seat"
+      Offset -0.7815 -0.1175 0.1711
+      Angles 79.7102 180 -180
+     }
+    }
+    UserActionContext "{5E3EDDF45E5CF449}" {
+     Position PointInfo "{5E3EDDF5AE1E3A62}" {
+      PivotID "Pilot_Seat"
+      Offset -0.6428 -0.1175 0.1711
+      Angles 79.7102 180 -180
+     }
+    }
+    UserActionContext "{5E3EDDF45EFDB966}" {
+     Position PointInfo "{5E3EDDF5AE1E3A62}" {
+      PivotID "Pilot_Seat"
+      Offset -0.5583 0.7981 -0.0129
+      Angles -85.2899 -179.99989 180
+     }
+    }
+    UserActionContext "{5E3EDDF45D7A0847}" {
+     Position PointInfo "{5E3EDDF5AE1E3A62}" {
+      PivotID "Pilot_Seat"
+      Offset -0.5084 -0.1834 -0.0435
+      Angles 79.7102 180 -180
+     }
+    }
+    UserActionContext "{5E3EDDF45DF8D460}" {
+     Position PointInfo "{5E3EDDF5AE1E3A62}" {
+      PivotID "Pilot_Seat"
+      Offset -0.6975 -0.1834 -0.0435
+      Angles 79.7102 180 -180
+     }
+    }
+    UserActionContext "{5EE8B9968B57689C}" {
+     Position PointInfo "{5EE8B99691E3AD31}" {
+      PivotID "Co_Pilot_Seat"
+      Offset -0.0311 0.1844 0.2049
+     }
+    }
+    UserActionContext "{5EE8B996CA6BFBE0}" {
+     Position PointInfo "{5EE8B996C44B0A36}" {
+      PivotID "Pilot_Seat"
+      Offset -0.038 0.1844 0.2049
+     }
+    }
+    UserActionContext "{5EEAE3990380F8F5}" {
+     Position PointInfo "{5EEAE39E18082D84}" {
+      PivotID "Pilot_Seat"
+      Offset 0.0178 0.1844 0.2049
+     }
+    }
+    UserActionContext "{5EECF2CD0F5889A7}" {
+     Position PointInfo "{5EECF2CD112DD099}" {
+      PivotID "Co_Pilot_Seat"
+      Offset 0.0276 0.1844 0.2049
+     }
+    }
+    UserActionContext "{5EEEBCDE7B76DA1E}" {
+     Position PointInfo "{5EEEBCDE8E8B018C}" {
+      PivotID "Co_Pilot_Seat"
+      Offset -0.0408 0.0481 0.2048
+     }
+    }
+    UserActionContext "{612EAEE8D85308D9}" {
+     Position PointInfo "{612EAEE8C3B99CBA}" {
+      PivotID "v_minigun_left_pivot"
+      Offset -0.1924 -0.3416 0
+      Angles 0 180 0
+     }
+     Radius 0.7
+     Height 2
+     Omnidirectional 1
+    }
+    UserActionContext "{612EAEE8DB2BEA54}" {
+     Position PointInfo "{612EAEE8C3B99CBA}" {
+      PivotID "v_minigun_right_pivot"
+      Offset 0.1976 -0.0227 0
+      Angles 0 0 0
+     }
+     Radius 0.7
+     Height 2
+     Omnidirectional 1
+    }
+    UserActionContext "{64A417D07634A2CB}" {
+     UIInfo SCR_ActionContextUIInfo "{64A417D07634A2CA}" {
+     }
+     ContextName "mfd3_pilot"
+     Position PointInfo "{64A417D07634A2D5}" {
+      PivotID "Pilot_Seat"
+      Offset -0.6553 0.3306 0.5208
+     }
+     Radius 0.05
+    }
+    UserActionContext "{64A417D07634A2D6}" {
+     UIInfo SCR_ActionContextUIInfo "{64A417D07634A408}" {
+     }
+     ContextName "mfd3_copilot"
+     Position PointInfo "{64A417D07634A40D}" {
+      PivotID "Pilot_Seat"
+      Offset -1.1307 0.3305 0.5283
+     }
+     Radius 0.05
+     Height 0
+    }
+   }
+   additionalActions {
+    AUS_MFD2_Power "{64A417D07634A400}" {
+     ParentContextList {
+      "mfd3_pilot" "mfd3_copilot"
+     }
+     UIInfo SCR_ActionContextUIInfo "{64A417D07634A407}" {
+     }
+     ActionTitle "use"
+    }
+   }
+   AllowCrossHierarchy 1
+  }
+  VehicleAnimationComponent "{50B80BCCBF0B33C8}" {
+   AnimGraph "{B63E2B9ABFF11012}Assets/Vehicles/Helicopters/UH1H/workspace/AUS_UH60_Armed.agr"
+   AnimInstance "{2195EC1B1CE38F82}Assets/Vehicles/Helicopters/UH1H/workspace/AUS_UH60_Armed_vehicle.asi"
+   AnimInjection AnimationAttachmentInfo "{50B80BCCA6210E6D}" {
+    AnimGraph "{B63E2B9ABFF11012}Assets/Vehicles/Helicopters/UH1H/workspace/AUS_UH60_Armed.agr"
+    AnimInstance "{A4522702CB079112}Assets/Vehicles/Helicopters/UH1H/workspace/AUS_UH60_Armed_player.asi"
+   }
+  }
+ }
+ coords 1153.659 39 2370.01
+}

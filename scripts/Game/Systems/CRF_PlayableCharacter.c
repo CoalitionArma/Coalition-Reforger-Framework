@@ -67,57 +67,56 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (owner.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			m_bIsSpectator = true;	
 		
-		SetEventMask(owner, EntityEvent.POSTFIXEDFRAME);
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 	}
 	
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFixedFrame(owner, timeslice);
 		
-		if (!owner)
-			return;
-		
-		if (!GetGame().InPlayMode())
-			return;
-		
-		if (!m_bIsPlayable && !m_bIsSpectator)
-			return;
-		
-		#ifdef WORKBENCH
-		if (!EntityUtils.IsPlayer(owner) && m_bInitTime)
+		if (!owner || !GetGame().InPlayMode() || !m_bIsPlayable)
 		{
+			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
+			return;
+		}
+				
+		#ifdef WORKBENCH
+		if (!EntityUtils.IsPlayer(owner) && m_bInitTime && m_bIsSpectator)
+		{
+			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 		}
 		#else
-		if (!EntityUtils.IsPlayer(owner) && RplSession.Mode() == RplMode.Dedicated && m_bInitTime)
+		if (!EntityUtils.IsPlayer(owner) && RplSession.Mode() == RplMode.Dedicated && m_bInitTime && m_bIsSpectator)
 		{
+			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 		}
 		#endif
-		
-		if (m_PlayerController.GetLocalControlledEntity() == owner)	{
-			if (m_PlayerController.m_eCamera) {
+
+		if (m_bIsSpectator && m_PlayerController.GetLocalControlledEntity() == owner)
+		{
+			if (m_PlayerController.m_eCamera) 
+			{
 				vector mat[4];
-				m_PlayerController.m_eCamera.GetTransform(mat);
+				m_PlayerController.m_eCamera.GetWorldTransform(mat);
 				mat[3][1] = mat[3][1] - 1.5;
-				m_PlayerController.UpdateEntityPos(mat);
-			}
-			else {
-				vector mat[4];
-				mat[3][1] = 10000;
-				m_PlayerController.UpdateEntityPos(mat);
-			}
-		}
-		Physics physics = owner.GetPhysics();
-		if (physics) {
-			physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
-			physics.EnableGravity(false);
-			physics.SetVelocity("0 0 0");
-			physics.SetAngularVelocity("0 0 0");
-			physics.SetMass(0);
-			physics.SetDamping(1, 1);
-			physics.SetActive(ActiveState.INACTIVE);
-		}	
+				owner.SetWorldTransform(mat);
+			} else {
+				owner.SetOrigin("0 10000 0");
+			};
+			
+			Physics physics = owner.GetPhysics();
+			if (physics) {
+				physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
+				physics.EnableGravity(false);
+				physics.SetVelocity(vector.Zero);
+				physics.SetAngularVelocity(vector.Zero);
+				physics.SetMass(0);
+				physics.SetDamping(1, 1);
+				physics.SetActive(ActiveState.INACTIVE);
+			}	
+		};
 	}
 	
 	void DisableAI(IEntity owner)
@@ -157,8 +156,8 @@ class CRF_PlayableCharacter : ScriptComponent
 			Physics physics = owner.GetPhysics();
 			if (physics)
 			{
-				physics.SetVelocity("0 0 0");
-				physics.SetAngularVelocity("0 0 0");
+				physics.SetVelocity(vector.Zero);
+				physics.SetAngularVelocity(vector.Zero);
 				physics.SetMass(0);
 				physics.SetDamping(1, 1);
 				physics.SetActive(ActiveState.INACTIVE);

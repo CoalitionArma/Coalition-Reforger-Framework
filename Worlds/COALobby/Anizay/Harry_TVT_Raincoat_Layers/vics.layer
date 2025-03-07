@@ -16,7 +16,7 @@ $grp SCR_VehicleSpawn {
  UH60 {
   coords 3081.671 144.625 8435.496
   angleY -8.745
-  m_rnPrefab "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+  m_rnPrefab "{198EB45075F59651}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed_LessAmmo.et"
   respawnDelay 10000
   firstSpawn 1
  }
@@ -133,4 +133,16 @@ Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/
 Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
  coords 4175.823 136.187 6451.236
  angleY -21.18
+}
+GenericEntity : "{59EAF3EB72F08D52}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_base.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 500
+    }
+   }
+  }
+ }
+ coords 5367.547 110.414 7173.35
 }

@@ -17,7 +17,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "Indfor was contracted to transport some classified technology in a tan engineering truck through the AO when they were ambushed by insurgents. Radio communications have ceased, and FOB Obeh has mounted a rescue team to look for them."\
    ""\
    "BLUFOR Composition: Air Assault & Moto Inf"\
-   "BLUFOR Assets: 1x UH60, 1x MH6M, 1x CROWS Stryker, 1x unarmed Stryker"\
+   "BLUFOR Assets: 1x UH60, 1x Unarmed MH6M, 1x CROWS Stryker, 1x unarmed Stryker"\
    ""\
    "OPFOR Composition: Moto Inf"\
    "OPFOR Assets:6x GAZ w/ PKM"\
@@ -28,7 +28,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Main Objective: Find the ambushed convoy, secure the tan engineering truck, and return it to FOB Obeh. You will lose if Opfor manages to keep uncontested possession of the truck for 15 minutes."\
    ""\
-   "The transponder signal will update every 7 minutes."
+   "You are friendly to Indfor. The transponder signal will update every 7 minutes."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Main Objective: Find the ambushed convoy, secure the tan engineering truck, and hold it uncontested for 15 minutes. You will lose if the truck makes it to FOB Obeh."\
@@ -38,7 +38,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTextData "Main objective- Hold out in your marked AO, and wait for rescue. Once you have linked up with the rescuing force, you can leave your designated AO. Bring the truck to FOB Obeh. You lose if Opfor maintains uncontested posession of the truck for 15 minutes."\
    ""\
-   "All forces can see the trucks transponder signal. The transponder signal will update every 7 minutes."
+   "Blufor is friendly. All forces can see the trucks transponder signal. The transponder signal will update every 7 minutes. Supplies will spawn near the truck, please load them in for potential repairs."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "For stability, there are no mission triggers for objective completion."
@@ -163,7 +163,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Cell 6"
        }
        SCR_CallsignInfo "{647D7642FCB5B6D5}" {
-        m_sCallsign "Recon"
+        m_sCallsign "AA"
        }
       }
      }

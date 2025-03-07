@@ -143,6 +143,8 @@ $grp SCR_BaseTriggerEntity {
   "		values.Insert(pmap);"\
   "		numberRanges.Insert({201, 201});"\
   "		values.Insert(saline);"\
+  "		numberRanges.Insert({202, 210});"\
+  "		values.Insert(bandage);"\
   "		"\
   "	}"\
   "	"\
@@ -170,7 +172,7 @@ $grp SCR_BaseTriggerEntity {
   "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
   "		spawnParams.TransformMode = ETransformMode.WORLD;"\
   "		"\
-  "		for (int i = 1; i <= 1537; i++)"\
+  "		for (int i = 1; i <= 1576; i++)"\
   "		{"\
   "			string childName = \"weaponSpawn\" + i.ToString();"\
   "			IEntity child = GetGame().GetWorld().FindEntityByName(childName);"\
@@ -12494,6 +12496,318 @@ $grp SCR_BaseTriggerEntity {
    }
   }
   coords 1444.382 36.739 2214.917
+  angleY -15.364
+ }
+ weaponSpawn1538 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1025.818 37.453 2980.799
+  angleY -15.364
+ }
+ weaponSpawn1539 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1025.652 37.433 2981.612
+  angleY -15.364
+ }
+ weaponSpawn1540 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1025.369 37.453 2983.447
+  angleY -15.364
+ }
+ weaponSpawn1541 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1027.429 37.453 2984.601
+  angleY -15.364
+ }
+ weaponSpawn1542 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1036.196 37.447 2987.335
+  angleY -15.364
+ }
+ weaponSpawn1543 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1033.612 37.453 2986.385
+  angleY -15.364
+ }
+ weaponSpawn1544 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1028.773 37.917 2991.423
+  angleY -15.364
+ }
+ weaponSpawn1545 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1029.441 37.911 2989.129
+  angleY -15.364
+ }
+ weaponSpawn1546 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1029.56 38.98 2989.082
+  angleY -15.364
+ }
+ weaponSpawn1547 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1028.717 38.972 2991.462
+  angleY -15.364
+ }
+ weaponSpawn1548 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1030.963 37.923 2991.895
+  angleY -15.364
+ }
+ weaponSpawn1549 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1030.351 37.925 2994.245
+  angleY -15.364
+ }
+ weaponSpawn1550 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1030.22 38.981 2994.202
+  angleY -15.364
+ }
+ weaponSpawn1551 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1030.924 38.986 2991.712
+  angleY -15.364
+ }
+ weaponSpawn1552 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1032.786 37.917 2994.15
+  angleY -15.364
+ }
+ weaponSpawn1553 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1033.567 37.906 2991.715
+  angleY -15.364
+ }
+ weaponSpawn1554 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1033.532 38.984 2991.596
+  angleY -15.364
+ }
+ weaponSpawn1555 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1032.792 38.988 2994.183
+  angleY -15.364
+ }
+ weaponSpawn1556 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1032.063 37.433 2993.573
+  angleY -15.364
+ }
+ weaponSpawn1557 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1032.335 37.433 2991.848
+  angleY -15.364
+ }
+ weaponSpawn1558 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1030.168 37.433 2989.885
+  angleY -15.364
+ }
+ weaponSpawn1559 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1029.629 37.433 2991.799
+  angleY -15.364
+ }
+ weaponSpawn1560 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1036.427 37.914 2983.393
+  angleY -15.364
+ }
+ weaponSpawn1561 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1036.348 38.983 2983.353
+  angleY -15.364
+ }
+ weaponSpawn1562 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1037.025 37.924 2981.105
+  angleY -15.364
+ }
+ weaponSpawn1563 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1037.246 38.977 2981.007
+  angleY -15.364
+ }
+ weaponSpawn1564 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1035.651 37.903 2978.297
+  angleY -15.364
+ }
+ weaponSpawn1565 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1035.614 38.987 2978.396
+  angleY -15.364
+ }
+ weaponSpawn1566 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1032.734 37.903 2979.471
+  angleY -15.364
+ }
+ weaponSpawn1567 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1032.757 38.999 2979.511
+  angleY -15.364
+ }
+ weaponSpawn1568 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1031.987 38.966 2981.863
+  angleY -15.364
+ }
+ weaponSpawn1569 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1032.039 37.919 2981.742
+  angleY -15.364
+ }
+ weaponSpawn1570 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1035.993 37.433 2980.518
+  angleY -15.364
+ }
+ weaponSpawn1571 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1033.662 37.433 2980.628
+  angleY -15.364
+ }
+ weaponSpawn1572 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1037.604 37.432 2976.775
+  angleY -15.364
+ }
+ weaponSpawn1573 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1038.167 38.023 2976.379
+  angleY -15.364
+ }
+ weaponSpawn1574 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1037.374 38.024 2976.131
+  angleY -15.364
+ }
+ weaponSpawn1575 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1035.938 37.433 2976.537
+  angleY -15.364
+ }
+ weaponSpawn1576 {
+  components {
+   Hierarchy "{62D3177DE53166C5}" {
+   }
+  }
+  coords 1035.206 37.432 2975.56
   angleY -15.364
  }
 }
