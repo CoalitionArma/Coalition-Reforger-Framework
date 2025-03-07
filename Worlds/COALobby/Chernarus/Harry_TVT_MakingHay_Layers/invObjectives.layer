@@ -1,3 +1,35 @@
+SCR_BaseTriggerEntity bluforRespawn {
+ coords 595.466 277.876 6194.2
+ userScript "	void respawnBlufor()"\
+ "	{"\
+ "		CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
+ "		gm.RespawnSide(\"BLUFOR\");"\
+ "		"\
+ "		GetGame().GetCallqueue().CallLater(respawnBlufor, 600000, false);"\
+ "	}"\
+ "	"\
+ "	void safeStartCheck()"\
+ "	{"\
+ "		CRF_GamemodeComponent safestart = CRF_GamemodeComponent.GetInstance();"\
+ "        if(safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)"\
+ "		{"\
+ "         	GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		else"\
+ "		{"\
+ "			GetGame().GetCallqueue().CallLater(respawnBlufor, 600000, false);"\
+ "		}"\
+ "		"\
+ "		"\
+ "	}"
+ EOnInit ""\
+ "		super.EOnInit(owner);"\
+ "		GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);"\
+ "		"\
+ "	"
+}
 $grp GenericEntity : "{677917B581F03974}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V2_storage.et" {
  ob1 {
   components {
@@ -37,6 +69,8 @@ $grp GenericEntity : "{677917B581F03974}Prefabs/Props/Military/SupplyBox/SupplyS
   "		if (RplSession.Mode() == RplMode.Dedicated) "\
   "		{"\
   "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
+  "			gm.m_iBLUFORTickets = gm.m_iBLUFORTickets + 20;"\
+  "			"\
   "			gm.RushRespawnPlayers();"\
   "		}"\
   "		"\

@@ -14,6 +14,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   }
   CRF_PlayableCharacter "{646423C7F8911193}" {
    m_sName "Spectator"
+   m_bIsPlayable 1
   }
   FactionAffiliationComponent "{633B2131A597C43C}" {
    "faction affiliation" "SPEC"
