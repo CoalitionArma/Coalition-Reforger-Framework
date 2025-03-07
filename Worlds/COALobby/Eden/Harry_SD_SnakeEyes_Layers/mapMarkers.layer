@@ -95,36 +95,41 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   coords 4923.915 54.015 5859.431
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache A"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
  }
  {
   coords 4895.999 52.512 5671.655
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache A"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
  }
  {
   coords 4560.182 54.011 5437.484
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache A"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
  }
  {
   coords 4416.047 65.24 5016.161
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache A"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
  }
  {
   coords 5243.814 63.999 5327.359
   m_MarkerColor 0 0 0 1
   m_sDescription "Cache B in Figari"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
  }
 }
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {

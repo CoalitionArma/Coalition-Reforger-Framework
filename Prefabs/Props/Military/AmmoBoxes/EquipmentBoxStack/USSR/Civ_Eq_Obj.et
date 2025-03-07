@@ -88,7 +88,7 @@ GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      SlotTemplate EquipmentStorageSlot Carbine {
       Prefab "{BFEA719491610A45}Prefabs/Weapons/Rifles/AKS74U/Rifle_AKS74U.et"
      }
-     NumSlots 5
+     NumSlots 20
     }
     MultiSlotConfiguration "{64B205DF1B020F5A}" {
      SlotTemplate EquipmentStorageSlot Demo {
@@ -155,6 +155,12 @@ GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
       Prefab "{CF221A167DE87E57}Prefabs/Characters/Uniforms/Suit_KLMK/Suit_KLMK.et"
      }
      NumSlots 10
+    }
+    MultiSlotConfiguration "{64CF69DB13BE29D9}" {
+     SlotTemplate EquipmentStorageSlot light {
+      Prefab "{575EA58E67448C2A}Prefabs/Items/Equipment/Flashlights/Flashlight_Soviet_01/Flashlight_Soviet_01.et"
+     }
+     NumSlots 40
     }
    }
    m_fMaxWeight 5000
