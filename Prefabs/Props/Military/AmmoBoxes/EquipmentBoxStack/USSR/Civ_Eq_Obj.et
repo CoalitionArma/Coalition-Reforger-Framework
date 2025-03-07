@@ -1,6 +1,17 @@
 GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V1_base.et" {
  ID "F0DBA538AC2A0552"
  components {
+  SoundComponent "{64C703D2B51D3F95}" {
+   Filenames {
+    "{4340FAB152ACD12D}Sounds/Compositions/Slotted/SlotFlatSmall/Compositions_Radio_Chatter.acp"
+   }
+   IncludeInactive 1
+   SoundPoints {
+    SoundPointInfo sound {
+     Offset 0 0.9141 0
+    }
+   }
+  }
   MeshObject "{5872F0EB7FA40561}" {
    Object "{5172A6E151032216}Assets/Props/Military/AmmoBox/EquipmentBoxStack/EquipmentBoxStack_01_V1.xob"
    Materials {
