@@ -10,32 +10,15 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected SCR_MapEntity m_MapEntity;
 	protected SCR_ChatPanel m_ChatPanel;
 	
-	int m_iCurrentWaveTimer;
-	
-	int m_iGroupID;
-	
-	void displayTimer()
-	{
-		TextWidget timerWidget = TextWidget.Cast(GetRootWidget().FindAnyWidget("timerCountDown"));
-		timerWidget.SetText(SCR_FormatHelper.FormatTime(m_iCurrentWaveTimer));
-	}
-	
 	void UpdateTimer()
-	{
-		m_iCurrentWaveTimer = m_iCurrentWaveTimer - 1;
-		
-		if (m_iCurrentWaveTimer < 0)
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).RespawnWithTicket(GetGame().GetPlayerController().GetPlayerId(), m_iGroupID);
-		
-		displayTimer(); 
+	{	
+		TextWidget timerWidget = TextWidget.Cast(GetRootWidget().FindAnyWidget("timerCountDown"));
+		timerWidget.SetText(SCR_FormatHelper.FormatTime(CRF_Gamemode.GetInstance().m_iRespawnTimer));
 	}
 	
 	override void OnMenuOpen()
 	{
-		if (!CRF_Gamemode.GetInstance().m_bDisbleRespawnTimer)
-			GetGame().GetCallqueue().CallLater(UpdateTimer, 1000, true);
-
-		m_iCurrentWaveTimer = CRF_Gamemode.GetInstance().m_iRespawnWaveCurrentTime;
+		GetGame().GetCallqueue().CallLater(UpdateTimer, 500, true);
 
 		//Loads the map
 		if (m_MapEntity)

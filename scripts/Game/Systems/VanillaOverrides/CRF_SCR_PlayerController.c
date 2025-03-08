@@ -108,13 +108,13 @@ modded class SCR_PlayerController
 	}
 	
 	// Ask server to respawn player after timer ends
-	void RespawnWithTicket(int playerId, int groupID)
+	void RespawnWithTicket(int playerId)
 	{
-		Rpc(RpcDo_RespawnWithTicket, playerId, groupID)	
+		Rpc(RpcDo_RespawnWithTicket, playerId)	
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_RespawnWithTicket(int playerID, int groupID)
+	void RpcDo_RespawnWithTicket(int playerID)
 	{
 		CRF_Gamemode.GetInstance().RespawnPlayer(playerID);
 	}

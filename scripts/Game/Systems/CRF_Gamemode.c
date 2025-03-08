@@ -165,9 +165,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
 	bool m_bWaveRespawn;	
-	
-	[Attribute("0", "auto", "Useful for when your planning on using custom respawn triggers.", category: "CRF Gamemode Respawn")]
-	bool m_bDisbleRespawnTimer;
 
 	[Attribute("300", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Gamemode Respawn")]
 	int m_iTimeToRespawn;
@@ -184,8 +181,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("-1", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iCIVTickets;
 	
-	[RplProp(onRplName: "UpdateRespawnTimer")]
+	[RplProp(onRplName: "WaveRespawnTimer")]
 	int m_iRespawnWaveCurrentTime;
+	
+	int m_iRespawnTimer
 
 	IEntity m_eGamemodeEntity;
 	protected ref ScriptInvoker m_OnStateChanged;
@@ -262,7 +261,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 		
 		if (m_bRespawnEnabled)
-			InitilizeRespawns()
+			InitilizeRespawns();
 	}
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -511,13 +510,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void InitilizeRespawns()
 	{
 		m_iRespawnWaveCurrentTime = m_iTimeToRespawn;
+		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
 		
 		if (m_bWaveRespawn && RplSession.Mode() == RplMode.Dedicated)
 		{
-			GetGame().GetCallqueue().CallLater(UpdateRespawnTimer, 1000, true);
+			GetGame().GetCallqueue().CallLater(WaveRespawnTimer, 1000, true);
 		}
 	}
-	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool TicketsRemaining(string faction)
 	{
@@ -577,25 +576,43 @@ class CRF_Gamemode : SCR_BaseGameMode
 		Replication.BumpMe();
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void UpdateRespawnTimer()
+	void WaveRespawnTimer()
 	{
-		if (m_GamemodeState != CRF_GamemodeState.GAME && !m_bDisbleRespawnTimer)
-			return;	
+		if (m_GamemodeState != CRF_GamemodeState.GAME)
+			return;
+		
+		m_iRespawnWaveCurrentTime--;
 		
 		if (m_iRespawnWaveCurrentTime == 0)
 		{
 			m_iRespawnWaveCurrentTime = m_iTimeToRespawn;
 		}
-		m_iRespawnWaveCurrentTime--;
+
 		Replication.BumpMe();
 	}
-
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void RespawnTimer()
+	{	
+		m_iRespawnTimer--;
+		
+		if (m_iRespawnTimer == 0)
+		{
+			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
+			SCR_PlayerController.Cast(GetGame().GetPlayerController()).RespawnWithTicket(GetGame().GetPlayerController().GetPlayerId());
+			GetGame().GetCallqueue().Remove(RespawnTimer);			
+			GetGame().GetMenuManager().CloseAllMenus();
+		}
+		
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		
+		if (!topMenu.IsInherited(CRF_RespawnMenu) && topMenu.IsInherited(CRF_SpectatorMenuUI))
+			MenuBase respawnMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
+	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RegisterRespawnPoint(IEntity respawnPoint)
 	{
 		m_aRespawnPoints.Insert(respawnPoint);
 	}
-	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UnRegisterRespawnPoint(IEntity respawnPoint)
 	{
@@ -608,7 +625,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		Rpc(RpcDo_SendRespawnScreen, playerId)	
 	}
-
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendRespawnScreen(int playerId)
@@ -622,8 +638,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		GetGame().GetMenuManager().CloseAllMenus();
 		MenuBase respawnMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
+		
+		
+		GetGame().GetCallqueue().CallLater(RespawnTimer, 1000, true);
 	}
-	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RespawnSide(string faction)
 	{
