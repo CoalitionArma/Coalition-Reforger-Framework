@@ -573,7 +573,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (m_iRespawnTimer <= 0)
 		{
 			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).RespawnWithTicket(SCR_PlayerController.GetLocalPlayerId());
+			SCR_PlayerController.Cast(GetGame().GetPlayerController()).RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
 			GetGame().GetCallqueue().Remove(RespawnTimer);			
 			GetGame().GetMenuManager().CloseAllMenus();
 		}
@@ -651,7 +651,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId)
+	void RespawnPlayer(int playerId, vector spawnLocation = vector.Zero)
 	{
 		if (RplSession.Mode() == RplMode.Client)
 			return; 
@@ -675,8 +675,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 					case "CIV" 		: {respawnPrefab = "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et";				break;}
 				}
 			}
-			
-			vector spawnLocation = vector.Zero;
 			
 			foreach(IEntity spawnPoint : m_aRespawnPoints)
 			{

@@ -1040,18 +1040,12 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Respawn
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SpawnGroupServer(int playerId, string prefab, vector spawnLocation, int groupID, bool logAction)
+	void SpawnOnGroupServer(int playerId, vector spawnLocation, int groupID, bool logAction)
 	{
-		Rpc(Respawn, playerId, prefab, spawnLocation, groupID, logAction);
-	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void Respawn(int playerId, string prefab, vector spawnLocation, int groupID, bool logAction)
-	{
-//		Rpc(RpcAsk_CloseMap, playerId);
-
-		CRF_Gamemode.GetInstance().RespawnPlayer(playerId);
+		if(RplSession.Mode() == RplMode.Client)
+			return;
+		
+		CRF_Gamemode.GetInstance().RespawnPlayer(playerId, spawnLocation);
 		
 		if (logAction)
 			LogAdminAction(string.Format("%1 was respawned to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID).m_faction), playerId, true);
@@ -1109,7 +1103,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 	    spawnParams.TransformMode = ETransformMode.WORLD;
 		vector teleportLocation = vector.Zero;
-		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 3);
+		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
 	    spawnParams.Transform[3] = teleportLocation;
 	
 		SCR_Global.TeleportPlayer(playerID1, teleportLocation);

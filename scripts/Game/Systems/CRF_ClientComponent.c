@@ -237,17 +237,17 @@ class CRF_ClientComponent: ScriptComponent
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Respawn
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SpawnGroup(int playerID, string prefab, vector spawnLocation, int groupID, bool logAction)
+	void SpawnOnGroup(int playerID, vector spawnLocation, int groupID, bool logAction)
 	{
-		Rpc(RpcAsk_SpawnGroup, playerID, prefab, spawnLocation, groupID, logAction);
+		Rpc(RpcAsk_SpawnOnGroup, playerID, spawnLocation, groupID, logAction);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SpawnGroup(int playerID, string prefab, vector spawnLocation, int groupID, bool logAction)
+	void RpcAsk_SpawnOnGroup(int playerID, vector spawnLocation, int groupID, bool logAction)
 	{
 		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SpawnGroupServer(playerID, prefab, spawnLocation, groupID, logAction);
+		m_gamemodeComponent.SpawnOnGroupServer(playerID, spawnLocation, groupID, logAction);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -289,7 +289,7 @@ class CRF_ClientComponent: ScriptComponent
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 	    spawnParams.TransformMode = ETransformMode.WORLD;
 		vector teleportLocation = vector.Zero;
-		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 3);
+		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
 	    spawnParams.Transform[3] = teleportLocation;
 	
 		SCR_Global.TeleportPlayer(playerID1, teleportLocation);

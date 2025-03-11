@@ -104,16 +104,16 @@ modded class SCR_PlayerController
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Ask server to respawn player after timer ends
-	void RespawnWithTicket(int playerId)
+	void RespawnPlayer(int playerId, vector spawnLocation = vector.Zero)
 	{
-		Rpc(RpcDo_RespawnWithTicket, playerId)	
+		Rpc(RpcDo_RespawnPlayer, playerId, spawnLocation)	
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_RespawnWithTicket(int playerID)
+	void RpcDo_RespawnPlayer(int playerID, vector spawnLocation)
 	{
-		CRF_Gamemode.GetInstance().RespawnPlayer(playerID);
+		CRF_Gamemode.GetInstance().RespawnPlayer(playerID, spawnLocation);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
