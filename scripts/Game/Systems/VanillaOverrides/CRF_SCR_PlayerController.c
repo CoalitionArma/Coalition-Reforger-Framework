@@ -216,7 +216,7 @@ modded class SCR_PlayerController
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_AARMenu);
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_RespawnMenu);
 		Rpc(RpcDo_EnterGame, playerID);
-		if(m_iFPS == 0)
+		if(m_iFPS == 0 || !CRF_Gamemode.GetInstance())
 		{
 			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
 			video.Set("MaxFps", 0);
