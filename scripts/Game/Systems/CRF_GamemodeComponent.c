@@ -1051,34 +1051,10 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	{
 //		Rpc(RpcAsk_CloseMap, playerId);
 
-		if(prefab.IsEmpty())
-		{
-			switch(SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID).m_faction)
-			{
-				case "BLUFOR" : {prefab = "{268EAF6C56517778}Prefabs/Characters/Factions/BLUFOR/US_Army/BLUFOR_AMG.et"; break;}
-				case "OPFOR"  : {prefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et";   break;}
-				case "INDFOR" : {prefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"; break;}
-				case "CIV"    : {prefab = "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et";       break;}
-			}
-		}
-
-		Resource resource = Resource.Load(prefab);
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-        spawnParams.TransformMode = ETransformMode.WORLD;
-		vector finalSpawnLocation = vector.Zero;
-		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, spawnLocation, 3);
-
 		CRF_Gamemode.GetInstance().RespawnPlayer(playerId);
 		
 		if (logAction)
 			LogAdminAction(string.Format("%1 was respawned to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID).m_faction), playerId, true);
-	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SetPlayerGroup(SCR_AIGroup group, int playerID)
-	{
-		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerID).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(group.GetFaction());
-		SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(group.GetGroupID(), playerID);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

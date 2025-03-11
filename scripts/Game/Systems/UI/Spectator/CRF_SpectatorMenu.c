@@ -169,7 +169,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				m_aAnimation = null;
 				
 				// Reset camera angle after leaving FPP
-				pc.m_eCamera.SetAngles(Vector(0,0,0));
+				vector mat = pc.m_eCamera.GetAngles();
+				pc.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 			}
 			else
 			{

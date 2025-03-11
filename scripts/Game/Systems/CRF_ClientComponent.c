@@ -413,13 +413,15 @@ class CRF_ClientComponent: ScriptComponent
 			return;
 		
 		GetGame().GetCallqueue().Remove(WaitTillGameStart);
-		GetGame().GetCallqueue().CallLater(DelayUpdate, 650, false);
+		GetGame().GetCallqueue().CallLater(DelayUpdate, 5000, false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	protected void DelayUpdate()
 	{
-		if(SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
+		
+		if(entity && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 		{
 			OnControlledEntityChanged(SCR_PlayerController.GetLocalMainEntity(), SCR_PlayerController.GetLocalMainEntity());
 			UpdateLocalPlayerGroup(SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId()).GetGroupID());

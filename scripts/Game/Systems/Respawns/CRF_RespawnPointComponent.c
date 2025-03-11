@@ -16,16 +16,18 @@ class CRF_RespawnPointComponent: ScriptComponent
 	{
 		super.OnPostInit(owner);
 		
-		if (!GetGame().InPlayMode() || RplSession.Mode() != RplMode.Dedicated) return;
+		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client) return;
 		
-		CRF_Gamemode.GetInstance().RegisterRespawnPoint(owner);
+		if(CRF_Gamemode.GetInstance())
+			CRF_Gamemode.GetInstance().RegisterRespawnPoint(owner);
 	};
 	
 	override void OnDelete(IEntity owner)
 	{
-		if (!GetGame().InPlayMode() || RplSession.Mode() != RplMode.Dedicated) return;
+		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client) return;
 		
-		CRF_Gamemode.GetInstance().UnRegisterRespawnPoint(owner);
+		if(CRF_Gamemode.GetInstance())
+			CRF_Gamemode.GetInstance().UnRegisterRespawnPoint(owner);
 	};
 	
 	void SetRespawnPointPriority(int priority)
