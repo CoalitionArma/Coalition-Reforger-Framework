@@ -259,7 +259,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected int GetPlayerIdFromName(string name)
+	protected int GetplayerIdFromName(string name)
 	{
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
@@ -529,15 +529,15 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		TStringArray playerNames = {};
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		foreach(int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
 		
 		playerNames.Sort(false);
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			int playerId = GetplayerIdFromName(name);
+			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
 			}
@@ -549,11 +549,11 @@ class CRF_AdminMenu: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateDefaultGear()
 	{
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
 		for(int i = 0; i < m_list2.GetItemCount(); i++)
 		{
-			if(CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GSR").Contains("_" + TextWidget.Cast(m_list2.GetElementComponent(i).GetRootWidget().FindAnyWidget("Text")).GetText() + "_P")) // GSR = Gear Script Resource
+			if(CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR").Contains("_" + TextWidget.Cast(m_list2.GetElementComponent(i).GetRootWidget().FindAnyWidget("Text")).GetText() + "_P")) // GSR = Gear Script Resource
 			{
 				m_list2.SetItemSelected(i, true);
 				return;
@@ -567,8 +567,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerID, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey()).m_rLeadershipRadiosPrefab, true);
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		m_clientComponent.AddItem(playerId, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rLeadershipRadiosPrefab, true);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -577,8 +577,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerID, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey()).m_rGIRadiosPrefab, true);
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		m_clientComponent.AddItem(playerId, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rGIRadiosPrefab, true);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -587,14 +587,14 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerID, GetBinos(playerID), true);
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		m_clientComponent.AddItem(playerId, GetBinos(playerId), true);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	string GetBinos(int playerID)
+	string GetBinos(int playerId)
 	{
-		string factionKey = m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey();
+		string factionKey = m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey();
 		
 		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(CRF_GamemodeComponent.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()));
 		
@@ -610,14 +610,14 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list2.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		int groupID = m_groupManagerComponent.GetPlayerGroup(playerID).GetGroupID();
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int groupID = m_groupManagerComponent.GetPlayerGroup(playerId).GetGroupID();
 		string prefab = GetPrefab(groupID, m_list2.GetSelectedItem());
 		
 		if(prefab.IsEmpty())
 			return;
 		
-		m_clientComponent.ResetGear(playerID, prefab, true);
+		m_clientComponent.ResetGear(playerId, prefab, true);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -644,19 +644,16 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		TStringArray playerNames = {};
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		foreach(int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
 		
 		playerNames.Sort(false);
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerID = GetPlayerIdFromName(name);
+			int playerId = GetplayerIdFromName(name);
 			
-			Print(SCR_FactionManager.SGetPlayerFaction(playerID).GetFactionKey());
-			Print(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetPrefabData().GetPrefabName());
-			
-			if(SCR_FactionManager.SGetPlayerFaction(playerID).GetFactionKey() == "SPEC" || GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if(SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC" || GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
 			}
@@ -680,16 +677,16 @@ class CRF_AdminMenu: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateSpawnGroup()
 	{
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		string storedGroupIDStr = CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GID"); // GID = GROUP ID 
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
-		if(storedGroupIDStr.IsEmpty() || playerID == 0)
-			return;
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
 		
-		int storedGroupID = storedGroupIDStr.ToInt();
+		RplId groupID = gm.m_aActivePlayerGroupsIDs.Get(gm.m_aGroupRplIDs.Find(gm.m_aPlayerGroupIDs.Get(gm.m_aSlots.Find(playerId))));
+		SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
+		
 		foreach(int i, SCR_AIGroup group : m_outGroups)
 		{
-			if(storedGroupID != 0 && group.GetGroupID() == storedGroupID)
+			if(playerGroup.GetGroupID() == group.GetGroupID())
 			{
 				m_list2.SetItemSelected(i, true);
 				return;
@@ -706,20 +703,20 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		TStringArray playerNames = {};
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		foreach(int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
 		
 		playerNames.Sort(false);
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID))
+			int playerId = GetplayerIdFromName(name);
+			if(m_groupManagerComponent.GetPlayerGroup(playerId))
 			{
-				if(m_groupManagerComponent.GetPlayerGroup(playerID).GetGroupID() == groupID)
+				if(m_groupManagerComponent.GetPlayerGroup(playerId).GetGroupID() == groupID)
 				{
-					m_list3.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
-					m_spawnPoints.Insert(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetOrigin());		
+					m_list3.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerId)));
+					m_spawnPoints.Insert(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetOrigin());		
 				}
 			}
 		}
@@ -737,10 +734,10 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list3.GetSelectedItem() < 0)
 			return;
 		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		int groupID = m_groupIDList.Get(m_list2.GetSelectedItem());
 		vector spawnpoint = m_spawnPoints.Get(m_list3.GetSelectedItem());
-		m_clientComponent.SpawnOnGroup(playerID, spawnpoint , groupID, true);
+		m_clientComponent.SpawnOnGroup(playerId, spawnpoint , groupID, true);
 		
 		GetGame().GetCallqueue().CallLater(ClearMenu, 1250, false);
 		GetGame().GetCallqueue().CallLater(InitializeRespawnMenu, 1825, false);
@@ -768,15 +765,15 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		TStringArray playerNames = {};
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		foreach(int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
 		
 		playerNames.Sort(false);
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			int playerId = GetplayerIdFromName(name);
+			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
 				m_list2.AddItem(string.Format("%1", name));
@@ -790,12 +787,12 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerID2 = m_allPlayers.Get(m_list1.GetSelectedItem());
+		int playerId2 = m_allPlayers.Get(m_list1.GetSelectedItem());
 		
-		if(!playerID2)
+		if(!playerId2)
 			return;
 		
-		m_clientComponent.TeleportLocalPlayer(SCR_PlayerController.GetLocalPlayerId(), playerID2);
+		m_clientComponent.TeleportLocalPlayer(SCR_PlayerController.GetLocalPlayerId(), playerId2);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -807,16 +804,16 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list2.GetSelectedItem() < 0)
 			return;
 		
-		int playerID1 = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		int playerID2 = GetPlayerIdFromName(TextWidget.Cast(m_list2.GetElementComponent(m_list2.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId1 = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId2 = GetplayerIdFromName(TextWidget.Cast(m_list2.GetElementComponent(m_list2.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
-		if(playerID1 == 0)
+		if(playerId1 == 0)
 			return;
 		
-		if(playerID2 == 0)
+		if(playerId2 == 0)
 			return;
 		
-		m_clientComponent.TeleportPlayers(playerID1, playerID2, true);
+		m_clientComponent.TeleportPlayers(playerId1, playerId2, true);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -848,15 +845,15 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		TStringArray playerNames = {};
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		foreach(int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
 		
 		playerNames.Sort(false);
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			int playerId = GetplayerIdFromName(name);
+			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
 			}
@@ -901,8 +898,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		string data = m_editBox1.GetText();
 		m_clientComponent.m_sHintText = data;
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.SendHintPlayer(data, playerID);
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		m_clientComponent.SendHintPlayer(data, playerId);
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//-------------------------------Heal Menu UI Members------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -922,15 +919,15 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		TStringArray playerNames = {};
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		foreach(int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
 		
 		playerNames.Sort(false);
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			int playerId = GetplayerIdFromName(name);
+			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
 			}
@@ -942,9 +939,9 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
-		m_clientComponent.HealPlayer(playerID, true);
+		m_clientComponent.HealPlayer(playerId, true);
 	}	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void HealPlayerVehicle()
@@ -952,8 +949,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
-		m_clientComponent.HealPlayerVehicle(playerID, true);
+		m_clientComponent.HealPlayerVehicle(playerId, true);
 	}
 }

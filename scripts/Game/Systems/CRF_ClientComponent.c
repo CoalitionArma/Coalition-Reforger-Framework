@@ -39,7 +39,6 @@ class CRF_ClientComponent: ScriptComponent
 		GetGame().GetInputManager().AddActionListener("CRF_AdminForceReady", EActionTrigger.DOWN, AdminForceReady);
 	
 		SCR_PlayerController.Cast(owner).m_OnControlledEntityChanged.Insert(OnControlledEntityChanged);
-		SCR_PlayerControllerGroupComponent.Cast(SCR_PlayerController.Cast(owner).FindComponent(SCR_PlayerControllerGroupComponent)).GetOnGroupChanged().Insert(UpdateLocalPlayerGroup);
 		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 500, true);
 	}
 	
@@ -424,7 +423,6 @@ class CRF_ClientComponent: ScriptComponent
 		if(entity && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 		{
 			OnControlledEntityChanged(SCR_PlayerController.GetLocalMainEntity(), SCR_PlayerController.GetLocalMainEntity());
-			UpdateLocalPlayerGroup(SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId()).GetGroupID());
 		}
 	}
 	
@@ -435,15 +433,6 @@ class CRF_ClientComponent: ScriptComponent
 			return;
 		
 		Rpc(RpcAsk_UpdatePlayerGearScriptMap, to.GetPrefabData().GetPrefabName(), SCR_PlayerController.GetLocalPlayerId(), "GSR"); // GSR = Gear Script Resource
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected void UpdateLocalPlayerGroup(int groupId)
-	{
-		if(groupId <= 0)
-			return;
-		
-		Rpc(RpcAsk_UpdatePlayerGearScriptMap, groupId.ToString(), SCR_PlayerController.GetLocalPlayerId(), "GID"); // GID = GROUP ID    
 	}
 	
 	//------------------------------------------------------------------------------------------------

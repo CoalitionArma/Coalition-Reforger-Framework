@@ -366,11 +366,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if(oldGroup != m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))
 			{
 				int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
-				SCR_GroupsManagerComponent.GetInstance().MovePlayerToGroup(playerId, groupId, SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId).GetGroupID());
+				SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 			}
 		} else {
 			int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
-			SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
+			SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 		}
 	}
 	
@@ -656,7 +656,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return; 
 		
-		if (SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC")
+		if (SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC" && GetGame().GetPlayerManager().IsPlayerConnected(playerId))
 		{	
 			string respawnPrefab = CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR");
 			
