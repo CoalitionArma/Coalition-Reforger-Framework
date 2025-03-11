@@ -259,7 +259,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected int GetplayerIdFromName(string name)
+	protected int GetPlayerIdFromName(string name)
 	{
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
@@ -536,7 +536,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerId = GetplayerIdFromName(name);
+			int playerId = GetPlayerIdFromName(name);
 			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
@@ -549,7 +549,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateDefaultGear()
 	{
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
 		for(int i = 0; i < m_list2.GetItemCount(); i++)
 		{
@@ -567,7 +567,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		m_clientComponent.AddItem(playerId, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rLeadershipRadiosPrefab, true);
 	}
 	
@@ -577,7 +577,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		m_clientComponent.AddItem(playerId, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rGIRadiosPrefab, true);
 	}
 	
@@ -587,7 +587,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 		
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		m_clientComponent.AddItem(playerId, GetBinos(playerId), true);
 	}
 	
@@ -610,7 +610,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list2.GetSelectedItem() < 0)
 			return;
 		
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		int groupID = m_groupManagerComponent.GetPlayerGroup(playerId).GetGroupID();
 		string prefab = GetPrefab(groupID, m_list2.GetSelectedItem());
 		
@@ -651,7 +651,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerId = GetplayerIdFromName(name);
+			int playerId = GetPlayerIdFromName(name);
 			
 			if(SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC" || GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
@@ -677,7 +677,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateSpawnGroup()
 	{
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
 		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
 		
@@ -710,7 +710,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerId = GetplayerIdFromName(name);
+			int playerId = GetPlayerIdFromName(name);
 			if(m_groupManagerComponent.GetPlayerGroup(playerId))
 			{
 				if(m_groupManagerComponent.GetPlayerGroup(playerId).GetGroupID() == groupID)
@@ -734,7 +734,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list3.GetSelectedItem() < 0)
 			return;
 		
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		int groupID = m_groupIDList.Get(m_list2.GetSelectedItem());
 		vector spawnpoint = m_spawnPoints.Get(m_list3.GetSelectedItem());
 		m_clientComponent.SpawnOnGroup(playerId, spawnpoint , groupID, true);
@@ -772,7 +772,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerId = GetplayerIdFromName(name);
+			int playerId = GetPlayerIdFromName(name);
 			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
@@ -804,8 +804,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list2.GetSelectedItem() < 0)
 			return;
 		
-		int playerId1 = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		int playerId2 = GetplayerIdFromName(TextWidget.Cast(m_list2.GetElementComponent(m_list2.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId1 = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId2 = GetPlayerIdFromName(TextWidget.Cast(m_list2.GetElementComponent(m_list2.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
 		if(playerId1 == 0)
 			return;
@@ -852,7 +852,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerId = GetplayerIdFromName(name);
+			int playerId = GetPlayerIdFromName(name);
 			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
@@ -898,7 +898,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		string data = m_editBox1.GetText();
 		m_clientComponent.m_sHintText = data;
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		m_clientComponent.SendHintPlayer(data, playerId);
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -926,7 +926,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		foreach(string name : playerNames)
 		{ 
-			int playerId = GetplayerIdFromName(name);
+			int playerId = GetPlayerIdFromName(name);
 			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_list1.AddItem(string.Format("%1", name));
@@ -939,7 +939,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
 		m_clientComponent.HealPlayer(playerId, true);
 	}	
@@ -949,7 +949,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		if(m_list1.GetSelectedItem() < 0)
 			return;
 
-		int playerId = GetplayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
 		m_clientComponent.HealPlayerVehicle(playerId, true);
 	}
