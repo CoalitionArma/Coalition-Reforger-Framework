@@ -210,12 +210,20 @@ modded class SCR_PlayerController
 		//Call to server to enter slot and or get put into a initial entity to spectate
 		if(m_eCamera)
 			delete m_eCamera;
+		
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_AARMenu);
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_RespawnMenu);
+		
 		Rpc(RpcDo_EnterGame, playerID);
+		
+		if(CRF_Gamemode.GetInstance().m_aSlots.Find(playerID) == -1)
+			CRF_ClientComponent.GetInstance().RequestSpectator(playerID);
+		else if(CRF_Gamemode.GetInstance().m_aEntityDeathStatus.Get(CRF_Gamemode.GetInstance().m_aSlots.Find(playerID)))
+			CRF_ClientComponent.GetInstance().RequestSpectator(playerID);
+		
 		if(m_iFPS == 0 || !CRF_Gamemode.GetInstance())
 		{
 			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
@@ -228,6 +236,7 @@ modded class SCR_PlayerController
 			video.Set("MaxFps", m_iFPS);	
 			GetGame().UserSettingsChanged();
 		}
+		
 		if(m_iAudioSetting == 0)
 			AudioSystem.SetMasterVolume(AudioSystem.SFX, 100);
 		else

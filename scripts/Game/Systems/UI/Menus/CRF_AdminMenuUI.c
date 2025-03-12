@@ -631,7 +631,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list3Root.SetVisible(true);
 		m_actionButton.SetVisible(true, false);
 		m_actionButton.m_OnClicked.Insert(RespawnPlayer);
-		m_list1.m_OnChanged.Insert(UpdateSpawnGroup);
+		m_list1.m_OnChanged.Insert(UpdateSpawnGroupRequest);
 		m_list2.m_OnChanged.Insert(UpdateSpawnpoint);
 		
 		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Respawn Player");
@@ -675,18 +675,18 @@ class CRF_AdminMenu: ChimeraMenuBase
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void UpdateSpawnGroup()
+	void UpdateSpawnGroupRequest()
 	{
 		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
-		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
-		
-		RplId groupID = gm.m_aActivePlayerGroupsIDs.Get(gm.m_aGroupRplIDs.Find(gm.m_aPlayerGroupIDs.Get(gm.m_aSlots.Find(playerId))));
-		SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
-		
+		CRF_ClientComponent.GetInstance().RequestGroupIdFromServer(playerId, SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	void UpdateSpawnGroup(int groupId)
+	{
 		foreach(int i, SCR_AIGroup group : m_outGroups)
 		{
-			if(playerGroup.GetGroupID() == group.GetGroupID())
+			if(groupId == group.GetGroupID())
 			{
 				m_list2.SetItemSelected(i, true);
 				return;

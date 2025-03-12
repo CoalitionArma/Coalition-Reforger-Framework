@@ -1052,6 +1052,34 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SendGroupIDToPlayer(int requestedId, int requesterID)
+	{
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		
+		RplId groupID = gm.m_aActivePlayerGroupsIDs.Get(gm.m_aGroupRplIDs.Find(gm.m_aPlayerGroupIDs.Get(gm.m_aSlots.Find(requestedId))));
+		SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
+		if(playerGroup)
+		{
+			Rpc(RpcDo_SendGroupIDToPlayer, requesterID, playerGroup.GetGroupID());
+			RpcDo_SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
+		};
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_SendGroupIDToPlayer(int requesterID, int groupId)
+	{
+		if(SCR_PlayerController.GetLocalPlayerId() != requesterID)
+			return;
+		
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		CRF_AdminMenu adminMenu = CRF_AdminMenu.Cast(topMenu);
+		
+		if(adminMenu)
+			adminMenu.UpdateSpawnGroup(groupId);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Gear
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetPlayerGear(int playerID, string prefab, bool logAction)

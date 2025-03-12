@@ -11,7 +11,7 @@ class CRF_ClientComponent: ScriptComponent
 	ref array<string> m_aScriptedMarkers = new array<string>; 
 	
 	protected CRF_GamemodeComponent m_gamemodeComponent;
-	
+		
 	//------------------------------------------------------------------------------------------------
 
 	// override/static functions
@@ -247,6 +247,20 @@ class CRF_ClientComponent: ScriptComponent
 	{
 		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
 		m_gamemodeComponent.SpawnOnGroupServer(playerID, spawnLocation, groupID, logAction);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void RequestGroupIdFromServer(int requestedId, int requesterID)
+	{
+		Rpc(RpcAsk_RequestGroupIdFromServer, requestedId, requesterID);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestGroupIdFromServer(int requestedId, int requesterID)
+	{
+		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
+		m_gamemodeComponent.SendGroupIDToPlayer(requestedId, requesterID);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -512,4 +526,28 @@ class CRF_ClientComponent: ScriptComponent
 //		CRF_RadioRespawnSystemComponent m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioRespawnSystemComponent));
 //		m_radioComponent.SpawnGroupServer(groupID);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	//\***********************************************************************************************
+	//\***********************************************************************************************
+	
+	// Spectator
+	
+	//\***********************************************************************************************
+	//\***********************************************************************************************
+	//------------------------------------------------------------------------------------------------
+	
+	void RequestSpectator(int playerId)
+	{
+		Rpc(RpcAsk_RequestSpectator, playerId);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestSpectator(int playerId)
+	{
+		CRF_Gamemode.GetInstance().EnterSpectator(playerId);
+		
+	}
+	
 }
