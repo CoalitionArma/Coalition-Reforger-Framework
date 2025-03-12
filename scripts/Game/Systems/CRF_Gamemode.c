@@ -313,7 +313,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		vector cameraPos[4];
 		if(m_GamemodeState == CRF_GamemodeState.GAME)
 		{
-			if(m_aSlots.Find(playerId) != -1 || entity != null)
+			if(m_aSlots.Find(playerId) != -1 && entity != null)
 			{
 				entity.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
@@ -460,6 +460,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RemovePlayableEntity(RplId entityID)
 	{
+		if(!Replication.FindItem(entityID) || SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity()) != 0)
+			return;
+		
 		int index = m_aEntitySlots.Find(entityID);
 		m_aSlots.RemoveOrdered(index);
 		m_aPlayerGroupIDs.RemoveOrdered(index);
@@ -471,8 +474,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_aEntitySlotTypes.RemoveOrdered(index);
 		m_aEntitySlots.RemoveOrdered(index);
 		
-		if(Replication.FindItem(entityID))
-			SCR_EntityHelper.DeleteEntityAndChildren(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity());
+		SCR_EntityHelper.DeleteEntityAndChildren(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity());
+		
 		m_iSlotChanges++;
 		
 		Replication.BumpMe();

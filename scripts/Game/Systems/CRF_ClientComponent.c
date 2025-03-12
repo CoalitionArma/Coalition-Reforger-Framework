@@ -547,7 +547,6 @@ class CRF_ClientComponent: ScriptComponent
 	void RpcAsk_RequestSpectator(int playerId)
 	{
 		CRF_Gamemode.GetInstance().EnterSpectator(playerId);
-		
 	}
 	
 }

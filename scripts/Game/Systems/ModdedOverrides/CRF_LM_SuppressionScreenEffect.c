@@ -8,4 +8,12 @@ modded class LM_SuppressionScreenEffect
 		}
 		return 0;
 	}
+	
+	override private void OnSuppressionFlinch()
+	{
+		if (m_pPlayerController && m_pPlayerController.GetLocalMainEntity() && m_pPlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		{
+			FlinchEffect();
+		}
+	}
 }

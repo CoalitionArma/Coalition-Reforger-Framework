@@ -6,6 +6,7 @@ modded class SCR_PlayerController
 	protected bool m_bActivated = false;
 	int m_iFPS;
 	int m_iAudioSetting;
+	private vector m_vStoredCameraPos[4];
 
 	//Adds action lisener to open menu in game
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,6 +54,12 @@ modded class SCR_PlayerController
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void UpdateStoredCameraPos(vector cameraPosToStore[4])
+	{
+		m_vStoredCameraPos = cameraPosToStore;
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SpecCameraInit(vector cameraPos[4])
 	{
 		if(m_eCamera)
@@ -60,6 +67,12 @@ modded class SCR_PlayerController
 		
 		if(SCR_EditorManagerEntity.GetInstance().IsOpened())
 			return;
+		
+		if(cameraPos[3] != vector.Zero && cameraPos[3] != CRF_Gamemode.GetInstance().m_vGenericSpawn[3])
+			m_vStoredCameraPos = cameraPos;
+		
+		if(m_vStoredCameraPos[3] != vector.Zero && cameraPos[3] == CRF_Gamemode.GetInstance().m_vGenericSpawn[3])
+			cameraPos = m_vStoredCameraPos;
 		
 		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
 		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
@@ -85,21 +98,14 @@ modded class SCR_PlayerController
 		
 		if (CRF_Gamemode.GetInstance().m_aSlots.Find(GetPlayerId()) == -1)
 		{
-			Rpc(RpcDo_EnterSpectator, GetPlayerId());
+			CRF_ClientComponent.GetInstance().RequestSpectator(GetPlayerId());
 			GetGame().GetCallqueue().CallLater(CRF_Gamemode.GetInstance().OpenMenu, 500, false);
 		}
 		else
 		{
-			Rpc(RpcDo_EnterSpectator, GetPlayerId());
+			CRF_ClientComponent.GetInstance().RequestSpectator(GetPlayerId());
 			GetGame().GetCallqueue().CallLater(EnterGame, 500, false, GetPlayerId());
 		}
-	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcDo_EnterSpectator(int playerID)
-	{
-		CRF_Gamemode.GetInstance().EnterSpectator(playerID);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -221,8 +227,6 @@ modded class SCR_PlayerController
 		
 		if(CRF_Gamemode.GetInstance().m_aSlots.Find(playerID) == -1)
 			CRF_ClientComponent.GetInstance().RequestSpectator(playerID);
-		else if(CRF_Gamemode.GetInstance().m_aEntityDeathStatus.Get(CRF_Gamemode.GetInstance().m_aSlots.Find(playerID)))
-			CRF_ClientComponent.GetInstance().RequestSpectator(playerID);
 		
 		if(m_iFPS == 0 || !CRF_Gamemode.GetInstance())
 		{
@@ -272,7 +276,7 @@ modded class SCR_PlayerController
 		if (!m_GroupManager)
 			return;
 		
-		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
+		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(GetPlayerId());
 		PlayerController pc = GetGame().GetPlayerController();
 		if (pc)
 		{
@@ -325,7 +329,7 @@ modded class SCR_PlayerController
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void CreateChannel()
 	{
-		Rpc(RpcDo_CreateChannel, SCR_PlayerController.GetLocalPlayerId());
+		Rpc(RpcDo_CreateChannel, GetPlayerId());
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

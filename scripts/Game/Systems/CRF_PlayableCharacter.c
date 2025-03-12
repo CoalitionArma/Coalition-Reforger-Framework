@@ -104,6 +104,7 @@ class CRF_PlayableCharacter : ScriptComponent
 				m_PlayerController.m_eCamera.GetTransform(mat);
 				mat[3][1] = mat[3][1] - 1.5;
 				m_PlayerController.UpdateEntityPos(mat);
+				m_PlayerController.UpdateStoredCameraPos(mat);
 			} else {
 				vector mat[4];
 				mat[1] = vector.Up;

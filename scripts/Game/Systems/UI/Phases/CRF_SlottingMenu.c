@@ -507,7 +507,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			}
 			if(leadersInGroup == 0)	
 				m_cOrbatListBoxComponent.RemoveItem(orbatGroupIndex);
-			if(playersInGroup == 0 && !SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId()))
+			if(playersInGroup == 0)
 				m_cSlotListBoxComponent.RemoveItem(groupIndex);
 			if(deadPlayersInGroup > 0 && playersInGroup == 0 && SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId()))
 				m_cSlotListBoxComponent.RemoveItem(groupIndex);
