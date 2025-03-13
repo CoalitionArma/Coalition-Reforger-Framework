@@ -9,20 +9,23 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   SCR_DataCollectorComponent "{5ADE83EE64329989}" {
    m_aModules {
     SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
-     m_bWarCrimesEnabled 0
-     m_bWarCrimesProportionalityPrincipleEnabled 0
     }
    }
   }
   SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
    m_fDOTScale 0.5
    m_fRegenScale 0.75
+   m_bPermitUnconsciousVON 0
+   m_fRegenerationDelay 30
    m_fRegenerationScale 0.6
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
   }
   SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
    m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NightModeGameModeComponent "{5D50E84688D5A408}" {
+   m_bAllowGlobalNightMode 1
   }
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_iKillFeedType DISABLED
