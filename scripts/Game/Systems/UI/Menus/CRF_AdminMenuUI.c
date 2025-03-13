@@ -688,6 +688,9 @@ class CRF_AdminMenu: ChimeraMenuBase
 		{
 			if(groupId == group.GetGroupID())
 			{
+				if(RplSession.Mode() == RplMode.Client)
+					i = i - 1;
+				
 				m_list2.SetItemSelected(i, true);
 				return;
 			}
