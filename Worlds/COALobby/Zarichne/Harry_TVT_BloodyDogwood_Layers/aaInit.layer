@@ -13,7 +13,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 1690.317 150.076 3547.479
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Blufor has received British reinforcements, and is pushing back against the Opfor campaign in the area. They are pushing through the AO to destroy supply dumps at the marked, unnamed village that Opfor is occupying. Opfor has two roadblocks setup on the approach with 6T7 NSV SPP arming it."\
+   m_sTextData "Blufor has received British reinforcements, and is pushing back against the Opfor campaign in the area. They are pushing through the AO to destroy supply dumps at the marked, unnamed village that Opfor is occupying. Opfor has two roadblocks setup on the approach with 6T7 NSV arming it."\
    ""\
    "BLUFOR Composition: Inf w/ supporting Mech"\
    "BLUFOR Assets: 2x Armed M113"\
@@ -73,7 +73,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{64D5302DD3DCE9AD}" {
-        m_sCallsign "Vic-1"
+        m_sCallsign "Vic-1 (M113)"
        }
        SCR_CallsignInfo "{64D5302DD23BDA57}" {
         m_sCallsign "2PLT"
@@ -91,7 +91,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "MMG"
        }
        SCR_CallsignInfo "{64D53022363A05AC}" {
-        m_sCallsign "Vic-2"
+        m_sCallsign "Vic-2 (M113)"
        }
       }
      }

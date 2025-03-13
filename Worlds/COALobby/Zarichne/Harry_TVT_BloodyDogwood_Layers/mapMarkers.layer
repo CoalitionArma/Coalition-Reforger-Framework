@@ -49,7 +49,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   }
  }
  {
-  coords 3392.997 25.52 3402.692
+  coords 3392.997 25.115 3402.692
   m_MarkerColor 0 0 0 1
   m_sDescription "Supply Depot"
   m_aVisibleForFactions {

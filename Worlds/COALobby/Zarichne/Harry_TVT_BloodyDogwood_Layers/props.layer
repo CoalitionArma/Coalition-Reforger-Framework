@@ -1,6 +1,6 @@
 SCR_BaseTriggerEntity spawnStatics {
  coords 3557.784 32.66 3179.036
- userScript "	string gun = \"{3EA26CFD7A202636}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV_SPP.et\";"\
+ userScript "	string gun = \"{29F0CC704A582154}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV.et\";"\
  "	IEntity static1, static2;"\
  "	"\
  "	void spawnthings()"\
