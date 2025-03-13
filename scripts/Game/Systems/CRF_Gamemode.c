@@ -366,7 +366,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if(oldGroup != m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))
 			{
 				int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
-				SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
+				SCR_GroupsManagerComponent.GetInstance().MovePlayerToGroup(playerId, groupId, SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId).GetGroupID());
 				SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 			}
 		} else {
@@ -398,7 +398,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//Sets slot to player or removes him from it
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetSlot(int index, int playerId)
-	{
+	{	
 		if(playerId > 0)
 		{
 			SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(FactionAffiliationComponent.Cast(RplComponent.Cast(Replication.FindItem(m_aEntitySlots.Get(index))).GetEntity().FindComponent(FactionAffiliationComponent)).GetAffiliatedFaction());
@@ -656,7 +656,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, vector spawnLocation = vector.Zero)
+	void RespawnPlayer(int playerId, vector spawnLocation = vector.Zero, int groupID = -1)
 	{
 		if (RplSession.Mode() == RplMode.Client)
 			return; 
@@ -665,10 +665,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 		{	
 			string respawnPrefab = CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR");
 			
-			RplId groupID = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId))));
-			SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
-			SCR_AIGroup aiGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aGroupRplIDs.Get(m_aActivePlayerGroupsIDs.Find(RplComponent.Cast(playerGroup.FindComponent(RplComponent)).Id())))).GetEntity());
-			string faction = aiGroup.GetFaction().GetFactionKey();
+			SCR_AIGroup group;
+			if(groupID == -1)
+			{
+				RplId groupRPLID = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId))));
+				SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupRPLID)).GetEntity());
+				group = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aGroupRplIDs.Get(m_aActivePlayerGroupsIDs.Find(RplComponent.Cast(playerGroup.FindComponent(RplComponent)).Id())))).GetEntity());
+			} else {
+				group = SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID);
+			};
+			
+			string faction = group.GetFaction().GetFactionKey();
 			
 			if(respawnPrefab.IsEmpty())
 			{
@@ -690,16 +697,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 			};
 			
 			if(spawnLocation == vector.Zero)
-				EnterSpectator(playerId, GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId));
+				EnterSpectator(playerId);
 			
-			RespawnPlayerRplId(playerId, respawnPrefab, spawnLocation, groupID);
+			RespawnPlayerRplId(playerId, respawnPrefab, spawnLocation, group);
 		}
 	}
 	
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Should only ever be ran on the server
-	void RespawnPlayerRplId(int playerId, string prefab, vector position, RplId groupID)
+	void RespawnPlayerRplId(int playerId, string prefab, vector position, SCR_AIGroup group)
 	{
 		if(RplSession.Mode() == RplMode.Client)
 			return;
@@ -713,19 +720,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		IEntity newEntity = GetGame().SpawnEntityPrefab(Resource.Load(prefab),GetGame().GetWorld(),spawnParams);
 		
-		GetGame().GetCallqueue().CallLater(RespawnPlayerRplIdDelay, 100, false, playerId, groupID, newEntity);
+		GetGame().GetCallqueue().CallLater(RespawnPlayerRplIdDelay, 100, false, playerId, group, newEntity);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void RespawnPlayerRplIdDelay(int playerId, RplId groupID, IEntity newEntity)
+	void RespawnPlayerRplIdDelay(int playerId, SCR_AIGroup group, IEntity newEntity)
 	{
-		SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
-		SCR_AIGroup aiGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aGroupRplIDs.Get(m_aActivePlayerGroupsIDs.Find(RplComponent.Cast(playerGroup.FindComponent(RplComponent)).Id())))).GetEntity());
+		SCR_AIGroup aiGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aGroupRplIDs.Get(m_aActivePlayerGroupsIDs.Find(RplComponent.Cast(group.FindComponent(RplComponent)).Id())))).GetEntity());		
 		aiGroup.AddAIEntityToGroup(newEntity);
 
 		int index = AddPlayableEntity(newEntity);
-		SetSlot(m_aSlots.Find(playerId), -2);
+		
+		if(m_aSlots.Find(playerId) != -1)
+			SetSlot(m_aSlots.Find(playerId), -2);
+		
 		SetSlot(index, playerId);
+		
 		Rpc(RpcDo_EnterGame, playerId);
 		RpcDo_EnterGame(playerId);
 	}

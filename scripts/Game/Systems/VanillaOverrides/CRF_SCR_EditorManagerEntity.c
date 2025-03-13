@@ -101,6 +101,10 @@ modded class SCR_EditorManagerEntity
 						mat[3][1] = mat[3][1] + 1.5;
 						SCR_PlayerController.Cast(GetGame().GetPlayerController()).SpecCameraInit(mat);	
 					};
+					
+					if(!SCR_PlayerController.GetLocalMainEntity())
+						CRF_ClientComponent.GetInstance().RequestSpectator(SCR_PlayerController.GetLocalPlayerId());
+					
 					break;
 				}
 				case CRF_GamemodeState.AAR: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);	break;}

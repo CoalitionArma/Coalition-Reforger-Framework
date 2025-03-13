@@ -1045,7 +1045,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 		if(RplSession.Mode() == RplMode.Client)
 			return;
 		
-		CRF_Gamemode.GetInstance().RespawnPlayer(playerId, spawnLocation);
+		CRF_Gamemode.GetInstance().RespawnPlayer(playerId, spawnLocation, groupID);
 		
 		if (logAction)
 			LogAdminAction(string.Format("%1 was respawned to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID).m_faction), playerId, true);
@@ -1055,6 +1055,9 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	void SendGroupIDToPlayer(int requestedId, int requesterID)
 	{
 		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		
+		if(gm.m_aSlots.Find(requestedId) == -1)
+			return;
 		
 		RplId groupID = gm.m_aActivePlayerGroupsIDs.Get(gm.m_aGroupRplIDs.Find(gm.m_aPlayerGroupIDs.Get(gm.m_aSlots.Find(requestedId))));
 		SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
@@ -1069,7 +1072,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendGroupIDToPlayer(int requesterID, int groupId)
 	{
-		if(SCR_PlayerController.GetLocalPlayerId() != requesterID)
+		if(SCR_PlayerController.GetLocalPlayerId() != requesterID && groupId != -1)
 			return;
 		
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();

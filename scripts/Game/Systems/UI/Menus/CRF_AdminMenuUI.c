@@ -737,7 +737,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		int groupID = m_groupIDList.Get(m_list2.GetSelectedItem());
 		vector spawnpoint = m_spawnPoints.Get(m_list3.GetSelectedItem());
-		m_clientComponent.SpawnOnGroup(playerId, spawnpoint , groupID, true);
+		m_clientComponent.SpawnOnGroup(playerId, spawnpoint, groupID, true);
 		
 		GetGame().GetCallqueue().CallLater(ClearMenu, 1250, false);
 		GetGame().GetCallqueue().CallLater(InitializeRespawnMenu, 1825, false);
