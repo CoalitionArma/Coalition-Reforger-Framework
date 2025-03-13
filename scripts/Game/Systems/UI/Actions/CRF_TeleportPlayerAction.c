@@ -5,7 +5,7 @@ class CRF_TeleportPlayerAction : ScriptedUserAction
 	string m_sObjectNameToTeleportTo;
 	
 	[Attribute("", "auto", "Gearscript given to the teleported entity on the other side", category: "CRF Teleport")]
-	string m_sGearscriptToSet;
+	ResourceName m_sGearscriptToSet;
 	
 	//------------------------------------------------------------------------------------------------
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)

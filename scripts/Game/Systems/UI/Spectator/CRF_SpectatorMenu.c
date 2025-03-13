@@ -36,6 +36,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected FrameWidget m_wFrameChannels;
 	protected SCR_PlayerController pc;
 	protected IEntity m_eSpecEntity;
+	protected bool m_bFPPEntityValidityCheck;
 	protected Animation m_aAnimation;
 	protected int m_iLocalChannelUpdates = 0;
 	ref array<Widget> m_aRequest = {};
@@ -163,22 +164,29 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_eSpecEntity)
 		{
 			InputManager im = GetGame().GetInputManager();
-			if (im.GetActionValue("ManualCameraMoveLateral") != 0 || im.GetActionValue("ManualCameraMoveVertical") || im.GetActionValue("ManualCameraMoveLongitudinal") != 0 || im.GetActionValue("ManualCameraRotate") != 0)
+			if (im.GetActionValue("ManualCameraMoveLateral") != 0 || im.GetActionValue("ManualCameraMoveVertical") || im.GetActionValue("ManualCameraMoveLongitudinal") != 0 || im.GetActionValue("ManualCameraRotate") != 0 || m_eSpecEntity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_eSpecEntity = null;
 				m_aAnimation = null;
+				m_bFPPEntityValidityCheck = false;
 				
 				// Reset camera angle after leaving FPP
-				pc.m_eCamera.SetAngles(Vector(0,0,0));
+				vector mat = pc.m_eCamera.GetAngles();
+				pc.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 			}
 			else
 			{
+				m_bFPPEntityValidityCheck = true;
 				SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eSpecEntity.FindComponent(SlotManagerComponent));
 				EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
 				vector transform[4];
 				camera.GetTransform(transform);
 				pc.m_eCamera.SetTransform(transform);
 			}
+		} else if(!m_eSpecEntity && m_bFPPEntityValidityCheck)
+		{
+			vector mat = pc.m_eCamera.GetAngles();
+			pc.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 		}
 		
 		foreach(RplId entityID: m_Gamemode.m_aCharacters)

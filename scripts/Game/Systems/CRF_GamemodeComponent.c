@@ -1040,55 +1040,56 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Respawn
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SpawnGroupServer(int playerId, string prefab, vector spawnLocation, int groupID, bool logAction)
+	void SpawnOnGroupServer(int playerId, vector spawnLocation, int groupID, bool logAction)
 	{
-		Rpc(Respawn, playerId, prefab, spawnLocation, groupID, logAction);
-	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void Respawn(int playerId, string prefab, vector spawnLocation, int groupID, bool logAction)
-	{
-//		Rpc(RpcAsk_CloseMap, playerId);
-
-		if(prefab.IsEmpty())
-		{
-			switch(SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID).m_faction)
-			{
-				case "BLUFOR" : {prefab = "{268EAF6C56517778}Prefabs/Characters/Factions/BLUFOR/US_Army/BLUFOR_AMG.et"; break;}
-				case "OPFOR"  : {prefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et";   break;}
-				case "INDFOR" : {prefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"; break;}
-				case "CIV"    : {prefab = "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et";       break;}
-			}
-		}
-
-		Resource resource = Resource.Load(prefab);
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-        spawnParams.TransformMode = ETransformMode.WORLD;
-		vector finalSpawnLocation = vector.Zero;
-		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, spawnLocation, 3);
-
-		CRF_Gamemode.GetInstance().RespawnPlayer(playerId);
+		if(RplSession.Mode() == RplMode.Client)
+			return;
+		
+		CRF_Gamemode.GetInstance().RespawnPlayer(playerId, spawnLocation, groupID);
 		
 		if (logAction)
 			LogAdminAction(string.Format("%1 was respawned to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID).m_faction), playerId, true);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SetPlayerGroup(SCR_AIGroup group, int playerID)
+	void SendGroupIDToPlayer(int requestedId, int requesterID)
 	{
-		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerID).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(group.GetFaction());
-		SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(group.GetGroupID(), playerID);
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		
+		if(gm.m_aSlots.Find(requestedId) == -1)
+			return;
+		
+		RplId groupID = gm.m_aActivePlayerGroupsIDs.Get(gm.m_aGroupRplIDs.Find(gm.m_aPlayerGroupIDs.Get(gm.m_aSlots.Find(requestedId))));
+		SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
+		if(playerGroup)
+		{
+			Rpc(RpcDo_SendGroupIDToPlayer, requesterID, playerGroup.GetGroupID());
+			RpcDo_SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
+		};
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_SendGroupIDToPlayer(int requesterID, int groupId)
+	{
+		if(SCR_PlayerController.GetLocalPlayerId() != requesterID || groupId == -1)
+			return;
+		
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		CRF_AdminMenu adminMenu = CRF_AdminMenu.Cast(topMenu);
+		
+		if(adminMenu)
+			adminMenu.UpdateSpawnGroup(groupId);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Gear
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SetPlayerGear(int playerID, string prefab, bool logAction)
+	void SetPlayerGear(int playerID, ResourceName prefab, bool logAction)
 	{	
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-
-		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(250, 1000), false, entity, entity.GetPrefabData().GetPrefabName());
+		
+		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(250, 1000), false, entity, prefab);
 		SetPlayerGearScriptsMapValue(prefab, playerID, "GSR"); // GSR = Gear Script Resource
 		
 		if (logAction)
@@ -1133,7 +1134,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 	    spawnParams.TransformMode = ETransformMode.WORLD;
 		vector teleportLocation = vector.Zero;
-		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 3);
+		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
 	    spawnParams.Transform[3] = teleportLocation;
 	
 		SCR_Global.TeleportPlayer(playerID1, teleportLocation);

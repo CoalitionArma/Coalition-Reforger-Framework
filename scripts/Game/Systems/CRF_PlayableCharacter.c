@@ -81,14 +81,14 @@ class CRF_PlayableCharacter : ScriptComponent
 		};
 				
 		#ifdef WORKBENCH
-		if (!EntityUtils.IsPlayer(owner) && m_bInitTime)
+		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && m_bInitTime)
 		{
 			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 			return;
 		};
 		#else
-		if (!EntityUtils.IsPlayer(owner) && RplSession.Mode() == RplMode.Dedicated && m_bInitTime)
+		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && RplSession.Mode() == RplMode.Dedicated && m_bInitTime)
 		{
 			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
@@ -98,18 +98,22 @@ class CRF_PlayableCharacter : ScriptComponent
 
 		if (m_PlayerController.GetLocalControlledEntity() == owner)
 		{
-			if (m_PlayerController.m_eCamera) 
+			if (m_PlayerController.m_eCamera && CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME) 
 			{
 				vector mat[4];
 				m_PlayerController.m_eCamera.GetTransform(mat);
-				mat[1] = vector.Up;
-				mat[2] = vector.Forward;
 				mat[3][1] = mat[3][1] - 1.5;
 				m_PlayerController.UpdateEntityPos(mat);
+				m_PlayerController.UpdateStoredCameraPos(mat);
 			} else {
 				vector mat[4];
+				mat[1] = vector.Up;
+				mat[2] = vector.Forward;
 				mat[3][1] = 10000;
 				m_PlayerController.UpdateEntityPos(mat);
+				
+				if(m_PlayerController.m_eCamera)
+					m_PlayerController.m_eCamera.SetWorldTransform(mat);
 			};
 		};
 		
