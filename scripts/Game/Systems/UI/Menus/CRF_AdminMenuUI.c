@@ -273,10 +273,10 @@ class CRF_AdminMenu: ChimeraMenuBase
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	string GetPrefab(int groupID, int index)
+	ResourceName GetPrefab(int groupID, int index)
 	{
 		string factionKey = m_groupManagerComponent.FindGroup(groupID).GetFaction().GetFactionKey();
-		string prefab;
+		ResourceName prefab;
 		if(factionKey == "BLUFOR")
 		{
 			switch(index)
@@ -612,7 +612,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 		
 		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		int groupID = m_groupManagerComponent.GetPlayerGroup(playerId).GetGroupID();
-		string prefab = GetPrefab(groupID, m_list2.GetSelectedItem());
+		ResourceName prefab = GetPrefab(groupID, m_list2.GetSelectedItem());
 		
 		if(prefab.IsEmpty())
 			return;

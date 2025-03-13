@@ -1072,7 +1072,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendGroupIDToPlayer(int requesterID, int groupId)
 	{
-		if(SCR_PlayerController.GetLocalPlayerId() != requesterID && groupId != -1)
+		if(SCR_PlayerController.GetLocalPlayerId() != requesterID || groupId == -1)
 			return;
 		
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
@@ -1085,11 +1085,11 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Gear
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void SetPlayerGear(int playerID, string prefab, bool logAction)
+	void SetPlayerGear(int playerID, ResourceName prefab, bool logAction)
 	{	
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
-
-		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(250, 1000), false, entity, entity.GetPrefabData().GetPrefabName());
+		
+		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(250, 1000), false, entity, prefab);
 		SetPlayerGearScriptsMapValue(prefab, playerID, "GSR"); // GSR = Gear Script Resource
 		
 		if (logAction)

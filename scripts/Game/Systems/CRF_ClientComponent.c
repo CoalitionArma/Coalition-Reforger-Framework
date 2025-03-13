@@ -266,14 +266,14 @@ class CRF_ClientComponent: ScriptComponent
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Gear
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void ResetGear(int playerID, string prefab, bool logAction)
+	void ResetGear(int playerID, ResourceName prefab, bool logAction)
 	{
 		Rpc(RpcAsk_ResetGear, playerID, prefab, logAction);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ResetGear(int playerID, string prefab, bool logAction)
+	void RpcAsk_ResetGear(int playerID, ResourceName prefab, bool logAction)
 	{
 		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
 		m_gamemodeComponent.SetPlayerGear(playerID, prefab, logAction);
