@@ -74,6 +74,9 @@ modded class SCR_PlayerController
 		if(m_vStoredCameraPos[3] != vector.Zero && cameraPos[3] == CRF_Gamemode.GetInstance().m_vGenericSpawn[3])
 			cameraPos = m_vStoredCameraPos;
 		
+		if(cameraPos[3] == vector.Zero || cameraPos[3] == "0 10000 0")
+			cameraPos = CRF_Gamemode.GetInstance().m_vGenericSpawn;
+		
 		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
 		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
 		cameraSpawnParams.Transform = cameraPos;
