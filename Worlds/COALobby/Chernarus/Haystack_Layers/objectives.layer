@@ -102,6 +102,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "		IEntity pole = GetGame().GetWorld().FindEntityByName(\"indrespawn\");"\
   "		vector newPos = obj.GetOrigin();"\
   "		pole.SetOrigin(newPos);"\
+  "		pole.Update();"\
   "		"\
   "		// Call respawn"\
   "		if (RplSession.Mode() == RplMode.Dedicated) {"\
