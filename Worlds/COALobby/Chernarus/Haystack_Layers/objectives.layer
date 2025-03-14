@@ -205,7 +205,6 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
     }
     obj3gmark {
      coords 217.542 1.865 298.731
-     angleY 8
      m_MarkerColor 0.019 0.578 0.757 1
      m_sQuadName "mark-question"
      m_fWorldSize 200
