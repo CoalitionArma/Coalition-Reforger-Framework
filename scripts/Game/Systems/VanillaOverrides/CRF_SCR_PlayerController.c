@@ -4,7 +4,7 @@ modded class SCR_PlayerController
 	IEntity m_eCamera;
 	
 	protected bool m_bActivated = false;
-	int m_iFPS;
+	int m_iFPS = 0;
 	int m_iAudioSetting;
 	private vector m_vStoredCameraPos[4];
 
@@ -51,6 +51,14 @@ modded class SCR_PlayerController
 		m_bActivated = false;
 		
 		super.OnControlledEntityChanged(from, to);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	override void DisconnectFromGame()
+	{
+		super.DisconnectFromGame();
+		
+		ResetSettingsToStoredValues();
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -228,25 +236,21 @@ modded class SCR_PlayerController
 		
 		Rpc(RpcDo_EnterGame, playerID);
 		
-		if(m_iFPS == 0 || !CRF_Gamemode.GetInstance())
-		{
-			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-			video.Set("MaxFps", 0);
-			GetGame().UserSettingsChanged();
-		}
-		else
-		{
-			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-			video.Set("MaxFps", m_iFPS);	
-			GetGame().UserSettingsChanged();
-		}
+		ResetSettingsToStoredValues();
+		
+		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void ResetSettingsToStoredValues()
+	{
+		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+		video.Set("MaxFps", m_iFPS);
+		GetGame().UserSettingsChanged();
 		
 		if(m_iAudioSetting == 0)
 			AudioSystem.SetMasterVolume(AudioSystem.SFX, 100);
 		else
 			AudioSystem.SetMasterVolume(AudioSystem.SFX, m_iAudioSetting);
-		
-		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
