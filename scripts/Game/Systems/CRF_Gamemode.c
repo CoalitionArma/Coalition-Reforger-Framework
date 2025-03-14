@@ -190,6 +190,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected ref ScriptInvoker m_OnStateChanged;
 	protected ref array<CRF_GamemodeComponent> m_aAdditionalCRFGamemodeComponents = {};
 	protected ref array<IEntity> m_aRespawnPoints = {};
+	protected static ref SCR_PlayerData m_PlayerData;
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	static CRF_Gamemode GetInstance()
@@ -828,7 +829,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	//Opens the menu on the player
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void OpenMenu()
+	void OpenCurrentStateMenu()
 	{
 		//Close any menu that wriggles its way in
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
@@ -892,7 +893,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				EnterAAR();
 		}
 		else
-			OpenMenu();
+			OpenCurrentStateMenu();
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -910,7 +911,37 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 			GetGame().GetCallqueue().CallLater(EnterSpectator, 500, false, player);
 		}
+		
+		// Log player data
+		if (!m_PlayerData)
+		{
+			SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
+			if (!dataCollector)
+			{
+				Print ("SCR_CareerEndScreenUI: No data collector was found.", LogLevel.ERROR);
+				return;
+			}
+			
+			m_PlayerData = dataCollector.GetPlayerData(0, false);
+			
+			//If there's still no player data, we wait for the invoker on data received to let us now that we got the instance through rpl
+			if (!m_PlayerData)
+			{
+				SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_DataCollectorCommunicationComponent));
+				if (communicationComponent)
+					communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+			}
+			else if (!m_PlayerData.IsDataProgressionReady())
+				m_PlayerData.CalculateStatsChange();
+		}
 	}
+	
+	protected void OnDataReceived(SCR_PlayerData playerData)
+	{
+		m_PlayerData = playerData;
+		m_PlayerData.CalculateStatsChange();
+	}
+	
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetChannel(int index, string inputString, bool channelCreation)
