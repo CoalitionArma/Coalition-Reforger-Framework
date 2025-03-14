@@ -139,16 +139,16 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{55CCB79287E901BC}" {
         m_sCallsign "COY"
        }
-       SCR_CallsignInfo "{64DD3724514EDAC8}" {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
         m_sCallsign "Medical"
        }
-       SCR_CallsignInfo "{55CCB79287936EBD}" {
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
         m_sCallsign "1PLT"
        }
-       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+       SCR_CallsignInfo "{64DD3724514EDAC8}" {
         m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{64DD173985E8A84C}" {
@@ -181,10 +181,19 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     SCR_Faction "{628CDE9209CA3FF9}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_aSquadNames {
-       SCR_CallsignInfo "{64DD37245B540E5A}" {
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
         m_sCallsign "Medical"
        }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
        SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{64DD37245B540E5A}" {
         m_sCallsign "Cell 4"
        }
        SCR_CallsignInfo "{64DD1739A9DA24CC}" {
