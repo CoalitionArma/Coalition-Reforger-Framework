@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  components {
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_iStartingHours 18
-   m_iStartingMinutes 45
+   m_iStartingMinutes 10
   }
  }
  coords 4650.292 339.125 10333.23
