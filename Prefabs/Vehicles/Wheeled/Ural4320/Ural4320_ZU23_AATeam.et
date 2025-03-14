@@ -1,0 +1,62 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "Ural ZU23"
+    Description "Temporary, hopefully"
+    m_Image "{19AD04D1091FD077}Assets/BaconZU23/ArmaReforgerWorkbenchSteam_QMlSFzzYcU.edds"
+    m_aAuthoredLabels + {
+     1001
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   MaxCumulativeVolume 100000
+   MaxItemSize 40 40 40
+   MultiSlots {
+    MultiSlotConfiguration "{64DD173103E79145}" {
+     SlotTemplate InventoryStorageSlot Ammo1 {
+      Prefab "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
+     }
+     NumSlots 5
+    }
+    MultiSlotConfiguration "{64DD1736F1286B2F}" {
+     SlotTemplate InventoryStorageSlot Launchers {
+      Prefab "{962C400354E4BD6C}Prefabs/Weapons/Launchers/9K38_IGLA/Launcher_9K38_IGLA.et"
+     }
+     NumSlots 2
+    }
+   }
+  }
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo cannon {
+     Offset 0 1.1546 -2.1033
+     Angles 0 180 0
+     MergePhysics 1
+     ChildPivotID "w_turret_base_mount"
+     Prefab "{66AF089E5D7FF45D}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_NotEditable.et"
+     DisablePhysicsInteraction 1
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterWeapons 1
+     RegisterCompartments 1
+    }
+   }
+   SlotMappers {
+    CompartmentToSlotMapping cannon {
+     SlotName "cannon"
+     Coverage 0.001
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01" "TurretCompartment"
+     }
+    }
+   }
+  }
+ }
+}
