@@ -76,7 +76,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{2F68FE4489B35DE8}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_TracersOnly.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "64DD37249A7B594B" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{56DEAC40D3C2E623}" {
@@ -139,6 +139,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{55CCB79287E901BC}" {
         m_sCallsign "COY"
        }
+       SCR_CallsignInfo "{64DD3724514EDAC8}" {
+        m_sCallsign "Medical"
+       }
        SCR_CallsignInfo "{55CCB79287936EBD}" {
         m_sCallsign "1PLT"
        }
@@ -178,6 +181,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     SCR_Faction "{628CDE9209CA3FF9}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_aSquadNames {
+       SCR_CallsignInfo "{64DD37245B540E5A}" {
+        m_sCallsign "Medical"
+       }
        SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
         m_sCallsign "Cell 4"
        }
