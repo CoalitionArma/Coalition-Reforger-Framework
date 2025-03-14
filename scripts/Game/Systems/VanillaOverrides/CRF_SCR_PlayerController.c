@@ -23,7 +23,7 @@ modded class SCR_PlayerController
 		if (!inputManager)
 			return;
 
-		GetGame().GetInputManager().AddActionListener("CRF_OpenLobby", EActionTrigger.PRESSED, OpenMenu);
+		GetGame().GetInputManager().AddActionListener("CRF_OpenLobby", EActionTrigger.PRESSED, OpenSlottingMenu);
 		GetGame().GetInputManager().AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		
 		PlayerJoined();
@@ -102,13 +102,10 @@ modded class SCR_PlayerController
 		if (CRF_Gamemode.GetInstance().m_aSlots.Find(GetPlayerId()) == -1)
 		{
 			CRF_ClientComponent.GetInstance().RequestSpectator(GetPlayerId());
-			GetGame().GetCallqueue().CallLater(CRF_Gamemode.GetInstance().OpenMenu, 500, false);
+			GetGame().GetCallqueue().CallLater(CRF_Gamemode.GetInstance().OpenCurrentStateMenu, 500, false);
 		}
 		else
-		{
-			CRF_ClientComponent.GetInstance().RequestSpectator(GetPlayerId());
 			GetGame().GetCallqueue().CallLater(EnterGame, 500, false, GetPlayerId());
-		}
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -226,6 +223,9 @@ modded class SCR_PlayerController
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_AARMenu);
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_RespawnMenu);
 		
+		if(CRF_Gamemode.GetInstance().m_aSlots.Find(playerID) == -1)
+			CRF_ClientComponent.GetInstance().RequestSpectator(playerID);
+		
 		Rpc(RpcDo_EnterGame, playerID);
 		
 		if(m_iFPS == 0 || !CRF_Gamemode.GetInstance())
@@ -341,7 +341,7 @@ modded class SCR_PlayerController
 	
 	//Opens the slotting menu for players in game
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void OpenMenu(float value = 0.0, EActionTrigger reason = 0)
+	void OpenSlottingMenu(float value = 0.0, EActionTrigger reason = 0)
 	{
 		if(value != 1)
 			return;
