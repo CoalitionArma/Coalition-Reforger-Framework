@@ -132,8 +132,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(m_rBluforIcon.IsEmpty())
 				m_rBluforIcon = SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey("BLUFOR")).GetFactionFlag();
 			
-			m_wRoot.FindAnyWidget("BluforButton").SetVisible(true);
-			m_wRoot.FindAnyWidget("BluforBGSelect").SetVisible(true);
+			m_wRoot.FindAnyWidget("BluforFrame").SetVisible(true);
 				
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("FlagBlufor")).LoadImageTexture(0, m_rBluforIcon);
 			m_wRoot.FindAnyWidget("BluforBGSelect").SetColor(Color.FromRGBA(34, 196, 244, 33));
@@ -158,8 +157,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(m_rOpforIcon.IsEmpty())
 				m_rOpforIcon = SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey("OPFOR")).GetFactionFlag();
 			
-			m_wRoot.FindAnyWidget("OpforButton").SetVisible(true);
-			m_wRoot.FindAnyWidget("OpforBGSelect").SetVisible(true);	
+			m_wRoot.FindAnyWidget("OpforFrame").SetVisible(true);
 			
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("FlagOpfor")).LoadImageTexture(0, m_rOpforIcon);
 			m_wRoot.FindAnyWidget("OpforBGSelect").SetColor(Color.FromRGBA(238, 49, 47, 33));
@@ -184,8 +182,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(m_rIndforIcon.IsEmpty())
 				m_rIndforIcon = SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey("INDFOR")).GetFactionFlag();
 			
-			m_wRoot.FindAnyWidget("IndforButton").SetVisible(true);
-			m_wRoot.FindAnyWidget("IndforBGSelect").SetVisible(true);	
+			m_wRoot.FindAnyWidget("IndforFrame").SetVisible(true);
 				
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("FlagIndfor")).LoadImageTexture(0, m_rIndforIcon);
 			m_wRoot.FindAnyWidget("IndforBGSelect").SetColor(Color.FromRGBA(0, 177, 79, 33));
@@ -210,8 +207,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(m_rCivIcon.IsEmpty())
 				m_rCivIcon = SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey("CIV")).GetFactionFlag();
 			
-			m_wRoot.FindAnyWidget("CivButton").SetVisible(true);
-			m_wRoot.FindAnyWidget("CivBGSelect").SetVisible(true);	
+			m_wRoot.FindAnyWidget("CivFrame").SetVisible(true);
 				
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("FlagCiv")).LoadImageTexture(0, m_rCivIcon);
 			m_wRoot.FindAnyWidget("CivBGSelect").SetColor(Color.FromRGBA(168, 110, 207, 33));

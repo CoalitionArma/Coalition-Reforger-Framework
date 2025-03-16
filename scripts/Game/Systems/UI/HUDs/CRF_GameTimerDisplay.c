@@ -80,7 +80,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	//------------------------------------------------------------------------------------------------
 	void UpdateTimer()
 	{	
-		if (!m_GamemodeComponent || !m_wTimer || !m_wBackground || !m_MapEntity) return;
+		if (!m_GamemodeComponent || !m_wTimer || !m_wBackground || !m_MapEntity || SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et") return;
 		
 		if(!m_GamemodeComponent.m_bHUDVisible)
 		{
