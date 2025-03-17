@@ -360,18 +360,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 		RplId oldGroup = RplId.Invalid();
 		if(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			oldGroup = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aEntitySlots.Find(RplComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).FindComponent(RplComponent)).Id()))));
+	
 		SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).SetInitialMainEntity(RplComponent.Cast(Replication.FindItem(m_aEntitySlots.Get(m_aSlots.Find(playerId)))).GetEntity());
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetFaction());
+		
+		int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
+		
 		if(oldGroup != RplId.Invalid())
 		{
 			if(oldGroup != m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))
 			{
-				int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
-				SCR_GroupsManagerComponent.GetInstance().MovePlayerToGroup(playerId, groupId, SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId).GetGroupID());
+				SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
 				SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 			}
 		} else {
-			int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
 			SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
 			SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 		}
