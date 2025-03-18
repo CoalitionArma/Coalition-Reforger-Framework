@@ -128,8 +128,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wCivButton).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(SelectFactionCiv);	
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("CreateChannel")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(CreateChannel);
 		
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
-		von.SetTransmitRadio(GetVoNTransiver());
+		GetGame().GetCallqueue().CallLater(Action_VONon, 500, false);
+		GetGame().GetCallqueue().CallLater(Action_VONOff, 550, false);
 		
 		// -- BEGIN Port from CRF_GameTimerDisplay.c --
 		m_GamemodeComponent 		= CRF_GamemodeComponent.GetInstance();
@@ -986,7 +986,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	RadioTransceiver GetVoNTransiver()
 	{
-		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
+		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
 		ref array<IEntity> items = {};
 		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
 		IEntity radioEntity;
@@ -1008,7 +1008,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetRadioPower(bool input)
 	{
-		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
+		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
 		ref array<IEntity> items = {};
 		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
 		IEntity radioEntity;
@@ -1028,7 +1028,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(true, GetGame().GetPlayerController().GetPlayerId());
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(SCR_PlayerController.GetLocalMainEntity().FindComponent(SCR_VoNComponent));
 		von.SetTransmitRadio(GetVoNTransiver());
 		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
 		von.SetCapture(true);
@@ -1047,7 +1047,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void LobbyVoNDisableDelayed()
 	{
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(SCR_PlayerController.GetLocalMainEntity().FindComponent(SCR_VoNComponent));
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
 	}

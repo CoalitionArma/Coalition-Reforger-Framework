@@ -40,6 +40,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  coords 7618.475 335.889 7675.532
  m_iTimeLimitMinutes 90
+ EnableAIInGameState 1
  m_bDeleteJIPSlots 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
