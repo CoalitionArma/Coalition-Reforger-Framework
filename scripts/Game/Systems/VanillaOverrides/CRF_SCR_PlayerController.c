@@ -258,7 +258,7 @@ modded class SCR_PlayerController
 	void SetupRadioFrequency()
 	{	
 		// Get player's radio
-		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
+		IEntity entity = GetMainEntity();
 		if (entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			return;
 		ref array<IEntity> items = {};
@@ -290,6 +290,8 @@ modded class SCR_PlayerController
 				rhc.SetFrequency(tsv, group.GetRadioFrequency());
 		}
 		
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(entity.FindComponent(SCR_VoNComponent));
+		von.SetTransmitRadio(tsv);
 	}
 	
 	//Communicates to server to enter slot and or get put into a initial entity to spectate

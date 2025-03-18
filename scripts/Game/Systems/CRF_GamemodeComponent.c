@@ -1309,6 +1309,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	protected bool m_bBluforReady = false;
 	protected bool m_bOpforReady = false;
 	protected bool m_bIndforReady = false;
+	protected bool m_bCivReady = false;
 	
 	protected bool m_bAdminForcedReady = false;
 	
@@ -1354,9 +1355,10 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 		string bluforString = "#Coal_SS_No_Faction";
 		string opforString = "#Coal_SS_No_Faction"; 
 		string indforString = "#Coal_SS_No_Faction";
+		string civString = "#Coal_SS_No_Faction";
 
 		foreach(SCR_Faction faction : outArray) {
-			if (faction.GetPlayerCount() == 0 || (faction.GetFactionKey() != "BLUFOR" && faction.GetFactionKey() != "OPFOR"&& faction.GetFactionKey() != "INDFOR")) 
+			if (faction.GetPlayerCount() == 0 || (faction.GetFactionKey() != "BLUFOR" && faction.GetFactionKey() != "OPFOR" && faction.GetFactionKey() != "INDFOR" && faction.GetFactionKey() != "CIV")) 
 				continue;
 			
 			m_aPlayedFactionsArray.Insert(faction);
@@ -1368,10 +1370,12 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 				case(m_bOpforReady && faction.GetFactionKey() == "OPFOR")   : {opforString = "#Coal_SS_Faction_Ready";      break;};
 				case(!m_bIndforReady && faction.GetFactionKey() == "INDFOR") : {indforString = "#Coal_SS_Faction_Not_Ready"; break;};
 				case(m_bIndforReady && faction.GetFactionKey() == "INDFOR")  : {indforString = "#Coal_SS_Faction_Ready";     break;};
+				case(!m_bCivReady && faction.GetFactionKey() == "CIV") : {civString = "#Coal_SS_Faction_Not_Ready"; 			break;};
+				case(m_bCivReady && faction.GetFactionKey() == "CIV")  : {civString = "#Coal_SS_Faction_Ready";     			break;};
 			};
 		};
 		
-		m_aFactionsStatusArray = {bluforString, opforString, indforString};
+		m_aFactionsStatusArray = {bluforString, opforString, indforString, civString};
 		m_iPlayedFactionsCount = 0;
 		
 		foreach (string factionString : m_aFactionsStatusArray)
@@ -1398,6 +1402,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 				m_bBluforReady = false;
 				m_bOpforReady = false;
 				m_bIndforReady = false;
+				m_bCivReady = false;
 				m_bAdminForcedReady = false;
 			
 				m_sMessageContent = string.Format("An Admin (%1) Has Force Unreadied All Sides!", playerName);
@@ -1409,6 +1414,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 			m_bBluforReady = true;
 			m_bOpforReady = true;
 			m_bIndforReady = true;
+			m_bCivReady = true;
 			m_bAdminForcedReady = true;
 			
 			m_sMessageContent = string.Format("An Admin (%1) Has Force Readied All Sides!", playerName);
@@ -1438,6 +1444,12 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 				m_bIndforReady = !m_bIndforReady; 
 				if (m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Indfor - %1", playerName);
 				if (!m_bIndforReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Indfor - %1", playerName);
+				break;
+			};
+			case("CIV") : {
+				m_bCivReady = !m_bCivReady; 
+				if (m_bCivReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Civ - %1", playerName);
+				if (!m_bCivReady) m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Civ - %1", playerName);
 				break;
 			};
 		};
@@ -1529,6 +1541,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 			m_bBluforReady = false;
 			m_bOpforReady = false;
 			m_bIndforReady = false;
+			m_bCivReady = false;
 			
 			GetGame().GetCallqueue().Remove(CheckStartCountDown);
 			GetGame().GetCallqueue().Remove(UpdateServerWorldTime);
@@ -1648,7 +1661,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 		
 		m_sStoredMessageContent = m_sMessageContent;
 		
-		if (m_sMessageContent == "All Blufor Players Have Been Eliminated!" || m_sMessageContent == "All Opfor Players Have Been Eliminated!" || m_sMessageContent == "All Indfor Players Have Been Eliminated!") 
+		if (m_sMessageContent == "All Blufor Players Have Been Eliminated!" || m_sMessageContent == "All Opfor Players Have Been Eliminated!" || m_sMessageContent == "All Indfor Players Have Been Eliminated!"  || m_sMessageContent == "All Civilian Players Have Been Eliminated!") 
 		{
 			m_PopUpNotification.PopupMsg(m_sMessageContent, 30);
 			return;
@@ -1664,14 +1677,11 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 	void CheckPlayersAlive()
 	{
 		foreach(SCR_Faction faction : m_aPlayedFactionsArray) {
-			Color factionColor = faction.GetFactionColor();
-			float rg = Math.Max(factionColor.R(), factionColor.G());
-			float rgb = Math.Max(rg, factionColor.B());
-			
 			switch (true) {
-				case(rgb == factionColor.B() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Eliminated!"; break;};
-				case(rgb == factionColor.R() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Eliminated!";  break;};
-				case(rgb == factionColor.G() && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Eliminated!";  break;};
+				case(faction.GetFactionKey() == "BLUFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Eliminated!"; break;};
+				case(faction.GetFactionKey() == "OPFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Eliminated!";  break;};
+				case(faction.GetFactionKey() == "INDFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Eliminated!";  break;};
+				case(faction.GetFactionKey() == "CIV" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Civilian Players Have Been Eliminated!";  break;};
 			};
 		};
 		

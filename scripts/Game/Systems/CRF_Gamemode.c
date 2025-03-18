@@ -274,6 +274,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 		
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
+		
+		if(instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.AI)
+			return;
+		
 		int playerId = instigatorContextData.GetVictimPlayerID();
 
 		int delay = 250;
