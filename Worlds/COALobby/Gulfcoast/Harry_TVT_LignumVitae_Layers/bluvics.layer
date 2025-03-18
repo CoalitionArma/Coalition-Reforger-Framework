@@ -1,0 +1,66 @@
+$grp SCR_VehicleSpawn {
+ blutruck {
+  coords 12072.715 4.725 10689.01
+  angleY 17.578
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+ }
+ blutruck2 {
+  coords 12069.396 4.725 10678.533
+  angleY 17.578
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+ }
+ blutruck3 {
+  coords 12063.564 4.725 10667.496
+  angleY 24.319
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+ }
+ blutruck4 {
+  coords 12055.353 4.725 10654.188
+  angleY 28.233
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+ }
+ blutruck5 {
+  coords 12047.666 4.725 10639.873
+  angleY 28.233
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+ }
+ blutruck6 {
+  coords 12041.223 4.725 10627.872
+  angleY 28.233
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+ }
+}
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_armed_M2HB1 {
+  coords 12031.561 5.579 10608.936
+  angleX -6.462
+  angleY 33.318
+  angleZ -5.077
+ }
+ M1025_armed_M2HB2 {
+  coords 12027.231 6.146 10602.35
+  angleX -1.508
+  angleY 32.716
+  angleZ -6.892
+ }
+}
+$grp Vehicle : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ M151A1 {
+  coords 12021.039 5.96 10590.104
+  angleX 2.742
+  angleY 26.72
+  angleZ -7.783
+ }
+ M151A2 {
+  coords 12016.014 5.386 10580.776
+  angleX 1.485
+  angleY 26.896
+  angleZ -7.631
+ }
+}
