@@ -14,35 +14,42 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected bool m_bIsSpecialty;
 	
 	protected bool m_bIsSpectator = false;
+	protected bool m_bIsHidden = false;
 	protected SCR_PlayerController m_PlayerController;
 	protected bool m_bInitTime = false;
 	protected float m_bTimeSliceLimit = 0;
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool IsPlayable()
 	{
 		return m_bIsPlayable;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	string GetName()
 	{
 		return m_sName;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool IsLeader()
 	{
 		return m_bIsLeaderOrMedic;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool IsSpecialty()
 	{
 		return m_bIsSpecialty;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetInitTime()
 	{
 		m_bInitTime = true;
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
@@ -70,6 +77,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		};
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFixedFrame(owner, timeslice);
@@ -128,6 +136,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		};
 	} 
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void DisableAI(IEntity owner)
 	{
 		if (AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent())
@@ -135,12 +144,14 @@ class CRF_PlayableCharacter : ScriptComponent
 		GetGame().GetCallqueue().CallLater(DisableAIWrap, 0, false, owner)
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void DisableAIWrap(IEntity owner)
 	{
 		if (AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent())
 			AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent().DeactivateAI();
 	}
 	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetInitialEntity(IEntity owner)
 	{
 		//Logs entity on server and disables AI
@@ -156,14 +167,24 @@ class CRF_PlayableCharacter : ScriptComponent
 				CRF_Gamemode.GetInstance().AddPlayableEntity(owner);
 		}
 		#endif
-			
+		
 		//Sets location and all the physics BS on all machines
 		if (m_bIsSpectator)
 		{
-			owner.SetOrigin("0 10000 0");
+			owner.SetOrigin("0 10000 0");	
+			HideEntity(owner);
+		};
+	}
+
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void HideEntity(IEntity owner)
+	{
+		if(!m_bIsHidden)
+		{
 			Physics physics = owner.GetPhysics();
 			if (physics)
 			{
+				//owner.ClearFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE,  false);
 				physics.EnableGravity(false);
 				physics.ChangeSimulationState(SimulationState.NONE);
 				physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
@@ -171,7 +192,31 @@ class CRF_PlayableCharacter : ScriptComponent
 				{
 					physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
 				}
+				m_bIsHidden = true;
 			};
-		}	
+		};
 	}
+	
+	/*
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void UnHideEntity(IEntity owner)
+	{
+		if(m_bIsHidden)
+		{
+			Physics physics = owner.GetPhysics();
+			if (physics)
+			{
+				owner.SetFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE, true);
+				physics.EnableGravity(true);
+				physics.ChangeSimulationState(SimulationState.SIMULATION);
+				physics.SetInteractionLayer(EPhysicsLayerDefs.Character);
+				for(int i = 0; i <= physics.GetNumGeoms(); i++)
+				{
+					physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.Character);
+				}
+				m_bIsHidden = true;
+			};
+		};
+	}
+	*/
 }
