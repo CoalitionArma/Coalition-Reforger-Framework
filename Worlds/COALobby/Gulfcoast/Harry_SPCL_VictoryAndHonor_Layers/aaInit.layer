@@ -17,14 +17,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "Opfor is moving a tank to DelMare. Blufor has lunge mines disguised as bayonets, demo charges, respawns in waves, and wants to stop that."
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Stop the tank from reaching DelMare. You respawn every 60 seconds."
+   m_sTextData "Stop the tank from reaching DelMare. You respawn every 120 seconds."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Get the tank to DelMare."
   }
  }
  m_sFactionOneKey "BLU"
- m_iFactionTwoRatio 3
+ m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{240DDF18ADCCD3DF}Configs/Gearscripts/Custom/Harry/Special/CRF_GS_CIV_Lunge.conf"
@@ -34,10 +34,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_bRespawnEnabled 1
  m_bWaveRespawn 1
- m_iTimeToRespawn 60
+ m_iTimeToRespawn 120
  m_iOPFORTickets 0
  {
-  SCR_FactionManager {
+  SCR_FactionManager "64E6FC663AFB11BB" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -47,9 +47,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Kamikaze Waves"
        }
        SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign ""
+        m_sCallsign "Kamikaze Waves"
        }
        SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Kamikaze Waves"
        }
       }
      }
@@ -86,9 +87,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{64E14D55806258BE}" {
         m_sCallsign "Tank"
-       }
-       SCR_CallsignInfo "{64E14D6B9A800F47}" {
-        m_sCallsign "AH6M"
        }
       }
      }

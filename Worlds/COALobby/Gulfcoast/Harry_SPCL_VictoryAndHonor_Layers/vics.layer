@@ -49,11 +49,3 @@ $grp SCR_BaseTriggerEntity {
   "	"
  }
 }
-SCR_VehicleSpawn {
- coords 5093.518 23.329 2577.704
- m_rnPrefab "{A317D959A4248173}Prefabs/Vehicles/Helicopters/AH6M/AH6M_GAU19.et"
- respawnDelay 10000
-}
-StaticModelEntity : "{C1AE5D901C3A93C6}PrefabsEditable/Auto/Structures/Military/Camps/HelipadImprovised_01/E_HelipadImprovised_USSR_01.et" {
- coords 5093.715 1.852 2577.258
-}
