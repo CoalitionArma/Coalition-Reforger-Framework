@@ -53,6 +53,22 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
  }
+ {
+  coords 12071.278 4.809 10716.725
+  m_MarkerColor 0 0 0 1
+  m_sDescription "BLUFOR Supply Cache"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 9137.374 7 13158.719
+  m_MarkerColor 0 0 0 1
+  m_sDescription "OPFOR Supply Cache"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
 }
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  {
