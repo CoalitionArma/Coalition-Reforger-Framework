@@ -690,12 +690,12 @@ FrameWidgetClass {
   FrameWidgetClass "{62F14B81B3877EA4}" : "{B7A765172F0BD4D9}UI/layouts/Common/GameVersionWatermark.layout" {
    Name "EarlyAccessRoot"
    Slot FrameWidgetSlot "{5CEE96372B5D270B}" {
-    PositionX 8.613
-    OffsetLeft 8.613
+    PositionX 7.78
+    OffsetLeft 7.78
     PositionY -17.37
     OffsetTop -17.37
     SizeX 0
-    OffsetRight -8.613
+    OffsetRight -7.78
     SizeY 0
     OffsetBottom 17.37
    }
@@ -1263,7 +1263,7 @@ FrameWidgetClass {
     HorizontalLayoutWidgetClass "{62F17C1215514D23}" {
      Name "Factions"
      Slot FrameWidgetSlot "{62F17C1215514D74}" {
-      Anchor 0.046 0 0.992 0.155
+      Anchor 0.045 0 0.991 0.155
       PositionX 0
       OffsetLeft 0
       PositionY 0
@@ -1274,7 +1274,7 @@ FrameWidgetClass {
       OffsetBottom 0
      }
      {
-      FrameWidgetClass "{64E05E6BE93C2CA0}" {
+      OverlayWidgetClass "{64E05E6BE93C2CA0}" {
        Name "BluforFrame"
        Slot LayoutSlot "{64E05E6BE93C2C9A}" {
         SizeMode Fill
@@ -1283,16 +1283,9 @@ FrameWidgetClass {
        {
         FrameWidgetClass "{62F205606D5A9D95}" {
          Name "BluforButton"
-         Slot FrameWidgetSlot "{64E05E6B3F9A78B9}" {
-          Anchor 0 0 1 1
-          PositionX 0
-          OffsetLeft 0
-          PositionY 0
-          OffsetTop 0
-          SizeX 0
-          OffsetRight 0
-          SizeY 0
-          OffsetBottom 0
+         Slot OverlayWidgetSlot "{64E2565C50E170D1}" {
+          HorizontalAlign 3
+          VerticalAlign 3
          }
          {
           ImageWidgetClass "{62F20560CFE0ED61}" {
@@ -1358,7 +1351,7 @@ FrameWidgetClass {
             OffsetBottom 0
            }
            Texture "{46FB2FB2C2125A3C}UI/Textures/Flags/US-flag-base-3it.edds"
-           Size 800 400
+           Size 1920 1080
           }
           PanelWidgetClass "{64E103AE2F4A0068}" {
            Name "Panel0"
@@ -1435,30 +1428,25 @@ FrameWidgetClass {
         }
        }
       }
-      FrameWidgetClass "{64E05E6BE856F1CB}" {
+      OverlayWidgetClass "{64E05E6BE856F1CB}" {
        Name "OpforFrame"
        Slot LayoutSlot "{64E05E6BE8568E38}" {
         SizeMode Fill
+        FillWeight 1
        }
        "Is Visible" 0
        {
         FrameWidgetClass "{62F205628E23174C}" {
          Name "OpforButton"
-         Slot FrameWidgetSlot "{64E05E6B3D4326EF}" {
-          Anchor 0 0 1 1
-          PositionX 0
-          OffsetLeft 0
-          PositionY 0
-          OffsetTop 0
-          SizeX 0
-          OffsetRight 0
-          SizeY 0
-          OffsetBottom 0
+         Slot OverlayWidgetSlot "{64E2565C50E171D5}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+          Padding 0 0 0 0
          }
          {
           ImageWidgetClass "{62F205628E23174D}" {
            Name "FactionBG"
-           Slot FrameWidgetSlot "{62F20560CFE0ED49}" {
+           Slot FrameWidgetSlot "{64E256AC7E421053}" {
             Anchor 0 0 1 1
             PositionX 0
             OffsetLeft 0
@@ -1519,7 +1507,7 @@ FrameWidgetClass {
             OffsetBottom 0
            }
            Texture "{53395E04A4D442C0}UI/Textures/Flags/flag_cccp_ca.edds"
-           Size 256 128
+           Size 1920 1080
           }
           PanelWidgetClass "{64E103AE2297EC41}" {
            Name "Panel0"
@@ -1596,7 +1584,7 @@ FrameWidgetClass {
         }
        }
       }
-      FrameWidgetClass "{64E05E6BEF550844}" {
+      OverlayWidgetClass "{64E05E6BEF550844}" {
        Name "IndforFrame"
        Slot LayoutSlot "{64E05E6BEF5508A7}" {
         SizeMode Fill
@@ -1605,16 +1593,9 @@ FrameWidgetClass {
        {
         FrameWidgetClass "{62F2056289A50114}" {
          Name "IndforButton"
-         Slot FrameWidgetSlot "{64E05E6B326396CA}" {
-          Anchor 0 0 1 1
-          PositionX 0
-          OffsetLeft 0
-          PositionY 0
-          OffsetTop 0
-          SizeX 0
-          OffsetRight 0
-          SizeY 0
-          OffsetBottom 0
+         Slot OverlayWidgetSlot "{64E2565C50E10E8E}" {
+          HorizontalAlign 3
+          VerticalAlign 3
          }
          {
           ImageWidgetClass "{62F2056289A50116}" {
@@ -1680,7 +1661,7 @@ FrameWidgetClass {
             OffsetBottom 0
            }
            Texture "{B784E694BA4A7D40}UI/Textures/Flags/Everon-flag-base-3it.edds"
-           Size 800 400
+           Size 1920 1080
           }
           PanelWidgetClass "{64E103AE24F3A559}" {
            Name "Panel0"
@@ -1757,7 +1738,7 @@ FrameWidgetClass {
         }
        }
       }
-      FrameWidgetClass "{64E05E6BEE0EE260}" {
+      OverlayWidgetClass "{64E05E6BEE0EE260}" {
        Name "CivFrame"
        Slot LayoutSlot "{64E05E6BEE0EE2B3}" {
         SizeMode Fill
@@ -1766,16 +1747,9 @@ FrameWidgetClass {
        {
         FrameWidgetClass "{62F2056284FA609A}" {
          Name "CivButton"
-         Slot FrameWidgetSlot "{64E05E6B19931D4E}" {
-          Anchor 0 0 1 1
-          PositionX 0
-          OffsetLeft 0
-          PositionY 0
-          OffsetTop 0
-          SizeX 0
-          OffsetRight 0
-          SizeY 0
-          OffsetBottom 0
+         Slot OverlayWidgetSlot "{64E2565C50E10F96}" {
+          HorizontalAlign 3
+          VerticalAlign 3
          }
          {
           ImageWidgetClass "{62F2056284FA609B}" {
@@ -1841,7 +1815,7 @@ FrameWidgetClass {
             OffsetBottom 0
            }
            Texture "{76A2D42714BB3806}UI/Textures/Flags/Civilian-flag-base_3it.edds"
-           Size 800 400
+           Size 1920 1080
           }
           PanelWidgetClass "{64E103AED19AED4B}" {
            Name "Panel0"

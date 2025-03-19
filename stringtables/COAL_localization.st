@@ -118,6 +118,13 @@ StringTable {
    Author "pi123"
    LastChanged "Njpatman"
   }
+  CustomStringTableItem "{64E41EEA976C9576}" {
+   Id "Coal_SS_Faction_Readied_Civ"
+   Target_en_us "[CRF] : CIV READY"
+   Modified 1692686983
+   Author "Njpatman"
+   LastChanged "Njpatman"
+  }
   CustomStringTableItem "{60F896A0D88FF976}" {
    Id "Coal_SS_Faction_Readied_Indfor"
    Target_en_us "[CRF] : INDFOR READY"
@@ -157,6 +164,13 @@ StringTable {
    Target_de_de "[CRF] : BLUFOR nicht breit"
    Modified 1629886101
    Author "pi123"
+   LastChanged "Njpatman"
+  }
+  CustomStringTableItem "{64E41EEA80B0F7ED}" {
+   Id "Coal_SS_Faction_Unreadied_Civ"
+   Target_en_us "[CRF] : CIV NOT READY"
+   Modified 1692687006
+   Author "Njpatman"
    LastChanged "Njpatman"
   }
   CustomStringTableItem "{60F896A0CF9391A8}" {
