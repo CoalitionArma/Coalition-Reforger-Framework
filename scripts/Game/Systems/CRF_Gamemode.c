@@ -866,7 +866,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AdvanceGamemodeState()
 	{
-		if(m_GamemodeState == CRF_GamemodeState.AAR)
+		if(m_GamemodeState == CRF_GamemodeState.AAR || m_GamemodeState == CRF_GamemodeState.GAME)
 			return;
 		
 		m_GamemodeState += 1;

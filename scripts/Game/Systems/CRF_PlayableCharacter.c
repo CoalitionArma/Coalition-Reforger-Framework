@@ -66,6 +66,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		{
 			GetGame().GetCallqueue().CallLater(SetInitialEntity, 500, false, owner);
 			GetGame().GetCallqueue().CallLater(DisableAI, 0, false, owner);
+			GetGame().GetCallqueue().CallLater(AddAdvanceAction, 0, false);
 		}
 		
 		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
@@ -195,6 +196,25 @@ class CRF_PlayableCharacter : ScriptComponent
 				m_bIsHidden = true;
 			};
 		};
+	}
+	
+	void AddAdvanceAction() 
+	{
+		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
+		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("aar");
+		invoker.Insert(Advance_Callback);
+	}
+	
+	void Advance_Callback(SCR_ChatPanel panel, string data)
+	{
+		// Pretty sure this is opening too many times when you do /aar. Locality?
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		PlayerController playerController = GetGame().GetPlayerController();
+		if (!playerManager.HasPlayerRole(playerController.GetPlayerId(), EPlayerRole.ADMINISTRATOR))
+			return;
+		
+		CRF_Gamemode.GetInstance().m_GamemodeState = CRF_GamemodeState.AAR;
+		CRF_Gamemode.GetInstance().OnGamemodeStateChanged();
 	}
 	
 	/*
