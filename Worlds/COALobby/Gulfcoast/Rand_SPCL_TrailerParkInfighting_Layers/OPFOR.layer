@@ -1,0 +1,211 @@
+$grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11670.01 47.821 11714.724
+  angleY 2.262
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11736.579 47.821 11711.237
+  angleY 2.262
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11767.1 48.449 11799.512
+  angleY 3.299
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11715.438 48.449 11802.111
+  angleY 3.299
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11675.923 48.449 11821.831
+  angleY 3.299
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11695.052 48.449 11778.439
+  angleY 5.848
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11727.843 48.301 11844.416
+  angleY 5.848
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11783.98 48.446 11837.336
+  angleY 5.848
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11850.853 48.446 11869.744
+  angleY 8.281
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11692.366 48.446 11887.799
+  angleY 4.935
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 11755.315 48.446 11918.796
+  angleY 94.011
+  m_aUnitPrefabSlots {
+   "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et" "{0A83183FA0E47C56}Prefabs/Characters/Factions/Special/RandAlThor/CRF_GS_OPFOR_COY_P_Trailer.et"
+  }
+  m_bSnapToTerrain 0
+  m_aUnitPrefabColorTeams {
+   "None" "None"
+  }
+  m_aUnitPrefabOverrideIcons {
+   "None" "None"
+  }
+ }
+}

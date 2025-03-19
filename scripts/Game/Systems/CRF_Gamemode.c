@@ -274,6 +274,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 		
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
+		
+		if(instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.AI)
+			return;
+		
 		int playerId = instigatorContextData.GetVictimPlayerID();
 
 		int delay = 250;
@@ -355,8 +359,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			EnterSpectator(playerId);
 			return;
 		}
-			
-		IEntity oldEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		
 		RplId oldGroup = RplId.Invalid();
 		if(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			oldGroup = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aEntitySlots.Find(RplComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).FindComponent(RplComponent)).Id()))));
