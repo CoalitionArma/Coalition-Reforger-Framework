@@ -309,11 +309,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 		IEntity initialEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld()); 
 		
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-		pc.SetInitialMainEntity(initialEntity);	
+
+		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, initialEntity);
 		
 		SCR_AIGroup currentGroup = SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId);
 		if(currentGroup)
 			currentGroup.RemovePlayer(playerId);
+		
+		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 
 		vector cameraPos[4];
 		if(m_GamemodeState == CRF_GamemodeState.GAME)
@@ -337,8 +340,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		if(SCR_PlayerController.GetLocalPlayerId() != playerId)
 			return;
-		
-		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 		
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		pc.SpecCameraInit(cameraPos);
@@ -365,6 +366,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			oldGroup = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aEntitySlots.Find(RplComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).FindComponent(RplComponent)).Id()))));
 	
 		SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).SetInitialMainEntity(RplComponent.Cast(Replication.FindItem(m_aEntitySlots.Get(m_aSlots.Find(playerId)))).GetEntity());
+		
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetFaction());
 		
 		int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
@@ -864,9 +866,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	//Advances the overall gamemode state
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void AdvanceGamemodeState()
+	void AdvanceGamemodeState(bool overriden = false)
 	{
-		if(m_GamemodeState == CRF_GamemodeState.AAR)
+		if((m_GamemodeState == CRF_GamemodeState.AAR || m_GamemodeState == CRF_GamemodeState.GAME) && !overriden)
 			return;
 		
 		m_GamemodeState += 1;

@@ -1,0 +1,7 @@
+GameEntity : "{96BCB89AF006E26E}Prefabs/Weapons/Attachments/Bayonets/Bayonet_L1A4_SLR_Base.et" {
+ ID "50989DC991E68512"
+ components {
+  SCR_BayonetEffectComponent_LungeMine "{60EC975981FD9093}" {
+  }
+ }
+}

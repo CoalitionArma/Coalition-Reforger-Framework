@@ -1,0 +1,17 @@
+GenericEntity : "{67AD477577B7BFF2}Prefabs/Characters/Vests/Vest_6B3/Vest_6B3_base.et" {
+ ID "50D8C49B3558F152"
+ components {
+  SCR_ArmorDamageManagerComponent "{5E58DD321A29E783}" {
+   "Additional hit zones" {
+    HitZone Vest {
+    }
+   }
+   m_fPassedDamageScale 2
+  }
+  BaseLoadoutClothComponent "{5312D798A71DFBB1}" {
+   WornModel "{91E56A309A709CA0}Prefabs/Clothing/CDF/Armor/6B3/data/CDF_6B3_wear.et"
+   ItemModel "{7F101DE46C3346D7}Prefabs/Clothing/CDF/Armor/6B3/data/CDF_6B3_item.et"
+   DeflatedModel "{F6EB340C2436102F}Prefabs/Clothing/CDF/Armor/6B3/data/CDF_6B3_deflated.et"
+  }
+ }
+}

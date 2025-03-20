@@ -40,6 +40,7 @@ class CRF_ClientComponent: ScriptComponent
 	
 		SCR_PlayerController.Cast(owner).m_OnControlledEntityChanged.Insert(OnControlledEntityChanged);
 		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 500, true);
+		GetGame().GetCallqueue().CallLater(AddAdvanceAction, 0, false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -549,4 +550,36 @@ class CRF_ClientComponent: ScriptComponent
 		CRF_Gamemode.GetInstance().EnterSpectator(playerId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	//\***********************************************************************************************
+	//\***********************************************************************************************
+	
+	// AAR Screen
+	
+	//\***********************************************************************************************
+	//\***********************************************************************************************
+	//------------------------------------------------------------------------------------------------
+	
+	void AddAdvanceAction() 
+	{
+		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
+		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("aar");
+		invoker.Insert(Advance_Callback);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void Advance_Callback(SCR_ChatPanel panel, string data)
+	{
+		if (!SCR_Global.IsAdmin())
+			return;
+		
+		Rpc(RpcAsk_Advance_Callback)
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_Advance_Callback()
+	{
+		CRF_Gamemode.GetInstance().AdvanceGamemodeState(true);
+	}
 }

@@ -1,0 +1,30 @@
+GenericEntity : "{27DAA8F6AD0181C0}Prefabs/Systems/Explosions/Wrapper_Bomb_base.et" {
+ ID "598B459721C8D98D"
+ components {
+  TimerTriggerComponent "{598B675C82CA9D2A}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{64E14D49C56F36B8}" {
+     EffectPrefab "{B770B42F881A60BB}Prefabs/Systems/Explosions/BombWarhead_Huge.et"
+     ParticleEffect "{C93C00AD95BA52CC}Prefabs/Systems/Explosions/Explosion_Huge.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+   TIMER 0
+  }
+  SCR_EditableEntityComponent "{598B52BAA4059EBA}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableEntityUIInfo "{598B52BAD8B0E939}" {
+    Name "Explosion - HUGE"
+    Description "Comically big"
+    m_Image "{C53F3B497DEE3BDA}Prefabs/Systems/Explosions/explosion_image_huge.edds"
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5990D828A44A313A}" {
+      m_Value 25
+     }
+    }
+   }
+  }
+ }
+}
