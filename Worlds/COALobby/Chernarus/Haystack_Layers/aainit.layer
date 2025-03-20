@@ -29,13 +29,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  "		super.OnWorldPostProcess(world);"\
  "		"\
  "		IEntity spawn1 = GetGame().GetWorld().FindEntityByName(\"spawn1\");"\
- "		IEntity spawn2 = GetGame().GetWorld().FindEntityByName(\"spawn2\");"\
  "		"\
  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
  "		spawnParams.Transform[3] = spawn1.GetOrigin();		"\
- "		GetGame().SpawnEntityPrefab(Resource.Load(\"{7074F90B76716748}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23_AATeam.et\"),GetGame().GetWorld(),spawnParams);"\
- "		spawnParams.Transform[3] = spawn2.GetOrigin();	"\
  "		GetGame().SpawnEntityPrefab(Resource.Load(\"{7074F90B76716748}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23_AATeam.et\"),GetGame().GetWorld(),spawnParams);"\
  "	"
  m_iTimeLimitMinutes 70
