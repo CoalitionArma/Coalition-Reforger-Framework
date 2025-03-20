@@ -114,7 +114,10 @@ modded class SCR_PlayerController
 			GetGame().GetCallqueue().CallLater(CRF_Gamemode.GetInstance().OpenCurrentStateMenu, 500, false);
 		}
 		else
+		{
+			CRF_ClientComponent.GetInstance().RequestSpectator(GetPlayerId());
 			GetGame().GetCallqueue().CallLater(EnterGame, 500, false, GetPlayerId());
+		};
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -239,7 +242,7 @@ modded class SCR_PlayerController
 		
 		ResetSettingsToStoredValues();
 		
-		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 2250, false);
+		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void ResetSettingsToStoredValues()

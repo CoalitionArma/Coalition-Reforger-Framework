@@ -391,7 +391,7 @@ class CRF_GamemodeComponent: SCR_BaseGameModeComponent
 				AddInventoryItem(gearScriptSettings.m_rLeadershipRadiosPrefab, 1, spawnParams, inventory, inventoryManager);
 			
 			//Who we give GI Radios
-			if(gearScriptSettings.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P"))
+			if(gearScriptSettings.m_bEnableGIRadios && !(m_aLeadershipRolesUGL.Contains(role) || m_aLeadershipRolesCarbine.Contains(role) || role == "_Spotter_P" || role == "_Pilot_P" || role == "_CrewChief_P" || role == "_Medic_P"))
 				AddInventoryItem(gearScriptSettings.m_rGIRadiosPrefab, 1, spawnParams, inventory, inventoryManager);
 			
 			//Who we give RTO Radios
