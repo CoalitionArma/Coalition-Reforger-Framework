@@ -1,10 +1,5 @@
-$grp SCR_BaseTriggerEntity {
- spawn1 {
-  coords 6119.482 301.093 7717.482
- }
- spawn2 {
-  coords 6099.329 301.094 7730.437
- }
+SCR_BaseTriggerEntity spawn1 {
+ coords 6119.482 301.093 7717.482
 }
 $grp Vehicle : "{1247D68D2A76907D}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_base.et" {
  UAZ452_ambulance_base1 {
@@ -72,6 +67,9 @@ SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
            {
             SCR_AIGroup : "{F894CE09B5815A68}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_AATeam_p.et" {
              coords 104.405 -0.165 -30.789
+             m_aUnitPrefabSlots {
+              "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{2EE458983CC5B8EF}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AA_P.et" "{ECFDFE2859FA5EC1}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAA_P.et"
+             }
             }
            }
           }
