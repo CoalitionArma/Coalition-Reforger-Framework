@@ -23,32 +23,33 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 474.922 171.766 5470.188
- m_iTimeLimitMinutes 75
+ m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTitle "Situation"
-   m_sTextData "CDF forces will conduct a motorized assualt onto the town of Putoshka in the early hours of morning."\
+   m_sTextData "CDF forces will conduct a motorized assualt onto the town of Putoshka in the early hours of morning. Bombs are constructed of fuel supplies with remote explosives strapped to them."\
    ""\
    "BLUFOR Comp: Motorized Infantry Company"\
    "BLUFOR Assets:"\
-   "Units: Reconnaissance Team"\
+   "Units: N/A"\
    "Vehicles: 3x BTR-70, 3x Ural-4320 Transport, 1x UAZ-469 Transport, 2x M997 Ambulance"\
    ""\
    "OPFOR Comp: Infantry Platoon"\
    "OPFOR Assets: "\
-   "Units: MMG Team, Combat Engineer (Mines) Team"\
+   "Units: MMG Team, Combat Engineer (AT Mines) Team"\
    "Vehicles: 1x UAZ-452 Ambulance"\
    ""\
    "Time: 6:30 AM"\
    "Weather: Clear"\
-   "Time Limit: 75 minutes"
+   "Time Limit: 50 minutes"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Assualt the village of Pustoshka, locate the two bombs and destroy them."\
+   "Be aware of the enemy Medium Machine Gun (MMG) team and the Combat Engineer (Anti-Tank Mine) team."\
    ""
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "Defend the two bombs located inside of Pustoshka."
+   m_sTextData "Defend the two bombs located inside of Pustoshka at the store and the electrical station. Note our Combat Engineer (Anti-Tank Mine) team."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData ""
@@ -88,10 +89,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "COY"
        }
        SCR_CallsignInfo "{55CCB792D13759D8}" {
-        m_sCallsign "1PLT"
+        m_sCallsign "MEDICAL"
        }
        SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "MEDICAL"
+        m_sCallsign "1PLT"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
         m_sCallsign "1-1"
@@ -105,9 +106,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{647733DC10151A0E}" {
         m_sCallsign "2PLT"
        }
-       SCR_CallsignInfo "{648C4BC9222C6258}" {
-        m_sCallsign "MEDICAL"
-       }
        SCR_CallsignInfo "{64872DA882A15199}" {
         m_sCallsign "2-1"
        }
@@ -116,9 +114,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{64872D9F332EE0D3}" {
         m_sCallsign "2-3"
-       }
-       SCR_CallsignInfo "{64E901BAAB4E3963}" {
-        m_sCallsign "RECON"
        }
       }
      }

@@ -861,26 +861,6 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
      coords 5.631 9.219 -101.999
      m_fWorldSize 75
     }
-    BLUFORssBorderMarker11 {
-     coords 370.241 126.478 -2052.969
-     m_fWorldSize 75
-    }
-    BLUFORssBorderMarker12 {
-     coords 393.311 141.636 -2044.416
-     m_fWorldSize 75
-    }
-    BLUFORssBorderMarker13 {
-     coords 398.432 143.071 -2023.094
-     m_fWorldSize 75
-    }
-    BLUFORssBorderMarker14 {
-     coords 380.516 138.178 -2008.845
-     m_fWorldSize 75
-    }
-    BLUFORssBorderMarker15 {
-     coords 344.466 124.796 -2020.45
-     m_fWorldSize 75
-    }
    }
   }
  }
@@ -916,109 +896,6 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
   m_sQuadName "flag-2"
   m_sDescription "BLUFOR Recon Spawn"
  }
-}
-Vehicle S1203_transport_red1 : "{11A28C90DB40318D}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_red.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3126.412 303.355 7951.863
- angleY -52.971
-}
-GenericEntity : "{1E9ECC41D168521B}Prefabs/Structures/Wreck/lada.et" {
- coords 3097.849 308.903 7828.844
- angleX 3.652
- angleY -96.232
- angleZ 0.5
-}
-Vehicle UAZ469_uncovered_CIV_brown1 : "{270F23D61238ABC7}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_brown.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3029.74 318.744 7757.101
- angleY -45.833
-}
-Vehicle S105_lightgreen1 : "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3094.269 306.063 7902.528
-}
-GenericEntity : "{3872E0C19D19A045}Prefabs/Structures/Wreck/pickup.et" {
- coords 3199.832 299.002 8124.539
- angleX -0.747
- angleY 56.586
- angleZ 0.493
-}
-Vehicle S1203_transport_yellow1 : "{4C79EB5FADB89B7A}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_yellow.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3055.124 314.572 7785.376
- angleY -86.364
-}
-Vehicle UAZ469_uncovered_CIV_red1 : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_red.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3114.41 301.156 8109.292
- angleY -49.091
-}
-Vehicle S105_white1 : "{63880E311299A016}Prefabs/Vehicles/Wheeled/S105/S105_white.et" {
- coords 3008.007 310.594 7916.984
-}
-GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck.et" {
- coords 3093.795 303.373 8001.823
- angleY -35.16
-}
-Vehicle S105_red1 : "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3002.224 310.347 7926.525
- angleY -131.401
-}
-Vehicle UAZ469_uncovered_CIV_blue1 : "{9B3A89DD33FF0483}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_blue.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3170.55 302.923 8029.712
- angleY -74.779
-}
-Vehicle S105_darkblue1 : "{9C3269FB43F989A3}Prefabs/Vehicles/Wheeled/S105/S105_darkblue.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3110.908 303.732 8027.613
- angleY -61.677
-}
-Vehicle S105_yellow1 : "{A6B0D2923262E755}Prefabs/Vehicles/Wheeled/S105/S105_yellow.et" {
- coords 2951.481 320.417 7771.873
- angleY 160.125
-}
-Vehicle S1203_transport_brown1 : "{ACED839A6C5BE657}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_brown.et" {
- components {
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3117.084 303.041 8070.103
- angleY 119.804
 }
 PS_ManualMarker OPFORssBorderMarker1 : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  coords 2878.777 302.606 8194.846
@@ -1101,34 +978,6 @@ PS_ManualMarker OPFORssBorderMarker1 : "{AE820D882CD0ACC4}PrefabsEditable/Marker
   }
  }
 }
-Vehicle Ural4320_tanker_CIV_pohona1 : "{B3C8EC88E7782C78}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_pohona.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
-   MultiSlots {
-    MultiSlotConfiguration "{5A60D38EDB3709A9}" {
-     SlotTemplate InventoryStorageSlot Bandages {
-     }
-     NumSlots 0
-    }
-    MultiSlotConfiguration "{5E86A8C920185949}" {
-     SlotTemplate InventoryStorageSlot Jerrycan {
-     }
-    }
-    MultiSlotConfiguration "{5EB0D397ACA7A684}" {
-     SlotTemplate InventoryStorageSlot Jerrycan {
-     }
-    }
-   }
-  }
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 2920.2 315.917 7896.452
- angleX 4.706
- angleY -166.392
- angleZ -7.99
-}
 $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  cache1Marker2 {
   coords 3059.698 308.691 7974.605
@@ -1151,48 +1000,4 @@ $grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMar
    "OPFOR"
   }
  }
-}
-GenericEntity : "{CF9930D0DBC6DC22}Prefabs/Structures/Wreck/ikarus_b.et" {
- coords 3084.719 303.917 7980.55
- angleX 1.214
- angleY -151.423
- angleZ -0.358
-}
-$grp GenericEntity : "{F34E4A33FB471ECA}Prefabs/Structures/Wreck/tractor.et" {
- {
-  coords 3207.288 300.678 8084.948
-  angleY 62.359
- }
- {
-  coords 3047.589 309.81 7887.867
-  angleX -4.457
-  angleY -0.209
-  angleZ 2.692
- }
-}
-Vehicle Ural4320_transport_covered_CIV_JZD1 : "{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_JZD.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
-   MultiSlots {
-    MultiSlotConfiguration "{5A60D38EDB3709A9}" {
-     SlotTemplate InventoryStorageSlot Bandages {
-     }
-     NumSlots 0
-    }
-    MultiSlotConfiguration "{5E86A8C920185949}" {
-     SlotTemplate InventoryStorageSlot Jerrycan {
-     }
-    }
-    MultiSlotConfiguration "{5EB0D397ACA7A684}" {
-     SlotTemplate InventoryStorageSlot Jerrycan {
-     }
-    }
-   }
-  }
-  ActionsManagerComponent "{C97BE5489221AE18}" {
-   Enabled 0
-  }
- }
- coords 3054.688 304.104 7964.132
- angleY -61.08
 }
