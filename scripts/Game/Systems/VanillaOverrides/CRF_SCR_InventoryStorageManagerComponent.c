@@ -1,6 +1,35 @@
 modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageManagerComponent
 {
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Callback when item is added (will be performed locally after server completed the Insert/Move operation)
+	override protected void OnItemAdded(BaseInventoryStorageComponent storageOwner, IEntity item)
+	{		
+		super.OnItemAdded(storageOwner, item);
+		
+		if(CRF_Gamemode.GetInstance() && RplSession.Mode() != RplMode.Client && CRF_Gamemode.GetInstance().m_bAllowEspionage)
+			return;
+
+		BaseRadioComponent radioComp = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));
+		if (!radioComp)
+			return;
+		
+		IEntity player = storageOwner.GetOwner().GetRootParent().GetRootParent().GetRootParent().GetRootParent();
+		if (!player)
+			return;
+		
+		FactionAffiliationComponent facComp = FactionAffiliationComponent.Cast(player.FindComponent(FactionAffiliationComponent));
+		if (!facComp)
+			return;
+		
+		switch(true)
+		{
+			case(facComp.GetAffiliatedFactionKey() == "BLUFOR" && radioComp.GetEncryptionKey() != "chickenNuggets"): {SCR_EntityHelper.DeleteEntityAndChildren(item); break;};
+			case(facComp.GetAffiliatedFactionKey() == "OPFOR" && radioComp.GetEncryptionKey() != "coldBorscht"):  {SCR_EntityHelper.DeleteEntityAndChildren(item); break;};
+			case(facComp.GetAffiliatedFactionKey() == "INDFOR" && radioComp.GetEncryptionKey() != "candleSauce"):  {SCR_EntityHelper.DeleteEntityAndChildren(item); break;};
+		};
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//! try insert the item into the storage (not slot)
 	void InsertItemCRF(IEntity pItem, BaseInventoryStorageComponent pStorageTo = null, BaseInventoryStorageComponent pStorageFrom = null, SCR_InvCallBack cb = null, bool playSound = true)
 	{

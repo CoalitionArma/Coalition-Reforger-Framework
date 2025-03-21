@@ -1274,16 +1274,22 @@ FrameWidgetClass {
       OffsetBottom 0
      }
      {
-      OverlayWidgetClass "{64E05E6BE93C2CA0}" {
+      SizeLayoutWidgetClass "{64E05E6BE93C2CA0}" {
        Name "BluforFrame"
        Slot LayoutSlot "{64E05E6BE93C2C9A}" {
+        HorizontalAlign 1
         SizeMode Fill
        }
        "Is Visible" 0
+       HeightOverride 150
+       AllowMinDesiredWidth 1
+       MinDesiredWidth 425
+       AllowMaxDesiredWidth 1
+       MaxDesiredWidth 425
        {
         FrameWidgetClass "{62F205606D5A9D95}" {
          Name "BluforButton"
-         Slot OverlayWidgetSlot "{64E2565C50E170D1}" {
+         Slot AlignableSlot "{64EA5A0945AC1B7D}" {
           HorizontalAlign 3
           VerticalAlign 3
          }
@@ -1428,20 +1434,25 @@ FrameWidgetClass {
         }
        }
       }
-      OverlayWidgetClass "{64E05E6BE856F1CB}" {
+      SizeLayoutWidgetClass "{64E05E6BE856F1CB}" {
        Name "OpforFrame"
        Slot LayoutSlot "{64E05E6BE8568E38}" {
+        HorizontalAlign 1
         SizeMode Fill
         FillWeight 1
        }
        "Is Visible" 0
+       HeightOverride 150
+       AllowMinDesiredWidth 1
+       MinDesiredWidth 425
+       AllowMaxDesiredWidth 1
+       MaxDesiredWidth 425
        {
         FrameWidgetClass "{62F205628E23174C}" {
          Name "OpforButton"
-         Slot OverlayWidgetSlot "{64E2565C50E171D5}" {
+         Slot AlignableSlot "{64EA5A0978743BDA}" {
           HorizontalAlign 3
           VerticalAlign 3
-          Padding 0 0 0 0
          }
          {
           ImageWidgetClass "{62F205628E23174D}" {
@@ -1584,16 +1595,22 @@ FrameWidgetClass {
         }
        }
       }
-      OverlayWidgetClass "{64E05E6BEF550844}" {
+      SizeLayoutWidgetClass "{64E05E6BEF550844}" {
        Name "IndforFrame"
        Slot LayoutSlot "{64E05E6BEF5508A7}" {
+        HorizontalAlign 1
         SizeMode Fill
        }
        "Is Visible" 0
+       HeightOverride 150
+       AllowMinDesiredWidth 1
+       MinDesiredWidth 425
+       AllowMaxDesiredWidth 1
+       MaxDesiredWidth 425
        {
         FrameWidgetClass "{62F2056289A50114}" {
          Name "IndforButton"
-         Slot OverlayWidgetSlot "{64E2565C50E10E8E}" {
+         Slot AlignableSlot "{64EA5A096C90C893}" {
           HorizontalAlign 3
           VerticalAlign 3
          }
@@ -1738,16 +1755,22 @@ FrameWidgetClass {
         }
        }
       }
-      OverlayWidgetClass "{64E05E6BEE0EE260}" {
+      SizeLayoutWidgetClass "{64E05E6BEE0EE260}" {
        Name "CivFrame"
        Slot LayoutSlot "{64E05E6BEE0EE2B3}" {
+        HorizontalAlign 1
         SizeMode Fill
        }
        "Is Visible" 0
+       HeightOverride 150
+       AllowMinDesiredWidth 1
+       MinDesiredWidth 425
+       AllowMaxDesiredWidth 1
+       MaxDesiredWidth 425
        {
         FrameWidgetClass "{62F2056284FA609A}" {
          Name "CivButton"
-         Slot OverlayWidgetSlot "{64E2565C50E10F96}" {
+         Slot AlignableSlot "{64EA5A0969781392}" {
           HorizontalAlign 3
           VerticalAlign 3
          }

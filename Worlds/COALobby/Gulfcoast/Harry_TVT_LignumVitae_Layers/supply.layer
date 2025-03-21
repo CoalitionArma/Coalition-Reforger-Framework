@@ -1,0 +1,73 @@
+$grp GenericEntity : "{17E6E7BC798AD3F4}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Small_01/SupplyStack_Small_01_Base.et" {
+ {
+  coords 11542.602 49.587 12021.62
+ }
+ {
+  coords 11206.846 16.818 12512.531
+ }
+ {
+  coords 11529.023 33.229 12879.786
+ }
+ {
+  coords 10781.22 34.146 13062.147
+ }
+ {
+  coords 11321.107 50.36 13343.455
+ }
+ {
+  coords 11527.437 54.153 13436.315
+ }
+ {
+  coords 10099.276 16.312 13548.446
+ }
+ {
+  coords 10415.59 42.132 13767.305
+ }
+ {
+  coords 11678.548 36.143 12822.376
+ }
+ {
+  coords 9944.708 61.834 14029.88
+ }
+ {
+  coords 11918.136 41.649 12505.241
+ }
+ {
+  coords 11113.424 42.096 13225.203
+ }
+ {
+  coords 12709.244 4.326 12585.277
+ }
+ {
+  coords 11677.974 33.96 12361.486
+ }
+ {
+  coords 9985.191 2.529 14364.5
+ }
+ {
+  coords 11226.176 38.492 14459.599
+ }
+ {
+  coords 11041.235 9.773 11802.586
+ }
+ {
+  coords 13416.698 85.663 12879.533
+ }
+ {
+  coords 11765.484 9.403 14438.127
+ }
+}
+$grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ {
+  coords 11766.055 47.125 11690.582
+ }
+ {
+  coords 10625.692 4.219 12581.915
+ }
+ {
+  coords 11009.465 89.264 13857.65
+ }
+ {
+  coords 12566.868 1.185 13442.258
+ }
+}

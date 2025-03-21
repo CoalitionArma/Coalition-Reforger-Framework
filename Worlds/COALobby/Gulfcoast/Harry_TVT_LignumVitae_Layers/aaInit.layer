@@ -1,0 +1,141 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 10940.237 620.749 13204.667
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 11267.819 636.869 13047.5
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Opfor and Blufor are competing for supply in this AO. Each side has a small shipping container to fill with 2000 supply. There are main caches labeled on the map with 500 supply in them, and unmarked smaller caches dispersed around the AO features. After a side has filled their shipping container, they will have to defend it for 10 minutes to win."\
+   ""\
+   "BLUFOR Composition: Motorized Inf"\
+   "BLUFOR Assets: 1x Armed Humvee"\
+   ""\
+   "OPFOR Composition: Motorized Inf"\
+   "OPFOR Assets: 1x BTR"\
+   ""\
+   "Time: 45 Min"\
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Gather 2000 supply in your shipping container, and then defend the container for 8 minutes."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Gather 2000 supply in your shipping container, and then defend the container for 8 minutes."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData ""
+  }
+  CRF_MissionDescriptor "{64E2F2AA2AC24CE6}" {
+   m_sTitle "Radio Note"
+   m_sTextData "Each side has RTO's to utilize. SL's has been given GI radios. Communicate with your RTO."
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{01C48CC87B1D4419}Configs/Gearscripts/Custom/Harry/LignumVitae/CRF_GS_US80s_RTO.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{20583EBBA43F6B36}Configs/Gearscripts/Custom/Harry/LignumVitae/CRF_GS_USSR80s_RPK_RTO.conf"
+  m_rLeadershipRadiosPrefab "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_bEnableLeadershipRadios 0
+ }
+ {
+  SCR_FactionManager "64E6CB4698279553" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{64E2F2BFF637949C}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{64E2F2BFF66D38B5}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{64E2F2BFF64997AD}" {
+        m_sCallsign "Humvee-1"
+       }
+       SCR_CallsignInfo "{64E2F2BFF6B5910A}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{64E2F2BFD9FB0D91}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{64E2F2BC214BA412}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{64E2F2BC26489676}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{64E2F2B1CF10C312}" {
+        m_sCallsign "Recon Team"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{64E2F2BC083A4C28}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{64E2F2BC081868CA}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{64E2F2BC0844DAF8}" {
+        m_sCallsign "BTR"
+       }
+       SCR_CallsignInfo "{64E2F2BC08A2CAE6}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{64E2F2BC08838610}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{64E2F2BC08E3A98F}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{64E2F2BC1EB265D4}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{64E2F2B1D45C4265}" {
+        m_sCallsign "Recon Team"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
