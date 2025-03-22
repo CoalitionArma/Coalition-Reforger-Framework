@@ -1,6 +1,6 @@
-class CRF_GamemodeClass : SCR_BaseGameModeClass
+class CRF_GamemodeClass: SCR_BaseGameModeClass
 {
-}
+};
 
 enum CRF_GamemodeState
 {
@@ -22,13 +22,13 @@ class CRF_MissionDescriptor
 {
 	[Attribute("")]
 	string m_sTitle;
-
+	
 	[Attribute(defvalue: "", uiwidget: UIWidgets.EditBoxMultiline)]
 	string m_sTextData;
-
+	
 	[Attribute("")]
 	ref array<string> m_aFactionKeys;
-
+	
 	[Attribute("")]
 	bool m_bShowForAnyFaction;
 }
@@ -37,156 +37,156 @@ class CRF_Gamemode : SCR_BaseGameMode
 {
 	[RplProp(onRplName: "OnGamemodeStateChanged")]
 	int m_GamemodeState = CRF_GamemodeState.INITIAL;
-
+	
 	[RplProp()]
 	ref array<string> m_aVONChannels = {"Deafen|", "Global|"};
-
+	
 	[RplProp()]
 	ref array<int> m_aPlayersRegistedVON = {};
-
+	
 	[RplProp()]
 	int m_iChannelChanges = 0;
-
+	
 	[RplProp()]
 	int m_SlottingState = CRF_SlottingState.LEADERSANDMEDICS;
-
+	
 	//Stores when a player is talking
 	[RplProp()]
 	ref array<int> m_aPlayersTalking = {};
-
+	
 	//Slot ID given to an entity
 	[RplProp()]
 	ref array<int> m_aSlots = {};
-
+	
 	//Slot name of entity
 	[RplProp()]
 	ref array<string> m_aSlotNames = {};
-
+	
 	//Player that is slotted in the entities name
 	[RplProp()]
 	ref array<string> m_aSlotPlayerNames = {};
-
+	
 	//Slot icon off of UI Info
 	[RplProp()]
 	ref array<ResourceName> m_aSlotIcons = {};
-
+	
 	[RplProp()]
 	ref array<ResourceName> m_aSlotPrefabs = {};
-
+	
 	//Entities slot type, leader, specialty, everyone
 	[RplProp()]
 	ref array<int> m_aEntitySlotTypes = {};
-
+	
 	//Is the entity dead or alive, needed as entities pop in and out of streamable.
 	[RplProp()]
 	ref array<bool> m_aEntityDeathStatus = {};
-
+	
 	[RplProp()]
 	ref array<RplId> m_aCharacters = {};
-
+	
 	[RplProp()]
 	ref array<string> m_aCharacterNames = {};
-
+	
 	//RplId of entities that are playable
 	[RplProp()]
 	ref array<RplId> m_aEntitySlots = {};
-
+	
 	//Stores the group ID for each slot, so I can reference what group a slot is in. CAUSE THERE IS NO WAY TO DO THAT ON THE CLIENT.
 	[RplProp()]
 	ref array<RplId> m_aPlayerGroupIDs = {};
-
+	
 	//Communicates change across all clients so they can refresh their slots in the UI
 	[RplProp()]
 	int m_iSlotChanges = 0;
-
+	
 	//Is a group locked
 	[RplProp()]
 	ref array<bool> m_aGroupLockedStatus = {};
-
+	
 	//Stores SCR_AIGroup RplId, CAUSE YOU CAN'T FUCKING GRAB NON PLAYABLE GROUPS BOHEMIA
 	[RplProp()]
 	ref array<RplId> m_aGroupRplIDs = {};
-
+	
 	//Stores the playable group created whenever an AI group is created in the editor
 	[RplProp()]
 	ref array<RplId> m_aActivePlayerGroupsIDs = {};
-
+	
 	//Just stores a generic spawnpoint for players to spawn the spectator cam on. Cause of entities being streamable and such.
 	[RplProp()]
 	vector m_vGenericSpawn[4];
-
+	
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
 	int m_iTimeLimitMinutes;
-
+	
 	[Attribute("false", "auto", "Only works with BLUFOR, OPFOR, INDFOR. Players will hear enemy radio chatter but may not talk on the enemies net", category: "CRF Gamemode General")]
 	bool m_bAllowEspionage;
-
+	
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
-
+	
 	[Attribute("true", "auto", "Should we delete all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Gamemode General")]
 	bool m_bDeleteJIPSlots;
-
+	
 	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Gamemode General")]
 	bool m_bSafestartInstantlyEnabled;
-
+	
 	//Descriptions on the left in briefing
 	[Attribute("", category: "CRF Gamemode General")]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
-
+	
 	//This just is what is auto set in the slotting UI for ratio calculation
 	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
 	int m_iFactionOneRatio;
-
+	
 	//This just is what is auto set in the slotting UI for ratio calculation
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
 	string m_sFactionOneKey;
-
+	
 	//This just is what is auto set in the slotting UI for ratio calculation
 	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
 	int m_iFactionTwoRatio;
-
+	
 	//This just is what is auto set in the slotting UI for ratio calculation
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
 	string m_sFactionTwoKey;
-
+	
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
-
+	
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
-
+	
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
-
+	
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
-
+	
 	// Respawn Settings
 	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
 	bool m_bRespawnEnabled;
-
+	
 	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
-	bool m_bWaveRespawn;
+	bool m_bWaveRespawn;	
 
 	[Attribute("300", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Gamemode Respawn")]
 	int m_iTimeToRespawn;
-
+	
 	[Attribute("-1", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iBLUFORTickets;
-
+	
 	[Attribute("-1", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iOPFORTickets;
-
+	
 	[Attribute("-1", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iINDFORTickets;
-
+	
 	[Attribute("-1", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iCIVTickets;
-
+	
 	[RplProp(onRplName: "WaveRespawnTimer")]
 	int m_iRespawnWaveCurrentTime;
-
+	
 	int m_iRespawnTimer
 
 	IEntity m_eGamemodeEntity;
@@ -194,8 +194,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected ref array<CRF_GamemodeComponent> m_aAdditionalCRFGamemodeComponents = {};
 	protected ref array<IEntity> m_aRespawnPoints = {};
 	protected static ref SCR_PlayerData m_PlayerData;
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	static CRF_Gamemode GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
@@ -204,24 +204,24 @@ class CRF_Gamemode : SCR_BaseGameMode
 		else
 			return null;
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnControllableSpawned(IEntity entity)
 	{
 		super.OnControllableSpawned(entity);
 		GetGame().GetCallqueue().CallLater(LogCharacter, 500, false, entity);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void LogCharacter(IEntity entity)
 	{
 		#ifdef WORKBENCH
-		if (!SCR_ChimeraCharacter.Cast(entity))
+		if(!SCR_ChimeraCharacter.Cast(entity))
 				return;
 			m_aCharacters.Insert(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
-			if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)))
+			if(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)))
 			{
-				if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName())
+				if(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName())
 					m_aCharacterNames.Insert(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName());
 				else
 					m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
@@ -232,12 +232,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 		#else
 		if (RplSession.Mode() == RplMode.Dedicated)
 		{
-			if (!SCR_ChimeraCharacter.Cast(entity))
+			if(!SCR_ChimeraCharacter.Cast(entity))
 				return;
 			m_aCharacters.Insert(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
-			if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)))
+			if(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)))
 			{
-				if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName())
+				if(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName())
 					m_aCharacterNames.Insert(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName());
 				else
 					m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
@@ -248,14 +248,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 		#endif
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
 		m_eGamemodeEntity = owner;
-
-		array<Managed> additionalComponents = {};
+		
+		array<Managed> additionalComponents = new array<Managed>();
 		int count = owner.FindComponents(CRF_GamemodeComponent, additionalComponents);
 		m_aAdditionalCRFGamemodeComponents.Clear();
 		for (int i = 0; i < count; i++)
@@ -263,7 +263,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			CRF_GamemodeComponent comp = CRF_GamemodeComponent.Cast(additionalComponents[i]);
 			m_aAdditionalCRFGamemodeComponents.Insert(comp);
 		}
-
+		
 		if (m_bRespawnEnabled)
 			InitilizeRespawns();
 		
@@ -271,116 +271,116 @@ class CRF_Gamemode : SCR_BaseGameMode
 		SCR_AIGroup.GetOnPlayerRemoved().Insert(OnPlayerLeftGroup);
 	}
 
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)
 	{
 		super.OnControllableDestroyed(entity, killerEntity, instigator);
-
-		if (RplSession.Mode() == RplMode.Client)
+		
+		if(RplSession.Mode() == RplMode.Client)
 			return;
-
+		
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
-
-		if (instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.AI)
+		
+		if(instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.AI)
 			return;
-
+		
 		int playerId = instigatorContextData.GetVictimPlayerID();
 
 		int delay = 250;
-		if (entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if(entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			delay = 0;
-
+		
 		// If respawn is enabled
-		if (m_bRespawnEnabled && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (m_bRespawnEnabled && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et") 
 		{
 			string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
-
-			if (TicketsRemaining(faction))
+			
+			if (TicketsRemaining(faction)) 
 			{
 				// Remove tickets if used
 				SubtractTicket(faction);
-
+				
 				// Put them in death screen/timer screen
 				GetGame().GetCallqueue().CallLater(SendRespawnScreen, (delay + 150), false, playerId);
 			}
 		}
-
+		
 		//Throw em into spectator
 		GetGame().GetCallqueue().CallLater(EnterSpectator, delay, false, playerId, entity);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void EnterSpectator(int playerId, IEntity entity = null)
 	{
-		IEntity initialEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld());
-
+		IEntity initialEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld()); 
+		
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 
 		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, initialEntity);
-
+		
 		SCR_AIGroup currentGroup = SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId);
-		if (currentGroup)
+		if(currentGroup)
 			currentGroup.RemovePlayer(playerId);
-
+		
 		SCR_CharacterDamageManagerComponent.Cast(initialEntity.FindComponent(SCR_CharacterDamageManagerComponent)).EnableDamageHandling(false);
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 
 		vector cameraPos[4];
-		if (m_GamemodeState == CRF_GamemodeState.GAME)
+		if(m_GamemodeState == CRF_GamemodeState.GAME)
 		{
-			if (m_aSlots.Find(playerId) != -1 && entity != null)
+			if(m_aSlots.Find(playerId) != -1 && entity != null)
 			{
 				entity.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
 			} else
 				cameraPos[3] = m_vGenericSpawn[3];
-		} else
+		} else 
 			cameraPos[3] = "0 10000 0";
-
+		
 		Rpc(RpcDo_SendSpecClientInit, playerId, cameraPos);
 		RpcDo_SendSpecClientInit(playerId, cameraPos);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendSpecClientInit(int playerId, vector cameraPos[4])
 	{
-		if (SCR_PlayerController.GetLocalPlayerId() != playerId)
+		if(SCR_PlayerController.GetLocalPlayerId() != playerId)
 			return;
-
+		
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		pc.SpecCameraInit(cameraPos);
 	}
-
+	
 	//Called to enter the actual game, just puts the player into a slot or spectator.
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void EnterGame(int playerId)
 	{
-		if (m_aSlots.Find(playerId) == -1 && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if(m_aSlots.Find(playerId) == -1 && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			EnterSpectator(playerId);
-
-		if (m_aSlots.Find(playerId) == -1)
+		
+		if(m_aSlots.Find(playerId) == -1)
 			return;
-
-		if (m_aEntityDeathStatus.Get(m_aSlots.Find(playerId)))
+		
+		if(m_aEntityDeathStatus.Get(m_aSlots.Find(playerId)))
 		{
 			EnterSpectator(playerId);
 			return;
 		}
-
+		
 		RplId oldGroup = RplId.Invalid();
-		if (GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			oldGroup = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aEntitySlots.Find(RplComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).FindComponent(RplComponent)).Id()))));
-
+	
 		SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).SetInitialMainEntity(RplComponent.Cast(Replication.FindItem(m_aEntitySlots.Get(m_aSlots.Find(playerId)))).GetEntity());
-
+		
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetFaction());
-
+		
 		int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
-
-		if (oldGroup != RplId.Invalid())
+		
+		if(oldGroup != RplId.Invalid())
 		{
-			if (oldGroup != m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))
+			if(oldGroup != m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))
 			{
 				SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
 				SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
@@ -390,9 +390,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 			SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 		}
 	}
-
+	
 	//Initializes group into the replicated arrays
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AddGroup(SCR_AIGroup group)
 	{
 		m_aGroupRplIDs.Insert(RplComponent.Cast(group.FindComponent(RplComponent)).Id());
@@ -402,26 +402,26 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_aActivePlayerGroupsIDs.Insert(RplComponent.Cast(newGroup.FindComponent(RplComponent)).Id());
 		Replication.BumpMe();
 	}
-
+	
 	//Sets the group to be locked
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetGroupLockedStatus(int index, bool input)
 	{
 		m_aGroupLockedStatus.Set(index, input);
 	}
-
+	
 	//Sets slot to player or removes him from it
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetSlot(int index, int playerId)
-	{
-		if (playerId > 0)
+	{	
+		if(playerId > 0)
 		{
 			SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(FactionAffiliationComponent.Cast(RplComponent.Cast(Replication.FindItem(m_aEntitySlots.Get(index))).GetEntity().FindComponent(FactionAffiliationComponent)).GetAffiliatedFaction());
 			m_aSlotPlayerNames.Set(index, GetGame().GetPlayerManager().GetPlayerName(playerId));
 		}
 		else
 		{
-			if (m_aSlots.Get(index) > 0)
+			if(m_aSlots.Get(index) > 0)
 			{
 				SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(m_aSlots.Get(index)).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 				m_aSlotPlayerNames.Set(index, "");
@@ -431,21 +431,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_iSlotChanges++;
 		Replication.BumpMe();
 	}
-
+	
 	//Sets if an entity is dead or not in the array
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetDeathState(IEntity entity, bool input)
 	{
-		if (entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if(entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 		{
 			m_aEntityDeathStatus.Set(m_aEntitySlots.Find(RplComponent.Cast(entity.FindComponent(RplComponent)).Id()), input);
 			m_iSlotChanges++;
 			Replication.BumpMe();
 		};
 	}
-
+	
 	//Initializes playable entities and adds their values into the replicated arrays
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	int AddPlayableEntity(IEntity entity)
 	{
 		int index = m_aSlots.Insert(0);
@@ -456,28 +456,28 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_aSlotIcons.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetInfo().GetIconPath());
 		m_aEntityDeathStatus.Insert(false);
 		m_aSlotPlayerNames.Insert("");
-
-		if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).IsLeader())
+		
+		if(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).IsLeader())
 			m_aEntitySlotTypes.Insert(0);
-		else if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).IsSpecialty())
+		else if(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).IsSpecialty())
 			m_aEntitySlotTypes.Insert(1);
 		else
 			m_aEntitySlotTypes.Insert(2);
-
-		if (m_aSlots.Count() == 1)
+		
+		if(m_aSlots.Count() == 1)
 			entity.GetTransform(m_vGenericSpawn);
 
 		return index;
-
+		
 		Replication.BumpMe();
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RemovePlayableEntity(RplId entityID)
 	{
-		if (!Replication.FindItem(entityID) || SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity()) != 0)
+		if(!Replication.FindItem(entityID) || SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity()) != 0)
 			return;
-
+		
 		int index = m_aEntitySlots.Find(entityID);
 		m_aSlots.RemoveOrdered(index);
 		m_aPlayerGroupIDs.RemoveOrdered(index);
@@ -488,36 +488,36 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_aSlotPlayerNames.RemoveOrdered(index);
 		m_aEntitySlotTypes.RemoveOrdered(index);
 		m_aEntitySlots.RemoveOrdered(index);
-
+		
 		SCR_EntityHelper.DeleteEntityAndChildren(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity());
-
+		
 		m_iSlotChanges++;
-
+		
 		Replication.BumpMe();
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Respawn Ticket System
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void InitilizeRespawns()
 	{
 		m_iRespawnWaveCurrentTime = m_iTimeToRespawn;
 		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-
+		
 		if (m_bWaveRespawn && RplSession.Mode() == RplMode.Dedicated)
 		{
 			GetGame().GetCallqueue().CallLater(WaveRespawnTimer, 1000, true);
 		}
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool TicketsRemaining(string faction)
 	{
 		bool result = false;
 		switch (faction)
 		{
 			case "BLUFOR" : {
-				if (m_iBLUFORTickets > 0 || m_iBLUFORTickets == -1)
+				if (m_iBLUFORTickets > 0 || m_iBLUFORTickets == -1) 
 					result = true;
 				break;
 			};
@@ -540,7 +540,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		return result;
 	}
 
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SubtractTicket(string faction)
 	{
 		switch (faction)
@@ -557,7 +557,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			}
 			case "INDFOR" : {
 				if (m_iINDFORTickets > 0 && m_iINDFORTickets != -1 && !CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
-					m_iINDFORTickets = m_iINDFORTickets - 1;
+					m_iINDFORTickets = m_iINDFORTickets - 1;	
 					break;
 			}
 			case "CIV" : {
@@ -568,15 +568,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 		Replication.BumpMe();
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void WaveRespawnTimer()
 	{
 		if (m_GamemodeState != CRF_GamemodeState.GAME)
 			return;
-
+		
 		m_iRespawnWaveCurrentTime--;
-
+		
 		if (m_iRespawnWaveCurrentTime == 0)
 		{
 			m_iRespawnWaveCurrentTime = m_iTimeToRespawn;
@@ -584,83 +584,84 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		Replication.BumpMe();
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RespawnTimer()
-	{
+	{	
 		m_iRespawnTimer--;
-
+		
 		if (m_iRespawnTimer <= 0)
 		{
 			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
 			SCR_PlayerController.Cast(GetGame().GetPlayerController()).RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
-			GetGame().GetCallqueue().Remove(RespawnTimer);
+			GetGame().GetCallqueue().Remove(RespawnTimer);			
 			GetGame().GetMenuManager().CloseAllMenus();
 		}
-
+		
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-
+		
 		if (!topMenu.IsInherited(CRF_RespawnMenu) && topMenu.IsInherited(CRF_SpectatorMenuUI))
 			MenuBase respawnMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RegisterRespawnPoint(IEntity respawnPoint)
 	{
 		m_aRespawnPoints.Insert(respawnPoint);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UnRegisterRespawnPoint(IEntity respawnPoint)
 	{
-		if (m_aRespawnPoints.Find(respawnPoint) != -1)
+		if(m_aRespawnPoints.Find(respawnPoint) != -1)
 			m_aRespawnPoints.Remove(m_aRespawnPoints.Find(respawnPoint));
 	}
 
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SendRespawnScreen(int playerId)
 	{
 		Rpc(RpcDo_SendRespawnScreen, playerId);
 		RpcDo_SendRespawnScreen(playerId);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendRespawnScreen(int playerId)
 	{
-		if (SCR_PlayerController.GetLocalPlayerId() != playerId)
+		if(SCR_PlayerController.GetLocalPlayerId() != playerId)
 			return;
-
+		
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
 		if (topMenu)
 			topMenu.Close();
 
 		GetGame().GetMenuManager().CloseAllMenus();
 		MenuBase respawnMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
-
+		
+		
 		GetGame().GetCallqueue().CallLater(RespawnTimer, 1000, true);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RespawnSide(string faction)
 	{
 		array<int> allPlayers = {};
 		GetGame().GetPlayerManager().GetAllPlayers(allPlayers);
-
-		foreach (int player : allPlayers)
+		
+		foreach(int player : allPlayers)
 		{
-			if (!m_aSlots.Contains(player))
+			if(!m_aSlots.Contains(player))
 				continue;
-
+			
 			RplId groupID = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(player))));
 			SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
 			SCR_AIGroup aiGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aGroupRplIDs.Get(m_aActivePlayerGroupsIDs.Find(RplComponent.Cast(playerGroup.FindComponent(RplComponent)).Id())))).GetEntity());
 			string playerFactionKey = aiGroup.GetFaction().GetFactionKey();
-
-			// Make sure the player is still in that faction
+			
+			// Make sure the player is still in that faction 
 			if (playerFactionKey != faction)
 				continue;
-
+			
 			// If tickets are enabled by MM
 			if (TicketsRemaining(faction)) { // Always true if tickets > 0 or tickets == -1
 				RespawnPlayer(player);
@@ -668,122 +669,123 @@ class CRF_Gamemode : SCR_BaseGameMode
 			}
 		}
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RespawnPlayer(int playerId, vector spawnLocation = vector.Zero, int groupID = -1)
 	{
 		if (RplSession.Mode() == RplMode.Client)
-			return;
-
+			return; 
+		
 		if (SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC" && GetGame().GetPlayerManager().IsPlayerConnected(playerId))
-		{
+		{	
 			string respawnPrefab = CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR");
-
+			
 			SCR_AIGroup group;
-			if (groupID == -1)
+			if(groupID == -1)
 			{
 				RplId groupRPLID = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId))));
 				group = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupRPLID)).GetEntity());
 			} else {
 				group = SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID);
 			};
-
+			
 			string faction = group.GetFaction().GetFactionKey();
-
-			if (respawnPrefab.IsEmpty())
+			
+			if(respawnPrefab.IsEmpty())
 			{
-				switch (faction)
+				switch(faction)
 				{
-					case "BLUFOR" 	: {respawnPrefab = "{6F99DE8453E6B423}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Rifleman_P.et"; 	break; }
-					case "OPFOR" 	: {respawnPrefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"; 	break; }
-					case "INDFOR" 	: {respawnPrefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et";	break; }
-					case "CIV" 		: {respawnPrefab = "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et";				break; }
+					case "BLUFOR" 	: {respawnPrefab = "{6F99DE8453E6B423}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Rifleman_P.et"; 	break;}
+					case "OPFOR"  	: {respawnPrefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et";   	break;}
+					case "INDFOR" 	: {respawnPrefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et";	break;}
+					case "CIV" 		: {respawnPrefab = "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et";				break;}
 				}
 			}
-
-			foreach (IEntity spawnPoint : m_aRespawnPoints)
+			
+			foreach(IEntity spawnPoint : m_aRespawnPoints)
 			{
-				if (!spawnPoint || CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent)).m_sRespawnPointFaction != faction || !CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent)).m_bActiveRespawnPoint || spawnLocation != vector.Zero)
+				if(!spawnPoint || CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent)).m_sRespawnPointFaction != faction || !CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent)).m_bActiveRespawnPoint || spawnLocation != vector.Zero)
 					continue;
-
-				spawnLocation = spawnPoint.GetOrigin();
+				
+				spawnLocation = spawnPoint.GetOrigin(); 
 			};
-
-			if (spawnLocation == vector.Zero)
+			
+			if(spawnLocation == vector.Zero)
 				EnterSpectator(playerId);
-
+			
 			RespawnPlayerRplId(playerId, respawnPrefab, spawnLocation, group);
 		}
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Should only ever be ran on the server
 	void RespawnPlayerRplId(int playerId, string prefab, vector position, SCR_AIGroup group)
 	{
-		if (RplSession.Mode() == RplMode.Client)
+		if(RplSession.Mode() == RplMode.Client)
 			return;
 
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
+        spawnParams.TransformMode = ETransformMode.WORLD;
 		vector finalSpawnLocation = vector.Zero;
-
+		
 		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, position, 10);
-		spawnParams.Transform[3] = finalSpawnLocation;
-
-		IEntity newEntity = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
-
+        spawnParams.Transform[3] = finalSpawnLocation;
+		
+		IEntity newEntity = GetGame().SpawnEntityPrefab(Resource.Load(prefab),GetGame().GetWorld(),spawnParams);
+		
 		GetGame().GetCallqueue().CallLater(RespawnPlayerRplIdDelay, 100, false, playerId, group, newEntity);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RespawnPlayerRplIdDelay(int playerId, SCR_AIGroup group, IEntity newEntity)
 	{
-		SCR_AIGroup aiGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aGroupRplIDs.Get(m_aActivePlayerGroupsIDs.Find(RplComponent.Cast(group.FindComponent(RplComponent)).Id())))).GetEntity());
+		SCR_AIGroup aiGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aGroupRplIDs.Get(m_aActivePlayerGroupsIDs.Find(RplComponent.Cast(group.FindComponent(RplComponent)).Id())))).GetEntity());		
 		aiGroup.AddAIEntityToGroup(newEntity);
 
 		int index = AddPlayableEntity(newEntity);
-
-		if (m_aSlots.Find(playerId) != -1)
+		
+		if(m_aSlots.Find(playerId) != -1)
 			SetSlot(m_aSlots.Find(playerId), -2);
-
+		
 		SetSlot(index, playerId);
-
+		
 		Rpc(RpcDo_EnterGame, playerId);
 		RpcDo_EnterGame(playerId);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_EnterGame(int playerId)
 	{
-		if (SCR_PlayerController.GetLocalPlayerId() != playerId)
+		if(SCR_PlayerController.GetLocalPlayerId() != playerId)
 			return;
-
+		
 		SCR_PlayerController.Cast(GetGame().GetPlayerController()).EnterGame(playerId);
 	}
-
+	
 	//Puts the player into an entity when they connect
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
 //		if(m_aSlots.Find(playerId) == -1)
 //			EnterSpectator(playerId);
 
-		if (m_aSlots.Find(playerId) != -1)
+		if(m_aSlots.Find(playerId) != -1)
 		{
 			m_iSlotChanges++;
 			Replication.BumpMe();
 		}
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
-
+		
 		// RespawnSystemComponent is not a SCR_BaseGameModeComponent, so for now we have to
-		// propagate these events manually.
+		// propagate these events manually. 
 		if (IsMaster())
 			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
 
@@ -791,56 +793,56 @@ class CRF_Gamemode : SCR_BaseGameMode
 		{
 			comp.OnPlayerDisconnected(playerId, cause, timeout);
 		}
-
+		
 		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
 		//Updates connection status
-		if (m_aSlots.Find(playerId) != -1)
+		if(m_aSlots.Find(playerId) != -1)
 		{
 			m_iSlotChanges++;
 			Replication.BumpMe();
 		}
 	}
-
+	
 	// Rush game mode respawn - no tickets
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RushRespawnPlayers()
 	{
-		// Stubbed for old mission support
+		// Stubbed for old mission support 
 		RespawnSide("BLUFOR");
 		RespawnSide("INDFOR");
 		RespawnSide("OPFOR");
 	}
-
+	
 	//Sets if the player is talking for UI purposes
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetPlayerTalking(int playerId)
 	{
-		if (m_aPlayersTalking.Find(playerId) != -1)
+		if(m_aPlayersTalking.Find(playerId) != -1)
 			return;
-
+		
 		m_aPlayersTalking.Insert(playerId);
 		Replication.BumpMe();
 	}
-
+	
 	//Sets if the player is talking for UI purposes
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RemovePlayerTalking(int playerId)
 	{
 		m_aPlayersTalking.RemoveItem(playerId);
 		Replication.BumpMe();
 	}
-
+	
 	//Advances the slotting state
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
 		m_iSlotChanges++;
 		Replication.BumpMe();
 	}
-
+	
 	//Opens the menu on the player
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void OpenCurrentStateMenu()
 	{
 		//Close any menu that wriggles its way in
@@ -849,39 +851,39 @@ class CRF_Gamemode : SCR_BaseGameMode
 			topMenu.Close();
 		GetGame().GetMenuManager().CloseAllMenus();
 		//Opens menu based on current game state : )
-		switch (m_GamemodeState)
+		switch(m_GamemodeState)
 		{
-			case CRF_GamemodeState.INITIAL: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);											break; }
-			case CRF_GamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);											break; }
-			case CRF_GamemodeState.GAME: 		{SCR_PlayerController.Cast(GetGame().GetPlayerController()).EnterGame(SCR_PlayerController.GetLocalPlayerId());		break; }
-			case CRF_GamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);												break; }
+			case CRF_GamemodeState.INITIAL: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);											break;}
+			case CRF_GamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);											break;}
+			case CRF_GamemodeState.GAME: 		{SCR_PlayerController.Cast(GetGame().GetPlayerController()).EnterGame(SCR_PlayerController.GetLocalPlayerId());		break;}
+			case CRF_GamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);												break;}
 		}
-		if (m_GamemodeState != CRF_GamemodeState.GAME)
+		if(m_GamemodeState != CRF_GamemodeState.GAME)
 		{
 			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-			if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_iFPS)
+			if(SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_iFPS)
 				video.Get("MaxFps", SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_iFPS);
 			video.Set("MaxFps", 30);
 			GetGame().UserSettingsChanged();
-			if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_iAudioSetting)
+			if(SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_iAudioSetting)
 				SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_iAudioSetting = AudioSystem.GetMasterVolume(AudioSystem.SFX);
 			AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
 		}
 	}
 
 	//Advances the overall gamemode state
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AdvanceGamemodeState(bool overriden = false)
 	{
-		if ((m_GamemodeState == CRF_GamemodeState.AAR || m_GamemodeState == CRF_GamemodeState.GAME) && !overriden)
+		if((m_GamemodeState == CRF_GamemodeState.AAR || m_GamemodeState == CRF_GamemodeState.GAME) && !overriden)
 			return;
-
+		
 		m_GamemodeState += 1;
 		Replication.BumpMe();
 		OnGamemodeStateChanged();
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	ScriptInvoker GetOnStateChanged()
 	{
 		if (!m_OnStateChanged)
@@ -889,43 +891,133 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		return m_OnStateChanged;
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void OnGamemodeStateChanged()
 	{
-		if (RplSession.Mode() == RplMode.Dedicated)
+		if(RplSession.Mode() == RplMode.Dedicated)
 		{
 			if (m_OnStateChanged)
 				m_OnStateChanged.Invoke(m_GamemodeState);
-
+			
 			foreach (CRF_GamemodeComponent component : m_aAdditionalCRFGamemodeComponents)
-			{
 				component.OnGamemodeStateChanged();
-			}
-
-			if (m_GamemodeState == CRF_GamemodeState.AAR)
+			
+			if(m_GamemodeState == CRF_GamemodeState.AAR)
 				EnterAAR();
 		}
 		else
 			OpenCurrentStateMenu();
 	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void OnPlayerJoinedGroup(SCR_AIGroup aiGroup, int playerID)
+	{	
+		if(RplSession.Mode() == RplMode.Dedicated)
+		{			
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
+				return;
+			
+			if (!IsSquadLeaderRole(currentLeaderEntity))
+			{
+				IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
+				if (!player)
+					return;
+				
+				if (IsSquadLeaderRole(player))
+				{
+					SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), playerID);
+				}
+			}
+		}	
+	}
 
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void OnPlayerLeftGroup(SCR_AIGroup aiGroup, int playerID)
+	{
+		if(RplSession.Mode() == RplMode.Dedicated)
+		{
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
+				return;
+
+			if (!IsSquadLeaderRole(currentLeaderEntity))
+			{
+				array<int> groupMembers = aiGroup.GetPlayerIDs();
+				
+				foreach (int member : groupMembers)
+				{
+					IEntity memberEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(member);
+					if (!memberEntity)
+						return;
+					
+					if (IsTeamLeaderRole(memberEntity))
+					{
+						SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), member);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	bool IsSquadLeaderRole(IEntity entity)
+	{
+		ref TStringArray roles = {"_COY_P","_PL_P","_MO_P","_SL_P","_VehLead_P","_IndirectLead_P","_LogiLead_P"};
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if(!prefab.Contains("CRF_GS_"))
+			return false;
+		
+		string role = PrefabToRole(prefab);
+		
+		return roles.Contains(role);
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	bool IsTeamLeaderRole(IEntity entity)
+	{
+		ref TStringArray roles = {"_TL_P"};
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if(!prefab.Contains("CRF_GS_"))
+			return false;
+		
+		string role = PrefabToRole(prefab);
+		
+		return roles.Contains(role);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	string PrefabToRole(ResourceName prefab)
+	{		
+		array<string> value = {};
+		prefab.Split("_", value, true);
+		
+		string role = "_" + value[3] + "_" + value[4];
+		
+		role.Split(".", value, true);
+		role = value[0];
+		
+		return role;
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void EnterAAR()
 	{
-		array<int> players = {};
+		ref array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
-		foreach (int player : players)
+		foreach(int player: players)
 		{
-			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
+			if(!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
-
-			if (GetGame().GetPlayerManager().GetPlayerControlledEntity(player).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			
+			if(GetGame().GetPlayerManager().GetPlayerControlledEntity(player).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 				continue;
-
+			
 			GetGame().GetCallqueue().CallLater(EnterSpectator, 500, false, player);
 		}
-
+		
 		// Log player data
 		if (!m_PlayerData)
 		{
@@ -935,9 +1027,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 				Print ("SCR_CareerEndScreenUI: No data collector was found.", LogLevel.ERROR);
 				return;
 			}
-
+			
 			m_PlayerData = dataCollector.GetPlayerData(0, false);
-
+			
 			//If there's still no player data, we wait for the invoker on data received to let us now that we got the instance through rpl
 			if (!m_PlayerData)
 			{
@@ -949,22 +1041,23 @@ class CRF_Gamemode : SCR_BaseGameMode
 				m_PlayerData.CalculateStatsChange();
 		}
 	}
-
+	
 	protected void OnDataReceived(SCR_PlayerData playerData)
 	{
 		m_PlayerData = playerData;
 		m_PlayerData.CalculateStatsChange();
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SetChannel(int index, string inputString, bool channelCreation)
 	{
 		m_aVONChannels.Set(index, inputString);
 		if (!channelCreation)
 		{
-			foreach (string channel : m_aVONChannels)
+			foreach(string channel: m_aVONChannels)
 			{
-				array<string> channelSplit = {};
+				ref array<string> channelSplit = {};
 				channel.Split("|", channelSplit, true);
 				if (channelSplit.Count() == 1 && m_aVONChannels.Find(channel) > 1)
 					m_aVONChannels.RemoveOrdered(m_aVONChannels.Find(channel));
@@ -973,23 +1066,23 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_iChannelChanges++;
 		Replication.BumpMe();
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool IsPlayerInAnyChannel(int playerId, out int channelId)
 	{
 		bool isInChannel = false;
 		channelId = -1;
-		foreach (string channel : m_aVONChannels)
+		foreach(string channel: m_aVONChannels)
 		{
-			if (isInChannel)
+			if(isInChannel)
 				break;
-			array<string> channelSplit = {};
+			ref array<string> channelSplit = {};
 			channel.Split("|", channelSplit, true);
-			array<string> players = {};
+			ref array<string> players = {};
 			if (channelSplit.Count() == 1)
 				continue;
 			channelSplit.Get(1).Split(",", players, true);
-			foreach (string player : players)
+			foreach(string player: players)
 			{
 				if	(player == "")
 					continue;
@@ -1001,53 +1094,53 @@ class CRF_Gamemode : SCR_BaseGameMode
 				}
 			}
 		}
-		return isInChannel;
+		return isInChannel;	
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AddPlayerToChannel(int playerId, int channelIndex, bool channelCreation)
 	{
 		int index;
 		if (IsPlayerInAnyChannel(playerId, index))
 			RemovePlayerFromAnyChannel(playerId, channelCreation);
-		array<string> channelSplit = {};
+		ref array<string> channelSplit = {};
 		m_aVONChannels.Get(channelIndex).Split("|", channelSplit, true);
-		array<string> players = {};
+		ref array<string> players = {};
 		if (channelSplit.Count() > 1)
 			channelSplit.Get(1).Split(",", players, true);
 		players.Insert(playerId.ToString());
 		if (channelSplit.Count() > 1)
-			channelSplit.Set(1, SCR_StringHelper.Join(",", players));
+			channelSplit.Set(1, SCR_StringHelper.Join("," , players));
 		else
-			channelSplit.Insert(SCR_StringHelper.Join(",", players));
+			channelSplit.Insert(SCR_StringHelper.Join("," , players));
 		SetChannel(channelIndex, SCR_StringHelper.Join("|", channelSplit), channelCreation);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RemovePlayerFromAnyChannel(int playerId, bool channelCreation)
 	{
 		int index;
-		if (!IsPlayerInAnyChannel(playerId, index))
+		if(!IsPlayerInAnyChannel(playerId, index))
 			return;
-		array<string> channelSplit = {};
+		ref array<string> channelSplit = {};
 		m_aVONChannels.Get(index).Split("|", channelSplit, true);
-		array<string> players = {};
+		ref array<string> players = {};
 		if (channelSplit.Count() > 1)
 			channelSplit.Get(1).Split(",", players, true);
 		players.RemoveOrdered(players.Find(playerId.ToString()));
 		if (channelSplit.Count() > 1)
-			channelSplit.Set(1, SCR_StringHelper.Join(",", players));
+			channelSplit.Set(1, SCR_StringHelper.Join("," , players));
 		else
-			channelSplit.Insert(SCR_StringHelper.Join(",", players));
+			channelSplit.Insert(SCR_StringHelper.Join("," , players));
 		SetChannel(index, SCR_StringHelper.Join("|", channelSplit), channelCreation);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool IsPlayerInChannel(int playerId, int index)
 	{
-		array<string> channelSplit = {};
+		ref array<string> channelSplit = {};
 		m_aVONChannels.Get(index).Split("|", channelSplit, true);
-		array<string> players = {};
+		ref array<string> players = {};
 		if (channelSplit.Count() == 1)
 			return false;
 		else
@@ -1055,10 +1148,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (players.Contains(playerId.ToString()))
 			return true;
 		else
-			return false;
+			return false;	
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	int CreateChannel(string name, int playerId)
 	{
 		int index = m_aVONChannels.Insert(name + "|");
@@ -1067,15 +1160,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 		Replication.BumpMe();
 		return index;
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	int GetChannel(int playerId)
 	{
-		foreach (string channel : m_aVONChannels)
+		foreach(string channel: m_aVONChannels)
 		{
-			array<string> channelSplit = {};
+			ref array<string> channelSplit = {};
 			channel.Split("|", channelSplit, true);
-			array<string> players = {};
+			ref array<string> players = {};
 			if (channelSplit.Count() == 1)
 				continue;
 			else
@@ -1087,27 +1180,27 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 		return 1;
 	}
-
+	
 	void RequestToJoinChannel(int channel, int requestId)
 	{
-		array<int> players = {};
+		ref array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
-		foreach (int player : players)
+		foreach(int player: players)
 		{
 			if (IsPlayerInChannel(player, channel))
 				Rpc(RpcDo_SendRequest, player, requestId, channel);
 		}
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendRequest(int playerId, int requestId, int channel)
 	{
 		if (playerId != SCR_PlayerController.GetLocalPlayerId())
 			return;
-
+		
 		CRF_SpectatorMenuUI specMenu = CRF_SpectatorMenuUI.Cast(GetGame().GetMenuManager().GetTopMenu());
-
+		
 		if (!specMenu)
 			return;
 		Widget compWidget = GetGame().GetWorkspace().CreateWidgets("{49490337615BA9B8}UI/Listbox/VONChannelRequestListBox.layout", specMenu.m_wRoot.FindAnyWidget("Requests"));
@@ -1119,8 +1212,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		comp.GetDeny().m_OnClicked.Insert(Deny);
 		FrameSlot.SetPosX(compWidget.FindAnyWidget("ButtonAnim"), 500);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void Accept()
 	{
 		if (!WidgetManager.GetWidgetUnderCursor())
@@ -1134,13 +1227,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent())
 			return;
 		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent())
-			return;
-
+			return;		
+		
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent().FindHandler(CRF_ListBoxElementComponent));
 		SCR_PlayerController.Cast(GetGame().GetPlayerController()).Accept(comp.m_iPlayerId, comp.m_iChannelId);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void Deny()
 	{
 		if (!WidgetManager.GetWidgetUnderCursor())
@@ -1154,42 +1247,42 @@ class CRF_Gamemode : SCR_BaseGameMode
 		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent())
 			return;
 		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent())
-			return;
+			return;		
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent().FindHandler(CRF_ListBoxElementComponent));
 
-		array<int> players = {};
+		ref array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
-		foreach (int player : players)
+		foreach(int player: players)
 		{
 			if (IsPlayerInChannel(player, comp.m_iChannelId))
 				Rpc(RpcDo_Deny, player, comp.m_iPlayerId);
 		}
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_Deny(int playerId, int requestId)
 	{
 		if (playerId != SCR_PlayerController.GetLocalPlayerId())
 			return;
-
+		
 		CRF_SpectatorMenuUI specMenu = CRF_SpectatorMenuUI.Cast(GetGame().GetMenuManager().GetTopMenu());
-
+		
 		if (!specMenu)
 			return;
-
-		foreach (Widget request : specMenu.m_aRequest)
+		
+		foreach (Widget request: specMenu.m_aRequest)
 		{
 			CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(request.FindHandler(CRF_ListBoxElementComponent));
 			if (!comp)
 				continue;
-
+			
 			if (requestId == comp.m_iPlayerId)
 			{
 				comp.GetAccept().m_OnClicked.Clear();
 				comp.GetDeny().m_OnClicked.Clear();
 				comp.m_bDeleteRequest = true;
-				return;
+				return;			
 			}
 		}
 	}
@@ -1198,18 +1291,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 //Ditto the RL Devs WHY IS THIS HARDCODED
 modded class SCR_ManualCamera
 {
-	//------------------------------------------------------------------------------------------------
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override protected bool IsDisabledByMenu()
 	{
-		if (!m_MenuManager)
-			return false;
-
-		if (m_MenuManager.IsAnyDialogOpen())
-			return true;
-
+		if (!m_MenuManager) return false;
+		
+		if (m_MenuManager.IsAnyDialogOpen()) return true;
+		
 		MenuBase topMenu = m_MenuManager.GetTopMenu();
-
+		
 		// WHY IT'S HARDCODED?
 		return topMenu && (!topMenu.IsInherited(EditorMenuUI) && !topMenu.IsInherited(CRF_SpectatorMenuUI));
 	}
-}
+};
