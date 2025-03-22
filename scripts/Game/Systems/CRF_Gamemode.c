@@ -915,17 +915,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{	
 		if(RplSession.Mode() == RplMode.Dedicated)
 		{			
-			IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
-			if (!entity)
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
 				return;
 			
-			if (!CheckLeaderRole(entity))
+			if (!IsSquadLeaderRole(currentLeaderEntity))
 			{
 				IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
 				if (!player)
 					return;
 				
-				if (CheckLeaderRole(player))
+				if (IsSquadLeaderRole(player))
 				{
 					SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), playerID);
 				}
@@ -938,31 +938,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		if(RplSession.Mode() == RplMode.Dedicated)
 		{
-			IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
-			if (!entity)
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
 				return;
 
-			if (!CheckLeaderRole(entity))
+			if (!IsSquadLeaderRole(currentLeaderEntity))
 			{
 				array<int> groupMembers = aiGroup.GetPlayerIDs();
 				
 				foreach (int member : groupMembers)
 				{
 					IEntity memberEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(member);
-					ResourceName prefab = memberEntity.GetPrefabData().GetPrefabName();
-					
-					if(!prefab.Contains("CRF_GS_") || !memberEntity)
+					if (!memberEntity)
 						return;
 					
-					array<string> value = {};
-					prefab.Split("_", value, true);
-					
-					string role = "_" + value[3] + "_" + value[4];
-					
-					role.Split(".", value, true);
-					role = value[0];
-					
-					if (role == "_TL_P")
+					if (IsTeamLeaderRole(memberEntity))
 					{
 						SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), member);
 						break;
@@ -974,13 +964,33 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	bool CheckLeaderRole(IEntity entity)
+	bool IsSquadLeaderRole(IEntity entity)
 	{
-		ref TStringArray m_aLeaderRoles = {"_COY_P","_PL_P","_MO_P","_SL_P","_VehLead_P","_IndirectLead_P","_LogiLead_P"};
+		ref TStringArray roles = {"_COY_P","_PL_P","_MO_P","_SL_P","_VehLead_P","_IndirectLead_P","_LogiLead_P"};
 		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
 		if(!prefab.Contains("CRF_GS_"))
 			return false;
 		
+		string role = PrefabToRole(prefab);
+		
+		return roles.Contains(role);
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	bool IsTeamLeaderRole(IEntity entity)
+	{
+		ref TStringArray roles = {"_TL_P"};
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if(!prefab.Contains("CRF_GS_"))
+			return false;
+		
+		string role = PrefabToRole(prefab);
+		
+		return roles.Contains(role);
+	}
+	
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	string PrefabToRole(ResourceName prefab)
+	{		
 		array<string> value = {};
 		prefab.Split("_", value, true);
 		
@@ -989,7 +999,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		role.Split(".", value, true);
 		role = value[0];
 		
-		return m_aLeaderRoles.Contains(role);
+		return role;
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
