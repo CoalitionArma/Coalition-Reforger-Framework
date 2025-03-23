@@ -266,6 +266,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		if (m_bRespawnEnabled)
 			InitilizeRespawns();
+
+		SCR_AIGroup.GetOnPlayerAdded().Insert(OnPlayerJoinedGroup);
+		SCR_AIGroup.GetOnPlayerRemoved().Insert(OnPlayerLeftGroup);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -906,6 +909,99 @@ class CRF_Gamemode : SCR_BaseGameMode
 		else
 			OpenCurrentStateMenu();
 	}
+
+	//------------------------------------------------------------------------------------------------
+	void OnPlayerJoinedGroup(SCR_AIGroup aiGroup, int playerID)
+	{
+		if (RplSession.Mode() == RplMode.Dedicated)
+		{
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
+				return;
+
+			if (!IsSquadLeaderRole(currentLeaderEntity))
+			{
+				IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
+				if (!player)
+					return;
+
+				if (IsSquadLeaderRole(player))
+				{
+					SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), playerID);
+				}
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void OnPlayerLeftGroup(SCR_AIGroup aiGroup, int playerID)
+	{
+		if (RplSession.Mode() == RplMode.Dedicated)
+		{
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
+				return;
+
+			if (!IsSquadLeaderRole(currentLeaderEntity))
+			{
+				array<int> groupMembers = aiGroup.GetPlayerIDs();
+
+				foreach (int member : groupMembers)
+				{
+					IEntity memberEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(member);
+					if (!memberEntity)
+						return;
+
+					if (IsTeamLeaderRole(memberEntity))
+					{
+						SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), member);
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool IsSquadLeaderRole(IEntity entity)
+	{
+		ref TStringArray roles = {"_COY_P","_PL_P","_MO_P","_SL_P","_VehLead_P","_IndirectLead_P","_LogiLead_P"};
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!prefab.Contains("CRF_GS_"))
+			return false;
+
+		string role = PrefabToRole(prefab);
+
+		return roles.Contains(role);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	bool IsTeamLeaderRole(IEntity entity)
+	{
+		ref TStringArray roles = {"_TL_P"};
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!prefab.Contains("CRF_GS_"))
+			return false;
+
+		string role = PrefabToRole(prefab);
+
+		return roles.Contains(role);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	string PrefabToRole(ResourceName prefab)
+	{
+		array<string> value = {};
+		prefab.Split("_", value, true);
+
+		string role = "_" + value[3] + "_" + value[4];
+
+		role.Split(".", value, true);
+		role = value[0];
+
+		return role;
+	}
+
 
 	//------------------------------------------------------------------------------------------------
 	void EnterAAR()
