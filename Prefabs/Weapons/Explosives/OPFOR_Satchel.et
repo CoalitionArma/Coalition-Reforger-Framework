@@ -1,0 +1,55 @@
+GenericEntity : "{7D968AE11F63B3F6}Prefabs/Weapons/Core/ExplosiveCharge_base.et" {
+ ID "5968D2B6A82C6019"
+ components {
+  MeshObject "{5968D9C73C08706E}" {
+   Object "{403E5D649CBD5153}Assets/Items/Equipment/Accessories/Pouch_Soviet_45rnd_RPK74/Pouch_Soviet_45rnd_RPK74_item.xob"
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{5AA692DC30B9C62B}" {
+   Attributes SCR_ItemAttributeCollection "{60D6BB563667D737}" {
+    ItemDisplayName WeaponUIInfo "{60D6BB563543F2F2}" {
+     Name "Explosive Satchel"
+    }
+    m_Size SLOT_3x3
+   }
+  }
+  SCR_ExplosiveTriggerComponent "{5AA692DC30B9C65A}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{64F1314C2626A79A}" {
+     EffectPrefab "{BD25277C883BF4DC}Prefabs/Weapons/Warheads/Warhead_Mine_TM62M.et"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+  }
+  SlotManagerComponent "{5F1CD138A009B549}" {
+   Slots {
+    FuzeSlotInfo timedFuze_PoC {
+     Offset 0.0816 0.0621 -0.1123
+     Angles -90 0 80
+    }
+    FuzeSlotInfo remoteFuze_PoC {
+     Offset 0.0816 0.0621 -0.1123
+     Angles -90 0 80
+    }
+   }
+  }
+  WeaponComponent "{5AA692DC30B9C621}" {
+   SoundInt 1000200
+  }
+  ActionsManagerComponent "{5AA692DC30B9C623}" {
+   ActionContexts {
+    UserActionContext "{5AA692DC30B9C627}" {
+     Position PointInfo "{5AA692DC30B9C638}" {
+      Offset 0 0.1 -0.0345
+     }
+    }
+   }
+   additionalActions {
+    SCR_ArmExplosiveChargeWithTimedFuzeAction "{5F1CD1393FC36E3C}" {
+     Duration 6
+    }
+   }
+  }
+ }
+ coords 0 0 0.003
+ scale 1.85
+}

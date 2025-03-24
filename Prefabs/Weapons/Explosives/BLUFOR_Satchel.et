@@ -1,0 +1,54 @@
+GenericEntity : "{7D968AE11F63B3F6}Prefabs/Weapons/Core/ExplosiveCharge_base.et" {
+ ID "5968D2B6A82C6019"
+ components {
+  MeshObject "{5968D9C73C08706E}" {
+   Object "{3BBDBC37E8C27129}Assets/Items/Equipment/Accessories/Pouch_ALICE_200rnd_M249/Pouch_ALICE_200rnd_M249_Item.xob"
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{5AA692DC30B9C62B}" {
+   Attributes SCR_ItemAttributeCollection "{60D6BB563667D737}" {
+    ItemDisplayName WeaponUIInfo "{60D6BB563543F2F2}" {
+     Name "Explosive Satchel"
+    }
+    m_Size SLOT_3x3
+   }
+  }
+  SCR_ExplosiveTriggerComponent "{5AA692DC30B9C65A}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{64F1314D3BEA1FA9}" {
+     EffectPrefab "{2EE77FA6C9097717}Prefabs/Weapons/Warheads/Warhead_Mine_M15AT.et"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+  }
+  SlotManagerComponent "{5F1CD138A009B549}" {
+   Slots {
+    FuzeSlotInfo timedFuze_PoC {
+     Offset -0.0005 0.04 0.1104
+     Angles -90 0 0
+    }
+    FuzeSlotInfo remoteFuze_PoC {
+     Offset -0.0005 0.04 0.1104
+     Angles -90 0 0
+    }
+   }
+  }
+  WeaponComponent "{5AA692DC30B9C621}" {
+   SoundInt 1000200
+  }
+  ActionsManagerComponent "{5AA692DC30B9C623}" {
+   ActionContexts {
+    UserActionContext "{5AA692DC30B9C627}" {
+     Position PointInfo "{5AA692DC30B9C638}" {
+      Offset 0 0.1 0
+     }
+    }
+   }
+   additionalActions {
+    SCR_ArmExplosiveChargeWithTimedFuzeAction "{5F1CD1393FC36E3C}" {
+     Duration 6
+    }
+   }
+  }
+ }
+ scale 1.85
+}
