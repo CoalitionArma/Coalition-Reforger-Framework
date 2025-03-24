@@ -146,13 +146,19 @@ GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
     }
     MultiSlotConfiguration "{64B20568BF53F580}" {
      SlotTemplate EquipmentStorageSlot helmet {
-      Prefab "{12035A212B2BE371}Prefabs/Characters/HeadGear/Helmet_SSh68_01/Helmet_SSh68_01_cover_KLMK_net.et"
+      Prefab "{A7E6D7ECD5F684D7}Prefabs/Characters/HeadGear/Helmet_SSh68_01/Helmet_SSh68_01.et"
      }
      NumSlots 10
     }
     MultiSlotConfiguration "{64B20568E1916E28}" {
      SlotTemplate EquipmentStorageSlot shirt {
-      Prefab "{CF221A167DE87E57}Prefabs/Characters/Uniforms/Suit_KLMK/Suit_KLMK.et"
+      Prefab "{9F546CCA2582D16F}Prefabs/Characters/Uniforms/Jacket_M88.et"
+     }
+     NumSlots 10
+    }
+    MultiSlotConfiguration "{64F16984F399AEB2}" {
+     SlotTemplate EquipmentStorageSlot shirt {
+      Prefab "{DCF980831E880F6A}Prefabs/Characters/Uniforms/Pants_M88.et"
      }
      NumSlots 10
     }

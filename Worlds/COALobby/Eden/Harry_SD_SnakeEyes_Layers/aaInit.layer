@@ -19,10 +19,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "CIV Composition: Infantry"\
    ""\
    "OPFOR Composition: Motorized Infantry"\
-   "OPFOR Assets: 1x BTR-70"\
+   "OPFOR Assets: 1x BTR-70, trucks"\
    ""\
    "Time: 45 Min"\
-   ""\
    "Weather: Clear"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
