@@ -1,0 +1,109 @@
+CRF_SatchelEntity : "{7D968AE11F63B3F6}Prefabs/Weapons/Core/ExplosiveCharge_base.et" {
+ ID "5968D2B6A82C6019"
+ components {
+  MeshObject "{5968D9C73C08706E}" {
+   LODFactors {
+    1000 1 1
+   }
+  }
+  RigidBody "{5968D9C731425A95}" {
+   Active AlwaysActive
+  }
+  SCR_ExplosiveChargeInventoryItemComponent "{5AA692DC30B9C62B}" {
+   Attributes SCR_ItemAttributeCollection "{60D6BB563667D737}" {
+    ItemDisplayName GrenadeUIInfo "{64F17E598D101E52}" {
+     Name "Explosive Satchel"
+     Description "It Makes Big Boom Boom"
+     m_sAmmoType "#AR-AmmoType_M15"
+     m_bShowAmmoTypeText 1
+     m_eAmmoTypeFlags HE
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{64F17E5AB01FF7CA}" {
+     Weight 18
+     SizeSetupStrategy Manual
+     ItemVolume 4000
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{64F17E5ADEF2E5A5}" {
+     IkSettings {
+      ItemIKSettings "{64F17E5ADFFA69C2}" {
+       InAds 0
+       OutAds 0
+       MovementSpeedRange 0 2
+       IkSettingsStand 6
+       IkSettingsCrouch 6
+       IkSettingsProne 6
+      }
+     }
+     AnimationInstance "{4FCBEA45CAEBC9C0}anims/workspaces/player/player_main_1h.asi"
+     AnimationIKPose "{ADA8287EEE81F47D}Assets/Weapons/Explosives/DemoBlock_M112/anims/p_M112_IK.anm"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5F10E041F98252F3}" {
+      CameraPreset Top
+      LodModel 1
+     }
+     CharacterModifierAttributes "{5F10E041F357BA2C}" {
+      SpeedLimit 2
+      ADSSpeedLimit 1
+      SpeedLimitHighready 1
+     }
+    }
+    CommonItemType "NONE"
+    m_Size SLOT_2x2
+    m_eQuickSlotSize SLOT_2x1
+   }
+  }
+  SCR_ExplosiveTriggerComponent "{5AA692DC30B9C65A}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{64F163C332E7DE36}" {
+     EffectPrefab "{2EE77FA6C9097717}Prefabs/Weapons/Warheads/Warhead_Mine_M15AT.et"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+   }
+  }
+  SCR_PlaceableItemComponent "{5AA692DC30B9C62D}" {
+   m_eIgnoredPhysicsLayers Water
+   m_fMaxPlacementDistance 2
+  }
+  SlotManagerComponent "{5F1CD138A009B549}" {
+   Slots {
+    FuzeSlotInfo timedFuze_PoC {
+     Offset -0.0005 0.04 0.1104
+     Angles -90 0 0
+    }
+    FuzeSlotInfo remoteFuze_PoC {
+     Offset -0.0005 0.04 0.1104
+     Angles -90 0 0
+    }
+   }
+  }
+  WeaponComponent "{5AA692DC30B9C621}" {
+   WeaponType FragGrenade
+   shouldHandleObstruction 0
+   WeaponSlotType "grenade"
+  }
+  ActionsManagerComponent "{5AA692DC30B9C623}" {
+   ActionContexts {
+    UserActionContext "{5AA692DC30B9C627}" {
+     Position PointInfo "{5AA692DC30B9C638}" {
+      Offset 0 0.1 0
+     }
+    }
+   }
+   additionalActions {
+    SCR_ArmExplosiveChargeWithTimedFuzeAction "{5F1CD1393FC36E3C}" {
+     Duration 6
+    }
+   }
+  }
+  WeaponAnimationComponent "{5F1CD773403DEE55}" {
+   AnimGraph "{7A7092BE09EA333C}Assets/Weapons/Explosives/workspace/M112.agr"
+   AnimInstance "{971AC76515E361D2}Assets/Weapons/Explosives/workspace/M112.asi"
+   AnimInjection AnimationAttachmentInfo "{5F1CD77366000D91}" {
+    AnimGraph "{7A7092BE09EA333C}Assets/Weapons/Explosives/workspace/M112.agr"
+    AnimInstance "{971AC76515E361D2}Assets/Weapons/Explosives/workspace/M112.asi"
+    BindingName "Weapon"
+   }
+  }
+ }
+}

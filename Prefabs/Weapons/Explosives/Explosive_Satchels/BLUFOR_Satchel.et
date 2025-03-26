@@ -1,0 +1,30 @@
+CRF_SatchelEntity : "{A4FEBA640C9EE7F4}Prefabs/Weapons/Explosives/Satchel_Base.et" {
+ ID "5968D2B6A82C6019"
+ components {
+  MeshObject "{5968D9C73C08706E}" {
+   Object "{3BBDBC37E8C27129}Assets/Items/Equipment/Accessories/Pouch_ALICE_200rnd_M249/Pouch_ALICE_200rnd_M249_Item.xob"
+  }
+  SlotManagerComponent "{5F1CD138A009B549}" {
+   Slots {
+    FuzeSlotInfo timedFuze_PoC {
+     Offset -0.0005 0.04 0.1104
+     Angles -90 0 0
+    }
+    FuzeSlotInfo remoteFuze_PoC {
+     Offset -0.0005 0.04 0.1104
+     Angles -90 0 0
+    }
+   }
+  }
+  ActionsManagerComponent "{5AA692DC30B9C623}" {
+   ActionContexts {
+    UserActionContext "{5AA692DC30B9C627}" {
+     Position PointInfo "{5AA692DC30B9C638}" {
+      Offset 0 0.054 0
+     }
+    }
+   }
+  }
+ }
+ scale 1.85
+}

@@ -1,0 +1,8 @@
+CRF_SatchelEntity : "{1246F0A3DE2607AD}Prefabs/Weapons/Explosives/Explosive_Satchels/Throwable/Throwable_Satchel_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  MeshObject "{51EC93F29BA5F234}" {
+   Object "{3BBDBC37E8C27129}Assets/Items/Equipment/Accessories/Pouch_ALICE_200rnd_M249/Pouch_ALICE_200rnd_M249_Item.xob"
+  }
+ }
+}
