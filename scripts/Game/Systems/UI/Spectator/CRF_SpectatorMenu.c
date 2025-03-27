@@ -37,7 +37,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected SCR_PlayerController pc;
 	protected IEntity m_eSpecEntity;
 	protected bool m_bFPPEntityValidityCheck;
-	protected Animation m_aAnimation;
 	protected int m_iLocalChannelUpdates = 0;
 	ref array<Widget> m_aRequest = {};
 	protected bool m_bHideUi = false;
@@ -225,7 +224,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			if (im.GetActionValue("ManualCameraMoveLateral") != 0 || im.GetActionValue("ManualCameraMoveVertical") || im.GetActionValue("ManualCameraMoveLongitudinal") != 0 || im.GetActionValue("ManualCameraRotate") != 0 || m_eSpecEntity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			{
 				m_eSpecEntity = null;
-				m_aAnimation = null;
 				m_bFPPEntityValidityCheck = false;
 				
 				// Reset camera angle after leaving FPP
@@ -640,7 +638,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		
 		m_eSpecEntity = icon.m_eEntity;
-		m_aAnimation = icon.m_eEntity.GetAnimation();
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -870,7 +867,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		
 		m_eSpecEntity = RplComponent.Cast(Replication.FindItem(comp.entityID)).GetEntity();
-		m_aAnimation = ChimeraCharacter.Cast(m_eSpecEntity).GetAnimation();
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
