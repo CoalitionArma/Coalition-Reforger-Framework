@@ -38,7 +38,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{67C47DE5703DD2BB}Configs/Gearscripts/Custom/Harry/NoMortar/CRF_GS_US80s_NoMortar.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{31798400ADCA306B}Configs/Gearscripts/Custom/Harry/VibingInVybor/CRF_GS_USSR80s_RPK.conf"
+  m_rGearScript "{8E75623ED4C174BC}Configs/Gearscripts/Custom/Harry/NoMortar/CRF_GS_USSR80s_RPK_NoMortar.conf"
  }
  {
   SCR_FactionManager "64F80450C7ECB8CC" {
