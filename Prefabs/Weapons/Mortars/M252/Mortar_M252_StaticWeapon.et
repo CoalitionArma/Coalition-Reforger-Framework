@@ -1,0 +1,400 @@
+Turret : "{89BB7489D53FBB6C}Prefabs/Weapons/Core/Mortar_Base.et" {
+ ID "5CF87D15B3D0A976"
+ components {
+  WeaponSoundComponent "{5CF87D14CB58AACA}" {
+   Filenames + {
+    "{BAFA286ACB945CF7}Sounds/Weapons/Mortars/M252/Weapons_Mortars_M252_Shot.acp"
+   }
+  }
+  LongRangeSoundComponent "{6188B6F21280DC32}" {
+   SoundDataName "Weapons_Mortars_M252_Shot"
+  }
+  MeshObject "{51ACD09C4E0B7D16}" {
+   Object "{8D8079616D19137C}Assets/Weapons/Mortars/M252/M252.xob"
+   LODFactors {
+    4 2 1 0.05 0.01
+   }
+  }
+  RigidBody "{51ACD09C423F175F}" {
+   Mass 100
+   SimState Collision
+   ResponseIndex "HugeDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  ProcAnimComponent "{51ACD09DB14C45C0}" {
+   Enabled 0
+  }
+  SCR_AIStaticArtilleryVehicleUsageComponent "{6198B1F775D79BED}" {
+   m_sAmmoHighExplosive "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+   m_sAmmoSmoke "{F7807293E94D3C88}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Smoke_M819.et"
+   m_sAmmoIllumination "{DD2065AE34D8DFA9}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Illum_M853A1.et"
+   m_sAmmoPractice "{DD6844AB03FDA84F}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_Practice_M879.et"
+  }
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{6118810DA1BBEA8D}" {
+    }
+   }
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+     PassengerPositionInfo EntitySlotInfo "{B1CB25848A3D93A8}" {
+     }
+     m_DefaultOccupantData SCR_DefaultOccupantData "{64F779F79FF125B2}" {
+      m_sDefaultOccupantPrefab "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+     }
+    }
+   }
+  }
+  SCR_BaseHUDComponent "{51ACD09C5E194510}" {
+   InfoDisplays {
+    SCR_MortarInfo "{60C2FC7821C6E18B}" {
+     InfoDisplays {
+      SCR_MortarAzimuthDisplay "{60DEAB9C0F58EA52}" {
+      }
+      SCR_MortarElevationDisplay "{60DEAB9DDA1BC0E8}" {
+      }
+      SCR_BallisticTableDisplay "{60F2FA4DBC3CE379}" {
+       m_aRangeListWidgetNames {
+        "Range1" "Range2" "Range3"
+       }
+       m_iBallisticDataOffset -1
+       m_aBallisticConfigs {
+        SCR_BaseBallisticConfig "{61509AC300C034E0}" : "{15A9A8CC8D9C8BCB}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M821_HE.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M821_4Rings_Name"
+         m_fProjectileInitSpeedCoef 2.977
+        }
+        SCR_BaseBallisticConfig "{6322AA82B052B0B0}" : "{15A9A8CC8D9C8BCB}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M821_HE.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M821_3Rings_Name"
+         m_fProjectileInitSpeedCoef 2.541
+        }
+        SCR_BaseBallisticConfig "{6322AA82B6BA2309}" : "{15A9A8CC8D9C8BCB}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M821_HE.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M821_2Rings_Name"
+         m_fProjectileInitSpeedCoef 2.085
+        }
+        SCR_BaseBallisticConfig "{6322AA82B74C08E3}" : "{15A9A8CC8D9C8BCB}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M821_HE.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M821_1Ring_Name"
+         m_fProjectileInitSpeedCoef 1.531
+        }
+        SCR_BaseBallisticConfig "{6322AA824D083931}" : "{15A9A8CC8D9C8BCB}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M821_HE.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M821_0Rings_Name"
+         m_iRangeStep 50
+        }
+        SCR_BaseBallisticConfig "{6322AA82B44AABC6}" : "{AA95526155BCC0A0}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M819_Smoke.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M819_4Rings_Name"
+         m_fProjectileInitSpeedCoef 1.387
+        }
+        SCR_BaseBallisticConfig "{6322AA8247D08FA8}" : "{AA95526155BCC0A0}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M819_Smoke.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M819_3Rings_Name"
+         m_fProjectileInitSpeedCoef 1.184
+        }
+        SCR_BaseBallisticConfig "{6322AA8246A68AB4}" : "{AA95526155BCC0A0}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M819_Smoke.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M819_2Rings_Name"
+         m_fProjectileInitSpeedCoef 0.959
+        }
+        SCR_BaseBallisticConfig "{6322AA824127CFE6}" : "{AA95526155BCC0A0}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M819_Smoke.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M819_1Ring_Name"
+         m_iRangeStep 50
+         m_fProjectileInitSpeedCoef 0.666
+        }
+        SCR_BaseBallisticConfig "{6322AA8241A06B07}" : "{791A7D49FDE74FCE}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M853A1_Illumination.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M853A1_4Rings_Name"
+         m_fProjectileInitSpeedCoef 1.596
+        }
+        SCR_BaseBallisticConfig "{6322AA82403C7BE0}" : "{791A7D49FDE74FCE}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M853A1_Illumination.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M853A1_3Rings_Name"
+         m_fProjectileInitSpeedCoef 1.281
+        }
+        SCR_BaseBallisticConfig "{6322AA8240B870BF}" : "{791A7D49FDE74FCE}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M853A1_Illumination.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M853A1_2Rings_Name"
+        }
+        SCR_BaseBallisticConfig "{6322AA8249709B8B}" : "{791A7D49FDE74FCE}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M853A1_Illumination.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M853A1_1Ring_Name"
+         m_iRangeStep 50
+         m_fProjectileInitSpeedCoef 0.638
+        }
+        SCR_BaseBallisticConfig "{6322AA824331B16C}" : "{E764E6FC6CACD72F}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M879_Practice.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M879_4Rings_Name"
+         m_fProjectileInitSpeedCoef 2.932
+        }
+        SCR_BaseBallisticConfig "{6322AA8243B0D874}" : "{E764E6FC6CACD72F}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M879_Practice.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M879_3Rings_Name"
+         m_fProjectileInitSpeedCoef 2.532
+        }
+        SCR_BaseBallisticConfig "{6322AA8242308DA8}" : "{E764E6FC6CACD72F}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M879_Practice.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M879_2Rings_Name"
+         m_fProjectileInitSpeedCoef 2.082
+        }
+        SCR_BaseBallisticConfig "{6322AA824E4FF5B5}" : "{E764E6FC6CACD72F}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M879_Practice.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M879_1Ring_Name"
+         m_fProjectileInitSpeedCoef 1.573
+        }
+        SCR_BaseBallisticConfig "{6322AA824FFE25F4}" : "{E764E6FC6CACD72F}Prefabs/Items/Equipment/BalisticTable/Configs/BallisticConfig_M879_Practice.conf" {
+         m_sDisplayedText "#AR-UI_MortarShell_M879_0Rings_Name"
+         m_iRangeStep 50
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  SCR_DestructionMultiPhaseComponent "{51ACD09C524A7924}" {
+   m_DestroySpawnObjects {
+    SCR_ParticleSpawnable "{62389B75370663C2}" {
+    }
+    SCR_DebrisSpawnable "{62389B7FB3A10867}" {
+     m_ModelPrefabs {
+      "{DF881592214B0EB4}Prefabs/Weapons/Mortars/M252/M252_Cannon_Damaged.et"
+     }
+     m_fMass 15
+     m_eMaterialSoundType MORTAR
+    }
+    SCR_DebrisSpawnable "{6318DDB62738B5C9}" {
+     m_vOffsetPosition 0 0.2 0
+     m_ModelPrefabs {
+      "{9484ABC74E0A74A9}Prefabs/Weapons/Mortars/M252/M252_Baseplate_Damaged.et"
+     }
+    }
+    SCR_DebrisSpawnable "{6318DDB625239667}" {
+     m_ModelPrefabs {
+      "{ADCAC8FCB62A77BD}Prefabs/Weapons/Mortars/M252/M252_Mount_Damaged.et"
+     }
+    }
+   }
+   m_eMaterialSoundType BREAK_METAL
+  }
+  SCR_EditableVehicleComponent "{617CC5661216D3D8}" : "{996046FE206C699A}Prefabs/Editor/Components/Default_SCR_EditableEntityComponent.ct" {
+   m_EntityType VEHICLE
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#AR-EditableEntity_Mortar_M252_US_Name"
+    Icon "{5F6834E9954ABAC4}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Mortar.edds"
+    m_Image "{6888B561D8A130CD}UI/Textures/EditorPreviews/Auto/Weapons/Mortars/M252/E_Mortar_N252.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels {
+     11 3 281 913
+    }
+    m_aAutoLabels {
+     108 121
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{64F779F79FF125D3}" {
+      m_BudgetType CAMPAIGN
+      m_Value 200
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5CF87D1B836398E3}" {
+   Attributes SCR_ItemAttributeCollection "{60D0E9D9A001FEF6}" {
+    ItemDisplayName WeaponUIInfo "{5D16730CE134417D}" {
+     Name "mołtał"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5D16730CEE743F83}" {
+     Weight 0
+     ItemDimensions 10 10 10
+     ItemVolume 100
+     DimensionScaler 1
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5D16730C02CFEB5F}" {
+      CameraPreset Left
+      FOV 60
+      AspectRatio 1
+      PreviewPrefab "{D1FFE458E8AC4BDB}Prefabs/Weapons/Mortars/2B14/Mortar_2B14.et"
+     }
+    }
+    m_SlotType SLOT_WEAPONS_STORAGE
+    m_bDraggable 0
+    m_bVisible 0
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 15000
+   MaxItemSize 15 15 15
+  }
+  SCR_VehicleCameraDataComponent "{51AE850D79DDB1F5}" {
+   m_fRollFactor 1
+   m_fPitchFactor 1
+   m_fAngleFirstPerson 0
+   m_fAngleThirdPerson 0
+  }
+  SCR_VehicleFactionAffiliationComponent "{5CF87D14630BD7E0}" {
+   "faction affiliation" "US"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{5D9CCCF200B90084}" {
+   Attributes SCR_ItemAttributeCollection "{60D0E9D9B9C21035}" {
+    CommonItemType "AMMO"
+    m_SlotType SLOT_ANY
+    m_bDraggable 0
+   }
+   CapacityCoefficient 3
+  }
+  SCR_WeaponBlastComponent "{6262C5CDEA485E69}" {
+   m_BlastOrigin PointInfo "{6262C5CDE9890356}" {
+    PivotID "context_fire"
+    Offset 0 -0.06 -0.003
+    Angles 90 0 0
+   }
+  }
+  StaticWeaponComponent "{64F779F785975B0F}" {
+   m_rWeaponBagPrefab "{EE53109CB37C43B1}Prefabs/Items/Equipment/Backpacks/M2/Backpack_m252_Martar_Weapon.et"
+   m_rBipodBagPrefab "{A207909C42E58944}Prefabs/Items/Equipment/Backpacks/Backpack_US_Tripod.et"
+  }
+  TagComponent "{6124671047E09B64}" {
+   "Tag categories" 32
+  }
+  BaseFlattenGrassComponent "{5E48930C12E53B02}" {
+   ParametersCollection {
+    FlattenGrassParametersObject "{6124671087131336}" {
+     SideX 2
+     SideZ 1
+     Offset 0
+     CenterLerp 0
+     TimeDown 0
+     MaxHeight 1
+     ShapeOfGrassFlattening "Rect"
+    }
+   }
+  }
+  TurretComponent "{5CF87D146CDE4A81}" {
+   components {
+    SCR_2DSightsComponent "{5CF87D1B9209EB97}" {
+     SightsPosition PointInfo "{64F779F79FF125FD}" {
+      PivotID "w_sight"
+      Offset -0.0173 0.1347 -0.0345
+      Angles -10 0 0
+     }
+     SightsRanges {
+      SightRangeInfo "{64F779F79FF125FA}" {
+       Range 100 1
+      }
+     }
+     SightsFOVInfo SCR_SightsZoomFOVInfo "{64F779F79FF125F8}" {
+      m_fBaseZoom 1.5
+     }
+     SightsPointFront PointInfo "{64F779F79FF125F7}" {
+      PivotID "w_sight"
+      Offset -0.0151 0.0712 0.0125
+     }
+     SightsPointRear PointInfo "{64F779F79FF125F5}" {
+      PivotID "w_sight"
+      Offset -0.0173 0.1329 -0.0351
+     }
+     m_sReticleTexture "{6111EA6B45BCA0A7}UI/Textures/Sights/M64A1/Reticle_M64A1_UI.edds"
+     m_sReticleGlowTexture "{6111EA6B45BCA0A7}UI/Textures/Sights/M64A1/Reticle_M64A1_UI.edds"
+     m_ReticleOutlineColor 0.5 1 0 1
+     m_fMagnification 1.5
+     m_fReticleAngularSize 9
+     m_fReticlePortion 0.955
+     m_fReticleBaseZoom 1.5
+     m_fObjectiveFov 17
+     m_bShouldHideParentObject 0
+     m_bShouldHideParentCharacter 1
+     m_fMovementDampingSpeed 4
+     m_fMisalignmentScale 0
+    }
+   }
+   ikTargets {
+    AnimationIKTargetInfo "{64F779F79FF125F0}" {
+     BindingName "LHandIKTarget"
+     PositionInfo PointInfo "{64F779F79FF125EF}" {
+      PivotID "w_sight_vertical_adjust"
+     }
+    }
+    AnimationIKTargetInfo "{64F779F79FF125EE}" {
+     BindingName "RHandIKTarget"
+     PositionInfo PointInfo "{64F779F79FF125ED}" {
+      PivotID "w_holder_lock"
+     }
+    }
+   }
+  }
+  WeaponComponent "{5D56B131A6921887}" {
+   components {
+    SCR_MortarMuzzleComponent "{5D56B131AD7ED6AB}" {
+     components {
+      SCR_MuzzleEffectComponent "{5D56BC114BFAB75F}" {
+       EffectPosition EntitySlotInfo EffectPosition {
+        PivotID "w_cannon"
+        Offset 0 1.4462 0
+       }
+      }
+     }
+     MuzzleEndPositions {
+      PointInfo "{64F779F79FF125E7}" {
+       PivotID "w_cannon"
+       Offset 0 1.4 0
+       Angles 90 0 0
+      }
+     }
+     ProjectileSpawnPositions {
+      PointInfo "{64F779F79FF125E5}" {
+       PivotID "w_cannon"
+       Offset 0 1.3104 0.0001
+       Angles 90 0 0
+      }
+     }
+     MagazineWell MagazineWellMortar81mm "{60D0E9DEE6580B9D}" {
+     }
+     ReloadDuration 2
+     ProjectilePosition InventoryStorageSlot "{60D0E9DF5890F38D}" {
+      PivotID "w_cannon"
+      Offset 0 0.4 0
+      Angles 90 0 0
+      Prefab "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+     }
+     AmmoTemplate "{38BAE094333E31BF}Prefabs/Weapons/Ammo/Ammo_Shell_81mm_HE_M821.et"
+     m_LoaderPosition PointInfo "{616E899C7D83AF11}" {
+      PivotID "operator_idle_02"
+      Angles 90 180 0
+     }
+     m_LoaderPositionLeft PointInfo "{624C797308DACC95}" {
+      PivotID "operator_idle_03"
+      Angles 90 90 -90
+     }
+    }
+   }
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   ActionContexts {
+    UserActionContext "{51ACFBB064390C6E}" {
+     ContextName "default"
+     Position PointInfo "{51ACFBB061993925}" {
+     }
+    }
+    UserActionContext "{60D0E9DB069E3C1C}" {
+     Position PointInfo "{5D16732A2C5AB707}" {
+      PivotID "context_fire"
+      Angles 0 90 0
+     }
+    }
+    UserActionContext "{623CD3E2012B7078}" {
+     Position PointInfo "{5D16732A2C5AB707}" {
+      PivotID "context_fire"
+      Angles 0 -90 0
+     }
+    }
+    UserActionContext "{60D0E9DB74356E76}" {
+     ContextName "sight"
+     Position PointInfo "{5D5727EBCC92A590}" {
+      PivotID "w_sight"
+     }
+     Height 0
+    }
+   }
+  }
+  MortarAnimationComponent "{5242E42C7B4B2CEE}" {
+   AnimGraph "{4C9B570B70975AE3}Assets/Weapons/Mortars/workspaces/M252.agr"
+   AnimInstance "{5B120FA840F7BAE9}Assets/Weapons/Mortars/workspaces/M252_weapon.asi"
+   AnimInjection AnimationAttachmentInfo "{5242E42C74AC2BF7}" {
+    AnimGraph "{4C9B570B70975AE3}Assets/Weapons/Mortars/workspaces/M252.agr"
+    AnimInstance "{A04C9E99D8F6DE05}Assets/Weapons/Mortars/workspaces/M252_player.asi"
+   }
+  }
+ }
+}

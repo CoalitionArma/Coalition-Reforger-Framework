@@ -1,0 +1,86 @@
+GenericEntity : "{841162A79157C494}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium_frame.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  ClothNodeStorageComponent "{52C8F5E9F0154D30}" {
+   Enabled 0
+   Attributes SCR_ItemAttributeCollection "{52C8F5E9918808ED}" {
+    ItemDisplayName UIInfo "{52C8F5E9AF0F57B2}" {
+     Name "#AR-Backpack_ALICE_Medium_Name"
+     Description "#AR-Backpack_ALICE_Medium_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 4
+     SizeSetupStrategy Volume
+     ItemVolume 5000
+    }
+   }
+   CapacityCoefficient 2
+  }
+  InventoryItemComponent "{5254C2F99546AF75}" {
+   Enabled 0
+  }
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{B982CAE1F85001D0}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Enabled 1
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "M2 Weapon Backpack"
+     Description ""
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 4
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 10001
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      CameraOrbitAngles 25 -25 180
+      PreviewModel "{E0BEDFA62478F57F}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_combined.xob"
+     }
+    }
+   }
+   UseCapacityCoefficient 0
+   CapacityCoefficient 1.26
+   MaxCumulativeVolume 0
+   MaxItemSize 20 20 20
+   m_fMaxWeight 0
+  }
+  StaticWeaponBagComponent "{64F779F1B02DA71E}" {
+   m_rWeaponPrefab "{3484565B1404E3EA}Prefabs/Weapons/Mortars/M252/Mortar_M252_StaticWeapon.et"
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   Animate 1
+   WornModel "{E0BEDFA62478F57F}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_combined.xob"
+   ItemModel "{B982CAE1F85001D0}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_item.xob"
+   DeflatedModel "{A2D3D022764E0F74}Assets/Items/Equipment/Backpacks/Backpack_ALICE_Medium/Backpack_ALICE_Medium_combined_Inflated.xob"
+   AreaTypeWhenModelChange {
+    LoadoutArmoredVestSlotArea "{64F779F1B02DA712}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.1322 0
+     }
+    }
+   }
+   additionalActions {
+    AssembleWeaponAction "{64F779F1B02DA70B}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{64F779F1B02DA709}" {
+      Name "Assemble Weapon"
+     }
+     Duration 5
+     "Sort Priority" 3
+    }
+   }
+  }
+ }
+}

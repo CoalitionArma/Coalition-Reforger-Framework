@@ -1,0 +1,66 @@
+GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "NSV Weapon Backpack"
+     Description ""
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 1
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 8001
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      PreviewModel "{63131CE6ACC7038F}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok.xob"
+     }
+    }
+   }
+   UseCapacityCoefficient 0
+   CapacityCoefficient 1.26
+   MaxCumulativeVolume 0
+   MaxItemSize 20 20 20
+   m_fMaxWeight 0
+  }
+  StaticWeaponBagComponent "{64F779F049780296}" {
+   m_rWeaponPrefab "{07A6D079D0494D8D}Prefabs/Weapons/Mortars/2B14/Mortar_2B14_staticweapon.et"
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   WornModel "{63131CE6ACC7038F}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok.xob"
+   ItemModel "{F63FB77CF5C853D7}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_item.xob"
+   SoundInt 830
+   DeflatedModel "{612FEDC4900077AB}Assets/Items/Equipment/Backpacks/Backpack_Kolobok/Backpack_Kolobok_Inflated.xob"
+   AreaTypeWhenModelChange {
+    LoadoutArmoredVestSlotArea "{64F779F04978028D}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.1281 0.0436
+     }
+    }
+   }
+   additionalActions {
+    AssembleWeaponAction "{64F779F049780284}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{64F779F049780282}" {
+      Name "Assemble Weapon"
+     }
+     Duration 5
+     "Sort Priority" 3
+    }
+   }
+  }
+ }
+}
