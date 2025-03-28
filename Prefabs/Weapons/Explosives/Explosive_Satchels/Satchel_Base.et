@@ -56,7 +56,8 @@ CRF_SatchelEntity : "{7D968AE11F63B3F6}Prefabs/Weapons/Core/ExplosiveCharge_base
   SCR_ExplosiveTriggerComponent "{5AA692DC30B9C65A}" {
    PROJECTILE_EFFECTS {
     ExplosionEffect "{64F163C332E7DE36}" {
-     EffectPrefab "{2EE77FA6C9097717}Prefabs/Weapons/Warheads/Warhead_Mine_M15AT.et"
+     EffectPrefab "{F57EB5EE10ED5A46}Prefabs/Weapons/Warheads/Warhead_Satchel.et"
+     ParticleEffect "{DB460C99707F948E}Particles/Weapon/Explosion_TM62M_AT_Mine.ptc"
      SoundEvent "SOUND_EXPLOSION"
     }
    }

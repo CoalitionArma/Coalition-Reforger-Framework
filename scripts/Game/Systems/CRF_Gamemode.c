@@ -281,7 +281,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
 
-		if (instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.AI)
+		if (instigatorContextData.GetVictimCharacterControlType() != SCR_ECharacterControlType.PLAYER)
 			return;
 
 		int playerId = instigatorContextData.GetVictimPlayerID();
@@ -315,6 +315,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		IEntity initialEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld());
 
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		
+		if(!pc || !initialEntity)
+			return;
 
 		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, initialEntity);
 

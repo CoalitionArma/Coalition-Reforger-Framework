@@ -9,8 +9,8 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
   TimerTriggerComponent "{64F2449BAC25674D}" {
    PROJECTILE_EFFECTS {
     ExplosionEffect "{64F2449BAC2567B0}" {
-     EffectPrefab "{2EE77FA6C9097717}Prefabs/Weapons/Warheads/Warhead_Mine_M15AT.et"
-     ParticleEffect "{DB460C99707F948E}Particles/Weapon/Explosion_TM62M_AT_Mine.ptc"
+     EffectPrefab "{F57EB5EE10ED5A46}Prefabs/Weapons/Warheads/Warhead_Satchel.et"
+     ParticleEffect "{473B00F0FB1D32AE}Particles/Logistics/Explosion/Explosion_Warhead_kh55.ptc"
      SoundEvent "SOUND_EXPLOSION"
     }
     AIExplosionEffect "{64F2449BAC2567B9}" {
@@ -22,7 +22,7 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
    InitSpeed 12
    Mass 18
    TimeToLive 20.2
-   BallisticTableConfig "{2FF9970869F6D99C}Configs/Weapons/AIBallisiticTables/AIBT_Grenade_M67.conf"
+   BallisticTableConfig "{2FF9970869F6D99C}Configs/Weapons/AIBallisticTables/AIBT_Grenade_M67.conf"
   }
   InventoryItemComponent "{51FAA3E3CF6F087A}" {
    Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {

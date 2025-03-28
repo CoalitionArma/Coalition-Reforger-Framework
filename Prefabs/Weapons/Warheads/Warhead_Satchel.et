@@ -1,0 +1,59 @@
+GenericEntity : "{492CA9A2919ECA45}Prefabs/Weapons/Warheads/Warhead_Mine_HE.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{5A12D2D8ABE24913}" : "{8A81F4702F919838}Prefabs/Weapons/Core/Damage/ExplosionContainer_HE.conf" {
+     ExplosionEffects {
+      BaseExplosionDamage "{5D8D1EB3EF9D02C6}" : "{3BE7AB8C8BD42E9B}Prefabs/Weapons/Core/Damage/BlastDamageEffect.conf" {
+       DamageValue 2650
+       DamageDistance 14
+       ExplosionDamagePower 0.8
+       ExplosionRangePower 0.22222
+      }
+      BaseExplosionDamage "{61DAF5E24D9CA168}" : "{8B0302FD53B4AC5C}Prefabs/Weapons/Core/Damage/BlastDamageEffect_NoTrace.conf" {
+       DamageValue 950
+       DamageDistance 4.5
+      }
+      ExplosionImpulseEffect "{5E6D1CEE09A33086}" : "{FB1F33936312F72B}Prefabs/Weapons/Core/Damage/BlastImpulseEffect.conf" {
+       DamageValue 1.8
+      }
+      ExplosionFragmentationEffect "{567CBC1D7AB652C7}" : "{9264AB458027FBA7}Prefabs/Weapons/Core/Damage/FragmentationDamageEffect_AT.conf" {
+       DamageFragmentCount 270
+       CaseWeight 2700
+      }
+     }
+    }
+    SpawnDecalEffect "{5E24CB0404FD81A6}" {
+     Material "{D73EF1B0C42AD52E}Assets/Decals/Logistics/Data/Logistics_Explosion_Decal_Large.emat"
+    }
+    SpawnDistanceParticleEffect "{64F840ABB8FF8CD5}" {
+     ShouldReplicate 0
+     UseFrameEvent 1
+     SubEffects {
+      SCR_MineDistanceParticleEffect "{64F840ABB8FF8CC6}" {
+       ParticleEffect "{2DAA5F5D2B63EE41}Particles/Logistics/Explosion/Explosion_Satchel.ptc"
+       SubEffects {
+        SubDistanceParticleEffect "{64F840ABB8FF8CC1}" {
+         ModuloSpawned 20
+         ParticleEffect "{DB460C99707F948E}Particles/Weapon/Explosion_TM62M_AT_Mine.ptc"
+        }
+        SubDistanceParticleEffect "{64F840ABB8FF8CCB}" {
+         ModuloSpawned 10
+         ParticleEffect "{3562826309E0E154}Particles/Weapon/Explosion_TM62M_AT_Mine_LOD1.ptc"
+        }
+       }
+      }
+     }
+    }
+   }
+   DELETE_ON_TRIGGER 0
+   TRIGGER_ALIVE 1
+  }
+  HitEffectComponent "{9D9BE68D6F65A10F}" {
+   ParticleEffect "{DB460C99707F948E}Particles/Weapon/Explosion_TM62M_AT_Mine.ptc"
+  }
+ }
+ Flags 0
+ coords 0 1 0
+}
