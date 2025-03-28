@@ -1,0 +1,21 @@
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 8358.393 237.931 4763.068
+ m_MarkerColor 0.502 0 0 1
+ m_sDescription "Mortars"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+DecalEntity : "{AF4AA779A4546D51}Prefabs/Decals/Dirt/Decal_Dirt_Patch_02.et" {
+ coords 8358.039 0 4763.616
+ angleX -90
+ angleY -180
+ angleZ -180
+ scale 5
+}
+Turret : "{D1FFE458E8AC4BDB}Prefabs/Weapons/Mortars/2B14/Mortar_2B14.et" {
+ coords 8357.733 237.898 4763.557
+ angleY -47.522
+}
+GenericEntity : "{E9C9526CD5C379ED}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/USSR_Mortar_Box.et" {
+ coords 8360.443 237.948 4764.65
+}

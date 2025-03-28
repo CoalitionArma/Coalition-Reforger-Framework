@@ -1,0 +1,72 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 6446.491 161.921 6442.542
+  angleX 1.774
+  angleY 82.419
+  angleZ -0.236
+  m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7511.275 165.75 4306.298
+  angleY 14.558
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6417.987 160.552 6433.324
+  angleY 67.024
+  m_rnPrefab "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6402.77 159.644 6426.872
+  angleY 67.024
+  m_rnPrefab "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+$grp Vehicle : "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et" {
+ UAZ452_transport1 {
+  coords 7507.762 165.75 4294.81
+  angleY 16.36
+ }
+ UAZ452_transport2 {
+  coords 7506.089 165.75 4289.11
+  angleY 16.36
+ }
+ UAZ452_transport3 {
+  coords 7504.627 165.75 4284.131
+  angleY 16.36
+ }
+}
+$grp Vehicle : "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et" {
+ M923A1_transport1 {
+  coords 6385.198 158.619 6420.396
+  angleX 3.97
+  angleY 70.081
+  angleZ 0.462
+ }
+ M923A1_transport2 {
+  coords 6373.664 157.951 6416.209
+  angleX 3.666
+  angleY 70.025
+  angleZ -0.381
+ }
+ M923A1_transport3 {
+  coords 6363.364 157.424 6412.469
+  angleX 1.988
+  angleY 70.057
+  angleZ 0.231
+ }
+ M923A1_transport4 {
+  coords 6351.524 156.861 6408.172
+  angleX 1.682
+  angleY 70.031
+  angleZ -0.611
+ }
+}
