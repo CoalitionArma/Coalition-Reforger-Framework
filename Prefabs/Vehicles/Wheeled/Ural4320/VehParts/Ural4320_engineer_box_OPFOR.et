@@ -1,0 +1,45 @@
+GenericEntity : "{0CD6E71D33E1CCD0}Prefabs/Vehicles/Core/Vehicle_EngineerBox_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  BaseLightManagerComponent "{5CC4F34111D9C32F}" : "{4B199B19018562C6}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_cargo_BaseLightManager.ct" {
+  }
+  MeshObject "{4B42E716914465B9}" {
+   Object "{25E0A2F2CC535076}Assets/Vehicles/Wheeled/Ural4320/Ural_4320_cargo.xob"
+  }
+  SCR_CampaignBuildingProviderComponent "{5DF54421B01A7FF8}" {
+   m_bUserActionActivationOnly 0
+   m_aAvailableTraits {
+    0 0 108
+   }
+  }
+  SCR_DamageManagerComponent "{3EBB276D48AFFF41}" {
+   "Additional hit zones" {
+    SCR_DestructibleHitzone EngineerBox {
+     m_pDestructionHandler SCR_DestructionBaseHandler "{5C77025948537C40}" {
+      m_sWreckModel "{4A34B288E4056C0D}Assets/Vehicles/Wheeled/Ural4320/Ural_4320_cargo_wreck.xob"
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{64F91871ABAAFAE9}" {
+   Slots {
+    RegisteringComponentSlotInfo Canvas {
+     Prefab "{96C3B0980A16D7E3}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_canvas_closed.et"
+     RegisterDamage 1
+    }
+   }
+  }
+  ActionsManagerComponent "{5DE2DEF324F763D7}" {
+   ActionContexts {
+    UserActionContext "{5DE2DEF320BD8480}" {
+     UIInfo SCR_ActionContextUIInfo "{6132AA92E8ED05A3}" : "{7CD00B230573CAC6}Prefabs/Vehicles/Core/Configs/Actions/ActionUIInfo/SCR_ActionContextUIInfo.conf" {
+     }
+     Position PointInfo "{5DE2DEF0E5CEF861}" {
+      Offset 0 1.5779 -3.8782
+      Angles 0 180 0
+     }
+    }
+   }
+  }
+ }
+}

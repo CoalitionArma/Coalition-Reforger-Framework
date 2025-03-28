@@ -3,7 +3,13 @@ modded class SCR_EditorManagerEntity
 	
 	override bool CanOpen()
 	{
-		if (GetCurrentMode() == EEditorMode.PHOTO && SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (GetCurrentMode() == EEditorMode.BUILDING)
+		{
+			SetIsLimited(true);
+			return true;
+		}
+		
+		if ((GetCurrentMode() == EEditorMode.PHOTO) && SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 		{
 			SetIsLimited(false);
 			return true;

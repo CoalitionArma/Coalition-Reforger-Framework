@@ -1,0 +1,64 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_Ural4320_Engineer_Name"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    m_Image "{3FBEA815D47B4382}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_engineer.edds"
+    m_sFaction "USSR"
+    m_aAuthoredLabels + {
+     240 210
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 260
+     }
+    }
+    m_bEditorPlaceAsOneGroup 1
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   MaxCumulativeVolume 100000
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "OPFOR"
+  }
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo EngineerBox {
+     MergePhysics 1
+     Prefab "{9DA0DF978E8F5886}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_engineer_box_OPFOR.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo EnginnerDecal {
+     Prefab "{4E696814A573AE51}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_enginner_decal.et"
+     InheritParentSkeleton 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{64F918715F88AE0B}" {
+     ContextName "cargo_open"
+     Position PointInfo "{64F918715F88AE11}" {
+      Offset 0 1.8 -3.9
+     }
+    }
+   }
+  }
+ }
+ coords 114.386 1.001 200.475
+ m_eVehicleType SUPPLY_TRUCK
+}
