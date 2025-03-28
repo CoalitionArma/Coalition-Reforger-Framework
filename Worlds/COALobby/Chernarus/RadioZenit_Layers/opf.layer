@@ -1,0 +1,151 @@
+$grp Vehicle : "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et" {
+ Ural4320_FIA_transport1 {
+  coords 8089.559 458.969 9338.858
+  angleX -1.938
+  angleY 48.983
+  angleZ 0.499
+ }
+ Ural4320_FIA_transport2 {
+  coords 8093.014 458.945 9335.502
+  angleX -1.938
+  angleY 44.983
+  angleZ 0.499
+ }
+ Ural4320_FIA_transport3 {
+  coords 8082.364 459 9332.186
+  angleX -1.938
+  angleY 45.983
+  angleZ 0.499
+ }
+ Ural4320_FIA_transport4 {
+  coords 8075.247 458.999 9325.156
+  angleX -1.938
+  angleY 45.983
+  angleZ 0.499
+ }
+ Ural4320_FIA_transport5 {
+  coords 8089.835 458.999 9303.422
+  angleX -1.938
+  angleY 43.983
+  angleZ 0.499
+ }
+ Ural4320_FIA_transport6 {
+  coords 8096.072 459 9309.775
+  angleX -1.938
+  angleY 44.983
+  angleZ 0.499
+ }
+ Ural4320_FIA_transport7 {
+  coords 8103.002 459 9316.56
+  angleX -1.938
+  angleY 48.983
+  angleZ 0.499
+ }
+}
+GenericEntity : "{22D2EFA80AC9DBD0}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_03.et" {
+ coords 8214.091 469.6 9043.643
+ {
+  GenericEntity {
+   ID "5D45393876460D01"
+   components {
+    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       m_fResourceValueCurrent 6000
+       m_fResourceValueMax 6000
+       m_bEnableResourceGain 0
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{2351FA1249150AE6}Prefabs/Props/Military/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Mortar_USSR.et" {
+ coords 8214.17 469.38 9036.497
+}
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  coords 8102.723 458.609 9346.304
+  angleY 132
+  angleZ 0.895
+ }
+ UAZ2 {
+  coords 8106.681 458.612 9342.701
+  angleY 132
+  angleZ 0.895
+ }
+ UAZ3 {
+  coords 8097.804 458.415 9350.626
+  angleY 132
+  angleZ 0.895
+ }
+}
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 8224.816 469.498 9025.317
+  angleY 106
+ }
+ {
+  coords 8231.859 469.76 9035.636
+  angleY 106
+ }
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 8085.238 459.43 9282.116
+ angleX -3.125
+ angleY -29.124
+ angleZ 1.74
+}
+$grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ UAZ452_ambulance1 {
+  coords 8098.093 459.011 9289.312
+  angleY 69
+ }
+ UAZ452_ambulance2 {
+  coords 8097.125 459 9292.532
+  angleY 69
+ }
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 8093.55 459 9328.575
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords 1.678 0 -7.778
+   m_aUnitPrefabSlots {
+    "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords -53.739 1.989 -15.293
+     angleX -6.997
+     angleY -0.112
+     angleZ 0.92
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords 13.009 -4.676 -29.362
+       angleX 6.998
+       angleZ -0.913
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords 34.218 1.681 -9.606
+         {
+          SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+           coords 22.916 -1.421 15.714
+           {
+            SCR_AIGroup : "{2598DBB9C3E01AD3}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_IndirectTeam_p.et" {
+             coords 8.773 -0.307 48.993
+             angleX -0.895
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
