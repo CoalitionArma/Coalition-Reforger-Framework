@@ -8,7 +8,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "Opfor and Blufor are competing for supply in this AO. Each side has a small shipping container to fill with 2000 supply. There are main caches labeled on the map with 500 supply in them, and unmarked smaller caches dispersed around the AO features. After a side has filled their shipping container, they will have to defend it for 10 minutes to win."\
    ""\
    "BLUFOR Composition: Motorized Inf"\
-   "BLUFOR Assets: 1x Armed Humvee"\
+   "BLUFOR Assets: 1x LAV"\
    ""\
    "OPFOR Composition: Motorized Inf"\
    "OPFOR Assets: 1x BTR"\
