@@ -515,6 +515,8 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		m_cUnslotPlayerListBoxComponent.Clear();
 		foreach(int player : playerIDs)
 		{	
+			if(player <= 0 || !SCR_FactionManager.SGetPlayerFaction(player))
+				continue;
 			if(SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey() != "SPEC")
 				continue;
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player))
@@ -629,7 +631,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player) || !SCR_Global.IsAdmin(player))
 				continue;
 			int index;
-			if(SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey() != "SPEC")
+			if(SCR_FactionManager.SGetPlayerFaction(player) && SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey() != "SPEC")
 			{
 				switch(SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey())
 				{

@@ -251,7 +251,7 @@ modded class SCR_PlayerController
 
 		ResetSettingsToStoredValues();
 
-		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
+		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1500, false);
 	}
 	//------------------------------------------------------------------------------------------------
 	void ResetSettingsToStoredValues()
@@ -298,7 +298,7 @@ modded class SCR_PlayerController
 
 		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(GetPlayerId());
 		PlayerController pc = GetGame().GetPlayerController();
-		if (pc)
+		if (pc && group)
 		{
 			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
 			if (rhc)
