@@ -1332,7 +1332,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	protected bool m_bAdminForcedReady = false;
 
 	protected int m_iPlayedFactionsCount;
-	protected ref map<IEntity, bool> m_mPlayersWithEHsMap = new map<IEntity, bool>();
+	protected ref map<IEntity, bool> m_mEntitiesWithEHsMap = new map<IEntity, bool>();
 
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 
@@ -1593,17 +1593,17 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 
 			Replication.BumpMe();//Broadcast change
 
-			DisableSafeStartEHs();
+			DeactivateSafeStartEHs();
 
 			// Send notification message
 			if (m_Logging)
 				m_Logging.GameStarted();
 
 			// Use CallLater to delay the call for the removal of EHs so the changes so m_bSafeStartEnabled can propagate.
-			GetGame().GetCallqueue().CallLater(DisableSafeStartEHs, 1500);
+			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 1500);
 
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
-			GetGame().GetCallqueue().CallLater(DisableSafeStartEHs, 12500);
+			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 12500);
 
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
 
@@ -1731,7 +1731,22 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	// SafeStart EHs
 	//------------------------------------------------------------------------------------------------
 	protected void ActivateSafeStartEHs()
-	{
+	{	
+		auto aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+		if (aiWorld)
+		{
+			array<AIAgent> aiAgents = {};
+			aiWorld.GetAIAgents(aiAgents);
+			foreach (AIAgent agent : aiAgents)
+			{	
+				IEntity controlledEntity = agent.GetControlledEntity();
+				if (!controlledEntity)
+					continue;
+				
+				SetSafeStartEHs(controlledEntity);
+			}
+		}
+		
 		array<int> outPlayers = {};
 		GetGame().GetPlayerManager().GetPlayers(outPlayers);
 
@@ -1741,33 +1756,16 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 			if (!controlledEntity)
 				continue;
 
-			SCR_CharacterDamageManagerComponent.Cast(controlledEntity.FindComponent(SCR_CharacterDamageManagerComponent)).EnableDamageHandling(false);
-
-			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
-			if (!eventHandler)
-				continue;
-
-			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
-			if (!charComp)
-				continue;
-
-			bool alreadyHasEventHandlers = m_mPlayersWithEHsMap.Get(controlledEntity);
-
-			if (!alreadyHasEventHandlers) {
-				charComp.SetSafety(true, true);
-				eventHandler.RegisterScriptHandler("OnProjectileShot", this, OnWeaponFired);
-				eventHandler.RegisterScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
-				m_mPlayersWithEHsMap.Set(controlledEntity, true);
-			};
+			SetSafeStartEHs(controlledEntity);
 		};
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void DisableSafeStartEHs()
+	protected void DeactivateSafeStartEHs()
 	{
-		for (int i = 0; i < m_mPlayersWithEHsMap.Count(); i++)
+		for (int i = 0; i < m_mEntitiesWithEHsMap.Count(); i++)
 		{
-			IEntity controlledEntity = m_mPlayersWithEHsMap.GetKey(i);
+			IEntity controlledEntity = m_mEntitiesWithEHsMap.GetKey(i);
 
 			if (!controlledEntity)
 				continue;
@@ -1787,9 +1785,29 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
 
-			m_mPlayersWithEHsMap.Set(controlledEntity, false);
+			m_mEntitiesWithEHsMap.Set(controlledEntity, false);
 		};
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	protected void SetSafeStartEHs(IEntity controlledEntity)
+	{
+		SCR_CharacterDamageManagerComponent damageHandler = SCR_CharacterDamageManagerComponent.Cast(controlledEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+		if (damageHandler)
+			damageHandler.EnableDamageHandling(false);
+
+		EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
+		CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
+
+		bool alreadyHasEventHandlers = m_mEntitiesWithEHsMap.Get(controlledEntity);
+
+		if (!alreadyHasEventHandlers && charComp && eventHandler) {
+			charComp.SetSafety(true, true);
+			eventHandler.RegisterScriptHandler("OnProjectileShot", this, OnWeaponFired);
+			eventHandler.RegisterScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
+			m_mEntitiesWithEHsMap.Set(controlledEntity, true);
+		};
+	}
 
 	//------------------------------------------------------------------------------------------------
 	protected void OnWeaponFired(int playerID, BaseWeaponComponent weapon, IEntity entity)
