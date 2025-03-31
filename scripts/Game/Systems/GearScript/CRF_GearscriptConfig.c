@@ -124,6 +124,24 @@ class CRF_GearScriptEquipmentConfig
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRole"}, "%1")]
 class CRF_Role
 {	
+	/*
+		HOW TO ADD A ROLE 101:
+		- Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
+			CRF_GS_BLUFOR_CombatEng_P
+	
+		- Create a "Pretty Name" in the bellow attribute ParamEnum array, ie:
+			ParamEnum("Combat Engineer", ""),
+	
+		- Then just add corresponding case into the switch function bellow using pretty name to match the (Role) value you added to the character prefab (make sure you trail it with a _ and end it with a _P) ie:
+			case "Combat Engineer" : {m_sRole = "_CombatEng_P"; break;}
+	
+		- Now you have to go to the corresponding global files:
+			(Configs\Gearscripts\CRF_Global_Equipment_Config.conf)
+			(Configs\Gearscripts\CRF_Global_Weapons_Config.conf)
+		and just add the role you creaed bellow (make sure you validate and reload scripts) into the correcsponding array(s) of equipment you want it to receive, any custom equipment would have to go through a gear script.
+	
+		There, you have added a role, good for you, now stop bothering me about adding in roles manually -Njpatman
+	*/
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {
 		ParamEnum(																								"", ""), 
 		ParamEnum("-------------------------------------------- Leadership --------------------------------------------",  ""),
@@ -175,6 +193,7 @@ class CRF_Role
 	})]
 	string m_sRole;
 	
+	//------------------------------------------------------------------------------------------------
 	void CRF_Role()
 	{
 		switch(m_sRole)
@@ -235,17 +254,30 @@ class CRF_Role
 // WEAPONS
 //------------------------------------------------------------------------------------------------
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
-class CRF_Weapon_Class
+[BaseContainerProps()]
+class CRF_Base_Weapon_Class
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_Weapon;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_Attachments;
-	
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
+class CRF_Weapon_Class : CRF_Base_Weapon_Class
+{	
 	[Attribute()]
 	ref array<ref CRF_Magazine_Class> m_MagazineArray;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
+class CRF_Spec_Weapon_Class : CRF_Base_Weapon_Class
+{
+	[Attribute()]
+	ref array<ref CRF_Spec_Magazine_Class> m_MagazineArray;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -260,29 +292,9 @@ class CRF_Magazine_Class
 }
 
 //------------------------------------------------------------------------------------------------
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
-class CRF_Spec_Weapon_Class
-{
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_Weapon;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ref array<ResourceName> m_Attachments;
-	
-	[Attribute()]
-	ref array<ref CRF_Spec_Magazine_Class> m_MagazineArray;
-}
-
-//------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_MagazineCount", "m_AssistantMagazineCount", "m_Magazine"}, "%1 | %2 : %3")]
-class CRF_Spec_Magazine_Class
-{
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_Magazine;
-	
-	[Attribute()]
-	int m_MagazineCount;
-	
+class CRF_Spec_Magazine_Class : CRF_Magazine_Class
+{	
 	[Attribute()]
 	int m_AssistantMagazineCount;
 }
@@ -381,11 +393,59 @@ class CRF_Default_Gear
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sClothingType"}, "%1")]
 class CRF_Clothing
 {
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("HEADGEAR", "HEADGEAR"), ParamEnum("SHIRT", "SHIRT"), ParamEnum("ARMOREDVEST", "ARMOREDVEST"), ParamEnum("PANTS", "PANTS"), ParamEnum("BOOTS", "BOOTS"), ParamEnum("BACKPACK", "BACKPACK"), ParamEnum("VEST", "VEST"), ParamEnum("HANDWEAR", "HANDWEAR"), ParamEnum("HEAD", "HEAD"), ParamEnum("EYES", "EYES"), ParamEnum("EARS", "EARS"), ParamEnum("FACE", "FACE"), ParamEnum("NECK", "NECK"), ParamEnum("EXTRA1", "EXTRA1"), ParamEnum("EXTRA2", "EXTRA2"), ParamEnum("WAIST", "WAIST"), ParamEnum("EXTRA3", "EXTRA3"), ParamEnum("EXTRA4", "EXTRA4")})]
+	int m_iClothingType;
+	
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {
+		ParamEnum("", ""), 
+		ParamEnum("HEADGEAR", 		"HEADGEAR"), 
+		ParamEnum("SHIRT", 			"SHIRT"), 
+		ParamEnum("ARMOREDVEST", 	"ARMOREDVEST"), 
+		ParamEnum("PANTS", 			"PANTS"), 
+		ParamEnum("BOOTS", 			"BOOTS"), 
+		ParamEnum("BACKPACK", 		"BACKPACK"), 
+		ParamEnum("VEST", 			"VEST"), 
+		ParamEnum("HANDWEAR", 		"HANDWEAR"), 
+		ParamEnum("HEAD", 			"HEAD"), 
+		ParamEnum("EYES", 			"EYES"), 
+		ParamEnum("EARS", 			"EARS"), 
+		ParamEnum("FACE", 			"FACE"), 
+		ParamEnum("NECK", 			"NECK"), 
+		ParamEnum("EXTRA1", 		"EXTRA1"), 
+		ParamEnum("EXTRA2", 		"EXTRA2"), 
+		ParamEnum("WAIST", 			"WAIST"), 
+		ParamEnum("EXTRA3", 		"EXTRA3"), 
+		ParamEnum("EXTRA4", 		"EXTRA4")
+	})]
 	string m_sClothingType;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_ClothingPrefabs;
+	
+	//------------------------------------------------------------------------------------------------
+	void CRF_Clothing()
+	{
+		switch (m_sClothingType)
+		{
+			case "HEADGEAR" 	: {m_iClothingType = 0; 	break;}
+			case "SHIRT" 		: {m_iClothingType = 1; 	break;}
+			case "ARMOREDVEST" 	: {m_iClothingType = 2; 	break;}
+			case "PANTS" 		: {m_iClothingType = 3; 	break;}
+			case "BOOTS" 		: {m_iClothingType = 4; 	break;}
+			case "BACKPACK" 	: {m_iClothingType = 5; 	break;}
+			case "VEST" 		: {m_iClothingType = 6; 	break;}
+			case "HANDWEAR" 	: {m_iClothingType = 7; 	break;}
+			case "HEAD" 		: {m_iClothingType = 8; 	break;}
+			case "EYES" 		: {m_iClothingType = 9; 	break;}
+			case "EARS" 		: {m_iClothingType = 10; 	break;}
+			case "FACE" 		: {m_iClothingType = 11; 	break;}
+			case "NECK" 		: {m_iClothingType = 12; 	break;}
+			case "EXTRA1" 		: {m_iClothingType = 13; 	break;}
+			case "EXTRA2" 		: {m_iClothingType = 14; 	break;}
+			case "WAIST" 		: {m_iClothingType = 15; 	break;}
+			case "EXTRA3" 		: {m_iClothingType = 16; 	break;}
+			case "EXTRA4" 		: {m_iClothingType = 17; 	break;}
+		};
+	}
 }
 
 //------------------------------------------------------------------------------------------------
@@ -404,7 +464,16 @@ class CRF_Custom_Gear
 class CRF_Role_Custom_Gear : CRF_Role
 {	
 	[Attribute()]
-	ref array<ref CRF_Clothing> m_CustomClothing;
+	ref array<ref CRF_Weapon_Class> m_PrimaryWeapon;
+	
+	[Attribute()]
+	ref array<ref CRF_Weapon_Class> m_SecondaryWeapon;
+	
+	[Attribute()]
+	ref array<ref CRF_Weapon_Class> m_Pistol;
+	
+	[Attribute()]
+	ref array<ref CRF_Clothing> m_Clothing;
 	
 	[Attribute()]
 	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
