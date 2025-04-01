@@ -31,7 +31,7 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
      Description "Big Boom (Now With 40% More Throwing)"
     }
     ItemPhysAttributes ItemPhysicalAttributes "{56CA88CA367A150F}" {
-     Weight 15
+     Weight 7
      SizeSetupStrategy Manual
      ItemDimensions 5 5 5
      ItemVolume 6096

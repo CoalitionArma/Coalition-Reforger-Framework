@@ -19,7 +19,7 @@ CRF_SatchelEntity : "{7D968AE11F63B3F6}Prefabs/Weapons/Core/ExplosiveCharge_base
      m_eAmmoTypeFlags HE
     }
     ItemPhysAttributes ItemPhysicalAttributes "{64F17E5AB01FF7CA}" {
-     Weight 18
+     Weight 7
      SizeSetupStrategy Manual
      ItemVolume 4000
     }
