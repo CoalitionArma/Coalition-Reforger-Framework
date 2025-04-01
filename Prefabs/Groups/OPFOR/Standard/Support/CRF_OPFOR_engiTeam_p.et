@@ -16,7 +16,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
-    Name "Medium Anti-Tank Team"
+    Name "Engineer Team"
     m_Image "{11112420EEC8576C}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
     m_sFaction "OPFOR"
     m_aAuthoredLabels {
@@ -116,7 +116,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "OPFOR"
  m_aUnitPrefabSlots {
-  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_comEngi_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_comEngi_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_comEngi_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_comEngi_P.et"
+  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et" "{7903628265C38C66}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_ComEngi_P.et"
  }
  m_aUnitPrefabColorTeams {
   "None" "Blue" "Blue" "Yellow" "Yellow"
