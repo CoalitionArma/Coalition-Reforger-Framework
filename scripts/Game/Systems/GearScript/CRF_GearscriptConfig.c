@@ -207,9 +207,9 @@ class CRF_Role
 			case "Forward Observer" : 				{m_sRole = "_FO_P"; 				break;}
 			case "JTAC" : 							{m_sRole = "_JTAC_P"; 				break;}
 			case "Squad Lead" : 					{m_sRole = "_SL_P"; 				break;}
-			case "Vehicle Lead" : 					{m_sRole = "_LogiLead_P"; 			break;}
+			case "Vehicle Lead" : 					{m_sRole = "_VehLead_P"; 			break;}
 			case "Indirect Lead" :					{m_sRole = "_IndirectLead_P"; 		break;}
-			case "Logi Lead" :						{m_sRole = "_VehLead_P"; 			break;}
+			case "Logi Lead" :						{m_sRole = "_LogiLead_P"; 			break;}
 			//-------------------------------------------- Squad Level -------------------------------------------
 			case "Team Lead" : 						{m_sRole = "_TL_P"; 				break;}
 			case "Medic" : 							{m_sRole = "_Medic_P"; 				break;}
