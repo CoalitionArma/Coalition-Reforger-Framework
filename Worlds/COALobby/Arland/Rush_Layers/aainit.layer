@@ -3,9 +3,15 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear"
+   m_iSetWeatherConstant 1
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
-   m_iStartingHours 5
-   m_iStartingMinutes 55
+   m_iStartingHours 23
+   m_iStartingMinutes 50
+   m_iRangeHoursStart 0
+   m_bAllowHeaderSettings 1
   }
  }
  coords 2916.002 1.379 3377.442

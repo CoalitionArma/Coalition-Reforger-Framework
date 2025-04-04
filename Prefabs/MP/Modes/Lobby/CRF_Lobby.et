@@ -3,7 +3,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  components {
   CRF_GamemodeComponent "{644344EEF3C64CD6}" {
   }
-  CRF_LoggingServerComponent "{61761C7B221DBCD4}" {
+  CRF_MDB_LoggingServerComponent "{645540DB0DEFDC76}" {
    Enabled 0
   }
   SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
