@@ -42,8 +42,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
  }
- m_iFactionOneRatio 2
+ m_iFactionOneRatio 3
  m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
@@ -89,10 +90,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{65081488724D455D}" {
-        m_sCallsign "STRYKER-1 (MGS)"
+        m_sCallsign "LAV-1"
        }
        SCR_CallsignInfo "{6508148872C96B1E}" {
-        m_sCallsign "STRYKER-2 (MGS)"
+        m_sCallsign "LAV-2"
        }
       }
      }

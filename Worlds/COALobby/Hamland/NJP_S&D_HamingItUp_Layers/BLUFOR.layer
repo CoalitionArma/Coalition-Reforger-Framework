@@ -40,19 +40,19 @@ $grp Vehicle : "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et" 
   angleY 120
  }
 }
+$grp Vehicle : "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et" {
+ LAV25_RHS1 {
+  coords 3002.687 30.313 3704.284
+  angleY -150
+ }
+ LAV25_RHS2 {
+  coords 3006.813 30.313 3701.902
+  angleY -150
+ }
+}
 Vehicle M997_maxi_ambulance_MERDC1 : "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et" {
  coords 2987.709 30.094 3696.51
  angleY 120
-}
-$grp Vehicle : "{A76DCC7AD6494682}Prefabs/Vehicles/Wheeled/Stryker/M1128/Stryker_MGS_MERDC.et" {
- Stryker_MGS_MERDC1 {
-  coords 3001.544 30.312 3704.018
-  angleY -151.12
- }
- Stryker_MGS_MERDC2 {
-  coords 3006.539 30.312 3701.263
-  angleY -151.12
- }
 }
 SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
  coords 2993.837 31.265 3728.978
