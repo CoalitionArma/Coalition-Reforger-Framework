@@ -181,6 +181,7 @@ class CRF_Role
 		ParamEnum("Sniper", 						""),
 		ParamEnum("Spotter", 						""),
 		ParamEnum("Drone Operator", 				""),
+		ParamEnum("Combat Engineer", 				""),
 		ParamEnum("--------------------------------------- Vehicle Specialities ---------------------------------------",  ""),
 		ParamEnum("Vehicle Driver", 				""),
 		ParamEnum("Vehicle Gunner", 				""),
@@ -235,6 +236,7 @@ class CRF_Role
 			case "Sniper" : 						{m_sRole = "_Sniper_P"; 			break;}
 			case "Spotter" : 						{m_sRole = "_Spotter_P"; 			break;}
 			case "Drone Operator" : 				{m_sRole = "_DroneOp_P"; 			break;}
+			case "Combat Engineer" : 				{m_sRole = "_ComEngi_P"; 			break;}
 			//--------------------------------------- Vehicle Specialities ----------------------------------------
 			case "Vehicle Driver" : 				{m_sRole = "_VehDriver_P"; 			break;}
 			case "Vehicle Gunner" : 				{m_sRole = "_VehGunner_P"; 			break;}
