@@ -822,7 +822,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage_Callback(SCR_ChatPanel panel, string data)
 	{
-		if (!SCR_Global.IsAdmin() || !SCR_Global.IsModerator())
+		if (!SCR_Global.IsAdmin() && !SCR_Global.IsModerator())
 			return;
 
 		CRF_ClientComponent.GetInstance().ReplyAdminMessage(data, true);
@@ -838,7 +838,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcAsk_SendAdminMessage(string data)
 	{
-		if (!SCR_Global.IsAdmin() || !SCR_Global.IsModerator())
+		if (!SCR_Global.IsAdmin() && !SCR_Global.IsModerator())
 			return;
 
 		PlayerController pc = GetGame().GetPlayerController();
@@ -1099,10 +1099,10 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	{
 		if (sendToPlayer)
 		{
-			if (GetGame().GetPlayerController().GetPlayerId() != playerID && (!SCR_Global.IsAdmin() || !SCR_Global.IsModerator()))
+			if (GetGame().GetPlayerController().GetPlayerId() != playerID && (!SCR_Global.IsAdmin() && !SCR_Global.IsModerator()))
 				return;
 		} else {
-			if (!SCR_Global.IsAdmin() || !SCR_Global.IsModerator())
+			if (!SCR_Global.IsAdmin() && !SCR_Global.IsModerator())
 				return;
 		}
 
