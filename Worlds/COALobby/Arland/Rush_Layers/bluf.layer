@@ -1,3 +1,21 @@
+$grp GenericEntity : "{044C518EDB11E998}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Barricade_US_05.et" {
+ {
+  coords 2450.462 88.9 1424.546
+ }
+ {
+  coords 2454.901 88.896 1420.162
+  angleY 66
+ }
+}
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  coords 2450.222 88.665 1417.132
+ }
+ {
+  coords 2443.069 88.425 1416.353
+  angleY -13
+ }
+}
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
  coords 2505.867 147.597 2282.574
  {
@@ -18,9 +36,77 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
          {
           SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
            coords -8.117 -3.415 -49.128
+           {
+            SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+             coords -73.778 -48.673 -791.699
+            }
+           }
           }
          }
         }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{7A4078C035F198C1}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Medium_FIA_01_V1.et" {
+ {
+  coords 2450.151 88.434 1411.877
+ }
+ {
+  coords 2442.397 88.22 1410.818
+ }
+}
+$grp GenericEntity : "{7C29463885E5CB9E}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Wall_BarbedWire_US_01.et" {
+ {
+  coords 2444.027 88.792 1424.87
+  angleY -5
+ }
+ {
+  coords 2437.037 88.4 1423.25
+  angleY -41
+ }
+ {
+  coords 2433.289 88.096 1418.292
+  angleY -89
+ }
+}
+$grp GenericEntity : "{C63BFEEA9DE1CF26}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_S_FIA_05_Campaign.et" {
+ {
+  coords 2458.307 88.211 1405.164
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_fResourceValueCurrent 3000
+        m_fResourceValueMax 3000
+        m_bEnableResourceGain 0
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 2431.918 87.898 1411.656
+  angleY 84
+  {
+   GenericEntity {
+    ID "5D4539393E1536C3"
+    components {
+     SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+        m_fResourceValueCurrent 3000
+        m_fResourceValueMax 3000
+        m_bEnableResourceGain 0
        }
       }
      }

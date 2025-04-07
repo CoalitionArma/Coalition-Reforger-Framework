@@ -1,0 +1,180 @@
+$grp SCR_AIGroup : "{67CF9BB46BE94DF0}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_AirCrew_p.et" {
+ {
+  coords 1190.35 39 2715.252
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1174.185 39 2710.861
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1154.718 39 2705.454
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1130.62 39 2698.793
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1110.652 39.01 2692.934
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1093.161 39 2688.147
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1073.329 39.01 2682.118
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1050.585 39 2676.268
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1021.296 39 2667.995
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 1000.246 39 2662.177
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 979.819 39 2656.946
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 959.521 38.999 2651.19
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 936.371 39 2644.667
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 913.929 39 2637.686
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 894.231 39 2632.261
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+ {
+  coords 877.789 39.001 2627.069
+  angleY 164.01
+  m_aUnitPrefabSlots {
+   "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"
+  }
+ }
+}
+$grp Vehicle : "{72C04A6EABC12143}Prefabs/Vehicles/Helicopters/AH6M/AH6M_M134.et" {
+ AH6M_M1 {
+  coords 1191.26 39 2712.584
+  angleY 74
+ }
+ AH6M_M2 {
+  coords 1175.095 39 2708.193
+  angleY 74
+ }
+ AH6M_M3 {
+  coords 1155.627 39 2702.786
+  angleY 74
+ }
+ AH6M_M4 {
+  coords 1131.529 39 2696.124
+  angleY 74
+ }
+ AH6M_M5 {
+  coords 1111.561 39 2690.265
+  angleY 74
+ }
+ AH6M_M6 {
+  coords 1094.07 39 2685.479
+  angleY 74
+ }
+ AH6M_M7 {
+  coords 1074.239 39 2679.449
+  angleY 74
+ }
+ AH6M_M8 {
+  coords 1051.494 39 2673.599
+  angleY 74
+ }
+ AH6M_M9 {
+  coords 1022.205 39.01 2665.327
+  angleY 74
+ }
+ AH6M_M10 {
+  coords 1001.156 39 2659.509
+  angleY 74
+ }
+ AH6M_M11 {
+  coords 980.728 39 2654.277
+  angleY 74
+ }
+ AH6M_M12 {
+  coords 960.431 39 2648.521
+  angleY 74
+ }
+ AH6M_M13 {
+  coords 937.28 39 2641.998
+  angleY 74
+ }
+ AH6M_M14 {
+  coords 914.838 39 2635.017
+  angleY 74
+ }
+ AH6M_M15 {
+  coords 895.141 39 2629.593
+  angleY 74
+ }
+ AH6M_M16 {
+  coords 878.698 39.001 2624.401
+  angleY 74
+ }
+}

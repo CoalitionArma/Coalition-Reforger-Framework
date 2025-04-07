@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{70922B290BDC2266}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_XP_FG_Liberator_PVS14.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

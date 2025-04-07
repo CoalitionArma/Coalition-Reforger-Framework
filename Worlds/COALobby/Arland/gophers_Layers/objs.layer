@@ -1,0 +1,54 @@
+$grp GenericEntity : "{4C931B452C796A2A}Prefabs/Destructible/AmmoStorage/GMFX_AmmoStorage_USSR.et" {
+ obj1 {
+  coords 1129.714 38.04 2923.261
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Vodka supply #1 destroyed!\", duration: 5);"\
+  "		"\
+  "		IEntity obj2 = GetWorld().FindEntityByName(\"obj2\");"\
+  "		IEntity obj3 = GetWorld().FindEntityByName(\"obj3\");"\
+  "		IEntity obj4 = GetWorld().FindEntityByName(\"obj4\");"\
+  "		"\
+  "		if (!obj2 && !obj3 && !obj4)"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"All Vodka destroyed or drank! BLU VICTORY.\", duration: 5);"\
+  "	"
+ }
+ obj2 {
+  coords 1058.485 38.045 2864.332
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Vodka supply #2 destroyed!\", duration: 5);"\
+  "		"\
+  "		IEntity obj2 = GetWorld().FindEntityByName(\"obj1\");"\
+  "		IEntity obj3 = GetWorld().FindEntityByName(\"obj3\");"\
+  "		IEntity obj4 = GetWorld().FindEntityByName(\"obj4\");"\
+  "		"\
+  "		if (!obj2 && !obj3 && !obj4)"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"All Vodka destroyed or drank! BLU VICTORY.\", duration: 5);"\
+  "	"
+ }
+ obj3 {
+  coords 1008.702 38.027 2903.29
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Vodka supply #3 destroyed!\", duration: 5);"\
+  "		"\
+  "		IEntity obj2 = GetWorld().FindEntityByName(\"obj2\");"\
+  "		IEntity obj3 = GetWorld().FindEntityByName(\"obj1\");"\
+  "		IEntity obj4 = GetWorld().FindEntityByName(\"obj4\");"\
+  "		"\
+  "		if (!obj2 && !obj3 && !obj4)"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"All Vodka destroyed or drank! BLU VICTORY.\", duration: 5);"\
+  "	"
+ }
+ obj4 {
+  coords 1073.541 39.151 2967.026
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Vodka supply #4 destroyed!\", duration: 5);"\
+  "		"\
+  "		IEntity obj2 = GetWorld().FindEntityByName(\"obj2\");"\
+  "		IEntity obj3 = GetWorld().FindEntityByName(\"obj3\");"\
+  "		IEntity obj4 = GetWorld().FindEntityByName(\"obj1\");"\
+  "		"\
+  "		if (!obj2 && !obj3 && !obj4)"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"All Vodka destroyed or drank! BLU VICTORY.\", duration: 5);"\
+  "	"
+ }
+}

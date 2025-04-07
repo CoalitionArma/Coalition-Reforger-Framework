@@ -280,9 +280,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
-		
-		int playerId = instigatorContextData.GetVictimPlayerID();
 
+		int playerId = instigatorContextData.GetVictimPlayerID();
+		
 		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)
 			return;
 
@@ -291,7 +291,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			delay = 0;
 
 		// If respawn is enabled
-		if (m_bRespawnEnabled && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (m_bRespawnEnabled && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" && m_GamemodeState != CRF_GamemodeState.AAR)
 		{
 			string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
 
@@ -317,15 +317,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		
 		if(!pc || !initialEntity)
+		{	
+			GetGame().GetCallqueue().CallLater(EnterSpectator, 100, false, playerId, entity);
 			return;
+		}
 
 		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, initialEntity);
 
 		SCR_AIGroup currentGroup = SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId);
 		if (currentGroup)
 			currentGroup.RemovePlayer(playerId);
-
-		SCR_CharacterDamageManagerComponent.Cast(initialEntity.FindComponent(SCR_CharacterDamageManagerComponent)).EnableDamageHandling(false);
+		
+		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(initialEntity.FindComponent(SCR_CharacterDamageManagerComponent)); 
+		if(damManager)
+			damManager.EnableDamageHandling(false);
+		
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 
 		vector cameraPos[4];
@@ -594,12 +600,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		m_iRespawnTimer--;
 
-		if (m_iRespawnTimer <= 0)
+		if (m_iRespawnTimer <= 0 || m_GamemodeState == CRF_GamemodeState.AAR)
 		{
 			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
+				
+			if(m_GamemodeState != CRF_GamemodeState.AAR)
+			{
+				SCR_PlayerController.Cast(GetGame().GetPlayerController()).RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
+				GetGame().GetMenuManager().CloseAllMenus();
+			};
 			GetGame().GetCallqueue().Remove(RespawnTimer);
-			GetGame().GetMenuManager().CloseAllMenus();
+			return;
 		}
 
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
@@ -897,10 +908,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------------------
 	void OnGamemodeStateChanged()
 	{
-		if (RplSession.Mode() == RplMode.Dedicated)
+		if (RplSession.Mode() == RplMode.Dedicated || RplSession.Mode() == RplMode.Listen)
 		{
 			if (m_OnStateChanged)
-				m_OnStateChanged.Invoke(m_GamemodeState);
+				m_OnStateChanged.Invoke();
 
 			foreach (CRF_GamemodeComponent component : m_aAdditionalCRFGamemodeComponents)
 			{
@@ -1020,30 +1031,33 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (GetGame().GetPlayerManager().GetPlayerControlledEntity(player).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 				continue;
 
-			GetGame().GetCallqueue().CallLater(EnterSpectator, 500, false, player);
-		}
+			HitZone defaultHitZone = SCR_CharacterDamageManagerComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(player).FindComponent(SCR_CharacterDamageManagerComponent)).GetDefaultHitZone();
+			
+			if(defaultHitZone)
+				defaultHitZone.SetHealth(0);
 
-		// Log player data
-		if (!m_PlayerData)
-		{
-			SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
-			if (!dataCollector)
-			{
-				Print ("SCR_CareerEndScreenUI: No data collector was found.", LogLevel.ERROR);
-				return;
-			}
-
-			m_PlayerData = dataCollector.GetPlayerData(0, false);
-
-			//If there's still no player data, we wait for the invoker on data received to let us now that we got the instance through rpl
+			// Log player data
 			if (!m_PlayerData)
 			{
-				SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_DataCollectorCommunicationComponent));
-				if (communicationComponent)
-					communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+				SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
+				if (!dataCollector)
+				{
+					Print ("SCR_CareerEndScreenUI: No data collector was found.", LogLevel.ERROR);
+					return;
+				}
+		
+				m_PlayerData = dataCollector.GetPlayerData(player, false);
+		
+				//If there's still no player data, we wait for the invoker on data received to let us now that we got the instance through rpl
+				if (!m_PlayerData)
+				{
+					SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent));
+					if (communicationComponent)
+						communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+				}
+				else if (!m_PlayerData.IsDataProgressionReady())
+					m_PlayerData.CalculateStatsChange();
 			}
-			else if (!m_PlayerData.IsDataProgressionReady())
-				m_PlayerData.CalculateStatsChange();
 		}
 	}
 

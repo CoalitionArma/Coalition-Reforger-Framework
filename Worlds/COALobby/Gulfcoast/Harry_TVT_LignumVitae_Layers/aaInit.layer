@@ -8,7 +8,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "Opfor and Blufor are competing for supply in this AO. Each side has a small shipping container to fill with 2000 supply. There are main caches labeled on the map with 500 supply in them, and unmarked smaller caches dispersed around the AO features. After a side has filled their shipping container, they will have to defend it for 10 minutes to win."\
    ""\
    "BLUFOR Composition: Motorized Inf"\
-   "BLUFOR Assets: 1x Armed Humvee"\
+   "BLUFOR Assets: 1x LAV"\
    ""\
    "OPFOR Composition: Motorized Inf"\
    "OPFOR Assets: 1x BTR"\
@@ -27,7 +27,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_MissionDescriptor "{64E2F2AA2AC24CE6}" {
    m_sTitle "Radio Note"
-   m_sTextData "Each side has RTO's to utilize. SL's has been given GI radios. Communicate with your RTO."
+   m_sTextData "Each side has RTO's to utilize. SL's and TL's have been given GI radios. Communicate with your RTO."
    m_bShowForAnyFaction 1
   }
  }
@@ -39,7 +39,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableGIRadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{20583EBBA43F6B36}Configs/Gearscripts/Custom/Harry/LignumVitae/CRF_GS_USSR80s_RPK_RTO.conf"
+  m_rGearScript "{36DC4F6ADAD01D40}Configs/Gearscripts/Custom/Harry/LignumVitae/CRF_GS_USSR80s_RPK_RTO.conf"
   m_rLeadershipRadiosPrefab "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et"
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
@@ -72,9 +72,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{64E2F2BFF66D38B5}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{64E2F2BFF64997AD}" {
-        m_sCallsign "Humvee-1"
-       }
        SCR_CallsignInfo "{64E2F2BFF6B5910A}" {
         m_sCallsign "2PLT"
        }
@@ -89,6 +86,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{64E2F2B1CF10C312}" {
         m_sCallsign "Recon Team"
+       }
+       SCR_CallsignInfo "{64E2F2BFF64997AD}" {
+        m_sCallsign "LAV"
        }
       }
      }
@@ -114,9 +114,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{64E2F2BC081868CA}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{64E2F2BC0844DAF8}" {
-        m_sCallsign "BTR"
-       }
        SCR_CallsignInfo "{64E2F2BC08A2CAE6}" {
         m_sCallsign "2PLT"
        }
@@ -131,6 +128,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{64E2F2B1D45C4265}" {
         m_sCallsign "Recon Team"
+       }
+       SCR_CallsignInfo "{64E2F2BC0844DAF8}" {
+        m_sCallsign "BTR"
        }
       }
      }
