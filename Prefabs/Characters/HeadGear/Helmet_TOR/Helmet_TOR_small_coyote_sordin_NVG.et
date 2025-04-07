@@ -1,0 +1,40 @@
+GameEntity : "{D9B30C3875AC2590}Prefabs/Characters/HeadGear/Helmet_TOR/Helmet_TOR_base.et" {
+ ID "50D485E1435D6C72"
+ components {
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{15A73F326A4A817E}Assets/Characters/HeadGear/Helmet_TORnew/tor_s_sordin_ground.xob"
+  }
+  ParametricMaterialInstanceComponent "{5854DCD8F168E46E}" {
+   ColorAlbedo 1 0.521 0.2423 1
+  }
+  RHS_HelmetNodeStorageComponent "{5DB13C5777E6E695}" {
+   Attributes SCR_ItemAttributeCollection "{5DB13C5760610D64}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_tor_small_Name (#RHS-Headgear_Sordin_Name_short) - #RHS-Color_Olive"
+     Description "#RHS-Headgear_tor_Description"
+    }
+    CustomAttributes {
+     RHS_CustomAttributes "{5DB8F5B9ACB547EA}" {
+      m_sShortName "#RHS-Headgear_tor_small_green_Name"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     Prefab "{B0534A120633D08D}Prefabs/Items/Equipment/Nightvision/1PN138/NVG_1PN138.et"
+    }
+    RHS_LoadoutSlotInfo Headset {
+     Enabled 0
+    }
+   }
+   WornModel "{7B92BEF419BC9D97}Assets/Characters/HeadGear/Helmet_TORnew/tor_s_sordin.xob"
+   WornMaterialsOverride {
+   }
+   ItemModel "{15A73F326A4A817E}Assets/Characters/HeadGear/Helmet_TORnew/tor_s_sordin_ground.xob"
+   ItemMaterialsOverride {
+   }
+  }
+ }
+}

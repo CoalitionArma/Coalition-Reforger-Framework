@@ -1,0 +1,82 @@
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+   DefaultFormation "Line"
+  }
+ }
+ coords 4508.479 17.328 2554.213
+ angleY -68.52
+ m_bSnapToTerrain 0
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords -3.072 -0.326 34.346
+   angleY 92.068
+   m_aUnitPrefabSlots {
+    "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+   }
+   m_bSnapToTerrain 0
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Column"
+      }
+     }
+     coords 25.037 0.326 3.603
+     angleY 90.32
+     m_bSnapToTerrain 0
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -5.331 0 -0.049
+       angleY -2.388
+       m_bSnapToTerrain 0
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Column"
+          }
+         }
+         coords -5.025 0 0.188
+         angleY 2.151
+         m_bSnapToTerrain 0
+         {
+          SCR_AIGroup : "{ABEBD4386CA25E24}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_AirCrew_p.et" {
+           coords 11.852 1.143 36.578
+           angleY 177.917
+           m_bSnapToTerrain 0
+           {
+            SCR_AIGroup : "{ABEBD4386CA25E24}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_AirCrew_p.et" {
+             coords 10.007 -1.595 80.773
+             angleY -174.855
+             m_aUnitPrefabSlots {
+              "{810337D2F231A02D}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Pilot_P.et" "{810337D2F231A02D}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Pilot_P.et"
+             }
+             m_bSnapToTerrain 0
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle MH47G1 : "{6EE8BD07DE06EC44}Prefabs/Vehicles/Helicopters/H47/MH47G.et" {
+ coords 4537.396 17.495 2550.668
+ angleX -2.359
+ angleY 111.585
+}
+Vehicle AH6M_M1 : "{72C04A6EABC12143}Prefabs/Vehicles/Helicopters/AH6M/AH6M_M134.et" {
+ coords 4461.104 16.548 2584.999
+ angleY 115.421
+}

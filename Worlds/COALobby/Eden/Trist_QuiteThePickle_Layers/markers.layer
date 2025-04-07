@@ -1,0 +1,634 @@
+PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ coords 4409.2 78.695 2708.32
+ angleY 22.688
+ m_fWorldSize 150
+ {
+  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   {
+    coords 0 0 -236.613
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords 357.176 0 0.001
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords 357.175 0 -236.613
+    angleY 0
+    m_fWorldSize 150
+   }
+  }
+ }
+}
+PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+ coords 7444.329 129.25 2262.76
+ m_fWorldSize 150
+ {
+  $grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+   {
+    coords 0 0 -43.787
+    m_fWorldSize 150
+   }
+   {
+    coords 40 0 -43.787
+    m_fWorldSize 150
+   }
+   {
+    coords 40 0 0
+    m_fWorldSize 150
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ LZExtMarkerA {
+  coords 6459.155 1.651 1670.356
+  angleY 90
+  m_MarkerColor 0 0.034 0.103 1
+  m_sQuadName "pick-up-2"
+  m_fWorldSize 250
+  m_sDescription "LZ/Ext A"
+  m_aVisibleForFactions {
+   "INDFOR" "BLUFOR"
+  }
+  m_bShowForAnyFaction 1
+ }
+ LZExtMarkerC {
+  coords 7209.692 141.155 2171.962
+  angleY 90
+  m_MarkerColor 0 0.034 0.103 1
+  m_sQuadName "pick-up-2"
+  m_fWorldSize 250
+  m_sDescription "LZ/Ext C"
+  m_aVisibleForFactions {
+   "INDFOR" "BLUFOR"
+  }
+  m_bShowForAnyFaction 1
+ }
+ LZExtMarkerD {
+  coords 7779.44 0 1332.186
+  angleY 90
+  m_MarkerColor 0 0.034 0.103 1
+  m_sQuadName "pick-up-2"
+  m_fWorldSize 250
+  m_sDescription "LZ/Ext D"
+  m_aVisibleForFactions {
+   "INDFOR" "BLUFOR"
+  }
+  m_bShowForAnyFaction 1
+ }
+ LZExtMarkerB {
+  coords 6633.396 5.297 3077.942
+  angleY 90
+  m_MarkerColor 0 0.034 0.103 1
+  m_sQuadName "pick-up-2"
+  m_fWorldSize 250
+  m_sDescription "LZ/Ext B"
+  m_aVisibleForFactions {
+   "INDFOR" "BLUFOR"
+  }
+  m_bShowForAnyFaction 1
+ }
+ LZExtMarkerE {
+  coords 7774.245 339.036 3085.674
+  angleY 90
+  m_MarkerColor 0 0.034 0.103 1
+  m_sQuadName "pick-up-2"
+  m_fWorldSize 250
+  m_sDescription "LZ/Ext E"
+  m_aVisibleForFactions {
+   "INDFOR" "BLUFOR"
+  }
+  m_bShowForAnyFaction 1
+ }
+ LZExtMarkerF {
+  coords 8249.374 223.125 2161.099
+  angleY 90
+  m_MarkerColor 0 0.034 0.103 1
+  m_sQuadName "pick-up-2"
+  m_fWorldSize 250
+  m_sDescription "LZ/Ext F"
+  m_aVisibleForFactions {
+   "INDFOR" "BLUFOR"
+  }
+  m_bShowForAnyFaction 1
+ }
+}
+PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ coords 7641.966 168.943 4318.035
+ angleY 18.196
+ m_fWorldSize 150
+ {
+  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+   {
+    coords 0 0 -47.486
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -0.001 0 -97.604
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -0.001 0 -165.427
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -85.401 0 -165.427
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -161.542 0 -165.427
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -240.277 0 -165.427
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -240.277 0 -108.023
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -240.277 0 -52.615
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -240.278 0 -5.223
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -148.99 0 -5.223
+    angleY 0
+    m_fWorldSize 150
+   }
+   {
+    coords -60.457 0 -2.681
+    angleY 0
+    m_fWorldSize 150
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 6200 0 1000
+  angleY 0
+  m_MarkerColor 0.008 0.001 0.001 1
+  m_fWorldSize 200
+  m_sDescription "AO Limit (Non-Air)"
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    {
+     coords 0 0 500
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 0 0 1000
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 0 0 1500
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 0 0 2000
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 0 0 2500
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 0 0 3000
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1256.394 0 3887.187
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1017.895 0 3887.187
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 326.154 0 3348.953
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 171.608 0 3183.871
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1484.666 0 3781.735
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 500 0 -478.044
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1000 0 -478.044
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1500 0 -478.044
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2009.925 0 -460
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2513.055 0 -460
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2951.626 0 -634.496
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 3150.643 0 324.665
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2904.673 0 573.767
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2686.072 0 817.932
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2461.344 0 1120.667
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2290.459 0 1420.667
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1955.271 0 2010.839
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1842.049 0 2304.909
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1834.296 0 2600
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1834.296 0 2900
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1733.603 0 3200
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 1593.065 0 3468.784
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2110.339 0 1715.812
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 3509.736 0 -47.563
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 2.685 0 -478.044
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 735.156 0 3887.187
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 3825.053 0 -357.199
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 3804.995 0 -623.958
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+    {
+     coords 3421.605 0 -863.594
+     angleY 0
+     m_MarkerColor 0.008 0.001 0.001 1
+     m_fWorldSize 200
+     m_sDescription "AO Limit (Non-Air)"
+    }
+   }
+  }
+ }
+ RescueZoneAIR {
+  coords 5200 0 2039.876
+  angleY 0
+  m_MarkerColor 0 0.009 0.381 1
+  m_fWorldSize 250
+  m_sDescription "Air Rescue Route"
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    RescueZoneMarker2 {
+     coords 0 0 960.124
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 250
+     m_sDescription "Air Rescue Route"
+    }
+    RescueZoneMarker3 {
+     coords 392.598 0 960.124
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 250
+     m_sDescription "Air Rescue Route"
+    }
+    RescueZoneMarker4 {
+     coords 392.598 0 0
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 250
+     m_sDescription "Air Rescue Route"
+    }
+    RescueZoneMarker20 {
+     coords 182.531 0 474.342
+     angleY -90
+     m_MarkerColor 0 0.009 0.381 1
+     m_sQuadName "arrow-large"
+     m_fWorldSize 200
+     m_sDescription "Air Rescue Route"
+    }
+   }
+  }
+ }
+ RescueZoneLAND {
+  coords 6276.034 0 4550
+  angleY 0
+  m_MarkerColor 0 0.009 0.381 1
+  m_fWorldSize 200
+  m_sDescription "Land Rescue Route "
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    RescueArrowMrkr {
+     coords 205.052 0 204.984
+     angleY -60
+     m_MarkerColor 0 0.009 0.381 1
+     m_sQuadName "arrow-large"
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route"
+    }
+    RescueZoneMarker5 {
+     coords 253.763 0 -126.825
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker6 {
+     coords 119.977 0 -126.825
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker7 {
+     coords 0 0 -126.825
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker10 {
+     coords 0 0 163.715
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker11 {
+     coords 0 0 310.046
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker12 {
+     coords 0 0 405.627
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker13 {
+     coords 176.05 0 405.627
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker14 {
+     coords 405.817 0 405.627
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker9 {
+     coords 335.938 18.64 -119.368
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker19 {
+     coords 574.621 18.64 244.471
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker21 {
+     coords 516.91 18.64 145.384
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker22 {
+     coords 462.358 18.64 66.486
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker23 {
+     coords 406.151 18.64 -26.772
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+    RescueZoneMarker15 {
+     coords 555.216 0 405.627
+     angleY 0
+     m_MarkerColor 0 0.009 0.381 1
+     m_fWorldSize 200
+     m_sDescription "Land Rescue Route "
+    }
+   }
+  }
+ }
+ RescueZoneMarker8 {
+  coords 7560.279 188.609 4489.85
+  angleY -149.58
+  m_MarkerColor 0.394 0.003 0.003 1
+  m_sQuadName "arrow-large"
+  m_fWorldSize 200
+  m_sDescription "OPFOR Presence"
+ }
+}
+PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+ coords 6877.883 18.64 4787.013
+ angleY 0
+ m_fWorldSize 200
+ {
+  $grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+   {
+    coords -57.711 0 -99.087
+    angleY 0
+    m_fWorldSize 200
+   }
+   {
+    coords -112.263 0 -177.985
+    angleY 0
+    m_fWorldSize 200
+   }
+   {
+    coords -168.47 0 -271.244
+    angleY 0
+    m_fWorldSize 200
+   }
+   {
+    coords -238.683 0 -363.839
+    angleY 0
+    m_fWorldSize 200
+   }
+  }
+ }
+}

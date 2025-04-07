@@ -605,7 +605,15 @@ PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" 
   }
  }
 }
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
- coords 2277.25 77.933 1153.265
- m_fWorldSize 200
+$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 2277.25 77.933 1153.265
+  m_fWorldSize 200
+ }
+ {
+  coords 2455.945 87.713 1394.543
+  m_sQuadName "help"
+  m_fWorldSize 200
+  m_sDescription "Mortar"
+ }
 }

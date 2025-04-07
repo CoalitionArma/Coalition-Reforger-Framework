@@ -1,0 +1,40 @@
+GenericEntity : "{34BE3822A89A0DDC}Prefabs/Weapons/Rifles/MK14MOD1/Rifle_MK14MOD1_base.et" {
+ ID "5260C45AAAA407F4"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{649CE408DBEFC47B}" {
+     Enabled 0
+     AttachmentSlot InventoryStorageSlot Scope {
+      Prefab "{EA4EC32B3DB20312}Prefabs/Weapons/Attachments/Optics/Scopes/Optic_TrijiconACOGTA31_RMR/Optic_TrijiconACOGTA31_RMR_GN.et"
+     }
+    }
+    AttachmentSlotComponent "{649F1B593E04C316}" {
+     AttachmentSlot InventoryStorageSlot "{649F1B5942ABD819}" {
+      Prefab "{23D34FB66BBC8BEE}Prefabs/Weapons/Attachments/Bipods/harris_bipod/rhs_lt706_harris.et"
+     }
+    }
+    AttachmentSlotComponent "{649F1B59B4B61745}" {
+     AttachmentSlot InventoryStorageSlot "{649F1B59C0851326}" {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{649F22D8C4AB4279}" {
+     AttachmentSlot InventoryStorageSlot "{649F22D8C9DDB1A8}" {
+      Prefab "{5F7D782D70C0CD77}Prefabs/Weapons/Attachments/Optics/Scopes/Optic_ELCAN_OS4x/Optic_ELCAN_OS4x_RMR.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{649F1B5970ADC8BA}" {
+       AttachmentSlot InventoryStorageSlot "{649F1B597F9630FD}" {
+        Prefab "{B557C022319FA38D}Prefabs/Weapons/Attachments/Muzzle/762x51/Suppressor_DDWave.et"
+       }
+      }
+     }
+     MagazineTemplate "{7CA375964B9F7C9A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_M80A1.et"
+    }
+   }
+  }
+ }
+}

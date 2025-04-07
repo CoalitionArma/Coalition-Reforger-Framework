@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{C02F4E6AB51511FD}Prefabs/Characters/HeadGear/Helmet_OPSCORE/Helmet_OPSCORE_MID_FG_PVS14.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
