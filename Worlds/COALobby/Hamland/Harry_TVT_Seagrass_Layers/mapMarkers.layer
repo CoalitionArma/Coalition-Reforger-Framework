@@ -1,0 +1,77 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 4490.939 0 3331.149
+ }
+ {
+  coords 4490.938 0 3531.149
+ }
+ {
+  coords 4490.938 0 3731.149
+ }
+ {
+  coords 4490.938 0 3931.149
+ }
+ {
+  coords 4490.938 0 4131.149
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 3405.773 24.667 3131.514
+  angleY 52.516
+ }
+ {
+  coords 3527.481 24.667 2972.81
+  angleY 52.516
+ }
+ {
+  coords 3649.189 24.667 2814.105
+  angleY 14.317
+ }
+ {
+  coords 3599.733 24.667 2620.316
+  angleY 14.317
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 3401.985 0 2546.903
+  angleY -30.204
+ }
+ {
+  coords 3301.371 0 2719.752
+  angleY -30.204
+ }
+ {
+  coords 3200.756 0 2892.601
+  angleY 24.616
+ }
+ {
+  coords 3284.063 0 3074.425
+  angleY 24.616
+ }
+ {
+  coords 3367.37 0 3256.249
+  angleY 24.616
+ }
+ {
+  coords 3450.677 0 3438.073
+  angleY 24.616
+ }
+ {
+  coords 3533.984 0 3619.897
+  angleY 24.616
+ }
+ {
+  coords 3617.291 0 3801.721
+  angleY 24.616
+ }
+ {
+  coords 3783.905 0 4165.369
+  angleY 24.616
+ }
+ {
+  coords 3700.598 0 3983.545
+  angleY 24.616
+ }
+}
