@@ -8,7 +8,7 @@ class CRF_PauseMenuUI: PauseMenuUI
 		SCR_ButtonTextComponent comp = SCR_ButtonTextComponent.GetButtonText("CoalAdminMenuButton", GetRootWidget());
 		FrameWidget frame = FrameWidget.Cast(GetRootWidget().FindAnyWidget("CoalAdminMenu"));
 		
-		if (!SCR_Global.IsAdmin() || !CRF_GamemodeComponent.GetInstance())
+		if ((!SCR_Global.IsAdmin() && !SCR_Global.IsModerator()) || !CRF_GamemodeComponent.GetInstance() || !CRF_Gamemode.GetInstance())
 			frame.SetVisible(false);
 		
 		comp.m_OnClicked.Insert(OpenAdminMenu);

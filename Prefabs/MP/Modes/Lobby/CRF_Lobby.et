@@ -918,6 +918,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
    ID "632771FB44BBF8D8"
    coords -318.139 54.389 2.396
+   "Default channel" "Group"
   }
   SCR_EditorSettingsEntity {
    ID "632771FB44BBD90B"

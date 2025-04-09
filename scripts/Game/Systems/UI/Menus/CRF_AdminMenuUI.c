@@ -7,6 +7,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 {
 	protected CRF_ClientComponent m_clientComponent;
 	protected InputManager m_InputManager;
+	protected SCR_ChatPanel m_ChatPanel;
 	protected bool m_bFocused = true;
 	protected Widget m_wRoot;
 	protected FrameWidget m_adminMenuRoot;
@@ -22,6 +23,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected SCR_ListBoxComponent m_list3;
 	protected SCR_ListBoxComponent m_list4;
 	protected MultilineEditBoxWidget m_editBox1;
+	protected EditBoxWidget m_editbox2;
+	protected EditBoxWidget m_editbox3;
 	protected WindowWidget m_windowBox1;
 	protected SCR_ButtonTextComponent m_respawnMenuButton;
 	protected SCR_ButtonTextComponent m_resetGearMenuButton;
@@ -29,6 +32,8 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected SCR_ButtonTextComponent m_hintMenuButton;
 	protected SCR_ButtonTextComponent m_healMenuButton;
 	protected SCR_ButtonTextComponent m_actionButton;
+	protected SCR_ButtonTextComponent m_searchButton1;
+	protected SCR_ButtonTextComponent m_searchButton2;
 	protected SCR_ButtonTextComponent m_menuButton1;
 	protected SCR_ButtonTextComponent m_menuButton2;
 	protected SCR_ButtonTextComponent m_menuButton3;
@@ -69,12 +74,16 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list3 = SCR_ListBoxComponent.Cast(m_list3Root.FindHandler(SCR_ListBoxComponent));
 		m_list4Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List4Box"));
 		m_list4 = SCR_ListBoxComponent.Cast(m_list4Root.FindHandler(SCR_ListBoxComponent));
-		m_actionButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", m_adminMenuRoot);	
+		m_actionButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", m_adminMenuRoot);
+		m_searchButton1 = SCR_ButtonTextComponent.GetButtonText("SearchButton1", m_adminMenuRoot);
+		m_searchButton2 = SCR_ButtonTextComponent.GetButtonText("SearchButton2", m_adminMenuRoot);	
 		m_menuButton1 = SCR_ButtonTextComponent.GetButtonText("MenuButton1", m_adminMenuRoot);
 		m_menuButton2 = SCR_ButtonTextComponent.GetButtonText("MenuButton2", m_adminMenuRoot);
 		m_menuButton3 = SCR_ButtonTextComponent.GetButtonText("MenuButton3", m_adminMenuRoot);
 		m_menuButton4 = SCR_ButtonTextComponent.GetButtonText("MenuButton4", m_adminMenuRoot);
 		m_editBox1 = MultilineEditBoxWidget.Cast(m_wRoot.FindAnyWidget("EditBox1"));
+		m_editbox2 = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("EditBox2"));
+		m_editbox3 = EditBoxWidget.Cast(m_wRoot.FindAnyWidget("EditBox3"));
 		m_windowBox1 = WindowWidget.Cast(m_wRoot.FindAnyWidget("Window0"));
 		
 		//Initializes the Respawn Menu
@@ -100,12 +109,25 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_healMenuButton = SCR_ButtonTextComponent.GetButtonText("HealButton", m_wRoot);
 		m_healMenuButton.m_OnClicked.Insert(HealButton);
 		m_healMenuText = TextWidget.Cast(m_healMenuButton.GetRootWidget().FindWidget("HealText"));
+		
+		//Load chat
+		Widget wChatPanel = GetRootWidget().FindAnyWidget("ChatPanel");
+		if (wChatPanel)
+			m_ChatPanel = SCR_ChatPanel.Cast(wChatPanel.FindHandler(SCR_ChatPanel));
+		
+		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+		
+		m_ChatPanel.SetAlwaysVisible(true);
+		m_ChatPanel.ExpandMessageLines(20); // Increase the amount of message liens
+		m_ChatPanel.ForceShowFullHistory(); // Load full history
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnMenuClose()
 	{
 		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_FE_HUD_PAUSE_MENU_CLOSE);
+		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+		m_ChatPanel.SetAlwaysVisible(false)
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -176,9 +198,15 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list3Root.SetVisible(false);
 		m_list4Root.SetVisible(false);
 		m_editBox1.SetVisible(false);
+		m_editbox2.SetVisible(false);
+		m_editbox3.SetVisible(false);
 		m_windowBox1.SetVisible(false);
 		m_actionButton.SetVisible(false, false);
 		m_actionButton.m_OnClicked.Clear();
+		m_searchButton1.SetVisible(false, false);
+		m_searchButton1.m_OnClicked.Clear();
+		m_searchButton2.SetVisible(false, false);
+		m_searchButton2.m_OnClicked.Clear();
 		m_menuButton1.SetVisible(false, false);
 		m_menuButton2.SetVisible(false, false);
 		m_menuButton3.SetVisible(false, false);
@@ -488,7 +516,12 @@ class CRF_AdminMenu: ChimeraMenuBase
 			m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_BACK_WB, EActionTrigger.DOWN, Close);
 		#endif
 	}
-
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	override void OnMenuUpdate(float tDelta)
+	{
+	    if (m_ChatPanel)
+	        m_ChatPanel.OnUpdateChat(tDelta);
+	}
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnMenuFocusGained()
 	{
@@ -510,13 +543,17 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list1Root.SetVisible(true);
 		m_list2Root.SetVisible(true);
 		m_actionButton.SetVisible(true, false);
+		m_searchButton1.SetVisible(true, false);
 		m_menuButton1.SetVisible(true, false);
 		m_menuButton2.SetVisible(true, false);
 		m_menuButton3.SetVisible(true, false);
+		m_editbox2.SetVisible(true);
+		m_searchButton1.m_OnClicked.Insert(SearchList1);
 		m_actionButton.m_OnClicked.Insert(ResetGear);
 		m_menuButton1.m_OnClicked.Insert(AddLeaderRadio);
 		m_menuButton2.m_OnClicked.Insert(AddGIRadio);
 		m_menuButton3.m_OnClicked.Insert(AddBinos);
+		m_searchButton1.m_OnClicked.Insert(SearchList1);
 		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Reset Gear");
 		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add Leaders Radio");
 		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add GI Radio");
@@ -629,7 +666,10 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list1Root.SetVisible(true);
 		m_list2Root.SetVisible(true);
 		m_list3Root.SetVisible(true);
+		m_editbox2.SetVisible(true);
 		m_actionButton.SetVisible(true, false);
+		m_searchButton1.SetVisible(true, false);
+		m_searchButton1.m_OnClicked.Insert(SearchList1);
 		m_actionButton.m_OnClicked.Insert(RespawnPlayer);
 		m_list1.m_OnChanged.Insert(UpdateSpawnGroupRequest);
 		m_list2.m_OnChanged.Insert(UpdateSpawnpoint);
@@ -754,8 +794,14 @@ class CRF_AdminMenu: ChimeraMenuBase
 	{
 		m_list1Root.SetVisible(true);
 		m_list2Root.SetVisible(true);
+		m_editbox2.SetVisible(true);
+		m_editbox3.SetVisible(true);
 		m_menuButton1.SetVisible(true, false);
 		m_menuButton2.SetVisible(true, false);
+		m_searchButton1.SetVisible(true, false);
+		m_searchButton1.m_OnClicked.Insert(SearchList1);
+		m_searchButton2.SetVisible(true, false);
+		m_searchButton2.m_OnClicked.Insert(SearchList2);
 		m_menuButton1.m_OnClicked.Insert(TeleportLocal);
 		m_menuButton2.m_OnClicked.Insert(TeleportPlayers);
 		
@@ -826,6 +872,7 @@ class CRF_AdminMenu: ChimeraMenuBase
 	void InitializeHintMenu()
 	{
 		m_editBox1.SetVisible(true);
+		m_editbox2.SetVisible(true);
 		m_windowBox1.SetVisible(true);
 		m_editBox1.SetText(m_clientComponent.m_sHintText);
 		m_list1Root.SetVisible(true);
@@ -833,7 +880,9 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_menuButton1.SetVisible(true);
 		m_menuButton2.SetVisible(true);
 		m_menuButton3.SetVisible(true);
+		m_searchButton1.SetVisible(true, false);
 		
+		m_searchButton1.m_OnClicked.Insert(SearchList1);
 		m_menuButton1.m_OnClicked.Insert(SendHintAll);
 		m_menuButton2.m_OnClicked.Insert(SendHintFaction);
 		m_menuButton3.m_OnClicked.Insert(SendHintPlayer);
@@ -912,8 +961,11 @@ class CRF_AdminMenu: ChimeraMenuBase
 		m_list1Root.SetVisible(true);
 		m_actionButton.SetVisible(true, false);
 		m_menuButton1.SetVisible(true);
+		m_searchButton1.SetVisible(true, false);
+		m_editbox2.SetVisible(true);
 		m_actionButton.m_OnClicked.Insert(HealPlayer);
 		m_menuButton1.m_OnClicked.Insert(HealPlayerVehicle);
+		m_searchButton1.m_OnClicked.Insert(SearchList1);
 		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Repair Vehicle");
 		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Heal Player");
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Players");
@@ -955,5 +1007,65 @@ class CRF_AdminMenu: ChimeraMenuBase
 		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 		
 		m_clientComponent.HealPlayerVehicle(playerId, true);
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SearchList1()
+	{
+		SearchPlayerList(m_list1, m_editbox2.GetText())
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SearchList2()
+	{
+		SearchPlayerList(m_list2, m_editbox3.GetText());
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void SearchPlayerList(SCR_ListBoxComponent list, string searchData)
+	{
+		TStringArray playerNames = {};
+		m_playerManager.GetPlayers(m_allPlayers);
+		list.Clear();
+		
+		if (searchData == "")	
+		{
+			foreach(int playerId : m_allPlayers)
+				playerNames.Insert(m_playerManager.GetPlayerName(playerId));
+		} else {
+			foreach(int playerId : m_allPlayers)
+			{
+				string playerName = m_playerManager.GetPlayerName(playerId);
+				playerName.ToLower();
+				searchData.ToLower();
+				
+				if (playerName.Contains(searchData))
+					playerNames.Insert(m_playerManager.GetPlayerName(playerId));
+			}	
+		}
+		
+		playerNames.Sort(false);
+		
+		foreach(string name : playerNames)
+		{ 
+			int playerId = GetPlayerIdFromName(name);
+			if(m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			{
+				list.AddItem(string.Format("%1", name));
+			}
+		}
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void Action_OnChatToggleAction()
+	{
+		if (!m_ChatPanel)
+			return;
+		
+		GetGame().GetCallqueue().CallLater(OpenChatWrap, 5);
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	void OpenChatWrap()
+	{
+		if (!m_ChatPanel.IsOpen())
+		{
+			SCR_ChatPanelManager.GetInstance().OpenChatPanel(m_ChatPanel);
+		}
 	}
 }

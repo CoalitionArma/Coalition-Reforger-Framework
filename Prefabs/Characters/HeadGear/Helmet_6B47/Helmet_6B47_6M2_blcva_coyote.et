@@ -10,7 +10,7 @@ GameEntity : "{4BBB5FC184FB181F}Prefabs/Characters/HeadGear/Helmet_6B47/Helmet_6
      Enabled 0
     }
     RHS_LoadoutSlotInfo Masks {
-     Prefab "{C5D4888DD9324835}Prefabs/Characters/HeadGear/Hat_BalaclavaTerrorist_02/Hat_Balaclava_Terrorist_3H_TAN.et"
+     Prefab "{084A2936B3DB49E2}Prefabs/Characters/HeadGear/Balaclavas/Balaclava_v1/Balaclava_v1_Tan.et"
     }
     RHS_LoadoutSlotInfo NVG {
      Enabled 0
