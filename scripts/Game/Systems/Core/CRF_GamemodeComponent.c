@@ -347,11 +347,13 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		// DEFAULT WEAPONS
 		if (gearConfig.m_FactionWeapons && !customWeaponsSet)
 		{	
+			/*
 			if (CheckIfRoleInArray(m_WeaponConfig.m_aRolesThatGetRifles, role)) 	
 				{
 				CRF_Weapon_Class rifle = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Rifle);
 				SpawnWeapon(rifle.m_Weapon, rifle.m_Attachments, rifle.m_MagazineArray, spawnParams, inventory, inventoryManager);
 			};
+			*/
 			
 			if (CheckIfRoleInArray(m_WeaponConfig.m_aRolesThatGetRifleUGLs, role))
 			{

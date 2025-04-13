@@ -57,8 +57,8 @@ class CRF_GearScriptConfig
 [BaseContainerProps(configRoot: true)]
 class CRF_GearScriptWeaponsConfig
 {		
-	[Attribute()]
-	ref array<ref CRF_Role> m_aRolesThatGetRifles;
+	[Attribute("1", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole), desc: "All roles that get rifes")]
+	ref array<EGearRole> m_aRolesThatGetRifles;
 	
 	[Attribute()]
 	ref array<ref CRF_Role> m_aRolesThatGetRifleUGLs;
@@ -121,134 +121,149 @@ class CRF_GearScriptEquipmentConfig
 // ROLES
 //------------------------------------------------------------------------------------------------
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRole"}, "%1")]
+/*
+	HOW TO ADD A ROLE 101:
+	- Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
+		CRF_GS_BLUFOR_CombatEng_P
+
+	- Create a "Pretty Name" in all caps with spaces having underscores in the bellow enum class EGearRole, ie:
+		COMBAT_ENGINEER
+	this is to make it easier to search when adding the role to a global/local gearscript array
+
+	- Then just add corresponding case into the switch function bellow using pretty name to match the (Role) value you added to the character prefab (make sure you trail it with a _ and end it with a _P) ie:
+		case EGearRole.COMBAT_ENGINEER : {m_sRole = "_CombatEng_P"; break;}
+
+	- Now you have to go to the corresponding global files:
+		(Configs\Gearscripts\CRF_Global_Equipment_Config.conf)
+		(Configs\Gearscripts\CRF_Global_Weapons_Config.conf)
+	and just add the role you created bellow (make sure you validate and reload scripts) into the correcsponding array(s) of equipment you want it to receive, any custom equipment would have to go through a gear script.
+
+	There, you have added a role, good for you, now stop bothering me about adding in roles manually -Njpatman
+*/
+
+enum EGearRole
+{
+	NONE							= 0,
+	COMPANY_COMMANDER				= "_COY_P",
+	FIRST_SERGEANT,
+	PLATOON_LEADER,
+	PLATOON_SERGEANT,
+	MEDICAL_OFFICER,
+	FORWARD_OBSERVER,
+	JTAC,
+	SQUAD_LEAD,
+	VEHICLE_LEAD,
+	INDIRECT_LEAD,
+	LOGI_LEAD,
+	TEAM_LEAD,
+	MEDIC,
+	RADIO_TELEPHONE_OPERATOR,
+	GRENADIER,
+	AUTOMATIC_RIFLEMAN,
+	ASSISTANT_AUTOMATIC_RIFLEMAN,
+	RIFLEMAN,
+	RIFLEMAN_ANTITANK,
+	ASSISTANT_RIFLEMAN_ANTITANK,
+	RIFLEMAN_DEMO,
+	HEAVY_ANTITANK,
+	ASSISTANT_HEAVY_ANTITANK,
+	MEDIUM_ANTITANK,
+	ASSISTANT_MEDIUM_ANTITANK,
+	HEAVY_MACHINEGUN,
+	ASSISTANT_HEAVY_MACHINEGUN,
+	MEDIUM_MACHINEGUN,
+	ASSISTANT_MEDIUM_MACHINEGUN,
+	ANTI_AIR,
+	ASSISTANT_ANTI_AIR,
+	SNIPER,
+	SPOTTER,
+	DRONE_OPERATOR,
+	COMBAT_ENGINEER,
+	VEHICLE_DRIVER,
+	VEHICLE_GUNNER,
+	VEHICLE_LOADER,
+	PILOT,
+	CREW_CHIEF,
+	LOGI_RUNNER,
+	INDIRECT_GUNNER,
+	INDIRECT_LOADER,
+}
+
+[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_iRole"}, "%1")]
 class CRF_Role
 {	
-	/*
-		HOW TO ADD A ROLE 101:
-		- Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
-			CRF_GS_BLUFOR_CombatEng_P
-	
-		- Create a "Pretty Name" in the bellow attribute ParamEnum array, ie:
-			ParamEnum("Combat Engineer", ""),
-	
-		- Then just add corresponding case into the switch function bellow using pretty name to match the (Role) value you added to the character prefab (make sure you trail it with a _ and end it with a _P) ie:
-			case "Combat Engineer" : {m_sRole = "_CombatEng_P"; break;}
-	
-		- Now you have to go to the corresponding global files:
-			(Configs\Gearscripts\CRF_Global_Equipment_Config.conf)
-			(Configs\Gearscripts\CRF_Global_Weapons_Config.conf)
-		and just add the role you creaed bellow (make sure you validate and reload scripts) into the correcsponding array(s) of equipment you want it to receive, any custom equipment would have to go through a gear script.
-	
-		There, you have added a role, good for you, now stop bothering me about adding in roles manually -Njpatman
-	*/
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {
-		ParamEnum(																								"", ""), 
-		ParamEnum("-------------------------------------------- Leadership --------------------------------------------",  ""),
-		ParamEnum("Company Commander", 				""),
-		ParamEnum("First Sergeant", 				""),
-		ParamEnum("Platoon Leader", 				""),
-		ParamEnum("Platoon Sergeant", 				""),
-		ParamEnum("Medical Officer", 				""),
-		ParamEnum("Forward Observer", 				""),
-		ParamEnum("JTAC", 							""),
-		ParamEnum("Squad Lead", 					""),
-		ParamEnum("Vehicle Lead", 					""),
-		ParamEnum("Indirect Lead", 					""),
-		ParamEnum("Logi Lead", 						""),
-		ParamEnum("-------------------------------------------- Squad Level -------------------------------------------",  ""),
-		ParamEnum("Team Lead", 						""),
-		ParamEnum("Medic", 							""),
-		ParamEnum("Radio Telephone Operator", 		""),
-		ParamEnum("Grenadier", 						""),
-		ParamEnum("Automatic Rifleman", 			""),
-		ParamEnum("Assistant Automatic Rifleman",	""),
-		ParamEnum("Rifleman", 						""),
-		ParamEnum("Rifleman AntiTank", 				""),
-		ParamEnum("Assistant Rifleman AntiTank", 	""),
-		ParamEnum("Rifleman Demo", 					""),
-		ParamEnum("------------------------------------------- Specialities -------------------------------------------",  ""),
-		ParamEnum("Heavy AntiTank", 				""),
-		ParamEnum("Assistant Heavy AntiTank", 		""),
-		ParamEnum("Medium AntiTank", 				""),
-		ParamEnum("Assistant Medium AntiTank", 		""),
-		ParamEnum("Heavy MachineGun", 				""),
-		ParamEnum("Assistant Heavy MachineGun", 	""),
-		ParamEnum("Medium MachineGun", 				""),
-		ParamEnum("Assistant Medium MachineGun", 	""),
-		ParamEnum("Anit-Air", 						""),
-		ParamEnum("Assistant Anit-Air", 			""),
-		ParamEnum("Sniper", 						""),
-		ParamEnum("Spotter", 						""),
-		ParamEnum("Drone Operator", 				""),
-		ParamEnum("Combat Engineer", 				""),
-		ParamEnum("--------------------------------------- Vehicle Specialities ---------------------------------------",  ""),
-		ParamEnum("Vehicle Driver", 				""),
-		ParamEnum("Vehicle Gunner", 				""),
-		ParamEnum("Vehicle Loader", 				""),
-		ParamEnum("Pilot", 							""),
-		ParamEnum("Crew Chief", 					""),
-		ParamEnum("Logi Runner", 					""),
-		ParamEnum("Indirect Gunner", 				""),
-		ParamEnum("Indirect Loader", 				"")
-	})]
 	string m_sRole;
+	
+	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
+	EGearRole m_iRole;
 	
 	//------------------------------------------------------------------------------------------------
 	void CRF_Role()
 	{
-		switch(m_sRole)
+		m_sRole = ReturnRoleString(m_iRole);
+	}
+	
+	static string ReturnRoleString(EGearRole roleInt)
+	{
+		string role = "";
+		
+		switch(roleInt)
 		{
-			//-------------------------------------------- Leadership --------------------------------------------
-			case "Company Commander" : 				{m_sRole = "_COY_P"; 				break;}
-			case "First Sergeant" : 				{m_sRole = "_1SG_P"; 				break;}
-			case "Platoon Leader" : 				{m_sRole = "_PL_P"; 				break;}
-			case "Platoon Sergeant" : 				{m_sRole = "_PSG_P"; 				break;}
-			case "Medical Officer" : 				{m_sRole = "_MO_P"; 				break;}
-			case "Forward Observer" : 				{m_sRole = "_FO_P"; 				break;}
-			case "JTAC" : 							{m_sRole = "_JTAC_P"; 				break;}
-			case "Squad Lead" : 					{m_sRole = "_SL_P"; 				break;}
-			case "Vehicle Lead" : 					{m_sRole = "_VehLead_P"; 			break;}
-			case "Indirect Lead" :					{m_sRole = "_IndirectLead_P"; 		break;}
-			case "Logi Lead" :						{m_sRole = "_LogiLead_P"; 			break;}
-			//-------------------------------------------- Squad Level -------------------------------------------
-			case "Team Lead" : 						{m_sRole = "_TL_P"; 				break;}
-			case "Medic" : 							{m_sRole = "_Medic_P"; 				break;}
-			case "Radio Telephone Operator" : 		{m_sRole = "_RTO_P"; 				break;}
-			case "Grenadier" : 						{m_sRole = "_Gren_P"; 				break;}
-			case "Automatic Rifleman" : 			{m_sRole = "_AR_P"; 				break;}
-			case "Assistant Automatic Rifleman" : 	{m_sRole = "_AAR_P"; 				break;}
-			case "Rifleman" : 						{m_sRole = "_Rifleman_P"; 			break;}
-			case "Rifleman AntiTank" : 				{m_sRole = "_AT_P"; 				break;}
-			case "Assistant Rifleman AntiTank" : 	{m_sRole = "_AAT_P"; 				break;}
-			case "Rifleman Demo" :					{m_sRole = "_Demo_P"; 				break;}
-			//-------------------------------------------- Specialities -------------------------------------------
-			case "Heavy AntiTank" : 				{m_sRole = "_HAT_P"; 				break;}
-			case "Assistant Heavy AntiTank" : 		{m_sRole = "_AHAT_P"; 				break;}
-			case "Medium AntiTank" : 				{m_sRole = "_MAT_P"; 				break;}
-			case "Assistant Medium AntiTank" : 		{m_sRole = "_AMAT_P"; 				break;}
-			case "Heavy MachineGun" : 				{m_sRole = "_HMG_P"; 				break;}
-			case "Assistant Heavy MachineGun" : 	{m_sRole = "_AHMG_P"; 				break;}
-			case "Medium MachineGun" : 				{m_sRole = "_MMG_P"; 				break;}
-			case "Assistant Medium MachineGun" : 	{m_sRole = "_AMMG_P"; 				break;}
-			case "Anit-Air" : 						{m_sRole = "_AA_P"; 				break;}
-			case "Assistant Anit-Air" : 			{m_sRole = "_AAA_P"; 				break;}
-			case "Sniper" : 						{m_sRole = "_Sniper_P"; 			break;}
-			case "Spotter" : 						{m_sRole = "_Spotter_P"; 			break;}
-			case "Drone Operator" : 				{m_sRole = "_DroneOp_P"; 			break;}
-			case "Combat Engineer" : 				{m_sRole = "_ComEngi_P"; 			break;}
-			//--------------------------------------- Vehicle Specialities ----------------------------------------
-			case "Vehicle Driver" : 				{m_sRole = "_VehDriver_P"; 			break;}
-			case "Vehicle Gunner" : 				{m_sRole = "_VehGunner_P"; 			break;}
-			case "Vehicle Loader" : 				{m_sRole = "_VehLoader_P"; 			break;}
-			case "Pilot" : 							{m_sRole = "_Pilot_P"; 				break;}
-			case "Crew Chief" : 					{m_sRole = "_CrewChief_P"; 			break;}
-			case "Logi Runner" : 					{m_sRole = "_LogiRunner_P"; 		break;}
-			case "Indirect Gunner" : 				{m_sRole = "_IndirectGunner_P"; 	break;}
-			case "Indirect Loader" : 				{m_sRole = "_IndirectLoader_P"; 	break;}
-			//---------------------------------------------- Default ----------------------------------------------
-			default:								{m_sRole = string.Empty; 			break;}
+			//-------------------------------------------- LEADERSHIP --------------------------------------------
+			case EGearRole.COMPANY_COMMANDER : 				{role = "_COY_P"; 				break;}
+			case EGearRole.FIRST_SERGEANT : 				{role = "_1SG_P"; 				break;}
+			case EGearRole.PLATOON_LEADER : 				{role = "_PL_P"; 				break;}
+			case EGearRole.PLATOON_SERGEANT : 				{role = "_PSG_P"; 				break;}
+			case EGearRole.MEDICAL_OFFICER : 				{role = "_MO_P"; 				break;}
+			case EGearRole.FORWARD_OBSERVER : 				{role = "_FO_P"; 				break;}
+			case EGearRole.JTAC : 							{role = "_JTAC_P"; 				break;}
+			case EGearRole.SQUAD_LEAD : 					{role = "_SL_P"; 				break;}
+			case EGearRole.VEHICLE_LEAD : 					{role = "_VehLead_P"; 			break;}
+			case EGearRole.INDIRECT_LEAD :					{role = "_IndirectLead_P"; 		break;}
+			case EGearRole.LOGI_LEAD :						{role = "_LogiLead_P"; 			break;}
+			//-------------------------------------------- SQUAD LEVEL -------------------------------------------
+			case EGearRole.TEAM_LEAD : 						{role = "_TL_P"; 				break;}
+			case EGearRole.MEDIC : 							{role = "_Medic_P"; 			break;}
+			case EGearRole.RADIO_TELEPHONE_OPERATOR : 		{role = "_RTO_P"; 				break;}
+			case EGearRole.GRENADIER : 						{role = "_Gren_P"; 				break;}
+			case EGearRole.AUTOMATIC_RIFLEMAN : 			{role = "_AR_P"; 				break;}
+			case EGearRole.ASSISTANT_AUTOMATIC_RIFLEMAN : 	{role = "_AAR_P"; 				break;}
+			case EGearRole.RIFLEMAN : 						{role = "_Rifleman_P"; 			break;}
+			case EGearRole.RIFLEMAN_ANTITANK : 				{role = "_AT_P"; 				break;}
+			case EGearRole.ASSISTANT_RIFLEMAN_ANTITANK : 	{role = "_AAT_P"; 				break;}
+			case EGearRole.RIFLEMAN_DEMO :					{role = "_Demo_P"; 				break;}
+			//------------------------------------------- SPECIALITIES -------------------------------------------
+			case EGearRole.HEAVY_ANTITANK : 				{role = "_HAT_P"; 				break;}
+			case EGearRole.ASSISTANT_HEAVY_ANTITANK : 		{role = "_AHAT_P"; 				break;}
+			case EGearRole.MEDIUM_ANTITANK : 				{role = "_MAT_P"; 				break;}
+			case EGearRole.ASSISTANT_MEDIUM_ANTITANK : 		{role = "_AMAT_P"; 				break;}
+			case EGearRole.HEAVY_MACHINEGUN : 				{role = "_HMG_P"; 				break;}
+			case EGearRole.ASSISTANT_HEAVY_MACHINEGUN : 	{role = "_AHMG_P"; 				break;}
+			case EGearRole.MEDIUM_MACHINEGUN : 				{role = "_MMG_P"; 				break;}
+			case EGearRole.ASSISTANT_MEDIUM_MACHINEGUN : 	{role = "_AMMG_P"; 				break;}
+			case EGearRole.ANTI_AIR : 						{role = "_AA_P"; 				break;}
+			case EGearRole.ASSISTANT_ANTI_AIR : 			{role = "_AAA_P"; 				break;}
+			case EGearRole.SNIPER : 						{role = "_Sniper_P"; 			break;}
+			case EGearRole.SPOTTER : 						{role = "_Spotter_P"; 			break;}
+			case EGearRole.DRONE_OPERATOR : 				{role = "_DroneOp_P"; 			break;}
+			case EGearRole.COMBAT_ENGINEER : 				{role = "_ComEngi_P"; 			break;}
+			//--------------------------------------- VEHICLE SPECIALITIES ---------------------------------------
+			case EGearRole.VEHICLE_DRIVER : 				{role = "_VehDriver_P"; 		break;}
+			case EGearRole.VEHICLE_GUNNER : 				{role = "_VehGunner_P"; 		break;}
+			case EGearRole.VEHICLE_LOADER : 				{role = "_VehLoader_P"; 		break;}
+			case EGearRole.PILOT : 							{role = "_Pilot_P"; 			break;}
+			case EGearRole.CREW_CHIEF : 					{role = "_CrewChief_P"; 		break;}
+			case EGearRole.LOGI_RUNNER : 					{role = "_LogiRunner_P"; 		break;}
+			case EGearRole.INDIRECT_GUNNER : 				{role = "_IndirectGunner_P"; 	break;}
+			case EGearRole.INDIRECT_LOADER : 				{role = "_IndirectLoader_P"; 	break;}
 		}
+		
+		return role;
+	}
+	
+	static ResourceName ReturnRoleResource(int roleInt, FactionKey faction)
+	{
+		return SCR_Global.GetResourceName("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + ReturnRoleString(roleInt) + ".et");
 	}
 }	
 
@@ -256,7 +271,6 @@ class CRF_Role
 // WEAPONS
 //------------------------------------------------------------------------------------------------
 
-[BaseContainerProps()]
 class CRF_Base_Weapon_Class
 {
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
@@ -264,7 +278,7 @@ class CRF_Base_Weapon_Class
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_Attachments;
-}
+};
 
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
@@ -272,7 +286,7 @@ class CRF_Weapon_Class : CRF_Base_Weapon_Class
 {	
 	[Attribute()]
 	ref array<ref CRF_Magazine_Class> m_MagazineArray;
-}
+};
 
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
