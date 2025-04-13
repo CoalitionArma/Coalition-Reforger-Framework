@@ -326,7 +326,7 @@ class CRF_Custom_Gear
 }
 
 //------------------------------------------------------------------------------------------------
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sRole"}, "%1")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(EGearRole, "m_Role")]
 class CRF_Role_Custom_Gear
 {	
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]

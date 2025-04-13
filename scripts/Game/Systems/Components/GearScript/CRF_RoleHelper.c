@@ -28,7 +28,7 @@
 
 enum EGearRole
 {
-	NONE = 0,
+	UNARMED = 0,
 	//-------------------------------------------- LEADERSHIP --------------------------------------------
 	COMPANY_COMMANDER,
 	FIRST_SERGEANT,
