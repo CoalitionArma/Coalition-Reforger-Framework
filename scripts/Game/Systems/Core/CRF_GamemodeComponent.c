@@ -309,7 +309,22 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		{
 			foreach (CRF_Clothing clothing : gearConfig.m_DefaultFactionGear.m_DefaultClothing)
 			{
-				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_iClothingType, role, spawnParams, inventory, inventoryManager);
+				UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_iClothingType, role, false, spawnParams, inventory, inventoryManager);
+			}
+		}
+		
+		// CUSTOM CLOTHING
+		if (gearConfig.m_CustomFactionGear)
+		{
+			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+			{
+				if (customGear.m_Role != role)
+					continue;
+		
+				foreach (CRF_Clothing clothing : customGear.m_Clothing)
+				{
+					UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_iClothingType, role, true, spawnParams, inventory, inventoryManager);
+				}
 			}
 		}
 		
@@ -399,26 +414,6 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		} else
 			if (!gearConfig.m_FactionWeapons) 
 				Print(string.Format("CRF GEAR SCRIPT ERROR: NO WEAPONS SET: %1", gearScriptResourceName), LogLevel.ERROR);
-
-		// CUSTOM GEAR
-		if (gearConfig.m_CustomFactionGear)
-		{
-			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
-			{
-				if (customGear.m_Role != role)
-					continue;
-		
-				foreach (CRF_Clothing clothing : customGear.m_Clothing)
-				{
-					UpdateClothingSlot(clothing.m_ClothingPrefabs, clothing.m_iClothingType, role, spawnParams, inventory, inventoryManager);
-				}
-		
-				foreach (CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
-				{
-					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
-				}
-			}
-		}
 		
 		// DEFAULT GEAR
 		if (gearConfig.m_DefaultFactionGear)
@@ -481,6 +476,21 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 			}
 		} else
 			Print(string.Format("CRF GEAR SCRIPT ERROR: NO DEFAULT GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
+		
+		// CUSTOM GEAR
+		if (gearConfig.m_CustomFactionGear)
+		{
+			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+			{
+				if (customGear.m_Role != role)
+					continue;
+		
+				foreach (CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
+				{
+					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+				}
+			}
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -596,7 +606,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void UpdateClothingSlot(array<ResourceName> clothingArray, int slotInt, int role, EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
+	protected void UpdateClothingSlot(array<ResourceName> clothingArray, int slotInt, int role, bool deletePreviousItems, EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
 		if (clothingArray.IsEmpty() || slotInt == -1)
 			return;
@@ -645,7 +655,10 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 
 		foreach (IEntity oldItem : removedItems)
 		{
-			InsertInventoryItem(oldItem, inventory, inventoryManager, role);
+			if(!deletePreviousItems)
+				InsertInventoryItem(oldItem, inventory, inventoryManager, role);
+			else 
+				SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
 		}
 	}
 
