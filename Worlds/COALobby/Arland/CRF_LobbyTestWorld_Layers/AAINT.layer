@@ -67,12 +67,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{D7B22F98968C6317}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSATACS.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{FB7FBB55A74F3115}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_LAT.conf"
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{EFD528B059E0EA4B}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_TracersOnly.conf"
+  m_rGearScript "{1A0942D44F1CE80B}Configs/Gearscripts/Standard/Modern/CRF_GS_CAD.conf"
  }
 }

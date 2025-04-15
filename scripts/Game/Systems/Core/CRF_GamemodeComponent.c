@@ -80,25 +80,6 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
-
-	const int HEADGEAR = 0;
-	const int SHIRT = 1;
-	const int ARMOREDVEST = 2;
-	const int PANTS = 3;
-	const int BOOTS = 4;
-	const int BACKPACK = 5;
-	const int VEST = 6;
-	const int HANDWEAR = 7;
-	const int HEAD = 8;
-	const int EYES = 9;
-	const int EARS = 10;
-	const int FACE = 11;
-	const int NECK = 12;
-	const int EXTRA1 = 13;
-	const int EXTRA2 = 14;
-	const int WAIST = 15;
-	const int EXTRA3 = 16;
-	const int EXTRA4 = 17;
 	
 	ref CRF_GearScriptEquipmentConfig m_EquipmentConfig;
 	ref CRF_GearScriptWeaponsConfig m_WeaponConfig;
@@ -246,7 +227,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		switch (true)
 		{
 			case(resourceNameToScan.Contains("BLUFOR")) 	: {factionKey = "BLUFOR"; break; }
-			case(resourceNameToScan.Contains("OPFOR")) 		: {factionKey = "OPFOR"; break; }
+			case(resourceNameToScan.Contains("OPFOR")) 	: {factionKey = "OPFOR"; break; }
 			case(resourceNameToScan.Contains("INDFOR")) 	: {factionKey = "INDFOR"; break; }
 			case(resourceNameToScan.Contains("CIV")) 		: {factionKey = "CIV"; break; }
 		}
@@ -278,7 +259,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		
 		int role = CRF_RoleHelper.StringToRole(roleString);
 
-		// CLEAR CHARACTER
+		// CLEAR ENTITY
 		array<IEntity> items = {};
 		array<IEntity> itemsRoot = {};
 		inventoryManager.GetAllItems(items, inventory);
@@ -411,9 +392,22 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 				
 			if (m_WeaponConfig.m_aRolesThatGetHMGs.Contains(role) && gearConfig.m_FactionWeapons.m_HMG)
 				SpawnWeapon(gearConfig.m_FactionWeapons.m_HMG.m_Weapon, gearConfig.m_FactionWeapons.m_HMG.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray), spawnParams, inventory, inventoryManager);
-		} else
-			if (!gearConfig.m_FactionWeapons) 
-				Print(string.Format("CRF GEAR SCRIPT ERROR: NO WEAPONS SET: %1", gearScriptResourceName), LogLevel.ERROR);
+		}
+		
+		// CUSTOM GEAR
+		if (gearConfig.m_CustomFactionGear)
+		{
+			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+			{
+				if (customGear.m_Role != role)
+					continue;
+		
+				foreach (CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
+				{
+					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
+				}
+			}
+		}
 		
 		// DEFAULT GEAR
 		if (gearConfig.m_DefaultFactionGear)
@@ -473,22 +467,6 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 			foreach (CRF_Inventory_Item item : gearConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
 			{
 				AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role, gearConfig.m_DefaultFactionGear.m_bEnableMedicFrags);
-			}
-		} else
-			Print(string.Format("CRF GEAR SCRIPT ERROR: NO DEFAULT GEAR SET: %1", gearScriptResourceName), LogLevel.ERROR);
-		
-		// CUSTOM GEAR
-		if (gearConfig.m_CustomFactionGear)
-		{
-			foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
-			{
-				if (customGear.m_Role != role)
-					continue;
-		
-				foreach (CRF_Inventory_Item item : customGear.m_AdditionalInventoryItems)
-				{
-					AddInventoryItem(item.m_sItemPrefab, item.m_iItemCount, spawnParams, inventory, inventoryManager, role);
-				}
 			}
 		}
 	}
@@ -760,25 +738,56 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 
 		// Any magazine
 		if (MagazineComponent.Cast(item.FindComponent(MagazineComponent)) || InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)))
-			clothingIDs = {VEST, ARMOREDVEST, BACKPACK, PANTS, SHIRT};
+			clothingIDs = {
+				EClothingType.VEST, 
+				EClothingType.ARMOREDVEST, 
+				EClothingType.BACKPACK, 
+				EClothingType.PANTS, 
+				EClothingType.SHIRT
+			};
 		else // Any Non-magazine
-			clothingIDs = {SHIRT, PANTS, VEST, ARMOREDVEST, BACKPACK};
+			clothingIDs = {
+				EClothingType.SHIRT, 
+				EClothingType.PANTS, 
+				EClothingType.VEST, 
+				EClothingType.ARMOREDVEST, 
+				EClothingType.BACKPACK
+			};
 
 		// Any medical item
 		if (m_EquipmentConfig.m_aRolesThatGetMedicalItems.Contains(role) && SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent)))
-			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
+			clothingIDs = {
+				EClothingType.BACKPACK, 
+				EClothingType.VEST, 
+				EClothingType.ARMOREDVEST
+			};
 
 		// Any pistol ammo
 		if ((InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO) || isThrowable)
-			clothingIDs = {PANTS, VEST, ARMOREDVEST, BACKPACK};
+			clothingIDs = {
+				EClothingType.PANTS, 
+				EClothingType.VEST, 
+				EClothingType.ARMOREDVEST, 
+				EClothingType.BACKPACK
+			};
 
 		// Any radio
 		if (BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent)))
-			clothingIDs = {PANTS, SHIRT, VEST, ARMOREDVEST, BACKPACK};
+			clothingIDs = {
+				EClothingType.PANTS, 
+				EClothingType.SHIRT, 
+				EClothingType.VEST, 
+				EClothingType.ARMOREDVEST, 
+				EClothingType.BACKPACK
+			};
 
 		// Any Assistant Mags
 		if (isAssistant && MagazineComponent.Cast(item.FindComponent(MagazineComponent)))
-			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
+			clothingIDs = {
+				EClothingType.BACKPACK,
+				EClothingType.VEST, 
+				EClothingType.ARMOREDVEST
+		};
 
 		// Check if item is explosives related
 		SCR_DetonatorGadgetComponent detonator = SCR_DetonatorGadgetComponent.Cast(item.FindComponent(SCR_DetonatorGadgetComponent));
@@ -787,7 +796,11 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		SCR_RepairSupportStationComponent engTool = SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent));
 		SCR_HealSupportStationComponent medTool = SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
 		if (detonator || explosives || mine || engTool || medTool)
-			clothingIDs = {BACKPACK, VEST, ARMOREDVEST};
+			clothingIDs = {
+				EClothingType.BACKPACK, 
+				EClothingType.VEST, 
+				EClothingType.ARMOREDVEST
+		};
 
 		return clothingIDs;
 	}

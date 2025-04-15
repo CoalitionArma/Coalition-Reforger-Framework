@@ -256,62 +256,14 @@ class CRF_Default_Gear
 // CLOTHING
 //------------------------------------------------------------------------------------------------
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_sClothingType"}, "%1")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(EClothingType, "m_iClothingType")]
 class CRF_Clothing
 {
-	int m_iClothingType;
-	
-	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {
-		ParamEnum("", ""), 
-		ParamEnum("HEADGEAR", 	"HEADGEAR"), 
-		ParamEnum("SHIRT", 		"SHIRT"), 
-		ParamEnum("ARMOREDVEST", 	"ARMOREDVEST"), 
-		ParamEnum("PANTS", 		"PANTS"), 
-		ParamEnum("BOOTS", 		"BOOTS"), 
-		ParamEnum("BACKPACK", 	"BACKPACK"), 
-		ParamEnum("VEST", 		"VEST"), 
-		ParamEnum("HANDWEAR", 	"HANDWEAR"), 
-		ParamEnum("HEAD", 		"HEAD"), 
-		ParamEnum("EYES", 		"EYES"), 
-		ParamEnum("EARS", 		"EARS"), 
-		ParamEnum("FACE", 		"FACE"), 
-		ParamEnum("NECK", 		"NECK"), 
-		ParamEnum("EXTRA1", 		"EXTRA1"), 
-		ParamEnum("EXTRA2", 		"EXTRA2"), 
-		ParamEnum("WAIST", 		"WAIST"), 
-		ParamEnum("EXTRA3", 		"EXTRA3"), 
-		ParamEnum("EXTRA4", 		"EXTRA4")
-	})]
-	string m_sClothingType;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EClothingType))]
+	EClothingType m_iClothingType;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_ClothingPrefabs;
-	
-	//------------------------------------------------------------------------------------------------
-	void CRF_Clothing()
-	{
-		switch (m_sClothingType)
-		{
-			case "HEADGEAR" 		: {m_iClothingType = 0; 	break;}
-			case "SHIRT" 		: {m_iClothingType = 1; 	break;}
-			case "ARMOREDVEST" 	: {m_iClothingType = 2; 	break;}
-			case "PANTS" 		: {m_iClothingType = 3; 	break;}
-			case "BOOTS" 		: {m_iClothingType = 4; 	break;}
-			case "BACKPACK" 		: {m_iClothingType = 5; 	break;}
-			case "VEST" 			: {m_iClothingType = 6; 	break;}
-			case "HANDWEAR" 		: {m_iClothingType = 7; 	break;}
-			case "HEAD" 			: {m_iClothingType = 8; 	break;}
-			case "EYES" 			: {m_iClothingType = 9; 	break;}
-			case "EARS" 			: {m_iClothingType = 10; 	break;}
-			case "FACE" 			: {m_iClothingType = 11; 	break;}
-			case "NECK" 			: {m_iClothingType = 12; 	break;}
-			case "EXTRA1" 		: {m_iClothingType = 13; 	break;}
-			case "EXTRA2" 		: {m_iClothingType = 14; 	break;}
-			case "WAIST" 		: {m_iClothingType = 15; 	break;}
-			case "EXTRA3" 		: {m_iClothingType = 16; 	break;}
-			case "EXTRA4" 		: {m_iClothingType = 17; 	break;}
-		};
-	}
 }
 
 //------------------------------------------------------------------------------------------------

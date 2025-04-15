@@ -15,7 +15,7 @@
 
 	what's on the array
 		"_AR_P",
-		"_AAR_P", <------ NOTE THAT THE POSITION IS THE SAME IN THE ENUM AND IN THE ARRAY AND IS NOTE TACKED ONTO THE END OF THE ARRAY!
+		"_AAR_P", <------ NOTE THAT THE POSITION IS THE SAME IN THE ENUM AND IN THE ARRAY AND IS NOT TACKED ONTO THE END OF THE ARRAY!
 		"_Rifleman_P",
 
 	- Now you have to go to the corresponding global files:
@@ -144,6 +144,6 @@ class CRF_RoleHelper
 
 	static ResourceName RoleToResource(EGearRole roleInt, FactionKey faction)
 	{
-		return SCR_Global.GetResourceName("Prefabs/Characters/Factions/" + faction + "/CRF_GS" + faction + RoleToString(roleInt) + ".et");
+		return SCR_Global.GetResourceName("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + RoleToString(roleInt) + ".et");
 	}
 }
