@@ -75,6 +75,7 @@ $grp SCR_BaseTriggerEntity {
   coords 4087.558 141.685 6754.984
   userScript "	string ural = \"{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et\";"\
   "	string truck = \"{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et\";"\
+  "	string mortar = \"{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et\";"\
   "	"\
   "	void spawnthings()"\
   "	{"\
@@ -98,6 +99,16 @@ $grp SCR_BaseTriggerEntity {
   "			spawnParams.Transform[3] = spawnUral.GetOrigin();"\
   "			GetGame().SpawnEntityPrefab(Resource.Load(ural),GetGame().GetWorld(),spawnParams);"\
   "		}"\
+  "		"\
+  "		for (int i = 1; i <= 2; i++) "\
+  "		{"\
+  "			string mortarName = \"mortar\" + i.ToString();"\
+  "			IEntity spawnmortar = GetGame().GetWorld().FindEntityByName(mortarName);"\
+  "		"\
+  "			spawnParams.Transform[3] = spawnmortar.GetOrigin();"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams).SetYawPitchRoll(\"90 0 0\");"\
+  "		}	"\
+  "		"\
   "	}"
   EOnInit ""\
   "		super.EOnInit(owner);"\
@@ -320,48 +331,48 @@ $grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyS
 }
 $grp StaticModelEntity : "{D4ABEC6A0DB2E253}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Utility/E_Helipad_Lights_US_01.et" {
  {
-  coords 4086.72 1.648 6611.442
-  {
-   SCR_VehicleSpawn LB {
-    coords -0.905 0.371 -0.463
-    angleY -91.6
-    m_rnPrefab "{823CA4130CE90077}Prefabs/Vehicles/Helicopters/AH6M/AH6M_RKT.et"
-    respawnDelay 10000
-    firstSpawn 1
-   }
-  }
- }
- {
-  coords 4086.72 0.728 6580.007
-  {
-   SCR_VehicleSpawn LB2 {
-    coords -0.905 0.371 -0.463
-    angleY -91.6
-    m_rnPrefab "{823CA4130CE90077}Prefabs/Vehicles/Helicopters/AH6M/AH6M_RKT.et"
-    respawnDelay 10000
-    firstSpawn 1
-   }
-  }
- }
- {
-  coords 4086.72 0.862 6551.256
+  coords 4086.72 2.084 6553.545
   {
    SCR_VehicleSpawn BH {
     coords -0.905 0.371 -0.463
     angleY -91.6
-    m_rnPrefab "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+    m_rnPrefab "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et"
     respawnDelay 10000
     firstSpawn 1
    }
   }
  }
  {
-  coords 4086.72 0.033 6524.739
+  coords 4086.72 1.336 6524.739
   {
    SCR_VehicleSpawn BH2 {
     coords -0.905 0.371 -0.463
     angleY -91.6
-    m_rnPrefab "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
+    m_rnPrefab "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et"
+    respawnDelay 10000
+    firstSpawn 1
+   }
+  }
+ }
+ {
+  coords 4086.72 2.535 6581.559
+  {
+   SCR_VehicleSpawn BH3 {
+    coords -0.905 0.371 -0.463
+    angleY -91.6
+    m_rnPrefab "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et"
+    respawnDelay 10000
+    firstSpawn 1
+   }
+  }
+ }
+ {
+  coords 4086.72 0.597 6493.891
+  {
+   SCR_VehicleSpawn BH4 {
+    coords -0.905 0.371 -0.463
+    angleY -91.6
+    m_rnPrefab "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et"
     respawnDelay 10000
     firstSpawn 1
    }

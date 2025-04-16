@@ -108,7 +108,7 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
     Enabled 1
    }
   }
-  coords 2333.795 183.926 7476.906
+  coords 2400.111 183.924 7517.198
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OBJ 2 destroyed. Opfor respawns in 10 sec. Zone 3 unlocks in 2 min.\", duration: 10);"\
   "		int playerCount = GetGame().GetPlayerManager().GetPlayerCount();"\
@@ -128,7 +128,7 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
   {
    $grp SCR_VehicleSpawn {
     fuel {
-     coords 3.23 0.146 5.296
+     coords 3.23 0.168 5.296
      angleY -50.586
      m_rnPrefab "{4A59DAEFE645E8A0}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_orange.et"
      respawnDelay 10000
@@ -136,42 +136,7 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
      {
       $grp StaticModelEntity : "{5608B9078BF2AC5A}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragonsteeth_01_old_V1.et" {
        {
-        coords 3.788 0.306 4.516
-        angleY 50.586
-       }
-       {
-        coords -3.316 0.313 5.534
-        angleY 50.586
-       }
-       {
-        coords 2.417 -0.276 -5.411
-        angleY 50.586
-       }
-       {
-        coords -2.479 -0.386 -5.125
-        angleY 50.586
-       }
-       {
-        coords 0.072 -0.462 -7.113
-        angleY 50.586
-       }
-       {
-        coords 0.005 0.521 7.486
-        angleY 50.586
-       }
-      }
-     }
-    }
-    fuel2 {
-     coords -5.544 0.013 -3.936
-     angleY -50.586
-     m_rnPrefab "{4A59DAEFE645E8A0}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_orange.et"
-     respawnDelay 10000
-     firstSpawn 1
-     {
-      $grp StaticModelEntity : "{5608B9078BF2AC5A}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragonsteeth_01_old_V1.et" {
-       {
-        coords 3.788 0.399 4.516
+        coords 3.788 0.439 4.516
         angleY 50.586
        }
        {
@@ -179,19 +144,54 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
         angleY 50.586
        }
        {
-        coords 2.417 -0.381 -5.411
+        coords 2.417 -0.38 -5.411
         angleY 50.586
        }
        {
-        coords -2.478 -0.484 -5.125
+        coords -2.48 -0.456 -5.125
         angleY 50.586
        }
        {
-        coords 0.073 -0.577 -7.113
+        coords 0.072 -0.556 -7.113
         angleY 50.586
        }
        {
-        coords 0.005 0.615 7.486
+        coords 0.005 0.6 7.486
+        angleY 50.586
+       }
+      }
+     }
+    }
+    fuel2 {
+     coords -5.544 0.068 -3.936
+     angleY -50.586
+     m_rnPrefab "{4A59DAEFE645E8A0}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_orange.et"
+     respawnDelay 10000
+     firstSpawn 1
+     {
+      $grp StaticModelEntity : "{5608B9078BF2AC5A}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragonsteeth_01_old_V1.et" {
+       {
+        coords 3.788 0.323 4.516
+        angleY 50.586
+       }
+       {
+        coords -3.316 0.202 5.534
+        angleY 50.586
+       }
+       {
+        coords 2.417 -0.369 -5.411
+        angleY 50.586
+       }
+       {
+        coords -2.478 -0.467 -5.125
+        angleY 50.586
+       }
+       {
+        coords 0.073 -0.56 -7.113
+        angleY 50.586
+       }
+       {
+        coords 0.005 0.39 7.486
         angleY 50.586
        }
       }
@@ -199,10 +199,11 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
    PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
-    coords 0.673 0 -1.511
+    coords 0.673 -0.113 -1.511
+    angleY 90
     m_MarkerColor 0.502 0 0 1
     m_sQuadName "fortification"
-    m_sDescription "ZU-23"
+    m_sDescription "Fuel Depot"
     m_aVisibleForFactions {
      "OPFOR"
     }
@@ -215,7 +216,8 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
     Enabled 1
    }
   }
-  coords 1135.845 190.044 7260.343
+  coords 1100.115 191.805 7214.212
+  angleY -83.063
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OBJ 3 destroyed.\", duration: 10);"\
   "	"
