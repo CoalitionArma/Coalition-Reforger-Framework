@@ -1,0 +1,149 @@
+/*
+	HOW TO ADD A ROLE 101:
+	- Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
+		CRF_GS_BLUFOR_AAR_P
+
+	- Create a "Pretty Name" in all caps with spaces having underscores in the bellow enum class EGearRole, ie:
+		ASSISTANT_AUTOMATIC_RIFLEMAN
+	this is to make it easier to search when adding the role to a global/local gearscript array
+
+	- Then just add corresponding case into the CRF_RoleHelper roleFileStrings array bellow using the pretty name you made to match the (Role) value you added to the character prefab (make sure you trail it with a _ and end it with a _P) ie:
+	what's on the Enum:
+		AUTOMATIC_RIFLEMAN,
+		ASSISTANT_AUTOMATIC_RIFLEMAN, <------
+		RIFLEMAN,
+
+	what's on the array
+		"_AR_P",
+		"_AAR_P", <------ NOTE THAT THE POSITION IS THE SAME IN THE ENUM AND IN THE ARRAY AND IS NOT TACKED ONTO THE END OF THE ARRAY!
+		"_Rifleman_P",
+
+	- Now you have to go to the corresponding global files:
+		(Configs\Gearscripts\CRF_Global_Equipment_Config.conf)
+		(Configs\Gearscripts\CRF_Global_Weapons_Config.conf)
+	and just add the role you created bellow (make sure you validate and reload scripts) into the correcsponding array(s) of equipment you want it to receive, any custom equipment would have to go through a gear script.
+
+	There, you have added a role, good for you, now stop bothering me about adding in roles manually -Njpatman
+*/
+
+enum EGearRole
+{
+	UNARMED = 0,
+	//-------------------------------------------- LEADERSHIP --------------------------------------------
+	COMPANY_COMMANDER,
+	FIRST_SERGEANT,
+	PLATOON_LEADER,
+	PLATOON_SERGEANT,
+	MEDICAL_OFFICER,
+	FORWARD_OBSERVER,
+	JTAC,
+	SQUAD_LEAD,
+	VEHICLE_LEAD,
+	INDIRECT_LEAD,
+	LOGI_LEAD,
+	//-------------------------------------------- SQUAD LEVEL -------------------------------------------
+	TEAM_LEAD,
+	MEDIC,
+	RADIO_TELEPHONE_OPERATOR,
+	GRENADIER,
+	AUTOMATIC_RIFLEMAN,
+	ASSISTANT_AUTOMATIC_RIFLEMAN,
+	RIFLEMAN,
+	RIFLEMAN_ANTITANK,
+	ASSISTANT_RIFLEMAN_ANTITANK,
+	RIFLEMAN_DEMO,
+	//------------------------------------------- SPECIALITIES -------------------------------------------
+	HEAVY_ANTITANK,
+	ASSISTANT_HEAVY_ANTITANK,
+	MEDIUM_ANTITANK,
+	ASSISTANT_MEDIUM_ANTITANK,
+	HEAVY_MACHINEGUN,
+	ASSISTANT_HEAVY_MACHINEGUN,
+	MEDIUM_MACHINEGUN,
+	ASSISTANT_MEDIUM_MACHINEGUN,
+	ANTI_AIR,
+	ASSISTANT_ANTI_AIR,
+	SNIPER,
+	SPOTTER,
+	DRONE_OPERATOR,
+	COMBAT_ENGINEER,
+	//--------------------------------------- VEHICLE SPECIALITIES ---------------------------------------
+	VEHICLE_DRIVER,
+	VEHICLE_GUNNER,
+	VEHICLE_LOADER,
+	PILOT,
+	CREW_CHIEF,
+	LOGI_RUNNER,
+	INDIRECT_GUNNER,
+	INDIRECT_LOADER,
+}
+
+class CRF_RoleHelper
+{
+	protected ref static array<string> roleFileStrings = {
+		"_Unarmed_P",
+		//-------------------------------------------- LEADERSHIP --------------------------------------------
+		"_COY_P",
+		"_1SG_P",
+		"_PL_P",
+		"_PSG_P",
+		"_MO_P",
+		"_FO_P",
+		"_JTAC_P",
+		"_SL_P",
+		"_VehLead_P",
+		"_IndirectLead_P",
+		"_LogiLead_P",
+		//-------------------------------------------- SQUAD LEVEL -------------------------------------------
+		"_TL_P",
+		"_Medic_P",
+		"_RTO_P",
+		"_Gren_P",
+		"_AR_P",
+		"_AAR_P",
+		"_Rifleman_P",
+		"_AT_P",
+		"_AAT_P",
+		"_Demo_P",
+		//------------------------------------------- SPECIALITIES -------------------------------------------
+		"_HAT_P",
+		"_AHAT_P",
+		"_MAT_P",
+		"_AMAT_P",
+		"_HMG_P",
+		"_AHMG_P",
+		"_MMG_P",
+		"_AMMG_P",
+		"_AA_P",
+		"_AAA_P",
+		"_Sniper_P",
+		"_Spotter_P",
+		"_DroneOp_P",
+		"_ComEngi_P",
+		//--------------------------------------- VEHICLE SPECIALITIES ---------------------------------------
+		"_VehDriver_P",
+		"_VehGunner_P",
+		"_VehLoader_P",
+		"_Pilot_P",
+		"_CrewChief_P",
+		"_LogiRunner_P",
+		"_IndirectGunner_P",
+		"_IndirectLoader_P"
+	};
+	
+	
+	static string RoleToString(EGearRole roleInt)
+	{
+		return roleFileStrings.Get(roleInt);
+	}
+	
+	static EGearRole StringToRole(string roleString)
+	{
+		return roleFileStrings.Find(roleString);
+	}
+
+	static ResourceName RoleToResource(EGearRole roleInt, FactionKey faction)
+	{
+		return SCR_Global.GetResourceName("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + RoleToString(roleInt) + ".et");
+	}
+}
