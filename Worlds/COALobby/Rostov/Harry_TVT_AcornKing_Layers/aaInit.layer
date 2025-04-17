@@ -67,8 +67,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
  }
- m_iTimeToRespawn 600
- m_iBLUFORTickets 1
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_iBLUFORTickets 0
+ m_iOPFORTickets 0
  {
   SCR_FactionManager "6520D06F0186FE1C" {
    ID "632A77473B3CC3A8"
@@ -163,16 +165,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
 }
 SCR_BaseTriggerEntity bluforRespawnTrigger {
  coords 4110.453 142.557 6790.987
- userScript "	void respawnBlufor()"\
- "	{"\
- "		if (RplSession.Mode() == RplMode.Dedicated) "\
- "		{"\
- "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
- "			gm.RespawnSide(\"BLUFOR\");"\
- "		}"\
- ""\
- "		GetGame().GetCallqueue().CallLater(respawnBlufor, 300000, false); // 5 minutes"\
- "	}"\
+ userScript "	int playerCount;"\
+ "	int bluforCount;"\
+ "	int tickets;"\
  "	"\
  "	void safeStartCheck()"\
  "	{"\
@@ -186,16 +181,11 @@ SCR_BaseTriggerEntity bluforRespawnTrigger {
  "		"\
  "		else"\
  "		{"\
- "			int playerCount = GetGame().GetPlayerManager().GetPlayerCount();"\
- "			int bluforCount = Math.Ceil(playerCount / 5 * 3);"\
- "			"\
- "			if (RplSession.Mode() == RplMode.Dedicated)"\
- "			{"\
- "				CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
- "				gm.m_iBLUFORTickets = gm.m_iBLUFORTickets + Math.Ceil(bluforCount / 2);"\
- ""\
- "			}"\
- "			GetGame().GetCallqueue().CallLater(respawnBlufor, 300000, false); // Start 5 min respawn loop"\
+ "			playerCount = GetGame().GetPlayerManager().GetPlayerCount();"\
+ "			bluforCount = Math.Ceil(playerCount / 5 * 3);"\
+ "			tickets = Math.Ceil(bluforCount * 0.5);"\
+ "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
+ "			gm.m_iBLUFORTickets = tickets;"\
  "		}"\
  "	}"
  EOnInit ""\

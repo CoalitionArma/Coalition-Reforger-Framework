@@ -5,7 +5,18 @@ SCR_BaseTriggerEntity ObjObj {
  "		if (RplSession.Mode() == RplMode.Dedicated) "\
  "		{"\
  "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
+ "			gm.m_iOPFORTickets = 100;"\
  "			gm.RespawnSide(\"OPFOR\");"\
+ "			GetGame().GetCallqueue().CallLater(respawnOpforCleanup, 10000, false);"\
+ "		}"\
+ "	}"\
+ "	"\
+ "	void respawnOpforCleanup()"\
+ "	{"\
+ "		if (RplSession.Mode() == RplMode.Dedicated) "\
+ "		{"\
+ "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
+ "			gm.m_iOPFORTickets = 0;"\
  "		}"\
  "	}"\
  "	"\
@@ -33,20 +44,19 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
   coords 3362.514 87.031 7482.474
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OBJ 1 destroyed. Opfor respawns in 10 sec. Zone 2 unlocks in 2 min.\", duration: 10);"\
-  "		int playerCount = GetGame().GetPlayerManager().GetPlayerCount();"\
-  "		int bluforCount = Math.Ceil(playerCount/5*3);"\
+  "		"\
   "		if (RplSession.Mode() == RplMode.Dedicated)"\
   "		{"\
+  "			int playerCount = GetGame().GetPlayerManager().GetPlayerCount();"\
+  "			int bluforCount = Math.Ceil(playerCount / 5 * 3);"\
   "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
-  "			gm.m_iBLUFORTickets = gm.m_iBLUFORTickets + Math.Ceil(bluforCount / 2);"\
-  ""\
+  "			gm.m_iBLUFORTickets = gm.m_iBLUFORTickets + Math.Ceil(bluforCount * 0.5);"\
   "		}"\
   "		"\
   "		ObjObj_Class obj = ObjObj_Class.Cast(GetGame().GetWorld().FindEntityByName(\"ObjObj\"));"\
   "		"\
   "		GetGame().GetCallqueue().CallLater(obj.respawnOpfor, 15000, false);"\
   "		GetGame().GetCallqueue().CallLater(obj.unlockZone2, 120000, false);"\
-  "		"\
   "	"
   {
    SCR_VehicleSpawn ZU {
@@ -111,13 +121,13 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
   coords 2400.111 183.924 7517.198
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OBJ 2 destroyed. Opfor respawns in 10 sec. Zone 3 unlocks in 2 min.\", duration: 10);"\
-  "		int playerCount = GetGame().GetPlayerManager().GetPlayerCount();"\
-  "		int bluforCount = Math.Ceil(playerCount/5*3);"\
+  "		"\
   "		if (RplSession.Mode() == RplMode.Dedicated)"\
   "		{"\
+  "			int playerCount = GetGame().GetPlayerManager().GetPlayerCount();"\
+  "			int bluforCount = Math.Ceil(playerCount / 5 * 3);"\
   "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
-  "			gm.m_iBLUFORTickets = gm.m_iBLUFORTickets + Math.Ceil(bluforCount / 2);"\
-  ""\
+  "			gm.m_iBLUFORTickets = gm.m_iBLUFORTickets + Math.Ceil(bluforCount * 0.5);"\
   "		}"\
   "		"\
   "		ObjObj_Class obj = ObjObj_Class.Cast(GetGame().GetWorld().FindEntityByName(\"ObjObj\"));"\

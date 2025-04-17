@@ -91,7 +91,7 @@ $grp SCR_BaseTriggerEntity {
   "			GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);"\
   "		}"\
   "		"\
-  "		for (int i = 1; i <= 9; i++) "\
+  "		for (int i = 1; i <= 21; i++) "\
   "		{"\
   "			string uralName = \"ural\" + i.ToString();"\
   "			IEntity spawnUral = GetGame().GetWorld().FindEntityByName(uralName);"\
