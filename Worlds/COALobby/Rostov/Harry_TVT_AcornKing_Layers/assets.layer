@@ -117,11 +117,9 @@ $grp SCR_BaseTriggerEntity {
  }
  mortar1 {
   coords 1391.86 183.122 7469.787
-  {
-   SCR_BaseTriggerEntity mortar2 {
-    coords 0 0 -10.22
-   }
-  }
+ }
+ mortar2 {
+  coords 1391.86 183.122 7459.567
  }
  ural1 {
   coords 3224.552 85.782 7300.526
