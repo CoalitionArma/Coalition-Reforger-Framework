@@ -72,11 +72,38 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
  }
 }
 Vehicle MH47G1 : "{6EE8BD07DE06EC44}Prefabs/Vehicles/Helicopters/H47/MH47G.et" {
+ components {
+  SCR_FuelConsumptionComponent "{61D6281F110CF15D}" {
+   m_fFuelConsumption 100
+   m_fFuelConsumptionIdle 50
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     MaxFuel 1800
+     m_fInitialFuelTankState 1800
+    }
+   }
+  }
+ }
  coords 4537.396 17.495 2550.668
  angleX -2.359
  angleY 111.585
 }
 Vehicle AH6M_M1 : "{72C04A6EABC12143}Prefabs/Vehicles/Helicopters/AH6M/AH6M_M134.et" {
+ components {
+  SCR_FuelConsumptionComponent "{629CB2794259757B}" {
+   m_fFuelConsumption 100
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     MaxFuel 1840
+     m_fInitialFuelTankState 1800
+    }
+   }
+  }
+ }
  coords 4461.104 16.548 2584.999
  angleY 115.421
 }

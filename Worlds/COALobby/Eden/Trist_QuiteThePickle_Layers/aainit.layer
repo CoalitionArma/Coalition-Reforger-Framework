@@ -11,6 +11,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_iSetWeatherConstant 1
    m_initialWeatherDurationMax 1.7
   }
+  SCR_NightModeGameModeComponent "{5D50E84688D5A408}" {
+   m_iEVValueNightMode 4
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_iStartingHours 21
    m_iRangeHoursStart 21
@@ -40,7 +43,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    ""\
    "Details: "\
-   "- IND has a several types of flares for comms method"\
+   "- Only IND has Green/White flares."\
    "- Instruct squads that IND is the friendly SpecOps"
    m_aFactionKeys + {
     "INDFOR"
@@ -48,7 +51,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "- Find the crash site "\
-   "- Find & Eliminate all SpecOps (IND) crash survivors "\
+   "- Find & Eliminate/Capture all SpecOps (IND) crash survivors "\
    "- Prevent Rescue/Extract by using radio espionage & closing/zoning on suspected LZ's"\
    ""\
    "Details:"\
@@ -56,11 +59,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTextData "- Recover from the crash, signal for BLUFOR help while evading/fending off OPF"\
-   "- Alternative escape via LAND possible"\
-   "- Loosely extract via LZ's "\
+   "- Prioritize attempt at cohesion/support with BLU if applicable"\
+   "- Loosely extract via LZ's OR Land Route"\
    ""\
    "Details: "\
-   "SL/TL's have several types of flares for comms as there is none to BLU. Implement codewords/strategize for LZ\"s due to espionage possibility"
+   "- Only IND+BLU has flares."\
+   "- Implement codewords/strategize for LZ\"s due to espionage possibility."
    m_aFactionKeys + {
     "BLUFOR"
    }
@@ -72,7 +76,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{650861A11219774F}" {
    m_sTitle "Rules"
    m_sTextData "LZ's/Extracting"\
-   "- BLU may initially insert loosely"\
+   "- BLU may initially insert anywhere"\
    "- BLU can station/land the Chinook (AO or Ship) until needed"\
    "- IND/BLU must loosely use premarked LZ's for extraction"\
    "- LZ'S ARE KNOWN TO OPFOR. "\
@@ -118,8 +122,17 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      }
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
-       SCR_CallsignInfo "{650861A5BB9FDB88}" {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
         m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{650861A5BB9FDB88}" {
+        m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{6502F44DEEA4EC54}" {
         m_sCallsign "Pilots (MH47)"
@@ -225,10 +238,91 @@ $grp SCR_BaseTriggerEntity {
   "	"
  }
  extTrigger2 {
-  coords 6329.063 0.001 4710.592
+  coords 6261.119 0.001 4853.882
   angleY -6.672
   TriggerShapeType Sphere
-  SphereRadius 352.8
+  SphereRadius 494.7
+  "Polyline Height" 80
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 10
+  PrefabsFilter {
+   PrefabFilter "{6508206FA895E2C1}" {
+    Prefab "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
+   }
+   PrefabFilter "{6508206FAF01DD07}" {
+    Prefab "{ED774ED0660B2DCD}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Pilot_P.et"
+   }
+   PrefabFilter "{6508206FAFE4A8E3}" {
+    Prefab "{65F1BBC392B2B484}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Sniper_P.et"
+   }
+   PrefabFilter "{6508206FAFC0F7E7}" {
+    Prefab "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+   }
+   PrefabFilter "{6508206FD70E884E}" {
+    Prefab "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et"
+   }
+   PrefabFilter "{6508206FD7E838E9}" {
+    Prefab "{C4F92D98246A62C5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Gren_P.et"
+   }
+   PrefabFilter "{6508206FD7D46272}" {
+    Prefab "{0C86D510A52DF210}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Demo_P.et"
+   }
+   PrefabFilter "{6508206FD7B0AEA2}" {
+    Prefab "{1DB9BCE5811F8602}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MAT_P.et"
+   }
+  }
+  OnActivate ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"IND SF has extracted\", duration: 10);"\
+  "	"
+ }
+ extTrigger3 {
+  coords 6658.167 0.001 5206.255
+  angleY -6.672
+  TriggerShapeType Sphere
+  SphereRadius 494.7
+  "Polyline Height" 80
+  DrawShape 1
+  TriggerActivationType "First change"
+  PeriodicQueries 1
+  UpdatePeriod 10
+  PrefabsFilter {
+   PrefabFilter "{6508206FA895E2C1}" {
+    Prefab "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
+   }
+   PrefabFilter "{6508206FAF01DD07}" {
+    Prefab "{ED774ED0660B2DCD}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Pilot_P.et"
+   }
+   PrefabFilter "{6508206FAFE4A8E3}" {
+    Prefab "{65F1BBC392B2B484}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Sniper_P.et"
+   }
+   PrefabFilter "{6508206FAFC0F7E7}" {
+    Prefab "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+   }
+   PrefabFilter "{6508206FD70E884E}" {
+    Prefab "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et"
+   }
+   PrefabFilter "{6508206FD7E838E9}" {
+    Prefab "{C4F92D98246A62C5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Gren_P.et"
+   }
+   PrefabFilter "{6508206FD7D46272}" {
+    Prefab "{0C86D510A52DF210}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Demo_P.et"
+   }
+   PrefabFilter "{6508206FD7B0AEA2}" {
+    Prefab "{1DB9BCE5811F8602}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MAT_P.et"
+   }
+  }
+  OnActivate ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"IND SF has extracted\", duration: 10);"\
+  "	"
+ }
+ extTrigger4 {
+  coords 7308.407 0.001 5569.309
+  angleY -6.672
+  TriggerShapeType Sphere
+  SphereRadius 666.7
+  "Polyline Height" 80
   DrawShape 1
   TriggerActivationType "First change"
   PeriodicQueries 1

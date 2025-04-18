@@ -4,7 +4,6 @@ GameEntity : "{2A1F25C19148E083}Prefabs/Characters/HeadGear/Helmet_6B47/Helmet_6
   BaseLoadoutClothComponent "{5112706CD4157AF8}" {
    Slots {
     RHS_LoadoutSlotInfo NVG {
-     Enabled 0
      Prefab "{B0534A120633D08D}Prefabs/Items/Equipment/Nightvision/1PN138/NVG_1PN138.et"
     }
     RHS_LoadoutSlotInfo Headset {

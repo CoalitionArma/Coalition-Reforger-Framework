@@ -21,6 +21,8 @@ GenericEntity : "{34BE3822A89A0DDC}Prefabs/Weapons/Rifles/MK14MOD1/Rifle_MK14MOD
     }
     AttachmentSlotComponent "{649F22D8C4AB4279}" {
      AttachmentSlot InventoryStorageSlot "{649F22D8C9DDB1A8}" {
+      PivotID "Scene_Root"
+      Offset 0 0.1168 0.1611
       Prefab "{5F7D782D70C0CD77}Prefabs/Weapons/Attachments/Optics/Scopes/Optic_ELCAN_OS4x/Optic_ELCAN_OS4x_RMR.et"
      }
     }
