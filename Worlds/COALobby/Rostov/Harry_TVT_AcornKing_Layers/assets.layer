@@ -295,7 +295,7 @@ $grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 1392.373 179.793 7465.051
+  coords 1392.408 179.324 7463.26
  }
  engiSupplies {
   components {
