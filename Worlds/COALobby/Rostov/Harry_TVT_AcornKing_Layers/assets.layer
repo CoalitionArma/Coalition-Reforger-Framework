@@ -75,7 +75,7 @@ $grp SCR_BaseTriggerEntity {
   coords 4087.558 141.685 6754.984
   userScript "	string ural = \"{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et\";"\
   "	string truck = \"{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et\";"\
-  "	string mortar = \"{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et\";"\
+  "	string mortar = \"{CB56A2564414B7D6}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_USSR.et\";"\
   "	"\
   "	void spawnthings()"\
   "	{"\
@@ -116,10 +116,12 @@ $grp SCR_BaseTriggerEntity {
   "	"
  }
  mortar1 {
-  coords 1391.769 182.803 7468.208
- }
- mortar2 {
-  coords 1391.769 182.803 7458.208
+  coords 1391.86 183.122 7469.787
+  {
+   SCR_BaseTriggerEntity mortar2 {
+    coords 0 0 -10.22
+   }
+  }
  }
  ural1 {
   coords 3224.552 85.782 7300.526
@@ -293,7 +295,7 @@ $grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 1392.207 179.203 7463.212
+  coords 1392.373 179.793 7465.051
  }
  engiSupplies {
   components {

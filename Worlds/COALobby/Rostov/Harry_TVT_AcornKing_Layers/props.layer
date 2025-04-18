@@ -205,12 +205,12 @@ $grp Tree : "{C1F4CA4F9D788CE5}PrefabLibrary/Vegetation/Trees/t_pinus_sylvestris
   scale 1.066
  }
  {
-  coords 1091.908 -0 7218.213
+  coords 1091.908 0 7218.213
   angleY 175.237
   scale 1.066
  }
  {
-  coords 1094.768 -0 7207.158
+  coords 1094.768 0 7207.158
   angleY 175.237
   scale 1.066
  }
