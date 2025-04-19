@@ -453,7 +453,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdatePlayerGearScriptMap(string value, int playerID, string key)
 	{
-		CRF_GamemodeComponent.GetInstance().SetPlayerGearScriptsMapValue(value, playerID, key);
+		CRF_GearscriptComponent.GetInstance().SetPlayerGearScriptsMapValue(value, playerID, key);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -507,7 +507,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_ToggleSideReady(string setReady, string playerName, bool adminForced)
 	{
-		CRF_GamemodeComponent.GetInstance().ToggleSideReady(setReady, playerName, adminForced);
+		CRF_SafestartComponent.GetInstance().ToggleSideReady(setReady, playerName, adminForced);
 	}
 
 	//------------------------------------------------------------------------------------------------

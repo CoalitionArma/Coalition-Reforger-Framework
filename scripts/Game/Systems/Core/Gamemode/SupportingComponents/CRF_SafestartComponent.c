@@ -35,8 +35,6 @@ class CRF_SafestartComponent : SCR_BaseGameModeComponent
 	protected ref map<IEntity, bool> m_mEntitiesWithEHsMap = new map<IEntity, bool>();
 
 	protected SCR_PopUpNotification m_PopUpNotification = null;
-
-	bool m_bHUDVisible = true;
 	CRF_LoggingServerComponent m_Logging;
 	
 	//------------------------------------------------------------------------------------------------
@@ -48,16 +46,48 @@ class CRF_SafestartComponent : SCR_BaseGameModeComponent
 		else
 			return null;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		// Only run on in-game post init
+		// Is the the right way to do this? WHO KNOWS !
+		if (!GetGame().InPlayMode())
+			return;
+
+		#ifdef WORKBENCH
+		if (Replication.IsServer())
+		{
+			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
+			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
+		}
+		#else
+		if (RplSession.Mode() == RplMode.Dedicated)
+		{
+			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
+			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
+		}
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void WaitTillGameStart()
+	{
+		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
+			return;
+
+		m_bSafeStartEnabled = !CRF_Gamemode.GetInstance().m_bSafestartInstantlyEnabled;
+		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
+
+		GetGame().GetCallqueue().Remove(WaitTillGameStart);
+		GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, CRF_Gamemode.GetInstance().m_bSafestartInstantlyEnabled);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	// Ready Up functions
 	//------------------------------------------------------------------------------------------------
-
-	//------------------------------------------------------------------------------------------------
-	void UpdateHUDVisible()
-	{
-		m_bHUDVisible = !m_bHUDVisible;
-	};
 
 	//------------------------------------------------------------------------------------------------
 	TStringArray GetWhosReady() {

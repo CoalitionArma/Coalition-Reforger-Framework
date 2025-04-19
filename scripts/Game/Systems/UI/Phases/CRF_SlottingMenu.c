@@ -109,15 +109,15 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		m_cSlotListBoxComponent = CRF_ListboxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("RoleList")).FindHandler(CRF_ListboxComponent));
 		InitSlots();
 		
-		CRF_GamemodeComponent gamemodeComponent = CRF_GamemodeComponent.GetInstance();	
+		CRF_GearscriptComponent gearscriptComponent = CRF_GearscriptComponent.GetInstance();	
 		ResourceName gearScriptResource;
 		CRF_GearScriptConfig gearConfig;
 	
 		if(m_iBluforSlots > 0)
 		{
-			if(gamemodeComponent)
+			if(gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("BLUFOR");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("BLUFOR");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -140,9 +140,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		if(m_iOpforSlots > 0)
 		{
-			if(gamemodeComponent)
+			if(gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("OPFOR");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("OPFOR");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -165,9 +165,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		if(m_iIndforSlots > 0)
 		{
-			if(gamemodeComponent)
+			if(gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("INDFOR");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("INDFOR");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -190,9 +190,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		if(m_iCivSlots > 0)
 		{
-			if(gamemodeComponent)
+			if(gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("CIV");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("CIV");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));

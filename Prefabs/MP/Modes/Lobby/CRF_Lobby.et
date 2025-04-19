@@ -2,6 +2,14 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
  components {
   CRF_GamemodeComponent "{644344EEF3C64CD6}" {
+   components {
+    CRF_GearscriptComponent "{652635F9E4509A56}" {
+    }
+    CRF_ReplicationComponent "{652635F9E06C4C5E}" {
+    }
+    CRF_SafestartComponent "{652635F9FFBF46D3}" {
+    }
+   }
   }
   CRF_MDB_LoggingServerComponent "{645540DB0DEFDC76}" {
    Enabled 0

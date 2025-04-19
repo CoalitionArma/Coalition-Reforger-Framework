@@ -2,6 +2,8 @@ class CRF_GamemodeComponentClass : SCR_BaseGameModeComponentClass {}
 
 class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 {
+	bool m_bHUDVisible = true;
+	
 	//------------------------------------------------------------------------------------------------
 	static CRF_GamemodeComponent GetInstance()
 	{
@@ -21,44 +23,16 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		// Is the the right way to do this? WHO KNOWS !
 		if (!GetGame().InPlayMode())
 			return;
-		
-		m_WeaponConfig = CRF_GearScriptWeaponsConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer("{AF5B2639B4B12580}Configs/Gearscripts/CRF_Global_Weapons_Config.conf").GetResource().ToBaseContainer()));
-		m_EquipmentConfig = CRF_GearScriptEquipmentConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer("{DE26DF4B9B934889}Configs/Gearscripts/CRF_Global_Equipment_Config.conf").GetResource().ToBaseContainer()));
 
 		GetGame().GetInputManager().AddActionListener("SwitchSpectatorUI", EActionTrigger.DOWN, UpdateHUDVisible);
 		GetGame().GetCallqueue().CallLater(AddMsgAction, 0, false);
-
-		#ifdef WORKBENCH
-		if (Replication.IsServer())
-		{
-			GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(10000, 20000), true);
-
-			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
-			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
-		}
-		#else
-		if (RplSession.Mode() == RplMode.Dedicated)
-		{
-			GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(10000, 20000), true);
-
-			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
-			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
-		}
-		#endif
 	}
-
+	
 	//------------------------------------------------------------------------------------------------
-	void WaitTillGameStart()
+	void UpdateHUDVisible()
 	{
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
-			return;
-
-		m_bSafeStartEnabled = !CRF_Gamemode.GetInstance().m_bSafestartInstantlyEnabled;
-		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
-
-		GetGame().GetCallqueue().Remove(WaitTillGameStart);
-		GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, CRF_Gamemode.GetInstance().m_bSafestartInstantlyEnabled);
-	}
+		m_bHUDVisible = !m_bHUDVisible;
+	};
 
 	void OnGamemodeStateChanged()
 	{}
@@ -204,8 +178,8 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	{
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
 
-		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(250, 1000), false, entity, prefab);
-		SetPlayerGearScriptsMapValue(prefab, playerID, "GSR"); // GSR = Gear Script Resource
+		GetGame().GetCallqueue().CallLater(CRF_GearscriptComponent.GetInstance().SetupAddGearToEntity, 250, false, entity, prefab);
+		CRF_GearscriptComponent.GetInstance().SetPlayerGearScriptsMapValue(prefab, playerID, "GSR"); // GSR = Gear Script Resource
 
 		if (logAction)
 			LogAdminAction(string.Format("%1's gear was set to %2", GetGame().GetPlayerManager().GetPlayerName(playerID), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerID, true);

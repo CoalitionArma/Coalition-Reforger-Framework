@@ -548,22 +548,22 @@ class CRF_Gamemode : SCR_BaseGameMode
 		switch (faction)
 		{
 			case "BLUFOR" : {
-				if (m_iBLUFORTickets > 0 && m_iBLUFORTickets != -1 && !CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
+				if (m_iBLUFORTickets > 0 && m_iBLUFORTickets != -1 && !CRF_SafestartComponent.GetInstance().GetSafestartStatus())
 					m_iBLUFORTickets = m_iBLUFORTickets - 1;
 					break;
 			}
 			case "OPFOR" : {
-				if (m_iOPFORTickets > 0 && m_iOPFORTickets != -1 && !CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
+				if (m_iOPFORTickets > 0 && m_iOPFORTickets != -1 && !CRF_SafestartComponent.GetInstance().GetSafestartStatus())
 					m_iOPFORTickets = m_iOPFORTickets - 1;
 					break;
 			}
 			case "INDFOR" : {
-				if (m_iINDFORTickets > 0 && m_iINDFORTickets != -1 && !CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
+				if (m_iINDFORTickets > 0 && m_iINDFORTickets != -1 && !CRF_SafestartComponent.GetInstance().GetSafestartStatus())
 					m_iINDFORTickets = m_iINDFORTickets - 1;
 					break;
 			}
 			case "CIV" : {
-				if (m_iCIVTickets > 0 && m_iCIVTickets != -1 && !CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
+				if (m_iCIVTickets > 0 && m_iCIVTickets != -1 && !CRF_SafestartComponent.GetInstance().GetSafestartStatus())
 					m_iCIVTickets = m_iCIVTickets - 1;
 					break;
 			}
@@ -684,7 +684,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		if (SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC" && GetGame().GetPlayerManager().IsPlayerConnected(playerId))
 		{
-			string respawnPrefab = CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR");
+			string respawnPrefab = CRF_GearscriptComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR");
 
 			SCR_AIGroup group;
 			if (groupID == -1)

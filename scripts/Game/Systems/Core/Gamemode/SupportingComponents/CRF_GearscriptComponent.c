@@ -25,18 +25,42 @@ class CRF_GearscriptComponent : SCR_BaseGameModeComponent
 		else
 			return null;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		// Only run on in-game post init
+		// Is the the right way to do this? WHO KNOWS !
+		if (!GetGame().InPlayMode())
+			return;
+		
+		m_WeaponConfig = CRF_GearScriptWeaponsConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer("{AF5B2639B4B12580}Configs/Gearscripts/CRF_Global_Weapons_Config.conf").GetResource().ToBaseContainer()));
+		m_EquipmentConfig = CRF_GearScriptEquipmentConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer("{DE26DF4B9B934889}Configs/Gearscripts/CRF_Global_Equipment_Config.conf").GetResource().ToBaseContainer()));
+
+		#ifdef WORKBENCH
+		if (Replication.IsServer())
+			GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(10000, 20000), true);
+		#else
+		if (RplSession.Mode() == RplMode.Dedicated)
+			GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(10000, 20000), true);
+		#endif
+	}
 
 	//------------------------------------------------------------------------------------------------
 	override void OnControllableSpawned(IEntity entity)
 	{
 		super.OnControllableSpawned(entity);
+		
+		if (!GetGame().InPlayMode())
+			return;
 
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 
 		if (entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			return;
-
 		
 		GetGame().GetCallqueue().CallLater(CheckWorldValid, 150, false, entity);
 	}

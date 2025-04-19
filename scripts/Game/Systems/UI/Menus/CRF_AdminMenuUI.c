@@ -361,7 +361,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		for (int i = 0; i < m_list2.GetItemCount(); i++)
 		{
-			if (CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR").Contains(CRF_RoleHelper.RoleToString(i))) // GSR = Gear Script Resource
+			if (CRF_GearscriptComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerId, "GSR").Contains(CRF_RoleHelper.RoleToString(i))) // GSR = Gear Script Resource
 			{
 				m_list2.SetItemSelected(i, true);
 				return;
@@ -376,7 +376,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 
 		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerId, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rLeadershipRadiosPrefab, true);
+		m_clientComponent.AddItem(playerId, CRF_GearscriptComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rLeadershipRadiosPrefab, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -386,7 +386,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 
 		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerId, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rGIRadiosPrefab, true);
+		m_clientComponent.AddItem(playerId, CRF_GearscriptComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey()).m_rGIRadiosPrefab, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -404,7 +404,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	{
 		string factionKey = m_groupManagerComponent.GetPlayerGroup(playerId).GetFaction().GetFactionKey();
 
-		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(CRF_GamemodeComponent.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()));
+		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(CRF_GearscriptComponent.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()));
 
 		return gearConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab;
 	}

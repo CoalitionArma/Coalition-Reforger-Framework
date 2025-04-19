@@ -65,7 +65,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected TextWidget m_wTicketFourNumber
 	protected ImageWidget m_wTicketFourBackground
 
-	protected CRF_GamemodeComponent m_GamemodeComponent;
+	protected CRF_SafestartComponent m_SafestartComponent;
 	protected string m_sStoredServerWorldTime;
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
@@ -131,7 +131,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		GetGame().GetCallqueue().CallLater(Action_VONOff, 550, false);
 		
 		// -- BEGIN Port from CRF_GameTimerDisplay.c --
-		m_GamemodeComponent 		= CRF_GamemodeComponent.GetInstance();
+		m_SafestartComponent 		= CRF_SafestartComponent.GetInstance();
 		m_wTimer            		= TextWidget.Cast(m_wRoot.FindWidget("timeLeftTimer"));
 		m_wBackground       		= ImageWidget.Cast(m_wRoot.FindWidget("timeLeftBackground"));
 		
@@ -335,7 +335,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		sender.SetKillFeedTypeDeadLocal();
 		
 		// -- BEGIN Port from CRF_GameTimerDisplay.c --	
-		if (!CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
+		if (!CRF_SafestartComponent.GetInstance().GetSafestartStatus())
 		{
 			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 				if (!factionManager)
@@ -421,9 +421,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		}
 		
 		// get time left in mission
-		m_sServerWorldTime = m_GamemodeComponent.GetServerWorldTime();
+		m_sServerWorldTime = m_SafestartComponent.GetServerWorldTime();
 		
-		if (m_GamemodeComponent.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
+		if (m_SafestartComponent.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
 		
 		m_sStoredServerWorldTime = m_sServerWorldTime;
 		
@@ -451,7 +451,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		m_sServerWorldTime.Split(":", messageSplitArray, false);
 		
 		// If the map isn't open and more than five minutes remaining or no time limit
-		if (m_GamemodeComponent.GetSafestartStatus() || ((messageSplitArray[0] != "00" || messageSplitArray[1].ToInt() >= 5) && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
+		if (m_SafestartComponent.GetSafestartStatus() || ((messageSplitArray[0] != "00" || messageSplitArray[1].ToInt() >= 5) && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
 			
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);
@@ -702,16 +702,16 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		InitSlots();
 		
 		ResourceName icon;
-		CRF_GamemodeComponent gamemodeComponent = CRF_GamemodeComponent.GetInstance();	
+		CRF_GearscriptComponent gearscriptComponent = CRF_GearscriptComponent.GetInstance();	
 		ResourceName gearScriptResource;
 		CRF_GearScriptConfig gearConfig;
 		
 		if (m_iBluforSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("BLUButton").SetVisible(true);
-			if (gamemodeComponent)
+			if (gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("BLUFOR");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("BLUFOR");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -730,9 +730,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_iOpforSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("OPFButton").SetVisible(true);
-			if (gamemodeComponent)
+			if (gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("OPFOR");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("OPFOR");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -751,9 +751,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_iIndforSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("INDButton").SetVisible(true);
-			if (gamemodeComponent)
+			if (gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("INDFOR");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("INDFOR");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -772,9 +772,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_iCivSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("CIVButton").SetVisible(true);
-			if (gamemodeComponent)
+			if (gearscriptComponent)
 			{	
-				gearScriptResource = gamemodeComponent.GetGearScriptResource("CIV");
+				gearScriptResource = gearscriptComponent.GetGearScriptResource("CIV");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
