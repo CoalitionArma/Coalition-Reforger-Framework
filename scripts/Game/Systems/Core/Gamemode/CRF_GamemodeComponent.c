@@ -834,7 +834,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void SendAdminMessage_Callback(SCR_ChatPanel panel, string data)
 	{
-		CRF_ClientComponent.GetInstance().SendAdminMessage(data);
+		CRF_PlayerControllerComponent.GetInstance().SendAdminMessage(data);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -843,7 +843,7 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		if (!SCR_Global.IsAdmin() && !SCR_Global.IsModerator())
 			return;
 
-		CRF_ClientComponent.GetInstance().ReplyAdminMessage(data, true);
+		CRF_PlayerControllerComponent.GetInstance().ReplyAdminMessage(data, true);
 	}
 
 	//------------------------------------------------------------------------------------------------

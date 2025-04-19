@@ -24,7 +24,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 	protected bool m_bStoredFadeInBoolean;
 	protected bool m_bStoredProgressBarBoolean;
 
-	protected CRF_ClientComponent m_GameModePlayerComponent = null;
+	protected CRF_PlayerControllerComponent m_GameModePlayerComponent = null;
 	protected CRF_FrontlineGameModeComponent m_FrontlineGameModeComponent = null;
 	
 	//------------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 		};
 		
 		if (!m_GameModePlayerComponent || !m_wASite || !m_wSiteCaptureBar || !m_wASiteInZone || !m_wASiteLock) {
-			m_GameModePlayerComponent = CRF_ClientComponent.GetInstance();
+			m_GameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
 			m_wASite                  = ImageWidget.Cast(m_wRoot.FindWidget("ASite"));
 			m_wBSite                  = ImageWidget.Cast(m_wRoot.FindWidget("BSite"));
 			m_wCSite                  = ImageWidget.Cast(m_wRoot.FindWidget("CSite"));

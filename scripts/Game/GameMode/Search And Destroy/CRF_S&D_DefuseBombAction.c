@@ -31,7 +31,7 @@ class CRF_DefuseBombAction : ScriptedUserAction
 		else
 			siteDefused = "SiteB";
 		
-		CRF_ClientComponent.GetInstance().Owner_ToggleBombPlanted(siteDefused, false);
+		CRF_PlayerControllerComponent.GetInstance().Owner_ToggleBombPlanted(siteDefused, false);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}

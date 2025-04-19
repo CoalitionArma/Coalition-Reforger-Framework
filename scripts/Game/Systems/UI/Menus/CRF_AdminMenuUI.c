@@ -5,7 +5,7 @@ modded enum ChimeraMenuPreset
 
 class CRF_AdminMenu : ChimeraMenuBase
 {
-	protected CRF_ClientComponent m_clientComponent;
+	protected CRF_PlayerControllerComponent m_clientComponent;
 	protected InputManager m_InputManager;
 	protected SCR_ChatPanel m_ChatPanel;
 	protected bool m_bFocused = true;
@@ -59,7 +59,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_InputManager = GetGame().GetInputManager();
 		m_playerManager = GetGame().GetPlayerManager();
 		m_groupManagerComponent = SCR_GroupsManagerComponent.GetInstance();
-		m_clientComponent = CRF_ClientComponent.GetInstance();
+		m_clientComponent = CRF_PlayerControllerComponent.GetInstance();
 
 		//Menu Roots
 		m_wRoot = GetRootWidget();
@@ -490,7 +490,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	{
 		int playerId = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
 
-		CRF_ClientComponent.GetInstance().RequestGroupIdFromServer(playerId, SCR_PlayerController.GetLocalPlayerId());
+		CRF_PlayerControllerComponent.GetInstance().RequestGroupIdFromServer(playerId, SCR_PlayerController.GetLocalPlayerId());
 	}
 
 	//------------------------------------------------------------------------------------------------

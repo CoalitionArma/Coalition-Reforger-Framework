@@ -1,10 +1,10 @@
-[ComponentEditorProps(category: "Client Component", description: "")]
-class CRF_ClientComponentClass : ScriptComponentClass
+[ComponentEditorProps(category: "Player Controller Components", description: "")]
+class CRF_PlayerControllerComponentClass : ScriptComponentClass
 {
 
 }
 
-class CRF_ClientComponent : ScriptComponent
+class CRF_PlayerControllerComponent : ScriptComponent
 {
 	string m_sHintText = "Type Here";
 
@@ -18,10 +18,10 @@ class CRF_ClientComponent : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 
-	static CRF_ClientComponent GetInstance()
+	static CRF_PlayerControllerComponent GetInstance()
 	{
 		if (GetGame().GetPlayerController())
-			return CRF_ClientComponent.Cast(GetGame().GetPlayerController().FindComponent(CRF_ClientComponent));
+			return CRF_PlayerControllerComponent.Cast(GetGame().GetPlayerController().FindComponent(CRF_PlayerControllerComponent));
 		else
 			return null;
 	}

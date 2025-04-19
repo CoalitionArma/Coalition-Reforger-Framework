@@ -65,7 +65,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 //				soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_ERROR);
 //				return;
 //			}
-//			CRF_ClientComponent.GetInstance().SpawnGroup(m_groupID);
+//			CRF_PlayerControllerComponent.GetInstance().SpawnGroup(m_groupID);
 //			
 //			soundMan.CreateAndPlayAudioSource(pOwnerEntity,SCR_SoundEvent.SOUND_ITEM_RADIO_TUNE_UP);
 //		} else

@@ -119,12 +119,12 @@ modded class SCR_PlayerController
 
 		if (CRF_Gamemode.GetInstance().m_aSlots.Find(GetPlayerId()) == -1)
 		{
-			CRF_ClientComponent.GetInstance().RequestSpectator(GetPlayerId());
+			CRF_PlayerControllerComponent.GetInstance().RequestSpectator(GetPlayerId());
 			GetGame().GetCallqueue().CallLater(CRF_Gamemode.GetInstance().OpenCurrentStateMenu, 500, false);
 		}
 		else
 		{
-			CRF_ClientComponent.GetInstance().RequestSpectator(GetPlayerId());
+			CRF_PlayerControllerComponent.GetInstance().RequestSpectator(GetPlayerId());
 			GetGame().GetCallqueue().CallLater(EnterGame, 500, false, GetPlayerId());
 		};
 	}
