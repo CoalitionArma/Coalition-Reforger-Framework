@@ -6,5 +6,5 @@ class CRF_LibraryClass : ScriptComponentClass
 
 class CRF_Library : ScriptComponent
 {
-	
+
 };

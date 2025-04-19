@@ -132,7 +132,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void StartGame()
 	{
-		if(CRF_GamemodeComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+		if(CRF_SafestartComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
 			return;
 		
 		int zoneIndex = ((m_aZonesStatus.Count()-1)/2);
@@ -163,7 +163,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateZones()
 	{
-		if(CRF_GamemodeComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
+		if(CRF_SafestartComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
 			return;
 		
 		int zonesCapturedBlufor;

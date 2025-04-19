@@ -108,7 +108,7 @@ class CRF_HighValueTargetGameModeComponent: SCR_BaseGameModeComponent
 	
 	void WaitTillSafeStartEnds()
 	{
-		if (!CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
+		if (!CRF_SafestartComponent.GetInstance().GetSafestartStatus())
 		{	
 			GetGame().GetCallqueue().Remove(WaitTillSafeStartEnds);
 			if (RplSession.Mode() == RplMode.Dedicated)
