@@ -1,0 +1,167 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 14160.335 31.951 2714.065
+ }
+ {
+  coords 13960.335 31.951 2714.065
+ }
+ {
+  coords 14060.335 31.951 2714.065
+ }
+ {
+  coords 13860.335 31.951 2714.065
+ }
+}
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 14061.871 11.469 4330.616
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription "Bomb Site A"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 14288.505 2.719 4275.349
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription "Bomb Site B"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+}
+Tree : "{8F91FCAFE65FCDA6}Prefabs/Vegetation/Tree/t_carpinus_betulus/t_carpinus_betulus_3s.et" {
+ coords 14284.422 0.277 4295.988
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 13631.801 79.96 3794.624
+ }
+ {
+  coords 13831.801 79.96 3794.624
+ }
+ {
+  coords 14031.801 79.96 3794.624
+ }
+ {
+  coords 14231.801 79.96 3794.624
+ }
+ {
+  coords 14431.801 79.96 3794.624
+ }
+ {
+  coords 14631.801 79.96 3794.624
+ }
+ {
+  coords 14831.801 79.96 3794.624
+ }
+ {
+  coords 15031.801 79.96 3794.624
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 13516.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 13716.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 13916.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 14116.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 14316.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 14516.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 14716.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 14916.962 60.865 2033.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 2233.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 2433.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 2633.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 2833.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 3033.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 3233.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 3433.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 3633.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 3833.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 4033.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 4233.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 4433.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 4633.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 4833.188
+  angleY 0
+ }
+ {
+  coords 13516.962 60.865 5033.188
+  angleY 0
+ }
+ {
+  coords 13716.962 60.865 5233.188
+  angleY 0
+ }
+ {
+  coords 13916.962 60.865 5433.188
+  angleY 0
+ }
+ {
+  coords 14116.962 60.865 5633.188
+  angleY 0
+ }
+}
