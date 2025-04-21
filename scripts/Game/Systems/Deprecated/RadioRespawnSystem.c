@@ -37,7 +37,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 //		if(m_radioComponent)
 //		{
 //		
-//			m_playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(pUserEntity);
+//			m_playerID = GetGame().GetPlayerManager().GetplayerIDFromControlledEntity(pUserEntity);
 //			m_playerGroup = m_groupManager.GetPlayerGroup(m_playerID);
 //			m_factionKey = m_playerGroup.GetFaction().GetFactionKey();
 //			m_groupID = m_playerGroup.GetGroupID();
@@ -101,7 +101,7 @@ class SCR_RadioRespawnSystem : SCR_InventoryAction
 //	void valueinit()
 //	{
 //		m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioRespawnSystemComponent));
-//		m_playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(m_player);
+//		m_playerID = GetGame().GetPlayerManager().GetplayerIDFromControlledEntity(m_player);
 //		m_groupManager = SCR_GroupsManagerComponent.GetInstance();
 //		m_playerGroup = m_groupManager.GetPlayerGroup(m_playerID);
 //		m_factionKey = m_playerGroup.GetFaction().GetFactionKey();

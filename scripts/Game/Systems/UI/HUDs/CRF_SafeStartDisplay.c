@@ -17,7 +17,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 	protected TextWidget m_wCivReady;
 	protected PanelWidget m_wFactionsPanel;
 	
-	protected CRF_SafestartComponent m_SafestartComponent = null;
+	protected CRF_SafestartManager m_SafestartManager = null;
 	protected SCR_FactionManager m_FactionManager = null;
 	
 	protected float m_fCurrentOpacity = 0;
@@ -34,9 +34,9 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 	{
 		super.UpdateValues(owner, timeSlice);
 		
-		if (!m_SafestartComponent || !m_FactionManager || !m_wTimerImage || !m_wTimerDescription || !m_wTimerText || !m_wMissionStart || !m_wMissionStart2 || !m_wFactionsBackground || !m_wBluforFrame || !m_wOpforFrame || !m_wIndforFrame || !m_wBluforReady || !m_wOpforReady || !m_wIndforReady || !m_wCivFrame || !m_wCivReady || !m_wFactionsPanel) 
+		if (!m_SafestartManager || !m_FactionManager || !m_wTimerImage || !m_wTimerDescription || !m_wTimerText || !m_wMissionStart || !m_wMissionStart2 || !m_wFactionsBackground || !m_wBluforFrame || !m_wOpforFrame || !m_wIndforFrame || !m_wBluforReady || !m_wOpforReady || !m_wIndforReady || !m_wCivFrame || !m_wCivReady || !m_wFactionsPanel) 
 		{
-			m_SafestartComponent = CRF_SafestartComponent.GetInstance();
+			m_SafestartManager = CRF_SafestartManager.GetInstance();
 			m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 			m_wTimerImage         = ImageWidget.Cast(m_wRoot.FindAnyWidget("TimerImage"));
 			m_wTimerDescription   = TextWidget.Cast(m_wRoot.FindAnyWidget("TimerDescription"));
@@ -56,7 +56,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 			return;
 		};
 		
-		if(!CRF_GamemodeComponent.GetInstance().m_bHUDVisible)
+		if(!CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
 		{
 			m_wTimerDescription.SetVisible(false);
 			m_wTimerText.SetVisible(false);
@@ -92,7 +92,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 			m_wMissionStart2.SetOpacity(m_fCurrentOpacity);
 		};
 		
-		if (m_SafestartComponent.GetSafestartStatus()) {
+		if (m_SafestartManager.GetSafestartStatus()) {
 			if (!m_bAlreadyActivated) {
 				StopMission();
 				m_bAlreadyActivated = true;
@@ -102,7 +102,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 			UpdateTimer();
 		};
 		
-		if (!m_SafestartComponent.GetSafestartStatus() && m_bAlreadyActivated) {
+		if (!m_SafestartManager.GetSafestartStatus() && m_bAlreadyActivated) {
 			StartMission();
 			m_bAlreadyActivated = false;
 		};
@@ -116,7 +116,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 	
 	protected void UpdatePlayedFactions() 
 	{
-		array<string> outFactionsReady = m_SafestartComponent.GetWhosReady();
+		array<string> outFactionsReady = m_SafestartManager.GetWhosReady();
 		
 		if (!outFactionsReady || outFactionsReady.IsEmpty()) return;
 		
@@ -179,7 +179,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 	protected void UpdateTimer()
 	{	
 		
-		m_wTimerText.SetText(m_SafestartComponent.GetServerWorldTime());
+		m_wTimerText.SetText(m_SafestartManager.GetServerWorldTime());
 	}
 
 	//------------------------------------------------------------------------------------------------

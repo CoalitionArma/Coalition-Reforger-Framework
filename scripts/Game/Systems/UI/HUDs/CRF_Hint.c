@@ -62,6 +62,7 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 		} else {
 			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
 			delete m_wMainWidget;
+			delete this;
 		}
 	}
 

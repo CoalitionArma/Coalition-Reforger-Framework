@@ -41,7 +41,7 @@
 //	
 //	protected ref array<Managed> m_WeaponSlotComponentArray = {};
 //	
-//	CRF_GearScriptEditorGamemodeComponent m_gearScriptEditor;
+//	CRF_GearScriptEditorGamemodeManager m_gearScriptEditor;
 //	SCR_CharacterInventoryStorageComponent m_CharacterInventory;
 //	
 //	ref EntitySpawnParams spawnParams;
@@ -56,7 +56,7 @@
 //		m_wRoot = GetRootWidget();
 //		m_hudRoot = FrameWidget.Cast(m_wRoot.FindWidget("GearScriptLayout"));
 //		
-//		m_gearScriptEditor = CRF_GearScriptEditorGamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeComponent));
+//		m_gearScriptEditor = CRF_GearScriptEditorGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeManager));
 //		
 //		if(!m_gearScriptEditor)
 //			{
@@ -428,7 +428,7 @@
 //	override void Action_CloseInventory()
 //	{
 //		super.Action_CloseInventory();
-//		m_gearScriptEditor = CRF_GearScriptEditorGamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeComponent));
+//		m_gearScriptEditor = CRF_GearScriptEditorGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_GearScriptEditorGamemodeManager));
 //		if(m_gearScriptEditor)
 //			SaveGear();
 //	}

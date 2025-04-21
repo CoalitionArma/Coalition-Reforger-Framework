@@ -15,6 +15,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	protected CRF_ListboxComponent m_cSlotListBoxComponent;
 	protected CRF_ListboxComponent m_cOrbatListBoxComponent;
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_MenuManager m_MenuManager;
 	protected SCR_ChatPanel m_ChatPanel;
 	protected SCR_ButtonTextComponent m_wAdvanceButton;
 	protected SCR_ButtonTextComponent m_wPreviewButton;
@@ -24,7 +25,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	protected int m_iIndforSlots = 0;
 	protected int m_iCivSlots = 0;
 	protected Faction m_fSelectedFaction;
-	protected int m_iSelectedPlayerID = 0;
+	protected int m_iSelectedplayerId = 0;
 	protected int m_LocalSlottingState;
 	
 	ResourceName m_rBluforIcon;
@@ -48,7 +49,8 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			m_ChatPanel = SCR_ChatPanel.Cast(wChatPanel.FindHandler(SCR_ChatPanel));
 		
 		m_wRoot = GetRootWidget();
-		m_Gamemode = CRF_Gamemode.Cast(GetGame().GetGameMode());
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
 		
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		
@@ -97,7 +99,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
 			gameButton.SetEnabled(true);
 		
-		SCR_ButtonTextComponent.Cast(gameButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(EnterGame);
+		SCR_ButtonTextComponent.Cast(gameButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(InitilizePlayer);
 		SCR_ButtonTextComponent.Cast(previewButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(OpenSlottingMenu);
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("SlotPhaseButton")).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceSlottingPhase);
 		SCR_ButtonTextComponent.Cast(advanceButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceMenu);
@@ -109,15 +111,15 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		m_cSlotListBoxComponent = CRF_ListboxComponent.Cast(OverlayWidget.Cast(m_wRoot.FindAnyWidget("RoleList")).FindHandler(CRF_ListboxComponent));
 		InitSlots();
 		
-		CRF_GearscriptComponent gearscriptComponent = CRF_GearscriptComponent.GetInstance();	
+		CRF_GearscriptManager GearscriptManager = CRF_GearscriptManager.GetInstance();	
 		ResourceName gearScriptResource;
 		CRF_GearScriptConfig gearConfig;
 	
 		if(m_iBluforSlots > 0)
 		{
-			if(gearscriptComponent)
+			if(GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("BLUFOR");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("BLUFOR");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -140,9 +142,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		if(m_iOpforSlots > 0)
 		{
-			if(gearscriptComponent)
+			if(GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("OPFOR");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("OPFOR");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -165,9 +167,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		if(m_iIndforSlots > 0)
 		{
-			if(gearscriptComponent)
+			if(GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("INDFOR");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("INDFOR");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -190,9 +192,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		if(m_iCivSlots > 0)
 		{
-			if(gearscriptComponent)
+			if(GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("CIV");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("CIV");
 				if(!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -307,13 +309,13 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		if(m_Gamemode.m_SlottingState == 2)
 			return;
 		
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).AdvanceSlottingPhase();
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceSlottingPhase();
 	}
 	
-	void EnterGame()
+	void InitilizePlayer()
 	{
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).EnterGame(GetGame().GetPlayerController().GetPlayerId());
+		CRF_PlayerControllerComponent.GetInstance().InitilizePlayer();
 	}
 	
 	void SelectPlayerDelay()
@@ -323,10 +325,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	
 	void SelectPlayer()
 	{
-		if(m_iSelectedPlayerID == m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iPlayerID)
-			m_iSelectedPlayerID = 0;
+		if(m_iSelectedplayerId == m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iplayerId)
+			m_iSelectedplayerId = 0;
 		else
-			m_iSelectedPlayerID = m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iPlayerID;
+			m_iSelectedplayerId = m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iplayerId;
 		UpdateSlots();
 	}
 	
@@ -508,12 +510,12 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(deadPlayersInGroup > 0 && playersInGroup == 0 && SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId()))
 				m_cSlotListBoxComponent.RemoveItem(groupIndex);
 		}
-		if(m_Gamemode.m_aSlots.Find(m_iSelectedPlayerID) != -1)
-			m_iSelectedPlayerID = 0;
-		ref array<int> playerIDs = {};
-		GetGame().GetPlayerManager().GetAllPlayers(playerIDs);
+		if(m_Gamemode.m_aSlots.Find(m_iSelectedplayerId) != -1)
+			m_iSelectedplayerId = 0;
+		ref array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
 		m_cUnslotPlayerListBoxComponent.Clear();
-		foreach(int player : playerIDs)
+		foreach(int player : playerIds)
 		{	
 			if(player <= 0 || !SCR_FactionManager.SGetPlayerFaction(player))
 				continue;
@@ -528,7 +530,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				comp.SetColor(Color.FromRGBA(255, 0, 0, 255));
 			
 			
-			if(player == m_iSelectedPlayerID)
+			if(player == m_iSelectedplayerId)
 				comp.SetColor(Color.FromRGBA(255, 163, 0, 255));
 		}
 		
@@ -542,7 +544,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	
 	void KickSlot()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(m_Gamemode.m_aEntitySlots.Find(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).entityID), 0);
+		CRF_RplToAuthorityManager.GetInstance().SetSlot(m_Gamemode.m_aEntitySlots.Find(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).entityID), 0);
 	}
 	
 	void LockGroupSlotsDelayed()
@@ -559,10 +561,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			{
 				if(m_Gamemode.m_aPlayerGroupIDs.Get(i) == RplComponent.Cast(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).group.FindComponent(RplComponent)).Id())
 				{
-					SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(i, -1);	
+					CRF_RplToAuthorityManager.GetInstance().SetSlot(i, -1);	
 				}
 			}
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetGroupLocked(m_Gamemode.m_aGroupRplIDs.Find(RplComponent.Cast(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).group.FindComponent(RplComponent)).Id()), true);
+			CRF_RplToAuthorityManager.GetInstance().SetGroupLocked(m_Gamemode.m_aGroupRplIDs.Find(RplComponent.Cast(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).group.FindComponent(RplComponent)).Id()), true);
 		}
 		else
 		{
@@ -570,10 +572,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			{
 				if(m_Gamemode.m_aPlayerGroupIDs.Get(i) == RplComponent.Cast(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).group.FindComponent(RplComponent)).Id())
 				{
-					SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(i, 0);	
+					CRF_RplToAuthorityManager.GetInstance().SetSlot(i, 0);	
 				}
 			}
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetGroupLocked(m_Gamemode.m_aGroupRplIDs.Find(RplComponent.Cast(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).group.FindComponent(RplComponent)).Id()), false);
+			CRF_RplToAuthorityManager.GetInstance().SetGroupLocked(m_Gamemode.m_aGroupRplIDs.Find(RplComponent.Cast(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).group.FindComponent(RplComponent)).Id()), false);
 		}
 	}
 	
@@ -586,9 +588,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	void LockSlot()
 	{
 		if(m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).entityID)) == -1)
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(m_Gamemode.m_aEntitySlots.Find(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).entityID), 0);
+			CRF_RplToAuthorityManager.GetInstance().SetSlot(m_Gamemode.m_aEntitySlots.Find(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).entityID), 0);
 		else
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(m_Gamemode.m_aEntitySlots.Find(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).entityID), -1);
+			CRF_RplToAuthorityManager.GetInstance().SetSlot(m_Gamemode.m_aEntitySlots.Find(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).entityID), -1);
 	}
 	
 	void OpenSlottingMenu()
@@ -599,7 +601,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	
 	void AdvanceMenu()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).AdvanceGamemodeState();
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState();
 	}
 	
 	override void OnMenuUpdate(float tDelta)
@@ -622,11 +624,11 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			hourString = hours.ToString();
 		
 		TextWidget.Cast(m_wRoot.FindAnyWidget("TimeText")).SetText("Time: " + hourString + ":" +  minuteString);
-		ref array<int> playerIDs = {};
+		ref array<int> playerIds = {};
 		
-		GetGame().GetPlayerManager().GetAllPlayers(playerIDs);
+		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
 		m_cPlayerListBoxComponent.Clear();
-		foreach(int player : playerIDs)
+		foreach(int player : playerIds)
 		{	
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player) || !SCR_Global.IsAdmin(player))
 				continue;
@@ -650,10 +652,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				comp.SetColor(Color.FromRGBA(255, 0, 0, 255));
 			
 			
-			if(m_Gamemode.m_aPlayersTalking.Contains(player))
+			if(m_MenuManager.m_aPlayersTalking.Contains(player))
 				comp.SetColor(Color.FromRGBA(255, 163, 0, 255));
 		}
-		foreach(int player : playerIDs)
+		foreach(int player : playerIds)
 		{	
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player) || SCR_Global.IsAdmin(player))
 				continue;
@@ -674,7 +676,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			}
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);	
 			
-			if(m_Gamemode.m_aPlayersTalking.Contains(player))
+			if(m_MenuManager.m_aPlayersTalking.Contains(player))
 				comp.SetColor(Color.FromRGBA(255, 163, 0, 255));
 		}
 		
@@ -798,20 +800,20 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		if (specialtyPhase && slotNotSpecialtyOrLM && !isAdmin)
 			return;
 		
-		if (m_iSelectedPlayerID > 0 && isAdmin)
+		if (m_iSelectedplayerId > 0 && isAdmin)
 		{
-			if (m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(comp.entityID)) == m_iSelectedPlayerID)
+			if (m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(comp.entityID)) == m_iSelectedplayerId)
 			{
-				SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(index, 0);
-				m_iSelectedPlayerID = 0;
+				CRF_RplToAuthorityManager.GetInstance().SetSlot(index, 0);
+				m_iSelectedplayerId = 0;
 				m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
 				return;
 			} else if(m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(comp.entityID)) == 0) {
-				if (m_Gamemode.m_aSlots.Find(m_iSelectedPlayerID) != -1)
-					SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(m_Gamemode.m_aSlots.Find(m_iSelectedPlayerID), 0);
+				if (m_Gamemode.m_aSlots.Find(m_iSelectedplayerId) != -1)
+					CRF_RplToAuthorityManager.GetInstance().SetSlot(m_Gamemode.m_aSlots.Find(m_iSelectedplayerId), 0);
 				
-				SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(index, m_iSelectedPlayerID);
-				m_iSelectedPlayerID = 0;
+				CRF_RplToAuthorityManager.GetInstance().SetSlot(index, m_iSelectedplayerId);
+				m_iSelectedplayerId = 0;
 				m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
 				return;
 			}
@@ -822,20 +824,19 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		if (m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(comp.entityID)) == GetGame().GetPlayerController().GetPlayerId())
 		{
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(index, 0);
+			CRF_RplToAuthorityManager.GetInstance().SetSlot(index, 0);
 			return;
 		} else if(m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(comp.entityID)) == 0) {
 			if (m_Gamemode.m_aSlots.Find(GetGame().GetPlayerController().GetPlayerId()) != -1)
-				SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(m_Gamemode.m_aSlots.Find(GetGame().GetPlayerController().GetPlayerId()), 0);
+				CRF_RplToAuthorityManager.GetInstance().SetSlot(m_Gamemode.m_aSlots.Find(GetGame().GetPlayerController().GetPlayerId()), 0);
 			
-			SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetSlot(index, GetGame().GetPlayerController().GetPlayerId());
+			CRF_RplToAuthorityManager.GetInstance().SetSlot(index, GetGame().GetPlayerController().GetPlayerId());
 			return;
 		}
 	}
 	
 	void Action_VONon()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(true, GetGame().GetPlayerController().GetPlayerId());
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		von.SetTransmitRadio(GetVoNTransiver());
@@ -873,7 +874,6 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	//From reforger lobby <3
 	void Action_VONOff()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(false, GetGame().GetPlayerController().GetPlayerId());
 		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
 	}
 	

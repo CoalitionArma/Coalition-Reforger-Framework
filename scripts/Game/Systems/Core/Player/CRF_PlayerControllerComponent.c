@@ -7,10 +7,20 @@ class CRF_PlayerControllerComponentClass : ScriptComponentClass
 class CRF_PlayerControllerComponent : ScriptComponent
 {
 	string m_sHintText = "Type Here";
+	
+	bool m_bHUDVisible = true;
 
 	ref array<string> m_aScriptedMarkers = {};
 
-	protected CRF_GamemodeComponent m_gamemodeComponent;
+	protected CRF_GamemodeManager m_GamemodeManager;
+	
+	//Stores local camera entity to delete whenever you take over a player
+	IEntity m_eCamera;
+
+	bool m_bActivated = false;
+	int m_iFPS = -1;
+	int m_iAudioSetting = -1;
+	private vector m_vStoredCameraPos[4];
 
 	//------------------------------------------------------------------------------------------------
 
@@ -25,6 +35,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		else
 			return null;
 	}
+	
 
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
@@ -36,41 +47,266 @@ class CRF_PlayerControllerComponent : ScriptComponent
 
 		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
 		GetGame().GetInputManager().AddActionListener("CRF_AdminForceReady", EActionTrigger.DOWN, AdminForceReady);
-
-		SCR_PlayerController.Cast(owner).m_OnControlledEntityChanged.Insert(OnControlledEntityChanged);
-		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 500, true);
-		GetGame().GetCallqueue().CallLater(AddAdvanceAction, 0, false);
+		GetGame().GetInputManager().AddActionListener("CRF_OpenLobby", EActionTrigger.PRESSED, OpenSlottingMenu);
+		GetGame().GetInputManager().AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
+		GetGame().GetInputManager().AddActionListener("SwitchSpectatorUI", EActionTrigger.DOWN, UpdateHUDVisible);
+		
+		GetGame().GetCallqueue().CallLater(AddMsgAction, 1000, false);
+		GetGame().GetCallqueue().CallLater(AddAdvanceAction, 1000, false);
+		
+		GetGame().GetCallqueue().CallLater(OpenCurrentStateMenu, 500, false);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-
-	// Specific Gamemode Functions
-
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-	//------------------------------------------------------------------------------------------------
-
-	//------------------------------------------------------------------------------------------------
-	// Functions for Search and Destroy
-	//------------------------------------------------------------------------------------------------
-
-	void Owner_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
+	void InitilizePlayer()
 	{
-		Rpc(RpcAsk_ToggleBombPlanted, sitePlanted, togglePlanted);
-	}
+		//Call to server to enter slot and or get put into a initial entity to spectate
+		if (m_eCamera)
+			delete m_eCamera; 
 
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
+		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
+		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
+		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
+		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_AARMenu);
+		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_RespawnMenu);
+		
+		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+		
+		ResetSettingsToStoredValues();
+
+		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1500, false);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateHUDVisible()
 	{
-		CRF_SearchAndDestroyGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGameModeComponent)).ToggleBombPlanted(sitePlanted, togglePlanted);
+		m_bHUDVisible = !m_bHUDVisible;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateStoredCameraPos(vector cameraPosToStore[4])
+	{
+		m_vStoredCameraPos = cameraPosToStore;
 	}
 
+	//------------------------------------------------------------------------------------------------
+	void SpecCameraInit(vector cameraPos[4])
+	{
+		if (SCR_EditorManagerEntity.GetInstance().IsOpened())
+			return;
+
+		if (cameraPos[3] != vector.Zero && cameraPos[3] != CRF_Gamemode.GetInstance().m_vGenericSpawn[3])
+			m_vStoredCameraPos = cameraPos;
+
+		if (m_vStoredCameraPos[3] != vector.Zero && cameraPos[3] == CRF_Gamemode.GetInstance().m_vGenericSpawn[3])
+			cameraPos = m_vStoredCameraPos;
+
+		if (cameraPos[3] == vector.Zero || cameraPos[3] == "0 10000 0" || cameraPos[3][0] < 1 || cameraPos[3][2] < 1)
+			cameraPos = CRF_Gamemode.GetInstance().m_vGenericSpawn;
+
+		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
+		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
+		cameraSpawnParams.Transform = cameraPos;
+
+		if (!m_eCamera)
+			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
+		
+		Print(m_eCamera);
+		
+		vector mat = m_eCamera.GetAngles();
+		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+
+		CRF_RplToAuthorityManager.GetInstance().CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
+		
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME)
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
+		
+		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void UpdateEntityPos(vector cameraPos[4])
+	{
+		//Rpc(RpcDo_UpdateCameraPos, entityID, cameraPos);
+		IEntity player = GetGame().GetPlayerController().GetControlledEntity();
+
+		//~ Align to terrain if not a character
+		if (!ChimeraCharacter.Cast(player))
+			SCR_TerrainHelper.OrientToTerrain(cameraPos);
+
+		BaseGameEntity baseGameEntity = BaseGameEntity.Cast(player);
+		if (baseGameEntity)
+			baseGameEntity.Teleport(cameraPos);
+		else
+			player.SetWorldTransform(cameraPos);
+
+		Physics phys = player.GetPhysics();
+		if (phys)
+		{
+			phys.SetVelocity(vector.Zero);
+			phys.SetAngularVelocity(vector.Zero);
+		}
+	}
+	
+	// Toggle Spec NVG
+	//------------------------------------------------------------------------------------------------
+	void ToggleNVGs()
+	{
+		m_bActivated = !m_bActivated;
+
+		if (m_bActivated)
+			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{0AD0A1ADEBCF893F}Assets/Items/Equipment/NVG/pvs14/data/SpecNVGFilm.emat", true);
+		else
+			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ResetSettingsToStoredValues()
+	{
+		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+		
+		if (m_iFPS != -1)
+			video.Set("MaxFps", m_iFPS);
+		GetGame().UserSettingsChanged();
+
+		if (m_iAudioSetting == -1)
+			AudioSystem.SetMasterVolume(AudioSystem.SFX, 100);
+		else
+			AudioSystem.SetMasterVolume(AudioSystem.SFX, m_iAudioSetting);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void SetupRadioFrequency()
+	{
+		// Get player's radio
+		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
+		if (!entity || entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			return;
+		array<IEntity> items = {};
+		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
+		IEntity radioEntity;
+		foreach (IEntity item : items)
+		{
+			if (item.FindComponent(BaseRadioComponent))
+			{
+				radioEntity = item;
+				break;
+			}
+		}
+
+		if (!radioEntity)
+			return;
+
+		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		BaseTransceiver grpTsv = radio.GetTransceiver(0);
+
+		// Set Player's Freq to whatever group they are in
+		SCR_GroupsManagerComponent m_GroupManager = SCR_GroupsManagerComponent.GetInstance();
+		if (!m_GroupManager)
+			return;
+
+		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
+		PlayerController pc = GetGame().GetPlayerController();
+		if (pc && group)
+		{
+			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
+			if (rhc)
+				rhc.SetFrequency(grpTsv, group.GetRadioFrequency());
+		}
+
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(entity.FindComponent(SCR_VoNComponent));
+
+		von.SetTransmitRadio(grpTsv);
+
+		BaseTransceiver pltTsv = radio.GetTransceiver(1);
+
+		if (pltTsv)
+			von.SetTransmitRadio(pltTsv);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void OpenCurrentStateMenu()
+	{
+		//Close any menu that wriggles its way in
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu)
+			topMenu.Close();
+		GetGame().GetMenuManager().CloseAllMenus();
+		//Opens menu based on current game state : )
+		switch (CRF_Gamemode.GetInstance().m_GamemodeState)
+		{
+			case CRF_GamemodeState.INITIAL: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);		break; }
+			case CRF_GamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);	break; }
+			case CRF_GamemodeState.GAME: 		{InitilizePlayer();														break; }
+			case CRF_GamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);		break; }
+		}
+		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
+		{
+			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+			if (m_iFPS == -1)
+				video.Get("MaxFps", m_iFPS);
+			
+			video.Set("MaxFps", 30);
+			GetGame().UserSettingsChanged();
+			
+			if (m_iAudioSetting == -1)
+				m_iAudioSetting = AudioSystem.GetMasterVolume(AudioSystem.SFX);
+			
+			AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
+		}
+	}
+	
+	//Opens the slotting menu for players in game
+	//------------------------------------------------------------------------------------------------
+	void OpenSlottingMenu(float value = 0.0, EActionTrigger reason = 0)
+	{
+		if (value != 1)
+			return;
+
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu)
+			if (topMenu.IsInherited(CRF_PreviewMenuUI) || topMenu.IsInherited(CRF_SlottingMenuUI))
+				return;
+			else if (topMenu.IsInherited(CRF_SpectatorMenuUI))
+				GetGame().GetMenuManager().CloseMenu(topMenu);
+
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);
+		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
+		{
+			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+			
+			if (m_iFPS)
+				video.Get("MaxFps", m_iFPS);
+			
+			video.Set("MaxFps", 30);
+			GetGame().UserSettingsChanged();
+			
+			if (m_iAudioSetting)
+				m_iAudioSetting = AudioSystem.GetMasterVolume(AudioSystem.SFX);
+			
+			AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
+		}
+	}	
+
+	//------------------------------------------------------------------------------------------------
+	// Admin Messaging
+	//------------------------------------------------------------------------------------------------
+	void AddMsgAction()
+	{
+		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
+		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("admin");
+		invoker.Insert(SendAdminMessage);
+		ChatCommandInvoker invoker2 = chatPanelManager.GetCommandInvoker("a");
+		invoker2.Insert(SendAdminMessage);
+		ChatCommandInvoker invoker3 = chatPanelManager.GetCommandInvoker("r");
+		invoker3.Insert(ReplyAdminMessage);
+		ChatCommandInvoker invoker4 = chatPanelManager.GetCommandInvoker("reply");
+		invoker4.Insert(ReplyAdminMessage);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// Functions for Frontline
 	//------------------------------------------------------------------------------------------------
-
 	void UpdateMapMarkers(array<string> zoneStatus, array<string> zoneObjectNames, FactionKey bluforSide, FactionKey opforSide)
 	{
 		RemoveALLScriptedMarkers();
@@ -113,7 +349,6 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	// Functions for scripted markers
 	//------------------------------------------------------------------------------------------------
-
 	TStringArray GetScriptedMarkersArray()
 	{
 		return m_aScriptedMarkers;
@@ -147,16 +382,9 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-
 	// Admin Menu
-
-	//\***********************************************************************************************
-	//\***********************************************************************************************
 	//------------------------------------------------------------------------------------------------
-
-	void SendAdminMessage(string data)
+	void SendAdminMessage(SCR_ChatPanel panel, string data)
 	{
 
 		PlayerController pc = GetGame().GetPlayerController();
@@ -166,38 +394,33 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		if (!chatComponent)
 			return;
 		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
-		data = string.Format("PlayerID: %1 | Player Name: %3 | \"%2\"", GetGame().GetPlayerController().GetPlayerId(), data, GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
-		Rpc(RpcAsk_SendAdminMessage, data);
+		data = string.Format("playerId: %1 | Player Name: %3 | \"%2\"", GetGame().GetPlayerController().GetPlayerId(), data, GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
+		CRF_RplToAuthorityManager.GetInstance().SendAdminMessage(data);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SendAdminMessage(string data)
+	void ReplyAdminMessage(SCR_ChatPanel panel, string data)
 	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SendAdminMessage(data);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void ReplyAdminMessage(string data, bool logAction)
-	{
+		if (!SCR_Global.IsAdmin() && !CRF_Library.IsModerator())
+			return;
+		
 		array<string> dataSplit = {};
 		data.Split(" ", dataSplit, false);
-		int playerID;
+		int playerId;
 		string toSend;
 		for (int i = 0; i < dataSplit.Count(); i++)
 		{
 			if (dataSplit[i] == "0")
 			{
 				dataSplit.RemoveOrdered(i);
-				playerID = 0;
+				playerId = 0;
 				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
 				break;
 			}
 
 			if (dataSplit[i].ToInt() > 0)
 			{
-				playerID = dataSplit[i].ToInt();
+				playerId = dataSplit[i].ToInt();
 				dataSplit.RemoveOrdered(i);
 				toSend = SCR_StringHelper.Join(" ", dataSplit, true);
 				break;
@@ -209,263 +432,23 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
 		if (!chatComponent)
 			return;
-		if (!playerID)
+		if (!playerId)
 		{
 			chatComponent.ShowMessage("INVALID PLAYER ID");
 			return;
 		}
-		if (!GetGame().GetPlayerManager().GetPlayerName(playerID))
+		if (!GetGame().GetPlayerManager().GetPlayerName(playerId))
 		{
 			chatComponent.ShowMessage("INVALID PLAYER ID");
 			return;
 		}
 
-		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", toSend, GetGame().GetPlayerManager().GetPlayerName(playerID)));
+		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", toSend, GetGame().GetPlayerManager().GetPlayerName(playerId)));
 		toSend = string.Format("\"%1\"", toSend);
-		Rpc(RpcAsk_ReplyAdminMessage, toSend, playerID, logAction);
+		CRF_RplToAuthorityManager.GetInstance().ReplyAdminMessage(toSend, playerId, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ReplyAdminMessage(string data, int playerID, bool logAction)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.ReplyAdminMessage(data, playerID, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Respawn
-	//------------------------------------------------------------------------------------------------
-	void SpawnOnGroup(int playerID, vector spawnLocation, int groupID, bool logAction)
-	{
-		Rpc(RpcAsk_SpawnOnGroup, playerID, spawnLocation, groupID, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SpawnOnGroup(int playerID, vector spawnLocation, int groupID, bool logAction)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SpawnOnGroupServer(playerID, spawnLocation, groupID, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void RequestGroupIdFromServer(int requestedId, int requesterID)
-	{
-		Rpc(RpcAsk_RequestGroupIdFromServer, requestedId, requesterID);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestGroupIdFromServer(int requestedId, int requesterID)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SendGroupIDToPlayer(requestedId, requesterID);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Gear
-	//------------------------------------------------------------------------------------------------
-	void ResetGear(int playerID, ResourceName prefab, bool logAction)
-	{
-		Rpc(RpcAsk_ResetGear, playerID, prefab, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ResetGear(int playerID, ResourceName prefab, bool logAction)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SetPlayerGear(playerID, prefab, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void AddItem(int playerID, string prefab, bool logAction)
-	{
-		Rpc(RpcAsk_AddItem, playerID, prefab, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_AddItem(int playerID, string prefab, bool logAction)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.AddItem(playerID, prefab, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Teleport
-	//------------------------------------------------------------------------------------------------
-	void TeleportLocalPlayer(int playerID1, int playerID2)
-	{
-		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID2);
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
-		vector teleportLocation = vector.Zero;
-		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
-		spawnParams.Transform[3] = teleportLocation;
-
-		SCR_Global.TeleportPlayer(playerID1, teleportLocation);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void TeleportPlayers(int playerID1, int playerID2, bool logAction)
-	{
-		Rpc(RpcAsk_TeleportPlayers, playerID1, playerID2, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_TeleportPlayers(int playerID1, int playerID2, bool logAction)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.TeleportPlayers(playerID1, playerID2, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Hint
-	//------------------------------------------------------------------------------------------------
-	void SendHintAll(string data)
-	{
-		Rpc(RpcAsk_SendHintAll, data);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SendHintAll(string data)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SendHintAll(data);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void SendHintPlayer(string data, int playerID)
-	{
-		Rpc(RpcAsk_SendHintPlayer, data, playerID);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SendHintPlayer(string data, int playerID)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SendHintPlayer(data, playerID);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void SendHintFaction(string data, string factionKey)
-	{
-		Rpc(RpcAsk_SendHintFaction, data, factionKey);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SendHintFaction(string data, string factionKey)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.SendHintFaction(data, factionKey);
-	}
-	//------------------------------------------------------------------------------------------------
-	// Heal
-	//------------------------------------------------------------------------------------------------
-	void HealPlayer(int playerID, bool logAction)
-	{
-		Rpc(RpcAsk_HealPlayer, playerID, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_HealPlayer(int playerID, bool logAction)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.HealPlayer(playerID, logAction);
-	}
-	//------------------------------------------------------------------------------------------------
-	void HealPlayerVehicle(int playerID, bool logAction)
-	{
-		Rpc(RpcAsk_HealPlayerVehicle, playerID, logAction);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_HealPlayerVehicle(int playerID, bool logAction)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.HealPlayerVehicle(playerID, logAction);
-	}
-	//------------------------------------------------------------------------------------------------
-	// Log Admin Action
-	//------------------------------------------------------------------------------------------------
-	void LogAdminAction(string data, int playerID, bool sendToPlayer)
-	{
-		Rpc(RpcAsk_LogAdminAction, data, playerID, sendToPlayer);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_LogAdminAction(string data, int playerID, bool sendToPlayer)
-	{
-		m_gamemodeComponent = CRF_GamemodeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_GamemodeComponent));
-		m_gamemodeComponent.LogAdminAction(data, playerID, sendToPlayer);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-
-	// Gearscript
-
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-	//------------------------------------------------------------------------------------------------
-
-	//------------------------------------------------------------------------------------------------
-	protected void WaitTillGameStart()
-	{
-		if (!SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
-			return;
-
-		GetGame().GetCallqueue().Remove(WaitTillGameStart);
-		GetGame().GetCallqueue().CallLater(DelayUpdate, 5000, false);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void DelayUpdate()
-	{
-		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
-
-		if (entity && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
-		{
-			OnControlledEntityChanged(SCR_PlayerController.GetLocalMainEntity(), SCR_PlayerController.GetLocalMainEntity());
-		}
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void OnControlledEntityChanged(IEntity from, IEntity to)
-	{
-		if (!to.GetPrefabData().GetPrefabName().Contains("CRF_GS_"))
-			return;
-
-		Rpc(RpcAsk_UpdatePlayerGearScriptMap, to.GetPrefabData().GetPrefabName(), SCR_PlayerController.GetLocalPlayerId(), "GSR"); // GSR = Gear Script Resource
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_UpdatePlayerGearScriptMap(string value, int playerID, string key)
-	{
-		CRF_GearscriptComponent.GetInstance().SetPlayerGearScriptsMapValue(value, playerID, key);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-
-	// Safestart
-
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-	//------------------------------------------------------------------------------------------------
-
 	void ToggleSideReady()
 	{
 		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
@@ -482,108 +465,49 @@ class CRF_PlayerControllerComponent : ScriptComponent
 			return;
 
 		if (playersGroup.IsPlayerLeader(SCR_PlayerController.GetLocalPlayerId()))
-			Owner_ToggleSideReady(playerName);
+		{
+			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+			Faction faction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
+		
+			if (faction.GetFactionKey() == "")
+				return;
+			
+			CRF_RplToAuthorityManager.GetInstance().ToggleSideReady(faction.GetFactionKey(), playerName, false);
+		}
 	}
 
+	//------------------------------------------------------------------------------------------------
 	void AdminForceReady()
 	{
 		if (!SCR_Global.IsAdmin())
 			return;
-		Rpc(RpcAsk_ToggleSideReady, "", GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId()), true);
+		CRF_RplToAuthorityManager.GetInstance().ToggleSideReady("", GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId()), true);
 	}
-
+	
 	//------------------------------------------------------------------------------------------------
-	void Owner_ToggleSideReady(string playerName)
+	void TeleportLocalPlayer(int playerId1, int playerId2)
 	{
-		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		Faction faction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
+		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId2);
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		vector teleportLocation = vector.Zero;
+		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
+		spawnParams.Transform[3] = teleportLocation;
 
-		if (faction.GetFactionKey() == "")
-			return;
-		Rpc(RpcAsk_ToggleSideReady, faction.GetFactionKey(), playerName, false);
+		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
 	}
-
+	
 	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_ToggleSideReady(string setReady, string playerName, bool adminForced)
-	{
-		CRF_SafestartComponent.GetInstance().ToggleSideReady(setReady, playerName, adminForced);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-
-	// Radio  Respawn
-
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-	//------------------------------------------------------------------------------------------------
-
-	void SpawnGroupServer(int groupID)
-	{
-		Rpc(RpcAsk_SpawnGroupServer, groupID);
-	}
-
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_SpawnGroupServer(int groupID)
-	{
-//		CRF_RadioRespawnSystemComponent m_radioComponent = CRF_RadioRespawnSystemComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioRespawnSystemComponent));
-//		m_radioComponent.SpawnGroupServer(groupID);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-
-	// Spectator
-
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-	//------------------------------------------------------------------------------------------------
-
-	void RequestSpectator(int playerId)
-	{
-		Rpc(RpcAsk_RequestSpectator, playerId);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_RequestSpectator(int playerId)
-	{
-		CRF_Gamemode.GetInstance().EnterSpectator(playerId);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-
 	// AAR Screen
-
-	//\***********************************************************************************************
-	//\***********************************************************************************************
-	//------------------------------------------------------------------------------------------------
-
 	void AddAdvanceAction()
 	{
 		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
 		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("aar");
 		invoker.Insert(Advance_Callback);
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
 	void Advance_Callback(SCR_ChatPanel panel, string data)
 	{
-		if (!SCR_Global.IsAdmin())
-			return;
-
-		Rpc(RpcAsk_Advance_Callback)
-	}
-
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	void RpcAsk_Advance_Callback()
-	{
-		CRF_Gamemode.GetInstance().AdvanceGamemodeState(true);
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState();
 	}
 }

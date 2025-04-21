@@ -13,7 +13,7 @@ modded class SCR_PopUpNotification : GenericEntity
 			return;
 
 		Widget root;
-		if(CRF_GamemodeComponent.GetInstance().m_bHUDVisible)
+		if(CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
 			root = GetGame().GetHUDManager().CreateLayout(LAYOUT_NAME, EHudLayers.ALWAYS_TOP, 0);
 		else
 			root = GetGame().GetHUDManager().CreateLayout(LAYOUT_NAME, EHudLayers.LOW, 0);

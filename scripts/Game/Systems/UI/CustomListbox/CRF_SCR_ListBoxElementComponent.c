@@ -1,6 +1,6 @@
 modded class SCR_ListBoxElementComponent
 {
-	int m_iPlayerID;
+	int m_iplayerId;
 	int m_iDescriptionIndex;
 	void SetColor(Color color)
 	{

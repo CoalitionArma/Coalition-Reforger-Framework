@@ -4,7 +4,6 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 	RplId entityID;
 	bool isGroupLocked;
 	bool m_bIsPlayer = false;
-	int m_iPlayerId;
 	int m_iChannelId;
 	CRF_Gamemode m_Gamemode = CRF_Gamemode.GetInstance();	
 	bool m_bDeleteRequest = false;

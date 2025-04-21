@@ -26,7 +26,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	protected TextWidget m_wTicketFourNumber
 	protected ImageWidget m_wTicketFourBackground
 
-	protected CRF_SafestartComponent m_SafestartComponent;
+	protected CRF_SafestartManager m_SafestartManager;
 	protected string m_sStoredServerWorldTime;
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
@@ -44,9 +44,9 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 		super.UpdateValues(owner, timeSlice);
 		
 		// Respawn support
-		if (!m_SafestartComponent || !m_wTimer || !m_wBackground || !m_MapEntity) 
+		if (!m_SafestartManager || !m_wTimer || !m_wBackground || !m_MapEntity) 
 		{
-			m_SafestartComponent 		= CRF_SafestartComponent.GetInstance();
+			m_SafestartManager 		= CRF_SafestartManager.GetInstance();
 			m_wTimer            		= TextWidget.Cast(m_wRoot.FindWidget("timeLeftTimer"));
 			m_wBackground       		= ImageWidget.Cast(m_wRoot.FindWidget("timeLeftBackground"));
 			
@@ -80,9 +80,9 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	//------------------------------------------------------------------------------------------------
 	void UpdateTimer()
 	{	
-		if (!m_SafestartComponent || !m_wTimer || !m_wBackground || !m_MapEntity || SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et") return;
+		if (!m_SafestartManager || !m_wTimer || !m_wBackground || !m_MapEntity || !SCR_PlayerController.GetLocalControlledEntity() || SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et") return;
 		
-		if(!CRF_GamemodeComponent.GetInstance().m_bHUDVisible)
+		if(!CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
 		{
 			m_wTimer.SetVisible(false);
 			m_wBackground.SetVisible(false);
@@ -100,7 +100,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 			m_wTicketOneBackground.SetVisible(true);
 		}
 		
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME && !CRF_SafestartComponent.GetInstance().GetSafestartStatus())
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME && !CRF_SafestartManager.GetInstance().GetSafestartStatus())
 		{
 			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 				if (!factionManager)
@@ -186,14 +186,14 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 		}
 		
 		// get time left in mission
-		m_sServerWorldTime = m_SafestartComponent.GetServerWorldTime();
+		m_sServerWorldTime = m_SafestartManager.GetServerWorldTime();
 		
 		if (m_sServerWorldTime == "N/A") {
 			GetGame().GetCallqueue().Remove(UpdateTimer);
 			return;
 		};
 		
-		if (m_SafestartComponent.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
+		if (m_SafestartManager.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
 		
 		m_sStoredServerWorldTime = m_sServerWorldTime;
 		
@@ -222,7 +222,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 		m_sServerWorldTime.Split(":", messageSplitArray, false);
 		
 		// If the map isn't open and more than five minutes remaining or no time limit
-		if (m_SafestartComponent.GetSafestartStatus() || ((messageSplitArray[0] != "00" || messageSplitArray[1].ToInt() >= 5) && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
+		if (m_SafestartManager.GetSafestartStatus() || ((messageSplitArray[0] != "00" || messageSplitArray[1].ToInt() >= 5) && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);
 			

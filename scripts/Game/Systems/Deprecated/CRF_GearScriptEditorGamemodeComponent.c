@@ -1,8 +1,8 @@
 /*
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_GearScriptEditorGamemodeComponentClass: SCR_BaseGameModeComponentClass {}
+class CRF_GearScriptEditorGamemodeManagerClass: SCR_BaseGameModeComponentClass {}
 
-class CRF_GearScriptEditorGamemodeComponent: SCR_BaseGameModeComponent
+class CRF_GearScriptEditorGamemodeManager: SCR_BaseGameModeComponent
 {	
 	protected ref CRF_GearScriptConfig m_masterConfig;
 	protected ref CRF_Default_Gear m_defaultGearConfig;

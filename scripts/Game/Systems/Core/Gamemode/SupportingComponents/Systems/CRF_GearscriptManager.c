@@ -1,27 +1,21 @@
-class CRF_GearscriptComponentClass : SCR_BaseGameModeComponentClass {}
+class CRF_GearscriptManagerClass : SCR_BaseGameModeComponentClass {}
 
-class CRF_GearscriptComponent : SCR_BaseGameModeComponent
+class CRF_GearscriptManager : SCR_BaseGameModeComponent
 {
 	protected ref RandomGenerator m_RNG = new RandomGenerator();
 	
 	ref CRF_GearScriptEquipmentConfig m_EquipmentConfig;
 	ref CRF_GearScriptWeaponsConfig m_WeaponConfig;
+	protected CRF_Gamemode m_Gamemode;
 
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
-
-	// A array we use primarily for replication of m_mAllPlayerGearScriptsMap to clients.
-	[RplProp(onRplName: "UpdateLocalPlayerGearScriptsMap")]
-	protected ref array<string> m_aAllPlayerGearScriptsArray = {};
-
-	// A hashmap that is modified only on each client by a .BumpMe from the authority.
-	protected ref map<string, string> m_mAllPlayerGearScriptsMap = new map<string, string>();
 	
 	//------------------------------------------------------------------------------------------------
-	static CRF_GearscriptComponent GetInstance()
+	static CRF_GearscriptManager GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
 		if (gameMode)
-			return CRF_GearscriptComponent.Cast(gameMode.FindComponent(CRF_GearscriptComponent));
+			return CRF_GearscriptManager.Cast(gameMode.FindComponent(CRF_GearscriptManager));
 		else
 			return null;
 	}
@@ -36,47 +30,11 @@ class CRF_GearscriptComponent : SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode())
 			return;
 		
+		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_WeaponConfig = CRF_GearScriptWeaponsConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer("{AF5B2639B4B12580}Configs/Gearscripts/CRF_Global_Weapons_Config.conf").GetResource().ToBaseContainer()));
 		m_EquipmentConfig = CRF_GearScriptEquipmentConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer("{DE26DF4B9B934889}Configs/Gearscripts/CRF_Global_Equipment_Config.conf").GetResource().ToBaseContainer()));
-
-		#ifdef WORKBENCH
-		if (Replication.IsServer())
-			GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(10000, 20000), true);
-		#else
-		if (RplSession.Mode() == RplMode.Dedicated)
-			GetGame().GetCallqueue().CallLater(UpdatePlayerGearScriptsArray, m_RNG.RandInt(10000, 20000), true);
-		#endif
 	}
-
-	//------------------------------------------------------------------------------------------------
-	override void OnControllableSpawned(IEntity entity)
-	{
-		super.OnControllableSpawned(entity);
-		
-		if (!GetGame().InPlayMode())
-			return;
-
-		if (RplSession.Mode() == RplMode.Client)
-			return;
-
-		if (entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
-			return;
-		
-		GetGame().GetCallqueue().CallLater(CheckWorldValid, 150, false, entity);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void CheckWorldValid(IEntity entity)
-	{
-		if (!GetGame().GetWorld())
-		{
-			GetGame().GetCallqueue().CallLater(CheckWorldValid, 500, false, entity);
-			return;
-		}
-
-		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, m_RNG.RandInt(250, 500), false, entity, entity.GetPrefabData().GetPrefabName());
-	}
-
+	
 	//------------------------------------------------------------------------------------------------
 	ResourceName GetGearScriptResource(string factionKey)
 	{
@@ -96,82 +54,31 @@ class CRF_GearscriptComponent : SCR_BaseGameModeComponent
 
 		switch (factionKey)
 		{
-			case "BLUFOR" : {gearScriptContainer = CRF_Gamemode.GetInstance().m_BLUFORGearScriptSettings; break; }
-			case "OPFOR" : {gearScriptContainer = CRF_Gamemode.GetInstance().m_OPFORGearScriptSettings; break; }
-			case "INDFOR" : {gearScriptContainer = CRF_Gamemode.GetInstance().m_INDFORGearScriptSettings; break; }
-			case "CIV" : {gearScriptContainer = CRF_Gamemode.GetInstance().m_CIVILIANGearScriptSettings; break; }
+			case "BLUFOR" : {gearScriptContainer = m_Gamemode.m_BLUFORGearScriptSettings; break; }
+			case "OPFOR" : {gearScriptContainer = m_Gamemode.m_OPFORGearScriptSettings; break; }
+			case "INDFOR" : {gearScriptContainer = m_Gamemode.m_INDFORGearScriptSettings; break; }
+			case "CIV" : {gearScriptContainer = m_Gamemode.m_CIVILIANGearScriptSettings; break; }
 		}
 
 		return gearScriptContainer;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	// Functions to replicate and store values to each clients m_mAllPlayerGearScriptsMap
-	//------------------------------------------------------------------------------------------------
-
-	//------------------------------------------------------------------------------------------------
-	override protected void OnGameEnd()
+	override void OnControllableSpawned(IEntity entity)
 	{
-		super.OnGameEnd();
-
-		//--- Server only
-		if (RplSession.Mode() == RplMode.Client)
+		super.OnControllableSpawned(entity);
+		
+		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client || entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			return;
-
-		GetGame().GetCallqueue().Remove(UpdatePlayerGearScriptsArray);
+		
+		int randInt = m_RNG.RandInt(2500, 25000);
+		
+		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
+			randInt = m_RNG.RandInt(250, 500);
+		
+		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, randInt, false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 
-	//------------------------------------------------------------------------------------------------
-	string ReturnPlayerGearScriptsMapValue(int playerID, string key)
-	{
-		// Get the players key
-		key = string.Format("%1%2", playerID, key);
-		return m_mAllPlayerGearScriptsMap.Get(key);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void SetPlayerGearScriptsMapValue(string value, int playerID, string key)
-	{
-		// Get the players key
-		key = string.Format("%1%2", playerID, key);
-		m_mAllPlayerGearScriptsMap.Set(key, value);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void UpdatePlayerGearScriptsArray()
-	{
-		// Create a temp array so we arent broadcasting for each change to m_aAllPlayerGearScriptsArray.
-		protected ref array<string> tempPlayerArray = {};
-
-		// Fill tempPlayerArray with all keys and values in m_mAllPlayerGearScriptsMap.
-		for (int i = 0; i < m_mAllPlayerGearScriptsMap.Count(); i++)
-		{
-			string key = m_mAllPlayerGearScriptsMap.GetKey(i);
-			string value = m_mAllPlayerGearScriptsMap.Get(key);
-
-			tempPlayerArray.Insert(string.Format("%1~%2", key, value));
-		};
-
-		// Replicate m_aAllPlayerGearScriptsArray to all clients.
-		m_aAllPlayerGearScriptsArray = tempPlayerArray;
-		Replication.BumpMe();
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void UpdateLocalPlayerGearScriptsMap()
-	{
-		// Fill m_mAllPlayerGearScriptsMap with all keys and values from authorities m_mAllPlayerGearScriptsMap.
-		foreach (string playerKeyAndValueToSplit : m_aAllPlayerGearScriptsArray)
-		{
-			array<string> playerKeyAndValueArray = {};
-			playerKeyAndValueToSplit.Split("~", playerKeyAndValueArray, false);
-			m_mAllPlayerGearScriptsMap.Set(playerKeyAndValueArray[0], playerKeyAndValueArray[1]);
-		};
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Functions to for Gear Script
-	//------------------------------------------------------------------------------------------------
 	void SetupAddGearToEntity(IEntity entity, ResourceName resourceNameToScan)
 	{
 		if (!resourceNameToScan.Contains("CRF_GS_") || !entity)
@@ -204,15 +111,7 @@ class CRF_GearscriptComponent : SCR_BaseGameModeComponent
 		}
 
 		// GET ROLE
-		array<string> value = {};
-		resourceNameToScan.Split("_", value, true);
-
-		string roleString = "_" + value[3] + "_" + value[4];
-
-		roleString.Split(".", value, true);
-		roleString = value[0];
-		
-		int role = CRF_RoleHelper.StringToRole(roleString);
+		int role = CRF_RoleHelper.StringToRole(CRF_Library.PrefabToRole(resourceNameToScan));
 
 		// CLEAR ENTITY
 		array<IEntity> items = {};

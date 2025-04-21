@@ -2,12 +2,12 @@ modded class SCR_CharacterStaminaComponent : CharacterStaminaComponent
 {
 	override event void OnStaminaDrain(float pDrain)
 	{
-		CRF_SafestartComponent safestartComponent = CRF_SafestartComponent.GetInstance();
+		CRF_SafestartManager SafestartManager = CRF_SafestartManager.GetInstance();
 		
-		if(!safestartComponent)
+		if(!SafestartManager)
 			return;
 		
-		if(GetGame().InPlayMode() && safestartComponent.GetSafestartStatus())
+		if(GetGame().InPlayMode() && SafestartManager.GetSafestartStatus())
 			AddStamina(Math.AbsFloat(pDrain));
 	};
 }

@@ -14,6 +14,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	protected SCR_ChatPanel m_ChatPanel;
 	protected SCR_MapEntity m_MapEntity;
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_MenuManager m_MenuManager;
 	protected SCR_ListBoxComponent m_cPlayerListBoxComponent;
 	protected CRF_ListboxComponent m_cSlotListBoxComponent;
 	protected int m_iBluforSlots = 0;
@@ -49,8 +50,6 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		
 		
 		//INPUT MANAGERS
-		GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		
 		//Loads the chat
@@ -62,7 +61,8 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		
 		m_wRoot = GetRootWidget();
-		m_Gamemode = CRF_Gamemode.Cast(GetGame().GetGameMode());
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_wFactions = m_wRoot.FindAnyWidget("Factions");
 		m_wMissionDescription = m_wRoot.FindAnyWidget("DescriptionList");
 		m_wRoleFrame = m_wRoot.FindAnyWidget("RoleList");
@@ -343,11 +343,11 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		
 		TextWidget.Cast(m_wRoot.FindAnyWidget("PlayersText")).SetText("Players: " + GetGame().GetPlayerManager().GetPlayerCount());
 		
-		ref array<int> playerIDs = {};
+		ref array<int> playerIds = {};
 		
-		GetGame().GetPlayerManager().GetAllPlayers(playerIDs);
+		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
 		m_cPlayerListBoxComponent.Clear();
-		foreach(int player : playerIDs)
+		foreach(int player : playerIds)
 		{
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
@@ -357,7 +357,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 				comp.SetColor(Color.FromRGBA(255, 0, 0, 255));
 			
 			
-			if(m_Gamemode.m_aPlayersTalking.Contains(player))
+			if(m_MenuManager.m_aPlayersTalking.Contains(player))
 				comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
 		}
 		
@@ -478,7 +478,6 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	
 	void Action_VONon()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(true, GetGame().GetPlayerController().GetPlayerId());
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		von.SetTransmitRadio(GetVoNTransiver());
@@ -505,19 +504,17 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		return transiver;
 	}
 	
+	//From reforger lobby <3
+	void Action_VONOff()
+	{
+		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
+	}
 	
 	void LobbyVoNDisableDelayed()
 	{
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
-	}
-	
-	//From reforger lobby <3
-	void Action_VONOff()
-	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(false, GetGame().GetPlayerController().GetPlayerId());
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
 	}
 	
 	void Action_OnChatToggleAction()

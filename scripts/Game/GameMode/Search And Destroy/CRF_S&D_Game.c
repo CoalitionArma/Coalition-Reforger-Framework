@@ -1,10 +1,10 @@
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_SearchAndDestroyGameModeComponentClass: SCR_BaseGameModeComponentClass
+class CRF_SearchAndDestroyGamemodeManagerClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
+class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 {
 	[Attribute("US", "auto", "The side assaulting the bomb sites")]
 	FactionKey attackingSide;

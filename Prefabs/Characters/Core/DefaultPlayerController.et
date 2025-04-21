@@ -1,7 +1,7 @@
 SCR_PlayerController {
  ID "1A9BA6BEFA06E3B1"
  components {
-  CRF_ClientComponent "{6442704C8C4685DF}" {
+  CRF_PlayerControllerComponent "{652A3313FFFF5801}" {
   }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
    InfoDisplays {

@@ -1,13 +1,19 @@
 CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
  components {
-  CRF_GamemodeComponent "{644344EEF3C64CD6}" {
+  CRF_GamemodeManager "{652A3313EC014E7F}" {
    components {
-    CRF_GearscriptComponent "{652635F9E4509A56}" {
+    CRF_GearscriptManager "{652A3313EF7B772C}" {
     }
-    CRF_ReplicationComponent "{652635F9E06C4C5E}" {
+    CRF_MenuManager "{652A3313EB733550}" {
     }
-    CRF_SafestartComponent "{652635F9FFBF46D3}" {
+    CRF_RespawnManager "{652A331316B363A2}" {
+    }
+    CRF_RplBroadcastManager "{652A33130A1A6D5C}" {
+    }
+    CRF_RplToAuthorityManager "{652A331336DF0C87}" {
+    }
+    CRF_SafestartManager "{652A33131ACE2DC1}" {
     }
    }
   }

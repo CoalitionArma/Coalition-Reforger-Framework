@@ -13,7 +13,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	void UpdateTimer()
 	{	
 		TextWidget timerWidget = TextWidget.Cast(GetRootWidget().FindAnyWidget("timerCountDown"));
-		timerWidget.SetText(SCR_FormatHelper.FormatTime(CRF_Gamemode.GetInstance().m_iRespawnTimer));
+		timerWidget.SetText(SCR_FormatHelper.FormatTime(CRF_RespawnManager.GetInstance().m_iRespawnTimer));
 	}
 	
 	override void OnMenuOpen()
@@ -99,7 +99,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	
 	void Action_VONon()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(true, GetGame().GetPlayerController().GetPlayerId());
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		von.SetTransmitRadio(GetVoNTransiver());
@@ -126,19 +125,17 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		return transiver;
 	}
 	
+	//From reforger lobby <3
+	void Action_VONOff()
+	{
+		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
+	}
 	
 	void LobbyVoNDisableDelayed()
 	{
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
-	}
-	
-	//From reforger lobby <3
-	void Action_VONOff()
-	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(false, GetGame().GetPlayerController().GetPlayerId());
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
 	}
 	
 	void Action_OnChatToggleAction()

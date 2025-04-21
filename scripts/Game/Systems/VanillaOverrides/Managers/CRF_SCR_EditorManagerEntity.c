@@ -117,7 +117,7 @@ modded class SCR_EditorManagerEntity
 						vector mat[4];
 						SCR_PlayerController.GetLocalMainEntity().GetWorldTransform(mat);
 						mat[3][1] = mat[3][1] + 1.5;
-						SCR_PlayerController.Cast(GetGame().GetPlayerController()).SpecCameraInit(mat);
+						CRF_PlayerControllerComponent.GetInstance().SpecCameraInit(mat);
 					};
 					
 					break;

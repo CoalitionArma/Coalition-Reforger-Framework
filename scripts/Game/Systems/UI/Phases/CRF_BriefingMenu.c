@@ -14,6 +14,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	protected SCR_ListBoxComponent m_cPlayerListBoxComponent;
 	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent;
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_MenuManager m_MenuManager;
 	protected ButtonWidget m_wBackButton;
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {};
 	protected SCR_ChatPanel m_ChatPanel;
@@ -40,7 +41,8 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		
 		m_wRoot = GetRootWidget();
-		m_Gamemode = CRF_Gamemode.Cast(GetGame().GetGameMode());
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
 		
 		TextWidget missionText = TextWidget.Cast(m_wRoot.FindAnyWidget("MissionText"));
 		if(GetGame().GetMissionName())
@@ -100,14 +102,14 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		}
 		
 		SCR_ButtonTextComponent.Cast(slottingButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(OpenSlottingMenu);
-		SCR_ButtonTextComponent.Cast(gameButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(EnterGame);
+		SCR_ButtonTextComponent.Cast(gameButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(InitilizePlayer);
 		SCR_ButtonTextComponent.Cast(advanceButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(AdvanceMenu);
 	}
 	
-	void EnterGame()
+	void InitilizePlayer()
 	{
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).EnterGame(GetGame().GetPlayerController().GetPlayerId());
+		CRF_PlayerControllerComponent.GetInstance().InitilizePlayer();
 	}
 	
 	void OpenSlottingMenu()
@@ -118,7 +120,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	
 	void AdvanceMenu()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).AdvanceGamemodeState();
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState();
 	}
 	
 	override void OnMenuUpdate(float tDelta)
@@ -144,11 +146,11 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		
 		TextWidget.Cast(m_wRoot.FindAnyWidget("TimeText")).SetText("Time: " + hourString + ":" +  minuteString);
 		
-		ref array<int> playerIDs = {};
+		ref array<int> playerIds = {};
 		
-		GetGame().GetPlayerManager().GetAllPlayers(playerIDs);
+		GetGame().GetPlayerManager().GetAllPlayers(playerIds);
 		m_cPlayerListBoxComponent.Clear();
-		foreach(int player : playerIDs)
+		foreach(int player : playerIds)
 		{
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
@@ -158,7 +160,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 				comp.SetColor(Color.FromRGBA(255, 0, 0, 255));
 			
 			
-			if(m_Gamemode.m_aPlayersTalking.Contains(player))
+			if(m_MenuManager.m_aPlayersTalking.Contains(player))
 				comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
 		}
 		if(SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
@@ -280,7 +282,6 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	
 	void Action_VONon()
 	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(true, GetGame().GetPlayerController().GetPlayerId());
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		von.SetTransmitRadio(GetVoNTransiver());
@@ -307,19 +308,17 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		return transiver;
 	}
 	
+	//From reforger lobby <3
+	void Action_VONOff()
+	{
+		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
+	}
 	
 	void LobbyVoNDisableDelayed()
 	{
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
-	}
-	
-	//From reforger lobby <3
-	void Action_VONOff()
-	{
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(false, GetGame().GetPlayerController().GetPlayerId());
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
 	}
 	
 	void Action_OnChatToggleAction()

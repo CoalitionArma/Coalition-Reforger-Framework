@@ -9,6 +9,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected ref array<Widget> m_aSpectatorWidgets = {};
 	protected ref array<ref CRF_SpectatorLabelIconCharacter> m_aSpectatorIcons = {};
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_MenuManager m_MenuManager;
 	protected SCR_ChatPanel m_ChatPanel;
 	protected SCR_MapEntity m_MapEntity;
 	protected bool m_bIsMapOpened = false;
@@ -34,7 +35,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected Widget m_wSlotSelector;
 	protected FrameWidget m_wFrameSlots;
 	protected FrameWidget m_wFrameChannels;
-	protected SCR_PlayerController pc;
 	protected IEntity m_eSpecEntity;
 	protected bool m_bFPPEntityValidityCheck;
 	protected int m_iLocalChannelUpdates = 0;
@@ -65,7 +65,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected TextWidget m_wTicketFourNumber
 	protected ImageWidget m_wTicketFourBackground
 
-	protected CRF_SafestartComponent m_SafestartComponent;
+	protected CRF_SafestartManager m_SafestartManager;
 	protected string m_sStoredServerWorldTime;
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
@@ -78,11 +78,11 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (wChatPanel)
 			m_ChatPanel = SCR_ChatPanel.Cast(wChatPanel.FindHandler(SCR_ChatPanel));
 		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_wMapFrame = FrameWidget.Cast(m_wRoot.FindAnyWidget("MapFrame"));
 		m_wPlayerSlotWidget = m_wRoot.FindAnyWidget("PlayerSlots");
 		m_wPlayerSlots = CRF_ListboxComponent.Cast(m_wPlayerSlotWidget.FindHandler(CRF_ListboxComponent));
 		m_wVONChannels = CRF_ListboxComponent.Cast(m_wRoot.FindAnyWidget("VONChannels").FindHandler(CRF_ListboxComponent));
-		pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
@@ -131,7 +131,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		GetGame().GetCallqueue().CallLater(Action_VONOff, 550, false);
 		
 		// -- BEGIN Port from CRF_GameTimerDisplay.c --
-		m_SafestartComponent 		= CRF_SafestartComponent.GetInstance();
+		m_SafestartManager 		= CRF_SafestartManager.GetInstance();
 		m_wTimer            		= TextWidget.Cast(m_wRoot.FindWidget("timeLeftTimer"));
 		m_wBackground       		= ImageWidget.Cast(m_wRoot.FindWidget("timeLeftBackground"));
 		
@@ -160,7 +160,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateCompass()
 	{
-		float yaw = -pc.m_eCamera.GetYawPitchRoll()[0];
+		float yaw = -CRF_PlayerControllerComponent.GetInstance().m_eCamera.GetYawPitchRoll()[0];
 		float yawFloat = -yaw;
 		
 		if (yawFloat < 0) 
@@ -177,13 +177,15 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_MapEntity)
 			GetGame().GetInputManager().ActivateContext("MapContext");
 		
-		if(m_iLocalChannelUpdates != m_Gamemode.m_iChannelChanges)
+		if(m_iLocalChannelUpdates != m_MenuManager.m_iChannelChanges)
 			UpdateChannel();
+		
+		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
 		
 		foreach(Widget request: m_aRequest)
 		{
 			CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(request.FindHandler(CRF_ListBoxElementComponent));
-			if (m_Gamemode.IsPlayerInChannel(comp.m_iPlayerId, comp.m_iChannelId))
+			if (m_MenuManager.IsPlayerInChannel(comp.m_iplayerId, comp.m_iChannelId))
 			{
 				request.RemoveFromHierarchy();
 				m_aRequest.RemoveOrdered(m_aRequest.Find(request));
@@ -227,8 +229,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				m_bFPPEntityValidityCheck = false;
 				
 				// Reset camera angle after leaving FPP
-				vector mat = pc.m_eCamera.GetAngles();
-				pc.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+				vector mat = playerControllerComp.m_eCamera.GetAngles();
+				playerControllerComp.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 			}
 			else
 			{
@@ -237,12 +239,12 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
 				vector transform[4];
 				camera.GetTransform(transform);
-				pc.m_eCamera.SetTransform(transform);
+				playerControllerComp.m_eCamera.SetTransform(transform);
 			}
 		} else if(!m_eSpecEntity && m_bFPPEntityValidityCheck)
 		{
-			vector mat = pc.m_eCamera.GetAngles();
-			pc.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+			vector mat = playerControllerComp.m_eCamera.GetAngles();
+			playerControllerComp.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 		}
 		
 		foreach(RplId entityID: m_Gamemode.m_aCharacters)
@@ -335,7 +337,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		sender.SetKillFeedTypeDeadLocal();
 		
 		// -- BEGIN Port from CRF_GameTimerDisplay.c --	
-		if (!CRF_SafestartComponent.GetInstance().GetSafestartStatus())
+		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())
 		{
 			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 				if (!factionManager)
@@ -421,9 +423,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		}
 		
 		// get time left in mission
-		m_sServerWorldTime = m_SafestartComponent.GetServerWorldTime();
+		m_sServerWorldTime = m_SafestartManager.GetServerWorldTime();
 		
-		if (m_SafestartComponent.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
+		if (m_SafestartManager.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
 		
 		m_sStoredServerWorldTime = m_sServerWorldTime;
 		
@@ -451,7 +453,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		m_sServerWorldTime.Split(":", messageSplitArray, false);
 		
 		// If the map isn't open and more than five minutes remaining or no time limit
-		if (m_SafestartComponent.GetSafestartStatus() || ((messageSplitArray[0] != "00" || messageSplitArray[1].ToInt() >= 5) && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
+		if (m_SafestartManager.GetSafestartStatus() || ((messageSplitArray[0] != "00" || messageSplitArray[1].ToInt() >= 5) && (!m_MapEntity || !m_MapEntity.IsOpen()))) {
 			
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);
@@ -535,7 +537,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void CreateChannel()
 	{
-		foreach(string channel: m_Gamemode.m_aVONChannels)
+		foreach(string channel: m_MenuManager.m_aVONChannels)
 		{
 			//"Deafen|1,5,6"
 			ref array<string> channelSplit = {};
@@ -544,7 +546,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			if (channelName.Contains(GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId())))
 				return;
 		}
-		pc.CreateChannel();
+		CRF_RplToAuthorityManager.GetInstance().CreateChannel(SCR_PlayerController.GetLocalPlayerId());
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -553,13 +555,13 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_wRoot.IsVisible())
 		{
 			m_wRoot.SetVisible(false);
-			SCR_HUDManagerComponent hudManager = SCR_HUDManagerComponent.Cast(pc.GetHUDManagerComponent());
+			SCR_HUDManagerComponent hudManager = SCR_HUDManagerComponent.Cast(SCR_PlayerController.Cast(GetGame().GetPlayerController()).GetHUDManagerComponent());
 			hudManager.GetHUDRootWidget().SetVisible(false);
 		}
 		else
 		{
 			m_wRoot.SetVisible(true);
-			SCR_HUDManagerComponent hudManager = SCR_HUDManagerComponent.Cast(pc.GetHUDManagerComponent());
+			SCR_HUDManagerComponent hudManager = SCR_HUDManagerComponent.Cast(SCR_PlayerController.Cast(GetGame().GetPlayerController()).GetHUDManagerComponent());
 			hudManager.GetHUDRootWidget().SetVisible(true);
 		}
 	}
@@ -569,14 +571,14 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	{
 		m_wVONChannels.Clear();
 		PlayerManager pm = GetGame().GetPlayerManager();
-		foreach(string channel: m_Gamemode.m_aVONChannels)
+		foreach(string channel: m_MenuManager.m_aVONChannels)
 		{
 			//"Deafen|1,5,6"
 			ref array<string> channelSplit = {};
 			channel.Split("|", channelSplit, true);
 			string channelName = channelSplit.Get(0);
 			int index = m_wVONChannels.AddItemChannel(null, channelName);
-			m_wVONChannels.GetCRFElementComponent(index).m_iChannelId = m_Gamemode.m_aVONChannels.Find(channel);
+			m_wVONChannels.GetCRFElementComponent(index).m_iChannelId = m_MenuManager.m_aVONChannels.Find(channel);
 			m_wVONChannels.GetCRFElementComponent(index).GetChannelButton().m_OnClicked.Insert(JoinChannelDelay);
 			ref array<string> playerIds = {};
 			if (channelSplit.Count() == 1)
@@ -591,12 +593,12 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				if(playerId.ToInt() != SCR_PlayerController.GetLocalPlayerId() && channelName == "Deafen")
 					continue;
 				int playerIndex = m_wVONChannels.AddItem(pm.GetPlayerName(playerId.ToInt()), null, "{68D74FF57296AFFB}UI/Listbox/PlayerListboxElementVON.layout");
-				m_wVONChannels.GetCRFElementComponent(playerIndex).m_iPlayerId = SCR_PlayerController.GetLocalPlayerId();
+				m_wVONChannels.GetCRFElementComponent(playerIndex).m_iplayerId = SCR_PlayerController.GetLocalPlayerId();
 				m_wVONChannels.GetCRFElementComponent(playerIndex).m_bIsPlayer = true;
 			}
 		}
-		m_iLocalChannelUpdates = m_Gamemode.m_iChannelChanges;
-		if (m_Gamemode.GetChannel(SCR_PlayerController.GetLocalPlayerId()) == 0)
+		m_iLocalChannelUpdates = m_MenuManager.m_iChannelChanges;
+		if (m_MenuManager.GetChannel(SCR_PlayerController.GetLocalPlayerId()) == 0)
 			SetRadioPower(false);
 		else
 		{
@@ -619,9 +621,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		
 		if (comp.m_iChannelId > 1)
-			pc.RequestToJoinChannel(comp.m_iChannelId, SCR_PlayerController.GetLocalPlayerId());
+			CRF_MenuManager.GetInstance().RequestToJoinChannel(comp.m_iChannelId, SCR_PlayerController.GetLocalPlayerId());
 		else
-			pc.JoinChannel(SCR_PlayerController.GetLocalPlayerId(), comp.m_iChannelId);
+			CRF_RplToAuthorityManager.GetInstance().JoinChannel(SCR_PlayerController.GetLocalPlayerId(), comp.m_iChannelId);
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -702,16 +704,16 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		InitSlots();
 		
 		ResourceName icon;
-		CRF_GearscriptComponent gearscriptComponent = CRF_GearscriptComponent.GetInstance();	
+		CRF_GearscriptManager GearscriptManager = CRF_GearscriptManager.GetInstance();	
 		ResourceName gearScriptResource;
 		CRF_GearScriptConfig gearConfig;
 		
 		if (m_iBluforSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("BLUButton").SetVisible(true);
-			if (gearscriptComponent)
+			if (GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("BLUFOR");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("BLUFOR");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -730,9 +732,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_iOpforSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("OPFButton").SetVisible(true);
-			if (gearscriptComponent)
+			if (GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("OPFOR");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("OPFOR");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -751,9 +753,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_iIndforSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("INDButton").SetVisible(true);
-			if (gearscriptComponent)
+			if (GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("INDFOR");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("INDFOR");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -772,9 +774,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_iCivSlots > 0)
 		{
 			m_wRoot.FindAnyWidget("CIVButton").SetVisible(true);
-			if (gearscriptComponent)
+			if (GearscriptManager)
 			{	
-				gearScriptResource = gearscriptComponent.GetGearScriptResource("CIV");
+				gearScriptResource = GearscriptManager.GetGearScriptResource("CIV");
 				if (!gearScriptResource.IsEmpty())
 				{
 					gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResource).GetResource().ToBaseContainer()));
@@ -994,7 +996,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
 		radio.SetPower(true);
 		RadioTransceiver transiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
-		float multiplier = m_Gamemode.GetChannel(SCR_PlayerController.GetLocalPlayerId());
+		float multiplier = CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId());
 		RadioHandlerComponent rhc = RadioHandlerComponent.Cast(GetGame().GetPlayerController().FindComponent(RadioHandlerComponent));
 		if (rhc)
 			rhc.SetFrequency(transiver, 1000*multiplier); // Set new frequency
@@ -1020,9 +1022,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void Action_VONon()
 	{
-		if (m_Gamemode.GetChannel(SCR_PlayerController.GetLocalPlayerId()) == 0)
+		if (CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId()) == 0)
 			return;
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(true, GetGame().GetPlayerController().GetPlayerId());
+		
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(SCR_PlayerController.GetLocalMainEntity().FindComponent(SCR_VoNComponent));
 		von.SetTransmitRadio(GetVoNTransiver());
@@ -1034,9 +1036,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void Action_VONOff()
 	{
-		if (m_Gamemode.GetChannel(SCR_PlayerController.GetLocalPlayerId()) == 0)
+		if (CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId()) == 0)
 			return;
-		SCR_PlayerController.Cast(GetGame().GetPlayerController()).SetTalking(false, GetGame().GetPlayerController().GetPlayerId());
 		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
 	}
 	

@@ -8,12 +8,12 @@
 *	Server only
 *
 [ComponentEditorProps(category: "CRF Logging Component", description: "")]
-class CRF_LoggingServerComponentClass: CRF_GamemodeComponentClass
+class CRF_LoggingServerComponentClass: CRF_GamemodeManagerClass
 {
 	
 }
 
-class CRF_LoggingServerComponent: CRF_GamemodeComponent
+class CRF_LoggingServerComponent: CRF_GamemodeManager
 {	
 	const string SEPARATOR = ",";
 	const string m_sLogPath = "$profile:COAServerLog.txt";
@@ -58,25 +58,25 @@ class CRF_LoggingServerComponent: CRF_GamemodeComponent
 	}
 	
 	// Player Connected
-	override void OnPlayerConnected(int playerId)
+	override void OnPlayerConnected(int playerID)
 	{
-		super.OnPlayerConnected(playerId);
+		super.OnPlayerConnected(playerID);
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
-		playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
 		m_handle.WriteLine("connect" + SEPARATOR + playerName);
 	}
 	
 	// Player Disconnected 
-	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	override void OnPlayerDisconnected(int playerID, KickCauseCode cause, int timeout)
 	{
-		super.OnPlayerDisconnected(playerId, cause, timeout);
+		super.OnPlayerDisconnected(playerID, cause, timeout);
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
 		// Get player name
-		playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
 		m_handle.WriteLine("disconnect" + SEPARATOR + playerName + SEPARATOR + cause);
 	}
 	
@@ -158,27 +158,27 @@ modded class SCR_BaseGameMode
 	private ref FileHandle m_handle;
 	
 	// Killfeed log
-    override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
+    override void OnPlayerKilled(int playerID, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
     {
-		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);
+		super.OnPlayerKilled(playerID, playerEntity, killerEntity, killer);
 		
 		m_FM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		m_handle = CRF_LoggingServerComponent.GetInstance().ReturnFileHandle();
 		
 		// Killer
 		// Check if killer is AI
-		if (GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity) == 0)
+		if (GetGame().GetPlayerManager().GetplayerIDFromControlledEntity(killerEntity) == 0)
 		{
 			m_sKillerName = "AI";
 			m_sKillerFaction = "AI";
 		} else {
-			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
-			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorPlayerID()).GetFactionName();
+			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorplayerID());
+			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorplayerID()).GetFactionName();
 		}
 		
 		// Killed
-		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_sKilledFaction = m_FM.GetPlayerFaction(playerId).GetFactionName();
+		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerID);
+		m_sKilledFaction = m_FM.GetPlayerFaction(playerID).GetFactionName();
 		
 		// Range
 		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());

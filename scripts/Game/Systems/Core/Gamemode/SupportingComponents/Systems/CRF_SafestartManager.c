@@ -1,7 +1,7 @@
-class CRF_SafestartComponentClass : SCR_BaseGameModeComponentClass {}
+class CRF_SafestartManagerClass : SCR_BaseGameModeComponentClass {}
 
-class CRF_SafestartComponent : SCR_BaseGameModeComponent
-{
+class CRF_SafestartManager : SCR_BaseGameModeComponent
+{	
 	[RplProp(onRplName: "OnSafeStartChange")]
 	protected bool m_bSafeStartEnabled = false;
 	ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
@@ -38,11 +38,11 @@ class CRF_SafestartComponent : SCR_BaseGameModeComponent
 	CRF_LoggingServerComponent m_Logging;
 	
 	//------------------------------------------------------------------------------------------------
-	static CRF_SafestartComponent GetInstance()
+	static CRF_SafestartManager GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
 		if (gameMode)
-			return CRF_SafestartComponent.Cast(gameMode.FindComponent(CRF_SafestartComponent));
+			return CRF_SafestartManager.Cast(gameMode.FindComponent(CRF_SafestartManager));
 		else
 			return null;
 	}
@@ -490,9 +490,9 @@ class CRF_SafestartComponent : SCR_BaseGameModeComponent
 		array<int> outPlayers = {};
 		GetGame().GetPlayerManager().GetPlayers(outPlayers);
 
-		foreach (int playerID : outPlayers)
+		foreach (int playerId : outPlayers)
 		{
-			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);
+			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 			if (!controlledEntity)
 				continue;
 
@@ -550,14 +550,14 @@ class CRF_SafestartComponent : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void OnWeaponFired(int playerID, BaseWeaponComponent weapon, IEntity entity)
+	protected void OnWeaponFired(int playerId, BaseWeaponComponent weapon, IEntity entity)
 	{
 		// Get projectile and delete it
 		delete entity;
 	}
 
 	//------------------------------------------------------------------------------------------------
-	protected void OnGrenadeThrown(int playerID, BaseWeaponComponent weapon, IEntity entity)
+	protected void OnGrenadeThrown(int playerId, BaseWeaponComponent weapon, IEntity entity)
 	{
 		if (!weapon)
 			return;

@@ -15,7 +15,6 @@ class CRF_PlayableCharacter : ScriptComponent
 
 	protected bool m_bIsSpectator = false;
 	protected bool m_bIsHidden = false;
-	protected SCR_PlayerController m_PlayerController;
 	protected bool m_bInitTime = false;
 
 	//------------------------------------------------------------------------------------------------
@@ -67,60 +66,60 @@ class CRF_PlayableCharacter : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DisableAI, 0, false, owner);
 		}
 
-		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
-
 		if (owner.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 		{
 			m_bIsSpectator = true;
-			SetEventMask(owner, EntityEvent.FIXEDFRAME);
+			SetEventMask(owner, EntityEvent.FRAME);
 		};
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	override void EOnFrame(IEntity owner, float timeSlice)
 	{
-		super.EOnFixedFrame(owner, timeslice);
+		super.EOnFrame(owner, timeslice);
 
 		if (!owner || !GetGame().InPlayMode() || !m_bIsPlayable)
 		{
-			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
+			ClearEventMask(owner, EntityEvent.FRAME);
 			return;
 		};
 
 		#ifdef WORKBENCH
 		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && m_bInitTime)
 		{
-			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
+			ClearEventMask(owner, EntityEvent.FRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 			return;
 		};
 		#else
 		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && RplSession.Mode() == RplMode.Dedicated && m_bInitTime)
 		{
-			ClearEventMask(owner, EntityEvent.FIXEDFRAME);
+			ClearEventMask(owner, EntityEvent.FRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 			return;
 		};
 		#endif
+		
+		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
 
-		if (m_PlayerController.GetLocalControlledEntity() == owner)
+		if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).GetLocalControlledEntity() == owner)
 		{
-			if (m_PlayerController.m_eCamera && CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME)
+			if (playerControllerComp.m_eCamera && CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME)
 			{
 				vector mat[4];
-				m_PlayerController.m_eCamera.GetTransform(mat);
+				playerControllerComp.m_eCamera.GetTransform(mat);
 				mat[3][1] = mat[3][1] - 1.5;
-				m_PlayerController.UpdateEntityPos(mat);
-				m_PlayerController.UpdateStoredCameraPos(mat);
+				playerControllerComp.UpdateEntityPos(mat);
+				playerControllerComp.UpdateStoredCameraPos(mat);
 			} else {
 				vector mat[4];
 				mat[1] = vector.Up;
 				mat[2] = vector.Forward;
 				mat[3][1] = 10000;
-				m_PlayerController.UpdateEntityPos(mat);
+				playerControllerComp.UpdateEntityPos(mat);
 
-				if (m_PlayerController.m_eCamera)
-					m_PlayerController.m_eCamera.SetWorldTransform(mat);
+				if (playerControllerComp.m_eCamera)
+					playerControllerComp.m_eCamera.SetWorldTransform(mat);
 			};
 		};
 

@@ -54,7 +54,7 @@ class CRF_MDB_LoggingServerComponent: SCR_BaseGameModeComponent
 		#ifdef WORKBENCH
 			m_sArmaGuid = GetGame().GetBackendApi().GetLocalIdentityId();
 		#else
-			m_sArmaGuid = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+			m_sArmaGuid = GetGame().GetBackendApi().GetplayerIDentityId(playerId);
 		#endif
 		
 		m_sPlatform = GetGame().GetBackendApi().GetPlayerPlatformId(playerId);
@@ -79,7 +79,7 @@ class CRF_MDB_LoggingServerComponent: SCR_BaseGameModeComponent
 		/*if (CRF_Gamemode.GetInstance().GetGameModeState() == CRF_GamemodeState.AAR) // log stats only at AAR
 		{
 			//TODO: Implement data collector here by iterating through all players and only log data at end of game (AAR screen)
-			//SCR_PlayerData playerData = GetGame().GetDataCollector().GetPlayerData(playerID, false);
+			//SCR_PlayerData playerData = GetGame().GetDataCollector().GetPlayerData(playerId, false);
 		}*/
 	}
 	
@@ -88,7 +88,7 @@ class CRF_MDB_LoggingServerComponent: SCR_BaseGameModeComponent
 		super.OnPlayerKilled(instigatorContextData);
 		
 		// If killer has a playerId (they are a player)
-		if (!GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(instigatorContextData.GetKillerEntity()) == 0)
+		if (!GetGame().GetPlayerManager().GetplayerIDFromControlledEntity(instigatorContextData.GetKillerEntity()) == 0)
 		{
 			// Then add a tvt_death to the killed
 			
@@ -97,7 +97,7 @@ class CRF_MDB_LoggingServerComponent: SCR_BaseGameModeComponent
 			
 		} else {
 			// Otherwise add a coop_death to the killed
-			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorPlayerID());
+			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorplayerID());
 			
 		}
 	}*/

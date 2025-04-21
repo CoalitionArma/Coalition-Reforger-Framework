@@ -3,7 +3,7 @@ class CRF_SearchAndDestroyDisplay : SCR_InfoDisplay
 	protected string storageString;
 	protected TextWidget m_wTimer;
 	protected ImageWidget m_wBackground;
-	protected CRF_SearchAndDestroyGameModeComponent m_SDComponent = null;
+	protected CRF_SearchAndDestroyGamemodeManager m_SDComponent = null;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
 	//------------------------------------------------------------------------------------------------
@@ -17,13 +17,13 @@ class CRF_SearchAndDestroyDisplay : SCR_InfoDisplay
 		super.UpdateValues(owner, timeSlice);
 		
 		if (!m_SDComponent || !m_wTimer || !m_wBackground) {
-			m_SDComponent = CRF_SearchAndDestroyGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGameModeComponent));
+			m_SDComponent = CRF_SearchAndDestroyGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGamemodeManager));
 			m_wTimer      = TextWidget.Cast(m_wRoot.FindWidget("Timer"));
 			m_wBackground = ImageWidget.Cast(m_wRoot.FindWidget("Background"));
 			return;
 		};
 		
-		if(!CRF_GamemodeComponent.GetInstance().m_bHUDVisible)
+		if(!CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
 		{
 			m_wTimer.SetOpacity(0);
 			m_wBackground.SetOpacity(0);	

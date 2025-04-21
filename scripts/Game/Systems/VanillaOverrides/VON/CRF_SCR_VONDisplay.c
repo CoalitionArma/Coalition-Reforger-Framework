@@ -5,7 +5,7 @@ modded class SCR_VonDisplay
 		if (!m_wRoot)
 			return;
 		
-		if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_eCamera)
+		if (CRF_PlayerControllerComponent.GetInstance().m_eCamera)
 			return;
 
 		int frequency;
@@ -35,7 +35,7 @@ modded class SCR_VonDisplay
 		// Check if there is an active transmission from given player
 		TransmissionData pTransmission = m_aTransmissionMap.Get(playerId);
 
-		if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_eCamera)
+		if (CRF_PlayerControllerComponent.GetInstance().m_eCamera)
 			return;
 
 		// Active transmission from the player not found, create it

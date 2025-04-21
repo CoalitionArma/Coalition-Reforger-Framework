@@ -59,7 +59,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //	
 //	//[RplProp(onRplName: "SpawnPrefabs")]
 //	ResourceName m_tempPrefab;
-//	int m_tempPlayerID;
+//	int m_tempplayerID;
 //	RplId m_tempPlayableID;
 //	
 //	IEntity m_tempEntity;
@@ -263,7 +263,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //		
 //		foreach (SCR_AIGroup group : outAllGroups)
 //		{
-//			array<int> groupPlayersIDs = group.GetPlayerIDs();
+//			array<int> groupPlayersIDs = group.GetplayerIDs();
 //			int groupID = group.GetGroupID();
 //			Replication.BumpMe();
 //			foreach (int playerID: groupPlayersIDs)
@@ -291,7 +291,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //		{
 //			m_tempEntity = m_entitySlots.GetKeyByValue(groupID);
 //			
-//			m_tempPlayerID = m_entityID.Get(m_tempEntity);
+//			m_tempplayerID = m_entityID.Get(m_tempEntity);
 //			m_tempPlayableID = m_entityPlayable.Get(m_tempEntity);
 //			m_tempPrefab = m_entityPrefabs.Get(m_tempEntity);
 //			
@@ -306,10 +306,10 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //				}	
 //			
 //			//Replication.BumpMe();
-//			//SpawnPrefabs(m_tempPlayerID, m_tempPrefab);
-//			if(!GetGame().GetPlayerManager().IsPlayerConnected(m_tempPlayerID))
+//			//SpawnPrefabs(m_tempplayerID, m_tempPrefab);
+//			if(!GetGame().GetPlayerManager().IsPlayerConnected(m_tempplayerID))
 //				continue;
-//			Rpc(SpawnPrefabs, m_tempPlayerID, m_tempPrefab, m_tempPlayableID);
+//			Rpc(SpawnPrefabs, m_tempplayerID, m_tempPrefab, m_tempPlayableID);
 //		}
 //		GetGame().GetCallqueue().CallLater(SetNewPlayerValues, 500, false, groupID);
 //		GetGame().GetCallqueue().CallLater(SetLatePlayerValues, 60000, false, groupID, 60000);
@@ -327,7 +327,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //		Respawn(playerID, respawnData);
 //	}
 //	
-//	void Respawn(int playerId, PS_RespawnData respawnData)
+//	void Respawn(int playerID, PS_RespawnData respawnData)
 //	{
 //		Resource resource = Resource.Load(respawnData.m_sPrefabName);
 //		EntitySpawnParams params = new EntitySpawnParams();
@@ -336,14 +336,14 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //		PS_PlayableComponent playableComponentNew = PS_PlayableComponent.Cast(entity.FindComponent(PS_PlayableComponent));
 //		playableComponentNew.SetPlayable(true);
 //		
-//		GetGame().GetCallqueue().Call(SwitchToSpawnedEntity, playerId, respawnData, entity, 4);
+//		GetGame().GetCallqueue().Call(SwitchToSpawnedEntity, playerID, respawnData, entity, 4);
 //	}
 //	
-//	void SwitchToSpawnedEntity(int playerId, PS_RespawnData respawnData, IEntity entity, int frameCounter)
+//	void SwitchToSpawnedEntity(int playerID, PS_RespawnData respawnData, IEntity entity, int frameCounter)
 //	{
 //		if (frameCounter > 0) // Await four frames
 //		{		
-//			GetGame().GetCallqueue().Call(SwitchToSpawnedEntity, playerId, respawnData, entity, frameCounter - 1);
+//			GetGame().GetCallqueue().Call(SwitchToSpawnedEntity, playerID, respawnData, entity, frameCounter - 1);
 //			return;
 //		}
 //		
@@ -353,13 +353,13 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //		RplId playableId = playableComponent.GetId();
 //		
 //		playableComponent.CopyState(respawnData);
-//		if (playerId > 0)
+//		if (playerID > 0)
 //		{
-//			playableManager.SetPlayerPlayable(playerId, playableId);
-//			playableManager.ForceSwitch(playerId);
+//			playableManager.SetPlayerPlayable(playerID, playableId);
+//			playableManager.ForceSwitch(playerID);
 //		}
 //		SCR_AIGroup aiGroup = m_playableManager.GetPlayerGroupByPlayable(respawnData.m_iId);
-//		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, aiGroup, playerId);
+//		GetGame().GetCallqueue().CallLater(SetPlayerGroup, 500, false, aiGroup, playerID);
 //	}
 //	
 //	void SetPlayerGroup(SCR_AIGroup group, int playerID)
@@ -370,7 +370,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //	void SetNewPlayerValues(int groupID)
 //	{
 //		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
-//		array<int> groupPlayersIDs = group.GetPlayerIDs();
+//		array<int> groupPlayersIDs = group.GetplayerIDs();
 //		foreach (int playerID: groupPlayersIDs)
 //		{
 //			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID);			
@@ -386,7 +386,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //	void SetLatePlayerValues(int groupID, int time)
 //	{
 //		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
-//		array<int> groupPlayersIDs = group.GetPlayerIDs();
+//		array<int> groupPlayersIDs = group.GetplayerIDs();
 //			foreach (int playerID: groupPlayersIDs)
 //			{
 //				
@@ -424,7 +424,7 @@ class CRF_RadioRespawnSystemComponent: SCR_BaseGameModeComponent
 //		m_mPlayables = m_playableManager.GetPlayables();
 //		m_mPlayablesCount = m_mPlayables.Count();
 //		SCR_AIGroup group = m_GroupsManagerComponent.FindGroup(groupID);
-//		array<int> groupPlayersIDs = group.GetPlayerIDs();
+//		array<int> groupPlayersIDs = group.GetplayerIDs();
 //			m_respawnTimeout.Remove(m_respawnTimeout.Find(groupID));
 //			Replication.BumpMe();
 //			foreach (int playerID: groupPlayersIDs)
