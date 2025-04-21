@@ -40,8 +40,8 @@ modded class SCR_VoNComponent
 	
 	protected void AddPlayerTalking(int playerId)
 	{		
-		// Check if player exists in the array and can be added (very important we do this as OnReceive runs every frame for each client).
-		if(m_MenuManager.m_aPlayersTalking.Find(playerId) == -1)
+		// Check if player exists in the array and can be added (very important we do this as OnReceive runs every frame for each client talking to this client).
+		if(!m_MenuManager.m_aPlayersTalking.Contains(playerId))
 		{
 			// Insert player into the m_aPlayersTalking array on the Menu Manager, this makes it so menus (slotting, breifing, aar, etc) show this player as talking.
 			m_MenuManager.m_aPlayersTalking.Insert(playerId);
@@ -56,7 +56,7 @@ modded class SCR_VoNComponent
 		// Get place the player is on the m_aPlayersTalking array so we can check then remove them.
 		int place = m_MenuManager.m_aPlayersTalking.Find(playerId);
 		
-		// Check if player exists in the array and can be removed.
+		// Check if player exists in the array.
 		if(place != -1)
 		{
 			// Remove player from the m_aPlayersTalking array on the Menu Manager, this makes it so menus (slotting, breifing, aar, etc) no longer show this player as talking.
