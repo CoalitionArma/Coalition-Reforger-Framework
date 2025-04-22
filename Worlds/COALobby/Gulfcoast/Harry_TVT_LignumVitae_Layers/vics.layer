@@ -151,3 +151,18 @@ $grp SCR_BaseTriggerEntity {
   "	"
  }
 }
+$grp SCR_VehicleSpawn {
+ bluTanker {
+  coords 12096.289 6.18 10669.472
+  m_rnPrefab "{BA3B80F57A52AA2D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker_full.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ opfTanker {
+  coords 9045.683 7 13205.79
+  angleY 103.451
+  m_rnPrefab "{A7FBB0F201128573}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_full.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

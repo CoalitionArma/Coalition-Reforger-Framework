@@ -1,0 +1,228 @@
+GenericEntity : "{6B0F3D4B5193FD07}Prefabs/Vehicles/Core/Vehicle_Fuel_Tank_Base.et" {
+ ID "51D496E5BA4BEA0C"
+ components {
+  BaseLightManagerComponent "{652C11AFE3BD8392}" {
+   LightsEnabled 1
+   LightSlots {
+    SCR_LightSlot "{51E231B2917C40F6}" : "{88DADCB91DCE5E4A}Prefabs/Vehicles/Core/Lights/Light_Rear.conf" {
+     LightPositionInfo EntitySlotInfo "{51E1774683E31D16}" {
+      Offset -1.0624 1.4006 -3.8
+     }
+     ParentSurface "RRearlight"
+    }
+    SCR_LightSlot "{51E231B29398B09D}" : "{88DADCB91DCE5E4A}Prefabs/Vehicles/Core/Lights/Light_Rear.conf" {
+     LightPositionInfo EntitySlotInfo "{51E1774683E31D16}" {
+      Offset 1.0619 1.4006 -3.8
+     }
+     ParentSurface "RRearlight"
+    }
+    SCR_LightSlot "{51E231B294BA5F7E}" : "{3F796555FD10152A}Prefabs/Vehicles/Core/Lights/Light_Brake.conf" {
+     LightPositionInfo EntitySlotInfo "{51E177468DA2D7F8}" {
+      Offset -0.9997 1.4006 -3.8
+     }
+     ParentSurface "LBreaklight"
+    }
+    SCR_LightSlot "{51E231B297A0DE79}" : "{3F796555FD10152A}Prefabs/Vehicles/Core/Lights/Light_Brake.conf" {
+     LightPositionInfo EntitySlotInfo "{51E177468DA2D7F8}" {
+      Offset 0.9977 1.4006 -3.8
+     }
+     ParentSurface "RBreaklight"
+    }
+    SCR_LightSlot "{51E231B299EC6849}" : "{2F2322478D3C2660}Prefabs/Vehicles/Core/Lights/Light_HazardLeft.conf" {
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset -1.1233 1.4006 -3.8
+      Angles 0 180 0
+     }
+     ParentSurface "LRearIndicator"
+    }
+    SCR_LightSlot "{51E231B2980E2BF9}" : "{40762EC709F75183}Prefabs/Vehicles/Core/Lights/Light_HazardRight.conf" {
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset 1.1273 1.4006 -3.8
+      Angles 0 180 0
+     }
+     ParentSurface "RRearIndicator"
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot RRearlight {
+     Offset 0.2474 0.1487 0
+     Prefab "{91551D4FB665D64E}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rearlight_R.et.et"
+     RegisterDamage 1
+     LightType 18
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{585C9D24F3ADBC30}" : "{D2808DEC948D08B2}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Rear.conf" {
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot LRearlight {
+     Offset -0.2465 0.1487 0
+     Prefab "{D8AF4422B8E21448}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rearlight_L.et"
+     RegisterDamage 1
+     LightType 18
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{585C9D24FE194352}" : "{D2808DEC948D08B2}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Rear.conf" {
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot LBreaklight {
+     Offset -0.2465 0.1487 0
+     Prefab "{72EB96E2D26256E2}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Brakelight_L.et"
+     RegisterDamage 1
+     LightType 64
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{585C9D24FB4C5653}" : "{59F3FC900B204F60}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Brake.conf" {
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot RBreaklight {
+     Offset 0.2465 0.1487 0
+     Prefab "{0FF37A1AB7F16A7B}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Brakelight_R.et"
+     RegisterDamage 1
+     LightType 64
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{585C9D24E1CD787B}" : "{59F3FC900B204F60}Prefabs/Vehicles/Core/LightSurfaces/LightSurface_Brake.conf" {
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot LRearIndicator {
+     Offset -0.2465 0.1487 0
+     Prefab "{378E9FF823054916}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rear_Indicator_L.et"
+     RegisterDamage 1
+     LightType 256
+     LightSide 0
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{652C11AFE3BD83BF}" {
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot RRearIndicator {
+     Offset 0.2474 0.1487 0
+     Prefab "{4EAA607E686F9381}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_Cargo_ES_Rear_Indicator_R.et.et"
+     RegisterDamage 1
+     LightType 256
+     LightSide 1
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{652C11AFE3BD83BA}" {
+      }
+     }
+    }
+   }
+  }
+  MeshObject "{4B42E716914465B9}" {
+   Object "{BBA1B25A5AEC386B}Assets/Vehicles/Wheeled/Ural4320/Ural_4320_fuel_tank.xob"
+  }
+  RigidBody "{4B42E71692C2FB79}" {
+   Mass 1300
+  }
+  SCR_DamageManagerComponent "{3EBB276D48AFFF41}" {
+   "Additional hit zones" {
+    SCR_FuelHitZone FuelCargo {
+     AreaOverride 5
+     m_SecondaryExplosionPoint PointInfo "{652C11AFE3BD8041}" {
+      PivotID "COM_CisternBody"
+     }
+     m_pDestructionHandler SCR_DestructionBaseHandler "{652C11AFE3BD804B}" {
+      m_sWreckModel "{63DA178B0910309A}Assets/Vehicles/Wheeled/Ural4320/Ural_4320_fuel_tank_wreck.xob"
+      m_bDeleteAfterParentDestroyed 0
+     }
+    }
+   }
+  }
+  SCR_FuelManagerComponent "{5624AEE53C44BEBA}" {
+   FuelNodes {
+    SCR_FuelNode "{5624AEE534FA6946}" {
+     MaxFuel 4500
+     FuelCapPosition EntitySlotInfo "{566C70624C6E5B95}" {
+      Offset -0.0989 2.7902 -0.7848
+      Angles 0 0 180
+     }
+     m_fInitialFuelTankState 4500
+    }
+   }
+  }
+  SCR_FuelSupportStationComponent "{5E1CF6319D27700F}" {
+   m_fRange 9
+   m_vOffset 0 0 -2.3
+  }
+  SlotManagerComponent "{652C11AFE3BD805C}" {
+   Slots {
+    InventoryStorageSlot nozzle {
+     Offset 0 1.5901 -3.7008
+     Angles 0 90 0
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+  ActionsManagerComponent "{5104C985875F00FA}" {
+   ActionContexts {
+    UserActionContext "{652C11AFE3BD8059}" {
+     UIInfo SCR_ActionContextUIInfo "{612EF44BAFEF2C05}" : "{7CD00B230573CAC6}Prefabs/Vehicles/Core/Configs/Actions/ActionUIInfo/SCR_ActionContextUIInfo.conf" {
+     }
+     ContextName "fuel_cap"
+     Position PointInfo "{652C11AFE3BD8064}" {
+      Offset -0.1201 2.75 -0.801
+      Angles 90 0 0
+     }
+    }
+    UserActionContext "{652C11AFE3BD8063}" {
+     UIInfo SCR_ActionContextUIInfo "{612EF44A513BAF5F}" : "{7CD00B230573CAC6}Prefabs/Vehicles/Core/Configs/Actions/ActionUIInfo/SCR_ActionContextUIInfo.conf" {
+     }
+     ContextName "fuel_nozzle"
+     Position PointInfo "{652C11AFE3BD8061}" {
+      Offset 0 1.3 -3.85
+      Angles 0 180 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{652C11AFE3BD806F}" {
+     UIInfo SCR_ActionContextUIInfo "{612EF44A54A625B8}" : "{7CD00B230573CAC6}Prefabs/Vehicles/Core/Configs/Actions/ActionUIInfo/SCR_ActionContextUIInfo.conf" {
+     }
+     ContextName "supportStation_fuel"
+     Position PointInfo "{652C11AFE3BD806D}" {
+      Offset 0 1.5261 -3.85
+      Angles 0 180 0
+     }
+     Radius 0.4
+    }
+   }
+   additionalActions {
+    SCR_CheckFuelAction "{5B2CA5DC42BE3EB2}" {
+     ParentContextList {
+      "supportStation_fuel"
+     }
+     m_sActionSoundEffectEventName "SOUND_VEHICLE_CHECK_FUEL"
+     m_sActionSoundEffectFile "{9DD9C6279F4489B4}Sounds/SupportStations/SupportStations_Vehicles.acp"
+    }
+    SCR_RefuelAtSupportStationAction "{5E2CE357444CF3AF}" {
+    }
+   }
+  }
+ }
+ coords 1206.494 51 1334.437
+ {
+  GenericEntity {
+   ID "652C11AFE3BD8389"
+   components {
+    SCR_EditableEntityVehicleCompartmentVisibilityChildComponent "{652C11AFE3BD8070}" {
+     m_State 96
+    }
+    SCR_EditableEntityVisibilityChildComponent "{652C11AFE3BD807F}" {
+     Enabled 0
+     m_State 96
+    }
+    SCR_SupportStationAreaMeshComponent "{652C11AFE3BD807D}" {
+     m_vResolution 48
+     m_bStretchMaterial 1
+     m_Material "{0A8FAD171DB3DC49}Assets/Editor/VirtualArea/VirtualArea_01_Focused.emat"
+     m_bHideInWorkbench 1
+     m_fRadius 9
+    }
+    RplComponent "{652C11AFE3BD8003}" {
+    }
+    Hierarchy "{652C11AFE3BD8001}" {
+    }
+   }
+   coords 0 0 -2.3
+  }
+ }
+}
