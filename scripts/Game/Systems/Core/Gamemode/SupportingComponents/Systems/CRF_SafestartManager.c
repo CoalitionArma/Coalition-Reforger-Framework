@@ -48,31 +48,35 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Init method
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
 
-		// Only run on in-game post init
-		// Is the the right way to do this? WHO KNOWS !
+		// Only initialize in actual gameplay
 		if (!GetGame().InPlayMode())
 			return;
 
+		// Check if we're running on a server
+		bool isServer;
+		
 		#ifdef WORKBENCH
-		if (Replication.IsServer())
-		{
-			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
-			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
-		}
+		isServer = Replication.IsServer();
 		#else
-		if (RplSession.Mode() == RplMode.Dedicated)
+		isServer = RplSession.Mode() == RplMode.Dedicated;
+		#endif
+		
+		if (isServer) // Supports both workbench and dedi
 		{
+			// Initialize server components
 			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
-		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+	// Polls for game start, then configures safestart based on gamemode settings
 	void WaitTillGameStart()
 	{
 		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
@@ -97,53 +101,83 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdatePlayedFactions()
 	{
+		// Get faction manager and retrieve all factions
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-
-		SCR_SortedArray<SCR_Faction> outFaction = new SCR_SortedArray<SCR_Faction>();
-		factionManager.GetSortedFactionsList(outFaction);
-
-		if (!outFaction || outFaction.IsEmpty())
+		if (!factionManager)
 			return;
-
-		array<SCR_Faction> outArray = {};
-		outFaction.ToArray(outArray);
-
+			
+		// Get sorted factions
+		SCR_SortedArray<SCR_Faction> sortedFactions = new SCR_SortedArray<SCR_Faction>();
+		factionManager.GetSortedFactionsList(sortedFactions);
+		
+		if (!sortedFactions || sortedFactions.IsEmpty())
+			return;
+			
+		// Convert to regular array for iteration
+		array<SCR_Faction> factionArray = {};
+		sortedFactions.ToArray(factionArray);
+		
+		// Reset faction tracking
 		m_aPlayedFactionsArray.Clear();
-		string bluforString = "#Coal_SS_No_Faction";
-		string opforString = "#Coal_SS_No_Faction";
-		string indforString = "#Coal_SS_No_Faction";
-		string civString = "#Coal_SS_No_Faction";
-
-		foreach (SCR_Faction faction : outArray)
+		
+		// Initialize default faction status strings
+		string bluforStatus = "#Coal_SS_No_Faction";
+		string opforStatus = "#Coal_SS_No_Faction";
+		string indforStatus = "#Coal_SS_No_Faction";
+		string civStatus = "#Coal_SS_No_Faction";
+		
+		// Process each faction
+		foreach (SCR_Faction faction : factionArray)
 		{
-			if (faction.GetPlayerCount() == 0 || (faction.GetFactionKey() != "BLUFOR" && faction.GetFactionKey() != "OPFOR" && faction.GetFactionKey() != "INDFOR" && faction.GetFactionKey() != "CIV"))
+			// Skip factions with no players or not matching our supported faction keys
+			string factionKey = faction.GetFactionKey();
+			if (faction.GetPlayerCount() == 0 || (factionKey != "BLUFOR" && factionKey != "OPFOR" && 
+				factionKey != "INDFOR" && factionKey != "CIV"))
 				continue;
-
+				
+			// Add to active factions list
 			m_aPlayedFactionsArray.Insert(faction);
-
-			switch (true) {
-				case(!m_bBluforReady && faction.GetFactionKey() == "BLUFOR") : {bluforString = "#Coal_SS_Faction_Not_Ready"; break; };
-				case(m_bBluforReady && faction.GetFactionKey() == "BLUFOR") : {bluforString = "#Coal_SS_Faction_Ready"; break; };
-				case(!m_bOpforReady && faction.GetFactionKey() == "OPFOR") : {opforString = "#Coal_SS_Faction_Not_Ready"; break; };
-				case(m_bOpforReady && faction.GetFactionKey() == "OPFOR") : {opforString = "#Coal_SS_Faction_Ready"; break; };
-				case(!m_bIndforReady && faction.GetFactionKey() == "INDFOR") : {indforString = "#Coal_SS_Faction_Not_Ready"; break; };
-				case(m_bIndforReady && faction.GetFactionKey() == "INDFOR") : {indforString = "#Coal_SS_Faction_Ready"; break; };
-				case(!m_bCivReady && faction.GetFactionKey() == "CIV") : {civString = "#Coal_SS_Faction_Not_Ready"; 			break; };
-				case(m_bCivReady && faction.GetFactionKey() == "CIV") : {civString = "#Coal_SS_Faction_Ready"; 			break; };
-			};
-		};
-
-		m_aFactionsStatusArray = {bluforString, opforString, indforString, civString};
-		m_iPlayedFactionsCount = 0;
-
-		foreach (string factionString : m_aFactionsStatusArray)
-		{
-			if (factionString == "#Coal_SS_No_Faction")
-				continue;
-
-			m_iPlayedFactionsCount = m_iPlayedFactionsCount + 1;
+			
+			// Set appropriate status string based on faction and ready state
+			if (factionKey == "BLUFOR") {
+				if (m_bBluforReady) {
+					bluforStatus = "#Coal_SS_Faction_Ready";
+				} else {
+					bluforStatus = "#Coal_SS_Faction_Not_Ready";
+				}
+			} else if (factionKey == "OPFOR") {
+				if (m_bOpforReady) {
+					opforStatus = "#Coal_SS_Faction_Ready";
+				} else {
+					opforStatus = "#Coal_SS_Faction_Not_Ready";
+				}
+			} else if (factionKey == "INDFOR") {
+				if (m_bIndforReady) {
+					indforStatus = "#Coal_SS_Faction_Ready";
+				} else {
+					indforStatus = "#Coal_SS_Faction_Not_Ready";
+				}
+			} else if (factionKey == "CIV") {
+				if (m_bCivReady) {
+					civStatus = "#Coal_SS_Faction_Ready";
+				} else {
+					civStatus = "#Coal_SS_Faction_Not_Ready";
+				}
+			}
 		}
-
+		
+		// Update faction status array
+		m_aFactionsStatusArray = {bluforStatus, opforStatus, indforStatus, civStatus};
+		
+		// Count active factions
+		m_iPlayedFactionsCount = 0;
+		foreach (string factionStatus : m_aFactionsStatusArray)
+		{
+			if (factionStatus != "#Coal_SS_No_Faction")
+				m_iPlayedFactionsCount++;
+		}
+		
+		// Notify clients of changes
 		Replication.BumpMe();
 	}
 
@@ -153,111 +187,130 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		if (!GetSafestartStatus())
 			return;
 
-		// If it's an admin-forced action
-		if (adminForced)
-		{
-			if (m_bAdminForcedReady)
-			{
-				m_bBluforReady = false;
-				m_bOpforReady = false;
-				m_bIndforReady = false;
-				m_bCivReady = false;
-				m_bAdminForcedReady = false;
-
-				m_sMessageContent = string.Format("An Admin (%1) Has Force Unreadied All Sides!", playerName);
-				Replication.BumpMe();
-				ShowMessage();
-				return;
-			};
-
-			m_bBluforReady = true;
-			m_bOpforReady = true;
-			m_bIndforReady = true;
-			m_bCivReady = true;
-			m_bAdminForcedReady = true;
-
-			m_sMessageContent = string.Format("An Admin (%1) Has Force Readied All Sides!", playerName);
+		// Handle admin force ready/unready all factions
+		if (adminForced) {
+			bool newReadyState = !m_bAdminForcedReady;
+			m_bAdminForcedReady = newReadyState;
+			
+			// Set all factions to the same ready state
+			m_bBluforReady = newReadyState;
+			m_bOpforReady = newReadyState;
+			m_bIndforReady = newReadyState;
+			m_bCivReady = newReadyState;
+			
+			string actionText;
+			if (newReadyState) {
+				actionText = "Force Readied";
+			} else {
+				actionText = "Force Unreadied";
+			}
+			
+			m_sMessageContent = string.Format("An Admin (%1) Has %2 All Sides!", playerName, actionText);
+			
 			Replication.BumpMe();
 			ShowMessage();
 			return;
 		}
 
+		// If admin forced ready is active, don't allow individual faction changes
 		if (m_bAdminForcedReady)
 			return;
 
-		switch (setReady)
-		{
-			case("BLUFOR") : {
+		// Toggle faction ready status
+		bool newStatus = false;
+		string messageKey = "";
+		
+		// Update faction status and prepare message
+		switch (setReady) {
+			case "BLUFOR": {
 				m_bBluforReady = !m_bBluforReady;
-				if (m_bBluforReady)
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Blufor - %1", playerName);
-				else
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Blufor - %1", playerName);
+				newStatus = m_bBluforReady;
+				if (newStatus) {
+					messageKey = "#Coal_SS_Faction_Readied_Blufor";
+				} else {
+					messageKey = "#Coal_SS_Faction_Unreadied_Blufor";
+				}
 				break;
-			};
-			case("OPFOR") : {
+			}
+			case "OPFOR": {
 				m_bOpforReady = !m_bOpforReady;
-				if (m_bOpforReady)
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Opfor - %1", playerName);
-				else
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Opfor - %1", playerName);
+				newStatus = m_bOpforReady;
+				if (newStatus) {
+					messageKey = "#Coal_SS_Faction_Readied_Opfor";
+				} else {
+					messageKey = "#Coal_SS_Faction_Unreadied_Opfor";
+				}
 				break;
-			};
-			case("INDFOR") : {
+			}
+			case "INDFOR": {
 				m_bIndforReady = !m_bIndforReady;
-				if (m_bIndforReady)
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Indfor - %1", playerName);
-				else
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Indfor - %1", playerName);
+				newStatus = m_bIndforReady;
+				if (newStatus) {
+					messageKey = "#Coal_SS_Faction_Readied_Indfor";
+				} else {
+					messageKey = "#Coal_SS_Faction_Unreadied_Indfor";
+				}
 				break;
-			};
-			case("CIV") : {
+			}
+			case "CIV": {
 				m_bCivReady = !m_bCivReady;
-				if (m_bCivReady)
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Readied_Civ - %1", playerName);
-				else
-					m_sMessageContent = string.Format("#Coal_SS_Faction_Unreadied_Civ - %1", playerName);
+				newStatus = m_bCivReady;
+				if (newStatus) {
+					messageKey = "#Coal_SS_Faction_Readied_Civ";
+				} else {
+					messageKey = "#Coal_SS_Faction_Unreadied_Civ";
+				}
 				break;
-			};
-		};
+			}
+		}
+		
+		m_sMessageContent = string.Format("%1 - %2", messageKey, playerName);
 		Replication.BumpMe();
 		ShowMessage();
-	}
+	};
 
 	//Call from server
 	//------------------------------------------------------------------------------------------------
 	protected void CheckStartCountDown()
 	{
-		int factionsReadyCount = 0;
-		foreach (string factionCheckReadyString : m_aFactionsStatusArray)
+		// Count how many factions are ready
+		int readyFactionsCount = 0;
+		foreach (string factionStatus : m_aFactionsStatusArray)
 		{
-			if (factionCheckReadyString != "#Coal_SS_Faction_Ready")
-				continue;
-			factionsReadyCount = factionsReadyCount + 1;
-		};
+			if (factionStatus == "#Coal_SS_Faction_Ready")
+				readyFactionsCount++;
+		}
 
-		if (factionsReadyCount == 0 && m_iPlayedFactionsCount == 0 || factionsReadyCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining == 35)
+		// Exit if no factions playing or not all factions ready at initial countdown time
+		if ((readyFactionsCount == 0 && m_iPlayedFactionsCount == 0) || 
+			(readyFactionsCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining == 35))
 			return;
 
-		if (factionsReadyCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining != 35)
+		// Cancel countdown if a faction unreadied after countdown began
+		if (readyFactionsCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining != 35)
 		{
 			m_sMessageContent = "#Coal_SS_Countdown_Cancelled";
 			Replication.BumpMe();
 			m_iSafeStartTimeRemaining = 35;
+			ShowMessage();
 			return;
-		};
+		}
 
-		if (factionsReadyCount == m_iPlayedFactionsCount)
+		// Process countdown if all factions are ready
+		if (readyFactionsCount == m_iPlayedFactionsCount)
 		{
-			m_iSafeStartTimeRemaining = m_iSafeStartTimeRemaining - 5;
+			m_iSafeStartTimeRemaining -= 5;
 			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started %1 Seconds!", m_iSafeStartTimeRemaining);
+			
+			// End safe start when countdown reaches zero
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
 				m_sMessageContent = "#Coal_SS_Game_Live";
-			};
-		};
-		Replication.BumpMe();
-		ShowMessage();
+			}
+			
+			Replication.BumpMe();
+			ShowMessage();
+		}
 	};
 
 	//------------------------------------------------------------------------------------------------
@@ -266,19 +319,19 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	string GetServerWorldTime()
 	{
 		return m_sServerWorldTime;
-	}
+	};
 
 	//------------------------------------------------------------------------------------------------
 	bool GetSafestartStatus()
 	{
 		return m_bSafeStartEnabled;
-	}
+	};
 
 	//------------------------------------------------------------------------------------------------
 	void OnSafeStartChange()
 	{
 		m_OnSafeStartChange.Invoke(m_bSafeStartEnabled);
-	}
+	};
 
 	//Call from server
 	//------------------------------------------------------------------------------------------------
@@ -405,27 +458,31 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		if (CRF_Gamemode.GetInstance().m_bDeleteJIPSlots)
 			if (m_bSafeStartEnabled)
 				GetGame().GetCallqueue().CallLater(DeleteEmptySlotsSlowly, 125, true);
-	}
+	};
 
 	//------------------------------------------------------------------------------------------------
 	void DeleteEmptySlotsSlowly()
 	{
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (gamemode.m_bDeleteJIPSlots && !gamemode.m_bRespawnEnabled)
+		if (!gamemode || !gamemode.m_bDeleteJIPSlots || gamemode.m_bRespawnEnabled)
 		{
-			for (int i = 0; i < gamemode.m_aEntitySlots.Count(); i++)
-			{
-				if (gamemode.m_aSlots.Get(i) == 0 || gamemode.m_aSlots.Get(i) == -1)
-				{
-					//Print("Removing Entity");
-					gamemode.RemovePlayableEntity(gamemode.m_aEntitySlots.Get(i));
-					return;
-				}
-			}
 			GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
+			return;
 		}
-
-	}
+		
+		// Process one empty slot per call to avoid performance spikes
+		for (int i = 0; i < gamemode.m_aEntitySlots.Count(); i++)
+		{
+			if (gamemode.m_aSlots.Get(i) == 0 || gamemode.m_aSlots.Get(i) == -1)
+			{
+				gamemode.RemovePlayableEntity(gamemode.m_aEntitySlots.Get(i));
+				return; // Exit after processing one slot
+			}
+		}
+		
+		// If we reach here, no empty slots were found - stop the repeated calls
+		GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
+	};
 
 	// Called from server to all clients
 	//------------------------------------------------------------------------------------------------
@@ -465,68 +522,82 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 
 		Replication.BumpMe();
 		ShowMessage();
-	}
+	};
 
 	//------------------------------------------------------------------------------------------------
 	// SafeStart EHs
 	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * Activates safe start event handlers for all AI and player-controlled entities.
+	 * Disables damage and weapon functionality during the safe start period.
+	 */
 	protected void ActivateSafeStartEHs()
 	{	
-		auto aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+		// Apply safe start to AI-controlled entities
+		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
 		if (aiWorld)
 		{
 			array<AIAgent> aiAgents = {};
 			aiWorld.GetAIAgents(aiAgents);
+			
 			foreach (AIAgent agent : aiAgents)
 			{	
 				IEntity controlledEntity = agent.GetControlledEntity();
-				if (!controlledEntity)
-					continue;
-				
-				SetSafeStartEHs(controlledEntity);
+				if (controlledEntity)
+					SetSafeStartEHs(controlledEntity);
 			}
 		}
 		
-		array<int> outPlayers = {};
-		GetGame().GetPlayerManager().GetPlayers(outPlayers);
-
-		foreach (int playerId : outPlayers)
+		// Apply safe start to player-controlled entities
+		array<int> playerIds = {};
+		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		
+		foreach (int playerId : playerIds)
 		{
 			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-			if (!controlledEntity)
-				continue;
-
-			SetSafeStartEHs(controlledEntity);
-		};
-	}
+			if (controlledEntity)
+				SetSafeStartEHs(controlledEntity);
+		}
+	};
 
 	//------------------------------------------------------------------------------------------------
+	/**
+	 * Deactivates all safe start event handlers and re-enables combat functionality
+	 * for all entities that had safe start restrictions applied.
+	 */
 	protected void DeactivateSafeStartEHs()
 	{
-		for (int i = 0; i < m_mEntitiesWithEHsMap.Count(); i++)
+		foreach (IEntity controlledEntity, bool hasHandlers : m_mEntitiesWithEHsMap)
 		{
-			IEntity controlledEntity = m_mEntitiesWithEHsMap.GetKey(i);
-
 			if (!controlledEntity)
 				continue;
 
-			SCR_CharacterDamageManagerComponent.Cast(controlledEntity.FindComponent(SCR_CharacterDamageManagerComponent)).EnableDamageHandling(true);
-
-			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
+			// Re-enable damage handling
+			SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(
+				controlledEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+			if (damageManager)
+				damageManager.EnableDamageHandling(true);
+			
+			// Turn off weapon safety
+			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(
+				controlledEntity.FindComponent(CharacterControllerComponent));
 			if (!charComp)
 				continue;
-
+			
 			charComp.SetSafety(false, false);
-
-			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(controlledEntity.FindComponent(EventHandlerManagerComponent));
+			
+			// Remove weapon event handlers
+			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(
+				controlledEntity.FindComponent(EventHandlerManagerComponent));
 			if (!eventHandler)
 				continue;
-
+			
 			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
-
+			
 			m_mEntitiesWithEHsMap.Set(controlledEntity, false);
-		};
+		}
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -547,7 +618,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 			eventHandler.RegisterScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
 			m_mEntitiesWithEHsMap.Set(controlledEntity, true);
 		};
-	}
+	};
 
 	//------------------------------------------------------------------------------------------------
 	protected void OnWeaponFired(int playerId, BaseWeaponComponent weapon, IEntity entity)
