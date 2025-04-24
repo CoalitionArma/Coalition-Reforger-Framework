@@ -26,103 +26,175 @@ class CRF_MenuManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void SetChannel(int index, string inputString, bool channelCreation)
 	{
+		// Update the channel in the array
 		m_aVONChannels.Set(index, inputString);
+		
+		// If this is not a channel creation operation, perform cleanup
 		if (!channelCreation)
 		{
-			foreach (string channel : m_aVONChannels)
+			// Check all channels for any that need to be removed
+			for (int i = 0; i < m_aVONChannels.Count(); i++)
 			{
+				string channel = m_aVONChannels[i];
 				array<string> channelSplit = {};
+				
+				// Split the channel string to separate name from player IDs
 				channel.Split("|", channelSplit, true);
-				if (channelSplit.Count() == 1 && m_aVONChannels.Find(channel) > 1)
-					m_aVONChannels.RemoveOrdered(m_aVONChannels.Find(channel));
+				
+				// If channel has no players and is not a default channel (index > 1)
+				if (channelSplit.Count() == 1 && i > 1)
+				{
+					m_aVONChannels.RemoveOrdered(i);
+					i--; // Adjust index since we removed an element
+				}
 			}
 		}
+		
+		// Increment change counter for tracking modifications
 		m_iChannelChanges++;
+		
+		// Notify replication system of the change
 		Replication.BumpMe();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	bool IsPlayerInAnyChannel(int playerId, out int channelId)
 	{
-		bool isInChannel = false;
 		channelId = -1;
-		foreach (string channel : m_aVONChannels)
+		
+		for (int i = 0; i < m_aVONChannels.Count(); i++)
 		{
-			if (isInChannel)
-				break;
+			string channel = m_aVONChannels[i];
 			array<string> channelSplit = {};
 			channel.Split("|", channelSplit, true);
-			array<string> players = {};
-			if (channelSplit.Count() == 1)
+			
+			// Skip channels with no player data
+			if (channelSplit.Count() <= 1)
 				continue;
+			
+			array<string> players = {};
 			channelSplit.Get(1).Split(",", players, true);
-			foreach (string player : players)
+			
+			for (int j = 0; j < players.Count(); j++)
 			{
-				if	(player == "")
+				string player = players[j];
+				
+				if (player == "")
 					continue;
+					
 				if (player.ToInt() == playerId)
 				{
-					channelId = m_aVONChannels.Find(channel);
-					isInChannel = true;
-					break;
+					channelId = i;
+					return true;
 				}
 			}
 		}
-		return isInChannel;
+		
+		return false;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void AddPlayerToChannel(int playerId, int channelIndex, bool channelCreation)
 	{
-		int index;
-		if (IsPlayerInAnyChannel(playerId, index))
+		// Check if player is already in a channel and remove them if necessary
+		int currentChannelIndex;
+		if (IsPlayerInAnyChannel(playerId, currentChannelIndex))
+		{
 			RemovePlayerFromAnyChannel(playerId, channelCreation);
+		}
+		
+		// Split the channel string into parts
 		array<string> channelSplit = {};
 		m_aVONChannels.Get(channelIndex).Split("|", channelSplit, true);
+		
+		// Get the current players in the channel
 		array<string> players = {};
 		if (channelSplit.Count() > 1)
+		{
 			channelSplit.Get(1).Split(",", players, true);
+		}
+		
+		// Add the player to the channel
 		players.Insert(playerId.ToString());
+		
+		// Update the channel string
 		if (channelSplit.Count() > 1)
+		{
 			channelSplit.Set(1, SCR_StringHelper.Join(",", players));
+		}
 		else
+		{
 			channelSplit.Insert(SCR_StringHelper.Join(",", players));
+		}
+		
+		// Update the channel in the list
 		SetChannel(channelIndex, SCR_StringHelper.Join("|", channelSplit), channelCreation);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void RemovePlayerFromAnyChannel(int playerId, bool channelCreation)
 	{
-		int index;
-		if (!IsPlayerInAnyChannel(playerId, index))
+		// Find which channel the player is in
+		int channelIndex;
+		if (!IsPlayerInAnyChannel(playerId, channelIndex))
 			return;
+		
+		// Get the channel string and split it
 		array<string> channelSplit = {};
-		m_aVONChannels.Get(index).Split("|", channelSplit, true);
+		m_aVONChannels.Get(channelIndex).Split("|", channelSplit, true);
+		
+		// Get the players in the channel
 		array<string> players = {};
 		if (channelSplit.Count() > 1)
+		{
 			channelSplit.Get(1).Split(",", players, true);
-		players.RemoveOrdered(players.Find(playerId.ToString()));
+		}
+		
+		// Remove the player from the list
+		int playerIndex = players.Find(playerId.ToString());
+		if (playerIndex >= 0)
+		{
+			players.RemoveOrdered(playerIndex);
+		}
+		
+		// Update the channel string
 		if (channelSplit.Count() > 1)
+		{
 			channelSplit.Set(1, SCR_StringHelper.Join(",", players));
+		}
 		else
+		{
 			channelSplit.Insert(SCR_StringHelper.Join(",", players));
-		SetChannel(index, SCR_StringHelper.Join("|", channelSplit), channelCreation);
+		}
+		
+		// Update the channel in the list
+		SetChannel(channelIndex, SCR_StringHelper.Join("|", channelSplit), channelCreation);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	bool IsPlayerInChannel(int playerId, int index)
 	{
+		// Split the channel string
 		array<string> channelSplit = {};
 		m_aVONChannels.Get(index).Split("|", channelSplit, true);
-		array<string> players = {};
+		
+		// Check if the channel has player data
 		if (channelSplit.Count() == 1)
+		{
 			return false;
-		else
-			channelSplit.Get(1).Split(",", players, true);
+		}
+		
+		// Get the players in the channel
+		array<string> players = {};
+		channelSplit.Get(1).Split(",", players, true);
+		
+		// Check if the player is in the channel
 		if (players.Contains(playerId.ToString()))
+		{
 			return true;
-		else
-			return false;
+		}
+		
+		return false;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -138,20 +210,30 @@ class CRF_MenuManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	int GetChannel(int playerId)
 	{
-		foreach (string channel : m_aVONChannels)
+		// Convert playerId to string once to avoid repeated conversions
+		string playerIdStr = playerId.ToString();
+		
+		// Loop through all channels to find which one contains the player
+		for (int i = 0; i < m_aVONChannels.Count(); i++)
 		{
+			string channel = m_aVONChannels[i];
 			array<string> channelSplit = {};
 			channel.Split("|", channelSplit, true);
-			array<string> players = {};
+			
+			// Skip channels with no player data
 			if (channelSplit.Count() == 1)
 				continue;
-			else
-				channelSplit.Get(1).Split(",", players, true);
-			if (players.Contains(playerId.ToString()))
+			
+			// Get players in this channel
+			array<string> players = {};
+			channelSplit.Get(1).Split(",", players, true);
+			
+			// If player is in this channel, return the channel index
+			if (players.Contains(playerIdStr))
 				return m_aVONChannels.Find(channel);
-			else
-				continue;
 		}
+		
+		// Default to channel 1 (Global) if player is not in any channel
 		return 1;
 	}
 
@@ -170,40 +252,72 @@ class CRF_MenuManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void Accept()
 	{
-		if (!WidgetManager.GetWidgetUnderCursor())
+		// Get the widget under cursor
+		Widget widget = WidgetManager.GetWidgetUnderCursor();
+		if (!widget)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent())
+		
+		// Check parent hierarchy
+		Widget parent1 = widget.GetParent();
+		if (!parent1)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent())
+		
+		Widget parent2 = parent1.GetParent();
+		if (!parent2)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent())
+		
+		Widget parent3 = parent2.GetParent();
+		if (!parent3)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent())
+		
+		Widget parent4 = parent3.GetParent();
+		if (!parent4)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent())
+		
+		Widget parent5 = parent4.GetParent();
+		if (!parent5)
 			return;
-
-		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent().FindHandler(CRF_ListBoxElementComponent));
+		
+		// Find component and process join channel
+		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(parent5.FindHandler(CRF_ListBoxElementComponent));
 		CRF_RplToAuthorityManager.GetInstance().JoinChannel(comp.m_iplayerId, comp.m_iChannelId);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void Deny()
 	{
-		if (!WidgetManager.GetWidgetUnderCursor())
+		// Get the widget under cursor
+		Widget widget = WidgetManager.GetWidgetUnderCursor();
+		if (!widget)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent())
+		
+		// Check parent hierarchy
+		Widget parent1 = widget.GetParent();
+		if (!parent1)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent())
+		
+		Widget parent2 = parent1.GetParent();
+		if (!parent2)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent())
+		
+		Widget parent3 = parent2.GetParent();
+		if (!parent3)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent())
+		
+		Widget parent4 = parent3.GetParent();
+		if (!parent4)
 			return;
-		else if (!WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent())
+		
+		Widget parent5 = parent4.GetParent();
+		if (!parent5)
 			return;
-		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(WidgetManager.GetWidgetUnderCursor().GetParent().GetParent().GetParent().GetParent().GetParent().FindHandler(CRF_ListBoxElementComponent));
-
+		
+		// Find component and process deny
+		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(parent5.FindHandler(CRF_ListBoxElementComponent));
+		if (!comp)
+			return;
+		
+		// Send deny notification to players in the channel
 		array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
 		foreach (int player : players)

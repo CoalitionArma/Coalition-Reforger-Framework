@@ -68,17 +68,23 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 	{
 		super.OnControllableSpawned(entity);
 		
-		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client || entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		// Early return conditions
+		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client || entity == null || entity.GetPrefabData() == null)
 			return;
 		
+		// Calculate random delay
 		int randInt = m_RNG.RandInt(500, 5000);
 		
-		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
+		{
 			randInt = m_RNG.RandInt(250, 500);
+		}
 		
+		// Schedule gear setup with delay
 		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, randInt, false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 
+	//------------------------------------------------------------------------------------------------
 	void SetupAddGearToEntity(IEntity entity, ResourceName resourceNameToScan)
 	{
 		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
@@ -88,10 +94,18 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 
 		switch (true)
 		{
-			case(resourceNameToScan.Contains("BLUFOR")) 	: {factionKey = "BLUFOR"; break; }
-			case(resourceNameToScan.Contains("OPFOR")) 	: {factionKey = "OPFOR"; break; }
-			case(resourceNameToScan.Contains("INDFOR")) 	: {factionKey = "INDFOR"; break; }
-			case(resourceNameToScan.Contains("CIV")) 		: {factionKey = "CIV"; break; }
+			case(resourceNameToScan.Contains("BLUFOR")): 
+				factionKey = "BLUFOR"; 
+				break;
+			case(resourceNameToScan.Contains("OPFOR")): 
+				factionKey = "OPFOR"; 
+				break;
+			case(resourceNameToScan.Contains("INDFOR")): 
+				factionKey = "INDFOR"; 
+				break;
+			case(resourceNameToScan.Contains("CIV")): 
+				factionKey = "CIV"; 
+				break;
 		}
 
 		ResourceName gearScriptResourceName = GetGearScriptResource(factionKey);
@@ -343,9 +357,19 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 	array<ref CRF_Magazine_Class> ConvertSpecMagArrayIntoMagArray(array<ref CRF_Spec_Magazine_Class> specMagazineArray)
 	{
 		array<ref CRF_Magazine_Class> tempArray = {};
+		
+		if (!specMagazineArray)
+			return tempArray;
+			
 		foreach (CRF_Spec_Magazine_Class specMagazine : specMagazineArray)
 		{
-			ref CRF_Magazine_Class tempMag = specMagazine;
+			if (!specMagazine)
+				continue;
+				
+			ref CRF_Magazine_Class tempMag = new CRF_Magazine_Class();
+			tempMag.m_Magazine = specMagazine.m_Magazine;
+			tempMag.m_MagazineCount = specMagazine.m_MagazineCount;
+			
 			tempArray.Insert(tempMag);
 		}
 		
@@ -370,9 +394,16 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 			return;
 		};
 
-		foreach (CRF_Magazine_Class magazine : magazineArray)
+		if (magazineArray != null)
 		{
-			AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, spawnParams, inventory, inventoryManager);
+			for (int i = 0; i < magazineArray.Count(); i++)
+			{
+				CRF_Magazine_Class magazine = magazineArray[i];
+				if (magazine != null)
+				{
+					AddInventoryItem(magazine.m_Magazine, magazine.m_MagazineCount, spawnParams, inventory, inventoryManager);
+				}
+			}
 		}
 		
 		GetGame().GetCallqueue().CallLater(AddAttachments, 1000, false, weaponResource, attatchementResources, spawnParams, inventoryManager);
@@ -381,12 +412,18 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void AddAttachments(ResourceName weaponResource, array<ResourceName> attatchementResources, EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		BaseWeaponManagerComponent weaponManager = ChimeraCharacter.Cast(inventoryManager.GetOwner()).GetCharacterController().GetWeaponManagerComponent();
-
-		if (!weaponManager || !attatchementResources || attatchementResources.IsEmpty())
+		if (!inventoryManager || !attatchementResources || attatchementResources.IsEmpty())
+			return;
+			
+		ChimeraCharacter character = ChimeraCharacter.Cast(inventoryManager.GetOwner());
+		if (character == null)
+			return;
+			
+		BaseWeaponManagerComponent weaponManager = character.GetCharacterController().GetWeaponManagerComponent();
+		if (weaponManager == null)
 			return;
 
-		IEntity weapon;
+		IEntity weapon = null;
 		array<IEntity> outWeapons = {};
 		weaponManager.GetWeaponsList(outWeapons);
 
@@ -399,7 +436,7 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 			}
 		}
 
-		if (!weapon)
+		if (weapon == null)
 			return;
 
 		array<AttachmentSlotComponent> attatchmentSlotArray = {};
@@ -415,16 +452,22 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 			{
 				if (attachmentSlot.CanSetAttachment(attachmentSpawned))
 				{
-					if (attachmentSlot.GetAttachedEntity() != attachmentSpawned)
-						delete attachmentSlot.GetAttachedEntity();
+					IEntity attachedEntity = attachmentSlot.GetAttachedEntity();
+					if (attachedEntity != null)
+					{
+						if (attachedEntity != attachmentSpawned)
+						{
+							delete attachedEntity;
+						}
+					}
 
 					attachmentSlot.SetAttachment(attachmentSpawned);
 					verifyAttachmentSlot = attachmentSlot;
 					break;
-				};
+				}
 			}
 
-			if (!verifyAttachmentSlot)
+			if (verifyAttachmentSlot == null)
 			{
 				Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
 				Print(string.Format("CRF GEAR SCRIPT ERROR: UNABLE TO INSERT ATTACHMENT: %1", attachment), LogLevel.ERROR);
@@ -433,7 +476,7 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 				Print("CRF GEAR SCRIPT ERROR: INVALID ATTACHMENT ITEM FOR WEAPON!", LogLevel.ERROR);
 				Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
 				delete attachmentSpawned;
-			};
+			}
 		}
 	}
 
@@ -445,8 +488,12 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 
 		array<IEntity> removedItems = {};
 		IEntity previousClothing = inventory.Get(slotInt);
-		ResourceName clothing = clothingArray.GetRandomElement();
+		
+		// Get random clothing from the array
+		int randomIndex = m_RNG.RandInt(0, clothingArray.Count() - 1);
+		ResourceName clothing = clothingArray[randomIndex];
 
+		// Process previous clothing and its contents
 		if (previousClothing != null)
 		{
 			BaseInventoryStorageComponent oldStorage = BaseInventoryStorageComponent.Cast(previousClothing.FindComponent(BaseInventoryStorageComponent));
@@ -454,26 +501,42 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 			{
 				array<IEntity> outItems = {};
 				oldStorage.GetAll(outItems);
-				foreach (IEntity item : outItems)
+				
+				int itemCount = outItems.Count();
+				for (int i = 0; i < itemCount; i++)
 				{
-					if (!item || !InventoryItemComponent.Cast(item.FindComponent(InventoryItemComponent)) || SCR_EquipmentStorageComponent.Cast(item.FindComponent(SCR_EquipmentStorageComponent)) || SCR_UniversalInventoryStorageComponent.Cast(item.FindComponent(SCR_UniversalInventoryStorageComponent)) || BaseInventoryStorageComponent.Cast(item.FindComponent(BaseInventoryStorageComponent)))
+					IEntity item = outItems[i];
+					if (item == null)
+						continue;
+						
+					if (InventoryItemComponent.Cast(item.FindComponent(InventoryItemComponent)) == null)
+						continue;
+						
+					if (SCR_EquipmentStorageComponent.Cast(item.FindComponent(SCR_EquipmentStorageComponent)) != null)
+						continue;
+						
+					if (SCR_UniversalInventoryStorageComponent.Cast(item.FindComponent(SCR_UniversalInventoryStorageComponent)) != null)
+						continue;
+						
+					if (BaseInventoryStorageComponent.Cast(item.FindComponent(BaseInventoryStorageComponent)) != null)
 						continue;
 
 					inventoryManager.TryRemoveItemFromStorage(item, oldStorage);
 					removedItems.Insert(item);
 				}
-			};
+			}
 
 			inventoryManager.TryRemoveItemFromStorage(previousClothing, inventory);
 			SCR_EntityHelper.DeleteEntityAndChildren(previousClothing);
-		};
+		}
 
-		if (!clothing.IsEmpty())
+		// Add new clothing if exists
+		if (clothing != "")
 		{
 			IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(clothing), GetGame().GetWorld(), spawnParams);
 			inventoryManager.TryReplaceItem(resourceSpawned, inventory, slotInt);
 
-			if (!inventoryManager.Contains(resourceSpawned))
+			if (inventoryManager.Contains(resourceSpawned) == false)
 			{
 				Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
 				Print(string.Format("CRF GEAR SCRIPT ERROR: UNABLE TO INSERT CLOTHING: %1", clothing), LogLevel.ERROR);
@@ -482,15 +545,22 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 				Print("CRF GEAR SCRIPT ERROR: INVALID CLOTHING ITEM!", LogLevel.ERROR);
 				Print("--------------------------------------------------------------------------------", LogLevel.ERROR);
 				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
-			};
+			}
 		}
 
-		foreach (IEntity oldItem : removedItems)
+		// Handle previously removed items
+		int removedItemCount = removedItems.Count();
+		for (int j = 0; j < removedItemCount; j++)
 		{
-			if(!deletePreviousItems)
+			IEntity oldItem = removedItems[j];
+			if (deletePreviousItems == false)
+			{
 				InsertInventoryItem(oldItem, inventory, inventoryManager, role);
+			}
 			else 
+			{
 				SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
+			}
 		}
 	}
 

@@ -1,7 +1,7 @@
 class CRF_SafestartManagerClass : SCR_BaseGameModeComponentClass {}
 
 class CRF_SafestartManager : SCR_BaseGameModeComponent
-{	
+{
 	[RplProp(onRplName: "OnSafeStartChange")]
 	protected bool m_bSafeStartEnabled = false;
 	ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
@@ -36,7 +36,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	CRF_LoggingServerComponent m_Logging;
-	
+
 	//------------------------------------------------------------------------------------------------
 	static CRF_SafestartManager GetInstance()
 	{
@@ -46,7 +46,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		else
 			return null;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	// Init method
 	override void OnPostInit(IEntity owner)
@@ -59,13 +59,13 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 
 		// Check if we're running on a server
 		bool isServer;
-		
+
 		#ifdef WORKBENCH
 		isServer = Replication.IsServer();
 		#else
 		isServer = RplSession.Mode() == RplMode.Dedicated;
 		#endif
-		
+
 		if (isServer) // Supports both workbench and dedi
 		{
 			// Initialize server components
@@ -73,7 +73,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
 	// Polls for game start, then configures safestart based on gamemode settings
@@ -105,39 +105,39 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		if (!factionManager)
 			return;
-			
+
 		// Get sorted factions
 		SCR_SortedArray<SCR_Faction> sortedFactions = new SCR_SortedArray<SCR_Faction>();
 		factionManager.GetSortedFactionsList(sortedFactions);
-		
+
 		if (!sortedFactions || sortedFactions.IsEmpty())
 			return;
-			
+
 		// Convert to regular array for iteration
 		array<SCR_Faction> factionArray = {};
 		sortedFactions.ToArray(factionArray);
-		
+
 		// Reset faction tracking
 		m_aPlayedFactionsArray.Clear();
-		
+
 		// Initialize default faction status strings
 		string bluforStatus = "#Coal_SS_No_Faction";
 		string opforStatus = "#Coal_SS_No_Faction";
 		string indforStatus = "#Coal_SS_No_Faction";
 		string civStatus = "#Coal_SS_No_Faction";
-		
+
 		// Process each faction
 		foreach (SCR_Faction faction : factionArray)
 		{
 			// Skip factions with no players or not matching our supported faction keys
 			string factionKey = faction.GetFactionKey();
-			if (faction.GetPlayerCount() == 0 || (factionKey != "BLUFOR" && factionKey != "OPFOR" && 
+			if (faction.GetPlayerCount() == 0 || (factionKey != "BLUFOR" && factionKey != "OPFOR" &&
 				factionKey != "INDFOR" && factionKey != "CIV"))
 				continue;
-				
+
 			// Add to active factions list
 			m_aPlayedFactionsArray.Insert(faction);
-			
+
 			// Set appropriate status string based on faction and ready state
 			if (factionKey == "BLUFOR") {
 				if (m_bBluforReady) {
@@ -165,10 +165,10 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 				}
 			}
 		}
-		
+
 		// Update faction status array
 		m_aFactionsStatusArray = {bluforStatus, opforStatus, indforStatus, civStatus};
-		
+
 		// Count active factions
 		m_iPlayedFactionsCount = 0;
 		foreach (string factionStatus : m_aFactionsStatusArray)
@@ -176,7 +176,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 			if (factionStatus != "#Coal_SS_No_Faction")
 				m_iPlayedFactionsCount++;
 		}
-		
+
 		// Notify clients of changes
 		Replication.BumpMe();
 	}
@@ -191,22 +191,22 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		if (adminForced) {
 			bool newReadyState = !m_bAdminForcedReady;
 			m_bAdminForcedReady = newReadyState;
-			
+
 			// Set all factions to the same ready state
 			m_bBluforReady = newReadyState;
 			m_bOpforReady = newReadyState;
 			m_bIndforReady = newReadyState;
 			m_bCivReady = newReadyState;
-			
+
 			string actionText;
 			if (newReadyState) {
 				actionText = "Force Readied";
 			} else {
 				actionText = "Force Unreadied";
 			}
-			
+
 			m_sMessageContent = string.Format("An Admin (%1) Has %2 All Sides!", playerName, actionText);
-			
+
 			Replication.BumpMe();
 			ShowMessage();
 			return;
@@ -219,7 +219,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		// Toggle faction ready status
 		bool newStatus = false;
 		string messageKey = "";
-		
+
 		// Update faction status and prepare message
 		switch (setReady) {
 			case "BLUFOR": {
@@ -263,7 +263,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 				break;
 			}
 		}
-		
+
 		m_sMessageContent = string.Format("%1 - %2", messageKey, playerName);
 		Replication.BumpMe();
 		ShowMessage();
@@ -282,7 +282,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		}
 
 		// Exit if no factions playing or not all factions ready at initial countdown time
-		if ((readyFactionsCount == 0 && m_iPlayedFactionsCount == 0) || 
+		if ((readyFactionsCount == 0 && m_iPlayedFactionsCount == 0) ||
 			(readyFactionsCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining == 35))
 			return;
 
@@ -301,13 +301,13 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		{
 			m_iSafeStartTimeRemaining -= 5;
 			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started %1 Seconds!", m_iSafeStartTimeRemaining);
-			
+
 			// End safe start when countdown reaches zero
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
 				m_sMessageContent = "#Coal_SS_Game_Live";
 			}
-			
+
 			Replication.BumpMe();
 			ShowMessage();
 		}
@@ -469,7 +469,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
 			return;
 		}
-		
+
 		// Process one empty slot per call to avoid performance spikes
 		for (int i = 0; i < gamemode.m_aEntitySlots.Count(); i++)
 		{
@@ -479,7 +479,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 				return; // Exit after processing one slot
 			}
 		}
-		
+
 		// If we reach here, no empty slots were found - stop the repeated calls
 		GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
 	};
@@ -529,30 +529,30 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Activates safe start event handlers for all AI and player-controlled entities.
-	 * Disables damage and weapon functionality during the safe start period.
-	 */
+	* Activates safe start event handlers for all AI and player-controlled entities.
+	* Disables damage and weapon functionality during the safe start period.
+	*/
 	protected void ActivateSafeStartEHs()
-	{	
+	{
 		// Apply safe start to AI-controlled entities
 		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
 		if (aiWorld)
 		{
 			array<AIAgent> aiAgents = {};
 			aiWorld.GetAIAgents(aiAgents);
-			
+
 			foreach (AIAgent agent : aiAgents)
-			{	
+			{
 				IEntity controlledEntity = agent.GetControlledEntity();
 				if (controlledEntity)
 					SetSafeStartEHs(controlledEntity);
 			}
 		}
-		
+
 		// Apply safe start to player-controlled entities
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
-		
+
 		foreach (int playerId : playerIds)
 		{
 			IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
@@ -563,9 +563,9 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Deactivates all safe start event handlers and re-enables combat functionality
-	 * for all entities that had safe start restrictions applied.
-	 */
+	* Deactivates all safe start event handlers and re-enables combat functionality
+	* for all entities that had safe start restrictions applied.
+	*/
 	protected void DeactivateSafeStartEHs()
 	{
 		foreach (IEntity controlledEntity, bool hasHandlers : m_mEntitiesWithEHsMap)
@@ -578,28 +578,28 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 				controlledEntity.FindComponent(SCR_CharacterDamageManagerComponent));
 			if (damageManager)
 				damageManager.EnableDamageHandling(true);
-			
+
 			// Turn off weapon safety
 			CharacterControllerComponent charComp = CharacterControllerComponent.Cast(
 				controlledEntity.FindComponent(CharacterControllerComponent));
 			if (!charComp)
 				continue;
-			
+
 			charComp.SetSafety(false, false);
-			
+
 			// Remove weapon event handlers
 			EventHandlerManagerComponent eventHandler = EventHandlerManagerComponent.Cast(
 				controlledEntity.FindComponent(EventHandlerManagerComponent));
 			if (!eventHandler)
 				continue;
-			
+
 			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
-			
+
 			m_mEntitiesWithEHsMap.Set(controlledEntity, false);
 		}
 	};
-	
+
 	//------------------------------------------------------------------------------------------------
 	protected void SetSafeStartEHs(IEntity controlledEntity)
 	{
@@ -636,4 +636,4 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		// Get grenade and delete it
 		delete entity;
 	}
-};
+}
