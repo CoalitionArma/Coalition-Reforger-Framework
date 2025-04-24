@@ -28,6 +28,12 @@ class CRF_RespawnManager : SCR_BaseGameModeComponent
 			return;
 		
 		m_Gamemode = CRF_Gamemode.GetInstance();
+
+		SCR_AIGroup.GetOnPlayerAdded().Insert(OnPlayerJoinedGroup);
+		SCR_AIGroup.GetOnPlayerRemoved().Insert(OnPlayerLeftGroup);
+		
+		if (m_Gamemode.m_bRespawnEnabled)
+			CRF_RespawnManager.GetInstance().InitilizeRespawns();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -272,5 +278,57 @@ class CRF_RespawnManager : SCR_BaseGameModeComponent
 		m_Gamemode.SetSlot(index, playerId);
 
 		CRF_RplBroadcastManager.GetInstance().InitilizePlayer(playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void OnPlayerJoinedGroup(SCR_AIGroup aiGroup, int playerId)
+	{
+		if (RplSession.Mode() == RplMode.Dedicated)
+		{
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
+				return;
+
+			if (!CRF_RoleHelper.IsSquadLeaderRole(currentLeaderEntity))
+			{
+				IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+				if (!player)
+					return;
+
+				if (CRF_RoleHelper.IsSquadLeaderRole(player))
+				{
+					SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), playerId);
+				}
+			}
+		}
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void OnPlayerLeftGroup(SCR_AIGroup aiGroup, int playerId)
+	{
+		if (RplSession.Mode() == RplMode.Dedicated)
+		{
+			IEntity currentLeaderEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(aiGroup.GetLeaderID());
+			if (!currentLeaderEntity)
+				return;
+
+			if (!CRF_RoleHelper.IsSquadLeaderRole(currentLeaderEntity))
+			{
+				array<int> groupMembers = aiGroup.GetPlayerIDs();
+
+				foreach (int member : groupMembers)
+				{
+					IEntity memberEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(member);
+					if (!memberEntity)
+						return;
+
+					if (CRF_RoleHelper.IsTeamLeaderRole(memberEntity))
+					{
+						SCR_GroupsManagerComponent.GetInstance().SetGroupLeader(aiGroup.GetGroupID(), member);
+						break;
+					}
+				}
+			}
+		}
 	}
 }

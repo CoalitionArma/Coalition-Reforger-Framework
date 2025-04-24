@@ -170,51 +170,22 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (m_bIsSpectator)
 		{
 			owner.SetOrigin("0 10000 0");
-			HideEntity(owner);
-		};
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void HideEntity(IEntity owner)
-	{
-		if (!m_bIsHidden)
-		{
-			Physics physics = owner.GetPhysics();
-			if (physics)
+			if (!m_bIsHidden)
 			{
-				//owner.ClearFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE,  false);
-				physics.EnableGravity(false);
-				physics.ChangeSimulationState(SimulationState.NONE);
-				physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
-				for (int i = 0; i <= physics.GetNumGeoms(); i++)
+				Physics physics = owner.GetPhysics();
+				if (physics)
 				{
-					physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
-				}
-				m_bIsHidden = true;
+					//owner.ClearFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE,  false);
+					physics.EnableGravity(false);
+					physics.ChangeSimulationState(SimulationState.NONE);
+					physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
+					for (int i = 0; i <= physics.GetNumGeoms(); i++)
+					{
+						physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
+					}
+					m_bIsHidden = true;
+				};
 			};
 		};
 	}
-
-	/*
-	//------------------------------------------------------------------------------------------------
-	void UnHideEntity(IEntity owner)
-	{
-		if (m_bIsHidden)
-		{
-			Physics physics = owner.GetPhysics();
-			if (physics)
-			{
-				owner.SetFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE, true);
-				physics.EnableGravity(true);
-				physics.ChangeSimulationState(SimulationState.SIMULATION);
-				physics.SetInteractionLayer(EPhysicsLayerDefs.Character);
-				for (int i = 0; i <= physics.GetNumGeoms(); i++)
-				{
-					physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.Character);
-				}
-				m_bIsHidden = true;
-			};
-		};
-	}
-	*/
 }

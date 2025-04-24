@@ -71,7 +71,7 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client || entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			return;
 		
-		int randInt = m_RNG.RandInt(2500, 25000);
+		int randInt = m_RNG.RandInt(500, 5000);
 		
 		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
 			randInt = m_RNG.RandInt(250, 500);
@@ -81,7 +81,7 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 
 	void SetupAddGearToEntity(IEntity entity, ResourceName resourceNameToScan)
 	{
-		if (!resourceNameToScan.Contains("CRF_GS_") || !entity)
+		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
 			return;
 
 		string factionKey;
@@ -111,7 +111,7 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 		}
 
 		// GET ROLE
-		int role = CRF_RoleHelper.StringToRole(CRF_Library.PrefabToRole(resourceNameToScan));
+		int role = CRF_RoleHelper.StringToRole(CRF_RoleHelper.PrefabToRole(resourceNameToScan));
 
 		// CLEAR ENTITY
 		array<IEntity> items = {};

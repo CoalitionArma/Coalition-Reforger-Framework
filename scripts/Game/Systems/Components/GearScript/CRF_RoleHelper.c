@@ -131,19 +131,69 @@ class CRF_RoleHelper
 		"_IndirectLoader_P"
 	};
 	
-	
+	//------------------------------------------------------------------------------------------------
 	static string RoleToString(EGearRole roleInt)
 	{
 		return roleFileStrings.Get(roleInt);
 	}
 	
+	//------------------------------------------------------------------------------------------------
 	static EGearRole StringToRole(string roleString)
 	{
 		return roleFileStrings.Find(roleString);
 	}
 
+	//------------------------------------------------------------------------------------------------
 	static ResourceName RoleToResource(EGearRole roleInt, FactionKey faction)
 	{
 		return SCR_Global.GetResourceName("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + RoleToString(roleInt) + ".et");
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static bool IsValidGearscriptResource(ResourceName resource)
+	{
+		return resource.Contains("CRF_GS_");
+	};
+	
+	// Pulled from the respawn manager, need to find a better solution eventually^tm.
+	//------------------------------------------------------------------------------------------------
+	static bool IsSquadLeaderRole(IEntity entity)
+	{
+		ref TIntArray roles = {EGearRole.COMPANY_COMMANDER, EGearRole.PLATOON_LEADER, EGearRole.MEDICAL_OFFICER, EGearRole.SQUAD_LEAD, EGearRole.VEHICLE_LEAD, EGearRole.INDIRECT_LEAD, EGearRole.LOGI_LEAD};
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!IsValidGearscriptResource(prefab))
+			return false;
+
+		int role = StringToRole(PrefabToRole(prefab));
+
+		return roles.Contains(role);
+	}
+
+	// Pulled from the respawn manager, need to find a better solution eventually^tm.
+	//------------------------------------------------------------------------------------------------
+	static bool IsTeamLeaderRole(IEntity entity)
+	{
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!IsValidGearscriptResource(prefab))
+			return false;
+
+		int role = StringToRole(PrefabToRole(prefab));
+
+		return (role == EGearRole.TEAM_LEAD);
+	}
+
+	// Converts a full resource name to a role.
+	//------------------------------------------------------------------------------------------------
+	static string PrefabToRole(ResourceName prefab)
+	{
+		array<string> value = {};
+		prefab.Split("_", value, true);
+
+		string role = "_" + value[3] + "_" + value[4];
+
+		role.Split(".", value, true);
+		role = value[0];
+
+		return role;
 	}
 }
