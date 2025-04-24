@@ -17,7 +17,7 @@ modded class SCR_VoNComponent
 		super.OnCapture(transmitter);
 		
 		// If in game state, dont do this so it isnt a drag on clients fps.
-		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
+		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
 		// Add player to the m_aPlayersTalking array the menu manager uses to tell when a player is talking.
@@ -31,7 +31,7 @@ modded class SCR_VoNComponent
 		super.OnReceive(playerId, receiver, frequency, quality);
 		
 		// If in game state, dont do this so it isnt a drag on clients fps.
-		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
+		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
 		// Add player to the m_aPlayersTalking array the menu manager uses to tell when a player is talking.

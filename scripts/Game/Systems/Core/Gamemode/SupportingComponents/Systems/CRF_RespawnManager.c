@@ -124,7 +124,7 @@ class CRF_RespawnManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void WaveRespawnTimer()
 	{
-		if (m_Gamemode.m_GamemodeState != CRF_GamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 
 		m_iRespawnWaveCurrentTime--;
@@ -144,13 +144,12 @@ class CRF_RespawnManager : SCR_BaseGameModeComponent
 		m_iRespawnTimer--;
 
 		// Check if timer has expired or we're in AAR state
-		if (m_iRespawnTimer <= 0 || m_Gamemode.m_GamemodeState == CRF_GamemodeState.AAR)
+		if (m_iRespawnTimer <= 0 || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR)
 		{
 			// Reset the timer
 			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-
 			// Only perform respawn if not in AAR state
-			if (m_Gamemode.m_GamemodeState != CRF_GamemodeState.AAR)
+			if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR)
 			{
 				CRF_RespawnManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
 				GetGame().GetMenuManager().CloseAllMenus();

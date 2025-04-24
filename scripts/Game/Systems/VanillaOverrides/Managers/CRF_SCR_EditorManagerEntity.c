@@ -106,9 +106,9 @@ modded class SCR_EditorManagerEntity
 		{
 			switch(CRF_Gamemode.GetInstance().m_GamemodeState)
 			{
-				case CRF_GamemodeState.INITIAL: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);	break;}
-				case CRF_GamemodeState.SLOTTING: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);	break;}
-				case CRF_GamemodeState.GAME: {
+				case CRF_EGamemodeState.INITIAL: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);	break;}
+				case CRF_EGamemodeState.SLOTTING: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);	break;}
+				case CRF_EGamemodeState.GAME: {
 					if(!SCR_PlayerController.GetLocalMainEntity() || !SCR_PlayerController.GetLocalControlledEntity())
 						return;
 					
@@ -122,7 +122,7 @@ modded class SCR_EditorManagerEntity
 					
 					break;
 				}
-				case CRF_GamemodeState.AAR: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);	break;}
+				case CRF_EGamemodeState.AAR: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);	break;}
 			}
 		};
 	}

@@ -2,7 +2,7 @@ class CRF_GamemodeClass : SCR_BaseGameModeClass
 {
 }
 
-enum CRF_GamemodeState
+enum CRF_EGamemodeState
 {
 	INITIAL,
 	SLOTTING,
@@ -10,7 +10,7 @@ enum CRF_GamemodeState
 	AAR
 }
 
-enum CRF_SlottingState
+enum CRF_ESlottingState
 {
 	LEADERSANDMEDICS,
 	SPECIALTIES,
@@ -36,67 +36,10 @@ class CRF_MissionDescriptor
 class CRF_Gamemode : SCR_BaseGameMode
 {
 	[RplProp(onRplName: "OnGamemodeStateChanged")]
-	int m_GamemodeState = CRF_GamemodeState.INITIAL;
+	int m_GamemodeState = CRF_EGamemodeState.INITIAL;
 
 	[RplProp()]
-	int m_SlottingState = CRF_SlottingState.LEADERSANDMEDICS;
-
-	//Slot ID given to an entity
-	[RplProp()]
-	ref array<int> m_aSlots = {};
-
-	//Slot name of entity
-	[RplProp()]
-	ref array<string> m_aSlotNames = {};
-
-	//Player that is slotted in the entities name
-	[RplProp()]
-	ref array<string> m_aSlotPlayerNames = {};
-
-	//Slot icon off of UI Info
-	[RplProp()]
-	ref array<ResourceName> m_aSlotIcons = {};
-
-	[RplProp()]
-	ref array<ResourceName> m_aSlotPrefabs = {};
-
-	//Entities slot type, leader, specialty, everyone
-	[RplProp()]
-	ref array<int> m_aEntitySlotTypes = {};
-
-	//Is the entity dead or alive, needed as entities pop in and out of streamable.
-	[RplProp()]
-	ref array<bool> m_aEntityDeathStatus = {};
-
-	[RplProp()]
-	ref array<RplId> m_aCharacters = {};
-
-	[RplProp()]
-	ref array<string> m_aCharacterNames = {};
-
-	//RplId of entities that are playable
-	[RplProp()]
-	ref array<RplId> m_aEntitySlots = {};
-
-	//Stores the group ID for each slot, so I can reference what group a slot is in. CAUSE THERE IS NO WAY TO DO THAT ON THE CLIENT.
-	[RplProp()]
-	ref array<RplId> m_aPlayerGroupIDs = {};
-
-	//Communicates change across all clients so they can refresh their slots in the UI
-	[RplProp()]
-	int m_iSlotChanges = 0;
-
-	//Is a group locked
-	[RplProp()]
-	ref array<bool> m_aGroupLockedStatus = {};
-
-	//Stores SCR_AIGroup RplId, CAUSE YOU CAN'T FUCKING GRAB NON PLAYABLE GROUPS BOHEMIA
-	[RplProp()]
-	ref array<RplId> m_aGroupRplIDs = {};
-
-	//Stores the playable group created whenever an AI group is created in the editor
-	[RplProp()]
-	ref array<RplId> m_aActivePlayerGroupsIDs = {};
+	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
 
 	//Just stores a generic spawnpoint for players to spawn the spectator cam on. Cause of entities being streamable and such.
 	[RplProp()]
@@ -172,7 +115,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 	int m_iCIVTickets;
 
 	protected ref ScriptInvoker m_OnStateChanged;
-	protected ref array<CRF_GamemodeManager> m_aAdditionalCRFGamemodeManagers = {};
 	protected static ref SCR_PlayerData m_PlayerData;
 
 	//------------------------------------------------------------------------------------------------
@@ -186,62 +128,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override void OnControllableSpawned(IEntity entity)
-	{
-		super.OnControllableSpawned(entity);
-		GetGame().GetCallqueue().CallLater(LogCharacter, 500, false, entity);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void LogCharacter(IEntity entity)
-	{
-		#ifdef WORKBENCH
-		if (!SCR_ChimeraCharacter.Cast(entity))
-				return;
-			m_aCharacters.Insert(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
-			if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)))
-			{
-				if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName())
-					m_aCharacterNames.Insert(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName());
-				else
-					m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
-			}
-			else
-				m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
-			Replication.BumpMe();
-		#else
-		if (RplSession.Mode() == RplMode.Dedicated)
-		{
-			if (!SCR_ChimeraCharacter.Cast(entity))
-				return;
-			m_aCharacters.Insert(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
-			if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)))
-			{
-				if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName())
-					m_aCharacterNames.Insert(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName());
-				else
-					m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
-			}
-			else
-				m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
-			Replication.BumpMe();
-		}
-		#endif
-	}
-
-	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-
-		array<Managed> additionalComponents = {};
-		int count = owner.FindComponents(CRF_GamemodeManager, additionalComponents);
-		m_aAdditionalCRFGamemodeManagers.Clear();
-		for (int i = 0; i < count; i++)
-		{
-			CRF_GamemodeManager comp = CRF_GamemodeManager.Cast(additionalComponents[i]);
-			m_aAdditionalCRFGamemodeManagers.Insert(comp);
-		}
 		
 		if (RplSession.Mode() == RplMode.Dedicated)
 			CRF_ModeratorConfig.LoadConfig();
@@ -267,7 +156,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			delay = 0;
 
 		// If respawn is enabled
-		if (m_bRespawnEnabled && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" && m_GamemodeState != CRF_GamemodeState.AAR)
+		if (m_bRespawnEnabled && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" && m_GamemodeState != CRF_EGamemodeState.AAR)
 		{
 			string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
 
@@ -304,7 +193,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 
 		vector cameraPos[4];
-		if (m_GamemodeState == CRF_GamemodeState.GAME)
+		if (m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
 			if (m_aSlots.Find(playerId) != -1 && entity != null)
 			{
@@ -355,112 +244,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		CRF_RplBroadcastManager.GetInstance().InitilizePlayer(playerId);
 	}
 
-	//Initializes group into the replicated arrays
-	//------------------------------------------------------------------------------------------------
-	void AddGroup(SCR_AIGroup group)
-	{
-		m_aGroupRplIDs.Insert(RplComponent.Cast(group.FindComponent(RplComponent)).Id());
-		m_aGroupLockedStatus.Insert(false);
-		SCR_AIGroup newGroup = SCR_GroupsManagerComponent.GetInstance().CreateNewPlayableGroup(group.GetFaction());
-		newGroup.SetCanDeleteIfNoPlayer(false);
-		newGroup.SetMaxMembers(12);
-		m_aActivePlayerGroupsIDs.Insert(RplComponent.Cast(newGroup.FindComponent(RplComponent)).Id());
-		Replication.BumpMe();
-	}
-
-	//Sets the group to be locked
-	//------------------------------------------------------------------------------------------------
-	void SetGroupLockedStatus(int index, bool input)
-	{
-		m_aGroupLockedStatus.Set(index, input);
-	}
-
-	//Sets slot to player or removes him from it
-	//------------------------------------------------------------------------------------------------
-	void SetSlot(int index, int playerId)
-	{
-		if (playerId > 0)
-		{
-			SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(FactionAffiliationComponent.Cast(RplComponent.Cast(Replication.FindItem(m_aEntitySlots.Get(index))).GetEntity().FindComponent(FactionAffiliationComponent)).GetAffiliatedFaction());
-			m_aSlotPlayerNames.Set(index, GetGame().GetPlayerManager().GetPlayerName(playerId));
-		}
-		else
-		{
-			if (m_aSlots.Get(index) > 0)
-			{
-				SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(m_aSlots.Get(index)).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
-				m_aSlotPlayerNames.Set(index, "");
-			}
-		}
-		m_aSlots.Set(index, playerId);
-		m_iSlotChanges++;
-		Replication.BumpMe();
-	}
-
-	//Sets if an entity is dead or not in the array
-	//------------------------------------------------------------------------------------------------
-	void SetDeathState(IEntity entity, bool input)
-	{
-		if (entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
-		{
-			m_aEntityDeathStatus.Set(m_aEntitySlots.Find(RplComponent.Cast(entity.FindComponent(RplComponent)).Id()), input);
-			m_iSlotChanges++;
-			Replication.BumpMe();
-		};
-	}
-
-	//Initializes playable entities and adds their values into the replicated arrays
-	//------------------------------------------------------------------------------------------------
-	int AddPlayableEntity(IEntity entity)
-	{
-		int index = m_aSlots.Insert(0);
-		m_aEntitySlots.Insert(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
-		m_aPlayerGroupIDs.Insert(RplComponent.Cast(SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(entity.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup()).FindComponent(RplComponent)).Id());
-		m_aSlotNames.Insert(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName());
-		m_aSlotPrefabs.Insert(entity.GetPrefabData().GetPrefabName());
-		m_aSlotIcons.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetInfo().GetIconPath());
-		m_aEntityDeathStatus.Insert(false);
-		m_aSlotPlayerNames.Insert("");
-
-		if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).IsLeader())
-			m_aEntitySlotTypes.Insert(0);
-		else if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).IsSpecialty())
-			m_aEntitySlotTypes.Insert(1);
-		else
-			m_aEntitySlotTypes.Insert(2);
-
-		if (m_aSlots.Count() == 1)
-			entity.GetTransform(m_vGenericSpawn);
-
-		return index;
-
-		Replication.BumpMe();
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void RemovePlayableEntity(RplId entityID)
-	{
-		if (!Replication.FindItem(entityID) || SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity()) != 0)
-			return;
-
-		int index = m_aEntitySlots.Find(entityID);
-		m_aSlots.RemoveOrdered(index);
-		m_aPlayerGroupIDs.RemoveOrdered(index);
-		m_aSlotNames.RemoveOrdered(index);
-		m_aSlotIcons.RemoveOrdered(index);
-		m_aSlotPrefabs.RemoveOrdered(index);
-		m_aEntityDeathStatus.RemoveOrdered(index);
-		m_aSlotPlayerNames.RemoveOrdered(index);
-		m_aEntitySlotTypes.RemoveOrdered(index);
-		m_aEntitySlots.RemoveOrdered(index);
-
-		SCR_EntityHelper.DeleteEntityAndChildren(RplComponent.Cast(Replication.FindItem(entityID)).GetEntity());
-
-		m_iSlotChanges++;
-
-		Replication.BumpMe();
-	}
-
 	//Puts the player into an entity when they connect
 	//------------------------------------------------------------------------------------------------
 	override void OnPlayerConnected(int playerId)
@@ -469,8 +252,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		if (m_aSlots.Find(playerId) != -1)
 		{
-			m_iSlotChanges++;
-			Replication.BumpMe();
+			CRF_GamemodeManager.GetInstance().SlottingChangesUpdate();
 		}
 	}
 
@@ -488,8 +270,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		//Updates connection status
 		if (m_aSlots.Find(playerId) != -1)
 		{
-			m_iSlotChanges++;
-			Replication.BumpMe();
+			CRF_GamemodeManager.GetInstance().SlottingChangesUpdate();
 		}
 	}
 
@@ -506,7 +287,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------------------
 	void AdvanceGamemodeState(bool overriden = false)
 	{
-		if ((m_GamemodeState == CRF_GamemodeState.AAR || m_GamemodeState == CRF_GamemodeState.GAME) && !overriden)
+		if ((m_GamemodeState == CRF_EGamemodeState.AAR || m_GamemodeState == CRF_EGamemodeState.GAME) && !overriden)
 			return;
 
 		m_GamemodeState += 1;
@@ -531,7 +312,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (m_OnStateChanged)
 				m_OnStateChanged.Invoke();
 
-			if (m_GamemodeState == CRF_GamemodeState.AAR)
+			if (m_GamemodeState == CRF_EGamemodeState.AAR)
 				EnterAAR();
 		}
 		else

@@ -28,7 +28,7 @@ modded class SCR_AIGroup
 			if(agent)
 				playableChar = CRF_PlayableCharacter.Cast(agent.GetControlledEntity().FindComponent(CRF_PlayableCharacter));
 			
-			if(gamemode && agent && playableChar && gamemode.m_GamemodeState == CRF_GamemodeState.GAME && gamemode.EnableAIInGameState && playableChar.IsPlayable())
+			if(gamemode && agent && playableChar && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.EnableAIInGameState && playableChar.IsPlayable())
 				m_bIsPlayable = false;
 		};
 		

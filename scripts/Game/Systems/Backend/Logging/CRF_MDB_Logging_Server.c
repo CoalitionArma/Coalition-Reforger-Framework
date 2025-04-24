@@ -39,7 +39,7 @@ class CRF_MDB_LoggingServerComponent: SCR_BaseGameModeComponent
 
 		m_sMissionName = GetGame().GetMissionName();
 		CRF_Gamemode.GetInstance().GetOnStateChanged().Insert(OnGamemodeStateChanged);
-		OnGamemodeStateChanged(CRF_GamemodeState.INITIAL);
+		OnGamemodeStateChanged(CRF_EGamemodeState.INITIAL);
 	}
 	
 	// Player Connected
@@ -73,10 +73,10 @@ class CRF_MDB_LoggingServerComponent: SCR_BaseGameModeComponent
 		m_sPlayerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 	}
 	
-	void OnGamemodeStateChanged(CRF_GamemodeState state)
+	void OnGamemodeStateChanged(CRF_EGamemodeState state)
 	{
 		//Print(state);
-		/*if (CRF_Gamemode.GetInstance().GetGameModeState() == CRF_GamemodeState.AAR) // log stats only at AAR
+		/*if (CRF_Gamemode.GetInstance().GetGameModeState() == CRF_EGamemodeState.AAR) // log stats only at AAR
 		{
 			//TODO: Implement data collector here by iterating through all players and only log data at end of game (AAR screen)
 			//SCR_PlayerData playerData = GetGame().GetDataCollector().GetPlayerData(playerId, false);

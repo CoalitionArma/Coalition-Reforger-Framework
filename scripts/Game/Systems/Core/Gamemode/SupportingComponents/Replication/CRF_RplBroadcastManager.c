@@ -241,10 +241,10 @@ class CRF_RplBroadcastManager : SCR_BaseGameModeComponent
 		if (!widget)
 			return;
 
-		if (CRF_GamemodeManager.GetInstance().m_wSavedHintWidget)
-			delete CRF_GamemodeManager.GetInstance().m_wSavedHintWidget;
+		if (CRF_PlayerControllerComponent.GetInstance().m_wSavedHintWidget)
+			delete CRF_PlayerControllerComponent.GetInstance().m_wSavedHintWidget;
 
-		CRF_GamemodeManager.GetInstance().m_wSavedHintWidget = widget;
+		CRF_PlayerControllerComponent.GetInstance().m_wSavedHintWidget = widget;
 
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
 		hint.ShowHint(data, 8000);

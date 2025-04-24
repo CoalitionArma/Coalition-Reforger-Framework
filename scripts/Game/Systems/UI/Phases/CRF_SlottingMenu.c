@@ -96,7 +96,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		m_wRoot.FindAnyWidget("SlottingPhases").SetOpacity(0);
 		FrameWidget.Cast(m_wRoot.FindAnyWidget("AdvanceFrame")).SetOpacity(0);
 		
-		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
+		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			gameButton.SetEnabled(true);
 		
 		SCR_ButtonTextComponent.Cast(gameButton.FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(InitilizePlayer);

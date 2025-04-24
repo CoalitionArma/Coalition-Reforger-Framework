@@ -55,7 +55,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (!GetGame().InPlayMode() || !CRF_Gamemode.GetInstance())
 			return;
 
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME && CRF_Gamemode.GetInstance().EnableAIInGameState && owner.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && CRF_Gamemode.GetInstance().EnableAIInGameState && owner.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
 			m_bIsPlayable = false;
 
 		GetGame().GetCallqueue().CallLater(SetInitTime, 5000, false);
@@ -104,7 +104,7 @@ class CRF_PlayableCharacter : ScriptComponent
 
 		if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).GetLocalControlledEntity() == owner)
 		{
-			if (playerControllerComp.m_eCamera && CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME)
+			if (playerControllerComp.m_eCamera && CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
 			{
 				vector mat[4];
 				playerControllerComp.m_eCamera.GetTransform(mat);

@@ -21,6 +21,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	int m_iFPS = -1;
 	int m_iAudioSetting = -1;
 	private vector m_vStoredCameraPos[4];
+	Widget m_wSavedHintWidget;
 
 	//------------------------------------------------------------------------------------------------
 
@@ -118,7 +119,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 
 		CRF_RplToAuthorityManager.GetInstance().CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
 		
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME)
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
 		
 		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
@@ -235,12 +236,12 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		//Opens menu based on current game state : )
 		switch (CRF_Gamemode.GetInstance().m_GamemodeState)
 		{
-			case CRF_GamemodeState.INITIAL: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);		break; }
-			case CRF_GamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);	break; }
-			case CRF_GamemodeState.GAME: 		{InitilizePlayer();														break; }
-			case CRF_GamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);		break; }
+			case CRF_EGamemodeState.INITIAL: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);		break; }
+			case CRF_EGamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);	break; }
+			case CRF_EGamemodeState.GAME: 		{InitilizePlayer();														break; }
+			case CRF_EGamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);		break; }
 		}
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
+		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
 			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
 			if (m_iFPS == -1)
@@ -271,7 +272,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 				GetGame().GetMenuManager().CloseMenu(topMenu);
 
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
+		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
 			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
 			

@@ -79,7 +79,7 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	// Polls for game start, then configures safestart based on gamemode settings
 	void WaitTillGameStart()
 	{
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
+		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 
 		m_bSafeStartEnabled = !CRF_Gamemode.GetInstance().m_bSafestartInstantlyEnabled;

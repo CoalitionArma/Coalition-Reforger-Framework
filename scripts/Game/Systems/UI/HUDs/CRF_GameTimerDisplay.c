@@ -100,7 +100,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 			m_wTicketOneBackground.SetVisible(true);
 		}
 		
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_GamemodeState.GAME && !CRF_SafestartManager.GetInstance().GetSafestartStatus())
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && !CRF_SafestartManager.GetInstance().GetSafestartStatus())
 		{
 			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 				if (!factionManager)

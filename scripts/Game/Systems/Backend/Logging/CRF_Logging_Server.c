@@ -94,17 +94,17 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 		
 		switch (CRF_Gamemode.GetInstance().m_GamemodeState)
 		{
-			case CRF_GamemodeState.SLOTTING:
+			case CRF_EGamemodeState.SLOTTING:
 			{
 				m_handle.WriteLine("mission" + SEPARATOR + "slotting" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;
 			}
-			case CRF_GamemodeState.GAME:
+			case CRF_EGamemodeState.GAME:
 			{
 				m_handle.WriteLine("mission" + SEPARATOR + "safestart" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;
 			}
-			case CRF_GamemodeState.AAR:
+			case CRF_EGamemodeState.AAR:
 			{
 				m_handle.WriteLine("mission" + SEPARATOR + "ended" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;

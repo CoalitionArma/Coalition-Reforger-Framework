@@ -60,7 +60,7 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		// Create widget for this item
 		// The layout can be provided either as argument or through attribute
 		ResourceName selectedLayout;
-		if(SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) && CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.AAR)
+		if(SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) && CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.AAR)
 			selectedLayout = "{9B0771FD74AAEB4B}UI/Listbox/PlayerSlotListboxElement.layout";
 		else
 			selectedLayout = "{64B8BF7DEE93A755}UI/Listbox/PlayerSlotListboxElementNonAdmin.layout";
@@ -219,7 +219,7 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		// Create widget for this item
 		// The layout can be provided either as argument or through attribute
 		ResourceName selectedLayout;
-		if(SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) && CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.AAR)
+		if(SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) && CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.AAR)
 			selectedLayout = "{80FE0FE1E3146535}UI/Listbox/GroupListBoxElement.layout";
 		else
 			selectedLayout = "{A078BC05E0FF79C5}UI/Listbox/GroupListBoxElementNonAdmin.layout";

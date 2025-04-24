@@ -92,10 +92,10 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		advanceButton.SetEnabled(false);
 		FrameWidget.Cast(m_wRoot.FindAnyWidget("AdvanceFrame")).SetOpacity(0);
 		
-		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.SLOTTING)
+		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.SLOTTING)
 			slottingButton.SetEnabled(true);
 		
-		if(m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
+		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
 			slottingButton.SetEnabled(true);
 			gameButton.SetEnabled(true);
