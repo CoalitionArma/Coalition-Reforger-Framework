@@ -1,6 +1,6 @@
-class CRF_RplBroadcastManagerClass : SCR_BaseGameModeComponentClass {}
+class CRF_RplBroadcastManagerClass : ScriptComponentClass {}
 
-class CRF_RplBroadcastManager : SCR_BaseGameModeComponent
+class CRF_RplBroadcastManager : ScriptComponent
 {
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()

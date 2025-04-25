@@ -31,20 +31,6 @@ modded class SCR_AIGroup
 			if(gamemode && agent && playableChar && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.EnableAIInGameState && playableChar.IsPlayable())
 				m_bIsPlayable = false;
 		};
-		
-		#ifdef WORKBENCH
-		if (m_bIsPlayable)
-			GetGame().GetCallqueue().CallLater(SaveAIGRoup, 500, false);
-		#else
-		if (RplSession.Mode() == RplMode.Dedicated && m_bIsPlayable)
-			GetGame().GetCallqueue().CallLater(SaveAIGRoup, 500, false);
-		#endif
-	}
-	
-	//Saves the group on the server
-	void SaveAIGRoup()
-	{
-		CRF_Gamemode.GetInstance().AddGroup(this);
 	}
 	
 	override void OnEmpty()

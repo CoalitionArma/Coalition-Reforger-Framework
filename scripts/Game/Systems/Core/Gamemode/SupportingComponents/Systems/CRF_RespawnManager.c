@@ -1,6 +1,6 @@
-class CRF_RespawnManagerClass : SCR_BaseGameModeComponentClass {}
+class CRF_RespawnManagerClass : ScriptComponentClass {}
 
-class CRF_RespawnManager : SCR_BaseGameModeComponent
+class CRF_RespawnManager : ScriptComponent
 {
 	[RplProp(onRplName: "WaveRespawnTimer")]
 	int m_iRespawnWaveCurrentTime;

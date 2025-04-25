@@ -1,6 +1,6 @@
-class CRF_GearscriptManagerClass : SCR_BaseGameModeComponentClass {}
+class CRF_GearscriptManagerClass : ScriptComponentClass {}
 
-class CRF_GearscriptManager : SCR_BaseGameModeComponent
+class CRF_GearscriptManager : ScriptComponent
 {
 	protected ref RandomGenerator m_RNG = new RandomGenerator();
 	
@@ -64,27 +64,6 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override void OnControllableSpawned(IEntity entity)
-	{
-		super.OnControllableSpawned(entity);
-		
-		// Early return conditions
-		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client || entity == null || entity.GetPrefabData() == null)
-			return;
-		
-		// Calculate random delay
-		int randInt = m_RNG.RandInt(500, 5000);
-		
-		if (m_Gamemode.m_GamemodeState == CRF_GamemodeState.GAME)
-		{
-			randInt = m_RNG.RandInt(250, 500);
-		}
-		
-		// Schedule gear setup with delay
-		GetGame().GetCallqueue().CallLater(SetupAddGearToEntity, randInt, false, entity, entity.GetPrefabData().GetPrefabName());
-	}
-
-	//------------------------------------------------------------------------------------------------
 	void SetupAddGearToEntity(IEntity entity, ResourceName resourceNameToScan)
 	{
 		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
@@ -141,7 +120,7 @@ class CRF_GearscriptManager : SCR_BaseGameModeComponent
 		}
 
 		// ADD CLOTHING/WEAPONS/ITEMS
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(100, 250), false, entity, role, gearScriptResourceName, gearScriptSettings, inventory, inventoryManager);
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(250, 500), false, entity, role, gearScriptResourceName, gearScriptSettings, inventory, inventoryManager);
 	}
 
 	//------------------------------------------------------------------------------------------------

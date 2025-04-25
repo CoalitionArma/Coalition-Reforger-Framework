@@ -1,6 +1,6 @@
-class CRF_MenuManagerClass : SCR_BaseGameModeComponentClass {}
+class CRF_MenuManagerClass : ScriptComponentClass {}
 
-class CRF_MenuManager : SCR_BaseGameModeComponent
+class CRF_MenuManager : ScriptComponent
 {	
 	[RplProp()]
 	ref array<string> m_aVONChannels = {"Deafen|", "Global|"};

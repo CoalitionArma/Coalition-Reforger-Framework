@@ -1,6 +1,6 @@
-class CRF_RplToAuthorityManagerClass : SCR_BaseGameModeComponentClass {}
+class CRF_RplToAuthorityManagerClass : ScriptComponentClass {}
 
-class CRF_RplToAuthorityManager : SCR_BaseGameModeComponent
+class CRF_RplToAuthorityManager : ScriptComponent
 {	
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
