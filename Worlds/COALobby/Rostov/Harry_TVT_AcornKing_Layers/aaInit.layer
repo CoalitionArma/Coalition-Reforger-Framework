@@ -183,7 +183,7 @@ SCR_BaseTriggerEntity bluforRespawnTrigger {
  "			tickets = Math.Ceil(bluforCount * 0.5);"\
  "			CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
  "			gm.m_iBLUFORTickets = tickets;"\
- "			GetGame().GetCallqueue().RemoveByName(safeStartCheck);"\
+ "			GetGame().GetCallqueue().Remove(safeStartCheck);"\
  "		}"\
  "	}"
  EOnInit ""\
