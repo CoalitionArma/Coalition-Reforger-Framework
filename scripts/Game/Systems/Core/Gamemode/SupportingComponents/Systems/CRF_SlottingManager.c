@@ -389,11 +389,11 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 		{
 			ref CRF_SlotData data = GetSlotData(slotId);
 			
-			if(!data || !data.m_iSlotCurrentCharacter || !data.m_iSlotCurrentCharacter.IsValid() || !Replication.FindItem(data.m_iSlotCurrentCharacter))
-				return;
-		
-			SCR_EntityHelper.DeleteEntityAndChildren(SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity()));
-			UpdateSlotCharacter(slotId, RplId.Invalid())
+			if(data && data.m_iSlotCurrentCharacter && data.m_iSlotCurrentCharacter.IsValid() && Replication.FindItem(data.m_iSlotCurrentCharacter))
+			{
+				SCR_EntityHelper.DeleteEntityAndChildren(SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity()));
+				UpdateSlotCharacter(slotId, RplId.Invalid());
+			};
 		}
 	
 		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
