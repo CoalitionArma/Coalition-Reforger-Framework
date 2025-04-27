@@ -250,7 +250,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			playerControllerComp.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 		}
 		
-		map<int, CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		foreach(int slotId, CRF_SlotData slotData : tempMap)
 		{	
@@ -677,7 +677,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void InitSlots()
 	{
-		map<int, CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		foreach (int slotId, CRF_SlotData slotData : tempMap)
 		{
@@ -799,8 +799,10 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			TextWidget.Cast(m_wRoot.FindAnyWidget("CIVRatio")).SetText(m_iAliveCivSlots.ToString() + "/" + m_iCivSlots.ToString());
 		}
 		
-		map<int, CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> groups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
+		map<int, ref CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		
+		array<SCR_AIGroup> groups = {};
+		SCR_GroupsManagerComponent.GetInstance().GetAllPlayableGroups(groups);
 		
 		foreach(SCR_AIGroup group : groups)
 		{	
@@ -818,7 +820,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			m_wPlayerSlots.GetCRFElementComponent(groupIndex).GetGroupUnderline().SetColor(group.GetFaction().GetFactionColor());
 			m_wPlayerSlots.GetCRFElementComponent(groupIndex).GetGroupIcon().Update(SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent)).GetMilitarySymbol());
 			
-			foreach(int slotId, CRF_SlotData slotData : tempMap)
+			foreach(int slotId, ref CRF_SlotData slotData : tempMap)
 			{	
 				if (slotData.m_iSlotCurrentGroup != RplComponent.Cast(group.FindComponent(RplComponent)).Id() 
 					|| slotData.m_SlotUIData.m_bIsLockedSlot 

@@ -141,6 +141,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
+		CRF_SlottingManager.GetInstance().SlottingChangesUpdate();
 		Replication.BumpMe();
 	}
 
@@ -214,10 +215,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 				// Put them in death screen/timer screen
 				GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().SendRespawnScreen, (delay + 150), false, playerId);
-			} else
+			} else {
 				CRF_SlottingManager.GetInstance().UpdateSlotDeathState(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), true);
-		} else
+				CRF_SlottingManager.GetInstance().UpdateSlotCharacter(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), RplId.Invalid())
+			};
+		} else {
 			CRF_SlottingManager.GetInstance().UpdateSlotDeathState(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), true);
+			CRF_SlottingManager.GetInstance().UpdateSlotCharacter(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), RplId.Invalid())
+		};
 
 		//Throw em into spectator
 		GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().EnterSpectator, delay, false, playerId, entity);

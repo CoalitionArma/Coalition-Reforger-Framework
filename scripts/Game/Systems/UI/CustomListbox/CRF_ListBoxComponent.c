@@ -78,14 +78,14 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 			comp.SetPlayerText("CLOSED");
 		else if(m_Gamemode.m_SlottingState == 0)
 			{
-				if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.REGULAR)
+				if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC)
 					comp.SetPlayerText("CLOSED");
 				else
 					comp.SetPlayerText("OPEN");
 			}		
 		else if(m_Gamemode.m_SlottingState == 1)
 		{
-			if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.REGULAR && CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.SPECIALTY)
+			if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC && CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.SPECIALTY)
 				comp.SetPlayerText("CLOSED");
 			else
 				comp.SetPlayerText("OPEN");

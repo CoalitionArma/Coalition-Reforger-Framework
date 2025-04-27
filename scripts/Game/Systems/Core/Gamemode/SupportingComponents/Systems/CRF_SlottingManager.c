@@ -7,7 +7,9 @@ enum CRF_ESlotType
 
 class CRF_SlotData
 {
-	vector m_vSlotVector[4];
+	vector m_vSlotVector;
+	
+	vector m_vSlotYawPitchRoll;
 	
 	ResourceName m_rSlotResource;
 	
@@ -15,9 +17,9 @@ class CRF_SlotData
 	
 	FactionKey m_SlotFactionKey;
 	
-	RplId m_iSlotCurrentGroup;
+	RplId m_iSlotCurrentGroup = RplId.Invalid();
 	
-	RplId m_iSlotCurrentCharacter;
+	RplId m_iSlotCurrentCharacter = RplId.Invalid();
 	
 	ref CRF_SlotUIData m_SlotUIData;
 	
@@ -26,6 +28,8 @@ class CRF_SlotData
 	*/
 	bool RplSave(ScriptBitWriter writer)
 	{
+		writer.WriteVector(m_vSlotVector);
+		writer.WriteVector(m_vSlotYawPitchRoll);
 		writer.WriteResourceName(m_rSlotResource);
 		writer.WriteInt(m_iSlotCurrentPlayerId);
 		writer.WriteString(m_SlotFactionKey);
@@ -41,6 +45,8 @@ class CRF_SlotData
 	*/
     bool RplLoad(ScriptBitReader reader)
 	{
+		reader.ReadVector(m_vSlotVector);
+		reader.ReadVector(m_vSlotYawPitchRoll);
 		reader.ReadResourceName(m_rSlotResource);
 		reader.ReadInt(m_iSlotCurrentPlayerId);
 		reader.ReadString(m_SlotFactionKey);
@@ -56,53 +62,59 @@ class CRF_SlotData
 	//------------------------------------------------------------------------------------------------
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet) 
 	{
-		snapshot.Serialize(packet, 12);
+		snapshot.Serialize(packet, 76);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot) 
 	{
-		return snapshot.Serialize(packet, 12);
+		return snapshot.Serialize(packet, 76);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx) 
 	{		
-		return lhs.CompareSnapshots(rhs, 12);
+		return lhs.CompareSnapshots(rhs, 76);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	static bool PropCompare(CRF_SlotData prop, SSnapSerializerBase snapshot, ScriptCtx ctx) 
 	{
-		return snapshot.Compare(prop.m_rSlotResource, 4)
+		return snapshot.Compare(prop.m_vSlotVector, 8)
+			&& snapshot.Compare(prop.m_vSlotYawPitchRoll, 8)
+			&& snapshot.Compare(prop.m_rSlotResource, 8)
 			&& snapshot.Compare(prop.m_iSlotCurrentPlayerId, 4)
-			&& snapshot.Compare(prop.m_SlotFactionKey, 4)
+			&& snapshot.Compare(prop.m_SlotFactionKey, 8)
 			&& snapshot.Compare(prop.m_iSlotCurrentGroup, 4)
 			&& snapshot.Compare(prop.m_iSlotCurrentCharacter, 4)
-			&& snapshot.Compare(prop.m_SlotUIData, 24);
+			&& snapshot.Compare(prop.m_SlotUIData, 32);
 	}
 			
 	//------------------------------------------------------------------------------------------------
 	static bool Extract(CRF_SlotData prop, ScriptCtx ctx, SSnapSerializerBase snapshot) 
 	{
-		snapshot.SerializeBytes(prop.m_rSlotResource, 4);
+		snapshot.SerializeBytes(prop.m_vSlotVector, 8);
+		snapshot.SerializeBytes(prop.m_vSlotYawPitchRoll, 8);
+		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
-		snapshot.SerializeBytes(prop.m_SlotFactionKey, 4);
+		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
-		snapshot.SerializeBytes(prop.m_SlotUIData, 24);
+		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
 		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotData prop) 
 	{
-		snapshot.SerializeBytes(prop.m_rSlotResource, 4);
+		snapshot.SerializeBytes(prop.m_vSlotVector, 8);
+		snapshot.SerializeBytes(prop.m_vSlotYawPitchRoll, 8);
+		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
-		snapshot.SerializeBytes(prop.m_SlotFactionKey, 4);
+		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
-		snapshot.SerializeBytes(prop.m_SlotUIData, 8);
+		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
 		return true;
 	}
 }
@@ -127,7 +139,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	
 	// INT in this map works on a "ID" based system where a ID is generated for every slot that is created in the AddSlot function bellow.
 	// CRF_SlotData is then stored in this map for further use by the relevant systems or to be updated later when applicable.
-	protected ref map<int, CRF_SlotData> m_mSlotsMap = new map<int, CRF_SlotData>;
+	protected ref map<int, ref CRF_SlotData> m_mSlotsMap = new map<int, ref CRF_SlotData>;
 	
 	// Cannot replicate maps, so we use this array to replicate all map keys (in correllation with the map data array bellow).
 	// Is also a really easy way to update clients the slots map has changed.
@@ -136,7 +148,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	
 	// Cannot replicate maps, so we use this array to replicate all map data (in correllation with the map key array above).
 	[RplProp()]
-	protected ref array<CRF_SlotData> m_aSlotsData = {}; 
+	protected ref array<ref CRF_SlotData> m_aSlotsData = {}; 
 	
 	// Latest Slot ID that was used to create a slot
 	protected int m_iLatestSlotID;
@@ -169,13 +181,13 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	{
 		// Create a temp array so we arent broadcasting for each change to m_aPlayerArray.
 		protected ref array<int> tempSlotsKey = {};
-		protected ref array<CRF_SlotData> tempSlotsData = {};
+		protected ref array<ref CRF_SlotData> tempSlotsData = {};
 
 		// Fill tempSlotsKey/tempSlotsData with all keys and values in m_mSlotsMap.
 		for (int i = 0; i < m_mSlotsMap.Count(); i++)
 		{
 			int key = m_mSlotsMap.GetKey(i);
-			CRF_SlotData value = m_mSlotsMap.Get(key);
+			ref CRF_SlotData value = m_mSlotsMap.Get(key);
 			
 			tempSlotsKey.Insert(key);
 			tempSlotsData.Insert(value);
@@ -185,11 +197,16 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 		m_aSlotsKey = tempSlotsKey;
 		m_aSlotsData = tempSlotsData;
 		Replication.BumpMe();
+		
+		UpdateClientSlotsMap()
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void UpdateClientSlotsMap()
 	{
+		if(RplSession.Mode() == RplMode.Dedicated)
+			return;
+		
 		if(m_OnSlottingUpdate)
 			m_OnSlottingUpdate.Invoke();
 		
@@ -198,13 +215,13 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	CRF_SlotData GetSlotData(int slotId)
+	ref CRF_SlotData GetSlotData(int slotId)
 	{
 		return m_mSlotsMap.Get(slotId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	map<int,CRF_SlotData> GetSlotMap()
+	map<int, ref CRF_SlotData> GetSlotMap()
 	{
 		return m_mSlotsMap;
 	}
@@ -214,7 +231,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	{
 		array<int> tempArray = {};
 		
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentGroup == rplId)
 				tempArray.Insert(slotID);
@@ -224,9 +241,9 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	CRF_SlotData GetSlotDataFromCharacter(RplId rplId)
+	ref CRF_SlotData GetSlotDataFromCharacter(RplId rplId)
 	{
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentCharacter == rplId)
 				return slotData;
@@ -238,7 +255,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	int GetPlayerSlotID(int playerId)
 	{
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentPlayerId == playerId)
 				return slotID;
@@ -248,9 +265,9 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	CRF_SlotData GetPlayerSlotData(int playerId)
+	ref CRF_SlotData GetPlayerSlotData(int playerId)
 	{
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentPlayerId == playerId)
 				return slotData;
@@ -262,13 +279,23 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	SCR_AIGroup GetPlayerSlotGroup(int playerId)
 	{
-		return SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(GetPlayerSlotData(playerId).m_iSlotCurrentGroup)).GetEntity());
+		ref CRF_SlotData data = GetPlayerSlotData(playerId);
+		
+		if(!data || !data.m_iSlotCurrentGroup || !data.m_iSlotCurrentGroup.IsValid() || !Replication.FindItem(data.m_iSlotCurrentGroup))
+			return null;
+		
+		return SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentGroup)).GetEntity());
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	IEntity GetPlayerSlotCharacter(int playerId)
+	SCR_ChimeraCharacter GetPlayerSlotCharacter(int playerId)
 	{
-		return IEntity.Cast(RplComponent.Cast(Replication.FindItem(GetPlayerSlotData(playerId).m_iSlotCurrentCharacter)).GetEntity());
+		ref CRF_SlotData data = GetPlayerSlotData(playerId);
+		
+		if(!data || !data.m_iSlotCurrentCharacter || !data.m_iSlotCurrentCharacter.IsValid() || !Replication.FindItem(data.m_iSlotCurrentCharacter))
+			return null;
+		
+		return SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -284,9 +311,15 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void GetPlayerSlotVector(int playerId, out vector vec[])
+	vector GetPlayerSlotVector(int playerId)
 	{
-		vec = GetPlayerSlotData(playerId).m_vSlotVector;
+		return GetPlayerSlotData(playerId).m_vSlotVector;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	vector GetPlayerSlotYawPitchRoll(int playerId)
+	{
+		return GetPlayerSlotData(playerId).m_vSlotYawPitchRoll;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -294,7 +327,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	{
 		RplId rplId = RplComponent.Cast(entity.FindComponent(RplComponent)).Id();
 		
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentCharacter == rplId)
 				return slotID;
@@ -306,7 +339,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	bool IsPlayerInASlot(int playerId)
 	{
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentPlayerId == playerId)
 				return true;
@@ -318,10 +351,10 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	bool IsPlayerConsideredDead(int playerId)
 	{
-		CRF_SlotData slotData = GetPlayerSlotData(playerId);
+		ref CRF_SlotData slotData = GetPlayerSlotData(playerId);
 		if(slotData)
 		{
-			CRF_SlotUIData slotUiData = slotData.m_SlotUIData;
+			ref CRF_SlotUIData slotUiData = slotData.m_SlotUIData;
 			return slotUiData.m_bIsDeadSlot;
 		} else
 			return null;
@@ -330,9 +363,10 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotLockedState(int slotId, bool input)
 	{
-		CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
-		CRF_SlotUIData slotUIData = slotData.m_SlotUIData;
+		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
+		ref CRF_SlotUIData slotUIData = slotData.m_SlotUIData;
 		slotUIData.m_bIsLockedSlot = input;
+		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -340,9 +374,10 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotDeathState(int slotId, bool input)
 	{
-		CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
-		CRF_SlotUIData slotUIData = slotData.m_SlotUIData;
+		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
+		ref CRF_SlotUIData slotUIData = slotData.m_SlotUIData;
 		slotUIData.m_bIsDeadSlot = input;
+		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -350,8 +385,20 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotPlayerID(int slotId, int playerId)
 	{
-		CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
+		if(playerId <= 0)
+		{
+			ref CRF_SlotData data = GetSlotData(slotId);
+			
+			if(!data || !data.m_iSlotCurrentCharacter || !data.m_iSlotCurrentCharacter.IsValid() || !Replication.FindItem(data.m_iSlotCurrentCharacter))
+				return;
+		
+			SCR_EntityHelper.DeleteEntityAndChildren(SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity()));
+			UpdateSlotCharacter(slotId, RplId.Invalid())
+		}
+	
+		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_iSlotCurrentPlayerId = playerId;
+		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -359,7 +406,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotGroup(int slotId, RplId groupId)
 	{
-		CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
+		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_iSlotCurrentGroup = groupId;
 		m_mSlotsMap.Set(slotId, slotData);
 		
@@ -369,8 +416,9 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotResource(int slotId, ResourceName resource)
 	{
-		CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
+		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_rSlotResource = resource;
+		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -378,8 +426,9 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotCharacter(int slotId, RplId charId)
 	{
-		CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
+		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_iSlotCurrentCharacter = charId;
+		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -387,7 +436,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void LockAllOpenSlots()
 	{
-		foreach (int slotID, CRF_SlotData slotData : m_mSlotsMap)
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentPlayerId != 0)
 				continue;
@@ -412,7 +461,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 		SCR_EditableCharacterComponent editableCharComp = SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent));
 		SCR_AIGroup group = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(entity.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
 		
-		CRF_SlotData slotData = new CRF_SlotData;
+		ref CRF_SlotData slotData = new CRF_SlotData;
 		
 		if(group)
 		{
@@ -421,11 +470,12 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 		} else 
 			slotData.m_SlotFactionKey = SCR_FactionAffiliationComponent.Cast(entity.FindComponent(SCR_FactionAffiliationComponent)).GetAffiliatedFactionKey();
 		
-		entity.GetWorldTransform(slotData.m_vSlotVector);
+		slotData.m_vSlotVector = entity.GetOrigin();
+		slotData.m_vSlotYawPitchRoll = entity.GetYawPitchRoll();
 		slotData.m_rSlotResource = entity.GetPrefabData().GetPrefabName();
 		slotData.m_iSlotCurrentCharacter = RplComponent.Cast(entity.FindComponent(RplComponent)).Id();
 		
-		CRF_SlotUIData slotUIData = new CRF_SlotUIData;
+		ref CRF_SlotUIData slotUIData = new CRF_SlotUIData;
 		
 		if (!playableCharComp.GetName().IsEmpty())
 			slotUIData.m_sSlotName = playableCharComp.GetName();
