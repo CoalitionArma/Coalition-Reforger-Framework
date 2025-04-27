@@ -8,9 +8,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplToAuthorityManager GetInstance()
 	{
-		// Get gamemode so we can pull component
 		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode && RplSession.Mode() != RplMode.Dedicated) // CANNOT SEND UP TO THE AUTHORITY IF WE ARE THE AUTHORITY
+		if (gameMode)
 			return CRF_RplToAuthorityManager.Cast(gameMode.FindComponent(CRF_RplToAuthorityManager));
 		else
 			return null;
@@ -67,15 +66,45 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetSlot(int index, int playerId)
+	void UpdateSlotPlayerID(int slotId, int playerId)
 	{
-		Rpc(RpcAsk_SetSlot, index, playerId); 
+		Rpc(RpcAsk_UpdateSlotPlayerID, slotId, playerId); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SetGroupLocked(int index, bool input)
+	void UpdateSlotLockedState(int slotId, bool input)
 	{
-		Rpc(RpcAsk_SetGroupLocked, index, input); 
+		Rpc(RpcAsk_UpdateSlotLockedState, slotId, input); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateGroupLockedState(RplId groupRplId, bool input)
+	{
+		Rpc(RpcAsk_UpdateGroupLockedState, groupRplId, input); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotDeathState(int slotId, bool input)
+	{
+		Rpc(RpcAsk_UpdateSlotDeathState, slotId, input); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotGroup(int slotId, RplId groupRplId)
+	{
+		Rpc(RpcAsk_UpdateSlotGroup, slotId, groupRplId); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotResource(int slotId, ResourceName resource)
+	{
+		Rpc(RpcAsk_UpdateSlotResource, slotId, resource); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotCharacter(int slotId, RplId charId)
+	{
+		Rpc(RpcAsk_UpdateSlotCharacter, slotId, charId); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -180,7 +209,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestInitilizePlayer(int playerId)
 	{
-		m_Gamemode.GetInstance().InitilizePlayer(playerId);
+		m_GamemodeManager.GetInstance().InitilizePlayer(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -216,17 +245,52 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	//Communicates to server to set slot
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SetSlot(int index, int playerId)
+	protected void RpcAsk_UpdateSlotPlayerID(int slotId, int playerId)
 	{
-		m_Gamemode.SetSlot(index, playerId);
+		CRF_SlottingManager.GetInstance().UpdateSlotPlayerID(slotId, playerId);
 	}
-
-	//Communicates to server to set group locked
+	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SetGroupLocked(int index, bool input)
+	protected void RpcAsk_UpdateSlotLockedState(int slotId, bool input)
 	{
-		m_Gamemode.SetGroupLockedStatus(index, input);
+		CRF_SlottingManager.GetInstance().UpdateSlotLockedState(slotId, input);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_UpdateGroupLockedState(RplId groupRplId, bool input)
+	{
+		SCR_AIGroup group = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupRplId)).GetEntity());
+		group.SetPrivate(input);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateSlotDeathState(int slotId, bool input)
+	{
+		CRF_SlottingManager.GetInstance().UpdateSlotDeathState(slotId, input); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateSlotGroup(int slotId, RplId groupRplId)
+	{
+		CRF_SlottingManager.GetInstance().UpdateSlotGroup(slotId, groupRplId); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateSlotResource(int slotId, ResourceName resource)
+	{
+		CRF_SlottingManager.GetInstance().UpdateSlotResource(slotId, resource); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateSlotCharacter(int slotId, RplId charId)
+	{
+		CRF_SlottingManager.GetInstance().UpdateSlotCharacter(slotId, charId); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -296,11 +360,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestGroupIdFromServer(int requestedId, int requesterID)
 	{
-		if (m_Gamemode.m_aSlots.Find(requestedId) == -1)
+		if (CRF_SlottingManager.GetInstance().IsPlayerInASlot(requestedId))
 			return;
 
-		RplId groupID = m_Gamemode.m_aActivePlayerGroupsIDs.Get(m_Gamemode.m_aGroupRplIDs.Find(m_Gamemode.m_aPlayerGroupIDs.Get(m_Gamemode.m_aSlots.Find(requestedId))));
-		SCR_AIGroup playerGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(groupID)).GetEntity());
+		SCR_AIGroup playerGroup = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(requestedId);
 		if (playerGroup)
 			CRF_RplBroadcastManager.GetInstance().SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
 	}

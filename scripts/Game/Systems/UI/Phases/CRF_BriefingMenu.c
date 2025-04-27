@@ -109,7 +109,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	void InitilizePlayer()
 	{
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
-		CRF_PlayerControllerComponent.GetInstance().InitilizePlayer();
+		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
 	}
 	
 	void OpenSlottingMenu()

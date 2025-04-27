@@ -6,12 +6,12 @@ class CRF_PlayableCharacter : ScriptComponent
 {
 	[Attribute()]
 	protected string m_sName;
+	
 	[Attribute("0")]
 	protected bool m_bIsPlayable;
-	[Attribute()]
-	protected bool m_bIsLeaderOrMedic;
-	[Attribute()]
-	protected bool m_bIsSpecialty;
+	
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_ESlotType))]
+	protected CRF_ESlotType m_SlottingRole;
 
 	protected bool m_bIsSpectator = false;
 	protected bool m_bIsHidden = false;
@@ -30,15 +30,9 @@ class CRF_PlayableCharacter : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	bool IsLeader()
+	CRF_ESlotType GetSlottingRole()
 	{
-		return m_bIsLeaderOrMedic;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	bool IsSpecialty()
-	{
-		return m_bIsSpecialty;
+		return m_SlottingRole;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -55,7 +49,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (!GetGame().InPlayMode() || !CRF_Gamemode.GetInstance())
 			return;
 
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && CRF_Gamemode.GetInstance().EnableAIInGameState && owner.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && CRF_Gamemode.GetInstance().EnableAIInGameState && !CRF_GamemodeManager.IsSpectator(owner))
 			m_bIsPlayable = false;
 
 		GetGame().GetCallqueue().CallLater(SetInitTime, 5000, false);
@@ -66,7 +60,7 @@ class CRF_PlayableCharacter : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DisableAI, 0, false, owner);
 		}
 
-		if (owner.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (CRF_GamemodeManager.IsSpectator(owner))
 		{
 			m_bIsSpectator = true;
 			SetEventMask(owner, EntityEvent.FRAME);
@@ -84,21 +78,12 @@ class CRF_PlayableCharacter : ScriptComponent
 			return;
 		};
 
-		#ifdef WORKBENCH
-		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && m_bInitTime)
+		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && RplSession.Mode() != RplMode.Client && m_bInitTime)
 		{
 			ClearEventMask(owner, EntityEvent.FRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 			return;
 		};
-		#else
-		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && RplSession.Mode() == RplMode.Dedicated && m_bInitTime)
-		{
-			ClearEventMask(owner, EntityEvent.FRAME);
-			SCR_EntityHelper.DeleteEntityAndChildren(owner);
-			return;
-		};
-		#endif
 		
 		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
 
@@ -108,6 +93,8 @@ class CRF_PlayableCharacter : ScriptComponent
 			{
 				vector mat[4];
 				playerControllerComp.m_eCamera.GetTransform(mat);
+				mat[1] = vector.Up;
+				mat[2] = vector.Forward;
 				mat[3][1] = mat[3][1] - 1.5;
 				playerControllerComp.UpdateEntityPos(mat);
 				playerControllerComp.UpdateStoredCameraPos(mat);
@@ -148,23 +135,17 @@ class CRF_PlayableCharacter : ScriptComponent
 		if (AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent())
 			AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent().DeactivateAI();
 	}
-
+	
 	//------------------------------------------------------------------------------------------------
 	void SetInitialEntity(IEntity owner)
 	{
 		//Logs entity on server and disables AI
-		#ifdef WORKBENCH
-		SCR_AIGroup playableGroup = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(owner.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
-		if (playableGroup)
-			CRF_Gamemode.GetInstance().AddPlayableEntity(owner);
-		#else
-		if (RplSession.Mode() == RplMode.Dedicated)
+		if (RplSession.Mode() != RplMode.Client)
 		{
 			SCR_AIGroup playableGroup = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(owner.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
 			if (playableGroup)
-				CRF_Gamemode.GetInstance().AddPlayableEntity(owner);
+				CRF_SlottingManager.GetInstance().AddPlayableEntity(owner);
 		}
-		#endif
 
 		//Sets location and all the physics BS on all machines
 		if (m_bIsSpectator)

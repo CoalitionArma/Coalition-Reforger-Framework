@@ -243,7 +243,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	void AddRoles(SCR_ListBoxComponent list)
 	{
 		array<string> roleNames = {};
-		SCR_Enum.GetEnumNames(EGearRole, roleNames);
+		SCR_Enum.GetEnumNames(CRF_EGearRole, roleNames);
 		foreach (string role : roleNames)
 		{
 			list.AddItem(role);
@@ -345,7 +345,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
-			if (m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if (m_groupManagerComponent.GetPlayerGroup(playerId) && !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
 				m_list1.AddItem(string.Format("%1", name));
 			}
@@ -466,7 +466,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		{
 			int playerId = GetplayerIdFromName(name);
 
-			if (SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC" || GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if (SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey() == "SPEC" || CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
 				m_list1.AddItem(string.Format("%1", name));
 			}
@@ -596,7 +596,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
-			if (m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if (m_groupManagerComponent.GetPlayerGroup(playerId) && !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
 				m_list1.AddItem(string.Format("%1", name));
 				m_list2.AddItem(string.Format("%1", name));
@@ -681,7 +681,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
-			if (m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if (m_groupManagerComponent.GetPlayerGroup(playerId) && !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
 				m_list1.AddItem(string.Format("%1", name));
 			}
@@ -760,7 +760,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
-			if (m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if (m_groupManagerComponent.GetPlayerGroup(playerId) && !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				m_list1.AddItem(string.Format("%1", name));
 		}
 	}
@@ -827,7 +827,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
-			if (m_groupManagerComponent.GetPlayerGroup(playerId) && GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if (m_groupManagerComponent.GetPlayerGroup(playerId) && !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
 				list.AddItem(string.Format("%1", name));
 			}

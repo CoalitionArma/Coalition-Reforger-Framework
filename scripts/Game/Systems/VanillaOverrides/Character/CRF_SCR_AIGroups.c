@@ -30,6 +30,8 @@ modded class SCR_AIGroup
 			
 			if(gamemode && agent && playableChar && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.EnableAIInGameState && playableChar.IsPlayable())
 				m_bIsPlayable = false;
+			else
+				SCR_GroupsManagerComponent.GetInstance().ConvertIntoPlayableGroup(this);
 		};
 	}
 	

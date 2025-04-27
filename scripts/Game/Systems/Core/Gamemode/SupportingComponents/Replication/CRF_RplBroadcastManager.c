@@ -5,10 +5,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
 	{
-		// Get gamemode so we can pull component
 		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode && Replication.IsServer()) // CANNOT BROADCAST IF WE ARE NOT ON THE AUTHORITY
-			return CRF_RplBroadcastManager.Cast(gameMode.FindComponent(CRF_RplBroadcastManager)); 
+		if (gameMode)
+			return CRF_RplBroadcastManager.Cast(gameMode.FindComponent(CRF_RplBroadcastManager));
 		else
 			return null;
 	}

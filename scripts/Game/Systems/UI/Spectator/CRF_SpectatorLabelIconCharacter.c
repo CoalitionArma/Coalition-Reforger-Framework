@@ -52,7 +52,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 			m_wSpectatorLabelIconCircleSmall.SetColor(faction.GetFactionColor());
 		}
 		
-		if(m_EditableCharacterComponent.GetOwner().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if(CRF_GamemodeManager.IsSpectator(m_EditableCharacterComponent.GetOwner()))
 		{
 			m_fMaxIconSize = 20;
 			m_fMinIconOpacity = 1;
@@ -73,9 +73,11 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 	{
 		if(m_eEntity.FindComponent(RplComponent))
 		{
+			CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter((RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id()));
+			
 			int playerId = 0;
-			if(m_Gamemode.m_aEntitySlots.Find(RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id()) != -1)
-				playerId = m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id()));
+			if(slotData)
+				playerId = slotData.m_iSlotCurrentPlayerId;
 			if (playerId > 0)
 			{
 				string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
@@ -83,10 +85,10 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 					m_wSpectatorLabelText.SetText(playerName);
 			} else 
 			{
-				if (m_Gamemode.m_aEntitySlots.Find(RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id()) != -1)
-					m_wSpectatorLabelText.SetText(m_Gamemode.m_aSlotNames.Get(m_Gamemode.m_aEntitySlots.Find(RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id())));
+				if (slotData)
+					m_wSpectatorLabelText.SetText(slotData.m_SlotUIData.m_sSlotName);
 				else 
-					m_wSpectatorLabelText.SetText(m_Gamemode.m_aCharacterNames.Get(m_Gamemode.m_aCharacters.Find(RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id())));
+					m_wSpectatorLabelText.SetText("");
 			}
 		}
 		

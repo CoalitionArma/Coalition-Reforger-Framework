@@ -1,4 +1,4 @@
-enum EClothingType
+enum CRF_EClothingType
 {
 	HEADGEAR = 0,
 	SHIRT,

@@ -362,7 +362,6 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 
 			UpdatePlayedFactions();
 
-			DeleteEmptySlots();
 			m_bKillRedundantUnitsBool = true;
 			m_bAdminForcedReady = false;
 			m_bBluforReady = false;
@@ -449,39 +448,6 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 		};
 
 		Replication.BumpMe();
-	};
-
-	// Why are these two methods done this way? It should just be one wtf
-	//------------------------------------------------------------------------------------------------
-	void DeleteEmptySlots()
-	{
-		if (CRF_Gamemode.GetInstance().m_bDeleteJIPSlots)
-			if (m_bSafeStartEnabled)
-				GetGame().GetCallqueue().CallLater(DeleteEmptySlotsSlowly, 125, true);
-	};
-
-	//------------------------------------------------------------------------------------------------
-	void DeleteEmptySlotsSlowly()
-	{
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (!gamemode || !gamemode.m_bDeleteJIPSlots || gamemode.m_bRespawnEnabled)
-		{
-			GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
-			return;
-		}
-
-		// Process one empty slot per call to avoid performance spikes
-		for (int i = 0; i < gamemode.m_aEntitySlots.Count(); i++)
-		{
-			if (gamemode.m_aSlots.Get(i) == 0 || gamemode.m_aSlots.Get(i) == -1)
-			{
-				gamemode.RemovePlayableEntity(gamemode.m_aEntitySlots.Get(i));
-				return; // Exit after processing one slot
-			}
-		}
-
-		// If we reach here, no empty slots were found - stop the repeated calls
-		GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
 	};
 
 	// Called from server to all clients

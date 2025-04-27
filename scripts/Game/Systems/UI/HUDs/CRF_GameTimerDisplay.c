@@ -80,7 +80,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	//------------------------------------------------------------------------------------------------
 	void UpdateTimer()
 	{	
-		if (!m_SafestartManager || !m_wTimer || !m_wBackground || !m_MapEntity || !SCR_PlayerController.GetLocalControlledEntity() || SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et") return;
+		if (!m_SafestartManager || !m_wTimer || !m_wBackground || !m_MapEntity || !SCR_PlayerController.GetLocalControlledEntity() || CRF_GamemodeManager.IsSpectator()) return;
 		
 		if(!CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
 		{

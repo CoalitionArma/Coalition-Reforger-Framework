@@ -22,7 +22,7 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_
   CRF_PlayableCharacter "{62F200EA748008B9}" {
    m_sName "Vehicle Gunner"
    m_bIsPlayable 1
-   m_bIsSpecialty 1
+   m_SlottingRole SPECIALTY
   }
   CharacterWeaponManagerComponent "{5C9CA676383262FD}" {
    DefaultWeaponIndex 0

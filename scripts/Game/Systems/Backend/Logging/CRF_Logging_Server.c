@@ -28,13 +28,20 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	private ref FileHandle m_handle;
 	SCR_FactionManager m_FM;
 	
-	static CRF_LoggingServerComponent GetInstance() 
+	// Instance of this component (this method only works if you KNOW there will only ever be one instance of this component) 
+	protected static CRF_LoggingServerComponent s_Instance;
+	
+	//------------------------------------------------------------------------------------------------
+	void CRF_LoggingServerComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_LoggingServerComponent.Cast(gameMode.FindComponent(CRF_LoggingServerComponent));
-		else
-			return null;
+		if (!s_Instance)
+			s_Instance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_LoggingServerComponent GetInstance()
+	{
+		return s_Instance;
 	}
 	
 	FileHandle ReturnFileHandle()

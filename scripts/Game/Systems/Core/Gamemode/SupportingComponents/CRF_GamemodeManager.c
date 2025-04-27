@@ -2,81 +2,84 @@ class CRF_GamemodeManagerClass : SCR_BaseGameModeComponentClass {}
 
 class CRF_GamemodeManager : SCR_BaseGameModeComponent
 {
+	const static ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
+	
+	// Instance of this component (this method only works if you KNOW there will only ever be one instance of this component) 
+	protected static CRF_GamemodeManager s_Instance;
+	
+	[RplProp()]
+	ref array<int> m_aModerators = {}; 
+	
+	//------------------------------------------------------------------------------------------------
+	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		if (!s_Instance)
+			s_Instance = this;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	static CRF_GamemodeManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_GamemodeManager.Cast(gameMode.FindComponent(CRF_GamemodeManager));
-		else
-			return null;
+		return s_Instance;
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	static bool IsSpectator(IEntity entity)
+	{
+		return entity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	override void OnControllableSpawned(IEntity entity)
+	static bool IsSpectator()
 	{
-		super.OnControllableSpawned(entity);
-		
-		// Early return conditions
-		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData())
-			// Schedule gear setup with delay
-			GetGame().GetCallqueue().CallLater(CRF_GearscriptManager.GetInstance().SetupAddGearToEntity, 250, false, entity, entity.GetPrefabData().GetPrefabName());
-		
-		GetGame().GetCallqueue().CallLater(LogCharacter, 500, false, entity);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void LogCharacter(IEntity entity)
-	{
-		if (RplSession.Mode() != RplMode.Client)
-		{
-			if (!SCR_ChimeraCharacter.Cast(entity))
-				return;
-			m_aCharacters.Insert(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
-			if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)))
-			{
-				if (CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName())
-					m_aCharacterNames.Insert(CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter)).GetName());
-				else
-					m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
-			}
-			else
-				m_aCharacterNames.Insert(SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent)).GetDisplayName());
-			Replication.BumpMe();
-		}
+		if (SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+			return true;
+		else if(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+			return true;
+		else
+			return false;
 	}
 
 	//Called to enter the actual game, just puts the player into a slot or spectator.
 	//------------------------------------------------------------------------------------------------
-	void InitilizePlayer(int playerId)
+	void InitilizePlayer(int playerId, vector overrideLocation = vector.Zero)
 	{
-		if (m_aSlots.Find(playerId) == -1 
-			|| GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" 
-			|| m_aEntityDeathStatus.Get(m_aSlots.Find(playerId))) {
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		
+		if (!slottingManager.IsPlayerInASlot(playerId)
+			|| !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId))
+			|| slottingManager.IsPlayerConsideredDead(playerId)) {
 				EnterSpectator(playerId);
 				return;
 		}
-
-		// WHAT THE FUCK IS THISSSSSSSSSSSSSSS
-		RplId oldGroup = RplId.Invalid();
-		if (GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
-			oldGroup = m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aEntitySlots.Find(RplComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).FindComponent(RplComponent)).Id()))));
-
-		SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId)).SetInitialMainEntity(RplComponent.Cast(Replication.FindItem(m_aEntitySlots.Get(m_aSlots.Find(playerId)))).GetEntity());
-
-		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetFaction());
-
-		int groupId = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))).GetEntity()).GetGroupID();
-
-		if (oldGroup != RplId.Invalid())
+		
+		IEntity playerCharacter = slottingManager.GetPlayerSlotCharacter(playerId);
+		
+		if (!playerCharacter)
 		{
-			if (oldGroup != m_aActivePlayerGroupsIDs.Get(m_aGroupRplIDs.Find(m_aPlayerGroupIDs.Get(m_aSlots.Find(playerId)))))
-			{
-				SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
-				SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
-			}
-		} else {
+			EntitySpawnParams spawnParams = new EntitySpawnParams();
+			spawnParams.TransformMode = ETransformMode.WORLD;
+			
+			if(overrideLocation != vector.Zero)
+				spawnParams.Transform[3] = overrideLocation;
+			else
+				slottingManager.GetPlayerSlotVector(playerId, spawnParams.Transform);
+			
+			playerCharacter = GetGame().SpawnEntityPrefab(Resource.Load(slottingManager.GetPlayerSlotResource(playerId)), GetGame().GetWorld(), spawnParams);
+		
+			slottingManager.UpdateSlotCharacter(slottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id())
+		};
+			
+		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+
+		playerController.SetInitialMainEntity(playerCharacter);
+
+		SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(slottingManager.GetPlayerSlotFaction(playerId));
+
+		int groupId = slottingManager.GetPlayerSlotGroup(playerId).GetGroupID();
+
+		if (groupId != -1)
+		{
 			SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
 			SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 		}
@@ -97,41 +100,25 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			currentGroup.RemovePlayer(playerId);
 		
 		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(initialEntity.FindComponent(SCR_CharacterDamageManagerComponent)); 
-		if(damManager)
+		if (damManager)
 			damManager.EnableDamageHandling(false);
 		
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 
 		vector cameraPos[4];
-		if (m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
-			if (m_aSlots.Find(playerId) != -1 && entity != null)
+			if (CRF_SlottingManager.GetInstance().IsPlayerInASlot(playerId) && entity != null)
 			{
 				entity.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
 			} else
-				cameraPos[3] = m_vGenericSpawn[3];
+				cameraPos[3] = CRF_Gamemode.GetInstance().m_vGenericSpawn[3];
 		} else
 			cameraPos[3] = "0 10000 0";
 
 		CRF_RplBroadcastManager.GetInstance().SendSpecClientInit(playerId, cameraPos);
 	}
-
-	//------------------------------------------------------------------------------------------------
-	// Moderator Functions/Variables
-	//------------------------------------------------------------------------------------------------
-	override void OnPlayerAuditSuccess(int playerId)
-	{
-		if (RplSession.Mode() == RplMode.Client)
-			return;
-		
-		CRF_Gamemode.GetInstance().InitilizePlayer(playerId);
-		
-		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
-		
-		if (!playerIdentity.IsEmpty() && CRF_ModeratorConfig.IsModerator(playerIdentity))
-			GetGame().GetCallqueue().CallLater(SetPlayerModerator, 5000, false, playerId);
-	};
 	
 	//------------------------------------------------------------------------------------------------
 	void SetPlayerModerator(int playerId)
@@ -139,6 +126,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!Replication.IsServer())
 			return;
 		
-		//GetGame().GetPlayerManager().GivePlayerRole(playerId, EPlayerRole.COALITION_MODERATOR);
+		m_aModerators.Insert(playerId);
+		Replication.BumpMe();
 	};
 }

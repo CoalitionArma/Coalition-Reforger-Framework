@@ -2,7 +2,7 @@ modded class LM_SuppressionScreenEffect
 {
 	override private float GetSuppressionAmount()
 	{
-		if (m_pPlayerController && m_pPlayerController.GetLocalMainEntity() && m_pPlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (m_pPlayerController && m_pPlayerController.GetLocalMainEntity() && !CRF_GamemodeManager.IsSpectator(m_pPlayerController.GetLocalMainEntity()))
 		{
 			return m_pPlayerController.GetSuppressionAmount();
 		}
@@ -11,7 +11,7 @@ modded class LM_SuppressionScreenEffect
 	
 	override private void OnSuppressionFlinch()
 	{
-		if (m_pPlayerController && m_pPlayerController.GetLocalMainEntity() && m_pPlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (m_pPlayerController && m_pPlayerController.GetLocalMainEntity() && !CRF_GamemodeManager.IsSpectator(m_pPlayerController.GetLocalMainEntity()))
 		{
 			FlinchEffect();
 		}

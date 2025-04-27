@@ -96,7 +96,7 @@ class CRF_LoggingServerComponent: CRF_GamemodeManager
 				m_handle.WriteLine("mission" + SEPARATOR + "slotting" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;
 			}
-			case CRF_EGamemodeState.INITIAL:
+			case CRF_EGamemodeState.BRIEFING:
 			{
 				m_handle.WriteLine("mission" + SEPARATOR + "briefing" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
 				break;

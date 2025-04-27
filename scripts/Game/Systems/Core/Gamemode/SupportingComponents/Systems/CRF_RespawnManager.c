@@ -197,39 +197,21 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnSide(string faction)
+	void RespawnSide(FactionKey faction)
 	{
 		array<int> allPlayers = {};
 		GetGame().GetPlayerManager().GetAllPlayers(allPlayers);
 
 		foreach (int player : allPlayers)
 		{
-			if (!m_Gamemode.m_aSlots.Contains(player))
+			if (!CRF_SlottingManager.GetInstance().IsPlayerInASlot(player))
 				continue;
 
-			// Find player's group through the chain of lookups
-			int slotIndex = m_Gamemode.m_aSlots.Find(player);
-			int playerGroupID = m_Gamemode.m_aPlayerGroupIDs.Get(slotIndex);
-			int groupRplIndex = m_Gamemode.m_aGroupRplIDs.Find(playerGroupID);
-			RplId groupID = m_Gamemode.m_aActivePlayerGroupsIDs.Get(groupRplIndex);
-
-			// Get player group entity
-			RplComponent groupComponent = RplComponent.Cast(Replication.FindItem(groupID));
-			SCR_AIGroup playerGroup = SCR_AIGroup.Cast(groupComponent.GetEntity());
-
-			// Find AI group associated with player
-			RplComponent playerGroupComponent = RplComponent.Cast(playerGroup.FindComponent(RplComponent));
-			int activeGroupIndex = m_Gamemode.m_aActivePlayerGroupsIDs.Find(playerGroupComponent.Id());
-			RplId aiGroupId = m_Gamemode.m_aGroupRplIDs.Get(activeGroupIndex);
-
-			RplComponent aiGroupComponent = RplComponent.Cast(Replication.FindItem(aiGroupId));
-			SCR_AIGroup aiGroup = SCR_AIGroup.Cast(aiGroupComponent.GetEntity());
-
 			// Get player's faction
-			string playerFactionKey = aiGroup.GetFaction().GetFactionKey();
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player);
 
 			// Make sure the player is still in that faction
-			if (playerFactionKey != faction)
+			if (playerFaction.GetFactionKey() != faction)
 				continue;
 
 			// If tickets are enabled by MM
@@ -262,71 +244,8 @@ class CRF_RespawnManager : ScriptComponent
 		string factionKey = playerFaction.GetFactionKey();
 		if (factionKey != "SPEC")
 			return;
-
-		// Initialize variables
-		string respawnPrefab = "";
-		SCR_AIGroup group = null;
-
-		// Determine player's group
-		if (groupID == -1)
-		{
-			int slotIndex = m_Gamemode.m_aSlots.Find(playerId);
-			int playerGroupID = m_Gamemode.m_aPlayerGroupIDs.Get(slotIndex);
-			int groupRplIndex = m_Gamemode.m_aGroupRplIDs.Find(playerGroupID);
-			RplId groupRPLID = m_Gamemode.m_aActivePlayerGroupsIDs.Get(groupRplIndex);
-
-			RplComponent groupComponent = RplComponent.Cast(Replication.FindItem(groupRPLID));
-			if (groupComponent != null)
-			{
-				group = SCR_AIGroup.Cast(groupComponent.GetEntity());
-			}
-		}
-		else
-		{
-			SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
-			if (groupsManager != null)
-			{
-				group = groupsManager.FindGroup(groupID);
-			}
-		}
-
-		if (group == null)
-			return;
-
-		// Get faction from group
-		SCR_Faction groupFaction = SCR_Faction.Cast(group.GetFaction());
-		if (groupFaction == null)
-			return;
-
-		string faction = groupFaction.GetFactionKey();
-
-		// Set respawn prefab based on faction
-		if (respawnPrefab == "")
-		{
-			switch (faction)
-			{
-				case "BLUFOR":
-				{
-					respawnPrefab = "{6F99DE8453E6B423}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Rifleman_P.et";
-					break;
-				}
-				case "OPFOR":
-				{
-					respawnPrefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et";
-					break;
-				}
-				case "INDFOR":
-				{
-					respawnPrefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et";
-					break;
-				}
-				case "CIV":
-				{
-					respawnPrefab = "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et";
-					break;
-				}
-			}
-		}
+		
+		vector finalSpawnLocation = vector.Zero;
 
 		// Find spawn location if not provided
 		if (spawnLocation == vector.Zero)
@@ -340,7 +259,7 @@ class CRF_RespawnManager : ScriptComponent
 				if (respawnComponent == null)
 					continue;
 
-				if (respawnComponent.m_sRespawnPointFaction != faction)
+				if (respawnComponent.m_sRespawnPointFaction != playerFaction.GetFactionKey())
 					continue;
 
 				if (!respawnComponent.m_bActiveRespawnPoint)
@@ -354,80 +273,17 @@ class CRF_RespawnManager : ScriptComponent
 		// If no spawn location found, enter spectator mode
 		if (spawnLocation == vector.Zero)
 		{
-			m_Gamemode.EnterSpectator(playerId);
-		}
-
-		// Respawn the player
-		RespawnPlayerRplId(playerId, respawnPrefab, spawnLocation, group);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Should only ever be ran on the server
-	void RespawnPlayerRplId(int playerId, string prefab, vector position, SCR_AIGroup group)
-	{
-		// Return if we are on client
-		if (RplSession.Mode() == RplMode.Client)
+			CRF_GamemodeManager.GetInstance().EnterSpectator(playerId);
 			return;
-
-		// Create spawn parameters
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
-		vector finalSpawnLocation = vector.Zero;
+		}
 
 		// Find a valid spawn position
-		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, position, 10);
-		spawnParams.Transform[3] = finalSpawnLocation;
-
-		// Load resource and spawn entity
-		Resource prefabResource = Resource.Load(prefab);
-		World gameWorld = GetGame().GetWorld();
-		IEntity newEntity = GetGame().SpawnEntityPrefab(prefabResource, gameWorld, spawnParams);
-
-		// Schedule delayed processing
-		GetGame().GetCallqueue().CallLater(RespawnPlayerRplIdDelay, 100, false, playerId, group, newEntity);
+		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, spawnLocation, 10);
+		
+		// Respawn the player
+		CRF_GamemodeManager.GetInstance().InitilizePlayer(playerId, finalSpawnLocation);
 	}
-
-	//------------------------------------------------------------------------------------------------
-	void RespawnPlayerRplIdDelay(int playerId, SCR_AIGroup group, IEntity newEntity)
-	{
-		// Get the RplComponent from the group
-		RplComponent groupRplComponent = RplComponent.Cast(group.FindComponent(RplComponent));
-
-		// Get the group ID
-		RplId groupId = groupRplComponent.Id();
-
-		// Find the index in the active player groups IDs
-		int activeGroupIndex = m_Gamemode.m_aActivePlayerGroupsIDs.Find(groupId);
-
-		// Get the group Rpl ID
-		RplId groupRplId = m_Gamemode.m_aGroupRplIDs.Get(activeGroupIndex);
-
-		// Find the Rpl component using the ID
-		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(groupRplId));
-
-		// Get the AI group
-		SCR_AIGroup aiGroup = SCR_AIGroup.Cast(rplComponent.GetEntity());
-
-		// Add the new entity to the group
-		aiGroup.AddAIEntityToGroup(newEntity);
-
-		// Add the entity to playable entities and get its index
-		int index = m_Gamemode.AddPlayableEntity(newEntity);
-
-		// Clear the player's previous slot if they had one
-		int playerSlotIndex = m_Gamemode.m_aSlots.Find(playerId);
-		if (playerSlotIndex != -1)
-		{
-			m_Gamemode.SetSlot(playerSlotIndex, -2);
-		}
-
-		// Assign the player to the new slot
-		m_Gamemode.SetSlot(index, playerId);
-
-		// Initialize the player
-		CRF_RplBroadcastManager.GetInstance().InitilizePlayer(playerId);
-	}
-
+	
 	//------------------------------------------------------------------------------------------------
 	void OnPlayerJoinedGroup(SCR_AIGroup aiGroup, int playerId)
 	{

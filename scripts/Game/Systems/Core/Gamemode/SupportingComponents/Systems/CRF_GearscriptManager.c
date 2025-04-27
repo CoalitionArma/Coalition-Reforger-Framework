@@ -86,6 +86,9 @@ class CRF_GearscriptManager : ScriptComponent
 				factionKey = "CIV"; 
 				break;
 		}
+		
+		if(factionKey.IsEmpty())
+			return;
 
 		ResourceName gearScriptResourceName = GetGearScriptResource(factionKey);
 		CRF_GearScriptContainer gearScriptSettings = GetGearScriptSettings(factionKey);
@@ -120,7 +123,7 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 
 		// ADD CLOTHING/WEAPONS/ITEMS
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(250, 500), false, entity, role, gearScriptResourceName, gearScriptSettings, inventory, inventoryManager);
+		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(125, 250), false, entity, role, gearScriptResourceName, gearScriptSettings, inventory, inventoryManager);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -295,13 +298,13 @@ class CRF_GearscriptManager : ScriptComponent
 
 				switch (role)
 				{
-					case EGearRole.ASSISTANT_AUTOMATIC_RIFLEMAN	: {if(!gearConfig.m_FactionWeapons.m_AR 	|| !gearConfig.m_FactionWeapons.m_AR.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_AR.m_MagazineArray; 	break;}
-					case EGearRole.ASSISTANT_MEDIUM_MACHINEGUN		: {if(!gearConfig.m_FactionWeapons.m_MMG 	|| !gearConfig.m_FactionWeapons.m_MMG.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray; 	break;}
-					case EGearRole.ASSISTANT_HEAVY_MACHINEGUN 		: {if(!gearConfig.m_FactionWeapons.m_HMG 	|| !gearConfig.m_FactionWeapons.m_HMG.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray; 	break;}
-					case EGearRole.ASSISTANT_MEDIUM_ANTITANK 		: {if(!gearConfig.m_FactionWeapons.m_MAT 	|| !gearConfig.m_FactionWeapons.m_MAT.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray;	break;}
-					case EGearRole.ASSISTANT_HEAVY_ANTITANK 		: {if(!gearConfig.m_FactionWeapons.m_HAT 	|| !gearConfig.m_FactionWeapons.m_HAT.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray; 	break;}
-					case EGearRole.ASSISTANT_ANTI_AIR 			: {if(!gearConfig.m_FactionWeapons.m_AA 	|| !gearConfig.m_FactionWeapons.m_AA.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_AA.m_MagazineArray; 	break;}
-					case EGearRole.ASSISTANT_RIFLEMAN_ANTITANK 	: {if(!gearConfig.m_FactionWeapons.m_AT 	|| !gearConfig.m_FactionWeapons.m_AT.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_AT.m_MagazineArray; 	break;}
+					case CRF_EGearRole.ASSISTANT_AUTOMATIC_RIFLEMAN	: {if(!gearConfig.m_FactionWeapons.m_AR 	|| !gearConfig.m_FactionWeapons.m_AR.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_AR.m_MagazineArray; 	break;}
+					case CRF_EGearRole.ASSISTANT_MEDIUM_MACHINEGUN		: {if(!gearConfig.m_FactionWeapons.m_MMG 	|| !gearConfig.m_FactionWeapons.m_MMG.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray; 	break;}
+					case CRF_EGearRole.ASSISTANT_HEAVY_MACHINEGUN 		: {if(!gearConfig.m_FactionWeapons.m_HMG 	|| !gearConfig.m_FactionWeapons.m_HMG.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray; 	break;}
+					case CRF_EGearRole.ASSISTANT_MEDIUM_ANTITANK 		: {if(!gearConfig.m_FactionWeapons.m_MAT 	|| !gearConfig.m_FactionWeapons.m_MAT.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray;	break;}
+					case CRF_EGearRole.ASSISTANT_HEAVY_ANTITANK 		: {if(!gearConfig.m_FactionWeapons.m_HAT 	|| !gearConfig.m_FactionWeapons.m_HAT.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray; 	break;}
+					case CRF_EGearRole.ASSISTANT_ANTI_AIR 			: {if(!gearConfig.m_FactionWeapons.m_AA 	|| !gearConfig.m_FactionWeapons.m_AA.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_AA.m_MagazineArray; 	break;}
+					case CRF_EGearRole.ASSISTANT_RIFLEMAN_ANTITANK 	: {if(!gearConfig.m_FactionWeapons.m_AT 	|| !gearConfig.m_FactionWeapons.m_AT.m_Weapon) 	{return;};  magazineArray = gearConfig.m_FactionWeapons.m_AT.m_MagazineArray; 	break;}
 				}
 
 				foreach (ref CRF_Spec_Magazine_Class magazine : magazineArray)
@@ -642,54 +645,54 @@ class CRF_GearscriptManager : ScriptComponent
 		// Any magazine
 		if (MagazineComponent.Cast(item.FindComponent(MagazineComponent)) || InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)))
 			clothingIDs = {
-				EClothingType.VEST, 
-				EClothingType.ARMOREDVEST, 
-				EClothingType.BACKPACK, 
-				EClothingType.PANTS, 
-				EClothingType.SHIRT
+				CRF_EClothingType.VEST, 
+				CRF_EClothingType.ARMOREDVEST, 
+				CRF_EClothingType.BACKPACK, 
+				CRF_EClothingType.PANTS, 
+				CRF_EClothingType.SHIRT
 			};
 		else // Any Non-magazine
 			clothingIDs = {
-				EClothingType.SHIRT, 
-				EClothingType.PANTS, 
-				EClothingType.VEST, 
-				EClothingType.ARMOREDVEST, 
-				EClothingType.BACKPACK
+				CRF_EClothingType.SHIRT, 
+				CRF_EClothingType.PANTS, 
+				CRF_EClothingType.VEST, 
+				CRF_EClothingType.ARMOREDVEST, 
+				CRF_EClothingType.BACKPACK
 			};
 
 		// Any medical item
 		if (m_EquipmentConfig.m_aRolesThatGetMedicalItems.Contains(role) && SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent)))
 			clothingIDs = {
-				EClothingType.BACKPACK, 
-				EClothingType.VEST, 
-				EClothingType.ARMOREDVEST
+				CRF_EClothingType.BACKPACK, 
+				CRF_EClothingType.VEST, 
+				CRF_EClothingType.ARMOREDVEST
 			};
 
 		// Any pistol ammo
 		if ((InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO) || isThrowable)
 			clothingIDs = {
-				EClothingType.PANTS, 
-				EClothingType.VEST, 
-				EClothingType.ARMOREDVEST, 
-				EClothingType.BACKPACK
+				CRF_EClothingType.PANTS, 
+				CRF_EClothingType.VEST, 
+				CRF_EClothingType.ARMOREDVEST, 
+				CRF_EClothingType.BACKPACK
 			};
 
 		// Any radio
 		if (BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent)))
 			clothingIDs = {
-				EClothingType.PANTS, 
-				EClothingType.SHIRT, 
-				EClothingType.VEST, 
-				EClothingType.ARMOREDVEST, 
-				EClothingType.BACKPACK
+				CRF_EClothingType.PANTS, 
+				CRF_EClothingType.SHIRT, 
+				CRF_EClothingType.VEST, 
+				CRF_EClothingType.ARMOREDVEST, 
+				CRF_EClothingType.BACKPACK
 			};
 
 		// Any Assistant Mags
 		if (isAssistant && MagazineComponent.Cast(item.FindComponent(MagazineComponent)))
 			clothingIDs = {
-				EClothingType.BACKPACK,
-				EClothingType.VEST, 
-				EClothingType.ARMOREDVEST
+				CRF_EClothingType.BACKPACK,
+				CRF_EClothingType.VEST, 
+				CRF_EClothingType.ARMOREDVEST
 		};
 
 		// Check if item is explosives related
@@ -700,9 +703,9 @@ class CRF_GearscriptManager : ScriptComponent
 		SCR_HealSupportStationComponent medTool = SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
 		if (detonator || explosives || mine || engTool || medTool)
 			clothingIDs = {
-				EClothingType.BACKPACK, 
-				EClothingType.VEST, 
-				EClothingType.ARMOREDVEST
+				CRF_EClothingType.BACKPACK, 
+				CRF_EClothingType.VEST, 
+				CRF_EClothingType.ARMOREDVEST
 		};
 
 		return clothingIDs;

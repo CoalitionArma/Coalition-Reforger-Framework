@@ -65,13 +65,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		if (m_eCamera)
 			delete m_eCamera; 
 
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_AARMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_RespawnMenu);
-		
-		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+		GetGame().GetMenuManager().CloseAllMenus();
 		
 		ResetSettingsToStoredValues();
 
@@ -111,8 +105,6 @@ class CRF_PlayerControllerComponent : ScriptComponent
 
 		if (!m_eCamera)
 			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
-		
-		Print(m_eCamera);
 		
 		vector mat = m_eCamera.GetAngles();
 		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
@@ -181,7 +173,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	{
 		// Get player's radio
 		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
-		if (!entity || entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (!entity || CRF_GamemodeManager.IsSpectator(entity))
 			return;
 		array<IEntity> items = {};
 		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
@@ -236,10 +228,10 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		//Opens menu based on current game state : )
 		switch (CRF_Gamemode.GetInstance().m_GamemodeState)
 		{
-			case CRF_EGamemodeState.INITIAL: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);		break; }
-			case CRF_EGamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);	break; }
-			case CRF_EGamemodeState.GAME: 		{InitilizePlayer();														break; }
-			case CRF_EGamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);		break; }
+			case CRF_EGamemodeState.BRIEFING: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);									break; }
+			case CRF_EGamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);									break; }
+			case CRF_EGamemodeState.GAME: 		{CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());	break; }
+			case CRF_EGamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);										break; }
 		}
 		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 		{

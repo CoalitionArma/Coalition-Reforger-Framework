@@ -57,64 +57,64 @@ class CRF_GearScriptConfig
 [BaseContainerProps(configRoot: true)]
 class CRF_GearScriptWeaponsConfig
 {		
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetRifles;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetRifles;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetRifleUGLs;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetRifleUGLs;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetCarbines;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetCarbines;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetPistols;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetPistols;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetARs;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetARs;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetMMGs;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetMMGs;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetHMGs;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetHMGs;
 
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetAT;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetAT;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetMAT;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetMAT;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetHAT;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetHAT;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetAA;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetAA;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetSnipers;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetSnipers;
 }
 
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(configRoot: true)]
 class CRF_GearScriptEquipmentConfig
 {		
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetLeadershipRadios;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetLeadershipRadios;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetRTORadios;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetRTORadios;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetLeadershipBinos;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetLeadershipBinos;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetAssistantBinos;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetAssistantBinos;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetAssistantMags;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetAssistantMags;
 
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	ref array<EGearRole> m_aRolesThatGetMedicalItems;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	ref array<CRF_EGearRole> m_aRolesThatGetMedicalItems;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -256,11 +256,11 @@ class CRF_Default_Gear
 // CLOTHING
 //------------------------------------------------------------------------------------------------
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(EClothingType, "m_iClothingType")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(CRF_EClothingType, "m_iClothingType")]
 class CRF_Clothing
 {
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EClothingType))]
-	EClothingType m_iClothingType;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EClothingType))]
+	CRF_EClothingType m_iClothingType;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_ClothingPrefabs;
@@ -278,11 +278,11 @@ class CRF_Custom_Gear
 }
 
 //------------------------------------------------------------------------------------------------
-[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(EGearRole, "m_Role")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(CRF_EGearRole, "m_Role")]
 class CRF_Role_Custom_Gear
 {	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(EGearRole))]
-	EGearRole m_Role;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	CRF_EGearRole m_Role;
 	
 	[Attribute()]
 	ref array<ref CRF_Weapon_Class> m_PrimaryWeapon;

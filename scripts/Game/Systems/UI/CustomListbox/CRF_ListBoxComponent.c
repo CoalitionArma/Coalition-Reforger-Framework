@@ -1,16 +1,16 @@
 class CRF_ListboxComponent: SCR_ListBoxComponent
 {
 	CRF_Gamemode m_Gamemode;	
-	int AddItemSpecSlot(Managed data = null, RplId entityID = RplId.Invalid())
+	int AddItemSpecSlot(Managed data = null, int slotId = -1)
 	{	
 		CRF_ListBoxElementComponent comp;
 		
-		int id = _AddItemSpecSlot(data, comp, entityID);
+		int id = _AddItemSpecSlot(data, comp, slotId);
 		
 		return id;
 	}
 	
-	protected int _AddItemSpecSlot(Managed data, out CRF_ListBoxElementComponent compOut, RplId entityID = RplId.Invalid())
+	protected int _AddItemSpecSlot(Managed data, out CRF_ListBoxElementComponent compOut, int slotId = -1)
 	{
 		Widget newWidget = GetGame().GetWorkspace().CreateWidgets("{2FCF236EEB073259}UI/Listbox/SpecPlayerSlotListboxElementNonAdmin.layout", m_wList);
 		
@@ -19,9 +19,9 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		
 		comp.SetToggleable(true);
 		comp.SetData(data);
-		comp.SetRoleImage(m_Gamemode.m_aSlotIcons.Get(m_Gamemode.m_aEntitySlots.Find(entityID)), "roleimage");
-		comp.SetRoleColor(SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_Gamemode.m_aPlayerGroupIDs.Get(m_Gamemode.m_aEntitySlots.Find(entityID)))).GetEntity()).GetFaction().GetFactionColor());
-		comp.entityID = entityID;
+		comp.SetRoleImage(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_rSlotIconResource, "roleimage");
+		comp.SetRoleColor(GetGame().GetFactionManager().GetFactionByKey(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotFactionKey).GetFactionColor());
+		comp.m_iSlotId = slotId;
 		
 		// Pushback to internal arrays
 		int id = m_aElementComponents.Insert(comp);
@@ -46,16 +46,16 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		return id;
 	}
 	
-	int AddItemSlot(Managed data = null, RplId entityID = RplId.Invalid(), ResourceName overrideLayout = "")
+	int AddItemSlot(Managed data = null, int slotId = -1, ResourceName overrideLayout = "")
 	{	
 		CRF_ListBoxElementComponent comp;
 		
-		int id = _AddItemSlot(data, comp, entityID, overrideLayout);
+		int id = _AddItemSlot(data, comp, slotId, overrideLayout);
 		
 		return id;
 	}
 	
-	protected int _AddItemSlot(Managed data, out CRF_ListBoxElementComponent compOut, RplId entityID = RplId.Invalid(), ResourceName overrideLayout = "")
+	protected int _AddItemSlot(Managed data, out CRF_ListBoxElementComponent compOut, int slotId = -1, ResourceName overrideLayout = "")
 	{	
 		// Create widget for this item
 		// The layout can be provided either as argument or through attribute
@@ -71,30 +71,30 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(newWidget.FindHandler(CRF_ListBoxElementComponent));
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		
-		comp.SetRoleText(m_Gamemode.m_aSlotNames.Get(m_Gamemode.m_aEntitySlots.Find(entityID)));
+		comp.SetRoleText(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_sSlotName);
 		comp.SetToggleable(true);
 		comp.SetData(data);
-		if(m_Gamemode.m_aSlots.Get(m_Gamemode.m_aEntitySlots.Find(entityID)) == -1)
+		if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_bIsLockedSlot)
 			comp.SetPlayerText("CLOSED");
 		else if(m_Gamemode.m_SlottingState == 0)
 			{
-				if(m_Gamemode.m_aEntitySlotTypes.Get(m_Gamemode.m_aEntitySlots.Find(entityID)) != 0)
+				if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.REGULAR)
 					comp.SetPlayerText("CLOSED");
 				else
 					comp.SetPlayerText("OPEN");
 			}		
 		else if(m_Gamemode.m_SlottingState == 1)
 		{
-			if(m_Gamemode.m_aEntitySlotTypes.Get(m_Gamemode.m_aEntitySlots.Find(entityID)) != 0 && m_Gamemode.m_aEntitySlotTypes.Get(m_Gamemode.m_aEntitySlots.Find(entityID)) != 1)
+			if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.REGULAR && CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.SPECIALTY)
 				comp.SetPlayerText("CLOSED");
 			else
 				comp.SetPlayerText("OPEN");
 		}
 		else
 			comp.SetPlayerText("OPEN");
-		comp.SetRoleImage(m_Gamemode.m_aSlotIcons.Get(m_Gamemode.m_aEntitySlots.Find(entityID)), "roleimage");
-		comp.SetRoleColor(SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(m_Gamemode.m_aPlayerGroupIDs.Get(m_Gamemode.m_aEntitySlots.Find(entityID)))).GetEntity()).GetFaction().GetFactionColor());
-		comp.entityID = entityID;
+		comp.SetRoleImage(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_rSlotIconResource, "roleimage");
+		comp.SetRoleColor(GetGame().GetFactionManager().GetFactionByKey(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotFactionKey).GetFactionColor());
+		comp.m_iSlotId = slotId;
 		
 		// Pushback to internal arrays
 		int id = m_aElementComponents.Insert(comp);

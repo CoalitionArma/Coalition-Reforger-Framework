@@ -4,7 +4,7 @@ class CRF_GamemodeClass : SCR_BaseGameModeClass
 
 enum CRF_EGamemodeState
 {
-	INITIAL,
+	BRIEFING,
 	SLOTTING,
 	GAME,
 	AAR
@@ -36,7 +36,7 @@ class CRF_MissionDescriptor
 class CRF_Gamemode : SCR_BaseGameMode
 {
 	[RplProp(onRplName: "OnGamemodeStateChanged")]
-	int m_GamemodeState = CRF_EGamemodeState.INITIAL;
+	int m_GamemodeState = CRF_EGamemodeState.BRIEFING;
 
 	[RplProp()]
 	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
@@ -135,81 +135,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Dedicated)
 			CRF_ModeratorConfig.LoadConfig();
 	}
-
-	//------------------------------------------------------------------------------------------------
-	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)
-	{
-		super.OnControllableDestroyed(entity, killerEntity, instigator);
-
-		if (RplSession.Mode() == RplMode.Client)
-			return;
-
-		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
-
-		int playerId = instigatorContextData.GetVictimPlayerID();
-		
-		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)
-			return;
-
-		int delay = 2000;
-		if (entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
-			delay = 0;
-
-		// If respawn is enabled
-		if (m_bRespawnEnabled && entity.GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" && m_GamemodeState != CRF_EGamemodeState.AAR)
-		{
-			string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
-
-			if (CRF_RespawnManager.GetInstance().TicketsRemaining(faction))
-			{
-				// Remove tickets if used
-				CRF_RespawnManager.GetInstance().SubtractTicket(faction);
-
-				// Put them in death screen/timer screen
-				GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().SendRespawnScreen, (delay + 150), false, playerId);
-			}
-		}
-
-		//Throw em into spectator
-		GetGame().GetCallqueue().CallLater(EnterSpectator, delay, false, playerId, entity);
-	}
-
-	//Puts the player into an entity when they connect
-	//------------------------------------------------------------------------------------------------
-	override void OnPlayerConnected(int playerId)
-	{
-		super.OnPlayerConnected(playerId);
-
-		if (m_aSlots.Find(playerId) != -1)
-		{
-			CRF_GamemodeManager.GetInstance().SlottingChangesUpdate();
-		}
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
-	{
-		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
-
-		// RespawnSystemComponent is not a SCR_BaseGameModeComponent, so for now we have to
-		// propagate these events manually.
-		if (IsMaster())
-			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
-
-		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
-		//Updates connection status
-		if (m_aSlots.Find(playerId) != -1)
-		{
-			CRF_GamemodeManager.GetInstance().SlottingChangesUpdate();
-		}
-	}
-
+	
 	//Advances the slotting state
 	//------------------------------------------------------------------------------------------------
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
-		m_iSlotChanges++;
 		Replication.BumpMe();
 	}
 
@@ -233,9 +164,105 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		return m_OnStateChanged;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected override void OnControllableSpawned(IEntity entity)
+	{
+		super.OnControllableSpawned(entity);
+		
+		// Early return conditions
+		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData())
+			// Schedule gear setup with delay
+			GetGame().GetCallqueue().CallLater(CRF_GearscriptManager.GetInstance().SetupAddGearToEntity, 1250, false, entity, entity.GetPrefabData().GetPrefabName());
+		
+		if(m_GamemodeState != CRF_EGamemodeState.GAME)
+			entity.GetTransform(m_vGenericSpawn)
+	}
 
 	//------------------------------------------------------------------------------------------------
-	void OnGamemodeStateChanged()
+	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)
+	{
+		super.OnControllableDestroyed(entity, killerEntity, instigator);
+
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+
+		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
+
+		int playerId = instigatorContextData.GetVictimPlayerID();
+		
+		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)
+			return;
+
+		int delay = 2000;
+		if (CRF_GamemodeManager.IsSpectator(entity))
+			delay = 0;
+
+		// If respawn is enabled
+		if (m_bRespawnEnabled && !CRF_GamemodeManager.IsSpectator(entity) && m_GamemodeState != CRF_EGamemodeState.AAR)
+		{
+			string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
+
+			if (CRF_RespawnManager.GetInstance().TicketsRemaining(faction))
+			{
+				// Remove tickets if used
+				CRF_RespawnManager.GetInstance().SubtractTicket(faction);
+
+				// Put them in death screen/timer screen
+				GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().SendRespawnScreen, (delay + 150), false, playerId);
+			} else
+				CRF_SlottingManager.GetInstance().UpdateSlotDeathState(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), true);
+		} else
+			CRF_SlottingManager.GetInstance().UpdateSlotDeathState(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), true);
+
+		//Throw em into spectator
+		GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().EnterSpectator, delay, false, playerId, entity);
+	}
+
+	//Puts the player into an entity when they connect
+	//------------------------------------------------------------------------------------------------
+	protected override void OnPlayerAuditSuccess(int iPlayerID)
+	{
+		super.OnPlayerAuditSuccess(iPlayerID);
+		
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		
+		if(m_GamemodeState == CRF_EGamemodeState.BRIEFING || m_GamemodeState == CRF_EGamemodeState.SLOTTING || m_GamemodeState == CRF_EGamemodeState.AAR)
+			CRF_GamemodeManager.GetInstance().InitilizePlayer(iPlayerID);
+		
+		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
+		
+		if (!playerIdentity.IsEmpty() && CRF_ModeratorConfig.IsModerator(playerIdentity))
+			GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().SetPlayerModerator, 5000, false, iPlayerID);
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
+
+		// RespawnSystemComponent is not a SCR_BaseGameModeComponent, so for now we have to
+		// propagate these events manually.
+		if (IsMaster())
+			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
+
+		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
+		//Updates connection status
+		if (CRF_SlottingManager.GetInstance().IsPlayerInASlot(SCR_PlayerController.GetLocalPlayerId()))
+		{
+			CRF_SlottingManager.GetInstance().SlottingChangesUpdate();
+		}
+	}
+	
+	protected void OnDataReceived(SCR_PlayerData playerData)
+	{
+		m_PlayerData = playerData;
+		m_PlayerData.CalculateStatsChange();
+	}
+
+	//------------------------------------------------------------------------------------------------
+	protected void OnGamemodeStateChanged()
 	{
 		if (RplSession.Mode() == RplMode.Dedicated || RplSession.Mode() == RplMode.Listen)
 		{
@@ -250,7 +277,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void EnterAAR()
+	protected void EnterAAR()
 	{
 		array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
@@ -259,7 +286,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
 
-			if (GetGame().GetPlayerManager().GetPlayerControlledEntity(player).GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(player)))
 				continue;
 
 			HitZone defaultHitZone = SCR_CharacterDamageManagerComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(player).FindComponent(SCR_CharacterDamageManagerComponent)).GetDefaultHitZone();
@@ -290,12 +317,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 					m_PlayerData.CalculateStatsChange();
 			}
 		}
-	}
-
-	protected void OnDataReceived(SCR_PlayerData playerData)
-	{
-		m_PlayerData = playerData;
-		m_PlayerData.CalculateStatsChange();
 	}
 }
 

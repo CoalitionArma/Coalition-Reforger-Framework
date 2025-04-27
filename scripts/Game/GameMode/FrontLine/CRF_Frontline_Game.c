@@ -66,13 +66,20 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 
+	// Instance of this component (this method only works if you KNOW there will only ever be one instance of this component) 
+	protected static CRF_FrontlineGamemodeManager s_Instance;
+	
+	//------------------------------------------------------------------------------------------------
+	void CRF_FrontlineGamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		if (!s_Instance)
+			s_Instance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	static CRF_FrontlineGamemodeManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_FrontlineGamemodeManager.Cast(gameMode.FindComponent(CRF_FrontlineGamemodeManager));
-		else
-			return null;
+		return s_Instance;
 	}
 
 	//------------------------------------------------------------------------------------------------

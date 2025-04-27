@@ -1,7 +1,7 @@
 class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 {
 	SCR_AIGroup group;
-	RplId entityID;
+	int m_iSlotId;
 	bool isGroupLocked;
 	bool m_bIsPlayer = false;
 	int m_iChannelId;

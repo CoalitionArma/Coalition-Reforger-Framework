@@ -11,7 +11,7 @@ modded class SCR_NTTextBase : SCR_NTElementBase
 		if (!tWidget)
 			return;
 
-		if (data.m_Entity && data.m_Entity.GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if (data.m_Entity && CRF_GamemodeManager.IsSpectator(data.m_Entity))
 			tWidget.SetVisible(false);
 	}
 }

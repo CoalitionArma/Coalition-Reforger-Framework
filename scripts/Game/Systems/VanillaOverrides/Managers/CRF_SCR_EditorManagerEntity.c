@@ -9,7 +9,7 @@ modded class SCR_EditorManagerEntity
 			return true;
 		}
 		
-		if ((GetCurrentMode() == EEditorMode.PHOTO) && SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+		if ((GetCurrentMode() == EEditorMode.PHOTO) && CRF_GamemodeManager.IsSpectator())
 		{
 			SetIsLimited(false);
 			return true;
@@ -96,23 +96,23 @@ modded class SCR_EditorManagerEntity
 		if(gamemode)
 			if(SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter))
 			{
-				if(!CRF_PlayableCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter)).IsPlayable() && SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+				if(!CRF_PlayableCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter)).IsPlayable() && !CRF_GamemodeManager.IsSpectator())
 					return;
 			}
-			else if (SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() != "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et")
+			else if (!CRF_GamemodeManager.IsSpectator())
 				return;
 
 		if(SCR_PlayerController.GetLocalControlledEntity() != null)
 		{
 			switch(CRF_Gamemode.GetInstance().m_GamemodeState)
 			{
-				case CRF_EGamemodeState.INITIAL: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);	break;}
+				case CRF_EGamemodeState.BRIEFING: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);	break;}
 				case CRF_EGamemodeState.SLOTTING: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);	break;}
 				case CRF_EGamemodeState.GAME: {
 					if(!SCR_PlayerController.GetLocalMainEntity() || !SCR_PlayerController.GetLocalControlledEntity())
 						return;
 					
-					if(SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() == "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et" && SCR_PlayerController.GetLocalControlledEntity() == SCR_PlayerController.GetLocalMainEntity())
+					if(CRF_GamemodeManager.IsSpectator() && SCR_PlayerController.GetLocalControlledEntity() == SCR_PlayerController.GetLocalMainEntity())
 					{
 						vector mat[4];
 						SCR_PlayerController.GetLocalMainEntity().GetWorldTransform(mat);

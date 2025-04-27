@@ -10,7 +10,7 @@ class CRF_Library : ScriptComponent
 	*/
 	static bool IsModerator(int playerId)
 	{
-		//return GetGame().GetPlayerManager().HasPlayerRole(playerId, EPlayerRole.COALITION_MODERATOR);
+		return CRF_GamemodeManager.GetInstance().m_aModerators.Contains(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -20,8 +20,6 @@ class CRF_Library : ScriptComponent
 	*/
 	static bool IsModerator()
 	{
-		int playerId = GetGame().GetPlayerController().GetPlayerId();
-		//return GetGame().GetPlayerManager().HasPlayerRole(playerId, EPlayerRole.COALITION_MODERATOR);
-		return false;
+		return CRF_GamemodeManager.GetInstance().m_aModerators.Contains(SCR_PlayerController.GetLocalPlayerId());
 	}
 };
