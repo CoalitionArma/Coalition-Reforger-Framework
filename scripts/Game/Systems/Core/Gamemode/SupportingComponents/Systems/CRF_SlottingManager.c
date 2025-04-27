@@ -127,9 +127,9 @@ class CRF_SlotUIData
 	bool m_bIsDeadSlot;
 }
 
-class CRF_SlottingManagerClass : SCR_BaseGameModeComponentClass {}
+class CRF_SlottingManagerClass : ScriptComponentClass {}
 
-class CRF_SlottingManager : SCR_BaseGameModeComponent
+class CRF_SlottingManager : ScriptComponent
 {
 	
 	// INT in this map works on a "ID" based system where a ID is generated for every slot that is created in the AddSlot function bellow.
@@ -421,7 +421,7 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 		
 		SlottingChangesUpdate();
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	void LockAllOpenSlots()
 	{

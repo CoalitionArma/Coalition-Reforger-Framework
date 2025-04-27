@@ -178,8 +178,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateTimer()
 	{	
-		
-		m_wTimerText.SetText(m_SafestartManager.GetServerWorldTime());
+		m_wTimerText.SetText(CRF_GamemodeManager.GetInstance().GetServerWorldTime());
 	}
 
 	//------------------------------------------------------------------------------------------------

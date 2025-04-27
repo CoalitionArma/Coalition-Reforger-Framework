@@ -7,6 +7,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	[RplProp()]
 	ref array<int> m_aModerators = {}; 
 	
+	[RplProp()]
+	protected string m_sServerWorldTime;
+	
 	//------------------------------------------------------------------------------------------------
 	static CRF_GamemodeManager GetInstance()
 	{
@@ -44,9 +47,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
 		if (!slottingManager.IsPlayerInASlot(playerId) 
-			|| (slottingManager.IsPlayerConsideredDead(playerId)
-			&& !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId))
-			&& !slottingManager.GetPlayerSlotCharacter(playerId))) {
+			|| !slottingManager.GetPlayerSlotCharacter(playerId)
+			&& (slottingManager.IsPlayerConsideredDead(playerId)
+			&& !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))) {
 				EnterSpectator(playerId);
 				return;
 		}
@@ -117,6 +120,49 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 
 		CRF_RplBroadcastManager.GetInstance().SendSpecClientInit(playerId, cameraPos);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	string GetServerWorldTime()
+	{
+		return m_sServerWorldTime;
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	void SetServerWorldTime(string input)
+	{
+		m_sServerWorldTime = input;
+		
+		Replication.BumpMe();
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateServerWorldTime()
+	{
+		float currentTime = GetGame().GetWorld().GetWorldTime();
+		float millis = CRF_SafestartManager.GetInstance().m_iTimeSafeStartBegan - currentTime;
+		int totalSeconds = (millis * 0.001);
+
+		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
+
+		Replication.BumpMe();
+	};
+
+	//------------------------------------------------------------------------------------------------
+	void UpdateMissionEndTimer()
+	{
+		float currentTime = GetGame().GetWorld().GetWorldTime();
+		float millis = CRF_SafestartManager.GetInstance().m_iTimeMissionEnds - currentTime;
+		int totalSeconds = (millis * 0.001);
+
+		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
+
+		if (totalSeconds == 0) {
+			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
+			m_sServerWorldTime = "Mission Time Expired!";
+		};
+
+		Replication.BumpMe();
+	};
 	
 	//------------------------------------------------------------------------------------------------
 	void SetPlayerModerator(int playerId)

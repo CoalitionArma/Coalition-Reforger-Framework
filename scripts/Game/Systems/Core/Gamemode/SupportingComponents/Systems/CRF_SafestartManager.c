@@ -1,13 +1,10 @@
-class CRF_SafestartManagerClass : SCR_BaseGameModeComponentClass {}
+class CRF_SafestartManagerClass : ScriptComponentClass {}
 
-class CRF_SafestartManager : SCR_BaseGameModeComponent
+class CRF_SafestartManager : ScriptComponent
 {
 	[RplProp(onRplName: "OnSafeStartChange")]
 	protected bool m_bSafeStartEnabled = false;
 	ref ScriptInvoker m_OnSafeStartChange = new ScriptInvoker();
-
-	[RplProp()]
-	protected string m_sServerWorldTime;
 
 	[RplProp()]
 	protected ref array<string> m_aFactionsStatusArray;
@@ -20,9 +17,9 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	[RplProp()]
 	protected bool m_bKillRedundantUnitsBool;
 
-	protected int m_iTimeSafeStartBegan;
-	protected int m_iTimeMissionEnds;
-	protected int m_iSafeStartTimeRemaining;
+	int m_iTimeSafeStartBegan;
+	int m_iTimeMissionEnds;
+	int m_iSafeStartTimeRemaining;
 
 	protected bool m_bBluforReady = false;
 	protected bool m_bOpforReady = false;
@@ -314,14 +311,6 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	};
 
 	//------------------------------------------------------------------------------------------------
-	// SafeStart functions
-	//------------------------------------------------------------------------------------------------
-	string GetServerWorldTime()
-	{
-		return m_sServerWorldTime;
-	};
-
-	//------------------------------------------------------------------------------------------------
 	bool GetSafestartStatus()
 	{
 		return m_bSafeStartEnabled;
@@ -346,11 +335,11 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 			m_bSafeStartEnabled = true;
 			m_iSafeStartTimeRemaining = 35;
 
-			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
+			GetGame().GetCallqueue().Remove(CRF_GamemodeManager.GetInstance().UpdateMissionEndTimer);
 			GetGame().GetCallqueue().Remove(CheckPlayersAlive);
 
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
-			GetGame().GetCallqueue().CallLater(UpdateServerWorldTime, 1000, true);
+			GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().UpdateServerWorldTime, 1000, true);
 			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 5000, true);
 			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 1000, true);
 
@@ -368,9 +357,11 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 			m_bOpforReady = false;
 			m_bIndforReady = false;
 			m_bCivReady = false;
+			
+			CRF_SlottingManager.GetInstance().LockAllOpenSlots();
 
 			GetGame().GetCallqueue().Remove(CheckStartCountDown);
-			GetGame().GetCallqueue().Remove(UpdateServerWorldTime);
+			GetGame().GetCallqueue().Remove(CRF_GamemodeManager.GetInstance().UpdateServerWorldTime);
 			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
 
@@ -378,9 +369,9 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 
 			if (CRF_Gamemode.GetInstance().m_iTimeLimitMinutes > 0) {
 				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (CRF_Gamemode.GetInstance().m_iTimeLimitMinutes * 60000);
-				GetGame().GetCallqueue().CallLater(UpdateMissionEndTimer, 1000, true);
+				GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().UpdateMissionEndTimer, 1000, true);
 			} else {
-				m_sServerWorldTime = "N/A";
+				CRF_GamemodeManager.GetInstance().SetServerWorldTime("N/A");
 			};
 
 			Replication.BumpMe();//Broadcast change
@@ -417,37 +408,6 @@ class CRF_SafestartManager : SCR_BaseGameModeComponent
 	void DelayChangeSafeStartDisabled() {
 		m_bSafeStartEnabled = false;
 		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
-	};
-
-	//Call from server
-	//------------------------------------------------------------------------------------------------
-	void UpdateServerWorldTime()
-	{
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_iTimeSafeStartBegan - currentTime;
-		int totalSeconds = (millis * 0.001);
-
-		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
-
-		Replication.BumpMe();
-	};
-
-	//Call from server
-	//------------------------------------------------------------------------------------------------
-	void UpdateMissionEndTimer()
-	{
-		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = m_iTimeMissionEnds - currentTime;
-		int totalSeconds = (millis * 0.001);
-
-		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
-
-		if (totalSeconds == 0) {
-			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
-			m_sServerWorldTime = "Mission Time Expired!";
-		};
-
-		Replication.BumpMe();
 	};
 
 	// Called from server to all clients

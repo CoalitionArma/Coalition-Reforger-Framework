@@ -186,7 +186,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 		}
 		
 		// get time left in mission
-		m_sServerWorldTime = m_SafestartManager.GetServerWorldTime();
+		m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
 		
 		if (m_sServerWorldTime == "N/A") {
 			GetGame().GetCallqueue().Remove(UpdateTimer);

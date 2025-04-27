@@ -427,7 +427,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		}
 		
 		// get time left in mission
-		m_sServerWorldTime = m_SafestartManager.GetServerWorldTime();
+		m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
 		
 		if (m_SafestartManager.GetSafestartStatus() || m_sServerWorldTime.IsEmpty() || m_sStoredServerWorldTime == m_sServerWorldTime) return;
 		
