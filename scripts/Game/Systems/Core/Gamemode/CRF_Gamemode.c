@@ -170,13 +170,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		super.OnControllableSpawned(entity);
 		
+		int delay = 150;
+		if(m_GamemodeState != CRF_EGamemodeState.GAME)
+		{
+			entity.GetTransform(m_vGenericSpawn);
+			delay = 2000;
+		}
+		
 		// Early return conditions
 		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData())
 			// Schedule gear setup with delay
-			GetGame().GetCallqueue().CallLater(CRF_GearscriptManager.GetInstance().SetupAddGearToEntity, 1250, false, entity, entity.GetPrefabData().GetPrefabName());
-		
-		if(m_GamemodeState != CRF_EGamemodeState.GAME)
-			entity.GetTransform(m_vGenericSpawn)
+			GetGame().GetCallqueue().CallLater(CRF_GearscriptManager.GetInstance().SetupAddGearToEntity, delay, false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 
 	//------------------------------------------------------------------------------------------------
