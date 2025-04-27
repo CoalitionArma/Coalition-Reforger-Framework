@@ -1,16 +1,16 @@
 SCR_AIGroup : "{3C9036D0AA43D53F}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevCrew_p.et" {
- coords 874.806 39 2637.265
+ coords 1243.825 39 2841.165
  angleY 171.153
 }
 SCR_AIGroup : "{D3FDE8F02AEA7177}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevGI_p.et" {
- coords 885.101 39 2638.868
+ coords 1254.118 39 2842.768
  angleY 171.153
 }
 SCR_AIGroup : "{D7969C403CF13C5D}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevLeaders_p.et" {
- coords 861.107 39 2635.134
+ coords 1230.125 39 2839.034
  angleY 171.153
 }
 SCR_AIGroup : "{DCEFF23514B0328E}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevSpecialist_p.et" {
- coords 850.808 39 2633.531
+ coords 1219.826 39 2837.432
  angleY 171.153
 }

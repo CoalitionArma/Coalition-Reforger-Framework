@@ -1,16 +1,16 @@
 SCR_AIGroup : "{3343CCC99B434F66}Prefabs/Groups/OPFOR/Standard/Dev/CRF_OPFOR_DevGI_p.et" {
- coords 885.352 39 2637.252
+ coords 1254.369 39 2841.153
  angleY 171.153
 }
 SCR_AIGroup : "{36D6A656C4D79C45}Prefabs/Groups/OPFOR/Standard/Dev/CRF_OPFOR_DevLeaders_p.et" {
- coords 861.358 39 2633.518
+ coords 1230.376 39 2837.418
  angleY 171.153
 }
 SCR_AIGroup : "{79221AB6245069BD}Prefabs/Groups/OPFOR/Standard/Dev/CRF_OPFOR_DevSpecialists_p.et" {
- coords 851.059 39 2631.915
+ coords 1220.076 39 2835.815
  angleY 171.153
 }
 SCR_AIGroup : "{C3E65A6887A86B92}Prefabs/Groups/OPFOR/Standard/Dev/CRF_OPFOR_DevCrew_p.et" {
- coords 875.057 39 2635.65
+ coords 1244.074 39 2839.55
  angleY 171.153
 }

@@ -7,9 +7,7 @@ enum CRF_ESlotType
 
 class CRF_SlotData
 {
-	vector m_vSlotVector;
-	
-	vector m_vSlotYawPitchRoll;
+	vector m_vSlotVector[4];
 	
 	ResourceName m_rSlotResource;
 	
@@ -28,14 +26,14 @@ class CRF_SlotData
 	*/
 	bool RplSave(ScriptBitWriter writer)
 	{
-		writer.WriteVector(m_vSlotVector);
-		writer.WriteVector(m_vSlotYawPitchRoll);
 		writer.WriteResourceName(m_rSlotResource);
 		writer.WriteInt(m_iSlotCurrentPlayerId);
 		writer.WriteString(m_SlotFactionKey);
 		writer.WriteRplId(m_iSlotCurrentGroup);
 		writer.WriteRplId(m_iSlotCurrentCharacter);
-		writer.Write(m_SlotUIData, 64);
+		
+		writer.Write(m_vSlotVector, 16);
+		writer.Write(m_SlotUIData, 24);
 		
 		return true;
 	}
@@ -45,14 +43,14 @@ class CRF_SlotData
 	*/
     bool RplLoad(ScriptBitReader reader)
 	{
-		reader.ReadVector(m_vSlotVector);
-		reader.ReadVector(m_vSlotYawPitchRoll);
 		reader.ReadResourceName(m_rSlotResource);
 		reader.ReadInt(m_iSlotCurrentPlayerId);
 		reader.ReadString(m_SlotFactionKey);
 		reader.ReadRplId(m_iSlotCurrentGroup);
 		reader.ReadRplId(m_iSlotCurrentCharacter);
-		reader.Read(m_SlotUIData, 64);
+		
+		reader.Read(m_vSlotVector, 16);
+		reader.Read(m_SlotUIData, 24);
 		
 		return true;
 	}	
@@ -80,8 +78,7 @@ class CRF_SlotData
 	//------------------------------------------------------------------------------------------------
 	static bool PropCompare(CRF_SlotData prop, SSnapSerializerBase snapshot, ScriptCtx ctx) 
 	{
-		return snapshot.Compare(prop.m_vSlotVector, 8)
-			&& snapshot.Compare(prop.m_vSlotYawPitchRoll, 8)
+		return snapshot.Compare(prop.m_vSlotVector, 16)
 			&& snapshot.Compare(prop.m_rSlotResource, 8)
 			&& snapshot.Compare(prop.m_iSlotCurrentPlayerId, 4)
 			&& snapshot.Compare(prop.m_SlotFactionKey, 8)
@@ -93,8 +90,7 @@ class CRF_SlotData
 	//------------------------------------------------------------------------------------------------
 	static bool Extract(CRF_SlotData prop, ScriptCtx ctx, SSnapSerializerBase snapshot) 
 	{
-		snapshot.SerializeBytes(prop.m_vSlotVector, 8);
-		snapshot.SerializeBytes(prop.m_vSlotYawPitchRoll, 8);
+		snapshot.SerializeBytes(prop.m_vSlotVector, 16);
 		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
 		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
@@ -107,8 +103,7 @@ class CRF_SlotData
 	//------------------------------------------------------------------------------------------------
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotData prop) 
 	{
-		snapshot.SerializeBytes(prop.m_vSlotVector, 8);
-		snapshot.SerializeBytes(prop.m_vSlotYawPitchRoll, 8);
+		snapshot.SerializeBytes(prop.m_vSlotVector, 16);
 		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
 		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
@@ -311,15 +306,9 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	vector GetPlayerSlotVector(int playerId)
+	void GetPlayerSlotVector(int playerId, out vector vec[])
 	{
-		return GetPlayerSlotData(playerId).m_vSlotVector;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	vector GetPlayerSlotYawPitchRoll(int playerId)
-	{
-		return GetPlayerSlotData(playerId).m_vSlotYawPitchRoll;
+		vec = GetPlayerSlotData(playerId).m_vSlotVector;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -470,8 +459,8 @@ class CRF_SlottingManager : SCR_BaseGameModeComponent
 		} else 
 			slotData.m_SlotFactionKey = SCR_FactionAffiliationComponent.Cast(entity.FindComponent(SCR_FactionAffiliationComponent)).GetAffiliatedFactionKey();
 		
-		slotData.m_vSlotVector = entity.GetOrigin();
-		slotData.m_vSlotYawPitchRoll = entity.GetYawPitchRoll();
+		entity.GetWorldTransform(slotData.m_vSlotVector);
+		
 		slotData.m_rSlotResource = entity.GetPrefabData().GetPrefabName();
 		slotData.m_iSlotCurrentCharacter = RplComponent.Cast(entity.FindComponent(RplComponent)).Id();
 		

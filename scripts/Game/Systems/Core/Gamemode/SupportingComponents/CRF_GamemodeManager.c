@@ -67,12 +67,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			if(overrideLocation != vector.Zero)
 				spawnParams.Transform[3] = overrideLocation;
 			else
-				spawnParams.Transform[3] = slottingManager.GetPlayerSlotVector(playerId);
+				slottingManager.GetPlayerSlotVector(playerId, spawnParams.Transform);
 			
 			playerCharacter = GetGame().SpawnEntityPrefab(Resource.Load(slottingManager.GetPlayerSlotResource(playerId)), GetGame().GetWorld(), spawnParams);
-			
-			if(overrideLocation == vector.Zero)
-				playerCharacter.SetYawPitchRoll(slottingManager.GetPlayerSlotYawPitchRoll(playerId));
 		
 			slottingManager.UpdateSlotCharacter(slottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id())
 		};
