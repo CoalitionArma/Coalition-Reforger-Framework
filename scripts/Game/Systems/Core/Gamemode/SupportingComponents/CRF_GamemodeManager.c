@@ -4,24 +4,18 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 {
 	const static ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
 	
-	// Instance of this component (this method only works if you KNOW there will only ever be one instance of this component) 
-	protected static CRF_GamemodeManager s_Instance;
-	
 	[RplProp()]
 	ref array<int> m_aModerators = {}; 
 	
 	//------------------------------------------------------------------------------------------------
-	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
-	{
-		if (!s_Instance)
-			s_Instance = this;
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	static CRF_GamemodeManager GetInstance()
 	{
-		return s_Instance;
-	}	
+		BaseGameMode gameMode = GetGame().GetGameMode();
+		if (gameMode)
+			return CRF_GamemodeManager.Cast(gameMode.FindComponent(CRF_GamemodeManager));
+		else
+			return null;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	static bool IsSpectator(IEntity entity)
@@ -50,8 +44,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
 		if (!slottingManager.IsPlayerInASlot(playerId) 
-			|| slottingManager.IsPlayerConsideredDead(playerId)
-			|| (!CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId))
+			|| (slottingManager.IsPlayerConsideredDead(playerId)
+			&& !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId))
 			&& !slottingManager.GetPlayerSlotCharacter(playerId))) {
 				EnterSpectator(playerId);
 				return;
