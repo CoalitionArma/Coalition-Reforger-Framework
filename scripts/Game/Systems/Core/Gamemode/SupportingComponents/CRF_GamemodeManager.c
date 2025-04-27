@@ -50,14 +50,15 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
 		if (!slottingManager.IsPlayerInASlot(playerId)
-			|| !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId))
-			|| slottingManager.IsPlayerConsideredDead(playerId)) {
+			|| (!CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId))
+			&& slottingManager.IsPlayerConsideredDead(playerId)
+			&& !slottingManager.GetPlayerSlotCharacter(playerId))) {
 				EnterSpectator(playerId);
 				return;
 		}
-		
+
 		IEntity playerCharacter = slottingManager.GetPlayerSlotCharacter(playerId);
-		
+
 		if (!playerCharacter)
 		{
 			EntitySpawnParams spawnParams = new EntitySpawnParams();
@@ -75,7 +76,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 			slottingManager.UpdateSlotCharacter(slottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id())
 		};
-			
+
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 
 		playerController.SetInitialMainEntity(playerCharacter);
@@ -89,7 +90,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
 			SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 		}
-		
+
 		CRF_RplBroadcastManager.GetInstance().InitilizePlayer(playerId);
 	}
 	
