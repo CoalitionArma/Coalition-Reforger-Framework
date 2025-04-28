@@ -10,7 +10,7 @@ modded class SCR_AIGroup
 		if(!GetGame().InPlayMode() || !CRF_Gamemode.GetInstance())
 			return;
 		
-		if ((RplSession.Mode() == RplMode.Client || RplSession.Mode() == RplMode.Listen) && (CRF_Gamemode.GetInstance() && (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME || (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && !CRF_Gamemode.GetInstance().EnableAIInGameState))))
+		if ((RplSession.Mode() != RplMode.Dedicated) && (CRF_Gamemode.GetInstance() && (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME || (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && !CRF_Gamemode.GetInstance().EnableAIInGameState))))
 		{
 			SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
 			if (groupsManager)
