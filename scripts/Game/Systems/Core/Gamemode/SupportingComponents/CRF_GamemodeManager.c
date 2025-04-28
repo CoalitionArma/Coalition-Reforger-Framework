@@ -34,10 +34,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{
 		if (SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
 			return true;
-		else if(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		
+		if (SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
 			return true;
-		else
-			return false;
+
+		return false;
 	}
 
 	//Called to enter the actual game, just puts the player into a slot or spectator.
@@ -48,7 +49,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		
 		if (!slottingManager.IsPlayerInASlot(playerId) || slottingManager.IsPlayerConsideredDead(playerId)) 
 		{
-			EnterSpectator(playerId);
+			if(!CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+				EnterSpectator(playerId);
+			
 			return;
 		}
 

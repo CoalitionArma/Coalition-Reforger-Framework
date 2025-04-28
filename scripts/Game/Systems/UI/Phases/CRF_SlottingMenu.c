@@ -315,6 +315,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	{
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
 		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+		
+		if(CRF_GamemodeManager.IsSpectator())
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
 	}
 	
 	void SelectPlayerDelay()
