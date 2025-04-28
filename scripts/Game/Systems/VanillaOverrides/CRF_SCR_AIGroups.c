@@ -10,10 +10,20 @@ modded class SCR_AIGroup
 		if(!GetGame().InPlayMode() || !CRF_Gamemode.GetInstance())
 			return;
 		
-		if(CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
-			SCR_GroupsManagerComponent.GetInstance().ConvertIntoPlayableGroup(this, this.GetFaction());
+		if ((RplSession.Mode() == RplMode.Client || RplSession.Mode() == RplMode.Listen) && (CRF_Gamemode.GetInstance() && (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME || (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && !CRF_Gamemode.GetInstance().EnableAIInGameState))))
+		{
+			SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+			if (groupsManager)
+			{
+				m_bPlayable = true;
+				groupsManager.RegisterGroup(this);
+				groupsManager.ClaimFrequency(GetRadioFrequency(), GetFaction());
+				groupsManager.OnGroupCreated(this);
+			}
+		}
 		
-		GetGame().GetCallqueue().CallLater(CheckIfPlayableOnInit, 100, false);
+		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
+			GetGame().GetCallqueue().CallLater(CheckIfPlayableOnInit, 100, false);
 	}
 	
 	protected void CheckIfPlayableOnInit()
@@ -44,6 +54,4 @@ modded class SCR_AIGroup
 		if (m_bDeleteWhenEmpty && !m_bIsPlayable)
 			GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 1, false, this);		
 	}
-	
-
 }

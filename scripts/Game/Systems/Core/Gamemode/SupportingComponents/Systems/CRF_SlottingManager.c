@@ -173,7 +173,10 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	Faction GetPlayerSlotFaction(int playerId)
 	{
-		return GetGame().GetFactionManager().GetFactionByKey(GetPlayerSlotData(playerId).m_SlotFactionKey);
+		if(!(GetPlayerSlotData(playerId).m_SlotFactionKey).IsEmpty())
+			return GetGame().GetFactionManager().GetFactionByKey(GetPlayerSlotData(playerId).m_SlotFactionKey);
+		else
+			return null;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -373,17 +376,17 @@ class CRF_SlotData
 {
 	vector m_vSlotVector[4];
 	
-	ResourceName m_rSlotResource;
+	ResourceName m_rSlotResource = "";
 	
-	int m_iSlotCurrentPlayerId;
+	int m_iSlotCurrentPlayerId = 0;
 	
-	FactionKey m_SlotFactionKey;
+	FactionKey m_SlotFactionKey = "";
 	
 	RplId m_iSlotCurrentGroup = RplId.Invalid();
 	
 	RplId m_iSlotCurrentCharacter = RplId.Invalid();
 	
-	ref CRF_SlotUIData m_SlotUIData;
+	ref CRF_SlotUIData m_SlotUIData = null;
 	
 	/*!
 		Serialize this class using provided ScriptBitWriter.
@@ -480,13 +483,13 @@ class CRF_SlotData
 
 class CRF_SlotUIData
 {
-	string m_sSlotName;
+	string m_sSlotName = "";
 
-	ResourceName m_rSlotIconResource;
+	ResourceName m_rSlotIconResource = "";
 	
-	CRF_ESlotType m_iSlotType;
+	CRF_ESlotType m_iSlotType = CRF_ESlotType.REGULAR;
 	
-	bool m_bIsLockedSlot;
+	bool m_bIsLockedSlot = false;
 	
-	bool m_bIsDeadSlot;
+	bool m_bIsDeadSlot = false;
 }
