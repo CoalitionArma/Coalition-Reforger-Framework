@@ -4,63 +4,78 @@ modded class SCR_VoNComponent
 	protected CRF_MenuManager m_MenuManager;
 	
 	//------------------------------------------------------------------------------------------------
+	//------------------------------------------------------------------------------------------------
+	// Constructor - Initializes component and gets required manager instances
+	//------------------------------------------------------------------------------------------------
 	void SCR_VoNComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
+		// Get singleton instances needed for voice functionality
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Called when the local player activates their microphone
+	//------------------------------------------------------------------------------------------------
 	override protected event void OnCapture(BaseTransceiver transmitter)
 	{
-		// Super up so we dont break the component.
+		// Call parent implementation to maintain core functionality
 		super.OnCapture(transmitter);
 		
-		// If in game state, dont do this so it isnt a drag on clients fps.
+		// Skip processing during active gameplay to prevent FPS impact
 		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
-		// Add player to the m_aPlayersTalking array the menu manager uses to tell when a player is talking.
+		// Register local player as currently talking
 		AddPlayerTalking(SCR_PlayerController.GetLocalPlayerId());
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Called when receiving voice from another player
+	//------------------------------------------------------------------------------------------------
 	override protected event void OnReceive(int playerId, BaseTransceiver receiver, int frequency, float quality)
 	{
-		// Super up so we dont break the component.
+		// Call parent implementation to maintain core functionality
 		super.OnReceive(playerId, receiver, frequency, quality);
 		
-		// If in game state, dont do this so it isnt a drag on clients fps.
+		// Skip processing during active gameplay to prevent FPS impact
 		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
-		// Add player to the m_aPlayersTalking array the menu manager uses to tell when a player is talking.
+		// Register the remote player as currently talking
 		AddPlayerTalking(playerId);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Adds a player to the list of currently talking players
+	//------------------------------------------------------------------------------------------------
 	protected void AddPlayerTalking(int playerId)
 	{		
-		// Check if player exists in the array and can be added (very important we do this as OnReceive runs every frame for each client talking to this client).
+		// Only add if not already in the list (important as OnReceive runs every frame)
 		if(!m_MenuManager.m_aPlayersTalking.Contains(playerId))
 		{
-			// Insert player into the m_aPlayersTalking array on the Menu Manager, this makes it so menus (slotting, breifing, aar, etc) show this player as talking.
+			// Add player to the list to update UI indicators in various menus
 			m_MenuManager.m_aPlayersTalking.Insert(playerId);
 			
-			// Remove player as "talking" after a set period of time, need to do this since the SCR_VoNComponent doesn't have a OnReceiveEnd function.
+			// Schedule removal after a delay since there's no OnReceiveEnd event
+			// 325ms timeout provides a buffer to handle voice transmission gaps
 			GetGame().GetCallqueue().CallLater(RemovePlayerTalking, 325, false, playerId);
-		};
+		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Removes a player from the list of talking players after timeout
+	//------------------------------------------------------------------------------------------------
 	protected void RemovePlayerTalking(int playerId)
 	{		
-		// Get place the player is on the m_aPlayersTalking array so we can check then remove them.
-		int place = m_MenuManager.m_aPlayersTalking.Find(playerId);
+		// Find player's position in the array
+		int playerIndex = m_MenuManager.m_aPlayersTalking.Find(playerId);
 		
-		// Check if player exists in the array.
-		if(place != -1)
+		// Only remove if player is actually in the list
+		if(playerIndex != -1)
 		{
-			// Remove player from the m_aPlayersTalking array on the Menu Manager, this makes it so menus (slotting, breifing, aar, etc) no longer show this player as talking.
-			m_MenuManager.m_aPlayersTalking.Remove(place);
-		};
+			// Remove player to update UI indicators
+			m_MenuManager.m_aPlayersTalking.Remove(playerIndex);
+		}
 	}
 };
