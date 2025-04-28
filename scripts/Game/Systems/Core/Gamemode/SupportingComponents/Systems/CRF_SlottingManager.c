@@ -5,133 +5,10 @@ enum CRF_ESlotType
 	SPECIALTY,
 }
 
-class CRF_SlotData
-{
-	vector m_vSlotVector[4];
-	
-	ResourceName m_rSlotResource;
-	
-	int m_iSlotCurrentPlayerId;
-	
-	FactionKey m_SlotFactionKey;
-	
-	RplId m_iSlotCurrentGroup = RplId.Invalid();
-	
-	RplId m_iSlotCurrentCharacter = RplId.Invalid();
-	
-	ref CRF_SlotUIData m_SlotUIData;
-	
-	/*!
-		Serialize this class using provided ScriptBitWriter.
-	*/
-	bool RplSave(ScriptBitWriter writer)
-	{
-		writer.WriteResourceName(m_rSlotResource);
-		writer.WriteInt(m_iSlotCurrentPlayerId);
-		writer.WriteString(m_SlotFactionKey);
-		writer.WriteRplId(m_iSlotCurrentGroup);
-		writer.WriteRplId(m_iSlotCurrentCharacter);
-		
-		writer.Write(m_vSlotVector, 16);
-		writer.Write(m_SlotUIData, 24);
-		
-		return true;
-	}
-	
-	/*!
-		Deserialize this class using provided ScriptBitWriter.
-	*/
-    bool RplLoad(ScriptBitReader reader)
-	{
-		reader.ReadResourceName(m_rSlotResource);
-		reader.ReadInt(m_iSlotCurrentPlayerId);
-		reader.ReadString(m_SlotFactionKey);
-		reader.ReadRplId(m_iSlotCurrentGroup);
-		reader.ReadRplId(m_iSlotCurrentCharacter);
-		
-		reader.Read(m_vSlotVector, 16);
-		reader.Read(m_SlotUIData, 24);
-		
-		return true;
-	}	
-	
-	//################################################################################################
-	//! Codec methods
-	//------------------------------------------------------------------------------------------------
-	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet) 
-	{
-		snapshot.Serialize(packet, 76);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot) 
-	{
-		return snapshot.Serialize(packet, 76);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx) 
-	{		
-		return lhs.CompareSnapshots(rhs, 76);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	static bool PropCompare(CRF_SlotData prop, SSnapSerializerBase snapshot, ScriptCtx ctx) 
-	{
-		return snapshot.Compare(prop.m_vSlotVector, 16)
-			&& snapshot.Compare(prop.m_rSlotResource, 8)
-			&& snapshot.Compare(prop.m_iSlotCurrentPlayerId, 4)
-			&& snapshot.Compare(prop.m_SlotFactionKey, 8)
-			&& snapshot.Compare(prop.m_iSlotCurrentGroup, 4)
-			&& snapshot.Compare(prop.m_iSlotCurrentCharacter, 4)
-			&& snapshot.Compare(prop.m_SlotUIData, 32);
-	}
-			
-	//------------------------------------------------------------------------------------------------
-	static bool Extract(CRF_SlotData prop, ScriptCtx ctx, SSnapSerializerBase snapshot) 
-	{
-		snapshot.SerializeBytes(prop.m_vSlotVector, 16);
-		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
-		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
-		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
-		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
-		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
-		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
-		return true;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotData prop) 
-	{
-		snapshot.SerializeBytes(prop.m_vSlotVector, 16);
-		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
-		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
-		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
-		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
-		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
-		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
-		return true;
-	}
-}
-
-class CRF_SlotUIData
-{
-	string m_sSlotName;
-
-	ResourceName m_rSlotIconResource;
-	
-	CRF_ESlotType m_iSlotType;
-	
-	bool m_bIsLockedSlot;
-	
-	bool m_bIsDeadSlot;
-}
-
 class CRF_SlottingManagerClass : ScriptComponentClass {}
 
 class CRF_SlottingManager : ScriptComponent
 {
-	
 	// INT in this map works on a "ID" based system where a ID is generated for every slot that is created in the AddSlot function bellow.
 	// CRF_SlotData is then stored in this map for further use by the relevant systems or to be updated later when applicable.
 	protected ref map<int, ref CRF_SlotData> m_mSlotsMap = new map<int, ref CRF_SlotData>;
@@ -326,6 +203,18 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	bool IsFactionValid(FactionKey factionKey)
+	{
+		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
+		{
+			if(slotData.m_SlotFactionKey == factionKey)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	bool IsPlayerInASlot(int playerId)
 	{
 		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
@@ -355,7 +244,6 @@ class CRF_SlottingManager : ScriptComponent
 		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		ref CRF_SlotUIData slotUIData = slotData.m_SlotUIData;
 		slotUIData.m_bIsLockedSlot = input;
-		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -366,7 +254,6 @@ class CRF_SlottingManager : ScriptComponent
 		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		ref CRF_SlotUIData slotUIData = slotData.m_SlotUIData;
 		slotUIData.m_bIsDeadSlot = input;
-		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -387,7 +274,6 @@ class CRF_SlottingManager : ScriptComponent
 	
 		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_iSlotCurrentPlayerId = playerId;
-		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -397,7 +283,6 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_iSlotCurrentGroup = groupId;
-		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -407,7 +292,6 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_rSlotResource = resource;
-		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -417,7 +301,6 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		ref CRF_SlotData slotData = m_mSlotsMap.Get(slotId);
 		slotData.m_iSlotCurrentCharacter = charId;
-		m_mSlotsMap.Set(slotId, slotData);
 		
 		SlottingChangesUpdate();
 	}
@@ -427,7 +310,7 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		foreach (int slotID, ref CRF_SlotData slotData : m_mSlotsMap)
 		{
-			if(slotData.m_iSlotCurrentPlayerId != 0)
+			if(slotData.m_iSlotCurrentPlayerId > 0)
 				continue;
 			else
 				slotData.m_SlotUIData.m_bIsLockedSlot = true;
@@ -484,4 +367,126 @@ class CRF_SlottingManager : ScriptComponent
 		if(CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 			SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
+}
+
+class CRF_SlotData
+{
+	vector m_vSlotVector[4];
+	
+	ResourceName m_rSlotResource;
+	
+	int m_iSlotCurrentPlayerId;
+	
+	FactionKey m_SlotFactionKey;
+	
+	RplId m_iSlotCurrentGroup = RplId.Invalid();
+	
+	RplId m_iSlotCurrentCharacter = RplId.Invalid();
+	
+	ref CRF_SlotUIData m_SlotUIData;
+	
+	/*!
+		Serialize this class using provided ScriptBitWriter.
+	*/
+	bool RplSave(ScriptBitWriter writer)
+	{
+		writer.WriteResourceName(m_rSlotResource);
+		writer.WriteInt(m_iSlotCurrentPlayerId);
+		writer.WriteString(m_SlotFactionKey);
+		writer.WriteRplId(m_iSlotCurrentGroup);
+		writer.WriteRplId(m_iSlotCurrentCharacter);
+		
+		writer.Write(m_vSlotVector, 16);
+		writer.Write(m_SlotUIData, 24);
+		
+		return true;
+	}
+	
+	/*!
+		Deserialize this class using provided ScriptBitWriter.
+	*/
+    bool RplLoad(ScriptBitReader reader)
+	{
+		reader.ReadResourceName(m_rSlotResource);
+		reader.ReadInt(m_iSlotCurrentPlayerId);
+		reader.ReadString(m_SlotFactionKey);
+		reader.ReadRplId(m_iSlotCurrentGroup);
+		reader.ReadRplId(m_iSlotCurrentCharacter);
+		
+		reader.Read(m_vSlotVector, 16);
+		reader.Read(m_SlotUIData, 24);
+		
+		return true;
+	}	
+	
+	//################################################################################################
+	//! Codec methods
+	//------------------------------------------------------------------------------------------------
+	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet) 
+	{
+		snapshot.Serialize(packet, 76);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot) 
+	{
+		return snapshot.Serialize(packet, 76);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx) 
+	{		
+		return lhs.CompareSnapshots(rhs, 76);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	static bool PropCompare(CRF_SlotData prop, SSnapSerializerBase snapshot, ScriptCtx ctx) 
+	{
+		return snapshot.Compare(prop.m_vSlotVector, 16)
+			&& snapshot.Compare(prop.m_rSlotResource, 8)
+			&& snapshot.Compare(prop.m_iSlotCurrentPlayerId, 4)
+			&& snapshot.Compare(prop.m_SlotFactionKey, 8)
+			&& snapshot.Compare(prop.m_iSlotCurrentGroup, 4)
+			&& snapshot.Compare(prop.m_iSlotCurrentCharacter, 4)
+			&& snapshot.Compare(prop.m_SlotUIData, 32);
+	}
+			
+	//------------------------------------------------------------------------------------------------
+	static bool Extract(CRF_SlotData prop, ScriptCtx ctx, SSnapSerializerBase snapshot) 
+	{
+		snapshot.SerializeBytes(prop.m_vSlotVector, 16);
+		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
+		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
+		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
+		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
+		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
+		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotData prop) 
+	{
+		snapshot.SerializeBytes(prop.m_vSlotVector, 16);
+		snapshot.SerializeBytes(prop.m_rSlotResource, 8);
+		snapshot.SerializeBytes(prop.m_iSlotCurrentPlayerId, 4);
+		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
+		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
+		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
+		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
+		return true;
+	}
+}
+
+class CRF_SlotUIData
+{
+	string m_sSlotName;
+
+	ResourceName m_rSlotIconResource;
+	
+	CRF_ESlotType m_iSlotType;
+	
+	bool m_bIsLockedSlot;
+	
+	bool m_bIsDeadSlot;
 }

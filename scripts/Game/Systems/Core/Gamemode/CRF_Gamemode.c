@@ -202,23 +202,17 @@ class CRF_Gamemode : SCR_BaseGameMode
 		int delay = 2000;
 		if (CRF_GamemodeManager.IsSpectator(entity))
 			delay = 0;
+		
+		string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
 
 		// If respawn is enabled
-		if (m_bRespawnEnabled && !CRF_GamemodeManager.IsSpectator(entity) && m_GamemodeState != CRF_EGamemodeState.AAR)
+		if (m_bRespawnEnabled && !CRF_GamemodeManager.IsSpectator(entity) && m_GamemodeState != CRF_EGamemodeState.AAR && CRF_RespawnManager.GetInstance().TicketsRemaining(faction))
 		{
-			string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
+			// Remove tickets if used
+			CRF_RespawnManager.GetInstance().SubtractTicket(faction);
 
-			if (CRF_RespawnManager.GetInstance().TicketsRemaining(faction))
-			{
-				// Remove tickets if used
-				CRF_RespawnManager.GetInstance().SubtractTicket(faction);
-
-				// Put them in death screen/timer screen
-				GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().SendRespawnScreen, (delay + 150), false, playerId);
-			} else {
-				CRF_SlottingManager.GetInstance().UpdateSlotDeathState(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), true);
-				CRF_SlottingManager.GetInstance().UpdateSlotCharacter(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), RplId.Invalid())
-			};
+			// Put them in death screen/timer screen
+			GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().SendRespawnScreen, (delay + 150), false, playerId);
 		} else {
 			CRF_SlottingManager.GetInstance().UpdateSlotDeathState(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), true);
 			CRF_SlottingManager.GetInstance().UpdateSlotCharacter(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), RplId.Invalid())

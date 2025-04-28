@@ -110,14 +110,14 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendAdminMessage(string data)
 	{
-		if(SCR_Global.IsAdmin() || CRF_Library.IsModerator())
+		if(SCR_Global.IsAdmin() || CRF_GamemodeManager.GetInstance().IsModerator())
 			Rpc(RpcAsk_SendAdminMessage, data); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(string data, int playerId, bool logAction)
 	{
-		if(SCR_Global.IsAdmin() || CRF_Library.IsModerator())
+		if(SCR_Global.IsAdmin() || CRF_GamemodeManager.GetInstance().IsModerator())
 			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, logAction); 
 	}		
 	

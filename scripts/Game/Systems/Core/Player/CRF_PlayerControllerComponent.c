@@ -394,7 +394,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(SCR_ChatPanel panel, string data)
 	{
-		if (!SCR_Global.IsAdmin() && !CRF_Library.IsModerator())
+		if (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator())
 			return;
 		
 		array<string> dataSplit = {};

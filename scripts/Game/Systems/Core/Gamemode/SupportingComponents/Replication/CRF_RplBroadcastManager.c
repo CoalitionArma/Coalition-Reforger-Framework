@@ -158,7 +158,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendAdminMessage(string data)
 	{
-		if (!SCR_Global.IsAdmin() && !CRF_Library.IsModerator())
+		if (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator())
 			return;
 
 		PlayerController pc = GetGame().GetPlayerController();
@@ -255,10 +255,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		if (sendToPlayer)
 		{
-			if (GetGame().GetPlayerController().GetPlayerId() != playerId && (!SCR_Global.IsAdmin() && !CRF_Library.IsModerator()))
+			if (GetGame().GetPlayerController().GetPlayerId() != playerId && (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator()))
 				return;
 		} else {
-			if (!SCR_Global.IsAdmin() && !CRF_Library.IsModerator())
+			if (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator())
 				return;
 		}
 

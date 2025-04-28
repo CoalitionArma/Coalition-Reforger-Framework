@@ -18,7 +18,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected Widget m_wPlayerSlotWidget;
 	protected CRF_ListboxComponent m_wPlayerSlots;
 	protected CRF_ListboxComponent m_wVONChannels;
-	protected int localSlotChanges = 0;
 	protected int m_iBluforSlots = 0;
 	protected int m_iOpforSlots = 0;
 	protected int m_iIndforSlots = 0;
@@ -93,26 +92,15 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 //		 FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI FUCK BI
 		GetGame().GetInputManager().AddActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
 		InitSlots();
-		if(m_iBluforSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("BLUFOR");
+		
+		if(CRF_SlottingManager.GetInstance().IsFactionValid("BLUFOR"))
 			SelectFactionBlufor();
-		}
-		else if(m_iOpforSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("OPFOR");
+		else if(CRF_SlottingManager.GetInstance().IsFactionValid("OPFOR"))
 			SelectFactionOpfor();
-		}
-		else if(m_iIndforSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("INDFOR");
+		else if(CRF_SlottingManager.GetInstance().IsFactionValid("INDFOR"))
 			SelectFactionIndfor();
-		}
-		else if(m_iCivSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("CIV");
-			SelectFactionOpfor();
-		}
+		else if(CRF_SlottingManager.GetInstance().IsFactionValid("CIV"))
+			SelectFactionCiv();
 		
 		m_wBluforButton = m_wRoot.FindAnyWidget("BLUSelectButton");
 		m_wOpforButton = m_wRoot.FindAnyWidget("OPFSelectButton");
@@ -714,7 +702,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		ResourceName gearScriptResource;
 		CRF_GearScriptConfig gearConfig;
 		
-		if (m_iBluforSlots > 0)
+		if (CRF_SlottingManager.GetInstance().IsFactionValid("BLUFOR"))
 		{
 			m_wRoot.FindAnyWidget("BLUButton").SetVisible(true);
 			if (GearscriptManager)
@@ -735,7 +723,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("BLUFlag")).LoadImageTexture(0, icon);
 			TextWidget.Cast(m_wRoot.FindAnyWidget("BLURatio")).SetText(m_iAliveBluforSlots.ToString() + "/" + m_iBluforSlots.ToString());
 		}
-		if (m_iOpforSlots > 0)
+		if (CRF_SlottingManager.GetInstance().IsFactionValid("OPFOR"))
 		{
 			m_wRoot.FindAnyWidget("OPFButton").SetVisible(true);
 			if (GearscriptManager)
@@ -756,7 +744,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("OPFFlag")).LoadImageTexture(0, icon);
 			TextWidget.Cast(m_wRoot.FindAnyWidget("OPFRatio")).SetText(m_iAliveOpforSlots.ToString() + "/" + m_iOpforSlots.ToString());
 		}
-		if (m_iIndforSlots > 0)
+		if (CRF_SlottingManager.GetInstance().IsFactionValid("INDFOR"))
 		{
 			m_wRoot.FindAnyWidget("INDButton").SetVisible(true);
 			if (GearscriptManager)
@@ -777,7 +765,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("INDFlag")).LoadImageTexture(0, icon);
 			TextWidget.Cast(m_wRoot.FindAnyWidget("INDRatio")).SetText(m_iAliveIndforSlots.ToString() + "/" + m_iIndforSlots.ToString());
 		}
-		if (m_iCivSlots > 0)
+		if (CRF_SlottingManager.GetInstance().IsFactionValid("CIV"))
 		{
 			m_wRoot.FindAnyWidget("CIVButton").SetVisible(true);
 			if (GearscriptManager)

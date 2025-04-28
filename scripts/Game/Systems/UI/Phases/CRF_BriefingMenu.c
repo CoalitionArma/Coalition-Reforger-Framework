@@ -156,9 +156,11 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 				continue;
 			int index = m_cPlayerListBoxComponent.AddItem(GetGame().GetPlayerManager().GetPlayerName(player), null, "{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout");
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
-			if(GetGame().GetPlayerManager().HasPlayerRole(player, EPlayerRole.ADMINISTRATOR) || GetGame().GetPlayerManager().HasPlayerRole(player, EPlayerRole.SESSION_ADMINISTRATOR))
-				comp.SetColor(Color.FromRGBA(255, 0, 0, 255));
+			if(SCR_Global.IsAdmin(player))
+				comp.SetColor(Color.Red);
 			
+			if(CRF_GamemodeManager.GetInstance().IsModerator(player))
+				comp.SetColor(Color.Yellow);
 			
 			if(m_MenuManager.m_aPlayersTalking.Contains(player))
 				comp.SetColor(Color.FromRGBA(255, 183, 0, 255));

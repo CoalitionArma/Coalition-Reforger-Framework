@@ -46,12 +46,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		
-		if (!slottingManager.IsPlayerInASlot(playerId) 
-			|| !slottingManager.GetPlayerSlotCharacter(playerId)
-			&& (slottingManager.IsPlayerConsideredDead(playerId)
-			&& !CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))) {
-				EnterSpectator(playerId);
-				return;
+		if (!slottingManager.IsPlayerInASlot(playerId) || slottingManager.IsPlayerConsideredDead(playerId)) 
+		{
+			EnterSpectator(playerId);
+			return;
 		}
 
 		IEntity playerCharacter = slottingManager.GetPlayerSlotCharacter(playerId);
@@ -173,4 +171,25 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		m_aModerators.Insert(playerId);
 		Replication.BumpMe();
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	/*!
+	Check if given player is an moderator.
+	\param playerId ID of queried player
+	\return True when player with given ID is an moderator.
+	*/
+	bool IsModerator(int playerId)
+	{
+		return m_aModerators.Contains(playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/*!
+	Check if local player is an moderator.
+	\return True when local player is a moderator.
+	*/
+	bool IsModerator()
+	{
+		return m_aModerators.Contains(SCR_PlayerController.GetLocalPlayerId());
+	}
 }

@@ -99,26 +99,15 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		m_wRoot.FindAnyWidget("IndforBGSelect").SetColor(Color.FromRGBA(0, 177, 79, 33));
 		m_wRoot.FindAnyWidget("CivBGSelect").SetColor(Color.FromRGBA(168, 110, 207, 33));
 		InitSlots();
-		if(m_iBluforSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("BLUFOR");
+		
+		if(CRF_SlottingManager.GetInstance().IsFactionValid("BLUFOR"))
 			SelectFactionBlufor();
-		}
-		else if(m_iOpforSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("OPFOR");
+		else if(CRF_SlottingManager.GetInstance().IsFactionValid("OPFOR"))
 			SelectFactionOpfor();
-		}
-		else if(m_iIndforSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("INDFOR");
+		else if(CRF_SlottingManager.GetInstance().IsFactionValid("INDFOR"))
 			SelectFactionIndfor();
-		}
-		else if(m_iCivSlots > 0)
-		{
-			m_fSelectedFaction = GetGame().GetFactionManager().GetFactionByKey("CIV");
-			SelectFactionOpfor();
-		}
+		else if(CRF_SlottingManager.GetInstance().IsFactionValid("CIV"))
+			SelectFactionCiv();
 		
 		UpdateSlots();
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
@@ -365,9 +354,11 @@ class CRF_AARMenuUI: ChimeraMenuBase
 				continue;
 			int index = m_cPlayerListBoxComponent.AddItem(GetGame().GetPlayerManager().GetPlayerName(player), null, "{51F58D728FBCAD99}UI/Listbox/PlayerListboxElementNoIcon.layout");
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
-			if(GetGame().GetPlayerManager().HasPlayerRole(player, EPlayerRole.ADMINISTRATOR) || GetGame().GetPlayerManager().HasPlayerRole(player, EPlayerRole.SESSION_ADMINISTRATOR))
-				comp.SetColor(Color.FromRGBA(255, 0, 0, 255));
+			if(SCR_Global.IsAdmin(player))
+				comp.SetColor(Color.Red);
 			
+			if(CRF_GamemodeManager.GetInstance().IsModerator(player))
+				comp.SetColor(Color.Yellow);
 			
 			if(m_MenuManager.m_aPlayersTalking.Contains(player))
 				comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
@@ -376,62 +367,38 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		if (m_ChatPanel)
         	m_ChatPanel.OnUpdateChat(tDelta);
 		
-		if(m_iBluforSlots > 0)
+		if(CRF_SlottingManager.GetInstance().IsFactionValid("BLUFOR"))
 		{
 			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsBlufor")).SetText(m_iAliveBluforSlots.ToString() + "/" + m_iBluforSlots);
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("BluforFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,0));
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("BluforFactionLock")).SetColor(Color.FromRGBA(255,255,255,0));
 			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonBlufor")).SetEnabled(true);
 		}
-		else
-		{
-			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsBlufor")).SetText("0/0");
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("BluforFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,167));
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("BluforFactionLock")).SetColor(Color.FromRGBA(255,255,255,255));
-			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonBlufor")).SetEnabled(false);
-		}
-		if(m_iOpforSlots > 0)
+
+		if(CRF_SlottingManager.GetInstance().IsFactionValid("OPFOR"))
 		{
 			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsOpfor")).SetText(m_iAliveOpforSlots.ToString() + "/" + m_iOpforSlots);
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("OpforFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,0));
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("OpforFactionLock")).SetColor(Color.FromRGBA(255,255,255,0));
 			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonOpfor")).SetEnabled(true);
 		}
-		else
-		{
-			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsOpfor")).SetText("0/0");
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("OpforFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,167));
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("OpforFactionLock")).SetColor(Color.FromRGBA(255,255,255,255));
-			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonOpfor")).SetEnabled(false);
-		}
-		if(m_iIndforSlots > 0)
+
+		if(CRF_SlottingManager.GetInstance().IsFactionValid("INDFOR"))
 		{
 			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsIndfor")).SetText(m_iAliveIndforSlots.ToString() + "/" + m_iIndforSlots);
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("IndforFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,0));
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("IndforFactionLock")).SetColor(Color.FromRGBA(255,255,255,0));
 			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonIndfor")).SetEnabled(true);
 		}
-		else
-		{
-			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsIndfor")).SetText("0/0");
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("IndforFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,167));
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("IndforFactionLock")).SetColor(Color.FromRGBA(255,255,255,255));
-			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonIndfor")).SetEnabled(false);
-		}
-		if(m_iCivSlots > 0)
+
+		if(CRF_SlottingManager.GetInstance().IsFactionValid("CIV"))
 		{
 			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsCiv")).SetText(m_iAliveCivSlots.ToString() + "/" + m_iCivSlots);
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("CivFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,0));
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("CivFactionLock")).SetColor(Color.FromRGBA(255,255,255,0));
 			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonCiv")).SetEnabled(true);	
 		}
-		else
-		{
-			TextWidget.Cast(m_wRoot.FindAnyWidget("SlotsCiv")).SetText("0/0");
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("CivFactionLockBG")).SetColor(Color.FromRGBA(63,63,63,167));
-			ImageWidget.Cast(m_wRoot.FindAnyWidget("CivFactionLock")).SetColor(Color.FromRGBA(255,255,255,255));
-			ButtonWidget.Cast(m_wRoot.FindAnyWidget("ButtonCiv")).SetEnabled(false);
-		}	
+
 		
 		Widget cursorWidget = WidgetManager.GetWidgetUnderCursor();
 		if(cursorWidget)
