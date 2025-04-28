@@ -421,17 +421,19 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		map<int, ref CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
-		array<SCR_AIGroup> groups = {};
-		SCR_GroupsManagerComponent.GetInstance().GetAllPlayableGroups(groups);
+		array<SCR_AIGroup> tempGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
+		array<SCR_AIGroup> groups ={};
+		
+		foreach(SCR_AIGroup tempGroup : tempGroups)
+		{	
+			groups.Insert(tempGroup);
+		};
 		
 		foreach(SCR_AIGroup group : groups)
 		{	
 			int leadersInGroup = 0;
 			int playersInGroup = 0;
 			int deadPlayersInGroup = 0;
-			
-			if(group.GetFaction() != m_fSelectedFaction)
-				continue;
 			
 			if(group.IsPrivate() && !SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId()))
 				continue;
@@ -645,7 +647,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			int index;
 			if(SCR_FactionManager.SGetPlayerFaction(player) && SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey() != "SPEC")
 			{
-				switch(SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey())
+				switch(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player).GetFactionKey())
 				{
 					case "BLUFOR" : {index = m_cPlayerListBoxComponent.AddItemAndIconPlayer(GetGame().GetPlayerManager().GetPlayerName(player), m_rBluforIcon, "flag", null,  "{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout"); break;}
 					case "OPFOR" : {index = m_cPlayerListBoxComponent.AddItemAndIconPlayer(GetGame().GetPlayerManager().GetPlayerName(player), m_rOpforIcon, "flag", null,  "{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout"); break;}
@@ -674,7 +676,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			int index;
 			if(SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey() != "SPEC")
 			{
-				switch(SCR_FactionManager.SGetPlayerFaction(player).GetFactionKey())
+				switch(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player).GetFactionKey())
 				{
 					case "BLUFOR" : {index = m_cPlayerListBoxComponent.AddItemAndIconPlayer(GetGame().GetPlayerManager().GetPlayerName(player), m_rBluforIcon, "flag", null,  "{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout"); break;}
 					case "OPFOR" : {index = m_cPlayerListBoxComponent.AddItemAndIconPlayer(GetGame().GetPlayerManager().GetPlayerName(player), m_rOpforIcon, "flag", null,  "{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout"); break;}

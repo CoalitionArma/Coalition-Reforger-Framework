@@ -69,7 +69,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 			playerCharacter = GetGame().SpawnEntityPrefab(Resource.Load(slottingManager.GetPlayerSlotResource(playerId)), GetGame().GetWorld(), spawnParams);
 		
-			slottingManager.UpdateSlotCharacter(slottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id())
+			slottingManager.UpdateSlotCharacter(slottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id());
+			
+			CRF_PlayableCharacter playabeCharComp = CRF_PlayableCharacter.Cast(playerCharacter.FindComponent(CRF_PlayableCharacter));
+			
+			if(playabeCharComp)
+				playabeCharComp.SetIsSlotSpawned();
 		};
 
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));

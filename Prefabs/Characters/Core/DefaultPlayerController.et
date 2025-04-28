@@ -11,18 +11,22 @@ SCR_PlayerController {
     CRF_Frontline_HUD "{620F1A2B7F5F1C54}" {
      m_LayoutPath "{57C8559AEDAEFF2D}UI/layouts/CRF_Frontline_HUD.layout"
      m_eLayer ALWAYS_TOP
+     m_eShow 110
     }
     CRF_SafeStartDisplay "{61303B9E05796EC7}" {
      m_LayoutPath "{533092FF68C19D59}UI/layouts/CRF_SafeStartDisplay.layout"
-     m_eLayer OVERLAY
+     m_eLayer ALWAYS_TOP
+     m_eShow 119
     }
     CRF_GameTimerDisplay "{61303B9E065107C1}" {
      m_LayoutPath "{BBFA8257E348897C}UI/layouts/CRF_GameTimerDisplay.layout"
      m_eLayer ALWAYS_TOP
+     m_eShow 119
     }
     CRF_SearchAndDestroyDisplay "{61303B9EA39FC27F}" {
      m_LayoutPath "{5985DF4F166BDEB9}UI/layouts/CRF_S&D_Display.layout"
      m_eLayer ALWAYS_TOP
+     m_eShow 118
     }
    }
   }

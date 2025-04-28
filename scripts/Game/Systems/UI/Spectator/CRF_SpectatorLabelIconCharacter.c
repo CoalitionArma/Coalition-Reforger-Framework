@@ -81,8 +81,10 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 			if (playerId > 0)
 			{
 				string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-				if (playerName != "")
+				if (!playerName.IsEmpty())
 					m_wSpectatorLabelText.SetText(playerName);
+				else
+					m_wSpectatorLabelText.SetText("DISCONNECTED PLAYER");
 			} else 
 			{
 				if (slotData)

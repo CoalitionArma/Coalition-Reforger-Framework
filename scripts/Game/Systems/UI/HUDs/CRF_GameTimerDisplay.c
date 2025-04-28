@@ -1,4 +1,4 @@
-class CRF_GameTimerDisplay : SCR_InfoDisplay
+class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 {
 	// Get premade game timer widget and background 
 	
@@ -32,16 +32,16 @@ class CRF_GameTimerDisplay : SCR_InfoDisplay
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
 	//------------------------------------------------------------------------------------------------
-	override protected void OnInit(IEntity owner)
+	override protected void DisplayInit(IEntity owner)
 	{
-		super.OnInit(owner);
+		super.DisplayInit(owner);
 		GetGame().GetCallqueue().CallLater(UpdateTimer, 1000, true);
 	};
 
 	//------------------------------------------------------------------------------------------------
-	override protected void UpdateValues(IEntity owner, float timeSlice)
+	override protected void DisplayUpdate(IEntity owner, float timeSlice)
 	{
-		super.UpdateValues(owner, timeSlice);
+		super.DisplayUpdate(owner, timeSlice);
 		
 		// Respawn support
 		if (!m_SafestartManager || !m_wTimer || !m_wBackground || !m_MapEntity) 

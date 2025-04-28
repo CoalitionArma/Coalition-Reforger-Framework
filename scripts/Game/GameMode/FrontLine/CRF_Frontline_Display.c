@@ -1,4 +1,4 @@
-class CRF_Frontline_HUD : SCR_InfoDisplay
+class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 {
 	protected ImageWidget m_wASite;
 	protected ImageWidget m_wBSite;
@@ -33,9 +33,9 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 
 	//------------------------------------------------------------------------------------------------
 	
-	override protected void UpdateValues(IEntity owner, float timeSlice)
+	override protected void DisplayUpdate(IEntity owner, float timeSlice)
 	{
-		super.UpdateValues(owner, timeSlice);
+		super.DisplayUpdate(owner, timeSlice);
 		
 		if(!m_FrontlineGamemodeManager)
 		{

@@ -1,4 +1,4 @@
-class CRF_SafeStartDisplay : SCR_InfoDisplay
+class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 {
 	protected ImageWidget m_wTimerImage;
 	protected TextWidget m_wTimerDescription;
@@ -30,9 +30,9 @@ class CRF_SafeStartDisplay : SCR_InfoDisplay
 	//------------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------------
-	override protected void UpdateValues(IEntity owner, float timeSlice)
+	override protected void DisplayUpdate(IEntity owner, float timeSlice)
 	{
-		super.UpdateValues(owner, timeSlice);
+		super.DisplayUpdate(owner, timeSlice);
 		
 		if (!m_SafestartManager || !m_FactionManager || !m_wTimerImage || !m_wTimerDescription || !m_wTimerText || !m_wMissionStart || !m_wMissionStart2 || !m_wFactionsBackground || !m_wBluforFrame || !m_wOpforFrame || !m_wIndforFrame || !m_wBluforReady || !m_wOpforReady || !m_wIndforReady || !m_wCivFrame || !m_wCivReady || !m_wFactionsPanel) 
 		{

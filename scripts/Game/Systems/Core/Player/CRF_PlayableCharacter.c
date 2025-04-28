@@ -14,6 +14,7 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected CRF_ESlotType m_SlottingRole;
 
 	protected bool m_bIsSpectator = false;
+	protected bool m_bIsSlotSpawned = false;
 	protected bool m_bIsHidden = false;
 	protected bool m_bInitTime = false;
 
@@ -39,6 +40,12 @@ class CRF_PlayableCharacter : ScriptComponent
 	void SetInitTime()
 	{
 		m_bInitTime = true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsSlotSpawned()
+	{
+		m_bIsSlotSpawned = true;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -139,8 +146,8 @@ class CRF_PlayableCharacter : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SetInitialEntity(IEntity owner)
 	{
-		//Logs entity on server and disables AI
-		if (RplSession.Mode() != RplMode.Client)
+		//Logs entity on server and disables AI if not spawned by a slot
+		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned)
 		{
 			SCR_AIGroup playableGroup = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(owner.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
 			if (playableGroup)

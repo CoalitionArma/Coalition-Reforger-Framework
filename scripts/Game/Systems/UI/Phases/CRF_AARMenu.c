@@ -251,15 +251,17 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		
 		map<int, ref CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
-		array<SCR_AIGroup> groups = {};
-		SCR_GroupsManagerComponent.GetInstance().GetAllPlayableGroups(groups);
+		array<SCR_AIGroup> tempGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
+		array<SCR_AIGroup> groups ={};
+		
+		foreach(SCR_AIGroup tempGroup : tempGroups)
+		{	
+			groups.Insert(tempGroup);
+		};
 		
 		foreach(SCR_AIGroup group : groups)
 		{	
 			int playersInGroup = 0;
-			
-			if(group.GetFaction() != m_fSelectedFaction)
-				continue;
 			
 			if(group.IsPrivate())
 				continue;

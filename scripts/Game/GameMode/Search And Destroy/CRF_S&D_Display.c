@@ -1,4 +1,4 @@
-class CRF_SearchAndDestroyDisplay : SCR_InfoDisplay
+class CRF_SearchAndDestroyDisplay : SCR_InfoDisplayExtended
 {
 	protected string storageString;
 	protected TextWidget m_wTimer;
@@ -12,9 +12,9 @@ class CRF_SearchAndDestroyDisplay : SCR_InfoDisplay
 
 	//------------------------------------------------------------------------------------------------
 	
-	override protected void UpdateValues(IEntity owner, float timeSlice)
+	override protected void DisplayUpdate(IEntity owner, float timeSlice)
 	{
-		super.UpdateValues(owner, timeSlice);
+		super.DisplayUpdate(owner, timeSlice);
 		
 		if (!m_SDComponent || !m_wTimer || !m_wBackground) {
 			m_SDComponent = CRF_SearchAndDestroyGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGamemodeManager));
