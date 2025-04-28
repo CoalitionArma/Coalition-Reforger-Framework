@@ -1,6 +1,14 @@
 modded class SCR_NotificationSenderComponent
 {
 	//----------------------------------------------------------------
+	// Dont send notif that someone became a GM
+	//----------------------------------------------------------------
+	override protected void OnEditorLimitedChanged(bool isLimited)
+	{
+		
+	}
+	
+	//----------------------------------------------------------------
 	// Sets the kill feed to display full information
 	// Configures the local player to receive all kill notifications
 	//----------------------------------------------------------------
