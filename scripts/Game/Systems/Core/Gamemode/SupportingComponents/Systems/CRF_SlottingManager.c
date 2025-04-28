@@ -448,7 +448,7 @@ class CRF_SlotData
 			&& snapshot.Compare(prop.m_SlotFactionKey, 8)
 			&& snapshot.Compare(prop.m_iSlotCurrentGroup, 4)
 			&& snapshot.Compare(prop.m_iSlotCurrentCharacter, 4)
-			&& snapshot.Compare(prop.m_SlotUIData, 32);
+			&& snapshot.Compare(prop.m_SlotUIData, 24);
 	}
 			
 	//------------------------------------------------------------------------------------------------
@@ -460,7 +460,7 @@ class CRF_SlotData
 		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
-		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
+		snapshot.SerializeBytes(prop.m_SlotUIData, 24);
 		return true;
 	}
 	
@@ -473,7 +473,7 @@ class CRF_SlotData
 		snapshot.SerializeBytes(prop.m_SlotFactionKey, 8);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentGroup, 4);
 		snapshot.SerializeBytes(prop.m_iSlotCurrentCharacter, 4);
-		snapshot.SerializeBytes(prop.m_SlotUIData, 32);
+		snapshot.SerializeBytes(prop.m_SlotUIData, 24);
 		return true;
 	}
 }
