@@ -1,0 +1,8 @@
+GenericEntity : "{31F74414C617CAB2}Prefabs/Characters/Vests/Vest_JPC/variants/Vest_JPC_okinawa_Coy.et" {
+ ID "50D8C49B3558F152"
+ components {
+  RHS_ClothNodeStorageComponent "{5DEB2A8AB559C576}" {
+   MaxCumulativeVolume 1000
+  }
+ }
+}

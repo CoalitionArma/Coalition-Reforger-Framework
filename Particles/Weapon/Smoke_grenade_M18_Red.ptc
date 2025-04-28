@@ -1,5 +1,5 @@
 EffectDef {
- Version 1
+ Version 2
  Emitters {
   EmitterDef smoke_01 {
    ShapeType Point
@@ -14,14 +14,14 @@ EffectDef {
    LodMax 0
    Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
    StretchMultiplier 0
-   SizeMultiplier 4
+   SizeMultiplier 10
    SizeRND 3
    RotMultiplier 15
    RandomRotDir 1
    BillboardingType Full
    VelAngle 0
    RandomAngle 1
-   RandomUFlip 1
+   FlipU Random
    Velocity 0
    VelocityRND 0.2
    VelAffect 0.2
@@ -97,7 +97,7 @@ EffectDef {
    BillboardingType Full
    VelAngle 0
    RandomAngle 1
-   RandomUFlip 1
+   FlipU Random
    Velocity 1
    VelocityRND 0.3
    VelAffect 0
@@ -174,7 +174,7 @@ EffectDef {
    BillboardingType Full
    VelAngle 0
    RandomAngle 1
-   RandomUFlip 1
+   FlipU Random
    Velocity 1
    VelocityRND 0.3
    VelAffect 0

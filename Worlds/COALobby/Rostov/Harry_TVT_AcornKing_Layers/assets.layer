@@ -1,75 +1,99 @@
 $grp SCR_BaseTriggerEntity {
  truck1 {
   coords 4092.491 144.986 6648.339
+  RunDefaultQueryFirst 0
  }
  truck2 {
   coords 4092.491 144.763 6658.339
+  RunDefaultQueryFirst 0
  }
  truck3 {
   coords 4092.491 144.395 6668.339
+  RunDefaultQueryFirst 0
  }
  truck4 {
   coords 4092.491 144.114 6678.339
+  RunDefaultQueryFirst 0
  }
  truck5 {
   coords 4092.491 143.856 6688.339
+  RunDefaultQueryFirst 0
  }
  truck6 {
   coords 4092.491 143.612 6698.339
+  RunDefaultQueryFirst 0
  }
  truck7 {
   coords 4122.49 146.611 6648.337
+  RunDefaultQueryFirst 0
  }
  truck8 {
   coords 4122.49 146.362 6658.337
+  RunDefaultQueryFirst 0
  }
  truck9 {
   coords 4122.49 146.185 6668.337
+  RunDefaultQueryFirst 0
  }
  truck10 {
   coords 4122.49 145.908 6678.337
+  RunDefaultQueryFirst 0
  }
  truck11 {
   coords 4122.49 145.669 6688.337
+  RunDefaultQueryFirst 0
  }
  truck12 {
   coords 4122.49 145.418 6698.337
+  RunDefaultQueryFirst 0
  }
  truck13 {
   coords 4152.49 148.315 6648.336
+  RunDefaultQueryFirst 0
  }
  truck14 {
   coords 4152.49 148.143 6658.336
+  RunDefaultQueryFirst 0
  }
  truck15 {
   coords 4152.49 147.923 6668.336
+  RunDefaultQueryFirst 0
  }
  truck16 {
   coords 4152.49 147.682 6678.336
+  RunDefaultQueryFirst 0
  }
  truck17 {
   coords 4152.49 147.526 6688.336
+  RunDefaultQueryFirst 0
  }
  truck18 {
   coords 4152.49 147.282 6698.336
+  RunDefaultQueryFirst 0
  }
  truck19 {
   coords 4182.49 150.018 6648.335
+  RunDefaultQueryFirst 0
  }
  truck20 {
   coords 4182.49 149.87 6658.335
+  RunDefaultQueryFirst 0
  }
  truck21 {
   coords 4182.49 149.658 6668.335
+  RunDefaultQueryFirst 0
  }
  truck22 {
   coords 4182.49 149.481 6678.335
+  RunDefaultQueryFirst 0
  }
  truck23 {
   coords 4182.49 149.319 6688.335
+  RunDefaultQueryFirst 0
  }
  truck24 {
   coords 4182.49 149.205 6698.335
+  RunDefaultQueryFirst 0
  }
  aaSpawnAssets {
   coords 4087.558 141.685 6754.984
@@ -114,75 +138,99 @@ $grp SCR_BaseTriggerEntity {
   "		super.EOnInit(owner);"\
   "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
   "	"
+  RunDefaultQueryFirst 0
  }
  mortar1 {
   coords 1391.86 183.122 7469.787
+  RunDefaultQueryFirst 0
  }
  mortar2 {
   coords 1391.86 183.122 7459.567
+  RunDefaultQueryFirst 0
  }
  ural1 {
   coords 3224.552 85.782 7300.526
+  RunDefaultQueryFirst 0
  }
  ural2 {
   coords 3218.863 86.348 7293.143
+  RunDefaultQueryFirst 0
  }
  ural3 {
   coords 3212.447 87.149 7284.1
+  RunDefaultQueryFirst 0
  }
  ural4 {
   coords 559.592 225.921 7013.429
+  RunDefaultQueryFirst 0
  }
  ural5 {
   coords 555.276 225.815 7008.688
+  RunDefaultQueryFirst 0
  }
  ural6 {
   coords 550.524 226.007 7002.839
+  RunDefaultQueryFirst 0
  }
  ural7 {
   coords 546.28 226.17 6996.871
+  RunDefaultQueryFirst 0
  }
  ural8 {
   coords 542.112 226.257 6990.919
+  RunDefaultQueryFirst 0
  }
  ural9 {
   coords 536.491 226.498 6983.354
+  RunDefaultQueryFirst 0
  }
  ural10 {
   coords 544.914 226.461 7014.573
+  RunDefaultQueryFirst 0
  }
  ural11 {
   coords 540.162 226.68 7008.724
+  RunDefaultQueryFirst 0
  }
  ural12 {
   coords 535.918 226.809 7002.755
+  RunDefaultQueryFirst 0
  }
  ural13 {
   coords 531.75 226.891 6996.803
+  RunDefaultQueryFirst 0
  }
  ural14 {
   coords 526.129 227.078 6989.238
+  RunDefaultQueryFirst 0
  }
  ural15 {
   coords 549.23 226.257 7019.313
+  RunDefaultQueryFirst 0
  }
  ural16 {
   coords 535.041 227.107 7020.308
+  RunDefaultQueryFirst 0
  }
  ural17 {
   coords 530.289 227.188 7014.458
+  RunDefaultQueryFirst 0
  }
  ural18 {
   coords 526.045 227.38 7008.49
+  RunDefaultQueryFirst 0
  }
  ural19 {
   coords 521.877 227.487 7002.54
+  RunDefaultQueryFirst 0
  }
  ural20 {
   coords 516.256 227.639 6994.973
+  RunDefaultQueryFirst 0
  }
  ural21 {
   coords 539.357 226.884 7025.05
+  RunDefaultQueryFirst 0
  }
 }
 $grp SCR_VehicleSpawn {
