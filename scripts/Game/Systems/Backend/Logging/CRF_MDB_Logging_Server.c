@@ -61,7 +61,7 @@ class CRF_MDB_LoggingServerComponent: SCR_BaseGameModeComponent
 		#ifdef WORKBENCH
 			m_sArmaGuid = GetGame().GetBackendApi().GetLocalIdentityId();
 		#else
-			m_sArmaGuid = GetGame().GetBackendApi().GetplayerIDentityId(playerId);
+			m_sArmaGuid = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
 		#endif
 		
 		m_sPlatform = GetGame().GetBackendApi().GetPlayerPlatformId(playerId);
