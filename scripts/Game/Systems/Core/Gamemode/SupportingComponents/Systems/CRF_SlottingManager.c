@@ -173,7 +173,7 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	Faction GetPlayerSlotFaction(int playerId)
 	{
-		if(!(GetPlayerSlotData(playerId).m_SlotFactionKey).IsEmpty())
+		if(GetPlayerSlotData(playerId) && (!(GetPlayerSlotData(playerId).m_SlotFactionKey).IsEmpty()))
 			return GetGame().GetFactionManager().GetFactionByKey(GetPlayerSlotData(playerId).m_SlotFactionKey);
 		else
 			return null;

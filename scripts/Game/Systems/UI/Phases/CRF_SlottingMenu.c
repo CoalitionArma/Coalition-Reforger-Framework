@@ -645,7 +645,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player) || !SCR_Global.IsAdmin(player))
 				continue;
 			int index;
-			if(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player).GetFactionKey() != "SPEC")
+			if(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player))
 			{
 				switch(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player).GetFactionKey())
 				{
@@ -674,7 +674,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(!GetGame().GetPlayerManager().IsPlayerConnected(player) || SCR_Global.IsAdmin(player))
 				continue;
 			int index;
-			if(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player).GetFactionKey() != "SPEC")
+			if(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player))
 			{
 				switch(CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player).GetFactionKey())
 				{
