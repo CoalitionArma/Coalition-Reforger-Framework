@@ -1,22 +1,31 @@
+//------------------------------------------------------------------------------------
+// CRF_GamemodeClass: Base class definition for the Coalition Reforger Framework Gamemode
+//------------------------------------------------------------------------------------
 class CRF_GamemodeClass : SCR_BaseGameModeClass
 {
 }
 
+//------------------------------------------------------------------------------------
+// Enumerations for game state tracking
+//------------------------------------------------------------------------------------
 enum CRF_EGamemodeState
 {
-	BRIEFING,
-	SLOTTING,
-	GAME,
-	AAR
+	BRIEFING,   // Initial mission briefing phase
+	SLOTTING,   // Player role selection phase
+	GAME,       // Active gameplay phase
+	AAR         // After Action Report phase
 }
 
 enum CRF_ESlottingState
 {
-	LEADERSANDMEDICS,
-	SPECIALTIES,
-	EVERYONE
+	LEADERSANDMEDICS,  // Only leaders and medics can select slots
+	SPECIALTIES,       // Specialist roles become available
+	EVERYONE           // All roles available to all players
 }
 
+//------------------------------------------------------------------------------------
+// Mission briefing descriptor for displaying mission information
+//------------------------------------------------------------------------------------
 [BaseContainerProps()]
 class CRF_MissionDescriptor
 {
@@ -33,14 +42,26 @@ class CRF_MissionDescriptor
 	bool m_bShowForAnyFaction;
 }
 
+//------------------------------------------------------------------------------------
+// CRF_Gamemode: Main gamemode controller for Coalition Reforger Framework
+// Handles mission flow, player management, respawn, and faction settings
+//------------------------------------------------------------------------------------
 class CRF_Gamemode : SCR_BaseGameMode
 {
+	//===================================================================================
+	// ATTRIBUTES AND PROPERTIES
+	//===================================================================================
+	
+	// Game State Properties
+	//------------------------------------------------------------------------------------
 	[RplProp(onRplName: "OnGamemodeStateChanged")]
 	int m_GamemodeState = CRF_EGamemodeState.BRIEFING;
 
 	[RplProp()]
 	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
-
+	
+	// General Gamemode Settings
+	//------------------------------------------------------------------------------------
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
 	int m_iTimeLimitMinutes;
 
@@ -56,26 +77,26 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Gamemode General")]
 	bool m_bSafestartInstantlyEnabled;
 
-	//Descriptions on the left in briefing
+	// Mission Descriptors (shown in briefing)
 	[Attribute("", category: "CRF Gamemode General")]
 	ref	array<ref CRF_MissionDescriptor> m_aMissionDescriptors;
 
-	//This just is what is auto set in the slotting UI for ratio calculation
+	// Faction Settings
+	//------------------------------------------------------------------------------------
 	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
 	int m_iFactionOneRatio;
 
-	//This just is what is auto set in the slotting UI for ratio calculation
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
 	string m_sFactionOneKey;
 
-	//This just is what is auto set in the slotting UI for ratio calculation
 	[Attribute("1", "auto", "", category: "CRF Gamemode Slotting")]
 	int m_iFactionTwoRatio;
 
-	//This just is what is auto set in the slotting UI for ratio calculation
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLU", "BLU"), ParamEnum("OPF", "OPF"), ParamEnum("IND", "IND"), ParamEnum("CIV", "CIV")}, category: "CRF Gamemode Slotting")]
 	string m_sFactionTwoKey;
 
+	// Gearscript Settings
+	//------------------------------------------------------------------------------------
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
 
@@ -89,6 +110,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
 
 	// Respawn Settings
+	//------------------------------------------------------------------------------------
 	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
 	bool m_bRespawnEnabled;
 
@@ -110,10 +132,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("-1", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iCIVTickets;
 
-	//Just stores a generic spawnpoint for players to spawn the spectator cam on. Cause of entities being streamable and such.
+	// Generic spawn point for spectator camera (handles entity streaming)
 	[RplProp()]
 	vector m_vGenericSpawn[4];
 	
+	// Manager References and System Components
+	//------------------------------------------------------------------------------------
 	protected ref ScriptInvoker m_OnStateChanged;
 	protected static ref SCR_PlayerData m_PlayerData;
 	
@@ -123,25 +147,40 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 
-	//------------------------------------------------------------------------------------------------
+	//===================================================================================
+	// STATIC METHODS
+	//===================================================================================
+	
+	/**
+	 * Returns the singleton instance of the CRF_Gamemode
+	 * @return CRF_Gamemode instance or null if not available
+	 */
 	static CRF_Gamemode GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_Gamemode.Cast(gameMode);
-		else
+		if (!gameMode)
 			return null;
+			
+		return CRF_Gamemode.Cast(gameMode);
 	}
 
-	//------------------------------------------------------------------------------------------------
+	//===================================================================================
+	// INITIALIZATION AND SETUP
+	//===================================================================================
+	
+	/**
+	 * Initialize the gamemode and all required manager instances
+	 * @param owner The entity that owns this component
+	 */
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
 		
+		// Load moderator config on dedicated server
 		if (RplSession.Mode() == RplMode.Dedicated)
 			CRF_ModeratorConfig.LoadConfig();	
 	
-		// Get all managers we need for the gamemode
+		// Initialize all manager references
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
@@ -149,8 +188,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 	}
 	
-	//Advances the slotting state
-	//------------------------------------------------------------------------------------------------
+	//===================================================================================
+	// STATE MANAGEMENT
+	//===================================================================================
+	
+	/**
+	 * Progress to the next slotting state
+	 * Updates all slotting UI and synchronizes across network
+	 */
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
@@ -158,10 +203,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		Replication.BumpMe();
 	}
 
-	//Advances the overall gamemode state
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Progress to the next gamemode state
+	 * @param overriden Set to true to allow advancing from AAR or GAME states
+	 */
 	void AdvanceGamemodeState(bool overriden = false)
 	{
+		// Prevent advancing from AAR or GAME unless explicitly overridden
 		if ((m_GamemodeState == CRF_EGamemodeState.AAR || m_GamemodeState == CRF_EGamemodeState.GAME) && !overriden)
 			return;
 
@@ -170,7 +218,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 		OnGamemodeStateChanged();
 	}
 
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Get the state change event invoker
+	 * @return ScriptInvoker for state change events
+	 */
 	ScriptInvoker GetOnStateChanged()
 	{
 		if (!m_OnStateChanged)
@@ -179,110 +230,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		return m_OnStateChanged;
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	protected override void OnControllableSpawned(IEntity entity)
-	{
-		super.OnControllableSpawned(entity);
-		
-		if (!m_GearscriptManager)
-			m_GearscriptManager = CRF_GearscriptManager.GetInstance();
-		
-		int delay = 150;
-		if (m_GamemodeState != CRF_EGamemodeState.GAME)
-		{
-			entity.GetTransform(m_vGenericSpawn);
-			delay = 2000;
-		}
-		
-		// Early return conditions
-		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData())
-			// Schedule gear setup with delay
-			GetGame().GetCallqueue().CallLater(m_GearscriptManager.SetupAddGearToEntity, delay, false, entity, entity.GetPrefabData().GetPrefabName());
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)
-	{
-		super.OnControllableDestroyed(entity, killerEntity, instigator);
-
-		if (RplSession.Mode() == RplMode.Client)
-			return;
-
-		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
-
-		int playerId = instigatorContextData.GetVictimPlayerID();
-		
-		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)
-			return;
-
-		int delay = 2000;
-		if (CRF_GamemodeManager.IsSpectator(entity))
-			delay = 0;
-		
-		string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
-
-		// If respawn is enabled
-		if (m_bRespawnEnabled && !CRF_GamemodeManager.IsSpectator(entity) && m_GamemodeState != CRF_EGamemodeState.AAR && m_RespawnManager.TicketsRemaining(faction))
-		{
-			// Remove tickets if used
-			m_RespawnManager.SubtractTicket(faction);
-
-			// Put them in death screen/timer screen
-			GetGame().GetCallqueue().CallLater(m_RplBroadcastManager.SendRespawnScreen, (delay + 150), false, playerId);
-		} else {
-			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetCharacterSlotID(entity), true);
-			m_SlottingManager.UpdateSlotCharacter(m_SlottingManager.GetCharacterSlotID(entity), RplId.Invalid())
-		};
-
-		//Throw em into spectator
-		GetGame().GetCallqueue().CallLater(m_GamemodeManager.EnterSpectator, delay, false, playerId, entity);
-	}
-
-	//Puts the player into an entity when they connect
-	//------------------------------------------------------------------------------------------------
-	protected override void OnPlayerAuditSuccess(int iPlayerID)
-	{
-		super.OnPlayerAuditSuccess(iPlayerID);
-		
-		if (RplSession.Mode() == RplMode.Client)
-			return;
-		
-		if(m_GamemodeState == CRF_EGamemodeState.BRIEFING || m_GamemodeState == CRF_EGamemodeState.SLOTTING || m_GamemodeState == CRF_EGamemodeState.AAR)
-			m_GamemodeManager.InitilizePlayer(iPlayerID);
-		
-		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
-		
-		if (!playerIdentity.IsEmpty() && CRF_ModeratorConfig.IsModerator(playerIdentity))
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.SetPlayerModerator, 5000, false, iPlayerID);
-	};
-	
-	//------------------------------------------------------------------------------------------------
-	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
-	{
-		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
-
-		// RespawnSystemComponent is not a SCR_BaseGameModeComponent, so for now we have to
-		// propagate these events manually.
-		if (IsMaster())
-			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
-
-		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
-		//Updates connection status
-		if (m_SlottingManager.IsPlayerInASlot(SCR_PlayerController.GetLocalPlayerId()))
-		{
-			m_SlottingManager.SlottingChangesUpdate();
-		}
-	}
-	
-	protected void OnDataReceived(SCR_PlayerData playerData)
-	{
-		m_PlayerData = playerData;
-		m_PlayerData.CalculateStatsChange();
-	}
-
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Handle gamemode state changes
+	 * Triggers UI updates and state-specific logic
+	 */
 	protected void OnGamemodeStateChanged()
 	{
+		// Server-side state change handling
 		if (RplSession.Mode() == RplMode.Dedicated || RplSession.Mode() == RplMode.Listen)
 		{
 			if (m_OnStateChanged)
@@ -291,58 +245,258 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (m_GamemodeState == CRF_EGamemodeState.AAR)
 				EnterAAR();
 		}
+		// Client-side UI update
 		else
+		{
 			CRF_PlayerControllerComponent.GetInstance().OpenCurrentStateMenu();
+		}
 	}
-
-	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Handle entering the After Action Report state
+	 * Processes player data and prepares for mission end
+	 */
 	protected void EnterAAR()
 	{
 		array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
+		
 		foreach (int player : players)
 		{
+			// Skip disconnected players
 			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
 
+			// Skip players already in spectator
 			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(player)))
 				continue;
 
-			HitZone defaultHitZone = SCR_CharacterDamageManagerComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(player).FindComponent(SCR_CharacterDamageManagerComponent)).GetDefaultHitZone();
+			// Set player health to zero (kill them)
+			IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(player);
+			if (!playerEntity)
+				continue;
+				
+			SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(
+				playerEntity.FindComponent(SCR_CharacterDamageManagerComponent)
+			);
 			
-			if(defaultHitZone)
+			if (!damageManager)
+				continue;
+				
+			HitZone defaultHitZone = damageManager.GetDefaultHitZone();
+			if (defaultHitZone)
 				defaultHitZone.SetHealth(0);
 
-			// Log player data
+			// Process player statistics data
 			if (!m_PlayerData)
 			{
 				SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
 				if (!dataCollector)
 				{
-					Print ("SCR_CareerEndScreenUI: No data collector was found.", LogLevel.ERROR);
+					Print("SCR_CareerEndScreenUI: No data collector was found.", LogLevel.ERROR);
 					return;
 				}
 		
 				m_PlayerData = dataCollector.GetPlayerData(player, false);
 		
-				//If there's still no player data, we wait for the invoker on data received to let us now that we got the instance through rpl
+				// If player data isn't available yet, register for notification when it arrives
 				if (!m_PlayerData)
 				{
-					SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent));
+					SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
+						GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
+					);
+					
 					if (communicationComponent)
 						communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
 				}
 				else if (!m_PlayerData.IsDataProgressionReady())
+				{
 					m_PlayerData.CalculateStatsChange();
+				}
 			}
 		}
 	}
+	
+	//===================================================================================
+	// PLAYER MANAGEMENT
+	//===================================================================================
+	
+	/**
+	 * Handle player data received from network
+	 * @param playerData Player statistics and progress data
+	 */
+	protected void OnDataReceived(SCR_PlayerData playerData)
+	{
+		m_PlayerData = playerData;
+		m_PlayerData.CalculateStatsChange();
+	}
+	
+	/**
+	 * Process player connection after authentication
+	 * @param iPlayerID ID of the connecting player
+	 */
+	protected override void OnPlayerAuditSuccess(int iPlayerID)
+	{
+		super.OnPlayerAuditSuccess(iPlayerID);
+		
+		// Skip processing on client
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+		
+		// Initialize player if not in GAME state
+		if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
+			m_GamemodeState == CRF_EGamemodeState.SLOTTING || 
+			m_GamemodeState == CRF_EGamemodeState.AAR)
+		{
+			m_GamemodeManager.InitilizePlayer(iPlayerID);
+		}
+		
+		// Check if player is a moderator and set privileges
+		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
+		if (!playerIdentity.IsEmpty() && CRF_ModeratorConfig.IsModerator(playerIdentity))
+		{
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.SetPlayerModerator, 5000, false, iPlayerID);
+		}
+	}
+	
+	/**
+	 * Handle player disconnection
+	 * @param playerId ID of the disconnecting player
+	 * @param cause Reason for disconnection
+	 * @param timeout Timeout duration if applicable
+	 */
+	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
+
+		// Propagate event to respawn system (not a SCR_BaseGameModeComponent)
+		if (IsMaster())
+			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
+
+		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
+		
+		// Update slotting UI if local player is in a slot
+		if (m_SlottingManager.IsPlayerInASlot(SCR_PlayerController.GetLocalPlayerId()))
+		{
+			m_SlottingManager.SlottingChangesUpdate();
+		}
+	}
+	
+	//===================================================================================
+	// ENTITY MANAGEMENT
+	//===================================================================================
+	
+	/**
+	 * Process entity spawning for players
+	 * @param entity The spawned entity
+	 */
+	protected override void OnControllableSpawned(IEntity entity)
+	{
+		super.OnControllableSpawned(entity);
+		
+		// Ensure gearscript manager is available
+		if (!m_GearscriptManager)
+			m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		
+		// Set delay based on gamemode state
+		int delay = 150;
+		if (m_GamemodeState != CRF_EGamemodeState.GAME)
+		{
+			entity.GetTransform(m_vGenericSpawn);
+			delay = 2000;
+		}
+		
+		// Apply gearscript if in play mode and not on client
+		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData())
+		{
+			// Schedule gear setup with appropriate delay
+			GetGame().GetCallqueue().CallLater(
+				m_GearscriptManager.SetupAddGearToEntity, 
+				delay, 
+				false, 
+				entity, 
+				entity.GetPrefabData().GetPrefabName()
+			);
+		}
+	}
+
+	/**
+	 * Process entity death/destruction for players
+	 * Handles respawn and spectator logic
+	 * @param entity The destroyed entity
+	 * @param killerEntity The entity that caused the destruction
+	 * @param instigator The instigator context
+	 */
+	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)
+	{
+		super.OnControllableDestroyed(entity, killerEntity, instigator);
+
+		// Skip processing on client
+		if (RplSession.Mode() == RplMode.Client)
+			return;
+
+		// Create instigator context for tracking kill details
+		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
+		int playerId = instigatorContextData.GetVictimPlayerID();
+		
+		// Return if not a player character
+		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)
+			return;
+
+		// Determine delay time for respawn/spectator
+		int delay = 2000;
+		if (CRF_GamemodeManager.IsSpectator(entity))
+			delay = 0;
+		
+		// Get player faction
+		string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
+
+		// Handle respawn if enabled and tickets available
+		if (m_bRespawnEnabled && 
+			!CRF_GamemodeManager.IsSpectator(entity) && 
+			m_GamemodeState != CRF_EGamemodeState.AAR && 
+			m_RespawnManager.TicketsRemaining(faction))
+		{
+			// Deduct ticket
+			m_RespawnManager.SubtractTicket(faction);
+
+			// Display respawn screen
+			GetGame().GetCallqueue().CallLater(
+				m_RplBroadcastManager.SendRespawnScreen, 
+				(delay + 150), 
+				false, 
+				playerId
+			);
+		} 
+		else 
+		{
+			// Update slot state for permanent death
+			int slotID = m_SlottingManager.GetCharacterSlotID(entity);
+			m_SlottingManager.UpdateSlotDeathState(slotID, true);
+			m_SlottingManager.UpdateSlotCharacter(slotID, RplId.Invalid());
+		}
+
+		// Move player to spectator
+		GetGame().GetCallqueue().CallLater(
+			m_GamemodeManager.EnterSpectator, 
+			delay, 
+			false, 
+			playerId, 
+			entity
+		);
+	}
 }
 
-//Ditto the RL Devs WHY IS THIS HARDCODED
+//------------------------------------------------------------------------------------
+// Fix for manual camera to work with spectator menu
+//------------------------------------------------------------------------------------
 modded class SCR_ManualCamera
 {
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Determine if camera control is disabled by menu
+	 * Modified to allow camera control in spectator menu
+	 * @return True if camera should be disabled, false otherwise
+	 */
 	override protected bool IsDisabledByMenu()
 	{
 		if (!m_MenuManager)
@@ -352,8 +506,8 @@ modded class SCR_ManualCamera
 			return true;
 
 		MenuBase topMenu = m_MenuManager.GetTopMenu();
-
-		// WHY IT'S HARDCODED?
+		
+		// Allow camera control in editor and spectator menus
 		return topMenu && (!topMenu.IsInherited(EditorMenuUI) && !topMenu.IsInherited(CRF_SpectatorMenuUI));
 	}
 }
