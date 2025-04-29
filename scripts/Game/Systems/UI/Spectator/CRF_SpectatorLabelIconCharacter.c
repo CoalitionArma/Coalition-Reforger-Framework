@@ -73,7 +73,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 	{
 		if(m_eEntity.FindComponent(RplComponent))
 		{
-			CRF_SlotData slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter((RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id()));
+			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter((RplComponent.Cast(m_eEntity.FindComponent(RplComponent)).Id()));
 			
 			int playerId = 0;
 			if(slotData)
@@ -88,7 +88,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 			} else 
 			{
 				if (slotData)
-					m_wSpectatorLabelText.SetText(slotData.m_SlotUIData.m_sSlotName);
+					m_wSpectatorLabelText.SetText(slotData.m_sSlotName);
 				else 
 					m_wSpectatorLabelText.SetText("");
 			}

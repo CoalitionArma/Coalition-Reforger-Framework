@@ -380,11 +380,11 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	
 	void InitSlots()
 	{
-		map<int, ref CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
-		foreach (int slotId, ref CRF_SlotData slotData : tempMap)
+		foreach (int slotId, ref CRF_SlotDataContainer slotData : tempMap)
 		{			
-			if(slotData.m_SlotUIData.m_bIsLockedSlot || slotData.m_SlotUIData.m_bIsDeadSlot)
+			if(slotData.m_bIsLockedSlot || slotData.m_bIsDeadSlot)
 				continue;
 			
 			switch(slotData.m_SlotFactionKey)
@@ -419,7 +419,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("UnslotPlayerBorder")).SetColor(m_fSelectedFaction.GetFactionColor());
 		PanelWidget.Cast(m_wRoot.FindAnyWidget("RoleBorder")).SetColor(m_fSelectedFaction.GetFactionColor());
 		
-		map<int, ref CRF_SlotData> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		array<SCR_AIGroup> tempGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
 		array<SCR_AIGroup> groups ={};
@@ -452,22 +452,22 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			}
 			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().Update(SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent)).GetMilitarySymbol());
 			
-			foreach(int slotId, ref CRF_SlotData slotData : tempMap)
+			foreach(int slotId, ref CRF_SlotDataContainer slotData : tempMap)
 			{	
 				if (slotData.m_iSlotCurrentGroup != RplComponent.Cast(group.FindComponent(RplComponent)).Id() 
 					|| GetGame().GetFactionManager().GetFactionByKey(slotData.m_SlotFactionKey) != m_fSelectedFaction)
 					continue;
 				
-				if(slotData.m_SlotUIData.m_bIsLockedSlot && (!SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId())))
+				if(slotData.m_bIsLockedSlot && (!SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId())))
 					continue;
 				
-				if(slotData.m_SlotUIData.m_bIsDeadSlot)
+				if(slotData.m_bIsDeadSlot)
 				{
 					deadPlayersInGroup++;
 					continue;
 				}
 				
-				if(slotData.m_iSlotCurrentPlayerId == 0 && slotData.m_SlotUIData.m_bIsDeadSlot)
+				if(slotData.m_iSlotCurrentPlayerId == 0 && slotData.m_bIsDeadSlot)
 					continue;
 				
 				int index = m_cSlotListBoxComponent.AddItemSlot(null , slotId);
@@ -487,7 +487,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				}
 				m_cSlotListBoxComponent.GetCRFElementComponent(index).GetSlotButton().m_OnClicked.Insert(SelectSlotDelay);				
 				
-				if(slotData.m_SlotUIData.m_iSlotType == CRF_ESlotType.LEADERORMEDIC && slotData.m_iSlotCurrentPlayerId > 0)
+				if(slotData.m_iSlotType == CRF_ESlotType.LEADERORMEDIC && slotData.m_iSlotCurrentPlayerId > 0)
 				{
 					int orbatIndex = m_cOrbatListBoxComponent.AddItemSlot(null , slotId, "{BD36FFAE9AB69175}UI/Listbox/PlayerSlotListboxOrbatElementNonAdmin.layout");
 					if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.m_iSlotCurrentPlayerId))
@@ -501,7 +501,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 					
 					if(leadersInGroup == 0)
 					{
-						m_cOrbatListBoxComponent.GetCRFElementComponent(orbatGroupIndex).SetRoleImage(slotData.m_SlotUIData.m_rSlotIconResource, "groupRoleName");
+						m_cOrbatListBoxComponent.GetCRFElementComponent(orbatGroupIndex).SetRoleImage(slotData.m_rSlotIconResource, "groupRoleName");
 						m_cOrbatListBoxComponent.GetCRFElementComponent(orbatGroupIndex).SetGroupIconColor(GetGame().GetFactionManager().GetFactionByKey(slotData.m_SlotFactionKey).GetFactionColor());
 					}
 					leadersInGroup++;
@@ -511,7 +511,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				{	
 					m_cSlotListBoxComponent.GetCRFElementComponent(index).GetLockButton().m_OnClicked.Insert(LockSlotDelay);
 					m_cSlotListBoxComponent.GetCRFElementComponent(index).GetKickButton().m_OnClicked.Insert(KickSlotDelay);
-					if(slotData.m_SlotUIData.m_bIsLockedSlot)
+					if(slotData.m_bIsLockedSlot)
 						m_cSlotListBoxComponent.GetCRFElementComponent(index).SetLockImage("{564794579B2DB679}UI/Textures/Editor/Attributes/Attribute_Locked.edds", "lockimage");
 				}
 			}
@@ -599,7 +599,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	
 	void LockSlot()
 	{
-		if(CRF_SlottingManager.GetInstance().GetSlotData(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId).m_SlotUIData.m_bIsLockedSlot)
+		if(CRF_SlottingManager.GetInstance().GetSlotData(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId).m_bIsLockedSlot)
 			CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId, false);
 		else
 			CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(m_cSlotListBoxComponent.GetCRFElementComponent(m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId, true);
@@ -777,9 +777,9 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		bool isAdmin = SCR_Global.IsAdmin(GetGame().GetPlayerController().GetPlayerId());
 		bool leaderAndMedicPhase = m_Gamemode.m_SlottingState == 0;
-		bool slotNotLeaderOrMedic = slottingManager.GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC;
+		bool slotNotLeaderOrMedic = slottingManager.GetSlotData(slotId).m_iSlotType != CRF_ESlotType.LEADERORMEDIC;
 		bool specialtyPhase = m_Gamemode.m_SlottingState == 1;
-		bool slotNotSpecialtyOrLM = slottingManager.GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC && slottingManager.GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.SPECIALTY;
+		bool slotNotSpecialtyOrLM = slottingManager.GetSlotData(slotId).m_iSlotType != CRF_ESlotType.LEADERORMEDIC && slottingManager.GetSlotData(slotId).m_iSlotType != CRF_ESlotType.SPECIALTY;
 		if (slotId == 0)
 			return;
 		

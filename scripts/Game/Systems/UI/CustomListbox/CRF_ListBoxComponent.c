@@ -19,7 +19,7 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		
 		comp.SetToggleable(true);
 		comp.SetData(data);
-		comp.SetRoleImage(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_rSlotIconResource, "roleimage");
+		comp.SetRoleImage(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_rSlotIconResource, "roleimage");
 		comp.SetRoleColor(GetGame().GetFactionManager().GetFactionByKey(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotFactionKey).GetFactionColor());
 		comp.m_iSlotId = slotId;
 		
@@ -71,28 +71,28 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(newWidget.FindHandler(CRF_ListBoxElementComponent));
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		
-		comp.SetRoleText(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_sSlotName);
+		comp.SetRoleText(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_sSlotName);
 		comp.SetToggleable(true);
 		comp.SetData(data);
-		if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_bIsLockedSlot)
+		if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_bIsLockedSlot)
 			comp.SetPlayerText("CLOSED");
 		else if(m_Gamemode.m_SlottingState == 0)
 			{
-				if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC)
+				if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_iSlotType != CRF_ESlotType.LEADERORMEDIC)
 					comp.SetPlayerText("CLOSED");
 				else
 					comp.SetPlayerText("OPEN");
 			}		
 		else if(m_Gamemode.m_SlottingState == 1)
 		{
-			if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC && CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_iSlotType != CRF_ESlotType.SPECIALTY)
+			if(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_iSlotType != CRF_ESlotType.LEADERORMEDIC && CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_iSlotType != CRF_ESlotType.SPECIALTY)
 				comp.SetPlayerText("CLOSED");
 			else
 				comp.SetPlayerText("OPEN");
 		}
 		else
 			comp.SetPlayerText("OPEN");
-		comp.SetRoleImage(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotUIData.m_rSlotIconResource, "roleimage");
+		comp.SetRoleImage(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_rSlotIconResource, "roleimage");
 		comp.SetRoleColor(GetGame().GetFactionManager().GetFactionByKey(CRF_SlottingManager.GetInstance().GetSlotData(slotId).m_SlotFactionKey).GetFactionColor());
 		comp.m_iSlotId = slotId;
 		

@@ -151,7 +151,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		{
 			SCR_AIGroup playableGroup = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(owner.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
 			if (playableGroup)
-				CRF_SlottingManager.GetInstance().AddPlayableEntity(owner);
+				CRF_SlottingManager.GetInstance().AddPlayableEntityToManager(owner);
 		}
 
 		//Sets location and all the physics BS on all machines
