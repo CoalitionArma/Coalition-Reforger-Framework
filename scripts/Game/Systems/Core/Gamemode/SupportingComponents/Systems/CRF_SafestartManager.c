@@ -390,18 +390,6 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 12500);
 
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
-
-			// Update logging component since game is now live
-			CRF_MDB_LoggingServerComponent logCom = CRF_MDB_LoggingServerComponent.GetInstance();
-			if (logCom)
-			{
-				logCom.m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
-				SCR_FactionManager scrFM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-				logCom.m_iBluforCount = scrFM.GetFactionPlayerCount(GetGame().GetFactionManager().GetFactionByKey("BLUFOR"));
-				logCom.m_iOpforCount = scrFM.GetFactionPlayerCount(GetGame().GetFactionManager().GetFactionByKey("OPFOR"));
-				logCom.m_iIndforCount = scrFM.GetFactionPlayerCount(GetGame().GetFactionManager().GetFactionByKey("INDFOR"));
-				logCom.m_iCivCount = scrFM.GetFactionPlayerCount(GetGame().GetFactionManager().GetFactionByKey("CIV"));
-			};
 		}
 	};
 
