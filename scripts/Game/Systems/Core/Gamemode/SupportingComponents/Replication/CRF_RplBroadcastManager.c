@@ -2,6 +2,10 @@ class CRF_RplBroadcastManagerClass : ScriptComponentClass {}
 
 class CRF_RplBroadcastManager : ScriptComponent
 {
+	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_RespawnManager m_RespawnManager;
+	protected CRF_MenuManager m_MenuManager;
+	
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
 	{
@@ -10,6 +14,17 @@ class CRF_RplBroadcastManager : ScriptComponent
 			return CRF_RplBroadcastManager.Cast(gameMode.FindComponent(CRF_RplBroadcastManager));
 		else
 			return null;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		// Get all instances we need for this manager.
+		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -158,7 +173,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendAdminMessage(string data)
 	{
-		if (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator())
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
 			return;
 
 		PlayerController pc = GetGame().GetPlayerController();
@@ -239,11 +254,13 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 		if (!widget)
 			return;
+		
+		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
 
-		if (CRF_PlayerControllerComponent.GetInstance().m_wSavedHintWidget)
-			delete CRF_PlayerControllerComponent.GetInstance().m_wSavedHintWidget;
+		if (playerControllerComp.m_wSavedHintWidget)
+			delete playerControllerComp.m_wSavedHintWidget;
 
-		CRF_PlayerControllerComponent.GetInstance().m_wSavedHintWidget = widget;
+		playerControllerComp.m_wSavedHintWidget = widget;
 
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
 		hint.ShowHint(data, 8000);
@@ -255,10 +272,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		if (sendToPlayer)
 		{
-			if (GetGame().GetPlayerController().GetPlayerId() != playerId && (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator()))
+			if (GetGame().GetPlayerController().GetPlayerId() != playerId && (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator()))
 				return;
 		} else {
-			if (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator())
+			if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
 				return;
 		}
 
@@ -295,7 +312,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		GetGame().GetMenuManager().CloseAllMenus();
 		MenuBase respawnMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 
-		GetGame().GetCallqueue().CallLater(CRF_RespawnManager.GetInstance().RespawnTimer, 1000, true);
+		GetGame().GetCallqueue().CallLater(m_RespawnManager.RespawnTimer, 1000, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -324,8 +341,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(compWidget.FindHandler(CRF_ListBoxElementComponent));
 		comp.m_iPlayerId = requestId;
 		comp.m_iChannelId = channel;
-		comp.GetAccept().m_OnClicked.Insert(CRF_MenuManager.GetInstance().Accept);
-		comp.GetDeny().m_OnClicked.Insert(CRF_MenuManager.GetInstance().Deny);
+		comp.GetAccept().m_OnClicked.Insert(m_MenuManager.Accept);
+		comp.GetDeny().m_OnClicked.Insert(m_MenuManager.Deny);
 		FrameSlot.SetPosX(compWidget.FindAnyWidget("ButtonAnim"), 500);
 	}
 	

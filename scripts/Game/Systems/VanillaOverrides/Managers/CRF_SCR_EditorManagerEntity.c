@@ -139,7 +139,7 @@ modded class SCR_EditorManagerEntity
 					SCR_PlayerController.GetLocalControlledEntity().FindComponent(CRF_PlayableCharacter));
 					
 				// Return if character is not playable and player is not spectating
-				if (!playableChar.IsPlayable() && !CRF_GamemodeManager.IsSpectator())
+				if (!playableChar.m_bIsPlayable && !CRF_GamemodeManager.IsSpectator())
 					return;
 			}
 			// Return if not a playable character and not spectating

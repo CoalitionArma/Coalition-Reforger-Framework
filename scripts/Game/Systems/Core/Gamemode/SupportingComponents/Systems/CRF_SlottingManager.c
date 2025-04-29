@@ -21,8 +21,11 @@ class CRF_SlottingManager : ScriptComponent
 	// Script Invoker for all your invoker needs
 	protected ref ScriptInvoker m_OnSlottingUpdate;
 	
+	// How we propagate slotting updates
 	[RplProp(onRplName: "UpdateClientSlotsMap")]
 	protected int m_SlottingUpdate;
+	
+	protected CRF_Gamemode m_Gamemode;
 	
 	//------------------------------------------------------------------------------------------------
 	static CRF_SlottingManager GetInstance()
@@ -33,6 +36,15 @@ class CRF_SlottingManager : ScriptComponent
 		else
 			return null;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Init method
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+
+		m_Gamemode = CRF_Gamemode.GetInstance();
+	};
 	
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker GetOnSlottingUpdate()
@@ -329,7 +341,7 @@ class CRF_SlottingManager : ScriptComponent
 		
 		CRF_PlayableCharacter playableCharComp = CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter));
 		
-		if(!playableCharComp || !playableCharComp.IsPlayable())
+		if(!playableCharComp || !playableCharComp.m_bIsPlayable)
 			return;
 		
 		SCR_EditableCharacterComponent editableCharComp = SCR_EditableCharacterComponent.Cast(entity.FindComponent(SCR_EditableCharacterComponent));
@@ -355,20 +367,20 @@ class CRF_SlottingManager : ScriptComponent
 		slotData.m_rSlotResource = entity.GetPrefabData().GetPrefabName();
 		slotData.m_iSlotCurrentCharacter = RplComponent.Cast(entity.FindComponent(RplComponent)).Id();
 		
-		if (!playableCharComp.GetName().IsEmpty())
-			slotData.m_sSlotName = playableCharComp.GetName();
+		if (!playableCharComp.m_sName.IsEmpty())
+			slotData.m_sSlotName = playableCharComp.m_sName;
 		else
 			slotData.m_sSlotName = editableCharComp.GetDisplayName();	
 		
 		slotData.m_rSlotIconResource = editableCharComp.GetInfo().GetIconPath();
-		slotData.m_iSlotType = playableCharComp.GetSlottingRole();
+		slotData.m_iSlotType = playableCharComp.m_SlottingRole;
 				
 		m_iLatestSlotID++;
 		m_mSlotsMap.Set(m_iLatestSlotID, slotData);
 		
 		SlottingChangesUpdate();
 		
-		if(CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		if(m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 }

@@ -116,6 +116,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	protected ref ScriptInvoker m_OnStateChanged;
 	protected static ref SCR_PlayerData m_PlayerData;
+	
+	protected CRF_RespawnManager m_RespawnManager;
+	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_SlottingManager m_SlottingManager;
+	protected CRF_GearscriptManager m_GearscriptManager;
+	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_Gamemode GetInstance()
@@ -133,7 +139,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 		super.EOnInit(owner);
 		
 		if (RplSession.Mode() == RplMode.Dedicated)
-			CRF_ModeratorConfig.LoadConfig();
+			CRF_ModeratorConfig.LoadConfig();	
+	
+		// Get all managers we need for the gamemode
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
+		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 	}
 	
 	//Advances the slotting state
@@ -141,7 +154,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
-		CRF_SlottingManager.GetInstance().SlottingChangesUpdate();
+		m_SlottingManager.SlottingChangesUpdate();
 		Replication.BumpMe();
 	}
 
@@ -171,8 +184,11 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		super.OnControllableSpawned(entity);
 		
+		if (!m_GearscriptManager)
+			m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		
 		int delay = 150;
-		if(m_GamemodeState != CRF_EGamemodeState.GAME)
+		if (m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
 			entity.GetTransform(m_vGenericSpawn);
 			delay = 2000;
@@ -181,7 +197,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Early return conditions
 		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData())
 			// Schedule gear setup with delay
-			GetGame().GetCallqueue().CallLater(CRF_GearscriptManager.GetInstance().SetupAddGearToEntity, delay, false, entity, entity.GetPrefabData().GetPrefabName());
+			GetGame().GetCallqueue().CallLater(m_GearscriptManager.SetupAddGearToEntity, delay, false, entity, entity.GetPrefabData().GetPrefabName());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -206,20 +222,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 		string faction = SCR_FactionManager.SGetPlayerFaction(playerId).GetFactionKey();
 
 		// If respawn is enabled
-		if (m_bRespawnEnabled && !CRF_GamemodeManager.IsSpectator(entity) && m_GamemodeState != CRF_EGamemodeState.AAR && CRF_RespawnManager.GetInstance().TicketsRemaining(faction))
+		if (m_bRespawnEnabled && !CRF_GamemodeManager.IsSpectator(entity) && m_GamemodeState != CRF_EGamemodeState.AAR && m_RespawnManager.TicketsRemaining(faction))
 		{
 			// Remove tickets if used
-			CRF_RespawnManager.GetInstance().SubtractTicket(faction);
+			m_RespawnManager.SubtractTicket(faction);
 
 			// Put them in death screen/timer screen
-			GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().SendRespawnScreen, (delay + 150), false, playerId);
+			GetGame().GetCallqueue().CallLater(m_RplBroadcastManager.SendRespawnScreen, (delay + 150), false, playerId);
 		} else {
-			CRF_SlottingManager.GetInstance().UpdateSlotDeathState(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), true);
-			CRF_SlottingManager.GetInstance().UpdateSlotCharacter(CRF_SlottingManager.GetInstance().GetCharacterSlotID(entity), RplId.Invalid())
+			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetCharacterSlotID(entity), true);
+			m_SlottingManager.UpdateSlotCharacter(m_SlottingManager.GetCharacterSlotID(entity), RplId.Invalid())
 		};
 
 		//Throw em into spectator
-		GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().EnterSpectator, delay, false, playerId, entity);
+		GetGame().GetCallqueue().CallLater(m_GamemodeManager.EnterSpectator, delay, false, playerId, entity);
 	}
 
 	//Puts the player into an entity when they connect
@@ -232,12 +248,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 		
 		if(m_GamemodeState == CRF_EGamemodeState.BRIEFING || m_GamemodeState == CRF_EGamemodeState.SLOTTING || m_GamemodeState == CRF_EGamemodeState.AAR)
-			CRF_GamemodeManager.GetInstance().InitilizePlayer(iPlayerID);
+			m_GamemodeManager.InitilizePlayer(iPlayerID);
 		
 		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
 		
 		if (!playerIdentity.IsEmpty() && CRF_ModeratorConfig.IsModerator(playerIdentity))
-			GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().SetPlayerModerator, 5000, false, iPlayerID);
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.SetPlayerModerator, 5000, false, iPlayerID);
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -252,9 +268,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
 		//Updates connection status
-		if (CRF_SlottingManager.GetInstance().IsPlayerInASlot(SCR_PlayerController.GetLocalPlayerId()))
+		if (m_SlottingManager.IsPlayerInASlot(SCR_PlayerController.GetLocalPlayerId()))
 		{
-			CRF_SlottingManager.GetInstance().SlottingChangesUpdate();
+			m_SlottingManager.SlottingChangesUpdate();
 		}
 	}
 	

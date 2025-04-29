@@ -10,6 +10,12 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	[RplProp()]
 	protected string m_sServerWorldTime;
 	
+	protected CRF_Gamemode m_Gamemode;
+	protected CRF_SlottingManager m_SlottingManager;
+	protected CRF_SafestartManager m_SafestartManager;
+	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
+	
 	//------------------------------------------------------------------------------------------------
 	static CRF_GamemodeManager GetInstance()
 	{
@@ -19,6 +25,19 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		else
 			return null;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void OnPostInit(IEntity owner)
+	{	
+		super.OnPostInit(owner);
+		
+		// Get all managers we need for this manager
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_SafestartManager = CRF_SafestartManager.GetInstance();
+		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
+	};
 	
 	//------------------------------------------------------------------------------------------------
 	static bool IsSpectator(IEntity entity)
@@ -45,17 +64,15 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void InitilizePlayer(int playerId, vector overrideLocation = vector.Zero)
 	{
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-		
-		if (!slottingManager.IsPlayerInASlot(playerId) || slottingManager.IsPlayerConsideredDead(playerId)) 
+		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId)) 
 		{
-			if(!CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+			if(!IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				EnterSpectator(playerId);
 			
 			return;
 		}
 
-		IEntity playerCharacter = slottingManager.GetPlayerSlotCharacter(playerId);
+		IEntity playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
 
 		if (!playerCharacter)
 		{
@@ -65,11 +82,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			if(overrideLocation != vector.Zero)
 				spawnParams.Transform[3] = overrideLocation;
 			else
-				slottingManager.GetPlayerSlotVector(playerId, spawnParams.Transform);
+				m_SlottingManager.GetPlayerSlotVector(playerId, spawnParams.Transform);
 			
-			playerCharacter = GetGame().SpawnEntityPrefab(Resource.Load(slottingManager.GetPlayerSlotResource(playerId)), GetGame().GetWorld(), spawnParams);
+			playerCharacter = GetGame().SpawnEntityPrefab(Resource.Load(m_SlottingManager.GetPlayerSlotResource(playerId)), GetGame().GetWorld(), spawnParams);
 		
-			slottingManager.UpdateSlotCharacter(slottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id());
+			m_SlottingManager.UpdateSlotCharacter(m_SlottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id());
 			
 			CRF_PlayableCharacter playabeCharComp = CRF_PlayableCharacter.Cast(playerCharacter.FindComponent(CRF_PlayableCharacter));
 			
@@ -81,17 +98,17 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 
 		playerController.SetInitialMainEntity(playerCharacter);
 
-		SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(slottingManager.GetPlayerSlotFaction(playerId));
+		SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(m_SlottingManager.GetPlayerSlotFaction(playerId));
 
-		int groupId = slottingManager.GetPlayerSlotGroup(playerId).GetGroupID();
+		int groupId = m_SlottingManager.GetPlayerSlotGroup(playerId).GetGroupID();
 
 		if (groupId != -1)
 		{
-			SCR_GroupsManagerComponent.GetInstance().AddPlayerToGroup(groupId, playerId);
+			m_GroupsManagerComponent.AddPlayerToGroup(groupId, playerId);
 			SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
 		}
 
-		CRF_RplBroadcastManager.GetInstance().InitilizePlayer(playerId);
+		m_RplBroadcastManager.InitilizePlayer(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -102,7 +119,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 
 		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, initialEntity);
 
-		SCR_AIGroup currentGroup = SCR_GroupsManagerComponent.GetInstance().GetPlayerGroup(playerId);
+		SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
 		if (currentGroup)
 			currentGroup.RemovePlayer(playerId);
 		
@@ -113,18 +130,18 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 
 		vector cameraPos[4];
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
-			if (CRF_SlottingManager.GetInstance().IsPlayerInASlot(playerId) && entity != null)
+			if (m_SlottingManager.IsPlayerInASlot(playerId) && entity != null)
 			{
 				entity.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
 			} else
-				cameraPos[3] = CRF_Gamemode.GetInstance().m_vGenericSpawn[3];
+				cameraPos[3] = m_Gamemode.m_vGenericSpawn[3];
 		} else
 			cameraPos[3] = "0 10000 0";
 
-		CRF_RplBroadcastManager.GetInstance().SendSpecClientInit(playerId, cameraPos);
+		m_RplBroadcastManager.SendSpecClientInit(playerId, cameraPos);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -145,7 +162,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	void UpdateServerWorldTime()
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = CRF_SafestartManager.GetInstance().m_iTimeSafeStartBegan - currentTime;
+		float millis = m_SafestartManager.m_iTimeSafeStartBegan - currentTime;
 		int totalSeconds = (millis * 0.001);
 
 		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
@@ -157,7 +174,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	void UpdateMissionEndTimer()
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();
-		float millis = CRF_SafestartManager.GetInstance().m_iTimeMissionEnds - currentTime;
+		float millis = m_SafestartManager.m_iTimeMissionEnds - currentTime;
 		int totalSeconds = (millis * 0.001);
 
 		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
