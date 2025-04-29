@@ -54,9 +54,27 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
-
+	}
+	
+	/**
+	 * Updates the game timer display UI elements.
+	 * Called on each frame update to refresh the timer visualization.
+	 * 
+	 * @param owner The entity that owns this display component
+	 * @param timeSlice The time elapsed since the last update in seconds
+	 * @override Overrides the base class implementation to provide game timer specific display logic
+	 */
+	override protected void DisplayUpdate(IEntity owner, float timeSlice)
+	{
+		super.DisplayUpdate(owner, timeSlice);
+		
+		// Only fire if in-game
+		if (!GetGame().GetWorld().GetWorldTime() || !SCR_PlayerController.GetLocalControlledEntity())
+			return;
+		
 		// Initialize references if they don't exist
 		// This handles respawn support and first-time initialization
+		// Check if we're in-game and already initialized
 		if (!m_SafestartManager || !m_wTimer || !m_wBackground || !m_MapEntity) 
 		{
 			// Get game system references
