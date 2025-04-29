@@ -146,7 +146,8 @@ class CRF_RoleHelper
 	//------------------------------------------------------------------------------------------------
 	static ResourceName RoleToResource(CRF_EGearRole roleInt, FactionKey faction)
 	{
-		return SCR_Global.GetResourceName("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + RoleToString(roleInt) + ".et");
+		Resource resource = Resource.Load("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + RoleToString(roleInt) + ".et");
+		return resource.GetResource().GetResourceName();
 	}
 	
 	//------------------------------------------------------------------------------------------------
