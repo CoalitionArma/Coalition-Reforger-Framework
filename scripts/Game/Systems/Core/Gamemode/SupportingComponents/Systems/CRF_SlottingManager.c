@@ -63,7 +63,9 @@ class CRF_SlottingManager : ScriptComponent
 		m_aSlotsData = tempSlotsData;
 		Replication.BumpMe();
 		
-		UpdateClientSlotsMap()
+		#ifdef WORKBENCH
+			UpdateClientSlotsMap()
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -72,14 +74,11 @@ class CRF_SlottingManager : ScriptComponent
 		if (RplSession.Mode() == RplMode.Dedicated)
 			return;
 		
+		foreach (int i, int slotID : m_aSlotsKey)
+			m_mSlotsMap.Set(slotID, m_aSlotsData.Get(i));
+		
 		if (m_OnSlottingUpdate)
 			m_OnSlottingUpdate.Invoke();
-		
-		foreach (int i, int slotID : m_aSlotsKey)
-		{
-			m_mSlotsMap.Set(slotID, m_aSlotsData.Get(i));
-			Print(m_aSlotsData.Get(i));
-		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
