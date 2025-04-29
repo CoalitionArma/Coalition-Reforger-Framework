@@ -66,7 +66,7 @@ class CRF_TeleportPlayerAction : ScriptedUserAction
 		// Handle gear assignment if specified
 		if (!m_sGearscriptToSet.IsEmpty())
 		{
-			string localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
 			CRF_RplToAuthorityManager.GetInstance().ResetGear(localPlayerId, m_sGearscriptToSet, false);
 		}
 	}
