@@ -11,12 +11,19 @@ modded class SCR_PlayerController
 		if (!CRF_Gamemode.GetInstance())
 			return;
 		
-		// Apply HDR settings if the player controller component is active
-		if (CRF_PlayerControllerComponent.GetInstance().m_bActivated)
-			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
-
-		// Reset activation status
-		CRF_PlayerControllerComponent.GetInstance().m_bActivated = false;
+		// Get the CRF player controller comp
+		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
+		
+		// Can't do things if the pc comp doesnt exist
+		if (playerControllerComp)
+		{
+			// Apply HDR settings if the player controller component is active
+			if (playerControllerComp.m_bActivated)
+				SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
+	
+			// Reset activation status
+			playerControllerComp.m_bActivated = false;
+		};
 
 		// Call the parent implementation
 		super.OnControlledEntityChanged(from, to);
@@ -35,7 +42,12 @@ modded class SCR_PlayerController
 		// Call the parent implementation
 		super.DisconnectFromGame();
 
-		// Reset settings to previously stored values
-		CRF_PlayerControllerComponent.GetInstance().ResetSettingsToStoredValues();
+		// Get the CRF player controller comp
+		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
+		
+		// Can't do things if the pc comp doesnt exist
+		if (playerControllerComp)
+			// Reset settings to previously stored values
+			playerControllerComp.ResetSettingsToStoredValues();
 	}
 }
