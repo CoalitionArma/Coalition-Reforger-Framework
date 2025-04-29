@@ -29,8 +29,10 @@ modded class SCR_GroupsManagerComponent
 				return -1;
 			}
 			
-			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetPlayerSlotData(playerID);
-			slotData.m_iSlotCurrentGroup = RplComponent.Cast(newGroup.FindComponent(RplComponent)).Id();
+			int slotID = CRF_SlottingManager.GetInstance().GetPlayerSlotID(playerID);
+			
+			if (slotID != 0)
+				CRF_RplToAuthorityManager.GetInstance().UpdateSlotGroup(slotID, RplComponent.Cast(newGroup.FindComponent(RplComponent)).Id());
 			
 			newGroup.AddPlayer(playerID);
 			m_iMovingPlayerToGroupID = -1;
