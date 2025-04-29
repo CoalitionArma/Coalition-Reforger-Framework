@@ -13,10 +13,6 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	// UI Widget References
 	//----------------------------------------
 	protected Widget m_wRoot;
-	protected ImageWidget m_wPreview;
-	protected ImageWidget m_wSlotting;
-	protected ImageWidget m_wGame;
-	protected ImageWidget m_wAAR;
 	protected Widget m_wFactions;
 	protected Widget m_wMissionDescription;
 	protected Widget m_wRoleFrame;

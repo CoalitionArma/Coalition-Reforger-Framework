@@ -51,7 +51,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		InitializeUIElements();
 		
 		// Initialize phase indicators
-		UpdatePhaseIndicators();
+		SetupPhaseIndicators();
 		
 		// Setup player and description lists
 		SetupListComponents();
@@ -146,24 +146,22 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	/**
 	 * Updates phase indicators based on current gamemode state
 	 */
-	protected void UpdatePhaseIndicators()
+	protected void SetupPhaseIndicators()
 	{
-		// Reset all indicators
-		m_wPreview.SetColor(Color.White);
-		m_wSlotting.SetColor(Color.White);
-		m_wGame.SetColor(Color.White);
-		m_wAAR.SetColor(Color.White);
+		// Get phase indicator widgets
+		m_wPreview = ImageWidget.Cast(m_wRoot.FindAnyWidget("PreviewBorder"));
+		m_wSlotting = ImageWidget.Cast(m_wRoot.FindAnyWidget("SlottingBorder"));
+		m_wGame = ImageWidget.Cast(m_wRoot.FindAnyWidget("GameBorder"));
+		m_wAAR = ImageWidget.Cast(m_wRoot.FindAnyWidget("AARBorder"));
 		
-		// Highlight current phase
-		int gameState = m_Gamemode.m_GamemodeState;
-		Color highlightColor = Color.FromRGBA(122, 0, 0, 255);
-		
+		// Highlight the current phase
+		int gameState = CRF_Gamemode.Cast(GetGame().GetGameMode()).m_GamemodeState; 
 		switch(gameState)
 		{
-			case 0: m_wPreview.SetColor(highlightColor); break;
-			case 1: m_wSlotting.SetColor(highlightColor); break;
-			case 2: m_wGame.SetColor(highlightColor); break;
-			case 3: m_wAAR.SetColor(highlightColor); break;
+			case 0: {m_wPreview.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 1: {m_wSlotting.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 2: {m_wGame.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
+			case 3: {m_wAAR.SetColor(Color.FromRGBA(122, 0, 0, 255)); break;}
 		}
 	}
 	

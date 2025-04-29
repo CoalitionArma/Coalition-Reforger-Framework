@@ -713,9 +713,11 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			// Add admin-only controls
 			SetupAdminGroupControls(isAdmin, group, groupIndex);
 			
-			// Update group icon
-			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().Update(
-				SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent)).GetMilitarySymbol());
+			SCR_GroupIdentityComponent groupIdent = SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent));
+			
+			if(groupIdent && groupIdent.GetMilitarySymbol())
+				// Update group icon
+				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().Update(groupIdent.GetMilitarySymbol());
 			
 			// Add slots to this group
 			AddSlotsToGroup(group, slotMap, groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin);

@@ -51,10 +51,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	static bool IsSpectator()
 	{
-		if (SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		if (SCR_PlayerController.GetLocalMainEntity() && SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
 			return true;
 		
-		if (SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		if (SCR_PlayerController.GetLocalControlledEntity() && SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
 			return true;
 
 		return false;
