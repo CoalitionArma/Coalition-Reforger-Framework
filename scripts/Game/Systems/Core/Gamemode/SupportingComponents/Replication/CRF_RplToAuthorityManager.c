@@ -374,6 +374,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 
 		GetGame().GetCallqueue().CallLater(CRF_GearscriptManager.GetInstance().SetupAddGearToEntity, 250, false, entity, prefab);
+		
+		CRF_SlottingManager.GetInstance().UpdateSlotResource(CRF_SlottingManager.GetInstance().GetPlayerSlotID(playerId), prefab);
 
 		if (logAction)
 			CRF_RplBroadcastManager.GetInstance().LogAdminAction(string.Format("%1's gear was set to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerId, true);

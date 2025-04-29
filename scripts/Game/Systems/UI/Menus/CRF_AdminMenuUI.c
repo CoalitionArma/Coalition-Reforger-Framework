@@ -361,7 +361,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		for (int i = 0; i < m_list2.GetItemCount(); i++)
 		{
-			if (CRF_SlottingManager.GetInstance().GetPlayerSlotResource(playerId).Contains(CRF_RoleHelper.RoleToString(i))) // GSR = Gear Script Resource
+			if (CRF_SlottingManager.GetInstance().GetPlayerSlotResource(playerId).Contains(CRF_RoleHelper.RoleToString(i)))
 			{
 				m_list2.SetItemSelected(i, true);
 				return;
