@@ -63,4 +63,16 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
   firstSpawn 1
  }
+ fuel1 {
+  coords 1101.379 91.16 688.831
+  angleY 46.859
+  m_rnPrefab "{CA8ADC0AF10CF541}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_tan.et"
+  firstSpawn 1
+ }
+ fuel2 {
+  coords 1174.029 105.808 2712.934
+  angleY 143.712
+  m_rnPrefab "{CA8ADC0AF10CF541}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_tan.et"
+  firstSpawn 1
+ }
 }
