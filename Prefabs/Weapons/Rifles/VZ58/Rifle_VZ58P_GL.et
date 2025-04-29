@@ -1,0 +1,38 @@
+GenericEntity : "{C19BFAF8A6334FD5}Prefabs/Weapons/Rifles/VZ58/Rifle_VZ58_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#AR-Weapon_Vz58P_Name"
+     Description "#AR-Weapon_Vz58P_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{545EBBB5FB8FA0DC}" {
+     Weight 2.91
+     SizeSetupStrategy Manual
+     ItemDimensions 25 25 25
+     ItemVolume 1500
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{56F0CD49BE54A5F2}" {
+     AttachmentSlot InventoryStorageSlot Stock {
+     }
+    }
+    AttachmentSlotComponent "{61087405141EB148}" {
+     AttachmentSlot InventoryStorageSlot "{610874056E7424A6}" {
+      Offset 0 -0.0187 -0.0728
+      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0.02
+}

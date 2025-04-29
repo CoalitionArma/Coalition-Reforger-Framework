@@ -1,0 +1,48 @@
+SCR_AIGroup : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Company_p.et" {
+ coords 1026.984 113.243 729.57
+ {
+  SCR_AIGroup : "{35D9448A4ED99223}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MedicTeam_p.et" {
+   coords 0.057 -0.12 -0.57
+   {
+    SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+     coords -0.018 0.053 0.342
+     {
+      $grp SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
+       {
+        coords 22.082 -25.368 7.979
+       }
+       {
+        coords 22.082 -25.368 6.228
+        {
+         SCR_AIGroup : "{0A56302C3814952B}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MMGTeam_p.et" {
+          coords -5.907 17.309 -13.249
+          {
+           SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+            coords -16.161 8.033 6.893
+            {
+             $grp SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
+              {
+               coords 22.068 -25.342 4.631
+              }
+              {
+               coords 22.068 -25.342 2.574
+               {
+                SCR_AIGroup : "{0A56302C3814952B}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MMGTeam_p.et" {
+                 coords -5.909 17.261 -9.649
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
