@@ -3,7 +3,14 @@ class CRF_RplToAuthorityManagerClass : ScriptComponentClass {}
 class CRF_RplToAuthorityManager : ScriptComponent
 {	
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_MenuManager m_MenuManager;
+	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_SlottingManager m_SlottingManager;
+	protected CRF_SafestartManager m_SafestartManager;
+	protected CRF_GearscriptManager m_GearscriptManager;
+	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplToAuthorityManager GetInstance()
@@ -22,8 +29,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if(!Replication.IsServer())
 			return;
 		
+		// Get all managers we need for this manager
 		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_MenuManager = CRF_MenuManager.GetInstance();
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_SafestartManager = CRF_SafestartManager.GetInstance();
+		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -109,14 +124,14 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendAdminMessage(string data)
 	{
-		if(SCR_Global.IsAdmin() || CRF_GamemodeManager.GetInstance().IsModerator())
+		if(SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
 			Rpc(RpcAsk_SendAdminMessage, data); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(string data, int playerId, bool logAction)
 	{
-		if(SCR_Global.IsAdmin() || CRF_GamemodeManager.GetInstance().IsModerator())
+		if(SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
 			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, logAction); 
 	}		
 	
@@ -208,14 +223,14 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestInitilizePlayer(int playerId)
 	{
-		m_GamemodeManager.GetInstance().InitilizePlayer(playerId);
+		m_GamemodeManager.InitilizePlayer(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleSideReady(string setReady, string playerName, bool adminForced)
 	{
-		CRF_SafestartManager.GetInstance().ToggleSideReady(setReady, playerName, adminForced);
+		m_SafestartManager.ToggleSideReady(setReady, playerName, adminForced);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -246,14 +261,14 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotPlayerID(int slotId, int playerId)
 	{
-		CRF_SlottingManager.GetInstance().UpdateSlotPlayerID(slotId, playerId);
+		m_SlottingManager.UpdateSlotPlayerID(slotId, playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotLockedState(int slotId, bool input)
 	{
-		CRF_SlottingManager.GetInstance().UpdateSlotLockedState(slotId, input);
+		m_SlottingManager.UpdateSlotLockedState(slotId, input);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -268,56 +283,56 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotDeathState(int slotId, bool input)
 	{
-		CRF_SlottingManager.GetInstance().UpdateSlotDeathState(slotId, input); 
+		m_SlottingManager.UpdateSlotDeathState(slotId, input); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotGroup(int slotId, RplId groupRplId)
 	{
-		CRF_SlottingManager.GetInstance().UpdateSlotGroup(slotId, groupRplId); 
+		m_SlottingManager.UpdateSlotGroup(slotId, groupRplId); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotResource(int slotId, ResourceName resource)
 	{
-		CRF_SlottingManager.GetInstance().UpdateSlotResource(slotId, resource); 
+		m_SlottingManager.UpdateSlotResource(slotId, resource); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_UpdateSlotCharacter(int slotId, RplId charId)
 	{
-		CRF_SlottingManager.GetInstance().UpdateSlotCharacter(slotId, charId); 
+		m_SlottingManager.UpdateSlotCharacter(slotId, charId); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SendAdminMessage(string data)
 	{
-		CRF_RplBroadcastManager.GetInstance().SendAdminMessage(data);
+		m_RplBroadcastManager.SendAdminMessage(data);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReplyAdminMessage(string data, int playerId, bool logAction)
 	{
-		CRF_RplBroadcastManager.GetInstance().ReplyAdminMessage(data, playerId, logAction);
+		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, logAction);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RespawnPlayer(int playerId, vector spawnLocation)
 	{
-		CRF_RespawnManager.GetInstance().RespawnPlayer(playerId, spawnLocation);
+		m_RespawnManager.RespawnPlayer(playerId, spawnLocation);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestToJoinChannel(int channel, int requestId)
 	{
-		CRF_MenuManager.GetInstance().RequestToJoinChannel(channel, requestId);
+		m_MenuManager.RequestToJoinChannel(channel, requestId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -325,9 +340,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_CheckVONRegister(int playerId)
 	{
 		int channelIndex;
-		if (!CRF_MenuManager.GetInstance().IsPlayerInAnyChannel(playerId, channelIndex))
+		if (!m_MenuManager.IsPlayerInAnyChannel(playerId, channelIndex))
 		{
-			CRF_MenuManager.GetInstance().AddPlayerToChannel(playerId, 1, false);
+			m_MenuManager.AddPlayerToChannel(playerId, 1, false);
 		}
 	}
 
@@ -335,36 +350,36 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_CreateChannel(int playerId)
 	{
-		CRF_MenuManager.GetInstance().CreateChannel(GetGame().GetPlayerManager().GetPlayerName(playerId) + "'s Channel", playerId);
+		m_MenuManager.CreateChannel(GetGame().GetPlayerManager().GetPlayerName(playerId) + "'s Channel", playerId);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_JoinChannel(int playerId, int channel)
 	{
-		CRF_MenuManager.GetInstance().AddPlayerToChannel(playerId, channel, false);
+		m_MenuManager.AddPlayerToChannel(playerId, channel, false);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SpawnOnGroup(int playerId, vector spawnLocation, int groupID, bool logAction)
 	{
-		CRF_RespawnManager.GetInstance().RespawnPlayer(playerId, spawnLocation, groupID);
+		m_RespawnManager.RespawnPlayer(playerId, spawnLocation, groupID);
 
 		if (logAction)
-			CRF_RplBroadcastManager.GetInstance().LogAdminAction(string.Format("%1 was respawned to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), SCR_GroupsManagerComponent.GetInstance().FindGroup(groupID).m_faction), playerId, true);
+			m_RplBroadcastManager.LogAdminAction(string.Format("%1 was respawned to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), m_GroupsManagerComponent.FindGroup(groupID).m_faction), playerId, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestGroupIdFromServer(int requestedId, int requesterID)
 	{
-		if (CRF_SlottingManager.GetInstance().IsPlayerInASlot(requestedId))
+		if (m_SlottingManager.IsPlayerInASlot(requestedId))
 			return;
 
-		SCR_AIGroup playerGroup = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(requestedId);
+		SCR_AIGroup playerGroup = m_SlottingManager.GetPlayerSlotGroup(requestedId);
 		if (playerGroup)
-			CRF_RplBroadcastManager.GetInstance().SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
+			m_RplBroadcastManager.SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -373,12 +388,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	{
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 
-		GetGame().GetCallqueue().CallLater(CRF_GearscriptManager.GetInstance().SetupAddGearToEntity, 250, false, entity, prefab);
+		GetGame().GetCallqueue().CallLater(m_GearscriptManager.SetupAddGearToEntity, 250, false, entity, prefab);
 		
-		CRF_SlottingManager.GetInstance().UpdateSlotResource(CRF_SlottingManager.GetInstance().GetPlayerSlotID(playerId), prefab);
+		m_SlottingManager.UpdateSlotResource(m_SlottingManager.GetPlayerSlotID(playerId), prefab);
 
 		if (logAction)
-			CRF_RplBroadcastManager.GetInstance().LogAdminAction(string.Format("%1's gear was set to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerId, true);
+			m_RplBroadcastManager.LogAdminAction(string.Format("%1's gear was set to %2", GetGame().GetPlayerManager().GetPlayerName(playerId), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerId, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -400,21 +415,21 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			delete resourceSpawned;
 
 		if (logAction)
-			CRF_RplBroadcastManager.GetInstance().LogAdminAction(string.Format("%2 was added to %1's inventory", GetGame().GetPlayerManager().GetPlayerName(playerId), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerId, true);
+			m_RplBroadcastManager.LogAdminAction(string.Format("%2 was added to %1's inventory", GetGame().GetPlayerManager().GetPlayerName(playerId), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerId, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
-		CRF_RplBroadcastManager.GetInstance().TeleportPlayers(playerId1, playerId2, logAction);
+		m_RplBroadcastManager.TeleportPlayers(playerId1, playerId2, logAction);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SendHint(string data, int playerId, string factionKey)
 	{
-		CRF_RplBroadcastManager.GetInstance().SendHint(data, playerId, factionKey);
+		m_RplBroadcastManager.SendHint(data, playerId, factionKey);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -438,13 +453,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		damageComponent.SetHealthScaled(1);
 
 		if (logAction)
-			CRF_RplBroadcastManager.GetInstance().LogAdminAction(string.Format("%1's was healed/repaired", GetGame().GetPlayerManager().GetPlayerName(playerId)), playerId, true);
+			m_RplBroadcastManager.LogAdminAction(string.Format("%1's was healed/repaired", GetGame().GetPlayerManager().GetPlayerName(playerId)), playerId, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
-		CRF_RplBroadcastManager.GetInstance().LogAdminAction(data, playerId, sendToPlayer);
+		m_RplBroadcastManager.LogAdminAction(data, playerId, sendToPlayer);
 	}
 };

@@ -5,58 +5,40 @@ class CRF_PlayableCharacterClass : ScriptComponentClass
 class CRF_PlayableCharacter : ScriptComponent
 {
 	[Attribute()]
-	protected string m_sName;
+	string m_sName;
 	
 	[Attribute("0")]
-	protected bool m_bIsPlayable;
-	
+	bool m_bIsPlayable;
+
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_ESlotType))]
-	protected CRF_ESlotType m_SlottingRole;
+	CRF_ESlotType m_SlottingRole;
 
 	protected bool m_bIsSpectator = false;
 	protected bool m_bIsSlotSpawned = false;
 	protected bool m_bIsHidden = false;
 	protected bool m_bInitTime = false;
-
-	//------------------------------------------------------------------------------------------------
-	bool IsPlayable()
-	{
-		return m_bIsPlayable;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	string GetName()
-	{
-		return m_sName;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	CRF_ESlotType GetSlottingRole()
-	{
-		return m_SlottingRole;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void SetInitTime()
-	{
-		m_bInitTime = true;
-	}
 	
-	//------------------------------------------------------------------------------------------------
-	void SetIsSlotSpawned()
-	{
-		m_bIsSlotSpawned = true;
-	}
+	protected CRF_Gamemode m_Gamemode;
+	protected CRF_SlottingManager m_SlottingManager;
+	protected CRF_PlayerControllerComponent m_PlayerControllerComponent;
+	protected SCR_PossessingManagerComponent m_PossessingManagerComponent;
 
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
+		
+		m_Gamemode = CRF_Gamemode.GetInstance();
 
-		if (!GetGame().InPlayMode() || !CRF_Gamemode.GetInstance())
+		if (!GetGame().InPlayMode() || !m_Gamemode)
 			return;
+		
+		// Get all managers we need
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_PlayerControllerComponent = CRF_PlayerControllerComponent.GetInstance();
+		m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
 
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME && CRF_Gamemode.GetInstance().EnableAIInGameState && !CRF_GamemodeManager.IsSpectator(owner))
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && m_Gamemode.EnableAIInGameState && !CRF_GamemodeManager.IsSpectator(owner))
 			m_bIsPlayable = false;
 
 		GetGame().GetCallqueue().CallLater(SetInitTime, 5000, false);
@@ -73,6 +55,18 @@ class CRF_PlayableCharacter : ScriptComponent
 			SetEventMask(owner, EntityEvent.FRAME);
 		};
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetInitTime()
+	{
+		m_bInitTime = true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsSlotSpawned()
+	{
+		m_bIsSlotSpawned = true;
+	}
 
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
@@ -85,35 +79,33 @@ class CRF_PlayableCharacter : ScriptComponent
 			return;
 		};
 
-		if (!EntityUtils.IsPlayer(owner) && SCR_PossessingManagerComponent.GetInstance().GetIdFromMainEntity(owner) == 0 && RplSession.Mode() != RplMode.Client && m_bInitTime)
+		if (!EntityUtils.IsPlayer(owner) && m_PossessingManagerComponent.GetIdFromMainEntity(owner) == 0 && RplSession.Mode() != RplMode.Client && m_bInitTime)
 		{
 			ClearEventMask(owner, EntityEvent.FRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 			return;
 		};
-		
-		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
 
 		if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).GetLocalControlledEntity() == owner)
 		{
-			if (playerControllerComp.m_eCamera && CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
+			if (m_PlayerControllerComponent.m_eCamera && m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			{
 				vector mat[4];
-				playerControllerComp.m_eCamera.GetTransform(mat);
+				m_PlayerControllerComponent.m_eCamera.GetTransform(mat);
 				mat[1] = vector.Up;
 				mat[2] = vector.Forward;
 				mat[3][1] = mat[3][1] - 1.5;
-				playerControllerComp.UpdateEntityPos(mat);
-				playerControllerComp.UpdateStoredCameraPos(mat);
+				m_PlayerControllerComponent.UpdateEntityPos(mat);
+				m_PlayerControllerComponent.UpdateStoredCameraPos(mat);
 			} else {
 				vector mat[4];
 				mat[1] = vector.Up;
 				mat[2] = vector.Forward;
 				mat[3][1] = 10000;
-				playerControllerComp.UpdateEntityPos(mat);
+				m_PlayerControllerComponent.UpdateEntityPos(mat);
 
-				if (playerControllerComp.m_eCamera)
-					playerControllerComp.m_eCamera.SetWorldTransform(mat);
+				if (m_PlayerControllerComponent.m_eCamera)
+					m_PlayerControllerComponent.m_eCamera.SetWorldTransform(mat);
 			};
 		};
 
@@ -151,7 +143,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		{
 			SCR_AIGroup playableGroup = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(owner.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
 			if (playableGroup)
-				CRF_SlottingManager.GetInstance().AddPlayableEntityToManager(owner);
+				m_SlottingManager.AddPlayableEntityToManager(owner);
 		}
 
 		//Sets location and all the physics BS on all machines

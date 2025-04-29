@@ -11,8 +11,6 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	bool m_bHUDVisible = true;
 
 	ref array<string> m_aScriptedMarkers = {};
-
-	protected CRF_GamemodeManager m_GamemodeManager;
 	
 	//Stores local camera entity to delete whenever you take over a player
 	IEntity m_eCamera;
@@ -22,6 +20,10 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	int m_iAudioSetting = -1;
 	private vector m_vStoredCameraPos[4];
 	Widget m_wSavedHintWidget;
+	
+	protected CRF_Gamemode m_Gamemode;
+	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_RplToAuthorityManager m_RplToAuthorityManager;
 
 	//------------------------------------------------------------------------------------------------
 
@@ -36,7 +38,6 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		else
 			return null;
 	}
-	
 
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
@@ -45,6 +46,10 @@ class CRF_PlayerControllerComponent : ScriptComponent
 
 		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Dedicated)
 			return;
+		
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 
 		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
 		GetGame().GetInputManager().AddActionListener("CRF_AdminForceReady", EActionTrigger.DOWN, AdminForceReady);
@@ -87,17 +92,23 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SpecCameraInit(vector cameraPos[4])
 	{
+		if(!m_RplToAuthorityManager || !m_Gamemode)
+		{
+			m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
+			m_Gamemode = CRF_Gamemode.GetInstance();
+		};
+		
 		if (SCR_EditorManagerEntity.GetInstance().IsOpened())
 			return;
 
-		if (cameraPos[3] != vector.Zero && cameraPos[3] != CRF_Gamemode.GetInstance().m_vGenericSpawn[3])
+		if (cameraPos[3] != vector.Zero && cameraPos[3] != m_Gamemode.m_vGenericSpawn[3])
 			m_vStoredCameraPos = cameraPos;
 
-		if (m_vStoredCameraPos[3] != vector.Zero && cameraPos[3] == CRF_Gamemode.GetInstance().m_vGenericSpawn[3])
+		if (m_vStoredCameraPos[3] != vector.Zero && cameraPos[3] == m_Gamemode.m_vGenericSpawn[3])
 			cameraPos = m_vStoredCameraPos;
 
 		if (cameraPos[3] == vector.Zero || cameraPos[3] == "0 10000 0" || cameraPos[3][0] < 1 || cameraPos[3][2] < 1)
-			cameraPos = CRF_Gamemode.GetInstance().m_vGenericSpawn;
+			cameraPos = m_Gamemode.m_vGenericSpawn;
 
 		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
 		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
@@ -109,9 +120,9 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		vector mat = m_eCamera.GetAngles();
 		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
 
-		CRF_RplToAuthorityManager.GetInstance().CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
+		m_RplToAuthorityManager.CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
 		
-		if (CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
 		
 		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
@@ -220,20 +231,26 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void OpenCurrentStateMenu()
 	{
+		if(!m_RplToAuthorityManager || !m_Gamemode)
+		{
+			m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
+			m_Gamemode = CRF_Gamemode.GetInstance();
+		};
+		
 		//Close any menu that wriggles its way in
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
 		if (topMenu)
 			topMenu.Close();
 		GetGame().GetMenuManager().CloseAllMenus();
 		//Opens menu based on current game state : )
-		switch (CRF_Gamemode.GetInstance().m_GamemodeState)
+		switch (m_Gamemode.m_GamemodeState)
 		{
-			case CRF_EGamemodeState.BRIEFING: 	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);									break; }
-			case CRF_EGamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);									break; }
-			case CRF_EGamemodeState.GAME: 		{CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());	break; }
-			case CRF_EGamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);										break; }
+			case CRF_EGamemodeState.BRIEFING: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);						break; }
+			case CRF_EGamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);					break; }
+			case CRF_EGamemodeState.GAME: 	{m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());		break; }
+			case CRF_EGamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);						break; }
 		}
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
 			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
 			if (m_iFPS == -1)
@@ -264,7 +281,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 				GetGame().GetMenuManager().CloseMenu(topMenu);
 
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
 			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
 			
@@ -388,13 +405,13 @@ class CRF_PlayerControllerComponent : ScriptComponent
 			return;
 		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
 		data = string.Format("playerId: %1 | Player Name: %3 | \"%2\"", GetGame().GetPlayerController().GetPlayerId(), data, GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
-		CRF_RplToAuthorityManager.GetInstance().SendAdminMessage(data);
+		m_RplToAuthorityManager.SendAdminMessage(data);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(SCR_ChatPanel panel, string data)
 	{
-		if (!SCR_Global.IsAdmin() && !CRF_GamemodeManager.GetInstance().IsModerator())
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
 			return;
 		
 		array<string> dataSplit = {};
@@ -438,7 +455,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 
 		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", toSend, GetGame().GetPlayerManager().GetPlayerName(playerId)));
 		toSend = string.Format("\"%1\"", toSend);
-		CRF_RplToAuthorityManager.GetInstance().ReplyAdminMessage(toSend, playerId, true);
+		m_RplToAuthorityManager.ReplyAdminMessage(toSend, playerId, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -465,7 +482,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 			if (faction.GetFactionKey() == "")
 				return;
 			
-			CRF_RplToAuthorityManager.GetInstance().ToggleSideReady(faction.GetFactionKey(), playerName, false);
+			m_RplToAuthorityManager.ToggleSideReady(faction.GetFactionKey(), playerName, false);
 		}
 	}
 
@@ -474,7 +491,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	{
 		if (!SCR_Global.IsAdmin())
 			return;
-		CRF_RplToAuthorityManager.GetInstance().ToggleSideReady("", GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId()), true);
+		m_RplToAuthorityManager.ToggleSideReady("", GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId()), true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -501,6 +518,6 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	
 	void Advance_Callback(SCR_ChatPanel panel, string data)
 	{
-		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState();
+		m_RplToAuthorityManager.RequestAdvanceGamemodeState();
 	}
 }

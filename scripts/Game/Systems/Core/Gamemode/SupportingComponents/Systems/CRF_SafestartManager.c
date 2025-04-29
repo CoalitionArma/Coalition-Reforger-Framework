@@ -33,6 +33,10 @@ class CRF_SafestartManager : ScriptComponent
 
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	CRF_LoggingServerComponent m_Logging;
+	
+	protected CRF_Gamemode m_Gamemode;
+	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_SlottingManager m_SlottingManager;
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_SafestartManager GetInstance()
@@ -53,17 +57,13 @@ class CRF_SafestartManager : ScriptComponent
 		// Only initialize in actual gameplay
 		if (!GetGame().InPlayMode())
 			return;
+		
+		// Get all instances we need for this manager.
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
 
-		// Check if we're running on a server
-		bool isServer;
-
-		#ifdef WORKBENCH
-		isServer = Replication.IsServer();
-		#else
-		isServer = RplSession.Mode() == RplMode.Dedicated;
-		#endif
-
-		if (isServer) // Supports both workbench and dedi
+		if (RplSession.Mode() != RplMode.Client) // Supports both workbench and dedi
 		{
 			// Initialize server components
 			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
@@ -76,14 +76,14 @@ class CRF_SafestartManager : ScriptComponent
 	// Polls for game start, then configures safestart based on gamemode settings
 	void WaitTillGameStart()
 	{
-		if (CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 
-		m_bSafeStartEnabled = !CRF_Gamemode.GetInstance().m_bSafestartInstantlyEnabled;
+		m_bSafeStartEnabled = !m_Gamemode.m_bSafestartInstantlyEnabled;
 		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
 
 		GetGame().GetCallqueue().Remove(WaitTillGameStart);
-		GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, CRF_Gamemode.GetInstance().m_bSafestartInstantlyEnabled);
+		GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_Gamemode.m_bSafestartInstantlyEnabled);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -335,11 +335,11 @@ class CRF_SafestartManager : ScriptComponent
 			m_bSafeStartEnabled = true;
 			m_iSafeStartTimeRemaining = 35;
 
-			GetGame().GetCallqueue().Remove(CRF_GamemodeManager.GetInstance().UpdateMissionEndTimer);
+			GetGame().GetCallqueue().Remove(m_GamemodeManager.UpdateMissionEndTimer);
 			GetGame().GetCallqueue().Remove(CheckPlayersAlive);
 
 			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
-			GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().UpdateServerWorldTime, 1000, true);
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.UpdateServerWorldTime, 1000, true);
 			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 5000, true);
 			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 1000, true);
 
@@ -358,21 +358,21 @@ class CRF_SafestartManager : ScriptComponent
 			m_bIndforReady = false;
 			m_bCivReady = false;
 			
-			if(CRF_Gamemode.GetInstance().m_bLockSlotsAfterSafestart)
-				CRF_SlottingManager.GetInstance().LockAllOpenSlots();
+			if(m_Gamemode.m_bLockSlotsAfterSafestart)
+				m_SlottingManager.LockAllOpenSlots();
 
 			GetGame().GetCallqueue().Remove(CheckStartCountDown);
-			GetGame().GetCallqueue().Remove(CRF_GamemodeManager.GetInstance().UpdateServerWorldTime);
+			GetGame().GetCallqueue().Remove(m_GamemodeManager.UpdateServerWorldTime);
 			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
 
 			GetGame().GetCallqueue().CallLater(CheckPlayersAlive, 5000, true);
 
-			if (CRF_Gamemode.GetInstance().m_iTimeLimitMinutes > 0) {
-				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (CRF_Gamemode.GetInstance().m_iTimeLimitMinutes * 60000);
-				GetGame().GetCallqueue().CallLater(CRF_GamemodeManager.GetInstance().UpdateMissionEndTimer, 1000, true);
+			if (m_Gamemode.m_iTimeLimitMinutes > 0) {
+				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (m_Gamemode.m_iTimeLimitMinutes * 60000);
+				GetGame().GetCallqueue().CallLater(m_GamemodeManager.UpdateMissionEndTimer, 1000, true);
 			} else {
-				CRF_GamemodeManager.GetInstance().SetServerWorldTime("N/A");
+				m_GamemodeManager.SetServerWorldTime("N/A");
 			};
 
 			Replication.BumpMe();//Broadcast change

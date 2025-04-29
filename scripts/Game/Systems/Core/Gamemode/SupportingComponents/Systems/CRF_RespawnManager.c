@@ -6,8 +6,13 @@ class CRF_RespawnManager : ScriptComponent
 	int m_iRespawnWaveCurrentTime;
 
 	int m_iRespawnTimer
+	
 	protected ref array<IEntity> m_aRespawnPoints = {};
+	
 	protected CRF_Gamemode m_Gamemode;
+	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_SafestartManager m_SafestartManager;
+	protected CRF_SlottingManager m_SlottingManager;
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_RespawnManager GetInstance()
@@ -27,24 +32,22 @@ class CRF_RespawnManager : ScriptComponent
 		if (!Replication.IsServer())
 			return;
 
+		// Get all instances we need for this manager.
 		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_SafestartManager = CRF_SafestartManager.GetInstance();
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
 
-		SCR_AIGroup.GetOnPlayerAdded().Insert(OnPlayerJoinedGroup);
-		SCR_AIGroup.GetOnPlayerRemoved().Insert(OnPlayerLeftGroup);
-
+		// If respawn is enabled
 		if (m_Gamemode.m_bRespawnEnabled)
-			CRF_RespawnManager.GetInstance().InitilizeRespawns();
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void InitilizeRespawns()
-	{
-		m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
-		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-
-		if (m_Gamemode.m_bWaveRespawn && RplSession.Mode() == RplMode.Dedicated)
 		{
-			GetGame().GetCallqueue().CallLater(WaveRespawnTimer, 1000, true);
+			m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
+			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
+	
+			// If wave respawn is enabled and we're in a non-client enviorment
+			if (m_Gamemode.m_bWaveRespawn && RplSession.Mode() != RplMode.Client)
+				// Start wave respawn timer
+				GetGame().GetCallqueue().CallLater(WaveRespawnTimer, 1000, true);
 		}
 	}
 
@@ -81,7 +84,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SubtractTicket(string faction)
 	{
-		bool canSubtract = !CRF_SafestartManager.GetInstance().GetSafestartStatus();
+		bool canSubtract = !m_SafestartManager.GetSafestartStatus();
 
 		switch (faction)
 		{
@@ -151,7 +154,7 @@ class CRF_RespawnManager : ScriptComponent
 			// Only perform respawn if not in AAR state
 			if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR)
 			{
-				CRF_RespawnManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
+				RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
 				GetGame().GetMenuManager().CloseAllMenus();
 			}
 
@@ -204,11 +207,11 @@ class CRF_RespawnManager : ScriptComponent
 
 		foreach (int player : allPlayers)
 		{
-			if (!CRF_SlottingManager.GetInstance().IsPlayerInASlot(player))
+			if (!m_SlottingManager.IsPlayerInASlot(player))
 				continue;
 
 			// Get player's faction
-			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(player);
+			Faction playerFaction = m_SlottingManager.GetPlayerSlotFaction(player);
 
 			// Make sure the player is still in that faction
 			if (playerFaction.GetFactionKey() != faction)
@@ -273,7 +276,7 @@ class CRF_RespawnManager : ScriptComponent
 		// If no spawn location found, enter spectator mode
 		if (spawnLocation == vector.Zero)
 		{
-			CRF_GamemodeManager.GetInstance().EnterSpectator(playerId);
+			m_GamemodeManager.EnterSpectator(playerId);
 			return;
 		}
 
@@ -281,91 +284,6 @@ class CRF_RespawnManager : ScriptComponent
 		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, spawnLocation, 10);
 		
 		// Respawn the player
-		CRF_GamemodeManager.GetInstance().InitilizePlayer(playerId, finalSpawnLocation);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void OnPlayerJoinedGroup(SCR_AIGroup aiGroup, int playerId)
-	{
-		// Only run this logic on dedicated server
-		if (RplSession.Mode() != RplMode.Dedicated)
-			return;
-
-		// Get the current leader entity
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		IEntity currentLeaderEntity = playerManager.GetPlayerControlledEntity(aiGroup.GetLeaderID());
-
-		// Check if leader entity exists
-		if (!currentLeaderEntity)
-			return;
-
-		// If current leader is not a squad leader role
-		if (!CRF_RoleHelper.IsSquadLeaderRole(currentLeaderEntity))
-		{
-			// Get joining player entity
-			IEntity player = playerManager.GetPlayerControlledEntity(playerId);
-
-			// Check if player entity exists
-			if (!player)
-				return;
-
-			// If joining player has squad leader role, make them the new leader
-			if (CRF_RoleHelper.IsSquadLeaderRole(player))
-			{
-				SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
-				groupsManager.SetGroupLeader(aiGroup.GetGroupID(), playerId);
-			}
-		}
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void OnPlayerLeftGroup(SCR_AIGroup aiGroup, int playerId)
-	{
-		// Only proceed on dedicated server
-		if (RplSession.Mode() != RplMode.Dedicated)
-			return;
-
-		// Get player manager
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		if (!playerManager)
-			return;
-
-		// Get the current group leader entity
-		int leaderID = aiGroup.GetLeaderID();
-		IEntity currentLeaderEntity = playerManager.GetPlayerControlledEntity(leaderID);
-
-		// Check if leader entity exists
-		if (!currentLeaderEntity)
-			return;
-
-		// If current leader is not a squad leader, find a team leader to promote
-		if (!CRF_RoleHelper.IsSquadLeaderRole(currentLeaderEntity))
-		{
-			// Get all group members
-			array<int> groupMembers = aiGroup.GetPlayerIDs();
-			if (!groupMembers || groupMembers.IsEmpty())
-				return;
-
-			// Get groups manager component
-			SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
-			if (!groupsManager)
-				return;
-
-			// Look for a team leader to promote
-			for (int i = 0; i < groupMembers.Count(); i++)
-			{
-				int member = groupMembers[i];
-				IEntity memberEntity = playerManager.GetPlayerControlledEntity(member);
-
-				if (!memberEntity)
-					continue;
-
-				if (CRF_RoleHelper.IsTeamLeaderRole(memberEntity))
-				{
-					groupsManager.SetGroupLeader(aiGroup.GetGroupID(), member);
-					break;
-				}
-			}
-		}
+		m_GamemodeManager.InitilizePlayer(playerId, finalSpawnLocation);
 	}
 }
