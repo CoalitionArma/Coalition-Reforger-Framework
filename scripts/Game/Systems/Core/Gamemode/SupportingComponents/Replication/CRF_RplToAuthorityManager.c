@@ -8,9 +8,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplToAuthorityManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_RplToAuthorityManager.Cast(gameMode.FindComponent(CRF_RplToAuthorityManager));
+		if (GetGame().GetPlayerController())
+			return CRF_RplToAuthorityManager.Cast(GetGame().GetPlayerController().FindComponent(CRF_RplToAuthorityManager));
 		else
 			return null;
 	}
