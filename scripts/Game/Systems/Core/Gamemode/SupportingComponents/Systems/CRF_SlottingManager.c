@@ -12,7 +12,7 @@ class CRF_SlottingManager : ScriptComponent
 	protected ref array<int> m_aSlotsKey = {}; 
 	
 	// Cannot replicate maps, so we use this array to replicate all map data (in correllation with the map key array above).
-	[RplProp(onRplName: "UpdateClientSlotsMap")]
+	[RplProp()]
 	protected ref array<ref CRF_SlotDataContainer> m_aSlotsData = {}; 
 	
 	// Latest Slot ID that was used to create a slot
@@ -20,6 +20,9 @@ class CRF_SlottingManager : ScriptComponent
 	
 	// Script Invoker for all your invoker needs
 	protected ref ScriptInvoker m_OnSlottingUpdate;
+	
+	[RplProp(onRplName: "UpdateClientSlotsMap")]
+	protected int m_SlottingUpdate;
 	
 	//------------------------------------------------------------------------------------------------
 	static CRF_SlottingManager GetInstance()
@@ -61,6 +64,7 @@ class CRF_SlottingManager : ScriptComponent
 		// Replicate m_aSlotsKey/m_aSlotsData to all clients.
 		m_aSlotsKey = tempSlotsKey;
 		m_aSlotsData = tempSlotsData;
+		m_SlottingUpdate++;
 		Replication.BumpMe();
 		
 		#ifdef WORKBENCH
