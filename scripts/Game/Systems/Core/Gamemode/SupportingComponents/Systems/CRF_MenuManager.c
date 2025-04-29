@@ -280,7 +280,7 @@ class CRF_MenuManager : ScriptComponent
 		
 		// Find component and process join channel
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(parent5.FindHandler(CRF_ListBoxElementComponent));
-		CRF_RplToAuthorityManager.GetInstance().JoinChannel(comp.m_iplayerId, comp.m_iChannelId);
+		CRF_RplToAuthorityManager.GetInstance().JoinChannel(comp.m_iPlayerId, comp.m_iChannelId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -323,7 +323,7 @@ class CRF_MenuManager : ScriptComponent
 		foreach (int player : players)
 		{
 			if (IsPlayerInChannel(player, comp.m_iChannelId))
-				CRF_RplBroadcastManager.GetInstance().Deny(player, comp.m_iplayerId);
+				CRF_RplBroadcastManager.GetInstance().Deny(player, comp.m_iPlayerId);
 		}
 	}
 }

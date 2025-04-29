@@ -127,7 +127,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		foreach(Widget request: m_aRequest)
 		{
 			CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(request.FindHandler(CRF_ListBoxElementComponent));
-			if (m_MenuManager.IsPlayerInChannel(comp.m_iplayerId, comp.m_iChannelId))
+			if (m_MenuManager.IsPlayerInChannel(comp.m_iPlayerId, comp.m_iChannelId))
 			{
 				request.RemoveFromHierarchy();
 				m_aRequest.RemoveOrdered(m_aRequest.Find(request));
@@ -339,7 +339,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				if(playerId.ToInt() != SCR_PlayerController.GetLocalPlayerId() && channelName == "Deafen")
 					continue;
 				int playerIndex = m_wVONChannels.AddItem(pm.GetPlayerName(playerId.ToInt()), null, "{68D74FF57296AFFB}UI/Listbox/PlayerListboxElementVON.layout");
-				m_wVONChannels.GetCRFElementComponent(playerIndex).m_iplayerId = SCR_PlayerController.GetLocalPlayerId();
+				m_wVONChannels.GetCRFElementComponent(playerIndex).m_iPlayerId = SCR_PlayerController.GetLocalPlayerId();
 				m_wVONChannels.GetCRFElementComponent(playerIndex).m_bIsPlayer = true;
 			}
 		}

@@ -322,7 +322,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Widget compWidget = GetGame().GetWorkspace().CreateWidgets("{49490337615BA9B8}UI/Listbox/VONChannelRequestListBox.layout", specMenu.m_wRoot.FindAnyWidget("Requests"));
 		specMenu.m_aRequest.Insert(compWidget);
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(compWidget.FindHandler(CRF_ListBoxElementComponent));
-		comp.m_iplayerId = requestId;
+		comp.m_iPlayerId = requestId;
 		comp.m_iChannelId = channel;
 		comp.GetAccept().m_OnClicked.Insert(CRF_MenuManager.GetInstance().Accept);
 		comp.GetDeny().m_OnClicked.Insert(CRF_MenuManager.GetInstance().Deny);
@@ -347,7 +347,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 			if (!comp)
 				continue;
 
-			if (requestId == comp.m_iplayerId)
+			if (requestId == comp.m_iPlayerId)
 			{
 				comp.GetAccept().m_OnClicked.Clear();
 				comp.GetDeny().m_OnClicked.Clear();

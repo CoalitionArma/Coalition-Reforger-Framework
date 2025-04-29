@@ -327,10 +327,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	
 	void SelectPlayer()
 	{
-		if(m_iSelectedplayerId == m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iplayerId)
+		if(m_iSelectedplayerId == m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iPlayerId)
 			m_iSelectedplayerId = 0;
 		else
-			m_iSelectedplayerId = m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iplayerId;
+			m_iSelectedplayerId = m_cUnslotPlayerListBoxComponent.GetElementComponent(m_cUnslotPlayerListBoxComponent.GetSelectedItem()).m_iPlayerId;
 		UpdateSlots();
 	}
 	

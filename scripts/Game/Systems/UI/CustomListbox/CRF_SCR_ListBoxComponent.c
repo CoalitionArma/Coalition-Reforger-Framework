@@ -23,7 +23,7 @@ modded class SCR_ListBoxComponent
 		comp.SetImage(imageOrImageset, iconName);
 		
 		// Associate the item with a player ID
-		comp.m_iplayerId = playerId;
+		comp.m_iPlayerId = playerId;
 		
 		// Return the ID of the newly added item
 		return id;
