@@ -322,21 +322,24 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 				if (!customGear.m_PrimaryWeapon.IsEmpty())
 				{
 					CRF_Weapon_Class primary = SelectRandomWeapon(customGear.m_PrimaryWeapon);
-					SpawnWeapon(primary.m_Weapon, primary.m_Attachments, primary.m_MagazineArray, spawnParams, inventory, inventoryManager);
+					if (primary.m_Weapon)
+						SpawnWeapon(primary.m_Weapon, primary.m_Attachments, primary.m_MagazineArray, spawnParams, inventory, inventoryManager);
 					customWeaponsSet = true;
 				}
 				
 				if (!customGear.m_SecondaryWeapon.IsEmpty())
 				{
 					CRF_Weapon_Class secondary = SelectRandomWeapon(customGear.m_SecondaryWeapon);
-					SpawnWeapon(secondary.m_Weapon, secondary.m_Attachments, secondary.m_MagazineArray, spawnParams, inventory, inventoryManager);
+					if (secondary.m_Weapon)
+						SpawnWeapon(secondary.m_Weapon, secondary.m_Attachments, secondary.m_MagazineArray, spawnParams, inventory, inventoryManager);
 					customWeaponsSet = true;
 				}
 				
 				if (!customGear.m_Pistol.IsEmpty())
 				{
 					CRF_Weapon_Class pistol = SelectRandomWeapon(customGear.m_Pistol);
-					SpawnWeapon(pistol.m_Weapon, pistol.m_Attachments, pistol.m_MagazineArray, spawnParams, inventory, inventoryManager);
+					if (pistol.m_Weapon)
+						SpawnWeapon(pistol.m_Weapon, pistol.m_Attachments, pistol.m_MagazineArray, spawnParams, inventory, inventoryManager);
 					customWeaponsSet = true;
 				}
 			}
@@ -348,50 +351,62 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 			if (m_WeaponConfig.m_aRolesThatGetRifles.Contains(role))
 			{
 				CRF_Weapon_Class rifle = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Rifle);
-				SpawnWeapon(rifle.m_Weapon, rifle.m_Attachments, rifle.m_MagazineArray, spawnParams, inventory, inventoryManager);
+				if (rifle.m_Weapon)
+					SpawnWeapon(rifle.m_Weapon, rifle.m_Attachments, rifle.m_MagazineArray, spawnParams, inventory, inventoryManager);
 			};
 			
 			if (m_WeaponConfig.m_aRolesThatGetRifleUGLs.Contains(role))
 			{
 				CRF_Weapon_Class rifleUGL = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_RifleUGL);
-				SpawnWeapon(rifleUGL.m_Weapon, rifleUGL.m_Attachments, rifleUGL.m_MagazineArray, spawnParams, inventory, inventoryManager);
+				if (rifleUGL.m_Weapon)
+					SpawnWeapon(rifleUGL.m_Weapon, rifleUGL.m_Attachments, rifleUGL.m_MagazineArray, spawnParams, inventory, inventoryManager)
 			};
 			
 			if (m_WeaponConfig.m_aRolesThatGetCarbines.Contains(role)) 	
 			{
 				CRF_Weapon_Class carbine = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Carbine);
-				SpawnWeapon(carbine.m_Weapon, carbine.m_Attachments, carbine.m_MagazineArray, spawnParams, inventory, inventoryManager);
+				if (carbine.m_Weapon)
+					SpawnWeapon(carbine.m_Weapon, carbine.m_Attachments, carbine.m_MagazineArray, spawnParams, inventory, inventoryManager);
 			};
 			
 			if(m_WeaponConfig.m_aRolesThatGetPistols.Contains(role))
 			{
 				CRF_Weapon_Class pistol = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Pistol);
-				SpawnWeapon(pistol.m_Weapon, pistol.m_Attachments, pistol.m_MagazineArray, spawnParams, inventory, inventoryManager);
+				if (pistol.m_Weapon)
+					SpawnWeapon(pistol.m_Weapon, pistol.m_Attachments, pistol.m_MagazineArray, spawnParams, inventory, inventoryManager);
 			};
 			
 			if (m_WeaponConfig.m_aRolesThatGetSnipers.Contains(role) && gearConfig.m_FactionWeapons.m_Sniper)
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_Sniper.m_Weapon, gearConfig.m_FactionWeapons.m_Sniper.m_Attachments, gearConfig.m_FactionWeapons.m_Sniper.m_MagazineArray, spawnParams, inventory, inventoryManager);
+				if (gearConfig.m_FactionWeapons.m_Sniper.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_Sniper.m_Weapon, gearConfig.m_FactionWeapons.m_Sniper.m_Attachments, gearConfig.m_FactionWeapons.m_Sniper.m_MagazineArray, spawnParams, inventory, inventoryManager);
 			
 			if (m_WeaponConfig.m_aRolesThatGetARs.Contains(role) && gearConfig.m_FactionWeapons.m_AR)	
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_AR.m_Weapon, gearConfig.m_FactionWeapons.m_AR.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AR.m_MagazineArray), spawnParams, inventory, inventoryManager);
+				if (gearConfig.m_FactionWeapons.m_AR.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_AR.m_Weapon, gearConfig.m_FactionWeapons.m_AR.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AR.m_MagazineArray), spawnParams, inventory, inventoryManager);
 			
 			if (m_WeaponConfig.m_aRolesThatGetMMGs.Contains(role) && gearConfig.m_FactionWeapons.m_MMG) 
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_MMG.m_Weapon, gearConfig.m_FactionWeapons.m_MMG.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray), spawnParams, inventory, inventoryManager);	
+				if (gearConfig.m_FactionWeapons.m_MMG.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_MMG.m_Weapon, gearConfig.m_FactionWeapons.m_MMG.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray), spawnParams, inventory, inventoryManager);	
 			
 			if (m_WeaponConfig.m_aRolesThatGetAT.Contains(role) && gearConfig.m_FactionWeapons.m_AT)
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_AT.m_Weapon, gearConfig.m_FactionWeapons.m_AT.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AT.m_MagazineArray), spawnParams, inventory, inventoryManager);
+				if (gearConfig.m_FactionWeapons.m_AT.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_AT.m_Weapon, gearConfig.m_FactionWeapons.m_AT.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AT.m_MagazineArray), spawnParams, inventory, inventoryManager);
 			
 			if (m_WeaponConfig.m_aRolesThatGetMAT.Contains(role) && gearConfig.m_FactionWeapons.m_MAT)
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_MAT.m_Weapon, gearConfig.m_FactionWeapons.m_MAT.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray), spawnParams, inventory, inventoryManager);
+				if (gearConfig.m_FactionWeapons.m_MAT.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_MAT.m_Weapon, gearConfig.m_FactionWeapons.m_MAT.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray), spawnParams, inventory, inventoryManager);
 			
 			if (m_WeaponConfig.m_aRolesThatGetHAT.Contains(role) && gearConfig.m_FactionWeapons.m_HAT)
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_HAT.m_Weapon, gearConfig.m_FactionWeapons.m_HAT.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray), spawnParams, inventory, inventoryManager);	
+				if (gearConfig.m_FactionWeapons.m_HAT.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_HAT.m_Weapon, gearConfig.m_FactionWeapons.m_HAT.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray), spawnParams, inventory, inventoryManager);	
 			
 			if (m_WeaponConfig.m_aRolesThatGetAA.Contains(role) && gearConfig.m_FactionWeapons.m_AA)
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_AA.m_Weapon, gearConfig.m_FactionWeapons.m_AA.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AA.m_MagazineArray), spawnParams, inventory, inventoryManager);
+				if (gearConfig.m_FactionWeapons.m_AA.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_AA.m_Weapon, gearConfig.m_FactionWeapons.m_AA.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AA.m_MagazineArray), spawnParams, inventory, inventoryManager);
 				
 			if (m_WeaponConfig.m_aRolesThatGetHMGs.Contains(role) && gearConfig.m_FactionWeapons.m_HMG)
-				SpawnWeapon(gearConfig.m_FactionWeapons.m_HMG.m_Weapon, gearConfig.m_FactionWeapons.m_HMG.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray), spawnParams, inventory, inventoryManager);
+				if (gearConfig.m_FactionWeapons.m_HMG.m_Weapon)
+					SpawnWeapon(gearConfig.m_FactionWeapons.m_HMG.m_Weapon, gearConfig.m_FactionWeapons.m_HMG.m_Attachments, ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray), spawnParams, inventory, inventoryManager);
 		}
 		
 		// CUSTOM GEAR
@@ -1408,7 +1423,9 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 
 			UpdatePlayedFactions();
 
-			DeleteEmptySlots();
+			if (CRF_Gamemode.GetInstance().m_bDeleteJIPSlots && m_bSafeStartEnabled)
+				GetGame().GetCallqueue().CallLater(DeleteEmptySlotsSlowly, 125, true);
+			
 			m_bKillRedundantUnitsBool = true;
 			m_bAdminForcedReady = false;
 			m_bBluforReady = false;
@@ -1497,33 +1514,19 @@ class CRF_GamemodeComponent : SCR_BaseGameModeComponent
 		Replication.BumpMe();
 	};
 
-	// Why are these two methods done this way? It should just be one wtf
-	//------------------------------------------------------------------------------------------------
-	void DeleteEmptySlots()
-	{
-		if (CRF_Gamemode.GetInstance().m_bDeleteJIPSlots)
-			if (m_bSafeStartEnabled)
-				GetGame().GetCallqueue().CallLater(DeleteEmptySlotsSlowly, 125, true);
-	}
-
 	//------------------------------------------------------------------------------------------------
 	void DeleteEmptySlotsSlowly()
 	{
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (gamemode.m_bDeleteJIPSlots && !gamemode.m_bRespawnEnabled)
+		for (int i = 0; i < gamemode.m_aEntitySlots.Count(); i++)
 		{
-			for (int i = 0; i < gamemode.m_aEntitySlots.Count(); i++)
+			if (gamemode.m_aSlots.Get(i) == 0 || gamemode.m_aSlots.Get(i) == -1)
 			{
-				if (gamemode.m_aSlots.Get(i) == 0 || gamemode.m_aSlots.Get(i) == -1)
-				{
-					//Print("Removing Entity");
-					gamemode.RemovePlayableEntity(gamemode.m_aEntitySlots.Get(i));
-					return;
-				}
+				gamemode.RemovePlayableEntity(gamemode.m_aEntitySlots.Get(i));
+				return;
 			}
-			GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
 		}
-
+		GetGame().GetCallqueue().Remove(DeleteEmptySlotsSlowly);
 	}
 
 	// Called from server to all clients
