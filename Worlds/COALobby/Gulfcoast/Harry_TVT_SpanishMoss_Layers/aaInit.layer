@@ -7,6 +7,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    Enabled 0
   }
   CRF_SearchAndDestroyGameModeComponent "{652B550D75FDCFE2}" {
+   attackingSide "BLUFOR"
+   defendingSide "OPFOR"
    hideMapMarkers 1
   }
   SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
@@ -122,10 +124,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_iFactionOneRatio 3
  m_sFactionOneKey "BLU"
- m_iFactionTwoRatio 3
+ m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  {
-  SCR_FactionManager {
+  SCR_FactionManager "653D280F31759483" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -135,11 +137,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      }
      "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
       SocialIdentity SocialIdentity "{56E4EBD9F0C03530}" {
-       NamesConfig +{
+       NamesConfig {
        }
-       AliasesConfig +{
+       AliasesConfig {
        }
-       SurnamesConfig +{
+       SurnamesConfig {
        }
       }
      }
@@ -344,7 +346,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      m_sFactionFlag "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
      m_FactionFlagMaterial "{E3BB2EF7F600DD28}Assets/Props/Fabric/Flags/Data/Flag_2_3_CIVILIAN.emat"
      m_FactionLabel FACTION_CIV
-     m_aFriendlyFactionsIds +{
+     m_aFriendlyFactionsIds {
      }
      m_sFactionRadioEncryptionKey "Sandbox"
      m_iFactionRadioFrequency 58000
@@ -367,7 +369,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      }
      m_sGroupFlagsImageSet "{D7E06968B5F9FC92}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian.imageset"
      m_sGroupFlagsImageSetOutlines "{824ADD5E7A28B03E}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian-outline.imageset"
-     m_aFlagNames +{
+     m_aFlagNames {
      }
      m_sFactionBackground "{781301447441F404}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_Civilian.imageset"
     }
@@ -406,9 +408,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{652B551EE84683C0}" {
         m_sCallsign "MMG"
-       }
-       SCR_CallsignInfo "{652B551EE858D6BE}" {
-        m_sCallsign "Engi Team"
        }
        SCR_CallsignInfo "{652B551EE8A235E6}" {
         m_sCallsign "LAV"
@@ -555,7 +554,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      }
      m_sGroupFlagsImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
      m_sGroupFlagsImageSetOutlines "{C07D82625600BA21}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor-outline.imageset"
-     m_aFlagNames +{
+     m_aFlagNames {
      }
      m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
     }
