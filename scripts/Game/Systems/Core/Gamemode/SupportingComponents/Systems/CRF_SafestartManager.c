@@ -10,10 +10,6 @@ class CRF_SafestartManager : ScriptComponent
 	protected ref array<string> m_aFactionsStatusArray;
 	protected ref array<SCR_Faction> m_aPlayedFactionsArray = {};
 
-	[RplProp(onRplName: "ShowMessage")]
-	protected string m_sMessageContent;
-	protected string m_sStoredMessageContent;
-
 	[RplProp()]
 	protected bool m_bKillRedundantUnitsBool;
 
@@ -37,6 +33,7 @@ class CRF_SafestartManager : ScriptComponent
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SlottingManager m_SlottingManager;
+	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_SafestartManager GetInstance()
@@ -62,6 +59,7 @@ class CRF_SafestartManager : ScriptComponent
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 
 		if (RplSession.Mode() != RplMode.Client) // Supports both workbench and dedi
 		{
@@ -183,6 +181,8 @@ class CRF_SafestartManager : ScriptComponent
 	void ToggleSideReady(FactionKey setReady, string playerName, bool adminForced) {
 		if (!GetSafestartStatus())
 			return;
+		
+		string message;
 
 		// Handle admin force ready/unready all factions
 		if (adminForced) {
@@ -202,10 +202,10 @@ class CRF_SafestartManager : ScriptComponent
 				actionText = "Force Unreadied";
 			}
 
-			m_sMessageContent = string.Format("An Admin (%1) Has %2 All Sides!", playerName, actionText);
+			message = string.Format("An Admin (%1) Has %2 All Sides!", playerName, actionText);
 
 			Replication.BumpMe();
-			ShowMessage();
+			m_RplBroadcastManager.PopUpNotification(3.25, message);
 			return;
 		}
 
@@ -261,15 +261,20 @@ class CRF_SafestartManager : ScriptComponent
 			}
 		}
 
-		m_sMessageContent = string.Format("%1 - %2", messageKey, playerName);
-		Replication.BumpMe();
-		ShowMessage();
+		message = string.Format("%1 - %2", messageKey, playerName);
+		
+		m_RplBroadcastManager.PopUpNotification(3.25, message, "#Coal_SS_Countdown_Started_Subtext");
+		
 	};
 
 	//Call from server
 	//------------------------------------------------------------------------------------------------
 	protected void CheckStartCountDown()
 	{
+		string message;
+		string submessage = "#Coal_SS_Countdown_Started_Subtext";
+		float popupLife = 3.25;
+		
 		// Count how many factions are ready
 		int readyFactionsCount = 0;
 		foreach (string factionStatus : m_aFactionsStatusArray)
@@ -286,10 +291,9 @@ class CRF_SafestartManager : ScriptComponent
 		// Cancel countdown if a faction unreadied after countdown began
 		if (readyFactionsCount != m_iPlayedFactionsCount && m_iSafeStartTimeRemaining != 35)
 		{
-			m_sMessageContent = "#Coal_SS_Countdown_Cancelled";
-			Replication.BumpMe();
+			message = "#Coal_SS_Countdown_Cancelled";
 			m_iSafeStartTimeRemaining = 35;
-			ShowMessage();
+			m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
 			return;
 		}
 
@@ -297,16 +301,17 @@ class CRF_SafestartManager : ScriptComponent
 		if (readyFactionsCount == m_iPlayedFactionsCount)
 		{
 			m_iSafeStartTimeRemaining -= 5;
-			m_sMessageContent = string.Format("#Coal_SS_Countdown_Started %1 Seconds!", m_iSafeStartTimeRemaining);
+			message = string.Format("#Coal_SS_Countdown_Started %1 Seconds!", m_iSafeStartTimeRemaining);
 
 			// End safe start when countdown reaches zero
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
-				m_sMessageContent = "#Coal_SS_Game_Live";
+				message = "#Coal_SS_Game_Live";
+				submessage = "#Coal_SS_SafeStart_Started_Subtext";
+				popupLife = 8;
 			}
 
-			Replication.BumpMe();
-			ShowMessage();
+			m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
 		}
 	};
 
@@ -399,44 +404,23 @@ class CRF_SafestartManager : ScriptComponent
 		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
 	};
 
-	// Called from server to all clients
-	//------------------------------------------------------------------------------------------------
-	void ShowMessage()
-	{
-		if (m_sMessageContent == m_sStoredMessageContent)
-			return;
-
-		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
-
-		m_sStoredMessageContent = m_sMessageContent;
-
-		if (m_sMessageContent == "All Blufor Players Have Been Eliminated!" || m_sMessageContent == "All Opfor Players Have Been Eliminated!" || m_sMessageContent == "All Indfor Players Have Been Eliminated!" || m_sMessageContent == "All Civilian Players Have Been Eliminated!")
-		{
-			m_PopUpNotification.PopupMsg(m_sMessageContent, 20);
-			return;
-		};
-
-		if (m_sMessageContent == "#Coal_SS_Game_Live")
-			m_PopUpNotification.PopupMsg(m_sMessageContent, 8, "#Coal_SS_SafeStart_Started_Subtext");
-		else
-			m_PopUpNotification.PopupMsg(m_sMessageContent, 2.5, "#Coal_SS_Countdown_Started_Subtext");
-	};
-
 	//------------------------------------------------------------------------------------------------
 	void CheckPlayersAlive()
 	{
+		string message;
+		
 		foreach (SCR_Faction faction : m_aPlayedFactionsArray)
 		{
 			switch (true) {
-				case(faction.GetFactionKey() == "BLUFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Blufor Players Have Been Eliminated!"; break; };
-				case(faction.GetFactionKey() == "OPFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Opfor Players Have Been Eliminated!"; break; };
-				case(faction.GetFactionKey() == "INDFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Indfor Players Have Been Eliminated!"; break; };
-				case(faction.GetFactionKey() == "CIV" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { m_sMessageContent = "All Civilian Players Have Been Eliminated!"; break; };
+				case(faction.GetFactionKey() == "BLUFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { message = "All Blufor Players Have Been Eliminated!"; break; };
+				case(faction.GetFactionKey() == "OPFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { message = "All Opfor Players Have Been Eliminated!"; break; };
+				case(faction.GetFactionKey() == "INDFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { message = "All Indfor Players Have Been Eliminated!"; break; };
+				case(faction.GetFactionKey() == "CIV" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { message = "All Civilian Players Have Been Eliminated!"; break; };
 			};
 		};
 
-		Replication.BumpMe();
-		ShowMessage();
+		if (!message.IsEmpty())
+			m_RplBroadcastManager.PopUpNotification(20, message);
 	};
 
 	//------------------------------------------------------------------------------------------------

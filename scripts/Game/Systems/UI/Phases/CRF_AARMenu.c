@@ -565,6 +565,9 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		array<SCR_AIGroup> factionGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
 		array<SCR_AIGroup> groups = {};
 		
+		if (factionGroups.IsEmpty())
+			return;
+		
 		// Copy the groups array
 		foreach(SCR_AIGroup group : factionGroups)
 		{	

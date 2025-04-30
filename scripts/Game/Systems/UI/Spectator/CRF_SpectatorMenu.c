@@ -352,9 +352,16 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		map<int, ref CRF_SlotDataContainer> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		foreach(int slotId, CRF_SlotDataContainer slotData : tempMap)
-		{	
+		{			
+			IEntity entity = null;
+			
+			// If the RplId is valid for the slot
+			if(slotData && slotData.m_iSlotCurrentCharacter != RplId.Invalid() && Replication.FindItem(slotData.m_iSlotCurrentCharacter))
+				// Attempt to get entity
+				entity = RplComponent.Cast(Replication.FindItem(slotData.m_iSlotCurrentCharacter)).GetEntity();
+			
 			// Skip if entity doesn't exist
-			if (!Replication.FindItem(slotData.m_iSlotCurrentCharacter))
+			if (!entity)
 			{
 				// Remove existing icon if entity no longer exists
 				int index = m_aEntityIcons.Find(slotData.m_iSlotCurrentCharacter);
@@ -367,9 +374,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				m_aSpectatorIcons.RemoveOrdered(index);
 				continue;
 			}
-			
-			// Get entity from replication ID
-			IEntity entity = RplComponent.Cast(Replication.FindItem(slotData.m_iSlotCurrentCharacter)).GetEntity();
 			
 			// Skip if this is the local player
 			if (SCR_PlayerController.GetLocalControlledEntity() == entity)
@@ -389,7 +393,10 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				spectatorIconWidget.FindHandler(CRF_SpectatorLabelIconCharacter)
 			);
 			
-			spectatorIcon.GetButton().m_OnClicked.Insert(SelectSpecCursor);
+			// If the character is alive, let spectators spectate them
+			if (CheckIfEntityAlive(entity))
+				spectatorIcon.GetButton().m_OnClicked.Insert(SelectSpecCursor);
+			
 			spectatorIcon.SetEntity(entity, "Spine3");
 			
 			// Store references to the icon
@@ -397,6 +404,27 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			m_aSpectatorIcons.Insert(spectatorIcon);
 			m_aSpectatorWidgets.Insert(spectatorIconWidget);
 		}
+	}
+	
+	/**
+	 * Check if the provided entity is considered "alive"
+	 * @param entity - Entity to check
+	 */
+	protected bool CheckIfEntityAlive(IEntity entity)
+	{
+		// Get ChimeraCharacter so we can pull the controller
+		ChimeraCharacter character = ChimeraCharacter.Cast(entity);
+		if (!character)
+			return false;
+	
+		// Get the controller from the character
+		CharacterControllerComponent controller = character.GetCharacterController();
+	
+		// If the character is a valid character and is not dead then return that this guy ain't dead
+		if (controller && controller.GetLifeState() != ECharacterLifeState.DEAD)
+			return true;
+		else 
+			return false;
 	}
 	
 	/**
@@ -655,8 +683,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (!iconHandler)
 			return;
 		
-		// Set entity to spectate
-		m_eSpecEntity = iconHandler.m_eEntity;
+		if(iconHandler.m_eEntity)
+			m_eSpecEntity = iconHandler.m_eEntity;
 	}
 	
 	/**
@@ -787,11 +815,14 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		
 		// Get slot and group data
 		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> availableGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
+		array<SCR_AIGroup> factionGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
 		array<SCR_AIGroup> groups = {};
 		
+		if (factionGroups.IsEmpty())
+			return;
+		
 		// Create a copy of the groups array
-		foreach(SCR_AIGroup group : availableGroups)
+		foreach(SCR_AIGroup group : factionGroups)
 		{	
 			groups.Insert(group);
 		}

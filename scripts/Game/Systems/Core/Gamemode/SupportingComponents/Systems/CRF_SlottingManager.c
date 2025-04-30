@@ -144,7 +144,7 @@ class CRF_SlottingManager : ScriptComponent
 				return slotID;
 		}
 		
-		return -1;
+		return 0;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -164,7 +164,7 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		ref CRF_SlotDataContainer data = GetPlayerSlotData(playerId);
 		
-		if(!data || !data.m_iSlotCurrentGroup || !data.m_iSlotCurrentGroup.IsValid() || !Replication.FindItem(data.m_iSlotCurrentGroup))
+		if(!data || !data.m_iSlotCurrentGroup || !data.m_iSlotCurrentGroup == RplId.Invalid() || !Replication.FindItem(data.m_iSlotCurrentGroup))
 			return null;
 		
 		return SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentGroup)).GetEntity());
@@ -175,10 +175,23 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		ref CRF_SlotDataContainer data = GetPlayerSlotData(playerId);
 		
-		if(!data || !data.m_iSlotCurrentCharacter || !data.m_iSlotCurrentCharacter.IsValid() || !Replication.FindItem(data.m_iSlotCurrentCharacter))
+		if(!data || !data.m_iSlotCurrentCharacter || !data.m_iSlotCurrentCharacter == RplId.Invalid() || !Replication.FindItem(data.m_iSlotCurrentCharacter))
 			return null;
 		
-		return SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity());
+		// Get ChimeraCharacter so we can pull the controller
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity());
+		
+		if (!character)
+			return null;
+	
+		// Get the controller from the character
+		CharacterControllerComponent controller = character.GetCharacterController();
+	
+		// If the character is a valid character and is not dead then return that this guy ain't dead
+		if (controller && controller.GetLifeState() != ECharacterLifeState.DEAD)
+			return character;
+		else
+			return null;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -279,7 +292,7 @@ class CRF_SlottingManager : ScriptComponent
 		{
 			ref CRF_SlotDataContainer data = GetSlotData(slotId);
 			
-			if(data && data.m_iSlotCurrentCharacter && data.m_iSlotCurrentCharacter.IsValid() && Replication.FindItem(data.m_iSlotCurrentCharacter))
+			if(data && data.m_iSlotCurrentCharacter && data.m_iSlotCurrentCharacter == RplId.Invalid() && Replication.FindItem(data.m_iSlotCurrentCharacter))
 			{
 				SCR_EntityHelper.DeleteEntityAndChildren(SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity()));
 				UpdateSlotCharacter(slotId, RplId.Invalid());
@@ -328,6 +341,37 @@ class CRF_SlottingManager : ScriptComponent
 				continue;
 			else
 				slotData.m_bIsLockedSlot = true;
+		}
+		
+		array<SCR_AIGroup> allGroups = {};
+		SCR_GroupsManagerComponent.GetInstance().GetAllPlayableGroups(allGroups);
+		
+		// Process each group and its players
+		foreach(SCR_AIGroup group : allGroups)
+		{	
+			// Skip already private groups
+			if(group.IsPrivate())
+				continue;
+			
+			int playersInGroup = 0;
+			
+			// Get group ID
+			RplId groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
+			
+			// Process all slots in this group
+			foreach(int slotId, CRF_SlotDataContainer slotData : m_mSlotsMap)
+			{
+				if(slotData.m_iSlotCurrentGroup != groupId)
+					continue;
+				
+				// Count slots
+				if (slotData.m_iSlotCurrentPlayerId > 0)
+					playersInGroup++;
+			};
+							
+			// lock empty groups
+			if (playersInGroup == 0)
+				group.SetPrivate(true);
 		}
 		
 		SlottingChangesUpdate();

@@ -377,9 +377,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		// Update slotting UI if local player is in a slot
 		if (m_SlottingManager.IsPlayerInASlot(SCR_PlayerController.GetLocalPlayerId()))
-		{
 			m_SlottingManager.SlottingChangesUpdate();
-		}
 	}
 	
 	//===================================================================================
@@ -472,8 +470,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		{
 			// Update slot state for permanent death
 			int slotID = m_SlottingManager.GetCharacterSlotID(entity);
-			m_SlottingManager.UpdateSlotDeathState(slotID, true);
-			m_SlottingManager.UpdateSlotCharacter(slotID, RplId.Invalid());
+			
+			if(slotID > 0)
+				m_SlottingManager.UpdateSlotDeathState(slotID, true);
 		}
 
 		// Move player to spectator

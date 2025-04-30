@@ -34,7 +34,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------------
-	void PopUpNotification(int life, string titleText, string subtitleText = "", string sound = "", string titleTextParam1 = "", string titleTextParam2 = "")
+	void PopUpNotification(float life, string titleText, string subtitleText = "", string sound = "", string titleTextParam1 = "", string titleTextParam2 = "")
 	{
 		#ifdef WORKBENCH
 		RpcDo_PopUpNotification(life, titleText, subtitleText, sound, titleTextParam1, titleTextParam2);
@@ -161,7 +161,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_PopUpNotification(int life, string titleText, string subtitleText, string sound, string titleTextParam1, string titleTextParam2)
+	void RpcDo_PopUpNotification(float life, string titleText, string subtitleText, string sound, string titleTextParam1, string titleTextParam2)
 	{
 		if(!sound.IsEmpty())
 			AudioSystem.PlaySound(sound);

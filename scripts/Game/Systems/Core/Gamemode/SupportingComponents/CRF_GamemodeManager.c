@@ -87,6 +87,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			playerCharacter = GetGame().SpawnEntityPrefab(Resource.Load(m_SlottingManager.GetPlayerSlotResource(playerId)), GetGame().GetWorld(), spawnParams);
 		
 			m_SlottingManager.UpdateSlotCharacter(m_SlottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id());
+			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), false);
 			
 			CRF_PlayableCharacter playabeCharComp = CRF_PlayableCharacter.Cast(playerCharacter.FindComponent(CRF_PlayableCharacter));
 			

@@ -166,6 +166,12 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 	{
 		if (!m_eEntity || !m_wSpectatorLabelText)
 			return;
+		
+		if (!CheckIfEntityAlive(m_eEntity))
+		{
+			m_wSpectatorLabelText.SetText("");
+			return;
+		};
 			
 		RplComponent rplComponent = RplComponent.Cast(m_eEntity.FindComponent(RplComponent));
 		if (!rplComponent)
@@ -192,6 +198,27 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 			else 
 				m_wSpectatorLabelText.SetText("");
 		}
+	}
+	
+	/**
+	 * Check if the provided entity is considered "alive"
+	 * @param entity - Entity to check
+	 */
+	protected bool CheckIfEntityAlive(IEntity entity)
+	{
+		// Get ChimeraCharacter so we can pull the controller
+		ChimeraCharacter character = ChimeraCharacter.Cast(entity);
+		if (!character)
+			return false;
+	
+		// Get the controller from the character
+		CharacterControllerComponent controller = character.GetCharacterController();
+	
+		// If the character is a valid character and is not dead then return that this guy ain't dead
+		if (controller && controller.GetLifeState() != ECharacterLifeState.DEAD)
+			return true;
+		else 
+			return false;
 	}
 	
 	//------------------------------------------------------------------------------------------------
