@@ -1,0 +1,58 @@
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 2724.505 0.632 5952.463
+  angleY 143.597
+ }
+ Ural4320_transport2 {
+  coords 2721.39 0.632 5950.166
+  angleY 143.597
+ }
+ Ural4320_transport3 {
+  coords 2718.381 0.632 5947.947
+  angleY 143.597
+ }
+}
+Vehicle Ural4320_Arsenal1 : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
+ coords 2710.682 0.597 5942.573
+ angleY 143.945
+}
+Vehicle Ural4320_ammo1 : "{3336BE330C4F355B}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ammo.et" {
+ coords 2714.391 0.635 5945.03
+ angleY 144.308
+}
+$grp Vehicle : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ UAZ452_ambulance1 {
+  coords 2720.831 0.781 5930.972
+  angleY 90.313
+ }
+ UAZ452_ambulance2 {
+  coords 2720.812 0.781 5927.424
+  angleY 90.313
+ }
+}
+Vehicle Ural4320_tanker1 : "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et" {
+ coords 2704.965 0.683 5938.864
+ angleY 144.981
+}
+Vehicle Ural4320_repair1 : "{A5647958579A4149}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_repair.et" {
+ coords 2707.664 0.612 5940.73
+ angleY 144.547
+}
+$grp Vehicle : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ BTR1 {
+  coords 2761.411 0.781 5901.485
+  angleY 142.454
+ }
+ BTR2 {
+  coords 2755.174 0.781 5909.6
+  angleY 131.048
+ }
+ BTR3 {
+  coords 2747.899 0.781 5915.934
+  angleY 145.861
+ }
+ BTR4 {
+  coords 2742.221 0.781 5924.308
+  angleY 154.707
+ }
+}
