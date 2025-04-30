@@ -105,6 +105,10 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		// Update slots and register for slot updates
 		UpdateSlots();
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
+		
+		// Update player icons and spectator UI
+		UpdatePlayerIcons();
+		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1750, true);
 	}
 	
 	/**
@@ -218,9 +222,6 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		
 		// Process channel requests
 		ProcessChannelRequests(tDelta);
-		
-		// Update player icons and spectator UI
-		UpdatePlayerIcons();
 		
 		// Update UI panel visibility based on cursor position
 		UpdateUIPanelVisibility(tDelta);
@@ -1119,6 +1120,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
+		
 		// Unregister from slotting updates
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)

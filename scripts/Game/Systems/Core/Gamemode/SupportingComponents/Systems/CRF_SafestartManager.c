@@ -429,10 +429,10 @@ class CRF_SafestartManager : ScriptComponent
 		foreach (SCR_Faction faction : m_aPlayedFactionsArray)
 		{
 			switch (true) {
-				case(faction.GetFactionKey() == "BLUFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { message = "All Blufor Players Have Been Eliminated!"; break; };
-				case(faction.GetFactionKey() == "OPFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { message = "All Opfor Players Have Been Eliminated!"; break; };
-				case(faction.GetFactionKey() == "INDFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { message = "All Indfor Players Have Been Eliminated!"; break; };
-				case(faction.GetFactionKey() == "CIV" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { message = "All Civilian Players Have Been Eliminated!"; break; };
+				case(faction.GetFactionKey() == "BLUFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { message = "All Blufor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(faction.GetFactionKey() == "OPFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { message = "All Opfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(faction.GetFactionKey() == "INDFOR" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { message = "All Indfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(faction.GetFactionKey() == "CIV" && faction.GetPlayerCount() == 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { message = "All Civilian Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
 			};
 		};
 
