@@ -265,6 +265,10 @@ class CRF_SafestartManager : ScriptComponent
 		
 		m_RplBroadcastManager.PopUpNotification(3.25, message, "#Coal_SS_Countdown_Started_Subtext");
 		
+		UpdatePlayedFactions();
+		
+		if(GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
+			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 	};
 
 	//Call from server
@@ -276,12 +280,7 @@ class CRF_SafestartManager : ScriptComponent
 		float popupLife = 3.25;
 		
 		// Count how many factions are ready
-		int readyFactionsCount = 0;
-		foreach (string factionStatus : m_aFactionsStatusArray)
-		{
-			if (factionStatus == "#Coal_SS_Faction_Ready")
-				readyFactionsCount++;
-		}
+		int readyFactionsCount = FactionsReadyCount();
 
 		// Exit if no factions playing or not all factions ready at initial countdown time
 		if ((readyFactionsCount == 0 && m_iPlayedFactionsCount == 0) ||
@@ -293,6 +292,7 @@ class CRF_SafestartManager : ScriptComponent
 		{
 			message = "#Coal_SS_Countdown_Cancelled";
 			m_iSafeStartTimeRemaining = 35;
+			GetGame().GetCallqueue().Remove(CheckStartCountDown);
 			m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
 			return;
 		}
@@ -306,6 +306,7 @@ class CRF_SafestartManager : ScriptComponent
 			// End safe start when countdown reaches zero
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
+				GetGame().GetCallqueue().Remove(CheckStartCountDown);
 				message = "#Coal_SS_Game_Live";
 				submessage = "#Coal_SS_SafeStart_Started_Subtext";
 				popupLife = 8;
@@ -314,6 +315,20 @@ class CRF_SafestartManager : ScriptComponent
 			m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
 		}
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	protected int FactionsReadyCount()
+	{
+		int readyFactionsCount = 0;
+		foreach (string factionStatus : m_aFactionsStatusArray)
+		{
+			if (factionStatus == "#Coal_SS_Faction_Ready")
+				readyFactionsCount++;
+		}
+		
+		return readyFactionsCount;
+	}
+	
 
 	//------------------------------------------------------------------------------------------------
 	bool GetSafestartStatus()
@@ -343,10 +358,13 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().Remove(m_GamemodeManager.UpdateMissionEndTimer);
 			GetGame().GetCallqueue().Remove(CheckPlayersAlive);
 
-			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			GetGame().GetCallqueue().CallLater(m_GamemodeManager.UpdateServerWorldTime, 1000, true);
-			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 5000, true);
-			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 1000, true);
+			
+			ActivateSafeStartEHs();
+			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 15000, true);
+			
+			UpdatePlayedFactions();
+			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 10000, true);
 
 			Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
 
@@ -366,7 +384,6 @@ class CRF_SafestartManager : ScriptComponent
 			if(m_Gamemode.m_bLockSlotsAfterSafestart)
 				m_SlottingManager.LockAllOpenSlots();
 
-			GetGame().GetCallqueue().Remove(CheckStartCountDown);
 			GetGame().GetCallqueue().Remove(m_GamemodeManager.UpdateServerWorldTime);
 			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);

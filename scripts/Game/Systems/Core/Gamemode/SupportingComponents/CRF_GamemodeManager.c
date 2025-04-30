@@ -115,16 +115,16 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void EnterSpectator(int playerId, IEntity entity = null)
 	{
-		IEntity initialEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld());
+		IEntity specEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld());
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 
-		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, initialEntity);
+		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, specEntity);
 
 		SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
 		if (currentGroup)
 			currentGroup.RemovePlayer(playerId);
 		
-		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(initialEntity.FindComponent(SCR_CharacterDamageManagerComponent)); 
+		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(specEntity.FindComponent(SCR_CharacterDamageManagerComponent)); 
 		if (damManager)
 			damManager.EnableDamageHandling(false);
 		

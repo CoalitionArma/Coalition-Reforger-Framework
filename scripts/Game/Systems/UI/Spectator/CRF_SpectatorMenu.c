@@ -349,62 +349,132 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	protected void UpdatePlayerIcons()
 	{
+		array<RplId> comparisonRplIds = {};
+		IEntity localMainEnt = SCR_PlayerController.GetLocalMainEntity();
+		
+		//------------------------------------------------------------------------------------------------
+		// ALL SLOT-BASED CHARACTERS
+		//------------------------------------------------------------------------------------------------
+		
 		map<int, ref CRF_SlotDataContainer> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
-		foreach(int slotId, CRF_SlotDataContainer slotData : tempMap)
-		{			
-			IEntity entity = null;
+		foreach (int slotId, CRF_SlotDataContainer slotData : tempMap)
+		{		
+			RplId slotRplId = slotData.m_iSlotCurrentCharacter;
 			
-			// If the RplId is valid for the slot
-			if(slotData && slotData.m_iSlotCurrentCharacter != RplId.Invalid() && Replication.FindItem(slotData.m_iSlotCurrentCharacter))
-				// Attempt to get entity
-				entity = RplComponent.Cast(Replication.FindItem(slotData.m_iSlotCurrentCharacter)).GetEntity();
-			
-			// Skip if entity doesn't exist
-			if (!entity)
+			if(slotRplId != RplId.Invalid() && Replication.FindItem(slotRplId))
 			{
-				// Remove existing icon if entity no longer exists
-				int index = m_aEntityIcons.Find(slotData.m_iSlotCurrentCharacter);
-				if (index == -1)
-					continue;
+				IEntity entity = RplComponent.Cast(Replication.FindItem(slotRplId)).GetEntity();
 				
-				m_aEntityIcons.RemoveOrdered(index);
-				delete m_aSpectatorWidgets.Get(index);
-				m_aSpectatorWidgets.RemoveOrdered(index);
-				m_aSpectatorIcons.RemoveOrdered(index);
-				continue;
+				if(entity && entity != localMainEnt)
+				{
+					comparisonRplIds.Insert(slotRplId);
+					SetIconForEntity(entity, slotRplId);
+				};
+			};
+		};
+		
+		//------------------------------------------------------------------------------------------------
+		// ALL SPECTATORS
+		//------------------------------------------------------------------------------------------------
+		
+		PlayerManager playermanager = GetGame().GetPlayerManager();
+		array<int> arrayplayerIds = {};
+		
+		playermanager.GetAllPlayers(arrayplayerIds);
+		
+		foreach (int playerId : arrayplayerIds)
+		{
+			IEntity playerEntity = playermanager.GetPlayerControlledEntity(playerId);
+			
+			if(playerEntity && CRF_GamemodeManager.IsSpectator(playerEntity) && playerEntity != localMainEnt)
+			{
+				RplId playerRplId = RplComponent.Cast(playerEntity.FindComponent(RplComponent)).Id();
+				comparisonRplIds.Insert(playerRplId);
+				SetIconForEntity(playerEntity, playerRplId);
+			};
+		};
+		
+		//------------------------------------------------------------------------------------------------
+		// ALL AI
+		//------------------------------------------------------------------------------------------------
+		
+		array<AIAgent> arrayAIAgents = {};
+		
+		GetGame().GetAIWorld().GetAIAgents(arrayAIAgents);
+		
+		foreach (AIAgent aiAgent : arrayAIAgents)
+		{
+			IEntity aiEntity = aiAgent.GetControlledEntity();
+			
+			SCR_ChimeraCharacter aiCharacter = SCR_ChimeraCharacter.Cast(aiEntity);
+			
+			if(aiCharacter && aiCharacter != localMainEnt)
+			{
+				RplId aiRplId = RplComponent.Cast(aiCharacter.FindComponent(RplComponent)).Id();
+				comparisonRplIds.Insert(aiRplId);
+				SetIconForEntity(aiCharacter, aiRplId);
+			};
+		};
+		
+		//------------------------------------------------------------------------------------------------
+		// CLEAR ICONS THAT DONT EXIST
+		//------------------------------------------------------------------------------------------------
+		
+		array<int> indexesToDelete = {};
+		
+		foreach (RplId rplId : m_aEntityIcons)
+		{
+			if(!rplId || !rplId.IsValid() || !comparisonRplIds.Contains(rplId))
+			{
+				int index = m_aEntityIcons.Find(rplId);
+				
+				if(index != -1)
+					indexesToDelete.Insert(index);
 			}
-			
-			// Skip if this is the local player
-			if (SCR_PlayerController.GetLocalControlledEntity() == entity)
-				continue;
-			
-			// Skip if icon already exists
-			if (m_aEntityIcons.Find(slotData.m_iSlotCurrentCharacter) != -1)
-				continue;
-			
-			// Create new spectator icon
-			Widget spectatorIconWidget = GetGame().GetWorkspace().CreateWidgets(
-				"{68625BAD23CEE68F}UI/Spectator/SpectatorLabelIconCharacter.layout", 
-				FrameWidget.Cast(GetRootWidget().FindAnyWidget("IconsFrame"))
-			);
-			
-			CRF_SpectatorLabelIconCharacter spectatorIcon = CRF_SpectatorLabelIconCharacter.Cast(
-				spectatorIconWidget.FindHandler(CRF_SpectatorLabelIconCharacter)
-			);
-			
-			// If the character is alive, let spectators spectate them
-			if (CheckIfEntityAlive(entity))
-				spectatorIcon.GetButton().m_OnClicked.Insert(SelectSpecCursor);
-			
-			spectatorIcon.SetEntity(entity, "Spine3");
-			
-			// Store references to the icon
-			m_aEntityIcons.Insert(slotData.m_iSlotCurrentCharacter);
-			m_aSpectatorIcons.Insert(spectatorIcon);
-			m_aSpectatorWidgets.Insert(spectatorIconWidget);
+		};
+		
+		foreach (int index : indexesToDelete)
+		{
+			m_aEntityIcons.RemoveOrdered(index);
+			delete m_aSpectatorWidgets.Get(index);
+			m_aSpectatorWidgets.RemoveOrdered(index);
+			m_aSpectatorIcons.RemoveOrdered(index);
 		}
 	}
+	
+	/**
+	 * Set the icon for the provided entity
+	 * @param entity - Entity to pass along to the icon
+	 * @param entityId - EntityId to use to insert into the icon arrays
+	 */
+	protected void SetIconForEntity(IEntity entity, RplId entityId)
+	{
+		// Skip if icon already exists
+		if (m_aEntityIcons.Contains(entityId))
+			return;
+		
+		// Create new spectator icon
+		Widget spectatorIconWidget = GetGame().GetWorkspace().CreateWidgets(
+			"{68625BAD23CEE68F}UI/Spectator/SpectatorLabelIconCharacter.layout", 
+			FrameWidget.Cast(GetRootWidget().FindAnyWidget("IconsFrame"))
+		);
+		
+		CRF_SpectatorLabelIconCharacter spectatorIcon = CRF_SpectatorLabelIconCharacter.Cast(
+			spectatorIconWidget.FindHandler(CRF_SpectatorLabelIconCharacter)
+		);
+		
+		// If the character is alive and not a spectator, let spectators spectate them
+		if (CheckIfEntityAlive(entity) && !CRF_GamemodeManager.IsSpectator(entity))
+			spectatorIcon.GetButton().m_OnClicked.Insert(SelectSpecCursor);
+		
+		spectatorIcon.SetEntity(entity, "Spine3");
+		
+		// Store references to the icon
+		m_aEntityIcons.Insert(entityId);
+		m_aSpectatorIcons.Insert(spectatorIcon);
+		m_aSpectatorWidgets.Insert(spectatorIconWidget);
+	};
 	
 	/**
 	 * Check if the provided entity is considered "alive"
@@ -412,16 +482,10 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	protected bool CheckIfEntityAlive(IEntity entity)
 	{
-		// Get ChimeraCharacter so we can pull the controller
-		ChimeraCharacter character = ChimeraCharacter.Cast(entity);
-		if (!character)
-			return false;
-	
-		// Get the controller from the character
-		CharacterControllerComponent controller = character.GetCharacterController();
+		SCR_CharacterControllerComponent controllerComponent = SCR_CharacterControllerComponent.Cast(entity.FindComponent(SCR_CharacterControllerComponent));
 	
 		// If the character is a valid character and is not dead then return that this guy ain't dead
-		if (controller && controller.GetLifeState() != ECharacterLifeState.DEAD)
+		if (controllerComponent && !controllerComponent.IsDead())
 			return true;
 		else 
 			return false;

@@ -219,9 +219,6 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	{
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
 		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
-		
-		if (CRF_GamemodeManager.IsSpectator())
-			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
 	}
 	
 	/**

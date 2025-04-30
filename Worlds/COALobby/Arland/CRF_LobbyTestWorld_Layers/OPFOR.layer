@@ -1,3 +1,6 @@
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 1237.293 37.974 2816.348
+}
 SCR_AIGroup : "{3343CCC99B434F66}Prefabs/Groups/OPFOR/Standard/Dev/CRF_OPFOR_DevGI_p.et" {
  coords 1254.369 39 2841.153
  angleY 171.153

@@ -71,7 +71,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
 
-	[Attribute("true", "auto", "Should we delete all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Gamemode General")]
+	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Gamemode General")]
 	bool m_bLockSlotsAfterSafestart;
 
 	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Gamemode General")]

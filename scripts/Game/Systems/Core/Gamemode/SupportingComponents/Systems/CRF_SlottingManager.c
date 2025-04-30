@@ -188,7 +188,7 @@ class CRF_SlottingManager : ScriptComponent
 		CharacterControllerComponent controller = character.GetCharacterController();
 	
 		// If the character is a valid character and is not dead then return that this guy ain't dead
-		if (controller && controller.GetLifeState() != ECharacterLifeState.DEAD)
+		if (controller && !controller.IsDead())
 			return character;
 		else
 			return null;
@@ -292,7 +292,7 @@ class CRF_SlottingManager : ScriptComponent
 		{
 			ref CRF_SlotDataContainer data = GetSlotData(slotId);
 			
-			if(data && data.m_iSlotCurrentCharacter && data.m_iSlotCurrentCharacter == RplId.Invalid() && Replication.FindItem(data.m_iSlotCurrentCharacter))
+			if(data && data.m_iSlotCurrentCharacter && data.m_iSlotCurrentCharacter != RplId.Invalid() && Replication.FindItem(data.m_iSlotCurrentCharacter))
 			{
 				SCR_EntityHelper.DeleteEntityAndChildren(SCR_ChimeraCharacter.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentCharacter)).GetEntity()));
 				UpdateSlotCharacter(slotId, RplId.Invalid());

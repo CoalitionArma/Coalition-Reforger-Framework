@@ -74,4 +74,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{1A0942D44F1CE80B}Configs/Gearscripts/Standard/Modern/CRF_GS_CAD.conf"
  }
+ m_bWaveRespawn 1
+ m_iTimeToRespawn 15
 }

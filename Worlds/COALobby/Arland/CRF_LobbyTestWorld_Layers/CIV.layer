@@ -2,6 +2,9 @@ SCR_AIGroup : "{1782AE1B90B5A492}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevGI_p
  coords 1253.855 39 2844.473
  angleY 171.153
 }
+GenericEntity : "{91AC884B31EDEE23}Prefabs/Structures/FlagPoles/RespawnPoles/CIV_Respawn.et" {
+ coords 1259.927 37.937 2822.596
+}
 SCR_AIGroup : "{ABEEBCE6A46B4148}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevSpecialist_p.et" {
  coords 1219.559 39 2839.134
  angleY 171.153

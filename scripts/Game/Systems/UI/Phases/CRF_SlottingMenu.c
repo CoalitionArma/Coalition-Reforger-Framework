@@ -444,10 +444,6 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		// Request server to initialize the local player
 		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
-		
-		// If player is a spectator, open spectator menu
-		if(CRF_GamemodeManager.IsSpectator())
-			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
 	}
 	
 	/**
