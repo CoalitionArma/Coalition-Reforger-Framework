@@ -7,11 +7,16 @@ SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
  coords 1123.833 242.449 1617.491
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Cloudy"
+  }
+ }
  coords 1118.523 192.852 1639.398
  m_iTimeLimitMinutes 40
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Valuable material has been left at the marked location in the form of supply containers. Indfor and Opfor each have a logistics truck to transport supply back to their own cache, and want to get 2000 supply before the other team. Logistics trucks will respawn when they are destroyed. The marked location is the only source of supply."\
+   m_sTextData "Valuable material has been left at the marked location in the form of supply containers. Indfor and Opfor each have a logistics truck to transport supply back to their own cache, and want to get 2000 supply before the other team. Logistics trucks will respawn when they are destroyed."\
    ""\
    "BLUFOR Composition: Infantry"\
    "BLUFOR Assets:"\

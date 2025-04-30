@@ -51,48 +51,57 @@ SCR_BaseTriggerEntity cacheCheck {
  "		}"\
  "	"
 }
-GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
- components {
-  SCR_ResourceComponent "{5D247A59598D71AE}" {
-   m_aContainers {
-    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_bEnableResourceGain 1
-     m_fResourceGain 0.8
-    }
-   }
-  }
- }
- coords 1300.906 20.714 1653.14
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
  {
-  $grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
-   {
-    components {
-     SCR_ResourceComponent "{5D247A59598D71AE}" {
-      m_aContainers {
-       SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-        m_bEnableResourceGain 1
-        m_fResourceGain 0.8
-       }
-      }
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
      }
     }
-    coords -5.646 -0.026 0.224
-   }
-   {
-    components {
-     SCR_ResourceComponent "{5D247A59598D71AE}" {
-      m_aContainers {
-       SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-        m_bEnableResourceGain 1
-        m_fResourceGain 0.8
-       }
-      }
-     }
-    }
-    coords -2.479 2.507 -0.026
-    angleY -91.806
    }
   }
+  coords 1294.728 21.156 1626.197
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
+     }
+    }
+   }
+  }
+  coords 1186.117 21.812 1620.777
+  angleY -91.806
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
+     }
+    }
+   }
+  }
+  coords 1359.504 23.248 1627.181
+  angleY -91.806
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
+     }
+    }
+   }
+  }
+  coords 1286.563 20.281 1692.93
+  angleY -91.806
  }
 }
 $grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
