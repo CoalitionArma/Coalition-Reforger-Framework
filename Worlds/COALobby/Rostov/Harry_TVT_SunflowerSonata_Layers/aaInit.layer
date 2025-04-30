@@ -18,11 +18,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Valuable material has been left at the marked location in the form of supply containers. Indfor and Opfor each have a logistics truck to transport supply back to their own cache, and want to get 2000 supply before the other team. Logistics trucks will respawn when they are destroyed."\
    ""\
-   "BLUFOR Composition: Infantry"\
-   "BLUFOR Assets:"\
-   ""\
    "OPFOR Composition: Infantry"\
    "OPFOR Assets:"\
+   ""\
+   "INDFOR Composition: Infantry"\
+   "INDFOR Assets:"\
    ""\
    "Time: 40"\
    "Weather: Cloudy"
