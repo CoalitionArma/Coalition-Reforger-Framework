@@ -559,7 +559,8 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		radio.SetPower(true);
 		
 		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
-		transceiver.SetFrequency(1);
+		if (transceiver)
+			transceiver.SetFrequency(10000);
 		
 		return transceiver;
 	}

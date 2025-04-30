@@ -1500,7 +1500,8 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		// Configure and return transceiver
 		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
-		transceiver.SetFrequency(1);
+		if (transceiver)
+			transceiver.SetFrequency(10000);
 		
 		return transceiver;
 	}

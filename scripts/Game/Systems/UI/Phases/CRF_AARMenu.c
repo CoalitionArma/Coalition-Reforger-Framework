@@ -847,7 +847,9 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
 		radio.SetPower(true);
 		RadioTransceiver transiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
-		transiver.SetFrequency(1);
+		if (transceiver)
+			transiver.SetFrequency(10000);
+			
 		return transiver;
 	}
 	

@@ -214,7 +214,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
 		if (transceiver)
-			transceiver.SetFrequency(1);
+			transceiver.SetFrequency(10000);
 			
 		return transceiver;
 	}
