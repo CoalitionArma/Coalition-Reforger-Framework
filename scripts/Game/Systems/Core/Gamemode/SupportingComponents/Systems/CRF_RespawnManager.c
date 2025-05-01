@@ -127,14 +127,12 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void WaveRespawnTimer()
 	{
-		PrintFormat("[CRF] gamemodestate: %1",m_Gamemode.m_GamemodeState);
 		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 
 		m_iRespawnWaveCurrentTime--;
 		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
 		
-		PrintFormat("[CRF] m_iRespawnWaveCurrentTime: %1",m_iRespawnWaveCurrentTime);
 
 		if (m_iRespawnWaveCurrentTime == 0)
 		{
@@ -235,28 +233,23 @@ class CRF_RespawnManager : ScriptComponent
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 
-		// Check if player is in spectator faction and connected
-		SCR_Faction playerFaction = SCR_Faction.Cast(SCR_FactionManager.SGetPlayerFaction(playerId));
-		PrintFormat("[CRF] playerFaction: %1",playerFaction);
-		if (playerFaction == null)
-			return;
-
 		PlayerManager playerManager = GetGame().GetPlayerManager();
-		PrintFormat("[CRF] playerManager: %1",playerManager);
+		PrintFormat("[CRF] RespawnPlayer playerManager: %1",playerManager);
 		if (!playerManager)
 			return;
 
 		bool isPlayerConnected = playerManager.IsPlayerConnected(playerId);
-		PrintFormat("[CRF] isPlayerConnected: %1",isPlayerConnected);
+		PrintFormat("[CRF] RespawnPlayer isPlayerConnected: %1",isPlayerConnected);
 		if (!isPlayerConnected)
 			return;
 
-		string factionKey = playerFaction.GetFactionKey();
-		PrintFormat("[CRF] factionKey: %1",factionKey);
-		if (factionKey != "SPEC")
+		FactionKey factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId).GetFactionKey();
+		PrintFormat("[CRF] RespawnPlayer factionKey: %1",factionKey);
+		if (factionKey.IsEmpty())
 			return;
 		
 		vector finalSpawnLocation = vector.Zero;
+		PrintFormat("[CRF] RespawnPlayer initialSpawnLocation: %1",finalSpawnLocation);
 
 		// Find spawn location if not provided
 		if (spawnLocation == vector.Zero)
@@ -267,16 +260,18 @@ class CRF_RespawnManager : ScriptComponent
 					continue;
 
 				CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent));
+				PrintFormat("[CRF] RespawnPlayer spawnLocationLoop respawnComponent: %1",respawnComponent);
 				if (respawnComponent == null)
 					continue;
 
-				if (respawnComponent.m_sRespawnPointFaction != playerFaction.GetFactionKey())
+				if (respawnComponent.m_sRespawnPointFaction != factionKey)
 					continue;
 
 				if (!respawnComponent.m_bActiveRespawnPoint)
 					continue;
 
 				spawnLocation = spawnPoint.GetOrigin();
+				PrintFormat("[CRF] RespawnPlayer spawnLocationLoop spawnLocation: %1",spawnLocation);
 				break;
 			}
 		}
@@ -284,6 +279,7 @@ class CRF_RespawnManager : ScriptComponent
 		// If no spawn location found, enter spectator mode
 		if (spawnLocation == vector.Zero)
 		{
+			PrintFormat("[CRF] RespawnPlayer finalSpawnLocation: %1",spawnLocation);
 			m_GamemodeManager.EnterSpectator(playerId);
 			return;
 		}
