@@ -92,6 +92,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SpecCameraInit(vector cameraPos[4])
 	{
+		Print("[CRF] SpecCameraInit");
 		if(!m_RplToAuthorityManager || !m_Gamemode)
 		{
 			m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();

@@ -131,17 +131,21 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
 
 		vector cameraPos[4];
+		m_Gamemode = CRF_Gamemode.GetInstance();
 		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
 			if (m_SlottingManager.IsPlayerInASlot(playerId) && entity != null)
 			{
 				entity.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
-			} else
+			} else {
 				cameraPos[3] = m_Gamemode.m_vGenericSpawn[3];
-		} else
+			}
+		} else {
 			cameraPos[3] = "0 10000 0";
-
+		}
+		
+		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_RplBroadcastManager.SendSpecClientInit(playerId, cameraPos);
 	}
 	

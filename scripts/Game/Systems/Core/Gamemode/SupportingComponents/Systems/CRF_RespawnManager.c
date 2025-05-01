@@ -127,6 +127,7 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void WaveRespawnTimer()
 	{
+		m_Gamemode = CRF_Gamemode.GetInstance();
 		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 
