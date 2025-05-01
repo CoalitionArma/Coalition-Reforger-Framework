@@ -29,14 +29,14 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		super.OnPostInit(owner);
 
-		if (!Replication.IsServer())
-			return;
-
 		// Get all instances we need for this manager.
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		
+		if (!Replication.IsServer())
+			return;
 
 		// If respawn is enabled
 		if (m_Gamemode.m_bRespawnEnabled)
@@ -127,7 +127,6 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void WaveRespawnTimer()
 	{
-		m_Gamemode = CRF_Gamemode.GetInstance();
 		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			return;
 
