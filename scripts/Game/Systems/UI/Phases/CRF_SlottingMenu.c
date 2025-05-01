@@ -901,7 +901,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		foreach(int playerId : playerIds)
 		{	
 			// Skip invalid players, players without faction, already slotted players, or disconnected players
-			if(playerId <= 0 || !SCR_FactionManager.SGetPlayerFaction(playerId))
+			if(playerId <= 0)
 				continue;
 			
 			if(slottingManager.GetPlayerSlotFaction(playerId))

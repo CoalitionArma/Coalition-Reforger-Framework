@@ -730,12 +730,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
-			Faction playerFaction = SCR_FactionManager.SGetPlayerFaction(playerId);
-			
-			if (!playerFaction)
-				continue;
-				
-			if (playerFaction.GetFactionKey() == "SPEC" || 
+
+			if (CRF_SlottingManager.GetInstance().IsPlayerConsideredDead(playerId) ||
 				CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
 				m_list1.AddItem(string.Format("%1", name));
