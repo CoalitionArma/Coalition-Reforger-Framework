@@ -141,6 +141,15 @@ class CRF_RespawnManager : ScriptComponent
 
 		Replication.BumpMe();
 	}
+	
+	void MenuFuckOff()
+	{
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu.IsInherited(CRF_SlottingMenuUI))
+		{
+			GetGame().GetMenuManager().CloseMenu(topMenu);
+		};
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void RespawnTimer()
@@ -157,6 +166,7 @@ class CRF_RespawnManager : ScriptComponent
 			if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR)
 			{
 				RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
+				GetGame().GetCallqueue().Remove(MenuFuckOff);
 				GetGame().GetMenuManager().CloseAllMenus();
 			}
 

@@ -313,6 +313,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		MenuBase respawnMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 
 		GetGame().GetCallqueue().CallLater(m_RespawnManager.RespawnTimer, 1000, true);
+		GetGame().GetCallqueue().CallLater(m_RespawnManager.MenuFuckOff, 250, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
