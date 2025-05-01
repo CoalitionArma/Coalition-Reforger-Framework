@@ -110,17 +110,52 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	array<SCR_AIGroup> GetAllGroups(FactionKey factionKey = "")
+	{
+		map<int, SCR_AIGroup> tempHoldermap = new map<int, SCR_AIGroup>;
+		array<SCR_AIGroup> outputArray = {};
+		array<int> sortingArray = {};
+		
+		foreach (int slotID, ref CRF_SlotDataContainer slotData : m_mSlotsMap)
+		{
+			if(!slotData || !slotData.m_iSlotCurrentGroup || slotData.m_iSlotCurrentGroup == RplId.Invalid() || !Replication.FindItem(slotData.m_iSlotCurrentGroup))
+				continue;
+			
+			if(factionKey.IsEmpty() || (!factionKey.IsEmpty() && slotData.m_SlotFactionKey == factionKey))
+			{
+				SCR_AIGroup tempGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(slotData.m_iSlotCurrentGroup)).GetEntity());
+				
+				if (tempGroup && !tempHoldermap.Get(tempGroup.GetGroupID()))
+					tempHoldermap.Set(tempGroup.GetGroupID(), tempGroup);
+			}
+		}
+		
+		foreach (int Id, SCR_AIGroup groupToSort : tempHoldermap)
+			sortingArray.Insert(Id);
+		
+		sortingArray.Sort(false);
+		
+		foreach (int Id : sortingArray)
+		{
+			SCR_AIGroup group = tempHoldermap.Get(Id);
+			outputArray.Insert(group);
+		}
+		
+		return outputArray;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	array<int> GetAllSlotIDsForGroup(RplId rplId)
 	{
-		array<int> tempArray = {};
+		array<int> outputArray = {};
 		
 		foreach (int slotID, ref CRF_SlotDataContainer slotData : m_mSlotsMap)
 		{
 			if(slotData.m_iSlotCurrentGroup == rplId)
-				tempArray.Insert(slotID);
+				outputArray.Insert(slotID);
 		}
 		
-		return tempArray;
+		return outputArray;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -164,7 +199,7 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		ref CRF_SlotDataContainer data = GetPlayerSlotData(playerId);
 		
-		if(!data || !data.m_iSlotCurrentGroup || !data.m_iSlotCurrentGroup == RplId.Invalid() || !Replication.FindItem(data.m_iSlotCurrentGroup))
+		if(!data || !data.m_iSlotCurrentGroup || data.m_iSlotCurrentGroup == RplId.Invalid() || !Replication.FindItem(data.m_iSlotCurrentGroup))
 			return null;
 		
 		return SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(data.m_iSlotCurrentGroup)).GetEntity());
@@ -175,7 +210,7 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		ref CRF_SlotDataContainer data = GetPlayerSlotData(playerId);
 		
-		if(!data || !data.m_iSlotCurrentCharacter || !data.m_iSlotCurrentCharacter == RplId.Invalid() || !Replication.FindItem(data.m_iSlotCurrentCharacter))
+		if(!data || !data.m_iSlotCurrentCharacter || data.m_iSlotCurrentCharacter == RplId.Invalid() || !Replication.FindItem(data.m_iSlotCurrentCharacter))
 			return null;
 		
 		// Get ChimeraCharacter so we can pull the controller
@@ -343,8 +378,7 @@ class CRF_SlottingManager : ScriptComponent
 				slotData.m_bIsLockedSlot = true;
 		}
 		
-		array<SCR_AIGroup> allGroups = {};
-		SCR_GroupsManagerComponent.GetInstance().GetAllPlayableGroups(allGroups);
+		array<SCR_AIGroup> allGroups = GetAllGroups();
 		
 		// Process each group and its players
 		foreach(SCR_AIGroup group : allGroups)

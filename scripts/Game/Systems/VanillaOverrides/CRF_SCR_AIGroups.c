@@ -11,7 +11,7 @@ modded class SCR_AIGroup
 			return;
 		
 		GetGame().GetCallqueue().CallLater(InitDelay, 500, false);
-	} 
+	}
 		
 	void InitDelay()
 	{

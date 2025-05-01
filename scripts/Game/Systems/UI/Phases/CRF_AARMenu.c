@@ -562,20 +562,13 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		
 		// Get slot data and groups
 		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> factionGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
-		array<SCR_AIGroup> groups = {};
+		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
 			return;
 		
-		// Copy the groups array
-		foreach(SCR_AIGroup group : factionGroups)
-		{	
-			groups.Insert(group);
-		}
-		
 		// Process each group
-		foreach(SCR_AIGroup group : groups)
+		foreach(SCR_AIGroup group : factionGroups)
 		{	
 			int playersInGroup = 0;
 			

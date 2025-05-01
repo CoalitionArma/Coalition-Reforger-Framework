@@ -139,7 +139,7 @@ class CRF_PlayableCharacter : ScriptComponent
 	void SetInitialEntity(IEntity owner)
 	{
 		//Logs entity on server and disables AI if not spawned by a slot
-		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned)
+		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned && !m_bIsSpectator)
 		{
 			SCR_AIGroup playableGroup = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(owner.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
 			if (playableGroup)

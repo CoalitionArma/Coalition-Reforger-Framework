@@ -108,7 +108,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		
 		// Update player icons and spectator UI
 		UpdatePlayerIcons();
-		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1750, true);
+		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
 	}
 	
 	/**
@@ -359,18 +359,21 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		
 		map<int, ref CRF_SlotDataContainer> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
-		foreach (int slotId, CRF_SlotDataContainer slotData : tempMap)
-		{		
-			RplId slotRplId = slotData.m_iSlotCurrentCharacter;
-			
-			if(slotRplId != RplId.Invalid() && Replication.FindItem(slotRplId))
-			{
-				IEntity entity = RplComponent.Cast(Replication.FindItem(slotRplId)).GetEntity();
+		if (tempMap)
+		{
+			foreach (int slotId, CRF_SlotDataContainer slotData : tempMap)
+			{		
+				RplId slotRplId = slotData.m_iSlotCurrentCharacter;
 				
-				if(entity && entity != localMainEnt)
+				if(slotRplId != RplId.Invalid() && Replication.FindItem(slotRplId))
 				{
-					comparisonRplIds.Insert(slotRplId);
-					SetIconForEntity(entity, slotRplId);
+					IEntity entity = RplComponent.Cast(Replication.FindItem(slotRplId)).GetEntity();
+					
+					if(entity && entity != localMainEnt)
+					{
+						comparisonRplIds.Insert(slotRplId);
+						SetIconForEntity(entity, slotRplId);
+					};
 				};
 			};
 		};
@@ -380,19 +383,23 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		//------------------------------------------------------------------------------------------------
 		
 		PlayerManager playermanager = GetGame().GetPlayerManager();
-		array<int> arrayplayerIds = {};
 		
-		playermanager.GetAllPlayers(arrayplayerIds);
-		
-		foreach (int playerId : arrayplayerIds)
+		if (playermanager)
 		{
-			IEntity playerEntity = playermanager.GetPlayerControlledEntity(playerId);
+			array<int> arrayplayerIds = {};
 			
-			if(playerEntity && CRF_GamemodeManager.IsSpectator(playerEntity) && playerEntity != localMainEnt)
+			playermanager.GetAllPlayers(arrayplayerIds);
+			
+			foreach (int playerId : arrayplayerIds)
 			{
-				RplId playerRplId = RplComponent.Cast(playerEntity.FindComponent(RplComponent)).Id();
-				comparisonRplIds.Insert(playerRplId);
-				SetIconForEntity(playerEntity, playerRplId);
+				IEntity playerEntity = playermanager.GetPlayerControlledEntity(playerId);
+				
+				if(playerEntity && CRF_GamemodeManager.IsSpectator(playerEntity) && playerEntity != localMainEnt)
+				{
+					RplId playerRplId = RplComponent.Cast(playerEntity.FindComponent(RplComponent)).Id();
+					comparisonRplIds.Insert(playerRplId);
+					SetIconForEntity(playerEntity, playerRplId);
+				};
 			};
 		};
 		
@@ -400,21 +407,26 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		// ALL AI
 		//------------------------------------------------------------------------------------------------
 		
-		array<AIAgent> arrayAIAgents = {};
+		AIWorld aiworld = GetGame().GetAIWorld();
 		
-		GetGame().GetAIWorld().GetAIAgents(arrayAIAgents);
-		
-		foreach (AIAgent aiAgent : arrayAIAgents)
+		if (aiworld)
 		{
-			IEntity aiEntity = aiAgent.GetControlledEntity();
+			array<AIAgent> arrayAIAgents = {};
 			
-			SCR_ChimeraCharacter aiCharacter = SCR_ChimeraCharacter.Cast(aiEntity);
+			GetGame().GetAIWorld().GetAIAgents(arrayAIAgents);
 			
-			if(aiCharacter && aiCharacter != localMainEnt)
+			foreach (AIAgent aiAgent : arrayAIAgents)
 			{
-				RplId aiRplId = RplComponent.Cast(aiCharacter.FindComponent(RplComponent)).Id();
-				comparisonRplIds.Insert(aiRplId);
-				SetIconForEntity(aiCharacter, aiRplId);
+				IEntity aiEntity = aiAgent.GetControlledEntity();
+				
+				SCR_ChimeraCharacter aiCharacter = SCR_ChimeraCharacter.Cast(aiEntity);
+				
+				if(aiCharacter && aiCharacter != localMainEnt)
+				{
+					RplId aiRplId = RplComponent.Cast(aiCharacter.FindComponent(RplComponent)).Id();
+					comparisonRplIds.Insert(aiRplId);
+					SetIconForEntity(aiCharacter, aiRplId);
+				};
 			};
 		};
 		
@@ -880,20 +892,13 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		
 		// Get slot and group data
 		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> factionGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
-		array<SCR_AIGroup> groups = {};
+		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
 			return;
 		
-		// Create a copy of the groups array
-		foreach(SCR_AIGroup group : factionGroups)
-		{	
-			groups.Insert(group);
-		}
-		
 		// Process each group and its players
-		foreach(SCR_AIGroup group : groups)
+		foreach(SCR_AIGroup group : factionGroups)
 		{	
 			// Skip private groups
 			if(group.IsPrivate())

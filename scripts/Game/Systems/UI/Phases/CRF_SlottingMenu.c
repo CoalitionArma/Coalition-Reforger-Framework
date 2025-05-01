@@ -665,18 +665,12 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	private array<SCR_AIGroup> GetPlayableGroupsForSelectedFaction()
 	{
-		array<SCR_AIGroup> factionGroups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(m_fSelectedFaction);
-		array<SCR_AIGroup> groups = {};
+		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
-			return groups;
+			return new array<SCR_AIGroup>;
 		
-		foreach(SCR_AIGroup tempGroup : factionGroups)
-		{	
-			groups.Insert(tempGroup);
-		}
-		
-		return groups;
+		return factionGroups;
 	}
 	
 	/**
