@@ -119,13 +119,15 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "INDFOR"
  m_aUnitPrefabSlots {
-  "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_comEngi_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_comEngi_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_comEngi_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_comEngi_P.et"
+  "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et"
  }
+ m_iMaxMembers 12
+ m_bPlayable 1
+ m_bDeleteIfNoPlayer 0
  m_aUnitPrefabColorTeams {
   "None" "Blue" "Blue" "Yellow" "Yellow"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None" "None"
  }
- m_bIsPlayable 1
 }

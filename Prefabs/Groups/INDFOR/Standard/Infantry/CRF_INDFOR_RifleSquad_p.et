@@ -16,13 +16,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
    }
    m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{646806D1FD46A758}" {
    }
-   m_bLeaderOnly 0
-   m_fWeaponFiredReactionDistance 1000
-   m_eCombatMode RED
-   m_iSuppressDuration 35
-   m_fPerceptionSafe 3
-   m_fPerceptionVigilant 5
-   m_fAimAccuracyErrorModifier -2.5
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
@@ -158,12 +151,13 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et" "{0C86D510A52DF210}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Demo_P.et"
  }
-
+ m_iMaxMembers 12
+ m_bPlayable 1
+ m_bDeleteIfNoPlayer 0
  m_aUnitPrefabColorTeams {
   "None" "Red" "Red" "Red" "Green" "Green" "Green" "Green"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "Team Lead" "None" "None" "Team Lead" "None" "None" "None"
  }
- m_bIsPlayable 1
 }
