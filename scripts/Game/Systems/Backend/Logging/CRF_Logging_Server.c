@@ -53,6 +53,12 @@ class CRF_LoggingServerComponent: SCR_BaseGameModeComponent
 	override void OnWorldPostProcess(World world)
 	{
 		super.OnWorldPostProcess(world);
+	}
+	
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+		
 		if ((RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen) || !GetGame().InPlayMode())
 			return;
 		
