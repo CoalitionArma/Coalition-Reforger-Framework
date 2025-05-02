@@ -6,10 +6,10 @@ class CRF_SearchAndDestroyGamemodeManagerClass: SCR_BaseGameModeComponentClass
 
 class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 {
-	[Attribute("US", "auto", "The side assaulting the bomb sites")]
+	[Attribute("BLUFOR", "auto", "The side assaulting the bomb sites")]
 	FactionKey attackingSide;
 	
-	[Attribute("USSR", "auto", "The side deffending the bomb sites")]
+	[Attribute("OPFOR", "auto", "The side deffending the bomb sites")]
 	FactionKey defendingSide;
 	
 	[Attribute("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et", "auto", "The object to spawn as a bomb")]

@@ -3,6 +3,10 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
+  CRF_SearchAndDestroyGamemodeManager "{65450BFADE389F47}" {
+   attackingSide "BLUFOR"
+   defendingSide "OPFOR"
+  }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Cloudy"
    m_iSetWeatherConstant 1

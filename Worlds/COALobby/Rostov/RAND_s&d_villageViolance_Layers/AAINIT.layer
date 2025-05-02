@@ -6,9 +6,7 @@ SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
-  CRF_SearchAndDestroyGameModeComponent "{65250C9177A4FEA8}" {
-   attackingSide "BLUFOR"
-   defendingSide "OPFOR"
+  CRF_SearchAndDestroyGamemodeManager "{65450BFD72EA96AE}" {
   }
  }
  coords 2539.053 147.534 4833.356

@@ -3,7 +3,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
-  CRF_SearchAndDestroyGameModeComponent "{6464EAA359F78A71}" {
+  CRF_SearchAndDestroyGamemodeManager "{65450BFDB5F943B3}" {
    attackingSide "BLUFOR"
    defendingSide "OPFOR"
   }
@@ -47,7 +47,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{D7B22F98968C6317}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSATACS.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "65450BFD9C750B93" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {

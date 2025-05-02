@@ -3,7 +3,7 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
-  CRF_SearchAndDestroyGameModeComponent "{6463092E32B5EA1A}" {
+  CRF_SearchAndDestroyGamemodeManager "{65450BFB2205C819}" {
    attackingSide "OPFOR"
    defendingSide "BLUFOR"
   }
