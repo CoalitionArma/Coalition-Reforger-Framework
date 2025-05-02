@@ -124,8 +124,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendAdminMessage(string data)
 	{
-		if(SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
-			Rpc(RpcAsk_SendAdminMessage, data); 
+		Rpc(RpcAsk_SendAdminMessage, data); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
