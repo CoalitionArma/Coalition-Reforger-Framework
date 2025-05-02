@@ -29,21 +29,20 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		m_Gamemode = CRF_Gamemode.GetInstance();
 
-		if (!GetGame().InPlayMode() || !m_Gamemode)
+		if (!GetGame().InPlayMode() 
+		 || !m_Gamemode 
+		 || (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && m_Gamemode.EnableAIInGameState))
 			return;
-		
-		// Get all managers we need
-		m_SlottingManager = CRF_SlottingManager.GetInstance();
-		m_PlayerControllerComponent = CRF_PlayerControllerComponent.GetInstance();
-		m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
-
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && m_Gamemode.EnableAIInGameState && !CRF_GamemodeManager.IsSpectator(owner))
-			m_bIsPlayable = false;
-
-		GetGame().GetCallqueue().CallLater(SetInitTime, 5000, false);
 
 		if (m_bIsPlayable)
+		{
+			// Get all managers we need
+			m_SlottingManager = CRF_SlottingManager.GetInstance();
+			m_PlayerControllerComponent = CRF_PlayerControllerComponent.GetInstance();
+			m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
+			
 			GetGame().GetCallqueue().CallLater(SetInitialEntity, 150, false, owner);
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -69,11 +68,16 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		// Logs entity on server and disables AI if not spawned by a slot
 		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned && !isSpec)
+		{
 			m_SlottingManager.AddPlayableEntityToManager(owner);
-
+			return;
+		};
+		
 		// Sets location and all the physics BS on all machines
 		if (isSpec)
 		{
+			GetGame().GetCallqueue().CallLater(SetInitTime, 5000, false);
+			
 			SetEventMask(owner, EntityEvent.FRAME);
 			owner.SetOrigin("0 10000 0");
 			
