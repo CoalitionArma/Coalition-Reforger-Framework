@@ -325,6 +325,20 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
   firstSpawn 1
  }
+ opfTanker {
+  coords 476.549 230.954 7177.368
+  angleY -162.398
+  m_rnPrefab "{A7FBB0F201128573}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_full.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ bluTanker {
+  coords 4087.824 145.618 6617.254
+  angleY -2.247
+  m_rnPrefab "{BA3B80F57A52AA2D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker_full.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
 }
 $grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
  mortarSupplies {

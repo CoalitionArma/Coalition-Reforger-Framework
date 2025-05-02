@@ -1,0 +1,172 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 1126.938 20.25 1620.561
+ "Map Geometry Data" "{4D13DC42EAA6321E}Terrain/WCS_Rostov_Conflict_NEvSW_Layout1.topo"
+ "Satellite background image" "{4CDC017532F1D3F5}UI/Textures/Map/Worlds/Rostov/Rostov.edds"
+}
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 1123.833 242.449 1617.491
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Cloudy"
+  }
+ }
+ coords 1118.523 192.852 1639.398
+ m_iTimeLimitMinutes 40
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Valuable material has been left at the marked location in the form of supply containers. Indfor and Opfor each have a logistics truck to transport supply back to their own cache, and want to get 2000 supply before the other team. Logistics trucks will respawn when they are destroyed."\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets:"\
+   ""\
+   "INDFOR Composition: Infantry"\
+   "INDFOR Assets:"\
+   ""\
+   "Time: 40"\
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Collect 1500 supplies from the marked containers."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Collect 1500 supplies from the marked containers."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "A message will send when a container has been filled."
+  }
+  CRF_MissionDescriptor "{6539724C6D632129}" {
+   m_sTitle "Radio Note"
+   m_sTextData "RTO's are being used. Grunts (MG's and AT) do not have radios. SL and TL's have single channel radios to communicate. RTO's have dual channel radios to communicate with PL/COY. "
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "IND"
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{36DC4F6ADAD01D40}Configs/Gearscripts/Custom/Harry/LignumVitae/CRF_GS_USSR80s_RPK_RTO.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{88DFAF202E3B45DB}Configs/Gearscripts/Custom/Harry/LignumVitae/CRF_GS_FIA_RTO.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager "653A06902D1266D2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{6539724EB554CDFD}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6539724EB5BDDE1A}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{6539724E839B4D7E}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6539724E8725D262}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6539724E870FAC75}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6539724E876B44EB}" {
+        m_sCallsign "MMG-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{6539724EF2CC510C}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6539724EF10EC75E}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{6539724EF17598A6}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6539724EF9BC3086}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6539724EF9E6BC91}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6539724EF9C2B97D}" {
+        m_sCallsign "MMG-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "COY "
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6539724F2FD4E706}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{6539724F2CDEDBAC}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6539724F3065D3C3}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6539724F35C99B8A}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6539724F3AA20B14}" {
+        m_sCallsign "MMG-2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

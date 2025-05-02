@@ -1,0 +1,166 @@
+$grp SCR_BaseTriggerEntity {
+ truck1 {
+  coords 14000.345 21.219 2576.006
+  angleY -92.475
+  userScript "	string ural = \"{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et\";"\
+  "	string truck = \"{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et\";"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		for (int i = 1; i <= 4; i++) "\
+  "		{"\
+  "			string uralName = \"ural\" + i.ToString();"\
+  "			IEntity spawnural = GetGame().GetWorld().FindEntityByName(uralName);"\
+  "			"\
+  "			spawnParams.Transform[3] = spawnural.GetOrigin();"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(ural),GetGame().GetWorld(),spawnParams);"\
+  "		}"\
+  "		"\
+  "		for (int i = 1; i <= 4; i++) "\
+  "		{"\
+  "			string truckName = \"truck\" + i.ToString();"\
+  "			IEntity spawntruck = GetGame().GetWorld().FindEntityByName(truckName);"\
+  "			"\
+  "			spawnParams.Transform[3] = spawntruck.GetOrigin();"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ truck2 {
+  coords 13986.96 21.219 2575.427
+  angleY -92.475
+ }
+ truck3 {
+  coords 13973.455 21.219 2574.844
+  angleY -92.475
+ }
+ truck4 {
+  coords 13958.09 21.219 2574.179
+  angleY -92.475
+ }
+ ural1 {
+  coords 14079.94 11.437 4311.55
+  angleY 86.512
+ }
+ ural2 {
+  coords 14079.434 11.437 4319.887
+  angleY 86.512
+ }
+ ural3 {
+  coords 14078.842 11.437 4329.573
+  angleY 86.512
+ }
+ ural4 {
+  coords 14078.118 11.437 4341.408
+  angleY 86.512
+ }
+}
+$grp SCR_VehicleSpawn {
+ engiTruck1 {
+  coords 14062.818 11.437 4354.06
+  angleY -3.436
+  m_rnPrefab "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ engiTruck2 {
+  coords 14050.041 11.437 4354.108
+  angleY -3.436
+  m_rnPrefab "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ opAmb {
+  coords 14019.36 11.437 4359.112
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ bluAmb {
+  coords 13981.262 21.435 2364.512
+  angleY 18.942
+  m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ lav1 {
+  coords 13986.601 21.521 2378.277
+  angleY 28.613
+  m_rnPrefab "{0FBF8F010F81A4E5}Prefabs/Vehicles/Wheeled/LAV25/LAV25.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ jeep1 {
+  coords 13946.832 21.219 2573.787
+  angleY 176.691
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ jeep2 {
+  coords 13938.979 21.219 2573.333
+  angleY 176.691
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ jeep3 {
+  coords 13929.099 21.219 2572.762
+  angleY 176.691
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ uaz1 {
+  coords 14024.487 11.437 4386.132
+  angleY 176.691
+  m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ uaz2 {
+  coords 14031.419 11.437 4386.533
+  angleY 176.691
+  m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ uaz3 {
+  coords 14039.635 11.437 4387.008
+  angleY 176.691
+  m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 4000
+     m_fResourceValueMax 4000
+    }
+   }
+  }
+ }
+ coords 14056.932 11.437 4353.253
+}
+StaticModelEntity : "{D4ABEC6A0DB2E253}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/Utility/E_Helipad_Lights_US_01.et" {
+ coords 14080.866 0.901 2408.157
+ {
+  SCR_VehicleSpawn {
+   coords -0.441 0.405 -0.351
+   m_rnPrefab "{A317D959A4248173}Prefabs/Vehicles/Helicopters/AH6M/AH6M_GAU19.et"
+   respawnDelay 10000
+   firstSpawn 1
+  }
+ }
+}
