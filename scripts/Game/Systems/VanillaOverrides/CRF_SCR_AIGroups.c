@@ -10,47 +10,28 @@ modded class SCR_AIGroup
 		if (!GetGame().InPlayMode() || !CRF_Gamemode.GetInstance())
 			return;
 		
-		GetGame().GetCallqueue().CallLater(InitDelay, 500, false);
-	}
-		
-	void InitDelay()
-	{
-		// Check if we need to register this group as playable
-		bool shouldRegisterGroup = false;
-		
-		// Not in GAME state or AI is disabled in GAME state
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (gamemode)
-		{
-			if (gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-			{
-				shouldRegisterGroup = true;
-			}
-			else if (!gamemode.EnableAIInGameState)
-			{
-				shouldRegisterGroup = true;
-			}
-		}
+		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
 		
-		// Register the group if needed
-		if (shouldRegisterGroup)
+		// In GAME state and AI is enabled in GAME state
+		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.EnableAIInGameState)
 		{
-			SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
-			if (groupsManager)
-			{
-				m_bPlayable = true;
-				
-				groupsManager.RegisterGroup(this);
-				groupsManager.AssignGroupIDUnprotected(this);
-				groupsManager.ClaimFrequency(GetRadioFrequency(), GetFaction());
-				groupsManager.OnGroupCreated(this);
-				
-				DeactivateAI();
-				SetMaxMembers(12);
-				SetCanDeleteIfNoPlayer(false);
-				SetDeleteWhenEmpty(false);
-			}
-		} 
+			m_bPlayable = false;
+			
+			groupsManager.UnregisterGroup(this);
+			groupsManager.GetOnPlayableGroupRemoved().Invoke(this);
+			
+			if (!IsAIActivated())
+				ActivateAI();
+			
+			SetCanDeleteIfNoPlayer(true);
+			SetDeleteWhenEmpty(true);
+		} else {
+			DeactivateAI();
+			groupsManager.RegisterGroup(this);
+			groupsManager.AssignGroupFrequencyUnprotected(this);
+			groupsManager.AssignGroupIdUnprotected(this);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

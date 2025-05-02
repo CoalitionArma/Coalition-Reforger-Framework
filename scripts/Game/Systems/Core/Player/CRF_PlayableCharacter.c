@@ -13,7 +13,6 @@ class CRF_PlayableCharacter : ScriptComponent
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_ESlotType))]
 	CRF_ESlotType m_SlottingRole;
 
-	protected bool m_bIsSpectator = false;
 	protected bool m_bIsSlotSpawned = false;
 	protected bool m_bIsHidden = false;
 	protected bool m_bInitTime = false;
@@ -44,16 +43,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		GetGame().GetCallqueue().CallLater(SetInitTime, 5000, false);
 
 		if (m_bIsPlayable)
-		{
-			GetGame().GetCallqueue().CallLater(SetInitialEntity, 500, false, owner);
-			GetGame().GetCallqueue().CallLater(DisableAI, 0, false, owner);
-		}
-
-		if (CRF_GamemodeManager.IsSpectator(owner))
-		{
-			m_bIsSpectator = true;
-			SetEventMask(owner, EntityEvent.FRAME);
-		};
+			GetGame().GetCallqueue().CallLater(SetInitialEntity, 150, false, owner);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -67,13 +57,65 @@ class CRF_PlayableCharacter : ScriptComponent
 	{
 		m_bIsSlotSpawned = true;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetInitialEntity(IEntity owner)
+	{
+		// Disable AI
+		GetGame().GetCallqueue().CallLater(DisableAI, 0, false, owner);
+		
+		// Get if we are a spectator
+		bool isSpec = CRF_GamemodeManager.IsSpectator(owner);
+		
+		// Logs entity on server and disables AI if not spawned by a slot
+		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned && !isSpec)
+			m_SlottingManager.AddPlayableEntityToManager(owner);
 
+		// Sets location and all the physics BS on all machines
+		if (isSpec)
+		{
+			SetEventMask(owner, EntityEvent.FRAME);
+			owner.SetOrigin("0 10000 0");
+			
+			if (!m_bIsHidden)
+			{
+				Physics physics = owner.GetPhysics();
+				if (physics)
+				{
+					physics.EnableGravity(false);
+					physics.ChangeSimulationState(SimulationState.NONE);
+					physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
+					for (int i = 0; i <= physics.GetNumGeoms(); i++)
+					{
+						physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
+					}
+					m_bIsHidden = true;
+				};
+			};
+		};
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void DisableAI(IEntity owner)
+	{
+		if (AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent())
+			AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent().DeactivateAI();
+		GetGame().GetCallqueue().CallLater(DisableAIWrap, 0, false, owner)
+	}
+
+	//------------------------------------------------------------------------------------------------
+	void DisableAIWrap(IEntity owner)
+	{
+		if (AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent())
+			AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent().DeactivateAI();
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFrame(owner, timeslice);
 
-		if (!owner || !GetGame().InPlayMode() || !m_bIsPlayable)
+		if (!owner || !GetGame().InPlayMode())
 		{
 			ClearEventMask(owner, EntityEvent.FRAME);
 			return;
@@ -117,55 +159,6 @@ class CRF_PlayableCharacter : ScriptComponent
 			physics.SetAngularVelocity(vector.Zero);
 			physics.SetMass(0);
 			physics.SetDamping(1, 1);
-		};
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void DisableAI(IEntity owner)
-	{
-		if (AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent())
-			AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent().DeactivateAI();
-		GetGame().GetCallqueue().CallLater(DisableAIWrap, 0, false, owner)
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void DisableAIWrap(IEntity owner)
-	{
-		if (AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent())
-			AIControlComponent.Cast(owner.FindComponent(AIControlComponent)).GetAIAgent().DeactivateAI();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetInitialEntity(IEntity owner)
-	{
-		//Logs entity on server and disables AI if not spawned by a slot
-		if (RplSession.Mode() != RplMode.Client && !m_bIsSlotSpawned && !m_bIsSpectator)
-		{
-			SCR_AIGroup playableGroup = SCR_AIGroup.Cast(ChimeraAIControlComponent.Cast(owner.FindComponent(ChimeraAIControlComponent)).GetControlAIAgent().GetParentGroup());
-			if (playableGroup)
-				m_SlottingManager.AddPlayableEntityToManager(owner);
-		}
-
-		//Sets location and all the physics BS on all machines
-		if (m_bIsSpectator)
-		{
-			owner.SetOrigin("0 10000 0");
-			if (!m_bIsHidden)
-			{
-				Physics physics = owner.GetPhysics();
-				if (physics)
-				{
-					//owner.ClearFlags(EntityFlags.VISIBLE|EntityFlags.TRACEABLE,  false);
-					physics.EnableGravity(false);
-					physics.ChangeSimulationState(SimulationState.NONE);
-					physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
-					for (int i = 0; i <= physics.GetNumGeoms(); i++)
-					{
-						physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
-					}
-					m_bIsHidden = true;
-				};
-			};
 		};
 	}
 }
