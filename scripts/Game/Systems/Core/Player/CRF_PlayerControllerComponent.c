@@ -40,9 +40,8 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	override protected void OnPostInit(IEntity owner)
+	void InitilizePlayerControllerComp()
 	{
-		super.OnPostInit(owner);
 
 		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Dedicated)
 			return;
@@ -92,7 +91,6 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SpecCameraInit(vector cameraPos[4])
 	{
-		Print("[CRF] SpecCameraInit");
 		if(!m_RplToAuthorityManager || !m_Gamemode)
 		{
 			m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();

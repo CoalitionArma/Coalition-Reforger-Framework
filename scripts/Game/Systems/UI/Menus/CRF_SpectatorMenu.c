@@ -954,8 +954,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 					continue;
 				}
 				
-				// Skip locked or dead slots
-				if (slotData.m_bIsLockedSlot || slotData.m_bIsDeadSlot)
+				// Skip locked slots
+				if(slotData.m_bIsLockedSlot && slotData.m_iSlotCurrentPlayerId <= 0)
 					continue;
 				
 				// Add slot to the UI

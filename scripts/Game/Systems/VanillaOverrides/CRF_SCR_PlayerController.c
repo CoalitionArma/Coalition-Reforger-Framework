@@ -1,15 +1,32 @@
 modded class SCR_PlayerController
 {
 	/**
+	 * Called when the player controller updates (typically whenever a player joins/rejoins)
+	 */
+	override protected void UpdateLocalPlayerController()
+	{
+		super.UpdateLocalPlayerController();
+		
+		if(RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerComponent.GetInstance())
+			return;
+		
+		CRF_PlayerControllerComponent.GetInstance().InitilizePlayerControllerComp();
+	}
+	
+	/**
 	 * Called when the entity controlled by this player controller changes
 	 * @param from The previous entity being controlled
 	 * @param to The new entity being controlled
 	 */
 	override void OnControlledEntityChanged(IEntity from, IEntity to)
-	{
+	{	
 		// Check if gamemode instance exists, if not, exit early
 		if (!CRF_Gamemode.GetInstance())
+		{
+			// Call the parent implementation
+			super.OnControlledEntityChanged(from, to);
 			return;
+		};
 		
 		// Get the CRF player controller comp
 		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
@@ -37,10 +54,11 @@ modded class SCR_PlayerController
 	{
 		// Check if gamemode instance exists, if not, exit early
 		if (!CRF_Gamemode.GetInstance())
+		{
+			// Call the parent implementation
+			super.DisconnectFromGame();
 			return;
-		
-		// Call the parent implementation
-		super.DisconnectFromGame();
+		};
 
 		// Get the CRF player controller comp
 		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
@@ -49,5 +67,7 @@ modded class SCR_PlayerController
 		if (playerControllerComp)
 			// Reset settings to previously stored values
 			playerControllerComp.ResetSettingsToStoredValues();
+		
+		super.DisconnectFromGame();
 	}
 }

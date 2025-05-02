@@ -704,7 +704,11 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			m_cOrbatListBoxComponent.GetCRFElementComponent(orbatGroupIndex).GetGroupUnderline().SetColor(groupColor);
 			
 			// Add admin-only controls
-			SetupAdminGroupControls(isAdmin, group, groupIndex);
+			if(isAdmin)
+			{	
+				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetLockButton().m_OnClicked.Insert(LockGroupSlotsDelayed);
+				GetGame().GetCallqueue().CallLater(SetupAdminGroupIcons, 100, false, group, groupIndex);
+			}
 			
 			SCR_GroupIdentityComponent groupIdent = SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent));
 			
@@ -721,21 +725,15 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	}
 	
 	/**
-	 * Sets up admin-specific controls for a group
-	 * @param isAdmin - Whether current player is admin
+	 * Sets up admin-specific icons for a group
 	 * @param group - Group to set up controls for
 	 * @param groupIndex - UI index of the group
 	 */
-	private void SetupAdminGroupControls(bool isAdmin, SCR_AIGroup group, int groupIndex)
+	private void SetupAdminGroupIcons(SCR_AIGroup group, int groupIndex)
 	{
-		if(isAdmin)
-		{	
-			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetLockButton().m_OnClicked.Insert(LockGroupSlotsDelayed);
-			
-			if(group.IsPrivate())
-				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).SetLockImage(
-					"{564794579B2DB679}UI/Textures/Editor/Attributes/Attribute_Locked.edds", "lockimage");
-		}
+		if(group.IsPrivate())
+			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).SetLockImage(
+				"{564794579B2DB679}UI/Textures/Editor/Attributes/Attribute_Locked.edds", "lockimage");
 	}
 	
 	/**
@@ -763,7 +761,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				continue;
 			
 			// Skip locked slots for non-admins
-			if(slotData.m_bIsLockedSlot && !isAdmin)
+			if(slotData.m_bIsLockedSlot && !isAdmin && slotData.m_iSlotCurrentPlayerId <= 0)
 				continue;
 			
 			// Track dead slots but don't display them
@@ -971,6 +969,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		// Get selected group
 		CRF_ListBoxElementComponent selectedElement = m_cSlotListBoxComponent.GetCRFElementComponent(
 			m_cSlotListBoxComponent.GetSelectedItem());
+		
+		if(!selectedElement.group)
+			return;
+		
 		SCR_AIGroup aiGroup = selectedElement.group;
 		
 		// Get group ID for network sync
@@ -999,6 +1001,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			foreach(int slotId : slotsInGroup)
 			{
 				CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(slotId, true);	
+				CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);	
 			}
 		}
 	}
@@ -1345,6 +1348,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		// Exit if no valid slot selected
 		if (slotId == 0)
+			return;
+		
+		SCR_AIGroup tempGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(slottingManager.GetSlotData(slotId).m_iSlotCurrentGroup)).GetEntity());
+		if(tempGroup.IsPrivate())
 			return;
 		
 		// Get current player and slot information

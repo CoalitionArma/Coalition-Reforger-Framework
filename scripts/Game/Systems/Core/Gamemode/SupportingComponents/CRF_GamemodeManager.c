@@ -64,10 +64,21 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void InitilizePlayer(int playerId, vector overrideLocation = vector.Zero)
 	{
+		if (playerId <= 0)
+			return;
+		
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId)) 
 		{
-			if(!IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+			 IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			
+			if(!IsSpectator(playerEntity))
 				EnterSpectator(playerId);
+			else if (IsSpectator(playerEntity))
+			{
+				vector cameraPos[4];
+				cameraPos[3] = m_Gamemode.m_vGenericSpawn[3];
+				m_RplBroadcastManager.SendSpecClientInit(playerId, cameraPos);
+			};
 			
 			return;
 		}
