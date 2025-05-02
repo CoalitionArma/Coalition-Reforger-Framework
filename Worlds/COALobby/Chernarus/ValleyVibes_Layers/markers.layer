@@ -1,0 +1,398 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 4468.08 161.565 3936.283
+  m_sDescription "OBJ A"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4405.092 238.939 4629.063
+  m_sDescription "OBJ B"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ coords 3900.18 191.625 3550.048
+ angleY 0
+ m_bUseWorldScale 0
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+ {
+  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+   {
+    coords 99.024 -20.114 8.989
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 193.874 -8.096 10.168
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 262.01 5.773 22.19
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 321.719 6.688 -2.505
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 392.397 -6.703 -5.694
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 452.444 -9.589 7.594
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 504.018 -10.439 -5.025
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 577.421 -12.118 -10.156
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 692.387 -73.233 53.61
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 773.021 -47.348 88.518
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 873.452 15.885 175.238
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 927.774 12.981 243.347
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 941.221 45.261 290.568
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 1028.254 27.328 388.894
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 1093.203 29.448 481.003
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   {
+    coords 1146.157 28.896 571.251
+    angleY 0
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+}
+PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 3858.661 212.567 3814.402
+ angleX 9.041
+ angleY -2.565
+ angleZ -15.911
+ m_bUseWorldScale 0
+ {
+  $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   {
+    coords 43.731 -13.022 -208.277
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 89.232 -46.002 -504.681
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 126.79 -99.662 -708.264
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 167.48 -102.214 -905.129
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 150.427 -78.304 -1088.231
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 285.246 -114.796 -1109.031
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 498.949 -169.332 -1142.784
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 677.454 -216.901 -1167.259
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 885.136 -264.089 -1184.437
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1046.588 -296.132 -1199.641
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1212.398 -325.827 -1198.339
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1376.499 -357.722 -1174.937
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1347.877 -383.017 -1047.532
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1321.434 -402.868 -882.739
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1304.741 -395.084 -712.451
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1292.143 -348.741 -543.811
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1269.427 -343.083 -346.144
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1225.728 -358.112 -49.971
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1198.672 -372.712 138.306
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1178.775 -373.579 264.029
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 1076.318 -305.402 381.305
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 899.345 -314.843 579.81
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 813.15 -281.647 647.228
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 706.802 -268.644 741.82
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 554.293 -265.807 951.018
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 353.32 -229.465 907.169
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 244.687 -185.203 840.698
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords 68.582 -115.964 739.028
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords -37.094 -13.336 592.932
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords -133.29 37.624 482.345
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords -290.047 37.192 319.06
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+   {
+    coords -185.301 59.611 156.289
+    angleX -9.395
+    angleY 0
+    angleZ 15.709
+    m_bUseWorldScale 0
+   }
+  }
+ }
+}
+$grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+ {
+  coords 4346.281 6.244 2667.154
+  angleY 0
+  m_sQuadName "attack-main"
+  m_fWorldSize 90
+  m_sDescription ""
+  m_bUseWorldScale 0
+ }
+ {
+  coords 4759.993 36.422 2601.066
+  angleY 0
+  m_sQuadName "attack-main"
+  m_fWorldSize 90
+  m_sDescription ""
+  m_bUseWorldScale 0
+ }
+ {
+  coords 5189.562 20.823 2628.362
+  angleY 0
+  m_sQuadName "attack-main"
+  m_fWorldSize 90
+  m_sDescription ""
+  m_bUseWorldScale 0
+ }
+}

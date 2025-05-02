@@ -1,0 +1,118 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 4785.445 17.773 2752.838
+ angleX 6.146
+ angleY -0.771
+ angleZ -7.166
+}
+$grp Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" {
+ M1025_armed_M2HB1 {
+  coords 4777.787 16.234 2745.719
+  angleX 3.786
+  angleY 1.508
+  angleZ -7.892
+ }
+ M1025_armed_M2HB2 {
+  coords 4761.324 14.265 2746.47
+  angleX 4.524
+  angleY 0.74
+  angleZ -4.396
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 4468.366 218.19 4496.568
+ angleX 7.052
+ angleY -0.475
+ angleZ -8.872
+}
+$grp Vehicle : "{B70E6D12A8EC2410}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport_covered.et" {
+ Ural4320_FIA_transport_covered2 {
+  coords 4460.331 230.92 4590.979
+  angleX -7.455
+  angleY 151.303
+  angleZ 3.055
+ }
+ Ural4320_FIA_transport_covered3 {
+  coords 4464.642 231.041 4593.606
+  angleX -7.455
+  angleY 151.303
+  angleZ 3.055
+ }
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 4793.108 19.379 2759.27
+ angleX 2.136
+ angleY 3.194
+ angleZ -6.129
+ {
+  SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+   coords -4.494 -1.327 -14.7
+   angleX 6.128
+   angleY -1.744
+   angleZ 3.702
+   {
+    SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+     coords 22.255 0.653 8.573
+     angleX -3.295
+     angleY 1.58
+     angleZ -5.469
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords -27.767 -1.029 -30.331
+       angleX 0.701
+       angleY -2.829
+       angleZ -4.231
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 33.464 0.808 -8.677
+         angleX -8.497
+         angleY 2.64
+         angleZ -3.311
+         {
+          SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+           coords 31.301 0.357 1.108
+           angleX -6.27
+           angleY 0.115
+           angleZ -6.173
+           {
+            SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+             coords -98.242 13.138 12.648
+             angleX 11.442
+             angleY 0.92
+             angleZ 0.061
+             {
+              SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+               coords 87.328 -5.103 -39.731
+               angleX -9.651
+               angleY -0.487
+               angleZ 0.925
+               {
+                SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+                 coords -75.298 21.063 57.375
+                 angleX 12.266
+                 angleY -0.355
+                 angleZ 16.167
+                 {
+                  SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+                   coords 18.196 0.774 1.483
+                   angleX 1.839
+                   angleY 0.443
+                   angleZ -3.466
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

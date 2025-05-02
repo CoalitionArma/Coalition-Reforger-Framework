@@ -14,7 +14,6 @@ EffectDef {
    LodMax 0
    Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
    StretchMultiplier 0
-   SizeMultiplier 20
    SizeRND 3
    RotMultiplier 15
    RandomRotDir 1
@@ -34,7 +33,6 @@ EffectDef {
    AnimFPS 25
    LifetimeByAnim 0
    RandomFrame 1
-   Lifetime 60
    LifetimeRND 0
    LifetimeVelFactor 1
    Color {
@@ -74,8 +72,8 @@ EffectDef {
    ShapeType Sphere
    ShapeSize 1 1 1
    ConeAngle 360 0 360
-   ConeAngleMinDist 30
-   ConeAngleRndRange 30
+   ConeAngleMinDist 11.647
+   ConeAngleRndRange 19.059
    Occlusion 12
    MaxNum 100
    BirthRate 3
@@ -100,8 +98,6 @@ EffectDef {
    AirResistance 0.1
    AirResistanceRND 0.05
    WindInfluence 0.5
-   GravityMultiply -0.01
-   GravityMultiplyRND 0
    EnableCollisions 1
    NormalRestitution 0.2
    TagentialRestitution 1
