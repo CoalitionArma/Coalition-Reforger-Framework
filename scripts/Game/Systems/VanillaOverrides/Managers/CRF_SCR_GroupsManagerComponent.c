@@ -1,13 +1,6 @@
 modded class SCR_GroupsManagerComponent
 {
 	//------------------------------------------------------------------------------------------------
-	void AssignGroupIDUnprotected(SCR_AIGroup group)
-	{
-		group.SetGroupID(m_iLatestGroupID);
-		m_iLatestGroupID++;
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	//!
 	//! \param[in] playerID
 	//! \param[in] previousGroupID
