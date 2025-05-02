@@ -165,7 +165,7 @@ class CRF_RespawnManager : ScriptComponent
 			// Only perform respawn if not in AAR state
 			if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR)
 			{
-				RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
+				CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
 				GetGame().GetCallqueue().Remove(MenuFuckOff);
 				GetGame().GetMenuManager().CloseAllMenus();
 			}
@@ -270,8 +270,7 @@ class CRF_RespawnManager : ScriptComponent
 					continue;
 
 				CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent));
-				PrintFormat("[CRF] RespawnPlayer spawnLocationLoop respawnComponent: %1",respawnComponent);
-				if (respawnComponent == null)
+				if (!respawnComponent)
 					continue;
 
 				if (respawnComponent.m_sRespawnPointFaction != factionKey)
@@ -281,7 +280,6 @@ class CRF_RespawnManager : ScriptComponent
 					continue;
 
 				spawnLocation = spawnPoint.GetOrigin();
-				PrintFormat("[CRF] RespawnPlayer spawnLocationLoop spawnLocation: %1",spawnLocation);
 				break;
 			}
 		}
@@ -289,7 +287,6 @@ class CRF_RespawnManager : ScriptComponent
 		// If no spawn location found, enter spectator mode
 		if (spawnLocation == vector.Zero)
 		{
-			PrintFormat("[CRF] RespawnPlayer finalSpawnLocation: %1",spawnLocation);
 			m_GamemodeManager.EnterSpectator(playerId);
 			return;
 		}

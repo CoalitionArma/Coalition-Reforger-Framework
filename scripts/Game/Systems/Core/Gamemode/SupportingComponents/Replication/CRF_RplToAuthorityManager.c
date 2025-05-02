@@ -136,9 +136,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}		
 	
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, vector spawnLocation)
+	void RespawnPlayer(int playerId)
 	{
-		Rpc(RpcAsk_RespawnPlayer, playerId, spawnLocation); 
+		Rpc(RpcAsk_RespawnPlayer, playerId); 
 	}	
 	
 	//------------------------------------------------------------------------------------------------
@@ -323,9 +323,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RespawnPlayer(int playerId, vector spawnLocation)
+	protected void RpcAsk_RespawnPlayer(int playerId)
 	{
-		m_RespawnManager.RespawnPlayer(playerId, spawnLocation);
+		m_RespawnManager.RespawnPlayer(playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
