@@ -1,0 +1,137 @@
+SCR_BaseTriggerEntity cacheCheck {
+ coords 1022.971 181.961 1599.587
+ userScript "	bool m_messageSent = false;"
+ TriggerShapeType Sphere
+ DrawShape 1
+ PeriodicQueries 1
+ UpdatePeriod 30
+ OnQueryFinished ""\
+ "		IEntity indcont = GetGame().GetWorld().FindEntityByName(\"indCache\");"\
+ "		if (!indcont)"\
+ "			return;"\
+ ""\
+ "		SCR_ResourceComponent rscManager = SCR_ResourceComponent.Cast(indcont.FindComponent(SCR_ResourceComponent));"\
+ "		if (!rscManager)"\
+ "			return;"\
+ ""\
+ "		array<SCR_ResourceContainer> containersArray = rscManager.GetContainers();"\
+ "		if (containersArray.IsEmpty())"\
+ "			return;"\
+ ""\
+ "		SCR_ResourceContainer container = containersArray[0];"\
+ "		float bluval = container.GetResourceValue();"\
+ ""\
+ "		IEntity opcont = GetGame().GetWorld().FindEntityByName(\"opCache\");"\
+ "		if (!opcont)"\
+ "			return;"\
+ ""\
+ "		SCR_ResourceComponent rscManager2 = SCR_ResourceComponent.Cast(opcont.FindComponent(SCR_ResourceComponent));"\
+ "		if (!rscManager2)"\
+ "			return;"\
+ ""\
+ "		array<SCR_ResourceContainer> containersArray2 = rscManager2.GetContainers();"\
+ "		if (containersArray2.IsEmpty())"\
+ "			return;"\
+ ""\
+ "		SCR_ResourceContainer container2 = containersArray2[0];"\
+ "		float opval = container2.GetResourceValue();"\
+ ""\
+ "		if (bluval >= 1999 && !m_messageSent)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"INDFOR has collected 2000 supplies.\", 10);"\
+ "			"\
+ "			m_messageSent = true;"\
+ "		}"\
+ ""\
+ "		if (opval >= 1999 && !m_messageSent)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"OPFOR has collected 2000 supplies.\", 10);"\
+ ""\
+ "			m_messageSent = true;"\
+ "		}"\
+ "	"
+}
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
+     }
+    }
+   }
+  }
+  coords 1294.728 21.156 1626.197
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
+     }
+    }
+   }
+  }
+  coords 1186.117 21.812 1620.777
+  angleY -91.806
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
+     }
+    }
+   }
+  }
+  coords 1359.504 23.248 1627.181
+  angleY -91.806
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceGain 0.8
+     }
+    }
+   }
+  }
+  coords 1286.563 20.281 1692.93
+  angleY -91.806
+ }
+}
+$grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ opCache {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 0
+      m_fResourceValueMax 2000
+      m_eOnEmptyBehavior NONE
+     }
+    }
+   }
+  }
+  coords 1170.178 100.268 2657.07
+ }
+ indCache {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 0
+      m_fResourceValueMax 2000
+      m_eOnEmptyBehavior NONE
+     }
+    }
+   }
+  }
+  coords 1046.175 90.356 665.074
+  angleY 40.06
+ }
+}
