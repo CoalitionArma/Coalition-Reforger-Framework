@@ -1,5 +1,25 @@
 modded class SCR_GroupsManagerComponent
 {
+	void AssignGroupIdUnprotected(SCR_AIGroup group)
+	{
+		group.SetGroupID(m_iLatestGroupID);
+		m_iLatestGroupID++;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AssignGroupFrequencyUnprotected(notnull SCR_AIGroup group)
+	{
+		int frequency = 0;
+		Faction groupFaction = group.GetFaction();
+
+		frequency = GetFreeFrequency(groupFaction);
+		if (frequency == -1)
+			return;
+		
+		ClaimFrequency(frequency, groupFaction);
+		group.SetRadioFrequency(frequency);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	//!
 	//! \param[in] playerID
