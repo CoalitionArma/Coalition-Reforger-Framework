@@ -2,27 +2,15 @@ class CRF_SlottingManagerClass : ScriptComponentClass {}
 
 class CRF_SlottingManager : ScriptComponent
 {
-	// INT in this map works on a "ID" based system where a ID is generated for every slot that is created in the AddSlot function bellow.
-	// CRF_SlotDataContainer is then stored in this map for further use by the relevant systems or to be updated later when applicable.
-	protected ref map<int, CRF_SlotDataContainer> m_mSlotsMap = new map<int, CRF_SlotDataContainer>;
-	
-	// Cannot replicate maps, so we use this array to replicate all map keys (in correllation with the map data array bellow).
-	// Is also a really easy way to update clients the slots map has changed.
-	[RplProp()]
-	protected ref array<int> m_aSlotsKey = {}; 
-	
 	// Cannot replicate maps, so we use this array to replicate all map data (in correllation with the map key array above).
 	[RplProp()]
 	protected ref array<ref CRF_SlotDataContainer> m_aSlotsData = {}; 
-	
-	// Latest Slot ID that was used to create a slot
-	protected int m_iLatestSlotID;
 	
 	// Script Invoker for all your invoker needs
 	protected ref ScriptInvoker m_OnSlottingUpdate;
 	
 	// How we propagate slotting updates
-	[RplProp(onRplName: "UpdateClientSlotsMap")]
+	[RplProp(onRplName: "UpdateClient")]
 	protected int m_SlottingUpdate;
 	
 	protected CRF_Gamemode m_Gamemode;
@@ -47,6 +35,21 @@ class CRF_SlottingManager : ScriptComponent
 	};
 	
 	//------------------------------------------------------------------------------------------------
+	void SendUpdateClient()
+	{
+		m_SlottingUpdate++;
+		Replication.BumpMe();
+		UpdateClient();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateClient()
+	{
+		if (m_OnSlottingUpdate)
+			m_OnSlottingUpdate.Invoke();
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	ScriptInvoker GetOnSlottingUpdate()
 	{
 		if (!m_OnSlottingUpdate)
@@ -55,58 +58,16 @@ class CRF_SlottingManager : ScriptComponent
 		return m_OnSlottingUpdate;
 	}
 	
-	//Updates all players the slotting information has changed
-	//------------------------------------------------------------------------------------------------
-	void SlottingChangesUpdate()
-	{
-		// Create a temp array so we arent broadcasting for each change to m_aPlayerArray.
-		protected ref array<int> tempSlotsKey = {};
-		protected ref array<ref CRF_SlotDataContainer> tempSlotsData = {};
-
-		// Fill tempSlotsKey/tempSlotsData with all keys and values in m_mSlotsMap.
-		for (int i = 0; i < m_mSlotsMap.Count(); i++)
-		{
-			int key = m_mSlotsMap.GetKey(i);
-			ref CRF_SlotDataContainer value = m_mSlotsMap.Get(key);
-			
-			tempSlotsKey.Insert(key);
-			tempSlotsData.Insert(value);
-		};
-
-		// Replicate m_aSlotsKey/m_aSlotsData to all clients.
-		m_aSlotsKey = tempSlotsKey;
-		m_aSlotsData = tempSlotsData;
-		m_SlottingUpdate++;
-		Replication.BumpMe();
-		
-		#ifdef WORKBENCH
-			UpdateClientSlotsMap()
-		#endif
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected void UpdateClientSlotsMap()
-	{
-		if (RplSession.Mode() == RplMode.Dedicated)
-			return;
-		
-		foreach (int i, int slotID : m_aSlotsKey)
-			m_mSlotsMap.Set(slotID, m_aSlotsData.Get(i));
-		
-		if (m_OnSlottingUpdate)
-			m_OnSlottingUpdate.Invoke();
-	}
-	
 	//------------------------------------------------------------------------------------------------
 	CRF_SlotDataContainer GetSlotData(int slotId)
 	{
-		return m_mSlotsMap.Get(slotId);
+		return m_aSlotsData.Get(slotId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	map<int, CRF_SlotDataContainer> GetSlotMap()
+	array<ref CRF_SlotDataContainer> GetSlotArray()
 	{
-		return m_mSlotsMap;
+		return m_aSlotsData;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -116,7 +77,7 @@ class CRF_SlottingManager : ScriptComponent
 		array<SCR_AIGroup> outputArray = {};
 		array<int> sortingArray = {};
 		
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(!slotData || !slotData.GetSlotCurrentGroup() || slotData.GetSlotCurrentGroup() == RplId.Invalid() || !Replication.FindItem(slotData.GetSlotCurrentGroup()))
 				continue;
@@ -149,7 +110,7 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		array<int> outputArray = {};
 		
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(slotData.GetSlotCurrentGroup() == rplId)
 				outputArray.Insert(slotID);
@@ -161,7 +122,7 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	CRF_SlotDataContainer GetSlotDataFromCharacter(RplId rplId)
 	{
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(slotData.GetSlotCurrentCharacter() == rplId)
 				return slotData;
@@ -173,19 +134,19 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	int GetPlayerSlotID(int playerId)
 	{
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(slotData.GetSlotCurrentPlayerId() == playerId)
 				return slotID;
 		}
 		
-		return 0;
+		return -1;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	CRF_SlotDataContainer GetPlayerSlotData(int playerId)
 	{
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(slotData.GetSlotCurrentPlayerId() == playerId)
 				return slotData;
@@ -222,7 +183,7 @@ class CRF_SlottingManager : ScriptComponent
 		// Get the controller from the character
 		CharacterControllerComponent controller = character.GetCharacterController();
 	
-		// If the character is a valid character and is not dead then return that this guy ain't dead
+		// If the character is a valid character and is not dead then return that this guys character
 		if (controller && !controller.IsDead())
 			return character;
 		else
@@ -255,19 +216,19 @@ class CRF_SlottingManager : ScriptComponent
 	{
 		RplId rplId = RplComponent.Cast(entity.FindComponent(RplComponent)).Id();
 		
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(slotData.GetSlotCurrentCharacter() == rplId)
 				return slotID;
 		}
 		
-		return 0;
+		return -1;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	bool IsFactionValid(FactionKey factionKey)
 	{
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(slotData.GetSlotFactionKey() == factionKey)
 				return true;
@@ -279,7 +240,7 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	bool IsPlayerInASlot(int playerId)
 	{
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
 			if(slotData.GetSlotCurrentPlayerId() == playerId)
 				return true;
@@ -302,19 +263,19 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotLockedState(int slotId, bool input)
 	{
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		slotData.GetIsLockedSlot() = input;
+		CRF_SlotDataContainer slotData = m_aSlotsData.Get(slotId);
+		slotData.SetIsLockedSlot(input);
 		
-		SlottingChangesUpdate();
+		SendUpdateClient();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotDeathState(int slotId, bool input)
 	{
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		slotData.GetIsDeadSlot() = input;
+		CRF_SlotDataContainer slotData = m_aSlotsData.Get(slotId);
+		slotData.SetIsDeadSlot(input);
 		
-		SlottingChangesUpdate();
+		SendUpdateClient();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -331,48 +292,46 @@ class CRF_SlottingManager : ScriptComponent
 			};
 		}
 	
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		slotData.GetSlotCurrentPlayerId() = playerId;
+		CRF_SlotDataContainer slotData = m_aSlotsData.Get(slotId);
+		slotData.SetSlotCurrentPlayerId(playerId);
 		
-		SlottingChangesUpdate();
+		SendUpdateClient();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotGroup(int slotId, RplId groupId)
 	{
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		slotData.GetSlotCurrentGroup() = groupId;
+		CRF_SlotDataContainer slotData = m_aSlotsData.Get(slotId);
+		slotData.SetSlotCurrentGroup(groupId);
 		
-		SlottingChangesUpdate();
+		SendUpdateClient();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotResource(int slotId, ResourceName resource)
 	{
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		slotData.GetSlotResource() = resource;
+		CRF_SlotDataContainer slotData = m_aSlotsData.Get(slotId);
+		slotData.SetSlotResource(resource);
 		
-		SlottingChangesUpdate();
+		SendUpdateClient();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotCharacter(int slotId, RplId charId)
 	{
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		slotData.GetSlotCurrentCharacter() = charId;
+		CRF_SlotDataContainer slotData = m_aSlotsData.Get(slotId);
+		slotData.SetSlotCurrentCharacter(charId);
 		
-		SlottingChangesUpdate();
+		SendUpdateClient();
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void LockAllOpenSlots()
 	{
-		foreach (int slotID, CRF_SlotDataContainer slotData : m_mSlotsMap)
+		foreach (int slotID, CRF_SlotDataContainer slotData : m_aSlotsData)
 		{
-			if(slotData.GetSlotCurrentPlayerId() > 0)
-				continue;
-			else
-				slotData.GetIsLockedSlot() = true;
+			if(slotData.GetSlotCurrentPlayerId() <= 0)
+				UpdateSlotLockedState(slotID, true);
 		}
 		
 		array<SCR_AIGroup> allGroups = GetAllGroups();
@@ -390,7 +349,7 @@ class CRF_SlottingManager : ScriptComponent
 			RplId groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
 			
 			// Process all slots in this group
-			foreach(int slotId, CRF_SlotDataContainer slotData : m_mSlotsMap)
+			foreach(int slotId, CRF_SlotDataContainer slotData : m_aSlotsData)
 			{
 				if(slotData.GetSlotCurrentGroup() != groupId)
 					continue;
@@ -404,8 +363,6 @@ class CRF_SlottingManager : ScriptComponent
 			if (playersInGroup == 0)
 				group.SetPrivate(true);
 		}
-		
-		SlottingChangesUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -426,30 +383,28 @@ class CRF_SlottingManager : ScriptComponent
 		
 		if(group)
 		{
-			slotData.GetSlotCurrentGroup() = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
-			slotData.GetSlotFactionKey() = group.GetFaction().GetFactionKey();
+			slotData.SetSlotCurrentGroup(RplComponent.Cast(group.FindComponent(RplComponent)).Id());
+			slotData.SetSlotFactionKey(group.GetFaction().GetFactionKey());
 		} else 
-			slotData.GetSlotFactionKey() = SCR_FactionAffiliationComponent.Cast(entity.FindComponent(SCR_FactionAffiliationComponent)).GetAffiliatedFactionKey();
+			slotData.SetSlotFactionKey(SCR_FactionAffiliationComponent.Cast(entity.FindComponent(SCR_FactionAffiliationComponent)).GetAffiliatedFactionKey());
 		
 		vector tempVec[4];
 		entity.GetWorldTransform(tempVec);
 		slotData.SetSlotVector(tempVec);
 		
-		slotData.GetSlotResource() = entity.GetPrefabData().GetPrefabName();
-		slotData.GetSlotCurrentCharacter() = RplComponent.Cast(entity.FindComponent(RplComponent)).Id();
+		slotData.SetSlotResource(entity.GetPrefabData().GetPrefabName());
+		slotData.SetSlotCurrentCharacter(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
 		
 		if (!playableCharComp.m_sName.IsEmpty())
-			slotData.GetSlotName() = playableCharComp.m_sName;
+			slotData.SetSlotName(playableCharComp.m_sName);
 		else
-			slotData.GetSlotName() = editableCharComp.GetDisplayName();	
+			slotData.SetSlotName(editableCharComp.GetDisplayName());	
 		
-		slotData.GetSlotIconResource() = editableCharComp.GetInfo().GetIconPath();
-		slotData.GetSlotType() = playableCharComp.m_SlottingRole;
+		slotData.SetSlotIcon(editableCharComp.GetInfo().GetIconPath());
+		slotData.SetSlotType(playableCharComp.m_SlottingRole);
 				
-		m_iLatestSlotID++;
-		m_mSlotsMap.Set(m_iLatestSlotID, slotData);
-		
-		SlottingChangesUpdate();
+		m_aSlotsData.Insert(slotData);
+		SendUpdateClient();
 		
 		if(m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			SCR_EntityHelper.DeleteEntityAndChildren(entity);

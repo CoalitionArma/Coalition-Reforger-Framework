@@ -107,8 +107,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		};
 
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-
-		playerController.SetInitialMainEntity(playerCharacter);
+		
+		GetGame().GetCallqueue().CallLater(playerController.SetInitialMainEntity, 150, false, playerCharacter);
 
 		SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(m_SlottingManager.GetPlayerSlotFaction(playerId));
 
@@ -129,7 +129,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		IEntity specEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld());
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 
-		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 1000, false, specEntity);
+		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 150, false, specEntity);
 
 		SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
 		if (currentGroup)

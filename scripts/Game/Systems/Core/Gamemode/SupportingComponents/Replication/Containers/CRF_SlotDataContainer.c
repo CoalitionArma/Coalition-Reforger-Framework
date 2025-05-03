@@ -28,6 +28,8 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	// SETTERS
 	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
 	void SetSlotVector(vector tempVec[4])
 	{
 		m_vSlotVectorOne = tempVec[0];
@@ -35,6 +37,66 @@ class CRF_SlotDataContainer
 		m_vSlotVectorThree = tempVec[2];
 		m_vSlotVectorFour = tempVec[3];
 	}	
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentPlayerId(int playerId)
+	{
+		m_iSlotCurrentPlayerId = playerId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentGroup(RplId groupRplId)
+	{
+		m_iSlotCurrentGroup = groupRplId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentCharacter(RplId characterRplId)
+	{
+		m_iSlotCurrentCharacter = characterRplId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotType(CRF_ESlotType slotType)
+	{
+		m_iSlotType = slotType;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotName(string name)
+	{
+		m_sSlotName = name;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotIcon(ResourceName icon)
+	{
+		m_rSlotIconResource = icon;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotResource(ResourceName resource)
+	{
+		m_rSlotResource = resource;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotFactionKey(FactionKey faction)
+	{
+		m_SlotFactionKey = faction;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsLockedSlot(bool lockedState)
+	{
+		m_bIsLockedSlot = lockedState;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsDeadSlot(bool deadState)
+	{
+		m_bIsDeadSlot = deadState;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// GETTERS

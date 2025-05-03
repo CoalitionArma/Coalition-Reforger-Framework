@@ -199,7 +199,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
-		m_SlottingManager.SlottingChangesUpdate();
+		m_SlottingManager.SendUpdateClient();
 		Replication.BumpMe();
 	}
 
@@ -374,10 +374,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
 
 		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
-		
-		// Update slotting UI if local player is in a slot
-		if (m_SlottingManager.IsPlayerInASlot(SCR_PlayerController.GetLocalPlayerId()))
-			m_SlottingManager.SlottingChangesUpdate();
 	}
 	
 	//===================================================================================
@@ -471,7 +467,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Update slot state for permanent death
 			int slotID = m_SlottingManager.GetCharacterSlotID(entity);
 			
-			if(slotID > 0)
+			if(slotID != 0)
 				m_SlottingManager.UpdateSlotDeathState(slotID, true);
 		}
 

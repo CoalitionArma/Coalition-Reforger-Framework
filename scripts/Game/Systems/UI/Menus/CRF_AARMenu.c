@@ -498,10 +498,10 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		m_iAliveCivSlots = 0;
 		
 		// Get slot data
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		array<ref CRF_SlotDataContainer> slotArray = CRF_SlottingManager.GetInstance().GetSlotArray();
 		
 		// Count slots by faction
-		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
+		foreach (int slotId, CRF_SlotDataContainer slotData : slotArray)
 		{
 			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
 				continue;
@@ -561,7 +561,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		InitSlots();
 		
 		// Get slot data and groups
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		array<ref CRF_SlotDataContainer> slotArray = CRF_SlottingManager.GetInstance().GetSlotArray();
 		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
@@ -583,7 +583,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 			SetGroupVisuals(group, groupIndex);
 			
 			// Process each slot in the group
-			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
+			foreach(int slotId, CRF_SlotDataContainer slotData : slotArray)
 			{	
 				// Skip slots not in this group or faction
 				if (!IsSlotInGroupAndFaction(slotData, group))
