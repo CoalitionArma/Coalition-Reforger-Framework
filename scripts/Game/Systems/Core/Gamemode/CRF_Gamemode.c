@@ -467,7 +467,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Update slot state for permanent death
 			int slotID = m_SlottingManager.GetCharacterSlotID(entity);
 			
-			if(slotID != 0)
+			if(slotID != -1)
 				m_SlottingManager.UpdateSlotDeathState(slotID, true);
 		}
 
