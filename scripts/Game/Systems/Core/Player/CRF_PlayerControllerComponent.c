@@ -466,13 +466,10 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		if (!chatComponent)
 			return;
 		
-		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
-		data = string.Format("playerId: %1 | Player Name: %3 | \"%2\"", 
-			GetGame().GetPlayerController().GetPlayerId(), 
-			data, 
-			GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
+		int playerID = GetGame().GetPlayerController().GetPlayerId();
 		
-		m_RplToAuthorityManager.SendAdminMessage(data);
+		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
+		m_RplToAuthorityManager.SendAdminMessage(data, playerID);
 	}
 
 	/**
@@ -532,6 +529,9 @@ class CRF_PlayerControllerComponent : ScriptComponent
 			chatComponent.ShowMessage("INVALID PLAYER ID");
 			return;
 		}
+		
+		// Get the ID of the admin replying to the ticket
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
 
 		// Send message
 		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", 
@@ -539,7 +539,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 			GetGame().GetPlayerManager().GetPlayerName(playerId)));
 		
 		toSend = string.Format("\"%1\"", toSend);
-		m_RplToAuthorityManager.ReplyAdminMessage(toSend, playerId, true);
+		m_RplToAuthorityManager.ReplyAdminMessage(toSend, playerId, adminID, true);
 	}
 
 	//------------------------------------------------------------------------------------------------

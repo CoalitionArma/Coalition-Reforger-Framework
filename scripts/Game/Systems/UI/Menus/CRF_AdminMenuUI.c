@@ -27,18 +27,21 @@ class CRF_AdminMenu : ChimeraMenuBase
 	// Game managers
 	protected PlayerManager m_playerManager;
 	protected SCR_GroupsManagerComponent m_groupManagerComponent;
+	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
 	// List containers
 	protected OverlayWidget m_list1Root;
 	protected OverlayWidget m_list2Root;
 	protected OverlayWidget m_list3Root;
 	protected OverlayWidget m_list4Root;
+	protected OverlayWidget m_list5Root;
 	
 	// List components
 	protected SCR_ListBoxComponent m_list1;
 	protected SCR_ListBoxComponent m_list2;
 	protected SCR_ListBoxComponent m_list3;
 	protected SCR_ListBoxComponent m_list4;
+	protected SCR_ListBoxComponent m_list5;
 	
 	// Text input widgets
 	protected MultilineEditBoxWidget m_editBox1;
@@ -52,6 +55,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected SCR_ButtonTextComponent m_teleportMenuButton;
 	protected SCR_ButtonTextComponent m_hintMenuButton;
 	protected SCR_ButtonTextComponent m_healMenuButton;
+	protected SCR_ButtonTextComponent m_ticketMenuButton;
 	
 	// Action buttons
 	protected SCR_ButtonTextComponent m_actionButton;
@@ -62,13 +66,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected SCR_ButtonTextComponent m_menuButton3;
 	protected SCR_ButtonTextComponent m_menuButton4;
 	
-	// Menu text widgets
-	protected TextWidget m_respawnMenuText;
-	protected TextWidget m_resetGearMenuText;
-	protected TextWidget m_teleportMenuText;
-	protected TextWidget m_hintMenuText;
-	protected TextWidget m_healMenuText;
-	
 	// Data collections
 	protected ref array<int> m_groupIDList = {};
 	protected ref array<int> m_allPlayers = {};
@@ -76,6 +73,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected ref array<vector> m_spawnPoints = {};
 	protected ref array<Faction> m_factions = {};
 	protected ref array<string> m_selectableFactions = {};
+	
+	// Ticket State
+	protected int m_iSelectedTicket = -1;
 
 	//-----------------------------------------------------------------------------
 	// General UI Methods
@@ -92,6 +92,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_playerManager = GetGame().GetPlayerManager();
 		m_groupManagerComponent = SCR_GroupsManagerComponent.GetInstance();
 		m_clientComponent = CRF_PlayerControllerComponent.GetInstance();
+		m_AdminMenuManager= CRF_AdminMenuManager.GetInstance();
 
 		// Setup menu roots
 		m_wRoot = GetRootWidget();
@@ -106,15 +107,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Initialize edit boxes
 		InitializeEditBoxes();
 
-		// Set up the initial menu (Respawn)
-		ClearMenu();
-		InitializeRespawnMenu();
-
 		// Set up menu navigation buttons
 		InitializeMenuButtons();
 
 		// Initialize chat panel
 		InitializeChat();
+		
+		// Set up the initial menu (Tickets)
+		ClearMenu();
+		InitializeTicketMenu();
+		UpdateMenuButtonColors(m_ticketMenuButton);
 	}
 	
 	/**
@@ -137,6 +139,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// List box 4
 		m_list4Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List4Box"));
 		m_list4 = SCR_ListBoxComponent.Cast(m_list4Root.FindHandler(SCR_ListBoxComponent));
+		
+		// List box 5
+		m_list5Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List5Box"));
+		m_list5 = SCR_ListBoxComponent.Cast(m_list5Root.FindHandler(SCR_ListBoxComponent));
 	}
 	
 	/**
@@ -170,29 +176,28 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected void InitializeMenuButtons()
 	{
 		// Respawn menu button
+		m_ticketMenuButton = SCR_ButtonTextComponent.GetButtonText("TicketButton", m_wRoot);
+		m_ticketMenuButton.m_OnClicked.Insert(TicketButton);
+		
+		// Respawn menu button
 		m_respawnMenuButton = SCR_ButtonTextComponent.GetButtonText("RespawnButton", m_wRoot);
 		m_respawnMenuButton.m_OnClicked.Insert(RespawnButton);
-		m_respawnMenuText = TextWidget.Cast(m_respawnMenuButton.GetRootWidget().FindWidget("RespawnText"));
 
 		// Reset gear menu button
 		m_resetGearMenuButton = SCR_ButtonTextComponent.GetButtonText("ResetGearButton", m_wRoot);
 		m_resetGearMenuButton.m_OnClicked.Insert(ResetGearButton);
-		m_resetGearMenuText = TextWidget.Cast(m_resetGearMenuButton.GetRootWidget().FindWidget("ResetGearText"));
 
 		// Teleport menu button
 		m_teleportMenuButton = SCR_ButtonTextComponent.GetButtonText("TeleportButton", m_wRoot);
 		m_teleportMenuButton.m_OnClicked.Insert(TeleportButton);
-		m_teleportMenuText = TextWidget.Cast(m_teleportMenuButton.GetRootWidget().FindWidget("TeleportText"));
 
 		// Hint menu button
 		m_hintMenuButton = SCR_ButtonTextComponent.GetButtonText("HintButton", m_wRoot);
 		m_hintMenuButton.m_OnClicked.Insert(HintButton);
-		m_hintMenuText = TextWidget.Cast(m_hintMenuButton.GetRootWidget().FindWidget("HintText"));
 
 		// Heal menu button
 		m_healMenuButton = SCR_ButtonTextComponent.GetButtonText("HealButton", m_wRoot);
 		m_healMenuButton.m_OnClicked.Insert(HealButton);
-		m_healMenuText = TextWidget.Cast(m_healMenuButton.GetRootWidget().FindWidget("HealText"));
 	}
 	
 	/**
@@ -226,9 +231,19 @@ class CRF_AdminMenu : ChimeraMenuBase
 	/**
 	 * Activates the Respawn menu
 	 */
+	void TicketButton()
+	{
+		UpdateMenuButtonColors(m_ticketMenuButton);
+		ClearMenu();
+		InitializeTicketMenu();
+	}
+	
+	/**
+	 * Activates the Respawn menu
+	 */
 	void RespawnButton()
 	{
-		UpdateMenuButtonColors(m_respawnMenuText);
+		UpdateMenuButtonColors(m_respawnMenuButton);
 		ClearMenu();
 		InitializeRespawnMenu();
 	}
@@ -238,7 +253,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void ResetGearButton()
 	{
-		UpdateMenuButtonColors(m_resetGearMenuText);
+		UpdateMenuButtonColors(m_resetGearMenuButton);
 		ClearMenu();
 		InitializeGearMenu();
 	}
@@ -248,7 +263,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void TeleportButton()
 	{
-		UpdateMenuButtonColors(m_teleportMenuText);
+		UpdateMenuButtonColors(m_teleportMenuButton);
 		ClearMenu();
 		InitializeTeleportMenu();
 	}
@@ -258,7 +273,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void HintButton()
 	{
-		UpdateMenuButtonColors(m_hintMenuText);
+		UpdateMenuButtonColors(m_hintMenuButton);
 		ClearMenu();
 		InitializeHintMenu();
 	}
@@ -268,29 +283,30 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void HealButton()
 	{
-		UpdateMenuButtonColors(m_healMenuText);
+		UpdateMenuButtonColors(m_healMenuButton);
 		ClearMenu();
 		InitializeHealMenu();
 	}
 	
 	/**
 	 * Updates menu button colors to highlight the active menu
-	 * @param activeText The text widget of the active menu button
+	 * @param activeButton The button widget of the active menu button
 	 */
-	protected void UpdateMenuButtonColors(TextWidget activeText)
+	protected void UpdateMenuButtonColors(SCR_ButtonTextComponent activeButton)
 	{
 		// Default color for inactive buttons
-		Color inactiveColor = Color.FromRGBA(115, 115, 115, 255);
+		Color inactiveColor = Color.FromSRGBA(23, 26, 28, 255);
 		
 		// Set all texts to inactive color
-		m_respawnMenuText.SetColor(inactiveColor);
-		m_resetGearMenuText.SetColor(inactiveColor);
-		m_teleportMenuText.SetColor(inactiveColor);
-		m_hintMenuText.SetColor(inactiveColor);
-		m_healMenuText.SetColor(inactiveColor);
+		m_ticketMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_respawnMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_resetGearMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_teleportMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_hintMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_healMenuButton.GetRootWidget().SetColor(inactiveColor);
 		
 		// Set active button text to white
-		activeText.SetColor(Color.FromInt(0xffffffff));
+		activeButton.GetRootWidget().SetColor(Color.FromSRGBA(18, 20, 22, 255));
 	}
 
 	/**
@@ -332,6 +348,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_list2.Clear();
 		m_list3.Clear();
 		m_list4.Clear();
+		m_list5.Clear();
 		m_list1.m_OnChanged.Clear();
 		m_list2.m_OnChanged.Clear();
 		m_list3.m_OnChanged.Clear();
@@ -471,6 +488,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_menuButton2.m_OnClicked.Insert(AddGIRadio);
 		m_menuButton3.m_OnClicked.Insert(AddBinos);
 		
+		// Change title of the menu
+		TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle")).SetText("Gear");
+		
 		// Set button and list text
 		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Reset Gear");
 		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add Leaders Radio");
@@ -487,6 +507,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		// Add available roles
 		AddRoles(m_list2);
+		
+		// Populate List of admin action in the current mission
+		PopulateAdminActionsList();
 	}
 	
 	/**
@@ -669,6 +692,221 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Reset player's gear
 		CRF_RplToAuthorityManager.GetInstance().ResetGear(playerId, prefab, true);
 	}
+	
+	//-----------------------------------------------------------------------------
+	// Ticket Menu Methods
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the ticket menu
+	 * Allows admins to see admin messages
+	 */
+	void InitializeTicketMenu()
+	{
+		// Setup UI elements
+		m_list1Root.SetVisible(true);
+		m_list4Root.SetVisible(true);
+		m_editBox1.SetVisible(true);
+		m_editbox2.SetVisible(true);
+		m_windowBox1.SetVisible(true);
+		m_actionButton.SetVisible(true, false);
+		m_menuButton1.SetVisible(true, false);
+		m_menuButton2.SetVisible(true, false);
+		m_searchButton1.SetVisible(true, false);
+		
+		
+		// Setup button event handlers
+		m_actionButton.m_OnClicked.Insert(ReplyToTicket);
+		m_menuButton1.m_OnClicked.Insert(AssignAdminToTicket);
+		m_menuButton2.m_OnClicked.Insert(CloseAdminTicket);
+		m_searchButton1.m_OnClicked.Insert(SearchList1);
+		
+		// Setup selection change handlers
+		m_list1.m_OnChanged.Insert(PopulateTicketMessages);
+		
+		// Change title of the menu
+		TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle")).SetText("Tickets");
+
+		// Set button and list text
+		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Open Tickets");
+		TextWidget.Cast(m_wRoot.FindAnyWidget("List4Text")).SetText("Ticket");
+		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Reply");
+		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Assign Self");
+		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Close Ticket");
+
+		// Get all players and groups
+		m_playerManager.GetPlayers(m_allPlayers);
+		m_groupManagerComponent.GetAllPlayableGroups(m_outGroups);
+
+		// Populate list of players that need help
+		PopulateOpenTicketList();
+		
+		// Populate List of admin action in the current mission
+		PopulateAdminActionsList();
+
+	}
+	
+	/**
+	* Assign a admin to a ticket
+	*/
+	void AssignAdminToTicket()
+	{
+		// Check if a ticket is selected
+		if (m_list1.GetSelectedItem() == -1 && m_iSelectedTicket == -1)
+			return;
+		
+		// Get ID of the admin
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Add the reply to ticket
+		CRF_RplToAuthorityManager.GetInstance().AssignAdminTicket(m_iSelectedTicket, adminID, false);
+	}
+	
+	/**
+	* Assign a admin to a ticket
+	*/
+	void CloseAdminTicket()
+	{
+		// Get ID of the admin
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Reinitilaize the ticket menu
+		TicketButton();
+		
+		// Check if a ticket is selected
+		if (m_list1.GetSelectedItem() == -1 && m_iSelectedTicket == -1)
+			return;
+		
+		// Broadcast the removal of ticket
+		CRF_RplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, false);
+		
+		// Deselect ticket
+		m_iSelectedTicket = -1;
+	}
+	
+	/**
+	* Reply to a ticket selected in list1
+	*/
+	void ReplyToTicket()
+	{
+		// If the reply box is empty
+		if (m_editBox1.GetText() == "")
+			return;
+		
+		// If no player is selected or if one was selected before a refresh
+		if (m_list1.GetSelectedItem() < 0 && m_iSelectedTicket < 1)
+			return;
+		
+		// Get player ID of the admin replying to the message
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Get the text for the reply box
+		string reply = m_editBox1.GetText();
+		
+		// Add reply to tickets array
+		CRF_RplToAuthorityManager.GetInstance().ReplyAdminMessage(reply, m_iSelectedTicket, adminID, false);
+		
+		// Clear Text in reply box
+		m_editBox1.SetText("");
+	}
+	
+	/**
+	* Populates the list of messages selected in list 1
+	*/
+	void PopulateTicketMessages()
+	{		
+		int playerID = -1;
+		
+		// Clear old Messages 
+		m_list4.Clear();
+		
+		// Check if a ticket was selected either via the list or pre ui refresh
+		if (m_list1.GetSelectedItem() != -1)
+		{
+			// Get selected player ID
+			string playerName = TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+			playerID = GetplayerIdFromName(playerName);
+			if (playerID == 0)
+				return;
+			
+			// Store selected ticket for use after ui refresh
+			m_iSelectedTicket = playerID;
+		}
+		else if (m_iSelectedTicket != -1)
+			// Get the stored ticket selected before refresh
+			playerID = m_iSelectedTicket;
+		else
+			return;
+
+		// Get messages in the ticket
+		array<ref CRF_TicketMessageData> messages = m_AdminMenuManager.GetTicketMessages(playerID);
+		if (!messages)
+			return;
+		
+		// Format and add the messages to the list
+		foreach (int i, ref CRF_TicketMessageData message : messages)
+		{
+			// TODO: Make time stamp readable
+			m_list4.AddItem(string.Format("%1 - %2: %3", message.timestamp, message.sender, message.msg));
+		}
+
+	}
+		
+	/**
+	 * Populates the list of players that need help
+	 */
+	void PopulateOpenTicketList()
+	{
+		TStringArray playerNames = {};
+		
+		// Grab player ids that have open tickets
+		array<int> openTickets = m_AdminMenuManager.GetOpenTickets();
+		
+		// Clear old ticket list
+		m_list1.Clear();
+
+		// Get and sort player names
+		foreach (int playerId : openTickets)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
+
+		playerNames.Sort(false);
+
+		// Open tickets to list
+		foreach (string name : playerNames)
+		{
+			m_list1.AddItem(string.Format("%1", name));
+		}
+		
+	}
+	
+	/**
+	* Populates the list of messages selected in list 1
+	*/
+	void PopulateAdminActionsList()
+	{
+		array<ref CRF_AdminActionLog> reversed = {};
+		
+		// Get list of logs of admin aciton in the current mission
+		array<ref CRF_AdminActionLog> actions = m_AdminMenuManager.GetAdminActionLogs();
+		if (!actions)
+			return;
+		
+		// Reverse the order of logs so latest is at the top
+		for (int i = actions.Count() - 1; i >= 0; i--)
+		{
+			reversed.Insert(actions[i]);
+		}
+		
+		// Clear old logs 
+		m_list5.Clear();
+		
+		// Format and add the messages to the list
+		foreach (int i, ref CRF_AdminActionLog action : reversed)
+		{
+			// TODO: Make time stamp readable
+			m_list5.AddItem(string.Format("%1 - %2", action.timestamp, action.action));
+		}
+	}
 
 	//-----------------------------------------------------------------------------
 	// Respawn Menu Methods
@@ -695,6 +933,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Setup selection change handlers
 		m_list1.m_OnChanged.Insert(UpdateSpawnGroupRequest);
 		m_list2.m_OnChanged.Insert(UpdateSpawnpoint);
+		
+		// Change title of the menu
+		TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle")).SetText("Respawn");
 
 		// Set button and list text
 		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Respawn Player");
@@ -711,6 +952,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		// Populate Groups list
 		PopulateGroupsList();
+		
+		// Populate List of admin action in the current mission
+		PopulateAdminActionsList();
 	}
 	
 	/**
@@ -901,6 +1145,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_searchButton2.m_OnClicked.Insert(SearchList2);
 		m_menuButton1.m_OnClicked.Insert(TeleportLocal);
 		m_menuButton2.m_OnClicked.Insert(TeleportPlayers);
+		
+		// Change title of the menu
+		TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle")).SetText("Teleport");
 
 		// Set button and list text
 		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Teleport to Player 1");
@@ -911,6 +1158,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Populate player lists
 		PopulatePlayerList(m_list1);
 		PopulatePlayerList(m_list2);
+		
+		// Populate List of admin action in the current mission
+		PopulateAdminActionsList();
 	}
 
 	/**
@@ -984,6 +1234,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_menuButton1.m_OnClicked.Insert(SendHintAll);
 		m_menuButton2.m_OnClicked.Insert(SendHintFaction);
 		m_menuButton3.m_OnClicked.Insert(SendHintPlayer);
+		
+		// Change title of the menu
+		TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle")).SetText("Hint");
 
 		// Set button and list text
 		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Factions");
@@ -997,6 +1250,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		// Populate faction list
 		PopulateFactionList();
+		
+		// Populate List of admin action in the current mission
+		PopulateAdminActionsList();
 	}
 	
 	/**
@@ -1039,7 +1295,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		string data = m_editBox1.GetText();
 		m_clientComponent.m_sHintText = data;
 		string factionKey = m_selectableFactions.Get(m_list2.GetSelectedItem());
-		CRF_RplToAuthorityManager.GetInstance().SendHint(data, -1, factionKey);
+		//CRF_RplToAuthorityManager.GetInstance().SendHint(data, -1, factionKey);
 	}
 
 	/**
@@ -1084,6 +1340,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_menuButton1.m_OnClicked.Insert(HealPlayerVehicle);
 		m_searchButton1.m_OnClicked.Insert(SearchList1);
 		
+		// Change title of the menu
+		TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle")).SetText("Heal");
+		
 		// Set button and list text
 		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Repair Vehicle");
 		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Heal Player");
@@ -1091,6 +1350,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		// Populate player list
 		PopulatePlayerList(m_list1);
+		
+		// Populate List of admin action in the current mission
+		PopulateAdminActionsList();
 	}
 	
 	/**
@@ -1223,5 +1485,22 @@ class CRF_AdminMenu : ChimeraMenuBase
 		{
 			SCR_ChatPanelManager.GetInstance().OpenChatPanel(m_ChatPanel);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GETTERS
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Gets the title of the current open page
+	 */
+	string GetCurrentOpenTab()
+	{
+		// Get Sub menu title text
+		TextWidget menuSubTitle = TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle"));
+		if (!menuSubTitle)
+			return "";
+		
+		return menuSubTitle.GetText();
 	}
 }
