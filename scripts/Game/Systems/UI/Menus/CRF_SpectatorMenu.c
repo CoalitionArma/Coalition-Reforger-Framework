@@ -915,18 +915,12 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			{
 				// Set group colors and icon
 				Color factionColor = group.GetFaction().GetFactionColor();
-				groupComponent.GetGroupWidget().SetColor(factionColor);
 				groupComponent.GetGroupUnderline().SetColor(factionColor);
 				
-				// Update group military symbol
-				SCR_GroupIdentityComponent identityComp = SCR_GroupIdentityComponent.Cast(
-					group.FindComponent(SCR_GroupIdentityComponent)
-				);
+				if(group.GetFaction().GetFactionKey() == "INDFOR")
+					groupComponent.GetGroupIcon().SetColor(factionColor);
 				
-				if (identityComp)
-				{
-					groupComponent.GetGroupIcon().Update(identityComp.GetMilitarySymbol());
-				}
+				groupComponent.GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 			}
 			
 			// Get group ID

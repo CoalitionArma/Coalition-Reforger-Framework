@@ -19,9 +19,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
    }
   }
-  CRF_LoggingServerComponent "{61761C7B221DBCD4}" {
-   Enabled 0
-  }
   SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
    m_bEnableTeamKillPunishment 0
   }
@@ -887,8 +884,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        }
        SCR_CallsignInfo "{58B2B630FDD64B50}" {
         m_sCallsign "Cell 3"
-       }
-       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
        }
       }
       m_sCallsignGroupFormat "%3"

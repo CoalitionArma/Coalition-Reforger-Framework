@@ -235,7 +235,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 */
 	void AdvanceMenu()
 	{
-		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState();
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
 	}
 	
 	/**

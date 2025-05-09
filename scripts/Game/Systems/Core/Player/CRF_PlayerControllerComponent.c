@@ -25,7 +25,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	// Camera and Spectator
 	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
 	bool m_bActivated = false;              // NVG activation state for spectator
-	private vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
+	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
 	
 	// Game Performance Settings
 	protected int m_iFPS = -1;              // Stored user FPS setting (-1 means uninitialized)
@@ -83,32 +83,78 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		
 		// Schedule delayed initialization
 		GetGame().GetCallqueue().CallLater(AddMsgAction, 1000, false);
-		GetGame().GetCallqueue().CallLater(AddAdvanceAction, 1000, false);
+		GetGame().GetCallqueue().CallLater(InitFPSLock, 100, false);
+		GetGame().GetCallqueue().CallLater(InitAudioLock, 100, false);
 		GetGame().GetCallqueue().CallLater(OpenCurrentStateMenu, 500, false);
-		GetGame().GetCallqueue().CallLater(InitFPSLock, 500, false);
-		GetGame().GetCallqueue().CallLater(InitAudioLock, 500, false);
 	}
 
 	/**
 	 * Initializes the player client
 	 * Cleans up previous camera, closes menus, and sets up player-specific settings
+	 * @param IsSpectator - If we should initilize the Spec camera and menu
 	 */
-	void InitilizePlayerClient()
+	void InitilizePlayerClient(bool IsSpectator = false)
 	{
-		// Clean up previous camera if exists
-		if (m_eCamera)
-			delete m_eCamera; 
-
-		// Close all menus
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SlottingMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_SpectatorMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_AARMenu);
-		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_RespawnMenu);
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		
-		// Schedule delayed initialization of player-specific settings
-		GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 500, false);
-		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1500, false);
+		// Close all menus
+		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			GetGame().GetMenuManager().CloseAllMenus();
+		
+			// Schedule delayed initialization of player-specific settings
+			GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 100, false);
+			GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 2750, false);
+		};
+		
+		if (IsSpectator)
+		{	
+			// Set up camera initilal position
+			vector cameraPos[4];
+			SCR_ChimeraCharacter char = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(SCR_PlayerController.GetLocalPlayerId());
+			
+			if (char && m_vStoredCameraPos[3] == vector.Zero)
+			{
+				char.GetWorldTransform(cameraPos);
+				cameraPos[3][1] = cameraPos[3][1] + 1.5;
+			} else if (m_vStoredCameraPos[3] != vector.Zero)
+				cameraPos = m_vStoredCameraPos;
+			else
+				cameraPos = m_Gamemode.m_vGenericSpawn;
+	
+			// Set up camera entity
+			EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
+			cameraSpawnParams.TransformMode = ETransformMode.WORLD;
+			cameraSpawnParams.Transform = cameraPos;
+	
+			// Spawn or reposition camera
+			if (!m_eCamera)
+				m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
+			else
+				m_eCamera.SetWorldTransform(cameraPos);
+			
+			// Level camera horizon
+			vector mat = m_eCamera.GetAngles();
+			m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+	
+			// Register for VON (voice chat)
+			m_RplToAuthorityManager.CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
+			
+			// Open spectator menu if in game state
+			if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
+			
+			// Switch to spectator camera
+			GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
+		} else { 
+			// Clean up previous camera if exists
+			if (m_eCamera)
+				delete m_eCamera;
+			
+			// Reset Stored Pos
+			GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 1275, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -127,61 +173,12 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	 * Updates stored camera position for persistence between sessions
 	 * @param cameraPosToStore - Array of 4 vectors representing camera transform
 	 */
-	void UpdateStoredCameraPos(vector cameraPosToStore[4])
+	void UpdateStoredCameraPos(vector cameraPosToStoreOne, vector cameraPosToStoreTwo, vector cameraPosToStoreThree, vector cameraPosToStoreFour)
 	{
-		m_vStoredCameraPos = cameraPosToStore;
-	}
-
-	/**
-	 * Initializes spectator camera with proper positioning
-	 * Handles camera position recovery and fallback to generic spawn point
-	 * @param cameraPos - Desired camera position/transform
-	 */
-	void SpecCameraInit(vector cameraPos[4])
-	{
-		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
-		m_Gamemode = CRF_Gamemode.GetInstance();
-
-		// Skip if editor is open
-		if (SCR_EditorManagerEntity.GetInstance().IsOpened())
-			return;
-
-		// Store valid camera positions
-		if (cameraPos[3] != vector.Zero && cameraPos != m_Gamemode.m_vGenericSpawn)
-			m_vStoredCameraPos = cameraPos;
-
-		// Use stored position if current is generic spawn
-		if (m_vStoredCameraPos[3] != vector.Zero && m_vStoredCameraPos[3] != "0 10000 0" && cameraPos == m_Gamemode.m_vGenericSpawn)
-			cameraPos = m_vStoredCameraPos;
-
-		// Fall back to generic spawn if no valid position
-		if (cameraPos[3] == vector.Zero || cameraPos[3] == "0 10000 0" || cameraPos[3][0] < 1 || cameraPos[3][2] < 1)
-			cameraPos = m_Gamemode.m_vGenericSpawn;
-
-		// Set up camera entity
-		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
-		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
-		cameraSpawnParams.Transform = cameraPos;
-
-		// Spawn or reposition camera
-		if (!m_eCamera)
-			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
-		else
-			m_eCamera.SetWorldTransform(cameraPos);
-		
-		// Level camera horizon
-		vector mat = m_eCamera.GetAngles();
-		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
-
-		// Register for VON (voice chat)
-		m_RplToAuthorityManager.CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
-		
-		// Open spectator menu if in game state
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
-		
-		// Switch to spectator camera
-		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
+		m_vStoredCameraPos[0] = cameraPosToStoreOne;
+		m_vStoredCameraPos[1] = cameraPosToStoreTwo;
+		m_vStoredCameraPos[2] = cameraPosToStoreThree;
+		m_vStoredCameraPos[3] = cameraPosToStoreFour;
 	}
 
 	/**
@@ -295,9 +292,6 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	 */
 	void InitAudioLock()
 	{
-		if (m_iAudioSetting != -1)
-			return;
-		
 		m_iAudioSetting = AudioSystem.GetMasterVolume(AudioSystem.SFX);
 		SetSFXVolume(0);
 	}
@@ -336,11 +330,8 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	 */
 	void InitFPSLock()
 	{
-		if (m_iFPS != -1)
-			return;
-		
 		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-		GetInitialUserFPSValue(video);
+		//GetInitialUserFPSValue(video);
 		SetFPS(video, 30);
 	}
 	
@@ -352,12 +343,10 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
 		
 		// Restore FPS if initialized
-		if (m_iFPS != -1)
-			SetFPS(video, m_iFPS);
+		SetFPS(video, 0);
 		
 		// Restore audio if initialized
-		if (m_iAudioSetting != -1)
-			SetSFXVolume(m_iAudioSetting);
+		SetSFXVolume(100);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -377,6 +366,9 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		if (topMenu)
 			topMenu.Close();
 		GetGame().GetMenuManager().CloseAllMenus();
+		
+		if(!SCR_PlayerController.GetLocalMainEntity())
+			m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
 		
 		// Open appropriate menu based on gamemode state
 		switch (m_Gamemode.m_GamemodeState)
@@ -450,8 +442,11 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		ChatCommandInvoker invoker4 = chatPanelManager.GetCommandInvoker("reply");
 		invoker4.Insert(ReplyAdminMessage);
 		
-		ChatCommandInvoker invoker5 = chatPanelManager.GetCommandInvoker("ac");
-		invoker5.Insert(SendAdminChatMessage);
+		ChatCommandInvoker invoker5 = chatPanelManager.GetCommandInvoker("aar");
+		invoker5.Insert(Advance_Callback);
+		
+		ChatCommandInvoker invoker6 = chatPanelManager.GetCommandInvoker("ac");
+		invoker6.Insert(SendAdminChatMessage);
 	}
 	
 	/**
@@ -632,21 +627,11 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	}
 	
 	/**
-	 * Registers AAR advancement command
-	 */
-	void AddAdvanceAction()
-	{
-		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
-		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("aar");
-		invoker.Insert(Advance_Callback);
-	}
-	
-	/**
 	 * Callback for advancing gamemode state
 	 */
 	void Advance_Callback(SCR_ChatPanel panel, string data)
 	{
-		m_RplToAuthorityManager.RequestAdvanceGamemodeState();
+		m_RplToAuthorityManager.RequestAdvanceGamemodeState(true);
 	}
 	
 	//------------------------------------------------------------------------------------------------

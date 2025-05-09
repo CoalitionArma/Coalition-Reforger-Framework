@@ -1,27 +1,7 @@
 //------------------------------------------------------------------------------------
 // CRF_GamemodeClass: Base class definition for the Coalition Reforger Framework Gamemode
 //------------------------------------------------------------------------------------
-class CRF_GamemodeClass : SCR_BaseGameModeClass
-{
-}
-
-//------------------------------------------------------------------------------------
-// Enumerations for game state tracking
-//------------------------------------------------------------------------------------
-enum CRF_EGamemodeState
-{
-	BRIEFING,   // Initial mission briefing phase
-	SLOTTING,   // Player role selection phase
-	GAME,       // Active gameplay phase
-	AAR         // After Action Report phase
-}
-
-enum CRF_ESlottingState
-{
-	LEADERSANDMEDICS,  // Only leaders and medics can select slots
-	SPECIALTIES,       // Specialist roles become available
-	EVERYONE           // All roles available to all players
-}
+class CRF_GamemodeClass : SCR_BaseGameModeClass {}
 
 //------------------------------------------------------------------------------------
 // Mission briefing descriptor for displaying mission information
@@ -447,16 +427,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 			delay = 0;
 		
 		// Get player faction
-		string faction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId).GetFactionKey();
+		Faction faction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+		FactionKey factionKey;
+		
+		if(faction)
+			factionKey = faction.GetFactionKey();
 
 		// Handle respawn if enabled and tickets available
 		if (m_bRespawnEnabled && 
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
-			m_RespawnManager.TicketsRemaining(faction))
+			m_RespawnManager.TicketsRemaining(factionKey) &&
+			!factionKey.IsEmpty())
 		{
 			// Deduct ticket
-			m_RespawnManager.SubtractTicket(faction);
+			m_RespawnManager.SubtractTicket(factionKey);
 
 			// Display respawn screen
 			GetGame().GetCallqueue().CallLater(
@@ -466,22 +451,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 				playerId
 			);
 		} 
-		else 
-		{
-			// Update slot state for permanent death
-			int slotID = m_SlottingManager.GetCharacterSlotID(entity);
-			
-			if(slotID != -1)
-				m_SlottingManager.UpdateSlotDeathState(slotID, true);
-		}
+
+		// Update slot death state so player gets put into spec
+		int slotID = m_SlottingManager.GetCharacterSlotID(entity);
+		
+		if(slotID != -1)
+			m_SlottingManager.UpdateSlotDeathState(slotID, true);
 
 		// Move player to spectator
 		GetGame().GetCallqueue().CallLater(
-			m_GamemodeManager.EnterSpectator, 
+			m_GamemodeManager.InitilizePlayer, 
 			delay, 
 			false, 
-			playerId, 
-			entity
+			playerId,
+			vector.Zero
 		);
 	}
 }

@@ -623,14 +623,15 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 */
 	protected void SetGroupVisuals(SCR_AIGroup group, int groupIndex)
 	{
+		Color factionColor = group.GetFaction().GetFactionColor();
 		// Set group colors
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupWidget().SetColor(group.GetFaction().GetFactionColor());
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupUnderline().SetColor(group.GetFaction().GetFactionColor());
+		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupUnderline().SetColor(factionColor);
+		
+		if(group.GetFaction().GetFactionKey() == "INDFOR")
+			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().SetColor(factionColor);
 		
 		// Set group icon
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().Update(
-			SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent)).GetMilitarySymbol()
-		);
+		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 	}
 	
 	/**

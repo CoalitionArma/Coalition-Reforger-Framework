@@ -699,9 +699,13 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			
 			// Set group colors
 			Color groupColor = group.GetFaction().GetFactionColor();
-			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupWidget().SetColor(groupColor);
+			
+			if(group.GetFaction().GetFactionKey() == "INDFOR")
+				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().SetColor(groupColor);
+			
 			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupUnderline().SetColor(groupColor);
 			m_cOrbatListBoxComponent.GetCRFElementComponent(orbatGroupIndex).GetGroupUnderline().SetColor(groupColor);
+			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 			
 			// Add admin-only controls
 			if(isAdmin)
@@ -710,11 +714,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				GetGame().GetCallqueue().CallLater(SetupAdminGroupIcons, 100, false, group, groupIndex);
 			}
 			
-			SCR_GroupIdentityComponent groupIdent = SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent));
-			
-			if(groupIdent && groupIdent.GetMilitarySymbol())
-				// Update group icon
-				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().Update(groupIdent.GetMilitarySymbol());
+			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 			
 			// Add slots to this group
 			AddSlotsToGroup(group, slotMap, groupIndex, orbatGroupIndex, leadersInGroup, playersInGroup, deadPlayersInGroup, isAdmin);
@@ -1023,6 +1023,10 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		int selectedSlotId = m_cSlotListBoxComponent.GetCRFElementComponent(
 			m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId;
 		
+		SCR_AIGroup tempGroup = SCR_AIGroup.Cast(RplComponent.Cast(Replication.FindItem(CRF_SlottingManager.GetInstance().GetSlotData(selectedSlotId).GetSlotCurrentGroup())).GetEntity());
+		if(tempGroup.IsPrivate())
+			return;
+		
 		bool isCurrentlyLocked = CRF_SlottingManager.GetInstance().GetSlotData(selectedSlotId).GetIsLockedSlot();
 		
 		// Toggle slot lock state
@@ -1048,7 +1052,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	void AdvanceMenu()
 	{
-		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState();
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(false);
 	}
 	
 	/**

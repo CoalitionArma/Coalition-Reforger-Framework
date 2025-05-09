@@ -1,10 +1,3 @@
-enum CRF_ESlotType
-{
-	REGULAR = 0,
-	LEADERORMEDIC,
-	SPECIALTY,
-}
-
 class CRF_SlotDataContainer
 {
 	protected vector m_vSlotVectorOne;

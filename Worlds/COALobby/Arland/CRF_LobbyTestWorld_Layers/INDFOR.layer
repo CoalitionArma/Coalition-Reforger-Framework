@@ -1,19 +1,22 @@
-SCR_AIGroup : "{3C9036D0AA43D53F}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevCrew_p.et" {
- coords 1243.825 39 2841.165
- angleY 171.153
-}
 GenericEntity : "{A8C13E34C9597EA4}Prefabs/Structures/FlagPoles/RespawnPoles/INDFOR_Respawn.et" {
  coords 1251.068 37.938 2820.262
-}
-SCR_AIGroup : "{D3FDE8F02AEA7177}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevGI_p.et" {
- coords 1254.118 39 2842.768
- angleY 171.153
 }
 SCR_AIGroup : "{D7969C403CF13C5D}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevLeaders_p.et" {
  coords 1230.125 39 2839.034
  angleY 171.153
-}
-SCR_AIGroup : "{DCEFF23514B0328E}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevSpecialist_p.et" {
- coords 1219.826 39 2837.432
- angleY 171.153
+ {
+  SCR_AIGroup : "{D3FDE8F02AEA7177}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevGI_p.et" {
+   coords -24.282 0 0
+   {
+    SCR_AIGroup : "{DCEFF23514B0328E}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevSpecialist_p.et" {
+     coords 34.705 0 -0.001
+     {
+      SCR_AIGroup : "{3C9036D0AA43D53F}Prefabs/Groups/INDFOR/Standard/Dev/CRF_INDFOR_DevCrew_p.et" {
+       coords -24.288 0 0.002
+      }
+     }
+    }
+   }
+  }
+ }
 }
