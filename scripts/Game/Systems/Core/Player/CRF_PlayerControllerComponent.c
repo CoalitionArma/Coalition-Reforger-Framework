@@ -449,6 +449,9 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		
 		ChatCommandInvoker invoker4 = chatPanelManager.GetCommandInvoker("reply");
 		invoker4.Insert(ReplyAdminMessage);
+		
+		ChatCommandInvoker invoker5 = chatPanelManager.GetCommandInvoker("ac");
+		invoker5.Insert(SendAdminChatMessage);
 	}
 	
 	/**
@@ -470,6 +473,27 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		
 		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
 		m_RplToAuthorityManager.SendAdminMessage(data, playerID);
+	}
+	
+	/**
+	 * Sends an admin message to other admins
+	 * @param panel - Chat panel
+	 * @param data - Message content
+	 */
+	void SendAdminChatMessage(SCR_ChatPanel panel, string data)
+	{
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		
+		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		if (!chatComponent)
+			return;
+		
+		int playerID = GetGame().GetPlayerController().GetPlayerId();
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
+		
+		m_RplToAuthorityManager.SendAdminChatMessage(data, playerName);
 	}
 
 	/**

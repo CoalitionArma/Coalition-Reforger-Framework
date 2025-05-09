@@ -159,11 +159,17 @@ class CRF_AdminMenuManager : ScriptComponent
 	*/
 	void CloseTicket(int ticketID)
 	{		
+		// Get ID of admin closing the ticket
+		int adminID = GetGame().GetPlayerController().GetPlayerId();
+		
 		// Remove the ticket for the array
 		m_mTickets.Remove(ticketID);
 		
 		// Refresh Lists if admin menu is open
 		RefreshLists();
+		
+		// Log action
+		CRF_RplBroadcastManager.GetInstance().LogAdminAction(string.Format("%1's ticket was closed by %2", GetGame().GetPlayerManager().GetPlayerName(ticketID), GetGame().GetPlayerManager().GetPlayerName(adminID)), ticketID, false);
 	}
 	
 	/*

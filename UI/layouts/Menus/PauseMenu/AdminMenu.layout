@@ -1,32 +1,35 @@
 FrameWidgetClass {
- Name "AdminMenuBase"
+ Name "CoalAdminMenu"
  {
-  FrameWidgetClass "{6548E8DD235B0C55}" {
-   Name "MenuContent"
-   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
-    Anchor 0.5 0.5 0.5 0.5
-    PositionX -808
-    OffsetLeft -808
-    PositionY -452
-    OffsetTop -452
-    SizeX 1128
-    OffsetRight -320
-    SizeY 928
-    OffsetBottom -476
+  BlurWidgetClass "{6548E8DD8E3B4F7B}" {
+   Name "Blur"
+   Slot FrameWidgetSlot "{62993E1169649355}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
    }
+   "Z Order" -5
+   "Inherit Color" 1
+   Intensity 0.5
   }
   FrameWidgetClass "{6548E8DE319A7589}" {
    Name "SideBar"
    Slot FrameWidgetSlot "{6548E8DE319A75B0}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -864
-    OffsetLeft -864
-    PositionY -460
-    OffsetTop -460
+    PositionX -858.37
+    OffsetLeft -858.37
+    PositionY -450.646
+    OffsetTop -450.646
     SizeX 48
-    OffsetRight 816
-    SizeY 944
-    OffsetBottom -484
+    OffsetRight 810.37
+    SizeY 942.646
+    OffsetBottom -492
    }
    "Z Order" 1
    {
@@ -67,8 +70,8 @@ FrameWidgetClass {
      Name "TicketButton"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       Anchor 0 0 0 0
-      PositionX -0
-      OffsetLeft -0
+      PositionX 0
+      OffsetLeft 0
       PositionY 0
       OffsetTop 0
       SizeX 48
@@ -231,17 +234,17 @@ FrameWidgetClass {
    }
   }
   FrameWidgetClass "{6548E8DE2895CF9A}" {
-   Name "BackGround"
+   Name "MenuBackground"
    Slot FrameWidgetSlot "{6539136FAE0907B3}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -920
-    OffsetLeft -920
-    PositionY -524
-    OffsetTop -524
-    SizeX 1829.18
-    OffsetRight -909.175
-    SizeY 1036.66
-    OffsetBottom -512.66
+    PositionX -960
+    OffsetLeft -960
+    PositionY -540
+    OffsetTop -540
+    SizeX 1920
+    OffsetRight -960
+    SizeY 1080
+    OffsetBottom -540
    }
    {
     ImageWidgetClass "{6548E8DE2895CF9B}" {
@@ -270,8 +273,8 @@ FrameWidgetClass {
       OffsetLeft -810.588
       PositionY -454.33
       OffsetTop -454.33
-      SizeX 336
-      OffsetRight 474.588
+      SizeX 1146.59
+      OffsetRight -336
       SizeY 944
       OffsetBottom -489.67
      }
@@ -294,41 +297,6 @@ FrameWidgetClass {
      }
      "Z Order" -1
      Color 0.0155 0.0175 0.0212 1
-     "Inherit Color" 1
-     Size 3840 2160
-    }
-    ImageWidgetClass "{6548E8DE289A73A2}" {
-     Name "BackgroundGrey3"
-     Slot FrameWidgetSlot "{62993E1190D14ACD}" {
-      Anchor 0.5 0.5 0.5 0.5
-      PositionX -474.588
-      OffsetLeft -474.588
-      PositionY -454.33
-      OffsetTop -454.33
-      SizeX 8
-      OffsetRight 466.588
-      SizeY 944
-      OffsetBottom -489.67
-     }
-     "Z Order" 1
-     Color 0.0155 0.0175 0.0212 1
-     "Inherit Color" 1
-     Size 3840 2160
-    }
-    ImageWidgetClass "{6548E8DE289A73A3}" {
-     Name "BackgroundGrey4"
-     Slot FrameWidgetSlot "{62993E1190D14ACD}" {
-      Anchor 0.5 0.5 0.5 0.5
-      PositionX -466.588
-      OffsetLeft -466.588
-      PositionY -454.33
-      OffsetTop -454.33
-      SizeX 800
-      OffsetRight -333.412
-      SizeY 944
-      OffsetBottom -489.67
-     }
-     Color 0.0086 0.0103 0.0116 1
      "Inherit Color" 1
      Size 3840 2160
     }
@@ -366,23 +334,6 @@ FrameWidgetClass {
      Color 0.0062 0.0071 0.008 1
      "Inherit Color" 1
      Size 3840 2160
-    }
-    BlurWidgetClass "{6548E8DD8E3B4F7B}" {
-     Name "Blur"
-     Slot FrameWidgetSlot "{62993E1169649355}" {
-      Anchor 0 0 1 1
-      PositionX -2.842
-      OffsetLeft -2.842
-      PositionY 0.144
-      OffsetTop 0.144
-      SizeX 0
-      OffsetRight 2.842
-      SizeY 0
-      OffsetBottom -0.144
-     }
-     "Z Order" -5
-     "Inherit Color" 1
-     Intensity 0.5
     }
    }
   }
@@ -475,14 +426,15 @@ FrameWidgetClass {
   OverlayWidgetClass "{6548E8DEFC6A58BA}" {
    Name "List5Overlay"
    Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
-    PositionX 1312
-    OffsetLeft 1312
-    PositionY 552
-    OffsetTop 552
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 352
+    OffsetLeft 352
+    PositionY 12
+    OffsetTop 12
     SizeX 493.17
-    OffsetRight -1805.17
+    OffsetRight -845.17
     SizeY 449.88
-    OffsetBottom -1001.88
+    OffsetBottom -461.88
    }
    {
     TextWidgetClass "{6548E8DEFC6A58BB}" {
@@ -492,7 +444,7 @@ FrameWidgetClass {
       Padding -9 0 0 0
      }
      Clipping False
-     Text ""
+     Text "Logs"
      "Font Size" 20
      "Min Font Size" 20
      FontProperties FontProperties "{629B0EA7C5D80E42}" {
@@ -505,6 +457,12 @@ FrameWidgetClass {
       HorizontalAlign 3
       VerticalAlign 3
       Padding 0 20 0 0
+     }
+     components {
+      SCR_ListBoxComponent "{566C9415BAA54E1B}" {
+       m_sElementLayout "{0213676376052A83}UI/layouts/ListBox/Ticket_ListBoxElement_Text.layout"
+       m_sSeparatorLayout "{F439872B8BB7BD4C}UI/layouts/ListBox/Ticket_ListBox_Separator.layout"
+      }
      }
      {
       ImageWidgetClass "{5DB6D18100D38307}" {

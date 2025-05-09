@@ -66,6 +66,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void SendAdminChatMessage(string data, string playerName)
+	{
+		#ifdef WORKBENCH
+		RpcDo_SendAdminChatMessage(data, playerName);
+		#else
+		Rpc(RpcDo_SendAdminChatMessage, data, playerName);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		#ifdef WORKBENCH
@@ -215,6 +225,24 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		// Create a new ticket or/and add reply to exsisting ticket
 		m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_SendAdminChatMessage(string data, string playerName)
+	{
+		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
+			return;
+		
+		PlayerController pc = GetGame().GetPlayerController();
+		if (!pc)
+			return;
+		
+		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		if (!chatComponent)
+			return;
+		
+		chatComponent.ShowMessage(string.Format("Admin - %1: %2 ", playerName, data));
 	}
 
 	//------------------------------------------------------------------------------------------------

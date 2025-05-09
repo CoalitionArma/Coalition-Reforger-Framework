@@ -31,7 +31,7 @@ FrameWidgetClass {
    "Is Enabled" 0
   }
   OverlayWidgetClass "{6548E8DC6DD95AF7}" {
-   Name "List4Overlay"
+   Name "TicketMessagesList"
    Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -456
@@ -45,25 +45,30 @@ FrameWidgetClass {
    }
    {
     TextWidgetClass "{6548E8DC6DD95AF6}" {
-     Name "List4Text"
+     Name "TicketMessagesTitle"
      Slot OverlayWidgetSlot "{629B0ECB4F31310F}" {
       VerticalAlign 0
       Padding -9 0 0 0
      }
      Clipping False
-     Text ""
+     Text "Ticket"
      "Font Size" 20
      "Min Font Size" 20
      FontProperties FontProperties "{629B0EA7C5D80E42}" {
-      OutlineSize 4
      }
     }
     OverlayWidgetClass "{6548E8DC6DD95AF5}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-     Name "List4Box"
+     Name "TicketMessagesListBox0"
      Slot OverlayWidgetSlot "{629B0EC8C4FFC9DC}" {
       HorizontalAlign 3
       VerticalAlign 3
       Padding 0 20 0 0
+     }
+     components {
+      SCR_ListBoxComponent "{566C9415BAA54E1B}" {
+       m_sElementLayout "{0213676376052A83}UI/layouts/ListBox/Ticket_ListBoxElement_Text.layout"
+       m_sSeparatorLayout "{F439872B8BB7BD4C}UI/layouts/ListBox/Ticket_ListBox_Separator.layout"
+      }
      }
      {
       ImageWidgetClass "{5DB6D18100D38307}" {
@@ -75,7 +80,7 @@ FrameWidgetClass {
    }
   }
   EditBoxWidgetClass "{6548E8DC6DD95A44}" {
-   Name "EditBox2"
+   Name "SearchBox0"
    Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -792
@@ -91,55 +96,8 @@ FrameWidgetClass {
    "Use placeholder text" 1
    "Placeholder text" "Search for player..."
   }
-  OverlayWidgetClass "{6548E8DC6DD95BCF}" {
-   Name "List1Overlay"
-   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
-    Anchor 0.5 0.5 0.5 0.5
-    PositionX -792
-    OffsetLeft -792
-    PositionY -388
-    OffsetTop -388
-    SizeX 293.405
-    OffsetRight 498.595
-    SizeY 849.01
-    OffsetBottom -461.01
-   }
-   {
-    OverlayWidgetClass "{6548E8DC6DD95BCE}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-     Name "List1Box"
-     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
-      HorizontalAlign 3
-      VerticalAlign 3
-      Padding 0 20 0 0
-     }
-     {
-      ImageWidgetClass "{5DB6D18100D38307}" {
-       Prefab "{5DB6D18100D38307}"
-       "Is Visible" 0
-      }
-     }
-    }
-    TextWidgetClass "{6548E8DC6DD95BCD}" {
-     Name "List1Text"
-     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
-      VerticalAlign 0
-      Padding -9 0 0 0
-     }
-     Clipping False
-     Text ""
-     "Font Size" 20
-     "Min Font Size" 10
-     "Horizontal Alignment" Center
-     "Vertical Alignment" Center
-     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
-      OutlineSize 4
-     }
-     Offset 0 0
-    }
-   }
-  }
   WindowWidgetClass "{6548E8DC6DD95B04}" {
-   Name "Window0"
+   Name "ReplyBoxBackground0"
    Slot FrameWidgetSlot "{62A27DD4085F87AF}" {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -440
@@ -152,26 +110,25 @@ FrameWidgetClass {
     OffsetBottom -228
    }
    Color 0.456 0.456 0.456 1
-   {
-    MultilineEditBoxWidgetClass "{6548E8DC5C683CD9}" {
-     Name "EditBox1"
-     Slot FrameWidgetSlot "{62A13CE4379A61C0}" {
-      PositionX 8
-      OffsetLeft 8
-      PositionY 8
-      OffsetTop 8
-      SizeX 720
-      OffsetRight -728
-      SizeY 72
-      OffsetBottom -80
-     }
-     Text ""
-     "Min Font Size" 12
-    }
+  }
+  MultilineEditBoxWidgetClass "{6548E8DC5C683CD9}" {
+   Name "ReplyBox0"
+   Slot FrameWidgetSlot "{62A13CE4379A61C0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -432
+    OffsetLeft -432
+    PositionY 148
+    OffsetTop 148
+    SizeX 720
+    OffsetRight -288
+    SizeY 72
+    OffsetBottom -220
    }
+   Text ""
+   "Min Font Size" 12
   }
   ButtonWidgetClass "{6548E8DC6DD95B76}" {
-   Name "ActionButton"
+   Name "MenuButton0"
    Slot FrameWidgetSlot "{62992E477A603216}" {
     Anchor 0.5 0.5 0.5 0.5
     PositionX 192
@@ -195,7 +152,7 @@ FrameWidgetClass {
      Name "ActionButtonText"
      Slot ButtonWidgetSlot "{62992E44F11398F5}" {
      }
-     Text ""
+     Text "Reply"
      "Font Size" 15
      "Min Font Size" 15
     }
@@ -226,7 +183,7 @@ FrameWidgetClass {
      Name "MenuButtonText"
      Slot ButtonWidgetSlot "{62992E44F11398F5}" {
      }
-     Text ""
+     Text "Assign Self"
      "Font Size" 15
      "Min Font Size" 13
     }
@@ -257,14 +214,14 @@ FrameWidgetClass {
      Name "MenuButtonText"
      Slot ButtonWidgetSlot "{62992E44F11398F5}" {
      }
-     Text ""
+     Text "Close Ticket"
      "Font Size" 17
      "Min Font Size" 13
     }
    }
   }
   ButtonWidgetClass "{6548E8DC6DD9DB29}" {
-   Name "SearchButton1"
+   Name "SearchButton0"
    Slot FrameWidgetSlot "{62992E477A603216}" {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -536
@@ -290,6 +247,52 @@ FrameWidgetClass {
      }
      Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
      Size 25 25
+    }
+   }
+  }
+  OverlayWidgetClass "{65517829E421782E}" {
+   Name "PlayerList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -380
+    OffsetTop -380
+    SizeX 293.405
+    OffsetRight 498.595
+    SizeY 849.01
+    OffsetBottom -469.01
+   }
+   {
+    OverlayWidgetClass "{65517829E421782F}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{65517829E421782D}" {
+     Name "PlayerListTitle"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Open Tickets"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
     }
    }
   }

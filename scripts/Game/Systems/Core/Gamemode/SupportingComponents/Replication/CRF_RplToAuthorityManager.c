@@ -129,6 +129,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void SendAdminChatMessage(string data, string playerName)
+	{
+		Rpc(RpcAsk_SendAdminChatMessage, data, playerName); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		if(SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
@@ -328,6 +334,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_SendAdminChatMessage(string data, string playerName)
+	{
+		m_RplBroadcastManager.SendAdminChatMessage(data, playerName);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, adminID, logAction);
@@ -479,7 +492,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		damageComponent.SetHealthScaled(1);
 
 		if (logAction)
-			m_RplBroadcastManager.LogAdminAction(string.Format("%1's was healed/repaired", GetGame().GetPlayerManager().GetPlayerName(playerId)), playerId, true);
+			m_RplBroadcastManager.LogAdminAction(string.Format("%1 was healed/vehicle repaired", GetGame().GetPlayerManager().GetPlayerName(playerId)), playerId, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------

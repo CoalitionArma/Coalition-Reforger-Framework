@@ -1,0 +1,189 @@
+FrameWidgetClass {
+ Name "templateFrame"
+ {
+  FrameWidgetClass "{65534CAD61D1FCE2}" {
+   Name "MenuSlot1"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    PositionX 496
+    OffsetLeft 496
+    PositionY 88
+    OffsetTop 88
+    SizeX 784
+    OffsetRight -1280
+    SizeY 928
+    OffsetBottom -1016
+   }
+   "Is Enabled" 0
+  }
+  FrameWidgetClass "{65534CAD61D1FC99}" {
+   Name "MenuSlot0"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -808
+    OffsetLeft -808
+    PositionY -452
+    OffsetTop -452
+    SizeX 320
+    OffsetRight 488
+    SizeY 928
+    OffsetBottom -476
+   }
+   "Is Enabled" 0
+  }
+  ButtonWidgetClass "{65534CAD70FAC4B3}" {
+   Name "MenuButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -448
+    OffsetLeft -448
+    PositionY -356
+    OffsetTop -356
+    SizeX 112
+    OffsetRight 336
+    SizeY 29.999
+    OffsetBottom 326.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65534CAD70FAC4B2}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Heal Player"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{65534CAD70FAC506}" {
+   Name "MenuButton1"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -448
+    OffsetLeft -448
+    PositionY -316
+    OffsetTop -316
+    SizeX 112
+    OffsetRight 336
+    SizeY 29.999
+    OffsetBottom 286.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65534CAD70FAC501}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Repair Vehicle"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  OverlayWidgetClass "{65534CAD70FAC6B6}" {
+   Name "PlayerList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -380
+    OffsetTop -380
+    SizeX 293.405
+    OffsetRight 498.595
+    SizeY 849.01
+    OffsetBottom -469.01
+   }
+   {
+    OverlayWidgetClass "{65534CAD70FAC6B1}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{65534CAD70FAC6B0}" {
+     Name "PlayerListTitle"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Players"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  ButtonWidgetClass "{65534CAD70FAC71B}" {
+   Name "SearchButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -536
+    OffsetLeft -536
+    PositionY -436
+    OffsetTop -436
+    SizeX 38.891
+    OffsetRight 497.109
+    SizeY 41.419
+    OffsetBottom 394.581
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    ImageWidgetClass "{65534CAD70FAC71A}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
+     Size 25 25
+    }
+   }
+  }
+  EditBoxWidgetClass "{65534CAD70FAC721}" {
+   Name "SearchBox0"
+   Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -436
+    OffsetTop -436
+    SizeX 252.078
+    OffsetRight 539.922
+    SizeY 41.277
+    OffsetBottom 394.723
+   }
+   "Font Size" 20
+   "Use placeholder text" 1
+   "Placeholder text" "Search for player..."
+  }
+ }
+}
