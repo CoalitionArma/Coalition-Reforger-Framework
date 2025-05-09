@@ -1,37 +1,101 @@
 modded class SCR_AIGroup
 {
+	[Attribute("0", category: "Group")]
+	protected bool m_bIsPlayable;
+	
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
+	protected CRF_EFlagType m_FlagType;
+	
+	protected bool m_bIsPlayableGroup;
+	protected SCR_AIGroup m_NewGroup;
+	
+	//------------------------------------------------------------------------------------------------
 	//! Called when the entity is initialized
 	override void EOnInit(IEntity owner)
 	{
 		// Call the parent implementation first
 		super.EOnInit(owner);
 		
-		// Skip processing if not in play mode or if gamemode doesn't exist
-		if (!GetGame().InPlayMode() || !CRF_Gamemode.GetInstance())
-			return;
-		
 		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
 		SCR_GroupsManagerComponent groupsManager = SCR_GroupsManagerComponent.GetInstance();
+		
+		// Skip processing if not in play mode or if gamemode doesn't exist
+		if (!IsGroupPlayable() || !GetGame().InPlayMode() || !gamemode || !groupsManager || !Replication.IsServer())
+			return;
 		
 		// In GAME state and AI is enabled in GAME state
 		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.EnableAIInGameState)
 		{
-			m_bPlayable = false;
-			
-			groupsManager.UnregisterGroup(this);
-			groupsManager.GetOnPlayableGroupRemoved().Invoke(this);
-			
 			if (!IsAIActivated())
 				ActivateAI();
 			
 			SetCanDeleteIfNoPlayer(true);
 			SetDeleteWhenEmpty(true);
 		} else {
-			DeactivateAI();
-			groupsManager.RegisterGroup(this);
-			groupsManager.AssignGroupFrequencyUnprotected(this);
-			groupsManager.AssignGroupIdUnprotected(this);
+			GetOnAllDelayedEntitySpawned().Insert(AllMembersSpawned);
+			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false);
+		};
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool IsGroupPlayable()
+	{
+		return m_bIsPlayable;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void CreateNewGroup()
+	{
+		if(m_bIsPlayableGroup)
+			return;
+		
+		SCR_Faction scrFaction = SCR_Faction.Cast(GetFaction());
+		if(scrFaction && scrFaction.GetFlagName(0))
+		{
+			TStringArray flagArray = {};
+			scrFaction.GetFlagNames(flagArray);
+			if((flagArray.Count() - 1) < m_FlagType)
+				m_FlagType = CRF_EFlagType.INFANTRY
 		}
+		
+		m_NewGroup = SCR_GroupsManagerComponent.GetInstance().CreateNewPlayableGroup(GetFaction());
+		m_NewGroup.SetFaction(GetFaction());
+		m_NewGroup.SetGroupFlag(m_FlagType, true);
+		m_NewGroup.SetCanDeleteIfNoPlayer(false);
+		m_NewGroup.SetDeleteWhenEmpty(false);
+		m_NewGroup.SetMaxMembers(GetMaxMembers());
+		m_NewGroup.SetIsPlayableGroup();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AllMembersSpawned(SCR_AIGroup group)
+	{
+		GetGame().GetCallqueue().CallLater(ConvertSlotsToNewGroup, 350, false);
+		GetOnAllDelayedEntitySpawned().Remove(AllMembersSpawned);
+	};
+	
+	//------------------------------------------------------------------------------------------------
+	void ConvertSlotsToNewGroup()
+	{
+		if (m_bIsPlayableGroup)
+			return;
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		RplId newRplId = RplComponent.Cast(m_NewGroup.FindComponent(RplComponent)).Id();
+		RplId oldRplId = RplComponent.Cast(this.FindComponent(RplComponent)).Id();
+		
+		array<int> slotIdsForOldGroup = slottingManager.GetAllSlotIDsForGroup(oldRplId);
+		
+		foreach(int slotId : slotIdsForOldGroup)
+			slottingManager.UpdateSlotGroup(slotId, newRplId);
+
+		SCR_EntityHelper.DeleteEntityAndChildren(this);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsPlayableGroup()
+	{
+		m_bIsPlayableGroup = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------

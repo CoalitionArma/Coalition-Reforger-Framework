@@ -85,8 +85,8 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "			"\
   "			//respawn the players"\
   "			if (RplSession.Mode() == RplMode.Dedicated) {"\
-  "				CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
-  "				gm.RushRespawnPlayers();"\
+  "				CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "				gm.RespawnAllSides();"\
   "			}"\
   "		}"\
   "	"
@@ -137,8 +137,8 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "			"\
   "			//respawn the players"\
   "			if (RplSession.Mode() == RplMode.Dedicated) {"\
-  "				CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
-  "				gm.RushRespawnPlayers();"\
+  "				CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "				gm.RespawnAllSides();"\
   "			}"\
   "		}"\
   "	"
@@ -191,8 +191,8 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "			"\
   "			//respawn the players"\
   "			if (RplSession.Mode() == RplMode.Dedicated) {"\
-  "				CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
-  "				gm.RushRespawnPlayers();"\
+  "				CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "				gm.RespawnAllSides();"\
   "			}"\
   "		}"\
   "	"
@@ -245,8 +245,8 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "			"\
   "			//respawn the players"\
   "			if (RplSession.Mode() == RplMode.Dedicated) {"\
-  "				CRF_Gamemode gm = CRF_Gamemode.GetInstance();"\
-  "				gm.RushRespawnPlayers();"\
+  "				CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "				gm.RespawnAllSides();"\
   "			}"\
   "			"\
   "		}"\

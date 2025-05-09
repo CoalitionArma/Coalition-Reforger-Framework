@@ -67,97 +67,53 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerId <= 0)
 			return;
 		
-		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId)) 
-		{
-			 IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
-			
-			if(!IsSpectator(playerEntity))
-				EnterSpectator(playerId);
-			else if (IsSpectator(playerEntity))
-			{
-				vector cameraPos[4];
-				cameraPos[3] = m_Gamemode.m_vGenericSpawn[3];
-				m_RplBroadcastManager.SendSpecClientInit(playerId, cameraPos);
-			};
-			
-			return;
-		}
-
-		IEntity playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
-
-		if (!playerCharacter)
-		{
-			EntitySpawnParams spawnParams = new EntitySpawnParams();
-			spawnParams.TransformMode = ETransformMode.WORLD;
-			
-			if(overrideLocation != vector.Zero)
-				spawnParams.Transform[3] = overrideLocation;
-			else
-				m_SlottingManager.GetPlayerSlotVector(playerId, spawnParams.Transform);
-			
-			playerCharacter = GetGame().SpawnEntityPrefab(Resource.Load(m_SlottingManager.GetPlayerSlotResource(playerId)), GetGame().GetWorld(), spawnParams);
-		
-			m_SlottingManager.UpdateSlotCharacter(m_SlottingManager.GetPlayerSlotID(playerId), RplComponent.Cast(playerCharacter.FindComponent(RplComponent)).Id());
-			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), false);
-			
-			CRF_PlayableCharacter playabeCharComp = CRF_PlayableCharacter.Cast(playerCharacter.FindComponent(CRF_PlayableCharacter));
-			
-			if(playabeCharComp)
-				playabeCharComp.SetIsSlotSpawned();
-		};
-
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-
-		playerController.SetInitialMainEntity(playerCharacter);
-
-		SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(m_SlottingManager.GetPlayerSlotFaction(playerId));
-
-		int groupId = m_SlottingManager.GetPlayerSlotGroup(playerId).GetGroupID();
-
-		if (groupId != -1)
-		{
-			m_GroupsManagerComponent.AddPlayerToGroup(groupId, playerId);
-			SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
-		}
-
-		m_RplBroadcastManager.InitilizePlayer(playerId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void EnterSpectator(int playerId, IEntity entity = null)
-	{
-		IEntity specEntity = GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld());
-		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
-
-		GetGame().GetCallqueue().CallLater(pc.SetInitialMainEntity, 250, false, specEntity);
-
-		SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
-		if (currentGroup)
-			currentGroup.RemovePlayer(playerId);
-		
-		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(specEntity.FindComponent(SCR_CharacterDamageManagerComponent)); 
-		if (damManager)
-			damManager.EnableDamageHandling(false);
-		
-		SCR_PlayerFactionAffiliationComponent.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId).FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(GetGame().GetFactionManager().GetFactionByKey("SPEC"));
-
-		vector cameraPos[4];
-		m_Gamemode = CRF_Gamemode.GetInstance();
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			if (m_SlottingManager.IsPlayerInASlot(playerId) && entity != null)
-			{
-				entity.GetWorldTransform(cameraPos);
-				cameraPos[3][1] = cameraPos[3][1] + 1.5;
-			} else {
-				cameraPos[3] = m_Gamemode.m_vGenericSpawn[3];
-			}
-		} else {
-			cameraPos[3] = "0 10000 0";
-		}
-		
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
-		m_RplBroadcastManager.SendSpecClientInit(playerId, cameraPos);
+		SCR_ChimeraCharacter playerCharacter = null;
+		bool isSpectator;
+		Faction faction;
+		
+		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
+		{
+			playerCharacter = SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld()));
+			
+			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
+			isSpectator = true;
+			
+			SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
+			if (currentGroup)
+				currentGroup.RemovePlayer(playerId);
+			
+			SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(playerCharacter.FindComponent(SCR_CharacterDamageManagerComponent)); 
+			if (damManager)
+				damManager.EnableDamageHandling(false);
+		} else {
+			playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
+			
+			if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
+				playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
+			
+			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
+		}
+		
+		if (playerCharacter && playerController)
+			playerController.SetInitialMainEntity(playerCharacter);
+
+		if (faction && playerController)
+			SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(faction);
+
+		if(!isSpectator)
+		{
+			int groupId = m_SlottingManager.GetPlayerSlotGroup(playerId).GetGroupID();
+			
+			if (groupId != -1)
+			{
+				m_GroupsManagerComponent.AddPlayerToGroup(groupId, playerId);
+				SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
+			};
+		};
+		
+		m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, isSpectator);
 	}
 	
 	//------------------------------------------------------------------------------------------------

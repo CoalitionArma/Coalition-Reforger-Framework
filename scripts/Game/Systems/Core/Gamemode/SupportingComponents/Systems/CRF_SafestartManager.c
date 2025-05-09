@@ -206,6 +206,12 @@ class CRF_SafestartManager : ScriptComponent
 
 			Replication.BumpMe();
 			m_RplBroadcastManager.PopUpNotification(3.25, message);
+			
+			UpdatePlayedFactions();
+			
+			if(GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
+				GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
+			
 			return;
 		}
 

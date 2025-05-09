@@ -1,0 +1,66 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ coords 1006.037 2.844 6039.578
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 22
+  }
+ }
+ coords 1006.725 2.844 6030.713
+ EnableAIInGameState 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Everonian insurgents have kidnapped a high ranking political figure. SIGINT reports phone calls have been recorded and we believe he is being tortured at or near the church in Motignac. "\
+   ""\
+   "Insurgents have reinforced the area according to recent satellite imagery so we've been greenlit."
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Utilize your superior mobility with the MH6s to recon and insert within Motignac. Move on foot to find and secure the political party member and extract him back to the docks for extraction off-island."
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "N/A it's a COOP"
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{831036E17A4722D7}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_Urban.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{6B7654B579240E36}Configs/Gearscripts/Standard/Modern/CRF_GS_CHDKz.conf"
+ }
+ {
+  SCR_FactionManager "65497637934C2FFD" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{6549374459A46903}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{654937445EB601A0}" {
+        m_sCallsign "TH"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 4760.634 169.227 6992.304
+ m_sDescription "VIP"
+ m_bUseWorldScale 0
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 1068.55 2.719 6035.452
+ m_sDescription "Spawn/Extract"
+ m_bUseWorldScale 0
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

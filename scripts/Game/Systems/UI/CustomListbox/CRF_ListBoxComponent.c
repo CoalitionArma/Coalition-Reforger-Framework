@@ -40,10 +40,10 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		
 		// Get slot data and configure role image and color
 		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotId);
-		comp.SetRoleImage(slotData.m_rSlotIconResource, "roleimage");
+		comp.SetRoleImage(slotData.GetSlotIconResource(), "roleimage");
 		
 		// Set the role color based on faction
-		FactionKey factionKey = slotData.m_SlotFactionKey;
+		FactionKey factionKey = slotData.GetSlotFactionKey();
 		Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
 		Color factionColor = faction.GetFactionColor();
 		comp.SetRoleColor(factionColor);
@@ -119,21 +119,21 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotId);
 		
 		// Configure basic properties
-		comp.SetRoleText(slotData.m_sSlotName);
+		comp.SetRoleText(slotData.GetSlotName());
 		comp.SetToggleable(true);
 		comp.SetData(data);
 		
 		// Set player text based on slot state
-		if(slotData.m_bIsLockedSlot) {
+		if(slotData.GetIsLockedSlot()) {
 			comp.SetPlayerText("CLOSED");
 		} else if(m_Gamemode.m_SlottingState == 0) {
-			if(slotData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC) {
+			if(slotData.GetSlotType() != CRF_ESlotType.LEADERORMEDIC) {
 				comp.SetPlayerText("CLOSED");
 			} else {
 				comp.SetPlayerText("OPEN");
 			}
 		} else if(m_Gamemode.m_SlottingState == 1) {
-			if(slotData.m_iSlotType != CRF_ESlotType.LEADERORMEDIC && slotData.m_iSlotType != CRF_ESlotType.SPECIALTY) {
+			if(slotData.GetSlotType() != CRF_ESlotType.LEADERORMEDIC && slotData.GetSlotType() != CRF_ESlotType.SPECIALTY) {
 				comp.SetPlayerText("CLOSED");
 			} else {
 				comp.SetPlayerText("OPEN");
@@ -143,9 +143,9 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		}
 		
 		// Set role image and color
-		comp.SetRoleImage(slotData.m_rSlotIconResource, "roleimage");
+		comp.SetRoleImage(slotData.GetSlotIconResource(), "roleimage");
 		
-		FactionKey factionKey = slotData.m_SlotFactionKey;
+		FactionKey factionKey = slotData.GetSlotFactionKey();
 		Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
 		Color factionColor = faction.GetFactionColor();
 		comp.SetRoleColor(factionColor);

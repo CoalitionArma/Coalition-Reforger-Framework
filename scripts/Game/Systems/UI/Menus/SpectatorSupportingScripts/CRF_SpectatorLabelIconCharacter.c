@@ -181,7 +181,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		
 		int playerId = 0;
 		if (slotData)
-			playerId = slotData.m_iSlotCurrentPlayerId;
+			playerId = slotData.GetSlotCurrentPlayerId();
 			
 		if (playerId > 0)
 		{
@@ -194,7 +194,7 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 		else 
 		{
 			if (slotData)
-				m_wSpectatorLabelText.SetText(slotData.m_sSlotName);
+				m_wSpectatorLabelText.SetText(slotData.GetSlotName());
 			else 
 				m_wSpectatorLabelText.SetText("");
 		}

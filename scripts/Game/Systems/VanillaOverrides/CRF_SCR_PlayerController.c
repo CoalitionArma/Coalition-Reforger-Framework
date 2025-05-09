@@ -7,7 +7,7 @@ modded class SCR_PlayerController
 	{
 		super.UpdateLocalPlayerController();
 		
-		if(RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerComponent.GetInstance())
+		if (RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerComponent.GetInstance())
 			return;
 		
 		CRF_PlayerControllerComponent.GetInstance().InitilizePlayerControllerComp();

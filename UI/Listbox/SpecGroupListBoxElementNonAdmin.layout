@@ -32,20 +32,12 @@ HorizontalLayoutWidgetClass {
      AllowHeightOverride 1
      HeightOverride 56
      {
-      OverlayWidgetClass "{647D656A8D6AFC41}" {
-       Name "SymbolOverlay"
-       Slot AlignableSlot "{5DB880D509AA11C2}" {
+      ImageWidgetClass "{65503975A257D3FA}" {
+       Name "SymbolImage"
+       Slot AlignableSlot "{654E4E74662EF63A}" {
         HorizontalAlign 3
         VerticalAlign 3
-       }
-       components {
-        SCR_MilitarySymbolUIComponent "{5DB880D56B45FA22}" {
-         m_MilitarySymbol SCR_MilitarySymbol "{5DB880D56FF1176A}" {
-          m_Identity OPFOR
-          m_Icons INFANTRY
-          m_Amplifier SQUAD
-         }
-        }
+        Padding 3.25 8.5 3.25 15
        }
       }
      }

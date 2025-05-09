@@ -1,29 +1,202 @@
-enum CRF_ESlotType
-{
-	REGULAR = 0,
-	LEADERORMEDIC,
-	SPECIALTY,
-}
-
 class CRF_SlotDataContainer
 {
-	vector m_vSlotVectorOne;
-	vector m_vSlotVectorTwo;
-	vector m_vSlotVectorThree;
-	vector m_vSlotVectorFour;
+	protected vector m_vSlotVectorOne;
+	protected vector m_vSlotVectorTwo;
+	protected vector m_vSlotVectorThree;
+	protected vector m_vSlotVectorFour;
 	
-	int m_iSlotCurrentPlayerId = 0;
-	RplId m_iSlotCurrentGroup = RplId.Invalid();
-	RplId m_iSlotCurrentCharacter = RplId.Invalid();
-	CRF_ESlotType m_iSlotType = CRF_ESlotType.REGULAR;
+	protected int m_iSlotCurrentPlayerId;
+	protected RplId m_iSlotCurrentGroup = RplId.Invalid();
+	protected RplId m_iSlotCurrentCharacter = RplId.Invalid();
+	protected CRF_ESlotType m_iSlotType = CRF_ESlotType.REGULAR;
 	
-	string m_sSlotName = "";
-	ResourceName m_rSlotIconResource = "";
-	ResourceName m_rSlotResource = "";
-	FactionKey m_SlotFactionKey = "";
+	protected string m_sSlotName;
+	protected ResourceName m_rSlotIconResource;
+	protected ResourceName m_rSlotResource;
+	protected FactionKey m_SlotFactionKey;
 	
-	bool m_bIsLockedSlot = false;
-	bool m_bIsDeadSlot = false;
+	protected bool m_bIsLockedSlot = false;
+	protected bool m_bIsDeadSlot = false;
+	
+	//------------------------------------------------------------------------------------------------
+	// SETTERS
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotVector(vector tempVec[4])
+	{
+		m_vSlotVectorOne = tempVec[0];
+		m_vSlotVectorTwo = tempVec[1];
+		m_vSlotVectorThree = tempVec[2];
+		m_vSlotVectorFour = tempVec[3];
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentPlayerId(int playerId)
+	{
+		m_iSlotCurrentPlayerId = playerId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentGroup(RplId groupRplId)
+	{
+		m_iSlotCurrentGroup = groupRplId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentCharacter(RplId characterRplId)
+	{
+		m_iSlotCurrentCharacter = characterRplId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotType(CRF_ESlotType slotType)
+	{
+		m_iSlotType = slotType;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotName(string name)
+	{
+		m_sSlotName = name;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotIcon(ResourceName icon)
+	{
+		m_rSlotIconResource = icon;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotResource(ResourceName resource)
+	{
+		m_rSlotResource = resource;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotFactionKey(FactionKey faction)
+	{
+		m_SlotFactionKey = faction;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsLockedSlot(bool lockedState)
+	{
+		m_bIsLockedSlot = lockedState;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsDeadSlot(bool deadState)
+	{
+		m_bIsDeadSlot = deadState;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GETTERS
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	void GetSlotVector(out vector vec[4])
+	{
+		vec[0] = m_vSlotVectorOne;
+		vec[1] = m_vSlotVectorTwo;
+		vec[2] = m_vSlotVectorThree;
+		vec[3] = m_vSlotVectorFour;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	int GetSlotCurrentPlayerId()
+	{
+		if(!m_iSlotCurrentPlayerId)
+			return 0;
+		else
+			return m_iSlotCurrentPlayerId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	RplId GetSlotCurrentGroup()
+	{
+		if(!m_iSlotCurrentGroup)
+			return RplId.Invalid();
+		else
+			return m_iSlotCurrentGroup;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	RplId GetSlotCurrentCharacter()
+	{
+		if(!m_iSlotCurrentCharacter)
+			return RplId.Invalid();
+		else
+			return m_iSlotCurrentCharacter;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	CRF_ESlotType GetSlotType()
+	{
+		if(!m_iSlotType)
+			return CRF_ESlotType.REGULAR;
+		else
+			return m_iSlotType;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	string GetSlotName()
+	{
+		if(!m_sSlotName)
+			return "Invalid Name";
+		else
+			return m_sSlotName;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ResourceName GetSlotIconResource()
+	{
+		if(!m_rSlotIconResource)
+			return "";
+		else
+			return m_rSlotIconResource;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ResourceName GetSlotResource()
+	{
+		if(!m_rSlotResource)
+			return "";
+		else
+			return m_rSlotResource;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	FactionKey GetSlotFactionKey()
+	{
+		if(!m_SlotFactionKey)
+			return "";
+		else
+			return m_SlotFactionKey;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetIsLockedSlot()
+	{
+		if(!m_bIsLockedSlot)
+			return false;
+		else
+			return m_bIsLockedSlot;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetIsDeadSlot()
+	{
+		if(!m_bIsDeadSlot)
+			return false;
+		else
+			return m_bIsDeadSlot;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// REPLICATION STUFF
+	//------------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------------
 	bool RplSave(ScriptBitWriter writer)
@@ -34,8 +207,8 @@ class CRF_SlotDataContainer
 		writer.WriteVector(m_vSlotVectorFour);
 		
 		writer.WriteInt(m_iSlotCurrentPlayerId);
-		writer.WriteInt(m_iSlotCurrentGroup);
-		writer.WriteInt(m_iSlotCurrentCharacter);
+		writer.WriteRplId(m_iSlotCurrentGroup);
+		writer.WriteRplId(m_iSlotCurrentCharacter);
 		writer.WriteInt(m_iSlotType);
 		
 		writer.WriteString(m_sSlotName);
@@ -58,8 +231,8 @@ class CRF_SlotDataContainer
 		reader.ReadVector(m_vSlotVectorFour);
 		
 		reader.ReadInt(m_iSlotCurrentPlayerId);
-		reader.ReadInt(m_iSlotCurrentGroup);
-		reader.ReadInt(m_iSlotCurrentCharacter);
+		reader.ReadRplId(m_iSlotCurrentGroup);
+		reader.ReadRplId(m_iSlotCurrentCharacter);
 		reader.ReadInt(m_iSlotType);
 		
 		reader.ReadString(m_sSlotName);

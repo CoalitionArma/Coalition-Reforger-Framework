@@ -1,19 +1,22 @@
 SCR_AIGroup : "{3A6F59C4F5036B7B}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevLeader_p.et" {
  coords 1230.728 39 2835.16
  angleY 171.153
+ {
+  SCR_AIGroup : "{72EF60EF0B7BDE0D}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevGI_p.et" {
+   coords -24.283 0 0
+   {
+    SCR_AIGroup : "{9AE81899DA0147AD}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevSpecialist_p.et" {
+     coords 34.707 0 -0.002
+     {
+      SCR_AIGroup : "{C5823F039A8ECB56}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevCrew_p.et" {
+       coords -24.287 0 0.001
+      }
+     }
+    }
+   }
+  }
+ }
 }
 GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
  coords 1226.81 38.031 2813.217
-}
-SCR_AIGroup : "{72EF60EF0B7BDE0D}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevGI_p.et" {
- coords 1254.722 39 2838.894
- angleY 171.153
-}
-SCR_AIGroup : "{9AE81899DA0147AD}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevSpecialist_p.et" {
- coords 1220.428 39 2833.558
- angleY 171.153
-}
-SCR_AIGroup : "{C5823F039A8ECB56}Prefabs/Groups/BLUFOR/Standard/Dev/CRF_BLUFOR_DevCrew_p.et" {
- coords 1244.426 39 2837.292
- angleY 171.153
 }

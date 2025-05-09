@@ -1,3 +1,14 @@
+/*
+ * Coalition Reforger Framework (CRF) Player Controller Component
+ * 
+ * This component manages player-specific functionality including:
+ * - Camera and spectator controls
+ * - UI and menu management
+ * - Game state handling
+ * - Admin commands and messaging
+ * - Radio setup and audio controls
+ * - Map markers and gameplay indicators
+ */
 [ComponentEditorProps(category: "Player Controller Components", description: "")]
 class CRF_PlayerControllerComponentClass : ScriptComponentClass
 {
@@ -6,31 +17,36 @@ class CRF_PlayerControllerComponentClass : ScriptComponentClass
 
 class CRF_PlayerControllerComponent : ScriptComponent
 {
-	string m_sHintText = "Type Here";
+	// UI and Display
+	string m_sHintText = "Type Here";      // Text displayed for hints to player
+	bool m_bHUDVisible = true;             // Controls visibility of HUD elements
+	Widget m_wSavedHintWidget;             // Reference to hint widget for reuse
 	
-	bool m_bHUDVisible = true;
-
-	ref array<string> m_aScriptedMarkers = {};
+	// Camera and Spectator
+	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
+	bool m_bActivated = false;              // NVG activation state for spectator
+	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
 	
-	//Stores local camera entity to delete whenever you take over a player
-	IEntity m_eCamera;
-
-	bool m_bActivated = false;
-	int m_iFPS = -1;
-	int m_iAudioSetting = -1;
-	private vector m_vStoredCameraPos[4];
-	Widget m_wSavedHintWidget;
+	// Game Performance Settings
+	protected int m_iFPS = -1;              // Stored user FPS setting (-1 means uninitialized)
+	protected int m_iAudioSetting = -1;     // Stored audio volume (-1 means uninitialized)
 	
-	protected CRF_Gamemode m_Gamemode;
-	protected CRF_GamemodeManager m_GamemodeManager;
-	protected CRF_RplToAuthorityManager m_RplToAuthorityManager;
+	// Game Systems
+	protected CRF_Gamemode m_Gamemode;                      // Reference to the active gamemode
+	protected CRF_GamemodeManager m_GamemodeManager;        // Reference to the gamemode manager
+	protected CRF_RplToAuthorityManager m_RplToAuthorityManager;  // Network authority manager
+	
+	// Map and Markers
+	ref array<string> m_aScriptedMarkers = {};  // Custom map markers
 
 	//------------------------------------------------------------------------------------------------
-
-	// override/static functions
-
+	// STATIC ACCESSORS
 	//------------------------------------------------------------------------------------------------
 
+	/**
+	 * Returns the instance of this component from the player controller
+	 * @return CRF_PlayerControllerComponent - The player controller component instance or null if unavailable
+	 */
 	static CRF_PlayerControllerComponent GetInstance()
 	{
 		if (GetGame().GetPlayerController())
@@ -40,106 +56,151 @@ class CRF_PlayerControllerComponent : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	// INITIALIZATION
+	//------------------------------------------------------------------------------------------------
+
+	/**
+	 * Initializes the player controller component
+	 * Sets up input listeners and schedules initial setup calls
+	 */
 	void InitilizePlayerControllerComp()
 	{
-
+		// Skip initialization on dedicated servers or in editor
 		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Dedicated)
 			return;
 		
+		// Get references to required systems
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 
+		// Register input action handlers
 		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
 		GetGame().GetInputManager().AddActionListener("CRF_AdminForceReady", EActionTrigger.DOWN, AdminForceReady);
 		GetGame().GetInputManager().AddActionListener("CRF_OpenLobby", EActionTrigger.PRESSED, OpenSlottingMenu);
 		GetGame().GetInputManager().AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		GetGame().GetInputManager().AddActionListener("SwitchSpectatorUI", EActionTrigger.DOWN, UpdateHUDVisible);
 		
+		// Schedule delayed initialization
 		GetGame().GetCallqueue().CallLater(AddMsgAction, 1000, false);
-		GetGame().GetCallqueue().CallLater(AddAdvanceAction, 1000, false);
-		
+		GetGame().GetCallqueue().CallLater(InitFPSLock, 500, false);
+		GetGame().GetCallqueue().CallLater(InitAudioLock, 500, false);
 		GetGame().GetCallqueue().CallLater(OpenCurrentStateMenu, 500, false);
 	}
 
-	//------------------------------------------------------------------------------------------------
-	void InitilizePlayer()
+	/**
+	 * Initializes the player client
+	 * Cleans up previous camera, closes menus, and sets up player-specific settings
+	 * @param IsSpectator - If we should initilize the Spec camera and menu
+	 */
+	void InitilizePlayerClient(bool IsSpectator = false)
 	{
-		//Call to server to enter slot and or get put into a initial entity to spectate
-		if (m_eCamera)
-			delete m_eCamera; 
-
-		GetGame().GetMenuManager().CloseAllMenus();
+		m_Gamemode = CRF_Gamemode.GetInstance();
+		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		
-		ResetSettingsToStoredValues();
-
-		GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1500, false);
+		// Close all menus
+		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			GetGame().GetMenuManager().CloseAllMenus();
+		
+			// Schedule delayed initialization of player-specific settings
+			GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 500, false);
+			GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 2750, false);
+		};
+		
+		if (IsSpectator)
+		{	
+			// Set up camera initilal position
+			vector cameraPos[4];
+			SCR_ChimeraCharacter char = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(SCR_PlayerController.GetLocalPlayerId());
+			
+			if (char && m_vStoredCameraPos[3] == vector.Zero)
+			{
+				char.GetWorldTransform(cameraPos);
+				cameraPos[3][1] = cameraPos[3][1] + 1.5;
+			} else if (m_vStoredCameraPos[3] != vector.Zero)
+				cameraPos = m_vStoredCameraPos;
+			else
+				cameraPos = m_Gamemode.m_vGenericSpawn;
+	
+			// Set up camera entity
+			EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
+			cameraSpawnParams.TransformMode = ETransformMode.WORLD;
+			cameraSpawnParams.Transform = cameraPos;
+	
+			// Spawn or reposition camera
+			if (!m_eCamera)
+				m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
+			else
+				m_eCamera.SetWorldTransform(cameraPos);
+			
+			// Level camera horizon
+			vector mat = m_eCamera.GetAngles();
+			m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+	
+			// Register for VON (voice chat)
+			m_RplToAuthorityManager.CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
+			
+			// Open spectator menu if in game state
+			if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
+			
+			// Switch to spectator camera
+			GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
+		} else { 
+			// Clean up previous camera if exists
+			if (m_eCamera)
+				delete m_eCamera;
+			
+			// Reset Stored Pos
+			GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 1275, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// HUD AND CAMERA CONTROLS
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Toggles the visibility of the HUD
+	 */
 	void UpdateHUDVisible()
 	{
 		m_bHUDVisible = !m_bHUDVisible;
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	void UpdateStoredCameraPos(vector cameraPosToStore[4])
+	/**
+	 * Updates stored camera position for persistence between sessions
+	 * @param cameraPosToStore - Array of 4 vectors representing camera transform
+	 */
+	void UpdateStoredCameraPos(vector cameraPosToStoreOne, vector cameraPosToStoreTwo, vector cameraPosToStoreThree, vector cameraPosToStoreFour)
 	{
-		m_vStoredCameraPos = cameraPosToStore;
+		m_vStoredCameraPos[0] = cameraPosToStoreOne;
+		m_vStoredCameraPos[1] = cameraPosToStoreTwo;
+		m_vStoredCameraPos[2] = cameraPosToStoreThree;
+		m_vStoredCameraPos[3] = cameraPosToStoreFour;
 	}
 
-	//------------------------------------------------------------------------------------------------
-	void SpecCameraInit(vector cameraPos[4])
-	{
-		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
-		m_Gamemode = CRF_Gamemode.GetInstance();
-		
-		//if (SCR_EditorManagerEntity.GetInstance().IsOpened())
-			//return;
-
-		if (cameraPos[3] != vector.Zero && cameraPos[3] != m_Gamemode.m_vGenericSpawn[3])
-			m_vStoredCameraPos = cameraPos;
-
-		if (m_vStoredCameraPos[3] != vector.Zero && cameraPos[3] == m_Gamemode.m_vGenericSpawn[3])
-			cameraPos = m_vStoredCameraPos;
-
-		if (cameraPos[3] == vector.Zero || cameraPos[3] == "0 10000 0" || cameraPos[3][0] < 1 || cameraPos[3][2] < 1)
-			cameraPos = m_Gamemode.m_vGenericSpawn;
-
-		EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
-		cameraSpawnParams.TransformMode = ETransformMode.WORLD;
-		cameraSpawnParams.Transform = cameraPos;
-
-		if (!m_eCamera)
-			m_eCamera = GetGame().SpawnEntityPrefab(Resource.Load("{E1FF38EC8894C5F3}Prefabs/Editor/Camera/ManualCameraSpectate.et"), GetGame().GetWorld(), cameraSpawnParams);
-		
-		vector mat = m_eCamera.GetAngles();
-		m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
-
-		m_RplToAuthorityManager.CheckVONRegister(SCR_PlayerController.GetLocalPlayerId());
-		
-		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
-		
-		GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
-	}
-
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Updates entity position and resets physics
+	 * @param cameraPos - New position/transform
+	 */
 	void UpdateEntityPos(vector cameraPos[4])
 	{
-		//Rpc(RpcDo_UpdateCameraPos, entityID, cameraPos);
 		IEntity player = GetGame().GetPlayerController().GetControlledEntity();
 
-		//~ Align to terrain if not a character
+		// Align to terrain if not a character
 		if (!ChimeraCharacter.Cast(player))
 			SCR_TerrainHelper.OrientToTerrain(cameraPos);
 
+		// Teleport or transform entity
 		BaseGameEntity baseGameEntity = BaseGameEntity.Cast(player);
 		if (baseGameEntity)
 			baseGameEntity.Teleport(cameraPos);
 		else
 			player.SetWorldTransform(cameraPos);
 
+		// Reset physics to prevent unwanted movement
 		Physics phys = player.GetPhysics();
 		if (phys)
 		{
@@ -148,8 +209,9 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		}
 	}
 	
-	// Toggle Spec NVG
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Toggles night vision goggles in spectator mode
+	 */
 	void ToggleNVGs()
 	{
 		m_bActivated = !m_bActivated;
@@ -159,29 +221,23 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		else
 			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	void ResetSettingsToStoredValues()
-	{
-		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-		
-		if (m_iFPS != -1)
-			video.Set("MaxFps", m_iFPS);
-		GetGame().UserSettingsChanged();
-
-		if (m_iAudioSetting == -1)
-			AudioSystem.SetMasterVolume(AudioSystem.SFX, 100);
-		else
-			AudioSystem.SetMasterVolume(AudioSystem.SFX, m_iAudioSetting);
-	}
 
 	//------------------------------------------------------------------------------------------------
+	// PLAYER EQUIPMENT
+	//------------------------------------------------------------------------------------------------
+
+	/**
+	 * Sets up radio frequencies based on player group
+	 * Configures both group and platoon frequencies
+	 */
 	void SetupRadioFrequency()
 	{
-		// Get player's radio
+		// Get player's entity
 		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
 		if (!entity || CRF_GamemodeManager.IsSpectator(entity))
 			return;
+		
+		// Find radio in inventory
 		array<IEntity> items = {};
 		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
 		IEntity radioEntity;
@@ -197,16 +253,19 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		if (!radioEntity)
 			return;
 
+		// Get radio components
 		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
 		BaseTransceiver grpTsv = radio.GetTransceiver(0);
 
-		// Set Player's Freq to whatever group they are in
+		// Get player's group
 		SCR_GroupsManagerComponent m_GroupManager = SCR_GroupsManagerComponent.GetInstance();
 		if (!m_GroupManager)
 			return;
 
 		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
 		PlayerController pc = GetGame().GetPlayerController();
+		
+		// Set frequency based on group
 		if (pc && group)
 		{
 			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
@@ -214,203 +273,228 @@ class CRF_PlayerControllerComponent : ScriptComponent
 				rhc.SetFrequency(grpTsv, group.GetRadioFrequency());
 		}
 
+		// Set up Voice over Network component
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(entity.FindComponent(SCR_VoNComponent));
-
 		von.SetTransmitRadio(grpTsv);
 
+		// Set up platoon radio if available
 		BaseTransceiver pltTsv = radio.GetTransceiver(1);
-
 		if (pltTsv)
 			von.SetTransmitRadio(pltTsv);
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// GAME SETTINGS MANAGEMENT
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Initializes audio lock by storing current volume and setting to 0
+	 */
+	void InitAudioLock()
+	{
+		if (m_iAudioSetting != -1)
+			return;
+		
+		m_iAudioSetting = AudioSystem.GetMasterVolume(AudioSystem.SFX);
+		SetSFXVolume(0);
+	}
+	
+	/**
+	 * Sets SFX volume to specified level
+	 * @param volume - Volume level to set
+	 */
+	void SetSFXVolume(int volume)
+	{
+		AudioSystem.SetMasterVolume(AudioSystem.SFX, volume);
+	}
+	
+	/**
+	 * Sets FPS limit to specified value
+	 * @param video - Video settings container
+	 * @param fps - FPS limit to set
+	 */
+	void SetFPS(BaseContainer video, int fps)
+	{
+		video.Set("MaxFps", fps);
+		GetGame().UserSettingsChanged();
+	}
+	
+	/**
+	 * Retrieves and stores initial user FPS setting
+	 * @param video - Video settings container
+	 */
+	void GetInitialUserFPSValue(BaseContainer video)
+	{
+		video.Get("MaxFps", m_iFPS);
+	}
+	
+	/**
+	 * Initializes FPS lock by storing current value and setting to 30
+	 */
+	void InitFPSLock()
+	{
+		if (m_iFPS != -1)
+			return;
+		
+		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+		GetInitialUserFPSValue(video);
+		SetFPS(video, 30);
+	}
+	
+	/**
+	 * Restores user settings to original values
+	 */
+	void ResetSettingsToStoredValues()
+	{
+		BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
+		
+		// Restore FPS if initialized
+		if (m_iFPS != -1)
+			SetFPS(video, m_iFPS);
+		
+		// Restore audio if initialized
+		if (m_iAudioSetting != -1)
+			SetSFXVolume(m_iAudioSetting);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// MENU MANAGEMENT
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Opens appropriate menu based on current gamemode state
+	 */
 	void OpenCurrentStateMenu()
 	{	
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		
-		//Close any menu that wriggles its way in
+		// Close any existing menus
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
 		if (topMenu)
 			topMenu.Close();
 		GetGame().GetMenuManager().CloseAllMenus();
-		//Opens menu based on current game state : )
+		
+		if(!SCR_PlayerController.GetLocalMainEntity())
+			m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+		
+		// Open appropriate menu based on gamemode state
 		switch (m_Gamemode.m_GamemodeState)
 		{
-			case CRF_EGamemodeState.BRIEFING: {GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);						break; }
-			case CRF_EGamemodeState.SLOTTING:	{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);					break; }
-			case CRF_EGamemodeState.GAME: 	{m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());		break; }
-			case CRF_EGamemodeState.AAR: 		{GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);						break; }
-		}
-		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-		{
-			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-			if (m_iFPS == -1)
-				video.Get("MaxFps", m_iFPS);
-			
-			video.Set("MaxFps", 30);
-			GetGame().UserSettingsChanged();
-			
-			if (m_iAudioSetting == -1)
-				m_iAudioSetting = AudioSystem.GetMasterVolume(AudioSystem.SFX);
-			
-			AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
+			case CRF_EGamemodeState.BRIEFING: 
+			{
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_PreviewMenu);
+				break;
+			}
+			case CRF_EGamemodeState.SLOTTING:
+			{
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);
+				break;
+			}
+			case CRF_EGamemodeState.GAME: 
+			{
+				m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+				break;
+			}
+			case CRF_EGamemodeState.AAR: 
+			{
+				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
+				break;
+			}
 		}
 	}
 	
-	//Opens the slotting menu for players in game
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Opens the slotting menu for player assignment
+	 * @param value - Input value (1.0 for pressed)
+	 * @param reason - Trigger reason
+	 */
 	void OpenSlottingMenu(float value = 0.0, EActionTrigger reason = 0)
 	{
 		if (value != 1)
 			return;
 
+		// Check if appropriate menu is already open
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
 		if (topMenu)
+		{
 			if (topMenu.IsInherited(CRF_PreviewMenuUI) || topMenu.IsInherited(CRF_SlottingMenuUI))
 				return;
 			else if (topMenu.IsInherited(CRF_SpectatorMenuUI))
 				GetGame().GetMenuManager().CloseMenu(topMenu);
+		}
 
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SlottingMenu);
-		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-		{
-			BaseContainer video = GetGame().GetEngineUserSettings().GetModule("VideoUserSettings");
-			
-			if (m_iFPS)
-				video.Get("MaxFps", m_iFPS);
-			
-			video.Set("MaxFps", 30);
-			GetGame().UserSettingsChanged();
-			
-			if (m_iAudioSetting)
-				m_iAudioSetting = AudioSystem.GetMasterVolume(AudioSystem.SFX);
-			
-			AudioSystem.SetMasterVolume(AudioSystem.SFX, 0);
-		}
 	}	
 
 	//------------------------------------------------------------------------------------------------
-	// Admin Messaging
+	// ADMIN MESSAGING SYSTEM
 	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Registers chat commands for admin messaging
+	 */
 	void AddMsgAction()
 	{
 		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
+		
 		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("admin");
 		invoker.Insert(SendAdminMessage);
+		
 		ChatCommandInvoker invoker2 = chatPanelManager.GetCommandInvoker("a");
 		invoker2.Insert(SendAdminMessage);
+		
 		ChatCommandInvoker invoker3 = chatPanelManager.GetCommandInvoker("r");
 		invoker3.Insert(ReplyAdminMessage);
+		
 		ChatCommandInvoker invoker4 = chatPanelManager.GetCommandInvoker("reply");
 		invoker4.Insert(ReplyAdminMessage);
+		
+		ChatCommandInvoker invoker5 = chatPanelManager.GetCommandInvoker("aar");
+		invoker5.Insert(Advance_Callback);
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	// Functions for Frontline
-	//------------------------------------------------------------------------------------------------
-	void UpdateMapMarkers(array<string> zoneStatus, array<string> zoneObjectNames, FactionKey bluforSide, FactionKey opforSide)
-	{
-		RemoveALLScriptedMarkers();
-
-		foreach (int i, string zoneName : zoneObjectNames)
-		{
-			string status = zoneStatus[i];
-			string imageTexture;
-			int imageColor;
-
-			array<string> zoneStatusArray = {};
-			status.Split(":", zoneStatusArray, false);
-
-			string zoneLocked = zoneStatusArray[1];
-			FactionKey zoneFactionStored = zoneStatusArray[2];
-
-			switch (i)
-			{
-				case 0 : {imageTexture = "{21A2A457BD0E42C1}UI\Objectives\A.edds"; break; };
-				case 1 : {imageTexture = "{7F4A8D140283CCCE}UI\Objectives\B.edds"; break; };
-				case 2 : {imageTexture = "{8B42CA8C0F5EA4BA}UI\Objectives\C.edds"; break; };
-				case 3 : {imageTexture = "{C29ADF937D98D0D0}UI\Objectives\D.edds"; break; };
-				case 4 : {imageTexture = "{3692980B7045B8A4}UI\Objectives\E.edds"; break; };
-			}
-
-			if (zoneLocked == "Locked")
-				AddScriptedMarker(zoneName, "0 0 0", 0, "", "{91427B7866707601}UI\Objectives\lock.edds", 50, ARGB(255, 142, 142, 142));
-
-			switch (zoneFactionStored)
-			{
-				case bluforSide : {imageColor = ARGB(255, 0, 25, 225); break; }; //Blufor
-				case opforSide : {imageColor = ARGB(255, 225, 25, 0); break; }; //Opfor
-				default : {imageColor = ARGB(255, 225, 225, 225); break; }; //Uncaptured
-			}
-
-			AddScriptedMarker(zoneName, "0 0 0", 0, "", imageTexture, 45, imageColor);
-		}
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Functions for scripted markers
-	//------------------------------------------------------------------------------------------------
-	TStringArray GetScriptedMarkersArray()
-	{
-		return m_aScriptedMarkers;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! !LOCAL! Adds a scripted marker on the users map which will follow the specified entity
-	//! \param[in] markerEntityName is the name of the entity the marker will track.
-	//! \param[in] markerOffset is the offset from the marker entity. (This can also be the vector pos for a static marker, simply set the "markerEntityName" param to "Static Marker").
-	//! \param[in] timeDelay is the delay between marker updates.
-	//! \param[in] markerText is the text that will be displayed on the map just under the image.
-	//! \param[in] markerImage is the image that will be displayed on the map.
-	//! \param[in] markerColor is the color the image will be.
-	void AddScriptedMarker(string markerEntityName, vector markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
-	{
-		m_aScriptedMarkers.Insert(string.Format("%1||%2||%3||%4||%5||%6||%7", markerEntityName, markerOffset.ToString(), timeDelay.ToString(), markerText, markerImage, zOrder.ToString(), markerColor.ToString()));
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! !LOCAL! Removes the scripted marker from the users map, must have all params be the same params that were initially put in the AddScriptedMarkers function
-	void RemoveScriptedMarker(string markerEntityName, vector markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
-	{
-		m_aScriptedMarkers.RemoveItemOrdered(string.Format("%1||%2||%3||%4||%5||%6||%7", markerEntityName, markerOffset.ToString(), timeDelay.ToString(), markerText, markerImage, zOrder.ToString(), markerColor.ToString()));
-	}
-
-	//------------------------------------------------------------------------------------------------
-	//! !LOCAL! Removes all scripted markers from the users maps
-	void RemoveALLScriptedMarkers()
-	{
-		m_aScriptedMarkers.Clear();
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// Admin Menu
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Sends an admin message from the player to server
+	 * @param panel - Chat panel
+	 * @param data - Message content
+	 */
 	void SendAdminMessage(SCR_ChatPanel panel, string data)
 	{
-
 		PlayerController pc = GetGame().GetPlayerController();
 		if (!pc)
 			return;
+		
 		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
 		if (!chatComponent)
 			return;
+		
 		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
-		data = string.Format("playerId: %1 | Player Name: %3 | \"%2\"", GetGame().GetPlayerController().GetPlayerId(), data, GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
+		data = string.Format("playerId: %1 | Player Name: %3 | \"%2\"", 
+			GetGame().GetPlayerController().GetPlayerId(), 
+			data, 
+			GetGame().GetPlayerManager().GetPlayerName(GetGame().GetPlayerController().GetPlayerId()));
+		
 		m_RplToAuthorityManager.SendAdminMessage(data);
 	}
 
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Allows admins to reply to specific players
+	 * @param panel - Chat panel
+	 * @param data - Message including player ID and content
+	 */
 	void ReplyAdminMessage(SCR_ChatPanel panel, string data)
 	{
+		// Verify sender is admin or moderator
 		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
 			return;
 		
+		// Parse player ID and message from input
 		array<string> dataSplit = {};
 		data.Split(" ", dataSplit, false);
 		int playerId;
 		string toSend;
+		
 		for (int i = 0; i < dataSplit.Count(); i++)
 		{
 			if (dataSplit[i] == "0")
@@ -429,29 +513,46 @@ class CRF_PlayerControllerComponent : ScriptComponent
 				break;
 			}
 		}
+		
+		// Get chat component
 		PlayerController pc = GetGame().GetPlayerController();
 		if (!pc)
 			return;
+		
 		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
 		if (!chatComponent)
 			return;
+		
+		// Validate player ID
 		if (!playerId)
 		{
 			chatComponent.ShowMessage("INVALID PLAYER ID");
 			return;
 		}
+		
 		if (!GetGame().GetPlayerManager().GetPlayerName(playerId))
 		{
 			chatComponent.ShowMessage("INVALID PLAYER ID");
 			return;
 		}
 
-		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", toSend, GetGame().GetPlayerManager().GetPlayerName(playerId)));
+		// Send message
+		chatComponent.ShowMessage(string.Format("Message Sent to %2: \"%1\"", 
+			toSend, 
+			GetGame().GetPlayerManager().GetPlayerName(playerId)));
+		
 		toSend = string.Format("\"%1\"", toSend);
 		m_RplToAuthorityManager.ReplyAdminMessage(toSend, playerId, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
+	// GAMEMODE CONTROLS
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Toggles ready state for player's side/faction
+	 * Only faction leaders can toggle ready state
+	 */
 	void ToggleSideReady()
 	{
 		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
@@ -463,10 +564,10 @@ class CRF_PlayerControllerComponent : ScriptComponent
 			return;
 
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId());
-
 		if (!playerName || playerName == "")
 			return;
 
+		// Only group leaders can toggle ready state
 		if (playersGroup.IsPlayerLeader(SCR_PlayerController.GetLocalPlayerId()))
 		{
 			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -479,15 +580,24 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		}
 	}
 
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Admin command to force ready state for all sides
+	 */
 	void AdminForceReady()
 	{
 		if (!SCR_Global.IsAdmin())
 			return;
-		m_RplToAuthorityManager.ToggleSideReady("", GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId()), true);
+		
+		m_RplToAuthorityManager.ToggleSideReady("", 
+			GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId()), 
+			true);
 	}
 	
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Teleports a player to another player's location
+	 * @param playerId1 - Player to teleport
+	 * @param playerId2 - Destination player
+	 */
 	void TeleportLocalPlayer(int playerId1, int playerId2)
 	{
 		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId2);
@@ -500,17 +610,127 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	// AAR Screen
-	void AddAdvanceAction()
-	{
-		SCR_ChatPanelManager chatPanelManager = SCR_ChatPanelManager.GetInstance();
-		ChatCommandInvoker invoker = chatPanelManager.GetCommandInvoker("aar");
-		invoker.Insert(Advance_Callback);
-	}
-	
+	/**
+	 * Callback for advancing gamemode state
+	 */
 	void Advance_Callback(SCR_ChatPanel panel, string data)
 	{
-		m_RplToAuthorityManager.RequestAdvanceGamemodeState();
+		m_RplToAuthorityManager.RequestAdvanceGamemodeState(true);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// MAP MARKER SYSTEM
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Update map markers for objectives in Frontline gamemode
+	 * @param zoneStatus - Array of zone status strings
+	 * @param zoneObjectNames - Array of zone object names
+	 * @param bluforSide - Blue force faction key
+	 * @param opforSide - Opposing force faction key
+	 */
+	void UpdateMapMarkers(array<string> zoneStatus, array<string> zoneObjectNames, FactionKey bluforSide, FactionKey opforSide)
+	{
+		RemoveALLScriptedMarkers();
+
+		foreach (int i, string zoneName : zoneObjectNames)
+		{
+			string status = zoneStatus[i];
+			string imageTexture;
+			int imageColor;
+
+			// Parse zone status
+			array<string> zoneStatusArray = {};
+			status.Split(":", zoneStatusArray, false);
+
+			string zoneLocked = zoneStatusArray[1];
+			FactionKey zoneFactionStored = zoneStatusArray[2];
+
+			// Select image based on zone index
+			switch (i)
+			{
+				case 0: {imageTexture = "{21A2A457BD0E42C1}UI\Objectives\A.edds"; break; };
+				case 1: {imageTexture = "{7F4A8D140283CCCE}UI\Objectives\B.edds"; break; };
+				case 2: {imageTexture = "{8B42CA8C0F5EA4BA}UI\Objectives\C.edds"; break; };
+				case 3: {imageTexture = "{C29ADF937D98D0D0}UI\Objectives\D.edds"; break; };
+				case 4: {imageTexture = "{3692980B7045B8A4}UI\Objectives\E.edds"; break; };
+			}
+
+			// Add lock marker if zone is locked
+			if (zoneLocked == "Locked")
+				AddScriptedMarker(zoneName, "0 0 0", 0, "", "{91427B7866707601}UI\Objectives\lock.edds", 50, ARGB(255, 142, 142, 142));
+
+			// Set color based on controlling faction
+			switch (zoneFactionStored)
+			{
+				case bluforSide: {imageColor = ARGB(255, 0, 25, 225); break; }; // Blufor
+				case opforSide: {imageColor = ARGB(255, 225, 25, 0); break; }; // Opfor
+				default: {imageColor = ARGB(255, 225, 225, 225); break; }; // Uncaptured
+			}
+
+			// Add zone marker
+			AddScriptedMarker(zoneName, "0 0 0", 0, "", imageTexture, 45, imageColor);
+		}
+	}
+
+	/**
+	 * Returns the array of scripted markers
+	 * @return TStringArray - Array of scripted marker data strings
+	 */
+	TStringArray GetScriptedMarkersArray()
+	{
+		return m_aScriptedMarkers;
+	}
+
+	/**
+	 * Adds a scripted marker on the user's map
+	 * @param markerEntityName - Name of entity to track (or "Static Marker" for static position)
+	 * @param markerOffset - Position offset from entity or static position
+	 * @param timeDelay - Update frequency for entity tracking
+	 * @param markerText - Text displayed on map
+	 * @param markerImage - Image resource path
+	 * @param zOrder - Display order/priority
+	 * @param markerColor - ARGB color value
+	 */
+	void AddScriptedMarker(string markerEntityName, vector markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
+	{
+		m_aScriptedMarkers.Insert(string.Format("%1||%2||%3||%4||%5||%6||%7", 
+			markerEntityName, 
+			markerOffset.ToString(), 
+			timeDelay.ToString(), 
+			markerText, 
+			markerImage, 
+			zOrder.ToString(), 
+			markerColor.ToString()));
+	}
+
+	/**
+	 * Removes a specific scripted marker
+	 * @param markerEntityName - Name of entity tracked
+	 * @param markerOffset - Position offset
+	 * @param timeDelay - Update frequency
+	 * @param markerText - Text displayed
+	 * @param markerImage - Image resource path
+	 * @param zOrder - Display order/priority
+	 * @param markerColor - ARGB color value
+	 */
+	void RemoveScriptedMarker(string markerEntityName, vector markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
+	{
+		m_aScriptedMarkers.RemoveItemOrdered(string.Format("%1||%2||%3||%4||%5||%6||%7", 
+			markerEntityName, 
+			markerOffset.ToString(), 
+			timeDelay.ToString(), 
+			markerText, 
+			markerImage, 
+			zOrder.ToString(), 
+			markerColor.ToString()));
+	}
+
+	/**
+	 * Removes all scripted markers
+	 */
+	void RemoveALLScriptedMarkers()
+	{
+		m_aScriptedMarkers.Clear();
 	}
 }

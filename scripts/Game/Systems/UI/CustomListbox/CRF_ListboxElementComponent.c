@@ -204,16 +204,16 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 	//------------------------------------------------------------------------------------------------
 	
 	/**
-	 * Gets the military symbol UI component for the group
-	 * @return SCR_MilitarySymbolUIComponent instance or null if not found
+	 * Gets the ImageWidget for the group
+	 * @return ImageWidget instance or null if not found
 	 */
-	SCR_MilitarySymbolUIComponent GetGroupIcon()
+	ImageWidget GetGroupIcon()
 	{
-		Widget symbolOverlay = m_wRoot.FindAnyWidget("SymbolOverlay");
-		if (!symbolOverlay)
-			return null;
+		ImageWidget symbolImage = ImageWidget.Cast(m_wRoot.FindAnyWidget("SymbolImage"));
+		if (symbolImage)
+			return symbolImage;
 			
-		return SCR_MilitarySymbolUIComponent.Cast(symbolOverlay.FindHandler(SCR_MilitarySymbolUIComponent));
+		return null;
 	}
 	
 	/**
@@ -225,19 +225,6 @@ class CRF_ListBoxElementComponent: SCR_ListBoxElementComponent
 		ImageWidget roleImage = ImageWidget.Cast(m_wRoot.FindAnyWidget("RoleImage"));
 		if (roleImage)
 			roleImage.SetColor(color);
-	}
-	
-	/**
-	 * Gets the group widget
-	 * @return Widget for the group or null if not found
-	 */
-	Widget GetGroupWidget()
-	{
-		Widget widget = m_wRoot.FindAnyWidget("SymbolOverlay");
-		if (widget)
-			return widget;
-			
-		return null;
 	}
 	
 	/**

@@ -498,37 +498,37 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		m_iAliveCivSlots = 0;
 		
 		// Get slot data
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Count slots by faction
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
 		{
-			if(slotData.m_bIsLockedSlot || slotData.m_iSlotCurrentPlayerId == 0)
+			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
 				continue;
 			
-			switch(slotData.m_SlotFactionKey)
+			switch(slotData.GetSlotFactionKey())
 			{
 				case "BLUFOR":
 					m_iBluforSlots++;
-					if(!slotData.m_bIsDeadSlot)
+					if(!slotData.GetIsDeadSlot())
 						m_iAliveBluforSlots++;
 					break;
 					
 				case "OPFOR":
 					m_iOpforSlots++;
-					if(!slotData.m_bIsDeadSlot)
+					if(!slotData.GetIsDeadSlot())
 						m_iAliveOpforSlots++;
 					break;
 					
 				case "INDFOR":
 					m_iIndforSlots++;
-					if(!slotData.m_bIsDeadSlot)
+					if(!slotData.GetIsDeadSlot())
 						m_iAliveIndforSlots++;
 					break;
 					
 				case "CIV":
 					m_iCivSlots++;
-					if(!slotData.m_bIsDeadSlot)
+					if(!slotData.GetIsDeadSlot())
 						m_iAliveCivSlots++;
 					break;
 			}
@@ -561,7 +561,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		InitSlots();
 		
 		// Get slot data and groups
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
@@ -583,7 +583,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 			SetGroupVisuals(group, groupIndex);
 			
 			// Process each slot in the group
-			foreach(int slotId, ref CRF_SlotDataContainer slotData : slotMap)
+			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
 			{	
 				// Skip slots not in this group or faction
 				if (!IsSlotInGroupAndFaction(slotData, group))
@@ -609,10 +609,10 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 */
 	protected bool IsSlotInGroupAndFaction(CRF_SlotDataContainer slotData, SCR_AIGroup group)
 	{
-		if (slotData.m_iSlotCurrentGroup != RplComponent.Cast(group.FindComponent(RplComponent)).Id() 
-			|| slotData.m_bIsLockedSlot 
-			|| slotData.m_iSlotCurrentPlayerId == 0 
-			|| GetGame().GetFactionManager().GetFactionByKey(slotData.m_SlotFactionKey) != m_fSelectedFaction)
+		if (slotData.GetSlotCurrentGroup() != RplComponent.Cast(group.FindComponent(RplComponent)).Id() 
+			|| slotData.GetIsLockedSlot() 
+			|| slotData.GetSlotCurrentPlayerId() == 0 
+			|| GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
 			return false;
 			
 		return true;
@@ -623,14 +623,15 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 */
 	protected void SetGroupVisuals(SCR_AIGroup group, int groupIndex)
 	{
+		Color factionColor = group.GetFaction().GetFactionColor();
 		// Set group colors
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupWidget().SetColor(group.GetFaction().GetFactionColor());
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupUnderline().SetColor(group.GetFaction().GetFactionColor());
+		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupUnderline().SetColor(factionColor);
+		
+		if(group.GetFaction().GetFactionKey() == "INDFOR")
+			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().SetColor(factionColor);
 		
 		// Set group icon
-		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().Update(
-			SCR_GroupIdentityComponent.Cast(group.FindComponent(SCR_GroupIdentityComponent)).GetMilitarySymbol()
-		);
+		m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 	}
 	
 	/**
@@ -641,26 +642,26 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		CRF_ListBoxElementComponent elementComponent = m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex);
 		
 		// Handle player status (alive/dead/disconnected)
-		if(!slotData.m_bIsDeadSlot)
+		if(!slotData.GetIsDeadSlot())
 		{
-			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.m_iSlotCurrentPlayerId))
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.m_iSlotCurrentPlayerId));
+			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
 			else
 			{
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.m_iSlotCurrentPlayerId));
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
 				elementComponent.GetDisconnectWidget().SetVisible(true);
 			}
 		}		
 		else
 		{
-			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.m_iSlotCurrentPlayerId))
+			if(GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 			{
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.m_iSlotCurrentPlayerId));
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
 				elementComponent.GetDeathWidget().SetVisible(true);
 			}
 			else
 			{
-				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.m_iSlotCurrentPlayerId));
+				elementComponent.SetPlayerText(GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId()));
 				elementComponent.GetDisconnectWidget().SetVisible(true);
 				elementComponent.GetDeathWidget().SetVisible(true);
 			}

@@ -357,13 +357,13 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		// ALL SLOT-BASED CHARACTERS
 		//------------------------------------------------------------------------------------------------
 		
-		map<int, ref CRF_SlotDataContainer> tempMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
-		if (tempMap)
+		if (slotMap && !slotMap.IsEmpty())
 		{
-			foreach (int slotId, CRF_SlotDataContainer slotData : tempMap)
+			foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
 			{		
-				RplId slotRplId = slotData.m_iSlotCurrentCharacter;
+				RplId slotRplId = slotData.GetSlotCurrentCharacter();
 				
 				if(slotRplId != RplId.Invalid() && Replication.FindItem(slotRplId))
 				{
@@ -807,18 +807,18 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	void InitSlots()
 	{
 		// Get all slots from the slotting manager
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Process each slot to count by faction
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
 		{
 			// Skip locked or empty slots
-			if(slotData.m_bIsLockedSlot || slotData.m_iSlotCurrentPlayerId == 0)
+			if(slotData.GetIsLockedSlot() || slotData.GetSlotCurrentPlayerId() == 0)
 				continue;
 			
 			// Update counters based on faction
-			string factionKey = slotData.m_SlotFactionKey;
-			bool isAlive = !slotData.m_bIsDeadSlot;
+			string factionKey = slotData.GetSlotFactionKey();
+			bool isAlive = !slotData.GetIsDeadSlot();
 			
 			if (factionKey == "BLUFOR")
 			{
@@ -891,7 +891,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			m_iAliveCivSlots, m_iCivSlots);
 		
 		// Get slot and group data
-		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
@@ -915,18 +915,12 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			{
 				// Set group colors and icon
 				Color factionColor = group.GetFaction().GetFactionColor();
-				groupComponent.GetGroupWidget().SetColor(factionColor);
 				groupComponent.GetGroupUnderline().SetColor(factionColor);
 				
-				// Update group military symbol
-				SCR_GroupIdentityComponent identityComp = SCR_GroupIdentityComponent.Cast(
-					group.FindComponent(SCR_GroupIdentityComponent)
-				);
+				if(group.GetFaction().GetFactionKey() == "INDFOR")
+					groupComponent.GetGroupIcon().SetColor(factionColor);
 				
-				if (identityComp)
-				{
-					groupComponent.GetGroupIcon().Update(identityComp.GetMilitarySymbol());
-				}
+				groupComponent.GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
 			}
 			
 			// Get group ID
@@ -941,21 +935,21 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
 			{	
 				// Skip slots that don't belong to this group/faction
-				if (slotData.m_iSlotCurrentGroup != groupId || 
-					slotData.m_bIsLockedSlot || 
-					slotData.m_iSlotCurrentPlayerId == 0 || 
-					GetGame().GetFactionManager().GetFactionByKey(slotData.m_SlotFactionKey) != m_fSelectedFaction)
+				if (slotData.GetSlotCurrentGroup() != groupId || 
+					slotData.GetIsLockedSlot() || 
+					slotData.GetSlotCurrentPlayerId() == 0 || 
+					GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
 					continue;
 				
 				// Count dead players
-				if (slotData.m_bIsDeadSlot)
+				if (slotData.GetIsDeadSlot())
 				{
 					deadPlayersInGroup++;
 					continue;
 				}
 				
 				// Skip locked slots
-				if(slotData.m_bIsLockedSlot && slotData.m_iSlotCurrentPlayerId <= 0)
+				if(slotData.GetIsLockedSlot() && slotData.GetSlotCurrentPlayerId() <= 0)
 					continue;
 				
 				// Add slot to the UI
@@ -963,7 +957,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				CRF_ListBoxElementComponent slotComponent = m_wPlayerSlots.GetCRFElementComponent(slotIndex);
 				
 				// Count occupied slots
-				if (slotData.m_iSlotCurrentPlayerId > 0)
+				if (slotData.GetSlotCurrentPlayerId() > 0)
 					playersInGroup++;
 				
 				// Add click handler for spectating
@@ -973,15 +967,15 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				}
 				
 				// Set player name if slot is occupied
-				if (slotData.m_iSlotCurrentPlayerId > 0 && slotComponent)
+				if (slotData.GetSlotCurrentPlayerId() > 0 && slotComponent)
 				{
 					PlayerManager playerManager = GetGame().GetPlayerManager();
 					if (playerManager)
 					{
-						slotComponent.SetPlayerText(playerManager.GetPlayerName(slotData.m_iSlotCurrentPlayerId));
+						slotComponent.SetPlayerText(playerManager.GetPlayerName(slotData.GetSlotCurrentPlayerId()));
 						
 						// Show disconnected indicator if player is no longer connected
-						if (!playerManager.IsPlayerConnected(slotData.m_iSlotCurrentPlayerId))
+						if (!playerManager.IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 						{
 							slotComponent.GetDisconnectWidget().SetVisible(true);
 						}
@@ -1089,7 +1083,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		
 		// Find the entity associated with the slot and set it as the spectator target
-		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(slotData.m_iSlotCurrentCharacter));
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(slotData.GetSlotCurrentCharacter()));
 		if (rplComponent)
 		{
 			m_eSpecEntity = rplComponent.GetEntity();

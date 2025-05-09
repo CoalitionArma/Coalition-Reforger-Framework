@@ -6,9 +6,6 @@ class CRF_MenuManager : ScriptComponent
 	ref array<string> m_aVONChannels = {"Deafen|", "Global|"};
 
 	[RplProp()]
-	ref array<int> m_aPlayersRegistedVON = {};
-
-	[RplProp()]
 	int m_iChannelChanges = 0;
 	
 	ref array<int> m_aPlayersTalking = {};

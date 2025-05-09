@@ -1,19 +1,22 @@
-SCR_AIGroup : "{1782AE1B90B5A492}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevGI_p.et" {
- coords 1253.855 39 2844.473
- angleY 171.153
-}
 GenericEntity : "{91AC884B31EDEE23}Prefabs/Structures/FlagPoles/RespawnPoles/CIV_Respawn.et" {
  coords 1259.927 37.937 2822.596
-}
-SCR_AIGroup : "{ABEEBCE6A46B4148}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevSpecialist_p.et" {
- coords 1219.559 39 2839.134
- angleY 171.153
-}
-SCR_AIGroup : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
- coords 1243.557 39 2842.871
- angleY 171.153
 }
 SCR_AIGroup : "{F3B8D85C8756F89A}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevLeader_p.et" {
  coords 1229.859 39 2840.738
  angleY 171.153
+ {
+  SCR_AIGroup : "{1782AE1B90B5A492}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevGI_p.et" {
+   coords -24.285 0 0
+   {
+    SCR_AIGroup : "{ABEEBCE6A46B4148}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevSpecialist_p.et" {
+     coords 34.709 0 0.001
+     {
+      SCR_AIGroup : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
+       coords -24.287 0 -0.002
+      }
+     }
+    }
+   }
+  }
+ }
 }

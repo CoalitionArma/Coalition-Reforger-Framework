@@ -886,8 +886,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        SCR_CallsignInfo "{58B2B630FDD64B50}" {
         m_sCallsign "Cell 3"
        }
-       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
-       }
       }
       m_sCallsignGroupFormat "%3"
       m_sCallsignCharacterFormat "%1-%2%3%4"

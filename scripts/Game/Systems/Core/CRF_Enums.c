@@ -78,6 +78,10 @@ enum CRF_EGearRole
 	INDIRECT_LOADER,
 }
 
+//------------------------------------------------------------------------------------
+// Role helper class for the above Enums
+//------------------------------------------------------------------------------------
+
 class CRF_RoleHelper
 {
 	protected ref static array<string> roleFileStrings = {
@@ -197,4 +201,92 @@ class CRF_RoleHelper
 
 		return role;
 	}
+}
+
+//------------------------------------------------------------------------------------
+// Enumerations for game state tracking
+//------------------------------------------------------------------------------------
+
+enum CRF_EGamemodeState
+{
+	BRIEFING,   // Initial mission briefing phase
+	SLOTTING,   // Player role selection phase
+	GAME,       // Active gameplay phase
+	AAR         // After Action Report phase
+}
+
+enum CRF_ESlottingState
+{
+	LEADERSANDMEDICS,  // Only leaders and medics can select slots
+	SPECIALTIES,       // Specialist roles become available
+	EVERYONE           // All roles available to all players
+}
+
+//------------------------------------------------------------------------------------
+// Enumeration for group flag types
+//------------------------------------------------------------------------------------
+
+enum CRF_EFlagType
+{
+	INFANTRY = 0,
+	AMPHIBIOUS,
+	ANTI_AIR,
+	ANTI_AIR_ARTILLERY,
+	ANTI_ARMOR_MOTORIZED,
+	ANTI_ARMOR,
+	ARMORED,
+	ARTILLERY,
+	COMBINED,
+	HELICOPER,
+	ATTACK_HELICOPTER,
+	INFANTRY_AIR,
+	MACHINEGUN,
+	MAINTENANCE,
+	MEDICAL,
+	MORTAR,
+	MOTORIZED,
+	MOTORIZED_INFANTRY,
+	RECON,
+	RECON_MOTORIZED,
+	SIGNAL,
+	SNIPER,
+	SUPPLY_MOTORIZED,
+	UNDEFINED,
+}
+
+//------------------------------------------------------------------------------------
+// Enumeration for slot types
+//------------------------------------------------------------------------------------
+
+enum CRF_ESlotType
+{
+	REGULAR = 0,
+	LEADERORMEDIC,
+	SPECIALTY,
+}
+
+//------------------------------------------------------------------------------------
+// Enumeration for clothing types
+//------------------------------------------------------------------------------------
+
+enum CRF_EClothingType
+{
+	HEADGEAR = 0,
+	SHIRT,
+	ARMOREDVEST,
+	PANTS,
+	BOOTS,
+	BACKPACK,
+	VEST,
+	HANDWEAR,
+	HEAD,
+	EYES,
+	EARS,
+	FACE,
+	NECK,
+	EXTRA1,
+	EXTRA2,
+	WAIST,
+	EXTRA3,
+	EXTRA4,
 }

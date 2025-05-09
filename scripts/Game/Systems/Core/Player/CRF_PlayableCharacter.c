@@ -14,8 +14,6 @@ class CRF_PlayableCharacter : ScriptComponent
 	CRF_ESlotType m_SlottingRole;
 
 	protected bool m_bIsSlotSpawned = false;
-	protected bool m_bIsHidden = false;
-	protected bool m_bInitTime = false;
 	
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_SlottingManager m_SlottingManager;
@@ -31,24 +29,16 @@ class CRF_PlayableCharacter : ScriptComponent
 
 		if (!GetGame().InPlayMode() 
 		 || !m_Gamemode 
-		 || (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && m_Gamemode.EnableAIInGameState))
+		 || !m_bIsPlayable
+		 || (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && m_Gamemode.EnableAIInGameState && !CRF_GamemodeManager.IsSpectator(owner)))
 			return;
 
-		if (m_bIsPlayable)
-		{
-			// Get all managers we need
-			m_SlottingManager = CRF_SlottingManager.GetInstance();
-			m_PlayerControllerComponent = CRF_PlayerControllerComponent.GetInstance();
-			m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
-			
-			GetGame().GetCallqueue().CallLater(SetInitialEntity, 150, false, owner);
-		};
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetInitTime()
-	{
-		m_bInitTime = true;
+		// Get all managers we need
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
+		m_PlayerControllerComponent = CRF_PlayerControllerComponent.GetInstance();
+		m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
+		
+		GetGame().GetCallqueue().CallLater(SetInitialEntity, 100, false, owner);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -76,25 +66,19 @@ class CRF_PlayableCharacter : ScriptComponent
 		// Sets location and all the physics BS on all machines
 		if (isSpec)
 		{
-			GetGame().GetCallqueue().CallLater(SetInitTime, 5000, false);
-			
 			SetEventMask(owner, EntityEvent.FRAME);
 			owner.SetOrigin("0 10000 0");
 			
-			if (!m_bIsHidden)
+			Physics physics = owner.GetPhysics();
+			if (physics)
 			{
-				Physics physics = owner.GetPhysics();
-				if (physics)
+				physics.EnableGravity(false);
+				physics.ChangeSimulationState(SimulationState.NONE);
+				physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
+				for (int i = 0; i <= physics.GetNumGeoms(); i++)
 				{
-					physics.EnableGravity(false);
-					physics.ChangeSimulationState(SimulationState.NONE);
-					physics.SetInteractionLayer(EPhysicsLayerDefs.CharNoCollide);
-					for (int i = 0; i <= physics.GetNumGeoms(); i++)
-					{
-						physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
-					}
-					m_bIsHidden = true;
-				};
+					physics.SetGeomInteractionLayer(i, EPhysicsLayerDefs.CharNoCollide);
+				}
 			};
 		};
 	}
@@ -118,42 +102,41 @@ class CRF_PlayableCharacter : ScriptComponent
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFrame(owner, timeslice);
-
-		if (!owner || !GetGame().InPlayMode())
-		{
-			ClearEventMask(owner, EntityEvent.FRAME);
-			return;
-		};
-
-		if (!EntityUtils.IsPlayer(owner) && m_PossessingManagerComponent.GetIdFromMainEntity(owner) == 0 && RplSession.Mode() != RplMode.Client && m_bInitTime)
+		
+		if (RplSession.Mode() != RplMode.Client && !EntityUtils.IsPlayer(owner) && m_PossessingManagerComponent.GetIdFromMainEntity(owner) == 0)
 		{
 			ClearEventMask(owner, EntityEvent.FRAME);
 			SCR_EntityHelper.DeleteEntityAndChildren(owner);
 			return;
 		};
-
-		if (SCR_PlayerController.Cast(GetGame().GetPlayerController()).GetLocalControlledEntity() == owner)
+		
+		if (RplSession.Mode() != RplMode.Dedicated && SCR_PlayerController.GetLocalMainEntity() == owner)
 		{
-			if (m_PlayerControllerComponent.m_eCamera && m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-			{
-				vector mat[4];
-				m_PlayerControllerComponent.m_eCamera.GetTransform(mat);
-				mat[1] = vector.Up;
-				mat[2] = vector.Forward;
-				mat[3][1] = mat[3][1] - 1.5;
-				m_PlayerControllerComponent.UpdateEntityPos(mat);
-				m_PlayerControllerComponent.UpdateStoredCameraPos(mat);
-			} else {
-				vector mat[4];
-				mat[1] = vector.Up;
-				mat[2] = vector.Forward;
-				mat[3][1] = 10000;
-				m_PlayerControllerComponent.UpdateEntityPos(mat);
-
-				if (m_PlayerControllerComponent.m_eCamera)
+			if (m_PlayerControllerComponent.m_eCamera)
+			{		
+				if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+				{
+					vector mat[4];
+					m_PlayerControllerComponent.m_eCamera.GetWorldTransform(mat);
+					
+					if (GetGame().GetCallqueue().GetRemainingTime(m_PlayerControllerComponent.UpdateStoredCameraPos) <= 0)
+						GetGame().GetCallqueue().CallLater(m_PlayerControllerComponent.UpdateStoredCameraPos, 1000, false, mat[0], mat[1], mat[2], mat[3]);
+					
+					mat[3][1] = mat[3][1] - 1.5;
+					m_PlayerControllerComponent.UpdateEntityPos(mat);
+				} else {
+					vector mat[4];
+					mat[1] = vector.Up;
+					mat[2] = vector.Forward;
+					mat[3][1] = 10000;
+					m_PlayerControllerComponent.UpdateEntityPos(mat);
 					m_PlayerControllerComponent.m_eCamera.SetWorldTransform(mat);
+				};
 			};
-		};
+		} else {
+			ClearEventMask(owner, EntityEvent.FRAME);
+			return;
+		}
 
 		Physics physics = owner.GetPhysics();
 		if (physics)

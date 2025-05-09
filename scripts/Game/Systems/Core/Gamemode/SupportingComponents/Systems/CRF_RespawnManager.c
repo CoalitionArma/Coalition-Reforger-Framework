@@ -244,22 +244,18 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 
 		PlayerManager playerManager = GetGame().GetPlayerManager();
-		PrintFormat("[CRF] RespawnPlayer playerManager: %1",playerManager);
 		if (!playerManager)
 			return;
 
 		bool isPlayerConnected = playerManager.IsPlayerConnected(playerId);
-		PrintFormat("[CRF] RespawnPlayer isPlayerConnected: %1",isPlayerConnected);
 		if (!isPlayerConnected)
 			return;
 
 		FactionKey factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId).GetFactionKey();
-		PrintFormat("[CRF] RespawnPlayer factionKey: %1",factionKey);
 		if (factionKey.IsEmpty())
 			return;
 		
 		vector finalSpawnLocation = vector.Zero;
-		PrintFormat("[CRF] RespawnPlayer initialSpawnLocation: %1",finalSpawnLocation);
 
 		// Find spawn location if not provided
 		if (spawnLocation == vector.Zero)
@@ -287,7 +283,8 @@ class CRF_RespawnManager : ScriptComponent
 		// If no spawn location found, enter spectator mode
 		if (spawnLocation == vector.Zero)
 		{
-			m_GamemodeManager.EnterSpectator(playerId);
+			m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), true);
+			m_GamemodeManager.InitilizePlayer(playerId);
 			return;
 		}
 
@@ -295,6 +292,7 @@ class CRF_RespawnManager : ScriptComponent
 		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, spawnLocation, 10);
 		
 		// Respawn the player
+		m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), false);
 		m_GamemodeManager.InitilizePlayer(playerId, finalSpawnLocation);
 	}
 }

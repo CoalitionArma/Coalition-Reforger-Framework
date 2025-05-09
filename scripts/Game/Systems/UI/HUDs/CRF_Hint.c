@@ -106,7 +106,6 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 			// Widget is fully transparent, clean up resources
 			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
 			delete m_wMainWidget;
-			delete this;
 		}
 	}
 }

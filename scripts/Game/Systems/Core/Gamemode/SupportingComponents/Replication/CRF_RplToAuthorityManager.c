@@ -66,10 +66,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void RequestAdvanceGamemodeState()
+	void RequestAdvanceGamemodeState(bool overriden)
 	{
 		if(SCR_Global.IsAdmin())
-			Rpc(RpcAsk_RequestAdvanceGamemodeState);
+			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -242,9 +242,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	//Communicates to server to advance state
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestAdvanceGamemodeState()
+	protected void RpcAsk_RequestAdvanceGamemodeState(bool overriden)
 	{
-		m_Gamemode.AdvanceGamemodeState();
+		m_Gamemode.AdvanceGamemodeState(overriden);
 	}
 	
 	//Communicates to server to advance the slotting phase
