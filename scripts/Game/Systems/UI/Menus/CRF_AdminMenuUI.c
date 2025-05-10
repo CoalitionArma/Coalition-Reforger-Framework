@@ -436,7 +436,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
 		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
 		SCR_ButtonTextComponent menuButton3 = GetMenuButton("MenuButton3");
-		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3)
+		SCR_ButtonTextComponent menuButton4 = GetMenuButton("MenuButton4");
+		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
 			return;
 		
 		// Setup button event handlers
@@ -445,6 +446,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		menuButton1.m_OnClicked.Insert(AddLeaderRadio);
 		menuButton2.m_OnClicked.Insert(AddGIRadio);
 		menuButton3.m_OnClicked.Insert(AddBinos);
+		menuButton4.m_OnClicked.Insert(AddMap);
 		
 		// Setup selection change handler
 		playerList.m_OnChanged.Insert(UpdateDefaultGear);
@@ -604,6 +606,30 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Get binoculars prefab and add item
 		string binosPrefab = GetBinos(playerId);
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, binosPrefab, true);
+	}
+	
+	/**
+	* Adds map to selected player
+	*/
+	void AddMap()
+	{
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		//Add map
+		string mapPrefab = "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et";
+		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, mapPrefab, true);
 	}
 
 	/**

@@ -293,5 +293,36 @@ FrameWidgetClass {
     }
    }
   }
+  ButtonWidgetClass "{6554032D1F5A040C}" {
+   Name "MenuButton4"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 24
+    OffsetLeft 24
+    PositionY -196
+    OffsetTop -196
+    SizeX 144.51
+    OffsetRight -168.51
+    SizeY 30
+    OffsetBottom 166
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName "MenuButton3"
+    }
+   }
+   {
+    TextWidgetClass "{6554032D1F5A040D}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add Map"
+     "Font Size" 17
+     "Min Font Size" 13
+    }
+   }
+  }
  }
 }
