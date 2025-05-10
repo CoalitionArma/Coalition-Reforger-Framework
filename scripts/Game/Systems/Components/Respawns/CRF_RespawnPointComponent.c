@@ -7,9 +7,10 @@ class CRF_RespawnPointComponent: ScriptComponent
 	
 	[Attribute("", uiwidget: UIWidgets.ComboBox, enums: {ParamEnum("", ""), ParamEnum("BLUFOR", "BLUFOR"), ParamEnum("OPFOR", "OPFOR"), ParamEnum("INDFOR", "INDFOR"), ParamEnum("CIV", "CIV")})]
 	string m_sRespawnPointFaction;
+
+	[Attribute("Base", "auto", "Nickname for the respawn point.")]
+	string m_sRespawnPointName;
 	
-	[Attribute("1", "auto", "")]
-	int m_iRespawnPointPriority;
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
@@ -30,9 +31,9 @@ class CRF_RespawnPointComponent: ScriptComponent
 			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(owner);
 	};
 	
-	void SetRespawnPointPriority(int priority)
+	string GetRespawnNickname()
 	{
-		m_iRespawnPointPriority = priority;
+		return m_sRespawnPointName;
 	}
 	
 	void SetRespawnActiveState(bool active)

@@ -155,24 +155,35 @@ class CRF_RespawnManager : ScriptComponent
 	void RespawnTimer()
 	{
 		// Decrease the respawn timer
-		m_iRespawnTimer--;
+		if (m_iRespawnTimer > 0)
+			m_iRespawnTimer--;
 
 		// Check if timer has expired or we're in AAR state
 		if (m_iRespawnTimer <= 0 || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR)
 		{
-			// Reset the timer
-			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-			// Only perform respawn if not in AAR state
-			if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR)
+			// Check if Respawn Screen is open
+			MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+			if (topMenu.IsInherited(CRF_RespawnMenu))
 			{
-				CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
-				GetGame().GetCallqueue().Remove(MenuFuckOff);
-				GetGame().GetMenuManager().CloseAllMenus();
+				// Check if respawn selection was confirmed in the UI
+				CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
+				if (respawnMenuUI.m_RespawnSelected)
+				{
+					// Reset the timer
+					m_iRespawnTimer = m_iRespawnWaveCurrentTime;
+					// Only perform respawn if not in AAR state
+					if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.AAR)
+					{
+						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
+						GetGame().GetCallqueue().Remove(MenuFuckOff);
+						GetGame().GetMenuManager().CloseAllMenus();
+					}
+		
+					// Remove this timer function from the callqueue
+					GetGame().GetCallqueue().Remove(RespawnTimer);
+					return;
+				}
 			}
-
-			// Remove this timer function from the callqueue
-			GetGame().GetCallqueue().Remove(RespawnTimer);
-			return;
 		}
 
 		// Get current top menu
@@ -199,6 +210,25 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		if (m_aRespawnPoints.Find(respawnPoint) != -1)
 			m_aRespawnPoints.Remove(m_aRespawnPoints.Find(respawnPoint));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<IEntity> GetFactionSpawnpoints(FactionKey faction)
+	{
+		array<IEntity> sideRespawnPoints = {};
+		
+		int playerID = GetGame().GetPlayerController().GetPlayerId();
+		
+		foreach(IEntity point : m_aRespawnPoints)
+		{
+			CRF_RespawnPointComponent respawnPointComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+			if (!point || respawnPointComponent.m_sRespawnPointFaction != faction || !respawnPointComponent.m_bActiveRespawnPoint)
+					continue;
+			
+			sideRespawnPoints.Insert(point)
+		}
+		
+		return sideRespawnPoints;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -258,26 +288,11 @@ class CRF_RespawnManager : ScriptComponent
 		vector finalSpawnLocation = vector.Zero;
 
 		// Find spawn location if not provided
-		if (spawnLocation == vector.Zero)
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu.IsInherited(CRF_RespawnMenu))
 		{
-			foreach (IEntity spawnPoint : m_aRespawnPoints)
-			{
-				if (spawnPoint == null)
-					continue;
-
-				CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent));
-				if (!respawnComponent)
-					continue;
-
-				if (respawnComponent.m_sRespawnPointFaction != factionKey)
-					continue;
-
-				if (!respawnComponent.m_bActiveRespawnPoint)
-					continue;
-
-				spawnLocation = spawnPoint.GetOrigin();
-				break;
-			}
+			CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
+			spawnLocation = respawnMenuUI.m_eSelectedRespawnEntity.GetOrigin()
 		}
 
 		// If no spawn location found, enter spectator mode

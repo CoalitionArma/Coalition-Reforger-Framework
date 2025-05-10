@@ -16,6 +16,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected Widget m_wRoot;
 	protected SCR_MapEntity m_MapEntity;
 	protected SCR_ChatPanel m_ChatPanel;
+	protected ref array<IEntity> m_aRespawnPoints = {};
+	protected OverlayWidget m_wSpawnListRoot;
+	protected SCR_ListBoxComponent m_wSpawnListBox;
+	protected SCR_ButtonTextComponent m_bConfirmSpawnButton;
+	
+	bool m_RespawnSelected = false;
+	IEntity m_eSelectedRespawnEntity;
 	
 	/**
 	 * Updates the respawn timer display on the UI
@@ -47,6 +54,9 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Set up chat panel
 		InitializeChatPanel();
+		
+		// Set up Respawn Selection
+		InitializeSpawnpointSelection();
 	}
 	
 	/**
@@ -55,6 +65,38 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected void InitializeMap()
 	{
 		GetGame().GetCallqueue().CallLater(OpenMapWithConfig, 100);
+	}
+	
+	/**
+	 * Populate the respawn selection with avaible spawn point to the player
+	 */
+	protected void InitializeSpawnpointSelection()
+	{
+		// Setup UI elements 
+		m_wSpawnListRoot = OverlayWidget.Cast(GetRootWidget().FindAnyWidget("List1Box"));
+		m_wSpawnListBox = SCR_ListBoxComponent.Cast(m_wSpawnListRoot.FindHandler(SCR_ListBoxComponent));
+		m_bConfirmSpawnButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", GetRootWidget());
+		
+		// Setup list update event handlers 
+		m_wSpawnListBox.m_OnChanged.Insert(UpdateSpawnSelection);
+		
+		// Setup button event handlers
+		m_bConfirmSpawnButton.m_OnClicked.Insert(ToggleSpawnSelection);
+		
+		int playerID = GetGame().GetPlayerController().GetPlayerId();
+		
+		FactionKey factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
+
+		// Populates spawnpoints list with players faction spawns entites
+		foreach(IEntity point : CRF_RespawnManager.GetInstance().GetFactionSpawnpoints(factionKey))
+		{ 
+			CRF_RespawnPointComponent respawnPointComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+			if (!respawnPointComponent)
+				continue;
+			
+			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName);
+			m_aRespawnPoints.Insert(point);
+		}
 	}
 	
 	/**
@@ -281,5 +323,48 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected void OpenPauseMenu()
 	{
 		ArmaReforgerScripted.OpenPauseMenu();
+	}
+	
+	/**
+	 * Pans the map to the selected respawn point and stores it
+	 */
+	void UpdateSpawnSelection()
+	{
+		PanMapToSpawnPoint(m_aRespawnPoints[m_wSpawnListBox.GetSelectedItem()]);
+		
+		m_eSelectedRespawnEntity = m_aRespawnPoints[m_wSpawnListBox.GetSelectedItem()];
+	}
+	
+	/**
+	 * Pans the map to a entity
+	 * @param Entity to pan too
+	 */
+	void PanMapToSpawnPoint(IEntity spawnpoint)
+	{
+		if (spawnpoint)
+		{
+			vector wPos = spawnpoint.GetOrigin();
+			int screenX, screenY;
+			
+			SCR_MapEntity.GetMapInstance().WorldToScreen(wPos[0], wPos[2], screenX, screenY);
+			SCR_MapEntity.GetMapInstance().ZoomPanSmooth(0.5, screenX, screenY);
+		}
+	}
+	
+	/**
+	 * Update the spawn selection button in the UI and set it state for use in respawn timer
+	 */
+	void ToggleSpawnSelection()
+	{
+		if (m_RespawnSelected)
+		{
+			m_RespawnSelected = false;
+			TextWidget.Cast(m_bConfirmSpawnButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Select Spawn");
+		}
+		else
+		{
+			m_RespawnSelected = true;
+			TextWidget.Cast(m_bConfirmSpawnButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Cancel Selection");
+		}
 	}
 }
