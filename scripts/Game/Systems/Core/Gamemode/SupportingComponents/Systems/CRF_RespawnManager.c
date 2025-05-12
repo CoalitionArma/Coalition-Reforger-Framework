@@ -217,14 +217,22 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		array<IEntity> sideRespawnPoints = {};
 		
-		int playerID = GetGame().GetPlayerController().GetPlayerId();
-		
 		foreach(IEntity point : m_aRespawnPoints)
 		{
-			CRF_RespawnPointComponent respawnPointComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
-			if (!point || respawnPointComponent.m_sRespawnPointFaction != faction || !respawnPointComponent.m_bActiveRespawnPoint)
-					continue;
-			
+			if (point == null)
+				continue;
+
+			CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+
+			if (!respawnComponent)
+				continue;
+
+			if (respawnComponent.m_sRespawnPointFaction != faction)
+				continue;
+
+			if (!respawnComponent.m_bActiveRespawnPoint)
+				continue;
+
 			sideRespawnPoints.Insert(point)
 		}
 		

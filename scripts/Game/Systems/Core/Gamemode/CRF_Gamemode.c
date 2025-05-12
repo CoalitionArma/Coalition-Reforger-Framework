@@ -436,6 +436,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
+			!m_RespawnManager.GetFactionSpawnpoints(factionKey).IsEmpty() &&
 			!factionKey.IsEmpty())
 		{
 			// Deduct ticket
