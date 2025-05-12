@@ -296,7 +296,7 @@ class CRF_RespawnManager : ScriptComponent
 
 		// Find spawn location if not provided
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-		if (topMenu.IsInherited(CRF_RespawnMenu))
+		if (topMenu.IsInherited(CRF_RespawnMenu) && spawnLocation == vector.Zero)
 		{
 			CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
 			spawnLocation = respawnMenuUI.m_eSelectedRespawnEntity.GetOrigin()
