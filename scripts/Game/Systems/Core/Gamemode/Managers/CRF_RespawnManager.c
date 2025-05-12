@@ -131,7 +131,6 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 
 		m_iRespawnWaveCurrentTime--;
-		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
 		
 
 		if (m_iRespawnWaveCurrentTime == 0)
