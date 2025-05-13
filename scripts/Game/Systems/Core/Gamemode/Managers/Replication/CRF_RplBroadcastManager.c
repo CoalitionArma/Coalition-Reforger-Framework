@@ -66,16 +66,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SendAdminChatMessage(string data, string playerName)
-	{
-		#ifdef WORKBENCH
-		RpcDo_SendAdminChatMessage(data, playerName);
-		#else
-		Rpc(RpcDo_SendAdminChatMessage, data, playerName);
-		#endif
-	}
-	
-	//------------------------------------------------------------------------------------------------
 	void CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		#ifdef WORKBENCH
@@ -198,43 +188,37 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
 			return;
 		
-		// Check if its a new ticket and let admins know
-		if (!m_AdminMenuManager.isNewTicket(playerID))
-		{
-			PlayerController pc = GetGame().GetPlayerController();
-			if (!pc)
-				return;
-			SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
-			if (!chatComponent)
-				return;
-			
-			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
-			
-			chatComponent.ShowMessage(string.Format("%1 has created a ticket", playerName));
-		}
-		
-		// Create a new ticket or/and add reply to exsisting ticket
-		m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_SendAdminChatMessage(string data, string playerName)
-	{
-		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
-			return;
-		
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
 		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc)
-			return;
+				if (!pc)
+					return;
 		
 		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
 		if (!chatComponent)
 			return;
-		
-		chatComponent.ShowMessage(string.Format("Admin - %1: %2 ", playerName, data));
-	}
 
+		// if its a admin just show the message in chat
+		if (SCR_Global.IsAdmin(playerID) || m_GamemodeManager.IsModerator(playerID))
+		{
+			// Don't double show message
+			if (GetGame().GetPlayerController().GetPlayerId() == playerID)
+				return;
+			
+			chatComponent.ShowMessage(string.Format("Admin - %1: %2", playerName, data));
+		}
+		else
+		{
+			// Check if its a new ticket and let admins know
+			if (!m_AdminMenuManager.isNewTicket(playerID))
+			{	
+				chatComponent.ShowMessage(string.Format("%1 has created a ticket", playerName));
+			}
+			
+			// Create a new ticket or/and add reply to exsisting ticket
+			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
+		}
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
