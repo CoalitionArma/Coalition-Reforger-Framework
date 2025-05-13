@@ -1,0 +1,28 @@
+SizeLayoutWidgetClass {
+ Name "ListBoxSeparator"
+ Slot LayoutSlot "{566C9403E050B643}" {
+  Padding 38 26 32 14
+ }
+ {
+  OverlayWidgetClass "{65534CABA8E6943C}" {
+   Name "overlay"
+   Slot LayoutSlot "{5669114AD1419455}" {
+   }
+   {
+    TextWidgetClass "{65534CABA8E6943F}" : "{E64DA8292CD7DBDD}UI/layouts/WidgetLibrary/TextWidgets/Text_InteractiveSmall.layout" {
+     Name "Text"
+     Slot OverlayWidgetSlot "{566C94041707B23A}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     "Font Size" 20
+     "Min Font Size" 16
+     Wrap 1
+     FontProperties FontProperties "{546AF489DFD25402}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+   }
+  }
+ }
+}

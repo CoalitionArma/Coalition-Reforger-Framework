@@ -1,70 +1,178 @@
 FrameWidgetClass {
  Name "CoalAdminMenu"
  {
+  FrameWidgetClass "{6539136FAE0907A8}" {
+   Name "BackGround"
+   Slot FrameWidgetSlot "{6539136FAE0907B3}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -915.493
+    OffsetLeft -915.493
+    PositionY -518.61
+    OffsetTop -518.61
+    SizeX 1829.18
+    OffsetRight -913.682
+    SizeY 1036.66
+    OffsetBottom -518.05
+   }
+   {
+    ImageWidgetClass "{65437E23AC46C727}" {
+     Name "BackgroundGrey0"
+     Slot FrameWidgetSlot "{62993E1190D14ACD}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX 330.296
+      OffsetLeft 330.296
+      PositionY -459.25
+      OffsetTop -459.25
+      SizeX 3.117
+      OffsetRight -333.413
+      SizeY 932.92
+      OffsetBottom -473.67
+     }
+     "Z Order" 1
+     Color 0.0155 0.0175 0.0212 1
+     "Inherit Color" 1
+     Size 3840 2160
+    }
+    ImageWidgetClass "{653913731E4DFCC9}" {
+     Name "BackgroundGrey1"
+     Slot FrameWidgetSlot "{62993E1190D14ACD}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX -858.77
+      OffsetLeft -858.77
+      PositionY -459
+      OffsetTop -459
+      SizeX 42.556
+      OffsetRight 816.214
+      SizeY 935.294
+      OffsetBottom -476.294
+     }
+     "Z Order" -1
+     Color 0.0088 0.0101 0.0116 1
+     "Inherit Color" 1
+     Size 3840 2160
+    }
+    ImageWidgetClass "{6539137069ED0B92}" {
+     Name "BackgroundGrey2"
+     Slot FrameWidgetSlot "{62993E1190D14ACD}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX -816.167
+      OffsetLeft -816.167
+      PositionY -458.93
+      OffsetTop -458.93
+      SizeX 1674.76
+      OffsetRight -858.595
+      SizeY 935.294
+      OffsetBottom -476.364
+     }
+     Color 0.0062 0.0071 0.008 1
+     "Inherit Color" 1
+     Size 3840 2160
+    }
+    ImageWidgetClass "{629B0EA4159A25BD}" {
+     Name "BackgroundGrey"
+     Slot FrameWidgetSlot "{62993E1190D14ACD}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX -858.812
+      OffsetLeft -858.812
+      PositionY -498.575
+      OffsetTop -498.575
+      SizeX 1717.41
+      OffsetRight -858.602
+      SizeY 39.597
+      OffsetBottom 458.978
+     }
+     "Z Order" -1
+     Color 0.0155 0.0175 0.0212 1
+     "Inherit Color" 1
+     Size 3840 2160
+    }
+    ImageWidgetClass "{65437E23D8943397}" {
+     Name "BackgroundGrey3"
+     Slot FrameWidgetSlot "{62993E1190D14ACD}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX -484.528
+      OffsetLeft -484.5
+      PositionY -459.899
+      OffsetTop -459.9
+      SizeX 3.117
+      OffsetRight 481.4
+      SizeY 932.92
+      OffsetBottom -473
+     }
+     "Z Order" 1
+     Color 0.0155 0.0175 0.0212 1
+     "Inherit Color" 1
+     Size 3840 2160
+    }
+   }
+  }
+  HorizontalLayoutWidgetClass "{6539137F060DBD62}" {
+   Name "HorizontalLayout0"
+   Slot FrameWidgetSlot "{645911A60CD1185E}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -850.864
+    OffsetLeft -850.864
+    PositionY 46.5
+    OffsetTop 46.5
+    SizeX 547.881
+    OffsetRight 302.983
+    SizeY 27.337
+    OffsetBottom -73.837
+   }
+   {
+    TextWidgetClass "{6539137F060DBD63}" {
+     Name "MenuTitle"
+     Slot LayoutSlot "{6482C9A2A85AFDA9}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+     }
+     "Z Order" 2
+     Text "Admin Menu - "
+     "Font Size" 100
+     "Vertical Alignment" Center
+    }
+    TextWidgetClass "{6539137F060DBD60}" {
+     Name "MenuSubTitle"
+     Slot LayoutSlot "{6482C9A2A85AFD87}" {
+      HorizontalAlign 1
+      VerticalAlign 1
+     }
+     "Z Order" 2
+     Text "Respawn"
+     "Font Size" 100
+     "Vertical Alignment" Center
+    }
+   }
+  }
   BlurWidgetClass "{62993E11696492B0}" {
    Name "Blur"
    Slot FrameWidgetSlot "{62993E1169649355}" {
     Anchor 0 0 1 1
-    PositionX 0
-    OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
+    PositionX -2.842
+    OffsetLeft -2.842
+    PositionY 0.144
+    OffsetTop 0.144
     SizeX 0
-    OffsetRight 0
+    OffsetRight 2.842
     SizeY 0
-    OffsetBottom 0
+    OffsetBottom -0.144
    }
    "Z Order" -5
    "Inherit Color" 1
    Intensity 0.5
   }
-  ImageWidgetClass "{62993E1190D14A29}" {
-   Name "Background"
-   Slot FrameWidgetSlot "{62993E1190D14ACD}" {
-    Anchor 0.5 0.5 0.5 0.5
-    PositionX -572.188
-    OffsetLeft -572.188
-    PositionY -216.468
-    OffsetTop -216.468
-    SizeX 632.612
-    OffsetRight -60.424
-    SizeY 460.366
-    OffsetBottom -243.898
-   }
-   "Inherit Color" 1
-   Texture "{B98FB2CD75200E57}UI/Textures/MainMenu/MenuBackgroundBlank_UI.edds"
-   Size 3840 2160
-  }
-  ImageWidgetClass "{629B0EA4159A25BD}" {
-   Name "BackgroundGrey"
-   Slot FrameWidgetSlot "{62993E1190D14ACD}" {
-    Anchor 0.5 0.5 0.5 0.5
-    PositionX -586.007
-    OffsetLeft -586.007
-    PositionY -231.054
-    OffsetTop -231.054
-    SizeX 659.492
-    OffsetRight -73.484
-    SizeY 488.771
-    OffsetBottom -257.717
-   }
-   "Z Order" -1
-   Color 0.045 0.045 0.045 1
-   "Inherit Color" 1
-   Size 3840 2160
-  }
   FrameWidgetClass "{629952529F52E65C}" {
    Name "AdminMenu"
    Slot FrameWidgetSlot "{62992E44DCFB7A61}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -590.144
-    OffsetLeft -590.144
-    PositionY -261.764
-    OffsetTop -261.764
-    SizeX 670.285
-    OffsetRight -80.141
-    SizeY 524.226
-    OffsetBottom -262.462
+    PositionX -859.631
+    OffsetLeft -859.631
+    PositionY -458.654
+    OffsetTop -458.654
+    SizeX 53.475
+    OffsetRight 806.156
+    SizeY 934.896
+    OffsetBottom -476.242
    }
    "Z Order" 1
    {
@@ -72,171 +180,197 @@ FrameWidgetClass {
      Name "RespawnButton"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       Anchor 0 0 0 0
-      PositionX 4.069
-      OffsetLeft 4.069
-      PositionY 0.771
-      OffsetTop 0.771
-      SizeX 99.999
-      OffsetRight -104.068
-      SizeY 30
-      OffsetBottom -30.771
+      PositionX 1.009
+      OffsetLeft 1.009
+      PositionY 136.132
+      OffsetTop 136.132
+      SizeX 42.501
+      OffsetRight -43.51
+      SizeY 34.139
+      OffsetBottom -170.271
      }
      "Z Order" 2
-     Color 0.045 0.045 0.045 1
+     Color 0.587 0.587 0.587 0
      components {
       SCR_ButtonTextComponent "{62993E179FB21E0C}" {
+       m_bMouseOverToFocus 1
        m_bCanBeToggled 1
        m_bIsToggled 1
       }
      }
      {
-      TextWidgetClass "{62992E47026EB420}" {
-       Name "RespawnText"
+      ImageWidgetClass "{62992E47026EB420}" {
+       Name "RespawnImage"
        Slot ButtonWidgetSlot "{62992E47026EB4C4}" {
        }
        Clipping False
-       Text "Respawn Menu"
-       "Font Size" 15
-       "Min Font Size" 15
-       FontProperties FontProperties "{629B0EA7E315402C}" {
-        OutlineSize 4
-       }
+       Texture "{B547588B1CEBEC1D}UI/Textures/DamageState/damageState-unconscious.edds"
+       Size 64 64
       }
      }
     }
-    ButtonWidgetClass "{62995252BAAE9785}" {
-     Name "ResetGearButton"
+    ButtonWidgetClass "{65391377DFDBD335}" {
+     Name "TicketButton"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 105.545
-      OffsetLeft 105.545
-      PositionY 0.741
-      OffsetTop 0.741
-      SizeX 100.001
-      OffsetRight -205.546
-      SizeY 30
-      OffsetBottom -30.741
+      Anchor 0 0 0 0
+      PositionX 0.956
+      OffsetLeft 0.956
+      PositionY -0.428
+      OffsetTop -0.428
+      SizeX 42.501
+      OffsetRight -43.457
+      SizeY 34.138
+      OffsetBottom -33.71
      }
-     Color 0.045 0.045 0.045 1
+     "Z Order" 2
+     Color 0.587 0.587 0.587 0
      components {
-      SCR_ButtonTextComponent "{629B0EA6BE25C8A5}" {
+      SCR_ButtonTextComponent "{62993E179FB21E0C}" {
+       m_bMouseOverToFocus 1
        m_bCanBeToggled 1
+       m_bIsToggled 1
       }
      }
      {
-      TextWidgetClass "{62995252BAAE9787}" {
-       Name "ResetGearText"
-       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+      ImageWidgetClass "{65391377DFDBD332}" {
+       Name "TicketImage"
+       Slot ButtonWidgetSlot "{62992E47026EB4C4}" {
        }
        Clipping False
-       Color 0.172 0.172 0.172 1
-       Text "Reset Gear Menu"
-       "Font Size" 14
-       "Min Font Size" 14
-       FontProperties FontProperties "{629B0EA7F3E8BCED}" {
-        OutlineSize 4
-       }
+       Texture "{D60115A396FDC473}UI/Textures/Editor/ContentBrowser/ContentBrowser_Theme_Houses.edds"
+       Size 32 32
       }
      }
     }
-    ButtonWidgetClass "{629EAEB9D17067E3}" {
+    ButtonWidgetClass "{65391374E1360F82}" {
      Name "TeleportButton"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 207.129
-      OffsetLeft 207.129
-      PositionY 0.741
-      OffsetTop 0.741
-      SizeX 100.001
-      OffsetRight -307.13
-      SizeY 30
-      OffsetBottom -30.741
+      Anchor 0 0 0 0
+      PositionX 0.856
+      OffsetLeft 0.856
+      PositionY 67.953
+      OffsetTop 67.953
+      SizeX 42.501
+      OffsetRight -43.357
+      SizeY 34.138
+      OffsetBottom -102.091
      }
-     Color 0.045 0.045 0.045 1
+     "Z Order" 2
+     Color 0.587 0.587 0.587 0
      components {
-      SCR_ButtonTextComponent "{629B0EA6BE25C8A5}" {
+      SCR_ButtonTextComponent "{62993E179FB21E0C}" {
+       m_bMouseOverToFocus 1
        m_bCanBeToggled 1
+       m_bIsToggled 1
       }
      }
      {
-      TextWidgetClass "{629EAEB9D170679D}" {
-       Name "TeleportText"
-       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+      ImageWidgetClass "{65391374E1360F83}" {
+       Name "TeleportImage"
+       Slot ButtonWidgetSlot "{62992E47026EB4C4}" {
        }
        Clipping False
-       Color 0.172 0.172 0.172 1
-       Text "Teleport Menu"
-       "Font Size" 14
-       "Min Font Size" 14
-       FontProperties FontProperties "{629B0EA7F3E8BCED}" {
-        OutlineSize 4
-       }
+       Texture "{F0E0F66182733D39}UI/Textures/Editor/ContextMenu/ContextAction_Teleport_Player.edds"
+       Size 32 32
       }
      }
     }
-    ButtonWidgetClass "{62A13CE5DCB3951E}" {
+    ButtonWidgetClass "{6539137A00F098C3}" {
      Name "HintButton"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 308.797
-      OffsetLeft 308.797
-      PositionY 0.741
-      OffsetTop 0.741
-      SizeX 100.001
-      OffsetRight -408.798
-      SizeY 30
-      OffsetBottom -30.741
+      Anchor 0 0 0 0
+      PositionX 0.839
+      OffsetLeft 0.839
+      PositionY 170.224
+      OffsetTop 170.224
+      SizeX 42.502
+      OffsetRight -43.341
+      SizeY 34.138
+      OffsetBottom -204.362
      }
-     Color 0.045 0.045 0.045 1
+     "Z Order" 2
+     Color 0.587 0.587 0.587 0
      components {
-      SCR_ButtonTextComponent "{629B0EA6BE25C8A5}" {
+      SCR_ButtonTextComponent "{62993E179FB21E0C}" {
+       m_bMouseOverToFocus 1
        m_bCanBeToggled 1
+       m_bIsToggled 1
       }
      }
      {
-      TextWidgetClass "{62A13CE5DCB39518}" {
-       Name "HintText"
-       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+      ImageWidgetClass "{6539137A00F098C0}" {
+       Name "HealImage"
+       Slot ButtonWidgetSlot "{62992E47026EB4C4}" {
        }
        Clipping False
-       Color 0.172 0.172 0.172 1
-       Text "Hint Menu"
-       "Font Size" 14
-       "Min Font Size" 14
-       FontProperties FontProperties "{629B0EA7F3E8BCED}" {
-        OutlineSize 4
-       }
+       Texture "{DAD5433E63B93061}UI/Textures/MainMenu/Icons/EventNotification_64x_UI.edds"
+       Size 32 32
       }
      }
     }
-    ButtonWidgetClass "{62E57BE02FE32C1B}" {
+    ButtonWidgetClass "{6539137859009F8D}" {
      Name "HealButton"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 410.578
-      OffsetLeft 410.578
-      PositionY 0.7
-      OffsetTop 0.7
-      SizeX 100
-      OffsetRight -510.578
-      SizeY 30
-      OffsetBottom -30.7
+      Anchor 0 0 0 0
+      PositionX 0.944
+      OffsetLeft 0.944
+      PositionY 102.084
+      OffsetTop 102.084
+      SizeX 42.501
+      OffsetRight -43.445
+      SizeY 34.138
+      OffsetBottom -136.222
      }
-     Color 0.045 0.045 0.045 1
+     "Z Order" 2
+     Color 0.587 0.587 0.587 0
      components {
-      SCR_ButtonTextComponent "{629B0EA6BE25C8A5}" {
+      SCR_ButtonTextComponent "{62993E179FB21E0C}" {
+       m_bMouseOverToFocus 1
        m_bCanBeToggled 1
+       m_bIsToggled 1
       }
      }
      {
-      TextWidgetClass "{62E57BE02FE32C1A}" {
-       Name "HealText"
-       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+      ImageWidgetClass "{6539137859009F8B}" {
+       Name "HealImage"
+       Slot ButtonWidgetSlot "{62992E47026EB4C4}" {
        }
        Clipping False
-       Color 0.172 0.172 0.172 1
-       Text "Heal Menu"
-       "Font Size" 14
-       "Min Font Size" 14
-       FontProperties FontProperties "{629B0EA7F3E8BCED}" {
-        OutlineSize 4
+       Texture "{D1EF2B3A1BCA4F48}UI/Textures/Notifications/Notification_Heal_Self.edds"
+       Size 32 32
+      }
+     }
+    }
+    ButtonWidgetClass "{6539136BAAB20B38}" {
+     Name "ResetGearButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0 0 0 0
+      PositionX 0.956
+      OffsetLeft 0.956
+      PositionY 33.768
+      OffsetTop 33.768
+      SizeX 42.501
+      OffsetRight -43.457
+      SizeY 34.138
+      OffsetBottom -67.906
+     }
+     "Z Order" 2
+     Color 0.587 0.587 0.587 0
+     components {
+      SCR_ButtonTextComponent "{62993E179FB21E0C}" {
+       m_bMouseOverToFocus 1
+       m_bCanBeToggled 1
+       m_bIsToggled 1
+      }
+     }
+     {
+      ImageWidgetClass "{6539136BAAB20B39}" {
+       Name "ResetGearImage"
+       Slot ButtonWidgetSlot "{62992E47026EB4C4}" {
        }
+       Clipping False
+       Texture "{71648F15B3984B87}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_AssaultRifles.edds"
+       Size 64 64
       }
      }
     }
@@ -246,42 +380,42 @@ FrameWidgetClass {
    Name "AdminMenuTools"
    Slot FrameWidgetSlot "{62992E44DCFB7A61}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -572.291
-    OffsetLeft -572.291
-    PositionY -216.589
-    OffsetTop -216.589
-    SizeX 633.298
-    OffsetRight -61.007
-    SizeY 461.02
-    OffsetBottom -244.431
+    PositionX -816
+    OffsetLeft -816
+    PositionY -460
+    OffsetTop -460
+    SizeX 1662.13
+    OffsetRight -846.132
+    SizeY 924.282
+    OffsetBottom -464.282
    }
    "Z Order" 1
    {
     WindowWidgetClass "{62A27DD4085F87B3}" {
      Name "Window0"
      Slot FrameWidgetSlot "{62A27DD4085F87AF}" {
-      PositionX 322.65
-      OffsetLeft 322.65
-      PositionY 196.09
-      OffsetTop 196.09
-      SizeX 293.594
-      OffsetRight -616.244
+      PositionX 688
+      OffsetLeft 688
+      PositionY 64
+      OffsetTop 64
+      SizeX 293.6
+      OffsetRight -981.6
       SizeY 184.941
-      OffsetBottom -381.031
+      OffsetBottom -248.941
      }
      Color 0.456 0.456 0.456 1
     }
     MultilineEditBoxWidgetClass "{62A13CE446740F9F}" {
      Name "EditBox1"
      Slot FrameWidgetSlot "{62A13CE4379A61C0}" {
-      PositionX 322.214
-      OffsetLeft 322.214
-      PositionY 198.499
-      OffsetTop 198.499
-      SizeX 283.474
-      OffsetRight -605.688
-      SizeY 175.325
-      OffsetBottom -373.824
+      PositionX 688
+      OffsetLeft 688
+      PositionY 72
+      OffsetTop 72
+      SizeX 283.47
+      OffsetRight -971.47
+      SizeY 175.326
+      OffsetBottom -247.326
      }
      Text ""
      "Min Font Size" 12
@@ -289,48 +423,46 @@ FrameWidgetClass {
     EditBoxWidgetClass "{650AE2D863BE6C79}" {
      Name "EditBox2"
      Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
-      PositionX 6.946
-      OffsetLeft 6.946
-      PositionY 37.394
-      OffsetTop 37.394
-      SizeX 135.546
-      OffsetRight -142.492
-      SizeY 21.948
-      OffsetBottom -59.341
+      PositionX 16
+      OffsetLeft 16
+      PositionY 16
+      OffsetTop 16
+      SizeX 252.078
+      OffsetRight -268.078
+      SizeY 41.277
+      OffsetBottom -57.277
      }
-     style Editor
-     "Font Size" 12
+     "Font Size" 20
      "Use placeholder text" 1
      "Placeholder text" "Search for player..."
     }
-    EditBoxWidgetClass "{650AE2F18B66FD78}" {
+    EditBoxWidgetClass "{653B7AC462C13E27}" {
      Name "EditBox3"
      Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
-      PositionX 171.838
-      OffsetLeft 171.838
-      PositionY 37.394
-      OffsetTop 37.394
-      SizeX 135.546
-      OffsetRight -307.384
-      SizeY 21.948
-      OffsetBottom -59.341
+      PositionX 352
+      OffsetLeft 352
+      PositionY 16
+      OffsetTop 16
+      SizeX 252.1
+      OffsetRight -604.1
+      SizeY 41.3
+      OffsetBottom -57.3
      }
-     style Editor
-     "Font Size" 12
+     "Font Size" 20
      "Use placeholder text" 1
      "Placeholder text" "Search for player..."
     }
     OverlayWidgetClass "{629B0EC9C1E06499}" {
      Name "List1Overlay"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
-      PositionX 16.767
-      OffsetLeft 16.767
+      PositionX 16
+      OffsetLeft 16
       PositionY 64
       OffsetTop 64
-      SizeX 135.701
-      OffsetRight -152.468
-      SizeY 313.2
-      OffsetBottom -377.2
+      SizeX 293.405
+      OffsetRight -309.405
+      SizeY 849.013
+      OffsetBottom -913.013
      }
      {
       OverlayWidgetClass "{629B0EBE315316D8}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
@@ -339,6 +471,12 @@ FrameWidgetClass {
         HorizontalAlign 3
         VerticalAlign 3
         Padding 0 20 0 0
+       }
+       {
+        ImageWidgetClass "{5DB6D18100D38307}" {
+         Prefab "{5DB6D18100D38307}"
+         "Is Visible" 0
+        }
        }
       }
       TextWidgetClass "{629B0EC922D5409E}" {
@@ -360,92 +498,63 @@ FrameWidgetClass {
       }
      }
     }
-    OverlayWidgetClass "{629B0EC96E66041B}" {
+    OverlayWidgetClass "{653B7AC53D1A43A9}" {
      Name "List2Overlay"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
-      PositionX 171.702
-      OffsetLeft 171.702
+      PositionX 352
+      OffsetLeft 352
       PositionY 64
       OffsetTop 64
-      SizeX 135.701
-      OffsetRight -307.403
-      SizeY 313.2
-      OffsetBottom -377.2
+      SizeX 293.4
+      OffsetRight -645.4
+      SizeY 849
+      OffsetBottom -913
      }
      {
-      TextWidgetClass "{629B0ECB708C4A23}" {
-       Name "List2Text"
-       Slot OverlayWidgetSlot "{629B0E95AABBF938}" {
-        VerticalAlign 0
-        Padding -4.8 0 0 0
-       }
-       Clipping False
-       Text ""
-       "Font Size" 20
-       "Min Font Size" 20
-       "Horizontal Alignment" Right
-       FontProperties FontProperties "{629B0EA7CC86E41F}" {
-        OutlineSize 4
-       }
-      }
-      OverlayWidgetClass "{629B0EC96E660414}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+      OverlayWidgetClass "{653B7AC53D1A43A6}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
        Name "List2Box"
-       Slot OverlayWidgetSlot "{629B0EC8C4FFC9DC}" {
+       Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
         HorizontalAlign 3
         VerticalAlign 3
         Padding 0 20 0 0
        }
+       {
+        ImageWidgetClass "{5DB6D18100D38307}" {
+         Prefab "{5DB6D18100D38307}"
+         "Is Visible" 0
+        }
+       }
       }
-     }
-    }
-    OverlayWidgetClass "{629B0EC8DE26D2F0}" {
-     Name "List3Overlay"
-     Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
-      PositionX 324.723
-      OffsetLeft 324.723
-      PositionY 64
-      OffsetTop 64
-      SizeX 135.7
-      OffsetRight -460.423
-      SizeY 313.2
-      OffsetBottom -377.2
-     }
-     {
-      TextWidgetClass "{629B0ECB4F3131DE}" {
-       Name "List3Text"
-       Slot OverlayWidgetSlot "{629B0ECB4F31310F}" {
+      TextWidgetClass "{653B7AC53D1A43A4}" {
+       Name "List2Text"
+       Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
         VerticalAlign 0
         Padding -9 0 0 0
        }
        Clipping False
        Text ""
        "Font Size" 20
-       "Min Font Size" 20
-       FontProperties FontProperties "{629B0EA7C8B13331}" {
+       "Min Font Size" 10
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{629B0EA7D0E4BF47}" {
         OutlineSize 4
        }
-      }
-      OverlayWidgetClass "{629B0EC8C4FFC92F}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-       Name "List3Box"
-       Slot OverlayWidgetSlot "{629B0EC8C4FFC9DC}" {
-        HorizontalAlign 3
-        VerticalAlign 3
-        Padding 0 20 0 0
-       }
+       Offset 0 0
       }
      }
     }
     OverlayWidgetClass "{629B0EC9510827B7}" {
      Name "List4Overlay"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
-      PositionX 477.107
-      OffsetLeft 477.107
-      PositionY 64
-      OffsetTop 64
-      SizeX 135.7
-      OffsetRight -612.807
-      SizeY 313.2
-      OffsetBottom -377.2
+      PositionX 352
+      OffsetLeft 352
+      PositionY 328
+      OffsetTop 328
+      SizeX 791.232
+      OffsetRight -1143.23
+      SizeY 589.716
+      OffsetBottom -917.716
      }
      {
       TextWidgetClass "{629B0ECB41124E87}" {
@@ -469,22 +578,28 @@ FrameWidgetClass {
         VerticalAlign 3
         Padding 0 20 0 0
        }
+       {
+        ImageWidgetClass "{5DB6D18100D38307}" {
+         Prefab "{5DB6D18100D38307}"
+         "Is Visible" 0
+        }
+       }
       }
      }
     }
     ButtonWidgetClass "{62992E447709F42C}" {
      Name "ActionButton"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 263.388
-      OffsetLeft 263.388
-      PositionY 398.126
-      OffsetTop 398.126
+      PositionX 784
+      OffsetLeft 784
+      PositionY 256
+      OffsetTop 256
       SizeX 100.001
-      OffsetRight -363.389
-      SizeY 30
-      OffsetBottom -428.126
+      OffsetRight -884.001
+      SizeY 29.999
+      OffsetBottom -285.999
      }
-     Color 0.045 0.045 0.045 1
+     Color 0.013 0.0152 0.0176 1
      components {
       SCR_ButtonTextComponent "{62993E178E05DA3C}" {
        m_bCanBeToggled 1
@@ -505,16 +620,16 @@ FrameWidgetClass {
     ButtonWidgetClass "{629E34C3CC9B2EA5}" {
      Name "MenuButton1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 477.349
-      OffsetLeft 477.349
-      PositionY 65.51
-      OffsetTop 65.51
-      SizeX 144.5
-      OffsetRight -621.849
+      PositionX 992
+      OffsetLeft 992
+      PositionY 88
+      OffsetTop 88
+      SizeX 144.51
+      OffsetRight -1136.51
       SizeY 30
-      OffsetBottom -95.51
+      OffsetBottom -118
      }
-     Color 0.045 0.045 0.045 1
+     Color 0.013 0.0152 0.0176 1
      components {
       SCR_ButtonTextComponent "{62993E178E05DA3C}" {
        m_bCanBeToggled 1
@@ -535,16 +650,16 @@ FrameWidgetClass {
     ButtonWidgetClass "{629E34C3B3808949}" {
      Name "MenuButton2"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 477.349
-      OffsetLeft 477.349
-      PositionY 105.51
-      OffsetTop 105.51
-      SizeX 144.5
-      OffsetRight -621.849
+      PositionX 992
+      OffsetLeft 992
+      PositionY 120
+      OffsetTop 120
+      SizeX 144.51
+      OffsetRight -1136.51
       SizeY 30
-      OffsetBottom -135.51
+      OffsetBottom -150
      }
-     Color 0.045 0.045 0.045 1
+     Color 0.013 0.0152 0.0176 1
      components {
       SCR_ButtonTextComponent "{62993E178E05DA3C}" {
        m_bCanBeToggled 1
@@ -565,16 +680,16 @@ FrameWidgetClass {
     ButtonWidgetClass "{629E34C3B187E591}" {
      Name "MenuButton3"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 477.349
-      OffsetLeft 477.349
-      PositionY 145.51
-      OffsetTop 145.51
-      SizeX 144.5
-      OffsetRight -621.849
+      PositionX 992
+      OffsetLeft 992
+      PositionY 152
+      OffsetTop 152
+      SizeX 144.49
+      OffsetRight -1136.49
       SizeY 30
-      OffsetBottom -175.51
+      OffsetBottom -182
      }
-     Color 0.045 0.045 0.045 1
+     Color 0.013 0.0152 0.0176 1
      components {
       SCR_ButtonTextComponent "{62993E178E05DA3C}" {
        m_bCanBeToggled 1
@@ -595,16 +710,16 @@ FrameWidgetClass {
     ButtonWidgetClass "{629E34C3B06C6E86}" {
      Name "MenuButton4"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 477.349
-      OffsetLeft 477.349
-      PositionY 185.51
-      OffsetTop 185.51
-      SizeX 144.5
-      OffsetRight -621.849
+      PositionX 992
+      OffsetLeft 992
+      PositionY 184
+      OffsetTop 184
+      SizeX 144.51
+      OffsetRight -1136.51
       SizeY 30
-      OffsetBottom -215.51
+      OffsetBottom -214
      }
-     Color 0.045 0.045 0.045 1
+     Color 0.013 0.0152 0.0176 1
      components {
       SCR_ButtonTextComponent "{62993E178E05DA3C}" {
        m_bCanBeToggled 1
@@ -622,50 +737,20 @@ FrameWidgetClass {
       }
      }
     }
-    ButtonWidgetClass "{650AE2D16EB71916}" {
-     Name "SearchButton2"
-     Slot FrameWidgetSlot "{62992E477A603216}" {
-      Anchor 0 0 0 0
-      PositionX 307.388
-      OffsetLeft 307.388
-      PositionY 37.376
-      OffsetTop 37.376
-      SizeX 23.043
-      OffsetRight -330.431
-      SizeY 21.987
-      OffsetBottom -59.362
-     }
-     Color 0.045 0.045 0.045 1
-     components {
-      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
-       m_bCanBeToggled 1
-       m_sTextWidgetName ""
-      }
-     }
-     {
-      ImageWidgetClass "{650AE2D16EB71912}" {
-       Name "ActionButtonText"
-       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
-       }
-       Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
-       Size 50 100
-      }
-     }
-    }
     ButtonWidgetClass "{650AE2F1D670A839}" {
      Name "SearchButton1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       Anchor 0 0 0 0
-      PositionX 142.493
-      OffsetLeft 142.493
-      PositionY 37.376
-      OffsetTop 37.376
-      SizeX 23.043
-      OffsetRight -165.536
-      SizeY 21.987
-      OffsetBottom -59.362
+      PositionX 272
+      OffsetLeft 272
+      PositionY 16
+      OffsetTop 16
+      SizeX 38.891
+      OffsetRight -310.891
+      SizeY 41.419
+      OffsetBottom -57.419
      }
-     Color 0.045 0.045 0.045 1
+     Color 0.013 0.0152 0.0176 1
      components {
       SCR_ButtonTextComponent "{62993E178E05DA3C}" {
        m_bCanBeToggled 1
@@ -678,7 +763,126 @@ FrameWidgetClass {
        Slot ButtonWidgetSlot "{62992E44F11398F5}" {
        }
        Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
-       Size 50 100
+       Size 25 25
+      }
+     }
+    }
+    ButtonWidgetClass "{653B7AC4C172FCF4}" {
+     Name "SearchButton2"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0 0 0 0
+      PositionX 608
+      OffsetLeft 608
+      PositionY 16
+      OffsetTop 16
+      SizeX 38.9
+      OffsetRight -646.9
+      SizeY 41.4
+      OffsetBottom -57.4
+     }
+     Color 0.013 0.0152 0.0176 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      ImageWidgetClass "{653B7AC4C172FCF5}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
+       Size 25 25
+      }
+     }
+    }
+    OverlayWidgetClass "{653B7AC58DA513F9}" {
+     Name "List3Overlay"
+     Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+      PositionX 688
+      OffsetLeft 688
+      PositionY 64
+      OffsetTop 64
+      SizeX 293.4
+      OffsetRight -981.4
+      SizeY 849
+      OffsetBottom -913
+     }
+     {
+      OverlayWidgetClass "{653B7AC58DA513F6}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "List3Box"
+       Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 0 20 0 0
+       }
+       {
+        ImageWidgetClass "{5DB6D18100D38307}" {
+         Prefab "{5DB6D18100D38307}"
+         "Is Visible" 0
+        }
+       }
+      }
+      TextWidgetClass "{653B7AC58DA513F4}" {
+       Name "List3Text"
+       Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+        VerticalAlign 0
+        Padding -9 0 0 0
+       }
+       Clipping False
+       Text ""
+       "Font Size" 20
+       "Min Font Size" 10
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+        OutlineSize 4
+       }
+       Offset 0 0
+      }
+     }
+    }
+    OverlayWidgetClass "{65437E3D636CF331}" {
+     Name "List5Overlay"
+     Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+      PositionX 1168
+      OffsetLeft 1168
+      PositionY 472
+      OffsetTop 472
+      SizeX 493.17
+      OffsetRight -1661.17
+      SizeY 449.882
+      OffsetBottom -921.882
+     }
+     {
+      TextWidgetClass "{65437E3D636CF30F}" {
+       Name "List5Text"
+       Slot OverlayWidgetSlot "{629B0ECB4F31310F}" {
+        VerticalAlign 0
+        Padding -9 0 0 0
+       }
+       Clipping False
+       Text ""
+       "Font Size" 20
+       "Min Font Size" 20
+       FontProperties FontProperties "{629B0EA7C5D80E42}" {
+        OutlineSize 4
+       }
+      }
+      OverlayWidgetClass "{65437E3D636CF30D}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "List5Box"
+       Slot OverlayWidgetSlot "{629B0EC8C4FFC9DC}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 0 20 0 0
+       }
+       {
+        ImageWidgetClass "{5DB6D18100D38307}" {
+         Prefab "{5DB6D18100D38307}"
+         "Is Visible" 0
+        }
+       }
       }
      }
     }
@@ -688,14 +892,14 @@ FrameWidgetClass {
    Name "ChatHud"
    Slot FrameWidgetSlot "{58731DB272499DED}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX 81.267
-    OffsetLeft 81.267
-    PositionY -215.404
-    OffsetTop -215.404
+    PositionX 345.66
+    OffsetLeft 345.66
+    PositionY -456.806
+    OffsetTop -456.806
     SizeX 506.825
-    OffsetRight -588.092
+    OffsetRight -852.485
     SizeY 457.191
-    OffsetBottom -241.787
+    OffsetBottom -0.385
    }
    {
     OverlayWidgetClass "{585F053862A9FD1C}" {
@@ -731,41 +935,6 @@ FrameWidgetClass {
      }
     }
    }
-  }
-  ImageWidgetClass "{650AE2C11B5EFDB1}" {
-   Name "Background0"
-   Slot FrameWidgetSlot "{62993E1190D14ACD}" {
-    Anchor 0.5 0.5 0.5 0.5
-    PositionX 78.423
-    OffsetLeft 78.423
-    PositionY -216.856
-    OffsetTop -216.856
-    SizeX 513.13
-    OffsetRight -591.552
-    SizeY 461.718
-    OffsetBottom -244.862
-   }
-   "Inherit Color" 1
-   Texture "{B98FB2CD75200E57}UI/Textures/MainMenu/MenuBackgroundBlank_UI.edds"
-   Size 3840 2160
-  }
-  ImageWidgetClass "{650AE2C11B5C60DB}" {
-   Name "BackgroundGrey0"
-   Slot FrameWidgetSlot "{62993E1190D14ACD}" {
-    Anchor 0.5 0.5 0.5 0.5
-    PositionX 73.406
-    OffsetLeft 73.406
-    PositionY -231.078
-    OffsetTop -231.078
-    SizeX 537.324
-    OffsetRight -610.73
-    SizeY 488.906
-    OffsetBottom -257.828
-   }
-   "Z Order" -1
-   Color 0.045 0.045 0.045 1
-   "Inherit Color" 1
-   Size 3840 2160
   }
  }
 }

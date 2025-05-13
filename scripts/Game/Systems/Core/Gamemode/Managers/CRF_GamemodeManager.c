@@ -15,6 +15,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_SafestartManager m_SafestartManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
+	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
 	//------------------------------------------------------------------------------------------------
 	static CRF_GamemodeManager GetInstance()
@@ -37,6 +38,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
+		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
 	};
 	
 	//------------------------------------------------------------------------------------------------

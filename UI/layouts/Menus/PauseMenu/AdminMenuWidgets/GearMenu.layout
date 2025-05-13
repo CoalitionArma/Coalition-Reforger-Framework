@@ -1,0 +1,328 @@
+FrameWidgetClass {
+ Name "templateFrame"
+ {
+  FrameWidgetClass "{654F4E3489E389FE}" {
+   Name "MenuSlot1"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    PositionX 496
+    OffsetLeft 496
+    PositionY 88
+    OffsetTop 88
+    SizeX 784
+    OffsetRight -1280
+    SizeY 928
+    OffsetBottom -1016
+   }
+   "Is Enabled" 0
+  }
+  FrameWidgetClass "{654F4E3489E389FC}" {
+   Name "MenuSlot0"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -808
+    OffsetLeft -808
+    PositionY -452
+    OffsetTop -452
+    SizeX 320
+    OffsetRight 488
+    SizeY 928
+    OffsetBottom -476
+   }
+   "Is Enabled" 0
+  }
+  OverlayWidgetClass "{654F4E36BD895958}" {
+   Name "RoleList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -448
+    OffsetLeft -448
+    PositionY -388
+    OffsetTop -388
+    SizeX 464
+    OffsetRight -16
+    SizeY 849.01
+    OffsetBottom -461.01
+   }
+   {
+    OverlayWidgetClass "{654F4E36BD895959}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "RoleListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{654F4E36BD895957}" {
+     Name "RoleListTitle0"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Roles"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  OverlayWidgetClass "{654F4E36BD89581F}" {
+   Name "PlayerList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -388
+    OffsetTop -388
+    SizeX 293.405
+    OffsetRight 498.595
+    SizeY 849.01
+    OffsetBottom -461.01
+   }
+   {
+    OverlayWidgetClass "{654F4E36BD89581C}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{654F4E36BD8945D0}" {
+     Name "PlayerListTitle0"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Player List"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  EditBoxWidgetClass "{654F4E36BD89426B}" {
+   Name "SearchBox0"
+   Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -436
+    OffsetTop -436
+    SizeX 252.078
+    OffsetRight 539.922
+    SizeY 41.277
+    OffsetBottom 394.723
+   }
+   "Font Size" 20
+   "Use placeholder text" 1
+   "Placeholder text" "Search for player..."
+  }
+  ButtonWidgetClass "{654F4E36BD894335}" {
+   Name "SearchButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -536
+    OffsetLeft -536
+    PositionY -436
+    OffsetTop -436
+    SizeX 38.891
+    OffsetRight 497.109
+    SizeY 41.419
+    OffsetBottom 394.581
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    ImageWidgetClass "{654F4E36BD8911A6}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
+     Size 25 25
+    }
+   }
+  }
+  ButtonWidgetClass "{654F4E36BD891134}" {
+   Name "MenuButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 24
+    OffsetLeft 24
+    PositionY -356
+    OffsetTop -356
+    SizeX 144.51
+    OffsetRight -168.51
+    SizeY 30
+    OffsetBottom 326
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{654F4E36BD8698A5}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Reset Gear"
+     "Font Size" 15
+     "Min Font Size" 13
+    }
+   }
+  }
+  ButtonWidgetClass "{654F4E36BD869B09}" {
+   Name "MenuButton1"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 24
+    OffsetLeft 24
+    PositionY -316
+    OffsetTop -316
+    SizeX 144.51
+    OffsetRight -168.51
+    SizeY 30
+    OffsetBottom 286
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{654F4E36BD869B0A}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add Leader Radio"
+     "Font Size" 15
+     "Min Font Size" 13
+    }
+   }
+  }
+  ButtonWidgetClass "{654F4E36BD869BC9}" {
+   Name "MenuButton2"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 24
+    OffsetLeft 24
+    PositionY -276
+    OffsetTop -276
+    SizeX 144.51
+    OffsetRight -168.51
+    SizeY 30
+    OffsetBottom 246
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{654F4E36BD86AB25}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add GI Radio"
+     "Font Size" 17
+     "Min Font Size" 13
+    }
+   }
+  }
+  ButtonWidgetClass "{654F4E3E048239F4}" {
+   Name "MenuButton3"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 24
+    OffsetLeft 24
+    PositionY -236
+    OffsetTop -236
+    SizeX 144.51
+    OffsetRight -168.51
+    SizeY 30
+    OffsetBottom 206
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName "MenuButton3"
+    }
+   }
+   {
+    TextWidgetClass "{654F4E3E048239F5}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add Binos"
+     "Font Size" 17
+     "Min Font Size" 13
+    }
+   }
+  }
+  ButtonWidgetClass "{6554032D1F5A040C}" {
+   Name "MenuButton4"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 24
+    OffsetLeft 24
+    PositionY -196
+    OffsetTop -196
+    SizeX 144.51
+    OffsetRight -168.51
+    SizeY 30
+    OffsetBottom 166
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName "MenuButton3"
+    }
+   }
+   {
+    TextWidgetClass "{6554032D1F5A040D}" {
+     Name "MenuButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Add Map"
+     "Font Size" 17
+     "Min Font Size" 13
+    }
+   }
+  }
+ }
+}

@@ -3,6 +3,8 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  components {
   CRF_GamemodeManager "{652A3313EC014E7F}" {
    components {
+    CRF_AdminMenuManager "{6544E589C41BEFA8}" {
+    }
     CRF_GearscriptManager "{652A3313EF7B772C}" {
     }
     CRF_MenuManager "{652A3313EB733550}" {
