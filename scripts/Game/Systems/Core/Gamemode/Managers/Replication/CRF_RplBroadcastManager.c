@@ -307,7 +307,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (playerId != -1 && SCR_PlayerController.GetLocalPlayerId() != playerId)
 			return;
 		
-		if (!factionKey.IsEmpty() && !SCR_FactionManager.SGetLocalPlayerFaction() && (SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction()).GetFactionKey() != factionKey))
+		if (!SCR_FactionManager.SGetLocalPlayerFaction())
+			return;
+
+		if (!factionKey.IsEmpty() && (SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction()).GetFactionKey() != factionKey))
 			return;
 
 		Widget widget;
