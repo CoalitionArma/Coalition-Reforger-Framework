@@ -105,7 +105,7 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		
 			// Schedule delayed initialization of player-specific settings
 			GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 100, false);
-			GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 2750, false);
+			GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
 		};
 		
 		if (IsSpectator)
@@ -274,13 +274,18 @@ class CRF_PlayerControllerComponent : ScriptComponent
 		}
 
 		// Set up Voice over Network component
+		SCR_VONController vc = SCR_VONController.Cast(pc.FindComponent(SCR_VONController));
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(entity.FindComponent(SCR_VoNComponent));
+		
 		von.SetTransmitRadio(grpTsv);
 
 		// Set up platoon radio if available
 		BaseTransceiver pltTsv = radio.GetTransceiver(1);
 		if (pltTsv)
 			von.SetTransmitRadio(pltTsv);
+		
+		vc.PublicResetVON();
+		vc.SetVONComponent(von);
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -74,10 +74,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{1A0942D44F1CE80B}Configs/Gearscripts/Standard/Modern/CRF_GS_CAD.conf"
  }
+ m_bRespawnEnabled 1
  m_bWaveRespawn 1
  m_iTimeToRespawn 15
+ m_iBLUFORTickets 1
+ m_iOPFORTickets 1
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6554C78FA795BE2C" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{61500924662B6062}" {

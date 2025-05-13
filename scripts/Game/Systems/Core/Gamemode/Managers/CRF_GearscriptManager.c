@@ -64,7 +64,7 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void SetupAddGearToEntity(IEntity entity, ResourceName resourceNameToScan)
+	void SetEntityGear(IEntity entity, ResourceName resourceNameToScan)
 	{
 		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
 			return;
@@ -122,13 +122,7 @@ class CRF_GearscriptManager : ScriptComponent
 			SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
 
-		// ADD CLOTHING/WEAPONS/ITEMS
-		GetGame().GetCallqueue().CallLater(AddGearToEntity, m_RNG.RandInt(125, 250), false, entity, role, gearScriptResourceName, gearScriptSettings, inventory, inventoryManager);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	protected void AddGearToEntity(IEntity entity, int role, ResourceName gearScriptResourceName, CRF_GearScriptContainer gearScriptSettings, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
-	{
+		// GET CLOTHING/WEAPONS/ITEMS
 		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearScriptResourceName).GetResource().ToBaseContainer()));
 
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
@@ -566,6 +560,17 @@ class CRF_GearscriptManager : ScriptComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
 				continue;
 			};
+			
+			if (isThrowable)
+			{
+				bool spawned = inventoryManager.TrySpawnPrefabToStorage(item, null, -1, EStoragePurpose.PURPOSE_WEAPON_PROXY);
+				if(!spawned)
+					InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isAssistant, isThrowable);
+				else 
+					SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
+				
+				continue;
+			};
 
 			if (inventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
 			{
@@ -575,22 +580,6 @@ class CRF_GearscriptManager : ScriptComponent
 			};
 
 			InsertInventoryItem(resourceSpawned, inventory, inventoryManager, role, isAssistant, isThrowable);
-
-			if (isThrowable)
-			{
-				CharacterGrenadeSlotComponent grenadeSlot = CharacterGrenadeSlotComponent.Cast(inventoryManager.GetOwner().FindComponent(CharacterGrenadeSlotComponent));
-
-				if (grenadeSlot && !grenadeSlot.GetWeaponEntity())
-				{
-					if (WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE)
-					{
-						grenadeSlot.SetWeapon(resourceSpawned);
-					} else {
-						if (WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_SMOKEGRENADE && !grenadeSlot.GetWeaponEntity())
-							grenadeSlot.SetWeapon(resourceSpawned);
-					};
-				};
-			};
 		}
 	}
 

@@ -110,6 +110,16 @@ class CRF_PlayableCharacter : ScriptComponent
 			return;
 		};
 		
+		Physics physics = owner.GetPhysics();
+		if (physics)
+		{
+			physics.EnableGravity(false);
+			physics.SetVelocity(vector.Zero);
+			physics.SetAngularVelocity(vector.Zero);
+			physics.SetMass(0);
+			physics.SetDamping(1, 1);
+		};
+		
 		if (RplSession.Mode() != RplMode.Dedicated && SCR_PlayerController.GetLocalMainEntity() == owner)
 		{
 			if (m_PlayerControllerComponent.m_eCamera)
@@ -134,18 +144,8 @@ class CRF_PlayableCharacter : ScriptComponent
 				};
 			};
 		} else {
-			ClearEventMask(owner, EntityEvent.FRAME);
-			return;
-		}
-
-		Physics physics = owner.GetPhysics();
-		if (physics)
-		{
-			physics.EnableGravity(false);
-			physics.SetVelocity(vector.Zero);
-			physics.SetAngularVelocity(vector.Zero);
-			physics.SetMass(0);
-			physics.SetDamping(1, 1);
+			if (RplSession.Mode() != RplMode.Dedicated)
+				ClearEventMask(owner, EntityEvent.FRAME);
 		};
 	}
 }

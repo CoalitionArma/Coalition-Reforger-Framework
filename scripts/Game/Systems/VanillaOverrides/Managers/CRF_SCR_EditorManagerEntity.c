@@ -171,7 +171,7 @@ modded class SCR_EditorManagerEntity
 					return;
 				
 				// Initialize spectator camera if player is spectating
-				bool isSpectator = CRF_GamemodeManager.IsSpectator();
+				bool isSpectator = CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalMainEntity());
 				bool isSameEntity = SCR_PlayerController.GetLocalControlledEntity() == SCR_PlayerController.GetLocalMainEntity();
 				
 				if (isSpectator && isSameEntity)

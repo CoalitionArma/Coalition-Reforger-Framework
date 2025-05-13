@@ -97,19 +97,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("0", "auto", "", category: "CRF Gamemode Respawn")]
 	bool m_bWaveRespawn;
 
-	[Attribute("300", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Gamemode Respawn")]
+	[Attribute("60", UIWidgets.EditBox, "Time To Respawn in Seconds", category: "CRF Gamemode Respawn")]
 	int m_iTimeToRespawn;
 
-	[Attribute("-1", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of BLUFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iBLUFORTickets;
 
-	[Attribute("-1", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of OPFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iOPFORTickets;
 
-	[Attribute("-1", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iINDFORTickets;
 
-	[Attribute("-1", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
+	[Attribute("0", UIWidgets.EditBox, "Amount of INDFOR Tickets. 0 = disabled/-1 = unlimited", category: "CRF Gamemode Respawn"), RplProp()]
 	int m_iCIVTickets;
 
 	// Generic spawn point for spectator camera (handles entity streaming)
@@ -372,26 +372,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		super.OnControllableSpawned(entity);
 		
-		// Ensure gearscript manager is available
-		if (!m_GearscriptManager)
-			m_GearscriptManager = CRF_GearscriptManager.GetInstance();
-		
-		// Set delay based on gamemode state
-		int delay = 150;
-		if (m_GamemodeState != CRF_EGamemodeState.GAME && !m_GamemodeManager.IsSpectator(entity))
-		{
+		// Check if we are not in the "GAME" state
+		if (m_GamemodeState != CRF_EGamemodeState.GAME)
+			// Update generic spawnpoint for spectator cameras
 			entity.GetWorldTransform(m_vGenericSpawn);
-			delay = 2000;
-		}
 		
 		// Apply gearscript if in play mode and not on client
-		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData())
+		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData() && !m_GamemodeManager.IsSpectator(entity) && m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
+			// Ensure gearscript manager is available
+			if (!m_GearscriptManager)
+				m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+			
 			// Schedule gear setup with appropriate delay
-			GetGame().GetCallqueue().CallLater(
-				m_GearscriptManager.SetupAddGearToEntity, 
-				delay, 
-				false, 
+			GetGame().GetCallqueue().Call(
+				m_GearscriptManager.SetEntityGear, 
 				entity, 
 				entity.GetPrefabData().GetPrefabName()
 			);
@@ -438,6 +433,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
+			m_RespawnManager.FindSpawnPointLocation(factionKey) != vector.Zero &&
 			!factionKey.IsEmpty())
 		{
 			// Deduct ticket

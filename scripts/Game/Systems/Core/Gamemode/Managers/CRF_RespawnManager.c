@@ -259,26 +259,7 @@ class CRF_RespawnManager : ScriptComponent
 
 		// Find spawn location if not provided
 		if (spawnLocation == vector.Zero)
-		{
-			foreach (IEntity spawnPoint : m_aRespawnPoints)
-			{
-				if (spawnPoint == null)
-					continue;
-
-				CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent));
-				if (!respawnComponent)
-					continue;
-
-				if (respawnComponent.m_sRespawnPointFaction != factionKey)
-					continue;
-
-				if (!respawnComponent.m_bActiveRespawnPoint)
-					continue;
-
-				spawnLocation = spawnPoint.GetOrigin();
-				break;
-			}
-		}
+			spawnLocation = FindSpawnPointLocation(factionKey);
 
 		// If no spawn location found, enter spectator mode
 		if (spawnLocation == vector.Zero)
@@ -294,5 +275,31 @@ class CRF_RespawnManager : ScriptComponent
 		// Respawn the player
 		m_SlottingManager.UpdateSlotDeathState(m_SlottingManager.GetPlayerSlotID(playerId), false);
 		m_GamemodeManager.InitilizePlayer(playerId, finalSpawnLocation);
+	}
+	
+	vector FindSpawnPointLocation(FactionKey factionKey)
+	{
+		vector spawnPointLocation = vector.Zero;
+		
+		foreach (IEntity spawnPoint : m_aRespawnPoints)
+		{
+			if (spawnPoint == null)
+				continue;
+
+			CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(spawnPoint.FindComponent(CRF_RespawnPointComponent));
+			if (!respawnComponent)
+				continue;
+
+			if (respawnComponent.m_sRespawnPointFaction != factionKey)
+				continue;
+
+			if (!respawnComponent.m_bActiveRespawnPoint)
+				continue;
+
+			spawnPointLocation = spawnPoint.GetOrigin();
+			break;
+		}
+		
+		return spawnPointLocation;
 	}
 }
