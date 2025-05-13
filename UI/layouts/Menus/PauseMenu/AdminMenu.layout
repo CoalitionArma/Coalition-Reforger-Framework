@@ -22,14 +22,14 @@ FrameWidgetClass {
    Name "SideBar"
    Slot FrameWidgetSlot "{6548E8DE319A75B0}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -858.37
-    OffsetLeft -858.37
-    PositionY -450.646
-    OffsetTop -450.646
+    PositionX -858.284
+    OffsetLeft -858.284
+    PositionY -454.284
+    OffsetTop -454.284
     SizeX 48
-    OffsetRight 810.37
+    OffsetRight 810.284
     SizeY 942.646
-    OffsetBottom -492
+    OffsetBottom -488.362
    }
    "Z Order" 1
    {

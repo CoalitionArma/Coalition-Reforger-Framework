@@ -108,10 +108,15 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Populate Admin Logs
 		PopulateAdminActionsList();
 		
-		// Set up the initial menu (Tickets)
+		// Delay opening of initial menu
+		GetGame().GetCallqueue().CallLater(DelayedMenuInitialization, 1, false);
+	}
+	
+	// Set up the initial menu (Tickets)
+	protected void DelayedMenuInitialization()
+	{
 		InitializeTicketMenu();
 		UpdateMenuButtonColors(m_ticketMenuButton);
-		
 	}
 	
 	/**
