@@ -20,6 +20,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected OverlayWidget m_wSpawnListRoot;
 	protected SCR_ListBoxComponent m_wSpawnListBox;
 	protected SCR_ButtonTextComponent m_bConfirmSpawnButton;
+	protected ref array<string> m_MapMarkers = {};
 	
 	bool m_RespawnSelected = false;
 	IEntity m_eSelectedRespawnEntity;
@@ -44,7 +45,10 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	{
 		// Start timer update loop
 		GetGame().GetCallqueue().CallLater(UpdateTimer, 500, true);
-
+		
+		// Set up Respawn Selection
+		InitializeSpawnpointSelection();
+		
 		// Initialize map if available
 		if (m_MapEntity)
 			InitializeMap();
@@ -54,10 +58,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Set up chat panel
 		InitializeChatPanel();
-		
-		// Set up Respawn Selection
-		InitializeSpawnpointSelection();
 	}
+	
 	
 	/**
 	 * Initializes the map when menu is opened
@@ -77,6 +79,10 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		m_wSpawnListBox = SCR_ListBoxComponent.Cast(m_wSpawnListRoot.FindHandler(SCR_ListBoxComponent));
 		m_bConfirmSpawnButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", GetRootWidget());
 		
+		CRF_PlayerControllerComponent gameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
+			if (!gameModePlayerComponent) 
+				return;
+		
 		// Setup list update event handlers 
 		m_wSpawnListBox.m_OnChanged.Insert(UpdateSpawnSelection);
 		
@@ -87,15 +93,29 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		FactionKey factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
 
-		// Populates spawnpoints list with players faction spawns entites
+		// Populates spawnpoints list with players faction spawns entites and create their markers on the map
 		foreach(IEntity point : CRF_RespawnManager.GetInstance().GetFactionSpawnpoints(factionKey))
 		{ 
 			CRF_RespawnPointComponent respawnPointComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
 			if (!respawnPointComponent)
 				continue;
 			
+			vector wPos = point.GetOrigin();
+			
 			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName);
 			m_aRespawnPoints.Insert(point);
+			
+			// Create marker		
+			gameModePlayerComponent.AddScriptedMarker("Static Marker",
+			 "3654 75 4300",
+			 1000,
+			 respawnPointComponent.GetRespawnNickname(),
+			 "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds",
+			 50,
+			 ARGB(255, 0, 0, 225));
+			
+			// Store for deletion when menu is closed
+			m_MapMarkers.Insert(respawnPointComponent.GetRespawnNickname());
 		}
 	}
 	
@@ -149,6 +169,10 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		CRF_PlayerControllerComponent gameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
+			if (!gameModePlayerComponent) 
+				return;
+		
 		// Stop timer updates
 		GetGame().GetCallqueue().Remove(UpdateTimer);
 		
@@ -342,12 +366,10 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	void PanMapToSpawnPoint(IEntity spawnpoint)
 	{
 		if (spawnpoint)
-		{
-			vector wPos = spawnpoint.GetOrigin();
-			int screenX, screenY;
-			
-			SCR_MapEntity.GetMapInstance().WorldToScreen(wPos[0], wPos[2], screenX, screenY);
-			SCR_MapEntity.GetMapInstance().ZoomPanSmooth(0.5, screenX, screenY);
+		{	
+            vector wPos = spawnpoint.GetOrigin();
+
+			SCR_MapEntity.GetMapInstance().ZoomPanSmooth(0.5, wPos[0], wPos[2]);
 		}
 	}
 	
