@@ -10,6 +10,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_SafestartManager m_SafestartManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected CRF_AdminMenuManager m_AdminMenuManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	
 	//------------------------------------------------------------------------------------------------
@@ -122,17 +123,29 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SendAdminMessage(string data)
+	void SendAdminMessage(string data, int playerID)
 	{
-		Rpc(RpcAsk_SendAdminMessage, data); 
+		Rpc(RpcAsk_SendAdminMessage, data, playerID); 
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ReplyAdminMessage(string data, int playerId, bool logAction)
+	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		if(SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
-			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, logAction); 
-	}		
+			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, adminID, logAction); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void CloseAdminTicket(int ticketID, int adminID, bool logAction)
+	{
+		Rpc(RpcAsk_CloseAdminTicket, ticketID, adminID, logAction); 
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	{
+		Rpc(RpcAsk_AssignAdminTicket, ticketID, adminID, logAction); 
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	void RespawnPlayer(int playerId)
@@ -308,16 +321,30 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SendAdminMessage(string data)
+	protected void RpcAsk_SendAdminMessage(string data, int playerID)
 	{
-		m_RplBroadcastManager.SendAdminMessage(data);
+		m_RplBroadcastManager.SendAdminMessage(data, playerID);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
+	{
+		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, adminID, logAction);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_ReplyAdminMessage(string data, int playerId, bool logAction)
+	protected void RpcAsk_CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
-		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, logAction);
+		m_RplBroadcastManager.CloseAdminTicket(ticketID, adminID, logAction);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	{
+		m_RplBroadcastManager.AssignAdminTicket(ticketID, adminID, logAction);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -399,6 +426,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_AddItem(int playerId, string prefab, bool logAction)
 	{
+		if (logAction)
+			m_RplBroadcastManager.LogAdminAction(string.Format("%2 was added to %1's inventory", GetGame().GetPlayerManager().GetPlayerName(playerId), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerId, true);
+		
 		if (playerId == 0 || prefab.IsEmpty())
 			return;
 
@@ -412,9 +442,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
 		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
 			delete resourceSpawned;
-
-		if (logAction)
-			m_RplBroadcastManager.LogAdminAction(string.Format("%2 was added to %1's inventory", GetGame().GetPlayerManager().GetPlayerName(playerId), prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1)), playerId, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -452,7 +479,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		damageComponent.SetHealthScaled(1);
 
 		if (logAction)
-			m_RplBroadcastManager.LogAdminAction(string.Format("%1's was healed/repaired", GetGame().GetPlayerManager().GetPlayerName(playerId)), playerId, true);
+			m_RplBroadcastManager.LogAdminAction(string.Format("%1 was healed/vehicle repaired", GetGame().GetPlayerManager().GetPlayerName(playerId)), playerId, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------

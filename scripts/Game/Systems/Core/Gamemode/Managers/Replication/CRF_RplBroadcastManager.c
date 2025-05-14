@@ -5,6 +5,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
+	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
@@ -25,6 +26,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
+		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -44,22 +46,42 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void SendAdminMessage(string data)
+	void SendAdminMessage(string data, int playerID)
 	{
 		#ifdef WORKBENCH
-		RpcDo_SendAdminMessage(data);
+		RpcDo_SendAdminMessage(data, playerID);
 		#else
-		Rpc(RpcDo_SendAdminMessage, data);
+		Rpc(RpcDo_SendAdminMessage, data, playerID);
 		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void ReplyAdminMessage(string data, int playerId, bool logAction)
+	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		#ifdef WORKBENCH
-		RpcDo_ReplyAdminMessage(data, playerId, logAction);
+		RpcDo_ReplyAdminMessage(data, playerId, adminID, logAction);
 		#else
-		Rpc(RpcDo_ReplyAdminMessage, data, playerId, logAction);
+		Rpc(RpcDo_ReplyAdminMessage, data, playerId, adminID, logAction);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void CloseAdminTicket(int ticketID, int adminID, bool logAction)
+	{
+		#ifdef WORKBENCH
+		RpcDo_CloseAdminTicket(ticketID, adminID, logAction);
+		#else
+		Rpc(RpcDo_CloseAdminTicket, ticketID, adminID, logAction);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	{
+		#ifdef WORKBENCH
+		RpcDo_AssignAdminTicket(ticketID, adminID, logAction);
+		#else
+		Rpc(RpcDo_AssignAdminTicket, ticketID, adminID, logAction);
 		#endif
 	}
 	
@@ -161,27 +183,53 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_SendAdminMessage(string data)
+	void RpcDo_SendAdminMessage(string data, int playerID)
 	{
 		if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
 			return;
-
+		
+		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
 		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc)
-			return;
+				if (!pc)
+					return;
+		
 		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
 		if (!chatComponent)
 			return;
-		chatComponent.ShowMessage(data);
-	}
 
+		// if its a admin just show the message in chat
+		if (SCR_Global.IsAdmin(playerID) || m_GamemodeManager.IsModerator(playerID))
+		{
+			// Don't double show message
+			if (GetGame().GetPlayerController().GetPlayerId() == playerID)
+				return;
+			
+			chatComponent.ShowMessage(string.Format("Admin - %1: %2", playerName, data));
+		}
+		else
+		{
+			// Check if its a new ticket and let admins know
+			if (!m_AdminMenuManager.isNewTicket(playerID))
+			{	
+				chatComponent.ShowMessage(string.Format("%1 has created a ticket", playerName));
+			}
+			
+			// Create a new ticket or/and add reply to exsisting ticket
+			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
+		}
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_ReplyAdminMessage(string data, int playerId, bool logAction)
+	void RpcDo_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		if (logAction)
 			LogAdminAction(string.Format("Reply to %1: %2", GetGame().GetPlayerManager().GetPlayerName(playerId), data), playerId, false);
 
+		// Create a new ticket or add reply to exsisting ticket
+		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
+			m_AdminMenuManager.NewTicketMessage(playerId, adminID, data);
+		
 		if (GetGame().GetPlayerController().GetPlayerId() != playerId)
 			return;
 
@@ -193,6 +241,28 @@ class CRF_RplBroadcastManager : ScriptComponent
 			return;
 
 		chatComponent.ShowMessage(string.Format("Admin: %1", data));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_CloseAdminTicket(int ticketID, int adminID, bool logAction)
+	{
+		if (logAction)
+			LogAdminAction(string.Format("%1 closed %2's ticket", GetGame().GetPlayerManager().GetPlayerName(adminID), GetGame().GetPlayerManager().GetPlayerName(ticketID)), -1, true);
+
+		// Remove the ticket from the array
+		m_AdminMenuManager.CloseTicket(ticketID);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_AssignAdminTicket(int ticketID, int adminID, bool logAction)
+	{
+		if (logAction)
+			LogAdminAction(string.Format("%1 assigned to %2's ticket", GetGame().GetPlayerManager().GetPlayerName(adminID), GetGame().GetPlayerManager().GetPlayerName(ticketID)), -1, false);
+
+		// Display a admin assigned them self to the ticket
+		m_AdminMenuManager.NewTicketMessage(ticketID, adminID, "Assigned to Ticket");
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -213,6 +283,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
+		if (logAction)
+			LogAdminAction(string.Format("%1 was teleported to %2", GetGame().GetPlayerManager().GetPlayerName(playerId1), GetGame().GetPlayerManager().GetPlayerName(playerId2)), playerId1, true);
+		
 		if (SCR_PlayerController.GetLocalPlayerId() != playerId1)
 			return;
 
@@ -225,8 +298,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
 
-		if (logAction)
-			LogAdminAction(string.Format("%1 was teleported to %2", GetGame().GetPlayerManager().GetPlayerName(playerId1), GetGame().GetPlayerManager().GetPlayerName(playerId2)), playerId1, true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -236,7 +307,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (playerId != -1 && SCR_PlayerController.GetLocalPlayerId() != playerId)
 			return;
 		
-		if (!factionKey.IsEmpty() && !SCR_FactionManager.SGetLocalPlayerFaction() && (SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction()).GetFactionKey() != factionKey))
+		if (!SCR_FactionManager.SGetLocalPlayerFaction())
+			return;
+
+		if (!factionKey.IsEmpty() && (SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction()).GetFactionKey() != factionKey))
 			return;
 
 		Widget widget;
@@ -260,14 +334,14 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
+		// Add the log to the admin menu logs
+		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())	
+			m_AdminMenuManager.LogAdminAction(data);
+		
+		// Only send the log to target player
 		if (sendToPlayer)
-		{
-			if (GetGame().GetPlayerController().GetPlayerId() != playerId && (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator()))
+			if (GetGame().GetPlayerController().GetPlayerId() != playerId)
 				return;
-		} else {
-			if (!SCR_Global.IsAdmin() && !m_GamemodeManager.IsModerator())
-				return;
-		}
 
 		PlayerController pc = GetGame().GetPlayerController();
 		if (!pc)
@@ -275,6 +349,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
 		if (!chatComponent)
 			return;
+		
+		// Show the target player the log messages
 		chatComponent.ShowMessage(data);
 	}
 	

@@ -1,0 +1,297 @@
+FrameWidgetClass {
+ Name "templateFrame"
+ {
+  FrameWidgetClass "{65534CACFD64038F}" {
+   Name "MenuSlot1"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    PositionX 496
+    OffsetLeft 496
+    PositionY 88
+    OffsetTop 88
+    SizeX 784
+    OffsetRight -1280
+    SizeY 928
+    OffsetBottom -1016
+   }
+   "Is Enabled" 0
+  }
+  FrameWidgetClass "{65534CACFD64038E}" {
+   Name "MenuSlot0"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -808
+    OffsetLeft -808
+    PositionY -452
+    OffsetTop -452
+    SizeX 320
+    OffsetRight 488
+    SizeY 928
+    OffsetBottom -476
+   }
+   "Is Enabled" 0
+  }
+  EditBoxWidgetClass "{65534CACD957577A}" {
+   Name "SearchBox0"
+   Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -436
+    OffsetTop -436
+    SizeX 252.078
+    OffsetRight 539.922
+    SizeY 41.277
+    OffsetBottom 394.723
+   }
+   "Font Size" 20
+   "Use placeholder text" 1
+   "Placeholder text" "Search for player..."
+  }
+  ButtonWidgetClass "{65534CACD95756C0}" {
+   Name "SearchButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -536
+    OffsetLeft -536
+    PositionY -436
+    OffsetTop -436
+    SizeX 38.891
+    OffsetRight 497.109
+    SizeY 41.419
+    OffsetBottom 394.581
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    ImageWidgetClass "{65534CACD957AE8B}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
+     Size 25 25
+    }
+   }
+  }
+  OverlayWidgetClass "{65534CACD957A8E3}" {
+   Name "PlayerList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -380
+    OffsetTop -380
+    SizeX 293.405
+    OffsetRight 498.595
+    SizeY 849.01
+    OffsetBottom -469.01
+   }
+   {
+    OverlayWidgetClass "{65534CACD9581A14}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{65534CACD9581A12}" {
+     Name "PlayerListTitle"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Players"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  OverlayWidgetClass "{65534CACD9581AE9}" {
+   Name "FactionList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -448
+    OffsetLeft -448
+    PositionY -380
+    OffsetTop -380
+    SizeX 293.405
+    OffsetRight 154.595
+    SizeY 849.01
+    OffsetBottom -469.01
+   }
+   {
+    OverlayWidgetClass "{65534CACD95837C4}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "FactionListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{65534CACD95837C5}" {
+     Name "FactionListTitle"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Factions"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  ButtonWidgetClass "{65534CACD958379D}" {
+   Name "MenuButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 168
+    OffsetLeft 168
+    PositionY -116
+    OffsetTop -116
+    SizeX 112
+    OffsetRight -280
+    SizeY 29.999
+    OffsetBottom 86.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65534CACD958B475}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Send to All"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{65534CACD958B7AA}" {
+   Name "MenuButton1"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 168
+    OffsetLeft 168
+    PositionY -76
+    OffsetTop -76
+    SizeX 112
+    OffsetRight -280
+    SizeY 29.999
+    OffsetBottom 46.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65534CACD958E675}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Send to Faction"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{65534CAD301EA55E}" {
+   Name "MenuButton2"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 168
+    OffsetLeft 168
+    PositionY -36
+    OffsetTop -36
+    SizeX 112
+    OffsetRight -280
+    SizeY 29.999
+    OffsetBottom 6.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65534CAD301EA559}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Send to Player"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  WindowWidgetClass "{65534CAEB645009D}" {
+   Name "HintBoxBackground0"
+   Slot FrameWidgetSlot "{62A27DD4085F87AF}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -120
+    OffsetLeft -120
+    PositionY -388
+    OffsetTop -388
+    SizeX 400
+    OffsetRight -280
+    SizeY 264
+    OffsetBottom 124
+   }
+   Color 0.456 0.456 0.456 1
+  }
+  MultilineEditBoxWidgetClass "{65534CAEB6450155}" {
+   Name "HintBox0"
+   Slot FrameWidgetSlot "{62A13CE4379A61C0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -112
+    OffsetLeft -112
+    PositionY -380
+    OffsetTop -380
+    SizeX 384
+    OffsetRight -272
+    SizeY 248
+    OffsetBottom 132
+   }
+   Text ""
+   "Min Font Size" 12
+  }
+ }
+}
