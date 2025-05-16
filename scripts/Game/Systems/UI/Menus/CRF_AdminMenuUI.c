@@ -784,7 +784,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 		
 		// Broadcast the removal of ticket
-		CRF_RplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, false);
+		CRF_RplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, true);
 		
 		// Deselect ticket
 		m_iSelectedTicket = -1;

@@ -167,9 +167,6 @@ class CRF_AdminMenuManager : ScriptComponent
 		
 		// Refresh Lists if admin menu is open
 		RefreshLists();
-		
-		// Log action
-		CRF_RplBroadcastManager.GetInstance().LogAdminAction(string.Format("%1's ticket was closed by %2", GetGame().GetPlayerManager().GetPlayerName(ticketID), GetGame().GetPlayerManager().GetPlayerName(adminID)), ticketID, false);
 	}
 	
 	/*
