@@ -248,7 +248,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		if (logAction)
-			LogAdminAction(string.Format("%1 closed %2's ticket", GetGame().GetPlayerManager().GetPlayerName(adminID), GetGame().GetPlayerManager().GetPlayerName(ticketID)), -1, true);
+			LogAdminAction(string.Format("%1 closed %2's ticket", GetGame().GetPlayerManager().GetPlayerName(adminID), GetGame().GetPlayerManager().GetPlayerName(ticketID)), -1, false);
 
 		// Remove the ticket from the array
 		m_AdminMenuManager.CloseTicket(ticketID);
