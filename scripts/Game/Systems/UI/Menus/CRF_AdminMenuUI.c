@@ -1106,7 +1106,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!respawnPoints || !groupList)
 			return;
 		
-		if (respawnPoints.GetSelectedItem() < 0)
+		if (groupList.GetSelectedItem() < 0)
 			return;
 			
 		// Clear previous data
