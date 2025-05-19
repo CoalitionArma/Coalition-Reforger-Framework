@@ -14,10 +14,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "BLUFOR Composition: HVT"\
    ""\
-   "OPFOR Composition: Motorized Inf"\
+   "OPFOR Composition: Moto Inf"\
    "OPFOR Assets: 1 BTR/Squad"\
    ""\
    "INDFOR Composition: Infantry"\
+   "OPFOR Assets: Unarmed Humvees"\
    ""\
    "Time: 40 Minutes"\
    "Weather: Cloudy"

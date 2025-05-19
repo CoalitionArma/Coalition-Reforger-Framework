@@ -44,7 +44,10 @@ $grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStar
 }
 PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 5212.026 152.393 3257.153
+ m_MarkerColor 0 0 0 1
  m_sDescription "HVT Last Known Position"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
 }
 $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  {
