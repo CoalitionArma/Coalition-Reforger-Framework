@@ -41,6 +41,62 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
   firstSpawn 1
  }
+ {
+  coords 5209.549 153.937 3480.615
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5217.448 154.023 3480.995
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5224.537 154.165 3481.336
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5232.614 154.281 3481.724
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5240.375 154.312 3482.098
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5248.75 154.344 3482.5
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5258.772 154.406 3482.983
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5267.914 154.469 3483.423
+  angleY -92.755
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
 }
 Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
  coords 5198.488 153.718 3436.818

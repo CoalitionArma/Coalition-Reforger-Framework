@@ -25,11 +25,6 @@ SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
           m_aUnitPrefabSlots {
            "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{1DB9BCE5811F8602}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MAT_P.et" "{AD0128827A7390C6}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AMAT_P.et"
           }
-          {
-           SCR_AIGroup : "{D6130EBAAA378DE2}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_SniperTeam_p.et" {
-            coords 0.282 -0.028 -3.011
-           }
-          }
          }
         }
        }
