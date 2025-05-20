@@ -52,7 +52,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{C38B4F9CDB5B171B}Configs/Gearscripts/Custom/Harry/SleepingDogs/CRF_GS_RHSION_SCARs_supp.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6568306536B592BB" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -61,9 +61,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      }
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
-       SCR_CallsignInfo "{6567092C59489155}" {
-        m_sCallsign "HVT"
-       }
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
         m_sCallsign "HVT"
        }
@@ -76,6 +73,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
         m_sCallsign "HVT"
        }
+       SCR_CallsignInfo "{6567092C59489155}" {
+        m_sCallsign "HVT"
+       }
       }
      }
     }
@@ -83,7 +83,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB79287E901BC}" {
-        m_sCallsign "COY"
+        m_sCallsign "Company"
        }
        SCR_CallsignInfo "{55CCB79287936EBD}" {
         m_sCallsign "Medical"
@@ -102,6 +102,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{65670920C6423A79}" {
         m_sCallsign "BTR-1"
+       }
+       SCR_CallsignInfo "{6568306591CD74DB}" {
+        m_sCallsign "2PLT"
        }
        SCR_CallsignInfo "{65670920C6AF1E74}" {
         m_sCallsign "2-1"
