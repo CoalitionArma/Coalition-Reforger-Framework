@@ -8,6 +8,7 @@ SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 5212.373 303.088 3250.828
+ m_iTimeLimitMinutes 40
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Indfor was contracted to move a Blufor HVT through the area. Halfway through, they were ambushed and have taken cover in a nearby village. Opfor is mobilizing a motorized company to finish the job. "\
@@ -15,7 +16,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Composition: HVT"\
    ""\
    "OPFOR Composition: Moto Inf"\
-   "OPFOR Assets: 1 BTR/Squad"\
+   "OPFOR Assets: 1 BTR/PLT"\
    ""\
    "INDFOR Composition: Infantry"\
    "OPFOR Assets: Unarmed Humvees"\
@@ -31,6 +32,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTextData "Protect the HVT. The HVT must stay within their borders, but you are allowed movement around the AO. The HVT has documents on their person Opfor has to recover after killing them. Do not remove the documents from the HVT at any point. "
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Balance suggestion: "\
+   "1 Mat team / 1 BTR and 1 MMG / Enemy PLT"
   }
  }
  m_iFactionOneRatio 3

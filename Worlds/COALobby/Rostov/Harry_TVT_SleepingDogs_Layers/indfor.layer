@@ -22,9 +22,6 @@ SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
         {
          SCR_AIGroup : "{1E76032AE86E25C4}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MATTeam_p.et" {
           coords -0.364 0 -2.464
-          m_aUnitPrefabSlots {
-           "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{1DB9BCE5811F8602}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MAT_P.et" "{AD0128827A7390C6}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AMAT_P.et"
-          }
          }
         }
        }
