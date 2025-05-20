@@ -1,0 +1,101 @@
+$grp Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ S105_rally1 {
+  coords 13346.326 3.023 14333.185
+  angleY -106.067
+ }
+ S105_rally2 {
+  coords 13340.726 3.023 14345.668
+  angleY -117.462
+ }
+ S105_rally3 {
+  coords 13048.479 3.775 14575.984
+  angleY 159.104
+ }
+ S105_rally4 {
+  coords 13053.714 3.775 14576.456
+  angleY 164.335
+ }
+ S105_rally5 {
+  coords 12960.978 2.875 14742.768
+ }
+ S105_rally6 {
+  coords 12757.267 3.965 14899.737
+ }
+ S105_rally7 {
+  coords 12761.8 3.977 14899.583
+ }
+ S105_rally8 {
+  coords 14070.618 5.376 15027.883
+  angleY 27.534
+ }
+ S105_rally9 {
+  coords 14429.326 5.283 14939.814
+  angleY -148.614
+ }
+ S105_rally10 {
+  coords 14414.486 5.344 14821.175
+  angleY 30.358
+ }
+ S105_rally11 {
+  coords 14558.015 5.344 14831.578
+  angleY -17.767
+ }
+ S105_rally12 {
+  coords 14647.98 5.687 14452.132
+  angleY 96.22
+ }
+ S105_rally13 {
+  coords 14655.21 5.344 14339.6
+  angleY -54.496
+ }
+ S105_rally14 {
+  coords 14535.546 5.344 14297.985
+  angleY 90.432
+ }
+ S105_rally15 {
+  coords 14512.415 5.688 14262.791
+  angleY 122.173
+ }
+ S105_rally16 {
+  coords 13741.793 22.911 12174.302
+  angleY 121.349
+ }
+ S105_rally17 {
+  coords 13188.822 1.355 10350.886
+  angleY -124.689
+ }
+ S105_rally18 {
+  coords 13188.748 0.942 10346.76
+  angleY -108.857
+ }
+ S105_rally19 {
+  coords 12305.894 15.857 9817.998
+  angleY 90.71
+ }
+ S105_rally20 {
+  coords 12096.334 14.469 9685.305
+  angleY -90.058
+ }
+ S105_rally21 {
+  coords 11972.78 12.205 9454.827
+  angleY -86.655
+ }
+ S105_rally22 {
+  coords 11177.39 12.24 8356.157
+  angleY -62.664
+ }
+ S105_rally23 {
+  coords 11014.133 21.187 8593.425
+  angleY -68.873
+ }
+ S105_rally24 {
+  coords 10852.306 21.187 8695.634
+ }
+ S105_rally25 {
+  coords 10833.553 21.188 8781.863
+ }
+ S105_rally26 {
+  coords 10719.656 21.187 8885.164
+  angleY 179.338
+ }
+}

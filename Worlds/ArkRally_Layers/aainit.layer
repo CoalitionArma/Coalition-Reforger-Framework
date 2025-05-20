@@ -1,0 +1,11 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 12185.355 43.338 9809.695
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 12185.426 37.535 9796.785
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "You race. You are a racist. If you're not first, you're last. Start at Coral Springs in the NE, finish at Orion airport."
+  }
+ }
+}
