@@ -12,6 +12,8 @@ If you would like to contribute to this repo, feel free to fork and PR as you se
 # Further Info
 Most of the discussion relating to this Framework takes place on our [Discord](https://discord.gg/the-coalition), feel free to take part or just read up.
 
-<img src="http://coalitiongroup.net/coalition.png">
+# Support Us
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I2I1VTOXS)
 
+<img src="http://coalitiongroup.net/coalition.png">
 ![Discord Banner 1](https://discordapp.com/api/guilds/237991125523103747/widget.png?style=banner1)
