@@ -1,8 +1,3 @@
-modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
-{
-	CRF_SlottingMenu
-}
-
 class CRF_SlottingMenuUI: ChimeraMenuBase
 {
 	//---------------------------------------------------------------------

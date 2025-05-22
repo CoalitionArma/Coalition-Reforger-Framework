@@ -1,6 +1,5 @@
 class CRF_PauseMenuUI: PauseMenuUI
 {
-	
 	//--------------------------------------------------------------------------------------------------
 	// Overridden method that's called when the pause menu is opened
 	//--------------------------------------------------------------------------------------------------
@@ -41,6 +40,6 @@ class CRF_PauseMenuUI: PauseMenuUI
 	//--------------------------------------------------------------------------------------------------
 	void OpenAdminMenu()
 	{
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CoalAdminMenu);
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AdminMenu);
 	}
 }

@@ -142,6 +142,11 @@ class CRF_GearscriptManager : ScriptComponent
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		ApplyWeapons(gearConfig, role, factionKey, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		
+		CRF_PlayableCharacter playable = CRF_PlayableCharacter.Cast(entity.FindComponent(CRF_PlayableCharacter));
+		
+		if (playable)
+			playable.SetGearscriptCompleted();
 	}
 
 	//------------------------------------------------------------------------------------------------

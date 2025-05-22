@@ -1,9 +1,4 @@
-modded enum ChimeraMenuPreset
-{
-	CoalAdminMenu
-}
-
-/**
+ /**
  * Administrative menu for server management
  * Provides tools for player management including respawn, gear reset, teleport, etc.
  */

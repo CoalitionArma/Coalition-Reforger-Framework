@@ -1,0 +1,69 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{655776471F9009D1}" {
+   Name "m_Background"
+   Slot FrameWidgetSlot "{655776471F900627}" {
+    Anchor 0 0 1 1
+    PositionX 272.434
+    PositionY 180.194
+    SizeX -1820
+    OffsetRight 0
+    SizeY -1050
+    OffsetBottom 0
+   }
+   Color 0 0 0 1
+   Size 256 256
+   Mask "{8EE474586CD656CE}Common/Postprocess/HDR/HDR_MeasureArea_01_Mask.edds"
+   "Transition width" 0.36
+   Progress 0.62
+   "Mask Mode" "Include Below"
+   "Shadow Color" 0 0 0 0.6353
+  }
+  TextWidgetClass "{6557764770ABEBC9}" {
+   Name "m_InitilizationText"
+   Slot FrameWidgetSlot "{6557764770ABE82D}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -960
+    OffsetLeft -960
+    PositionY -540
+    OffsetTop -540
+    SizeX 1920
+    OffsetRight -960
+    SizeY 854.28
+    OffsetBottom -314.28
+   }
+   Color 0.761 0.386 0.078 1
+   Text "Character Initialization In Progress..."
+   "Font Size" 42
+   "Min Font Size" 42
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+  }
+  ImageWidgetClass "{65577658D9644857}" {
+   Name "m_LoadingIcon"
+   Slot FrameWidgetSlot "{65577658D96448B3}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -113.28
+    OffsetLeft -113.28
+    PositionY -57.24
+    OffsetTop -57.24
+    SizeX 226.56
+    OffsetRight -113.28
+    SizeY 225.72
+    OffsetBottom -168.48
+   }
+   Color 0.761 0.386 0.078 1
+   components {
+    SCR_SpinningWidgetComponent "{655776580646776F}" {
+    }
+   }
+   Texture "{94A2AACD460E517C}UI/Textures/Loading/loadingSpinner_128_UI.edds"
+   Size 128 128
+   "Transition width" 0.531
+   Progress 0.561
+   "Mask Mode" "Include Below"
+  }
+ }
+}

@@ -16,6 +16,7 @@ class CRF_PlayableCharacter : ScriptComponent
 
 	// State variables
 	protected bool m_bIsSlotSpawned = false;
+	protected bool m_bGearscriptCompleted = false;
 	
 	// Component references
 	protected CRF_Gamemode m_Gamemode;
@@ -66,6 +67,18 @@ class CRF_PlayableCharacter : ScriptComponent
 	void SetIsSlotSpawned()
 	{
 		m_bIsSlotSpawned = true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetGearscriptCompleted()
+	{
+		m_bGearscriptCompleted = true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	bool GetGearscriptCompleted()
+	{
+		return m_bGearscriptCompleted;
 	}
 	
 	//------------------------------------------------------------------------------------------------
