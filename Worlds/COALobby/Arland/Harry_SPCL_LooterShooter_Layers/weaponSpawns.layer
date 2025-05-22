@@ -145,6 +145,8 @@ $grp SCR_BaseTriggerEntity {
   "		values.Insert(saline);"\
   "		numberRanges.Insert({202, 210});"\
   "		values.Insert(bandage);"\
+  "		numberRanges.Insert({211, 250});"\
+  "		values.Insert(tourn);"\
   "		"\
   "	}"\
   "	"\
