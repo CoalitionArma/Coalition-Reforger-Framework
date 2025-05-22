@@ -4,19 +4,21 @@ class CRF_CharacterLoading: ChimeraMenuBase
 	
 	/**
 	 * Called when the menu is opened
-	 * Initializes UI elements and sets up event listeners
 	 */
 	override void OnMenuOpen()
 	{	
+		super.OnMenuOpen()
+		
 		GetGame().GetCallqueue().CallLater(ActivateFailsafe, 5000, false);
 	}
 	
 	/**
 	 * Cleans up resources when the menu is closed
-	 * Removes event listeners and slot update callback
 	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose()
+		
 		GetGame().GetCallqueue().Remove(ActivateFailsafe);
 	};
 	
