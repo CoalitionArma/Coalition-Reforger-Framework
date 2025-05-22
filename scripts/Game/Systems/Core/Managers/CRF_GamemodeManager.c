@@ -119,7 +119,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		} 
 		else 
 		{
-			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, overrideLocation);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 		}
@@ -188,7 +187,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		SCR_ChimeraCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
 		
 		if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
+		{
+			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
+		}
 			
 		return playerCharacter;
 	}
