@@ -18,78 +18,14 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  coords 2506.797 147.634 2250.988
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
- components {
-  CRF_LoggingServerComponent "{61761C7B221DBCD4}" {
-   Enabled 0
-  }
-  SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
-   m_bEnableTeamKillPunishment 0
-  }
-  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
-   m_aModules {
-    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
-    }
-   }
-  }
-  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
-   m_fDOTScale 0.5
-   m_fRegenScale 0.75
-   m_bPermitUnconsciousVON 0
-   m_fRegenerationDelay 30
-   m_fRegenerationScale 0.6
-  }
-  SCR_InitWeatherComponent "{64427040F14EBE5E}" {
-  }
-  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
-   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
-  }
-  SCR_NightModeGameModeComponent "{5D50E84688D5A408}" {
-   m_bAllowGlobalNightMode 1
-  }
-  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
-   m_iKillFeedType DISABLED
-  }
-  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
-   Enabled 0
-  }
-  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
-   m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
-   }
-  }
-  SCR_TimeAndWeatherHandlerComponent "{64427040FFF5E7B2}" {
-  }
- }
- coords 2041.716 47.102 2073.176
- EnableAIInGameState 1
- m_sFactionOneKey "BLU"
- m_sFactionTwoKey "OPF"
+ coords 1228.604 37.813 2846.753
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{D7B22F98968C6317}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSATACS.conf"
+  m_rGearScript "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
- }
- m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{1A0942D44F1CE80B}Configs/Gearscripts/Standard/Modern/CRF_GS_CAD.conf"
- }
- m_bRespawnEnabled 1
- m_bWaveRespawn 1
- m_iTimeToRespawn 15
- m_iBLUFORTickets 1
- m_iOPFORTickets 1
- {
-  SCR_FactionManager "6554C78FA795BE2C" {
-   ID "632A77473B3CC3A8"
-   Factions {
-    SCR_Faction "{61500924662B6062}" {
-    }
-    SCR_Faction "{628CDE9209CA3FF9}" {
-     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
-     }
-    }
-   }
-  }
+  m_rGearScript "{E87A99E18FA57C5C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION.conf"
  }
 }

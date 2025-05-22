@@ -20,7 +20,7 @@ modded class SCR_PopUpNotification : GenericEntity
 
 		// Create UI layout based on HUD visibility setting
 		Widget root;
-		if (CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
+		if (CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
 		{
 			// If HUD is visible, place notifications at top layer
 			root = GetGame().GetHUDManager().CreateLayout(LAYOUT_NAME, EHudLayers.ALWAYS_TOP, 0);

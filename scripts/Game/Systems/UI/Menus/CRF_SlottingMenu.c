@@ -1,8 +1,3 @@
-modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
-{
-	CRF_SlottingMenu
-}
-
 class CRF_SlottingMenuUI: ChimeraMenuBase
 {
 	//---------------------------------------------------------------------
@@ -69,6 +64,8 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{	
+		super.OnMenuOpen();
+
 		// Don't open this menu on dedicated servers
 		if (RplSession.Mode() == RplMode.Dedicated) {
 			Close();
@@ -409,6 +406,8 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
+		
 		// Unregister from slot updates to prevent memory leaks
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
 		

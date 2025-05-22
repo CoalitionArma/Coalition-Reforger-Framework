@@ -7,10 +7,10 @@ modded class SCR_PlayerController
 	{
 		super.UpdateLocalPlayerController();
 		
-		if (RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerComponent.GetInstance())
+		if (RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerManager.GetInstance())
 			return;
 		
-		CRF_PlayerControllerComponent.GetInstance().InitilizePlayerControllerComp();
+		CRF_PlayerControllerManager.GetInstance().InitilizePlayerControllerComp();
 	}
 	
 	/**
@@ -29,7 +29,7 @@ modded class SCR_PlayerController
 		};
 		
 		// Get the CRF player controller comp
-		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
+		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 		
 		// Can't do things if the pc comp doesnt exist
 		if (playerControllerComp)
@@ -61,7 +61,7 @@ modded class SCR_PlayerController
 		};
 
 		// Get the CRF player controller comp
-		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
+		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 		
 		// Can't do things if the pc comp doesnt exist
 		if (playerControllerComp)

@@ -1,8 +1,3 @@
-modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
-{
-	CRF_AARMenu
-}
-
 /**
  * After Action Report Menu UI class
  * Responsible for displaying mission summary, player statistics, and slot management
@@ -56,7 +51,9 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 * Initialize the menu when it's first created
 	 */
 	override void OnMenuInit()
-	{		
+	{	
+		super.OnMenuInit();
+			
 		if (!m_MapEntity)
 			m_MapEntity = SCR_MapEntity.GetMapInstance();
 	}
@@ -67,6 +64,8 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{	
+		super.OnMenuOpen();
+		
 		// Exit if this is a dedicated server (menu is client-side only)
 		if (RplSession.Mode() == RplMode.Dedicated) {
 			Close();
@@ -232,6 +231,8 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
+		
 		// Unregister from slot updates
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
 		

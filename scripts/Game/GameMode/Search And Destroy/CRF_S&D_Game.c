@@ -95,7 +95,7 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 	void CheckAddMarkers()
 	{
 		// Create markers on each bomb site
-		CRF_PlayerControllerComponent gameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 		if (!gameModePlayerComponent) 
 			return;
 		
@@ -220,7 +220,7 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 	{
 		IEntity destroyedBombSiteEntity = null;
 		
-		CRF_PlayerControllerComponent gameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 		
 		if(m_sDestroyedBombSiteString == "SiteA") {
 			if (gameModePlayerComponent && !hideMapMarkers)

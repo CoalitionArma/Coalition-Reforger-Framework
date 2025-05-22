@@ -63,26 +63,3 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
-SCR_BaseTriggerEntity startMessage {
- coords 1191.307 192.901 2715.021
- userScript "	void safeStartCheck()"\
- "	{"\
- "		CRF_GamemodeComponent safestart = CRF_GamemodeComponent.GetInstance();"\
- "        if(safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)"\
- "		{"\
- "         	GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);"\
- "			return;"\
- "		}"\
- "		"\
- "		else"\
- "		{"\
- "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Compete to escape on one of the helicopter spawns, or die on the island.\", 10);"\
- "		}"\
- "		"\
- "		"\
- "	}"
- EOnInit ""\
- "		super.EOnInit(owner);"\
- "		GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);"\
- "	"
-}

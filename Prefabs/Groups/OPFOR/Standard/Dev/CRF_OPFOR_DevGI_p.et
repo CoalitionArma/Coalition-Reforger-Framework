@@ -149,13 +149,12 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  }
  m_bDeleteWhenEmpty 0
  m_iMaxMembers 12
- m_bPlayable 0
- m_bIsPlayable 1
- m_bDeleteIfNoPlayer 0
+ m_bPlayable 1
  m_aUnitPrefabColorTeams {
   "None" "None" "None" "None" "None" "None" "None" "None" "None"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None" "None" "Team Lead" "None" "None" "None"
  }
+ m_bIsPlayable 1
 }

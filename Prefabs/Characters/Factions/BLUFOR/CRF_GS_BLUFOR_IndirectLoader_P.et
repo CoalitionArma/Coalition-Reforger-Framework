@@ -33,11 +33,12 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "Indirect Loader"
+    Icon "{A489F552FB7489C3}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Custom.edds"
     IconSetName ""
     m_Image "{E5DECCCA6F4B7416}Images/UI/Zeus GearScript Factions/BLUFOR_NATO.edds"
     m_sFaction "BLUFOR"
-    m_aAuthoredLabels {
-     70 2 51870
+    m_aAuthoredLabels + {
+     2 51870
     }
     m_aAutoLabels {
      122 46

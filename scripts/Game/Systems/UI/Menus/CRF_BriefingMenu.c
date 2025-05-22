@@ -1,8 +1,3 @@
-modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
-{
-	CRF_PreviewMenu
-}
-
 class CRF_PreviewMenuUI: ChimeraMenuBase
 {
 	//--- UI Widgets ---
@@ -31,6 +26,8 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{	
+		super.OnMenuOpen();
+
 		// Don't open menu on dedicated servers
 		if (RplSession.Mode() == RplMode.Dedicated) {
 			Close();
@@ -350,6 +347,8 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
+
 		// Close map if open
 		if (m_MapEntity)
 			m_MapEntity.CloseMap();
@@ -504,7 +503,9 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 * Called when menu is initialized
 	 */
 	override void OnMenuInit()
-	{		
+	{	
+		super.OnMenuInit();
+			
 		if (!m_MapEntity)
 			m_MapEntity = SCR_MapEntity.GetMapInstance();
 	}

@@ -127,7 +127,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 		}
 		
 		// Handle HUD visibility toggle
-		if(!CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
+		if(!CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
 		{
 			// Hide all timer elements when HUD is disabled
 			SetTimerVisibility(false);

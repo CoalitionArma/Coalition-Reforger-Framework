@@ -116,7 +116,7 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 				GetGame().GetCallqueue().CallLater(transponderInit, 1000, true);
 			}
 			
-			CRF_PlayerControllerComponent gameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
+			CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 				if (!gameModePlayerComponent) 
 					return;
 				

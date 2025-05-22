@@ -11,7 +11,7 @@ modded class SCR_VonDisplay
 			return;
 		
 		// Skip processing if camera mode is active
-		if (CRF_PlayerControllerComponent.GetInstance().m_eCamera)
+		if (CRF_PlayerControllerManager.GetInstance().m_eCamera)
 			return;
 
 		// Initialize frequency variable
@@ -53,7 +53,7 @@ modded class SCR_VonDisplay
 			return;
 
 		// Skip processing if camera mode is active
-		if (CRF_PlayerControllerComponent.GetInstance().m_eCamera)
+		if (CRF_PlayerControllerManager.GetInstance().m_eCamera)
 			return;
 
 		// Try to find existing transmission data for this player

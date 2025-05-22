@@ -1,39 +1,54 @@
 class CRF_RplBroadcastManagerClass : ScriptComponentClass {}
 
+//------------------------------------------------------------------------------------------------
+// Broadcast Manager responsible for handling server-client communications
+//------------------------------------------------------------------------------------------------
 class CRF_RplBroadcastManager : ScriptComponent
 {
+	// Manager references
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
 	//------------------------------------------------------------------------------------------------
+	// Get singleton instance of the broadcast manager
+	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
 		if (gameMode)
+		{
 			return CRF_RplBroadcastManager.Cast(gameMode.FindComponent(CRF_RplBroadcastManager));
+		}
 		else
+		{
 			return null;
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-
-		// Get all instances we need for this manager.
+		InitializeManagerReferences();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Initialize references to other manager systems
+	//------------------------------------------------------------------------------------------------
+	protected void InitializeManagerReferences()
+	{
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	
-	// The stuff that exectues on the authority (and only the authority)
-	
-	//------------------------------------------------------------------------------------------------
+	//================================================================================================
+	// AUTHORITY BROADCAST METHODS
+	// These methods execute on the server to send data to clients
+	//================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
 	void PopUpNotification(float life, string titleText, string subtitleText = "", string sound = "", string titleTextParam1 = "", string titleTextParam2 = "")
@@ -134,6 +149,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Rpc(RpcDo_SendRespawnScreen, playerId);
 		#endif
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SendCharacterLoadingScreen(int playerId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_SendCharacterLoadingScreen(playerId);
+		#else
+		Rpc(RpcDo_SendCharacterLoadingScreen, playerId);
+		#endif
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void InitilizePlayerBroadcast(int playerId, bool isSpectator)
@@ -165,17 +190,36 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
-	//------------------------------------------------------------------------------------------------
+	//================================================================================================
+	// CLIENT RPC HANDLERS
+	// These methods execute on client machines when receiving server RPCs
+	//================================================================================================
 	
-	// The stuff that exectues on the children
+	//------------------------------------------------------------------------------------------------
+	// Helper method to get chat component
+	//------------------------------------------------------------------------------------------------
+	protected SCR_ChatComponent GetLocalChatComponent()
+	{
+		PlayerController playerController = GetGame().GetPlayerController();
+		if (!playerController)
+			return null;
+			
+		return SCR_ChatComponent.Cast(playerController.FindComponent(SCR_ChatComponent));
+	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Check if current player matches target player ID
+	//------------------------------------------------------------------------------------------------
+	protected bool IsLocalPlayer(int playerId)
+	{
+		return SCR_PlayerController.GetLocalPlayerId() == playerId;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_PopUpNotification(float life, string titleText, string subtitleText, string sound, string titleTextParam1, string titleTextParam2)
 	{
-		if(!sound.IsEmpty())
+		if (!sound.IsEmpty())
 			AudioSystem.PlaySound(sound);
 	
 		SCR_PopUpNotification.GetInstance().PopupMsg(string.Format(titleText, titleTextParam1, titleTextParam2), life, subtitleText);
@@ -189,15 +233,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 			return;
 		
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerID);
-		PlayerController pc = GetGame().GetPlayerController();
-				if (!pc)
-					return;
-		
-		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		SCR_ChatComponent chatComponent = GetLocalChatComponent();
 		if (!chatComponent)
 			return;
 
-		// if its a admin just show the message in chat
+		// If it's an admin just show the message in chat
 		if (SCR_Global.IsAdmin(playerID) || m_GamemodeManager.IsModerator(playerID))
 		{
 			// Don't double show message
@@ -205,16 +245,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 				return;
 			
 			chatComponent.ShowMessage(string.Format("Admin - %1: %2", playerName, data));
-		}
-		else
-		{
-			// Check if its a new ticket and let admins know
-			if (!m_AdminMenuManager.isNewTicket(playerID))
-			{	
+		} else {
+			// Check if it's a new ticket and let admins know
+			if (!m_AdminMenuManager.TicketExists(playerID))
 				chatComponent.ShowMessage(string.Format("%1 has created a ticket", playerName));
-			}
 			
-			// Create a new ticket or/and add reply to exsisting ticket
+			// Create a new ticket or/and add reply to existing ticket
 			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
 		}
 	}
@@ -224,19 +260,19 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
 		if (logAction)
-			LogAdminAction(string.Format("Reply to %1: %2", GetGame().GetPlayerManager().GetPlayerName(playerId), data), playerId, false);
+			LogAdminAction(string.Format("Reply to %1: %2", 
+				GetGame().GetPlayerManager().GetPlayerName(playerId), data), 
+				playerId, 
+				false);
 
-		// Create a new ticket or add reply to exsisting ticket
+		// Create a new ticket or add reply to existing ticket
 		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
 			m_AdminMenuManager.NewTicketMessage(playerId, adminID, data);
 		
-		if (GetGame().GetPlayerController().GetPlayerId() != playerId)
+		if (!IsLocalPlayer(playerId))
 			return;
 
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc)
-			return;
-		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
+		SCR_ChatComponent chatComponent = GetLocalChatComponent();
 		if (!chatComponent)
 			return;
 
@@ -248,7 +284,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		if (logAction)
-			LogAdminAction(string.Format("%1 closed %2's ticket", GetGame().GetPlayerManager().GetPlayerName(adminID), GetGame().GetPlayerManager().GetPlayerName(ticketID)), -1, true);
+		{
+			string adminName = GetGame().GetPlayerManager().GetPlayerName(adminID);
+			string playerName = GetGame().GetPlayerManager().GetPlayerName(ticketID);
+			LogAdminAction(string.Format("%1 closed %2's ticket", adminName, playerName), -1, false);
+		}
 
 		// Remove the ticket from the array
 		m_AdminMenuManager.CloseTicket(ticketID);
@@ -259,7 +299,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_AssignAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		if (logAction)
-			LogAdminAction(string.Format("%1 assigned to %2's ticket", GetGame().GetPlayerManager().GetPlayerName(adminID), GetGame().GetPlayerManager().GetPlayerName(ticketID)), -1, false);
+		{
+			string adminName = GetGame().GetPlayerManager().GetPlayerName(adminID);
+			string playerName = GetGame().GetPlayerManager().GetPlayerName(ticketID);
+			LogAdminAction(string.Format("%1 assigned to %2's ticket", adminName, playerName), -1, false);
+		}
 
 		// Display a admin assigned them self to the ticket
 		m_AdminMenuManager.NewTicketMessage(ticketID, adminID, "Assigned to Ticket");
@@ -269,7 +313,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendGroupIDToPlayer(int requesterID, int groupId)
 	{
-		if (SCR_PlayerController.GetLocalPlayerId() != requesterID || groupId == -1)
+		if (!IsLocalPlayer(requesterID) || groupId == -1)
 			return;
 
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
@@ -284,12 +328,19 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
 		if (logAction)
-			LogAdminAction(string.Format("%1 was teleported to %2", GetGame().GetPlayerManager().GetPlayerName(playerId1), GetGame().GetPlayerManager().GetPlayerName(playerId2)), playerId1, true);
+		{
+			string player1Name = GetGame().GetPlayerManager().GetPlayerName(playerId1);
+			string player2Name = GetGame().GetPlayerManager().GetPlayerName(playerId2);
+			LogAdminAction(string.Format("%1 was teleported to %2", player1Name, player2Name), playerId1, true);
+		}
 		
-		if (SCR_PlayerController.GetLocalPlayerId() != playerId1)
+		if (!IsLocalPlayer(playerId1))
 			return;
 
 		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId2);
+		if (!entity2)
+			return;
+			
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		vector teleportLocation = vector.Zero;
@@ -297,35 +348,40 @@ class CRF_RplBroadcastManager : ScriptComponent
 		spawnParams.Transform[3] = teleportLocation;
 
 		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
-
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendHint(string data, int playerId, string factionKey)
 	{
-		if (playerId != -1 && SCR_PlayerController.GetLocalPlayerId() != playerId)
+		// Check if this hint is for this specific player
+		if (playerId != -1 && !IsLocalPlayer(playerId))
 			return;
 		
-		if (!SCR_FactionManager.SGetLocalPlayerFaction())
+		// Check player faction
+		SCR_Faction localFaction = SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction());
+		if (!localFaction)
 			return;
 
-		if (!factionKey.IsEmpty() && (SCR_Faction.Cast(SCR_FactionManager.SGetLocalPlayerFaction()).GetFactionKey() != factionKey))
+		// Check if hint is for specific faction
+		if (!factionKey.IsEmpty() && (localFaction.GetFactionKey() != factionKey))
 			return;
 
-		Widget widget;
-		widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
-
+		// Create hint widget
+		Widget widget = GetGame().GetWorkspace().CreateWidgets("{43FC66BA3D85E9C7}UI/layouts/Hint/hint.layout");
 		if (!widget)
 			return;
 		
-		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
-
+		// Update player controller with hint
+		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 		if (playerControllerComp.m_wSavedHintWidget)
+		{
 			delete playerControllerComp.m_wSavedHintWidget;
+		}
 
 		playerControllerComp.m_wSavedHintWidget = widget;
 
+		// Display the hint
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
 		hint.ShowHint(data, 8000);
 	}
@@ -335,67 +391,92 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
 		// Add the log to the admin menu logs
-		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())	
+		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
+		{	
 			m_AdminMenuManager.LogAdminAction(data);
+		}
 		
-		// Only send the log to target player
+		// Only send the log to target player if required
 		if (sendToPlayer)
-			if (GetGame().GetPlayerController().GetPlayerId() != playerId)
+		{
+			if (!IsLocalPlayer(playerId))
 				return;
 
-		PlayerController pc = GetGame().GetPlayerController();
-		if (!pc)
-			return;
-		SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(pc.FindComponent(SCR_ChatComponent));
-		if (!chatComponent)
-			return;
-		
-		// Show the target player the log messages
-		chatComponent.ShowMessage(data);
+			SCR_ChatComponent chatComponent = GetLocalChatComponent();
+			if (!chatComponent)
+				return;
+			
+			// Show the target player the log messages
+			chatComponent.ShowMessage(data);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendRespawnScreen(int playerId)
 	{
-		if (SCR_PlayerController.GetLocalPlayerId() != playerId)
+		if (!IsLocalPlayer(playerId))
 			return;
 
+		// Close any open menus
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
 		if (topMenu)
+		{
 			topMenu.Close();
+		}
 
 		GetGame().GetMenuManager().CloseAllMenus();
-		MenuBase respawnMenu = GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
+		
+		// Open respawn menu
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 
+		
+		// Set up respawn timers
 		m_RespawnManager.m_iRespawnTimer = m_RespawnManager.m_iRespawnWaveCurrentTime;
 		GetGame().GetCallqueue().CallLater(m_RespawnManager.RespawnTimer, 1000, true);
-		GetGame().GetCallqueue().CallLater(m_RespawnManager.MenuFuckOff, 100, true);
+		GetGame().GetCallqueue().CallLater(m_RespawnManager.CloseSlottingMenu, 100, true);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_SendCharacterLoadingScreen(int playerId)
+	{
+		if (SCR_PlayerController.GetLocalPlayerId() != playerId)
+			return;
+		
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_CharacterLoading);
+	};
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_InitilizePlayerBroadcast(int playerId, bool isSpectator)
 	{
-		if (SCR_PlayerController.GetLocalPlayerId() != playerId)
+		if (!IsLocalPlayer(playerId))
 			return;
 
-		CRF_PlayerControllerComponent.GetInstance().InitilizePlayerClient(isSpectator);
+		CRF_PlayerControllerManager.GetInstance().InitilizePlayerClient(isSpectator);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendRequest(int playerId, int requestId, int channel)
 	{
-		if (playerId != SCR_PlayerController.GetLocalPlayerId())
+		if (!IsLocalPlayer(playerId))
 			return;
 
 		CRF_SpectatorMenuUI specMenu = CRF_SpectatorMenuUI.Cast(GetGame().GetMenuManager().GetTopMenu());
-
 		if (!specMenu)
 			return;
-		Widget compWidget = GetGame().GetWorkspace().CreateWidgets("{49490337615BA9B8}UI/Listbox/VONChannelRequestListBox.layout", specMenu.m_wRoot.FindAnyWidget("Requests"));
+			
+		// Create request widget
+		Widget compWidget = GetGame().GetWorkspace().CreateWidgets(
+			"{49490337615BA9B8}UI/Listbox/VONChannelRequestListBox.layout",
+			specMenu.m_wRoot.FindAnyWidget("Requests")
+		);
+		
 		specMenu.m_aRequest.Insert(compWidget);
+		
+		// Configure the request component
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(compWidget.FindHandler(CRF_ListBoxElementComponent));
 		comp.m_iPlayerId = requestId;
 		comp.m_iChannelId = channel;
@@ -408,14 +489,14 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_Deny(int playerId, int requestId)
 	{
-		if (playerId != SCR_PlayerController.GetLocalPlayerId())
+		if (!IsLocalPlayer(playerId))
 			return;
 
 		CRF_SpectatorMenuUI specMenu = CRF_SpectatorMenuUI.Cast(GetGame().GetMenuManager().GetTopMenu());
-
 		if (!specMenu)
 			return;
 
+		// Find and mark the request for deletion
 		foreach (Widget request : specMenu.m_aRequest)
 		{
 			CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(request.FindHandler(CRF_ListBoxElementComponent));

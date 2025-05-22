@@ -28,7 +28,7 @@ class CRF_SafestartManager : ScriptComponent
 	protected ref map<IEntity, bool> m_mEntitiesWithEHsMap = new map<IEntity, bool>();
 
 	protected SCR_PopUpNotification m_PopUpNotification = null;
-	CRF_LoggingServerComponent m_Logging;
+	protected CRF_LoggingManager m_Logging;
 	
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
@@ -64,7 +64,7 @@ class CRF_SafestartManager : ScriptComponent
 		if (RplSession.Mode() != RplMode.Client) // Supports both workbench and dedi
 		{
 			// Initialize server components
-			m_Logging = CRF_LoggingServerComponent.Cast(this.FindComponent(CRF_LoggingServerComponent));
+			m_Logging = CRF_LoggingManager.Cast(this.FindComponent(CRF_LoggingManager));
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
 	}

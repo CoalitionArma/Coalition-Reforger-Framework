@@ -108,7 +108,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	void CheckAddInitialMarkers()
 	{
 		// Create markers on each bomb site
-		CRF_PlayerControllerComponent gameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 		if (!gameModePlayerComponent) 
 			return;
 		
@@ -581,7 +581,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateClients()
 	{
-		CRF_PlayerControllerComponent.GetInstance().UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
+		CRF_PlayerControllerManager.GetInstance().UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
 	}
 	
 	//------------------------------------------------------------------------------------------------

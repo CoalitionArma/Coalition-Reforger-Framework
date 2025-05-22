@@ -22,18 +22,24 @@ GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployab
    }
    PixelSizeScale 0
   }
+  SCR_RadioComponent "{5A30BAE7673C63D4}" {
+   m_iRadioCategory PERSONAL
+   m_iRadioType ANPRC68
+  }
   SCR_RestrictedDeployableSpawnPointComponent "{5EA4A89F0D06E1A8}" {
+   Enabled 0
    m_sReplacementPrefab "{B5A9B78EE58D9C76}Prefabs/Systems/DeployableRadios/DeployableItemRadioReplacemenUS.et"
    m_FactionKey "US"
+   m_iMaxRespawns 0
   }
   BaseLoadoutClothComponent "{5EA4A89F0D06E1DE}" {
    WornMaterialsOverride {
-    "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+    "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
    }
   }
   RplComponent "{508AB59531D748C9}" {
-   Streamable Disabled
    SpatialRelevancy 0
+   Streamable Disabled
   }
  }
 }

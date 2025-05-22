@@ -55,7 +55,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 		}
 		
 		// Handle HUD visibility
-		if (!CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
+		if (!CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
 		{
 			HideAllUIElements();
 			return;

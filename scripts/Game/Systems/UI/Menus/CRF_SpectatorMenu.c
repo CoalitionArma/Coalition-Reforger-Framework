@@ -1,8 +1,3 @@
-modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
-{
-	CRF_SpectatorMenu
-}
-
 class CRF_SpectatorMenuUI: ChimeraMenuBase
 {
 	//=================================================================================================
@@ -63,6 +58,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{
+		super.OnMenuOpen();
+
 		// Initialize HUD visibility
 		SCR_HUDManagerComponent hudManager = GetGame().GetHUDManager();
 		if (hudManager) 
@@ -183,7 +180,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	void UpdateCompass()
 	{
 		// Get camera yaw angle
-		float yaw = -CRF_PlayerControllerComponent.GetInstance().m_eCamera.GetYawPitchRoll()[0];
+		float yaw = -CRF_PlayerControllerManager.GetInstance().m_eCamera.GetYawPitchRoll()[0];
 		float yawFloat = -yaw;
 		
 		// Convert negative angles to 0-360 range
@@ -206,6 +203,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuUpdate(float tDelta)
 	{
+		super.OnMenuUpdate(tDelta);
+
 		// Update compass
 		UpdateCompass();
 		
@@ -244,7 +243,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	protected void UpdateSpectatorCamera(float tDelta)
 	{
-		CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
+		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 		
 		if (m_eSpecEntity)
 		{
@@ -1096,6 +1095,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuInit()
 	{		
+		// Call parent class initialization
+		super.OnMenuInit();
+
 		// Store reference to the root widget
 		m_wRoot = GetRootWidget();
 		
@@ -1119,6 +1121,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		// Call parent class cleanup
+		super.OnMenuClose();
+		
 		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
 		
 		// Unregister from slotting updates

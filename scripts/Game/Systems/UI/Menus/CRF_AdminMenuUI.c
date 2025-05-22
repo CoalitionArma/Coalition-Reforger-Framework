@@ -1,9 +1,4 @@
-modded enum ChimeraMenuPreset
-{
-	CoalAdminMenu
-}
-
-/**
+ /**
  * Administrative menu for server management
  * Provides tools for player management including respawn, gear reset, teleport, etc.
  */
@@ -14,7 +9,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	//-----------------------------------------------------------------------------
 	
 	// Core components
-	protected CRF_PlayerControllerComponent m_clientComponent;
+	protected CRF_PlayerControllerManager m_clientComponent;
 	protected InputManager m_InputManager;
 	protected SCR_ChatPanel m_ChatPanel;
 	protected bool m_bFocused = true;
@@ -88,11 +83,13 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{
+		super.OnMenuOpen();
+
 		// Get manager instances
 		m_InputManager = GetGame().GetInputManager();
 		m_playerManager = GetGame().GetPlayerManager();
 		m_groupManagerComponent = SCR_GroupsManagerComponent.GetInstance();
-		m_clientComponent = CRF_PlayerControllerComponent.GetInstance();
+		m_clientComponent = CRF_PlayerControllerManager.GetInstance();
 		m_AdminMenuManager= CRF_AdminMenuManager.GetInstance();
 
 		// Setup menu roots
@@ -207,6 +204,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
+
 		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_FE_HUD_PAUSE_MENU_CLOSE);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		
@@ -381,6 +380,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuFocusLost()
 	{
+		super.OnMenuFocusLost();
+
 		m_bFocused = false;
 		m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_OPEN, EActionTrigger.DOWN, Close);
 		m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_BACK, EActionTrigger.DOWN, Close);
@@ -395,6 +396,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuUpdate(float tDelta)
 	{
+		super.OnMenuUpdate(tDelta);
+
 		if (m_ChatPanel)
 			m_ChatPanel.OnUpdateChat(tDelta);
 	}
@@ -404,6 +407,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuFocusGained()
 	{
+		super.OnMenuFocusGained();
+		
 		m_bFocused = true;
 		m_InputManager.AddActionListener(UIConstants.MENU_ACTION_OPEN, EActionTrigger.DOWN, Close);
 		m_InputManager.AddActionListener(UIConstants.MENU_ACTION_BACK, EActionTrigger.DOWN, Close);
@@ -784,7 +789,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 		
 		// Broadcast the removal of ticket
-		CRF_RplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, false);
+		CRF_RplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, true);
 		
 		// Deselect ticket
 		m_iSelectedTicket = -1;
@@ -1106,7 +1111,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!respawnPoints || !groupList)
 			return;
 		
-		if (respawnPoints.GetSelectedItem() < 0)
+		if (groupList.GetSelectedItem() < 0)
 			return;
 			
 		// Clear previous data

@@ -24,7 +24,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 	protected bool m_bStoredFadeInBoolean;
 	protected bool m_bStoredProgressBarBoolean;
 
-	protected CRF_PlayerControllerComponent m_GameModePlayerComponent = null;
+	protected CRF_PlayerControllerManager m_GameModePlayerComponent = null;
 	protected CRF_FrontlineGamemodeManager m_FrontlineGamemodeManager = null;
 	
 	//------------------------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 		};
 		
 		if (!m_GameModePlayerComponent || !m_wASite || !m_wSiteCaptureBar || !m_wASiteInZone || !m_wASiteLock) {
-			m_GameModePlayerComponent = CRF_PlayerControllerComponent.GetInstance();
+			m_GameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 			m_wASite                  = ImageWidget.Cast(m_wRoot.FindWidget("ASite"));
 			m_wBSite                  = ImageWidget.Cast(m_wRoot.FindWidget("BSite"));
 			m_wCSite                  = ImageWidget.Cast(m_wRoot.FindWidget("CSite"));
@@ -66,7 +66,7 @@ class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 			return;
 		};
 		
-		if(CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !CRF_PlayerControllerComponent.GetInstance().m_bHUDVisible)
+		if(CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
 			m_wRoot.SetOpacity(0);
 		else
 			m_wRoot.SetOpacity(1);

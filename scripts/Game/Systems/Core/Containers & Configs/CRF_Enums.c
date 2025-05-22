@@ -204,6 +204,21 @@ class CRF_RoleHelper
 }
 
 //------------------------------------------------------------------------------------
+// Enumerations for menus
+//------------------------------------------------------------------------------------
+
+modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
+{
+	CRF_AARMenu,
+	CRF_AdminMenu,
+	CRF_PreviewMenu,
+	CRF_RespawnMenu,
+	CRF_SlottingMenu,
+	CRF_SpectatorMenu,
+	CRF_CharacterLoading
+}
+
+//------------------------------------------------------------------------------------
 // Enumerations for game state tracking
 //------------------------------------------------------------------------------------
 

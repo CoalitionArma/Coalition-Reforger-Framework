@@ -166,8 +166,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
-		
-		
 	}
 	
 	//===================================================================================
@@ -230,7 +228,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Client-side UI update
 		else if (RplSession.Mode() != RplMode.Dedicated)
 		{
-			CRF_PlayerControllerComponent playerControllerComp = CRF_PlayerControllerComponent.GetInstance();
+			CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 			if(playerControllerComp)
 				playerControllerComp.OpenCurrentStateMenu();
 		}
@@ -341,23 +339,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		{
 			GetGame().GetCallqueue().CallLater(m_GamemodeManager.SetPlayerModerator, 5000, false, iPlayerID);
 		}
-	}
-	
-	/**
-	 * Handle player disconnection
-	 * @param playerId ID of the disconnecting player
-	 * @param cause Reason for disconnection
-	 * @param timeout Timeout duration if applicable
-	 */
-	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
-	{
-		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
-
-		// Propagate event to respawn system (not a SCR_BaseGameModeComponent)
-		if (IsMaster())
-			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
-
-		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
 	}
 	
 	//===================================================================================

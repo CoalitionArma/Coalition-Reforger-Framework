@@ -1,23 +1,119 @@
-$grp SCR_VehicleSpawn {
- {
-  coords 1193.208 39 2714.653
-  angleY -16.583
-  m_rnPrefab "{F5763805919D0553}Prefabs/Vehicles/Helicopters/AH6M/AH6M_base.et"
-  respawnDelay 10000
-  firstSpawn 420
+$grp SCR_BaseTriggerEntity {
+ uaz1 {
+  coords 1229.665 38.831 2767.614
  }
- {
-  coords 1193.09 39 2714.254
-  angleY -16.583
-  m_rnPrefab "{F5763805919D0553}Prefabs/Vehicles/Helicopters/AH6M/AH6M_base.et"
-  respawnDelay 10000
-  firstSpawn 840
+ uaz2 {
+  coords 1285.8 39.184 2694.894
  }
- {
-  coords 1193.09 39 2714.254
-  angleY -16.583
-  m_rnPrefab "{F5763805919D0553}Prefabs/Vehicles/Helicopters/AH6M/AH6M_base.et"
-  respawnDelay 10000
-  firstSpawn 1260
+ uaz3 {
+  coords 1141.533 39.055 2632.522
+ }
+ uaz4 {
+  coords 977.169 39.961 2711.443
+ }
+ uaz5 {
+  coords 1063.753 39.863 2731.49
+ }
+ uaz6 {
+  coords 802.26 39.69 2658.486
+ }
+ uaz7 {
+  coords 743.309 39 2776.727
+ }
+ uaz8 {
+  coords 1141.488 39.154 2251.18
+ }
+ uaz9 {
+  coords 1324.053 38.459 2318.142
+ }
+ uaz10 {
+  coords 1500.945 39.14 2447.015
+ }
+ uaz11 {
+  coords 1463.537 39.274 2735.967
+ }
+ uaz12 {
+  coords 1373.824 38.206 2936.221
+ }
+ uaz13 {
+  coords 1270.443 37.547 2931.44
+ }
+ uaz14 {
+  coords 1268.932 37.469 2936.816
+ }
+ uaz15 {
+  coords 1267.08 37.437 2942.511
+ }
+ uaz16 {
+  coords 1266.195 37.406 2948.146
+ }
+ uaz17 {
+  coords 1156.906 1.125 3326.939
+ }
+ uaz18 {
+  coords 1182.26 1.125 3311.704
+ }
+ uaz19 {
+  coords 1176.326 1.119 3312.371
+ }
+ uaz20 {
+  coords 1171.782 1.101 3312.976
+ }
+ uaz21 {
+  coords 1167.62 1.141 3313.346
+ }
+ uaz22 {
+  coords 1160.815 1.156 3313.482
+ }
+ uaz23 {
+  coords 1225.386 6.814 3329.898
+ }
+ uaz24 {
+  coords 1349.967 3.25 3529.896
+ }
+ uaz25 {
+  coords 1689.184 44.774 3165.931
+ }
+ uaz26 {
+  coords 1943.365 51.806 3069.572
+ }
+ uaz27 {
+  coords 1977.205 48.994 2970.438
+ }
+ uaz28 {
+  coords 1945.582 48.725 2972.928
+ }
+ uaz29 {
+  coords 1744.464 39.94 2721.756
+ }
+ uaz30 {
+  coords 696.753 1.5 2258.862
+ }
+ uaz31 {
+  coords 691.691 1.5 2267.405
+ }
+ uazTrigger {
+  coords 718.603 1.509 2237.352
+  userScript "	string uaz = \"{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et\";"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		for (int i = 1; i <= 31; i++) "\
+  "		{"\
+  "			string uazName = \"uaz\" + i.ToString();"\
+  "			IEntity spawnuaz = GetGame().GetWorld().FindEntityByName(uazName);"\
+  "			"\
+  "			int randomNumber = Math.RandomInt(0, 100); "\
+  "			"\
+  "			if (randomNumber < 15)"\
+  "			{"\
+  "				spawnParams.Transform[3] = spawnuaz.GetOrigin();"\
+  "				GetGame().SpawnEntityPrefab(Resource.Load(uaz),GetGame().GetWorld(),spawnParams);"\
+  "			}"\
+  "		}"\
+  "	"
  }
 }
