@@ -49,7 +49,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{D62FC8AB893C3D7E}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_SCARs.conf"
+  m_rGearScript "{831036E17A4722D7}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_Urban.conf"
  }
  {
   SCR_FactionManager "6568306536B592BB" {
