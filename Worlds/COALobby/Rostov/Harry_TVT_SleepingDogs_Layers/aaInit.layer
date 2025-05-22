@@ -8,7 +8,7 @@ SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 5212.373 303.088 3250.828
- m_iTimeLimitMinutes 40
+ m_iTimeLimitMinutes 30
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Indfor was contracted to move a Blufor HVT through the area. Halfway through, they were ambushed and have taken cover in a nearby village. Opfor is mobilizing a motorized company to finish the job. "\
@@ -49,7 +49,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{C38B4F9CDB5B171B}Configs/Gearscripts/Custom/Harry/SleepingDogs/CRF_GS_RHSION_SCARs_supp.conf"
+  m_rGearScript "{D62FC8AB893C3D7E}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_SCARs.conf"
  }
  {
   SCR_FactionManager "6568306536B592BB" {
