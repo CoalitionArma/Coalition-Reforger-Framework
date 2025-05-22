@@ -63,6 +63,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{
+		super.OnMenuOpen();
+
 		// Initialize HUD visibility
 		SCR_HUDManagerComponent hudManager = GetGame().GetHUDManager();
 		if (hudManager) 
@@ -206,6 +208,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuUpdate(float tDelta)
 	{
+		super.OnMenuUpdate(tDelta);
+
 		// Update compass
 		UpdateCompass();
 		
@@ -1096,6 +1100,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuInit()
 	{		
+		// Call parent class initialization
+		super.OnMenuInit();
+
 		// Store reference to the root widget
 		m_wRoot = GetRootWidget();
 		
@@ -1119,6 +1126,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		// Call parent class cleanup
+		super.OnMenuClose();
+		
 		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
 		
 		// Unregister from slotting updates

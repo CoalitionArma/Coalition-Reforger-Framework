@@ -88,6 +88,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{
+		super.OnMenuOpen();
+
 		// Get manager instances
 		m_InputManager = GetGame().GetInputManager();
 		m_playerManager = GetGame().GetPlayerManager();
@@ -207,6 +209,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
+
 		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_FE_HUD_PAUSE_MENU_CLOSE);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		
@@ -381,6 +385,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuFocusLost()
 	{
+		super.OnMenuFocusLost();
+
 		m_bFocused = false;
 		m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_OPEN, EActionTrigger.DOWN, Close);
 		m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_BACK, EActionTrigger.DOWN, Close);
@@ -395,6 +401,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuUpdate(float tDelta)
 	{
+		super.OnMenuUpdate(tDelta);
+
 		if (m_ChatPanel)
 			m_ChatPanel.OnUpdateChat(tDelta);
 	}
@@ -404,6 +412,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	override void OnMenuFocusGained()
 	{
+		super.OnMenuFocusGained();
+		
 		m_bFocused = true;
 		m_InputManager.AddActionListener(UIConstants.MENU_ACTION_OPEN, EActionTrigger.DOWN, Close);
 		m_InputManager.AddActionListener(UIConstants.MENU_ACTION_BACK, EActionTrigger.DOWN, Close);

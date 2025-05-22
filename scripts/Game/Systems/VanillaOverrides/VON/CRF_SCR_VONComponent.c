@@ -4,7 +4,6 @@ modded class SCR_VoNComponent
 	protected CRF_MenuManager m_MenuManager;
 	
 	//------------------------------------------------------------------------------------------------
-	//------------------------------------------------------------------------------------------------
 	// Constructor - Initializes component and gets required manager instances
 	//------------------------------------------------------------------------------------------------
 	void SCR_VoNComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
@@ -23,7 +22,7 @@ modded class SCR_VoNComponent
 		super.OnCapture(transmitter);
 		
 		// Skip processing during active gameplay to prevent FPS impact
-		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		if(!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
 		// Register local player as currently talking
@@ -39,7 +38,7 @@ modded class SCR_VoNComponent
 		super.OnReceive(playerId, receiver, frequency, quality);
 		
 		// Skip processing during active gameplay to prevent FPS impact
-		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		if(!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
 		// Register the remote player as currently talking

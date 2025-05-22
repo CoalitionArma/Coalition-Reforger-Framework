@@ -24,9 +24,10 @@ class CRF_RespawnPointComponent: ScriptComponent
 	
 	override void OnDelete(IEntity owner)
 	{
+		super.OnDelete(owner);
 		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client) return;
 		
-		if(CRF_RespawnManager.GetInstance())
+		if (CRF_RespawnManager.GetInstance())
 			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(owner);
 	};
 	

@@ -35,8 +35,10 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	override void OnMenuOpen()
 	{
+		super.OnMenuOpen();
+
 		// Start timer update loop
-		GetGame().GetCallqueue().CallLater(UpdateTimer, 500, true);
+		GetGame().GetCallqueue().CallLater(UpdateTimer, 1000, true);
 
 		// Initialize map if available
 		if (m_MapEntity)
@@ -87,7 +89,9 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 * Initializes menu components when the menu is first created
 	 */
 	override void OnMenuInit()
-	{		
+	{	
+		super.OnMenuInit();
+
 		if (!m_MapEntity)
 			m_MapEntity = SCR_MapEntity.GetMapInstance();
 	}
@@ -98,6 +102,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	override void OnMenuUpdate(float tDelta)
 	{
+		super.OnMenuUpdate(tDelta);
+
 		if (m_MapEntity)
 			GetGame().GetInputManager().ActivateContext("MapContext");
 	}
@@ -107,6 +113,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
+		
 		// Stop timer updates
 		GetGame().GetCallqueue().Remove(UpdateTimer);
 		

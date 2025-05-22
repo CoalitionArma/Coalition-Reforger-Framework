@@ -149,6 +149,8 @@ class CRF_SpectatorLabelIconCharacter : CRF_SpectatorLabelIcon
 	//------------------------------------------------------------------------------------------------
 	override void UpdateLabel()
 	{
+		super.UpdateLabel();
+		
 		// Update player name text
 		UpdatePlayerName();
 		
