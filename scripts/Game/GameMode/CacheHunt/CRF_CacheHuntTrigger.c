@@ -18,7 +18,7 @@ class CRF_CacheHuntTriggerEntity: SCR_BaseTriggerEntity
 	
 	override void OnActivate(IEntity ent)
 	{
-		PrintFormat("CRF OnActivate %1",i);
+		//PrintFormat("CRF OnActivate %1",i);
 		i++;
 	}
 			

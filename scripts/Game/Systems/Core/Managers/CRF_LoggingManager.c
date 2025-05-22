@@ -1,37 +1,43 @@
 /*
-*	Logging component for COALITION games
-*	Component overrides base game mode so it always runs
+* Logging component for COALITION games
+* Component overrides base game mode so it always runs
 *
-*	Note that write files seem weird because they are parsed by an external program
-*	which splits strings via colons
+* Note that write files are formatted for parsing by an external program
+* which splits strings via commas
 *
-*	Server only
+* Server only
 */
-[ComponentEditorProps(category: "CRF Logging Component", description: "")]
+[ComponentEditorProps(category: "CRF Logging Component", description: "Handles logging for server events")]
 class CRF_LoggingManagerClass: SCR_BaseGameModeComponentClass
 {
-	
+	// Class definition for the component class
 }
 
 class CRF_LoggingManager: SCR_BaseGameModeComponent
-{	
+{    
+	// Constants
 	const string SEPARATOR = ",";
-	const string m_sLogPath = "$profile:COAServerLog.txt";
-	string m_sMissionName;
-	string playerName;
+	const string LOG_PATH = "$profile:COAServerLog.txt";
 	
-	int m_iPlayerCount;
-	int m_iBluforCount;
-	int m_iOpforCount;
-	int m_iIndforCount;
+	// Mission and player data
+	private string m_MissionName;
+	private string m_PlayerName;
 	
-	private ref FileHandle m_handle;
-	SCR_FactionManager m_FM;
+	// Player counts
+	private int m_PlayerCount;
+	private int m_BluforCount;
+	private int m_OpforCount;
+	private int m_IndforCount;
 	
-	// Instance of this component (this method only works if you KNOW there will only ever be one instance of this component) 
-	protected static CRF_LoggingManager s_Instance;
+	// File handling and faction management
+	private ref FileHandle m_LogFileHandle;
+	private SCR_FactionManager m_FactionManager;
+	
+	// Singleton instance
+	private static CRF_LoggingManager s_Instance;
 	
 	//------------------------------------------------------------------------------------------------
+	// Constructor
 	void CRF_LoggingManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		if (!s_Instance)
@@ -39,170 +45,165 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Singleton instance getter
 	static CRF_LoggingManager GetInstance()
 	{
 		return s_Instance;
 	}
 	
-	FileHandle ReturnFileHandle()
+	//------------------------------------------------------------------------------------------------
+	// Return the file handle for external use
+	FileHandle GetLogFileHandle()
 	{
-		return m_handle;
-	}
-
-	// Setup
-	override void OnWorldPostProcess(World world)
-	{
-		super.OnWorldPostProcess(world);
+		return m_LogFileHandle;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Component initialization
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
 		
-		if ((RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen) || !GetGame().InPlayMode())
+		// Only run on server in play mode
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
 			return;
 		
-		m_sMissionName = GetGame().GetMissionName();
-		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		if (!GetGame().InPlayMode())
+			return;
 		
-		m_handle = FileIO.OpenFile(m_sLogPath, FileMode.APPEND);
-		
-		m_handle.WriteLine("mission" + SEPARATOR + "beginning" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
-		
-		CRF_Gamemode.GetInstance().GetOnStateChanged().Insert(OnGamemodeStateChanged);
+		InitializeLogging();
 	}
 	
-	// Player Connected
+	//------------------------------------------------------------------------------------------------
+	// Initialize logging system
+	private void InitializeLogging()
+	{
+		// Initialize mission data
+		m_MissionName = GetGame().GetMissionName();
+		m_PlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		
+		// Open log file
+		m_LogFileHandle = FileIO.OpenFile(LOG_PATH, FileMode.APPEND);
+		
+		// Log mission beginning
+		LogMissionEvent("beginning");
+		
+		// Register for gamemode state changes
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (gamemode)
+			gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Handle player connection events
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
+		
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
-		playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_handle.WriteLine("connect" + SEPARATOR + playerName);
+		m_PlayerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		if (m_LogFileHandle)
+			m_LogFileHandle.WriteLine("connect" + SEPARATOR + m_PlayerName);
 	}
 	
-	// Player Disconnected 
+	//------------------------------------------------------------------------------------------------
+	// Handle player disconnection events
 	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
 	{
 		super.OnPlayerDisconnected(playerId, cause, timeout);
+		
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
-		// Get player name
-		playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_handle.WriteLine("disconnect" + SEPARATOR + playerName + SEPARATOR + cause);
+		m_PlayerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+		if (m_LogFileHandle)
+			m_LogFileHandle.WriteLine("disconnect" + SEPARATOR + m_PlayerName + SEPARATOR + cause);
 	}
 	
-	// Mission status messages 
+	//------------------------------------------------------------------------------------------------
+	// Handle gamemode state changes
 	void OnGamemodeStateChanged()
 	{
 		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
 			return;
 		
-		//PrintFormat("CRF: %1", CRF_Gamemode.GetInstance().m_GamemodeState);
+		UpdatePlayerCount();
 		
-		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+		if (!gamemode)
+			return;
 		
-		switch (CRF_Gamemode.GetInstance().m_GamemodeState)
+		switch (gamemode.m_GamemodeState)
 		{
 			case CRF_EGamemodeState.SLOTTING:
 			{
-				m_handle.WriteLine("mission" + SEPARATOR + "slotting" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
+				LogMissionEvent("slotting");
 				break;
 			}
 			case CRF_EGamemodeState.GAME:
 			{
-				m_handle.WriteLine("mission" + SEPARATOR + "safestart" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
+				LogMissionEvent("safestart");
 				break;
 			}
 			case CRF_EGamemodeState.AAR:
 			{
-				m_handle.WriteLine("mission" + SEPARATOR + "ended" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
+				LogMissionEvent("ended");
 				break;
 			}
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Handle game mode end
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
 		super.OnGameModeEnd(data);
+		
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
-		m_handle.Close(); // lets avoid a mem leak
+		// Close file handle to prevent memory leaks
+		if (m_LogFileHandle)
+		{
+			m_LogFileHandle.Close();
+			m_LogFileHandle = null;
+		}
 	}
 	
-	// Method called from safestart to annotate a game has begun
+	//------------------------------------------------------------------------------------------------
+	// Method called from safestart to annotate game start
 	void GameStarted()
 	{
 		if (RplSession.Mode() != RplMode.Dedicated)
 			return;
 		
-		// Collect mission data 
-		// TODO: Get playercount per faction here
-		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
-		
-		// log
-		m_handle.WriteLine("mission" + SEPARATOR + "started" + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount);
+		UpdatePlayerCount();
+		LogMissionEvent("started");
 	}
-}
-
-/*modded class SCR_BaseGameMode
-{
-	const string SEPARATOR = ",";
-	string m_sKillerName;
-	string m_sKillerFaction;
-	string m_sKilledName;
-	string m_sKilledFaction;
-	string m_sTime;
-	string m_sWeaponName;
-	float m_fRange;
-	float m_fTotalTime;
-	int m_iTotalSeconds;
 	
-	SCR_FactionManager m_FM;
-	BaseWeaponManagerComponent m_WMC;
-	private ref FileHandle m_handle;
+	//------------------------------------------------------------------------------------------------
+	// Helper method to update player count
+	private void UpdatePlayerCount()
+	{
+		m_PlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		
+		// TODO: Implement faction-specific player counts
+		// m_BluforCount = ...
+		// m_OpforCount = ...
+		// m_IndforCount = ...
+	}
 	
-	// Killfeed log
-    override void OnPlayerKilled(int playerID, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)
-    {
-		super.OnPlayerKilled(playerID, playerEntity, killerEntity, killer);
-		
-		m_FM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		m_handle = CRF_LoggingManager.GetInstance().ReturnFileHandle();
-		
-		// Killer
-		// Check if killer is AI
-		if (GetGame().GetPlayerManager().GetplayerIDFromControlledEntity(killerEntity) == 0)
+	//------------------------------------------------------------------------------------------------
+	// Helper method to log mission events with consistent format
+	private void LogMissionEvent(string eventType)
+	{
+		if (!m_LogFileHandle)
 		{
-			m_sKillerName = "AI";
-			m_sKillerFaction = "AI";
-		} else {
-			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killer.GetInstigatorplayerID());
-			m_sKillerFaction = m_FM.GetPlayerFaction(killer.GetInstigatorplayerID()).GetFactionName();
+			return;
 		}
 		
-		// Killed
-		m_sKilledName = GetGame().GetPlayerManager().GetPlayerName(playerID);
-		m_sKilledFaction = m_FM.GetPlayerFaction(playerID).GetFactionName();
-		
-		// Range
-		m_fRange = vector.Distance(playerEntity.GetOrigin(),killerEntity.GetOrigin());
-		
-		// Killer Weapon 
-		m_WMC = BaseWeaponManagerComponent.Cast(killerEntity.FindComponent(BaseWeaponManagerComponent));
-		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();	
-		if (m_sWeaponName == "")
-			m_sWeaponName = "Unknown Weapon";
-			
-		// Time
-		m_fTotalTime = GetGame().GetWorld().GetWorldTime();
-  		m_iTotalSeconds = (m_fTotalTime / 1000);
-		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
-		
-		m_handle.WriteLine("kill" + SEPARATOR + m_sKilledName + SEPARATOR + m_sKilledFaction + SEPARATOR + m_sKillerName + SEPARATOR + m_sKillerFaction + SEPARATOR + m_fRange + SEPARATOR + m_sWeaponName + SEPARATOR + m_sTime);
+		m_LogFileHandle.WriteLine("mission" + SEPARATOR + eventType + SEPARATOR + m_MissionName + SEPARATOR + m_PlayerCount);
 	}
-}*/
+}

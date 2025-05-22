@@ -166,8 +166,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
-		
-		
 	}
 	
 	//===================================================================================

@@ -18,13 +18,17 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Get the instance of the GamemodeManager from the current game mode
+	* @return Instance of the GamemodeManager, null if not found
+	*/
 	static CRF_GamemodeManager GetInstance()
 	{
 		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_GamemodeManager.Cast(gameMode.FindComponent(CRF_GamemodeManager));
-		else
+		if (!gameMode)
 			return null;
+		
+		return CRF_GamemodeManager.Cast(gameMode.FindComponent(CRF_GamemodeManager));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -32,107 +36,247 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	{	
 		super.OnPostInit(owner);
 		
-		// Get all managers we need for this manager
+		// Initialize all required manager references
+		InitializeManagers();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Initialize all manager references needed for this component
+	*/
+	protected void InitializeManagers()
+	{
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
-	};
+	}
 	
 	//------------------------------------------------------------------------------------------------
+	// SPECTATOR MANAGEMENT
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	* Check if a given entity is a spectator
+	* @param entity Entity to check
+	* @return True if entity is a spectator, false otherwise
+	*/
 	static bool IsSpectator(IEntity entity)
 	{
-		if(!entity)
+		if (!entity)
 			return false;
 		
 		return entity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE;
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Check if the local player is a spectator
+	* @return True if local player is a spectator, false otherwise
+	*/
 	static bool IsSpectator()
 	{
-		if (SCR_PlayerController.GetLocalMainEntity() && SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
 			return true;
 		
-		if (SCR_PlayerController.GetLocalControlledEntity() && SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
 			return true;
 
 		return false;
 	}
 
-	//Called to enter the actual game, just puts the player into a slot or spectator.
 	//------------------------------------------------------------------------------------------------
+	// PLAYER INITIALIZATION
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	* Initialize a player into the game either as a playable character or spectator
+	* @param playerId ID of the player to initialize
+	* @param overrideLocation Optional location to spawn the player
+	*/
 	void InitilizePlayer(int playerId, vector overrideLocation = vector.Zero)
 	{
 		if (playerId <= 0)
 			return;
 		
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		if (!playerController)
+			return;
+			
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		SCR_ChimeraCharacter playerCharacter = null;
-		bool isSpectator;
-		Faction faction;
+		bool isSpectator = false;
+		Faction faction = null;
 		
+		// Determine if player should be spectator or playable character
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
-			playerCharacter = SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(Resource.Load("{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et"), GetGame().GetWorld()));
-			
+			playerCharacter = CreateSpectatorEntity();
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			isSpectator = true;
 			
-			SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
-			if (currentGroup)
-				currentGroup.RemovePlayer(playerId);
-			
-			SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(playerCharacter.FindComponent(SCR_CharacterDamageManagerComponent)); 
-			if (damManager)
-				damManager.EnableDamageHandling(false);
-		} else {
-			playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
-			
-			if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
-				playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
-			
+			RemovePlayerFromCurrentGroup(playerId);
+			DisableDamageForSpectator(playerCharacter);
+		} 
+		else 
+		{
+			playerCharacter = GetOrCreatePlayableCharacter(playerId, overrideLocation);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 		}
 
-		if (faction && playerController)
-			SCR_PlayerFactionAffiliationComponent.Cast(playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)).RequestFaction(faction);
-		
-		if (playerCharacter && playerController)
-			playerController.SetInitialMainEntity(playerCharacter);
+		AssignFactionToPlayer(playerController, faction);
+		AssignCharacterToPlayer(playerController, playerCharacter);
 
-		if(!isSpectator)
+		if (!isSpectator)
 		{
-			int groupId = m_SlottingManager.GetPlayerSlotGroup(playerId).GetGroupID();
-			
-			if (groupId != -1)
-			{
-				m_GroupsManagerComponent.AddPlayerToGroup(groupId, playerId);
-				SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId).RequestJoinGroup(groupId);
-			};
-		};
+			AssignPlayerToGroup(playerId);
+		}
 		
 		m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, isSpectator);
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Create a spectator entity in the world
+	* @return The created spectator character
+	*/
+	protected SCR_ChimeraCharacter CreateSpectatorEntity()
+	{
+		Resource spectatorRes = Resource.Load(SPECTATOR_RESOURCE);
+		return SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld()));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Remove player from their current group if any
+	* @param playerId ID of the player to remove from group
+	*/
+	protected void RemovePlayerFromCurrentGroup(int playerId)
+	{
+		SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
+		if (currentGroup)
+			currentGroup.RemovePlayer(playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Disable damage handling for spectator character
+	* @param character Character to disable damage for
+	*/
+	protected void DisableDamageForSpectator(SCR_ChimeraCharacter character)
+	{
+		if (!character)
+			return;
+			
+		SCR_CharacterDamageManagerComponent damManager = SCR_CharacterDamageManagerComponent.Cast(character.FindComponent(SCR_CharacterDamageManagerComponent)); 
+		if (damManager)
+			damManager.EnableDamageHandling(false);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Get existing character or create a new one for playable roles
+	* @param playerId ID of the player
+	* @param overrideLocation Optional spawn location
+	* @return The character entity
+	*/
+	protected SCR_ChimeraCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation)
+	{
+		SCR_ChimeraCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
+		
+		if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
+			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
+			
+		return playerCharacter;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Assign faction to player controller
+	* @param playerController Player controller to assign faction to
+	* @param faction Faction to assign
+	*/
+	protected void AssignFactionToPlayer(SCR_PlayerController playerController, Faction faction)
+	{
+		if (!faction || !playerController)
+			return;
+			
+		SCR_PlayerFactionAffiliationComponent affiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(
+			playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)
+		);
+		
+		if (affiliationComponent)
+			affiliationComponent.RequestFaction(faction);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Assign character entity to player controller
+	* @param playerController Player controller to assign character to
+	* @param character Character to assign
+	*/
+	protected void AssignCharacterToPlayer(SCR_PlayerController playerController, SCR_ChimeraCharacter character)
+	{
+		if (!character || !playerController)
+			return;
+			
+		playerController.SetInitialMainEntity(character);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Assign player to their slotted group
+	* @param playerId ID of the player to assign
+	*/
+	protected void AssignPlayerToGroup(int playerId)
+	{
+		SCR_AIGroup group = m_SlottingManager.GetPlayerSlotGroup(playerId);
+		if (!group)
+			return;
+			
+		int groupId = group.GetGroupID();
+		if (groupId == -1)
+			return;
+			
+		m_GroupsManagerComponent.AddPlayerToGroup(groupId, playerId);
+		
+		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
+		if (groupComponent)
+			groupComponent.RequestJoinGroup(groupId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// TIME MANAGEMENT
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	* Get the current server world time string
+	* @return Formatted server time string
+	*/
 	string GetServerWorldTime()
 	{
 		return m_sServerWorldTime;
-	};
+	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Set the server world time
+	* @param input Time string to set
+	*/
 	void SetServerWorldTime(string input)
 	{
 		m_sServerWorldTime = input;
-		
 		Replication.BumpMe();
-	};
+	}
 	
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Update the server world time based on safestart time
+	*/
 	void UpdateServerWorldTime()
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();
@@ -140,11 +284,13 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		int totalSeconds = (millis * 0.001);
 
 		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
-
 		Replication.BumpMe();
-	};
+	}
 
 	//------------------------------------------------------------------------------------------------
+	/**
+	* Update mission end timer and handle expiration
+	*/
 	void UpdateMissionEndTimer()
 	{
 		float currentTime = GetGame().GetWorld().GetWorldTime();
@@ -156,26 +302,36 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (totalSeconds == 0) {
 			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
 			m_sServerWorldTime = "Mission Time Expired!";
-		};
+		}
 
 		Replication.BumpMe();
-	};
+	}
 	
 	//------------------------------------------------------------------------------------------------
+	// MODERATOR MANAGEMENT
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	* Set a player as moderator
+	* @param playerId ID of the player to set as moderator
+	*/
 	void SetPlayerModerator(int playerId)
 	{
 		if (!Replication.IsServer())
 			return;
 		
+		if (m_aModerators.Contains(playerId))
+			return;
+			
 		m_aModerators.Insert(playerId);
 		Replication.BumpMe();
-	};
+	}
 	
 	//------------------------------------------------------------------------------------------------
-	/*!
-	Check if given player is an moderator.
-	\param playerId ID of queried player
-	\return True when player with given ID is an moderator.
+	/**
+	* Check if a given player is a moderator
+	* @param playerId ID of the player to check
+	* @return True if player is a moderator, false otherwise
 	*/
 	bool IsModerator(int playerId)
 	{
@@ -183,9 +339,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	/*!
-	Check if local player is an moderator.
-	\return True when local player is a moderator.
+	/**
+	* Check if local player is a moderator
+	* @return True if local player is a moderator, false otherwise
 	*/
 	bool IsModerator()
 	{
