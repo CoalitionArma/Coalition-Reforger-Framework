@@ -13,7 +13,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_SafestartManager m_SafestartManager;
-	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
@@ -49,7 +48,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
-		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
 	}
@@ -107,9 +105,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!playerController)
 			return;
 			
-		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		SCR_ChimeraCharacter playerCharacter = null;
-		bool isSpectator = false;
 		Faction faction = null;
 		
 		// Determine if player should be spectator or playable character
@@ -117,7 +113,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		{
 			playerCharacter = CreateSpectatorEntity();
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
-			isSpectator = true;
 			
 			RemovePlayerFromCurrentGroup(playerId);
 			DisableDamageForSpectator(playerCharacter);
@@ -127,16 +122,19 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, overrideLocation);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 		}
-
-		AssignFactionToPlayer(playerController, faction);
-		AssignCharacterToPlayer(playerController, playerCharacter);
-
-		if (!isSpectator)
-		{
-			AssignPlayerToGroup(playerId);
-		}
 		
-		m_RplBroadcastManager.InitilizePlayerBroadcast(playerId, isSpectator);
+		if (playerController && playerCharacter)
+		{
+			CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.Cast(playerController.FindComponent(CRF_PlayerControllerManager));
+			
+			if (playerControllerComp)
+			{
+				if(!CRF_GamemodeManager.IsSpectator(playerCharacter))
+					playerControllerComp.InitilizePlayerCharacterCheck(playerCharacter, faction);
+				else
+					playerControllerComp.InitilizePlayerCharacter(playerCharacter, faction);
+			};
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -144,7 +142,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* Create a spectator entity in the world
 	* @return The created spectator character
 	*/
-	protected SCR_ChimeraCharacter CreateSpectatorEntity()
+	static SCR_ChimeraCharacter CreateSpectatorEntity()
 	{
 		Resource spectatorRes = Resource.Load(SPECTATOR_RESOURCE);
 		return SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld()));
@@ -155,7 +153,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* Remove player from their current group if any
 	* @param playerId ID of the player to remove from group
 	*/
-	protected void RemovePlayerFromCurrentGroup(int playerId)
+	void RemovePlayerFromCurrentGroup(int playerId)
 	{
 		SCR_AIGroup currentGroup = m_GroupsManagerComponent.GetPlayerGroup(playerId);
 		if (currentGroup)
@@ -167,7 +165,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* Disable damage handling for spectator character
 	* @param character Character to disable damage for
 	*/
-	protected void DisableDamageForSpectator(SCR_ChimeraCharacter character)
+	static void DisableDamageForSpectator(SCR_ChimeraCharacter character)
 	{
 		if (!character)
 			return;
@@ -184,23 +182,26 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* @param overrideLocation Optional spawn location
 	* @return The character entity
 	*/
-	protected SCR_ChimeraCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation)
+	SCR_ChimeraCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation)
 	{
 		SCR_ChimeraCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);
 		
 		if (!playerCharacter || playerCharacter.GetCharacterController().IsDead())
+		{
+			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
+		}
 			
 		return playerCharacter;
 	}
-	
+
 	//------------------------------------------------------------------------------------------------
 	/**
 	* Assign faction to player controller
 	* @param playerController Player controller to assign faction to
 	* @param faction Faction to assign
 	*/
-	protected void AssignFactionToPlayer(SCR_PlayerController playerController, Faction faction)
+	static void AssignFactionToPlayer(SCR_PlayerController playerController, Faction faction)
 	{
 		if (!faction || !playerController)
 			return;
@@ -219,7 +220,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* @param playerController Player controller to assign character to
 	* @param character Character to assign
 	*/
-	protected void AssignCharacterToPlayer(SCR_PlayerController playerController, SCR_ChimeraCharacter character)
+	static void AssignCharacterToPlayer(SCR_PlayerController playerController, SCR_ChimeraCharacter character)
 	{
 		if (!character || !playerController)
 			return;
@@ -232,7 +233,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* Assign player to their slotted group
 	* @param playerId ID of the player to assign
 	*/
-	protected void AssignPlayerToGroup(int playerId)
+	void AssignPlayerToGroup(int playerId)
 	{
 		SCR_AIGroup group = m_SlottingManager.GetPlayerSlotGroup(playerId);
 		if (!group)

@@ -149,6 +149,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Rpc(RpcDo_SendRespawnScreen, playerId);
 		#endif
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SendCharacterLoadingScreen(int playerId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_SendCharacterLoadingScreen(playerId);
+		#else
+		Rpc(RpcDo_SendCharacterLoadingScreen, playerId);
+		#endif
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void InitilizePlayerBroadcast(int playerId, bool isSpectator)
@@ -424,6 +434,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 		GetGame().GetCallqueue().CallLater(m_RespawnManager.RespawnTimer, 1000, true);
 		GetGame().GetCallqueue().CallLater(m_RespawnManager.CloseSlottingMenu, 100, true);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_SendCharacterLoadingScreen(int playerId)
+	{
+		if (SCR_PlayerController.GetLocalPlayerId() != playerId)
+			return;
+		
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_CharacterLoading);
+	};
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]

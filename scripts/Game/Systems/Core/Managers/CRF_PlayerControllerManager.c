@@ -56,7 +56,69 @@ class CRF_PlayerControllerManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	// INITIALIZATION
+	// INITIALIZATION AUTHORITY
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * (ONLY ON THE AUTHORITY) Initializes a looped check if the local player character has all gear from the GS manager
+	 * @param playerCharacter - Player character to pass along to InitilizePlayerCharacter from the gamemode manager
+	 * @param faction - Faction to pass alongto InitilizePlayerCharacter from the gamemode manager
+	 */
+	void InitilizePlayerCharacterCheck(SCR_ChimeraCharacter playerCharacter, Faction faction)
+	{
+		// Get the playable character comp from our entity so we can check if the gearscript has completed
+		CRF_PlayableCharacter playable = CRF_PlayableCharacter.Cast(playerCharacter.FindComponent(CRF_PlayableCharacter));
+		
+		// Check if we are already in a loop check, if we arent, start a loop check
+		GetGame().GetCallqueue().CallLater(PlayerCharacterCheck, 50, true, playable, playerCharacter, faction);
+	};
+	
+	/**
+	 * (ONLY ON THE AUTHORITY) Loop that checks if the local player character has all gear from the GS manager
+	 * @param playerCharacter - Player character to pass along to InitilizePlayerCharacter from the gamemode manager
+	 * @param faction - Faction to pass along to InitilizePlayerCharacter from the gamemode manager
+	 */
+	protected void PlayerCharacterCheck(CRF_PlayableCharacter playable, SCR_ChimeraCharacter playerCharacter, Faction faction)
+	{
+		// If gearscript hasnt been completed, dont initilize the entity
+		if (!playable.GetGearscriptCompleted())
+			return;
+		
+		// Initilize playable entity
+		GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, 325, false, playerCharacter, faction, false);
+		// Kill the loop
+		GetGame().GetCallqueue().Remove(PlayerCharacterCheck);
+	};
+	
+	/**
+	 * (ONLY ON THE AUTHORITY) Initilize the player character for the local player controller
+	 * @param playerCharacter - Player character that we are initilizing
+	 * @param faction - Faction to assign to the playercontroller
+	 */
+	void InitilizePlayerCharacter(SCR_ChimeraCharacter playerCharacter, Faction faction)
+	{	
+		// Get the local player controller
+		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetOwner());
+		
+		// Get the local player id from the controller
+		int playerId = playerController.GetPlayerId();
+		
+		// Check if the entity we are setting is a spectator
+		bool isSpectator = CRF_GamemodeManager.IsSpectator(playerCharacter);
+		
+		CRF_GamemodeManager.AssignFactionToPlayer(playerController, faction);
+		CRF_GamemodeManager.AssignCharacterToPlayer(playerController, playerCharacter);
+
+		if (!isSpectator)
+		{
+			CRF_GamemodeManager.GetInstance().AssignPlayerToGroup(playerId);
+		}
+		
+		CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, isSpectator);
+	}
+
+	//------------------------------------------------------------------------------------------------
+	// INITIALIZATION CLIENT
 	//------------------------------------------------------------------------------------------------
 
 	/**
@@ -105,7 +167,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 		
 			// Schedule delayed initialization of player-specific settings
 			GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 100, false);
-			GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
 		};
 		
 		if (IsSpectator)
@@ -220,72 +281,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{0AD0A1ADEBCF893F}Assets/Items/Equipment/NVG/pvs14/data/SpecNVGFilm.emat", true);
 		else
 			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// PLAYER EQUIPMENT
-	//------------------------------------------------------------------------------------------------
-
-	/**
-	 * Sets up radio frequencies based on player group
-	 * Configures both group and platoon frequencies
-	 */
-	void SetupRadioFrequency()
-	{
-		// Get player's entity
-		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
-		if (!entity || CRF_GamemodeManager.IsSpectator(entity))
-			return;
-		
-		// Find radio in inventory
-		array<IEntity> items = {};
-		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
-		IEntity radioEntity;
-		foreach (IEntity item : items)
-		{
-			if (item.FindComponent(BaseRadioComponent))
-			{
-				radioEntity = item;
-				break;
-			}
-		}
-
-		if (!radioEntity)
-			return;
-
-		// Get radio components
-		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
-		BaseTransceiver grpTsv = radio.GetTransceiver(0);
-
-		// Get player's group
-		SCR_GroupsManagerComponent m_GroupManager = SCR_GroupsManagerComponent.GetInstance();
-		if (!m_GroupManager)
-			return;
-
-		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
-		PlayerController pc = GetGame().GetPlayerController();
-		
-		// Set frequency based on group
-		if (pc && group)
-		{
-			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
-			if (rhc)
-				rhc.SetFrequency(grpTsv, group.GetRadioFrequency());
-		}
-
-		// Set up Voice over Network component
-		SCR_VONController vc = SCR_VONController.Cast(pc.FindComponent(SCR_VONController));
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(entity.FindComponent(SCR_VoNComponent));
-		
-		von.SetTransmitRadio(grpTsv);
-
-		// Set up platoon radio if available
-		BaseTransceiver pltTsv = radio.GetTransceiver(1);
-		if (pltTsv)
-			von.SetTransmitRadio(pltTsv);
-		
-		vc.PublicResetVON();
-		vc.SetVONComponent(von);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -618,57 +613,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	// MAP MARKER SYSTEM
 	//------------------------------------------------------------------------------------------------
-	
-	/**
-	 * Update map markers for objectives in Frontline gamemode
-	 * @param zoneStatus - Array of zone status strings
-	 * @param zoneObjectNames - Array of zone object names
-	 * @param bluforSide - Blue force faction key
-	 * @param opforSide - Opposing force faction key
-	 */
-	void UpdateMapMarkers(array<string> zoneStatus, array<string> zoneObjectNames, FactionKey bluforSide, FactionKey opforSide)
-	{
-		RemoveALLScriptedMarkers();
-
-		foreach (int i, string zoneName : zoneObjectNames)
-		{
-			string status = zoneStatus[i];
-			string imageTexture;
-			int imageColor;
-
-			// Parse zone status
-			array<string> zoneStatusArray = {};
-			status.Split(":", zoneStatusArray, false);
-
-			string zoneLocked = zoneStatusArray[1];
-			FactionKey zoneFactionStored = zoneStatusArray[2];
-
-			// Select image based on zone index
-			switch (i)
-			{
-				case 0: {imageTexture = "{21A2A457BD0E42C1}UI\Objectives\A.edds"; break; };
-				case 1: {imageTexture = "{7F4A8D140283CCCE}UI\Objectives\B.edds"; break; };
-				case 2: {imageTexture = "{8B42CA8C0F5EA4BA}UI\Objectives\C.edds"; break; };
-				case 3: {imageTexture = "{C29ADF937D98D0D0}UI\Objectives\D.edds"; break; };
-				case 4: {imageTexture = "{3692980B7045B8A4}UI\Objectives\E.edds"; break; };
-			}
-
-			// Add lock marker if zone is locked
-			if (zoneLocked == "Locked")
-				AddScriptedMarker(zoneName, "0 0 0", 0, "", "{91427B7866707601}UI\Objectives\lock.edds", 50, ARGB(255, 142, 142, 142));
-
-			// Set color based on controlling faction
-			switch (zoneFactionStored)
-			{
-				case bluforSide: {imageColor = ARGB(255, 0, 25, 225); break; }; // Blufor
-				case opforSide: {imageColor = ARGB(255, 225, 25, 0); break; }; // Opfor
-				default: {imageColor = ARGB(255, 225, 225, 225); break; }; // Uncaptured
-			}
-
-			// Add zone marker
-			AddScriptedMarker(zoneName, "0 0 0", 0, "", imageTexture, 45, imageColor);
-		}
-	}
 
 	/**
 	 * Returns the array of scripted markers

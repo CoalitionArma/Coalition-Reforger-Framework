@@ -1,12 +1,4 @@
 /**
- * Extended ChimeraMenuPreset enum to include the CRF Respawn Menu
- */
-modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
-{
-	CRF_RespawnMenu
-}
-
-/**
  * Custom respawn menu implementation for the Coalition Reforger Framework
  * Provides timer display, map view, and communication capabilities during respawn
  */

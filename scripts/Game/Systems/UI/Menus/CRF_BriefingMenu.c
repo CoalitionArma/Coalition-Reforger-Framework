@@ -1,8 +1,3 @@
-modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
-{
-	CRF_PreviewMenu
-}
-
 class CRF_PreviewMenuUI: ChimeraMenuBase
 {
 	//--- UI Widgets ---
