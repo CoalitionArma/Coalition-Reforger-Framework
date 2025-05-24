@@ -895,7 +895,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	void Action_Exit()
 	{
 		// Open pause menu rather than exiting directly
-		GetGame().GetCallqueue().CallLater(OpenPauseMenuWrap, 0);
+		GetGame().GetCallqueue().Call(OpenPauseMenuWrap);
 	}
 	
 	/**
