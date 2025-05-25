@@ -492,11 +492,17 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	}
 	
 	/**
-	 * Final step in opening map (applies zoom)
+	 * Final step in opening map (applies zoom) and pans to AO
 	 */
 	void OpenMapWrapZoomChangeWrap()
 	{
 		m_MapEntity.ZoomOut();
+		
+		vector aoCenter = CRF_Gamemode.GetInstance().GetOrigin();
+		if (aoCenter)
+		{
+			m_MapEntity.ZoomPanSmooth(0.3, aoCenter[0], aoCenter[2]);
+		}
 	}
 	
 	/**
