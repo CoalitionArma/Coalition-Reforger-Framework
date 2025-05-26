@@ -272,7 +272,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	void Action_Exit()
 	{
 		// Open pause menu instead of exiting directly to prevent accidental exits
-		GetGame().GetCallqueue().CallLater(OpenPauseMenu, 100);
+		GetGame().GetCallqueue().CallLater(OpenPauseMenu, 0);
 	}
 	
 	/**
