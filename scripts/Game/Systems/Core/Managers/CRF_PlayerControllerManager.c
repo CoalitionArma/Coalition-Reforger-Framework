@@ -56,69 +56,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	// INITIALIZATION AUTHORITY
-	//------------------------------------------------------------------------------------------------
-	
-	/**
-	 * (ONLY ON THE AUTHORITY) Initializes a looped check if the local player character has all gear from the GS manager
-	 * @param playerCharacter - Player character to pass along to InitilizePlayerCharacter from the gamemode manager
-	 * @param faction - Faction to pass alongto InitilizePlayerCharacter from the gamemode manager
-	 */
-	void InitilizePlayerCharacterCheck(SCR_ChimeraCharacter playerCharacter, Faction faction)
-	{
-		// Get the playable character comp from our entity so we can check if the gearscript has completed
-		CRF_PlayableCharacter playable = CRF_PlayableCharacter.Cast(playerCharacter.FindComponent(CRF_PlayableCharacter));
-		
-		// Check if we are already in a loop check, if we arent, start a loop check
-		GetGame().GetCallqueue().CallLater(PlayerCharacterCheck, 50, true, playable, playerCharacter, faction);
-	};
-	
-	/**
-	 * (ONLY ON THE AUTHORITY) Loop that checks if the local player character has all gear from the GS manager
-	 * @param playerCharacter - Player character to pass along to InitilizePlayerCharacter from the gamemode manager
-	 * @param faction - Faction to pass along to InitilizePlayerCharacter from the gamemode manager
-	 */
-	protected void PlayerCharacterCheck(CRF_PlayableCharacter playable, SCR_ChimeraCharacter playerCharacter, Faction faction)
-	{
-		// If gearscript hasnt been completed, dont initilize the entity
-		if (!playable.GetGearscriptCompleted())
-			return;
-		
-		// Initilize playable entity
-		GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, 325, false, playerCharacter, faction, false);
-		// Kill the loop
-		GetGame().GetCallqueue().Remove(PlayerCharacterCheck);
-	};
-	
-	/**
-	 * (ONLY ON THE AUTHORITY) Initilize the player character for the local player controller
-	 * @param playerCharacter - Player character that we are initilizing
-	 * @param faction - Faction to assign to the playercontroller
-	 */
-	void InitilizePlayerCharacter(SCR_ChimeraCharacter playerCharacter, Faction faction)
-	{	
-		// Get the local player controller
-		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetOwner());
-		
-		// Get the local player id from the controller
-		int playerId = playerController.GetPlayerId();
-		
-		// Check if the entity we are setting is a spectator
-		bool isSpectator = CRF_GamemodeManager.IsSpectator(playerCharacter);
-		
-		CRF_GamemodeManager.AssignFactionToPlayer(playerController, faction);
-		CRF_GamemodeManager.AssignCharacterToPlayer(playerController, playerCharacter);
-
-		if (!isSpectator)
-		{
-			CRF_GamemodeManager.GetInstance().AssignPlayerToGroup(playerId);
-		}
-		
-		CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, isSpectator);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	// INITIALIZATION CLIENT
+	// INITIALIZATION
 	//------------------------------------------------------------------------------------------------
 
 	/**
