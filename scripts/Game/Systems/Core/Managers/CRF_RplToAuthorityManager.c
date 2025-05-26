@@ -382,6 +382,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ResetGear(int playerId, ResourceName prefab, bool logAction)
 	{
+		// Close map on client to prevent lockup
+		m_RplBroadcastManager.Closemap(playerId);
+		
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!entity)
 			return;

@@ -121,6 +121,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void Closemap(int playerID)
+	{
+		#ifdef WORKBENCH
+		RpcDo_Closemap(playerID);
+		#else
+		Rpc(RpcDo_Closemap, playerID);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SendHint(string data, int playerId = -1, string factionKey = "")
 	{
 		#ifdef WORKBENCH
@@ -384,6 +394,21 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Display the hint
 		CRF_Hint hint = CRF_Hint.Cast(widget.FindHandler(CRF_Hint));
 		hint.ShowHint(data, 8000);
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_Closemap(int playerId)
+	{	
+		// Check if this close is for this specific player
+		if (playerId != -1 && !IsLocalPlayer(playerId))
+			return;
+		
+		// Close the map if open
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu)
+			if (topMenu.IsInherited(SCR_MapMenuUI))
+				topMenu.Close();
 	}
 	
 	//------------------------------------------------------------------------------------------------
