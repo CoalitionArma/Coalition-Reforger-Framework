@@ -179,11 +179,12 @@ class CRF_PlayerControllerManager : ScriptComponent
 			{
 				char.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
-			} else if (m_vStoredCameraPos[3] != vector.Zero)
+			} else if (m_vStoredCameraPos[3] != vector.Zero) {
 				cameraPos = m_vStoredCameraPos;
-			else
+			} else {
 				cameraPos = m_Gamemode.m_vGenericSpawn;
-	
+			}
+				
 			// Set up camera entity
 			EntitySpawnParams cameraSpawnParams = new EntitySpawnParams();
 			cameraSpawnParams.TransformMode = ETransformMode.WORLD;

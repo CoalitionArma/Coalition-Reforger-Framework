@@ -28,4 +28,30 @@ modded class SCR_ListBoxComponent
 		// Return the ID of the newly added item
 		return id;
 	}
+	
+	/**
+	 * Adds an item with color to the listbox.
+	 * 
+	 * @param item The text to display for this list item
+	 * @param color of the text
+	 * @param data Custom data to associate with this item (optional)
+	 * @param itemLayout Custom layout for this item (optional)
+	 * @return The index of the newly added item
+	 */
+	int AddItemWithColor(string item, Color color, Managed data = null, ResourceName itemLayout = string.Empty)
+	{
+		// Component that will handle the listbox element
+		SCR_ListBoxElementComponent comp;
+		
+		// Add the item to the listbox and get its ID
+		int id = _AddItem(item, data, comp, itemLayout);
+	
+		// Set text color
+		TextWidget label = TextWidget.Cast(comp.GetRootWidget().FindAnyWidget("Text"));
+		if (label)
+			label.SetColor(color);
+	
+		// Return the ID of the newly added item
+		return id;
+	}
 }

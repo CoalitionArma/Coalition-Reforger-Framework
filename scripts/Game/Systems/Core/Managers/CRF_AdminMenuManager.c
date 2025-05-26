@@ -64,7 +64,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		System.GetHourMinuteSecond(hour, minute, second);
 		
 		// Format with leading zeros
-		return string.Format("%02d:%02d:%02d", hour, minute, second);
+		return string.Format("%1:%2:%3", hour.ToString(2), minute.ToString(2), second.ToString(2));
 	}
 	
 	/**
