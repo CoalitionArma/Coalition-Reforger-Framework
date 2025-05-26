@@ -617,7 +617,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 */
 	void Action_Exit()
 	{
-		GetGame().GetCallqueue().CallLater(OpenPauseMenuWrap, 0);
+		GetGame().GetCallqueue().Call(OpenPauseMenuWrap);
 	}
 	
 	/**
