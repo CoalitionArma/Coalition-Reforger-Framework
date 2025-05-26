@@ -105,7 +105,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 		
 			// Schedule delayed initialization of player-specific settings
 			GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 100, false);
-		};
+			GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
+		}; 
 		
 		if (IsSpectator)
 		{	
@@ -220,6 +221,72 @@ class CRF_PlayerControllerManager : ScriptComponent
 			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{0AD0A1ADEBCF893F}Assets/Items/Equipment/NVG/pvs14/data/SpecNVGFilm.emat", true);
 		else
 			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// PLAYER EQUIPMENT
+	//------------------------------------------------------------------------------------------------
+
+	/**
+	 * Sets up radio frequencies based on player group
+	 * Configures both group and platoon frequencies
+	 */
+	void SetupRadioFrequency()
+	{
+		// Get player's entity
+		IEntity entity = SCR_PlayerController.GetLocalMainEntity();
+		if (!entity || CRF_GamemodeManager.IsSpectator(entity))
+			return;
+		
+		// Find radio in inventory
+		array<IEntity> items = {};
+		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
+		IEntity radioEntity;
+		foreach (IEntity item : items)
+		{
+			if (item.FindComponent(BaseRadioComponent))
+			{
+				radioEntity = item;
+				break;
+			}
+		}
+
+		if (!radioEntity)
+			return;
+
+		// Get radio components
+		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		BaseTransceiver grpTsv = radio.GetTransceiver(0);
+
+		// Get player's group
+		SCR_GroupsManagerComponent m_GroupManager = SCR_GroupsManagerComponent.GetInstance();
+		if (!m_GroupManager)
+			return;
+
+		SCR_AIGroup group = m_GroupManager.GetPlayerGroup(SCR_PlayerController.GetLocalPlayerId());
+		PlayerController pc = GetGame().GetPlayerController();
+		
+		// Set frequency based on group
+		if (pc && group)
+		{
+			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
+			if (rhc)
+				rhc.SetFrequency(grpTsv, group.GetRadioFrequency());
+		}
+
+		// Set up Voice over Network component
+		SCR_VONController vc = SCR_VONController.Cast(pc.FindComponent(SCR_VONController));
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(entity.FindComponent(SCR_VoNComponent));
+		
+		von.SetTransmitRadio(grpTsv);
+
+		// Set up platoon radio if available
+		BaseTransceiver pltTsv = radio.GetTransceiver(1);
+		if (pltTsv)
+			von.SetTransmitRadio(pltTsv);
+		
+		vc.PublicResetVON();
+		vc.SetVONComponent(von);
 	}
 	
 	//------------------------------------------------------------------------------------------------

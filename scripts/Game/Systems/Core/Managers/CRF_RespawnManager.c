@@ -151,9 +151,9 @@ class CRF_RespawnManager : ScriptComponent
 			// Only perform respawn if not in AAR state
 			if (!isGameInAARState)
 			{
-				CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
-				GetGame().GetCallqueue().Remove(CloseSlottingMenu);
 				GetGame().GetMenuManager().CloseAllMenus();
+				GetGame().GetCallqueue().Remove(CloseSlottingMenu);
+				CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
 			}
 
 			// Remove this timer function from the callqueue
