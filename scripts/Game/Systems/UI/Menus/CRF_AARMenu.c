@@ -798,11 +798,17 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	
 	/**
 	 * Final step in map opening sequence
-	 * Sets the initial zoom level
+	 * Sets the initial zoom level & pan to center of AO
 	 */
 	void OpenMapWrapZoomChangeWrap()
 	{
 		m_MapEntity.ZoomOut();
+		
+		vector aoCenter = CRF_Gamemode.GetInstance().GetOrigin();
+		if (aoCenter)
+		{
+			m_MapEntity.ZoomPanSmooth(0.3, aoCenter[0], aoCenter[2]);
+		}
 	}
 	
 	//----------------------------------------
