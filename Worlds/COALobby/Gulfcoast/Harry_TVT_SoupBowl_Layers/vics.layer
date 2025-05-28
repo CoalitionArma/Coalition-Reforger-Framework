@@ -1,0 +1,109 @@
+$grp SCR_VehicleSpawn {
+ van {
+  coords 12882.438 3.925 1048.104
+  angleY -58.993
+  m_rnPrefab "{BDE16A6AE9942D44}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ van2 {
+  coords 12894.871 3.925 1040.632
+  angleY -58.993
+  m_rnPrefab "{BDE16A6AE9942D44}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ van3 {
+  coords 12903.251 3.925 1035.595
+  angleY -58.993
+  m_rnPrefab "{BDE16A6AE9942D44}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ van4 {
+  coords 12913.795 3.925 1029.258
+  angleY -58.993
+  m_rnPrefab "{BDE16A6AE9942D44}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ van5 {
+  coords 12922.693 3.925 1023.909
+  angleY -58.993
+  m_rnPrefab "{BDE16A6AE9942D44}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ van6 {
+  coords 12930.295 3.925 1019.34
+  angleY -58.993
+  m_rnPrefab "{BDE16A6AE9942D44}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_FIA.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ indamb {
+  coords 12941.484 3.925 1012.615
+  angleY -58.993
+  m_rnPrefab "{F0EC3EFF70B174B0}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_FIA.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ m113 {
+  coords 10666.419 14.451 1675.461
+  angleY -25.042
+  m_rnPrefab "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ m113b {
+  coords 10655.92 14.159 1668.286
+  angleY -25.042
+  m_rnPrefab "{18378FFFC82F30BF}Prefabs/Vehicles/Tracked/M113/M113_APC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ heli {
+  coords 10708.516 18.398 1692.058
+  m_rnPrefab "{33ED4D9D86F595C6}Prefabs/Vehicles/Helicopters/UH1H/UH1H_UK.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ truck {
+  coords 10673.691 15.474 1722.448
+  angleY -21.52
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ truck2 {
+  coords 10661.334 15.129 1717.575
+  angleY -21.52
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ truck3 {
+  coords 10650.443 14.777 1713.281
+  angleY -21.52
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ truck4 {
+  coords 10640.915 14.357 1709.524
+  angleY -21.52
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ truck5 {
+  coords 10631.339 13.787 1705.748
+  angleY -21.52
+  m_rnPrefab "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+StaticModelEntity : "{7784DA55DC0F253C}PrefabsEditable/Auto/Structures/Military/Camps/HelipadImprovised_01/E_HelipadImprovised_US_01.et" {
+ coords 10708.766 2.616 1692.809
+}

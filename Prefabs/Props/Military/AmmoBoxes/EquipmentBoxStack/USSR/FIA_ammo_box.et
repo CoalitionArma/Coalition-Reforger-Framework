@@ -1,0 +1,99 @@
+GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V1_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SoundComponent "{65753B38D679F962}" {
+   Filenames {
+    "{4340FAB152ACD12D}Sounds/Compositions/Slotted/SlotFlatSmall/Compositions_Radio_Chatter.acp"
+   }
+   IncludeInactive 1
+   SoundPoints {
+    SoundPointInfo sound {
+     Offset 0 0.9141 0
+    }
+   }
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{5172A6E151032216}Assets/Props/Military/AmmoBox/EquipmentBoxStack/EquipmentBoxStack_01_V1.xob"
+   Materials {
+    MaterialAssignClass "{65753B38D679F907}" {
+     SourceMaterial "Color_Palette"
+     AssignedMaterial "{900FD941337C7B0B}Common/Materials/ColorPalette/Color_palette_02_YELLOW_10_S2_R2.emat"
+    }
+    MaterialAssignClass "{65753B38D679F902}" {
+     SourceMaterial "EquipmentBoxWooden_Ammunition_01"
+     AssignedMaterial "{EB85A5589049E9D1}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Ammunition_01_USSR.emat"
+    }
+    MaterialAssignClass "{65753B38D679F909}" {
+     SourceMaterial "EquipmentBoxWooden_Launcher_01"
+     AssignedMaterial "{C90881A9C2B47209}Assets/Props/Military/AmmoBox/EquipmentBoxWooden_01/Data/EquipmentBoxWooden_Launcher_01_USSR.emat"
+    }
+   }
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   ResponseIndex "LargeDestructible"
+  }
+  SCR_DestructionMultiPhaseComponent "{58F89684469E44B1}" {
+   Enabled 1
+   m_bPassDamageToChildren 1
+   m_DestroySpawnObjects {
+    SCR_PrefabSpawnable "{65753B38D679F930}" {
+     m_Prefabs {
+      "{9E2D46C5ED3EBC84}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V1_dst_01_USSR.et"
+     }
+    }
+    SCR_DebrisSpawnable "{65753B38D679F93B}" {
+     m_ModelPrefabs {
+      "{9033028DD0C9B35E}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V1_dst_02_USSR.et" "{95C6C14A3B9B49E8}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V1_dst_03_USSR.et" "{8C0F8A1DAB27ACEA}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/Dst/EquipmentBoxStack_01_V1_dst_04_USSR.et"
+     }
+    }
+   }
+  }
+  SCR_SoundDataComponent "{5C53391603B5CF41}" {
+   Enabled 1
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Enabled 1
+   MultiSlots {
+    MultiSlotConfiguration "{65753B38D679F8CF}" {
+     SlotTemplate EquipmentStorageSlot Rifle {
+      Prefab "{A827B610B7CD4158}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Last_5Tracer.et"
+     }
+     NumSlots 60
+    }
+    MultiSlotConfiguration "{65753B38D679F8D4}" {
+     SlotTemplate EquipmentStorageSlot RPK {
+      Prefab "{D78C667F59829717}Prefabs/Weapons/Magazines/Magazine_545x39_RPK_45rnd_4Ball_1Tracer.et"
+     }
+     NumSlots 20
+    }
+    MultiSlotConfiguration "{65753B38D679F8D3}" {
+     SlotTemplate EquipmentStorageSlot PKM {
+      Prefab "{E5E9C5897CF47F44}Prefabs/Weapons/Magazines/Box_762x54_PK_100rnd_4Ball_1Tracer.et"
+     }
+     NumSlots 6
+    }
+    MultiSlotConfiguration "{65753B38D679F8B4}" {
+     SlotTemplate EquipmentStorageSlot light {
+      Prefab "{645C73791ECA1698}Prefabs/Weapons/Grenades/Grenade_RGD5.et"
+     }
+     NumSlots 15
+    }
+   }
+   m_fMaxWeight 5000
+  }
+  ActionsManagerComponent "{5476B36C403D4CC0}" {
+   Enabled 1
+   ActionContexts {
+    UserActionContext "{5476B36C47B0461A}" {
+     Position PointInfo "{5476B36C45ADDA89}" {
+      Offset 0 0.9025 0
+     }
+    }
+   }
+  }
+  RplComponent "{5476B36C54387F41}" {
+   Enabled 1
+  }
+ }
+ coords 0 0 0
+}
