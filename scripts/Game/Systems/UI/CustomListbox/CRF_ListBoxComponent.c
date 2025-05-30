@@ -93,19 +93,16 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		ResourceName selectedLayout;
 		
 		// Use override layout if provided
-		if(overrideLayout != "") {
+		if (overrideLayout != "") {
 			selectedLayout = overrideLayout;
-		}
-		// Choose based on admin status and gamemode state
-		else {
+		} else {
 			bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
 			bool notInAARState = CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.AAR;
 			
-			if(isAdmin && notInAARState) {
+			if (isAdmin && notInAARState) 
 				selectedLayout = "{9B0771FD74AAEB4B}UI/Listbox/PlayerSlotListboxElement.layout";
-			} else {
+			else 
 				selectedLayout = "{64B8BF7DEE93A755}UI/Listbox/PlayerSlotListboxElementNonAdmin.layout";
-			}
 		}
 		
 		// Create the widget
@@ -289,17 +286,14 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		// Use override layout if provided
 		if(overrideLayout != "") {
 			selectedLayout = overrideLayout;
-		}
-		// Choose based on admin status and gamemode state
-		else {
+		} else {
 			bool isAdmin = SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId());
 			bool notInAARState = CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.AAR;
 			
-			if(isAdmin && notInAARState) {
+			if (isAdmin && notInAARState)
 				selectedLayout = "{80FE0FE1E3146535}UI/Listbox/GroupListBoxElement.layout";
-			} else {
+			else 
 				selectedLayout = "{A078BC05E0FF79C5}UI/Listbox/GroupListBoxElementNonAdmin.layout";
-			}
 		}
 		
 		Widget newWidget = GetGame().GetWorkspace().CreateWidgets(selectedLayout, m_wList);
