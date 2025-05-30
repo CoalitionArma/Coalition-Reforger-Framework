@@ -48,7 +48,7 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   "		"\
   "		else"\
   "		{"\
-  "			GetGame().GetCallqueue().CallLater(spawnthings, 1200000, false);"\
+  "			GetGame().GetCallqueue().CallLater(spawnthings, 900000, false);"\
   "		}"\
   "	}"
   EOnInit ""\
