@@ -1541,7 +1541,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	{
 		// Note: Opening pause menu instead of directly exiting the game
 		// because players often accidentally exit the game
-		GetGame().GetCallqueue().CallLater(OpenPauseMenuWrap, 0);
+		GetGame().GetCallqueue().Call(OpenPauseMenuWrap);
 	}
 	
 	/**

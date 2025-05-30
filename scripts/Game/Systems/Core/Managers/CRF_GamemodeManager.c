@@ -116,9 +116,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 			RemovePlayerFromCurrentGroup(playerId);
 			DisableDamageForSpectator(playerCharacter);
-		} 
-		else 
-		{
+		} else {
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, overrideLocation);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 		}

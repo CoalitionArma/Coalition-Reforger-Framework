@@ -497,8 +497,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 				
 			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				continue;
-				
-			list.AddItem(string.Format("%1", name));
+			
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
 		}
 	}
 
@@ -1013,11 +1014,12 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 
 			if (CRF_SlottingManager.GetInstance().IsPlayerConsideredDead(playerId) ||
 				CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
-				playerList.AddItem(string.Format("%1", name));
+				playerList.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
 			}
 		}
 	}
@@ -1594,14 +1596,15 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 			
 			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
 				continue;
 				
 			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				continue;
-				
-			list.AddItem(string.Format("%1", name));
+			
+			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
 		}
 	}
 	

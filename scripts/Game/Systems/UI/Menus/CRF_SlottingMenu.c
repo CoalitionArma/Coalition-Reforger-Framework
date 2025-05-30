@@ -1562,7 +1562,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	void Action_Exit()
 	{
 		// Use a small frame delay to avoid UI interaction issues
-		GetGame().GetCallqueue().CallLater(OpenPauseMenuWrap, 0);
+		GetGame().GetCallqueue().Call(OpenPauseMenuWrap);
 	}
 	
 	/**
