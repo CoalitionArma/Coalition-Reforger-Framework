@@ -61,6 +61,6 @@ class CRF_DonatorConfigStruct
 	void SetDefaultValue()
 	{
 		m_mDonators = new map<string, string>();
-		m_mDonators.Insert("00000000-0000-0000-0000-000000000001", "Moderator Example");
+		m_mDonators.Insert("00000000-0000-0000-0000-000000000001", "Donator Example");
 	};
 };
