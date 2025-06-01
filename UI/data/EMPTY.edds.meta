@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{D09E0DAC2494343C}UI/data/empty.edds"
+ Name "{D09E0DAC2494343C}UI/data/EMPTY.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

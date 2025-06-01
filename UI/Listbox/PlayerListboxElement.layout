@@ -32,6 +32,7 @@ ButtonWidgetClass {
         HorizontalAlign 2
         VerticalAlign 3
        }
+       "Is Visible" 0
        Texture "{6027A94ED71D55F6}UI/Textures/Nametags/nametagPointerVON_ca.edds"
        Size 32 32
       }
