@@ -61,7 +61,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	//---------------------------------------------------------------------
 	// Consts
 	//---------------------------------------------------------------------
-	const string EMPTY_RESOURCE = "{D09E0DAC2494343C}UI/data/empty.edds";
+	const string EMPTY_RESOURCE = "{2E717F4664C6E49D}UI/Textures/Nametags/Nametag-Filter-Icons/Player.edds";
 
 	/**
 	 * Called when the menu is opened
