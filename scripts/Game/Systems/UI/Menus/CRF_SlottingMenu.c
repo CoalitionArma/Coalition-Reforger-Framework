@@ -93,7 +93,6 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		SelectDefaultFaction();
 
 		// Initialize and update slots
-		InitSlots();
 		UpdateSlots();
 		
 		// Register for slot updates
@@ -562,7 +561,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 * Counts total and taken slots per faction
 	 */
 	void InitSlots()
-	{
+	{	
 		// Reset slot counters
 		m_iBluforSlots = 0;
 		m_iOpforSlots = 0;
