@@ -156,9 +156,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		super.EOnInit(owner);
 		
-		// Load moderator config on dedicated server
-		if (RplSession.Mode() == RplMode.Dedicated)
+		// Load configs on dedicated server
+		if (RplSession.Mode() == RplMode.Dedicated) {
 			CRF_ModeratorConfig.LoadConfig();	
+			CRF_DonatorConfig.LoadConfig();
+		}
+			
 	
 		// Initialize all manager references
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
@@ -318,11 +321,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 			m_GamemodeManager.InitilizePlayer(iPlayerID);
 		}
 		
-		// Check if player is a moderator and set privileges
+		// Check if player is a moderator/donator and set privileges
 		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
-		if (!playerIdentity.IsEmpty() && CRF_ModeratorConfig.IsModerator(playerIdentity))
-		{
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.SetPlayerModerator, 5000, false, iPlayerID);
+		if (!playerIdentity.IsEmpty()) {
+			if (CRF_ModeratorConfig.IsModerator(playerIdentity))
+				m_GamemodeManager.SetPlayerStatus(iPlayerID, "mod");
+			
+			if (CRF_DonatorConfig.IsDonator(playerIdentity))
+				m_GamemodeManager.SetPlayerStatus(iPlayerID, "don");
 		}
 	}
 	

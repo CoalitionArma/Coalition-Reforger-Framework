@@ -57,6 +57,11 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	ResourceName m_rOpforIcon;                  // OPFOR faction icon resource
 	ResourceName m_rIndforIcon;                 // INDFOR faction icon resource
 	ResourceName m_rCivIcon;                    // CIV faction icon resource
+	
+	//---------------------------------------------------------------------
+	// Consts
+	//---------------------------------------------------------------------
+	const string EMPTY_RESOURCE = "{D09E0DAC2494343C}UI/data/empty.edds";
 
 	/**
 	 * Called when the menu is opened
@@ -887,9 +892,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	private void UpdateUnslottedPlayersList()
 	{
-		Print("[CRF] UpdateUnslottedPlayersList");
 		m_cUnslotPlayerListBoxComponent.Clear();
-		Print("[CRF] UpdateUnslottedPlayersList Cleared");
 		
 		// Get all player IDs
 		array<int> playerIds = {};
@@ -913,7 +916,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
 			int index = m_cUnslotPlayerListBoxComponent.AddItemAndIconPlayer(
 				playerName, 
-				"{D09E0DAC2494343C}UI/data/EMPTY.edds", 
+				EMPTY_RESOURCE, 
 				"flag", 
 				null,
 				"{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout", 
@@ -924,13 +927,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			comp.GetSelectButton().m_OnClicked.Insert(SelectPlayerDelay);
 			
 			// Highlight admins, moderators, and selected players
-			if(SCR_Global.IsAdmin(playerId))
-				comp.SetColor(Color.Red);
-			else if(CRF_GamemodeManager.GetInstance().IsModerator(playerId))
-				comp.SetColor(Color.Yellow);
-			
-			if(playerId == m_iSelectedplayerId)
-				comp.SetColor(Color.DarkYellow);
+			SetPlayerStatusColor(playerId, comp);
 		}
 	}
 	
@@ -1150,6 +1147,19 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		}
 	}
 	
+	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
+	{
+		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+		if (SCR_Global.IsAdmin(playerId))
+			comp.SetColor(Color.Red);
+		if (CRF_DonatorConfig.IsDonator(playerIdentity))
+			comp.SetColor(Color.Violet);
+		if (CRF_ModeratorConfig.IsModerator(playerIdentity))
+			comp.SetColor(Color.Yellow);
+		if (playerId == m_iSelectedplayerId)
+			comp.SetColor(Color.DarkYellow);
+	}
+	
 	/**
 	 * Adds a player to the player list with appropriate faction icon and status color
 	 * @param playerId - ID of the player to add
@@ -1160,10 +1170,8 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 		
 		// Add player with appropriate faction icon
-		if(playerFaction)
-		{
-			string factionKey = playerFaction.GetFactionKey();
-			ResourceName iconResource = GetFactionIcon(factionKey);
+		if (playerFaction) {
+			ResourceName iconResource = GetFactionIcon(playerFaction.GetFactionKey());
 			
 			listIndex = m_cPlayerListBoxComponent.AddItemAndIconPlayer(
 				GetGame().GetPlayerManager().GetPlayerName(playerId), 
@@ -1172,27 +1180,14 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				null, 
 				"{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout");
 		}
-		else
-		{
-			// Add player without faction icon
-			listIndex = m_cPlayerListBoxComponent.AddItemAndIconPlayer(
-				GetGame().GetPlayerManager().GetPlayerName(playerId), 
-				"{D09E0DAC2494343C}UI/data/EMPTY.edds", 
-				"flag", 
-				null, 
-				"{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout");
-		}
 		
 		// Apply appropriate color based on player status
 		SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(listIndex);
 		
-		if(SCR_Global.IsAdmin(playerId))
-			comp.SetColor(Color.Red);
-		else if(CRF_GamemodeManager.GetInstance().IsModerator(playerId))
-			comp.SetColor(Color.Yellow);
+		SetPlayerStatusColor(playerId, comp);
 		
 		// Highlight players who are talking
-		if(m_MenuManager.m_aPlayersTalking.Contains(playerId))
+		if (m_MenuManager.m_aPlayersTalking.Contains(playerId))
 			comp.SetColor(Color.FromRGBA(255, 163, 0, 255));
 	}
 	
@@ -1203,16 +1198,16 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	private ResourceName GetFactionIcon(string factionKey)
 	{
-		if(factionKey == "BLUFOR")
+		if (factionKey == "BLUFOR")
 			return m_rBluforIcon;
-		if(factionKey == "OPFOR")
+		if (factionKey == "OPFOR")
 			return m_rOpforIcon;
-		if(factionKey == "INDFOR")
+		if (factionKey == "INDFOR")
 			return m_rIndforIcon;
-		if(factionKey == "CIV")
-			return m_rCivIcon;
+		if (factionKey == "CIV")
+			return EMPTY_RESOURCE;
 			
-		return "{D09E0DAC2494343C}UI/data/EMPTY.edds";
+		return EMPTY_RESOURCE;
 	}
 	
 	/**

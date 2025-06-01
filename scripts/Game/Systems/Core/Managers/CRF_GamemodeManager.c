@@ -8,6 +8,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	ref array<int> m_aModerators = {}; 
 	
 	[RplProp()]
+	ref array<int> m_aDonators = {};
+	
+	[RplProp()]
 	protected string m_sServerWorldTime;
 	
 	protected CRF_Gamemode m_Gamemode;
@@ -334,18 +337,28 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	
 	/**
-	* Set a player as moderator
-	* @param playerId ID of the player to set as moderator
+	* Set a player status
+	* @param playerId ID of the player to set as moderator or donator
 	*/
-	void SetPlayerModerator(int playerId)
+	void SetPlayerStatus(int playerId, string role)
 	{
 		if (!Replication.IsServer())
 			return;
 		
-		if (m_aModerators.Contains(playerId))
+		if (m_aModerators.Contains(playerId) || m_aDonators.Contains(playerId))
 			return;
+		
+		switch (role) {
+			case "mod": {
+				m_aModerators.Insert(playerId);
+				break;
+			}
+			case "don": {
+				m_aDonators.Insert(playerId);
+				break;
+			}
+		}
 			
-		m_aModerators.Insert(playerId);
 		Replication.BumpMe();
 	}
 	
@@ -368,5 +381,16 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	bool IsModerator()
 	{
 		return m_aModerators.Contains(SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Check if local player is a donator
+	* NOTE: Not used in game mode. Added for future uses.
+	* @return True if local player is a donator, false otherwise
+	*/
+	bool IsDonator()
+	{
+		return m_aDonators.Contains(SCR_PlayerController.GetLocalPlayerId());
 	}
 }

@@ -19,7 +19,7 @@ modded class SCR_ListBoxComponent
 		// Add the item to the listbox and get its ID
 		int id = _AddItem(item, data, comp, itemLayout);
 		
-		// Set the icon for this item
+		// Set the icon for this item and only for the slotted list
 		comp.SetImage(imageOrImageset, iconName);
 		
 		// Associate the item with a player ID

@@ -1,13 +1,13 @@
-class CRF_ModeratorConfig
+class CRF_DonatorConfig
 {
-	static ref CRF_ModeratorConfigStruct m_config;
-	static string m_configFilePath = "$profile:CRF_ModeratorConfig.json";
+	static ref CRF_DonatorConfigStruct m_config;
+	static string m_configFilePath = "$profile:CRF_DonatorConfig.json";
 
 	static bool LoadConfig()
 	{		
 		SCR_JsonLoadContext configLoadContext = new SCR_JsonLoadContext();
 		
-		m_config = new CRF_ModeratorConfigStruct();
+		m_config = new CRF_DonatorConfigStruct();
 				
 		if (!FileIO.FileExists( m_configFilePath ))
 			m_config.SetDefaultValue();
@@ -20,7 +20,7 @@ class CRF_ModeratorConfig
 				return false;
 		};
 		
-		if (!m_config.m_mModerators)
+		if (!m_config.m_mDonators)
 		{
 		   m_config.SetDefaultValue();
 		}
@@ -41,12 +41,12 @@ class CRF_ModeratorConfig
 		return true;
 	};
 	
-	static bool IsModerator(string identityId)
+	static bool IsDonator(string identityId)
 	{
 		if (!m_config)
 			return false;
 		
-		string match = m_config.m_mModerators.Get(identityId);
+		string match = m_config.m_mDonators.Get(identityId);
 		if (!match.IsEmpty())
 			return true;
 		
@@ -54,13 +54,13 @@ class CRF_ModeratorConfig
 	};
 };
 
-class CRF_ModeratorConfigStruct
+class CRF_DonatorConfigStruct
 {
-	ref map<string, string> m_mModerators;
+	ref map<string, string> m_mDonators;
 	
 	void SetDefaultValue()
 	{
-		m_mModerators = new map<string, string>();
-		m_mModerators.Insert("00000000-0000-0000-0000-000000000001", "Moderator Example");
+		m_mDonators = new map<string, string>();
+		m_mDonators.Insert("00000000-0000-0000-0000-000000000001", "Moderator Example");
 	};
 };
