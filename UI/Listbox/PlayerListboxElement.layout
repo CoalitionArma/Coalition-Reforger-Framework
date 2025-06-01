@@ -26,6 +26,15 @@ ButtonWidgetClass {
      }
      Clipping False
      {
+      ImageWidgetClass "{6582271ED7CCDFBB}" {
+       Name "VONSpeaker"
+       Slot OverlayWidgetSlot "{6582271ED7CCDFA3}" {
+        HorizontalAlign 2
+        VerticalAlign 3
+       }
+       Texture "{6027A94ED71D55F6}UI/Textures/Nametags/nametagPointerVON_ca.edds"
+       Size 32 32
+      }
       ImageWidgetClass "{630A25D7A5616D16}" {
        Name "Image0"
        Slot OverlayWidgetSlot "{630A2578A5208A35}" {

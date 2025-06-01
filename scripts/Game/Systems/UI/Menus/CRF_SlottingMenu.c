@@ -329,17 +329,13 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			// Set appropriate color
 			Color colorTwo = GetFactionColor(gamemode.m_sFactionTwoKey);
 			ImageWidget.Cast(m_wRoot.FindAnyWidget("RatioBox2Image")).SetColor(colorTwo);
-		}
-		else
-		{
+		} else {
 			validRatios = false;
 		}
 
 		// Hide ratio display if ratios are invalid
 		if (!validRatios)
-		{
 			HideRatioDisplay();
-		}
 	}
 	
 	/**
@@ -1204,7 +1200,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		// Highlight players who are talking
 		if (m_MenuManager.m_aPlayersTalking.Contains(playerId))
-			comp.SetColor(Color.FromRGBA(255, 163, 0, 255));
+			comp.SetTalking();
 	}
 	
 	/**
