@@ -33,7 +33,7 @@ modded class SCR_AIGroup
 			SetDeleteWhenEmpty(true);
 		} else {
 			GetOnAllDelayedEntitySpawned().Insert(AllMembersSpawned);
-			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false);
+			CreateNewGroup();
 		};
 	}
 	
