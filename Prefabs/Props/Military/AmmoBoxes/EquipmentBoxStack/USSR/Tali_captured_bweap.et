@@ -84,6 +84,24 @@ GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      }
      NumSlots 10
     }
+    MultiSlotConfiguration "{6585082BB4716932}" {
+     SlotTemplate EquipmentStorageSlot PKM {
+      Prefab "{725C5E1C75CADAF4}Prefabs/Characters/Vests/Vest_M69/Vest_M69_M81woodland.et"
+     }
+     NumSlots 5
+    }
+    MultiSlotConfiguration "{6585082BC627E24D}" {
+     SlotTemplate EquipmentStorageSlot PKM {
+      Prefab "{6E14F80C250F85FC}Prefabs/Characters/HeadGear/Helmet_M1_01/Helmet_M1_01.et"
+     }
+     NumSlots 5
+    }
+    MultiSlotConfiguration "{6585082823363874}" {
+     SlotTemplate EquipmentStorageSlot PKM {
+      Prefab "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     }
+     NumSlots 5
+    }
    }
    m_fMaxWeight 5000
   }
