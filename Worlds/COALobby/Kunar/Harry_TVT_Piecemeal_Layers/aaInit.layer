@@ -17,8 +17,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Composition: Moto Inf"\
    "BLUFOR Assets: Humvee's"\
    ""\
-   "OPFOR Composition: Moto Inf"\
-   "OPFOR Assets: UAZ's"\
+   "INDFOR Composition: Moto Inf"\
+   "INDFOR Assets: UAZ's"\
    ""\
    "Time: 60"\
    "Weather: Cloudy"
@@ -56,7 +56,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{1E2FA78B5822F65F}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_MEInsurgents_Poor.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6585082A4D693405" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
