@@ -1,0 +1,171 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ second_pit {
+  coords 2309.17 30 3796.904
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation-2"
+  m_sDescription "Secondary Mortar Pit"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ mortar_cache {
+  coords 1936.936 15.792 3817.93
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache2 {
+  coords 1734.684 18.186 3918.428
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache3 {
+  coords 1659.321 26.079 3625.039
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache4 {
+  coords 1201.476 88.017 3871.517
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache5 {
+  coords 1519.067 40.687 3361.811
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache6 {
+  coords 1384.48 70.592 3247.67
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache7 {
+  coords 861.746 30.944 3273.324
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache8 {
+  coords 636.355 45.328 3198.165
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ mortar_cache9 {
+  coords 338.962 86.578 3576.218
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "help-2"
+  m_sDescription "Mortar Cache"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+  {
+   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+    coords 0.03 0.009 0.205
+   }
+  }
+ }
+ weaponsCache {
+  coords 1439.81 104.592 3095.88
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Weapons Cache"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ weaponsCache2 {
+  coords 927.663 192.541 2868.009
+  angleY 90
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Weapons Cache"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ weaponsCache3 {
+  coords 340.046 234.667 2806.17
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Weapons Cache"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

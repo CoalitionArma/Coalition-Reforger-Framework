@@ -1,0 +1,168 @@
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 1194.018 67.556 3947.176
+  angleY -29.696
+ }
+ {
+  coords 1293.097 67.556 3773.442
+  angleY -29.696
+ }
+ {
+  coords 1392.176 67.556 3599.708
+  angleY -29.696
+ }
+ {
+  coords 1491.255 67.556 3425.974
+  angleY -29.696
+ }
+ {
+  coords 1590.334 67.556 3252.24
+  angleY 9.007
+ }
+ {
+  coords 1559.022 67.556 3054.706
+  angleY 9.007
+ }
+ {
+  coords 1527.71 67.556 2857.172
+  angleY 43.349
+ }
+ {
+  coords 1390.422 67.556 2711.735
+  angleY 43.349
+ }
+ {
+  coords 1253.134 67.556 2566.298
+  angleY 43.349
+ }
+ {
+  coords 1115.846 67.556 2420.861
+  angleY -15.719
+ }
+ {
+  coords 1170.031 67.556 2228.341
+  angleY -15.719
+ }
+ {
+  coords 1224.216 67.556 2035.821
+  angleY -15.719
+ }
+}
+$grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+ {
+  coords 2312.827 21.788 3099.853
+ }
+ {
+  coords 2112.827 21.788 3099.853
+ }
+ {
+  coords 1912.827 21.788 3099.853
+ }
+ {
+  coords 1912.827 21.788 2899.853
+ }
+ {
+  coords 1912.827 21.788 2699.853
+ }
+ {
+  coords 2112.827 21.788 2699.853
+ }
+ {
+  coords 2312.827 21.788 2699.853
+ }
+ {
+  coords 2312.827 21.788 2899.853
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 296.023 40 3173.364
+ m_MarkerColor 0 0 0 1
+ m_sDescription "FOB Thunderbolt"
+ m_aVisibleForFactions {
+  "SPEC"
+ }
+ m_aHideOnGameModeStates {
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 2598.578 39.353 2877.412
+  angleY -31.837
+ }
+ {
+  coords 2598.578 39.353 3077.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3277.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3477.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3677.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3877.412
+  angleY 0
+ }
+ {
+  coords 2428.667 39.353 2771.912
+  angleY -31.837
+ }
+ {
+  coords 2258.756 39.353 2666.412
+  angleY -31.837
+ }
+ {
+  coords 2088.845 39.353 2560.912
+  angleY -31.837
+ }
+ {
+  coords 1918.934 39.353 2455.412
+  angleY -31.837
+ }
+ {
+  coords 1749.023 39.353 2349.912
+  angleY -31.837
+ }
+ {
+  coords 1579.112 39.353 2244.412
+  angleY -31.837
+ }
+ {
+  coords 1409.201 39.353 2138.912
+  angleY -31.837
+ }
+ {
+  coords 1239.29 39.353 2033.412
+  angleY -31.837
+ }
+ {
+  coords 1069.379 39.353 1927.912
+  angleY -5.616
+ }
+ {
+  coords 870.339 39.353 1908.339
+  angleY -5.616
+ }
+ {
+  coords 671.299 39.353 1888.766
+  angleY -5.616
+ }
+ {
+  coords 472.259 39.353 1869.193
+  angleY -5.616
+ }
+ {
+  coords 273.219 39.353 1849.62
+  angleY -5.616
+ }
+ {
+  coords 74.179 39.353 1830.047
+  angleY -5.616
+ }
+}
