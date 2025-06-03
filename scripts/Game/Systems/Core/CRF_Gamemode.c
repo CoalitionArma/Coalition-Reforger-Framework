@@ -220,21 +220,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected void OnGamemodeStateChanged()
 	{
 		// Server-side state change handling
-		if (RplSession.Mode() == RplMode.Dedicated || RplSession.Mode() == RplMode.Listen)
+		if (Replication.IsServer())
 		{
 			if (m_OnStateChanged)
 				m_OnStateChanged.Invoke();
-
+			
 			if (m_GamemodeState == CRF_EGamemodeState.AAR)
 				EnterAAR();
 		}
-		// Client-side UI update
-		else if (RplSession.Mode() != RplMode.Dedicated)
-		{
-			CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-			if(playerControllerComp)
-				playerControllerComp.OpenCurrentStateMenu();
-		}
+		
+		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
+		if (playerControllerComp)
+			playerControllerComp.OpenCurrentStateMenu();
+		
 	}
 	
 	/**
@@ -275,11 +273,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 			// Process player statistics data
 			SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
+			//PrintFormat("[CRF] dataCollector: %1",dataCollector);
 			if (!dataCollector)
 				return;
 			
-			m_PlayerData = dataCollector.GetPlayerData(player, false);
-			//Print("[CRF] player data");
+			m_PlayerData = dataCollector.GetPlayerData(player, true);
+			//PrintFormat("[CRF] m_PlayerData: %1",m_PlayerData);
 			if (m_PlayerData) {
 				//PrintFormat("[CRF] Calc stats for player %1",player);
 				m_PlayerData.CalculateStatsChange();
