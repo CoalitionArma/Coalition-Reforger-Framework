@@ -4,7 +4,7 @@ PanelWidgetClass {
  }
  Color 0.008 0.012 0.016 1
  components {
-  PS_PolyZoneEffectHUDRestrictedZone "{5F38BC55D2F47F93}" {
+  CRF_PolyZoneEffectHUDRestrictedZone "{658653B669260D40}" {
   }
  }
  style full

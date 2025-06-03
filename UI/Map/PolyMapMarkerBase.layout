@@ -6,9 +6,9 @@ CanvasWidgetClass {
   OffsetLeft 0
   PositionY 0
   OffsetTop 0
-  SizeX -1820
+  SizeX 0
   OffsetRight 0
-  SizeY -1050
+  SizeY 0
   OffsetBottom 0
  }
 }

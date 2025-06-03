@@ -33,8 +33,9 @@ PolylineShapeEntity {
    ID "658635BEF7631DCD"
    components {
     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
-     m_fHeight 8
-     m_Material "{788C42E96DB8587C}Assets/Editor/VirtualArea/VirtualArea_01_Danger.emat"
+     m_fHeight 20
+     m_fUndergroundHeight 20
+     m_Material "{B0A4A69AD308B423}Assets/Editor/VirtualArea/VirtualAreaCampaignBuilding.emat"
     }
     Hierarchy "{658635BE8590CCDD}" {
     }
@@ -42,19 +43,16 @@ PolylineShapeEntity {
    coords 0 0 0
    TriggerShapeType Polyline
    SphereRadius 25.5
-   DrawShape 1
+   DrawShape 0
    TriggerActivationType "All changes"
    PeriodicQueries 1
    UpdatePeriod 1
    ClassesFilter {
     "SCR_ChimeraCharacter"
    }
-   m_polyZoneEffect CRF_PolyZoneEffectRestricted "{6586411CC07DEF4C}" {
+   m_polyZoneEffect CRF_PolyZoneEffectRestricted "{658653B579355FE5}" {
    }
    m_bReversed 1
-   m_aFactionKey {
-    "BLUFOR" "OPFOR" "INDFOR" "CIV"
-   }
   }
  }
 }

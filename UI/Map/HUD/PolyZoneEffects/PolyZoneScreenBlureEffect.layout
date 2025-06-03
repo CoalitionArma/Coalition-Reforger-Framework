@@ -4,7 +4,7 @@ PanelWidgetClass {
  }
  "Is Visible" 0
  components {
-  PS_PolyZoneEffectHUDScreenBlure "{604CC436E457321A}" {
+  CRF_PolyZoneEffectHUDScreenBlure "{658653B59BD03B03}" {
   }
  }
  {

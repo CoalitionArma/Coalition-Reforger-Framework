@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{934EEEE4F36CE31E}UI/layouts/HUD/PolyZoneEffects/PolyZoneRestrictedZoneEffect.layout"
+ Name "{934EEEE4F36CE31E}UI/Map/HUD/PolyZoneEffects/PolyZoneRestrictedZoneEffect.layout"
  Configurations {
   LayoutResourceClass PC {
   }
@@ -10,6 +10,10 @@ MetaFileClass {
   LayoutResourceClass PS4 : PC {
   }
   LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass Xbox : PC {
   }
  }
 }
