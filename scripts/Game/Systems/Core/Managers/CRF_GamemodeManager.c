@@ -135,7 +135,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			if(!alreadyCreated && !isSpectator)
 				initDelay = 500;
 				
-			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, initDelay, false, playerId, playerController, playerCharacter, isSpectator);
+			//GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, initDelay, false, playerId, playerController, playerCharacter, isSpectator);
+			InitilizePlayerCharacter(playerId, playerController, playerCharacter, isSpectator);
 		};
 	}
 	

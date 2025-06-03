@@ -65,6 +65,7 @@ class CRF_SafestartManager : ScriptComponent
 		{
 			// Initialize server components
 			m_Logging = CRF_LoggingManager.Cast(this.FindComponent(CRF_LoggingManager));
+			// TODO: Convert to script invoker
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
 	}
@@ -209,7 +210,7 @@ class CRF_SafestartManager : ScriptComponent
 			
 			UpdatePlayedFactions();
 			
-			if(GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
+			if (GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
 				GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			
 			return;
@@ -366,8 +367,9 @@ class CRF_SafestartManager : ScriptComponent
 
 			GetGame().GetCallqueue().CallLater(m_GamemodeManager.UpdateServerWorldTime, 1000, true);
 			
-			ActivateSafeStartEHs();
-			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 15000, true);
+			SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+			ActivateSafeStartEHs(aiWorld);
+			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 15000, true, aiWorld);
 			
 			UpdatePlayedFactions();
 			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 10000, true);
@@ -456,10 +458,9 @@ class CRF_SafestartManager : ScriptComponent
 	* Activates safe start event handlers for all AI and player-controlled entities.
 	* Disables damage and weapon functionality during the safe start period.
 	*/
-	protected void ActivateSafeStartEHs()
+	protected void ActivateSafeStartEHs(SCR_AIWorld aiWorld)
 	{
 		// Apply safe start to AI-controlled entities
-		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
 		if (aiWorld)
 		{
 			array<AIAgent> aiAgents = {};
