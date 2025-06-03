@@ -109,8 +109,10 @@ class CRF_PlayerControllerManager : ScriptComponent
 			GetGame().GetMenuManager().CloseAllMenus();
 		
 			// Schedule delayed initialization of player-specific settings
-			GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 100, false);
-			GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
+			//GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 100, false);
+			//GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
+			ResetSettingsToStoredValues();
+			SetupRadioFrequency();
 		}; 
 		
 		if (IsSpectator)
@@ -159,7 +161,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 				delete m_eCamera;
 			
 			// Reset Stored Pos
-			GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 1275, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
+			// GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 1275, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
+			UpdateStoredCameraPos(vector.Zero, vector.Zero, vector.Zero, vector.Zero);
 		};
 	}
 	
