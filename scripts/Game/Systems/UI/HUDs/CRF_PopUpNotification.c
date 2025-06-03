@@ -52,7 +52,8 @@ modded class SCR_PopUpNotification : GenericEntity
 		m_wStatusProgress.SetVisible(false);
 
 		// Set default horizontal position after a short delay
-		GetGame().GetCallqueue().CallLater(SetDefaultHorizontalPosition, 500);
+		//GetGame().GetCallqueue().CallLater(SetDefaultHorizontalPosition, 500);
+		SetDefaultHorizontalPosition();
 
 		// Register for controlled entity changes
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
