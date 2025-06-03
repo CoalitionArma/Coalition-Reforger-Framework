@@ -1,4 +1,4 @@
-$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+$grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  {
   coords 6456.942 213.479 2318.01
  }
@@ -24,7 +24,7 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
   coords 6056.942 213.479 2518.01
  }
 }
-$grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+$grp CRF_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
  {
   coords 10190.294 30.763 1170.671
  }
@@ -41,7 +41,7 @@ $grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStar
   coords 10190.294 30.763 1570.671
  }
 }
-PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 10192.336 23.042 1035.472
  angleY 0
  m_MarkerColor 0 0 0 1
@@ -49,7 +49,7 @@ PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et"
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
 }
-$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+$grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  {
   coords 5696.425 238.526 3581.528
   angleY 0
@@ -211,7 +211,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
  }
 }
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 6359.373 211.858 2445.69
  angleY 0
  m_aVisibleForFactions + {

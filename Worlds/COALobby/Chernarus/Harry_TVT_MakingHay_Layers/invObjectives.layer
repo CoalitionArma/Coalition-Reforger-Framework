@@ -82,7 +82,7 @@ $grp GenericEntity : "{677917B581F03974}Prefabs/Props/Military/SupplyBox/SupplyS
     coords -0.84 0 2.322
     angleY 54.283
    }
-   PS_ManualMarker om1 : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker om1 : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords -1.021 0.001 -1.438
     angleX 0.89
     angleY 0.054
@@ -110,7 +110,7 @@ $grp GenericEntity : "{677917B581F03974}Prefabs/Props/Military/SupplyBox/SupplyS
     coords -0.846 -0.189 2.319
     angleY 54.31
    }
-   PS_ManualMarker om2 : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker om2 : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords -0.999 -0.069 -1.437
     angleY 0
     m_MarkerColor 0.502 0 0 1

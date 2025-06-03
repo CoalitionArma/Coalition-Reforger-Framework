@@ -8,7 +8,7 @@ $grp GameEntity {
   angleY 97.372
  }
 }
-$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  ammo {
   coords 12270.686 42.24 1625.717
   userScript "	string ammo = \"{6250070685EC5A0D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/FIA_ammo_box.et\";"\

@@ -1,4 +1,4 @@
-$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+$grp CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  {
   coords 11030.698 13.015 709.157
   m_sDescription "LHD"

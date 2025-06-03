@@ -1,0 +1,39 @@
+PolylineShapeEntity {
+ ID "658635BEF7631DCE"
+ components {
+  CRF_PolyZone "{65862E4575B86577}" {
+   m_cPolygonColor 0 0 0 1
+   m_cPolygonBorderColor 0 0 0 1
+  }
+ }
+ coords 1235.318 37.959 2825.945
+ IsClosed 1
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   components {
+    CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+     m_fHeight 8
+     m_Material "{788C42E96DB8587C}Assets/Editor/VirtualArea/VirtualArea_01_Danger.emat"
+    }
+    Hierarchy "{658635BE8590CCDD}" {
+    }
+   }
+   coords 0 0 0
+   TriggerShapeType Polyline
+   SphereRadius 25.5
+   DrawShape 1
+   TriggerActivationType "All changes"
+   PeriodicQueries 1
+   ClassesFilter {
+    "SCR_ChimeraCharacter"
+   }
+   m_polyZoneEffect CRF_PolyZoneEffectRestricted "{6586411CC07DEF4C}" {
+   }
+   m_bReversed 1
+   m_aFactionKey {
+    "BLUFOR" "OPFOR" "INDFOR" "CIV"
+   }
+  }
+ }
+}

@@ -109,7 +109,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
    GameEntity z1s1gen : "{08A67291A34312EA}PrefabsEditable/Auto/Props/Military/Generators/GeneratorMilitary_USSR_01/E_GeneratorMilitary_USSR_01_camo_open.et" {
     coords 1.999 -0.169 0.938
    }
-   PS_ManualMarker alphamarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   CRF_ManualMarker alphamarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     coords 0.707 -0.106 1.047
     angleY 90
     m_sQuadName "fortification"
@@ -161,7 +161,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
    GameEntity z1s2gen : "{08A67291A34312EA}PrefabsEditable/Auto/Props/Military/Generators/GeneratorMilitary_USSR_01/E_GeneratorMilitary_USSR_01_camo_open.et" {
     coords 1.724 0.043 0.33
    }
-   PS_ManualMarker bravomarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   CRF_ManualMarker bravomarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     coords 0.946 -0.029 -1.716
     angleX -2.594
     angleY 89.311
@@ -213,7 +213,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
    GameEntity z2s1gen : "{08A67291A34312EA}PrefabsEditable/Auto/Props/Military/Generators/GeneratorMilitary_USSR_01/E_GeneratorMilitary_USSR_01_camo_open.et" {
     coords 1.999 -0.169 0.938
    }
-   PS_ManualMarker charliemarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   CRF_ManualMarker charliemarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     coords 3.632 -0.006 0.919
     angleX -3.489
     angleY 89.311
@@ -268,7 +268,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
    GameEntity z2s2gen : "{08A67291A34312EA}PrefabsEditable/Auto/Props/Military/Generators/GeneratorMilitary_USSR_01/E_GeneratorMilitary_USSR_01_camo_open.et" {
     coords 1.999 -0.169 0.938
    }
-   PS_ManualMarker deltamarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   CRF_ManualMarker deltamarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     coords 2.959 -0.13 0.964
     angleX -15.811
     angleY 89.257
@@ -316,7 +316,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
    GameEntity z3s1gen : "{08A67291A34312EA}PrefabsEditable/Auto/Props/Military/Generators/GeneratorMilitary_USSR_01/E_GeneratorMilitary_USSR_01_camo_open.et" {
     coords 1.999 -0.169 0.938
    }
-   PS_ManualMarker echomarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   CRF_ManualMarker echomarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     coords 1.136 -0.023 1.565
     angleX -4.404
     angleY 88.926
@@ -364,7 +364,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
    GameEntity z3s2gen : "{08A67291A34312EA}PrefabsEditable/Auto/Props/Military/Generators/GeneratorMilitary_USSR_01/E_GeneratorMilitary_USSR_01_camo_open.et" {
     coords 1.999 -0.169 0.938
    }
-   PS_ManualMarker foxmarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   CRF_ManualMarker foxmarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     coords 0.759 -0.04 1.015
     angleX -5.33
     angleY 88.569

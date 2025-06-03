@@ -28,7 +28,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "		}"\
   "	"
   {
-   $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   $grp CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     obj1mark {
      coords 0.707 -0.106 1.047
      angleY 90
@@ -111,7 +111,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "		}"\
   "	"
   {
-   $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   $grp CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     obj2gmark {
      coords -73.05 21.91 310.536
      angleY -131
@@ -193,7 +193,7 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OPFOR VICTORY\", duration: 10);"\
   "	"
   {
-   $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+   $grp CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
     obj3mark {
      coords 0.074 -0.04 -1.346
      angleY -131

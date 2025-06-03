@@ -252,7 +252,7 @@ GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampS
  coords 7449.313 -2.835 6697.37
  angleY 21.696
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  coords 7493.132 6.579 6707.769
  angleY 90
  m_MarkerColor 0.392 0.157 0.624 1

@@ -418,7 +418,7 @@ $grp GenericEntity : "{BBE13893AEA69C0C}Prefabs/Props/Military/Sandbags/Sandbag_
   angleY -174.608
  }
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  coords 8420.231 187.055 3871.95
  angleY 1.803
  m_MarkerColor 0.392 0.157 0.624 1
