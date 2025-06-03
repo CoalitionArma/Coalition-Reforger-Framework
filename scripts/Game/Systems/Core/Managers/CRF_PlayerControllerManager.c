@@ -82,10 +82,15 @@ class CRF_PlayerControllerManager : ScriptComponent
 		GetGame().GetInputManager().AddActionListener("SwitchSpectatorUI", EActionTrigger.DOWN, UpdateHUDVisible);
 		
 		// Schedule delayed initialization
-		GetGame().GetCallqueue().CallLater(AddMsgAction, 1000, false);
-		GetGame().GetCallqueue().CallLater(InitFPSLock, 100, false);
-		GetGame().GetCallqueue().CallLater(InitAudioLock, 100, false);
-		GetGame().GetCallqueue().CallLater(OpenCurrentStateMenu, 500, false);
+		//GetGame().GetCallqueue().CallLater(AddMsgAction, 1000, false);
+		//GetGame().GetCallqueue().CallLater(InitFPSLock, 100, false);
+		//GetGame().GetCallqueue().CallLater(InitAudioLock, 100, false);
+		//GetGame().GetCallqueue().CallLater(OpenCurrentStateMenu, 500, false);
+		// Death to calllaters. Readd if non-functional.
+		AddMsgAction();
+		InitFPSLock();
+		InitAudioLock();
+		OpenCurrentStateMenu();
 	}
 
 	/**
