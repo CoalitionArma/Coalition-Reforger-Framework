@@ -31,18 +31,4 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundryPolyZone.et" {
  coords 1237.725 37.908 2830.09
- Points {
-  ShapePoint "{658642B60C75905C}" {
-   Position -57.25 0 -48.21
-  }
-  ShapePoint "{658642B60D1BE03D}" {
-   Position -57.917 -0 40.76
-  }
-  ShapePoint "{658642B60DB43110}" {
-   Position 66.239 0 42.089
-  }
-  ShapePoint "{658642B60E7A2DB4}" {
-   Position 68.056 0 -47.088
-  }
- }
 }

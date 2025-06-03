@@ -30,7 +30,7 @@ FrameWidgetClass {
      Slot OverlayWidgetSlot "{60D306CB177B8618}" {
      }
      Color 0.502 0 0 1
-     Text "EXITING AO!"
+     Text ""
      "Font Size" 196
      "Min Font Size" 196
      "Horizontal Alignment" Center

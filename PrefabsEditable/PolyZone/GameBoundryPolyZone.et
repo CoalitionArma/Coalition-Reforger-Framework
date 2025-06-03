@@ -2,11 +2,31 @@ PolylineShapeEntity {
  ID "658635BEF7631DCE"
  components {
   CRF_PolyZone "{65862E4575B86577}" {
-   m_cPolygonColor 0 0 0 1
-   m_cPolygonBorderColor 0 0 0 1
+   m_cPolygonColor 0.045 0.045 0.045 0.431
+   m_cPolygonBorderColor 0.045 0.045 0.045 1
+   m_bReversed 1
+   m_aVisibleForFactions {
+    "BLUFOR" "OPFOR" "INDOFR" "CIV" "SPEC"
+   }
+   m_aHideOnGameModeStates {
+   }
   }
  }
  coords 1235.318 37.959 2825.945
+ Points {
+  ShapePoint "{658642B60C75905C}" {
+   Position -162.247 0 -305.286
+  }
+  ShapePoint "{658642B60D1BE03D}" {
+   Position -242.873 0 122.392
+  }
+  ShapePoint "{658642B60DB43110}" {
+   Position 367.6 0 373.351
+  }
+  ShapePoint "{658642B60E7A2DB4}" {
+   Position 606.851 0 -46.888
+  }
+ }
  IsClosed 1
  {
   CRF_PolyZoneTrigger {
@@ -25,6 +45,7 @@ PolylineShapeEntity {
    DrawShape 1
    TriggerActivationType "All changes"
    PeriodicQueries 1
+   UpdatePeriod 5
    ClassesFilter {
     "SCR_ChimeraCharacter"
    }
