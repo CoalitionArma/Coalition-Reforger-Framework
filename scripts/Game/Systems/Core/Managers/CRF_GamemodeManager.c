@@ -110,7 +110,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 		SCR_ChimeraCharacter playerCharacter = null;
 		Faction faction = null;
-		int initDelay = 50;
 		bool alreadyCreated;
 		bool isSpectator;
 		
@@ -131,10 +130,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter)
 		{
 			AssignFactionToPlayer(playerController, faction);
-			
-			if(!alreadyCreated && !isSpectator)
-				initDelay = 500;
-				
 			GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter, isSpectator)
 		};
 	}
