@@ -17,7 +17,7 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 	bool m_bAliveOnly;
 	
 	[Attribute("")]
-	array<FactionKey> m_aFactionKey;
+	ref array<FactionKey> m_aFactionKey;
 	
 	[Attribute("")]
 	string m_sGroupKey;

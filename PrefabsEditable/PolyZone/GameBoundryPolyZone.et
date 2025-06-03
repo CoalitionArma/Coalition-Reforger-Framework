@@ -45,7 +45,7 @@ PolylineShapeEntity {
    DrawShape 1
    TriggerActivationType "All changes"
    PeriodicQueries 1
-   UpdatePeriod 5
+   UpdatePeriod 1
    ClassesFilter {
     "SCR_ChimeraCharacter"
    }
