@@ -131,7 +131,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter)
 		{
 			AssignFactionToPlayer(playerController, faction);
-			GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter, isSpectator);
+			if (!alreadyCreated && !isSpectator)
+				GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter, isSpectator);
+			else
+				InitilizePlayerCharacter(playerId, playerController, playerCharacter, isSpectator);
 		};
 	}
 	
