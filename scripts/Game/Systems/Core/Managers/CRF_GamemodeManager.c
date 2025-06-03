@@ -135,8 +135,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			if(!alreadyCreated && !isSpectator)
 				initDelay = 500;
 				
-			//GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, initDelay, false, playerId, playerController, playerCharacter, isSpectator);
-			InitilizePlayerCharacter(playerId, playerController, playerCharacter, isSpectator);
+			GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter, isSpectator)
 		};
 	}
 	
@@ -153,9 +152,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		AssignCharacterToPlayer(playerController, playerCharacter);
 		
 		if (!isSpectator)
-		{
 			AssignPlayerToGroup(playerId);
-		}
 
 		CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, isSpectator);
 	}

@@ -1645,7 +1645,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_ChatPanel)
 			return;
 
-		GetGame().GetCallqueue().CallLater(OpenChatWrap, 5);
+		GetGame().GetCallqueue().Call(OpenChatWrap);
 	}
 	
 	/**
