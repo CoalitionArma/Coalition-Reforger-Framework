@@ -110,7 +110,6 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			
 		SCR_ChimeraCharacter playerCharacter = null;
 		Faction faction = null;
-		int initDelay = 50;
 		bool alreadyCreated;
 		bool isSpectator;
 		
