@@ -96,43 +96,6 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
  }
- khandar {
-  coords 1456.379 104.239 3106.836
-  userScript "	bool messageSent = false;"\
-  "	string ammo = \"{72627D0EB44FE0E9}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_captured_bweap.et\";"\
-  "	IEntity spawnAmmo;"\
-  "	"\
-  "	void spawnthings()"\
-  "	{"\
-  "		spawnAmmo = GetGame().GetWorld().FindEntityByName(\"weaponsCache\");"\
-  "		"\
-  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
-  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
-  "				"\
-  "		spawnParams.Transform[3] = spawnAmmo.GetOrigin();		"\
-  "		GetGame().SpawnEntityPrefab(Resource.Load(ammo),GetGame().GetWorld(),spawnParams);"\
-  "	}"
-  TriggerShapeType Sphere
-  SphereRadius 35
-  DrawShape 1
-  TriggerActivationType "First change"
-  PeriodicQueries 1
-  UpdatePeriod 10
-  OnActivate ""\
-  "		super.OnActivate(ent);"\
-  "		if (messageSent == false)"\
-  "		{"\
-  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Indfor has captured a weapons cache.\", 10);"\
-  "			spawnthings();"\
-  "			messageSent = true;"\
-  "			SCR_EntityHelper.DeleteEntityAndChildren(this);"\
-  "		}"\
-  "	"
-  RunDefaultQueryFirst 0
-  m_sOwnerFactionKey "INDFOR"
-  m_iRatioMethod "More than"
-  m_fFriendlyRatioLimit 0.9
- }
 }
 $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {

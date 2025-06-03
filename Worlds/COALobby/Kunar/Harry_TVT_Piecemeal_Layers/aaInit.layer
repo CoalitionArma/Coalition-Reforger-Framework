@@ -28,7 +28,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Defend FOB Thunderbolt. "\
    ""\
    "Secondary Goals:"\
-   "Defend the OP's and watchtower in the area. For each that the enemy captures, they will receive material aid we were unable to transport out."\
+   "Defend the nearby OP and watchtower in the area. For each that the enemy captures, they will receive material aid we were unable to transport out."\
    ""\
    "Search for, and remove mortar caches from around the AO before the enemy can use them against us. "
   }
@@ -37,7 +37,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Sieze FOB Thunderbolt"\
    ""\
    "Secondary Goals:"\
-   "Sieze the marked OP's and watchtower. Each will spawn a weapons cache, which is helpful as you begin the match under equipped. "\
+   "Sieze the marked OP and watchtower. Each will spawn a weapons cache, which is helpful as you begin the match under equipped. "\
    ""\
    "Get to the marked mortar caches before the enemy, as you will spawn with only a very small amount of HE. The caches are unmarked for the enemy."
   }

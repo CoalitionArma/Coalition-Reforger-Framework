@@ -143,14 +143,6 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
    }
   }
  }
- weaponsCache {
-  coords 1439.81 104.592 3095.88
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "objective-marker"
-  m_sDescription "Weapons Cache"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
- }
  weaponsCache2 {
   coords 927.663 192.541 2868.009
   angleY 90
