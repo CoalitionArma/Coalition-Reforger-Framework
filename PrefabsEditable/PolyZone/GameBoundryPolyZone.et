@@ -53,6 +53,9 @@ PolylineShapeEntity {
    m_polyZoneEffect CRF_PolyZoneEffectRestricted "{658653B579355FE5}" {
    }
    m_bReversed 1
+   m_aFactionKey {
+    "SPEC"
+   }
   }
  }
 }
