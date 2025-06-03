@@ -31,4 +31,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundryPolyZone.et" {
  coords 1237.725 37.908 2830.09
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   m_aFactionKey {
+    "SPEC"
+   }
+  }
+ }
 }
