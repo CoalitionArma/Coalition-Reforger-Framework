@@ -1,63 +1,103 @@
-$grp Vehicle : "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" {
- S105_randomized1 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
+CommentEntity {
+ coords 7449.809 10.758 6698.563
+ angleY -158.304
+ m_Comment "Tanaka when there is no "\
+ "prejoin update for 2 months."
+ m_Size 0.3
+ m_Color 1 0 0
+ m_FaceCamera 1
+ m_VisibleOverall 1
+ m_VisibleIngame 1
+ m_TextBackground 1
+ m_BackgroundTransparency 0.2
+ {
+  GenericEntity : "{167A0AF597E9CA76}Prefabs/Props/Military/E_SignFlag_PensiveMan_01.et" {
+   coords 0 -3.266 0
+   angleY 177.902
+   scale 1.5
   }
-  coords 7402.782 9.688 6732.753
-  angleY 125.667
  }
- S105_randomized2 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7400.578 9.688 6729.736
-  angleY 125.667
+}
+$grp SCR_VehicleSpawn {
+ {
+  coords 7403.349 9.688 6732.658
+  angleY 127
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
- S105_randomized3 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7398.203 9.688 6726.79
-  angleY 125.667
+ {
+  coords 7400.754 9.688 6729.215
+  angleY 127
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
  }
- S105_randomized4 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7396.068 9.688 6723.397
-  angleY 125.667
+ {
+  coords 7410.427 9.688 6742.427
+  angleY 127
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
- S105_randomized5 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7393.863 9.688 6720.381
-  angleY 125.667
+ {
+  coords 7414.312 9.688 6747.585
+  angleY 127
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
  }
- S105_randomized6 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7391.489 9.688 6717.435
-  angleY 125.667
+ {
+  coords 7417.149 9.688 6751.348
+  angleY 127
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7419.747 9.688 6754.796
+  angleY 127
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7422.201 9.688 6758.052
+  angleY 127
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7424.606 9.688 6761.244
+  angleY 127
+  m_rnPrefab "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et"
+ }
+ {
+  coords 7397.524 9.688 6724.927
+  angleY 127
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7394.153 9.688 6720.454
+  angleY 127
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7391.714 9.688 6717.217
+  angleY 127
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7388.347 9.688 6712.754
+  angleY 127
+  m_rnPrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+ }
+ {
+  coords 7432.048 9.686 6766.776
+  angleY -145
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+ }
+ {
+  coords 7436.403 9.617 6763.725
+  angleY -145
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+ }
+ {
+  coords 7440.845 9.415 6760.611
+  angleY -145
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
+ }
+ {
+  coords 7379.902 9.724 6709.354
+  angleY 127
+  m_rnPrefab "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et"
  }
 }
 $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevRifleman_p.et" {
@@ -67,8 +107,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7503.174 6.219 6724.095
-  angleY -143.377
+  coords 7523.997 6.158 6753.121
+  angleY -145.848
  }
  {
   components {
@@ -76,8 +116,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7504.327 6.224 6725.47
-  angleY -143.377
+  coords 7525.026 6.158 6754.638
+  angleY -145.848
  }
  {
   components {
@@ -85,8 +125,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7505.223 6.206 6726.851
-  angleY -143.377
+  coords 7526.041 6.122 6756.134
+  angleY -145.848
  }
  {
   components {
@@ -94,8 +134,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7506.374 6.184 6728.227
-  angleY -143.377
+  coords 7526.979 6.086 6757.518
+  angleY -145.848
  }
  {
   components {
@@ -103,8 +143,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7507.218 6.176 6729.537
-  angleY -143.377
+  coords 7527.887 6.037 6758.856
+  angleY -145.848
  }
  {
   components {
@@ -112,8 +152,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7508.372 6.179 6730.912
-  angleY -143.377
+  coords 7528.763 5.984 6760.147
+  angleY -145.848
  }
  {
   components {
@@ -121,8 +161,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7510.421 6.168 6733.668
-  angleY -143.377
+  coords 7529.771 5.921 6761.632
+  angleY -145.848
  }
  {
   components {
@@ -130,8 +170,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7509.267 6.152 6732.293
-  angleY -143.377
+  coords 7530.626 5.843 6762.893
+  angleY -145.848
  }
  {
   components {
@@ -139,8 +179,8 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7512.638 6.156 6736.653
-  angleY -143.377
+  coords 7531.604 5.782 6764.335
+  angleY -145.848
  }
  {
   components {
@@ -148,295 +188,72 @@ $grp SCR_AIGroup : "{29CA3A88FC500B66}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_De
     DefaultFormation "Row"
    }
   }
-  coords 7511.487 6.159 6735.278
-  angleY -143.377
+  coords 7532.71 5.696 6765.965
+  angleY -145.848
+ }
+ {
+  components {
+   AIFormationComponent "{507E9DC12F541FE6}" {
+    DefaultFormation "Row"
+   }
+  }
+  coords 7533.716 5.66 6767.449
+  angleY -145.848
  }
 }
-$grp Vehicle : "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" {
- UAZ469_covered_CIV_Randomized1 {
+$grp StaticModelEntity : "{80DF3BD810D032AF}Prefabs/Structures/Industrial/Towers/LightTower_01/LightTower_01.et" {
+ {
   components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
    }
   }
-  coords 7410.528 9.688 6742.4
-  angleY 127.241
+  coords 7449.104 7.875 6724.164
+  angleY -26.182
  }
- UAZ469_covered_CIV_Randomized2 {
+ {
   components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
    }
   }
-  coords 7412.883 9.688 6745.497
-  angleY 127.241
+  coords 7478.841 7.875 6693.617
+  angleY 164.067
  }
- UAZ469_covered_CIV_Randomized3 {
+ {
   components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
    }
   }
-  coords 7415.307 9.688 6748.7
-  angleY 127.241
+  coords 7477.154 7.602 6761.553
+  angleY 41.749
  }
- UAZ469_covered_CIV_Randomized4 {
+ {
   components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
    }
   }
-  coords 7417.352 9.688 6751.616
-  angleY 127.241
+  coords 7416.175 9.699 6778.773
+  angleY -56.656
  }
- UAZ469_covered_CIV_Randomized5 {
+ {
   components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
+   SCR_DestructibleBuildingComponent "{5DA867F3105CA90F}" {
+    Enabled 0
    }
   }
-  coords 7419.707 9.688 6754.713
-  angleY 127.241
- }
- UAZ469_covered_CIV_Randomized6 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7422.131 9.688 6757.917
-  angleY 127.241
+  coords 7425.633 7.875 6673.595
+  angleY -26.182
  }
 }
-$grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification/CzechHedgehog_01_painted.et" {
- {
-  coords 7443.993 -0.061 6747.229
- }
- {
-  coords 7446.296 0 6750.01
- }
- {
-  coords 7448.463 0 6753.37
- }
- {
-  coords 7450.217 0 6756.617
- }
- {
-  coords 7452.842 0 6764.427
- }
- {
-  coords 7451.074 -0.287 6767.441
- }
- {
-  coords 7449.288 0 6770.466
- }
- {
-  coords 7448.026 0 6772.595
- }
- {
-  coords 7445.983 0 6774.699
- }
- {
-  coords 7443.956 0 6776.396
- }
- {
-  coords 7442.238 0 6777.341
- }
- {
-  coords 7439.564 0 6778.251
- }
- {
-  coords 7436.94 0 6778.301
- }
- {
-  coords 7434.929 0 6778.733
- }
- {
-  coords 7432.807 0 6778.207
- }
- {
-  coords 7430.331 0 6778.107
- }
- {
-  coords 7428.069 0 6777.834
- }
- {
-  coords 7425.6 0 6778
- }
- {
-  coords 7423.49 1.243 6775.571
- }
- {
-  coords 7422.641 0 6778.206
- }
- {
-  coords 7421.547 1.243 6773.685
- }
- {
-  coords 7424.307 0 6770.215
- }
- {
-  coords 7423.26 0 6768.295
- }
- {
-  coords 7422.506 0 6766.544
- }
- {
-  coords 7405.649 0 6742.464
- }
- {
-  coords 7401.356 0 6736.764
- }
- {
-  coords 7392.87 0 6691.128
- }
- {
-  coords 7396.071 0 6695.277
- }
- {
-  coords 7398.139 0 6698.063
- }
- {
-  coords 7400.116 0 6701.081
- }
- {
-  coords 7401.71 0 6703.083
- }
- {
-  coords 7403.435 0 6707.194
- }
- {
-  coords 7406.033 0 6711.244
- }
- {
-  coords 7411.723 0 6719.457
- }
- {
-  coords 7414.402 0 6722.294
- }
- {
-  coords 7418.207 0 6727.253
- }
- {
-  coords 7423.058 0 6733.91
- }
- {
-  coords 7426.532 0 6738.061
- }
- {
-  coords 7433.963 0 6748.097
- }
- {
-  coords 7437.396 0 6751.045
- }
- {
-  coords 7440.879 0 6749.765
- }
- {
-  coords 7419.37 0 6789.771
- }
- {
-  coords 7417.344 0 6791.156
- }
- {
-  coords 7415.022 0 6792.956
- }
- {
-  coords 7413.085 0 6794.517
- }
- {
-  coords 7418.784 0 6774.124
- }
- {
-  coords 7417.279 0 6772.267
- }
- {
-  coords 7448.133 -0.167 6758.204
- }
- {
-  coords 7448.356 -0.497 6760.918
- }
- {
-  coords 7449.789 0 6762.126
- }
- {
-  coords 7430.802 0 6743.909
- }
- {
-  coords 7428.715 0 6741.359
- }
- {
-  coords 7392.96 0 6685.727
- }
- {
-  coords 7489.396 0 6769.611
- }
- {
-  coords 7491.057 0 6770.793
- }
- {
-  coords 7492.84 0 6771.791
- }
- {
-  coords 7494.928 0 6773.117
- }
- {
-  coords 7496.698 0 6775.394
- }
- {
-  coords 7499.868 0 6777.886
- }
- {
-  coords 7498.368 0 6777.038
- }
- {
-  coords 7500.824 0 6779.957
- }
- {
-  coords 7501.799 -0.071 6782.477
- }
- {
-  coords 7502.638 0.046 6784.994
- }
- {
-  coords 7503.433 -0.056 6787.478
- }
- {
-  coords 7503.601 0.017 6789.795
- }
- {
-  coords 7488.865 0 6767.911
- }
- {
-  coords 7451.344 0 6763.207
- }
- {
-  coords 7370.409 0 6722.56
- }
- {
-  coords 7369.284 0 6721.154
- }
- {
-  coords 7367.831 0 6719.417
- }
- {
-  coords 7366.935 0 6718.176
- }
- {
-  coords 7366.202 0 6716.83
- }
- {
-  coords 7366.202 0 6716.83
- }
+GenericEntity : "{B9003EF716A534D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LampStreet_E_02_single.et" {
+ coords 7449.313 -2.835 6697.37
+ angleY 21.696
 }
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
- coords 7470.51 7.672 6706.092
+ coords 7493.132 6.579 6707.769
  angleY 90
  m_MarkerColor 0.392 0.157 0.624 1
  m_sDescription "Spawn"
@@ -445,38 +262,6 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.e
  }
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
-}
-$grp Vehicle : "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" {
- Ural4320_transport_CIV_randomized6 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7431.678 9.686 6765.944
-  angleY -145.63
- }
- Ural4320_transport_CIV_randomized9 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7437.218 9.642 6765.088
-  angleY -144.928
- }
- Ural4320_transport_CIV_randomized10 {
-  components {
-   SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 7440.908 9.683 6761.73
-  angleY -139.264
- }
 }
 GenericEntity : "{F4B7F1D4D3ADE456}Prefabs/Structures/Signs/Military/Sign_VehicleRepair_US_01.et" {
  coords 7442.783 9.356 6759.423
@@ -492,7 +277,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7442.667 7.875 6715.246
+  coords 7445.353 7.875 6715.401
   angleY 155
  }
  {
@@ -504,7 +289,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7447.324 7.875 6717.483
+  coords 7450.01 7.875 6717.639
   angleY 155
  }
  {
@@ -516,7 +301,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7453.281 7.875 6720.215
+  coords 7455.967 7.875 6720.37
   angleY 155
  }
  {
@@ -528,7 +313,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7459.573 7.875 6722.982
+  coords 7462.258 7.875 6723.138
   angleY 155
  }
  {
@@ -540,7 +325,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7449.343 7.875 6713.251
+  coords 7452.187 7.875 6713.067
   angleY 155
  }
  {
@@ -552,7 +337,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7444.687 7.875 6711.014
+  coords 7447.531 7.875 6710.831
   angleY 155
  }
  {
@@ -564,7 +349,7 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7455.301 7.875 6715.983
+  coords 7458.144 7.875 6715.8
   angleY 155
  }
  {
@@ -576,11 +361,11 @@ $grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/
     m_eArsenalSaveType SAVING_DISABLED
    }
   }
-  coords 7461.592 7.875 6718.75
+  coords 7464.436 7.875 6718.566
   angleY 155
  }
 }
 GenericEntity : "{F9CB37885DA59BF4}Prefabs/Props/Military/E_SignFlag_COAL_01.et" {
- coords 7463.61 8.785 6726.082
+ coords 7463.61 8.584 6726.082
  angleY 154.492
 }

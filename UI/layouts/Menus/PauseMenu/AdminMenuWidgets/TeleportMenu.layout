@@ -160,12 +160,12 @@ FrameWidgetClass {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -128
     OffsetLeft -128
-    PositionY -356
-    OffsetTop -356
+    PositionY -316
+    OffsetTop -316
     SizeX 112
     OffsetRight 16
     SizeY 29.999
-    OffsetBottom 326.001
+    OffsetBottom 286.001
    }
    Color 0.013 0.0152 0.0176 1
    components {
@@ -179,7 +179,7 @@ FrameWidgetClass {
      Name "ActionButtonText"
      Slot ButtonWidgetSlot "{62992E44F11398F5}" {
      }
-     Text "Teleport 1 to Me"
+     Text "Teleport Me to 1"
      "Font Size" 15
      "Min Font Size" 15
     }
@@ -191,12 +191,12 @@ FrameWidgetClass {
     Anchor 0.5 0.5 0.5 0.5
     PositionX -128
     OffsetLeft -128
-    PositionY -316
-    OffsetTop -316
+    PositionY -276
+    OffsetTop -276
     SizeX 112
     OffsetRight 16
     SizeY 29.999
-    OffsetBottom 286.001
+    OffsetBottom 246.001
    }
    Color 0.013 0.0152 0.0176 1
    components {
@@ -260,6 +260,37 @@ FrameWidgetClass {
      }
      Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
      Size 25 25
+    }
+   }
+  }
+  ButtonWidgetClass "{657108CA1782105B}" {
+   Name "MenuButton2"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -128
+    OffsetLeft -128
+    PositionY -356
+    OffsetTop -356
+    SizeX 112
+    OffsetRight 16
+    SizeY 29.999
+    OffsetBottom 326.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{657108CA17821058}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Teleport 1 to Me"
+     "Font Size" 15
+     "Min Font Size" 15
     }
    }
   }

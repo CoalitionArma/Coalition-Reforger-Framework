@@ -66,7 +66,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{1A0942D44F1CE80B}Configs/Gearscripts/Standard/Modern/CRF_GS_CAD.conf"
+  m_rGearScript "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC.conf"
   m_bEnableGIRadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
@@ -74,7 +74,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableGIRadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "657D1298174DA211" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {

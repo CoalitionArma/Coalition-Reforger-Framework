@@ -1,11 +1,7 @@
 SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et" {
  ID "520EC961A090B1EE"
  components {
-  CharacterSoundComponent "{520EA1D2F659CF84}" {
-   Mute 1
-  }
   SCR_CommunicationSoundComponent "{54FD05D0C92D071F}" {
-   Mute 1
    Filenames + {
     "{04548C6D4A936054}Sounds/RadioProtocol/RadioProtocol_Report_2_US.acp"
    }
@@ -91,6 +87,9 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   }
   CharacterWeaponSlotComponent "{520EA1D2F659CFB7}" {
    WeaponSlotIndex 1
+  }
+  RHS_ThermalSlotManagerComponent "{60D6F4C7C990A7BB}" {
+   Enabled 0
   }
   SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
    Identity Identity "{5584CBC6363C648B}" {

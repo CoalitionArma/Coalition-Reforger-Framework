@@ -1,0 +1,94 @@
+StaticModelEntity : "{019FFBD85C046071}Prefabs/Structures/Military/Camps/TentFIA_01/TentFIA_01_medical_foundation.et" {
+ coords 12915.143 3.932 1088.619
+ {
+  SCR_DestructibleBuildingEntity {
+   ID "5A5344E28C6C28D8"
+   coords 0 0.1 0
+   angleY -23.748
+  }
+  $grp GenericEntity : "{B3C3E866F3AFFA03}Prefabs/Structures/Military/Camps/Foundations/Foundation_TentUSSR_01.et" {
+   {
+    coords 2.325 0.1 1.843
+    angleY 42.36
+   }
+   {
+    coords 5.38 0.1 5.917
+    angleY 42.36
+   }
+   {
+    coords -0.808 0.113 -3.385
+    angleY 42.36
+   }
+   {
+    coords 7.503 0.1 7.745
+    angleY -48.04
+   }
+   {
+    coords 3.401 0.1 11.485
+    angleY -48.04
+   }
+   {
+    coords 1.277 0.1 9.657
+    angleY 42.36
+   }
+   {
+    coords -1.778 0.1 5.583
+    angleY 42.36
+   }
+   {
+    coords -4.91 0.113 0.356
+    angleY 42.36
+   }
+   {
+    coords -0.896 0.1 15.349
+    angleY -135.398
+   }
+   {
+    coords -2.697 0.1 13.281
+    angleY 42.36
+   }
+   {
+    coords -6.083 0.1 9.508
+    angleY 42.36
+   }
+   {
+    coords -9.937 0.113 4.941
+    angleY 42.36
+   }
+  }
+ }
+}
+SCR_DestructibleBuildingEntity : "{4A1E3B17DB672E35}Prefabs/Structures/Military/Camps/TentFIA_01/TentFIA_01.et" {
+ coords 12920.717 0.108 1096.263
+ angleY -66.091
+}
+GenericEntity : "{5BD7E085DFB4DB35}Prefabs/Compositions/Misc/SubCompositions/CrateClutteredCombined_US_04.et" {
+ coords 12915.374 4.016 1096.711
+ angleY 122.179
+}
+$grp GenericEntity : "{6C57BFFFA642C60C}Prefabs/Compositions/Misc/SubCompositions/CrateStacked_04.et" {
+ {
+  coords 12908.409 4.02 1090.092
+ }
+ {
+  coords 12908.944 4.023 1087.256
+  angleY 114.882
+ }
+}
+GenericEntity : "{7E2EC66747A3FBA3}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_base.et" {
+ coords 12906.118 4.02 1092.338
+ angleY -27.935
+}
+$grp GenericEntity : "{7F59A8D992FBF5CA}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_base.et" {
+ {
+  coords 12916.042 4.011 1104.679
+  angleY 42.833
+ }
+ {
+  coords 12917.025 4.011 1103.767
+  angleY 42.833
+ }
+}
+GenericEntity : "{A9CF5E8C5D91C476}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Crate_01.et" {
+ coords 12914.468 4.011 1106.177
+}

@@ -30,6 +30,14 @@ modded class SCR_ListBoxElementComponent
 		}
 	}
 	
+	void SetTalking()
+	{
+		ImageWidget wid = ImageWidget.Cast(m_wRoot.FindAnyWidget("VONSpeaker"));
+		
+		if (wid)
+			wid.SetVisible(true);
+	}
+	
 	/**
 	 * Sets the description index for this element
 	 * @param input The index value to set

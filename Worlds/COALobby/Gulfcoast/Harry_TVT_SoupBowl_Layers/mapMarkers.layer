@@ -1,0 +1,264 @@
+$grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+ {
+  coords 11735.639 6.065 449.159
+ }
+ {
+  coords 11735.639 6.065 649.159
+ }
+ {
+  coords 11735.639 6.065 849.159
+ }
+ {
+  coords 11735.639 6.065 1049.159
+ }
+ {
+  coords 11735.639 6.065 1249.159
+ }
+ {
+  coords 11735.639 6.065 1449.159
+ }
+ {
+  coords 11735.639 6.065 1649.159
+  angleY 24.167
+ }
+ {
+  coords 11817.517 6.065 1831.631
+  angleY 24.167
+ }
+ {
+  coords 11899.395 6.065 2014.103
+  angleY 24.167
+ }
+ {
+  coords 11981.273 6.065 2196.575
+  angleY 24.167
+ }
+ {
+  coords 12063.149 6.065 2379.047
+  angleY 24.167
+ }
+ {
+  coords 12145.027 6.065 2561.519
+  angleY 24.167
+ }
+ {
+  coords 12226.906 6.065 2743.991
+  angleY 24.167
+ }
+ {
+  coords 12308.784 6.065 2926.462
+  angleY 24.167
+ }
+ {
+  coords 12390.661 6.065 3108.934
+  angleY 24.167
+ }
+ {
+  coords 12472.539 6.065 3291.406
+  angleY 24.167
+ }
+ {
+  coords 12554.417 6.065 3473.878
+  angleY 24.167
+ }
+}
+$grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+ {
+  coords 10815.702 4.005 1952.284
+  angleY 5.447
+ }
+ {
+  coords 10806.209 4.005 1852.735
+  angleY 5.447
+ }
+ {
+  coords 10796.716 4.005 1753.187
+  angleY 5.447
+ }
+ {
+  coords 10787.223 4.005 1653.639
+  angleY 5.447
+ }
+ {
+  coords 10777.729 4.005 1554.091
+  angleY 5.447
+ }
+ {
+  coords 10678.18 4.005 1563.584
+  angleY 5.447
+ }
+ {
+  coords 10578.631 4.005 1573.077
+  angleY 5.447
+ }
+ {
+  coords 10479.082 4.005 1582.57
+  angleY 5.447
+ }
+ {
+  coords 10379.533 4.005 1592.063
+  angleY 5.447
+ }
+ {
+  coords 10389.025 4.005 1691.611
+  angleY 5.447
+ }
+ {
+  coords 10398.519 4.005 1791.159
+  angleY 5.447
+ }
+ {
+  coords 10408.012 4.005 1890.707
+  angleY 5.447
+ }
+ {
+  coords 10417.505 4.005 1990.255
+  angleY 5.447
+ }
+ {
+  coords 10517.054 4.005 1980.762
+  angleY 5.447
+ }
+ {
+  coords 10616.603 4.005 1971.269
+  angleY 5.447
+ }
+ {
+  coords 10716.15 4.005 1961.776
+  angleY 5.447
+ }
+ {
+  coords 10815.698 4.005 1952.283
+  angleY 5.447
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 10649.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 2734.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 2534.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 2334.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 2134.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 1934.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 1734.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 1534.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 1334.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 1134.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 934.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 734.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 534.687
+  angleY 0
+ }
+ {
+  coords 10649.88 27.751 334.687
+  angleY 0
+ }
+ {
+  coords 10849.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 11049.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 11249.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 11449.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 11649.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 11849.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 12249.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 12449.88 27.751 2934.687
+  angleY 0
+ }
+ {
+  coords 12449.88 227.751 2934.687
+  angleY 0
+ }
+ {
+  coords 12649.88 227.751 2934.688
+  angleY 33.943
+ }
+ {
+  coords 12815.799 227.751 2823.014
+  angleY 33.943
+ }
+ {
+  coords 12981.718 227.751 2711.34
+  angleY 33.943
+ }
+ {
+  coords 13147.637 227.751 2599.667
+  angleY 33.943
+ }
+ {
+  coords 13313.556 227.751 2487.994
+  angleY 33.943
+ }
+ {
+  coords 13479.476 227.751 2376.32
+  angleY 33.943
+ }
+ {
+  coords 13645.395 227.751 2264.646
+  angleY 33.943
+ }
+ {
+  coords 13811.313 227.751 2152.973
+  angleY 33.943
+ }
+ {
+  coords 13977.231 227.751 2041.299
+  angleY 33.943
+ }
+}

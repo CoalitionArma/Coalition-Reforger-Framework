@@ -16,6 +16,11 @@ $grp GenericEntity : "{45C675ED3CFBBEC5}Prefabs/Props/Military/Compositions/US/A
   angleY 88.034
  }
 }
+SCR_DestructibleBuildingEntity : "{50D623E0B330B955}Prefabs/Infrastructure/Dam/Dam.et" {
+ coords 9336.742 115.137 1873.262
+ angleY -31.269
+ scale 10
+}
 GenericEntity : "{78FA5AE736775EA8}Prefabs/Compositions/Slotted/SlotRoadMedium/COAL_Barricade_M_US_Green_01.et" {
  coords 10207.354 6.209 1578.218
  angleX 1.012

@@ -1,83 +1,113 @@
-$grp Vehicle : "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et" {
- UH1H1 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4893.722 28.594 11785.909
-  angleY -90.798
+$grp SCR_VehicleSpawn {
+ {
+  coords 4899.821 28.562 11735.766
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
  }
- UH1H2 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4893.633 28.594 11814.716
-  angleY -90.798
+ {
+  coords 4882.661 28.594 11735.766
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
  }
- UH1H4 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4893.826 28.594 11849.182
-  angleY -90.798
+ {
+  coords 4863.611 28.594 11735.766
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
  }
- UH1H5 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4893.722 28.594 11882.124
-  angleY -90.798
+ {
+  coords 4844.892 28.5 11735.766
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
  }
- UH1H6 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4860.718 28.594 11814.716
-  angleY -90.798
+ {
+  coords 4882.661 28.594 11757.913
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
  }
- UH1H8 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4860.911 28.594 11849.182
-  angleY -90.798
+ {
+  coords 4863.611 28.594 11757.913
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
  }
- UH1H9 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4860.807 28.594 11882.123
-  angleY -90.798
+ {
+  coords 4844.891 28.594 11757.913
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
  }
- UH1H10 {
-  components {
-   SCR_FuelConsumptionComponent "{5D5921F8C6EFACA8}" {
-    m_fFuelConsumption 0
-    m_fFuelConsumptionIdle 0
-   }
-  }
-  coords 4860.807 28.594 11785.909
-  angleY -90.798
+ {
+  coords 4899.821 28.594 11757.913
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4882.661 28.594 11783.206
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4863.611 28.594 11783.206
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4844.892 28.594 11783.206
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4899.821 28.594 11783.206
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4863.611 28.594 11809.933
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4844.891 28.594 11809.933
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4899.821 28.594 11809.933
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4882.661 28.594 11809.933
+  angleY 90
+  m_rnPrefab "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+ }
+ {
+  coords 4857.151 28.594 11850.449
+  angleY 90
+  m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+ }
+ {
+  coords 4889.835 28.594 11850.451
+  angleY 90
+  m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+ }
+ {
+  coords 4857.151 28.594 11890.788
+  angleY 90
+  m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+ }
+ {
+  coords 4889.835 28.594 11890.788
+  angleY 90
+  m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+ }
+ {
+  coords 4857.151 28.5 11935.152
+  angleY 90
+  m_rnPrefab "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+ }
+ {
+  coords 4889.835 28.594 11935.155
+  angleY 90
+  m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
  }
 }
 PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
@@ -90,37 +120,17 @@ PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.e
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
 }
-$grp Vehicle : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_transport.et" {
- Mi8MT_unarmed_transport1 {
-  coords 4895.262 28.593 11731.813
-  angleY -86.859
+$grp GenericEntity : "{F542F974956C255F}Prefabs/Props/Military/Compositions/CIV/ArsenalBox_CIV.et" {
+ {
+  coords 4911.332 28.594 11820.659
+  angleY 90
  }
- Mi8MT_unarmed_transport2 {
-  coords 4894.746 28.593 11761.255
-  angleY -88.859
+ {
+  coords 4911.332 28.594 11815.326
+  angleY 90
  }
- Mi8MT_unarmed_transport3 {
-  coords 4862.603 28.593 11762.135
-  angleY -88.859
- }
- Mi8MT_unarmed_transport4 {
-  coords 4861.863 28.593 11731.575
-  angleY -86.859
- }
- Mi8MT_unarmed_transport5 {
-  coords 4892.054 28.593 11932.418
-  angleY -89.805
- }
- Mi8MT_unarmed_transport6 {
-  coords 4861.731 28.593 11933.639
-  angleY -89.805
- }
- Mi8MT_unarmed_transport7 {
-  coords 4859.378 28.593 11904.276
-  angleY -89.805
- }
- Mi8MT_unarmed_transport8 {
-  coords 4891.603 28.593 11902.479
-  angleY -89.805
+ {
+  coords 4911.332 28.594 11810.887
+  angleY 90
  }
 }

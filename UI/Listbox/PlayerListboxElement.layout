@@ -26,6 +26,16 @@ ButtonWidgetClass {
      }
      Clipping False
      {
+      ImageWidgetClass "{6582271ED7CCDFBB}" {
+       Name "VONSpeaker"
+       Slot OverlayWidgetSlot "{6582271ED7CCDFA3}" {
+        HorizontalAlign 2
+        Padding 0 0 5 0
+       }
+       "Is Visible" 0
+       Texture "{5315FE771E747FBB}UI/data/Speaker_Icon.edds"
+       Size 32 32
+      }
       ImageWidgetClass "{630A25D7A5616D16}" {
        Name "Image0"
        Slot OverlayWidgetSlot "{630A2578A5208A35}" {
@@ -52,7 +62,7 @@ ButtonWidgetClass {
         HorizontalAlign 0
         Padding 0 0 135 0
        }
-       Image ""
+       Texture "{2E717F4664C6E49D}UI/Textures/Nametags/Nametag-Filter-Icons/Player.edds"
        Size 32 32
       }
       FrameWidgetClass "{630A25D7A5616D17}" {

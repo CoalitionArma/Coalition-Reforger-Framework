@@ -1,0 +1,673 @@
+PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 7058.315 30.413 5986.789
+ m_bUseWorldScale 0
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ zone1markers {
+  coords 8272.507 29.26 8458.33
+  angleY 0
+  m_MarkerColor 0.508 0.008 0.008 1
+  m_fWorldSize 80
+  m_sDescription "Zone 1 LOA"
+  m_bUseWorldScale 0
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    zone1markers2 {
+     coords 82.212 -8.115 -63.569
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers3 {
+     coords 178.073 -2.754 -141.599
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers4 {
+     coords 313.508 -15.476 -246.997
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers5 {
+     coords 458.688 -27.827 -355.014
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers6 {
+     coords 567.657 -29.26 -437.97
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers7 {
+     coords 690.224 -29.26 -531.994
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers8 {
+     coords 828.935 -29.26 -632.53
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers9 {
+     coords 1053.864 -29.26 -731.186
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers10 {
+     coords 1180.277 -29.26 -738.49
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers11 {
+     coords 1337.114 -29.01 -757.49
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers12 {
+     coords 1513.185 -28.542 -792.754
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers13 {
+     coords 1698.686 -28.369 -792.603
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers14 {
+     coords 1931.726 -27.253 -785.365
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers15 {
+     coords 2239.614 -28.579 -750.435
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers16 {
+     coords 2116.057 5.62 -644.807
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers27 {
+     coords -146.795 20.771 151.722
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers28 {
+     coords -293.89 40.935 276.482
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers29 {
+     coords -381.764 75.864 362.749
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 1 LOA"
+     m_bUseWorldScale 0
+    }
+   }
+  }
+ }
+ aomarkers {
+  coords 10345.842 13.548 8746.165
+  angleY 0
+  m_bUseWorldScale 0
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    {
+     coords 4.524 11.917 -79.275
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 5.272 38.484 -160.191
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 14.127 20.46 -384.49
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 22.904 34.93 -540.668
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 35.105 40.174 -650.024
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 57.533 10.26 -815.158
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 68.655 25.775 -877.592
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 108.176 -13.548 -1139.979
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 131.985 -13.548 -1313.759
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 146.641 15.115 -1439.43
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 184.649 39.909 -1567.189
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 207.547 57.935 -1633.717
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords 99.242 14.975 -1768.641
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -14.781 0.665 -1912.056
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -127.998 1.673 -2055.941
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -272.39 5.564 -2244.999
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -343.755 38.908 -2339.089
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -457.906 53.585 -2480.386
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -600.404 73.962 -2468.132
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -712.253 101.367 -2462.275
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1173.962 32.795 -2429.012
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1334.638 27.298 -2417.271
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1530.748 20.792 -2403.738
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1704.934 37.438 -2392.52
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2022.406 -1.405 -2376.858
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2234.481 -13.548 -2373.4
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2423.744 -13.548 -2371.799
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2642.51 -8.934 -2365.488
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2740.85 21.684 -2361.585
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2915.805 31.244 -2347.737
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3190.999 8.964 -2355.041
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3313.484 20.992 -2377.605
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3425.137 4.869 -2344.96
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3395.696 1.241 -2161.755
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3347.381 2.579 -1955.821
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3293.445 0.841 -1718.556
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3256.091 1.628 -1511.872
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3197.265 30.423 -1263.646
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3157.629 58.025 -1122.801
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3113.868 81.108 -1000.148
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3071.56 90.959 -869.691
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -3023.756 75.695 -739.979
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2950.69 90.814 -651.771
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2858.041 91.008 -531.318
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2720.942 63.646 -342.157
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2609.298 54.004 -198.837
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2521.859 65.921 -83.71
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2420.051 84.466 46.944
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2361.296 69.469 139.552
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2306.913 53.869 234.922
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2273.314 30.062 355.518
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -2159.439 37.535 438.356
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1984.175 9.753 550.059
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1830.215 28.454 534.431
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1606.912 15.26 502.827
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1359.202 0.577 466.628
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -1112.03 0.584 429.895
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -919.243 -0.547 382.253
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -779.446 0.174 354.098
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -558.159 3.234 345.199
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -474.591 21.28 259.929
+     angleY 0
+     m_bUseWorldScale 0
+    }
+    {
+     coords -270.129 -13.548 143.259
+     angleY 0
+     m_bUseWorldScale 0
+    }
+   }
+  }
+ }
+ zone2markers {
+  coords 8437.875 1.915 7121.972
+  angleY 0
+  m_MarkerColor 0.508 0.008 0.008 1
+  m_fWorldSize 80
+  m_sDescription "Zone 2 LOA"
+  m_bUseWorldScale 0
+  {
+   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+    zone1markers18 {
+     coords 113.443 7.365 -19.125
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers19 {
+     coords 246.619 23.961 -30.33
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers20 {
+     coords 431.626 27.504 -49.483
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers21 {
+     coords 631.129 1.595 -68.84
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers22 {
+     coords 756.711 29.425 -80.99
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers23 {
+     coords 993.387 16.261 -109.047
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers24 {
+     coords 1093.581 45.6 -114.393
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers25 {
+     coords 1259.994 39.728 -116.619
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers26 {
+     coords 1418.445 39.168 -118.335
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers30 {
+     coords 1569.4 50.994 -114.849
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers31 {
+     coords 1824.714 9.358 -88.288
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers32 {
+     coords 1947.275 24.557 -72.875
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers33 {
+     coords 2063.997 58.208 -56.454
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers17 {
+     coords -154.101 -1.915 33.411
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers34 {
+     coords -313.648 -1.915 52.226
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers35 {
+     coords -481.665 -1.915 84.043
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers36 {
+     coords -649.328 12.455 111.624
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers37 {
+     coords -857.105 37.604 180.35
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers38 {
+     coords -1011 33.469 217.64
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers39 {
+     coords -1120.496 39.809 234.476
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers40 {
+     coords -1271.481 32.013 284.576
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+    zone1markers41 {
+     coords -1419.481 19.778 331.34
+     angleY 0
+     m_MarkerColor 0.508 0.008 0.008 1
+     m_fWorldSize 80
+     m_sDescription "Zone 2 LOA"
+     m_bUseWorldScale 0
+    }
+   }
+  }
+ }
+}
+PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 8233.889 56.112 8919.684
+ m_bUseWorldScale 0
+}

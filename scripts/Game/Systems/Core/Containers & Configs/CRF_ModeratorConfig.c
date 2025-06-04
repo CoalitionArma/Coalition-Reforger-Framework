@@ -10,7 +10,7 @@ class CRF_ModeratorConfig
 		m_config = new CRF_ModeratorConfigStruct();
 				
 		if (!FileIO.FileExists( m_configFilePath ))
-			m_config.SetDefaultModeratorValue();
+			m_config.SetDefaultValue();
 		else
 		{
 			if (!configLoadContext.LoadFromFile( m_configFilePath ))
@@ -22,7 +22,7 @@ class CRF_ModeratorConfig
 		
 		if (!m_config.m_mModerators)
 		{
-		   m_config.SetDefaultModeratorValue();
+		   m_config.SetDefaultValue();
 		}
 		
 		SaveConfig();
@@ -58,7 +58,7 @@ class CRF_ModeratorConfigStruct
 {
 	ref map<string, string> m_mModerators;
 	
-	void SetDefaultModeratorValue()
+	void SetDefaultValue()
 	{
 		m_mModerators = new map<string, string>();
 		m_mModerators.Insert("00000000-0000-0000-0000-000000000001", "Moderator Example");

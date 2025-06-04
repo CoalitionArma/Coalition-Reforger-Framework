@@ -64,14 +64,14 @@ $grp SCR_BaseTriggerEntity {
 }
 $grp SCR_VehicleSpawn {
  engiTruck1 {
-  coords 14062.818 11.437 4354.06
+  coords 14062.753 11.437 4355.149
   angleY -3.436
   m_rnPrefab "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
   respawnDelay 10000
   firstSpawn 1
  }
  engiTruck2 {
-  coords 14050.041 11.437 4354.108
+  coords 14049.925 11.437 4356.049
   angleY -3.436
   m_rnPrefab "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et"
   respawnDelay 10000

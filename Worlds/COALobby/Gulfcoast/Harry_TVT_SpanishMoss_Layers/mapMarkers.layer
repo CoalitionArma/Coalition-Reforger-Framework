@@ -22,7 +22,8 @@ $grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarke
   }
  }
  {
-  coords 14288.505 2.719 4275.349
+  coords 13832.462 28.336 4392.717
+  angleY 90
   m_MarkerColor 0.502 0 0 1
   m_sDescription "Bomb Site B"
   m_aVisibleForFactions {

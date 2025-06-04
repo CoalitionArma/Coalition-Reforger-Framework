@@ -21,6 +21,13 @@ GenericEntity : "{0CD6E71D33E1CCD0}Prefabs/Vehicles/Core/Vehicle_EngineerBox_Bas
     }
    }
   }
+  SCR_ResourceComponent "{5D82E3A391ED9E1F}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D82E3A393410F0A}" {
+     m_fResourceValueCurrent 550
+    }
+   }
+  }
   SlotManagerComponent "{64F91871ABAAFAE9}" {
    Slots {
     RegisteringComponentSlotInfo Canvas {

@@ -497,8 +497,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 				
 			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				continue;
-				
-			list.AddItem(string.Format("%1", name));
+			
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
 		}
 	}
 
@@ -1013,11 +1014,12 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 
 			if (CRF_SlottingManager.GetInstance().IsPlayerConsideredDead(playerId) ||
 				CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 			{
-				playerList.AddItem(string.Format("%1", name));
+				playerList.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
 			}
 		}
 	}
@@ -1213,14 +1215,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 		SCR_ButtonTextComponent searchButton1 = GetMenuButton("SearchButton1");
 		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
 		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
-		if (!searchButton0 || !searchButton1 || !menuButton0 || !menuButton1)
+		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
+		if (!searchButton0 || !searchButton1 || !menuButton0 || !menuButton1 || !menuButton2)
 			return;
 		
 		// Setup button event handlers
 		searchButton0.m_OnClicked.Insert(SearchList0);
 		searchButton1.m_OnClicked.Insert(SearchList1);
-		menuButton0.m_OnClicked.Insert(TeleportLocal);
+		menuButton0.m_OnClicked.Insert(TeleportLocalToSelected);
 		menuButton1.m_OnClicked.Insert(TeleportPlayers);
+		menuButton2.m_OnClicked.Insert(TeleportSelectedToLocal);
 		
 		// Change title of the menu
 		UpdateMenuTitle("Teleport");
@@ -1233,7 +1237,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	/**
 	 * Teleports local player to selected player
 	 */
-	void TeleportLocal()
+	void TeleportLocalToSelected()
 	{
 		// Load List Boxes
 		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
@@ -1251,6 +1255,29 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		// Teleport local player to target
 		m_clientComponent.TeleportLocalPlayer(SCR_PlayerController.GetLocalPlayerId(), playerId2);
+	}
+	
+	/**
+	 * Teleports selected player to local player
+	 */
+	void TeleportSelectedToLocal()
+	{
+		// Load List Boxes
+		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
+		if (!playerList0)
+			return;
+		
+		if (playerList0.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList0.GetElementComponent(playerList0.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId2 = GetplayerIdFromName(playerName);
+		if (playerId2 == 0)
+			return;
+
+		// Teleport local player to target
+		CRF_RplToAuthorityManager.GetInstance().TeleportPlayers(playerId2, SCR_PlayerController.GetLocalPlayerId(), true);
 	}
 
 	/**
@@ -1594,14 +1621,15 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
 			
 			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
 				continue;
 				
 			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
 				continue;
-				
-			list.AddItem(string.Format("%1", name));
+			
+			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
 		}
 	}
 	
