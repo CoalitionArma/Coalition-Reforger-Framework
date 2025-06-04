@@ -1,0 +1,80 @@
+$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 7661.807 18.508 3845.512
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Cache A"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 7046.465 105.687 3997.244
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Cache B"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 7467.83 18.904 3193.004
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Cache C"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ cacheA {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+     }
+    }
+    CollisionVelocityThreshold 100000
+    m_SecondaryExplosions SCR_SecondaryExplosions "{65880659DFA0AA63}" {
+     m_aSecondaryExplosionTypes {
+      SCR_SecondaryExplosionType "{65880659DE6937CF}" {
+       m_eSecondaryExplosionType DEFAULT
+      }
+     }
+    }
+   }
+  }
+  coords 7661.82 18.506 3844.114
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache A destroyed\", duration: 10);"\
+  "	"
+ }
+ cacheB {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+     }
+    }
+    CollisionVelocityThreshold 10000000
+   }
+  }
+  coords 7046.6 105.688 3996.16
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache B destroyed\", duration: 10);"\
+  "	"
+ }
+ cacheC {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+     }
+    }
+    CollisionVelocityThreshold 100000
+   }
+  }
+  coords 7469.181 18.905 3192.761
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache C destroyed\", duration: 10);"\
+  "	"
+ }
+}

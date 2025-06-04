@@ -1,0 +1,138 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 5887.72 5.831 3616.479
+  angleY 91.931
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5909.395 6.288 3616.842
+  angleY 91.931
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 8072.807 3.907 3788.669
+  angleY 130.204
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 8076.714 4.016 3792.334
+  angleY 132.048
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7577.699 10.13 4444.376
+  angleY 91.931
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7343.056 7.6 4778.316
+  angleY 156.479
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7336.794 8.324 4775.118
+  angleY 158.453
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5834.941 12.777 2943.654
+  angleY 176.72
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5837.913 13.805 2960.419
+  angleY 15.304
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6082.089 41.926 2736.064
+  angleY -100.197
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6081.091 41.926 2741.609
+  angleY -100.197
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6226.413 56.351 2247.179
+  angleY 95.765
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6669.493 138.188 2867.24
+  angleY 166.808
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6674.11 138.166 2867.273
+  angleY 164.551
+  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+GenericEntity : "{25F3D3F3BD413CA5}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Barracks_USSR_02.et" {
+ coords 7647.352 18.354 3844.041
+ angleY 53.214
+}
+StaticModelEntity : "{5824BC6E4A1AF407}Prefabs/Compositions/Misc/SubCompositions/Tent_Medical_Cluttered_USSR_01.et" {
+ coords 7662.843 19.024 3856.642
+ angleY -113.167
+}
+GenericEntity : "{607E00F1C367D129}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Barracks_USSR_01.et" {
+ coords 7642.37 18.473 3849.966
+ angleY 55.775
+}
+StaticModelEntity : "{6DEC3A82BA35F108}Prefabs/Compositions/Misc/SubCompositions/Tent_BarrackHQ_Cluttered_USSR_01.et" {
+ coords 7661.888 18.332 3842.216
+ angleY 0
+}
+$grp GenericEntity : "{A817454D4372DBCA}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Tent_Soviet.et" {
+ {
+  coords 7647.401 18.593 3844.053
+  angleY 52.466
+ }
+ {
+  coords 7642.334 18.716 3850.031
+  angleY 56.64
+ }
+ {
+  coords 7638.153 18.866 3856.333
+  angleY 55.171
+ }
+ {
+  coords 7662.759 19.442 3856.676
+  angleY -114.704
+ }
+}
+GenericEntity : "{E9B678E87346C96C}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Barracks_USSR_03.et" {
+ coords 7638.072 18.608 3856.401
+ angleY 55.736
+}
