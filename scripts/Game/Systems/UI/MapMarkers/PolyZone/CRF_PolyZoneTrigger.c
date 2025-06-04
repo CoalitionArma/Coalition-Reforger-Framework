@@ -16,6 +16,9 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 	[Attribute("0")]
 	bool m_bAliveOnly;
 	
+	[Attribute("1")]
+	bool m_bHelisNotRestricted;
+	
 	[Attribute("")]
 	ref array<FactionKey> m_aFactionKey;
 	
@@ -31,6 +34,7 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 	{
 		if (!m_polyZone)
 			return true;
+		
 		if (!m_polyZone.IsInsidePolygon(ent.GetOrigin()))
 			return false;
 		
@@ -70,12 +74,15 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 			
 			if (m_bAliveOnly && damageManager.GetState() == EDamageState.DESTROYED)
 				return false;
+			
 			if (!m_aFactionKey.IsEmpty() && m_aFactionKey.Contains(factionAffiliation.GetDefaultAffiliatedFaction().GetFactionKey()))
 				return false;
+			
 			if (m_sGroupKey != "")
 			{
 				if (!aiGroup)
 					return false;
+				
 				if (!aiGroup.GetName().Contains(m_sGroupKey))
 					return false;
 			}
@@ -103,6 +110,22 @@ class CRF_PolyZoneTrigger : SCR_BaseTriggerEntity
 	{
 		if (!m_polyZoneEffect)
 			return;
+		
+		if (CRF_GamemodeManager.IsSpectator(ent))
+			return;
+		
+		CompartmentAccessComponent compAccess = CompartmentAccessComponent.Cast(ent.FindComponent(CompartmentAccessComponent)); // TODO nullcheck
+		if (compAccess)
+		{
+			BaseCompartmentSlot compartment = compAccess.GetCompartment();
+			if (compartment)
+			{
+				VehicleHelicopterSimulation heli = VehicleHelicopterSimulation.Cast(compartment.GetVehicle().FindComponent(VehicleHelicopterSimulation));
+				
+				if(heli && m_bHelisNotRestricted)
+					return;
+			}
+		}
 		
 		CRF_PolyZoneEffectHandler polyZoneEffectHandler = CRF_PolyZoneEffectHandler.Cast(ent.FindComponent(CRF_PolyZoneEffectHandler));
 		if (!polyZoneEffectHandler)
