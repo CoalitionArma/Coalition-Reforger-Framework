@@ -26,6 +26,7 @@ class CRF_SafestartManager : ScriptComponent
 
 	protected int m_iPlayedFactionsCount;
 	protected ref map<IEntity, bool> m_mEntitiesWithEHsMap = new map<IEntity, bool>();
+	protected ref array<IEntity> m_aSafestartZones = {};
 
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	protected CRF_LoggingManager m_Logging;
@@ -69,7 +70,6 @@ class CRF_SafestartManager : ScriptComponent
 		}
 	}
 
-	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
 	// Polls for game start, then configures safestart based on gamemode settings
 	void WaitTillGameStart()
@@ -418,8 +418,16 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 12500);
 
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
+			
+			DeleteAllSafestartZones();
 		}
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	void AddSafestartZone(IEntity entity)
+	{
+		m_aSafestartZones.Insert(entity);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void DelayChangeSafeStartDisabled() {
@@ -447,6 +455,17 @@ class CRF_SafestartManager : ScriptComponent
 		if (!message.IsEmpty())
 			m_RplBroadcastManager.PopUpNotification(20, message);
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	void DeleteAllSafestartZones()
+	{
+		foreach(IEntity zone : m_aSafestartZones)
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(zone);
+		}
+		
+		m_aSafestartZones.Clear()
+	}
 
 	//------------------------------------------------------------------------------------------------
 	// SafeStart EHs

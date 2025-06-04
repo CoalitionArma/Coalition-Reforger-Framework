@@ -20,3 +20,16 @@ SCR_AIGroup : "{36D6A656C4D79C45}Prefabs/Groups/OPFOR/Standard/Dev/CRF_OPFOR_Dev
   }
  }
 }
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 1234.09 38.009 2838.277
+ {
+  CRF_PolyZoneTrigger {
+   ID "6586537E1F83840B"
+   components {
+    CRF_PolyZoneMeshComponent "{6586537E1F83846B}" {
+     m_fHeight 30
+    }
+   }
+  }
+ }
+}

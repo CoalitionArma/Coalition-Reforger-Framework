@@ -31,6 +31,9 @@ class CRF_PolyZone : ScriptComponent
 	SCR_MapEntity m_MapEntity;
 	ref array<float> m_aPolygon;
 	ref array<float> m_aPolygonTrigger;
+	
+	[Attribute("0")]
+	bool m_bIsSafestartBorder;
 		
 	[Attribute("0")]
 	bool m_bLineMode;
@@ -85,6 +88,9 @@ class CRF_PolyZone : ScriptComponent
 		m_ePolylineShapeEntity = ShapeEntity.Cast(owner);
 		
 		GetGame().GetCallqueue().CallLater(UpdatePolygon, 0, false);
+		
+		if (m_bIsSafestartBorder && Replication.IsServer())
+			CRF_SafestartManager.GetInstance().AddSafestartZone(owner);
 	}
 	
 	void UpdatePolygon()
