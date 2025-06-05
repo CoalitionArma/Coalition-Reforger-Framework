@@ -389,8 +389,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!entity)
 			return;
 
-		//GetGame().GetCallqueue().CallLater(m_GearscriptManager.SetEntityGear, 250, false, entity, prefab);
-		m_GearscriptManager.SetEntityGear(entity, prefab);
+		// Schedule gear setup with appropriate delay
+		GetGame().GetCallqueue().Call(
+			m_GearscriptManager.SetEntityGear, 
+			entity, 
+			entity.GetPrefabData().GetPrefabName()
+		);
 		
 		m_SlottingManager.UpdateSlotResource(m_SlottingManager.GetPlayerSlotID(playerId), prefab);
 
