@@ -23,7 +23,7 @@ modded class SCR_MapMarkersUI
 			m_bIsMapOpen = true;
 		
 		// Schedule marker initialization
-		GetGame().GetCallqueue().CallLater(LoadStoredMarkers, 0, true);
+		GetGame().GetCallqueue().Call(LoadStoredMarkers);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -45,7 +45,6 @@ modded class SCR_MapMarkersUI
 			return;
 		
 		// Remove function from call queue since we're processing markers now
-		GetGame().GetCallqueue().Remove(LoadStoredMarkers);
 		
 		// Clean up any existing markers
 		CleanupExistingMarkers();

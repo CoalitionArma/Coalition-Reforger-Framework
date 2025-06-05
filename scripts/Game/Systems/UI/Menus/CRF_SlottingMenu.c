@@ -710,7 +710,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if(isAdmin)
 			{	
 				m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetLockButton().m_OnClicked.Insert(LockGroupSlotsDelayed);
-				GetGame().GetCallqueue().CallLater(SetupAdminGroupIcons, 100, false, group, groupIndex);
+				GetGame().GetCallqueue().Call(SetupAdminGroupIcons, group, groupIndex);
 			}
 			
 			m_cSlotListBoxComponent.GetCRFElementComponent(groupIndex).GetGroupIcon().LoadImageFromSet(0, SCR_Faction.Cast(group.GetFaction()).GetGroupFlagImageSet(), group.GetGroupFlag());
@@ -950,7 +950,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	void LockGroupSlotsDelayed()
 	{
-		GetGame().GetCallqueue().CallLater(LockGroupSlots, 10, false);
+		GetGame().GetCallqueue().Call(LockGroupSlots);
 	}
 	
 	/**
@@ -1004,7 +1004,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	void LockSlotDelay()
 	{
-		GetGame().GetCallqueue().CallLater(LockSlot, 10, false);
+		GetGame().GetCallqueue().Call(LockSlot);
 	}
 	
 	/**
@@ -1341,7 +1341,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	void SelectSlotDelay()
 	{
-		GetGame().GetCallqueue().CallLater(SelectSlot, 10, false);
+		GetGame().GetCallqueue().Call(SelectSlot);
 	}
 	
 	/**
@@ -1536,7 +1536,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	 */
 	void Action_VONOff()
 	{
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
+		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
 	}
 	
 	/**
@@ -1549,7 +1549,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			return;
 		
 		// Use a small frame delay to avoid UI interaction issues
-		GetGame().GetCallqueue().CallLater(OpenChatWrap, 5);
+		GetGame().GetCallqueue().Call(OpenChatWrap);
 	}
 	
 	/**

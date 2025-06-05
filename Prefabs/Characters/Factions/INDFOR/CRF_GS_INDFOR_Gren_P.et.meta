@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{C4F92D98246A62C5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehGrenr_P.et"
+ Name "{C4F92D98246A62C5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Gren_P.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

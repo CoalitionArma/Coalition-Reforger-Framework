@@ -116,7 +116,7 @@ modded class SCR_EditorManagerEntity
 			if (CRF_Gamemode.GetInstance())
 			{
 				// Schedule UI reopening after a short delay
-				GetGame().GetCallqueue().CallLater(OpenUI, 500, false);
+				GetGame().GetCallqueue().Call(OpenUI);
 			}
 		}
 	}
@@ -175,7 +175,7 @@ modded class SCR_EditorManagerEntity
 				bool isSameEntity = SCR_PlayerController.GetLocalControlledEntity() == SCR_PlayerController.GetLocalMainEntity();
 				
 				if (isSpectator && isSameEntity)
-					GetGame().GetCallqueue().CallLater(CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer, 500, false, SCR_PlayerController.GetLocalPlayerId());
+					GetGame().GetCallqueue().Call(CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer, SCR_PlayerController.GetLocalPlayerId());
 				
 				break;
 			}
