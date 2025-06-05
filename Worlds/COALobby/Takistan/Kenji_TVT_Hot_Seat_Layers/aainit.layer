@@ -31,9 +31,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "We must survive the oncoming American assault and protect at least one out of two bombsites."
   }
  }
- m_iFactionOneRatio 3
+ m_iFactionOneRatio 2
  m_sFactionOneKey "BLU"
- m_iFactionTwoRatio 2
  m_sFactionTwoKey "IND"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{3A6FB419BE5A3CF6}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU.conf"
@@ -42,7 +41,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "658A20F6C4EF3EE7" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
