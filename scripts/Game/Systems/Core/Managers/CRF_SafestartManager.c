@@ -460,7 +460,8 @@ class CRF_SafestartManager : ScriptComponent
 	{
 		foreach(IEntity zone : m_aSafestartZones)
 		{
-			SCR_EntityHelper.DeleteEntityAndChildren(zone);
+			if(zone)
+				SCR_EntityHelper.DeleteEntityAndChildren(zone);
 		}
 		
 		m_aSafestartZones.Clear()

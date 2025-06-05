@@ -89,7 +89,7 @@ class CRF_PolyZone : ScriptComponent
 		
 		GetGame().GetCallqueue().CallLater(UpdatePolygon, 0, false);
 		
-		if (m_bIsSafestartBorder && Replication.IsServer())
+		if (m_bIsSafestartBorder && Replication.IsServer() && CRF_SafestartManager.GetInstance())
 			CRF_SafestartManager.GetInstance().AddSafestartZone(owner);
 	}
 	

@@ -1,15 +1,5 @@
 PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
- coords 1232.774 37.999 2836.159
- {
-  CRF_PolyZoneTrigger {
-   ID "6586537E5441D074"
-   components {
-    CRF_PolyZoneMeshComponent "{6586537E5441D05B}" {
-     m_fHeight 30
-    }
-   }
-  }
- }
+ coords 1350.053 37.999 2869.259
 }
 GenericEntity : "{A8C13E34C9597EA4}Prefabs/Structures/FlagPoles/RespawnPoles/INDFOR_Respawn.et" {
  coords 1251.068 37.938 2820.262

@@ -4,9 +4,10 @@ PolylineShapeEntity {
   CRF_PolyZone "{65862E4575B86577}" {
    m_cPolygonColor 0.045 0.045 0.045 0.431
    m_cPolygonBorderColor 0.045 0.045 0.045 1
+   m_fPolygonBorderWidth 8
    m_bReversed 1
    m_aVisibleForFactions {
-    "BLUFOR" "OPFOR" "INDOFR" "CIV" "SPEC"
+    "BLUFOR" "OPFOR" "INDFOR" "CIV" "SPEC"
    }
    m_aHideOnGameModeStates {
    }
@@ -21,7 +22,7 @@ PolylineShapeEntity {
    Position -242.873 0 122.392
   }
   ShapePoint "{658642B60DB43110}" {
-   Position 367.6 0 373.351
+   Position 367.289 11.086 373.897
   }
   ShapePoint "{658642B60E7A2DB4}" {
    Position 606.851 0 -46.888
