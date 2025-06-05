@@ -13,6 +13,7 @@ PolylineShapeEntity {
    }
   }
   RplComponent "{6586537EDC8ADBE3}" {
+   Streamable Disabled
   }
  }
  coords 1235.318 37.959 2825.945
