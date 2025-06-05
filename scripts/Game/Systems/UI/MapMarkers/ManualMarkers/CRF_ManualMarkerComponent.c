@@ -1,5 +1,5 @@
 // Custom marker widget component
-class PS_ManualMarkerComponent : SCR_ScriptedWidgetComponent
+class CRF_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 {
 	protected SCR_MapEntity m_MapEntity;
 	
@@ -39,7 +39,7 @@ class PS_ManualMarkerComponent : SCR_ScriptedWidgetComponent
 		return scale;
 	}
 	
-	// Every info contains in PS_ManualMarker, soo ther is onle setters
+	// Every info contains in CRF_ManualMarker, soo ther is onle setters
 	void SetImage(ResourceName m_sImageSet, string quadName)
 	{
 		if (m_sImageSet.EndsWith(".edds"))

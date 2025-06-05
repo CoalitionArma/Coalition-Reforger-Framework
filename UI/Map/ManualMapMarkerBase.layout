@@ -12,7 +12,7 @@ FrameWidgetClass {
  Clipping False
  "Ignore Cursor" 0
  components {
-  PS_ManualMarkerComponent "{5EB91D13C38EDB9D}" {
+  CRF_ManualMarkerComponent "{5EB91D13C38EDB9D}" {
   }
  }
  {

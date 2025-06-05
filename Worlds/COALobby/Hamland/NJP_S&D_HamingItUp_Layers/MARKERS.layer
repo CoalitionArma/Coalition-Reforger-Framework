@@ -1,10 +1,10 @@
-PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  coords 3012.828 18.535 3709.429
  angleX -0.554
  angleY 45.21
  angleZ 0.55
  {
-  $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+  $grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
    {
     coords 15.3 0 -11.181
     angleY 0
@@ -40,11 +40,11 @@ PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBord
   }
  }
 }
-PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  coords 2542.319 7.824 4626.211
  angleY -1.711
  {
-  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+  $grp CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    {
     coords 92.807 0 10.125
     angleY 0

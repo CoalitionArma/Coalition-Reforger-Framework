@@ -1,0 +1,83 @@
+PolylineShapeEntity {
+ ID "6586537E5441D009"
+ components {
+  CRF_PolyZone "{6586537E5441D07A}" {
+   m_cPolygonColor 0 0.502 0.125 0.176
+   m_cPolygonBorderColor 0 0.502 0.125 1
+   m_fPolygonBorderWidth 6
+   m_bIsSafestartBorder 1
+   m_bReversed 0
+   m_aVisibleForFactions {
+    "INDFOR"
+   }
+   m_aHideOnGameModeStates {
+   }
+  }
+  RplComponent "{6586537E5441D056}" {
+   Streamable Disabled
+  }
+ }
+ coords 1235.318 37.959 2825.945
+ Points {
+  ShapePoint "{658642B60C75905C}" {
+   Position -37.875 -0.995 -30.031
+  }
+  ShapePoint "{658642B60D1BE03D}" {
+   Position -44.176 0 16.982
+  }
+  ShapePoint "{658642B60DB43110}" {
+   Position 57.836 0 38.993
+  }
+  ShapePoint "{658642B60E7A2DB4}" {
+   Position 65.068 0 -0.624
+  }
+ }
+ IsClosed 1
+ {
+  CRF_PolyZoneTrigger {
+   ID "6586537E5441D074"
+   components {
+    CRF_PolyZoneMeshComponent "{6586537E5441D05B}" {
+     m_fHeight 30
+     m_fUndergroundHeight 15
+     m_Material "{B57778D641C08057}Assets/Editor/VirtualArea/INDFORBoundry.emat"
+    }
+    RplComponent "{65885ABE697FE4E6}" {
+     Streamable Disabled
+    }
+    Hierarchy "{6586537E5441D043}" {
+    }
+   }
+   coords 0 0 0
+   TriggerShapeType Polyline
+   SphereRadius 25.5
+   "Polyline Height" 10000
+   DrawShape 0
+   TriggerActivationType "All changes"
+   PeriodicQueries 1
+   UpdatePeriod 1
+   ClassesFilter {
+    "SCR_ChimeraCharacter"
+   }
+   m_polyZoneEffect CRF_PolyZoneEffectRestricted "{6586537E5441D04B}" {
+    m_fKillTime 15
+   }
+   m_bReversed 1
+   m_bAliveOnly 1
+   m_bHelisNotRestricted 0
+   m_aFactionKey {
+    "BLUFOR" "OPFOR" "CIV" "SPEC"
+   }
+  }
+  CRF_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+   ID "65885AB995B4F699"
+   coords 0 0 0
+   angleY 0
+   m_MarkerColor 0 0.502 0.125 1
+   m_sQuadName "mine-single-2"
+   m_fWorldSize 15
+   m_sDescription "INDFOR Safe Start Area"
+   m_iZOrder 10
+  }
+ }
+}

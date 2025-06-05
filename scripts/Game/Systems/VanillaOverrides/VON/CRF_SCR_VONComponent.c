@@ -22,7 +22,7 @@ modded class SCR_VoNComponent
 		super.OnCapture(transmitter);
 		
 		// Skip processing during active gameplay to prevent FPS impact
-		if(!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
 		// Register local player as currently talking
@@ -38,7 +38,7 @@ modded class SCR_VoNComponent
 		super.OnReceive(playerId, receiver, frequency, quality);
 		
 		// Skip processing during active gameplay to prevent FPS impact
-		if(!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 			return;
 		
 		// Register the remote player as currently talking
@@ -51,7 +51,7 @@ modded class SCR_VoNComponent
 	protected void AddPlayerTalking(int playerId)
 	{		
 		// Only add if not already in the list (important as OnReceive runs every frame)
-		if(!m_MenuManager.m_aPlayersTalking.Contains(playerId))
+		if (!m_MenuManager.m_aPlayersTalking.Contains(playerId))
 		{
 			// Add player to the list to update UI indicators in various menus
 			m_MenuManager.m_aPlayersTalking.Insert(playerId);
@@ -71,7 +71,7 @@ modded class SCR_VoNComponent
 		int playerIndex = m_MenuManager.m_aPlayersTalking.Find(playerId);
 		
 		// Only remove if player is actually in the list
-		if(playerIndex != -1)
+		if (playerIndex != -1)
 		{
 			// Remove player to update UI indicators
 			m_MenuManager.m_aPlayersTalking.Remove(playerIndex);

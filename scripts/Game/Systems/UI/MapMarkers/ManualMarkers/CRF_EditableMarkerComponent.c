@@ -1,17 +1,17 @@
 [ComponentEditorProps(category: "GameScripted/Editor (Editables)", description: "", icon: "WBData/ComponentEditorProps/componentEditor.png")]
-class PS_EditableMarkerComponentClass: SCR_EditableDescriptorComponentClass
+class CRF_EditableMarkerComponentClass: SCR_EditableDescriptorComponentClass
 {
 	
 };
 
-class PS_EditableMarkerComponent: SCR_EditableSystemComponent
+class CRF_EditableMarkerComponent: SCR_EditableSystemComponent
 {
-	PS_ManualMarker m_eManualMarker;
+	CRF_ManualMarker m_eManualMarker;
 	
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-		m_eManualMarker = PS_ManualMarker.Cast(owner);
+		m_eManualMarker = CRF_ManualMarker.Cast(owner);
 	}
 	
 	string GetMarkerDescription()

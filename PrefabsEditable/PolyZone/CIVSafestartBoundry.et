@@ -1,0 +1,85 @@
+PolylineShapeEntity {
+ ID "6586537D9DECC16E"
+ components {
+  CRF_PolyZone "{6586537D9DECC156}" {
+   m_cPolygonColor 0.25 0 0.503 0.176
+   m_cPolygonBorderColor 0.251 0 0.502 1
+   m_fPolygonBorderWidth 6
+   m_bIsSafestartBorder 1
+   m_bReversed 0
+   m_aVisibleForFactions {
+    "CIV"
+   }
+   m_aHideOnGameModeStates {
+   }
+  }
+  RplComponent "{6586537D9DECC145}" {
+   Streamable Disabled
+  }
+ }
+ coords 1235.318 37.959 2825.945
+ Points {
+  ShapePoint "{658642B60C75905C}" {
+   Position -40.372 -1.378 -35.715
+  }
+  ShapePoint "{658642B60D1BE03D}" {
+   Position -47.939 0.289 14.316
+  }
+  ShapePoint "{658642B60DB43110}" {
+   Position 59.111 0.022 39.13
+  }
+  ShapePoint "{658642B60E7A2DB4}" {
+   Position 68.091 0.13 -5.245
+  }
+ }
+ IsClosed 1
+ {
+  CRF_PolyZoneTrigger {
+   ID "6586537D9DECC16D"
+   components {
+    CRF_PolyZoneMeshComponent "{6586537D9DECC1B7}" {
+     m_fHeight 30
+     m_fUndergroundHeight 15
+     m_Material "{92E45624495C0978}Assets/Editor/VirtualArea/CIVBoundry.emat"
+    }
+    RplComponent "{65885ABE5E173831}" {
+     Streamable Disabled
+    }
+    Hierarchy "{6586537D9DECC1BE}" {
+    }
+   }
+   coords 0 0 0
+   TriggerShapeType Polyline
+   SphereRadius 25.5
+   "Polyline Height" 10000
+   TriggerActivationType "All changes"
+   PeriodicQueries 1
+   UpdatePeriod 1
+   ClassesFilter {
+    "SCR_ChimeraCharacter"
+   }
+   m_polyZoneEffect CRF_PolyZoneEffectRestricted "{6586537D9DECC1B9}" {
+    m_fKillTime 15
+   }
+   m_bReversed 1
+   m_bAliveOnly 1
+   m_bHelisNotRestricted 0
+   m_aFactionKey {
+    "BLUFOR" "OPFOR" "INDFOR" "SPEC"
+   }
+  }
+  CRF_ManualMarker : "{8245D146576FEB30}PrefabsEditable/Markers/CIVSafeStartBorderMarker.et" {
+   ID "65885ABE4C9EEBA5"
+   coords 0 0 0
+   angleY 0
+   m_MarkerColor 0.251 0 0.502 1
+   m_sQuadName "mine-single-2"
+   m_fWorldSize 15
+   m_sDescription "CIV Safe Start Area"
+   m_aVisibleForFactions {
+    "CIV"
+   }
+   m_iZOrder 10
+  }
+ }
+}

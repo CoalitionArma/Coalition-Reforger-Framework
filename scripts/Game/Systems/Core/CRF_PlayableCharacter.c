@@ -39,6 +39,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		m_PlayerControllerComponent = CRF_PlayerControllerManager.GetInstance();
 		m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
 		
+		// Must be calledlater due to a race condition with the ai groups being spawned. Needs refactored.
 		GetGame().GetCallqueue().CallLater(SetInitialEntity, 100, false, owner);
 	}
 	
@@ -71,8 +72,8 @@ class CRF_PlayableCharacter : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SetInitialEntity(IEntity owner)
 	{
-		// Disable AI
-		GetGame().GetCallqueue().CallLater(DisableAI, 0, false, owner);
+		// Disable AI next frame to avoid race condition
+		GetGame().GetCallqueue().Call(DisableAI, owner);
 		
 		// Get if we are a spectator
 		bool isSpec = CRF_GamemodeManager.IsSpectator(owner);
@@ -120,18 +121,13 @@ class CRF_PlayableCharacter : ScriptComponent
 		AIAgent agent = aiComponent.GetAIAgent();
 		if (agent)
 			agent.DeactivateAI();
-			
-		// Ensure AI is disabled with a secondary check
-		GetGame().GetCallqueue().CallLater(DisableAIWrap, 0, false, owner);
+		
+		GetGame().GetCallqueue().Call(DisableAIWrap, owner, aiComponent);
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void DisableAIWrap(IEntity owner)
+	void DisableAIWrap(IEntity owner, AIControlComponent aiComponent)
 	{
-		AIControlComponent aiComponent = AIControlComponent.Cast(owner.FindComponent(AIControlComponent));
-		if (!aiComponent)
-			return;
-		
 		AIAgent agent = aiComponent.GetAIAgent();
 		if (agent)
 			agent.DeactivateAI();

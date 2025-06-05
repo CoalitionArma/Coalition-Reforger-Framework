@@ -1,4 +1,4 @@
-$grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+$grp CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  opAssetSpawn {
   coords 2513.534 56.892 2853.515
   m_sDescription "OPFOR Asset Spawn"
@@ -8,11 +8,11 @@ $grp PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMark
   angleY 0
  }
 }
-PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+CRF_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
  coords 2515.482 92.098 1868.614
  angleY 4.644
  {
-  $grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+  $grp CRF_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
    {
     coords 100 0 0
     angleY 0
@@ -92,10 +92,10 @@ PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBord
   }
  }
 }
-PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  coords 2629.222 24.677 3069.695
  {
-  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+  $grp CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    {
     coords -100 0 0
    }
@@ -126,11 +126,11 @@ PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorde
   }
  }
 }
-PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  coords 2304.323 2.285 3277.141
  angleY -61.974
  {
-  $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+  $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
    {
     coords -100 0 0
     angleY 0
@@ -194,7 +194,7 @@ PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" 
   }
  }
 }
-$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+$grp CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  indAssetSpawn {
   coords 2092.773 58.525 2113.175
   m_sDescription "INDFOR Asset Spawn"

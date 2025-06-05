@@ -75,7 +75,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		// Initialize map if available
 		if (m_MapEntity)
 		{	
-			GetGame().GetCallqueue().CallLater(OpenMap, 0); 
+			GetGame().GetCallqueue().Call(OpenMap); 
 		}
 		
 		// Set up input handling
@@ -766,7 +766,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 */
 	void OpenMap()
 	{
-		GetGame().GetCallqueue().CallLater(OpenMapWrap, 0); // Need two frames for proper initialization
+		GetGame().GetCallqueue().Call(OpenMapWrap); // Need two frames for proper initialization
 	}
 	
 	/**
@@ -784,7 +784,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 		
 		MapConfiguration mapConfigFullscreen = m_MapEntity.SetupMapConfig(EMapEntityMode.FULLSCREEN, "{1B8AC767E06A0ACD}Configs/Map/MapFullscreen.conf", GetRootWidget());
 		m_MapEntity.OpenMap(mapConfigFullscreen);
-		GetGame().GetCallqueue().CallLater(OpenMapWrapZoomChange, 0);
+		GetGame().GetCallqueue().Call(OpenMapWrapZoomChange);
 	}
 	
 	/**
@@ -793,7 +793,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	void OpenMapWrapZoomChange()
 	{
 		// Additional frame delay to ensure map is ready
-		GetGame().GetCallqueue().CallLater(OpenMapWrapZoomChangeWrap, 0);
+		GetGame().GetCallqueue().Call(OpenMapWrapZoomChangeWrap);
 	}
 	
 	/**
@@ -859,7 +859,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 	 */
 	void Action_VONOff()
 	{
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
+		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
 	}
 	
 	/**
@@ -881,7 +881,7 @@ class CRF_AARMenuUI: ChimeraMenuBase
 			return;
 		
 		// Frame delay to ensure proper toggling
-		GetGame().GetCallqueue().CallLater(OpenChatWrap, 5);
+		GetGame().GetCallqueue().Call(OpenChatWrap);
 	}
 	
 	/**

@@ -74,7 +74,7 @@ Vehicle Gatoma_advanced_Jungle_TAN1 : "{BAD630F48FCD5E97}Prefabs/Vehicles/Wheele
  coords 3981.276 137.406 7149.076
  angleY 179
 }
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 3957.037 137.218 6990.242
  m_sDescription "OBJ"
 }

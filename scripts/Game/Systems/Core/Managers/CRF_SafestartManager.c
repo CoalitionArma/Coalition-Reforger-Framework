@@ -26,6 +26,7 @@ class CRF_SafestartManager : ScriptComponent
 
 	protected int m_iPlayedFactionsCount;
 	protected ref map<IEntity, bool> m_mEntitiesWithEHsMap = new map<IEntity, bool>();
+	protected ref array<IEntity> m_aSafestartZones = {};
 
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	protected CRF_LoggingManager m_Logging;
@@ -65,11 +66,11 @@ class CRF_SafestartManager : ScriptComponent
 		{
 			// Initialize server components
 			m_Logging = CRF_LoggingManager.Cast(this.FindComponent(CRF_LoggingManager));
+			// TODO: Convert to script invoker
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
 	}
 
-	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
 	// Polls for game start, then configures safestart based on gamemode settings
 	void WaitTillGameStart()
@@ -209,7 +210,7 @@ class CRF_SafestartManager : ScriptComponent
 			
 			UpdatePlayedFactions();
 			
-			if(GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
+			if (GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
 				GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
 			
 			return;
@@ -366,8 +367,9 @@ class CRF_SafestartManager : ScriptComponent
 
 			GetGame().GetCallqueue().CallLater(m_GamemodeManager.UpdateServerWorldTime, 1000, true);
 			
-			ActivateSafeStartEHs();
-			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 15000, true);
+			SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+			ActivateSafeStartEHs(aiWorld);
+			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 15000, true, aiWorld);
 			
 			UpdatePlayedFactions();
 			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 10000, true);
@@ -393,8 +395,9 @@ class CRF_SafestartManager : ScriptComponent
 			GetGame().GetCallqueue().Remove(m_GamemodeManager.UpdateServerWorldTime);
 			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
 			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
-
-			GetGame().GetCallqueue().CallLater(CheckPlayersAlive, 10000, true);
+			
+			CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+			GetGame().GetCallqueue().CallLater(CheckPlayersAlive, 10000, true, gm);
 
 			if (m_Gamemode.m_iTimeLimitMinutes > 0) {
 				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (m_Gamemode.m_iTimeLimitMinutes * 60000);
@@ -413,13 +416,20 @@ class CRF_SafestartManager : ScriptComponent
 
 			// Use CallLater to delay the call for the removal of EHs so the changes so m_bSafeStartEnabled can propagate.
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 1500);
-
 			// Even longer delay just in case there's any edge cases we didnt anticipate.
 			GetGame().GetCallqueue().CallLater(DeactivateSafeStartEHs, 12500);
 
 			GetGame().GetCallqueue().CallLater(DelayChangeSafeStartDisabled, 250);
+			
+			DeleteAllSafestartZones();
 		}
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	void AddSafestartZone(IEntity entity)
+	{
+		m_aSafestartZones.Insert(entity);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void DelayChangeSafeStartDisabled() {
@@ -428,12 +438,9 @@ class CRF_SafestartManager : ScriptComponent
 	};
 
 	//------------------------------------------------------------------------------------------------
-	void CheckPlayersAlive()
+	void CheckPlayersAlive(CRF_Gamemode gm)
 	{
 		string message;
-		
-		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
-		
 		foreach (SCR_Faction faction : m_aPlayedFactionsArray)
 		{
 			switch (true) {
@@ -447,6 +454,18 @@ class CRF_SafestartManager : ScriptComponent
 		if (!message.IsEmpty())
 			m_RplBroadcastManager.PopUpNotification(20, message);
 	};
+	
+	//------------------------------------------------------------------------------------------------
+	void DeleteAllSafestartZones()
+	{
+		foreach(IEntity zone : m_aSafestartZones)
+		{
+			if(zone)
+				SCR_EntityHelper.DeleteEntityAndChildren(zone);
+		}
+		
+		m_aSafestartZones.Clear()
+	}
 
 	//------------------------------------------------------------------------------------------------
 	// SafeStart EHs
@@ -456,10 +475,9 @@ class CRF_SafestartManager : ScriptComponent
 	* Activates safe start event handlers for all AI and player-controlled entities.
 	* Disables damage and weapon functionality during the safe start period.
 	*/
-	protected void ActivateSafeStartEHs()
+	protected void ActivateSafeStartEHs(SCR_AIWorld aiWorld)
 	{
 		// Apply safe start to AI-controlled entities
-		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
 		if (aiWorld)
 		{
 			array<AIAgent> aiAgents = {};

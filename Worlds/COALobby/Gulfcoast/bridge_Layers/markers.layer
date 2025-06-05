@@ -1,8 +1,8 @@
-PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  coords 7058.315 30.413 5986.789
  m_bUseWorldScale 0
 }
-$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+$grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  zone1markers {
   coords 8272.507 29.26 8458.33
   angleY 0
@@ -11,7 +11,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_sDescription "Zone 1 LOA"
   m_bUseWorldScale 0
   {
-   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
     zone1markers2 {
      coords 82.212 -8.115 -63.569
      angleY 0
@@ -164,7 +164,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
   m_bUseWorldScale 0
   {
-   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
     {
      coords 4.524 11.917 -79.275
      angleY 0
@@ -486,7 +486,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   m_sDescription "Zone 2 LOA"
   m_bUseWorldScale 0
   {
-   $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
     zone1markers18 {
      coords 113.443 7.365 -19.125
      angleY 0
@@ -667,7 +667,7 @@ $grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker
   }
  }
 }
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 8233.889 56.112 8919.684
  m_bUseWorldScale 0
 }

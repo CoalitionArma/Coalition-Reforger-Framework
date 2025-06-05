@@ -36,7 +36,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		
 		// Initialize map if available
 		if (m_MapEntity)
-			GetGame().GetCallqueue().CallLater(OpenMap, 0);
+			GetGame().GetCallqueue().Call(OpenMap);
 		
 		// Set up input actions
 		RegisterInputActions();
@@ -457,7 +457,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 */
 	void OpenMap()
 	{
-		GetGame().GetCallqueue().CallLater(OpenMapWrap, 0); // Need two frames
+		GetGame().GetCallqueue().Call(OpenMapWrap); // Need two frames
 	}
 	
 	/**
@@ -480,7 +480,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 		);
 		
 		m_MapEntity.OpenMap(mapConfigFullscreen);
-		GetGame().GetCallqueue().CallLater(OpenMapWrapZoomChange, 0);
+		GetGame().GetCallqueue().Call(OpenMapWrapZoomChange);
 	}
 	
 	/**
@@ -488,7 +488,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 */
 	void OpenMapWrapZoomChange()
 	{
-		GetGame().GetCallqueue().CallLater(OpenMapWrapZoomChangeWrap, 0);
+		GetGame().GetCallqueue().Call(OpenMapWrapZoomChangeWrap);
 	}
 	
 	/**
@@ -577,7 +577,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 	 */
 	void Action_VONOff()
 	{
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
+		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
 	}
 	
 	/**
@@ -604,7 +604,7 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 			return;
 		
 		// Frame delay for better UI response
-		GetGame().GetCallqueue().CallLater(OpenChatWrap, 5);
+		GetGame().GetCallqueue().Call(OpenChatWrap);
 	}
 	
 	/**

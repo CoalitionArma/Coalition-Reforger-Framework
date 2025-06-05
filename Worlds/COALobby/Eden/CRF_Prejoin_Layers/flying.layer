@@ -110,7 +110,7 @@ $grp SCR_VehicleSpawn {
   m_rnPrefab "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
  }
 }
-PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  coords 4911.413 28.594 11829.254
  m_MarkerColor 0.392 0.157 0.624 1
  m_sDescription "Airport"

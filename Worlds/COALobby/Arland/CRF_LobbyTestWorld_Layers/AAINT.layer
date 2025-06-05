@@ -29,3 +29,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{E87A99E18FA57C5C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION.conf"
  }
 }
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 1237.725 37.908 2830.09
+}

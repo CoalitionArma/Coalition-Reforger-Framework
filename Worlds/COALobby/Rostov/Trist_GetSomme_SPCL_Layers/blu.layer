@@ -182,7 +182,7 @@ GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLU
  angleY 21.871
  scale 3
 }
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 7010.968 177.794 3521.89
  angleY 90
  m_fWorldSize 170

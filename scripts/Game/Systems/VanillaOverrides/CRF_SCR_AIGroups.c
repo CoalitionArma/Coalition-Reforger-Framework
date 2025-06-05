@@ -33,7 +33,7 @@ modded class SCR_AIGroup
 			SetDeleteWhenEmpty(true);
 		} else {
 			GetOnAllDelayedEntitySpawned().Insert(AllMembersSpawned);
-			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false);
+			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false); // DO NOT CHANGE. RPL JIP ERROR IF NOT INIT'd AFTER (LOL FUCK THIS ENGINE)
 		};
 	}
 	

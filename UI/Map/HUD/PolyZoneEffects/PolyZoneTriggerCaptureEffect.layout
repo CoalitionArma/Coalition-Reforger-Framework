@@ -1,0 +1,60 @@
+PanelWidgetClass {
+ Name "RestrictedZonePanel"
+ Slot LayoutSlot "{5F38BC501A1901F1}" {
+ }
+ Color 0.008 0.012 0.016 1
+ components {
+  PS_PolyZoneEffectHUDTriggerCapture "{60FD404F2C9D1262}" {
+  }
+ }
+ style full
+ {
+  VerticalLayoutWidgetClass "{60FD404FB51C99C6}" {
+   Name "VerticalLayout0"
+   Slot FrameWidgetSlot "{60FD404FB51C992E}" {
+    Anchor 0 0 1 0
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -1820
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+    SizeToContent 1
+   }
+   {
+    OverlayWidgetClass "{60FD404F93B7043B}" {
+     Name "Overlay"
+     Slot LayoutSlot "{60FD404F21BE2637}" {
+     }
+     {
+      TextWidgetClass "{60FD404F93B7043E}" {
+       Name "Text"
+       Slot OverlayWidgetSlot "{5F38BC56E65FFE1B}" {
+        HorizontalAlign 0
+        Padding 10 10 10 10
+       }
+       Text "Trigger zone"
+      }
+      TextWidgetClass "{60FD404F93B7043F}" {
+       Name "Counter"
+       Slot OverlayWidgetSlot "{5F38BC56E65FFE1B}" {
+        HorizontalAlign 2
+        Padding 10 10 10 10
+       }
+       Text "00:00"
+      }
+     }
+    }
+    ImageWidgetClass "{60FD404FB8334E3B}" {
+     Name "Separator"
+     Slot LayoutSlot "{60FD404FB8334E18}" {
+     }
+     Color 0.761 0.386 0.078 1
+     Size 4 4
+    }
+   }
+  }
+ }
+}
