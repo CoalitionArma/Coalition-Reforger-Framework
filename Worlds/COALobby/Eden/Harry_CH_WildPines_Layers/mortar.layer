@@ -34,7 +34,7 @@ GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippi
  }
  coords 8358.453 234.478 4763.475
 }
-PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 8358.393 237.931 4763.068
  m_MarkerColor 0.502 0 0 1
  m_sDescription "Mortars"

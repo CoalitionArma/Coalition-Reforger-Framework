@@ -1,7 +1,7 @@
 SCR_BaseTriggerEntity transponder {
  coords 4008.557 142.125 7770.76
 }
-$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+$grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  OPOBJ1 {
   coords 5092.649 134.127 6975.432
   angleY 90.412

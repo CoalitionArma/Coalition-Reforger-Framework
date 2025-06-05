@@ -44,7 +44,7 @@ Vehicle : "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et" 
    angleY 1.589
    angleZ -0.001
   }
-  PS_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
+  CRF_ManualMarker : "{CD85ADE9E0F54679}PrefabsEditable/Markers/EditableMarker.et" {
    ID "615EE6DA2D5557FB"
    coords 0.163 0.009 -0.326
    angleY 104.701

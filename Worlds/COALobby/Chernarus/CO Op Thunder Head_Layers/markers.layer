@@ -2,14 +2,14 @@ GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPF
  coords 6218.054 285.131 10199.929
  angleX -5.356
 }
-PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  coords 6275.213 285.744 10213.816
  m_sDescription "Spawn"
  m_bUseWorldScale 0
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
 }
-$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {
   coords 5023.545 171.407 13028.102
   m_sDescription "OBJ - Supplies"
@@ -35,14 +35,14 @@ GenericEntity : "{9DDA80554C6BDC17}Prefabs/Compositions/Slotted/SlotFlatMedium/C
  coords 6217.353 285.272 10198.422
  angleX -6.242
 }
-PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  coords 3597.711 220.049 12659.899
  m_sDescription "Cache Search Area"
  m_bUseWorldScale 0
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
  {
-  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+  $grp CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    {
     coords -94.482 -1.086 -45.675
     m_sDescription "Cache Search Area"

@@ -1,0 +1,102 @@
+FrameWidgetClass {
+ Name "RestrictionZoneWarning"
+ Color 1 1 1 1
+ {
+  OverlayWidgetClass "{60D306CB65DCE7C5}" {
+   Name "ScreenBlure"
+   Slot FrameWidgetSlot "{60D306CB65DCE72D}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -1820
+    OffsetRight 0
+    SizeY -1050
+    OffsetBottom 0
+   }
+   {
+    BlurWidgetClass "{604CC43693E4C3CF}" {
+     Name "Blure"
+     Slot OverlayWidgetSlot "{60D306CCFD4D85C3}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0.216 0.216 0.216 1
+     Intensity 0.8
+    }
+    TextWidgetClass "{60D306CB177B8603}" {
+     Name "Text"
+     Slot OverlayWidgetSlot "{60D306CB177B8618}" {
+     }
+     Color 0.502 0 0 1
+     Text ""
+     "Font Size" 196
+     "Min Font Size" 196
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     Wrap 1
+    }
+   }
+  }
+  OverlayWidgetClass "{5F38B78BFC66B933}" {
+   Name "Vignette"
+   Slot FrameWidgetSlot "{59D0B50D495D33B9}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -1820
+    OffsetRight 0
+    SizeY -1050
+    OffsetBottom 0
+   }
+   Opacity 0
+   {
+    ImageWidgetClass "{5F38B78BFC66B935}" {
+     Name "Image0"
+     Slot OverlayWidgetSlot "{59D0B50D71D54AD5}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0 0 0 1
+     Texture "{6FE2C64CB67BA627}UI/Textures/Editor/Overlays/Vignette/Overlay_Vignette.edds"
+     Size 512 512
+    }
+    ImageWidgetClass "{5F38B78BFC66B936}" {
+     Name "Image1"
+     Slot OverlayWidgetSlot "{59D0B50D71D54AD5}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0 0 0 1
+     Texture "{6FE2C64CB67BA627}UI/Textures/Editor/Overlays/Vignette/Overlay_Vignette.edds"
+     Size 512 512
+    }
+    ImageWidgetClass "{5F38B78BFC66B937}" {
+     Name "Image2"
+     Slot OverlayWidgetSlot "{59D0B50D71D54AD5}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Color 0 0 0 0.627
+     Size 512 512
+    }
+   }
+  }
+  VerticalLayoutWidgetClass "{5F38BC5003156AEA}" {
+   Name "EffectsVerticalLayout"
+   Slot FrameWidgetSlot "{5F38BC5003156AC2}" {
+    PositionX 1356
+    OffsetLeft 1356
+    PositionY 89
+    OffsetTop 89
+    SizeX 427
+    OffsetRight -1783
+    SizeY 579
+    OffsetBottom -668
+   }
+  }
+ }
+}

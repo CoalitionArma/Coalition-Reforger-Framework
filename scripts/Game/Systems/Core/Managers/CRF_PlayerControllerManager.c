@@ -87,10 +87,10 @@ class CRF_PlayerControllerManager : ScriptComponent
 		//GetGame().GetCallqueue().CallLater(InitAudioLock, 100, false);
 		//GetGame().GetCallqueue().CallLater(OpenCurrentStateMenu, 500, false);
 		// Death to calllaters. Readd if non-functional.
-		AddMsgAction();
-		InitFPSLock();
-		InitAudioLock();
-		OpenCurrentStateMenu();
+		GetGame().GetCallqueue().Call(AddMsgAction);
+		GetGame().GetCallqueue().Call(InitFPSLock);
+		GetGame().GetCallqueue().Call(InitAudioLock);
+		GetGame().GetCallqueue().Call(OpenCurrentStateMenu);
 	}
 
 	/**

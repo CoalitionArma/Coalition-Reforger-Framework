@@ -102,7 +102,7 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
      }
     }
    }
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0.673 0 -1.511
     m_MarkerColor 0.502 0 0 1
     m_sQuadName "fortification"
@@ -208,7 +208,7 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
      }
     }
    }
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0.673 -0.113 -1.511
     angleY 90
     m_MarkerColor 0.502 0 0 1
@@ -247,7 +247,7 @@ $grp GenericEntity : "{3FD3F403025BBDF5}Prefabs/Props/Military/SupplyBox/SupplyS
    GenericEntity : "{757FCCE8E756175C}Prefabs/Props/Furniture/MeetingTable_01.et" {
     coords -2.335 0.135 1.593
    }
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0.673 0 -1.511
     m_MarkerColor 0.502 0 0 1
     m_sQuadName "fortification"
