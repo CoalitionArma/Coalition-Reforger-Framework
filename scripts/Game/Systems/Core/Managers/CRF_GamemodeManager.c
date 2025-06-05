@@ -130,9 +130,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter)
 		{
 			AssignFactionToPlayer(playerController, faction);
-			
-			if(!alreadyCreated && !isSpectator)
-				GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, 500, false, playerId, playerController, playerCharacter, isSpectator);
+			if (!alreadyCreated && !isSpectator)
+				GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter, isSpectator);
 			else
 				InitilizePlayerCharacter(playerId, playerController, playerCharacter, isSpectator);
 		};
@@ -151,9 +150,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		AssignCharacterToPlayer(playerController, playerCharacter);
 		
 		if (!isSpectator)
-		{
 			AssignPlayerToGroup(playerId);
-		}
 
 		CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, isSpectator);
 	}
