@@ -1,0 +1,27 @@
+Vehicle : "{64EAFD7B15E09C69}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_PKP_Woodland.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#TRC-Vehicle_UAZ469 - #TRC-Weapon-PKP-Name #TRC-Attachment-1p29"
+    Icon "{5779776B5B20F50C}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Offroad_Armed.edds"
+    m_Image "{A9362C1D03BB6B8B}UI/EditorPreviews/Vehicles/Wheeled/Uaz469/AFRF/UAZ469_PKP_1P29.edds"
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5AD4F813E67ECB5D}" {
+   MultiSlots {
+    MultiSlotConfiguration "{6064D13A1F7F88F4}" {
+     NumSlots 10
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Weapon {
+     Prefab "{FFD35C1A992BF7D3}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/UAZ469_weapon_mount_6T5_PKP_1P29.et"
+    }
+   }
+  }
+ }
+ coords 36.326 1 1215.466
+}
