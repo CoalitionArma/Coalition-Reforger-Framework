@@ -14,6 +14,14 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position 853.647 -83.008 -885.517
   }
  }
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   m_aFactionKey + {
+    "BLUFOR"
+   }
+  }
+ }
 }
 PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
  coords 1169.145 3.001 5051.974
