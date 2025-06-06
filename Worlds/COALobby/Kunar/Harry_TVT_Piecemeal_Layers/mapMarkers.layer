@@ -1,0 +1,111 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 1786.078 57.26 3645.331
+ Points {
+  ShapePoint "{658C1D1A00E46274}" {
+   Position -1636.328 242.004 299.884
+  }
+  ShapePoint "{658C1D1A0491C80A}" {
+   Position 807.997 96.562 409.318
+  }
+  ShapePoint "{658C1D1A0ADEAC2E}" {
+   Position 727.479 43.69 -858.981
+  }
+  ShapePoint "{658C1D1A0F0C48FF}" {
+   Position -359.813 244.782 -1260.702
+  }
+  ShapePoint "{658C1D1A0DF855FD}" {
+   Position -1745.771 228.229 -1551.885
+  }
+ }
+}
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+ coords 2189.762 25.295 2968.92
+ Points {
+  ShapePoint "{658C1D1A52FF390B}" {
+   Position 53.795 8.414 -68.038
+  }
+  ShapePoint "{658C1D1A516F1D56}" {
+   Position -128.811 22.094 -60.875
+  }
+  ShapePoint "{658C1D1A5040286B}" {
+   Position -118.161 -0.884 103.999
+  }
+  ShapePoint "{658C1D1A574A6EBC}" {
+   Position 61.764 -6.586 100.27
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2303.53 30 3791.689
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Backup Mortar Pit"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ {
+  coords 948.645 193.059 2856.974
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Optional OBJ: OP"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 345.335 237.023 2793.287
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Optional OBJ: WT"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 324.341 40 3171.57
+  m_MarkerColor 0 0 0 1
+  m_sDescription "FOB Thunderbolt"
+  m_aVisibleForFactions {
+   "SPEC"
+  }
+ }
+ {
+  coords 325.621 40 3172.405
+  m_MarkerColor 0 0 0 1
+  m_sDescription "DEFEND FOB Thunderbolt"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 325.03 40 3170.569
+  m_MarkerColor 0 0 0 1
+  m_sDescription "SEIZE FOB Thunderbolt"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 286.019 39.999 3176.885
+ Points {
+  ShapePoint "{658C1D1A7BE6BD7A}" {
+   Position -189.724 91.312 81.929
+  }
+  ShapePoint "{658C1D1A7967E84F}" {
+   Position -119.288 227.191 -640.276
+  }
+  ShapePoint "{658C1D1A7F32D444}" {
+   Position 821.948 131.481 -421.34
+  }
+  ShapePoint "{658C1D1A7E24A8F3}" {
+   Position 671.797 83.412 -175.701
+  }
+  ShapePoint "{658C1D1A7DDA0BFF}" {
+   Position 298.153 6.017 -4.233
+  }
+  ShapePoint "{658C1D1A41930375}" {
+   Position 93.779 0.92 30.598
+  }
+  ShapePoint "{658C1D1A4023C3E5}" {
+   Position 76.361 8.282 72.538
+  }
+ }
+}

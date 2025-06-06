@@ -1,0 +1,84 @@
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ cacheA {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+     }
+    }
+    CollisionVelocityThreshold 100000
+    m_SecondaryExplosions SCR_SecondaryExplosions "{65880659DFA0AA63}" {
+     m_aSecondaryExplosionTypes {
+      SCR_SecondaryExplosionType "{65880659DE6937CF}" {
+       m_eSecondaryExplosionType DEFAULT
+      }
+     }
+    }
+   }
+  }
+  coords 7661.82 18.506 3844.114
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache A destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.032 0.001 1.161
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache A"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+ cacheB {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+     }
+    }
+    CollisionVelocityThreshold 10000000
+   }
+  }
+  coords 7046.6 105.688 3996.16
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache B destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.034 0.001 -0.909
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache B"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+ cacheC {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+     }
+    }
+    CollisionVelocityThreshold 100000
+   }
+  }
+  coords 7469.181 18.905 3192.761
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache C destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.528 -0 0.758
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache C"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+}

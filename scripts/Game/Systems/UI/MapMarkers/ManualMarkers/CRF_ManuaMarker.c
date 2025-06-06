@@ -1,4 +1,4 @@
-class PS_ManualMarkerClass : GenericEntityClass
+class CRF_ManualMarkerClass : GenericEntityClass
 {
 
 }
@@ -16,7 +16,7 @@ class PS_ManualMarkerClass : GenericEntityClass
 	
 	Widget update position, size and rotation every frame when present in screen.
 */
-class PS_ManualMarker : GenericEntity
+class CRF_ManualMarker : GenericEntity
 {
 	// Attributes for editing through workbench TODO: proper description
 	[Attribute("{D17288006833490F}UI/Textures/Icons/icons_wrapperUI-32.imageset")]
@@ -51,7 +51,7 @@ class PS_ManualMarker : GenericEntity
 	// Internal variables
 	Widget m_wRoot;
 	SCR_MapEntity m_MapEntity;
-	PS_ManualMarkerComponent m_hManualMarkerComponent;
+	CRF_ManualMarkerComponent m_hManualMarkerComponent;
 	protected ResourceName m_sMarkerPrefab = "{52CA8FF5F56C6F31}UI/Map/ManualMapMarkerBase.layout";
 	
 	// Get/Set Broadcast
@@ -335,7 +335,7 @@ class PS_ManualMarker : GenericEntity
 		// Create and init marker
 		m_wRoot = GetGame().GetWorkspace().CreateWidgets(m_sMarkerPrefab, mapFrame);
 		m_wRoot.SetZOrder(m_iZOrder);
-		m_hManualMarkerComponent = PS_ManualMarkerComponent.Cast(m_wRoot.FindHandler(PS_ManualMarkerComponent));
+		m_hManualMarkerComponent = CRF_ManualMarkerComponent.Cast(m_wRoot.FindHandler(CRF_ManualMarkerComponent));
 		m_hManualMarkerComponent.SetImage(m_sImageSet, m_sQuadName);
 		m_hManualMarkerComponent.SetImageGlow(m_sImageSetGlow, m_sQuadName);
 		m_hManualMarkerComponent.SetDescription(m_sDescription);
@@ -361,7 +361,7 @@ class PS_ManualMarker : GenericEntity
 		ClearEventMask(EntityEvent.POSTFRAME);
 	}
 	
-	void PS_ManualMarker(IEntitySource src, IEntity parent)
+	void CRF_ManualMarker(IEntitySource src, IEntity parent)
 	{
 		// Enable init event
 		SetEventMask(EntityEvent.INIT);

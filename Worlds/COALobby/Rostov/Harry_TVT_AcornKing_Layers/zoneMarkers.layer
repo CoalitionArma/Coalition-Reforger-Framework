@@ -1,10 +1,10 @@
-$grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+$grp CRF_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
  zone1markers {
   coords 2874.972 65.445 6231.629
   angleY 0
   m_sDescription "Zone 1 LOA"
   {
-   $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+   $grp CRF_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
     {
      coords 0 0 200
      angleY 0
@@ -53,7 +53,7 @@ $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker
   angleY 0
   m_sDescription "Zone 2 LOA"
   {
-   $grp PS_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+   $grp CRF_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
     {
      coords 0 0 200
      angleY 0

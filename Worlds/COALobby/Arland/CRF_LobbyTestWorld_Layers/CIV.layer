@@ -1,3 +1,6 @@
+PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsEditable/PolyZone/CIVSafestartBoundry.et" {
+ coords 1256.202 37.781 2724.473
+}
 GenericEntity : "{91AC884B31EDEE23}Prefabs/Structures/FlagPoles/RespawnPoles/CIV_Respawn.et" {
  coords 1259.927 37.937 2822.596
 }

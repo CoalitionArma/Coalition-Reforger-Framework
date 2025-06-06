@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

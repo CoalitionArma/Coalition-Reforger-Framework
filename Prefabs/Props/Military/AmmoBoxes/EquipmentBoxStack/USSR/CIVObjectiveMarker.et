@@ -1,10 +1,10 @@
-PS_ManualMarker {
+CRF_ManualMarker {
  ID "64CF69DB40BCD82A"
  components {
   MeshObject "{64CF69DB40BCD831}" {
    Object "{4CB958C15554E9DF}system/wbdata/Gizmo3D/axisZ.xob"
   }
-  PS_EditableMarkerComponent "{64CF69DB40BCDFC6}" {
+  CRF_EditableMarkerComponent "{64CF69DB40BCDFC6}" {
    m_EntityType SYSTEM
    m_UIInfo SCR_EditableDescriptorUIInfo "{64CF69DB40BCDFCD}" {
     Name "#PS-EditableEntity_MapMarker"

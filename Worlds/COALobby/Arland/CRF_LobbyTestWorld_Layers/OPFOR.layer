@@ -20,3 +20,6 @@ SCR_AIGroup : "{36D6A656C4D79C45}Prefabs/Groups/OPFOR/Standard/Dev/CRF_OPFOR_Dev
   }
  }
 }
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 1375.69 38.009 2756.901
+}

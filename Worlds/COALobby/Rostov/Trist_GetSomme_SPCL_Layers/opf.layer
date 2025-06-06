@@ -2,7 +2,7 @@ GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPF
  coords 7128.298 145.457 4266.346
  scale 3
 }
-PS_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
  coords 7128.279 145.57 4266.158
  angleY 90
  m_fWorldSize 170

@@ -1,0 +1,58 @@
+PolylineShapeEntity {
+ ID "658635BEF7631DCE"
+ components {
+  CRF_PolyZone "{65862E4575B86577}" {
+   m_cPolygonColor 0.045 0.045 0.045 0.431
+   m_cPolygonBorderColor 0.045 0.045 0.045 1
+   m_fPolygonBorderWidth 10
+   m_bReversed 1
+   m_aVisibleForFactions {
+    "BLUFOR" "OPFOR" "INDFOR" "CIV" "SPEC"
+   }
+   m_aHideOnGameModeStates {
+   }
+  }
+  RplComponent "{658C1920B43686EC}" {
+   Streamable Disabled
+  }
+ }
+ coords 1235.318 37.959 2825.945
+ IsClosed 1
+ LineColor 0 0 0 1
+ {
+  CRF_PolyZoneTrigger {
+   ID "658635BEF7631DCD"
+   components {
+    CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+     m_fHeight 25
+     m_fUndergroundHeight 15
+     m_Material "{DD4DF8DD2A3A1EAE}Assets/Editor/VirtualArea/GameBoundry.emat"
+    }
+    Hierarchy "{658635BE8590CCDD}" {
+    }
+    RplComponent "{658C1920B090D61A}" {
+     Streamable Disabled
+    }
+   }
+   coords 0 0 0
+   TriggerShapeType Polyline
+   SphereRadius 25.5
+   "Polyline Height" 10000
+   DrawShape 0
+   TriggerActivationType "All changes"
+   PeriodicQueries 1
+   UpdatePeriod 1
+   ClassesFilter {
+    "SCR_ChimeraCharacter"
+   }
+   m_polyZoneEffect CRF_PolyZoneEffectRestricted "{658653B579355FE5}" {
+    m_fKillTime 15
+   }
+   m_bReversed 1
+   m_bAliveOnly 1
+   m_aFactionKey {
+    "SPEC"
+   }
+  }
+ }
+}

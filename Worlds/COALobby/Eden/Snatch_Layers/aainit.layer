@@ -50,14 +50,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
-PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 4760.634 169.227 6992.304
  m_sDescription "VIP"
  m_bUseWorldScale 0
  m_bVisibleForEmptyFaction 1
  m_bShowForAnyFaction 1
 }
-PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  coords 1068.55 2.719 6035.452
  m_sDescription "Spawn/Extract"
  m_bUseWorldScale 0

@@ -20,7 +20,7 @@ $grp SCR_BaseTriggerEntity {
   "	"
  }
 }
-PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  coords 3406.172 7.18 2745.92
  m_MarkerColor 0 0 0 1
  m_sDescription "OPFOR Base"

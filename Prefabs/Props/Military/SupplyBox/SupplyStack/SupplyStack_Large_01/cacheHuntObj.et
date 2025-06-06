@@ -1,0 +1,35 @@
+GenericEntity : "{BD2934A1F1EFE742}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/SupplyStack_Large_01_storage_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SoundComponent "{658806598565AF90}" {
+   Filenames {
+    "{4340FAB152ACD12D}Sounds/Compositions/Slotted/SlotFlatSmall/Compositions_Radio_Chatter.acp"
+   }
+   SoundPoints {
+    SoundPointInfo sound {
+     Offset 0 1.6594 0
+    }
+   }
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   Enabled 1
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     DamageThreshold 200
+     "Collision multiplier" 0
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 1
+     "Incendiary multiplier" 0
+     "Fire multiplier" 0
+    }
+   }
+   CollisionVelocityThreshold 100000000
+   m_fBaseHealth 750
+   m_fForceToDamageScale 0.01
+   m_eMaterialSoundType BREAK_WOOD_SOLID
+  }
+ }
+ coords 0 -0.313 0
+}

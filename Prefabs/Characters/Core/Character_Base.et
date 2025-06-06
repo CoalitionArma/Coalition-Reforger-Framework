@@ -9,6 +9,8 @@ SCR_ChimeraCharacter {
    InputAimLimits 0 0
    DeathTimer 10
   }
+  CRF_PolyZoneEffectHandler "{658642B682EA66C8}" {
+  }
   SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
    StaminaDrainRun -0.006
    StaminaDrainSprint -0.009

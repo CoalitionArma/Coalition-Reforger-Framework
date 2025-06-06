@@ -305,3 +305,16 @@ enum CRF_EClothingType
 	EXTRA3,
 	EXTRA4,
 }
+
+//------------------------------------------------------------------------------------
+// Enumeration for polyzone effects
+//------------------------------------------------------------------------------------
+
+enum CRF_EPolyZoneEffectHUDType
+{
+	FreezeZone,
+	FreezeZoneLeave,
+	RestrictedZone,
+	ScreenBlure,
+	TriggerCapture,
+}

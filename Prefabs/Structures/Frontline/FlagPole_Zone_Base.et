@@ -81,7 +81,7 @@ GenericEntity : "{2C166D8DBBA47738}Prefabs/Structures/Military/Flags/FlagPole_02
    coords -0.93 -1.278 1.75
    angleY 0
   }
-  PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+  CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
    ID "620F4924E2376B14"
    coords 0 -0.952 0
    angleY 0

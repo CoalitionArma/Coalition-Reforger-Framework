@@ -1,4 +1,4 @@
-class PS_ManualMarkerRenderComponent : PS_ManualMarkerComponent
+class CRF_ManualMarkerRenderComponent : CRF_ManualMarkerComponent
 {
 	protected IEntity m_eCameraEntity;
 	protected int m_iCameraIndex;

@@ -1,11 +1,11 @@
-class PS_ManuaMarkerRenderClass : PS_ManualMarkerClass
+class CRF_ManuaMarkerRenderClass : CRF_ManualMarkerClass
 {
 	
 }
 
-class PS_ManuaMarkerRender : PS_ManualMarker
+class CRF_ManuaMarkerRender : CRF_ManualMarker
 {
-	PS_ManualMarkerRenderComponent m_hManualMarkerRenderComponent;
+	CRF_ManualMarkerRenderComponent m_hManualMarkerRenderComponent;
 	
 	override protected void EOnInit(IEntity owner)
 	{
@@ -18,7 +18,7 @@ class PS_ManuaMarkerRender : PS_ManualMarker
 		super.CreateMapWidget(mapConfig);
 		if (!m_hManualMarkerComponent)
 			return;
-		m_hManualMarkerRenderComponent = PS_ManualMarkerRenderComponent.Cast(m_hManualMarkerComponent);
+		m_hManualMarkerRenderComponent = CRF_ManualMarkerRenderComponent.Cast(m_hManualMarkerComponent);
 		m_hManualMarkerRenderComponent.SetCameraEntity(GetChildren(), 9);
 	}
 }
