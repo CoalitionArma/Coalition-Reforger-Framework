@@ -277,6 +277,7 @@ class CRF_RespawnManager : ScriptComponent
 
 		// Find a valid spawn position
 		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, spawnLocation, 10);
+		Print(finalSpawnLocation);
 		
 		// Respawn the player
 		int slotID = m_SlottingManager.GetPlayerSlotID(playerId);
