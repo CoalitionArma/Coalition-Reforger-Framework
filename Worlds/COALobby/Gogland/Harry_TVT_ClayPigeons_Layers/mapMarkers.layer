@@ -1,102 +1,34 @@
-$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
- {
-  coords 8276.357 0.77 3095.963
-  angleY -23.69
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 7573.711 71.821 3858.216
+ Points {
+  ShapePoint "{658642B60C75905C}" {
+   Position -1684.214 -73.984 -1475.36
+  }
+  ShapePoint "{658642B60D1BE03D}" {
+   Position -1902.179 -68.127 -168.651
+  }
+  ShapePoint "{658642B60DB43110}" {
+   Position 315.452 -166.977 1376.564
+  }
+  ShapePoint "{658642B60E7A2DB4}" {
+   Position 853.647 -83.008 -885.517
+  }
  }
- {
-  coords 8093.211 0.77 3015.606
-  angleY -23.69
- }
- {
-  coords 7910.064 0.77 2935.249
-  angleY -23.69
- }
- {
-  coords 7726.917 0.77 2854.891
-  angleY -23.69
- }
- {
-  coords 7543.77 0.77 2774.533
-  angleY -23.69
- }
- {
-  coords 7360.624 0.77 2694.175
-  angleY -23.69
- }
- {
-  coords 7177.477 0.77 2613.817
-  angleY -6.287
- }
- {
-  coords 6978.68 0.77 2591.915
-  angleY -6.287
- }
- {
-  coords 6779.883 0.77 2570.013
-  angleY -6.287
- }
- {
-  coords 6581.085 0.77 2548.111
-  angleY -6.287
- }
- {
-  coords 6382.288 0.77 2526.209
-  angleY -6.287
- }
- {
-  coords 6183.491 0.77 2504.307
-  angleY -6.287
- }
- {
-  coords 5984.693 0.77 2482.405
-  angleY -6.287
- }
- {
-  coords 5743.852 3.637 3636.737
-  angleY -47.199
- }
- {
-  coords 5879.743 3.637 3783.48
-  angleY -47.199
- }
- {
-  coords 6015.634 3.637 3930.223
-  angleY -47.199
- }
- {
-  coords 6151.525 3.637 4076.966
-  angleY -47.199
- }
- {
-  coords 6287.416 3.637 4223.709
-  angleY -47.199
- }
- {
-  coords 6423.307 3.637 4370.452
-  angleY -47.199
- }
- {
-  coords 6559.198 3.637 4517.195
-  angleY -47.199
- }
- {
-  coords 6695.088 3.637 4663.938
-  angleY -47.199
- }
- {
-  coords 6830.978 3.637 4810.681
-  angleY -25.743
- }
- {
-  coords 7011.128 3.637 4897.548
-  angleY -25.743
- }
- {
-  coords 7191.278 3.637 4984.415
-  angleY -25.743
- }
- {
-  coords 7371.428 3.637 5071.281
-  angleY -25.743
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 1169.145 3.001 5051.974
+ Points {
+  ShapePoint "{658C0C68768ED440}" {
+   Position 249.542 -1.533 -134.755
+  }
+  ShapePoint "{658C0C6875A951CA}" {
+   Position 172.566 -19.201 248.22
+  }
+  ShapePoint "{658C0C6874AECD4D}" {
+   Position -217.56 0.511 30.183
+  }
+  ShapePoint "{658C0C687B3F0EF6}" {
+   Position -115.487 -25.933 -249.374
+  }
  }
 }

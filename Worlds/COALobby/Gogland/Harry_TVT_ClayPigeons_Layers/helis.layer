@@ -2,14 +2,14 @@ $grp SCR_VehicleSpawn {
  {
   coords 1193.89 3.386 5060.73
   angleY 34.805
-  m_rnPrefab "{C5534EAA593596B6}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_MH60M_SOAR_61.et"
+  m_rnPrefab "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 1210.129 3.358 5031.913
   angleY 126.538
-  m_rnPrefab "{C5534EAA593596B6}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_MH60M_SOAR_61.et"
+  m_rnPrefab "{F503F71C08BE3F7D}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et"
   respawnDelay 10000
   firstSpawn 1
  }

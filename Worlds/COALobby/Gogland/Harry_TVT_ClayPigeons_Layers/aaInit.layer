@@ -8,8 +8,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 7617.378 18.342 3980.327
- m_iTimeLimitMinutes 40
- m_bSafestartInstantlyEnabled 0
+ m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "An Opfor platoon is dug in on this island, and has to be removed. They are staging supplies for a future operation. Blufor wants to find and destroy them."\
@@ -20,7 +19,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "OPFOR Composition: Moto Inf."\
    "OPFOR Assets: 3x Armed UAZ"\
    ""\
-   "Time: 40"\
+   "Time: 60"\
    "Weather: Cloudy"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
@@ -29,9 +28,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "To facilitate transport, helicopters do not need to abide by the AO markers."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "There are three caches around the AO that are hidden from Blufor, but marked on your map. They will need to use demo charges to destroy the caches, as they are resistant to smaller explosions. Defend the caches."\
-   ""\
-   "Near each cache there are extra supply crates of iglas. Only one igla per AA team can be fired at a time."
+   m_sTextData "There are three caches around the AO that are hidden from Blufor, but marked on your map. They will need to use demo charges to destroy the caches, as they are resistant to smaller explosions. Defend the caches."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "Caches have been modified to be resistant to explosions smaller than a demo block."
@@ -48,7 +45,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "658C0C696041E653" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
