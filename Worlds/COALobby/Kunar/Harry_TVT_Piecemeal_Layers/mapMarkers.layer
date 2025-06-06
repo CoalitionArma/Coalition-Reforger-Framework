@@ -1,97 +1,168 @@
-PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
- coords 1844.373 136.011 3045.566
- Points {
-  ShapePoint "{658642B60C75905C}" {
-   Position -1773.267 126.534 -973.892
-  }
-  ShapePoint "{658642B60D1BE03D}" {
-   Position -1771.888 156.208 920.454
-  }
-  ShapePoint "{658642B60DB43110}" {
-   Position 733.259 46.595 1032.86
-  }
-  ShapePoint "{658642B60E7A2DB4}" {
-   Position 1152.982 -120.452 -174.627
-  }
- }
-}
-PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
- coords 2201.59 26.138 2976.081
- Points {
-  ShapePoint "{658C0706519E30FD}" {
-   Position 54.172 9.451 -77.796
-  }
-  ShapePoint "{658C0706506CCD33}" {
-   Position -106.021 14.068 -82.582
-  }
-  ShapePoint "{658C070657021A66}" {
-   Position -112.504 -3.139 95.692
-  }
-  ShapePoint "{658C07065796E471}" {
-   Position 47.94 -7.06 90.067
-  }
- }
-}
-$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
- weaponsCache2 {
-  coords 341.594 236.59 2777.686
-  m_MarkerColor 0 0 0 1
-  m_sDescription "Optional OBJ: WT"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
- }
- weaponsCache3 {
-  coords 953.774 193.06 2851.171
-  m_MarkerColor 0 0 0 1
-  m_sDescription "Optional OBJ: OP"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
+$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+ {
+  coords 1194.018 67.556 3947.176
+  angleY -29.696
  }
  {
-  coords 325.702 40.001 3171.894
-  m_MarkerColor 0 0 0 1
-  m_sDescription "FOB Thunderbolt"
-  m_aVisibleForFactions {
-   "SPEC"
-  }
+  coords 1293.097 67.556 3773.442
+  angleY -29.696
  }
  {
-  coords 330.59 40.001 3176.058
-  m_MarkerColor 0 0 0 1
-  m_sDescription "DEFEND FOB Thunderbolt"
-  m_aVisibleForFactions {
-   "BLUFOR"
-  }
+  coords 1392.176 67.556 3599.708
+  angleY -29.696
  }
  {
-  coords 318.198 39.998 3170.115
-  m_MarkerColor 0 0 0 1
-  m_sDescription "SEIZE FOB Thunderbolt"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+  coords 1491.255 67.556 3425.974
+  angleY -29.696
+ }
+ {
+  coords 1590.334 67.556 3252.24
+  angleY 9.007
+ }
+ {
+  coords 1559.022 67.556 3054.706
+  angleY 9.007
+ }
+ {
+  coords 1527.71 67.556 2857.172
+  angleY 43.349
+ }
+ {
+  coords 1390.422 67.556 2711.735
+  angleY 43.349
+ }
+ {
+  coords 1253.134 67.556 2566.298
+  angleY 43.349
+ }
+ {
+  coords 1115.846 67.556 2420.861
+  angleY -15.719
+ }
+ {
+  coords 1170.031 67.556 2228.341
+  angleY -15.719
+ }
+ {
+  coords 1224.216 67.556 2035.821
+  angleY -15.719
  }
 }
-PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
- coords 334.471 40.001 3161.937
- Points {
-  ShapePoint "{658C07065FCDF663}" {
-   Position -254.743 127.934 126.292
-  }
-  ShapePoint "{658C07065E96419A}" {
-   Position -169.286 162.499 -490.968
-  }
-  ShapePoint "{658C07065CE67DAB}" {
-   Position 782.878 146.646 -468.576
-  }
-  ShapePoint "{658C0706A2AAB6F3}" {
-   Position 714.854 70.956 -188.253
-  }
-  ShapePoint "{658C0706A61DB3FF}" {
-   Position 401.507 27.771 -174.838
-  }
-  ShapePoint "{658C0706A5144313}" {
-   Position 263.105 -3.763 80.81
-  }
+$grp PS_ManualMarker : "{36BD5DC9A80977F2}PrefabsEditable/Markers/INDFORSafeStartBorderMarker.et" {
+ {
+  coords 2312.827 21.788 3099.853
+ }
+ {
+  coords 2112.827 21.788 3099.853
+ }
+ {
+  coords 1912.827 21.788 3099.853
+ }
+ {
+  coords 1912.827 21.788 2899.853
+ }
+ {
+  coords 1912.827 21.788 2699.853
+ }
+ {
+  coords 2112.827 21.788 2699.853
+ }
+ {
+  coords 2312.827 21.788 2699.853
+ }
+ {
+  coords 2312.827 21.788 2899.853
+ }
+}
+PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 296.023 40 3173.364
+ m_MarkerColor 0 0 0 1
+ m_sDescription "FOB Thunderbolt"
+ m_aVisibleForFactions {
+  "SPEC"
+ }
+ m_aHideOnGameModeStates {
+ }
+}
+$grp PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 2598.578 39.353 2877.412
+  angleY -31.837
+ }
+ {
+  coords 2598.578 39.353 3077.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3277.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3477.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3677.412
+  angleY 0
+ }
+ {
+  coords 2598.578 39.353 3877.412
+  angleY 0
+ }
+ {
+  coords 2428.667 39.353 2771.912
+  angleY -31.837
+ }
+ {
+  coords 2258.756 39.353 2666.412
+  angleY -31.837
+ }
+ {
+  coords 2088.845 39.353 2560.912
+  angleY -31.837
+ }
+ {
+  coords 1918.934 39.353 2455.412
+  angleY -31.837
+ }
+ {
+  coords 1749.023 39.353 2349.912
+  angleY -31.837
+ }
+ {
+  coords 1579.112 39.353 2244.412
+  angleY -31.837
+ }
+ {
+  coords 1409.201 39.353 2138.912
+  angleY -31.837
+ }
+ {
+  coords 1239.29 39.353 2033.412
+  angleY -31.837
+ }
+ {
+  coords 1069.379 39.353 1927.912
+  angleY -5.616
+ }
+ {
+  coords 870.339 39.353 1908.339
+  angleY -5.616
+ }
+ {
+  coords 671.299 39.353 1888.766
+  angleY -5.616
+ }
+ {
+  coords 472.259 39.353 1869.193
+  angleY -5.616
+ }
+ {
+  coords 273.219 39.353 1849.62
+  angleY -5.616
+ }
+ {
+  coords 74.179 39.353 1830.047
+  angleY -5.616
  }
 }
