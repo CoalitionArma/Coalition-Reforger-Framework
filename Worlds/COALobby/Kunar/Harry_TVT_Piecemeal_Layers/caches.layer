@@ -1,163 +1,128 @@
-$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
- second_pit {
-  coords 2309.17 30 3796.904
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "mark-exclamation-2"
-  m_sDescription "Secondary Mortar Pit"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- mortar_cache {
-  coords 1936.936 15.792 3817.93
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+$grp GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+ {
+  coords 1934.315 15.716 3816.912
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache2 {
-  coords 1734.684 18.186 3918.428
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 1707.837 20.38 3850.571
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache3 {
-  coords 1659.321 26.079 3625.039
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 1659.473 26.087 3624.975
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache4 {
-  coords 1201.476 88.017 3871.517
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 1201.386 88.017 3871.124
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache5 {
-  coords 1519.067 40.687 3361.811
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 1408.609 69.678 3249.539
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache6 {
-  coords 1384.48 70.592 3247.67
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 1191.967 29.434 3455.061
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache7 {
-  coords 861.746 30.944 3273.324
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 1194.908 100.482 2879.563
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache8 {
-  coords 636.355 45.328 3198.165
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 760.111 39.927 3218.887
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
  }
- mortar_cache9 {
-  coords 338.962 86.578 3576.218
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "help-2"
-  m_sDescription "Mortar Cache"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
+ {
+  coords 813.758 113.731 2519.843
   {
-   GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
-    coords 0.03 0.009 0.205
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.691 0.054 1.219
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
    }
   }
- }
- weaponsCache2 {
-  coords 927.663 192.541 2868.009
-  angleY 90
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "objective-marker"
-  m_sDescription "Weapons Cache"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
- }
- weaponsCache3 {
-  coords 340.046 234.667 2806.17
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "objective-marker"
-  m_sDescription "Weapons Cache"
-  m_bVisibleForEmptyFaction 1
-  m_bShowForAnyFaction 1
  }
 }
