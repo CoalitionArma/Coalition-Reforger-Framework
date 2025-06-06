@@ -6,8 +6,17 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  userScript "	// code here"\
  "	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)"\
  "	{"\
+ "		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);"\
+ "		int playerId = instigatorContextData.GetVictimPlayerID();"\
+ "		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();"\
+ "		CRF_SlotDataContainer slotData = sm.GetPlayerSlotData(playerId);"\
+ "		if (slotData.GetSlotFactionKey() == \"OPFOR\") {"\
+ "			slotData.SetSlotFactionKey(\"BLUFOR\");"\
+ "			slotData.SetSlotResource(\"{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et\");"\
+ "		}"\
+ "		"\
  "		super.OnControllableDestroyed(entity, killerEntity, instigator);"\
- ""\
+ "		/*"\
  "		// Skip processing on client"\
  "		if (RplSession.Mode() == RplMode.Client)"\
  "			return;"\
@@ -21,7 +30,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  "			return;"\
  "		"\
  "		vector spawnSite = GetGame().GetWorld().FindEntityByName(\"bluSpawn\").GetOrigin();"\
- "		//Print(spawnSite);"\
  "		"\
  "		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();"\
  "		CRF_SlotDataContainer slotData = sm.GetPlayerSlotData(playerId);"\
@@ -29,15 +37,39 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  "			slotData.SetSlotFactionKey(\"BLUFOR\");"\
  "			slotData.SetSlotResource(\"{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et\");"\
  "		}"\
- "			"\
  "		"\
- "		CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();"\
- "		rm.RespawnPlayer(playerId);"\
- "		//GetGame().GetCallqueue().Call(rm.RespawnPlayer, playerId);"\
+ "		// Update slot death state so player gets put into spec"\
+ "		int slotID = sm.GetCharacterSlotID(entity);"\
+ "		"\
+ "		if (slotID != -1)"\
+ "			sm.UpdateSlotDeathState(slotID, true);"\
+ ""\
+ "		// Move player to spectator"\
+ "		/*GetGame().GetCallqueue().Call("\
+ "			m_GamemodeManager.InitilizePlayer,"\
+ "			playerId,"\
+ "			vector.Zero"\
+ "		);*/"\
+ "		"\
+ "		//CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();"\
+ "		//rm.RespawnPlayer(playerId, spawnSite);*/"\
+ "	}"\
+ "	"\
+ "	void TeleportPlayerToSpawn(int playerId, vector position, vector rotation = vector.Zero)"\
+ "    {"\
+ "        // Get the player's controlled entity"\
+ "		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);"\
+ "		if (!playerEntity)"\
+ "		   return;"\
+ "		"\
+ "		playerEntity.SetOrigin(position);"\
  "	}"
  m_bSafestartInstantlyEnabled 0
+ m_bRespawnEnabled 1
+ m_iTimeToRespawn 10
+ m_iBLUFORTickets 999
  {
-  SCR_FactionManager {
+  SCR_FactionManager "658CF4C4B879A531" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
