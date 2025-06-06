@@ -18,21 +18,8 @@ PolylineShapeEntity {
   }
  }
  coords 1235.318 37.959 2825.945
- Points {
-  ShapePoint "{658642B60C75905C}" {
-   Position -35.207 0 -24.197
-  }
-  ShapePoint "{658642B60D1BE03D}" {
-   Position -42.139 0 13.852
-  }
-  ShapePoint "{658642B60DB43110}" {
-   Position 48.99 0 33.223
-  }
-  ShapePoint "{658642B60E7A2DB4}" {
-   Position 53.661 0 -0.865
-  }
- }
  IsClosed 1
+ LineColor 0 0.1255 0.502 1
  {
   CRF_PolyZoneTrigger {
    ID "65865377C721CCB7"

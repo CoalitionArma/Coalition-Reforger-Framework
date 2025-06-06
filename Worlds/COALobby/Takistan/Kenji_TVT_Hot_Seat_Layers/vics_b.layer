@@ -1,0 +1,79 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 7225.107 306.77 1063.594
+  angleY -42.26
+  m_rnPrefab "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7232.501 306.974 1055.457
+  angleY -42.26
+  m_rnPrefab "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7240.89 308.548 1046.224
+  angleY -42.26
+  m_rnPrefab "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7249.003 311.452 1037.52
+  angleY -42.26
+  m_rnPrefab "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7258.361 312.971 1027.92
+  angleY -42.26
+  m_rnPrefab "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7266.455 313.173 1020.189
+  angleY -42.26
+  m_rnPrefab "{65A1EB5BC8449FD3}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Tan.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7215.929 306.44 1047.164
+  angleY -42.374
+  m_rnPrefab "{D555F22BF4C0ADAC}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_D_2004.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7230.007 306.688 1074.966
+  angleY -43.401
+  m_rnPrefab "{55A3575FAE3ED7C4}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_D_2004.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7235.521 307.037 1069.058
+  angleY -43.401
+  m_rnPrefab "{55A3575FAE3ED7C4}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_D_2004.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7240.179 307.549 1064.133
+  angleY -43.401
+  m_rnPrefab "{55A3575FAE3ED7C4}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_D_2004.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ {
+  coords 7246.054 308.411 1057.919
+  angleY -43.401
+  m_rnPrefab "{55A3575FAE3ED7C4}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_D_2004.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+}

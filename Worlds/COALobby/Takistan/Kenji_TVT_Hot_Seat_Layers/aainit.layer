@@ -1,0 +1,107 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 6081.881 330.747 1262.251
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{6586051698A0D80B}" {
+   defendingSide "INDFOR"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 18
+   m_iStartingMinutes 15
+  }
+ }
+ coords 6063.655 321.862 1196.2
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "BLUFOR Composition: Motorized Company"\
+   "BLUFOR Assets: 1x Stryker per Squad"\
+   ""\
+   "OPFOR Composition: Motorized Infantry Platoon"\
+   "OPFOR Assets: 1x MAT team per Squad"\
+   ""\
+   "Time: 45 Minutes"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "We are tasked with assaulting Chak Chak, planting and detonating two bomsites."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "We must survive the oncoming American assault and protect at least one out of two bombsites."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3A6FB419BE5A3CF6}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
+ }
+ {
+  SCR_FactionManager "658A20F6C4EF3EE7" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "PLT1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{6586050EA0B78290}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6586050EA3BC1ED3}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6586050EACD68DE6}" {
+        m_sCallsign "PLT2"
+       }
+       SCR_CallsignInfo "{6586050EAF608ED3}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6586050EAF964518}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6586050EAE3B3727}" {
+        m_sCallsign "2-3"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{6586050E13F756EF}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{6586050E1DD5D22D}" {
+        m_sCallsign "Cell 4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -19,6 +19,7 @@ PolylineShapeEntity {
  }
  coords 1235.318 37.959 2825.945
  IsClosed 1
+ LineColor 0.502 0 0 1
  {
   CRF_PolyZoneTrigger {
    ID "6586537E1F83840B"
