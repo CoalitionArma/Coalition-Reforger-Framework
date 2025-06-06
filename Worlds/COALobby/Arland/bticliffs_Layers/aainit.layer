@@ -16,53 +16,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  "		}"\
  "		"\
  "		super.OnControllableDestroyed(entity, killerEntity, instigator);"\
- "		/*"\
- "		// Skip processing on client"\
- "		if (RplSession.Mode() == RplMode.Client)"\
- "			return;"\
- ""\
- "		// Create instigator context for tracking kill details"\
- "		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);"\
- "		int playerId = instigatorContextData.GetVictimPlayerID();"\
- "		"\
- "		// Return if not a player character"\
- "		if (playerId <= 0 || instigatorContextData.GetVictimCharacterControlType() == SCR_ECharacterControlType.POSSESSED_AI)"\
- "			return;"\
- "		"\
- "		vector spawnSite = GetGame().GetWorld().FindEntityByName(\"bluSpawn\").GetOrigin();"\
- "		"\
- "		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();"\
- "		CRF_SlotDataContainer slotData = sm.GetPlayerSlotData(playerId);"\
- "		if (slotData.GetSlotFactionKey() == \"OPFOR\") {"\
- "			slotData.SetSlotFactionKey(\"BLUFOR\");"\
- "			slotData.SetSlotResource(\"{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et\");"\
- "		}"\
- "		"\
- "		// Update slot death state so player gets put into spec"\
- "		int slotID = sm.GetCharacterSlotID(entity);"\
- "		"\
- "		if (slotID != -1)"\
- "			sm.UpdateSlotDeathState(slotID, true);"\
- ""\
- "		// Move player to spectator"\
- "		/*GetGame().GetCallqueue().Call("\
- "			m_GamemodeManager.InitilizePlayer,"\
- "			playerId,"\
- "			vector.Zero"\
- "		);*/"\
- "		"\
- "		//CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();"\
- "		//rm.RespawnPlayer(playerId, spawnSite);*/"\
- "	}"\
- "	"\
- "	void TeleportPlayerToSpawn(int playerId, vector position, vector rotation = vector.Zero)"\
- "    {"\
- "        // Get the player's controlled entity"\
- "		IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);"\
- "		if (!playerEntity)"\
- "		   return;"\
- "		"\
- "		playerEntity.SetOrigin(position);"\
  "	}"
  m_bSafestartInstantlyEnabled 0
  m_bRespawnEnabled 1
