@@ -1,4 +1,4 @@
-$grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+$grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
  AOborderMarker1 {
   coords 1881.561 227.322 9883.655
   angleY 0
@@ -10,7 +10,7 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
   {
-   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   $grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
     AOborderMarker2 {
      coords -28.36 -0.967 -66.817
      angleY 0
@@ -821,7 +821,7 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
   coords 2090.761 232.826 9885.174
   m_fWorldSize 75
   {
-   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   $grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
     {
      coords -21.153 -2.619 87.697
     }
@@ -897,11 +897,11 @@ $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStar
   m_sDescription "BLUFOR Recon Spawn"
  }
 }
-PS_ManualMarker OPFORssBorderMarker1 : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+CRF_ManualMarker OPFORssBorderMarker1 : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
  coords 2878.777 302.606 8194.846
  m_fWorldSize 75
  {
-  $grp PS_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
+  $grp CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    OPFORssBorderMarker2 {
     coords -70.28 2.105 -85.676
     m_fWorldSize 75
@@ -978,7 +978,7 @@ PS_ManualMarker OPFORssBorderMarker1 : "{AE820D882CD0ACC4}PrefabsEditable/Marker
   }
  }
 }
-$grp PS_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+$grp CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  cache1Marker2 {
   coords 3059.698 308.691 7974.605
   angleY 90

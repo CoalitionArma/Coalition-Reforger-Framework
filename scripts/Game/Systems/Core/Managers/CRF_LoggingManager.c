@@ -22,6 +22,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	// Mission and player data
 	private string m_MissionName;
 	private string m_PlayerName;
+	private string m_AuthorName;
+	private string m_MaxPlayers;
+	private string m_MissionDetails;
+	private string m_GameMode;
 	
 	// Player counts
 	private int m_PlayerCount;
@@ -81,6 +85,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Initialize mission data
 		m_MissionName = GetGame().GetMissionName();
 		m_PlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
+		m_AuthorName = header.m_sAuthor;
+		m_MaxPlayers = header.m_iPlayerCount.ToString();
+		m_MissionDetails = header.m_sDetails;
+		m_GameMode = header.m_sGameMode;
 		
 		// Open log file
 		m_LogFileHandle = FileIO.OpenFile(LOG_PATH, FileMode.APPEND);
@@ -204,6 +213,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		}
 		
-		m_LogFileHandle.WriteLine("mission" + SEPARATOR + eventType + SEPARATOR + m_MissionName + SEPARATOR + m_PlayerCount);
+		m_LogFileHandle.WriteLine("mission" + SEPARATOR + eventType + SEPARATOR + m_MissionName + SEPARATOR + m_PlayerCount + SEPARATOR + m_MaxPlayers + SEPARATOR + m_AuthorName + SEPARATOR + m_MissionDetails + SEPARATOR + m_GameMode);
 	}
 }

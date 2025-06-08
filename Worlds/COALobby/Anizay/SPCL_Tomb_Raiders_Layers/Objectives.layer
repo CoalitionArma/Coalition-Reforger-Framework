@@ -2,7 +2,7 @@ SCR_BaseTriggerEntity transponder {
  coords 2136.272 183.643 1459.845
  angleY 155
 }
-$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {
   coords 1881.239 157.204 1479.188
   angleY 0

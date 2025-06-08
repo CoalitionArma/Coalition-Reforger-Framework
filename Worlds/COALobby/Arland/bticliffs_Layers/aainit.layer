@@ -1,0 +1,113 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 3332.908 51.085 1820.97
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 3323.515 51.71 1801.294
+ userScript "	// code here"\
+ "	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)"\
+ "	{"\
+ "		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);"\
+ "		int playerId = instigatorContextData.GetVictimPlayerID();"\
+ "		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();"\
+ "		CRF_SlotDataContainer slotData = sm.GetPlayerSlotData(playerId);"\
+ "		if (slotData.GetSlotFactionKey() == \"OPFOR\") {"\
+ "			slotData.SetSlotFactionKey(\"BLUFOR\");"\
+ "			slotData.SetSlotResource(\"{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et\");"\
+ "		}"\
+ "		"\
+ "		super.OnControllableDestroyed(entity, killerEntity, instigator);"\
+ "	}"
+ m_bRespawnEnabled 1
+ m_iTimeToRespawn 10
+ m_iBLUFORTickets 999
+ {
+  SCR_FactionManager "658CF4C4B879A531" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "ATTACKER"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "ATTACKER"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "ATTACKER"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "ATTACKER"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_bIsPlayable 1
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "DEFENDER"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "DEFENDER"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "DEFENDER"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "DEFENDER"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_bIsPlayable 1
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPoles/PreJoin_Teleport.et" {
+ coords 2688.874 77.437 1664.091
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ components {
+  CRF_PolyZone "{6586537E1F838475}" {
+   m_aVisibleForFactions + {
+    "BLUFOR" "CIV" "SPEC"
+   }
+  }
+ }
+ coords 3328.322 52.018 1808.914
+ Points {
+  ShapePoint "{658B29A97485FCB3}" {
+   Position 48.853 0 -44.852
+  }
+  ShapePoint "{658B29A96B8DF8B8}" {
+   Position -56.6 0 -58.98
+  }
+  ShapePoint "{658B29A9682AA2BE}" {
+   Position -95.026 0 34.741
+  }
+  ShapePoint "{658B29A96F16F65C}" {
+   Position 28.487 0 87.554
+  }
+  ShapePoint "{658B29A96DBCC03F}" {
+   Position 61.164 0 57.79
+  }
+  ShapePoint "{658B29A96C07FE2E}" {
+   Position 88.369 0 30.73
+  }
+  ShapePoint "{658B29A96338E80B}" {
+   Position 96.982 0 -1.686
+  }
+  ShapePoint "{658B29A962462ACA}" {
+   Position 78.555 0 -31.404
+  }
+  ShapePoint "{658B29A962C2340F}" {
+   Position 68.533 0 -48.221
+  }
+ }
+}

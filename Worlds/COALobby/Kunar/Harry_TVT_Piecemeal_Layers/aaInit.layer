@@ -1,0 +1,137 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
+ coords 2444.567 341.683 3009.521
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 4
+   m_iStartingMinutes 33
+  }
+ }
+ coords 2392.473 332.159 3072.736
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "The Taliban are hitting the infidels in their high castles. They dispersed mortar caches around the AO in preparation, and will sieze anything else they need from the American bases once they've conquered them."\
+   ""\
+   "BLUFOR Composition: Moto Inf"\
+   "BLUFOR Assets: Humvee's"\
+   ""\
+   "INDFOR Composition: Moto Inf"\
+   "INDFOR Assets: UAZ's"\
+   ""\
+   "Time: 60"\
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Primary Goal:"\
+   "Defend FOB Thunderbolt. "\
+   ""\
+   "Secondary Goals:"\
+   "Defend the nearby OP and watchtower in the area. For each that the enemy captures, they will receive material aid we were unable to transport out."\
+   ""\
+   "Search for, and remove mortar caches from around the AO before the enemy can use them against us. "
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Primary Goal:"\
+   "Sieze FOB Thunderbolt"\
+   ""\
+   "Secondary Goals:"\
+   "Sieze the marked OP and watchtower. Each will spawn a weapons cache, which is helpful as you begin the match under equipped. "\
+   ""\
+   "Get to the marked mortar caches before the enemy, as you will spawn with only a very small amount of HE. The caches are unmarked for the enemy."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "In case of issues with the backpacks there is a backup mortar pit marked for Indfor."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3A6FB419BE5A3CF6}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{1E2FA78B5822F65F}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_MEInsurgents_Poor.conf"
+ }
+ {
+  SCR_FactionManager "6585082A4D693405" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{658508230DC51B3A}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6585082313274810}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6585082313180765}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{6585082513B0F385}" {
+        m_sCallsign "Recon"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Area Commander"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell Lead 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{6585082370E40C44}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{6585082370D83B6D}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{658508237704B541}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{65850823776F18CA}" {
+        m_sCallsign "Cell Lead 2"
+       }
+       SCR_CallsignInfo "{65850823774A5D74}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{65850823B65121B9}" {
+        m_sCallsign "Cell 5"
+       }
+       SCR_CallsignInfo "{65850823B6B92BC5}" {
+        m_sCallsign "Cell 6"
+       }
+       SCR_CallsignInfo "{65850823B6E5B718}" {
+        m_sCallsign "MMG-2"
+       }
+       SCR_CallsignInfo "{658508238332046E}" {
+        m_sCallsign "Mortars"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

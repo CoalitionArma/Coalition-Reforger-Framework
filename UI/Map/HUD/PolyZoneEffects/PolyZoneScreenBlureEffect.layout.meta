@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{97EFA3A83FBCB3EF}UI/Map/HUD/PolyZoneEffects/PolyZoneScreenBlureEffect.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,138 @@
+GenericEntity : "{2A3B53114DEAA60B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_USSR_01.et" {
+ components {
+  FactionAffiliationComponent "{5D06E95D12174E9C}" {
+   "faction affiliation" "OPFOR"
+  }
+ }
+ coords 3363.472 50.394 1798.811
+ angleY 40
+ {
+  GenericEntity {
+   ID "5D088D2CCDECC6CB"
+   {
+    GenericEntity {
+     ID "5D371AC8B78FAAE5"
+     components {
+      SCR_CampaignBuildingProviderComponent "{5EBCED04D0321687}" {
+       m_aAvailableTraits + {
+        281
+       }
+      }
+      SCR_FactionAffiliationComponent "{5CB66A0F780C9329}" {
+       "faction affiliation" "OPFOR"
+      }
+     }
+     coords 2.063 0.192 -2.055
+     angleY -44.046
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D3706BDCF10AB62"
+   components {
+    SCR_FactionAffiliationComponent "{5CB6D5B3749D59C3}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D45393F2BC051F7"
+   components {
+    SCR_ResourceComponent "{5D8AA552F85C2FBB}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D8AA552C6324D54}" {
+       m_fResourceValueCurrent 3300
+       m_fResourceValueMax 3300
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D3706BDF0F0CFF8"
+   components {
+    SCR_FactionAffiliationComponent "{5D36D469534F8E78}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+  SCR_SpawnPoint {
+   ID "5D8AF9E42529A7DE"
+   components {
+    SCR_FactionAffiliationComponent "{5A5286F8ED58877B}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+ }
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 3363.124 50.318 1811.426
+ angleX 0.895
+ angleY -0.014
+ angleZ -0.895
+}
+GenericEntity : "{8B4B8BF44162B24E}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_US_01.et" {
+ coords 3354.607 50.825 1804.571
+}
+$grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+ {
+  coords 3381.317 49.729 1782.123
+ }
+ {
+  coords 3329.364 51.978 1808.684
+ }
+ {
+  coords 3305.835 51.614 1814.079
+ }
+ {
+  coords 3292.714 50.558 1820.084
+ }
+ {
+  coords 3317.924 49.151 1830.137
+ }
+ {
+  coords 3341.215 49.368 1828.732
+ }
+ {
+  coords 3364.505 41.702 1838.028
+ }
+ {
+  coords 3340.508 42.592 1862.385
+ }
+ {
+  coords 3307.177 51.286 1794.078
+ }
+ {
+  coords 3282.818 50.916 1797.122
+ }
+ {
+  coords 3335.775 49.797 1786.49
+  angleX -0.695
+  angleY 0.637
+  angleZ -42.524
+ }
+ {
+  coords 3393.317 46.758 1806.864
+ }
+}
+$grp GenericEntity : "{FA7A86697340C58C}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_05.et" {
+ {
+  coords 3371.387 49.954 1792.491
+  angleX 1.243
+  angleY -56.005
+  angleZ -0.242
+ }
+ {
+  coords 3374.758 49.539 1799.224
+  angleX 4.589
+  angleY -149.197
+  angleZ -2.46
+ }
+ {
+  coords 3354.017 50.305 1791.583
+  angleX -1.616
+  angleY 107.513
+  angleZ 5.107
+ }
+}

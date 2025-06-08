@@ -1,0 +1,137 @@
+$grp GenericEntity : "{97D6C65EAF154A43}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/Tali_Mortar_Cache.et" {
+ {
+  coords 1932.67 15.675 3815.615
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 1682.691 20.219 3830.767
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 1408.716 69.678 3249.295
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 1192.002 29.433 3455.081
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 1032.791 33.349 3320.27
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 1194.804 100.484 2879.994
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 1198.525 88.43 3872.812
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 653.658 42.113 3234.777
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 843.903 115.133 2539.098
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.758 0.035 1.11
+    angleY 0
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "help-2"
+    m_sDescription "Mortar Cache"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+}

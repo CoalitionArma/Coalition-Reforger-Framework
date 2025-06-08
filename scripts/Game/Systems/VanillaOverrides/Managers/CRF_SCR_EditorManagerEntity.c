@@ -116,7 +116,7 @@ modded class SCR_EditorManagerEntity
 			if (CRF_Gamemode.GetInstance())
 			{
 				// Schedule UI reopening after a short delay
-				GetGame().GetCallqueue().CallLater(OpenUI, 500, false);
+				GetGame().GetCallqueue().Call(OpenUI);
 			}
 		}
 	}

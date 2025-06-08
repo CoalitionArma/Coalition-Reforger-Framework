@@ -16,12 +16,12 @@ GenericEntity : "{3970981B94D3F882}Prefabs/Systems/Arsenal/ArsenalBoxes/US/Arsen
  }
  coords 4701.531 339.296 10281.058
 }
-PS_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  coords 1438.942 285.431 11893.772
  angleY 0
  m_sDescription ""
 }
-$grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+$grp CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
  {
   coords 4692.908 339.123 10365.264
   angleY 90
@@ -49,7 +49,7 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
   {
-   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   $grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
     {
      coords 111.73 1.267 -7.168
      angleY -90
@@ -198,7 +198,7 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
   {
-   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   $grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
     {
      coords 75.515 -45.236 -157.819
      angleY -90
@@ -331,7 +331,7 @@ $grp PS_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMar
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
   {
-   $grp PS_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
+   $grp CRF_ManualMarker : "{054125164E41BAB1}PrefabsEditable/Markers/BLUFORSafeStartBorderMarker.et" {
     {
      coords -298.517 141.668 -381.489
      angleY -90

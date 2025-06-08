@@ -331,6 +331,28 @@ class CRF_Gamemode : SCR_BaseGameMode
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/*!
+		Called after a player is disconnected.
+		\param playerId PlayerId of disconnected player.
+	*/
+	protected override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		m_OnPlayerDisconnected.Invoke(playerId, cause, timeout);
+		
+		// RespawnSystemComponent is not a SCR_BaseGameModeComponent, so for now we have to
+		// propagate these events manually. 
+		if (IsMaster())
+			m_pRespawnSystemComponent.OnPlayerDisconnected_S(playerId, cause, timeout);
+
+		foreach (SCR_BaseGameModeComponent comp : m_aAdditionalGamemodeComponents)
+		{
+			comp.OnPlayerDisconnected(playerId, cause, timeout);
+		}
+		
+		m_OnPostCompPlayerDisconnected.Invoke(playerId, cause, timeout);
+	}
+	
 	//===================================================================================
 	// ENTITY MANAGEMENT
 	//===================================================================================

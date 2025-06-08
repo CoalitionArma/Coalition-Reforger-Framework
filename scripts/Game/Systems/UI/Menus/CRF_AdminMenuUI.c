@@ -106,7 +106,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		PopulateAdminActionsList();
 		
 		// Delay opening of initial menu
-		GetGame().GetCallqueue().CallLater(DelayedMenuInitialization, 1, false);
+		GetGame().GetCallqueue().Call(DelayedMenuInitialization);
 	}
 	
 	// Set up the initial menu (Tickets)
@@ -1155,7 +1155,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void RespawnPlayer()
 	{
-				// Load List Boxes
+		// Load List Boxes
 		SCR_ListBoxComponent respawnPoints = GetListBox("SpawnpointListBox0");
 		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
 		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
@@ -1645,7 +1645,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_ChatPanel)
 			return;
 
-		GetGame().GetCallqueue().CallLater(OpenChatWrap, 5);
+		GetGame().GetCallqueue().Call(OpenChatWrap);
 	}
 	
 	/**

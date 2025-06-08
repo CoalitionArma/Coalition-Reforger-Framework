@@ -1,0 +1,286 @@
+$grp Vehicle : "{0B2C142387AF9D3A}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_12.et" {
+ S105_rally_2 {
+  coords 672.27 39 2548.479
+  angleY 77.092
+ }
+ S105_rally_9 {
+  coords 663.097 39 2553.019
+  angleY 74.837
+ }
+}
+$grp Vehicle : "{2FA4748507F1C9A9}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_Blue.et" {
+ S105_rally_Mlada_Boleslav_Blue1 {
+  coords 668.882 39.058 2561.543
+  angleY 75.734
+ }
+ S105_rally_Mlada_Boleslav_Blue2 {
+  coords 1185.99 38 2797.779
+  angleY -84.401
+ }
+}
+$grp Vehicle : "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et" {
+ S105_rally_Mlada_Boleslav_TF1 {
+  coords 667.777 39.058 2566.173
+  angleY 75.043
+ }
+ S105_rally_Mlada_Boleslav_TF2 {
+  coords 1189.843 38.948 2764.581
+  angleY -44.163
+ }
+ S105_rally_Mlada_Boleslav_TF3 {
+  coords 654.07 39.058 2584.672
+  angleY 75.043
+ }
+ S105_rally_Mlada_Boleslav_TF4 {
+  coords 661.161 39.058 2588.95
+  angleY 75.043
+ }
+ S105_rally_Mlada_Boleslav_TF5 {
+  coords 653.032 39 2589.227
+  angleY 76.4
+ }
+ S105_rally_Mlada_Boleslav_TF6 {
+  coords 646.949 39.058 2584.591
+  angleY 75.043
+ }
+ S105_rally_Mlada_Boleslav_TF7 {
+  coords 654.047 39.058 2557.361
+  angleY 75.043
+ }
+ S105_rally_Mlada_Boleslav_TF8 {
+  coords 1178.334 38.948 2696.716
+  angleY -44.163
+ }
+ S105_rally_Mlada_Boleslav_TF9 {
+  coords 639.081 39.058 2582.722
+  angleY 75.043
+ }
+ S105_rally_Mlada_Boleslav_TF10 {
+  coords 647.296 39.058 2552.393
+  angleY 75.043
+ }
+}
+$grp Vehicle : "{AF6308923B767928}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_Red.et" {
+ S105_rally_Mlada_Boleslav_Red1 {
+  coords 1000.519 39 2496.088
+  angleY 104.823
+ }
+ S105_rally_Mlada_Boleslav_Red2 {
+  coords 1308.251 39 2089.089
+  angleY 33.482
+ }
+ S105_rally_Mlada_Boleslav_Red3 {
+  coords 1361.781 39 2248.193
+  angleY -79.677
+ }
+ S105_rally_Mlada_Boleslav_Red4 {
+  coords 664.521 39 2548.747
+  angleY 75.149
+ }
+ S105_rally_Mlada_Boleslav_Red5 {
+  coords 664.025 39 2579.827
+  angleY 75.149
+ }
+ S105_rally_Mlada_Boleslav_Red6 {
+  coords 652.068 39 2593.537
+  angleY 75.759
+ }
+ S105_rally_Mlada_Boleslav_Red7 {
+  coords 1298.992 39 2337.293
+  angleY -79.677
+ }
+ S105_rally_Mlada_Boleslav_Red8 {
+  coords 1650.13 18.785 3364.795
+  angleY 100.323
+ }
+ S105_rally_Mlada_Boleslav_Red9 {
+  coords 2247.351 7.232 3241.082
+  angleY 77.12
+ }
+ S105_rally_Mlada_Boleslav_Red10 {
+  coords 2409.84 0.745 3280.154
+  angleY 134.078
+ }
+ S105_rally_Mlada_Boleslav_Red11 {
+  coords 3172.137 11.5 2786.665
+  angleY -133.038
+ }
+ S105_rally_Mlada_Boleslav_Red12 {
+  coords 2672.94 77.344 1693.007
+  angleY 107.656
+ }
+ S105_rally_Mlada_Boleslav_Red13 {
+  coords 1319.71 39 2090.369
+  angleY 33.482
+ }
+ S105_rally_Mlada_Boleslav_Red14 {
+  coords 1117.121 39 2398.396
+  angleY -167.514
+ }
+ S105_rally_Mlada_Boleslav_Red15 {
+  coords 1120.68 39 2395.344
+  angleY -167.514
+ }
+ S105_rally_Mlada_Boleslav_Red16 {
+  coords 2451.683 0.745 3263.538
+  angleY 134.078
+ }
+}
+Vehicle S105_rally_Mlada_Boleslav_1 : "{BF05D804EE8ACB4C}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_Mlada_Boleslav_9.et" {
+ coords 670.171 39.068 2557.227
+ angleY 75.565
+}
+$grp Vehicle : "{C317A1A221DC7655}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_Yellow.et" {
+ S105_rally_Mlada_Boleslav_Yellow1 {
+  coords 671.149 39.01 2552.826
+  angleY 75.1
+ }
+ S105_rally_Mlada_Boleslav_Yellow2 {
+  coords 656.655 39.01 2575.372
+  angleY 76.407
+ }
+ S105_rally_Mlada_Boleslav_Yellow3 {
+  coords 662.188 39.01 2584.179
+  angleY 76.407
+ }
+ S105_rally_Mlada_Boleslav_Yellow4 {
+  coords 651.06 39 2597.189
+  angleY 74.469
+ }
+ S105_rally_Mlada_Boleslav_Yellow5 {
+  coords 647.977 39.01 2579.82
+  angleY 76.407
+ }
+ S105_rally_Mlada_Boleslav_Yellow6 {
+  coords 655.074 39.01 2552.588
+  angleY 76.407
+ }
+ S105_rally_Mlada_Boleslav_Yellow8 {
+  coords 648.324 39.01 2547.622
+  angleY 76.407
+ }
+ S105_rally_Mlada_Boleslav_Yellow7 {
+  coords 640.109 39.01 2577.951
+  angleY 76.407
+ }
+}
+$grp Vehicle : "{D44387B398A039A5}Prefabs/Vehicles/Wheeled/S105/Event/S105_rally_64.et" {
+ S105_rally_1 {
+  coords 1519.132 39.01 2828.969
+  angleY 124.451
+ }
+ S105_rally_3 {
+  coords 1514.343 39.01 2827.985
+  angleY 124.451
+ }
+ S105_rally_5 {
+  coords 1318.754 39.01 2741.223
+  angleY 41.453
+ }
+ S105_rally_4 {
+  coords 1372.135 39.01 2225.432
+  angleY -72.217
+ }
+ S105_rally_6 {
+  coords 1315.435 39.01 2753.269
+  angleY 85.901
+ }
+ S105_rally_7 {
+  coords 1535.267 39 2769.588
+  angleY -75.574
+ }
+ S105_rally_8 {
+  coords 660.76 39.01 2561.976
+  angleY 73.838
+ }
+ S105_rally_10 {
+  coords 658.579 39 2597.526
+  angleY 73.796
+ }
+ S105_rally_11 {
+  coords 644.369 39 2593.169
+  angleY 73.796
+ }
+ S105_rally_12 {
+  coords 648.92 39 2574.805
+  angleY 73.796
+ }
+ S105_rally_13 {
+  coords 636.501 39 2591.3
+  angleY 73.796
+ }
+ S105_rally_14 {
+  coords 641.052 39 2572.937
+  angleY 73.796
+ }
+ S105_rally_15 {
+  coords 644.716 39 2560.97
+  angleY 73.796
+ }
+ S105_rally_16 {
+  coords 649.267 39 2542.607
+  angleY 73.796
+ }
+ S105_rally_17 {
+  coords 1289.545 38 2887.133
+  angleY 111.124
+ }
+ S105_rally_18 {
+  coords 1287.414 37.888 2874.821
+  angleY 66.676
+ }
+ S105_rally_19 {
+  coords 1289.845 37.75 2859.042
+  angleY 89.754
+ }
+ S105_rally_20 {
+  coords 1292.346 37.831 2846.8
+  angleY 45.306
+ }
+ S105_rally_21 {
+  coords 656.275 39 2547.885
+  angleY 73.796
+ }
+ S105_rally_22 {
+  coords 657.568 39 2543.658
+  angleY 73.796
+ }
+}
+$grp Vehicle : "{F0C7FABE5E0F7D8B}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav.et" {
+ S105_rally_Mlada_Boleslav1 {
+  coords 655.373 39.01 2579.617
+  angleY 75.161
+ }
+ S105_rally_Mlada_Boleslav2 {
+  coords 1198.997 37.031 2626.621
+  angleY 88.479
+ }
+ S105_rally_Mlada_Boleslav3 {
+  coords 1199.035 37.031 2620.876
+  angleY 69.718
+ }
+ S105_rally_Mlada_Boleslav4 {
+  coords 662.111 39 2557.442
+  angleY 74.978
+ }
+ S105_rally_Mlada_Boleslav5 {
+  coords 659.766 39 2593.326
+  angleY 75.563
+ }
+ S105_rally_Mlada_Boleslav6 {
+  coords 645.556 39 2588.969
+  angleY 75.563
+ }
+ S105_rally_Mlada_Boleslav7 {
+  coords 652.653 39 2561.737
+  angleY 75.563
+ }
+ S105_rally_Mlada_Boleslav9 {
+  coords 645.903 39 2556.77
+  angleY 75.563
+ }
+ S105_rally_Mlada_Boleslav8 {
+  coords 637.688 39 2587.1
+  angleY 75.563
+ }
+}

@@ -105,7 +105,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		
 		// Update player icons and spectator UI
 		UpdatePlayerIcons();
-		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
+		//GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
 	}
 	
 	/**
@@ -170,8 +170,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected void InitVON()
 	{
 		// Initialize VON with a slight delay to ensure proper setup
-		GetGame().GetCallqueue().CallLater(Action_VONon, 500, false);
-		GetGame().GetCallqueue().CallLater(Action_VONOff, 550, false);
+		GetGame().GetCallqueue().Call(Action_VONon);
+		GetGame().GetCallqueue().Call(Action_VONOff);
 	}
 	
 	/**
@@ -707,7 +707,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	void JoinChannelDelay()
 	{
-		GetGame().GetCallqueue().CallLater(JoinChannel, 10, false);
+		GetGame().GetCallqueue().Call(JoinChannel);
 	}
 	
 	/**
@@ -1058,7 +1058,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	void SelectSpecDelay()
 	{
 		// Use a short delay to allow UI to update before selection occurs
-		GetGame().GetCallqueue().CallLater(SelectSpec, 10, false);
+		GetGame().GetCallqueue().Call(SelectSpec);
 	}
 	
 	/**
@@ -1456,7 +1456,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		
 		// Schedule delayed VoN deactivation to prevent audio cutoff
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
+		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
 	}
 	
 	/**
@@ -1512,7 +1512,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		
 		// Use a small delay to ensure UI is ready
-		GetGame().GetCallqueue().CallLater(OpenChatWrap, 5);
+		GetGame().GetCallqueue().Call(OpenChatWrap);
 	}
 	
 	/**

@@ -30,7 +30,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 90.693
     scale 0.658
@@ -74,7 +74,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 91.123
     scale 0.658
@@ -118,7 +118,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 89.905
     scale 0.658
@@ -162,7 +162,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 91.123
     scale 0.658
@@ -206,7 +206,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 89.905
     scale 0.658

@@ -18,6 +18,29 @@ class CRF_SlotDataContainer
 	protected bool m_bIsLockedSlot = false;
 	protected bool m_bIsDeadSlot = false;
 	
+	// Invoker for data updates
+	protected ref ScriptInvoker m_OnDataUpdate;
+	
+	//------------------------------------------------------------------------------------------------
+	// SCRIPT INVOKER
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	void InvokeDataUpdate()
+	{
+		if (m_OnDataUpdate)
+			m_OnDataUpdate.Invoke();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker GetOnDataUpdate()
+	{
+		if (!m_OnDataUpdate)
+			m_OnDataUpdate = new ScriptInvoker();
+
+		return m_OnDataUpdate;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SETTERS
 	//------------------------------------------------------------------------------------------------
@@ -29,66 +52,88 @@ class CRF_SlotDataContainer
 		m_vSlotVectorTwo = tempVec[1];
 		m_vSlotVectorThree = tempVec[2];
 		m_vSlotVectorFour = tempVec[3];
+		
+		InvokeDataUpdate();
 	}	
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentPlayerId(int playerId)
 	{
 		m_iSlotCurrentPlayerId = playerId;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentGroup(RplId groupRplId)
 	{
 		m_iSlotCurrentGroup = groupRplId;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentCharacter(RplId characterRplId)
 	{
 		m_iSlotCurrentCharacter = characterRplId;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotType(CRF_ESlotType slotType)
 	{
 		m_iSlotType = slotType;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotName(string name)
 	{
 		m_sSlotName = name;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotIcon(ResourceName icon)
 	{
 		m_rSlotIconResource = icon;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotResource(ResourceName resource)
 	{
 		m_rSlotResource = resource;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotFactionKey(FactionKey faction)
 	{
 		m_SlotFactionKey = faction;
+	
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetIsLockedSlot(bool lockedState)
 	{
 		m_bIsLockedSlot = lockedState;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetIsDeadSlot(bool deadState)
 	{
 		m_bIsDeadSlot = deadState;
+		
+		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -24,6 +24,276 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
    m_bEnableTeamKillPunishment 0
   }
+  SCR_CampaignBuildingManagerComponent "{658AF40C733F4E98}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_iCompositionRefundPercentage 100
+   m_bSameFactionDisassembleOnly 1
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{658AF40D99169532}" {
+    m_sSlotFlatSmallLayout "{7FD4E6A668B4537A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFLatSmall.et"
+    m_sSlotFlatMediumLayout "{579FF731013436B5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFlatMedium.et"
+    m_sSlotFlatLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
+    m_sSlotRoadSmallLayout "{8DBA7E7BF662A393}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadSmall.et"
+    m_sSlotRoadMediumLayout "{3A5E87ADA26C6940}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadMedium.et"
+    m_sSlotRoadLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
+    m_aCompositionLayouts {
+     SCR_CampaignBuildingCompositionOutline "{5D72F02746156600}" {
+      m_sEditableEntity "{DA1772BDB575BB5A}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D34D092A3936AEF}" {
+      m_sEditableEntity "{9E4FAFB289C2EA68}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundHighBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D62992D16358CB8}" {
+      m_sEditableEntity "{977FF11A13375BEB}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D66BBDB8EC3B5AB}" {
+      m_sEditableEntity "{93C99155F356A38A}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongHighBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D6C8153F1E8DE35}" {
+      m_sEditableEntity "{BBA9E7B2D06B7E3E}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallSolidBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D6C90E24B82ACDA}" {
+      m_sEditableEntity "{AACF7C732B82F6B2}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70BA35862CBAFA}" {
+      m_sEditableEntity "{1C551075D2A439D8}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetSmall_S_USSR_01.et"
+      m_sCompositionLayout "{81CCDB622DCA0182}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Small_USSR.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E0D34990A444}" {
+      m_sEditableEntity "{E0E71FDE7F9F7555}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetMedium_S_USSR_01.et"
+      m_sCompositionLayout "{D26E030AD2BF514F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNetMedium_USSR.et"
+      m_iBuildingValue 40
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E6DFBDA31CD7}" {
+      m_sEditableEntity "{A8FD282C1C15E427}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetLarge_M_USSR_01.et"
+      m_sCompositionLayout "{DC1B385EDB26DB5E}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Large_USSR.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E6DFBD43B548}" {
+      m_sEditableEntity "{7419CCE202790CBB}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundPlastic_S_US_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF17063959}" {
+      m_sEditableEntity "{C90548D80CB6F09A}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundHighPlastic_S_US_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF1720B169}" {
+      m_sEditableEntity "{2C8BC8352CE10EE2}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongPlastic_S_US_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF08F63D30}" {
+      m_sEditableEntity "{1CFE263700517700}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongHighPlastic_S_US_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72CCC764A2F661}" {
+      m_sEditableEntity "{FD726FB018BC4169}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallSolidPlastic_S_US_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E04FAF9C}" {
+      m_sEditableEntity "{CC778DF86D8A69F5}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallPlastic_S_US_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E39D1C18}" {
+      m_sEditableEntity "{C1641825486E3697}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetSmall_S_US_01.et"
+      m_sCompositionLayout "{347608996C687A02}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Small_US.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E3AD6268}" {
+      m_sEditableEntity "{EA8CDB3A64FC1181}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetMedium_S_US_01.et"
+      m_sCompositionLayout "{A90C5CF19DF184B9}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Medium_US.et"
+      m_iBuildingValue 40
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72F0241E59B4E6}" {
+      m_sEditableEntity "{7C7C67CD404E794D}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetLarge_M_US_01.et"
+      m_sCompositionLayout "{DC1B385EDB26DB5E}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Large_USSR.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64B54CA767DC45}" {
+      m_sEditableEntity "{AB1E83746BDF76D1}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_BarbedTapeTriple_S_USSR_01.et"
+      m_sCompositionLayout "{9721D32C8E5CDE9C}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_BarbedTapeKnifeRest.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64CB149EC493F2}" {
+      m_sEditableEntity "{AEC16F21B733AD5E}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_FloodlightGenerator_S_US_01.et"
+      m_sCompositionLayout "{C96F58B66745C08B}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FloodLight.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64CB1491E75290}" {
+      m_sEditableEntity "{76EE6AC7AB210D1F}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_FloodlightGenerator_S_USSR_01.et"
+      m_sCompositionLayout "{C96F58B66745C08B}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FloodLight.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E76DD003E31C9B9}" {
+      m_sEditableEntity "{B8138FFE79F61D33}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_01.et"
+      m_sCompositionLayout "{4CB404D199F6C2E7}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B741B345270B}" {
+      m_sEditableEntity "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_01.et"
+      m_sCompositionLayout "{4CB404D199F6C2E7}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B741F2EDD817}" {
+      m_sEditableEntity "{D447BB1EC532921D}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_02.et"
+      m_sCompositionLayout "{8EB9FE4B4A24F0D8}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_US_S_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B928D2DC9B20}" {
+      m_sEditableEntity "{F79CBAB09747E291}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_02.et"
+      m_sCompositionLayout "{F33B37DFDC5CDF75}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_USSR_S_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84C8B46847646C}" {
+      m_sEditableEntity "{31DBF7E7C9D70576}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_03.et"
+      m_sCompositionLayout "{C57C7CC829D7DAA2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_03.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84C8B4680E1AE5}" {
+      m_sEditableEntity "{1200F6499BA275FB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_03.et"
+      m_sCompositionLayout "{C57C7CC829D7DAA2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_03.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84D70A8FCD3C63}" {
+      m_sEditableEntity "{0CEFD2DFBCBB8C41}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_04.et"
+      m_sCompositionLayout "{F84859F05CBB5395}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_04.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84D70A8FEA660C}" {
+      m_sEditableEntity "{2F34D371EECEFCCD}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_04.et"
+      m_sCompositionLayout "{F84859F05CBB5395}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_04.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE08853459C4}" {
+      m_sEditableEntity "{D7B8408B96F4DF79}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadSmall/E_Barricade_S_US_01.et"
+      m_sCompositionLayout "{501EE308E7CD554A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0885209F52}" {
+      m_sEditableEntity "{17B68DA54A970140}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadSmall/E_Barricade_S_USSR_01.et"
+      m_sCompositionLayout "{501EE308E7CD554A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0886C48CC7}" {
+      m_sEditableEntity "{6FE74C9C75DA8A52}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadMedium/E_Barricade_M_US_01.et"
+      m_sCompositionLayout "{EEC12B161BCF255F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0886EA1694}" {
+      m_sEditableEntity "{1236588FCEA4848F}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadMedium/E_Barricade_M_USSR_01.et"
+      m_sCompositionLayout "{EEC12B161BCF255F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE088695C569}" {
+      m_sEditableEntity "{DAEC7898BE11C117}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadLarge/E_Barricade_L_US_01.et"
+      m_sCompositionLayout "{290DBB8BEE996653}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_L_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0CF28B4478}" {
+      m_sEditableEntity "{3FB42D0A5589A530}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadLarge/E_Barricade_L_USSR_01.et"
+      m_sCompositionLayout "{290DBB8BEE996653}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_L_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98DBC39DC37}" {
+      m_sEditableEntity "{02C9F8198A7B9897}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_US_01.et"
+      m_sCompositionLayout "{33A2B437003B14DB}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98DBDDCE7AB}" {
+      m_sEditableEntity "{047B9C8AAB50CE0F}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_USSR_01.et"
+      m_sCompositionLayout "{33A2B437003B14DB}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98BB2A97FE4}" {
+      m_sEditableEntity "{6E9DCCF936BF17B9}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_US_02.et"
+      m_sCompositionLayout "{5FF680D7BCFF9BF5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98BB2558DB9}" {
+      m_sEditableEntity "{682FA86A17944120}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_USSR_02.et"
+      m_sCompositionLayout "{5FF680D7BCFF9BF5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B9874A7B27EA}" {
+      m_sEditableEntity "{E87F2E0B5C56A1C3}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_Bunker_S_US_01.et"
+      m_sCompositionLayout "{E9CCAD99622A35F5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Bunker_US_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B9874A0B7600}" {
+      m_sEditableEntity "{4885DEA01D687DB3}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_Bunker_S_USSR_01.et"
+      m_sCompositionLayout "{02291E93335E0856}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Bunker_USSR_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AECC1CA3}" {
+      m_sEditableEntity "{CDE540ACD9415078}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_AmmoStorage_S_FIA_01.et"
+      m_sCompositionLayout "{8E350990D5F5ABB5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_AmmoStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AE8B0AAD}" {
+      m_sEditableEntity "{1BED8F81D2FA2137}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_AmmoStorage_S_US_01.et"
+      m_sCompositionLayout "{8E350990D5F5ABB5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_AmmoStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AE171BE0}" {
+      m_sEditableEntity "{CD9004C6229D900B}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_AmmoStorage_S_USSR_01.et"
+      m_sCompositionLayout "{8E350990D5F5ABB5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_AmmoStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A7701A2A8}" {
+      m_sEditableEntity "{543C31BC05F032B6}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_VehicleMaintenance_S_US_01.et"
+      m_sCompositionLayout "{B2EAAF9C153CAFDE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A77205ED6}" {
+      m_sEditableEntity "{DA380948C0CE5990}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_VehicleMaintenance_S_USSR_01.et"
+      m_sCompositionLayout "{B2EAAF9C153CAFDE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A5552879A}" {
+      m_sEditableEntity "{DA1AF79DD1C79E83}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_VehicleMaintenance_S_FIA_01.et"
+      m_sCompositionLayout "{B2EAAF9C153CAFDE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B0489E3AA298}" {
+      m_sEditableEntity "{DB7F01C68EACBEC0}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_LivingArea_S_US_01.et"
+      m_sCompositionLayout "{0828F87137D2F0C0}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B0489FDBAB79}" {
+      m_sEditableEntity "{BE3988DF6E3CD0B2}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_LivingArea_S_USSR_01.et"
+      m_sCompositionLayout "{0828F87137D2F0C0}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F1D6FD63}" {
+      m_sEditableEntity "{B6CF358D07FFC99F}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_FuelStorage_S_FIA_01.et"
+      m_sCompositionLayout "{AA991650F6F3ADFD}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FuelStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F1F57EA3}" {
+      m_sEditableEntity "{6D2A35DA74224780}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_FuelStorage_S_US_01.et"
+      m_sCompositionLayout "{AA991650F6F3ADFD}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FuelStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F18FA42C}" {
+      m_sEditableEntity "{C2D040BB21F15A20}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_FuelStorage_S_USSR_01.et"
+      m_sCompositionLayout "{AA991650F6F3ADFD}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FuelStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B07DCA32C81F}" {
+      m_sEditableEntity "{41A21CF37593EC91}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_VehicleMaintenance_M_USSR_01.et"
+      m_sCompositionLayout "{F28A8D6AC99AD4E8}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_M_01.et"
+      m_iBuildingValue 100
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B07DCBD32DB3}" {
+      m_sEditableEntity "{C0B1ABD67607623A}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_VehicleMaintenance_M_US_01.et"
+      m_sCompositionLayout "{F28A8D6AC99AD4E8}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_M_01.et"
+      m_iBuildingValue 100
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E1480BD64}" {
+      m_sEditableEntity "{D0281DAF0B131742}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_FieldHospital_M_US_01.et"
+      m_sCompositionLayout "{B3EB9207435EEE1A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FieldHospital_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E14A6F5FF}" {
+      m_sEditableEntity "{505F78512FE8B698}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_FieldHospital_M_USSR_01.et"
+      m_sCompositionLayout "{B3EB9207435EEE1A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FieldHospital_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E760349A1}" {
+      m_sEditableEntity "{74B740B56C82C0CF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_LivingArea_L_US_01.et"
+      m_sCompositionLayout "{6F40C26A3C08E3C0}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_L_US_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E77DFEFBE}" {
+      m_sEditableEntity "{85E7D977EFAC11CB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_LivingArea_L_USSR_01.et"
+      m_sCompositionLayout "{2862411B0FB84CF7}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_L_USSR_01.et"
+     }
+    }
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+   m_sPrefabToHoldSupplyOnRefund "{4BBE0A784C01900E}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_FreeRoamBuilding.et"
+  }
   SCR_DataCollectorComponent "{5ADE83EE64329989}" {
    m_aModules {
     SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
@@ -47,6 +317,9 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   }
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_iKillFeedType DISABLED
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
   }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
