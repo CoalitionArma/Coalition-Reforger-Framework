@@ -6,17 +6,15 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp(onRplName: "WaveRespawnTimer")]
 	private int m_iRespawnWaveCurrentTime;
 	int m_iRespawnTimer;
-	// Used on the client to sync spawn entites
-	[RplProp(onRplName: "UpdateClientRespawnEntites")]
-	ref array<RplId> m_RespawnPointsRplID = {};
+	[RplProp()]
+	ref array<RplId> m_RespawnPointsRplID = {}; // Used for clients
 	
 	// Store state for UI selection
 	bool m_RespawnConfirmed = false;
 	RplId m_SelectedSpawnRplID;
 	
 	// Protected Member Variables
-	protected ref array<IEntity> m_aRespawnPoints = {};
-	
+	protected ref array<IEntity> m_aRespawnPoints = {}; // Used for server
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SafestartManager m_SafestartManager;
@@ -170,6 +168,8 @@ class CRF_RespawnManager : ScriptComponent
 						GetGame().GetCallqueue().Remove(CloseSlottingMenu);
 						GetGame().GetMenuManager().CloseAllMenus();
 						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
+						
+						// Set menu state back to default
 						m_SelectedSpawnRplID = -1;
 						m_RespawnConfirmed = false; 
 					}
@@ -210,7 +210,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (!rplComp)
 			return;
 	
-		// Wait until RplId is valid
+		// Retry until RplId is valid
 		if (rplComp.Id() == RplId.Invalid())
 		{
 			GetGame().GetCallqueue().CallLater(RegisterRespawnPoint, 100, false, respawnPoint);
@@ -402,20 +402,6 @@ class CRF_RespawnManager : ScriptComponent
 	ScriptInvoker OnRespawnPointStateChanged()
 	{
 		return m_OnRespawnPointStateChanged;
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void UpdateClientRespawnEntites()
-	{
-		m_aRespawnPoints.Clear();
-	
-		// Resync the spawnpoints. Do I need to do this???
-		foreach (RplId rplID : m_RespawnPointsRplID)
-		{
-			IEntity point = GetSpawnEntityFromRplID(rplID);
-			
-			m_aRespawnPoints.Insert(point);
-		}
 	}
 	
 	/**
