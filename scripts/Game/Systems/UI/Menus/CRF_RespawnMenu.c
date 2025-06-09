@@ -12,7 +12,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected OverlayWidget m_wSpawnListRoot;
 	protected SCR_ListBoxComponent m_wSpawnListBox;
 	protected SCR_ButtonTextComponent m_bConfirmSpawnButton;
-	protected ref array<string> m_MapMarkers = {};
+	protected ref map<string, vector> m_MapMarkers = new map<string, vector>;
 	protected FactionKey m_factionKey;
 	
 	/**
@@ -70,7 +70,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	protected void InitializeInvoker()
 	{
-		CRF_RespawnManager.GetInstance().OnRespawnPointStateChanged().Insert(OnSpawnpointActiveChanged)
+		CRF_RespawnManager.GetInstance().OnRespawnPointStateChanged().Insert(OnSpawnpointStateChanged)
 	}
 	
 	/**
@@ -82,10 +82,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		m_wSpawnListRoot = OverlayWidget.Cast(GetRootWidget().FindAnyWidget("List1Box"));
 		m_wSpawnListBox = SCR_ListBoxComponent.Cast(m_wSpawnListRoot.FindHandler(SCR_ListBoxComponent));
 		m_bConfirmSpawnButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", GetRootWidget());
-		
-		 CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
-			if (!gameModePlayerComponent) 
-				return;
 		
 		// Setup list update event handlers 
 		m_wSpawnListBox.m_OnChanged.Insert(UpdateSpawnSelection);
@@ -114,16 +110,11 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			
 			vector wPos = point.GetOrigin();
 			
-			// Format wPos Vector into a string for scripted marker
-			string wPosFormatted = string.Format("%1 %2 %3", wPos[0], wPos[1], wPos[2]);
+			// Create map marker
+			CreateSpawnPointMarker(respawnPointComponent.m_sRespawnPointName, wPos);
 			
 			// Add option to menu and store the component with it
 			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName, respawnPointComponent);
-			
-			// TODO: Create markers on spawnpoints
-			
-			// Store for deletion when menu is closed
-			m_MapMarkers.Insert(respawnPointComponent.m_sRespawnPointName);
 		}
 	}
 	
@@ -146,9 +137,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	/**
 	 * 
 	 */
-	protected void OnSpawnpointActiveChanged(RplId rplID, bool active)
+	protected void OnSpawnpointStateChanged(RplId rplID, bool active)
 	{
 		IEntity point = CRF_RespawnManager.GetInstance().GetSpawnEntityFromRplID(rplID);
+		if (!point)
+			return;
+		
+		vector worldPos = point.GetOrigin();
 		
 		CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
 			if (!respawnComponent)
@@ -157,17 +152,23 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		// Ignore spawn point if not for player faction
 		if (respawnComponent.m_sRespawnPointFaction != m_factionKey)
 			return;
-				
+		
 		if (active)
 		{
 			m_wSpawnListBox.AddItem(respawnComponent.m_sRespawnPointName, respawnComponent);
-			// TODO: add marker
+			CreateSpawnPointMarker(respawnComponent.m_sRespawnPointName, worldPos);
 		}
 		else
 		{
 			int index = m_wSpawnListBox.FindItemWithData(respawnComponent);
 			m_wSpawnListBox.RemoveItem(index);
-			// TODO: remove marker
+			RemoveSpawnPointMarker(respawnComponent.m_sRespawnPointName, worldPos);
+			
+			if (rplID == CRF_RespawnManager.GetInstance().m_SelectedSpawnRplID && CRF_RespawnManager.GetInstance().m_RespawnConfirmed)
+			{
+				CRF_RespawnManager.GetInstance().m_SelectedSpawnRplID = -1;
+				CRF_RespawnManager.GetInstance().m_RespawnConfirmed = false;
+			}
 		}
 	}
 	
@@ -220,9 +221,18 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		// Remove Script Invokers
 		RemoveScriptInvokers();
 		
+		// Remove Map Markers
+		RemoveAllSpawnPointMarker();
+		
+		// Clear up menu reference
+		if (m_wSpawnListBox)
+			m_wSpawnListBox.Clear();
+		
 		// Close the map if open
 		if (m_MapEntity)
 			m_MapEntity.CloseMap();
+		
+		m_MapMarkers.Clear();
 	}
 	
 	/**
@@ -243,7 +253,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	protected void RemoveScriptInvokers()
 	{
-		CRF_RespawnManager.GetInstance().OnRespawnPointStateChanged().Remove(OnSpawnpointActiveChanged);
+		CRF_RespawnManager.GetInstance().OnRespawnPointStateChanged().Remove(OnSpawnpointStateChanged);
 	}
 	
 	/**
@@ -409,7 +419,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Pan the map to the spawn point
 		PanMapToSpawnPoint(point);
-		Print("[CRF_RespawnMenu.UpdateSpawnSelection] debug line (" + __FILE__ + " L" + __LINE__ + ")", LogLevel.WARNING);
 		
 		// Update selected respawn used by the server
 		CRF_RespawnManager.GetInstance().m_SelectedSpawnRplID = rplID;
@@ -431,19 +440,81 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	}
 	
 	/**
-	 * Update the spawn selection button in the UI and set it state for use in respawn timer
+	 * Update the spawn selection button in the UI and set it state for use in the respawn timer
 	 */
 	protected void ToggleSpawnSelection()
 	{
-		if (CRF_RespawnManager.GetInstance().m_RespawnSelected)
+		if (CRF_RespawnManager.GetInstance().m_RespawnConfirmed)
 		{
 			TextWidget.Cast(m_bConfirmSpawnButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Select Spawn");
-			CRF_RespawnManager.GetInstance().m_RespawnSelected = false;
+			CRF_RespawnManager.GetInstance().m_RespawnConfirmed = false;
 		}
 		else
 		{
 			TextWidget.Cast(m_bConfirmSpawnButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Cancel Selection");
-			CRF_RespawnManager.GetInstance().m_RespawnSelected = true;
+			CRF_RespawnManager.GetInstance().m_RespawnConfirmed = true;
 		}
+	}
+	
+	protected void CreateSpawnPointMarker(string spawnName, vector worldPos)
+	{
+		string wPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
+				if (!gameModePlayerComponent) 
+					return;
+		
+		// Create marker		
+		gameModePlayerComponent.AddScriptedMarker("Static Marker",
+		 wPosFormatted,
+		 1,
+		 spawnName,
+		 "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds",
+		 50,
+		 ARGB(255, 0, 0, 225));
+		
+		// Track marker for deletion later
+		m_MapMarkers.Insert(spawnName, worldPos);
+		
+		MapMarkersUIRefresh();
+	}
+	
+	protected void RemoveSpawnPointMarker(string spawnName, vector worldPos)
+	{
+		string wPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
+				if (!gameModePlayerComponent) 
+					return;
+		
+		// Remove marker		
+		gameModePlayerComponent.RemoveScriptedMarker("Static Marker",
+		wPosFormatted,
+		 1,
+		 spawnName,
+		 "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds",
+		 50,
+		 ARGB(255, 0, 0, 225));
+		
+		// Untrack marker
+		m_MapMarkers.Remove(spawnName);
+		
+		MapMarkersUIRefresh();
+	}	
+	
+	protected void RemoveAllSpawnPointMarker()
+	{
+		foreach(string name, vector worldPos: m_MapMarkers)
+		{ 		
+			RemoveSpawnPointMarker(name, worldPos);
+		}		
+	}
+	
+	protected void MapMarkersUIRefresh()
+	{
+		m_MapEntity = SCR_MapEntity.GetMapInstance();
+		if (!m_MapEntity) 
+			return;
+
+		m_MapEntity.CloseMap();
+		OpenMapWithConfig();
 	}
 }

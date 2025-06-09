@@ -11,7 +11,7 @@ class CRF_RespawnManager : ScriptComponent
 	ref array<RplId> m_RespawnPointsRplID = {};
 	
 	// Store state for UI selection
-	bool m_RespawnSelected = false;
+	bool m_RespawnConfirmed = false;
 	RplId m_SelectedSpawnRplID;
 	
 	// Protected Member Variables
@@ -160,7 +160,7 @@ class CRF_RespawnManager : ScriptComponent
 			{
 				// Check if respawn selection was confirmed in the UI
 				CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
-				if (m_SelectedSpawnRplID != -1 && m_RespawnSelected)
+				if (m_SelectedSpawnRplID != -1 && m_RespawnConfirmed)
 				{
 					// Reset the timer
 					m_iRespawnTimer = m_iRespawnWaveCurrentTime;
@@ -170,6 +170,8 @@ class CRF_RespawnManager : ScriptComponent
 						GetGame().GetCallqueue().Remove(CloseSlottingMenu);
 						GetGame().GetMenuManager().CloseAllMenus();
 						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
+						m_SelectedSpawnRplID = -1;
+						m_RespawnConfirmed = false; 
 					}
 		
 					// Remove this timer function from the callqueue
