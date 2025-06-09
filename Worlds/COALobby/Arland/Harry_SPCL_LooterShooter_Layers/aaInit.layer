@@ -41,7 +41,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628C2D2BFC8C6447}" {
-     m_bFriendlyToSelf 0
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB79287E901BC}" {
