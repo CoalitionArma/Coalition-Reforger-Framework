@@ -1,0 +1,68 @@
+GenericEntity : "{FCE3FA547AA13ECC}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V2.et" {
+ ID "50C6D20663830070"
+ components {
+  RigidBody "{5472A771D2979EF1}" {
+   ResponseIndex "TinyDestructible"
+  }
+  SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+   m_sDefaultMaterial "{D33A1334B4A3369D}Assets/Props/Fabric/Flags/Data/Flag_1_2_USSR.emat"
+  }
+  SCR_UniversalInventoryStorageComponent "{65954A2708FB8CA1}" {
+   Attributes SCR_ItemAttributeCollection "{65954A2708FB8CB0}" {
+    ItemDisplayName UIInfo "{65954A2708FB8CBD}" {
+     Name "CTF Flag Blufor"
+     Description "CTF Flag Blufor"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{65954A2708FB8CBE}" {
+     Weight 5
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{65954A2708FB8CBB}" {
+      CameraPreset Back
+      CameraOrbitAngles 25 -25 180
+      CameraDistanceToItem 4
+      CameraOffset 0 1.5 0
+      FOV 30
+     }
+    }
+    m_SlotType SLOT_BACKPACK
+   }
+   Priority 8
+  }
+  BaseLoadoutClothComponent "{65954A2708FB8C46}" {
+   AreaType LoadoutBackpackArea "{65954A2708FB8C40}" {
+   }
+   Slots {
+    LoadoutSlotInfo BluforFlag {
+    }
+   }
+  }
+  ActionsManagerComponent "{65954A2708FB8C4F}" {
+   ActionContexts {
+    UserActionContext "{65954A2708FB8C49}" {
+     ContextName "default"
+     Position PointInfo "{65954A2708FB8C4A}" {
+      Offset 0 1 0
+     }
+     Radius 1
+    }
+   }
+   additionalActions {
+    SCR_EquipClothAction "{65954A2708FB8C5D}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{65954A2708FB8C5F}" {
+      Name "#AR-Inventory_Equip"
+     }
+     VisibilityRange 1
+    }
+   }
+  }
+  RplComponent "{65954A2708FB8C5B}" {
+   "Rpl State Override" Runtime
+  }
+  Hierarchy "{65954A2708FB8C6D}" {
+  }
+ }
+}
