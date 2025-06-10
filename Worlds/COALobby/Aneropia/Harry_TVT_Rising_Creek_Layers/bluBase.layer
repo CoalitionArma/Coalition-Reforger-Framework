@@ -1,25 +1,129 @@
-GenericEntity : "{0BBD3B95D081E616}Prefabs/Props/Military/Compositions/US/VehicleService_BLUFOR80s.et" {
- components {
-  SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
-   m_aBudgetsToEvaluate {
-    SCR_CampaignBuildingCooldownWithRankBudgetToEvaluateData "{5EE71CAB5BFCF9A3}" {
-     m_aCustomCooldownData {
-      SCR_CooldownData "{5EEEF52515996867}" {
-       m_fDefaultTimeMultiplier 3
-      }
-     }
-    }
-   }
-  }
+$grp SCR_VehicleSpawn {
+ {
+  coords 1813.391 92.933 311.681
+  angleY 128.018
+  m_rnPrefab "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
- coords 1819.842 92.065 336.257
- angleY -131.785
+ {
+  coords 1816.973 92.851 316.262
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1820.001 92.777 320.135
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1822.876 92.707 323.813
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1825.897 92.634 327.678
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1829.731 92.558 332.582
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1813.538 92.548 325.457
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1816.413 92.408 329.135
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1819.434 92.28 333
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1823.268 92.046 337.904
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1810.51 92.662 321.584
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1805.822 92.227 331.877
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1808.697 92.052 335.555
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1811.718 91.719 339.42
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1815.552 91.305 344.324
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1802.794 92.406 328.004
+  angleY 128.018
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1822.17 93.031 284.884
+  angleY 30.935
+  m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
 }
 GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
- coords 1821.462 92.001 337.78
+ coords 1796.228 92.653 306.633
  angleY -43.188
 }
 Vehicle M923A1_engineer_BLUFOR1 : "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et" {
- coords 1826.697 92.491 331.974
- angleY 142.804
+ coords 1805.438 92.866 302.42
+ angleY 118.891
 }
