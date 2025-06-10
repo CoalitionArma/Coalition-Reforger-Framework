@@ -1,3 +1,25 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1813.559 185.34 342.335
+}
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
- coords 1817.737 91.555 341.329
+ components {
+  SCR_CompositionSlotManagerComponent "{65934CB412D25B49}" {
+  }
+ }
+ coords 1816.014 190.555 346.299
+ {
+  SCR_FactionManager "65934CA6A4CC716B" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C9E82F29B327997}" : "{54271130C7F4DA82}Configs/EntityCatalog/US/Vehicles_EntityCatalog_Blufor80s.conf" {
+      }
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+    }
+   }
+  }
+ }
 }

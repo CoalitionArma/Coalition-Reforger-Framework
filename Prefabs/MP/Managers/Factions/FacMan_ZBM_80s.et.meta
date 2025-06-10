@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et"
+ Name "{467054362A79D955}Prefabs/MP/Managers/Factions/FacMan_ZBM_80s.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
@@ -9,11 +9,7 @@ MetaFileClass {
   }
   EntityTemplateResourceClass PS4 : PC {
   }
-  EntityTemplateResourceClass PS5 : PC {
-  }
   EntityTemplateResourceClass HEADLESS : PC {
-  }
-  EntityTemplateResourceClass Xbox : PC {
   }
  }
 }

@@ -443,14 +443,259 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    ID "64443AC8FCA0C42D"
    coords 0 0 0
   }
-  SCR_FactionManager : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
-   ID "65941CA0CC741BCD"
-   coords 0 0 0
+  SCR_FactionManager "5EA8C932C68D400F" : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
+   ID "632A77473B3CC3A8"
+   coords 0.799 0.748 0.974
    Factions {
-    SCR_Faction "{61500924662B6062}" {
-     m_bIsPlayable 0
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
+      SocialIdentity SocialIdentity "{56E4EBD9F0C03530}" {
+       NamesConfig {
+        "Was"
+       }
+       AliasesConfig {
+        "1337llama" "Arkangel" "Whale" "Baron" "Battlebeav" "Cal" "Carcool12" "CollectiveS" "Collige" "Dagger" "Delfer" "DV" "Embrodak" "Flora" "Frans" "Geek-X" "Kaltag" "Gummi" "JLaw" "Johnstipation" "Kenji" "Lazz" "LookitsDante" "Master T 117" "Njpatman" "Nufflicks" "Philbilly" "PI23263" "Hawk" "RandAlThor" "Reckless" "Salami" "Shimavitz" "SkurtBird" "Slendersnipes" "Sonia" "Svir" "StalinForPresident" "Tanaka" "Techniker" "The Canadian" "TheCrazyCanuck" "Topher" "Uncle_Gavin" "Schmidtstorm" "Vampyrcat" "Votra" "Wandering_Blade"
+       }
+       SurnamesConfig {
+        "Here"
+       }
+      }
+     }
+     m_iOrder 10
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
     }
-    SCR_Faction "{65941CA0F85478A7}" {
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "OPFOR"
+      m_sNameUpper "OPFOR"
+     }
+     m_iOrder 9
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "INDFOR"
+      Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+      m_sNameUpper "INDFOR"
+     }
+     m_iOrder 8
+     m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+     m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Cell Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     UIInfo SCR_FactionUIInfo "{56B49118D8D0A9C5}" {
+      Icon "{C8565602E0F422C5}Images/UI/Zeus GearScript Factions/CIV_NATO.edds"
+     }
+     "Identity of soldiers" FactionIdentity "{60DCEDE56D10632C}" : "{7BE453211ACB5F01}Configs/Identities/FactionIdentity_COAL.conf" {
+     }
+     m_iOrder 7
+     m_sFactionFlag "{C8565602E0F422C5}Images/UI/Zeus GearScript Factions/CIV_NATO.edds"
+     m_FactionFlagMaterial "{936E6C67A71A9421}Assets/Props/Fabric/Flags/Data/Flag_2_3_White.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
+      m_sCallsignGroupFormat "%3"
+     }
+     m_sFactionRadioEncryptionKey "chickenNuggets"
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR"
+      m_sNameUpper "OPFOR"
+     }
+     m_iOrder 6
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     m_iOrder 5
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{623962205CE2B89C}" {
+     UIInfo SCR_FactionUIInfo "{62394AA4B52816D2}" {
+      Name "INDFOR"
+      m_sNameUpper "INDFOR"
+     }
+     m_iOrder 4
+     m_sFactionRadioEncryptionKey "candleSauce"
+    }
+    SCR_Faction "{61500924662B6062}" {
+     FactionKey "SPEC"
+     FactionColor 0.392 0.157 0.624 1
+     UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
+      Name "Spectator"
+      Icon "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
+      m_sNameUpper "SPECTATOR"
+     }
+     "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
+      VisualIdentityArray {
+       VisualIdentity "{570CE64C784286B5}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC06CAAD480}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC05A2BFCE8}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CE64C790A3C7D}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC037CCBCD3}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC1C8B17A43}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570EDB838B8AC563}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{588508C19AA51746}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{588508C199AD5966}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+      }
+     }
+     m_iOrder 3
+     m_OutlineFactionColor 0.392 0.157 0.624 1
+     m_NotificationFactionColor 0.392 0.157 0.624 1
+     m_NotificationTextFactionColor 0.392 0.157 0.624 1
+     m_bIsPlayable 0
+     m_bShowInWelcomeScreenIfNonPlayable 0
+     m_bIsMilitary 0
+     m_sFactionFlag "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
+     m_FactionFlagMaterial "{E3BB2EF7F600DD28}Assets/Props/Fabric/Flags/Data/Flag_2_3_CIVILIAN.emat"
+     m_FactionLabel FACTION_CIV
+     m_aFriendlyFactionsIds {
+      "USSR" "FIA"
+     }
+     m_sFactionRadioEncryptionKey "Sandbox"
+     m_iFactionRadioFrequency 58000
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{607A9A9FE55EDF5F}" {
+       m_eEntityCatalogType ITEM
+      }
+      SCR_EntityCatalogMultiList "{607A9A9FFA54DFE9}" {
+       m_eEntityCatalogType CHARACTER
+      }
+      SCR_EntityCatalogMultiList "{61C8ED1193902596}" {
+       m_eEntityCatalogType VEHICLE
+      }
+      SCR_EntityCatalogMultiList "{61C8ED1182211903}" {
+       m_eEntityCatalogType GROUP
+      }
+      SCR_EntityCatalogMultiList "{607A9A9FFBDA2F92}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
+     }
+     m_sGroupFlagsImageSet "{D7E06968B5F9FC92}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian.imageset"
+     m_sGroupFlagsImageSetOutlines "{824ADD5E7A28B03E}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian-outline.imageset"
+     m_aFlagNames {
+      "land" "helicopter" "maintenance" "medical"
+     }
+     m_sFactionBackground "{781301447441F404}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_Civilian.imageset"
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
      FactionKey "BLUFOR"
      FactionColor 0.016 0.552 0.905 1
      UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
@@ -458,48 +703,15 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       Icon "{E5DECCCA6F4B7416}Images/UI/Zeus GearScript Factions/BLUFOR_NATO.edds"
       m_sNameUpper "BLUFOR"
      }
-     "Identity of soldiers" FactionIdentity "{62D8F84F18596BBF}" {
-      VisualIdentityArray {
-       VisualIdentity "{570CE64C790A3C7D}" {
-       }
-       VisualIdentity "{570CE64C784286B5}" {
-       }
-       VisualIdentity "{570CFDC06CAAD480}" {
-       }
-       VisualIdentity "{570CFDC05A2BFCE8}" {
-       }
-       VisualIdentity "{570CFDC037CCBCD3}" {
-       }
-       VisualIdentity "{570CFDC1C8B17A43}" {
-       }
-       VisualIdentity "{570EDB838B8AC563}" {
-       }
-       VisualIdentity "{588508C19AA51746}" {
-       }
-       VisualIdentity "{588508C199AD5966}" {
-       }
-      }
-      SoundIdentityArray {
-       SoundIdentity "{62D8F84F4058FF0E}" {
-       }
-       SoundIdentity "{62D8F84F4058FF0A}" {
-       }
-       SoundIdentity "{62D8F84F4058FF09}" {
-       }
-       SoundIdentity "{62D8F84F405887F1}" {
-       }
-       SoundIdentity "{62D8F84F405887FF}" {
-       }
-       SoundIdentity "{62D8F84F405887FC}" {
-       }
-      }
+     "Identity of soldiers" FactionIdentity "{62D8F84F18596BBF}" : "{7BE453211ACB5F01}Configs/Identities/FactionIdentity_COAL.conf" {
      }
      m_OutlineFactionColor 0.005 0.044 0.114 1
      m_NotificationFactionColor 0.016 0.552 0.905 1
      m_NotificationTextFactionColor 0.013 0.395 0.651 1
+     m_bIsPlayable 0
      m_sFactionFlag "{E5DECCCA6F4B7416}Images/UI/Zeus GearScript Factions/BLUFOR_NATO.edds"
      m_FactionFlagMaterial "{DB52C2D4463AA0A0}Assets/Props/Fabric/Flags/Data/Flag_2_3_Blue.emat"
-     m_FactionLabel FACTION_CRF_BLUFOR
+     m_FactionLabel FACTION_US
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_bIsAssignedRandomly 0
       m_aCompanyNames {
@@ -532,21 +744,15 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       }
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB792D10AD8F4}" {
-        m_sCallsign "COY"
-       }
-       SCR_CallsignInfo "{55CCB792D13759D8}" {
         m_sCallsign "1PLT"
        }
-       SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "MED"
-       }
-       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{65941CA3D7B70980}" {
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{65941CA3D5933D8C}" {
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
         m_sCallsign "1-3"
        }
       }
@@ -686,7 +892,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       }
      }
     }
-    SCR_Faction "{65941CA0F88EA87B}" {
+    SCR_Faction "{628C2D2BFC8C6447}" {
      FactionKey "OPFOR"
      FactionColor 0.855 0.031 0.028 1
      UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
@@ -694,49 +900,16 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       Icon "{11112420EEC8576C}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
       m_sNameUpper "OPFOR"
      }
-     "Identity of soldiers" FactionIdentity "{62D8F84F060C0F95}" {
-      VisualIdentityArray {
-       VisualIdentity "{570CE64C790A3C7D}" {
-       }
-       VisualIdentity "{570CE64C784286B5}" {
-       }
-       VisualIdentity "{570CFDC06CAAD480}" {
-       }
-       VisualIdentity "{570CFDC05A2BFCE8}" {
-       }
-       VisualIdentity "{570CFDC037CCBCD3}" {
-       }
-       VisualIdentity "{570CFDC1C8B17A43}" {
-       }
-       VisualIdentity "{570EDB838B8AC563}" {
-       }
-       VisualIdentity "{588508C19AA51746}" {
-       }
-       VisualIdentity "{588508C199AD5966}" {
-       }
-      }
-      SoundIdentityArray {
-       SoundIdentity "{62D8F84F4058FF0E}" {
-       }
-       SoundIdentity "{62D8F84F4058FF0A}" {
-       }
-       SoundIdentity "{62D8F84F4058FF09}" {
-       }
-       SoundIdentity "{62D8F84F405887F1}" {
-       }
-       SoundIdentity "{62D8F84F405887FF}" {
-       }
-       SoundIdentity "{62D8F84F405887FC}" {
-       }
-      }
+     "Identity of soldiers" FactionIdentity "{62D8F84F060C0F95}" : "{7BE453211ACB5F01}Configs/Identities/FactionIdentity_COAL.conf" {
      }
      m_iOrder 1
      m_OutlineFactionColor 0.168 0.006 0.007 1
      m_NotificationFactionColor 0.855 0.031 0.028 1
      m_NotificationTextFactionColor 0.521 0.021 0.019 1
+     m_bIsPlayable 0
      m_sFactionFlag "{11112420EEC8576C}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
      m_FactionFlagMaterial "{362AC46447DBE58B}Assets/Props/Fabric/Flags/Data/Flag_1_2_Red.emat"
-     m_FactionLabel FACTION_CRF_OPFOR
+     m_FactionLabel FACTION_USSR
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_bIsAssignedRandomly 0
       m_aCompanyNames {
@@ -769,21 +942,15 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       }
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB79287E901BC}" {
-        m_sCallsign "COY"
-       }
-       SCR_CallsignInfo "{55CCB79287936EBD}" {
         m_sCallsign "1PLT"
        }
-       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
-        m_sCallsign "MED"
-       }
-       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{65941CA3C5BF0040}" {
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{65941CA3C47AA5B3}" {
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
         m_sCallsign "1-3"
        }
       }
@@ -919,7 +1086,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       }
      }
     }
-    SCR_Faction "{65941CA0FE784183}" {
+    SCR_Faction "{628CDE9209CA3FF9}" {
      FactionKey "INDFOR"
      FactionColor 0 0.44 0.078 1
      UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
@@ -927,49 +1094,16 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       Icon "{EFA0BA63504B1230}Images/UI/Zeus GearScript Factions/INDFOR_NATO.edds"
       m_sNameUpper "INDFOR"
      }
-     "Identity of soldiers" FactionIdentity "{62D8F84F08F0FEAC}" {
-      VisualIdentityArray {
-       VisualIdentity "{570CE64C790A3C7D}" {
-       }
-       VisualIdentity "{570CE64C784286B5}" {
-       }
-       VisualIdentity "{570CFDC06CAAD480}" {
-       }
-       VisualIdentity "{570CFDC05A2BFCE8}" {
-       }
-       VisualIdentity "{570CFDC037CCBCD3}" {
-       }
-       VisualIdentity "{570CFDC1C8B17A43}" {
-       }
-       VisualIdentity "{570EDB838B8AC563}" {
-       }
-       VisualIdentity "{588508C19AA51746}" {
-       }
-       VisualIdentity "{588508C199AD5966}" {
-       }
-      }
-      SoundIdentityArray {
-       SoundIdentity "{62D8F84F4058FF0E}" {
-       }
-       SoundIdentity "{62D8F84F4058FF0A}" {
-       }
-       SoundIdentity "{62D8F84F4058FF09}" {
-       }
-       SoundIdentity "{62D8F84F405887F1}" {
-       }
-       SoundIdentity "{62D8F84F405887FF}" {
-       }
-       SoundIdentity "{62D8F84F405887FC}" {
-       }
-      }
+     "Identity of soldiers" FactionIdentity "{62D8F84F08F0FEAC}" : "{7BE453211ACB5F01}Configs/Identities/FactionIdentity_COAL.conf" {
      }
      m_iOrder 2
      m_OutlineFactionColor 0.001 0.082 0.023 1
      m_NotificationFactionColor 0 0.44 0.078 1
      m_NotificationTextFactionColor 0 0.296 0.055 1
+     m_bIsPlayable 0
      m_sFactionFlag "{EFA0BA63504B1230}Images/UI/Zeus GearScript Factions/INDFOR_NATO.edds"
      m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
-     m_FactionLabel FACTION_CRF_INDFOR
+     m_FactionLabel FACTION_FIA
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_bIsAssignedRandomly 0
       m_aCompanyNames {
@@ -1012,19 +1146,16 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       }
       m_aSquadNames {
        SCR_CallsignInfo "{58B2B630FDD64B6D}" {
-        m_sCallsign "CELL 6"
+        m_sCallsign "Cell Lead"
        }
        SCR_CallsignInfo "{58B2B630FDD64B53}" {
-        m_sCallsign "MED"
+        m_sCallsign "Cell 1"
        }
        SCR_CallsignInfo "{58B2B630FDD64B51}" {
-        m_sCallsign "CELL 1"
+        m_sCallsign "Cell 2"
        }
        SCR_CallsignInfo "{58B2B630FDD64B50}" {
-        m_sCallsign "CELL 2"
-       }
-       SCR_CallsignInfo "{65941CA3E63C5B75}" {
-        m_sCallsign "CELL 3"
+        m_sCallsign "Cell 3"
        }
       }
       m_sCallsignGroupFormat "%3"
@@ -1060,223 +1191,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       "infantry" "amphibious" "anti-air" "anti-air-artilery" "anti-armor-motorized" "antiarmor" "armored" "artillery" "combined" "helicopter" "helicopter-attack" "infantry-air" "machinegun" "maintenance" "medical" "mortar" "motorized" "motorized-infantry" "recon" "recon-motorized" "signal" "sniper" "supply-motorized" "undefined"
      }
      m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
-    }
-    SCR_Faction "{65941CA0620632B7}" {
-     FactionKey "SPEC"
-     FactionColor 0.392 0.157 0.624 1
-     UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
-      Name "Spectator"
-      Icon "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
-      m_sNameUpper "SPECTATOR"
-     }
-     "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
-      VisualIdentityArray {
-       VisualIdentity "{570CE64C784286B5}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{570CFDC06CAAD480}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{570CFDC05A2BFCE8}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{570CE64C790A3C7D}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{570CFDC037CCBCD3}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{570CFDC1C8B17A43}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{570EDB838B8AC563}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{588508C19AA51746}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-       VisualIdentity "{588508C199AD5966}" {
-        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
-        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
-       }
-      }
-      SoundIdentityArray {
-       SoundIdentity "{6163084CECA0C22B}" {
-       }
-       SoundIdentity "{6163084CECA0C228}" {
-       }
-       SoundIdentity "{6163084CECA0C229}" {
-       }
-       SoundIdentity "{6163084CECA0C22E}" {
-       }
-       SoundIdentity "{6163084CECA0C22F}" {
-       }
-       SoundIdentity "{6163084CECA0C22C}" {
-       }
-       SoundIdentity "{65648D6DC4A61ED4}" {
-       }
-       SoundIdentity "{65648D6DCB8B5848}" {
-       }
-       SoundIdentity "{65648D6DC8B9F50C}" {
-       }
-      }
-     }
-     m_iOrder 3
-     m_OutlineFactionColor 0.392 0.157 0.624 1
-     m_NotificationFactionColor 0.392 0.157 0.624 1
-     m_NotificationTextFactionColor 0.392 0.157 0.624 1
-     m_bIsPlayable 0
-     m_bShowInWelcomeScreenIfNonPlayable 0
-     m_bIsMilitary 0
-     m_sFactionFlag "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
-     m_FactionFlagMaterial "{E3BB2EF7F600DD28}Assets/Props/Fabric/Flags/Data/Flag_2_3_CIVILIAN.emat"
-     m_FactionLabel FACTION_CRF_CIV
-     m_aFriendlyFactionsIds {
-      "USSR" "FIA"
-     }
-     m_sFactionRadioEncryptionKey "Sandbox"
-     m_iFactionRadioFrequency 58000
-     m_aRanks {
-      SCR_CharacterRank "{615009275A4B9FEF}" {
-      }
-      SCR_CharacterRank "{615009275A4B9FED}" {
-      }
-      SCR_CharacterRank "{615009275A4B9FF3}" {
-      }
-      SCR_CharacterRank "{615009275A4B9FF2}" {
-      }
-      SCR_CharacterRank "{615009275A4B9FF0}" {
-      }
-      SCR_CharacterRank "{615009275A4B9FF7}" {
-      }
-      SCR_CharacterRank "{615009275A4B9FF5}" {
-      }
-     }
-     m_aEntityCatalogs {
-      SCR_EntityCatalogMultiList "{5C68A0EE815FA292}" {
-      }
-      SCR_EntityCatalogMultiList "{5C9E82F29B327997}" {
-      }
-      SCR_EntityCatalogMultiList "{5C68A0EE8B97CA50}" {
-      }
-      SCR_EntityCatalog "{5C68A0EEB7DB3E84}" {
-      }
-      SCR_EntityCatalogMultiList "{5C68A0EEB3F124F9}" {
-      }
-      SCR_EntityCatalog "{5C9EDDD37394AD40}" {
-      }
-      SCR_EntityCatalogMultiList "{607A9A9FE55EDF5F}" {
-       m_eEntityCatalogType ITEM
-      }
-      SCR_EntityCatalogMultiList "{607A9A9FFA54DFE9}" {
-       m_eEntityCatalogType CHARACTER
-      }
-      SCR_EntityCatalogMultiList "{61C8ED1193902596}" {
-       m_eEntityCatalogType VEHICLE
-      }
-      SCR_EntityCatalogMultiList "{61C8ED1182211903}" {
-       m_eEntityCatalogType GROUP
-      }
-      SCR_EntityCatalogMultiList "{607A9A9FFBDA2F92}" {
-       m_eEntityCatalogType WEAPONS_TRIPOD
-      }
-     }
-     m_sGroupFlagsImageSet "{D7E06968B5F9FC92}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian.imageset"
-     m_sGroupFlagsImageSetOutlines "{824ADD5E7A28B03E}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian-outline.imageset"
-     m_aFlagNames {
-      "land" "helicopter" "maintenance" "medical"
-     }
-     m_sFactionBackground "{781301447441F404}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_Civilian.imageset"
-     m_aBaseCallsigns {
-      SCR_MilitaryBaseCallsign "{615009275A4B9FF8}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FFE}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FFD}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC3}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC2}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC1}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC0}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC6}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC5}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC4}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FCA}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FC9}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FCF}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FCE}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FCD}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FD3}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FD2}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FD1}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FD7}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FD6}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FD5}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FDB}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FDA}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FD9}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FDF}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FDE}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9FDD}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C23}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C22}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C21}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C27}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C26}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C24}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C2B}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C2A}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C28}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C2F}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C2E}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C2C}" {
-      }
-      SCR_MilitaryBaseCallsign "{615009275A4B9C33}" {
-      }
-     }
     }
    }
   }
