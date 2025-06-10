@@ -1,0 +1,25 @@
+GenericEntity : "{0BBD3B95D081E616}Prefabs/Props/Military/Compositions/US/VehicleService_BLUFOR80s.et" {
+ components {
+  SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+   m_aBudgetsToEvaluate {
+    SCR_CampaignBuildingCooldownWithRankBudgetToEvaluateData "{5EE71CAB5BFCF9A3}" {
+     m_aCustomCooldownData {
+      SCR_CooldownData "{5EEEF52515996867}" {
+       m_fDefaultTimeMultiplier 3
+      }
+     }
+    }
+   }
+  }
+ }
+ coords 1819.842 92.065 336.257
+ angleY -131.785
+}
+GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ coords 1821.462 92.001 337.78
+ angleY -43.188
+}
+Vehicle M923A1_engineer_BLUFOR1 : "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et" {
+ coords 1826.697 92.491 331.974
+ angleY 142.804
+}
