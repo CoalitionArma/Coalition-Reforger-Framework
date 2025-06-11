@@ -4,7 +4,8 @@ ParticleEffectEntity {
 }
 SCR_BaseTriggerEntity bluZone {
  coords 9024.485 248.351 11028.772
- userScript "	bool pmessageSent = false;"
+ userScript "	bool pmessageSent = false;"\
+ "	string expl = \"{B770B42F881A60BB}Prefabs/Systems/Explosions/BombWarhead_Huge.et\";"
  TriggerShapeType Sphere
  SphereRadius 20
  DrawShape 1
@@ -24,6 +25,15 @@ SCR_BaseTriggerEntity bluZone {
  "				if (entity.GetName() == \"opFlag\" && !pmessageSent)"\
  "				{"\
  "					SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor has captured the enemy flag!\", 10);"\
+ "					IEntity opHead;"\
+ "					"\
+ "					opHead = GetGame().GetWorld().FindEntityByName(\"opHead\");"\
+ "					EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "					spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "					"\
+ "					spawnParams.Transform[3] = opHead.GetOrigin();		"\
+ "					GetGame().SpawnEntityPrefab(Resource.Load(\"{72339030F4FF96A1}Prefabs/Systems/Explosions/BombWarhead_Hugerer.et\"), GetGame().GetWorld(), spawnParams);"\
+ "					"\
  "					pmessageSent = true;"\
  "				"\
  "				}"\

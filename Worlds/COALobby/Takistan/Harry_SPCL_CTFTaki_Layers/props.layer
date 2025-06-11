@@ -1,5 +1,5 @@
 $grp GenericEntity {
- {
+ bluHead {
   components {
    MeshObject "{65954A21A64AC87C}" {
     Object "{45A8E93EFAF35626}Assets/Vehicles/Tracked/M1A1/m1a2_abrams_turret.xob"
@@ -9,7 +9,7 @@ $grp GenericEntity {
   angleY -63.546
   scale 10
  }
- {
+ opHead {
   components {
    MeshObject "{65954A2182AA1EA3}" {
     Object "{4E627F95B24AF26C}Assets/Vehicles/Tracked/T-72A/t-72a_turret.xob"

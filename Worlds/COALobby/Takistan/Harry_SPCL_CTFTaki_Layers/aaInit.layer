@@ -4,6 +4,7 @@ SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 8469.8 547.975 11211.133
  m_iTimeLimitMinutes 20
+ m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "Capture the flag and bring it back to the smoke at the big man!"
@@ -11,8 +12,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
+ m_bRespawnEnabled 1
+ m_iBLUFORTickets -1
+ m_iOPFORTickets -1
  {
-  SCR_FactionManager {
+  SCR_FactionManager "659579792441CE2A" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
