@@ -33,6 +33,7 @@ SCR_BaseTriggerEntity bluZone {
  "					"\
  "					spawnParams.Transform[3] = opHead.GetOrigin();		"\
  "					GetGame().SpawnEntityPrefab(Resource.Load(\"{72339030F4FF96A1}Prefabs/Systems/Explosions/BombWarhead_Hugerer.et\"), GetGame().GetWorld(), spawnParams);"\
+ "					delete opHead;"\
  "					"\
  "					pmessageSent = true;"\
  "				"\

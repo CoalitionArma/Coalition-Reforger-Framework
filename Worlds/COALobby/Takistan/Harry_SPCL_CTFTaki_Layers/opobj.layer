@@ -24,7 +24,7 @@ SCR_BaseTriggerEntity opZone {
  "				if (entity.GetName() == \"bluFlag\" && !pmessageSent)"\
  "				{"\
  "					SCR_PopUpNotification.GetInstance().PopupMsg(\"Opfor has captured the enemy flag!\", 10);"\
- "					IEntity opHead;"\
+ "					IEntity bluHead;"\
  "					"\
  "					bluHead = GetGame().GetWorld().FindEntityByName(\"bluHead\");"\
  "					EntitySpawnParams spawnParams = new EntitySpawnParams();"\
@@ -32,6 +32,7 @@ SCR_BaseTriggerEntity opZone {
  "					"\
  "					spawnParams.Transform[3] = bluHead.GetOrigin();		"\
  "					GetGame().SpawnEntityPrefab(Resource.Load(\"{72339030F4FF96A1}Prefabs/Systems/Explosions/BombWarhead_Hugerer.et\"), GetGame().GetWorld(), spawnParams);"\
+ "					delete bluHead;"\
  "					"\
  "					pmessageSent = true;"\
  "				"\
