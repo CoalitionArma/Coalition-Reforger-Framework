@@ -139,7 +139,7 @@ $grp SCR_BaseTriggerEntity {
   "		values.Insert(morphine);"\
   "		numberRanges.Insert({176, 190});"\
   "		values.Insert(tourn);"\
-  "		numberRanges.Insert({191, 200});"\
+  "		numberRanges.Insert({191, 191});"\
   "		values.Insert(pmap);"\
   "		numberRanges.Insert({201, 201});"\
   "		values.Insert(saline);"\
