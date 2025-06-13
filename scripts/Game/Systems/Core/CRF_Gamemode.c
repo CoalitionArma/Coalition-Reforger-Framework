@@ -253,7 +253,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 */
 	protected void EnterAAR()
 	{
-		Print("[CRF] EnterAAR()");
+		//Print("[CRF] EnterAAR()");
 		SCR_DataCollectorComponent dataCollector = GetGame().GetDataCollector();
 		dataCollector.OnGameModeEnd(GetEndGameData());
 		array<int> players = {};
@@ -295,7 +295,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Process player statistics data
 		if (!m_PlayerData)
 		{
-			PrintFormat("[CRF] dataCollector: %1", dataCollector);
 			if (!dataCollector)
 			{
 				Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
@@ -303,7 +302,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			}
 	
 			m_PlayerData = dataCollector.GetPlayerData(player, false);
-			PrintFormat("[CRF] m_PlayerData: %1", m_PlayerData);
 	
 			// If player data isn't available yet, register for notification when it arrives
 			if (!m_PlayerData)

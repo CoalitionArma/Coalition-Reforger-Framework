@@ -5,7 +5,7 @@ modded class SCR_DataCollectorComponent
 {
 	override void OnPlayerAuditSuccess(int playerId)
 	{
-		Print("[CRF] Player with id " + playerId + " was auditted succesfully and admitted on the Data Collector");
+		//Print("[CRF] Player with id " + playerId + " was auditted succesfully and admitted on the Data Collector");
 		//We create the player's PlayerData here
 		GetPlayerData(playerId);
 
