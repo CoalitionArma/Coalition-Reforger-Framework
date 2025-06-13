@@ -1,0 +1,40 @@
+Vehicle : "{6E9142CD2471741C}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{65990AF3595054A4}" {
+     SourceMaterial "Ural_Body"
+     AssignedMaterial "{0ABA717F21E466CE}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_FIA.emat"
+    }
+    MaterialAssignClass "{65990AF3595054D6}" {
+     SourceMaterial "Ural_Details"
+     AssignedMaterial "{C798CD16F802F339}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Details_FIA.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_Ural4320_Engineer_Name"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    m_Image "{A29FE3E781043C05}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_engineer_FIA.edds"
+    m_sFaction "FIA"
+    m_aAutoLabels {
+     12 122 54
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "INDFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo EngineerBox {
+     Prefab "{FB864C43CAA9C33C}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_FIA_engineer_box.et"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,40 @@
+Vehicle : "{EC657C9B3C73E192}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo_MERDC.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Arsenal_Name"
+    Description "#AR-EditableEntity_ArsenalTruck_Description"
+    Icon "{992690F7B5CBE7D0}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Arsenal_Truck.edds"
+    m_Image "{3030F36609E2CA22}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_arsenal_MERDC.edds"
+    m_aAutoLabels +{
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo AmmoBox {
+     Prefab "{CE15E5F69BA814FC}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_MERDC_arsenal_box.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   additionalActions {
+    SCR_OpenVehicleStorageAction "{65990AF0D338193D}" {
+     ParentContextList {
+      "door_rear"
+     }
+     UIInfo UIInfo "{65990AF0D3381939}" {
+      Name "#AR-Inventory_OpenTrunk"
+     }
+     m_bShowInside 0
+    }
+   }
+  }
+ }
+}

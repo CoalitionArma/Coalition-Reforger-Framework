@@ -30,12 +30,11 @@ $grp SCR_FactionControlTriggerEntity {
   "	"\
   "	void spawnthings()"\
   "	{"\
-  "		spawnAmmo = GetGame().GetWorld().FindEntityByName(\"weaponsCache3\");"\
   "		"\
   "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
   "		spawnParams.TransformMode = ETransformMode.WORLD;"\
   "				"\
-  "		spawnParams.Transform[3] = spawnAmmo.GetOrigin();		"\
+  "		spawnParams.Transform[3] = this.GetOrigin();		"\
   "		GetGame().SpawnEntityPrefab(Resource.Load(ammo),GetGame().GetWorld(),spawnParams);"\
   "	}"
   TriggerShapeType Sphere
@@ -67,12 +66,11 @@ $grp SCR_FactionControlTriggerEntity {
   "	"\
   "	void spawnthings()"\
   "	{"\
-  "		spawnAmmo = GetGame().GetWorld().FindEntityByName(\"weaponsCache2\");"\
   "		"\
   "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
   "		spawnParams.TransformMode = ETransformMode.WORLD;"\
   "				"\
-  "		spawnParams.Transform[3] = spawnAmmo.GetOrigin();		"\
+  "		spawnParams.Transform[3] = this.GetOrigin();		"\
   "		GetGame().SpawnEntityPrefab(Resource.Load(ammo),GetGame().GetWorld(),spawnParams);"\
   "	}"
   TriggerShapeType Sphere
@@ -95,23 +93,5 @@ $grp SCR_FactionControlTriggerEntity {
   m_sOwnerFactionKey "INDFOR"
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
- }
-}
-$grp PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
- {
-  coords 323.774 40 3184.835
-  m_MarkerColor 0 0 0 1
-  m_sDescription "Capture FOB Thunderbolt"
-  m_aVisibleForFactions {
-   "INDFOR"
-  }
- }
- {
-  coords 323.692 40 3183.99
-  m_MarkerColor 0 0 0 1
-  m_sDescription "Defend FOB Thunderbolt"
-  m_aVisibleForFactions {
-   "BLUFOR"
-  }
  }
 }

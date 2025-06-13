@@ -1,0 +1,70 @@
+Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  RigidBody "{51DAA09FECF52BBF}" {
+   Mass 11402
+   CenterOfMass 0 0.2 -1.4
+   LinearDamping 0.011
+   AngularDamping 0.011
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Ammo_Name"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    IconSetName ""
+    m_Image "{4C3B89AE70636D52}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_ammo.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels + {
+     27 280 210
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 380
+     }
+     SCR_EntityBudgetValue "{65990AF0D50CCBDB}" {
+      m_BudgetType RANK_CORPORAL
+      m_Value 2
+     }
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   Attributes SCR_ItemAttributeCollection "{5916C580F04BA310}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5916C580F32A682A}" {
+    }
+   }
+   MaxCumulativeVolume 1000000
+   MaxItemSize 40 40 40
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo AmmoBox {
+     MergePhysics 1
+     Prefab "{402274CE2FB0720D}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_ammo_box.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo AmmoDecal {
+     Prefab "{DEF0930DED57D4B5}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_ammo_decal.et"
+     InheritParentSkeleton 1
+     RegisterDamage 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   additionalActions {
+    SCR_OpenVehicleStorageAction "{5E58A8A3F402DDF4}" {
+    }
+   }
+  }
+ }
+}

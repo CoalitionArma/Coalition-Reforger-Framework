@@ -1,0 +1,46 @@
+SCR_MapEntity MapEntity_Serhiivka1 : "{79BFA809DDFAAEF6}Prefabs/World/Game/Serhiivka/MapEntity_Serhiivka.et" {
+ coords 3641.964 151.531 5813.967
+}
+SCR_AIWorld : "{1B639CA56FCAC6EC}Prefabs/AI/SCR_AIWorld_Serhiivka.et" {
+ coords 3619.235 145.234 5716.012
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 3645.675 148.351 5723.481
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{659918C0B0562523}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{659918C0B684A388}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{659918C0B6CB0093}" {
+        m_sCallsign "1-5 (MMG)"
+       }
+       SCR_CallsignInfo "{659918C0B61A0BD9}" {
+        m_sCallsign "IFV"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

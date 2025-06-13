@@ -1,0 +1,100 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  SCR_VehicleSoundComponent "{55C2E66AD4EF2CA6}" {
+   SoundPoints {
+    SoundPointInfo MHQ_Deployment {
+     Offset 0 2.1233 -2.5594
+    }
+   }
+  }
+  BaseRadioComponent "{51EAE036CCD0A08E}" {
+   Transceivers {
+    RelayTransceiver "{65990AF352798B6D}" {
+     "Transmitting Range" 2000
+    }
+   }
+  }
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   LODFactors {
+    4 1 0.5 0.1 0.1
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_Ural4320_Comms_Name"
+    Icon "{69691B5E759C0362}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck_Command.edds"
+    m_Image "{50433C12B67E23CB}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_command.edds"
+    m_sFaction "USSR"
+    m_aAuthoredLabels + {
+     35 280 210
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 420
+     }
+     SCR_EntityBudgetValue "{65990AF352798C9D}" {
+      m_BudgetType RANK_SERGEANT
+      m_Value 3
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   MaxCumulativeVolume 100000
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "OPFOR"
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{50E6E6F81354B90F}" {
+       InfoDisplays {
+        SCR_AnalogGaugeMultiSignal "{50E6F12BB4D36587}" {
+         m_fValueMax 300
+         m_fSectionEveryNthValue 150
+        }
+        SCR_FuelTankInfo "{5A76D3889E3461FF}" {
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo TireHolder {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo Radio {
+     MergePhysics 1
+     Prefab "{D9C7B82F567BA500}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_combox.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo Arsenal {
+     Prefab "{8A239DEA19509B1B}Prefabs/Vehicles/Core/VirtualSlots/Radio_VirtualArsenalSlot.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{60D889C6E33B775B}" {
+     Position PointInfo "{60D88999DF1EB09C}" {
+      Offset 0 1.8 -0.5
+     }
+    }
+   }
+  }
+ }
+ coords 64 0 64
+ m_eVehicleType COMM_TRUCK
+}

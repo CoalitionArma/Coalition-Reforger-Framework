@@ -1,0 +1,34 @@
+$grp GenericEntity {
+ bluHead {
+  components {
+   MeshObject "{65954A21A64AC87C}" {
+    Object "{45A8E93EFAF35626}Assets/Vehicles/Tracked/M1A1/m1a2_abrams_turret.xob"
+   }
+  }
+  coords 9050.563 365.772 11011.817
+  angleY -63.546
+  scale 10
+ }
+ opHead {
+  components {
+   MeshObject "{65954A2182AA1EA3}" {
+    Object "{4E627F95B24AF26C}Assets/Vehicles/Tracked/T-72A/t-72a_turret.xob"
+   }
+  }
+  coords 7787.493 373.154 11703.473
+  angleY 118.858
+  scale 15
+ }
+}
+$grp GenericEntity : "{0023F898C0FF18AA}Prefabs/Characters/Basebody/CharacterBasebody.et" {
+ {
+  coords 7785.732 253.009 11703.698
+  angleY 119.638
+  scale 100
+ }
+ {
+  coords 9045.305 241.47 11015.906
+  angleY -60.598
+  scale 100
+ }
+}

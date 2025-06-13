@@ -1,0 +1,88 @@
+Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Fuel_Name"
+    Description "#AR-EditableEntity_SupportStationSystem_Fuel_Description"
+    Icon "{23EE5CFFB9D43382}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck_Fuel.edds"
+    IconSetName ""
+    m_Image "{1506630FF32CAA58}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_tanker.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels + {
+     23 280
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 160
+     }
+    }
+   }
+  }
+  SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+   m_fFuelConsumption 25
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     m_fInitialFuelTankState 306
+     m_iFuelLeakSpeed 0
+    }
+   }
+  }
+  SCR_ResourceComponent "{65990AF04283E6C0}" {
+   m_aConsumers {
+    SCR_ResourceConsumer "{5DB8993B0366B26B}" : "{4126DC9D9F44E513}Configs/Resources/Supplies/Consumers/Consumer_VehicleLoad.conf" {
+     m_fResourceRange 12
+    }
+    SCR_ResourceConsumer "{5DB8993B03A066A2}" : "{3FF0B8C036F14239}Configs/Resources/Supplies/Consumers/Consumer_VehicleUnload.conf" {
+     m_fResourceRange 12
+    }
+    SCR_ResourceConsumer "{5E4ECC57D4C9901B}" : "{2AAF7114BB83B5E8}Configs/Resources/Supplies/Consumers/Generic/Consumer_Vehicle.conf" {
+    }
+   }
+   m_aGenerators {
+    SCR_ResourceGenerator "{5DB8993B05D04F60}" : "{48782547A13061E2}Configs/Resources/Supplies/Generators/Generator_VehicleLoad.conf" {
+    }
+    SCR_ResourceGenerator "{5DB8993B04B1456D}" : "{F8496BD9E1CE43B3}Configs/Resources/Supplies/Generators/Generator_VehicleUnload.conf" {
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   MultiSlots {
+    MultiSlotConfiguration "{5A60CECA66163838}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+     }
+    }
+    MultiSlotConfiguration "{65990AF04283E6EF}" {
+     SlotTemplate InventoryStorageSlot FuelCanister {
+      Prefab "{12D5AD21E383B768}Prefabs/Items/Fuel/Jerrycan_01/Jerrycan_01_item.et"
+     }
+     NumSlots 2
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Tank {
+     MergePhysics 1
+     Prefab "{57F0F8355127D262}Prefabs/Vehicles/Wheeled/M923A1/M923A1_fuel_tank.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo Arsenal {
+     Prefab "{FC2D5D9BB8DE3EA5}Prefabs/Vehicles/Core/VirtualSlots/Fuel_VirtualArsenalSlot.et"
+    }
+   }
+  }
+ }
+ m_eVehicleType FUEL_TRUCK
+}

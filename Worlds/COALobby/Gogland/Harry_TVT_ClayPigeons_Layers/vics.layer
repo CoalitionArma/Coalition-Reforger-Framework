@@ -79,21 +79,21 @@ $grp SCR_VehicleSpawn {
  {
   coords 7458.302 17.858 3158.891
   angleY 89.443
-  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  m_rnPrefab "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 7032.758 100.716 3950.067
   angleY -15.194
-  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  m_rnPrefab "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 7035.702 100.716 3939.225
   angleY -15.194
-  m_rnPrefab "{767D49C35F87DC1A}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_randomized.et"
+  m_rnPrefab "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
   respawnDelay 10000
   firstSpawn 1
  }

@@ -1,0 +1,71 @@
+Vehicle : "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{65990AF3458AD492}" {
+     SourceMaterial "Ural_Body"
+     AssignedMaterial "{0ABA717F21E466CE}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_FIA.emat"
+    }
+    MaterialAssignClass "{65990AF3458AD482}" {
+     SourceMaterial "Ural_Details"
+     AssignedMaterial "{C798CD16F802F339}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Details_FIA.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{65990AF3458AD4B9}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_r01 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{59BA9CCC7AFDE010}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+    }
+    CargoCompartmentSlot Passenger_m01 {
+     m_DefaultOccupantData SCR_DefaultOccupantData "{59BA9CCC78C46847}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{7D1C38DE1BE2AF73}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_FIA_tanker.edds"
+    m_sFaction "FIA"
+    m_aAutoLabels {
+     12 122 54
+    }
+   }
+  }
+  SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+   m_fFuelConsumption 25
+  }
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     MaxFuel 306
+     m_fInitialFuelTankState 306
+     m_iFuelLeakSpeed 0
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "INDFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Tank {
+     Prefab "{262E8E2506FF681D}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/FIA/Ural4320_FIA_fuel_tank.et"
+    }
+    RegisteringComponentSlotInfo FIA_CoatOfArms_decal {
+     Prefab "{DA7286CAAB5338C5}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/FIA/Ural4320_FIA_CoatOfArms_decal.et"
+     InheritParentSkeleton 1
+    }
+   }
+  }
+ }
+}
