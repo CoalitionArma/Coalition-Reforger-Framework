@@ -112,7 +112,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			CreateSpawnPointMarker(respawnPointComponent.m_sRespawnPointName, worldPos);
 			
 			// Add option to menu and store the component with it
-			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName, respawnPointComponent);
+			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName);
 		}
 	}
 	
@@ -160,12 +160,12 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		if (active)
 		{
 			// Add the option to respawn selection and add the marker to the map
-			m_wSpawnListBox.AddItem(respawnComponent.m_sRespawnPointName, respawnComponent);
+			m_wSpawnListBox.AddItem(respawnComponent.m_sRespawnPointName);
 			CreateSpawnPointMarker(respawnComponent.m_sRespawnPointName, worldPos);
 		}
 		else
 		{
-			int index = m_wSpawnListBox.FindItemWithData(respawnComponent);
+			int index = CRF_RespawnManager.GetInstance().m_RespawnPointsRplID.Find(rplID);
 			m_wSpawnListBox.RemoveItem(index);
 			RemoveSpawnPointMarker(respawnComponent.m_sRespawnPointName, worldPos);
 			
@@ -229,10 +229,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		// Remove Map Markers
 		RemoveAllSpawnPointMarker();
-		
-		// Clear up menu reference
-		if (m_wSpawnListBox)
-			m_wSpawnListBox.Clear();
 		
 		// Close the map if open
 		if (m_MapEntity)
@@ -476,7 +472,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 * @param Nickname of the respawn point
 	 * @param World position of the respawn point
 	 */
-	protected void CreateSpawnPointMarker(string spawnName, vector worldPos)
+	protected void CreateSpawnPointMarker(string name, vector worldPos)
 	{
 		// Format the string for scripted markers
 		string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
@@ -489,13 +485,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		gameModePlayerComponent.AddScriptedMarker("Static Marker",
 		 worldPosFormatted,
 		 1,
-		 spawnName,
-		 "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds",
+		 name,
+		 "{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds",
 		 50,
 		 ARGB(255, 0, 0, 225));
 		
 		// Track marker for deletion later
-		m_MapMarkers.Insert(spawnName, worldPos);
+		m_MapMarkers.Insert(name, worldPos);
 		
 		// Refresh the markers on the map
 		MapMarkersUIRefresh();
@@ -506,7 +502,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 * @param Nickname of the respawn point
 	 * @param World position of the respawn point
 	 */
-	protected void RemoveSpawnPointMarker(string spawnName, vector worldPos)
+	protected void RemoveSpawnPointMarker(string name, vector worldPos)
 	{
 		// Format the string for scripted markers
 		string worldPosFormatted = string.Format("%1 %2 %3", worldPos[0], worldPos[1], worldPos[2]);
@@ -519,13 +515,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		gameModePlayerComponent.RemoveScriptedMarker("Static Marker",
 		worldPosFormatted,
 		 1,
-		 spawnName,
-		 "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds",
+		 name,
+		 "{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds",
 		 50,
 		 ARGB(255, 0, 0, 225));
 		
 		// Untrack marker
-		m_MapMarkers.Remove(spawnName);
+		m_MapMarkers.Remove(name);
 		
 		MapMarkersUIRefresh();
 	}	
