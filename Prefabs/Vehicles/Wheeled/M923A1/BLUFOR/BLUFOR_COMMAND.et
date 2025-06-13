@@ -1,0 +1,81 @@
+Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_VehicleSoundComponent "{55C2E66AD4EF2CA6}" {
+   SoundPoints {
+    SoundPointInfo MHQ_Deployment {
+     Offset 0 2.2181 -3.26
+    }
+   }
+  }
+  BaseRadioComponent "{51EAE034CD7B7A2C}" {
+   Transceivers {
+    RelayTransceiver "{65990AF03C9AB740}" {
+     "Transmitting Range" 2000
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M934A1_Name"
+    Icon "{69691B5E759C0362}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck_Command.edds"
+    IconSetName ""
+    m_Image "{ADF5342179CB2029}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_command.edds"
+    m_sFaction "BLUFOR"
+    m_aAuthoredLabels + {
+     35 280 210
+    }
+    m_aAutoLabels {
+     51870 122 54
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 420
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   Attributes SCR_ItemAttributeCollection "{5916C580F04BA310}" {
+    CustomAttributes {
+     PreviewRenderAttributes "{5938C606F80AF9E2}" {
+      CameraOffset -1 -1.75 0
+     }
+    }
+   }
+   MaxCumulativeVolume 100000
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Exhaust {
+     Prefab "{F6CC3B71325604A9}Prefabs/Vehicles/Wheeled/M923A1/VehParts/Exhaust/M923A1_exhaust_short.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Radio {
+     MergePhysics 1
+     Prefab "{DCE16D92C350D64F}Prefabs/Vehicles/Wheeled/M923A1/M923A1_combox.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo Arsenal {
+     Prefab "{8A239DEA19509B1B}Prefabs/Vehicles/Core/VirtualSlots/Radio_VirtualArsenalSlot.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{60D889C6E33B775B}" {
+     Radius 6
+    }
+   }
+  }
+ }
+ coords 64 0 64
+ m_eVehicleType COMM_TRUCK
+}

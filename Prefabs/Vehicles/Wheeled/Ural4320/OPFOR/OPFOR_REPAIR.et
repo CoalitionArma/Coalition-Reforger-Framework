@@ -1,0 +1,101 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  BaseRadioComponent "{51EAE036CCD0A08E}" {
+   Transceivers {
+    RelayTransceiver "{65990AF37B67AA81}" {
+     "Transmitting Range" 2000
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_Ural4320_Repair_Name"
+    Description "#AR-EditableEntity_SupportStationSystem_Repair_Description"
+    Icon "{B2F6F389EB78D030}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Repair_Truck.edds"
+    m_Image "{9136012CA0383A48}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_repair.edds"
+    m_sFaction "OPFOR"
+    m_aAuthoredLabels + {
+     39 210 291
+    }
+    m_aAutoLabels {
+     51871 122 54
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 175
+     }
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   Attributes SCR_ItemAttributeCollection "{5916C58172622508}" {
+    CustomAttributes {
+     PreviewRenderAttributes "{5916C5816492028E}" {
+      CameraOffset -1 -0.1 0
+     }
+    }
+   }
+   MaxCumulativeVolume 100000
+   MultiSlots {
+    MultiSlotConfiguration "{5A60D38EDB3709A9}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+     }
+    }
+    MultiSlotConfiguration "{65990AF37B67AAA1}" {
+     SlotTemplate InventoryStorageSlot repairkit {
+      Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+     }
+     NumSlots 4
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "OPFOR"
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{50E6E6F81354B90F}" {
+       InfoDisplays {
+        SCR_AnalogGaugeMultiSignal "{50E6F12BB4D36587}" {
+         m_fValueMax 300
+         m_fSectionEveryNthValue 150
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo TireHolder {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo RepairBox {
+     MergePhysics 1
+     Prefab "{2F088A1CDD3FB2F1}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_repair_box.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo RepairDecal {
+     Prefab "{D58259D66FC91651}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_repair_decal.et"
+     InheritParentSkeleton 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Arsenal {
+     Prefab "{FC2D5D9BB8DE3EA6}Prefabs/Vehicles/Core/VirtualSlots/Repair_VirtualArsenalSlot.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+ }
+ coords 1203.226 51 1370.979
+ m_eVehicleType COMM_TRUCK
+}

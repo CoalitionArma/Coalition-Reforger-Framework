@@ -6,8 +6,41 @@ SCR_AIWorld : "{1B639CA56FCAC6EC}Prefabs/AI/SCR_AIWorld_Serhiivka.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 3645.675 148.351 5723.481
+ m_iTimeLimitMinutes 75
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "This is Rush, Attackers must destroy the objectives in zone 1 before moving onto zone 2 ect"\
+   ""\
+   "BLUFOR Composition: Mechanized Platoon"\
+   "BLUFOR Assets: 1x Bradley"\
+   ""\
+   "OPFOR Composition: Mechanized"\
+   "OPFOR Assets: 2x BMP3"\
+   ""\
+   "Time: 75 minutes"\
+   ""\
+   "Weather: Day"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Your Bradley crew has one extra vehicle, respawns are done after each zone is cleared"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Each of your BMP crews get 1 extra vehicle."\
+   "Respawns are done after each zone is cleared"
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "OPF"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "BLU"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{FB7FBB55A74F3115}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_LAT.conf"
+ }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "659A2D43335EA5E0" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -36,6 +69,54 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{659918C0B61A0BD9}" {
         m_sCallsign "IFV"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "PLT 1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{659A2D4CDB5A038B}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{659A2D4CD8AB561B}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{659A2D4CD8DBC2A3}" {
+        m_sCallsign "1-4 (MAT)"
+       }
+       SCR_CallsignInfo "{659A2D4CD800DAA9}" {
+        m_sCallsign "PLT 2"
+       }
+       SCR_CallsignInfo "{659A2D4CD82B92C3}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{659A2D4CD84A834A}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{659A2D4CD86DB1A6}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{659A2D4CD98F0F44}" {
+        m_sCallsign "2-4 (MAT)"
+       }
+       SCR_CallsignInfo "{659A2D4CD9D7747B}" {
+        m_sCallsign "IFV 1"
+       }
+       SCR_CallsignInfo "{659A2D4CD901F408}" {
+        m_sCallsign "IFV 2"
        }
       }
      }

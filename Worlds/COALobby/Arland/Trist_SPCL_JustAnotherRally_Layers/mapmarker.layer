@@ -1,0 +1,577 @@
+$grp GenericEntity : "{4A8829F6DD2162F7}Prefabs/Structures/Signs/Warnings/SignAheadOnly_01.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5496C1EF00137501}" {
+    Enabled 0
+   }
+  }
+  coords 1653.26 23.866 3380.338
+  angleX 2.404
+  angleY 155.152
+  angleZ -92.618
+  scale 18.17
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5496C1EF00137501}" {
+    Enabled 0
+   }
+  }
+  coords 3022.799 54.268 2373.61
+  angleX 1.352
+  angleY -71.334
+  angleZ -76.683
+  scale 15.01
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5496C1EF00137501}" {
+    Enabled 0
+   }
+  }
+  coords 2733.346 86.428 1603.978
+  angleX 3.246
+  angleY -15.41
+  angleZ 89.055
+  scale 19.063
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5496C1EF00137501}" {
+    Enabled 0
+   }
+  }
+  coords 2826.351 77.577 1642.68
+  angleX 6.838
+  angleY -103.866
+  angleZ -85.279
+  scale 21.314
+ }
+}
+$grp CRF_ManualMarker : "{D4F0DA86DB75A76B}PrefabsEditable/Markers/RallyTurnMarker.et" {
+ dot {
+  coords 855.367 39 2620.99
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ {
+  coords 691.784 41.455 2581.913
+  angleY 75.062
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "ambush-2"
+  m_sDescription "Turn 8"
+ }
+ dot2 {
+  coords 1016.697 39 2660.398
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot3 {
+  coords 1164.826 39 2696.582
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot4 {
+  coords 1148.75 39 2762.393
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot5 {
+  coords 1134.686 39 2819.969
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot6 {
+  coords 1062.17 39 2802.255
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot7 {
+  coords 984.673 39 2783.325
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot8 {
+  coords 955.117 39 2826.696
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot9 {
+  coords 917.035 39 2874.173
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot10 {
+  coords 866.747 39 2841.616
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot11 {
+  coords 812.242 39 2804.591
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot12 {
+  coords 852.803 39 2741.985
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ straightaway {
+  coords 793.119 41.455 2606.838
+  angleY 75.062
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 1"
+ }
+ straightaway2 {
+  coords 1085.794 41.455 2404.541
+  angleY 145.147
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 2"
+ }
+ dot13 {
+  coords 888.332 39 2686.742
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot14 {
+  coords 980.785 39 2557.174
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot15 {
+  coords 1256.023 39 2159.328
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot16 {
+  coords 1302.31 39 2100.329
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot17 {
+  coords 1352.759 39 2132.292
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot18 {
+  coords 1396.284 39 2161.575
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot19 {
+  coords 1361.93 39 2220.153
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ straightaway3 {
+  coords 1272.789 41.455 2348.285
+  angleY -34.853
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 3"
+ }
+ straightaway4 {
+  coords 1329.032 41.455 2662.164
+  angleY 76.436
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 4"
+ }
+ straightaway5 {
+  coords 1604.764 41.455 2837.846
+  angleY 76.436
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 5"
+ }
+ straightaway6 {
+  coords 1590.118 41.455 2901.47
+  angleY -103.564
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 6"
+ }
+ dot20 {
+  coords 1193.877 39 2455.041
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot21 {
+  coords 1144.97 39 2494.951
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot22 {
+  coords 1119.881 39 2550.216
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot23 {
+  coords 1172.939 39 2595.094
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot24 {
+  coords 1210.833 39 2618.167
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot25 {
+  coords 1503.464 39 2709.234
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot26 {
+  coords 1533.707 39 2717.687
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot27 {
+  coords 1527.237 39 2747.222
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot28 {
+  coords 1518.092 39 2779.177
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot29 {
+  coords 1482.711 39 2772.575
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot30 {
+  coords 1394.656 39 2749.687
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot31 {
+  coords 1348.078 39 2738.398
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot32 {
+  coords 1345.313 39 2754.409
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot33 {
+  coords 1341.987 39 2770.406
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot34 {
+  coords 1395.534 39 2785.511
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot35 {
+  coords 1445.348 39 2799.336
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot36 {
+  coords 1493.658 39 2810.73
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot37 {
+  coords 1719.089 39 2869.22
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot38 {
+  coords 1732.232 39 2891.35
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot39 {
+  coords 1726.22 39 2922.505
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot40 {
+  coords 1692.399 39 2928.96
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot41 {
+  coords 1480.245 39 2879.164
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot42 {
+  coords 1417.895 39 2866.385
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot43 {
+  coords 1310.682 39 2838.971
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot44 {
+  coords 1305.317 39 2863.943
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot45 {
+  coords 1301.806 39 2890.999
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot46 {
+  coords 1337.202 39 2899.645
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot47 {
+  coords 1390.03 39 2912.549
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot48 {
+  coords 1435.06 39 2920.468
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot49 {
+  coords 1485.196 39 2935.294
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ straightaway7 {
+  coords 1517.453 41.455 2965.369
+  angleY 27.436
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 7"
+ }
+ straightaway8 {
+  coords 1680.682 41.455 3187.397
+  angleY -32.799
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 8"
+ }
+ straightaway9 {
+  coords 1889.149 41.455 3455.448
+  angleY 82.261
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 9"
+ }
+ straightaway10 {
+  coords 2338.475 41.455 3266.662
+  angleY 106.478
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 10"
+ }
+ dot50 {
+  coords 2137.363 12.325 3300.764
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot51 {
+  coords 2146.164 12.325 3272.509
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot52 {
+  coords 2164.452 12.325 3253.032
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot53 {
+  coords 2196.496 12.325 3255.113
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot54 {
+  coords 2235.993 12.325 3267.793
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot55 {
+  coords 1369.372 39 2855.268
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ dot57 {
+  coords 1441.625 39 2761.161
+  angleY -13.727
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "dot"
+  m_sDescription "Track"
+ }
+ straightaway11 {
+  coords 2789.318 32.09 3170.665
+  angleY 79.833
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 11"
+ }
+ straightaway12 {
+  coords 2930.569 28.051 3012.497
+  angleY 119.601
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 12"
+ }
+ straightaway13 {
+  coords 3159.309 41.455 2777.387
+  angleY -151.63
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 13"
+ }
+ straightaway14 {
+  coords 2947.861 54.529 2280.2
+  angleY -134.266
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight14"
+ }
+ straightaway15 {
+  coords 2667.749 79.643 1848.992
+  angleY -171.939
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 15"
+ }
+ straightaway16 {
+  coords 2818.677 79.643 1630.451
+  angleY 146.456
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 16"
+ }
+ straightaway17 {
+  coords 3061.001 51.897 1488.075
+  angleY 140.111
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "follow-and-support-2"
+  m_sDescription "Straight 17"
+ }
+ Finish {
+  coords 3172.272 7.559 1159.073
+  angleY 55.565
+  m_MarkerColor 0 0.12 0.483 1
+  m_sQuadName "flag-2"
+  m_sDescription "Finish"
+ }
+}

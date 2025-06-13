@@ -62,7 +62,7 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
                DefaultFormation "Row"
               }
              }
-             coords -26.762 0.807 11.008
+             coords -13.394 0.807 10.313
              angleY 92.974
              {
               SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
@@ -71,7 +71,7 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
                  DefaultFormation "Row"
                 }
                }
-               coords -26.707 -2.899 35.713
+               coords -24.774 -2.899 22.888
                angleY -8.573
               }
              }
@@ -87,4 +87,7 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
    }
   }
  }
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 3625.861 151.193 5807.237
 }

@@ -71,7 +71,22 @@ $grp SCR_VehicleSpawn {
   m_rnPrefab "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
   respawnDelay 10000
  }
-}
-GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
- coords 3625.861 151.193 5807.237
+ {
+  coords 3631.047 151.729 5823.907
+  angleY -176.55
+  m_rnPrefab "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et"
+  respawnDelay 10000
+ }
+ {
+  coords 3640.33 151.797 5823.345
+  angleY -176.55
+  m_rnPrefab "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et"
+  respawnDelay 10000
+ }
+ {
+  coords 3623.24 151.602 5824.375
+  angleY -176.55
+  m_rnPrefab "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et"
+  respawnDelay 10000
+ }
 }
