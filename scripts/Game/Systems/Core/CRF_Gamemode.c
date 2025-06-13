@@ -245,7 +245,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
 		if (playerControllerComp)
 			playerControllerComp.OpenCurrentStateMenu();
-		
 	}
 	
 	/**
@@ -262,6 +261,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		foreach (int player : players)
 		{
+			// Process player statistics data
+			ProcessStats(dataCollector,player);
+			
 			// Skip disconnected players
 			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
@@ -285,34 +287,37 @@ class CRF_Gamemode : SCR_BaseGameMode
 			HitZone defaultHitZone = damageManager.GetDefaultHitZone();
 			if (defaultHitZone)
 				defaultHitZone.SetHealth(0);
-
-			// Process player statistics data
+		}
+	}
+	
+	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
+	{
+		// Process player statistics data
+		if (!m_PlayerData)
+		{
+			PrintFormat("[CRF] dataCollector: %1", dataCollector);
+			if (!dataCollector)
+			{
+				Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
+				return;
+			}
+	
+			m_PlayerData = dataCollector.GetPlayerData(player, false);
+			PrintFormat("[CRF] m_PlayerData: %1", m_PlayerData);
+	
+			// If player data isn't available yet, register for notification when it arrives
 			if (!m_PlayerData)
 			{
-				PrintFormat("[CRF] dataCollector: %1", dataCollector);
-				if (!dataCollector)
-				{
-					Print("[CRF] CRF_Gamemode SCR_DataCollectorComponent: No data collector was found.", LogLevel.ERROR);
-					return;
-				}
-		
-				m_PlayerData = dataCollector.GetPlayerData(player, false);
-				PrintFormat("[CRF] m_PlayerData: %1", m_PlayerData);
-		
-				// If player data isn't available yet, register for notification when it arrives
-				if (!m_PlayerData)
-				{
-					SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
-						GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
-					);
-					
-					if (communicationComponent)
-						communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
-				}
-				else if (!m_PlayerData.IsDataProgressionReady())
-				{
-					m_PlayerData.CalculateStatsChange();
-				}
+				SCR_DataCollectorCommunicationComponent communicationComponent = SCR_DataCollectorCommunicationComponent.Cast(
+					GetGame().GetPlayerManager().GetPlayerController(player).FindComponent(SCR_DataCollectorCommunicationComponent)
+				);
+				
+				if (communicationComponent)
+					communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+			}
+			else if (!m_PlayerData.IsDataProgressionReady())
+			{
+				m_PlayerData.CalculateStatsChange();
 			}
 		}
 	}
@@ -360,13 +365,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (CRF_DonatorConfig.IsDonator(playerIdentity))
 				m_GamemodeManager.SetPlayerStatus(iPlayerID, "don");
 		}
-	}
-	
-	protected override void OnPlayerAuditFail(int iPlayerID)
-	{
-		super.OnPlayerAuditFail(iPlayerID);
-		
-		Print("[CRF] OnPlayerAuditFail");
 	}
 	
 	
@@ -439,6 +437,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Skip processing on client
 		if (RplSession.Mode() == RplMode.Client)
 			return;
+		
+		// Data collector stuff for stats
+		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
+		SCR_InstigatorContextData inst = new SCR_InstigatorContextData(GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity), entity, killerEntity, instigator);
+		if (inst.GetVictimPlayerID() == 0) // AI
+			dc.OnAIKilledCRF(entity, killerEntity, instigator, inst);
+		else // player
+			dc.OnPlayerKilled(inst);
 
 		// Create instigator context for tracking kill details
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);
@@ -478,7 +484,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 				false, 
 				playerId
 			);
-		} 
+		}
 
 		// Update slot death state so player gets put into spec
 		int slotID = m_SlottingManager.GetCharacterSlotID(entity);

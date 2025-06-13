@@ -1,3 +1,6 @@
+// This class is here so we can unprotect many of the methods and use them in our data collection
+// This is a requirement due to how we spawn players into entities rather than using the base invokers
+// .....I hate it
 modded class SCR_DataCollectorComponent
 {
 	override void OnPlayerAuditSuccess(int playerId)
@@ -27,7 +30,6 @@ modded class SCR_DataCollectorComponent
 	
 	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
 	{
-		Print("[CRF] OnPlayerSpawned");
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnPlayerSpawned(playerId, controlledEntity);
@@ -36,7 +38,6 @@ modded class SCR_DataCollectorComponent
 	
 	override void OnGameModeEnd(SCR_GameModeEndData data)
 	{
-		Print("[CRF] OnGameModeEnd");
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnGameModeEnd();
@@ -96,5 +97,66 @@ modded class SCR_DataCollectorComponent
 
 			communicationComponent.SendData(m_mPlayerData.Get(playerID), factionKeys, factionValues, valuesSize);
 		}
+	}
+	
+	override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		int playerId = instigatorContextData.GetVictimPlayerID();
+		IEntity playerEntity = instigatorContextData.GetVictimEntity();
+		IEntity killerEntity = instigatorContextData.GetKillerEntity();
+		Instigator instigator = instigatorContextData.GetInstigator();
+		
+		foreach (SCR_DataCollectorModule module : m_aModules)
+		{
+			module.OnPlayerKilled(playerId, playerEntity, killerEntity, instigator, instigatorContextData);
+		}
+		
+		if (m_bOptionalKicking)
+			m_OptionalKicking.OnControllableDestroyed(playerEntity, killerEntity, instigator, instigatorContextData);
+	}
+	
+	void OnAIKilledCRF(IEntity AIEntity, IEntity killerEntity, notnull Instigator instigator, notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		foreach (SCR_DataCollectorModule module : m_aModules)
+		{
+			module.OnAIKilled(AIEntity, killerEntity, instigator, instigatorContextData);
+		}
+		
+		if (m_bOptionalKicking)
+			m_OptionalKicking.OnControllableDestroyed(AIEntity, killerEntity, instigator, instigatorContextData);
+	}
+	
+	override void OnPlayerDisconnected(int playerId, KickCauseCode cause, int timeout)
+	{
+		SCR_PlayerData playerDisconnectedData = GetPlayerData(playerId);
+		foreach (SCR_DataCollectorModule module : m_aModules)
+		{
+			module.OnPlayerDisconnected(playerId);
+		}
+
+		playerDisconnectedData.StoreProfile();
+
+		// ADD STATS TO FACTION
+		// Here we add the stats of the individual player who desconnected to the faction
+		// We only do that if the game is not in POSTGAME state, because if it is we already added this player's stats to the faction in the OnGameModeEnd method
+
+		SCR_BaseGameMode gameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());
+		if (gameMode.GetState() != SCR_EGameModeState.POSTGAME)
+		{
+			IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+			SCR_ChimeraCharacter playerChimera = SCR_ChimeraCharacter.Cast(player);
+			if (playerChimera)
+			{
+				Faction faction = playerChimera.GetFaction();
+				if (faction)
+					AddStatsToFaction(faction.GetFactionKey(), playerDisconnectedData.CalculateStatsDifference());
+			}
+		}
+
+		// DONE ADDING STATS TO THE FACTION
+		//We cannot remove this instance of data from the player collector because the event has not been sent yet to the Database for tracking purposes
+		//m_mPlayerData.Remove(playerId);
+
+		//As an alternative, in GetPlayerDataStats we put this instance to be removed after its used in C++
 	}
 }

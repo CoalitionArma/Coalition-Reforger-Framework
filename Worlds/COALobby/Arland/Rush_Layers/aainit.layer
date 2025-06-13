@@ -16,6 +16,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  coords 2916.002 1.379 3377.442
  m_iTimeLimitMinutes 80
+ m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "New game type: RUSH"\
@@ -101,10 +102,10 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position 102.923 0 1052.913
   }
   ShapePoint "{658B29AF5880BAA9}" {
-   Position 604.404 -0 1207.752
+   Position 604.404 0 1207.752
   }
   ShapePoint "{658B29AF5ECB83C8}" {
-   Position 289.216 -0 51.509
+   Position 289.216 0 51.509
   }
   ShapePoint "{658B29AF5353A1B0}" {
    Position -155.191 0 -1265.137
@@ -113,7 +114,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position -639.666 0 -1070.244
   }
   ShapePoint "{658B29AE9ADA105C}" {
-   Position -296.98 -0 -386.259
+   Position -296.98 0 -386.259
   }
   ShapePoint "{658B29AE9F748503}" {
    Position -173.387 0 50.652
@@ -145,13 +146,13 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestart
    Position -108.53 0 -21.138
   }
   ShapePoint "{658B29A8329410EC}" {
-   Position -116.267 -0 5.747
+   Position -116.267 0 5.747
   }
   ShapePoint "{658B29A831CEB81D}" {
    Position -83.804 0 20.454
   }
   ShapePoint "{658B29A8306B4FE5}" {
-   Position -51.75 -0 23.188
+   Position -51.75 0 23.188
   }
   ShapePoint "{658B29A830178AAD}" {
    Position -28.895 0 23.83
