@@ -208,6 +208,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			alreadyCreated = false;
 			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
+			// Run datacollector for stats
+			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
+			dc.OnPlayerSpawned(playerId, playerCharacter);
 		}
 			
 		return playerCharacter;
