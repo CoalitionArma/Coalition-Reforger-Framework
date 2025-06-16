@@ -28,7 +28,7 @@ class CRF_GearScriptContainer
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableGIRadios;
-};
+}
 
 //------------------------------------------------------------------------------------------------
 // MASTER
@@ -51,6 +51,40 @@ class CRF_GearScriptConfig
 	
 	[Attribute()]
 	ref CRF_Custom_Gear m_CustomFactionGear;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(configRoot: true)]
+class CRF_GearScriptRolesConfig
+{		
+	[Attribute()]
+	ref array<ref CRF_RoleConfig> m_RoleConfigs;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(CRF_EGearRole, "m_Role")]
+class CRF_RoleConfig
+{		
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
+	CRF_EGearRole m_Role;
+
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_BluforVariant;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_OpforVariant;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_IndforVariant;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_CivVariant;
+	
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptWeapons))]
+	ref array<CRF_EGearscriptWeapons> m_aWeapons;
+	
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptAdditionalItems))]
+	ref array<CRF_EGearscriptAdditionalItems> m_aAdditionalItems;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -128,7 +162,7 @@ class CRF_Base_Weapon_Class
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_Attachments;
-};
+}
 
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
@@ -136,7 +170,7 @@ class CRF_Weapon_Class : CRF_Base_Weapon_Class
 {	
 	[Attribute()]
 	ref array<ref CRF_Magazine_Class> m_MagazineArray;
-};
+}
 
 //------------------------------------------------------------------------------------------------
 [BaseContainerProps(), SCR_BaseContainerCustomTitleFields({"m_Weapon"}, "%1")]
@@ -256,11 +290,11 @@ class CRF_Default_Gear
 // CLOTHING
 //------------------------------------------------------------------------------------------------
 
-[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(CRF_EClothingType, "m_iClothingType")]
+[BaseContainerProps(), SCR_BaseContainerCustomTitleEnum(CRF_EGearscriptClothing, "m_iClothingType")]
 class CRF_Clothing
 {
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EClothingType))]
-	CRF_EClothingType m_iClothingType;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptClothing))]
+	CRF_EGearscriptClothing m_iClothingType;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ref array<ResourceName> m_ClothingPrefabs;

@@ -204,6 +204,66 @@ class CRF_RoleHelper
 }
 
 //------------------------------------------------------------------------------------
+// Enumeration for gearscript clothing
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptClothing
+{
+	HEADGEAR = 0,
+	SHIRT,
+	ARMOREDVEST,
+	PANTS,
+	BOOTS,
+	BACKPACK,
+	VEST,
+	HANDWEAR,
+	HEAD,
+	EYES,
+	EARS,
+	FACE,
+	NECK,
+	EXTRA1,
+	EXTRA2,
+	WAIST,
+	EXTRA3,
+	EXTRA4,
+}
+
+//------------------------------------------------------------------------------------
+// Enumeration for gearscript weapons
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptWeapons
+{
+	RIFLE,
+	RIFLEUGL,
+	CARBINE,
+	SNIPER,
+	PISTOL,
+	AR,
+	AT,
+	MMG,
+	HMG,
+	MAT,
+	HAT,
+	AA,
+}
+
+//------------------------------------------------------------------------------------
+// Enumeration for additional gearscript items
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptAdditionalItems
+{
+	LEADERSHIP_RADIOS,
+	RTO_RADIOS,
+	LEADERSHIP_BINOS,
+	ASSISTANT_BINOS,
+	ASSISTANT_MAGS,
+	MEDIC_ITEMS,
+}
+
+//------------------------------------------------------------------------------------
 // Enumerations for menus
 //------------------------------------------------------------------------------------
 
@@ -278,32 +338,6 @@ enum CRF_ESlotType
 	REGULAR = 0,
 	LEADERORMEDIC,
 	SPECIALTY,
-}
-
-//------------------------------------------------------------------------------------
-// Enumeration for clothing types
-//------------------------------------------------------------------------------------
-
-enum CRF_EClothingType
-{
-	HEADGEAR = 0,
-	SHIRT,
-	ARMOREDVEST,
-	PANTS,
-	BOOTS,
-	BACKPACK,
-	VEST,
-	HANDWEAR,
-	HEAD,
-	EYES,
-	EARS,
-	FACE,
-	NECK,
-	EXTRA1,
-	EXTRA2,
-	WAIST,
-	EXTRA3,
-	EXTRA4,
 }
 
 //------------------------------------------------------------------------------------

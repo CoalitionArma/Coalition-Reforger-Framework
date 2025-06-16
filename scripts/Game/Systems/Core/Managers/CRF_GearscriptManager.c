@@ -1192,22 +1192,22 @@ class CRF_GearscriptManager : ScriptComponent
 		if (isMagazine)
 		{
 			clothingIDs = {
-				CRF_EClothingType.VEST, 
-				CRF_EClothingType.ARMOREDVEST, 
-				CRF_EClothingType.BACKPACK, 
-				CRF_EClothingType.PANTS, 
-				CRF_EClothingType.SHIRT
+				CRF_EGearscriptClothing.VEST, 
+				CRF_EGearscriptClothing.ARMOREDVEST, 
+				CRF_EGearscriptClothing.BACKPACK, 
+				CRF_EGearscriptClothing.PANTS, 
+				CRF_EGearscriptClothing.SHIRT
 			};
 		}
 		// Non-magazines go in shirt, pants, vest primarily
 		else
 		{
 			clothingIDs = {
-				CRF_EClothingType.SHIRT, 
-				CRF_EClothingType.PANTS, 
-				CRF_EClothingType.VEST, 
-				CRF_EClothingType.ARMOREDVEST, 
-				CRF_EClothingType.BACKPACK
+				CRF_EGearscriptClothing.SHIRT, 
+				CRF_EGearscriptClothing.PANTS, 
+				CRF_EGearscriptClothing.VEST, 
+				CRF_EGearscriptClothing.ARMOREDVEST, 
+				CRF_EGearscriptClothing.BACKPACK
 			};
 		}
 
@@ -1215,9 +1215,9 @@ class CRF_GearscriptManager : ScriptComponent
 		if (isMedical)
 		{
 			clothingIDs = {
-				CRF_EClothingType.BACKPACK, 
-				CRF_EClothingType.VEST, 
-				CRF_EClothingType.ARMOREDVEST
+				CRF_EGearscriptClothing.BACKPACK, 
+				CRF_EGearscriptClothing.VEST, 
+				CRF_EGearscriptClothing.ARMOREDVEST
 			};
 		}
 
@@ -1225,10 +1225,10 @@ class CRF_GearscriptManager : ScriptComponent
 		if (isPistolAmmo || isThrowable)
 		{
 			clothingIDs = {
-				CRF_EClothingType.PANTS, 
-				CRF_EClothingType.VEST, 
-				CRF_EClothingType.ARMOREDVEST, 
-				CRF_EClothingType.BACKPACK
+				CRF_EGearscriptClothing.PANTS, 
+				CRF_EGearscriptClothing.VEST, 
+				CRF_EGearscriptClothing.ARMOREDVEST, 
+				CRF_EGearscriptClothing.BACKPACK
 			};
 		}
 
@@ -1236,11 +1236,11 @@ class CRF_GearscriptManager : ScriptComponent
 		if (isRadio)
 		{
 			clothingIDs = {
-				CRF_EClothingType.PANTS, 
-				CRF_EClothingType.SHIRT, 
-				CRF_EClothingType.VEST, 
-				CRF_EClothingType.ARMOREDVEST, 
-				CRF_EClothingType.BACKPACK
+				CRF_EGearscriptClothing.PANTS, 
+				CRF_EGearscriptClothing.SHIRT, 
+				CRF_EGearscriptClothing.VEST, 
+				CRF_EGearscriptClothing.ARMOREDVEST, 
+				CRF_EGearscriptClothing.BACKPACK
 			};
 		}
 
@@ -1248,9 +1248,9 @@ class CRF_GearscriptManager : ScriptComponent
 		if (isAssistantMagazine)
 		{
 			clothingIDs = {
-				CRF_EClothingType.BACKPACK,
-				CRF_EClothingType.VEST, 
-				CRF_EClothingType.ARMOREDVEST
+				CRF_EGearscriptClothing.BACKPACK,
+				CRF_EGearscriptClothing.VEST, 
+				CRF_EGearscriptClothing.ARMOREDVEST
 			};
 		}
 
@@ -1258,9 +1258,9 @@ class CRF_GearscriptManager : ScriptComponent
 		if (isExplosive)
 		{
 			clothingIDs = {
-				CRF_EClothingType.BACKPACK, 
-				CRF_EClothingType.VEST, 
-				CRF_EClothingType.ARMOREDVEST
+				CRF_EGearscriptClothing.BACKPACK, 
+				CRF_EGearscriptClothing.VEST, 
+				CRF_EGearscriptClothing.ARMOREDVEST
 			};
 		}
 
