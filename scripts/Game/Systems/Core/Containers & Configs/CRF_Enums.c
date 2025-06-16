@@ -250,16 +250,36 @@ enum CRF_EGearscriptWeapons
 }
 
 //------------------------------------------------------------------------------------
+// Enumeration for gearscript magazines
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptMagazines
+{
+	RIFLE_MAG,
+	RIFLEUGL_MAG,
+	CARBINE_MAG,
+	SNIPER_MAG,
+	PISTOL_MAG,
+	AR_MAG,
+	AT_MAG,
+	MMG_MAG,
+	HMG_MAG,
+	MAT_MAG,
+	HAT_MAG,
+	AA_MAG,
+}
+
+//------------------------------------------------------------------------------------
 // Enumeration for additional gearscript items
 //------------------------------------------------------------------------------------
 
-enum CRF_EGearscriptAdditionalItems
+enum CRF_EGearscriptItems
 {
-	LEADERSHIP_RADIOS,
-	RTO_RADIOS,
-	LEADERSHIP_BINOS,
-	ASSISTANT_BINOS,
-	ASSISTANT_MAGS,
+	GI_RADIO,
+	LEADERSHIP_RADIO,
+	RTO_RADIO,
+	ASSISTANT_BINO,
+	LEADERSHIP_BINO,
 	MEDIC_ITEMS,
 }
 

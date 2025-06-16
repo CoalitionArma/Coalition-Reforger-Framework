@@ -83,8 +83,11 @@ class CRF_RoleConfig
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptWeapons))]
 	ref array<CRF_EGearscriptWeapons> m_aWeapons;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptAdditionalItems))]
-	ref array<CRF_EGearscriptAdditionalItems> m_aAdditionalItems;
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptMagazines))]
+	ref array<CRF_EGearscriptMagazines> m_aMagazines;
+	
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptItems))]
+	ref array<CRF_EGearscriptItems> m_aItems;
 }
 
 //------------------------------------------------------------------------------------------------
