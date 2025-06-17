@@ -89,13 +89,13 @@ class CRF_RoleConfig
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_CivVariant;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptWeapons))]
+	[Attribute("", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptWeapons))]
 	ref array<CRF_EGearscriptWeapons> m_aWeapons;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptMagazines))]
+	[Attribute("", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptMagazines))]
 	ref array<CRF_EGearscriptMagazines> m_aMagazines;
 	
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptItems))]
+	[Attribute("", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptItems))]
 	ref array<CRF_EGearscriptItems> m_aItems;
 }
 
