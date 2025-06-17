@@ -169,7 +169,7 @@ class CRF_RoleHelper
 		if (!IsValidGearscriptResource(prefab))
 			return false;
 
-		int role = StringToRole(PrefabToRole(prefab));
+		CRF_EGearRole role = StringToRole(PrefabToRole(prefab));
 
 		return roles.Contains(role);
 	}
@@ -182,7 +182,7 @@ class CRF_RoleHelper
 		if (!IsValidGearscriptResource(prefab))
 			return false;
 
-		int role = StringToRole(PrefabToRole(prefab));
+		CRF_EGearRole role = StringToRole(PrefabToRole(prefab));
 
 		return (role == CRF_EGearRole.TEAM_LEAD);
 	}
@@ -249,6 +249,7 @@ enum CRF_EGearscriptWeapons
 	AA,
 }
 
+
 //------------------------------------------------------------------------------------
 // Enumeration for gearscript magazines
 //------------------------------------------------------------------------------------
@@ -268,6 +269,7 @@ enum CRF_EGearscriptMagazines
 	HAT_MAG,
 	AA_MAG,
 }
+
 
 //------------------------------------------------------------------------------------
 // Enumeration for additional gearscript items
