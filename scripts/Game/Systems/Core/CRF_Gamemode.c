@@ -261,12 +261,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		foreach (int player : players)
 		{
-			// Process player statistics data
-			ProcessStats(dataCollector,player);
-			
 			// Skip disconnected players
 			if (!GetGame().GetPlayerManager().IsPlayerConnected(player))
 				continue;
+			
+			// Process player statistics data
+			ProcessStats(dataCollector,player);
 
 			// Skip players already in spectator
 			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(player)))
@@ -439,10 +439,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Data collector stuff for stats
 		SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
 		SCR_InstigatorContextData inst = new SCR_InstigatorContextData(GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity), entity, killerEntity, instigator);
-		if (inst.GetVictimPlayerID() == 0) // AI
-			dc.OnAIKilledCRF(entity, killerEntity, instigator, inst);
-		else // player
-			dc.OnPlayerKilled(inst);
+		dc.OnPlayerKilled(inst);
 
 		// Create instigator context for tracking kill details
 		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);

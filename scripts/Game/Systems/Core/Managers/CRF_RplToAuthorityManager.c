@@ -393,10 +393,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		GetGame().GetCallqueue().Call(
 			m_GearscriptManager.SetEntityGear, 
 			entity, 
-			entity.GetPrefabData().GetPrefabName()
+			prefab
 		);
 		
-		m_SlottingManager.UpdateSlotResource(m_SlottingManager.GetPlayerSlotID(playerId), prefab);
+		//m_SlottingManager.UpdateSlotResource(m_SlottingManager.GetPlayerSlotID(playerId), prefab);
 
 		if (logAction)
 		{

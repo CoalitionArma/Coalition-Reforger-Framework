@@ -537,6 +537,9 @@ class CRF_SafestartManager : ScriptComponent
 
 			eventHandler.RemoveScriptHandler("OnProjectileShot", this, OnWeaponFired);
 			eventHandler.RemoveScriptHandler("OnGrenadeThrown", this, OnGrenadeThrown);
+			
+			CRF_PolyZoneEffectHandler polyZoneEffectHandler = CRF_PolyZoneEffectHandler.Cast(controlledEntity.FindComponent(CRF_PolyZoneEffectHandler));
+			polyZoneEffectHandler.ClearAllEffects();
 
 			m_mEntitiesWithEHsMap.Set(controlledEntity, false);
 		}

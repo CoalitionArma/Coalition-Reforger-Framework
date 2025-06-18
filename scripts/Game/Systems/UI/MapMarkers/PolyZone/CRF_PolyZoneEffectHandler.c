@@ -50,6 +50,12 @@ class CRF_PolyZoneEffectHandler : ScriptComponent
 			return;
 		}
 	}
+	
+	void ClearAllEffects()
+	{
+		if (!Replication.IsServer()) return;
+		m_mapPolyZoneEffects.Clear();
+	}
 }
 
 

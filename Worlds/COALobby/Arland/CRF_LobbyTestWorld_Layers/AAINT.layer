@@ -31,4 +31,90 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
  coords 1237.725 37.908 2830.09
+ Points {
+  ShapePoint "{659E505EE50F4D29}" {
+   Position -154.59 -0 -371.974
+  }
+  ShapePoint "{659E505EE557F358}" {
+   Position -203.918 -0 -322.349
+  }
+  ShapePoint "{659E505EE5A6DA80}" {
+   Position -223.513 -0 -265.863
+  }
+  ShapePoint "{659E505EE5FC6907}" {
+   Position -227.286 0 -212.25
+  }
+  ShapePoint "{659E505EE63C573B}" {
+   Position -235.532 -0 -160.388
+  }
+  ShapePoint "{659E505EE671C3B1}" {
+   Position -235.46 -0 -100.454
+  }
+  ShapePoint "{659E505EE6B38AD3}" {
+   Position -231.752 -0 -48.234
+  }
+  ShapePoint "{659E505EE708CA1C}" {
+   Position -216.422 -0 1.371
+  }
+  ShapePoint "{659E505EE737CB0D}" {
+   Position -156.126 -0 66.774
+  }
+  ShapePoint "{659E505EE7784437}" {
+   Position -56.73 -0 164.624
+  }
+  ShapePoint "{659E505EE7A1388F}" {
+   Position -12.244 -0 203.595
+  }
+  ShapePoint "{659E505EE7D41D0A}" {
+   Position 55.997 -0 210.039
+  }
+  ShapePoint "{659E505EE00533C0}" {
+   Position 126.742 -0 224.438
+  }
+  ShapePoint "{659E505EE04E73B7}" {
+   Position 198.936 -0 233.324
+  }
+  ShapePoint "{659E505EE077F9B6}" {
+   Position 263.734 -0 193.117
+  }
+  ShapePoint "{659E505EE0BF6A83}" {
+   Position 333.411 -0 190.762
+  }
+  ShapePoint "{659E505EE0E354CF}" {
+   Position 345.147 -0 97.686
+  }
+  ShapePoint "{659E505EE11600C0}" {
+   Position 343.415 -0 1.914
+  }
+  ShapePoint "{659E505EE15AA601}" {
+   Position 352.96 -0 -96.912
+  }
+  ShapePoint "{659E505EE18FA2DE}" {
+   Position 345.737 -0 -147.416
+  }
+  ShapePoint "{659E505EE1B6BF2B}" {
+   Position 304.929 -0 -191.833
+  }
+  ShapePoint "{659E505EE1FA4F42}" {
+   Position 256.573 -0 -227.989
+  }
+  ShapePoint "{659E505EE224E362}" {
+   Position 196.765 -0 -261.561
+  }
+  ShapePoint "{659E505EE26DD1FA}" {
+   Position 116.792 -0 -294.046
+  }
+  ShapePoint "{659E505EE290D41E}" {
+   Position 51.678 -0 -304.977
+  }
+  ShapePoint "{659E505EE2C4A422}" {
+   Position -6.946 -0 -315.735
+  }
+  ShapePoint "{659E505EE30A757D}" {
+   Position -67.884 -0 -345.504
+  }
+  ShapePoint "{659E505EE348E189}" {
+   Position -108.952 0 -365.069
+  }
+ }
 }

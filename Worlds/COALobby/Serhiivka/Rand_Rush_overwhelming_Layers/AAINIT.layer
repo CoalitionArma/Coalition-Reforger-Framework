@@ -12,7 +12,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "This is Rush, Attackers must destroy the objectives in zone 1 before moving onto zone 2 ect"\
    ""\
    "BLUFOR Composition: Mechanized Platoon"\
-   "BLUFOR Assets: 1x Bradley"\
+   "BLUFOR Assets: 1x Stryker"\
    ""\
    "OPFOR Composition: Mechanized"\
    "OPFOR Assets: 2x BMP3"\
@@ -22,7 +22,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Day"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Your Bradley crew has one extra vehicle, respawns are done after each zone is cleared"
+   m_sTextData "Your Stryker crew has one extra vehicle, respawns are done after each zone is cleared"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Each of your BMP crews get 1 extra vehicle."\
@@ -39,6 +39,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{FB7FBB55A74F3115}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_LAT.conf"
  }
+ m_iBLUFORTickets -1
+ m_iOPFORTickets -1
  {
   SCR_FactionManager "659A2D43335EA5E0" {
    ID "632A77473B3CC3A8"

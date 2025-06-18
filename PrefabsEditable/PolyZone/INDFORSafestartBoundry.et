@@ -47,7 +47,7 @@ PolylineShapeEntity {
     "SCR_ChimeraCharacter"
    }
    m_polyZoneEffect CRF_PolyZoneEffectRestricted "{6586537E5441D04B}" {
-    m_fKillTime 15
+    m_fKillTime 10
    }
    m_bReversed 1
    m_bAliveOnly 1
