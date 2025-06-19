@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Clear"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Seize the marked intersection, and hold it for a minimum of 10 minutes until mission end."
+   m_sTextData "Seize the marked intersection, and hold it until the end of the mission."
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTextData "Eliminate Blufor. Once Blufor has captured the intersection, Indfor will receive a respawn wave."
