@@ -76,6 +76,9 @@ class CRF_RoleConfig
 {		
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
 	CRF_EGearRole m_Role;
+	
+	[Attribute("false", UIWidgets.CheckBox)]
+	bool m_bIsAssistant;
 
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_BluforVariant;
