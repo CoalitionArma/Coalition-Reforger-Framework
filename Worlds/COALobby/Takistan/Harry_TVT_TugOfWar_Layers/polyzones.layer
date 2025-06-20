@@ -1,0 +1,110 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 5831.964 100.625 10068.49
+ Points {
+  ShapePoint "{65A0009BFF14418F}" {
+   Position 642.522 189.125 -1700.837
+  }
+  ShapePoint "{65A0009BFFF9A90D}" {
+   Position -293.158 96.255 -2042.293
+  }
+  ShapePoint "{65A0009BC1B27855}" {
+   Position -696.312 184.75 -1829.22
+  }
+  ShapePoint "{65A0009BD0493E71}" {
+   Position -1148.572 84.481 -939
+  }
+  ShapePoint "{65A0009BD6556C4F}" {
+   Position -1652.845 63.744 -277.326
+  }
+  ShapePoint "{65A0009BDA13EDCD}" {
+   Position -640.128 15.003 1165.074
+  }
+  ShapePoint "{65A0009BD9B66477}" {
+   Position 304.492 -4.505 2464.158
+  }
+  ShapePoint "{65A0009BDD60984B}" {
+   Position 933.947 31.366 2703.203
+  }
+  ShapePoint "{65A0009BDDC0BB79}" {
+   Position 1570.657 47.105 2488.217
+  }
+  ShapePoint "{65A0009A22B3EB3C}" {
+   Position 1635.752 75.034 1659.774
+  }
+  ShapePoint "{65A0009A213E93CB}" {
+   Position 1418.604 26.769 522.514
+  }
+  ShapePoint "{65A0009A2B77D8E8}" {
+   Position 1206.354 92.784 -534.397
+  }
+ }
+}
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+ coords 6016.01 99.64 10079.939
+ Points {
+  ShapePoint "{65A0009A1AC10452}" {
+   Position -27.301 21.016 -416.711
+  }
+  ShapePoint "{65A0009A195ADC8C}" {
+   Position -536.458 11.826 -84.054
+  }
+  ShapePoint "{65A0009A1D800A1E}" {
+   Position -703.009 9.676 1078.882
+  }
+  ShapePoint "{65A0009A63317FF5}" {
+   Position -205.96 9.672 1575.933
+  }
+  ShapePoint "{65A0009A6B1A924B}" {
+   Position 210.305 -8.05 1341.997
+  }
+  ShapePoint "{65A0009A6AAA9BB4}" {
+   Position 536.405 -17.504 1516.863
+  }
+  ShapePoint "{65A0009A691711C1}" {
+   Position 750.161 -9.22 1325.624
+  }
+  ShapePoint "{65A0009A71ABC7E0}" {
+   Position 939.396 64.169 439.728
+  }
+  ShapePoint "{65A0009A765013D7}" {
+   Position 798.67 103.49 -364.646
+  }
+ }
+}
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 5652.415 100.694 9932.121
+ angleY 90
+ m_MarkerColor 0 0 0 1
+ m_sDescription "Contested Intersection"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 6914.144 86.389 12203.22
+ Points {
+  ShapePoint "{65A0009A3BB0808C}" {
+   Position -160.896 32.955 476.426
+  }
+  ShapePoint "{65A0009A074FBC57}" {
+   Position 97.929 -27.165 393.343
+  }
+  ShapePoint "{65A0009A3A256027}" {
+   Position 357.827 24.111 309.916
+  }
+  ShapePoint "{65A0009A39B15EF8}" {
+   Position 211.578 71.469 49.097
+  }
+  ShapePoint "{65A0009A3810E395}" {
+   Position 151.335 40.688 -166.654
+  }
+  ShapePoint "{65A0009A38C8E034}" {
+   Position -84.006 -18.558 -142.413
+  }
+  ShapePoint "{65A0009A3F7EE734}" {
+   Position -265.683 10.651 -40.184
+  }
+  ShapePoint "{65A0009A3FF12067}" {
+   Position -230.773 15.537 213.223
+  }
+ }
+}
