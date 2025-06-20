@@ -88,19 +88,28 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     SCR_Faction "{628CDE9209CA3FF9}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
        SCR_CallsignInfo "{58B2B630FDD64B50}" {
-        m_sCallsign "LAT team"
+        m_sCallsign "Cell 2"
        }
        SCR_CallsignInfo "{65A57B14BB538E87}" {
-        m_sCallsign "Vic-1"
+        m_sCallsign "LAT Team"
        }
        SCR_CallsignInfo "{65A57B14BB9A1F63}" {
-        m_sCallsign "Vic-2"
+        m_sCallsign "Vic-1"
        }
        SCR_CallsignInfo "{65A57B14BBDCDE29}" {
-        m_sCallsign "Vic-3"
+        m_sCallsign "Vic-2"
        }
        SCR_CallsignInfo "{65A57B14BA1FC5DC}" {
+        m_sCallsign "Vic-3"
+       }
+       SCR_CallsignInfo "{65A8D25999D8F6D0}" {
         m_sCallsign "Vic-4"
        }
       }
