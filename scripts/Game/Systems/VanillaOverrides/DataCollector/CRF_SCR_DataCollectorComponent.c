@@ -106,6 +106,11 @@ modded class SCR_DataCollectorComponent
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		Instigator instigator = instigatorContextData.GetInstigator();
 		
+		if (instigatorContextData.GetVictimPlayerID() <= 0) {
+			OnAIKilledCRF(playerEntity,killerEntity,instigator,instigatorContextData);
+			return;
+		}
+			
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnPlayerKilled(playerId, playerEntity, killerEntity, instigator, instigatorContextData);

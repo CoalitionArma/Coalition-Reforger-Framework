@@ -49,7 +49,6 @@ PolylineShapeEntity {
     m_fKillTime 25
    }
    m_bReversed 1
-   m_bAliveOnly 1
    m_aFactionKey {
     "SPEC"
    }

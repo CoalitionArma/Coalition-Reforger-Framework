@@ -16,7 +16,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 7661.82 18.506 3844.114
+  coords 6153.244 53.197 2776.68
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache A destroyed\", duration: 10);"\
   "	"
@@ -41,7 +41,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     CollisionVelocityThreshold 10000000
    }
   }
-  coords 7046.6 105.688 3996.16
+  coords 6957.903 101.438 3985.967
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache B destroyed\", duration: 10);"\
   "	"
@@ -66,13 +66,13 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     CollisionVelocityThreshold 100000
    }
   }
-  coords 7469.181 18.905 3192.761
+  coords 6676.265 138.978 2877.439
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache C destroyed\", duration: 10);"\
   "	"
   {
    CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
-    coords 0.528 -0 0.758
+    coords 0.528 0 0.758
     m_MarkerColor 0 0 0 1
     m_sDescription "Cache C"
     m_aVisibleForFactions {

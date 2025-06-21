@@ -1,0 +1,32 @@
+$grp GenericEntity : "{8FDC6AA92A0DFADC}Prefabs/Structures/Walls/Brick/BrickWall_02/dst/Brick_wall_02_2m_dst_01.et" {
+ {
+  coords 1060.148 13.321 9139.543
+  angleY -91.043
+  scale 1.84
+ }
+ {
+  coords 1060.148 8.984 9139.543
+  angleY -91.043
+  scale 1.84
+ }
+ {
+  coords 1090.7 9.272 9140.1
+  angleY -91.043
+  scale 1.84
+ }
+ {
+  coords 1074.156 9.272 9100.651
+  angleY -177.596
+  scale 1.84
+ }
+ {
+  coords 1080.202 13.973 9100.575
+  angleY -177.596
+  scale 1.84
+ }
+ {
+  coords 1067.946 38.94 9148.156
+  angleY -177.596
+  scale 1.84
+ }
+}

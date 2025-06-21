@@ -49,7 +49,6 @@ PolylineShapeEntity {
    m_polyZoneEffect CRF_PolyZoneEffectRestricted "{65865377C721CC92}" {
    }
    m_bReversed 1
-   m_bAliveOnly 1
    m_bHelisNotRestricted 0
    m_aFactionKey {
     "OPFOR" "INDFOR" "CIV" "SPEC"

@@ -20,7 +20,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    }
   }
   CRF_PlayableCharacter "{64E62B619227FC3A}" {
-   m_sName "Trailer"
+   m_sName "Seaman"
    m_bIsPlayable 1
   }
   CharacterWeaponManagerComponent "{5C9CA676383262FD}" {
@@ -36,8 +36,8 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     IconSetName ""
     m_Image "{11112420EEC8576C}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
     m_sFaction "OPFOR"
-    m_aAuthoredLabels {
-     70 2 51871
+    m_aAuthoredLabels + {
+     2 51871
     }
     m_aAutoLabels {
      122 46
