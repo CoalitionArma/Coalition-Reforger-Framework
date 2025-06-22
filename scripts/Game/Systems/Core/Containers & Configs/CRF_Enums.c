@@ -148,10 +148,36 @@ class CRF_RoleHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	static ResourceName RoleToResource(CRF_EGearRole roleInt, FactionKey faction)
+	static ResourceName RoleToResource(CRF_EGearRole roleInt, FactionKey factionKey)
 	{
-		Resource resource = Resource.Load("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + RoleToString(roleInt) + ".et");
-		return resource.GetResource().GetResourceName();
+		ResourceName rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		ResourceName roleResource;
+		
+		CRF_GearScriptRolesConfig rolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));		
+
+		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(roleInt);
+		
+		switch (factionKey)
+		{
+			case "BLUFOR":
+				roleResource = roleConfig.m_BluforVariant;
+				break;
+			
+			case "OPFOR":
+				roleResource = roleConfig.m_OpforVariant;
+				break;
+			
+			case "INDFOR":
+				roleResource = roleConfig.m_IndforVariant;
+				break;
+			
+			case "CIV":
+				roleResource = roleConfig.m_CivVariant;
+				break;
+		}
+		
+		return roleResource;
 	}
 	
 	//------------------------------------------------------------------------------------------------

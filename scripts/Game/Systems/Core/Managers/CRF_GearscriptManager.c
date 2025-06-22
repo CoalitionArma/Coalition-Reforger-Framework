@@ -54,7 +54,7 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param factionKey Faction identifier (BLUFOR, OPFOR, etc.)
 	 * @return ResourceName for the gearscript or empty string if not found
 	 */
-	ResourceName GetGearScriptResource(string factionKey)
+	ResourceName GetGearScriptResource(FactionKey factionKey)
 	{
 		CRF_GearScriptContainer container = GetGearScriptSettings(factionKey);
 		if (!container)
@@ -72,22 +72,32 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param factionKey Faction identifier (BLUFOR, OPFOR, etc.)
 	 * @return The gearscript container or null if not found
 	 */
-	CRF_GearScriptContainer GetGearScriptSettings(string factionKey)
+	CRF_GearScriptContainer GetGearScriptSettings(FactionKey factionKey)
 	{
 		if (!m_Gamemode)
 			return null;
 			
 		CRF_GearScriptContainer gearScriptContainer = null;
 
-		if (factionKey == "BLUFOR")
-			gearScriptContainer = m_Gamemode.m_BLUFORGearScriptSettings;
-		else if (factionKey == "OPFOR")
-			gearScriptContainer = m_Gamemode.m_OPFORGearScriptSettings;
-		else if (factionKey == "INDFOR")
-			gearScriptContainer = m_Gamemode.m_INDFORGearScriptSettings;
-		else if (factionKey == "CIV")
-			gearScriptContainer = m_Gamemode.m_CIVILIANGearScriptSettings;
-
+		switch (factionKey)
+		{
+			case "BLUFOR":
+				gearScriptContainer = m_Gamemode.m_BLUFORGearScriptSettings;
+				break;
+			
+			case "OPFOR":
+				gearScriptContainer = m_Gamemode.m_OPFORGearScriptSettings;
+				break;
+			
+			case "INDFOR":
+				gearScriptContainer = m_Gamemode.m_INDFORGearScriptSettings;
+				break;
+			
+			case "CIV":
+				gearScriptContainer = m_Gamemode.m_CIVILIANGearScriptSettings;
+				break;
+		}
+		
 		return gearScriptContainer;
 	}
 
@@ -103,7 +113,7 @@ class CRF_GearscriptManager : ScriptComponent
 			return;
 
 		// Determine faction from resource name
-		string factionKey = DetermineFactionKey(resourceNameToScan);
+		FactionKey factionKey = DetermineFactionKey(resourceNameToScan);
 		if (factionKey.IsEmpty())
 			return;
 
@@ -135,7 +145,7 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		// Apply gear
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
-		ApplyWeapons(gearConfig, role, factionKey, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		GetGame().GetCallqueue().CallLater(ApplyWeapons, 285, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 	}
 
@@ -145,16 +155,19 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param resourceName Resource name to analyze
 	 * @return Faction key or empty string if not found
 	 */
-	protected string DetermineFactionKey(ResourceName resourceName)
+	protected FactionKey DetermineFactionKey(ResourceName resourceName)
 	{
-		if (resourceName.Contains("BLUFOR"))
-			return "BLUFOR";
-		else if (resourceName.Contains("OPFOR"))
-			return "OPFOR";
-		else if (resourceName.Contains("INDFOR"))
-			return "INDFOR";
-		else if (resourceName.Contains("CIV"))
-			return "CIV";
+		switch (true)
+		{
+			case resourceName.Contains("BLUFOR"):
+				return "BLUFOR";
+			case resourceName.Contains("OPFOR"):
+				return "OPFOR";
+			case resourceName.Contains("INDFOR"):
+				return "INDFOR";
+			case resourceName.Contains("CIV"):
+				return "CIV";
+		};
 			
 		return "";
 	}
@@ -268,13 +281,12 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @brief Apply weapons to entity based on config
 	 * @param gearConfig Gear configuration
 	 * @param role Role identifier
-	 * @param factionKey Faction key
 	 * @param gearScriptSettings Gearscript settings
 	 * @param spawnParams Spawn parameters
 	 * @param inventory Inventory component
 	 * @param inventoryManager Inventory manager component
 	 */
-	protected void ApplyWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, string factionKey, CRF_GearScriptContainer gearScriptSettings,
+	protected void ApplyWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
 		bool customWeaponsSet = ApplyCustomWeapons(gearConfig, role, spawnParams, inventory, inventoryManager);
@@ -375,55 +387,75 @@ class CRF_GearscriptManager : ScriptComponent
 			switch (weaponType)
 			{
 				case CRF_EGearscriptWeapons.RIFLE:
-					weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Rifle);
-					weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					if(gearConfig.m_FactionWeapons.m_Rifle && !gearConfig.m_FactionWeapons.m_Rifle.IsEmpty())
+					{
+						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Rifle);
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					};
 					break;
 				
 				case CRF_EGearscriptWeapons.RIFLEUGL:
-					weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_RifleUGL);
-					weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					if(gearConfig.m_FactionWeapons.m_RifleUGL && !gearConfig.m_FactionWeapons.m_RifleUGL.IsEmpty())
+					{
+						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_RifleUGL);
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					};
 					break;
 				
 				case CRF_EGearscriptWeapons.CARBINE:
-					weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Carbine);
-					weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					if(gearConfig.m_FactionWeapons.m_Carbine && !gearConfig.m_FactionWeapons.m_Carbine.IsEmpty())
+					{
+						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Carbine);
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					};
 					break;
 
 				case CRF_EGearscriptWeapons.PISTOL:
-					weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Pistol);
-					weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					if(gearConfig.m_FactionWeapons.m_Pistol && !gearConfig.m_FactionWeapons.m_Pistol.IsEmpty())
+					{
+						weapon = SelectRandomWeapon(gearConfig.m_FactionWeapons.m_Pistol);
+						weaponsSelected.Insert(weapon); // Need to store the weapon we selected for magazines
+					};
 					break;
 
 				case CRF_EGearscriptWeapons.SNIPER:
-					weapon = gearConfig.m_FactionWeapons.m_Sniper;
+					if(gearConfig.m_FactionWeapons.m_Sniper)
+						weapon = gearConfig.m_FactionWeapons.m_Sniper;
 					break;
 
 				case CRF_EGearscriptWeapons.AR:
-					specWeapon = gearConfig.m_FactionWeapons.m_AR;
+					if(gearConfig.m_FactionWeapons.m_AR)
+						specWeapon = gearConfig.m_FactionWeapons.m_AR;
 					break;
 
 				case CRF_EGearscriptWeapons.MMG:
-					specWeapon = gearConfig.m_FactionWeapons.m_MMG;
+					if(gearConfig.m_FactionWeapons.m_MMG)
+						specWeapon = gearConfig.m_FactionWeapons.m_MMG;
 					break;
 
 				case CRF_EGearscriptWeapons.AT:
-					specWeapon = gearConfig.m_FactionWeapons.m_AT;
+					if(gearConfig.m_FactionWeapons.m_AT)
+						specWeapon = gearConfig.m_FactionWeapons.m_AT;
 					break;
 	
 				case CRF_EGearscriptWeapons.MAT:
-					specWeapon = gearConfig.m_FactionWeapons.m_MAT;
+					if(gearConfig.m_FactionWeapons.m_MAT)
+						specWeapon = gearConfig.m_FactionWeapons.m_MAT;
 					break;
 	
 				case CRF_EGearscriptWeapons.HAT:
-					specWeapon = gearConfig.m_FactionWeapons.m_HAT;
+					if(gearConfig.m_FactionWeapons.m_HAT)
+						specWeapon = gearConfig.m_FactionWeapons.m_HAT;
 					break;
 
 				case CRF_EGearscriptWeapons.AA:
-					specWeapon = gearConfig.m_FactionWeapons.m_AA;
+					if(gearConfig.m_FactionWeapons.m_AA)
+						specWeapon = gearConfig.m_FactionWeapons.m_AA;
 					break;
 
 				case CRF_EGearscriptWeapons.HMG:
-					specWeapon = gearConfig.m_FactionWeapons.m_HMG;
+					if(gearConfig.m_FactionWeapons.m_HMG)
+						specWeapon = gearConfig.m_FactionWeapons.m_HMG;
 					break;
 			}
 			
@@ -458,60 +490,76 @@ class CRF_GearscriptManager : ScriptComponent
 		foreach (CRF_EGearscriptMagazines roleMags : rolesConfig.m_aMagazines)
 		{
 			array<ref CRF_Magazine_Class> magazineArray;
+			CRF_Weapon_Class selectedWeapon;
 			
 			switch (roleMags)
 			{
 				case CRF_EGearscriptMagazines.RIFLE_MAG:
-					magazineArray = FindMagArrayForWeapon(weaponsSelected, gearConfig.m_FactionWeapons.m_Rifle);
+					if(gearConfig.m_FactionWeapons.m_Rifle && !gearConfig.m_FactionWeapons.m_Rifle.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_Rifle, selectedWeapon);
 					break;
 				
 				case CRF_EGearscriptMagazines.RIFLEUGL_MAG:
-					magazineArray = FindMagArrayForWeapon(weaponsSelected, gearConfig.m_FactionWeapons.m_RifleUGL);
+					if(gearConfig.m_FactionWeapons.m_RifleUGL && !gearConfig.m_FactionWeapons.m_RifleUGL.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_RifleUGL, selectedWeapon);
 					break;
 				
 				case CRF_EGearscriptMagazines.CARBINE_MAG:
-					magazineArray = FindMagArrayForWeapon(weaponsSelected, gearConfig.m_FactionWeapons.m_Carbine);
+					if(gearConfig.m_FactionWeapons.m_Carbine && !gearConfig.m_FactionWeapons.m_Carbine.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_Carbine, selectedWeapon);
 					break;
 
 				case CRF_EGearscriptMagazines.PISTOL_MAG:
-					magazineArray = FindMagArrayForWeapon(weaponsSelected, gearConfig.m_FactionWeapons.m_Pistol);
+					if(gearConfig.m_FactionWeapons.m_Pistol && !gearConfig.m_FactionWeapons.m_Pistol.IsEmpty())
+						magazineArray = FindMagArrayForWeaponsSelected(weaponsSelected, gearConfig.m_FactionWeapons.m_Pistol, selectedWeapon);
 					break;
 
 				case CRF_EGearscriptMagazines.SNIPER_MAG:
-					magazineArray = gearConfig.m_FactionWeapons.m_Sniper.m_MagazineArray;
+					if(gearConfig.m_FactionWeapons.m_Sniper && gearConfig.m_FactionWeapons.m_Sniper.m_MagazineArray)
+						magazineArray = gearConfig.m_FactionWeapons.m_Sniper.m_MagazineArray;
 					break;
 
 				case CRF_EGearscriptMagazines.AR_MAG:
-					magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AR.m_MagazineArray, isAssistant);
+					if(gearConfig.m_FactionWeapons.m_AR && gearConfig.m_FactionWeapons.m_AR.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AR.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.MMG_MAG:
-					magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray, isAssistant);
+					if(gearConfig.m_FactionWeapons.m_MMG && gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MMG.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.AT_MAG:
-					magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AT.m_MagazineArray, isAssistant);
+					if(gearConfig.m_FactionWeapons.m_AT && gearConfig.m_FactionWeapons.m_AT.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AT.m_MagazineArray, isAssistant);
 					break;
 	
 				case CRF_EGearscriptMagazines.MAT_MAG:
-					magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray, isAssistant);
+					if(gearConfig.m_FactionWeapons.m_MAT && gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_MAT.m_MagazineArray, isAssistant);
 					break;
 	
 				case CRF_EGearscriptMagazines.HAT_MAG:
-					magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray, isAssistant);
+					if(gearConfig.m_FactionWeapons.m_HAT && gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HAT.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.AA_MAG:
-					magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AA.m_MagazineArray, isAssistant);
+					if(gearConfig.m_FactionWeapons.m_AA && gearConfig.m_FactionWeapons.m_AA.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_AA.m_MagazineArray, isAssistant);
 					break;
 
 				case CRF_EGearscriptMagazines.HMG_MAG:
-					magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray, isAssistant);
+					if(gearConfig.m_FactionWeapons.m_HMG && gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray)
+						magazineArray = ConvertSpecMagArrayIntoMagArray(gearConfig.m_FactionWeapons.m_HMG.m_MagazineArray, isAssistant);
 					break;
 			}
 			
-			if (!magazineArray.IsEmpty())
+			if (magazineArray && !magazineArray.IsEmpty())
 				AddMagazines(magazineArray, spawnParams, inventory, inventoryManager);
+			
+			if (selectedWeapon)
+				weaponsSelected.RemoveItem(selectedWeapon)
 		}
 	}
 	
@@ -521,7 +569,7 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param weaponsSelected Weapons we selected when initilizing the role
 	 * @param weaponType the weapon array we are comparing it to 
 	 */
-	protected array<ref CRF_Magazine_Class> FindMagArrayForWeapon(array<CRF_Weapon_Class> weaponsSelected, array<ref CRF_Weapon_Class> weaponType)
+	protected array<ref CRF_Magazine_Class> FindMagArrayForWeaponsSelected(array<CRF_Weapon_Class> weaponsSelected, array<ref CRF_Weapon_Class> weaponType, out CRF_Weapon_Class selectedWeapon)
 	{	
 		foreach (CRF_Weapon_Class weaponSelected : weaponsSelected)
 		{
@@ -531,6 +579,8 @@ class CRF_GearscriptManager : ScriptComponent
 				{
 					if (weaponToCompare == weaponSelected)
 						return weaponSelected.m_MagazineArray;
+					
+					selectedWeapon = weaponSelected;
 				}
 			};
 		}
@@ -573,7 +623,7 @@ class CRF_GearscriptManager : ScriptComponent
 			
 			foreach (CRF_EGearscriptItems roleItem : rolesConfig.m_aItems)
 			{
-				switch (role)
+				switch (roleItem)
 				{
 					case CRF_EGearscriptItems.GI_RADIO:
 						if (gearScriptSettings.m_bEnableGIRadios)
