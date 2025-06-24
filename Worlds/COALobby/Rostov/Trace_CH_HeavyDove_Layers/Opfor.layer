@@ -1,5 +1,6 @@
 SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Company_p.et" {
- coords 4529.313 117.377 4278.146
+ coords 5088.99 147.062 3861.683
+ angleZ -1.79
  {
   SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
    coords 0.411 0.451 -22.715
@@ -82,10 +83,10 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
    }
   }
-  coords 4614.697 119.034 4246.899
+  coords 5174.374 149.474 3830.436
   angleX 0
   angleY 0
-  angleZ 0
+  angleZ -0.895
  }
  {
   components {
@@ -93,10 +94,10 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
    }
   }
-  coords 4610.463 118.938 4247.225
+  coords 5170.141 149.377 3830.762
   angleX 0
   angleY 0
-  angleZ 0
+  angleZ -0.895
  }
  {
   components {
@@ -104,7 +105,73 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
    }
   }
-  coords 4603.638 118.776 4247.334
+  coords 5163.314 149.364 3830.871
+  angleX 0
+  angleY 0
+  angleZ -0.895
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 5156.342 149.224 3831.107
+  angleX 0
+  angleY 0
+  angleZ -0.895
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 5150.783 148.974 3830.389
+  angleX 0
+  angleY 0
+  angleZ -2.684
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 5144.588 148.759 3827.175
+  angleX 0
+  angleY 0
+  angleZ -0.895
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 5137.354 148.584 3830.627
+  angleX 0
+  angleY 0
+  angleZ -0.895
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 5131.787 148.428 3830.532
+  angleX 0
+  angleY 0
+  angleZ -2.684
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 5179.696 149.531 3831.39
   angleX 0
   angleY 0
   angleZ 0
@@ -115,75 +182,9 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
    }
   }
-  coords 4596.664 118.854 4247.57
+  coords 5187.3 149.614 3830.591
   angleX 0
   angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
-   }
-  }
-  coords 4591.105 118.947 4246.851
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
-   }
-  }
-  coords 4584.91 118.969 4243.638
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
-   }
-  }
-  coords 4577.678 118.977 4247.09
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
-   }
-  }
-  coords 4572.109 118.985 4246.995
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
-   }
-  }
-  coords 4620.018 119.037 4247.853
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
-   }
-  }
-  coords 4627.622 119.296 4247.054
-  angleX 0
-  angleY 0
-  angleZ 0
+  angleZ -0.895
  }
 }

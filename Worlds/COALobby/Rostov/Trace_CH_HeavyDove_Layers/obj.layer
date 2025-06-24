@@ -40,7 +40,7 @@ $grp GenericEntity : "{AA1E1DD1D69055EC}Prefabs/Props/Military/MilitaryCrates/Cr
   }
  }
  ObjB {
-  coords 2454.823 153.025 4946.097
+  coords 2899.224 120.705 4901.083
   destructor ""\
   "		objListener_Class listener = objListener_Class.Cast(GetGame().GetWorld().FindEntityByName(\"objListener\"));"\
   "		"\

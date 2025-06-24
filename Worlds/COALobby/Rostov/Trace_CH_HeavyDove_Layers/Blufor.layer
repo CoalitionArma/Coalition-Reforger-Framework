@@ -1,5 +1,6 @@
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
- coords 2194.844 168.997 5165.151
+ coords 1451.561 203.562 5598.007
+ angleY 0.028
  {
   SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
    coords 0.028 -0.51 -8.481
@@ -52,8 +53,8 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
    }
   }
-  coords 2125.405 168.503 5136.433
-  angleX 0
+  coords 1382.122 204.023 5569.29
+  angleX -1.79
   angleY 0
   angleZ 0
  }
@@ -63,9 +64,9 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
    }
   }
-  coords 2119.332 168.419 5135.205
-  angleX 0
-  angleY 0
+  coords 1376.05 204.061 5568.061
+  angleX -1.79
+  angleY -0.014
   angleZ 0
  }
  {
@@ -74,10 +75,10 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
    }
   }
-  coords 2112.083 168.406 5134.989
-  angleX 0
-  angleY 0
-  angleZ 0
+  coords 1368.801 204.139 5567.845
+  angleX -2.682
+  angleY -0.056
+  angleZ 1.791
  }
  {
   components {
@@ -85,10 +86,10 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
    }
   }
-  coords 2106.524 168.38 5134.575
-  angleX 0
-  angleY 0
-  angleZ 0
+  coords 1363.241 204.226 5567.431
+  angleX -2.683
+  angleY -0.042
+  angleZ 0.896
  }
  {
   components {
@@ -96,9 +97,9 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{2D74C39A650A3030}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer.et"
    }
   }
-  coords 2099.263 168.317 5133.657
-  angleX 0
-  angleY 0
+  coords 1355.98 204.265 5566.512
+  angleX -1.79
+  angleY -0.014
   angleZ 0
  }
  {
@@ -107,8 +108,8 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
    }
   }
-  coords 2125.08 170.045 5157.778
-  angleX 0
+  coords 1381.797 203.283 5590.634
+  angleX -2.684
   angleY 0
   angleZ 0
  }
@@ -118,8 +119,8 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
    }
   }
-  coords 2119.291 170.01 5157.333
-  angleX 0
+  coords 1376.008 203.303 5590.19
+  angleX -2.684
   angleY 0
   angleZ 0
  }
@@ -129,8 +130,8 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
    }
   }
-  coords 2113.801 169.932 5156.323
-  angleX 0
+  coords 1370.518 203.351 5589.178
+  angleX -2.684
   angleY 0
   angleZ 0
  }
@@ -140,10 +141,10 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
    }
   }
-  coords 2108.739 169.857 5155.214
-  angleX 0
-  angleY 0
-  angleZ 0
+  coords 1365.456 203.412 5588.07
+  angleX -1.789
+  angleY -0.028
+  angleZ 0.896
  }
  {
   components {
@@ -151,10 +152,10 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
    }
   }
-  coords 2103.869 169.842 5154.976
-  angleX 0
-  angleY 0
-  angleZ 0
+  coords 1360.586 203.527 5587.832
+  angleX -1.789
+  angleY -0.028
+  angleZ 0.896
  }
  {
   components {
@@ -162,9 +163,9 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
    }
   }
-  coords 2098.952 169.844 5155.009
-  angleX 0
-  angleY 0
-  angleZ 0
+  coords 1355.669 203.64 5587.865
+  angleX -1.788
+  angleY -0.056
+  angleZ 1.791
  }
 }
