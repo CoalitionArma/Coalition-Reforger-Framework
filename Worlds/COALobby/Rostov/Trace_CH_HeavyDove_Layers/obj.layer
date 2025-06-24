@@ -1,0 +1,70 @@
+SCR_BaseTriggerEntity objListener {
+ coords 2321.172 157.098 4884.39
+ userScript "	int cachesDestroyed = 0;"\
+ "	"\
+ "	void Increment()"\
+ "    {"\
+ "        cachesDestroyed++;"\
+ "    }"
+}
+$grp GenericEntity : "{AA1E1DD1D69055EC}Prefabs/Props/Military/MilitaryCrates/CrateStack_01/CrateStack_01_green.et" {
+ ObjA {
+  coords 2299.584 158.191 4986.942
+  destructor ""\
+  "		objListener_Class listener = objListener_Class.Cast(GetGame().GetWorld().FindEntityByName(\"objListener\"));"\
+  "		"\
+  "		listener.Increment();"\
+  "		"\
+  "		if (listener.cachesDestroyed == 1)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"1 cache has been destroyed\", duration: 10);"\
+  "		}"\
+  "		"\
+  "		if (listener.cachesDestroyed == 2)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"All caches have been destroyed\", duration: 10);"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.759 0 -0.038
+    m_MarkerColor 0 0 0 1
+    m_sDescription "OBJ A"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   GenericEntity : "{CD8641F8E583489F}Prefabs/Structures/Military/CamoNets/US/CamoNet_Large_US.et" {
+    coords 0.543 0.404 0.419
+    angleY 12.913
+   }
+  }
+ }
+ ObjB {
+  coords 2454.823 153.025 4946.097
+  destructor ""\
+  "		objListener_Class listener = objListener_Class.Cast(GetGame().GetWorld().FindEntityByName(\"objListener\"));"\
+  "		"\
+  "		listener.Increment();"\
+  "		"\
+  "		if (listener.cachesDestroyed == 1)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"1 cache has been destroyed\", duration: 10);"\
+  "		}"\
+  "		"\
+  "		if (listener.cachesDestroyed == 2)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"All caches have been destroyed\", duration: 10);"\
+  "		}"\
+  ""\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.759 0 -0.038
+    m_MarkerColor 0 0 0 1
+    m_sDescription "OBJ B"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+}
