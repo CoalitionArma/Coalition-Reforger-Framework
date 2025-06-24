@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{2DBA74DD892D3706}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC_Trace.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

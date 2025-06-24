@@ -1,0 +1,189 @@
+SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Company_p.et" {
+ coords 4529.313 117.377 4278.146
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords 0.411 0.451 -22.715
+   m_aUnitPrefabSlots {
+    "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+     coords 0.01 -0.262 3.054
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords 65.282 -1.064 -0.452
+       m_aUnitPrefabSlots {
+        "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et" "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et" "{F513E3FE0CE0E250}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehDriver_P.et" "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et"
+       }
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords -19.382 0.626 -3.378
+         m_aUnitPrefabSlots {
+          "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et" "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et" "{F513E3FE0CE0E250}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehDriver_P.et" "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et"
+         }
+         {
+          SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+           coords -18.137 0.365 -1.58
+           m_aUnitPrefabSlots {
+            "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et" "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et" "{F513E3FE0CE0E250}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehDriver_P.et" "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et"
+           }
+           {
+            SCR_AIGroup CRF_OPFOR_WeaponSquad_p : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+             coords -27.965 -0.604 18.904
+             m_aUnitPrefabSlots {
+              "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et" "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et" "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et" "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et" "{32681EB0A399591D}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_HMG_P.et" "{4100FF2BAF7A9D91}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AHMG_P.et"
+             }
+             {
+              SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+               coords -7.308 1.689 -13.275
+               {
+                SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+                 coords 53.501 -2.281 10.579
+                 m_aUnitPrefabSlots {
+                  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et" "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+                 }
+                 {
+                  SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+                   coords -16.603 0.266 -1.184
+                   m_aUnitPrefabSlots {
+                    "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et" "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+                   }
+                   {
+                    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+                     coords 35.209 -0.606 1.714
+                     m_aUnitPrefabSlots {
+                      "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et" "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+   }
+  }
+  coords 4614.697 119.034 4246.899
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+   }
+  }
+  coords 4610.463 118.938 4247.225
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+   }
+  }
+  coords 4603.638 118.776 4247.334
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 4596.664 118.854 4247.57
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 4591.105 118.947 4246.851
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 4584.91 118.969 4243.638
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 4577.678 118.977 4247.09
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 4572.109 118.985 4246.995
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 4620.018 119.037 4247.853
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+   }
+  }
+  coords 4627.622 119.296 4247.054
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+}

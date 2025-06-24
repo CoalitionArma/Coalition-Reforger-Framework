@@ -1,0 +1,28 @@
+PolylineShapeEntity {
+ coords 2065.228 176.918 5236.141
+ Points {
+  ShapePoint "{65B0154EE8D425D5}" {
+   Position 0 0 0
+  }
+  ShapePoint "{65B0154EE82B8E13}" {
+   Position 5 0.343 0
+  }
+  ShapePoint "{65B0154EEF7FFA28}" {
+   Position 203.171 -6.297 -4.839
+  }
+  ShapePoint "{65B0154EEFF4D36B}" {
+   Position 208.433 -16.565 -202.817
+  }
+  ShapePoint "{65B0154EEE7FD960}" {
+   Position -81.097 -8.981 -157.984
+  }
+  ShapePoint "{65B0154EEEE93AAD}" {
+   Position 6.75 0.459 5.671
+  }
+ }
+ {
+  PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+   coords 0 0 0
+  }
+ }
+}

@@ -1,0 +1,40 @@
+GenericEntity : "{77C5FA75A4AA40CD}Prefabs/Weapons/MachineGuns/PKP_Pecheneg/MG_PKP_Pecheneg_TRC_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SlotManagerComponent "{62E92BC95E2A9B7E}" {
+   Slots {
+    EntitySlotInfo NPZ {
+     PivotID "w_sight"
+     Offset -0.0079 -0.0297 0.0045
+     Angles 0 90.5 0
+     Enabled 1
+     Prefab "{6C567D8E7D0B769B}Prefabs/Weapons/Attachments/Dovetail SAG/Dovetail_SAG_RIS_Adaptor.et"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5ED92BE84D0B170C}" {
+     AttachmentSlot InventoryStorageSlot optics {
+     }
+    }
+    AttachmentSlotComponent "{65B015534BE15F12}" {
+     AttachmentSlot InventoryStorageSlot Optic {
+      PivotID "w_sight"
+      Offset -0.0078 0.0104 -0.0222
+      Angles 0.205 0.005 0
+      Enabled 0
+     }
+     AttachmentType AttachmentOpticsRIS1913Medium "{65B015534BE15F05}" {
+     }
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsSwitchSkip 1
+    }
+   }
+  }
+ }
+ coords 52.512 2.026 5.516
+ angleX 0
+ angleZ 0
+}
