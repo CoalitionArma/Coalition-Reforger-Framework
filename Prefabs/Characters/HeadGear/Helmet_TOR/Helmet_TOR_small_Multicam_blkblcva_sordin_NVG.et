@@ -20,6 +20,7 @@ GameEntity : "{D9B30C3875AC2590}Prefabs/Characters/HeadGear/Helmet_TOR/Helmet_TO
   BaseLoadoutClothComponent "{5112706CD4157AF8}" {
    Slots {
     RHS_LoadoutSlotInfo MeshCover {
+     Prefab "{C948F82823020817}Prefabs/Characters/HeadGear/Helmet_TOR/Headgear_tor_cover_mc.et"
     }
     RHS_LoadoutSlotInfo Masks {
      Prefab "{40ED520CE1154848}Prefabs/Characters/HeadGear/Balaclavas/LShZ_Balaclava/Balaclava_LShZ_black.et"

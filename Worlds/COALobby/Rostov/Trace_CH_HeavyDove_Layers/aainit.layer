@@ -39,10 +39,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{2DBA74DD892D3706}Configs/Gearscripts/Custom/Trace/CRF_GS_RHSUSMC_Trace.conf"
+  m_rGearScript "{2DBA74DD892D3706}Configs/Gearscripts/Custom/Trace/CRF_GS_RHSUSMC_2025_Trace.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{5FA5A8539F5E53FC}Configs/Gearscripts/Custom/Trace/CRF_GS_RHSVDV_Trace.conf"
+  m_rGearScript "{5FA5A8539F5E53FC}Configs/Gearscripts/Custom/Trace/CRF_GS_RHSVDV_2025_Trace.conf"
  }
  {
   SCR_FactionManager "65B01548738F746D" {
