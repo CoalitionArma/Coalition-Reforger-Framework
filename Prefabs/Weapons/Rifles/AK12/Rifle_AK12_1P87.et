@@ -1,0 +1,14 @@
+GenericEntity : "{E54F4C40155DC491}Prefabs/Weapons/Rifles/AK12/Rifle_AK12.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{6226326092E0B457}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+      Prefab "{349DE19C84303C7B}Prefabs/Weapons/Attachments/Optics/1p87/Optic_1P87_new.et"
+     }
+    }
+   }
+  }
+ }
+}

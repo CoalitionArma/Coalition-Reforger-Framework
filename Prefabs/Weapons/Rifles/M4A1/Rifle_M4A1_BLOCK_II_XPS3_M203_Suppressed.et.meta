@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{5F76DB096C49765E}Prefabs/Weapons/Rifles/M4A1/Rifle_M4A1_BLOCK_II_XPS3_M203_Suppressed.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
