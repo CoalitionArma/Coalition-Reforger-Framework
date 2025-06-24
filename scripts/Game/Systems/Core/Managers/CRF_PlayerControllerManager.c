@@ -121,8 +121,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 			vector cameraPos[4];
 			SCR_ChimeraCharacter char = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(SCR_PlayerController.GetLocalPlayerId());
 			
-			if (char && m_vStoredCameraPos[3] == vector.Zero)
-			{
+			if (char && m_vStoredCameraPos[3] == vector.Zero) {
 				char.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
 			} else if (m_vStoredCameraPos[3] != vector.Zero) {

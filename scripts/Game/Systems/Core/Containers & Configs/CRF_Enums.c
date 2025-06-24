@@ -148,10 +148,36 @@ class CRF_RoleHelper
 	}
 
 	//------------------------------------------------------------------------------------------------
-	static ResourceName RoleToResource(CRF_EGearRole roleInt, FactionKey faction)
+	static ResourceName RoleToResource(CRF_EGearRole roleInt, FactionKey factionKey)
 	{
-		Resource resource = Resource.Load("Prefabs/Characters/Factions/" + faction + "/CRF_GS_" + faction + RoleToString(roleInt) + ".et");
-		return resource.GetResource().GetResourceName();
+		ResourceName rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		ResourceName roleResource;
+		
+		CRF_GearScriptRolesConfig rolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));		
+
+		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(roleInt);
+		
+		switch (factionKey)
+		{
+			case "BLUFOR":
+				roleResource = roleConfig.m_BluforVariant;
+				break;
+			
+			case "OPFOR":
+				roleResource = roleConfig.m_OpforVariant;
+				break;
+			
+			case "INDFOR":
+				roleResource = roleConfig.m_IndforVariant;
+				break;
+			
+			case "CIV":
+				roleResource = roleConfig.m_CivVariant;
+				break;
+		}
+		
+		return roleResource;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -169,7 +195,7 @@ class CRF_RoleHelper
 		if (!IsValidGearscriptResource(prefab))
 			return false;
 
-		int role = StringToRole(PrefabToRole(prefab));
+		CRF_EGearRole role = StringToRole(PrefabToRole(prefab));
 
 		return roles.Contains(role);
 	}
@@ -182,7 +208,7 @@ class CRF_RoleHelper
 		if (!IsValidGearscriptResource(prefab))
 			return false;
 
-		int role = StringToRole(PrefabToRole(prefab));
+		CRF_EGearRole role = StringToRole(PrefabToRole(prefab));
 
 		return (role == CRF_EGearRole.TEAM_LEAD);
 	}
@@ -201,6 +227,88 @@ class CRF_RoleHelper
 
 		return role;
 	}
+}
+
+//------------------------------------------------------------------------------------
+// Enumeration for gearscript clothing
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptClothing
+{
+	HEADGEAR = 0,
+	SHIRT,
+	ARMOREDVEST,
+	PANTS,
+	BOOTS,
+	BACKPACK,
+	VEST,
+	HANDWEAR,
+	HEAD,
+	EYES,
+	EARS,
+	FACE,
+	NECK,
+	EXTRA1,
+	EXTRA2,
+	WAIST,
+	EXTRA3,
+	EXTRA4,
+}
+
+//------------------------------------------------------------------------------------
+// Enumeration for gearscript weapons
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptWeapons
+{
+	RIFLE,
+	RIFLEUGL,
+	CARBINE,
+	SNIPER,
+	PISTOL,
+	AR,
+	AT,
+	MMG,
+	HMG,
+	MAT,
+	HAT,
+	AA,
+}
+
+
+//------------------------------------------------------------------------------------
+// Enumeration for gearscript magazines
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptMagazines
+{
+	RIFLE_MAG,
+	RIFLEUGL_MAG,
+	CARBINE_MAG,
+	SNIPER_MAG,
+	PISTOL_MAG,
+	AR_MAG,
+	AT_MAG,
+	MMG_MAG,
+	HMG_MAG,
+	MAT_MAG,
+	HAT_MAG,
+	AA_MAG,
+}
+
+
+//------------------------------------------------------------------------------------
+// Enumeration for additional gearscript items
+//------------------------------------------------------------------------------------
+
+enum CRF_EGearscriptItems
+{
+	GI_RADIO,
+	LEADERSHIP_RADIO,
+	RTO_RADIO,
+	ASSISTANT_BINO,
+	LEADERSHIP_BINO,
+	MEDIC_ITEMS,
 }
 
 //------------------------------------------------------------------------------------
@@ -278,32 +386,6 @@ enum CRF_ESlotType
 	REGULAR = 0,
 	LEADERORMEDIC,
 	SPECIALTY,
-}
-
-//------------------------------------------------------------------------------------
-// Enumeration for clothing types
-//------------------------------------------------------------------------------------
-
-enum CRF_EClothingType
-{
-	HEADGEAR = 0,
-	SHIRT,
-	ARMOREDVEST,
-	PANTS,
-	BOOTS,
-	BACKPACK,
-	VEST,
-	HANDWEAR,
-	HEAD,
-	EYES,
-	EARS,
-	FACE,
-	NECK,
-	EXTRA1,
-	EXTRA2,
-	WAIST,
-	EXTRA3,
-	EXTRA4,
 }
 
 //------------------------------------------------------------------------------------

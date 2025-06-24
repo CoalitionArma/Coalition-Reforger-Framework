@@ -229,10 +229,9 @@ class CRF_RespawnManager : ScriptComponent
 
 			// Check if tickets are available
 			if (TicketsRemaining(faction)) 
-			{
-				RespawnPlayer(playerId);
 				SubtractTicket(faction);
-			}
+			
+			RespawnPlayer(playerId);
 		}
 	}
 
