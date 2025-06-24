@@ -1,0 +1,14 @@
+GenericEntity : "{694CB39C4B20B7A8}Prefabs/Weapons/Rifles/M27IAR/Rifle_M27IAR_Aimpoint.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5CC8E73BB698D287}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      Prefab "{9C42803E49305273}Prefabs/Weapons/Attachments/Optics/exps/Optic_EXPS3-1.et"
+     }
+    }
+   }
+  }
+ }
+}

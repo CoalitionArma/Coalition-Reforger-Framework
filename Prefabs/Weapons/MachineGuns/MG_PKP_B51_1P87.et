@@ -1,0 +1,15 @@
+GenericEntity : "{0C8F22396A249B98}Prefabs/Weapons/MachineGuns/MG_PKP_B51.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{62435ED97497901F}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot optics {
+      Prefab "{349DE19C84303C7B}Prefabs/Weapons/Attachments/Optics/1p87/Optic_1P87_new.et"
+     }
+    }
+   }
+  }
+ }
+ coords 89.017 2.002 1220.19
+}

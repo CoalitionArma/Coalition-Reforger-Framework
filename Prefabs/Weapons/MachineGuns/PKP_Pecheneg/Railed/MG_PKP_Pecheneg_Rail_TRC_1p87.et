@@ -18,14 +18,15 @@ GenericEntity : "{77C5FA75A4AA40CD}Prefabs/Weapons/MachineGuns/PKP_Pecheneg/MG_P
      AttachmentSlot InventoryStorageSlot optics {
      }
     }
-    AttachmentSlotComponent "{65B015534BE15F12}" {
+    AttachmentSlotComponent "{65B015574EC7437B}" {
      AttachmentSlot InventoryStorageSlot Optic {
       PivotID "w_sight"
       Offset -0.0078 0.0104 -0.0222
       Angles 0.205 0.005 0
-      Enabled 0
+      Enabled 1
+      Prefab "{349DE19C84303C7B}Prefabs/Weapons/Attachments/Optics/1p87/Optic_1P87_new.et"
      }
-     AttachmentType AttachmentOpticsRIS1913Medium "{65B015534BE15F05}" {
+     AttachmentType AttachmentOpticsRIS1913Medium "{65B015574EC74371}" {
      }
     }
     SightsComponent "{BB23A637957CFFF8}" {
@@ -34,7 +35,7 @@ GenericEntity : "{77C5FA75A4AA40CD}Prefabs/Weapons/MachineGuns/PKP_Pecheneg/MG_P
    }
   }
  }
- coords 52.512 2.026 5.516
+ coords 88.203 1 1219.732
  angleX 0
  angleZ 0
 }
