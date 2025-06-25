@@ -3,10 +3,10 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   coords 3169.197 193.891 3488.037
   userScript "	void respawn()"\
   "	{"\
-  "		 //respawn the players\"\"\
-  "		if (RplSession.Mode() == RplMode.Dedicated) "\
+  "		// Respawn the players"\
+  "		if (RplSession.Mode() == RplMode.Dedicated)"\
   "		{"\
-  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();		"\
+  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
   "			gm.RespawnAllSides();"\
   "		}"\
   "	}"\
@@ -48,10 +48,10 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   coords 2834.741 171.075 3711.219
   userScript "	void respawn()"\
   "	{"\
-  "		 //respawn the players\"\"\
-  "		if (RplSession.Mode() == RplMode.Dedicated) "\
+  "		// Respawn the players"\
+  "		if (RplSession.Mode() == RplMode.Dedicated)"\
   "		{"\
-  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();		"\
+  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
   "			gm.RespawnAllSides();"\
   "		}"\
   "	}"\
@@ -91,7 +91,6 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
  }
  ObjC {
   coords 3981.132 166.302 2964.694
-  userScript "	// code here"
   destructor ""\
   "		// Show popup message"\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie cache destroyed\", duration: 10);"\
@@ -120,7 +119,6 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
  }
  ObjD {
   coords 3866.838 199.551 2646.029
-  userScript "	// code here"
   destructor ""\
   "		// Show popup message"\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Delta cache destroyed\", duration: 10);"\
