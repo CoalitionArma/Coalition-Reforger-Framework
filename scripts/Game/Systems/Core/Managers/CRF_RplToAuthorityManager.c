@@ -178,6 +178,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestGroupIdFromServer, requestedId, requesterID); 
 	}
 	
+	void RespawnFaction(FactionKey faction, bool logAction)
+	{
+		Rpc(RpcAsk_RespawnFaction, faction, logAction); 
+	}
+	
 	// Equipment management
 	void ResetGear(int playerId, ResourceName prefab, bool logAction)
 	{
@@ -377,6 +382,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_AIGroup playerGroup = m_SlottingManager.GetPlayerSlotGroup(requestedId);
 		if (playerGroup)
 			m_RplBroadcastManager.SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RespawnFaction(FactionKey faction, bool logAction)
+	{
+		m_RespawnManager.RespawnSide(faction);
+		
+		if (logAction)
+		{
+			string logMessage = string.Format("%1 was respawned", faction);
+			m_RplBroadcastManager.LogAdminAction(logMessage, -1, false);
+		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

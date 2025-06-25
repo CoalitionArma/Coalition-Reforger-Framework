@@ -52,6 +52,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected SCR_ButtonTextComponent m_hintMenuButton;
 	protected SCR_ButtonTextComponent m_healMenuButton;
 	protected SCR_ButtonTextComponent m_ticketMenuButton;
+	protected SCR_ButtonTextComponent m_GamemodeMenuButton;
 	
 	// Action buttons
 	protected SCR_ButtonTextComponent m_actionButton;
@@ -120,9 +121,12 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 * Get a list box from the current loaded menu
 	 * @param name of the root widget of the list box
 	 */
-	protected SCR_ListBoxComponent GetListBox(string listbox)
+	protected SCR_ListBoxComponent GetListBox(string listbox, Widget widget = null)
 	{
-		Widget listRoot = OverlayWidget.Cast(m_wMenuContent.FindAnyWidget(listbox));
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		Widget listRoot = OverlayWidget.Cast(widget.FindAnyWidget(listbox));
 		return SCR_ListBoxComponent.Cast(listRoot.FindHandler(SCR_ListBoxComponent));
 	}
 	
@@ -130,27 +134,36 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 * Get a button from the current loaded menu
 	 * @param name of the root widget of the button
 	 */
-	protected SCR_ButtonTextComponent GetMenuButton(string button)
+	protected SCR_ButtonTextComponent GetMenuButton(string button, Widget widget = null)
 	{
-		return SCR_ButtonTextComponent.GetButtonText(button, m_wMenuContent);
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return SCR_ButtonTextComponent.GetButtonText(button, widget);
 	}
 	
 	/**
 	 * Get a multiline edit box from the current loaded menu
 	 * @param name of the root widget of the edit box
 	 */
-	protected MultilineEditBoxWidget GetMultilineEditBox(string multiEditBox)
+	protected MultilineEditBoxWidget GetMultilineEditBox(string multiEditBox, Widget widget = null)
 	{
-		return MultilineEditBoxWidget.Cast(m_wMenuContent.FindAnyWidget(multiEditBox));
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return MultilineEditBoxWidget.Cast(widget.FindAnyWidget(multiEditBox));
 	}
 	
 	/**
 	 * Get a edit box from the current loaded menu
 	 * @param name of the root widget of the edit box
 	 */
-	protected EditBoxWidget GetEditBox(string EditBox)
+	protected EditBoxWidget GetEditBox(string EditBox, Widget widget = null)
 	{
-		return EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget(EditBox));
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return EditBoxWidget.Cast(widget.FindAnyWidget(EditBox));
 	}
 	
 	/**
@@ -181,6 +194,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Heal menu button
 		m_healMenuButton = SCR_ButtonTextComponent.GetButtonText("HealButton", m_wRoot);
 		m_healMenuButton.m_OnClicked.Insert(HealButton);
+		
+		// Heal menu button
+		m_GamemodeMenuButton = SCR_ButtonTextComponent.GetButtonText("GamemodeButton", m_wRoot);
+		m_GamemodeMenuButton.m_OnClicked.Insert(GamemodeButton);
 	}
 	
 	/**
@@ -214,6 +231,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		if (m_ChatPanel)
 			m_ChatPanel.SetAlwaysVisible(false);
+		
+		// Remove Gamemode updater
+		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
 
 	/**
@@ -274,6 +294,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 		UpdateMenuButtonColors(m_healMenuButton);
 		ClearMenu();
 		InitializeHealMenu();
+	}	
+	
+	/**
+	 * Activates the Gamemode Settings menu
+	 */
+	void GamemodeButton()
+	{
+		UpdateMenuButtonColors(m_GamemodeMenuButton);
+		ClearMenu();
+		InitializeGamemodeMenu();
 	}
 	
 	/**
@@ -292,6 +322,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_teleportMenuButton.GetRootWidget().SetColor(inactiveColor);
 		m_hintMenuButton.GetRootWidget().SetColor(inactiveColor);
 		m_healMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_GamemodeMenuButton.GetRootWidget().SetColor(inactiveColor);
 		
 		// Set active button text to white
 		activeButton.GetRootWidget().SetColor(Color.FromSRGBA(18, 20, 22, 255));
@@ -308,9 +339,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void ClearMenu()
 	{
-		// Reset action buttons
-		//m_actionButton.m_OnClicked.Clear();
-		
 		// Remove menu widget
 		if (m_wMenuContent)
 			delete m_wMenuContent;
@@ -322,6 +350,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_allPlayers.Clear();
 		m_factions.Clear();
 		m_selectableFactions.Clear();
+		
+		// Remove Gamemode updater
+		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
 
 	/**
@@ -967,12 +998,20 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Load Menu Buttons
 		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
 		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
-		if (!searchButton0 || !menuButton0)
+		SCR_ButtonTextComponent menuButton1 = GetMenuButton("BLUFOR");
+		SCR_ButtonTextComponent menuButton2 = GetMenuButton("OPFOR");
+		SCR_ButtonTextComponent menuButton3 = GetMenuButton("INDFOR");
+		SCR_ButtonTextComponent menuButton4 = GetMenuButton("CIV");
+		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
 			return;
 			
 		// Setup button event handlers
 		searchButton0.m_OnClicked.Insert(SearchList0);
 		menuButton0.m_OnClicked.Insert(RespawnPlayer);
+		menuButton1.m_OnClicked.Insert(RespawnSide);
+		menuButton2.m_OnClicked.Insert(RespawnSide);
+		menuButton3.m_OnClicked.Insert(RespawnSide);
+		menuButton4.m_OnClicked.Insert(RespawnSide);
 		
 		// Setup selection change handlers
 		playerList.m_OnChanged.Insert(UpdateSpawnGroupRequest);
@@ -1187,6 +1226,19 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Refresh the menu after a short delay
 		GetGame().GetCallqueue().CallLater(ClearMenu, 1250, false);
 		GetGame().GetCallqueue().CallLater(InitializeRespawnMenu, 1825, false);
+	}
+	
+	/**
+	 * Respawns blufor
+	 */
+	void RespawnSide()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		CRF_RplToAuthorityManager.GetInstance().RespawnFaction(button.GetName(), true);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -1540,6 +1592,137 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		// Heal player and vehicle
 		CRF_RplToAuthorityManager.GetInstance().Heal(playerId, true, true);
+	}
+	
+	//-----------------------------------------------------------------------------
+	// Gamemode Settings Menu
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the Respawn menu
+	 * Allows admins to respawn dead players
+	 */
+	void InitializeGamemodeMenu()
+	{
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{36D941F5D1C10513}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/GameModeMenu.layout");
+		if (!m_wMenuContent)
+			return;
+		
+		// Load Menu Sections
+		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
+		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		
+		/*
+		*	!!!!! Changing the time delta is done below and in the menu layout !!!!!
+		*/
+		// Load Menu Buttons for Game Timer
+		
+		// Time Values
+		ref array<int> timeValues = {10, 5, -5, -10};	
+		
+		foreach (int time : timeValues)
+		{
+			string buttonName = string.Format("%1", time);
+			Print(buttonName);
+			SCR_ButtonTextComponent button = GetMenuButton(buttonName, gamerTimer);
+			if (!button)
+				return;
+				
+			button.m_OnClicked.Insert(UpdateTime);
+		}
+		
+		/*
+		*	!!!!! Changing the ticket delta is done below and in the menu layout !!!!!
+		*/
+		// Load Menu Buttons for Tickets
+		
+		// Faction names
+		ref array<string> factions = {"Blufor", "Opfor", "Indfor", "Civ"};
+
+		// Ticket values
+		ref array<int> values = {10, 5, 1, -1, -5, -10};
+		
+		foreach (string faction : factions)
+		{
+			foreach (int value : values)
+			{
+				string buttonName = string.Format("%1_%2", faction, value);
+				Print(buttonName);
+				SCR_ButtonTextComponent button = GetMenuButton(buttonName, ticketCounters);
+				if (!button)
+					return;
+					
+				button.m_OnClicked.Insert(UpdateTicket);
+			}
+		}
+	
+
+		// Change title of the menu
+		UpdateMenuTitle("Gamemode Settings");
+		
+		GetGame().GetCallqueue().CallLater(GamemodeMenuUpdate, 1000, true);
+	}
+	
+	/**
+	 * Add time delta based on the button name that was clicked
+	 * !!!!! Changing the time delta is done above and in the menu layout !!!!!
+	 */
+	void UpdateTime()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		// Get the delta from the button name
+		int deltaTime = button.GetName().ToInt() * 60000;
+		
+		// Get current end time
+		int currentEndTime = CRF_SafestartManager.GetInstance().m_iTimeMissionEnds;
+		if ((currentEndTime + deltaTime) < 0)
+			return;
+
+		// Set the new time
+		CRF_SafestartManager.GetInstance().m_iTimeMissionEnds = currentEndTime + deltaTime;
+	}
+	
+	void UpdateTicket()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		PrintFormat("Button Press: %1", button.GetName());
+	}
+	
+	void GamemodeMenuUpdate()
+	{	
+		// Get current mission time
+		string m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		
+		// Grab timer
+		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
+		TextWidget gameTimerText = TextWidget.Cast(gamerTimer.FindWidget("CurrentGameTime0"));
+		
+		// Update Timer
+		gameTimerText.SetText(m_sServerWorldTime);
+		
+		// Grab Ticket Counters
+		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
+		TextWidget bluforTicketText = TextWidget.Cast(ticketCounters.FindWidget("BluforTicketCount"));
+		TextWidget opforTicketText = TextWidget.Cast(ticketCounters.FindWidget("OpforTicketCount"));
+		TextWidget indforTicketText = TextWidget.Cast(ticketCounters.FindWidget("IndforTicketCount"));
+		TextWidget civTicketText = TextWidget.Cast(ticketCounters.FindWidget("CivTicketCount"));
+		
+		// Update Ticket Counters
+		bluforTicketText.SetText(CRF_Gamemode.GetInstance().m_iBLUFORTickets.ToString());
+		opforTicketText.SetText(CRF_Gamemode.GetInstance().m_iOPFORTickets.ToString());
+		indforTicketText.SetText(CRF_Gamemode.GetInstance().m_iINDFORTickets.ToString());
+		civTicketText.SetText(CRF_Gamemode.GetInstance().m_iCIVTickets.ToString());
+
 	}
 	
 	//-----------------------------------------------------------------------------
