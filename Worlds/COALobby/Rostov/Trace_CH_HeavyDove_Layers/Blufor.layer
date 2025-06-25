@@ -1,5 +1,5 @@
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
- coords 1451.561 203.562 5598.007
+ coords 1451.526 203.562 5594.643
  angleY 0.028
  {
   SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
@@ -105,7 +105,7 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
  {
   components {
    CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+    m_rVehicle "{5C49AD69A8D7AB0B}Prefabs/Vehicles/Wheeled/M1097/M1097.et"
    }
   }
   coords 1381.797 203.283 5590.634
@@ -116,7 +116,7 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
  {
   components {
    CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+    m_rVehicle "{F0325941727F21F0}Prefabs/Vehicles/Wheeled/M997/M997A3_maxi_ambulance.et"
    }
   }
   coords 1376.008 203.303 5590.19
@@ -127,7 +127,7 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
  {
   components {
    CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
+    m_rVehicle "{80FEDE7FE388618B}Prefabs/Vehicles/Wheeled/M1114/Unarmed/M1114_Late.et"
    }
   }
   coords 1370.518 203.351 5589.178
@@ -138,7 +138,7 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
  {
   components {
    CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
+    m_rVehicle "{80FEDE7FE388618B}Prefabs/Vehicles/Wheeled/M1114/Unarmed/M1114_Late.et"
    }
   }
   coords 1365.456 203.412 5588.07
@@ -149,7 +149,7 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
  {
   components {
    CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
+    m_rVehicle "{80FEDE7FE388618B}Prefabs/Vehicles/Wheeled/M1114/Unarmed/M1114_Late.et"
    }
   }
   coords 1360.586 203.527 5587.832
@@ -160,12 +160,26 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
  {
   components {
    CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{9B1BF9644E0378D6}Prefabs/Vehicles/Wheeled/M998/M998_covered_long.et"
+    m_rVehicle "{80FEDE7FE388618B}Prefabs/Vehicles/Wheeled/M1114/Unarmed/M1114_Late.et"
    }
   }
   coords 1355.669 203.64 5587.865
   angleX -1.788
   angleY -0.056
   angleZ 1.791
+ }
+}
+$grp GenericEntity : "{FA7A86697340C58C}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyCache_S_FIA_05.et" {
+ {
+  coords 1338.846 204.316 5572.38
+  angleY 93.239
+ }
+ {
+  coords 1339.411 203.968 5582.274
+  angleY 93.239
+ }
+ {
+  coords 1338.189 204.337 5562.666
+  angleY 93.239
  }
 }
