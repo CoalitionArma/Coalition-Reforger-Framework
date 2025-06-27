@@ -1,0 +1,87 @@
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 5446.303 6.876 4898.657
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 7128.796 6.271 5209.528
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 7471.144 8.375 5289.797
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 7145.797 6.305 5227.146
+ {
+  SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+   coords -5.094 0.291 -13.508
+   {
+    SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+     coords -11.62 -0.581 6.552
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 32.259 2.361 -64.176
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords -27.234 -0.527 -3.458
+         {
+          SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+           coords -33.093 -1.487 -14.666
+           {
+            SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+             coords 93.621 0.967 43.872
+             {
+              SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+               coords -51.998 0.763 -14.306
+               {
+                SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+                 coords 19.449 -1.513 53.526
+                 {
+                  SCR_AIGroup : "{3B279F5833A489CE}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MATTeam_p.et" {
+                   coords -6.45 0.417 -10.977
+                   m_aUnitPrefabSlots {
+                    "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et" "{244B3033D92FF7D0}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMAT_P.et"
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_JZD.et" {
+ Ural4320_transport_covered_CIV_JZD1 {
+  coords 7126.565 5.621 5230.681
+ }
+ Ural4320_transport_covered_CIV_JZD2 {
+  coords 7136.841 5.927 5234.323
+ }
+ Ural4320_transport_covered_CIV_JZD3 {
+  coords 7146.281 6.117 5236.485
+ }
+ Ural4320_transport_covered_CIV_JZD4 {
+  coords 7155.926 6.067 5237.764
+ }
+ Ural4320_transport_covered_CIV_JZD5 {
+  coords 7165.556 5.772 5237.958
+ }
+ Ural4320_transport_covered_CIV_JZD6 {
+  coords 7107.018 5.333 5197.95
+ }
+ Ural4320_transport_covered_CIV_JZD7 {
+  coords 7115.448 4.776 5211.81
+ }
+}
+Vehicle Ural4320_ZU1 : "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et" {
+ coords 7169.061 6.058 5229.378
+ angleY -97
+}

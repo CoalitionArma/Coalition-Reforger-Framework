@@ -1,0 +1,127 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 5392.333 6.875 4834.871
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 600
+ }
+ {
+  coords 5391.634 6.875 4846.217
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 600
+ }
+ {
+  coords 5391.957 6.875 4858.927
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 600
+ }
+ {
+  coords 5391.225 6.875 4872.89
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 600
+ }
+ {
+  coords 5390.526 6.875 4889.041
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 600
+ }
+ {
+  coords 5402.406 6.875 4819.203
+  angleY -27.592
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 600
+ }
+ {
+  coords 5399.98 6.875 4910.259
+  angleY -42.365
+  m_rnPrefab "{1BE270891F0F3772}Prefabs/Vehicles/Tracked/BMP3/BMP3_Tank.et"
+  respawnDelay 600
+ }
+}
+Vehicle Mi8MT_armed_base1 : "{20C37D5090E4E0E6}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_base.et" {
+ coords 5499.807 7.46 4849.768
+}
+Vehicle UAZ452_ambulance2 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 5423.692 6.875 4913.71
+ angleY -149.285
+}
+GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
+ coords 5500.232 6.875 4849.122
+ {
+  GameEntity {
+   ID "627C9144DFA045D1"
+   components {
+    SCR_FactionAffiliationComponent "{6324C08A09C18473}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D22B941350A4D8F"
+   components {
+    SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E6A93840A294BB7"
+   components {
+    SCR_FactionAffiliationComponent "{5CB8A6AD6CA2D332}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+  GenericEntity {
+   ID "5E69068881B8CF57"
+   components {
+    SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+     "faction affiliation" "OPFOR"
+    }
+   }
+  }
+ }
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 5428.403 6.876 4891.184
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords 11.397 0 -4.182
+   m_aUnitPrefabSlots {
+    "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords -19.523 0 -16.356
+     m_aUnitPrefabSlots {
+      "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{C3569C12A6509E8A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Sniper_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{FCBD0EC1703ECD14}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Demo_P.et"
+     }
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords 59.446 0.001 -60.453
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords -29.316 -0.001 -26.274
+         {
+          SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+           coords -18.395 0 54.76
+           {
+            SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+             coords -25.125 0 67.868
+             {
+              SCR_AIGroup : "{67CF9BB46BE94DF0}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_AirCrew_p.et" {
+               coords 92.261 0 -41.649
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
