@@ -13,6 +13,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 7075.021 6.215 5193.07
+ m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "A Russian spetsnaz team has been dispatched to deal with a Gogland FIA cell and their weapon caching operations."\
