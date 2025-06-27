@@ -20,7 +20,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    }
   }
   CRF_PlayableCharacter "{64E62B61F95221D7}" {
-   m_sName "Trailer Boy"
+   m_sName "Seaboy"
    m_bIsPlayable 1
   }
   CharacterWeaponManagerComponent "{5C9CA676383262FD}" {
@@ -36,8 +36,8 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     IconSetName ""
     m_Image "{E5DECCCA6F4B7416}Images/UI/Zeus GearScript Factions/BLUFOR_NATO.edds"
     m_sFaction "BLUFOR"
-    m_aAuthoredLabels {
-     70 2 51870
+    m_aAuthoredLabels + {
+     2 51870
     }
     m_aAutoLabels {
      122 46

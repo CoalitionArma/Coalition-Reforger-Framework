@@ -130,8 +130,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerCharacter)
 		{
 			AssignFactionToPlayer(playerController, faction);
-			
-			GetGame().GetCallqueue().Call(InitilizePlayerCharacter, playerId, playerController, playerCharacter, isSpectator);
+			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, 100, false, playerId, playerController, playerCharacter, isSpectator);
 		};
 	}
 	
@@ -208,6 +207,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			alreadyCreated = false;
 			CRF_RplBroadcastManager.GetInstance().SendCharacterLoadingScreen(playerId);
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
+			// Run datacollector for stats
+			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
+			dc.OnPlayerSpawned(playerId, playerCharacter);
 		}
 			
 		return playerCharacter;
@@ -386,5 +388,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	bool IsDonator()
 	{
 		return m_aDonators.Contains(SCR_PlayerController.GetLocalPlayerId());
+	}
+	
+	bool IsDonator(int playerId)
+	{
+		return m_aDonators.Contains(playerId);
 	}
 }

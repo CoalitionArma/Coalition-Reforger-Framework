@@ -1,0 +1,58 @@
+Vehicle OPFOR_REPAIR1 : "{1F248314047F79CF}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_REPAIR.et" {
+ coords 3191.164 173.292 3938.45
+ angleX 2.682
+ angleY -177.958
+ angleZ 0.096
+}
+Vehicle OPFOR_ENGI1 : "{486C7A1FA88619B4}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_ENGI.et" {
+ coords 3196.248 173.337 3938.243
+ angleX 3.435
+ angleY -175.763
+ angleZ 2.046
+}
+Vehicle OPFOR_AMMO1 : "{8759EDBCF78920B7}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_AMMO.et" {
+ coords 3201.499 173.555 3938.65
+ angleX 2.513
+ angleY -177.827
+ angleZ 4.561
+}
+$grp GenericEntity : "{97A03B43D914B4DD}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft_Base.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 2000
+      m_fResourceValueMax 2000
+      m_bEnableResourceGain 1
+      m_fResourceGain 1
+      m_eOnEmptyBehavior NONE
+     }
+    }
+   }
+  }
+  coords 3208.209 174.257 3936.407
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 2000
+      m_fResourceValueMax 2000
+      m_bEnableResourceGain 1
+      m_fResourceGain 1
+      m_eOnEmptyBehavior NONE
+     }
+    }
+   }
+  }
+  coords 4113.716 149.625 2722.34
+ }
+}
+Vehicle OPFOR_TANKER1 : "{DDA7022CD3D52829}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_TANKER.et" {
+ coords 3186.029 173.295 3939.027
+ angleX 2.684
+ angleY -179.927
+ angleZ 0.003
+}

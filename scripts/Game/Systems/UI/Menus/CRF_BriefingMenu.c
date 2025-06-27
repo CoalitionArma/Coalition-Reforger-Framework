@@ -311,14 +311,40 @@ class CRF_PreviewMenuUI: ChimeraMenuBase
 			SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(index);
 			
 			// Color code players by role
-			if (SCR_Global.IsAdmin(player))
-				comp.SetColor(Color.Red);
-			else if (CRF_GamemodeManager.GetInstance().IsModerator(player))
-				comp.SetColor(Color.Yellow);
+			SetPlayerStatusColor(player,comp);
 			
 			// Highlight talking players
 			if (m_MenuManager.m_aPlayersTalking.Contains(player))
-				comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
+				comp.SetTalking();
+		}
+	}
+	
+	void SetTalking() {
+		ImageWidget wid = ImageWidget.Cast(m_wRoot.FindAnyWidget("VONSpeaker"));
+		
+		if (wid)
+			wid.SetVisible(true);
+	}
+	
+	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
+	{
+		// Enforce precedence: Admin > Moderator > Donator 
+		if (SCR_Global.IsAdmin(playerId))
+		{
+			comp.SetColor(Color.Red);
+			return;
+		}
+
+		if (CRF_GamemodeManager.GetInstance().IsModerator(playerId))
+		{
+			comp.SetColor(Color.Yellow);
+			return;
+		}
+		
+		if (CRF_GamemodeManager.GetInstance().IsDonator(playerId))
+		{
+			comp.SetColor(Color.Violet);
+			return;
 		}
 	}
 	

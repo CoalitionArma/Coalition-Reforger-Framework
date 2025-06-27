@@ -1,0 +1,176 @@
+SCR_MapEntity MapEntity_Serhiivka1 : "{79BFA809DDFAAEF6}Prefabs/World/Game/Serhiivka/MapEntity_Serhiivka.et" {
+ coords 3540.286 149.724 5837.441
+}
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{659B1575788BEF7A}" {
+     NavmeshFile "{04D0EEF185D0A158}NavMesh/Serhiivka_Soldiers.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{2F9B4F7B2B8923DA}NavMesh/Serhiivka_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{129CB293F6A84A16}NavMesh/Serhiivka_LowRes.nmn"
+    }
+   }
+  }
+ }
+ coords 3296.131 141.255 5732.102
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 21
+   m_bRandomStartingWeather 1
+   m_bRandomWeatherChanges 1
+  }
+ }
+ coords 3291.871 141.782 5753.082
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "A wave defense game mode where OPF must use MG positions to survive while BLU has their fists and vaseline."\
+   ""\
+   "BLU: Attack the trench"\
+   "OPF: Defend the trench"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Attack the trench and steal the bananas from the map marker. Use the banans to kill the guards."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the trench while running ammunition"\
+   ""
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "To melee, you must have a throwable in your hands"
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{BCB64DFD1BB8B086}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_US80s_Unarm.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F7FBB08DF8FFD568}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_USSR80s_Unarm.conf"
+ }
+ m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_iBLUFORTickets 150
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "BANZAI"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "BANZAI"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "BANZAI"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "BANZAI"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "DEFEND"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "DEFEND"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "DEFEND"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "DEFEND"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{114DE81321786CD9}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_01_PKM.et" {
+ {
+  coords 6271.006 180.554 6203.619
+  angleY -18
+ }
+ {
+  coords 6338.881 179.592 6208.135
+  angleY 15
+ }
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 6305.77 181.864 6359.549
+ Points {
+  ShapePoint "{659B1576C62B123D}" {
+   Position -107.77 0 202.092
+  }
+  ShapePoint "{659B1576FB495C81}" {
+   Position -79.073 0 -303.926
+  }
+  ShapePoint "{659B1576F800674E}" {
+   Position 109.184 0 -311.708
+  }
+  ShapePoint "{659B1576FC182EC2}" {
+   Position 43.679 0 217.992
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 6264.554 187.089 6540.009
+ Points {
+  ShapePoint "{659B1576EFBA0997}" {
+   Position -54.103 0 -26.514
+  }
+  ShapePoint "{659B1576EE4583B1}" {
+   Position -59.625 0 10.5
+  }
+  ShapePoint "{659B1576EDF8BF61}" {
+   Position 48.187 0 25.3
+  }
+  ShapePoint "{659B1576ED8C317A}" {
+   Position 48.891 0 -14.013
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 6298.68 179.597 6201.431
+ Points {
+  ShapePoint "{659B1576A36C6A8C}" {
+   Position -47.432 0 7.342
+  }
+  ShapePoint "{659B1576A07640C6}" {
+   Position -54.121 0 7.864
+  }
+  ShapePoint "{659B1576DB9CF531}" {
+   Position -62.995 0 -129.7
+  }
+  ShapePoint "{659B1576DD4F51F6}" {
+   Position 104.212 0 -140.9
+  }
+  ShapePoint "{659B1576D24B68B7}" {
+   Position 54.905 -0.135 10.07
+  }
+ }
+}

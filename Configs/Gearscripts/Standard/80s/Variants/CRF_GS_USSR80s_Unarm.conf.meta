@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{F7FBB08DF8FFD568}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_Unarm.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,41 @@
+Vehicle : "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Arsenal_Name"
+    Description "#AR-EditableEntity_ArsenalTruck_Description"
+    Icon "{992690F7B5CBE7D0}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Arsenal_Truck.edds"
+    m_Image "{7561C32DB7C577E9}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_arsenal.edds"
+    m_sFaction "BLUFOR"
+    m_aAutoLabels {
+     51870 122 54
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EF07CF434919DE2}" {
+      m_BudgetType RANK_PRIVATE
+      m_Value 1
+     }
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   MultiSlots {
+    MultiSlotConfiguration "{5A60CECA66163838}" {
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo AmmoBox {
+     Prefab "{5EA386DB110C32E3}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_arsenal_box.et"
+    }
+   }
+  }
+ }
+}

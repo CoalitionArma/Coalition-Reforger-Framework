@@ -1,0 +1,8 @@
+FrameWidgetClass {
+ {
+  ImageWidgetClass "{5E101C4F4DF051FE}" {
+   Prefab "{5E101C4F4DF051FE}"
+   Color 0.0725 0.0683 0.0683 1
+  }
+ }
+}

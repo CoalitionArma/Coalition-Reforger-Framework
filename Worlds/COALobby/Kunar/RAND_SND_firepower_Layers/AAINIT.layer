@@ -1,0 +1,115 @@
+SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
+ coords 3337.496 11.005 2764.426
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{659AE488F782DCE4}" {
+   attackingSide "OPFOR"
+   defendingSide "INDFOR"
+  }
+ }
+ coords 3343.825 11 2756.101
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Russian forces armed with a t-72 attack a Taliban stronghold"\
+   ""\
+   "OPFOR Composition: Infantry Company"\
+   "OPFOR Assets: 1X t-72B"\
+   ""\
+   "INDFOR Composition: Infantry Platoon"\
+   "INDFOR Assets: Lots of explosives"\
+   ""\
+   "Time: 45 minutes"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Destroy the Enemy bombsights"
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Defend your bombsights"
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "IND"
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
+ }
+ {
+  SCR_FactionManager "659AE488DE9B63E4" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "PLT 1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{659AE48CB2CB27FA}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{659AE48CB2E34253}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{659AE48CB218DB75}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{659AE48CB230FB66}" {
+        m_sCallsign "PLT 2"
+       }
+       SCR_CallsignInfo "{659AE48CB2269D66}" {
+        m_sCallsign "2-1 "
+       }
+       SCR_CallsignInfo "{659AE48CB25E9D79}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{659AE48CB276C4E5}" {
+        m_sCallsign "2-3 "
+       }
+       SCR_CallsignInfo "{659AE48CB39765B2}" {
+        m_sCallsign "2-4"
+       }
+       SCR_CallsignInfo "{659AE48CB3D21113}" {
+        m_sCallsign "Armor"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{659AE48EC2C84065}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{659AE48EC3B02BF2}" {
+        m_sCallsign "Cell 4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

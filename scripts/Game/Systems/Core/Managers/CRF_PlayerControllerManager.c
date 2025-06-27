@@ -104,7 +104,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
 		
 		// Close all menus
-		if(m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
 			GetGame().GetMenuManager().CloseAllMenus();
 		
@@ -121,8 +121,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 			vector cameraPos[4];
 			SCR_ChimeraCharacter char = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(SCR_PlayerController.GetLocalPlayerId());
 			
-			if (char && m_vStoredCameraPos[3] == vector.Zero)
-			{
+			if (char && m_vStoredCameraPos[3] == vector.Zero) {
 				char.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
 			} else if (m_vStoredCameraPos[3] != vector.Zero) {
@@ -160,9 +159,10 @@ class CRF_PlayerControllerManager : ScriptComponent
 			if (m_eCamera)
 				delete m_eCamera;
 			
+			m_Gamemode.GetOnPlayerSpawned().Invoke(SCR_PlayerController.GetLocalPlayerId(), SCR_PlayerController.GetLocalMainEntity());
+			
 			// Reset Stored Pos
-			// GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 1275, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
-			UpdateStoredCameraPos(vector.Zero, vector.Zero, vector.Zero, vector.Zero);
+			GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
 		};
 	}
 	

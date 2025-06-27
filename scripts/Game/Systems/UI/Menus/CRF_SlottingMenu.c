@@ -1144,7 +1144,6 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	
 	private void SetPlayerStatusColor(int playerId, SCR_ListBoxElementComponent comp)
 	{
-		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
 		// Selected player
 		if (playerId == m_iSelectedplayerId)
 		{
@@ -1158,13 +1157,13 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			return;
 		}
 
-		if (CRF_ModeratorConfig.IsModerator(playerIdentity))
+		if (CRF_GamemodeManager.GetInstance().IsModerator(playerId))
 		{
 			comp.SetColor(Color.Yellow);
 			return;
 		}
 		
-		if (CRF_DonatorConfig.IsDonator(playerIdentity))
+		if (CRF_GamemodeManager.GetInstance().IsDonator(playerId))
 		{
 			comp.SetColor(Color.Violet);
 			return;

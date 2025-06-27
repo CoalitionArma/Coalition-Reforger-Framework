@@ -1,0 +1,72 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 1207.734 93.729 2623.254
+ Points {
+  ShapePoint "{65B2E2151F011ED6}" {
+   Position -636.492 -67.975 1527.947
+  }
+  ShapePoint "{65B2E2151D4F1463}" {
+   Position 1054.174 58.654 1472.108
+  }
+  ShapePoint "{65B2E2151C8CF712}" {
+   Position 1552.352 69.236 1572.435
+  }
+  ShapePoint "{65B2E21561150F9A}" {
+   Position 2741.552 18.202 1612.21
+  }
+  ShapePoint "{65B2E215606D4C27}" {
+   Position 3076.258 58.05 1232.604
+  }
+  ShapePoint "{65B2E2156813F15C}" {
+   Position 3097.383 99.976 -431.543
+  }
+  ShapePoint "{65B2E2156FF286E5}" {
+   Position 1742.489 138.262 -502.207
+  }
+  ShapePoint "{65B2E215731FDEF7}" {
+   Position 706.489 79.409 -486.815
+  }
+  ShapePoint "{65B2E215715F5D9A}" {
+   Position -101.837 -20.711 -379.235
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 2040.913 125.997 3334.766
+ Points {
+  ShapePoint "{65B170F3E4900DD2}" {
+   Position -812.692 -32.062 -312.596
+  }
+  ShapePoint "{65B170F3EB074D63}" {
+   Position -495.038 -22.974 -201.408
+  }
+  ShapePoint "{65B170F3EB91D01E}" {
+   Position -545.321 -24.699 122.255
+  }
+  ShapePoint "{65B170F3EA30576E}" {
+   Position -862.784 -28.258 115.327
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 2861.413 165.36 3430.474
+ Points {
+  ShapePoint "{65B170F38507F9F6}" {
+   Position -117.742 0.594 740.589
+  }
+  ShapePoint "{65B170F385D948F0}" {
+   Position -234.411 52.652 -139.7
+  }
+  ShapePoint "{65B170F39B759E56}" {
+   Position -123.96 43.283 -957.311
+  }
+  ShapePoint "{65B170F39921CE38}" {
+   Position 451.026 -21.13 -907.192
+  }
+  ShapePoint "{65B170F399ACF810}" {
+   Position 383.671 -37.515 -299.313
+  }
+  ShapePoint "{65B170F39F372334}" {
+   Position 984.402 -44.187 753.625
+  }
+ }
+}

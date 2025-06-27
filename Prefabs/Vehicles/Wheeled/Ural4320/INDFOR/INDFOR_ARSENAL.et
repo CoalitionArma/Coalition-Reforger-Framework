@@ -1,0 +1,44 @@
+Vehicle : "{32E77EC32ED2B6D1}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{65990AF0A9FD1475}" {
+     SourceMaterial "Ural_Body"
+     AssignedMaterial "{0ABA717F21E466CE}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_FIA.emat"
+    }
+    MaterialAssignClass "{65990AF0A9FD1469}" {
+     SourceMaterial "Ural_Details"
+     AssignedMaterial "{C798CD16F802F339}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Details_FIA.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{117F7CA67E1F652B}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_Arsenal_FIA.edds"
+    m_sFaction "INDFOR"
+    m_aAutoLabels {
+     51872 122 54
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EF07CE051E72289}" {
+      m_BudgetType RANK_PRIVATE
+      m_Value 1
+     }
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "INDFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Ammo {
+     Prefab "{AE98BF4439787E34}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_FIA_arsenal_box.et"
+    }
+   }
+  }
+ }
+}

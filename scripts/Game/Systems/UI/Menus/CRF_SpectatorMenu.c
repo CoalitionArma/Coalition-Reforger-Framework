@@ -104,8 +104,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
 		
 		// Update player icons and spectator UI
-		UpdatePlayerIcons();
-		//GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
+		//UpdatePlayerIcons();
+		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
 	}
 	
 	/**

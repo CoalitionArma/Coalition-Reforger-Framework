@@ -298,10 +298,9 @@ class CRF_RespawnManager : ScriptComponent
 
 			// Check if tickets are available
 			if (TicketsRemaining(faction)) 
-			{
-				RespawnPlayer(playerId);
 				SubtractTicket(faction);
-			}
+			
+			RespawnPlayer(playerId);
 		}
 	}
 
@@ -360,7 +359,7 @@ class CRF_RespawnManager : ScriptComponent
 
 		// Find a valid spawn position
 		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, spawnLocation, 10);
-		Print(finalSpawnLocation);
+		//Print(finalSpawnLocation);
 		
 		// Respawn the player
 		int slotID = m_SlottingManager.GetPlayerSlotID(playerId);

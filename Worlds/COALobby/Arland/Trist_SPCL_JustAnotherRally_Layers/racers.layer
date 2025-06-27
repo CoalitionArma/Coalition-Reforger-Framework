@@ -360,3 +360,20 @@ $grp SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_Ra
   angleY -13.117
  }
 }
+$grp SCR_DestructibleBuildingEntity : "{FD1CE2903D41D4A7}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_8m.et" {
+ {
+  coords 1006.677 -77.119 2734.766
+  angleY -15.01
+  scale 30.03
+ }
+ {
+  coords 1216.982 -93.008 2802.094
+  angleY 76.44
+  scale 33.703
+ }
+ {
+  coords 1266.69 -93.008 2814.156
+  angleY 76.44
+  scale 33.703
+ }
+}

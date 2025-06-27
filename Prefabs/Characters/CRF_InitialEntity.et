@@ -1,12 +1,21 @@
 SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et" {
  ID "520EC961A090B1EE"
  components {
+  CharacterSoundComponent "{520EA1D2F659CF84}" {
+   Filenames {
+   }
+   IncludeInactive 0
+   FoliageCollisionRadius 0
+   ObstructionThreshold 0
+  }
   SCR_CommunicationSoundComponent "{54FD05D0C92D071F}" {
-   Filenames + {
-    "{04548C6D4A936054}Sounds/RadioProtocol/RadioProtocol_Report_2_US.acp"
+   Filenames {
    }
    StaminaThreshold 0.0001
    StaminaThresholdMinimum 0.0001
+  }
+  SCR_CharacterControllerComponent "{520EA1D2F659CEA5}" {
+   m_fDrowningDuration 1000000000
   }
   CRF_PlayableCharacter "{646423C7F8911193}" {
    m_sName "Spectator"
@@ -16,7 +25,30 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    "faction affiliation" "SPEC"
   }
   MeshObject "{520EA1D2F659C81F}" {
+   Materials {
+    MaterialAssignClass "{65AB3C7F849E4B47}" {
+     SourceMaterial "Basebody_01_Male_Arms"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{65AB3C7F849E4BA2}" {
+     SourceMaterial "Basebody_01_Male_Arms_wound"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{65AB3C7F849E4BAB}" {
+     SourceMaterial "Basebody_01_Male_Body"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{65AB3C7F849E4B96}" {
+     SourceMaterial "Basebody_01_Male_Body_wound"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+   }
    PixelSizeScale 0
+   CastShadow 0
+   CastFarShadow 0
+   RainOccluder 0
+   WetnessOccluder 0
+   ReceiveLight 0
   }
   SCR_CharacterDamageManagerComponent "{55872AD7B4E959F2}" {
    "Additional hit zones" {
@@ -62,6 +94,10 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    BreathExhaustedFrequency 0.001
    BreathExhaustedMagnitude 0.001
   }
+  SCR_CharacterVicinityComponent "{529A70D96D401B33}" {
+   DiscoveryRadius 0
+   DiscoveryInterval 0
+  }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#AR-Role_Rifleman"
@@ -76,8 +112,42 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    }
    m_Flags 2133
   }
+  SCR_ExtendedCharacterIdentityComponent "{5AEEA3C8B2AA118B}" {
+   m_ExtendedIdentity SCR_ExtendedCharacterIdentity "{5AEEA3C8BF06C593}" {
+    m_iAge 999
+    m_iDayOfCreation 9
+    m_iMonthOfCreation 9
+    m_eBloodType O_POSITIVE
+   }
+   m_IdentityBio SCR_IdentityBio "{65AB3C7FF085BE1D}" {
+    m_sBio "OHGODOHFUCKHESCOMINGFORUSALL"
+   }
+   m_iMinRandomAge 999
+   m_iMaxRandomAge 99999
+   m_eGender NEUTRAL
+   m_fChanceOfIdentityDocumentBeingValuable 0
+  }
   SCR_VoNComponent "{520EA1D2F659C856}" {
    "Speaking Range" 0
+  }
+  BaseFlattenGrassComponent "{520EA1D2F659CE26}" {
+   ParametersCollection {
+    FlattenGrassParametersObject "{520EA1D2F659CE2C}" {
+     SideX 0
+     SideZ 0
+     MaxHeight 0
+    }
+    FlattenGrassParametersObject "{520EA1D2F659CE28}" {
+     SideX 0
+     SideZ 0
+     MaxHeight 0
+    }
+    FlattenGrassParametersObject "{520EA1D2F659CE27}" {
+     SideX 0
+     SideZ 0
+     MaxHeight 0
+    }
+   }
   }
   SCR_CharacterPerceivableComponent "{566CCE2397E28600}" {
    Enabled 0
@@ -106,6 +176,13 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    Slots {
     LoadoutSlotInfo Back {
      Prefab "{13A97D10A827AE01}Prefabs/Items/Equipment/Radios/SpecRadioBag.et"
+    }
+   }
+  }
+  CharacterAnimationComponent "{520EA1D2F659C994}" {
+   components {
+    SCR_CharacterBuoyancyComponent "{5EDCE7B429F7D056}" {
+     Buoyancy 0
     }
    }
   }

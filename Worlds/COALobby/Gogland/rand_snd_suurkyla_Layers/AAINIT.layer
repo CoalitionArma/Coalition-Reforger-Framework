@@ -1,0 +1,112 @@
+SCR_AIWorld : "{656B40C99B8724C5}Prefabs/AI/SCR_AIWorld_Gogland.et" {
+ coords 5478.195 12.212 9123.176
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{65A8D25BA0282375}" {
+   attackingSide "INDFOR"
+   defendingSide "BLUFOR"
+  }
+ }
+ coords 5463.72 12.271 9107.054
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Mechanized Platoon"\
+   "BLUFOR Assets: 1x Stryker MGS 2x Armed Humvee"\
+   ""\
+   "OPFOR Composition: Motorized Company"\
+   "OPFOR Assets: 1x BTR per squad"\
+   ""\
+   "Time: 45"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Defend Bombsite A and B"\
+   ""
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Attack bombsite A and B"\
+   ""
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "IND"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "BLU"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{F25E9A46E6B14B22}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_Modern.conf"
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65A8D25D5CF3C678}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65A8D25D5C16FB9E}" {
+        m_sCallsign "Stryker MGS"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Lead Cell"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell Lead 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{65A8D25FDFC1DBB2}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{65A8D25FDF10FC14}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{65A8D25FDF0C9A07}" {
+        m_sCallsign "Cell Lead 2"
+       }
+       SCR_CallsignInfo "{65A8D25FDF26292E}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{65A8D25FDF401C21}" {
+        m_sCallsign "Cell 5"
+       }
+       SCR_CallsignInfo "{65A8D25FC800984C}" {
+        m_sCallsign "Cell 6"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

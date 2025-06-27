@@ -1,0 +1,49 @@
+GenericEntity : "{62AFF7A02EE209F9}Prefabs/Props/Military/Compositions/VehicleService_base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{2F6237318749D8A4}Assets/Props/Military/InteractionPoints/VehicleService/VehicleService_Barrels_US_01.xob"
+  }
+  SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+   m_bUserActionActivationOnly 0
+   m_aAvailableTraits + {
+    54 53 1285538991
+   }
+  }
+  SCR_CatalogEntitySpawnerComponent "{5D22B968F23A847A}" {
+   m_eType HEAVY_VEHICLE_DEPOT
+   m_eBuildingLabel SERVICE_VEHICLE_DEPOT_HEAVY
+   m_sDelegatePrefab "{5B423F7ACE06881D}Prefabs/Systems/Services/ServicePointDelegate_VehicleDepotLight.et"
+   m_aCatalogTypes {
+    30
+   }
+   m_aAllowedLabels {
+    50 54 53 1285538991
+   }
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{5D0D0C5A7E358F9B}" {
+     m_ModelPrefabs {
+      "{66F07F2152261618}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_08.xob" "{11FA17A9A684F968}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_09.xob"
+     }
+    }
+    SCR_DebrisSpawnable "{5D0D0C5A7D014BBF}" {
+     m_ModelPrefabs {
+      "{74A4E75B1D356FC9}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_13.xob" "{EDBA5EC200D25E59}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_10.xob" "{9AB0364AF470B129}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_11.xob" "{03AE8FD3E99780B9}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_12.xob"
+     }
+     m_eMaterialSoundType METAL_LIGHT
+    }
+    SCR_DebrisSpawnable "{5D0D0C5A7C03211F}" {
+     m_ModelPrefabs {
+      "{6EB871D2F9ADD95D}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_01.xob" "{F7A6C84BE44AE8CD}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_02.xob" "{80ACA0C310E807BD}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_03.xob" "{F061321A82CC520E}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_05.xob" "{697F8B839F2B639E}Assets/Props/Military/InteractionPoints/VehicleService/Dst/VehicleService_Barrels_US_01_dst_01_dbr_06.xob"
+     }
+    }
+   }
+   m_eMaterialSoundType BREAK_METAL
+  }
+  SCR_FactionAffiliationComponent "{5D22B92ED0ABBFD4}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+}
