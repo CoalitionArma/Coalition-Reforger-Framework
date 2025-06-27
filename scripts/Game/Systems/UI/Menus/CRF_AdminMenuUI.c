@@ -1625,7 +1625,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (int time : timeValues)
 		{
 			string buttonName = string.Format("%1", time);
-			Print(buttonName);
 			SCR_ButtonTextComponent button = GetMenuButton(buttonName, gamerTimer);
 			if (!button)
 				return;
@@ -1639,22 +1638,28 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Load Menu Buttons for Tickets
 		
 		// Faction names
-		ref array<string> factions = {"Blufor", "Opfor", "Indfor", "Civ"};
-
+		ref array<string> factions = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		
+		// Actions
+		ref array<string> actions = {"Add", "Subtract"};
+		
 		// Ticket values
-		ref array<int> values = {10, 5, 1, -1, -5, -10};
+		ref array<int> values = {10, 5, 1};
 		
 		foreach (string faction : factions)
 		{
-			foreach (int value : values)
+			foreach (string action : actions)
 			{
-				string buttonName = string.Format("%1_%2", faction, value);
-				Print(buttonName);
-				SCR_ButtonTextComponent button = GetMenuButton(buttonName, ticketCounters);
-				if (!button)
-					return;
-					
-				button.m_OnClicked.Insert(UpdateTicket);
+				foreach (int value : values)
+				{
+					string buttonName = string.Format("%1_%2_%3", faction, action, value);
+					Print(buttonName);
+					SCR_ButtonTextComponent button = GetMenuButton(buttonName, ticketCounters);
+					if (!button)
+						return;
+						
+					button.m_OnClicked.Insert(UpdateTicket);
+				}
 			}
 		}
 	
@@ -1662,6 +1667,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Change title of the menu
 		UpdateMenuTitle("Gamemode Settings");
 		
+		// Update menu data
+		GamemodeMenuUpdate();
+
 		GetGame().GetCallqueue().CallLater(GamemodeMenuUpdate, 1000, true);
 	}
 	
@@ -1695,7 +1703,15 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!button)
 			return;	
 		
-		PrintFormat("Button Press: %1", button.GetName());
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		
+		array<string> requestParts = {};
+		button.GetName().Split("_", requestParts, true);
+		
+		if (requestParts[1] == "Add")
+			respawnManager.AddTicket(requestParts[0], requestParts[2].ToInt());
+		else
+			respawnManager.SubtractTicket(requestParts[0], requestParts[2].ToInt());
 	}
 	
 	void GamemodeMenuUpdate()

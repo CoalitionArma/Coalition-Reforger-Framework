@@ -365,7 +365,7 @@ FrameWidgetClass {
      Offset 0 0
     }
     ButtonWidgetClass "{659CDD544880223A}" {
-     Name "Blufor_1"
+     Name "BLUFOR_Add_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 232
       OffsetLeft 232
@@ -395,7 +395,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{659CDD543D82E5BB}" {
-     Name "Blufor_5"
+     Name "BLUFOR_Add_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 272
       OffsetLeft 272
@@ -425,7 +425,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{659CDD543D82E253}" {
-     Name "Blufor_10"
+     Name "BLUFOR_Add_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 312
       OffsetLeft 312
@@ -455,7 +455,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E31887130}" {
-     Name "Blufor_-1"
+     Name "BLUFOR_Subtract_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 104
       OffsetLeft 104
@@ -485,7 +485,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E31887147}" {
-     Name "Blufor_-5"
+     Name "BLUFOR_Subtract_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 64
       OffsetLeft 64
@@ -515,7 +515,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E31887089}" {
-     Name "Blufor_-10"
+     Name "BLUFOR_Subtract_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 24
       OffsetLeft 24
@@ -568,7 +568,7 @@ FrameWidgetClass {
      Offset 0 0
     }
     ButtonWidgetClass "{659CDD548AFE9A76}" {
-     Name "Opfor_1"
+     Name "OPFOR_Add_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 232
       OffsetLeft 232
@@ -598,7 +598,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{659CDD548AFEF7A6}" {
-     Name "Opfor_5"
+     Name "OPFOR_Add_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 272
       OffsetLeft 272
@@ -628,7 +628,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{659CDD548AFE1BA8}" {
-     Name "Opfor_10"
+     Name "OPFOR_Add_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 312
       OffsetLeft 312
@@ -658,7 +658,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E7C481572}" {
-     Name "Opfor_-1"
+     Name "OPFOR_Subtract_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 104
       OffsetLeft 104
@@ -688,7 +688,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E7C48914F}" {
-     Name "Opfor_-5"
+     Name "OPFOR_Subtract_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 64
       OffsetLeft 64
@@ -718,7 +718,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E7C48908A}" {
-     Name "Opfor_-10"
+     Name "OPFOR_Subtract_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 24
       OffsetLeft 24
@@ -771,7 +771,7 @@ FrameWidgetClass {
      Offset 0 0
     }
     ButtonWidgetClass "{659CDD54819194FB}" {
-     Name "Indfor_1"
+     Name "INDFOR_Add_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 232
       OffsetLeft 232
@@ -801,7 +801,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{659CDD548191952E}" {
-     Name "Indfor_5"
+     Name "INDFOR_Add_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 272
       OffsetLeft 272
@@ -831,7 +831,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{659CDD548191C6CF}" {
-     Name "Indfor_10"
+     Name "INDFOR_Add_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 312
       OffsetLeft 312
@@ -861,7 +861,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E40E87D06}" {
-     Name "Indfor_-1"
+     Name "INDFOR_Subtract_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 104
       OffsetLeft 104
@@ -891,7 +891,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E40E87CD6}" {
-     Name "Indfor_-5"
+     Name "INDFOR_Subtract_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 64
       OffsetLeft 64
@@ -921,7 +921,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E40E87C85}" {
-     Name "Indfor_-10"
+     Name "INDFOR_Subtract_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 24
       OffsetLeft 24
@@ -974,7 +974,7 @@ FrameWidgetClass {
      Offset 0 0
     }
     ButtonWidgetClass "{65AD2582CEDF1C3C}" {
-     Name "Civ_1"
+     Name "CIV_Add_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 232
       OffsetLeft 232
@@ -1004,7 +1004,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65AD2582C8604219}" {
-     Name "Civ_5"
+     Name "CIV_Add_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 272
       OffsetLeft 272
@@ -1034,7 +1034,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65AD2582CBCAB705}" {
-     Name "Civ_10"
+     Name "CIV_Add_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 312
       OffsetLeft 312
@@ -1064,7 +1064,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E57978B00}" {
-     Name "Civ_-10"
+     Name "CIV_Subtract_10"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 24
       OffsetLeft 24
@@ -1094,7 +1094,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E57978B44}" {
-     Name "Civ_-5"
+     Name "CIV_Subtract_5"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 64
       OffsetLeft 64
@@ -1124,7 +1124,7 @@ FrameWidgetClass {
      }
     }
     ButtonWidgetClass "{65B1588E57978B8B}" {
-     Name "Civ_-1"
+     Name "CIV_Subtract_1"
      Slot FrameWidgetSlot "{62992E477A603216}" {
       PositionX 104
       OffsetLeft 104

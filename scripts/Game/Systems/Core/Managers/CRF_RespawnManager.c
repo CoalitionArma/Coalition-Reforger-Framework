@@ -84,7 +84,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void SubtractTicket(string faction)
+	void SubtractTicket(string faction, int amount)
 	{
 		// Don't subtract tickets during safestart
 		if (m_SafestartManager.GetSafestartStatus())
@@ -99,10 +99,36 @@ class CRF_RespawnManager : ScriptComponent
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_Gamemode.m_iBLUFORTickets--; break;
-			case "OPFOR": m_Gamemode.m_iOPFORTickets--; break;
-			case "INDFOR": m_Gamemode.m_iINDFORTickets--; break;
-			case "CIV": m_Gamemode.m_iCIVTickets--; break;
+			case "BLUFOR": m_Gamemode.m_iBLUFORTickets - amount; break;
+			case "OPFOR": m_Gamemode.m_iOPFORTickets - amount; break;
+			case "INDFOR": m_Gamemode.m_iINDFORTickets- amount; break;
+			case "CIV": m_Gamemode.m_iCIVTickets - amount; break;
+		}
+		
+		Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void AddTicket(string faction, int amount)
+	{
+		
+		// Don't add tickets during safestart
+		if (m_SafestartManager.GetSafestartStatus())
+			return;
+			
+		int currentTickets = GetFactionTickets(faction);
+		
+		// Only subtract if tickets are not unlimited (-1)
+		if (currentTickets == -1)
+			return;
+			
+		// Update the appropriate faction's tickets
+		switch (faction)
+		{
+			case "BLUFOR": m_Gamemode.m_iBLUFORTickets + amount; break;
+			case "OPFOR": m_Gamemode.m_iOPFORTickets + amount; break;
+			case "INDFOR": m_Gamemode.m_iINDFORTickets + amount; break;
+			case "CIV": m_Gamemode.m_iCIVTickets + amount; break;
 		}
 		
 		Replication.BumpMe();
@@ -229,7 +255,7 @@ class CRF_RespawnManager : ScriptComponent
 
 			// Check if tickets are available
 			if (TicketsRemaining(faction)) 
-				SubtractTicket(faction);
+				SubtractTicket(faction, 1);
 			
 			RespawnPlayer(playerId);
 		}
