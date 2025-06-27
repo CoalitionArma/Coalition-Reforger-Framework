@@ -1,0 +1,244 @@
+Vehicle BLUFOR_ENGI1 : "{07E3B7FA0B81F197}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ENGI.et" {
+ coords 7151.328 6.692 5216.541
+}
+$grp GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/GeneratorFloodlight_US_01.et" {
+ {
+  coords 7054.833 5.792 5158.685
+  angleX -0.892
+  angleY -109.944
+  angleZ -3.577
+ }
+ {
+  coords 7059.874 5.821 5151.439
+  angleX -0.892
+  angleY -148.944
+  angleZ -3.577
+ }
+ {
+  coords 7085.184 6.375 5187.73
+  angleX -0.892
+  angleY -34.944
+  angleZ -3.577
+ }
+ {
+  coords 7061.21 6.5 5172.389
+  angleX -0.892
+  angleY -58.944
+  angleZ -3.577
+ }
+ {
+  coords 7067.505 6.471 5176.35
+  angleX -0.892
+  angleY 12.056
+  angleZ -3.577
+ }
+ {
+  coords 7097.726 6.477 5187.189
+  angleX -0.892
+  angleY 51.056
+  angleZ -3.577
+ }
+ {
+  coords 7093.691 6.053 5165.156
+  angleX -0.892
+  angleY 174.056
+  angleZ -3.577
+ }
+ {
+  coords 6389.201 37.976 5150.042
+  angleX 1.109
+  angleY -19.024
+  angleZ -2.275
+ }
+ {
+  coords 6398.229 37.646 5149.102
+  angleX 1.261
+  angleY 40.052
+  angleZ -0.109
+ }
+ {
+  coords 6376.633 37.765 5144.473
+  angleX 1.053
+  angleY -53.993
+  angleZ -1.448
+ }
+ {
+  coords 6375.111 37.727 5135.468
+  angleX 0.447
+  angleY -119.926
+  angleZ 0.776
+ }
+ {
+  coords 6419.09 38.014 5147.807
+  angleX -0.892
+  angleY -4.944
+  angleZ -3.577
+ }
+ {
+  coords 6427.775 37.888 5140.935
+  angleX -0.892
+  angleY 76.056
+  angleZ -3.577
+ }
+ {
+  coords 6426.706 38.141 5131.617
+  angleX -0.892
+  angleY 135.056
+  angleZ -3.577
+ }
+ {
+  coords 6386.884 39.093 5122.024
+  angleX -0.892
+  angleY -176.944
+  angleZ -3.577
+ }
+ {
+  coords 6397.301 38.342 5121.487
+  angleX -0.892
+  angleY -175.944
+  angleZ -3.577
+ }
+ {
+  coords 6414.817 38.941 5119.648
+  angleX -0.892
+  angleY -175.944
+  angleZ -3.577
+ }
+}
+GenericEntity : "{54986385A6AF77B2}Prefabs/Props/Military/Arsenal/ArsenalBoxes/ArsenalBox_Base.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes EXPLOSIVES
+   m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{65B630366A5A2805}" {
+    m_aArsenalItems {
+     SCR_ArsenalItemStandalone "{65B6303669665B1A}" {
+      m_eItemType EXPLOSIVES
+      m_iSupplyCost 50
+      m_ItemResourceName "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT.et"
+     }
+    }
+   }
+   m_eArsenalSaveType IN_ARSENAL_ITEMS_ONLY
+  }
+  SCR_FactionAffiliationComponent "{5A50E7655452A21D}" {
+   "faction affiliation" "US"
+  }
+ }
+ coords 7147.671 6.634 5216.557
+}
+$grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_AmmoStorage.et" {
+ z3s1 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 10000
+   }
+  }
+  coords 7353.193 8.375 5562.187
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Ship Generator Destroyed\", duration: 20, \"OPFOR VICTORY\");"\
+  "	"
+  {
+   GameEntity z3s1gen : "{08A67291A34312EA}PrefabsEditable/Auto/Props/Military/Generators/GeneratorMilitary_USSR_01/E_GeneratorMilitary_USSR_01_camo_open.et" {
+    coords 1.999 -0.169 0.938
+   }
+   CRF_ManualMarker z3s1marker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+    coords 0.707 -0.106 1.047
+    angleY 90
+    m_MarkerColor 0.61 0.032 0.61 1
+    m_sQuadName "fortification"
+    m_fWorldSize 75
+    m_sDescription "Generator"
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ z2s1 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 10000
+   }
+  }
+  coords 7076.451 6.768 5168.859
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OBJ2 Destroyed\", duration: 10);"\
+  "		"\
+  "		// TODO: Get the parent and delete everything"\
+  "		// Delete actual mcom/generator"\
+  "		IEntity mcom = GetGame().GetWorld().FindEntityByName(\"z2s1gen\");"\
+  "		delete mcom;"\
+  "		// Delete markers"\
+  "		IEntity mcomMarker = GetGame().GetWorld().FindEntityByName(\"z2s1marker\");"\
+  "		delete mcomMarker;"\
+  "		"\
+  "			"\
+  "		//respawn the players"\
+  "		if (RplSession.Mode() == RplMode.Dedicated) {"\
+  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();		"\
+  "			gm.RespawnAllSides();"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker z2s1marker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+    coords 0.707 -0.106 1.047
+    angleY 90
+    m_MarkerColor 0.61 0.032 0.61 1
+    m_sQuadName "fortification"
+    m_fWorldSize 75
+    m_sDescription "OBJ2"
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   GenericEntity z2s1gen : "{EA34AA1A128DDF6E}Prefabs/Props/Military/Arsenal/AmmoBoxes/AmmoBoxCache_CP.et" {
+    coords 4.131 0 1.438
+   }
+  }
+ }
+ z1s1 {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 10000
+   }
+  }
+  coords 6400.704 37.984 5137.953
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"OBJ1 Destroyed\", duration: 10);"\
+  "		"\
+  "		// TODO: Get the parent and delete everything"\
+  "		// Delete actual mcom/generator"\
+  "		IEntity mcom = GetGame().GetWorld().FindEntityByName(\"z1s1gen\");"\
+  "		delete mcom;"\
+  "		// Delete markers"\
+  "		IEntity mcomMarker = GetGame().GetWorld().FindEntityByName(\"z1s1marker\");"\
+  "		delete mcomMarker;"\
+  "		"\
+  "			"\
+  "		//respawn the players"\
+  "		if (RplSession.Mode() == RplMode.Dedicated) {"\
+  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();		"\
+  "			gm.RespawnAllSides();"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker z1s1marker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+    coords 0.707 -0.106 1.047
+    angleY 90
+    m_MarkerColor 0.61 0.032 0.61 1
+    m_sQuadName "fortification"
+    m_fWorldSize 75
+    m_sDescription "OBJ1"
+    m_bUseWorldScale 0
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   GenericEntity z1s1gen : "{EA34AA1A128DDF6E}Prefabs/Props/Military/Arsenal/AmmoBoxes/AmmoBoxCache_CP.et" {
+    coords 4.131 0 1.438
+   }
+  }
+ }
+}

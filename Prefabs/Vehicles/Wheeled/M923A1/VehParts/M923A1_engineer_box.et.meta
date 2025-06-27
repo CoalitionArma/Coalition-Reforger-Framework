@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{49FFE8F373F55960}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT.et"
+ Name "{FB186A7EAB2ADE68}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_engineer_box.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
