@@ -151,6 +151,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void SendRespawnScreenUpdate(RplId rplID, bool active)
+	{
+		#ifdef WORKBENCH
+		RpcDo_SendRespawnScreenUpdate(rplID, active);
+		#else
+		Rpc(RpcDo_SendRespawnScreenUpdate, rplID, active);
+		#endif
+	}	
+
+	//------------------------------------------------------------------------------------------------
 	void SendRespawnScreen(int playerId)
 	{
 		#ifdef WORKBENCH
@@ -435,6 +445,13 @@ class CRF_RplBroadcastManager : ScriptComponent
 			chatComponent.ShowMessage(data);
 		}
 	}
+
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_SendRespawnScreenUpdate(RplId rplID, bool active)
+	{
+		CRF_RespawnManager.GetInstance().OnRespawnPointStateChanged().Invoke(rplID, active);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -455,7 +472,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Open respawn menu
 		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 
+		
 		// Set up respawn timers
+		m_RespawnManager.m_iRespawnTimer = m_RespawnManager.GetCurrentWaveTimer();
 		GetGame().GetCallqueue().CallLater(m_RespawnManager.RespawnTimer, 1000, true);
 		GetGame().GetCallqueue().CallLater(m_RespawnManager.CloseSlottingMenu, 100, true);
 	}

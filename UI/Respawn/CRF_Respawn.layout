@@ -200,13 +200,13 @@ FrameWidgetClass {
    Name "ChatHud"
    Slot FrameWidgetSlot "{58731DB272499DED}" {
     Anchor 0 0 1 1
-    PositionX 0
-    OffsetLeft 0
+    PositionX -0.498
+    OffsetLeft -0.498
     PositionY 0
     OffsetTop 0
-    SizeX -1920
-    OffsetRight 0
-    SizeY -746
+    SizeX 0
+    OffsetRight 0.498
+    SizeY 0
     OffsetBottom 0
    }
   }
@@ -214,11 +214,13 @@ FrameWidgetClass {
    Name "MapFrame"
    Slot FrameWidgetSlot "{58731DB204D943BC}" {
     Anchor 0 0 1 1
-    PositionX 681.051
-    PositionY 148.881
-    SizeX -909.124
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
     OffsetRight 0
-    SizeY -148.881
+    SizeY 0
     OffsetBottom 0
    }
    {
@@ -231,6 +233,125 @@ FrameWidgetClass {
         Padding 0 0 0 0
         FillWeight 1
        }
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{6504D1F804321744}" {
+   Name "SpawnSel"
+   Slot FrameWidgetSlot "{62EF62C884AA9F57}" {
+    Anchor 1 1 1 1
+    PositionX -304.195
+    OffsetLeft -304.195
+    PositionY -239.627
+    OffsetTop -239.627
+    SizeX 305.271
+    OffsetRight -1.076
+    SizeY 241.052
+    OffsetBottom -1.425
+   }
+   "Z Order" 10
+   {
+    ImageWidgetClass "{6504D1F804321754}" {
+     Name "SpawnSelBG"
+     Slot FrameWidgetSlot "{62EF62C8ABA4CFE1}" {
+      Anchor 1 1 1 1
+      PositionX -310.882
+      OffsetLeft -310.882
+      PositionY -240.841
+      OffsetTop -240.841
+      SizeX 311.202
+      OffsetRight -0.32
+      SizeY 239.802
+      OffsetBottom 1.039
+     }
+     Color 0.008 0.012 0.016 1
+     Size 512 512
+     "Transition width" 1
+     Progress 0.24
+     "Mask Mode" "Include Below"
+    }
+    OverlayWidgetClass "{6504D1E91EE42553}" {
+     Name "List1Overlay"
+     Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+      PositionX 35.258
+      OffsetLeft 35.258
+      PositionY 10.017
+      OffsetTop 10.017
+      SizeX 239.142
+      OffsetRight -274.4
+      SizeY 140.54
+      OffsetBottom -150.557
+     }
+     {
+      OverlayWidgetClass "{6504D1E91EE42557}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+       Name "List1Box"
+       Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 0 20 0 0
+       }
+       {
+        ScrollLayoutWidgetClass "{56691148E692435A}" {
+         Prefab "{56691148E692435A}"
+         {
+          VerticalLayoutWidgetClass "{56691148E013D981}" {
+           Prefab "{56691148E013D981}"
+           Slot AlignableSlot "{56691148E013D9A9}" {
+           }
+          }
+         }
+        }
+        ImageWidgetClass "{5DB6D18100D38307}" {
+         Prefab "{5DB6D18100D38307}"
+         "Is Visible" 0
+        }
+       }
+      }
+      TextWidgetClass "{6504D1E91EE42549}" {
+       Name "List1Text"
+       Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+        VerticalAlign 0
+        Padding -9 0 0 0
+       }
+       Clipping False
+       Text "Respawn Location"
+       "Font Size" 20
+       "Min Font Size" 10
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       Offset 0 0
+      }
+     }
+    }
+    ButtonWidgetClass "{6504D1E976B0AD08}" {
+     Name "ActionButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      PositionX 107.795
+      OffsetLeft 107.795
+      PositionY 199.245
+      OffsetTop 199.245
+      SizeX 100.001
+      OffsetRight -207.796
+      SizeY 30
+      OffsetBottom -229.245
+     }
+     Color 0.045 0.045 0.045 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{6504D1E976B0AD09}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text "Select Spawn"
+       "Font Size" 15
+       "Min Font Size" 15
       }
      }
     }

@@ -3,6 +3,8 @@
 // .....I hate it
 modded class SCR_DataCollectorComponent
 {
+	CRF_LoggingManager LM;
+	
 	override void OnPlayerAuditSuccess(int playerId)
 	{
 		//Print("[CRF] Player with id " + playerId + " was auditted succesfully and admitted on the Data Collector");
@@ -13,7 +15,7 @@ modded class SCR_DataCollectorComponent
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
 			module.OnPlayerAuditSuccess(playerId);
-		}
+		}		
 	}
 	
 	override SCR_PlayerData GetPlayerData(int playerID, bool createNew = true, bool requestFromBackend = true)
@@ -105,6 +107,9 @@ modded class SCR_DataCollectorComponent
 		IEntity playerEntity = instigatorContextData.GetVictimEntity();
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		Instigator instigator = instigatorContextData.GetInstigator();
+		
+		// Logging player kill to file
+		LM.GetInstance().LogPlayerKill(instigatorContextData);
 		
 		if (instigatorContextData.GetVictimPlayerID() <= 0) {
 			OnAIKilledCRF(playerEntity,killerEntity,instigator,instigatorContextData);

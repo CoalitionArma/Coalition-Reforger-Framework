@@ -105,7 +105,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		
 		// Update player icons and spectator UI
 		//UpdatePlayerIcons();
-		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
+		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 3000, true);
 	}
 	
 	/**

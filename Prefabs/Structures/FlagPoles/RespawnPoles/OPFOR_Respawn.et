@@ -68,6 +68,7 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    }
   }
   RplComponent "{649042617FCFD793}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+   Streamable Disabled
   }
  }
  coords 0 -1.175 0
