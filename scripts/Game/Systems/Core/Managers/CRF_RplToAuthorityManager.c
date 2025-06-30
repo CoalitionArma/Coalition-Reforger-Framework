@@ -189,6 +189,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_ResetGear, playerId, prefab, logAction); 
 	}
 	
+	// Equipment management
+	void UpdateGearSet(ResourceName bluGear, ResourceName opfGear, ResourceName indGear, ResourceName civGear)
+	{
+		Rpc(RpcAsk_UpdateGearSet, bluGear, opfGear, indGear, civGear); 
+	}
+	
 	void AddItem(int playerId, string prefab, bool logAction)
 	{
 		Rpc(RpcAsk_AddItem, playerId, prefab, logAction); 
@@ -422,6 +428,12 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			string logMessage = string.Format("%1's gear was set to %2", playerName, prefabName);
 			m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true);
 		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateGearSet(ResourceName bluGear, ResourceName opfGear, ResourceName indGear, ResourceName civGear)
+	{
+		m_AdminMenuManager.UpdateGearSets(bluGear, opfGear, indGear, civGear);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

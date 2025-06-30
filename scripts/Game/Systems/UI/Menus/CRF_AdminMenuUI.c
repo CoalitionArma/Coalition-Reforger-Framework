@@ -1614,6 +1614,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
 		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
 		
+		SCR_ButtonTextComponent resetGearButton = GetMenuButton("MenuButton0", gearSets);
+		
+		resetGearButton.m_OnClicked.Insert(UpdateGearSets);
+		
 		/*
 		*	!!!!! Changing the time delta is done below and in the menu layout !!!!!
 		*/
@@ -1653,7 +1657,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 				foreach (int value : values)
 				{
 					string buttonName = string.Format("%1_%2_%3", faction, action, value);
-					Print(buttonName);
 					SCR_ButtonTextComponent button = GetMenuButton(buttonName, ticketCounters);
 					if (!button)
 						return;
@@ -1662,8 +1665,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 				}
 			}
 		}
-	
-
+		
+		// TODO: Load config files into listboxs and array
+		
 		// Change title of the menu
 		UpdateMenuTitle("Gamemode Settings");
 		
@@ -1712,6 +1716,24 @@ class CRF_AdminMenu : ChimeraMenuBase
 			respawnManager.AddTicket(requestParts[0], requestParts[2].ToInt());
 		else
 			respawnManager.SubtractTicket(requestParts[0], requestParts[2].ToInt());
+	}
+	
+	void UpdateGearSets()
+	{
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		
+		SCR_ListBoxComponent bluforGearSetList = GetListBox("FactionList0", gearSets);
+		SCR_ListBoxComponent opforGearSetList = GetListBox("FactionList1", gearSets);
+		SCR_ListBoxComponent indforGearSetList = GetListBox("FactionList2", gearSets);
+		SCR_ListBoxComponent civGearSetList = GetListBox("FactionList3", gearSets);
+		
+		//TODO: Get configs from list box compared to array???
+		ResourceName newBluforGearSetConfig = "";
+		ResourceName newOpforGearSetConfig = "";
+		ResourceName newIndforGearSetConfig = "";
+		ResourceName newCivGearSetConfig = "";
+		
+		CRF_RplToAuthorityManager.GetInstance().UpdateGearSet(newBluforGearSetConfig, newOpforGearSetConfig, newIndforGearSetConfig, newCivGearSetConfig);
 	}
 	
 	void GamemodeMenuUpdate()
