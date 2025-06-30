@@ -647,11 +647,11 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 * @param zOrder - Display order/priority
 	 * @param markerColor - ARGB color value
 	 */
-	void AddScriptedMarker(string markerEntityName, vector markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
+	void AddScriptedMarker(string markerEntityName, string markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
 	{
 		m_aScriptedMarkers.Insert(string.Format("%1||%2||%3||%4||%5||%6||%7", 
 			markerEntityName, 
-			markerOffset.ToString(), 
+			markerOffset, 
 			timeDelay.ToString(), 
 			markerText, 
 			markerImage, 
@@ -669,11 +669,11 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 * @param zOrder - Display order/priority
 	 * @param markerColor - ARGB color value
 	 */
-	void RemoveScriptedMarker(string markerEntityName, vector markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
+	void RemoveScriptedMarker(string markerEntityName, string markerOffset, int timeDelay, string markerText, string markerImage, int zOrder, int markerColor)
 	{
 		m_aScriptedMarkers.RemoveItemOrdered(string.Format("%1||%2||%3||%4||%5||%6||%7", 
 			markerEntityName, 
-			markerOffset.ToString(), 
+			markerOffset, 
 			timeDelay.ToString(), 
 			markerText, 
 			markerImage, 

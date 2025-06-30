@@ -27,6 +27,19 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private string m_MissionDetails;
 	private string m_GameMode;
 	
+	// Kill data
+	string m_sKillerName;
+	string m_sKillerGUID;
+	//string m_sKillerFaction;
+	string m_sVictimName;
+	string m_sVictimGUID;
+	//string m_sKilledFaction;
+	string m_sTime;
+	string m_sWeaponName;
+	float m_fRange;
+	float m_fTotalTime;
+	int m_iTotalSeconds;
+	
 	// Player counts
 	private int m_PlayerCount;
 	private int m_BluforCount;
@@ -36,6 +49,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	// File handling and faction management
 	private ref FileHandle m_LogFileHandle;
 	private SCR_FactionManager m_FactionManager;
+	private BaseWeaponManagerComponent m_WMC;
 	
 	// Singleton instance
 	private static CRF_LoggingManager s_Instance;
@@ -214,5 +228,37 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		
 		m_LogFileHandle.WriteLine("mission" + SEPARATOR + eventType + SEPARATOR + m_MissionName + SEPARATOR + m_PlayerCount + SEPARATOR + m_MaxPlayers + SEPARATOR + m_AuthorName + SEPARATOR + m_MissionDetails + SEPARATOR + m_GameMode);
+	}
+	
+	// Logs player death and kill data to file
+	// TODO: 
+	//	- Handle AI kills/deaths
+	//  - Faction data
+	void LogPlayerKill(SCR_InstigatorContextData instiContext)
+	{
+		if (!m_LogFileHandle)
+			return;
+		
+		m_sVictimName = GetGame().GetPlayerManager().GetPlayerName(instiContext.GetVictimPlayerID());
+		m_sVictimGUID = GetGame().GetBackendApi().GetPlayerIdentityId(instiContext.GetVictimPlayerID());
+		m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(instiContext.GetKillerPlayerID());
+		m_sKillerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(instiContext.GetKillerPlayerID());
+		
+		// Killer weapon info
+		m_WMC = BaseWeaponManagerComponent.Cast(instiContext.GetKillerEntity().FindComponent(BaseWeaponManagerComponent));
+		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();	
+		if (m_sWeaponName == "")
+			m_sWeaponName = "Unknown Weapon";
+		
+		// Range
+		m_fRange = vector.Distance(instiContext.GetVictimEntity().GetOrigin(),instiContext.GetKillerEntity().GetOrigin());
+		
+		// Time
+		m_fTotalTime = GetGame().GetWorld().GetWorldTime();
+  		m_iTotalSeconds = (m_fTotalTime / 1000);
+		m_sTime = SCR_FormatHelper.FormatTime(m_iTotalSeconds);
+		
+		// Log to file
+		m_LogFileHandle.WriteLine("kill" + SEPARATOR + m_sVictimName + SEPARATOR + m_sVictimGUID + SEPARATOR + m_sKillerName + SEPARATOR + m_sKillerGUID + SEPARATOR + m_sWeaponName + SEPARATOR + m_fRange + SEPARATOR + m_sTime);
 	}
 }

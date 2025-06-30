@@ -1,0 +1,116 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 20
+   m_iStartingMinutes 55
+  }
+ }
+ coords 2089.922 675.472 3615.678
+ m_iTimeLimitMinutes 50
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "This is a two zone rush mission. Destroy the two caches in zone 1 to unlock zone 2. The caches are resistant to explosions smaller than a demo block. You spawn with all of the assets you will receive for the match. "\
+   ""\
+   "BLUFOR Composition: Moto Inf"\
+   "BLUFOR Assets: Stryker MGS"\
+   ""\
+   "OPFOR Composition: Mech Inf"\
+   "OPFOR Assets: 1 BMP3 / Squad"\
+   ""\
+   "Time: 50"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy Alpha, and Bravo to unlock zone 2. Then destroy Charlie and Delta."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the objectives."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Each side will receive one respawn wave after zone 1. You will not receive any new assets. "
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{65B2E21B639A3E1D}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65B2E21B63DD9574}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65B2E21B623806E9}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{65B2E21B627D722F}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{65B2E21B62A17836}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{65B2E21B62E3458D}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{65B2E21B6C42ED54}" {
+        m_sCallsign "MAT team"
+       }
+       SCR_CallsignInfo "{65B2E21B76F80ECD}" {
+        m_sCallsign "Stryker"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65B2E21BB70AF4F3}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65B2E21BBC55DA3E}" {
+        m_sCallsign "1-4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

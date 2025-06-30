@@ -141,9 +141,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	// Player management functions
-	void RespawnPlayer(int playerId)
+	void RespawnPlayer(int playerId, RplId SpawnRplID)
 	{
-		Rpc(RpcAsk_RespawnPlayer, playerId); 
+		Rpc(RpcAsk_RespawnPlayer, playerId, SpawnRplID); 
 	}	
 	
 	// VON channel management
@@ -317,9 +317,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RespawnPlayer(int playerId)
+	protected void RpcAsk_RespawnPlayer(int playerId, RplId SpawnRplID)
 	{
-		m_RespawnManager.RespawnPlayer(playerId);
+		m_RespawnManager.RespawnPlayer(playerId, vector.Zero, -1, SpawnRplID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

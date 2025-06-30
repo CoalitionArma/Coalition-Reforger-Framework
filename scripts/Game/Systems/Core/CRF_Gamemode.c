@@ -292,10 +292,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 			if (defaultHitZone)
 				defaultHitZone.SetHealth(0);
 		}
+		
+		// Stores player profiles who havent disconnected
+		dataCollector.OnGameEnd();
 	}
 	
 	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
 	{
+		string name = GetGame().GetPlayerManager().GetPlayerName(player);
+		PrintFormat("[CRF] Logging Stats for player %1",name);
 		// Process player statistics data
 		if (!m_PlayerData)
 		{
@@ -316,11 +321,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 				
 				if (communicationComponent)
 					communicationComponent.GetOnDataReceived().Insert(OnDataReceived);
+			} else {
+				m_PlayerData.CalculateStatsChange();
 			}
-			
-			m_PlayerData.StoreProfile();
-			m_PlayerData.CalculateStatsChange();
-			
 		}
 	}
 	
@@ -470,7 +473,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
-			m_RespawnManager.FindSpawnPointLocation(factionKey) != vector.Zero &&
+			!m_RespawnManager.GetFactionSpawnpoints(factionKey).IsEmpty() &&
 			!factionKey.IsEmpty())
 		{
 			// Deduct ticket

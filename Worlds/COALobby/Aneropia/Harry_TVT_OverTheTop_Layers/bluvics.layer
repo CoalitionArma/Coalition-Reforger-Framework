@@ -1,0 +1,103 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 1331.279 90.457 3232.148
+  angleY 69.407
+  m_rnPrefab "{A6783FAA5D516D68}Prefabs/Vehicles/Wheeled/Stryker/M1128/Stryker_MGS.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1509.038 97.101 3234.928
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1496.942 96.328 3234.755
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1484.74 95.523 3234.58
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1495.497 95.951 3215.055
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1493.056 97.3 3192.4
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1480.854 97.377 3192.224
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1507.594 96.892 3215.228
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1505.153 98.076 3192.572
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1483.295 95.747 3214.88
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1515.768 99.725 3162.745
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1491.47 98.618 3162.398
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1503.672 99.132 3162.572
+  angleY -0.82
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+$grp Vehicle : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ M151A1 {
+  coords 1331.201 89.957 3214.421
+  angleY -18.671
+ }
+ M151A2 {
+  coords 1335.366 89.945 3215.828
+  angleY -18.671
+ }
+}

@@ -6,14 +6,21 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp(onRplName: "WaveRespawnTimer")]
 	private int m_iRespawnWaveCurrentTime;
 	int m_iRespawnTimer;
+	[RplProp()]
+	ref array<RplId> m_RespawnPointsRplID = {}; // Used for clients
+	
+	// Store state for UI selection
+	bool m_RespawnConfirmed = false;
+	RplId m_SelectedSpawnRplID;
 	
 	// Protected Member Variables
-	protected ref array<IEntity> m_aRespawnPoints = {};
-	
+	protected ref array<IEntity> m_aRespawnPoints = {}; // Used for server
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SafestartManager m_SafestartManager;
 	protected CRF_SlottingManager m_SlottingManager;
+	
+	ref ScriptInvoker m_OnRespawnPointStateChanged = new ScriptInvoker();
 
 	//------------------------------------------------------------------------------------------------
 	// Singleton accessor
@@ -115,7 +122,6 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 
 		m_iRespawnWaveCurrentTime--;
-		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
 		
 		if (m_iRespawnWaveCurrentTime == 0)
 			m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
@@ -137,7 +143,8 @@ class CRF_RespawnManager : ScriptComponent
 	void RespawnTimer()
 	{
 		// Decrease the respawn timer
-		m_iRespawnTimer--;
+		if (m_iRespawnTimer > 0)
+			m_iRespawnTimer--;
 
 		// Check if timer expired or we're in AAR
 		bool isTimerExpired = m_iRespawnTimer <= 0;
@@ -145,20 +152,33 @@ class CRF_RespawnManager : ScriptComponent
 		
 		if (isTimerExpired || isGameInAARState)
 		{
-			// Reset the timer
-			m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-			
-			// Only perform respawn if not in AAR state
-			if (!isGameInAARState)
+			// Check if Respawn Screen is open
+			MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+			if (topMenu.IsInherited(CRF_RespawnMenu))
 			{
-				GetGame().GetMenuManager().CloseAllMenus();
-				GetGame().GetCallqueue().Remove(CloseSlottingMenu);
-				CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId());
+				// Check if respawn selection was confirmed in the UI
+				CRF_RespawnMenu respawnMenuUI = CRF_RespawnMenu.Cast(topMenu);
+				if (m_SelectedSpawnRplID != -1 && m_RespawnConfirmed)
+				{
+					// Reset the timer
+					m_iRespawnTimer = m_iRespawnWaveCurrentTime;
+					// Only perform respawn if not in AAR state
+					if (!isGameInAARState)
+					{
+						GetGame().GetCallqueue().Remove(CloseSlottingMenu);
+						GetGame().GetMenuManager().CloseAllMenus();
+						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
+						
+						// Set menu state back to default
+						m_SelectedSpawnRplID = -1;
+						m_RespawnConfirmed = false; 
+					}
+		
+					// Remove this timer function from the callqueue
+					GetGame().GetCallqueue().Remove(RespawnTimer);
+					return;
+				}
 			}
-
-			// Remove this timer function from the callqueue
-			GetGame().GetCallqueue().Remove(RespawnTimer);
-			return;
 		}
 
 		// Handle respawn menu
@@ -185,8 +205,24 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		if (!respawnPoint)
 			return;
-			
+
+		RplComponent rplComp = RplComponent.Cast(respawnPoint.FindComponent(RplComponent));
+		if (!rplComp)
+			return;
+	
+		// Retry until RplId is valid
+		if (rplComp.Id() == RplId.Invalid())
+		{
+			GetGame().GetCallqueue().CallLater(RegisterRespawnPoint, 100, false, respawnPoint);
+			return;
+		}
+
+		// Store Respawnpoints and sync with client
 		m_aRespawnPoints.Insert(respawnPoint);
+		m_RespawnPointsRplID.Insert(rplComp.Id());
+		
+		// Broadcast UI updates to clients
+		CRF_RplBroadcastManager.GetInstance().SendRespawnScreenUpdate(rplComp.Id(), true);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -198,6 +234,39 @@ class CRF_RespawnManager : ScriptComponent
 		int index = m_aRespawnPoints.Find(respawnPoint);
 		if (index != -1)
 			m_aRespawnPoints.Remove(index);
+		
+		RplId rplID = GetSpawnRplIDFromEntity(respawnPoint);
+		m_RespawnPointsRplID.RemoveItemOrdered(rplID);
+		
+		// Broadcast UI updates to clients
+		CRF_RplBroadcastManager.GetInstance().SendRespawnScreenUpdate(rplID, false);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<IEntity> GetFactionSpawnpoints(FactionKey faction)
+	{
+		array<IEntity> sideRespawnPoints = {};
+		
+		foreach(IEntity point : m_aRespawnPoints)
+		{
+			if (point == null)
+				continue;
+
+			CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+
+			if (!respawnComponent)
+				continue;
+
+			if (respawnComponent.m_sRespawnPointFaction != faction)
+				continue;
+
+			if (!respawnComponent.m_bActiveRespawnPoint)
+				continue;
+
+			sideRespawnPoints.Insert(point)
+		}
+		
+		return sideRespawnPoints;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -236,7 +305,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, vector spawnLocation = vector.Zero, int groupID = -1)
+	void RespawnPlayer(int playerId, vector spawnLocation = vector.Zero, int groupID = -1, RplId SpawnRplID = -1)
 	{
 		// Skip on client
 		if (RplSession.Mode() == RplMode.Client)
@@ -261,8 +330,22 @@ class CRF_RespawnManager : ScriptComponent
 		
 		// Determine spawn location
 		vector finalSpawnLocation = vector.Zero;
+
+		// Check if the respawn menu provided a spawn point
+		if (SpawnRplID != -1 && spawnLocation == vector.Zero)
+		{
+			RplComponent rplComp = RplComponent.Cast(Replication.FindItem(SpawnRplID));
+			if (rplComp)
+			{
+				IEntity point = IEntity.Cast(rplComp.GetEntity());
+				CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+			
+				if (respawnComponent.m_bActiveRespawnPoint)
+					spawnLocation = point.GetOrigin();
+			}
+		}
 		
-		// Use provided spawn location or find one
+		// Use provided spawn location or fall back to factions default spawn
 		if (spawnLocation == vector.Zero)
 			spawnLocation = FindSpawnPointLocation(factionKey);
 
@@ -312,5 +395,43 @@ class CRF_RespawnManager : ScriptComponent
 		}
 		
 		return spawnPointLocation;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	ScriptInvoker OnRespawnPointStateChanged()
+	{
+		return m_OnRespawnPointStateChanged;
+	}
+	
+	/**
+	 * Getter for the current wave timer
+	 */
+	int GetCurrentWaveTimer()
+	{
+		return m_iRespawnWaveCurrentTime;
+	}
+	
+	/**
+	 * Helper for converting Spawnpoint RplID to Entity
+	 */
+	IEntity GetSpawnEntityFromRplID(RplId rplID)
+	{
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(rplID));
+		if (!rplComp)
+			return null;
+
+		return IEntity.Cast(rplComp.GetEntity());
+	}
+	
+	/**
+	 * Helper for converting Spawnpoint Entity to RplID
+	 */
+	RplId GetSpawnRplIDFromEntity(IEntity point)
+	{
+		RplComponent rplComp = RplComponent.Cast(point.FindComponent(RplComponent));
+		if (!rplComp)
+			return -1;
+		
+		return rplComp.Id();
 	}
 }
