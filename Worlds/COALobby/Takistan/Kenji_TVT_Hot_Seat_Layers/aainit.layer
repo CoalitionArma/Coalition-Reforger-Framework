@@ -31,8 +31,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "We must survive the oncoming American assault and protect at least one out of two bombsites."
   }
  }
- m_iFactionOneRatio 2
+ m_iFactionOneRatio 3
  m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
  m_sFactionTwoKey "IND"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{3A6FB419BE5A3CF6}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU.conf"
