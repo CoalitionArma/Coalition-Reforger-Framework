@@ -4,16 +4,6 @@ class CRF_PlayableCharacterClass : ScriptComponentClass
 
 class CRF_PlayableCharacter : ScriptComponent
 {
-	// Configuration attributes
-	[Attribute()]
-	string m_sName;
-	
-	[Attribute("0")]
-	bool m_bIsPlayable;
-
-	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_ESlotType))]
-	CRF_ESlotType m_SlottingRole;
-
 	// State variables
 	protected bool m_bIsSlotSpawned = false;
 	
@@ -50,9 +40,6 @@ class CRF_PlayableCharacter : ScriptComponent
 			return false;
 		
 		if (!m_Gamemode)
-			return false;
-		
-		if (!m_bIsPlayable)
 			return false;
 		
 		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && 

@@ -760,29 +760,29 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 				continue;
 			
 			// Skip locked slots for non-admins
-			if(slotData.GetIsLockedSlot() && !isAdmin && slotData.GetSlotCurrentPlayerId() <= 0)
+			if (slotData.GetIsLockedSlot() && !isAdmin && slotData.GetSlotCurrentPlayerId() <= 0)
 				continue;
 			
 			// Track dead slots but don't display them
-			if(slotData.GetIsDeadSlot())
+			if (slotData.GetIsDeadSlot())
 			{
 				deadPlayersInGroup++;
 				continue;
 			}
 			
 			// Skip dead empty slots
-			if(slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
+			if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
 				continue;
 			
 			// Add slot to UI
 			int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
 			
 			// Count players
-			if(slotData.GetSlotCurrentPlayerId() >= 0)
+			if (slotData.GetSlotCurrentPlayerId() >= 0)
 				playersInGroup++;
 			
 			// Set player text if slot is taken
-			if(slotData.GetSlotCurrentPlayerId() > 0)
+			if (slotData.GetSlotCurrentPlayerId() > 0)
 			{
 				string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
 				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
@@ -795,15 +795,20 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			// Add click handler
 			m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlotButton().m_OnClicked.Insert(SelectSlotDelay);				
 			
+			CRF_ESlotType slotType = slotData.GetSlotType();
+			
 			// Add leaders/medics to ORBAT view
-			if(slotData.GetSlotType() == CRF_ESlotType.LEADERORMEDIC && slotData.GetSlotCurrentPlayerId() > 0)
+			if ((slotType == CRF_ESlotType.TEAM_LEADER 
+				|| slotType == CRF_ESlotType.SQUAD_LEADER 
+				|| slotType == CRF_ESlotType.MEDIC) 
+				&& slotData.GetSlotCurrentPlayerId() > 0)
 			{
 				AddLeaderToOrbat(slotData, slotId, orbatGroupIndex, leadersInGroup);
 				leadersInGroup++;
 			}
 			
 			// Add admin-only slot controls
-			if(isAdmin)
+			if (isAdmin)
 				SetupAdminSlotControls(slotIndex, slotData);
 		}
 	}
@@ -825,14 +830,14 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).SetPlayerText(playerName);
 		
 		// Show disconnect indicator if player not connected
-		if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
 			m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).GetDisconnectWidget().SetVisible(true);
 		
 		// Hide slot button in orbat view
 		m_cOrbatListBoxComponent.GetCRFElementComponent(orbatIndex).GetSlotButton().SetVisible(false);
 		
 		// Set group icon based on first leader's role
-		if(leadersInGroup == 0)
+		if (leadersInGroup == 0)
 		{
 			m_cOrbatListBoxComponent.GetCRFElementComponent(orbatGroupIndex).SetRoleImage(
 				slotData.GetSlotIconResource(), "groupRoleName");
@@ -852,7 +857,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetLockButton().m_OnClicked.Insert(LockSlotDelay);
 		m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetKickButton().m_OnClicked.Insert(KickSlotDelay);
 		
-		if(slotData.GetIsLockedSlot())
+		if (slotData.GetIsLockedSlot())
 			m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetLockImage(
 				"{564794579B2DB679}UI/Textures/Editor/Attributes/Attribute_Locked.edds", "lockimage");
 	}
@@ -1370,10 +1375,21 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		
 		// Check slotting phase restrictions
 		bool leaderAndMedicPhase = m_Gamemode.m_SlottingState == 0;
-		bool slotNotLeaderOrMedic = slottingManager.GetSlotData(slotId).GetSlotType() != CRF_ESlotType.LEADERORMEDIC;
+		CRF_ESlotType slotType = slottingManager.GetSlotData(slotId).GetSlotType();
+		
+		bool slotNotLeaderOrMedic = 
+				( slotType != CRF_ESlotType.TEAM_LEADER 
+				&& slotType != CRF_ESlotType.SQUAD_LEADER 
+				&& slotType != CRF_ESlotType.MEDIC);
+		
 		bool specialtyPhase = m_Gamemode.m_SlottingState == 1;
-		bool slotNotSpecialtyOrLM = slottingManager.GetSlotData(slotId).GetSlotType() != CRF_ESlotType.LEADERORMEDIC && 
-								   slottingManager.GetSlotData(slotId).GetSlotType() != CRF_ESlotType.SPECIALTY;
+		
+		bool slotNotSpecialtyOrLM = 
+				(slotType != CRF_ESlotType.TEAM_LEADER 
+				&& slotType != CRF_ESlotType.SQUAD_LEADER  
+				&& slotType != CRF_ESlotType.MEDIC 
+				&& slotType != CRF_ESlotType.SPECIALTY 
+				&& slotType != CRF_ESlotType.SPECIALTY_ASSISTANT);
 		
 		// Check phase restrictions (if not admin)
 		if (!isAdmin) {
