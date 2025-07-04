@@ -4,8 +4,7 @@ SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CRF_SearchAndDestroyGamemodeManager "{65B91E239B198978}" {
-   attackingSide "RHS_US_MSMC"
-   defendingSide "RHS_RF_MSV"
+   defendingSide "INDFOR"
   }
  }
  coords 2001.43 281.175 2112.422
@@ -41,7 +40,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "65C8DC8EF65DEB1C" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
