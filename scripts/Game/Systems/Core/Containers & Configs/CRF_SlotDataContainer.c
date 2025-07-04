@@ -8,7 +8,7 @@ class CRF_SlotDataContainer
 	protected int m_iSlotCurrentPlayerId;
 	protected RplId m_iSlotCurrentGroup = RplId.Invalid();
 	protected RplId m_iSlotCurrentCharacter = RplId.Invalid();
-	protected CRF_ESlotType m_iSlotType = CRF_ESlotType.REGULAR;
+	protected CRF_ESlotType m_iSlotType = CRF_ESlotType.GENERAL_INFANTRY;
 	
 	protected string m_sSlotName;
 	protected ResourceName m_rSlotIconResource;
@@ -180,7 +180,7 @@ class CRF_SlotDataContainer
 	CRF_ESlotType GetSlotType()
 	{
 		if(!m_iSlotType)
-			return CRF_ESlotType.REGULAR;
+			return CRF_ESlotType.GENERAL_INFANTRY;
 		else
 			return m_iSlotType;
 	}

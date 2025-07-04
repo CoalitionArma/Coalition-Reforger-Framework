@@ -454,6 +454,39 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void UpdateSlotIcon(int slotId, ResourceName icon)
+	{
+		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
+		if (!slotData)
+			return;
+			
+		slotData.SetSlotIcon(icon);
+		RequestSlottingUpdate();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotType(int slotId, CRF_ESlotType type)
+	{
+		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
+		if (!slotData)
+			return;
+			
+		slotData.SetSlotType(type);
+		RequestSlottingUpdate();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotName(int slotId, string name)
+	{
+		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
+		if (!slotData)
+			return;
+			
+		slotData.SetSlotName(name);
+		RequestSlottingUpdate();
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void UpdateSlotCharacter(int slotId, RplId charId)
 	{
 		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
@@ -559,6 +592,7 @@ class CRF_SlottingManager : ScriptComponent
 		CRF_PlayableCharacter playableCharComp = CRF_PlayableCharacter.Cast(
 			playerCharacter.FindComponent(CRF_PlayableCharacter)
 		);
+		
 		if (playableCharComp)
 			playableCharComp.SetIsSlotSpawned();
 		
@@ -579,7 +613,7 @@ class CRF_SlottingManager : ScriptComponent
 			entity.FindComponent(CRF_PlayableCharacter)
 		);
 		
-		if (!playableCharComp || !playableCharComp.m_bIsPlayable)
+		if (!playableCharComp)
 			return;
 		
 		// Get required components
@@ -599,6 +633,14 @@ class CRF_SlottingManager : ScriptComponent
 			
 		SCR_AIGroup group = SCR_AIGroup.Cast(aiControlComp.GetControlAIAgent().GetParentGroup());
 		if (!group || !group.IsGroupPlayable())
+			return;
+		
+		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(entity.GetPrefabData().GetPrefabName());
+		
+		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+		
+		if (!role || !roleConfig || !rolesConfig)
 			return;
 			
 		// Create and configure new slot data
@@ -621,14 +663,19 @@ class CRF_SlottingManager : ScriptComponent
 		slotData.SetSlotCurrentCharacter(entityRplComp.Id());
 		
 		// Set slot name
-		if (!playableCharComp.m_sName.IsEmpty())
-			slotData.SetSlotName(playableCharComp.m_sName);
+		if (!roleConfig.m_sRoleName.IsEmpty())
+			slotData.SetSlotName(roleConfig.m_sRoleName);
 		else
 			slotData.SetSlotName(editableCharComp.GetDisplayName());
 		
-		// Set icon and type
-		slotData.SetSlotIcon(editableCharComp.GetInfo().GetIconPath());
-		slotData.SetSlotType(playableCharComp.m_SlottingRole);
+		// Set icon
+		if (!roleConfig.m_RoleIcon.IsEmpty())
+			slotData.SetSlotIcon(roleConfig.m_RoleIcon);
+		else
+			slotData.SetSlotIcon(editableCharComp.GetInfo().GetIconPath());
+		
+		// Set type
+		slotData.SetSlotType(roleConfig.m_SlottingType);
 				
 		// Add to slots map
 		m_iLatestSlotID++;
