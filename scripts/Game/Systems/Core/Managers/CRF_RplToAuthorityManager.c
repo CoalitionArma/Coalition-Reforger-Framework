@@ -396,8 +396,17 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			prefab
 		);
 		
-		m_SlottingManager.UpdateSlotResource(m_SlottingManager.GetPlayerSlotID(playerId), prefab);
-
+		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(prefab);
+		
+		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
+		
+		m_SlottingManager.UpdateSlotResource(slotId, prefab);
+		m_SlottingManager.UpdateSlotName(slotId, roleConfig.m_sRoleName);
+		m_SlottingManager.UpdateSlotType(slotId, roleConfig.m_SlottingType);
+		m_SlottingManager.UpdateSlotIcon(slotId, roleConfig.m_RoleIcon);
+		
 		if (logAction)
 		{
 			string prefabName = prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1);

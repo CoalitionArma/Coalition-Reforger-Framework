@@ -527,7 +527,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Find the player's role in the list and select it
 		for (int i = 0; i < roleList.GetItemCount(); i++)
 		{
-			if (CRF_SlottingManager.GetInstance().GetPlayerSlotResource(playerId).Contains(CRF_RoleHelper.RoleToString(i)))
+			if (i == CRF_RoleHelper.ResourceToRole(CRF_SlottingManager.GetInstance().GetPlayerSlotResource(playerId)))
 			{
 				roleList.SetItemSelected(i, true);
 				return;
@@ -639,7 +639,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;
 			
 		//Add map
-		string mapPrefab = "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et";
+		const string mapPrefab = "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et";
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, mapPrefab, true);
 	}
 

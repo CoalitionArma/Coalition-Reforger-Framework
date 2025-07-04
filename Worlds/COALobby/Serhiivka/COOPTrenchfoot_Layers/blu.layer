@@ -1,0 +1,94 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 5602.667 142.38 5198.341
+ angleX -1.598
+ angleY 164.065
+ angleZ -2.335
+}
+Vehicle BLUFOR_ENGI1 : "{07E3B7FA0B81F197}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ENGI.et" {
+ coords 5607.927 144.929 5140.415
+ angleX 5.044
+ angleY -131.977
+ angleZ 0.266
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 5603.643 143.54 5166.124
+ angleY 127
+ m_aUnitPrefabSlots + {
+  "{48FB5BBC1A942F28}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiLead_P.et" "{A49CC762AEE2A230}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_DroneOp_P.et"
+ }
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords 13.364 1.011 -4.205
+   angleY -127
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords -21.67 0.078 9.265
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 6.73 -0.53 10.863
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 4.788 -0.455 8.164
+         {
+          SCR_AIGroup : "{FDF05DC2E670936E}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_EngiTeam_p.et" {
+           coords 25.167 -0.99 -10.189
+           {
+            SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+             coords -4.828 1.373 -16.334
+             m_aUnitPrefabSlots {
+              "{DDFC9128CBEF1AAB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLead_P.et" "{E6875FC6CEED7B4B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectGunner_P.et" "{4ACCBC7F35D46EF7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLoader_P.et"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{5555A78B28AB9288}Prefabs/Vehicles/Wheeled/KamAZ5350/Camo/Kamaz5350_Transport_Covered_Camo.et" {
+ Kamaz5350_Transport_Covered_Camo1 {
+  coords 5620.093 142.842 5164.45
+  angleX 4.383
+  angleY -131.934
+  angleZ 0.867
+ }
+ Kamaz5350_Transport_Covered_Camo2 {
+  coords 5612.116 143.799 5156.122
+  angleX 4.383
+  angleY -131.934
+  angleZ 0.867
+ }
+ Kamaz5350_Transport_Covered_Camo3 {
+  coords 5604.869 144.585 5149.207
+  angleX 3.719
+  angleY -131.905
+  angleZ 1.466
+ }
+ Kamaz5350_Transport_Covered_Camo4 {
+  coords 5596.562 145.299 5141.081
+  angleX 3.055
+  angleY -131.89
+  angleZ 2.064
+ }
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 5595.071 142.779 5204.773
+}
+GenericEntity : "{CDD0712FD6215F04}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ coords 5607.973 142.282 5203.989
+ angleX 0.155
+ angleY -149.005
+ angleZ -1.995
+}
+Vehicle GAZ_TIGR_v2_Base1 : "{ED23D3FD79C7DED0}Prefabs/Vehicles/Wheeled/TIGR/GAZ_TIGR_v2_Base.et" {
+ coords 5601.027 145.608 5134.025
+ angleX 2.484
+ angleY -132.941
+ angleZ 1.355
+}
