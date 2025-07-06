@@ -11,7 +11,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_SafestartManager m_SafestartManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
-	protected CRF_AdminMenuManager m_AdminMenuManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	
 	//------------------------------------------------------------------------------------------------
@@ -190,9 +189,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	// Equipment management
-	void UpdateGearSet(ResourceName bluGear, ResourceName opfGear, ResourceName indGear, ResourceName civGear)
+	void UpdateGearSet(string faction, ResourceName path)
 	{
-		Rpc(RpcAsk_UpdateGearSet, bluGear, opfGear, indGear, civGear); 
+		Rpc(RpcAsk_UpdateGearSet, faction, path); 
 	}
 	
 	void AddItem(int playerId, string prefab, bool logAction)
@@ -431,9 +430,59 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_UpdateGearSet(ResourceName bluGear, ResourceName opfGear, ResourceName indGear, ResourceName civGear)
+	protected void RpcAsk_UpdateGearSet(string faction, ResourceName path)
 	{
-		m_AdminMenuManager.UpdateGearSets(bluGear, opfGear, indGear, civGear);
+		// Update gearscript in the gamemode
+		switch (faction)
+		{
+			case "BLUFOR": CRF_Gamemode.GetInstance().m_BLUFORGearScriptSettings.m_rGearScript = path; break;
+			case "OPFOR": CRF_Gamemode.GetInstance().m_OPFORGearScriptSettings.m_rGearScript = path; break;
+			case "INDFOR": CRF_Gamemode.GetInstance().m_INDFORGearScriptSettings.m_rGearScript = path; break;
+			case "CIV": CRF_Gamemode.GetInstance().m_CIVILIANGearScriptSettings.m_rGearScript = path; break;
+		}
+
+		// Load the AI world
+		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+		if (!aiWorld)
+		{
+			Print("ERROR: AIworld not found, can't update gear sets");
+			return;
+		}
+		
+		array<AIAgent> aiAgents = {};
+		array<IEntity> entites = {};
+
+		//Get entites in the faction and store them
+		aiWorld.GetAIAgents(aiAgents);
+		foreach (AIAgent agent : aiAgents)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+				
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+			if (!character)
+				continue;
+			
+			if (character.GetFactionKey() == faction)
+				entites.Insert(entity);
+		}
+
+		// Update gear of all units
+		foreach (IEntity entity : entites)
+		{
+			// Grab prefab name and check if its a valid gearscript
+			ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+			if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+				continue;
+			
+			// Schedule gear setup with appropriate delay
+			GetGame().GetCallqueue().Call(
+				CRF_GearscriptManager.GetInstance().SetEntityGear, 
+				entity,
+				prefab
+			);
+		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

@@ -5,14 +5,14 @@ FrameWidgetClass {
    Name "MenuSlot1"
    Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -808
-    OffsetLeft -808
-    PositionY -476
-    OffsetTop -476
+    PositionX -816
+    OffsetLeft -816
+    PositionY -484
+    OffsetTop -484
     SizeX 1128
-    OffsetRight -320
+    OffsetRight -312
     SizeY 928
-    OffsetBottom -452
+    OffsetBottom -444
    }
    "Z Order" 1
    "Is Enabled" 0
@@ -22,12 +22,12 @@ FrameWidgetClass {
    Name "MenuButton0"
    Slot FrameWidgetSlot "{62992E477A603216}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX 152
-    OffsetLeft 152
+    PositionX -784
+    OffsetLeft -784
     PositionY -436
     OffsetTop -436
-    SizeX 160
-    OffsetRight -312
+    SizeX 80
+    OffsetRight 704
     SizeY 40
     OffsetBottom 396
    }
@@ -57,10 +57,10 @@ FrameWidgetClass {
     OffsetLeft -416
     PositionY -436
     OffsetTop -436
-    SizeX 544
-    OffsetRight -128
-    SizeY 287.999
-    OffsetBottom 148.001
+    SizeX 728
+    OffsetRight -312
+    SizeY 648
+    OffsetBottom -212
    }
    {
     TextWidgetClass "{65AD258304B6C63D}" {
@@ -86,16 +86,16 @@ FrameWidgetClass {
      Offset 0 0
     }
     ButtonWidgetClass "{65AD258304B658A8}" {
-     Name "MenuButton0"
+     Name "ApplyGearSets"
      Slot FrameWidgetSlot "{62992E477A603216}" {
-      PositionX 216
-      OffsetLeft 216
-      PositionY 248
-      OffsetTop 248
+      PositionX 304
+      OffsetLeft 304
+      PositionY 0
+      OffsetTop 0
       SizeX 144
-      OffsetRight -360
+      OffsetRight -448
       SizeY 29.999
-      OffsetBottom -277.999
+      OffsetBottom -29.999
      }
      Color 0.013 0.0152 0.0176 1
      components {
@@ -119,18 +119,18 @@ FrameWidgetClass {
      Name "FactionList0"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
       Anchor 0.5 0.5 0.5 0.5
-      PositionX -264
-      OffsetLeft -264
-      PositionY -96
-      OffsetTop -96
-      SizeX 128
-      OffsetRight 136
-      SizeY 188
-      OffsetBottom -92
+      PositionX -356
+      OffsetLeft -356
+      PositionY -284
+      OffsetTop -284
+      SizeX 168
+      OffsetRight 188
+      SizeY 600
+      OffsetBottom -316
      }
      {
       OverlayWidgetClass "{65AD25822D4EE726}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-       Name "FactionListBox0"
+       Name "BLUFORListBox"
        Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
         HorizontalAlign 3
         VerticalAlign 3
@@ -144,7 +144,7 @@ FrameWidgetClass {
        }
       }
       TextWidgetClass "{65AD25822D4EE727}" {
-       Name "FactionListTitle"
+       Name "BLUFORListTitle"
        Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
         VerticalAlign 0
         Padding -9 0 0 0
@@ -166,18 +166,18 @@ FrameWidgetClass {
      Name "FactionList1"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
       Anchor 0.5 0.5 0.5 0.5
-      PositionX -128
-      OffsetLeft -128
-      PositionY -96
-      OffsetTop -96
-      SizeX 124
-      OffsetRight 4
-      SizeY 188
-      OffsetBottom -92
+      PositionX -180
+      OffsetLeft -180
+      PositionY -284
+      OffsetTop -284
+      SizeX 168
+      OffsetRight 12
+      SizeY 600
+      OffsetBottom -316
      }
      {
       OverlayWidgetClass "{65AD25820B2A5D6A}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-       Name "FactionListBox0"
+       Name "OPFORListBox"
        Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
         HorizontalAlign 3
         VerticalAlign 3
@@ -191,7 +191,7 @@ FrameWidgetClass {
        }
       }
       TextWidgetClass "{65AD25820B2A5D6B}" {
-       Name "FactionListTitle"
+       Name "OPFORListTitle"
        Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
         VerticalAlign 0
         Padding -9 0 0 0
@@ -213,18 +213,18 @@ FrameWidgetClass {
      Name "FactionList2"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
       Anchor 0.5 0.5 0.5 0.5
-      PositionX 0
-      OffsetLeft 0
-      PositionY -96
-      OffsetTop -96
-      SizeX 128
-      OffsetRight -128
-      SizeY 188
-      OffsetBottom -92
+      PositionX -4
+      OffsetLeft -4
+      PositionY -284
+      OffsetTop -284
+      SizeX 168
+      OffsetRight -164
+      SizeY 600
+      OffsetBottom -316
      }
      {
       OverlayWidgetClass "{65AD258205AF14E8}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-       Name "FactionListBox0"
+       Name "INDFORListBox"
        Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
         HorizontalAlign 3
         VerticalAlign 3
@@ -238,7 +238,7 @@ FrameWidgetClass {
        }
       }
       TextWidgetClass "{65AD258205AF14E9}" {
-       Name "FactionListTitle"
+       Name "INDFORListTitle"
        Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
         VerticalAlign 0
         Padding -9 0 0 0
@@ -260,18 +260,18 @@ FrameWidgetClass {
      Name "FactionList3"
      Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
       Anchor 0.5 0.5 0.5 0.5
-      PositionX 136
-      OffsetLeft 136
-      PositionY -96
-      OffsetTop -96
-      SizeX 128
-      OffsetRight -264
-      SizeY 188
-      OffsetBottom -92
+      PositionX 172
+      OffsetLeft 172
+      PositionY -284
+      OffsetTop -284
+      SizeX 168
+      OffsetRight -340
+      SizeY 600
+      OffsetBottom -316
      }
      {
       OverlayWidgetClass "{65AD258270A8610E}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
-       Name "FactionListBox0"
+       Name "CIVListBox"
        Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
         HorizontalAlign 3
         VerticalAlign 3
@@ -285,7 +285,7 @@ FrameWidgetClass {
        }
       }
       TextWidgetClass "{65AD258270A8610C}" {
-       Name "FactionListTitle"
+       Name "CIVListTitle"
        Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
         VerticalAlign 0
         Padding -9 0 0 0
@@ -309,14 +309,14 @@ FrameWidgetClass {
    Name "Tickets"
    Slot FrameWidgetSlot "{659CDD578CE45868}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -785.827
-    OffsetLeft -785.827
-    PositionY -345.15
-    OffsetTop -345.15
+    PositionX -792
+    OffsetLeft -792
+    PositionY -268
+    OffsetTop -268
     SizeX 361.827
-    OffsetRight 424
+    OffsetRight 430.173
     SizeY 200
-    OffsetBottom 145.15
+    OffsetBottom 68
    }
    {
     TextWidgetClass "{659CDD543D8D3DB7}" {
@@ -1159,14 +1159,14 @@ FrameWidgetClass {
    Name "GameTimer"
    Slot FrameWidgetSlot "{659CDD578CE45868}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -784
-    OffsetLeft -784
-    PositionY -436
-    OffsetTop -436
+    PositionX -792
+    OffsetLeft -792
+    PositionY -356
+    OffsetTop -356
     SizeX 360
-    OffsetRight 424
+    OffsetRight 432
     SizeY 80
-    OffsetBottom 356
+    OffsetBottom 276
    }
    "Z Order" 5
    "Ignore Cursor" 0
@@ -1335,6 +1335,37 @@ FrameWidgetClass {
        "Min Font Size" 15
       }
      }
+    }
+   }
+  }
+  ButtonWidgetClass "{65CCC227EA9D6B21}" {
+   Name "EnterAAR"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -784
+    OffsetLeft -784
+    PositionY -436
+    OffsetTop -436
+    SizeX 80
+    OffsetRight 704
+    SizeY 40
+    OffsetBottom 396
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65CCC227EA9D6B3F}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "AAR"
+     "Font Size" 15
+     "Min Font Size" 15
     }
    }
   }
