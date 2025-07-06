@@ -1,0 +1,47 @@
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 3260.471 100.653 2427.514
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{65CC3045DF229ACF}" {
+   attackingSide "OPFOR"
+   defendingSide "BLUFOR"
+  }
+ }
+ coords 3259.927 100.5 2426.443
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Search and Destroy"\
+   ""\
+   "The Attackers must find and plant bombs on both A and B bomb site in order to win."\
+   ""\
+   "Only one bomb site can be active at a time."\
+   ""\
+   "BLUFOR Composition: Infantry/Mechanized"\
+   "BLUFOR Assets: 2x Sytker Dragoons"\
+   ""\
+   "OPFOR Composition: Armored/Infantry"\
+   "OPFOR Assets: 1x T14"\
+   ""\
+   "Time: 45 Minutes"\
+   ""\
+   "Weather: Rainy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Defend both bomb sites."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Destory both bomb sites."
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "OPF"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "BLU"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
+ }
+}

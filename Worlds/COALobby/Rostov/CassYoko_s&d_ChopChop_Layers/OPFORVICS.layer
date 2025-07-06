@@ -1,0 +1,31 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 6470.613 184.904 3093.975
+  m_rnPrefab "{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et"
+ }
+ {
+  coords 6453.337 184.554 3118.724
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6446.167 184.23 3118.187
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6433.476 183.755 3117.93
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6419.765 183.159 3118.883
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6451.189 184.337 3109.04
+  angleY 89.657
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+ }
+}

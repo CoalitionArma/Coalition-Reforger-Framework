@@ -1,0 +1,48 @@
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 7084.806 143.93 4226.766
+ angleY -175.933
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords -6.141 -0.081 8.395
+   angleY 175.933
+   m_aUnitPrefabSlots {
+    "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords -22.722 -0.004 -20.44
+     angleY 37.935
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 0.403 0 4.874
+       {
+        SCR_AIGroup : "{79B9994E1B530F97}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_HATTeam_p.et" {
+         coords 7.05 0.013 13.371
+         angleY -6.587
+         {
+          SCR_AIGroup : "{FDF05DC2E670936E}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_EngiTeam_p.et" {
+           coords -15.416 -0.013 0.379
+           angleY -9.042
+           {
+            SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+             coords 10.199 1.461 36.937
+             angleY -52.975
+             {
+              SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+               coords -13.215 -0.618 0.001
+               angleY -22.306
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
