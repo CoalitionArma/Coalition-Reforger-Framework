@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{5DF5941A9DE298A8}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_AP.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

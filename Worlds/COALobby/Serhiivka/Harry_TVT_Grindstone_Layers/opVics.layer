@@ -1,0 +1,89 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 4868.412 163.542 4154.108
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4877.096 163.542 4145.387
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4872.358 163.542 4150.144
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4863.872 163.542 4158.667
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4883.115 163.542 4139.344
+  angleY 45.116
+  m_rnPrefab "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4855.169 163.542 4167.405
+  angleY 45.116
+  m_rnPrefab "{486C7A1FA88619B4}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_ENGI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4862.025 163.625 4139.852
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4858.078 163.655 4143.816
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4853.538 163.65 4148.375
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4866.763 163.55 4135.095
+  angleY 45.116
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 2000
+     m_fResourceValueMax 2000
+     m_bEnableResourceGain 1
+     m_fResourceGain 1
+     m_eOnEmptyBehavior NONE
+    }
+   }
+  }
+ }
+ coords 4848.849 163.078 4169.006
+ angleY 47.802
+}

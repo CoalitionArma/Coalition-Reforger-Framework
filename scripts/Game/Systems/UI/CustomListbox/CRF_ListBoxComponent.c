@@ -120,17 +120,28 @@ class CRF_ListboxComponent: SCR_ListBoxComponent
 		comp.SetToggleable(true);
 		comp.SetData(data);
 		
+		CRF_ESlotType slotType = slotData.GetSlotType();
+		
 		// Set player text based on slot state
-		if(slotData.GetIsLockedSlot()) {
+		if (slotData.GetIsLockedSlot()) {
 			comp.SetPlayerText("CLOSED");
 		} else if(m_Gamemode.m_SlottingState == 0) {
-			if(slotData.GetSlotType() != CRF_ESlotType.LEADERORMEDIC) {
+			
+			if ( slotType != CRF_ESlotType.TEAM_LEADER 
+				&& slotType != CRF_ESlotType.SQUAD_LEADER 
+				&& slotType != CRF_ESlotType.MEDIC) 
+			{
 				comp.SetPlayerText("CLOSED");
 			} else {
 				comp.SetPlayerText("OPEN");
 			}
 		} else if(m_Gamemode.m_SlottingState == 1) {
-			if(slotData.GetSlotType() != CRF_ESlotType.LEADERORMEDIC && slotData.GetSlotType() != CRF_ESlotType.SPECIALTY) {
+			if (slotType != CRF_ESlotType.TEAM_LEADER 
+				&& slotType != CRF_ESlotType.SQUAD_LEADER  
+				&& slotType != CRF_ESlotType.MEDIC 
+				&& slotType != CRF_ESlotType.SPECIALTY 
+				&& slotType != CRF_ESlotType.SPECIALTY_ASSISTANT) 
+			{
 				comp.SetPlayerText("CLOSED");
 			} else {
 				comp.SetPlayerText("OPEN");

@@ -300,7 +300,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)
 	{
 		string name = GetGame().GetPlayerManager().GetPlayerName(player);
-		PrintFormat("[CRF] Logging Stats for player %1",name);
+		//PrintFormat("[CRF] Logging Stats for player %1",name);
 		// Process player statistics data
 		if (!m_PlayerData)
 		{

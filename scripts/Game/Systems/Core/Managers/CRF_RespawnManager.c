@@ -363,7 +363,7 @@ class CRF_RespawnManager : ScriptComponent
 			RplComponent rplComp = RplComponent.Cast(Replication.FindItem(SpawnRplID));
 			if (rplComp)
 			{
-				IEntity point = IEntity.Cast(rplComp.GetEntity());
+				IEntity point = rplComp.GetEntity();
 				CRF_RespawnPointComponent respawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
 			
 				if (respawnComponent.m_bActiveRespawnPoint)
@@ -446,7 +446,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (!rplComp)
 			return null;
 
-		return IEntity.Cast(rplComp.GetEntity());
+		return rplComp.GetEntity();
 	}
 	
 	/**
