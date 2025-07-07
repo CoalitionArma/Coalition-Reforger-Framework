@@ -83,78 +83,23 @@ enum CRF_EGearRole
 //------------------------------------------------------------------------------------
 
 class CRF_RoleHelper
-{
-	protected ref static array<string> roleFileStrings = {
-		"_Unarmed_P",
-		//-------------------------------------------- LEADERSHIP --------------------------------------------
-		"_COY_P",
-		"_1SG_P",
-		"_PL_P",
-		"_PSG_P",
-		"_MO_P",
-		"_FO_P",
-		"_JTAC_P",
-		"_SL_P",
-		"_VehLead_P",
-		"_IndirectLead_P",
-		"_LogiLead_P",
-		//-------------------------------------------- SQUAD LEVEL -------------------------------------------
-		"_TL_P",
-		"_Medic_P",
-		"_RTO_P",
-		"_Gren_P",
-		"_AR_P",
-		"_AAR_P",
-		"_Rifleman_P",
-		"_AT_P",
-		"_AAT_P",
-		"_Demo_P",
-		//------------------------------------------- SPECIALITIES -------------------------------------------
-		"_HAT_P",
-		"_AHAT_P",
-		"_MAT_P",
-		"_AMAT_P",
-		"_HMG_P",
-		"_AHMG_P",
-		"_MMG_P",
-		"_AMMG_P",
-		"_AA_P",
-		"_AAA_P",
-		"_Sniper_P",
-		"_Spotter_P",
-		"_DroneOp_P",
-		"_ComEngi_P",
-		//--------------------------------------- VEHICLE SPECIALITIES ---------------------------------------
-		"_VehDriver_P",
-		"_VehGunner_P",
-		"_VehLoader_P",
-		"_Pilot_P",
-		"_CrewChief_P",
-		"_LogiRunner_P",
-		"_IndirectGunner_P",
-		"_IndirectLoader_P"
-	};
-	
+{	
 	//------------------------------------------------------------------------------------------------
-	static string RoleToString(CRF_EGearRole roleInt)
+	static CRF_EGearRole ResourceToRole(ResourceName roleResource)
 	{
-		return roleFileStrings.Get(roleInt);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	static CRF_EGearRole StringToRole(string roleString)
-	{
-		return roleFileStrings.Find(roleString);
+		foreach(CRF_RoleConfig roleConfig : CRF_GamemodeManager.RolesConfig().m_RoleConfigs)
+			if (roleConfig.m_BluforVariant == roleResource || roleConfig.m_OpforVariant == roleResource || roleConfig.m_IndforVariant == roleResource || roleConfig.m_CivVariant == roleResource)
+				return roleConfig.m_Role;
+		
+		return CRF_EGearRole.RIFLEMAN;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	static ResourceName RoleToResource(CRF_EGearRole roleInt, FactionKey factionKey)
 	{
-		ResourceName rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
 		ResourceName roleResource;
 		
-		CRF_GearScriptRolesConfig rolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));		
+		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 
 		CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(roleInt);
 		
@@ -195,7 +140,7 @@ class CRF_RoleHelper
 		if (!IsValidGearscriptResource(prefab))
 			return false;
 
-		CRF_EGearRole role = StringToRole(PrefabToRole(prefab));
+		CRF_EGearRole role = ResourceToRole(prefab);
 
 		return roles.Contains(role);
 	}
@@ -208,24 +153,9 @@ class CRF_RoleHelper
 		if (!IsValidGearscriptResource(prefab))
 			return false;
 
-		CRF_EGearRole role = StringToRole(PrefabToRole(prefab));
+		CRF_EGearRole role = ResourceToRole(prefab);
 
 		return (role == CRF_EGearRole.TEAM_LEAD);
-	}
-
-	// Converts a full resource name to a role.
-	//------------------------------------------------------------------------------------------------
-	static string PrefabToRole(ResourceName prefab)
-	{
-		array<string> value = {};
-		prefab.Split("_", value, true);
-
-		string role = "_" + value[3] + "_" + value[4];
-
-		role.Split(".", value, true);
-		role = value[0];
-
-		return role;
 	}
 }
 
@@ -327,6 +257,18 @@ modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
 }
 
 //------------------------------------------------------------------------------------
+// Enumerations for our custom factions
+//------------------------------------------------------------------------------------
+
+modded enum EEditableEntityLabel
+{
+	FACTION_CRF_BLUFOR = 51870,
+	FACTION_CRF_OPFOR = 51871,
+	FACTION_CRF_INDFOR = 51872,
+	FACTION_CRF_CIV = 51873,
+};
+
+//------------------------------------------------------------------------------------
 // Enumerations for game state tracking
 //------------------------------------------------------------------------------------
 
@@ -383,9 +325,13 @@ enum CRF_EFlagType
 
 enum CRF_ESlotType
 {
-	REGULAR = 0,
-	LEADERORMEDIC,
+	GENERAL_INFANTRY = 0,
+	SQUAD_LEADER,
+	TEAM_LEADER,
+	MEDIC,
+	ASSISTANT,
 	SPECIALTY,
+	SPECIALTY_ASSISTANT,
 }
 
 //------------------------------------------------------------------------------------

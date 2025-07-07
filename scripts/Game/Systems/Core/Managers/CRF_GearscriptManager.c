@@ -3,8 +3,6 @@ class CRF_GearscriptManagerClass : ScriptComponentClass {}
 class CRF_GearscriptManager : ScriptComponent
 {
 	protected ref RandomGenerator m_RNG = new RandomGenerator();
-	
-	ref CRF_GearScriptRolesConfig m_RolesConfig;
 	protected CRF_Gamemode m_Gamemode;
 
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
@@ -33,19 +31,6 @@ class CRF_GearscriptManager : ScriptComponent
 			return;
 		
 		m_Gamemode = CRF_Gamemode.GetInstance();
-		LoadConfigurations();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	/**
-	 * @brief Load necessary configurations for gearscript
-	 */
-	protected void LoadConfigurations()
-	{
-		ResourceName rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
-		
-		m_RolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
-			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -132,7 +117,7 @@ class CRF_GearscriptManager : ScriptComponent
 			return;
 
 		// Get role and clear entity
-		CRF_EGearRole role = CRF_RoleHelper.StringToRole(CRF_RoleHelper.PrefabToRole(resourceNameToScan));
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		ClearEntityGear(inventory, inventoryManager);
 
 		// Load gearscript config
@@ -376,7 +361,7 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig.m_FactionWeapons)
 			return;
 		
-		CRF_RoleConfig rolesConfig = m_RolesConfig.FindRoleConfig(role);
+		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
 		array<CRF_Weapon_Class> weaponsSelected = {};
 		
 		foreach (CRF_EGearscriptWeapons weaponType : rolesConfig.m_aWeapons)
@@ -484,8 +469,8 @@ class CRF_GearscriptManager : ScriptComponent
 		if (!gearConfig.m_FactionWeapons)
 			return;
 		
-		CRF_RoleConfig rolesConfig = m_RolesConfig.FindRoleConfig(role);
-		bool isAssistant = rolesConfig.m_bIsAssistant;
+		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		bool isAssistant = (rolesConfig.m_SlottingType == CRF_ESlotType.ASSISTANT || rolesConfig.m_SlottingType == CRF_ESlotType.SPECIALTY_ASSISTANT);
 		
 		foreach (CRF_EGearscriptMagazines roleMags : rolesConfig.m_aMagazines)
 		{
@@ -619,7 +604,7 @@ class CRF_GearscriptManager : ScriptComponent
 		// Then apply default gear
 		if (gearConfig.m_DefaultFactionGear)
 		{
-			CRF_RoleConfig rolesConfig = m_RolesConfig.FindRoleConfig(role);
+			CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
 			
 			foreach (CRF_EGearscriptItems roleItem : rolesConfig.m_aItems)
 			{
@@ -1062,7 +1047,7 @@ class CRF_GearscriptManager : ScriptComponent
 			bool isThrowable = IsThrowableWeapon(resourceSpawned);
 
 			// Skip frags for medics if disabled
-			if (!enableMedicFrags && m_RolesConfig.FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
+			if (!enableMedicFrags && CRF_GamemodeManager.RolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
 				(isThrowable && WeaponComponent.Cast(resourceSpawned.FindComponent(WeaponComponent)).GetWeaponType() == EWeaponType.WT_FRAGGRENADE))
 			{
 				SCR_EntityHelper.DeleteEntityAndChildren(resourceSpawned);
@@ -1211,7 +1196,7 @@ class CRF_GearscriptManager : ScriptComponent
 		bool isPistolAmmo = InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)) && 
 							InventoryMagazineComponent.Cast(item.FindComponent(InventoryMagazineComponent)).GetAttributes().GetCommonType() == ECommonItemType.RHS_PISTOL_AMMO;
 		
-		bool isMedical = m_RolesConfig.FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
+		bool isMedical = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role).m_aItems.Contains(CRF_EGearscriptItems.MEDIC_ITEMS) && 
 						SCR_ConsumableItemComponent.Cast(item.FindComponent(SCR_ConsumableItemComponent));
 		
 		bool isRadio = BaseRadioComponent.Cast(item.FindComponent(BaseRadioComponent));

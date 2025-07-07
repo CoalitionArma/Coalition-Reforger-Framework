@@ -246,7 +246,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		// Killer weapon info
 		m_WMC = BaseWeaponManagerComponent.Cast(instiContext.GetKillerEntity().FindComponent(BaseWeaponManagerComponent));
-		m_sWeaponName = m_WMC.GetCurrentWeapon().GetUIInfo().GetName();	
+		m_sWeaponName = string.Format(m_WMC.GetCurrentWeapon().GetUIInfo().GetName());	
 		if (m_sWeaponName == "")
 			m_sWeaponName = "Unknown Weapon";
 		

@@ -154,16 +154,31 @@ class CRF_PlayerControllerManager : ScriptComponent
 			
 			// Switch to spectator camera
 			GetGame().GetCameraManager().SetCamera(CameraBase.Cast(m_eCamera));
+			
+			// Turn on killfeed for specs
+			SCR_NotificationSenderComponent sender = SCR_NotificationSenderComponent.Cast(
+				GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent)
+			);
+			if (sender)
+				sender.SetKillFeedTypeDeadLocal();
 		} else { 
 			// Clean up previous camera if exists
 			if (m_eCamera)
 				delete m_eCamera;
 			
+			// Originally added for data collector
 			m_Gamemode.GetOnPlayerSpawned().Invoke(SCR_PlayerController.GetLocalPlayerId(), SCR_PlayerController.GetLocalMainEntity());
 			
 			// Reset Stored Pos
 			GetGame().GetCallqueue().CallLater(UpdateStoredCameraPos, 200, false, vector.Zero, vector.Zero, vector.Zero, vector.Zero);
-		};
+			
+			// Reset kill feed type to default
+			SCR_NotificationSenderComponent sender = SCR_NotificationSenderComponent.Cast(
+				GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent)
+			);
+			if (sender)
+				sender.SetKillFeedTypeNoneLocal();
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
