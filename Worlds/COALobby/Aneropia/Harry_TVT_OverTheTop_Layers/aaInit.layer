@@ -4,8 +4,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sInitialStartingWeatherId "Clear"
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
-   m_iStartingHours 20
-   m_iStartingMinutes 55
+   m_iStartingHours 18
+   m_iStartingMinutes 35
   }
  }
  coords 2089.922 675.472 3615.678
@@ -15,7 +15,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "This is a two zone rush mission. Destroy the two caches in zone 1 to unlock zone 2. The caches are resistant to explosions smaller than a demo block. You spawn with all of the assets you will receive for the match. "\
    ""\
    "BLUFOR Composition: Moto Inf"\
-   "BLUFOR Assets: Stryker MGS"\
+   "BLUFOR Assets: Bradley BUSK"\
    ""\
    "OPFOR Composition: Mech Inf"\
    "OPFOR Assets: 1 BMP3 / Squad"\
@@ -44,7 +44,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "65CF722C8BB62413" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -81,10 +81,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{65B2E21B6C42ED54}" {
-        m_sCallsign "MAT team"
+        m_sCallsign "MMG"
        }
        SCR_CallsignInfo "{65B2E21B76F80ECD}" {
-        m_sCallsign "Stryker"
+        m_sCallsign "Bradley BUSK"
        }
       }
      }
