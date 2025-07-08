@@ -5,12 +5,7 @@ $grp SCR_VehicleSpawn {
   m_rnPrefab "{634C65C1C55CA723}Prefabs/Vehicles/Tracked/BFV/M2A2_BUSK_MERDC.et"
  }
  {
-  coords 7088.988 145.158 4250.583
-  angleY -118.888
-  m_rnPrefab "{634C65C1C55CA723}Prefabs/Vehicles/Tracked/BFV/M2A2_BUSK_MERDC.et"
- }
- {
-  coords 7082.042 144.68 4261.23
+  coords 7082.042 145.68 4261.23
   angleY 150.48
   m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
  }

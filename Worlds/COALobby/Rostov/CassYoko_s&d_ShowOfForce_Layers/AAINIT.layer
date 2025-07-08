@@ -1,3 +1,8 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 7077.966 144.487 4241.26
+ "Map Geometry Data" "{4D13DC42EAA6321E}Terrain/WCS_Rostov_Conflict_NEvSW_Layout1.topo"
+ "Satellite background image" "{4CDC017532F1D3F5}UI/Textures/Map/Worlds/Rostov/Rostov.edds"
+}
 SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
  coords 3260.471 100.653 2427.514
 }
@@ -61,15 +66,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{65CD06432F313B22}" {
-        m_sCallsign "HATT Team"
-       }
-       SCR_CallsignInfo "{65CD0640C6D0B751}" {
         m_sCallsign "ENG Team"
        }
-       SCR_CallsignInfo "{65CD0640CD08803B}" {
+       SCR_CallsignInfo "{65CD0640C6D0B751}" {
         m_sCallsign "M2A2 Crew"
-       }
-       SCR_CallsignInfo "{65CD0640F4D91A3F}" {
        }
       }
      }
@@ -105,9 +105,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "2-2"
        }
        SCR_CallsignInfo "{65CF77D95443CBFA}" {
-        m_sCallsign "HMG Team"
+        m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{65CF77D94AC24917}" {
+        m_sCallsign "HMG Team"
+       }
+       SCR_CallsignInfo "{65D00869C4AD5089}" {
+        m_sCallsign "T14 Crew"
        }
       }
      }

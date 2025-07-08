@@ -1,31 +1,66 @@
 $grp SCR_VehicleSpawn {
  {
-  coords 6470.613 184.904 3093.975
+  coords 6470.614 184.904 3093.82
   m_rnPrefab "{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et"
  }
  {
-  coords 6453.337 184.554 3118.724
+  coords 6458.443 184.742 3118.6
   angleY 89.657
   m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
  }
  {
-  coords 6446.167 184.23 3118.187
+  coords 6446.168 184.225 3118.032
   angleY 89.657
   m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
  }
  {
-  coords 6433.476 183.755 3117.93
+  coords 6436.322 183.887 3117.792
   angleY 89.657
   m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
  }
  {
-  coords 6419.765 183.159 3118.883
+  coords 6419.766 183.158 3118.728
   angleY 89.657
   m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
  }
  {
-  coords 6451.189 184.337 3109.04
-  angleY 89.657
+  coords 6454.282 184.261 3101.29
+  angleY 46.66
   m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+ }
+ {
+  coords 6450.93 184.326 3109.389
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6429.528 183.408 3111.475
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6416.209 182.853 3107.989
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6439.968 183.891 3110.552
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6403.138 182.279 3108.162
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6403.188 182.065 3099.89
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+ }
+ {
+  coords 6415.593 182.611 3098.346
+  angleY 89.657
+  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
  }
 }
