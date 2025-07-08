@@ -1,0 +1,17 @@
+SCR_AIWorld : "{656B40C99B8724C5}Prefabs/AI/SCR_AIWorld_Gogland.et" {
+ coords 7301.776 5.285 1071.333
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{65D01B16AAD89F2D}" {
+  }
+ }
+ coords 7302.647 4.99 1064.706
+ m_iTimeLimitMinutes 60
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{0AA69970E43F5CE5}Configs/Gearscripts/Custom/fluff/CRF_GS_UK80s_fluff.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{E22DAC2682656C91}Configs/Gearscripts/Custom/fluff/CRF_GS_80sUSSRklmk.conf"
+ }
+}
