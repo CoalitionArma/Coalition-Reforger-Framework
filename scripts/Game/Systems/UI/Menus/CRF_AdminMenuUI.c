@@ -1743,10 +1743,14 @@ class CRF_AdminMenu : ChimeraMenuBase
 		array<string> requestParts = {};
 		button.GetName().Split("_", requestParts, true);
 		
-		if (requestParts[1] == "Add")
-			respawnManager.AddTicket(requestParts[0], requestParts[2].ToInt());
+		string action = requestParts[1];
+		int delta = requestParts[2].ToInt();
+		FactionKey faction = requestParts[0];
+		
+		if (action == "Add")
+			respawnManager.AddTicket(faction, delta, true);
 		else
-			respawnManager.SubtractTicket(requestParts[0], requestParts[2].ToInt());
+			respawnManager.SubtractTicket(faction, delta, true);
 	}
 	
 	void UpdateGearSets()
