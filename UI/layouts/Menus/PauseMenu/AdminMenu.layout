@@ -319,11 +319,11 @@ FrameWidgetClass {
      Name "BackgroundGrey"
      Slot FrameWidgetSlot "{62993E1190D14ACD}" {
       Anchor 0.5 0.5 0.5 0.5
-      PositionX -858.812
-      OffsetLeft -858.812
+      PositionX -858.6
+      OffsetLeft -858.6
       PositionY -492
       OffsetTop -492
-      SizeX 1720.23
+      SizeX 1720.01
       OffsetRight -861.413
       SizeY 37.67
       OffsetBottom 454.33

@@ -1720,15 +1720,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 			return;	
 		
 		// Get the delta from the button name
-		int deltaTime = button.GetName().ToInt() * 60000;
+		int delta = button.GetName().ToInt() * 60000;
 		
-		// Get current end time
-		int currentEndTime = CRF_SafestartManager.GetInstance().m_iTimeMissionEnds;
-		if ((currentEndTime + deltaTime) < 0)
-			return;
-
-		// Set the new time
-		CRF_SafestartManager.GetInstance().m_iTimeMissionEnds = currentEndTime + deltaTime;
+		CRF_RplToAuthorityManager.GetInstance().UpdateTimer(delta);
 	}
 	
 	void UpdateTicket()
@@ -1747,10 +1741,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		int delta = requestParts[2].ToInt();
 		FactionKey faction = requestParts[0];
 		
-		if (action == "Add")
-			respawnManager.AddTicket(faction, delta, true);
-		else
-			respawnManager.SubtractTicket(faction, delta, true);
+		CRF_RplToAuthorityManager.GetInstance().UpdateTicket(action, faction, delta);
 	}
 	
 	void UpdateGearSets()

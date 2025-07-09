@@ -220,6 +220,17 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_LogAdminAction, data, playerId, sendToPlayer); 
 	}
 	
+	void UpdateTimer(int delta) 
+	{
+		Rpc(RpcAsk_UpdateTimer, delta); 
+	}	
+	
+	void UpdateTicket(string action, FactionKey faction, int delta) 
+	{
+		Rpc(RpcAsk_UpdateTicket, action, faction, delta); 
+	}
+	
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -492,6 +503,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				prefab
 			);
 		}
+		
+		string logMessage = string.Format("%1 was changed to %2", faction, path);
+		m_RplBroadcastManager.LogAdminAction(logMessage, -1 , false)
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -571,5 +585,32 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
 		m_RplBroadcastManager.LogAdminAction(data, playerId, sendToPlayer);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateTimer(int delta)
+	{
+		// Get current end time
+		int currentEndTime = CRF_SafestartManager.GetInstance().m_iTimeMissionEnds;
+		if ((currentEndTime + delta) < 0 || m_SafestartManager.GetSafestartStatus())
+			return;
+
+		// Set the new time, broadcast is handled by rplprop
+		CRF_SafestartManager.GetInstance().m_iTimeMissionEnds = currentEndTime + delta;
+		
+		string logMessage = string.Format("Game timer adjusted by %1 mins", delta/60000);
+		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateTicket(string action, FactionKey faction, int delta)
+	{
+		if (action == "Add")
+			m_RespawnManager.AddTicket(faction, delta, true);
+		else if (action == "Subtract")
+			m_RespawnManager.SubtractTicket(faction, delta, true);
+		
+		string logMessage = string.Format("%1 tickets was subtracted from %2", delta, faction);
+		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
 	}
 };
