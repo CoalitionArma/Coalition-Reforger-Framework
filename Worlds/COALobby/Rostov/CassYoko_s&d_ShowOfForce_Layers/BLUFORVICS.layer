@@ -2,7 +2,7 @@ $grp SCR_VehicleSpawn {
  {
   coords 7071.086 144.209 4241.184
   angleY -119.638
-  m_rnPrefab "{634C65C1C55CA723}Prefabs/Vehicles/Tracked/BFV/M2A2_BUSK_MERDC.et"
+  m_rnPrefab "{5CFD8CB5C3E55A4E}Prefabs/Vehicles/Tracked/BFV/M2A2_MERDC.et"
   respawnDelay 10000
   firstSpawn 1
  }
