@@ -1159,9 +1159,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent)
 		);
 		if (sender)
-		{
 			sender.SetKillFeedTypeNoneLocal();
-		}
 	}
 	
 	/**
