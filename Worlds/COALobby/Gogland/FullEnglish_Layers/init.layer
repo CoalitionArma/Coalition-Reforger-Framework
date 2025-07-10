@@ -5,9 +5,45 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  components {
   CRF_SearchAndDestroyGamemodeManager "{65D01B16AAD89F2D}" {
   }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65D4611AB12A3DB3}" {
+     m_sWeatherPresetName "Clear Fog"
+    }
+   }
+  }
  }
  coords 7302.647 4.99 1064.706
- m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "The UK's forces will try and detonate two bombsites on Gogland. One of them is of quite some strategic signifigance, best hope the bomb doesn't cause any collateral, perhaps nuclear, damage."\
+   ""\
+   "BLUFOR Composition: Motorized"\
+   "BLUFOR Assets: 2x Land Rover Gun Trucks"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: 1x HMG Team"\
+   ""\
+   "Time: 0800"\
+   "Weather: Clear Fog"\
+   "Length: 45 minutes"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy Bombsites Alpha and Bravo"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend Bombsites Alpha and Bravo"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "No GI Radios are available. Leadership has 2 channel radios and TLs have 1 channel radios."\
+   "TLs have had their GLs removed."
+   m_bShowForAnyFaction 1
+  }
+ }
  m_iFactionOneRatio 3
  m_sFactionOneKey "BLU"
  m_iFactionTwoRatio 2
@@ -22,7 +58,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_iTimeToRespawn 45
  {
-  SCR_FactionManager {
+  SCR_FactionManager "65D46118B579BB2B" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -44,9 +80,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{65D4470F419BA7D0}" {
-        m_sCallsign "GT1"
+        m_sCallsign "1-5"
        }
        SCR_CallsignInfo "{65D4470F467866AB}" {
+        m_sCallsign "GT1"
+       }
+       SCR_CallsignInfo "{65D4611EA3AE5DAA}" {
         m_sCallsign "GT2"
        }
       }
