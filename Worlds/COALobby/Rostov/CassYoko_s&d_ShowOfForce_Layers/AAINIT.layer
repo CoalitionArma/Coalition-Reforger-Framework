@@ -12,21 +12,22 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    attackingSide "OPFOR"
    defendingSide "BLUFOR"
   }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Rainy"
+   m_iSetWeatherConstant 1
+  }
  }
- coords 3259.927 100.5 2426.443
+ coords 7125.281 152.202 4001.481
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Search and Destroy:"\
+   m_sTextData ""\
+   "An MSV company is attacking an old Russian army strongpoint currently being held by USMC forces."\
    ""\
-   "The Attackers must find and plant bombs on both A and B bomb site in order to win."\
+   "BLUFOR Composition: Motorized Platoon"\
+   "BLUFOR Assets: 1x M2A2 Bradley"\
    ""\
-   "Only one bomb site can be active at a time."\
-   ""\
-   "BLUFOR Composition:  Mechanized United States Marine Corps"\
-   "BLUFOR Assets: 2x Bradleys"\
-   ""\
-   "OPFOR Composition: Modern Russain Army "\
-   "OPFOR Assets: 1x T14"\
+   "OPFOR Composition: Motorized Company"\
+   "OPFOR Assets: 1x T14 Armata"\
    ""\
    "Time: 45 Minutes"\
    ""\
@@ -37,6 +38,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Destory both bomb sites."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle ""
+   m_sTextData ""
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle ""
+   m_sTextData ""
   }
  }
  m_iFactionOneRatio 3
