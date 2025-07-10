@@ -6,7 +6,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_SearchAndDestroyGamemodeManager "{65D01B16AAD89F2D}" {
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Clear"
+   m_sInitialStartingWeatherId "Clear Fog"
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_bUsePredefineStartingTimeAndWeather 1
