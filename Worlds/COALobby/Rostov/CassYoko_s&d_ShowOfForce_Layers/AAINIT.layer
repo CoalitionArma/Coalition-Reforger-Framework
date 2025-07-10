@@ -96,21 +96,27 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{65CD064083AFDC1D}" {
-        m_sCallsign "2PLT"
+        m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{65CF77D9549D8CFC}" {
-        m_sCallsign "2-1"
+        m_sCallsign "2PLT"
        }
        SCR_CallsignInfo "{65CF77D954F408C4}" {
-        m_sCallsign "2-2"
+        m_sCallsign "2-1"
        }
        SCR_CallsignInfo "{65CF77D95443CBFA}" {
-        m_sCallsign "2-3"
+        m_sCallsign "2-2"
        }
        SCR_CallsignInfo "{65CF77D94AC24917}" {
-        m_sCallsign "HMG Team"
+        m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{65D00869C4AD5089}" {
+        m_sCallsign "2-4"
+       }
+       SCR_CallsignInfo "{65D4444224F77BD0}" {
+        m_sCallsign "MMG Team"
+       }
+       SCR_CallsignInfo "{65D444422B5BBDF5}" {
         m_sCallsign "T14 Crew"
        }
       }

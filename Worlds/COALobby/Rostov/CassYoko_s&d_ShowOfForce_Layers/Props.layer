@@ -891,7 +891,6 @@ $grp PolylineShapeEntity {
       {
        coords -378.562 -6.551 -19.539
        angleY -165.811
-       scale 1
       }
       {
        coords -385.916 -4.576 -51.487
@@ -2356,7 +2355,6 @@ $grp PolylineShapeEntity {
       {
        coords -230.444 -14.035 107.182
        angleY 79.335
-       scale 1
       }
       {
        coords -253.198 -15.188 122.047
@@ -2396,7 +2394,6 @@ $grp PolylineShapeEntity {
       {
        coords -219.211 -14.826 131.359
        angleY -152.561
-       scale 1
       }
       {
        coords -245.809 -13.406 88.55
@@ -6032,7 +6029,6 @@ $grp PolylineShapeEntity {
       {
        coords -23.442 -5.852 16.632
        angleY -109.295
-       scale 1
       }
       {
        coords -39.057 -5.727 -3.265
@@ -7162,7 +7158,6 @@ $grp PolylineShapeEntity {
        angleX -1.279
        angleY -17.963
        angleZ -1.741
-       scale 1
       }
       {
        coords -124.158 -10.761 91.936
@@ -7530,14 +7525,14 @@ $grp SCR_IndestructibleEnvironmentalEntity : "{926C09375D2DAA4D}PrefabLibrary/Ro
   scale 2.728
  }
  {
-  coords 7187.098 -0 3751.411
+  coords 7187.098 0 3751.411
   angleX 17.035
   angleY -80.356
   angleZ -72.32
   scale 2.728
  }
  {
-  coords 7256.074 -0 3738.716
+  coords 7256.074 0 3738.716
   angleX 17.035
   angleY -80.356
   angleZ -72.32
@@ -7596,6 +7591,65 @@ GenericEntity : "{E249C09D69AAE6C8}Prefabs/Compositions/Slotted/SlotFlatSmall/Sa
 GenericEntity : "{F68F3B7247F6E810}Prefabs/Compositions/Slotted/SlotFlatLarge/LivingArea_L_USSR_01.et" {
  coords 6937.493 163.004 3664.397
  angleY -87.18
+ {
+  GameEntity {
+   ID "5D16956B4CA69460"
+   coords -2.726 -0.186 16.986
+   angleY 162.705
+  }
+  GameEntity {
+   ID "5D16956BA778EA58"
+   coords -9.007 0.725 -8.746
+   angleY 117.275
+  }
+  GenericEntity {
+   ID "5D16956BA778F4C2"
+   {
+    StaticModelEntity {
+     ID "5CB6B2865DEFD4F5"
+     {
+      SCR_DestructibleBuildingEntity {
+       ID "5A5344E1DC2830DD"
+       coords 0 0.13 0
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D16956BA778EAAE"
+   coords -3.545 0.48 -11.621
+   angleY -118.314
+  }
+  GenericEntity {
+   ID "5D16956BA778F726"
+   {
+    StaticModelEntity {
+     ID "5CC4A438BAFCC4A0"
+     {
+      SCR_DestructibleBuildingEntity {
+       ID "5A5344E1DC2830DD"
+       coords 0 0.289 0
+      }
+     }
+    }
+   }
+  }
+  GenericEntity {
+   ID "5D16956BA778E922"
+   {
+    StaticModelEntity {
+     ID "5CC4A43961291539"
+     {
+      SCR_DestructibleBuildingEntity {
+       ID "5A5344E1DC2830DD"
+       coords 0 0.411 0
+      }
+     }
+    }
+   }
+  }
+ }
 }
 GenericEntity : "{FD952CFF9CAD3F2B}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_USSR_01.et" {
  coords 6911.345 161.91 3676.153
