@@ -1,0 +1,257 @@
+GenericEntity : "{45D056CC11985141}Prefabs/Props/Wrecks/S1203_wreck.et" {
+ coords 6268.639 87.614 11202.688
+ angleX 17.047
+}
+$grp GenericEntity : "{4A0EB5570B2BB36C}Prefabs/Props/Wrecks/Ural4320_wreck.et" {
+ {
+  coords 6275.754 86.782 11195.854
+  angleX -7.206
+  angleY 37.455
+ }
+ {
+  coords 5677.252 100.668 9969.687
+  angleY 146.337
+ }
+}
+GenericEntity : "{5E99DD1E8377D27F}Prefabs/Props/Garbage/Bins/TrashBin_02.et" {
+ coords 5662.125 100.719 9952.209
+}
+GenericEntity : "{654B33C808C4D93E}Prefabs/Props/Wrecks/M151A2_wreck_static.et" {
+ coords 5659.574 100.286 9925.56
+ angleY 146.989
+}
+GenericEntity : "{6BDDFE9FA1D4B2F0}Prefabs/Props/Wrecks/UAZ469_wreck.et" {
+ coords 6271.275 86.84 11199.507
+ angleY -59.237
+}
+GenericEntity : "{72E42BEAFED9B5A7}Prefabs/Props/Garbage/Bins/GarbageContainer_01.et" {
+ coords 5668.795 100.926 9953.693
+ angleX -75
+}
+GenericEntity : "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck.et" {
+ coords 6265.381 87.039 11205.601
+ angleY -67.52
+}
+GenericEntity : "{7F29BE4FBFC98392}Prefabs/Props/Wrecks/UAZ452_wreck.et" {
+ coords 6274.569 87.081 11199.923
+ angleY 133.663
+}
+GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck.et" {
+ coords 6271.371 86.866 11202.711
+ angleY -18.962
+}
+$grp StaticModelEntity : "{A46D45922F8CAD6C}Prefabs/Props/Military/Fortification/CzechHedgehog_01_painted.et" {
+ {
+  coords 6779.18 0 12208.868
+ }
+ {
+  coords 6783.263 -0 12212.764
+ }
+ {
+  coords 6785.797 0 12209.486
+ }
+ {
+  coords 6776.564 0 12215.533
+ }
+ {
+  coords 6864.819 0.001 12206.764
+ }
+ {
+  coords 6866.735 0 12199.334
+ }
+ {
+  coords 6874.836 0.001 12199.022
+ }
+ {
+  coords 6772.634 0 12212.705
+ }
+ {
+  coords 6771.175 0.001 12221.422
+ }
+ {
+  coords 6767.611 0 12217.393
+ }
+ {
+  coords 6759.421 0 12224.679
+ }
+ {
+  coords 6873.757 0 12192.47
+ }
+ {
+  coords 6876.587 0.001 12191.934
+ }
+ {
+  coords 6766.007 -0 12226.66
+ }
+ {
+  coords 6762.884 0 12221.858
+ }
+ {
+  coords 6805.639 -0 12207.101
+ }
+ {
+  coords 6804.875 0 12202.304
+ }
+ {
+  coords 6808.986 -0 12199.392
+ }
+ {
+  coords 6812.332 0 12202.28
+ }
+ {
+  coords 6814.726 0 12197.997
+ }
+ {
+  coords 6820.252 0.001 12204.81
+ }
+ {
+  coords 6820.495 0 12199.993
+ }
+ {
+  coords 6825.663 -0 12203.075
+ }
+ {
+  coords 6828.798 0 12196.946
+ }
+ {
+  coords 6831.416 0 12204.785
+ }
+ {
+  coords 6838.362 0 12199.278
+ }
+ {
+  coords 6840.2 -0 12207.61
+ }
+ {
+  coords 6842.542 -0 12201.393
+ }
+ {
+  coords 6848.097 0 12205.342
+ }
+ {
+  coords 6854.472 0 12201.773
+ }
+ {
+  coords 6857.745 -0 12207.996
+ }
+ {
+  coords 6860.664 -0 12199.815
+ }
+ {
+  coords 6881.105 0 12194.235
+ }
+ {
+  coords 6880.394 0.001 12188.704
+ }
+ {
+  coords 6888.121 0.001 12190.919
+ }
+ {
+  coords 6890.382 0 12189.899
+ }
+ {
+  coords 6888.396 0.001 12182.722
+ }
+ {
+  coords 6900.861 0 12184.079
+ }
+ {
+  coords 6903.688 0.001 12178.392
+ }
+ {
+  coords 6901.101 0 12169.826
+ }
+ {
+  coords 6911.428 -0 12170.464
+ }
+ {
+  coords 6905.069 0 12162.896
+ }
+ {
+  coords 6913.253 0.001 12161.976
+ }
+ {
+  coords 6759.557 0 12230.499
+ }
+ {
+  coords 6757.884 0 12230.418
+ }
+ {
+  coords 6751.22 0 12230.166
+ }
+ {
+  coords 6751.296 0.001 12237.104
+ }
+ {
+  coords 6745.482 0 12237.05
+ }
+ {
+  coords 6741.318 0 12239.981
+ }
+ {
+  coords 6741.492 -0 12247.006
+ }
+ {
+  coords 6736.14 -0.001 12244.611
+ }
+ {
+  coords 6735.763 -0 12250.106
+ }
+ {
+  coords 6727.993 0 12251.359
+ }
+ {
+  coords 6727.913 0.001 12262.151
+ }
+ {
+  coords 6727.021 0.001 12264.53
+ }
+ {
+  coords 6721.055 0 12259.974
+ }
+ {
+  coords 6720.445 0 12264.232
+ }
+ {
+  coords 6719.352 0.001 12271.732
+ }
+ {
+  coords 6716.96 -0 12269.691
+ }
+ {
+  coords 6715.244 0 12266.276
+ }
+ {
+  coords 6712.201 -0.001 12279.646
+ }
+ {
+  coords 6708.409 -0 12273.296
+ }
+}
+GenericEntity : "{A98BA618430E9BAA}Prefabs/Props/Agriculture/PlowWreck_01.et" {
+ coords 6269.104 86.52 11206.145
+ angleX -22.585
+ angleY 0
+ scale 1.62
+}
+GenericEntity : "{DE59CB05202006E8}Prefabs/Props/Agriculture/CultivatorWreck_01.et" {
+ coords 6278.663 86.542 11199.068
+ angleX -24.831
+ angleY 0
+ scale 1.79
+}
+GenericEntity : "{E74D2F51CD4F03D0}Prefabs/Compositions/Slotted/SlotRoadLarge/Checkpoint_L_US_01.et" {
+ coords 6794.608 65.445 12210.191
+ angleY -161.285
+ {
+  GenericEntity {
+   ID "5CC6B4A35174E1FD"
+   {
+    Turret {
+     ID "5CB0D9912FD9E690"
+     coords -0.107 -1.843 -0.592
+    }
+   }
+  }
+ }
+}

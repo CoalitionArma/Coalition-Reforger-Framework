@@ -1,0 +1,19 @@
+SCR_PlayersPresentTriggerEntity endTrig {
+ coords 6870.903 69.865 12409.441
+ TriggerShapeType Sphere
+ SphereRadius 200
+ TriggerActivationType "First change"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR forces have made it through Safib Ab!\", 10, \"BLUFOR Victory\");"\
+ "	"
+ m_sOwnerFactionKey "BLUFOR"
+}
+CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 6803.358 64.886 12226.249
+ angleY 90
+ m_MarkerColor 0 0.125 0.502 1
+ m_sQuadName "flag-2"
+ m_fWorldSize 150
+ m_sDescription "Breakthrough Objective"
+}
