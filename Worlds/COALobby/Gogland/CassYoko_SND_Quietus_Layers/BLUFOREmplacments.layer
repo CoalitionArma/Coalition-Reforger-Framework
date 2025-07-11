@@ -1,0 +1,10 @@
+$grp Turret : "{73530808E4B455BA}Prefabs/Weapons/Tripods/Tripod_M3_M2HB.et" {
+ {
+  coords 1133.346 12.048 5129.007
+  angleY -148.354
+ }
+ {
+  coords 1307.556 13.252 4985.2
+  angleY -138.645
+ }
+}

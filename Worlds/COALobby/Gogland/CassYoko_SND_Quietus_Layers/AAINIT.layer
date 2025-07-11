@@ -1,0 +1,25 @@
+SCR_AIWorld : "{656B40C99B8724C5}Prefabs/AI/SCR_AIWorld_Gogland.et" {
+ coords 956.705 9.495 5273.795
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{65D233E4C8BC6940}" {
+   attackingSide "OPFOR"
+   defendingSide "BLUFOR"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 22
+   m_iStartingMinutes 30
+   m_iRangeHoursStart 22
+   m_iRangeHoursEnd 22
+   m_iRangeMinutesEnd 35
+  }
+ }
+ coords 942.024 4.795 5290.71
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{D62FC8AB893C3D7E}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_SCARs.conf"
+ }
+}
