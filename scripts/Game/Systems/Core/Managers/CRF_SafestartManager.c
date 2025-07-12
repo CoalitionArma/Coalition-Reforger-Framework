@@ -65,7 +65,7 @@ class CRF_SafestartManager : ScriptComponent
 		if (RplSession.Mode() != RplMode.Client) // Supports both workbench and dedi
 		{
 			// Initialize server components
-			m_Logging = CRF_LoggingManager.Cast(this.FindComponent(CRF_LoggingManager));
+			m_Logging = CRF_LoggingManager.Cast(m_Gamemode.FindComponent(CRF_LoggingManager));
 			// TODO: Convert to script invoker
 			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
 		}
