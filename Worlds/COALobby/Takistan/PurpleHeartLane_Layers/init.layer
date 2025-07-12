@@ -59,7 +59,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{3A6FB419BE5A3CF6}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
-  m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
+  m_rGearScript "{234E072E61356B0D}Configs/Gearscripts/Custom/fluff/CRF_GS_MEInsurgents_Poor_fluff.conf"
   m_bEnableGIRadios 0
  }
  {

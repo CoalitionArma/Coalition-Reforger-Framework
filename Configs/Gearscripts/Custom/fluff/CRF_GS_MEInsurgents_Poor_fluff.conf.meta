@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{234E072E61356B0D}Configs/Gearscripts/Standard/GWOT/Variants/CRF_GS_MEInsurgents_Poor_fluff.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
