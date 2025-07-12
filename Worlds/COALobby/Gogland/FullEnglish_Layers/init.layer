@@ -20,7 +20,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 7302.647 4.99 1064.706
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "The UK's forces will try and detonate two bombsites on Gogland. One of them is of quite some strategic signifigance, best hope the bomb doesn't cause any collateral, perhaps nuclear, damage."\
+   m_sTextData "The UK's forces will try and detonate two bombsites on Gogland. One of them is of quite some strategic significance, best hope the bomb doesn't cause any collateral, perhaps nuclear, damage."\
    ""\
    "BLUFOR Composition: Motorized"\
    "BLUFOR Assets: 2x Land Rover Gun Trucks"\
