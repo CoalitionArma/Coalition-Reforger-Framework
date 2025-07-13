@@ -75,10 +75,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{65CD06432F313B22}" {
-        m_sCallsign "ENG Team"
+        m_sCallsign "LAT Team"
        }
        SCR_CallsignInfo "{65CD0640C6D0B751}" {
-        m_sCallsign "M2A2 Crew"
+        m_sCallsign "ENGI Team"
        }
       }
      }
@@ -126,7 +126,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "MMG Team"
        }
        SCR_CallsignInfo "{65D444422B5BBDF5}" {
-        m_sCallsign "T14 Crew"
+        m_sCallsign "MMG Team"
+       }
+       SCR_CallsignInfo "{65D97E843648B1B6}" {
+        m_sCallsign "K4386 Armed Crew"
+       }
+       SCR_CallsignInfo "{65D97E87CBE486E2}" {
+        m_sCallsign "K4386 Armed Crew"
        }
       }
      }

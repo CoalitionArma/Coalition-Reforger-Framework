@@ -1,7 +1,7 @@
 $grp SCR_VehicleSpawn {
  {
-  coords 6470.614 184.904 3093.82
-  m_rnPrefab "{48BB423641D40E77}Prefabs/Vehicles/Tracked/T14/Tank_T14.et"
+  coords 6464.76 184.904 3093.82
+  m_rnPrefab "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
@@ -86,6 +86,12 @@ $grp SCR_VehicleSpawn {
   coords 6415.593 182.611 3098.346
   angleY 89.657
   m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6474.762 184.904 3093.82
+  m_rnPrefab "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
