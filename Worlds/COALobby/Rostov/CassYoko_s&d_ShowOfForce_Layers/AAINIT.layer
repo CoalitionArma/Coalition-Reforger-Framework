@@ -1,5 +1,5 @@
 SCR_MapEntity SCR_MapEntity1 {
- coords 7077.966 144.487 4241.26
+ coords 7107.718 145.337 4234.813
  "Map Geometry Data" "{4D13DC42EAA6321E}Terrain/WCS_Rostov_Conflict_NEvSW_Layout1.topo"
  "Satellite background image" "{4CDC017532F1D3F5}UI/Textures/Map/Worlds/Rostov/Rostov.edds"
 }
@@ -65,20 +65,20 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     SCR_Faction "{628B22E9B4056C88}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
-       SCR_CallsignInfo "{55CCB792D13759D8}" {
+       SCR_CallsignInfo "{65DA2D03C379DF4D}" {
         m_sCallsign "MEDICAL"
        }
-       SCR_CallsignInfo "{55CCB792D1218E95}" {
+       SCR_CallsignInfo "{65DA2D03C7848915}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       SCR_CallsignInfo "{65DA2D03C8B5E88A}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{65CD06432F313B22}" {
-        m_sCallsign "LAT Team"
+       SCR_CallsignInfo "{65DA2D03CA07DFAA}" {
+        m_sCallsign "ENG Team"
        }
-       SCR_CallsignInfo "{65CD0640C6D0B751}" {
-        m_sCallsign "ENGI Team"
+       SCR_CallsignInfo "{65DA2D03CE4EF4E8}" {
+        m_sCallsign "LAT Team"
        }
       }
      }
@@ -98,41 +98,38 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{65CD064092DA5D6A}" {
+       SCR_CallsignInfo "{65DA2D034929B4FC}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{65CD064098F7FB3C}" {
+       SCR_CallsignInfo "{65DA2D034D4090E9}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{65CD064083AFDC1D}" {
+       SCR_CallsignInfo "{65DA2D037186D232}" {
         m_sCallsign "1-4"
        }
-       SCR_CallsignInfo "{65CF77D9549D8CFC}" {
+       SCR_CallsignInfo "{65DA2D03734CE882}" {
         m_sCallsign "2PLT"
        }
-       SCR_CallsignInfo "{65CF77D954F408C4}" {
+       SCR_CallsignInfo "{65DA2D0379D911B1}" {
         m_sCallsign "2-1"
        }
-       SCR_CallsignInfo "{65CF77D95443CBFA}" {
+       SCR_CallsignInfo "{65DA2D037A6E23E2}" {
         m_sCallsign "2-2"
        }
-       SCR_CallsignInfo "{65CF77D94AC24917}" {
+       SCR_CallsignInfo "{65DA2D037EE0438A}" {
         m_sCallsign "2-3"
        }
-       SCR_CallsignInfo "{65D00869C4AD5089}" {
+       SCR_CallsignInfo "{65DA2D03606DCC2A}" {
         m_sCallsign "2-4"
        }
-       SCR_CallsignInfo "{65D4444224F77BD0}" {
+       SCR_CallsignInfo "{65DA2D0365149A66}" {
         m_sCallsign "MMG Team"
        }
-       SCR_CallsignInfo "{65D444422B5BBDF5}" {
-        m_sCallsign "MMG Team"
+       SCR_CallsignInfo "{65DA2D031727C19A}" {
+        m_sCallsign "CREW 1"
        }
-       SCR_CallsignInfo "{65D97E843648B1B6}" {
-        m_sCallsign "K4386 Armed Crew"
-       }
-       SCR_CallsignInfo "{65D97E87CBE486E2}" {
-        m_sCallsign "K4386 Armed Crew"
+       SCR_CallsignInfo "{65DA2D0301ADAED9}" {
+        m_sCallsign "CREW 2"
        }
       }
      }
