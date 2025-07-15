@@ -67,67 +67,58 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
  }
 }
 PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
- coords 7430.168 157.141 4317.119
+ coords 7119.849 146.56 4268.408
  Points {
-  ShapePoint "{65CD0643DF0471AA}" {
-   Position 153.066 0 -7.396
+  ShapePoint "{65DE31459AE3C95C}" {
+   Position -0.018 -0.159 0.172
   }
-  ShapePoint "{65CD0643C0A71C90}" {
-   Position 111.199 0 67.916
+  ShapePoint "{65DE31458CB10816}" {
+   Position -48.098 0 41.858
   }
-  ShapePoint "{65CD0643C2E3FCA1}" {
-   Position 19.876 0 73.222
+  ShapePoint "{65DE31458F5CA98C}" {
+   Position -78.42 0 26.457
   }
-  ShapePoint "{65CD0643C43235BB}" {
-   Position -80.067 0 76.779
+  ShapePoint "{65DE3145B28E45C1}" {
+   Position -243.89 0 -20.913
   }
-  ShapePoint "{65CD0643CAD71547}" {
-   Position -291.604 0 5.124
+  ShapePoint "{65DE3145B6FC3B86}" {
+   Position -275.353 0 -86.357
   }
-  ShapePoint "{65CD0643CE071BD4}" {
-   Position -360.962 0 -21.843
+  ShapePoint "{65DE3145BB71E90E}" {
+   Position -309.847 0 -212.139
   }
-  ShapePoint "{65CD0643F522BED2}" {
-   Position -425.249 0 -47.416
+  ShapePoint "{65DE3145BFC8469F}" {
+   Position -319.21 0 -286.412
   }
-  ShapePoint "{65CD0643F8E3A66F}" {
-   Position -676.425 0 -102.547
+  ShapePoint "{65DE3145A1CFA855}" {
+   Position -303.471 0 -320.875
   }
-  ShapePoint "{65CD0643E1F0A161}" {
-   Position -792.803 0 -128.412
+  ShapePoint "{65DE3145A925DF78}" {
+   Position -121.306 0 -310.809
   }
-  ShapePoint "{65CD0643E4201A41}" {
-   Position -757.485 0 -272.394
+  ShapePoint "{65DE3145AB470B3E}" {
+   Position -12.653 0 -321.661
   }
-  ShapePoint "{65CD0643E93A2105}" {
-   Position -737.111 0 -357.346
+  ShapePoint "{65DE3145AD2D0450}" {
+   Position 158.844 0 -328.07
   }
-  ShapePoint "{65CD0643EB15686A}" {
-   Position -735.856 0 -472.914
+  ShapePoint "{65DE314551F9277E}" {
+   Position 217.737 0.004 -303.451
   }
-  ShapePoint "{65CD0643EDBBDEDF}" {
-   Position -665.223 0 -522.037
+  ShapePoint "{65DE314556CF4671}" {
+   Position 340.801 0 -233.428
   }
-  ShapePoint "{65CD0643ED3B20A4}" {
-   Position -574.475 0 -537.483
+  ShapePoint "{65DE31455DFB5ED0}" {
+   Position 311.673 0 -185.855
   }
-  ShapePoint "{65CD0643EF71FEC4}" {
-   Position -397.702 0 -568.256
+  ShapePoint "{65DE31455CACC51E}" {
+   Position 228.394 0 -140.762
   }
-  ShapePoint "{65CD064392F37381}" {
-   Position -235.679 0 -548.384
+  ShapePoint "{65DE3145401E9633}" {
+   Position 186.027 0 63.226
   }
-  ShapePoint "{65CD0643952E6FF4}" {
-   Position -53.385 0 -476.802
-  }
-  ShapePoint "{65CD064394088540}" {
-   Position 28.569 0 -379.592
-  }
-  ShapePoint "{65CD06439646B828}" {
-   Position 112.287 0 -378.246
-  }
-  ShapePoint "{65CD06439876893D}" {
-   Position 130.358 0 -331.751
+  ShapePoint "{65DE3145478EBCAD}" {
+   Position 94.964 0 40.339
   }
  }
 }
@@ -135,7 +126,7 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestart
  coords 6376.554 180.423 3066.564
  Points {
   ShapePoint "{65CD06420342B31B}" {
-   Position -223.566 0 46.307
+   Position -217.07 1.833 34.359
   }
   ShapePoint "{65CD06420914FBB9}" {
    Position 106.084 0 -128.42
@@ -144,25 +135,25 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestart
    Position 122.811 0 -138.774
   }
   ShapePoint "{65CD06420E073659}" {
-   Position 152.103 0 -144.893
+   Position 137.188 9.997 -107.761
   }
   ShapePoint "{65CD0642372A545E}" {
-   Position 138.277 0 67.221
+   Position 120.917 -1.271 64.336
   }
   ShapePoint "{65CD064238788D13}" {
-   Position 132.802 0 100.166
+   Position 111.307 15.18 78.298
   }
   ShapePoint "{65CD06423D3D3F83}" {
-   Position -2.894 0 98.103
+   Position -3.249 0 78.609
   }
   ShapePoint "{65CD06423E56497D}" {
-   Position -160.2 0 100.972
+   Position -160.594 0 83.812
   }
   ShapePoint "{65CD064220E8CAE0}" {
-   Position -195.685 0 101.787
+   Position -194.331 0 85.863
   }
   ShapePoint "{65CD064227965838}" {
-   Position -223.311 0 99.438
+   Position -223.374 0 86.173
   }
  }
 }

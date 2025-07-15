@@ -24,10 +24,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "An MSV company is attacking an old Russian army strongpoint currently being held by USMC forces."\
    ""\
    "BLUFOR Composition: Motorized Platoon"\
-   "BLUFOR Assets: 1x M2A2 Bradley"\
+   "BLUFOR Assets: "\
    ""\
    "OPFOR Composition: Motorized Company"\
-   "OPFOR Assets: 1x T14 Armata"\
+   "OPFOR Assets: 2x UAZ "\
    ""\
    "Time: 45 Minutes"\
    ""\
@@ -48,9 +48,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData ""
   }
  }
- m_iFactionOneRatio 3
+ m_iFactionOneRatio 2
  m_sFactionOneKey "OPF"
- m_iFactionTwoRatio 2
  m_sFactionTwoKey "BLU"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
@@ -65,20 +64,23 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     SCR_Faction "{628B22E9B4056C88}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
-       SCR_CallsignInfo "{65DA2D03C379DF4D}" {
-        m_sCallsign "MEDICAL"
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
        }
-       SCR_CallsignInfo "{65DA2D03C7848915}" {
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{65DA2D03C8B5E88A}" {
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{65DA2D03CA07DFAA}" {
+       SCR_CallsignInfo "{65DE314EA3F796B4}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65DE314EA72BB524}" {
         m_sCallsign "ENG Team"
        }
-       SCR_CallsignInfo "{65DA2D03CE4EF4E8}" {
-        m_sCallsign "LAT Team"
+       SCR_CallsignInfo "{65DE314C4BE7DA64}" {
+        m_sCallsign "MMG Team"
        }
       }
      }
@@ -93,7 +95,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1PLT"
        }
        SCR_CallsignInfo "{55CCB79287BAFBD6}" {
-        m_sCallsign "MEDICAL"
+        m_sCallsign "MED"
        }
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
         m_sCallsign "1-1"
@@ -126,10 +128,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "MMG Team"
        }
        SCR_CallsignInfo "{65DA2D031727C19A}" {
-        m_sCallsign "CREW 1"
+        m_sCallsign "UAZ469 PKP Crew"
        }
        SCR_CallsignInfo "{65DA2D0301ADAED9}" {
-        m_sCallsign "CREW 2"
+        m_sCallsign "UAZ469 PKP Crew"
        }
       }
      }

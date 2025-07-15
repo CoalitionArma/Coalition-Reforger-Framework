@@ -1,41 +1,41 @@
 $grp SCR_VehicleSpawn {
  {
   coords 6464.76 184.904 3093.82
-  m_rnPrefab "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+  m_rnPrefab "{27B311210DBE7D38}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_PKP_1P29_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 6458.443 184.742 3118.6
   angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 6446.168 184.225 3118.032
   angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 6436.322 183.887 3117.792
   angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 6419.766 183.158 3118.728
+  coords 6425.229 183.158 3106.163
   angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 6454.282 184.261 3101.29
-  angleY 46.66
+  coords 6458.057 184.629 3080.116
+  angleY -21.024
   m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
   respawnDelay 10000
   firstSpawn 1
@@ -43,55 +43,55 @@ $grp SCR_VehicleSpawn {
  {
   coords 6450.93 184.326 3109.389
   angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 6429.528 183.408 3111.475
   angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 6416.209 182.853 3107.989
-  angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  coords 6439.649 183.43 3099.585
+  angleY 41.157
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 6439.968 183.891 3110.552
   angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 6403.138 182.279 3108.162
-  angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  coords 6433.324 183.274 3093.598
+  angleY 41.106
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 6403.188 182.065 3099.89
-  angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  coords 6439.557 183.423 3088.158
+  angleY 41.106
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 6415.593 182.611 3098.346
-  angleY 89.657
-  m_rnPrefab "{9BF596A3464B6DB8}Prefabs/Vehicles/Wheeled/K4386/K4386_Camo.et"
+  coords 6448.927 183.963 3096.435
+  angleY 41.106
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 6474.762 184.904 3093.82
-  m_rnPrefab "{1DF4C30C130D8FAD}Prefabs/Vehicles/Wheeled/K4386/K4386_Armed_Camo.et"
+  m_rnPrefab "{27B311210DBE7D38}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_PKP_1P29_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
