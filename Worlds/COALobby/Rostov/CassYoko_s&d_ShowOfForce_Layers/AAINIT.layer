@@ -21,13 +21,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData ""\
-   "An MSV company is attacking an old Russian army strongpoint currently being held by USMC forces."\
+   "An Russian MSV company is attacking an old Russian army strongpoint currently being held by USMC forces."\
    ""\
    "BLUFOR Composition: Motorized Platoon"\
-   "BLUFOR Assets: "\
+   "BLUFOR Assets: None"\
    ""\
    "OPFOR Composition: Motorized Company"\
-   "OPFOR Assets: 2x UAZ "\
+   "OPFOR Assets: 2x UAZ PKP"\
    ""\
    "Time: 45 Minutes"\
    ""\
