@@ -27,6 +27,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private string m_sMissionDetails;
 	private string m_sGameMode;
 	private string m_sPlayerGUID;
+	private string m_sTerrain;
 	
 	// Kill data
 	string m_sKillerName;
@@ -121,13 +122,13 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_sMaxPlayers = header.m_iPlayerCount.ToString();
 		m_sMissionDetails = header.m_sDetails;
 		m_sGameMode = header.m_sGameMode;
+		m_sTerrain = header.m_sTerrainName;
 		m_sPlayerCountMax = m_sPlayerCountMax + "/" + m_sMaxPlayers;
 		
 		// Open global log file
 		m_LogFileHandle = FileIO.OpenFile(LOG_PATH, FileMode.APPEND);
 		// Mission-specific log
 		m_MissionLog = FileIO.OpenFile("profile:/KillData/" + m_sMissionName, FileMode.WRITE);
-		Print(m_MissionLog);
 		
 		// Log mission beginning
 		UpdatePlayerCount();
@@ -282,13 +283,22 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (!m_MissionLog)
 			return;
 		
-		m_MissionLog.WriteLine("mission" + SEPARATOR + m_sMissionName + SEPARATOR + m_sAuthorName + SEPARATOR + m_sGameMode + SEPARATOR + m_sPlayerCountMax + SEPARATOR + m_aSideCounts);
+		m_MissionLog.WriteLine("mission" + SEPARATOR + m_sMissionName + SEPARATOR + m_sAuthorName + SEPARATOR + m_sMissionDetails + SEPARATOR + m_sGameMode + SEPARATOR + m_sPlayerCountMax + SEPARATOR + m_aSideCounts);
+		
+		// Log players in attendance
+		array<string> playersInAttendance = {};
+		array<int> players = {};
+		GetGame().GetPlayerManager().GetPlayers(players);
+		foreach (int player : players)
+		{
+			playersInAttendance.Insert(GetGame().GetBackendApi().GetPlayerIdentityId(player)); // array of guids we parse server-side
+		}
+		
+		m_LogFileHandle.WriteLine("attendance" + SEPARATOR + playersInAttendance);
+		m_MissionLog.WriteLine("attendance" + SEPARATOR + playersInAttendance);
 	}
 	
 	// Logs player death and kill data to file
-	// TODO: 
-	//	- Handle AI kills/deaths
-	//  - Faction data
 	void LogPlayerKill(SCR_InstigatorContextData instiContext)
 	{
 		if (!m_LogFileHandle)
@@ -357,7 +367,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (!m_MissionLog)
 			return;
 		
-		m_MissionLog.WriteLine("grenade" + SEPARATOR + m_sMissionName + SEPARATOR + m_sAuthorName + SEPARATOR + m_sGameMode + SEPARATOR + m_sPlayerCountMax + SEPARATOR + m_aSideCounts);
+		m_MissionLog.WriteLine("grenade" + SEPARATOR + );
 	}*/
 	
 	void LogShots()
