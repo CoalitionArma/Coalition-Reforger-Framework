@@ -246,5 +246,129 @@ FrameWidgetClass {
    "Use placeholder text" 1
    "Placeholder text" "Search for player..."
   }
+  ButtonWidgetClass "{659CDD52DD4593ED}" {
+   Name "BLUFOR"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 176
+    OffsetLeft 176
+    PositionY -300
+    OffsetTop -300
+    SizeX 112
+    OffsetRight -288
+    SizeY 29.999
+    OffsetBottom 270.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{659CDD52DD4593E2}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Respawn Blufor"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{659CDD52DE5A3285}" {
+   Name "OPFOR"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 176
+    OffsetLeft 176
+    PositionY -260
+    OffsetTop -260
+    SizeX 112
+    OffsetRight -288
+    SizeY 29.999
+    OffsetBottom 230.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{659CDD52DE5A327A}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Respawn Opfor"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{659CDD52DB2922AB}" {
+   Name "INDFOR"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 176
+    OffsetLeft 176
+    PositionY -220
+    OffsetTop -220
+    SizeX 112
+    OffsetRight -288
+    SizeY 29.999
+    OffsetBottom 190.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{659CDD52DB2922A8}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Respawn Indfor"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{65B158BFAE0DF30E}" {
+   Name "CIV"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 176
+    OffsetLeft 176
+    PositionY -180
+    OffsetTop -180
+    SizeX 112
+    OffsetRight -288
+    SizeY 29.999
+    OffsetBottom 150.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65B158BFAE0DF30F}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Respawn CIV"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
  }
 }

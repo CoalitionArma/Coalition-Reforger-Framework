@@ -234,6 +234,10 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		UpdatePlayerCount();
 		LogMissionEvent("started");
+		
+		if (m_sGameMode == "SPCL" || m_sGameMode == "SPC" || m_sGameMode == "SPECIAL") // ignore specials
+			return;
+		
 		StartMissionLog();
 	}
 	
