@@ -1,0 +1,39 @@
+GenericEntity : "{DAA36547CA7D808E}Prefabs/Weapons/Rifles/M16/Rifle_AR15_M203_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5534745C44D1EF58}" {
+     AttachmentSlot InventoryStorageSlot optics {
+     }
+    }
+    AttachmentSlotComponent "{65ACCAF6A00E5DDB}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+      Offset 0 0 -0.01
+      Prefab "{635E3A255B60888F}Prefabs/Weapons/Attachments/Underbarrel/UGL_M203_long_parkerised.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     WeaponAimModifiers {
+      RecoilWeaponAimModifier "{65ACCAF5678F52B5}" {
+       LinearData RecoilData "{65ACCAF5678F52B4}" {
+        "Curve Magnitudes" 1.2 1.2 1.2
+       }
+       AngularData RecoilData "{65ACCAF5678F52B3}" {
+        "Curve Magnitudes" 1.2 1.2 1.2
+       }
+       TurnOffsetData RecoilData "{65ACCAF5678F52B1}" {
+        "Curve Magnitudes" 1.4 1.4 0
+       }
+      }
+     }
+     MagazineTemplate "{96F9473920A51844}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_20rnd_2+2.et"
+    }
+   }
+  }
+ }
+}
