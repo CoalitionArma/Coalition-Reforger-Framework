@@ -1,0 +1,38 @@
+GenericEntity : "{2F2DDA2ADFA71D3A}Prefabs/Weapons/Rifles/MPX/Rifle_MPX_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{645F6740D00E1DEB}" {
+     AttachmentSlot InventoryStorageSlot BayonetSlot {
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{6465076D33AA0793}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot "{6465076D36F83CC5}" {
+      Prefab "{5DED8A21EBF459DF}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_VortexUH-1/Collim_VortexUH1.et"
+     }
+    }
+    AttachmentSlotComponent "{6465076F0EBC949E}" {
+     AttachmentSlot InventoryStorageSlot "{6465076F13436F80}" {
+      Prefab ""
+     }
+    }
+    AttachmentSlotComponent "{646635A06D92E6CF}" {
+     AttachmentSlot InventoryStorageSlot "{646635A06F27335C}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{645F6740D00E1DDA}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{BD0C1BB4FF9A7FE4}Prefabs/Weapons/Attachments/Muzzle/9x19/FlashHider_YHMAnnihilator_9mm.et"
+       }
+      }
+     }
+     MagazineTemplate "{35C35DD311E92C06}Prefabs/Weapons/Magazines/Magazine_9x19_MPX_41rnd_Ball.et"
+    }
+   }
+  }
+ }
+}

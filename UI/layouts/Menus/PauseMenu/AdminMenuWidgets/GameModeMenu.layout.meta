@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{0133669640941C51}UI/layouts/Menus/PauseMenu/coalAdminMenu.layout"
+ Name "{36D941F5D1C10513}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/GameModeMenu.layout"
  Configurations {
   LayoutResourceClass PC {
   }

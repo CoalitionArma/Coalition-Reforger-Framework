@@ -17,7 +17,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	// Main widgets
 	protected Widget m_wRoot;
 	protected Widget m_wMenuContent;
-	protected FrameWidget m_adminMenuRoot;
+	protected Widget m_wConfirmationMenu;
 	protected FrameWidget m_gearResetMenuRoot;
 	
 	// Game managers
@@ -52,6 +52,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 	protected SCR_ButtonTextComponent m_hintMenuButton;
 	protected SCR_ButtonTextComponent m_healMenuButton;
 	protected SCR_ButtonTextComponent m_ticketMenuButton;
+	protected SCR_ButtonTextComponent m_GamemodeMenuButton;
 	
 	// Action buttons
 	protected SCR_ButtonTextComponent m_actionButton;
@@ -72,7 +73,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 	
 	// Ticket State
 	protected int m_iSelectedTicket = -1;
-
+	
+	// Gear Script List
+	protected ref CRF_GearScriptConfigStruct m_gearsetlist;
+	
 	//-----------------------------------------------------------------------------
 	// General UI Methods
 	//-----------------------------------------------------------------------------
@@ -94,7 +98,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		// Setup menu roots
 		m_wRoot = GetRootWidget();
-		m_adminMenuRoot = FrameWidget.Cast(m_wRoot.FindWidget("AdminMenuTools"));
 
 		// Set up menu navigation buttons
 		InitializeMenuButtons();
@@ -120,9 +123,12 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 * Get a list box from the current loaded menu
 	 * @param name of the root widget of the list box
 	 */
-	protected SCR_ListBoxComponent GetListBox(string listbox)
+	protected SCR_ListBoxComponent GetListBox(string listbox, Widget widget = null)
 	{
-		Widget listRoot = OverlayWidget.Cast(m_wMenuContent.FindAnyWidget(listbox));
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		Widget listRoot = OverlayWidget.Cast(widget.FindAnyWidget(listbox));
 		return SCR_ListBoxComponent.Cast(listRoot.FindHandler(SCR_ListBoxComponent));
 	}
 	
@@ -130,27 +136,36 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 * Get a button from the current loaded menu
 	 * @param name of the root widget of the button
 	 */
-	protected SCR_ButtonTextComponent GetMenuButton(string button)
+	protected SCR_ButtonTextComponent GetMenuButton(string button, Widget widget = null)
 	{
-		return SCR_ButtonTextComponent.GetButtonText(button, m_wMenuContent);
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return SCR_ButtonTextComponent.GetButtonText(button, widget);
 	}
 	
 	/**
 	 * Get a multiline edit box from the current loaded menu
 	 * @param name of the root widget of the edit box
 	 */
-	protected MultilineEditBoxWidget GetMultilineEditBox(string multiEditBox)
+	protected MultilineEditBoxWidget GetMultilineEditBox(string multiEditBox, Widget widget = null)
 	{
-		return MultilineEditBoxWidget.Cast(m_wMenuContent.FindAnyWidget(multiEditBox));
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return MultilineEditBoxWidget.Cast(widget.FindAnyWidget(multiEditBox));
 	}
 	
 	/**
 	 * Get a edit box from the current loaded menu
 	 * @param name of the root widget of the edit box
 	 */
-	protected EditBoxWidget GetEditBox(string EditBox)
+	protected EditBoxWidget GetEditBox(string EditBox, Widget widget = null)
 	{
-		return EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget(EditBox));
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return EditBoxWidget.Cast(widget.FindAnyWidget(EditBox));
 	}
 	
 	/**
@@ -181,6 +196,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Heal menu button
 		m_healMenuButton = SCR_ButtonTextComponent.GetButtonText("HealButton", m_wRoot);
 		m_healMenuButton.m_OnClicked.Insert(HealButton);
+		
+		// Heal menu button
+		m_GamemodeMenuButton = SCR_ButtonTextComponent.GetButtonText("GamemodeButton", m_wRoot);
+		m_GamemodeMenuButton.m_OnClicked.Insert(GamemodeButton);
 	}
 	
 	/**
@@ -212,8 +231,13 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (m_wMenuContent)
 			delete m_wMenuContent;
 		
+		CloseConfirmAction();
+		
 		if (m_ChatPanel)
 			m_ChatPanel.SetAlwaysVisible(false);
+		
+		// Remove Gamemode updater
+		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
 
 	/**
@@ -274,6 +298,16 @@ class CRF_AdminMenu : ChimeraMenuBase
 		UpdateMenuButtonColors(m_healMenuButton);
 		ClearMenu();
 		InitializeHealMenu();
+	}	
+	
+	/**
+	 * Activates the Gamemode Settings menu
+	 */
+	void GamemodeButton()
+	{
+		UpdateMenuButtonColors(m_GamemodeMenuButton);
+		ClearMenu();
+		InitializeGamemodeMenu();
 	}
 	
 	/**
@@ -292,6 +326,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_teleportMenuButton.GetRootWidget().SetColor(inactiveColor);
 		m_hintMenuButton.GetRootWidget().SetColor(inactiveColor);
 		m_healMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_GamemodeMenuButton.GetRootWidget().SetColor(inactiveColor);
 		
 		// Set active button text to white
 		activeButton.GetRootWidget().SetColor(Color.FromSRGBA(18, 20, 22, 255));
@@ -308,9 +343,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 	 */
 	void ClearMenu()
 	{
-		// Reset action buttons
-		//m_actionButton.m_OnClicked.Clear();
-		
 		// Remove menu widget
 		if (m_wMenuContent)
 			delete m_wMenuContent;
@@ -322,6 +354,9 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_allPlayers.Clear();
 		m_factions.Clear();
 		m_selectableFactions.Clear();
+		
+		// Remove Gamemode updater
+		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
 
 	/**
@@ -967,12 +1002,20 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Load Menu Buttons
 		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
 		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
-		if (!searchButton0 || !menuButton0)
+		SCR_ButtonTextComponent menuButton1 = GetMenuButton("BLUFOR");
+		SCR_ButtonTextComponent menuButton2 = GetMenuButton("OPFOR");
+		SCR_ButtonTextComponent menuButton3 = GetMenuButton("INDFOR");
+		SCR_ButtonTextComponent menuButton4 = GetMenuButton("CIV");
+		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
 			return;
 			
 		// Setup button event handlers
 		searchButton0.m_OnClicked.Insert(SearchList0);
 		menuButton0.m_OnClicked.Insert(RespawnPlayer);
+		menuButton1.m_OnClicked.Insert(RespawnSide);
+		menuButton2.m_OnClicked.Insert(RespawnSide);
+		menuButton3.m_OnClicked.Insert(RespawnSide);
+		menuButton4.m_OnClicked.Insert(RespawnSide);
 		
 		// Setup selection change handlers
 		playerList.m_OnChanged.Insert(UpdateSpawnGroupRequest);
@@ -1187,6 +1230,19 @@ class CRF_AdminMenu : ChimeraMenuBase
 		// Refresh the menu after a short delay
 		GetGame().GetCallqueue().CallLater(ClearMenu, 1250, false);
 		GetGame().GetCallqueue().CallLater(InitializeRespawnMenu, 1825, false);
+	}
+	
+	/**
+	 * Respawns blufor
+	 */
+	void RespawnSide()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		CRF_RplToAuthorityManager.GetInstance().RespawnFaction(button.GetName(), true);
 	}
 
 	//-----------------------------------------------------------------------------
@@ -1543,6 +1599,276 @@ class CRF_AdminMenu : ChimeraMenuBase
 	}
 	
 	//-----------------------------------------------------------------------------
+	// Gamemode Settings Menu
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the Respawn menu
+	 * Allows admins to respawn dead players
+	 */
+	void InitializeGamemodeMenu()
+	{
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{36D941F5D1C10513}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/GameModeMenu.layout");
+		if (!m_wMenuContent)
+			return;
+		
+		// Load Menu Sections
+		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
+		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		
+		// Load Buttons
+		SCR_ButtonTextComponent resetGearButton = GetMenuButton("ApplyGearSets", gearSets);
+		SCR_ButtonTextComponent aarGearButton = GetMenuButton("EnterAAR");
+		if (!resetGearButton || !aarGearButton)
+			return;
+		
+		// Setup invokers
+		resetGearButton.m_OnClicked.Insert(ConfirmAction);
+		aarGearButton.m_OnClicked.Insert(EnterAAR);
+		
+		/*
+		*	!!!!! Changing the time delta is done below and in the menu layout !!!!!
+		*/
+		// Load Menu Buttons for Game Timer
+		
+		// Time Values
+		ref array<int> timeValues = {10, 5, -5, -10};	
+		
+		foreach (int time : timeValues)
+		{
+			string buttonName = string.Format("%1", time);
+			SCR_ButtonTextComponent button = GetMenuButton(buttonName, gamerTimer);
+			if (!button)
+				return;
+				
+			button.m_OnClicked.Insert(UpdateTime);
+		}
+		
+		/*
+		*	!!!!! Changing the ticket delta is done below and in the menu layout !!!!!
+		*/
+		// Load Menu Buttons for Tickets
+		
+		// Faction names
+		ref array<string> factions = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		
+		// Actions
+		ref array<string> actions = {"Add", "Subtract"};
+		
+		// Ticket values
+		ref array<int> values = {10, 5, 1};
+		
+		foreach (string faction : factions)
+		{
+			foreach (string action : actions)
+			{
+				foreach (int value : values)
+				{
+					string buttonName = string.Format("%1_%2_%3", faction, action, value);
+					SCR_ButtonTextComponent button = GetMenuButton(buttonName, ticketCounters);
+					if (!button)
+						return;
+						
+					button.m_OnClicked.Insert(UpdateTicket);
+				}
+			}
+		}
+		
+		// Load config files into listboxs and array
+		LoadGearConfigList();
+
+		foreach (string name, string path : m_gearsetlist.gearset)
+		{
+			foreach (string faction : factions)
+			{
+				SCR_ListBoxComponent listBox = GetListBox(string.Format("%1ListBox", faction) ,gearSets);
+				listBox.AddItem(name);
+			}
+		}
+		
+		// Change title of the menu
+		UpdateMenuTitle("Gamemode Settings");
+		
+		// Update menu data
+		GamemodeMenuUpdate();
+
+		GetGame().GetCallqueue().CallLater(GamemodeMenuUpdate, 1000, true);
+	}
+	
+	void LoadGearConfigList()
+	{
+		SCR_JsonLoadContext ctx = new SCR_JsonLoadContext();
+		m_gearsetlist = new CRF_GearScriptConfigStruct();
+	
+		if (!ctx.LoadFromFile("configs/GearScripts/GearScriptsConfigList.json"))
+			return;
+		
+		ctx.ReadValue("", m_gearsetlist);
+	}
+	
+	/**
+	 * Add time delta based on the button name that was clicked
+	 * !!!!! Changing the time delta is done above and in the menu layout !!!!!
+	 */
+	void UpdateTime()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		// Get the delta from the button name
+		int delta = button.GetName().ToInt() * 60000;
+		
+		CRF_RplToAuthorityManager.GetInstance().UpdateTimer(delta);
+	}
+	
+	void UpdateTicket()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		
+		array<string> requestParts = {};
+		button.GetName().Split("_", requestParts, true);
+		
+		string action = requestParts[1];
+		int delta = requestParts[2].ToInt();
+		FactionKey faction = requestParts[0];
+		
+		CRF_RplToAuthorityManager.GetInstance().UpdateTicket(action, faction, delta);
+	}
+	
+	void UpdateGearSets()
+	{
+		// Load gearsets section
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		
+		// Check if faction gearset needs updating
+		ref array<string> factions = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		foreach (string faction : factions)
+		{
+			SCR_ListBoxComponent listBox = GetListBox(string.Format("%1ListBox", faction) ,gearSets);
+			int selectedItem = listBox.GetSelectedItem();
+			if (selectedItem < 0)
+				continue;
+			
+			// Get the gearset key from selected item in the list box
+			string key = TextWidget.Cast(listBox.GetElementComponent(listBox.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+			string gearSetPath;
+			m_gearsetlist.gearset.Find(key, gearSetPath);
+			
+			// Ask the server to update factions gear
+			CRF_RplToAuthorityManager.GetInstance().UpdateGearSet(faction, gearSetPath);
+		}
+
+		CloseConfirmAction();
+	}
+	
+	void ConfirmAction()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		// Load menu content widget
+		m_wConfirmationMenu = GetGame().GetWorkspace().CreateWidgets("{905BF1B70A9A44AC}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/ConfirmationMenu.layout");
+		if (!m_wMenuContent)
+			return;
+
+		// Get menu buttons
+		SCR_ButtonTextComponent runButton = GetMenuButton("ExcuteButton", m_wConfirmationMenu);
+		SCR_ButtonTextComponent cancelButton = GetMenuButton("CancelButton", m_wConfirmationMenu);
+		
+		// Get the function that needs confirming from the button name in the layout
+		string confirmActionFunc = button.GetName();
+
+		// Setup script invokers
+		cancelButton.m_OnClicked.Insert(CloseConfirmAction);
+		switch (confirmActionFunc)
+		{
+			case "EnterAAR" : runButton.m_OnClicked.Insert(EnterAAR); break;
+			case "ApplyGearSets" : runButton.m_OnClicked.Insert(UpdateGearSets); break;
+		}
+	}
+	
+	/**
+	 * Close confirmation popup
+	 */
+	void CloseConfirmAction()
+	{
+		if (m_wConfirmationMenu)
+		 delete m_wConfirmationMenu;
+	}
+	
+	/**
+	 * Advanced the game state to AAR
+	 */
+	void EnterAAR()
+	{
+		if (!CRF_EGamemodeState.AAR)
+			return;
+
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(true);
+		CloseConfirmAction();
+	}
+	
+	void GamemodeMenuUpdate()
+	{	
+		// Get current mission time
+		string m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		
+		// Grab timer
+		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
+		TextWidget gameTimerText = TextWidget.Cast(gamerTimer.FindWidget("CurrentGameTime0"));
+		
+		// Update Timer
+		gameTimerText.SetText(m_sServerWorldTime);
+		
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+
+		ref array<string> factions = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		
+		// Update Gearset titles to current gearsets
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		foreach (string faction : factions)
+		{
+			string resourceName;
+			switch (faction)
+			{
+				case "BLUFOR" : resourceName = gm.m_BLUFORGearScriptSettings.m_rGearScript; break;
+				case "OPFOR" : resourceName = gm.m_OPFORGearScriptSettings.m_rGearScript; break;
+				case "INDFOR" : resourceName = gm.m_INDFORGearScriptSettings.m_rGearScript; break;
+				case "CIV" : resourceName = gm.m_CIVILIANGearScriptSettings.m_rGearScript; break;
+			}
+			
+			string gearSetName =  resourceName.Substring(resourceName.LastIndexOf("/") + 1, resourceName.LastIndexOf(".") - resourceName.LastIndexOf("/") - 1);
+			gearSetName.Replace("CRF_GS_", "");
+			TextWidget.Cast(gearSets.FindAnyWidget(string.Format("%1ListTitle", faction))).SetText(gearSetName);
+		}
+
+		// Grab Ticket Counters
+		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
+		TextWidget bluforTicketText = TextWidget.Cast(ticketCounters.FindWidget("BluforTicketCount"));
+		TextWidget opforTicketText = TextWidget.Cast(ticketCounters.FindWidget("OpforTicketCount"));
+		TextWidget indforTicketText = TextWidget.Cast(ticketCounters.FindWidget("IndforTicketCount"));
+		TextWidget civTicketText = TextWidget.Cast(ticketCounters.FindWidget("CivTicketCount"));
+		
+		// Update Ticket Counters
+		bluforTicketText.SetText(CRF_Gamemode.GetInstance().m_iBLUFORTickets.ToString());
+		opforTicketText.SetText(CRF_Gamemode.GetInstance().m_iOPFORTickets.ToString());
+		indforTicketText.SetText(CRF_Gamemode.GetInstance().m_iINDFORTickets.ToString());
+		civTicketText.SetText(CRF_Gamemode.GetInstance().m_iCIVTickets.ToString());
+
+	}
+	
+	//-----------------------------------------------------------------------------
 	// Search Methods
 	//-----------------------------------------------------------------------------
 	
@@ -1675,4 +2001,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		return menuSubTitle.GetText();
 	}
+}
+class CRF_GearScriptConfigStruct
+{
+	ref map<string, string> gearset;
 }

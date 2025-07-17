@@ -1,0 +1,25 @@
+GenericEntity : "{66346810703572BC}Prefabs/Weapons/Rifles/M16/Rifle_CAR15_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     WeaponAimModifiers {
+      RecoilWeaponAimModifier "{65ACCAF5678F52B5}" {
+       LinearData RecoilData "{65ACCAF5678F52B4}" {
+        "Curve Magnitudes" 1.5 1.5 1.2
+       }
+       AngularData RecoilData "{65ACCAF5678F52B3}" {
+        "Curve Magnitudes" 1.5 1.5 1.2
+       }
+       TurnOffsetData RecoilData "{65ACCAF5678F52B1}" {
+        "Curve Magnitudes" 1.5 1.5 0
+       }
+      }
+     }
+     MagazineTemplate "{96F9473920A51844}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_20rnd_2+2.et"
+    }
+   }
+  }
+ }
+}

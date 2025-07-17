@@ -14,6 +14,7 @@ class CRF_SafestartManager : ScriptComponent
 	protected bool m_bKillRedundantUnitsBool;
 
 	int m_iTimeSafeStartBegan;
+	[RplProp()]
 	int m_iTimeMissionEnds;
 	int m_iSafeStartTimeRemaining;
 

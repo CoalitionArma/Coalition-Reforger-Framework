@@ -482,7 +482,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!factionKey.IsEmpty())
 		{
 			// Deduct ticket
-			m_RespawnManager.SubtractTicket(factionKey);
+			m_RespawnManager.SubtractTicket(factionKey, 1);
 
 			// Display respawn screen
 			GetGame().GetCallqueue().CallLater(
