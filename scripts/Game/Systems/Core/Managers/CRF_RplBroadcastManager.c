@@ -428,7 +428,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Add the log to the admin menu logs
 		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
 		{	
-			m_AdminMenuManager.LogAdminAction(data);
+			m_AdminMenuManager.StoreAdminLogs(data);
 		}
 		
 		// Only send the log to target player if required

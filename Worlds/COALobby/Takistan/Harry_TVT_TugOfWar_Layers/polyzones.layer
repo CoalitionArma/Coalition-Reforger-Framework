@@ -72,7 +72,7 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestar
  }
 }
 CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
- coords 5652.415 100.694 9932.121
+ coords 5651.252 100.694 9943.254
  angleY 90
  m_MarkerColor 0 0 0 1
  m_sDescription "Contested Intersection"

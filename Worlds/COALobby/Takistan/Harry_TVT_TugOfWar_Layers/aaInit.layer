@@ -21,10 +21,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Clear"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Seize the marked intersection, and hold it until the end of the mission."
+   m_sTextData "Seize the marked intersection, destroy the Taliban weapons cache there, and hold it until the end of the mission."
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTextData "Eliminate Blufor. Once Blufor has captured the intersection, Indfor will receive a respawn wave."
+   m_sTextData "Eliminate Blufor. Once Blufor destroy the weapons cache at the intersection,  Indfor will receive a respawn wave."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "The respawn wave is tied to the destruction of the cache"
   }
  }
  m_iFactionOneRatio 2
@@ -119,30 +122,18 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
-SCR_FactionControlTriggerEntity objTrigger {
- coords 5661.61 100.712 9936.354
- userScript "	bool m_messageSent = false;"
- TriggerShapeType Sphere
- SphereRadius 150
- DrawShape 1
- TriggerActivationType "First change"
- PeriodicQueries 1
- UpdatePeriod 15
- OnActivate ""\
- "		super.OnActivate(ent);"\
- "		if (!m_messageSent)"\
+GenericEntity : "{B17411929589C43C}Prefabs/MP/Campaign/Assets/CampaignHQRadioEast.et" {
+ coords 5649.132 101.916 9942.943
+ angleY 110.33
+}
+GenericEntity objCache : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ coords 5651.254 100.898 9942.53
+ destructor ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor has siezed the intersection\", 10);"\
+ "		if (Replication.IsServer()) "\
  "		{"\
- "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor has seized the intersection.\", 10);"\
- "			if (Replication.IsServer()) "\
- "			{"\
- "				CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();"\
- "				rm.RespawnSide(\"INDFOR\");"\
- "			}"\
- "			m_messageSent = true;"\
- "		}	"\
+ "			CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();"\
+ "			rm.RespawnSide(\"INDFOR\");"\
+ "		}"\
  "	"
- RunDefaultQueryFirst 0
- m_sOwnerFactionKey "BLUFOR"
- m_iRatioMethod "More than"
- m_fFriendlyRatioLimit 0.9
 }

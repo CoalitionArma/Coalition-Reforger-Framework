@@ -1,0 +1,30 @@
+GenericEntity : "{A7D7A2CE27279236}Prefabs/Weapons/Rifles/M16/Rifle_AR15_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{65ACCAF5678E650A}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{9DA34415492DCF5E}Prefabs/Weapons/Attachments/Handguards/Handguard_M16A1_Triangle/Handguard_AR15_Triangle.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     WeaponAimModifiers {
+      RecoilWeaponAimModifier "{65ACCAF5678F52B5}" {
+       LinearData RecoilData "{65ACCAF5678F52B4}" {
+        "Curve Magnitudes" 1.2 1.2 1.2
+       }
+       AngularData RecoilData "{65ACCAF5678F52B3}" {
+        "Curve Magnitudes" 1.2 1.2 1.2
+       }
+       TurnOffsetData RecoilData "{65ACCAF5678F52B1}" {
+        "Curve Magnitudes" 1.4 1.4 0
+       }
+      }
+     }
+     MagazineTemplate "{96F9473920A51844}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_20rnd_2+2.et"
+    }
+   }
+  }
+ }
+}

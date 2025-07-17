@@ -68,10 +68,10 @@ class CRF_AdminMenuManager : ScriptComponent
 	}
 	
 	/**
-	* Logs an admin action to the array
+	* Stores admin logs for UI
 	* @param data Description of the action
 	*/
-	void LogAdminAction(string data)
+	void StoreAdminLogs(string data)
 	{
 		// Create new log
 		CRF_AdminActionLog log = new CRF_AdminActionLog();

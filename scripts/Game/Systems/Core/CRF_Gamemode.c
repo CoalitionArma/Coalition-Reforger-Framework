@@ -126,6 +126,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	protected CRF_LoggingManager m_LoggingManager;
 
 	//===================================================================================
 	// STATIC METHODS
@@ -169,6 +170,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
+		m_LoggingManager = CRF_LoggingManager.GetInstance();
 	}
 	
 	//===================================================================================
@@ -295,6 +297,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 		
 		// Stores player profiles who havent disconnected
 		dataCollector.OnGameEnd();
+		
+		// Make sure we close logging memory leak
+		m_LoggingManager.OnGameModeEnd(GetEndGameData());
 	}
 	
 	void ProcessStats(SCR_DataCollectorComponent dataCollector, int player)

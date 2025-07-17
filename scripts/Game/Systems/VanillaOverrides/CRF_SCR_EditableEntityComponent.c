@@ -12,19 +12,22 @@ modded class SCR_EditableEntityComponent
 		ResourceName resourceName = m_Owner.GetPrefabData().GetPrefabName();
 		
 		//--- From Role Config
-		if (CRF_RoleHelper.IsValidGearscriptResource(resourceName) && GetGame().GetMenuManager().GetTopMenu().IsInherited(CRF_SpectatorMenuUI))
-		{
-			CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
-			CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceName);
-			
-			if (role)
+		if (GetGame().GetMenuManager().GetTopMenu()) {
+			if (CRF_RoleHelper.IsValidGearscriptResource(resourceName) && GetGame().GetMenuManager().GetTopMenu().IsInherited(CRF_SpectatorMenuUI))
 			{
-				CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+				CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
+				CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceName);
 				
-				if (roleConfig)
-					return SCR_UIInfo.CreateInfo(roleConfig.m_sRoleName, roleConfig.m_sRoleDescription, roleConfig.m_RoleIcon);
+				if (role)
+				{
+					CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
+					
+					if (roleConfig)
+						return SCR_UIInfo.CreateInfo(roleConfig.m_sRoleName, roleConfig.m_sRoleDescription, roleConfig.m_RoleIcon);
+				};
 			};
-		};
+		}
+		
 		
 		//--- From prefab
 		SCR_EditableEntityComponentClass prefabData = GetEditableEntityData(owner);
