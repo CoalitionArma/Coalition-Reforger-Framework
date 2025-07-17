@@ -11,7 +11,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_SafestartManager m_SafestartManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
-	protected CRF_AdminMenuManager m_AdminMenuManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	
 	//------------------------------------------------------------------------------------------------
@@ -178,10 +177,21 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestGroupIdFromServer, requestedId, requesterID); 
 	}
 	
+	void RespawnFaction(FactionKey faction, bool logAction)
+	{
+		Rpc(RpcAsk_RespawnFaction, faction, logAction); 
+	}
+	
 	// Equipment management
 	void ResetGear(int playerId, ResourceName prefab, bool logAction)
 	{
 		Rpc(RpcAsk_ResetGear, playerId, prefab, logAction); 
+	}
+	
+	// Equipment management
+	void UpdateGearSet(string faction, ResourceName path)
+	{
+		Rpc(RpcAsk_UpdateGearSet, faction, path); 
 	}
 	
 	void AddItem(int playerId, string prefab, bool logAction)
@@ -209,6 +219,17 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	{
 		Rpc(RpcAsk_LogAdminAction, data, playerId, sendToPlayer); 
 	}
+	
+	void UpdateTimer(int delta) 
+	{
+		Rpc(RpcAsk_UpdateTimer, delta); 
+	}	
+	
+	void UpdateTicket(string action, FactionKey faction, int delta) 
+	{
+		Rpc(RpcAsk_UpdateTicket, action, faction, delta); 
+	}
+	
 	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
@@ -378,6 +399,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (playerGroup)
 			m_RplBroadcastManager.SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
 	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RespawnFaction(FactionKey faction, bool logAction)
+	{
+		m_RespawnManager.RespawnSide(faction);
+		
+		if (logAction)
+		{
+			string logMessage = string.Format("%1 was respawned", faction);
+			m_RplBroadcastManager.LogAdminAction(logMessage, -1, false);
+		}
+	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ResetGear(int playerId, ResourceName prefab, bool logAction)
@@ -414,6 +447,65 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			string logMessage = string.Format("%1's gear was set to %2", playerName, prefabName);
 			m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true);
 		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateGearSet(string faction, ResourceName path)
+	{
+		// Update gearscript in the gamemode
+		switch (faction)
+		{
+			case "BLUFOR": CRF_Gamemode.GetInstance().m_BLUFORGearScriptSettings.m_rGearScript = path; break;
+			case "OPFOR": CRF_Gamemode.GetInstance().m_OPFORGearScriptSettings.m_rGearScript = path; break;
+			case "INDFOR": CRF_Gamemode.GetInstance().m_INDFORGearScriptSettings.m_rGearScript = path; break;
+			case "CIV": CRF_Gamemode.GetInstance().m_CIVILIANGearScriptSettings.m_rGearScript = path; break;
+		}
+
+		// Load the AI world
+		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+		if (!aiWorld)
+		{
+			Print("ERROR: AIworld not found, can't update gear sets");
+			return;
+		}
+		
+		array<AIAgent> aiAgents = {};
+		array<IEntity> entites = {};
+
+		//Get entites in the faction and store them
+		aiWorld.GetAIAgents(aiAgents);
+		foreach (AIAgent agent : aiAgents)
+		{
+			IEntity entity = agent.GetControlledEntity();
+			if (!entity)
+				continue;
+				
+			SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+			if (!character)
+				continue;
+			
+			if (character.GetFactionKey() == faction)
+				entites.Insert(entity);
+		}
+
+		// Update gear of all units
+		foreach (IEntity entity : entites)
+		{
+			// Grab prefab name and check if its a valid gearscript
+			ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+			if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+				continue;
+			
+			// Schedule gear setup with appropriate delay
+			GetGame().GetCallqueue().Call(
+				CRF_GearscriptManager.GetInstance().SetEntityGear, 
+				entity,
+				prefab
+			);
+		}
+		
+		string logMessage = string.Format("%1 was changed to %2", faction, path);
+		m_RplBroadcastManager.LogAdminAction(logMessage, -1 , false)
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -493,5 +585,32 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
 		m_RplBroadcastManager.LogAdminAction(data, playerId, sendToPlayer);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateTimer(int delta)
+	{
+		// Get current end time
+		int currentEndTime = CRF_SafestartManager.GetInstance().m_iTimeMissionEnds;
+		if ((currentEndTime + delta) < 0 || m_SafestartManager.GetSafestartStatus())
+			return;
+
+		// Set the new time, broadcast is handled by rplprop
+		CRF_SafestartManager.GetInstance().m_iTimeMissionEnds = currentEndTime + delta;
+		
+		string logMessage = string.Format("Game timer adjusted by %1 mins", delta/60000);
+		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_UpdateTicket(string action, FactionKey faction, int delta)
+	{
+		if (action == "Add")
+			m_RespawnManager.AddTicket(faction, delta, true);
+		else if (action == "Subtract")
+			m_RespawnManager.SubtractTicket(faction, delta, true);
+		
+		string logMessage = string.Format("%1 tickets was subtracted from %2", delta, faction);
+		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
 	}
 };

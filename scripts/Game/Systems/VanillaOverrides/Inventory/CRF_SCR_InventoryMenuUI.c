@@ -7,7 +7,7 @@ modded class SCR_InventoryMenuUI
 		// If the item is from an arsenal
 		if (MoveItemToStorageSlot_VirtualArsenal()) {
 			// Grab item and player information
-			CRF_AdminMenuManager adminMenu = CRF_AdminMenuManager.GetInstance();
+			CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
 			CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();
 			string name = GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId());
 			InventoryItemComponent itemIIC = InventoryItemComponent.Cast(item.FindComponent(InventoryItemComponent));
@@ -18,7 +18,7 @@ modded class SCR_InventoryMenuUI
 			CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotDataFromCharacter(rplComponent.Id());
 			
 			// Log to admin menu
-			adminMenu.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal");
+			rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal", -1, false);
 		}
 		
 	}
