@@ -240,6 +240,10 @@ $grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_
   coords 1125.384 12.606 5138.553
   angleY -54.472
  }
+ {
+  coords 1133.148 11.412 5128.99
+  angleY -145.795
+ }
 }
 $grp GenericEntity : "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et" {
  {
