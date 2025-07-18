@@ -25,8 +25,8 @@ PolylineShapeEntity {
    ID "6586537E1F83840B"
    components {
     CRF_PolyZoneMeshComponent "{6586537E1F83846B}" {
-     m_fHeight 30
-     m_fUndergroundHeight 15
+     m_fHeight 345
+     m_fUndergroundHeight 400
      m_Material "{29F38F4EC62E9D57}Assets/Editor/VirtualArea/OPFORBoundry.emat"
     }
     RplComponent "{65885AB9A45EC7BF}" {
@@ -38,7 +38,7 @@ PolylineShapeEntity {
    coords 0 0 0
    TriggerShapeType Polyline
    SphereRadius 25.5
-   "Polyline Height" 10000
+   "Polyline Height" 100000
    TriggerActivationType "All changes"
    PeriodicQueries 1
    UpdatePeriod 1

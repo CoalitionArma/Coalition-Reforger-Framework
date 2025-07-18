@@ -24,9 +24,9 @@ PolylineShapeEntity {
    ID "658635BEF7631DCD"
    components {
     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
-     m_fHeight 25
-     m_fUndergroundHeight 15
-     m_Material "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+     m_fHeight 300
+     m_fUndergroundHeight 400
+     m_Material "{DD4DF8DD2A3A1EAE}Assets/Editor/VirtualArea/GameBoundry.emat"
     }
     RplComponent "{658C1920B090D61A}" {
      Streamable Disabled
@@ -37,7 +37,7 @@ PolylineShapeEntity {
    coords 0 0 0
    TriggerShapeType Polyline
    SphereRadius 25.5
-   "Polyline Height" 10000
+   "Polyline Height" 100000
    DrawShape 0
    TriggerActivationType "All changes"
    PeriodicQueries 1

@@ -53,7 +53,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	
 	// File handling and faction management
 	private ref FileHandle m_LogFileHandle;
-	private ref FileHandle m_MissionLog;
 	private SCR_FactionManager m_FactionManager;
 	private BaseWeaponManagerComponent m_WMC;
 	private SCR_ChimeraCharacter m_PlayerChimera;
@@ -106,6 +105,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_PlayerManager = GetGame().GetPlayerManager();
 		m_GM = CRF_Gamemode.GetInstance();
 		
+		UpdatePlayerCount();
 		InitializeLogging();
 	}
 	
@@ -116,6 +116,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Initialize mission data
 		m_sMissionName = GetGame().GetMissionName();
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		if (m_iPlayerCount < 9)
+			return;
 		m_sPlayerCountMax = m_iPlayerCount.ToString();
 		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
 		m_sAuthorName = header.m_sAuthor;
@@ -123,15 +125,13 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_sMissionDetails = header.m_sDetails;
 		m_sGameMode = header.m_sGameMode;
 		m_sTerrain = header.m_sTerrainName;
-		m_sPlayerCountMax = m_sPlayerCountMax + "/" + m_sMaxPlayers;
+		m_sMissionName = m_sMissionName + " (" + m_sTerrain + ")"; // append terrain onto mission name due to constraints
+		m_sPlayerCountMax = m_sPlayerCountMax + "/" + m_sMaxPlayers; // same here
 		
 		// Open global log file
 		m_LogFileHandle = FileIO.OpenFile(LOG_PATH, FileMode.APPEND);
-		// Mission-specific log
-		m_MissionLog = FileIO.OpenFile("profile:/KillData/" + m_sMissionName, FileMode.WRITE);
 		
 		// Log mission beginning
-		UpdatePlayerCount();
 		LogMissionEvent("beginning");
 		
 		// Register for gamemode state changes
@@ -218,11 +218,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			m_LogFileHandle.Close();
 			m_LogFileHandle = null;
 		}
-		if (m_MissionLog)
-		{
-			m_MissionLog.Close();
-			m_MissionLog = null;
-		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -233,12 +228,12 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		
 		UpdatePlayerCount();
-		LogMissionEvent("started");
+		LogMissionEvent("started"); // global log
 		
 		if (m_sGameMode == "SPCL" || m_sGameMode == "SPC" || m_sGameMode == "SPECIAL") // ignore specials
 			return;
-		
-		StartMissionLog();
+
+		Attendance(); // Attendance log
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -246,6 +241,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private void UpdatePlayerCount()
 	{
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
+		m_sPlayerCountMax = m_iPlayerCount.ToString();
+		m_sPlayerCountMax = m_sPlayerCountMax + "/" + m_sMaxPlayers;
 		
 		m_FM = GetGame().GetFactionManager();
 		m_SFM = SCR_FactionManager.Cast(m_FM);
@@ -279,15 +276,13 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (!m_LogFileHandle)
 			return;
 		
-		m_LogFileHandle.WriteLine("mission" + SEPARATOR + eventType + SEPARATOR + m_sMissionName + SEPARATOR + m_iPlayerCount + SEPARATOR + m_sMaxPlayers + m_sAuthorName + SEPARATOR + m_sMissionDetails + SEPARATOR + m_sGameMode);
+		m_LogFileHandle.WriteLine("mission" + SEPARATOR + eventType + SEPARATOR + m_sMissionName + SEPARATOR + m_sPlayerCountMax + SEPARATOR + m_sAuthorName + SEPARATOR + m_sMissionDetails + SEPARATOR + m_sGameMode + SEPARATOR + m_aSideCounts);
 	}
 	
-	private void StartMissionLog()
+	private void Attendance()
 	{
-		if (!m_MissionLog)
+		if (!m_LogFileHandle)
 			return;
-		
-		m_MissionLog.WriteLine("mission" + SEPARATOR + m_sMissionName + SEPARATOR + m_sAuthorName + SEPARATOR + m_sMissionDetails + SEPARATOR + m_sGameMode + SEPARATOR + m_sPlayerCountMax + SEPARATOR + m_aSideCounts);
 		
 		// Log players in attendance
 		array<string> playersInAttendance = {};
@@ -299,7 +294,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		
 		m_LogFileHandle.WriteLine("attendance" + SEPARATOR + playersInAttendance);
-		m_MissionLog.WriteLine("attendance" + SEPARATOR + playersInAttendance);
 	}
 	
 	// Logs player death and kill data to file
@@ -356,7 +350,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		// Log to file
 		m_LogFileHandle.WriteLine("kill" + SEPARATOR + m_sVictimName + SEPARATOR + m_sVictimGUID + SEPARATOR + m_sKillerName + SEPARATOR + m_sKillerGUID + SEPARATOR + m_sWeaponName + SEPARATOR + m_fRange + SEPARATOR + m_sTime);
-		m_MissionLog.WriteLine("kill" + SEPARATOR + m_sVictimName + SEPARATOR + m_sVictimGUID + SEPARATOR + m_sKillerName + SEPARATOR + m_sKillerGUID + SEPARATOR + m_sWeaponName + SEPARATOR + m_fRange + SEPARATOR + m_sTime);
 	}
 	
 	// TODO: Implement these on EH where grenade is thrown
@@ -367,11 +360,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		// TODO: Add username and guid to both loggers
 		m_LogFileHandle.WriteLine("grenade" + SEPARATOR + );
-		
-		if (!m_MissionLog)
-			return;
-		
-		m_MissionLog.WriteLine("grenade" + SEPARATOR + );
 	}*/
 	
 	void LogShots()
