@@ -27,7 +27,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Assets: None"\
    ""\
    "OPFOR Composition: Motorized Company"\
-   "OPFOR Assets: 2x UAZ PKP"\
+   "OPFOR Assets: 2x GAZ TIGR PKM"\
    ""\
    "Time: 45 Minutes"\
    ""\
@@ -77,10 +77,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{65DE314EA72BB524}" {
-        m_sCallsign "ENG Team"
+        m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{65DE314C4BE7DA64}" {
-        m_sCallsign "MMG Team"
+        m_sCallsign "MMG"
        }
       }
      }
@@ -125,13 +125,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "2-4"
        }
        SCR_CallsignInfo "{65DA2D0365149A66}" {
-        m_sCallsign "MMG Team"
+        m_sCallsign "MMG"
        }
        SCR_CallsignInfo "{65DA2D031727C19A}" {
-        m_sCallsign "UAZ469 PKP Crew"
+        m_sCallsign "GAZ TIGR PKM Crew"
        }
        SCR_CallsignInfo "{65DA2D0301ADAED9}" {
-        m_sCallsign "UAZ469 PKP Crew"
+        m_sCallsign "GAZ TIGR PKM Crew"
        }
       }
      }

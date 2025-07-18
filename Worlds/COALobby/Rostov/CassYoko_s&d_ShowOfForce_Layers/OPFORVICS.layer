@@ -1,7 +1,7 @@
 $grp SCR_VehicleSpawn {
  {
   coords 6464.76 184.904 3093.82
-  m_rnPrefab "{27B311210DBE7D38}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_PKP_1P29_Woodland.et"
+  m_rnPrefab "{3290D38BD0CEBF94}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_1p29_Shield.et"
   respawnDelay 10000
   firstSpawn 1
  }
@@ -91,7 +91,7 @@ $grp SCR_VehicleSpawn {
  }
  {
   coords 6474.762 184.904 3093.82
-  m_rnPrefab "{27B311210DBE7D38}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_PKP_1P29_Woodland.et"
+  m_rnPrefab "{3290D38BD0CEBF94}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_1p29_Shield.et"
   respawnDelay 10000
   firstSpawn 1
  }
