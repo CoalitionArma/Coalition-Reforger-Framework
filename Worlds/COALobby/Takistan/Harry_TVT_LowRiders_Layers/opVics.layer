@@ -1,0 +1,128 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 1032.592 347.476 1578.659
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1029.174 348.009 1576.481
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1026.303 348.438 1574.652
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1025.546 348.572 1582.176
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1022.675 349.03 1580.346
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1028.964 348.01 1584.354
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1021.8 349.392 1588.055
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1018.929 349.952 1586.225
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1025.218 348.858 1590.233
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1021.961 349.09 1571.886
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1018.543 349.576 1569.708
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1015.673 350.012 1567.879
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1014.917 350.176 1575.403
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1012.045 350.686 1573.573
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1018.334 349.758 1577.581
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1011.17 351.229 1581.282
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1008.299 351.698 1579.452
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1014.589 350.72 1583.46
+  angleY 147.496
+  m_rnPrefab "{C43AFDF4133C764B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_MEI.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

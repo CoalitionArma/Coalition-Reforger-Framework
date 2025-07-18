@@ -1,0 +1,58 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 5267.208 172.058 6112.095
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5262.405 172.058 6110.391
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5257.641 172.058 6108.702
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5253.38 172.058 6107.189
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5248.706 172.058 6105.531
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5243.978 172.058 6103.854
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5218.338 171.625 6093.728
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5211.714 171.621 6091.266
+  angleY -19.536
+  m_rnPrefab "{5FF95B515AAAD92F}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

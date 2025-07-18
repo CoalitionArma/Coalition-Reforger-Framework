@@ -1,0 +1,23 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 151.902 276.05 2841.821
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Ambush Survivors"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1585.905 258.584 5770.379
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Taliban Extract"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5201.544 171.625 6101.476
+  m_MarkerColor 0 0 0 1
+  m_sDescription "US Extract"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
