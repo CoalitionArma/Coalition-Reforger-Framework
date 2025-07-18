@@ -105,6 +105,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_PlayerManager = GetGame().GetPlayerManager();
 		m_GM = CRF_Gamemode.GetInstance();
 		
+		UpdatePlayerCount();
 		InitializeLogging();
 	}
 	
@@ -115,8 +116,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Initialize mission data
 		m_sMissionName = GetGame().GetMissionName();
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
-		//if (m_iPlayerCount < 9) TODO UNCOMMENT
-			//return;
+		if (m_iPlayerCount < 9)
+			return;
 		m_sPlayerCountMax = m_iPlayerCount.ToString();
 		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
 		m_sAuthorName = header.m_sAuthor;
@@ -131,7 +132,6 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		m_LogFileHandle = FileIO.OpenFile(LOG_PATH, FileMode.APPEND);
 		
 		// Log mission beginning
-		UpdatePlayerCount();
 		LogMissionEvent("beginning");
 		
 		// Register for gamemode state changes
