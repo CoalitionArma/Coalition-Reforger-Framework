@@ -1,0 +1,28 @@
+GenericEntity : "{73C1C37B8A2A1545}Prefabs/Weapons/MachineGuns/M240/MG_M240_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames +{
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{28F5CF7E9399C106}Assets/Weapons/MachineGuns/M240/rhs_m240b_lite.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07E1D123E9}" {
+     Name "#RHS-Weapon_M240B_Light_Name"
+     Description "#RHS-Weapon_M240B_Light_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{60FF5966B3DF0FF1}" {
+     Weight 12
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#RHS-Weapon_M240B_Light_Name"
+   }
+  }
+ }
+}

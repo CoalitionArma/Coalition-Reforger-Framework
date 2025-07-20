@@ -1,0 +1,114 @@
+GenericEntity : "{CFFEF1EAD4ACEDC2}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames +{
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{7B0B0E04154E86B9}Assets/Weapons/MachineGuns/GPMG/L7A2GPMG_02.xob"
+  }
+  SCR_MeleeWeaponProperties "{5534C3B6F2351DCF}" {
+   Enabled 0
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07E1D123E9}" {
+     Name "#BF-Weapon_L7A2_GPMG_Name"
+     Description "#BF-Weapon_L7A2_GPMG_Description"
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     IkSettings {
+      ItemIKSettings "{5284960E66704286}" {
+      }
+     }
+     ExcludeBonesBlend {
+     }
+     AnimationIKPose "{2A2CD97F0F44E810}Assets/Weapons/MachineGuns/GPMG/anims/p_lmg_l7a2_ik.anm"
+     AnimIKPoseCrouchOverride ""
+     AnimIKPoseProneOverride "{7B965D2640B4D4C7}Assets/Weapons/MachineGuns/GPMG/anims/p_lmg_l7a2_ik_pne.anm"
+     OverrideDefaultIkBonesBlend 0
+     AnimIkposeBlendDuration 0.06
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5A88DB468DFD27CE}" {
+        "Point info" DeploymentPointInfo ppii {
+         Offset 0.0034 0.1047 0.3031
+        }
+       }
+       PivotPointInfoItem "{5A88DB468D2D6C7A}" {
+        StabilizationPoints {
+         DeploymentPointInfo LeftLeg {
+          Offset -0.1008 -0.0959 0.1813
+         }
+         DeploymentPointInfo RightLeg {
+          Offset 0.1006 -0.0991 0.1864
+         }
+        }
+       }
+      }
+     }
+     ItemMovementSwayAttributes "{58B9009CD03086A9}" {
+      BobDamper 0.95 0.95 1
+      BobMagnitudeAngular -6.25 10 0
+      BobSpeed 16
+     }
+     SCR_RecoilCameraShakeParams "{58DEF2AB0413E346}" {
+      m_vTranslationMin 0.005 0.005 0
+      m_vTranslationMax 0.006 0.006 0
+     }
+     CharacterModifierAttributes "{561C0C2DF9ABA9A5}" {
+     }
+     PreviewRenderAttributes "{5534BB9B9A3E369E}" {
+      CameraDistanceToItem 1.3
+      LodModel 0
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      Offset 0 0 0.0278
+     }
+     SightsPointFront PointInfo "{5534C3B6F2351D0E}" {
+      PivotID "eye"
+      Offset 0 0 0.9794
+     }
+     SightsPointRear PointInfo "{5534C3B6F2351D33}" {
+      PivotID "eye"
+      Offset 0 0 0.1024
+     }
+     ZeroingGenerator BaseZeroingGenerator "{65E40AAB8DF71065}" {
+     }
+    }
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+      Offset -0.0465 -0.095 -0.5162
+      Angles -7.6814 140.3618 9.9886
+     }
+     RIGHT_HAND_TARGET DeploymentPointInfo rht {
+     }
+     BUTSTOCK_TRANSFORMATION DeploymentPointInfo bt {
+      Offset 0.0122 -0.0312 -0.3018
+     }
+     MagazineTemplate "{67C5246E0C695B1D}Prefabs/Weapons/Magazines/Box_762x51_GPMG_100rnd_4AP_1Tracer.et"
+    }
+    WeaponAnimationComponent "{5534C3B6F2351DEB}" {
+     AnimInstance "{40ED1057880FF89C}Assets/Weapons/MachineGuns/GPMG/anims/gpmg_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{5534C3B6F2351DE9}" {
+      AnimInstance "{BBB38166100E9C70}Assets/Weapons/MachineGuns/GPMG/anims/gpmg_player.asi"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#BF-Weapon_L7A2_GPMG_Name"
+    Description "#BF-Weapon_L7A2_GPMG_Description"
+   }
+  }
+ }
+ coords -0.039 0.744 1.091
+}
