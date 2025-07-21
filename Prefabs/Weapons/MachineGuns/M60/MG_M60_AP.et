@@ -1,0 +1,22 @@
+GenericEntity : "{6E42C85D9FC0CA5D}Prefabs/Weapons/MachineGuns/M60/MG_M60_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_MeleeWeaponProperties "{5534C3B6F2351DCF}" {
+   m_fDamage 45
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     AnimationInstance "{60945F10BF15FC09}anims/workspaces/player/player_main_machinegun.asi"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     MagazineTemplate "{AAF51CFA75A9CF8B}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4AP_1Tracer.et"
+    }
+   }
+  }
+ }
+}

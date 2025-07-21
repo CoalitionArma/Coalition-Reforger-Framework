@@ -1,0 +1,35 @@
+GenericEntity : "{995CF44535296AE3}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_Base.et" {
+ ID "0922E741B2667475"
+ components {
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   Attributes SCR_ItemAttributeCollection "{51EED12B86960275}" {
+    ItemDisplayName UIInfo "{51FEE38527BFEA5B}" {
+     Name "#BF-Magazine_GPMG_100rnd_MIXED_Name"
+     Description "#BF-Magazine_GPMG_100rnd_MIXED_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.25
+     ItemDimensions 15 15 15
+     ItemVolume 1000
+    }
+   }
+   WeightPerAmmo 0.03
+  }
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   UIInfo MagazineUIInfo "{57126733AA401586}" {
+    Name "#BF-Magazine_GPMG_100rnd_MIXED_Name"
+    Description "#BF-Magazine_GPMG_100rnd_MIXED_Description"
+    m_sAmmoType "#AR-AmmoType_M60_APTracer"
+    m_eAmmoTypeFlags 6
+   }
+   MaxAmmo 100
+   AmmoMapping {
+    2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 2 2 2 1 2 1 1 1 1
+   }
+  }
+  MagazineAnimationComponent "{563EE6312D8EF0F4}" {
+   AnimInstance "{AB5B70B13EC95CFC}Assets/Weapons/Magazines/workspaces/M60_Magazine_BF.asi"
+  }
+ }
+ coords -4.769 0 -2.742
+}
