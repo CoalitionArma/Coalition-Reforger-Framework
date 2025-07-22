@@ -1,0 +1,12 @@
+MatPBRMulti {
+ Color 0.102 0.22 0.591 1
+ SurfaceProperties "{DA94EA1EF2914EB7}Common/Materials/Game/flesh.gamemat"
+ CavityFromAO 1
+ VFXMap "{67BEDC50A146C9C0}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_VFX.edds"
+ DirtUserOpacity 1
+ DirtOpacity 3
+ DirtRoughness 1.2
+ DirtBCRMap "{AD5D837076E9E02A}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_wound_BCR.edds"
+ BCR_1 "{4FA34DAA35A6AC75}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_BCR.edds"
+ NMO_1 "{777BF638ECD1FEEB}Assets/Characters/Uniforms/Jacket_M88/Data/Jacket_M88_01_NMO.edds"
+}

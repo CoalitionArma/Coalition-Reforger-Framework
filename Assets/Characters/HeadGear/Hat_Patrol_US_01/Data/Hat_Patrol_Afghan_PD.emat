@@ -1,0 +1,7 @@
+MatPBRBasic {
+ Color 0.146 0.223 0.631 1
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ BCRMap "{674C739E6BEB1E92}Assets/Characters/HeadGear/Hat_Patrol_US_01/Data/Hat_Patrol_US_02_BCR.edds"
+ NMOMap "{5F94C80CB29C4C0C}Assets/Characters/HeadGear/Hat_Patrol_US_01/Data/Hat_Patrol_US_02_NMO.edds"
+}
