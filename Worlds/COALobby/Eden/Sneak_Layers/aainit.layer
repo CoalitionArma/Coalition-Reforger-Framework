@@ -130,6 +130,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{65EE4382BAEF0A56}" {
         m_sCallsign "AA2"
        }
+       SCR_CallsignInfo "{65F0E3985848F408}" {
+        m_sCallsign "BTR"
+       }
       }
      }
     }
