@@ -4,6 +4,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CRF_HighValueTargetGamemodeManager "{65F02D115960E0DD}" {
+   m_timeBetweenPings 60
    m_setUnconcious 1
    m_disableDamage 1
    m_filterFaction 1
