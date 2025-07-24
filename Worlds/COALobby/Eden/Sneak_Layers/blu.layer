@@ -78,9 +78,6 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
 GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
  coords 4877.213 28.594 11759.243
 }
-Vehicle AH64D_AGM65_X2_COA1 : "{B213FC8EDC4D8E44}Prefabs/Vehicles/Helicopters/AH64D/AH64D_AGM65_X2_COA.et" {
- coords 4875.651 29.202 11759.02
-}
 Tank M270_base1 : "{D10BEDD1B78E43B5}Prefabs/Vehicles/Tracked/M270/M270_base.et" {
  coords 4809.591 23.202 12100.671
  angleX 0.5

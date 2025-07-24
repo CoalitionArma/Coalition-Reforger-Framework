@@ -168,4 +168,5 @@ SCR_AIGroup : "{4A33E944FA83F988}Prefabs/Groups/CIV/Zeus/CRF_CIV_Zeus.et" {
  m_aUnitPrefabSlots {
   "{23EA338821A78D20}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Zeus_P.et" "{23EA338821A78D20}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Zeus_P.et"
  }
+ m_bIsPlayable 1
 }
