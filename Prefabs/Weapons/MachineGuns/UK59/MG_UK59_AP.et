@@ -1,0 +1,12 @@
+GenericEntity : "{4D26D7D3139066F4}Prefabs/Weapons/MachineGuns/UK59/MG_UK59_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     MagazineTemplate "{2579361F40CE337C}Prefabs/Weapons/Magazines/UK59/Box_762x54_UK59_50rnd_4AP_1Tracer.et"
+    }
+   }
+  }
+ }
+}
