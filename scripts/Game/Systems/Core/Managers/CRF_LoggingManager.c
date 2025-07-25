@@ -116,8 +116,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		// Initialize mission data
 		m_sMissionName = GetGame().GetMissionName();
 		m_iPlayerCount = GetGame().GetPlayerManager().GetPlayerCount();
-		if (m_iPlayerCount < 9)
-			return;
+		//if (m_iPlayerCount < 9)
+			//return;
 		m_sPlayerCountMax = m_iPlayerCount.ToString();
 		SCR_MissionHeader header = SCR_MissionHeader.Cast(GetGame().GetMissionHeader());
 		m_sAuthorName = header.m_sAuthor;
