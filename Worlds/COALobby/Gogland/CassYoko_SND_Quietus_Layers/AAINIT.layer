@@ -14,12 +14,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_initialWeatherDurationMax 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
-   m_iStartingHours 23
-   m_iStartingMinutes 35
+   m_iStartingHours 3
    m_iRangeHoursStart 22
    m_iRangeHoursEnd 22
    m_iRangeMinutesEnd 35
-   m_bRandomWeatherChanges 1
   }
  }
  coords 942.024 4.795 5290.71
@@ -51,10 +49,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 2
  m_sFactionTwoKey "BLU"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{0BEC033432F40F31}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSION_SCARs_HMGs.conf"
+  m_rGearScript "{0BEC033432F40F31}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSION_SCARs_INFonly.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_Pic.conf"
+  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_INFonly.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
  }
