@@ -1,0 +1,138 @@
+SCR_AIWorld : "{656B40C99B8724C5}Prefabs/AI/SCR_AIWorld_Gogland.et" {
+ coords 956.705 9.495 5273.795
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{65D233E4C8BC6940}" {
+   attackingSide "OPFOR"
+   defendingSide "BLUFOR"
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Rainy"
+   m_iSetWeatherConstant 1
+   m_initialWeatherDurationMin 1
+   m_initialWeatherDurationMax 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 23
+   m_iStartingMinutes 35
+   m_iRangeHoursStart 22
+   m_iRangeHoursEnd 22
+   m_iRangeMinutesEnd 35
+   m_bRandomWeatherChanges 1
+  }
+ }
+ coords 942.024 4.795 5290.71
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "A Russian infantry company is attacking and destorying an airfield currently controled by ION services."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: None"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: None"\
+   ""\
+   "Time: 45 Minutes"\
+   ""\
+   "Weather: Rainy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Defend both bomb sites."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Destroy both bomb sites."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "OPF"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "BLU"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{0BEC033432F40F31}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSION_SCARs_HMGs.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_Pic.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ }
+ {
+  SCR_FactionManager "65E037A2DA70B7F0" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65E41D8968D37C2D}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65E41D896AD78F3C}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{65E41D896E880826}" {
+        m_sCallsign "HMG"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{65E41D894809148C}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65E41D894D997887}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65E41D894FCB67A2}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{65E41D89717C4D84}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{65E41D8972100A42}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{65E41D897702B113}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{65E41D8978C44D06}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{65E41D897A5FFB03}" {
+        m_sCallsign "2-4"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+     }
+    }
+   }
+  }
+ }
+}
