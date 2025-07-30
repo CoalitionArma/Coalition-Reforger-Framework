@@ -9,6 +9,27 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 2576.571 686.229 5022.467
+ userScript "	void deleteFlags(bool enabled)"\
+ "	{		"\
+ "		if (!enabled)"\
+ "		{"\
+ "			IEntity Kushab = GetGame().GetWorld().FindEntityByName(\"Kushab\");"\
+ "			SCR_EntityHelper.DeleteEntityAndChildren(Kushab);"\
+ "			"\
+ "			IEntity North_Of_Chaman = GetGame().GetWorld().FindEntityByName(\"North_Of_Chaman\");"\
+ "			SCR_EntityHelper.DeleteEntityAndChildren(North_Of_Chaman);"\
+ "			"\
+ "			IEntity Shukurkalay = GetGame().GetWorld().FindEntityByName(\"Shukurkalay\");"\
+ "			SCR_EntityHelper.DeleteEntityAndChildren(Shukurkalay);"\
+ "			"\
+ "			IEntity Spawn = GetGame().GetWorld().FindEntityByName(\"Spawn\");"\
+ "			SCR_EntityHelper.DeleteEntityAndChildren(Spawn);"\
+ "		}"\
+ "	}"
+ EOnInit ""\
+ "		super.EOnInit(owner);"\
+ "		CRF_SafestartManager.GetInstance().m_OnSafeStartChange.Insert(deleteFlags);"\
+ "	"
  m_iTimeLimitMinutes 50
  m_bAllowEspionage 1
  m_aMissionDescriptors {
@@ -19,7 +40,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Assets: Unarmed APCs "\
    ""\
    "OPFOR Composition: Inf w/o AT"\
-   "OPFOR Assets: AP MMG"\
+   "OPFOR Assets: 1x HMG"\
    ""\
    "Time: 50"\
    "Weather: Clear"
@@ -27,15 +48,17 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Move to Chaman, and rescue the remaining survivors there.  Then, move the command truck back to your spawn to win. "\
    ""\
-   "Opfor has no AT launchers, but they do have one PKM with AP rounds. Espionage has been enabled."
+   "Opfor has no AT launchers, but they do have one HMG. Espionage has been enabled. Lastly, make no assumptions about where the Taliban will be, they are a highly fluid force. "
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Attack the survivors in Chaman, capture the command truck there, and move it to your extract at Kushab to win. "\
    ""\
-   "Note: The MMG has been given AP rounds. Also, espionage has been enabled."
+   "You have been given teleport poles to reposition during safe start around the map. These will be removed at the end of safestart. Vehicles are much more limited away from spawn. "\
+   ""\
+   "Note: Espionage has been enabled."
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTextData "Survive until relief can come. If the command truck makes it back to the Blufor spawn, you win. While you don't have AT launchers, the MMG AP rounds are capable of pen'ing light skinned vehicles. Note that espionage is enabled."
+   m_sTextData "Survive until relief can come. If the command truck makes it back to the Blufor spawn, you win. Note that espionage is enabled. Lastly, make no assumptions about where the Taliban will be, they are a highly fluid force. "
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "Espionage has been enabled."

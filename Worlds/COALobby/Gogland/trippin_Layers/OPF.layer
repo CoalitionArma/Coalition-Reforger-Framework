@@ -37,9 +37,6 @@ $grp SCR_VehicleSpawn {
   respawnDelay 600
  }
 }
-Vehicle Mi8MT_armed_base1 : "{20C37D5090E4E0E6}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_base.et" {
- coords 5499.807 7.46 4849.768
-}
 Vehicle UAZ452_ambulance2 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
  coords 5423.692 6.875 4913.71
  angleY -149.285
@@ -124,4 +121,7 @@ SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
    }
   }
  }
+}
+Vehicle Mi8MT_armed1 : "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et" {
+ coords 5499.906 7.406 4849.077
 }
