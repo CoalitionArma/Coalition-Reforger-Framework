@@ -310,29 +310,43 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	array<int> GetWinners()
 	{
-		ref array<int> winners = {};
-		int first = -1;
-		int second = -1;
-		int third = -1;
-		for (int i = 0; i < m_aKills.Count(); i++)
-		{
-			if (m_aKills.Get(i) > first)
-			{
-				first = m_aPlayers.Get(i);
-			}
-			else if (m_aKills.Get(i) > second)
-			{
-				second = m_aPlayers.Get(i);
-			}
-			else if (m_aKills.Get(i) > third)
-			{
-				third = m_aPlayers.Get(i);
-			}
-		}
-		winners.Insert(first);
-		winners.Insert(second);
-		winners.Insert(third);
-		return winners;
+	    array<int> winners = {};
+	    array<int> sortedKills = {};
+	    array<int> sortedPlayers = {};
+	    
+	    sortedKills.Copy(m_aKills);
+	    sortedPlayers.Copy(m_aPlayers);
+	    
+	    // Simple selection sort for top 3
+	    for (int i = 0; i < 3 && i < sortedKills.Count(); i++)
+	    {
+	        int maxIndex = i;
+	        for (int j = i + 1; j < sortedKills.Count(); j++)
+	        {
+	            if (sortedKills[j] > sortedKills[maxIndex])
+	                maxIndex = j;
+	        }
+	
+	        // Swap kills
+	        int tempKill = sortedKills[i];
+	        sortedKills[i] = sortedKills[maxIndex];
+	        sortedKills[maxIndex] = tempKill;
+	
+	        // Swap players to keep indexing consistent
+	        int tempPlayer = sortedPlayers[i];
+	        sortedPlayers[i] = sortedPlayers[maxIndex];
+	        sortedPlayers[maxIndex] = tempPlayer;
+	
+	        winners.Insert(sortedPlayers[i]);
+	    }
+		
+		while (winners.Count() < 3)
+	    {
+	        winners.Insert(-1);
+	    }
+	
+		Print(winners);
+	    return winners;
 	}
 	
 	//Called when a player is killed by melee or suicide to drop them down to the previous level.	
