@@ -13,6 +13,9 @@ modded class SCR_DamageManagerComponent
 		if (damageContext.instigator.GetInstigatorPlayerID() != SCR_PlayerController.GetLocalPlayerId())
 			return;
 		
+		if (damageContext.damageType == EDamageType.FRAGMENTATION || damageContext.damageType == EDamageType.PROCESSED_FRAGMENTATION || damageContext.damageType == EDamageType.EXPLOSIVE)
+			return;
+		
 		AddHitmarker();
 		
 		if(damageContext.struckHitZone.GetName() == "Head")
