@@ -1,0 +1,7 @@
+SCR_DestructibleBuildingEntity : "{363A616E6C64BB7F}Prefabs/Structures/Services/Government/MunicipalOffice_E_01/MunicipalOffice_E_01.et" {
+ coords 1815.948 0.468 1828.408
+}
+SCR_DestructibleBuildingEntity : "{5CADC96916FF1CC4}Prefabs/Structures/Houses/Villa/Villa_E_2I01/Villa_E_2I01.et" {
+ coords 1833.419 0.453 1849.032
+ angleY -87.453
+}

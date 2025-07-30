@@ -81,7 +81,3 @@ $grp Vehicle : "{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tra
   coords 7115.448 4.776 5211.81
  }
 }
-Vehicle Ural4320_ZU1 : "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et" {
- coords 7169.061 6.058 5229.378
- angleY -97
-}

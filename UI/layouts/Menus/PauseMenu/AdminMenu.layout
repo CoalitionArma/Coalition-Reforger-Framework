@@ -140,8 +140,8 @@ FrameWidgetClass {
       OffsetLeft 0.092
       PositionY 169.477
       OffsetTop 169.477
-      SizeX 42.502
-      OffsetRight -42.594
+      SizeX 47.908
+      OffsetRight -48
       SizeY 34.138
       OffsetBottom -203.615
      }
@@ -231,6 +231,39 @@ FrameWidgetClass {
       }
      }
     }
+    ButtonWidgetClass "{65AD258E2DB6A3AF}" {
+     Name "GamemodeButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      Anchor 0 0 0 0
+      PositionX 0.139
+      OffsetLeft 0.139
+      PositionY 203.723
+      OffsetTop 203.723
+      SizeX 47.402
+      OffsetRight -47.541
+      SizeY 34.138
+      OffsetBottom -237.861
+     }
+     "Z Order" 2
+     Color 0.587 0.587 0.587 0
+     components {
+      SCR_ButtonTextComponent "{62993E179FB21E0C}" {
+       m_bMouseOverToFocus 1
+       m_bCanBeToggled 1
+       m_bIsToggled 1
+      }
+     }
+     {
+      ImageWidgetClass "{65AD258E2DB6A3AC}" {
+       Name "GamemodeImage"
+       Slot ButtonWidgetSlot "{62992E47026EB4C4}" {
+       }
+       Clipping False
+       Texture "{4C1117CF031AA1E0}UI/Textures/MainMenu/Icons/modIcon_64x_UI.edds"
+       Size 32 32
+      }
+     }
+    }
    }
   }
   FrameWidgetClass "{6548E8DE2895CF9A}" {
@@ -286,13 +319,13 @@ FrameWidgetClass {
      Name "BackgroundGrey"
      Slot FrameWidgetSlot "{62993E1190D14ACD}" {
       Anchor 0.5 0.5 0.5 0.5
-      PositionX -858.812
-      OffsetLeft -858.812
-      PositionY -494.33
-      OffsetTop -494.33
-      SizeX 1720.22
+      PositionX -858.6
+      OffsetLeft -858.6
+      PositionY -492
+      OffsetTop -492
+      SizeX 1720.01
       OffsetRight -861.413
-      SizeY 40
+      SizeY 37.67
       OffsetBottom 454.33
      }
      "Z Order" -1
@@ -341,14 +374,14 @@ FrameWidgetClass {
    Name "Title"
    Slot FrameWidgetSlot "{645911A60CD1185E}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -850.864
-    OffsetLeft -850.864
-    PositionY -493.5
-    OffsetTop -493.5
+    PositionX -856
+    OffsetLeft -856
+    PositionY -484
+    OffsetTop -484
     SizeX 547.881
-    OffsetRight 302.983
-    SizeY 27.337
-    OffsetBottom 466.163
+    OffsetRight 308.119
+    SizeY 19.337
+    OffsetBottom 464.663
    }
    {
     TextWidgetClass "{6548E8DEACA2ADD0}" {

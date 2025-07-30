@@ -79,42 +79,42 @@ $grp SCR_VehicleSpawn {
  {
   coords 5845.531 124.964 8629.223
   angleY -4.691
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 5845.121 124.953 8634.217
   angleY -4.691
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 5844.494 124.938 8641.845
   angleY -4.691
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 5967.806 116.354 9702.783
   angleY 91.465
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 5969.957 117.135 9711.618
   angleY 91.465
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 5971.489 117.77 9721.352
   angleY 91.465
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
@@ -191,14 +191,14 @@ $grp SCR_VehicleSpawn {
  {
   coords 5967.576 116.017 9693.823
   angleY 91.465
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
   coords 5843.147 124.926 8652.156
   angleY -4.691
-  m_rnPrefab "{8C1F2A99E9B1466F}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_NSV.et"
+  m_rnPrefab "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et"
   respawnDelay 10000
   firstSpawn 1
  }

@@ -1,0 +1,29 @@
+CRF_ManualMarker zone1markers : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 920.789 32.783 2047.634
+ angleY 55.9
+ m_sDescription "Zone 2 Limit"
+ {
+  $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   zone1markers8 {
+    coords 116.058 0 79.157
+    angleY -36.366
+    m_sDescription "Zone 2 Limit"
+   }
+   zone1markers9 {
+    coords 259.106 0 188.529
+    angleY -53.658
+    m_sDescription "Zone 2 Limit"
+   }
+   zone1markers10 {
+    coords 370.761 0 275.137
+    angleY -70.951
+    m_sDescription "Zone 2 Limit"
+   }
+   zone1markers11 {
+    coords 516.827 0 381.706
+    angleY -70.951
+    m_sDescription "Zone 2 Limit"
+   }
+  }
+ }
+}

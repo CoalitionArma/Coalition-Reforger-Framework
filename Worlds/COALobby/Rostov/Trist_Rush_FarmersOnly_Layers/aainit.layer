@@ -1,0 +1,227 @@
+SCR_MapEntity MapEntity_Rostov1 : "{FDC3842C6A17F2D9}Prefabs/World/Game/Rostov/MapEntity_Rostov.et" {
+ coords 683.138 116.285 3045.946
+}
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 1325.113 24.733 1846.542
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Cloudy"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 30
+   m_iRangeHoursStart 5
+   m_iRangeMinutesStart 30
+   m_iRangeHoursEnd 5
+   m_iRangeMinutesEnd 30
+  }
+ }
+ coords 3374.031 107.689 2327.99
+ m_iTimeLimitMinutes 50
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "A NATO detachment hastily supplied/integrated with local armed farmers intent on preventing RUS destruction of key locations."\
+   "(2 Stage Rush)"\
+   ""\
+   "BLUFOR Composition: 1x Mixed NATO/CIV Plt."\
+   "BLUFOR Assets: 1x Dual MG Recce Vic."\
+   ""\
+   "OPFOR Composition: 1x Mech. Inf. Co."\
+   "OPFOR Assets: 2x Armd. GAZ TIGRs"\
+   ""\
+   "Time: 5:30 A.M."\
+   ""\
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "- Defend MCOMs Alpha & Bravo"\
+   "- Rapid R&R"\
+   "- Defend MCOMs Charlie & Delta"\
+   ""\
+   ""
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "- Destroy MCOMs Alpha & Bravo"\
+   "- Rapid R&R"\
+   "- Destroy MCOMs Charlie & Delta"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData ""
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{A26357E6AA886A95}Configs/Gearscripts/Custom/Trist/FarmersOnly/CRF_GS_RHSUSMixedCIV.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EFD528B059E0EA4B}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_TracersOnly.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ }
+ {
+  SCR_FactionManager "65DAC0E4A87708E5" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+      "INDFOR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65DAC0EB3EC3D742}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65DAC0EB310501F6}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{65DCCA11DA8A2BA5}" {
+        m_sCallsign "Sniper"
+       }
+      }
+     }
+     m_sFactionRadioEncryptionKey "candleSauce"
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{65DAC0EB73C55281}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65DAC0EB72222835}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65DAC0EB7200AD6F}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{65DAC0EB727B92D5}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{65DAC0EB72565D43}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{65DAC0EB555C2E03}" {
+        m_sCallsign "GAZ"
+       }
+       SCR_CallsignInfo "{65DAC0EB559807B6}" {
+        m_sCallsign "GAZ"
+       }
+       SCR_CallsignInfo "{65DAC0EB56A2DE56}" {
+        m_sCallsign "Logi"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+     }
+     m_iFactionRadioFrequency 48000
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 1280.684 55.938 1970.128
+ Points {
+  ShapePoint "{65D70C7396A9FB44}" {
+   Position 173.944 0 -1423.985
+  }
+  ShapePoint "{65D70C73D588BE28}" {
+   Position -491.518 0 -746.572
+  }
+  ShapePoint "{65D70C73CF55F35B}" {
+   Position -432.803 0 607.529
+  }
+  ShapePoint "{65D70C732F970F5C}" {
+   Position 1002.596 0 1889.58
+  }
+  ShapePoint "{65D70C7323D3ED6B}" {
+   Position 1748.495 0 1106.369
+  }
+  ShapePoint "{65D70C7324E99D76}" {
+   Position 339.051 0 -171.793
+  }
+  ShapePoint "{65D70C735B2EB24F}" {
+   Position 299.004 0 -389.854
+  }
+  ShapePoint "{65D70C738C19D1C8}" {
+   Position 699.439 0 -909.903
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 1221.232 88.433 961.454
+ Points {
+  ShapePoint "{65DC074604EDDFD1}" {
+   Position 232.752 28.671 -412.285
+  }
+  ShapePoint "{65DC0746435AF205}" {
+   Position -120.995 0 -65.522
+  }
+  ShapePoint "{65DC074679364A47}" {
+   Position -433.5 0 260.552
+  }
+  ShapePoint "{65DC07466CB4AD0F}" {
+   Position -375.383 0 1487.507
+  }
+  ShapePoint "{65DC0747A815AD1E}" {
+   Position 97.081 0 1300.134
+  }
+  ShapePoint "{65DC074665863162}" {
+   Position 629.421 0 1055.1
+  }
+  ShapePoint "{65DC07466615C916}" {
+   Position 394.997 0 834.001
+  }
+  ShapePoint "{65DC0746597F7708}" {
+   Position 354.858 0 629.406
+  }
+  ShapePoint "{65DC07465BF9B5EE}" {
+   Position 766.455 0 79.962
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 2148.072 131.462 3332.596
+ Points {
+  ShapePoint "{65DC0747572E5DD9}" {
+   Position -28.965 0 -148.375
+  }
+  ShapePoint "{65DC074756231F3F}" {
+   Position -140.299 0 -75.405
+  }
+  ShapePoint "{65DC074748BE17F7}" {
+   Position -14.917 0 98.214
+  }
+  ShapePoint "{65DC07474B408692}" {
+   Position 119.432 0 12.947
+  }
+ }
+}

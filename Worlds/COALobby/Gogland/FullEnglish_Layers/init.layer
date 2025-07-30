@@ -1,0 +1,118 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 7294.133 4.872 1064.842
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{65D01B16AAD89F2D}" {
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear Fog"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{65D4611AB12A3DB3}" {
+     m_sWeatherPresetName "Clear Fog"
+    }
+   }
+  }
+ }
+ coords 7302.647 4.99 1064.706
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "The UK's forces will try and detonate two bombsites on Gogland. One of them is of quite some strategic significance, best hope the bomb doesn't cause any collateral, perhaps nuclear, damage."\
+   ""\
+   "BLUFOR Composition: Motorized"\
+   "BLUFOR Assets: 2x Land Rover Gun Trucks"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: 1x HMG Team"\
+   ""\
+   "Time: 0800"\
+   "Weather: Clear Fog"\
+   "Length: 45 minutes"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy Bombsites Alpha and Bravo"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend Bombsites Alpha and Bravo"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "No GI Radios are available. Leadership has 2 channel radios and TLs have 1 channel radios."\
+   "TLs have had their GLs removed."
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{0AA69970E43F5CE5}Configs/Gearscripts/Custom/fluff/CRF_GS_UK80s_fluff.conf"
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{E22DAC2682656C91}Configs/Gearscripts/Custom/fluff/CRF_GS_80sUSSRklmk.conf"
+  m_bEnableGIRadios 0
+ }
+ m_iTimeToRespawn 45
+ {
+  SCR_FactionManager "65D46118B579BB2B" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65D4470F379715D3}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65D4470F3479251F}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{65D4470F419BA7D0}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{65D4470F467866AB}" {
+        m_sCallsign "GT1"
+       }
+       SCR_CallsignInfo "{65D4611EA3AE5DAA}" {
+        m_sCallsign "GT2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65D4470F694C4851}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65D4470F692CBD54}" {
+        m_sCallsign "HMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

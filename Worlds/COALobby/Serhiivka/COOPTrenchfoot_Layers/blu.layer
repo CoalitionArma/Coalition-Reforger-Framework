@@ -4,6 +4,12 @@ Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/
  angleY 164.065
  angleZ -2.335
 }
+Vehicle BLUFOR_ENGI1 : "{07E3B7FA0B81F197}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ENGI.et" {
+ coords 5607.927 144.929 5140.415
+ angleX 5.044
+ angleY -131.977
+ angleZ 0.266
+}
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
  coords 5603.643 143.54 5166.124
  angleY 127

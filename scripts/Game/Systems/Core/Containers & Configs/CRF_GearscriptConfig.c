@@ -77,19 +77,28 @@ class CRF_RoleConfig
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearRole))]
 	CRF_EGearRole m_Role;
 	
-	[Attribute("false", UIWidgets.CheckBox)]
-	bool m_bIsAssistant;
+	[Attribute()]
+	string m_sRoleName;
+	
+	[Attribute(defvalue: "", uiwidget: UIWidgets.EditBoxMultiline)]
+	string m_sRoleDescription;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "edds")]
+	ResourceName m_RoleIcon;
+	
+	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_ESlotType))]
+	CRF_ESlotType m_SlottingType;
 
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
 	ResourceName m_BluforVariant;
 	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
 	ResourceName m_OpforVariant;
 	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
 	ResourceName m_IndforVariant;
 	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	[Attribute(uiwidget: "resourcePickerSimple", params: "et")]
 	ResourceName m_CivVariant;
 	
 	[Attribute("", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EGearscriptWeapons))]

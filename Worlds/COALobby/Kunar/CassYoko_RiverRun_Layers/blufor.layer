@@ -1,0 +1,74 @@
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 2103.236 23.75 3814.948
+ angleY -68.632
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords 21.328 1.269 -2.393
+   angleY -8.551
+   {
+    SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+     coords -13.981 -1.167 8.376
+     angleY 8.551
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 13.313 2.849 -30.546
+       angleY 0.516
+       m_aUnitPrefabSlots + {
+        "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"
+       }
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 1.875 0.867 -4.641
+         angleY -6.551
+         m_aUnitPrefabSlots + {
+          "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"
+         }
+         {
+          SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+           coords -27.614 -3.846 18.119
+           angleY 6.034
+           m_aUnitPrefabSlots + {
+            "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"
+           }
+           {
+            SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+             coords 6.603 -0.557 22.047
+             {
+              SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+               coords -5.168 2.56 -30.909
+               m_aUnitPrefabSlots + {
+                "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"
+               }
+               {
+                SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+                 coords 0.019 -1.052 4.751
+                 angleY 2.049
+                 m_aUnitPrefabSlots + {
+                  "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"
+                 }
+                 {
+                  SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+                   coords -0.966 -1.688 8.253
+                   angleY -2.049
+                   m_aUnitPrefabSlots + {
+                    "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

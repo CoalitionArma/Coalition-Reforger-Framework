@@ -70,7 +70,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{90EEF2B42B1C1ED8}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC_ACOGs.conf"
  }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EFD528B059E0EA4B}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV_TracersOnly.conf"
+ }
  m_bRespawnEnabled 1
+ m_bWaveRespawn 1
+ m_iTimeToRespawn 120
  m_iBLUFORTickets 50
  {
   SCR_FactionManager "65C50DD69E2B8C56" {

@@ -1,0 +1,148 @@
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 7332.289 4.185 1099.504
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords 13.038 29.1 10.401
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords -50.647 -26.872 -27.425
+     m_aUnitPrefabSlots {
+      "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+     }
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 1.305 0.059 -5.435
+       m_aUnitPrefabSlots {
+        "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+       }
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 0.24 -0.439 -4.299
+         m_aUnitPrefabSlots {
+          "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+         }
+         {
+          SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+           coords -2.597 -1.169 -8.265
+           m_aUnitPrefabSlots {
+            "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+           }
+           {
+            SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+             coords -0.087 -0.178 -5.076
+             m_aUnitPrefabSlots {
+              "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"
+             }
+             {
+              SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+               coords 16.034 0.643 -1.01
+               {
+                SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+                 coords 2.455 20.941 -7.596
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{671AA29846EC7406}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_UK.et"
+   }
+  }
+  coords 7348.795 6.356 1131.74
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{D278451CC406036E}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Transport_Variant_3.et"
+   }
+  }
+  coords 7344.33 5.99 1136.272
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{53982BB1E5E3BE60}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce.et"
+   }
+  }
+  coords 7317.911 3.967 1110.094
+  angleX 0
+  angleY 68.155
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{7E1384719B3EF464}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_Variant_3.et"
+   }
+  }
+  coords 7326.192 4.134 1108.499
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{701ADC27F9D842DF}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport.et"
+   }
+  }
+  coords 7330.804 5.982 1148.812
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{098E31B006CAE0CE}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Camo.et"
+   }
+  }
+  coords 7334.03 5.597 1138.724
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et"
+   }
+  }
+  coords 7337.208 5.191 1127.732
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{184706A56EC2BC7D}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_3.et"
+   }
+  }
+  coords 7339.379 4.92 1116.894
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+}
