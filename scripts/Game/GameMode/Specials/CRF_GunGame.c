@@ -838,7 +838,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		#endif
 		
-		GetGame().GetCallqueue().CallLater(SpawnCheck, 500, false, entity);
+		GetGame().GetCallqueue().CallLater(SpawnCheck, 1000, false, entity);
 	}
 	
 	//We have to broadcast this, cause???
