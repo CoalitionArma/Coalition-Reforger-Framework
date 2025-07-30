@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{19769D9272BEC68A}UI/data/coalitionlarge.edds"
+ Name "{1540DF20A3139634}UI/layouts/HUD/GunGame/Medals/Triple_Kill_Medal_BOII.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
    ColorSpace ToSRGB

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{19769D9272BEC68A}UI/data/coalitionlarge.edds"
+ Name "{C7D988E772230FF8}UI/layouts/HUD/GunGame/Medals/20_Streak_Medal_BOII.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
    ColorSpace ToSRGB
