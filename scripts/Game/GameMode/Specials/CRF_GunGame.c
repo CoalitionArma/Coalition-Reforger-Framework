@@ -32,6 +32,7 @@ class CRF_GunGameEnd: ChimeraMenuBase
 	
 	override void OnMenuUpdate(float tDelta)
 	{
+		// End Game Animations
 		if (GetRootWidget().GetOpacity() < 1)
 			GetRootWidget().SetOpacity(GetRootWidget().GetOpacity() + tDelta);
 		
@@ -56,36 +57,70 @@ class CRF_GunGameEnd: ChimeraMenuBase
 class CRF_GunGame: SCR_BaseGameModeComponent
 {
 	[Attribute()] ref array<ref CRF_GunGameContainer> m_aGunLevels;
-	[Attribute()] ref array<string> m_sSpawnNames;
+	
+	//Current Level Player is at
 	[RplProp()] ref array<int> m_aLevels = {};
+	
+	//How many kills at this level they have
 	[RplProp()] ref array<int> m_aKillsThisLevel = {};
+	
+	//How many total kills they have
 	[RplProp()] ref array<int> m_aKills = {};
+	
+	//Used to reference the index of the above arrays
 	[RplProp()] ref array<int> m_aPlayers = {};
+	
+	//Used to relay to other clients the game is over
 	[RplProp()] bool m_bIsGameOver = false;
+	
+	//Stores spawnpoints so if two players spawn at once they don't spawn on the same point
 	ref array<int> m_aSpawnPointBuffer = {};
+	
+	//Just stores this for reference
 	MenuBase m_GameOverMenu;
 	
+	
 	//Medals
+	//Current kill streak
 	int m_iKillStreak = 0;
+	
+	//Last time you got a medal for your kill streak
 	int m_iLastKillStreak = 0;
+	
+	//Buffer so we can have our medal animations and queue these up
 	ref array<ref GunGameMedalContainer> m_aMedals = {};
+	
+	//Used to signify if we need to display the next medal
 	bool m_bIsMedalDisplaying = false;
 	
+	//How many people you've killed in a 5 second span since the first kill in this buffer
 	int m_iKillsBuffer = 0;
 	
+	//Did you go prone within the last three seconds
 	bool m_bIsDropshot = false;
 	
+	//How many times you've died since your last kill
 	int m_iComebackCounter = 0;
 	
+	//Just so if someone gets humiliated at 10 points and goes back down to 0 you don't think you're the first kill again
 	bool m_bFirstKill = true;
 	
+	//Who killed you last
 	int m_iRevengePlayer = -1;
 	
+	//Time since your last weapon, huh good naming
 	float m_fTimeSinceLastWeapon = 0;
+	
+	// What was your old weapon, used to pull out the new one
 	IEntity m_eOldWeapon = null;
 	
+	//How many kills do you need to win
 	int m_iKillsToWin = 0;
+	
+	//The level your client is tracking
 	int m_iLocalLevel = 0;
+	
+	//Trackers for HUD components
 	Widget m_wKillIcon;
 	Widget m_wHUD;
 	Widget m_wHitmarker;
@@ -99,11 +134,15 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		}
 	}
 	
+	//Disables going uncon for that true COD feel
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
 		SCR_GameModeHealthSettings.Cast(GetGame().GetGameMode().FindComponent(SCR_GameModeHealthSettings)).SetUnconsciousnessPermitted(false);
 	}
 	
+	//Finds a spawnpoint with no players around it, or if none available picks a random one.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	vector GetSpawnPoint()
 	{
 		int amountOfSpawns = 0;
@@ -115,6 +154,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			
 			amountOfSpawns++;
 			
+			//Sees if theres a player within 25m
 			if (!GetGame().GetWorld().QueryEntitiesBySphere(spawnPoint.GetOrigin(), 25, SpawnPointCallBack, null))
 				continue;
 			
@@ -133,15 +173,20 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		return randomSpawnpoint.GetOrigin();
 	}
 	
+	//Just used to allow players to spawn at that spawn point again
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RemoveSpawnFromBuffer(int spawn)
 	{
 		m_aSpawnPointBuffer.RemoveItem(spawn);
 	}
 	
+	//CB for query by sphere
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	bool SpawnPointCallBack(IEntity entity)
 	{
 		if (ChimeraCharacter.Cast(entity))
 		{
+			//Is this character dead
 			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
 			if (damageManager)
 			{
@@ -155,6 +200,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		return true;
 	}
 	
+	//Process all data on what to do when a player is killed on client and server.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		ProcessKillClient(instigatorContextData);
@@ -217,6 +264,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(RespawnPlayer, 5000, false, instigatorContextData.GetVictimPlayerID(), GetGame().GetWorld().FindEntityByName("debugSpawnpoint").GetOrigin());
 	}
 	
+	//Called by server to tell clients to draw the gameover screen.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void GameOver()
 	{
 		#ifdef WORKBENCH
@@ -226,6 +275,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		#endif
 	}
 	
+	//Yep does what it says it does
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_BroadcastGameOver()
 	{
@@ -255,6 +306,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			menuWidget.FindWidget("Defeat").SetVisible(true);
 	}
 	
+	//Gets Top 3 players.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	array<int> GetWinners()
 	{
 		ref array<int> winners = {};
@@ -282,6 +335,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		return winners;
 	}
 	
+	//Called when a player is killed by melee or suicide to drop them down to the previous level.	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void DemotePlayer(int playerId)
 	{
 		int index = m_aPlayers.Find(playerId);
@@ -299,6 +354,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		Replication.BumpMe();
 	}
 	
+	//Adds medal to the queue
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void AddMedal(string medalImage, string medalText)
 	{
 		GunGameMedalContainer medalContainer = new GunGameMedalContainer();
@@ -307,6 +364,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		m_aMedals.Insert(medalContainer);
 	}
 	
+	//Ran only on the client, process kills on the client
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	float m_fKillIconTimer = 0;
 	void ProcessKillClient(notnull SCR_InstigatorContextData instigatorContextData)
 	{
@@ -316,6 +375,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		#endif
 		
+		// We died
 		if (SCR_PlayerController.GetLocalPlayerId() == instigatorContextData.GetVictimPlayerID())
 		{
 			m_iLastKillStreak = 0;
@@ -325,15 +385,18 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		}
 		
+		// Used because for some fuck ass reason on dedicated servers after a death you get spammed with useless OnControllableDestroyed with no victims.
 		#ifdef WORKBENCH
 		#else
 		if (instigatorContextData.GetVictimPlayerID() == 0)
 			return;
 		#endif
 			
+		//Not our kill
 		if (SCR_PlayerController.GetLocalPlayerId() != instigatorContextData.GetKillerPlayerID())
 			return;
 		
+		//Used because if you're scoped in with a sniper and kill someone the PIP may stay on your screen, COMPLETELY BROKEN on workbench, works fine in Dedi.
 		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity()).FindComponent(BaseWeaponManagerComponent));
 		IEntity currentWeapon;
 		IEntity currentSight;
@@ -402,6 +465,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		ChimeraCharacter character = ChimeraCharacter.Cast(instigatorContextData.GetKillerEntity());
 		SCR_MeleeComponent meleeComp = SCR_MeleeComponent.Cast(character.FindComponent(SCR_MeleeComponent));
 			
+		//Process Melee kill, if its the 1st place player give Regicide medal.
 		if (meleeComp.GetMeleeStarted())
 		{
 			ref array<int> winners = GetWinners();
@@ -426,6 +490,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		m_wKillIcon.SetOpacity(m_fKillIconTimer);
 	}
 	
+	//Processes kills within 5 seconds of first kill medals.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void KillBuffer()
 	{
 		switch (m_iKillsBuffer)
@@ -469,13 +535,17 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		m_iKillsBuffer = 0;
 	}
 	
+	//Need a delay for this, for entity processing reasons(magik).
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void RespawnPlayer(int playerId, vector spawn)
 	{
 		CRF_RespawnManager.GetInstance().RespawnPlayer(playerId, spawn);
 	}
 	
-	int m_iBeepTimer = 10;
+	//Member variable to manage how long its been since you went prone.
 	float m_fDropShotTimer = 0;
+	//Client updates.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		#ifdef WORKBENCH
@@ -484,6 +554,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		#endif
 		
+		//Client Updates
 		CheckIfWeaponEquipped();
 		UpdateKillIcon(timeSlice);
 		UpdateHUD(timeSlice);
@@ -491,14 +562,19 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		UpdateCurrentWeapon(timeSlice);
 		UpdateDropShot(timeSlice);
 		
+		//When going into spectator after death you may sometimes not get the game over screen
 		if (m_bIsGameOver)
 			if (!m_GameOverMenu)
 				RpcDo_BroadcastGameOver();
 		
+		//I didn't want to make a whole update method for just this
 		if (m_wHitmarker)
 			m_wHitmarker.SetOpacity(m_wHitmarker.GetOpacity() - (timeSlice * 2));
 	}
 	
+	//Updates time since you went prone.
+	//Used for medals
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateDropShot(float timeSlice)
 	{
 		if (!SCR_PlayerController.GetLocalControlledEntity())
@@ -520,14 +596,20 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			m_bIsDropshot = false;
 	}
 	
+	//used for giving out GunSlinger medal
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateCurrentWeapon(float timeSlice)
 	{
 		m_fTimeSinceLastWeapon += timeSlice;
 	}
 	
+	//Member variable used during the medal animations
 	float m_fMedalTimer = 0;
+	//Used to give out medals and killstreaks.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateKillStreak(float timeSlice)
 	{
+		//What killstreak to give out.
 		switch (m_iKillStreak)
 		{
 			case 5: 
@@ -586,14 +668,17 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			}
 		}
 		
+		//No medals to give
 		if (m_aMedals.Count() == 0)
 			return;
 		
+		//No HUD to draw to
 		if (!m_wHUD)
 			return;
 		
 		ImageWidget medalImage = ImageWidget.Cast(m_wHUD.FindWidget("MedalImage"));
 		TextWidget medalText = TextWidget.Cast(m_wHUD.FindWidget("MedalText"));
+		//If no medal displaying lets display one.
 		if (!m_bIsMedalDisplaying)
 		{
 			medalImage.LoadImageTexture(0, m_aMedals.Get(0).m_sMedalImage);
@@ -606,6 +691,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		
 		m_bIsMedalDisplaying = true;
 		
+		//Just handles the medal animation and removing the current medal from the medal buffer
 		m_fMedalTimer += timeSlice * 2;
 		if (m_fMedalTimer < 1)
 		{
@@ -627,6 +713,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		}
 	}
 	
+	//Updates the lower left HUD with your score and the highest score thats not you.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateHUD(float timeSlice)
 	{
 		if (!GetGame().GetPlayerController())
@@ -657,6 +745,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		TextWidget.Cast(m_wHUD.FindWidget("NextHighest")).SetText((FindNextHighestKills() * 10).ToString());
 	}
 	
+	//Sorts through all the players kills and finds the highest one thats not you.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	int FindNextHighestKills()
 	{
 		int index = m_aPlayers.Find(SCR_PlayerController.GetLocalPlayerId());
@@ -674,6 +764,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		return highestKills;
 	}
 	
+	//Updates the +10 points in the center and if you leveled up gives you the gun promotion text as well.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void UpdateKillIcon(float timeSlice)
 	{
 		if (!m_wKillIcon)
@@ -700,6 +792,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		}
 	}
 	
+	//Used to pull out weapon if its not the previous weapon we had
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void CheckIfWeaponEquipped()
 	{
 		IEntity entity = SCR_PlayerController.GetLocalControlledEntity();
@@ -732,6 +826,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		charContComp.TryEquipRightHandItem(currentWeapon, EEquipItemType.EEquipTypeWeapon, true);
 	}
 	
+	//Server Only, teleports player to a spawnpoint, easiest method to keep this just one object.
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnControllableSpawned(IEntity entity)
 	{
 		super.OnControllableSpawned(entity);
@@ -745,12 +841,16 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(SpawnCheck, 500, false, entity);
 	}
 	
+	//We have to broadcast this, cause???
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_TeleportPlayer(int playerId, vector spawn)
 	{
 		SCR_Global.TeleportPlayer(playerId, spawn, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
 	}
 	
+	//Delay to allow the spawned entity proper time to initialize
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void SpawnCheck(IEntity entity)
 	{
 		if (!entity)
@@ -761,6 +861,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
 		
+		//Teleports player inside map and to a valid spawnpoint
 		vector spawn = GetSpawnPoint();
 		SCR_Global.TeleportPlayer(playerId, spawn, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
 		Rpc(RpcDo_TeleportPlayer, playerId, spawn);
@@ -769,6 +870,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		if (index == -1)
 			return;
 		
+		//Gives out the weapon for the current level the player is at.
 		int level = m_aLevels.Get(index);
 		ref CRF_GunGameContainer gunLevel = m_aGunLevels.Get(level);
 		
@@ -791,6 +893,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		}
 	}
 	
+	//Checks to see if we need to hand out a new weapon
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void NewWeaponCheck(int playerId)
 	{
 		int index = m_aPlayers.Find(playerId);
@@ -800,6 +904,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		int level = m_aLevels.Get(index);
 		ref CRF_GunGameContainer gunLevel = m_aGunLevels.Get(level);
 		
+		//Just checks if somehow we got demoted with no death
 		int currentKillsAtThisLevel = m_aKillsThisLevel.Get(index);
 		if (currentKillsAtThisLevel == -1)
 		{
@@ -813,6 +918,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			NewLevel(playerId);
 			return;
 		}
+		
+		//Don't have the kills to level up yet
 		if (gunLevel.m_iAmountOfKillsToLevelUp >  currentKillsAtThisLevel)
 			return;
 		
@@ -832,6 +939,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		NewLevel(playerId);
 	}
 	
+	//Used to hand out the new levels weapon
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void NewLevel(int playerId)
 	{
 		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
@@ -858,14 +967,18 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		if (level > m_aGunLevels.Count() - 1)
 			return;
 		CRF_GunGameContainer gunLevel = m_aGunLevels.Get(level);
-		GetGame().GetCallqueue().CallLater(NewLevelAddWeapon, 200, false, player, gunLevel.m_sWeapon, gunLevel.m_sMagazines, gunLevel.m_iAmountOfMagazines);
+		GetGame().GetCallqueue().CallLater(NewLevelAddWeapon, 300, false, player, gunLevel.m_sWeapon, gunLevel.m_sMagazines, gunLevel.m_iAmountOfMagazines);
 	}
 	
+	//Need time to disable PIP if using a scope
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void DeleteWeapon(IEntity weapon)
 	{
 		SCR_EntityHelper.DeleteEntityAndChildren(weapon);
 	}
 	
+	//Need time for the previous weapon to be deleted
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	void NewLevelAddWeapon(IEntity player, ResourceName weapon, ResourceName magazine, int amount)
 	{
 		SCR_InventoryStorageManagerComponent storageManagerComponent = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
@@ -877,6 +990,8 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		}
 	}
 	
+	//Initializes the player in the array
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnPlayerConnected(int playerId)
 	{
 		super.OnPlayerConnected(playerId);
