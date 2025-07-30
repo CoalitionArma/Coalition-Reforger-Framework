@@ -93,7 +93,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_bLockSlotsAfterSafestart 0
  m_bSafestartInstantlyEnabled 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{A4C7C628E5F338EB}Configs/Gearscripts/Custom/Salami/CRF_GS_GunGame.conf"
+  m_rGearScript "{A4C7C628E5F338EB}Configs/Gearscripts/Standard/Specials/GunGame/CRF_GS_GunGameModernUS.conf"
  }
  {
   SCR_FactionManager "65E94B1A2E9C6358" {
