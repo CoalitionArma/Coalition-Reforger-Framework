@@ -62,6 +62,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	[RplProp()] ref array<int> m_aKills = {};
 	[RplProp()] ref array<int> m_aPlayers = {};
 	[RplProp()] bool m_bIsGameOver = false;
+	ref array<int> m_aSpawnPointBuffer = {};
 	MenuBase m_GameOverMenu;
 	
 	//Medals
@@ -117,6 +118,12 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			if (!GetGame().GetWorld().QueryEntitiesBySphere(spawnPoint.GetOrigin(), 25, SpawnPointCallBack, null))
 				continue;
 			
+			if (m_aSpawnPointBuffer.Contains(i))
+				continue;
+			
+			m_aSpawnPointBuffer.Insert(i);
+			GetGame().GetCallqueue().CallLater(RemoveSpawnFromBuffer, 500, false, i);
+			
 			return spawnPoint.GetOrigin();
 		}
 		
@@ -124,6 +131,11 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		int randomSpawn = random.RandInt(0, amountOfSpawns);
 		IEntity randomSpawnpoint = GetGame().GetWorld().FindEntityByName("spawnpoint" + randomSpawn);
 		return randomSpawnpoint.GetOrigin();
+	}
+	
+	void RemoveSpawnFromBuffer(int spawn)
+	{
+		m_aSpawnPointBuffer.RemoveItem(spawn);
 	}
 	
 	bool SpawnPointCallBack(IEntity entity)
@@ -154,8 +166,11 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		#endif
 		
 		int killerId = instigatorContextData.GetInstigator().GetInstigatorPlayerID();
+		#ifdef WORKBENCH
+		#else
 		if (killerId == -1)
 			return;
+		#endif
 		
 		int index = m_aPlayers.Find(killerId);
 		if (index == -1)
@@ -199,7 +214,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			}
 		}
 		
-		GetGame().GetCallqueue().CallLater(RespawnPlayer, 5000, false, instigatorContextData.GetVictimPlayerID(), GetSpawnPoint());
+		GetGame().GetCallqueue().CallLater(RespawnPlayer, 5000, false, instigatorContextData.GetVictimPlayerID(), GetGame().GetWorld().FindEntityByName("debugSpawnpoint").GetOrigin());
 	}
 	
 	void GameOver()
@@ -310,11 +325,36 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		}
 		
+		#ifdef WORKBENCH
+		#else
 		if (instigatorContextData.GetVictimPlayerID() == 0)
 			return;
+		#endif
 			
 		if (SCR_PlayerController.GetLocalPlayerId() != instigatorContextData.GetKillerPlayerID())
 			return;
+		
+		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(SCR_PlayerController.GetLocalControlledEntity()).FindComponent(BaseWeaponManagerComponent));
+		IEntity currentWeapon;
+		IEntity currentSight;
+		if (weaponMan.GetCurrentWeapon())
+		{
+			currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
+			if(weaponMan.GetCurrentWeapon().GetSights())
+				currentSight = weaponMan.GetCurrentWeapon().GetSights().GetOwner();
+		}
+		
+		if (currentWeapon)
+		{
+			if (currentSight)
+			{
+				if (currentSight.FindComponent(SCR_2DPIPSightsComponent))
+				{
+					SCR_2DPIPSightsComponent pipComp = SCR_2DPIPSightsComponent.Cast(currentSight.FindComponent(SCR_2DPIPSightsComponent));
+					pipComp.SetPIPEnabled(false);
+				}
+			}
+		}
 		
 		if (m_iKillsBuffer == 0)
 		{
@@ -705,6 +745,12 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(SpawnCheck, 500, false, entity);
 	}
 	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_TeleportPlayer(int playerId, vector spawn)
+	{
+		SCR_Global.TeleportPlayer(playerId, spawn, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
+	}
+	
 	void SpawnCheck(IEntity entity)
 	{
 		if (!entity)
@@ -714,6 +760,10 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		
+		vector spawn = GetSpawnPoint();
+		SCR_Global.TeleportPlayer(playerId, spawn, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
+		Rpc(RpcDo_TeleportPlayer, playerId, spawn);
 		
 		int index = m_aPlayers.Find(playerId);
 		if (index == -1)
@@ -792,11 +842,13 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		if (!weaponMan)
 			return;
 		
-		IEntity currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
-		if (!currentWeapon)
-			return;
+		IEntity currentWeapon;
+		if (weaponMan.GetCurrentWeapon())
+			currentWeapon = weaponMan.GetCurrentWeapon().GetOwner();
 		
-		SCR_EntityHelper.DeleteEntityAndChildren(currentWeapon);
+		if (currentWeapon)
+			GetGame().GetCallqueue().CallLater(DeleteWeapon, 100, false, currentWeapon);
+			
 		
 		int index = m_aPlayers.Find(playerId);
 		if (index == -1)
@@ -807,6 +859,11 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			return;
 		CRF_GunGameContainer gunLevel = m_aGunLevels.Get(level);
 		GetGame().GetCallqueue().CallLater(NewLevelAddWeapon, 200, false, player, gunLevel.m_sWeapon, gunLevel.m_sMagazines, gunLevel.m_iAmountOfMagazines);
+	}
+	
+	void DeleteWeapon(IEntity weapon)
+	{
+		SCR_EntityHelper.DeleteEntityAndChildren(weapon);
 	}
 	
 	void NewLevelAddWeapon(IEntity player, ResourceName weapon, ResourceName magazine, int amount)
