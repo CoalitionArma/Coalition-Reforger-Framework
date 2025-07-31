@@ -1,3 +1,9 @@
+SCR_VehicleSpawn {
+ coords 4807.139 23.12 12102.746
+ angleY 3.619
+ m_rnPrefab "{D10BEDD1B78E43B5}Prefabs/Vehicles/Tracked/M270/M270_base.et"
+ respawnDelay 600
+}
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
  coords 3798.652 115.215 4938.916
  angleX -0.895
@@ -77,12 +83,6 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
 }
 GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
  coords 4877.213 28.594 11759.243
-}
-Tank M270_base1 : "{D10BEDD1B78E43B5}Prefabs/Vehicles/Tracked/M270/M270_base.et" {
- coords 4809.591 23.202 12100.671
- angleX 0.5
- angleY -158.249
- angleZ 1.163
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
  coords 1021.855 2.837 6041.573
