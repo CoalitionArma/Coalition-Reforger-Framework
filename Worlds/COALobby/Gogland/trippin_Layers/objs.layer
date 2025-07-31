@@ -126,6 +126,10 @@ GenericEntity : "{54986385A6AF77B2}Prefabs/Props/Military/Arsenal/ArsenalBoxes/A
  }
  coords 7147.671 6.634 5216.557
 }
+Vehicle UAZ469_KORD_SPP_Woodland1 : "{84631FE4C8BBAFD5}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_SPP_Woodland.et" {
+ coords 7168.609 6.069 5229.467
+ angleY -96
+}
 $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_AmmoStorage.et" {
  z3s1 {
   components {

@@ -1,0 +1,64 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  BlurWidgetClass "{65F8872F5D11C1FD}" {
+   Name "Blur"
+   Slot FrameWidgetSlot "{65F8872F5D11C1DA}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 18.26
+    OffsetRight 0
+    SizeY 18.41
+    OffsetBottom 0
+   }
+   Intensity 1
+  }
+  TextWidgetClass "{65F887216B83EFE4}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{65F887216B839570}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -161.106
+    OffsetLeft -161.106
+    PositionY -82.756
+    OffsetTop -82.756
+    SizeX 309.775
+    OffsetRight -148.669
+    SizeY 30
+    OffsetBottom 52.756
+   }
+   Text "MATCH BEGINS IN"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F8872172348DAE}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    OutlineSize 3
+   }
+  }
+  TextWidgetClass "{65F887219F1A4679}" {
+   Name "Timer"
+   Slot FrameWidgetSlot "{65F887216B839570}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -161.106
+    OffsetLeft -161.106
+    PositionY -70.944
+    OffsetTop -70.944
+    SizeX 309.775
+    OffsetRight -148.669
+    SizeY 104.778
+    OffsetBottom -33.833
+   }
+   Color 0.9257 1 0 1
+   Text "10"
+   "Font Size" 54
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F8872172348DAE}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    OutlineSize 1
+   }
+  }
+ }
+}
