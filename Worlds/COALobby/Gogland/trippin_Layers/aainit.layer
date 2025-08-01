@@ -4,7 +4,7 @@ SCR_AIWorld : "{656B40C99B8724C5}Prefabs/AI/SCR_AIWorld_Gogland.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Clear"
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
    m_iSetWeatherConstant 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -40,9 +40,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Respawns after cache destruction. Unlimited tickets."
   }
  }
- m_iFactionOneRatio 3
  m_sFactionOneKey "BLU"
- m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{2F68FE4489B35DE8}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_TracersOnly.conf"
@@ -145,25 +143,25 @@ $grp GenericEntity : "{22B854D73D6D5976}PrefabsEditable/Auto/Structures/Infrastr
  }
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
- coords 6172.488 39.225 5136.556
+ coords 6148.354 32.413 5193.977
  Points {
   ShapePoint "{65B63032EF04F28D}" {
-   Position -1015.08 0 105.202
+   Position -1015.08 53.163 105.202
   }
   ShapePoint "{65B63032EEBC8856}" {
-   Position -802.532 0 -437.992
+   Position -802.532 42.091 -437.992
   }
   ShapePoint "{65B63032E1AB1A7C}" {
-   Position 60.125 0 -244.522
+   Position 60.125 67.216 -244.522
   }
   ShapePoint "{65B63032E665056C}" {
-   Position 1478.904 0 -143.069
+   Position 1479.341 27.872 -144.481
   }
   ShapePoint "{65B63032E46DAC0C}" {
-   Position 1261.039 0 551.89
+   Position 1263.933 38.616 552.631
   }
   ShapePoint "{65B630320AB7DF62}" {
-   Position 135.616 0 264.305
+   Position 139.675 89.541 264.866
   }
  }
 }
@@ -171,10 +169,10 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
  coords 6558.079 42.413 5154.322
  Points {
   ShapePoint "{65B6303322A4F31F}" {
-   Position -336.905 0 -245.308
+   Position -336.832 26.452 -247.076
   }
   ShapePoint "{65B630335A69BA60}" {
-   Position -355.52 0 208.111
+   Position -355.52 30.347 208.111
   }
   ShapePoint "{65B6303358A89500}" {
    Position 810.562 0 479.308
@@ -206,25 +204,25 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestart
  coords 5469.196 6.877 4845.276
  Points {
   ShapePoint "{65B62C62BD14F0AA}" {
-   Position -82.641 0 82.55
+   Position -82.641 11.676 82.55
   }
   ShapePoint "{65B62C62BC7CE77F}" {
-   Position -83.135 0 -13.288
+   Position -83.602 9.162 -12.396
   }
   ShapePoint "{65B62C62BCE2F7E5}" {
-   Position -40.19 0 -95.306
+   Position -40.19 10.174 -95.306
   }
   ShapePoint "{65B62C62B3C2FC71}" {
-   Position 27.1 0 -67.763
+   Position 27.1 8.765 -67.763
   }
   ShapePoint "{65B62C62B2384D6E}" {
-   Position 75.927 0 -32.435
+   Position 75.927 11.921 -32.435
   }
   ShapePoint "{65B62C62B2A03D47}" {
-   Position 82.443 0 16.191
+   Position 82.443 15.174 16.191
   }
   ShapePoint "{65B62C62B1FCAF4C}" {
-   Position 2.726 0 75.223
+   Position 2.726 10.23 75.223
   }
  }
 }

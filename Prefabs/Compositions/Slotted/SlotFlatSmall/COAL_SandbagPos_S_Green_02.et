@@ -111,14 +111,5 @@ GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposi
    }
    coords 0.192 0.001 2.735
   }
-  GenericEntity : "{86BA5E5CD528D5BC}Prefabs/Props/Military/Sandbags/Sandbag_01_end_plastic.et" {
-   ID "62B36180FCB78607"
-   components {
-    Hierarchy "{5CCCBEF0E45CB221}" {
-     Enabled 1
-    }
-   }
-   coords 3.188 0.001 2.661
-  }
  }
 }

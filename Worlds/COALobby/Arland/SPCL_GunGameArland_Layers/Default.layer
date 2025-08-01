@@ -1,0 +1,108 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1378.493 39 2188.983
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_GunGame "{65E93556EFCD6F64}" {
+   m_aGunLevels {
+    CRF_GunGameContainer "{65E94B189564DC05}" {
+     m_sWeapon "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et"
+     m_sMagazines "{BBB50A815A2F916B}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Ball.et"
+     m_iAmountOfMagazines 7
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65F9379D0C7B50B3}" {
+     m_sWeapon "{D2B48DEBEF38D7D7}Prefabs/Weapons/MachineGuns/M249/MG_M249.et"
+     m_sMagazines "{06D722FC2666EB83}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_4Ball_1Tracer.et"
+     m_iAmountOfMagazines 2
+     m_iAmountOfKillsToLevelUp 2
+    }
+    CRF_GunGameContainer "{65FAD7859034E49A}" {
+     m_sWeapon "{71208ECAD0FC24BA}Prefabs/Weapons/Rifles/L1A1_SLR/Rifle_L1A1_SLR_Wood.et"
+     m_sMagazines "{EC747F3B392A19CC}Prefabs/Weapons/Magazines/Magazine_762x51_FAL_Commonwealth_20rnd_Base.et"
+     m_iAmountOfMagazines 6
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FAD785CF3F6FE9}" {
+     m_sWeapon "{11F3A285A6F1F51D}Prefabs/Weapons/Rifles/SR3M/Rifle_SR3M.et"
+     m_sMagazines "{91836E59CE2497BC}Prefabs/Weapons/Magazines/sr3m_magazine_30rnd/Magazine_9x39_SR3M_30rnd_SP5_base.et"
+     m_iAmountOfMagazines 6
+     m_iAmountOfKillsToLevelUp 2
+    }
+    CRF_GunGameContainer "{65FCD91038A3BF00}" {
+     m_sWeapon "{C828F6D563E1A9BE}Prefabs/Weapons/Rifles/SVD/Rifle_SVD_PSO_7N14.et"
+     m_sMagazines "{1F9F751F318EBEB0}Prefabs/Weapons/Magazines/Magazine_762x54_SVD_10rnd_7N14.et"
+     m_iAmountOfMagazines 6
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FCD91079E3024C}" {
+     m_sWeapon "{56CE827F9AD5880E}Prefabs/Weapons/Rifles/M40/Rifle_M40A5_Optic_PEQ.et"
+     m_sMagazines "{0EC215F0EB3288A6}Prefabs/Weapons/Magazines/Magazine_762x51_M40_5rnd_Base.et"
+     m_iAmountOfMagazines 5
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FCD9109EFFF7F3}" {
+     m_sWeapon "{BD048236F83D85DA}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7_base.et"
+     m_sMagazines "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et"
+     m_iAmountOfMagazines 3
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FCD910B7A26F66}" {
+     m_sWeapon "{DB53366D8C521124}Prefabs/Weapons/Launchers/MK153/Launcher_MK153mod2_NoMBS.et"
+     m_sMagazines "{27AC9FC7F5E2BEEB}Prefabs/Weapons/Magazines/MK153/Container_MK153_HEDP.et"
+     m_iAmountOfMagazines 3
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FCD910ECE5B444}" {
+     m_sWeapon "{E998FA484B0C4BFF}Prefabs/Weapons/Handguns/Glock/Handgun_Glock17.et"
+     m_sMagazines "{F20D1122BC5CD9F2}Prefabs/Weapons/Magazines/glock_magazine/Magazine_9x19_Glock_17rnd.et"
+     m_iAmountOfMagazines 6
+     m_iAmountOfKillsToLevelUp 2
+    }
+    CRF_GunGameContainer "{65FCD910E2524CCE}" {
+     m_sWeapon "{880A80C1FD1AE546}Prefabs/Weapons/Handguns/APS/Handgun_APS.et"
+     m_sMagazines "{446CD9EBCB531303}Prefabs/Weapons/Magazines/aps_magazine/Magazine_9x18_APS_20rnd_7N25.et"
+     m_iAmountOfMagazines 6
+     m_iAmountOfKillsToLevelUp 2
+    }
+    CRF_GunGameContainer "{65FCD9111D8077C8}" {
+     m_sWeapon "{1828C5C23AE5E4CA}Prefabs/Weapons/GrenadeLaunchers/GM94/GL_GM94.et"
+     m_sMagazines "{FDACA6E5AEC36BD0}Prefabs/Weapons/Magazines/GM94/Magazine_43x30mm_GM94_4rnd_VGM93100.et"
+     m_iAmountOfMagazines 5
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FCD9114C5D9814}" {
+     m_sWeapon "{83096A3D7ACA6A07}Prefabs/Weapons/Launchers/M79/Launcher_M79.et"
+     m_sMagazines "{5375FA7CB1F68573}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_M406.et"
+     m_iAmountOfMagazines 12
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FCD9115D5CBCEC}" {
+     m_sWeapon "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     m_sMagazines "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     m_iAmountOfMagazines 6
+     m_iAmountOfKillsToLevelUp 1
+    }
+   }
+  }
+  CRF_SpawnCountDown "{65F887340EBF18E0}" {
+  }
+ }
+ coords 1369.161 39.011 2185.004
+ EnableAIInGameState 1
+ m_bLockSlotsAfterSafestart 0
+ m_bSafestartInstantlyEnabled 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{A4C7C628E5F338EB}Configs/Gearscripts/Standard/Specials/GunGame/CRF_GS_GunGameModernUS.conf"
+ }
+ {
+  SCR_FactionManager "65E94B1A2E9C6358" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bFriendlyToSelf 0
+    }
+   }
+  }
+ }
+}

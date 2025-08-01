@@ -1,0 +1,122 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{65FAD78C05EF6367}" {
+   Name "MedalText"
+   Slot FrameWidgetSlot "{65FAD78C05EF63AE}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -150
+    OffsetLeft -150
+    PositionY 141.585
+    OffsetTop 141.585
+    SizeX 300
+    OffsetRight -150
+    SizeY 42.9
+    OffsetBottom -184.485
+   }
+   Opacity 0
+   Text "BLOODTHIRSTY"
+   "Font Size" 19
+   "Min Font Size" 19
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65FAD78C630835F4}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    OutlineSize 4
+   }
+  }
+  ImageWidgetClass "{65FAD78BE94638CD}" {
+   Name "MedalImage"
+   Slot FrameWidgetSlot "{65FAD78BE94620CE}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -75
+    OffsetLeft -75
+    PositionY 0.3
+    OffsetTop 0.3
+    SizeX 150
+    OffsetRight -75
+    SizeY 150
+    OffsetBottom -150.3
+   }
+   Opacity 0
+   Texture "{A7E3DD72B28AAC03}UI/layouts/HUD/GunGame/Medals/5_Streak_Medal_BOII.edds"
+   Size 100 100
+   Filter 0
+   "Shadow Color" 1 1 1 1
+  }
+  TextWidgetClass "{65F8873D2C52BE48}" {
+   Name "YourScore"
+   Slot FrameWidgetSlot "{65F8873D2C52BEA3}" {
+    Anchor 0 1 0 1
+    PositionX 264.093
+    OffsetLeft 264.093
+    PositionY -175.192
+    OffsetTop -175.192
+    SizeX 154.507
+    OffsetRight -418.6
+    SizeY 60.122
+    OffsetBottom 115.07
+   }
+   Text "120"
+   "Font Size" 48
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F8873D44E9479D}" {
+    Bold 1
+   }
+  }
+  ImageWidgetClass "{65F88732EB8FCA91}" {
+   Name "Image0"
+   Slot FrameWidgetSlot "{65F88732EB8FCAF6}" {
+    Anchor 0 1 0 1
+    PositionX 133.913
+    OffsetLeft 133.913
+    PositionY -185.567
+    OffsetTop -185.567
+    SizeX 120
+    OffsetRight -253.913
+    SizeY 120
+    OffsetBottom 65.567
+   }
+   Texture "{19769D9272BEC68A}UI/data/coalitionlarge.edds"
+   Size 1000 1000
+  }
+  ImageWidgetClass "{65F8873D044B9E7D}" {
+   Name "Image1"
+   Slot FrameWidgetSlot "{65F88732EB8FCAF6}" {
+    Anchor 0 1 0 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY -1080
+    OffsetTop -1080
+    SizeX 1920
+    OffsetRight -1920
+    SizeY 1080
+    OffsetBottom 0
+   }
+   Texture "{5C4FB511CB6AC109}UI/data/GunGameHud.edds"
+   Size 1920 1080
+  }
+  TextWidgetClass "{65F8873D5FC9A88B}" {
+   Name "NextHighest"
+   Slot FrameWidgetSlot "{65F8873D2C52BEA3}" {
+    Anchor 0 1 0 1
+    PositionX 264.093
+    OffsetLeft 264.093
+    PositionY -118.533
+    OffsetTop -118.533
+    SizeX 154.507
+    OffsetRight -418.6
+    SizeY 60.122
+    OffsetBottom 58.411
+   }
+   Text "120"
+   "Font Size" 48
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F8873D44E9479D}" {
+    Bold 1
+   }
+  }
+ }
+}

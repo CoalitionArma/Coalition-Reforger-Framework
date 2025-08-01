@@ -1,0 +1,98 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 6464.76 184.904 3093.82
+  m_rnPrefab "{3290D38BD0CEBF94}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_1p29_Shield.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6458.443 184.742 3118.6
+  angleY 89.657
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6446.168 184.225 3118.032
+  angleY 89.657
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6436.322 183.887 3117.792
+  angleY 89.657
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6425.229 183.158 3106.163
+  angleY 89.657
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6458.057 184.629 3080.116
+  angleY -21.024
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6450.93 184.326 3109.389
+  angleY 89.657
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6429.528 183.408 3111.475
+  angleY 89.657
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6439.649 183.43 3099.585
+  angleY 41.157
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6439.968 183.891 3110.552
+  angleY 89.657
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6433.324 183.274 3093.598
+  angleY 41.106
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6439.557 183.423 3088.158
+  angleY 41.106
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6448.927 183.963 3096.435
+  angleY 41.106
+  m_rnPrefab "{E1A99B5F2DC9B38A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Camo.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6474.762 184.904 3093.82
+  m_rnPrefab "{3290D38BD0CEBF94}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_1p29_Shield.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
