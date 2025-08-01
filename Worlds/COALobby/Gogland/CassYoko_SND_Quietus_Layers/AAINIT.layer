@@ -8,16 +8,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    defendingSide "BLUFOR"
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Rainy"
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
    m_iSetWeatherConstant 1
-   m_initialWeatherDurationMin 1
-   m_initialWeatherDurationMax 1
-  }
-  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
-   m_iStartingHours 3
-   m_iRangeHoursStart 22
-   m_iRangeHoursEnd 22
-   m_iRangeMinutesEnd 35
   }
  }
  coords 942.024 4.795 5290.71
