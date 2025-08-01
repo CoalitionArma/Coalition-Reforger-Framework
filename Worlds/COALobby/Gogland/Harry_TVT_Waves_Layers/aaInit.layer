@@ -17,7 +17,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Assets: 1 Specialty pair / 2 squads"\
    ""\
    "OPFOR Composition: Moto Inf"\
-   "OPFOR Assets: 1 BRDM/squad + mission objectives"\
+   "OPFOR Assets: 1 BRDM/2 squads + mission objectives"\
    ""\
    "Time: 45 Min"\
    "Weather: Clear"
