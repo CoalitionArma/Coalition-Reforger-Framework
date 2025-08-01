@@ -1,0 +1,135 @@
+$grp GenericEntity {
+ MCOM_A {
+  components {
+   MeshObject "{65F9790C58F8E2D9}" {
+    Object "{01E5327CE6F3006E}Assets/Structures/Military/CamoNets/CamoNet_Tent_Soviet.xob"
+   }
+  }
+  coords 4388.106 80.229 9928.513
+  angleY 87.921
+  {
+   GameEntity : "{6597847D2AC253F5}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01.et" {
+    coords -0.956 0 0.38
+    angleY -1.164
+   }
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.06 0 2.73
+    angleY -87.921
+    m_MarkerColor 0 0.125 0.502 1
+    m_sQuadName "fortification"
+    m_sDescription "MCOM A"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   GenericEntity cacheA : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+    coords 1.701 0 0.485
+    angleY -87.921
+    destructor ""\
+    "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Alpha MCOM destroyed, attackers win\", duration: 10);"\
+    "	"
+   }
+  }
+ }
+ MCOM_B {
+  components {
+   MeshObject "{65F9790C58F8E2D9}" {
+    Object "{01E5327CE6F3006E}Assets/Structures/Military/CamoNets/CamoNet_Tent_Soviet.xob"
+   }
+  }
+  coords 5451.982 12.357 9103.44
+  angleY 87.921
+  {
+   GameEntity : "{6597847D2AC253F5}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01.et" {
+    coords -0.955 0.019 0.381
+    angleY -1.164
+   }
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.06 -0.047 2.73
+    angleY -87.921
+    m_MarkerColor 0 0.125 0.502 1
+    m_sQuadName "fortification"
+    m_sDescription "MCOM B"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   GenericEntity cacheB : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+    coords 1.701 -0.056 0.485
+    angleY -87.921
+    destructor ""\
+    "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo MCOM destroyed, opfor has received new assets\", duration: 10);"\
+    "		"\
+    "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+    "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+    "		string brdm = \"{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et\";"\
+    "		IEntity spawn1, spawn2"\
+    "		spawn1 = GetGame().GetWorld().FindEntityByName(\"spawn1\");"\
+    "		spawn2 = GetGame().GetWorld().FindEntityByName(\"spawn2\");"\
+    "		spawnParams.Transform[3] = spawn1.GetOrigin();		"\
+    "		GetGame().SpawnEntityPrefab(Resource.Load(brdm),GetGame().GetWorld(),spawnParams);"\
+    "		spawnParams.Transform[3] = spawn2.GetOrigin();		"\
+    "		GetGame().SpawnEntityPrefab(Resource.Load(brdm),GetGame().GetWorld(),spawnParams);"\
+    "		"\
+    "	"
+   }
+  }
+ }
+ MCOM_C {
+  components {
+   MeshObject "{65F9790C58F8E2D9}" {
+    Object "{01E5327CE6F3006E}Assets/Structures/Military/CamoNets/CamoNet_Tent_Soviet.xob"
+   }
+  }
+  coords 4505.577 11.155 8819.26
+  angleY 87.921
+  {
+   GameEntity : "{6597847D2AC253F5}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01.et" {
+    coords -0.956 0 0.38
+    angleY -1.164
+   }
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.06 0 2.73
+    angleY -87.921
+    m_MarkerColor 0 0.125 0.502 1
+    m_sQuadName "fortification"
+    m_sDescription "MCOM C"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+   GenericEntity cacheC : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+    coords 1.701 0 0.485
+    angleY -87.921
+    destructor ""\
+    "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie MCOM destroyed, teleports have been disabled\", duration: 10);"\
+    "		"\
+    "		array<string> myStrings = {\"Pohjoiskorkia\", \"Pohjoisrivi\", \"Suurkyla\", \"Vahasomerikonlahti\"};"\
+    "		"\
+    "		foreach (string str : myStrings)"\
+    "		{"\
+    "			IEntity pole = GetGame().GetWorld().FindEntityByName(str);"\
+    "			SCR_EntityHelper.DeleteEntityAndChildren(pole);"\
+    "		}"\
+    ""\
+    "	"
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ spawn1 {
+  coords 5539.778 3.327 9055.099
+  angleY 13.047
+ }
+ spawn2 {
+  coords 5535.028 3.327 9034.601
+  angleY 13.047
+ }
+}
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 5539.913 3.05 9044.895
+ angleY 90
+ m_MarkerColor 0 0 0 1
+ m_sDescription "Bravo Asset Spawn"
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+}

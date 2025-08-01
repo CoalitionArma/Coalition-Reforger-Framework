@@ -1,0 +1,247 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 5386.057 98.763 7467.156
+  angleY 91.597
+  m_rnPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5384.508 98.398 7477.117
+  angleY 91.597
+  m_rnPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5390.948 96.893 7516.108
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5391.669 96.808 7525.618
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5392.357 96.765 7534.729
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5393.006 96.295 7543.255
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5403.07 95.917 7524.755
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5403.759 95.8 7533.864
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5404.406 95.65 7542.389
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5402.347 96.072 7515.245
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5416.304 94.886 7523.751
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5416.994 94.69 7532.861
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5417.643 94.538 7541.385
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5415.584 95.091 7514.242
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5429.642 93.88 7522.741
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5430.33 93.636 7531.849
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5430.978 93.396 7540.374
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5428.917 94.111 7513.23
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5385.509 99.13 7461.897
+  angleY 91.597
+  m_rnPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5399.828 97.266 7470.016
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5400.55 96.91 7479.527
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5401.886 96.396 7497.164
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5401.239 96.632 7488.637
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5411.95 96.015 7478.664
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5412.64 95.766 7487.773
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5413.287 95.551 7496.298
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5411.228 96.305 7469.154
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5425.185 94.944 7477.66
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5425.874 94.748 7486.77
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5426.524 94.572 7495.294
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5424.465 95.148 7468.151
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5438.523 93.905 7476.65
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5439.211 93.785 7485.758
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5439.857 93.661 7494.283
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5437.799 94.016 7467.138
+  angleY -175.666
+  m_rnPrefab "{1FBB492E86002BF5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

@@ -1,0 +1,173 @@
+GenericEntity opforRespawn : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 5399.857 98.332 7429.264
+}
+GenericEntity bluforRespawn : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 4432.991 64.518 9905.114
+}
+$grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPoles/PreJoin_Teleport.et" {
+ Pohjoisrivi {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To Pohjoisrivi"
+      }
+      m_sObjectNameToTeleportTo "Pohjoisrivi"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to Pohjoiskorkia"
+      }
+      m_sObjectNameToTeleportTo "Pohjoiskorkia"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to Suurkyla"
+      }
+      m_sObjectNameToTeleportTo "Suurkyla"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Vahasomerikonlahti"
+      }
+      m_sObjectNameToTeleportTo "Vahasomerikonlahti"
+     }
+    }
+   }
+  }
+  coords 4641.572 5.655 10988.959
+ }
+ Vahasomerikonlahti {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To Pohjoisrivi"
+      }
+      m_sObjectNameToTeleportTo "Pohjoisrivi"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to Pohjoiskorkia"
+      }
+      m_sObjectNameToTeleportTo "Pohjoiskorkia"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to Suurkyla"
+      }
+      m_sObjectNameToTeleportTo "Suurkyla"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Vahasomerikonlahti"
+      }
+      m_sObjectNameToTeleportTo "Vahasomerikonlahti"
+     }
+    }
+   }
+  }
+  coords 4287.439 8.549 9155.169
+ }
+ Pohjoiskorkia {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To Pohjoisrivi"
+      }
+      m_sObjectNameToTeleportTo "Pohjoisrivi"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to Pohjoiskorkia"
+      }
+      m_sObjectNameToTeleportTo "Pohjoiskorkia"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to Suurkyla"
+      }
+      m_sObjectNameToTeleportTo "Suurkyla"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Vahasomerikonlahti"
+      }
+      m_sObjectNameToTeleportTo "Vahasomerikonlahti"
+     }
+    }
+   }
+  }
+  coords 4433.744 64.512 9903.49
+ }
+ Suurkyla {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To Pohjoisrivi"
+      }
+      m_sObjectNameToTeleportTo "Pohjoisrivi"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to Pohjoiskorkia"
+      }
+      m_sObjectNameToTeleportTo "Pohjoiskorkia"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Teleport to Suurkyla"
+      }
+      m_sObjectNameToTeleportTo "Suurkyla"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Teleport to Vahasomerikonlahti"
+      }
+      m_sObjectNameToTeleportTo "Vahasomerikonlahti"
+     }
+    }
+   }
+  }
+  coords 5666.622 4.645 9293.055
+ }
+}
+$grp CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ {
+  coords 4432.121 64.588 9902.046
+  m_sDescription "Pohjoiskorkia"
+ }
+ {
+  coords 4288.34 8.622 9157.837
+  angleY 0
+  m_sDescription "Vahasomerikonlahti"
+ }
+ {
+  coords 5669.238 4.332 9295.252
+  angleY 0
+  m_sDescription "Suurkyla"
+ }
+ {
+  coords 4643.845 5.625 10987.676
+  angleY 0
+  m_sDescription "Pohjoisrivi"
+ }
+}

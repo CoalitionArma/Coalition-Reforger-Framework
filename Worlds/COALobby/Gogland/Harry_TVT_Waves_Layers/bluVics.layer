@@ -1,0 +1,226 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 4767.553 7.844 10648.955
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4785.684 7.844 10652.61
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4796.583 7.844 10654.809
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4810.499 7.844 10657.614
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4788.177 7.844 10639.315
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4799.076 7.844 10641.515
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4812.992 7.844 10644.319
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4770.046 7.844 10635.66
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4789.949 7.844 10626.972
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4800.848 7.844 10629.17
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4814.764 7.844 10631.976
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4771.817 7.844 10623.314
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4791.142 7.844 10611.469
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4802.041 7.844 10613.666
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4815.957 7.844 10616.474
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4773.01 7.844 10607.812
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4796.125 7.844 10596.494
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4807.024 7.844 10598.69
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4820.94 7.844 10601.499
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4777.993 7.844 10592.837
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4799.347 7.844 10581.386
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4810.246 7.844 10583.582
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4824.162 7.844 10586.391
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4781.215 7.844 10577.729
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4800.481 7.844 10562.636
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4811.38 7.844 10564.832
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4825.296 7.844 10567.641
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4782.349 7.844 10558.979
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4801.331 7.844 10542.801
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4812.229 7.844 10544.997
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4826.146 7.844 10547.806
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4783.198 7.844 10539.145
+  angleY 168.597
+  m_rnPrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

@@ -26,7 +26,7 @@ GenericEntity : "{BD2934A1F1EFE742}Prefabs/Props/Military/SupplyBox/SupplyStack/
     }
    }
    CollisionVelocityThreshold 100000000
-   m_fBaseHealth 750
+   m_fBaseHealth 500
    m_fForceToDamageScale 0.01
    m_eMaterialSoundType BREAK_WOOD_SOLID
   }

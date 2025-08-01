@@ -1,0 +1,35 @@
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 4754.516 7.843 10777.288
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords 2.031 0.001 -12.557
+   m_aUnitPrefabSlots {
+    "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+   }
+   {
+    $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     {
+      coords -1.915 0 -13.636
+     }
+     {
+      coords -1.915 0 -19.043
+     }
+     {
+      coords -1.915 0 -26.389
+     }
+     {
+      coords -1.915 0 -31.168
+      {
+       SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+        coords -24.162 0 25.868
+       }
+       SCR_AIGroup : "{3B279F5833A489CE}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MATTeam_p.et" {
+        coords -24.897 0 17.422
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

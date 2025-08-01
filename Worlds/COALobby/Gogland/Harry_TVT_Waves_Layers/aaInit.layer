@@ -1,0 +1,129 @@
+SCR_AIWorld : "{656B40C99B8724C5}Prefabs/AI/SCR_AIWorld_Gogland.et" {
+ coords 4973.98 749.31 7506.313
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 7
+   m_iStartingMinutes 14
+  }
+ }
+ coords 4957.05 417.13 7485.582
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Opfor is fighting against a dug in force on Gogland. The only main objective is Alpha MCOM. Blufor has the option to teleport around the island while Charlie MCOM is up. Every time a side objective MCOM is destoyed, both sides will respawn. "\
+   ""\
+   "BLUFOR Composition: Inf"\
+   "BLUFOR Assets: 1 Specialty pair / 2 squads"\
+   ""\
+   "OPFOR Composition: Moto Inf"\
+   "OPFOR Assets: 1 BRDM/squad + mission objectives"\
+   ""\
+   "Time: 45 Min"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Main objective: Defend Alpha MCOM"\
+   ""\
+   "Side objectives: "\
+   "- If Bravo MCOM is destroyed then OPFOR will receive more assets."\
+   "- If Charlie MCOM is destroyed then the tunnel network will collapse."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Main objective: Destroy Alpha MCOM"\
+   ""\
+   "Side objectives: "\
+   "- If Bravo MCOM is destroyed then OPFOR will receive more assets."\
+   "- If Charlie MCOM is destroyed then the tunnel network will collapse."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{B476F825AD9CCBEA}Configs/Gearscripts/Standard/80s/CRF_GS_UK80s_FAL.conf"
+ }
+ {
+  SCR_FactionManager "660203E02B594777" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65FEF5E94B69EFE0}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65FEF5E94BBF1E96}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{65FEF5E94BD4C1AC}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{65FEF5E94A31DE44}" {
+        m_sCallsign "MAT"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{65FEF5E99E55A10A}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65FEF5E99EF553BC}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65FEF5E99D231BD1}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{65FEF5E9F947CE33}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{65FEF5E9F9BBECA3}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{65FEF5E9F9EE7197}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{65FEF5E9F872BFD6}" {
+        m_sCallsign "BRDM1"
+       }
+       SCR_CallsignInfo "{65FEF5E9F85A1903}" {
+        m_sCallsign "BRDM2"
+       }
+       SCR_CallsignInfo "{65FEF5E9CEC8DA71}" {
+        m_sCallsign "BRDM3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
