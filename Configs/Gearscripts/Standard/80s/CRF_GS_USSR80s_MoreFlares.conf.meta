@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{C7452E022D66CDF3}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_MoreFlares.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

@@ -19,7 +19,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 3374.031 107.689 2327.99
- m_iTimeLimitMinutes 50
+ m_iTimeLimitMinutes 65
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "A NATO detachment hastily supplied/integrated with local armed farmers intent on preventing RUS destruction of key locations."\
@@ -93,7 +93,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
       }
      }
-     m_sFactionRadioEncryptionKey "candleSauce"
     }
     SCR_Faction "{628C2D2BFC8C6447}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
@@ -126,10 +125,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "2-2"
        }
        SCR_CallsignInfo "{65DAC0EB555C2E03}" {
-        m_sCallsign "GAZ"
+        m_sCallsign "Crew (GAZ)"
        }
        SCR_CallsignInfo "{65DAC0EB559807B6}" {
-        m_sCallsign "GAZ"
+        m_sCallsign "Crew (GAZ)"
        }
        SCR_CallsignInfo "{65DAC0EB56A2DE56}" {
         m_sCallsign "Logi"
@@ -141,7 +140,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      m_aFriendlyFactionsIds {
       "BLUFOR"
      }
-     m_iFactionRadioFrequency 48000
     }
    }
   }
@@ -189,13 +187,13 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
    Position -433.5 0 260.552
   }
   ShapePoint "{65DC07466CB4AD0F}" {
-   Position -375.383 0 1487.507
+   Position -360.162 0 1609.536
   }
-  ShapePoint "{65DC0747A815AD1E}" {
-   Position 97.081 0 1300.134
+  ShapePoint "{65EC7DC6E54C2F4B}" {
+   Position -257.036 -0 1696.436
   }
   ShapePoint "{65DC074665863162}" {
-   Position 629.421 0 1055.1
+   Position 738.715 0 1145.891
   }
   ShapePoint "{65DC07466615C916}" {
    Position 394.997 0 834.001

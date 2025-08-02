@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{3022F2F62A518917}UI/layouts/HUD/GunGame/GameEnd.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,389 @@
+$grp BaseGameTriggerEntity {
+ spawnpoint96 {
+  coords 3238.242 19.195 2702.254
+ }
+ spawnpoint65 {
+  coords 3057.685 17.383 2688.319
+ }
+ spawnpoint53 {
+  coords 3149.743 14.349 2710.604
+ }
+ spawnpoint66 {
+  coords 3038.334 21.106 2666.646
+ }
+ spawnpoint42 {
+  coords 3188.964 11.225 2792.989
+ }
+ spawnpoint97 {
+  coords 3125.25 8.152 2897.41
+ }
+ spawnpoint52 {
+  coords 3154.217 14.339 2709.058
+ }
+ spawnpoint54 {
+  coords 3189.941 18.173 2654.423
+ }
+ spawnpoint122 {
+  coords 3072.759 13.617 2802.997
+ }
+ spawnpoint68 {
+  coords 2989.552 20.387 2767.661
+ }
+ spawnpoint13 {
+  coords 3099.549 16.277 2696.374
+ }
+ spawnpoint44 {
+  coords 3184.846 12.206 2772.218
+ }
+ spawnpoint69 {
+  coords 3066.043 16.222 2773.757
+ }
+ spawnpoint30 {
+  coords 3145.886 11.613 2837.396
+ }
+ spawnpoint28 {
+  coords 3133.41 11.864 2852.917
+ }
+ spawnpoint51 {
+  coords 3168.054 13.68 2718.781
+ }
+ spawnpoint46 {
+  coords 3178.732 12.206 2766.661
+ }
+ spawnpoint105 {
+  coords 3142.225 20.953 2608.676
+ }
+ spawnpoint47 {
+  coords 3177.945 12.206 2760.458
+ }
+ spawnpoint56 {
+  coords 3144.599 16.463 2686.643
+ }
+ spawnpoint86 {
+  coords 3142.301 11.961 2786.033
+ }
+ spawnpoint24 {
+  coords 3110.802 11.326 2862.65
+ }
+ spawnpoint108 {
+  coords 3112.512 11.749 2820.797
+ }
+ spawnpoint26 {
+  coords 3141.946 11.864 2859.907
+ }
+ spawnpoint123 {
+  coords 3097.065 16.07 2822.113
+ }
+ spawnpoint124 {
+  coords 3107.555 12.103 2784.837
+ }
+ spawnpoint107 {
+  coords 3115.085 11.749 2819.646
+ }
+ spawnpoint104 {
+  coords 3214.817 12.379 2761.624
+ }
+ spawnpoint106 {
+  coords 3119.546 11.559 2816.996
+ }
+ spawnpoint27 {
+  coords 3137.826 11.864 2856.07
+ }
+ spawnpoint29 {
+  coords 3136.856 11.864 2849.047
+ }
+ spawnpoint110 {
+  coords 3113.21 11.749 2825.923
+ }
+ spawnpoint115 {
+  coords 3089.692 11.472 2842.45
+ }
+ spawnpoint98 {
+  coords 3141.82 8.036 2901.677
+ }
+ spawnpoint109 {
+  coords 3115.186 11.749 2823.258
+ }
+ spawnpoint33 {
+  coords 3156.566 11.613 2836.11
+ }
+ spawnpoint99 {
+  coords 3183.132 7.735 2867.861
+ }
+ spawnpoint34 {
+  coords 3160.623 10.73 2854.224
+ }
+ spawnpoint103 {
+  coords 3203.474 16.384 2735.948
+ }
+ spawnpoint35 {
+  coords 3171.453 7.932 2879.658
+ }
+ spawnpoint36 {
+  coords 3182.061 10.64 2838.666
+ }
+ spawnpoint100 {
+  coords 3198.118 11.118 2844.647
+ }
+ spawnpoint112 {
+  coords 3104.283 11.972 2832.279
+ }
+ spawnpoint38 {
+  coords 3181.2 14.44 2833.336
+ }
+ spawnpoint55 {
+  coords 3150.866 15.276 2681.389
+ }
+ spawnpoint39 {
+  coords 3185.057 14.44 2836.964
+ }
+ spawnpoint90 {
+  coords 3134.657 11.971 2756.828
+ }
+ spawnpoint111 {
+  coords 3108.861 11.749 2826.669
+ }
+ spawnpoint40 {
+  coords 3186.672 17.94 2831.315
+ }
+ spawnpoint48 {
+  coords 3172.481 13.68 2730.088
+ }
+ spawnpoint41 {
+  coords 3178.823 17.94 2837.923
+ }
+ spawnpoint78 {
+  coords 3123.297 11.824 2770.264
+ }
+ spawnpoint79 {
+  coords 3122.459 11.824 2774.077
+ }
+ spawnpoint83 {
+  coords 3136.61 15.621 2778.103
+ }
+ spawnpoint84 {
+  coords 3130.035 15.621 2781.932
+ }
+ spawnpoint82 {
+  coords 3133.055 15.621 2776.077
+ }
+ spawnpoint87 {
+  coords 3144.296 15.711 2795.438
+ }
+ spawnpoint89 {
+  coords 3144.297 11.961 2800.293
+ }
+ spawnpoint102 {
+  coords 3160.079 13.29 2821.6
+ }
+ spawnpoint101 {
+  coords 3229.928 8.782 2799.219
+ }
+ spawnpoint113 {
+  coords 3097.472 11.972 2839.602
+ }
+ spawnpoint114 {
+  coords 3090.924 11.972 2835.776
+ }
+ spawnpoint59 {
+  coords 3149.798 29.295 2556.853
+ }
+ spawnpoint77 {
+  coords 3143.033 11.503 2774.244
+ }
+ spawnpoint43 {
+  coords 3184.285 12.206 2779.146
+ }
+ spawnpoint127 {
+  coords 3108.852 28.116 2734.493
+ }
+ spawnpoint16 {
+  coords 2997.71 20.858 2716.733
+ }
+ spawnpoint74 {
+  coords 3170.256 11.467 2801.835
+ }
+ spawnpoint75 {
+  coords 3199.425 9.037 2830.624
+ }
+ spawnpoint58 {
+  coords 3133.007 16.463 2695.71
+ }
+ spawnpoint25 {
+  coords 3115.791 11.326 2861.416
+ }
+ spawnpoint93 {
+  coords 3131.975 16.831 2654.457
+ }
+ spawnpoint31 {
+  coords 3149.245 11.613 2835.55
+ }
+ spawnpoint61 {
+  coords 3205.751 23.065 2615.013
+ }
+ spawnpoint62 {
+  coords 3232.178 21.546 2667.548
+ }
+ spawnpoint125 {
+  coords 3063.536 18.88 2841.617
+ }
+ spawnpoint60 {
+  coords 3186.032 24.113 2590.112
+ }
+ spawnpoint76 {
+  coords 3155.525 12.234 2750.744
+ }
+ spawnpoint94 {
+  coords 3157.035 15.962 2666.372
+ }
+ spawnpoint37 {
+  coords 3176.661 10.64 2834.059
+ }
+ spawnpoint0 {
+  coords 3052.971 16.668 2718.865
+ }
+ spawnpoint9 {
+  coords 3122.882 16.012 2678.815
+ }
+ spawnpoint10 {
+  coords 3066.67 20.859 2650.562
+ }
+ spawnpoint11 {
+  coords 3063.485 23.839 2632.546
+ }
+ spawnpoint116 {
+  coords 3082.804 11.665 2845.061
+ }
+ spawnpoint32 {
+  coords 3152.921 11.613 2837.479
+ }
+ spawnpoint14 {
+  coords 3090.34 16.661 2703.885
+ }
+ spawnpoint15 {
+  coords 3071.779 16.273 2705.938
+ }
+ spawnpoint126 {
+  coords 3050.316 16.352 2784.943
+ }
+ spawnpoint18 {
+  coords 3049.264 16.668 2725.922
+ }
+ spawnpoint17 {
+  coords 3042.624 16.668 2730.724
+ }
+ spawnpoint57 {
+  coords 3135.018 16.463 2691.119
+ }
+ spawnpoint92 {
+  coords 3150.885 18.562 2628.132
+ }
+ spawnpoint20 {
+  coords 3034.879 12.319 2877.525
+ }
+ spawnpoint1 {
+  coords 3062.866 16.675 2728.927
+ }
+ spawnpoint95 {
+  coords 3184.317 15.16 2702.177
+ }
+ spawnpoint5 {
+  coords 3106.772 16.347 2727.862
+ }
+ spawnpoint119 {
+  coords 3039.345 12.319 2882.659
+ }
+ spawnpoint6 {
+  coords 3140.484 14.349 2716.028
+ }
+ spawnpoint63 {
+  coords 3058.405 21.867 2644.824
+ }
+ spawnpoint64 {
+  coords 3079.479 18.279 2674.036
+ }
+ spawnpoint7 {
+  coords 3133.006 16.463 2694.486
+ }
+ spawnpoint8 {
+  coords 3127.338 16.469 2686.474
+ }
+ spawnpoint67 {
+  coords 2982.54 26.083 2678.217
+ }
+ spawnpoint70 {
+  coords 3017.185 16.165 2831.351
+ }
+ spawnpoint118 {
+  coords 3060.123 11.97 2865.796
+ }
+ spawnpoint117 {
+  coords 3055.274 11.97 2861.877
+ }
+ spawnpoint85 {
+  coords 3137.374 11.961 2791.26
+ }
+ spawnpoint19 {
+  coords 3057.758 16.668 2723.622
+ }
+ spawnpoint21 {
+  coords 3053.938 11.971 2870.043
+ }
+ spawnpoint22 {
+  coords 3056.776 11.97 2860.983
+ }
+ spawnpoint23 {
+  coords 3058.796 11.97 2866.348
+ }
+ spawnpoint88 {
+  coords 3142.885 15.711 2785.775
+ }
+ spawnpoint12 {
+  coords 3056.271 23.838 2637.566
+ }
+ spawnpoint50 {
+  coords 3176.043 13.68 2723.832
+ }
+ spawnpoint72 {
+  coords 3077.426 11.758 2884.66
+ }
+ spawnpoint71 {
+  coords 3089.539 11.157 2914.38
+ }
+ spawnpoint73 {
+  coords 3062.145 11.781 2880.172
+ }
+ spawnpoint49 {
+  coords 3181.062 13.68 2728.284
+ }
+ spawnpoint121 {
+  coords 3032.83 12.319 2880.528
+ }
+ spawnpoint120 {
+  coords 3036.25 12.319 2877.937
+ }
+ spawnpoint2 {
+  coords 3076.673 16.572 2745.086
+ }
+ spawnpoint81 {
+  coords 3129.407 15.621 2772.889
+ }
+ spawnpoint3 {
+  coords 3066.938 16.572 2738.493
+ }
+ spawnpoint4 {
+  coords 3102.055 16 2739.285
+ }
+ spawnpoint45 {
+  coords 3180.767 12.214 2772.462
+ }
+ spawnpoint91 {
+  coords 3109.283 22.159 2613.656
+ }
+ spawnpoint80 {
+  coords 3124.514 15.621 2775.054
+ }
+ debugSpawnpoint {
+  coords 1748.436 39.002 2851.885
+ }
+}

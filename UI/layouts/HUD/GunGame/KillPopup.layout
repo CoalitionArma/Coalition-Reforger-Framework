@@ -1,0 +1,42 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{65F8873750EFA9B6}" {
+   Name "Text0"
+   Slot FrameWidgetSlot "{65F8873750EFA99C}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 0
+    OffsetLeft 0
+    PositionY -15.453
+    OffsetTop -15.453
+    SizeX 100
+    OffsetRight -100
+    SizeY 30
+    OffsetBottom -14.547
+   }
+   Text "+10"
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  TextWidgetClass "{65F8873765C9F768}" {
+   Name "Promotion"
+   Slot FrameWidgetSlot "{65F8873750EFA99C}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 25.828
+    OffsetLeft 25.828
+    PositionY 16.642
+    OffsetTop 16.642
+    SizeX 100
+    OffsetRight -125.828
+    SizeY 30
+    OffsetBottom -46.642
+   }
+   Opacity 0
+   Text "Gun Promotion"
+   "Font Size" 15
+   "Min Font Size" 15
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+ }
+}

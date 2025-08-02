@@ -1,0 +1,42 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1378.493 39 2188.983
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_GunGame "{65E93556EFCD6F64}" {
+   m_aGunLevels {
+    CRF_GunGameContainer "{65E94B189564DC05}" {
+     m_sWeapon "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et"
+     m_sMagazines "{BBB50A815A2F916B}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Ball.et"
+     m_iAmountOfMagazines 7
+     m_iAmountOfKillsToLevelUp 1
+    }
+    CRF_GunGameContainer "{65FD5BD24C4BEC4F}" {
+     m_sWeapon "{FA5C25BF66A53DCF}Prefabs/Weapons/Rifles/AK74/Rifle_AK74.et"
+     m_sMagazines "{BBB50A815A2F916B}Prefabs/Weapons/Magazines/Magazine_545x39_AK_30rnd_Ball.et"
+     m_iAmountOfMagazines 7
+     m_iAmountOfKillsToLevelUp 1
+    }
+   }
+  }
+  CRF_SpawnCountDown "{65F887340EBF18E0}" {
+  }
+ }
+ coords 1369.161 39.011 2185.004
+ EnableAIInGameState 1
+ m_bLockSlotsAfterSafestart 0
+ m_bSafestartInstantlyEnabled 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{A4C7C628E5F338EB}Configs/Gearscripts/Standard/Specials/GunGame/CRF_GS_GunGameModernUS.conf"
+ }
+ {
+  SCR_FactionManager "65E94B1A2E9C6358" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bFriendlyToSelf 0
+    }
+   }
+  }
+ }
+}
