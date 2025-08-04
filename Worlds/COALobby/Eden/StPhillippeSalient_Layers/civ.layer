@@ -1,0 +1,6 @@
+SCR_AIGroup : "{F3B8D85C8756F89A}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevLeader_p.et" {
+ coords 4442.289 43.069 10768.634
+ m_aUnitPrefabSlots {
+  "{1C7A4720A7B2239C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Unarmed_P.et"
+ }
+}
