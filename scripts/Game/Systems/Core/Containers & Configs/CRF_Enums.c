@@ -76,6 +76,8 @@ enum CRF_EGearRole
 	LOGI_RUNNER,
 	INDIRECT_GUNNER,
 	INDIRECT_LOADER,
+	//-------------------------------------------- OTHER -------------------------------------------------
+	ZEUS
 }
 
 //------------------------------------------------------------------------------------
@@ -253,7 +255,9 @@ modded enum ChimeraMenuPreset : ScriptMenuPresetEnum
 	CRF_RespawnMenu,
 	CRF_SlottingMenu,
 	CRF_SpectatorMenu,
-	CRF_CharacterLoading
+	CRF_CharacterLoading,
+	CRF_GungameStart,
+	CRF_GunGameEnd
 }
 
 //------------------------------------------------------------------------------------

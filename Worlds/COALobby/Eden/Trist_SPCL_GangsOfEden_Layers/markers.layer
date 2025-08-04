@@ -1,0 +1,48 @@
+CRF_ManualMarker ChurchHQMarker : "{D4F0DA86DB75A76B}PrefabsEditable/Markers/RallyTurnMarker.et" {
+ coords 4448.449 29.39 10733.938
+ angleY 0
+ m_MarkerColor 0 0.017 0.627 1
+ m_sQuadName "strong-point"
+ m_fWorldSize 70
+ m_sDescription "Police HQ (No Outside Entry}"
+}
+CRF_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+ coords 4284.471 12.467 10594.383
+ angleY -17.982
+ m_fWorldSize 80
+ m_sDescription "Police SZ (BLUFOR Only)"
+ {
+  $grp CRF_ManualMarker : "{E8B2EB8EECE8491C}PrefabsEditable/Markers/GameZoneMarker_BLUFOR.et" {
+   {
+    coords 4.591 4.406 26.2
+    angleY 0
+    m_fWorldSize 80
+    m_sDescription "Police (BLUFOR Only)"
+   }
+   {
+    coords 8.847 4.406 50.835
+    angleY 0
+    m_fWorldSize 80
+    m_sDescription "Police (BLUFOR Only)"
+   }
+   {
+    coords 13.103 4.406 75.47
+    angleY 0
+    m_fWorldSize 80
+    m_sDescription "Police (BLUFOR Only)"
+   }
+   {
+    coords 17.359 4.406 100.105
+    angleY 0
+    m_fWorldSize 80
+    m_sDescription "Police (BLUFOR Only)"
+   }
+   {
+    coords 21.615 4.406 124.74
+    angleY 0
+    m_fWorldSize 80
+    m_sDescription "Police (BLUFOR Only)"
+   }
+  }
+ }
+}
