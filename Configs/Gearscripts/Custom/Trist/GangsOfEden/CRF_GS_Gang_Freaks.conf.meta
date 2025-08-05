@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{A5AC69449A45499C}Configs/Gearscripts/Custom/Trist/GangsOfEden/CRF_GS_Gang_LARPers.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
