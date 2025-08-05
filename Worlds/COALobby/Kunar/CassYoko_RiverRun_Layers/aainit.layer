@@ -6,8 +6,15 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_SearchAndDestroyGamemodeManager "{65B91E239B198978}" {
    defendingSide "INDFOR"
   }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Overcast"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 12
+  }
  }
- coords 2001.43 281.175 2112.422
+ coords 2932.491 10.021 2806.738
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "This is a Search and Destroy mission within Kunar Providence. BLUFOR is attacking and INDFOR are defending."\
