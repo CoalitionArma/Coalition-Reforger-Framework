@@ -20,7 +20,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "Intel retrieved from a shot down drone showed that insurgents have begun seting up two hideouts with the city of Kunar Abad. US Forces are being deployed to destroy these two hideouts."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
-   "BLUFOR Assets: 1x ARMED HUMVEE per Squad and 1x Armed UH60"\
+   "BLUFOR Assets: 1x ARMED HUMVEE per Squad and 1x Armed AH6M"\
    ""\
    "INDFOR Composition:  Motorized Infantry Platoon"\
    "INDFOR Assets: 1x ZU23 Truck"\
@@ -84,7 +84,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{660314A9A6D8D091}" {
-        m_sCallsign "UH60"
+        m_sCallsign "AH6M"
        }
       }
      }
