@@ -2,11 +2,20 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 4497.087 13.961 10722.242
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Overcast"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 9
+  }
+ }
  coords 4487.116 13.629 10723.938
- m_iTimeLimitMinutes 60
+ m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "A company of US Marines conduct a landing on the north peninsula of Everon to seize the city of St. Phillipe on the heels of a blisteringly fast operation that seized the rest of the island. However, EDF remnants and armed civilians have steeled themselves against the occupiers, and won't go down without a fight..."\
+   m_sTextData "A company of US Marines conduct a landing on the north peninsula of Everon to seize the city of St. Phillipe on the heels of a blisteringly fast operation that seized the rest of the island. However, EDF remnants and armed civilians have steeled themselves against the occupiers to protect their popularly elected president, and they won't go down without a fight."\
    ""\
    "BLUFOR Composition: Motorized Company "\
    "(1x LAV25 mounted plt, 1x truck mounted plt)"\
@@ -19,13 +28,31 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "1x Engineer team"\
    ""\
    "Time: 0900"\
-   "Duration: 60m"\
+   "Duration: 50m"\
    "Weather: Overcast"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "The last holdout against our invasion of Everon is the capital of St. Phillipe. The President of Everon, who started this debacle is cowardly hiding somewhere inside the city. Locate and capture the President. If absolutely neccesary, lethal force has been authorized against the President."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "CIV Objectives"
+   m_sTextData "A staunch pacifist yourself, you are forbidden from taking up any form of weapons. However, you understand that the fire to fight inside of your countrymen can not be put out, and therefore you must allow them to protect you. Stay within your AO limit, and cooperate with the EDF remnants in order to evade capture or death. If you do happen to be captured by US forces, you believe you have done no wrong and thus must cooperate with US forces if captured. "\
+   ""\
+   "Due to you not having a map, rely on INDFOR to guide you. You should see a faint white outline on your AO limit. Otherwise ask to borrow a map from someone on Indfor to be able to see your border."
+   m_aFactionKeys {
+    "CIV"
+   }
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Defend your righteously elected President to the last man. He has an AO limit he is forbidden from leaving. BLUFOR is not aware of the location of this search zone."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "As the president is an HVT, this means that lethal force is authorized."\
    "However, the HVT is forbidden from arming himself, and every US solider is equipped with zipties."\
-   "Do not shoot the HVT for the hell of it, and if you have the opportunity to keep the HVT alive, *do so.*"
+   "Do not shoot the HVT for the hell of it, and if you have the opportunity to keep the HVT alive, *do so.*"\
+   ""\
+   "For every 1 LAV squad in first Platoon slotted, BLUFOR must slot 1 Infantry squad from 2nd platoon"
+   m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{66052F1EB6C50E61}" {
    m_sTitle "Lore"
@@ -37,7 +64,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "They quickly defeated the ill equipped Everonian Defense Forces (a successor of the victorious FIA) with a 2 day rapid advance from the south to the northern peninsula. The US forces were stopped near Meaux, where a stout defensive line and huge swathes of mines slowed progress, creating a stalemate that stood for the past 5 days."\
    "In order to break the EDF, a massive operation of aerial bombardment and naval shelling occurred, destroying the airfield and almost all infrastructure on the northern peninsula. However, the capital city of St. Phillipe was mostly spared due to its civilian infrastructure and historical significance. Unwilling to wait any longer to get through the minefields and tie up forces better put to use in a developing crisis in Cyprus, a company of Marines conducted a landing to seize the capital of Everon from the ground."\
    ""\
-   "After weeks of unrest and anarchy, the remnants of the EDF and civilians now steeled against the invaders have prepared St. Phillipe to be defended to the last man."
+   "After weeks of unrest and anarchy, the remnants of the EDF and civilians now steeled against the invaders have prepared St. Phillipe to be defended to the last man. The President is being protected by the forces inside the town, but the US won't let him escape."
    m_bShowForAnyFaction 1
   }
  }
@@ -53,18 +80,498 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableGIRadios 0
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{2FB2744FFCD276AC}Configs/Gearscripts/Custom/fluff/CRF_GS_CIV_SPS_fluff.conf"
+  m_rGearScript "{55C13A88C7BCEE4A}Configs/Gearscripts/Custom/fluff/CRF_GS_CIV_SPS_President_fluff.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "660A00045E98F5EE" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
-     m_aFriendlyFactionsIds + {
+     m_aFriendlyFactionsIds {
       "INDFOR"
      }
      m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
       m_aSquadNames {
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "HVT"
+       }
        SCR_CallsignInfo "{607A9A9EC820C279}" {
         m_sCallsign "HVT"
        }

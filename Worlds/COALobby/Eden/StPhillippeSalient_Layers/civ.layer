@@ -1,6 +1,7 @@
-SCR_AIGroup : "{F3B8D85C8756F89A}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevLeader_p.et" {
- coords 4442.289 43.069 10768.634
+SCR_AIGroup : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
+ coords 4416.259 9.905 10760.332
+ angleY -29.065
  m_aUnitPrefabSlots {
-  "{1C7A4720A7B2239C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Unarmed_P.et"
+  "{FA2F9B99D8CBB8A6}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_DroneOp_P.et"
  }
 }

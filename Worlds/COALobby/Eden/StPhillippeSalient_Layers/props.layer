@@ -8588,6 +8588,12 @@ $grp GenericEntity : "{CC5453CCC311603B}Prefabs/Props/Military/Sandbags/Sandbag_
 }
 $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5845.092 1.833 10842.627
   angleX -83.197
   angleY 96.077
@@ -8595,137 +8601,275 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 0.187
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5839.601 0.669 10810.591
   angleX -1.725
   angleY 74.532
   angleZ 0.477
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5843.561 0.617 10811.752
   angleX 0.475
   angleY 74.599
   angleZ 1.726
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5840.122 0.665 10809.19
   angleX -1.725
   angleY 74.532
   angleZ 0.477
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5843.753 0.576 10810.415
   angleX 0.475
   angleY 74.599
   angleZ 1.726
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5844.439 0.564 10809.047
   angleX 0.475
   angleY 74.599
   angleZ 1.726
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5841.001 0.644 10806.485
   angleX -1.725
   angleY 74.532
   angleZ 0.477
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5844.632 0.552 10807.71
   angleX 0.475
   angleY 74.599
   angleZ 1.726
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5840.479 0.654 10807.886
   angleX -1.725
   angleY 74.532
   angleZ 0.477
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5845.292 0.527 10806.301
   angleX -1.487
   angleY 74.553
   angleZ 1.339
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5841.852 0.565 10803.739
   angleX -0.863
   angleY 74.536
   angleZ 0.239
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5845.484 0.517 10804.964
   angleX -1.725
   angleY 74.58
   angleZ 0.476
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5841.33 0.591 10805.14
   angleX -0.624
   angleY 74.553
   angleZ 1.101
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5846.132 0.496 10803.599
   angleX -1.725
   angleY 74.58
   angleZ 0.476
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5842.693 0.552 10801.037
   angleX -0.863
   angleY 74.536
   angleZ 0.239
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5846.324 0.49 10802.262
   angleX -1.725
   angleY 74.58
   angleZ 0.476
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 5842.172 0.56 10802.439
   angleX -0.863
   angleY 74.536
   angleZ 0.239
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4478.801 22.899 10777.441
   angleY -10.878
   angleZ -152.147
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4427.175 11.963 10788.226
   angleX 7.929
   angleY 62.308
   angleZ -90
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4425.57 12.784 10773.854
   angleX -3.448
   angleY -118.089
   angleZ -90.091
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4428.752 12.66 10775.492
   angleX 1.704
   angleY -118.098
   angleZ -90.091
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4432.886 13.636 10777.688
   angleX 5.384
   angleY -118.104
   angleZ -90.092
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4436.757 12.936 10779.681
   angleX -3.448
   angleY -118.089
   angleZ -90.091
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4509.577 16.227 10719.078
   angleX -3.207
   angleY -98.002
@@ -8733,33 +8877,69 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.25
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4510.877 16.456 10709.131
   angleY 80.795
   angleZ 86.205
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4621.91 20.495 10751.606
   angleY -93.731
   angleZ -90
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4621.687 21.85 10751.566
   angleX -3.535
   angleY -93.731
   angleZ -90
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4617.333 21.459 10751.241
   angleY -93.731
   angleZ -90
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4611.472 20.738 10750.805
   angleY -93.731
   angleZ -90
   scale 1.17
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4621.124 20.892 10761.491
   angleX 6.72
   angleY 86.269
@@ -8767,12 +8947,24 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.12
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4641.996 21.486 10751.404
   angleX 31.408
   angleY -86.713
   angleZ -90
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4470.604 13.679 10762.013
   angleX -1.608
   angleY -9.797
@@ -8780,6 +8972,12 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.07
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4469.126 14.122 10769.987
   angleX 13.155
   angleY -9.467
@@ -8787,6 +8985,12 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.07
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4480.936 14.337 10772.495
   angleX -1.608
   angleY -9.797
@@ -8794,18 +8998,36 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.07
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4591.428 20.395 10758.6
   angleY -10.26
   angleZ -90
   scale 1.23
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4583.516 20.428 10749.147
   angleY -10.26
   angleZ -90
   scale 1.23
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4582.683 19.881 10753.219
   angleX -32.277
   angleY -10.26
@@ -8813,26 +9035,56 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.23
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4476.164 24.877 10758.107
   angleY -9.215
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4474.911 24.912 10757.917
   angleY -9.215
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4560.631 18.064 10877.858
   angleY -12.837
   angleZ -90
   scale 1.24
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4560.627 16.468 10877.966
   angleY -12.837
   angleZ -90
   scale 1.24
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4561.989 17.802 10872.092
   angleX 3.748
   angleY -12.866
@@ -8840,6 +9092,12 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.24
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4563.16 17.197 10867.245
   angleX -5.154
   angleY -12.891
@@ -8847,12 +9105,24 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   scale 1.24
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4572.958 17.496 10869.096
   angleY -12.837
   angleZ -90
   scale 1.24
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    m_fBaseHealth 5000
+    m_fDamageThresholdMaximum 5000
+   }
+  }
   coords 4438.664 9.035 10937.252
   angleY -12.837
   angleZ -90

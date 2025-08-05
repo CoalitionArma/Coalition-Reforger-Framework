@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{55C13A88C7BCEE4A}Configs/Gearscripts/Custom/fluff/CRF_GS_CIV_SPS_President_fluff.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

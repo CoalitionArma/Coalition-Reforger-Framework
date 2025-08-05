@@ -73,10 +73,10 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
  {
   components {
    CRF_PolyZone "{65862E4575B86577}" {
-    m_cPolygonColor 0.624 0.157 0.506 1
+    m_cPolygonColor 1 1 1 0
     m_cPolygonBorderColor 0.624 0.157 0.506 1
     m_aVisibleForFactions {
-     "INDFOR" "CIV" "SPEC"
+     "INDFOR" "CIV"
     }
    }
   }
@@ -131,7 +131,7 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
   {
    CRF_PolyZoneTrigger {
     ID "658635BEF7631DCD"
-    m_aFactionKey + {
+    m_aFactionKey {
      "BLUFOR" "INDFOR"
     }
    }
