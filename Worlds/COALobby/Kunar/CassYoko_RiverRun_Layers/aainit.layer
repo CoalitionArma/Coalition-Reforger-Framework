@@ -17,7 +17,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 2932.491 10.021 2806.738
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "This is a Search and Destroy mission within Kunar Providence. BLUFOR is attacking and INDFOR are defending."\
+   m_sTextData "Intel retrieved from a shot down drone showed that insurgents have begun seting up two hideouts with the city of Kunar Abad. US Forces are being deployed to destroy these two hideouts."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
    "BLUFOR Assets: 1x ARMED HUMVEE per Squad and 1x Armed UH60"\
