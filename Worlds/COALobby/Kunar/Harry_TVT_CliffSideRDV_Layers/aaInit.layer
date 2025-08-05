@@ -44,7 +44,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "ION has offered a reward for the civilian VIP, to be delivered at the helicopter extract alive. Taliban forces were able to scure the VIP, and are moving to the extract, but local Afghan police forces want to claim the reward for themselves, and a third, shadowy force has been seen with their own ends in mind. "\
+   m_sTextData "ION has offered a reward for the civilian VIP, to be delivered at the helicopter extract alive. Taliban forces were able to secure the VIP, and are moving to the extract, but local Afghan police forces want to claim the reward for themselves, and a third, shadowy force has been seen with their own ends in mind. "\
    ""\
    "BLUFOR Composition: Infantry"\
    "BLUFOR Assets: Transports, MMG team"\
