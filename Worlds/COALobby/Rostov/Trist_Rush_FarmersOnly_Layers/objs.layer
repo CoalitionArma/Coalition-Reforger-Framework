@@ -56,9 +56,9 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
     m_fDamageThresholdMaximum 10000
    }
   }
-  coords 1428.924 80.087 1116.01
+  coords 1426.268 79.97 1118.231
   angleX 0.056
-  angleY 98.203
+  angleY 22.564
   angleZ -0.893
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie MCOM destroyed\", duration: 10);"\
@@ -102,8 +102,10 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
     m_fDamageThresholdMaximum 10000
    }
   }
-  coords 1426.856 62.702 2106.483
-  angleY -167.436
+  coords 1407.429 64.442 2108.294
+  angleX 7.469
+  angleY -85.555
+  angleZ 1.037
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo MCOM destroyed\", duration: 10);"\
   "		"\
@@ -152,10 +154,10 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
     m_fDamageThresholdMaximum 10000
    }
   }
-  coords 1467.968 94.837 865.208
-  angleX -0.012
-  angleY 177.454
-  angleZ -0.895
+  coords 1465.438 94.126 895.008
+  angleX -0.261
+  angleY -171.605
+  angleZ 0.792
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Delta MCOM destroyed\", duration: 10);"\
   "		"\

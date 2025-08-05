@@ -20,13 +20,13 @@ $grp SCR_VehicleSpawn {
  {
   coords 1273.724 89.776 903.478
   angleY 38.681
-  m_rnPrefab "{A354B4CEF8989405}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_M2HB_Variant_2.et"
+  m_rnPrefab "{818BD2D100635224}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF_D.et"
   respawnDelay 10000
  }
  {
   coords 1276.171 89.776 901.379
   angleY 38.681
-  m_rnPrefab "{098E31B006CAE0CE}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Camo.et"
+  m_rnPrefab "{23FB589C8BF6EC6E}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_USAF.et"
   respawnDelay 10000
  }
  {
@@ -181,9 +181,9 @@ GenericEntity : "{892D59073561FCA6}Prefabs/Props/Military/CargoContainers/CargoC
     }
     MultiSlotConfiguration "{65E26CC72C8BDECC}" {
      SlotTemplate InventoryStorageSlot Jerrycan {
-      Prefab "{7729EF36AA916FB9}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_4Ball_1Tracer.et"
+      Prefab "{AAF51CFA75A9CF8B}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_4AP_1Tracer.et"
      }
-     NumSlots 12
+     NumSlots 14
     }
     MultiSlotConfiguration "{65E26CC70F7ED7E1}" {
      SlotTemplate InventoryStorageSlot test {

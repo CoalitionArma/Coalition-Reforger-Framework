@@ -1,0 +1,150 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  BlurWidgetClass "{65F937941B8B1B06}" {
+   Name "Blur0"
+   Slot FrameWidgetSlot "{65F937941B8B1B66}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -1820
+    OffsetRight 0
+    SizeY -1050
+    OffsetBottom 0
+   }
+   Intensity 1
+  }
+  TextWidgetClass "{65F88734B41A0A56}" {
+   Name "Victory"
+   Slot FrameWidgetSlot "{65F88734B41A0ABC}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -150
+    OffsetLeft -150
+    PositionY -408.897
+    OffsetTop -408.897
+    SizeX 300
+    OffsetRight -150
+    SizeY 200
+    OffsetBottom 208.897
+   }
+   "Is Visible" 0
+   Color 0.1569 0.6235 0.2745 1
+   Text "VICTORY"
+   "Font Size" 69
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F88734D9200F7A}" {
+    OutlineSize 1
+   }
+  }
+  TextWidgetClass "{65F88734EA9C6A50}" {
+   Name "Text1"
+   Slot FrameWidgetSlot "{65F88734B41A0ABC}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -150
+    OffsetLeft -150
+    PositionY -297.956
+    OffsetTop -297.956
+    SizeX 300
+    OffsetRight -150
+    SizeY 93.814
+    OffsetBottom 204.142
+   }
+   Text "Score Limit Reached"
+   "Font Size" 69
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F88734D9200F7A}" {
+    OutlineSize 1
+   }
+  }
+  TextWidgetClass "{65F88734F669C3BA}" {
+   Name "First"
+   Slot FrameWidgetSlot "{65F88734B41A0ABC}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -150
+    OffsetLeft -150
+    PositionY -200
+    OffsetTop -200
+    SizeX 300
+    OffsetRight -150
+    SizeY 93.814
+    OffsetBottom 106.2
+   }
+   Text "1st:"
+   "Font Size" 36
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F88734D9200F7A}" {
+    OutlineSize 1
+   }
+  }
+  TextWidgetClass "{65F88734F0DB68D5}" {
+   Name "Second"
+   Slot FrameWidgetSlot "{65F88734B41A0ABC}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -150
+    OffsetLeft -150
+    PositionY -100
+    OffsetTop -100
+    SizeX 300
+    OffsetRight -150
+    SizeY 93.814
+    OffsetBottom 6.2
+   }
+   Text "2nd: "
+   "Font Size" 36
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F88734D9200F7A}" {
+    OutlineSize 1
+   }
+  }
+  TextWidgetClass "{65F887370D975B6E}" {
+   Name "Third"
+   Slot FrameWidgetSlot "{65F88734B41A0ABC}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -150
+    OffsetLeft -150
+    PositionY 0
+    OffsetTop 0
+    SizeX 300
+    OffsetRight -150
+    SizeY 93.814
+    OffsetBottom -93.8
+   }
+   Text "3rd: "
+   "Font Size" 36
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F88734D9200F7A}" {
+    OutlineSize 1
+   }
+  }
+  TextWidgetClass "{65F937945AC1A45B}" {
+   Name "Defeat"
+   Slot FrameWidgetSlot "{65F88734B41A0ABC}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -150
+    OffsetLeft -150
+    PositionY -408.897
+    OffsetTop -408.897
+    SizeX 300
+    OffsetRight -150
+    SizeY 200
+    OffsetBottom 208.897
+   }
+   "Is Visible" 0
+   Color 0.5378 0 0.024 1
+   Text "DEFEAT"
+   "Font Size" 69
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{65F88734D9200F7A}" {
+    OutlineSize 1
+   }
+  }
+ }
+}

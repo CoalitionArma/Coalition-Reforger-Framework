@@ -1,0 +1,21 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{65FAD78233E2025B}" {
+   Name "Image0"
+   Slot FrameWidgetSlot "{65FAD78233E202D5}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -36.303
+    OffsetLeft -36.303
+    PositionY -35.458
+    OffsetTop -35.458
+    SizeX 75
+    OffsetRight -38.697
+    SizeY 75
+    OffsetBottom -39.542
+   }
+   Texture "{27BB73FAA64DABE4}UI/data/hitmarker.edds"
+   Size 150 150
+  }
+ }
+}

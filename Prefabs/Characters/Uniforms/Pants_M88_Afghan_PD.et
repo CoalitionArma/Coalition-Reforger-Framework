@@ -1,0 +1,30 @@
+GameEntity : "{4EF74D1922997E84}Prefabs/Characters/Uniforms/Pants_M88_base.et" {
+ ID "5104869D194C6243"
+ components {
+  MeshObject "{5104869D194C6262}" {
+   Materials {
+    MaterialAssignClass "{65EB6C678A95EA45}" {
+     SourceMaterial "pants_M88_01"
+     AssignedMaterial "{D2AA001F6FBE4E46}Assets/Characters/Uniforms/Pants_M88/Data/Pants_M88_01_Afghan_PD.emat"
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
+    CustomAttributes {
+     PreviewRenderAttributes "{555292467DA11B7C}" {
+      PreviewModel "{1094DDE5E932B418}Assets/Characters/Uniforms/Pants_M88/Pants_M88_01.xob"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5104869D194C627A}" {
+   WornMaterialsOverride {
+    "{D2AA001F6FBE4E46}Assets/Characters/Uniforms/Pants_M88/Data/Pants_M88_01_Afghan_PD.emat"
+   }
+   ItemMaterialsOverride {
+    "{D2AA001F6FBE4E46}Assets/Characters/Uniforms/Pants_M88/Data/Pants_M88_01_Afghan_PD.emat"
+   }
+  }
+ }
+}

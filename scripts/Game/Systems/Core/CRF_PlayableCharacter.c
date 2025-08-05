@@ -30,7 +30,7 @@ class CRF_PlayableCharacter : ScriptComponent
 		m_PossessingManagerComponent = SCR_PossessingManagerComponent.GetInstance();
 		
 		// Must be calledlater due to a race condition with the ai groups being spawned. Needs refactored.
-		GetGame().GetCallqueue().CallLater(SetInitialEntity, 100, false, owner);
+		GetGame().GetCallqueue().CallLater(SetInitialEntity, CRF_Gamemode.PLAYER_INITILIZATION_TIME + 25, false, owner);
 	}
 	
 	//------------------------------------------------------------------------------------------------

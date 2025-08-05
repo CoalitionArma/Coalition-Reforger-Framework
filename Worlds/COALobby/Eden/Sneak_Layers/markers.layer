@@ -1,0 +1,49 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2668.585 78.77 6180.443
+  angleY 90
+  m_MarkerColor 0.905 0.019 0.012 1
+  m_sQuadName "mark-question-3"
+  m_sDescription "Crash Site?"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 3096.525 125.304 5458.834
+  m_MarkerColor 0.905 0.019 0.012 1
+  m_sQuadName "mark-question-3"
+  m_sDescription "Crash Site?"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 2353.744 22.634 4764.937
+  m_MarkerColor 0.905 0.019 0.012 1
+  m_sQuadName "mark-question-3"
+  m_sDescription "Crash Site?"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 2954.739 120.62 5370.958
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "mark-question-3"
+  m_sDescription "Crash"
+  m_bUseWorldScale 0
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 3366.16 95.632 6539.177
+ angleY 90
+ m_sDescription "Extract"
+ m_bUseWorldScale 0
+}

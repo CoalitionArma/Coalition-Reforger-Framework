@@ -1,0 +1,28 @@
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 1261.008 55 3224.515
+}
+GenericEntity : "{4837C7CC4A685BB4}Prefabs/Vehicles/Helicopters/H47/VehParts/VehPart_CabinFlag.et" {
+ coords 2928.787 47.643 3763.847
+ angleX -84.018
+ angleY -172.45
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1932.146 15.721 3828.934
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Police Station"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2935.137 44.251 3766.382
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Police Chief's House"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+GenericEntity : "{D4375F10B6F2BE81}Prefabs/MP/Campaign/Assets/Radio_Interactable.et" {
+ coords 1920.432 16.705 3817.73
+ angleY 73.034
+}

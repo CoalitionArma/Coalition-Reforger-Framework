@@ -127,6 +127,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
+	
+	// Time it takes for players to Init
+	static const int PLAYER_INITILIZATION_TIME = 250;
 
 	//===================================================================================
 	// STATIC METHODS

@@ -60,15 +60,15 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
  }
  {
-  coords 2103.96 130.841 3345.136
+  coords 2105.939 133.693 3346.721
   angleY -97.493
-  m_rnPrefab "{3290D38BD0CEBF94}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_1p29_Shield.et"
+  m_rnPrefab "{BA3FE174E909A0D0}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green_1p29_Shield.et"
   respawnDelay 10000
  }
  {
-  coords 2100.689 130.841 3352.162
+  coords 2100.793 134.212 3352.321
   angleY -97.493
-  m_rnPrefab "{7ACFD8FA081996F6}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_1p29.et"
+  m_rnPrefab "{75AF26C06F06CC55}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD_SPP_Green_Shield.et"
   respawnDelay 10000
  }
  {
@@ -212,11 +212,11 @@ GenericEntity SupplyGen : "{687A661759E0249B}Prefabs/Props/Military/SupplyBox/Su
   SCR_ResourceComponent "{5D247A59598D71AE}" {
    m_aContainers {
     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_fResourceValueCurrent 5
+     m_fResourceValueCurrent 1
      m_fResourceValueMax 50
      m_bEnableResourceGain 1
      m_fResourceGain 1
-     m_fResourceGainTickrate 35
+     m_fResourceGainTickrate 80
     }
    }
   }

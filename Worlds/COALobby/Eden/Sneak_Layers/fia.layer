@@ -1,0 +1,64 @@
+$grp SCR_AIGroup : "{5BEA04939D148B1D}Prefabs/Groups/INDFOR/Group_FIA_FireTeam.et" {
+ {
+  coords 2651.396 90.84 5330.418
+  angleX -1.783
+  angleY 0.112
+  angleZ -3.578
+ }
+ {
+  coords 2521.925 98.019 5432.703
+ }
+ {
+  coords 2625.146 99.308 5470.317
+ }
+ {
+  coords 3346.981 123.659 4996.743
+  angleX -9.65
+  angleY -0.381
+  angleZ 2.274
+ }
+ {
+  coords 3407.678 110.356 5282.565
+ }
+ {
+  coords 1943.734 68.79 5396.662
+ }
+ {
+  coords 1761.272 80.349 5773.123
+  angleX -4.414
+  angleY 0.484
+  angleZ -6.261
+ }
+ {
+  coords 1857.449 84.306 5585.802
+  angleX 9.247
+  angleY -2.187
+  angleZ -13.368
+ }
+ {
+  coords 1985.381 74.986 5895.038
+ }
+ {
+  coords 2128.559 96.093 5915.094
+  angleX -9.638
+  angleY 1.064
+  angleZ -6.332
+ }
+ {
+  coords 2786.891 88.221 6262.479
+ }
+ {
+  coords 2887.497 79.377 6446.174
+ }
+ {
+  coords 2966.329 90.482 6333.127
+ }
+}
+$grp GenericEntity : "{CD02EBFB0E2E274E}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_FIA_01.et" {
+ {
+  coords 2677.287 94.908 5376.09
+ }
+ {
+  coords 2851.919 86.661 6345.67
+ }
+}

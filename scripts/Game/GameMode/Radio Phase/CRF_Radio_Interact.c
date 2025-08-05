@@ -1,0 +1,74 @@
+//------------------------------------------------------------------------------------------------
+class CRF_Radio_Interact : ScriptedUserAction
+{	
+	SCR_FactionManager factionManager;
+	CRF_RadioPhaseManager rp;
+	
+	bool m_fired = false;
+	
+	//------------------------------------------------------------------------------------------------
+	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
+	{
+		if (!GetGame().InPlayMode()) return;
+		
+		factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		rp = CRF_RadioPhaseManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioPhaseManager));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
+	{
+		if (!pOwnerEntity || !pUserEntity)
+			return;
+		
+		ChimeraCharacter character = ChimeraCharacter.Cast(pUserEntity);
+		if (!character)
+			return;
+		
+		rp.fireTrigger();
+		
+		m_fired = true;
+		
+		super.PerformAction(pOwnerEntity, pUserEntity);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	override bool CanBeShownScript(IEntity user)
+	{
+		// Get user faction
+		// Get game mode manager
+		Faction userFaction = factionManager.GetLocalPlayerFaction();
+		
+		// Get attacker side definition
+		if (rp.interactingSide != userFaction.GetFactionKey())
+			return false;
+		
+		if (m_fired)
+			return false;
+		
+		// else true
+		return true;
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	override bool CanBePerformedScript(IEntity user)
+	{
+		if (m_fired)
+			return false;
+		
+		// else true
+		return true;
+	}	
+	
+	//------------------------------------------------------------------------------------------------
+	override bool HasLocalEffectOnlyScript()
+	{
+		return true;
+	}
+
+	//------------------------------------------------------------------------------------------------
+	override bool CanBroadcastScript()
+	{
+		return false;
+	}
+};

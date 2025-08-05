@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{35225B459ACDB60D}Configs/Gearscripts/Custom/Trist/GangsOfEden/CRF_GS_Gang_BLUFORpolice.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
