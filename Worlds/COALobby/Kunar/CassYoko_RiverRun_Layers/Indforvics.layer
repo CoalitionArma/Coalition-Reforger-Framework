@@ -1,37 +1,58 @@
 $grp SCR_VehicleSpawn {
  {
-  coords 3333.066 9.5 2568.347
+  coords 3333.066 9.499 2568.347
   angleY -120.767
   m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
  {
-  coords 3313.313 9.499 2598.29
+  coords 3313.313 9.5 2598.29
   angleY -175.359
   m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
  {
   coords 3318.083 9.5 2597.039
   angleY -175.359
   m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
  {
   coords 3323.129 9.5 2596.432
   angleY -175.359
   m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
  {
   coords 3306.848 9.5 2597.966
   angleY -173.869
   m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
  {
-  coords 3301.618 9.499 2599.067
+  coords 3301.618 9.5 2599.067
   angleY -175.613
   m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
  {
-  coords 3297.292 9.499 2599.584
+  coords 3297.292 9.5 2599.584
   angleY -173.263
   m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3312.143 9.499 2577.803
+  angleY 115.989
+  m_rnPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+  respawnDelay 10000
+  firstSpawn 1
  }
 }

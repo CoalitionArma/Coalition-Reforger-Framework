@@ -1,0 +1,7 @@
+SCR_AIGroup : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
+ coords 1996.896 201.892 360.206
+ angleY -94.095
+ m_aUnitPrefabSlots {
+  "{8C7C798DDB2E1DDC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Medic_P.et"
+ }
+}
