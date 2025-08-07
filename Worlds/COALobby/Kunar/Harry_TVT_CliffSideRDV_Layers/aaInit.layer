@@ -198,6 +198,22 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      m_aFriendlyFactionsIds {
       "BLUFOR" "OPFOR" "INDFOR"
      }
+     m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "VIP"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C27A}" {
+        m_sCallsign "VIP"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C27B}" {
+        m_sCallsign "VIP"
+       }
+       SCR_CallsignInfo "{607A9A9EC820C279}" {
+        m_sCallsign "VIP"
+       }
+      }
+     }
     }
     SCR_Faction "{5978B9CE6585BBE8}" {
      UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
