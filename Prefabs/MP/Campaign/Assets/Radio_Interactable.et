@@ -1,6 +1,8 @@
 GenericEntity : "{811ECBE58F51D9A2}Prefabs/MP/Campaign/Assets/CampaignHQRadioBase.et" {
  ID "5456ACF83EF5E3AD"
  components {
+  CRF_RadioPhaseManager "{6605652AC71F4A2E}" {
+  }
   MeshObject "{65EB6C63B5F2B273}" {
    Object "{0F55504A35401163}Assets/Props/Military/Radios/RadioStation_ANPRC77_01.xob"
   }
@@ -24,6 +26,8 @@ GenericEntity : "{811ECBE58F51D9A2}Prefabs/MP/Campaign/Assets/CampaignHQRadioBas
      }
     }
    }
+  }
+  RplComponent "{660501EA23974A39}" {
   }
  }
 }

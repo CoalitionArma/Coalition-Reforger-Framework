@@ -8,18 +8,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    defendingSide "BLUFOR"
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Rainy"
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
    m_iSetWeatherConstant 1
-   m_initialWeatherDurationMin 1
-   m_initialWeatherDurationMax 1
-  }
-  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
-   m_iStartingHours 23
-   m_iStartingMinutes 35
-   m_iRangeHoursStart 22
-   m_iRangeHoursEnd 22
-   m_iRangeMinutesEnd 35
-   m_bRandomWeatherChanges 1
   }
  }
  coords 942.024 4.795 5290.71
@@ -28,14 +18,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "A Russian infantry company is attacking and destorying an airfield currently controled by ION services."\
    ""\
    "BLUFOR Composition: Infantry"\
-   "BLUFOR Assets: None"\
+   "BLUFOR Assets: 1x MMG Team"\
    ""\
    "OPFOR Composition: Infantry"\
    "OPFOR Assets: None"\
    ""\
    "Time: 45 Minutes"\
    ""\
-   "Weather: Rainy"
+   "Weather: Heavy Wet Fog"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Defend both bomb sites."
@@ -51,10 +41,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 2
  m_sFactionTwoKey "BLU"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{0BEC033432F40F31}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSION_SCARs_HMGs.conf"
+  m_rGearScript "{0BEC033432F40F31}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSION_SCARs_INFonly.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_Pic.conf"
+  m_rGearScript "{7A6CF63F3156FF4D}Configs/Gearscripts/Custom/Yoko/CRF_GS_RHSMSV_INFonly.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
  }
@@ -81,7 +71,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{65E41D896E880826}" {
-        m_sCallsign "HMG"
+        m_sCallsign "MMG"
        }
       }
      }

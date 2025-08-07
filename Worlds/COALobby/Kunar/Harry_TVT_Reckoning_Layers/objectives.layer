@@ -23,6 +23,12 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
  }
 }
 GenericEntity : "{D4375F10B6F2BE81}Prefabs/MP/Campaign/Assets/Radio_Interactable.et" {
+ components {
+  CRF_RadioPhaseManager "{6605652AC71F4A2E}" {
+   interactingSide "OPFOR"
+   respawnInteracting 1
+  }
+ }
  coords 1920.432 16.705 3817.73
  angleY 73.034
 }
