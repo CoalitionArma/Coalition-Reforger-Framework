@@ -6,21 +6,28 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_SearchAndDestroyGamemodeManager "{65B91E239B198978}" {
    defendingSide "INDFOR"
   }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Overcast"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 12
+  }
  }
- coords 2001.43 281.175 2112.422
+ coords 2932.491 10.021 2806.738
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "This is a Sreach and Destroy Mission within Kunar Providence. BLUFOR is attacking and Local Tailban are defending."\
+   m_sTextData "Intel retrieved from a shot down drone showed that insurgents have begun setting up two hideouts with the city of Kunar Abad. US Forces are being deployed to destroy these two hideouts."\
    ""\
-   "BLUFOR Composition:  Motorized Infantry"\
-   "BLUFOR Assets: 1x ARMED HUMVEE per Squad"\
+   "BLUFOR Composition: Motorized Infantry Company"\
+   "BLUFOR Assets: 1x ARMED HUMVEE per Squad and 1x Armed AH6M"\
    ""\
-   "INDFOR Composition: Infantry"\
-   "INDFOR Assets: None"\
+   "INDFOR Composition:  Motorized Infantry Platoon"\
+   "INDFOR Assets: 1x ZU23 Truck"\
    ""\
    "Time: 45 Minutes"\
    ""\
-   "Weather: Clear"
+   "Weather: Cloudy"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Destory both bomb sites"
@@ -76,6 +83,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{65BD790A25E64579}" {
         m_sCallsign "2-3"
        }
+       SCR_CallsignInfo "{660314A9A6D8D091}" {
+        m_sCallsign "AH6M"
+       }
       }
      }
     }
@@ -95,13 +105,16 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Cell 3 "
        }
        SCR_CallsignInfo "{65BD7909FFAF998B}" {
-        m_sCallsign "LAT Team"
+        m_sCallsign "Cell 4"
        }
        SCR_CallsignInfo "{65BD7909E202E3A1}" {
-        m_sCallsign "MMG Team"
+        m_sCallsign "LAT"
        }
        SCR_CallsignInfo "{65BD7915FE7964EE}" {
-        m_sCallsign "ENG Team"
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{660314A4159638FB}" {
+        m_sCallsign "ZU23 Truck"
        }
       }
      }

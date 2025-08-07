@@ -12,7 +12,7 @@ class CRF_Radio_Interact : ScriptedUserAction
 		if (!GetGame().InPlayMode()) return;
 		
 		factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		rp = CRF_RadioPhaseManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RadioPhaseManager));
+		rp = CRF_RadioPhaseManager.Cast(pOwnerEntity.FindComponent(CRF_RadioPhaseManager));
 	}
 	
 	//------------------------------------------------------------------------------------------------

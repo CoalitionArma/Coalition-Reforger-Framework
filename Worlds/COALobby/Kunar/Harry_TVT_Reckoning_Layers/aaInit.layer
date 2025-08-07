@@ -2,12 +2,6 @@ SCR_AIWorld : "{E2A016456BBC697D}Prefabs/AI/SCR_AIWorld_Kunar.et" {
  coords 1904.338 77.403 3821.938
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
- components {
-  CRF_RadioPhaseManager "{65EB6C6B38A01B9F}" {
-   interactingSide "OPFOR"
-   respawnInteracting 1
-  }
- }
  coords 1913.575 103.914 3817.739
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {

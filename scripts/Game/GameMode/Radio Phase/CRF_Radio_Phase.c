@@ -1,10 +1,10 @@
-[ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_RadioPhaseManagerClass: SCR_BaseGameModeComponentClass
+[ComponentEditorProps(category: "Script Component", description: "")]
+class CRF_RadioPhaseManagerClass: ScriptComponentClass
 {
 	
 }
 
-class CRF_RadioPhaseManager: SCR_BaseGameModeComponent
+class CRF_RadioPhaseManager: ScriptComponent
 {
 	[Attribute("BLUFOR", "auto", "The side what interacts")]
 	FactionKey interactingSide;
@@ -14,34 +14,24 @@ class CRF_RadioPhaseManager: SCR_BaseGameModeComponent
 	
 	[Attribute("false", "auto", "The object with the script")]
 	bool respawnAll;
-	
+		
 	void fireTrigger()
 	{
-		if (respawnInteracting || respawnAll)
+
+		if (respawnInteracting)
 		{
-			respawn();
+			CRF_RplToAuthorityManager.GetInstance().RespawnFaction(interactingSide, false);
 		}
-	}
-	
-	
-	void respawn()
-	{
-		CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();
 		
 		if (respawnAll)
 		{
-			if (RplSession.Mode() == RplMode.Dedicated) {
-				rm.RespawnAllSides();
-				return;
-			}
-		}
-		
-		if (respawnInteracting)
-		{
-			if (RplSession.Mode() == RplMode.Dedicated) {
-				rm.RespawnSide(interactingSide);
-				return;
+			array<FactionKey> factionKeys = {"OPFOR", "BLUFOR", "INDFOR", "CIV"};
+			
+			foreach (FactionKey key : factionKeys)
+			{
+				CRF_RplToAuthorityManager.GetInstance().RespawnFaction(key, false);
 			}
 		}
 	}
+	
 }

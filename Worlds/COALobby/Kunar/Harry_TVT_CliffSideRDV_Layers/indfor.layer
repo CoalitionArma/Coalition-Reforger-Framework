@@ -1,0 +1,9 @@
+SCR_AIGroup : "{6BD55948AAB748FC}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_EngiTeam_p.et" {
+ coords 119.237 594.373 1023.863
+ angleX 0.16
+ angleY 0.005
+ angleZ 1.715
+ m_aUnitPrefabSlots {
+  "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{CD49E64E633B9ADA}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_ComEngi_P.et" "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+ }
+}
