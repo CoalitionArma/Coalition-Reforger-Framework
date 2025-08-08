@@ -1,0 +1,46 @@
+$grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et"
+   }
+  }
+  coords 4473.969 14.288 10980.666
+  angleX 0
+  angleY 43.818
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et"
+   }
+  }
+  coords 4470.042 17.988 10980.443
+  angleX 0
+  angleY -8.16
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et"
+   }
+  }
+  coords 4471.461 17.258 10762.439
+  angleX 0
+  angleY -121.032
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et"
+   }
+  }
+  coords 4558.3 21.122 10746.353
+  angleX 0
+  angleY 147.856
+  angleZ 0
+ }
+}

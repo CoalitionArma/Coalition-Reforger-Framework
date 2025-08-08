@@ -1,0 +1,267 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 4395.617 15.486 10625.459
+  angleY 135.236
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4566.01 17.315 10801.807
+  angleY -19.554
+  m_rnPrefab "{54C3CC22DEBD57BE}Prefabs/Vehicles/Wheeled/S105/S105_beige.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4609.542 17.229 10563.747
+  angleY -76.7
+  m_rnPrefab "{9C3269FB43F989A3}Prefabs/Vehicles/Wheeled/S105/S105_darkblue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4501.636 14.202 10722.44
+  angleY -100.541
+  m_rnPrefab "{9C3269FB43F989A3}Prefabs/Vehicles/Wheeled/S105/S105_darkblue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4585.508 15.875 10489.435
+  angleY -67.704
+  m_rnPrefab "{A1CD41DFE0C93CAD}Prefabs/Vehicles/Wheeled/S105/S105_darkbrown.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4391.194 11.894 10670.998
+  angleY -2.138
+  m_rnPrefab "{8000A0F649FB4B0D}Prefabs/Vehicles/Wheeled/S105/S105_darkred.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4395.846 11.422 10711.66
+  angleY 177.737
+  m_rnPrefab "{AD80FB47D868C775}Prefabs/Vehicles/Wheeled/S105/S105_green.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4456.078 9.208 10853.639
+  angleY -101.928
+  m_rnPrefab "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4398.276 11.52 10753.473
+  angleY -62.051
+  m_rnPrefab "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4390.274 11.904 10692.18
+  angleY -95
+  m_rnPrefab "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4474.975 10.625 10929.476
+  angleY 135.236
+  m_rnPrefab "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4586.059 19.644 10657.776
+  angleY 179.744
+  m_rnPrefab "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4420.27 12.832 10742.202
+  angleY 65.043
+  m_rnPrefab "{D2BCF98E80CF634C}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_beige.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4560.164 15.785 10858.438
+  angleY 135.236
+  m_rnPrefab "{2A66E3B8B0C61D87}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_brown.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4422.167 11.811 10684.849
+  angleY 81.596
+  m_rnPrefab "{6E485048122CEEEE}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_red.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4567.922 17.763 10765.813
+  angleX -0.824
+  angleY -85.489
+  angleZ -180
+  m_rnPrefab "{E5F73B9D4CEB94E4}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_white.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4317.391 13.656 10595.238
+  angleY -177.418
+  m_rnPrefab "{E3AD3E9E60F2E061}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_yellow.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4475.229 14.051 10679.309
+  angleY 176.743
+  m_rnPrefab "{F77C41245A580FD1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_blue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4448.102 9.456 10816.865
+  angleY 167.405
+  m_rnPrefab "{F77C41245A580FD1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_blue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4507.504 7.883 11012.83
+  angleY -165.257
+  m_rnPrefab "{ACED839A6C5BE657}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_brown.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4359.111 8.939 10709.103
+  angleY -102.776
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4390.812 11.906 10689.203
+  angleY -95
+  m_rnPrefab "{C75DAB159B434B77}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_grey.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4513.004 16.265 10628.991
+  angleY -43.264
+  m_rnPrefab "{C75DAB159B434B77}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_cargo_CIV_grey.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4543.61 16.348 10741.383
+  angleY 135.236
+  m_rnPrefab "{A2C4DBCDDE967600}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_blue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4410.068 6.176 10972.728
+  angleY -84.579
+  m_rnPrefab "{D7C51A961BF675B2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_brown.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4513.212 15.839 10738.251
+  angleX -30.312
+  angleY 135.236
+  m_rnPrefab "{5070B3749C7782D8}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_JZD.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4293.332 12.83 10607.705
+  angleY -133.307
+  m_rnPrefab "{BDFB2377B6B4ABBB}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_PTS.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4554.058 14.404 10937.633
+  angleY 75.238
+  m_rnPrefab "{A4D16A62B432451A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_red.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4528.702 12.446 10967.119
+  angleY -98.627
+  m_rnPrefab "{870EB660433857D3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_teal.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4282.856 4.685 10691.046
+  angleY 49.145
+  m_rnPrefab "{B2CC137FE424B129}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_VAK.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4459.888 17.053 10632.612
+  angleY -81.79
+  m_rnPrefab "{4A59DAEFE645E8A0}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_orange.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4646.567 20.103 10742.896
+  angleY -108.788
+  m_rnPrefab "{B3C8EC88E7782C78}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_pohona.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4475.737 13.492 10708.261
+  angleY -85.987
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4558.307 16.664 10550.513
+  angleY -96.505
+  m_rnPrefab "{F66EAD0D2016B6BA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_blue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4409.39 6.719 10906.978
+  angleY 75.63
+  m_rnPrefab "{66241E0CEDFCEDFF}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_orange.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+Vehicle S105_rally_Mlada_Boleslav_Red1 : "{AF6308923B767928}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_Red.et" {
+ components {
+  RigidBody "{51DAA09FECF52BBF}" {
+   Layers 2
+   SimState None
+   Static 1
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ Flags 1027
+ coords 4406.052 13.996 10922.143
+ angleX -33.066
+ angleY -73.329
+ angleZ -5.548
+}
