@@ -1,0 +1,51 @@
+GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  CRF_Rush_3DMarkerComponent "{613048A3A6DEB8A1}" {
+   m_sMarkerLetter "A"
+   m_MarkerColor 1 0 0 1
+   m_fMaxIconSize 128
+   m_fMinIconSize 32
+   m_fMaxDistance 800
+   m_fMinDistance 10
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{A2DE69A75CFA6D5B}Assets/Structures/Military/Radar/ApproachRadar_01/ApproachRadar_RPL5_01_generator.xob"
+  }
+  ActionsManagerComponent "{613048A3A6DEB899}" {
+   ActionContexts {
+    UserActionContext "{613048A3A6DEB88C}" {
+     ContextName "default"
+     Position PointInfo "{613048A3A6DEB889}" {
+      Offset -1.3339 0.9946 1.298
+     }
+     Radius 1.25
+    }
+   }
+   additionalActions {
+    CRF_RushPlantBombAction "{613048A3A6DEB8F6}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{613048A3A6DEB8F4}" {
+      Name "Arm MCOM"
+     }
+     Duration 5
+    }
+    CRF_RushDefuseBombAction "{613048A3A6DEB8F2}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{613048A3A6DE4E78}" {
+      Name "Defuse MCOM"
+     }
+     Duration 7
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 0.181 0 0
+}

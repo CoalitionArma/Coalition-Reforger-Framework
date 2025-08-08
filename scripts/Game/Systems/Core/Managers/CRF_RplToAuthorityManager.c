@@ -69,15 +69,30 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_ToggleBombPlanted, sitePlanted, togglePlanted); 
 	}
 	
+	void ToggleRushMCOMPlanted(string mcomIdentifier, bool togglePlanted)
+	{
+		Rpc(RpcAsk_ToggleRushMCOMPlanted, mcomIdentifier, togglePlanted); 
+	}
+	
+	void StartRushPlantingSound()
+	{
+		Rpc(RpcAsk_StartRushPlantingSound); 
+	}
+	
+	void StopRushPlantingSound()
+	{
+		Rpc(RpcAsk_StopRushPlantingSound); 
+	}
+	
 	void RequestAdvanceGamemodeState(bool overriden)
 	{
-		if(SCR_Global.IsAdmin())
+		if (SCR_Global.IsAdmin())
 			Rpc(RpcAsk_RequestAdvanceGamemodeState, overriden);
 	}
 	
 	void RequestAdvanceSlottingPhase()
 	{
-		if(SCR_Global.IsAdmin())
+		if (SCR_Global.IsAdmin())
 			Rpc(RpcAsk_RequestAdvanceSlottingPhase); 
 	}
 	
@@ -125,7 +140,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
-		if(SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
+		if (SCR_Global.IsAdmin() || m_GamemodeManager.IsModerator())
 			Rpc(RpcAsk_ReplyAdminMessage, data, playerId, adminID, logAction); 
 	}
 	
@@ -251,6 +266,36 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_ToggleBombPlanted(string sitePlanted, bool togglePlanted)
 	{
 		CRF_SearchAndDestroyGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGamemodeManager)).ToggleBombPlanted(sitePlanted, togglePlanted);
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_ToggleRushMCOMPlanted(string mcomIdentifier, bool togglePlanted)
+	{
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (rushGamemode)
+		{
+			rushGamemode.ToggleMCOMPlanted(mcomIdentifier, togglePlanted);
+		}
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_StartRushPlantingSound()
+	{
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (rushGamemode)
+		{
+			rushGamemode.PlayPlantingSound();
+		}
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_StopRushPlantingSound()
+	{
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (rushGamemode)
+		{
+			rushGamemode.StopPlantingSound();
+		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
