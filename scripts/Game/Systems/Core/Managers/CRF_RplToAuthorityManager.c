@@ -84,6 +84,21 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_StopRushPlantingSound); 
 	}
 	
+	void StartRushDefuseSound()
+	{
+		Rpc(RpcAsk_StartRushDefuseSound); 
+	}
+	
+	void StopRushDefuseSound()
+	{
+		Rpc(RpcAsk_StopRushDefuseSound); 
+	}
+	
+	void StopRushBombTickingSound()
+	{
+		Rpc(RpcAsk_StopRushBombTickingSound); 
+	}
+	
 	void RequestAdvanceGamemodeState(bool overriden)
 	{
 		if (SCR_Global.IsAdmin())
@@ -295,6 +310,36 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (rushGamemode)
 		{
 			rushGamemode.StopPlantingSound();
+		}
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_StartRushDefuseSound()
+	{
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (rushGamemode)
+		{
+			rushGamemode.PlayDefuseSound();
+		}
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_StopRushDefuseSound()
+	{
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (rushGamemode)
+		{
+			rushGamemode.StopDefuseSound();
+		}
+	}
+
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_StopRushBombTickingSound()
+	{
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (rushGamemode)
+		{
+			rushGamemode.StopBombTickingSound();
 		}
 	}
 

@@ -47,10 +47,29 @@ class CRF_RushDefuseBombAction : ScriptedUserAction
 			return;
 		}
 		
-		// Send defuse command to authority
+		// Stop the defuse sound since action completed successfully
+		CRF_RplToAuthorityManager.GetInstance().StopRushDefuseSound();
+		
+		// Send defuse command to authority (this will handle stopping bomb ticking sound)
 		CRF_RplToAuthorityManager.GetInstance().ToggleRushMCOMPlanted(mcomIdentifier, false);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
+	}
+	
+	override void OnActionStart(IEntity pUserEntity)
+	{
+		super.OnActionStart(pUserEntity);
+		
+		// Send RPC to start defuse sound globally
+		CRF_RplToAuthorityManager.GetInstance().StartRushDefuseSound();
+	}
+	
+	override void OnActionCanceled(IEntity pOwnerEntity, IEntity pUserEntity)
+	{
+		super.OnActionCanceled(pOwnerEntity, pUserEntity);
+		
+		// Send RPC to stop defuse sound globally
+		CRF_RplToAuthorityManager.GetInstance().StopRushDefuseSound();
 	}
 	
 	/**
