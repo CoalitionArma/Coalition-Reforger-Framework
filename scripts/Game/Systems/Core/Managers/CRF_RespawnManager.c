@@ -311,9 +311,9 @@ class CRF_RespawnManager : ScriptComponent
 		GetGame().GetPlayerManager().GetAllPlayers(allPlayers);
 
 		foreach (int playerId : allPlayers)
-		{
-			// Skip players not in a slot
-			if (!m_SlottingManager.IsPlayerInASlot(playerId))
+		{			
+			// Skip alive players or not in a slot
+			if (m_SlottingManager.IsPlayerConsideredDead(playerId) || !m_SlottingManager.IsPlayerInASlot(playerId))
 				continue;
 
 			// Get player's faction and verify it matches
