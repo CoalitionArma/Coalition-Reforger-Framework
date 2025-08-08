@@ -1956,9 +1956,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
 			if (mcomEntity)
 			{
-				vector mcomPosition = mcomEntity.GetOrigin();
+				// vector mcomPosition = mcomEntity.GetOrigin();
 				// Set sphere bounding volume with 200m radius around the MCOM for defuse sound
-				AudioSystem.SetBoundingVolumeParams(m_CurrentDefuseSoundHandle, 0, mcomPosition[0], mcomPosition[1], mcomPosition[2], 200.0);
+				//AudioSystem.SetBoundingVolumeParams(m_CurrentDefuseSoundHandle, 0, mcomPosition[0], mcomPosition[1], mcomPosition[2], 200.0);
 			}
 		}
 		
@@ -2012,9 +2012,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
 				if (mcomEntity)
 				{
-					vector mcomPosition = mcomEntity.GetOrigin();
+					//vector mcomPosition = mcomEntity.GetOrigin();
 					// Set sphere bounding volume with 200m radius around the MCOM for defuse sound
-					AudioSystem.SetBoundingVolumeParams(m_CurrentDefuseSoundHandle, 0, mcomPosition[0], mcomPosition[1], mcomPosition[2], 200.0);
+					//AudioSystem.SetBoundingVolumeParams(m_CurrentDefuseSoundHandle, 0, mcomPosition[0], mcomPosition[1], mcomPosition[2], 200.0);
 				}
 			}
 			

@@ -36,6 +36,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_iFactionOneRatio 3
  m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{B476F825AD9CCBEA}Configs/Gearscripts/Standard/80s/CRF_GS_UK80s_FAL.conf"
