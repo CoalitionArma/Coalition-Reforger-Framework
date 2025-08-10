@@ -404,16 +404,9 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		if (m_wMarkerRoot)
 		{
 			if (visible)
-			{
 				m_wMarkerRoot.SetOpacity(1.0);
-			}
 			else
-			{
 				m_wMarkerRoot.SetOpacity(0.0);
-			}
-		}
-		else
-		{
 		}
 	}
 	
