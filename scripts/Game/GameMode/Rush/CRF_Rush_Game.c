@@ -1002,16 +1002,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				m_bCountdownActive = true;
 				m_sActiveMCOM = mcomIdentifier;
 				
-				// Use saved time if available, otherwise use full timer
-				int savedTime = GetSavedCountdownTime(mcomIdentifier);
-				if (savedTime > 0)
-				{
-					m_iCountdownTimeRemaining = savedTime;
-				}
-				else
-				{
-					m_iCountdownTimeRemaining = m_iMCOMTimer;
-				}
+				// Always use full timer (no time saving)
+				m_iCountdownTimeRemaining = m_iMCOMTimer;
 				
 				// Play plant sound
 				m_sSoundString = "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav";
@@ -1025,26 +1017,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				// Show plant message
 				string zoneName = GetZoneDisplayName(mcomIdentifier);
 				string siteName = GetSiteDisplayName(mcomIdentifier);
-				if (savedTime > 0)
-				{
-					m_sMessageContent = string.Format("Attackers have re-armed %1 MCOM %2! (%3 remaining)|15|", zoneName, siteName, SCR_FormatHelper.FormatTime(savedTime));
-				}
-				else
-				{
-					m_sMessageContent = string.Format("Attackers have armed %1 MCOM %2!|15|", zoneName, siteName);
-				}
+				m_sMessageContent = string.Format("Attackers have armed %1 MCOM %2!|15|", zoneName, siteName);
 				
 				// Start countdown timer
 				GetGame().GetCallqueue().CallLater(CountdownTimer, 1000, true);
 			}
 			else
 			{
-				// Save the current countdown time before defusing (server only)
-				if (m_bCountdownActive && m_sActiveMCOM == mcomIdentifier)
-				{
-					SaveCountdownTime(mcomIdentifier, m_iCountdownTimeRemaining);
-				}
-				
 				// Update planted status
 				SetMCOMPlantedStatus(mcomIdentifier, isPlanted);
 				
@@ -1061,18 +1040,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				// Stop flashing marker for defused MCOM
 				StopFlashingMarker(mcomIdentifier);
 				
-				// Show defuse message with saved time info
+				// Show defuse message
 				string zoneName = GetZoneDisplayName(mcomIdentifier);
 				string siteName = GetSiteDisplayName(mcomIdentifier);
-				int savedTime = GetSavedCountdownTime(mcomIdentifier);
-				if (savedTime > 0)
-				{
-					m_sMessageContent = string.Format("Defenders have defused the bomb at %1 %2! (%3 saved)|15|", zoneName, siteName, SCR_FormatHelper.FormatTime(savedTime));
-				}
-				else
-				{
-					m_sMessageContent = string.Format("Defenders have defused the bomb at %1 %2!|15|", zoneName, siteName);
-				}
+				m_sMessageContent = string.Format("Defenders have defused the bomb at %1 %2!|15|", zoneName, siteName);
 			}
 		}
 		else
@@ -1186,9 +1157,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	{
 		// Mark MCOM as destroyed
 		SetMCOMDestroyedStatus(mcomIdentifier, true);
-		
-		// Clear any saved countdown time for this MCOM since it's now destroyed
-		ClearSavedCountdownTime(mcomIdentifier);
 		
 		// Stop bomb ticking sound since MCOM is destroyed
 		StopBombTickingSound();
@@ -1798,6 +1766,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			m_bPlayBombSound = !m_bPlayBombSound; // Toggle to trigger RPC
 			Print("[CRF_Rush_Game] StartBombTickingSound: m_bPlayBombSound toggled to " + m_bPlayBombSound);
 			Replication.BumpMe();
+			PlayBombSoundClient(); // Also play locally on server
 		}
 		else
 		{
@@ -1946,7 +1915,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		Print("[CRF_Rush_Game] PlayDefuseSound: Called for MCOM " + m_sActiveMCOM);
 		if (m_DefuseSoundEffect.IsEmpty())
 		{
-			Print("[CRF_Rush_Game] PlayDefuseSound: ERROR - Defuse sound effect is empty");
+			Print("[CRF_Rush_Game] PlayDefuseSound: No defuse sound effect configured, skipping");
 			return;
 		}
 		
@@ -2049,7 +2018,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		}
 		else
 		{
-			Print("[CRF_Rush_Game] PlayDefuseSoundClient: ERROR - Defuse sound effect is empty");
+			Print("[CRF_Rush_Game] PlayDefuseSoundClient: No defuse sound effect configured, skipping");
 		}
 	}
 	

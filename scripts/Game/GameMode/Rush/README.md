@@ -77,11 +77,12 @@ Add the `CRF_RushGamemodeManager` component to your gamemode and configure the f
 
 ## Technical Details
 
-### Files Created:
+### Files:
 1. `scripts/Game/GameMode/Rush/CRF_Rush_Game.c` - Main gamemode component
 2. `scripts/Game/GameMode/Rush/CRF_Rush_PlantBombAction.c` - Plant bomb action
 3. `scripts/Game/GameMode/Rush/CRF_Rush_DefuseBombAction.c` - Defuse bomb action
 4. `Prefabs/Structures/CRF_Rush_MCOM.et` - MCOM prefab with Rush actions
+5. `cripts/Game/GameMode/Rush/CRF_Rush_3dMarkerComponent.c` - Creates the 3d marker widgets
 
 ### Network Architecture:
 - Uses RPC system for client-server communication
@@ -94,30 +95,3 @@ Add the `CRF_RushGamemodeManager` component to your gamemode and configure the f
 - Integrates with CRF manager systems
 - Uses CRF notification and marker systems
 - Leverages CRF respawn management
-
-## Usage Example
-
-```enforce
-// Add to your gamemode prefab configuration
-CRF_RushGamemodeManager {
- m_AttackingSide "BLU"       // BLUFOR attacks
- m_DefendingSide "OPF"       // OPFOR defends
- m_iMCOMTimer 45            // 45-second countdown
- m_bHideMapMarkers false    // Show map markers
-}
-```
-
-## Error Handling
-- Validates all required trigger entities exist on initialization
-- Graceful handling of missing entities or invalid configurations
-- Comprehensive logging for debugging
-- Fallback behaviors for edge cases
-
-## Customization Options
-- Configurable faction assignments
-- Adjustable countdown timers
-- Optional map marker visibility
-- Customizable MCOM prefabs
-- Extensible explosion and sound effects
-
-This Rush gamemode component provides a complete, production-ready implementation that integrates seamlessly with the Coalition Reforger Framework's existing systems and architecture.

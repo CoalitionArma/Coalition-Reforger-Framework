@@ -44,10 +44,10 @@ class CRF_RushDefuseBombAction : ScriptedUserAction
 		string mcomIdentifier = GetMCOMIdentifier(pOwnerEntity);
 		if (mcomIdentifier.IsEmpty())
 			return;
-		
+
 		// Stop the defuse sound since action completed successfully
-		CRF_RplToAuthorityManager.GetInstance().StopRushBombTickingSound();
-		
+		CRF_RplToAuthorityManager.GetInstance().StopRushDefuseSound();
+
 		// Send defuse command to authority (this will handle stopping bomb ticking sound)
 		CRF_RplToAuthorityManager.GetInstance().ToggleRushMCOMPlanted(mcomIdentifier, false);
 		
