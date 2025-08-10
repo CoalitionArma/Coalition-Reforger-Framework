@@ -1762,9 +1762,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Server-side: Replicate bomb sound start to all clients
 		if (Replication.IsServer())
 		{
-			Print("[CRF_Rush_Game] StartBombTickingSound: Active MCOM = " + m_sActiveMCOM);
 			m_bPlayBombSound = !m_bPlayBombSound; // Toggle to trigger RPC
-			Print("[CRF_Rush_Game] StartBombTickingSound: m_bPlayBombSound toggled to " + m_bPlayBombSound);
 			Replication.BumpMe();
 			PlayBombSoundClient(); // Also play locally on server
 		}
@@ -1780,17 +1778,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void StopBombTickingSound()
 	{
-		Print("[CRF_Rush_Game] StopBombTickingSound: Called, m_bBombSoundPlaying = " + m_bBombSoundPlaying);
 		if (!m_bBombSoundPlaying)
-		{
-			Print("[CRF_Rush_Game] StopBombTickingSound: No bomb sound playing, returning");
 			return;
-		}
 		
 		// Server-side: Replicate bomb sound stop to all clients
 		if (Replication.IsServer())
 		{
-			Print("[CRF_Rush_Game] StopBombTickingSound: Server - stopping bomb sound and replicating");
 			m_bStopBombSound = !m_bStopBombSound; // Toggle to trigger RPC
 			Replication.BumpMe();
 			StopBombSoundClient(); // Also stop locally on server
@@ -1798,7 +1791,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		else
 		{
 			// Client fallback: Stop sound directly if called on client
-			Print("[CRF_Rush_Game] StopBombTickingSound: Client - stopping bomb sound locally");
 			StopBombSoundClient();
 		}
 	}
@@ -1912,12 +1904,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void PlayDefuseSound()
 	{
-		Print("[CRF_Rush_Game] PlayDefuseSound: Called for MCOM " + m_sActiveMCOM);
 		if (m_DefuseSoundEffect.IsEmpty())
-		{
-			Print("[CRF_Rush_Game] PlayDefuseSound: No defuse sound effect configured, skipping");
 			return;
-		}
 		
 		// Stop any existing defuse sound first
 		if (m_bDefuseSoundPlaying)
@@ -1925,7 +1913,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			StopDefuseSound();
 		}
 		
-		Print("[CRF_Rush_Game] PlayDefuseSound: Playing defuse sound");
 		m_CurrentDefuseSoundHandle = AudioSystem.PlaySound(m_DefuseSoundEffect);
 		
 		// Add circular bounding volume centered at the active MCOM
@@ -1937,10 +1924,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				//vector mcomPosition = mcomEntity.GetOrigin();
 				// Set sphere bounding volume with 200m radius around the MCOM for defuse sound
 				//AudioSystem.SetBoundingVolumeParams(m_CurrentDefuseSoundHandle, 0, mcomPosition[0], mcomPosition[1], mcomPosition[2], 200.0);
-			}
-			else
-			{
-				Print("[CRF_Rush_Game] PlayDefuseSound: ERROR - MCOM entity not found for " + m_sActiveMCOM);
 			}
 		}
 		
@@ -1979,8 +1962,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void PlayDefuseSoundClient()
 	{
-		Print("[CRF_Rush_Game] PlayDefuseSoundClient: Called for MCOM " + m_sActiveMCOM);
-		
 		// Stop any existing defuse sound first
 		if (m_bDefuseSoundPlaying)
 		{
@@ -1991,7 +1972,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (!m_DefuseSoundEffect.IsEmpty())
 		{
-			Print("[CRF_Rush_Game] PlayDefuseSoundClient: Playing defuse sound");
 			m_CurrentDefuseSoundHandle = AudioSystem.PlaySound(m_DefuseSoundEffect);
 			
 			// Add circular bounding volume centered at the active MCOM
@@ -2005,20 +1985,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 					// Set sphere bounding volume with 200m radius around the MCOM for defuse sound
 					//AudioSystem.SetBoundingVolumeParams(m_CurrentDefuseSoundHandle, 0, mcomPosition[0], mcomPosition[1], mcomPosition[2], 200.0);
 				}
-				else
-				{
-					Print("[CRF_Rush_Game] PlayDefuseSoundClient: ERROR - MCOM entity not found for " + m_sActiveMCOM);
-				}
 			}
 			
 			m_bDefuseSoundPlaying = true;
 			
 			// Automatically stop defuse sound after 3 seconds on client
 			GetGame().GetCallqueue().CallLater(StopDefuseSoundClient, 3000, false);
-		}
-		else
-		{
-			Print("[CRF_Rush_Game] PlayDefuseSoundClient: No defuse sound effect configured, skipping");
 		}
 	}
 	
@@ -2041,8 +2013,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void PlayBombSoundClient()
 	{
-		Print("[CRF_Rush_Game] PlayBombSoundClient: Called for MCOM " + m_sActiveMCOM);
-		
 		// Stop any existing bomb sound first
 		if (m_bBombSoundPlaying)
 		{
@@ -2053,7 +2023,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (!m_BombSoundEffect.IsEmpty())
 		{
-			Print("[CRF_Rush_Game] PlayBombSoundClient: Playing bomb sound");
 			m_CurrentBombSoundHandle = AudioSystem.PlaySound(m_BombSoundEffect);
 			
 			// Add circular bounding volume centered at the active MCOM
@@ -2067,17 +2036,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 					// Set sphere bounding volume with 100m radius around the MCOM for bomb sound
 					//AudioSystem.SetBoundingVolumeParams(m_CurrentBombSoundHandle, AudioSystem.BV_Sphere, 100, 100, 0);
 				}
-				else
-				{
-					Print("[CRF_Rush_Game] PlayBombSoundClient: ERROR - MCOM entity not found for " + m_sActiveMCOM);
-				}
 			}
 			
 			m_bBombSoundPlaying = true;
-		}
-		else
-		{
-			Print("[CRF_Rush_Game] PlayBombSoundClient: ERROR - Bomb sound effect is empty");
 		}
 	}
 	
@@ -2086,19 +2047,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void StopBombSoundClient()
 	{
-		Print("[CRF_Rush_Game] StopBombSoundClient: Called, m_bBombSoundPlaying = " + m_bBombSoundPlaying);
 		if (!m_bBombSoundPlaying)
-		{
-			Print("[CRF_Rush_Game] StopBombSoundClient: No bomb sound playing, returning");
 			return;
-		}
 		
-		Print("[CRF_Rush_Game] StopBombSoundClient: Terminating bomb sound handle");
 		// Reset the bomb sound handle
 		AudioSystem.TerminateSound(m_CurrentBombSoundHandle);
 		m_CurrentBombSoundHandle = AudioHandle.Invalid;
 		m_bBombSoundPlaying = false;
-		Print("[CRF_Rush_Game] StopBombSoundClient: Bomb sound terminated successfully");
 	}
 	
 	//===================================================================================

@@ -39,7 +39,7 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
      UIInfo UIInfo "{613048A3A6DE4E78}" {
       Name "Defuse MCOM"
      }
-     Duration 7
+     Duration 5
     }
    }
   }
