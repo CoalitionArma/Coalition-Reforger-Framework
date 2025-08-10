@@ -48,4 +48,36 @@ GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRad
   }
  }
  coords 0.181 0 0
+ {
+  GenericEntity : "{002A9FA2A8544E0C}Prefabs/Structures/Military/Radar/ApproachRadar_RPL5_01/ApproachRadar_RPL5_01_antenna.et" {
+   ID "661442D337CDB21E"
+   coords 0.773 -2.203 2.317
+   angleY 174.654
+  }
+  StaticModelEntity : "{2BC7C6DE43AC49E2}Prefabs/Structures/Military/Radar/ApproachRadar_RPL5_01/ApproachRadar_RPL5_01_short.et" {
+   ID "661442D330D03634"
+   coords -0.12 0.349 0.189
+  }
+  StaticModelEntity : "{5608B9078BF2AC5A}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragonsteeth_01_old_V1.et" {
+   ID "661442D3332459A0"
+   coords 0.178 0.046 4.94
+  }
+  GenericEntity : "{6C08FE47987A4B9A}Prefabs/Structures/Military/CamoNets/US/CamoNet_ObservationPost_US.et" {
+   ID "661442D0C1986D6F"
+   coords -0.27 0.692 0.233
+   scale 1.655
+  }
+  StaticModelEntity : "{8B7B5323534404A7}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V2.et" {
+   ID "661442D333FDFDA5"
+   coords 4.445 0.024 -0.016
+  }
+  StaticModelEntity : "{9639C7B3CF572320}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_old_V2.et" {
+   ID "661442D3326E1839"
+   coords -0.031 0.002 -4.467
+  }
+  StaticModelEntity : "{DA1B42FB9AEC02BE}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V3.et" {
+   ID "661442D331BC691F"
+   coords -4.861 -0.005 0.121
+  }
+ }
 }

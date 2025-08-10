@@ -1817,10 +1817,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
 			if (mcomEntity)
 			{
-				// TODO
-				// vector mcomPosition = mcomEntity.GetOrigin();
-				// Set sphere bounding volume with 200m radius around the MCOM for planting sound
-				// AudioSystem.SetBoundingVolumeParams(m_CurrentPlantingSoundHandle, AudioSystem.BV_Sphere, 100, 100, 0);
+				/*
+				SoundComponent soundComp = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
+				if(soundComp)
+				{
+					soundComp.SoundEvent("RUSH_PLANTING");
+				}
+				*/
 			}
 		}
 		
@@ -1874,10 +1877,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
 				if (mcomEntity)
 				{
-					// TODO
-					// vector mcomPosition = mcomEntity.GetOrigin();
-					// Set sphere bounding volume with 200m radius around the MCOM for planting sound
-					// AudioSystem.SetBoundingVolumeParams(m_CurrentPlantingSoundHandle, AudioSystem.BV_Sphere, 100, 100, 0);
+					/*
+					SoundComponent soundComp = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
+					if(soundComp)
+					{
+						soundComp.SoundEvent("RUSH_PLANTING");
+					}
+					*/
 				}
 			}
 			
