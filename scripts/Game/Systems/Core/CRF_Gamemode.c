@@ -502,13 +502,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if(slotID != -1)
 			m_SlottingManager.UpdateSlotDeathState(slotID, true);
 
+		// Get death position for spectator camera initialization
+		vector deathPosition = entity.GetOrigin();
+
 		// Move player to spectator
 		GetGame().GetCallqueue().CallLater(
 			m_GamemodeManager.InitilizePlayer, 
 			delay, 
 			false, 
 			playerId,
-			vector.Zero
+			deathPosition
 		);
 	}
 }

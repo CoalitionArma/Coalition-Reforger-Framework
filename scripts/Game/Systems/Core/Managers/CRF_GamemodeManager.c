@@ -125,6 +125,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (playerId <= 0)
 			return;
 		
+		// Store the death/override position for spectator camera
+		vector spectatorCameraPosition = overrideLocation;
+		
 		SCR_PlayerController playerController = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		if (!playerController)
 			return;
@@ -146,12 +149,14 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		} else {
 			playerCharacter = GetOrCreatePlayableCharacter(playerId, overrideLocation, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
+			// For regular players, don't use spectator camera position
+			spectatorCameraPosition = vector.Zero;
 		}
 		
 		if (playerCharacter)
 		{
 			AssignFactionToPlayer(playerController, faction);
-			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_Gamemode.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter, isSpectator);
+			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_Gamemode.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter, isSpectator, spectatorCameraPosition);
 		};
 	}
 	
@@ -162,15 +167,16 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* @param playerController controller of the player
 	* @param playerCharacter entity the player will take
 	* @param isSpectator to pass along to the players client
+	* @param spectatorCameraPosition Optional position for spectator camera
 	*/
-	protected void InitilizePlayerCharacter(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter, bool isSpectator)
+	protected void InitilizePlayerCharacter(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter, bool isSpectator, vector spectatorCameraPosition = vector.Zero)
 	{
 		AssignCharacterToPlayer(playerController, playerCharacter);
 		
 		if (!isSpectator)
 			AssignPlayerToGroup(playerId);
 
-		CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, isSpectator);
+		CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, isSpectator, spectatorCameraPosition);
 	}
 	
 	//------------------------------------------------------------------------------------------------
