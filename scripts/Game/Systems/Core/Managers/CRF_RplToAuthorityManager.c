@@ -340,7 +340,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RespawnPlayer(int playerId, RplId SpawnRplID)
 	{
-		m_RespawnManager.RespawnPlayer(playerId, vector.Zero, -1, SpawnRplID);
+		vector overrideLocation[4];
+		CRF_GamemodeManager.SetVectorZero(overrideLocation);
+		
+		m_RespawnManager.RespawnPlayer(playerId, overrideLocation, -1, SpawnRplID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -373,7 +376,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SpawnOnGroup(int playerId, vector spawnLocation, int groupID, bool logAction)
+	protected void RpcAsk_SpawnOnGroup(int playerId, vector spawnLocation[4], int groupID, bool logAction)
 	{
 		m_RespawnManager.RespawnPlayer(playerId, spawnLocation, groupID);
 

@@ -261,7 +261,10 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			}
 		}
 		
-		GetGame().GetCallqueue().CallLater(RespawnPlayer, 5000, false, instigatorContextData.GetVictimPlayerID(), GetGame().GetWorld().FindEntityByName("debugSpawnpoint").GetOrigin());
+		vector dubugSpawnPointVector[4];
+		dubugSpawnPointVector[3] = GetGame().GetWorld().FindEntityByName("debugSpawnpoint").GetOrigin();
+		
+		GetGame().GetCallqueue().CallLater(RespawnPlayer, 5000, false, instigatorContextData.GetVictimPlayerID(), dubugSpawnPointVector);
 	}
 	
 	//Called by server to tell clients to draw the gameover screen.
@@ -551,7 +554,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	
 	//Need a delay for this, for entity processing reasons(magik).
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, vector spawn)
+	void RespawnPlayer(int playerId, vector spawn[4])
 	{
 		CRF_RespawnManager.GetInstance().RespawnPlayer(playerId, spawn);
 	}
