@@ -311,9 +311,9 @@ class CRF_RespawnManager : ScriptComponent
 		GetGame().GetPlayerManager().GetAllPlayers(allPlayers);
 
 		foreach (int playerId : allPlayers)
-		{			
+		{
 			// Skip alive players or not in a slot
-			if (m_SlottingManager.IsPlayerConsideredDead(playerId) || !m_SlottingManager.IsPlayerInASlot(playerId))
+			if (!m_SlottingManager.IsPlayerConsideredDead(playerId) || !m_SlottingManager.IsPlayerInASlot(playerId))
 				continue;
 
 			// Get player's faction and verify it matches
@@ -373,6 +373,14 @@ class CRF_RespawnManager : ScriptComponent
 		// Use provided spawn location or fall back to factions default spawn
 		if (spawnLocation == vector.Zero)
 			spawnLocation = FindSpawnPointLocation(factionKey);
+		
+		// Fallback to slot origin 
+		if (spawnLocation == vector.Zero)
+		{
+			vector vec[4];
+			m_SlottingManager.GetPlayerSlotVector(playerId, vec);
+			spawnLocation = vec[3];
+		}
 
 		// If no spawn location found, enter spectator mode
 		if (spawnLocation == vector.Zero)
