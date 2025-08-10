@@ -365,15 +365,15 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	{
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
-		spawnParams.Transform[3] = trigger.GetOrigin();
+		trigger.GetWorldTransform(spawnParams.Transform);
+		
+		SCR_TerrainHelper.OrientToTerrain(spawnParams.Transform);
 		
 		IEntity mcomEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_MCOMPrefab), GetGame().GetWorld(), spawnParams);
 		if (!mcomEntity)
 		{
 			return;
 		}
-		
-		mcomEntity.SetYawPitchRoll(trigger.GetYawPitchRoll());
 		
 		// Configure the 3D marker component on the spawned MCOM
 		CRF_Rush_3DMarkerComponent markerComponent = CRF_Rush_3DMarkerComponent.Cast(mcomEntity.FindComponent(CRF_Rush_3DMarkerComponent));
@@ -1364,7 +1364,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		GetGame().SpawnEntityPrefab(Resource.Load("{4BE47BA2B7E3877E}Prefabs/Systems/Fire/Wrapper_Fire_Large_Damage.et"), GetGame().GetWorld(), spawnParams);
 		
 		// Delete the original MCOM entity
-		delete destroyedMCOM;
+		SCR_EntityHelper.DeleteEntityAndChildren(destroyedMCOM);
 	}
 	
 	//===================================================================================

@@ -1,0 +1,142 @@
+AudioClass {
+ sounds {
+  SoundClass {
+   id 4105
+   name "RUSH_BEEP"
+   version 5
+   tl 197.987 -2.064
+   ins {
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 7186
+       port 65
+      }
+     }
+    }
+   }
+   outState 3083
+   outStatePort 79879
+  }
+ }
+ mixers {
+  MixerClass {
+   id 3083
+   name "OutputState 9"
+   version 4
+   tl 417.987 2.936
+   res "{B764D803219C775E}Sounds/FinalMix.afm"
+   ins {
+    ConnectionsClass connections {
+     id 79879
+     links {
+      ConnectionClass connection {
+       id 4105
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    16384 0
+   }
+   path "{B764D803219C775E}Sounds/FinalMix.afm"
+   inputs {
+    "WPN_Handling" "WPN_Shots" "WPN_Explosions" "WNP_BulletHits" "CHAR" "ENV_AMB_2D" "VEH_Animations" "Impacts" "Dialog" "Music" "ENV_Doors" "VEH_Engine" "VEH_Tires" "VON" "SFX" "SFX_Reverb" "VON_Reverb" "Dialog_Reverb" "Impacts_EXT" "ENV_AMB_3D" "WPN_SonicCracks" "CHAR_Gear" "PA" "SFX_Reverb_Exterior" "UI" "ENV_AMB_3D_Reverb_Exterior" "SFX_Direct" "SFX_Reverb_Small" "SFX_Reverb_Medium" "SFX_Reverb_Large" "WPN_Shots_Player" "Dialog_Reverb_Small" "Dialog_Reverb_Medium" "Dialog_Reverb_Large" "WPN_TravelingProjectile" "Dialog_Delay_Exterior" "SFX_Reverb_InCabin"
+   }
+  }
+ }
+ shaders {
+  ShaderClass {
+   id 7186
+   name "Shader 3"
+   version 5
+   tl -88.013 -29.064
+   ins {
+    ConnectionsClass connections {
+     id 0
+     links {
+      ConnectionClass connection {
+       id 2076
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 1
+     links {
+      ConnectionClass connection {
+       id 6163
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 2
+     links {
+      ConnectionClass connection {
+       id 5141
+       port 65
+      }
+     }
+    }
+    ConnectionsClass connections {
+     id 64
+     links {
+      ConnectionClass connection {
+       id 1028
+       port 65
+      }
+     }
+    }
+   }
+   pi {
+    7 0
+   }
+  }
+ }
+ amplitudes {
+  AmplitudeClass {
+   id 6163
+   name "Amplitude 5"
+   version 5
+   tl -85.387 -240.818
+   curve "1/r"
+   outerRange 250
+   slopeFactor 7
+  }
+ }
+ frequency {
+  FrequencyClass {
+   id 5141
+   name "Frequency 4"
+   version 5
+   tl -79.387 -161.818
+   enableDistanceAtt 1
+  }
+ }
+ banks_local {
+  BankLocalClass {
+   id 1028
+   name "Bank 1"
+   version 7
+   tl -340.174 -41
+   Samples {
+    AudioBankSampleClass Sample {
+     Filename "{324678388F45D538}Sounds/Rush/beep.wav"
+    }
+   }
+  }
+ }
+ spatialities {
+  SpatialityClass {
+   id 2076
+   name "Spatiality 6"
+   version 5
+   tl -84.672 -318.812
+   spatialFactor 1
+  }
+ }
+ version 1
+}
