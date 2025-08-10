@@ -1,21 +1,19 @@
 #ifdef WORKBENCH
 [WorkbenchPluginAttribute(name: "Auto Generate Gear Index", description: "Generates a list of all .conf gear configs recursively", shortcut: "", wbModules: { "ScriptEditor", "ResourceManager" })]
-class AutoGenerateGearIndexPlugin : WorkbenchPlugin
+class AutoGenerateGearIndexPlugin : ResourceManagerPlugin
 {
 	static ref ConfigStruct m_config;
 
 	override void Run()
 	{
-		m_config = new ConfigStruct();
-		m_config.gearset = new map<string, string>();
-
 		GenerateIndex();
-		SaveConfig();
 	}
 
 	// Search for config files
 	void GenerateIndex()
 	{
+		m_config = new ConfigStruct();
+		m_config.gearset = new map<string, string>();
 		array<string> allConfigs = {};
 
 		FileIO.FindFiles(allConfigs.Insert, "Configs/GearScripts/Standard/", ".conf");
@@ -29,6 +27,8 @@ class AutoGenerateGearIndexPlugin : WorkbenchPlugin
 			
 			m_config.gearset.Set(key, config);
 		}
+		
+		SaveConfig();
 	}
 
 	// Write config list to json file
@@ -38,7 +38,16 @@ class AutoGenerateGearIndexPlugin : WorkbenchPlugin
 		ctx.WriteValue("", m_config);
 		ctx.SaveToFile("configs/GearScripts/GearScriptsConfigList.json");
 
-		Print("Saved to Configs/GearScripts/Standard/GearScriptsConfigList.json");
+		Print("Saved to Configs/GearScripts/GearScriptsConfigList.json");
+	}
+	
+	// This method is executed every time some new resource is registered
+	override void OnRegisterResource(string absFileName, BaseContainer metaFile)
+	{
+		if (!absFileName.Contains("CRF_GS_"))
+			return;
+		
+		GenerateIndex();
 	}
 }
 
