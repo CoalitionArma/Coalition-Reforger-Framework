@@ -420,6 +420,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Update generic spawnpoint for spectator cameras
 			entity.GetWorldTransform(m_vGenericSpawn);
 		
+		// Handle initial entity race condition fix
+		if (entity && entity.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
+		{
+			int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+			if (playerId > 0 && m_GamemodeState == CRF_EGamemodeState.GAME)
+			{
+				// Check if player should have a proper character instead of initial entity
+				if (m_SlottingManager.IsPlayerInASlot(playerId) && !m_SlottingManager.IsPlayerConsideredDead(playerId))
+				{
+					// Schedule re-initialization to fix race condition
+					GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, playerId);
+				}
+			}
+		}
+		
 		// Apply gearscript if in play mode and not on client
 		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData() && !m_GamemodeManager.IsSpectator(entity) && m_GamemodeState == CRF_EGamemodeState.GAME)
 		{

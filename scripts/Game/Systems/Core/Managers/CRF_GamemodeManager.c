@@ -23,6 +23,16 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
+	* Get the spectator resource name
+	* @return ResourceName of the spectator entity
+	*/
+	static ResourceName GetSpectatorResource()
+	{
+		return SPECTATOR_RESOURCE;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
 	* Get the instance of the GamemodeManager from the current game mode
 	* @return Instance of the GamemodeManager, null if not found
 	*/
@@ -90,7 +100,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!entity)
 			return false;
 		
-		return entity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE;
+		return entity.GetPrefabData().GetPrefabName() == GetSpectatorResource();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -101,11 +111,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	static bool IsSpectator()
 	{
 		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
 			return true;
 		
 		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
-		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
 			return true;
 
 		return false;
@@ -171,8 +181,50 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	*/
 	protected void InitilizePlayerCharacter(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter, bool isSpectator, vector spectatorCameraPosition = vector.Zero)
 	{
+		// Validate that player is still connected before proceeding
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			return;
+			
+		// Validate that the character still exists
+		if (!playerCharacter)
+			return;
+			
 		AssignCharacterToPlayer(playerController, playerCharacter);
 		
+		// Wait a frame for the entity assignment to take effect, then verify success
+		GetGame().GetCallqueue().Call(VerifyCharacterAssignment, playerId, playerController, playerCharacter, isSpectator, spectatorCameraPosition);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Verify that character assignment was successful and complete initialization
+	* @param playerId ID of the player
+	* @param playerController controller of the player
+	* @param playerCharacter entity the player should control
+	* @param isSpectator to pass along to the players client
+	* @param spectatorCameraPosition Optional position for spectator camera
+	*/
+	protected void VerifyCharacterAssignment(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter, bool isSpectator, vector spectatorCameraPosition = vector.Zero)
+	{
+		// Validate that player is still connected
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			return;
+			
+		// Check if character assignment was successful
+		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		
+		// If player is still controlling the initial entity, retry the assignment
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource() && !isSpectator)
+		{
+			// Force reassign the character
+			AssignCharacterToPlayer(playerController, playerCharacter);
+			
+			// Schedule another verification attempt
+			GetGame().GetCallqueue().CallLater(VerifyCharacterAssignment, 100, false, playerId, playerController, playerCharacter, isSpectator, spectatorCameraPosition);
+			return;
+		}
+		
+		// Assignment successful, complete initialization
 		if (!isSpectator)
 			AssignPlayerToGroup(playerId);
 
@@ -186,7 +238,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	*/
 	protected SCR_ChimeraCharacter CreateSpectatorEntity()
 	{
-		Resource spectatorRes = Resource.Load(SPECTATOR_RESOURCE);
+		Resource spectatorRes = Resource.Load(GetSpectatorResource());
 		return SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld()));
 	}
 	
