@@ -236,6 +236,8 @@ CRF_GearScriptContainer {
 }
 ```
 
+**NOTE**: When adding/removing a gearscript config you may need to run "Gear Script Config Generator" under the plugins menu to regenerate the config file used by the admin menu to allow hot swapping of gearscripts. This plugin does automatically trigger when a new resource is created in the /Config/GearScripts/Standard but will need running manually when one is removed.
+
 ## Network Architecture
 
 ### Replication System
