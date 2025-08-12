@@ -1005,9 +1005,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				// Always use full timer (no time saving)
 				m_iCountdownTimeRemaining = m_iMCOMTimer;
 				
-				// Play plant sound using new audio system - testing with known sound
-				IEntity plantedMCOM = GetMCOMEntity(mcomIdentifier);
-				m_CurrentPlantingSoundHandle = AudioSystem.PlayEvent("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav", "RUSH_PLANTING", plantedMCOM.GetOrigin());
+				// Play plant sound
+				m_sSoundString = "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav";
 				
 				// Start global bomb ticking sound
 				StartBombTickingSound();
@@ -1037,9 +1036,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				
 				// Stop global bomb ticking sound
 				StopBombTickingSound();
-				
-				// Terminate planting sound
-				AudioSystem.TerminateSound(m_CurrentPlantingSoundHandle);
 				
 				// Stop flashing marker for defused MCOM
 				StopFlashingMarker(mcomIdentifier);
@@ -1164,9 +1160,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Stop bomb ticking sound since MCOM is destroyed
 		StopBombTickingSound();
-		
-		// Terminate planting sound as well
-		AudioSystem.TerminateSound(m_CurrentPlantingSoundHandle);
 		
 		// Stop flashing marker since MCOM is destroyed
 		StopFlashingMarker(mcomIdentifier);
@@ -1807,20 +1800,30 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	void PlayPlantingSound()
 	{
+		if (m_PlantingSoundEffect.IsEmpty())
+			return;
+		
 		// Stop any existing planting sound first
 		if (m_bPlantingSoundPlaying)
 		{
 			StopPlantingSound();
 		}
 		
-		// Use new audio system for planting sound
-		IEntity plantedMCOM = GetMCOMEntity(m_sActiveMCOM);
-		vector mcomPosition;
-		if (plantedMCOM)
-			mcomPosition = plantedMCOM.GetOrigin();
-		else
-			mcomPosition = "0 0 0";
-		m_CurrentPlantingSoundHandle = AudioSystem.PlayEvent("RUSH_PLANTING.acp", "RUSH_PLANTING", mcomPosition);
+		m_CurrentPlantingSoundHandle = AudioSystem.PlaySound(m_PlantingSoundEffect);
+		
+		// Add circular bounding volume centered at the active MCOM
+		if (m_CurrentPlantingSoundHandle && !m_sActiveMCOM.IsEmpty())
+		{
+			IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
+			if (mcomEntity)
+			{
+				// TODO
+				// vector mcomPosition = mcomEntity.GetOrigin();
+				// Set sphere bounding volume with 200m radius around the MCOM for planting sound
+				// AudioSystem.SetBoundingVolumeParams(m_CurrentPlantingSoundHandle, AudioSystem.BV_Sphere, 100, 100, 0);
+			}
+		}
+		
 		m_bPlantingSoundPlaying = true;
 		
 		// Replicate to all clients
@@ -1837,7 +1840,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_bPlantingSoundPlaying)
 			return;
 		
-		// Terminate planting sound using new audio system
+		// Reset the planting sound handle (sound will stop automatically)
 		AudioSystem.TerminateSound(m_CurrentPlantingSoundHandle);
 		m_CurrentPlantingSoundHandle = AudioHandle.Invalid;
 		m_bPlantingSoundPlaying = false;
@@ -1861,15 +1864,25 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			m_bPlantingSoundPlaying = false;
 		}
 		
-		// Use new audio system for planting sound
-		IEntity plantedMCOM = GetMCOMEntity(m_sActiveMCOM);
-		vector mcomPosition;
-		if (plantedMCOM)
-			mcomPosition = plantedMCOM.GetOrigin();
-		else
-			mcomPosition = "0 0 0";
-		m_CurrentPlantingSoundHandle = AudioSystem.PlayEvent("RUSH_PLANTING.acp", "RUSH_PLANTING", mcomPosition);
-		m_bPlantingSoundPlaying = true;
+		if (!m_PlantingSoundEffect.IsEmpty())
+		{
+			m_CurrentPlantingSoundHandle = AudioSystem.PlaySound(m_PlantingSoundEffect);
+			
+			// Add circular bounding volume centered at the active MCOM
+			if (m_CurrentPlantingSoundHandle && !m_sActiveMCOM.IsEmpty())
+			{
+				IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
+				if (mcomEntity)
+				{
+					// TODO
+					// vector mcomPosition = mcomEntity.GetOrigin();
+					// Set sphere bounding volume with 200m radius around the MCOM for planting sound
+					// AudioSystem.SetBoundingVolumeParams(m_CurrentPlantingSoundHandle, AudioSystem.BV_Sphere, 100, 100, 0);
+				}
+			}
+			
+			m_bPlantingSoundPlaying = true;
+		}
 	}
 	
 	/**
@@ -1880,7 +1893,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_bPlantingSoundPlaying)
 			return;
 		
-		// Terminate planting sound using new audio system
+		// Reset the planting sound handle (sound will stop automatically)
 		AudioSystem.TerminateSound(m_CurrentPlantingSoundHandle);
 		m_CurrentPlantingSoundHandle = AudioHandle.Invalid;
 		m_bPlantingSoundPlaying = false;
@@ -2008,15 +2021,25 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			m_bBombSoundPlaying = false;
 		}
 		
-		// Play the bomb ticking sound using new audio system
-		IEntity plantedMCOM = GetMCOMEntity(m_sActiveMCOM);
-		vector mcomPosition;
-		if (plantedMCOM)
-			mcomPosition = plantedMCOM.GetOrigin();
-		else
-			mcomPosition = "0 0 0";
-		m_CurrentBombSoundHandle = AudioSystem.PlayEvent("{349D4D7CC242131D}Sounds/Music/Ingame/Samples/Jingles/MU_EndCard_Drums.wav", "RUSH_BEEP", mcomPosition);
-		m_bBombSoundPlaying = true;
+		if (!m_BombSoundEffect.IsEmpty())
+		{
+			m_CurrentBombSoundHandle = AudioSystem.PlaySound(m_BombSoundEffect);
+			
+			// Add circular bounding volume centered at the active MCOM
+			if (m_CurrentBombSoundHandle && !m_sActiveMCOM.IsEmpty())
+			{
+				IEntity mcomEntity = GetMCOMEntity(m_sActiveMCOM);
+				if (mcomEntity)
+				{
+					// TODO
+					// vector mcomPosition = mcomEntity.GetOrigin();
+					// Set sphere bounding volume with 100m radius around the MCOM for bomb sound
+					//AudioSystem.SetBoundingVolumeParams(m_CurrentBombSoundHandle, AudioSystem.BV_Sphere, 100, 100, 0);
+				}
+			}
+			
+			m_bBombSoundPlaying = true;
+		}
 	}
 	
 	/**
@@ -2027,7 +2050,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (!m_bBombSoundPlaying)
 			return;
 		
-		// Terminate the bomb sound using new audio system
+		// Reset the bomb sound handle
 		AudioSystem.TerminateSound(m_CurrentBombSoundHandle);
 		m_CurrentBombSoundHandle = AudioHandle.Invalid;
 		m_bBombSoundPlaying = false;
