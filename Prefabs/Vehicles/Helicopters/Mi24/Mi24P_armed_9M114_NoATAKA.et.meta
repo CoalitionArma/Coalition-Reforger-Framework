@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{1FE525F161F022FE}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_L7A2.et"
+ Name "{3B3D65E87B6CDAD7}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_armed_9M114_NoATAKA.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
