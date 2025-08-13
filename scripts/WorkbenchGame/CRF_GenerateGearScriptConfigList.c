@@ -1,21 +1,27 @@
 #ifdef WORKBENCH
-[WorkbenchPluginAttribute(name: "Auto Generate Gear Index", description: "Generates a list of all .conf gear configs recursively", shortcut: "", wbModules: { "ScriptEditor", "ResourceManager" })]
-class AutoGenerateGearIndexPlugin : WorkbenchPlugin
+[WorkbenchPluginAttribute(name: "Gear Script Config Generator", description: "Generates a list of all .conf gear configs recursively", shortcut: "", wbModules: { "ScriptEditor", "ResourceManager" })]
+/* 
+	This Workbench plugin automatically scans your "Configs/GearScripts/Standard/*" folder for all ".conf"
+	gear configuration files and generates a JSON index mapping each gearset name to its config file path for use in the admin menu.  
+
+	- Saved to Configs/GearScripts/GearScriptsConfigList.json.
+	- Can be run manually from Workbench plugins or auto-updates when new configs are created.
+	- Needs manually running when removing old configs
+*/
+class AutoGenerateGearIndexPlugin : ResourceManagerPlugin
 {
 	static ref ConfigStruct m_config;
 
 	override void Run()
 	{
-		m_config = new ConfigStruct();
-		m_config.gearset = new map<string, string>();
-
 		GenerateIndex();
-		SaveConfig();
 	}
 
 	// Search for config files
 	void GenerateIndex()
 	{
+		m_config = new ConfigStruct();
+		m_config.gearset = new map<string, string>();
 		array<string> allConfigs = {};
 
 		FileIO.FindFiles(allConfigs.Insert, "Configs/GearScripts/Standard/", ".conf");
@@ -29,6 +35,8 @@ class AutoGenerateGearIndexPlugin : WorkbenchPlugin
 			
 			m_config.gearset.Set(key, config);
 		}
+		
+		SaveConfig();
 	}
 
 	// Write config list to json file
@@ -38,7 +46,16 @@ class AutoGenerateGearIndexPlugin : WorkbenchPlugin
 		ctx.WriteValue("", m_config);
 		ctx.SaveToFile("configs/GearScripts/GearScriptsConfigList.json");
 
-		Print("Saved to Configs/GearScripts/Standard/GearScriptsConfigList.json");
+		Print("Saved to Configs/GearScripts/GearScriptsConfigList.json");
+	}
+	
+	// This method is executed every time some new resource is registered
+	override void OnRegisterResource(string absFileName, BaseContainer metaFile)
+	{
+		if (!absFileName.Contains("Configs") && !absFileName.Contains("GearScripts") && !absFileName.Contains("Standard"))
+			return;
+		
+		GenerateIndex();
 	}
 }
 
