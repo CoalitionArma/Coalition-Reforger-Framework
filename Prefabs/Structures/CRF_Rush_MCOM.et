@@ -1,0 +1,359 @@
+GenericEntity : "{451BE00A37C69679}Prefabs/Structures/Military/Radar/ApproachRadar_TPN19_01/ApproachRadar_TPN19_01_generator.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SoundComponent "{5A5B46895D7FF37F}" {
+   Filenames + {
+    "{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp" "{1D6C7E5479081CAF}Sounds/Rush/planting_3D.acp"
+   }
+   Events {
+    SoundEventInfoClass "{661900A1486D23F0}" {
+     Name "RUSH_BEEP"
+    }
+    SoundEventInfoClass "{661900A14194E762}" {
+     Name "RUSH_PLANTING"
+    }
+   }
+  }
+  CRF_Rush_3DMarkerComponent "{613048A3A6DEB8A1}" {
+   m_sMarkerLetter "A"
+   m_MarkerColor 1 0 0 1
+   m_fMaxIconSize 128
+   m_fMinIconSize 32
+   m_fMaxDistance 800
+   m_fMinDistance 10
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{A2DE69A75CFA6D5B}Assets/Structures/Military/Radar/ApproachRadar_01/ApproachRadar_RPL5_01_generator.xob"
+  }
+  ActionsManagerComponent "{613048A3A6DEB899}" {
+   ActionContexts {
+    UserActionContext "{613048A3A6DEB88C}" {
+     ContextName "default"
+     Position PointInfo "{613048A3A6DEB889}" {
+      Offset -1.6226 1.0565 1.2579
+     }
+     Radius 1.25
+    }
+   }
+   additionalActions {
+    CRF_RushPlantBombAction "{613048A3A6DEB8F6}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{613048A3A6DEB8F4}" {
+      Name "Arm MCOM"
+     }
+     Duration 5
+    }
+    CRF_RushDefuseBombAction "{613048A3A6DEB8F2}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{613048A3A6DE4E78}" {
+      Name "Defuse MCOM"
+     }
+     Duration 5
+    }
+   }
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+  Hierarchy "{661442C166567309}" {
+  }
+ }
+ coords 0.181 0 0
+ {
+  GenericEntity : "{002A9FA2A8544E0C}Prefabs/Structures/Military/Radar/ApproachRadar_RPL5_01/ApproachRadar_RPL5_01_antenna.et" {
+   ID "661442D337CDB21E"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+    Hierarchy "{661442CEF9AE1F00}" {
+    }
+   }
+   coords 0.666 -3.996 3.464
+   angleY 174.654
+   scale 1.562
+   {
+    GenericEntity {
+     ID "5A02839492EF03DD"
+     components {
+      LightSourceVisualizationObject "{5A02839A0D5BE210}" {
+       Size 2.75
+       LV 4
+      }
+      Hierarchy "{661442CF8C24EF88}" {
+      }
+     }
+    }
+    GenericEntity {
+     ID "5A0283949CDE2B49"
+     components {
+      LightSourceVisualizationObject "{5A02839A0D5BE210}" {
+       Size 2.75
+       LV 4
+      }
+      Hierarchy "{661442CF8EA15E24}" {
+      }
+     }
+    }
+   }
+  }
+  GenericEntity : "{2F2BBFDA3A2C73D4}Prefabs/Props/Civilian/RadioSmall_01_black.et" {
+   ID "661442D805B352FA"
+   components {
+    Hierarchy "{661442CE028304AE}" {
+    }
+   }
+   coords -1.356 0.874 -1.698
+   angleY -90.69
+  }
+  GenericEntity : "{34736979381CA219}Prefabs/Props/Military/Radios/RadioStation_ANGRC160_01.et" {
+   ID "661442D805B35590"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+    Hierarchy "{661442CEEB4A1E1F}" {
+    }
+   }
+   coords -1.482 0.91 1.277
+   angleY -90.52
+  }
+  $grp GenericEntity : "{34C2F623958FCACE}Prefabs/Props/Civilian/Ashtray_01_Full_clear.et" {
+   {
+    ID "661442D805B35281"
+    components {
+     Hierarchy "{661442CE078B65BE}" {
+     }
+    }
+    coords -1.612 0.907 0.925
+    angleY 0
+   }
+   {
+    ID "661442D9FD89752D"
+    components {
+     Hierarchy "{661442CE335B812D}" {
+     }
+    }
+    coords -1.464 0.907 -2.085
+    angleY -90.69
+   }
+  }
+  GenericEntity : "{3800AA04761AE0EC}Prefabs/Props/Civilian/Notebook_01_Single_Blue.et" {
+   ID "661442D805B352D6"
+   components {
+    Hierarchy "{661442CE0D287395}" {
+    }
+   }
+   coords -1.708 0.876 -1.309
+   angleY 75.613
+  }
+  $grp StaticModelEntity : "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et" {
+   {
+    ID "661442D805B352B8"
+    components {
+     Hierarchy "{661442CE194ADAE8}" {
+     }
+    }
+    coords -1.945 -0.014 -1.999
+    angleY 78.774
+   }
+   {
+    ID "661442DD5FA75139"
+    components {
+     Hierarchy "{661442CEE4B3B32A}" {
+     }
+    }
+    coords -2.067 -0.014 0.853
+    angleY 116.43
+   }
+  }
+  $grp StaticModelEntity : "{5019513019F0885A}Prefabs/Props/Military/Furniture/TableMilitary_US_02.et" {
+   {
+    ID "661442D805B35330"
+    components {
+     Hierarchy "{661442CE0AAEF213}" {
+     }
+    }
+    coords -1.702 -0.032 -1.452
+    angleY -90.69
+   }
+   {
+    ID "661442D805B35576"
+    components {
+     Hierarchy "{661442CEE87B0921}" {
+     }
+    }
+    coords -1.65 0.001 1.234
+    angleY -89.515
+   }
+  }
+  GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
+   ID "661442DD5FA75097"
+   components {
+    Hierarchy "{661442CEE7EF6F25}" {
+    }
+   }
+   coords -1.401 0.904 1.878
+  }
+  GenericEntity : "{5B8922E61D8DF345}Prefabs/Props/Military/Antennas/Antenna_R161_01.et" {
+   ID "661442DD5FA75043"
+   components {
+    RHS_RadioSourceComponent "{622B4D419F7B74FF}" {
+     Enabled 0
+    }
+    SCR_AntennaServicePointComponent "{5CB8818C79A7B643}" {
+     Enabled 0
+    }
+    Hierarchy "{661442CEE35DB828}" {
+    }
+   }
+   coords -0.219 1.187 -1.229
+  }
+  GenericEntity : "{62B2ADC4243454F9}Prefabs/Props/Civilian/Jerrycan_01.et" {
+   ID "661442D805B352C6"
+   components {
+    Hierarchy "{661442CE0832AE5A}" {
+    }
+   }
+   coords -1.514 -0.018 -0.569
+   angleY -90.69
+  }
+  GenericEntity : "{6B75B63C065F5F6C}Prefabs/Props/PersonalBelongings/Dogtags/Dogtags_US.et" {
+   ID "661442D805B35227"
+   coords -1.733 0.91 1.334
+  }
+  GenericEntity : "{6C08FE47987A4B9A}Prefabs/Structures/Military/CamoNets/US/CamoNet_ObservationPost_US.et" {
+   ID "661442D0C1986D6F"
+   components {
+    RplComponent "{5D46D21E5CE2E86E}" {
+     Enabled 1
+    }
+   }
+   coords -0.432 0.692 0.416
+   scale 1.946
+  }
+  GenericEntity : "{73206C0003AD090B}Prefabs/Props/Civilian/Chock_02/Chock_02_yellow_old.et" {
+   ID "661442D805B35241"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+    Hierarchy "{661442CE1EBDAF3F}" {
+    }
+   }
+   coords -1.366 -0.027 -1.787
+   angleY -90.69
+  }
+  $grp StaticModelEntity : "{8B7B5323534404A7}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_V2.et" {
+   {
+    ID "661442C5B22EF814"
+    coords -0.172 -0.076 3.035
+   }
+   {
+    ID "661442D333FDFDA5"
+    coords 2.687 -0.132 0.123
+   }
+  }
+  StaticModelEntity : "{9639C7B3CF572320}Prefabs/Structures/Military/Fortifications/Dragontooth_01/Dragontooth_01_old_V2.et" {
+   ID "661442D3326E1839"
+   coords -0.182 -0.158 -3.238
+  }
+  $grp GenericEntity : "{A735A93A8AD4077A}Prefabs/Props/PersonalBelongings/Papers/Papers_Personal_US.et" {
+   {
+    ID "661442D805B35205"
+    coords -1.865 0.907 0.658
+    angleY 90.649
+    scale 0.6
+   }
+   {
+    ID "661442D9FD897519"
+    coords -1.581 0.876 -1.929
+    angleY 100.519
+    scale 0.6
+   }
+  }
+  $grp GenericEntity : "{C25D3FADA32355E0}Prefabs/Props/PersonalBelongings/Photos/Pictures_Personal_US.et" {
+   {
+    ID "661442D805B3527B"
+    coords -1.868 0.907 0.491
+    angleY 56.036
+   }
+   {
+    ID "661442D9FD8974AE"
+    coords -1.603 0.876 -1.661
+    angleY 137.161
+   }
+  }
+  $grp GenericEntity : "{C30C5EF1C048A606}Prefabs/Props/PersonalBelongings/Notebooks/Notebook_Small_01_Personal_US.et" {
+   {
+    ID "661442D805B355C1"
+    components {
+     Hierarchy "{661442CE115AEA78}" {
+     }
+    }
+    coords -1.61 0.907 0.583
+    angleY 79.381
+   }
+   {
+    ID "661442D9FD897536"
+    components {
+     Hierarchy "{661442CE30F5BEA7}" {
+     }
+    }
+    coords -1.615 0.896 -0.951
+    angleY 54.925
+   }
+  }
+  GenericEntity : "{CF92D5CE4EC7F917}Prefabs/Props/Military/Radios/RadioStation_RF10/RadioStation_RF10.et" {
+   ID "661442D805B355F3"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+    Hierarchy "{661442CE15B05698}" {
+    }
+   }
+   coords -1.492 1.044 1.29
+   angleY -89.011
+  }
+  $grp GenericEntity : "{F0A6370C7F04CEDF}Prefabs/Props/PersonalBelongings/Papers/Papers_Personal_Civilian.et" {
+   {
+    ID "661442D805B35254"
+    coords -1.657 0.91 1.629
+    angleY -87.345
+    scale 0.6
+   }
+   {
+    ID "661442D9FD8974F9"
+    coords -1.655 0.895 -1.303
+    angleY -108.818
+    scale 0.6
+   }
+  }
+  GenericEntity : "{F401D58CD490C872}Prefabs/Props/Civilian/BeerBottle_01_slava.et" {
+   ID "661442D805B35297"
+   components {
+    RplComponent "{5624A88DC2D9928D}" {
+     Enabled 1
+    }
+    Hierarchy "{661442CE1BB14B7B}" {
+    }
+   }
+   coords -1.465 0.907 1.012
+   angleY 163.1
+  }
+  GenericEntity : "{FB388A4B8389EFB2}Prefabs/Props/PersonalBelongings/Notebooks/Notebook_01_Personal_Civilian.et" {
+   ID "661442D9FD8974DD"
+   components {
+    Hierarchy "{661442CE3651CCA2}" {
+    }
+   }
+   coords -1.62 0.877 -0.924
+   angleY 121.124
+  }
+ }
+}
