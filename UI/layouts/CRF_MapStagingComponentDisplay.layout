@@ -1,0 +1,80 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{612734D48040FA26}" {
+   Name "Background"
+   Slot FrameWidgetSlot "{612734D48040FA7F}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -64
+    OffsetLeft -64
+    PositionY 16
+    OffsetTop 16
+    SizeX 128
+    OffsetRight -64
+    SizeY 40
+    OffsetBottom -56
+   }
+   Opacity 0
+   Color 0.0648 0.0637 0.0637 0.7812
+   Texture "{4EFD2783DFD76834}UI/data/uibox_1.edds"
+   Size 900 300
+   "Shadow Offset" 0 0
+   "Shadow Size Increase" 1 1
+  }
+  TextWidgetClass "{612734D4E397B2B1}" {
+   Name "Timer"
+   Slot FrameWidgetSlot "{612734D4E397B329}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -56
+    OffsetLeft -56
+    PositionY 16
+    OffsetTop 16
+    SizeX 112
+    OffsetRight -56
+    SizeY 40
+    OffsetBottom -56
+   }
+   Opacity 0
+   Color 0.053 0.578 0.053 1
+   Text ""
+   "Font Size" 32
+   "Min Font Size" 26
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{612734D416229D9E}" {
+    Font "{CD2634D279AB011A}UI/Fonts/Roboto/Roboto_Bold.fnt"
+    Bold 1
+    OutlineColor 0.013 0.125 0.0007 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  TextWidgetClass "{612734D4E397B2B2}" {
+   Name "StageText"
+   Slot FrameWidgetSlot "{612734D4E397B330}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -72
+    OffsetLeft -72
+    PositionY 56
+    OffsetTop 56
+    SizeX 144
+    OffsetRight -72
+    SizeY 24
+    OffsetBottom -80
+   }
+   Opacity 0
+   Color 1 1 1 1
+   Text "00:00:00"
+   "Font Size" 16
+   "Min Font Size" 16
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   Wrap 1
+   FontProperties FontProperties "{612734D416229D9E}" {
+    Font "{3B42613D74662826}UI/Fonts/TahomaBd.fnt"
+    ShadowSize 1
+    ShadowOffset 0.5 0.5
+   }
+  }
+ }
+}

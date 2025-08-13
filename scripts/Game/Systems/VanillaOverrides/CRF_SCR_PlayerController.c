@@ -42,6 +42,25 @@ modded class SCR_PlayerController
 			playerControllerComp.m_bActivated = false;
 		};
 
+		// Handle race condition: If player is being assigned initial entity when they should have a playable character
+		if (to && to.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource() && 
+			CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			int playerId = GetPlayerId();
+			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+			
+			// Check if this player should have a proper character instead of initial entity
+			if (slottingManager && slottingManager.IsPlayerInASlot(playerId) && !slottingManager.IsPlayerConsideredDead(playerId))
+			{
+				// Request re-initialization from server to fix race condition
+				CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
+				if (rplManager)
+				{
+					GetGame().GetCallqueue().CallLater(rplManager.RequestInitilizePlayer, 250, false, playerId);
+				}
+			}
+		}
+
 		// Call the parent implementation
 		super.OnControlledEntityChanged(from, to);
 	}

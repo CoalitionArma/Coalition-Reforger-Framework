@@ -548,7 +548,7 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	SCR_ChimeraCharacter SpawnPlayableEntity(int playerId, vector overrideLocation)
+	SCR_ChimeraCharacter SpawnPlayableEntity(int playerId, vector overrideLocation[4])
 	{
 		int slotId = GetPlayerSlotID(playerId);
 		if (slotId < 0)
@@ -562,9 +562,9 @@ class CRF_SlottingManager : ScriptComponent
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		
-		if (overrideLocation != vector.Zero)
+		if (overrideLocation[3] != vector.Zero)
 		{
-			spawnParams.Transform[3] = overrideLocation;
+			spawnParams.Transform = overrideLocation;
 		}
 		else
 		{
