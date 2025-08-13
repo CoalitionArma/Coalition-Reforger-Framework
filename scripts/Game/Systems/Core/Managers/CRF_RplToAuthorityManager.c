@@ -71,11 +71,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	void ToggleRushMCOMPlanted(string mcomIdentifier, bool togglePlanted)
 	{
+		Print("[CRF_RplToAuthorityManager] ToggleRushMCOMPlanted() called on client: " + mcomIdentifier + ", planted: " + togglePlanted + " - sending RPC");
 		Rpc(RpcAsk_ToggleRushMCOMPlanted, mcomIdentifier, togglePlanted); 
 	}
 	
 	void StartRushPlantingSound()
 	{
+		Print("[CRF_RplToAuthorityManager] StartRushPlantingSound() called on client - sending RPC");
 		Rpc(RpcAsk_StartRushPlantingSound); 
 	}
 	
@@ -96,6 +98,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	
 	void StopRushBombTickingSound()
 	{
+		Print("[CRF_RplToAuthorityManager] StopRushBombTickingSound() called on client - sending RPC");
 		Rpc(RpcAsk_StopRushBombTickingSound); 
 	}
 	
@@ -286,20 +289,32 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ToggleRushMCOMPlanted(string mcomIdentifier, bool togglePlanted)
 	{
+		Print("[CRF_RplToAuthorityManager] RpcAsk_ToggleRushMCOMPlanted received: " + mcomIdentifier + ", planted: " + togglePlanted);
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
 		{
+			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.ToggleMCOMPlanted()");
 			rushGamemode.ToggleMCOMPlanted(mcomIdentifier, togglePlanted);
+		}
+		else
+		{
+			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
 		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_StartRushPlantingSound()
 	{
+		Print("[CRF_RplToAuthorityManager] RpcAsk_StartRushPlantingSound received on server");
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
 		{
+			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.PlayPlantingSound()");
 			rushGamemode.PlayPlantingSound();
+		}
+		else
+		{
+			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
 		}
 	}
 
@@ -336,10 +351,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_StopRushBombTickingSound()
 	{
+		Print("[CRF_RplToAuthorityManager] RpcAsk_StopRushBombTickingSound received on server");
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
 		{
+			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.StopBombTickingSound()");
 			rushGamemode.StopBombTickingSound();
+		}
+		else
+		{
+			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
 		}
 	}
 

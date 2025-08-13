@@ -210,6 +210,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	void PlayRushMCOMSound(string soundEvent, vector position)
+	{
+		#ifdef WORKBENCH
+		RpcDo_PlayRushMCOMSound(soundEvent, position);
+		#else
+		Rpc(RpcDo_PlayRushMCOMSound, soundEvent, position);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void StopRushMCOMSound(string soundEvent, vector position)
+	{
+		#ifdef WORKBENCH
+		RpcDo_StopRushMCOMSound(soundEvent, position);
+		#else
+		Rpc(RpcDo_StopRushMCOMSound, soundEvent, position);
+		#endif
+	}
+	
 	//================================================================================================
 	// CLIENT RPC HANDLERS
 	// These methods execute on client machines when receiving server RPCs
@@ -233,6 +253,84 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected bool IsLocalPlayer(int playerId)
 	{
 		return SCR_PlayerController.GetLocalPlayerId() == playerId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Find MCOM entity at specified position
+	//------------------------------------------------------------------------------------------------
+	protected IEntity FindMCOMEntityAtPosition(vector position)
+	{
+		Print("[CRF_RplBroadcastManager] FindMCOMEntityAtPosition: Looking for MCOM at " + position);
+		
+		// Method 1: Try to get MCOM entity from Rush gamemode manager (most reliable)
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (rushGamemode)
+		{
+			Print("[CRF_RplBroadcastManager] Found rush gamemode, checking all MCOMs");
+			
+			// Check all MCOM entities from the gamemode
+			array<string> mcomIdentifiers = {"Zone1Alpha", "Zone1Beta", "Zone2Alpha", "Zone2Beta", "Zone3Alpha", "Zone3Beta"};
+			foreach (string identifier : mcomIdentifiers)
+			{
+				IEntity mcomEntity = rushGamemode.GetMCOMEntity(identifier);
+				if (mcomEntity)
+				{
+					float distance = vector.Distance(mcomEntity.GetOrigin(), position);
+					Print("[CRF_RplBroadcastManager] Checking " + identifier + " at " + mcomEntity.GetOrigin() + ", distance: " + distance);
+					
+					if (distance <= 15.0) // Allow some tolerance for positioning
+					{
+						// Verify it has a SoundComponent
+						SoundComponent soundComp = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
+						if (soundComp)
+						{
+							Print("[CRF_RplBroadcastManager] Found matching MCOM: " + identifier);
+							return mcomEntity;
+						}
+					}
+				}
+			}
+		}
+		
+		// Method 2: Fallback - try to find entity by name
+		BaseWorld world = GetGame().GetWorld();
+		if (!world)
+		{
+			Print("[CRF_RplBroadcastManager] No world found");
+			return null;
+		}
+		
+		// Try to find MCOM entities by their common naming patterns
+		array<string> mcomNames = {
+			"zone1_alpha", "zone1_beta", 
+			"zone2_alpha", "zone2_beta", 
+			"zone3_alpha", "zone3_beta"
+		};
+		
+		foreach (string mcomName : mcomNames)
+		{
+			IEntity entity = world.FindEntityByName(mcomName);
+			if (entity)
+			{
+				// Check if this entity is close to our target position
+				float distance = vector.Distance(entity.GetOrigin(), position);
+				Print("[CRF_RplBroadcastManager] Found entity by name: " + mcomName + " at " + entity.GetOrigin() + ", distance: " + distance);
+				
+				if (distance <= 15.0) // Allow some tolerance for positioning
+				{
+					// Verify it has a SoundComponent
+					SoundComponent soundComp = SoundComponent.Cast(entity.FindComponent(SoundComponent));
+					if (soundComp)
+					{
+						Print("[CRF_RplBroadcastManager] Found matching MCOM by name: " + mcomName);
+						return entity;
+					}
+				}
+			}
+		}
+		
+		Print("[CRF_RplBroadcastManager] No MCOM entity found at position " + position);
+		return null;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -553,5 +651,59 @@ class CRF_RplBroadcastManager : ScriptComponent
 				return;
 			}
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_PlayRushMCOMSound(string soundEvent, vector position)
+	{
+		Print("[CRF_RplBroadcastManager] RpcDo_PlayRushMCOMSound received on client: " + soundEvent + " at " + position);
+		
+		// Find the MCOM entity at the specified position
+		IEntity mcomEntity = FindMCOMEntityAtPosition(position);
+		if (!mcomEntity)
+		{
+			Print("[CRF_RplBroadcastManager] Could not find MCOM entity at position: " + position.ToString(), LogLevel.WARNING);
+			return;
+		}
+		
+		Print("[CRF_RplBroadcastManager] Found MCOM entity for sound playback");
+		
+		// Get the SoundComponent from the MCOM entity
+		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
+		if (!soundComponent)
+		{
+			Print("[CRF_RplBroadcastManager] No SoundComponent found on MCOM entity", LogLevel.WARNING);
+			return;
+		}
+		
+		// Play the sound event using the SoundComponent
+		AudioHandle soundHandle = soundComponent.SoundEvent(soundEvent);
+		Print("[CRF_RplBroadcastManager] Playing 3D sound: " + soundEvent + " at position: " + position.ToString());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_StopRushMCOMSound(string soundEvent, vector position)
+	{
+		// Find the MCOM entity at the specified position
+		IEntity mcomEntity = FindMCOMEntityAtPosition(position);
+		if (!mcomEntity)
+		{
+			Print("[CRF_RplBroadcastManager] Could not find MCOM entity at position: " + position.ToString(), LogLevel.WARNING);
+			return;
+		}
+		
+		// Get the SoundComponent from the MCOM entity
+		SoundComponent soundComponent = SoundComponent.Cast(mcomEntity.FindComponent(SoundComponent));
+		if (!soundComponent)
+		{
+			Print("[CRF_RplBroadcastManager] No SoundComponent found on MCOM entity", LogLevel.WARNING);
+			return;
+		}
+		
+		// Terminate all sounds on this component (as we can't target specific events)
+		soundComponent.TerminateAll();
+		Print("[CRF_RplBroadcastManager] Stopped all sounds on MCOM at position: " + position.ToString());
 	}
 };
