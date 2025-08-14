@@ -204,8 +204,8 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		
 		// Set initial size and position for the root widget
 		FrameSlot.SetSize(root, m_fMaxIconSize, m_fMaxIconSize);
-		FrameSlot.SetPos(root, -1000, -1000); // Position off-screen initially until proper positioning
-		
+		FrameSlot.SetPos(root, -10000, -10000); // Position off-screen initially until proper positioning
+
 		// Ensure the root widget is visible but with reasonable z-order
 		root.SetOpacity(0.0); // Start invisible until properly positioned
 		root.SetZOrder(100); // Lower z-order to avoid blocking other UI elements
