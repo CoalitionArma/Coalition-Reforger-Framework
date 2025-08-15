@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{A6BBE7DBD7C64EE6}Sounds/Rush/beep_3D.acp"
+ Configurations {
+  AudioProjectResourceClass PC {
+  }
+  AudioProjectResourceClass XBOX_ONE : PC {
+  }
+  AudioProjectResourceClass XBOX_SERIES : PC {
+  }
+  AudioProjectResourceClass PS4 : PC {
+  }
+  AudioProjectResourceClass PS5 : PC {
+  }
+  AudioProjectResourceClass HEADLESS : PC {
+  }
+  AudioProjectResourceClass Xbox : PC {
+  }
+ }
+}

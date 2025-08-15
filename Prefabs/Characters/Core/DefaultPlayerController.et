@@ -38,6 +38,11 @@ SCR_PlayerController {
      m_eLayer ALWAYS_TOP
      m_eShow 118
     }
+    CRF_MapStagingComponentDisplay "{61303B9EA39FC280}" {
+     m_LayoutPath "{A597F5CD1D996DD3}UI/layouts/CRF_MapStagingComponentDisplay.layout"
+     m_eLayer ALWAYS_TOP
+     m_eShow 118
+    }
    }
   }
  }
