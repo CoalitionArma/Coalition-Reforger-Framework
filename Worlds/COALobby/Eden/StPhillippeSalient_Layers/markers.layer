@@ -131,6 +131,7 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
   {
    CRF_PolyZoneTrigger {
     ID "658635BEF7631DCD"
+    coords 0 0 0
     m_aFactionKey {
      "BLUFOR" "INDFOR"
     }

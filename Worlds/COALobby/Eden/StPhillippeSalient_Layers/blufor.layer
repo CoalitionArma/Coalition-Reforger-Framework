@@ -46,17 +46,6 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
  {
   components {
    CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
-   }
-  }
-  coords 5836.966 1.483 10892.094
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
     m_rVehicle "{04BDACC0BB83284E}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered_MERDC.et"
    }
   }
@@ -116,6 +105,17 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
    }
   }
   coords 5844.004 0.52 10892.689
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+   }
+  }
+  coords 5837.362 1.039 10892.697
   angleX 0
   angleY 0
   angleZ 0
