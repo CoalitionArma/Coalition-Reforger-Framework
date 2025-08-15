@@ -1,0 +1,184 @@
+SCR_AIWorld : "{1A22C9F8BF6E88AB}Prefabs/AI/SCR_AIWorld_Gogland.et" {
+ coords 4654.514 7.248 10941.67
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{660F5795D94F7E05}" {
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear Fog"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 35
+  }
+ }
+ coords 4678.631 7.192 10952.153
+ m_iTimeLimitMinutes 75
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "This is a test mission for the new rush game mode."\
+   ""\
+   "BLUFOR Composition: Motorized"\
+   "BLUFOR Assets: Infantry, HAT"\
+   ""\
+   "OPFOR Composition: Mechanized"\
+   "OPFOR Assets: Infantry, Armor"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy the six MCOMs in linear order. Your map icons and 3d floating markers will update when you're within range of the objectives."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the six MCOMs in linear order. Your map icons and 3d floating markers will update when you're within range of the objectives."
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{B476F825AD9CCBEA}Configs/Gearscripts/Standard/80s/CRF_GS_UK80s_FAL.conf"
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EBD66AA635DA78AE}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_VSR.conf"
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager "661900E3BD0F7639" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{6610F5840AC2B545}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6610F5840A8BACE5}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6610F5840934632B}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6610F58409E5165E}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{6610F584016819B4}" {
+        m_sCallsign "HAT"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6610F5842551C234}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6610F5845B34062A}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{6610F5845BD9C9EE}" {
+        m_sCallsign "AGATE1"
+       }
+       SCR_CallsignInfo "{6610F5845B91CB8A}" {
+        m_sCallsign "AGATE2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 4632.825 5.838 10970.348
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 4777.68 35.488 10026.525
+ Points {
+  ShapePoint "{6610F58A4064BF1D}" {
+   Position -335.336 0 613.869
+  }
+  ShapePoint "{6610F58A465BD9AF}" {
+   Position -330.903 0 29.52
+  }
+  ShapePoint "{6610F58A7E07744B}" {
+   Position -182.833 0 -579.238
+  }
+  ShapePoint "{6610F58A7519280C}" {
+   Position 907.841 0 -406.995
+  }
+  ShapePoint "{6610F58A6B341DF1}" {
+   Position 482.523 0 286.596
+  }
+  ShapePoint "{6610F58A68035AA5}" {
+   Position -7.734 0 916.024
+  }
+  ShapePoint "{6610F58A6EC8C5EF}" {
+   Position -141.047 -2.947 1103.332
+  }
+  ShapePoint "{6610F58A63E0A293}" {
+   Position -320.896 0 880.849
+  }
+ }
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 4968.702 16.608 9618.273
+ angleY 0.333
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 5015.751 68.356 9609.092
+ Points {
+  ShapePoint "{6610F589D43BD9C6}" {
+   Position -80.169 0 62.051
+  }
+  ShapePoint "{6610F589C9B872FD}" {
+   Position 65.505 0 65.996
+  }
+  ShapePoint "{6610F589CD820369}" {
+   Position 76.005 0 -76.145
+  }
+  ShapePoint "{6610F589C283C0F7}" {
+   Position -87.394 0 -75.568
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 4667.247 12.682 10572.251
+ Points {
+  ShapePoint "{6610F58A593BA147}" {
+   Position 48.364 0 457.121
+  }
+  ShapePoint "{6610F58A59933D02}" {
+   Position -107.946 0 443.607
+  }
+  ShapePoint "{6610F58A546A90AE}" {
+   Position -227.914 0 -397.256
+  }
+  ShapePoint "{6610F58A4AD7E3D5}" {
+   Position 489.431 0 -370.312
+  }
+ }
+}

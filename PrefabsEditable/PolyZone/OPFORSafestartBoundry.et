@@ -21,6 +21,39 @@ PolylineShapeEntity {
  IsClosed 1
  LineColor 0.502 0 0 1
  {
+  CRF_PolyZoneTrigger {
+   ID "6586537E1F83840B"
+   components {
+    CRF_PolyZoneMeshComponent "{6586537E1F83846B}" {
+     m_fHeight 345
+     m_fUndergroundHeight 400
+     m_Material "{29F38F4EC62E9D57}Assets/Editor/VirtualArea/OPFORBoundry.emat"
+    }
+    RplComponent "{65885AB9A45EC7BF}" {
+     Streamable Disabled
+    }
+    Hierarchy "{6586537E1F838456}" {
+    }
+   }
+   coords 0 0 0
+   TriggerShapeType Polyline
+   SphereRadius 25.5
+   "Polyline Height" 100000
+   TriggerActivationType "All changes"
+   PeriodicQueries 1
+   UpdatePeriod 1
+   ClassesFilter {
+    "SCR_ChimeraCharacter"
+   }
+   m_polyZoneEffect CRF_PolyZoneEffectRestricted "{6586537E1F838450}" {
+    m_fKillTime 10
+   }
+   m_bReversed 1
+   m_bHelisNotRestricted 0
+   m_aFactionKey {
+    "BLUFOR" "INDFOR" "CIV" "SPEC"
+   }
+  }
   CRF_ManualMarker : "{AE820D882CD0ACC4}PrefabsEditable/Markers/OPFORSafeStartBorderMarker.et" {
    ID "65885AB9AC6E2C67"
    coords 0 0 0

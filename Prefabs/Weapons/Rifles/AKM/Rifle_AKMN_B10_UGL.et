@@ -1,0 +1,35 @@
+GenericEntity : "{5BFF97EFD0BF6D9F}Prefabs/Weapons/Rifles/AKM/Rifle_AKMN.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222CB07CFF6712A}" {
+     Name "#WCS-Weapon_AKMN_Name (#WCS-Handguard_B-10)"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{654C2A7587209F23}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{6F3DBA22447966C3}Prefabs/Weapons/Attachments/Handguards/Handguard_ZenitcoB10.et"
+     }
+    }
+    AttachmentSlotComponent "{654C582096672270}" {
+     AttachmentSlot InventoryStorageSlot Optic {
+     }
+    }
+    AttachmentSlotComponent "{661D2892119F0341}" {
+     AttachmentSlot InventoryStorageSlot Foregrip {
+      Offset 0 0.0249 0.2448
+      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
+      InspectionWidgetOffset 0 0 0.2427
+     }
+     AttachmentType WCS_AK_Foregrip "{661D2892119F0377}" {
+     }
+     ShowInInspection 1
+    }
+   }
+  }
+ }
+}

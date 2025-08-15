@@ -146,12 +146,11 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  coords 0 0 0
  m_faction "OPFOR"
  m_aUnitPrefabSlots {
-  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{C1E0691A952831E7}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAT_P.et" "{FCBD0EC1703ECD14}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Demo_P.et"
+  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et" "{FCBD0EC1703ECD14}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Demo_P.et"
  }
  m_bDeleteWhenEmpty 0
  m_iMaxMembers 12
  m_bPlayable 0
- m_bIsPlayable 1
  m_bDeleteIfNoPlayer 0
  m_aUnitPrefabColorTeams {
   "None" "Red" "Red" "Red" "Green" "Green" "Green" "Green"
@@ -159,4 +158,5 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabOverrideIcons {
   "None" "None" "Team Lead" "None" "None" "Team Lead" "None" "None" "None"
  }
+ m_bIsPlayable 1
 }

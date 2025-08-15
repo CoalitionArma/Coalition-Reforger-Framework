@@ -548,7 +548,7 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	SCR_ChimeraCharacter SpawnPlayableEntity(int playerId, vector overrideLocation)
+	SCR_ChimeraCharacter SpawnPlayableEntity(int playerId, vector overrideLocation[4])
 	{
 		int slotId = GetPlayerSlotID(playerId);
 		if (slotId < 0)
@@ -557,19 +557,30 @@ class CRF_SlottingManager : ScriptComponent
 		ResourceName resourceName = GetPlayerSlotResource(playerId);
 		if (resourceName.IsEmpty())
 			return null;
+		
+		vector playerSlotVector[4];
+		GetPlayerSlotVector(playerId, playerSlotVector);
 
 		// Setup spawn parameters
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		
-		if (overrideLocation != vector.Zero)
-		{
-			spawnParams.Transform[3] = overrideLocation;
-		}
-		else
-		{
-			GetPlayerSlotVector(playerId, spawnParams.Transform);
-		}
+		if (overrideLocation[3] != vector.Zero)
+		{	
+			foreach (int i, vector vec : overrideLocation)
+			{
+				if (overrideLocation[i] == vector.Zero)
+					overrideLocation[i] = playerSlotVector[i];
+			}
+		
+			spawnParams.Transform[3] = overrideLocation[3];
+		
+		} else
+			spawnParams.Transform = playerSlotVector;
+
+		vector pos;
+		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 16, 4);
+		spawnParams.Transform[3] = pos;
 		
 		// Spawn the character
 		Resource resource = Resource.Load(resourceName);
