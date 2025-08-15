@@ -286,21 +286,27 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		Print("CRF_LooterGamemodeComponent: Spawning loot...");
 	}
 
-	// Main spawning function - builds combined loot pool and spawns at random points
+	// Storage for paced spawning
+	protected ref array<ref CRF_BaseLootEntry> m_aAllLootEntries;
+	protected ref array<float> m_aWeights;
+	protected float m_fTotalWeight;
+	protected int m_iCurrentSpawnIndex = 1;
+	
+	// Main spawning function - builds combined loot pool and starts paced spawning
 	protected void SpawnLoot()
 	{
 		// Build combined loot pool from all categories
-		ref array<ref CRF_BaseLootEntry> allLootEntries = {};
+		m_aAllLootEntries = {};
 		
 		// Add all entries to combined pool (manual insertion for type safety)
-		if (m_aWeaponEntries)  for (int i = 0; i < m_aWeaponEntries.Count(); i++)  allLootEntries.Insert(m_aWeaponEntries[i]);
-		if (m_aGearEntries)    for (int i = 0; i < m_aGearEntries.Count(); i++)    allLootEntries.Insert(m_aGearEntries[i]);
-		if (m_aBagEntries)     for (int i = 0; i < m_aBagEntries.Count(); i++)     allLootEntries.Insert(m_aBagEntries[i]);
-		if (m_aKitEntries)     for (int i = 0; i < m_aKitEntries.Count(); i++)     allLootEntries.Insert(m_aKitEntries[i]);
-		if (m_aMiscEntries)    for (int i = 0; i < m_aMiscEntries.Count(); i++)    allLootEntries.Insert(m_aMiscEntries[i]);
+		if (m_aWeaponEntries)  for (int i = 0; i < m_aWeaponEntries.Count(); i++)  m_aAllLootEntries.Insert(m_aWeaponEntries[i]);
+		if (m_aGearEntries)    for (int i = 0; i < m_aGearEntries.Count(); i++)    m_aAllLootEntries.Insert(m_aGearEntries[i]);
+		if (m_aBagEntries)     for (int i = 0; i < m_aBagEntries.Count(); i++)     m_aAllLootEntries.Insert(m_aBagEntries[i]);
+		if (m_aKitEntries)     for (int i = 0; i < m_aKitEntries.Count(); i++)     m_aAllLootEntries.Insert(m_aKitEntries[i]);
+		if (m_aMiscEntries)    for (int i = 0; i < m_aMiscEntries.Count(); i++)    m_aAllLootEntries.Insert(m_aMiscEntries[i]);
 		
 		// Skip spawning if no loot entries are configured (safety check)
-		if (allLootEntries.Count() == 0)
+		if (m_aAllLootEntries.Count() == 0)
 		{
 			Print("CRF_LooterGamemodeComponent: No loot entries configured, skipping spawn.");
 			return;
@@ -308,36 +314,58 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 
 		// Calculate and optionally print drop chances
 		if (m_bDebugCalcItemChances)
-			PrintDropChances(allLootEntries);
-
-		// Prepare spawn parameters once
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
+			PrintDropChances(m_aAllLootEntries);
 
 		// Build weight array and calculate total weight in one pass
-		ref array<float> weights = {};
-		float totalWeight = 0;
-		foreach (CRF_BaseLootEntry entry : allLootEntries)
+		m_aWeights = {};
+		m_fTotalWeight = 0;
+		foreach (CRF_BaseLootEntry entry : m_aAllLootEntries)
 		{
-			weights.Insert(entry.m_fWeight);
-			totalWeight += entry.m_fWeight;
+			m_aWeights.Insert(entry.m_fWeight);
+			m_fTotalWeight += entry.m_fWeight;
 		}
 
-		// Iterate through all spawn points
-		for (int i = 1; i <= m_iTotalSpawnPoints; i++)
+		// Start paced spawning
+		m_iCurrentSpawnIndex = 1;
+		GetGame().GetCallqueue().CallLater(SpawnLootBatch, 10, true);
+	}
+	
+	// Spawn loot in small batches to prevent hitches
+	protected void SpawnLootBatch()
+	{
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		
+		// Process 10 spawn points per batch
+		int processed = 0;
+		while (processed < 10 && m_iCurrentSpawnIndex <= m_iTotalSpawnPoints)
 		{
-			string spawnPointName = m_sSpawnPointPrefix + i.ToString();
+			string spawnPointName = m_sSpawnPointPrefix + m_iCurrentSpawnIndex.ToString();
 			IEntity spawnPoint = GetGame().GetWorld().FindEntityByName(spawnPointName);
 			if (!spawnPoint || Math.RandomFloat01() > m_fGlobalSpawnChance)
+			{
+				m_iCurrentSpawnIndex++;
+				processed++;
 				continue;
+			}
 
 			// Choose weighted random loot entry
-			int chosenIndex = WeightedRandomIndex(weights, totalWeight);
-			if (chosenIndex >= 0 && chosenIndex < allLootEntries.Count())
+			int chosenIndex = WeightedRandomIndex(m_aWeights, m_fTotalWeight);
+			if (chosenIndex >= 0 && chosenIndex < m_aAllLootEntries.Count())
 			{
 				spawnParams.Transform[3] = spawnPoint.GetOrigin();
-				allLootEntries[chosenIndex].SpawnLoot(spawnParams);
+				m_aAllLootEntries[chosenIndex].SpawnLoot(spawnParams);
 			}
+			
+			m_iCurrentSpawnIndex++;
+			processed++;
+		}
+		
+		// Stop when all spawn points are processed
+		if (m_iCurrentSpawnIndex > m_iTotalSpawnPoints)
+		{
+			GetGame().GetCallqueue().Remove(SpawnLootBatch);
+			Print("CRF_LooterGamemodeComponent: Loot spawning completed.");
 		}
 	}
 
