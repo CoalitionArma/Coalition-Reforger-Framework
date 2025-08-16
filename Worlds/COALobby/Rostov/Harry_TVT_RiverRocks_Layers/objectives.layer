@@ -1,6 +1,6 @@
 $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
  cacheA {
-  coords 2785.949 44.91 2902.507
+  coords 2737.336 43.12 2822.69
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Alpha Cache destroyed\", duration: 10);"\
   "		"\
@@ -25,8 +25,9 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     m_MarkerColor 0.502 0 0 1
     m_sQuadName "fortification"
     m_sDescription "Cache A"
-    m_bVisibleForEmptyFaction 1
-    m_bShowForAnyFaction 1
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
    }
   }
  }
@@ -56,8 +57,9 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     m_MarkerColor 0.502 0 0 1
     m_sQuadName "fortification"
     m_sDescription "Cache B"
-    m_bVisibleForEmptyFaction 1
-    m_bShowForAnyFaction 1
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
    }
   }
  }
@@ -72,13 +74,14 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     m_MarkerColor 0.502 0 0 1
     m_sQuadName "fortification"
     m_sDescription "Cache C"
-    m_bVisibleForEmptyFaction 1
-    m_bShowForAnyFaction 1
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
    }
   }
  }
  cacheD {
-  coords 3274.082 73.096 3990.918
+  coords 3175.308 77.058 3948.354
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Delta Cache destroyed\", duration: 10);"\
   "	"
@@ -88,8 +91,9 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
     m_MarkerColor 0.502 0 0 1
     m_sQuadName "fortification"
     m_sDescription "Cache D"
-    m_bVisibleForEmptyFaction 1
-    m_bShowForAnyFaction 1
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
    }
   }
  }

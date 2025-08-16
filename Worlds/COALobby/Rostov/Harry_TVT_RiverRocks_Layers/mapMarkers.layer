@@ -1,3 +1,21 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2870.134 70.342 2976.843
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Caches A & B"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3279.695 34.505 3883.092
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Caches C & D"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
 CRF_ManualMarker zone1 : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
  coords 3869.267 117.948 3328.612
  angleY 0
