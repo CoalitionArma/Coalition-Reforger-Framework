@@ -5,9 +5,6 @@ GenericEntity : "{CFFEF1EAD4ACEDC2}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_base
    Filenames +{
    }
   }
-  MeshObject "{CFBAA4B701F95D69}" {
-   Object "{7B0B0E04154E86B9}Assets/Weapons/MachineGuns/GPMG/L7A2GPMG_02.xob"
-  }
   SCR_MeleeWeaponProperties "{5534C3B6F2351DCF}" {
    Enabled 0
   }
@@ -35,16 +32,16 @@ GenericEntity : "{CFFEF1EAD4ACEDC2}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_base
       DeploymentPoints {
        PivotPointInfoItem "{5A88DB468DFD27CE}" {
         "Point info" DeploymentPointInfo ppii {
-         Offset 0.0034 0.1047 0.3031
+         Offset 0.0034 0.0779 0.5452
         }
        }
        PivotPointInfoItem "{5A88DB468D2D6C7A}" {
         StabilizationPoints {
          DeploymentPointInfo LeftLeg {
-          Offset -0.1008 -0.0959 0.1813
+          Offset -0.1017 -0.1012 0.2114
          }
          DeploymentPointInfo RightLeg {
-          Offset 0.1006 -0.0991 0.1864
+          Offset 0.1044 -0.1043 0.2144
          }
         }
        }
@@ -75,14 +72,14 @@ GenericEntity : "{CFFEF1EAD4ACEDC2}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_base
       Offset 0 0 0.0278
      }
      SightsPointFront PointInfo "{5534C3B6F2351D0E}" {
-      PivotID "eye"
-      Offset 0 0 0.9794
+      PivotID "iron_front"
+      Offset 0 0 0
      }
      SightsPointRear PointInfo "{5534C3B6F2351D33}" {
-      PivotID "eye"
-      Offset 0 0 0.1024
+      PivotID "iron_rear"
+      Offset 0 0 0
      }
-     ZeroingGenerator BaseZeroingGenerator "{65E40AAB8DF71065}" {
+     ZeroingGenerator BaseZeroingGenerator "{6618064730B4605D}" {
      }
     }
     MuzzleComponent "{50F64C4591CD7AA6}" {
@@ -103,6 +100,9 @@ GenericEntity : "{CFFEF1EAD4ACEDC2}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_base
       AnimInstance "{BBB38166100E9C70}Assets/Weapons/MachineGuns/GPMG/anims/gpmg_player.asi"
      }
     }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AutoVariablesBind 1
+    }
    }
    UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
     Name "#BF-Weapon_L7A2_GPMG_Name"
@@ -110,5 +110,5 @@ GenericEntity : "{CFFEF1EAD4ACEDC2}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_base
    }
   }
  }
- coords -0.039 0.744 1.091
+ coords -0.368 1 -0.841
 }

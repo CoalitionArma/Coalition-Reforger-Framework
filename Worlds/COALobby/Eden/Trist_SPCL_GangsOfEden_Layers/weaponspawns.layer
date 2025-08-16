@@ -1,1131 +1,2817 @@
 $grp GameEntity {
  weaponSpawn1 {
-  coords 4390.832 11.428 10723.479
+  coords 4390.832 10.613 10723.479
  }
  weaponSpawn211 {
-  coords 4451.696 5.665 10820.581
+  coords 4451.696 4.781 10820.581
  }
  weaponSpawn212 {
-  coords 4416.283 10.27 10789.91
+  coords 4416.283 10.045 10789.91
  }
  weaponSpawn213 {
-  coords 4478.35 17.181 10778.763
+  coords 4478.35 17.051 10778.763
  }
  weaponSpawn214 {
-  coords 4475.641 20.307 10766.534
+  coords 4475.641 19.662 10766.534
  }
  weaponSpawn215 {
-  coords 4474.124 18.016 10749.7
+  coords 4474.124 17.727 10749.7
  }
  weaponSpawn216 {
-  coords 4484.149 18.05 10748.905
+  coords 4484.149 17.736 10748.905
  }
  weaponSpawn2 {
-  coords 4389.644 11.428 10742.596
+  coords 4389.644 10.681 10742.596
  }
  weaponSpawn3 {
-  coords 4386.134 11.428 10748.851
+  coords 4386.134 11.117 10748.851
  }
  weaponSpawn4 {
-  coords 4386.773 11.594 10723.734
+  coords 4386.773 11.534 10723.734
  }
  weaponSpawn5 {
-  coords 4370.875 10.328 10728.015
+  coords 4370.875 10.086 10728.015
  }
  weaponSpawn6 {
-  coords 4351.68 10.498 10714.768
+  coords 4351.68 10.258 10714.768
  }
  weaponSpawn7 {
-  coords 4354.768 11.377 10718.59
+  coords 4354.768 11.052 10718.59
  }
  weaponSpawn8 {
-  coords 4362.758 11.377 10721.188
+  coords 4362.758 10.146 10721.188
  }
  weaponSpawn9 {
-  coords 4355.302 15.157 10718.974
+  coords 4355.302 14.65 10718.975
  }
  weaponSpawn10 {
-  coords 4358.3 18.712 10716.532
+  coords 4358.3 18.233 10716.532
  }
  weaponSpawn11 {
-  coords 4377.799 13.394 10688.364
+  coords 4377.799 12.05 10688.363
  }
  weaponSpawn12 {
-  coords 4380.715 13.297 10678.96
+  coords 4380.715 12.781 10678.96
  }
  weaponSpawn13 {
-  coords 4371.769 13.771 10676.587
+  coords 4371.769 12.671 10676.587
  }
  weaponSpawn14 {
-  coords 4373.771 13.771 10670.982
+  coords 4373.771 12.671 10670.982
  }
  weaponSpawn15 {
-  coords 4364.655 13.771 10670.325
+  coords 4364.655 12.671 10670.324
  }
  weaponSpawn16 {
-  coords 4363.517 17.174 10658.334
+  coords 4363.517 16.297 10658.334
  }
  weaponSpawn17 {
-  coords 4366 17.509 10652.204
+  coords 4366 16.297 10652.204
  }
  weaponSpawn18 {
-  coords 4369.212 13.9 10652.987
+  coords 4369.212 13.096 10652.987
  }
  weaponSpawn19 {
-  coords 4363.79 14.014 10652.16
+  coords 4363.79 13.096 10652.159
  }
  weaponSpawn20 {
-  coords 4376.445 13.724 10653.66
+  coords 4376.445 13.096 10653.659
  }
  weaponSpawn21 {
-  coords 4370.283 20.288 10654.219
+  coords 4370.283 19.498 10654.219
  }
  weaponSpawn22 {
-  coords 4407.961 13.284 10634.823
+  coords 4407.961 12.609 10634.822
  }
  weaponSpawn23 {
-  coords 4405.955 13.465 10634.479
+  coords 4405.955 12.701 10634.479
  }
  weaponSpawn24 {
-  coords 4428.254 14.237 10644.185
+  coords 4428.254 13.563 10644.185
  }
  weaponSpawn25 {
-  coords 4416.941 13.357 10644.938
+  coords 4416.941 12.722 10644.939
  }
  weaponSpawn26 {
-  coords 4414.155 13.441 10651.141
+  coords 4414.155 12.74 10651.141
  }
  weaponSpawn27 {
-  coords 4423.157 13.454 10653.747
+  coords 4423.157 12.746 10653.747
  }
  weaponSpawn28 {
-  coords 4409.403 17.247 10650.546
+  coords 4409.403 16.536 10650.546
  }
  weaponSpawn29 {
-  coords 4422.487 18.017 10652.749
+  coords 4422.487 17.446 10652.749
  }
  weaponSpawn30 {
-  coords 4415.674 17.444 10641.99
+  coords 4415.674 17.212 10641.99
  }
  weaponSpawn31 {
-  coords 4437.24 12.463 10691.247
+  coords 4437.24 11.985 10691.247
  }
  weaponSpawn32 {
-  coords 4359.973 12.357 10652.005
+  coords 4359.973 11.883 10652.005
  }
  weaponSpawn33 {
-  coords 4350.818 15.336 10626.139
+  coords 4350.817 14.904 10626.139
  }
  weaponSpawn34 {
-  coords 4341.234 14.505 10621.537
+  coords 4341.234 14.098 10621.537
  }
  weaponSpawn35 {
-  coords 4336.228 14.403 10626.245
+  coords 4336.228 14.098 10626.245
  }
  weaponSpawn36 {
-  coords 4325.646 14.373 10623.441
+  coords 4325.646 14.098 10623.441
  }
  weaponSpawn37 {
-  coords 4387.933 16.128 10629.224
+  coords 4387.933 15.742 10629.224
  }
  weaponSpawn38 {
-  coords 4399.321 16.061 10632.799
+  coords 4399.321 15.76 10632.799
  }
  weaponSpawn39 {
-  coords 4443.031 17.529 10638.886
+  coords 4443.031 17.148 10638.886
  }
  weaponSpawn40 {
-  coords 4448.06 17.637 10639.929
+  coords 4448.06 17.118 10639.929
  }
  weaponSpawn41 {
-  coords 4456.827 17.717 10641.796
+  coords 4456.827 17.044 10641.796
  }
  weaponSpawn42 {
-  coords 4461.521 17.396 10642.865
+  coords 4461.521 16.998 10642.864
  }
  weaponSpawn43 {
-  coords 4500.922 16.759 10648.107
+  coords 4500.922 16.394 10648.106
  }
  weaponSpawn44 {
-  coords 4475.315 16.147 10654.188
+  coords 4475.314 15.878 10654.188
  }
  weaponSpawn45 {
-  coords 4472.129 16.411 10661.893
+  coords 4472.129 15.878 10661.893
  }
  weaponSpawn46 {
-  coords 4465.433 16.576 10665.279
+  coords 4465.433 16.378 10665.279
  }
  weaponSpawn47 {
-  coords 4440.07 13.72 10675.777
+  coords 4440.07 13.321 10675.777
  }
  weaponSpawn48 {
-  coords 4441.986 13.43 10663.774
+  coords 4441.986 12.75 10663.774
  }
  weaponSpawn49 {
-  coords 4443.065 17.459 10671.604
+  coords 4443.065 16.927 10671.604
  }
  weaponSpawn50 {
-  coords 4453.308 13.092 10688.172
+  coords 4453.308 12.87 10688.172
  }
  weaponSpawn51 {
-  coords 4460.187 14.088 10698.606
+  coords 4460.187 13.553 10698.605
  }
  weaponSpawn52 {
-  coords 4459.912 14.382 10705.195
+  coords 4459.912 14.115 10705.194
  }
  weaponSpawn53 {
-  coords 4452.015 14.181 10699.854
+  coords 4452.015 13.979 10699.854
  }
  weaponSpawn54 {
-  coords 4454.641 17.641 10701.032
+  coords 4454.641 17.58 10701.032
  }
  weaponSpawn55 {
-  coords 4450.862 17.414 10703.943
+  coords 4450.862 16.88 10703.943
  }
  weaponSpawn56 {
-  coords 4439.333 18.357 10732.474
+  coords 4439.333 17.961 10732.475
  }
  weaponSpawn57 {
-  coords 4452.223 23.754 10733.604
+  coords 4452.223 23.023 10733.604
  }
  weaponSpawn58 {
-  coords 4475.561 13.33 10750.887
+  coords 4475.561 12.729 10750.887
  }
  weaponSpawn59 {
-  coords 4478.912 13.057 10750.722
+  coords 4478.912 12.729 10750.722
  }
  weaponSpawn60 {
-  coords 4475.313 17.168 10752.11
+  coords 4475.313 16.829 10752.109
  }
  weaponSpawn61 {
-  coords 4474.548 13.641 10763.838
+  coords 4474.548 13.246 10763.838
  }
  weaponSpawn62 {
-  coords 4472.57 13.779 10757.979
+  coords 4472.57 13.429 10757.979
  }
  weaponSpawn63 {
-  coords 4479.085 17.393 10764.813
+  coords 4479.085 17.242 10764.813
  }
  weaponSpawn64 {
-  coords 4471.672 17.197 10766.468
+  coords 4471.672 16.242 10766.468
  }
  weaponSpawn65 {
   coords 4479.367 17.141 10773.537
  }
  weaponSpawn66 {
-  coords 4473.76 19.773 10782.206
+  coords 4473.76 19.444 10782.206
  }
  weaponSpawn67 {
-  coords 4476.284 20.482 10775.662
+  coords 4476.284 20.338 10775.661
  }
  weaponSpawn68 {
-  coords 4471.223 10.066 10804.801
+  coords 4471.223 9.734 10804.801
  }
  weaponSpawn69 {
-  coords 4462.314 10.913 10807.602
+  coords 4462.313 10.634 10807.602
  }
  weaponSpawn70 {
-  coords 4508.368 14.468 10806.424
+  coords 4508.368 13.893 10806.424
  }
  weaponSpawn71 {
-  coords 4492.239 13.5 10779.017
+  coords 4492.239 12.583 10779.017
  }
  weaponSpawn72 {
-  coords 4442.374 16.693 10782.466
+  coords 4442.374 16.51 10782.466
  }
  weaponSpawn73 {
-  coords 4434.805 15.84 10792.29
+  coords 4434.805 15.611 10792.29
  }
  weaponSpawn74 {
-  coords 4427.367 15.96 10784.925
+  coords 4427.367 15.746 10784.925
  }
  weaponSpawn75 {
-  coords 4426.5 15.56 10776.678
+  coords 4426.5 15.365 10776.678
  }
  weaponSpawn76 {
-  coords 4420.031 12.036 10781.44
+  coords 4420.031 11.844 10781.44
  }
  weaponSpawn77 {
-  coords 4424.206 11.196 10784.703
+  coords 4424.206 10.955 10784.703
  }
  weaponSpawn78 {
-  coords 4408.055 15.278 10772.902
+  coords 4408.055 15.01 10772.902
  }
  weaponSpawn79 {
-  coords 4410.244 14.785 10768.091
+  coords 4410.244 14.624 10768.091
  }
  weaponSpawn80 {
-  coords 4413.074 11.31 10770.112
+  coords 4413.074 11.109 10770.111
  }
  weaponSpawn81 {
-  coords 4403.377 15.35 10763.288
+  coords 4403.376 15.222 10763.288
  }
  weaponSpawn82 {
-  coords 4400.151 15.403 10762.212
+  coords 4400.151 15.214 10762.212
  }
  weaponSpawn83 {
-  coords 4398.641 15.08 10768.224
+  coords 4398.641 14.924 10768.224
  }
  weaponSpawn84 {
-  coords 4398.101 15.359 10772.021
+  coords 4398.101 15.223 10772.021
  }
  weaponSpawn85 {
-  coords 4396.128 11.296 10761.649
+  coords 4396.128 11.114 10761.648
  }
  weaponSpawn86 {
-  coords 4392.026 11.004 10751.457
+  coords 4392.026 10.786 10751.457
  }
  weaponSpawn87 {
-  coords 4394.391 11.761 10757.506
+  coords 4394.391 11.588 10757.506
  }
  weaponSpawn88 {
-  coords 4367.559 9.828 10748.078
+  coords 4367.559 9.554 10748.078
  }
  weaponSpawn89 {
-  coords 4344.803 6.867 10753.151
+  coords 4344.803 6.546 10753.15
  }
  weaponSpawn90 {
-  coords 4314.203 5.76 10710.022
+  coords 4314.203 5.39 10710.022
  }
  weaponSpawn91 {
-  coords 4346.894 0.666 10814.019
+  coords 4346.894 0.371 10814.019
  }
  weaponSpawn92 {
-  coords 4363.784 4.801 10798.737
+  coords 4363.784 4.62 10798.737
  }
  weaponSpawn93 {
-  coords 4372.65 5.625 10785.538
+  coords 4372.65 5.487 10785.538
  }
  weaponSpawn94 {
-  coords 4412.852 10.973 10787.056
+  coords 4412.852 10.272 10787.056
  }
  weaponSpawn95 {
-  coords 4436.579 11.996 10797.33
+  coords 4436.579 11.65 10797.33
  }
  weaponSpawn96 {
-  coords 4454.288 10.407 10845.335
+  coords 4454.288 10.296 10845.335
  }
  weaponSpawn97 {
-  coords 4460.466 10.453 10849.207
+  coords 4460.466 10.305 10849.207
  }
  weaponSpawn98 {
-  coords 4456.526 10.117 10839.873
+  coords 4456.526 9.899 10839.873
  }
  weaponSpawn99 {
-  coords 4454.79 9.49 10858.235
+  coords 4454.79 9.224 10858.235
  }
  weaponSpawn100 {
-  coords 4416.258 10.13 10884.954
+  coords 4416.258 9.86 10884.954
  }
  weaponSpawn101 {
-  coords 4422.004 9.915 10880.41
+  coords 4422.004 9.842 10880.41
  }
  weaponSpawn103 {
-  coords 4425.89 9.12 10872.696
+  coords 4425.89 8.752 10872.695
  }
  weaponSpawn104 {
-  coords 4451.582 9.469 10885.579
+  coords 4451.582 9.156 10885.579
  }
  weaponSpawn105 {
-  coords 4448.442 10.215 10896.063
+  coords 4448.442 10.07 10896.063
  }
  weaponSpawn106 {
-  coords 4456.935 10.225 10905.294
+  coords 4456.935 10.08 10905.294
  }
  weaponSpawn107 {
-  coords 4464.368 10.346 10902.364
+  coords 4464.368 10.154 10902.363
  }
  weaponSpawn108 {
-  coords 4469.812 10.357 10898.604
+  coords 4469.812 10.154 10898.604
  }
  weaponSpawn109 {
-  coords 4474.856 9.533 10897.115
+  coords 4474.855 9.256 10897.114
  }
  weaponSpawn110 {
-  coords 4465.146 14.158 10900.258
+  coords 4465.146 13.963 10900.258
  }
  weaponSpawn111 {
-  coords 4470.921 14.155 10895.896
+  coords 4470.921 13.963 10895.896
  }
  weaponSpawn112 {
-  coords 4475.34 10.261 10893.755
+  coords 4475.339 10.086 10893.755
  }
  weaponSpawn113 {
-  coords 4472.474 10.433 10887.604
+  coords 4472.474 10.108 10887.604
  }
  weaponSpawn114 {
-  coords 4489.942 13.058 10882.912
+  coords 4489.942 12.872 10882.912
  }
  weaponSpawn115 {
-  coords 4476.737 10.533 10867.913
+  coords 4476.737 10.101 10867.913
  }
  weaponSpawn116 {
-  coords 4488.836 11.243 10856.655
+  coords 4488.835 10.955 10856.654
  }
  weaponSpawn117 {
-  coords 4498.603 12.019 10862.039
+  coords 4498.603 11.306 10862.039
  }
  weaponSpawn118 {
-  coords 4499.604 11.507 10850.638
+  coords 4499.604 11.133 10850.638
  }
  weaponSpawn102 {
-  coords 4528.045 17.734 10857.273
+  coords 4528.045 17.531 10857.273
  }
  weaponSpawn119 {
-  coords 4538.112 17.465 10845.898
+  coords 4538.112 17.28 10845.897
  }
  weaponSpawn120 {
-  coords 4540.948 18.864 10815.709
+  coords 4540.948 18.431 10815.709
  }
  weaponSpawn121 {
-  coords 4527.736 16.183 10798.105
+  coords 4527.736 15.802 10798.105
  }
  weaponSpawn122 {
-  coords 4494.378 13.242 10776.473
+  coords 4494.377 12.756 10776.474
  }
  weaponSpawn123 {
-  coords 4496.093 12.177 10799.582
+  coords 4496.093 11.867 10799.582
  }
  weaponSpawn124 {
-  coords 4549.249 17.808 10801.302
+  coords 4549.249 17.358 10801.302
  }
  weaponSpawn125 {
-  coords 4551.334 18.703 10810.6
+  coords 4551.333 18.448 10810.6
  }
  weaponSpawn126 {
-  coords 4553.286 18.795 10796.9
+  coords 4553.286 18.535 10796.9
  }
  weaponSpawn127 {
-  coords 4554.758 19.185 10791.158
+  coords 4554.758 18.927 10791.157
  }
  weaponSpawn128 {
-  coords 4539.088 18.554 10766.548
+  coords 4539.088 18.28 10766.548
  }
  weaponSpawn129 {
-  coords 4554.484 18.25 10772.422
+  coords 4554.484 17.904 10772.422
  }
  weaponSpawn130 {
-  coords 4545.696 20.239 10772.284
+  coords 4545.696 19.914 10772.284
  }
  weaponSpawn131 {
-  coords 4551.639 23.195 10776.301
+  coords 4551.639 23.003 10776.301
  }
  weaponSpawn132 {
-  coords 4556.042 19.481 10754.347
+  coords 4556.042 19.162 10754.347
  }
  weaponSpawn133 {
-  coords 4550.078 23.074 10749.221
+  coords 4550.078 22.94 10749.221
  }
  weaponSpawn134 {
-  coords 4559.057 20.917 10748.001
+  coords 4559.057 20.63 10748.001
  }
  weaponSpawn135 {
-  coords 4556.864 18.705 10751.594
+  coords 4556.864 18.236 10751.594
  }
  weaponSpawn136 {
-  coords 4547.757 19.65 10749.052
+  coords 4547.757 19.142 10749.052
  }
  weaponSpawn137 {
-  coords 4548.063 17.503 10719.086
+  coords 4548.063 16.826 10719.086
  }
  weaponSpawn138 {
-  coords 4545.679 17.33 10718.524
+  coords 4545.679 16.635 10718.523
  }
  weaponSpawn139 {
-  coords 4565.062 18.415 10682.68
+  coords 4565.062 20.68 10682.68
  }
  weaponSpawn140 {
-  coords 4547.497 19.015 10712.53
+  coords 4547.497 25.756 10712.53
  }
  weaponSpawn141 {
-  coords 4544.167 17.434 10663.526
+  coords 4544.167 16.896 10663.525
  }
  weaponSpawn142 {
-  coords 4548.078 17.254 10671.388
+  coords 4548.078 16.91 10671.388
  }
  weaponSpawn143 {
-  coords 4522.707 16.881 10653.096
+  coords 4522.707 16.049 10653.096
  }
  weaponSpawn144 {
-  coords 4516.019 15.95 10708.979
+  coords 4516.019 15.769 10708.979
  }
  weaponSpawn145 {
-  coords 4498.528 14.941 10702.87
+  coords 4498.528 14.117 10702.87
  }
  weaponSpawn146 {
-  coords 4491.682 14.598 10693.264
+  coords 4491.682 13.943 10693.264
  }
  weaponSpawn147 {
-  coords 4486.721 15.252 10698.375
+  coords 4486.721 15 10698.375
  }
  weaponSpawn148 {
-  coords 4485.892 14.801 10710.363
+  coords 4485.892 14.393 10710.362
  }
  weaponSpawn149 {
-  coords 4509.985 15.399 10713.895
+  coords 4509.985 14.761 10713.895
  }
  weaponSpawn150 {
-  coords 4500.27 16.179 10738.99
+  coords 4500.27 15.969 10738.99
  }
  weaponSpawn151 {
-  coords 4540.875 16.809 10746.155
+  coords 4540.875 16.154 10746.154
  }
  weaponSpawn152 {
-  coords 4545.43 16.809 10746.724
+  coords 4545.43 16.345 10746.724
  }
  weaponSpawn153 {
-  coords 4531.863 17.355 10745.59
+  coords 4531.863 17.039 10745.59
  }
  weaponSpawn154 {
-  coords 4522.933 17.33 10749.25
+  coords 4522.933 17.133 10749.25
  }
  weaponSpawn155 {
-  coords 4499.263 15.87 10750.884
+  coords 4499.263 15.127 10750.884
  }
  weaponSpawn156 {
-  coords 4505.464 20.371 10748.414
+  coords 4505.464 20.078 10748.414
  }
  weaponSpawn157 {
-  coords 4511.106 20.841 10741.411
+  coords 4511.106 20.548 10741.411
  }
  weaponSpawn158 {
-  coords 4506.013 22.984 10743.979
+  coords 4506.013 22.471 10743.979
  }
  weaponSpawn159 {
-  coords 4523.371 17.015 10763.207
+  coords 4523.371 16.67 10763.207
  }
  weaponSpawn160 {
-  coords 4540.313 18.13 10762.741
+  coords 4540.313 17.435 10762.741
  }
  weaponSpawn161 {
-  coords 4514.896 15.699 10740.562
+  coords 4514.896 15.449 10740.562
  }
  weaponSpawn162 {
-  coords 4512.46 16.08 10747.44
+  coords 4512.46 15.449 10747.44
  }
  weaponSpawn163 {
-  coords 4517.038 19.946 10745.185
+  coords 4517.038 19.549 10745.185
  }
  weaponSpawn164 {
-  coords 4328.784 5.423 10770.057
+  coords 4328.784 5.308 10770.057
  }
  weaponSpawn165 {
-  coords 4345.446 5.11 10783.565
+  coords 4345.446 4.986 10783.564
  }
  weaponSpawn166 {
-  coords 4317.373 4.102 10768.421
+  coords 4317.373 3.811 10768.421
  }
  weaponSpawn167 {
-  coords 4323.416 5.251 10739.709
+  coords 4323.416 4.922 10739.709
  }
  weaponSpawn168 {
-  coords 4342.404 6.491 10761.607
+  coords 4342.404 6.24 10761.606
  }
  weaponSpawn169 {
-  coords 4353.906 5.675 10763.519
+  coords 4353.906 5.538 10763.519
  }
  weaponSpawn170 {
-  coords 4370.654 5.093 10777.993
+  coords 4370.654 4.791 10777.993
  }
  weaponSpawn171 {
-  coords 4380.013 0.541 10830.228
+  coords 4380.013 0.265 10830.228
  }
  weaponSpawn172 {
-  coords 4379.4 6.121 10884.002
+  coords 4379.399 5.687 10884.002
  }
  weaponSpawn173 {
-  coords 4446.24 10.228 10904.273
+  coords 4446.24 10.054 10904.273
  }
  weaponSpawn174 {
-  coords 4463.538 10.285 10885.216
+  coords 4463.538 10.022 10885.216
  }
  weaponSpawn175 {
-  coords 4456.455 10.152 10863.897
+  coords 4456.455 9.728 10863.897
  }
  weaponSpawn176 {
-  coords 4541.716 12.99 10834.611
+  coords 4541.716 12.519 10834.61
  }
  weaponSpawn177 {
-  coords 4533.409 17.018 10855.464
+  coords 4533.409 16.736 10855.464
  }
  weaponSpawn178 {
-  coords 4542.96 17.899 10817.372
+  coords 4542.96 17.604 10817.372
  }
  weaponSpawn179 {
-  coords 4548.595 19.094 10787.482
+  coords 4548.595 18.936 10787.482
  }
  weaponSpawn180 {
-  coords 4554.118 18.229 10783.298
+  coords 4554.118 17.839 10783.298
  }
  weaponSpawn181 {
-  coords 4551.535 18.408 10771.817
+  coords 4551.535 17.904 10771.816
  }
  weaponSpawn182 {
-  coords 4547.928 18.364 10768.668
+  coords 4547.928 17.904 10768.667
  }
  weaponSpawn183 {
-  coords 4553.656 25.602 10773.464
+  coords 4553.656 25.304 10773.464
  }
  weaponSpawn184 {
-  coords 4556.497 20.125 10758.226
+  coords 4556.497 19.831 10758.226
  }
  weaponSpawn185 {
-  coords 4555.849 22.801 10744.591
+  coords 4555.849 22.595 10744.591
  }
  weaponSpawn186 {
-  coords 4562.486 19.809 10707.522
+  coords 4562.486 19.694 10707.522
  }
  weaponSpawn187 {
-  coords 4563.345 19.528 10717.778
+  coords 4563.345 19.308 10717.778
  }
  weaponSpawn188 {
-  coords 4547.938 18.171 10698.674
+  coords 4547.938 17.945 10698.674
  }
  weaponSpawn189 {
-  coords 4551.449 19.476 10678.058
+  coords 4551.449 19.24 10678.058
  }
  weaponSpawn190 {
-  coords 4562.725 19.67 10669.898
+  coords 4562.725 19.524 10669.897
  }
  weaponSpawn191 {
-  coords 4563.993 18.797 10675.439
+  coords 4563.993 18.647 10675.44
  }
  weaponSpawn192 {
-  coords 4564.935 19.839 10677.601
+  coords 4564.935 19.596 10677.601
  }
  weaponSpawn193 {
-  coords 4575.773 18.703 10659.708
+  coords 4575.773 17.774 10659.708
  }
  weaponSpawn194 {
-  coords 4543.051 18.158 10672.154
+  coords 4543.051 17.872 10672.153
  }
  weaponSpawn195 {
-  coords 4527.759 18.709 10655.187
+  coords 4527.759 18.429 10655.187
  }
  weaponSpawn196 {
-  coords 4495.39 19.994 10644.523
+  coords 4495.39 19.802 10644.522
  }
  weaponSpawn197 {
-  coords 4430.538 15.393 10637.733
+  coords 4430.538 15.037 10637.733
  }
  weaponSpawn198 {
-  coords 4372.831 19.244 10639.373
+  coords 4372.831 19.088 10639.373
  }
  weaponSpawn199 {
-  coords 4374.624 19.373 10638.896
+  coords 4374.624 19.085 10638.896
  }
  weaponSpawn200 {
-  coords 4375.433 19.852 10662.784
+  coords 4375.433 19.497 10662.784
  }
  weaponSpawn201 {
-  coords 4362.468 13.968 10674.81
+  coords 4362.468 13.826 10674.81
  }
  weaponSpawn202 {
-  coords 4347.292 9.892 10664.668
+  coords 4347.292 9.42 10664.667
  }
  weaponSpawn203 {
-  coords 4321.288 8.668 10676.256
+  coords 4321.288 8.498 10676.256
  }
  weaponSpawn204 {
-  coords 4340.063 7.329 10679.251
+  coords 4340.063 7.093 10679.251
  }
  weaponSpawn205 {
-  coords 4334.933 6.736 10749.221
+  coords 4334.933 6.538 10749.221
  }
  weaponSpawn206 {
-  coords 4392.893 10.783 10776.35
+  coords 4392.893 10.388 10776.35
  }
  weaponSpawn207 {
-  coords 4364.461 16.953 10688.262
+  coords 4364.461 16.671 10688.262
  }
  weaponSpawn208 {
-  coords 4378.798 17.072 10672.58
+  coords 4378.798 16.67 10672.58
  }
  weaponSpawn209 {
-  coords 4347.222 5.167 10814.75
+  coords 4345.809 0.213 10818.105
  }
  weaponSpawn210 {
-  coords 4345.074 6.604 10875.379
+  coords 4345.074 6.229 10875.379
  }
  weaponSpawn217 {
-  coords 4313.301 1.012 10892.716
+  coords 4313.301 0.496 10892.716
  }
  weaponSpawn218 {
-  coords 4363.236 6.235 10899.62
+  coords 4363.236 5.113 10899.619
  }
  weaponSpawn219 {
-  coords 4362.309 5.631 10896.884
+  coords 4362.309 5.046 10896.884
  }
  weaponSpawn220 {
-  coords 4387.203 7.248 10904.61
+  coords 4387.203 7.083 10904.609
  }
  weaponSpawn221 {
-  coords 4399.712 8.162 10899.327
+  coords 4399.712 7.869 10899.326
  }
  weaponSpawn222 {
-  coords 4398.855 11.445 10779.947
+  coords 4398.854 11.22 10779.947
  }
  weaponSpawn223 {
-  coords 4527.735 17.068 10771.528
+  coords 4527.735 16.826 10771.527
  }
  weaponSpawn224 {
-  coords 4525.818 16.939 10772.853
+  coords 4525.817 16.115 10772.853
  }
  weaponSpawn225 {
-  coords 4526.527 17.38 10753.615
+  coords 4526.527 17.069 10753.614
  }
  weaponSpawn231 {
-  coords 4429.088 10.646 10850.723
+  coords 4429.088 10.456 10850.723
  }
  weaponSpawn227 {
-  coords 4430.042 14.449 10843.34
+  coords 4430.042 14.335 10843.34
  }
  weaponSpawn238 {
-  coords 4447.55 16.803 10729.052
+  coords 4447.55 16.459 10729.052
  }
  weaponSpawn237 {
-  coords 4457.415 23.282 10735.416
+  coords 4457.415 23.022 10735.416
  }
  weaponSpawn229 {
-  coords 4438.392 9.576 10838.512
+  coords 4438.392 9.236 10838.512
  }
  weaponSpawn239 {
-  coords 4446.154 16.846 10738.063
+  coords 4446.154 16.459 10738.063
  }
  weaponSpawn234 {
-  coords 4434.902 23.459 10731.929
+  coords 4434.902 23.127 10731.929
  }
  weaponSpawn235 {
-  coords 4440.661 23.283 10732.306
+  coords 4440.661 23.024 10732.306
  }
  weaponSpawn233 {
-  coords 4426.504 9.493 10867.292
+  coords 4426.504 9.058 10867.292
  }
  weaponSpawn241 {
-  coords 4457.328 14.582 10735.124
+  coords 4457.328 14.245 10735.123
  }
  weaponSpawn242 {
-  coords 4460.761 14.477 10734.037
+  coords 4460.761 13.239 10734.037
  }
  weaponSpawn240 {
-  coords 4432.233 17.336 10730.021
+  coords 4432.233 17.047 10730.021
  }
  weaponSpawn230 {
-  coords 4430.27 9.764 10839.368
+  coords 4430.27 9.236 10839.367
  }
  weaponSpawn228 {
-  coords 4438.06 14.397 10841.212
+  coords 4438.06 14.234 10841.212
  }
  weaponSpawn236 {
-  coords 4449.107 23.346 10733.574
+  coords 4449.107 23.024 10733.574
  }
  weaponSpawn226 {
-  coords 4431.806 16.94 10840.95
+  coords 4431.806 16.637 10840.95
  }
  weaponSpawn232 {
-  coords 4424.887 10.788 10860.292
+  coords 4424.887 10.558 10860.292
  }
  weaponSpawn244 {
-  coords 4356.65 17.77 10718.05
+  coords 4356.65 17.446 10718.05
  }
  weaponSpawn245 {
-  coords 4335.429 8.271 10726.064
+  coords 4335.429 8.111 10726.064
  }
  weaponSpawn243 {
-  coords 4362.436 13.865 10685.606
+  coords 4362.436 13.625 10685.605
  }
  weaponSpawn248 {
-  coords 4386.93 6.049 10887.677
+  coords 4386.93 5.702 10887.677
  }
  weaponSpawn246 {
-  coords 4426.575 10.227 10848.323
+  coords 4426.575 10.074 10848.322
  }
  weaponSpawn250 {
-  coords 4427.669 16.916 10647.62
+  coords 4427.669 16.525 10647.619
  }
  weaponSpawn247 {
-  coords 4407.313 7.928 10868.323
+  coords 4407.313 7.713 10868.322
  }
  weaponSpawn249 {
-  coords 4475.541 16.811 10651.659
+  coords 4475.541 16.478 10651.658
  }
  weaponSpawn254 {
-  coords 4431.617 31.291 10731.188
+  coords 4431.617 30.977 10731.188
  }
  weaponSpawn256 {
-  coords 4433.336 31.271 10729.998
+  coords 4433.335 30.96 10729.998
  }
  weaponSpawn255 {
-  coords 4434.961 31.249 10731.928
+  coords 4434.961 30.977 10731.928
  }
  weaponSpawn253 {
-  coords 4432.389 14.847 10726.663
+  coords 4432.389 14.579 10726.662
  }
  weaponSpawn251 {
-  coords 4446.056 13.571 10729.975
+  coords 4446.056 13.516 10729.976
  }
  weaponSpawn252 {
-  coords 4443.022 13.646 10738.014
+  coords 4443.022 13.517 10738.014
  }
  weaponSpawn264 {
-  coords 4212.393 13.841 10625.505
+  coords 4212.393 13.686 10625.505
  }
  weaponSpawn265 {
-  coords 4222.703 1.627 10703.434
+  coords 4222.703 1.374 10703.435
  }
  weaponSpawn266 {
-  coords 4229.178 1.7 10703.062
+  coords 4229.178 1.373 10703.062
  }
  weaponSpawn267 {
-  coords 4251.255 2.987 10701.706
+  coords 4251.255 2.736 10701.706
  }
  weaponSpawn268 {
-  coords 4255.082 1.746 10704.493
+  coords 4255.082 1.415 10704.493
  }
  weaponSpawn269 {
-  coords 4284.467 4.762 10668.975
+  coords 4284.467 4.332 10668.976
  }
  weaponSpawn270 {
-  coords 4285.094 5.702 10661.339
+  coords 4285.094 5.534 10661.339
  }
  weaponSpawn271 {
-  coords 4277.254 5.586 10665.613
+  coords 4277.254 5.423 10665.612
  }
  weaponSpawn272 {
-  coords 4535.381 17.98 10858.36
+  coords 4535.381 17.68 10858.359
  }
  weaponSpawn273 {
-  coords 4335.569 14.503 10629.774
+  coords 4335.569 14.058 10629.774
  }
  weaponSpawn274 {
-  coords 4299.149 6.079 10668.731
+  coords 4299.149 5.776 10668.731
  }
  weaponSpawn275 {
-  coords 4338.63 8.114 10684.381
+  coords 4338.63 7.982 10684.381
  }
  weaponSpawn262 {
-  coords 4209.947 13.566 10602.302
+  coords 4209.947 12.611 10602.302
  }
  weaponSpawn261 {
-  coords 4212.332 13.037 10617.575
+  coords 4212.332 12.664 10617.575
  }
  weaponSpawn259 {
-  coords 4289.126 5.907 10671.429
+  coords 4289.126 5.632 10671.429
  }
  weaponSpawn263 {
-  coords 4211.822 13.699 10620.412
+  coords 4211.822 13.587 10620.412
  }
  weaponSpawn260 {
-  coords 4301.063 5.311 10679.513
+  coords 4301.063 4.764 10679.513
  }
  weaponSpawn258 {
-  coords 4285.244 4.92 10667.931
+  coords 4285.244 4.332 10667.932
  }
  weaponSpawn257 {
-  coords 4272.416 2.127 10716.315
+  coords 4272.416 1.731 10716.314
  }
  weaponSpawn276 {
-  coords 4310.09 5.132 10674.873
+  coords 4310.09 5 10674.873
  }
  weaponSpawn277 {
-  coords 4416.891 9.459 10888.182
+  coords 4416.891 8.993 10888.182
  }
  weaponSpawn278 {
-  coords 4411.136 7.142 10894.258
+  coords 4411.136 6.775 10894.258
  }
  weaponSpawn279 {
-  coords 4405.327 7.14 10893.346
+  coords 4405.327 6.773 10893.346
  }
  weaponSpawn280 {
-  coords 4414.594 7.11 10896.482
+  coords 4414.594 6.774 10896.482
  }
  weaponSpawn281 {
-  coords 4394.684 6.443 10866.402
+  coords 4394.684 5.712 10866.402
  }
  weaponSpawn282 {
-  coords 4422.622 9.993 10876.926
+  coords 4422.622 9.824 10876.926
  }
  weaponSpawn283 {
-  coords 4425.878 9.966 10882.366
+  coords 4425.877 9.833 10882.365
  }
  weaponSpawn284 {
-  coords 4430.061 10.418 10862.626
+  coords 4430.061 10.066 10862.625
  }
  weaponSpawn285 {
-  coords 4433.579 14.067 10842.808
+  coords 4433.579 13.835 10842.808
  }
  weaponSpawn286 {
-  coords 4422.74 9.883 10837.632
+  coords 4422.74 9.716 10837.632
  }
  weaponSpawn287 {
-  coords 4447.126 5.358 10819.683
+  coords 4447.126 4.781 10819.683
  }
  weaponSpawn288 {
-  coords 4519.049 13.501 10872.847
+  coords 4519.049 13.269 10872.847
  }
  weaponSpawn289 {
-  coords 4531.418 17.84 10858.771
+  coords 4531.417 17.581 10858.772
  }
  weaponSpawn290 {
-  coords 4446.771 13.685 10694.328
+  coords 4446.771 13.332 10694.327
  }
  weaponSpawn291 {
-  coords 4449.072 13.382 10705.608
+  coords 4449.072 13.08 10705.607
  }
  weaponSpawn292 {
-  coords 4459.854 14.25 10708.261
+  coords 4459.854 13.978 10708.261
  }
  weaponSpawn293 {
-  coords 4452.378 14.214 10704.655
+  coords 4452.377 13.979 10704.654
  }
  weaponSpawn294 {
-  coords 4461.546 14.361 10700.443
+  coords 4461.546 14.042 10700.443
  }
  weaponSpawn295 {
-  coords 4410.043 16.823 10645.638
+  coords 4410.043 16.522 10645.638
  }
  weaponSpawn296 {
-  coords 4425.032 17.723 10653.459
+  coords 4425.032 17.448 10653.459
  }
  weaponSpawn297 {
-  coords 4330.445 7.763 10677.709
+  coords 4330.445 7.248 10677.709
  }
  weaponSpawn298 {
-  coords 4372.188 5.486 10782.491
+  coords 4372.188 5.282 10782.491
  }
  weaponSpawn299 {
-  coords 4411.492 3.198 10813.26
+  coords 4411.492 3.199 10813.26
  }
  weaponSpawn300 {
-  coords 4412.478 4.829 10813.423
+  coords 4412.478 3.266 10813.423
  }
  weaponSpawn301 {
-  coords 4519.427 16.485 10652.146
+  coords 4519.427 16.049 10652.146
  }
  weaponSpawn302 {
-  coords 4407.936 17.694 10652.456
+  coords 4407.936 17.541 10652.456
  }
  weaponSpawn303 {
-  coords 4374.905 12.313 10644.994
+  coords 4374.905 11.845 10644.994
  }
  weaponSpawn304 {
-  coords 4373.3 17.299 10652.379
+  coords 4373.3 17.202 10652.379
  }
  weaponSpawn305 {
-  coords 4362.354 17.341 10650.137
+  coords 4362.354 17.202 10650.137
  }
  weaponSpawn306 {
-  coords 4330.101 7.486 10677.766
+  coords 4330.101 7.233 10677.766
  }
  weaponSpawn307 {
-  coords 4423.591 10.22 10853.175
+  coords 4423.591 9.975 10853.175
  }
  weaponSpawn308 {
-  coords 4415.684 9.159 10844.933
+  coords 4415.684 8.864 10844.934
  }
  weaponSpawn309 {
-  coords 4474.95 17.159 10764.14
+  coords 4474.95 16.996 10764.14
  }
  weaponSpawn310 {
-  coords 4474.747 16.878 10779.112
+  coords 4474.747 16.752 10779.111
  }
  weaponSpawn311 {
-  coords 4472.358 16.347 10784.311
+  coords 4472.357 16.144 10784.311
  }
  weaponSpawn312 {
-  coords 4479.438 20.425 10748.09
+  coords 4479.438 20.129 10748.09
  }
  weaponSpawn313 {
-  coords 4476.984 20.469 10754.559
+  coords 4476.984 20.129 10754.559
  }
  weaponSpawn314 {
-  coords 4480.722 16.54 10784.937
+  coords 4480.722 16.198 10784.938
  }
  weaponSpawn315 {
-  coords 4406.374 13.115 10653.043
+  coords 4406.372 12.812 10653.043
   angleY 81.294
  }
  weaponSpawn316 {
-  coords 4389.469 14.17 10661.768
-  angleX -6.968
-  angleY -17.39
-  angleZ 0.596
+  coords 4389.465 12.984 10661.75
  }
  weaponSpawn317 {
-  coords 4330.815 8.07 10723.326
+  coords 4330.814 7.918 10723.325
  }
  weaponSpawn318 {
-  coords 4335.337 8.741 10726.101
+  coords 4335.336 8.615 10726.101
  }
  weaponSpawn319 {
-  coords 4508.914 13.405 10843.125
+  coords 4508.914 13.098 10843.124
  }
  weaponSpawn320 {
-  coords 4541.972 17.683 10778.457
+  coords 4541.972 17.36 10778.457
  }
  weaponSpawn321 {
-  coords 4531.008 21.14 10750
+  coords 4531.008 21.035 10750
  }
  weaponSpawn322 {
-  coords 4566.32 20.454 10700.678
+  coords 4566.319 20.307 10700.678
  }
  weaponSpawn323 {
-  coords 4497.19 15.492 10699.909
+  coords 4497.19 15.397 10699.909
  }
  weaponSpawn324 {
-  coords 4488.017 15.446 10703.61
+  coords 4488.017 15.291 10703.609
  }
  weaponSpawn325 {
-  coords 4483.405 15.529 10712.241
+  coords 4483.405 15.297 10712.241
  }
  weaponSpawn326 {
-  coords 4423.95 12.071 10787.039
+  coords 4423.95 11.886 10787.039
  }
  weaponSpawn327 {
-  coords 4421.966 10.246 10797.514
+  coords 4421.966 10.031 10797.514
  }
  weaponSpawn328 {
-  coords 4429.405 9.349 10832.611
+  coords 4429.405 8.948 10832.61
  }
  weaponSpawn329 {
-  coords 4428.341 9.256 10827.42
+  coords 4428.341 8.946 10827.42
  }
  weaponSpawn330 {
-  coords 4434.862 10.435 10843.577
+  coords 4434.862 10.31 10843.577
  }
  weaponSpawn331 {
-  coords 4436.325 14.554 10837.522
+  coords 4436.325 14.335 10837.522
  }
  weaponSpawn332 {
   coords 4425.795 13.336 10843.906
  }
  weaponSpawn333 {
-  coords 4420.308 10.138 10887.863
+  coords 4420.308 9.935 10887.862
  }
  weaponSpawn334 {
-  coords 4447.68 10.235 10900.079
+  coords 4447.68 10.086 10900.079
  }
  weaponSpawn335 {
-  coords 4506.927 14.771 10915.559
+  coords 4506.927 14.637 10915.559
  }
  weaponSpawn336 {
-  coords 4540.508 12.721 10834.204
+  coords 4540.508 12.418 10834.204
  }
  weaponSpawn337 {
-  coords 4516.105 16.023 10716.387
+  coords 4516.105 15.77 10716.387
  }
  weaponSpawn338 {
-  coords 4528.552 16.037 10718.92
+  coords 4528.552 15.867 10718.92
  }
  weaponSpawn339 {
-  coords 4527.791 16.401 10713.998
+  coords 4527.791 16.165 10713.998
  }
  weaponSpawn340 {
-  coords 4468.715 16.875 10664.354
+  coords 4468.715 16.776 10664.354
  }
  weaponSpawn341 {
-  coords 4445.427 19.64 10663.665
+  coords 4445.427 19.323 10663.664
  }
  weaponSpawn342 {
-  coords 4443.524 19.577 10670.236
+  coords 4443.524 19.323 10670.236
  }
  weaponSpawn343 {
-  coords 4427.116 13.874 10652.026
+  coords 4427.116 13.646 10652.025
  }
  weaponSpawn344 {
-  coords 4317.585 11.246 10684.237
+  coords 4317.585 11.078 10684.237
  }
  weaponSpawn345 {
-  coords 4363.854 0.901 10853.041
+  coords 4363.854 0.561 10853.041
  }
  weaponSpawn346 {
-  coords 4337.137 1.285 10869.698
+  coords 4337.137 0.815 10869.697
  }
  weaponSpawn347 {
-  coords 4316.25 0.553 10784.591
+  coords 4316.25 0.348 10784.591
  }
  weaponSpawn348 {
-  coords 4418.17 9.594 10841.429
+  coords 4418.17 9.337 10841.429
  }
  weaponSpawn349 {
-  coords 4450.758 9.647 10818.295
+  coords 4450.758 9.457 10818.295
  }
  weaponSpawn350 {
-  coords 4465.015 13.517 10802.037
+  coords 4465.015 13.344 10802.037
  }
  weaponSpawn351 {
-  coords 4475.31 14.122 10810.117
+  coords 4475.31 13.847 10810.116
  }
  weaponSpawn352 {
-  coords 4508.796 16.423 10802.75
+  coords 4508.796 16.339 10802.75
  }
  weaponSpawn353 {
-  coords 4577.647 24.973 10674.571
+  coords 4577.647 24.732 10674.571
  }
  weaponSpawn354 {
-  coords 4569.716 18.698 10673.095
+  coords 4569.716 18.582 10673.095
  }
  weaponSpawn355 {
-  coords 4394.167 7.386 10864.247
+  coords 4394.167 7.181 10864.247
  }
  weaponSpawn356 {
-  coords 4434.165 10.236 10856.286
+  coords 4434.165 10.042 10856.286
  }
  weaponSpawn358 {
-  coords 4442.917 16.827 10790.602
+  coords 4442.917 16.61 10790.602
  }
  weaponSpawn363 {
-  coords 4468.556 17.325 10776.208
+  coords 4468.556 17.05 10776.208
  }
  weaponSpawn362 {
-  coords 4423.644 15.651 10782.943
+  coords 4423.644 15.31 10782.943
  }
  weaponSpawn364 {
-  coords 4472.943 17.41 10756.311
+  coords 4472.943 17.146 10756.311
  }
  weaponSpawn360 {
-  coords 4433.267 15.651 10779.752
+  coords 4433.267 15.446 10779.752
  }
  weaponSpawn357 {
-  coords 4421.615 18.652 10777.88
+  coords 4421.615 18.166 10777.88
  }
  weaponSpawn359 {
-  coords 4447.216 16.855 10784.192
+  coords 4447.216 16.516 10784.191
  }
  weaponSpawn361 {
-  coords 4419.068 15.874 10782.5
+  coords 4419.068 15.645 10782.5
  }
  weaponSpawn365 {
-  coords 4507.385 20.341 10738.622
+  coords 4507.385 20.077 10738.621
  }
  weaponSpawn366 {
-  coords 4516.853 23.128 10745.803
+  coords 4516.853 22.849 10745.803
  }
  weaponSpawn367 {
-  coords 4512.327 23.235 10745.265
+  coords 4512.327 22.849 10745.265
  }
  weaponSpawn368 {
-  coords 4525.578 21.145 10746.986
+  coords 4525.578 20.943 10746.986
  }
  weaponSpawn369 {
-  coords 4528.278 20.398 10749.896
+  coords 4528.278 20.04 10749.896
  }
  weaponSpawn370 {
-  coords 4539.447 21.147 10743.663
+  coords 4539.447 20.939 10743.662
  }
  weaponSpawn371 {
-  coords 4513.26 16.529 10755.734
+  coords 4513.26 16.324 10755.734
  }
  weaponSpawn372 {
-  coords 4527.369 20.818 10742.405
+  coords 4527.369 20.654 10742.405
  }
  weaponSpawn373 {
-  coords 4450.276 13.608 10671.212
+  coords 4450.276 13.228 10671.212
  }
  weaponSpawn374 {
-  coords 4361.907 11.366 10718.742
+  coords 4361.907 11.146 10718.742
  }
  weaponSpawn375 {
-  coords 4329.53 0.714 10807.733
+  coords 4329.53 0.237 10807.733
+ }
+ weaponSpawn376 {
+  coords 4394.12 11.12 10738.08
+ }
+ weaponSpawn377 {
+  coords 4390.067 11.612 10729.811
+ }
+ weaponSpawn378 {
+  coords 4393.944 11.511 10724.164
+ }
+ weaponSpawn379 {
+  coords 4296.156 1.276 10736.26
+ }
+ weaponSpawn380 {
+  coords 4318.432 0.37 10783.272
+ }
+ weaponSpawn381 {
+  coords 4367.655 5.181 10780.735
+ }
+ weaponSpawn382 {
+  coords 4372.814 5.487 10785.588
+ }
+ weaponSpawn383 {
+  coords 4385.487 6.664 10905.401
+ }
+ weaponSpawn384 {
+  coords 4460.094 10.154 10904.964
+ }
+ weaponSpawn385 {
+  coords 4466.732 10.154 10903.51
+ }
+ weaponSpawn386 {
+  coords 4463.675 9.257 10907.947
+ }
+ weaponSpawn387 {
+  coords 4467.861 10.26 10908.028
+ }
+ weaponSpawn388 {
+  coords 4431.773 17.533 10835.975
+ }
+ weaponSpawn389 {
+  coords 4474.294 14.028 10802.137
+ }
+ weaponSpawn390 {
+  coords 4476.224 14.344 10808.813
+ }
+ weaponSpawn391 {
+  coords 4474.139 20.335 10785.892
+ }
+ weaponSpawn392 {
+  coords 4474.13 19.858 10785.923
+ }
+ weaponSpawn393 {
+  coords 4475.311 19.662 10764.329
+ }
+ weaponSpawn394 {
+  coords 4474.32 17.735 10746.42
+ }
+ weaponSpawn395 {
+  coords 4493.386 14.394 10698.267
+ }
+ weaponSpawn396 {
+  coords 4492.593 15.3 10703.67
+ }
+ weaponSpawn397 {
+  coords 4518.522 16.101 10714.519
+ }
+ weaponSpawn398 {
+  coords 4558.53 19.507 10707.024
+ }
+ weaponSpawn399 {
+  coords 4566.143 19.339 10700.582
+ }
+ weaponSpawn400 {
+  coords 4505.831 18.815 10650.27
+ }
+ weaponSpawn401 {
+  coords 4507.875 17.574 10646.095
+ }
+ weaponSpawn402 {
+  coords 4344.162 14.902 10622.697
+ }
+ weaponSpawn403 {
+  coords 4333.969 14.482 10627.479
+ }
+ weaponSpawn404 {
+  coords 4360.913 16.671 10687.837
+ }
+ weaponSpawn405 {
+  coords 4370.737 13.258 10674.649
+ }
+ weaponSpawn406 {
+  coords 4367.241 13.746 10678.528
+ }
+ weaponSpawn407 {
+  coords 4376.247 13.71 10671.327
+ }
+ weaponSpawn408 {
+  coords 4357.687 18.352 10715.303
+ }
+ weaponSpawn409 {
+  coords 4362.493 17.446 10717.087
+ }
+ weaponSpawn410 {
+  coords 4376.842 0.138 10832.112
+ }
+ weaponSpawn411 {
+  coords 4385.731 7.748 10905.556
+ }
+ weaponSpawn412 {
+  coords 4471.896 13.534 10897.794
+ }
+ weaponSpawn413 {
+  coords 4493.396 11.43 10831.711
+ }
+ weaponSpawn414 {
+  coords 4522.794 14.183 10836.294
+ }
+ weaponSpawn415 {
+  coords 4464.057 10.506 10827.31
+ }
+ weaponSpawn416 {
+  coords 4478.361 10.645 10805.819
+ }
+ weaponSpawn417 {
+  coords 4474.552 10.073 10800.918
+ }
+ weaponSpawn418 {
+  coords 4464.163 10.734 10801.051
+ }
+ weaponSpawn419 {
+  coords 4497.688 15.959 10759.745
+ }
+ weaponSpawn420 {
+  coords 4547.563 22.004 10768.748
+ }
+ weaponSpawn421 {
+  coords 4555.835 22.479 10769.391
+ }
+ weaponSpawn422 {
+  coords 4559.464 22.901 10773.305
+ }
+ weaponSpawn423 {
+  coords 4557.978 18.706 10750.256
+ }
+ weaponSpawn424 {
+  coords 4522.123 16.261 10716.366
+ }
+ weaponSpawn425 {
+  coords 4386.051 10.745 10749.722
+ }
+ weaponSpawn426 {
+  coords 4389.72 11.095 10755.168
+ }
+ weaponSpawn427 {
+  coords 4388.912 11.578 10755.104
+ }
+ weaponSpawn428 {
+  coords 4388.127 10.326 10752.876
+ }
+ weaponSpawn429 {
+  coords 4496.947 15.431 10711.347
+ }
+ weaponSpawn430 {
+  coords 4536.829 21.638 10721.593
+ }
+ weaponSpawn431 {
+  coords 4536.073 21.348 10715.154
+ }
+ weaponSpawn432 {
+  coords 4531.536 24.46 10718.699
+ }
+ weaponSpawn433 {
+  coords 4531.514 24.927 10719.213
+ }
+ weaponSpawn434 {
+  coords 4542.959 24.456 10715.624
+ }
+ weaponSpawn435 {
+  coords 4528.005 17.241 10654.095
+ }
+ weaponSpawn436 {
+  coords 4470.282 16.383 10650.801
+ }
+ weaponSpawn437 {
+  coords 4443.182 20.122 10665.679
+ }
+ weaponSpawn438 {
+  coords 4407.64 6.778 10894.194
+ }
+ weaponSpawn439 {
+  coords 4412.652 6.778 10894.937
+ }
+ weaponSpawn440 {
+  coords 4417.157 6.778 10896.061
+ }
+ weaponSpawn441 {
+  coords 4319.078 7.098 10723.96
+ }
+ weaponSpawn442 {
+  coords 4353.334 10.26 10711.617
+ }
+ weaponSpawn443 {
+  coords 4389.295 9.456 10776.661
+ }
+ weaponSpawn444 {
+  coords 4451.73 12.844 10685.769
+ }
+ weaponSpawn445 {
+  coords 4444.503 16.513 10676.147
+ }
+ weaponSpawn446 {
+  coords 4452.154 12.719 10677.159
+ }
+ weaponSpawn447 {
+  coords 4375.631 13.844 10679.712
+ }
+ weaponSpawn448 {
+  coords 4372.917 13.844 10681.962
+ }
+ weaponSpawn449 {
+  coords 4370.473 13.258 10679.092
+ }
+ weaponSpawn450 {
+  coords 4437.371 9.662 10840.686
+ }
+ weaponSpawn451 {
+  coords 4439.459 9.824 10837.747
+ }
+ weaponSpawn452 {
+  coords 4431.558 10.274 10839.573
+ }
+ weaponSpawn453 {
+  coords 4547.731 18.448 10805.526
+ }
+ weaponSpawn454 {
+  coords 4477.418 10.635 10802.894
+ }
+ weaponSpawn455 {
+  coords 4477.071 20.54 10744.706
+ }
+ weaponSpawn456 {
+  coords 4476.777 21.021 10744.552
+ }
+ weaponSpawn457 {
+  coords 4397.903 15.313 10765.132
+ }
+ weaponSpawn458 {
+  coords 4404.269 18.034 10766.371
+ }
+ weaponSpawn459 {
+  coords 4404.49 18.508 10765.978
+ }
+ weaponSpawn460 {
+  coords 4392.315 18.031 10765.739
+ }
+ weaponSpawn581 {
+  coords 4588.852 21.474 10812.903
+ }
+ weaponSpawn595 {
+  coords 4555.922 14.785 10910.053
+ }
+ weaponSpawn517 {
+  coords 4617.265 18.923 10662.665
+ }
+ weaponSpawn673 {
+  coords 4281.736 1.687 10967.551
+ }
+ weaponSpawn678 {
+  coords 4315.285 1.884 10960.336
+ }
+ weaponSpawn484 {
+  coords 4348.369 14.725 10575.544
+ }
+ weaponSpawn479 {
+  coords 4366.378 14.405 10592.995
+ }
+ weaponSpawn650 {
+  coords 4378.799 1.662 11041.887
+ }
+ weaponSpawn542 {
+  coords 4686.487 23.335 10714.813
+ }
+ weaponSpawn604 {
+  coords 4541.255 15.288 10960.361
+ }
+ weaponSpawn467 {
+  coords 4406.048 16.229 10600.432
+ }
+ weaponSpawn461 {
+  coords 4382.749 15.865 10590.602
+ }
+ weaponSpawn474 {
+  coords 4387.666 15.742 10630.069
+ }
+ weaponSpawn568 {
+  coords 4631.818 19.596 10827.784
+ }
+ weaponSpawn473 {
+  coords 4391.792 16.702 10629.179
+ }
+ weaponSpawn505 {
+  coords 4480.659 18.106 10606.583
+ }
+ weaponSpawn528 {
+  coords 4646.174 23.763 10716.513
+ }
+ weaponSpawn548 {
+  coords 4624.361 19.997 10754.371
+ }
+ weaponSpawn655 {
+  coords 4430.138 6.295 11030.495
+ }
+ weaponSpawn570 {
+  coords 4626.99 25.415 10880.682
+ }
+ weaponSpawn560 {
+  coords 4584.208 18.576 10766.046
+ }
+ weaponSpawn676 {
+  coords 4309.474 1.713 10909.815
+ }
+ weaponSpawn478 {
+  coords 4372.051 16.281 10596.261
+ }
+ weaponSpawn677 {
+  coords 4320.809 1.725 10911.224
+ }
+ weaponSpawn576 {
+  coords 4595.702 21.128 10914.902
+ }
+ weaponSpawn660 {
+  coords 4388.16 7.19 10967.98
+ }
+ weaponSpawn601 {
+  coords 4551.669 15.682 10952.145
+ }
+ weaponSpawn643 {
+  coords 4411.95 1.594 11001.092
+ }
+ weaponSpawn602 {
+  coords 4541.539 15.173 10954.603
+ }
+ weaponSpawn617 {
+  coords 4590.249 24.893 11068.541
+ }
+ weaponSpawn675 {
+  coords 4291.292 2.865 10916.081
+ }
+ weaponSpawn622 {
+  coords 4565.373 24.415 11137.679
+ }
+ weaponSpawn607 {
+  coords 4577.93 19.517 10968.132
+ }
+ weaponSpawn569 {
+  coords 4634.528 23.959 10829.095
+ }
+ weaponSpawn681 {
+  coords 4413.402 1.613 10999.222
+ }
+ weaponSpawn477 {
+  coords 4384.747 15.585 10597.766
+ }
+ weaponSpawn563 {
+  coords 4580.172 17.596 10802.873
+ }
+ weaponSpawn687 {
+  coords 4464.643 11.482 10973.27
+ }
+ weaponSpawn632 {
+  coords 4456.851 2.581 11063.027
+ }
+ weaponSpawn589 {
+  coords 4568.209 16.654 10872.83
+ }
+ weaponSpawn572 {
+  coords 4620.931 23.094 10884.173
+ }
+ weaponSpawn593 {
+  coords 4561.542 18.364 10908.129
+ }
+ weaponSpawn504 {
+  coords 4477.748 18.106 10613.563
+ }
+ weaponSpawn532 {
+  coords 4695.117 25.539 10659.402
+ }
+ weaponSpawn531 {
+  coords 4653.219 21.243 10690.744
+ }
+ weaponSpawn586 {
+  coords 4635.597 19.596 10829.273
+ }
+ weaponSpawn526 {
+  coords 4643.863 23.468 10726.396
+ }
+ weaponSpawn585 {
+  coords 4632.402 23.7 10833.043
+ }
+ weaponSpawn594 {
+  coords 4561.085 15.961 10910.005
+ }
+ weaponSpawn573 {
+  coords 4620.246 25.42 10888.313
+ }
+ weaponSpawn516 {
+  coords 4615.396 18.938 10669.982
+ }
+ weaponSpawn584 {
+  coords 4635.873 23.206 10828.015
+ }
+ weaponSpawn551 {
+  coords 4591.556 18.517 10750.889
+ }
+ weaponSpawn642 {
+  coords 4400.526 1.594 11016.004
+ }
+ weaponSpawn690 {
+  coords 4593.527 21.8 11067.186
+ }
+ weaponSpawn633 {
+  coords 4463.765 2.719 11091.236
+ }
+ weaponSpawn686 {
+  coords 4471.455 17.788 10977.678
+ }
+ weaponSpawn535 {
+  coords 4687.174 24.458 10654.96
+ }
+ weaponSpawn536 {
+  coords 4684.451 26.624 10654.378
+ }
+ weaponSpawn543 {
+  coords 4676.896 23.439 10713.474
+ }
+ weaponSpawn527 {
+  coords 4646.765 22.864 10719.436
+ }
+ weaponSpawn545 {
+  coords 4646.081 23.371 10730.489
+ }
+ weaponSpawn639 {
+  coords 4451.906 1.854 11033.175
+ }
+ weaponSpawn521 {
+  coords 4576.734 24.732 10674.993
+ }
+ weaponSpawn644 {
+  coords 4380.052 2.343 11000.344
+ }
+ weaponSpawn522 {
+  coords 4578.215 24.732 10674.125
+ }
+ weaponSpawn625 {
+  coords 4468.764 2.582 11093.742
+ }
+ weaponSpawn685 {
+  coords 4468.658 16.882 10974.271
+ }
+ weaponSpawn567 {
+  coords 4636.049 19.596 10827.87
+ }
+ weaponSpawn664 {
+  coords 4402.041 8.196 10935.15
+ }
+ weaponSpawn588 {
+  coords 4566.103 16.251 10865.678
+ }
+ weaponSpawn609 {
+  coords 4558.758 18.763 11000.249
+ }
+ weaponSpawn596 {
+  coords 4556.831 17.204 10918.939
+ }
+ weaponSpawn603 {
+  coords 4545.843 15.58 10960.897
+ }
+ weaponSpawn515 {
+  coords 4616.087 18.938 10668.334
+ }
+ weaponSpawn534 {
+  coords 4694.456 23.323 10654.997
+ }
+ weaponSpawn476 {
+  coords 4377.937 16.673 10598.114
+ }
+ weaponSpawn651 {
+  coords 4383.377 1.667 11050.883
+ }
+ weaponSpawn611 {
+  coords 4547.926 18.464 11009.912
+ }
+ weaponSpawn647 {
+  coords 4369.448 2.08 10990.826
+ }
+ weaponSpawn658 {
+  coords 4430.575 3.095 11019.907
+ }
+ weaponSpawn587 {
+  coords 4638.588 19.596 10830.262
+ }
+ weaponSpawn462 {
+  coords 4377.916 16.674 10598.432
+ }
+ weaponSpawn566 {
+  coords 4641.431 19.934 10826.201
+ }
+ weaponSpawn599 {
+  coords 4553.217 14.404 10937.841
+ }
+ weaponSpawn663 {
+  coords 4399.142 7.139 10941.426
+ }
+ weaponSpawn637 {
+  coords 4420.528 2.239 11052.777
+ }
+ weaponSpawn636 {
+  coords 4423.578 2.239 11058.857
+ }
+ weaponSpawn646 {
+  coords 4375.956 2.08 10988.89
+ }
+ weaponSpawn623 {
+  coords 4569.519 24.281 11127.455
+ }
+ weaponSpawn645 {
+  coords 4374.972 2.341 10997.25
+ }
+ weaponSpawn533 {
+  coords 4695.438 24.528 10657.03
+ }
+ weaponSpawn613 {
+  coords 4565.048 16.561 11035.56
+ }
+ weaponSpawn626 {
+  coords 4468.365 2.965 11074.771
+ }
+ weaponSpawn627 {
+  coords 4466.157 2.965 11070.714
+ }
+ weaponSpawn538 {
+  coords 4685.789 25.567 10657.189
+ }
+ weaponSpawn571 {
+  coords 4624.94 23.094 10882.981
+ }
+ weaponSpawn561 {
+  coords 4579.046 18.294 10788.249
+ }
+ weaponSpawn554 {
+  coords 4606.845 18.647 10777.298
+ }
+ weaponSpawn661 {
+  coords 4392.788 7.19 10965.639
+ }
+ weaponSpawn525 {
+  coords 4640.843 23.465 10730.067
+ }
+ weaponSpawn555 {
+  coords 4609.294 18.758 10780.641
+ }
+ weaponSpawn578 {
+  coords 4594.169 17.677 10813.272
+ }
+ weaponSpawn544 {
+  coords 4646.13 22.864 10722.82
+ }
+ weaponSpawn519 {
+  coords 4617.853 18.923 10655.958
+ }
+ weaponSpawn614 {
+  coords 4580.408 21.502 11053.9
+ }
+ weaponSpawn598 {
+  coords 4555.541 15.494 10934.613
+ }
+ weaponSpawn597 {
+  coords 4552.122 15.492 10929.27
+ }
+ weaponSpawn481 {
+  coords 4352.508 15.106 10593.211
+ }
+ weaponSpawn480 {
+  coords 4360.778 14.595 10594.125
+ }
+ weaponSpawn582 {
+  coords 4591.617 21.513 10827.529
+ }
+ weaponSpawn469 {
+  coords 4412.196 16.492 10601.681
+ }
+ weaponSpawn621 {
+  coords 4564.953 24.376 11135.579
+ }
+ weaponSpawn495 {
+  coords 4417.99 16.954 10593.145
+ }
+ weaponSpawn488 {
+  coords 4302.244 17.062 10565.807
+ }
+ weaponSpawn641 {
+  coords 4448.026 2.387 11046.062
+ }
+ weaponSpawn666 {
+  coords 4393.068 8.615 10922.346
+ }
+ weaponSpawn556 {
+  coords 4589.081 18.94 10781.848
+ }
+ weaponSpawn657 {
+  coords 4425.032 7.201 11022.749
+ }
+ weaponSpawn635 {
+  coords 4452.916 2.559 11076.278
+ }
+ weaponSpawn624 {
+  coords 4561.467 25.28 11130.166
+ }
+ weaponSpawn553 {
+  coords 4586.233 18.517 10749.219
+ }
+ weaponSpawn674 {
+  coords 4294.763 1.959 10915.805
+ }
+ weaponSpawn590 {
+  coords 4564.268 16.645 10871.127
+ }
+ weaponSpawn600 {
+  coords 4546.347 14.182 10944.408
+ }
+ weaponSpawn487 {
+  coords 4295.187 15.1 10573.944
+ }
+ weaponSpawn659 {
+  coords 4430.614 3.095 11030.504
+ }
+ weaponSpawn493 {
+  coords 4301.039 13.461 10586.51
+ }
+ weaponSpawn608 {
+  coords 4566.973 17.783 11010.166
+ }
+ weaponSpawn490 {
+  coords 4294.563 17.361 10585.337
+ }
+ weaponSpawn689 {
+  coords 4475.627 10.488 10975.051
+ }
+ weaponSpawn509 {
+  coords 4506.106 17.686 10648.29
+ }
+ weaponSpawn518 {
+  coords 4616.059 18.923 10662.998
+ }
+ weaponSpawn502 {
+  coords 4472.383 18.106 10614.607
+ }
+ weaponSpawn520 {
+  coords 4619.104 20.078 10657.545
+ }
+ weaponSpawn494 {
+  coords 4294.424 13.461 10589.267
+ }
+ weaponSpawn653 {
+  coords 4434.841 9.495 11027.947
+ }
+ weaponSpawn652 {
+  coords 4423.599 9.495 11021.521
+ }
+ weaponSpawn634 {
+  coords 4472.478 2.581 11092.661
+ }
+ weaponSpawn492 {
+  coords 4302.306 16.946 10588.603
+ }
+ weaponSpawn491 {
+  coords 4298.56 16.461 10587.219
+ }
+ weaponSpawn579 {
+  coords 4588.244 18.566 10807.846
+ }
+ weaponSpawn564 {
+  coords 4602.254 18.066 10797.515
+ }
+ weaponSpawn537 {
+  coords 4687.479 23.207 10660.344
+ }
+ weaponSpawn475 {
+  coords 4371.638 13.745 10630.493
+ }
+ weaponSpawn559 {
+  coords 4585.438 19.058 10766.232
+ }
+ weaponSpawn546 {
+  coords 4638.894 21.068 10753.732
+ }
+ weaponSpawn483 {
+  coords 4345.496 15.746 10586.846
+ }
+ weaponSpawn486 {
+  coords 4335.022 15.268 10580.395
+ }
+ weaponSpawn540 {
+  coords 4692.981 23.477 10697.521
+ }
+ weaponSpawn541 {
+  coords 4688.787 22.832 10704.979
+ }
+ weaponSpawn482 {
+  coords 4346.32 15.454 10592.062
+ }
+ weaponSpawn649 {
+  coords 4322.103 1.594 10988.326
+ }
+ weaponSpawn575 {
+  coords 4611.459 23.752 10913.676
+ }
+ weaponSpawn671 {
+  coords 4364.1 6.908 10936.192
+ }
+ weaponSpawn610 {
+  coords 4554.769 17.864 11001.755
+ }
+ weaponSpawn620 {
+  coords 4566.182 24.396 11135.289
+ }
+ weaponSpawn574 {
+  coords 4612.218 23.099 10911.012
+ }
+ weaponSpawn583 {
+  coords 4641.438 23.206 10832.301
+ }
+ weaponSpawn605 {
+  coords 4578.838 20.709 10964.798
+ }
+ weaponSpawn577 {
+  coords 4557.098 16.396 10897.236
+ }
+ weaponSpawn592 {
+  coords 4564.236 15.42 10886.048
+ }
+ weaponSpawn565 {
+  coords 4649.769 20.431 10802.078
+ }
+ weaponSpawn591 {
+  coords 4566.829 15.557 10879.357
+ }
+ weaponSpawn654 {
+  coords 4426.734 6.295 11024.113
+ }
+ weaponSpawn648 {
+  coords 4367.498 2.077 10984.394
+ }
+ weaponSpawn619 {
+  coords 4595.486 24.742 11143.383
+ }
+ weaponSpawn547 {
+  coords 4631.102 19.98 10757.006
+ }
+ weaponSpawn691 {
+  coords 4550.239 17.752 10999.084
+ }
+ weaponSpawn665 {
+  coords 4397.185 8.236 10921.872
+ }
+ weaponSpawn683 {
+  coords 4454.176 7.997 10955.141
+ }
+ weaponSpawn618 {
+  coords 4579.346 25.388 11055.299
+ }
+ weaponSpawn529 {
+  coords 4659.57 21.367 10696.297
+ }
+ weaponSpawn508 {
+  coords 4531.278 16.458 10629.158
+ }
+ weaponSpawn489 {
+  coords 4288.353 16.851 10561.861
+ }
+ weaponSpawn668 {
+  coords 4391.016 8.227 10927.029
+ }
+ weaponSpawn629 {
+  coords 4460.291 2.965 11078.706
+ }
+ weaponSpawn669 {
+  coords 4391.793 8.593 10932.604
+ }
+ weaponSpawn523 {
+  coords 4637.834 23.721 10719.026
+ }
+ weaponSpawn557 {
+  coords 4584.11 18.42 10776.557
+ }
+ weaponSpawn680 {
+  coords 4339.021 4.159 10964.479
+ }
+ weaponSpawn630 {
+  coords 4457.662 2.965 11079.932
+ }
+ weaponSpawn670 {
+  coords 4396.161 7.139 10939.526
+ }
+ weaponSpawn628 {
+  coords 4463.779 2.965 11072.406
+ }
+ weaponSpawn606 {
+  coords 4579.161 21.872 10965.353
+ }
+ weaponSpawn510 {
+  coords 4496.364 18.706 10647.159
+ }
+ weaponSpawn667 {
+  coords 4386.286 5.696 10888.226
+ }
+ weaponSpawn580 {
+  coords 4587.549 22.395 10821.712
+ }
+ weaponSpawn485 {
+  coords 4359.505 14.473 10585.141
+ }
+ weaponSpawn512 {
+  coords 4295.216 15.777 10571.669
+ }
+ weaponSpawn679 {
+  coords 4311.317 1.767 10961.257
+ }
+ weaponSpawn615 {
+  coords 4577.471 21.507 11058.545
+ }
+ weaponSpawn466 {
+  coords 4401.294 17.476 10596.808
+ }
+ weaponSpawn616 {
+  coords 4586.243 21.792 11054.495
+ }
+ weaponSpawn471 {
+  coords 4425.124 16.781 10607.454
+ }
+ weaponSpawn524 {
+  coords 4640.905 22.864 10727.642
+ }
+ weaponSpawn470 {
+  coords 4428.664 16.802 10607.32
+ }
+ weaponSpawn507 {
+  coords 4537.004 16.458 10628.503
+ }
+ weaponSpawn672 {
+  coords 4324.32 1.594 10988.534
+ }
+ weaponSpawn468 {
+  coords 4408.39 17.128 10600.48
+ }
+ weaponSpawn631 {
+  coords 4455.472 2.965 11076.039
+ }
+ weaponSpawn562 {
+  coords 4578.064 17.786 10796.247
+ }
+ weaponSpawn511 {
+  coords 4326.457 11.758 10644.928
+ }
+ weaponSpawn499 {
+  coords 4467.881 19.11 10603.822
+ }
+ weaponSpawn500 {
+  coords 4473.377 19.106 10610.575
+ }
+ weaponSpawn558 {
+  coords 4582.778 18.526 10773.573
+ }
+ weaponSpawn682 {
+  coords 4453.937 8.208 10957.693
+ }
+ weaponSpawn501 {
+  coords 4466.21 18.713 10614.236
+ }
+ weaponSpawn506 {
+  coords 4480.824 18.106 10601.544
+ }
+ weaponSpawn503 {
+  coords 4471.394 19.005 10612.823
+ }
+ weaponSpawn498 {
+  coords 4470.833 18.898 10601.081
+ }
+ weaponSpawn514 {
+  coords 4618.458 18.656 10676.849
+ }
+ weaponSpawn640 {
+  coords 4449.2 1.838 11028.74
+ }
+ weaponSpawn539 {
+  coords 4688.507 22.832 10694.653
+ }
+ weaponSpawn497 {
+  coords 4467.773 18.91 10600.734
+ }
+ weaponSpawn513 {
+  coords 4301.392 15.783 10571.894
+ }
+ weaponSpawn656 {
+  coords 4434.561 6.295 11024.938
+ }
+ weaponSpawn688 {
+  coords 4470.853 13.823 10979.974
+ }
+ weaponSpawn550 {
+  coords 4596.433 18.167 10752.793
+ }
+ weaponSpawn684 {
+  coords 4473.207 16.882 10974.899
+ }
+ weaponSpawn662 {
+  coords 4399.368 6.256 10959.092
+ }
+ weaponSpawn612 {
+  coords 4552.843 18.36 11012.548
+ }
+ weaponSpawn465 {
+  coords 4396.428 17.579 10598.014
+ }
+ weaponSpawn463 {
+  coords 4386.665 15.585 10597.255
+ }
+ weaponSpawn464 {
+  coords 4391.813 17.091 10598.168
+ }
+ weaponSpawn472 {
+  coords 4397.98 16.72 10634.015
+ }
+ weaponSpawn692 {
+  coords 4546.797 15.188 10948.942
+ }
+ weaponSpawn549 {
+  coords 4610.612 19.345 10755.279
+ }
+ weaponSpawn638 {
+  coords 4424.901 1.833 11048.644
+ }
+ weaponSpawn552 {
+  coords 4584.593 18.517 10757.308
+ }
+ weaponSpawn530 {
+  coords 4619.988 18.656 10641.622
+ }
+ weaponSpawn496 {
+  coords 4440.298 17.591 10609.321
+ }
+ weaponSpawn693 {
+  coords 4671.124 20.49 10772.65
+ }
+ weaponSpawn694 {
+  coords 4671.887 20.517 10775.108
+ }
+ weaponSpawn697 {
+  coords 4325.983 1.594 10979.298
+ }
+ weaponSpawn696 {
+  coords 4370.065 1.688 10997.214
+ }
+ weaponSpawn698 {
+  coords 4431.547 7.171 10961.255
+ }
+ weaponSpawn700 {
+  coords 4353.398 3.581 10798.289
+ }
+ weaponSpawn699 {
+  coords 4361.399 5.73 10771.671
+ }
+ weaponSpawn695 {
+  coords 4370.838 2.674 10996.11
+ }
+ weaponSpawn708 {
+  coords 4638.314 20.092 10828.28
+ }
+ weaponSpawn703 {
+  coords 4644.745 20.677 10753.823
+ }
+ weaponSpawn701 {
+  coords 4576.553 19.488 10669.09
+ }
+ weaponSpawn706 {
+  coords 4643.758 21.291 10806.354
+ }
+ weaponSpawn702 {
+  coords 4571.778 18.582 10667.411
+ }
+ weaponSpawn704 {
+  coords 4648.009 20.37 10769.309
+ }
+ weaponSpawn705 {
+  coords 4637.147 20.887 10762.073
+ }
+ weaponSpawn709 {
+  coords 4631.463 20.596 10826.03
+ }
+ weaponSpawn707 {
+  coords 4645.556 21.289 10806.232
+ }
+ weaponSpawn710 {
+  coords 4376.91 2.342 10998.205
+ }
+ weaponSpawn711 {
+  coords 4436.37 11.847 10939.609
+ }
+ weaponSpawn712 {
+  coords 4442.839 12.109 10942.287
+ }
+ weaponSpawn713 {
+  coords 4442.826 8.605 10935.586
+ }
+ weaponSpawn714 {
+  coords 4396.555 8.294 10942.772
+ }
+ weaponSpawn715 {
+  coords 4406.832 8.495 10921.955
+ }
+ weaponSpawn716 {
+  coords 4464.34 9.026 10924.018
+ }
+ weaponSpawn717 {
+  coords 4468.888 10.199 10920.062
+ }
+ weaponSpawn718 {
+  coords 4469.46 9.239 10923.954
+ }
+ weaponSpawn719 {
+  coords 4470 9.366 10936.854
+ }
+ weaponSpawn720 {
+  coords 4460.035 8.35 10958.036
+ }
+ weaponSpawn721 {
+  coords 4495.704 14.486 10955.507
+ }
+ weaponSpawn722 {
+  coords 4498.304 13.697 10948.182
+ }
+ weaponSpawn723 {
+  coords 4494.344 13.504 10943.962
+ }
+ weaponSpawn724 {
+  coords 4501.646 18.008 10965.447
+ }
+ weaponSpawn725 {
+  coords 4506.359 17.607 10950.05
+ }
+ weaponSpawn726 {
+  coords 4557.181 16.088 10917.782
+ }
+ weaponSpawn727 {
+  coords 4556.196 14.785 10907.986
+ }
+ weaponSpawn728 {
+  coords 4623.53 24.45 10877.346
+ }
+ weaponSpawn729 {
+  coords 4619.008 24.281 10885.982
+ }
+ weaponSpawn730 {
+  coords 4617.724 26.505 10888.508
+ }
+ weaponSpawn731 {
+  coords 4618.039 19.962 10654.424
+ }
+ weaponSpawn732 {
+  coords 4677.82 23.835 10702.879
+ }
+ weaponSpawn733 {
+  coords 4685.396 23.358 10698.915
+ }
+ weaponSpawn734 {
+  coords 4688.107 23.86 10702.292
+ }
+ weaponSpawn735 {
+  coords 4689.255 23.479 10706.274
+ }
+ weaponSpawn739 {
+  coords 4359.668 14.482 10620.665
+ }
+ weaponSpawn736 {
+  coords 4427.502 7.201 11029.857
+ }
+ weaponSpawn737 {
+  coords 4429.414 7.201 11033.169
+ }
+ weaponSpawn741 {
+  coords 4345.964 14.482 10628.312
+ }
+ weaponSpawn740 {
+  coords 4354.093 14.482 10630.271
+ }
+ weaponSpawn738 {
+  coords 4385.144 2.342 10991.981
+ }
+ weaponSpawn743 {
+  coords 4455.145 10.581 10870.451
+ }
+ weaponSpawn744 {
+  coords 4450.045 10.282 10864.71
+ }
+ weaponSpawn742 {
+  coords 4460.076 10.678 10867.625
+ }
+ weaponSpawn745 {
+  coords 4450.816 10.573 10869.841
+ }
+ weaponSpawn746 {
+  coords 4456.355 9.675 10878.359
+ }
+ weaponSpawn747 {
+  coords 4458.703 10.709 10877.758
+ }
+ weaponSpawn748 {
+  coords 4288.604 1.76 10953.73
+ }
+ weaponSpawn749 {
+  coords 4289.32 1.76 10948.585
+ }
+ weaponSpawn750 {
+  coords 4285.602 1.742 10917.198
+ }
+ weaponSpawn751 {
+  coords 4558.605 17.597 11061.338
+ }
+ weaponSpawn752 {
+  coords 4444.516 3.22 11046.646
+ }
+ weaponSpawn753 {
+  coords 4651.824 20.414 10754.977
+ }
+ weaponSpawn754 {
+  coords 4656.728 21.662 10758.705
+ }
+ weaponSpawn755 {
+  coords 4676.779 20.963 10760.224
+ }
+ weaponSpawn756 {
+  coords 4639.518 16.796 10486.011
+ }
+ weaponSpawn757 {
+  coords 4637.855 16.829 10475.437
+ }
+ weaponSpawn758 {
+  coords 4555.363 14.791 10401.93
+ }
+ weaponSpawn759 {
+  coords 4505.207 14.408 10381.687
+ }
+ weaponSpawn760 {
+  coords 4535.742 14.408 10377.771
+ }
+ weaponSpawn761 {
+  coords 4523.139 14.158 10379.188
+ }
+ weaponSpawn762 {
+  coords 4529.504 14.408 10367.483
+ }
+ weaponSpawn763 {
+  coords 4530.352 16.413 10379.122
+ }
+ weaponSpawn764 {
+  coords 4509.723 14.408 10391.821
+ }
+ weaponSpawn765 {
+  coords 4491.686 14.831 10400.453
+ }
+ weaponSpawn766 {
+  coords 4488.323 14.858 10402.625
+ }
+ weaponSpawn767 {
+  coords 4548.148 15.794 10402.628
+ }
+ weaponSpawn768 {
+  coords 4555.402 14.791 10400.869
+ }
+ weaponSpawn769 {
+  coords 4568.308 17.071 10466.84
+ }
+ weaponSpawn770 {
+  coords 4573.096 16.065 10464.881
+ }
+ weaponSpawn771 {
+  coords 4579.474 16.065 10465.809
+ }
+ weaponSpawn772 {
+  coords 4580.405 16.065 10459.965
+ }
+ weaponSpawn773 {
+  coords 4617.169 15.506 10437.134
+ }
+ weaponSpawn774 {
+  coords 4574.684 15.934 10445.982
+ }
+ weaponSpawn775 {
+  coords 4548.333 16.687 10569.345
+ }
+ weaponSpawn776 {
+  coords 4570.186 16.771 10572.121
+ }
+ weaponSpawn777 {
+  coords 4559.611 16.687 10565.544
+ }
+ weaponSpawn778 {
+  coords 4561.419 17.074 10498.126
+ }
+ weaponSpawn779 {
+  coords 4561.359 17.072 10510.438
+ }
+ weaponSpawn780 {
+  coords 4559.818 23.017 10503.306
+ }
+ weaponSpawn781 {
+  coords 4567.931 23.032 10498.665
+ }
+ weaponSpawn782 {
+  coords 4560.186 22.9 10497.159
+ }
+ weaponSpawn783 {
+  coords 4570.244 22.92 10489.506
+ }
+ weaponSpawn784 {
+  coords 4556.505 22.905 10496.862
+ }
+ weaponSpawn785 {
+  coords 4553.718 22.907 10496.51
+ }
+ weaponSpawn786 {
+  coords 4552.553 22.014 10510.201
+ }
+ weaponSpawn787 {
+  coords 4567.8 22.014 10511.343
+ }
+ weaponSpawn788 {
+  coords 4554.693 27.845 10504.881
+ }
+ weaponSpawn789 {
+  coords 4566.805 27.855 10506.063
+ }
+ weaponSpawn790 {
+  coords 4529.969 15.969 10496.876
+ }
+ weaponSpawn791 {
+  coords 4535.659 15.969 10481.161
+ }
+ weaponSpawn792 {
+  coords 4542.149 16.06 10466.636
+ }
+ weaponSpawn793 {
+  coords 4539.607 17.612 10462.835
+ }
+ weaponSpawn794 {
+  coords 4539.213 16.593 10455.66
+ }
+ weaponSpawn795 {
+  coords 4528.083 17.751 10543.156
+ }
+ weaponSpawn796 {
+  coords 4519.084 17.751 10529.662
+ }
+ weaponSpawn797 {
+  coords 4528.407 17.366 10544.666
+ }
+ weaponSpawn798 {
+  coords 4526.422 17.366 10552.895
+ }
+ weaponSpawn799 {
+  coords 4519.094 17.367 10562.017
+ }
+ weaponSpawn800 {
+  coords 4527.039 17.366 10556.773
+ }
+ weaponSpawn801 {
+  coords 4537.085 17.471 10626.502
+ }
+ weaponSpawn802 {
+  coords 4531.435 16.458 10627.622
+ }
+ weaponSpawn803 {
+  coords 4443.083 20.455 10573.019
+ }
+ weaponSpawn804 {
+  coords 4450.879 21.661 10577.959
+ }
+ weaponSpawn805 {
+  coords 4451.204 20.546 10575.594
+ }
+ weaponSpawn806 {
+  coords 4446.022 19.268 10573.414
+ }
+ weaponSpawn807 {
+  coords 4396.184 18.859 10576.616
+ }
+ weaponSpawn808 {
+  coords 4391.614 19.058 10560.495
+ }
+ weaponSpawn809 {
+  coords 4390.952 20.165 10562.107
+ }
+ weaponSpawn810 {
+  coords 4393.259 19.096 10560.314
+ }
+ weaponSpawn811 {
+  coords 4381.269 17.878 10558.59
+ }
+ weaponSpawn812 {
+  coords 4388.388 17.878 10560.296
+ }
+ weaponSpawn813 {
+  coords 4319.897 34.114 10443.438
+ }
+ weaponSpawn814 {
+  coords 4309.736 34.369 10434.774
+ }
+ weaponSpawn815 {
+  coords 4322.91 34.494 10429.834
+ }
+ weaponSpawn816 {
+  coords 4316.908 34.276 10444.976
+ }
+ weaponSpawn817 {
+  coords 4307.933 34.506 10446.706
+ }
+ weaponSpawn818 {
+  coords 4323.071 34.012 10449.249
+ }
+ weaponSpawn819 {
+  coords 4328.481 34.205 10439.176
+ }
+ weaponSpawn820 {
+  coords 4331.178 34.076 10444.008
+ }
+ weaponSpawn821 {
+  coords 4477.79 21.616 10501.704
+ }
+ weaponSpawn822 {
+  coords 4477.859 21.613 10500.059
+ }
+ weaponSpawn823 {
+  coords 4455.95 19.06 10574.133
+ }
+ weaponSpawn824 {
+  coords 4618.067 18.589 10575.122
+ }
+ weaponSpawn825 {
+  coords 4623.101 18.584 10572.864
+ }
+ weaponSpawn826 {
+  coords 4619.741 18.976 10586.776
+ }
+ weaponSpawn827 {
+  coords 4623.643 21.977 10590.421
+ }
+ weaponSpawn828 {
+  coords 4631.209 18.975 10587.708
+ }
+ weaponSpawn829 {
+  coords 4664.354 20.058 10575.907
+ }
+ weaponSpawn830 {
+  coords 4653.375 17.854 10564.253
+ }
+ weaponSpawn831 {
+  coords 4667.545 19.962 10578.974
+ }
+ weaponSpawn832 {
+  coords 4636.945 28.423 11149.028
+ }
+ weaponSpawn833 {
+  coords 4638.198 29.031 11153.414
+ }
+ weaponSpawn834 {
+  coords 4621.662 26.074 11179.455
+ }
+ weaponSpawn835 {
+  coords 4611.205 26.975 11181.978
+ }
+ weaponSpawn836 {
+  coords 4610.432 26.973 11178.122
+ }
+ weaponSpawn837 {
+  coords 4621.858 26.074 11187.014
+ }
+ weaponSpawn838 {
+  coords 4611.252 26.074 11191.039
+ }
+ weaponSpawn839 {
+  coords 4622.436 26.537 11191.655
+ }
+ weaponSpawn840 {
+  coords 4622.724 26.564 11195.46
+ }
+ weaponSpawn841 {
+  coords 4622.488 26.568 11199.136
+ }
+ weaponSpawn842 {
+  coords 4611.304 26.545 11195.861
+ }
+ weaponSpawn843 {
+  coords 4611.54 26.561 11202.961
+ }
+ weaponSpawn844 {
+  coords 4623.068 26.578 11200.426
+ }
+ weaponSpawn845 {
+  coords 4641.405 27.756 11193.62
+ }
+ weaponSpawn846 {
+  coords 4669.955 27.844 11186.607
+ }
+ weaponSpawn847 {
+  coords 4657.703 28.054 11167.479
+ }
+ weaponSpawn848 {
+  coords 4655.67 28.869 11150.21
+ }
+ weaponSpawn849 {
+  coords 4660.579 28.388 11147.209
+ }
+ weaponSpawn850 {
+  coords 4671.046 28.388 11150.674
+ }
+ weaponSpawn851 {
+  coords 4670.656 28.388 11154.593
+ }
+ weaponSpawn852 {
+  coords 4671.324 28.388 11158.755
+ }
+ weaponSpawn853 {
+  coords 4671.879 28.004 11165.494
+ }
+ weaponSpawn854 {
+  coords 4670.715 28.004 11168.855
+ }
+ weaponSpawn855 {
+  coords 4663.013 28.004 11177.788
+ }
+ weaponSpawn856 {
+  coords 4670.443 28.004 11178.786
+ }
+ weaponSpawn857 {
+  coords 4669.357 29.007 11146.368
+ }
+ weaponSpawn858 {
+  coords 4681.873 27.811 11196.343
+ }
+ weaponSpawn859 {
+  coords 4672.72 27.813 11220.543
+ }
+ weaponSpawn860 {
+  coords 4628.607 29.284 11237.462
+ }
+ weaponSpawn861 {
+  coords 4642.544 28.307 11108.441
+ }
+ weaponSpawn862 {
+  coords 4642.453 28.307 11104.671
+ }
+ weaponSpawn863 {
+  coords 4642.342 28.816 11106.744
+ }
+ weaponSpawn864 {
+  coords 4649.784 28.171 11098.872
+ }
+ weaponSpawn865 {
+  coords 4664.316 28.975 11100.368
+ }
+ weaponSpawn866 {
+  coords 4668.563 29.055 11101.709
+ }
+ weaponSpawn867 {
+  coords 4478.216 5.855 11202.144
+ }
+ weaponSpawn868 {
+  coords 4478.989 5.855 11185.899
+ }
+ weaponSpawn869 {
+  coords 4473.709 6.502 11181.021
+ }
+ weaponSpawn870 {
+  coords 4470.182 6.502 11180.832
+ }
+ weaponSpawn871 {
+  coords 4475.7 5.855 11206.029
+ }
+ weaponSpawn872 {
+  coords 4431.489 5.836 11194.106
+ }
+ weaponSpawn873 {
+  coords 4434.063 5.811 11169.021
+ }
+ weaponSpawn874 {
+  coords 4432.099 5.81 11210.183
+ }
+ weaponSpawn875 {
+  coords 4449.318 6.561 11225.882
+ }
+ weaponSpawn876 {
+  coords 4445.863 6.566 11225.729
+ }
+ weaponSpawn877 {
+  coords 4447.741 6.555 11237.146
+ }
+ weaponSpawn878 {
+  coords 4441.564 6.581 11236.696
+ }
+ weaponSpawn879 {
+  coords 4441.083 6.563 11225.854
+ }
+ weaponSpawn880 {
+  coords 4449.312 6.543 11226.08
+ }
+ weaponSpawn881 {
+  coords 4453.078 6.549 11225.716
+ }
+ weaponSpawn882 {
+  coords 4452.619 6.558 11237.761
+ }
+ weaponSpawn883 {
+  coords 4463.25 6.963 11226.979
+ }
+ weaponSpawn884 {
+  coords 4459.99 6.968 11226.09
+ }
+ weaponSpawn885 {
+  coords 4467.023 6.487 11226.604
+ }
+ weaponSpawn886 {
+  coords 4461.478 6.072 11237.155
+ }
+ weaponSpawn887 {
+  coords 4478.457 5.855 11195.758
+ }
+ weaponSpawn888 {
+  coords 4433.611 5.823 11169.056
+ }
+ weaponSpawn889 {
+  coords 4439.547 5.898 11161.963
+ }
+ weaponSpawn890 {
+  coords 4430.097 1.594 11150.568
+ }
+ weaponSpawn891 {
+  coords 4418.263 1.594 11187.513
+ }
+ weaponSpawn892 {
+  coords 4409.95 1.594 11184.76
+ }
+ weaponSpawn893 {
+  coords 4414.126 1.594 11197.859
+ }
+ weaponSpawn894 {
+  coords 4407.714 1.594 11227.422
+ }
+ weaponSpawn895 {
+  coords 4418.103 1.594 11213.403
+ }
+ weaponSpawn896 {
+  coords 4407.947 1.594 11185.75
+ }
+ weaponSpawn897 {
+  coords 4381.213 1.594 11052.277
+ }
+ weaponSpawn898 {
+  coords 4374.094 1.594 11041.105
+ }
+ weaponSpawn899 {
+  coords 4383.996 1.664 11050.642
+ }
+ weaponSpawn900 {
+  coords 4471.594 1.837 11144.075
+ }
+ weaponSpawn908 {
+  coords 4430.848 1.594 11151.079
+ }
+ weaponSpawn909 {
+  coords 4427.556 1.594 11158.844
+ }
+ weaponSpawn905 {
+  coords 4379.646 1.594 11048.542
+ }
+ weaponSpawn907 {
+  coords 4422.769 9.495 11019.917
+ }
+ weaponSpawn904 {
+  coords 4422.429 3.126 11060.937
+ }
+ weaponSpawn913 {
+  coords 4642.299 28.818 11108.216
+ }
+ weaponSpawn903 {
+  coords 4422.842 3.262 11052.126
+ }
+ weaponSpawn910 {
+  coords 4436.635 5.78 11199.926
+ }
+ weaponSpawn906 {
+  coords 4436.37 9.495 11027.026
+ }
+ weaponSpawn912 {
+  coords 4656.776 28.054 11175.294
+ }
+ weaponSpawn901 {
+  coords 4410.51 2.399 11054.08
+ }
+ weaponSpawn902 {
+  coords 4420.117 2.65 11049.289
+ }
+ weaponSpawn911 {
+  coords 4432.142 5.813 11199.706
+ }
+ weaponSpawn914 {
+  coords 4713.958 28.088 11057.692
+ }
+ weaponSpawn915 {
+  coords 4582.802 17.025 10455.125
+ }
+ weaponSpawn916 {
+  coords 4571.733 17.025 10466.509
+ }
+ weaponSpawn917 {
+  coords 4547.189 16.057 10463.646
+ }
+ weaponSpawn918 {
+  coords 4562.428 16.135 10441.086
+ }
+ weaponSpawn919 {
+  coords 4540.689 14.553 10374.714
+ }
+ weaponSpawn920 {
+  coords 4541.396 14.555 10375.875
+ }
+ weaponSpawn921 {
+  coords 4532.245 15.378 10378.223
+ }
+ weaponSpawn922 {
+  coords 4527.813 15.38 10383.964
+ }
+ weaponSpawn923 {
+  coords 4515.982 14.408 10377.09
+ }
+ weaponSpawn924 {
+  coords 4508.562 15.465 10394.279
+ }
+ weaponSpawn925 {
+  coords 4509.023 14.408 10391.901
+ }
+ weaponSpawn926 {
+  coords 4426.121 16.851 10606.66
+ }
+ weaponSpawn927 {
+  coords 4550.218 16.709 10603.979
+ }
+ weaponSpawn928 {
+  coords 4552.013 16.556 10603.04
+ }
+ weaponSpawn929 {
+  coords 4550.311 16.712 10605.887
+ }
+ weaponSpawn930 {
+  coords 4556.837 17.178 10605.501
+ }
+ weaponSpawn931 {
+  coords 4553.945 16.789 10609.642
+ }
+ weaponSpawn932 {
+  coords 4676.635 27.424 10977.653
+ }
+ weaponSpawn933 {
+  coords 4676.543 26.884 10978.326
+ }
+ weaponSpawn934 {
+  coords 4675.771 26.884 10977.706
+ }
+ weaponSpawn935 {
+  coords 4676.792 26.915 10976.723
+ }
+ weaponSpawn938 {
+  coords 4654.54 21.877 10707.435
+ }
+ weaponSpawn936 {
+  coords 4618.77 20.433 10753.426
+ }
+ weaponSpawn937 {
+  coords 4615.877 20.441 10760.018
  }
 }

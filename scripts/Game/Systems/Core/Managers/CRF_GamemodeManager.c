@@ -2,7 +2,11 @@ class CRF_GamemodeManagerClass : SCR_BaseGameModeComponentClass {}
 
 class CRF_GamemodeManager : SCR_BaseGameModeComponent
 {
-	const static ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
+	// Spectator resource to use
+	static const ResourceName SPECTATOR_RESOURCE = "{59886ECB7BBAF5BC}Prefabs/Characters/CRF_InitialEntity.et";
+	
+	// Time it takes for players to Init
+	static const int PLAYER_INITILIZATION_TIME = 250;
 	
 	[RplProp()]
 	ref array<int> m_aModerators = {}; 
@@ -20,6 +24,30 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected CRF_SafestartManager m_SafestartManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
+	
+	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
+	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Get the spectator resource name
+	* @param vectorToCheck vector to check
+	* @return ResourceName of the spectator entity
+	*/
+	static bool IsValidSpawnVector(vector vectorToCheck)
+	{
+		return (vector.Distance(ZERO_SPAWN_VECTOR[3], vectorToCheck) > 5);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Get the spectator resource name
+	* @return ResourceName of the spectator entity
+	*/
+	static ResourceName GetSpectatorResource()
+	{
+		return SPECTATOR_RESOURCE;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -90,7 +118,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (!entity)
 			return false;
 		
-		return entity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE;
+		return entity.GetPrefabData().GetPrefabName() == GetSpectatorResource();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -101,11 +129,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	static bool IsSpectator()
 	{
 		IEntity mainEntity = SCR_PlayerController.GetLocalMainEntity();
-		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		if (mainEntity && mainEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
 			return true;
 		
 		IEntity controlledEntity = SCR_PlayerController.GetLocalControlledEntity();
-		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == SPECTATOR_RESOURCE)
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource())
 			return true;
 
 		return false;
@@ -115,13 +143,20 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	// PLAYER INITIALIZATION
 	//------------------------------------------------------------------------------------------------
 	
+	//------------------------------------------------------------------------------------------------
 	/**
 	* Initialize a player into the game either as a playable character or spectator
 	* @param playerId ID of the player to initialize
-	* @param overrideLocation Optional location to spawn the player
+	* @param spawnLocation Location to spawn the player (Use "CRF_GamemodeManager.ZERO_SPAWN_VECTOR" as the input to have players spawn at their original slot location)
 	*/
-	void InitilizePlayer(int playerId, vector overrideLocation = vector.Zero)
+	void InitilizePlayer(int playerId, vector spawnLocation[4])
 	{
+		if (!IsValidSpawnVector(spawnLocation[3]) && spawnLocation != ZERO_SPAWN_VECTOR)
+		{
+			Print(string.Format("[CRF ERROR]: %1 DOESN'T HAVE VALID SPAWN VECTOR!", playerId), LogLevel.ERROR);
+			return;
+		};
+		
 		if (playerId <= 0)
 			return;
 		
@@ -132,26 +167,24 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		SCR_ChimeraCharacter playerCharacter = null;
 		Faction faction = null;
 		bool alreadyCreated;
-		bool isSpectator;
 		
 		// Determine if player should be spectator or playable character
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
-			playerCharacter = CreateSpectatorEntity();
+			playerCharacter = CreateSpectatorEntity(spawnLocation);
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
-			isSpectator = true;
 			
 			RemovePlayerFromCurrentGroup(playerId);
 			DisableDamageForSpectator(playerCharacter);
 		} else {
-			playerCharacter = GetOrCreatePlayableCharacter(playerId, overrideLocation, alreadyCreated);
+			playerCharacter = GetOrCreatePlayableCharacter(playerId, spawnLocation, alreadyCreated);
 			faction = m_SlottingManager.GetPlayerSlotFaction(playerId);
 		}
 		
 		if (playerCharacter)
 		{
 			AssignFactionToPlayer(playerController, faction);
-			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_Gamemode.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter, isSpectator);
+			GetGame().GetCallqueue().CallLater(InitilizePlayerCharacter, CRF_GamemodeManager.PLAYER_INITILIZATION_TIME, false, playerId, playerController, playerCharacter);
 		};
 	}
 	
@@ -161,16 +194,55 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* @param playerId ID of the player
 	* @param playerController controller of the player
 	* @param playerCharacter entity the player will take
-	* @param isSpectator to pass along to the players client
 	*/
-	protected void InitilizePlayerCharacter(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter, bool isSpectator)
+	protected void InitilizePlayerCharacter(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter)
 	{
+		// Validate that player is still connected before proceeding
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			return;
+			
+		// Validate that the character still exists
+		if (!playerCharacter)
+			return;
+			
 		AssignCharacterToPlayer(playerController, playerCharacter);
 		
-		if (!isSpectator)
+		// Wait a frame for the entity assignment to take effect, then verify success
+		GetGame().GetCallqueue().Call(VerifyCharacterAssignment, playerId, playerController, playerCharacter);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Verify that character assignment was successful and complete initialization
+	* @param playerId ID of the player
+	* @param playerController controller of the player
+	* @param playerCharacter entity the player should control
+	*/
+	protected void VerifyCharacterAssignment(int playerId, SCR_PlayerController playerController, SCR_ChimeraCharacter playerCharacter)
+	{
+		// Validate that player is still connected
+		if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
+			return;
+			
+		// Check if character assignment was successful
+		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		
+		// If player is still controlling the initial entity, retry the assignment
+		if (controlledEntity && controlledEntity.GetPrefabData().GetPrefabName() == GetSpectatorResource() && (playerCharacter.GetPrefabData().GetPrefabName() != GetSpectatorResource()))
+		{
+			// Force reassign the character
+			AssignCharacterToPlayer(playerController, playerCharacter);
+			
+			// Schedule another verification attempt
+			GetGame().GetCallqueue().CallLater(VerifyCharacterAssignment, 100, false, playerId, playerController, playerCharacter);
+			return;
+		}
+		
+		// Assignment successful, complete initialization
+		if (playerCharacter.GetPrefabData().GetPrefabName() != GetSpectatorResource())
 			AssignPlayerToGroup(playerId);
 
-		CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast(playerId, isSpectator);
+		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -178,10 +250,15 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* Create a spectator entity in the world
 	* @return The created spectator character
 	*/
-	protected SCR_ChimeraCharacter CreateSpectatorEntity()
+	protected SCR_ChimeraCharacter CreateSpectatorEntity(vector spawnLocation[4])
 	{
-		Resource spectatorRes = Resource.Load(SPECTATOR_RESOURCE);
-		return SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld()));
+		// Setup spawn parameters
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform = spawnLocation;
+		
+		Resource spectatorRes = Resource.Load(GetSpectatorResource());
+		return SCR_ChimeraCharacter.Cast(GetGame().SpawnEntityPrefab(spectatorRes, GetGame().GetWorld(), spawnParams));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -218,7 +295,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* @param overrideLocation Optional spawn location
 	* @return The character entity
 	*/
-	protected SCR_ChimeraCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation, out bool alreadyCreated)
+	protected SCR_ChimeraCharacter GetOrCreatePlayableCharacter(int playerId, vector overrideLocation[4], out bool alreadyCreated)
 	{
 		alreadyCreated = true;
 		SCR_ChimeraCharacter playerCharacter = m_SlottingManager.GetPlayerSlotCharacter(playerId);

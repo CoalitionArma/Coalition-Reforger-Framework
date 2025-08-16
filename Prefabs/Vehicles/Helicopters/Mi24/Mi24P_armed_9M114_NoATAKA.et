@@ -1,0 +1,87 @@
+Vehicle : "{38DE44985B0AD338}Prefabs/Vehicles/Helicopters/Mi24/Mi24P_base.et" {
+ ID "57DA6675519A417B"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Helicopter_MI24P_Name - #WCS-Weapon_B8V20A_Name"
+    m_Image "{9DC8C406880FE588}UI/Textures/EditorPreviews/Vehicles/Helicopters/Mi24V/Mi24P_armed_9M114.edds"
+    m_aAuthoredLabels + {
+     37 21
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{629A82D4737471F8}" {
+      m_BudgetType RANK_MAJOR
+      m_Value 6
+     }
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{62E74E9634E5D544}" {
+   m_ArmamentGroups {
+    WCS_ArmamentWeaponGroup "{66172A9F69E542B2}" {
+     prefab "{77BFDD5F139D84D5}Prefabs/Weapons/AircraftWeapons/RocketPods/B8V20A/Pod_B8V20A.et"
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{66172A9F69E5424E}" {
+       Position PointInfo "{66172A9F69E5424A}" {
+        PivotID "pylon_L01"
+        Offset 0 0.02 -0.1
+        Angles 1.8 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{66172A9F69E54254}" {
+       Position PointInfo "{66172A9F69E54257}" {
+        PivotID "pylon_L02"
+        Offset 0 0.02 -0.1
+        Angles 1.8 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{66172A9F69E54250}" {
+       Position PointInfo "{66172A9F69E54252}" {
+        PivotID "pylon_R01"
+        Offset 0 0.02 -0.1
+        Angles 1.8 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{66172A9F69E5425C}" {
+       Position PointInfo "{66172A9F69E5425E}" {
+        PivotID "pylon_R02"
+        Offset 0 0.02 -0.1
+        Angles 1.8 0 0
+       }
+      }
+     }
+     fireModes {
+      WCS_Armament_WeaponSingleFireMode "{66172A9F69E5425B}" {
+       m_iFireIntervalMS 100
+      }
+      WCS_Armament_WeaponSalvoFireMode "{66172A9F69E54267}" {
+       m_iFireIntervalMS 1000
+      }
+     }
+     slotIndex 1
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Turret {
+     Prefab "{2FFB1076C8040CB4}Prefabs/Vehicles/Helicopters/Mi24/VehParts/Weapons/Mi24_Turret_base.et"
+    }
+   }
+  }
+  WeaponSlotComponent "{62E74E97AAE8F407}" {
+   AttachType InventoryStorageSlot "{62E74E975C462DBC}" {
+    DisablePhysicsInteraction 1
+   }
+  }
+  WeaponSlotComponent "{66172A9F69E54270}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{66172A9F69E5427E}" {
+   }
+   AttachType InventoryStorageSlot "{6328D02B1F571728}" {
+   }
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 1
+  }
+ }
+ coords 5.482 -2.201 -5.732
+}

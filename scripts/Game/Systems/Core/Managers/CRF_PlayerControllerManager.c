@@ -81,12 +81,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 		GetGame().GetInputManager().AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		GetGame().GetInputManager().AddActionListener("SwitchSpectatorUI", EActionTrigger.DOWN, UpdateHUDVisible);
 		
-		// Schedule delayed initialization
-		//GetGame().GetCallqueue().CallLater(AddMsgAction, 1000, false);
-		//GetGame().GetCallqueue().CallLater(InitFPSLock, 100, false);
-		//GetGame().GetCallqueue().CallLater(InitAudioLock, 100, false);
-		//GetGame().GetCallqueue().CallLater(OpenCurrentStateMenu, 500, false);
-		// Death to calllaters. Readd if non-functional.
 		GetGame().GetCallqueue().Call(AddMsgAction);
 		GetGame().GetCallqueue().Call(InitFPSLock);
 		GetGame().GetCallqueue().Call(InitAudioLock);
@@ -96,9 +90,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 	/**
 	 * Initializes the player client
 	 * Cleans up previous camera, closes menus, and sets up player-specific settings
-	 * @param IsSpectator - If we should initilize the Spec camera and menu
 	 */
-	void InitilizePlayerClient(bool IsSpectator = false)
+	void InitilizePlayerClient()
 	{
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_RplToAuthorityManager = CRF_RplToAuthorityManager.GetInstance();
@@ -107,26 +100,32 @@ class CRF_PlayerControllerManager : ScriptComponent
 		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
 			GetGame().GetMenuManager().CloseAllMenus();
-		
-			// Schedule delayed initialization of player-specific settings
-			//GetGame().GetCallqueue().CallLater(ResetSettingsToStoredValues, 100, false);
-			//GetGame().GetCallqueue().CallLater(SetupRadioFrequency, 1000, false);
 			ResetSettingsToStoredValues();
 			SetupRadioFrequency();
 		}; 
 		
-		if (IsSpectator)
+		if (SCR_PlayerController.GetLocalMainEntity().GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
 		{	
-			// Set up camera initilal position
 			vector cameraPos[4];
+			SCR_PlayerController.GetLocalMainEntity().GetWorldTransform(cameraPos);
+			
 			SCR_ChimeraCharacter char = CRF_SlottingManager.GetInstance().GetPlayerSlotCharacter(SCR_PlayerController.GetLocalPlayerId());
 			
-			if (char && m_vStoredCameraPos[3] == vector.Zero) {
+			// Use provided death position if available
+			if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
+				cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
+			}
+			// Use player's slot character position if available and no stored position
+			else if (char && !CRF_GamemodeManager.IsValidSpawnVector(m_vStoredCameraPos[3])) {
 				char.GetWorldTransform(cameraPos);
 				cameraPos[3][1] = cameraPos[3][1] + 1.5;
-			} else if (m_vStoredCameraPos[3] != vector.Zero) {
+			} 
+			// Use stored camera position if available
+			else if (CRF_GamemodeManager.IsValidSpawnVector(m_vStoredCameraPos[3])) {
 				cameraPos = m_vStoredCameraPos;
-			} else {
+			} 
+			// Fallback to generic spawn position
+			else {
 				cameraPos = m_Gamemode.m_vGenericSpawn;
 			}
 				
@@ -702,5 +701,49 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void RemoveALLScriptedMarkers()
 	{
 		m_aScriptedMarkers.Clear();
+	}
+	
+	void UpdateMapMarkers(array<string> zoneStatus, array<string> zoneObjectNames, FactionKey bluforSide, FactionKey opforSide)
+	{
+		RemoveALLScriptedMarkers();
+
+		foreach (int i, string zoneName : zoneObjectNames)
+		{
+			string status = zoneStatus[i];
+			string imageTexture;
+			int imageColor;
+
+			// Parse zone status
+			array<string> zoneStatusArray = {};
+			status.Split(":", zoneStatusArray, false);
+
+			string zoneLocked = zoneStatusArray[1];
+			FactionKey zoneFactionStored = zoneStatusArray[2];
+
+			// Select image based on zone index
+			switch (i)
+			{
+				case 0: {imageTexture = "{21A2A457BD0E42C1}UI\Objectives\A.edds"; break; };
+				case 1: {imageTexture = "{7F4A8D140283CCCE}UI\Objectives\B.edds"; break; };
+				case 2: {imageTexture = "{8B42CA8C0F5EA4BA}UI\Objectives\C.edds"; break; };
+				case 3: {imageTexture = "{C29ADF937D98D0D0}UI\Objectives\D.edds"; break; };
+				case 4: {imageTexture = "{3692980B7045B8A4}UI\Objectives\E.edds"; break; };
+			}
+
+			// Add lock marker if zone is locked
+			if (zoneLocked == "Locked")
+				AddScriptedMarker(zoneName, "0 0 0", 0, "", "{91427B7866707601}UI\Objectives\lock.edds", 50, ARGB(255, 142, 142, 142));
+
+			// Set color based on controlling faction
+			switch (zoneFactionStored)
+			{
+				case bluforSide: {imageColor = ARGB(255, 0, 25, 225); break; }; // Blufor
+				case opforSide: {imageColor = ARGB(255, 225, 25, 0); break; }; // Opfor
+				default: {imageColor = ARGB(255, 225, 225, 225); break; }; // Uncaptured
+			}
+
+			// Add zone marker
+			AddScriptedMarker(zoneName, "0 0 0", 0, "", imageTexture, 45, imageColor);
+		}
 	}
 }

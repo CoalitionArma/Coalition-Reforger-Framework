@@ -8,11 +8,13 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    Object "{C41BFB78E6FFFBCB}Assets/Structures/Military/Flags/FlagPole_01/FlagPole_01.xob"
   }
   RigidBody "{645911A160C1D2D2}" {
-   ResponseIndex "MediumDestructible"
+   SimState None
+   ResponseIndex "NoCollision"
    ModelGeometry 1
   }
   SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
-   m_fBaseHealth 1000
+   EnableDamage 0
+   m_fBaseHealth 100000
    m_DestroySpawnObjects {
     SCR_DebrisSpawnable "{645911A160C1D2DC}" {
      m_ModelPrefabs {
