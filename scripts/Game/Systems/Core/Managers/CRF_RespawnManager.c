@@ -330,11 +330,17 @@ class CRF_RespawnManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnPlayer(int playerId, vector spawnLocation[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR, int groupID = -1, RplId SpawnRplID = -1)
+	void RespawnPlayer(int playerId, vector overrideSpawnLocation[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR, int groupID = -1, RplId SpawnRplID = -1)
 	{
 		// Skip on client
 		if (RplSession.Mode() == RplMode.Client)
 			return;
+		
+	    vector spawnLocation[4];
+	    spawnLocation[0] = overrideSpawnLocation[0];
+	    spawnLocation[1] = overrideSpawnLocation[1];
+	    spawnLocation[2] = overrideSpawnLocation[2];
+	    spawnLocation[3] = overrideSpawnLocation[3];
 
 		// Validate player
 		PlayerManager playerManager = GetGame().GetPlayerManager();

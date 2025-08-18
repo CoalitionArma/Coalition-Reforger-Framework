@@ -35,8 +35,16 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	* @return ResourceName of the spectator entity
 	*/
 	static bool IsValidSpawnVector(vector vectorToCheck)
-	{
-		return (vector.Distance(ZERO_SPAWN_VECTOR[3], vectorToCheck) > 5);
+	{	
+		bool finalcheck = false;
+		bool zeroCheck = (vector.Distance(ZERO_SPAWN_VECTOR[3], vectorToCheck) > 5);
+		bool tenCheck = (vector.Distance("0 10000 0", vectorToCheck) > 5);
+		bool negCheck = (vectorToCheck[1] >= 0);
+		
+		if (zeroCheck && tenCheck && negCheck)
+			finalcheck = true;
+		
+		return finalcheck;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -241,8 +249,10 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// Assignment successful, complete initialization
 		if (playerCharacter.GetPrefabData().GetPrefabName() != GetSpectatorResource())
 			AssignPlayerToGroup(playerId);
+		
+		RplComponent playerRplComp = RplComponent.Cast(playerCharacter.FindComponent(RplComponent));
 
-		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId);
+		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, PLAYER_INITILIZATION_TIME, false, playerId, playerRplComp.Id());
 	}
 	
 	//------------------------------------------------------------------------------------------------

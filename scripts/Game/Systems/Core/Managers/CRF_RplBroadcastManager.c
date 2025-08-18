@@ -181,12 +181,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
-	void InitilizePlayerBroadcast(int playerId)
+	void InitilizePlayerBroadcast(int playerId, RplId playerCharID)
 	{
 		#ifdef WORKBENCH
-		RpcDo_InitilizePlayerBroadcast(playerId);
+		RpcDo_InitilizePlayerBroadcast(playerId, playerCharID);
 		#else
-		Rpc(RpcDo_InitilizePlayerBroadcast, playerId);
+		Rpc(RpcDo_InitilizePlayerBroadcast, playerId, playerCharID);
 		#endif
 	}
 	
@@ -589,12 +589,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_InitilizePlayerBroadcast(int playerId)
+	void RpcDo_InitilizePlayerBroadcast(int playerId, RplId playerCharID)
 	{
 		if (!IsLocalPlayer(playerId))
 			return;
 
-		CRF_PlayerControllerManager.GetInstance().InitilizePlayerClient();
+		CRF_PlayerControllerManager.GetInstance().InitilizePlayerClient(playerCharID);
 	}
 
 	//------------------------------------------------------------------------------------------------

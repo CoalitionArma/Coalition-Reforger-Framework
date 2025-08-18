@@ -174,7 +174,7 @@ class CRF_SlottingManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Helper method to get group from RplId
-	protected SCR_AIGroup GetGroupFromRplId(RplId groupId)
+	SCR_AIGroup GetGroupFromRplId(RplId groupId)
 	{
 		if (groupId == RplId.Invalid())
 			return null;
@@ -188,7 +188,7 @@ class CRF_SlottingManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	// Helper method to get character from RplId
-	protected SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
+	SCR_ChimeraCharacter GetCharacterFromRplId(RplId charId)
 	{
 		if (charId == RplId.Invalid())
 			return null;

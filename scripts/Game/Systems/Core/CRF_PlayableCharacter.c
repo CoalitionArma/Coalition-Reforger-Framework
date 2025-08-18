@@ -82,7 +82,9 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected void ConfigureSpectatorEntity(IEntity owner)
 	{
 		SetEventMask(owner, EntityEvent.FRAME);
-		owner.SetOrigin("0 10000 0");
+		
+		if (!CRF_GamemodeManager.IsValidSpawnVector(owner.GetOrigin()))
+			owner.SetOrigin("0 10000 0");
 		
 		Physics physics = owner.GetPhysics();
 		if (!physics)

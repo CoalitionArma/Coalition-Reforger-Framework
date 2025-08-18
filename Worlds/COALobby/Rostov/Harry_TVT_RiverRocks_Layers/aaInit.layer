@@ -32,10 +32,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Light Rain"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Defend the caches marked on the map. You will receive a respawn wave when the second zone is unlocked, but no new ground assets."
+   m_sTextData "Defend the caches marked on the map. You will receive a respawn wave when the second zone is unlocked, but no new ground assets. You have precise knowledge of the cache locations, while the attackers only have approximate."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "Advance, and destroy the caches marked on the map. You will receive a respawn wave when zone 2 is unlocked, but no new assets."
+   m_sTextData "Advance, and destroy the caches marked on the map. The caches will be nearby the question mark, and there are two that need to be destroyed in zone 1 before proceeding. You will receive a respawn wave when zone 2 is unlocked, but no new assets."
   }
  }
  m_iFactionOneRatio 2
@@ -49,7 +49,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{EBD66AA635DA78AE}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_VSR.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6620E69A28C95F16" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
