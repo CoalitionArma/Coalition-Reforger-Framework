@@ -1,0 +1,68 @@
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 9630.05 23.259 5279.334
+ angleY 90
+ m_MarkerColor 0 0 0 1
+ m_sQuadName "mark-question"
+ m_sDescription "Cache A, B & C "
+ m_aVisibleForFactions {
+  "OPFOR"
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ Cache1 {
+  coords 9559.1 10.5 5390.01
+  angleY -89.593
+  destructor "	"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Alpha Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.07 -0.007 -0.104
+    angleY 90
+    m_MarkerColor 1 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Cache Alpha"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ Cache2 {
+  coords 9572.582 11.899 5206.646
+  destructor "	"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.07 -0.007 -0.104
+    angleY 90
+    m_MarkerColor 1 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Cache Bravo"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+ Cache3 {
+  coords 9717.313 34.874 5354.016
+  angleY 3.02
+  destructor "	"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.07 -0.007 -0.104
+    angleY 90
+    m_MarkerColor 1 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Cache Charlie"
+    m_aVisibleForFactions {
+     "INDFOR"
+    }
+   }
+  }
+ }
+}

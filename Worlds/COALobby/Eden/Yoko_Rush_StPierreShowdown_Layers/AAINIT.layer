@@ -1,6 +1,0 @@
-SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
- coords 8871.462 104.087 2899.671
-}
-CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
- coords 9671.709 21.297 1610.754
-}

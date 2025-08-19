@@ -1,0 +1,65 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 7450.218 0.17 6577.637
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7448.79 0.345 6569.424
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7446.957 0.344 6558.873
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7443.993 0.219 6541.817
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7442.168 0.39 6531.31
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7439.871 0.328 6518.093
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7445.602 0.203 6551.072
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7434.878 0.647 6555.614
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 7438.005 0.656 6573.605
+  angleY 99.855
+  m_rnPrefab "{3B899AC9449C35F0}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
