@@ -49,7 +49,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableGIRadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "66263AE296AB2ABA" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628C2D2BFC8C6447}" {
