@@ -1,0 +1,899 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2788.296 62.794 1510.09
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+   }
+  }
+ }
+ {
+  coords 3075.262 38.082 2026.995
+  angleY 112.173
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 3090.926 45.35 2397.153
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 2507.592 147.645 2269.881
+  angleY 136.998
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 3060.869 72.936 1576.906
+  angleY 136.998
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 3174.468 3.793 1175.891
+  angleY 33.969
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 2289.242 90.994 1250.243
+  angleY -78.259
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 3536.813 1.719 1499.055
+  angleY -78.259
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 2947.047 48.273 2431.365
+  angleY -125.45
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 3085.09 11.764 2878.166
+  angleY 67.115
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 3285.273 2.219 2853.384
+  angleY -78.259
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 2997.345 20.859 2716.456
+  angleY -78.259
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+ {
+  coords 1901.261 3.565 1553.985
+  angleY -154.664
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "objective-marker"
+  m_sDescription "Supplies"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+  {
+   $grp GenericEntity : "{D07C2D4844753F76}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_storage.et" {
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.366 0.001 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.368 0.312 0.791
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -0.714 0.001 0.263
+    }
+    {
+     components {
+      SCR_ResourceComponent "{5D247A59598D71AE}" {
+       m_aContainers {
+        SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+         m_fResourceValueCurrent 100
+         m_fResourceValueMax 100
+         m_eOnEmptyBehavior NONE
+        }
+       }
+      }
+     }
+     coords -1.175 0.002 0.799
+    }
+   }
+  }
+ }
+}
