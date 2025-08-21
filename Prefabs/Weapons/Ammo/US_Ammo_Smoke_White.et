@@ -5,6 +5,7 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
    PROJECTILE_EFFECTS {
     SubmunitionEffect "{61CAF435739E1D75}" {
      Prefab "{D3847C910CCE8C7C}Prefabs/Weapons/Ammo/Smoke_Effect_White.et"
+     SoundEvent "SOUND_DEPLOY"
     }
    }
    TIMER 1
