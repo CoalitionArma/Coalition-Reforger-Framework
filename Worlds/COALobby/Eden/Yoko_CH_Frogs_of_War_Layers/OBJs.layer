@@ -29,7 +29,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   }
  }
  Cache2 {
-  coords 9567.991 11.899 5207.966
+  coords 9572.582 11.899 5206.646
   destructor "	"\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo Cache destroyed\", duration: 10);"\
   "	"

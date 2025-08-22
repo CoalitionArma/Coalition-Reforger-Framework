@@ -4,7 +4,7 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Heavy wet fog"
+   m_sInitialStartingWeatherId "Overcast"
    m_iSetWeatherConstant 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -15,7 +15,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 55
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "A SVR agent has found the location of a FIA hideout. RUS forces are being deployed to destroy the weapons caches within the hideout to prevent FIA from moving the caches inland."\
+   m_sTextData "A SVR agent has found the loaction of FIA hideout. RUS forces are being deployed to destroy the weapons caches within the hideout to prevent FIA from moving the caches inland."\
    ""\
    "OPFOR Composition: Amphibious Infantry Company"\
    "OPFOR Assets: 9x Unarmed K17"\
