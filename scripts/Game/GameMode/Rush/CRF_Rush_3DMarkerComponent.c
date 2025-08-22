@@ -98,23 +98,15 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		// Find or create the main HUD root
 		Widget hudRoot = GetGame().GetWorkspace().FindWidget("HudRoot");
 		if (!hudRoot)
-		{
-			//Print("[CRF Rush 3D Marker] HudRoot not found, using workspace root", LogLevel.WARNING);
 			hudRoot = GetGame().GetWorkspace();
-		}
 		
 		if (!hudRoot)
-		{
-			//Print("[CRF Rush 3D Marker] ERROR: Could not find HUD root widget", LogLevel.ERROR);
 			return;
-		}
 		
 		// Create marker layout from inline definition
 		m_wMarkerRoot = CreateMarkerWidget(hudRoot);
 		if (!m_wMarkerRoot)
-		{
 			return;
-		}
 		
 		// Configure the marker
 		if (m_wMarkerText) {
@@ -123,20 +115,13 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		}
 			
 		if (m_wMarkerBackground)
-		{
 			m_wMarkerBackground.SetColor(m_MarkerColor);
-		}
-		else
-		{
-		}
 		
 		m_bIsInitialized = true;
 		
 		// Apply any pending server data
 		if (m_bServerDataPending)
-		{
 			ApplyServerData();
-		}
 	}
 	
 	/**
@@ -149,9 +134,7 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		// Create root frame widget for proper FrameSlot manipulation
 		Widget root = GetGame().GetWorkspace().CreateWidget(WidgetType.FrameWidgetTypeID, WidgetFlags.VISIBLE, NULL, 0, parent);
 		if (!root)
-		{
 			return null;
-		}
 		
 		// Create background panel for better visibility
 		Widget background = GetGame().GetWorkspace().CreateWidget(WidgetType.PanelWidgetTypeID, WidgetFlags.VISIBLE, NULL, 0, root);
@@ -164,18 +147,12 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 				m_wMarkerBackground.SetColor(m_MarkerColor);
 				m_wMarkerBackground.SetOpacity(0.8);
 			}
-			else
-			{
-			}
 			
 			// Position background to fill the root widget completely
 			FrameSlot.SetAnchor(background, 0.0, 0.0);
 			FrameSlot.SetAlignment(background, 0.0, 0.0);
 			FrameSlot.SetSize(background, m_fMaxIconSize, m_fMaxIconSize);
 			FrameSlot.SetPos(background, 0, 0);
-		}
-		else
-		{
 		}
 		
 		// Create text widget
@@ -188,18 +165,12 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 				m_wMarkerText.SetText(m_sMarkerLetter);
 				// Use default text color - no need to set explicitly
 			}
-			else
-			{
-			}
 			
 			// Center the text within the root widget
 			FrameSlot.SetAnchor(text, 0.5, 0.5);
 			FrameSlot.SetAlignment(text, 0.5, 0.5);
 			FrameSlot.SetSize(text, m_fMaxIconSize, m_fMaxIconSize);
 			FrameSlot.SetPos(text, 0, 0);
-		}
-		else
-		{
 		}
 		
 		// Set initial size and position for the root widget
@@ -323,6 +294,14 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 	 */
 	protected void UpdateMarkerDisplay()
 	{
+		// Hide marker if map is open
+		SCR_MapEntity mapEntity = SCR_MapEntity.GetMapInstance();
+		if (mapEntity && mapEntity.IsOpen())
+		{
+			m_wMarkerRoot.SetOpacity(0.0);
+			return;
+		}
+		
 		// Project 3D world position to 2D screen coordinates
 		vector screenPosition = GetGame().GetWorkspace().ProjWorldToScreen(m_vWorldPosition, GetGame().GetWorld());
 		
@@ -381,9 +360,6 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		{
 			m_wMarkerText.SetText(letter);
 		}
-		else
-		{
-		}
 	}
 	
 	/**
@@ -434,9 +410,6 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		{
 			m_wMarkerText.SetColor(m_FlashColor);
 		}
-		else
-		{
-		}
 	}
 	
 	/**
@@ -452,9 +425,6 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		if (m_wMarkerText)
 		{
 			m_wMarkerText.SetColor(Color.White);
-		}
-		else
-		{
 		}
 	}
 	
@@ -550,9 +520,6 @@ class CRF_Rush_3DMarkerComponent: ScriptComponent
 		if (!m_bIsInitialized || !m_wMarkerRoot)
 		{
 			InitializeMarkerUI();
-		}
-		else
-		{
 		}
 	}
 }

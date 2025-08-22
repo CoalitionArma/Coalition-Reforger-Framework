@@ -4,6 +4,7 @@ SCR_AIWorld : "{1A22C9F8BF6E88AB}Prefabs/AI/SCR_AIWorld_Gogland.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{660F5795D94F7E05}" {
+   m_iMCOMTimer 1
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Clear Fog"
@@ -15,6 +16,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  coords 4678.631 7.192 10952.153
  m_iTimeLimitMinutes 75
+ m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "This is a test mission for the new rush game mode."\
