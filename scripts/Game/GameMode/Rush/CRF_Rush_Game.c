@@ -317,7 +317,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Legacy hardcoded initialization for backward compatibility
 		InitializeLegacyMCOMs();
-		
+	
 		// Initialize map markers if not hidden
 		if (!m_bHideMapMarkers)
 			GetGame().GetCallqueue().CallLater(InitializeMapMarkers, 1000, false);
@@ -1548,8 +1548,11 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// Clean up references
 			CleanupMCOMReference(mcomIdentifier);
 			
+			// Delete all children
+			DeleteMCOMChildren(entity);
+			
 			// Delete the entity
-			SCR_EntityHelper.DeleteEntityAndChildren(entity);
+			delete entity;
 			Print(string.Format("[CRF_Rush_Game] Successfully deleted MCOM entity: %1", mcomIdentifier));
 		}
 		else
@@ -1572,6 +1575,20 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			{
 				Print(string.Format("[CRF_Rush_Game] No entity found by name: %1", entityName));
 			}
+		}
+	}
+	
+	protected void DeleteMCOMChildren(IEntity mcomEntity)
+	{
+		int num = 0;
+		IEntity child = mcomEntity.GetChildren();
+		while (child)
+		{
+			IEntity childToDelete = child;
+			num++;
+			DeleteMCOMChildren(child); //Recursivity is fun
+			child = child.GetSibling();
+			delete childToDelete;
 		}
 	}
 	
@@ -1634,9 +1651,13 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			Print("[CRF_RushGamemodeManager] DeleteMCOMEntityFinal: Entity already deleted for " + mcomIdentifier);
 			return;
 		}
+
+		// Delete all children
+		DeleteMCOMChildren(mcomEntity);
 		
-		// Delete the entity on server
-		SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
+		// Delete the entity
+		delete mcomEntity;
+		
 		Print("[CRF_RushGamemodeManager] Server entity deletion completed for: " + mcomIdentifier);
 	}
 
