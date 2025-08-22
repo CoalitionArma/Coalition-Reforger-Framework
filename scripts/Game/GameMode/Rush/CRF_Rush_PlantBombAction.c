@@ -220,7 +220,21 @@ class CRF_RushPlantBombAction : ScriptedUserAction
 		
 		EntityID entityID = mcomEntity.GetID();
 		
-		// Check against all MCOM entity IDs
+		// Check against all MCOM entity IDs - try new sequential system first
+		if (entityID == m_RushGamemode.GetMCOMEntityID("MCOMA"))
+			return "MCOMA";
+		if (entityID == m_RushGamemode.GetMCOMEntityID("MCOMB"))
+			return "MCOMB";
+		if (entityID == m_RushGamemode.GetMCOMEntityID("MCOMC"))
+			return "MCOMC";
+		if (entityID == m_RushGamemode.GetMCOMEntityID("MCOMD"))
+			return "MCOMD";
+		if (entityID == m_RushGamemode.GetMCOMEntityID("MCOME"))
+			return "MCOME";
+		if (entityID == m_RushGamemode.GetMCOMEntityID("MCOMF"))
+			return "MCOMF";
+		
+		// Legacy compatibility - check old identifiers
 		if (entityID == m_RushGamemode.GetMCOMEntityID("Zone1Alpha"))
 			return "Zone1Alpha";
 		if (entityID == m_RushGamemode.GetMCOMEntityID("Zone1Beta"))

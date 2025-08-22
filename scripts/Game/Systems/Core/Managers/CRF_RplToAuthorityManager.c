@@ -292,14 +292,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Print("[CRF_RplToAuthorityManager] RpcAsk_ToggleRushMCOMPlanted received: " + mcomIdentifier + ", planted: " + togglePlanted);
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
-		{
-			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.ToggleMCOMPlanted()");
 			rushGamemode.ToggleMCOMPlanted(mcomIdentifier, togglePlanted);
-		}
-		else
-		{
-			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
-		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -308,14 +301,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Print("[CRF_RplToAuthorityManager] RpcAsk_StartRushPlantingSound received on server");
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
-		{
-			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.PlayPlantingSound()");
 			rushGamemode.PlayPlantingSound();
-		}
-		else
-		{
-			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
-		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

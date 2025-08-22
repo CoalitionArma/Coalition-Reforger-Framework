@@ -230,6 +230,19 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	void DeleteRushMCOMEntity(string mcomIdentifier)
+	{
+		if (!Replication.IsServer())
+			return;
+			
+		#ifdef WORKBENCH
+		RpcDo_DeleteRushMCOMEntity(mcomIdentifier);
+		#else
+		Rpc(RpcDo_DeleteRushMCOMEntity, mcomIdentifier);
+		#endif
+	}
+	
 	//================================================================================================
 	// CLIENT RPC HANDLERS
 	// These methods execute on client machines when receiving server RPCs
@@ -705,5 +718,54 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Terminate all sounds on this component (as we can't target specific events)
 		soundComponent.TerminateAll();
 		Print("[CRF_RplBroadcastManager] Stopped all sounds on MCOM at position: " + position.ToString());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_DeleteRushMCOMEntity(string mcomIdentifier)
+	{
+		Print("[CRF_RplBroadcastManager] RpcDo_DeleteRushMCOMEntity received: " + mcomIdentifier + " (Server: " + Replication.IsServer() + ")");
+		
+		// Get the Rush gamemode manager
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (!rushGamemode)
+		{
+			Print("[CRF_RplBroadcastManager] Could not find Rush gamemode manager", LogLevel.WARNING);
+			return;
+		}
+		
+		// Get the MCOM entity to delete
+		IEntity mcomEntity = rushGamemode.GetMCOMEntity(mcomIdentifier);
+		if (!mcomEntity)
+		{
+			Print("[CRF_RplBroadcastManager] MCOM entity not found (may be already deleted): " + mcomIdentifier);
+			// Entity might already be deleted - just clean up references
+			rushGamemode.CleanupMCOMReference(mcomIdentifier);
+			return;
+		}
+		
+		Print("[CRF_RplBroadcastManager] Processing MCOM deletion: " + mcomIdentifier + " (Entity ID: " + mcomEntity.GetID() + ")");
+		
+		// Always hide the 3D marker component first
+		CRF_Rush_3DMarkerComponent markerComponent = CRF_Rush_3DMarkerComponent.Cast(mcomEntity.FindComponent(CRF_Rush_3DMarkerComponent));
+		if (markerComponent)
+			markerComponent.SetVisible(false);
+		
+		// Always clean up gamemode references
+		rushGamemode.CleanupMCOMReference(mcomIdentifier);
+		
+		// Handle entity deletion based on whether we're server or client
+		if (Replication.IsServer())
+		{
+			// On server, the entity will be deleted by the main deletion logic
+			Print("[CRF_RplBroadcastManager] Server: Skipping entity deletion (handled by main logic)");
+		}
+		else
+		{
+			// On client, delete the entity immediately
+			Print("[CRF_RplBroadcastManager] Client: Deleting entity immediately for: " + mcomIdentifier);
+			SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
+			Print("[CRF_RplBroadcastManager] Client: Successfully deleted entity: " + mcomIdentifier);
+		}
 	}
 };
