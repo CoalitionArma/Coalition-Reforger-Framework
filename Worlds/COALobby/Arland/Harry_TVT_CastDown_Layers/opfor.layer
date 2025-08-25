@@ -55,3 +55,15 @@ SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
   }
  }
 }
+GenericEntity : "{9ED4F47C1B34DA47}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/USSR_Attacking_Box.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{662B0624417CDC24}" {
+     NumSlots 20
+    }
+   }
+  }
+ }
+ coords 1617.39 5.73 932.674
+}

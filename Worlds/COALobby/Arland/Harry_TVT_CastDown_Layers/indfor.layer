@@ -47,7 +47,7 @@ SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
        SCR_AIGroup : "{0A56302C3814952B}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MMGTeam_p.et" {
         coords -0.393 0.816 14.027
         m_aUnitPrefabSlots {
-         "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{A08D03359AF24DBE}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_HMG_P.et" "{10359752619E5B7A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AHMG_P.et"
+         "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{350425E3D3FE2F85}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MMG_P.et" "{85BCB18428923941}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AMMG_P.et"
         }
         {
          SCR_AIGroup : "{6BD55948AAB748FC}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_EngiTeam_p.et" {

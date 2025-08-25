@@ -74,7 +74,7 @@ GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippi
   SCR_ResourceComponent "{5D247A59598D71AE}" {
    m_aContainers {
     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_fResourceValueCurrent 200
+     m_fResourceValueCurrent 0
     }
    }
   }

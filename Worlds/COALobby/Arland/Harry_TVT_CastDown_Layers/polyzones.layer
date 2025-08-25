@@ -50,6 +50,48 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestar
   }
  }
 }
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1159.832 0 809.982
+  angleY 36.814
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1533.464 0 568.081
+  angleY 21.498
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1978.131 0 411.545
+  angleY 1.758
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2595.569 0 497.004
+  angleY -20.23
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
  coords 1642.093 3.593 869.436
  Points {
