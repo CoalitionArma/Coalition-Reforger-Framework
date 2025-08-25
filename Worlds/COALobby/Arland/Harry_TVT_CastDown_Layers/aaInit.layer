@@ -52,7 +52,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "INDFOR Assets: Mortar, ZU-23"\
    ""\
    "OPFOR Composition: Inf"\
-   "OPFOR Assets: 1x MI-8 w/ FAB 250"\
+   "OPFOR Assets: 1x MI-8 w/ FAB 250, 1x BTR"\
    ""\
    "Time: 45 "\
    "Weather: Cloudy"
