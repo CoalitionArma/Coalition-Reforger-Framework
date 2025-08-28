@@ -584,9 +584,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		}
 		
 		array<AIAgent> aiAgents = {};
-		array<IEntity> entites = {};
+		array<IEntity> entities = {};
 
-		//Get entites in the faction and store them
+		//Get entities in the faction and store them
 		aiWorld.GetAIAgents(aiAgents);
 		foreach (AIAgent agent : aiAgents)
 		{
@@ -599,28 +599,39 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				continue;
 			
 			if (character.GetFactionKey() == faction)
-				entites.Insert(entity);
+				entities.Insert(entity);
 		}
 
-		// Update gear of all units
-		foreach (IEntity entity : entites)
-		{
-			// Grab prefab name and check if its a valid gearscript
-			ResourceName prefab = entity.GetPrefabData().GetPrefabName();
-			if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
-				continue;
-			
-			// Schedule gear setup with appropriate delay
-			GetGame().GetCallqueue().Call(
-				CRF_GearscriptManager.GetInstance().SetEntityGear, 
-				entity,
-				prefab
-			);
-		}
+		UpdateGearSetQueue(entities);
 		
 		string logMessage = string.Format("%1 was changed to %2", faction, path);
 		m_RplBroadcastManager.LogAdminAction(logMessage, -1 , false)
 	}
+	
+	protected void UpdateGearSetQueue(array<IEntity> entities, int lastIndex = 0)
+	{
+		if (lastIndex >= entities.Count())
+			return;
+		
+		lastIndex++;
+		
+		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entities, lastIndex);
+		
+		IEntity entity = entities[lastIndex];
+		
+		// Grab prefab name and check if its a valid gearscript
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+			return;
+		
+		// Close map if its a player to prevent lockup
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (!playerId)
+			m_RplBroadcastManager.Closemap(playerId);
+		
+		CRF_GearscriptManager.GetInstance().SetEntityGear(entity, prefab);
+	}
+	
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_AddItem(int playerId, string prefab, bool logAction)
