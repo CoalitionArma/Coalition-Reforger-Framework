@@ -1,0 +1,18 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 3856.802 17.553 1432.324
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{663930A051AE1D5B}" {
+   attackingSide "OPFOR"
+   defendingSide "BLUFOR"
+  }
+ }
+ coords 3864.964 16.634 1443.665
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{CDC2D35E91FCCDF9}Configs/Gearscripts/Standard/Vietnam/CRF_GS_US_Late.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{2C00703A961BD7C4}Configs/Gearscripts/Standard/Vietnam/CRF_GS_PAVN.conf"
+ }
+}
