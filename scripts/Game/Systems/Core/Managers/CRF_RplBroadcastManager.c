@@ -131,6 +131,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void HolsterGun(int playerID)
+	{
+		#ifdef WORKBENCH
+		RpcDo_HolsterGun(playerID);
+		#else
+		Rpc(RpcDo_HolsterGun, playerID);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SendHint(string data, int playerId = -1, string factionKey = "")
 	{
 		#ifdef WORKBENCH
@@ -517,6 +527,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (topMenu)
 			if (topMenu.IsInherited(SCR_MapMenuUI))
 				topMenu.Close();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_HolsterGun(int playerId)
+	{	
+		// Check if this holster is for this specific player
+		if (playerId != -1 && !IsLocalPlayer(playerId))
+			return;
+		
+		IEntity controlledEntity = GetGame().GetPlayerController().GetControlledEntity();
+		if (!controlledEntity)
+			return;
+		
+		CharacterControllerComponent characterController = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
+		if (!characterController)
+			return;
+
+		// Force player to holster gun
+		characterController.SelectWeapon(null);
 	}
 	
 	//------------------------------------------------------------------------------------------------

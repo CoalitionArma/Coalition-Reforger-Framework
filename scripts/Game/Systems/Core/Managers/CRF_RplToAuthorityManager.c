@@ -529,8 +529,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ResetGear(int playerId, ResourceName prefab, bool logAction)
 	{
-		// Close map on client to prevent lockup
+		// Prevent stuck on map
 		m_RplBroadcastManager.Closemap(playerId);
+		
+		// Prevent invisible gun 
+		m_RplBroadcastManager.HolsterGun(playerId);
 		
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!entity)
@@ -602,6 +605,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				entities.Insert(entity);
 		}
 
+		// Queue changes to prevent server freezing
 		UpdateGearSetQueue(entities);
 		
 		string logMessage = string.Format("%1 was changed to %2", faction, path);
@@ -613,10 +617,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (lastIndex >= entities.Count())
 			return;
 		
-		lastIndex++;
-		
-		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entities, lastIndex);
-		
 		IEntity entity = entities[lastIndex];
 		
 		// Grab prefab name and check if its a valid gearscript
@@ -624,12 +624,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
 			return;
 		
-		// Close map if its a player to prevent lockup
+		// Prevent Lockup and invisible weapon if player
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
-		if (!playerId)
+		if (playerId)
+		{
 			m_RplBroadcastManager.Closemap(playerId);
+			m_RplBroadcastManager.HolsterGun(playerId);
+		}
 		
 		CRF_GearscriptManager.GetInstance().SetEntityGear(entity, prefab);
+		
+		// Queue next entity
+		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entities, lastIndex + 1);
 	}
 	
 
