@@ -19,12 +19,6 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
           SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
            coords -14.132 1.589 5.361
            angleY 49.882
-           {
-            SCR_AIGroup : "{3B279F5833A489CE}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MATTeam_p.et" {
-             coords 3.421 -1.589 18.3
-             angleY -54.201
-            }
-           }
           }
          }
         }

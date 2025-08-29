@@ -17,7 +17,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "USSR forces are being deployed to destroy the docks and a nearby storage facilty so UK forces lose their precious supplies."\
    ""\
    "BLUFOR Composition:Infantry Platoon"\
-   "BLUFOR Assets: 1x MMG Team and 1x MAT Team"\
+   "BLUFOR Assets: 1x MMG Team"\
    ""\
    "OPFOR Composition: Motorized Company"\
    "OPFOR Assets: 2x BDRM2"\
@@ -63,7 +63,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "MMG"
        }
        SCR_CallsignInfo "{663AFC006C9DB245}" {
-        m_sCallsign "MAT"
        }
       }
      }
