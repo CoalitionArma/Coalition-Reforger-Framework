@@ -4,7 +4,7 @@ SCR_AIWorld : "{1A22C9F8BF6E88AB}Prefabs/AI/SCR_AIWorld_Gogland.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CRF_RushGamemodeManager "{660F5795D94F7E05}" {
-   m_iMCOMTimer 1
+   m_iMCOMTimer 5
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Clear Fog"
