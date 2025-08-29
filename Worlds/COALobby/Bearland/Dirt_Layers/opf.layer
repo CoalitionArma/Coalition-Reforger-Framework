@@ -1,3 +1,7 @@
+GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ coords 1390.689 24.002 1566.007
+ angleY -158
+}
 SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
  coords 1431.94 30.311 1604.006
  {
@@ -101,4 +105,10 @@ $grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tra
   angleY -9.065
   angleZ -1.247
  }
+}
+GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+ coords 1398.987 23.987 1562.56
+ angleX 0
+ angleY 0
+ angleZ 0
 }
