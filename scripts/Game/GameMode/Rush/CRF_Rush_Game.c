@@ -413,16 +413,61 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity zone3AlphaTrigger = GetGame().GetWorld().FindEntityByName("z3_alpha_trigger");
 		IEntity zone3BetaTrigger = GetGame().GetWorld().FindEntityByName("z3_beta_trigger");
 		
-		// Spawn MCOMs using new identifier format
+		Print("[SpawnMCOMs] Configuration: " + m_iNumberOfZones + " zones, " + m_iMCOMsPerZone + " MCOMs per zone");
+		
+		// Spawn MCOMs using configuration-aware logic
 		if (zone1AlphaTrigger && m_iNumberOfZones >= 1 && m_iMCOMsPerZone >= 1)
+		{
+			Print("[SpawnMCOMs] Spawning MCOMA at zone1AlphaTrigger (Zone 1)");
 			SpawnMCOMAtPosition(zone1AlphaTrigger, "MCOMA");
-		if (zone1BetaTrigger && m_iNumberOfZones >= 1 && m_iMCOMsPerZone >= 2)
-			SpawnMCOMAtPosition(zone1BetaTrigger, "MCOMB");
-		if (zone2AlphaTrigger && m_iNumberOfZones >= 2 && m_iMCOMsPerZone >= 1)
-			SpawnMCOMAtPosition(zone2AlphaTrigger, "MCOMC");
+		}
+		
+		// MCOMB spawning depends on configuration
+		if (m_iMCOMsPerZone == 1)
+		{
+			// 1 MCOM per zone: MCOMB goes to Zone 2 (zone2AlphaTrigger = mcom_b_trigger)
+			if (zone2AlphaTrigger && m_iNumberOfZones >= 2)
+			{
+				Print("[SpawnMCOMs] Spawning MCOMB at zone2AlphaTrigger (Zone 2) - 1 MCOM per zone config");
+				SpawnMCOMAtPosition(zone2AlphaTrigger, "MCOMB");
+			}
+		}
+		else
+		{
+			// 2 MCOMs per zone: MCOMB goes to Zone 1 Beta (zone1BetaTrigger = mcom_b_trigger)
+			if (zone1BetaTrigger && m_iNumberOfZones >= 1)
+			{
+				Print("[SpawnMCOMs] Spawning MCOMB at zone1BetaTrigger (Zone 1) - 2 MCOMs per zone config");
+				SpawnMCOMAtPosition(zone1BetaTrigger, "MCOMB");
+			}
+		}
+		
+		// MCOMC spawning depends on configuration
+		if (m_iMCOMsPerZone == 1)
+		{
+			// 1 MCOM per zone: MCOMC goes to Zone 3 (zone3AlphaTrigger = mcom_c_trigger)
+			if (zone3AlphaTrigger && m_iNumberOfZones >= 3)
+			{
+				Print("[SpawnMCOMs] Spawning MCOMC at zone3AlphaTrigger (Zone 3) - 1 MCOM per zone config");
+				SpawnMCOMAtPosition(zone3AlphaTrigger, "MCOMC");
+			}
+		}
+		else
+		{
+			// 2 MCOMs per zone: MCOMC goes to Zone 2 Alpha (zone2AlphaTrigger = mcom_c_trigger)
+			if (zone2AlphaTrigger && m_iNumberOfZones >= 2)
+			{
+				Print("[SpawnMCOMs] Spawning MCOMC at zone2AlphaTrigger (Zone 2) - 2 MCOMs per zone config");
+				SpawnMCOMAtPosition(zone2AlphaTrigger, "MCOMC");
+			}
+		}
+		
+		// MCOMD always goes to Zone 2 Beta when there are 2 MCOMs per zone
 		if (zone2BetaTrigger && m_iNumberOfZones >= 2 && m_iMCOMsPerZone >= 2)
 			SpawnMCOMAtPosition(zone2BetaTrigger, "MCOMD");
-		if (zone3AlphaTrigger && m_iNumberOfZones >= 3 && m_iMCOMsPerZone >= 1)
+		
+		// MCOME and MCOMF only used in 2 MCOMs per zone configuration for Zone 3
+		if (zone3AlphaTrigger && m_iNumberOfZones >= 3 && m_iMCOMsPerZone >= 2)
 			SpawnMCOMAtPosition(zone3AlphaTrigger, "MCOME");
 		if (zone3BetaTrigger && m_iNumberOfZones >= 3 && m_iMCOMsPerZone >= 2)
 			SpawnMCOMAtPosition(zone3BetaTrigger, "MCOMF");
@@ -442,6 +487,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected void SpawnMCOMAtPosition(IEntity trigger, string mcomIdentifier)
 	{
+		Print("[SpawnMCOMAtPosition] Spawning " + mcomIdentifier + " at trigger: " + trigger.GetName());
+		
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		trigger.GetWorldTransform(spawnParams.Transform);
@@ -451,8 +498,11 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		IEntity mcomEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_MCOMPrefab), GetGame().GetWorld(), spawnParams);
 		if (!mcomEntity)
 		{
+			Print("[SpawnMCOMAtPosition] FAILED to spawn MCOM entity for " + mcomIdentifier);
 			return;
 		}
+		
+		Print("[SpawnMCOMAtPosition] Successfully spawned " + mcomIdentifier + " with entity ID: " + mcomEntity.GetID());
 		
 		// Configure the 3D marker component on the spawned MCOM
 		CRF_Rush_3DMarkerComponent markerComponent = CRF_Rush_3DMarkerComponent.Cast(mcomEntity.FindComponent(CRF_Rush_3DMarkerComponent));
@@ -753,19 +803,27 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// Parse the zone index from the MCOM identifier
 		int zoneIndex, mcomIndex;
 		if (!ParseMCOMIdentifier(mcomIdentifier, zoneIndex, mcomIndex))
+		{
+			Print("[ShouldMarkerBeVisible] Failed to parse identifier: " + mcomIdentifier);
 			return false;
+		}
 		
 		// Check if this MCOM is destroyed
 		if (m_aMCOMDestroyed && zoneIndex < m_aMCOMDestroyed.Count() && 
 			mcomIndex < m_aMCOMDestroyed[zoneIndex].Count())
 		{
 			if (m_aMCOMDestroyed[zoneIndex][mcomIndex])
+			{
+				Print("[ShouldMarkerBeVisible] " + mcomIdentifier + " is destroyed, hiding marker");
 				return false; // Hide if destroyed
+			}
 		}
 		
 		// For 3D markers: only show current active zone
 		int zoneNumber = zoneIndex + 1; // Convert from 0-based index to 1-based zone number
-		return zoneNumber == m_iCurrentZone;
+		bool isVisible = zoneNumber == m_iCurrentZone;
+		Print("[ShouldMarkerBeVisible] " + mcomIdentifier + " zone " + zoneNumber + " vs current " + m_iCurrentZone + " = " + isVisible);
+		return isVisible;
 	}
 	
 	/**
@@ -778,6 +836,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		{
 			return;
 		}
+		
+		Print("[AddAllMCOMMarkers] Adding markers for all zones, current active zone: " + m_iCurrentZone);
 		
 		// Add markers for ALL MCOMs with color coding based on zone status
 		for (int zoneIndex = 0; zoneIndex < m_iNumberOfZones; zoneIndex++)
@@ -798,6 +858,14 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				string triggerName = GetTriggerName(zoneNumber, mcomIndex);
 				string mcomIdentifier = GetMCOMIdentifier(zoneNumber, mcomIndex);
 				
+				// Get trigger position
+				IEntity trigger = GetGame().GetWorld().FindEntityByName(triggerName);
+				if (!trigger)
+					continue;
+				
+				vector pos = trigger.GetOrigin();
+				string posStr = string.Format("%1 %2 %3", pos[0], pos[1], pos[2]);
+				
 				// Get the marker letter and icon
 				string markerLetter = GetMarkerLetterFromIdentifier(mcomIdentifier);
 				string iconPath = GetMarkerIconPath(markerLetter);
@@ -805,21 +873,27 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				
 				// Set color based on zone status
 				int markerColor;
+				string colorName;
 				if (zoneNumber == m_iCurrentZone)
 				{
 					markerColor = ARGB(255, 255, 0, 0); // Red for active zone
+					colorName = "Red";
 				}
 				else if (zoneNumber < m_iCurrentZone)
 				{
 					markerColor = ARGB(255, 128, 128, 128); // Gray for completed zones
+					colorName = "Gray";
 				}
 				else
 				{
 					markerColor = ARGB(255, 255, 255, 0); // Yellow for future zones
+					colorName = "Yellow";
 				}
 				
+				Print("[AddAllMCOMMarkers] " + mcomIdentifier + " (Zone " + zoneNumber + ") → " + colorName + " marker");
+				
 				// Add the marker with appropriate color
-				playerControllerManager.AddScriptedMarker(triggerName, "0 0 0", 1, markerName, iconPath, 50, markerColor);
+				playerControllerManager.AddScriptedMarker("Static Marker", posStr, 1, markerName, iconPath, 50, markerColor);
 			}
 		}
 		
@@ -985,7 +1059,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 * Refresh map markers by removing all and re-initializing
 	 * Used when MCOMs are destroyed to clean up their markers
 	 */
-	protected void RefreshMapMarkers()
+	void RefreshMapMarkers()
 	{
 		Print("[CRF_RushGamemodeManager] Refreshing map markers...");
 		
@@ -1015,6 +1089,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// On server, update replicated visibility properties
 		if (Replication.IsServer())
 		{
+			Print("[Update3DMarkerColors] Updating visibility flags for current zone: " + m_iCurrentZone + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
+			
 			m_bZone1AlphaMarkerVisible = ShouldMarkerBeVisible("MCOMA") || ShouldMarkerBeVisible("Zone1Alpha");
 			m_bZone1BetaMarkerVisible = ShouldMarkerBeVisible("MCOMB") || ShouldMarkerBeVisible("Zone1Beta");
 			m_bZone2AlphaMarkerVisible = ShouldMarkerBeVisible("MCOMC") || ShouldMarkerBeVisible("Zone2Alpha");
@@ -1022,9 +1098,14 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			m_bZone3AlphaMarkerVisible = ShouldMarkerBeVisible("MCOME") || ShouldMarkerBeVisible("Zone3Alpha");
 			m_bZone3BetaMarkerVisible = ShouldMarkerBeVisible("MCOMF") || ShouldMarkerBeVisible("Zone3Beta");
 			
+			Print("[Update3DMarkerColors] Visibility: MCOMA=" + m_bZone1AlphaMarkerVisible + ", MCOMB=" + m_bZone1BetaMarkerVisible + ", MCOMC=" + m_bZone2AlphaMarkerVisible);
+			
 			// Toggle replication trigger to notify clients
 			m_b3DMarkersInitialized = !m_b3DMarkersInitialized;
 			Replication.BumpMe();
+			
+			// Also send RPC to ensure immediate client update
+			Rpc(RpcDo_Update3DMarkerColors, m_iCurrentZone);
 			
 		}
 		
@@ -1075,13 +1156,40 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			}
 		}
 		
-		// Also update legacy markers for backward compatibility - only show current zone
-		UpdateLegacyMarkerWithColor(m_Zone1AlphaMCOM, 1, m_bZone1AlphaMarkerVisible);
-		UpdateLegacyMarkerWithColor(m_Zone1BetaMCOM, 1, m_bZone1BetaMarkerVisible);
-		UpdateLegacyMarkerWithColor(m_Zone2AlphaMCOM, 2, m_bZone2AlphaMarkerVisible);
-		UpdateLegacyMarkerWithColor(m_Zone2BetaMCOM, 2, m_bZone2BetaMarkerVisible);
-		UpdateLegacyMarkerWithColor(m_Zone3AlphaMCOM, 3, m_bZone3AlphaMarkerVisible);
-		UpdateLegacyMarkerWithColor(m_Zone3BetaMCOM, 3, m_bZone3BetaMarkerVisible);
+		// Also update legacy markers for backward compatibility - use configuration-aware zone numbers
+		if (m_Zone1AlphaMCOM)
+		{
+			int actualZone = GetZoneNumber("MCOMA");
+			Print("[Update3DMarkerColorsLocal] MCOMA assigned to zone " + actualZone + ", visibility: " + m_bZone1AlphaMarkerVisible);
+			UpdateLegacyMarkerWithColor(m_Zone1AlphaMCOM, actualZone, m_bZone1AlphaMarkerVisible);
+		}
+		if (m_Zone1BetaMCOM)
+		{
+			int actualZone = GetZoneNumber("MCOMB");
+			Print("[Update3DMarkerColorsLocal] MCOMB assigned to zone " + actualZone + ", visibility: " + m_bZone1BetaMarkerVisible);
+			UpdateLegacyMarkerWithColor(m_Zone1BetaMCOM, actualZone, m_bZone1BetaMarkerVisible);
+		}
+		if (m_Zone2AlphaMCOM)
+		{
+			int actualZone = GetZoneNumber("MCOMC");
+			Print("[Update3DMarkerColorsLocal] MCOMC assigned to zone " + actualZone + ", visibility: " + m_bZone2AlphaMarkerVisible);
+			UpdateLegacyMarkerWithColor(m_Zone2AlphaMCOM, actualZone, m_bZone2AlphaMarkerVisible);
+		}
+		if (m_Zone2BetaMCOM)
+		{
+			int actualZone = GetZoneNumber("MCOMD");
+			UpdateLegacyMarkerWithColor(m_Zone2BetaMCOM, actualZone, m_bZone2BetaMarkerVisible);
+		}
+		if (m_Zone3AlphaMCOM)
+		{
+			int actualZone = GetZoneNumber("MCOME");
+			UpdateLegacyMarkerWithColor(m_Zone3AlphaMCOM, actualZone, m_bZone3AlphaMarkerVisible);
+		}
+		if (m_Zone3BetaMCOM)
+		{
+			int actualZone = GetZoneNumber("MCOMF");
+			UpdateLegacyMarkerWithColor(m_Zone3BetaMCOM, actualZone, m_bZone3BetaMarkerVisible);
+		}
 	}
 	
 	/**
@@ -1707,6 +1815,17 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	}
 	
 	/**
+	 * Public wrapper to set MCOM destroyed status from RPC handlers
+	 * @param mcomIdentifier The MCOM identifier
+	 * @param isDestroyed The destroyed status
+	 */
+	void SetMCOMDestroyedStatusFromRPC(string mcomIdentifier, bool isDestroyed)
+	{
+		SetMCOMDestroyedStatus(mcomIdentifier, isDestroyed);
+		Print("[CRF_RushGamemodeManager] SetMCOMDestroyedStatusFromRPC called for: " + mcomIdentifier + " destroyed: " + isDestroyed);
+	}
+	
+	/**
 	 * Parse MCOM identifier to get zone and MCOM indices
 	 * @param mcomIdentifier The MCOM identifier (e.g., "Zone1Alpha")
 	 * @param zoneIndex Output zone index (0-based)
@@ -1719,21 +1838,32 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		switch (mcomIdentifier)
 		{
 			case "MCOMA":
-				zoneIndex = 0; mcomIndex = 0; return true;
+				zoneIndex = 0; mcomIndex = 0; 
+				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex);
+				return true;
 			case "MCOMB":
 				if (m_iMCOMsPerZone == 1) { zoneIndex = 1; mcomIndex = 0; }
 				else { zoneIndex = 0; mcomIndex = 1; }
+				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
 				return true;
 			case "MCOMC":
-				if (m_iMCOMsPerZone == 1) { zoneIndex = 2; mcomIndex = 0; }
-				else { zoneIndex = 1; mcomIndex = 0; }
+				if (m_iMCOMsPerZone == 1) { zoneIndex = 2; mcomIndex = 0; } // Zone 3, Index 0 for 1 MCOM per zone
+				else { zoneIndex = 1; mcomIndex = 0; } // Zone 2, Index 0 for 2 MCOMs per zone
+				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
 				return true;
 			case "MCOMD":
-				zoneIndex = 1; mcomIndex = 1; return true;
+				zoneIndex = 1; mcomIndex = 1; 
+				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex);
+				return true;
 			case "MCOME":
-				zoneIndex = 2; mcomIndex = 0; return true;
+				if (m_iMCOMsPerZone == 1) { zoneIndex = 2; mcomIndex = 0; }
+				else { zoneIndex = 2; mcomIndex = 0; }
+				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
+				return true;
 			case "MCOMF":
-				zoneIndex = 2; mcomIndex = 1; return true;
+				zoneIndex = 2; mcomIndex = 1; 
+				Print("[ParseMCOMIdentifier] " + mcomIdentifier + " → Zone " + (zoneIndex + 1) + ", Index " + mcomIndex);
+				return true;
 		}
 		
 		// Legacy compatibility - only for backward compatibility with existing missions
@@ -1769,7 +1899,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// Set appropriate message and handle zone progression
 			if (zoneNumber < m_iNumberOfZones)
 			{
+				int oldZone = m_iCurrentZone;
 				m_iCurrentZone = zoneNumber + 1;
+				Print("[CheckZoneCleared] Zone transition: " + oldZone + " → " + m_iCurrentZone);
 				m_sMessageContent = string.Format("Zone %1 Cleared! Zone %2 is now unlocked.|20|Attackers advance!", zoneNumber, zoneNumber + 1);
 			}
 			else
@@ -1781,7 +1913,8 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		if (zoneCleared && zoneNumber < m_iNumberOfZones)
 		{
-			// Update map markers for new active zone
+			// Update both map markers and 3D markers for new active zone
+			Print("[CheckZoneCleared] Updating markers for new active zone: " + m_iCurrentZone);
 			GetGame().GetCallqueue().CallLater(UpdateAllMCOMMarkers, 500, false);
 		}
 		
@@ -2258,13 +2391,37 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	 */
 	protected int GetZoneNumber(string mcomIdentifier)
 	{
+		Print("[GetZoneNumber] Checking zone for: " + mcomIdentifier + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
+		
+		// Handle MCOMB special case based on configuration
+		if (mcomIdentifier == "MCOMB")
+		{
+			int zone;
+			if (m_iMCOMsPerZone == 1)
+				zone = 2;
+			else
+				zone = 1;
+			Print("[GetZoneNumber] " + mcomIdentifier + " → Zone " + zone + " (config-aware)");
+			return zone;
+		}
+		
+		// Handle MCOMC special case based on configuration
+		if (mcomIdentifier == "MCOMC")
+		{
+			int zone;
+			if (m_iMCOMsPerZone == 1)
+				zone = 3;
+			else
+				zone = 2;
+			Print("[GetZoneNumber] " + mcomIdentifier + " → Zone " + zone + " (config-aware)");
+			return zone;
+		}
+		
 		// Handle new sequential naming
 		switch (mcomIdentifier)
 		{
 			case "MCOMA":
-			case "MCOMB":
 				return 1;
-			case "MCOMC":
 			case "MCOMD":
 				return 2;
 			case "MCOME":
@@ -2960,6 +3117,10 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	protected void RpcDo_Update3DMarkerColors(int currentZone)
 	{
+		// Ensure client has the correct current zone
+		if (!Replication.IsServer())
+			m_iCurrentZone = currentZone;
+			
 		Update3DMarkerColorsLocal();
 	}
 	

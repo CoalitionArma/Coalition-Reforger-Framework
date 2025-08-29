@@ -843,6 +843,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 			return;
 		}
 		
+		// On clients, set the destroyed status FIRST before any marker operations
+		if (!Replication.IsServer())
+		{
+			// Set the destroyed status in the gamemode arrays so RefreshMapMarkers knows to exclude this MCOM
+			rushGamemode.SetMCOMDestroyedStatusFromRPC(mcomIdentifier, true);
+			Print("[CRF_RplBroadcastManager] Set destroyed status for: " + mcomIdentifier);
+			
+			// Clear all markers and refresh with proper destroyed state
+			CRF_PlayerControllerManager playerControllerManager = CRF_PlayerControllerManager.GetInstance();
+			if (playerControllerManager)
+			{
+				playerControllerManager.RemoveALLScriptedMarkers();
+				Print("[CRF_RplBroadcastManager] Removed all map markers for MCOM destruction: " + mcomIdentifier);
+				
+				// Immediately refresh markers with proper destroyed status
+				rushGamemode.RefreshMapMarkers();
+				Print("[CRF_RplBroadcastManager] Refreshed map markers with destroyed status for: " + mcomIdentifier);
+			}
+		}
+		
 		// Get the MCOM entity to delete
 		IEntity mcomEntity = rushGamemode.GetMCOMEntity(mcomIdentifier);
 		if (!mcomEntity)
