@@ -84,6 +84,7 @@ $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarke
   m_MarkerColor 0.726 0.012 0.012 1
   m_sQuadName "attack-main"
   m_fWorldSize 300
+  m_sDescription "Possible Attack Direction"
  }
  {
   coords 3159.904 127.91 1512.955
@@ -91,6 +92,7 @@ $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarke
   m_MarkerColor 0.726 0.012 0.012 1
   m_sQuadName "attack-main"
   m_fWorldSize 300
+  m_sDescription "Possible Attack Direction"
  }
  {
   coords 3882 179.609 1951.028
@@ -98,6 +100,7 @@ $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarke
   m_MarkerColor 0.726 0.012 0.012 1
   m_sQuadName "attack-main"
   m_fWorldSize 300
+  m_sDescription "Possible Attack Direction"
  }
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
