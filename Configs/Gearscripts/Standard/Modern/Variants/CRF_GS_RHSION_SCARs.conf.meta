@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{D62FC8AB893C3D7E}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSION_SCARs.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

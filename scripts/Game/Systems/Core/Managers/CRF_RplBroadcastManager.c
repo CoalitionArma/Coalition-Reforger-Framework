@@ -231,6 +231,56 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void CreateGroupLeaderMarker(int playerId, string groupName)
+	{
+		#ifdef WORKBENCH
+		RpcDo_CreateGroupLeaderMarker(playerId, groupName);
+		#else
+		Rpc(RpcDo_CreateGroupLeaderMarker, playerId, groupName);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void RemoveGroupLeaderMarker(int playerId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_RemoveGroupLeaderMarker(playerId);
+		#else
+		Rpc(RpcDo_RemoveGroupLeaderMarker, playerId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ClearAllGroupLeaderMarkers()
+	{
+		#ifdef WORKBENCH
+		RpcDo_ClearAllGroupLeaderMarkers();
+		#else
+		Rpc(RpcDo_ClearAllGroupLeaderMarkers);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void RequestGroupLeaderMarkerState()
+	{
+		#ifdef WORKBENCH
+		RpcDo_RequestGroupLeaderMarkerState(SCR_PlayerController.GetLocalPlayerId());
+		#else
+		Rpc(RpcDo_RequestGroupLeaderMarkerState, SCR_PlayerController.GetLocalPlayerId());
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void CreateGroupLeaderMarkerForPlayer(int targetPlayerId, int leaderPlayerId, string groupName)
+	{
+		#ifdef WORKBENCH
+		RpcDo_CreateGroupLeaderMarkerForPlayer(targetPlayerId, leaderPlayerId, groupName);
+		#else
+		Rpc(RpcDo_CreateGroupLeaderMarkerForPlayer, targetPlayerId, leaderPlayerId, groupName);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void DeleteRushMCOMEntity(string mcomIdentifier)
 	{
 		if (!Replication.IsServer())
@@ -718,6 +768,65 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Terminate all sounds on this component (as we can't target specific events)
 		soundComponent.TerminateAll();
 		Print("[CRF_RplBroadcastManager] Stopped all sounds on MCOM at position: " + position.ToString());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_CreateGroupLeaderMarker(int playerId, string groupName)
+	{
+		CRF_GroupLeaderMarkerManager markerManager = CRF_GroupLeaderMarkerManager.GetInstance();
+		if (markerManager)
+		{
+			markerManager.CreateMarkerForPlayerRPC(playerId, groupName);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_RemoveGroupLeaderMarker(int playerId)
+	{
+		CRF_GroupLeaderMarkerManager markerManager = CRF_GroupLeaderMarkerManager.GetInstance();
+		if (markerManager)
+		{
+			markerManager.RemoveMarkerForPlayerRPC(playerId);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_ClearAllGroupLeaderMarkers()
+	{
+		CRF_GroupLeaderMarkerManager markerManager = CRF_GroupLeaderMarkerManager.GetInstance();
+		if (markerManager)
+		{
+			markerManager.ClearAllMarkersRPC();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcDo_RequestGroupLeaderMarkerState(int requestingPlayerId)
+	{
+		CRF_GroupLeaderMarkerManager markerManager = CRF_GroupLeaderMarkerManager.GetInstance();
+		if (markerManager)
+		{
+			markerManager.SendCurrentStateToClient(requestingPlayerId);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_CreateGroupLeaderMarkerForPlayer(int targetPlayerId, int leaderPlayerId, string groupName)
+	{
+		// Only create marker for the target player
+		if (SCR_PlayerController.GetLocalPlayerId() != targetPlayerId)
+			return;
+		
+		CRF_GroupLeaderMarkerManager markerManager = CRF_GroupLeaderMarkerManager.GetInstance();
+		if (markerManager)
+		{
+			markerManager.CreateMarkerForPlayerRPC(leaderPlayerId, groupName);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

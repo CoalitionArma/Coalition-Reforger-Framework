@@ -212,10 +212,10 @@ GenericEntity SupplyGen : "{687A661759E0249B}Prefabs/Props/Military/SupplyBox/Su
   SCR_ResourceComponent "{5D247A59598D71AE}" {
    m_aContainers {
     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_fResourceValueCurrent 1
+     m_fResourceValueCurrent 10
      m_fResourceValueMax 50
      m_bEnableResourceGain 1
-     m_fResourceGain 1
+     m_fResourceGain 2
      m_fResourceGainTickrate 80
     }
    }

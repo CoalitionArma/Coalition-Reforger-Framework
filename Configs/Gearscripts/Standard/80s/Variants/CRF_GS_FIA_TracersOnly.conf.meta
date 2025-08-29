@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{2F68FE4489B35DE8}Configs/Gearscripts/Standard/80s/CRF_GS_FIA_TracersOnly.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
