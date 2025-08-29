@@ -64,6 +64,70 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{47BE0C992B85DA78}Configs/Gearscripts/Standard/80s/CRF_GS_CIA_Vietnam.conf"
  }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663B2293369CD892}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663B229336C6641E}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{663B2293360D4F0A}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{663B22933643508D}" {
+        m_sCallsign "MTR"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663B22932865C533}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663B229329A22E4B}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{663B229329F802A4}" {
+        m_sCallsign "1-5"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
 PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
  coords 2059.43 0 2675.321
