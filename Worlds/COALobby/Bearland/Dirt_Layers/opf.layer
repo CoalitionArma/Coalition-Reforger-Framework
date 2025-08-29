@@ -1,0 +1,114 @@
+GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ coords 1390.689 24.002 1566.007
+ angleY -158
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 1431.94 30.311 1604.006
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords 12.666 -1.017 1.811
+   m_aUnitPrefabSlots {
+    "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{3B670BD33F8C55D8}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_LogiTeam_p.et" {
+     coords -6.57 0.706 -7.998
+     m_aUnitPrefabSlots {
+      "{E5250C1BEBC038A2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_LogiLead_P.et" "{7043203A0D1F11AF}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_LogiRunner_P.et"
+     }
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords 25.473 -4.947 22.795
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords -25.914 -0.68 26.281
+         {
+          SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+           coords 21.776 -3.94 28.34
+           {
+            SCR_AIGroup : "{2598DBB9C3E01AD3}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_IndirectTeam_p.et" {
+             coords -21.764 9.685 -64.896
+             m_aUnitPrefabSlots {
+              "{1A48A3C1A69E573E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectLead_P.et" "{48E86145C5152AD5}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectGunner_P.et" "{0F69A00097D4E2E1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectLoader_P.et"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp Vehicle : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ Ural4320_transport_covered1 {
+  coords 1434.323 30.193 1614.319
+  angleX 2.974
+  angleY -169.065
+  angleZ -1.247
+ }
+ Ural4320_transport_covered2 {
+  coords 1436.664 29.226 1623.371
+  angleX 3.525
+  angleY -170.254
+  angleZ 0.605
+ }
+ Ural4320_transport_covered3 {
+  coords 1423.273 29.934 1606.053
+  angleX -5.634
+  angleY -105.014
+  angleZ -0.336
+ }
+ Ural4320_transport_covered4 {
+  coords 1413.224 28.91 1602.564
+  angleX -6.716
+  angleY -104.9
+  angleZ -0.977
+ }
+ Ural4320_transport_covered5 {
+  coords 1402.674 26.69 1594.204
+  angleX -11.864
+  angleY -135.956
+  angleZ -0.423
+ }
+ Ural4320_transport_covered6 {
+  coords 1354.646 2.899 526.756
+  angleX 2.974
+  angleY 0.935
+  angleZ -1.247
+ }
+ Ural4320_transport_covered7 {
+  coords 1353.799 2.573 514.439
+  angleX 2.974
+  angleY 4.935
+  angleZ -1.247
+ }
+ Ural4320_transport_covered8 {
+  coords 1352.972 2.28 501.915
+  angleX 2.974
+  angleY 6.935
+  angleZ -1.247
+ }
+ Ural4320_transport_covered9 {
+  coords 1352.771 2.316 479.712
+  angleX 2.974
+  angleY -5.065
+  angleZ -1.247
+ }
+ Ural4320_transport_covered10 {
+  coords 1354.086 2.673 468.834
+  angleX 2.974
+  angleY -9.065
+  angleZ -1.247
+ }
+}
+GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+ coords 1398.987 23.987 1562.56
+ angleX 0
+ angleY 0
+ angleZ 0
+}
