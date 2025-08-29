@@ -121,3 +121,43 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 1348.171 3.114 568.732
+ Points {
+  ShapePoint "{663AEC8E580071EB}" {
+   Position 52.931 -0 44.887
+  }
+  ShapePoint "{663AEC8E5F140A52}" {
+   Position -90.29 0 16.332
+  }
+  ShapePoint "{663AEC8E5E89A8DC}" {
+   Position -73.917 0 -289.023
+  }
+  ShapePoint "{663AEC8E5C7E5CAB}" {
+   Position 192.582 0 -201.738
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 1258.239 11.978 1269.032
+ Points {
+  ShapePoint "{663AEC8E7D8F53FE}" {
+   Position -49.055 0 -369.194
+  }
+  ShapePoint "{663AEC8E728C91DE}" {
+   Position 132.389 0 -82.499
+  }
+  ShapePoint "{663AEC8E77FFC6C8}" {
+   Position 246.259 0 355.834
+  }
+  ShapePoint "{663AEC8E7547312F}" {
+   Position 193.577 0 525.773
+  }
+  ShapePoint "{663AEC8E74C664D0}" {
+   Position -283.601 0 464.186
+  }
+  ShapePoint "{663AEC8E6A339AE9}" {
+   Position -189.502 0 -311.859
+  }
+ }
+}
