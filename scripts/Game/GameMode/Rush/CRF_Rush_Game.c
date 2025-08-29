@@ -804,7 +804,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		int zoneIndex, mcomIndex;
 		if (!ParseMCOMIdentifier(mcomIdentifier, zoneIndex, mcomIndex))
 		{
-			Print("[ShouldMarkerBeVisible] Failed to parse identifier: " + mcomIdentifier);
 			return false;
 		}
 		
@@ -814,7 +813,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		{
 			if (m_aMCOMDestroyed[zoneIndex][mcomIndex])
 			{
-				Print("[ShouldMarkerBeVisible] " + mcomIdentifier + " is destroyed, hiding marker");
 				return false; // Hide if destroyed
 			}
 		}
@@ -822,7 +820,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// For 3D markers: only show current active zone
 		int zoneNumber = zoneIndex + 1; // Convert from 0-based index to 1-based zone number
 		bool isVisible = zoneNumber == m_iCurrentZone;
-		Print("[ShouldMarkerBeVisible] " + mcomIdentifier + " zone " + zoneNumber + " vs current " + m_iCurrentZone + " = " + isVisible);
 		return isVisible;
 	}
 	
@@ -836,8 +833,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		{
 			return;
 		}
-		
-		Print("[AddAllMCOMMarkers] Adding markers for all zones, current active zone: " + m_iCurrentZone);
 		
 		// Add markers for ALL MCOMs with color coding based on zone status
 		for (int zoneIndex = 0; zoneIndex < m_iNumberOfZones; zoneIndex++)
@@ -873,24 +868,18 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				
 				// Set color based on zone status
 				int markerColor;
-				string colorName;
 				if (zoneNumber == m_iCurrentZone)
 				{
 					markerColor = ARGB(255, 255, 0, 0); // Red for active zone
-					colorName = "Red";
 				}
 				else if (zoneNumber < m_iCurrentZone)
 				{
 					markerColor = ARGB(255, 128, 128, 128); // Gray for completed zones
-					colorName = "Gray";
 				}
 				else
 				{
 					markerColor = ARGB(255, 255, 255, 0); // Yellow for future zones
-					colorName = "Yellow";
 				}
-				
-				Print("[AddAllMCOMMarkers] " + mcomIdentifier + " (Zone " + zoneNumber + ") → " + colorName + " marker");
 				
 				// Add the marker with appropriate color
 				playerControllerManager.AddScriptedMarker("Static Marker", posStr, 1, markerName, iconPath, 50, markerColor);
@@ -1089,16 +1078,12 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		// On server, update replicated visibility properties
 		if (Replication.IsServer())
 		{
-			Print("[Update3DMarkerColors] Updating visibility flags for current zone: " + m_iCurrentZone + " (MCOMsPerZone: " + m_iMCOMsPerZone + ")");
-			
 			m_bZone1AlphaMarkerVisible = ShouldMarkerBeVisible("MCOMA") || ShouldMarkerBeVisible("Zone1Alpha");
 			m_bZone1BetaMarkerVisible = ShouldMarkerBeVisible("MCOMB") || ShouldMarkerBeVisible("Zone1Beta");
 			m_bZone2AlphaMarkerVisible = ShouldMarkerBeVisible("MCOMC") || ShouldMarkerBeVisible("Zone2Alpha");
 			m_bZone2BetaMarkerVisible = ShouldMarkerBeVisible("MCOMD") || ShouldMarkerBeVisible("Zone2Beta");
 			m_bZone3AlphaMarkerVisible = ShouldMarkerBeVisible("MCOME") || ShouldMarkerBeVisible("Zone3Alpha");
 			m_bZone3BetaMarkerVisible = ShouldMarkerBeVisible("MCOMF") || ShouldMarkerBeVisible("Zone3Beta");
-			
-			Print("[Update3DMarkerColors] Visibility: MCOMA=" + m_bZone1AlphaMarkerVisible + ", MCOMB=" + m_bZone1BetaMarkerVisible + ", MCOMC=" + m_bZone2AlphaMarkerVisible);
 			
 			// Toggle replication trigger to notify clients
 			m_b3DMarkersInitialized = !m_b3DMarkersInitialized;
@@ -1160,19 +1145,16 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		if (m_Zone1AlphaMCOM)
 		{
 			int actualZone = GetZoneNumber("MCOMA");
-			Print("[Update3DMarkerColorsLocal] MCOMA assigned to zone " + actualZone + ", visibility: " + m_bZone1AlphaMarkerVisible);
 			UpdateLegacyMarkerWithColor(m_Zone1AlphaMCOM, actualZone, m_bZone1AlphaMarkerVisible);
 		}
 		if (m_Zone1BetaMCOM)
 		{
 			int actualZone = GetZoneNumber("MCOMB");
-			Print("[Update3DMarkerColorsLocal] MCOMB assigned to zone " + actualZone + ", visibility: " + m_bZone1BetaMarkerVisible);
 			UpdateLegacyMarkerWithColor(m_Zone1BetaMCOM, actualZone, m_bZone1BetaMarkerVisible);
 		}
 		if (m_Zone2AlphaMCOM)
 		{
 			int actualZone = GetZoneNumber("MCOMC");
-			Print("[Update3DMarkerColorsLocal] MCOMC assigned to zone " + actualZone + ", visibility: " + m_bZone2AlphaMarkerVisible);
 			UpdateLegacyMarkerWithColor(m_Zone2AlphaMCOM, actualZone, m_bZone2AlphaMarkerVisible);
 		}
 		if (m_Zone2BetaMCOM)
@@ -1568,7 +1550,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (markerComponent)
 			{
 				markerComponent.SetVisible(false);
-				Print("[CRF_RushGamemodeManager] Hidden 3D marker for: " + mcomIdentifier);
 			}
 		}
 		else
@@ -1916,6 +1897,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// Update both map markers and 3D markers for new active zone
 			Print("[CheckZoneCleared] Updating markers for new active zone: " + m_iCurrentZone);
 			GetGame().GetCallqueue().CallLater(UpdateAllMCOMMarkers, 500, false);
+			
+			// Update zone status which triggers respawn waves
+			UpdateZoneStatus();
 		}
 		
 		Replication.BumpMe();
@@ -3323,7 +3307,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			if (markerComponent)
 			{
 				markerComponent.SetVisible(false);
-				Print("[CRF_RushGamemodeManager] Hidden 3D marker for: " + mcomIdentifier);
 			}
 		}
 		

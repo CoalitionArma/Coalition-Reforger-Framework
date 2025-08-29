@@ -1,27 +1,17 @@
 /*
 	HOW TO ADD A ROLE 101:
-	- Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
+	Step 1 - Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
 		CRF_GS_BLUFOR_AAR_P
 
-	- Create a "Pretty Name" in all caps with spaces having underscores in the bellow enum class CRF_EGearRole, ie:
+	Step 2 -  Create a "Pretty Name" in all caps with spaces having underscores in the bellow enum class CRF_EGearRole, ie:
 		ASSISTANT_AUTOMATIC_RIFLEMAN
 	this is to make it easier to search when adding the role to a global/local gearscript array
 
-	- Then just add corresponding case into the CRF_RoleHelper roleFileStrings array bellow using the pretty name you made to match the (Role) value you added to the character prefab (make sure you trail it with a _ and end it with a _P) ie:
-	what's on the Enum:
-		AUTOMATIC_RIFLEMAN,
-		ASSISTANT_AUTOMATIC_RIFLEMAN, <------
-		RIFLEMAN,
+	Step 3 -  Now you have to go to the corresponding global file:
+		Configs\Gearscripts\CRF_Global_Roles_Config.conf
 
-	what's on the array
-		"_AR_P",
-		"_AAR_P", <------ NOTE THAT THE POSITION IS THE SAME IN THE ENUM AND IN THE ARRAY AND IS NOT TACKED ONTO THE END OF THE ARRAY!
-		"_Rifleman_P",
-
-	- Now you have to go to the corresponding global files:
-		(Configs\Gearscripts\CRF_Global_Equipment_Config.conf)
-		(Configs\Gearscripts\CRF_Global_Weapons_Config.conf)
-	and just add the role you created bellow (make sure you validate and reload scripts) into the correcsponding array(s) of equipment you want it to receive, any custom equipment would have to go through a gear script.
+		Add a new item into the RoleConfigs array, Set the role with the name you created 
+		
 
 	There, you have added a role, good for you, now stop bothering me about adding in roles manually -Njpatman
 */
