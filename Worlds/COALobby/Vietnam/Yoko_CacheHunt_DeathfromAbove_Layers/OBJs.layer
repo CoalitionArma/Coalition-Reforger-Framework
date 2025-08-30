@@ -1,0 +1,104 @@
+$grp CRF_ManualMarker {
+ {
+  coords 1914.861 55.563 1280.958
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "AR_icon_question_mark_02"
+  m_sDescription "Cache B"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 2586.005 45.223 1764.897
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "AR_icon_question_mark_02"
+  m_sDescription "Cache A"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 1524.702 72.904 1241.335
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "AR_icon_question_mark_02"
+  m_sDescription "Cache C"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 1432.51 109.454 1339.319
+  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "AR_icon_exclamation_point_02"
+  m_sDescription "ZU23"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ CacheB {
+  coords 1845.306 21.964 1416.606
+  angleY 44.375
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker {
+    coords 0.055 1.622 -0.086
+    angleY -44.375
+    m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "AR_icon_question_mark_02"
+    m_sDescription "Cache B"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+ CacheA {
+  coords 2587.061 4.973 1644.974
+  angleY -56.416
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Alpha Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker {
+    coords 0.055 1.622 -0.086
+    angleY -44.375
+    m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "AR_icon_question_mark_02"
+    m_sDescription "Cache A"
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
+   }
+  }
+ }
+ CacheC {
+  coords 1411.69 36.782 1114.039
+  angleY 69.224
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker {
+    coords 0.055 1.622 -0.086
+    angleY -44.375
+    m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "AR_icon_question_mark_02"
+    m_sDescription "Cache C"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+}

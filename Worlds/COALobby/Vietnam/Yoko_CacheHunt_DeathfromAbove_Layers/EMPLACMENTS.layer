@@ -1,0 +1,13 @@
+Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5C9ADB83B35D0AF4}" {
+   InitialStorageSlots {
+    InventoryStorageSlot mag3 {
+     Prefab "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
+    }
+   }
+  }
+ }
+ coords 1431.868 38.968 1339.511
+ angleY 85.573
+}
