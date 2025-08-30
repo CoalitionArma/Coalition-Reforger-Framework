@@ -11,20 +11,28 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_iStartingHours 20
   }
  }
- coords 1822.01 3.688 1625.238
+ coords 2114.94 72.138 1366.611
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Add background info about the mission. "\
+   m_sTextData "VC forces have been to confiendt recently, It is time for US forces to slience VC's egos by destorying their precous weapon caches."\
    ""\
-   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Composition: "\
    "BLUFOR Assets: 1x  UH1H Armed and 2x CH47D"\
    ""\
-   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
-   "OPFOR Assets: 1x HMG and 1x ZU23 (Pre-Deployed)"\
+   "OPFOR Composition: Motorized Infantry Platoon"\
+   "OPFOR Assets: 1x HMG Team and 2x ZU23 (Pre-Deployed)"\
    ""\
    "Time: 60 minutes"\
    ""\
    "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy all three weapons caches."\
+   "Cache locations markers are approximate."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend all three caches."\
+   ""
   }
  }
  m_iFactionOneRatio 3
@@ -40,7 +48,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableGIRadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "663D176BC72AFF00" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {

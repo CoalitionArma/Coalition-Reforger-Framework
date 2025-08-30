@@ -29,16 +29,6 @@ $grp CRF_ManualMarker {
    "BLUFOR"
   }
  }
- {
-  coords 1432.51 109.454 1339.319
-  m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
-  m_MarkerColor 0 0 0 1
-  m_sQuadName "AR_icon_exclamation_point_02"
-  m_sDescription "ZU23"
-  m_aVisibleForFactions {
-   "OPFOR"
-  }
- }
 }
 $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
  CacheB {

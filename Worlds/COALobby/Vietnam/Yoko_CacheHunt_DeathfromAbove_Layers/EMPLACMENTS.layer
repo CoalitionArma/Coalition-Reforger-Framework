@@ -1,13 +1,54 @@
-Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et" {
- components {
-  SCR_UniversalInventoryStorageComponent "{5C9ADB83B35D0AF4}" {
-   InitialStorageSlots {
-    InventoryStorageSlot mag3 {
-     Prefab "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
+$grp Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et" {
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5C9ADB83B35D0AF4}" {
+    InitialStorageSlots {
+     InventoryStorageSlot mag3 {
+      Prefab "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
+     }
+    }
+   }
+  }
+  coords 1431.868 38.968 1339.511
+  angleY 85.573
+  {
+   CRF_ManualMarker {
+    coords 0.241 70.486 0.625
+    angleY -85.573
+    m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "AR_icon_exclamation_point_02"
+    m_sDescription "ZU23"
+    m_aVisibleForFactions {
+     "OPFOR"
     }
    }
   }
  }
- coords 1431.868 38.968 1339.511
- angleY 85.573
+ {
+  components {
+   SCR_UniversalInventoryStorageComponent "{5C9ADB83B35D0AF4}" {
+    InitialStorageSlots {
+     InventoryStorageSlot mag3 {
+      Prefab "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
+     }
+    }
+   }
+  }
+  coords 2566.212 1.968 1674.508
+  angleY 153.863
+  {
+   CRF_ManualMarker {
+    coords 0.001 -461.494 -0.3
+    angleY 120.564
+    m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+    m_MarkerColor 0 0 0 1
+    m_sQuadName "AR_icon_exclamation_point_02"
+    m_sDescription "ZU23"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
 }
