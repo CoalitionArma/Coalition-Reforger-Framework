@@ -146,7 +146,6 @@ modded class SCR_ChatPanel : SCR_ScriptedWidgetComponent
 		}
 		else
 		{
-			int channelId = GetChannelId(m_ActiveChannel);
 			chatComponent.ShowMessage("Chat disabled. Use /a if you need help.");
 		}
 	}
