@@ -9,6 +9,15 @@ GenericEntity : "{EC0B2A922E4AD1AB}Prefabs/Weapons/Rifles/SCARH/Rifle_SCARH_Base
       Prefab "{852FB88E8AD446C8}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight.et"
      }
     }
+    AttachmentSlotComponent "{61785E090D53496B}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot TopRail {
+     }
+    }
+    AttachmentSlotComponent "{61785E090D53496F}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+      Prefab "{0A697FF8CA33F9A5}Prefabs/Weapons/Attachments/Optics/exps/Optic_EXPS3-1_tan.et"
+     }
+    }
     MuzzleComponent "{CA6BE4D6B867541F}" {
      components {
       AttachmentSlotComponent "{626E2147F1287008}" {

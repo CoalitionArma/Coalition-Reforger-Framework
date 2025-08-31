@@ -1,0 +1,115 @@
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 7059.769 30.598 5987.622
+}
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 7081.533 31.208 5981.563
+  angleX 3.141
+  angleY 83.117
+  angleZ 2.141
+ }
+ Ural4320_transport2 {
+  coords 7077.631 30.884 5976.568
+  angleX 3.41
+  angleY 83.124
+  angleZ 1.389
+ }
+ Ural4320_transport3 {
+  coords 7072.971 30.503 5971.587
+  angleX 4.118
+  angleY 83.14
+  angleZ 1.304
+ }
+ Ural4320_transport4 {
+  coords 7068.446 30.092 5967.261
+  angleX 4.033
+  angleY 83.127
+  angleZ 0.594
+ }
+ Ural4320_transport5 {
+  coords 7064.369 29.686 5963.619
+  angleX 5.007
+  angleY 83.109
+  angleZ -0.245
+ }
+ Ural4320_transport6 {
+  coords 7058.494 29.15 5960.103
+  angleX 3.141
+  angleY 83.117
+  angleZ 2.141
+ }
+ Ural4320_transport7 {
+  coords 7085.147 31.588 5988.291
+  angleX 3.141
+  angleY 83.117
+  angleZ 2.141
+ }
+ Ural4320_transport8 {
+  coords 7094.616 31.985 5998.4
+  angleX 3.141
+  angleY 83.117
+  angleZ 2.141
+ }
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 7048.144 29.573 6001.637
+}
+Vehicle BRDM2_KPTVB_Woodland3 : "{3BC70CA2CF59B229}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_KPTVB_Woodland.et" {
+ coords 8246.359 56.038 8911.439
+ angleX -5.539
+ angleY -145.869
+ angleZ -0.735
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 9847.308 7.062 7862.793
+ angleY -0.072
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords -19.044 0 9.022
+   angleY 0.072
+   m_aUnitPrefabSlots {
+    "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords -27.107 0 5.919
+     angleY -0.072
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords -17.595 0 -16.499
+       angleY 0.072
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords 59.697 0 -39.264
+         {
+          SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+           coords -41.13 0 104.499
+           angleY -0.001
+           {
+            SCR_AIGroup : "{A1BDE5C4CC62ACAC}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MATTeam_p.et" {
+             coords 47.778 0 -55.799
+             angleY 0.001
+             m_aUnitPrefabSlots {
+              "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et" "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et"
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ469_KORD_Woodland1 : "{735FEB56D85058B9}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_KORD_Woodland.et" {
+ coords 7092.446 32.011 6004.165
+ angleY 85
+}
+Vehicle UAZ469_AGS17_Woodland1 : "{D7D741B856243C76}Prefabs/Vehicles/Wheeled/UAZ469/AFRF/UAZ469_AGS17_Woodland.et" {
+ coords 7093.425 32.031 6008.137
+ angleY 86
+}

@@ -1,0 +1,329 @@
+SCR_BaseTriggerEntity spawnStatics {
+ coords 3557.784 32.66 3179.036
+ userScript "	string gun = \"{29F0CC704A582154}Prefabs/Weapons/Tripods/6T7/Tripod_6T7_NSV.et\";"\
+ "	IEntity static1, static2;"\
+ "	"\
+ "	void spawnthings()"\
+ "	{"\
+ "		static1 = GetGame().GetWorld().FindEntityByName(\"static1\");"\
+ "		static2 = GetGame().GetWorld().FindEntityByName(\"static2\");"\
+ "		"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "		"\
+ "		spawnParams.Transform[3] = static1.GetOrigin();		"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(gun),GetGame().GetWorld(),spawnParams).SetYawPitchRoll(\"270 0 0\");"\
+ "		spawnParams.Transform[3] = static2.GetOrigin();"\
+ "		GetGame().SpawnEntityPrefab(Resource.Load(gun),GetGame().GetWorld(),spawnParams).SetYawPitchRoll(\"270 0 0\");"\
+ "	}"
+ EOnInit ""\
+ "		super.EOnInit(owner);"\
+ "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+ "	"
+}
+$grp GenericEntity : "{07D58C64654F71A3}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_03.et" {
+ {
+  coords 3322.738 24.378 3488.318
+  angleY -110.899
+ }
+ {
+  coords 3388.49 25.031 3461.567
+  angleY -28.361
+ }
+ {
+  coords 3429.905 26.188 3263.747
+  angleY -111.15
+ }
+ {
+  coords 3440.368 26.148 3240.138
+  angleY -119.951
+ }
+ {
+  coords 3362.518 25.706 3397.556
+  angleY -108.763
+ }
+ {
+  coords 3475.27 25.469 3453.847
+  angleY -151.782
+ }
+}
+$grp GenericEntity : "{20D02D188D3E883F}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Camo_wall_high_USSR.et" {
+ {
+  coords 3436.367 26.362 3244.702
+  angleY 71.6
+ }
+ {
+  coords 3446.402 26.1 3222.799
+  angleX -0.496
+  angleY 100.638
+  angleZ 2.638
+ }
+ {
+  coords 3451.768 25.628 3211.551
+  angleX -0.501
+  angleY 34.039
+  angleZ 0.742
+ }
+ {
+  coords 3433.813 26.158 3259.61
+  angleY 53.6
+ }
+ {
+  coords 3435.5 26.158 3257.322
+  angleY 53.6
+ }
+ {
+  coords 3437.193 26.158 3255.026
+  angleY 53.6
+ }
+}
+$grp GenericEntity : "{27B3CECB6489D952}Prefabs/Props/Military/Sandbags/Sandbag_01_foundation_burlap.et" {
+ {
+  components {
+   Hierarchy "{5A58883F887D4286}" {
+   }
+  }
+  coords 3464.249 27.601 3495.739
+  angleY -21.576
+ }
+ {
+  components {
+   Hierarchy "{5A58883F887D4286}" {
+   }
+  }
+  coords 3464.652 26.701 3494.864
+  angleY -21.576
+ }
+}
+GenericEntity : "{3AE1A95C1023F894}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_04.et" {
+ coords 3301.722 23.447 3527.656
+ angleY -119.801
+}
+GenericEntity : "{4037BE9BF4045E59}Prefabs/Compositions/Misc/FreeRoamBuilding/SandbagRoundBurlap_S_USSR_01.et" {
+ coords 3392.211 25.668 3381.01
+ angleY -107.499
+}
+$grp GenericEntity : "{78A930FB0825AAA0}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Camo_long_high_USSR.et" {
+ {
+  coords 2886.631 27.832 4030.046
+  angleY -91.716
+  {
+   GenericEntity {
+    ID "5CB0D991699F2EE1"
+    {
+     SCR_BaseTriggerEntity static2 {
+      coords 0.027 1.185 0.097
+      angleY -176.569
+     }
+    }
+   }
+   StaticModelEntity : "{605A7848CB4D361A}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Bunker_Camouflaged_USSR_01.et" {
+    coords 0.136 0.012 -1.886
+    angleY -2.682
+   }
+  }
+ }
+ {
+  coords 3557.901 24.767 3171.718
+  angleY -91.716
+  {
+   GenericEntity {
+    ID "5CB0D991699F2EE1"
+    {
+     SCR_BaseTriggerEntity static1 {
+      coords 0.039 1.218 0.142
+      angleY 91.716
+     }
+    }
+   }
+   StaticModelEntity : "{605A7848CB4D361A}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Bunker_Camouflaged_USSR_01.et" {
+    coords 0.136 0.012 -1.886
+    angleY -2.682
+   }
+  }
+ }
+}
+$grp GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
+ {
+  coords 3302.445 22.629 3562.493
+  angleY -58.429
+ }
+ {
+  coords 3373.568 24.788 3468.418
+  angleY -129.973
+ }
+ {
+  coords 3500.379 24.907 3405.068
+  angleY -176.435
+  angleZ -1.586
+ }
+ {
+  coords 3449.645 25.753 3217.73
+  angleY -117.816
+ }
+ {
+  coords 3337.002 24.974 3455.866
+  angleY -116.787
+ }
+ {
+  coords 3332.755 24.974 3464.278
+  angleY -116.787
+ }
+ {
+  coords 3366.94 25.817 3388.743
+  angleY -127.501
+ }
+ {
+  coords 3347.398 25.074 3434.514
+  angleY -116.548
+ }
+ {
+  coords 3408.725 25.721 3297.326
+  angleY -117.563
+ }
+ {
+  coords 3380.603 25.424 3408.948
+  angleY -113.233
+ }
+ {
+  coords 3477.3 25.5 3386.18
+  angleY 129.424
+ }
+}
+StaticModelEntity : "{9A6B7E1F874E5C0F}Prefabs/Compositions/Misc/SubCompositions/Sandbag_Bunker_Cluttered_USSR_01.et" {
+ coords 3463.937 27.501 3496.647
+ angleY -18.972
+ {
+  StaticModelEntity {
+   ID "570481C3586542DA"
+   coords 1.078 0.273 3.002
+  }
+  StaticModelEntity {
+   ID "570481C3586542D7"
+   coords 3.379 -1.102 -0.941
+  }
+  StaticModelEntity {
+   ID "570481C358654221"
+   coords -2.123 -1.205 -1.103
+  }
+  StaticModelEntity {
+   ID "570481C358654222"
+   coords -0.068 -0.394 0.69
+  }
+  StaticModelEntity {
+   ID "570481C358654224"
+   coords 2.108 -1.37 0.654
+  }
+  StaticModelEntity {
+   ID "570481C35865422F"
+   coords -3.24 -0.348 -0.951
+   angleY 81.295
+  }
+  StaticModelEntity {
+   ID "570481C3586542DB"
+   coords 3.242 -1.466 -1.232
+  }
+ }
+}
+$grp StaticModelEntity : "{C1576E5555582214}Prefabs/Structures/Military/Fortifications/DirtCover_01/DirtCover_01_short.et" {
+ {
+  components {
+   Hierarchy "{5654C1ECEEDFE36D}" {
+    Enabled 1
+   }
+  }
+  coords 3461.724 0.621 3493.346
+  angleY -21.86
+ }
+ {
+  components {
+   Hierarchy "{5654C1ECEEDFE36D}" {
+    Enabled 1
+   }
+  }
+  coords 3461.53 1.235 3493.83
+  angleY 2.009
+ }
+ {
+  components {
+   Hierarchy "{5654C1ECEEDFE36D}" {
+    Enabled 1
+   }
+  }
+  coords 3466.75 1.235 3495.924
+  angleY -21.86
+ }
+ {
+  components {
+   Hierarchy "{5654C1ECEEDF7E25}" {
+    Enabled 1
+   }
+  }
+  coords 3465.97 0.82 3497.288
+  angleY -89.649
+ }
+ {
+  components {
+   Hierarchy "{5654C1ECEEDF7E25}" {
+    Enabled 1
+   }
+  }
+  coords 3466.348 1.468 3497.615
+  angleY -141.602
+ }
+ {
+  components {
+   Hierarchy "{5654C1ECEEDF7E25}" {
+    Enabled 1
+   }
+  }
+  coords 3467.086 0.66 3498.248
+  angleY -141.602
+ }
+}
+GenericEntity : "{C56ED190635B0129}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Camo_wall_high_USSR.et" {
+ coords 3382.69 24.62 3489.238
+ angleY 23.854
+}
+$grp GenericEntity : "{E249C09D69AAE6C8}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_02.et" {
+ {
+  coords 3375.773 24.823 3483.932
+  angleY -31.841
+ }
+ {
+  coords 3308.333 23.743 3514.806
+  angleY -105.256
+ }
+ {
+  coords 3362.032 24.788 3452.905
+  angleY -115.086
+ }
+ {
+  coords 3428.802 25.252 3482.97
+  angleY -23.671
+ }
+ {
+  coords 3470.201 25.491 3380.6
+  angleY 155.006
+ }
+ {
+  coords 3422.172 25.861 3277.447
+  angleY -124.091
+ }
+ {
+  coords 3358.237 25.682 3407.275
+  angleY -117.558
+ }
+ {
+  coords 3407.42 25.911 3350.972
+  angleY -120.425
+ }
+ {
+  coords 3467.657 25.594 3456.827
+  angleY -177.574
+ }
+ {
+  coords 3417.395 25.049 3502.566
+  angleY -26.522
+ }
+}

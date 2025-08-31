@@ -1,0 +1,58 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2870.134 70.342 2976.843
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Caches A & B"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3279.695 34.505 3883.092
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Caches C & D"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+CRF_ManualMarker zone1 : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ coords 3869.267 117.948 3328.612
+ angleY 0
+ {
+  $grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+   {
+    coords -181.089 -3.511 58.201
+    angleY 0
+   }
+   {
+    coords -340.901 -26.38 122.215
+    angleY 0
+   }
+   {
+    coords -534.827 -43.245 190.506
+    angleY 0
+   }
+   {
+    coords -759.804 -37.191 317.279
+    angleY 0
+   }
+   {
+    coords -987.98 -15.13 443.644
+    angleY 0
+   }
+   {
+    coords -1134.138 -29.077 545.969
+    angleY 0
+   }
+   {
+    coords -1268.352 -12.561 666.738
+    angleY 0
+   }
+   {
+    coords -1411.204 9.097 791.534
+    angleY 0
+   }
+  }
+ }
+}

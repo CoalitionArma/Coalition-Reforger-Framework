@@ -1,0 +1,71 @@
+SCR_BaseTriggerEntity contCheck {
+ coords 11282.525 46.759 13243.728
+ userScript "	bool m_messageSent = false;"
+ TriggerShapeType Sphere
+ PeriodicQueries 1
+ UpdatePeriod 15
+ OnQueryFinished ""\
+ "		IEntity blucont = GetGame().GetWorld().FindEntityByName(\"blucont\");"\
+ "		SCR_ResourceComponent rscManager = SCR_ResourceComponent.Cast(blucont.FindComponent(SCR_ResourceComponent));"\
+ "		array<SCR_ResourceContainer> containersArray = rscManager.GetContainers();"\
+ "		SCR_ResourceContainer container = containersArray[0];"\
+ "		float bluval = container.GetResourceValue();"\
+ "		"\
+ "		IEntity opcont = GetGame().GetWorld().FindEntityByName(\"opcont\");"\
+ "		SCR_ResourceComponent rscManager2 = SCR_ResourceComponent.Cast(opcont.FindComponent(SCR_ResourceComponent));"\
+ "		array<SCR_ResourceContainer> containersArray2 = rscManager2.GetContainers();"\
+ "		SCR_ResourceContainer container2 = containersArray2[0];"\
+ "		float opval = container2.GetResourceValue();"\
+ "		"\
+ "		if (bluval >= 1999 && !m_messageSent)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR has collected 2000 supplies. Their base has been labelled, OPFOR has 10 minutes to attack.\", 10);"\
+ "			CRF_ClientComponent gameModePlayerComponent = CRF_ClientComponent.GetInstance();"\
+ "			gameModePlayerComponent.AddScriptedMarker(\"blucont\", \"0 0 0\", 300, \"BLUFOR Supply\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
+ "			m_messageSent = true;"\
+ "		}"\
+ "		"\
+ "		if (opval >= 1999 && !m_messageSent)"\
+ "		{"\
+ "			SCR_PopUpNotification.GetInstance().PopupMsg(\"OPFOR has collected 2000 supplies. Their base has been labelled, BLUFOR has 10 minutes to attack.\", 10);"\
+ "			CRF_ClientComponent gameModePlayerComponent = CRF_ClientComponent.GetInstance();"\
+ "			gameModePlayerComponent.AddScriptedMarker(\"opcont\", \"0 0 0\", 300, \"OPFOR Supply\", \"{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds\", 50, ARGB(255, 0, 0, 225));"\
+ "			m_messageSent = true;"\
+ "		}"\
+ "		"\
+ "		"\
+ "		"\
+ "	"
+}
+$grp GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ blucont {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 0
+      m_fResourceValueMax 2000
+      m_eOnEmptyBehavior NONE
+     }
+    }
+   }
+  }
+  coords 12070.405 4.557 10718.019
+  angleY -24.77
+ }
+ opcont {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 0
+      m_fResourceValueMax 2000
+      m_eOnEmptyBehavior NONE
+     }
+    }
+   }
+  }
+  coords 9138.648 7 13159.714
+  angleY -24.77
+ }
+}

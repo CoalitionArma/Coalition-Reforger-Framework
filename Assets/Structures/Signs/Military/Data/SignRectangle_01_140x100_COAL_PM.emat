@@ -1,0 +1,5 @@
+MatPBRBasic {
+ Color 0.456 0.456 0.456 1
+ MetalnessScale 0
+ BCRMap "{1D01486876EB06F3}Assets/Structures/Signs/pensivemansign.edds"
+}

@@ -27,7 +27,7 @@ FrameWidgetClass {
        Slot OverlayWidgetSlot "{5EE89488FD3D84DE}" {
         Padding 4 4 4 4
        }
-       Text "Label"
+       Text ""
        "Font Size" 32
        "Min Font Size" 32
        "Horizontal Alignment" Center

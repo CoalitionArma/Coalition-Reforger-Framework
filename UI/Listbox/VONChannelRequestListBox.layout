@@ -1,0 +1,247 @@
+ButtonWidgetClass {
+ Name "rootFrame"
+ Slot AlignableSlot "{62F2056BF4F1EC36}" {
+  HorizontalAlign 3
+ }
+ components {
+  CRF_ListBoxElementComponent "{647E436E1C62AC1E}" {
+  }
+ }
+ style blank
+ {
+  SizeLayoutWidgetClass "{647EC0B028F8D8FB}" {
+   Name "SizeLayout"
+   Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+    HorizontalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 36
+   {
+    OverlayWidgetClass "{647EC0B028F8D8FD}" {
+     Name "Overlay"
+     Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Clipping False
+     {
+      FrameWidgetClass "{647EC0B028F8D8FE}" {
+       Name "ButtonLayout"
+       Slot OverlayWidgetSlot "{62F200F27385E1FB}" {
+        HorizontalAlign 0
+       }
+       {
+        FrameWidgetClass "{64853C452196AF45}" {
+         Name "ButtonAnim"
+         Slot FrameWidgetSlot "{64853C452191547E}" {
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX 480.1
+          OffsetRight -480.1
+          SizeY 37.9
+          OffsetBottom -37.9
+         }
+         {
+          ImageWidgetClass "{647EC0B028F8D8FF}" {
+           Name "Image2"
+           Slot FrameWidgetSlot "{647E4368296252F8}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 0
+            OffsetRight 0
+            SizeY 0
+            OffsetBottom 0
+           }
+           Color 0.05 0.05 0.05 1
+          }
+          ProgressBarWidgetClass "{647EC0B1051898A0}" {
+           Name "ProgressBar"
+           Slot FrameWidgetSlot "{647EC0B10518989D}" {
+            Anchor 0 0 1 1
+            PositionX 0
+            OffsetLeft 0
+            PositionY 27.401
+            OffsetTop 27.401
+            SizeX 0
+            OffsetRight 0
+            SizeY -27.815
+            OffsetBottom 0.414
+           }
+           Maximum 10
+           Current 10
+           "Draw Background" 0
+          }
+          TextWidgetClass "{647EC0B028F8D8E2}" {
+           Name "PlayerName"
+           Slot FrameWidgetSlot "{64853C455F50C453}" {
+            PositionX 0
+            OffsetLeft 0
+            PositionY 0
+            OffsetTop 0
+            SizeX 395.003
+            OffsetRight -395.003
+            SizeY 30
+            OffsetBottom -30
+           }
+           Clipping Ancestor
+           Color 1 1 1 0.843
+           Text "Salami's Requesting To Join"
+           "Min Font Size" 5
+           Wrap 1
+          }
+          ButtonWidgetClass "{647EC0B0BBEAFADB}" {
+           Name "Deny"
+           Slot FrameWidgetSlot "{630510543BD8CBB1}" {
+            Anchor 0 0 1 1
+            PositionX 443.224
+            OffsetLeft 443.224
+            PositionY -0.479
+            OffsetTop -0.479
+            SizeX -443.224
+            OffsetRight 0
+            SizeY -7
+            OffsetBottom 7.479
+           }
+           Color 1 1 1 0
+           components {
+            ButtonComponent "{647E5AEB00BB8021}" {
+             m_ColorButtonDefault 0 0 0 0
+             m_sSoundClicked ""
+             m_sSoundFocused ""
+             m_sSoundHovered ""
+            }
+            SCR_ButtonTextComponent "{647E5AEB2CA3F4D1}" {
+             m_sSoundHovered ""
+             m_sSoundClicked ""
+             m_BackgroundSelected 0.76 0.392 0.08 0.3
+             m_TextToggled 0.761 0.386 0.078 1
+            }
+           }
+           {
+            ImageWidgetClass "{647EC0B0BBEAFADD}" {
+             Name "Image1"
+             Slot ButtonWidgetSlot "{64853C585E07733D}" {
+             }
+             Texture "{BA29CA05FF6FE474}UI/data/cross.edds"
+             Size 528 528
+            }
+           }
+          }
+          ButtonWidgetClass "{647EC0B028F8D8E1}" {
+           Name "Accept"
+           Slot FrameWidgetSlot "{630510543BD8CBB1}" {
+            Anchor 0 0 1 1
+            PositionX 402.707
+            OffsetLeft 402.707
+            PositionY -0.44
+            OffsetTop -0.44
+            SizeX -443.225
+            OffsetRight 40.518
+            SizeY -7
+            OffsetBottom 7.44
+           }
+           Color 1 1 1 0
+           components {
+            ButtonComponent "{647E5AEB00BB8021}" {
+             m_ColorButtonDefault 0 0 0 0
+             m_sSoundClicked ""
+             m_sSoundFocused ""
+             m_sSoundHovered ""
+            }
+            SCR_ButtonTextComponent "{647E5AEB2CA3F4D1}" {
+             m_sSoundHovered ""
+             m_sSoundClicked ""
+             m_BackgroundSelected 0.76 0.392 0.08 0.3
+             m_TextToggled 0.761 0.386 0.078 1
+            }
+           }
+           {
+            ImageWidgetClass "{647EC0B052952445}" {
+             Name "Image0"
+             Slot ButtonWidgetSlot "{64853C585E0773B7}" {
+             }
+             Texture "{7DEEE956159B85D2}UI/data/check.edds"
+             Size 528 528
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass "{647EC0B028F8D8E3}" {
+       Name "Border"
+       Slot OverlayWidgetSlot "{5548E6E7D859FCD2}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Is Visible" 0
+       Color 0.761 0.386 0.08 1
+       style outline_2px
+      }
+      FrameWidgetClass "{647EC0B028F8D8E5}" {
+       Name "Disconnected"
+       Slot OverlayWidgetSlot "{631F7CF5E5BFCB25}" {
+        HorizontalAlign 0
+        VerticalAlign 3
+        Padding 480 0 0 0
+       }
+       "Is Visible" 0
+       {
+        ImageWidgetClass "{647EC0B028F8D8E6}" {
+         Name "Image0"
+         Slot FrameWidgetSlot "{631F7CF5FB1BD72E}" {
+          Anchor 0 0 1 1
+          PositionX 398.996
+          OffsetLeft 50
+          PositionY 0
+          OffsetTop 0
+          SizeX -405
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Texture "{356FBF661306DFD6}UI/data/disconnect_icon.edds"
+         Size 800 800
+        }
+       }
+      }
+      FrameWidgetClass "{647EC0B028F8D8E7}" {
+       Name "Killed"
+       Slot OverlayWidgetSlot "{631F7CF5E5BFCB25}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 100 0 0 0
+       }
+       "Is Visible" 0
+       {
+        TextWidgetClass "{647EC0B028F8D8E8}" {
+         Name "Text0"
+         Slot FrameWidgetSlot "{631F7CCE0BFD509F}" {
+          PositionX 442.503
+          OffsetLeft 442.503
+          PositionY 3.88
+          OffsetTop 3.88
+          SizeX 42.473
+          OffsetRight -484.976
+          SizeY 30
+          OffsetBottom -33.88
+         }
+         Text "KIA"
+         "Font Size" 30
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

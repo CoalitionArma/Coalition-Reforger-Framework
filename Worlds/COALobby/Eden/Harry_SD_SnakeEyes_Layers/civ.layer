@@ -1,0 +1,68 @@
+SCR_AIGroup COY : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
+ coords 5471.286 93.461 5222.07
+ m_aUnitPrefabSlots {
+  "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et" "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et"
+ }
+ {
+  SCR_AIGroup aMedic : "{ABEEBCE6A46B4148}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevSpecialist_p.et" {
+   coords -9.71 -0.862 1.303
+   m_aUnitPrefabSlots {
+    "{B409C0B57C8ACCBF}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_MO_P.et" "{8C7C798DDB2E1DDC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Medic_P.et" "{8C7C798DDB2E1DDC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Medic_P.et" "{8C7C798DDB2E1DDC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Medic_P.et" "{8C7C798DDB2E1DDC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Medic_P.et"
+   }
+   {
+    $grp SCR_AIGroup : "{F0FACADA943070F9}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevCrew_p.et" {
+     PLT1 {
+      coords 9.71 1.597 -14.094
+      m_aUnitPrefabSlots {
+       "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et" "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et"
+      }
+      {
+       $grp SCR_AIGroup : "{1782AE1B90B5A492}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevGI_p.et" {
+        {
+         coords -0.655 1.087 -21.584
+         m_aUnitPrefabSlots {
+          "{AA81CB001FA13986}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_SL_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{0F04738DCBE78DEC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AR_P.et" "{2D4DD0A688F7F131}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAR_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{B2D4210AB4FC91F2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AT_P.et" "{909D8221F7ECED2F}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAT_P.et" "{7F9EAEA267859747}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Demo_P.et"
+         }
+        }
+        {
+         coords -0.655 1.64 -34.116
+         m_aUnitPrefabSlots {
+          "{AA81CB001FA13986}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_SL_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{0F04738DCBE78DEC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AR_P.et" "{2D4DD0A688F7F131}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAR_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{B2D4210AB4FC91F2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AT_P.et" "{909D8221F7ECED2F}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAT_P.et" "{7F9EAEA267859747}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Demo_P.et"
+         }
+        }
+        {
+         coords -0.655 1.847 -46.9
+         m_aUnitPrefabSlots {
+          "{AA81CB001FA13986}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_SL_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{0F04738DCBE78DEC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AR_P.et" "{2D4DD0A688F7F131}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAR_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{B2D4210AB4FC91F2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AT_P.et" "{909D8221F7ECED2F}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAT_P.et" "{7F9EAEA267859747}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Demo_P.et"
+         }
+        }
+       }
+      }
+     }
+     PLT2 {
+      coords 9.71 2.275 -25.646
+      m_aUnitPrefabSlots {
+       "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et" "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et"
+      }
+      {
+       $grp SCR_AIGroup : "{1782AE1B90B5A492}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevGI_p.et" {
+        {
+         coords -0.655 1.328 -48.684
+         m_aUnitPrefabSlots {
+          "{AA81CB001FA13986}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_SL_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{0F04738DCBE78DEC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AR_P.et" "{2D4DD0A688F7F131}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAR_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{B2D4210AB4FC91F2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AT_P.et" "{909D8221F7ECED2F}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAT_P.et" "{7F9EAEA267859747}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Demo_P.et"
+         }
+        }
+        {
+         coords -0.655 1.378 -58.562
+         m_aUnitPrefabSlots {
+          "{AA81CB001FA13986}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_SL_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{0F04738DCBE78DEC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AR_P.et" "{2D4DD0A688F7F131}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAR_P.et" "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et" "{B2D4210AB4FC91F2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AT_P.et" "{909D8221F7ECED2F}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAT_P.et" "{7F9EAEA267859747}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Demo_P.et"
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

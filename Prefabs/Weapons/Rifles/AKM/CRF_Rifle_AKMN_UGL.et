@@ -1,0 +1,47 @@
+GenericEntity : "{140E94F473B60FE3}Prefabs/Weapons/Rifles/AKM/Rifle_AKMN_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames +{
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{62235A9E25C5B512}" {
+     AttachmentSlot InventoryStorageSlot Stock {
+      Prefab "{26A4B9C2CCC216E7}Prefabs/Weapons/Attachments/PistolGrips/pistolgrip_AKBakelite.et"
+     }
+    }
+    AttachmentSlotComponent "{62574D81536B947E}" {
+     AttachmentSlot InventoryStorageSlot UBGL {
+      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
+     }
+    }
+    AttachmentSlotComponent "{654C2A7587209F23}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{E5A33838865B6772}Prefabs/Weapons/Attachments/Handguards/Handguard_WoodAK.et"
+     }
+    }
+    AttachmentSlotComponent "{654C5097DFD77DB4}" {
+     AttachmentSlot InventoryStorageSlot Stock {
+      Prefab "{3C767E160E38748D}Prefabs/Weapons/Attachments/Buttstocks/Buttstock_WoodAK.et"
+     }
+    }
+    AttachmentSlotComponent "{654D5C53B16085FA}" {
+     AttachmentSlot InventoryStorageSlot DustCover {
+      Prefab "{A8E6A15299D4242D}Prefabs/Weapons/Attachments/DustCovers/WeaponPart_AK_DustCover.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{62235A9E25C5B5D1}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{9E6A9A314E7D2539}Prefabs/Weapons/Attachments/Muzzle/762x39/MuzzleBrake_AKM.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

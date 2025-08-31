@@ -146,11 +146,14 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{A6410407E82601E2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehDriver_P.et" "{7735FA094DA6AC81}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehGunner_P.et" "{30B43B4C1F6764B5}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehLoader_P.et" "{425F553B6F1E8E66}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Pilot_P.et" "{BA61A1A8CAFAE948}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_CrewChief_P.et" "{D5FEC649E024636E}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_IndirectGunner_P.et" "{927F070CB2E5AB5A}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_IndirectLoader_P.et" "{598D81084B4F5CDA}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_LogiRunner_P.et"
  }
- m_bIsPlayable 1
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 1
  m_aUnitPrefabColorTeams {
   "None" "None" "None" "None" "None" "None" "None" "None"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None" "None" "None" "None" "None"
  }
+ m_bIsPlayable 1
 }

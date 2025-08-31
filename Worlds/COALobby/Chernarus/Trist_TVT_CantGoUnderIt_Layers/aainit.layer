@@ -1,0 +1,142 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 475.367 171.696 5502.888
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGameModeComponent "{646CA9B7CD08C6F3}" {
+   attackingSide "BLUFOR"
+   defendingSide "OPFOR"
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Cloudy"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 6
+   m_iStartingMinutes 50
+   m_iRangeHoursStart 6
+   m_iRangeMinutesStart 50
+   m_iRangeHoursEnd 6
+  }
+ }
+ coords 474.922 171.766 5470.188
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "BLUFOR have disabled an enemy convoy via air outside Krona castle. OPFOR forces have hastily pulled aside important cargo from the convoy and prepare for the coming BLU task-force to destroy the immobilized assets."\
+   ""\
+   "BLUFOR Comp: Mech. Inf. Company"\
+   "BLUFOR Assets: 2x Armed HMMWV"\
+   "1x Med Vic. / 6x Ural"\
+   ""\
+   "OPFOR Comp: Mech. Inf. Platoon"\
+   "OPFOR Assets: 2x BTR "\
+   " 1x Med Vic. / 2x Ural"\
+   ""\
+   "Time: 7:00 AM"\
+   "Weather: Overcast"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "- Navigate towards, search for, and destroy the decoupled OPFOR assets as leadership sees fit."\
+   ""
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "- Assess defensive possibilities and deploy remaining convoy assets to defend the important immobilized cargo."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData ""
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
+ }
+ {
+  SCR_FactionManager "64773359D8D95996" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{647733DC2D77D64E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{647733DC2DA8C631}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{647733DC2C2D6F9F}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{647733DC10151A0E}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{64872DA882A15199}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{64872DA61A431E57}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{64872D9F332EE0D3}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{648C4BC9222C6258}" {
+        m_sCallsign "2-4"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{647733DC0676C0A5}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{647733DC06BA09D5}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{647733DC06FE49F8}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{647733DC4982AE4B}" {
+        m_sCallsign "Marksman"
+       }
+       SCR_CallsignInfo "{64872D81A64E6C28}" {
+        m_sCallsign "BTR 1"
+       }
+       SCR_CallsignInfo "{64872D9CC526D98A}" {
+        m_sCallsign "BTR 2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

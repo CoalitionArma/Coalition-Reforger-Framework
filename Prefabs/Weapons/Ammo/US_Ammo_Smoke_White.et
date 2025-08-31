@@ -4,7 +4,6 @@ Projectile : "{D40A105437369C1D}Prefabs/Weapons/Core/Ammo_GrenadeLauncher_Base.e
   TimerTriggerComponent "{61CAF435739E1D40}" {
    PROJECTILE_EFFECTS {
     SubmunitionEffect "{61CAF435739E1D75}" {
-     TriggerOnce 1
      Prefab "{D3847C910CCE8C7C}Prefabs/Weapons/Ammo/Smoke_Effect_White.et"
      SoundEvent "SOUND_DEPLOY"
     }

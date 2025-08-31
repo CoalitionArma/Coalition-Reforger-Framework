@@ -6,7 +6,7 @@ Projectile : "{7018A917ED080F86}Prefabs/Weapons/Core/FlareEffect_Base.et" {
     SpawnParticleEffect "{62FB4613CC50998C}" {
      TriggerOnce 1
      AttachToParent 1
-     ParticleEffect "{94CAB105E065775C}Particles/Weapon/Smoke_grenade_M18_Red.ptc"
+     ParticleEffect "{DE516BCB20A61F67}Particles/Weapon/UGL_Smoke_Red.ptc"
     }
    }
    ArmingTime 2

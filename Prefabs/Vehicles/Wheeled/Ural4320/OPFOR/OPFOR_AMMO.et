@@ -1,0 +1,68 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_Ural4320_Ammo_Name"
+    Icon "{9EBE212C91B36BBE}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Truck.edds"
+    m_Image "{05D6B4F71F80CA25}UI/Textures/EditorPreviews/Vehicles/Wheeled/Ural4320/Ural4320_ammo.edds"
+    m_sFaction "OPFOR"
+    m_aAuthoredLabels + {
+     27 280 210
+    }
+    m_aAutoLabels {
+     51871 122 54
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 380
+     }
+    }
+    m_bEditorPlaceAsOneGroup 0
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   Attributes SCR_ItemAttributeCollection "{5916C58172622508}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5916C5816FDAFC22}" {
+    }
+   }
+   MaxCumulativeVolume 1000000
+   MaxItemSize 40 40 40
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "OPFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Ammo {
+     MergePhysics 1
+     Prefab "{03FFD2B45BEE8A17}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_ammo_box.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo AmmoDecal {
+     Prefab "{A0AB9EDD3932367D}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_ammo_decal.et"
+     InheritParentSkeleton 1
+     RegisterDamage 1
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{65990AF0B91D6995}" {
+     ContextName "cargo_open"
+     Position PointInfo "{65990AF0B91D6993}" {
+      Offset 0 1.8 -3.9
+     }
+    }
+   }
+  }
+ }
+ coords 112.423 1.001 186.905
+ m_eVehicleType SUPPLY_TRUCK
+}

@@ -143,7 +143,11 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{B49D71CEC814DCCC}Prefabs/Characters/Factions/Special/Rally/CRF_GS_CIV_Rifleman_P_Driver.et" "{D7A67F80EBF5AAB4}Prefabs/Characters/Factions/Special/Rally/CRF_GS_CIV_Rifleman_P_CoDriver.et"
  }
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 0
  m_bIsPlayable 1
+ m_bDeleteIfNoPlayer 0
  m_aUnitPrefabColorTeams {
   "Red" "Green"
  }

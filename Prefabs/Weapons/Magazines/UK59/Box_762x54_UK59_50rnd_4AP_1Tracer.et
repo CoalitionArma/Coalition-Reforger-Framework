@@ -1,0 +1,21 @@
+GenericEntity : "{7A3B2C7FD60009E7}Prefabs/Weapons/Magazines/UK59/Box_762x54_UK59_50rnd_Base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   Attributes SCR_ItemAttributeCollection "{51EED12B86960275}" {
+    ItemDisplayName UIInfo "{51FEE38527BFEA5B}" {
+     Description "#AR-Magazine_PKMBallTracer_Description"
+    }
+   }
+  }
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   UIInfo MagazineUIInfo "{57126733AA401586}" {
+    m_eAmmoTypeFlags 6
+   }
+   AmmoConfig "{DC88E7CE9A222726}Configs/Weapons/Ammo/Ammo_762x54_7N13.conf"
+   AmmoMapping {
+    0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1 1 1 1 1
+   }
+  }
+ }
+}

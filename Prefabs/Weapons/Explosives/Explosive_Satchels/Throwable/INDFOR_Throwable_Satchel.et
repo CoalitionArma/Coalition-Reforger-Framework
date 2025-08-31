@@ -1,0 +1,11 @@
+CRF_SatchelEntity : "{1246F0A3DE2607AD}Prefabs/Weapons/Explosives/Explosive_Satchels/Throwable/Throwable_Satchel_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  MeshObject "{51EC93F29BA5F234}" {
+   Object "{C93586479590F3C6}Assets/Items/Equipment/Accessories/Pouch_Medical_Soviet/Pouch_Medical_Soviet_item.xob"
+   LODFactors {
+    1000 1 1
+   }
+  }
+ }
+}

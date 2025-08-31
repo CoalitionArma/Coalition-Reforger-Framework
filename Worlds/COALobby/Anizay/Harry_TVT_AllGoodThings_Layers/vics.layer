@@ -1,0 +1,175 @@
+SCR_BaseTriggerEntity transponder {
+ coords 6363.021 211.112 2422.751
+}
+$grp SCR_VehicleSpawn {
+ {
+  coords 10179.533 25.564 1102.349
+  m_rnPrefab "{420562B2B5D106C3}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+  {
+   $grp SCR_VehicleSpawn {
+    {
+     coords -29.948 0.498 28.072
+     m_rnPrefab "{823CA4130CE90077}Prefabs/Vehicles/Helicopters/AH6M/AH6M_RKT.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords 3.791 9.331 101.103
+     angleY -79.57
+     m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -12.73 9.777 104.271
+     angleY -80.081
+     m_rnPrefab "{A042ACE5C2B13206}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair.et"
+     respawnDelay 10000
+     firstSpawn 1
+     {
+      GenericEntity : "{1406B18033A3FFB1}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Base.et" {
+       components {
+        SCR_ResourceComponent "{5D247A59598D71AE}" {
+         m_aContainers {
+          SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+           m_fResourceValueCurrent 350
+           m_fResourceValueMax 350
+          }
+         }
+        }
+       }
+       coords 4.468 -0.12 -5.129
+       angleY 80.081
+      }
+     }
+    }
+    {
+     coords -29.843 10.319 107.55
+     angleY -80.242
+     m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -41.702 10.69 109.59
+     angleY -80.242
+     m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -61.371 10.932 116.069
+     angleY -64.724
+     m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+   }
+   $grp StaticModelEntity : "{7784DA55DC0F253C}PrefabsEditable/Auto/Structures/Military/Camps/HelipadImprovised_01/E_HelipadImprovised_US_01.et" {
+    {
+     coords -29.339 0.147 27.018
+    }
+    {
+     coords 0.581 -0.351 0.187
+    }
+   }
+  }
+ }
+ {
+  coords 6356.635 211.34 2459.119
+  angleY -174.167
+  m_rnPrefab "{46A5E64726FCE76B}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Cage_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+  {
+   $grp SCR_VehicleSpawn {
+    {
+     coords -2.711 -0.518 -16.649
+     angleY 12.598
+     m_rnPrefab "{46A5E64726FCE76B}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_Cage_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -5.652 -0.653 -33.19
+     angleY 12.598
+     m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -7.721 -0.6 -45.322
+     angleY 7.944
+     m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -9.364 -0.793 -57.102
+     angleY 7.944
+     m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -10.616 -1.024 -66.077
+     angleY 7.944
+     m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -13.185 -1.198 -84.698
+     angleY 7.944
+     m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -17.819 -1.403 -98.541
+     angleY 7.944
+     m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -22.784 -1.388 -114.985
+     angleY 7.944
+     m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -27.859 -0.682 -132.454
+     angleY 6.776
+     m_rnPrefab "{A042ACE5C2B13206}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+    {
+     coords -33.138 0.713 -157.03
+     angleY 11.486
+     m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+     respawnDelay 10000
+     firstSpawn 1
+    }
+   }
+   GenericEntity : "{1406B18033A3FFB1}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Base.et" {
+    components {
+     SCR_ResourceComponent "{5D247A59598D71AE}" {
+      m_aContainers {
+       SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+        m_fResourceValueCurrent 350
+        m_fResourceValueMax 350
+       }
+      }
+     }
+    }
+    coords -24.028 -0.417 -138.074
+    angleY 86.857
+   }
+  }
+ }
+}

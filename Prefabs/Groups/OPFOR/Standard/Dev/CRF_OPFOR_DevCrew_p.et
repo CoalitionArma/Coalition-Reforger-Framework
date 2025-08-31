@@ -147,11 +147,14 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{F513E3FE0CE0E250}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehDriver_P.et" "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et" "{63E6DCB5FBA18707}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLoader_P.et" "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et" "{E93346512E3C0AFA}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_CrewChief_P.et" "{48E86145C5152AD5}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectGunner_P.et" "{0F69A00097D4E2E1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectLoader_P.et" "{7043203A0D1F11AF}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_LogiRunner_P.et"
  }
- m_bIsPlayable 1
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 1
  m_aUnitPrefabColorTeams {
   "None" "None" "None" "None" "None" "None" "None" "None"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "Team Lead" "None" "None" "None" "None" "None"
  }
+ m_bIsPlayable 1
 }

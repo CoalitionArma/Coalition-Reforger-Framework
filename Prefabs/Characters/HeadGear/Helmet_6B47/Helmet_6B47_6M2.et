@@ -1,0 +1,20 @@
+GameEntity : "{4BBB5FC184FB181F}Prefabs/Characters/HeadGear/Helmet_6B47/Helmet_6B47_6M2.et" {
+ ID "50D485E1435D6C72"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo MeshCover {
+     Enabled 0
+    }
+    RHS_LoadoutSlotInfo Masks {
+     Enabled 0
+     Prefab "{244A6A1121439AAC}Prefabs/Characters/HeadGear/Balaclavas/LShZ_Balaclava/Balaclava_LShZ_base.et"
+    }
+    RHS_LoadoutSlotInfo NVG {
+     Enabled 0
+     Prefab "{B0534A120633D08D}Prefabs/Items/Equipment/Nightvision/1PN138/NVG_1PN138.et"
+    }
+   }
+  }
+ }
+}

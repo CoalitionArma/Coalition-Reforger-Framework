@@ -1,0 +1,144 @@
+SCR_AIWorld : "{3D0FE80570D5BFCC}Prefabs/AI/SCR_AIWorld_Anizay.et" {
+ coords 6401.626 352.693 2328.743
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_HighValueTargetGameModeComponent "{64C747623DFBC628}" {
+   m_timeBetweenPings 300
+   m_hvtPrefab "{36BDCC88B17B3BFA}Prefabs/Vehicles/Wheeled/M923A1/M923A1_command.et"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 1
+   m_iStartingMinutes 5
+  }
+ }
+ coords 6412.144 317.613 2334.233
+ m_iTimeLimitMinutes 30
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Blufor is moving a valuable target in a command vehicle. INDFOR has been contracted to capture the asset.  Blufor wins if they can get the command vehicle to the marker at the edge of the map. The transponder signal will update every 5 minutes. Both teams have repair vehicles with supply near them. "\
+   ""\
+   "BLUFOR Composition: Motorized Infantry"\
+   "BLUFOR Assets: 2x CROWS Stryker, APCS"\
+   ""\
+   "INDFOR Composition: Air Assault Infantry"\
+   "INDFOR Assets: 1x AH6M, 1x Unarmed UH60, HMG teams"\
+   ""\
+   "Time: 30 min"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Get the HVT to the extraciton at the edge of the AO. "
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Eliminate BLUFOR, and prevent the HVT from reaching the extraction."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "A global message should trigger once the HVT has made it to the extract."
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{EF8F079E8C1DAFCC}Configs/Gearscripts/Custom/Harry/AllGoodThings/CRF_GS_RHSUSArmyMC_MAAWS.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{54DCE85F2C1A4206}Configs/Gearscripts/Custom/Harry/AllGoodThings/CRF_GS_RHSION_SCARs_HMG.conf"
+ }
+ {
+  SCR_FactionManager "64C74776FFD76A9F" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{64C7476DF1DE52A9}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{64C7476DF0105934}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{64C7476DF07F2E3D}" {
+        m_sCallsign "Weapons 1"
+       }
+       SCR_CallsignInfo "{64C7476DC20AD962}" {
+        m_sCallsign "Stryker 1"
+       }
+       SCR_CallsignInfo "{64C7476DC24FDE55}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{64C7476DC2AE82F1}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{64C7476C23741C38}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{64C7476C2351A827}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{64C7476C2B1410A5}" {
+        m_sCallsign "Weapons 2"
+       }
+       SCR_CallsignInfo "{64C7476C2B71EE57}" {
+        m_sCallsign "Stryker 2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{64C7476C06DC55CE}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{64C7476C056AC92B}" {
+        m_sCallsign "Recon"
+       }
+       SCR_CallsignInfo "{64C7476C05BF63B1}" {
+        m_sCallsign "HMG 1"
+       }
+       SCR_CallsignInfo "{64C7476C137F47D4}" {
+        m_sCallsign "HMG 2"
+       }
+       SCR_CallsignInfo "{64C7476C135E9D13}" {
+        m_sCallsign "AH6M"
+       }
+       SCR_CallsignInfo "{64C7476C140070DB}" {
+        m_sCallsign "UH60 Transport"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

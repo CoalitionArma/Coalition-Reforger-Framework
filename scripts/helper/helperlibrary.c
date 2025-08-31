@@ -27,6 +27,7 @@
  * Action on Vehicle Destruction
  * Setting an objective complete
  * Randomizing Spawns
+ * Rush objective destructor
 ****************************************************************************************/
 
 
@@ -156,41 +157,41 @@ delete bridge_Control;
  * 1. First, the script starts the loop checking at EOnInit if safe start has ended. 
  *      If not it re-calls the script and continues to loop.
  * 2. Once the safe start has ended, it begins the timer by CallLater on setTimer. 
- * 3. During this timer the query is firing at an interval to see if the keyed attacking
- *      faction has captured the objective yet. If at any point the attacking faction
- *      succeeds then the trigger is deleted, interrupting the timer. 
- * 4. Once the timer has been set to true, then it executes the defending script and
- *      deletes the trigger.
 ****************************************************************************************/
 
-//Here is the safestart relevant section isolated
-CRF_GamemodeComponent safestart = CRF_GamemodeComponent.GetInstance();
-	if(safestart.GetSafestartStatus())
-
-
-//Here's the example
-class ammoSpawn_Class: SCR_BaseTriggerEntity 
+class ammo_Class: PS_ManualMarker 
 {
 	// user script
-	string ammo = "{86CE6595CC006129}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo_mat_prefab.et";
-	IEntity ammoSpawn;
+	string ammo = "{6250070685EC5A0D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/FIA_ammo_box.et";
+	string expl = "{6250070685EC5A0D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/FIA_ammo_box.et";
+	string hmg = "{6250070685EC5A0D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/FIA_ammo_box.et";
 	
+	IEntity spawnAmmo, spawnExpl, spawnHMG;
 	
-	void spawnAmmo()
+	void spawnthings()
 	{
-		ammoSpawn = GetGame().GetWorld().FindEntityByName("ammoSpawn");
+		spawnAmmo = GetGame().GetWorld().FindEntityByName("ammo");
+		spawnExpl = GetGame().GetWorld().FindEntityByName("explosives");
+		spawnHMG = GetGame().GetWorld().FindEntityByName("hmg");
+
 		
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		
-		spawnParams.Transform[3] = ammoSpawn.GetOrigin();		
+		spawnParams.Transform[3] = spawnAmmo.GetOrigin();		
 		GetGame().SpawnEntityPrefab(Resource.Load(ammo),GetGame().GetWorld(),spawnParams);
+		spawnParams.Transform[3] = spawnExpl.GetOrigin();
+		GetGame().SpawnEntityPrefab(Resource.Load(expl),GetGame().GetWorld(),spawnParams);
+		spawnParams.Transform[3] = spawnHMG.GetOrigin();
+		GetGame().SpawnEntityPrefab(Resource.Load(hmg),GetGame().GetWorld(),spawnParams);
+		
+		SCR_PopUpNotification.GetInstance().PopupMsg("Caches have been uncovered at their markers.", 10);
 	}
 	
 	void safeStartCheck()
 	{
-		CRF_GamemodeComponent safestart = CRF_GamemodeComponent.GetInstance();
-        if(safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME)
+		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
+        if(safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
          	GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);
 			return;
@@ -198,21 +199,17 @@ class ammoSpawn_Class: SCR_BaseTriggerEntity
 		
 		else
 		{
-			GetGame().GetCallqueue().CallLater(spawnAmmo, 1200000, false);
-			SCR_PopUpNotification.GetInstance().PopupMsg("Ammo and AT has made it to the factory.", 10);
+			GetGame().GetCallqueue().CallLater(spawnthings, 60000, false);
 		}
-		
-		
 	}
 
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
-		GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);
+		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);
 	}
 
 };
-
 
 
 /****************************************************************************************
@@ -498,6 +495,45 @@ class weaponSpawnTrigger_Class: SCR_BaseTriggerEntity
 		
 		GetGame().GetCallqueue().CallLater(SpawnThings, 100, false);
 
+	}
+
+};
+
+/****************************************************************************************
+ * --------------Rush objective destructor--------------
+ * A new implementation of the rush gamemode, this is the destructor for the generator
+ * objective. It sends a message about the objective, finds the generator near it and 
+ * destroys it, removes the appropriate area markers, and then if both objectives in 
+ * the zone are destroyed respawns players at their flag.
+****************************************************************************************/
+class z1s1_Class: GenericEntity 
+{
+	void ~z1s1_Class()
+	{
+		SCR_PopUpNotification.GetInstance().PopupMsg("Alpha MCOM destroyed", duration: 10);
+		
+		// TODO: Get the parent and delete everything
+		// Delete actual mcom/generator
+		IEntity mcom = GetGame().GetWorld().FindEntityByName("z1s1gen");
+		delete mcom;
+		// Delete markers
+		IEntity mcomMarker = GetGame().GetWorld().FindEntityByName("alphamarker");
+		delete mcomMarker;
+		
+		// Check if both sites are destroyed, if so, delete the zone marker line
+		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName("z1s2gen");
+		
+		if (!sisterMcom) {
+			IEntity zoneMarkers = GetGame().GetWorld().FindEntityByName("zone1markers");
+			SCR_EntityHelper.DeleteEntityAndChildren(zoneMarkers);
+			SCR_PopUpNotification.GetInstance().PopupMsg("Zone 2 is now unlocked", duration: 10);
+			
+			//respawn the players
+			if (RplSession.Mode() == RplMode.Dedicated) {
+				CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+				gm.RushRespawnPlayers();
+			}
+		}
 	}
 
 };

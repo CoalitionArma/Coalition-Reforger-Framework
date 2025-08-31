@@ -9,6 +9,8 @@ SCR_ChimeraCharacter {
    InputAimLimits 0 0
    DeathTimer 10
   }
+  CRF_PolyZoneEffectHandler "{658642B682EA66C8}" {
+  }
   SCR_CharacterStaminaComponent "{520EA1D2F659C824}" {
    StaminaDrainRun -0.006
    StaminaDrainSprint -0.009
@@ -16,6 +18,15 @@ SCR_ChimeraCharacter {
   }
   SCR_VoNComponent "{520EA1D2F659C856}" {
    "Speaking Range" 30
+  }
+  RHS_ThermalSlotManagerComponent "{60D6F4C7C990A7BB}" {
+   Slots {
+    EntitySlotInfo CRF_FPP {
+     PivotID "Head"
+     Offset 0.0313 0.0706 -0.2141
+     Angles 0 180 0
+    }
+   }
   }
  }
 }

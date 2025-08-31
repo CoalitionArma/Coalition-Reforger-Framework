@@ -1,0 +1,197 @@
+$grp SCR_BaseTriggerEntity {
+ ural1 {
+  coords 3424.65 6.052 2731.103
+ }
+ ural2 {
+  coords 3433.659 6.39 2727.78
+ }
+ ural3 {
+  coords 3428.969 6.187 2729.049
+ }
+ ural4 {
+  coords 3443.206 6.981 2724.729
+ }
+ ural5 {
+  coords 3438.297 6.644 2726.532
+ }
+ ural6 {
+  coords 3447.448 7.301 2723.161
+ }
+ truck1 {
+  coords 5541.785 123.371 3665.139
+ }
+ truck2 {
+  coords 5548.776 123.375 3667.187
+ }
+ truck3 {
+  coords 5555.789 123.375 3669.885
+ }
+ truck4 {
+  coords 5561.187 123.375 3672.899
+ }
+ truck5 {
+  coords 5566.293 123.375 3674.823
+ }
+ truck6 {
+  coords 5571.582 123.375 3677.774
+ }
+ spawnAssets {
+  coords 5522.138 123.374 3699.397
+  userScript "	string truck = \"{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et\";"\
+  "	string ural = \"{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et\";"\
+  "	string mortar = \"{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et\";"\
+  "	"\
+  "	void spawnthings()"\
+  "	{"\
+  "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+  "		spawnParams.TransformMode = ETransformMode.WORLD;"\
+  "		"\
+  "		for (int i = 1; i <= 6; i++) "\
+  "		{"\
+  "			string truckName = \"truck\" + i.ToString();"\
+  "			IEntity spawnTruck = GetGame().GetWorld().FindEntityByName(truckName);"\
+  "	"\
+  "			spawnParams.Transform[3] = spawnTruck.GetOrigin();"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(truck),GetGame().GetWorld(),spawnParams);"\
+  "		}"\
+  "		"\
+  "		for (int i = 1; i <= 6; i++) "\
+  "		{"\
+  "			string uralName = \"ural\" + i.ToString();"\
+  "			IEntity spawnUral = GetGame().GetWorld().FindEntityByName(uralName);"\
+  "	"\
+  "			spawnParams.Transform[3] = spawnUral.GetOrigin();"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(ural),GetGame().GetWorld(),spawnParams).SetYawPitchRoll(\"200 0 0\");;"\
+  "		}"\
+  "		"\
+  "		for (int i = 1; i <= 1; i++) "\
+  "		{"\
+  "			string mortarName = \"mortar\" + i.ToString();"\
+  "			IEntity spawnMortar = GetGame().GetWorld().FindEntityByName(mortarName);"\
+  "	"\
+  "			spawnParams.Transform[3] = spawnMortar.GetOrigin();"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(mortar),GetGame().GetWorld(),spawnParams).SetYawPitchRoll(\"250 0 0\");;"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(spawnthings, 3000, false);"\
+  "	"
+ }
+ mortar1 {
+  coords 5565.37 123.375 3722.81
+  angleY -127.279
+ }
+}
+$grp SCR_VehicleSpawn {
+ engi_truck_prespawn {
+  coords 5422.146 123.305 3646.812
+  angleY 61.005
+  m_rnPrefab "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ BRDM_prespawn {
+  coords 3393.996 4.007 2640.878
+  m_rnPrefab "{254289B9C09904AB}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ red_amb_prespawn {
+  coords 3467.327 7.553 2717.703
+  angleY -166.753
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ red_uaz_prespawn {
+  coords 3471.818 8.178 2714.353
+  angleY -166.753
+  m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ red_uaz_prespawn2 {
+  coords 3475.698 8.433 2713.44
+  angleY -166.753
+  m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ red_uaz_prespawn3 {
+  coords 3479.758 8.644 2712.484
+  angleY -166.753
+  m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ red_uaz_prespawn4 {
+  coords 3483.506 8.845 2711.602
+  angleY -166.753
+  m_rnPrefab "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ blue_jeep_prespawn {
+  coords 5502.633 123.375 3712.942
+  angleY 147.744
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ blue_jeep_prespawn2 {
+  coords 5508.553 123.375 3716.679
+  angleY 147.744
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ blue_jeep_prespawn3 {
+  coords 5514.136 123.375 3720.203
+  angleY 147.744
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ blue_jeep_prespawn4 {
+  coords 5518.311 123.375 3722.838
+  angleY 147.744
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ BTR_prespawn {
+  coords 3403.974 5.08 2637.678
+  m_rnPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ supplies {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     }
+    }
+   }
+  }
+  coords 5425.065 123.125 3643.477
+  angleY 62.007
+ }
+ supplies2 {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 2500
+      m_fResourceValueMax 2500
+     }
+    }
+   }
+  }
+  coords 5564.803 120.222 3726.402
+  angleY 62.007
+ }
+}

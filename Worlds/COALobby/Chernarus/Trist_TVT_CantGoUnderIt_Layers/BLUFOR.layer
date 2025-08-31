@@ -1,0 +1,218 @@
+GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
+ components {
+  CRF_VehicleSpawner "{64626B666A3B82E3}" {
+   m_rVehicle "{3277F8B1FA06A2BC}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF.et"
+  }
+ }
+ coords 995.72 179.716 7835.111
+ angleX 1.496
+ angleY 94.648
+ angleZ 5.253
+ {
+  $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{3277F8B1FA06A2BC}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_USAF.et"
+     }
+    }
+    coords -3.572 0.073 2.169
+    angleX 0
+    angleY 0
+    angleZ 0
+   }
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{4E3A86638BFF9FC6}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_USAF.et"
+     }
+    }
+    coords 2.888 0.983 15
+    angleX -3.868
+    angleY -119.061
+    angleZ 3.858
+   }
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+     }
+    }
+    coords 17.11 0.428 8.068
+    angleX -3.738
+    angleY -120.962
+    angleZ 3.984
+   }
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+     }
+    }
+    coords 22.1 1.133 4.843
+    angleX -7.4
+    angleY -119.896
+    angleZ -0.206
+   }
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+     }
+    }
+    coords 15.421 -0.212 -6.152
+    angleX 3.116
+    angleY -3.699
+    angleZ -1.172
+   }
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+     }
+    }
+    coords 10.101 -0.369 -3.927
+    angleX 4.7
+    angleY -0.419
+    angleZ -3.133
+   }
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+     }
+    }
+    coords 11.638 0.219 11.624
+    angleX -7.4
+    angleY -122.997
+    angleZ 0.194
+   }
+   {
+    components {
+     CRF_VehicleSpawner "{64626B666A3B82E3}" {
+      m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+     }
+    }
+    coords 6.038 0.163 -0.868
+    angleX 8.789
+    angleY -3.695
+    angleZ -4.442
+   }
+  }
+ }
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 1013.341 179.15 7849.655
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "Line"
+    }
+   }
+   coords 4.679 4.197 -10.374
+   {
+    SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Line"
+      }
+     }
+     coords 22.579 1.805 -1.852
+     angleY 14.264
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Line"
+        }
+       }
+       coords -1.049 1.204 -11.448
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Line"
+          }
+         }
+         coords -0.06 1.257 -10.808
+         {
+          SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Line"
+            }
+           }
+           coords -0.779 -3.337 -8.188
+           {
+            SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "Line"
+              }
+             }
+             coords 30.311 0 7.09
+             angleY 5.088
+             {
+              SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+               coords -85.831 0.51 40.762
+               angleY 11.17
+               {
+                SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+                 components {
+                  AIFormationComponent "{507E9DC12F541FE6}" {
+                   DefaultFormation "Line"
+                  }
+                 }
+                 coords -0.164 0.195 -8.075
+                 angleY 4.749
+                 {
+                  SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+                   components {
+                    AIFormationComponent "{507E9DC12F541FE6}" {
+                     DefaultFormation "Line"
+                    }
+                   }
+                   coords 0.143 0 -5.123
+                   angleY -4.827
+                   {
+                    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+                     components {
+                      AIFormationComponent "{507E9DC12F541FE6}" {
+                       DefaultFormation "Line"
+                      }
+                     }
+                     coords 0.037 0 -4.485
+                     angleY -3.275
+                     {
+                      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+                       components {
+                        AIFormationComponent "{507E9DC12F541FE6}" {
+                         DefaultFormation "Line"
+                        }
+                       }
+                       coords 1.668 4.432 -9.571
+                       angleY -3.026
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

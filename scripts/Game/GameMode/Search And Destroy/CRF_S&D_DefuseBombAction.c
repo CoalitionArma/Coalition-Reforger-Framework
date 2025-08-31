@@ -2,7 +2,7 @@
 class CRF_DefuseBombAction : ScriptedUserAction
 {	
 	SCR_FactionManager factionManager;
-	CRF_SearchAndDestroyGameModeComponent gameMode;
+	CRF_SearchAndDestroyGamemodeManager gameMode;
 	EntityID siteID = null;
 	
 	//------------------------------------------------------------------------------------------------
@@ -11,7 +11,7 @@ class CRF_DefuseBombAction : ScriptedUserAction
 		
 		siteID = pOwnerEntity.GetID();
 		factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		gameMode = CRF_SearchAndDestroyGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGameModeComponent));
+		gameMode = CRF_SearchAndDestroyGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_SearchAndDestroyGamemodeManager));
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ class CRF_DefuseBombAction : ScriptedUserAction
 		else
 			siteDefused = "SiteB";
 		
-		CRF_ClientComponent.GetInstance().Owner_ToggleBombPlanted(siteDefused, false);
+		CRF_RplToAuthorityManager.GetInstance().ToggleBombPlanted(siteDefused, false);
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
 	}

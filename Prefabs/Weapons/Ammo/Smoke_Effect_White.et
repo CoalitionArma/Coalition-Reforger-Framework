@@ -6,7 +6,7 @@ Projectile : "{7018A917ED080F86}Prefabs/Weapons/Core/FlareEffect_Base.et" {
     SpawnParticleEffect "{62FB4615D04AC85A}" {
      TriggerOnce 1
      AttachToParent 1
-     ParticleEffect "{D9E301D28125234A}Particles/Weapon/Smoke_grenade_AN-M8_HC.ptc"
+     ParticleEffect "{CE5B06573F4E85BE}Particles/Weapon/UGL_Smoke_White.ptc"
     }
    }
    ArmingTime 2
@@ -18,7 +18,7 @@ Projectile : "{7018A917ED080F86}Prefabs/Weapons/Core/FlareEffect_Base.et" {
    TimeToLive 60
    AirDrag 0.2
    DeflectionSlowdown 1
-   DeployTime 6
+   DeployTime 3
    RotationSpeed 0
    SmokeParticleDirection 0 0 74.2
    SmokeParticle "{D9E301D28125234A}Particles/Weapon/Smoke_grenade_AN-M8_HC.ptc"

@@ -1,0 +1,30 @@
+SCR_MapEntity MapEntity_Rostov1 : "{FDC3842C6A17F2D9}Prefabs/World/Game/Rostov/MapEntity_Rostov.et" {
+ coords 4331.626 123.016 2556.194
+}
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 4336.494 123.144 2555.901
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 4340.136 123.117 2560.391
+ m_iTimeLimitMinutes 10
+ m_bSafestartInstantlyEnabled 0
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "kill em all"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "kill em all"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "kill em all"
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{363B38F3CA035DCC}Configs/Gearscripts/Custom/RandAlThor/Special/Container/CRF_GS_RHSION_Urban_Container.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{66DE6C1CDD479174}Configs/Gearscripts/Custom/RandAlThor/Special/Container/CRF_GS_MEInsurgents_CONTAINER.conf"
+ }
+}

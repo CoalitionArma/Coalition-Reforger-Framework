@@ -1,10 +1,10 @@
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_SupplyExtractionGameModeComponentClass: SCR_BaseGameModeComponentClass
+class CRF_SupplyExtractionGamemodeManagerClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
+class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 {
 	[Attribute("2", "auto", "The amount of supply depots the extracting team has to extract to.")]
 	int m_totalDepots;
@@ -89,7 +89,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	protected void SupplyInit()
 	{
 		//Is the game running? I fucking hope so
-		if (CRF_GamemodeComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
+		if (CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) return;
 		//Who's near extract?
 		int playerCount = CountFactionPlayers(m_extractionLocation, m_extractionDistance, m_factionKey);
 		//Who's alive
@@ -137,7 +137,7 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 	//Cause it starts not running and can fuck up some init code
 	void WaitTillGameStart()
 	{
-		if (!CRF_GamemodeComponent.GetInstance().GetSafestartStatus()) 
+		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus()) 
 		{
 			m_extractionLocation = GetGame().GetWorld().FindEntityByName(m_extractionObject).GetOrigin();
 			GetGame().GetCallqueue().Remove(WaitTillGameStart);
@@ -192,9 +192,9 @@ class CRF_SupplyExtractionGameModeComponent: SCR_BaseGameModeComponent
 		int players = 0;
 		array<int> outPlayers = {};
 		GetGame().GetPlayerManager().GetPlayers(outPlayers);
-		foreach(int playerId : outPlayers)
+		foreach(int playerID : outPlayers)
 		{
-		 	PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId); if (!pc) continue;
+		 	PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerID); if (!pc) continue;
 		  	IEntity controlled = pc.GetControlledEntity();
 		  	SCR_ChimeraCharacter ch = SCR_ChimeraCharacter.Cast(controlled); if (!ch) continue;
 			CharacterControllerComponent ccc = ch.GetCharacterController();

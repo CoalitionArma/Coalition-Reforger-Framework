@@ -1,0 +1,426 @@
+GenericEntity : "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et" {
+ coords 1193.021 39.154 2714.582
+ angleY -12.777
+}
+$grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+ {
+  coords 1150.002 39 2726.596
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1157.927 39 2698.486
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1161.819 39 2684.685
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1154.377 39 2711.078
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1129.809 39 2720.902
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1137.734 39 2692.792
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1134.184 39 2705.384
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1118.716 39 2672.531
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1106.899 39 2714.441
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1111.274 39 2698.924
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1114.824 39 2686.332
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1141.626 39 2678.991
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1231.567 39 2731.152
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1258.94 39 2707.833
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1238.571 39 2702.799
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1251.935 39 2736.187
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1228.126 39 2745.073
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1255.072 39 2723.485
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1271.602 39 2755.817
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1282.048 39 2713.544
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1278.18 39 2729.195
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1275.042 39 2741.897
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1234.705 39 2718.452
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1248.494 39 2750.106
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1098.362 39 2681.689
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1070.244 39 2704.105
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1090.437 39 2709.8
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1078.169 39 2675.995
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1102.254 39 2667.888
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1074.619 39 2688.587
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1059.151 39 2655.734
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1047.334 39 2697.644
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1051.709 39 2682.127
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1055.259 39 2669.535
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1094.812 39 2694.281
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1082.061 39 2662.194
+  angleY 74.252
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1292.967 39 2746.326
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1336.442 39 2757.071
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1320.34 39 2723.008
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1316.472 39 2738.659
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1289.526 39 2760.247
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1299.971 39 2717.973
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1296.105 39 2733.626
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1333.002 39 2770.991
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1313.335 39 2751.361
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1343.448 39 2728.718
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1339.58 39 2744.369
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1309.894 39 2765.281
+  angleY -103.882
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1207.202 39 2693.18
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1179.032 39 2685.472
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1221.032 39 2696.966
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1194.583 39 2689.727
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1196.276 39 2733.099
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1168.106 39 2725.39
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1210.106 39 2736.885
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1183.657 39 2729.646
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1203.364 39 2707.204
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1175.194 39 2699.495
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1190.745 39 2703.751
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+ {
+  coords 1217.194 39 2710.99
+  angleY -15.307
+  m_aUnitPrefabSlots {
+   "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"
+  }
+ }
+}

@@ -1,9 +1,9 @@
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_HighValueTargetGameModeComponentClass: SCR_BaseGameModeComponentClass
+class CRF_HighValueTargetGamemodeManagerClass: SCR_BaseGameModeComponentClass
 {
 	
 }
-class CRF_HighValueTargetGameModeComponent: SCR_BaseGameModeComponent
+class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 {
 	[Attribute("360", "auto", "The amount of time between marker updates in seconds.")]
 	int m_timeBetweenPings;
@@ -108,7 +108,7 @@ class CRF_HighValueTargetGameModeComponent: SCR_BaseGameModeComponent
 	
 	void WaitTillSafeStartEnds()
 	{
-		if (!CRF_GamemodeComponent.GetInstance().GetSafestartStatus())
+		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())
 		{	
 			GetGame().GetCallqueue().Remove(WaitTillSafeStartEnds);
 			if (RplSession.Mode() == RplMode.Dedicated)
@@ -116,7 +116,7 @@ class CRF_HighValueTargetGameModeComponent: SCR_BaseGameModeComponent
 				GetGame().GetCallqueue().CallLater(transponderInit, 1000, true);
 			}
 			
-			CRF_ClientComponent gameModePlayerComponent = CRF_ClientComponent.GetInstance();
+			CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 				if (!gameModePlayerComponent) 
 					return;
 				
@@ -199,16 +199,6 @@ class CRF_HighValueTargetGameModeComponent: SCR_BaseGameModeComponent
 		if (!faction)
 			return;
 		
-		Rpc(RpcAsk_PopUpNotification, faction.GetFactionKey())
+		CRF_RplBroadcastManager.GetInstance().PopUpNotification(10, "HVT KILLED BY: %1", "", "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav", faction.GetFactionKey())
 	}
-	
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcAsk_PopUpNotification(string faction)
-	{
-		AudioSystem.PlaySound("{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav");
-		m_PopUpNotificationMessage = "HVT Killed by " + faction;
-		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
-		m_PopUpNotification.PopupMsg(m_PopUpNotificationMessage, 10, "");
-	}
-	
 }

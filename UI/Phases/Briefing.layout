@@ -498,6 +498,7 @@ FrameWidgetClass {
       SizeY 0
       OffsetBottom 0
      }
+     Opacity 0.2
      Color 0.091 0.091 0.091 0.788
     }
     OverlayWidgetClass "{62F03D881157A4D2}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
@@ -539,12 +540,12 @@ FrameWidgetClass {
      Name "PlayersText"
      Slot FrameWidgetSlot "{62F01245493B2589}" {
       Anchor 0 0 1 0
-      PositionX 5.076
-      OffsetLeft 5.076
+      PositionX 58.076
+      OffsetLeft 58.076
       PositionY 5
       OffsetTop 5
       SizeX -107.225
-      OffsetRight 102.149
+      OffsetRight 49.149
       SizeY 29.96
       OffsetBottom -34.96
      }
@@ -580,7 +581,8 @@ FrameWidgetClass {
       SizeY 0
       OffsetBottom 0
      }
-     Color 0.091 0.091 0.091 0.784
+     Opacity 0.2
+     Color 0.1758 0.1734 0.1734 0.784
     }
     OverlayWidgetClass "{62F03D881157CD72}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
      Name "DescriptionList"
@@ -630,7 +632,7 @@ FrameWidgetClass {
       SizeY 29.96
       OffsetBottom -34.96
      }
-     Text "Mission Description"
+     Text "Briefing"
      "Horizontal Alignment" Center
      "Vertical Alignment" Center
     }
@@ -685,7 +687,7 @@ FrameWidgetClass {
        {
         RichTextWidgetClass "{62F06D4239BB1138}" {
          Name "DescriptionInfo"
-         Slot LayoutSlot {
+         Slot LayoutSlot "{66384140FD489F3A}" {
          }
          Text ""
          Wrap 1

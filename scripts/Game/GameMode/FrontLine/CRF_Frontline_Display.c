@@ -1,4 +1,4 @@
-class CRF_Frontline_HUD : SCR_InfoDisplay
+class CRF_Frontline_HUD : SCR_InfoDisplayExtended
 {
 	protected ImageWidget m_wASite;
 	protected ImageWidget m_wBSite;
@@ -24,8 +24,8 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 	protected bool m_bStoredFadeInBoolean;
 	protected bool m_bStoredProgressBarBoolean;
 
-	protected CRF_ClientComponent m_GameModePlayerComponent = null;
-	protected CRF_FrontlineGameModeComponent m_FrontlineGameModeComponent = null;
+	protected CRF_PlayerControllerManager m_GameModePlayerComponent = null;
+	protected CRF_FrontlineGamemodeManager m_FrontlineGamemodeManager = null;
 	
 	//------------------------------------------------------------------------------------------------
 
@@ -33,19 +33,19 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 
 	//------------------------------------------------------------------------------------------------
 	
-	override protected void UpdateValues(IEntity owner, float timeSlice)
+	override protected void DisplayUpdate(IEntity owner, float timeSlice)
 	{
-		super.UpdateValues(owner, timeSlice);
+		super.DisplayUpdate(owner, timeSlice);
 		
-		if(!m_FrontlineGameModeComponent)
+		if(!m_FrontlineGamemodeManager)
 		{
-			m_FrontlineGameModeComponent = CRF_FrontlineGameModeComponent.GetInstance();
+			m_FrontlineGamemodeManager = CRF_FrontlineGamemodeManager.GetInstance();
 			m_wRoot.SetOpacity(0);
 			return;
 		};
 		
 		if (!m_GameModePlayerComponent || !m_wASite || !m_wSiteCaptureBar || !m_wASiteInZone || !m_wASiteLock) {
-			m_GameModePlayerComponent = CRF_ClientComponent.GetInstance();
+			m_GameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 			m_wASite                  = ImageWidget.Cast(m_wRoot.FindWidget("ASite"));
 			m_wBSite                  = ImageWidget.Cast(m_wRoot.FindWidget("BSite"));
 			m_wCSite                  = ImageWidget.Cast(m_wRoot.FindWidget("CSite"));
@@ -66,23 +66,23 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			return;
 		};
 		
-		if(CRF_GamemodeComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !CRF_GamemodeComponent.GetInstance().m_bHUDVisible)
+		if(CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !CRF_PlayerControllerManager.GetInstance().m_bHUDVisible)
 			m_wRoot.SetOpacity(0);
 		else
 			m_wRoot.SetOpacity(1);
 		
-		m_wSiteCaptureText.SetText(m_FrontlineGameModeComponent.m_sHudMessage);
+		m_wSiteCaptureText.SetText(m_FrontlineGamemodeManager.m_sHudMessage);
 		
 		m_bStoredProgressBarBoolean = false;
 		
-		foreach(int i, string zoneName : m_FrontlineGameModeComponent.m_aZoneObjectNames)
+		foreach(int i, string zoneName : m_FrontlineGamemodeManager.m_aZoneObjectNames)
 		{
 			IEntity zone = GetGame().GetWorld().FindEntityByName(zoneName);
 			
 			if(!zone)
 				continue;
 			
-			string status = m_FrontlineGameModeComponent.m_aZonesStatus[i];
+			string status = m_FrontlineGamemodeManager.m_aZonesStatus[i];
 			
 			ImageWidget widget;
 			ImageWidget lockWidget;
@@ -134,8 +134,8 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 			
 			switch(zonefaction)
 			{
-				case m_FrontlineGameModeComponent.m_BluforSide : { widget.SetColorInt(ARGB(255, 0, 25, 225));    break; }; //Blufor 
-				case m_FrontlineGameModeComponent.m_OpforSide  : { widget.SetColorInt(ARGB(255, 225, 25, 0));    break; }; //Opfor
+				case m_FrontlineGamemodeManager.m_BluforSide : { widget.SetColorInt(ARGB(255, 0, 25, 225));    break; }; //Blufor 
+				case m_FrontlineGamemodeManager.m_OpforSide  : { widget.SetColorInt(ARGB(255, 225, 25, 0));    break; }; //Opfor
 				default                                        : { widget.SetColorInt(ARGB(255, 225, 225, 225)); break; }; //Uncaptured
 			}
 			
@@ -149,16 +149,16 @@ class CRF_Frontline_HUD : SCR_InfoDisplay
 				m_wSiteCaptureBar.SetCurrent(zoneState.ToInt());
 				m_bStoredProgressBarBoolean = true;
 				
-				if(!m_FrontlineGameModeComponent.m_bGameStarted) {
-					m_wSiteCaptureBar.SetMax(m_FrontlineGameModeComponent.m_iInitialTime); // Only other time we use the progress bar
+				if(!m_FrontlineGamemodeManager.m_bGameStarted) {
+					m_wSiteCaptureBar.SetMax(m_FrontlineGamemodeManager.m_iInitialTime); // Only other time we use the progress bar
 				} else {
-					m_wSiteCaptureBar.SetMax(m_FrontlineGameModeComponent.m_iZoneCaptureTime);
+					m_wSiteCaptureBar.SetMax(m_FrontlineGamemodeManager.m_iZoneCaptureTime);
 				};
 				
 				switch(zonefaction)
 				{
-					case m_FrontlineGameModeComponent.m_BluforSide : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 0, 25, 225));    break;}; //Blufor
-					case m_FrontlineGameModeComponent.m_OpforSide  : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 225, 25, 0));    break;}; //Opfor
+					case m_FrontlineGamemodeManager.m_BluforSide : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 0, 25, 225));    break;}; //Blufor
+					case m_FrontlineGamemodeManager.m_OpforSide  : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 225, 25, 0));    break;}; //Opfor
 					default                                        : { m_wSiteCaptureBar.SetColorInt(ARGB(255, 225, 225, 225)); break;}; //Uncaptured
 				}
 				

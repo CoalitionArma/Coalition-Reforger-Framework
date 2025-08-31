@@ -1,0 +1,204 @@
+ButtonWidgetClass {
+ Name "rootFrame"
+ Slot AlignableSlot "{62F2056BF4F1EC36}" {
+  HorizontalAlign 3
+ }
+ components {
+  CRF_ListBoxElementComponent "{62F200F0C4795E5F}" {
+  }
+ }
+ style blank
+ {
+  SizeLayoutWidgetClass "{647D656AAA1FB931}" {
+   Name "SizeLayout"
+   Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+    HorizontalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 36
+   {
+    OverlayWidgetClass "{647D656AAA1FB933}" {
+     Name "Overlay"
+     Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Clipping False
+     {
+      ImageWidgetClass "{647D656AAA1FB934}" {
+       Name "Image0"
+       Slot OverlayWidgetSlot "{630A2578A5208A35}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Color 0.044 0.044 0.044 0.137
+       Size 512 512
+       "Transition width" 1
+       Progress 0.52
+      }
+      FrameWidgetClass "{647D656AAA1FB936}" {
+       Name "ButtonLayout"
+       Slot OverlayWidgetSlot "{62F200F27385E1FB}" {
+        HorizontalAlign 0
+       }
+       {
+        ImageWidgetClass "{647D656AAA1FB937}" {
+         Name "RoleImage"
+         Slot FrameWidgetSlot "{630C43F4485D0897}" {
+          Anchor 0 0 0 0
+          PositionX -3.864
+          OffsetLeft -3.864
+          PositionY -8.5
+          OffsetTop -8.5
+          SizeX 66.429
+          OffsetRight -62.565
+          SizeY 52.017
+          OffsetBottom -43.517
+         }
+         Texture "{7294DBB54D4BFED6}UI/data/SFC_Rank.edds"
+         Size 40 40
+        }
+        TextWidgetClass "{647D656AAA1FB938}" {
+         Name "PlayerName"
+         Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
+          Anchor 0 0 0 0
+          PositionX 57.845
+          OffsetLeft 57.845
+          PositionY 4.1
+          OffsetTop 4.1
+          SizeX 125.7
+          OffsetRight -183.545
+          SizeY 25.9
+          OffsetBottom -30
+         }
+         Clipping Ancestor
+         Color 1 1 1 0.843
+         Text "(Empty)"
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 1
+        }
+        ImageWidgetClass "{647D656AAA1F26BA}" {
+         Name "Divider2"
+         Slot FrameWidgetSlot "{62F200F2FC6280BD}" {
+          Anchor 0.707 0.125 0.713 0.833
+          PositionX -75.414
+          OffsetLeft -75.414
+          PositionY 0
+          OffsetTop 0
+          SizeX 0
+          OffsetRight 75.414
+          SizeY 0
+          OffsetBottom 0
+         }
+         Size 5 128
+        }
+        ImageWidgetClass "{647D656AAA1F26A7}" {
+         Name "Divider1"
+         Slot FrameWidgetSlot "{62F200F2FC628062}" {
+          Anchor 0.01 0.119 0.015 0.833
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX 0
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Size 5 128
+        }
+        ButtonWidgetClass "{647E03D8859181C1}" {
+         Name "SlotButton"
+         Slot FrameWidgetSlot "{630510543BD8CBB1}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 0
+          PositionY 2
+          SizeX 0
+          OffsetRight 0
+          SizeY -6
+          OffsetBottom 0
+         }
+         Color 1 1 1 0.012
+         components {
+          ButtonComponent "{6305105441730952}" {
+           m_ColorButtonDefault 0 0 0 0
+          }
+          SCR_ButtonTextComponent "{630510843AEEE3AD}" {
+          }
+         }
+        }
+       }
+      }
+      PanelWidgetClass "{647D656AAA1F26A6}" {
+       Name "Border"
+       Slot OverlayWidgetSlot "{5548E6E7D859FCD2}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Is Visible" 0
+       Color 0.761 0.386 0.08 1
+       style outline_2px
+      }
+      FrameWidgetClass "{647D656AAA1F26A5}" {
+       Name "Disconnected"
+       Slot OverlayWidgetSlot "{631F7CF5E5BFCB25}" {
+        HorizontalAlign 0
+        VerticalAlign 3
+        Padding 480 0 0 0
+       }
+       "Is Visible" 0
+       {
+        ImageWidgetClass "{647D656AAA1F26A4}" {
+         Name "Image0"
+         Slot FrameWidgetSlot "{631F7CF5FB1BD72E}" {
+          Anchor 0 0 1 1
+          PositionX 398.996
+          OffsetLeft 50
+          PositionY 0
+          OffsetTop 0
+          SizeX -405
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Texture "{356FBF661306DFD6}UI/data/disconnect_icon.edds"
+         Size 800 800
+        }
+       }
+      }
+      FrameWidgetClass "{647D656AAA1CE5E4}" {
+       Name "Killed"
+       Slot OverlayWidgetSlot "{631F7CF5E5BFCB25}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 100 0 0 0
+       }
+       "Is Visible" 0
+       {
+        TextWidgetClass "{647D656AAA1CE5E3}" {
+         Name "Text0"
+         Slot FrameWidgetSlot "{631F7CCE0BFD509F}" {
+          PositionX 442.503
+          OffsetLeft 442.503
+          PositionY 3.88
+          OffsetTop 3.88
+          SizeX 42.473
+          OffsetRight -484.976
+          SizeY 30
+          OffsetBottom -33.88
+         }
+         Text "KIA"
+         "Font Size" 30
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

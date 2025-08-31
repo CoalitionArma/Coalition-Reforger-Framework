@@ -1,0 +1,298 @@
+FrameWidgetClass {
+ Name "templateFrame"
+ {
+  FrameWidgetClass "{6552D82331FE4CE8}" {
+   Name "MenuSlot1"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    PositionX 152
+    OffsetLeft 152
+    PositionY 88
+    OffsetTop 88
+    SizeX 1128
+    OffsetRight -1280
+    SizeY 928
+    OffsetBottom -1016
+   }
+   "Is Enabled" 0
+  }
+  EditBoxWidgetClass "{6552D823ECED846F}" {
+   Name "SearchBox0"
+   Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -436
+    OffsetTop -436
+    SizeX 252.078
+    OffsetRight 539.922
+    SizeY 41.277
+    OffsetBottom 394.723
+   }
+   "Font Size" 20
+   "Use placeholder text" 1
+   "Placeholder text" "Search for player..."
+  }
+  ButtonWidgetClass "{6552D823ECED84B6}" {
+   Name "SearchButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -536
+    OffsetLeft -536
+    PositionY -436
+    OffsetTop -436
+    SizeX 38.891
+    OffsetRight 497.109
+    SizeY 41.419
+    OffsetBottom 394.581
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    ImageWidgetClass "{6552D823ECED84B7}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
+     Size 25 25
+    }
+   }
+  }
+  OverlayWidgetClass "{6552D823ECED8597}" {
+   Name "PlayerList0"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -380
+    OffsetTop -380
+    SizeX 293.405
+    OffsetRight 498.595
+    SizeY 849.01
+    OffsetBottom -469.01
+   }
+   {
+    OverlayWidgetClass "{6552D823ECEDB680}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerListBox0"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{6552D823ECEDB682}" {
+     Name "PlayerListTitle"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Player 1"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  OverlayWidgetClass "{6552D823ECEDB91D}" {
+   Name "PlayerList1"
+   Slot FrameWidgetSlot "{629B0EC8DE26D29A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -448
+    OffsetLeft -448
+    PositionY -380
+    OffsetTop -380
+    SizeX 293.405
+    OffsetRight 154.595
+    SizeY 849.01
+    OffsetBottom -469.01
+   }
+   {
+    OverlayWidgetClass "{6552D823ECED6AB6}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerListBox1"
+     Slot OverlayWidgetSlot "{629B0EBE315316CB}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+      Padding 0 20 0 0
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+    TextWidgetClass "{6552D823ECED6AB7}" {
+     Name "PlayerListTitle"
+     Slot OverlayWidgetSlot "{629B0EC922D5408A}" {
+      VerticalAlign 0
+      Padding -9 0 0 0
+     }
+     Clipping False
+     Text "Player 2"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+   }
+  }
+  ButtonWidgetClass "{6552D823ECED6A76}" {
+   Name "MenuButton0"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -128
+    OffsetLeft -128
+    PositionY -316
+    OffsetTop -316
+    SizeX 112
+    OffsetRight 16
+    SizeY 29.999
+    OffsetBottom 286.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{6552D823ECE2C994}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Teleport Me to 1"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  ButtonWidgetClass "{65534CAC5326C751}" {
+   Name "MenuButton1"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -128
+    OffsetLeft -128
+    PositionY -276
+    OffsetTop -276
+    SizeX 112
+    OffsetRight 16
+    SizeY 29.999
+    OffsetBottom 246.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{65534CAC5326C72E}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Teleport 1 to 2"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+  EditBoxWidgetClass "{65534CAC8736E73C}" {
+   Name "SearchBox1"
+   Slot FrameWidgetSlot "{650AE2D863BE6C59}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -448
+    OffsetLeft -448
+    PositionY -436
+    OffsetTop -436
+    SizeX 252.078
+    OffsetRight 195.922
+    SizeY 41.277
+    OffsetBottom 394.723
+   }
+   "Font Size" 20
+   "Use placeholder text" 1
+   "Placeholder text" "Search for player..."
+  }
+  ButtonWidgetClass "{65534CAC8736E79B}" {
+   Name "SearchButton1"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -192
+    OffsetLeft -192
+    PositionY -436
+    OffsetTop -436
+    SizeX 38.891
+    OffsetRight 153.109
+    SizeY 41.419
+    OffsetBottom 394.581
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    ImageWidgetClass "{65534CAC8736F00E}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Texture "{A2738F1A7C0902C1}UI/Textures/Workshop/SearchIcon.edds"
+     Size 25 25
+    }
+   }
+  }
+  ButtonWidgetClass "{657108CA1782105B}" {
+   Name "MenuButton2"
+   Slot FrameWidgetSlot "{62992E477A603216}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -128
+    OffsetLeft -128
+    PositionY -356
+    OffsetTop -356
+    SizeX 112
+    OffsetRight 16
+    SizeY 29.999
+    OffsetBottom 326.001
+   }
+   Color 0.013 0.0152 0.0176 1
+   components {
+    SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+     m_bCanBeToggled 1
+     m_sTextWidgetName ""
+    }
+   }
+   {
+    TextWidgetClass "{657108CA17821058}" {
+     Name "ActionButtonText"
+     Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+     }
+     Text "Teleport 1 to Me"
+     "Font Size" 15
+     "Min Font Size" 15
+    }
+   }
+  }
+ }
+}

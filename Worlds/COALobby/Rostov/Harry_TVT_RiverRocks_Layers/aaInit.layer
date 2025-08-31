@@ -1,0 +1,133 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 1130.793 118.156 2964.122
+ "Map Geometry Data" "{4D13DC42EAA6321E}Terrain/WCS_Rostov_Conflict_NEvSW_Layout1.topo"
+ "Satellite background image" "{4CDC017532F1D3F5}UI/Textures/Map/Worlds/Rostov/Rostov.edds"
+}
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 1150.675 721.714 2990.844
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Light Rain"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 5
+   m_iStartingMinutes 23
+  }
+ }
+ coords 1176.815 569.898 2996.863
+ m_iTimeLimitMinutes 70
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Opfor is attacking this AO, hoping to dislodge UK forces ultimately from the quarry and use it as a strong operating point in future missions."\
+   ""\
+   "BLUFOR Composition: Moto Inf"\
+   "BLUFOR Assets: 1 AH-6/zone, 2 LAV total, MMG team"\
+   ""\
+   "OPFOR Composition: Moto Inf"\
+   "OPFOR Assets: 1 MI-24 w/ rockets, 1 MI-24 w/ fab 500, 2 BRDM total"\
+   ""\
+   "Time: 70"\
+   "Weather: Light Rain"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Defend the caches marked on the map. You will receive a respawn wave when the second zone is unlocked, but no new ground assets. You have precise knowledge of the cache locations, while the attackers only have approximate."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Advance, and destroy the caches marked on the map. The caches will be nearby the question mark, and there are two that need to be destroyed in zone 1 before proceeding. You will receive a respawn wave when zone 2 is unlocked, but no new assets."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D8798CBDB67BC164}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_UK80s_FAL_M79.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EBD66AA635DA78AE}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s_VSR.conf"
+ }
+ {
+  SCR_FactionManager "6620E69A28C95F16" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6617694D9D779A97}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6617694DE2F52AC3}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{6617694DE6FC279C}" {
+        m_sCallsign "LAV 1"
+       }
+       SCR_CallsignInfo "{6617694DE925C0F3}" {
+        m_sCallsign "LAV 2"
+       }
+       SCR_CallsignInfo "{6617694DEE8D4FA4}" {
+        m_sCallsign "AH-6M"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{6617694DC8F01B4F}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6617694DCDC71B65}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{6617694DD751E9F1}" {
+        m_sCallsign "BRDM-1"
+       }
+       SCR_CallsignInfo "{6617694DDBA92C4A}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{6617694A2108A229}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{6617694A26BC171F}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6617694A2BAB68AC}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{6617694A2EFCF894}" {
+        m_sCallsign "BRDM-2"
+       }
+       SCR_CallsignInfo "{6617694A30FBBD7C}" {
+        m_sCallsign "MI-24"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

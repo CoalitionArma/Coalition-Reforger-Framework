@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{E4B50006C1BF0371}Assets/Structures/Signs/Military/Data/SignRectangle_01_140x100_COAL_PM.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,91 @@
+GenericEntity : "{3FB5275A6505B323}Prefabs/Weapons/Rifles/M14/Rifle_M21_base.et" {
+ ID "5254ACCA959048B9"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{6CB3F592D81B44AF}Sounds/Weapons/Rifles/AKS-74U/Weapons_Rifles_AKS-74U_Shot.acp" "{F6F479AE77E7A573}Sounds/Weapons/Rifles/M21/Weapons_Rifles_M21_Handling.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{35DF1885EF785500}Assets/Weapons/Rifles/SKS/sksextmag.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "Type 63"
+     Description ""
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5472D21A19B61CDF}" {
+     AttachmentSlot InventoryStorageSlot Scope {
+      Offset -0.0228 -0.0263 0.0234
+      Enabled 0
+      Prefab "{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Scopes/Optic_PSO1/Optic_PSO1.et"
+     }
+     AttachmentType AttachmentOpticsDovetailSVD "{58E2BCF93BDCA8BA}" {
+     }
+    }
+    AttachmentSlotComponent "{66361839150D3193}" {
+     AttachmentSlot InventoryStorageSlot UGL {
+      Offset 0.0009 0.0581 0.4552
+      Prefab "{1ABABE3551512B0A}Prefabs/Weapons/Attachments/Underbarrel/UGL_GP25.et"
+     }
+    }
+    AttachmentSlotComponent "{66361839596ACCF0}" {
+     AttachmentSlot InventoryStorageSlot bayonet {
+      PivotID "barrel_muzzle"
+      MergePhysics 1
+      Prefab "{98C79F5FAE12F9B6}Prefabs/Weapons/Attachments/Bayonets/Bayonet_type56.et"
+     }
+     AttachmentType AttachmentBayonet6Kh4 "{66361839596ACC1D}" {
+     }
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      Offset 0 0.0074 0
+     }
+     SightsPointFront PointInfo "{584CED31C6D10FFC}" {
+      PivotID "slot_ironsight_front"
+      Offset 0 0 0
+     }
+     SightsPointRear PointInfo "{584CED31C4E1F0DE}" {
+      PivotID "slot_ironsight_rear"
+      Offset 0 0 0
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{A89D3276591C9F57}Particles/Weapon/Casing_762x39_PS.ptc"
+       EffectPosition EntitySlotInfo "{5122BA87B56F471A}" {
+        Offset 0 0 0
+       }
+      }
+      CaseEjectingEffectComponent "{54ACE71283EC783A}" {
+       ParticleEffect "{A47D21361EBAB231}Particles/Weapon/Smoke_AK74.ptc"
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{6FC79968CA7F6FD2}Particles/Weapon/Muzzle_AK74.ptc"
+      }
+     }
+     MagazineWell MagazineWellVZ58_762 "{52D8E2D6B49EF12E}" {
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Offset 0 0 0.0037
+     }
+     MagazineTemplate "{A827B610B7CD4158}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Last_5Tracer.et"
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "Type 63"
+    Description ""
+   }
+  }
+ }
+ coords 0 0 0.015
+}

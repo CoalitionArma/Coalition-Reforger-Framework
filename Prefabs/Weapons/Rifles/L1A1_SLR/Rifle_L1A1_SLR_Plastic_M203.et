@@ -1,0 +1,71 @@
+GenericEntity : "{E5155BCAC2B2C772}Prefabs/Weapons/Rifles/L1A1_SLR/Rifle_L1A1_SLR_Plastic_Base.et" {
+ ID "5260C45AAAA407F4"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{61733779A2B78FF1}" {
+     AttachmentSlot InventoryStorageSlot "{61733779A673730E}" {
+      Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{61733779A2B78FF1}" {
+     AttachmentSlot InventoryStorageSlot "{61733779A673730E}" {
+      Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{61733779A2B78FF1}" {
+     AttachmentSlot InventoryStorageSlot "{61733779A673730E}" {
+      Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{61733779A2B78FF1}" {
+     AttachmentSlot InventoryStorageSlot "{61733779A673730E}" {
+      Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{61733779A2B78FF1}" {
+     AttachmentSlot InventoryStorageSlot "{61733779A673730E}" {
+      Prefab "{894C4C3EC0457A30}Prefabs/Weapons/Attachments/PistolGrip/PistolGrip_L1A1/PistolGrip_L1A1_Plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{6173377B981F5766}" {
+     AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
+      Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{6173377B981F5766}" {
+     AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
+      Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{6173377B981F5766}" {
+     AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
+      Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{6173377B981F5766}" {
+     AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
+      Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{6173377B981F5766}" {
+     AttachmentSlot InventoryStorageSlot "{6173377B887F84C1}" {
+      Prefab "{764E289FA2AC2820}Prefabs/Weapons/Attachments/Stock/Stock_L1A1/Stock_L1A1_plastic.et"
+     }
+    }
+    AttachmentSlotComponent "{64DB2EF1B3754609}" {
+     AttachmentSlot InventoryStorageSlot m203 {
+      PivotID "slot_barrel_bottom"
+      Offset 0 0.0369 -0.1429
+      Prefab "{852FB88E8AD446C8}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate "{C2C08518F551C205}Prefabs/Weapons/Magazines/Magazine_762x51_FAL_Commonwealth_20rnd_BattleMix.et"
+    }
+   }
+  }
+ }
+ coords 0 -0.012 0.01
+ angleY 0
+}

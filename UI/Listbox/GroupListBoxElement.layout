@@ -39,34 +39,26 @@ HorizontalLayoutWidgetClass {
     SizeLayoutWidgetClass "{630A25611F8F8635}" {
      Name "SymbolWidget"
      Slot FrameWidgetSlot "{630A25611F8F8419}" {
-      PositionX 142.188
-      OffsetLeft 142.188
+      PositionX 155
+      OffsetLeft 155
       PositionY 0.008
-      OffsetTop 0.008
+      OffsetTop 0
       SizeX 85.591
-      OffsetRight -227.779
+      OffsetRight -240.6
       SizeY 68.293
-      OffsetBottom -68.301
+      OffsetBottom -68.3
      }
      AllowWidthOverride 1
      WidthOverride 56
      AllowHeightOverride 1
      HeightOverride 56
      {
-      OverlayWidgetClass "{630A25611F8F862B}" {
-       Name "SymbolOverlay"
-       Slot AlignableSlot "{5DB880D509AA11C2}" {
+      ImageWidgetClass "{654E4E74662EF9C5}" {
+       Name "SymbolImage"
+       Slot AlignableSlot "{654E4E74662EF63A}" {
         HorizontalAlign 3
         VerticalAlign 3
-       }
-       components {
-        SCR_MilitarySymbolUIComponent "{5DB880D56B45FA22}" {
-         m_MilitarySymbol SCR_MilitarySymbol "{5DB880D56FF1176A}" {
-          m_Identity OPFOR
-          m_Icons INFANTRY
-          m_Amplifier SQUAD
-         }
-        }
+        Padding 3.25 8.5 3.25 15
        }
       }
      }
@@ -105,6 +97,7 @@ HorizontalLayoutWidgetClass {
     ImageWidgetClass "{62F200F1C4383166}" {
      Name "LockImage"
      Slot FrameWidgetSlot "{5EA8C93CB43A445D}" {
+      Anchor 0 0 0 0
       PositionX 0.899
       OffsetLeft 0.899
       PositionY 13.365

@@ -1,0 +1,598 @@
+Vehicle S1203_transport_red1 : "{11A28C90DB40318D}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_red.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3126.412 303.355 7951.863
+ angleY -52.971
+}
+GenericEntity : "{1E9ECC41D168521B}Prefabs/Structures/Wreck/lada.et" {
+ coords 3097.849 308.903 7828.844
+ angleX 3.652
+ angleY -96.232
+ angleZ 0.5
+}
+$grp GenericEntity : "{21D83950DF36F250}Prefabs/Props/Military/Sandbags/Sandbag_01_long_burlap.et" {
+ {
+  coords 2928.515 326.573 7880.442
+  angleY -42.171
+ }
+ {
+  coords 2931.397 322.173 7875.479
+  angleY -42.185
+ }
+ {
+  coords 2933.673 322.173 7877.557
+  angleY -42.185
+ }
+ {
+  coords 2936.019 322.173 7879.681
+  angleY -42.185
+ }
+ {
+  coords 2935.764 322.173 7882.137
+  angleY 47.815
+ }
+}
+Vehicle UAZ469_uncovered_CIV_brown1 : "{270F23D61238ABC7}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_brown.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3029.74 318.744 7757.101
+ angleY -45.833
+}
+Vehicle S105_lightgreen1 : "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3094.269 306.063 7902.528
+}
+GenericEntity : "{3872E0C19D19A045}Prefabs/Structures/Wreck/pickup.et" {
+ coords 3199.832 299.002 8124.539
+ angleX -0.747
+ angleY 56.586
+ angleZ 0.493
+}
+GenericEntity : "{3BAF6AA8C20D924D}Prefabs/Compositions/Misc/SubCompositions/Barricade_Logs_01.et" {
+ coords 3051.282 303.142 8000.231
+ angleY -71.05
+}
+Vehicle S1203_transport_yellow1 : "{4C79EB5FADB89B7A}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_yellow.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3055.124 314.572 7785.376
+ angleY -86.364
+}
+GenericEntity : "{57FB5E487EC91D63}Prefabs/Compositions/Misc/SubCompositions/Barricade_Logs_02.et" {
+ coords 3036.928 303.751 7974.882
+ angleY 153.465
+}
+Vehicle UAZ469_uncovered_CIV_red1 : "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_red.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3114.41 301.156 8109.292
+ angleY -49.091
+}
+SCR_PowerPole : "{5BC1688321A0EF60}Prefabs/Structures/Infrastructure/Power/TransformerStation110kV_E_01/TransformerStation110kV_E_01_double.et" {
+ components {
+  SCR_MapDescriptorComponent "{64E9018305D2EC5F}" {
+   MainType Transformer
+  }
+ }
+ coords 2957.517 315.518 7903.573
+ angleY 41.959
+}
+GenericEntity : "{62EA4C95DE960369}PrefabsEditable/Auto/Compositions/Misc/SubCompositions/E_Sandbag_Barricade_USSR_01.et" {
+ coords 3048.447 303.359 7994.478
+ angleY -56.64
+}
+Vehicle S105_white1 : "{63880E311299A016}Prefabs/Vehicles/Wheeled/S105/S105_white.et" {
+ coords 3008.007 310.594 7916.984
+}
+SCR_DestructibleBuildingEntity : "{6AD4788522334B53}Prefabs/Structures/Infrastructure/Power/TransformerStation_E_02/TransformerStation_E_02.et" {
+ components {
+  SCR_MapDescriptorComponent "{56088BA0F21E9623}" {
+   Enabled 0
+   VisibleOnMap 0
+   MainType "Icon (generic)"
+  }
+ }
+ coords 2929.446 0.797 7882.092
+ angleY 47.84
+}
+GenericEntity : "{7030822F7A54F479}Prefabs/Props/Crates/CrateWooden_01_base.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{64EAE12B7AC6AEFF}" {
+   m_fBaseHealth 200
+   m_DestroySpawnObjects {
+    SCR_DebrisSpawnable "{64EAE12B87B39D69}" {
+     m_ModelPrefabs {
+      "{40465487BEE12448}Assets/Props/Crates/CrateWooden_01/Dst/CrateWooden_01_dst_03.xob" "{A9957FC73122406B}Assets/Props/Crates/CrateWooden_01/Dst/CrateWooden_01_dst_06.xob" "{374C3C0F4A43CB38}Assets/Props/Crates/CrateWooden_01/Dst/CrateWooden_01_dst_02.xob"
+     }
+    }
+   }
+  }
+  RplComponent "{64EAE12B77CA34B6}" {
+  }
+ }
+ coords 3081.719 304.627 7985.786
+ angleY 95.661
+}
+$grp StaticModelEntity : "{70D4AB7B8164BB3A}Prefabs/Structures/BuildingParts/Doors/DoorSet_MetalGate_01_Short_S.et" {
+ {
+  coords 2928.246 -0.26 7889.941
+  angleY -133.265
+  scale 1.505
+ }
+ {
+  coords 2942.302 0.951 7879.535
+  angleY 136.735
+  scale 1.324
+ }
+}
+GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
+ coords 2926.675 326.573 7886.469
+ angleY -81.87
+}
+GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck.et" {
+ coords 3093.795 303.373 8001.823
+ angleY -35.16
+}
+Vehicle S105_red1 : "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3002.224 310.347 7926.525
+ angleY -131.401
+}
+GenericEntity : "{8FB2845D48F4E02A}Prefabs/Props/Furniture/TableOld_01/TableOld_01_white.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   Enabled 1
+  }
+ }
+ coords 3070.965 304.401 7976.676
+ angleX 82.547
+ angleY -39.19
+ angleZ -27.368
+}
+Vehicle UAZ469_uncovered_CIV_blue1 : "{9B3A89DD33FF0483}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_blue.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3170.55 302.923 8029.712
+ angleY -74.779
+}
+Vehicle S105_darkblue1 : "{9C3269FB43F989A3}Prefabs/Vehicles/Wheeled/S105/S105_darkblue.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3110.908 303.732 8027.613
+ angleY -61.677
+}
+GenericEntity : "{A319C11D446D88B3}Prefabs/Props/Furniture/Dresser_01.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   Enabled 1
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+  }
+ }
+ coords 3068.622 304.947 7975.762
+ angleX -0.89
+ angleY 0.069
+ angleZ -179.666
+}
+$grp SCR_DestructibleEntity : "{A67C1F685AA18F67}Prefabs/Structures/Walls/Net/NetFence_04/NetFence_04_4m.et" {
+ {
+  coords 2925.931 0.01 7892.373
+  angleX 0.02
+  angleY -46.566
+  angleZ 0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2929.75 0.7 7896.568
+  angleX 0.02
+  angleY -46.566
+  angleZ 0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2933.59 0.973 7900.757
+  angleX 0.02
+  angleY -46.566
+  angleZ 0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2937.408 1.21 7904.952
+  angleX 0.02
+  angleY -46.566
+  angleZ 0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2945.092 1.578 7913.166
+  angleX -0.132
+  angleY -1.566
+  angleZ 0.161
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2941.274 1.33 7908.969
+  angleX 0.02
+  angleY -46.566
+  angleZ 0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2950.721 1.751 7913.309
+  angleX -0.207
+  angleY 43.434
+  angleZ 0.02
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2963.122 1.718 7901.785
+  angleX -0.207
+  angleY 43.434
+  angleZ 0.02
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2959.105 1.925 7905.649
+  angleX -0.207
+  angleY 43.434
+  angleZ 0.02
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2954.91 1.83 7909.468
+  angleX -0.207
+  angleY 43.434
+  angleZ 0.02
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2967.146 1.65 7897.944
+  angleX -0.161
+  angleY 88.434
+  angleZ -0.132
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2967.204 1.396 7892.366
+  angleX -0.02
+  angleY 133.434
+  angleZ -0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2955.681 0.866 7879.965
+  angleX -0.02
+  angleY 133.434
+  angleZ -0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2959.545 1.035 7883.981
+  angleX -0.02
+  angleY 133.434
+  angleZ -0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2963.364 1.177 7888.176
+  angleX -0.02
+  angleY 133.434
+  angleZ -0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2951.806 0.777 7875.951
+  angleX 0.132
+  angleY 178.434
+  angleZ -0.161
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2946.275 0.654 7875.814
+  angleX 0.207
+  angleY -136.566
+  angleZ -0.02
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2940.168 0.364 7877.518
+  angleX -0.02
+  angleY 133.434
+  angleZ -0.207
+  scale 1.4
+  placement none
+ }
+ {
+  coords 2936.406 -0.114 7873.472
+  angleX 0.169
+  angleY -166.566
+  angleZ -0.121
+  scale 1.4
+  placement none
+ }
+}
+Vehicle S105_yellow1 : "{A6B0D2923262E755}Prefabs/Vehicles/Wheeled/S105/S105_yellow.et" {
+ coords 2951.481 320.417 7771.873
+ angleY 160.125
+}
+Vehicle S1203_transport_brown1 : "{ACED839A6C5BE657}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_brown.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3117.084 303.041 8070.103
+ angleY 119.804
+}
+GenericEntity : "{B26712B1722C8A09}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Barricade_Logs_03.et" {
+ coords 3012.768 313.412 7849.403
+ angleY -148.019
+}
+GenericEntity : "{B3C3E866F3AFFA03}Prefabs/Structures/Military/Camps/Foundations/Foundation_TentUSSR_01.et" {
+ components {
+  MeshObject "{5111E74D5E891458}" {
+   Materials {
+    MaterialAssignClass "{64E90187408AA7BE}" {
+     SourceMaterial "Foundation_TentUSSR_01"
+     AssignedMaterial "{A923AAB1FAFCDE02}Assets/ME_Material/Concrete_african.emat"
+    }
+    MaterialAssignClass "{64E90187408AA79C}" {
+     SourceMaterial "Foundation_TentUSSR_01_MLOD"
+     AssignedMaterial "{CEDF241DE17A6B93}Assets/Props/Industrial/ConcretePanel_01/Data/ConcretePanel_01_V2_MLOD.emat"
+    }
+   }
+  }
+ }
+ coords 2949.948 315.64 7892.735
+ angleY -48.682
+ scale 4.505
+}
+Vehicle Ural4320_tanker_CIV_pohona1 : "{B3C8EC88E7782C78}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_CIV_pohona.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   MultiSlots {
+    MultiSlotConfiguration "{5A60D38EDB3709A9}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+     }
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{5E86A8C920185949}" {
+     SlotTemplate InventoryStorageSlot Jerrycan {
+     }
+    }
+    MultiSlotConfiguration "{5EB0D397ACA7A684}" {
+     SlotTemplate InventoryStorageSlot Jerrycan {
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 2920.2 315.917 7896.452
+ angleX 4.706
+ angleY -166.392
+ angleZ -7.99
+}
+$grp GenericEntity : "{B547CF929FCC6BB7}Prefabs/Props/Military/Sandbags/Sandbag_01_end_high_burlap.et" {
+ {
+  coords 2931.813 326.576 7882.411
+  angleX 0.606
+  angleY 51.153
+  angleZ 0.035
+ }
+ {
+  coords 2927.185 326.575 7887.438
+  angleX -0.608
+  angleY -134.077
+  angleZ 0.02
+ }
+ {
+  coords 2930.032 322.173 7875.203
+  angleY 50.17
+ }
+ {
+  coords 2934.188 322.173 7883.953
+  angleY 48.361
+ }
+}
+GenericEntity : "{BD74E024F375A541}Prefabs/Props/Furniture/Sofa_02/Sofa_02_green.et" {
+ coords 3084.138 304.397 7984.983
+ angleX -24.854
+ angleY 39.286
+ angleZ -178.706
+}
+$grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+ {
+  coords 2929.999 326.576 7884.418
+  angleX 0.608
+  angleY 48.155
+  angleZ 0.003
+ }
+ {
+  coords 2925.644 326.573 7884.19
+  angleY -41.773
+ }
+ {
+  coords 2926.066 326.573 7879.84
+  angleY 48.599
+ }
+ {
+  coords 2928.342 322.173 7877.127
+  angleY 49.157
+ }
+ {
+  coords 2928.134 322.173 7888.979
+  angleY -42.979
+ }
+ {
+  coords 2930.306 322.173 7888.237
+  angleY 48.652
+ }
+ {
+  coords 2932.415 322.177 7885.847
+  angleY 48.652
+ }
+ {
+  coords 3077.643 303.823 7987.383
+  angleY 29.499
+ }
+ {
+  coords 3074.947 303.747 7989.073
+  angleY 33.616
+ }
+}
+GameEntity : "{C9866DE5BF3DB72D}Prefabs/Props/Civilian/Ladders/IndustrialComplex02_Ladder_563.et" {
+ coords 2931.852 326.698 7880.343
+ angleY 137.474
+}
+GenericEntity : "{CB6D914A907F4378}Prefabs/Props/Furniture/WashingMachine_01.et" {
+ coords 3080.814 303.875 7985.919
+ angleY -35.046
+}
+$grp GenericEntity : "{CC5453CCC311603B}Prefabs/Props/Military/Sandbags/Sandbag_01_end_burlap.et" {
+ {
+  coords 2928.442 326.557 7886.154
+  angleY 49.721
+ }
+ {
+  coords 2925.132 327.682 7883.783
+  angleY 138.145
+ }
+ {
+  coords 2927.845 327.122 7879.848
+  angleY -42.489
+ }
+ {
+  coords 2927.636 323.396 7888.518
+  angleY -47.586
+ }
+ {
+  coords 2930.54 323.408 7888.011
+  angleY -130.748
+ }
+ {
+  coords 2931.672 323.443 7886.692
+  angleY 49.252
+ }
+}
+$grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+ {
+  coords 3015.167 313.343 7896.581
+  angleY -52.266
+  angleZ -90
+  scale 0.71
+ }
+ {
+  coords 3015.127 314.256 7896.644
+  angleY -52.266
+  angleZ -90
+  scale 0.71
+ }
+ {
+  coords 3015.102 315.145 7896.663
+  angleY -52.266
+  angleZ -90
+  scale 0.71
+ }
+}
+GenericEntity : "{CF9930D0DBC6DC22}Prefabs/Structures/Wreck/ikarus_b.et" {
+ coords 3084.719 303.917 7980.55
+ angleX 1.214
+ angleY -151.423
+ angleZ -0.358
+}
+$grp GenericEntity : "{F34E4A33FB471ECA}Prefabs/Structures/Wreck/tractor.et" {
+ {
+  coords 3207.288 300.678 8084.948
+  angleY 62.359
+ }
+ {
+  coords 3047.589 309.81 7887.867
+  angleX -4.457
+  angleY -0.209
+  angleZ 2.692
+ }
+}
+Vehicle Ural4320_transport_covered_CIV_JZD1 : "{FB219B49A448A8EA}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered_CIV_JZD.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   MultiSlots {
+    MultiSlotConfiguration "{5A60D38EDB3709A9}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+     }
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{5E86A8C920185949}" {
+     SlotTemplate InventoryStorageSlot Jerrycan {
+     }
+    }
+    MultiSlotConfiguration "{5EB0D397ACA7A684}" {
+     SlotTemplate InventoryStorageSlot Jerrycan {
+     }
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   Enabled 0
+  }
+ }
+ coords 3054.688 304.104 7964.132
+ angleY -61.08
+}
+GenericEntity : "{FEB4961C91993C22}Prefabs/Structures/Civilian/DogHouse_01.et" {
+ coords 2934.072 315.413 7886.09
+ angleY 23.216
+ scale 1.38
+}
+GenericEntity : "{FF8BD8E8A95DB3D2}Prefabs/Props/Furniture/Fridge_01.et" {
+ coords 3082.808 303.875 7985.227
+ angleX -1.001
+ angleY 7.278
+ angleZ -89.226
+}

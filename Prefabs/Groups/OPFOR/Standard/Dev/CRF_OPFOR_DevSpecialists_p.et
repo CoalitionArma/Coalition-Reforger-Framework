@@ -147,11 +147,14 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{1AD587B6F178F09A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_HAT_P.et" "{C8B3D585E66CCDF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AHAT_P.et" "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et" "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et" "{32681EB0A399591D}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_HMG_P.et" "{4100FF2BAF7A9D91}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AHMG_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et" "{3B1B437AE8CB9AA4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AA_P.et" "{7E18E3AD60914A62}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAA_P.et" "{C3569C12A6509E8A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Sniper_P.et" "{C7C9C22599C40225}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Spotter_P.et"
  }
- m_bIsPlayable 1
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 1
  m_aUnitPrefabColorTeams {
   "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None"
  }
+ m_bIsPlayable 1
 }

@@ -1,6 +1,14 @@
 GameEntity : "{27DABFBB719485AA}Prefabs/Characters/Uniforms/Pants_US_BDU_base.et" {
  ID "5104869D194C6243"
  components {
+  MeshObject "{5104869D194C6262}" {
+   Materials {
+    MaterialAssignClass "{64DF1411B731D407}" {
+     SourceMaterial "Pants_BDU_M81_tucked_item"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+   }
+  }
   SCR_UniversalInventoryStorageComponent "{5222CB01D5B9A306}" {
    Attributes SCR_ItemAttributeCollection "{5222CB01245CDF32}" {
     CustomAttributes {
@@ -17,4 +25,5 @@ GameEntity : "{27DABFBB719485AA}Prefabs/Characters/Uniforms/Pants_US_BDU_base.et
    DebugWornModel 1
   }
  }
+ Flags 0
 }

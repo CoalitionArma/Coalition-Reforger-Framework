@@ -1,4 +1,4 @@
-SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_BaseLoadout.et" {
+SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et" {
  ID "520EC961A090B1EE"
  components {
   SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
@@ -22,7 +22,7 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_
   CRF_PlayableCharacter "{62F200EA748008B9}" {
    m_sName "Pilot"
    m_bIsPlayable 1
-   m_bIsSpecialty 1
+   m_SlottingRole SPECIALTY
   }
   CharacterWeaponManagerComponent "{5C9CA676383262FD}" {
    DefaultWeaponIndex 0
@@ -33,11 +33,12 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD2}Prefabs/Characters/Factions/BLUFOR/US_
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "Pilot"
+    Icon "{A489F552FB7489C3}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Character_Custom.edds"
     IconSetName ""
-    m_Image "{0A1F947948102E69}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
+    m_Image "{11112420EEC8576C}Images/UI/Zeus GearScript Factions/OPFOR_NATO.edds"
     m_sFaction "OPFOR"
-    m_aAuthoredLabels {
-     70 2 51871
+    m_aAuthoredLabels + {
+     2 51871
     }
     m_aAutoLabels {
      122 46

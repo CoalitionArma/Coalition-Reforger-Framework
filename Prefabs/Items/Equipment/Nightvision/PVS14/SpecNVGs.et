@@ -22,6 +22,23 @@ GameEntity : "{64322D5D501B7D79}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PV
     m_Size SLOT_1x1
    }
   }
+  MeshObject "{5DB09136B1C985B5}" {
+   Materials {
+    MaterialAssignClass "{64E05D22C4A9BCA1}" {
+     SourceMaterial "L4G24"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{64E05D22C4A9BC87}" {
+     SourceMaterial "PVS14"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+    MaterialAssignClass "{64E05D22C4A9BC82}" {
+     SourceMaterial "WILCOX_ADAPTER"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
+    }
+   }
+   PixelSizeScale 0
+  }
   RHS_RhinoAttachmentComponent "{5D7765E30127E8D1}" {
    m_fAnimationLength 0
    m_sNVGGooglesHDRMatrial "{7961F4B9E065FBF5}Assets/Items/Equipment/NVG/pvs14/data/NVG_WhitePhosphor_HDR.emat"

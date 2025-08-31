@@ -1,0 +1,47 @@
+Vehicle : "{A042ACE5C2B13206}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{65990AF07E590BBE}" {
+     SourceMaterial "M923A1_Base"
+     AssignedMaterial "{7463EDCC42A45CFB}Assets/Vehicles/Wheeled/M923A1/Data/M923A1_Base_MERDC.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Repair_Name"
+    Description "#AR-EditableEntity_SupportStationSystem_Repair_Description"
+    m_Image "{C0CF176DD594C4A4}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_repair_MERDC.edds"
+    m_sFaction "BLUFOR"
+    m_aAuthoredLabels +{
+    }
+    m_aAutoLabels {
+     51870 122 54
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo RepairBox {
+     Prefab "{246C60FDE9B73D97}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_MERDC_repair_box.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo RepairDecal {
+     Prefab "{71629F0227331398}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_repair_decal.et"
+     InheritParentSkeleton 1
+     RegisterDamage 1
+    }
+   }
+  }
+ }
+}

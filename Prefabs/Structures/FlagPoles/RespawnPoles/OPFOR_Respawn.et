@@ -8,12 +8,13 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    Object "{C41BFB78E6FFFBCB}Assets/Structures/Military/Flags/FlagPole_01/FlagPole_01.xob"
   }
   RigidBody "{645911A160C1D2D2}" {
-   ResponseIndex "LargeDestructible"
+   SimState None
+   ResponseIndex "NoCollision"
    ModelGeometry 1
-   Static 1
   }
   SCR_DestructionMultiPhaseComponent "{51BACBF3C4A56479}" : "{76DA308CC9E2AB84}Prefabs/Props/Core/DestructionMultiPhase_Base.ct" {
-   m_fBaseHealth 1000
+   EnableDamage 0
+   m_fBaseHealth 100000
    m_DestroySpawnObjects {
     SCR_DebrisSpawnable "{645911A160C1D2DC}" {
      m_ModelPrefabs {
@@ -25,8 +26,39 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
    }
    m_eMaterialSoundType BREAK_METAL_POLE
   }
+  SCR_EditableSystemComponent "{648F3AE50F1F3B96}" {
+   m_EntityType SYSTEM
+   m_UIInfo SCR_EditableEntityUIInfo "{648F3AE53F8033C8}" {
+    Name "Opfor Spawn Point"
+    Icon "{302979C3EAF01D2E}UI/Textures/Editor/ContentBrowser/ContentBrowser_Trait_SpawnPoint.edds"
+    m_Image "{2F23E25348144FAE}UI/Textures/FieldManual/MPModes/Conflict/Tiles/respawn_UI.edds"
+    m_sFaction "OPFOR"
+    m_aAuthoredLabels {
+     7 51871
+    }
+    m_aAutoLabels {
+     7
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{6490426025A01C2B}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_vIconPos 0 0 0
+   m_bStatic 1
+   m_AccessKey 769
+   m_Flags 69
+  }
+  SCR_FactionAffiliationComponent "{6490426ED5F5FBAB}" {
+   "faction affiliation" "OPFOR"
+  }
   SCR_FlagComponent "{645911A160C1D2C7}" {
    m_sDefaultMaterial "{6E9FD76E21FF14D4}Prefabs/Structures/FlagPoles/Flags/OPFOR_Flag.emat"
+  }
+  SCR_HorizontalAlignComponent "{6490426EBA3A2988}" {
   }
   SlotManagerComponent "{645911A160C1D2C6}" {
    Slots {
@@ -36,6 +68,9 @@ GenericEntity : "{8364151EF33B3B33}Prefabs/Structures/Core/FlagPole_Base.et" {
      Prefab "{CCCC185722D6D6EC}Assets/Props/Fabric/Flags/Flag_1_2_White_Base.et"
     }
    }
+  }
+  RplComponent "{649042617FCFD793}" : "{B193E926C1935A4C}Prefabs/Editor/Components/Default_RplComponent.ct" {
+   Streamable Disabled
   }
  }
  coords 0 -1.175 0

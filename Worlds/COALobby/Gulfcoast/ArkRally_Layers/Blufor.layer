@@ -1,0 +1,702 @@
+$grp Vehicle : "{C2AB7F550FED8566}Prefabs/Vehicles/Wheeled/S105/S105_deathrally.et" {
+ S105_deathrally2 {
+  coords 13411.497 2.875 14135.295
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally3 {
+  coords 13408.867 2.876 14133.516
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally4 {
+  coords 13406.08 2.875 14132.065
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally5 {
+  coords 13403.466 2.875 14130.445
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.049 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally6 {
+  coords 13401.281 2.875 14128.941
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.516
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally7 {
+  coords 13398.759 2.874 14127.78
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally8 {
+  coords 13396.081 2.875 14125.772
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally9 {
+  coords 13393.428 2.875 14123.991
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.484 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally10 {
+  coords 13390.483 2.874 14122.33
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.243
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.517
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally11 {
+  coords 13398.397 2.875 14116.321
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.049 1.487 -0.243
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.48 0 0.516
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally12 {
+  coords 13395.453 2.874 14114.662
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.242
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.516
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally13 {
+  coords 13413.84 2.876 14125.848
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.492 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally14 {
+  coords 13411.051 2.875 14124.4
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.513
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally15 {
+  coords 13408.438 2.875 14122.777
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally16 {
+  coords 13406.251 2.875 14121.274
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.484 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally17 {
+  coords 13403.729 2.874 14120.112
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.247
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally18 {
+  coords 13401.052 2.875 14118.106
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.243
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally19 {
+  coords 13416.469 2.875 14127.628
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally20 {
+  coords 13419.611 2.875 14128.982
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.513
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally21 {
+  coords 13404.364 2.874 14108.785
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.047 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.484 0 0.516
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally22 {
+  coords 13401.418 2.873 14107.124
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.047 1.487 -0.243
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.484 0 0.517
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally23 {
+  coords 13419.805 2.875 14118.311
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.055 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.513
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally24 {
+  coords 13417.015 2.874 14116.861
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.243
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally25 {
+  coords 13414.402 2.874 14115.241
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.512
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally26 {
+  coords 13412.215 2.874 14113.737
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.055 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally27 {
+  coords 13409.693 2.873 14112.575
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally28 {
+  coords 13407.016 2.874 14110.567
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally29 {
+  coords 13422.435 2.874 14120.09
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.055 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.517
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally30 {
+  coords 13425.578 2.874 14121.445
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.243
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally31 {
+  coords 13409.14 2.875 14101.068
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.242
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.518
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally32 {
+  coords 13406.192 2.874 14099.409
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.047 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.484 0 0.512
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally33 {
+  coords 13424.58 2.876 14110.594
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.055 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.513
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally34 {
+  coords 13421.791 2.875 14109.146
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.513
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally35 {
+  coords 13419.178 2.875 14107.524
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally36 {
+  coords 13416.99 2.875 14106.021
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.484 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally37 {
+  coords 13414.468 2.874 14104.857
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.049 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally38 {
+  coords 13411.792 2.875 14102.853
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally39 {
+  coords 13427.208 2.875 14112.374
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally40 {
+  coords 13430.354 2.875 14113.729
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.055 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally41 {
+  coords 13413.487 2.875 14092.677
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.516
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally42 {
+  coords 13410.542 2.874 14091.016
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.049 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.486 0 0.516
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally43 {
+  coords 13428.927 2.876 14102.202
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.055 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally44 {
+  coords 13426.139 2.875 14100.754
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally45 {
+  coords 13423.524 2.875 14099.133
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.513
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally46 {
+  coords 13421.339 2.875 14097.628
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.513
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally47 {
+  coords 13418.816 2.874 14096.467
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.246
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally48 {
+  coords 13416.14 2.875 14094.46
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.051 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally49 {
+  coords 13431.556 2.875 14103.98
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.245
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.516
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally50 {
+  coords 13434.701 2.875 14105.338
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.053 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.488 0 0.514
+    angleY 85.72
+   }
+  }
+ }
+ S105_deathrally1 {
+  coords 13414.643 2.875 14136.649
+  angleY -30.708
+  {
+   Turret {
+    ID "624D37EA5EC7CA63"
+    coords -0.055 1.487 -0.244
+   }
+   SCR_AIGroup : "{469E163DC55AE9A4}Prefabs/Groups/Special/Rally/CRF_BLUFOR_RallyTeam_p.et" {
+    coords -1.49 0 0.515
+    angleY 85.72
+   }
+  }
+ }
+}

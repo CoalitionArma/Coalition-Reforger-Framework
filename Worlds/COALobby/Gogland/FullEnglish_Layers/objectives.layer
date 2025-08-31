@@ -1,0 +1,8 @@
+$grp BaseGameTriggerEntity {
+ aSiteTrigger {
+  coords 6829.507 138.842 2515.548
+ }
+ bSiteTrigger {
+  coords 6680.385 145.436 2766.689
+ }
+}

@@ -16,13 +16,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
    }
    m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{646806D1FD46A758}" {
    }
-   m_bLeaderOnly 0
-   m_fWeaponFiredReactionDistance 1000
-   m_eCombatMode RED
-   m_iSuppressDuration 35
-   m_fPerceptionSafe 3
-   m_fPerceptionVigilant 5
-   m_fAimAccuracyErrorModifier -2.5
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
@@ -128,12 +121,16 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{A08D03359AF24DBE}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_HMG_P.et" "{10359752619E5B7A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AHMG_P.et" "{A08D03359AF24DBE}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_HMG_P.et" "{10359752619E5B7A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AHMG_P.et"
  }
-
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 0
+ m_bIsPlayable 1
+ m_bDeleteIfNoPlayer 0
  m_aUnitPrefabColorTeams {
   "None" "Blue" "Blue" "Yellow" "Yellow"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None" "None"
  }
- m_bIsPlayable 1
+ m_FlagType MACHINEGUN
 }

@@ -1,0 +1,17 @@
+$grp GenericEntity : "{0B31DF40DF62F895}Prefabs/Structures/Infrastructure/Naval/Breakwater/BreakwaterStone_01_stack_wall_half.et" {
+ {
+  coords 2163.099 -82.309 3061.25
+  angleY -55.674
+  scale 50
+ }
+ {
+  coords 1384.369 -54.81 2032.063
+  angleY -55.674
+  scale 50
+ }
+ {
+  coords 866.728 -27.056 1679.875
+  angleY -9.068
+  scale 50
+ }
+}

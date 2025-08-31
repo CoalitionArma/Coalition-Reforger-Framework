@@ -1,0 +1,67 @@
+Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M923A1_Repair_Name"
+    Description "#AR-EditableEntity_SupportStationSystem_Repair_Description"
+    Icon "{B2F6F389EB78D030}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Repair_Truck.edds"
+    IconSetName ""
+    m_Image "{51E748C34660D11E}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_repair.edds"
+    m_sFaction "BLUFOR"
+    m_aAuthoredLabels + {
+     39 280 210 291
+    }
+    m_aAutoLabels {
+     51870 122 54
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 175
+     }
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C580F1DA28BB}" {
+   MaxCumulativeVolume 100000
+   MultiSlots {
+    MultiSlotConfiguration "{5A60CECA66163838}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+     }
+    }
+    MultiSlotConfiguration "{65990AF074CEB540}" {
+     SlotTemplate InventoryStorageSlot RepairKit {
+      Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+     }
+     NumSlots 4
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo RepairBox {
+     MergePhysics 1
+     Prefab "{8C4E40B100F010CF}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_repair_box.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo RepairDecal {
+     Prefab "{71629F0227331398}Prefabs/Vehicles/Wheeled/M923A1/VehParts/M923A1_repair_decal.et"
+     InheritParentSkeleton 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo Arsenal {
+     Prefab "{FC2D5D9BB8DE3EA6}Prefabs/Vehicles/Core/VirtualSlots/Repair_VirtualArsenalSlot.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+  }
+ }
+}

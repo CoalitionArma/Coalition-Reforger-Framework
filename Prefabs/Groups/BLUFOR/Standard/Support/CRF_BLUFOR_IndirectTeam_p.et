@@ -13,13 +13,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
    }
    m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{646806D1FD46A758}" {
    }
-   m_bLeaderOnly 0
-   m_fWeaponFiredReactionDistance 1000
-   m_eCombatMode RED
-   m_iSuppressDuration 35
-   m_fPerceptionSafe 3
-   m_fPerceptionVigilant 5
-   m_fAimAccuracyErrorModifier -2.5
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
@@ -125,12 +118,16 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{DDFC9128CBEF1AAB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLead_P.et" "{E6875FC6CEED7B4B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectGunner_P.et" "{4ACCBC7F35D46EF7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLoader_P.et" "{E6875FC6CEED7B4B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectGunner_P.et" "{4ACCBC7F35D46EF7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLoader_P.et"
  }
-
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 0
+ m_bIsPlayable 1
+ m_bDeleteIfNoPlayer 0
  m_aUnitPrefabColorTeams {
   "None" "Yellow" "Yellow" "Blue" "Blue"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None" "None"
  }
- m_bIsPlayable 1
+ m_FlagType MORTAR
 }

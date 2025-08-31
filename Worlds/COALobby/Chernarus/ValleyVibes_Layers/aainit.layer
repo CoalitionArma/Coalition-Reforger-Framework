@@ -1,0 +1,188 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{65452A409C068707}" {
+     NavmeshFile "{B9AB71A30A026FD4}worlds/Navmeshes/Chernarus_Soldier.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{AA3B5DB2E08D2ABE}worlds/Navmeshes/Chernarus_BTR.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{7ABCCBD9DD9D2051}worlds/Navmeshes/Chernarus_Lowres.nmn"
+    }
+   }
+  }
+ }
+ coords 7681.69 345.546 7701.09
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Rainy"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 16
+   m_iStartingMinutes 45
+  }
+ }
+ coords 7670.057 345.288 7714.851
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "BLU invasion forces coming from the Southern coast of Chernarus have been tasked with pushing through valleys into inner Chernarus."\
+   ""\
+   "Local guards units have scrambled to set up hasty defenses with limited weaponry."\
+   ""\
+   "BLUFOR Composition: Motorized Infantry"\
+   "BLUFOR Assets: HMG Trucks"\
+   ""\
+   "OPFOR Composition: Light Infantry"\
+   "OPFOR Assets: N/A"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Secure the two objective areas while pushing north"
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the two objectives from BLU incursion"
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Radios are disabled for GI. Only leaders have radios."
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{3FCA1378C33401ED}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSArmyMC.conf"
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EC17EA82C390260C}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSMSV.conf"
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager "657D1298174DA211" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{654534F91AA45C97}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{654534F9197ACFEC}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{654534F91958099D}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{654534F9193A9AD5}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{654534F91170AA7F}" {
+        m_sCallsign "GT1"
+       }
+       SCR_CallsignInfo "{654534F9115EBF38}" {
+        m_sCallsign "GT2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{654534F900694C63}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{654534F90619C393}" {
+        m_sCallsign "RECON"
+       }
+       SCR_CallsignInfo "{654534F8D7E3B1D4}" {
+        m_sCallsign "HMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_FactionDominanceTriggerEntity {
+ obj1trig {
+  coords 4450.153 164.996 3938.128
+  userScript "	// code here"\
+  "	bool messageSent = false;"
+  TriggerShapeType Sphere
+  SphereRadius 50
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 3
+  OnActivate ""\
+  "		if (!messageSent)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR has secured OBJ A\", 10);"\
+  "			messageSent = true;"\
+  "		}"\
+  "	"
+  RunDefaultQueryFirst 0
+  m_sOwnerFactionKey "OPFOR"
+  m_fFriendlyRatioLimit 0
+ }
+ obj1trig2 {
+  coords 4406.439 232.093 4619.75
+  userScript "	// code here"\
+  "	bool messageSent = false;"
+  TriggerShapeType Sphere
+  SphereRadius 50
+  DrawShape 1
+  TriggerActivationType "Every query"
+  PeriodicQueries 1
+  UpdatePeriod 3
+  OnActivate ""\
+  "		if (!messageSent)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"BLUFOR has secured OBJ B\", 10);"\
+  "			messageSent = true;"\
+  "		}"\
+  "			"\
+  "	"
+  RunDefaultQueryFirst 0
+  m_sOwnerFactionKey "OPFOR"
+  m_fFriendlyRatioLimit 0
+ }
+}

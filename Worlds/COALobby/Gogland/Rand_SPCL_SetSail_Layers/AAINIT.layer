@@ -1,0 +1,14 @@
+SCR_AIWorld : "{656B40C99B8724C5}Prefabs/AI/SCR_AIWorld_Gogland.et" {
+ coords 1048.114 8.518 9124.219
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 1060.394 31.429 9128.913
+ m_iTimeLimitMinutes 10
+ m_bSafestartInstantlyEnabled 0
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{1B9BE1A6817D640B}Configs/Gearscripts/Custom/RandAlThor/Special/TrailerPark/TrailerPark_BLUFOR.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{FE188E30031375E1}Configs/Gearscripts/Custom/RandAlThor/Special/TrailerPark/TrailerPark_OPFOR.conf"
+ }
+}

@@ -146,11 +146,14 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{4BA86C8D93BC2C52}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_HAT_P.et" "{4B9075E6F1D797AA}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AHAT_P.et" "{DE214A5BDAB04E69}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_MAT_P.et" "{DE195330B8DBF591}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AMAT_P.et" "{6315F58BC15D85D5}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_HMG_P.et" "{632DECE0A3363E2D}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AHMG_P.et" "{F69CD35D8851E7EE}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_MMG_P.et" "{F6A4CA36EA3A5C16}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AMMG_P.et" "{0D2CABBD4145EA77}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AA_P.et" "{2F650896025596AA}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAA_P.et" "{6B2ECC0633190E43}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Sniper_P.et" "{0C3A7A5513878002}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Spotter_P.et"
  }
- m_bIsPlayable 1
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 1
  m_aUnitPrefabColorTeams {
   "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "None"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None" "None" "None" "None" "None" "None" "None" "NoneNone" "None"
  }
+ m_bIsPlayable 1
 }

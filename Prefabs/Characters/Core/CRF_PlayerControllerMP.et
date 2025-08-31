@@ -8,6 +8,9 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
   }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
    InfoDisplays {
+    CRF_SafeStartDisplay "{61303B9E05796EC7}" {
+     m_eLayer OVERLAY
+    }
     SCR_ScenarioFrameworkTriggerCountdownDisplay "{61B2C5720492B2C9}" {
      m_LayoutPath "{47864BB47AB0B1F4}UI/layouts/HUD/CampaignMP/CampaignMainHUD.layout"
      m_eLayer ALWAYS_TOP

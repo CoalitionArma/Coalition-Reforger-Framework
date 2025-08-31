@@ -1,0 +1,116 @@
+$grp GenericEntity : "{745097E446C05528}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_Right_US_02.et" {
+ {
+  coords 3580.068 150.706 5842.972
+  angleY 163.158
+ }
+ {
+  coords 3573.618 150.955 5847.299
+  angleY -13.038
+ }
+}
+$grp GenericEntity : "{A700AD9077074654}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Large_Soviet.et" {
+ {
+  coords 6693.346 159.724 5138.869
+  angleY 142.545
+  {
+   $grp GenericEntity : "{745097E446C05528}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_Right_US_02.et" {
+    {
+     coords -4.54 -0.701 7.074
+     angleY -51.59
+    }
+    {
+     coords 5.283 -0.722 9.489
+     angleY 63.994
+    }
+   }
+   GenericEntity : "{ABD3BE7EAE6C877D}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Light_US_01.et" {
+    coords -1.312 -0.759 9.414
+    angleY 154.33
+   }
+  }
+ }
+ {
+  coords 6436.356 163.18 4427.814
+  angleY 142.545
+  {
+   $grp GenericEntity : "{745097E446C05528}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_Right_US_02.et" {
+    {
+     coords -4.54 -0.701 7.074
+     angleY -51.59
+    }
+    {
+     coords 5.283 -0.722 9.489
+     angleY 63.994
+    }
+   }
+   GenericEntity : "{ABD3BE7EAE6C877D}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Light_US_01.et" {
+    coords -1.312 -0.759 9.414
+    angleY 154.33
+   }
+  }
+ }
+ {
+  coords 6016.989 151.01 5638.375
+  angleY 142.545
+  {
+   $grp GenericEntity : "{745097E446C05528}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_Right_US_02.et" {
+    {
+     coords -4.539 1.197 7.075
+     angleY -51.59
+    }
+    {
+     coords 5.283 1.176 9.49
+     angleY 63.994
+    }
+   }
+   GenericEntity : "{ABD3BE7EAE6C877D}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Light_US_01.et" {
+    coords -1.312 1.139 9.414
+    angleY 154.33
+   }
+  }
+ }
+ {
+  coords 5364.554 158.72 4734.711
+  angleY 179.326
+  {
+   $grp GenericEntity : "{745097E446C05528}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_Right_US_02.et" {
+    {
+     coords -4.539 1.197 7.075
+     angleY -51.59
+    }
+    {
+     coords 5.283 1.176 9.49
+     angleY 63.994
+    }
+   }
+   GenericEntity : "{ABD3BE7EAE6C877D}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Light_US_01.et" {
+    coords -1.312 1.139 9.414
+    angleY 154.33
+   }
+  }
+ }
+ {
+  coords 4177.6 137.848 5267.388
+  angleY -56.762
+  {
+   $grp GenericEntity : "{745097E446C05528}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Corner_Right_US_02.et" {
+    {
+     coords -4.539 1.197 7.075
+     angleY -51.59
+    }
+    {
+     coords 5.283 1.176 9.49
+     angleY 63.994
+    }
+   }
+   GenericEntity : "{ABD3BE7EAE6C877D}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Light_US_01.et" {
+    coords -1.312 1.139 9.414
+    angleY 154.33
+   }
+  }
+ }
+}
+GenericEntity : "{ABD3BE7EAE6C877D}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_Light_US_01.et" {
+ coords 3576.08 150.706 5842.889
+ angleY 9.078
+}

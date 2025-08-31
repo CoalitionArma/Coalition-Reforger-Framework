@@ -1,0 +1,18 @@
+GameEntity : "{2A1F25C19148E083}Prefabs/Characters/HeadGear/Helmet_6B47/Helmet_6B47_no_cover.et" {
+ ID "50D485E1435D6C72"
+ components {
+  ParametricMaterialInstanceComponent "{5854DCD8F168E46E}" {
+   ColorAlbedo 1 0.5217 0.2436 1
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     Prefab "{B0534A120633D08D}Prefabs/Items/Equipment/Nightvision/1PN138/NVG_1PN138.et"
+    }
+    RHS_LoadoutSlotInfo Headset {
+     Prefab "{F8554F236521F974}Prefabs/Characters/HeadGear/Headphones_6M2/headphones_6m2.et"
+    }
+   }
+  }
+ }
+}

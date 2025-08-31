@@ -1,0 +1,8 @@
+CRF_SatchelEntity : "{1246F0A3DE2607AD}Prefabs/Weapons/Explosives/Explosive_Satchels/Throwable/Throwable_Satchel_Base.et" {
+ ID "1F80A73AAE197BBE"
+ components {
+  MeshObject "{51EC93F29BA5F234}" {
+   Object "{403E5D649CBD5153}Assets/Items/Equipment/Accessories/Pouch_Soviet_45rnd_RPK74/Pouch_Soviet_45rnd_RPK74_item.xob"
+  }
+ }
+}

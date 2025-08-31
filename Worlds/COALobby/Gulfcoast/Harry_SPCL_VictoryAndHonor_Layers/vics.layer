@@ -1,0 +1,51 @@
+$grp SCR_BaseTriggerEntity {
+ DelMareObj {
+  coords 1874.176 6.337 5229.898
+  userScript "    bool m_essageSent = false;"\
+  "    IEntity m_eHvtEntity;"
+  TriggerShapeType Sphere
+  SphereRadius 400
+  DrawShape 1
+  PeriodicQueries 1
+  UpdatePeriod 30
+  OnQueryFinished ""\
+  "		super.OnQueryFinished(bIsEmpty);"\
+  "		"\
+  "		CRF_HighValueTargetGameModeComponent hvtGameMode = "\
+  "			CRF_HighValueTargetGameModeComponent.Cast(GetGame().GetGameMode().FindComponent(CRF_HighValueTargetGameModeComponent));"\
+  "		"\
+  "		m_eHvtEntity = hvtGameMode.m_eHvtEntity;"\
+  "	"\
+  "		if (m_eHvtEntity) {"\
+  "			array<IEntity> entitiesInside = new array<IEntity>();"\
+  "			this.GetEntitiesInside(entitiesInside);"\
+  "	"\
+  "			foreach (IEntity entity : entitiesInside) {"\
+  "				if (entity == m_eHvtEntity && !m_essageSent) {"\
+  "					SCR_PopUpNotification.GetInstance().PopupMsg(\"The tank has made it to the objective\", 10);"\
+  "					m_essageSent = true;"\
+  "				}"\
+  "			}"\
+  "		}"\
+  "	"
+ }
+ transponder {
+  coords 5128.353 5.271 2499.261
+  userScript "    void safeStartCheck() {"\
+  "        CRF_GamemodeComponent safestart = CRF_GamemodeComponent.GetInstance();"\
+  "        "\
+  "        if (safestart.GetSafestartStatus() || "\
+  "            CRF_Gamemode.GetInstance().m_GamemodeState != CRF_GamemodeState.GAME) {"\
+  "            GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);"\
+  "            return;"\
+  "        } else {"\
+  "            SCR_PopUpNotification.GetInstance().PopupMsg("\
+  "                \"Bring the tank to DelMare or ambush it on route.\", 10);"\
+  "        }"\
+  "    }"
+  EOnInit ""\
+  "        super.EOnInit(owner);"\
+  "        GetGame().GetCallqueue().CallLater(safeStartCheck, 30000, false);"\
+  "	"
+ }
+}

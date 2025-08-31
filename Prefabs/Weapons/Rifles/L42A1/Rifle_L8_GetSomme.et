@@ -1,0 +1,140 @@
+GenericEntity : "{6702F05F5B26CDCF}Prefabs/Weapons/Rifles/L42A1/Rifle_Enfield_base.et" {
+ ID "5260C45AAAA407F4"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{223757E0C16E7659}Assets/Weapons/Rifles/L42A1/L8_Game_02.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#BF-Weapon_L8_Name"
+     Description "#BF-Weapon_L8_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 3.67
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{6156CB66A3B97AEB}" {
+     Enabled 0
+    }
+    AttachmentSlotComponent "{6513765E0614BA14}" {
+     AttachmentSlot InventoryStorageSlot InventoryStorageSlot {
+      PivotID "barrel_muzzle"
+      Offset 0 -0.03 0
+      ChildPivotID "snap_weapon"
+      Prefab "{F4B9ADFE20D0D6B8}Prefabs/Weapons/Attachments/Bayonets/Bayonet_VZ58/Bayonet_VZ58_v2.et"
+     }
+     AttachmentType AttachmentBayonetM9 "{65137659EA9D17AA}" {
+     }
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      Offset 0 0.029 -0.01
+     }
+     SightsRanges {
+      SightRangeInfo "{6156CB66A3B97ADB}" {
+       Range 0 250
+       WeaponPosition PointInfo "{6513765FD12486DC}" {
+        Offset 0 -0.0034 0
+        Angles 0.155 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B97AD9}" {
+       Range 0.3 200
+       WeaponPosition PointInfo "{6513765FD12486E6}" {
+        Offset 0 -0.0031 0
+        Angles 0.13 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9BF37}" {
+       Range 0.364 300
+       WeaponPosition PointInfo "{6513765FD12486E8}" {
+        Offset 0 -0.0038 0
+        Angles 0.18 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9BF35}" {
+       Range 0.435 400
+       WeaponPosition PointInfo "{6513765FD12486EB}" {
+        Offset 0 -0.0046 0
+        Angles 0.24 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9BF3B}" {
+       Range 0.505 500
+       WeaponPosition PointInfo "{6513765FD12486EE}" {
+        Offset 0 -0.0054 0
+        Angles 0.3 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9A8D9}" {
+       Range 0.605 600
+       WeaponPosition PointInfo "{6513765FD124868D}" {
+        Offset 0 -0.0065 0
+        Angles 0.37 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9A8DF}" {
+       Range 0.712 700
+       WeaponPosition PointInfo "{6513765FD1248690}" {
+        Offset 0 -0.0077 0
+        Angles 0.46 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9EC8B}" {
+       Range 0.822 800
+       WeaponPosition PointInfo "{6513765FD1248691}" {
+        Offset 0 -0.0089 0
+        Angles 0.55 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9EC89}" {
+       Range 0.956 900
+       WeaponPosition PointInfo "{6513765FD1248693}" {
+        Offset 0 -0.0104 0
+        Angles 0.66 0 0
+       }
+      }
+      SightRangeInfo "{6513765FD1248694}" {
+       Range 1 1000
+       WeaponPosition PointInfo "{6513765FD1257D2C}" {
+        Offset 0 -0.0123 0
+        Angles 0.8 0 0
+       }
+      }
+     }
+     SightsFOVInfo SCR_FixedFOVInfo "{6513765B237B244A}" {
+      m_fFieldOfView 60
+     }
+     SightsPointFront PointInfo "{6156CB66A3B9EC94}" {
+      Offset 0 0.041 -0.048
+     }
+     SightsPointRear PointInfo "{6156CB66A3B9EC93}" {
+     }
+     ADSTime 0.6
+     CameraRecoilAmount 0.854
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#BF-Weapon_L8_Name"
+    Description "#BF-Weapon_L8_Description"
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{6513765906862B73}" {
+     UIInfo SCR_ActionContextUIInfo "{651376597D29F2A1}" {
+      Name "bayonet"
+     }
+     ContextName "bayonet"
+     Position PointInfo "{65137659591EFD4A}" {
+      PivotID "barrel_muzzle"
+     }
+    }
+   }
+  }
+ }
+}

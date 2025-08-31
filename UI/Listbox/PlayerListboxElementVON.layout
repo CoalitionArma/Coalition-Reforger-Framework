@@ -1,0 +1,81 @@
+ButtonWidgetClass {
+ Name "rootFrame"
+ Slot AlignableSlot "{62F2056BF4F1EC36}" {
+  HorizontalAlign 3
+ }
+ components {
+  CRF_ListBoxElementComponent "{62F200F0C4795E5F}" {
+  }
+ }
+ style blank
+ {
+  SizeLayoutWidgetClass "{647E4362EEC8DF05}" {
+   Name "SizeLayout"
+   Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+    HorizontalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 36
+   {
+    OverlayWidgetClass "{647E4362EEC8DF06}" {
+     Name "Overlay"
+     Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
+      HorizontalAlign 0
+      Padding 10 0 0 0
+     }
+     Clipping False
+     {
+      ImageWidgetClass "{647E4362EEC8DF07}" {
+       Name "Image0"
+       Slot OverlayWidgetSlot "{630A2578A5208A35}" {
+        HorizontalAlign 3
+       }
+       "Is Visible" 0
+       Color 0.044 0.044 0.044 1
+       Texture "{12B6C6BD1A72A47F}UI/Textures/Common/gradientTexture_Dither_up_512.edds"
+       Size 40 512
+       Mask "{099C73E0F66A5F28}UI/Textures/Common/gradientTexture_Dither_down_512.edds"
+       "Transition width" 1
+       Progress 0.52
+      }
+      PanelWidgetClass "{647E4362EEC8DF08}" {
+       Name "Border"
+       Slot OverlayWidgetSlot "{5548E6E7D859FCD2}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Is Visible" 0
+       Color 0.761 0.386 0.08 1
+       style outline_2px
+      }
+      FrameWidgetClass "{647E4362EEC8DF09}" {
+       Name "ButtonLayout"
+       Slot OverlayWidgetSlot "{62F200F27385E1FB}" {
+        HorizontalAlign 0
+       }
+       {
+        TextWidgetClass "{647E4362EEC8DF0E}" {
+         Name "Text"
+         Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
+          PositionX 0.619
+          OffsetLeft 0.619
+          PositionY 0
+          OffsetTop 0
+          SizeX 171.819
+          OffsetRight -172.438
+          SizeY 35.557
+          OffsetBottom -35.557
+         }
+         Text "Blufor Brief"
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 1
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

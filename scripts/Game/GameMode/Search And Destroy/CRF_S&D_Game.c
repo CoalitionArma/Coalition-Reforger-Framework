@@ -1,19 +1,22 @@
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_SearchAndDestroyGameModeComponentClass: SCR_BaseGameModeComponentClass
+class CRF_SearchAndDestroyGamemodeManagerClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
+class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 {
-	[Attribute("US", "auto", "The side assaulting the bomb sites")]
+	[Attribute("BLUFOR", "auto", "The side assaulting the bomb sites")]
 	FactionKey attackingSide;
 	
-	[Attribute("USSR", "auto", "The side deffending the bomb sites")]
+	[Attribute("OPFOR", "auto", "The side deffending the bomb sites")]
 	FactionKey defendingSide;
 	
 	[Attribute("{3E562E27A2B86F47}Prefabs/Structures/CRF_Bomb.et", "auto", "The object to spawn as a bomb")]
 	string bombSitePrefab;
+	
+	[Attribute("False", "auto", "Hide the Global Bomb Markers")]
+	bool hideMapMarkers;
 	
 	protected bool aSiteDestroyed, bSiteDestroyed = false;
 	protected int sitesDestroyed = 0;
@@ -81,14 +84,18 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
 		bSiteID = bSite.GetID();
 		
-		GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);
+		if (!hideMapMarkers)
+		{
+			GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);
+		}
+		
 	}
 	
 	
 	void CheckAddMarkers()
 	{
 		// Create markers on each bomb site
-		CRF_ClientComponent gameModePlayerComponent = CRF_ClientComponent.GetInstance();
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 		if (!gameModePlayerComponent) 
 			return;
 		
@@ -213,15 +220,15 @@ class CRF_SearchAndDestroyGameModeComponent: SCR_BaseGameModeComponent
 	{
 		IEntity destroyedBombSiteEntity = null;
 		
-		CRF_ClientComponent gameModePlayerComponent = CRF_ClientComponent.GetInstance();
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 		
 		if(m_sDestroyedBombSiteString == "SiteA") {
-			if (gameModePlayerComponent)
+			if (gameModePlayerComponent && !hideMapMarkers)
 				gameModePlayerComponent.RemoveScriptedMarker("aSiteTrigger", "0 0 0", 1, "Bomb Site A", "{21A2A457BD0E42C1}UI\Objectives\A.edds", 50, ARGB(255, 225, 225, 225));
 			
 			destroyedBombSiteEntity = aSite;
 		} else {
-			if (gameModePlayerComponent)
+			if (gameModePlayerComponent && !hideMapMarkers)
 				gameModePlayerComponent.RemoveScriptedMarker("bSiteTrigger", "0 0 0", 1, "Bomb Site B", "{7F4A8D140283CCCE}UI\Objectives\B.edds", 50, ARGB(255, 225, 225, 225));
 			
 			destroyedBombSiteEntity = bSite;

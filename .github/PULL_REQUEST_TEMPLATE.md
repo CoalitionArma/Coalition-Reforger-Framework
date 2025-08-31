@@ -6,27 +6,30 @@ Add the mission <mission name!> made by <author name!> to the repository.
 
 **Mission Creation Checklist:**
 - [ ] Mission File
+- [ ] Gearscripts Tested
 - [ ] Ingame Play Area Markers
 - [ ] Ingame Briefings to all players
-- [ ] Side-based briefings
-- [ ] Objective Entities
+- [ ] Side-based briefings  
 - [ ] Mission .conf file
 
+
 **Faction(s):**
-BLUFOR - Attacking/Defending/NA
-- [ ] US
-- [ ] UK
-- [ ] RHS_USAF 
-- [ ] CDF
 
-OPFOR - Attacking/Defending/NA
-- [ ] USSR
-- [ ] RHS_AFRF
+BLUFOR - (EX. US 80s) - Attacking/Defending/NA
+BLUFOR Comp: Armored/Infantry/Mechanized/Etc..
+BLUFOR Assets: 
 
-INDFOR - Attacking/Defending/NA
-- [ ] FIA
-- [ ] RHS_ION
-- [ ] TALIBAN
+OPFOR - (EX. USSR 80s) - Attacking/Defending/NA
+OPFOR Comp: Armored/Infantry/Mechanized/Etc..
+OPFOR Assets: 
+
+INDFOR - (EX. FIA) - Attacking/Defending/NA 
+INDFOR Comp: Armored/Infantry/Mechanized/Etc..
+INDFOR Assets:
+
+CIV - (EX. Civvies) - Attacking/Defending/NA 
+CIV Comp: Armored/Infantry/Mechanized/Etc..
+CIV Assets:
 
 **Objectives/Win Conditions:**
 

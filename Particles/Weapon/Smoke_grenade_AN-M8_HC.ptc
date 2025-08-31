@@ -1,5 +1,5 @@
 EffectDef {
- Version 1
+ Version 2
  Emitters {
   EmitterDef smoke_01 {
    ShapeType Point
@@ -14,14 +14,13 @@ EffectDef {
    LodMax 0
    Material "{B6B47613FF3B9485}Particles/_Materials/Gas/Smoke_heavy_white_sheet.emat"
    StretchMultiplier 0
-   SizeMultiplier 4
    SizeRND 3
    RotMultiplier 15
    RandomRotDir 1
    BillboardingType Full
    VelAngle 0
    RandomAngle 1
-   RandomUFlip 1
+   FlipU Random
    Velocity 0
    VelocityRND 0.2
    VelAffect 0.2
@@ -34,7 +33,6 @@ EffectDef {
    AnimFPS 25
    LifetimeByAnim 0
    RandomFrame 1
-   Lifetime 45
    LifetimeRND 0
    LifetimeVelFactor 1
    Color {
@@ -49,7 +47,7 @@ EffectDef {
    Size {
     0 0 1 0.644
    }
-   EmittingTime 120
+   EmittingTime 60
    Repeat 0
    ColorMast {
     0 1 1 1 0.431 1 1 1 1 1 1 1
@@ -74,8 +72,8 @@ EffectDef {
    ShapeType Sphere
    ShapeSize 1 1 1
    ConeAngle 360 0 360
-   ConeAngleMinDist 30
-   ConeAngleRndRange 30
+   ConeAngleMinDist 11.647
+   ConeAngleRndRange 19.059
    Occlusion 12
    MaxNum 100
    BirthRate 3
@@ -86,29 +84,27 @@ EffectDef {
    Material "{029D33C344E15DFB}Particles/_Materials/Gas/Smoke_loop_01.emat"
    StretchMultiplier 0
    StreakFullUV 0
-   SizeMultiplier 11
+   SizeMultiplier 20
    SizeRND 5
    RotMultiplier 20
    RandomRotDir 1
    BillboardingType Full
    VelAngle 0
    RandomAngle 1
-   RandomUFlip 1
+   FlipU Random
    Velocity 1
    VelocityRND 0.3
    VelAffect 0
    AirResistance 0.1
    AirResistanceRND 0.05
    WindInfluence 0.5
-   GravityMultiply -0.01
-   GravityMultiplyRND 0
    EnableCollisions 1
    NormalRestitution 0.2
    TagentialRestitution 1
    AnimOnce 0
    AnimFPS 60
    LifetimeByAnim 0
-   Lifetime 11
+   Lifetime 60
    LifetimeRND 4
    LifetimeVelFactor 0.15
    Color {
@@ -123,7 +119,7 @@ EffectDef {
    Size {
     0 0.148 1 1
    }
-   EmittingTime 120
+   EmittingTime 60
    Repeat 0
    ColorMast {
     0 1 1 1 0.431 1 1 1 1 1 1 1

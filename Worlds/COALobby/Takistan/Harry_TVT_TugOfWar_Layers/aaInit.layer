@@ -1,0 +1,139 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 6910.727 1045.81 12273.665
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_CompositionSlotManagerComponent "{65A0009C50A99113}" {
+  }
+ }
+ coords 6896.412 363.323 12267.836
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Blufor is conducting an operation in Nagara, and a company has been moved to the south of Rasman to support. They are to clear to the marked intersection south of Rasman, and hold it. "\
+   ""\
+   "BLUFOR Composition: Moto Inf"\
+   "BLUFOR Assets: 1 Minigun Humvee / Squad"\
+   ""\
+   "OPFOR Composition: Moto inf"\
+   "OPFOR Assets: Unknown"\
+   ""\
+   "Time:45"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Seize the marked intersection, destroy the Taliban weapons cache there, and hold it until the end of the mission."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Eliminate Blufor. Once Blufor destroy the weapons cache at the intersection,  Indfor will receive a respawn wave."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "The respawn wave is tied to the destruction of the cache"
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4B989C4FB6562899}Configs/Gearscripts/Standard/Modern/CRF_GS_RHSUSMC.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{3D8B4F2BE6E7A010}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents.conf"
+ }
+ m_iINDFORTickets -1
+ {
+  SCR_FactionManager "65A6315069857088" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{65A57B15BC9172D2}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{65A57B158326DF3E}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{65A57B1583685703}" {
+        m_sCallsign "Weapons-1"
+       }
+       SCR_CallsignInfo "{65A57B158385DA1D}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{65A57B15823CB70E}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{65A57B1582463807}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{65A57B1582806557}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{65A57B15817478DE}" {
+        m_sCallsign "Weapons-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{65A57B14BB538E87}" {
+        m_sCallsign "LAT Team"
+       }
+       SCR_CallsignInfo "{65A57B14BB9A1F63}" {
+        m_sCallsign "Vic-1"
+       }
+       SCR_CallsignInfo "{65A57B14BBDCDE29}" {
+        m_sCallsign "Vic-2"
+       }
+       SCR_CallsignInfo "{65A57B14BA1FC5DC}" {
+        m_sCallsign "Vic-3"
+       }
+       SCR_CallsignInfo "{65A8D25999D8F6D0}" {
+        m_sCallsign "Vic-4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{B17411929589C43C}Prefabs/MP/Campaign/Assets/CampaignHQRadioEast.et" {
+ coords 5649.132 101.916 9942.943
+ angleY 110.33
+}
+GenericEntity objCache : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ coords 5651.254 100.898 9942.53
+ destructor ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Blufor has siezed the intersection\", 10);"\
+ "		if (Replication.IsServer()) "\
+ "		{"\
+ "			CRF_RespawnManager rm = CRF_RespawnManager.GetInstance();"\
+ "			rm.RespawnSide(\"INDFOR\");"\
+ "		}"\
+ "	"
+}

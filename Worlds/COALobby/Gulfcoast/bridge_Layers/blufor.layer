@@ -1,0 +1,166 @@
+Vehicle Ural4320_engineer_OPFOR1 : "{1328D98FC897D948}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_engineer_OPFOR.et" {
+ coords 9843.944 7.063 7861.841
+}
+$grp Vehicle : "{3BC70CA2CF59B229}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_KPTVB_Woodland.et" {
+ BRDM2_KPTVB_Woodland1 {
+  coords 8252.706 55.596 8902.022
+  angleX -0.986
+  angleY -145.927
+  angleZ -1.099
+ }
+ BRDM2_KPTVB_Woodland2 {
+  coords 8249.142 55.749 8906.133
+  angleX -5.539
+  angleY -145.869
+  angleZ -0.735
+ }
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 8323.104 69.989 8974.227
+ angleX 2.139
+ angleY 0.134
+ angleZ 3.579
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords -5.307 0.005 -1.909
+   angleX -2.143
+   angleZ -3.576
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords -37.317 -16.844 -35.945
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords -2.668 -0.502 11.088
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 22.355 4.386 -21.932
+         {
+          SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+           coords -28.03 -4.512 34.312
+           {
+            SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+             coords 3.222 5.817 15.337
+             m_aUnitPrefabSlots {
+              "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et" "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et" "{244B3033D92FF7D0}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMAT_P.et"
+             }
+             {
+              SCR_AIGroup : "{E882CACEF106E15B}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_LogiTeam_p.et" {
+               coords 35.35 11.278 7.029
+               m_aUnitPrefabSlots {
+                "{48FB5BBC1A942F28}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiLead_P.et" "{EB5C0AB8268A5C43}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiRunner_P.et" "{EB5C0AB8268A5C43}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiRunner_P.et"
+               }
+               {
+                SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+                 coords 28.371 0.316 -15.511
+                 {
+                  SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+                   coords -3.984 -0.17 0.141
+                   {
+                    SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+                     coords -9.98 0.754 -7.002
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ452_ambulance1 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 8193.925 56.132 8914.328
+ angleY 55
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 8188.966 56.14 8922.416
+}
+GenericEntity : "{76153B97A551AADE}Prefabs/Props/Military/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Explosives_USSR.et" {
+ components {
+  SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+   m_eSupportedArsenalItemTypes EXPLOSIVES
+   m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{657D26B4533C886C}" {
+    m_aArsenalItems {
+     SCR_ArsenalItemStandalone "{657D26B45250E5D2}" {
+      m_eItemType EXPLOSIVES
+      m_ItemResourceName "{D6EF54367CECE1D9}Prefabs/Weapons/Explosives/Mine_TM62M/Mine_TM62M.et"
+     }
+    }
+   }
+   m_eArsenalSaveType FRIENDLY_AND_FACTION_ITEMS_ONLY
+  }
+  SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+   m_aContainers {
+    SCR_ResourceContainer "{657D26B4723FB15F}" {
+     m_fResourceValueCurrent 200
+     m_fResourceValueMax 200
+    }
+   }
+  }
+ }
+ coords 9846.844 7.062 7872.01
+}
+$grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
+ M923A1_transport_covered1 {
+  coords 8201.697 56.125 8934.798
+  angleY -158
+ }
+ M923A1_transport_covered2 {
+  coords 8196.647 56.043 8939.894
+  angleY -158
+ }
+ M923A1_transport_covered3 {
+  coords 8190.552 55.827 8945.768
+  angleY -158
+ }
+ M923A1_transport_covered4 {
+  coords 8185.496 55.522 8952.172
+  angleY -158
+ }
+ M923A1_transport_covered5 {
+  coords 8171.835 55.567 8939.151
+  angleY 69
+ }
+ M923A1_transport_covered6 {
+  coords 8180.048 55.24 8956.948
+  angleY -158
+ }
+ M923A1_transport_covered7 {
+  coords 8167.295 55.308 8944.285
+  angleY 75
+ }
+ M923A1_transport_covered8 {
+  coords 8209.854 56.15 8929.142
+  angleY -158
+ }
+ M923A1_transport_covered9 {
+  coords 8215.616 56.108 8922.223
+  angleY -158
+ }
+}
+Vehicle M923A1_Ammo1 : "{92264FF932676C14}Prefabs/Vehicles/Wheeled/M923A1/M923A1_Ammo.et" {
+ components {
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "BLUFOR"
+  }
+ }
+ coords 8201.549 56.084 8907.774
+ angleX -0.266
+ angleY 47.999
+ angleZ 0.24
+}
+GenericEntity : "{CDD0712FD6215F04}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ coords 8181.394 56.093 8921.469
+ angleY 48
+}

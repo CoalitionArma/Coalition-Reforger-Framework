@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4AB4E1E5A45408CC}Assets/Characters/HeadGear/Hat_Patrol_US_01/Data/Hat_Patrol_Afghan_PD.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}

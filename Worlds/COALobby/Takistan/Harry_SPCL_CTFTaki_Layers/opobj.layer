@@ -1,0 +1,46 @@
+ParticleEffectEntity {
+ coords 7815.365 256.34 11689.83
+ EffectPath "{8641BBEFF608341A}Particles/Weapon/Smoke_SuppliesMarker_Opfor.ptc"
+}
+SCR_BaseTriggerEntity opZone {
+ coords 7815.196 256.329 11689.537
+ userScript "	bool pmessageSent = false;"
+ TriggerShapeType Sphere
+ SphereRadius 20
+ DrawShape 1
+ TriggerActivationType "Every query"
+ PeriodicQueries 1
+ OnQueryFinished ""\
+ "		super.OnQueryFinished(bIsEmpty);"\
+ "		"\
+ "		IEntity bluFlag = GetGame().GetWorld().FindEntityByName(\"bluFlag\");"\
+ "		"\
+ "		if (bluFlag)"\
+ "		{"\
+ "			array<IEntity> entitiesInside = new array<IEntity>();"\
+ "			this.GetEntitiesInside(entitiesInside);"\
+ "			foreach (IEntity entity : entitiesInside)"\
+ " 	       {"\
+ "				if (entity.GetName() == \"bluFlag\" && !pmessageSent)"\
+ "				{"\
+ "					SCR_PopUpNotification.GetInstance().PopupMsg(\"Opfor has captured the enemy flag!\", 10);"\
+ "					IEntity bluHead;"\
+ "					"\
+ "					bluHead = GetGame().GetWorld().FindEntityByName(\"bluHead\");"\
+ "					EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "					spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "					"\
+ "					spawnParams.Transform[3] = bluHead.GetOrigin();		"\
+ "					GetGame().SpawnEntityPrefab(Resource.Load(\"{72339030F4FF96A1}Prefabs/Systems/Explosions/BombWarhead_Hugerer.et\"), GetGame().GetWorld(), spawnParams);"\
+ "					delete bluHead;"\
+ "					"\
+ "					pmessageSent = true;"\
+ "				"\
+ "				}"\
+ "			}"\
+ "		}"\
+ "	"
+}
+GenericEntity opFlag : "{0F748C5BB13E586E}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V2_Opfor_CTF.et" {
+ coords 7816.419 256.352 11689.429
+}

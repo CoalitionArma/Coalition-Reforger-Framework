@@ -1,10 +1,10 @@
 [ComponentEditorProps(category: "Game Mode Component", description: "")]
-class CRF_FrontlineGameModeComponentClass: SCR_BaseGameModeComponentClass
+class CRF_FrontlineGamemodeManagerClass: SCR_BaseGameModeComponentClass
 {
 	
 }
 
-class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
+class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 {
 	[Attribute("US", "auto", "The side designated as blufor, this faction will have control of the beginning half of the total zones at game start. \n\n In Example: If the total zones were [A, B, C, D, E] this faction would have control of [A, B] at game start", category: "Frontline Faction Settings")]
 	FactionKey m_BluforSide;
@@ -66,13 +66,20 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 
 	//------------------------------------------------------------------------------------------------
 
-	static CRF_FrontlineGameModeComponent GetInstance()
+	// Instance of this component (this method only works if you KNOW there will only ever be one instance of this component) 
+	protected static CRF_FrontlineGamemodeManager s_Instance;
+	
+	//------------------------------------------------------------------------------------------------
+	void CRF_FrontlineGamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_FrontlineGameModeComponent.Cast(gameMode.FindComponent(CRF_FrontlineGameModeComponent));
-		else
-			return null;
+		if (!s_Instance)
+			s_Instance = this;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	static CRF_FrontlineGamemodeManager GetInstance()
+	{
+		return s_Instance;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -101,7 +108,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	void CheckAddInitialMarkers()
 	{
 		// Create markers on each bomb site
-		CRF_ClientComponent gameModePlayerComponent = CRF_ClientComponent.GetInstance();
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
 		if (!gameModePlayerComponent) 
 			return;
 		
@@ -132,7 +139,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void StartGame()
 	{
-		if(CRF_GamemodeComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
+		if(CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning())
 			return;
 		
 		int zoneIndex = ((m_aZonesStatus.Count()-1)/2);
@@ -163,7 +170,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	protected void UpdateZones()
 	{
-		if(CRF_GamemodeComponent.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
+		if(CRF_SafestartManager.GetInstance().GetSafestartStatus() || !SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning() || !m_bGameStarted)
 			return;
 		
 		int zonesCapturedBlufor;
@@ -574,7 +581,7 @@ class CRF_FrontlineGameModeComponent: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateClients()
 	{
-		CRF_ClientComponent.GetInstance().UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
+		CRF_PlayerControllerManager.GetInstance().UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
 	}
 	
 	//------------------------------------------------------------------------------------------------

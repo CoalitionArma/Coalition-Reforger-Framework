@@ -1,0 +1,14 @@
+CanvasWidgetClass {
+ Name "rootCanvas"
+ Slot FrameWidgetSlot "{65885AA6A8352936}" {
+  Anchor 0 0 1 1
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX -1820
+  OffsetRight 1820
+  SizeY -1050
+  OffsetBottom 1050
+ }
+}

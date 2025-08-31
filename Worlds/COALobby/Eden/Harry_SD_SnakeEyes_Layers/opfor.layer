@@ -1,0 +1,57 @@
+SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_COY_p.et" {
+ coords 2726.144 75.639 6453.173
+ {
+  SCR_AIGroup Medic : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords -3.018 -0.289 7.377
+   {
+    $grp SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+     {
+      coords -3.042 -0.372 -7.212
+      {
+       $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+        {
+         coords -10.577 -1.166 0.53
+        }
+        {
+         coords -15.277 -1.694 0.53
+        }
+        {
+         coords -20.292 -2.222 0.53
+        }
+        {
+         coords -24.228 -2.68 0.53
+         {
+          SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+           coords 14.488 1.686 6.715
+          }
+         }
+        }
+       }
+      }
+     }
+     {
+      coords -7.811 -0.924 -7.494
+      {
+       $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+        {
+         coords -22.961 -2.486 0.812
+        }
+        {
+         coords -26.37 -2.854 0.812
+        }
+        {
+         coords -29.638 -3.211 0.812
+         {
+          SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+           coords 30.552 3.4 6.131
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

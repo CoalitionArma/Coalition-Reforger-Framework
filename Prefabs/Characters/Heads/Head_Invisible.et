@@ -4,57 +4,57 @@ GameEntity : "{6F0C6CF6F10B4148}Prefabs/Characters/Core/CharacterHead_Base.et" {
   MeshObject "{529C8934211B4893}" {
    Object "{558B6EC82FED813A}Assets/Characters/Heads/Head_Asian_02/Head_Asian_02.xob"
    Materials {
-    MaterialAssignClass "{633B2130770C3FA8}" {
+    MaterialAssignClass "{64DF141180A051F3}" {
      SourceMaterial "Eye"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3F8C}" {
+    MaterialAssignClass "{64DF141180A051D6}" {
      SourceMaterial "Eye_Occlusion"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FF0}" {
+    MaterialAssignClass "{64DF141180A051D0}" {
      SourceMaterial "Eye_Occlusion_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FF3}" {
+    MaterialAssignClass "{64DF141180A051DB}" {
      SourceMaterial "Eye_Water"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FF6}" {
+    MaterialAssignClass "{64DF141180A051C6}" {
      SourceMaterial "Eye_Water_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FFD}" {
+    MaterialAssignClass "{64DF141180A051CF}" {
      SourceMaterial "Eye_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FE0}" {
+    MaterialAssignClass "{64DF141180A051CA}" {
      SourceMaterial "Eyelashes"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FE3}" {
+    MaterialAssignClass "{64DF141180A06E36}" {
      SourceMaterial "Eyelashes_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FE7}" {
+    MaterialAssignClass "{64DF141180A06E31}" {
      SourceMaterial "Head_Asian_02"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FEA}" {
+    MaterialAssignClass "{64DF141180A06E3D}" {
      SourceMaterial "Head_Asian_02_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FEF}" {
+    MaterialAssignClass "{64DF141180A06E27}" {
      SourceMaterial "Neck"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FD2}" {
+    MaterialAssignClass "{64DF141180A06E22}" {
      SourceMaterial "Neck_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B2130770C3FD5}" {
+    MaterialAssignClass "{64DF141180A06E2E}" {
      SourceMaterial "default_black"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
    }
   }

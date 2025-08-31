@@ -40,6 +40,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  coords 7618.475 335.889 7675.532
  m_iTimeLimitMinutes 90
+ EnableAIInGameState 1
  m_bDeleteJIPSlots 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
@@ -189,7 +190,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 91.123
     scale 0.658
@@ -233,7 +234,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 89.905
     scale 0.658
@@ -277,7 +278,7 @@ $grp SCR_FactionControlTriggerEntity {
   m_iRatioMethod "More than"
   m_fFriendlyRatioLimit 0.9
   {
-   PS_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0 0 0
     angleY 90.693
     scale 0.658

@@ -1,0 +1,73 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 12185.355 43.338 9809.695
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 12185.426 37.535 9796.785
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "You race. You are a racist. If you're not first, you're last. Start at Coral Springs in the NE, finish at Orion airport."
+  }
+ }
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{01F5B5F6F4DA8408}Configs/Gearscripts/Custom/RandAlThor/Special/Rally/CRF_GS_RallyUS.conf"
+ }
+}
+SCR_BaseTriggerEntity Finish_Trigger {
+ coords 11684.076 0 8935.514
+ EOnInit ""\
+ "		if (Replication.IsServer())"\
+ "        {"\
+ "			m_GameMode = SCR_BaseGameMode.Cast(GetGame().GetGameMode());"\
+ "			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);"\
+ "        }"\
+ "	}"\
+ "	"\
+ "	protected SCR_BaseGameMode m_GameMode;"\
+ "	"\
+ "	override void OnActivate(IEntity ent)"\
+ "    {"\
+ "        // Probably lacking locality tbh"\
+ "        // Get player data"\
+ "        PlayerManager playerManager = GetGame().GetPlayerManager();"\
+ "        if (!playerManager)"\
+ "            return;"\
+ "        int entityPlayerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(ent);"\
+ "        string playerName = playerManager.GetPlayerName(entityPlayerID);"\
+ "        "\
+ "        // Notify player finished"\
+ "        SCR_PopUpNotification.GetInstance().PopupMsg(playerName + \" has finished the race!\", 5);"\
+ "        "\
+ "        // Send player to spec - vanilla"\
+ "        SCR_DamageManagerComponent damMan = SCR_DamageManagerComponent.Cast(ent.FindComponent(SCR_DamageManagerComponent));"\
+ "		//SCR_CharacterControllerComponent charComp = SCR_CharacterControllerComponent.Cast(ent.FindComponent(SCR_CharacterControllerComponent));"\
+ "		SCR_CharacterDamageManagerComponent ACEdamMan = SCR_CharacterDamageManagerComponent.Cast(ent.FindComponent(SCR_CharacterDamageManagerComponent));"\
+ "		if (damMan && ACEdamMan)"\
+ "		{"\
+ "			ACEdamMan.ACE_Medical_EnableSecondChance(false);"\
+ "			damMan.Kill(damMan.GetInstigator());"\
+ "		}	"\
+ "    }"\
+ "	"\
+ "	void WaitTillGameStart()"\
+ "    {"\
+ "        if (!m_GameMode.IsRunning()) "\
+ "        	return;"\
+ "        "\
+ "        GetGame().GetCallqueue().Remove(WaitTillGameStart);"\
+ "        SCR_PopUpNotification.GetInstance().PopupMsg(\"Welcome to COALITION Rally: Coast\", 10, \"Racists should all board their vehicles now.\");"\
+ "    "
+ TriggerShapeType Sphere
+ SphereRadius 90
+ BoxMins 10 10 10
+ BoxMaxs 10 10 10
+ DrawShape 1
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ PrefabsFilter {
+  PrefabFilter "{612A54C890CD1AE7}" {
+   Prefab "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base.et"
+   CheckPrefabHierarchy 1
+  }
+ }
+ RunDefaultQueryFirst 0
+}

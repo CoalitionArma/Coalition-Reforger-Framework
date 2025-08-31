@@ -1,4 +1,4 @@
-$grp PS_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+$grp CRF_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
  {
   coords 3940.723 141.265 6795.688
   angleY 0

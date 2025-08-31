@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{66DE6C1CDD479174}Configs/Gearscripts/Standard/GWOT/CRF_GS_MEInsurgents_CONTAINER.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

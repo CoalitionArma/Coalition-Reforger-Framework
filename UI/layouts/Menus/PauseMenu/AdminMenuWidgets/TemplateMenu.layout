@@ -1,0 +1,34 @@
+FrameWidgetClass {
+ Name "templateFrame"
+ {
+  FrameWidgetClass "{6548E8DD4661CD75}" {
+   Name "MenuSlot1"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    PositionX 496
+    OffsetLeft 496
+    PositionY 88
+    OffsetTop 88
+    SizeX 784
+    OffsetRight -1280
+    SizeY 928
+    OffsetBottom -1016
+   }
+   "Is Enabled" 0
+  }
+  FrameWidgetClass "{6548E8DC2775FE79}" {
+   Name "MenuSlot0"
+   Slot FrameWidgetSlot "{6548E8DD235B0C39}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -808
+    OffsetLeft -808
+    PositionY -452
+    OffsetTop -452
+    SizeX 320
+    OffsetRight 488
+    SizeY 928
+    OffsetBottom -476
+   }
+   "Is Enabled" 0
+  }
+ }
+}

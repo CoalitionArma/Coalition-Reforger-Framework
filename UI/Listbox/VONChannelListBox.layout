@@ -1,0 +1,170 @@
+ButtonWidgetClass {
+ Name "rootFrame"
+ Slot AlignableSlot "{62F2056BF4F1EC36}" {
+  HorizontalAlign 3
+ }
+ components {
+  CRF_ListBoxElementComponent "{647E436E1C62AC1E}" {
+  }
+ }
+ style blank
+ {
+  SizeLayoutWidgetClass "{647E22C6563F8B13}" {
+   Name "SizeLayout"
+   Slot ButtonWidgetSlot "{5548E6E7E6AEDDC1}" {
+    HorizontalAlign 3
+   }
+   AllowHeightOverride 1
+   HeightOverride 36
+   {
+    OverlayWidgetClass "{647E22C6563F8B14}" {
+     Name "Overlay"
+     Slot ButtonWidgetSlot "{5548E6E7F213FB11}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+     Clipping False
+     {
+      FrameWidgetClass "{647E22C6563F8B16}" {
+       Name "ButtonLayout"
+       Slot OverlayWidgetSlot "{62F200F27385E1FB}" {
+        HorizontalAlign 0
+       }
+       {
+        ImageWidgetClass "{647E43682962529A}" {
+         Name "Image0"
+         Slot FrameWidgetSlot "{647E4368296252F8}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX 0
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Color 0.05 0.05 0.05 1
+        }
+        ButtonWidgetClass "{647E22C6563F8B1B}" {
+         Name "SlotButton"
+         Slot FrameWidgetSlot "{630510543BD8CBB1}" {
+          Anchor 0 0 1 1
+          PositionX 0
+          OffsetLeft 0
+          PositionY 0
+          OffsetTop 0
+          SizeX 0
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Color 1 1 1 0
+         components {
+          ButtonComponent "{647E5AEB00BB8021}" {
+           m_ColorButtonDefault 0 0 0 0
+           m_sSoundClicked ""
+           m_sSoundFocused ""
+           m_sSoundHovered ""
+          }
+          SCR_ButtonTextComponent "{647E5AEB2CA3F4D1}" {
+           m_sSoundHovered ""
+           m_sSoundClicked ""
+           m_BackgroundSelected 0.76 0.392 0.08 0.3
+           m_TextToggled 0.761 0.386 0.078 1
+          }
+         }
+        }
+        TextWidgetClass "{647E22C6563F8B18}" {
+         Name "PlayerName"
+         Slot FrameWidgetSlot "{630A2568FA12B1F6}" {
+          Anchor 0 0 0 0
+          PositionX 2.439
+          OffsetLeft 2.439
+          PositionY 0.004
+          OffsetTop 0.004
+          SizeX 164.212
+          OffsetRight -166.651
+          SizeY 29.996
+          OffsetBottom -30
+         }
+         Clipping Ancestor
+         Color 1 1 1 0.843
+         Text "Salami's Channel"
+         "Min Font Size" 5
+         "Vertical Alignment" Center
+         Wrap 1
+        }
+       }
+      }
+      PanelWidgetClass "{647E22C6563F8B1C}" {
+       Name "Border"
+       Slot OverlayWidgetSlot "{5548E6E7D859FCD2}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       "Is Visible" 0
+       Color 0.761 0.386 0.08 1
+       style outline_2px
+      }
+      FrameWidgetClass "{647E22C6563F8B1D}" {
+       Name "Disconnected"
+       Slot OverlayWidgetSlot "{631F7CF5E5BFCB25}" {
+        HorizontalAlign 0
+        VerticalAlign 3
+        Padding 480 0 0 0
+       }
+       "Is Visible" 0
+       {
+        ImageWidgetClass "{647E22C6563F8B1E}" {
+         Name "Image0"
+         Slot FrameWidgetSlot "{631F7CF5FB1BD72E}" {
+          Anchor 0 0 1 1
+          PositionX 398.996
+          OffsetLeft 50
+          PositionY 0
+          OffsetTop 0
+          SizeX -405
+          OffsetRight 0
+          SizeY 0
+          OffsetBottom 0
+         }
+         Texture "{356FBF661306DFD6}UI/data/disconnect_icon.edds"
+         Size 800 800
+        }
+       }
+      }
+      FrameWidgetClass "{647E22C6563F8B1F}" {
+       Name "Killed"
+       Slot OverlayWidgetSlot "{631F7CF5E5BFCB25}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 100 0 0 0
+       }
+       "Is Visible" 0
+       {
+        TextWidgetClass "{647E22C6563F8B00}" {
+         Name "Text0"
+         Slot FrameWidgetSlot "{631F7CCE0BFD509F}" {
+          PositionX 442.503
+          OffsetLeft 442.503
+          PositionY 3.88
+          OffsetTop 3.88
+          SizeX 42.473
+          OffsetRight -484.976
+          SizeY 30
+          OffsetBottom -33.88
+         }
+         Text "KIA"
+         "Font Size" 30
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

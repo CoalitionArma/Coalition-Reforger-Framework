@@ -1,0 +1,30 @@
+CRF_SatchelEntity : "{A4FEBA640C9EE7F4}Prefabs/Weapons/Explosives/Satchel_Base.et" {
+ ID "5968D2B6A82C6019"
+ components {
+  MeshObject "{5968D9C73C08706E}" {
+   Object "{C93586479590F3C6}Assets/Items/Equipment/Accessories/Pouch_Medical_Soviet/Pouch_Medical_Soviet_item.xob"
+  }
+  SlotManagerComponent "{5F1CD138A009B549}" {
+   Slots {
+    FuzeSlotInfo timedFuze_PoC {
+     Offset -0.0028 0.0697 0.0523
+     Angles -90 0 -5.5959
+    }
+    FuzeSlotInfo remoteFuze_PoC {
+     Offset -0.0028 0.0697 0.0523
+     Angles -90 0 -5.5959
+    }
+   }
+  }
+  ActionsManagerComponent "{5AA692DC30B9C623}" {
+   ActionContexts {
+    UserActionContext "{5AA692DC30B9C627}" {
+     Position PointInfo "{5AA692DC30B9C638}" {
+      Offset 0 0.0659 0
+     }
+    }
+   }
+  }
+ }
+ scale 2.65
+}

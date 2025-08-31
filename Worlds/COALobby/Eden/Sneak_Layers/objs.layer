@@ -1,0 +1,59 @@
+$grp ParticleEffectEntity {
+ {
+  coords 2969.521 120.346 5368.858
+  angleX 1.453
+  angleY -0.842
+  angleZ 12.731
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2966.487 121.066 5378.049
+  angleX 0.59
+  angleY -1.094
+  angleZ 10.944
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2969.729 120.164 5387.563
+  angleX 1.46
+  angleY -0.883
+  angleZ 11.838
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2968.859 120.336 5389.279
+  angleX 1.46
+  angleY -0.883
+  angleZ 11.838
+  EffectPath "{C0E2E7DC28B71E2C}Particles/Enviroment/Campfire_medium_normal.ptc"
+ }
+ {
+  coords 2969.435 120.078 5342.875
+  angleX 4.936
+  angleY -0.152
+  angleZ 11.879
+  EffectPath "{79DD3A5F1F3069CD}Particles/Vehicle/Vehicle_fire_engine_small.ptc"
+ }
+ {
+  coords 2959.239 126.427 5350.242
+  angleX 4.936
+  angleY -0.152
+  angleZ 11.879
+  EffectPath "{79DD3A5F1F3069CD}Particles/Vehicle/Vehicle_fire_engine_small.ptc"
+ }
+}
+SCR_BaseTriggerEntity transponder {
+ coords 2961.459 122.434 5360.486
+ angleX 4.081
+ angleY -0.417
+ angleZ 10.972
+}
+SCR_DestructibleBuildingEntity : "{8D35B3D72731D649}Prefabs/Structures/Wreck/c130.et" {
+ coords 2968.835 120.437 5356.574
+ angleX 3.211
+ angleY -0.586
+ angleZ 10.961
+}
+SCR_ReplicatedParticleEffectEntity : "{8EC855526AC1208D}Prefabs/EffectsModuleEntities/EffectModule_Particle_Smoke_Green.et" {
+ coords 2937.951 119.8 5350.691
+}

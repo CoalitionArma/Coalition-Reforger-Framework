@@ -3,16 +3,13 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
-  CRF_SearchAndDestroyGameModeComponent "{6446F969578B550D}" {
+  CRF_SearchAndDestroyGamemodeManager "{65450BFDD672AF9D}" {
    attackingSide "BLUFOR"
    defendingSide "OPFOR"
   }
  }
  coords 6357.209 158.116 6452.083
- m_iFactionOneRatio 3
- m_sFactionOneKey "BLU"
- m_iFactionTwoRatio 2
- m_sFactionTwoKey "OPF"
+ m_iTimeLimitMinutes 30
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "US Forces move to detonate 2 bombs located in towns controlled by Soviet Armed Forces. "\
@@ -46,7 +43,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_bShowForAnyFaction 1
   }
  }
- m_iTimeLimitMinutes 30
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
  {
   SCR_FactionManager "6447311C9DB9D441" {
    ID "632A77473B3CC3A8"

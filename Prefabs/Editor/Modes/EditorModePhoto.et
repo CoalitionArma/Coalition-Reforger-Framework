@@ -1,0 +1,365 @@
+SCR_EditorModeEntity : "{E56F54E533ACE527}Prefabs/Editor/Modes/EditorModeBase.et" {
+ ID "518A34314C7CB324"
+ components {
+  SCR_ActionsRadialMenuEditorComponent "{5CFE7C59168B0ABC}" {
+   m_ActionsMenuController SCR_RadialMenuController "{60447A4297B0D089}" : "{353EA65D6D17425D}Configs/Editor/UI/EditorRadialMenuController.conf" {
+   }
+   m_sActionName "EditorActionsMenu"
+  }
+  SCR_AttributesManagerEditorComponent "{54C8DACDCD4AE14E}" {
+   m_AttributeLists {
+    SCR_EditorAttributeList "{5606F263EAFE2038}" : "{C88689947D3F1FCF}Configs/Editor/AttributeLists/Photo.conf" {
+    }
+   }
+   m_MenuPreset EditorAttributesDialog
+  }
+  SCR_CameraFiltersEditorComponent "{64853C6BE8A087E1}" {
+   m_Filters {
+    SCR_CameraFilterEditor "{64853C6BE8A087EF}" {
+     m_sDisplayName "#AR-Editor_Attribute_Filter_None"
+     m_Effects {
+      SCR_CameraFilterEffectEditor "{64853C6BE8A087D4}" {
+       m_Type Colors
+       m_MaterialPath "{B18D0050792C7B8C}UI/Materials/Editor/Colors.emat"
+      }
+      SCR_CameraFilterEffectEditor "{64853C6BE8A087DC}" {
+       m_Type FilmGrain
+       m_MaterialPath "{2519F72D6E6C1DE9}UI/Materials/Editor/FilmGrain.emat"
+      }
+     }
+    }
+    SCR_CameraFilterEditor "{64853C6BE8A087DF}" {
+     m_sDisplayName "#AR-Editor_Attribute_Filter_WorldWar1"
+     m_Effects {
+      SCR_CameraFilterEffectEditor "{64853C6BE8A087C0}" {
+       m_Type Colors
+       m_MaterialPath "{F0A6BDCA0481E390}UI/Materials/Editor/WorldWarI/ColorsWorldWarI.emat"
+      }
+      SCR_CameraFilterEffectEditor "{64853C6BE8A087C4}" {
+       m_Type FilmGrain
+       m_MaterialPath "{BDA53BA7A7769B6D}UI/Materials/Editor/WorldWarI/FilmGrainWorldWarI.emat"
+      }
+     }
+    }
+    SCR_CameraFilterEditor "{64853C6BE8A087C6}" {
+     m_sDisplayName "#AR-Editor_Attribute_Filter_WorldWar2"
+     m_Effects {
+      SCR_CameraFilterEffectEditor "{64853C6BE8A087C8}" {
+       m_Type Colors
+       m_MaterialPath "{B2C64EECEB073604}UI/Materials/Editor/WorldWarII/ColorsWorldWarII.emat"
+      }
+      SCR_CameraFilterEffectEditor "{64853C6BE8A087C9}" {
+       m_Type FilmGrain
+       m_MaterialPath "{1AEF836E4386BD8A}UI/Materials/Editor/WorldWarII/FilmGrainWorldWarII.emat"
+      }
+     }
+    }
+    SCR_CameraFilterEditor "{64853C6BE8A087CD}" {
+     m_sDisplayName "#AR-Editor_Attribute_Filter_ColdWar"
+     m_Effects {
+      SCR_CameraFilterEffectEditor "{64853C6BE8A087CE}" {
+       m_Type Colors
+       m_MaterialPath "{11919955D860E6A9}UI/Materials/Editor/ColdWar/ColorsColdWar.emat"
+      }
+      SCR_CameraFilterEffectEditor "{64853C6BE8A08631}" {
+       m_Type FilmGrain
+       m_MaterialPath "{4497E885FB93F9AB}UI/Materials/Editor/ColdWar/FilmGrainColdWar.emat"
+      }
+      SCR_CameraFilterEffectEditor "{64853C6BE8A0863F}" {
+       m_Type ChromAber
+       m_MaterialPath "{DABEEA1AC8D21543}UI/Materials/Editor/ColdWar/ChromAberColdWar.emat"
+      }
+     }
+    }
+   }
+  }
+  SCR_CameraLimitedEditorComponent "{64853C6BE8A08621}" {
+   m_CameraPrefab "{127C64F4E93A82BC}Prefabs/Editor/Camera/ManualCameraPhoto.et"
+   m_fDistance 2
+   m_LimitedCameraPrefab "{75855D7220892CE8}Prefabs/Editor/Camera/ManualCameraPhotoLimited.et"
+  }
+  SCR_CameraParticlesEditorComponent "{64853C6BE8A08628}" {
+   m_Effects {
+    SCR_CameraParticleEditor "{64853C6BE8A0862A}" {
+     m_sDisplayName "#AR-Editor_Attribute_CameraParticle_None"
+    }
+    SCR_CameraParticleEditor "{64853C6BE8A0862B}" {
+     m_sDisplayName "#AR-Editor_Attribute_CameraParticle_Smoke"
+     m_Effect "{7B4A41DA320475FF}Particles/Editor/Photo/Smoke.ptc"
+    }
+   }
+  }
+  SCR_ContextActionsEditorComponent "{64853C6BE8A0862E}" {
+   m_ActionsLists {
+    SCR_EditorActionList "{54B2A480CFD07585}" : "{F849BB1343DB2CA5}Configs/Editor/ActionLists/Context/Shared.conf" {
+    }
+    SCR_EditorActionList "{54C2C7AF0149F1EF}" : "{CDFA55BBB1E4920A}Configs/Editor/ActionLists/Context/TempPhoto.conf" {
+    }
+   }
+  }
+  SCR_EntitiesManagerEditorComponent "{64853C6BE8A08614}" {
+   m_aFilters {
+    SCR_PlayerEditableEntityFilter "{64853C6BE8A08616}" {
+     m_State PLAYER
+     m_bAutoAdd ALWAYS
+    }
+    SCR_UnlockedEditableEntityFilter "{64853C6BE8A08619}" {
+     m_State UNLOCKED
+     m_PredecessorState PLAYER
+     m_bAutoAdd ALWAYS
+    }
+    SCR_VisibleEditableEntityFilter "{64853C6BE8A0861B}" {
+     m_State VISIBLE
+     m_PredecessorState UNLOCKED
+     m_bAutoAdd ALWAYS
+     m_bHideWithUI 0
+    }
+    SCR_FriendlyEditableEntityFilter "{64853C6BE8A0861D}" {
+     m_State INTERACTIVE
+     m_PredecessorState VISIBLE
+     m_bAutoAdd ALWAYS
+    }
+    SCR_RenderedEditableEntityFilter "{64853C6BE8A0860D}" {
+     m_State RENDERED
+     m_PredecessorState INTERACTIVE
+     m_bAutoAdd ALWAYS
+    }
+    SCR_HoverEditableEntityFilter "{64853C6BE8A08675}" {
+     m_State HOVER
+     m_PredecessorState VISIBLE
+    }
+    SCR_DummyEditableEntityFilter "{64853C6BE8A08679}" {
+     m_State ACTIVE
+     m_PredecessorState VISIBLE
+    }
+    SCR_PingedEditableEntityFilter "{64853C6BE8A0867E}" {
+     m_State PINGED
+    }
+   }
+  }
+  SCR_HintEditorComponent "{64853C6BE8A08660}" {
+   m_Hints SCR_HintConditionList "{5668B73A3F65BD6B}" : "{AAFCA791274D6F08}Configs/Hints/Editor_Photo.conf" {
+   }
+  }
+  SCR_HintSequenceComponent "{64853C6BE8A08661}" {
+   m_Sequence SCR_HintSequenceList "{5720ADB552680993}" : "{3380D84ED64D9C97}Configs/Hints/Editor_Photo_Guide.conf" {
+   }
+  }
+  SCR_MenuLayoutEditorComponent "{64853C6BE8A08663}" {
+   m_EffectsActivate {
+    SCR_SoundEditorEffect "{64853C6BE8A08665}" {
+     m_sSound "SOUND_E_MODE_PHOTO"
+    }
+   }
+   m_AlwaysShownLayout "{CE1EC2AAFA377C9F}UI/layouts/Editor/Map/MapEditor.layout"
+   m_HideableLayout "{A74F44748BDB0A8C}UI/layouts/Editor/Modes/Mode_Photo.layout"
+  }
+  SCR_MenuOverlaysEditorComponent "{5165445D06363A31}" : "{D5E3E98F53F8EA8D}Prefabs/Editor/EditorComponents/MenuOverlaysDefault.ct" {
+   Enabled 1
+   m_aLayers {
+    SCR_EditorMenuOverlayLayer "{52D670C873A9A203}" {
+     m_CustomRoot FRAME
+     m_aOverlays {
+      SCR_EditorMenuOverlay "{52D670C86AAE6AF5}" {
+       m_sDisplayName "#AR-ScreenPosition_BottomRight"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A0866B}" {
+       m_sDisplayName "#AR-ScreenPosition_BottomCenter"
+       m_Overlay "{8C5BB0B8817D7261}UI/layouts/Editor/Overlays/Logos/LogoPositions/LogoPosition_BottomCenter.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A0866E}" {
+       m_sDisplayName "#AR-ScreenPosition_BottomLeft"
+       m_Overlay "{A014407D945B8B84}UI/layouts/Editor/Overlays/Logos/LogoPositions/LogoPosition_BottomLeft.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08651}" {
+       m_sDisplayName "#AR-ScreenPosition_Center"
+       m_Overlay "{B620494C054984E9}UI/layouts/Editor/Overlays/Logos/LogoPositions/LogoPosition_Center.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08653}" {
+       m_sDisplayName "#AR-ScreenPosition_TopRight"
+       m_Overlay "{429797ED78FD65A7}UI/layouts/Editor/Overlays/Logos/LogoPositions/LogoPosition_TopRight.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08655}" {
+       m_sDisplayName "#AR-ScreenPosition_TopCenter"
+       m_Overlay "{7F3FAF0B040B62DF}UI/layouts/Editor/Overlays/Logos/LogoPositions/LogoPosition_TopCenter.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08657}" {
+       m_sDisplayName "#AR-ScreenPosition_TopLeft"
+       m_Overlay "{B2FFFDC46FA1279F}UI/layouts/Editor/Overlays/Logos/LogoPositions/LogoPosition_TopLeft.layout"
+      }
+     }
+    }
+    SCR_EditorMenuOverlayLayer "{51909549449D92DB}" {
+     m_CustomRoot LOGO_FRAME
+     m_iZOrder 1
+     m_iCurrentOverlay 5
+     m_aOverlays {
+      SCR_EditorMenuOverlay "{51909549421F0CB9}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayLogo_Default"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A0865A}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayLogo_None"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A0865B}" {
+       m_sDisplayName "Bohemia Interactive"
+       m_Overlay "{20C04C0CE7623C6B}UI/layouts/Editor/Overlays/Logos/Logo_Bohemia.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08641}" {
+       m_sDisplayName "Enfusion"
+       m_Overlay "{3F61A226DF7E69F4}UI/layouts/Editor/Overlays/Logos/Logo_Enfusion.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08643}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayLogo_Reforger"
+       m_Overlay "{3B0B7B2371DFD6E1}UI/layouts/Editor/Overlays/Logos/Logo_Reforger_White.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08645}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayLogo_ReforgerBlack"
+       m_Overlay "{DF47B01EFE08BDE9}UI/layouts/Editor/Overlays/Logos/Logo_Reforger_Black.layout"
+      }
+     }
+    }
+    SCR_EditorMenuOverlayLayer "{64853C6BE8A08648}" {
+     m_Layer FRAME
+     m_iZOrder -2
+     m_iCurrentOverlay 0
+     m_aOverlays {
+      SCR_EditorMenuOverlay "{64853C6BE8A08649}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayFrame_None"
+       m_Overlay "{88067D785C3EACA8}UI/layouts/Editor/Overlays/Overlays.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A0864B}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayFrame_Viewfinder"
+       m_Overlay "{BB2CC6B4B5E729DD}UI/layouts/Editor/Overlays/Frames/Frame_ViewFinder.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A086A4}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayFrame_Polaroid"
+       m_Overlay "{52C05E64F39B2563}UI/layouts/Editor/Overlays/Frames/Frame_Polaroid.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A086A5}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayFrame_CinemaWide"
+       m_Overlay "{8D26B0769EF4131E}UI/layouts/Editor/Overlays/Frames/Frame_Letterbox_2.35x1.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A086A7}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayFrame_CinemaTV"
+       m_Overlay "{47CEAA5E313561D5}UI/layouts/Editor/Overlays/Frames/Frame_Letterbox_4x3.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A086A9}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayFrame_Poster"
+       m_Overlay "{0A68705FB9311386}UI/layouts/Editor/Overlays/Frames/Frame_Letterbox_2x3.layout"
+      }
+     }
+    }
+    SCR_EditorMenuOverlayLayer "{64853C6BE8A086AA}" {
+     m_Layer HELPER
+     m_bCanHide 1
+     m_CustomRoot FRAME
+     m_sRootFrameName "FrameFull"
+     m_iCurrentOverlay 1
+     m_aOverlays {
+      SCR_EditorMenuOverlay "{64853C6BE8A086AC}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayHelper_None"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A086AD}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayHelper_Thirds"
+       m_Overlay "{EC02FCF6DF849FF2}UI/layouts/Editor/Overlays/Helpers/Helper_Thirds.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A086AF}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayHelper_Grid"
+       m_Overlay "{AC1DC758BBA20CEE}UI/layouts/Editor/Overlays/Helpers/Helper_Grid.layout"
+      }
+     }
+    }
+    SCR_EditorMenuOverlayLayer "{64853C6BE8A08691}" {
+     m_Layer PLAYER
+     m_iZOrder -3
+     m_aOverlays {
+      SCR_EditorMenuOverlay "{64853C6BE8A08692}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayPlayer_None"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08693}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayPlayer_NameTags"
+       m_Overlay "{D9B3F5B026950F1E}UI/layouts/Editor/Overlays/EntityTags/EntityTag_NameTag.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08694}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayPlayer_FacesBlackBar"
+       m_Overlay "{B453CEAFD1E2B755}UI/layouts/Editor/Overlays/EntityTags/EntityTag_RedactedBlack.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A08696}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayPlayer_FacesBlur"
+       m_Overlay "{74C2B87822968C73}UI/layouts/Editor/Overlays/EntityTags/EntityTag_RedactedBlur.layout"
+      }
+     }
+    }
+    SCR_EditorMenuOverlayLayer "{64853C6BE8A08698}" {
+     m_Layer VIGNETTE
+     m_CustomRoot FRAME
+     m_sRootFrameName "FrameFull"
+     m_iZOrder -3
+     m_aOverlays {
+      SCR_EditorMenuOverlay "{64853C6BE8A0869A}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayVignette_None"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A0869B}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayVignette_Light"
+       m_Overlay "{140E9036AB097AD0}UI/layouts/Editor/Overlays/Vignettes/Vignette_Light.layout"
+      }
+      SCR_EditorMenuOverlay "{64853C6BE8A0869C}" {
+       m_sDisplayName "#AR-Editor_Attribute_OverlayVignette_Strong"
+       m_Overlay "{A7880E1D37F797C4}UI/layouts/Editor/Overlays/Vignettes/Vignette_Heavy.layout"
+      }
+     }
+    }
+   }
+  }
+  SCR_ToolbarActionsEditorComponent "{64853C6BE8A0869E}" {
+   m_ActionsLists {
+    SCR_EditorActionList "{54B2AA70BB06E2FF}" : "{1D0DE9D20AADAFB7}Configs/Editor/ActionLists/Toolbar/SharedToolbar.conf" {
+    }
+    SCR_EditorActionList "{54B2AA70B82EDC9E}" : "{A33C659B45A4F1DD}Configs/Editor/ActionLists/Toolbar/PhotoToolbar.conf" {
+    }
+    SCR_EditorActionList "{5D6EB3170A38EAA4}" : "{073DB65CA0D2A2E8}Configs/Editor/ActionLists/Toolbar/SimulationToolbar.conf" {
+    }
+   }
+   m_ActionGroups {
+    SCR_EditorActionGroup "{64853C6BE8A08680}" {
+     m_ActionGroup SIMULATION
+    }
+    SCR_EditorActionGroup "{64853C6BE8A08681}" {
+     m_ActionGroup SAVING
+     m_iOrder 1
+    }
+    SCR_EditorActionGroup "{64853C6BE8A08682}" {
+     m_ActionGroup TOOLS
+     m_iOrder 2
+    }
+    SCR_EditorActionGroup "{64853C6BE8A08683}" {
+     m_ActionGroup DYNAMIC
+     m_iOrder 3
+    }
+    SCR_EditorActionGroup "{64853C6BE8A08684}" {
+     m_ActionGroup SAVING
+     m_iOrder 1
+    }
+    SCR_EditorActionGroup "{64853C6BE8A08685}" {
+     m_ActionGroup TOOLS
+     m_iOrder 2
+    }
+    SCR_EditorActionGroup "{64853C6BE8A08686}" {
+     m_ActionGroup DYNAMIC
+     m_iOrder 3
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_ModeType PHOTO
+ m_iOrder 25
+ m_bIsLimited 1
+ m_UIInfo SCR_UIInfo "{64853C6BE8A0868E}" {
+  Name "#AR-Editor_Mode_Photo_Name"
+  Description "#AR-Editor_Mode_Photo_Description"
+  Icon "{2E1ED1491F4A8FE6}UI/Textures/Editor/Logos/Logo_Photo_256x256.edds"
+ }
+ m_ModeAddedNotification EDITOR_PHOTOMODE_RIGHTS_ASSIGNED
+ m_ModeRemovedNotification EDITOR_PHOTOMODE_RIGHTS_REMOVED
+}

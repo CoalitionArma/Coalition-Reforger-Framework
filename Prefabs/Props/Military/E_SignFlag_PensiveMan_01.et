@@ -1,0 +1,19 @@
+GenericEntity : "{F9CB37885DA59BF4}Prefabs/Props/Military/E_SignFlag_COAL_01.et" {
+ ID "50D67C36F4200F97"
+ components {
+  MeshObject "{54969A6AAAADA251}" {
+   Materials {
+    MaterialAssignClass "{567878E29CBBF710}" {
+     SourceMaterial "SignRectangle_01_140x100"
+     AssignedMaterial "{1DBD89171895044D}Assets/Structures/Signs/Military/Data/SignRectangle_01_140x100_PM.emat"
+    }
+    MaterialAssignClass "{567878E29CBBF73E}" {
+     SourceMaterial "SignRectangle_01_140x100_MLOD"
+     AssignedMaterial "{E4B50006C1BF0371}Assets/Structures/Signs/Military/Data/SignRectangle_01_140x100_COAL_PM.emat"
+    }
+   }
+  }
+ }
+ coords 7416.758 8.605 6686.933
+ angleY 38.802
+}

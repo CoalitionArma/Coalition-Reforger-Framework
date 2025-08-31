@@ -19,6 +19,7 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
    PixelSizeScale 0
    CastShadow 0
    CastFarShadow 0
+   InheritVisibility 0
    RainOccluder 0
    WetnessOccluder 0
    ReceiveLight 0
@@ -63,6 +64,6 @@ GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
    }
   }
  }
- coords 1251.515 51.001 1420.505
  Flags 2
+ coords 1251.515 51.001 1420.505
 }

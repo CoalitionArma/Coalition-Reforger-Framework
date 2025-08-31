@@ -4,21 +4,21 @@ GenericEntity {
   MeshObject "{633B21304D3C6199}" {
    Object "{9F3AF591CD6DFE1A}Assets/Characters/Basebody/Basebody_Male_01.xob"
    Materials {
-    MaterialAssignClass "{633B213047025511}" {
+    MaterialAssignClass "{64DF141E660DC910}" {
      SourceMaterial "Basebody_01_Male_Arms"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B21304702550D}" {
+    MaterialAssignClass "{64DF141E660DC97F}" {
      SourceMaterial "Basebody_01_Male_Arms_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B213047025570}" {
+    MaterialAssignClass "{64DF141E660DC978}" {
      SourceMaterial "Basebody_01_Male_Body"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
-    MaterialAssignClass "{633B213047025573}" {
+    MaterialAssignClass "{64DF141E660DC962}" {
      SourceMaterial "Basebody_01_Male_Body_wound"
-     AssignedMaterial "{916CDF1F5C63010C}Terrains/Common/Water/WaterTreatmentPlant/WaterTreatmentPlant_Clear.emat"
+     AssignedMaterial "{0A94C84B94134E73}Assets/Characters/Spectator/InvisibiltyGoesSoHard.emat"
     }
    }
    LODFactors {

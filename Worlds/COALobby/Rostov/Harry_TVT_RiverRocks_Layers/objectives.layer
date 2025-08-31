@@ -1,0 +1,100 @@
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ cacheA {
+  coords 2737.336 43.12 2822.69
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Alpha Cache destroyed\", duration: 10);"\
+  "		"\
+  "		// Check if both sites are destroyed, if so, delete the zone marker line"\
+  "		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName(\"cacheB\");"\
+  "		"\
+  "		if (!sisterMcom) {"\
+  "			IEntity zoneMarkers = GetGame().GetWorld().FindEntityByName(\"zone1\");"\
+  "			SCR_EntityHelper.DeleteEntityAndChildren(zoneMarkers);"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Zone 2 is now unlocked\", duration: 10);"\
+  "			"\
+  "			//respawn the players"\
+  "			if (RplSession.Mode() == RplMode.Dedicated) {"\
+  "				CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "				gm.RespawnAllSides();"\
+  "			}"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.651 0.094 0.858
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Cache A"
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
+   }
+  }
+ }
+ cacheB {
+  coords 3007.601 49.361 3035.137
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo Cache destroyed\", duration: 10);"\
+  "		"\
+  "		// Check if both sites are destroyed, if so, delete the zone marker line"\
+  "		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName(\"cacheA\");"\
+  "		"\
+  "		if (!sisterMcom) {"\
+  "			IEntity zoneMarkers = GetGame().GetWorld().FindEntityByName(\"zone1\");"\
+  "			SCR_EntityHelper.DeleteEntityAndChildren(zoneMarkers);"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Zone 2 is now unlocked\", duration: 10);"\
+  "			"\
+  "			//respawn the players"\
+  "			if (RplSession.Mode() == RplMode.Dedicated) {"\
+  "				CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "				gm.RespawnAllSides();"\
+  "			}"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -1.351 0 0.744
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Cache B"
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
+   }
+  }
+ }
+ cacheC {
+  coords 3349.635 52.677 3875.659
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -1.049 0.002 -0.117
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Cache C"
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
+   }
+  }
+ }
+ cacheD {
+  coords 3175.308 77.058 3948.354
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Delta Cache destroyed\", duration: 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.348 0 -0.852
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Cache D"
+    m_aVisibleForFactions {
+     "BLUFOR"
+    }
+   }
+  }
+ }
+}

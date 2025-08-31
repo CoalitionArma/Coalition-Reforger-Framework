@@ -1,0 +1,12 @@
+GenericEntity : "{E34E9F101C7ECB4B}Prefabs/Characters/Core/RHS_Vest_Base.et" {
+ ID "50D8C49B3558F152"
+ components {
+  RHS_ClothNodeStorageComponent "{5E8ECC6318C07954}" {
+   Attributes SCR_ItemAttributeCollection "{5E8ECC63152ECC55}" {
+    ItemPhysAttributes ItemPhysicalAttributes "{5E8ECC6306802439}" {
+     ItemVolume 10000
+    }
+   }
+  }
+ }
+}

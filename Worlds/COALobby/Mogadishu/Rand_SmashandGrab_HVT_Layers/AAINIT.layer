@@ -1,0 +1,120 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1237.759 31.817 5060.066
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_HighValueTargetGameModeComponent "{64EAD4D8A463E92E}" {
+   m_setUnconcious 1
+  }
+ }
+ coords 1226.588 31.665 5054.54
+ m_iTimeLimitMinutes 40
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Taliban forces have kidnapped an American pilot and moved him to their base and plan to move him further east to extract what intelligence they can. The Americans are on the clock as they need to desperately recover their stolen pilot"\
+   ""\
+   "BLUFOR Composition: Motorized Company"\
+   "BLUFOR Assets: 1x Armed 1x Unarmed Humvee per squad"\
+   ""\
+   "OPFOR Composition: Motorized Platoon"\
+   "OPFOR Assets: VBIED, Other Vehicles"\
+   ""\
+   "Time: 40 Minutes"\
+   ""\
+   "Weather: Clear Day"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Move north and extract the Hostage before the taliban can move him further east. DO NOT kill the hostage"\
+   ""\
+   "VBIEDs have been spotted in the area"
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "The Americans are coming to extract their PIlot, ensure he stays safe and out of the American's hands."\
+   ""\
+   "The Ambulance is a VBIED, if you crash it at high enough speed, it will explode"
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{63E8294BD78E97BC}Configs/Gearscripts/Standard/GWOT/CRF_GS_2000sUS_DCU_Tracers.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{2D140B13588E56B8}Configs/Gearscripts/Standard/GWOT/CRF_GS_Taliban.conf"
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{64EAD4D3D450121B}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{64EAD4D3D582EA44}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{64EAD4D3D5B9DA5C}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{64EAD4D3D5DC2F84}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{64EAD4D3D5FB55A6}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{64EAD4D3D51384D9}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{64EAD4D3D50BCF31}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{64EAD4D3D53E6EE7}" {
+        m_sCallsign "2-4"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Medical Cell"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{61C8F1ACA9FDB12D}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{64EAD4D3E6A0F510}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{64EAD4D3E6F29593}" {
+        m_sCallsign "MMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

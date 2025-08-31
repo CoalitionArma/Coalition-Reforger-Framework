@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{1B9BE1A6817D640B}Configs/Gearscripts/Custom/RandAlThor/Special/TrailerPark/TrailerPark_BLUFOR.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

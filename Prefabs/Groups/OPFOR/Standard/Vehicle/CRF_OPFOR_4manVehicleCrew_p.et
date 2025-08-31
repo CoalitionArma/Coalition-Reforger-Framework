@@ -13,13 +13,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
    }
    m_Reaction_SelectedTargetChanged SCR_AITargetReaction_SelectedTargetChanged "{646806D1FD46A758}" {
    }
-   m_bLeaderOnly 0
-   m_fWeaponFiredReactionDistance 1000
-   m_eCombatMode RED
-   m_iSuppressDuration 35
-   m_fPerceptionSafe 3
-   m_fPerceptionVigilant 5
-   m_fAimAccuracyErrorModifier -2.5
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
@@ -115,12 +108,16 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_aUnitPrefabSlots {
   "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et" "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et" "{63E6DCB5FBA18707}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLoader_P.et" "{F513E3FE0CE0E250}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehDriver_P.et"
  }
-
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 0
+ m_bIsPlayable 1
+ m_bDeleteIfNoPlayer 0
  m_aUnitPrefabColorTeams {
   "None" "None" "None" "None"
  }
  m_aUnitPrefabOverrideIcons {
   "None" "None" "None" "None"
  }
- m_bIsPlayable 1
+ m_FlagType ARMORED
 }

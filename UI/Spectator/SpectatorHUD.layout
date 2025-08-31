@@ -1,6 +1,73 @@
 FrameWidgetClass {
  Name "SpectatorMenu"
+ "Z Order" 10
  {
+  FrameWidgetClass "{64841DF9BC770635}" {
+   Name "LogoFrame"
+   Slot FrameWidgetSlot "{64841DF9BC770615}" {
+    Anchor 0.971 0.999 0.971 0.999
+    PositionX -100.627
+    OffsetLeft -100.627
+    PositionY -168.243
+    OffsetTop -168.243
+    SizeX 199.999
+    OffsetRight -99.372
+    SizeY 201.248
+    OffsetBottom -33.005
+   }
+   {
+    TextWidgetClass "{64841DF907816162}" {
+     Name "Text0"
+     Slot FrameWidgetSlot "{64841DF907816149}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 159.486
+      OffsetTop 159.486
+      SizeX 0
+      OffsetRight 0
+      SizeY -145
+      OffsetBottom -14.486
+     }
+     Color 1 1 1 0.745
+     Text "DISCORD.GG/THE-COALITION"
+     "Font Size" 9
+     "Min Font Size" 9
+     "Horizontal Alignment" Center
+    }
+    ImageWidgetClass "{6483581F5342B000}" {
+     Name "Logo"
+     Slot FrameWidgetSlot "{6483581F5342B042}" {
+      Anchor 0 0 1 1
+      PositionX 30
+      OffsetLeft 30
+      PositionY 26.903
+      OffsetTop 26.903
+      SizeX -60
+      OffsetRight 30
+      SizeY -60.611
+      OffsetBottom 33.708
+     }
+     Color 0.434 0.043 0.043 0.75
+     Texture "{19769D9272BEC68A}UI/data/coalitionlarge.edds"
+     Size 1000 1000
+    }
+   }
+  }
+  VerticalLayoutWidgetClass "{647EC0B17BD68D22}" {
+   Name "Requests"
+   Slot FrameWidgetSlot "{647EC0B17BD68D05}" {
+    Anchor 1 0.789 1 0.789
+    PositionX -492.29
+    OffsetLeft -492.29
+    PositionY -135.517
+    OffsetTop -135.517
+    SizeX 482.74
+    OffsetRight 9.55
+    SizeY 267.613
+    OffsetBottom -132.096
+   }
+  }
   FrameWidgetClass "{5EE8949BDE5C93EE}" {
    Name "IconsFrame"
    Slot FrameWidgetSlot "{5EE8949BDE5C93C5}" {
@@ -15,20 +82,6 @@ FrameWidgetClass {
     OffsetBottom 0
    }
    Clipping True
-  }
-  FrameWidgetClass "{5EB701CD498F59EC}" : "{B7A765172F0BD4D9}UI/layouts/Common/GameVersionWatermark.layout" {
-   Name "EarlyAccessRoot"
-   Slot FrameWidgetSlot "{5CEE96372B5D270B}" {
-    PositionX 0
-    OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
-    SizeX 0
-    OffsetRight 0
-    SizeY 0
-    OffsetBottom 0
-   }
-   Opacity 1
   }
   FrameWidgetClass "{63224AF6A2160646}" : "{D89BBA18F99053D6}UI/layouts/HUD/Chat/ChatHud.layout" {
    Name "ChatHud"
@@ -283,6 +336,1071 @@ FrameWidgetClass {
      "Line Spacing" 0
     }
    }
+  }
+  FrameWidgetClass "{647D656C336F79BC}" {
+   Name "FrameSlots"
+   Slot FrameWidgetSlot "{647D656C336F799E}" {
+    Anchor 0 0 0 0
+    PositionX -200
+    OffsetLeft -200
+    PositionY 261
+    OffsetTop 261
+    SizeX 220
+    OffsetRight -20
+    SizeY 450
+    OffsetBottom -711
+   }
+   {
+    ImageWidgetClass "{64853C4C99DB2715}" {
+     Name "SliderBGL"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX 153.057
+      OffsetLeft 153.057
+      PositionY 160
+      OffsetTop 180
+      SizeX -121.847
+      OffsetRight -31.211
+      SizeY -320
+      OffsetBottom 180
+     }
+     Color 0.133 0.133 0.133 0.353
+     Texture "{123C22FEC78BBCF7}UI/data/tab.edds"
+     Size 640 360
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ImageWidgetClass "{64853C4CB4048D1D}" {
+     Name "ArrowL"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX 185.6
+      OffsetLeft 185.6
+      PositionY 206.409
+      OffsetTop 206.409
+      SizeX -169.788
+      OffsetRight -15.812
+      SizeY -413.809
+      OffsetBottom 207.4
+     }
+     Color 1 1 1 0.353
+     Rotation 270
+     Texture "{D45AE7F19DBF4021}UI/Textures/InventoryIcons/Medical/lines_UI.edds"
+     Size 64 64
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ImageWidgetClass "{647D7DAD3D825970}" {
+     Name "BG"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 20
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.2
+     Color 0.047 0.047 0.047 1
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ButtonWidgetClass "{647E03DD96C5DD05}" {
+     Name "SlotSelector"
+     Slot FrameWidgetSlot "{647E03DD96C5DD63}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -100
+      OffsetRight 0
+      SizeY -420
+      OffsetBottom 0
+     }
+     Color 1 1 1 0
+    }
+    FrameWidgetClass "{647D656FAA7995FA}" {
+     Name "BLUButton"
+     Slot FrameWidgetSlot "{647D656FAA7995C7}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX -150
+      OffsetRight 170
+      SizeY -400
+      OffsetBottom 400
+     }
+     "Is Visible" 0
+     {
+      ImageWidgetClass "{647D656FBD995174}" {
+       Name "BG"
+       Slot FrameWidgetSlot "{647D656FBD99516A}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -100
+        OffsetRight 0
+        SizeY -100
+        OffsetBottom 0
+       }
+       Color 0.016 0.552 0.905 0.6
+      }
+      ImageWidgetClass "{647D656FC098D136}" {
+       Name "BLUFlag"
+       Slot FrameWidgetSlot "{647D656FC098D11E}" {
+        Anchor 0 0 1 1
+        PositionX 5
+        OffsetLeft 5
+        PositionY 5
+        OffsetTop 5
+        SizeX -10
+        OffsetRight 5
+        SizeY -20.6
+        OffsetBottom 15.6
+       }
+      }
+      TextWidgetClass "{647D656FFBF721E6}" {
+       Name "BLURatio"
+       Slot FrameWidgetSlot "{647D656FFBF721DC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 35.783
+        OffsetTop 35.783
+        SizeX 0
+        OffsetRight 0
+        SizeY -36.867
+        OffsetBottom 1.084
+       }
+       Text "45/45"
+       "Font Size" 16
+       "Min Font Size" 1
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      ButtonWidgetClass "{647D65610FEC493D}" {
+       Name "BLUSelectButton"
+       Slot FrameWidgetSlot "{62F20561782C33FC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       components {
+        ButtonComponent "{62F205618D08BCB8}" {
+         m_ColorButtonDefault 1 1 1 0
+         m_ColorButtonFocused 1 1 1 0
+         m_ColorButtonPressed 1 1 1 0
+        }
+        SCR_ButtonTextComponent "{62F20561892D8708}" {
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{647D656C7EE34998}" {
+     Name "OPFButton"
+     Slot FrameWidgetSlot "{647D656FAA7995C7}" {
+      Anchor 0 0 1 1
+      PositionX 783.3
+      OffsetLeft 50
+      PositionY 178.6
+      SizeX -150
+      OffsetRight 120
+      SizeY -400
+      OffsetBottom 400
+     }
+     "Is Visible" 0
+     {
+      ImageWidgetClass "{647D656C7EE34985}" {
+       Name "BG"
+       Slot FrameWidgetSlot "{647D656FBD99516A}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -100
+        OffsetRight 0
+        SizeY -100
+        OffsetBottom 0
+       }
+       Color 0.855 0.031 0.028 0.6
+      }
+      ImageWidgetClass "{647D656C7EE34986}" {
+       Name "OPFFlag"
+       Slot FrameWidgetSlot "{647D656FC098D11E}" {
+        Anchor 0 0 1 1
+        PositionX 5
+        OffsetLeft 5
+        PositionY 5
+        OffsetTop 5
+        SizeX -10
+        OffsetRight 5
+        SizeY -20.6
+        OffsetBottom 15.6
+       }
+      }
+      TextWidgetClass "{647D656C7EE34984}" {
+       Name "OPFRatio"
+       Slot FrameWidgetSlot "{647D656FFBF721DC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 35.783
+        OffsetTop 35.783
+        SizeX 0
+        OffsetRight 0
+        SizeY -36.867
+        OffsetBottom 1.084
+       }
+       Text "45/45"
+       "Font Size" 16
+       "Min Font Size" 1
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      ButtonWidgetClass "{647D65611A1777E4}" {
+       Name "OPFSelectButton"
+       Slot FrameWidgetSlot "{62F20561782C33FC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       components {
+        ButtonComponent "{62F205618D08BCB8}" {
+         m_ColorButtonDefault 1 1 1 0
+         m_ColorButtonFocused 1 1 1 0
+         m_ColorButtonPressed 1 1 1 0
+        }
+        SCR_ButtonTextComponent "{62F20561892D8708}" {
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{647D656C75855931}" {
+     Name "INDButton"
+     Slot FrameWidgetSlot "{647D656FAA7995C7}" {
+      Anchor 0 0 1 1
+      PositionX 783.3
+      OffsetLeft 100
+      PositionY 178.6
+      SizeX -150
+      OffsetRight 70
+      SizeY -400
+      OffsetBottom 400
+     }
+     "Is Visible" 0
+     {
+      ImageWidgetClass "{647D656C7585593E}" {
+       Name "BG"
+       Slot FrameWidgetSlot "{647D656FBD99516A}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -100
+        OffsetRight 0
+        SizeY -100
+        OffsetBottom 0
+       }
+       Color 0 0.44 0.078 0.6
+      }
+      ImageWidgetClass "{647D656C7585593F}" {
+       Name "INDFlag"
+       Slot FrameWidgetSlot "{647D656FC098D11E}" {
+        Anchor 0 0 1 1
+        PositionX 5
+        OffsetLeft 5
+        PositionY 5
+        OffsetTop 5
+        SizeX -10
+        OffsetRight 5
+        SizeY -20.6
+        OffsetBottom 15.6
+       }
+      }
+      TextWidgetClass "{647D656C7585593D}" {
+       Name "INDRatio"
+       Slot FrameWidgetSlot "{647D656FFBF721DC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 35.783
+        OffsetTop 35.783
+        SizeX 0
+        OffsetRight 0
+        SizeY -36.867
+        OffsetBottom 1.084
+       }
+       Text "45/45"
+       "Font Size" 16
+       "Min Font Size" 1
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      ButtonWidgetClass "{647D656111782AAE}" {
+       Name "INDSelectButton"
+       Slot FrameWidgetSlot "{62F20561782C33FC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       components {
+        ButtonComponent "{62F205618D08BCB8}" {
+         m_ColorButtonDefault 1 1 1 0
+         m_ColorButtonFocused 1 1 1 0
+         m_ColorButtonPressed 1 1 1 0
+        }
+        SCR_ButtonTextComponent "{62F20561892D8708}" {
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{647D656C7488BC59}" {
+     Name "CIVButton"
+     Slot FrameWidgetSlot "{647D656FAA7995C7}" {
+      Anchor 0 0 1 1
+      PositionX 783.3
+      OffsetLeft 150
+      PositionY 178.6
+      SizeX -150
+      OffsetRight 20
+      SizeY -400
+      OffsetBottom 400
+     }
+     "Is Visible" 0
+     {
+      ImageWidgetClass "{647D656C7488BC46}" {
+       Name "BG"
+       Slot FrameWidgetSlot "{647D656FBD99516A}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX -100
+        OffsetRight 0
+        SizeY -100
+        OffsetBottom 0
+       }
+       Color 0.392 0.156 0.624 0.6
+      }
+      ImageWidgetClass "{647D656C7488BC47}" {
+       Name "CIVFlag"
+       Slot FrameWidgetSlot "{647D656FC098D11E}" {
+        Anchor 0 0 1 1
+        PositionX 5
+        OffsetLeft 5
+        PositionY 5
+        OffsetTop 5
+        SizeX -10
+        OffsetRight 5
+        SizeY -20.6
+        OffsetBottom 15.6
+       }
+      }
+      TextWidgetClass "{647D656C7488BC45}" {
+       Name "CIVRatio"
+       Slot FrameWidgetSlot "{647D656FFBF721DC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 35.783
+        OffsetTop 35.783
+        SizeX 0
+        OffsetRight 0
+        SizeY -36.867
+        OffsetBottom 1.084
+       }
+       Text "45/45"
+       "Font Size" 16
+       "Min Font Size" 1
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+      }
+      ButtonWidgetClass "{647D65611248C8DE}" {
+       Name "CIVSelectButton"
+       Slot FrameWidgetSlot "{62F20561782C33FC}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       components {
+        ButtonComponent "{62F205618D08BCB8}" {
+         m_ColorButtonDefault 1 1 1 0
+         m_ColorButtonFocused 1 1 1 0
+         m_ColorButtonPressed 1 1 1 0
+        }
+        SCR_ButtonTextComponent "{62F20561892D8708}" {
+        }
+       }
+      }
+     }
+    }
+    OverlayWidgetClass "{647D656861CE1943}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "PlayerSlots"
+     Slot FrameWidgetSlot "{647D656861CE1939}" {
+      Anchor 0 0 1 1
+      PositionX 0.5
+      OffsetLeft 0.5
+      PositionY 268
+      OffsetTop 50
+      SizeX 0
+      OffsetRight 20
+      SizeY 202.4
+      OffsetBottom 0
+     }
+     components {
+      SCR_ListBoxComponent "{566C9415BAA54E1B}" {
+       Enabled 0
+      }
+      CRF_ListboxComponent "{647D65687737A8F1}" {
+      }
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{647E22D9C0CCB25C}" {
+   Name "VONSlots"
+   Slot FrameWidgetSlot "{647D656C336F799E}" {
+    Anchor 1 0 1 0
+    PositionX -20
+    OffsetLeft -20
+    PositionY 265.6
+    OffsetTop 265.6
+    SizeX 220
+    OffsetRight -200
+    SizeY 450
+    OffsetBottom -715.6
+   }
+   {
+    ImageWidgetClass "{64853C4DC8DDBBC6}" {
+     Name "SliderBGR"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft -20
+      PositionY 180
+      OffsetTop 180
+      SizeX -153.057
+      OffsetRight 173
+      SizeY -360
+      OffsetBottom 180
+     }
+     Color 0.133 0.133 0.133 0.353
+     Texture "{123C22FEC78BBCF7}UI/data/tab.edds"
+     Size 640 360
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ImageWidgetClass "{64853C4DC8DDBA0F}" {
+     Name "ArrowR"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX -12.823
+      OffsetLeft -12.823
+      PositionY 206.409
+      OffsetTop 206.409
+      SizeX -169.788
+      OffsetRight 182.61
+      SizeY -413.809
+      OffsetBottom 207.4
+     }
+     Color 1 1 1 0.353
+     Rotation 90
+     Texture "{D45AE7F19DBF4021}UI/Textures/InventoryIcons/Medical/lines_UI.edds"
+     Size 64 64
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ImageWidgetClass "{647E22D9FE2396DB}" {
+     Name "BG"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 20
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight 0
+      SizeY 0
+      OffsetBottom 0
+     }
+     Opacity 0.2
+     Color 0.046 0.046 0.046 1
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ButtonWidgetClass "{647EC0B4E7C39C8F}" {
+     Name "CreateChannel"
+     Slot FrameWidgetSlot "{647EC0B4E7C39CEB}" {
+      Anchor 0 0 1 1
+      PositionX 170
+      OffsetLeft 190
+      PositionY 0
+      OffsetTop 0
+      SizeX -170
+      OffsetRight 0
+      SizeY -420
+      OffsetBottom 420
+     }
+     Color 1 1 1 0
+     components {
+      SCR_ButtonTextComponent "{647EC0B5D00C78E7}" {
+      }
+     }
+     {
+      ImageWidgetClass "{647EC0B4F6BC5B9B}" {
+       Name "Image0"
+       Slot ButtonWidgetSlot "{647EC0B4F6BC5BFD}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+        Padding 5 5 5 5
+       }
+       Texture "{891903C5BA01F743}UI/data/plus.edds"
+       Size 528 528
+       "Transition width" 0.49
+       Progress 0.51
+      }
+     }
+    }
+    PanelWidgetClass "{647EC0B5A19BC79B}" {
+     Name "Panel0"
+     Slot FrameWidgetSlot "{647EC0B5A19BC7F4}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 190
+      PositionY 0
+      OffsetTop 0
+      SizeX -100
+      OffsetRight 0
+      SizeY -420
+      OffsetBottom 420
+     }
+    }
+    OverlayWidgetClass "{647E43660F306C74}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
+     Name "VONChannels"
+     Slot FrameWidgetSlot "{647E43660F306C52}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 20
+      PositionY 0
+      OffsetTop 30
+      SizeX -168
+      OffsetRight 0
+      SizeY -397
+      OffsetBottom 0
+     }
+     components {
+      SCR_ListBoxComponent "{566C9415BAA54E1B}" {
+       Enabled 0
+      }
+      CRF_ListboxComponent "{647E436DB4EEB762}" {
+      }
+     }
+     {
+      ImageWidgetClass "{5DB6D18100D38307}" {
+       Prefab "{5DB6D18100D38307}"
+       "Is Visible" 0
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{64841DFA6C3BEF46}" {
+   Name "CompassHiddenFrame"
+   Slot FrameWidgetSlot "{633533821239C89D}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -365.513
+    OffsetLeft -365.513
+    PositionY 12.515
+    OffsetTop 12.515
+    SizeX 740.243
+    OffsetRight -374.73
+    SizeY 30.005
+    OffsetBottom -42.52
+   }
+   {
+    FrameWidgetClass "{64841DFA6C3BEF48}" {
+     Name "CompassFrameMoveable"
+     Slot FrameWidgetSlot "{6335338329D60774}" {
+      Anchor 0 0 1 1
+      PositionX -1102.38
+      OffsetLeft -1102.38
+      PositionY -67.785
+      OffsetTop -67.785
+      SizeX 3840
+      OffsetRight -2737.62
+      SizeY 1058
+      OffsetBottom -990.214
+     }
+     {
+      ImageWidgetClass "{64841DFA6C3BEF49}" {
+       Name "Compass"
+       Slot FrameWidgetSlot "{6335338FD7906532}" {
+        Anchor 0 0 1 1
+        PositionX 1477.99
+        OffsetLeft 1477.99
+        PositionY -5.096
+        OffsetTop -5.096
+        SizeX -2697.69
+        OffsetRight 1219.7
+        SizeY 0
+        OffsetBottom 5.096
+       }
+       Opacity 0.5
+       Texture "{AAC9CD790A7F63FA}UI/data/compass.edds"
+       Size 1920 1080
+       "Shadow Offset" 0 0
+       "Shadow Size Increase" 0.1 0.1
+       "Shadow Color" 0.095 0 0 1
+      }
+      ImageWidgetClass "{64841DFA6C3BEF4A}" {
+       Name "Compass0"
+       Slot FrameWidgetSlot "{6335338FD7906532}" {
+        Anchor 0 0 1 1
+        PositionX -448.188
+        OffsetLeft -448.188
+        PositionY -0.306
+        OffsetTop -0.306
+        SizeX -2661.9
+        OffsetRight 3110.08
+        SizeY 0
+        OffsetBottom 0.306
+       }
+       Opacity 0.5
+       Texture "{AAC9CD790A7F63FA}UI/data/compass.edds"
+       Size 1920 1080
+       "Shadow Size Increase" 0.1 0.1
+       "Shadow Color" 0.095 0 0 1
+      }
+      ImageWidgetClass "{64841DFA6C3BEF4B}" {
+       Name "Compass1"
+       Slot FrameWidgetSlot "{6335338FD7906532}" {
+        Anchor 0 0 1 1
+        PositionX 3350.02
+        OffsetLeft 3350.02
+        PositionY 0.364
+        OffsetTop 0.364
+        SizeX -2661.9
+        OffsetRight -688.115
+        SizeY 0
+        OffsetBottom -0.364
+       }
+       Opacity 0.5
+       Texture "{AAC9CD790A7F63FA}UI/data/compass.edds"
+       Size 1920 1080
+       "Shadow Size Increase" 0.1 0.1
+       "Shadow Color" 0.095 0 0 1
+      }
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{64E05E71F1A66DDA}" {
+   Name "timeLeftBackground"
+   Slot FrameWidgetSlot "{612734D48040FA7F}" {
+    Anchor 1 1 1 1
+    PositionX -300.511
+    OffsetLeft -300.511
+    PositionY -27.811
+    OffsetTop -27.811
+    SizeX 145.268
+    OffsetRight 155.243
+    SizeY 23.763
+    OffsetBottom 4.048
+   }
+   Opacity 0
+   Color 0 0 0 0.333
+   "Shadow Offset" 0.5 0.5
+  }
+  TextWidgetClass "{64E05E71F1A66A86}" {
+   Name "timeLeftTimer"
+   Slot FrameWidgetSlot "{612734D4E397B329}" {
+    Anchor 1 1 1 1
+    PositionX -299.87
+    OffsetLeft -299.87
+    PositionY -27.039
+    OffsetTop -27.039
+    SizeX 144.024
+    OffsetRight 155.846
+    SizeY 22.215
+    OffsetBottom 4.824
+   }
+   Opacity 0
+   Color 0.928 0.862 0.862 1
+   Text "Game not live"
+   "Font Size" 16
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{612734D416229D9E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  ImageWidgetClass "{64E05E71F1A66ADD}" {
+   Name "TicketOneBackground"
+   Slot FrameWidgetSlot "{612734D48040FA7F}" {
+    Anchor 1 1 1 1
+    PositionX -148.186
+    OffsetLeft -148.186
+    PositionY -28.218
+    OffsetTop -28.218
+    SizeX 142.88
+    OffsetRight 5.306
+    SizeY 24.4
+    OffsetBottom 3.818
+   }
+   Opacity 0
+   Color 0 0 0 0.333
+   "Shadow Offset" 0.5 0.5
+  }
+  ImageWidgetClass "{64E05E71F1A66B1E}" {
+   Name "TicketOneImage"
+   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
+    Anchor 1 1 1 1
+    PositionX -148.157
+    OffsetLeft -148.157
+    PositionY -29.073
+    OffsetTop -29.073
+    SizeX 29.127
+    OffsetRight 119.03
+    SizeY 25.816
+    OffsetBottom 3.257
+   }
+   Opacity 0
+   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
+   Size 64 64
+  }
+  TextWidgetClass "{64E05E71F1A66B5B}" {
+   Name "TicketOneText"
+   Slot FrameWidgetSlot "{645911A4F2183192}" {
+    Anchor 1 1 1 1
+    PositionX -121.326
+    OffsetLeft -121.326
+    PositionY -27.637
+    OffsetTop -27.637
+    SizeX 83.348
+    OffsetRight 37.978
+    SizeY 23.793
+    OffsetBottom 3.844
+   }
+   Opacity 0
+   Text "Tickets Left:"
+   "Font Size" 16
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{645911A3011BAC1C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  TextWidgetClass "{64E05E71F1A66BAD}" {
+   Name "TicketOneNumber"
+   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
+    Anchor 1 1 1 1
+    PositionX -37.883
+    OffsetLeft -37.883
+    PositionY -27.582
+    OffsetTop -27.582
+    SizeX 30.364
+    OffsetRight 7.519
+    SizeY 23.802
+    OffsetBottom 3.78
+   }
+   Opacity 0
+   Text "999"
+   "Font Size" 18
+   "Min Font Size" 15
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  ImageWidgetClass "{64E05E71F1A66B8C}" {
+   Name "TicketTwoBackground"
+   Slot FrameWidgetSlot "{612734D48040FA7F}" {
+    Anchor 1 1 1 1
+    PositionX -148.186
+    OffsetLeft -148.186
+    PositionY -55.985
+    OffsetTop -55.985
+    SizeX 142.88
+    OffsetRight 5.306
+    SizeY 24.4
+    OffsetBottom 31.585
+   }
+   Opacity 0
+   Color 0 0 0 0.333
+   "Shadow Offset" 0.5 0.5
+  }
+  TextWidgetClass "{64E05E71F1A66BD8}" {
+   Name "TicketTwoNumber"
+   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
+    Anchor 1 1 1 1
+    PositionX -37.883
+    OffsetLeft -37.883
+    PositionY -55.349
+    OffsetTop -55.349
+    SizeX 30.364
+    OffsetRight 7.519
+    SizeY 23.802
+    OffsetBottom 31.547
+   }
+   Opacity 0
+   Text "999"
+   "Font Size" 18
+   "Min Font Size" 15
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  TextWidgetClass "{64E05E71F1A6681B}" {
+   Name "TicketTwoText"
+   Slot FrameWidgetSlot "{645911A4F2183192}" {
+    Anchor 1 1 1 1
+    PositionX -121.326
+    OffsetLeft -121.326
+    PositionY -55.404
+    OffsetTop -55.404
+    SizeX 83.348
+    OffsetRight 37.978
+    SizeY 23.793
+    OffsetBottom 31.611
+   }
+   Opacity 0
+   Text "Tickets Left:"
+   "Font Size" 16
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{645911A3011BAC1C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  ImageWidgetClass "{64E05E71F1A668A0}" {
+   Name "TicketTwoImage"
+   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
+    Anchor 1 1 1 1
+    PositionX -148.157
+    OffsetLeft -148.157
+    PositionY -56.84
+    OffsetTop -56.84
+    SizeX 29.127
+    OffsetRight 119.03
+    SizeY 25.816
+    OffsetBottom 31.024
+   }
+   Opacity 0
+   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
+   Size 64 64
+  }
+  ImageWidgetClass "{64E05E71F1A668F5}" {
+   Name "TicketThreeBackground"
+   Slot FrameWidgetSlot "{612734D48040FA7F}" {
+    Anchor 1 1 1 1
+    PositionX -148.262
+    OffsetLeft -148.262
+    PositionY -83.683
+    OffsetTop -83.683
+    SizeX 142.88
+    OffsetRight 5.382
+    SizeY 24.4
+    OffsetBottom 59.283
+   }
+   Opacity 0
+   Color 0 0 0 0.333
+   "Shadow Offset" 0.5 0.5
+  }
+  ImageWidgetClass "{64E05E71F1A668D4}" {
+   Name "TicketThreeImage"
+   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
+    Anchor 1 1 1 1
+    PositionX -148.233
+    OffsetLeft -148.233
+    PositionY -84.538
+    OffsetTop -84.538
+    SizeX 29.127
+    OffsetRight 119.106
+    SizeY 25.816
+    OffsetBottom 58.722
+   }
+   Opacity 0
+   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
+   Size 64 64
+  }
+  TextWidgetClass "{64E05E71F1A66928}" {
+   Name "TicketThreeText"
+   Slot FrameWidgetSlot "{645911A4F2183192}" {
+    Anchor 1 1 1 1
+    PositionX -121.402
+    OffsetLeft -121.402
+    PositionY -83.102
+    OffsetTop -83.102
+    SizeX 83.348
+    OffsetRight 38.054
+    SizeY 23.793
+    OffsetBottom 59.309
+   }
+   Opacity 0
+   Text "Tickets Left:"
+   "Font Size" 16
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{645911A3011BAC1C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  TextWidgetClass "{64E05E71F1A6697F}" {
+   Name "TicketThreeNumber"
+   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
+    Anchor 1 1 1 1
+    PositionX -37.959
+    OffsetLeft -37.959
+    PositionY -83.047
+    OffsetTop -83.047
+    SizeX 30.364
+    OffsetRight 7.595
+    SizeY 23.802
+    OffsetBottom 59.245
+   }
+   Opacity 0
+   Text "999"
+   "Font Size" 18
+   "Min Font Size" 15
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  ImageWidgetClass "{64E05E71F1A66950}" {
+   Name "TicketFourBackground"
+   Slot FrameWidgetSlot "{612734D48040FA7F}" {
+    Anchor 1 1 1 1
+    PositionX -148.262
+    OffsetLeft -148.262
+    PositionY -111.45
+    OffsetTop -111.45
+    SizeX 142.88
+    OffsetRight 5.382
+    SizeY 24.4
+    OffsetBottom 87.05
+   }
+   Opacity 0
+   Color 0 0 0 0.333
+   "Shadow Offset" 0.5 0.5
+  }
+  TextWidgetClass "{64E05E71F1A669BD}" {
+   Name "TicketFourNumber"
+   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
+    Anchor 1 1 1 1
+    PositionX -37.959
+    OffsetLeft -37.959
+    PositionY -110.814
+    OffsetTop -110.814
+    SizeX 30.364
+    OffsetRight 7.595
+    SizeY 23.802
+    OffsetBottom 87.012
+   }
+   Opacity 0
+   Text "999"
+   "Font Size" 18
+   "Min Font Size" 15
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+  }
+  TextWidgetClass "{64E05E71F1A6672E}" {
+   Name "TicketFourText"
+   Slot FrameWidgetSlot "{645911A4F2183192}" {
+    Anchor 1 1 1 1
+    PositionX -121.402
+    OffsetLeft -121.402
+    PositionY -110.869
+    OffsetTop -110.869
+    SizeX 83.348
+    OffsetRight 38.054
+    SizeY 23.793
+    OffsetBottom 87.076
+   }
+   Opacity 0
+   Text "Tickets Left:"
+   "Font Size" 16
+   "Min Font Size" 14
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{645911A3011BAC1C}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    OutlineSize 1
+    ShadowSize 2
+    ShadowOffset 0.8 0.8
+   }
+  }
+  ImageWidgetClass "{64E05E71F1A66776}" {
+   Name "TicketFourImage"
+   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
+    Anchor 1 1 1 1
+    PositionX -148.233
+    OffsetLeft -148.233
+    PositionY -112.305
+    OffsetTop -112.305
+    SizeX 29.127
+    OffsetRight 119.106
+    SizeY 25.816
+    OffsetBottom 86.489
+   }
+   Opacity 0
+   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
+   Size 64 64
   }
  }
 }

@@ -1,0 +1,11 @@
+GenericEntity : "{54C68E438DD34265}Prefabs/Items/Equipment/Radios/Radio_R107M.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   Enabled 0
+  }
+  SCR_SoundDataComponent "{5B18D20ED0099A17}" {
+   Enabled 1
+  }
+ }
+}

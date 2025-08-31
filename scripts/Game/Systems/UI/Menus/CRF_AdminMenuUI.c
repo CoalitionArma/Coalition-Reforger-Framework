@@ -1,43 +1,69 @@
-modded enum ChimeraMenuPreset 
-{ 
-  CoalAdminMenu
-}
-
-class CRF_AdminMenu: ChimeraMenuBase 
+ /**
+ * Administrative menu for server management
+ * Provides tools for player management including respawn, gear reset, teleport, etc.
+ */
+class CRF_AdminMenu : ChimeraMenuBase
 {
-	protected CRF_ClientComponent m_clientComponent;
+	//-----------------------------------------------------------------------------
+	// UI Components
+	//-----------------------------------------------------------------------------
+	
+	// Core components
+	protected CRF_PlayerControllerManager m_clientComponent;
 	protected InputManager m_InputManager;
+	protected SCR_ChatPanel m_ChatPanel;
 	protected bool m_bFocused = true;
+	
+	// Main widgets
 	protected Widget m_wRoot;
-	protected FrameWidget m_adminMenuRoot;
+	protected Widget m_wMenuContent;
+	protected Widget m_wConfirmationMenu;
 	protected FrameWidget m_gearResetMenuRoot;
+	
+	// Game managers
 	protected PlayerManager m_playerManager;
 	protected SCR_GroupsManagerComponent m_groupManagerComponent;
+	protected CRF_AdminMenuManager m_AdminMenuManager;
+	
+	// List containers
 	protected OverlayWidget m_list1Root;
 	protected OverlayWidget m_list2Root;
 	protected OverlayWidget m_list3Root;
 	protected OverlayWidget m_list4Root;
-	protected SCR_ListBoxComponent m_list2;
+	protected OverlayWidget m_list5Root;
+	
+	// List components
 	protected SCR_ListBoxComponent m_list1;
+	protected SCR_ListBoxComponent m_list2;
 	protected SCR_ListBoxComponent m_list3;
 	protected SCR_ListBoxComponent m_list4;
+	protected SCR_ListBoxComponent m_list5;
+	
+	// Text input widgets
 	protected MultilineEditBoxWidget m_editBox1;
+	protected EditBoxWidget m_editbox2;
+	protected EditBoxWidget m_editbox3;
 	protected WindowWidget m_windowBox1;
+	
+	// Menu navigation buttons
 	protected SCR_ButtonTextComponent m_respawnMenuButton;
 	protected SCR_ButtonTextComponent m_resetGearMenuButton;
 	protected SCR_ButtonTextComponent m_teleportMenuButton;
 	protected SCR_ButtonTextComponent m_hintMenuButton;
 	protected SCR_ButtonTextComponent m_healMenuButton;
+	protected SCR_ButtonTextComponent m_ticketMenuButton;
+	protected SCR_ButtonTextComponent m_GamemodeMenuButton;
+	
+	// Action buttons
 	protected SCR_ButtonTextComponent m_actionButton;
+	protected SCR_ButtonTextComponent m_searchButton1;
+	protected SCR_ButtonTextComponent m_searchButton2;
 	protected SCR_ButtonTextComponent m_menuButton1;
 	protected SCR_ButtonTextComponent m_menuButton2;
 	protected SCR_ButtonTextComponent m_menuButton3;
 	protected SCR_ButtonTextComponent m_menuButton4;
-	protected TextWidget m_respawnMenuText;
-	protected TextWidget m_resetGearMenuText;
-	protected TextWidget m_teleportMenuText;
-	protected TextWidget m_hintMenuText;
-	protected TextWidget m_healMenuText;
+	
+	// Data collections
 	protected ref array<int> m_groupIDList = {};
 	protected ref array<int> m_allPlayers = {};
 	protected ref array<SCR_AIGroup> m_outGroups = {};
@@ -45,224 +71,319 @@ class CRF_AdminMenu: ChimeraMenuBase
 	protected ref array<Faction> m_factions = {};
 	protected ref array<string> m_selectableFactions = {};
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------General UI Members--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Ticket State
+	protected int m_iSelectedTicket = -1;
 	
+	// Gear Script List
+	protected ref CRF_GearScriptConfigStruct m_gearsetlist;
+	
+	//-----------------------------------------------------------------------------
+	// General UI Methods
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the menu when it opens
+	 * Sets up all UI elements and displays initial respawn menu
+	 */
 	override void OnMenuOpen()
 	{
+		super.OnMenuOpen();
+
+		// Get manager instances
 		m_InputManager = GetGame().GetInputManager();
 		m_playerManager = GetGame().GetPlayerManager();
 		m_groupManagerComponent = SCR_GroupsManagerComponent.GetInstance();
-		m_clientComponent = CRF_ClientComponent.GetInstance();
-		
-		//Menu Roots
+		m_clientComponent = CRF_PlayerControllerManager.GetInstance();
+		m_AdminMenuManager= CRF_AdminMenuManager.GetInstance();
+
+		// Setup menu roots
 		m_wRoot = GetRootWidget();
-		m_adminMenuRoot = FrameWidget.Cast(m_wRoot.FindWidget("AdminMenuTools"));	
+
+		// Set up menu navigation buttons
+		InitializeMenuButtons();
+
+		// Initialize chat panel
+		InitializeChat();
 		
-		//Populate the List Boxes and Buttons
-		m_list1Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List1Box"));
-		m_list1 = SCR_ListBoxComponent.Cast(m_list1Root.FindHandler(SCR_ListBoxComponent));
-		m_list2Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List2Box"));
-		m_list2 = SCR_ListBoxComponent.Cast(m_list2Root.FindHandler(SCR_ListBoxComponent));
-		m_list3Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List3Box"));
-		m_list3 = SCR_ListBoxComponent.Cast(m_list3Root.FindHandler(SCR_ListBoxComponent));
-		m_list4Root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List4Box"));
-		m_list4 = SCR_ListBoxComponent.Cast(m_list4Root.FindHandler(SCR_ListBoxComponent));
-		m_actionButton = SCR_ButtonTextComponent.GetButtonText("ActionButton", m_adminMenuRoot);	
-		m_menuButton1 = SCR_ButtonTextComponent.GetButtonText("MenuButton1", m_adminMenuRoot);
-		m_menuButton2 = SCR_ButtonTextComponent.GetButtonText("MenuButton2", m_adminMenuRoot);
-		m_menuButton3 = SCR_ButtonTextComponent.GetButtonText("MenuButton3", m_adminMenuRoot);
-		m_menuButton4 = SCR_ButtonTextComponent.GetButtonText("MenuButton4", m_adminMenuRoot);
-		m_editBox1 = MultilineEditBoxWidget.Cast(m_wRoot.FindAnyWidget("EditBox1"));
-		m_windowBox1 = WindowWidget.Cast(m_wRoot.FindAnyWidget("Window0"));
+		// Populate Admin Logs
+		PopulateAdminActionsList();
 		
-		//Initializes the Respawn Menu
-		ClearMenu();
-		InitializeRespawnMenu();
+		// Delay opening of initial menu
+		GetGame().GetCallqueue().Call(DelayedMenuInitialization);
+	}
 	
+	// Set up the initial menu (Tickets)
+	protected void DelayedMenuInitialization()
+	{
+		InitializeTicketMenu();
+		UpdateMenuButtonColors(m_ticketMenuButton);
+	}
+	
+	/**
+	 * Get a list box from the current loaded menu
+	 * @param name of the root widget of the list box
+	 */
+	protected SCR_ListBoxComponent GetListBox(string listbox, Widget widget = null)
+	{
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		Widget listRoot = OverlayWidget.Cast(widget.FindAnyWidget(listbox));
+		return SCR_ListBoxComponent.Cast(listRoot.FindHandler(SCR_ListBoxComponent));
+	}
+	
+	/**
+	 * Get a button from the current loaded menu
+	 * @param name of the root widget of the button
+	 */
+	protected SCR_ButtonTextComponent GetMenuButton(string button, Widget widget = null)
+	{
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return SCR_ButtonTextComponent.GetButtonText(button, widget);
+	}
+	
+	/**
+	 * Get a multiline edit box from the current loaded menu
+	 * @param name of the root widget of the edit box
+	 */
+	protected MultilineEditBoxWidget GetMultilineEditBox(string multiEditBox, Widget widget = null)
+	{
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return MultilineEditBoxWidget.Cast(widget.FindAnyWidget(multiEditBox));
+	}
+	
+	/**
+	 * Get a edit box from the current loaded menu
+	 * @param name of the root widget of the edit box
+	 */
+	protected EditBoxWidget GetEditBox(string EditBox, Widget widget = null)
+	{
+		if (!widget)
+			widget = m_wMenuContent;
+		
+		return EditBoxWidget.Cast(widget.FindAnyWidget(EditBox));
+	}
+	
+	/**
+	 * Initialize menu navigation buttons
+	 */
+	protected void InitializeMenuButtons()
+	{
+		// Respawn menu button
+		m_ticketMenuButton = SCR_ButtonTextComponent.GetButtonText("TicketButton", m_wRoot);
+		m_ticketMenuButton.m_OnClicked.Insert(TicketButton);
+		
+		// Respawn menu button
 		m_respawnMenuButton = SCR_ButtonTextComponent.GetButtonText("RespawnButton", m_wRoot);
 		m_respawnMenuButton.m_OnClicked.Insert(RespawnButton);
-		m_respawnMenuText = TextWidget.Cast(m_respawnMenuButton.GetRootWidget().FindWidget("RespawnText"));
-		
+
+		// Reset gear menu button
 		m_resetGearMenuButton = SCR_ButtonTextComponent.GetButtonText("ResetGearButton", m_wRoot);
 		m_resetGearMenuButton.m_OnClicked.Insert(ResetGearButton);
-		m_resetGearMenuText = TextWidget.Cast(m_resetGearMenuButton.GetRootWidget().FindWidget("ResetGearText"));
-		
+
+		// Teleport menu button
 		m_teleportMenuButton = SCR_ButtonTextComponent.GetButtonText("TeleportButton", m_wRoot);
 		m_teleportMenuButton.m_OnClicked.Insert(TeleportButton);
-		m_teleportMenuText = TextWidget.Cast(m_teleportMenuButton.GetRootWidget().FindWidget("TeleportText"));
-		
+
+		// Hint menu button
 		m_hintMenuButton = SCR_ButtonTextComponent.GetButtonText("HintButton", m_wRoot);
 		m_hintMenuButton.m_OnClicked.Insert(HintButton);
-		m_hintMenuText = TextWidget.Cast(m_hintMenuButton.GetRootWidget().FindWidget("HintText"));
-		
+
+		// Heal menu button
 		m_healMenuButton = SCR_ButtonTextComponent.GetButtonText("HealButton", m_wRoot);
 		m_healMenuButton.m_OnClicked.Insert(HealButton);
-		m_healMenuText = TextWidget.Cast(m_healMenuButton.GetRootWidget().FindWidget("HealText"));
+		
+		// Heal menu button
+		m_GamemodeMenuButton = SCR_ButtonTextComponent.GetButtonText("GamemodeButton", m_wRoot);
+		m_GamemodeMenuButton.m_OnClicked.Insert(GamemodeButton);
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	/**
+	 * Initialize the chat panel
+	 */
+	protected void InitializeChat()
+	{
+		Widget wChatPanel = GetRootWidget().FindAnyWidget("ChatPanel");
+		if (wChatPanel)
+			m_ChatPanel = SCR_ChatPanel.Cast(wChatPanel.FindHandler(SCR_ChatPanel));
+
+		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+
+		m_ChatPanel.SetAlwaysVisible(true);
+		m_ChatPanel.ExpandMessageLines(20); // Increase the amount of message lines
+		m_ChatPanel.ForceShowFullHistory(); // Load full history
+	}
+
+	/**
+	 * Clean up when menu is closed
+	 */
 	override void OnMenuClose()
 	{
+		super.OnMenuClose();
+
 		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_FE_HUD_PAUSE_MENU_CLOSE);
+		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
+		
+		if (m_wMenuContent)
+			delete m_wMenuContent;
+		
+		CloseConfirmAction();
+		
+		if (m_ChatPanel)
+			m_ChatPanel.SetAlwaysVisible(false);
+		
+		// Remove Gamemode updater
+		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
+	}
+
+	/**
+	 * Activates the Respawn menu
+	 */
+	void TicketButton()
+	{
+		UpdateMenuButtonColors(m_ticketMenuButton);
+		ClearMenu();
+		InitializeTicketMenu();
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	/**
+	 * Activates the Respawn menu
+	 */
 	void RespawnButton()
 	{
-		m_respawnMenuText.SetColor(Color.FromInt(0xffffffff));
-		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_hintMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_healMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		UpdateMenuButtonColors(m_respawnMenuButton);
 		ClearMenu();
 		InitializeRespawnMenu();
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Activates the Reset Gear menu
+	 */
 	void ResetGearButton()
 	{
-		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_resetGearMenuText.SetColor(Color.FromInt(0xffffffff));
-		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_hintMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_healMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		UpdateMenuButtonColors(m_resetGearMenuButton);
 		ClearMenu();
 		InitializeGearMenu();
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Activates the Teleport menu
+	 */
 	void TeleportButton()
 	{
-		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_teleportMenuText.SetColor(Color.FromInt(0xffffffff));
-		m_hintMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_healMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		UpdateMenuButtonColors(m_teleportMenuButton);
 		ClearMenu();
 		InitializeTeleportMenu();
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Activates the Hint menu
+	 */
 	void HintButton()
 	{
-		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_hintMenuText.SetColor(Color.FromInt(0xffffffff));
-		m_healMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
+		UpdateMenuButtonColors(m_hintMenuButton);
 		ClearMenu();
 		InitializeHintMenu();
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Activates the Heal menu
+	 */
 	void HealButton()
 	{
-		m_respawnMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_resetGearMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_teleportMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_hintMenuText.SetColor(Color.FromRGBA(115, 115, 115, 255));
-		m_healMenuText.SetColor(Color.FromInt(0xffffffff));
+		UpdateMenuButtonColors(m_healMenuButton);
 		ClearMenu();
 		InitializeHealMenu();
+	}	
+	
+	/**
+	 * Activates the Gamemode Settings menu
+	 */
+	void GamemodeButton()
+	{
+		UpdateMenuButtonColors(m_GamemodeMenuButton);
+		ClearMenu();
+		InitializeGamemodeMenu();
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	/**
+	 * Updates menu button colors to highlight the active menu
+	 * @param activeButton The button widget of the active menu button
+	 */
+	protected void UpdateMenuButtonColors(SCR_ButtonTextComponent activeButton)
+	{
+		// Default color for inactive buttons
+		Color inactiveColor = Color.FromSRGBA(23, 26, 28, 255);
+		
+		// Set all texts to inactive color
+		m_ticketMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_respawnMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_resetGearMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_teleportMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_hintMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_healMenuButton.GetRootWidget().SetColor(inactiveColor);
+		m_GamemodeMenuButton.GetRootWidget().SetColor(inactiveColor);
+		
+		// Set active button text to white
+		activeButton.GetRootWidget().SetColor(Color.FromSRGBA(18, 20, 22, 255));
+	}
+	
+	protected void UpdateMenuTitle(string title)
+	{
+		TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle")).SetText(title);
+	}
+
+	/**
+	 * Clears all menu elements and data
+	 * Resets visibility and clears event handlers
+	 */
 	void ClearMenu()
 	{
-		m_list1Root.SetVisible(false);
-		m_list2Root.SetVisible(false);
-		m_list3Root.SetVisible(false);
-		m_list4Root.SetVisible(false);
-		m_editBox1.SetVisible(false);
-		m_windowBox1.SetVisible(false);
-		m_actionButton.SetVisible(false, false);
-		m_actionButton.m_OnClicked.Clear();
-		m_menuButton1.SetVisible(false, false);
-		m_menuButton2.SetVisible(false, false);
-		m_menuButton3.SetVisible(false, false);
-		m_menuButton4.SetVisible(false, false);
-		m_menuButton1.m_OnClicked.Clear();
-		m_menuButton2.m_OnClicked.Clear();
-		m_menuButton3.m_OnClicked.Clear();
-		m_menuButton4.m_OnClicked.Clear();
-		m_list1.Clear();
-		m_list2.Clear();
-		m_list3.Clear();
-		m_list4.Clear();
-		m_list1.m_OnChanged.Clear();
-		m_list2.m_OnChanged.Clear();
-		m_list3.m_OnChanged.Clear();
-		m_list4.m_OnChanged.Clear();
-		m_editBox1.SetText("");
-		
+		// Remove menu widget
+		if (m_wMenuContent)
+			delete m_wMenuContent;
+
+		// Clear data collections
 		m_outGroups.Clear();
 		m_spawnPoints.Clear();
 		m_groupIDList.Clear();
 		m_allPlayers.Clear();
 		m_factions.Clear();
 		m_selectableFactions.Clear();
-	
-		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List3Text")).SetText("");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List4Text")).SetText("");
+		
+		// Remove Gamemode updater
+		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Populates a list box with available roles
+	 * @param list The list box to populate with roles
+	 */
 	void AddRoles(SCR_ListBoxComponent list)
 	{
-		list.AddItem("COY");
-		list.AddItem("MO");
-		list.AddItem("FO");
-		list.AddItem("JTAC");
-		list.AddItem("PL");
-		list.AddItem("Medic");
-		list.AddItem("SL");
-		list.AddItem("RTO");
-		list.AddItem("TL");
-		list.AddItem("AR");
-		list.AddItem("AAR");
-		list.AddItem("AT");
-		list.AddItem("AAT");
-		list.AddItem("Gren");
-		list.AddItem("Demo");
-		list.AddItem("Rifleman");
-		list.AddItem("MMG");
-		list.AddItem("AMMG");
-		list.AddItem("HMG");
-		list.AddItem("AHMG");
-		list.AddItem("Sniper");
-		list.AddItem("Spotter");
-		list.AddItem("MAT");
-		list.AddItem("AMAT");
-		list.AddItem("HAT");
-		list.AddItem("AHAT");
-		list.AddItem("AA");
-		list.AddItem("AAA");
-		list.AddItem("VehLead");
-		list.AddItem("VehDriver");
-		list.AddItem("VehGunner");
-		list.AddItem("VehLoader");
-		list.AddItem("IndirectLead");	
-		list.AddItem("IndirectGunner");
-		list.AddItem("IndirectLoader");
-		list.AddItem("Pilot");
-		list.AddItem("CrewChief");
-		list.AddItem("LogiLead");
-		list.AddItem("LogiRunner");
-		list.AddItem("DroneOp");
-		list.AddItem("1SG");
-		list.AddItem("PSG");
+		array<string> roleNames = {};
+		SCR_Enum.GetEnumNames(CRF_EGearRole, roleNames);
+		
+		foreach (string role : roleNames)
+		{
+			list.AddItem(role);
+		}
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected int GetPlayerIdFromName(string name)
+
+	/**
+	 * Gets player ID from player name
+	 * @param name The player name to search for
+	 * @return The matching player ID or 0 if not found
+	 */
+	protected int GetplayerIdFromName(string name)
 	{
 		array<int> playerIds = {};
 		GetGame().GetPlayerManager().GetPlayers(playerIds);
+		
 		foreach (int pid : playerIds)
 		{
 			if (GetGame().GetPlayerManager().GetPlayerName(pid) == name)
@@ -271,215 +392,31 @@ class CRF_AdminMenu: ChimeraMenuBase
 
 		return 0;
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	string GetPrefab(int groupID, int index)
+
+	/**
+	 * Gets the resource prefab for a given group and role
+	 * @param groupID The group ID
+	 * @param index The role index
+	 * @return The resource name for the corresponding prefab
+	 */
+	ResourceName GetPrefab(int groupID, int index)
 	{
-		string factionKey = m_groupManagerComponent.FindGroup(groupID).GetFaction().GetFactionKey();
-		string prefab;
-		if(factionKey == "BLUFOR")
-		{
-			switch(index)
-			{
-				case 0:    {prefab = "{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et"; 				break;}
-				case 1:    {prefab = "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et"; 				break;}
-				case 2:    {prefab = "{2A15A7803EAF5EE9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_FO_P.et"; 				break;}
-				case 3:    {prefab = "{E3D72085967E1840}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_JTAC_P.et"; 				break;}
-				case 4:    {prefab = "{C62B8D48AAA03249}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PL_P.et"; 				break;}
-				case 5:    {prefab = "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"; 			break;}
-				case 6:    {prefab = "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"; 				break;}
-				case 7:    {prefab = "{4BCB20FFA9A0D6BF}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_RTO_P.et"; 				break;}
-				case 8:    {prefab = "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et"; 				break;}
-				case 9:    {prefab = "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et"; 				break;}
-				case 10:   {prefab = "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et"; 				break;}
-				case 11:   {prefab = "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et"; 				break;}
-				case 12:   {prefab = "{4526D15A702D0E27}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAT_P.et"; 				break;}
-				case 13:   {prefab = "{EC7EF569E938BD63}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Gren_P.et"; 				break;}
-				case 14:   {prefab = "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"; 				break;}
-				case 15:   {prefab = "{6F99DE8453E6B423}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Rifleman_P.et";			break;}
-				case 16:   {prefab = "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et"; 				break;}
-				case 17:   {prefab = "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et"; 				break;}
-				case 18:   {prefab = "{B6AEA6F0469C66DD}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HMG_P.et"; 				break;}
-				case 19:   {prefab = "{997F8FE3C2C23C6C}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHMG_P.et"; 				break;}
-				case 20:   {prefab = "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et"; 			break;}
-				case 21:   {prefab = "{49CC52FEE609771E}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Spotter_P.et"; 			break;}
-				case 22:   {prefab = "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et"; 				break;}
-				case 23:   {prefab = "{244B3033D92FF7D0}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMAT_P.et"; 				break;}
-				case 24:   {prefab = "{9E133FF6147DCF5A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HAT_P.et"; 				break;}
-				case 25:   {prefab = "{B1C216E5902395EB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHAT_P.et"; 				break;}
-				case 26:   {prefab = "{6B23BDB84254123F}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AA_P.et"; 				break;}
-				case 27:   {prefab = "{FADE5BED859475A2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAA_P.et"; 				break;}
-				case 28:   {prefab = "{478FBA09EDDFC439}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehLead_P.et"; 			break;}	
-				case 29:   {prefab = "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et"; 		break;}
-				case 30:   {prefab = "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"; 		break;}
-				case 31:   {prefab = "{1E94245F486A71E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehLoader_P.et"; 		break;}
-				case 32:   {prefab = "{DDFC9128CBEF1AAB}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLead_P.et"; 		break;}
-				case 33:   {prefab = "{E6875FC6CEED7B4B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectGunner_P.et"; 	break;}
-				case 34:   {prefab = "{4ACCBC7F35D46EF7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_IndirectLoader_P.et"; 	break;}
-				case 35:   {prefab = "{810337D2F231A02D}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Pilot_P.et"; 			break;}
-				case 36:   {prefab = "{9441BEBB9DF7FC1B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_CrewChief_P.et"; 		break;}
-				case 37:   {prefab = "{48FB5BBC1A942F28}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiLead_P.et"; 			break;}
-				case 38:   {prefab = "{EB5C0AB8268A5C43}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_LogiRunner_P.et"; 		break;}
-				case 39:   {prefab = "{A49CC762AEE2A230}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_DroneOp_P.et"; 			break;}
-				case 40:   {prefab = "{F5FDAAADCCD3C2F9}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_1SG_P.et"; 				break;}
-				case 41:   {prefab = "{6BB714F2C0835B67}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_PSG_P.et"; 				break;}			
-				default:   {prefab = "{6F99DE8453E6B423}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Rifleman_P.et"; 			break;}
-			}
-		}else if(factionKey == "OPFOR")
-		{
-			switch(index)
-			{
-				case 0:    {prefab = "{37DE97333EEFF4BB}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_COY_P.et"; 				break;}
-				case 1:    {prefab = "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et"; 					break;}
-				case 2:    {prefab = "{7A2D59429430D672}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_FO_P.et"; 					break;}
-				case 3:    {prefab = "{9AA6E3E5E0314052}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_JTAC_P.et"; 				break;}
-				case 4:    {prefab = "{9613738A003FBAD2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_PL_P.et"; 					break;}
-				case 5:    {prefab = "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"; 				break;}
-				case 6:    {prefab = "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et"; 					break;}
-				case 7:    {prefab = "{CF0D98BF4CA5E97F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_RTO_P.et"; 			    break;}
-				case 8:    {prefab = "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et"; 					break;}
-				case 9:    {prefab = "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et"; 					break;}
-				case 10:   {prefab = "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et"; 				break;}
-				case 11:   {prefab = "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"; 					break;}
-				case 12:   {prefab = "{C1E0691A952831E7}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAT_P.et";					break;}
-				case 13:   {prefab = "{950F36099F77E571}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Gren_P.et"; 				break;}
-				case 14:   {prefab = "{FCBD0EC1703ECD14}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Demo_P.et"; 				break;}
-				case 15:   {prefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"; 			break;}
-				case 16:   {prefab = "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et"; 				break;}
-				case 17:   {prefab = "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"; 				break;}
-				case 18:   {prefab = "{32681EB0A399591D}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_HMG_P.et"; 				break;}
-				case 19:   {prefab = "{4100FF2BAF7A9D91}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AHMG_P.et"; 				break;}
-				case 20:   {prefab = "{C3569C12A6509E8A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Sniper_P.et"; 				break;}
-				case 21:   {prefab = "{C7C9C22599C40225}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Spotter_P.et"; 			break;}
-				case 22:   {prefab = "{8F5CA160B87492A1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MAT_P.et"; 				break;}
-				case 23:   {prefab = "{5D3AF353AF60AFC2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMAT_P.et"; 				break;}
-				case 24:   {prefab = "{1AD587B6F178F09A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_HAT_P.et"; 				break;}
-				case 25:   {prefab = "{C8B3D585E66CCDF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AHAT_P.et"; 				break;}
-				case 26:   {prefab = "{3B1B437AE8CB9AA4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AA_P.et"; 					break;}
-				case 27:   {prefab = "{7E18E3AD60914A62}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAA_P.et"; 				break;}
-				case 28:   {prefab = "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"; 			break;}	
-				case 29:   {prefab = "{F513E3FE0CE0E250}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehDriver_P.et"; 			break;}
-				case 30:   {prefab = "{24671DF0A9604F33}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehGunner_P.et"; 			break;}
-				case 31:   {prefab = "{63E6DCB5FBA18707}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLoader_P.et"; 			break;}
-				case 32:   {prefab = "{1A48A3C1A69E573E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectLead_P.et"; 		break;}
-				case 33:   {prefab = "{48E86145C5152AD5}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectGunner_P.et"; 		break;}
-				case 34:   {prefab = "{0F69A00097D4E2E1}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_IndirectLoader_P.et"; 		break;}
-				case 35:   {prefab = "{5014F1D05348F21E}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Pilot_P.et"; 				break;}
-				case 36:   {prefab = "{E93346512E3C0AFA}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_CrewChief_P.et"; 			break;}
-				case 37:   {prefab = "{E5250C1BEBC038A2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_LogiLead_P.et";		 	break;}
-				case 38:   {prefab = "{7043203A0D1F11AF}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_LogiRunner_P.et"; 			break;}
-				case 39:   {prefab = "{2A9957B9D12FD70B}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_DroneOp_P.et"; 			break;}
-				case 40:   {prefab = "{713B12ED29D6FD39}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_1SG_P.et"; 				break;}
-				case 41:   {prefab = "{EF71ACB2258664A7}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_PSG_P.et"; 				break;}
-				default:   {prefab = "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et"; 			break;}
-			}
-		}else if(factionKey == "INDFOR")
-		{
-			switch(index)
-			{
-				case 0:    {prefab = "{A53B8AB60784E018}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_COY_P.et"; 				break;}
-				case 1:    {prefab = "{97C13390010A9E27}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MO_P.et"; 				break;}
-				case 2:    {prefab = "{6FD242A0403EF439}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_FO_P.et"; 				break;}
-				case 3:    {prefab = "{6A9D383435227F56}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_JTAC_P.et"; 				break;}
-				case 4:    {prefab = "{83EC6868D4319899}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PL_P.et"; 				break;}
-				case 5:    {prefab = "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"; 			break;}
-				case 6:    {prefab = "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"; 				break;}
-				case 7:    {prefab = "{5DE8853A75CEFDDC}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_RTO_P.et"; 				break;}
-				case 8:    {prefab = "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et"; 				break;}
-				case 9:    {prefab = "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et"; 				break;}
-				case 10:   {prefab = "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et"; 				break;}
-				case 11:   {prefab = "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et"; 				break;}
-				case 12:   {prefab = "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"; 				break;}
-				case 13:   {prefab = "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"; 				break;}
-				case 14:   {prefab = "{0C86D510A52DF210}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Demo_P.et";				break;}
-				case 15:   {prefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"; 			break;}
-				case 16:   {prefab = "{350425E3D3FE2F85}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MMG_P.et"; 				break;}
-				case 17:   {prefab = "{85BCB18428923941}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AMMG_P.et"; 				break;}
-				case 18:   {prefab = "{A08D03359AF24DBE}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_HMG_P.et"; 				break;}
-				case 19:   {prefab = "{10359752619E5B7A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AHMG_P.et"; 				break;}
-				case 20:   {prefab = "{65F1BBC392B2B484}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Sniper_P.et"; 			break;}
-				case 21:   {prefab = "{96BCA2BC7A89F2CF}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Spotter_P.et"; 			break;}
-				case 22:   {prefab = "{1DB9BCE5811F8602}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MAT_P.et"; 				break;}
-				case 23:   {prefab = "{AD0128827A7390C6}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AMAT_P.et"; 				break;}
-				case 24:   {prefab = "{88309A33C813E439}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_HAT_P.et"; 				break;}
-				case 25:   {prefab = "{38880E54337FF2FD}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AHAT_P.et"; 				break;}
-				case 26:   {prefab = "{2EE458983CC5B8EF}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AA_P.et"; 				break;}
-				case 27:   {prefab = "{ECFDFE2859FA5EC1}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAA_P.et";				break;}
-				case 28:   {prefab = "{C74239418F3417B9}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehLead_P.et"; 			break;}	
-				case 29:   {prefab = "{FE9C0A1600114796}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehDriver_P.et"; 		break;}
-				case 30:   {prefab = "{2FE8F418A591EAF5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehGunner_P.et"; 		break;}
-				case 31:   {prefab = "{6869355DF75022C1}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_VehLoader_P.et"; 		break;}
-				case 32:   {prefab = "{B28C067E6191CC69}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_IndirectLead_P.et"; 		break;}
-				case 33:   {prefab = "{C6A54A2FF38C9845}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_IndirectGunner_P.et"; 	break;}
-				case 34:   {prefab = "{81248B6AA14D5071}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_IndirectLoader_P.et"; 	break;}
-				case 35:   {prefab = "{ED774ED0660B2DCD}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Pilot_P.et"; 			break;}
-				case 36:   {prefab = "{E2BCAFB922CDAF3C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_CrewChief_P.et"; 		break;}
-				case 37:   {prefab = "{6E8D0EF9755740F1}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_LogiLead_P.et"; 			break;}
-				case 38:   {prefab = "{AADD26801A0155A4}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_LogiRunner_P.et"; 		break;}
-				case 39:   {prefab = "{06E225B70C43C545}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_DroneOp_P.et"; 			break;}
-				case 40:   {prefab = "{E3DE0F6810BDE99A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_1SG_P.et"; 				break;}
-				case 41:   {prefab = "{7D94B1371CED7004}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_PSG_P.et"; 				break;}	
-				default:   {prefab = "{A303C25424BC7149}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Rifleman_P.et"; 			break;}
-			}
-		}else if(factionKey == "CIV")
-		{
-			switch(index)
-			{
-				case 0:    {prefab = "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et"; 					break;}
-				case 1:    {prefab = "{B409C0B57C8ACCBF}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_MO_P.et"; 					break;}
-				case 2:    {prefab = "{4C1AB1853DBEA6A1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_FO_P.et"; 					break;}
-				case 3:    {prefab = "{19854386F78A1A01}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_JTAC_P.et"; 				break;}
-				case 4:    {prefab = "{A0249B4DA9B1CA01}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_PL_P.et"; 					break;}
-				case 5:    {prefab = "{8C7C798DDB2E1DDC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Medic_P.et"; 				break;}
-				case 6:    {prefab = "{AA81CB001FA13986}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_SL_P.et"; 					break;}
-				case 7:    {prefab = "{9E7073842E6135B7}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_RTO_P.et"; 			    	break;}
-				case 8:    {prefab = "{7807FB0686D69D84}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_TL_P.et"; 					break;}
-				case 9:    {prefab = "{0F04738DCBE78DEC}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AR_P.et"; 					break;}
-				case 10:   {prefab = "{2D4DD0A688F7F131}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAR_P.et"; 					break;}
-				case 11:   {prefab = "{B2D4210AB4FC91F2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AT_P.et"; 					break;}
-				case 12:   {prefab = "{909D8221F7ECED2F}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAT_P.et"; 					break;}
-				case 13:   {prefab = "{162C966A88CCBF22}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Gren_P.et"; 				break;}
-				case 14:   {prefab = "{7F9EAEA267859747}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Demo_P.et"; 				break;}
-				case 15:   {prefab = "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et"; 			break;}
-				case 16:   {prefab = "{F69CD35D8851E7EE}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_MMG_P.et"; 					break;}
-				case 17:   {prefab = "{F6A4CA36EA3A5C16}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AMMG_P.et"; 				break;}
-				case 18:   {prefab = "{6315F58BC15D85D5}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_HMG_P.et"; 					break;}
-				case 19:   {prefab = "{632DECE0A3363E2D}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AHMG_P.et"; 				break;}
-				case 20:   {prefab = "{6B2ECC0633190E43}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Sniper_P.et"; 				break;}
-				case 21:   {prefab = "{0C3A7A5513878002}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Spotter_P.et"; 			break;}
-				case 22:   {prefab = "{DE214A5BDAB04E69}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_MAT_P.et"; 					break;}
-				case 23:   {prefab = "{DE195330B8DBF591}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AMAT_P.et"; 				break;}
-				case 24:   {prefab = "{4BA86C8D93BC2C52}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_HAT_P.et"; 					break;}
-				case 25:   {prefab = "{4B9075E6F1D797AA}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AHAT_P.et"; 				break;}
-				case 26:   {prefab = "{0D2CABBD4145EA77}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AA_P.et"; 					break;}
-				case 27:   {prefab = "{2F650896025596AA}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_AAA_P.et"; 					break;}
-				case 28:   {prefab = "{468195F8659D88FE}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehLead_P.et"; 			break;}
-				case 29:   {prefab = "{A6410407E82601E2}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehDriver_P.et"; 			break;}
-				case 30:   {prefab = "{7735FA094DA6AC81}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehGunner_P.et"; 			break;}
-				case 31:   {prefab = "{30B43B4C1F6764B5}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_VehLoader_P.et"; 			break;}
-				case 32:   {prefab = "{988527F813641915}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_IndirectLead_P.et"; 		break;}
-				case 33:   {prefab = "{D5FEC649E024636E}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_IndirectGunner_P.et"; 		break;}
-				case 34:   {prefab = "{927F070CB2E5AB5A}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_IndirectLoader_P.et"; 		break;}
-				case 35:   {prefab = "{425F553B6F1E8E66}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Pilot_P.et"; 				break;}
-				case 36:   {prefab = "{BA61A1A8CAFAE948}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_CrewChief_P.et"; 			break;}
-				case 37:   {prefab = "{192BB338081045AF}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_LogiLead_P.et"; 			break;}
-				case 38:   {prefab = "{598D81084B4F5CDA}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_LogiRunner_P.et"; 			break;}
-				case 39:   {prefab = "{FA2F9B99D8CBB8A6}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_DroneOp_P.et"; 			break;}
-				case 40:   {prefab = "{2046F9D64B1221F1}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_1SG_P.et"; 					break;}
-				case 41:   {prefab = "{BE0C47894742B86F}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_PSG_P.et"; 					break;}	
-				default:   {prefab = "{71EF8F2C5207403C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Rifleman_P.et"; 			break;}
-			}
-		} else
-		{
-			PrintFormat("CRF_ADMINMENU - ERROR | FACTION KEY: %1 DOES NOT MATCH ANY FACTION KEY IN GEARSCRIPT", factionKey);
-		}
-		
+		SCR_AIGroup group = m_groupManagerComponent.FindGroup(groupID);
+		if (!group)
+			return ResourceName.Empty;
+			
+		string factionKey = group.GetFaction().GetFactionKey();
+		ResourceName prefab = CRF_RoleHelper.RoleToResource(index, factionKey);
 		return prefab;
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  	override void OnMenuFocusLost()
+
+	/**
+	 * Handle loss of menu focus
+	 */
+	override void OnMenuFocusLost()
 	{
+		super.OnMenuFocusLost();
+
 		m_bFocused = false;
 		m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_OPEN, EActionTrigger.DOWN, Close);
 		m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_BACK, EActionTrigger.DOWN, Close);
@@ -488,10 +425,25 @@ class CRF_AdminMenu: ChimeraMenuBase
 			m_InputManager.RemoveActionListener(UIConstants.MENU_ACTION_BACK_WB, EActionTrigger.DOWN, Close);
 		#endif
 	}
+	
+	/**
+	 * Update chat while menu is active
+	 */
+	override void OnMenuUpdate(float tDelta)
+	{
+		super.OnMenuUpdate(tDelta);
 
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		if (m_ChatPanel)
+			m_ChatPanel.OnUpdateChat(tDelta);
+	}
+	
+	/**
+	 * Handle regaining menu focus
+	 */
 	override void OnMenuFocusGained()
 	{
+		super.OnMenuFocusGained();
+		
 		m_bFocused = true;
 		m_InputManager.AddActionListener(UIConstants.MENU_ACTION_OPEN, EActionTrigger.DOWN, Close);
 		m_InputManager.AddActionListener(UIConstants.MENU_ACTION_BACK, EActionTrigger.DOWN, Close);
@@ -500,454 +452,1557 @@ class CRF_AdminMenu: ChimeraMenuBase
 			m_InputManager.AddActionListener(UIConstants.MENU_ACTION_BACK_WB, EActionTrigger.DOWN, Close);
 		#endif
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------Gear Menu UI Members------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	
+
+	//-----------------------------------------------------------------------------
+	// Gear Menu Methods
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the Gear Reset menu
+	 * Allows admins to reset player gear to role defaults
+	 */
 	void InitializeGearMenu()
 	{
-		m_list1Root.SetVisible(true);
-		m_list2Root.SetVisible(true);
-		m_actionButton.SetVisible(true, false);
-		m_menuButton1.SetVisible(true, false);
-		m_menuButton2.SetVisible(true, false);
-		m_menuButton3.SetVisible(true, false);
-		m_actionButton.m_OnClicked.Insert(ResetGear);
-		m_menuButton1.m_OnClicked.Insert(AddLeaderRadio);
-		m_menuButton2.m_OnClicked.Insert(AddGIRadio);
-		m_menuButton3.m_OnClicked.Insert(AddBinos);
-		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Reset Gear");
-		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add Leaders Radio");
-		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add GI Radio");
-		TextWidget.Cast(m_menuButton3.GetRootWidget().FindWidget("MenuButtonText")).SetText("Add Binos");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Players");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Roles");
-		m_list1.m_OnChanged.Insert(UpdateDefaultGear);
 		
-		m_playerManager.GetPlayers(m_allPlayers);
+		// Load menu content widget
+        m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{5C7EC9AAE498F6B6}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/GearMenu.layout");
+		if (!m_wMenuContent)
+			return;
 		
-		TStringArray playerNames = {};
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent roleList = GetListBox("RoleListBox0");
+		if (!playerList || !roleList)
+			return;
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		// Load Buttons
+		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
+		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
+		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
+		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
+		SCR_ButtonTextComponent menuButton3 = GetMenuButton("MenuButton3");
+		SCR_ButtonTextComponent menuButton4 = GetMenuButton("MenuButton4");
+		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
+			return;
 		
-		playerNames.Sort(false);
+		// Setup button event handlers
+		searchButton0.m_OnClicked.Insert(SearchList0);
+		menuButton0.m_OnClicked.Insert(ResetGear);
+		menuButton1.m_OnClicked.Insert(AddLeaderRadio);
+		menuButton2.m_OnClicked.Insert(AddGIRadio);
+		menuButton3.m_OnClicked.Insert(AddBinos);
+		menuButton4.m_OnClicked.Insert(AddMap);
 		
-		foreach(string name : playerNames)
-		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID))
-			{
-				m_list1.AddItem(string.Format("%1", name));
-			}
-		}
+		// Setup selection change handler
+		playerList.m_OnChanged.Insert(UpdateDefaultGear);
 		
-		AddRoles(m_list2);
+		// Change menu title
+		UpdateMenuTitle("Gear Reset");
+
+		// Populate player list
+		PopulatePlayerList(playerList);
+		
+		// Add available roles
+		AddRoles(roleList);
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	/**
+	 * Populates a list with active players
+	 * @param list The list to populate with player names
+	 */
+	protected void PopulatePlayerList(SCR_ListBoxComponent list)
+	{
+		// Get all players
+		m_playerManager.GetPlayers(m_allPlayers);
+		TStringArray playerNames = {};
+
+		// Get and sort player names
+		foreach (int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
+
+		playerNames.Sort(false);
+
+		// Add players to list if they're in a group and not spectating
+		foreach (string name : playerNames)
+		{
+			int playerId = GetplayerIdFromName(name);
+			
+			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
+				continue;
+				
+			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+				continue;
+			
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
+		}
+	}
+
+	/**
+	 * Updates default gear selection based on player selection
+	 */
 	void UpdateDefaultGear()
 	{
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent roleList = GetListBox("RoleListBox0");
+		if (!playerList || !roleList)
+			return;
 		
-		for(int i = 0; i < m_list2.GetItemCount(); i++)
+		// If no player selected, return
+		if (playerList.GetSelectedItem() < 0)
+			return;
+			
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+
+		// Find the player's role in the list and select it
+		for (int i = 0; i < roleList.GetItemCount(); i++)
 		{
-			if(CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GSR").Contains("_" + TextWidget.Cast(m_list2.GetElementComponent(i).GetRootWidget().FindAnyWidget("Text")).GetText() + "_P")) // GSR = Gear Script Resource
+			if (i == CRF_RoleHelper.ResourceToRole(CRF_SlottingManager.GetInstance().GetPlayerSlotResource(playerId)))
 			{
-				m_list2.SetItemSelected(i, true);
+				roleList.SetItemSelected(i, true);
 				return;
 			}
 		}
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Adds leadership radio to selected player
+	 */
 	void AddLeaderRadio()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
 			return;
-		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerID, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey()).m_rLeadershipRadiosPrefab, true);
+
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		// Get the player's group and faction
+		SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+		if (!playerGroup)
+			return;
+			
+		// Get radio prefab and add item
+		string factionKey = playerGroup.GetFaction().GetFactionKey();
+		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rLeadershipRadiosPrefab;
+		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Adds GI radio to selected player
+	 */
 	void AddGIRadio()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
 			return;
-		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerID, CRF_GamemodeComponent.GetInstance().GetGearScriptSettings(m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey()).m_rGIRadiosPrefab, true);
+
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		// Get the player's group and faction
+		SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+		if (!playerGroup)
+			return;
+			
+		// Get radio prefab and add item
+		string factionKey = playerGroup.GetFaction().GetFactionKey();
+		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rGIRadiosPrefab;
+		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Adds binoculars to selected player
+	 */
 	void AddBinos()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
 			return;
 		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.AddItem(playerID, GetBinos(playerID), true);
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		// Get binoculars prefab and add item
+		string binosPrefab = GetBinos(playerId);
+		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, binosPrefab, true);
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	string GetBinos(int playerID)
+	/**
+	* Adds map to selected player
+	*/
+	void AddMap()
 	{
-		string factionKey = m_groupManagerComponent.GetPlayerGroup(playerID).GetFaction().GetFactionKey();
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
 		
-		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(CRF_GamemodeComponent.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()));
-		
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		//Add map
+		const string mapPrefab = "{13772C903CB5E4F7}Prefabs/Items/Equipment/Maps/PaperMap_01_folded.et";
+		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, mapPrefab, true);
+	}
+
+	/**
+	 * Gets binoculars prefab for player's faction
+	 * @param playerId The player ID to get binoculars for
+	 * @return The binoculars prefab resource name
+	 */
+	string GetBinos(int playerId)
+	{
+		// Get player's group and faction
+		SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+		if (!playerGroup)
+			return "";
+			
+		string factionKey = playerGroup.GetFaction().GetFactionKey();
+
+		// Load the gear config for the faction
+		CRF_GearScriptConfig gearConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(CRF_GearscriptManager.GetInstance().GetGearScriptResource(factionKey)).GetResource().ToBaseContainer()
+		));
+
 		return gearConfig.m_DefaultFactionGear.m_sLeadershipBinocularsPrefab;
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Reset a player's gear to their role default
+	 */
 	void ResetGear()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent roleList = GetListBox("RoleListBox0");
+		if (!playerList || !roleList)
 			return;
 		
-		if(m_list2.GetSelectedItem() < 0)
+		if (playerList.GetSelectedItem() < 0)
 			return;
-		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		int groupID = m_groupManagerComponent.GetPlayerGroup(playerID).GetGroupID();
-		string prefab = GetPrefab(groupID, m_list2.GetSelectedItem());
-		
-		if(prefab.IsEmpty())
+
+		if (roleList.GetSelectedItem() < 0)
 			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		// Get player's group
+		SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+		if (!playerGroup)
+			return;
+			
+		int groupID = playerGroup.GetGroupID();
 		
-		m_clientComponent.ResetGear(playerID, prefab, true);
+		// Get the prefab for the selected role
+		ResourceName prefab = GetPrefab(groupID, roleList.GetSelectedItem());
+		if (prefab.IsEmpty())
+			return;
+
+		// Reset player's gear
+		CRF_RplToAuthorityManager.GetInstance().ResetGear(playerId, prefab, true);
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------Resspawn Menu UI Members--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	
-	void InitializeRespawnMenu()
+	//-----------------------------------------------------------------------------
+	// Ticket Menu Methods
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the ticket menu
+	 * Allows admins to see admin messages
+	 */
+	void InitializeTicketMenu()
 	{
-		m_list1Root.SetVisible(true);
-		m_list2Root.SetVisible(true);
-		m_list3Root.SetVisible(true);
-		m_actionButton.SetVisible(true, false);
-		m_actionButton.m_OnClicked.Insert(RespawnPlayer);
-		m_list1.m_OnChanged.Insert(UpdateSpawnGroup);
-		m_list2.m_OnChanged.Insert(UpdateSpawnpoint);
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{FD7582ED92D34192}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/TicketMenu.layout");
+		if (!m_wMenuContent)
+			return;
 		
-		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Respawn Player");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Dead Players");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Groups");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List3Text")).SetText("Spawnpoints");
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
 		
-		m_playerManager.GetPlayers(m_allPlayers);
-		m_groupManagerComponent.GetAllPlayableGroups(m_outGroups);
+		// Load List Boxes
+		SCR_ButtonTextComponent replyButton = GetMenuButton("MenuButton0");
+		SCR_ButtonTextComponent assignButton = GetMenuButton("MenuButton1");
+		SCR_ButtonTextComponent closeButton = GetMenuButton("MenuButton2");
+		SCR_ButtonTextComponent searchButton = GetMenuButton("SearchButton0");
+		if (!replyButton || !assignButton || !closeButton || !searchButton)
+			return;
 		
+		// Setup button event handlers
+		replyButton.m_OnClicked.Insert(ReplyToTicket);
+		assignButton.m_OnClicked.Insert(AssignAdminToTicket);
+		closeButton.m_OnClicked.Insert(CloseAdminTicket);
+		searchButton.m_OnClicked.Insert(SearchList0);
+		
+		// Setup selection change handlers
+		playerList.m_OnChanged.Insert(PopulateTicketMessages);
+		
+		// Change title of the menu
+		UpdateMenuTitle("Tickets");
+
+		// Populate list of players that need help
+		PopulateOpenTicketList();
+	}
+	
+	/**
+	* Assign a admin to a ticket
+	*/
+	void AssignAdminToTicket()
+	{
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		// Check if a ticket is selected
+		if (playerList.GetSelectedItem() == -1 && m_iSelectedTicket == -1)
+			return;
+		
+		// Get ID of the admin
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Add the reply to ticket
+		CRF_RplToAuthorityManager.GetInstance().AssignAdminTicket(m_iSelectedTicket, adminID, false);
+	}
+	
+	/**
+	* Assign a admin to a ticket
+	*/
+	void CloseAdminTicket()
+	{
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		// Get ID of the admin
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Reinitilaize the ticket menu
+		TicketButton();
+		
+		// Check if a ticket is selected
+		if (playerList.GetSelectedItem() == -1 && m_iSelectedTicket == -1)
+			return;
+		
+		// Broadcast the removal of ticket
+		CRF_RplToAuthorityManager.GetInstance().CloseAdminTicket(m_iSelectedTicket, adminID, true);
+		
+		// Deselect ticket
+		m_iSelectedTicket = -1;
+	}
+	
+	/**
+	* Reply to a ticket selected in list1
+	*/
+	void ReplyToTicket()
+	{
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		// Load Reply Box
+		MultilineEditBoxWidget replyBox = GetMultilineEditBox("ReplyBox0");
+		if (!replyBox)
+			return;
+		
+		// If the reply box is empty
+		if (replyBox.GetText() == "")
+			return;
+		
+		// If no player is selected or if one was selected before a refresh
+		if (playerList.GetSelectedItem() < 0 && m_iSelectedTicket < 1)
+			return;
+		
+		// Get player ID of the admin replying to the message
+		int adminID = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Get the text for the reply box
+		string reply = replyBox.GetText();
+		
+		// Add reply to tickets array
+		CRF_RplToAuthorityManager.GetInstance().ReplyAdminMessage(reply, m_iSelectedTicket, adminID, false);
+		
+		// Clear Text in reply box
+		replyBox.SetText("");
+	}
+	
+	/**
+	* Populates the list of messages selected in list 1
+	*/
+	void PopulateTicketMessages()
+	{		
+		int playerID = -1;
+
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent ticketMessagesList = GetListBox("TicketMessagesListBox0");
+		if (!playerList || !ticketMessagesList)
+			return;
+		
+		// Clear old Messages 
+		ticketMessagesList.Clear();
+		
+		// Check if a ticket was selected either via the list or pre ui refresh
+		if (playerList.GetSelectedItem() != -1)
+		{
+			// Get selected player ID
+			string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+			playerID = GetplayerIdFromName(playerName);
+			if (playerID == 0)
+				return;
+			
+			// Store selected ticket for use after ui refresh
+			m_iSelectedTicket = playerID;
+		}
+		else if (m_iSelectedTicket != -1)
+			// Get the stored ticket selected before refresh
+			playerID = m_iSelectedTicket;
+		else
+			return;
+
+		// Get messages in the ticket
+		array<ref CRF_TicketMessageData> messages = m_AdminMenuManager.GetTicketMessages(playerID);
+		if (!messages)
+			return;
+		
+		// Format and add the messages to the list
+		foreach (int i, ref CRF_TicketMessageData message : messages)
+		{
+			ticketMessagesList.AddItem(string.Format("%1 - %2: %3", message.timestamp, message.sender, message.msg));
+		}
+
+	}
+		
+	/**
+	 * Populates the list of players that need help
+	 */
+	void PopulateOpenTicketList()
+	{
 		TStringArray playerNames = {};
+
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		// Grab player ids that have open tickets
+		array<int> openTickets = m_AdminMenuManager.GetOpenTickets();
 		
+		// Clear old ticket list
+		playerList.Clear();
+
+		// Get and sort player names
+		foreach (int playerId : openTickets)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
+
 		playerNames.Sort(false);
-		
-		foreach(string name : playerNames)
-		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(SCR_FactionManager.SGetPlayerFaction(playerID).GetFactionKey() == "SPEC")
-			{
-				m_list1.AddItem(string.Format("%1", name));
-			}
+
+		// Open tickets to list
+		foreach (string name : playerNames)
+		{
+			playerList.AddItem(string.Format("%1", name));
 		}
 		
-		foreach(SCR_AIGroup group : m_outGroups)
+	}
+	
+	/**
+	* Populates the list of messages selected in list 1
+	*/
+	void PopulateAdminActionsList()
+	{
+		array<ref CRF_AdminActionLog> reversed = {};
+		
+		// Setup selection change handlers
+		OverlayWidget list5root = OverlayWidget.Cast(m_wRoot.FindAnyWidget("List5Box"));
+		SCR_ListBoxComponent list5 = SCR_ListBoxComponent.Cast(list5root.FindHandler(SCR_ListBoxComponent));
+		
+		// Get list of logs of admin aciton in the current mission
+		array<ref CRF_AdminActionLog> actions = m_AdminMenuManager.GetAdminActionLogs();
+		if (!actions)
+			return;
+		
+		// Reverse the order of logs so latest is at the top
+		for (int i = actions.Count() - 1; i >= 0; i--)
 		{
-			string factionTag = group.GetFaction().GetFactionKey().Substring(0, 3);
+			reversed.Insert(actions[i]);
+		}
+		
+		// Clear old logs 
+		list5.Clear();
+		
+		// Format and add the messages to the list
+		foreach (int i, ref CRF_AdminActionLog action : reversed)
+		{
+			list5.AddItem(string.Format("%1 - %2", action.timestamp, action.action));
+		}
+	}
+
+	//-----------------------------------------------------------------------------
+	// Respawn Menu Methods
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the Respawn menu
+	 * Allows admins to respawn dead players
+	 */
+	void InitializeRespawnMenu()
+	{
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{0F4AF70DE5AA8A96}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/RespawnMenu.layout");
+		if (!m_wMenuContent)
+			return;
+		
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
+		if (!playerList || !groupList)
+			return;
+		
+		// Load Menu Buttons
+		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
+		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
+		SCR_ButtonTextComponent menuButton1 = GetMenuButton("BLUFOR");
+		SCR_ButtonTextComponent menuButton2 = GetMenuButton("OPFOR");
+		SCR_ButtonTextComponent menuButton3 = GetMenuButton("INDFOR");
+		SCR_ButtonTextComponent menuButton4 = GetMenuButton("CIV");
+		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2 || !menuButton3 || !menuButton4)
+			return;
 			
-			if(factionTag.IsEmpty())
+		// Setup button event handlers
+		searchButton0.m_OnClicked.Insert(SearchList0);
+		menuButton0.m_OnClicked.Insert(RespawnPlayer);
+		menuButton1.m_OnClicked.Insert(RespawnSide);
+		menuButton2.m_OnClicked.Insert(RespawnSide);
+		menuButton3.m_OnClicked.Insert(RespawnSide);
+		menuButton4.m_OnClicked.Insert(RespawnSide);
+		
+		// Setup selection change handlers
+		playerList.m_OnChanged.Insert(UpdateSpawnGroupRequest);
+		groupList.m_OnChanged.Insert(UpdateSpawnpoint);
+		
+		// Change title of the menu
+		UpdateMenuTitle("Respawn");
+
+		// Get all players and groups
+		m_playerManager.GetPlayers(m_allPlayers);
+		m_groupManagerComponent.GetAllPlayableGroups(m_outGroups);
+
+		// Populate Dead Players list
+		PopulateDeadPlayersList();
+		
+		// Populate Groups list
+		PopulateGroupsList();
+	}
+	
+	/**
+	 * Populates the list of dead/spectating players
+	 */
+	protected void PopulateDeadPlayersList()
+	{
+		TStringArray playerNames = {};
+		
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+
+		// Get and sort player names
+		foreach (int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
+
+		playerNames.Sort(false);
+
+		// Add dead or spectating players to list
+		foreach (string name : playerNames)
+		{
+			int playerId = GetplayerIdFromName(name);
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+
+			if (CRF_SlottingManager.GetInstance().IsPlayerConsideredDead(playerId) ||
+				CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+			{
+				playerList.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
+			}
+		}
+	}
+	
+	/**
+	 * Populates the list of available groups
+	 */
+	protected void PopulateGroupsList()
+	{
+		foreach (SCR_AIGroup group : m_outGroups)
+		{
+			// Load List Boxes
+			SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
+			if (!groupList)
+				return;
+			
+			// Get faction info
+			Faction groupFaction = group.GetFaction();
+			if (!groupFaction)
 				continue;
+				
+			string factionKey = groupFaction.GetFactionKey();
+			if (factionKey.IsEmpty() || factionKey == "SPEC")
+				continue;
+				
+			string factionTag = factionKey.Substring(0, 3);
 			
-			m_list2.AddItem(string.Format("%1 | %2", factionTag , group.GetCustomNameWithOriginal()));
+			// Add group to list
+			groupList.AddItem(string.Format("%1 | %2", factionTag, group.GetCustomNameWithOriginal()));
 			m_groupIDList.Insert(group.GetGroupID());
 		}
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void UpdateSpawnGroup()
+
+	/**
+	 * Requests server to provide group ID for selected player
+	 */
+	void UpdateSpawnGroupRequest()
 	{
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		string storedGroupIDStr = CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GID"); // GID = GROUP ID 
-		
-		if(storedGroupIDStr.IsEmpty() || playerID == 0)
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
 			return;
 		
-		int storedGroupID = storedGroupIDStr.ToInt();
-		foreach(int i, SCR_AIGroup group : m_outGroups)
+		if (playerList.GetSelectedItem() < 0)
+			return;
+			
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+
+		// Request player's group from server
+		CRF_RplToAuthorityManager.GetInstance().RequestGroupIdFromServer(playerId, SCR_PlayerController.GetLocalPlayerId());
+	}
+
+	/**
+	 * Updates the selected group based on group ID from server
+	 * @param groupId The group ID to select
+	 */
+	void UpdateSpawnGroup(int groupId)
+	{
+		// Load List Boxes
+		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
+		if (!groupList)
+			return;
+		
+		foreach (int i, SCR_AIGroup group : m_outGroups)
 		{
-			if(storedGroupID != 0 && group.GetGroupID() == storedGroupID)
+			if (groupId == group.GetGroupID())
 			{
-				m_list2.SetItemSelected(i, true);
+				// Adjust index for client mode
+				int itemIndex = i;
+				if (RplSession.Mode() == RplMode.Client)
+					itemIndex = i - 1;
+
+				groupList.SetItemSelected(itemIndex, true);
 				return;
 			}
 		};
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Updates spawnpoint list based on selected group
+	 */
 	void UpdateSpawnpoint()
 	{
-		m_list3.Clear();
+		// Load List Boxes
+		SCR_ListBoxComponent respawnPoints = GetListBox("SpawnpointListBox0");
+		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
+		if (!respawnPoints || !groupList)
+			return;
+		
+		if (groupList.GetSelectedItem() < 0)
+			return;
+			
+		// Clear previous data
+		respawnPoints.Clear();
 		m_spawnPoints.Clear();
-		int groupID = m_groupIDList.Get(m_list2.GetSelectedItem());
 		
+		// Get selected group ID
+		int groupID = m_groupIDList.Get(groupList.GetSelectedItem());
+
+		// Get player names
 		TStringArray playerNames = {};
-		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
-		
+		foreach (int playerId : m_allPlayers)
+			playerNames.Insert(m_playerManager.GetPlayerName(playerId));
 		playerNames.Sort(false);
-		
-		foreach(string name : playerNames)
-		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID))
+
+		// Add players from the selected group as spawnpoints
+		foreach (string name : playerNames)
+		{
+			int playerId = GetplayerIdFromName(name);
+			SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+			
+			if (!playerGroup)
+				continue;
+				
+			if (playerGroup.GetGroupID() == groupID)
 			{
-				if(m_groupManagerComponent.GetPlayerGroup(playerID).GetGroupID() == groupID)
-				{
-					m_list3.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerID)));
-					m_spawnPoints.Insert(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerID).GetOrigin());		
-				}
+				IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+				if (!playerEntity)
+					continue;
+					
+				respawnPoints.AddItem(string.Format("%1", m_playerManager.GetPlayerName(playerId)));
+				m_spawnPoints.Insert(playerEntity.GetOrigin());
 			}
 		}
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Respawns the selected player at the selected spawnpoint and group
+	 */
 	void RespawnPlayer()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Boxes
+		SCR_ListBoxComponent respawnPoints = GetListBox("SpawnpointListBox0");
+		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!respawnPoints || !groupList)
 			return;
 		
-		if(m_list2.GetSelectedItem() < 0)
+		if (playerList.GetSelectedItem() < 0)
+			return;
+
+		if (groupList.GetSelectedItem() < 0)
+			return;
+
+		if (respawnPoints.GetSelectedItem() < 0)
 			return;
 		
-		if(m_list3.GetSelectedItem() < 0)
+		// Get selected player
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
 			return;
+			
+		// Get selected group and spawnpoint
+		int groupID = m_groupIDList.Get(groupList.GetSelectedItem());
+		vector spawnpoint = m_spawnPoints.Get(respawnPoints.GetSelectedItem());
 		
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		int groupID = m_groupIDList.Get(m_list2.GetSelectedItem());
-		string prefab =  CRF_GamemodeComponent.GetInstance().ReturnPlayerGearScriptsMapValue(playerID, "GSR"); // GSR = Gear Script Resource
-		vector spawnpoint = m_spawnPoints.Get(m_list3.GetSelectedItem());
-		m_clientComponent.SpawnGroup(playerID, prefab, spawnpoint , groupID, true);
-		
+		// Spawn player on group
+		CRF_RplToAuthorityManager.GetInstance().SpawnOnGroup(playerId, spawnpoint, groupID, true);
+
+		// Refresh the menu after a short delay
 		GetGame().GetCallqueue().CallLater(ClearMenu, 1250, false);
 		GetGame().GetCallqueue().CallLater(InitializeRespawnMenu, 1825, false);
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------Teleport Menu UI Members--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	
+	/**
+	 * Respawns blufor
+	 */
+	void RespawnSide()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		CRF_RplToAuthorityManager.GetInstance().RespawnFaction(button.GetName(), true);
+	}
+
+	//-----------------------------------------------------------------------------
+	// Teleport Menu Methods
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the Teleport menu
+	 * Allows admins to teleport players
+	 */
 	void InitializeTeleportMenu()
 	{
-		m_list1Root.SetVisible(true);
-		m_list2Root.SetVisible(true);
-		m_menuButton1.SetVisible(true, false);
-		m_menuButton2.SetVisible(true, false);
-		m_menuButton1.m_OnClicked.Insert(TeleportLocal);
-		m_menuButton2.m_OnClicked.Insert(TeleportPlayers);
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{681BEBC7B2B45D4E}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/TeleportMenu.layout");
+		if (!m_wMenuContent)
+			return;
 		
-		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Teleport to Player 1");
-		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Teleport Player 1 to Player 2");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Player 1");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Player 2");
+		// Load List Boxes
+		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent playerList1 = GetListBox("PlayerListBox1");
+		if (!playerList0 || !playerList1)
+			return;
 		
-		m_playerManager.GetPlayers(m_allPlayers);
+		// Load Menu Buttons
+		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
+		SCR_ButtonTextComponent searchButton1 = GetMenuButton("SearchButton1");
+		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
+		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
+		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
+		if (!searchButton0 || !searchButton1 || !menuButton0 || !menuButton1 || !menuButton2)
+			return;
 		
-		TStringArray playerNames = {};
+		// Setup button event handlers
+		searchButton0.m_OnClicked.Insert(SearchList0);
+		searchButton1.m_OnClicked.Insert(SearchList1);
+		menuButton0.m_OnClicked.Insert(TeleportLocalToSelected);
+		menuButton1.m_OnClicked.Insert(TeleportPlayers);
+		menuButton2.m_OnClicked.Insert(TeleportSelectedToLocal);
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
-		
-		playerNames.Sort(false);
-		
-		foreach(string name : playerNames)
-		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID))
-			{
-				m_list1.AddItem(string.Format("%1", name));
-				m_list2.AddItem(string.Format("%1", name));
-			}
-		}
+		// Change title of the menu
+		UpdateMenuTitle("Teleport");
+
+		// Populate player lists
+		PopulatePlayerList(playerList0);
+		PopulatePlayerList(playerList1);
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	void TeleportLocal()
+
+	/**
+	 * Teleports local player to selected player
+	 */
+	void TeleportLocalToSelected()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Boxes
+		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
+		if (!playerList0)
 			return;
 		
-		int playerID2 = m_allPlayers.Get(m_list1.GetSelectedItem());
-		
-		if(!playerID2)
+		if (playerList0.GetSelectedItem() < 0)
 			return;
-		
-		m_clientComponent.TeleportLocalPlayer(SCR_PlayerController.GetLocalPlayerId(), playerID2);
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList0.GetElementComponent(playerList0.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId2 = GetplayerIdFromName(playerName);
+		if (playerId2 == 0)
+			return;
+
+		// Teleport local player to target
+		m_clientComponent.TeleportLocalPlayer(SCR_PlayerController.GetLocalPlayerId(), playerId2);
 	}
 	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	/**
+	 * Teleports selected player to local player
+	 */
+	void TeleportSelectedToLocal()
+	{
+		// Load List Boxes
+		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
+		if (!playerList0)
+			return;
+		
+		if (playerList0.GetSelectedItem() < 0)
+			return;
+
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList0.GetElementComponent(playerList0.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId2 = GetplayerIdFromName(playerName);
+		if (playerId2 == 0)
+			return;
+
+		// Teleport local player to target
+		CRF_RplToAuthorityManager.GetInstance().TeleportPlayers(playerId2, SCR_PlayerController.GetLocalPlayerId(), true);
+	}
+
+	/**
+	 * Teleports player 1 to player 2's position
+	 */
 	void TeleportPlayers()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Boxes
+		SCR_ListBoxComponent playerList0 = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent playerList1 = GetListBox("PlayerListBox1");
+		if (!playerList0 || !playerList1)
 			return;
 		
-		if(m_list2.GetSelectedItem() < 0)
+		if (playerList0.GetSelectedItem() < 0)
 			return;
-		
-		int playerID1 = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		int playerID2 = GetPlayerIdFromName(TextWidget.Cast(m_list2.GetElementComponent(m_list2.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		
-		if(playerID1 == 0)
+
+		if (playerList1.GetSelectedItem() < 0)
 			return;
-		
-		if(playerID2 == 0)
+
+		// Get selected player IDs
+		string playerName1 = TextWidget.Cast(playerList0.GetElementComponent(playerList0.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		string playerName2 = TextWidget.Cast(playerList1.GetElementComponent(playerList1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId1 = GetplayerIdFromName(playerName1);
+		int playerId2 = GetplayerIdFromName(playerName2);
+
+		if (playerId1 == 0 || playerId2 == 0)
 			return;
-		
-		m_clientComponent.TeleportPlayers(playerID1, playerID2, true);
+
+		// Teleport player 1 to player 2
+		CRF_RplToAuthorityManager.GetInstance().TeleportPlayers(playerId1, playerId2, true);
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------Hint Menu UI Members------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	
+
+	//-----------------------------------------------------------------------------
+	// Hint Menu Methods
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the Hint menu
+	 * Allows admins to send hint messages to players
+	 */
 	void InitializeHintMenu()
 	{
-		m_editBox1.SetVisible(true);
-		m_windowBox1.SetVisible(true);
-		m_editBox1.SetText(m_clientComponent.m_sHintText);
-		m_list1Root.SetVisible(true);
-		m_list2Root.SetVisible(true);
-		m_menuButton1.SetVisible(true);
-		m_menuButton2.SetVisible(true);
-		m_menuButton3.SetVisible(true);
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{10F6DA929AEE2069}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/HintMenu.layout");
+		if (!m_wMenuContent)
+			return;
 		
-		m_menuButton1.m_OnClicked.Insert(SendHintAll);
-		m_menuButton2.m_OnClicked.Insert(SendHintFaction);
-		m_menuButton3.m_OnClicked.Insert(SendHintPlayer);
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		SCR_ListBoxComponent factionList = GetListBox("FactionListBox0");
+		if (!playerList || !factionList)
+			return;
 		
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List2Text")).SetText("Factions");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Players");
-		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Send to All");
-		TextWidget.Cast(m_menuButton2.GetRootWidget().FindWidget("MenuButtonText")).SetText("Send to Faction");
-		TextWidget.Cast(m_menuButton3.GetRootWidget().FindWidget("MenuButtonText")).SetText("Send to Player");
+		// Load Reply Box
+		MultilineEditBoxWidget hintBox = GetMultilineEditBox("HintBox0");
+		if (!hintBox)
+			return;
 		
-		m_playerManager.GetPlayers(m_allPlayers);
+		// Load Menu Buttons
+		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
+		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
+		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
+		SCR_ButtonTextComponent menuButton2 = GetMenuButton("MenuButton2");
+		if (!searchButton0 || !menuButton0 || !menuButton1 || !menuButton2)
+			return;
 		
-		TStringArray playerNames = {};
+		// Setup existing hint text if available
+		hintBox.SetText(m_clientComponent.m_sHintText);
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		// Setup button event handlers
+		searchButton0.m_OnClicked.Insert(SearchList0);
+		menuButton0.m_OnClicked.Insert(SendHintAll);
+		menuButton1.m_OnClicked.Insert(SendHintFaction);
+		menuButton2.m_OnClicked.Insert(SendHintPlayer);
 		
-		playerNames.Sort(false);
+		// Change title of the menu
+		UpdateMenuTitle("Hint");
+
+		// Populate player list
+		PopulatePlayerList(playerList);
 		
-		foreach(string name : playerNames)
-		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID))
-			{
-				m_list1.AddItem(string.Format("%1", name));
-			}
-		}
+		// Populate faction list
+		PopulateFactionList();
+	}
 	
+	/**
+	 * Populates the list of active factions
+	 */
+	protected void PopulateFactionList()
+	{
+		// Get all factions
 		GetGame().GetFactionManager().GetFactionsList(m_factions);
-		foreach(Faction faction : m_factions)
+		
+		// Load List Boxes
+		SCR_ListBoxComponent factionList = GetListBox("FactionListBox0");
+		if (!factionList)
+			return;
+		
+		// Add factions with active players
+		foreach (Faction faction : m_factions)
 		{
-			if(SCR_FactionManager.SGetFactionPlayerCount(faction) > 0)
+			if (SCR_FactionManager.SGetFactionPlayerCount(faction) > 0)
 			{
-				m_list2.AddItem(faction.GetFactionName());
+				factionList.AddItem(faction.GetFactionName());
 				m_selectableFactions.Insert(faction.GetFactionKey());
 			}
 		}
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Sends hint message to all players
+	 */
 	void SendHintAll()
 	{
-		string data = m_editBox1.GetText();
+		// Load Reply Box
+		MultilineEditBoxWidget hintBox = GetMultilineEditBox("HintBox0");
+		if (!hintBox)
+			return;
+		
+		string data = hintBox.GetText();
 		m_clientComponent.m_sHintText = data;
-		m_clientComponent.SendHintAll(data);
+		CRF_RplToAuthorityManager.GetInstance().SendHint(data);
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Sends hint message to players in selected faction
+	 */
 	void SendHintFaction()
 	{
-		if(m_list2.GetSelectedItem() == -1)
+		// Load List Boxes
+		SCR_ListBoxComponent factionList = GetListBox("FactionListBox0");
+		if (!factionList)
+			return;
+	
+		// Load Reply Box
+		MultilineEditBoxWidget hintBox = GetMultilineEditBox("HintBox0");
+		if (!hintBox)
 			return;
 		
-		string data = m_editBox1.GetText();
+		if (factionList.GetSelectedItem() == -1)
+			return;
+
+		string data = hintBox.GetText();
 		m_clientComponent.m_sHintText = data;
-		string factionKey = m_selectableFactions.Get(m_list2.GetSelectedItem());
-		m_clientComponent.SendHintFaction(data, factionKey);
+		string factionKey = m_selectableFactions.Get(factionList.GetSelectedItem());
+		CRF_RplToAuthorityManager.GetInstance().SendHint(data, -1, factionKey);
 	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	/**
+	 * Sends hint message to selected player
+	 */
 	void SendHintPlayer()
 	{
-		if(m_list1.GetSelectedItem() == -1)
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
 			return;
 		
-		string data = m_editBox1.GetText();
+		// Load Reply Box
+		MultilineEditBoxWidget hintBox = GetMultilineEditBox("HintBox0");
+		if (!hintBox)
+			return;
+		
+		if (playerList.GetSelectedItem() == -1)
+			return;
+
+		string data = hintBox.GetText();
 		m_clientComponent.m_sHintText = data;
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		m_clientComponent.SendHintPlayer(data, playerID);
+		
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+			
+		CRF_RplToAuthorityManager.GetInstance().SendHint(data, playerId);
 	}
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//-------------------------------Heal Menu UI Members------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	//-----------------------------------------------------------------------------
+	// Heal Menu Methods
+	//-----------------------------------------------------------------------------
+	
+	/**
+	 * Initialize the Heal menu
+	 * Allows admins to heal players and repair vehicles
+	 */
 	void InitializeHealMenu()
 	{
-		m_list1Root.SetVisible(true);
-		m_actionButton.SetVisible(true, false);
-		m_menuButton1.SetVisible(true);
-		m_actionButton.m_OnClicked.Insert(HealPlayer);
-		m_menuButton1.m_OnClicked.Insert(HealPlayerVehicle);
-		TextWidget.Cast(m_menuButton1.GetRootWidget().FindWidget("MenuButtonText")).SetText("Repair Vehicle");
-		TextWidget.Cast(m_actionButton.GetRootWidget().FindWidget("ActionButtonText")).SetText("Heal Player");
-		TextWidget.Cast(m_wRoot.FindAnyWidget("List1Text")).SetText("Players");
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{CCFF9CCE4508B294}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/HealMenu.layout");
+		if (!m_wMenuContent)
+			return;
 		
-		m_playerManager.GetPlayers(m_allPlayers);
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
 		
-		TStringArray playerNames = {};
+		// Load Menu Buttons
+		SCR_ButtonTextComponent searchButton0 = GetMenuButton("SearchButton0");
+		SCR_ButtonTextComponent menuButton0 = GetMenuButton("MenuButton0");
+		SCR_ButtonTextComponent menuButton1 = GetMenuButton("MenuButton1");
+		if (!searchButton0 || !menuButton0 || !menuButton1)
+			return;
 		
-		foreach(int playerID : m_allPlayers)
-			playerNames.Insert(m_playerManager.GetPlayerName(playerID));
+		// Setup button event handlers
+		menuButton0.m_OnClicked.Insert(HealPlayer);
+		menuButton1.m_OnClicked.Insert(HealPlayerVehicle);
+		searchButton0.m_OnClicked.Insert(SearchList0);
 		
-		playerNames.Sort(false);
+		// Change title of the menu
+		UpdateMenuTitle("Heal");
 		
-		foreach(string name : playerNames)
-		{ 
-			int playerID = GetPlayerIdFromName(name);
-			if(m_groupManagerComponent.GetPlayerGroup(playerID))
-			{
-				m_list1.AddItem(string.Format("%1", name));
-			}
-		}
+
+		// Populate player list
+		PopulatePlayerList(playerList);
 	}
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Heals the selected player
+	 */
 	void HealPlayer()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		if (playerList.GetSelectedItem() < 0)
 			return;
 
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		
-		m_clientComponent.HealPlayer(playerID, true);
-	}	
-	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+
+		// Heal player only (not vehicle)
+		CRF_RplToAuthorityManager.GetInstance().Heal(playerId, true, false);
+	}
+	
+	/**
+	 * Repairs the vehicle of the selected player
+	 */
 	void HealPlayerVehicle()
 	{
-		if(m_list1.GetSelectedItem() < 0)
+		// Load List Boxes
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		if (playerList.GetSelectedItem() < 0)
 			return;
 
-		int playerID = GetPlayerIdFromName(TextWidget.Cast(m_list1.GetElementComponent(m_list1.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText());
-		
-		m_clientComponent.HealPlayerVehicle(playerID, true);
+		// Get selected player ID
+		string playerName = TextWidget.Cast(playerList.GetElementComponent(playerList.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+		int playerId = GetplayerIdFromName(playerName);
+		if (playerId == 0)
+			return;
+
+		// Heal player and vehicle
+		CRF_RplToAuthorityManager.GetInstance().Heal(playerId, true, true);
 	}
+	
+	//-----------------------------------------------------------------------------
+	// Gamemode Settings Menu
+	//-----------------------------------------------------------------------------
+
+	/**
+	 * Initialize the Respawn menu
+	 * Allows admins to respawn dead players
+	 */
+	void InitializeGamemodeMenu()
+	{
+		// Load menu content widget
+		m_wMenuContent = GetGame().GetWorkspace().CreateWidgets("{36D941F5D1C10513}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/GameModeMenu.layout");
+		if (!m_wMenuContent)
+			return;
+		
+		// Load Menu Sections
+		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
+		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		
+		// Load Buttons
+		SCR_ButtonTextComponent resetGearButton = GetMenuButton("ApplyGearSets", gearSets);
+		SCR_ButtonTextComponent aarGearButton = GetMenuButton("EnterAAR");
+		if (!resetGearButton || !aarGearButton)
+			return;
+		
+		// Setup invokers
+		resetGearButton.m_OnClicked.Insert(ConfirmAction);
+		aarGearButton.m_OnClicked.Insert(EnterAAR);
+		
+		/*
+		*	!!!!! Changing the time delta is done below and in the menu layout !!!!!
+		*/
+		// Load Menu Buttons for Game Timer
+		
+		// Time Values
+		ref array<int> timeValues = {10, 5, -5, -10};	
+		
+		foreach (int time : timeValues)
+		{
+			string buttonName = string.Format("%1", time);
+			SCR_ButtonTextComponent button = GetMenuButton(buttonName, gamerTimer);
+			if (!button)
+				return;
+				
+			button.m_OnClicked.Insert(UpdateTime);
+		}
+		
+		/*
+		*	!!!!! Changing the ticket delta is done below and in the menu layout !!!!!
+		*/
+		// Load Menu Buttons for Tickets
+		
+		// Faction names
+		ref array<string> factions = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		
+		// Actions
+		ref array<string> actions = {"Add", "Subtract"};
+		
+		// Ticket values
+		ref array<int> values = {10, 5, 1};
+		
+		foreach (string faction : factions)
+		{
+			foreach (string action : actions)
+			{
+				foreach (int value : values)
+				{
+					string buttonName = string.Format("%1_%2_%3", faction, action, value);
+					SCR_ButtonTextComponent button = GetMenuButton(buttonName, ticketCounters);
+					if (!button)
+						return;
+						
+					button.m_OnClicked.Insert(UpdateTicket);
+				}
+			}
+		}
+		
+		// Load config files into listboxs and array
+		LoadGearConfigList();
+
+		foreach (string name, string path : m_gearsetlist.gearset)
+		{
+			foreach (string faction : factions)
+			{
+				SCR_ListBoxComponent listBox = GetListBox(string.Format("%1ListBox", faction) ,gearSets);
+				listBox.AddItem(name);
+			}
+		}
+		
+		// Change title of the menu
+		UpdateMenuTitle("Gamemode Settings");
+		
+		// Update menu data
+		GamemodeMenuUpdate();
+
+		GetGame().GetCallqueue().CallLater(GamemodeMenuUpdate, 1000, true);
+	}
+	
+	void LoadGearConfigList()
+	{
+		SCR_JsonLoadContext ctx = new SCR_JsonLoadContext();
+		m_gearsetlist = new CRF_GearScriptConfigStruct();
+	
+		if (!ctx.LoadFromFile("configs/GearScripts/GearScriptsConfigList.json"))
+			return;
+		
+		ctx.ReadValue("", m_gearsetlist);
+	}
+	
+	/**
+	 * Add time delta based on the button name that was clicked
+	 * !!!!! Changing the time delta is done above and in the menu layout !!!!!
+	 */
+	void UpdateTime()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		// Get the delta from the button name
+		int delta = button.GetName().ToInt() * 60000;
+		
+		CRF_RplToAuthorityManager.GetInstance().UpdateTimer(delta);
+	}
+	
+	void UpdateTicket()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		
+		array<string> requestParts = {};
+		button.GetName().Split("_", requestParts, true);
+		
+		string action = requestParts[1];
+		int delta = requestParts[2].ToInt();
+		FactionKey faction = requestParts[0];
+		
+		CRF_RplToAuthorityManager.GetInstance().UpdateTicket(action, faction, delta);
+	}
+	
+	void UpdateGearSets()
+	{
+		// Load gearsets section
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		
+		// Check if faction gearset needs updating
+		ref array<string> factions = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		foreach (string faction : factions)
+		{
+			SCR_ListBoxComponent listBox = GetListBox(string.Format("%1ListBox", faction) ,gearSets);
+			int selectedItem = listBox.GetSelectedItem();
+			if (selectedItem < 0)
+				continue;
+			
+			// Get the gearset key from selected item in the list box
+			string key = TextWidget.Cast(listBox.GetElementComponent(listBox.GetSelectedItem()).GetRootWidget().FindAnyWidget("Text")).GetText();
+			string gearSetPath;
+			m_gearsetlist.gearset.Find(key, gearSetPath);
+			
+			// Ask the server to update factions gear
+			CRF_RplToAuthorityManager.GetInstance().UpdateGearSet(faction, gearSetPath);
+		}
+
+		CloseConfirmAction();
+	}
+	
+	void ConfirmAction()
+	{
+		// Find the button currently focused
+		Widget button = GetGame().GetWorkspace().GetFocusedWidget();
+		if (!button)
+			return;	
+		
+		// Load menu content widget
+		m_wConfirmationMenu = GetGame().GetWorkspace().CreateWidgets("{905BF1B70A9A44AC}UI/layouts/Menus/PauseMenu/AdminMenuWidgets/ConfirmationMenu.layout");
+		if (!m_wMenuContent)
+			return;
+
+		// Get menu buttons
+		SCR_ButtonTextComponent runButton = GetMenuButton("ExcuteButton", m_wConfirmationMenu);
+		SCR_ButtonTextComponent cancelButton = GetMenuButton("CancelButton", m_wConfirmationMenu);
+		
+		// Get the function that needs confirming from the button name in the layout
+		string confirmActionFunc = button.GetName();
+
+		// Setup script invokers
+		cancelButton.m_OnClicked.Insert(CloseConfirmAction);
+		switch (confirmActionFunc)
+		{
+			case "EnterAAR" : runButton.m_OnClicked.Insert(EnterAAR); break;
+			case "ApplyGearSets" : runButton.m_OnClicked.Insert(UpdateGearSets); break;
+		}
+	}
+	
+	/**
+	 * Close confirmation popup
+	 */
+	void CloseConfirmAction()
+	{
+		if (m_wConfirmationMenu)
+		 delete m_wConfirmationMenu;
+	}
+	
+	/**
+	 * Advanced the game state to AAR
+	 */
+	void EnterAAR()
+	{
+		if (!CRF_EGamemodeState.AAR)
+			return;
+
+		CRF_RplToAuthorityManager.GetInstance().RequestAdvanceGamemodeState(true);
+		CloseConfirmAction();
+	}
+	
+	void GamemodeMenuUpdate()
+	{	
+		// Get current mission time
+		string m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		
+		// Grab timer
+		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
+		TextWidget gameTimerText = TextWidget.Cast(gamerTimer.FindWidget("CurrentGameTime0"));
+		
+		// Update Timer
+		gameTimerText.SetText(m_sServerWorldTime);
+		
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+
+		ref array<string> factions = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		
+		// Update Gearset titles to current gearsets
+		Widget gearSets = m_wMenuContent.FindAnyWidget("GearSets");
+		foreach (string faction : factions)
+		{
+			string resourceName;
+			switch (faction)
+			{
+				case "BLUFOR" : resourceName = gm.m_BLUFORGearScriptSettings.m_rGearScript; break;
+				case "OPFOR" : resourceName = gm.m_OPFORGearScriptSettings.m_rGearScript; break;
+				case "INDFOR" : resourceName = gm.m_INDFORGearScriptSettings.m_rGearScript; break;
+				case "CIV" : resourceName = gm.m_CIVILIANGearScriptSettings.m_rGearScript; break;
+			}
+			
+			string gearSetName =  resourceName.Substring(resourceName.LastIndexOf("/") + 1, resourceName.LastIndexOf(".") - resourceName.LastIndexOf("/") - 1);
+			gearSetName.Replace("CRF_GS_", "");
+			TextWidget.Cast(gearSets.FindAnyWidget(string.Format("%1ListTitle", faction))).SetText(gearSetName);
+		}
+
+		// Grab Ticket Counters
+		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
+		TextWidget bluforTicketText = TextWidget.Cast(ticketCounters.FindWidget("BluforTicketCount"));
+		TextWidget opforTicketText = TextWidget.Cast(ticketCounters.FindWidget("OpforTicketCount"));
+		TextWidget indforTicketText = TextWidget.Cast(ticketCounters.FindWidget("IndforTicketCount"));
+		TextWidget civTicketText = TextWidget.Cast(ticketCounters.FindWidget("CivTicketCount"));
+		
+		// Update Ticket Counters
+		bluforTicketText.SetText(CRF_Gamemode.GetInstance().m_iBLUFORTickets.ToString());
+		opforTicketText.SetText(CRF_Gamemode.GetInstance().m_iOPFORTickets.ToString());
+		indforTicketText.SetText(CRF_Gamemode.GetInstance().m_iINDFORTickets.ToString());
+		civTicketText.SetText(CRF_Gamemode.GetInstance().m_iCIVTickets.ToString());
+
+	}
+	
+	//-----------------------------------------------------------------------------
+	// Search Methods
+	//-----------------------------------------------------------------------------
+	
+	/**
+	 * Search the first player list
+	 */
+	void SearchList0()
+	{
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox0");
+		if (!playerList)
+			return;
+		
+		// Load Search Box
+		EditBoxWidget searchBox = GetEditBox("SearchBox0");
+		if (!searchBox)
+			return;
+		
+		SearchPlayerList(playerList, searchBox.GetText());
+	}
+	
+	/**
+	 * Search the second player list
+	 */
+	void SearchList1()
+	{
+		// Load List Box
+		SCR_ListBoxComponent playerList = GetListBox("PlayerListBox1");
+		if (!playerList)
+			return;
+		
+		// Load Search Box
+		EditBoxWidget searchBox = GetEditBox("SearchBox1");
+		if (!searchBox)
+			return;
+		
+		SearchPlayerList(playerList, searchBox.GetText());
+	}
+	
+	/**
+	 * Filters a player list based on search text
+	 * @param list The list box to filter
+	 * @param searchData The search text to filter by
+	 */
+	void SearchPlayerList(SCR_ListBoxComponent list, string searchData)
+	{
+		TStringArray playerNames = {};
+		m_playerManager.GetPlayers(m_allPlayers);
+		list.Clear();
+
+		// If search is empty, show all players
+		if (searchData == "")
+		{
+			foreach (int playerId : m_allPlayers)
+				playerNames.Insert(m_playerManager.GetPlayerName(playerId));
+		} 
+		else 
+		{
+			// Otherwise filter by search text
+			string searchLower = searchData;
+			searchLower.ToLower();
+			
+			foreach (int playerId : m_allPlayers)
+			{
+				string playerName = m_playerManager.GetPlayerName(playerId);
+				string playerNameLower = playerName;
+				playerNameLower.ToLower();
+
+				if (playerNameLower.Contains(searchLower))
+					playerNames.Insert(playerName);
+			}
+		}
+
+		// Sort and add filtered players
+		playerNames.Sort(false);
+		foreach (string name : playerNames)
+		{
+			int playerId = GetplayerIdFromName(name);
+			Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+			
+			if (!m_groupManagerComponent.GetPlayerGroup(playerId))
+				continue;
+				
+			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId)))
+				continue;
+			
+			list.AddItemWithColor(string.Format("%1", name), playerFaction.GetFactionColor());
+		}
+	}
+	
+	//-----------------------------------------------------------------------------
+	// Chat Methods
+	//-----------------------------------------------------------------------------
+	
+	/**
+	 * Handles chat toggle action
+	 */
+	void Action_OnChatToggleAction()
+	{
+		if (!m_ChatPanel)
+			return;
+
+		GetGame().GetCallqueue().Call(OpenChatWrap);
+	}
+	
+	/**
+	 * Opens the chat panel if not already open
+	 */
+	void OpenChatWrap()
+	{
+		if (!m_ChatPanel.IsOpen())
+		{
+			SCR_ChatPanelManager.GetInstance().OpenChatPanel(m_ChatPanel);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GETTERS
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Gets the title of the current open page
+	 */
+	string GetCurrentOpenTab()
+	{
+		// Get Sub menu title text
+		TextWidget menuSubTitle = TextWidget.Cast(m_wRoot.FindAnyWidget("MenuSubTitle"));
+		if (!menuSubTitle)
+			return "";
+		
+		return menuSubTitle.GetText();
+	}
+}
+class CRF_GearScriptConfigStruct
+{
+	ref map<string, string> gearset;
 }

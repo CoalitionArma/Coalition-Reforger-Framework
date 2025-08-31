@@ -1,24 +1,71 @@
 modded class SCR_ListBoxElementComponent
 {
-	int m_iPlayerID;
+	//-------------------------------------------------------------
+	// Member Variables
+	//-------------------------------------------------------------
+	
+	//! Player identifier used for tracking player-specific elements
+	int m_iPlayerId;
+	
+	//! Index for descriptive text or information related to this element
 	int m_iDescriptionIndex;
+	
+	//-------------------------------------------------------------
+	// Public Methods
+	//-------------------------------------------------------------
+	
+	/**
+	 * Sets the text color for this list box element
+	 * @param color The color to apply to the text widget
+	 */
 	void SetColor(Color color)
 	{
-		TextWidget w = TextWidget.Cast(m_wRoot.FindAnyWidget(m_sWidgetTextName));
-		if (w)
-			w.SetColor(color);
+		// Find the text widget using the configured widget name
+		TextWidget textWidget = TextWidget.Cast(m_wRoot.FindAnyWidget(m_sWidgetTextName));
+		
+		// Only set the color if we found a valid text widget
+		if (textWidget)
+		{
+			textWidget.SetColor(color);
+		}
 	}
 	
+	void SetTalking()
+	{
+		ImageWidget wid = ImageWidget.Cast(m_wRoot.FindAnyWidget("VONSpeaker"));
+		
+		if (wid)
+			wid.SetVisible(true);
+	}
+	
+	/**
+	 * Sets the description index for this element
+	 * @param input The index value to set
+	 */
 	void SetDescriptionIndex(int input)
 	{
 		m_iDescriptionIndex = input;
 	}
 	
+	/**
+	 * Retrieves the selection button component associated with this element
+	 * @return The button component if found, null otherwise
+	 */
 	SCR_ButtonTextComponent GetSelectButton()
 	{
-		SCR_ButtonTextComponent w = SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wRoot.FindAnyWidget("PlayerButton")).FindHandler(SCR_ButtonTextComponent));
-		if(w)
-			return w;
-		return null;
+		// Find the player button widget
+		ButtonWidget buttonWidget = ButtonWidget.Cast(m_wRoot.FindAnyWidget("PlayerButton"));
+		
+		// If button doesn't exist, return null
+		if (!buttonWidget)
+		{
+			return null;
+		}
+		
+		// Find the button component handler
+		SCR_ButtonTextComponent buttonComponent = SCR_ButtonTextComponent.Cast(buttonWidget.FindHandler(SCR_ButtonTextComponent));
+		
+		// Return the component (or null if not found)
+		return buttonComponent;
 	}
 }

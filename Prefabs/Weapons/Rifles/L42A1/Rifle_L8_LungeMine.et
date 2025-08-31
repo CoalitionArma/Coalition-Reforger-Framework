@@ -1,0 +1,108 @@
+GenericEntity : "{6702F05F5B26CDCF}Prefabs/Weapons/Rifles/L42A1/Rifle_Enfield_base.et" {
+ ID "5260C45AAAA407F4"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{223757E0C16E7659}Assets/Weapons/Rifles/L42A1/L8_Game_02.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "#BF-Weapon_L8_Name"
+     Description "#BF-Weapon_L8_Description"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{6156CB66A3B97AEB}" {
+     Enabled 0
+    }
+    AttachmentSlotComponent "{64E122C8795EE5C4}" {
+     AttachmentSlot InventoryStorageSlot bayonet {
+      PivotID "barrel_muzzle"
+      Offset 0 -0.0015 -0.0373
+      Prefab "{F2D7EE1F8187C95A}Prefabs/Weapons/Attachments/Bayonets/Bayonet_L1A4_SLR_LungeMine.et"
+     }
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsRanges {
+      SightRangeInfo "{6156CB66A3B97ADB}" {
+       Range 0 250
+       WeaponPosition PointInfo "{64E122CB7EB9F855}" {
+        Offset 0 -0.0034 0
+        Angles 0.155 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B97AD9}" {
+       Range 0.3 200
+       WeaponPosition PointInfo "{64E122CB7EB9F852}" {
+        Offset 0 -0.0031 0
+        Angles 0.13 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9BF37}" {
+       Range 0.364 300
+       WeaponPosition PointInfo "{64E122CB7EB9F85C}" {
+        Offset 0 -0.0038 0
+        Angles 0.18 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9BF35}" {
+       Range 0.435 400
+       WeaponPosition PointInfo "{64E122CB7EB9F85F}" {
+        Offset 0 -0.0046 0
+        Angles 0.24 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9BF3B}" {
+       Range 0.505 500
+       WeaponPosition PointInfo "{64E122CB7EB9F85E}" {
+        Offset 0 -0.0054 0
+        Angles 0.3 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9A8D9}" {
+       Range 0.605 600
+       WeaponPosition PointInfo "{64E122CB7EB9F859}" {
+        Offset 0 -0.0065 0
+        Angles 0.37 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9A8DF}" {
+       Range 0.712 700
+       WeaponPosition PointInfo "{64E122CB7EB9F85B}" {
+        Offset 0 -0.0077 0
+        Angles 0.46 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9EC8B}" {
+       Range 0.822 800
+       WeaponPosition PointInfo "{64E122CB7EB9F85A}" {
+        Offset 0 -0.0089 0
+        Angles 0.55 0 0
+       }
+      }
+      SightRangeInfo "{6156CB66A3B9EC89}" {
+       Range 0.956 900
+       WeaponPosition PointInfo "{64E122CB7EB9F865}" {
+        Offset 0 -0.0104 0
+        Angles 0.66 0 0
+       }
+      }
+      SightRangeInfo "{64E122CB7EB9F864}" {
+       Range 1 1000
+       WeaponPosition PointInfo "{64E122CB7EB9F867}" {
+        Offset 0 -0.0123 0
+        Angles 0.8 0 0
+       }
+      }
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#BF-Weapon_L8_Name"
+    Description "#BF-Weapon_L8_Description"
+   }
+  }
+ }
+}

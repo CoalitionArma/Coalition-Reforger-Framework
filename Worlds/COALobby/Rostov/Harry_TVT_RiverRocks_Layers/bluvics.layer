@@ -1,0 +1,173 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 3358.57 107.284 2268.464
+  angleY -140.762
+  m_rnPrefab "{A317D959A4248173}Prefabs/Vehicles/Helicopters/AH6M/AH6M_GAU19.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3341.69 105.851 2317.987
+  angleY -140.762
+  m_rnPrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3349.743 106.411 2311.344
+  angleY -140.762
+  m_rnPrefab "{3312ADBF53A16DD8}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3380.035 107.68 2405.447
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3388.347 107.902 2398.658
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3394.661 108.148 2393.502
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3403.394 108.383 2386.37
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3406.785 108.725 2421.235
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3413.099 108.892 2416.078
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3421.832 109.274 2408.947
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3398.473 108.359 2428.023
+  angleY -140.762
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3314.075 103.46 2350.245
+  angleY 127.993
+  m_rnPrefab "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3313.046 73.452 4149.917
+  angleY -50.241
+  m_rnPrefab "{A317D959A4248173}Prefabs/Vehicles/Helicopters/AH6M/AH6M_GAU19.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+$grp GenericEntity : "{13A99500A14FA14C}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_20ft.et" {
+ {
+  coords 3357.604 104.643 2269.57
+  angleY 40.262
+ }
+ {
+  coords 3305.24 102.864 2354.84
+  angleY 40.262
+ }
+ {
+  coords 3312.08 70.811 4151.023
+  angleY 40.262
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 3320.527 73.012 4159.211
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Heli Spawn"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 3309.083 72.906 3986.808
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "flag"
+  m_sDescription "Respawn Flag"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+}
+$grp GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
+ {
+  coords 3359.422 107.328 2268.145
+  angleY 38.507
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3313.898 73.496 4149.599
+  angleY 38.507
+  {
+   GameEntity {
+    ID "627C8E6F66E43BCE"
+    components {
+     SCR_FactionAffiliationComponent "{6324C08A10EE65E1}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+    }
+   }
+  }
+ }
+}

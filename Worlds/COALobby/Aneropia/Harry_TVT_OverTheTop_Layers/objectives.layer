@@ -1,0 +1,148 @@
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ ObjB {
+  coords 3169.197 193.891 3488.037
+  userScript "	void respawn()"\
+  "	{"\
+  "		// Respawn the players"\
+  "		if (RplSession.Mode() == RplMode.Dedicated)"\
+  "		{"\
+  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "			gm.RespawnAllSides();"\
+  "		}"\
+  "	}"\
+  "	"\
+  "	void unlock()"\
+  "	{"\
+  "		IEntity zoneMarkers = GetGame().GetWorld().FindEntityByName(\"zone1\");"\
+  "		SCR_EntityHelper.DeleteEntityAndChildren(zoneMarkers);"\
+  "	}"
+  destructor ""\
+  "		// Show popup message"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo cache destroyed\", duration: 10);"\
+  "		"\
+  "		SCR_EntityHelper.DeleteEntityAndChildren(IEntity.Cast(this));"\
+  "		"\
+  "		// Check if the sister site is also destroyed"\
+  "		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName(\"ObjA\");"\
+  "		"\
+  "		if (!sisterMcom)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Respawn in 20 seconds, zone 2 unlock in 60\", duration: 10);"\
+  "			GetGame().GetCallqueue().CallLater(respawn, 30000, false);"\
+  "			GetGame().GetCallqueue().CallLater(unlock, 70000, false);"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.133 -0.008 -0.646
+    angleY 0
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Bravo Objective"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ ObjA {
+  coords 2834.741 171.075 3711.219
+  userScript "	void respawn()"\
+  "	{"\
+  "		// Respawn the players"\
+  "		if (RplSession.Mode() == RplMode.Dedicated)"\
+  "		{"\
+  "			CRF_RespawnManager gm = CRF_RespawnManager.GetInstance();"\
+  "			gm.RespawnAllSides();"\
+  "		}"\
+  "	}"\
+  "	"\
+  "	void unlock()"\
+  "	{"\
+  "		IEntity zoneMarkers = GetGame().GetWorld().FindEntityByName(\"zone1\");"\
+  "		SCR_EntityHelper.DeleteEntityAndChildren(zoneMarkers);"\
+  "	}"
+  destructor ""\
+  "		// Show popup message"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Alpha cache destroyed\", duration: 10);"\
+  "		"\
+  "		SCR_EntityHelper.DeleteEntityAndChildren(IEntity.Cast(this));"\
+  "		"\
+  "		// Check if the sister site is also destroyed"\
+  "		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName(\"ObjB\");"\
+  "		"\
+  "		if (!sisterMcom)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Respawn in 20 seconds, zone 2 unlock in 60\", duration: 10);"\
+  "			GetGame().GetCallqueue().CallLater(respawn, 30000, false);"\
+  "			GetGame().GetCallqueue().CallLater(unlock, 70000, false);"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.133 -0.008 -0.646
+    angleY 0
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Alpha Objective"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ ObjC {
+  coords 3981.132 166.302 2964.694
+  destructor ""\
+  "		// Show popup message"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie cache destroyed\", duration: 10);"\
+  "		"\
+  "		SCR_EntityHelper.DeleteEntityAndChildren(IEntity.Cast(this));"\
+  "		"\
+  "		// Check if the sister site is also destroyed"\
+  "		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName(\"ObjD\");"\
+  "		"\
+  "		if (!sisterMcom)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Attacker Victory\", duration: 10);"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.133 -0.008 -0.646
+    angleY 0
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Charlie Objective"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+ ObjD {
+  coords 3866.838 199.551 2646.029
+  destructor ""\
+  "		// Show popup message"\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Delta cache destroyed\", duration: 10);"\
+  "		"\
+  "		SCR_EntityHelper.DeleteEntityAndChildren(IEntity.Cast(this));"\
+  "		"\
+  "		// Check if the sister site is also destroyed"\
+  "		IEntity sisterMcom = GetGame().GetWorld().FindEntityByName(\"ObjC\");"\
+  "		"\
+  "		if (!sisterMcom)"\
+  "		{"\
+  "			SCR_PopUpNotification.GetInstance().PopupMsg(\"Attacker Victory\", duration: 10);"\
+  "		}"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.133 -0.008 -0.646
+    angleY 0
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "fortification"
+    m_sDescription "Delta Objective"
+    m_bVisibleForEmptyFaction 1
+    m_bShowForAnyFaction 1
+   }
+  }
+ }
+}
