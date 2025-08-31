@@ -226,6 +226,37 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
+	 * @brief Apply custom weapons based on role
+	 * @param faction Faction to pull GS
+	 * @param role Role identifier
+	 */
+	string GetCustomRoleName(FactionKey factionKey, CRF_EGearRole role)
+	{
+		// Get gearscript resources
+		ResourceName gearScriptResourceName = GetGearScriptResource(factionKey);
+
+		if (gearScriptResourceName.IsEmpty())
+			return string.Empty;
+
+		// Load gearscript config
+		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
+		
+		if (!gearConfig || !gearConfig.m_CustomFactionGear)
+			return string.Empty;
+		
+		foreach (ref CRF_Role_Custom_Gear customGear : gearConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+		{
+			if (customGear.m_Role != role)
+				continue;
+			
+			return customGear.m_sRoleName;
+		}
+		
+		return string.Empty;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
 	 * @brief Apply clothing to entity based on config
 	 * @param gearConfig Gear configuration
 	 * @param role Role identifier
