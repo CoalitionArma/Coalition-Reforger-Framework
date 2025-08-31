@@ -46,9 +46,19 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected bool m_bFPPEntityValidityCheck;                // Flag for first-person perspective validity
 	protected int m_iLocalChannelUpdates = 0;                // Counter for local channel updates
 	protected bool m_bHideUi = false;                        // Flag indicating if UI is hidden
-	ref array<Widget> m_aRequest = {};             // Array of request widgets
+	ref array<Widget> m_aRequest = {};            			  // Array of request widgets
 	
-	bool m_bNVGActivated = false;              // NVG activation state for spectator
+	bool m_bNVGActivated = false;             				  // NVG activation state for spectator
+	
+	// Main timer elements
+	protected TextWidget m_wTimer;
+	protected ImageWidget m_wBackground;
+
+	// Game state references
+	protected CRF_SafestartManager m_SafestartManager;
+	protected string m_sStoredServerWorldTime;
+	protected string m_sServerWorldTime;
+	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
@@ -108,6 +118,16 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		// Update player icons and spectator UI
 		//UpdatePlayerIcons();
 		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
+		
+		// Get game system references
+		m_SafestartManager = CRF_SafestartManager.GetInstance();
+		
+		// Find and cast main timer widgets
+		m_wTimer = TextWidget.Cast(m_wRoot.FindWidget("timeLeftTimer"));
+		m_wBackground = ImageWidget.Cast(m_wRoot.FindWidget("timeLeftBackground"));
+
+		// Get notification system reference
+		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
 	}
 	
 	/**
@@ -262,6 +282,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		// Set kill feed type to dead local
 		SCR_NotificationSenderComponent sender = SCR_NotificationSenderComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_NotificationSenderComponent));
 		sender.SetKillFeedTypeDeadLocal();
+		
+		UpdateTimer();
 	}
 	
 	/**
@@ -1730,6 +1752,105 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_MapEntity)
 		{
 			m_MapEntity.CloseMap();
+		}
+	}
+	
+	//-------------------------------------------------------------------------
+	// Timer Update - Called every second
+	//-------------------------------------------------------------------------
+	void UpdateTimer()
+	{	
+		// Get current mission time
+		m_sServerWorldTime = CRF_GamemodeManager.GetInstance().GetServerWorldTime();
+		
+		// Skip update if in safestart, time is empty, or hasn't changed
+		if (m_sServerWorldTime == "N/A" ||
+			m_SafestartManager.GetSafestartStatus() || 
+			m_sServerWorldTime.IsEmpty() || 
+			m_sStoredServerWorldTime == m_sServerWorldTime) 
+		{
+			return;
+		}
+		
+		// Store time for comparison in next update
+		m_sStoredServerWorldTime = m_sServerWorldTime;
+		
+		// Handle time warnings (15min, 5min, end)
+		HandleTimeWarnings();
+		
+		// Format and display time remaining
+		UpdateTimeDisplay();
+	}
+	
+	//-------------------------------------------------------------------------
+	// Helper Methods
+	//-------------------------------------------------------------------------
+	
+	/**
+	* Handles time warnings at specific thresholds
+	*/
+	protected void HandleTimeWarnings()
+	{
+		// Play sound and show notification at specific time thresholds
+		if (m_sServerWorldTime == "00:15:00" || 
+			m_sServerWorldTime == "00:05:00" || 
+			m_sServerWorldTime == "Mission Time Expired!") 
+		{
+			// Play warning sound
+			AudioSystem.PlaySound("{6A5000BE907EFD34}Sounds/Vehicles/Helicopters/Mi-8MT/Samples/WarningVoiceLines/Vehicles_Mi-8MT_WarningBeep_LP.wav");
+			
+			// Show appropriate message based on time
+			if (m_sServerWorldTime == "00:15:00") 
+			{
+				m_PopUpNotification.PopupMsg("Mission Ends In 15 Minutes!", 10);
+			}
+			else if (m_sServerWorldTime == "00:05:00") 
+			{
+				m_PopUpNotification.PopupMsg("Mission Ends In 5 Minutes!", 10);
+			}
+			else if (m_sServerWorldTime == "Mission Time Expired!") 
+			{
+				GetGame().GetCallqueue().Remove(UpdateTimer);
+				m_PopUpNotification.PopupMsg(m_sServerWorldTime, 10);
+				m_wTimer.SetText(m_sServerWorldTime);
+				return;
+			}
+		}
+	}
+	
+	/**
+	* Updates the time display including formatting and visibility
+	*/
+	protected void UpdateTimeDisplay()
+	{
+		// Split time string into components
+		array<string> timeParts = {};
+		m_sServerWorldTime.Split(":", timeParts, false);
+		
+		// Format time display (drop the hour part if it's 00)
+		string displayTime = m_sServerWorldTime;
+		if (timeParts[0] == "00")
+		{
+			displayTime = string.Format("%1:%2", timeParts[1], timeParts[2]);
+		}
+		
+		m_wTimer.SetText("Mission End: " + displayTime);
+		
+		// Set color based on time remaining
+		if (timeParts[0] == "00" && timeParts[1].ToInt() < 5)
+		{
+			// Less than 5 minutes - red
+			m_wTimer.SetColorInt(ARGB(255, 200, 65, 65));
+		}
+		else if (timeParts[0] == "00" && timeParts[1].ToInt() < 15)
+		{
+			// Less than 15 minutes - yellow
+			m_wTimer.SetColorInt(ARGB(255, 230, 230, 0));
+		}
+		else
+		{
+			// Normal - light gray
+			m_wTimer.SetColorInt(ARGB(255, 215, 215, 215));
 		}
 	}
 } 
