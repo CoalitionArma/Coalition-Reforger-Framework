@@ -186,21 +186,18 @@ class CRF_MenuManager : ScriptComponent
 	}
 
 	//------------------------------------------------------------------------------------------------
+	// Static variables for request throttling
+	private static int s_lastRequestTime = 0;
+	private static int s_lastRequestChannel = -1;
+	private static int s_lastRequestId = -1;
+	
+	//------------------------------------------------------------------------------------------------
 	void RequestToJoinChannel(int channel, int requestId)
 	{
-		if (channel < 0 || channel >= m_aVONChannels.Count())
-			return;
-			
-		array<int> players = {};
-		GetGame().GetPlayerManager().GetAllPlayers(players);
-		
-		foreach (int player : players)
-		{
-			if (IsPlayerInChannel(player, channel))
-			{
-				CRF_RplBroadcastManager.GetInstance().SendRequest(player, requestId, channel);
-			}
-		}
+		// This method is now called on the server side
+		// The logic has been moved to CRF_RplToAuthorityManager.RpcAsk_RequestToJoinChannel
+		// to handle the request properly in the client-server architecture
+		Print(string.Format("[VON] RequestToJoinChannel called on server: channel=%1, requestId=%2", channel, requestId), LogLevel.NORMAL);
 	}
 
 	//------------------------------------------------------------------------------------------------

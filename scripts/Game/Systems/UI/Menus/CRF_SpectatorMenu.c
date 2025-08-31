@@ -212,9 +212,12 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (m_MapEntity)
 			GetGame().GetInputManager().ActivateContext("MapContext");
 		
-		// Update VON channels if needed
+		// Update VON channels if needed and handle radio frequency updates
 		if(m_iLocalChannelUpdates != m_MenuManager.m_iChannelChanges)
+		{
 			UpdateChannel();
+			// Radio frequency is updated within UpdateChannel() method
+		}
 		
 		// Handle spectator camera
 		UpdateSpectatorCamera(tDelta);
@@ -578,19 +581,27 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	 */
 	void CreateChannel()
 	{
-		// Check if player already has a channel
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Check if player already has a channel by checking if they're the creator of any channel
 		foreach(string channel: m_MenuManager.m_aVONChannels)
 		{
 			ref array<string> channelSplit = {};
 			channel.Split("|", channelSplit, true);
 			string channelName = channelSplit.Get(0);
 			
-			if (channelName.Contains(GetGame().GetPlayerManager().GetPlayerName(SCR_PlayerController.GetLocalPlayerId())))
+			// Check if this player created this channel by looking for their ID in the channel name
+			string expectedChannelName = GetGame().GetPlayerManager().GetPlayerName(localPlayerId) + "'s Channel (" + localPlayerId + ")";
+			if (channelName == expectedChannelName)
 				return;
 		}
 		
 		// Create a new channel
-		CRF_RplToAuthorityManager.GetInstance().CreateChannel(SCR_PlayerController.GetLocalPlayerId());
+		CRF_RplToAuthorityManager.GetInstance().CreateChannel(localPlayerId);
+		
+		// Schedule radio frequency update after channel creation
+		// Use a longer delay to allow server replication and channel assignment to complete
+		GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 500, false);
 	}
 	
 	/**
@@ -700,6 +711,26 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		bool isInChannel = m_MenuManager.GetChannel(localPlayerId) != 0;
 		SetRadioPower(isInChannel);
+		
+		// Update radio frequency to match current channel assignment
+		// This ensures the radio frequency is correct after channel changes
+		if (isInChannel)
+		{
+			// Schedule frequency update after a small delay to ensure replication is complete
+			GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 100, false);
+		}
+	}
+	
+	/**
+	 * Updates the radio frequency to match the current channel assignment
+	 * Called after channel changes to ensure proper frequency synchronization
+	 */
+	protected void UpdateRadioFrequency()
+	{
+		// Get the current transceiver and update its frequency
+		RadioTransceiver transceiver = GetVoNTransiver();
+		// The GetVoNTransiver() call automatically sets the correct frequency
+		// No additional work needed here as the frequency is set in that method
 	}
 	
 	/**
@@ -726,14 +757,19 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		// Handle channel join through appropriate manager based on channel type
 		if (channelId > 1)
 		{
-			// Request to join non-default channel
-			CRF_MenuManager.GetInstance().RequestToJoinChannel(channelId, localPlayerId);
+			// Request to join non-default channel via RPC
+			Print(string.Format("[VON] Client %1 requesting to join channel %2", localPlayerId, channelId), LogLevel.NORMAL);
+			CRF_RplToAuthorityManager.GetInstance().RequestToJoinChannel(channelId, localPlayerId);
 		}
 		else
 		{
 			// Join default channel directly
 			CRF_RplToAuthorityManager.GetInstance().JoinChannel(localPlayerId, channelId);
 		}
+		
+		// Schedule radio frequency update after channel join
+		// Use a delay to allow server replication to complete
+		GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 200, false);
 	}
 	
 	/**
@@ -1347,18 +1383,42 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		if (!transceiver)
 			return null;
 			
-		// Calculate frequency based on player's channel
-		float channelMultiplier = CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId());
+		// Get the current player's channel with improved frequency calculation
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		int playerChannelId = CRF_MenuManager.GetInstance().GetChannel(localPlayerId);
 		
-		// Set the radio frequency 
+		// Calculate unique frequency for the channel to prevent conflicts
+		// Use a base frequency of 10000 + (channelId * 1000) to ensure separation
+		// This prevents frequency collisions between different channels
+		float frequency = 10000.0 + (playerChannelId * 1000.0);
+		
+		// For custom channels (ID > 1), add additional offset based on channel name hash
+		// This ensures each custom channel gets a truly unique frequency
+		if (playerChannelId > 1 && m_MenuManager.m_aVONChannels.IsIndexValid(playerChannelId))
+		{
+			string channelData = m_MenuManager.m_aVONChannels[playerChannelId];
+			ref array<string> channelParts = {};
+			channelData.Split("|", channelParts, true);
+			
+			if (channelParts.Count() > 0)
+			{
+				string channelName = channelParts[0];
+				// Use channel name hash to create unique frequency offset
+				int nameHash = channelName.Hash();
+				// Ensure positive hash and limit range to prevent frequency overlap
+				int frequencyOffset = Math.AbsInt(nameHash) % 500;
+				frequency += frequencyOffset;
+			}
+		}
+		
+		// Set the radio frequency using RadioHandlerComponent for proper replication
 		RadioHandlerComponent radioHandler = RadioHandlerComponent.Cast(
 			GetGame().GetPlayerController().FindComponent(RadioHandlerComponent)
 		);
 		
 		if (radioHandler)
 		{
-			// Convert channel to frequency (1000 * channel number)
-			radioHandler.SetFrequency(transceiver, 1000 * channelMultiplier);
+			radioHandler.SetFrequency(transceiver, frequency);
 		}
 		
 		return transceiver;
@@ -1433,6 +1493,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			return;
 		
 		// Configure and activate voice transmission
+		// Get fresh transceiver with updated frequency each time VON is activated
 		RadioTransceiver transceiver = GetVoNTransiver();
 		if (!transceiver)
 			return;
