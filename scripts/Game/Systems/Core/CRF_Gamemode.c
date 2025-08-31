@@ -362,11 +362,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (m_GamemodeState == CRF_EGamemodeState.GAME && 
 			m_SlottingManager.IsPlayerInASlot(iPlayerID) && 
 			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
-		{
-			// Player is reconnecting and has a valid slot assignment - automatically run "game" logic
-			Print(string.Format("[CRF] Player %1 (%2) reconnected during GAME state - automatically initializing to their slot", 
-				GetGame().GetPlayerManager().GetPlayerName(iPlayerID), iPlayerID), LogLevel.NORMAL);
-			
+		{		
 			// Schedule initialization with a delay to ensure player controller is fully set up
 			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 		}
