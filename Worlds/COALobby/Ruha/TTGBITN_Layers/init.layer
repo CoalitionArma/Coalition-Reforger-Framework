@@ -1,0 +1,12 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 3466.149 82.781 7126.081
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 3474.706 82.781 7126.906
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{E64310D3BB64E1D5}Configs/Gearscripts/Custom/fluff/Chernarussian/CRF_GS_CDF_SPECOPS.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F0EA113B002D62AD}Configs/Gearscripts/Custom/fluff/Chernarussian/CRF_GS_CHDKZ_NIGHT.conf"
+ }
+}
