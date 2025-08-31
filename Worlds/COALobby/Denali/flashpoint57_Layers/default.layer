@@ -1,0 +1,94 @@
+SCR_AIWorld : "{0E73737564F88B7E}Prefabs/AI/SCR_AIWorld_DenaliEmpty.et" {
+ coords 4006.151 265.132 853.94
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{663F161F64FB0B09}" {
+   m_MCOMPrefab "{3950CB4E59C348EA}Prefabs/Structures/CRF_Rush_MCOM_NoNet.et"
+   m_iMCOMTimer 60
+   m_iMCOMsPerZone 1
+  }
+ }
+ coords 4010.53 265.224 849.112
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{4DCC0759877C9433}Configs/Gearscripts/Custom/fluff/CRF_GS_US50s.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{658D07E2970CF0E1}Configs/Gearscripts/Custom/fluff/CRF_GS_USSR50s.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+ }
+}
+$grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPoles/PreJoin_Teleport.et" {
+ Spawn {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to MCOM1"
+      }
+      m_sObjectNameToTeleportTo "Zone1"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name ""
+      }
+      m_sObjectNameToTeleportTo ""
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name ""
+      }
+      m_sObjectNameToTeleportTo ""
+      m_sGearscriptToSet ""
+     }
+    }
+   }
+  }
+  coords 2729.178 448.319 5230.415
+ }
+ Zone1 {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      UIInfo UIInfo "{645A000816F0F771}" {
+       Name "Teleport To MCOM1"
+      }
+      m_sObjectNameToTeleportTo "Zone1"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to Spawn"
+      }
+      m_sObjectNameToTeleportTo "Spawn"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name ""
+      }
+      m_sObjectNameToTeleportTo ""
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name ""
+      }
+      m_sObjectNameToTeleportTo ""
+     }
+    }
+   }
+  }
+  coords 3529.968 255.844 3512.086
+ }
+}
