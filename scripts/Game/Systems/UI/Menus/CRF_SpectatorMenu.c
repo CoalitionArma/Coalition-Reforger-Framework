@@ -48,6 +48,8 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected bool m_bHideUi = false;                        // Flag indicating if UI is hidden
 	ref array<Widget> m_aRequest = {};             // Array of request widgets
 	
+	bool m_bNVGActivated = false;              // NVG activation state for spectator
+	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
 	//=================================================================================================
@@ -122,6 +124,28 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		inputManager.AddActionListener("ManualCameraTeleport", EActionTrigger.DOWN, Action_ManualCameraTeleport);
 		inputManager.AddActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
 		inputManager.AddActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
+		inputManager.AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
+	}
+	
+	/**
+	 * Toggles night vision goggles in spectator mode
+	 */
+	void ToggleNVGs()
+	{
+		m_bNVGActivated = !m_bNVGActivated;
+
+		if (m_bNVGActivated)
+			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{0AD0A1ADEBCF893F}Assets/Items/Equipment/NVG/pvs14/data/SpecNVGFilm.emat", true);
+		else
+			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
+	}
+	
+	/**
+	 * forces night vision goggles off in spectator mode
+	 */
+	void ForceNVGsOff()
+	{
+		SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
 	}
 	
 	/**
@@ -1181,7 +1205,10 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			inputManager.RemoveActionListener("ManualCameraTeleport", EActionTrigger.DOWN, Action_ManualCameraTeleport);
 			inputManager.RemoveActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
 			inputManager.RemoveActionListener("EditorToggleUI", EActionTrigger.DOWN, HideUI);
+			inputManager.RemoveActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		}
+		
+		ForceNVGsOff();
 		
 		// Restore workspace opacity if it was set to 0
 		WorkspaceWidget workspace = GetGame().GetWorkspace();

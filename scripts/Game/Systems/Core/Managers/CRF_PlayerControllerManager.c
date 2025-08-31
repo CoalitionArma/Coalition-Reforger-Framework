@@ -24,7 +24,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 	
 	// Camera and Spectator
 	IEntity m_eCamera;                      // Stores local camera entity for spectator mode
-	bool m_bActivated = false;              // NVG activation state for spectator
 	protected vector m_vStoredCameraPos[4];   // Stores camera transform between sessions
 	
 	// Game Performance Settings
@@ -80,7 +79,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 		GetGame().GetInputManager().AddActionListener("CRF_ToggleSideReady", EActionTrigger.DOWN, ToggleSideReady);
 		GetGame().GetInputManager().AddActionListener("CRF_AdminForceReady", EActionTrigger.DOWN, AdminForceReady);
 		GetGame().GetInputManager().AddActionListener("CRF_OpenLobby", EActionTrigger.PRESSED, OpenSlottingMenu);
-		GetGame().GetInputManager().AddActionListener("CRF_SpecNVG", EActionTrigger.DOWN, ToggleNVGs);
 		GetGame().GetInputManager().AddActionListener("SwitchSpectatorUI", EActionTrigger.DOWN, UpdateHUDVisible);
 		
 		GetGame().GetCallqueue().Call(AddMsgAction);
@@ -252,19 +250,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 			phys.SetVelocity(vector.Zero);
 			phys.SetAngularVelocity(vector.Zero);
 		}
-	}
-	
-	/**
-	 * Toggles night vision goggles in spectator mode
-	 */
-	void ToggleNVGs()
-	{
-		m_bActivated = !m_bActivated;
-
-		if (m_bActivated)
-			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{0AD0A1ADEBCF893F}Assets/Items/Equipment/NVG/pvs14/data/SpecNVGFilm.emat", true);
-		else
-			SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
 	}
 	
 	//------------------------------------------------------------------------------------------------
