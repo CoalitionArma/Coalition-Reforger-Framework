@@ -158,7 +158,7 @@ class CRF_RespawnManager : ScriptComponent
 	void CloseSlottingMenu()
 	{
 		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-		if (topMenu && topMenu.IsInherited(CRF_SlottingMenuUI))
+		if (topMenu && topMenu.IsInherited(CRF_SlottingMenu))
 		{
 			GetGame().GetMenuManager().CloseMenu(topMenu);
 		}
@@ -219,7 +219,7 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 			
 		// If we're in spectator but not in respawn menu, open respawn menu
-		if (!topMenu.IsInherited(CRF_RespawnMenu) && topMenu.IsInherited(CRF_SpectatorMenuUI))
+		if (!topMenu.IsInherited(CRF_RespawnMenu) && topMenu.IsInherited(CRF_SpectatorMenu))
 		{
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_RespawnMenu);
 		}
