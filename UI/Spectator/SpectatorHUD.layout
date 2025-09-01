@@ -1068,7 +1068,7 @@ FrameWidgetClass {
     OffsetBottom -29.43
    }
    Color 0.928 0.862 0.862 1
-   Text "Game not live"
+   Text "Game Not Live"
    "Font Size" 16
    "Min Font Size" 14
    "Horizontal Alignment" Center
