@@ -1022,12 +1022,14 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 					GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
 					continue;
 				
-				// Count dead players
-				if (slotData.GetIsDeadSlot())
+				// Only show dead players in spectator
+				if (!slotData.GetIsDeadSlot())
 				{
-					deadPlayersInGroup++;
 					continue;
 				}
+				
+				// Count dead players
+				deadPlayersInGroup++;
 				
 				// Skip locked slots
 				if(slotData.GetIsLockedSlot() && slotData.GetSlotCurrentPlayerId() <= 0)
