@@ -84,7 +84,6 @@ modded class SCR_VONController
 			outLeft = specLeft;
 			outRight = specRight;
 			silencedDecibels = 0;
-			Print("We are both spectators");
 			return;
 		}
 		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
@@ -122,7 +121,6 @@ modded class SCR_VONController
 			if (channelParts.Count() > 0)
 			{
 				string channelName = channelParts[0];
-				Print(channelName);
 				// Use channel name hash to create unique frequency offset
 				int nameHash = channelName.Hash();
 				// Ensure positive hash and limit range to prevent frequency overlap
@@ -149,7 +147,6 @@ modded class SCR_VONController
 			if (channelParts.Count() > 0)
 			{
 				string channelName = channelParts[0];
-				Print(channelName);
 				// Use channel name hash to create unique frequency offset
 				int nameHash = channelName.Hash();
 				// Ensure positive hash and limit range to prevent frequency overlap
