@@ -344,7 +344,14 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	{
 		if (!m_bFrameEventRegistered)
 		{
-			GetGame().GetCallqueue().CallLater(OnFrameSpectatorCamera, 0, true);
+			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
+			
+			if (!CRF_GamemodeManager.IsSpectator(specEntity))
+				return;
+			
+			CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(specEntity.FindComponent(CRF_PlayableCharacter));
+			playableChar.SetCameraUpdateEnabled(true, m_eSpecEntity);
+			
 			m_bFrameEventRegistered = true;
 		}
 	}
@@ -356,60 +363,16 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	{
 		if (m_bFrameEventRegistered)
 		{
-			GetGame().GetCallqueue().Remove(OnFrameSpectatorCamera);
+			IEntity specEntity = SCR_PlayerController.GetLocalMainEntity();
+			
+			if (!CRF_GamemodeManager.IsSpectator(specEntity))
+				return;
+			
+			CRF_PlayableCharacter playableChar = CRF_PlayableCharacter.Cast(specEntity.FindComponent(CRF_PlayableCharacter));
+			playableChar.SetCameraUpdateEnabled(false, null);
+			
 			m_bFrameEventRegistered = false;
 		}
-	}
-	
-	/**
-	 * Frame event handler for smooth spectator camera tracking
-	 * Called every frame when spectating an entity for smoother camera movement
-	 */
-	protected void OnFrameSpectatorCamera()
-	{
-		// Exit if no spectator entity
-		if (!m_eSpecEntity)
-		{
-			UnregisterFrameEvent();
-			return;
-		}
-		
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-		if (!playerControllerComp || !playerControllerComp.m_eCamera)
-		{
-			return;
-		}
-		
-		// Get the slot component for camera positioning
-		SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eSpecEntity.FindComponent(SlotManagerComponent));
-		if (!slotComp)
-		{
-			return;
-		}
-		
-		// Get the first-person camera slot
-		EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
-		if (!camera)
-		{
-			return;
-		}
-		
-		// Get transform and modify it to be slightly behind and to the right of the player
-		vector transform[4];
-		camera.GetTransform(transform);
-		
-		// Calculate offset position
-		vector forward = transform[2];  // Z-axis is forward in the transform matrix
-		vector right = transform[0];    // X-axis is right in the transform matrix
-		
-		// Move camera back by 0.5 meters and right by 0.3 meters (over weapon shoulder)
-		vector offsetPosition = transform[3] - (forward * 0.5) + (right * 0.3);
-		
-		// Apply the offset to the transform
-		transform[3] = offsetPosition;
-		
-		// Apply transform to spectator camera
-		playerControllerComp.m_eCamera.SetTransform(transform);
 	}
 	
 	/**
