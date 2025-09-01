@@ -50,6 +50,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
+	
+	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
+	bool m_bDisableChat;
 
 	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Gamemode General")]
 	bool m_bLockSlotsAfterSafestart;
