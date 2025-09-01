@@ -280,6 +280,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	void NotifyRequestAccepted(int requesterId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_NotifyRequestAccepted(requesterId);
+		#else
+		Rpc(RpcDo_NotifyRequestAccepted, requesterId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void NotifyRequestDenied(int requesterId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_NotifyRequestDenied(requesterId);
+		#else
+		Rpc(RpcDo_NotifyRequestDenied, requesterId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void PlayRushMCOMSound(string soundEvent, vector position)
 	{
 		#ifdef WORKBENCH
@@ -842,6 +862,36 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_NotifyRequestAccepted(int requesterId)
+	{
+		if (!IsLocalPlayer(requesterId))
+			return;
+			
+		// Play acceptance sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
+		
+		// Show notification
+		if (SCR_PopUpNotification.GetInstance())
+			SCR_PopUpNotification.GetInstance().PopupMsg("Request Accepted", 3.0);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_NotifyRequestDenied(int requesterId)
+	{
+		if (!IsLocalPlayer(requesterId))
+			return;
+			
+		// Play denial sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
+		
+		// Show notification
+		if (SCR_PopUpNotification.GetInstance())
+			SCR_PopUpNotification.GetInstance().PopupMsg("Request Denied", 3.0);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_TestTargetedBroadcast(int targetPlayerId, int testValue)
 	{
 		if (!IsLocalPlayer(targetPlayerId))
@@ -1146,8 +1196,8 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		// Get requester's name for the popup
 		string requesterName = GetGame().GetPlayerManager().GetPlayerName(requesterId);
-		comp.SetPlayerText(requesterName);
-		
+		comp.SetPlayerText(requesterName + " requested to join");
+
 		Print(string.Format("[VON] Successfully created join request popup for %1", requesterName), LogLevel.NORMAL);
 	}
 };

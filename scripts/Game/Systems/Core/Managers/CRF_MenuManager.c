@@ -207,7 +207,11 @@ class CRF_MenuManager : ScriptComponent
 		if (!comp)
 			return;
 			
+		// Join the requester to the channel
 		CRF_RplToAuthorityManager.GetInstance().JoinChannel(comp.m_iPlayerId, comp.m_iChannelId);
+		
+		// Send acceptance notification with sound to the requester
+		CRF_RplBroadcastManager.GetInstance().NotifyRequestAccepted(comp.m_iPlayerId);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -216,6 +220,9 @@ class CRF_MenuManager : ScriptComponent
 		CRF_ListBoxElementComponent comp = GetComponentFromWidgetHierarchy();
 		if (!comp)
 			return;
+		
+		// Send denial notification with sound to the requester
+		CRF_RplBroadcastManager.GetInstance().NotifyRequestDenied(comp.m_iPlayerId);
 		
 		// Send deny notification to players in the channel
 		array<int> players = {};

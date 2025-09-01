@@ -482,7 +482,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			{
 				IEntity playerEntity = playermanager.GetPlayerControlledEntity(playerId);
 				
-				if(playerEntity && CRF_GamemodeManager.IsSpectator(playerEntity) && playerEntity != localMainEnt)
+				if (playerEntity && CRF_GamemodeManager.IsSpectator(playerEntity) && playerEntity != localMainEnt)
 				{
 					RplId playerRplId = RplComponent.Cast(playerEntity.FindComponent(RplComponent)).Id();
 					comparisonRplIds.Insert(playerRplId);
