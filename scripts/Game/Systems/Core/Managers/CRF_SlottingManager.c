@@ -275,17 +275,23 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	Faction GetPlayerSlotFaction(int playerId)
+	Faction GetPlayerSlotFaction(int playerId, bool returnNull = false)
 	{
 		FactionManager factionManager = GetGame().GetFactionManager();
+		
 		CRF_SlotDataContainer slotData = GetPlayerSlotData(playerId);
 		
-		if (!slotData)
+		if (!slotData && !returnNull)
 			return factionManager.GetFactionByKey("CIV");
+		else if (!slotData)
+			return null;
 			
 		FactionKey factionKey = slotData.GetSlotFactionKey();
-		if (factionKey.IsEmpty())
+		
+		if (factionKey.IsEmpty() && !returnNull)
 			return factionManager.GetFactionByKey("CIV");
+		else if (factionKey.IsEmpty())
+			return null;
 			
 		return factionManager.GetFactionByKey(factionKey);
 	}
