@@ -1,0 +1,31 @@
+$grp CRF_ManualMarker : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
+ {
+  coords 2752.938 49.031 2700.961
+  m_sQuadName "help-2"
+  m_sDescription "CIA Agent"
+  m_bUseWorldScale 0
+ }
+ {
+  coords 1266.405 93.089 2706.505
+  m_sQuadName "pick-up-2"
+  m_sDescription "Extract"
+  m_bUseWorldScale 0
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 2008.454 6.702 2567.519
+ Points {
+  ShapePoint "{663AEC94DEC60EFF}" {
+   Position -364.919 0 326.741
+  }
+  ShapePoint "{663AEC94DCD10EF2}" {
+   Position -312.972 0 -268.636
+  }
+  ShapePoint "{663AEC94D2D3F5E8}" {
+   Position 248.876 0 -265.444
+  }
+  ShapePoint "{663AEC94CB5116E3}" {
+   Position 177.599 0 276.624
+  }
+ }
+}

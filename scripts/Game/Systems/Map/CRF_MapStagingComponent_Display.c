@@ -39,7 +39,7 @@ class CRF_MapStagingComponentDisplay : SCR_InfoDisplayExtended
 	
 	// Smooth oscillation variables (visual effects only - no scaling)
 	protected float m_fOscillationTime = 0;
-	protected float m_fLastOscillationSpeed = 2.5; // Track last speed for smooth transitions
+	protected float m_fLastOscillationSpeed = 1.5; // Track last speed for smooth transitions
 	
 	// Delay for timer display while resetting (polish)
 	protected float m_fDisplayDelay = 0;
@@ -233,9 +233,9 @@ class CRF_MapStagingComponentDisplay : SCR_InfoDisplayExtended
 		if (m_fPulseIntensity > 0)
 		{
 			// Calculate oscillation speed that increases as timer approaches 0
-			// At 30s: slow (2.5s cycle), at 1s: fast (0.5s cycle)
+			// At 30s: moderate speed (2.0s cycle), at 1s: very fast (0.3s cycle)
 			float speedProgress = m_fPulseIntensity; // Use direct pulse intensity (0 at 30s, 0.9 at 1s)
-			float oscillationSpeed = Math.Lerp(2.5, 0.5, speedProgress); // 2.5s cycle → 0.5s cycle
+			float oscillationSpeed = Math.Lerp(1.5, 0.3, speedProgress); // 2.0s cycle → 0.3s cycle
 			
 			// Smooth speed transition: adjust oscillation time to maintain phase continuity
 			if (Math.AbsFloat(oscillationSpeed - m_fLastOscillationSpeed) > 0.01)

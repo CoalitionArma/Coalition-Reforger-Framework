@@ -56,9 +56,9 @@ $grp GenericEntity : "{8B9AFAD3A1548FCE}Prefabs/Destructible/AmmoStorage/GMFX_Am
     m_fDamageThresholdMaximum 10000
    }
   }
-  coords 1426.268 79.97 1118.231
+  coords 1431.78 79.97 1119.155
   angleX 0.056
-  angleY 22.564
+  angleY -2.278
   angleZ -0.893
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie MCOM destroyed\", duration: 10);"\

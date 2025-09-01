@@ -1,0 +1,52 @@
+GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{8524E09EAF76AC85}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_RPG-2_Bag_Item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "Backpack PAVN (RPG-2 Bag)"
+     Description "This rugged, weathered field backpack was standard issue for PAVN soldiers during the Vietnam War. "
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 2
+     SizeSetupStrategy Manual
+     ItemDimensions 21 21 21
+     ItemVolume 5001
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      PreviewModel "{8082263215DD2D36}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_RPG-2_Bag.xob"
+     }
+    }
+   }
+   UseCapacityCoefficient 0
+   CapacityCoefficient 1.26
+   MaxCumulativeVolume 30000
+   MaxItemSize 21 21 21
+   m_fMaxWeight 100
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   WornModel "{8082263215DD2D36}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_RPG-2_Bag.xob"
+   ItemModel "{8524E09EAF76AC85}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_RPG-2_Bag_Item.xob"
+   SoundInt 830
+   DeflatedModel "{8082263215DD2D36}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_RPG-2_Bag.xob"
+   AreaTypeWhenModelChange {
+    LoadoutArmoredVestSlotArea "{663621ECD0DE6969}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.1281 0.0436
+     }
+    }
+   }
+  }
+ }
+ coords 6454.532 162.272 6494.966
+}

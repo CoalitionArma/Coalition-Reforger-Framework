@@ -30,17 +30,6 @@ modded class SCR_PlayerController
 		
 		// Get the CRF player controller comp
 		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-		
-		// Can't do things if the pc comp doesnt exist
-		if (playerControllerComp)
-		{
-			// Apply HDR settings if the player controller component is active
-			if (playerControllerComp.m_bActivated)
-				SCR_ScreenEffectsManager.GetScreenEffectsDisplay().RHS_SetHDR("{765A5E642D09A4B8}Common/Postprocess/HDR_Vanila.emat", false);
-	
-			// Reset activation status
-			playerControllerComp.m_bActivated = false;
-		};
 
 		// Handle race condition: If player is being assigned initial entity when they should have a playable character
 		if (to && to.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource() && 

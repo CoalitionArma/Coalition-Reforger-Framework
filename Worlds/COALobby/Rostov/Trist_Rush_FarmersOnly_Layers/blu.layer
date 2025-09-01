@@ -20,7 +20,7 @@ $grp SCR_VehicleSpawn {
  {
   coords 1273.724 89.776 903.478
   angleY 38.681
-  m_rnPrefab "{818BD2D100635224}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MDO_USAF_D.et"
+  m_rnPrefab "{5E1DC2C51D589FC6}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_su231c_USAF.et"
   respawnDelay 10000
  }
  {

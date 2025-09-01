@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{18DE44A056ABC4A4}Prefabs/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_RPG-2_Bag_big.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

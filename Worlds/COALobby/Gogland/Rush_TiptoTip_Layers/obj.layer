@@ -1,20 +1,20 @@
 $grp SCR_BaseTriggerEntity {
- z3_alpha_trigger {
+ mcom_e_trigger {
   coords 4636.459 5.657 10979.974
  }
- z3_beta_trigger {
+ mcom_f_trigger {
   coords 4557.389 7 10958.163
  }
- z2_alpha_trigger {
+ mcom_c_trigger {
   coords 4816.742 7.844 10717.094
  }
- z2_beta_trigger {
+ mcom_d_trigger {
   coords 4635.013 18.686 10663.492
  }
- z1_beta_trigger {
+ mcom_a_trigger {
   coords 4528.992 37.839 10203.07
  }
- z1_alpha_trigger {
+ mcom_b_trigger {
   coords 4872.827 32.431 10198.367
  }
 }

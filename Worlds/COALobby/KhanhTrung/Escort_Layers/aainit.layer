@@ -1,0 +1,184 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{A3485AA071F7F3DA}Worlds/Navmesh/KhanhTrungLow.nmn"
+    }
+   }
+  }
+ }
+ coords 2815.467 66.255 2627.771
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 0
+  }
+ }
+ coords 2804.29 63.918 2630.312
+ m_iTimeLimitMinutes 50
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "A CIA agent has completed an assignment and has requested escort from the front line to Camp Checkmate to extract."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: Mortars"\
+   ""\
+   "OPFOR Composition: Infantry (VC)"\
+   "OPFOR Assets: N/A"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Escort the CIA agent through the marshes of Thuy Son and into Camp Checkmate."\
+   ""\
+   "Two mortar teams are ready to provide HE, Smoke, and Illumination to your AO. Reach them on platoon net."\
+   ""\
+   "Mission success if the CIA agent makes it safely to Checkmate"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Prevent the CIA agent from reaching Camp Checkmate by killing him. He is wearing a beanie and tiger stripe camo."\
+   ""\
+   "Set up ambushes and patrols along the marshes of Thuy Son for maximum effectiveness and flexibility."\
+   ""\
+   "Do not attack Camp Checkmate until cleared from PAVN command."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Camp Checkmate cannot be attacked explicitly"\
+   ""\
+   "Depending on the flow of the game, a side may receive respawn(s)."
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{CDC2D35E91FCCDF9}Configs/Gearscripts/Standard/Vietnam/CRF_GS_US_Late.conf"
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{13C1F6BC6966A9B5}Configs/Gearscripts/Standard/Vietnam/CRF_GS_VC.conf"
+  m_bEnableGIRadios 0
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{47BE0C992B85DA78}Configs/Gearscripts/Standard/80s/CRF_GS_CIA_Vietnam.conf"
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663B2293369CD892}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663B229336C6641E}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{663B2293360D4F0A}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{663B22933643508D}" {
+        m_sCallsign "MTR"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663B22932865C533}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663B229329A22E4B}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{663B229329F802A4}" {
+        m_sCallsign "1-5"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 2059.43 0 2675.321
+ Points {
+  ShapePoint "{663AEC908836BE74}" {
+   Position -1023.063 90.137 -381.043
+  }
+  ShapePoint "{663AEC908FD3D621}" {
+   Position -992.118 72.161 354.397
+  }
+  ShapePoint "{663AEC90833054D8}" {
+   Position 811.632 96.86 163.787
+  }
+  ShapePoint "{663AEC90822DC8B2}" {
+   Position 808.036 117.717 -447.611
+  }
+ }
+}
+$grp PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ {
+  coords 2743.705 49.031 2681.427
+  Points {
+   ShapePoint "{663AEC90DA00E559}" {
+    Position 6.81 14.11 -61.128
+   }
+   ShapePoint "{663AEC90D96B75ED}" {
+    Position 87.071 9.745 -19.46
+   }
+   ShapePoint "{663AEC90D9CFBFD8}" {
+    Position 40.21 19.172 91.816
+   }
+   ShapePoint "{663AEC90D83DBA92}" {
+    Position -48.703 16.195 50.495
+   }
+  }
+ }
+ {
+  coords 1251.649 93.088 2714.52
+  Points {
+   ShapePoint "{663AEC90C1828C1C}" {
+    Position 109.136 0 71.128
+   }
+   ShapePoint "{663AEC90C0BAB9EB}" {
+    Position -128.221 0 80.563
+   }
+   ShapePoint "{663AEC90C743B727}" {
+    Position -104.579 0 -64.541
+   }
+   ShapePoint "{663AEC90C672CD3E}" {
+    Position 99.995 0 -83.228
+   }
+  }
+ }
+}
