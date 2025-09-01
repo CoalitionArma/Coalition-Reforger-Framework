@@ -1,0 +1,93 @@
+GenericEntity : "{599A1E833BEF3A43}Prefabs/Weapons/MachineGuns/M249/MG_M249_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{EDD0DC345C230194}Sounds/Weapons/MG42_MG34/Weapons_Machineguns_MG42_Shot.acp" "{D815ACC8D793A669}Sounds/Weapons/Machineguns/M249/Weapons_Machineguns_M249_Handling.acp" "{E08211071D0175E2}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_LMG.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{214445E9606EFCD0}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_LMG.acp" "{5DB34B1BB17CA63B}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_LMG.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{82B50898532825F5}Assets/Weapons/Machine Guns/MG34/mg34belt.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07E1D123E9}" {
+     Name "MG34"
+     Description ""
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     AnimationIKPose "{9091BBA8DB3CDF20}Assets/Weapons/MachineGuns/M249/anims/anm/p_M249_ik.anm"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPointFront PointInfo "{5534C496A19A52E3}" {
+      PivotID "slot_ironsight_front"
+      Offset 0 0 0
+     }
+     SightsPointRear PointInfo "{5534C496A19A52E1}" {
+      PivotID "slot_ironsight_rear"
+      Offset 0 0 0
+     }
+    }
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     components {
+      AttachmentSlotComponent "{5B28E1674ABA35A7}" {
+       AttachmentSlot InventoryStorageSlot Stock {
+        Offset -0.021 0.1121 0
+        Prefab "{C850A33226B8F9C1}Prefabs/Weapons/Attachments/Optics/Scopes/Optic_PSO1/Optic_PSO1.et"
+       }
+      }
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{83DC2DCAF6EDC75F}Particles/Weapon/Casing_762x54.ptc"
+       EffectPosition EntitySlotInfo "{513A938439231378}" {
+        Offset 0 0 0
+       }
+      }
+      CaseEjectingEffectComponent "{56D2F5D94257244A}" {
+       Enabled 0
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       EffectPosition EntitySlotInfo "{C9B3271BB85B5D32}" {
+        Offset 0 0 -0.0384
+       }
+      }
+     }
+     ProjectileSpawnPositions {
+      PointInfo "{50F64C476EC435CA}" {
+       PivotID "barrel_muzzle"
+       Offset 0 0 -0.4462
+      }
+     }
+     FireModes {
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       RoundsPerMinute 900
+      }
+     }
+     MagazineWell MagazineWellC_germg "{5534C496A19A521F}" {
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      PivotID "snap_magazine"
+      Offset 0.0182 0 -0.0117
+     }
+     MagazineTemplate "{FC163472732CD32F}Prefabs/Weapons/Magazines/MG34/Box_MG_50rnd_Ball.et"
+    }
+    WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{5C41727F96285D4E}Assets/Weapons/MachineGuns/workspaces/M249.agr"
+     AnimInstance "{23E7B8806482C9FA}Assets/Weapons/MachineGuns/workspaces/M249_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{5534C496A19A52D7}" {
+      AnimGraph "{5C41727F96285D4E}Assets/Weapons/MachineGuns/workspaces/M249.agr"
+      AnimInstance "{D8B929B1FC83AD16}Assets/Weapons/MachineGuns/workspaces/M249_player.asi"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "MG42"
+    Description ""
+   }
+  }
+ }
+ coords 0 0.02 0.086
+}

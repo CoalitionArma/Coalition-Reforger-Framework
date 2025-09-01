@@ -190,7 +190,7 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
    Position -360.162 0 1609.536
   }
   ShapePoint "{65EC7DC6E54C2F4B}" {
-   Position -257.036 -0 1696.436
+   Position -257.036 0 1696.436
   }
   ShapePoint "{65DC074665863162}" {
    Position 738.715 0 1145.891

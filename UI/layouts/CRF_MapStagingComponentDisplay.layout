@@ -1,5 +1,6 @@
 FrameWidgetClass {
  Name "rootFrame"
+ "Is Visible" 0
  {
   ImageWidgetClass "{612734D48040FA26}" {
    Name "Background"
@@ -53,28 +54,29 @@ FrameWidgetClass {
    Name "StageText"
    Slot FrameWidgetSlot "{612734D4E397B330}" {
     Anchor 0.5 0 0.5 0
-    PositionX -72
-    OffsetLeft -72
-    PositionY 56
-    OffsetTop 56
-    SizeX 144
-    OffsetRight -72
-    SizeY 24
-    OffsetBottom -80
+    PositionX -88
+    OffsetLeft -88
+    PositionY 59.011
+    OffsetTop 59.011
+    SizeX 176
+    OffsetRight -88
+    SizeY 32
+    OffsetBottom -91.011
    }
    Opacity 0
    Color 1 1 1 1
-   Text "00:00:00"
-   "Font Size" 16
-   "Min Font Size" 16
+   Text "Test Stage Text"
+   "Font Size" 17
+   "Min Font Size" 17
    "Horizontal Alignment" Center
-   "Vertical Alignment" Center
    Wrap 1
    FontProperties FontProperties "{612734D416229D9E}" {
     Font "{3B42613D74662826}UI/Fonts/TahomaBd.fnt"
-    ShadowSize 1
+    OutlineColor 0 0 0 0
+    ShadowSize 32
     ShadowOffset 0.5 0.5
    }
+   "Line Spacing" 2.2
   }
  }
 }

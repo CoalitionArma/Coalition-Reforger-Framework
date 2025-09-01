@@ -1,0 +1,67 @@
+GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{F5E5B540112CC302}Assets/Items/Equipment/Backpacks/Backpack_Palm/Backpack_Jungle_Cloak_Item.xob"
+  }
+  SCR_SoundDataComponent "{5B18D20D84337DE1}" {
+   m_aAudioSourceConfiguration {
+    SCR_AudioSourceConfiguration "{5B18D20DB69BBC21}" {
+     m_sSoundProject "{18F8F27DB6AF204F}Sounds/Items/_SharedData/Open/Backpack_Veshmeshok/Items_Backpack_Veshmeshok.acp"
+    }
+    SCR_AudioSourceConfiguration "{5B18D20DC0016F1D}" {
+     m_sSoundProject "{18F8F27DB6AF204F}Sounds/Items/_SharedData/Open/Backpack_Veshmeshok/Items_Backpack_Veshmeshok.acp"
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "Jungle Cloak"
+     Description "Jungle vegetation attached to a fishnet, used as a cloak for camoflauge."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.65
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 6001
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      CameraDistanceToItem 6
+      PreviewModel "{44A083E5FC048FD4}Assets/Items/Equipment/Backpacks/Backpack_Palm/Backpack_Jungle_Cloak_Wear.xob"
+     }
+    }
+    m_eQuickSlotSize SLOT_2x2
+   }
+   UseCapacityCoefficient 0
+   CapacityCoefficient 1.26
+   MaxCumulativeVolume 40000
+   MaxItemSize 0 0 0
+   m_fMaxWeight 100
+   m_aSlotsToShow {
+   }
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   Animate 1
+   WornModel "{44A083E5FC048FD4}Assets/Items/Equipment/Backpacks/Backpack_Palm/Backpack_Jungle_Cloak_Wear.xob"
+   ItemModel "{F5E5B540112CC302}Assets/Items/Equipment/Backpacks/Backpack_Palm/Backpack_Jungle_Cloak_Item.xob"
+   SoundInt 820
+   DeflatedModel "{44A083E5FC048FD4}Assets/Items/Equipment/Backpacks/Backpack_Palm/Backpack_Jungle_Cloak_Wear.xob"
+   AreaTypeWhenModelChange {
+    LoadoutArmoredVestSlotArea "{66356EC3C9425AB6}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.15 0.1
+     }
+    }
+   }
+  }
+ }
+ coords 6457.858 162.297 6497.438
+}

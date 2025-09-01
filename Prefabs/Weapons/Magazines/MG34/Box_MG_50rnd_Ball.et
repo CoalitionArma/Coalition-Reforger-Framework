@@ -1,0 +1,10 @@
+GenericEntity : "{995CF44535296AE3}Prefabs/Weapons/Magazines/Box_762x51_M60_100rnd_Base.et" {
+ ID "0922E741B2667475"
+ components {
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   AmmoMapping {
+    1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+   }
+  }
+ }
+}
