@@ -4,17 +4,18 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Clear"
+   m_sInitialStartingWeatherId "Cloudy"
    m_iSetWeatherConstant 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_iStartingHours 20
+   m_iStartingMinutes 30
   }
  }
  coords 2114.94 72.138 1366.611
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "VC forces have been to confiendt recently, It is time for US forces to slience VC's egos by destorying their precous weapon caches."\
+   m_sTextData "VC forces have been too confident recently, It is time for US forces to slience the VC's egos by destroying their precious weapon caches."\
    ""\
    "BLUFOR Composition: "\
    "BLUFOR Assets: 1x  UH1H Armed and 2x CH47D"\
@@ -24,7 +25,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "Time: 60 minutes"\
    ""\
-   "Weather: Clear"
+   "Weather: Cloudy"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Destroy all three weapons caches."\
@@ -40,7 +41,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{CDC2D35E91FCCDF9}Configs/Gearscripts/Standard/Vietnam/CRF_GS_US_Late.conf"
+  m_rGearScript "{463FE3EB1F627B0F}Configs/Gearscripts/Custom/Yoko/CRF_GS_US_Late_Yoko.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{F30D06CA4F8748DE}Configs/Gearscripts/Custom/Yoko/CRF_GS_VC_Yoko.conf"

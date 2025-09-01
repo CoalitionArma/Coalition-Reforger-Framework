@@ -12,12 +12,11 @@ $grp Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Tur
   coords 1431.868 38.968 1339.511
   angleY 85.573
   {
-   CRF_ManualMarker {
-    coords 0.241 70.486 0.625
-    angleY -85.573
-    m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.124 0.467 0.95
+    angleY 176.98
     m_MarkerColor 0 0 0 1
-    m_sQuadName "AR_icon_exclamation_point_02"
+    m_sQuadName "entry-point-2"
     m_sDescription "ZU23"
     m_aVisibleForFactions {
      "OPFOR"
@@ -38,12 +37,11 @@ $grp Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Tur
   coords 2566.212 1.968 1674.508
   angleY 153.863
   {
-   CRF_ManualMarker {
-    coords 0.001 -461.494 -0.3
-    angleY 120.564
-    m_sImageSet "{B9E14AFE75AEBB19}UI/Textures/Icons/icons_mapMarkersUI_drawing/icons_DR_mapMarkersUI.imageset"
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords 0.273 0.979 0.63
+    angleY -97.447
     m_MarkerColor 0 0 0 1
-    m_sQuadName "AR_icon_exclamation_point_02"
+    m_sQuadName "entry-point-2"
     m_sDescription "ZU23"
     m_aVisibleForFactions {
      "OPFOR"
