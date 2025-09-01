@@ -279,6 +279,9 @@ class CRF_Role_Custom_Gear
 	CRF_EGearRole m_Role;
 	
 	[Attribute()]
+	string m_sRoleName;
+	
+	[Attribute()]
 	ref array<ref CRF_Weapon_Class> m_PrimaryWeapon;
 	
 	[Attribute()]

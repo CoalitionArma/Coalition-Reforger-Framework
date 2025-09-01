@@ -906,7 +906,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 			if (playerId <= 0)
 				continue;
 			
-			if (slottingManager.GetPlayerSlotFaction(playerId).GetFactionKey() != "CIV")
+			if (slottingManager.GetPlayerSlotFaction(playerId, true))
 				continue;
 				
 			if (!GetGame().GetPlayerManager().IsPlayerConnected(playerId))
@@ -1182,19 +1182,21 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 	private void AddPlayerToList(int playerId)
 	{
 		int listIndex;
-		Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId);
+		ResourceName playerIconResource;
+		Faction playerFaction = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerId, true);
 		
 		// Add player with appropriate faction icon
-		if (playerFaction) {
-			ResourceName iconResource = GetFactionIcon(playerFaction.GetFactionKey());
+		if (playerFaction)
+			playerIconResource = GetFactionIcon(playerFaction.GetFactionKey());
+		 else 
+			playerIconResource = EMPTY_RESOURCE;
 			
-			listIndex = m_cPlayerListBoxComponent.AddItemAndIconPlayer(
-				GetGame().GetPlayerManager().GetPlayerName(playerId), 
-				iconResource, 
-				"flag", 
-				null, 
-				"{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout");
-		}
+		listIndex = m_cPlayerListBoxComponent.AddItemAndIconPlayer(
+			GetGame().GetPlayerManager().GetPlayerName(playerId), 
+			playerIconResource, 
+			"flag", 
+			null, 
+			"{4B1BA5F8E3442E93}UI/Listbox/PlayerListboxElement.layout");
 		
 		// Apply appropriate color based on player status
 		SCR_ListBoxElementComponent comp = m_cPlayerListBoxComponent.GetElementComponent(listIndex);
@@ -1220,7 +1222,7 @@ class CRF_SlottingMenuUI: ChimeraMenuBase
 		if (factionKey == "INDFOR")
 			return m_rIndforIcon;
 		if (factionKey == "CIV")
-			return EMPTY_RESOURCE;
+			return m_rCivIcon;
 			
 		return EMPTY_RESOURCE;
 	}

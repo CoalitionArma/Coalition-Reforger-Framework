@@ -75,4 +75,78 @@ modded class SCR_ChatPanel : SCR_ScriptedWidgetComponent
 		// Update the message line count to the new desired count
 		m_iMessageLineCount = desiredLineCount;
 	}
+	
+	//--------------------------------------------------------------------------
+	// Disable chat messages except for tickets, rcon commands and messages
+	// from admins/mods
+	//--------------------------------------------------------------------------
+	override protected void SendMessage()
+	{
+		SCR_ChatPanelManager mgr = SCR_ChatPanelManager.GetInstance();
+
+		SCR_ChatComponent chatComponent = GetChatComponent();
+		
+		int senderID = SCR_PlayerController.GetLocalPlayerId();
+
+		if (!chatComponent || !m_ActiveChannel)
+			return;
+
+		string message;
+		if (m_Widgets.m_MessageEditBox)
+			message = m_Widgets.m_MessageEditBox.GetText();
+		else
+			return;
+
+		// Check if we want to send some command
+		string cmd = this.GetCommand(message);
+
+		// If there's a command, we don't want to really send the message
+		// Note: by now the channel tag or player name have been already removed from the message,
+		// so there is no command here any more
+		if (!cmd.IsEmpty())
+		{
+			// Notify the chat panel mgr, pass the message with removed command
+			message = message.Substring(cmd.Length() + 1, message.Length() - cmd.Length() - 1);
+			message.TrimInPlace();
+
+			mgr.Internal_OnChatCommand(this, cmd, message);
+
+			return;
+		}
+
+		// Check if chat is disabled, a rcon command or a message from staff
+		if (!CRF_Gamemode.GetInstance().m_bDisableChat || message.StartsWith("#") || SCR_Global.IsAdmin(senderID) || CRF_GamemodeManager.GetInstance().IsModerator(senderID))
+		{
+			if (!m_ActiveChannel.IsAvailable(chatComponent))
+			{
+				SCR_ChatMessageStyle style = this.GetChannelStyle(m_ActiveChannel);
+				SCR_ChatPanelManager.GetInstance().ShowHelpMessage(STR_CHANNEL_DISABLED);
+			}
+			else
+			{
+				if (PrivateMessageChannel.Cast(m_ActiveChannel))
+				{
+					// Get whisper receiver ID
+					int playerId = this.GetPlayerIdByName(cmd);
+	
+					if (playerId != -1)
+					{
+						// Remove player name from the message
+						message = message.Substring(1, message.Length() - 1);
+	
+						chatComponent.SendPrivateMessage(message, playerId);
+					}
+				}
+				else
+				{
+					int channelId = GetChannelId(m_ActiveChannel);
+					chatComponent.SendMessage(message, channelId);
+				}
+			}
+		}
+		else
+		{
+			chatComponent.ShowMessage("Chat disabled. Use /a if you need help.");
+		}
+	}
 }
