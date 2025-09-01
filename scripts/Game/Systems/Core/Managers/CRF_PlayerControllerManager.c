@@ -513,6 +513,12 @@ class CRF_PlayerControllerManager : ScriptComponent
 		
 		int playerID = GetGame().GetPlayerController().GetPlayerId();
 		
+		if (!data.Length() > 0)
+		{
+			chatComponent.ShowMessage("You need to include your message after /a");
+			return;
+		}	
+		
 		chatComponent.ShowMessage(string.Format("Message Sent: \"%1\"", data));
 		m_RplToAuthorityManager.SendAdminMessage(data, playerID);
 	}
