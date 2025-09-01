@@ -47,6 +47,7 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 	protected int m_iLocalChannelUpdates = 0;                // Counter for local channel updates
 	protected bool m_bHideUi = false;                        // Flag indicating if UI is hidden
 	ref array<Widget> m_aRequest = {};            			  // Array of request widgets
+	protected bool m_bFrameEventRegistered = false;          // Flag to track if frame event is registered
 	
 	bool m_bNVGActivated = false;             				  // NVG activation state for spectator
 	
@@ -308,9 +309,10 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				
 			if (isManualControl)
 			{
-				// Reset spectator entity
+				// Reset spectator entity and unregister frame event
 				m_eSpecEntity = null;
 				m_bFPPEntityValidityCheck = false;
+				UnregisterFrameEvent();
 				
 				// Reset camera angle after leaving FPP
 				vector mat = playerControllerComp.m_eCamera.GetAngles();
@@ -318,21 +320,96 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 			}
 			else
 			{
-				// Update first-person camera position
+				// Register frame event for smooth camera tracking if not already registered
+				if (!m_bFrameEventRegistered)
+				{
+					RegisterFrameEvent();
+				}
 				m_bFPPEntityValidityCheck = true;
-				SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eSpecEntity.FindComponent(SlotManagerComponent));
-				EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
-				vector transform[4];
-				camera.GetTransform(transform);
-				playerControllerComp.m_eCamera.SetTransform(transform);
 			}
 		} 
 		else if(!m_eSpecEntity && m_bFPPEntityValidityCheck)
 		{
-			// Reset camera roll when not spectating
+			// Reset camera roll when not spectating and unregister frame event
 			vector mat = playerControllerComp.m_eCamera.GetAngles();
 			playerControllerComp.m_eCamera.SetAngles(Vector(mat[0], mat[1], 0));
+			UnregisterFrameEvent();
 		}
+	}
+	
+	/**
+	 * Registers the frame event for smooth spectator camera tracking
+	 */
+	protected void RegisterFrameEvent()
+	{
+		if (!m_bFrameEventRegistered)
+		{
+			GetGame().GetCallqueue().CallLater(OnFrameSpectatorCamera, 0, true);
+			m_bFrameEventRegistered = true;
+		}
+	}
+	
+	/**
+	 * Unregisters the frame event for spectator camera tracking
+	 */
+	protected void UnregisterFrameEvent()
+	{
+		if (m_bFrameEventRegistered)
+		{
+			GetGame().GetCallqueue().Remove(OnFrameSpectatorCamera);
+			m_bFrameEventRegistered = false;
+		}
+	}
+	
+	/**
+	 * Frame event handler for smooth spectator camera tracking
+	 * Called every frame when spectating an entity for smoother camera movement
+	 */
+	protected void OnFrameSpectatorCamera()
+	{
+		// Exit if no spectator entity
+		if (!m_eSpecEntity)
+		{
+			UnregisterFrameEvent();
+			return;
+		}
+		
+		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
+		if (!playerControllerComp || !playerControllerComp.m_eCamera)
+		{
+			return;
+		}
+		
+		// Get the slot component for camera positioning
+		SlotManagerComponent slotComp = SlotManagerComponent.Cast(m_eSpecEntity.FindComponent(SlotManagerComponent));
+		if (!slotComp)
+		{
+			return;
+		}
+		
+		// Get the first-person camera slot
+		EntitySlotInfo camera = slotComp.GetSlotByName("CRF_FPP");
+		if (!camera)
+		{
+			return;
+		}
+		
+		// Get transform and modify it to be slightly behind and to the right of the player
+		vector transform[4];
+		camera.GetTransform(transform);
+		
+		// Calculate offset position
+		vector forward = transform[2];  // Z-axis is forward in the transform matrix
+		vector right = transform[0];    // X-axis is right in the transform matrix
+		
+		// Move camera back by 0.5 meters and right by 0.3 meters (over weapon shoulder)
+		vector offsetPosition = transform[3] - (forward * 0.5) + (right * 0.3);
+		
+		// Apply the offset to the transform
+		transform[3] = offsetPosition;
+		
+		// Apply transform to spectator camera
+		playerControllerComp.m_eCamera.SetTransform(transform);
 	}
 	
 	/**
@@ -733,6 +810,15 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 				// In "Deafen" channel, only show the local player
 				if (playerId != SCR_PlayerController.GetLocalPlayerId() && channelName == "Deafen")
 					continue;
+				
+				// Only show dead players in spectator VON channels
+				CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+				if (slottingManager)
+				{
+					CRF_SlotDataContainer playerSlotData = slottingManager.GetPlayerSlotData(playerId);
+					if (playerSlotData && !playerSlotData.GetIsDeadSlot())
+						continue; // Skip alive players
+				}
 					
 				// Add player to the channel display
 				int playerIndex = m_wVONChannels.AddItem(
@@ -1022,14 +1108,12 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 					GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
 					continue;
 				
-				// Only show dead players in spectator
-				if (!slotData.GetIsDeadSlot())
+				// Count dead players
+				if (slotData.GetIsDeadSlot())
 				{
+					deadPlayersInGroup++;
 					continue;
 				}
-				
-				// Count dead players
-				deadPlayersInGroup++;
 				
 				// Skip locked slots
 				if(slotData.GetIsLockedSlot() && slotData.GetSlotCurrentPlayerId() <= 0)
@@ -1209,6 +1293,9 @@ class CRF_SpectatorMenuUI: ChimeraMenuBase
 		super.OnMenuClose();
 		
 		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
+		
+		// Unregister spectator camera frame event
+		UnregisterFrameEvent();
 		
 		// Unregister from slotting updates
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
