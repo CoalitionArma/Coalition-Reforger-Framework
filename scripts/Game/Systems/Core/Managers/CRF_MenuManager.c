@@ -8,8 +8,6 @@ class CRF_MenuManager : ScriptComponent
 	[RplProp()]
 	int m_iChannelChanges = 0;
 	
-	ref array<int> m_aPlayersTalking = {};
-	
 	// Constants for better readability
 	private const string CHANNEL_SEPARATOR = "|";
 	private const string PLAYER_SEPARATOR = ",";

@@ -14,6 +14,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent; // Component for mission descriptions
 	protected CRF_Gamemode m_Gamemode;                        // Game mode instance
 	protected CRF_MenuManager m_MenuManager;                  // Menu manager instance
+	protected SCR_PlayerController m_PlayerController;		  // Reference to the player controller
 	protected SCR_ChatPanel m_ChatPanel;                      // Chat panel component
 	
 	//--- Data Storage ---
@@ -65,8 +66,6 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	 */
 	protected void RegisterInputActions()
 	{
-		GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
@@ -89,6 +88,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_wRoot = GetRootWidget();
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
+		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		
 		// Set mission text with author information
 		UpdateMissionText();
@@ -314,7 +314,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			SetPlayerStatusColor(player,comp);
 			
 			// Highlight talking players
-			if (m_MenuManager.m_aPlayersTalking.Contains(player))
+			if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(player))
 				comp.SetTalking();
 		}
 	}
@@ -380,8 +380,6 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			m_MapEntity.CloseMap();
 
 		// Remove input action listeners
-		GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
@@ -540,83 +538,6 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			
 		if (!m_MapEntity)
 			m_MapEntity = SCR_MapEntity.GetMapInstance();
-	}
-	
-	//--- VOICE COMMUNICATION METHODS ---
-	
-	/**
-	 * Activates voice communication
-	 */
-	void Action_VONon()
-	{
-		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(
-			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent)
-		);
-		
-		von.SetTransmitRadio(GetVoNTransiver());
-		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
-		von.SetCapture(true);
-	}
-	
-	/**
-	 * Gets the radio transceiver for voice communication
-	 * @return Radio transceiver
-	 */
-	RadioTransceiver GetVoNTransiver()
-	{
-		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
-		ref array<IEntity> items = {};
-		
-		SCR_InventoryStorageManagerComponent.Cast(
-			entity.FindComponent(SCR_InventoryStorageManagerComponent)
-		).GetItems(items);
-		
-		// Find radio in inventory
-		IEntity radioEntity;
-		foreach (IEntity item : items)
-		{
-			if (item.FindComponent(BaseRadioComponent))
-			{
-				radioEntity = item;
-				break;
-			}
-		}
-		
-		if (!radioEntity)
-			return null;
-			
-		// Configure radio
-		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
-		radio.SetPower(true);
-		
-		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
-		if (transceiver)
-			transceiver.SetFrequency(10000);
-		
-		return transceiver;
-	}
-	
-	/**
-	 * Deactivates voice communication with delay
-	 */
-	void Action_VONOff()
-	{
-		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
-	}
-	
-	/**
-	 * Delayed voice communication deactivation
-	 */
-	void LobbyVoNDisableDelayed()
-	{
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(
-			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent)
-		);
-		
-		von.SetCommMethod(ECommMethod.DIRECT);
-		von.SetCapture(false);
 	}
 	
 	//--- CHAT METHODS ---

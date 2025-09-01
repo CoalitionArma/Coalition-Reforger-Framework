@@ -176,7 +176,6 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Back {
-     Prefab "{13A97D10A827AE01}Prefabs/Items/Equipment/Radios/SpecRadioBag.et"
     }
    }
   }

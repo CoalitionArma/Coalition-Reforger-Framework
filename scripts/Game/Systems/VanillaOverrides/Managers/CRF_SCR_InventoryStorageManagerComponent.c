@@ -37,30 +37,31 @@ modded class SCR_InventoryStorageManagerComponent : ScriptedInventoryStorageMana
 		if (!facComp)
 			return;
 		
-		// Delete radio if its encryption key doesn't match the player's faction
-		switch(true)
-		{
-			// BLUFOR players must use "chickenNuggets" encryption
-			case(facComp.GetAffiliatedFactionKey() == "BLUFOR" && radioComp.GetEncryptionKey() != "chickenNuggets"): 
-			{
-				SCR_EntityHelper.DeleteEntityAndChildren(item); 
-				break;
-			}
-			
-			// OPFOR players must use "coldBorscht" encryption
-			case(facComp.GetAffiliatedFactionKey() == "OPFOR" && radioComp.GetEncryptionKey() != "coldBorscht"):  
-			{
-				SCR_EntityHelper.DeleteEntityAndChildren(item); 
-				break;
-			}
-			
-			// INDFOR players must use "candleSauce" encryption
-			case(facComp.GetAffiliatedFactionKey() == "INDFOR" && radioComp.GetEncryptionKey() != "candleSauce"):  
-			{
-				SCR_EntityHelper.DeleteEntityAndChildren(item); 
-				break;
-			}
-		};
+// 		No longer needed.
+//		// Delete radio if its encryption key doesn't match the player's faction
+//		switch(true)
+//		{
+//			// BLUFOR players must use "chickenNuggets" encryption
+//			case(facComp.GetAffiliatedFactionKey() == "BLUFOR" && radioComp.GetEncryptionKey() != "chickenNuggets"): 
+//			{
+//				SCR_EntityHelper.DeleteEntityAndChildren(item); 
+//				break;
+//			}
+//			
+//			// OPFOR players must use "coldBorscht" encryption
+//			case(facComp.GetAffiliatedFactionKey() == "OPFOR" && radioComp.GetEncryptionKey() != "coldBorscht"):  
+//			{
+//				SCR_EntityHelper.DeleteEntityAndChildren(item); 
+//				break;
+//			}
+//			
+//			// INDFOR players must use "candleSauce" encryption
+//			case(facComp.GetAffiliatedFactionKey() == "INDFOR" && radioComp.GetEncryptionKey() != "candleSauce"):  
+//			{
+//				SCR_EntityHelper.DeleteEntityAndChildren(item); 
+//				break;
+//			}
+//		};
 	}
 	
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

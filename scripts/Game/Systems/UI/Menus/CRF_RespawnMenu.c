@@ -121,12 +121,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	protected void RegisterInputHandlers()
 	{
-		InputManager inputManager = GetGame().GetInputManager();
-		
-		// Voice communication handlers
-		inputManager.AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		inputManager.AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
-		
+		InputManager inputManager = GetGame().GetInputManager();		
 		// Menu navigation handlers
 		inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		inputManager.AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
@@ -245,8 +240,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	{
 		InputManager inputManager = GetGame().GetInputManager();
 		
-		inputManager.RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		inputManager.RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		inputManager.RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}	
@@ -286,87 +279,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	{
 		if (m_MapEntity)
 			m_MapEntity.ZoomOut();
-	}
-	
-	/**
-	 * Activates voice communication when key is pressed
-	 */
-	void Action_VONon()
-	{
-		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
-		if (!von)
-			return;
-			
-		von.SetTransmitRadio(GetVoNTransiver());
-		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
-		von.SetCapture(true);
-	}
-	
-	/**
-	 * Retrieves the player's radio transceiver for voice communication
-	 * @return Radio transceiver entity
-	 */
-	RadioTransceiver GetVoNTransiver()
-	{
-		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
-		if (!entity)
-			return null;
-			
-		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(
-			entity.FindComponent(SCR_InventoryStorageManagerComponent)
-		);
-		
-		if (!inventoryManager)
-			return null;
-			
-		ref array<IEntity> items = {};
-		inventoryManager.GetItems(items);
-		
-		IEntity radioEntity;
-		foreach(IEntity item: items)
-		{
-			if(item.FindComponent(BaseRadioComponent))
-			{
-				radioEntity = item;
-				break;
-			}
-		}
-		
-		if (!radioEntity)
-			return null;
-			
-		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
-		radio.SetPower(true);
-		
-		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
-		if (transceiver)
-			transceiver.SetFrequency(10000);
-			
-		return transceiver;
-	}
-	
-	/**
-	 * Deactivates voice communication when key is released
-	 */
-	void Action_VONOff()
-	{
-		// Slight delay to avoid cutting off voice too abruptly
-		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
-	}
-	
-	/**
-	 * Delayed function to disable voice communication
-	 */
-	void LobbyVoNDisableDelayed()
-	{
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
-		if (!von)
-			return;
-			
-		von.SetCommMethod(ECommMethod.DIRECT);
-		von.SetCapture(false);
 	}
 	
 	/**

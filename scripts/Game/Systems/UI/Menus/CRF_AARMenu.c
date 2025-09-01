@@ -24,6 +24,7 @@ class CRF_AARMenu: ChimeraMenuBase
 	protected SCR_ListBoxComponent m_cPlayerListBoxComponent;
 	protected CRF_ListboxComponent m_cSlotListBoxComponent;
 	protected SCR_ListBoxComponent m_cMissionDescriptionListBoxComponent;
+	protected SCR_PlayerController m_PlayerController;
 	
 	//----------------------------------------
 	// Faction & Slot Data
@@ -124,6 +125,7 @@ class CRF_AARMenu: ChimeraMenuBase
 		m_wRoot = GetRootWidget();
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
+		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		
 		// Find main UI panels
 		m_wFactions = m_wRoot.FindAnyWidget("Factions");
@@ -237,8 +239,6 @@ class CRF_AARMenu: ChimeraMenuBase
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
 		
 		// Remove input handlers
-		GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
@@ -326,7 +326,7 @@ class CRF_AARMenu: ChimeraMenuBase
 				comp.SetColor(Color.Red);
 			else if(CRF_GamemodeManager.GetInstance().IsModerator(playerId))
 				comp.SetColor(Color.Yellow);
-			else if(m_MenuManager.m_aPlayersTalking.Contains(playerId))
+			else if(m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
 				comp.SetColor(Color.FromRGBA(255, 183, 0, 255));
 		}
 		
@@ -812,66 +812,8 @@ class CRF_AARMenu: ChimeraMenuBase
 	}
 	
 	//----------------------------------------
-	// Voice and Chat Methods
-	//----------------------------------------
-	
-	/**
-	 * Start voice transmission
-	 */
-	void Action_VONon()
-	{
-		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
-		von.SetTransmitRadio(GetVoNTransiver());
-		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
-		von.SetCapture(true);
-	}
-	
-	/**
-	 * Get the radio transceiver for voice communication
-	 */
-	RadioTransceiver GetVoNTransiver()
-	{
-		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
-		ref array<IEntity> items = {};
-		SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent)).GetItems(items);
-		
-		// Find radio in inventory
-		IEntity radioEntity;
-		foreach(IEntity item: items)
-		{
-			if(item.FindComponent(BaseRadioComponent))
-				radioEntity = item;
-		}
-		
-		// Configure radio
-		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
-		radio.SetPower(true);
-		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
-		if (transceiver)
-			transceiver.SetFrequency(10000);
-			
-		return transceiver;
-	}
-	
-	/**
-	 * Stop voice transmission with delay
-	 */
-	void Action_VONOff()
-	{
-		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
-	}
-	
-	/**
-	 * Delayed function to disable voice
-	 */
-	void LobbyVoNDisableDelayed()
-	{
-		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
-		von.SetCommMethod(ECommMethod.DIRECT);
-		von.SetCapture(false);
-	}
-	
+	// Chat Methods
+	//----------------------------------------	
 	/**
 	 * Toggle chat panel
 	 */

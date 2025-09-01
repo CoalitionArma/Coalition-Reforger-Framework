@@ -252,19 +252,10 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected void UpdateGamePlayerPosition()
 	{
 		vector mat[4];
-		m_PlayerControllerComponent.m_eCamera.GetWorldTransform(mat);
+		mat[1] = vector.Up;
+		mat[2] = vector.Forward;
+		mat[3][1] = 10000;
 		
-		if (GetGame().GetCallqueue().GetRemainingTime(m_PlayerControllerComponent.UpdateStoredCameraPos) <= 0)
-		{
-			GetGame().GetCallqueue().CallLater(
-				m_PlayerControllerComponent.UpdateStoredCameraPos, 
-				1000, 
-				false, 
-				mat[0], mat[1], mat[2], mat[3]
-			);
-		}
-		
-		mat[3][1] = mat[3][1] - 1.5;
 		m_PlayerControllerComponent.UpdateEntityPos(mat);
 	}
 	
