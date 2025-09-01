@@ -28,5 +28,12 @@ SCR_ChimeraCharacter {
     }
    }
   }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+    }
+   }
+  }
  }
+ coords -0.539 -1.698 -0.088
 }

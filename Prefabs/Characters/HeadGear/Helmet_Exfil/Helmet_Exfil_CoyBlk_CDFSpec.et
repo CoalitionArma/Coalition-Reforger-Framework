@@ -14,7 +14,7 @@ GameEntity : "{0F610D0687FA5814}Prefabs/Characters/HeadGear/Helmet_Exfil/Helmet_
      Prefab "{4C5535098D6DAC7C}Prefabs/Items/Equipment/Nightvision/Vlite/vlite.et"
     }
     RHS_LoadoutSlotInfo NVG {
-     Prefab "{B385064A383A384B}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual_WP.et"
+     Prefab "{B7BA7694F821F556}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual.et"
     }
     RHS_LoadoutSlotInfo Headset {
      Prefab "{6D6ADA201AD4E09B}Prefabs/Characters/HeadGear/Headphones_Peltor/Headphones_Peltor_olive.et"
