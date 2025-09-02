@@ -89,13 +89,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Recon"
        }
        SCR_CallsignInfo "{663C47CD58A7D6A9}" {
-        m_sCallsign "UH-1 Armed"
+        m_sCallsign "UH-1"
        }
        SCR_CallsignInfo "{663C47CD7157D9AD}" {
-        m_sCallsign "CH47D"
+        m_sCallsign "TH-1"
        }
        SCR_CallsignInfo "{663C47CD744A18C5}" {
-        m_sCallsign "CH47D"
+        m_sCallsign "TH-2"
        }
       }
      }

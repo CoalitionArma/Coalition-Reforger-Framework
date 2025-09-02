@@ -1,7 +1,7 @@
 $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
  {
   coords 2643.505 39.519 1646.366
-  angleY 56.416
+  angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
   m_aVisibleForFactions {
@@ -10,7 +10,7 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
  }
  {
   coords 1864.567 27.865 1424.651
-  angleY 56.416
+  angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
   m_aVisibleForFactions {
@@ -19,7 +19,7 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
  }
  {
   coords 1966.064 11.387 1198.901
-  angleY 56.416
+  angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
   m_aVisibleForFactions {
@@ -27,8 +27,8 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   }
  }
  {
-  coords 1438.815 38.968 1336.38
-  angleY 56.416
+  coords 1459.203 38.968 1314.535
+  angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
   m_aVisibleForFactions {
@@ -37,7 +37,7 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
  }
  {
   coords 1416.01 39.16 1114.176
-  angleY 56.416
+  angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
   m_aVisibleForFactions {
@@ -46,7 +46,16 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
  }
  {
   coords 2492.789 1.412 1875.586
-  angleY 56.416
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Possible Cache"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 2379.178 117.54 802.429
+  angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
   m_aVisibleForFactions {
@@ -64,7 +73,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   {
    CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0.753 4.921 -0.214
-    angleY 12.041
+    angleY 0
     m_MarkerColor 0 0 0 1
     m_sDescription "Cache B"
     m_aVisibleForFactions {
@@ -82,7 +91,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   {
    CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords -0.017 2.501 -0.942
-    angleY 56.416
+    angleY 0
     m_MarkerColor 0 0 0 1
     m_sDescription "Cache A"
     m_aVisibleForFactions {
@@ -100,7 +109,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   {
    CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
     coords 0.556 2.377 0.045
-    angleY -57.183
+    angleY 0
     m_MarkerColor 0 0 0 1
     m_sDescription "Cache C"
     m_aVisibleForFactions {

@@ -1,52 +1,14 @@
-$grp Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et" {
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5C9ADB83B35D0AF4}" {
-    InitialStorageSlots {
-     InventoryStorageSlot mag3 {
-      Prefab "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
-     }
-    }
-   }
-  }
-  coords 1431.868 38.968 1339.511
-  angleY 85.573
-  {
-   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
-    coords -0.124 0.467 0.95
-    angleY 176.98
-    m_MarkerColor 0 0 0 1
-    m_sQuadName "entry-point-2"
-    m_sDescription "ZU23"
-    m_aVisibleForFactions {
-     "OPFOR"
-    }
-   }
-  }
- }
- {
-  components {
-   SCR_UniversalInventoryStorageComponent "{5C9ADB83B35D0AF4}" {
-    InitialStorageSlots {
-     InventoryStorageSlot mag3 {
-      Prefab "{AB801054310BC947}Prefabs/Weapons/Magazines/Box_BaconZU23_23x152.et"
-     }
-    }
-   }
-  }
-  coords 2566.212 1.968 1674.508
-  angleY 153.863
-  {
-   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
-    coords 0.273 0.979 0.63
-    angleY -97.447
-    m_MarkerColor 0 0 0 1
-    m_sQuadName "entry-point-2"
-    m_sDescription "ZU23"
-    m_aVisibleForFactions {
-     "OPFOR"
-    }
-   }
-  }
+Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et" {
+ coords 2401.451 124.388 758.145
+ angleY 25.277
+}
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 2405.377 125.362 754.08
+ angleY 0
+ m_MarkerColor 0 0 0 1
+ m_sQuadName "entry-point-2"
+ m_sDescription "ZU23"
+ m_aVisibleForFactions {
+  "OPFOR"
  }
 }

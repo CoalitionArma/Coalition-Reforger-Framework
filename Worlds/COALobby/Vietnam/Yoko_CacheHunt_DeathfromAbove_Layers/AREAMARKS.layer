@@ -2,7 +2,7 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
  coords 2258.425 80.886 1357.437
  Points {
   ShapePoint "{663C47C8F4BBDE32}" {
-   Position -1120.518 0 579.956
+   Position -1228.399 38.001 650.779
   }
   ShapePoint "{663C47C8F8AEB3C5}" {
    Position -1504.833 0 -5.451
@@ -20,10 +20,10 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position 1771.219 0 2668.155
   }
   ShapePoint "{663C47C88405F3AA}" {
-   Position 121.64 0 2788.568
+   Position 32.864 3.876 2674.549
   }
   ShapePoint "{663C47C8BEE0B6C4}" {
-   Position -938.824 0 1425.524
+   Position -938.08 46.264 1427.515
   }
  }
 }
