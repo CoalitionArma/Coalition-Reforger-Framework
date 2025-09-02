@@ -113,11 +113,18 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
-		#ifdef WORKBENCH
-		RpcDo_TeleportPlayers(playerId1, playerId2, logAction);
-		#else
-		Rpc(RpcDo_TeleportPlayers, playerId1, playerId2, logAction);
-		#endif
+		IEntity player2Char = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId2);
+		
+		if(player2Char)
+		{
+			vector player2Origin = player2Char.GetOrigin();
+		
+			#ifdef WORKBENCH
+			RpcDo_TeleportPlayers(playerId1, playerId2, player2Origin, logAction);
+			#else
+			Rpc(RpcDo_TeleportPlayers, playerId1, playerId2, player2Origin, logAction);
+			#endif
+		};
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -127,6 +134,16 @@ class CRF_RplBroadcastManager : ScriptComponent
 		RpcDo_Closemap(playerID);
 		#else
 		Rpc(RpcDo_Closemap, playerID);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void HolsterGun(int playerID)
+	{
+		#ifdef WORKBENCH
+		RpcDo_HolsterGun(playerID);
+		#else
+		Rpc(RpcDo_HolsterGun, playerID);
 		#endif
 	}
 	
@@ -193,10 +210,69 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendRequest(int playerId, int requestId, int channel)
 	{
-		#ifdef WORKBENCH
-		RpcDo_SendRequest(playerId, requestId, channel);
-		#else
+		Print(string.Format("[VON] Server sending RPC to targetPlayerId=%1, requestId=%2, channel=%3", playerId, requestId, channel), LogLevel.NORMAL);
+		
+		// Get the player controller for the target player
+		PlayerController targetController = GetGame().GetPlayerManager().GetPlayerController(playerId);
+		if (!targetController)
+		{
+			Print(string.Format("[VON] Target player %1 controller not found", playerId), LogLevel.ERROR);
+			return;
+		}
+		
+		// Send RPC specifically to the target player
 		Rpc(RpcDo_SendRequest, playerId, requestId, channel);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void NotifyChannelJoinRequest(int targetPlayerId, int requesterId, int channel)
+	{
+		Print(string.Format("[VON] Server notifying player %1 of join request from player %2 for channel %3", targetPlayerId, requesterId, channel), LogLevel.NORMAL);
+		
+		#ifdef WORKBENCH
+		RpcDo_NotifyChannelJoinRequest(targetPlayerId, requesterId, channel);
+		#else
+		Rpc(RpcDo_NotifyChannelJoinRequest, targetPlayerId, requesterId, channel);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void TestTargetedBroadcast(int targetPlayerId, int testValue)
+	{
+		#ifdef WORKBENCH
+		RpcDo_TestTargetedBroadcast(targetPlayerId, testValue);
+		#else
+		Rpc(RpcDo_TestTargetedBroadcast, targetPlayerId, testValue);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void TestChannelCreatorRPC(int creatorPlayerId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_TestChannelCreatorRPC(creatorPlayerId);
+		#else
+		Rpc(RpcDo_TestChannelCreatorRPC, creatorPlayerId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void TestBroadcastConnectivity(int testId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_TestBroadcastConnectivity(testId);
+		#else
+		Rpc(RpcDo_TestBroadcastConnectivity, testId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void ConfirmRequestReceived(int requestId, int channel)
+	{
+		#ifdef WORKBENCH
+		RpcDo_ConfirmRequestReceived(requestId, channel);
+		#else
+		Rpc(RpcDo_ConfirmRequestReceived, requestId, channel);
 		#endif
 	}
 	
@@ -207,6 +283,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 		RpcDo_Deny(playerId, requestId);
 		#else
 		Rpc(RpcDo_Deny, playerId, requestId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void NotifyRequestAccepted(int requesterId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_NotifyRequestAccepted(requesterId);
+		#else
+		Rpc(RpcDo_NotifyRequestAccepted, requesterId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void NotifyRequestDenied(int requesterId)
+	{
+		#ifdef WORKBENCH
+		RpcDo_NotifyRequestDenied(requesterId);
+		#else
+		Rpc(RpcDo_NotifyRequestDenied, requesterId);
 		#endif
 	}
 	
@@ -506,7 +602,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_TeleportPlayers(int playerId1, int playerId2, bool logAction)
+	void RpcDo_TeleportPlayers(int playerId1, int playerId2, vector player2Origin, bool logAction)
 	{
 		if (logAction)
 		{
@@ -517,18 +613,13 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		if (!IsLocalPlayer(playerId1))
 			return;
-
-		IEntity entity2 = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId2);
-		if (!entity2)
-			return;
-			
-		EntitySpawnParams spawnParams = new EntitySpawnParams();
-		spawnParams.TransformMode = ETransformMode.WORLD;
-		vector teleportLocation = vector.Zero;
-		SCR_WorldTools.FindEmptyTerrainPosition(teleportLocation, entity2.GetOrigin(), 10);
-		spawnParams.Transform[3] = teleportLocation;
-
-		SCR_Global.TeleportPlayer(playerId1, teleportLocation);
+	
+		// Find a safe spot near the destination
+		vector finalSpawnLocation = vector.Zero;
+		SCR_WorldTools.FindEmptyTerrainPosition(finalSpawnLocation, player2Origin, 3);
+		
+		// Perform the teleportation
+		SCR_Global.TeleportLocalPlayer(finalSpawnLocation, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -580,6 +671,26 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (topMenu)
 			if (topMenu.IsInherited(SCR_MapMenuUI))
 				topMenu.Close();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_HolsterGun(int playerId)
+	{	
+		// Check if this holster is for this specific player
+		if (playerId != -1 && !IsLocalPlayer(playerId))
+			return;
+		
+		IEntity controlledEntity = GetGame().GetPlayerController().GetControlledEntity();
+		if (!controlledEntity)
+			return;
+		
+		CharacterControllerComponent characterController = CharacterControllerComponent.Cast(controlledEntity.FindComponent(CharacterControllerComponent));
+		if (!characterController)
+			return;
+
+		// Force player to holster gun
+		characterController.SelectWeapon(null);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -664,23 +775,58 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_SendRequest(int playerId, int requestId, int channel)
 	{
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Print(string.Format("[VON] RpcDo_SendRequest received: targetPlayerId=%1, requestId=%2, channel=%3, localPlayerId=%4", playerId, requestId, channel, localPlayerId), LogLevel.NORMAL);
+		
+		// Only show the request popup for the intended recipient (channel creator)
 		if (!IsLocalPlayer(playerId))
+		{
+			Print(string.Format("[VON] Not local player, ignoring request (target=%1, local=%2)", playerId, localPlayerId), LogLevel.NORMAL);
 			return;
+		}
 
-		CRF_SpectatorMenuUI specMenu = CRF_SpectatorMenuUI.Cast(GetGame().GetMenuManager().GetTopMenu());
+		Print(string.Format("[VON] Processing join request for local player"), LogLevel.NORMAL);
+
+		// Check if spectator menu is available
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		Print(string.Format("[VON] Top menu: %1", topMenu), LogLevel.NORMAL);
+
+		// Try to get the spectator menu with retry logic
+		CRF_SpectatorMenu specMenu = CRF_SpectatorMenu.Cast(topMenu);
 		if (!specMenu)
+		{
+			Print(string.Format("[VON] Spectator menu not available (topMenu=%1), retrying in 100ms", topMenu), LogLevel.NORMAL);
+			// If spectator menu isn't available immediately, try again after a short delay
+			GetGame().GetCallqueue().CallLater(RpcDo_SendRequest, 100, false, playerId, requestId, channel);
 			return;
+		}
+		
+		Print(string.Format("[VON] Found spectator menu: %1", specMenu), LogLevel.NORMAL);
+		
+		// Find the Requests widget container
+		Widget requestsContainer = specMenu.m_wRoot.FindAnyWidget("Requests");
+		if (!requestsContainer)
+		{
+			// Requests container not found, skip this request
+			return;
+		}
 			
 		// Create request widget
 		Widget compWidget = GetGame().GetWorkspace().CreateWidgets(
 			"{49490337615BA9B8}UI/Listbox/VONChannelRequestListBox.layout",
-			specMenu.m_wRoot.FindAnyWidget("Requests")
+			requestsContainer
 		);
+		
+		if (!compWidget)
+			return;
 		
 		specMenu.m_aRequest.Insert(compWidget);
 		
 		// Configure the request component
 		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(compWidget.FindHandler(CRF_ListBoxElementComponent));
+		if (!comp)
+			return;
+			
 		comp.m_iPlayerId = requestId;
 		comp.m_iChannelId = channel;
 		comp.GetAccept().m_OnClicked.Insert(m_MenuManager.Accept);
@@ -695,7 +841,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!IsLocalPlayer(playerId))
 			return;
 
-		CRF_SpectatorMenuUI specMenu = CRF_SpectatorMenuUI.Cast(GetGame().GetMenuManager().GetTopMenu());
+		CRF_SpectatorMenu specMenu = CRF_SpectatorMenu.Cast(GetGame().GetMenuManager().GetTopMenu());
 		if (!specMenu)
 			return;
 
@@ -714,6 +860,91 @@ class CRF_RplBroadcastManager : ScriptComponent
 				return;
 			}
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_NotifyRequestAccepted(int requesterId)
+	{
+		if (!IsLocalPlayer(requesterId))
+			return;
+			
+		// Play acceptance sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_DEPLOYED_RADIO_ENTER_ZONE);
+		
+		// Show notification
+		if (SCR_PopUpNotification.GetInstance())
+			SCR_PopUpNotification.GetInstance().PopupMsg("Request Accepted", 3.0);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_NotifyRequestDenied(int requesterId)
+	{
+		if (!IsLocalPlayer(requesterId))
+			return;
+			
+		// Play denial sound using UI sound system - more reliable
+		SCR_UISoundEntity.SoundEvent(SCR_SoundEvent.SOUND_INV_DROP_ERROR);
+		
+		// Show notification
+		if (SCR_PopUpNotification.GetInstance())
+			SCR_PopUpNotification.GetInstance().PopupMsg("Request Denied", 3.0);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_TestTargetedBroadcast(int targetPlayerId, int testValue)
+	{
+		if (!IsLocalPlayer(targetPlayerId))
+			return;
+			
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Print(string.Format("[VON] TARGETED BROADCAST TEST: Player %1 received targeted RPC (testValue=%2)", 
+			localPlayerId, testValue), LogLevel.NORMAL);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_TestChannelCreatorRPC(int creatorPlayerId)
+	{
+		if (!IsLocalPlayer(creatorPlayerId))
+			return;
+			
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Print(string.Format("[VON] CHANNEL CREATOR TEST: Player %1 received RPC after creating channel", localPlayerId), LogLevel.NORMAL);
+		
+		// Check current menu state
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		string menuType = "None";
+		if (topMenu)
+			menuType = topMenu.Type().ToString();
+		
+		Print(string.Format("[VON] Channel creator menu state: %1", menuType), LogLevel.NORMAL);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_TestBroadcastConnectivity(int testId)
+	{
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		
+		// Check current game state
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		string menuType = "None";
+		if (topMenu)
+			menuType = topMenu.Type().ToString();
+		
+		Print(string.Format("[VON] Broadcast test received by Player %1 (testId=%2, menu=%3)", 
+			localPlayerId, testId, menuType), LogLevel.NORMAL);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_ConfirmRequestReceived(int requestId, int channel)
+	{
+		Print(string.Format("[VON] Confirmation received: Player %1 received join request for channel %2", 
+			SCR_PlayerController.GetLocalPlayerId(), channel), LogLevel.NORMAL);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -896,5 +1127,79 @@ class CRF_RplBroadcastManager : ScriptComponent
 			SCR_EntityHelper.DeleteEntityAndChildren(mcomEntity);
 			Print("[CRF_RplBroadcastManager] Client: Successfully deleted entity: " + mcomIdentifier);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_NotifyChannelJoinRequest(int targetPlayerId, int requesterId, int channel)
+	{
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		Print(string.Format("[VON] RpcDo_NotifyChannelJoinRequest received: targetPlayerId=%1, requesterId=%2, channel=%3, localPlayerId=%4", targetPlayerId, requesterId, channel, localPlayerId), LogLevel.NORMAL);
+		
+		// Only show the request popup for the intended recipient (channel creator)
+		if (!IsLocalPlayer(targetPlayerId))
+		{
+			Print(string.Format("[VON] Not target player, ignoring request (target=%1, local=%2)", targetPlayerId, localPlayerId), LogLevel.NORMAL);
+			return;
+		}
+
+		Print(string.Format("[VON] Processing join request for local player (channel creator)"), LogLevel.NORMAL);
+
+		// Check if spectator menu is available
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		Print(string.Format("[VON] Top menu: %1", topMenu), LogLevel.NORMAL);
+
+		// Try to get the spectator menu with retry logic
+		CRF_SpectatorMenu specMenu = CRF_SpectatorMenu.Cast(topMenu);
+		if (!specMenu)
+		{
+			Print(string.Format("[VON] Spectator menu not available (topMenu=%1), retrying in 100ms", topMenu), LogLevel.NORMAL);
+			// If spectator menu isn't available immediately, try again after a short delay
+			GetGame().GetCallqueue().CallLater(RpcDo_NotifyChannelJoinRequest, 100, false, targetPlayerId, requesterId, channel);
+			return;
+		}
+		
+		Print(string.Format("[VON] Found spectator menu: %1", specMenu), LogLevel.NORMAL);
+		
+		// Find the Requests widget container
+		Widget requestsContainer = specMenu.m_wRoot.FindAnyWidget("Requests");
+		if (!requestsContainer)
+		{
+			Print(string.Format("[VON] Requests container not found, skipping request"), LogLevel.WARNING);
+			return;
+		}
+			
+		// Create request widget
+		Widget compWidget = GetGame().GetWorkspace().CreateWidgets(
+			"{49490337615BA9B8}UI/Listbox/VONChannelRequestListBox.layout",
+			requestsContainer
+		);
+		
+		if (!compWidget)
+		{
+			Print(string.Format("[VON] Failed to create request widget"), LogLevel.ERROR);
+			return;
+		}
+		
+		specMenu.m_aRequest.Insert(compWidget);
+		
+		// Configure the request component
+		CRF_ListBoxElementComponent comp = CRF_ListBoxElementComponent.Cast(compWidget.FindHandler(CRF_ListBoxElementComponent));
+		if (!comp)
+		{
+			Print(string.Format("[VON] Failed to get list box component"), LogLevel.ERROR);
+			return;
+		}
+			
+		comp.m_iPlayerId = requesterId;
+		comp.m_iChannelId = channel;
+		comp.GetAccept().m_OnClicked.Insert(m_MenuManager.Accept);
+		comp.GetDeny().m_OnClicked.Insert(m_MenuManager.Deny);
+		
+		// Get requester's name for the popup
+		string requesterName = GetGame().GetPlayerManager().GetPlayerName(requesterId);
+		comp.SetPlayerText(requesterName + " requested to join");
+
+		Print(string.Format("[VON] Successfully created join request popup for %1", requesterName), LogLevel.NORMAL);
 	}
 };

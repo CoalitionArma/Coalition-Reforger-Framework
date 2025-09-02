@@ -1041,36 +1041,34 @@ FrameWidgetClass {
   ImageWidgetClass "{64E05E71F1A66DDA}" {
    Name "timeLeftBackground"
    Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 1 1 1 1
-    PositionX -300.511
-    OffsetLeft -300.511
-    PositionY -27.811
-    OffsetTop -27.811
+    Anchor 1 0 1 0
+    PositionX -150.191
+    OffsetLeft -150.191
+    PositionY 6.45
+    OffsetTop 6.45
     SizeX 145.268
-    OffsetRight 155.243
-    SizeY 23.763
-    OffsetBottom 4.048
+    OffsetRight 4.923
+    SizeY 23.76
+    OffsetBottom -30.21
    }
-   Opacity 0
    Color 0 0 0 0.333
    "Shadow Offset" 0.5 0.5
   }
   TextWidgetClass "{64E05E71F1A66A86}" {
    Name "timeLeftTimer"
    Slot FrameWidgetSlot "{612734D4E397B329}" {
-    Anchor 1 1 1 1
-    PositionX -299.87
-    OffsetLeft -299.87
-    PositionY -27.039
-    OffsetTop -27.039
+    Anchor 1 0 1 0
+    PositionX -149.55
+    OffsetLeft -149.55
+    PositionY 7.22
+    OffsetTop 7.22
     SizeX 144.024
-    OffsetRight 155.846
-    SizeY 22.215
-    OffsetBottom 4.824
+    OffsetRight 5.526
+    SizeY 22.21
+    OffsetBottom -29.43
    }
-   Opacity 0
    Color 0.928 0.862 0.862 1
-   Text "Game not live"
+   Text "Game Not Live"
    "Font Size" 16
    "Min Font Size" 14
    "Horizontal Alignment" Center
@@ -1081,326 +1079,6 @@ FrameWidgetClass {
     ShadowSize 2
     ShadowOffset 0.8 0.8
    }
-  }
-  ImageWidgetClass "{64E05E71F1A66ADD}" {
-   Name "TicketOneBackground"
-   Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 1 1 1 1
-    PositionX -148.186
-    OffsetLeft -148.186
-    PositionY -28.218
-    OffsetTop -28.218
-    SizeX 142.88
-    OffsetRight 5.306
-    SizeY 24.4
-    OffsetBottom 3.818
-   }
-   Opacity 0
-   Color 0 0 0 0.333
-   "Shadow Offset" 0.5 0.5
-  }
-  ImageWidgetClass "{64E05E71F1A66B1E}" {
-   Name "TicketOneImage"
-   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
-    Anchor 1 1 1 1
-    PositionX -148.157
-    OffsetLeft -148.157
-    PositionY -29.073
-    OffsetTop -29.073
-    SizeX 29.127
-    OffsetRight 119.03
-    SizeY 25.816
-    OffsetBottom 3.257
-   }
-   Opacity 0
-   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
-   Size 64 64
-  }
-  TextWidgetClass "{64E05E71F1A66B5B}" {
-   Name "TicketOneText"
-   Slot FrameWidgetSlot "{645911A4F2183192}" {
-    Anchor 1 1 1 1
-    PositionX -121.326
-    OffsetLeft -121.326
-    PositionY -27.637
-    OffsetTop -27.637
-    SizeX 83.348
-    OffsetRight 37.978
-    SizeY 23.793
-    OffsetBottom 3.844
-   }
-   Opacity 0
-   Text "Tickets Left:"
-   "Font Size" 16
-   "Min Font Size" 14
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{645911A3011BAC1C}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 1
-    ShadowSize 2
-    ShadowOffset 0.8 0.8
-   }
-  }
-  TextWidgetClass "{64E05E71F1A66BAD}" {
-   Name "TicketOneNumber"
-   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
-    Anchor 1 1 1 1
-    PositionX -37.883
-    OffsetLeft -37.883
-    PositionY -27.582
-    OffsetTop -27.582
-    SizeX 30.364
-    OffsetRight 7.519
-    SizeY 23.802
-    OffsetBottom 3.78
-   }
-   Opacity 0
-   Text "999"
-   "Font Size" 18
-   "Min Font Size" 15
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-  }
-  ImageWidgetClass "{64E05E71F1A66B8C}" {
-   Name "TicketTwoBackground"
-   Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 1 1 1 1
-    PositionX -148.186
-    OffsetLeft -148.186
-    PositionY -55.985
-    OffsetTop -55.985
-    SizeX 142.88
-    OffsetRight 5.306
-    SizeY 24.4
-    OffsetBottom 31.585
-   }
-   Opacity 0
-   Color 0 0 0 0.333
-   "Shadow Offset" 0.5 0.5
-  }
-  TextWidgetClass "{64E05E71F1A66BD8}" {
-   Name "TicketTwoNumber"
-   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
-    Anchor 1 1 1 1
-    PositionX -37.883
-    OffsetLeft -37.883
-    PositionY -55.349
-    OffsetTop -55.349
-    SizeX 30.364
-    OffsetRight 7.519
-    SizeY 23.802
-    OffsetBottom 31.547
-   }
-   Opacity 0
-   Text "999"
-   "Font Size" 18
-   "Min Font Size" 15
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-  }
-  TextWidgetClass "{64E05E71F1A6681B}" {
-   Name "TicketTwoText"
-   Slot FrameWidgetSlot "{645911A4F2183192}" {
-    Anchor 1 1 1 1
-    PositionX -121.326
-    OffsetLeft -121.326
-    PositionY -55.404
-    OffsetTop -55.404
-    SizeX 83.348
-    OffsetRight 37.978
-    SizeY 23.793
-    OffsetBottom 31.611
-   }
-   Opacity 0
-   Text "Tickets Left:"
-   "Font Size" 16
-   "Min Font Size" 14
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{645911A3011BAC1C}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 1
-    ShadowSize 2
-    ShadowOffset 0.8 0.8
-   }
-  }
-  ImageWidgetClass "{64E05E71F1A668A0}" {
-   Name "TicketTwoImage"
-   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
-    Anchor 1 1 1 1
-    PositionX -148.157
-    OffsetLeft -148.157
-    PositionY -56.84
-    OffsetTop -56.84
-    SizeX 29.127
-    OffsetRight 119.03
-    SizeY 25.816
-    OffsetBottom 31.024
-   }
-   Opacity 0
-   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
-   Size 64 64
-  }
-  ImageWidgetClass "{64E05E71F1A668F5}" {
-   Name "TicketThreeBackground"
-   Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 1 1 1 1
-    PositionX -148.262
-    OffsetLeft -148.262
-    PositionY -83.683
-    OffsetTop -83.683
-    SizeX 142.88
-    OffsetRight 5.382
-    SizeY 24.4
-    OffsetBottom 59.283
-   }
-   Opacity 0
-   Color 0 0 0 0.333
-   "Shadow Offset" 0.5 0.5
-  }
-  ImageWidgetClass "{64E05E71F1A668D4}" {
-   Name "TicketThreeImage"
-   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
-    Anchor 1 1 1 1
-    PositionX -148.233
-    OffsetLeft -148.233
-    PositionY -84.538
-    OffsetTop -84.538
-    SizeX 29.127
-    OffsetRight 119.106
-    SizeY 25.816
-    OffsetBottom 58.722
-   }
-   Opacity 0
-   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
-   Size 64 64
-  }
-  TextWidgetClass "{64E05E71F1A66928}" {
-   Name "TicketThreeText"
-   Slot FrameWidgetSlot "{645911A4F2183192}" {
-    Anchor 1 1 1 1
-    PositionX -121.402
-    OffsetLeft -121.402
-    PositionY -83.102
-    OffsetTop -83.102
-    SizeX 83.348
-    OffsetRight 38.054
-    SizeY 23.793
-    OffsetBottom 59.309
-   }
-   Opacity 0
-   Text "Tickets Left:"
-   "Font Size" 16
-   "Min Font Size" 14
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{645911A3011BAC1C}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 1
-    ShadowSize 2
-    ShadowOffset 0.8 0.8
-   }
-  }
-  TextWidgetClass "{64E05E71F1A6697F}" {
-   Name "TicketThreeNumber"
-   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
-    Anchor 1 1 1 1
-    PositionX -37.959
-    OffsetLeft -37.959
-    PositionY -83.047
-    OffsetTop -83.047
-    SizeX 30.364
-    OffsetRight 7.595
-    SizeY 23.802
-    OffsetBottom 59.245
-   }
-   Opacity 0
-   Text "999"
-   "Font Size" 18
-   "Min Font Size" 15
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-  }
-  ImageWidgetClass "{64E05E71F1A66950}" {
-   Name "TicketFourBackground"
-   Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 1 1 1 1
-    PositionX -148.262
-    OffsetLeft -148.262
-    PositionY -111.45
-    OffsetTop -111.45
-    SizeX 142.88
-    OffsetRight 5.382
-    SizeY 24.4
-    OffsetBottom 87.05
-   }
-   Opacity 0
-   Color 0 0 0 0.333
-   "Shadow Offset" 0.5 0.5
-  }
-  TextWidgetClass "{64E05E71F1A669BD}" {
-   Name "TicketFourNumber"
-   Slot FrameWidgetSlot "{645911A5C6F87F08}" {
-    Anchor 1 1 1 1
-    PositionX -37.959
-    OffsetLeft -37.959
-    PositionY -110.814
-    OffsetTop -110.814
-    SizeX 30.364
-    OffsetRight 7.595
-    SizeY 23.802
-    OffsetBottom 87.012
-   }
-   Opacity 0
-   Text "999"
-   "Font Size" 18
-   "Min Font Size" 15
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-  }
-  TextWidgetClass "{64E05E71F1A6672E}" {
-   Name "TicketFourText"
-   Slot FrameWidgetSlot "{645911A4F2183192}" {
-    Anchor 1 1 1 1
-    PositionX -121.402
-    OffsetLeft -121.402
-    PositionY -110.869
-    OffsetTop -110.869
-    SizeX 83.348
-    OffsetRight 38.054
-    SizeY 23.793
-    OffsetBottom 87.076
-   }
-   Opacity 0
-   Text "Tickets Left:"
-   "Font Size" 16
-   "Min Font Size" 14
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{645911A3011BAC1C}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 1
-    ShadowSize 2
-    ShadowOffset 0.8 0.8
-   }
-  }
-  ImageWidgetClass "{64E05E71F1A66776}" {
-   Name "TicketFourImage"
-   Slot FrameWidgetSlot "{645911A4F7FC268D}" {
-    Anchor 1 1 1 1
-    PositionX -148.233
-    OffsetLeft -148.233
-    PositionY -112.305
-    OffsetTop -112.305
-    SizeX 29.127
-    OffsetRight 119.106
-    SizeY 25.816
-    OffsetBottom 86.489
-   }
-   Opacity 0
-   Texture "{0E394621271B080B}UI/Textures/Editor/Attributes/FreeRoamBuilding/HQ_Tab-64.edds"
-   Size 64 64
   }
  }
 }
