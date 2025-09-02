@@ -79,21 +79,6 @@ modded class SCR_PlayerController
 		super.DisconnectFromGame();
 	}
 	
-	//Normalize callsigns to prevent words like TH from matching with 5th Squad
-	string NormalizeCallsign(string callsign)
-	{
-		callsign.ToLower();
-		callsign.Replace("squad", "sq");
-		callsign.Replace("vic", "vehicle");
-		callsign.Replace("veh", "vehicle");
-	
-		callsign.Replace(" ", "");
-		callsign.Replace("(", "");
-		callsign.Replace(")", "");
-	
-		return callsign;
-	}
-	
 	//Handles initializing the m_aRadios array for both this client and the server so both are on the same page
 	//Also used to load any settings the radios may have had on respawn.
 	//Loading settings only works if the radios where pe configured with the CVON_FreqConfig.
@@ -109,6 +94,8 @@ modded class SCR_PlayerController
 		ref array<IEntity> longRangeRadios = {};
 		int SRIndex = 0;
 		int LRIndex = 0;
+		int FreqSRIndex = 0;
+		int FreqLRIndex = 0;
 		foreach (RplId radio: radios)
 		{
 			if (!Replication.FindItem(radio))
@@ -123,15 +110,21 @@ modded class SCR_PlayerController
 			if (!factionComp)
 				return;
 			string factionKey = factionComp.GetAffiliatedFactionKey();
+			
 			//Used so we can assing settings to frequencies.
-			SCR_Faction faction = SCR_Faction.Cast(GetGame().GetFactionManager().GetFactionByKey(factionKey));
+			
+			SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+			SCR_Faction faction = SCR_Faction.Cast(factionMan.GetFactionByKey(factionKey));
+			
 			SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
 			array<SCR_AIGroup> groups = groupManager.GetPlayableGroupsByFaction(faction);
 			SCR_AIGroup playersGroup = groupManager.GetPlayerGroup(GetPlayerId());
+			
 			CVON_GroupFrequencyContainer freqContainer;
 			int index = -1;
 			if (playersGroup)
 				index = groups.Find(playersGroup);
+			
 			string playersGroupName;
 			if (index != -1)
 			{
@@ -141,37 +134,44 @@ modded class SCR_PlayerController
 				string character;
 				string format;
 				playersGroup.GetCallsigns(company, platoon, squad, character, format);
-				playersGroupName = string.Format(format, company, platoon, squad, character);
+				playersGroupName = squad;
 			}
+			
 			if (playersGroup)
 			{
-				CVON_VONGameModeComponent gamemodeComp = CVON_VONGameModeComponent.GetInstance();
-				if (gamemodeComp.m_FreqConfig)
-				{
-					foreach (CVON_GroupFrequencyContainer freqItem: gamemodeComp.m_FreqConfig.m_aPresetGroupFrequencyContainers)
-					{
-						foreach (string groupName: freqItem.m_aGroupNames)
-						{
-							if (!NormalizeCallsign(groupName).Contains(NormalizeCallsign(playersGroupName)))
-					continue;
-							
-							freqContainer = freqItem;
-							break;
-						}
-					}
-				}
 				foreach (CVON_GroupFrequencyContainer container: faction.GetCallsignInfo().m_aGroupFrequencyOverrides)
 				{
 					foreach (string groupName: container.m_aGroupNames)
 					{
-						if (!NormalizeCallsign(groupName).Contains(NormalizeCallsign(playersGroupName)))
-					continue;
+						if (!SCR_Faction.NormalizeCallsign(playersGroupName).Contains(SCR_Faction.NormalizeCallsign(groupName)) && !SCR_Faction.NormalizeCallsign(groupName).Contains(SCR_Faction.NormalizeCallsign(playersGroupName)))
+							continue;
 						
 						freqContainer = container;
 						break;
 					}
+					if (freqContainer)
+						break;
 				}
+				CVON_VONGameModeComponent gamemodeComp = CVON_VONGameModeComponent.GetInstance();
+				if (!freqContainer)
+					if (gamemodeComp.m_FreqConfig)
+					{
+						foreach (CVON_GroupFrequencyContainer freqItem: gamemodeComp.m_FreqConfig.m_aPresetGroupFrequencyContainers)
+						{
+							foreach (string groupName: freqItem.m_aGroupNames)
+							{
+								if (!SCR_Faction.NormalizeCallsign(playersGroupName).Contains(SCR_Faction.NormalizeCallsign(groupName)) && !SCR_Faction.NormalizeCallsign(groupName).Contains(SCR_Faction.NormalizeCallsign(playersGroupName)))
+									continue;
+								
+								freqContainer = freqItem;
+								break;
+							}
+							if (freqContainer)
+								break;
+						}
+					}
 			}
+			
 			switch (radioComp.m_eRadioType)
 			{
 				case CVON_ERadioType.SHORT:
@@ -183,33 +183,46 @@ modded class SCR_PlayerController
 							break;
 						if (!freqContainer)
 							break;
-						if (!freqContainer.m_aSRFrequencies)
-							break;
-						if (freqContainer.m_aSRFrequencies.Count() < SRIndex + 1)
-							break;
 						if (m_RadioSettings.m_aSRRadioSettings)
 						{
 							if (m_RadioSettings.m_aSRRadioSettings.Count() - 1 < SRIndex)
 							{
 								ref CVON_RadioSettingObject settings = new CVON_RadioSettingObject();
-								settings.m_sFreq = freqContainer.m_aSRFrequencies.Get(SRIndex);
+								if (freqContainer.m_aSRFrequencies)
+								{
+									if (freqContainer.m_aSRFrequencies.Count() - 1 < FreqSRIndex)
+										settings.m_sFreq = playersGroupName;
+									else
+									{
+										settings.m_sFreq = freqContainer.m_aSRFrequencies.Get(FreqSRIndex);
+										FreqSRIndex++;
+									}
+								}
+								else
+									settings.m_sFreq = playersGroupName;
+								
 								m_RadioSettings.m_aSRRadioSettings.Insert(settings);
 								SRIndex++;
 							}
 							else
 							{
 								ref CVON_RadioSettingObject settings = m_RadioSettings.m_aSRRadioSettings.Get(SRIndex);
+								if (freqContainer.m_aSRFrequencies)
+								{
+									if (freqContainer.m_aSRFrequencies.Count() - 1 < FreqSRIndex)
+										settings.m_sFreq = playersGroupName;
+									else
+									{
+										settings.m_sFreq = freqContainer.m_aSRFrequencies.Get(FreqSRIndex);
+										FreqSRIndex++;
+									}
+								}
+								else
+									settings.m_sFreq = playersGroupName;
 								radioComp.m_eStereo = settings.m_Stereo;
 								radioComp.m_iVolume = settings.m_iVolume;
 								SRIndex++;
 							}
-						}
-						else
-						{
-							ref CVON_RadioSettingObject settings = new CVON_RadioSettingObject();
-							settings.m_sFreq = freqContainer.m_aSRFrequencies.Get(SRIndex);
-							m_RadioSettings.m_aSRRadioSettings.Insert(settings);
-							SRIndex++;
 						}
 					}
 						
@@ -224,33 +237,45 @@ modded class SCR_PlayerController
 							break;
 						if (!freqContainer)
 							break;
-						if (!freqContainer.m_aLRFrequencies)
-							break;
-						if (freqContainer.m_aLRFrequencies.Count() < SRIndex + 1)
-							break;
 						if (m_RadioSettings.m_aLRRadioSettings)
 						{
 							if (m_RadioSettings.m_aLRRadioSettings.Count() - 1 < LRIndex)
 							{
 								ref CVON_RadioSettingObject settings = new CVON_RadioSettingObject();
-								settings.m_sFreq = freqContainer.m_aLRFrequencies.Get(LRIndex);
+								if (freqContainer.m_aLRFrequencies)
+								{
+									if (freqContainer.m_aLRFrequencies.Count() - 1 < FreqLRIndex)
+										settings.m_sFreq = factionMan.GetFactionActiveChannelLR(faction.GetFactionKey()).Get(0);
+									else
+									{
+										settings.m_sFreq = freqContainer.m_aLRFrequencies.Get(FreqLRIndex);
+										FreqLRIndex++;
+									}
+								}
+								else
+									settings.m_sFreq = factionMan.GetFactionActiveChannelLR(faction.GetFactionKey()).Get(0);
 								m_RadioSettings.m_aLRRadioSettings.Insert(settings);
 								LRIndex++;
 							}
 							else
 							{
 								ref CVON_RadioSettingObject settings = m_RadioSettings.m_aLRRadioSettings.Get(LRIndex);
+								if (freqContainer.m_aLRFrequencies)
+								{
+									if (freqContainer.m_aLRFrequencies.Count() - 1 < FreqLRIndex)
+										settings.m_sFreq = factionMan.GetFactionActiveChannelLR(faction.GetFactionKey()).Get(0);
+									else
+									{
+										settings.m_sFreq = freqContainer.m_aLRFrequencies.Get(FreqLRIndex);
+										FreqLRIndex++;
+									}
+								}
+								else
+									settings.m_sFreq = factionMan.GetFactionActiveChannelLR(faction.GetFactionKey()).Get(0);
 								radioComp.m_eStereo = settings.m_Stereo;
 								radioComp.m_iVolume = settings.m_iVolume;
 								LRIndex++;
 							}
-						}
-						else
-						{
-							ref CVON_RadioSettingObject settings = new CVON_RadioSettingObject();
-							settings.m_sFreq = freqContainer.m_aLRFrequencies.Get(LRIndex);
-							m_RadioSettings.m_aLRRadioSettings.Insert(settings);
-							LRIndex++;
 						}
 					}
 						

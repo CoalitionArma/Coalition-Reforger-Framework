@@ -3,18 +3,24 @@ modded class SCR_Faction
 	ref array<string> m_aActiveSRChannels = {};
 	ref array<string> m_aActiveLRChannels = {};
 	
-	string NormalizeCallsign(string callsign)
+	static string NormalizeCallsign(string callsign)
 	{
-		callsign.ToLower();
-		callsign.Replace("squad", "sq");
-		callsign.Replace("vic", "vehicle");
-		callsign.Replace("veh", "vehicle");
-	
-		callsign.Replace(" ", "");
-		callsign.Replace("(", "");
-		callsign.Replace(")", "");
+		ref array<string> callsignSplit = {};
+		callsign.Split("(", callsignSplit, true);
+		string newCallsign = callsignSplit.Get(0);
+		newCallsign.ToLower();
 		
-		return callsign;
+		newCallsign.Replace("-", "_");
+		newCallsign.Replace(" ", "_");
+	
+		// trim accidental underscores
+		while (newCallsign.Contains("__"))
+			newCallsign.Replace("__", "_");
+	
+		if (newCallsign.EndsWith("_"))
+			newCallsign = newCallsign.Substring(0, newCallsign.Length() - 1);
+	
+		return newCallsign;
 	}
 		
 	//Auto loads all the frequencies this factions needs to automate handing them out.
@@ -101,7 +107,7 @@ modded class SCR_Faction
 	
 	bool CheckContainer(CVON_GroupFrequencyContainer container, string name, string groupName)
 	{
-		if (!NormalizeCallsign(name).Contains(NormalizeCallsign(groupName)))
+		if (!NormalizeCallsign(groupName).Contains(NormalizeCallsign(name)) && !NormalizeCallsign(name).Contains(NormalizeCallsign(groupName)))
 			return false;
 	
 		if (!container.m_aSRFrequencies)

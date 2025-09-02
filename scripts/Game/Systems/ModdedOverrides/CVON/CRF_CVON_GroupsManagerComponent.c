@@ -1,20 +1,5 @@
 modded class SCR_GroupsManagerComponent
 {
-	//Normalize callsigns to prevent words like TH from matching with 5th Squad
-	string NormalizeCallsign(string callsign)
-	{
-		callsign.ToLower();
-		callsign.Replace("squad", "sq");
-		callsign.Replace("vic", "vehicle");
-		callsign.Replace("veh", "vehicle");
-	
-		callsign.Replace(" ", "");
-		callsign.Replace("(", "");
-		callsign.Replace(")", "");
-
-		return callsign;
-	}
-	
 	//Needed so we wait for the group to initialize
 	//==========================================================================================================================================================================
 	override void TuneFreqDelayWithPresets(int playerId, IEntity player)
@@ -57,7 +42,7 @@ modded class SCR_GroupsManagerComponent
 			{
 				foreach (string groupName: container.m_aGroupNames)
 				{
-					if (!NormalizeCallsign(groupName).Contains(NormalizeCallsign(playersGroupName)))
+					if (!SCR_Faction.NormalizeCallsign(playersGroupName).Contains(SCR_Faction.NormalizeCallsign(groupName)) && !SCR_Faction.NormalizeCallsign(groupName).Contains(SCR_Faction.NormalizeCallsign(playersGroupName)))
 						continue;
 					
 					freqContainer = container;
@@ -73,7 +58,7 @@ modded class SCR_GroupsManagerComponent
 				{
 					foreach (string groupName: freqItem.m_aGroupNames)
 					{
-						if (!NormalizeCallsign(groupName).Contains(NormalizeCallsign(playersGroupName)))
+						if (!SCR_Faction.NormalizeCallsign(playersGroupName).Contains(SCR_Faction.NormalizeCallsign(groupName)) && !SCR_Faction.NormalizeCallsign(groupName).Contains(SCR_Faction.NormalizeCallsign(playersGroupName)))
 							continue;
 						
 						freqContainer = freqItem;
