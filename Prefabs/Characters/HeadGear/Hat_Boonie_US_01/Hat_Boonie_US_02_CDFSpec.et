@@ -2,6 +2,7 @@ GameEntity : "{D4BC1F7EC5C290A3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat
  ID "5112706CD4157AC7"
  components {
   InventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
    Attributes SCR_ItemAttributeCollection "{52C8D6017C371EA6}" {
     ItemDisplayName UIInfo "{52C8D60173B1164A}" {
      Name "#AR-Headgear_BoonieHat_Olive_Name"
@@ -39,14 +40,14 @@ GameEntity : "{D4BC1F7EC5C290A3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat
     ItemAnimationAttributes ItemAnimationAttributes "{66423D07A062CC6D}" {
     }
     CustomAttributes {
-     RHS_CustomAttributes "{66423D07C936DCE2}" {
-      m_sShortName "#RHS-Headgear_OPSCORE_MT_Name"
-     }
      PreviewRenderAttributes "{66423D07CECA0BFB}" {
       CameraOrbitAngles -25 25 0
       CameraDistanceToItem 2
       FOV 10
       AspectRatio 1
+     }
+     RHS_CustomAttributes "{66423D07C936DCE2}" {
+      m_sShortName "#RHS-Headgear_OPSCORE_MT_Name"
      }
     }
    }
@@ -55,6 +56,9 @@ GameEntity : "{D4BC1F7EC5C290A3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat
    UseCapacityCoefficient 0
    MaxCumulativeVolume 100
    MaxItemSize 1 1 1
+  }
+  SCR_ItemOutfitFactionComponent "{618AD7BA9EE725D7}" {
+   Enabled 0
   }
   BaseLoadoutClothComponent "{5112706CD4157AF8}" {
    Slots {
@@ -68,7 +72,7 @@ GameEntity : "{D4BC1F7EC5C290A3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat
     }
     RHS_LoadoutSlotInfo BackVelcro {
      PivotID "Head"
-     Offset -0.0087 0.0937 0.0859
+     Offset -0.0094 0.0937 0.0859
      Angles -7.2901 -2.2741 0.8817
      ChildPivotID "AttachmentPoint"
      Prefab "{4C5535098D6DAC7C}Prefabs/Items/Equipment/Nightvision/Vlite/vlite.et"

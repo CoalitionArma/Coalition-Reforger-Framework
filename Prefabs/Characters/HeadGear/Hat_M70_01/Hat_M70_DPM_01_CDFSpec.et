@@ -2,6 +2,7 @@ GameEntity : "{B02281435AED8274}Prefabs/Characters/HeadGear/Hat_M70_01/Hat_M70_0
  ID "5112706CD4157AC7"
  components {
   InventoryItemComponent "{5244E4431E28A759}" {
+   Enabled 0
    Attributes SCR_ItemAttributeCollection "{55468BEE3B337324}" {
     ItemDisplayName UIInfo "{55468BEE3B337321}" {
      Name "Cap, Combat, DPM"
@@ -81,11 +82,11 @@ GameEntity : "{B02281435AED8274}Prefabs/Characters/HeadGear/Hat_M70_01/Hat_M70_0
    }
    WornModel "{AE3329894AB9AB15}Assets/Characters/HeadGear/Cap_Combat/Game_CapCombat_01.xob"
    WornMaterialsOverride {
-    "{136F8F011FC5C447}Prefabs/Assets/Props/Fabric/Data/cloths/CDFarsenalBoxCover.emat"
+    "{99561B7D90B0CE24}Prefabs/Assets/Props/Fabric/Data/cloths/CDFSpecCamo.emat"
    }
    ItemModel "{400CB696AE97DFC9}Assets/Characters/HeadGear/Cap_Combat/Game_CapCombat_Ground_01.xob"
    ItemMaterialsOverride {
-    "{136F8F011FC5C447}Prefabs/Assets/Props/Fabric/Data/cloths/CDFarsenalBoxCover.emat"
+    "{99561B7D90B0CE24}Prefabs/Assets/Props/Fabric/Data/cloths/CDFSpecCamo.emat"
    }
   }
  }
