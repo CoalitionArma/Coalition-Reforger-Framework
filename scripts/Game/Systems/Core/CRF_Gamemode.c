@@ -50,6 +50,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
+	
+	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
+	bool m_bDisableChat;
 
 	[Attribute("true", "auto", "Should we lock all JIP slots after SafeStart turns off? COOP = FALSE", category: "CRF Gamemode General")]
 	bool m_bLockSlotsAfterSafestart;
@@ -358,8 +361,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
+		// Check if player is reconnecting and should be automatically re-initialized
+		if (m_GamemodeState == CRF_EGamemodeState.GAME && 
+			m_SlottingManager.IsPlayerInASlot(iPlayerID) && 
+			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
+		{		
+			// Schedule initialization with a delay to ensure player controller is fully set up
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+		}
 		// Initialize player if not in GAME state
-		if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
+		else if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
 			m_GamemodeState == CRF_EGamemodeState.SLOTTING || 
 			m_GamemodeState == CRF_EGamemodeState.AAR)
 		{
@@ -564,7 +575,7 @@ modded class SCR_ManualCamera
 		MenuBase topMenu = m_MenuManager.GetTopMenu();
 		
 		// Allow camera control in editor and spectator menus
-		return topMenu && (!topMenu.IsInherited(EditorMenuUI) && !topMenu.IsInherited(CRF_SpectatorMenuUI));
+		return topMenu && (!topMenu.IsInherited(EditorMenuUI) && !topMenu.IsInherited(CRF_SpectatorMenu));
 	}
 }
 

@@ -1,4 +1,4 @@
-class CRF_PreviewMenuUI: ChimeraMenuBase
+class CRF_PreviewMenu: ChimeraMenuBase
 {
 	//--- UI Widgets ---
 	protected Widget m_wRoot;                                  // Root widget of the menu

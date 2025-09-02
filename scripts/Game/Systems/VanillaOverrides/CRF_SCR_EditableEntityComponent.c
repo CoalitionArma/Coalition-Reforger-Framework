@@ -13,7 +13,7 @@ modded class SCR_EditableEntityComponent
 		
 		//--- From Role Config
 		if (GetGame().GetMenuManager().GetTopMenu()) {
-			if (CRF_RoleHelper.IsValidGearscriptResource(resourceName) && GetGame().GetMenuManager().GetTopMenu().IsInherited(CRF_SpectatorMenuUI))
+			if (CRF_RoleHelper.IsValidGearscriptResource(resourceName) && GetGame().GetMenuManager().GetTopMenu().IsInherited(CRF_SpectatorMenu))
 			{
 				CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 				CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceName);
