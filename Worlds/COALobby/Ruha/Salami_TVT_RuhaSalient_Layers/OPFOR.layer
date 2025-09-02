@@ -1,3 +1,25 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 6692.319 96.718 1137.403
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+ }
+ {
+  coords 6696.648 96.719 1137.222
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+ }
+ {
+  coords 6701.245 96.68 1137.303
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+ }
+ {
+  coords 6706.679 96.656 1137.421
+  m_rnPrefab "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  respawnDelay 10000
+ }
+}
 SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
  coords 6655.502 96.719 1112.96
  angleY -88
@@ -31,7 +53,7 @@ SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
            DefaultFormation "Column"
           }
          }
-         coords 6.598 -0 23.789
+         coords 6.598 0 23.789
          angleY 2
          {
           SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
