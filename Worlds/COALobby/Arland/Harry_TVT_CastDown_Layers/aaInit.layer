@@ -76,9 +76,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Shelling started early in the morning, and is keeping Indfor from reinforcing the town. You believe it will stop when Opfor begins their offensive. "
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "Combat engineer SL has been replaced by FO in name only, to allow for a more custom CE SL. "\
-   ""\
-   "Managing supplies and competing for them are important in this mission."
+   m_sTextData "Managing supplies and competing for them are important in this mission."
   }
  }
  m_iFactionOneRatio 3
