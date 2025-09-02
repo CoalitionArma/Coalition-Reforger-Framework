@@ -25,6 +25,7 @@ class CRF_SlottingManager : ScriptComponent
 	// References to other managers
 	protected CRF_Gamemode m_Gamemode;
 	protected CRF_GamemodeManager m_GamemodeManager;
+	protected CRF_GearscriptManager m_GearscriptManager;
 	
 	//------------------------------------------------------------------------------------------------
 	// INITIALIZATION
@@ -45,6 +46,7 @@ class CRF_SlottingManager : ScriptComponent
 
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
+		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -275,17 +277,23 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	Faction GetPlayerSlotFaction(int playerId)
+	Faction GetPlayerSlotFaction(int playerId, bool returnNull = false)
 	{
 		FactionManager factionManager = GetGame().GetFactionManager();
+		
 		CRF_SlotDataContainer slotData = GetPlayerSlotData(playerId);
 		
-		if (!slotData)
+		if (!slotData && !returnNull)
 			return factionManager.GetFactionByKey("CIV");
+		else if (!slotData)
+			return null;
 			
 		FactionKey factionKey = slotData.GetSlotFactionKey();
-		if (factionKey.IsEmpty())
+		
+		if (factionKey.IsEmpty() && !returnNull)
 			return factionManager.GetFactionByKey("CIV");
+		else if (factionKey.IsEmpty())
+			return null;
 			
 		return factionManager.GetFactionByKey(factionKey);
 	}
@@ -579,7 +587,7 @@ class CRF_SlottingManager : ScriptComponent
 			spawnParams.Transform = playerSlotVector;
 
 		vector pos;
-		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 8, 3);
+		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 12);
 		spawnParams.Transform[3] = pos;
 		
 		// Spawn the character
@@ -673,8 +681,12 @@ class CRF_SlottingManager : ScriptComponent
 		RplComponent entityRplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
 		slotData.SetSlotCurrentCharacter(entityRplComp.Id());
 		
+		string customSlottingName = m_GearscriptManager.GetCustomRoleName(group.GetFaction().GetFactionKey(), role);
+		
 		// Set slot name
-		if (!roleConfig.m_sRoleName.IsEmpty())
+		if (!customSlottingName.IsEmpty())
+			slotData.SetSlotName(customSlottingName);
+		else if (!roleConfig.m_sRoleName.IsEmpty())
 			slotData.SetSlotName(roleConfig.m_sRoleName);
 		else
 			slotData.SetSlotName(editableCharComp.GetDisplayName());

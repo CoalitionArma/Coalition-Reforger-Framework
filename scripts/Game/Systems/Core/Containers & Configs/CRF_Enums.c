@@ -3,16 +3,16 @@
 	Step 1 - Create the specified role across all character faction prefabs and name it with the method: CRF_GS_(Faction Key)_(Role)_P, ie: 
 		CRF_GS_BLUFOR_AAR_P
 
-	Step 2 -  Create a "Pretty Name" in all caps with spaces having underscores in the bellow enum class CRF_EGearRole, ie:
+	Step 2 -  Create a role in all caps with spaces having underscores in the bellow enum class CRF_EGearRole, ie:
 		ASSISTANT_AUTOMATIC_RIFLEMAN
-	this is to make it easier to search when adding the role to a global/local gearscript array
 
 	Step 3 -  Now you have to go to the corresponding global file:
 		Configs\Gearscripts\CRF_Global_Roles_Config.conf
 
-		Add a new item into the RoleConfigs array, Set the role with the name you created 
+		- Add a new item into the RoleConfigs array, Set the role with the role you created in step 2
+		- Add the prerequisite prefabs you made in step 1
+		- Add whatever weapons/gear you want for your new role
 		
-
 	There, you have added a role, good for you, now stop bothering me about adding in roles manually -Njpatman
 */
 

@@ -25,10 +25,6 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
   FactionAffiliationComponent "{520EC961FB0A2E90}" {
    "faction affiliation" "BLUFOR"
   }
-  PS_PlayableComponent "{5EFCC1946F475F15}" {
-   m_name "Drone Operator"
-   m_bIsPlayable 1
-  }
   SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
    m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
     Name "#AR-Role_Rifleman"

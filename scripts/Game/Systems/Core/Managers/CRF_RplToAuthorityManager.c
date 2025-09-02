@@ -446,7 +446,46 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestToJoinChannel(int channel, int requestId)
 	{
-		m_MenuManager.RequestToJoinChannel(channel, requestId);
+		Print(string.Format("[VON] Server processing join request: channel=%1, requestId=%2", channel, requestId), LogLevel.NORMAL);
+		
+		// Instead of using BroadcastManager, handle the request directly on the server
+		if (channel < 0 || channel >= m_MenuManager.m_aVONChannels.Count())
+			return;
+		
+		// Extract channel creator ID from channel name
+		// Channel name format: "PlayerName's Channel (PlayerID)|players..."
+		string channelString = m_MenuManager.m_aVONChannels[channel];
+		array<string> channelSplit = {};
+		channelString.Split("|", channelSplit, true);
+		
+		if (channelSplit.Count() == 0)
+			return;
+		
+		string channelName = channelSplit[0];
+		
+		// Find the creator ID from the channel name format: "Name's Channel (ID)"
+		int openParen = channelName.IndexOf("(");
+		int closeParen = channelName.IndexOf(")");
+		
+		if (openParen == -1 || closeParen == -1 || closeParen <= openParen)
+			return;
+		
+		string creatorIdStr = channelName.Substring(openParen + 1, closeParen - openParen - 1);
+		int creatorId = creatorIdStr.ToInt();
+		
+		// Don't send a request if the requester is the channel creator
+		if (creatorId == requestId)
+		{
+			Print(string.Format("[VON] Player %1 tried to join their own channel %2, ignoring", requestId, channel), LogLevel.NORMAL);
+			return;
+		}
+		
+		// Send notification to the channel creator
+		if (creatorId > 0)
+		{
+			Print(string.Format("[VON] Server sending join request notification to creator %1 from requester %2 for channel %3", creatorId, requestId, channel), LogLevel.NORMAL);
+			m_RplBroadcastManager.NotifyChannelJoinRequest(creatorId, requestId, channel);
+		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -463,7 +502,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_CreateChannel(int playerId)
 	{
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_MenuManager.CreateChannel(playerName + "'s Channel", playerId);
+		// Include player ID in channel name to ensure uniqueness when players have same username
+		string uniqueChannelName = playerName + "'s Channel (" + playerId + ")";
+		int channelIndex = m_MenuManager.CreateChannel(uniqueChannelName, playerId);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
