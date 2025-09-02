@@ -28,7 +28,7 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
    Attributes SCR_ItemAttributeCollection "{51FAA3E3C2D19BD4}" {
     ItemDisplayName WeaponUIInfo "{64F2449BAC2567AE}" {
      Name "Throwable Explosive Satchel"
-     Description "Big Boom (Now With 40% More Throwing)"
+     Description "It Makes Big Boom, Now With 100% More Throwing (Drop On Ground For Toggling Between Throwable and Non-Throwable)"
     }
     ItemPhysAttributes ItemPhysicalAttributes "{56CA88CA367A150F}" {
      Weight 7
@@ -142,6 +142,19 @@ GenericEntity : "{8B55F8686833B12B}Prefabs/Weapons/Core/FragGrenade_Base.et" {
      Position PointInfo "{50871D266EA1BB5A}" {
       Offset 0 0.075 0
      }
+    }
+   }
+   additionalActions {
+    CRF_ToggleSatchelType "{66425A048E53C742}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{66425A38154FA98E}" {
+      Name "Convert Satchel"
+      Description "Toggle Satchel Between Throwable and Non-Throwable"
+      Icon "{CA8B528037B6831A}UI/Textures/InventoryIcons/Supplies_icon_UI.edds"
+     }
+     Duration 5
     }
    }
   }

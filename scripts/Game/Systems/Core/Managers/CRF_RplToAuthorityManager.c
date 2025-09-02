@@ -232,6 +232,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_AddItem, playerId, prefab, logAction); 
 	}
 	
+	void RemoveItem(int playerId, RplId entityID, bool logAction)
+	{
+		Rpc(RpcAsk_RemoveItem, playerId, entityID, logAction); 
+	}
+	
 	// Admin functions
 	void TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
@@ -696,6 +701,33 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
 		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
 			delete resourceSpawned;
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RemoveItem(int playerId, RplId entityID, bool logAction)
+	{
+		if (playerId == 0)
+			return;
+		
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(entityID));
+		if (!rplComp)
+			return;
+			
+		IEntity entity = rplComp.GetEntity();
+		if (!entity)
+			return;
+		
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+
+		if (logAction && !prefab.IsEmpty())
+		{
+			string itemName = prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1);
+			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+			string logMessage = string.Format("%2 was added to %1's inventory", playerName, itemName);
+			m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true);
+		}
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]

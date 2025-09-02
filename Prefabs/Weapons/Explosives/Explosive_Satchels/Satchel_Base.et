@@ -13,7 +13,7 @@ CRF_SatchelEntity : "{7D968AE11F63B3F6}Prefabs/Weapons/Core/ExplosiveCharge_base
    Attributes SCR_ItemAttributeCollection "{60D6BB563667D737}" {
     ItemDisplayName GrenadeUIInfo "{64F17E598D101E52}" {
      Name "Explosive Satchel"
-     Description "It Makes Big Boom Boom"
+     Description "It Makes Big Boom (Drop On Ground For Toggling Between Throwable and Non-Throwable)"
      m_sAmmoType "#AR-AmmoType_M15"
      m_bShowAmmoTypeText 1
      m_eAmmoTypeFlags HE
@@ -94,6 +94,17 @@ CRF_SatchelEntity : "{7D968AE11F63B3F6}Prefabs/Weapons/Core/ExplosiveCharge_base
    additionalActions {
     SCR_ArmExplosiveChargeWithTimedFuzeAction "{5F1CD1393FC36E3C}" {
      Duration 6
+    }
+    CRF_ToggleSatchelType "{66425A04A2EDFE34}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{66425A399D78795E}" {
+      Name "Convert Satchel"
+      Description "Toggle Satchel Between Throwable and Non-Throwable"
+      Icon "{CA8B528037B6831A}UI/Textures/InventoryIcons/Supplies_icon_UI.edds"
+     }
+     Duration 5
     }
    }
   }
