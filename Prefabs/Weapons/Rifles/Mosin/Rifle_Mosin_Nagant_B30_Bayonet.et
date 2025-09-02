@@ -1,0 +1,447 @@
+GenericEntity : "{B31929F65F0D0279}Prefabs/Weapons/Rifles/M14/Rifle_M21.et" {
+ ID "5254ACCA959048B9"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{6F5597365A3E2FFA}Sounds/Weapons/Rifles/Mosin/Weapons_Rifles_Mosin_Shot.acp" "{00AB0532CCEE5B13}Sounds/Weapons/Rifles/Mosin/Weapons_Rifles_Mosin_Handling.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{0AC909417B7EFCB9}Assets/Weapons/Rifles/mosin.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "Mosin Nagant 91/30"
+     Description "7.62x54mm bolt action sniper rifle."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 4
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationIKPose "{53A1C05C8CA2F994}Assets/Weapons/Rifles/anims/anm/p_rfl_mosin_ik.anm"
+    }
+    CustomAttributes {
+     ItemMovementSwayAttributes "{58B9009CD03086A9}" {
+      BobSpeed 15
+      MinMagnitude 0.33
+      MaxMagnitude 1
+      ADSMagnitudeAngular 8.84 10.6 20
+     }
+     PreviewRenderAttributes "{52BAB5E48C906DB8}" {
+      LodModel 0
+     }
+    }
+   }
+  }
+  SCR_WeaponStatsManagerComponent "{6644F41BE1600412}" {
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5472D21A19B61CDF}" {
+     Enabled 1
+     AttachmentSlot InventoryStorageSlot Scope {
+      ChildPivotID "snap_weapon"
+     }
+     AttachmentType AttachmentOpticsMosinPU "{58E2BCF93BDCA8BA}" {
+     }
+     AttachmentObstructs 0
+    }
+    AttachmentSlotComponent "{6644F40408715ED6}" {
+     AttachmentSlot InventoryStorageSlot bayonet {
+      PivotID "barrel_muzzle"
+      Offset 0 -0.0026 -0.0798
+      Prefab "{8715AB1610736766}Prefabs/Weapons/Attachments/Bayonets/BC_Bayonet_6X2.et"
+     }
+     AttachmentType AttachmentBayonetM9 "{6644F404DF407A93}" {
+     }
+    }
+    SightsComponent "{6644F41BE160042A}" {
+     SightsPosition PointInfo "{6644F41BE1600437}" {
+      PivotID "eye"
+      Offset 0 0.0003 -0.01
+     }
+     SightsRanges {
+      SightRangeInfo "{6644F41BE160043D}" {
+       Range 0 100
+       WeaponPosition PointInfo "{6644F41BE160043C}" {
+        Offset 0 -0.0008 -0.0001
+        Angles 0.04846 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160043E}" {
+       Range 0.25 200
+       WeaponPosition PointInfo "{6644F41BE1600438}" {
+        Offset 0 -0.00166 -0.00022
+        Angles 0.10087 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160043A}" {
+       Range 0.33 300
+       WeaponPosition PointInfo "{6644F41BE16FFBC4}" {
+        Offset 0 -0.0026 -0.00034
+        Angles 0.15826 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16FFBC6}" {
+       Range 0.39 400
+       WeaponPosition PointInfo "{6644F41BE16FFBC1}" {
+        Offset 0 -0.00374 -0.0005
+        Angles 0.22728 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16FFBC0}" {
+       Range 0.45 500
+       WeaponPosition PointInfo "{6644F41BE16FFBC3}" {
+        Offset 0 -0.00499 -0.00067
+        Angles 0.3039 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16FFBD7}" {
+       Range 0.4825 600
+       WeaponPosition PointInfo "{6644F41BE16FFBD6}" {
+        Offset 0 -0.00644 -0.00087
+        Angles 0.39167 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16FFBD1}" {
+       Range 0.5 700
+       WeaponPosition PointInfo "{6644F41BE1601435}" {
+        Offset 0 -0.00812 -0.0011
+        Angles 0.49416 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1601437}" {
+       Range 0.52 800
+       WeaponPosition PointInfo "{6644F41BE1601439}" {
+        Offset 0 -0.01007 -0.00138
+        Angles 0.61294 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1601438}" {
+       Range 0.537 900
+       WeaponPosition PointInfo "{6644F41BE160143A}" {
+        Offset 0 -0.01231 -0.0017
+        Angles 0.74965 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160143C}" {
+       Range 0.557 1000
+       WeaponPosition PointInfo "{6644F41BE160143E}" {
+        Offset 0 -0.01491 -0.00208
+        Angles 0.90828 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{6644F41BE1601401}" {
+      PivotID "slot_ironsight_front"
+     }
+     SightsPointRear PointInfo "{6644F41BE160140E}" {
+      PivotID "slot_ironsight_rear"
+     }
+     ADSTime 0.35
+     m_iOpticDOFDistanceScale 30
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     Enabled 0
+     SightsRanges {
+      SightRangeInfo "{584CF7959FFB9FD2}" {
+       Range 0 100
+      }
+      SightRangeInfo "{6644F41BE1601414}" {
+       Range 0 100
+       WeaponPosition PointInfo "{6644F41BE1603F0D}" {
+        Offset 0 -0.0009 -0.00012
+        Angles 0.05493 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1603F0F}" {
+       Range 0.1 200
+       WeaponPosition PointInfo "{6644F41BE1603F00}" {
+        Offset 0 -0.00163 -0.00021
+        Angles 0.09888 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1603F01}" {
+       Range 0.15 300
+       WeaponPosition PointInfo "{6644F41BE1603F03}" {
+        Offset 0 -0.00253 -0.00034
+        Angles 0.15381 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1603F04}" {
+       Range 0.2 400
+       WeaponPosition PointInfo "{6644F41BE16059D8}" {
+        Offset 0 -0.00352 -0.00047
+        Angles 0.21423 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16059DA}" {
+       Range 0.25 500
+       WeaponPosition PointInfo "{6644F41BE16059A4}" {
+        Offset 0 -0.00469 -0.00063
+        Angles 0.28564 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16059A5}" {
+       Range 0.3 600
+       WeaponPosition PointInfo "{6644F41BE16059A7}" {
+        Offset 0 -0.00596 -0.0008
+        Angles 0.36255 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16059A1}" {
+       Range 0.35 700
+       WeaponPosition PointInfo "{6644F41BE16059A2}" {
+        Offset 0 -0.0074 -0.001
+        Angles 0.45044 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16059AC}" {
+       Range 0.4 800
+       WeaponPosition PointInfo "{6644F41BE16059AE}" {
+        Offset 0 -0.00902 -0.00123
+        Angles 0.54932 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16059A8}" {
+       Range 0.45 900
+       WeaponPosition PointInfo "{6644F41BE16059A9}" {
+        Offset 0 -0.01083 -0.00148
+        Angles 0.65918 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16059AB}" {
+       Range 0.5 1000
+       WeaponPosition PointInfo "{6644F41BE16059B6}" {
+        Offset 0 -0.01299 -0.0018
+        Angles 0.79102 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE16059B2}" {
+       Range 0.55 1100
+       WeaponPosition PointInfo "{6644F41BE1605982}" {
+        Offset 0 -0.01551 -0.00217
+        Angles 0.94482 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160598C}" {
+       Range 0.6 1200
+       WeaponPosition PointInfo "{6644F41BE160598D}" {
+        Offset 0 -0.01822 -0.00257
+        Angles 1.10962 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160598E}" {
+       Range 0.65 1300
+       WeaponPosition PointInfo "{6644F41BE1607285}" {
+        Offset 0 -0.02128 -0.00304
+        Angles 1.29639 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1607283}" {
+       Range 0.7 1400
+       WeaponPosition PointInfo "{6644F41BE1607281}" {
+        Offset 0 -0.02524 -0.00366
+        Angles 1.53809 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160729F}" {
+       Range 0.75 1500
+       WeaponPosition PointInfo "{6644F41BE160729D}" {
+        Offset 0 -0.02919 -0.00429
+        Angles 1.77979 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160729C}" {
+       Range 0.8 1600
+       WeaponPosition PointInfo "{6644F41BE1609C4B}" {
+        Offset 0 -0.03386 -0.00507
+        Angles 2.06543 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1609C4C}" {
+       Range 0.85 1700
+       WeaponPosition PointInfo "{6644F41BE1609C4D}" {
+        Offset 0 -0.03961 -0.00605
+        Angles 2.41699 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE1609C4E}" {
+       Range 0.9 1800
+       WeaponPosition PointInfo "{6644F41BE160DADF}" {
+        Offset 0 -0.04606 -0.0072
+        Angles 2.8125 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE160DADE}" {
+       Range 0.95 1900
+       WeaponPosition PointInfo "{6644F41BE160DAD1}" {
+        Offset 0 -0.05323 -0.00853
+        Angles 3.25195 0 0
+       }
+      }
+      SightRangeInfo "{6644F41BE161105D}" {
+       Range 1 2000
+       WeaponPosition PointInfo "{6644F41BE161105C}" {
+        Offset 0 -0.06181 -0.01019
+        Angles 3.7793 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{584CED31C6D10FFC}" {
+      PivotID "slot_ironsight_front"
+      Offset 0 0 0
+     }
+     SightsPointRear PointInfo "{584CED31C4E1F0DE}" {
+      PivotID "slot_ironsight_front"
+      Offset 0 0 0
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       Enabled 0
+       AttachToParent 1
+      }
+     }
+     FireModes {
+      BaseFireMode "{506B20D1476BA99E}" {
+       ManualAction 0
+      }
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       UIName "Single"
+       ManualAction 1
+      }
+     }
+     MagazineWell MagazineWellMosin "{52D8E2D6B49EF12E}" {
+     }
+     WeaponAimModifiers {
+      SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
+       IsEnabled 1
+       "Angular Magnitude" 1
+       "ADS Multiplier" 0.25
+       "Focus Multiplier" 0.2
+       "Angular Inertia Magnitude ADS" 4 2 12
+       "Lower Translation" 0.05 -0.005 -0.013
+       "Lower Rotation" -10 -8 -10
+       OneHandMultiplier 2
+      }
+      RecoilWeaponAimModifier "{58C899E212CAEAAC}" {
+       LinearData RecoilData "{58C899E2064B3F06}" {
+        "Curve Mins" -0.001 -0.005 -0.03
+        "Curve Maxs" 0 -0.004 -0.027
+       }
+       AngularData RecoilData "{58C899E2064B3F15}" {
+        "Curve Mins" 0 2 0
+        "Curve Maxs" 0 2 0
+       }
+       TurnOffsetData RecoilData "{58C899E2064B3F16}" {
+        "Curve Mins" 0 8.3 0
+        "Curve Maxs" 0 8.75 0
+       }
+      }
+     }
+     OutOfADSWhileReloading 1
+     MagazineTemplate "{CA96DF808C7F2269}Prefabs/Weapons/Magazines/Magazine_762x54_B30_Mosin_Nagant.et"
+    }
+    SCR_BoltAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{7C5D11BD4B0DBD8A}Assets/Weapons/Rifles/workspaces/mosin.agr"
+     AnimInstance "{304BFBC3098D66EB}Assets/Weapons/Rifles/workspaces/mosin_weapon.asi"
+     AnimVariables {
+      AnimationVariableInt "{6644F41BE16110B1}" {
+       VariableName "MosinAmmoCount"
+       SignalName "MosinAmmoCount"
+      }
+     }
+     AlwaysActive 0
+     AnimInjection AnimationAttachmentInfo "{532F3A9CB912F2BA}" {
+      AnimGraph "{7C5D11BD4B0DBD8A}Assets/Weapons/Rifles/workspaces/mosin.agr"
+      AnimInstance "{CB156AF2918C0207}Assets/Weapons/Rifles/workspaces/mosin_player.asi"
+     }
+     AutoVariablesBind 1
+     AnimVariablesToBind + {
+      "MosinAmmoCount"
+     }
+     m_sCasingEjectionAnimation "{38D9CB344FD6151E}Particles/Weapon/Casing_762x54_Mosin.ptc"
+     m_effectPosition PointInfo "{6644F41BE16110BC}" {
+      PivotID "slot_magazine"
+      Offset 0 0 0.0417
+      Angles 0 72.4431 0
+     }
+     m_sShellPrefab "{E0DB673C9DE516D1}Prefabs/Weapons/Ammo/BC_Dummy_Round_762x54r_Ball_BS32.et"
+     m_sBulletMesh "Bullet"
+     m_sCasingMesh "Casing"
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "Mosin Nagant 91/30"
+    Description "7.62x54mm bolt action sniper rifle."
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+      Offset 0 -0.0187 0.0211
+     }
+     Radius 0.5
+    }
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Position PointInfo "{5A1E5C478DEE6777}" {
+      Offset 0 -0.0514 0.0199
+     }
+    }
+    UserActionContext "{61FECC6555D008A5}" {
+     UIInfo SCR_ActionContextUIInfo "{6644F41BE161108D}" {
+     }
+     Position PointInfo "{6644F41BE161108F}" {
+      PivotID "slot_optics"
+      Offset 0 0 0
+     }
+     Radius 0.1
+     Height 0.1
+    }
+   }
+   additionalActions {
+    SCR_EquipWeaponAction "{51ECFC668352E6C8}" {
+     UIInfo UIInfo "{51ECFC6680E087F3}" {
+      Name "Equip "
+     }
+    }
+    SCR_EquipWeaponHolsterAction "{589291C195FC57CB}" {
+     UIInfo UIInfo "{589291C1860E802C}" {
+      Name "Equip "
+     }
+    }
+    SCR_PickUpItemAction "{51EC842F84AD2146}" {
+     UIInfo UIInfo "{51EC842F8A980615}" {
+      Name "Pick up"
+     }
+    }
+    SCR_ToggleSafetyUserAction "{5A1E58F79FF7125E}" {
+     UIInfo SCR_ActionUIInfo "{5A1E58F666517323}" {
+      Name "Toggle Safety"
+     }
+    }
+    BaseLightUserAction "{5A1E58F790AF821D}" {
+     ParentContextList {
+     }
+     UIInfo UIInfo "{5A1E58F788F40D95}" {
+      Name ""
+     }
+     VisibilityRange 0
+    }
+    SCR_AttachItemFromInventoryAction "{6644F41BE1611091}" {
+     ParentContextList {
+      "magazine"
+     }
+     UIInfo SCR_InventoryUIInfo "{6644F41BE1611090}" {
+      Name "Attach: "
+     }
+    }
+   }
+  }
+ }
+ coords 188.662 1 150.261
+}

@@ -1,0 +1,96 @@
+$grp Tree : "{077C695F02F4312C}PrefabLibrary/Vegetation/Bushes/b_phragmites_australis_1.et" {
+ {
+  coords 2990.722 1.405 1856.272
+  angleX -0.562
+  angleY 93.727
+  angleZ 0.326
+  scale 0.908
+ }
+ {
+  coords 2975.638 3.148 1863.745
+  angleX -0.562
+  angleY 93.727
+  angleZ 0.326
+  scale 0.908
+ }
+}
+GenericEntity : "{19968B13AD8B3115}Prefabs/Props/Naval/FishingGear_01.et" {
+ coords 2700.119 1.949 1728.719
+}
+$grp GenericEntity : "{20759E1CA7F808BE}Prefabs/Props/Garbage/Military/Food/GarbageFoodMilitaryUS_01.et" {
+ {
+  coords 2649.636 2.629 1663.483
+ }
+ {
+  coords 2651.735 2.629 1666.288
+  angleY 74.053
+ }
+}
+GenericEntity : "{2424EBB806A690D4}Prefabs/Props/Garbage/Medical/GarbageMedicalUS_02.et" {
+ coords 2552.328 5.36 1602.499
+}
+GenericEntity : "{2887E99075B9C928}Prefabs/Props/Garbage/Generic/Litter_01_long.et" {
+ coords 2650.218 1.585 1647.155
+ angleY 34.813
+}
+$grp GenericEntity : "{4923E218F59644B9}Prefabs/Props/Wrecks/BoatWreck_01.et" {
+ {
+  coords 2748.581 0 1696.918
+  angleY 17.051
+ }
+ {
+  coords 2750.37 0 1702.75
+  angleY 17.051
+ }
+}
+GenericEntity : "{5FA05CC09D57A6CF}Prefabs/Props/Naval/NetHanger_01_long.et" {
+ coords 2774.27 -0.828 1662.747
+ angleY -129.086
+}
+GenericEntity : "{71F41635D2497C25}Prefabs/Vegetation/Tree/Debris/BranchTrash_con_01.et" {
+ coords 2644.711 1.609 1638.572
+}
+Tree : "{771F63437E31D613}Prefabs/Brushes/Groundcover4.et" {
+ coords 2985.775 72.41 1853.283
+ angleY 0
+ angleZ 0
+}
+Tree : "{95DA2ECB7CB6057A}Prefabs/Brushes/bushes.et" {
+ coords 2972.067 71.26 1858.08
+}
+$grp GenericEntity : "{985C3871D40C7F7B}Prefabs/Props/Garbage/Generic/Litter_01_small.et" {
+ {
+  coords 2612.465 3.812 1635.516
+ }
+ {
+  coords 2614.386 3.964 1641.793
+ }
+ {
+  coords 2610.191 3.835 1647.964
+ }
+}
+GenericEntity : "{A208248B503EF831}Prefabs/Props/Civilian/Cart_01.et" {
+ coords 2639.671 2.788 1625.322
+ angleX 46.574
+ angleY -162.35
+}
+GenericEntity : "{A446CB3C732A360D}Prefabs/Props/Garbage/Generic/Junk_01/Junk_01_pile_long.et" {
+ coords 2636.561 3.069 1620.787
+}
+GenericEntity : "{C58BDB4D22E0A5A7}Prefabs/Props/Garbage/Generic/Litter_01_large.et" {
+ coords 2636.457 1.719 1663.006
+ angleY 48.509
+}
+GameEntity : "{D9842C11742C00CF}Prefabs/Props/Civilian/Fireplace_01.et" {
+ coords 2569.193 2.869 1543.541
+}
+$grp StaticModelEntity : "{EE836DAE53355BB6}Prefabs/Trench/Barrier2.et" {
+ {
+  coords 3003.49 60.37 1902.663
+  angleY -48.496
+ }
+ {
+  coords 3005.268 60.313 1898.139
+  angleY 8.287
+ }
+}
