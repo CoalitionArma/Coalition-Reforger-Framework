@@ -1,0 +1,87 @@
+FrameWidgetClass {
+ {
+  OverlayWidgetClass "{5DFF03E4AD9D1E88}" {
+   Prefab "{5DFF03E4AD9D1E88}"
+   {
+    ScaleWidgetClass "{5CFCF5E894AE6629}" {
+     Prefab "{5CFCF5E894AE6629}"
+     {
+      ImageWidgetClass "{5CFCF5E894AE6628}" {
+       Prefab "{5CFCF5E894AE6628}"
+       Texture "{B98FB2CD75200E57}UI/Textures/MainMenu/MenuBackgroundBlank_UI.edds"
+       Size 3840 2160
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{5E04A017BD489B2A}" {
+   Prefab "{5E04A017BD489B2A}"
+   {
+    OverlayWidgetClass "{5DFF03E4AD9D1E85}" {
+     Prefab "{5DFF03E4AD9D1E85}"
+     Slot FrameWidgetSlot "{58D0CBF2E62A3844}" {
+      PositionX 2
+      OffsetLeft 2
+      PositionY 0
+      OffsetTop 0
+      SizeX 0
+      OffsetRight -2
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      ImageWidgetClass "{663512728164DBF6}" {
+       Name "Image0"
+       Slot OverlayWidgetSlot "{663512728164DBD2}" {
+       }
+       Texture "{731A187898607DE5}Images/UI/LoadingScreens/reforgerloadingscreen.edds"
+       Size 3840 2160
+       Mask "{731A187898607DE5}Images/UI/LoadingScreens/reforgerloadingscreen.edds"
+      }
+      ImageWidgetClass "{5DFF03E4AD9D1EF2}" {
+       Prefab "{5DFF03E4AD9D1EF2}"
+       "Is Visible" 0
+      }
+      FrameWidgetClass "{5DFF03E4AD9D1EF7}" {
+       Prefab "{5DFF03E4AD9D1EF7}"
+       Slot OverlayWidgetSlot "{5DFE96FD4124CFDF}" {
+        Padding 60 50 0 0
+       }
+       "Is Visible" 1
+      }
+      VerticalLayoutWidgetClass "{5DFF03E4AD9D1EE1}" {
+       Prefab "{5DFF03E4AD9D1EE1}"
+       Slot OverlayWidgetSlot "{5DFE96D622552BA2}" {
+        Padding 880 70 60 0
+       }
+       "Is Visible" 1
+      }
+      HorizontalLayoutWidgetClass "{5DFF03E4AD9D1ED0}" {
+       Prefab "{5DFF03E4AD9D1ED0}"
+       {
+        TextWidgetClass "{6635450522373819}" {
+         Name "Text0"
+         Slot LayoutSlot "{66354505223738FA}" {
+         }
+         Text "www.coalitiongroup.net"
+         "Font Size" 16
+         "Min Font Size" 16
+        }
+        ImageWidgetClass "{5DFF03E4AD9D1ED7}" {
+         Prefab "{5DFF03E4AD9D1ED7}"
+         "Is Enabled" 0
+         "Is Visible" 0
+        }
+        RichTextWidgetClass "{5DFF03E4AD9D1ED5}" {
+         Prefab "{5DFF03E4AD9D1ED5}"
+         "Is Visible" 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -340,16 +340,16 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 			return;
 		}
 		
-		// Check safestart status and game state, stole harrys snippet
+		// Safestart check
 		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();
 		if (!safestart || safestart.GetSafestartStatus() || CRF_Gamemode.GetInstance().m_GamemodeState != CRF_EGamemodeState.GAME)
 		{
-			if (m_bDebugEnabled) Print("[CRF_MapStagingComponent] Waiting for safestart to end and game to start...");
-			GetGame().GetCallqueue().CallLater(MonitorSafestart, 10000, false);
+			if (m_bDebugEnabled) Print("[CRF_MapStagingComponent] Waiting for game to be ready and safestart to end...");
+			GetGame().GetCallqueue().CallLater(MonitorSafestart, 15000, false);
 			return;
 		}
 		
-		// Safestart has ended and game is live - start staging
+		// Safestart has ended and game is live
 		if (m_bDebugEnabled) Print(string.Format("[CRF_MapStagingComponent] Game is live, starting staging in %1 seconds", m_iInitialDelay));
 		GetGame().GetCallqueue().CallLater(StartStaging, m_iInitialDelay * 1000, false);
 		m_bStagingActive = true;

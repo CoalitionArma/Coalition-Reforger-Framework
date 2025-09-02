@@ -1,0 +1,172 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ components {
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60CA9BE5536BF701}" {
+     NavmeshFile "{361BE832291042C0}AI_Navmesh/Bearland_GM_vehicles.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5C8C9B750D124A63}" {
+   NavmeshSettings NavmeshWorld "{5C8C9B750B60C6E2}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5C90BD0EC793647D}" {
+     NavmeshFile "{E4F167DE98F688AB}AI_Navmesh/Bearland_GM_AINavmesh.nmn"
+    }
+   }
+  }
+ }
+ coords 1065.534 14.202 907.246
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{663A220531DD479B}" {
+   m_iMCOMTimer 5
+   m_iMCOMsPerZone 1
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Heavy Wet Fog"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{663B12C8A4403D24}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 12
+    }
+   }
+  }
+ }
+ coords 1082.789 14.169 918.958
+ m_iTimeLimitMinutes 70
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Rush. One MCOM per zone and three zones."\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets: MMG"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: Mortar"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy the three MCOMs in linear progression. Respawns happen after each is destroyed."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Protect the three MCOMs in linear progression. Respawns happen after each is destroyed."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Respawns happen after each objective"
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{B334C6517C06DB36}Configs/Gearscripts/Standard/Modern/CRF_GS_Modern_Rebels.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{EEF62EAA1D0BB1D5}Configs/Gearscripts/Standard/Modern/Variants/CRF_GS_RHSATACS_AK12.conf"
+ }
+ {
+  SCR_FactionManager "663AEC86CA761BC6" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "LOGI"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{663AEC817A6D1E88}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663AEC817A206E0B}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663AEC817AD4167C}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{663AEC81796EC211}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{663AEC8179236D5B}" {
+        m_sCallsign "MMG"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "LOGI"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{663AEC815015B103}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663AEC8150D2A46A}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663AEC8157788E44}" {
+        m_sCallsign "MTR"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 1348.171 3.114 568.732
+ Points {
+  ShapePoint "{663AEC8E580071EB}" {
+   Position 52.931 0 44.887
+  }
+  ShapePoint "{663AEC8E5F140A52}" {
+   Position -90.29 0 16.332
+  }
+  ShapePoint "{663AEC8E5E89A8DC}" {
+   Position -73.917 0 -289.023
+  }
+  ShapePoint "{663AEC8E5C7E5CAB}" {
+   Position 192.582 0 -201.738
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 1258.239 11.978 1269.032
+ Points {
+  ShapePoint "{663AEC8E7D8F53FE}" {
+   Position -49.055 0 -369.194
+  }
+  ShapePoint "{663AEC8E728C91DE}" {
+   Position 132.389 0 -82.499
+  }
+  ShapePoint "{663AEC8E77FFC6C8}" {
+   Position 246.259 0 355.834
+  }
+  ShapePoint "{663AEC8E7547312F}" {
+   Position 193.577 0 525.773
+  }
+  ShapePoint "{663AEC8E74C664D0}" {
+   Position -283.601 0 464.186
+  }
+  ShapePoint "{663AEC8E6A339AE9}" {
+   Position -189.502 0 -311.859
+  }
+ }
+}

@@ -1,5 +1,5 @@
 CRF_ManualMarker zone1markers : "{BE9E1F90BFFBB48A}PrefabsEditable/Markers/GameZoneMarker.et" {
- coords 920.789 32.783 2047.634
+ coords 922.878 32.783 2046.915
  angleY 55.9
  m_sDescription "Zone 2 Limit"
  {

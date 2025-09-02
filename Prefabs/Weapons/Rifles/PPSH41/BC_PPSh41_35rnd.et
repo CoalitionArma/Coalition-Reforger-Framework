@@ -1,0 +1,403 @@
+GenericEntity : "{E1F14DB52DBFBC57}Prefabs/Weapons/Core/Weapon_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{C0A90F246CC742E2}Sounds/Weapons/Rifles/PPSh/Weapons_Rifles_Ppsh_Shot.acp" "{7F7D4AED3FB6459A}Sounds/Weapons/Rifles/PPSh/Weapons_Rifles_Ppsh_Handling.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp"
+   }
+  }
+  BaseWeaponStatsManagerComponent "{66363B53D2EBCB30}" {
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{EA4BB565D0D52A4D}Assets/Weapons/Rifles/PPSh-41/BC_PPSh-41.xob"
+   LODFactors {
+    1 1 1 1 1 1
+   }
+  }
+  RigidBody "{66363B53D2EBCB20}" {
+   CenterOfMass 0 0.058 0.068
+   SimState None
+   ModelGeometry 1
+  }
+  SCR_MeleeWeaponProperties "{66363B53D2EBCB5B}" {
+   m_fDamage 20
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{66363B53D2EBCB52}" {
+     Name "PPSh-41"
+     Description "7.62x25mm Tokarev submachine gun."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{66363B53D2EBCB4C}" {
+     Weight 3.63
+     SizeSetupStrategy Manual
+     ItemDimensions 25 25 25
+     ItemVolume 1500
+     DimensionScaler 1
+     RestingUP Left
+     RestingAdditiveRotationLS 0 0 0
+     RestingAdditiveOffsetLS 0 0 0
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{66363B53D2EBCB49}" {
+     IkSettings {
+      ItemIKSettings "{66363B53D2EBCB46}" {
+       MovementSpeedRange 0 1
+       IkSettingsStand 7
+       IkSettingsCrouch 7
+       IkSettingsProne 7
+      }
+      ItemIKSettings "{66363B53D2EBCB43}" {
+      }
+      ItemIKSettings "{66363B53D2EBCB42}" {
+       MovementSpeedRange 1 2.5
+       IkSettingsStand 7
+       IkSettingsCrouch 7
+       IkSettingsProne 6
+      }
+      ItemIKSettings "{66363B53D2EBCB7E}" {
+       ProneTurn 1
+       MovementSpeedRange 2.5 3
+       IkSettingsStand 7
+       IkSettingsCrouch 6
+       IkSettingsProne 6
+      }
+      ItemIKSettings "{66363B53D2EBCB7C}" {
+      }
+      ItemIKSettings "{66363B53D2EBCB7A}" {
+      }
+      ItemIKSettings "{66363B53D2EBCB79}" {
+      }
+      ItemIKSettings "{66363B53D2EBCB6C}" {
+      }
+     }
+     AnimationInstance "{0350283642830782}anims/workspaces/player/player_main_rifle.asi"
+     AnimationIKPose "{02D717B65334C5E4}Assets/Weapons/Rifles/PPSh-41/Anims/anm/p_rfl_ppsh41_ik.anm"
+     AnimIkposeBlendDuration 0.09
+     AnimRecoilLimit 0.08
+     AnimRecoilRecoveryTime 0.175
+     AnimRecoilBuildupTime 0.008
+     AllowInspection 1
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentAimSpeedMultiplier 1 1
+      DeploymentHorizontalAimSensitivityMax 120
+      DeploymentPoints {
+       PivotPointInfoItem "{66363B53D2EBCB61}" {
+        "Point info" DeploymentPointInfo deploy {
+         Offset 0 0.0542 0.4129
+        }
+        StabilizationSize 0.05 0.1 0.35
+       }
+      }
+     }
+     ItemMovementSwayAttributes "{58B9009CD03086A9}" {
+     }
+     SCR_RecoilCameraShakeParams "{58DEF2AB0413E346}" {
+     }
+     PreviewRenderAttributes "{66363B53D2EBCC98}" {
+      CameraPreset Right
+      CameraDistanceToItem 1
+      FOV 30
+      AspectRatio 3
+      AnimationInstance "{5E862EB6989F8833}anims/workspaces/player/player_inventory_rifle.asi"
+     }
+     CharacterModifierAttributes "{66363B53D2EBCC8E}" {
+      ADSSpeedLimit 1.9
+      SpeedLimitHighready 1.9
+      Supress1hShooting 0
+     }
+     PreviewRenderAttributes "{66363B53D2EBCC8B}" {
+      LodModel 0
+     }
+     CharacterModifierAttributes "{66363B53D2EBCC89}" {
+     }
+     ItemOneHandAnimAttributes "{66363B53D2EBCC87}" {
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    SightsComponent "{BB23A637957CFFF8}" {
+     SightsPosition PointInfo "{BB23A63796688E69}" {
+      PivotID "eye"
+      Offset 0 -0.0202 -0.0244
+     }
+     SightsRanges {
+      SightRangeInfo "{66363B53D2EBCCB9}" {
+       Range 0 100
+       WeaponPosition PointInfo "{66363B53D2EBCCB7}" {
+        Offset 0 -0.02013 -0.00037
+        Angles 0.19775 0 0
+       }
+      }
+      SightRangeInfo "{66363B53D2EBCCB4}" {
+       Range 1 200
+       WeaponPosition PointInfo "{66363B53D2EBCCB2}" {
+        Offset 0 -0.0224 -0.0009
+        Angles 0.4834 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{66363B53D2EBCCA3}" {
+      PivotID "ironsight_front"
+     }
+     SightsPointRear PointInfo "{66363B53D2EBCCA1}" {
+      PivotID "ironsight_rear"
+     }
+     ADSTime 0.3
+     ZeroingGenerator BaseZeroingGenerator "{66363B53D2EBCCDD}" {
+      ZeroRaiseToEye 0
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" : "{4FC83D9226751C42}Prefabs/Weapons/Core/Components/MuzzleComponent_Base.ct" {
+     components {
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{C8C0B00F66A2C6D2}Particles/Weapon/Casing_9x19.ptc"
+       EffectPosition EntitySlotInfo "{5122BA87B56F471A}" {
+        PivotID "w_bolt"
+        Offset 0 0 0.05
+        Angles 14.9629 90 0
+       }
+      }
+      SCR_MuzzleEffectComponent "{66363B53D2EBCCD2}" {
+       ParticleEffect "{664AB55FA8F17B89}Particles/Weapon/Smoke_AKS74U.ptc"
+       EffectPosition EntitySlotInfo "{648509CE01B20261}" {
+        PivotID "barrel_muzzle"
+       }
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{4DEF02F09203DF08}Particles/Weapon/Muzzle_Base_Medium_01.ptc"
+       ResetOnFire 0
+       OverrideByAttachment 1
+      }
+     }
+     ProjectileSpawnPositions {
+      PointInfo "{50F64C476EC435CA}" {
+       Angles 0.21 0 0
+      }
+     }
+     ChamberedAmmo 0
+     FireModes {
+      BaseFireMode "{506B20D1476BA99E}" {
+       RoundsPerMinute 1000
+      }
+      BaseFireMode "{B80A64F4A8EF8333}" : "{D5D52E848DBCAA53}Prefabs/Weapons/Core/Configs/FireModes/FireMode_Single.conf" {
+       MaxBurst -1
+       RoundsPerMinute 1000
+       UIName "Auto"
+      }
+      BaseFireMode "{66363B53D2EBCCC4}" {
+       RoundsPerMinute 1000
+       UIName "Single"
+      }
+     }
+     MagazineWell MagazineWell762x25_PPSH41 "{66363B53D2EBCCFE}" {
+     }
+     WeaponAimModifiers {
+      SwayWeaponAimModifier "{521AE9A27BDC1E6F}" {
+       "Lower Translation" 0.03 0 0
+       "Lower Rotation" -12 -8 -10
+       OneHandMultiplier 2
+      }
+      OnHitAimModifier "{66363B53D2EBCCF9}" {
+       IsEnabled 0
+      }
+      RecoilWeaponAimModifier "{66363B53D2EBCCF6}" {
+       LinearData RecoilData "{66363B53D2EBCCF5}" {
+        "Curve X" {
+         0 0.5 0.034 0.553 0.05 0.793 0.203 0.641 0.301 0.518 1 0.5
+        }
+        "Curve Y" {
+         0 0.5 0.032 0.55 0.047 0.696 0.073 0.625 0.095 0.5 0.125 0.5 0.261 0.5 1 0.5
+        }
+        "Curve Z" {
+         0 0.5 0.008 0.728 0.022 0.849 0.036 0.858 0.051 0.815 0.082 0.608 0.177 0.512 0.436 0.5 1 0.5
+        }
+        "Curve Time Scale" 1
+        "Curve Magnitudes" 1 1.25 1
+        "Curve Mins" -0.001 -0.002 -0.018
+        "Curve Maxs" 0.001 0.003 -0.014
+        "Base Recoil Scale" 3
+        "OneHand Scale" 2
+       }
+       AngularData RecoilData "{66363B53D2EBCCF0}" {
+        "Curve X" {
+         0 0.5 0.019 0.411 0.055 0.539 0.11 0.474 0.216 0.497 1 0.5
+        }
+        "Curve Y" {
+         0 0.5 0.046 0.718 0.093 0.8 0.261 0.635 0.391 0.521 0.582 0.505 1 0.5
+        }
+        "Curve Z" {
+         0 0.5 0.029 0.602 0.048 0.783 0.1 0.644 0.238 0.487 0.443 0.5 0.7 0.5 1 0.5
+        }
+        "Curve Time Scale" 1.25
+        "Curve Magnitudes" 1.2 1.05 1
+        "Curve Mins" -1 1.4 0.5
+        "Curve Maxs" 1 1.6 0.5
+        "Base Recoil Scale" 3
+        "OneHand Scale" 2
+       }
+       TurnOffsetData RecoilData "{66363B53D2EBCCEF}" {
+        "Curve X" {
+         0 0.5 0.018 0.66 0.053 0.841 0.077 0.644 0.103 0.524 0.148 0.502 1 0.5
+        }
+        "Curve Y" {
+         0.017 0.806 0.1 0.534 0.236 0.5 1 0.5
+        }
+        "Curve Time Scale" 1
+        "Curve Magnitudes" 1.2 1.6 0
+        "Curve Mins" -1 5 0
+        "Curve Maxs" 1 6.5 0
+        "Base Recoil Scale" 3
+        "OneHand Scale" 2
+       }
+      }
+      ZeroingWeaponAimModifier "{66363B53D2EBCCEB}" {
+       "Rotation Interpolation Speed" 5
+       "Translation Interpolation Speed" 5
+      }
+     }
+     UIInfo MuzzleUIInfo "{2FBBA72C906C627E}" {
+      m_MagIndicator SCR_MagazineIndicatorConfiguration "{58689673C7B61A24}" : "{1AA788302FE3C53A}Configs/WeaponInfo/MagazineIndicators/ak74_30.conf" {
+      }
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo "{64836359E393C15B}" {
+      PivotID "slot_magazine"
+      Offset 0 0 0
+     }
+     RIGHT_HAND_TARGET DeploymentPointInfo "{64836359E7221EE7}" {
+      PivotID "snap_hand_right"
+     }
+     BUTSTOCK_TRANSFORMATION DeploymentPointInfo "{64836359EA13A520}" {
+      Offset 0 0.0237 -0.3274
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      Prefab ""
+      InspectionWidgetOffset 0 -0.0281 0.093
+     }
+     MagazineTemplate "{5587A9FD1C78FE17}Prefabs/Weapons/Magazines/PPSH41/BC_Magazine_Ppsh41_35rnd_Stick.et"
+    }
+    BC_PpshAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{D9434CF67FCF7577}Assets/Weapons/Rifles/workspaces/bc_ppsh41.agr"
+     AnimInstance "{EB8914D869557101}Assets/Weapons/Rifles/workspaces/bc_ppsh41_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{66363B53D2EBCC14}" {
+      AnimGraph "{D9434CF67FCF7577}Assets/Weapons/Rifles/workspaces/bc_ppsh41.agr"
+      AnimInstance "{10D785E9F15415ED}Assets/Weapons/Rifles/workspaces/bc_ppsh41_player.asi"
+      BindingName "Weapon"
+     }
+     BindWithInjection 1
+    }
+   }
+   SignalsSourceAccess SignalsSourceAccessClass "{CC7B64C6B99546FB}" {
+   }
+   WeaponType Rifle
+   shouldHandleObstruction 1
+   obstructionTestCharacterOffset 0 0 0
+   obstructionTestAddedLength 0.1
+   signObstrWeaponConstantOffset 0.079 -0.163 0
+   slightObstrWeaponMaxZOffset 0.1
+   signiObstrWeaponMaxZOffset 0.15
+   obstructionTestBBScale 0.06 0.06 0.05
+   SoundInt 1020100
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "PPSh-41"
+    Description "7.62x25mm Tokarev submachine gun."
+   }
+   CanBeOnSling 1
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5086F9ADF588DCA4}" {
+     Position PointInfo "{5086F9ADE97650DF}" {
+      PivotID "barrel_chamber"
+      Offset 0 -0.0068 -0.0898
+     }
+     Height 0
+    }
+    UserActionContext "{5956E32BAAADE657}" {
+     Position PointInfo "{5956E329E6B11261}" {
+      Offset 0 0.0552 0.5203
+     }
+     Height 0
+    }
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Position PointInfo "{66363B53D2EBCC3F}" {
+      PivotID "slot_magazine"
+      Offset 0 -0.0601 -0.0215
+     }
+     Radius 0.075
+     Height 0
+    }
+    UserActionContext "{5A1E58F7AED270D4}" {
+     Position PointInfo "{66363B53D2EBCC3C}" {
+      PivotID "w_fire_mode"
+      Angles 0 90 0
+     }
+     Radius 0.05
+     Height 0
+     Omnidirectional 0
+    }
+    UserActionContext "{66363B53D2EBCC37}" {
+     UIInfo SCR_ActionContextUIInfo "{66363B53D2EBCC36}" {
+     }
+     ContextName "muzzle"
+     Position PointInfo "{66363B53D2EBCC34}" {
+      PivotID "slot_barrel_muzzle"
+     }
+     Radius 0.1
+     Height 0
+    }
+   }
+   additionalActions {
+    SCR_EquipWeaponAction "{51ECFC668352E6C8}" {
+     UIInfo UIInfo "{51ECFC6680E087F3}" {
+     }
+    }
+    SCR_EquipWeaponHolsterAction "{589291C195FC57CB}" {
+     UIInfo UIInfo "{589291C1860E802C}" {
+      Name "#AR-Inventory_Replaces"
+     }
+    }
+    SCR_PickUpItemAction "{51EC842F84AD2146}" {
+     UIInfo UIInfo "{51EC842F8A980615}" {
+     }
+    }
+    SCR_WeaponAction "{5956E32B11AEE106}" {
+     UIInfo SCR_ActionUIInfo "{5956E3286E397B0C}" {
+     }
+    }
+    SCR_ToggleSafetyUserAction "{5A1E58F79FF7125E}" {
+     UIInfo SCR_ActionUIInfo "{5A1E58F666517323}" {
+     }
+    }
+    SCR_DetachMagazineUserAction "{5A1E58F790AF821D}" {
+     UIInfo UIInfo "{5A1E58F788F40D95}" {
+      Name "Detach: "
+     }
+    }
+    SCR_FireModeSwitchUserAction "{5A1E74156C2DB00D}" {
+     UIInfo SCR_ActionUIInfo "{5A1E74156A71364F}" {
+     }
+    }
+    SCR_AttachItemFromInventoryAction "{66363B53D2EBCC24}" {
+     ParentContextList {
+      "magazine"
+     }
+     UIInfo UIInfo "{66363B53D2EBCC23}" {
+      Name "Attach"
+     }
+    }
+   }
+  }
+  WeaponGamepadEffectsManagerComponent "{61A2E5C3F4458F86}" {
+   "Default Chambered Trigger effect" GamepadTriggerEffect "{61D30BF7F0381163}" : "{4C187800824D6794}Prefabs/Weapons/Core/Configs/TriggerEffects/Charged/TriggerEffect_ChargedMedium.conf" {
+   }
+   "Default ADS Trigger effect" GamepadTriggerEffect "{61B129618F212411}" : "{0DE3E1891C66DCEB}Prefabs/Weapons/Core/Configs/TriggerEffects/ADS/TriggerEffect_ADSMedium.conf" {
+   }
+   "Default Firing Trigger effect" GamepadTriggerEffect "{61D30BF7F81F8C61}" : "{7302AE0B3AE31D8A}Prefabs/Weapons/Core/Configs/TriggerEffects/Fire/TriggerEffect_FireMedium.conf" {
+   }
+  }
+ }
+}

@@ -1,0 +1,52 @@
+GenericEntity : "{09D6A1C9543E4A95}Prefabs/Items/Core/Backpack_Base.et" {
+ ID "511E9C6ADE70F798"
+ components {
+  MeshObject "{511E9C6ADE70F7BD}" {
+   Object "{1A131C8428C3FFB8}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_PK_Assistant_Item.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5222CB03A40528FA}" {
+   Attributes SCR_ItemAttributeCollection "{5222CB039E9715D1}" {
+    ItemDisplayName UIInfo "{5222CB03904B414C}" {
+     Name "Backpack PAVN (PK Assistant)"
+     Description "This rugged, weathered field backpack was standard issue for PAVN soldiers during the Vietnam War. "
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 1
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 8001
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52BCBDD2B54658EC}" {
+      PreviewModel "{9A30D199DAA120EC}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_PK_Assistant.xob"
+     }
+    }
+   }
+   UseCapacityCoefficient 0
+   CapacityCoefficient 1.26
+   MaxCumulativeVolume 30000
+   MaxItemSize 20 19 20
+   m_fMaxWeight 100
+  }
+  BaseLoadoutClothComponent "{511E9C6ADE70F7BB}" {
+   WornModel "{9A30D199DAA120EC}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_PK_Assistant.xob"
+   ItemModel "{1A131C8428C3FFB8}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_PK_Assistant_Item.xob"
+   SoundInt 830
+   DeflatedModel "{9A30D199DAA120EC}Assets/Items/Equipment/Backpacks/Backpack_PAVN/Backpack_PAVN_PK_Assistant.xob"
+   AreaTypeWhenModelChange {
+    LoadoutArmoredVestSlotArea "{663621ED9C8CAECF}" {
+    }
+   }
+  }
+  ActionsManagerComponent "{511E9C6ADE70F786}" {
+   ActionContexts {
+    UserActionContext "{511E9C6ADE70F788}" {
+     Position PointInfo "{511E9C6ADE70F78D}" {
+      Offset 0 0.1281 0.0436
+     }
+    }
+   }
+  }
+ }
+ coords 6453.479 162.25 6492.701
+}

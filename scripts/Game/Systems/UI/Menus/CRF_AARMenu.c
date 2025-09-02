@@ -2,7 +2,7 @@
  * After Action Report Menu UI class
  * Responsible for displaying mission summary, player statistics, and slot management
  */
-class CRF_AARMenuUI: ChimeraMenuBase
+class CRF_AARMenu: ChimeraMenuBase
 {
 	//----------------------------------------
 	// UI Widget References

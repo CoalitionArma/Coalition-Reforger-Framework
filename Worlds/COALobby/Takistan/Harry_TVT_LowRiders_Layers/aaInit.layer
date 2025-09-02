@@ -9,26 +9,37 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 2576.571 686.229 5022.467
- userScript "	void deleteFlags(bool enabled)"\
+ userScript "	int stage = 0;"\
+ "	"\
+ "	void deleteFlags()"\
  "	{		"\
- "		if (!enabled)"\
- "		{"\
- "			IEntity Kushab = GetGame().GetWorld().FindEntityByName(\"Kushab\");"\
- "			SCR_EntityHelper.DeleteEntityAndChildren(Kushab);"\
+ "		IEntity Kushab = GetGame().GetWorld().FindEntityByName(\"Kushab\");"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(Kushab);"\
  "			"\
- "			IEntity North_Of_Chaman = GetGame().GetWorld().FindEntityByName(\"North_Of_Chaman\");"\
- "			SCR_EntityHelper.DeleteEntityAndChildren(North_Of_Chaman);"\
+ "		IEntity North_Of_Chaman = GetGame().GetWorld().FindEntityByName(\"North_Of_Chaman\");"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(North_Of_Chaman);"\
  "			"\
- "			IEntity Shukurkalay = GetGame().GetWorld().FindEntityByName(\"Shukurkalay\");"\
- "			SCR_EntityHelper.DeleteEntityAndChildren(Shukurkalay);"\
+ "		IEntity Shukurkalay = GetGame().GetWorld().FindEntityByName(\"Shukurkalay\");"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(Shukurkalay);"\
  "			"\
- "			IEntity Spawn = GetGame().GetWorld().FindEntityByName(\"Spawn\");"\
- "			SCR_EntityHelper.DeleteEntityAndChildren(Spawn);"\
- "		}"\
+ "		IEntity Spawn = GetGame().GetWorld().FindEntityByName(\"Spawn\");"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(Spawn);"\
  "	}"
- EOnInit ""\
- "		super.EOnInit(owner);"\
- "		CRF_SafestartManager.GetInstance().m_OnSafeStartChange.Insert(deleteFlags);"\
+ EOnFrame ""\
+ "		if (stage > 1)"\
+ "			return;"\
+ "	"\
+ "		bool safeStart = CRF_SafestartManager.GetInstance().GetSafestartStatus();"\
+ "	"\
+ "		if (safeStart && stage == 0)"\
+ "			stage = 1;"\
+ "		"\
+ "		if (stage == 1 && !safeStart)"\
+ "		{"\
+ "			stage = 2;"\
+ "			"\
+ "			deleteFlags();"\
+ "		}"\
  "	"
  m_iTimeLimitMinutes 50
  m_bAllowEspionage 1

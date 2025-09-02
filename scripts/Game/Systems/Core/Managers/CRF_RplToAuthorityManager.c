@@ -232,6 +232,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_AddItem, playerId, prefab, logAction); 
 	}
 	
+	void RemoveItem(int playerId, RplId entityID, bool logAction)
+	{
+		Rpc(RpcAsk_RemoveItem, playerId, entityID, logAction); 
+	}
+	
 	// Admin functions
 	void TeleportPlayers(int playerId1, int playerId2, bool logAction)
 	{
@@ -292,14 +297,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Print("[CRF_RplToAuthorityManager] RpcAsk_ToggleRushMCOMPlanted received: " + mcomIdentifier + ", planted: " + togglePlanted);
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
-		{
-			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.ToggleMCOMPlanted()");
 			rushGamemode.ToggleMCOMPlanted(mcomIdentifier, togglePlanted);
-		}
-		else
-		{
-			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
-		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -308,14 +306,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Print("[CRF_RplToAuthorityManager] RpcAsk_StartRushPlantingSound received on server");
 		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
 		if (rushGamemode)
-		{
-			Print("[CRF_RplToAuthorityManager] Calling rushGamemode.PlayPlantingSound()");
 			rushGamemode.PlayPlantingSound();
-		}
-		else
-		{
-			Print("[CRF_RplToAuthorityManager] Rush gamemode manager not found!");
-		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -460,7 +451,46 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RequestToJoinChannel(int channel, int requestId)
 	{
-		m_MenuManager.RequestToJoinChannel(channel, requestId);
+		Print(string.Format("[VON] Server processing join request: channel=%1, requestId=%2", channel, requestId), LogLevel.NORMAL);
+		
+		// Instead of using BroadcastManager, handle the request directly on the server
+		if (channel < 0 || channel >= m_MenuManager.m_aVONChannels.Count())
+			return;
+		
+		// Extract channel creator ID from channel name
+		// Channel name format: "PlayerName's Channel (PlayerID)|players..."
+		string channelString = m_MenuManager.m_aVONChannels[channel];
+		array<string> channelSplit = {};
+		channelString.Split("|", channelSplit, true);
+		
+		if (channelSplit.Count() == 0)
+			return;
+		
+		string channelName = channelSplit[0];
+		
+		// Find the creator ID from the channel name format: "Name's Channel (ID)"
+		int openParen = channelName.IndexOf("(");
+		int closeParen = channelName.IndexOf(")");
+		
+		if (openParen == -1 || closeParen == -1 || closeParen <= openParen)
+			return;
+		
+		string creatorIdStr = channelName.Substring(openParen + 1, closeParen - openParen - 1);
+		int creatorId = creatorIdStr.ToInt();
+		
+		// Don't send a request if the requester is the channel creator
+		if (creatorId == requestId)
+		{
+			Print(string.Format("[VON] Player %1 tried to join their own channel %2, ignoring", requestId, channel), LogLevel.NORMAL);
+			return;
+		}
+		
+		// Send notification to the channel creator
+		if (creatorId > 0)
+		{
+			Print(string.Format("[VON] Server sending join request notification to creator %1 from requester %2 for channel %3", creatorId, requestId, channel), LogLevel.NORMAL);
+			m_RplBroadcastManager.NotifyChannelJoinRequest(creatorId, requestId, channel);
+		}
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -477,7 +507,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_CreateChannel(int playerId)
 	{
 		string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
-		m_MenuManager.CreateChannel(playerName + "'s Channel", playerId);
+		// Include player ID in channel name to ensure uniqueness when players have same username
+		string uniqueChannelName = playerName + "'s Channel (" + playerId + ")";
+		int channelIndex = m_MenuManager.CreateChannel(uniqueChannelName, playerId);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -529,8 +561,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ResetGear(int playerId, ResourceName prefab, bool logAction)
 	{
-		// Close map on client to prevent lockup
+		// Prevent stuck on map
 		m_RplBroadcastManager.Closemap(playerId);
+		
+		// Prevent invisible gun 
+		m_RplBroadcastManager.HolsterGun(playerId);
 		
 		IEntity entity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		if (!entity)
@@ -584,9 +619,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		}
 		
 		array<AIAgent> aiAgents = {};
-		array<IEntity> entites = {};
+		array<IEntity> entities = {};
 
-		//Get entites in the faction and store them
+		//Get entities in the faction and store them
 		aiWorld.GetAIAgents(aiAgents);
 		foreach (AIAgent agent : aiAgents)
 		{
@@ -599,28 +634,42 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				continue;
 			
 			if (character.GetFactionKey() == faction)
-				entites.Insert(entity);
+				entities.Insert(entity);
 		}
 
-		// Update gear of all units
-		foreach (IEntity entity : entites)
-		{
-			// Grab prefab name and check if its a valid gearscript
-			ResourceName prefab = entity.GetPrefabData().GetPrefabName();
-			if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
-				continue;
-			
-			// Schedule gear setup with appropriate delay
-			GetGame().GetCallqueue().Call(
-				CRF_GearscriptManager.GetInstance().SetEntityGear, 
-				entity,
-				prefab
-			);
-		}
+		// Queue changes to prevent server freezing
+		UpdateGearSetQueue(entities);
 		
 		string logMessage = string.Format("%1 was changed to %2", faction, path);
 		m_RplBroadcastManager.LogAdminAction(logMessage, -1 , false)
 	}
+	
+	protected void UpdateGearSetQueue(array<IEntity> entities, int lastIndex = 0)
+	{
+		if (lastIndex >= entities.Count())
+			return;
+		
+		IEntity entity = entities[lastIndex];
+		
+		// Grab prefab name and check if its a valid gearscript
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+		if (!CRF_RoleHelper.IsValidGearscriptResource(prefab))
+			return;
+		
+		// Prevent Lockup and invisible weapon if player
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId)
+		{
+			m_RplBroadcastManager.Closemap(playerId);
+			m_RplBroadcastManager.HolsterGun(playerId);
+		}
+		
+		CRF_GearscriptManager.GetInstance().SetEntityGear(entity, prefab);
+		
+		// Queue next entity
+		GetGame().GetCallqueue().CallLater(UpdateGearSetQueue, 50, false, entities, lastIndex + 1);
+	}
+	
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_AddItem(int playerId, string prefab, bool logAction)
@@ -652,6 +701,33 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
 		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
 			delete resourceSpawned;
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RemoveItem(int playerId, RplId entityID, bool logAction)
+	{
+		if (playerId == 0)
+			return;
+		
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(entityID));
+		if (!rplComp)
+			return;
+			
+		IEntity entity = rplComp.GetEntity();
+		if (!entity)
+			return;
+		
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+
+		if (logAction && !prefab.IsEmpty())
+		{
+			string itemName = prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1);
+			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+			string logMessage = string.Format("%2 was added to %1's inventory", playerName, itemName);
+			m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true);
+		}
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
