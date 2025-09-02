@@ -4,7 +4,7 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
    DefaultFormation "Line"
   }
  }
- coords 4654.242 385.241 2698.691
+ coords 3855.906 280.954 2403.115
  m_aUnitPrefabSlots + {
   "{4BCB20FFA9A0D6BF}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_RTO_P.et"
  }
@@ -72,5 +72,51 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
     }
    }
   }
+ }
+}
+$grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+   }
+  }
+  coords 3894.195 282.855 2388.353
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+   }
+  }
+  coords 3892.665 282.329 2372.534
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+   }
+  }
+  coords 3891.094 281.747 2354.915
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  components {
+   CRF_VehicleSpawner "{64626B666A3B82E3}" {
+    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+   }
+  }
+  coords 3889.34 281.114 2335.983
+  angleX 0
+  angleY 0
+  angleZ 0
  }
 }

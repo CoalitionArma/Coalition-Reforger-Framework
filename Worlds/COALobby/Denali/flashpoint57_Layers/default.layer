@@ -1,3 +1,6 @@
+SCR_MapEntity MapEntity_DenaliEmpty1 : "{D53FDCF54F2A8973}Prefabs/Map/MapEntity_DenaliEmpty.et" {
+ coords 2683.282 448.115 5227.086
+}
 SCR_AIWorld : "{0E73737564F88B7E}Prefabs/AI/SCR_AIWorld_DenaliEmpty.et" {
  coords 4006.151 265.132 853.94
 }
@@ -7,6 +10,19 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_MCOMPrefab "{3950CB4E59C348EA}Prefabs/Structures/CRF_Rush_MCOM_NoNet.et"
    m_iMCOMTimer 60
    m_iMCOMsPerZone 1
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Clear"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 21
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6643673CC2973722}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 21
+    }
+   }
   }
  }
  coords 4010.53 265.224 849.112
@@ -44,10 +60,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "RTO mission (sorry)"\
    ""\
-   "BLUFOR Composition: Infantry"\
+   "BLUFOR Composition: Motorized Infantry"\
    "BLUFOR Assets: HMG Team and Sniper Team"\
    ""\
-   "OPFOR Composition: Infantry"\
+   "OPFOR Composition: Motorized Infantry"\
    "OPFOR Assets: None"\
    ""\
    "Time: 75 minutes"\
@@ -78,7 +94,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableGIRadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "664367363EE9E939" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
