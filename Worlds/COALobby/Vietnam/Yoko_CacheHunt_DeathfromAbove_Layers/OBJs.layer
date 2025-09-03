@@ -18,16 +18,7 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   }
  }
  {
-  coords 1966.064 11.387 1198.901
-  angleY 0
-  m_MarkerColor 0 0 0 1
-  m_sDescription "Possible Cache"
-  m_aVisibleForFactions {
-   "BLUFOR"
-  }
- }
- {
-  coords 1459.203 38.968 1314.535
+  coords 1247.929 79.741 1522.327
   angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
@@ -54,7 +45,7 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   }
  }
  {
-  coords 2379.178 117.54 802.429
+  coords 1878.85 3.968 1014.064
   angleY 0
   m_MarkerColor 0 0 0 1
   m_sDescription "Possible Cache"
