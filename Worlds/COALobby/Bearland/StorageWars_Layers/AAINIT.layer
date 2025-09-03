@@ -56,13 +56,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{663AFC0067B345AB}" {
+       SCR_CallsignInfo "{66475449EA062CA5}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{663AFC006BD675F1}" {
+       SCR_CallsignInfo "{66475449EF064085}" {
         m_sCallsign "MMG"
-       }
-       SCR_CallsignInfo "{663AFC006C9DB245}" {
        }
       }
      }
