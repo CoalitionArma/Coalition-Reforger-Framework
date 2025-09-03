@@ -16,6 +16,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	protected CRF_MenuManager m_MenuManager;                  // Menu manager instance
 	protected SCR_PlayerController m_PlayerController;		  // Reference to the player controller
 	protected SCR_ChatPanel m_ChatPanel;                      // Chat panel component
+	protected SCR_VONController m_VONController				  // VONController
 	
 	//--- Data Storage ---
 	protected ref array<ref CRF_MissionDescriptor> m_aActiveDescriptors = {}; // Active mission descriptors
@@ -94,6 +95,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 		m_Gamemode = CRF_Gamemode.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		m_VONController = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
 		
 		// Set mission text with author information
 		UpdateMissionText();
@@ -326,7 +328,12 @@ class CRF_PreviewMenu: ChimeraMenuBase
 			}
 			else
 			{
-				if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(player))
+				if (player == SCR_PlayerController.GetLocalPlayerId())
+				{
+					if (m_VONController.m_bIsBroadcasting)
+						comp.SetTalking();
+				}
+				else if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(player))
 					comp.SetTalking();
 			}
 		}

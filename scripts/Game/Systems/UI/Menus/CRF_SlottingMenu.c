@@ -24,6 +24,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	protected CRF_MenuManager m_MenuManager;   	 		// Reference to the menu manager
 	protected SCR_ChatPanel m_ChatPanel;        		// Reference to the chat panel
 	protected SCR_PlayerController m_PlayerController;	// Reference to the player controller
+	protected SCR_VONController m_VONController;		// Reference to the VON Controlle;
 	
 	//---------------------------------------------------------------------
 	// UI Components
@@ -138,6 +139,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		m_LocalSlottingState = m_Gamemode.m_SlottingState;
 		
 		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		
+		m_VONController = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
 		
 		// Setup mission info text
 		SetupMissionInfo();
@@ -1220,6 +1223,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		}
 		else
 		{
+			if (playerId == SCR_PlayerController.GetLocalPlayerId())
+			{
+				if (m_VONController.m_bIsBroadcasting)
+					comp.SetTalking();
+			}
 			if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
 				comp.SetTalking();
 		}
