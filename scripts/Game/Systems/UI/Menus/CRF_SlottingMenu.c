@@ -108,6 +108,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	protected void SetupInputListeners()
 	{
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
@@ -413,6 +418,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
 		
 		// Remove all input action listeners
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
@@ -1203,8 +1213,16 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		SetPlayerStatusColor(playerId, comp);
 		
 		// Highlight players who are talking
-		if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
-			comp.SetTalking();
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			if (m_MenuManager.m_aPlayersTalking.Contains(playerId))
+				comp.SetTalking();
+		}
+		else
+		{
+			if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+				comp.SetTalking();
+		}
 	}
 	
 	/**
@@ -1481,6 +1499,78 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			// Move player to the new slot
 			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, localPlayerId);
 		}
+	}
+	
+	/**
+	 * Enables Voice-Over-Network (VON) when the push-to-talk button is pressed
+	 */
+	void Action_VONon()
+	{
+		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
+
+		// Get VON component and configure for transmission
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(
+			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
+
+		von.SetTransmitRadio(GetVoNTransiver());
+		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
+		von.SetCapture(true);
+	}
+
+	/**
+	 * Gets a radio transceiver for VON communication
+	 * @return RadioTransceiver object configured for voice communication
+	 */
+	RadioTransceiver GetVoNTransiver()
+	{
+		// Get player entity and inventory
+		IEntity playerEntity = GetGame().GetPlayerController().GetControlledEntity();
+		SCR_InventoryStorageManagerComponent inventory = SCR_InventoryStorageManagerComponent.Cast(
+			playerEntity.FindComponent(SCR_InventoryStorageManagerComponent));
+
+		// Get all items in inventory
+		array<IEntity> items = {};
+		inventory.GetItems(items);
+
+		// Find radio entity
+		IEntity radioEntity;
+		foreach(IEntity item: items)
+		{
+			if(item.FindComponent(BaseRadioComponent))
+				radioEntity = item;
+		}
+
+		// Configure radio
+		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		radio.SetPower(true);
+
+		// Configure and return transceiver
+		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
+		if (transceiver)
+			transceiver.SetFrequency(10000);
+
+		return transceiver;
+	}
+
+	/**
+	 * Delayed function to disable VON
+	 * Called after push-to-talk button is released
+	 */
+	void LobbyVoNDisableDelayed()
+	{
+		SCR_VoNComponent von = SCR_VoNComponent.Cast(
+			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
+
+		von.SetCommMethod(ECommMethod.DIRECT);
+		von.SetCapture(false);
+	}
+
+	/**
+	 * Disables VON when push-to-talk button is released
+	 */
+	void Action_VONOff()
+	{
+		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
 	}
 	
 	/**

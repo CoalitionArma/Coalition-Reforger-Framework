@@ -109,6 +109,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Initialize faction buttons
 		InitFactionButtons();
 		
+		// Initialize VON (Voice Over Network)
+		if (!CVON_VONGameModeComponent.GetInstance())
+			InitVON();
+		
 		// Update slots and register for slot updates
 		UpdateSlots();
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
@@ -134,6 +138,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected void RegisterActionListeners()
 	{
 		InputManager inputManager = GetGame().GetInputManager();
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			inputManager.AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			inputManager.AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		inputManager.AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		inputManager.AddActionListener("GadgetMap", EActionTrigger.DOWN, Action_ToggleMap);
@@ -202,6 +211,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			SelectFactionIndfor();
 		else if(slottingManager.IsFactionValid("CIV"))
 			SelectFactionCiv();
+	}
+	
+	protected void InitVON()
+	{
+		// Initialize VON with a slight delay to ensure proper setup
+		GetGame().GetCallqueue().Call(Action_VONon);
+		GetGame().GetCallqueue().Call(Action_VONOff);
 	}
 	
 	/**
@@ -669,6 +685,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Create a new channel
 		CRF_RplToAuthorityManager.GetInstance().CreateChannel(localPlayerId);
+		
+		// Schedule radio frequency update after channel creation
+		// Use a longer delay to allow server replication and channel assignment to complete
+		if (!CVON_VONGameModeComponent.GetInstance())
+			GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 500, false);
 	}
 	
 	/**
@@ -782,6 +803,34 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Update local channel counter to match server state
 		m_iLocalChannelUpdates = m_MenuManager.m_iChannelChanges;
+		
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			// Toggle radio power based on whether player is in a channel
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			bool isInChannel = m_MenuManager.GetChannel(localPlayerId) != 0;
+			SetRadioPower(isInChannel);
+	
+			// Update radio frequency to match current channel assignment
+			// This ensures the radio frequency is correct after channel changes
+			if (isInChannel)
+			{
+				// Schedule frequency update after a small delay to ensure replication is complete
+				GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 100, false);
+			}
+		}
+	}
+	
+	/**
+	 * Updates the radio frequency to match the current channel assignment
+	 * Called after channel changes to ensure proper frequency synchronization
+	 */
+	protected void UpdateRadioFrequency()
+	{
+		// Get the current transceiver and update its frequency
+		RadioTransceiver transceiver = GetVoNTransiver();
+		// The GetVoNTransiver() call automatically sets the correct frequency
+		// No additional work needed here as the frequency is set in that method
 	}
 	
 	/**
@@ -816,6 +865,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			// Join default channel directly
 			CRF_RplToAuthorityManager.GetInstance().JoinChannel(localPlayerId, channelId);
+		}
+		
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			// Schedule radio frequency update after channel join
+			// Use a delay to allow server replication to complete
+			GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 200, false);
 		}
 	}
 	
@@ -1223,6 +1279,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		InputManager inputManager = GetGame().GetInputManager();
 		if (inputManager)
 		{
+			if (!CVON_VONGameModeComponent.GetInstance())
+			{
+				inputManager.RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+				inputManager.RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+			}
 			inputManager.RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 			inputManager.RemoveActionListener("GadgetMap", EActionTrigger.DOWN, Action_ToggleMap);
@@ -1380,6 +1441,213 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			
 			return Vector(centerX, centerY, 0);
 		}
+	}
+	
+	//=================================================================================================
+	// RADIO AND VOICE COMMUNICATION METHODS
+	//=================================================================================================
+
+	/**
+	 * Retrieves the player's radio transceiver and configures it for voice communication
+	 * @return The configured RadioTransceiver object
+	 */
+	RadioTransceiver GetVoNTransiver()
+	{
+		// Get local player entity
+		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (!playerEntity)
+			return null;
+
+		// Get all items in player's inventory
+		ref array<IEntity> inventoryItems = {};
+		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(
+			playerEntity.FindComponent(SCR_InventoryStorageManagerComponent)
+		);
+
+		if (!inventoryManager)
+			return null;
+
+		inventoryManager.GetItems(inventoryItems);
+
+		// Find the radio entity in inventory
+		IEntity radioEntity = null;
+		foreach (IEntity item : inventoryItems)
+		{
+			if (item && item.FindComponent(BaseRadioComponent))
+			{
+				radioEntity = item;
+				break;
+			}
+		}
+
+		if (!radioEntity)
+			return null;
+
+		// Get radio component and power it on
+		BaseRadioComponent radioComponent = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		if (!radioComponent)
+			return null;
+
+		radioComponent.SetPower(true);
+
+		// Get transceiver and set frequency based on channel
+		RadioTransceiver transceiver = RadioTransceiver.Cast(radioComponent.GetTransceiver(0));
+		if (!transceiver)
+			return null;
+
+		// Get the current player's channel with improved frequency calculation
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		int playerChannelId = CRF_MenuManager.GetInstance().GetChannel(localPlayerId);
+
+		// Calculate unique frequency for the channel to prevent conflicts
+		// Use a base frequency of 10000 + (channelId * 1000) to ensure separation
+		// This prevents frequency collisions between different channels
+		float frequency = 10000.0 + (playerChannelId * 1000.0);
+
+		// For custom channels (ID > 1), add additional offset based on channel name hash
+		// This ensures each custom channel gets a truly unique frequency
+		if (playerChannelId > 1 && m_MenuManager.m_aVONChannels.IsIndexValid(playerChannelId))
+		{
+			string channelData = m_MenuManager.m_aVONChannels[playerChannelId];
+			ref array<string> channelParts = {};
+			channelData.Split("|", channelParts, true);
+
+			if (channelParts.Count() > 0)
+			{
+				string channelName = channelParts[0];
+				// Use channel name hash to create unique frequency offset
+				int nameHash = channelName.Hash();
+				// Ensure positive hash and limit range to prevent frequency overlap
+				int frequencyOffset = Math.AbsInt(nameHash) % 500;
+				frequency += frequencyOffset;
+			}
+		}
+
+		// Set the radio frequency using RadioHandlerComponent for proper replication
+		RadioHandlerComponent radioHandler = RadioHandlerComponent.Cast(
+			GetGame().GetPlayerController().FindComponent(RadioHandlerComponent)
+		);
+
+		if (radioHandler)
+		{
+			radioHandler.SetFrequency(transceiver, frequency);
+		}
+
+		return transceiver;
+	}
+
+	/**
+	 * Sets the power state of the player's radio
+	 * @param input - true to power on, false to power off
+	 */
+	void SetRadioPower(bool input)
+	{
+		// Get local player entity
+		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (!playerEntity)
+			return;
+
+		// Get inventory manager
+		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(
+			playerEntity.FindComponent(SCR_InventoryStorageManagerComponent)
+		);
+
+		if (!inventoryManager)
+			return;
+
+		// Get all inventory items
+		ref array<IEntity> inventoryItems = {};
+		inventoryManager.GetItems(inventoryItems);
+
+		// Find radio in inventory
+		IEntity radioEntity = null;
+		foreach (IEntity item : inventoryItems)
+		{
+			if (item && item.FindComponent(BaseRadioComponent))
+			{
+				radioEntity = item;
+				break;
+			}
+		}
+
+		if (!radioEntity)
+			return;
+
+		// Set radio power state
+		BaseRadioComponent radioComponent = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
+		if (radioComponent)
+		{
+			radioComponent.SetPower(input);
+		}
+	}
+
+	/**
+	 * Activates voice transmission when PTT key is pressed
+	 * Connects to the appropriate radio channel
+	 */
+	void Action_VONon()
+	{
+		// Check if player is in a valid channel
+		int playerChannel = CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId());
+		if (playerChannel == 0)
+			return;
+
+		// Cancel any pending VoN disable calls
+		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
+
+		// Get VoN component from player entity
+		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (!playerEntity)
+			return;
+
+		SCR_VoNComponent vonComponent = SCR_VoNComponent.Cast(playerEntity.FindComponent(SCR_VoNComponent));
+		if (!vonComponent)
+			return;
+
+		// Configure and activate voice transmission
+		// Get fresh transceiver with updated frequency each time VON is activated
+		RadioTransceiver transceiver = GetVoNTransiver();
+		if (!transceiver)
+			return;
+
+		vonComponent.SetTransmitRadio(transceiver);
+		vonComponent.SetCommMethod(ECommMethod.SQUAD_RADIO);
+		vonComponent.SetCapture(true);
+	}
+
+	/**
+	 * Deactivates voice transmission when PTT key is released
+	 * Uses a delay to prevent audio cutoff
+	 */
+	void Action_VONOff()
+	{
+		// Check if player is in a valid channel
+		int playerChannel = CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId());
+		if (playerChannel == 0)
+			return;
+
+		// Schedule delayed VoN deactivation to prevent audio cutoff
+		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
+	}
+
+	/**
+	 * Delayed method to disable voice transmission
+	 * Used to prevent audio cutoff when releasing PTT key
+	 */
+	void LobbyVoNDisableDelayed()
+	{
+		// Get VoN component from player entity
+		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
+		if (!playerEntity)
+			return;
+
+		SCR_VoNComponent vonComponent = SCR_VoNComponent.Cast(playerEntity.FindComponent(SCR_VoNComponent));
+		if (!vonComponent)
+			return;
+
+		// Reset communication method and stop capturing
+		vonComponent.SetCommMethod(ECommMethod.DIRECT);
+		vonComponent.SetCapture(false);
 	}
 	
 	//=================================================================================================

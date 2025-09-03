@@ -28,6 +28,8 @@ modded class SCR_Faction
 	override void Init(IEntity owner)
 	{
 		super.Init(owner);
+		if (!CVON_VONGameModeComponent.GetInstance())
+			return;
 		GetGame().GetCallqueue().CallLater(InitializeFactionChannels, 2000 , false);
 	}
 	

@@ -172,6 +172,9 @@ modded class SCR_VONController
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFixedFrame(owner, timeSlice);
+		if (!CVON_VONGameModeComponent.GetInstance())
+			return;
+		
 		if (!m_PlayerController)
 		{
 			m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
