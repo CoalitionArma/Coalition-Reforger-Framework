@@ -1,5 +1,20 @@
 modded class SCR_VONController
 {
+	SCR_FactionManager m_FactionManager;
+	
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+		if (GetGame().GetPlayerController())
+			m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager().FindComponent(SCR_FactionManager));
+	}
+	
+	override void ActivateCVON(CVON_EVONTransmitType transmitType = CVON_EVONTransmitType.NONE)
+	{
+		if (transmitType != CVON_EVONTransmitType.DIRECT && m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC")
+			return;
+		super.ActivateCVON(transmitType);
+	}
 	//------------------------------------------------------------------------------------------------
 	//! Public wrapper for the protected ResetVON method to allow external systems to reset VON
 	//------------------------------------------------------------------------------------------------
