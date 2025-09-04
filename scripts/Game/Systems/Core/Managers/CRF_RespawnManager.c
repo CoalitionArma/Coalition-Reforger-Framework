@@ -13,6 +13,9 @@ class CRF_RespawnManager : ScriptComponent
 	bool m_RespawnConfirmed = false;
 	RplId m_SelectedSpawnRplID;
 	
+	//For vehicle respawning, only tracked on the server
+	protected ref array<CRF_VehicleSpawner> m_aVehicleSpawners = {};
+	
 	// Protected Member Variables
 	protected ref array<IEntity> m_aRespawnPoints = {}; // Used for server
 	protected CRF_Gamemode m_Gamemode;
@@ -78,7 +81,7 @@ class CRF_RespawnManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	private int GetFactionTickets(string faction)
+	int GetFactionTickets(string faction)
 	{
 		switch (faction)
 		{
@@ -327,6 +330,40 @@ class CRF_RespawnManager : ScriptComponent
 			
 			RespawnPlayer(playerId);
 		}
+		
+		//Vehicle respawn logic
+		foreach (CRF_VehicleSpawner vehicle: m_aVehicleSpawners)
+		{
+			if (vehicle.m_sFactionKey != faction)
+				continue;
+			
+			//Do we have enough tickets and are they not at 0.
+			if (GetFactionTickets(faction) != 0 && GetFactionTickets(faction) < vehicle.m_iTicketsPerRespawn)
+				continue;
+			
+			//Is the vehicle non existant anymore
+			if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
+			{
+				vehicle.SpawnVehicle();
+				if (TicketsRemaining(faction)) 
+					SubtractTicket(faction, vehicle.m_iTicketsPerRespawn);
+				continue;
+			}
+			
+			//Vehicle is not vehicling wth
+			if (!vehicle.m_eVehicle.FindComponent(SCR_VehicleDamageManagerComponent))
+				continue;
+			
+			SCR_VehicleDamageManagerComponent vehicleDamageManager = SCR_VehicleDamageManagerComponent.Cast(vehicle.m_eVehicle.FindComponent(SCR_VehicleDamageManagerComponent));
+			if (vehicleDamageManager.GetState() != EDamageState.DESTROYED)
+				continue;
+			
+			//Vehicle is destroyed respawn it.
+			vehicle.SpawnVehicle();
+			if (TicketsRemaining(faction)) 
+				SubtractTicket(faction, vehicle.m_iTicketsPerRespawn);
+			continue;
+		}
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -460,5 +497,18 @@ class CRF_RespawnManager : ScriptComponent
 			return -1;
 		
 		return rplComp.Id();
+	}
+	
+	//Vehicle respawn logic
+	//------------------------------------------------------------------------------------------------
+	
+	int InsertVehicle(CRF_VehicleSpawner spawner)
+	{
+		return m_aVehicleSpawners.Insert(spawner);
+	}
+	
+	array<CRF_VehicleSpawner> GetVehicleSpawners()
+	{
+		return m_aVehicleSpawners;
 	}
 }
