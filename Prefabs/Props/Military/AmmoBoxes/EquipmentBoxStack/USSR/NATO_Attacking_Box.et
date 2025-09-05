@@ -47,19 +47,25 @@ GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      SlotTemplate InventoryStorageSlot HE {
       Prefab "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
      }
-     NumSlots 40
+     NumSlots 20
     }
     MultiSlotConfiguration "{662B06256ECE44CD}" {
      SlotTemplate InventoryStorageSlot HE {
       Prefab "{5375FA7CB1F68573}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_M406.et"
      }
-     NumSlots 20
+     NumSlots 10
     }
     MultiSlotConfiguration "{662B06256ECE44C9}" {
      SlotTemplate InventoryStorageSlot smokes {
       Prefab "{9DB69176CEF0EE97}Prefabs/Weapons/Grenades/Smoke_ANM8HC.et"
      }
-     NumSlots 20
+     NumSlots 10
+    }
+    MultiSlotConfiguration "{664B03661C88034C}" {
+     SlotTemplate InventoryStorageSlot flash {
+      Prefab "{ED97A510AA0A46C5}Prefabs/Weapons/Grenades/Grenade_Stun.et"
+     }
+     NumSlots 10
     }
    }
    m_fMaxWeight 5000
