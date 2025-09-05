@@ -61,12 +61,6 @@ GenericEntity : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBox
      }
      NumSlots 10
     }
-    MultiSlotConfiguration "{664B03661C88034C}" {
-     SlotTemplate InventoryStorageSlot flash {
-      Prefab "{ED97A510AA0A46C5}Prefabs/Weapons/Grenades/Grenade_Stun.et"
-     }
-     NumSlots 10
-    }
    }
    m_fMaxWeight 5000
   }
