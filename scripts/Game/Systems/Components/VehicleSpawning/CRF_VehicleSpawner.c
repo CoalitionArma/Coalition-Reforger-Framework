@@ -13,7 +13,7 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	bool m_bShouldRespawnOnSideRespawn;
 	[Attribute("300", desc: "How long until the vehicle respawns after its death in seconds", category: "CRF Vehicle Spawning")] 
 	int m_iRespawnTimer;
-	[Attribute("10", desc: "THow many tickets is drained every time this spawns", category: "CRF Vehicle Spawning")] 
+	[Attribute("10", desc: "How many tickets is drained every time this spawns", category: "CRF Vehicle Spawning")] 
 	int m_iTicketsPerRespawn;
 	
 	CRF_RespawnManager m_RespawnManager;
