@@ -26,32 +26,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 4010.53 265.224 849.112
- userScript "		int stage = 0;"\
- "	"\
- "	void deleteFlags()"\
- "	{		"\
- "		IEntity Zone1 = GetGame().GetWorld().FindEntityByName(\"Zone1\");"\
- "		SCR_EntityHelper.DeleteEntityAndChildren(Zone1);"\
- "			"\
- "		IEntity Spawn = GetGame().GetWorld().FindEntityByName(\"Spawn\");"\
- "		SCR_EntityHelper.DeleteEntityAndChildren(Spawn);"\
- "	}"
- EOnFrame ""\
- "			if (stage > 1)"\
- "			return;"\
- "	"\
- "		bool safeStart = CRF_SafestartManager.GetInstance().GetSafestartStatus();"\
- "	"\
- "		if (safeStart && stage == 0)"\
- "			stage = 1;"\
- "		"\
- "		if (stage == 1 && !safeStart)"\
- "		{"\
- "			stage = 2;"\
- "			"\
- "			deleteFlags();"\
- "		}"\
- "	"
  m_iTimeLimitMinutes 75
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
@@ -137,83 +111,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-2"
        }
        SCR_CallsignInfo "{6642101153245C1B}" {
+        m_sCallsign "1-3"
        }
       }
-      m_sCallsignGroupFormat "1-3"
      }
     }
    }
   }
- }
-}
-$grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPoles/PreJoin_Teleport.et" {
- Spawn {
-  components {
-   ActionsManagerComponent "{645A0008F3808301}" {
-    additionalActions {
-     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
-      m_sGearscriptToSet ""
-     }
-     CRF_TeleportPlayerAction "{645A000846476766}" {
-      UIInfo UIInfo "{645A0008464767B1}" {
-       Name "Teleport to MCOM1"
-      }
-      m_sObjectNameToTeleportTo "Zone1"
-      m_sGearscriptToSet ""
-     }
-     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
-      UIInfo UIInfo "{645A000847BA1015}" {
-       Name ""
-      }
-      m_sObjectNameToTeleportTo ""
-      m_sGearscriptToSet ""
-     }
-     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
-      UIInfo UIInfo "{645A0008470A47E8}" {
-       Name ""
-      }
-      m_sObjectNameToTeleportTo ""
-      m_sGearscriptToSet ""
-     }
-    }
-   }
-  }
-  coords 2983.662 498.913 5462.524
- }
- Zone1 {
-  components {
-   ActionsManagerComponent "{645A0008F3808301}" {
-    additionalActions {
-     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
-      UIInfo UIInfo "{645A000816F0F771}" {
-       Name "Teleport To MCOM1"
-      }
-      m_sObjectNameToTeleportTo "Zone1"
-      m_sGearscriptToSet ""
-     }
-     CRF_TeleportPlayerAction "{645A000846476766}" {
-      UIInfo UIInfo "{645A0008464767B1}" {
-       Name "Teleport to Spawn"
-      }
-      m_sObjectNameToTeleportTo "Spawn"
-      m_sGearscriptToSet ""
-     }
-     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
-      UIInfo UIInfo "{645A000847BA1015}" {
-       Name ""
-      }
-      m_sObjectNameToTeleportTo ""
-      m_sGearscriptToSet ""
-     }
-     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
-      UIInfo UIInfo "{645A0008470A47E8}" {
-       Name ""
-      }
-      m_sObjectNameToTeleportTo ""
-     }
-    }
-   }
-  }
-  coords 3529.968 255.844 3512.086
  }
 }

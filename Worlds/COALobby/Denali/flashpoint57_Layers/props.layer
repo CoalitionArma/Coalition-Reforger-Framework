@@ -109,6 +109,17 @@ $grp GenericEntity : "{85E7D977EFAC11CB}PrefabsEditable/Auto/Compositions/Slotte
   angleY -28.212
  }
 }
+GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
+ components {
+  CRF_VehicleSpawner "{64626B666A3B82E3}" {
+   m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  }
+ }
+ coords 3887.891 280.781 2318.537
+ angleX 0
+ angleY 0
+ angleZ 0
+}
 GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
  coords 3544.342 255.906 3515.077
 }
@@ -130,7 +141,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -15.987
  }
  {
-  coords 3347.842 -0 4504.829
+  coords 3347.842 0 4504.829
   angleY -37.545
  }
  {
@@ -138,7 +149,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -37.545
  }
  {
-  coords 3344.707 -0 4509.119
+  coords 3344.707 0 4509.119
   angleY -37.545
  }
  {
@@ -146,7 +157,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -27.698
  }
  {
-  coords 3343.347 -0 4511.279
+  coords 3343.347 0 4511.279
   angleY -27.698
  }
  {
@@ -158,7 +169,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -25.617
  }
  {
-  coords 3339.93 -0 4518.577
+  coords 3339.93 0 4518.577
   angleY -25.617
  }
  {
@@ -170,7 +181,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -15.41
  }
  {
-  coords 3337.045 -0 4525.757
+  coords 3337.045 0 4525.757
   angleY -15.41
  }
  {
@@ -182,7 +193,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY 0.321
  }
  {
-  coords 3335.589 -0 4533.09
+  coords 3335.589 0 4533.09
   angleY 0.321
  }
  {
@@ -194,7 +205,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY 25.087
  }
  {
-  coords 3336.08 -0 4539.172
+  coords 3336.08 0 4539.172
   angleY 25.087
  }
  {
@@ -202,15 +213,15 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY 25.087
  }
  {
-  coords 3352.958 -0 4502.801
+  coords 3352.958 0 4502.801
   angleY -86.415
  }
  {
-  coords 3358.25 -0 4502.339
+  coords 3358.25 0 4502.339
   angleY -86.415
  }
  {
-  coords 3355.537 -0 4502.533
+  coords 3355.537 0 4502.533
   angleY -86.415
  }
  {
@@ -218,7 +229,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -102.974
  }
  {
-  coords 3365.563 -0 4503.935
+  coords 3365.563 0 4503.935
   angleY -102.974
  }
  {
@@ -242,7 +253,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -93.663
  }
  {
-  coords 3381.26 -0 4508.544
+  coords 3381.26 0 4508.544
   angleY -93.663
  }
  {
@@ -250,11 +261,11 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -93.663
  }
  {
-  coords 3388.287 -0 4510.167
+  coords 3388.287 0 4510.167
   angleY -107.059
  }
  {
-  coords 3393.402 -0 4511.602
+  coords 3393.402 0 4511.602
   angleY -107.059
  }
  {
@@ -266,7 +277,7 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -114.218
  }
  {
-  coords 3400.632 -0 4515.153
+  coords 3400.632 0 4515.153
   angleY -114.218
  }
  {
@@ -274,15 +285,15 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -114.218
  }
  {
-  coords 3404.283 -0 4517.239
+  coords 3404.283 0 4517.239
   angleY -120.575
  }
  {
-  coords 3408.921 -0 4519.83
+  coords 3408.921 0 4519.83
   angleY -120.575
  }
  {
-  coords 3406.568 -0 4518.465
+  coords 3406.568 0 4518.465
   angleY -120.575
  }
  {
@@ -290,15 +301,15 @@ $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/
   angleY -140.3
  }
  {
-  coords 3414.241 -0 4525.386
+  coords 3414.241 0 4525.386
   angleY -140.3
  }
  {
-  coords 3412.487 -0 4523.307
+  coords 3412.487 0 4523.307
   angleY -140.3
  }
  {
-  coords 3415.383 -0 4527.874
+  coords 3415.383 0 4527.874
   angleY -164.826
  }
  {
