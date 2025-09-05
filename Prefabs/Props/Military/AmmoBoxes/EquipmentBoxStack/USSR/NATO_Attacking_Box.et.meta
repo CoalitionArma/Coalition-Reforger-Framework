@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{EADC4F4E4E5F413D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/NATO_Attacking_Box.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

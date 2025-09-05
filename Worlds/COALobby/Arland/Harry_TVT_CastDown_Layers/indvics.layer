@@ -1,0 +1,88 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 3368.479 40.112 2586.378
+  m_rnPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3408.064 36.734 2529.538
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3400.724 36.951 2527.623
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3393.648 37.193 2525.777
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3388.046 37.392 2524.317
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3405.622 37.758 2538.897
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3398.282 37.876 2536.982
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3391.205 37.988 2535.136
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3385.604 38.086 2533.675
+  angleY -14.624
+  m_rnPrefab "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3395.624 41.094 2612.714
+  angleY -91.194
+  m_rnPrefab "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 0
+    }
+   }
+  }
+ }
+ coords 3396.943 41.752 2605.827
+ angleY -21.023
+}
+GenericEntity : "{2DE0838804526A10}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_FIA_01.et" {
+ coords 3397.632 41.909 2599.011
+ angleY -144.539
+}

@@ -1,0 +1,92 @@
+Vehicle : "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et" {
+ ID "5A7CEB06421662F8"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Vehicle_Mi8MT_Armed_Name - #WCS-Weapon_FAB250_Name"
+    m_Image "{BDA6E72F8EC9809E}UI/Textures/EditorPreviews/Vehicles/Helicopters/Mi8MT/Mi8MT_armed_fab250.edds"
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+     }
+     SCR_EntityBudgetValue "{611E87CA7FF4ED82}" {
+      m_BudgetType RANK_LIEUTENANT
+      m_Value 4
+     }
+     SCR_EntityBudgetValue "{66254BEDACF23A79}" {
+      m_BudgetType PROPS
+      m_Value 100
+     }
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{57DA667544C3090A}" {
+   components {
+    BaseHUDComponent "{50F09A38B4352300}" {
+     InfoDisplays {
+      WCS_Armament_WeaponInfoVehicle "{62CEE7E7CACC9CBE}" {
+       m_bIsEnabled 1
+      }
+      SCR_WeaponInfo_MultiWeaponTurret "{645E8659E6F1BB74}" {
+       m_bIsEnabled 0
+      }
+     }
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{66254BEDACF23A48}" {
+   m_ArmamentGroups {
+    WCS_ArmamentWeaponGroup "{66254BEDACF23A49}" {
+     prefab "{1063832CCE78191D}Prefabs/Weapons/AircraftWeapons/BombPods/Pod_BDZ-UMK.et"
+     weaponsInfo {
+      WCS_ArmamentWeaponInfo "{66254BEDACF23A4F}" {
+       Position PointInfo "{66254BEDACF23A4D}" {
+        Offset -3.4276 1.2554 -0.5535
+        Angles 0 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{66254BEDACF23A52}" {
+       Position PointInfo "{66254BEDACF23A53}" {
+        Offset 3.4331 1.2554 -0.5535
+        Angles 0 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{66254BEDACF23A50}" {
+       Position PointInfo "{66254BEDACF23A51}" {
+        Offset -2.8664 1.2554 -0.5535
+        Angles 0 0 0
+       }
+      }
+      WCS_ArmamentWeaponInfo "{66254BEDACF23A56}" {
+       Position PointInfo "{66254BEDACF23A57}" {
+        Offset 2.8664 1.2554 -0.5535
+        Angles 0 0 0
+       }
+      }
+     }
+     fireModes {
+      WCS_Armament_WeaponSingleFireMode "{66254BEDACF23A2A}" {
+      }
+      WCS_Armament_WeaponSalvoFireMode "{66254BEDACF23A28}" {
+      }
+     }
+    }
+   }
+   FireInputActionTrigger PRESSED
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Armaments {
+     Enabled 1
+    }
+   }
+  }
+  WeaponSlotComponent "{66254BEDACF23A3A}" {
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot Armament {
+    PivotID "Scene_Root"
+   }
+   WeaponTemplate "{52120E4BA120661B}Prefabs/Weapons/Core/Armament_Empty.et"
+   WeaponSlotIndex 0
+  }
+ }
+}
