@@ -1,32 +1,3 @@
-PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
- coords 2258.425 80.886 1357.437
- Points {
-  ShapePoint "{663C47C8F4BBDE32}" {
-   Position -1228.399 38.001 650.779
-  }
-  ShapePoint "{663C47C8F8AEB3C5}" {
-   Position -1504.833 0 -5.451
-  }
-  ShapePoint "{663C47C8E9953A8E}" {
-   Position -1205.553 0 -1255.458
-  }
-  ShapePoint "{663C47C89740B8FB}" {
-   Position 157.996 0 -1308.169
-  }
-  ShapePoint "{663C47C89BAEB4F9}" {
-   Position 1679.355 0 -1231.105
-  }
-  ShapePoint "{663C47C89FF0F19C}" {
-   Position 1771.219 0 2668.155
-  }
-  ShapePoint "{663C47C88405F3AA}" {
-   Position 32.864 3.876 2674.549
-  }
-  ShapePoint "{663C47C8BEE0B6C4}" {
-   Position -938.08 46.264 1427.515
-  }
- }
-}
 PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
  coords 3210.758 10.75 2956.088
  Points {
