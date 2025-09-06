@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{9ED4F47C1B34DA47}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/USSR_Attacking_Box.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
