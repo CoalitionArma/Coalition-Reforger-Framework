@@ -1,0 +1,23 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 3236.911 10.749 2998.193
+  angleY -129.369
+  m_rnPrefab "{21E9A875C0A3C409}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HE.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3255.811 10.749 2975.158
+  angleY -129.369
+  m_rnPrefab "{0DAC69A0A52EFB4F}Prefabs/Vehicles/Helicopters/H47/CH47D_US.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3271.52 10.749 2956.012
+  angleY -129.369
+  m_rnPrefab "{0DAC69A0A52EFB4F}Prefabs/Vehicles/Helicopters/H47/CH47D_US.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

@@ -1,0 +1,115 @@
+GenericEntity : "{3C9FB6869EB635BB}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_round_plastic.et" {
+ coords 2564.071 3.482 1679.757
+ angleY -5.754
+}
+$grp GenericEntity : "{4ADCE267EC510331}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_plastic.et" {
+ {
+  coords 2559.389 3.33 1672.048
+  angleY -67.931
+ }
+ {
+  coords 2560.619 3.33 1675.081
+  angleY -67.931
+ }
+ {
+  coords 2561.843 3.33 1678.099
+  angleY -67.931
+ }
+ {
+  coords 2567.08 3.385 1679.136
+  angleY 25.495
+ }
+ {
+  coords 2570.054 3.385 1677.718
+  angleY 25.495
+ }
+}
+$grp StaticModelEntity : "{6173DF6DAC898A28}Prefabs/Trench/LogBunker2.et" {
+ {
+  coords 2738.762 8.339 1621.518
+  angleY -47.62
+ }
+ {
+  coords 2593.639 3.622 1693.815
+  angleY 170.25
+ }
+ {
+  coords 2537.075 3.625 1679.218
+  angleY 115.658
+ }
+}
+$grp GenericEntity : "{7F118C6EA2AF1C99}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_high_plastic.et" {
+ {
+  coords 2559.28 2.093 1672.133
+  angleY -66.696
+ }
+ {
+  coords 2560.574 2.093 1675.136
+  angleY -66.696
+ }
+ {
+  coords 2561.878 2.093 1678.163
+  angleY -66.696
+ }
+ {
+  coords 2567.03 2.156 1679.079
+  angleY 24.028
+ }
+ {
+  coords 2569.993 2.156 1677.758
+  angleY 24.028
+ }
+ {
+  coords 1814.693 4.851 1003.475
+  angleY 21.451
+ }
+ {
+  coords 1811.635 4.833 994.022
+  angleY -159.071
+ }
+ {
+  coords 1810.614 4.841 1001.091
+  angleY -64.556
+ }
+ {
+  coords 1809.249 4.769 998.221
+  angleY -64.556
+ }
+ {
+  coords 1816.847 4.22 998.799
+  angleY -74.628
+ }
+ {
+  coords 1815.973 4.22 995.754
+  angleY -74.628
+ }
+}
+$grp GenericEntity : "{87588E4A1561C4D1}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_round_high_plastic.et" {
+ {
+  coords 2564.154 2.355 1679.797
+ }
+ {
+  coords 2572.275 1.748 1675.852
+  angleY 61.31
+ }
+ {
+  coords 2572.275 2.861 1675.852
+  angleY 61.31
+ }
+ {
+  coords 1816.99 4.874 1001.813
+  angleY 67.636
+ }
+ {
+  coords 1812.085 4.797 1003.73
+  angleY -37.897
+ }
+ {
+  coords 1809.135 4.753 995.701
+  angleY -112.058
+ }
+ {
+  coords 1814.502 4.858 993.693
+  angleY 159.675
+ }
+}
