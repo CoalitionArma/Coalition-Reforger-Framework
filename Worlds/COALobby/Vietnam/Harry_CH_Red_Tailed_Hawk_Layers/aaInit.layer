@@ -68,7 +68,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{A8BEDD41BC781578}Configs/Gearscripts/Standard/Vietnam/Varients/CRF_GS_US_Early_TL_Radio.conf"
+  m_rGearScript "{5DEB072C5A1F718F}Configs/Gearscripts/Custom/Harry/Vietnam/CRF_GS_US_Early_Harry_TLRadio.conf"
   m_bEnableRTORadios 0
   m_bEnableGIRadios 0
  }
