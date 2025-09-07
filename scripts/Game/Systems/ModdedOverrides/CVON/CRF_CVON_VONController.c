@@ -187,8 +187,68 @@ modded class SCR_VONController
 		if (!m_PlayerManager)
 			m_PlayerManager = GetGame().GetPlayerManager();
 		
+		ref array<int> playerIds = {};
+		m_PlayerManager.GetPlayers(playerIds);
+		int maxDistance = m_PlayerController.m_aVolumeValues.Get(4);
+		foreach (int playerId: playerIds)
+		{
+			if (!SCR_PlayerController.GetLocalControlledEntity())
+				continue;
+			
+			if (playerId == SCR_PlayerController.GetLocalPlayerId())
+				continue;
+			
+			IEntity player = m_PlayerManager.GetPlayerControlledEntity(playerId);
+			if (!player)
+				continue;
+			
+			SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(ChimeraCharacter.Cast(player).GetCharacterController());
+			if (charCont.IsDead() || charCont.IsUnconscious())
+				if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+				{
+					int index = m_PlayerController.m_aLocalActiveVONEntriesIds.Find(playerId);
+					m_PlayerController.m_aLocalActiveVONEntriesIds.RemoveOrdered(index);
+					m_PlayerController.m_aLocalActiveVONEntries.RemoveOrdered(index);
+					continue;
+				}
+				else
+					continue;
+			
+			float distance = vector.Distance(player.GetOrigin(), SCR_PlayerController.GetLocalControlledEntity().GetOrigin());
+			if (distance > maxDistance && !IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId()))
+			{
+				if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+				{
+					//If this VON Transmission is radio, don't do shit
+					if (m_PlayerController.m_aLocalActiveVONEntries.Get(m_PlayerController.m_aLocalActiveVONEntriesIds.Find(playerId)).m_eVonType == CVON_EVONType.RADIO)
+						continue;
+					int index = m_PlayerController.m_aLocalActiveVONEntriesIds.Find(playerId);
+					m_PlayerController.m_aLocalActiveVONEntriesIds.RemoveOrdered(index);
+					m_PlayerController.m_aLocalActiveVONEntries.RemoveOrdered(index);
+					continue;
+				}
+				else
+					continue;
+			}
+			else
+			{
+				if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+					continue;
+				else
+				{
+					CVON_VONContainer container = new CVON_VONContainer();
+					container.m_eVonType = CVON_EVONType.DIRECT;
+					container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
+					container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
+					container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
+					container.m_iPlayerId = playerId;
+					m_PlayerController.m_aLocalActiveVONEntries.Insert(container);
+					m_PlayerController.m_aLocalActiveVONEntriesIds.Insert(playerId);
+				}
+				
+			}
+		}
 		
-		int maxDistance = 150;
 		//Local processing of data being sent to us
 		foreach (CVON_VONContainer container: m_PlayerController.m_aLocalActiveVONEntries)
 		{
@@ -218,9 +278,7 @@ modded class SCR_VONController
 				return;
 			}
 				
-			ref array<int> playerIds = {};
 			ref array<int> broadcastToPlayerIds = {};
-			m_PlayerManager.GetPlayers(playerIds);
 			foreach (int playerId: playerIds)
 			{	
 				#ifdef WORKBENCH
@@ -229,25 +287,25 @@ modded class SCR_VONController
 					continue;
 				#endif
 				
-				if (m_CurrentVONContainer.m_eVonType == CVON_EVONType.DIRECT)
-				{
-					if (!IsPlayerSpectator(playerId))
-					{
-						IEntity player = m_PlayerManager.GetPlayerControlledEntity(playerId);
-						if (!player)
-							continue;
-						
-						if (vector.Distance(player.GetOrigin(), SCR_PlayerController.GetLocalControlledEntity().GetOrigin()) > maxDistance)
-						{
-							if (m_aPlayerIdsBroadcastedTo.Contains(playerId))
-							{
-								m_aPlayerIdsBroadcastedTo.RemoveItem(playerId);
-								m_PlayerController.BroadcastRemoveLocalVONToServer(playerId, SCR_PlayerController.GetLocalPlayerId());
-							}
-							continue;
-						}
-					}
-				}
+//				if (m_CurrentVONContainer.m_eVonType == CVON_EVONType.DIRECT)
+//				{
+//					if (!IsPlayerSpectator(playerId))
+//					{
+//						IEntity player = m_PlayerManager.GetPlayerControlledEntity(playerId);
+//						if (!player)
+//							continue;
+//						
+//						if (vector.Distance(player.GetOrigin(), SCR_PlayerController.GetLocalControlledEntity().GetOrigin()) > maxDistance)
+//						{
+//							if (m_aPlayerIdsBroadcastedTo.Contains(playerId))
+//							{
+//								m_aPlayerIdsBroadcastedTo.RemoveItem(playerId);
+//								m_PlayerController.BroadcastRemoveLocalVONToServer(playerId, SCR_PlayerController.GetLocalPlayerId());
+//							}
+//							continue;
+//						}
+//					}
+//				}
 				
 				if (m_aPlayerIdsBroadcastedTo.Contains(playerId))
 					continue;
@@ -257,9 +315,9 @@ modded class SCR_VONController
 			}
 			if (broadcastToPlayerIds.Count() > 0)
 			{
-				if (m_CurrentVONContainer.m_eVonType == CVON_EVONType.DIRECT)
-					m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, broadcastToPlayerIds, SCR_PlayerController.GetLocalPlayerId(), RplId.Invalid());
-				else
+//				if (m_CurrentVONContainer.m_eVonType == CVON_EVONType.DIRECT)
+//					m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, broadcastToPlayerIds, SCR_PlayerController.GetLocalPlayerId(), RplId.Invalid());
+//				else
 					m_PlayerController.BroadcastLocalVONToServer(m_CurrentVONContainer, broadcastToPlayerIds, SCR_PlayerController.GetLocalPlayerId(), m_CurrentVONContainer.m_iRadioId);
 			}
 				
