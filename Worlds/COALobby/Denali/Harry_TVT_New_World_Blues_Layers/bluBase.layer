@@ -1,0 +1,795 @@
+$grp SCR_DestructibleEntity : "{052DDF0E3A5E2AF6}Prefabs/Structures/Walls/Metal/MetalWall_01/MetalWall_01_9m.et" {
+ {
+  coords 3350.061 -0.153 4482.216
+  angleY 31.624
+ }
+ {
+  coords 3344.365 -0.006 4489.229
+  angleY 50.38
+ }
+ {
+  coords 3339.319 0.001 4496.646
+  angleY 55.559
+ }
+ {
+  coords 3334.233 0.001 4504.063
+  angleY 55.559
+ }
+ {
+  coords 3329.135 0.001 4511.497
+  angleY 55.559
+ }
+ {
+  coords 3324.038 0.001 4518.93
+  angleY 55.559
+ }
+ {
+  coords 3318.936 0.001 4526.368
+  angleY 55.559
+ }
+ {
+  coords 3313.834 -0.061 4533.807
+  angleY 55.559
+ }
+ {
+  coords 3314.425 -0.051 4542.796
+  angleY 93.531
+ }
+ {
+  coords 3314.978 -0.28 4551.774
+  angleY 93.531
+ }
+ {
+  coords 3315.533 -0.741 4560.762
+  angleY 93.531
+ }
+}
+SCR_DestructibleBuildingEntity : "{0921B79E3B234115}Prefabs/Structures/Military/Bunkers/AmmoDump_E_02/AmmoDump_E_02_base.et" {
+ coords 3383.591 425.125 4604.28
+ angleY -125.372
+}
+GenericEntity : "{1803111CD65A173C}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V1_storage_US_covered.et" {
+ coords 3376.789 425.125 4528.014
+ angleY -29.874
+ {
+  GenericEntity {
+   ID "5D30E7838EA40E99"
+   coords 0 0 0
+  }
+ }
+}
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  coords 3372.147 425.125 4533.269
+  angleY -123.602
+  {
+   GenericEntity {
+    ID "6186DB2F33FB321E"
+    coords 0 0.2 0
+    {
+     GenericEntity {
+      ID "6186D3A8CE3D252F"
+      coords -3.006 0 1.196
+      angleY 95.83
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D253A"
+      coords -3.047 0 -0.306
+      angleY -90.588
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2546"
+      coords 2.759 0 0.978
+      angleY 88.081
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2553"
+      coords -0.963 0 3.237
+      angleY -6.91
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2566"
+      coords 2.739 0 -0.537
+      angleY -86.285
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2577"
+      coords 0.553 0 3.285
+      angleY -174.619
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2583"
+      coords 2 0.232 2.5
+      angleY 45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25A8"
+      coords -2.32 0 2.5
+      angleY -45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B5"
+      coords -2.32 0.232 2.5
+      angleY -45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B8"
+      coords 2 0 2.5
+      angleY 45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25C7"
+      coords -2.32 0 -2
+      angleY -135
+      {
+       GenericEntity {
+        ID "6186DB290A91C258"
+        coords -1.505 -0.06 -0.039
+        angleY -65.633
+       }
+       GenericEntity {
+        ID "6186DB290A91C259"
+        coords -1.426 0.246 -0.45
+        angleX 2.39
+        angleY 167.781
+        angleZ -134.591
+       }
+       GenericEntity {
+        ID "6186DB290A91C25A"
+        coords -0.535 0.541 0.161
+        angleY -175.36
+       }
+       GenericEntity {
+        ID "6186DB290A91C25B"
+        coords 0.083 0.571 0.315
+        angleY -119.294
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2601"
+      coords 2 0 -2
+      angleY 135
+      {
+       GenericEntity {
+        ID "6186DB291A937028"
+        coords 1.169 -0.092 0.464
+        angleY -147.954
+       }
+       GenericEntity {
+        ID "6186DB291A937029"
+        coords 1.546 -0.067 -0.061
+        angleX -23.577
+        angleY 95.88
+        angleZ -2.354
+       }
+       GenericEntity {
+        ID "6186DB291A937056"
+        coords 0.564 0.545 0.231
+        angleY -171.275
+       }
+       GenericEntity {
+        ID "6186DB291A937057"
+        coords -1.176 0.485 -0.227
+        angleY -36.121
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2672"
+      coords 1.843 0 2.145
+      angleY 150.163
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25E3"
+      coords -0.155 0.083 0.537
+      angleY 163.319
+      {
+       DecalEntity {
+        ID "56DEFDB4A9499F9B"
+        coords 0 0 0
+        angleX -89.96
+        angleY -180
+        angleZ -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24EB"
+      coords -0.047 0.083 -3.445
+      angleY 90
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords 0 0 0
+        angleX -89.972
+        angleY -180
+        angleZ -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24F0"
+      coords -0.048 0.083 -2.144
+      angleY 90
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords -0.001 0 0
+        angleX -89.972
+        angleY -180
+        angleZ -180
+       }
+      }
+     }
+     Turret {
+      ID "6186D3A8CE3D250E"
+      coords -0.296 0.014 0.5
+      angleY 2
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 3378.625 425.124 4523.921
+  angleY -123.602
+  {
+   GenericEntity {
+    ID "6186DB2F33FB321E"
+    {
+     GenericEntity {
+      ID "6186D3A8CE3D252F"
+      coords -3.006 0 1.196
+      angleY 95.83
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D253A"
+      coords -3.047 0 -0.306
+      angleY -90.588
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2546"
+      coords 2.759 0 0.978
+      angleY 88.081
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2553"
+      coords -0.963 0 3.237
+      angleY -6.91
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2566"
+      coords 2.739 0 -0.537
+      angleY -86.285
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2577"
+      coords 0.552 0 3.285
+      angleY -174.619
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2583"
+      coords 2 0.232 2.5
+      angleY 45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25A8"
+      coords -2.32 0 2.5
+      angleY -45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B5"
+      coords -2.32 0.232 2.5
+      angleY -45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25B8"
+      coords 2 0 2.5
+      angleY 45
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25C7"
+      coords -2.32 0 -2
+      angleY -135
+      {
+       GenericEntity {
+        ID "6186DB290A91C258"
+        coords -1.506 -0.06 -0.038
+        angleY -65.633
+       }
+       GenericEntity {
+        ID "6186DB290A91C259"
+        coords -1.426 0.246 -0.45
+        angleX 2.39
+        angleY 167.781
+        angleZ -134.591
+       }
+       GenericEntity {
+        ID "6186DB290A91C25A"
+        coords -0.535 0.541 0.161
+        angleY -175.36
+       }
+       GenericEntity {
+        ID "6186DB290A91C25B"
+        coords 0.083 0.571 0.316
+        angleY -119.294
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2601"
+      coords 2 0 -2
+      angleY 135
+      {
+       GenericEntity {
+        ID "6186DB291A937028"
+        coords 1.169 -0.092 0.464
+        angleY -147.954
+       }
+       GenericEntity {
+        ID "6186DB291A937029"
+        coords 1.546 -0.067 -0.061
+        angleX -23.577
+        angleY 95.88
+        angleZ -2.354
+       }
+       GenericEntity {
+        ID "6186DB291A937056"
+        coords 0.564 0.545 0.232
+        angleY -171.275
+       }
+       GenericEntity {
+        ID "6186DB291A937057"
+        coords -1.176 0.485 -0.227
+        angleY -36.121
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D2672"
+      coords 1.843 0 2.144
+      angleY 150.163
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D25E3"
+      coords -0.155 0.083 0.537
+      angleY 163.319
+      {
+       DecalEntity {
+        ID "56DEFDB4A9499F9B"
+        coords 0 0 0
+        angleX -89.96
+        angleY -180
+        angleZ -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24EB"
+      coords -0.048 0.083 -3.445
+      angleY 90
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords -0 0 -0
+        angleX -89.972
+        angleY -180
+        angleZ -180
+       }
+      }
+     }
+     GenericEntity {
+      ID "6186D3A8CE3D24F0"
+      coords -0.048 0.083 -2.144
+      angleY 90
+      {
+       DecalEntity {
+        ID "56DF08929A14FB98"
+        coords 0 0 -0
+        angleX -89.972
+        angleY -180
+        angleZ -180
+       }
+      }
+     }
+     Turret {
+      ID "6186D3A8CE3D250E"
+      coords -0.296 0.014 0.5
+      angleY 2
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{52E67D46C7855822}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/SupplyStack_Large_01_storage_US_covered.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 3377.346 425.125 4529.828
+  angleY -29.874
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 3373.629 425.125 4526.246
+  angleY -29.874
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords -0 0 0
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 3375.074 425.125 4528.363
+  angleY -29.874
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 3371.908 425.125 4526.743
+  angleY -29.874
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+}
+$grp GenericEntity : "{73F8306941E09593}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V6_storage_US_covered.et" {
+ {
+  coords 3377.936 425.125 4528.811
+  angleY -29.874
+  {
+   GenericEntity {
+    ID "5D30E783815E7DC1"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 3375.642 426.027 4530.093
+  angleY 152.092
+  {
+   GenericEntity {
+    ID "5D30E783815E7DC1"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 3373.543 426.009 4528.608
+  angleY 153.674
+  {
+   GenericEntity {
+    ID "5D30E783815E7DC1"
+    coords 0 0 0
+   }
+  }
+ }
+}
+$grp StaticModelEntity : "{94FB3A1BFFFF1A19}Prefabs/Structures/Military/Camps/TentUS_01/TentUS_01_Assembled_foundation.et" {
+ {
+  coords 3418.931 425.104 4589.236
+  angleY 73.178
+ }
+ {
+  coords 3416.656 425.104 4597.896
+  angleY 73.178
+ }
+}
+$grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V2.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 3377.839 425.125 4531.321
+  angleY 154.155
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 3374.477 426.023 4529.415
+  angleY 154.155
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 3375.729 425.125 4527.434
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 3372.611 425.125 4527.98
+  angleY 154.155
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 3374.688 426.01 4526.873
+  angleY -29.874
+ }
+}
+$grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V1.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3374.018 425.125 4527.749
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3376.195 425.125 4529.13
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3374.558 425.125 4529.394
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3375.668 425.125 4530.128
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3376.786 425.125 4530.804
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3373.553 425.125 4528.565
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3373.926 425.942 4527.698
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3376.195 425.748 4529.13
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3374.67 425.125 4526.864
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3376.195 426.633 4529.13
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3373.071 425.125 4527.158
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3378.341 425.125 4530.399
+  angleY -29.874
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 3372.591 425.125 4525.754
+  angleY -29.874
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{DAC148D18C3835B9}Prefabs/Structures/Military/Bunkers/ShelterMilitary_E_01/ShelterMilitary_E_01_long.et" {
+ {
+  coords 3426.012 0.057 4562.351
+  angleY -102.513
+ }
+ {
+  coords 3422.742 0 4575.358
+  angleY -102.513
+ }
+}
