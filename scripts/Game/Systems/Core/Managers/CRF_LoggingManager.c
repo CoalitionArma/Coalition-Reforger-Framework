@@ -2,7 +2,10 @@
 * Logging component for COALITION games
 * Component overrides base game mode so it always runs
 *
-* Note that write files are formatted for parsing by an external program
+* Note that write files are form	// Register for gamemode state changes
+	CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
+	if (gamemode)
+		gamemode.GetOnStateChanged().Insert(OnGamemodeStateChanged);d for parsing by an external program
 * which splits strings via commas
 *
 * Server only
@@ -193,6 +196,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			case CRF_EGamemodeState.GAME:
 			{
 				LogMissionEvent("safestart");
+				// Only log ORBAT at game start, not during slotting, as slots may still be changing
+				if (m_sGameMode != "SPCL" && m_sGameMode != "SPC" && m_sGameMode != "SPECIAL")
+					LogORBAT();
 				break;
 			}
 			case CRF_EGamemodeState.AAR:
@@ -233,7 +239,7 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (m_sGameMode == "SPCL" || m_sGameMode == "SPC" || m_sGameMode == "SPECIAL") // ignore specials
 			return;
 
-		Attendance(); // Attendance log
+		Attendance(); // Attendance log and ORBAT logging
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -290,6 +296,110 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		foreach (int player : players)
 		{
 			m_LogFileHandle.WriteLine("attendance," + GetGame().GetBackendApi().GetPlayerIdentityId(player));
+		}
+		
+		// ORBAT is now logged separately via OnGamemodeStateChanged when entering GAME state
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Logs the ORBAT (Order of Battle) for the mission
+	private void LogORBAT()
+	{
+		if (!m_LogFileHandle)
+			return;
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		// Get all factions
+		array<FactionKey> factionKeys = {"BLUFOR", "OPFOR", "INDFOR", "CIV"};
+		
+		// Process each faction for detailed ORBAT
+		foreach (FactionKey factionKey : factionKeys)
+		{
+			// Skip if faction not used in mission
+			if (!slottingManager.IsFactionValid(factionKey))
+				continue;
+			
+			// Get faction name and player count
+			Faction faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
+			if (!faction)
+				continue;
+				
+			string factionName = faction.GetFactionName();
+			SCR_FactionManager scrFM = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+			int factionPlayerCount = scrFM.GetFactionPlayerCount(faction);
+			
+			// Log faction header with player count
+			m_LogFileHandle.WriteLine("orbat_side" + SEPARATOR + factionKey + SEPARATOR + factionName + SEPARATOR + factionPlayerCount);
+			
+			// Get all groups for this faction
+			array<SCR_AIGroup> factionGroups = slottingManager.GetAllGroups(factionKey);
+			
+			// Process each group
+			foreach (SCR_AIGroup group : factionGroups)
+			{
+				if (!group)
+					continue;
+				
+				// Get group name and ID
+				string groupName = group.GetName();
+				if (groupName.IsEmpty())
+					groupName = "Group " + group.GetGroupID().ToString();
+				
+				RplComponent groupRplComp = RplComponent.Cast(group.FindComponent(RplComponent));
+				if (!groupRplComp)
+					continue;
+				
+				RplId groupId = groupRplComp.Id();
+				
+				// Count players in this group
+				int groupPlayerCount = 0;
+				array<int> slotsInGroup = slottingManager.GetAllSlotIDsForGroup(groupId);
+				foreach (int slotId : slotsInGroup)
+				{
+					CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+					if (slotData && slotData.GetSlotCurrentPlayerId() > 0)
+						groupPlayerCount++;
+				}
+				
+				// Skip empty groups
+				if (groupPlayerCount == 0)
+					continue;
+				
+				// Log group header with player count
+				m_LogFileHandle.WriteLine("orbat_group" + SEPARATOR + factionKey + SEPARATOR + groupName + SEPARATOR + groupPlayerCount);
+				
+				// Process each slot
+				foreach (int slotId : slotsInGroup)
+				{
+					CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+					if (!slotData)
+						continue;
+					
+					// Get player ID
+					int playerId = slotData.GetSlotCurrentPlayerId();
+					
+					// Skip empty slots
+					if (playerId <= 0)
+						continue;
+					
+					// Get player name
+					string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+					
+					// Get player role
+					string roleName = slotData.GetSlotName();
+					
+					// Get player GUID
+					string playerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(playerId);
+					
+					// Log player role info
+					m_LogFileHandle.WriteLine("orbat_player" + SEPARATOR + factionKey + SEPARATOR + 
+					                          groupName + SEPARATOR + roleName + SEPARATOR + 
+					                          playerName + SEPARATOR + playerGUID);
+				}
+			}
 		}
 	}
 	
@@ -362,5 +472,18 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	void LogShots()
 	{
 		// This should be pulled from the datacollector IMO, once per player, at end of game (enterAAR()).
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Public method to log the ORBAT at any time
+	void LogCurrentORBAT()
+	{
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
+			return;
+		
+		if (!m_LogFileHandle)
+			return;
+		
+		LogORBAT();
 	}
 }
