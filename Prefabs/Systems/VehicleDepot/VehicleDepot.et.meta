@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et"
+ Name "{BBDCB264A0AE9B2D}Prefabs/Systems/VehicleDepot/VehicleDepot.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
