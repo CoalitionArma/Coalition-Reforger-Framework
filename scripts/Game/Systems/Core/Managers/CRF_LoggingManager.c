@@ -45,6 +45,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	float m_fTotalTime;
 	int m_iTotalSeconds;
 	
+	// Kill tracking for more accurate weapon logging
+	private ref map<string, string> m_mPendingDamageWeapons;
+	
 	// Player counts
 	private int m_iPlayerCount;
 	private string m_sPlayerCountMax;
@@ -76,6 +79,9 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	{
 		if (!s_Instance)
 			s_Instance = this;
+		
+		// Initialize damage tracking map
+		m_mPendingDamageWeapons = new map<string, string>();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -107,6 +113,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		
 		m_PlayerManager = GetGame().GetPlayerManager();
 		m_GM = CRF_Gamemode.GetInstance();
+		
+		// We'll use a more direct approach to track damage since we can't register events this way
 		
 		UpdatePlayerCount();
 		InitializeLogging();
@@ -403,6 +411,18 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Track a weapon used on a specific player
+	void TrackWeaponUsed(int victimId, string weaponName)
+	{
+		if (victimId <= 0 || weaponName.IsEmpty())
+			return;
+		
+		string victimKey = victimId.ToString();
+		m_mPendingDamageWeapons.Set(victimKey, weaponName);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	// Logs player death and kill data to file
 	void LogPlayerKill(SCR_InstigatorContextData instiContext)
 	{
@@ -415,37 +435,60 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		if (m_sGameMode == "SPCL" || m_sGameMode == "SPC" || m_sGameMode == "SPECIAL") // ignore specials
 			return;
 		
+		int victimId = instiContext.GetVictimPlayerID();
+		
 		// Victim info
-		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(instiContext.GetVictimPlayerID()));
+		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(victimId));
 		m_sVictimFaction = m_PlayerChimera.GetFactionKey();
-		m_sVictimGUID = GetGame().GetBackendApi().GetPlayerIdentityId(instiContext.GetVictimPlayerID());
-		if (instiContext.GetVictimPlayerID() > 0) // if it's a player 
-			m_sVictimName = GetGame().GetPlayerManager().GetPlayerName(instiContext.GetVictimPlayerID());
+		m_sVictimGUID = GetGame().GetBackendApi().GetPlayerIdentityId(victimId);
+		if (victimId > 0) // if it's a player 
+			m_sVictimName = GetGame().GetPlayerManager().GetPlayerName(victimId);
 		else 
 			m_sVictimName = "AI";
 		m_sVictimName = m_sVictimName + "(" + m_sVictimFaction + ")"; // we append the faction here due to compiler constraints
 		
 		// Killer info
-		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(instiContext.GetKillerPlayerID()));
+		int killerId = instiContext.GetKillerPlayerID();
+		m_PlayerChimera = SCR_ChimeraCharacter.Cast(m_PlayerManager.GetPlayerControlledEntity(killerId));
 		m_sKillerFaction = m_PlayerChimera.GetFactionKey();
-		m_sKillerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(instiContext.GetKillerPlayerID());
-		if (instiContext.GetKillerPlayerID() > 0) // if it's a player and ignore aar killings
-			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(instiContext.GetKillerPlayerID());
+		m_sKillerGUID = GetGame().GetBackendApi().GetPlayerIdentityId(killerId);
+		if (killerId > 0) // if it's a player and ignore aar killings
+			m_sKillerName = GetGame().GetPlayerManager().GetPlayerName(killerId);
 		else
 			m_sKillerName = "AI";
 		m_sKillerName = m_sKillerName + "(" + m_sKillerFaction + ")"; // we append the faction here due to compiler constraints
 		
-		// Killer weapon info
-		// Old way
-		/*m_WMC = BaseWeaponManagerComponent.Cast(instiContext.GetKillerEntity().FindComponent(BaseWeaponManagerComponent));
-		m_sWeaponName = string.Format(m_WMC.GetCurrentWeapon().GetUIInfo().GetName());	
-		if (m_sWeaponName == "")
-			m_sWeaponName = "Unknown Weapon";*/
+		// Default weapon name
+		m_sWeaponName = "Unknown Weapon";
 		
-		// New way - accounts for character being in turret
-		m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(instiContext.GetKillerEntity().FindComponent(SCR_CharacterInventoryStorageComponent));
-		m_BWC = m_Inventory.GetCurrentCharacterWeapon();
-		m_sWeaponName = string.Format(m_BWC.GetUIInfo().GetName());
+		// First, check if we have tracked a weapon for this victim
+		string victimKey = victimId.ToString();
+		if (m_mPendingDamageWeapons.Contains(victimKey))
+		{
+			m_sWeaponName = m_mPendingDamageWeapons.Get(victimKey);
+			m_mPendingDamageWeapons.Remove(victimKey); // Clear the tracking data
+		}
+		else
+		{
+			// If no tracked weapon, use utility to determine the weapon
+			m_sWeaponName = CRF_DamageUtility.GetWeaponName(instiContext);
+			
+			// If we still don't have a weapon name, try the killer's current weapon as a last resort
+			if (m_sWeaponName == "Unknown Weapon")
+			{
+				IEntity killerEntity = instiContext.GetKillerEntity();
+				if (killerEntity)
+				{
+					m_Inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
+					if (m_Inventory)
+					{
+						m_BWC = m_Inventory.GetCurrentCharacterWeapon();
+						if (m_BWC)
+							m_sWeaponName = m_BWC.GetUIInfo().GetName() + " (Current)";
+					}
+				}
+			}
+		}
 		
 		// Range
 		m_fRange = vector.Distance(instiContext.GetVictimEntity().GetOrigin(),instiContext.GetKillerEntity().GetOrigin());
@@ -472,6 +515,71 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	void LogShots()
 	{
 		// This should be pulled from the datacollector IMO, once per player, at end of game (enterAAR()).
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Called when player takes significant damage - can be used to track weapons that cause damage
+	// This needs to be called from damage handling events in the game
+	void PlayerTookDamage(int victimId, IEntity killerEntity, int damageType)
+	{
+		if (victimId <= 0)
+			return;
+		
+		// Only track if this is a player-to-player event
+		int killerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(killerEntity);
+		if (killerId <= 0)
+			return;
+			
+		// Get the weapon information
+		string weaponName = "Unknown Weapon";
+		
+		// Try to determine weapon from killer entity
+		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(killerEntity.FindComponent(SCR_CharacterInventoryStorageComponent));
+		if (inventory)
+		{
+			BaseWeaponComponent weapon = inventory.GetCurrentCharacterWeapon();
+			if (weapon)
+			{
+				weaponName = weapon.GetUIInfo().GetName();
+			}
+		}
+		
+		// Handle specific damage types if provided
+		if (damageType > 0)
+		{
+			if (damageType == EDamageType.BLEEDING)
+			{
+				weaponName = "Bleeding";
+			}
+			else if (damageType == EDamageType.EXPLOSIVE)
+			{
+				weaponName = "Explosion";
+			}
+			else if (damageType == EDamageType.FRAGMENTATION || damageType == EDamageType.PROCESSED_FRAGMENTATION)
+			{
+				weaponName = "Fragmentation";
+			}
+			else if (damageType == EDamageType.FIRE || damageType == EDamageType.INCENDIARY)
+			{
+				weaponName = "Fire";
+			}
+			else if (damageType == EDamageType.COLLISION)
+			{
+				weaponName = "Collision";
+			}
+			else if (damageType == EDamageType.MELEE)
+			{
+				weaponName = "Melee";
+			}
+			else
+			{
+				// Use the damage type string from utility class
+				weaponName = CRF_DamageUtility.GetDamageTypeString(damageType);
+			}
+		}
+		
+		// Store this weapon for the victim
+		TrackWeaponUsed(victimId, weaponName);
 	}
 	
 	//------------------------------------------------------------------------------------------------
