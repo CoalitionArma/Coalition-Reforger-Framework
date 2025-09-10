@@ -1,0 +1,133 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1738.124 37.997 1375.534
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Cloudy"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 20
+   m_iStartingMinutes 30
+  }
+ }
+ coords 2114.94 72.138 1366.611
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "VC forces have been too confident recently, It is time for US forces to slience the VC's egos by destroying their precious weapon caches."\
+   ""\
+   "BLUFOR Composition: "\
+   "BLUFOR Assets: 1x  UH1H Armed and 2x CH47D"\
+   ""\
+   "OPFOR Composition: Motorized Infantry Platoon"\
+   "OPFOR Assets: 1x HMG Team and 2x ZU23 (Pre-Deployed)"\
+   ""\
+   "Time: 60 minutes"\
+   ""\
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy all three weapons caches."\
+   "Cache locations markers are approximate."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend all three caches."\
+   ""
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{463FE3EB1F627B0F}Configs/Gearscripts/Custom/Yoko/CRF_GS_US_Late_Yoko.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F30D06CA4F8748DE}Configs/Gearscripts/Custom/Yoko/CRF_GS_VC_Yoko.conf"
+  m_bEnableRTORadios 0
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager "663D176BC72AFF00" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{663C47CDB4085330}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663C47CDB650863C}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663C47CDBBCC4125}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{663C47CDBF8C4653}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{663C47CDA0B944B3}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{663C47CDA23DFD83}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{663C47CDA7DB3587}" {
+        m_sCallsign "Recon"
+       }
+       SCR_CallsignInfo "{663C47CD58A7D6A9}" {
+        m_sCallsign "UH-1"
+       }
+       SCR_CallsignInfo "{663C47CD7157D9AD}" {
+        m_sCallsign "TH-1"
+       }
+       SCR_CallsignInfo "{663C47CD744A18C5}" {
+        m_sCallsign "TH-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{663C47CD142E4BF8}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{663C47CD146CF884}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{663C47CD1A3CFE6A}" {
+        m_sCallsign "HMG"
+       }
+       SCR_CallsignInfo "{663C47CD014F19AF}" {
+        m_sCallsign "Recon"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

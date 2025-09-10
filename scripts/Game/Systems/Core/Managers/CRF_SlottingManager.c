@@ -587,7 +587,7 @@ class CRF_SlottingManager : ScriptComponent
 			spawnParams.Transform = playerSlotVector;
 
 		vector pos;
-		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 8, 3);
+		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 12);
 		spawnParams.Transform[3] = pos;
 		
 		// Spawn the character

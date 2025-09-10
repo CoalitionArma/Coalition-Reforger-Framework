@@ -15,11 +15,11 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    StaminaThresholdMinimum 0.0001
   }
   SCR_CharacterControllerComponent "{520EA1D2F659CEA5}" {
+   AllowLightImpactAnim 0
+   AllowRagdollEffectorsFromDamage 0
    m_fDrowningDuration 1000000000
   }
   CRF_PlayableCharacter "{646423C7F8911193}" {
-   m_sName "Spectator"
-   m_bIsPlayable 1
   }
   FactionAffiliationComponent "{633B2131A597C43C}" {
    "faction affiliation" "SPEC"
@@ -131,6 +131,7 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    "Speaking Range" 0
   }
   BaseFlattenGrassComponent "{520EA1D2F659CE26}" {
+   Enabled 0
    ParametersCollection {
     FlattenGrassParametersObject "{520EA1D2F659CE2C}" {
      SideX 0

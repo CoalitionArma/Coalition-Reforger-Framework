@@ -1,4 +1,4 @@
-class CRF_SlottingMenuUI: ChimeraMenuBase
+class CRF_SlottingMenu: ChimeraMenuBase
 {
 	//---------------------------------------------------------------------
 	// UI Widgets
