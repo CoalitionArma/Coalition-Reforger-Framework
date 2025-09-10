@@ -24,6 +24,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 5157.747 397.344 1752.875
+ m_iTimeLimitMinutes 70
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "1PLT, ACO, 1/32 IN, 7ID apart of Task Force Faith has been tasked with holding the east side of the Chosin Reservoir for freindly units from 3/31 Infantry and 57th Field Artillery to pull out of the pocket. They have been given the order to defend to the last man, majority of the Battalion has been wiped out, this will be its final stand."\
@@ -54,7 +55,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "All players have 2 hand flare with them."
   }
  }
- m_iFactionOneRatio 3
+ m_iFactionOneRatio 2
  m_sFactionOneKey "OPF"
  m_sFactionTwoKey "BLU"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
