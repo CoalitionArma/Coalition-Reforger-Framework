@@ -1,10 +1,3 @@
-SCR_VehicleSpawn {
- coords 3816.727 410.625 5652.624
- angleY 178.48
- m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
- respawnDelay 10000
- firstSpawn 1
-}
 $grp StaticModelEntity : "{3CB032367D650574}Prefabs/Structures/Agriculture/Barn/Barn_E_02/Dst/Tower_Ruin.et" {
  {
   coords 2181.438 375.13 2637.085

@@ -41,6 +41,13 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
   firstSpawn 1
  }
+ {
+  coords 3816.727 410.625 5652.624
+  angleY 178.48
+  m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
 }
 GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
  coords 3869.984 410.625 5608.218
