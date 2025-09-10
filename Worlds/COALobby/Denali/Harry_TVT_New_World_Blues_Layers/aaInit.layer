@@ -58,7 +58,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableGIRadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6654F9912DAC9440" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
@@ -121,6 +121,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
  }
+}
+SoundWorld : "{80AAD1D4B60B30CD}Prefabs/Sounds/SoundWorld_DenaliEmpty.et" {
+ coords 1948.046 343.051 3768.669
 }
 GenericEntity : "{D4375F10B6F2BE81}Prefabs/MP/Campaign/Assets/Radio_Interactable.et" {
  components {
