@@ -461,17 +461,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!m_SlottingManager)
 			return;
 			
-		// Apply all updates in a single batch call to minimize replication
-		CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotId);
-		if (!slotData)
-			return;
-		
-		// Use the optimized batch update method that only triggers one InvokeDataUpdate() call
-		bool updated = slotData.BatchUpdateSlotData(playerId, groupId, charId, resource, name, isLocked, isDead);
-		
-		// Only trigger global update if something actually changed
-		if (updated)
-			m_SlottingManager.RequestSlottingUpdate();
+		// Use the fully optimized batch update method from SlottingManager
+		m_SlottingManager.BatchUpdateSlot(slotId, playerId, groupId, charId, resource, name, isLocked, isDead);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
