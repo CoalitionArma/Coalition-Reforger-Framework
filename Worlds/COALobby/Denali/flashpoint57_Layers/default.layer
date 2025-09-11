@@ -120,3 +120,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
+SoundWorld : "{80AAD1D4B60B30CD}Prefabs/Sounds/SoundWorld_DenaliEmpty.et" {
+ coords 3431.248 243.906 3522.634
+}
