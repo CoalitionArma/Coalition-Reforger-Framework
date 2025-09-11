@@ -1,0 +1,114 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1451.595 186.833 1175.139
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 18
+   m_iRangeHoursStart 18
+   m_iRangeHoursEnd 18
+  }
+ }
+ coords 1340.502 52.454 1722.161
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Add background info about the mission. "\
+   ""\
+   "BLUFOR Composition: Infantry Platoon"\
+   "BLUFOR Assets: MAT Team (M202 Flash), Sniper Team"\
+   ""\
+   "OPFOR Composition: Infantry Company"\
+   "OPFOR Assets:"\
+   ""\
+   "Time:"\
+   ""\
+   "Weather:"
+  }
+ }
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{CDC2D35E91FCCDF9}Configs/Gearscripts/Standard/Vietnam/CRF_GS_MACV_SOG.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{13C1F6BC6966A9B5}Configs/Gearscripts/Standard/Vietnam/CRF_GS_VC.conf"
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{EFEDAFEB7090A2F9}Configs/Gearscripts/Custom/FanServ/CRF_GS_SPC_COL.conf"
+  m_rLeadershipRadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
+  m_rRTORadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
+  m_rGIRadiosPrefab "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et"
+  m_bEnableLeadershipRadios 1
+  m_bEnableRTORadios 1
+  m_bEnableGIRadios 1
+ }
+ {
+  SCR_FactionManager "665B6B935B1B475D" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_sFactionRadioEncryptionKey "coldBorscht"
+     m_iFactionRadioFrequency 42000
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66545C18691665D4}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66545C1869F56A23}" {
+        m_sCallsign "MAT"
+       }
+       SCR_CallsignInfo "{66545C186AEA5791}" {
+        m_sCallsign "SNIPER"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{66545C1827D0E71B}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66545C18286D719B}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66545C1828A932D4}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{66545C1828EF5642}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66545C182C383E5E}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66545C19C0FF3F87}" {
+        m_sCallsign "2-3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,24 @@
+$grp SCR_DestructibleBuildingEntity : "{6BE680A3613A5C49}Prefabs/Swing_Bridge.et" {
+ {
+  coords 1509.207 35.07 1371.786
+  angleY 344
+  angleZ 9.5
+  scale 1.6
+ }
+ {
+  coords 1388.71 35.528 1336.712
+  angleZ 353
+  scale 1.25
+ }
+ {
+  coords 1707.135 29.301 1313.332
+  angleY 111
+  angleZ 2
+ }
+ {
+  coords 1364.733 40.446 1249.796
+  angleY 35
+  angleZ 2
+  scale 2
+ }
+}
