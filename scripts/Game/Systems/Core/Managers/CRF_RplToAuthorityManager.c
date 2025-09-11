@@ -461,58 +461,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!m_SlottingManager)
 			return;
 			
-		// Apply all updates in a single call to minimize replication
+		// Apply all updates in a single batch call to minimize replication
 		CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotId);
 		if (!slotData)
 			return;
 		
-		bool needsUpdate = false;
+		// Use the optimized batch update method that only triggers one InvokeDataUpdate() call
+		bool updated = slotData.BatchUpdateSlotData(playerId, groupId, charId, resource, name, isLocked, isDead);
 		
-		// Only update values that are different from defaults or current values
-		if (playerId != -1 && slotData.GetSlotCurrentPlayerId() != playerId)
-		{
-			slotData.SetSlotCurrentPlayerId(playerId);
-			needsUpdate = true;
-		}
-		
-		if (groupId != RplId.Invalid() && slotData.GetSlotCurrentGroup() != groupId)
-		{
-			slotData.SetSlotCurrentGroup(groupId);
-			needsUpdate = true;
-		}
-		
-		if (charId != RplId.Invalid() && slotData.GetSlotCurrentCharacter() != charId)
-		{
-			slotData.SetSlotCurrentCharacter(charId);
-			needsUpdate = true;
-		}
-		
-		if (!resource.IsEmpty() && slotData.GetSlotResource() != resource)
-		{
-			slotData.SetSlotResource(resource);
-			needsUpdate = true;
-		}
-		
-		if (!name.IsEmpty() && slotData.GetSlotName() != name)
-		{
-			slotData.SetSlotName(name);
-			needsUpdate = true;
-		}
-		
-		if (slotData.GetIsLockedSlot() != isLocked)
-		{
-			slotData.SetIsLockedSlot(isLocked);
-			needsUpdate = true;
-		}
-		
-		if (slotData.GetIsDeadSlot() != isDead)
-		{
-			slotData.SetIsDeadSlot(isDead);
-			needsUpdate = true;
-		}
-		
-		// Only trigger replication if something actually changed
-		if (needsUpdate)
+		// Only trigger global update if something actually changed
+		if (updated)
 			m_SlottingManager.RequestSlottingUpdate();
 	}
 
