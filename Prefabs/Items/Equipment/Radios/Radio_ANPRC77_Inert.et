@@ -1,0 +1,13 @@
+GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployable_Base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   Enabled 0
+   "Turned on" 1
+  }
+  SCR_RestrictedDeployableSpawnPointComponent "{5EA4A89F0D06E1A8}" {
+   m_sReplacementPrefab "{B5A9B78EE58D9C76}Prefabs/Systems/DeployableRadios/DeployableItemRadioReplacemenUS.et"
+   m_FactionKey "US"
+  }
+ }
+}

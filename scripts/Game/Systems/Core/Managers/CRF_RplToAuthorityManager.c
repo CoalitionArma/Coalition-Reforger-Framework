@@ -210,6 +210,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestGroupIdFromServer, requestedId, requesterID); 
 	}
 	
+	// Vehicle depot management
+	void RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	{
+		Print(string.Format("[CRF_RplToAuthorityManager] Sending vehicle depot spawn RPC: player %1, vehicle index %2, depot RplId %3", playerId, vehicleIndex, depotRplId));
+		Rpc(RpcAsk_RequestVehicleDepotSpawn, playerId, vehicleIndex, depotRplId);
+	}
+	
 	void RespawnFaction(FactionKey faction, bool logAction)
 	{
 		Rpc(RpcAsk_RespawnFaction, faction, logAction); 
@@ -544,6 +551,24 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_AIGroup playerGroup = m_SlottingManager.GetPlayerSlotGroup(requestedId);
 		if (playerGroup)
 			m_RplBroadcastManager.SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	{
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(depotRplId));
+		if (!rplComponent)
+			return;
+		
+		IEntity depotEntity = rplComponent.GetEntity();
+		if (!depotEntity)
+			return;
+		
+		CRF_VehicleDepot depotComponent = CRF_VehicleDepot.Cast(depotEntity.FindComponent(CRF_VehicleDepot));
+		if (!depotComponent)
+			return;
+		
+		depotComponent.SpawnVehicle(playerId, vehicleIndex);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
