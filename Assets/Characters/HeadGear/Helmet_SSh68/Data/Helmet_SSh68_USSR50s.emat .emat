@@ -1,0 +1,11 @@
+MatPBRBasic {
+ Color 0.38 0.205 0.299 1
+ Cull none
+ SurfaceProperties "{CE9253778DD8FBDE}Common/Materials/Game/metal.gamemat"
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ CavityFromAO 1
+ BCRMap "{EF9DA6B5B35BFABB}Assets/Characters/HeadGear/Helmet_SSh68/Data/Helmet_SSh68_Color.edds"
+ OpacityMap "{70A53F4EA373F142}Assets/Characters/Basebody/Data/HeadClipping_A.edds"
+ NMOMap "{196A31D488CD49D2}Assets/Characters/HeadGear/Helmet_SSh68/Data/Helmet_SSh68_Alpha.edds"
+}

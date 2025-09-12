@@ -1,0 +1,8 @@
+MatPBRBasic {
+ Color 0.986 0.64 0.379 1
+ AllowUserAlphaBias 1
+ DisableUserAphaInShadow 1
+ BCRMap "{501337AF920D17B2}Assets/Characters/HeadGear/Cap_Comforter/Data/cap_comforter_BCR.edds"
+ OpacityMap "{70A53F4EA373F142}Assets/Characters/Basebody/Data/HeadClipping_A.edds"
+ NMOMap "{68CB8C3D4B7A452C}Assets/Characters/HeadGear/Cap_Comforter/Data/cap_comforter_NMO.edds"
+}
