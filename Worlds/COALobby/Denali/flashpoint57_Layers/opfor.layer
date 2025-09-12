@@ -1,5 +1,5 @@
 GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
- coords 2979.569 523.516 5654.982
+ coords 2804.097 564.442 5638.153
 }
 SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
  components {
@@ -68,9 +68,9 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
    }
   }
-  coords 2968.275 522.998 5640.651
+  coords 2825.492 563.285 5667.871
   angleX 0
-  angleY -124.054
+  angleY 56.026
   angleZ 0
  }
  {
@@ -79,9 +79,9 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
    }
   }
-  coords 2978.198 520.606 5639.201
+  coords 2832.698 563.994 5657.536
   angleX 0
-  angleY -124.054
+  angleY 55.776
   angleZ 0
  }
  {
@@ -90,9 +90,9 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
    }
   }
-  coords 2985.408 519.979 5639.881
+  coords 2829.156 563.9 5662.605
   angleX 0
-  angleY -124.054
+  angleY 55.534
   angleZ 0
  }
  {
@@ -101,7 +101,7 @@ $grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
     m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
    }
   }
-  coords 2997.641 517.547 5645.026
+  coords 2827.202 563.728 5648.71
   angleX 0
   angleY -124.054
   angleZ 0
