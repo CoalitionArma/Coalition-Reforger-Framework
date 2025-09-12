@@ -578,9 +578,9 @@ class CRF_SlottingManager : ScriptComponent
 		} else
 			spawnParams.Transform = playerSlotVector;
 
-		vector pos;
-		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 12);
-		spawnParams.Transform[3] = pos;
+		// Generate random spread position within 500 meters to reduce replication congestion
+		vector spreadPosition = GenerateRandomSpreadPosition(spawnParams.Transform[3], 500.0);
+		spawnParams.Transform[3] = spreadPosition;
 		
 		// Spawn the character
 		Resource resource = Resource.Load(resourceName);
@@ -701,5 +701,50 @@ class CRF_SlottingManager : ScriptComponent
 		// Delete entity if not in game state
 		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
 			SCR_EntityHelper.DeleteEntityAndChildren(entity);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Generate a random position within specified radius to spread out initial entity spawns
+	* This reduces replication congestion when many entities spawn in the same location
+	* @param centerPosition Original spawn position to spread from
+	* @param maxRadius Maximum radius in meters to spread entities (default 500m)
+	* @return New spawn position within the spread radius
+	*/
+	protected vector GenerateRandomSpreadPosition(vector centerPosition, float maxRadius = 500.0)
+	{
+		// Generate random angle (0-360 degrees)
+		float randomAngle = Math.RandomFloat(0, 2 * Math.PI);
+		
+		// Generate random distance within radius (using square root for uniform distribution)
+		float randomDistance = Math.Sqrt(Math.RandomFloat(0, 1)) * maxRadius;
+		
+		// Calculate offset from center
+		float offsetX = Math.Cos(randomAngle) * randomDistance;
+		float offsetZ = Math.Sin(randomAngle) * randomDistance;
+		
+		// Apply offset to center position
+		vector spreadPosition = centerPosition;
+		spreadPosition[0] = centerPosition[0] + offsetX;
+		spreadPosition[2] = centerPosition[2] + offsetZ;
+		
+		// Attempt to find valid terrain position, fallback to original logic if needed
+		vector finalPosition;
+		bool foundValidPosition = SCR_WorldTools.FindEmptyTerrainPosition(finalPosition, spreadPosition, 25);
+		
+		if (!foundValidPosition)
+		{
+			// Fallback: try original position with smaller search radius
+			bool foundFallback = SCR_WorldTools.FindEmptyTerrainPosition(finalPosition, centerPosition, 12);
+			if (!foundFallback)
+				finalPosition = centerPosition; // Last resort: use original position
+		}
+		
+		Print(string.Format("GenerateRandomSpreadPosition: Original pos [%1, %2, %3] -> Spread pos [%4, %5, %6] (distance: %7m)", 
+			centerPosition[0], centerPosition[1], centerPosition[2],
+			finalPosition[0], finalPosition[1], finalPosition[2],
+			vector.Distance(centerPosition, finalPosition)), LogLevel.VERBOSE);
+			
+		return finalPosition;
 	}
 }
