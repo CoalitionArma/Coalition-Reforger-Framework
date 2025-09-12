@@ -73,6 +73,9 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	//Used to relay to other clients the game is over
 	[RplProp()] bool m_bIsGameOver = false;
 	
+	// Internal flag to prevent redundant replication updates
+	protected bool m_bSuppressReplication = false;
+	
 	//Stores spawnpoints so if two players spawn at once they don't spawn on the same point
 	ref array<int> m_aSpawnPointBuffer = {};
 	
@@ -248,16 +251,20 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 			currentKillsThisLevel = Math.ClampInt(currentKillsThisLevel, 0, 100);
 			currentKills = Math.ClampInt(currentKills, 0, 100);
 			
-			m_aKills.Set(index, currentKills);
-			m_aKillsThisLevel.Set(index, currentKillsThisLevel);
-			NewWeaponCheck(killerId);
-			Replication.BumpMe();
-			if (m_aKills.Get(index) == m_iKillsToWin)
+			// Check if game is won before updating stats
+			bool gameWon = (currentKills == m_iKillsToWin);
+			
+			// Use batch update to set all changes in one replication call
+			if (gameWon)
 			{
+				BatchUpdatePlayerStats(index, currentKills, currentKillsThisLevel, -1, true);
 				GameOver();
-				m_bIsGameOver = true;
-				Replication.BumpMe();
 				return;
+			}
+			else
+			{
+				BatchUpdatePlayerStats(index, currentKills, currentKillsThisLevel);
+				NewWeaponCheck(killerId);
 			}
 		}
 		
@@ -386,11 +393,107 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		levels = Math.ClampInt(levels, 0, 100);
 		CRF_GunGameContainer lastLevel = m_aGunLevels.Get(levels);
 		kills -= currentKillsThisLevel + lastLevel.m_iAmountOfKillsToLevelUp;
-		m_aKillsThisLevel.Set(index, 0);
 		kills = Math.ClampInt(kills, 0, 100);
-		m_aKills.Set(index, kills);
-		m_aLevels.Set(index, levels);
-		Replication.BumpMe();
+		
+		// Use batch update to set all demotion changes in one replication call
+		BatchUpdatePlayerStats(index, kills, 0, levels);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Silent setters for batch operations - update arrays without triggering replication
+	*/
+	protected void SetPlayerKillsSilent(int playerIndex, int kills)
+	{
+		if (playerIndex >= 0 && playerIndex < m_aKills.Count())
+			m_aKills.Set(playerIndex, Math.ClampInt(kills, 0, 100));
+	}
+	
+	protected void SetPlayerKillsThisLevelSilent(int playerIndex, int kills)
+	{
+		if (playerIndex >= 0 && playerIndex < m_aKillsThisLevel.Count())
+			m_aKillsThisLevel.Set(playerIndex, Math.ClampInt(kills, 0, 100));
+	}
+	
+	protected void SetPlayerLevelSilent(int playerIndex, int level)
+	{
+		if (playerIndex >= 0 && playerIndex < m_aLevels.Count())
+			m_aLevels.Set(playerIndex, Math.ClampInt(level, 0, 100));
+	}
+	
+	protected void SetGameOverSilent(bool gameOver)
+	{
+		m_bIsGameOver = gameOver;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Batch update multiple player statistics in a single replication call
+	* @param playerIndex Index of the player in the arrays
+	* @param kills Optional new total kills value
+	* @param killsThisLevel Optional new kills this level value
+	* @param level Optional new level value
+	* @param gameOver Optional game over state
+	*/
+	void BatchUpdatePlayerStats(int playerIndex, int kills = -1, int killsThisLevel = -1, int level = -1, bool gameOver = false)
+	{
+		bool anyChanged = false;
+		m_bSuppressReplication = true;
+		
+		if (kills >= 0)
+		{
+			SetPlayerKillsSilent(playerIndex, kills);
+			anyChanged = true;
+		}
+		
+		if (killsThisLevel >= 0)
+		{
+			SetPlayerKillsThisLevelSilent(playerIndex, killsThisLevel);
+			anyChanged = true;
+		}
+		
+		if (level >= 0)
+		{
+			SetPlayerLevelSilent(playerIndex, level);
+			anyChanged = true;
+		}
+		
+		if (gameOver != m_bIsGameOver)
+		{
+			SetGameOverSilent(gameOver);
+			anyChanged = true;
+		}
+		
+		m_bSuppressReplication = false;
+		if (anyChanged)
+			Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Batch initialize multiple new players to minimize replication calls
+	* @param playerIds Array of player IDs to initialize
+	*/
+	void BatchInitializePlayers(array<int> playerIds)
+	{
+		bool anyAdded = false;
+		m_bSuppressReplication = true;
+		
+		foreach (int playerId : playerIds)
+		{
+			if (m_aPlayers.Contains(playerId))
+				continue;
+				
+			m_aPlayers.Insert(playerId);
+			m_aLevels.Insert(0);
+			m_aKills.Insert(0);
+			m_aKillsThisLevel.Insert(0);
+			anyAdded = true;
+		}
+		
+		m_bSuppressReplication = false;
+		if (anyAdded)
+			Replication.BumpMe();
 	}
 	
 	//Adds medal to the queue
@@ -947,13 +1050,11 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		int currentKillsAtThisLevel = m_aKillsThisLevel.Get(index);
 		if (currentKillsAtThisLevel == -1)
 		{
-			m_aKillsThisLevel.Set(index, 0);
 			level--;
-	
 			level = Math.ClampInt(level, 0, 100);
 			
-			m_aLevels.Set(index, level);
-			Replication.BumpMe();
+			// Use batch update for demotion
+			BatchUpdatePlayerStats(index, -1, 0, level);
 			NewLevel(playerId);
 			return;
 		}
@@ -962,7 +1063,6 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		if (gunLevel.m_iAmountOfKillsToLevelUp >  currentKillsAtThisLevel)
 			return;
 		
-		m_aKillsThisLevel.Set(index, 0);
 		//Doing this to prevent complicated shit with previous levels mags
 		SCR_InventoryStorageManagerComponent storageManagerComponent = SCR_InventoryStorageManagerComponent.Cast(GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId).FindComponent(SCR_InventoryStorageManagerComponent));
 		ref array<IEntity> items = {};
@@ -973,8 +1073,9 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 				SCR_EntityHelper.DeleteEntityAndChildren(item);
 		}
 		level++;
-		m_aLevels.Set(index, level);
-		Replication.BumpMe();
+		
+		// Use batch update for level up
+		BatchUpdatePlayerStats(index, -1, 0, level);
 		NewLevel(playerId);
 	}
 	
@@ -1048,6 +1149,7 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 		m_aLevels.Insert(0);
 		m_aKills.Insert(0);
 		m_aKillsThisLevel.Insert(0);
-		Replication.BumpMe();
+		if (!m_bSuppressReplication)
+			Replication.BumpMe();
 	}
 }

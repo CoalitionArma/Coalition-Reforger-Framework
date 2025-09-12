@@ -127,9 +127,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	// Individual slot management functions - Modified to use batched updates
+	// DEPRECATED: Individual slot update methods have been replaced with BatchUpdateSlot for better performance
+	// These methods are kept for backward compatibility but redirect to the batched implementation
 	void UpdateSlotPlayerID(int slotId, int playerId)
 	{
-		// For backward compatibility, get current slot data to preserve other values
+		// Use the optimized batched method
 		if (m_SlottingManager)
 		{
 			CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(slotId);
@@ -141,12 +143,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				return;
 			}
 		}
-		// Fallback to individual RPC if slot data not available
-		Rpc(RpcAsk_UpdateSlotPlayerID, slotId, playerId); 
+		// Direct manager call if BatchUpdateSlot unavailable 
+		m_SlottingManager.UpdateSlotPlayerID(slotId, playerId);
 	}
 	
 	void UpdateSlotLockedState(int slotId, bool input)
 	{
+		// Use the optimized batched method
 		if (m_SlottingManager)
 		{
 			CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(slotId);
@@ -158,16 +161,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				return;
 			}
 		}
-		Rpc(RpcAsk_UpdateSlotLockedState, slotId, input); 
+		// Direct manager call if BatchUpdateSlot unavailable
+		m_SlottingManager.UpdateSlotLockedState(slotId, input);
 	}
 	
 	void UpdateGroupLockedState(RplId groupRplId, bool input)
 	{
+		// Group locking is not part of slot batching, use direct RPC
 		Rpc(RpcAsk_UpdateGroupLockedState, groupRplId, input); 
 	}
 	
 	void UpdateSlotDeathState(int slotId, bool input)
 	{
+		// Use the optimized batched method
 		if (m_SlottingManager)
 		{
 			CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(slotId);
@@ -179,11 +185,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				return;
 			}
 		}
-		Rpc(RpcAsk_UpdateSlotDeathState, slotId, input); 
+		// Direct manager call if BatchUpdateSlot unavailable
+		m_SlottingManager.UpdateSlotDeathState(slotId, input);
 	}
 	
 	void UpdateSlotGroup(int slotId, RplId groupRplId)
 	{
+		// Use the optimized batched method
 		if (m_SlottingManager)
 		{
 			CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(slotId);
@@ -195,11 +203,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				return;
 			}
 		}
-		Rpc(RpcAsk_UpdateSlotGroup, slotId, groupRplId); 
+		// Direct manager call if BatchUpdateSlot unavailable
+		m_SlottingManager.UpdateSlotGroup(slotId, groupRplId);
 	}
 	
 	void UpdateSlotResource(int slotId, ResourceName resource)
 	{
+		// Use the optimized batched method
 		if (m_SlottingManager)
 		{
 			CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(slotId);
@@ -211,11 +221,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				return;
 			}
 		}
-		Rpc(RpcAsk_UpdateSlotResource, slotId, resource); 
+		// Direct manager call if BatchUpdateSlot unavailable
+		m_SlottingManager.UpdateSlotResource(slotId, resource);
 	}
 	
 	void UpdateSlotCharacter(int slotId, RplId charId)
 	{
+		// Use the optimized batched method
 		if (m_SlottingManager)
 		{
 			CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(slotId);
@@ -227,7 +239,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				return;
 			}
 		}
-		Rpc(RpcAsk_UpdateSlotCharacter, slotId, charId); 
+		// Direct manager call if BatchUpdateSlot unavailable
+		m_SlottingManager.UpdateSlotCharacter(slotId, charId);
 	}
 	
 	// Admin messaging functions
