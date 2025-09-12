@@ -210,6 +210,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RequestGroupIdFromServer, requestedId, requesterID); 
 	}
 	
+	// Vehicle depot management
+	void RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	{
+		Print(string.Format("[CRF_RplToAuthorityManager] Sending vehicle depot spawn RPC: player %1, vehicle index %2, depot RplId %3", playerId, vehicleIndex, depotRplId));
+		Rpc(RpcAsk_RequestVehicleDepotSpawn, playerId, vehicleIndex, depotRplId);
+	}
+	
 	void RespawnFaction(FactionKey faction, bool logAction)
 	{
 		Rpc(RpcAsk_RespawnFaction, faction, logAction); 
@@ -230,6 +237,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void AddItem(int playerId, string prefab, bool logAction)
 	{
 		Rpc(RpcAsk_AddItem, playerId, prefab, logAction); 
+	}
+	
+	void RemoveItem(int playerId, RplId entityID, bool logAction)
+	{
+		Rpc(RpcAsk_RemoveItem, playerId, entityID, logAction); 
 	}
 	
 	// Admin functions
@@ -542,6 +554,24 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	{
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(depotRplId));
+		if (!rplComponent)
+			return;
+		
+		IEntity depotEntity = rplComponent.GetEntity();
+		if (!depotEntity)
+			return;
+		
+		CRF_VehicleDepot depotComponent = CRF_VehicleDepot.Cast(depotEntity.FindComponent(CRF_VehicleDepot));
+		if (!depotComponent)
+			return;
+		
+		depotComponent.SpawnVehicle(playerId, vehicleIndex);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RespawnFaction(FactionKey faction, bool logAction)
 	{
 		m_RespawnManager.RespawnSide(faction);
@@ -696,6 +726,33 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
 		if (!entityInventoryManager.TryInsertItem(resourceSpawned))
 			delete resourceSpawned;
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_RemoveItem(int playerId, RplId entityID, bool logAction)
+	{
+		if (playerId == 0)
+			return;
+		
+		RplComponent rplComp = RplComponent.Cast(Replication.FindItem(entityID));
+		if (!rplComp)
+			return;
+			
+		IEntity entity = rplComp.GetEntity();
+		if (!entity)
+			return;
+		
+		ResourceName prefab = entity.GetPrefabData().GetPrefabName();
+
+		if (logAction && !prefab.IsEmpty())
+		{
+			string itemName = prefab.Substring(prefab.LastIndexOf("/") + 1, prefab.LastIndexOf(".") - prefab.LastIndexOf("/") - 1);
+			string playerName = GetGame().GetPlayerManager().GetPlayerName(playerId);
+			string logMessage = string.Format("%2 was added to %1's inventory", playerName, itemName);
+			m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true);
+		}
+		
+		SCR_EntityHelper.DeleteEntityAndChildren(entity);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
