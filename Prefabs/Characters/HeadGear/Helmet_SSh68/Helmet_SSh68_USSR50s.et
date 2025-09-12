@@ -1,0 +1,44 @@
+GameEntity : "{BFCE7FE311985683}Prefabs/Characters/HeadGear/Helmet_SSh68_01/Helmet_SSh68_01_base.et" {
+ ID "50D4E2187B1C4408"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{52C8D60155B2B512}" {
+    ItemDisplayName UIInfo "{52C8D6014BB412DD}" {
+     Description "The SSH68 helmet is a Soviet-designed steel combat helmet introduced in 1968. Known for its distinctive rounded dome and low-profile design, it provided basic protection against shrapnel and debris. Lightweight and durable. "
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{52C8D60148D60362}" {
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{56EEADEF0DC2EE48}" {
+      CameraDistanceToItem 2
+     }
+    }
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{63CCCEBA90C8A8C5}Assets/Characters/HeadGear/Helmet_SSh68/Helmet_SSh68_Item.xob"
+  }
+  SCR_ItemOutfitFactionComponent "{618AD7BA1F930F47}" {
+   m_OutfitDataHolder SCR_OutfitFactionDataHolder "{61A8D9665CD51B84}" {
+    m_aOutfitFactionData {
+     SCR_OutfitFactionData "{61A8D96643B10739}" {
+      m_iOutfitFactionValue 25
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   WornModel "{EDD1693FBE3EB745}Assets/Characters/HeadGear/Helmet_SSh68/Helmet_SSh68.xob"
+   WornMaterialsOverride {
+    "{FC3328CE59FE9957}Assets/Characters/HeadGear/Helmet_SSh68/Data/Helmet_SSh68_USSR50s.emat .emat"
+   }
+   ItemModel "{63CCCEBA90C8A8C5}Assets/Characters/HeadGear/Helmet_SSh68/Helmet_SSh68_Item.xob"
+   ItemMaterialsOverride {
+    "{FC3328CE59FE9957}Assets/Characters/HeadGear/Helmet_SSh68/Data/Helmet_SSh68_USSR50s.emat .emat"
+   }
+  }
+ }
+ coords 1304.05 51.001 1329.829
+}

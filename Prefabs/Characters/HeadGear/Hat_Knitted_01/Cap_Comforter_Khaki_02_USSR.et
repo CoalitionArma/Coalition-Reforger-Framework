@@ -1,0 +1,15 @@
+GameEntity : "{3E895F328733333F}Prefabs/Characters/HeadGear/Hat_Knitted_01/Cap_Comforter_OD_Base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   WornModel "{D86608529AFE5C14}Assets/Characters/HeadGear/Cap_Comforter/Game_CapComforter_02.xob"
+   WornMaterialsOverride {
+    "{803FB7B0C7B86591}Assets/Characters/HeadGear/Cap_Comforter/Data/cap_comforter_USSR.emat"
+   }
+   ItemMaterialsOverride {
+    "{803FB7B0C7B86591}Assets/Characters/HeadGear/Cap_Comforter/Data/cap_comforter_USSR.emat"
+   }
+  }
+ }
+ coords -0.369 0.947 -2.72
+}
