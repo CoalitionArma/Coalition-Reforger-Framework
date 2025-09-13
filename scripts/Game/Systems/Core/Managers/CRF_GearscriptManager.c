@@ -641,14 +641,14 @@ class CRF_GearscriptManager : ScriptComponent
 			{
 				switch (roleItem)
 				{
-					case CRF_EGearscriptItems.GI_RADIO:
+					case CRF_EGearscriptItems.SHORTRANGE_RADIO:
 						if (gearScriptSettings.m_bEnableGIRadios)
-							AddInventoryItem(gearScriptSettings.m_rGIRadiosPrefab, 1, spawnParams, inventory, inventoryManager);
+							AddInventoryItem(gearScriptSettings.m_rShortRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
 						break;
 					
-					case CRF_EGearscriptItems.LEADERSHIP_RADIO:
+					case CRF_EGearscriptItems.LONGRANGE_RADIO:
 						if (gearScriptSettings.m_bEnableLeadershipRadios)
-							AddInventoryItem(gearScriptSettings.m_rLeadershipRadiosPrefab, 1, spawnParams, inventory, inventoryManager);
+							AddInventoryItem(gearScriptSettings.m_rLongRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
 						break;
 					
 					case CRF_EGearscriptItems.RTO_RADIO:

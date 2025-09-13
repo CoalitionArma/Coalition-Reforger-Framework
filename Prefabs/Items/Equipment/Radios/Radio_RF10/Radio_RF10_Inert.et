@@ -1,0 +1,8 @@
+GenericEntity : "{B15E9D81210CFC1C}Prefabs/Items/Equipment/Radios/Radio_RF10/Radio_RF10_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   Enabled 0
+  }
+ }
+}

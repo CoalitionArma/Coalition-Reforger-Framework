@@ -1,0 +1,26 @@
+Vehicle : "{9C7C2DC1C45E06A0}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo CamoNet_Front {
+     Enabled 1
+     Prefab "{68F41E884C932476}Prefabs/Vehicles/Wheeled/LR_3Series/VehParts/Misc/CamoNet/3Series_CamoNet_Front.et"
+    }
+    RegisteringComponentSlotInfo CamoNet_Door_L {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo CamoNet_Door_R {
+     Enabled 1
+    }
+    RegisteringComponentSlotInfo CamoNet_Top {
+    }
+    RegisteringComponentSlotInfo CamoNet_Tray {
+     Enabled 1
+    }
+   }
+  }
+ }
+ coords 2862.755 64.428 703.406
+ angleY 104
+}
