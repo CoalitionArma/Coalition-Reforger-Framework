@@ -3,22 +3,13 @@
 This tutorial will guide you through setting up a mission to use CVON (Coalition Voice Over Network) in the Coalition Reforger Framework.
 
 ## Table of Contents
-1. [Prerequisites](#prerequisites)
-2. [Basic Setup](#basic-setup)
-3. [Adding CVON Component](#adding-cvon-component)
-4. [Faction Configuration](#faction-configuration)
-5. [Frequency Configuration](#frequency-configuration)
-6. [Testing Your Setup](#testing-your-setup)
-7. [Advanced Configuration](#advanced-configuration)
-8. [Troubleshooting](#troubleshooting)
-
-## Prerequisites
-
-Before setting up CVON, ensure you have:
-- Coalition Reforger Framework properly installed
-- A mission that uses `CRF_Lobby` as the base gamemode
-- Basic understanding of Arma Reforger mission editing
-- TeamSpeak 3 client (for end users)
+1. [Basic Setup](#basic-setup)
+2. [Adding CVON Component](#adding-cvon-component)
+3. [Faction Configuration](#faction-configuration)
+4. [Frequency Configuration](#frequency-configuration)
+5. [Testing Your Setup](#testing-your-setup)
+6. [Advanced Configuration](#advanced-configuration)
+7. [Troubleshooting](#troubleshooting)
 
 ## Basic Setup
 
@@ -273,10 +264,6 @@ CVON_GroupFrequencyContainer {
 - **Check**: Group has valid callsign configuration
 - **Check**: Frequency container exists for the group
 
-### Debug Commands
-
-Enable debug logging in the CVON component for detailed troubleshooting information.
-
 ### Console Error Messages
 
 Monitor the console for CVON-related errors:
@@ -291,9 +278,3 @@ Monitor the console for CVON-related errors:
 3. **Document custom frequencies** for mission briefings
 4. **Consider faction balance** when setting up shared frequencies
 5. **Regularly update** frequency configurations as mission requirements change
-
-## Conclusion
-
-CVON provides a robust voice communication system that enhances tactical gameplay in Arma Reforger. By following this tutorial, you should have a fully functional CVON setup that provides realistic radio communications for your missions.
-
-For additional help, refer to the existing `CVON_MISSION_MAKERS_GUIDE.md` for more advanced configuration options and technical details.
