@@ -1,0 +1,121 @@
+SCR_VehicleSpawn {
+ coords 1591.835 5.732 910.804
+ angleY 24.136
+ m_rnPrefab "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et"
+ respawnDelay 10000
+ firstSpawn 1
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 2067.824 38.85 1372.704
+ Points {
+  ShapePoint "{66277B1701E9B29B}" {
+   Position -182.356 -41.028 364.394
+  }
+  ShapePoint "{66277B1707385753}" {
+   Position 391.664 -36.038 1868.818
+  }
+  ShapePoint "{66277B1707CA4D0D}" {
+   Position 893.861 -84.923 2303.119
+  }
+  ShapePoint "{66277B1706FABE27}" {
+   Position 1961.034 -157.799 1976.05
+  }
+  ShapePoint "{66277B170503F94A}" {
+   Position 1973.4 0 1384.959
+  }
+  ShapePoint "{66277B17042E8136}" {
+   Position 1948.86 -131.53 19.825
+  }
+  ShapePoint "{66277B170B47116A}" {
+   Position 732.212 -128.066 -1155.835
+  }
+  ShapePoint "{66277B170A1C7C22}" {
+   Position -478.244 -147.105 -1230.858
+  }
+  ShapePoint "{66277B170938F970}" {
+   Position -1359.114 -67.81 -251.002
+  }
+ }
+}
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+ coords 3375.506 40.617 2587.452
+ Points {
+  ShapePoint "{66277B18DE49B69D}" {
+   Position 36.784 1.442 33.998
+  }
+  ShapePoint "{66277B18DECCA081}" {
+   Position 77.224 -15.279 -86.27
+  }
+  ShapePoint "{66277B18DD7DF231}" {
+   Position -12.683 -4.612 -115.93
+  }
+  ShapePoint "{66277B18DDD00A45}" {
+   Position -73.599 -3.687 -7.67
+  }
+  ShapePoint "{66277B18DC459CCC}" {
+   Position -38.718 -3.417 30.389
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1159.832 0 809.982
+  angleY 36.814
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1533.464 0 568.081
+  angleY 21.498
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1978.131 0 411.545
+  angleY 1.758
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2595.569 0 497.004
+  angleY -20.23
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "arrow-large-2"
+  m_fWorldSize 120
+  m_sDescription "OPFOR Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 1642.093 3.593 869.436
+ Points {
+  ShapePoint "{66277B172F7B24A8}" {
+   Position -55.432 4.992 102.731
+  }
+  ShapePoint "{66277B172F9AB2BB}" {
+   Position 61.896 7.308 74.503
+  }
+  ShapePoint "{66277B172E66E539}" {
+   Position 20.456 -2.603 -25.525
+  }
+  ShapePoint "{66277B172D2144DA}" {
+   Position -77.129 -2.457 -0.136
+  }
+  ShapePoint "{66277B172C037286}" {
+   Position -81.446 4.364 63.404
+  }
+ }
+}

@@ -137,6 +137,112 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// SILENT SETTERS - No InvokeDataUpdate() calls for batch operations
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentPlayerIdSilent(int playerId)
+	{
+		m_iSlotCurrentPlayerId = playerId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentGroupSilent(RplId groupRplId)
+	{
+		m_iSlotCurrentGroup = groupRplId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotCurrentCharacterSilent(RplId characterRplId)
+	{
+		m_iSlotCurrentCharacter = characterRplId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotResourceSilent(ResourceName resource)
+	{
+		m_rSlotResource = resource;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetSlotNameSilent(string name)
+	{
+		m_sSlotName = name;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsLockedSlotSilent(bool lockedState)
+	{
+		m_bIsLockedSlot = lockedState;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void SetIsDeadSlotSilent(bool deadState)
+	{
+		m_bIsDeadSlot = deadState;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// BATCH UPDATE METHOD - Single InvokeDataUpdate() call for multiple property changes
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	bool BatchUpdateSlotData(int playerId = -1, RplId groupId = RplId.Invalid(), RplId charId = RplId.Invalid(), 
+	                        ResourceName resource = "", string name = "", bool isLocked = false, bool isDead = false)
+	{
+		bool hasChanges = false;
+		
+		// Only update values that are different from defaults or current values
+		if (playerId != -1 && m_iSlotCurrentPlayerId != playerId)
+		{
+			m_iSlotCurrentPlayerId = playerId;
+			hasChanges = true;
+		}
+		
+		if (groupId != RplId.Invalid() && m_iSlotCurrentGroup != groupId)
+		{
+			m_iSlotCurrentGroup = groupId;
+			hasChanges = true;
+		}
+		
+		if (charId != RplId.Invalid() && m_iSlotCurrentCharacter != charId)
+		{
+			m_iSlotCurrentCharacter = charId;
+			hasChanges = true;
+		}
+		
+		if (!resource.IsEmpty() && m_rSlotResource != resource)
+		{
+			m_rSlotResource = resource;
+			hasChanges = true;
+		}
+		
+		if (!name.IsEmpty() && m_sSlotName != name)
+		{
+			m_sSlotName = name;
+			hasChanges = true;
+		}
+		
+		if (m_bIsLockedSlot != isLocked)
+		{
+			m_bIsLockedSlot = isLocked;
+			hasChanges = true;
+		}
+		
+		if (m_bIsDeadSlot != isDead)
+		{
+			m_bIsDeadSlot = isDead;
+			hasChanges = true;
+		}
+		
+		// Only trigger replication if something actually changed
+		if (hasChanges)
+			InvokeDataUpdate();
+			
+		return hasChanges;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	// GETTERS
 	//------------------------------------------------------------------------------------------------
 	
