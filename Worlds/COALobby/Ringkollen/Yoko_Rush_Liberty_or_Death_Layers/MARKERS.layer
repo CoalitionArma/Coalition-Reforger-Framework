@@ -1,0 +1,47 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 579.201 397.058 1117.892
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "INDFOR" "CIV"
+  }
+ }
+ {
+  coords 885.074 465.189 1101.219
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "INDFOR" "CIV"
+  }
+ }
+ {
+  coords 1076.446 420.909 1662.854
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "INDFOR" "CIV"
+  }
+ }
+ {
+  coords 1579.231 371.196 1180.686
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "INDFOR" "CIV"
+  }
+ }
+ {
+  coords 606.478 410.929 1522.507
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription ""
+  m_aVisibleForFactions {
+   "INDFOR" "CIV"
+  }
+ }
+}
