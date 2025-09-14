@@ -1,6 +1,7 @@
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CRF_HighValueTargetGamemodeManager "{665C18448378E189}" {
+   m_timeBetweenPings 300
    m_transponderEntity "INTEL"
    m_markerText "Rook"
    m_filterFaction 1
@@ -18,13 +19,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Task Force Omega has located a key member of the Oathbreakers named Rook in northern Europe. TFO are tasked with elimating Rook."\
+   m_sTextData "Task Force Omega has located a key member of the Oathbreakers named Rook in northern Europe. TFO is tasked with eliminating Rook."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
-   "BLUFOR Assets:  1 STRYKER CROWS per PLT and 1x AH6M Armed"\
+   "BLUFOR Assets: 1 STRYKER CROWS per PLT"\
    ""\
    "INDFOR Composition: Infantry Company"\
-   "INFOR Assets: 1x MMG Team and 1x Sniper Team"\
+   "INFOR Assets: 1x MMG Team and 1x Sniper Team (Anti-Material Rifle)"\
    ""\
    "Time: 50 Mins"\
    ""\
@@ -33,7 +34,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Kill the HVT"\
    ""\
-   "HVT's location will update every 6 minutes."\
+   "HVT's location will update every 5 minutes."\
    ""\
    ""\
    ""
@@ -102,9 +103,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{665C184BB86F152B}" {
         m_sCallsign "2-3"
-       }
-       SCR_CallsignInfo "{665C3396E2ADEF75}" {
-        m_sCallsign "AH6M"
        }
       }
      }
