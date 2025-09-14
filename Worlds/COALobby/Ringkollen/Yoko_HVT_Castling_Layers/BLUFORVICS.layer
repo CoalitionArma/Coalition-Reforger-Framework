@@ -1,0 +1,72 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 356.868 282.192 158.062
+  angleY -58.058
+  m_rnPrefab "{F2307260A1B40F43}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 368.441 282.442 150.847
+  angleY -58.058
+  m_rnPrefab "{F2307260A1B40F43}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 373.678 283.154 141.389
+  angleY -58.058
+  m_rnPrefab "{F2307260A1B40F43}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 379.123 284.115 131.209
+  angleY -58.058
+  m_rnPrefab "{F2307260A1B40F43}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 385.288 285.378 119.274
+  angleY -58.058
+  m_rnPrefab "{F2307260A1B40F43}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 390.195 286.238 110.23
+  angleY -58.058
+  m_rnPrefab "{F2307260A1B40F43}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 388.564 287.555 83.866
+  angleY -30.713
+  m_rnPrefab "{4E3A86638BFF9FC6}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_USAF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 324.059 284.409 89.312
+  angleY -36.941
+  m_rnPrefab "{73C1BB5B830C9F05}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 314.991 283.498 104.068
+  angleY -36.941
+  m_rnPrefab "{73C1BB5B830C9F05}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 306.86 282.752 118.342
+  angleY -23.932
+  m_rnPrefab "{73C1BB5B830C9F05}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
