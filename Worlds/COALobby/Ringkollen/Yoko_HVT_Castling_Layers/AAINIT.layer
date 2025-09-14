@@ -24,7 +24,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Assets:  1 STRYKER CROWS per PLT and 1x AH6M Armed"\
    ""\
    "INDFOR Composition: Infantry Company"\
-   "INFOR Assets: 1x MAT Team, 1x MMG Team, 1x Sniper Team"\
+   "INFOR Assets: 1x MMG Team and 1x Sniper Team"\
    ""\
    "Time: 50 Mins"\
    ""\
@@ -151,14 +151,11 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{665C184B11999870}" {
         m_sCallsign "2-4"
        }
-       SCR_CallsignInfo "{665C184B137E55F4}" {
-        m_sCallsign "MAT"
-       }
        SCR_CallsignInfo "{665C184B1916BEC8}" {
         m_sCallsign "MMG"
        }
        SCR_CallsignInfo "{665C184B1A7648A1}" {
-        m_sCallsign "Sniper (Anti-Material)"
+        m_sCallsign "Sniper"
        }
       }
      }
