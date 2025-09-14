@@ -63,9 +63,9 @@ $grp SCR_VehicleSpawn {
   firstSpawn 1
  }
  {
-  coords 306.86 282.752 118.342
-  angleY -23.932
-  m_rnPrefab "{73C1BB5B830C9F05}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_MERDC.et"
+  coords 357.184 283.377 126.836
+  angleY -2.991
+  m_rnPrefab "{823CA4130CE90077}Prefabs/Vehicles/Helicopters/AH6M/AH6M_RKT.et"
   respawnDelay 10000
   firstSpawn 1
  }

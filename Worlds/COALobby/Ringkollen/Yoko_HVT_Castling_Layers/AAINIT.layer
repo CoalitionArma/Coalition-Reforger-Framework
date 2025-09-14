@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "Task Force Omega has located a key member of the Oathbreakers named Rook in northern Europe. TFO are tasked with elimating Rook."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
-   "BLUFOR Assets:  3x STRYKER CROWS"\
+   "BLUFOR Assets:  2x STRYKER CROWS 1x AH6M Armed"\
    ""\
    "INDFORComposition: Infantry Company"\
    "INFOR Assets: 1x MAT Team, 1x MMG Team, 1x Sniper Team"\
@@ -102,6 +102,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{665C184BB86F152B}" {
         m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{665C3396E2ADEF75}" {
+        m_sCallsign "AH6M"
        }
       }
      }
