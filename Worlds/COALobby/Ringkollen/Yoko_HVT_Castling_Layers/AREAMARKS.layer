@@ -9,7 +9,7 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     Position 203.953 70.829 419.3
    }
    ShapePoint "{665B381071F4AB12}" {
-    Position -348.64 0 502.981
+    Position -348.64 70.498 502.981
    }
    ShapePoint "{665B38107EEC93C7}" {
     Position -721.633 0 608.158
@@ -21,16 +21,16 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     Position -891.769 0 -1256.746
    }
    ShapePoint "{665B381012107F30}" {
-    Position -119.045 0 -1313.795
+    Position -146.914 77.144 -1313.942
    }
    ShapePoint "{665B3810015030EC}" {
-    Position -168.736 0 -1041.447
+    Position 375.781 178.766 -1311.192
    }
    ShapePoint "{665B381009CA5674}" {
-    Position 12.261 0 -861.902
+    Position 394.989 192.898 -938.141
    }
    ShapePoint "{665B3810301BE91D}" {
-    Position 305.674 98.286 -648.646
+    Position 427.753 184.463 -745.797
    }
    ShapePoint "{665B38103BF8BD0E}" {
     Position 632.732 56.632 -570.735
