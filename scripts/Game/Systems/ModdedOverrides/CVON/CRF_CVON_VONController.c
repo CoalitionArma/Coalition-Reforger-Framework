@@ -13,6 +13,9 @@ modded class SCR_VONController
 		if (playerId == 0)
 			return false;
 		
+		if (m_FactionManager.GetPlayerFaction(playerId) == null)
+			return false;
+		
 		return m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC";
 	}
 	
@@ -187,9 +190,14 @@ modded class SCR_VONController
 		if (!m_PlayerManager)
 			m_PlayerManager = GetGame().GetPlayerManager();
 		
+		CameraBase camera = GetGame().GetCameraManager().CurrentCamera();
+		if (!camera)
+			return;
+		
 		ref array<int> playerIds = {};
 		m_PlayerManager.GetPlayers(playerIds);
 		int maxDistance = m_PlayerController.m_aVolumeValues.Get(4);
+		bool isLocalSpectator = IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId());
 		foreach (int playerId: playerIds)
 		{
 			if (!SCR_PlayerController.GetLocalControlledEntity())
@@ -214,9 +222,29 @@ modded class SCR_VONController
 				else
 					continue;
 			
-			float distance = vector.Distance(player.GetOrigin(), SCR_PlayerController.GetLocalControlledEntity().GetOrigin());
-			if (distance > maxDistance && !IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId()))
+			float distance = vector.Distance(player.GetOrigin(), camera.GetOrigin());
+			if (distance > maxDistance)
 			{
+				bool isOtherSpectator = IsPlayerSpectator(playerId);
+				
+				if (isLocalSpectator && isOtherSpectator)
+				{
+					if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+						continue;
+					else
+					{
+						CVON_VONContainer container = new CVON_VONContainer();
+						container.m_eVonType = CVON_EVONType.DIRECT;
+						container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
+						container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
+						container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
+						container.m_iPlayerId = playerId;
+						m_PlayerController.m_aLocalActiveVONEntries.Insert(container);
+						m_PlayerController.m_aLocalActiveVONEntriesIds.Insert(playerId);
+						continue;
+					}
+				}
+					
 				if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
 				{
 					//If this VON Transmission is radio, don't do shit
@@ -254,8 +282,8 @@ modded class SCR_VONController
 		{
 			if (!container.m_SoundSource)
 				continue;
-			float distance = vector.Distance(container.m_SoundSource.GetOrigin(), SCR_PlayerController.GetLocalControlledEntity().GetOrigin());
-			if (distance < maxDistance || IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId()))
+			float distance = vector.Distance(container.m_SoundSource.GetOrigin(), camera.GetOrigin());
+			if (distance < maxDistance)
 				container.m_fDistanceToSender = distance;
 			else
 				container.m_fDistanceToSender = -1;
