@@ -1,13 +1,7 @@
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
-   m_aSharedFrequencies {
-    CVON_SharedFrequencyObject "{665F5CC36ED81CD2}" {
-     m_aFactionIds {
-      "CIV" "OPFOR"
-     }
-    }
-   }
+   m_bUseFactionEcncryption 0
   }
  }
  coords 511.757 659.767 1224.544
