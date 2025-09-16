@@ -1,7 +1,74 @@
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
-   m_bUseFactionEcncryption 0
+   m_aSharedFrequencies {
+    CVON_SharedFrequencyObject "{666028DA6AF1FA6A}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "COY"
+    }
+    CVON_SharedFrequencyObject "{666028DABFFF1D75}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "Medical"
+    }
+    CVON_SharedFrequencyObject "{666028DA8642659C}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "1PLT"
+    }
+    CVON_SharedFrequencyObject "{666028DA938528F7}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "1-1"
+    }
+    CVON_SharedFrequencyObject "{666028DAEAFEC938}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "1-2"
+    }
+    CVON_SharedFrequencyObject "{666028DADA932E56}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "1-3"
+    }
+    CVON_SharedFrequencyObject "{666028DAD9386E2E}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "2PLT"
+    }
+    CVON_SharedFrequencyObject "{666028DAD983C01D}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "2-1"
+    }
+    CVON_SharedFrequencyObject "{666028DAD816375B}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "2-2"
+    }
+    CVON_SharedFrequencyObject "{666028DAD8D8A75B}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "2-3"
+    }
+    CVON_SharedFrequencyObject "{666028DAD4F55519}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "BTR-70"
+    }
+   }
   }
  }
  coords 511.757 659.767 1224.544
