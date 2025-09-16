@@ -3,6 +3,11 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Heavy Thunderstorm"
+   m_initialWeatherDurationMin 1
+   m_initialWeatherDurationMax 2
+  }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
    m_iStartingHours 18
    m_iRangeHoursStart 18
@@ -12,7 +17,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 1340.502 52.454 1722.161
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Add background info about the mission. "\
+   m_sTextData "A rogue U.S. Army Special Forces Colonel has gone AWOL. There are reports that he is waging a brutal, unauthorized war against Communist forces with his own radical militia group. A MACV-SOG platoon has been secretly sent into the AO to \"terminate the Colonel's command... with extreme prejudice\"."\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    "BLUFOR Assets: MAT Team (M202 Flash), Sniper Team"\
@@ -20,9 +25,24 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "OPFOR Composition: Infantry Company"\
    "OPFOR Assets:"\
    ""\
-   "Time:"\
+   "Time: 1800"\
    ""\
-   "Weather:"
+   "Weather: Heavy Thunderstorm"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Your MACV-SOG platoon has been sent to assassinate a rogue U.S. Army Speecial Forces colonel. He is known to be in command of a ruthless militia group. Intercept his escape route around Hill 55 and terminate his command. When the mission is complete, return to base at Camp Checkmate."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "The God-King has ordered us to defend him with our lives, as his enemies have come to destroy him. We owe him our lives, for he has brought us victory and glory against the invaders. He has prepared a vehicle for his escape, but we have insisted that he walks the jungles with us."\
+   ""\
+   "\"They think they are assassins, or soldiers... They are neither. They're errand boys, sent by grocery clerks, to collect a bill. We must kill them. We must incinerate them. Pig after pig... cow after cow... village after village... army after army...\""
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "CIV Objectives"
+   m_sTextData "They think they are assassins, or soldiers... They are neither. They're errand boys, sent by grocery clerks, to collect a bill. We must kill them. We must incinerate them. Pig after pig... cow after cow... village after village... army after army..."
+   m_aFactionKeys {
+    "CIV"
+   }
   }
  }
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
@@ -33,12 +53,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{EFEDAFEB7090A2F9}Configs/Gearscripts/Custom/FanServ/CRF_GS_SPC_COL.conf"
-  m_rLeadershipRadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
   m_rRTORadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
-  m_rGIRadiosPrefab "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et"
   m_bEnableLeadershipRadios 1
-  m_bEnableRTORadios 1
   m_bEnableGIRadios 1
+  m_bEnableRTORadios 1
  }
  {
   SCR_FactionManager "665B6B935B1B475D" {

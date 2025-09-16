@@ -61,28 +61,28 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
  coords 1406.228 39.426 1130.703
  Points {
   ShapePoint "{66545C12E0E5E1CB}" {
-   Position -8.049 0 221.42
+   Position -8.869 14.178 223.667
   }
   ShapePoint "{66545C12E26CD20E}" {
-   Position 61.733 0 257.025
+   Position 62.337 10.366 268.205
   }
   ShapePoint "{66545C12E3D5F9E4}" {
-   Position 104.058 0 183.343
+   Position 109.465 16.802 187.924
   }
   ShapePoint "{66545C12E51ADFCC}" {
-   Position 153.48 10.241 104.557
+   Position 153.514 15.638 104.579
   }
   ShapePoint "{66545C12E61E6284}" {
-   Position 24.789 0 21.572
+   Position 28.038 11.362 21.913
   }
   ShapePoint "{66545C12E71C200C}" {
-   Position -6.797 0 18.257
+   Position -6.797 9.133 18.257
   }
   ShapePoint "{66545C12E7EDFC0B}" {
-   Position -48.01 0 55.393
+   Position -48.437 8.801 54.838
   }
   ShapePoint "{66545C12EC37930A}" {
-   Position 28.314 0 157.466
+   Position 29.377 15.556 155.573
   }
  }
 }
