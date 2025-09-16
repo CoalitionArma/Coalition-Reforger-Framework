@@ -10,14 +10,12 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
  }
  {
   coords 1831.971 6.781 1998.271
-  angleY 0
   m_fWorldSize 150
   m_sDescription "Colonel's Extraction"
   m_bShowForAnyFaction 1
  }
  {
   coords 1259.441 92.897 2693.13
-  angleY 270
   m_fWorldSize 150
   m_sDescription "MACV-SOG Extraction"
   m_bShowForAnyFaction 1

@@ -3,6 +3,34 @@ SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_aSharedFrequencies {
+    CVON_SharedFrequencyObject "{66602C66FB300BB2}" {
+     m_aFactionIds {
+      "OPFOR" "CIV"
+     }
+     m_sSharedFrequency "COY"
+    }
+    CVON_SharedFrequencyObject "{66602C668EF9908F}" {
+     m_aFactionIds {
+      "OPFOR" "CIV"
+     }
+     m_sSharedFrequency "Medical"
+    }
+    CVON_SharedFrequencyObject "{66602C669EA12C06}" {
+     m_aFactionIds {
+      "OPFOR" "CIV"
+     }
+     m_sSharedFrequency "1PLT"
+    }
+    CVON_SharedFrequencyObject "{66602C66A740D655}" {
+     m_aFactionIds {
+      "OPFOR" "CIV"
+     }
+     m_sSharedFrequency "2PLT"
+    }
+   }
+  }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
    m_sInitialStartingWeatherId "Heavy Thunderstorm"
    m_initialWeatherDurationMin 1
@@ -45,6 +73,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
  }
+ m_iFactionOneRatio 2
+ m_iFactionTwoRatio 3
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{CDC2D35E91FCCDF9}Configs/Gearscripts/Standard/Vietnam/CRF_GS_MACV_SOG.conf"
  }
@@ -53,7 +83,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{EFEDAFEB7090A2F9}Configs/Gearscripts/Custom/FanServ/CRF_GS_SPC_COL.conf"
-  m_rRTORadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
+  m_rShortRangeRadioPrefab "{D26BF3EB28C8B72C}Prefabs/Items/Equipment/Radios/Radio_R187.et"
+  m_rLongRangeRadioPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
+  m_rRTORadiosPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
   m_bEnableLeadershipRadios 1
   m_bEnableGIRadios 1
   m_bEnableRTORadios 1
