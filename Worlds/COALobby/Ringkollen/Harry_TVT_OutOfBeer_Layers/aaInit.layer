@@ -75,7 +75,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_bAllowEspionage 1
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "It's 1960, and RU forces have invaded Finland. An RU defector has stolen a radio, and fled to Sweden. They were seen in a nearby town, purchasing groceries. RU forces need that HVT dead, and newly formed NATO forces badly want to bring him in alive. "\
+   m_sTextData "It's 1960, and RU forces have invaded Finland. An RU defector has stolen a radio, and fled to Norway. They were seen in a nearby town, purchasing groceries. RU forces need that HVT dead, and newly formed NATO forces badly want to bring him in alive. "\
    ""\
    "Both sides have accurate information about his location at all times."\
    ""\
