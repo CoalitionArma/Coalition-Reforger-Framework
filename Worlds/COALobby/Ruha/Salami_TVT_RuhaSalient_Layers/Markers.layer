@@ -1,0 +1,167 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 3425.247 110.076 438.845
+ Points {
+  ShapePoint "{6644997AF0B29ECC}" {
+   Position -1138.833 0 186.197
+  }
+  ShapePoint "{6644997AF30B9706}" {
+   Position -1188.76 0 464.787
+  }
+  ShapePoint "{6644997AEC4E3125}" {
+   Position -935.133 0 692.286
+  }
+  ShapePoint "{6644997AE99FD957}" {
+   Position -686.211 0 1077.864
+  }
+  ShapePoint "{6644997AE56CFFBD}" {
+   Position -361.449 0 1659.744
+  }
+  ShapePoint "{6644997AE7600080}" {
+   Position 110.73 0 2031.357
+  }
+  ShapePoint "{6644997AE1695FEB}" {
+   Position 622.758 0 2114.933
+  }
+  ShapePoint "{6644997ADFB9663E}" {
+   Position 1092.952 0 2195.722
+  }
+  ShapePoint "{6644997ADB585850}" {
+   Position 2019.758 0 2047.368
+  }
+  ShapePoint "{6644997ADA6CDF56}" {
+   Position 2372.871 0 1925.351
+  }
+  ShapePoint "{6644997AD7E8C100}" {
+   Position 3208.311 0 1612.757
+  }
+  ShapePoint "{6644997AD16AEB92}" {
+   Position 3849.52 0 1327.455
+  }
+  ShapePoint "{6644997AC583EB5F}" {
+   Position 3997.083 0 1218.508
+  }
+  ShapePoint "{6644997AC734AFE7}" {
+   Position 4178.287 0 483.228
+  }
+  ShapePoint "{6644997AC1C263C3}" {
+   Position 3890.563 0 -209.717
+  }
+  ShapePoint "{6644997AC36550A5}" {
+   Position 3241.628 0 -0.226
+  }
+  ShapePoint "{6644997A3DD630F6}" {
+   Position 1964.425 0 145.05
+  }
+  ShapePoint "{6644997A3F2998A2}" {
+   Position 1233.815 0 63.261
+  }
+  ShapePoint "{6644997A3E20551C}" {
+   Position 783.783 0 -232.944
+  }
+  ShapePoint "{6644997A3A68B6C0}" {
+   Position -303.966 0 -176.294
+  }
+  ShapePoint "{6644997A341D889C}" {
+   Position -571.809 0 -160.995
+  }
+  ShapePoint "{6644997A348317F9}" {
+   Position -773.953 0 -11.229
+  }
+ }
+}
+$grp PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ {
+  coords 2765.611 60.312 611.2
+  Points {
+   ShapePoint "{6644996BE333AD98}" {
+    Position 12.014 0 138.959
+   }
+   ShapePoint "{6644996BDD599389}" {
+    Position 127.18 0 97.419
+   }
+   ShapePoint "{6644996BDDA98BD7}" {
+    Position 115.616 0 -12.924
+   }
+   ShapePoint "{6644996BDC8E531C}" {
+    Position -46.167 0 -157.835
+   }
+   ShapePoint "{6644996BDFB2B5D4}" {
+    Position -124.164 0 -59.637
+   }
+  }
+ }
+ {
+  coords 2779.499 60.123 748.378
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 6672.835 96.719 1123.716
+ Points {
+  ShapePoint "{6644996F2D13F01B}" {
+   Position -2723.135 0.769 308.11
+  }
+  ShapePoint "{6644996F49423B37}" {
+   Position -2572.289 25.248 408.724
+  }
+  ShapePoint "{6644996F2E71059E}" {
+   Position -2334.118 0 500.069
+  }
+  ShapePoint "{6644996F2EE53ACA}" {
+   Position -2129.562 0 684.233
+  }
+  ShapePoint "{6644996F28646CAD}" {
+   Position -1763.33 0 981.6
+  }
+  ShapePoint "{6644996F28F4E012}" {
+   Position -1485.392 0 1262.101
+  }
+  ShapePoint "{6644996F25427391}" {
+   Position -1262.439 0 1334.52
+  }
+  ShapePoint "{6644996F25998148}" {
+   Position -914.092 0 1216.52
+  }
+  ShapePoint "{6644996F267FA015}" {
+   Position -13.335 0 894.533
+  }
+  ShapePoint "{6644996F21E718AB}" {
+   Position 751.382 0 535.433
+  }
+  ShapePoint "{6644996F20AC8513}" {
+   Position 935.245 0 -215.491
+  }
+  ShapePoint "{6644996F238DEDD2}" {
+   Position 638.896 0 -907.191
+  }
+  ShapePoint "{6644996F1C3ADECE}" {
+   Position -11.963 0 -688.445
+  }
+  ShapePoint "{6644996F1FE74072}" {
+   Position -1308.705 0 -533.878
+  }
+  ShapePoint "{6644996F18713D36}" {
+   Position -2023.095 0 -622.021
+  }
+  ShapePoint "{6644996F18839422}" {
+   Position -2289.983 0 -499.845
+  }
+  ShapePoint "{6644996F1B036D82}" {
+   Position -2358.52 0 -422.753
+  }
+  ShapePoint "{6644996F1A75AC7F}" {
+   Position -2401.317 0 -305.075
+  }
+  ShapePoint "{6644996F1A2194B8}" {
+   Position -2490.954 0 -230.272
+  }
+  ShapePoint "{6644996F1426CF6D}" {
+   Position -2562.566 0 -211.547
+  }
+  ShapePoint "{6644996F14800404}" {
+   Position -2655.741 0 -176.87
+  }
+  ShapePoint "{6644996F533E5F42}" {
+   Position -2595.696 -22.369 97.844
+  }
+ }
+}

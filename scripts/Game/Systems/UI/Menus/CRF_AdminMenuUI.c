@@ -596,7 +596,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
-		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rLeadershipRadiosPrefab;
+		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rLongRangeRadioPrefab;
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 
@@ -626,7 +626,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
-		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rGIRadiosPrefab;
+		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rShortRangeRadioPrefab;
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 

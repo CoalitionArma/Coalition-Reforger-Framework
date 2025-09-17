@@ -9,6 +9,9 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp()]
 	ref array<RplId> m_RespawnPointsRplID = {}; // Used for clients
 	
+	// Internal flag to prevent redundant replication updates
+	protected bool m_bSuppressReplication = false;
+	
 	// Store state for UI selection
 	bool m_RespawnConfirmed = false;
 	RplId m_SelectedSpawnRplID;
@@ -96,15 +99,30 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SubtractTicket(FactionKey faction, int amount, bool force = false)
 	{
+		bool changed = SubtractTicketSilent(faction, amount, force);
+		if (changed && !m_bSuppressReplication)
+			Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Subtract tickets silently without triggering replication
+	* @param faction Faction to subtract tickets from
+	* @param amount Number of tickets to subtract
+	* @param force Force subtraction even during safestart
+	* @return True if tickets were actually subtracted
+	*/
+	protected bool SubtractTicketSilent(FactionKey faction, int amount, bool force = false)
+	{
 		// Don't subtract tickets during safestart
 		if (m_SafestartManager.GetSafestartStatus() && !force)
-			return;
+			return false;
 			
 		int currentTickets = GetFactionTickets(faction);
 		
 		// Only subtract if tickets are positive and not unlimited (-1)
 		if (currentTickets <= 0 || currentTickets == -1)
-			return;
+			return false;
 			
 		// Update the appropriate faction's tickets
 		switch (faction)
@@ -115,21 +133,36 @@ class CRF_RespawnManager : ScriptComponent
 			case "CIV": m_Gamemode.m_iCIVTickets -= amount; break;
 		}
 		
-		Replication.BumpMe();
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void AddTicket(FactionKey faction, int amount, bool force = false)
 	{
+		bool changed = AddTicketSilent(faction, amount, force);
+		if (changed && !m_bSuppressReplication)
+			Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Add tickets silently without triggering replication
+	* @param faction Faction to add tickets to
+	* @param amount Number of tickets to add
+	* @param force Force addition even during safestart
+	* @return True if tickets were actually added
+	*/
+	protected bool AddTicketSilent(FactionKey faction, int amount, bool force = false)
+	{
 		// Don't add tickets during safestart
 		if (m_SafestartManager.GetSafestartStatus() && !force)
-			return;
+			return false;
 			
 		int currentTickets = GetFactionTickets(faction);
 		
-		// Only subtract if tickets are not unlimited (-1)
+		// Only add if tickets are not unlimited (-1)
 		if (currentTickets == -1)
-			return;
+			return false;
 
 		// Update the appropriate faction's tickets
 		switch (faction)
@@ -140,7 +173,63 @@ class CRF_RespawnManager : ScriptComponent
 			case "CIV": m_Gamemode.m_iCIVTickets += amount; break;
 		}
 		
-		Replication.BumpMe();
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Batch subtract tickets for multiple operations to minimize replication calls
+	* @param ticketChanges Array of ticket changes {faction, amount, force}
+	*/
+	void BatchSubtractTickets(array<ref array<string>> ticketChanges)
+	{
+		bool anyChanged = false;
+		m_bSuppressReplication = true;
+		
+		foreach (ref array<string> change : ticketChanges)
+		{
+			if (change.Count() < 2)
+				continue;
+				
+			FactionKey faction = change[0];
+			int amount = change[1].ToInt();
+			bool force = (change.Count() > 2 && change[2] == "true");
+			
+			if (SubtractTicketSilent(faction, amount, force))
+				anyChanged = true;
+		}
+		
+		m_bSuppressReplication = false;
+		if (anyChanged)
+			Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Batch add tickets for multiple operations to minimize replication calls
+	* @param ticketChanges Array of ticket changes {faction, amount, force}
+	*/
+	void BatchAddTickets(array<ref array<string>> ticketChanges)
+	{
+		bool anyChanged = false;
+		m_bSuppressReplication = true;
+		
+		foreach (ref array<string> change : ticketChanges)
+		{
+			if (change.Count() < 2)
+				continue;
+				
+			FactionKey faction = change[0];
+			int amount = change[1].ToInt();
+			bool force = (change.Count() > 2 && change[2] == "true");
+			
+			if (AddTicketSilent(faction, amount, force))
+				anyChanged = true;
+		}
+		
+		m_bSuppressReplication = false;
+		if (anyChanged)
+			Replication.BumpMe();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -154,7 +243,8 @@ class CRF_RespawnManager : ScriptComponent
 		if (m_iRespawnWaveCurrentTime == 0)
 			m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
 
-		Replication.BumpMe();
+		if (!m_bSuppressReplication)
+			Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -312,7 +402,11 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		array<int> allPlayers = {};
 		GetGame().GetPlayerManager().GetAllPlayers(allPlayers);
+		
+		// Collect all ticket changes for batching
+		int totalTicketsToSubtract = 0;
 
+		// Count player respawns first
 		foreach (int playerId : allPlayers)
 		{
 			// Skip alive players or not in a slot
@@ -326,12 +420,65 @@ class CRF_RespawnManager : ScriptComponent
 
 			// Check if tickets are available
 			if (TicketsRemaining(faction)) 
-				SubtractTicket(faction, 1);
+				totalTicketsToSubtract += 1;
+		}
+		
+		// Count vehicle respawns
+		int vehicleTicketsToSubtract = 0;
+		foreach (CRF_VehicleSpawner vehicle: m_aVehicleSpawners)
+		{
+			if (vehicle.m_sFactionKey != faction)
+				continue;
 			
+			//Do we have enough tickets and are they not at 0.
+			if (GetFactionTickets(faction) != 0 && GetFactionTickets(faction) < vehicle.m_iTicketsPerRespawn)
+				continue;
+			
+			bool shouldRespawn = false;
+			//Is the vehicle non existant anymore
+			if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
+			{
+				shouldRespawn = true;
+			}
+			else if (vehicle.m_eVehicle && vehicle.m_eVehicle.FindComponent(SCR_VehicleDamageManagerComponent))
+			{
+				SCR_VehicleDamageManagerComponent vehicleDamageManager = SCR_VehicleDamageManagerComponent.Cast(vehicle.m_eVehicle.FindComponent(SCR_VehicleDamageManagerComponent));
+				if (vehicleDamageManager.GetState() == EDamageState.DESTROYED)
+					shouldRespawn = true;
+			}
+			
+			if (shouldRespawn && TicketsRemaining(faction))
+				vehicleTicketsToSubtract += vehicle.m_iTicketsPerRespawn;
+		}
+		
+		// Apply all ticket changes in one batch if any changes needed
+		if (totalTicketsToSubtract > 0 || vehicleTicketsToSubtract > 0)
+		{
+			m_bSuppressReplication = true;
+			if (totalTicketsToSubtract > 0)
+				SubtractTicketSilent(faction, totalTicketsToSubtract);
+			if (vehicleTicketsToSubtract > 0)
+				SubtractTicketSilent(faction, vehicleTicketsToSubtract);
+			m_bSuppressReplication = false;
+			Replication.BumpMe();
+		}
+		
+		// Now perform the actual respawns (without additional ticket operations)
+		foreach (int playerId : allPlayers)
+		{
+			// Skip alive players or not in a slot
+			if (!m_SlottingManager.IsPlayerConsideredDead(playerId) || !m_SlottingManager.IsPlayerInASlot(playerId))
+				continue;
+
+			// Get player's faction and verify it matches
+			Faction playerFaction = m_SlottingManager.GetPlayerSlotFaction(playerId);
+			if (!playerFaction || playerFaction.GetFactionKey() != faction)
+				continue;
+
 			RespawnPlayer(playerId);
 		}
 		
-		//Vehicle respawn logic
+		//Vehicle respawn logic (without additional ticket operations)
 		foreach (CRF_VehicleSpawner vehicle: m_aVehicleSpawners)
 		{
 			if (vehicle.m_sFactionKey != faction)
@@ -345,8 +492,6 @@ class CRF_RespawnManager : ScriptComponent
 			if (!vehicle.m_eVehicle && vehicle.m_bShouldRespawnOnSideRespawn)
 			{
 				vehicle.SpawnVehicle();
-				if (TicketsRemaining(faction)) 
-					SubtractTicket(faction, vehicle.m_iTicketsPerRespawn);
 				continue;
 			}
 			
@@ -360,8 +505,6 @@ class CRF_RespawnManager : ScriptComponent
 			
 			//Vehicle is destroyed respawn it.
 			vehicle.SpawnVehicle();
-			if (TicketsRemaining(faction)) 
-				SubtractTicket(faction, vehicle.m_iTicketsPerRespawn);
 			continue;
 		}
 	}

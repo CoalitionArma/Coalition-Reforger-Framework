@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{BF4D77559431BF3F}Configs/Gearscripts/Standard/Vietnam/CRF_GS_RU_Early_Korean.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

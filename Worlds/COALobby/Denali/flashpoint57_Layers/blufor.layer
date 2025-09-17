@@ -1,3 +1,25 @@
+$grp CRF_VehicleSpawner {
+ "{64626B666A3B82E3}" {
+  coords 3894.195 282.855 2388.353
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+ }
+ "{64626B666A3B82E3}" {
+  coords 3892.665 282.329 2372.534
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+ }
+ "{64626B666A3B82E3}" {
+  coords 3891.094 281.747 2354.915
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+ }
+ "{64626B666A3B82E3}" {
+  coords 3889.34 281.114 2335.983
+  m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
+ }
+ "{64626B666A3B82E3}" {
+  coords 3887.891 280.781 2318.537
+  m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+ }
+}
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
  components {
   AIFormationComponent "{507E9DC12F541FE6}" {
@@ -76,50 +98,4 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
 }
 GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
  coords 3864.167 280.875 2385.148
-}
-$grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
-   }
-  }
-  coords 3894.195 282.855 2388.353
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
-   }
-  }
-  coords 3892.665 282.329 2372.534
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
-   }
-  }
-  coords 3891.094 281.747 2354.915
-  angleX 0
-  angleY 0
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et"
-   }
-  }
-  coords 3889.34 281.114 2335.983
-  angleX 0
-  angleY 0
-  angleZ 0
- }
 }

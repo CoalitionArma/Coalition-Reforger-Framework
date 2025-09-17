@@ -1,0 +1,50 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 2639.951 1.787 1643.655
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Cache"
+  m_aVisibleForFactions {
+   "BLUFOR" "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 2948.589 72.773 1847.583
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Cache"
+  m_aVisibleForFactions {
+   "BLUFOR" "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ {
+  coords 2962.617 67.986 1874.194
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -1.889 0 -0.312
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache A"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+ {
+  coords 2595.461 3.707 1660.758
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -1.889 0 -0.312
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache B"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+}

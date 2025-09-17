@@ -23,6 +23,9 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   }
   CRF_GroupLeaderMarkerManager "{663A2207B840B089}" {
   }
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_sFreqConfig "{8FE52CD7F8502E24}Configs/FreqConfigs/CFCFrequencyConfig.conf"
+  }
   SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
    m_bEnableTeamKillPunishment 0
   }
@@ -418,27 +421,27 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  }
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
-  m_rLeadershipRadiosPrefab "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et"
-  m_rRTORadiosPrefab "{1C171319AA17FF29}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_Leader.et"
-  m_rGIRadiosPrefab "{0FA212334ACFBABB}Prefabs/Items/Equipment/Radios/BLUFOR_Radio_GI.et"
+  m_rShortRangeRadioPrefab "{E82129A6CC014808}Prefabs/Items/Equipment/Radios/Radio_ANPRC152.et"
+  m_rLongRangeRadioPrefab "{C204374F722D5229}Prefabs/Items/Equipment/Radios/Radio_ANPRC117.et"
+  m_rRTORadiosPrefab "{C204374F722D5229}Prefabs/Items/Equipment/Radios/Radio_ANPRC117.et"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
-  m_rLeadershipRadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
-  m_rRTORadiosPrefab "{47A758B63E7ED912}Prefabs/Items/Equipment/Radios/OPFOR_Radio_Leader.et"
-  m_rGIRadiosPrefab "{C166493B95671DEE}Prefabs/Items/Equipment/Radios/OPFOR_Radio_GI.et"
+  m_rShortRangeRadioPrefab "{D26BF3EB28C8B72C}Prefabs/Items/Equipment/Radios/Radio_R187.et"
+  m_rLongRangeRadioPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
+  m_rRTORadiosPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
-  m_rLeadershipRadiosPrefab "{72B7D9E24B495F57}Prefabs/Items/Equipment/Radios/INDFOR_Radio_Leader.et"
-  m_rRTORadiosPrefab "{72B7D9E24B495F57}Prefabs/Items/Equipment/Radios/INDFOR_Radio_Leader.et"
-  m_rGIRadiosPrefab "{2F19DBB99A359B48}Prefabs/Items/Equipment/Radios/INDFOR_Radio_GI.et"
+  m_rShortRangeRadioPrefab "{D26BF3EB28C8B72C}Prefabs/Items/Equipment/Radios/Radio_R187.et"
+  m_rLongRangeRadioPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
+  m_rRTORadiosPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
   m_bEnableLeadershipRadios 0
-  m_bEnableRTORadios 0
   m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  {
   PerceptionManager "6445176B75D36372" : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
