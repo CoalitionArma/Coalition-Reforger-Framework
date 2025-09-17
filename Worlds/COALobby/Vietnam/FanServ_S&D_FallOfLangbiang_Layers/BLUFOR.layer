@@ -1,9 +1,25 @@
 $grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
  {
+  components {
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{5D66ED1086234C38}" {
+     }
+    }
+   }
+  }
   coords 3683.373 10.75 720.315
   angleY 7
  }
  {
+  components {
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{5D66ED1086234C38}" {
+     }
+    }
+   }
+  }
   coords 3301.597 1.344 693.196
   angleY 7
  }

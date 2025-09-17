@@ -51,10 +51,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionTwoRatio 3
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{26E3978C448E2B72}Configs/Gearscripts/Standard/Vietnam/CRF_GS_ARVN.conf"
+  m_rGearScript "{D41E2B3A64EE9D3B}Configs/Gearscripts/Custom/FanServ/CRF_GS_ARVN_NO_MTR.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{2C00703A961BD7C4}Configs/Gearscripts/Standard/Vietnam/CRF_GS_PAVN.conf"
+  m_rGearScript "{E018E7FC36197722}Configs/Gearscripts/Custom/FanServ/CRF_GS_PAVN_NO_MTR.conf"
  }
  {
   SCR_FactionManager "664F54993A7AC581" {
