@@ -171,7 +171,6 @@ modded class SCR_VONController
 	
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
-		super.EOnFixedFrame(owner, timeSlice);
 		if (!CVON_VONGameModeComponent.GetInstance())
 			return;
 		
@@ -252,8 +251,11 @@ modded class SCR_VONController
 		//Local processing of data being sent to us
 		foreach (CVON_VONContainer container: m_PlayerController.m_aLocalActiveVONEntries)
 		{
+			if (!SCR_PlayerController.GetLocalControlledEntity())
+				break;
 			if (!container.m_SoundSource)
 				continue;
+			
 			float distance = vector.Distance(container.m_SoundSource.GetOrigin(), SCR_PlayerController.GetLocalControlledEntity().GetOrigin());
 			if (distance < maxDistance || IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId()))
 				container.m_fDistanceToSender = distance;
