@@ -12,22 +12,22 @@ class CRF_GearScriptContainer
 	bool m_bEnableMiniArsenal;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_rLeadershipRadiosPrefab;
+	ResourceName m_rShortRangeRadioPrefab;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rLongRangeRadioPrefab;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rRTORadiosPrefab;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_rGIRadiosPrefab;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableLeadershipRadios;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableRTORadios;
+	bool m_bEnableGIRadios;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableGIRadios;
+	bool m_bEnableRTORadios;
 }
 
 //------------------------------------------------------------------------------------------------

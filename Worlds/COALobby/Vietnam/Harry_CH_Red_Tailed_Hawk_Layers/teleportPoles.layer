@@ -1,0 +1,98 @@
+$grp GenericEntity : "{83618EAF9EFD3E20}Prefabs/Structures/FlagPoles/TeleportPoles/PreJoin_Teleport.et" {
+ Spawn {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to West of Phuoc Thanh"
+      }
+      m_sObjectNameToTeleportTo "Phuoc_Thanh"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      ParentContextList {
+      }
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Unused"
+      }
+      m_sObjectNameToTeleportTo "Thung_Lung"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      ParentContextList {
+      }
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Unused"
+      }
+      VisibilityRange 0
+      m_sGearscriptToSet ""
+     }
+    }
+   }
+  }
+  coords 2290.148 73.133 1283.451
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -0.277 -0.159 1.948
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "flag"
+    m_sDescription "Spawn"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+ Phuoc_Thanh {
+  components {
+   ActionsManagerComponent "{645A0008F3808301}" {
+    additionalActions {
+     CRF_TeleportPlayerAction "{645A0008F88C720A}" {
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000846476766}" {
+      UIInfo UIInfo "{645A0008464767B1}" {
+       Name "Teleport to West of Phuoc Thanh"
+      }
+      m_sObjectNameToTeleportTo "Phuoc_Thanh"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A000847BA13D3}" {
+      ParentContextList {
+      }
+      UIInfo UIInfo "{645A000847BA1015}" {
+       Name "Unused"
+      }
+      m_sObjectNameToTeleportTo "Thung_Lung"
+      m_sGearscriptToSet ""
+     }
+     CRF_TeleportPlayerAction "{645A0008470A47AB}" {
+      ParentContextList {
+      }
+      UIInfo UIInfo "{645A0008470A47E8}" {
+       Name "Unused"
+      }
+      VisibilityRange 0
+      m_sGearscriptToSet ""
+     }
+    }
+   }
+  }
+  coords 2585.19 5.861 2239.085
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -1.735 -0.048 1.45
+    m_MarkerColor 0.502 0 0 1
+    m_sQuadName "flag"
+    m_sDescription "West of Phuoc Thanh"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+}

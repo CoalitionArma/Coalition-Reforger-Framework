@@ -93,8 +93,25 @@ class CRF_PlayableCharacter : ScriptComponent
 	{
 		SetEventMask(owner, EntityEvent.FRAME);
 		
-		if (!CRF_GamemodeManager.IsValidSpawnVector(owner.GetOrigin()))
-			owner.SetOrigin("0 10000 0");
+		// Check if this is a CRF_InitialEntity that needs random positioning
+		string prefabName = owner.GetPrefabData().GetPrefabName();
+		bool isCRFInitialEntity = prefabName.Contains("CRF_InitialEntity.et");
+		
+		if (isCRFInitialEntity)
+		{
+			// Apply random spread positioning to CRF_InitialEntity
+			vector currentPos = owner.GetOrigin();
+			vector spreadPos = GenerateRandomSpreadPosition(currentPos, 500.0);
+			spreadPos[1] = 10000.0; // Set elevation to 10000m
+			owner.SetOrigin(spreadPos);
+		}
+		else if (!CRF_GamemodeManager.IsValidSpawnVector(owner.GetOrigin()))
+		{
+			// Use random spread position for other spectators too, instead of hardcoded 0,10000,0
+			vector spreadPos = GenerateRandomSpreadPosition("0 10000 0", 500.0);
+			spreadPos[1] = 10000.0;
+			owner.SetOrigin(spreadPos);
+		}
 		
 		Physics physics = owner.GetPhysics();
 		if (!physics)
@@ -252,19 +269,29 @@ class CRF_PlayableCharacter : ScriptComponent
 	protected void UpdateGamePlayerPosition()
 	{
 		vector mat[4];
-		m_PlayerControllerComponent.m_eCamera.GetWorldTransform(mat);
-		
-		if (GetGame().GetCallqueue().GetRemainingTime(m_PlayerControllerComponent.UpdateStoredCameraPos) <= 0)
+		if (!CVON_VONGameModeComponent.GetInstance())
 		{
-			GetGame().GetCallqueue().CallLater(
-				m_PlayerControllerComponent.UpdateStoredCameraPos, 
-				1000, 
-				false, 
-				mat[0], mat[1], mat[2], mat[3]
-			);
+			m_PlayerControllerComponent.m_eCamera.GetWorldTransform(mat);
+
+			if (GetGame().GetCallqueue().GetRemainingTime(m_PlayerControllerComponent.UpdateStoredCameraPos) <= 0)
+			{
+				GetGame().GetCallqueue().CallLater(
+					m_PlayerControllerComponent.UpdateStoredCameraPos, 
+					1000, 
+					false, 
+					mat[0], mat[1], mat[2], mat[3]
+				);
+			}
+			mat[3][1] = mat[3][1] - 1.5;
+		}
+		else
+		{
+			mat[1] = vector.Up;
+			mat[2] = vector.Forward;
+			mat[3][1] = 10000;
 		}
 		
-		mat[3][1] = mat[3][1] - 1.5;
+		
 		m_PlayerControllerComponent.UpdateEntityPos(mat);
 	}
 	
@@ -278,5 +305,35 @@ class CRF_PlayableCharacter : ScriptComponent
 		
 		m_PlayerControllerComponent.UpdateEntityPos(mat);
 		m_PlayerControllerComponent.m_eCamera.SetWorldTransform(mat);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Generate a random position within specified radius to spread out initial entity spawns
+	* This reduces replication congestion when many entities spawn in the same location
+	* @param centerPosition Original spawn position to spread from
+	* @param maxRadius Maximum radius in meters to spread entities (default 500m)
+	* @return New spawn position within the spread radius
+	*/
+	protected vector GenerateRandomSpreadPosition(vector centerPosition, float maxRadius = 500.0)
+	{
+		// Generate random angle (0-360 degrees)
+		float randomAngle = Math.RandomFloat(0, 2 * Math.PI);
+		
+		// Generate random distance within radius (using square root for uniform distribution)
+		float randomDistance = Math.Sqrt(Math.RandomFloat(0, 1)) * maxRadius;
+		
+		// Calculate offset from center
+		float offsetX = Math.Cos(randomAngle) * randomDistance;
+		float offsetZ = Math.Sin(randomAngle) * randomDistance;
+		
+		// Apply offset to center position
+		vector spreadPosition = centerPosition;
+		spreadPosition[0] = centerPosition[0] + offsetX;
+		spreadPosition[2] = centerPosition[2] + offsetZ;
+		
+		// For initial entities, we don't need terrain validation since they're at 10000m elevation
+		// Just return the spread position
+		return spreadPosition;
 	}
 }

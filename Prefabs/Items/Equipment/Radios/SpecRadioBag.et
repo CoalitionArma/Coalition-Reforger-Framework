@@ -13,6 +13,8 @@ GenericEntity : "{5879D8E9C56E358E}Prefabs/Items/Equipment/Radios/Radio_Deployab
     }
    }
   }
+  CVON_RadioComponent "{6642D8B62ADC89D2}" {
+  }
   MeshObject "{5A30BAE7673C63D1}" {
    Materials {
     MaterialAssignClass "{64DF14109715D065}" {
