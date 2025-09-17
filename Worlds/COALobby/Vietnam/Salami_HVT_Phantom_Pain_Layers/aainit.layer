@@ -1,0 +1,116 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1337.838 91.034 2682.431
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 1282.761 92.513 2696.722
+ userScript "	void SetVisIdentityBigBoss(IEntity entity)"\
+ "	{"\
+ "		SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));"\
+ "		VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();"\
+ "		visIdentity.SetHead(\"{2E6FBF3E40B7EF7F}Prefabs/Characters/Heads/Head_Sturrock.et\");"\
+ "		visIdentity.SetBody(\"{E7C1C23F782B7481}Prefabs/Characters/Basebody/BigBossBaseBody.et\");"\
+ "		identityComp.CommitChanges();"\
+ "		#ifdef WORKBENCH"\
+ "		#else"\
+ "		if (!System.IsConsoleApp())"\
+ "			return;"\
+ "		#endif"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		entity.GetTransform(spawnParams.Transform);"\
+ "		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{C7505F1DD25292B3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Eyepatch.et\"), GetGame().GetWorld(), spawnParams);"\
+ "		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		inventoryManager.TryReplaceItem(resourceSpawned, inventory, 8);"\
+ "	}"\
+ "	"\
+ "	void SetVisIdentityOcelot(IEntity entity)"\
+ "	{"\
+ "		SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));"\
+ "		VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();"\
+ "		visIdentity.SetHead(\"{9611A700F48E869B}Prefabs/Characters/Heads/Head_WhiteHead_04.et\");"\
+ "		identityComp.CommitChanges();"\
+ "		#ifdef WORKBENCH"\
+ "		#else"\
+ "		if (!System.IsConsoleApp())"\
+ "			return;"\
+ "		#endif"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		entity.GetTransform(spawnParams.Transform);"\
+ "		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{E738B6B438B5A68F}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Ocelot_Scarf.et\"), GetGame().GetWorld(), spawnParams);"\
+ "		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		inventoryManager.TryReplaceItem(resourceSpawned, inventory, 8);"\
+ "	}"
+ OnControllableSpawned ""\
+ "		super.OnControllableSpawned(entity);"\
+ "		if (entity.GetPrefabData().GetPrefabName() == \"{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et\")"\
+ "			GetGame().GetCallqueue().Call(SetVisIdentityBigBoss, entity);"\
+ "		"\
+ "		if (entity.GetPrefabData().GetPrefabName() == \"{A53B8AB60784E018}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_COY_P.et\")"\
+ "			GetGame().GetCallqueue().Call(SetVisIdentityOcelot, entity);"\
+ "	"
+ EnableAIInGameState 1
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{8CFDA0A357401938}Configs/Gearscripts/Custom/Salami/CRF_GS_DiamondDogs.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{E4C04C01B99C8025}Configs/Gearscripts/Custom/Salami/CRF_GS_DiamondDogsSecurityTeam.conf"
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66632E9234B41A95}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66632E90931A568F}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66632E9231462FA6}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66632E9233F75225}" {
+        m_sCallsign "SNIPER"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66632E9153B11CD4}" {
+        m_sCallsign "ENGI"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

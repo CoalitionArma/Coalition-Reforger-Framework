@@ -28,5 +28,12 @@ SCR_ChimeraCharacter {
     }
    }
   }
+  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Identity Identity "{5584CBC6363C648B}" {
+    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
+     Body "{E7C1C23F782B7481}Prefabs/Characters/Basebody/BigBossBaseBody.et"
+    }
+   }
+  }
  }
 }

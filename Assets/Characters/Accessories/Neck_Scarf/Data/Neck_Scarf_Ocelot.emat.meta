@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{3793F7B4E6739717}Assets/Characters/Accessories/Neck_Scarf/Data/Neck_Scarf_Ocelot.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}
