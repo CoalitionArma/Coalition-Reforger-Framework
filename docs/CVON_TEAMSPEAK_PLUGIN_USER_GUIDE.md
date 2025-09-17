@@ -44,7 +44,8 @@ The base implementation of the VON (voice over network) system in reforger has i
 ### Step 1: Download the Plugin
 
 1. **Download the plugin** from the Github Release page:
-   ```https://github.com/CoalitionArma/Coalition-VON/releases/
+   ```
+   https://github.com/CoalitionArma/Coalition-VON/releases/
    ```
 
 2. **Save the file** to a location you can easily find (e.g., Downloads folder)
