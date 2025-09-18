@@ -174,7 +174,6 @@ modded class SCR_VONController
 	
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
-		super.EOnFixedFrame(owner, timeSlice);
 		if (!CVON_VONGameModeComponent.GetInstance())
 			return;
 		
@@ -198,6 +197,18 @@ modded class SCR_VONController
 		m_PlayerManager.GetPlayers(playerIds);
 		int maxDistance = m_PlayerController.m_aVolumeValues.Get(4);
 		bool isLocalSpectator = IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId());
+    //When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
+		//This removes that container as when they reconnect they will no longer be heard.
+		foreach (int playerId: m_PlayerController.m_aLocalActiveVONEntriesIds)
+		{
+			if (playerIds.Contains(playerId))
+				continue;
+			
+			int index = m_PlayerController.m_aLocalActiveVONEntriesIds.Find(playerId);
+			m_PlayerController.m_aLocalActiveVONEntriesIds.RemoveOrdered(index);
+			m_PlayerController.m_aLocalActiveVONEntries.RemoveOrdered(index);
+			continue;
+		}
 		foreach (int playerId: playerIds)
 		{
 			if (!SCR_PlayerController.GetLocalControlledEntity())
@@ -280,8 +291,11 @@ modded class SCR_VONController
 		//Local processing of data being sent to us
 		foreach (CVON_VONContainer container: m_PlayerController.m_aLocalActiveVONEntries)
 		{
+			if (!SCR_PlayerController.GetLocalControlledEntity())
+				break;
 			if (!container.m_SoundSource)
 				continue;
+
 			float distance = vector.Distance(container.m_SoundSource.GetOrigin(), camera.GetOrigin());
 			if (distance < maxDistance)
 				container.m_fDistanceToSender = distance;
