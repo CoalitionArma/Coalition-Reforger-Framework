@@ -197,7 +197,8 @@ modded class SCR_VONController
 		m_PlayerManager.GetPlayers(playerIds);
 		int maxDistance = m_PlayerController.m_aVolumeValues.Get(4);
 		bool isLocalSpectator = IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId());
-    //When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
+		
+    	//When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
 		//This removes that container as when they reconnect they will no longer be heard.
 		foreach (int playerId: m_PlayerController.m_aLocalActiveVONEntriesIds)
 		{
@@ -217,9 +218,24 @@ modded class SCR_VONController
 			if (playerId == SCR_PlayerController.GetLocalPlayerId())
 				continue;
 			
+			//Not usual an issue but when the player is listening to an entity and he swaps to spectator, he goes into null space until he clicks game.
+			//Meaning unless we remove his direct voice line here it just stays and he'll never be heard on spectator.
 			IEntity player = m_PlayerManager.GetPlayerControlledEntity(playerId);
 			if (!player)
-				continue;
+			{
+				if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+				{
+					//If this VON Transmission is radio, don't do shit
+					if (m_PlayerController.m_aLocalActiveVONEntries.Get(m_PlayerController.m_aLocalActiveVONEntriesIds.Find(playerId)).m_eVonType == CVON_EVONType.RADIO)
+						continue;
+					int index = m_PlayerController.m_aLocalActiveVONEntriesIds.Find(playerId);
+					m_PlayerController.m_aLocalActiveVONEntriesIds.RemoveOrdered(index);
+					m_PlayerController.m_aLocalActiveVONEntries.RemoveOrdered(index);
+					continue;
+				}
+				else
+					continue;
+			}
 			
 			SCR_CharacterControllerComponent charCont = SCR_CharacterControllerComponent.Cast(ChimeraCharacter.Cast(player).GetCharacterController());
 			if (charCont.IsDead() || charCont.IsUnconscious())
@@ -297,7 +313,7 @@ modded class SCR_VONController
 				continue;
 
 			float distance = vector.Distance(container.m_SoundSource.GetOrigin(), camera.GetOrigin());
-			if (distance < maxDistance)
+			if (distance < maxDistance || isLocalSpectator)
 				container.m_fDistanceToSender = distance;
 			else
 				container.m_fDistanceToSender = -1;
