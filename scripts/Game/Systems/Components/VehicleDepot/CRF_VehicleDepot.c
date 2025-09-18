@@ -65,7 +65,7 @@ class CRF_VehicleDepot : ScriptComponent
 	[Attribute("0", UIWidgets.Slider, "Vehicle facing direction offset (degrees)", "-180 180 5", category: "Spawn Configuration")]
 	protected float m_fVehicleFacingOffset;
 	
-	[Attribute("1.0", UIWidgets.Slider, "Spawn Collision detection radius (meters)", "1.0 10.0 0.1", category: "Spawn Configuration")]
+	[Attribute("1.0", UIWidgets.Slider, "Spawn Collision detection radius (meters) /n This radius determines how close players must be to the depot to trigger vehicle spawning", "1.0 10.0 0.1", category: "Spawn Configuration")]
 	protected float m_fCollisionRadius;
 	
 	// Grid Pattern Configuration (only applies when GRID pattern is selected)
@@ -90,9 +90,19 @@ class CRF_VehicleDepot : ScriptComponent
 	[RplProp()]
 	protected int m_iUsesRemaining;
 	
-	// Track current supplies remaining for real-time UI updates (cached from external sources)
+	// Track aggregated supplies for real-time UI updates (replicated from server)
 	[RplProp()]
-	protected int m_iCachedSuppliesRemaining;
+	protected int m_iAggregatedSupplies;
+	
+	// Proximity update system - built-in sphere query approach
+	protected bool m_bSupplyUpdatesActive = false;
+	protected bool m_bProximityUpdatesEnabled = false;
+	
+	// Auto proximity checking system (internal - not user configurable)
+	protected float m_fProximityRadius = 5.0; // Fixed 5m radius for supply detection
+	
+	// Player tracking for proximity detection (simplified to count only)
+	protected int m_iPlayersInProximity = 0;
 	
 	// Component references
 	protected CRF_RespawnManager m_RespawnManager;
@@ -104,13 +114,6 @@ class CRF_VehicleDepot : ScriptComponent
 	// Performance optimization caches
 	protected ref array<vector> m_aCachedSpawnPositions;
 	protected bool m_bSpawnPositionsCached = false;
-	
-	// Resource checking cache (prevents frame-rate spam)
-	protected SCR_ResourceComponent m_CachedResourceComponent;
-	// Resource search cache
-	protected float m_fLastResourceSearchTime = 0;
-	protected static const float RESOURCE_CACHE_DURATION = 30.0; // Cache for 30 seconds to reduce expensive queries
-	protected static const int MAX_ENTITIES_TO_PROCESS = 15; // Limit entity processing to prevent performance spikes
 	
 	// Role restrictions
 	[Attribute("0", UIWidgets.CheckBox, "Restrict to leadership roles only (Squad Leaders, Team Leaders, Platoon Leaders, Platoon Sergeants)")]
@@ -154,19 +157,12 @@ class CRF_VehicleDepot : ScriptComponent
 		// Initialize global uses pool
 		m_iUsesRemaining = m_iGlobalUsesPool;
 		
-		// Initialize cached supplies count (only if world is available)
-		BaseWorld world = GetGame().GetWorld();
-		if (world)
-		{
-			m_iCachedSuppliesRemaining = GetRemainingSuppliesFromSource();
-		}
-		else
-		{
-			// World not ready yet (editor mode) - initialize to 0, will update later
-			m_iCachedSuppliesRemaining = 0;
-			DebugPrint("World not available during initialization - supplies cache will be updated later");
-		}
-			
+		// Initialize aggregated supplies to 0 (will be updated by server)
+		m_iAggregatedSupplies = 0;
+		
+		// Initialize proximity tracking counter
+		m_iPlayersInProximity = 0;
+		
 		// Get CRF managers
 		BaseGameMode gameMode = GetGame().GetGameMode();
 		if (gameMode)
@@ -177,22 +173,21 @@ class CRF_VehicleDepot : ScriptComponent
 		
 		// Set up interaction
 		SetEventMask(owner, EntityEvent.INIT);
+		
+		// Auto-start proximity checking for this depot (server-side only)
+		// OPTIMIZATION: Only activates if depot has supply-dependent vehicles
+		if (RplSession.Mode() != RplMode.Client)
+		{
+			GetGame().GetCallqueue().CallLater(CreateProximityTrigger, 1000, false); 
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void EOnInit(IEntity owner)
 	{
-	//-	DebugPrint(string.Format("Vehicle depot initialized with %1 vehicles and %2 spawn points.", m_aVehicles.Count(), m_iSpawnPointCount));
-		
-		// Pre-cache spawn positions during initialization for better performance
-		// This follows the pattern used in other CRF components (like CRF_MapStagingComponent)
+		// Pre-cache spawn positions during initialization
 		GetGame().GetCallqueue().CallLater(InitializeSpawnPositions, 1000, false);
 		
-		// Initialize supplies cache on server
-		if (RplSession.Mode() != RplMode.Client)
-		{
-			GetGame().GetCallqueue().CallLater(InitializeSuppliesCache, 1500, false);
-		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -207,18 +202,144 @@ class CRF_VehicleDepot : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Initialize supplies cache during component startup (delayed to ensure resource system is ready)
-	protected void InitializeSuppliesCache()
+	//! Update aggregated supplies on depot
+	protected void UpdateAggregatedSupplies()
 	{
-		if (!GetOwner())
+		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
-		// Cache current supplies value for replication
-		m_iCachedSuppliesRemaining = GetRemainingSuppliesFromSource();
-		Replication.BumpMe();
-		DebugPrint(string.Format("Supplies cache initialized to %1", m_iCachedSuppliesRemaining));
+		int newAggregatedSupplies = GetLiveAggregatedSupplies();
+		
+		// Only replicate if value changed to reduce network traffic
+		if (newAggregatedSupplies != m_iAggregatedSupplies)
+		{
+			m_iAggregatedSupplies = newAggregatedSupplies;
+			Replication.BumpMe();
+			
+			if (m_bEnableDebugLogging) 
+				Print(string.Format("[CRF_VehicleDepot - %1] Server updated aggregated supplies to %2", m_sDepotName, m_iAggregatedSupplies));
+		}
 	}
 	
+	//================================================================================================
+	// SUPPLY DETECTION OPTIMIZATION & PROXIMITY SYSTEM
+	//================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	//! Check if this depot has any supply-dependent vehicles (optimization check)
+	protected bool HasSupplyDependentVehicles()
+	{
+		if (!m_aVehicles)
+			return false;
+			
+		foreach (CRF_VehicleDepotVehicle vehicle : m_aVehicles)
+		{
+			if (vehicle && vehicle.m_eCostType == CRF_EVehicleDepotCostType.SUPPLIES)
+				return true;
+		}
+		
+		return false;
+	}
+	//------------------------------------------------------------------------------------------------
+	//! Auto-create proximity trigger for this depot
+	protected void CreateProximityTrigger()
+	{
+		if (!GetOwner() || RplSession.Mode() == RplMode.Client)
+			return;
+		
+		// Only start proximity checking if SUPPLYCOST vehicles are present in vehicle list
+		if (!HasSupplyDependentVehicles())
+		{
+			if (m_bEnableDebugLogging)
+				Print(string.Format("[CRF_VehicleDepot - %1] No supply-dependent vehicles found - skipping proximity system", m_sDepotName));
+			return;
+		}
+		
+		StartProximityChecking();
+		
+		if (m_bEnableDebugLogging)
+			Print(string.Format("[CRF_VehicleDepot - %1] Auto-started proximity checking with %2m radius (has supply-dependent vehicles)", m_sDepotName, m_fProximityRadius));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Start periodic proximity checking
+	protected void StartProximityChecking()
+	{
+		if (m_bProximityUpdatesEnabled)
+			return;
+		
+		m_bProximityUpdatesEnabled = true;
+		GetGame().GetCallqueue().CallLater(CheckProximityLoop, 4000, true); // INTERVAL OF QUERYING NEARBY PLAYERS FOR SUPPLY UPDATE LOOP TO START
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Stop proximity checking
+	protected void StopProximityChecking()
+	{
+		m_bProximityUpdatesEnabled = false;
+		GetGame().GetCallqueue().Remove(CheckProximityLoop);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Proximity checking loop - detects players and manages supply updates directly
+	protected void CheckProximityLoop()
+	{
+		if (!m_bProximityUpdatesEnabled || !GetOwner())
+		{
+			StopProximityChecking();
+			return;
+		}
+		
+		vector depotPos = GetOwner().GetOrigin();
+		
+		// Reset player count and query for players
+		m_iPlayersInProximity = 0;
+		GetGame().GetWorld().QueryEntitiesBySphere(
+			depotPos, 
+			m_fProximityRadius, 
+			CheckPlayerCallback, 
+			null, 
+			EQueryEntitiesFlags.DYNAMIC | EQueryEntitiesFlags.WITH_OBJECT
+		);
+		
+		// Start/stop supply updates directly based on player count
+		if (m_iPlayersInProximity > 0 && !m_bSupplyUpdatesActive)
+		{
+			m_bSupplyUpdatesActive = true;
+			UpdateAggregatedSupplies(); // Immediate initial update
+			GetGame().GetCallqueue().CallLater(UpdateAggregatedSupplies, 4000, true); // INTERVAL OF QUERYING NEARBY OBJECTS FOR SUPPLY SOURCES, MEANT TO BE FOR PERFORMANCE
+
+			if (m_bEnableDebugLogging)
+				Print(string.Format("[CRF_VehicleDepot - %1] Started supply updates (%2 players nearby)", m_sDepotName, m_iPlayersInProximity));
+		}
+		else if (m_iPlayersInProximity == 0 && m_bSupplyUpdatesActive)
+		{
+			// Stop supply updates directly - no wrapper functions
+			m_bSupplyUpdatesActive = false;
+			GetGame().GetCallqueue().Remove(UpdateAggregatedSupplies);
+			
+			if (m_bEnableDebugLogging)
+				Print(string.Format("[CRF_VehicleDepot - %1] Stopped supply updates (no players nearby)", m_sDepotName));
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	//! Player detection callback
+	protected bool CheckPlayerCallback(IEntity entity)
+	{
+		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(entity);
+		if (!character)
+			return true;
+		
+		SCR_DamageManagerComponent damageManager = character.GetDamageManager();
+		if (damageManager && damageManager.GetState() == EDamageState.DESTROYED)
+			return true;
+		
+		m_iPlayersInProximity++;
+		
+		return true;
+	}
+
 	//------------------------------------------------------------------------------------------------
 	//! Get list of vehicles for UI/interaction
 	array<ref CRF_VehicleDepotVehicle> GetVehicles()
@@ -331,23 +452,60 @@ class CRF_VehicleDepot : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected bool CanAffordSupplies(int cost)
 	{
-		// Use cached replicated value for consistent client-server synchronization
-		return m_iCachedSuppliesRemaining >= cost;
+		// Use replicated aggregated amount from server
+		return m_iAggregatedSupplies >= cost;
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	//! Check supplies for spawning operations (includes debug logging)
-	protected bool CanAffordSuppliesForSpawn(int cost)
+	//! Main Supply Aggregation Function - Detects live aggregated supplies from all sources in radius (SERVER ONLY)
+	protected int GetLiveAggregatedSupplies()
 	{
-		bool canAfford = CanAffordSupplies(cost);
+		if (!GetOwner() || RplSession.Mode() == RplMode.Client)
+			return 0;
 		
-		// Only log during actual spawn attempts, not UI updates
-		if (!canAfford)
+		if (m_bEnableDebugLogging)
+			Print(string.Format("[CRF_VehicleDepot - %1] Server searching for aggregated supplies in %2m radius...", m_sDepotName, m_fSupplySearchRadius));
+			
+		vector depotPos = GetOwner().GetOrigin();
+		
+		// Clear previous results and query entities within search radius
+		m_aNearbyEntities.Clear();
+		GetGame().GetWorld().QueryEntitiesBySphere(depotPos, m_fSupplySearchRadius, QueryEntitiesCallback, null, EQueryEntitiesFlags.ALL);
+		
+		// PHASE 1: Prime the resource grid - force all UpdateInteractor calls first
+		array<SCR_ResourceConsumer> validConsumers = {};
+		foreach (IEntity entity : m_aNearbyEntities)
 		{
-			if (m_bEnableDebugLogging) Print(string.Format("[CRF_VehicleDepot] Spawn failed - need %1 supplies, only %2 available (cached)", cost, m_iCachedSuppliesRemaining));
+			if (!entity || entity == GetOwner())
+				continue;
+				
+			// Check if entity has a resource component
+			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);
+			if (!resourceComponent)
+				continue;
+				
+			// Try to get consumer for aggregated value
+			SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			if (consumer)
+			{
+				// Force resource grid to update this consumer's aggregation network.
+				GetGame().GetResourceGrid().UpdateInteractor(consumer);
+				validConsumers.Insert(consumer);
+			}
 		}
 		
-		return canAfford;
+		// PHASE 2: Now read aggregated values after all consumers have been updated
+		float totalSupplies = 0;
+		foreach (SCR_ResourceConsumer consumer : validConsumers)
+		{
+			float aggregatedSupplies = consumer.GetAggregatedResourceValue();
+			totalSupplies += aggregatedSupplies;
+			
+			if (m_bEnableDebugLogging && aggregatedSupplies > 0)
+				Print(string.Format("[CRF_VehicleDepot - %1] Found %2 aggregated supplies from consumer", m_sDepotName, aggregatedSupplies));
+		}
+		
+		return (int)totalSupplies;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -408,148 +566,8 @@ class CRF_VehicleDepot : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	int GetRemainingSupplies(int playerId)
 	{
-		// Use cached replicated value for UI updates (fast and reliable)
-		return m_iCachedSuppliesRemaining;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Get supplies directly from source (for server-side operations)
-	protected int GetRemainingSuppliesFromSource()
-	{
-		// Use cached resource component for UI updates
-		SCR_ResourceComponent resourceComponent = GetCachedResourceComponent();
-		if (!resourceComponent)
-			return 0;
-		
-		// Use real Arma resource system to get supplies
-		SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
-		if (consumer)
-		{
-			float currentSupplies = consumer.GetAggregatedResourceValue();
-			return (int)currentSupplies;
-		}
-		else
-		{
-			// Fallback to direct storage reading
-			float currentSupplies = 0;
-			SCR_ResourceSystemHelper.GetStoredResources(resourceComponent, currentSupplies);
-			return (int)currentSupplies;
-		}
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Get cached resource component to avoid expensive repeated searches
-	protected SCR_ResourceComponent GetCachedResourceComponent()
-	{
-		// Check if world is available (prevents crashes during editor initialization)
-		BaseWorld world = GetGame().GetWorld();
-		if (!world)
-		{
-			DebugPrint("World not available yet - skipping resource component search");
-			return null;
-		}
-		
-		float currentTime = world.GetWorldTime();
-		
-		// Check if cache is still valid
-		if (m_CachedResourceComponent && (currentTime - m_fLastResourceSearchTime) < RESOURCE_CACHE_DURATION)
-		{
-			return m_CachedResourceComponent;
-		}
-		
-		// Cache expired or doesn't exist, search for new one
-		m_CachedResourceComponent = FindNearbyResourceStorage();
-		
-		// Only log on first cache miss, not every refresh (prevent spam)
-		bool isFirstSearch = (m_fLastResourceSearchTime == 0);
-		m_fLastResourceSearchTime = currentTime;
-		
-		if (!m_CachedResourceComponent && isFirstSearch)
-		{
-			DebugPrint("No supply storage found nearby - depot will only work with TICKETS/USES vehicles");
-		}
-		
-		return m_CachedResourceComponent;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	//! Find nearby resource storage for supply management
-	protected SCR_ResourceComponent FindNearbyResourceStorage()
-	{
-		if (!GetOwner())
-			return null;
-			
-		// Check if world is available (prevents crashes during editor initialization)
-		BaseWorld world = GetGame().GetWorld();
-		if (!world)
-		{
-			DebugPrint("World not available - cannot search for resource storage");
-			return null;
-		}
-			
-		vector depotPos = GetOwner().GetOrigin();
-		
-		// Clear previous results and query entities within search radius  
-		m_aNearbyEntities.Clear();
-		world.QueryEntitiesBySphere(depotPos, m_fSupplySearchRadius, QueryEntitiesCallback, null, EQueryEntitiesFlags.STATIC | EQueryEntitiesFlags.WITH_OBJECT);
-		
-		// Find the closest entity with a resource component that has supplies
-		SCR_ResourceComponent bestResourceComponent = null;
-		float closestDistance = float.MAX;
-		float bestSupplies = 0;
-		int processedCount = 0;
-		
-		foreach (IEntity entity : m_aNearbyEntities)
-		{
-			// Limit processing to prevent performance spikes with many entities
-			if (processedCount >= MAX_ENTITIES_TO_PROCESS)
-			{
-				DebugPrint(string.Format("Resource search limited to %1 entities for performance", MAX_ENTITIES_TO_PROCESS));
-				break;
-			}
-			
-			if (!entity || entity == GetOwner())
-				continue;
-				
-			processedCount++;
-				
-			// Check if entity has a resource component
-			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);
-			if (!resourceComponent)
-				continue;
-				
-			float availableSupplies = 0;
-			
-			// Try consumer first
-			SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
-			if (consumer)
-			{
-				availableSupplies = consumer.GetAggregatedResourceValue();
-			}
-			else
-			{
-				// Fallback to direct storage check
-				SCR_ResourceSystemHelper.GetStoredResources(resourceComponent, availableSupplies);
-			}
-			
-			// Check distance and supply availability
-			float distance = vector.Distance(depotPos, entity.GetOrigin());
-			if (availableSupplies > 0 && distance < closestDistance)
-			{
-				closestDistance = distance;
-				bestResourceComponent = resourceComponent;
-				bestSupplies = availableSupplies;
-				
-				// Early exit optimization: if we find a very close resource with supplies, use it immediately
-				if (distance < 5.0 && availableSupplies > 0)
-				{
-					DebugPrint(string.Format("Found close resource at %1m with %2 supplies - using immediately", distance, availableSupplies));
-					break;
-				}
-			}
-		}
-		
-		return bestResourceComponent;
+		// Always return replicated aggregated amount from server
+		return m_iAggregatedSupplies;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -612,52 +630,58 @@ class CRF_VehicleDepot : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	protected void DeductSupplies(int amount)
 	{
-		// Find nearby supply depot or resource storage
-		SCR_ResourceComponent resourceComponent = FindNearbyResourceStorage();
-		if (!resourceComponent)
-		{
-			if (m_bEnableDebugLogging) Print("[CRF_VehicleDepot] No supply storage found nearby for deduction!");
+		if (!GetOwner() || RplSession.Mode() == RplMode.Client)
 			return;
+			
+		vector depotPos = GetOwner().GetOrigin();
+		
+		// Find all supply sources in radius
+		m_aNearbyEntities.Clear();
+		GetGame().GetWorld().QueryEntitiesBySphere(depotPos, m_fSupplySearchRadius, QueryEntitiesCallback, null, EQueryEntitiesFlags.ALL);
+		
+		// Find ANY resource component with a consumer that can handle aggregated consumption
+		foreach (IEntity entity : m_aNearbyEntities)
+		{
+			if (!entity || entity == GetOwner())
+				continue;
+				
+			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.FindResourceComponent(entity, false);
+			if (!resourceComponent)
+				continue;
+				
+			SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			if (!consumer)
+				continue;
+				
+			// Update the consumer's aggregation network first
+			GetGame().GetResourceGrid().UpdateInteractor(consumer);
+			
+			// Check if this consumer has access to enough aggregated supplies
+			float aggregatedSupplies = consumer.GetAggregatedResourceValue();
+			if (aggregatedSupplies >= amount)
+			{
+				// Attempt consumption from this consumer (which handles aggregated sources automatically)
+				bool consumptionSuccess = consumer.RequestConsumtion(amount);
+				if (consumptionSuccess)
+				{
+					if (m_bEnableDebugLogging) 
+						Print(string.Format("[CRF_VehicleDepot] Successfully consumed %1 supplies from aggregated sources (had %2 available)", amount, aggregatedSupplies));
+					
+					// Immediately update aggregated supplies after consumption
+					GetGame().GetCallqueue().CallLater(UpdateAggregatedSupplies, 100, false); // Update after 100ms
+					return; // Success - exit function
+				}
+				else
+				{
+					if (m_bEnableDebugLogging) 
+						Print(string.Format("[CRF_VehicleDepot] Failed to consume %1 supplies despite %2 being aggregated available", amount, aggregatedSupplies));
+				}
+			}
 		}
 		
-		// Get the entity that owns this resource component
-		IEntity resourceEntity = resourceComponent.GetOwner();
-		if (!resourceEntity)
-		{
-			if (m_bEnableDebugLogging) Print("[CRF_VehicleDepot] Could not find resource entity owner!");
-			return;
-		}
-		
-		// Use real Arma resource system to consume supplies
-		SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
-		if (consumer)
-		{
-			// Actually consume the supplies using real Arma system
-			bool consumptionSuccess = consumer.RequestConsumtion(amount);
-			if (consumptionSuccess)
-			{
-				if (m_bEnableDebugLogging) Print(string.Format("[CRF_VehicleDepot] Successfully consumed %1 supplies from real Arma resource system", amount));
-				
-				// Update cached supply count for real-time UI updates
-				m_iCachedSuppliesRemaining = GetRemainingSuppliesFromSource();
-				
-				// Invalidate resource cache since supplies changed
-				m_fLastResourceSearchTime = 0;
-				
-				// Trigger replication to update all clients immediately
-				Replication.BumpMe();
-			}
-			else
-			{
-				if (m_bEnableDebugLogging) Print(string.Format("[CRF_VehicleDepot] Failed to consume %1 supplies - insufficient supplies available", amount));
-			}
-		}
-		else
-		{
-			// Warning: Cannot actually consume from direct storage
-			if (m_bEnableDebugLogging) Print("[CRF_VehicleDepot] WARNING: Supply storage found but no consumer available - cannot actually deduct supplies!");
-			if (m_bEnableDebugLogging) Print("[CRF_VehicleDepot] You need to configure the supply storage with proper consumers/generators for real resource consumption.");
-		}
+		// If we get here, no suitable consumer was found
+		if (m_bEnableDebugLogging) 
+			Print(string.Format("[CRF_VehicleDepot] No suitable supply consumer found for %1 supplies", amount));
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -711,11 +735,7 @@ class CRF_VehicleDepot : ScriptComponent
 			}
 			else if (vehicle.m_eCostType == CRF_EVehicleDepotCostType.SUPPLIES)
 			{
-				// Use the debug version for spawn attempts
-				if (!CanAffordSuppliesForSpawn(vehicle.m_iCost))
-				{
-					if (m_bEnableDebugLogging) Print("[CRF_VehicleDepot] Player cannot afford supplies!");
-				}
+				if (m_bEnableDebugLogging) Print(string.Format("[CRF_VehicleDepot] Player cannot afford supplies! Need %1, have %2 aggregated", vehicle.m_iCost, m_iAggregatedSupplies));
 			}
 			else
 			{
@@ -1037,13 +1057,6 @@ class CRF_VehicleDepot : ScriptComponent
 		
 		return true; // Continue searching
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	protected bool QueryCallback(IEntity entity)
-	{
-		// Return true to include this entity in the results
-		return true;
-	}
 
 	//================================================================================================
 	// UI AND INTERACTION FUNCTIONS - Action Text, Notifications
@@ -1215,30 +1228,21 @@ class CRF_VehicleDepot : ScriptComponent
 	{
 		// Only draw if debug visuals are enabled
 		if (!m_bEnableSpawnVisuals)
-		{
-			// Clear shapes if visuals are disabled
-			if (m_bDebugShapesCreated)
-			{
-				ClearDebugShapes();
-			}
 			return;
-		}
 			
 		if (!owner)
 			return;
 		
-		// Only create shapes once, then leave them persistent
-		if (!m_bDebugShapesCreated)
-		{
-			CreateDebugShapes(owner);
-			m_bDebugShapesCreated = true;
-		}
+
+		CreateDebugShapes(owner);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	//! Create persistent debug shapes (called once)
 	protected void CreateDebugShapes(IEntity owner)
 	{
+		m_aDebugShapes.Clear();
+		
 		vector depotPos = owner.GetOrigin();
 		vector transform[4];
 		owner.GetWorldTransform(transform);
@@ -1273,8 +1277,8 @@ class CRF_VehicleDepot : ScriptComponent
 		BaseWorld world = owner.GetWorld(); // Use owner.GetWorld() instead of GetGame().GetWorld()
 		
 		// Shape flags for consistent rendering
-		const ShapeFlags solidSphereFlags = ShapeFlags.VISIBLE | ShapeFlags.NOZBUFFER | ShapeFlags.NOOUTLINE;
-		const ShapeFlags wireframeSphereFlags = ShapeFlags.TRANSP | ShapeFlags.VISIBLE | ShapeFlags.NOOUTLINE | ShapeFlags.NOZBUFFER;
+		const ShapeFlags spawnSphereFlags = ShapeFlags.VISIBLE | ShapeFlags.NOZBUFFER | ShapeFlags.NOOUTLINE;
+		const ShapeFlags collisionSphereFlags = ShapeFlags.TRANSP | ShapeFlags.VISIBLE | ShapeFlags.NOOUTLINE | ShapeFlags.NOZBUFFER;
 		const ShapeFlags arrowFlags = ShapeFlags.VISIBLE | ShapeFlags.NOZBUFFER;
 		
 		for (int i = 0; i < m_iSpawnPointCount; i++)
@@ -1282,33 +1286,25 @@ class CRF_VehicleDepot : ScriptComponent
 			// Calculate spawn position using same logic as cache
 			vector spawnPos = CalculateSpawnPosition(depotPos, forwardDir, rightDir, i);
 			
-			// Apply proper ground snapping using owner's world reference
 			if (world)
 			{
 				float surfaceY = world.GetSurfaceY(spawnPos[0], spawnPos[2]);
-				spawnPos[1] = surfaceY + 0.1; // Small offset to keep spheres just above ground
+				spawnPos[1] = surfaceY + 0.1; // Slightly above ground
 			}
 			else
 			{
 				spawnPos[1] = depotPos[1] + 0.1; // Small fallback offset
 			}
 			
-			// Create and store shape references for proper management
 			// Red sphere for spawn position
-			ref Shape spawnSphere = Shape.CreateSphere(ARGB(255, 255, 0, 0), solidSphereFlags, spawnPos, 0.2);
-			if (spawnSphere)
-				m_aDebugShapes.Insert(spawnSphere);
+			m_aDebugShapes.Insert(Shape.CreateSphere(ARGB(255, 255, 0, 0), spawnSphereFlags, spawnPos, 0.2));
 			
 			// Blue wireframe sphere for collision radius
-			ref Shape collisionSphere = Shape.CreateSphere(ARGB(100, 0, 150, 255), wireframeSphereFlags, spawnPos, m_fCollisionRadius);
-			if (collisionSphere)
-				m_aDebugShapes.Insert(collisionSphere);
+			m_aDebugShapes.Insert(Shape.CreateSphere(ARGB(100, 0, 150, 255), collisionSphereFlags, spawnPos, m_fCollisionRadius));
 
 			// Green arrow showing vehicle orientation
 			vector lineEnd = spawnPos + (vehicleForwardDir * 4.0); // 4 meter line
-			ref Shape orientationArrow = Shape.CreateArrow(spawnPos, lineEnd, 0.3, ARGB(255, 0, 255, 0), arrowFlags);
-			if (orientationArrow)
-				m_aDebugShapes.Insert(orientationArrow);
+			m_aDebugShapes.Insert(Shape.CreateArrow(spawnPos, lineEnd, 0.3, ARGB(255, 0, 255, 0), arrowFlags));
 		}
 	}
 	
@@ -1316,14 +1312,11 @@ class CRF_VehicleDepot : ScriptComponent
 	//! Clear all debug shapes
 	protected void ClearDebugShapes()
 	{
-		// In Arma Reforger, shapes are automatically cleaned up by the engine
-		// We just need to clear our references and reset the flag
+
 		if (m_aDebugShapes)
 		{
 			m_aDebugShapes.Clear();
 		}
-		
-		// Reset creation flag
 		m_bDebugShapesCreated = false;
 	}
 	
@@ -1333,9 +1326,7 @@ class CRF_VehicleDepot : ScriptComponent
 	{
 		if (m_bEnableSpawnVisuals && GetOwner())
 		{
-			// Clear existing shapes first
 			ClearDebugShapes();
-			// Recreate them on next update
 			m_bDebugShapesCreated = false;
 		}
 	}
