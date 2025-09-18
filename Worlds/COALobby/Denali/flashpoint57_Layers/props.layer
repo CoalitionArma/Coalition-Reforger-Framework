@@ -109,17 +109,6 @@ $grp GenericEntity : "{85E7D977EFAC11CB}PrefabsEditable/Auto/Compositions/Slotte
   angleY -28.212
  }
 }
-GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
- components {
-  CRF_VehicleSpawner "{64626B666A3B82E3}" {
-   m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
-  }
- }
- coords 3887.891 280.781 2318.537
- angleX 0
- angleY 0
- angleZ 0
-}
 GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
  coords 3544.342 255.906 3515.077
 }

@@ -575,12 +575,13 @@ class CRF_SlottingManager : ScriptComponent
 		
 			spawnParams.Transform[3] = overrideLocation[3];
 		
-		} else
+		} else {
 			spawnParams.Transform = playerSlotVector;
+		}
 
-		// Generate random spread position within 500 meters to reduce replication congestion
-		vector spreadPosition = GenerateRandomSpreadPosition(spawnParams.Transform[3], 500.0);
-		spawnParams.Transform[3] = spreadPosition;
+		vector pos;
+		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 12);
+		spawnParams.Transform[3] = pos;
 		
 		// Spawn the character
 		Resource resource = Resource.Load(resourceName);

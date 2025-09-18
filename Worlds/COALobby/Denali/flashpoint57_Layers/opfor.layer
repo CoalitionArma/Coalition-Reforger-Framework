@@ -1,3 +1,25 @@
+$grp CRF_VehicleSpawner {
+ "{64626B666A3B82E3}" {
+  coords 2826.59 563.659 5646.897
+  angleY 56.605
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+ }
+ "{64626B666A3B82E3}" {
+  coords 2820.396 564 5654.378
+  angleY 52.875
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+ }
+ "{64626B666A3B82E3}" {
+  coords 2823.63 563.845 5650.823
+  angleY 51.69
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+ }
+ "{64626B666A3B82E3}" {
+  coords 2813.319 562.527 5661.504
+  angleY 54.68
+  m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+ }
+}
 GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
  coords 2804.097 564.442 5638.153
 }
@@ -59,51 +81,5 @@ SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
     }
    }
   }
- }
-}
-$grp GenericEntity : "{8B3E3492620C745C}PrefabsEditable/CRF_VehicleSpawner.et" {
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
-   }
-  }
-  coords 2825.492 563.285 5667.871
-  angleX 0
-  angleY 56.026
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
-   }
-  }
-  coords 2832.698 563.994 5657.536
-  angleX 0
-  angleY 55.776
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
-   }
-  }
-  coords 2829.156 563.9 5662.605
-  angleX 0
-  angleY 55.534
-  angleZ 0
- }
- {
-  components {
-   CRF_VehicleSpawner "{64626B666A3B82E3}" {
-    m_rVehicle "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
-   }
-  }
-  coords 2827.202 563.728 5648.71
-  angleX 0
-  angleY -124.054
-  angleZ 0
  }
 }

@@ -1,56 +1,56 @@
 $grp SCR_DestructibleEntity : "{052DDF0E3A5E2AF6}Prefabs/Structures/Walls/Metal/MetalWall_01/MetalWall_01_9m.et" {
  {
-  coords 3350.061 -0.153 4482.216
-  angleY 31.624
+  coords 2005.926 -2.061 4431.42
+  angleY -18.631
  }
  {
-  coords 3344.365 -0.006 4489.229
-  angleY 50.38
+  coords 1996.891 -1.497 4431.524
+  angleY 0.125
  }
  {
-  coords 3339.319 0.001 4496.646
-  angleY 55.559
+  coords 1989.197 -1.687 4436.388
+  angleY 33.076
  }
  {
-  coords 3334.233 0.001 4504.063
-  angleY 55.559
+  coords 1981.661 -1.446 4441.297
+  angleY 33.076
  }
  {
-  coords 3329.135 0.001 4511.497
-  angleY 55.559
+  coords 1974.107 -1.266 4446.216
+  angleY 33.076
  }
  {
-  coords 3324.038 0.001 4518.93
-  angleY 55.559
+  coords 1966.555 -0.884 4451.135
+  angleY 33.076
  }
  {
-  coords 3318.936 0.001 4526.368
-  angleY 55.559
+  coords 1958.997 -0.845 4456.056
+  angleY 33.076
  }
  {
-  coords 3313.834 -0.061 4533.807
-  angleY 55.559
+  coords 1951.438 -1.001 4460.979
+  angleY 33.076
  }
  {
-  coords 3314.425 -0.051 4542.796
-  angleY 93.531
+  coords 1948.547 -0.547 4469.511
+  angleY 71.048
  }
  {
-  coords 3314.978 -0.28 4551.774
-  angleY 93.531
+  coords 1945.624 -0.131 4478.017
+  angleY 71.048
  }
  {
-  coords 3315.533 -0.741 4560.762
-  angleY 93.531
+  coords 1942.7 0.957 4486.533
+  angleY 71.048
  }
 }
 SCR_DestructibleBuildingEntity : "{0921B79E3B234115}Prefabs/Structures/Military/Bunkers/AmmoDump_E_02/AmmoDump_E_02_base.et" {
- coords 3383.591 425.125 4604.28
- angleY -125.372
+ coords 1971.675 442.504 4537.964
+ angleY -141.716
 }
 GenericEntity : "{1803111CD65A173C}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V1_storage_US_covered.et" {
- coords 3376.789 425.125 4528.014
- angleY -29.874
+ coords 1986.609 435.719 4462.867
+ angleY -46.218
  {
   GenericEntity {
    ID "5D30E7838EA40E99"
@@ -58,10 +58,20 @@ GenericEntity : "{1803111CD65A173C}Prefabs/Props/Military/SupplyBox/SupplyStack/
   }
  }
 }
+$grp GenericEntity : "{192A4FF528CB9DD0}Prefabs/Structures/Military/Camps/Foundations/Foundation_TentUS_01.et" {
+ {
+  coords 2017.314 434.569 4463.448
+  angleY 112.01
+ }
+ {
+  coords 2012.49 434.985 4451.513
+  angleY 112.01
+ }
+}
 $grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
  {
-  coords 3372.147 425.125 4533.269
-  angleY -123.602
+  coords 1980.677 435.719 4466.603
+  angleY -139.946
   {
    GenericEntity {
     ID "6186DB2F33FB321E"
@@ -232,8 +242,8 @@ $grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSma
   }
  }
  {
-  coords 3378.625 425.124 4523.921
-  angleY -123.602
+  coords 1989.523 435.719 4459.457
+  angleY -139.946
   {
    GenericEntity {
     ID "6186DB2F33FB321E"
@@ -372,7 +382,7 @@ $grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSma
       {
        DecalEntity {
         ID "56DF08929A14FB98"
-        coords -0 0 -0
+        coords 0 0 0
         angleX -89.972
         angleY -180
         angleZ -180
@@ -386,7 +396,7 @@ $grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSma
       {
        DecalEntity {
         ID "56DF08929A14FB98"
-        coords 0 0 -0
+        coords 0 0 0
         angleX -89.972
         angleY -180
         angleZ -180
@@ -415,8 +425,8 @@ $grp GenericEntity : "{52E67D46C7855822}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3377.346 425.125 4529.828
-  angleY -29.874
+  coords 1986.633 435.719 4464.765
+  angleY -46.218
   {
    GenericEntity {
     ID "5D3085BCA5EF72EE"
@@ -435,28 +445,8 @@ $grp GenericEntity : "{52E67D46C7855822}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3373.629 425.125 4526.246
-  angleY -29.874
-  {
-   GenericEntity {
-    ID "5D3085BCA5EF72EE"
-    coords -0 0 0
-   }
-  }
- }
- {
-  components {
-   SCR_ResourceComponent "{5D247A59598D71AE}" {
-    m_aContainers {
-     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-      m_fResourceValueCurrent 500
-      m_fResourceValueMax 500
-     }
-    }
-   }
-  }
-  coords 3375.074 425.125 4528.363
-  angleY -29.874
+  coords 1984.075 435.719 4460.282
+  angleY -46.218
   {
    GenericEntity {
     ID "5D3085BCA5EF72EE"
@@ -475,8 +465,28 @@ $grp GenericEntity : "{52E67D46C7855822}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3371.908 425.125 4526.743
-  angleY -29.874
+  coords 1984.867 435.719 4462.72
+  angleY -46.218
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 1982.284 435.719 4460.274
+  angleY -46.218
   {
    GenericEntity {
     ID "5D3085BCA5EF72EE"
@@ -487,8 +497,8 @@ $grp GenericEntity : "{52E67D46C7855822}Prefabs/Props/Military/SupplyBox/SupplyS
 }
 $grp GenericEntity : "{73F8306941E09593}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V6_storage_US_covered.et" {
  {
-  coords 3377.936 425.125 4528.811
-  angleY -29.874
+  coords 1987.486 435.719 4463.953
+  angleY -46.218
   {
    GenericEntity {
     ID "5D30E783815E7DC1"
@@ -497,8 +507,8 @@ $grp GenericEntity : "{73F8306941E09593}Prefabs/Props/Military/SupplyBox/SupplyS
   }
  }
  {
-  coords 3375.642 426.027 4530.093
-  angleY 152.092
+  coords 1984.924 435.719 4464.537
+  angleY 135.748
   {
    GenericEntity {
     ID "5D30E783815E7DC1"
@@ -507,8 +517,8 @@ $grp GenericEntity : "{73F8306941E09593}Prefabs/Props/Military/SupplyBox/SupplyS
   }
  }
  {
-  coords 3373.543 426.009 4528.608
-  angleY 153.674
+  coords 1983.327 435.719 4462.523
+  angleY 137.33
   {
    GenericEntity {
     ID "5D30E783815E7DC1"
@@ -519,12 +529,12 @@ $grp GenericEntity : "{73F8306941E09593}Prefabs/Props/Military/SupplyBox/SupplyS
 }
 $grp StaticModelEntity : "{94FB3A1BFFFF1A19}Prefabs/Structures/Military/Camps/TentUS_01/TentUS_01_Assembled_foundation.et" {
  {
-  coords 3418.931 425.104 4589.236
-  angleY 73.178
+  coords 1995.034 435.719 4493.865
+  angleY 56.834
  }
  {
-  coords 3416.656 425.104 4597.896
-  angleY 73.178
+  coords 1990.414 435.719 4501.538
+  angleY 56.834
  }
 }
 $grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V2.et" {
@@ -539,8 +549,8 @@ $grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3377.839 425.125 4531.321
-  angleY 154.155
+  coords 1986.686 435.719 4466.333
+  angleY 137.811
  }
  {
   components {
@@ -553,8 +563,8 @@ $grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3374.477 426.023 4529.415
-  angleY 154.155
+  coords 1983.997 435.719 4463.561
+  angleY 137.811
  }
  {
   components {
@@ -567,8 +577,8 @@ $grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3375.729 425.125 4527.434
-  angleY -29.874
+  coords 1985.755 435.719 4462.013
+  angleY -46.218
  }
  {
   components {
@@ -581,8 +591,8 @@ $grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3372.611 425.125 4527.98
-  angleY 154.155
+  coords 1982.61 435.719 4461.658
+  angleY 137.811
  }
  {
   components {
@@ -595,8 +605,8 @@ $grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3374.688 426.01 4526.873
-  angleY -29.874
+  coords 1984.915 435.719 4461.182
+  angleY -46.218
  }
 }
 $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V1.et" {
@@ -611,8 +621,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3374.018 425.125 4527.749
-  angleY -29.874
+  coords 1984.026 435.719 4461.832
+  angleY -46.218
  }
  {
   components {
@@ -625,8 +635,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3376.195 425.125 4529.13
-  angleY -29.874
+  coords 1985.726 435.719 4463.771
+  angleY -46.218
  }
  {
   components {
@@ -639,8 +649,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3374.558 425.125 4529.394
-  angleY -29.874
+  coords 1984.081 435.719 4463.564
+  angleY -46.218
  }
  {
   components {
@@ -653,8 +663,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3375.668 425.125 4530.128
-  angleY -29.874
+  coords 1984.939 435.719 4464.58
+  angleY -46.218
  }
  {
   components {
@@ -667,8 +677,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3376.786 425.125 4530.804
-  angleY -29.874
+  coords 1985.822 435.719 4465.545
+  angleY -46.218
  }
  {
   components {
@@ -681,8 +691,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3373.553 425.125 4528.565
-  angleY -29.874
+  coords 1983.35 435.719 4462.487
+  angleY -46.218
  }
  {
   components {
@@ -695,8 +705,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3373.926 425.942 4527.698
-  angleY -29.874
+  coords 1983.952 435.719 4461.759
+  angleY -46.218
  }
  {
   components {
@@ -709,8 +719,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3376.195 425.748 4529.13
-  angleY -29.874
+  coords 1985.726 435.719 4463.771
+  angleY -46.218
  }
  {
   components {
@@ -723,8 +733,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3374.67 425.125 4526.864
-  angleY -29.874
+  coords 1984.899 435.719 4461.167
+  angleY -46.218
  }
  {
   components {
@@ -737,8 +747,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3376.195 426.633 4529.13
-  angleY -29.874
+  coords 1985.726 435.719 4463.771
+  angleY -46.218
  }
  {
   components {
@@ -751,8 +761,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3373.071 425.125 4527.158
-  angleY -29.874
+  coords 1983.282 435.719 4461
+  angleY -46.218
  }
  {
   components {
@@ -765,8 +775,8 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3378.341 425.125 4530.399
-  angleY -29.874
+  coords 1987.428 435.719 4465.593
+  angleY -46.218
  }
  {
   components {
@@ -779,17 +789,98 @@ $grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyS
     }
    }
   }
-  coords 3372.591 425.125 4525.754
-  angleY -29.874
+  coords 1983.217 435.719 4459.517
+  angleY -46.218
  }
 }
 $grp SCR_DestructibleBuildingEntity : "{DAC148D18C3835B9}Prefabs/Structures/Military/Bunkers/ShelterMilitary_E_01/ShelterMilitary_E_01_long.et" {
  {
-  coords 3426.012 0.057 4562.351
-  angleY -102.513
+  coords 2013.067 1.055 4450.833
+  angleY -69.435
  }
  {
-  coords 3422.742 0 4575.358
-  angleY -102.513
+  coords 2017.619 1.443 4462.973
+  angleY -69.435
+ }
+}
+GenericEntity : "{FFA795D006699994}Prefabs/Structures/LookoutTower.et" {
+ coords 1971.99 435.718 4490.972
+ angleY -61.789
+ {
+  $grp GenericEntity {
+   {
+    components {
+     RigidBody "{5872F0EB7DFB5A9D}" {
+      Enabled 1
+     }
+    }
+   }
+   {
+    components {
+     RigidBody "{5872F0EB7DFB5A9D}" {
+      Enabled 1
+     }
+    }
+   }
+   {
+    components {
+     RigidBody "{5872F0EB7DFB5A9D}" {
+      Enabled 1
+     }
+    }
+    coords -0.497 13.957 -0.092
+   }
+   {
+    components {
+     RigidBody "{5872F0EB7DFB5A9D}" {
+      Enabled 1
+     }
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "6585081BCBDCB03D"
+   Flags 3
+   {
+    GenericEntity {
+     ID "5CB0F584FC47C9CE"
+     Flags 3
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "65842D20101C44E8"
+   Flags 3
+   {
+    GenericEntity {
+     ID "5CB0F5854F1F6114"
+     Flags 3
+    }
+    GenericEntity {
+     ID "5CB0F5854F1F6115"
+     Flags 3
+    }
+   }
+  }
+  StaticModelEntity {
+   ID "65842D20101C44E0"
+   Flags 3
+  }
+  $grp StaticModelEntity {
+   {
+    components {
+     RigidBody "{5872F0EB7DFB5A9D}" {
+      Enabled 1
+     }
+    }
+   }
+   {
+    components {
+     RigidBody "{5872F0EB7DFB5A9D}" {
+      Enabled 1
+     }
+    }
+   }
+  }
  }
 }

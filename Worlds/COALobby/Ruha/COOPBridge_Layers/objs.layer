@@ -1,0 +1,61 @@
+GenericEntity : "{258D0520BA0FC415}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_US_04.et" {
+ coords 3368.673 55.284 2012.728
+ angleX -1.499
+ angleY 123.942
+ angleZ 2.226
+}
+$grp GenericEntity : "{2A3B53114DEAA60B}Prefabs/Compositions/Slotted/SlotFlatSmall/Headquarters_S_USSR_01.et" {
+ {
+  coords 3385.275 53.617 2060.759
+ }
+ {
+  coords 2305.113 68.356 2685.958
+ }
+ {
+  coords 1752.811 64.529 3546.061
+ }
+}
+GenericEntity : "{68ED84218EA1BDC3}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_USSR_01.et" {
+ coords 3378.752 54.955 2045.772
+}
+GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_USSR_01.et" {
+ coords 3324.365 55.841 2043.483
+ angleX -0.186
+ angleY 36.99
+ angleZ 3.219
+}
+GenericEntity : "{7A40BF128BB47EFD}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_01.et" {
+ coords 3373.525 55.374 2027.355
+ angleY 169
+}
+$grp GenericEntity : "{9483333BFD9E2D0F}Prefabs/Compositions/Slotted/SlotRoadSmall/Checkpoint_S_USSR_01.et" {
+ {
+  coords 2988.072 53.08 1448.23
+  angleY 81
+ }
+ {
+  coords 3459.832 57.607 1895.306
+  angleY 49
+ }
+ {
+  coords 2988.321 52.901 1447.65
+  angleY 122
+ }
+ {
+  coords 3425.928 55.315 1955.133
+  angleY -159
+ }
+ {
+  coords 3408.472 55.421 1962.287
+  angleX 0.97
+  angleY -80.004
+  angleZ 0.814
+ }
+ {
+  coords 2988.512 52.907 1447.763
+  angleY 8
+ }
+}
+GenericEntity : "{FD952CFF9CAD3F2B}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_USSR_01.et" {
+ coords 3365.128 54.713 2057.804
+}

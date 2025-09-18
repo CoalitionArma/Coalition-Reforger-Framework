@@ -90,7 +90,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	 */
 	protected void LoadConfigurations()
 	{
-		const ResourceName rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		ResourceName rolesConfigPath;
+		if (!CVON_VONGameModeComponent.GetInstance())
+			  rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		else
+			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/CRF_CVON_Global_Roles_Config.conf";
 		
 		m_RolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
