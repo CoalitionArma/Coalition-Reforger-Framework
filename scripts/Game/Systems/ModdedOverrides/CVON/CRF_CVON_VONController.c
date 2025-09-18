@@ -189,6 +189,20 @@ modded class SCR_VONController
 		ref array<int> playerIds = {};
 		m_PlayerManager.GetPlayers(playerIds);
 		int maxDistance = m_PlayerController.m_aVolumeValues.Get(4);
+		
+		//When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
+		//This removes that container as when they reconnect they will no longer be heard.
+		foreach (int playerId: m_PlayerController.m_aLocalActiveVONEntriesIds)
+		{
+			if (playerIds.Contains(playerId))
+				continue;
+			
+			int index = m_PlayerController.m_aLocalActiveVONEntriesIds.Find(playerId);
+			m_PlayerController.m_aLocalActiveVONEntriesIds.RemoveOrdered(index);
+			m_PlayerController.m_aLocalActiveVONEntries.RemoveOrdered(index);
+			continue;
+		}
+		
 		foreach (int playerId: playerIds)
 		{
 			if (!SCR_PlayerController.GetLocalControlledEntity())
