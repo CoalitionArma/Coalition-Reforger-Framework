@@ -127,6 +127,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		};
 	}
 	
+	void BroadcastMessage(string message)
+	{
+		Rpc(RpcDo_BroadcastMessage, message);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	void Closemap(int playerID)
 	{
@@ -1201,5 +1206,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		comp.SetPlayerText(requesterName + " requested to join");
 
 		Print(string.Format("[VON] Successfully created join request popup for %1", requesterName), LogLevel.NORMAL);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastMessage(string message)
+	{
+		SCR_PopUpNotification.GetInstance().PopupMsg(message);
 	}
 };

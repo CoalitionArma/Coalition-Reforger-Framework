@@ -52,7 +52,6 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    Override 0
    Identity Identity "{5584CBC6363C648B}" {
     VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
-     Body "{0023F898C0FF18AA}Prefabs/Characters/Basebody/CharacterBasebody.et"
     }
     Name "Patman"
     Alias "Was"
