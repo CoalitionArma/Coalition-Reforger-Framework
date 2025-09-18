@@ -298,11 +298,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_SpawnOnGroup, playerId, spawnLocation, groupID, logAction); 
 	}
 	
-	void RequestGroupIdFromServer(int requestedId, int requesterID)
-	{
-		Rpc(RpcAsk_RequestGroupIdFromServer, requestedId, requesterID); 
-	}
-	
 	// Vehicle depot management
 	void RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
 	{
@@ -644,17 +639,6 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				m_RplBroadcastManager.LogAdminAction(logMessage, playerId, true);
 			}
 		}
-	}
-
-	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestGroupIdFromServer(int requestedId, int requesterID)
-	{
-		if (m_SlottingManager.IsPlayerInASlot(requestedId))
-			return;
-
-		SCR_AIGroup playerGroup = m_SlottingManager.GetPlayerSlotGroup(requestedId);
-		if (playerGroup)
-			m_RplBroadcastManager.SendGroupIDToPlayer(requesterID, playerGroup.GetGroupID());
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
