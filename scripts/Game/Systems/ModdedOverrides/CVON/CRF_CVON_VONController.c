@@ -92,6 +92,19 @@ modded class SCR_VONController
 		super.ComputeStereoLR(listener, sourcePos, volume_m, playerId, outLeft, outRight, silencedDecibels, rearPanBoost, rearShadow, elevNarrow, bleed, normalizePeak);
 	}
 	
+	override void ComputeSpectatorLR(int playerId, out float outLeft = 1, out float outRight = 1, out int silencedDecibels = 0)
+	{
+		float specLeft;
+		float specRight;
+		if (SpectatorLRCheck(playerId, specLeft, specRight))
+		{
+			outLeft = specLeft;
+			outRight = specRight;
+			silencedDecibels = 0;
+			return;
+		}
+	}
+	
 	bool SpectatorLRCheck(int playerId, out float left, out float right)
 	{
 		if (!IsPlayerAndClientSpectator(playerId))
@@ -174,6 +187,10 @@ modded class SCR_VONController
 	
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
+		if (m_fWriteTeamspeakClientIdCooldown > 0)
+			m_fWriteTeamspeakClientIdCooldown -= timeSlice;
+		else
+			m_fWriteTeamspeakClientIdCooldown = 0;
 		if (!CVON_VONGameModeComponent.GetInstance())
 			return;
 		
@@ -249,10 +266,11 @@ modded class SCR_VONController
 				else
 					continue;
 			
+			bool isOtherSpectator = IsPlayerSpectator(playerId);
 			float distance = vector.Distance(player.GetOrigin(), camera.GetOrigin());
 			if (distance > maxDistance)
 			{
-				bool isOtherSpectator = IsPlayerSpectator(playerId);
+				
 				
 				if (isLocalSpectator && isOtherSpectator)
 				{
@@ -266,6 +284,7 @@ modded class SCR_VONController
 						container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
 						container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 						container.m_iPlayerId = playerId;
+						container.m_bIsSpectator = isOtherSpectator;
 						m_PlayerController.m_aLocalActiveVONEntries.Insert(container);
 						m_PlayerController.m_aLocalActiveVONEntriesIds.Insert(playerId);
 						continue;
@@ -297,6 +316,7 @@ modded class SCR_VONController
 					container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
 					container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 					container.m_iPlayerId = playerId;
+					container.m_bIsSpectator = isOtherSpectator;
 					m_PlayerController.m_aLocalActiveVONEntries.Insert(container);
 					m_PlayerController.m_aLocalActiveVONEntriesIds.Insert(playerId);
 				}
