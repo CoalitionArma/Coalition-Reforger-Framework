@@ -99,16 +99,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		Rpc(RpcDo_AssignAdminTicket, ticketID, adminID, logAction);
 		#endif
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SendGroupIDToPlayer(int requesterID, int groupId)
-	{
-		#ifdef WORKBENCH
-		RpcDo_SendGroupIDToPlayer(requesterID, groupId);
-		#else
-		Rpc(RpcDo_SendGroupIDToPlayer, requesterID, groupId);
-		#endif
-	}
 
 	//------------------------------------------------------------------------------------------------
 	void TeleportPlayers(int playerId1, int playerId2, bool logAction)
@@ -584,20 +574,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 		// Display a admin assigned them self to the ticket
 		m_AdminMenuManager.NewTicketMessage(ticketID, adminID, "Assigned to Ticket");
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_SendGroupIDToPlayer(int requesterID, int groupId)
-	{
-		if (!IsLocalPlayer(requesterID) || groupId == -1)
-			return;
-
-		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
-		CRF_AdminMenu adminMenu = CRF_AdminMenu.Cast(topMenu);
-
-		if (adminMenu)
-			adminMenu.UpdateSpawnGroup(groupId);
 	}
 
 	//------------------------------------------------------------------------------------------------
