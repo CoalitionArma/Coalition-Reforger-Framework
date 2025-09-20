@@ -5,55 +5,55 @@ PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et
    Position 355.41 0 -616.638
   }
   ShapePoint "{66545C104F9C27B1}" {
-   Position 54.68 0 -655.58
+   Position 44.673 -0.764 -696.547
   }
   ShapePoint "{66545C10564CFA02}" {
-   Position -267.832 0 -512.114
+   Position -340.26 -7.131 -747.706
   }
   ShapePoint "{66545C105B57F48D}" {
-   Position -443.894 0 -579.902
+   Position -457.775 0.336 -631.656
   }
   ShapePoint "{66545C105ED78E32}" {
-   Position -731.229 0 -251.78
+   Position -776.426 -5.519 -215.46
   }
   ShapePoint "{66545C10618FAD2F}" {
-   Position -766.154 -29.996 -10.621
+   Position -780.82 -29.996 -20.959
   }
   ShapePoint "{66545C1077DDD7AD}" {
-   Position -716.845 0 557.819
+   Position -1037.567 -1.652 374.445
   }
   ShapePoint "{66545C1007B170E0}" {
-   Position -365.287 0 1045.839
+   Position -1014.234 15.687 479.277
   }
   ShapePoint "{66545C1008E78847}" {
-   Position -147.63 0 1150.61
+   Position -755.01 0 594.329
   }
   ShapePoint "{66545C100E51D77D}" {
-   Position 137.038 0 996.422
+   Position -437.365 0 514.201
   }
   ShapePoint "{66545C10134242EE}" {
-   Position 337.389 0 842.861
+   Position -56.089 -14.985 493.609
   }
   ShapePoint "{66545C10206DD319}" {
-   Position 384.804 -17.756 500.091
+   Position 419.03 -15.939 492.159
   }
   ShapePoint "{66545C10302318DF}" {
-   Position 473.502 -0.655 280.87
+   Position 494.846 -0.655 314.003
   }
   ShapePoint "{66545C1031345C0A}" {
-   Position 454.782 1.189 39.598
+   Position 692.053 -1.015 151.736
   }
   ShapePoint "{66545C1035E575CC}" {
-   Position 521.217 -9.114 -87.818
+   Position 716.273 -3.96 -0.307
   }
   ShapePoint "{66545C1039103EC8}" {
-   Position 553.919 1.084 -278.483
+   Position 760.623 3.595 -169.629
   }
   ShapePoint "{66545C1039D51090}" {
-   Position 548.729 -1.885 -416.208
+   Position 558.323 -2.083 -406.157
   }
   ShapePoint "{665B6B9EC47CE912}" {
-   Position 449.103 0 -508.103
+   Position 457.228 0 -512.069
   }
  }
 }
@@ -87,34 +87,34 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
  }
 }
 PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
- coords 688.28 5.142 1683.618
+ coords 468.037 4.362 2128.416
  Points {
   ShapePoint "{66545C116D6F5953}" {
-   Position -98.203 0 -13.665
+   Position -111.6 0 -23.351
   }
   ShapePoint "{66545C116F4D6B24}" {
-   Position -92.402 0 20.067
+   Position -101.658 0 29.135
   }
   ShapePoint "{66545C11703ED0BE}" {
-   Position -50.416 0 49.531
+   Position -66.33 0 74.45
   }
   ShapePoint "{66545C11712BD511}" {
-   Position 2.476 0 29.015
+   Position -20.09 0 93.516
   }
   ShapePoint "{66545C11718BF72B}" {
-   Position 51.126 0 22.694
+   Position 3.91 0 32.81
   }
   ShapePoint "{66545C1173F05FE1}" {
-   Position 79.535 0 -4.892
+   Position 79.683 0 12.972
   }
   ShapePoint "{66545C1176579C75}" {
-   Position 34.854 0 -95.973
+   Position 70.597 0 -26.871
   }
   ShapePoint "{66545C11777875D2}" {
-   Position -96.524 0 -164.486
+   Position 31.872 -8.357 -35.687
   }
   ShapePoint "{66545C1177DEB786}" {
-   Position -107.718 0 -49.31
+   Position -11.24 0 -62.881
   }
  }
 }

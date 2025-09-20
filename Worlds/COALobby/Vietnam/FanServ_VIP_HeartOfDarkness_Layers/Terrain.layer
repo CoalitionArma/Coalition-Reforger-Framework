@@ -9,6 +9,16 @@ $grp SCR_DestructibleBuildingEntity : "{393E05AFD826F677}Prefabs/Bridges/Bamboo 
   angleY 5.881
   scale 1.2
  }
+ {
+  coords 1714.357 -0.106 1464.286
+  angleY 15
+  scale 1.2
+ }
+ {
+  coords 1732.23 0 1459.525
+  angleY 15
+  scale 1.2
+ }
 }
 $grp SCR_DestructibleBuildingEntity : "{6BE680A3613A5C49}Prefabs/Swing_Bridge.et" {
  {
