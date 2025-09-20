@@ -80,6 +80,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  "			GetGame().GetCallqueue().Call(AddArmBand, entity);"\
  "	"
  m_iTimeLimitMinutes 60
+ m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "“Boss, a Soviet Spetsnaz platoon has been sighted in the Central Highlands of Vietnam. Their commander’s directing counter-insurgency against local guerrillas. If he isn’t removed, the Soviets will gain a foothold here."\
@@ -104,7 +105,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "- Capture the Soviet Platoon Leader alive."\
-   "- Ensure he does not escape."
+   "- Ensure he does not escape."\
+   ""\
+   "- Utilize the UAZs for your respawns to cut off the target if he tries to flee"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "- Do not let the Platoon Leader die."\
@@ -311,9 +314,10 @@ $grp SCR_BaseTriggerEntity {
   "	"\
   "	void SelectExtraction()"\
   "	{"\
-  "		RandomGenerator random = new RandomGenerator();"\
-  "		random.SetSeed(System.GetUnixTime());"\
-  "		m_SelectedExtraction = random.RandInt(0, m_iAmountOfExtractions - 1);"\
+  "		RandomGenerator randomGen = new RandomGenerator();"\
+  "		randomGen.SetSeed(System.GetTickCount());"\
+  "		int random = randomGen.RandInt(0, m_iAmountOfExtractions);"\
+  "		m_SelectedExtraction = random;"\
   "	}"
   EOnInit ""\
   "		m_Gamemode = CRF_Gamemode.GetInstance();"\
@@ -359,7 +363,7 @@ $grp SCR_BaseTriggerEntity {
   "		float currentTime = GetGame().GetWorld().GetWorldTime();"\
   "		float millis = m_SafestartManager.m_iTimeMissionEnds - currentTime;"\
   "		int totalSeconds = (millis * 0.001);"\
-  "		if (totalSeconds <= 1200)"\
+  "		if (totalSeconds <= 1200 && m_SelectedExtraction == -1)"\
   "			SelectExtraction();"\
   "	"
  }
@@ -434,14 +438,14 @@ $grp SCR_BaseTriggerEntity {
   "		if (!m_bHasEscapePlayed)"\
   "		{"\
   "			vector origin = GetOrigin();"\
-  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT is trying to escape to Khu Du!\");"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT is trying to escape to Dak Ho!\");"\
   "			m_bHasEscapePlayed = true;"\
   "			"\
   "			"\
   "			SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();"\
   "			SCR_MapMarkerBase marker = new SCR_MapMarkerBase();"\
   "			marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);"\
-  "			marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.HELP);"\
+  "			marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.PICK_UP2);"\
   "			marker.SetCustomText(\"Extraction\");"\
   "			marker.SetColorEntry(Color.RED);"\
   "			marker.SetWorldPos(origin[0], origin[2]);"\
@@ -510,7 +514,7 @@ $grp SCR_BaseTriggerEntity {
   "		if (!m_bHasEscapePlayed)"\
   "		{"\
   "			vector origin = GetOrigin();"\
-  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT is trying to escape to Dak Ho!\");"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT is trying to escape to Lang Chu Lan!\");"\
   "			m_bHasEscapePlayed = true;"\
   "			"\
   "			"\

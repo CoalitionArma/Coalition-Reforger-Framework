@@ -1,3 +1,47 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 1169.222 55.563 1544.458
+  angleY -137
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1158.318 54.84 1529.704
+  angleY -149
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1173.93 55.677 1549.389
+  angleY -137
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1162.688 55.305 1536.036
+  angleY -146
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1185.591 56.023 1559.906
+  angleY -137
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1191.295 56.497 1566.158
+  angleY -137
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_sFactionKey "BLUFOR"
+ }
+ {
+  coords 1180.106 55.866 1555.333
+  angleY -137
+  m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+  m_sFactionKey "BLUFOR"
+ }
+}
 GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
  coords 1253.298 78.828 1525.347
 }

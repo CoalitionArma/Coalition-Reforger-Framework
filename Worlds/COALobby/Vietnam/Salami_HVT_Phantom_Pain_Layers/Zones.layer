@@ -1,3 +1,18 @@
+CRF_VehicleSpawner {
+ coords 1195.919 57.087 1570.388
+ angleY -137
+ m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+ m_sFactionKey "BLUFOR"
+}
+CRF_ManualMarker VehicleMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1175.826 55.742 1551.646
+ m_MarkerColor 0.631 0.627 0.009 1
+ m_sQuadName "entry-point"
+ m_sDescription "Vehicles"
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+}
 PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
  components {
   CRF_PolyZone "{65865377C721CCB0}" {
