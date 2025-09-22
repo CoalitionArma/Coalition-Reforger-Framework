@@ -1,0 +1,5 @@
+MatPBRBasic {
+ Color 0.01 0.01 0.01 1
+ BCRMap "{01B8CA5D2C403F5D}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_cover_BCR.edds"
+ NMOMap "{396071CFF5376DC3}Assets/Vehicles/Wheeled/LR3Series/Data/lr_3series_cover_NMO.edds"
+}

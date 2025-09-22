@@ -1,0 +1,13 @@
+GameEntity : "{F721E7D9C0C733D4}Prefabs/Characters/HeadGear/Hat_PeakedCap_USSR_01/Hat_PeakedCap_USSR_01_base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   WornMaterialsOverride {
+    "{799AA30C939ECCAB}Assets/Characters/HeadGear/Hat_PeakedCap_USSR_01/data/Hat_PeakedCap_USSR_Police.emat"
+   }
+   ItemMaterialsOverride {
+    "{799AA30C939ECCAB}Assets/Characters/HeadGear/Hat_PeakedCap_USSR_01/data/Hat_PeakedCap_USSR_Police.emat"
+   }
+  }
+ }
+}
