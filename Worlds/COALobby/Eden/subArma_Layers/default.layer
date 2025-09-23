@@ -3,28 +3,8 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 5849.818 8.199 9892.188
+ m_bSafestartInstantlyEnabled 0
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
- }
-}
-GenericEntity {
- coords 5837.99 7.875 9882.679
-}
-$grp GenericEntity : "{1EA3C6C32227954E}Prefabs/Weapons/Grenades/grenade_ThrowableBrick.et" {
- {
-  coords 5840.218 7.91 9886.275
-  angleY 65.298
- }
- {
-  coords 5841.107 7.91 9885.476
-  angleY 65.298
- }
- {
-  coords 5841.167 7.91 9885.795
-  angleY 65.298
- }
- {
-  coords 5841.876 7.91 9885.293
-  angleY 65.298
  }
 }

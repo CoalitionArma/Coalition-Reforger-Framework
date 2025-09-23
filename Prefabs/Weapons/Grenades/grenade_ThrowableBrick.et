@@ -21,8 +21,9 @@ GenericEntity : "{0DCE9A9A4F31BE1C}Prefabs/Weapons/Core/SmokeGrenade_Base.et" {
    ProjectileEffects {
     ProjectileDamage "{59396C0BA2D37AE0}" {
      DamageValue 10
+     DamageType Collision
      DamageEffects {
-      SCR_ConcussionDamageEffect "{666D13652D7C29AF}" {
+      SCR_MeleeDamageEffect "{666D2EE570DDBCAD}" {
       }
      }
     }

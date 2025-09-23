@@ -5,19 +5,115 @@ GenericEntity : "{0A4B42DD94487BFE}Prefabs/Props/Construction/ContainerMetal_01/
 GenericEntity : "{2A0F520584F7B112}Prefabs/Props/Industrial/CartSawmill_01_log.et" {
  coords 5830.47 4.563 9817.712
 }
+$grp Projectile : "{33DE63EF886F6701}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433_ThrowableBrick.et" {
+ {
+  coords 5837.324 7.875 9883.543
+ }
+ {
+  coords 5835.003 7.906 9884.564
+ }
+ {
+  coords 5837.939 7.875 9883.973
+ }
+ {
+  coords 5834.82 7.912 9883.906
+ }
+ {
+  coords 5836.053 7.877 9884.115
+ }
+ {
+  coords 5835.535 7.89 9883.995
+ }
+ {
+  coords 5836.696 7.887 9884.749
+ }
+ {
+  coords 5835.405 7.903 9885.214
+ }
+ {
+  coords 5835.001 7.919 9885.771
+ }
+ {
+  coords 5836.248 7.902 9885.906
+ }
+ {
+  coords 5836.608 7.897 9885.559
+ }
+ {
+  coords 5836.068 7.885 9884.646
+ }
+ {
+  coords 5835.6 7.893 9884.763
+ }
+ {
+  coords 5834.165 7.932 9885.433
+ }
+ {
+  coords 5833.491 7.953 9886.08
+ }
+}
+$grp Projectile : "{33DE63EF886F6702}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433_ThrowableRock.et" {
+ {
+  coords 5839.349 7.875 9884.892
+ }
+ {
+  coords 5838.669 7.875 9885.419
+ }
+ {
+  coords 5838.915 7.875 9884.976
+ }
+ {
+  coords 5838.342 7.875 9885.413
+ }
+ {
+  coords 5838.657 7.875 9884.482
+ }
+ {
+  coords 5838.067 7.875 9884.675
+ }
+ {
+  coords 5837.518 7.882 9885.614
+ }
+ {
+  coords 5838.642 7.875 9885.895
+ }
+ {
+  coords 5838.902 7.875 9885.858
+ }
+ {
+  coords 5839.487 7.875 9885.495
+ }
+ {
+  coords 5838.776 7.875 9885.446
+ }
+ {
+  coords 5837.669 7.88 9886.019
+ }
+ {
+  coords 5838.061 7.875 9886.056
+ }
+ {
+  coords 5838.747 7.875 9886.013
+ }
+ {
+  coords 5839.153 7.875 9885.937
+ }
+}
 SCR_DestructibleEntity : "{43EB690D46E15669}Prefabs/Structures/Walls/Concrete/ConcreteWall_01/ConcreteWall_01_6m_B.et" {
  coords 5733.142 0.128 9828.851
  angleY 168.744
 }
-GenericEntity : "{4A34979DC19CA9ED}Prefabs/Props/Construction/ConcreteMixer_01.et" {
- components {
-  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-   Enabled 1
-  }
-  RplComponent "{5624A88DC2D9928D}" {
-   Enabled 1
-  }
+$grp Projectile : "{470704A24FC9EF9C}Prefabs/Weapons/Ammo/BrickSubmunition.et" {
+ {
+  coords 5842.493 7.908 9883.269
+  angleY 57.529
  }
+ {
+  coords 5841.107 7.908 9884.769
+  angleY 57.529
+ }
+}
+GenericEntity : "{4A34979DC19CA9ED}Prefabs/Props/Construction/ConcreteMixer_01.et" {
  coords 5840.475 4.562 9815.15
  angleY 78.446
 }
@@ -28,7 +124,7 @@ $grp StaticModelEntity : "{56E2BBA41AB5C9B0}Prefabs/Structures/Walls/Concrete/Si
   scale 0.315
  }
  {
-  coords 5833.278 -0 9881.205
+  coords 5833.278 0 9881.205
   angleY -154.364
   scale 0.315
  }
@@ -49,6 +145,14 @@ $grp StaticModelEntity : "{56E2BBA41AB5C9B0}Prefabs/Structures/Walls/Concrete/Si
  }
 }
 GenericEntity : "{5D31850B326BA246}Prefabs/Props/Industrial/AirCompressor_01/AirCompressor_01.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   Enabled 0
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 0
+  }
+ }
  coords 5833.38 4.563 9817.066
  angleY 67.252
 }
@@ -88,53 +192,36 @@ GenericEntity : "{95D947E744336F78}Prefabs/Props/Industrial/Workbench_01.et" {
 }
 $grp GenericEntity : "{A419F4547954DA05}Prefabs/Props/Construction/CableReel/CableReelWooden_01.et" {
  {
-  components {
-   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-    Enabled 1
-   }
-   RplComponent "{5624A88DC2D9928D}" {
-    Enabled 1
-   }
-  }
   coords 5832.921 4.562 9816.146
  }
  {
-  components {
-   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-    Enabled 1
-   }
-   RplComponent "{5624A88DC2D9928D}" {
-    Enabled 1
-   }
-  }
   coords 5833.658 4.562 9815.195
  }
  {
-  components {
-   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-    Enabled 1
-   }
-   RplComponent "{5624A88DC2D9928D}" {
-    Enabled 1
-   }
-  }
   coords 5833.226 5.445 9815.75
  }
 }
+$grp Projectile : "{A8DC7D3A053DB5B4}Prefabs/Weapons/Ammo/Brick2.et" {
+ {
+  coords 5840.874 7.91 9883.404
+  angleY 65.298
+ }
+ {
+  coords 5840.036 7.91 9883.863
+  angleY 65.298
+ }
+}
 GenericEntity : "{AF46DED77614AB65}Prefabs/Props/Industrial/PotIndustrial_01/PotIndustrial_01_base.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{51A4A8CA10A96EE4}" {
+   Enabled 0
+  }
+ }
  coords 5832.251 4.563 9817.479
  angleX 90
  angleY 0
 }
 GenericEntity : "{B47EB5AC921214EE}Prefabs/Props/Construction/CableReel/CableReelMetal_01.et" {
- components {
-  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-   Enabled 1
-  }
-  RplComponent "{5624A88DC2D9928D}" {
-   Enabled 1
-  }
- }
  coords 5839.124 4.562 9815.567
 }
 GenericEntity : "{C1977A326F2AA011}Prefabs/Structures/Signs/Military/SignCheckpoint_01_stop.et" {
@@ -142,26 +229,10 @@ GenericEntity : "{C1977A326F2AA011}Prefabs/Structures/Signs/Military/SignCheckpo
  angleY -59.559
 }
 GenericEntity : "{C51A49ACBB2EF063}Prefabs/Props/Construction/ContainerMetal_01/ContainerMetal_01_blue.et" {
- components {
-  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-   Enabled 1
-  }
-  RplComponent "{5624A88DC2D9928D}" {
-   Enabled 1
-  }
- }
  coords 5830.565 4.562 9815.343
  angleY 113.962
 }
 GenericEntity : "{DE658AC78172D02E}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Short.et" {
- components {
-  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-   Enabled 1
-  }
-  RplComponent "{5624A88DC2D9928D}" {
-   Enabled 1
-  }
- }
  coords 5836.066 4.562 9815.629
 }
 GenericEntity : "{F4BB6B6A0486F797}Prefabs/Props/Industrial/BarrelMetal_01_military.et" {
