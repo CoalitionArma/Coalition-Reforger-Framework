@@ -1,0 +1,7 @@
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 5565.617 161.363 3378.847
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 5539.626 160.101 3336.879
+ m_iTimeLimitMinutes 20
+}
