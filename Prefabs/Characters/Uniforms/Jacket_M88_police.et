@@ -12,7 +12,7 @@ GameEntity : "{E44990162EBC47B7}Prefabs/Characters/Uniforms/Jacket_M88_base.et" 
   BaseLoadoutClothComponent "{5104869D194C627A}" {
    Slots {
     LoadoutSlotInfo DummyBelt {
-     Prefab "{F928D90B6E4B9166}Prefabs/Characters/Vests/Vest_SovietHarness/Vest_SovietHarness_belt_dummy.et"
+     Prefab "{ACB6C2B49C1230F9}Prefabs/Characters/Vests/Vest_ALICE/Vest_ALICE_belt_dummy.et"
     }
    }
    WornMaterialsOverride {

@@ -2,120 +2,412 @@ GenericEntity : "{0A4B42DD94487BFE}Prefabs/Props/Construction/ContainerMetal_01/
  coords 5842.163 4.563 9814.521
  angleY 12.493
 }
+$grp GenericEntity : "{24FFA508861139C9}Prefabs/Weapons/Rifles/L42A1/Rifle_L8.et" {
+ {
+  coords 4810.525 175.632 7059.896
+  angleX 85.379
+  angleY -117.844
+  angleZ -180
+ }
+ {
+  coords 4810.396 175.609 7060.152
+  angleX 85.379
+  angleY -117.844
+  angleZ -180
+ }
+ {
+  coords 4810.298 175.61 7060.287
+  angleX 85.379
+  angleY -117.844
+  angleZ -180
+ }
+}
 GenericEntity : "{2A0F520584F7B112}Prefabs/Props/Industrial/CartSawmill_01_log.et" {
  coords 5830.47 4.563 9817.712
 }
-$grp Projectile : "{33DE63EF886F6701}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433_ThrowableBrick.et" {
+$grp GenericEntity : "{2A9A50C23773AC87}Prefabs/Weapons/Magazines/Carl Gustaf M45/BC_Magazine_9x19_M45_36rnd_Ball.et" {
  {
-  coords 5837.324 7.875 9883.543
+  coords 4811.548 175.629 7062.687
+  angleY 67.478
+  angleZ -90
  }
  {
-  coords 5835.003 7.906 9884.564
+  coords 4811.603 175.629 7062.748
+  angleY 67.478
+  angleZ -90
  }
  {
-  coords 5837.939 7.875 9883.973
+  coords 4811.663 175.63 7062.786
+  angleY 67.478
+  angleZ -90
  }
  {
-  coords 5834.82 7.912 9883.906
+  coords 4811.725 175.63 7062.832
+  angleY 67.478
+  angleZ -90
  }
  {
-  coords 5836.053 7.877 9884.115
+  coords 4811.81 175.63 7062.896
+  angleY 67.478
+  angleZ -90
  }
  {
-  coords 5835.535 7.89 9883.995
+  coords 4811.882 175.63 7062.93
+  angleY 67.478
+  angleZ -90
  }
  {
-  coords 5836.696 7.887 9884.749
+  coords 4811.974 175.63 7062.977
+  angleY 67.478
+  angleZ -90
  }
  {
-  coords 5835.405 7.903 9885.214
- }
- {
-  coords 5835.001 7.919 9885.771
- }
- {
-  coords 5836.248 7.902 9885.906
- }
- {
-  coords 5836.608 7.897 9885.559
- }
- {
-  coords 5836.068 7.885 9884.646
- }
- {
-  coords 5835.6 7.893 9884.763
- }
- {
-  coords 5834.165 7.932 9885.433
- }
- {
-  coords 5833.491 7.953 9886.08
+  coords 4812.09 175.627 7063.032
+  angleY 67.478
+  angleZ -90
  }
 }
-$grp Projectile : "{33DE63EF886F6702}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433_ThrowableRock.et" {
+$grp SCR_DestructibleEntity : "{43EB690D46E15669}Prefabs/Structures/Walls/Concrete/ConcreteWall_01/ConcreteWall_01_6m_B.et" {
  {
-  coords 5839.349 7.875 9884.892
+  coords 5733.142 0.128 9828.851
+  angleY 168.744
  }
  {
-  coords 5838.669 7.875 9885.419
+  coords 5727.169 -0.537 9827.719
+  angleX -0.051
+  angleY 91.772
+  angleZ 1.654
  }
  {
-  coords 5838.915 7.875 9884.976
+  coords 5726.987 -0.4 9821.777
+  angleX -0.051
+  angleY 91.772
+  angleZ 1.654
  }
  {
-  coords 5838.342 7.875 9885.413
+  coords 5726.801 -0.074 9815.813
+  angleX -0.051
+  angleY 91.772
+  angleZ 1.654
  }
  {
-  coords 5838.657 7.875 9884.482
+  coords 5726.618 0.295 9809.87
+  angleX -0.051
+  angleY 91.772
+  angleZ 1.654
  }
  {
-  coords 5838.067 7.875 9884.675
+  coords 5726.384 0.475 9803.962
+  angleX 0.106
+  angleY 85.707
+  angleZ 3.747
  }
  {
-  coords 5837.518 7.882 9885.614
+  coords 5727.722 0.716 9786.189
+  angleX 0.106
+  angleY 85.707
+  angleZ 3.747
  }
  {
-  coords 5838.642 7.875 9885.895
+  coords 5727.276 0.86 9792.107
+  angleX 0.106
+  angleY 85.707
+  angleZ 3.747
  }
  {
-  coords 5838.902 7.875 9885.858
+  coords 5726.828 0.728 9798.045
+  angleX 0.106
+  angleY 85.707
+  angleZ 3.747
  }
  {
-  coords 5839.487 7.875 9885.495
+  coords 5728.243 0.498 9780.002
+  angleX 0.536
+  angleY 98.033
+  angleZ -2.498
  }
  {
-  coords 5838.776 7.875 9885.446
+  coords 5725.743 0.585 9762.324
+  angleX 0.536
+  angleY 98.033
+  angleZ -2.498
  }
  {
-  coords 5837.669 7.88 9886.019
+  coords 5726.573 0.493 9768.213
+  angleX 0.536
+  angleY 98.033
+  angleZ -2.498
  }
  {
-  coords 5838.061 7.875 9886.056
+  coords 5727.412 0.564 9774.116
+  angleX 0.536
+  angleY 98.033
+  angleZ -2.498
  }
  {
-  coords 5838.747 7.875 9886.013
+  coords 5724.916 0.871 9756.731
+  angleX -0.051
+  angleY 96.149
+  angleZ 1.654
  }
  {
-  coords 5839.153 7.875 9885.937
+  coords 5723.004 0.223 9738.978
+  angleX -0.051
+  angleY 96.149
+  angleZ 1.654
+ }
+ {
+  coords 5723.64 0.453 9744.889
+  angleX -0.051
+  angleY 96.149
+  angleZ 1.654
+ }
+ {
+  coords 5724.282 0.669 9750.818
+  angleX -0.051
+  angleY 96.149
+  angleZ 1.654
+ }
+ {
+  coords 5722.361 0.812 9733.063
+  angleX 0.182
+  angleY 95.615
+  angleZ -0.72
+ }
+ {
+  coords 5720.614 0.713 9715.278
+  angleX 0.182
+  angleY 95.615
+  angleZ -0.72
+ }
+ {
+  coords 5721.195 0.76 9721.201
+  angleX 0.182
+  angleY 95.615
+  angleZ -0.72
+ }
+ {
+  coords 5721.781 0.787 9727.143
+  angleX 0.182
+  angleY 95.615
+  angleZ -0.72
+ }
+ {
+  coords 5720.063 1.027 9709.462
+  angleX -0.051
+  angleY 104.825
+  angleZ 1.654
+ }
+ {
+  coords 5715.494 0.241 9692.196
+  angleX -0.051
+  angleY 104.825
+  angleZ 1.654
+ }
+ {
+  coords 5717.015 0.444 9697.947
+  angleX -0.051
+  angleY 104.825
+  angleZ 1.654
+ }
+ {
+  coords 5718.543 0.713 9703.715
+  angleX -0.051
+  angleY 104.825
+  angleZ 1.654
+ }
+ {
+  coords 5713.955 0.391 9686.378
+  angleX -0.051
+  angleY 104.36
+  angleZ 1.654
+ }
+ {
+  coords 5709.529 -0.014 9669.078
+  angleX -0.051
+  angleY 104.36
+  angleZ 1.654
+ }
+ {
+  coords 5711.002 0.121 9674.837
+  angleX -0.051
+  angleY 104.36
+  angleZ 1.654
+ }
+ {
+  coords 5712.483 0.265 9680.618
+  angleX -0.051
+  angleY 104.36
+  angleZ 1.654
+ }
+ {
+  coords 5707.964 0.413 9663.315
+  angleX 0.361
+  angleY 104.75
+  angleZ 0.089
+ }
+ {
+  coords 5703.416 0.311 9646.04
+  angleX 0.361
+  angleY 104.75
+  angleZ 0.089
+ }
+ {
+  coords 5704.931 0.463 9651.794
+  angleX 0.361
+  angleY 104.75
+  angleZ 0.089
+ }
+ {
+  coords 5706.451 0.497 9657.563
+  angleX 0.361
+  angleY 104.75
+  angleZ 0.089
+ }
+ {
+  coords 5701.87 0.203 9640.179
+  angleX 1.674
+  angleY 104.126
+  angleZ -5.169
+ }
+ {
+  coords 5697.483 0.678 9622.927
+  angleX 1.674
+  angleY 104.126
+  angleZ -5.169
+ }
+ {
+  coords 5698.943 0.678 9628.672
+  angleX 1.674
+  angleY 104.126
+  angleZ -5.169
+ }
+ {
+  coords 5700.41 0.507 9634.438
+  angleX 1.674
+  angleY 104.126
+  angleZ -5.169
+ }
+ {
+  coords 5696.003 0.665 9617.09
+  angleX 2.293
+  angleY 107.224
+  angleZ -5.865
+ }
+ {
+  coords 5694.23 0.735 9611.442
+  angleX 2.293
+  angleY 96.601
+  angleZ -5.865
+ }
+ {
+  coords 5693.618 0.554 9605.763
+  angleX 2.984
+  angleY 80.778
+  angleZ -1.653
+ }
+ {
+  coords 5694.46 0.682 9599.987
+  angleX 1.39
+  angleY 25.878
+  angleZ 0.41
+  scale 0.93
+ }
+ {
+  coords 5707.375 0.452 9595.011
+  angleX 0.279
+  angleY 12.789
+  angleZ 5.569
+ }
+ {
+  coords 5718.944 0.718 9592.397
+  angleX 0.279
+  angleY 12.789
+  angleZ 5.569
+ }
+ {
+  coords 5713.171 0.203 9593.696
+  angleX 0.279
+  angleY 12.789
+  angleZ 5.569
+ }
+ {
+  coords 5724.578 0.655 9590.739
+  angleX 0.011
+  angleY 12.792
+  angleZ 6.749
+ }
+ {
+  coords 5736.121 0.62 9588.123
+  angleX 0.011
+  angleY 12.792
+  angleZ 6.749
+ }
+ {
+  coords 5730.36 0.614 9589.425
+  angleX 0.011
+  angleY 12.792
+  angleZ 6.749
  }
 }
-SCR_DestructibleEntity : "{43EB690D46E15669}Prefabs/Structures/Walls/Concrete/ConcreteWall_01/ConcreteWall_01_6m_B.et" {
- coords 5733.142 0.128 9828.851
- angleY 168.744
-}
-$grp Projectile : "{470704A24FC9EF9C}Prefabs/Weapons/Ammo/BrickSubmunition.et" {
+$grp GenericEntity : "{458A4E8CD3590D92}Prefabs/Weapons/Shotguns/Remington 870/BC_Shotgun_Remington_870.et" {
  {
-  coords 5842.493 7.908 9883.269
-  angleY 57.529
+  coords 4810.176 175.571 7060.43
+  angleX 86.367
+  angleY 180
+  angleZ 121.327
  }
  {
-  coords 5841.107 7.908 9884.769
-  angleY 57.529
+  coords 4810.547 175.565 7059.75
+  angleX 86.367
+  angleY 180
+  angleZ 121.327
+ }
+ {
+  coords 4809.943 175.59 7060.812
+  angleX 86.367
+  angleY 180
+  angleZ 121.327
  }
 }
 GenericEntity : "{4A34979DC19CA9ED}Prefabs/Props/Construction/ConcreteMixer_01.et" {
  coords 5840.475 4.562 9815.15
  angleY 78.446
+}
+$grp GenericEntity : "{4F4439BAA80A7A66}Prefabs/Weapons/Magazines/Magazine_762x51_L42a1_10rnd_Base.et" {
+ {
+  coords 4809.638 176.036 7061.526
+  angleZ -90
+ }
+ {
+  coords 4809.747 176.034 7061.58
+  angleY 82.472
+  angleZ -90
+ }
+ {
+  coords 4809.672 176.055 7061.564
+  angleY 21.549
+  angleZ -90
+ }
+ {
+  coords 4809.831 176.368 7061.28
+  angleZ -90
+ }
+ {
+  coords 4809.804 176.368 7061.368
+  angleY -27.164
+  angleZ -90
+ }
+ {
+  coords 4809.75 176.368 7061.295
+  angleY 69.026
+  angleZ -90
+ }
+ {
+  coords 4809.756 176.368 7061.441
+  angleY -69.858
+  angleZ -90
+ }
 }
 $grp StaticModelEntity : "{56E2BBA41AB5C9B0}Prefabs/Structures/Walls/Concrete/SilageWall_02/SilageWall_02_12m_B.et" {
  {
@@ -170,11 +462,75 @@ $grp SCR_DestructibleEntity : "{60E5729BEA18F875}Prefabs/Structures/Walls/Concre
   angleY 1.926
  }
 }
+$grp GameEntity : "{6E14F80C250F85FC}Prefabs/Characters/HeadGear/Helmet_M1_01/Helmet_M1_01.et" {
+ {
+  coords 4814.165 176.612 7064.062
+  angleY 146.832
+ }
+ {
+  coords 4814.389 176.613 7064.206
+  angleY 146.832
+ }
+ {
+  coords 4814.585 176.614 7064.319
+  angleY 146.832
+ }
+ {
+  coords 4814.772 176.614 7064.424
+  angleY 146.832
+ }
+ {
+  coords 4814.944 176.615 7064.53
+  angleY 146.832
+ }
+ {
+  coords 4815.136 176.609 7064.658
+  angleY 146.832
+ }
+ {
+  coords 4815.303 176.61 7064.753
+  angleY 146.832
+ }
+ {
+  coords 4815.507 176.611 7064.885
+  angleY 146.832
+ }
+ {
+  coords 4815.695 176.612 7065.014
+  angleY 146.832
+ }
+ {
+  coords 4815.927 176.614 7065.132
+  angleY 146.832
+ }
+}
 GenericEntity : "{6FD54E69CFDD6B07}Prefabs/Props/Industrial/BarrelFuel_01_closed_old.et" {
  coords 5842.498 4.766 9818.365
 }
 Turret : "{723870DBB19D30B0}Prefabs/Weapons/Tripods/Tripod_6T5_PKM.et" {
  coords 5836.609 5.563 9815.325
+}
+$grp GameEntity : "{76E4B06195684DCF}Prefabs/Weapons/Attachments/Bayonets/Bayonet_M45/BC_Bayonet_M45.et" {
+ {
+  coords 4813.319 176.131 7063.746
+  angleY 164.457
+  angleZ 90
+ }
+ {
+  coords 4813.213 176.116 7063.706
+  angleY 164.457
+  angleZ 90
+ }
+ {
+  coords 4813.107 176.122 7063.665
+  angleY 164.457
+  angleZ 90
+ }
+ {
+  coords 4812.979 176.119 7063.636
+  angleY 164.457
+  angleZ 90
+ }
 }
 GenericEntity : "{795552B887CD50E7}Prefabs/Props/Industrial/ConcretePanel_01_stack.et" {
  coords 5829.379 4.553 9821.701
@@ -201,15 +557,9 @@ $grp GenericEntity : "{A419F4547954DA05}Prefabs/Props/Construction/CableReel/Cab
   coords 5833.226 5.445 9815.75
  }
 }
-$grp Projectile : "{A8DC7D3A053DB5B4}Prefabs/Weapons/Ammo/Brick2.et" {
- {
-  coords 5840.874 7.91 9883.404
-  angleY 65.298
- }
- {
-  coords 5840.036 7.91 9883.863
-  angleY 65.298
- }
+GenericEntity : "{A7DA7AC6FEF7B643}Prefabs/Props/Military/Camps/WeaponRackCabinet_01.et" {
+ coords 4809.914 175.218 7060.457
+ angleY 61.397
 }
 GenericEntity : "{AF46DED77614AB65}Prefabs/Props/Industrial/PotIndustrial_01/PotIndustrial_01_base.et" {
  components {
@@ -220,6 +570,206 @@ GenericEntity : "{AF46DED77614AB65}Prefabs/Props/Industrial/PotIndustrial_01/Pot
  coords 5832.251 4.563 9817.479
  angleX 90
  angleY 0
+}
+$grp GenericEntity : "{B0DFDF7AAA9C5D39}Prefabs/Weapons/Magazines/BC_Shell_12ga_Buckshot.et" {
+ {
+  coords 4809.92 176.033 7061.162
+  angleY 101.393
+ }
+ {
+  coords 4809.916 176.038 7061.203
+  angleY 13.348
+ }
+ {
+  coords 4809.881 176.028 7061.166
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.861 176.027 7061.192
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.846 176.027 7061.212
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.894 176.027 7061.177
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.878 176.027 7061.2
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.862 176.027 7061.225
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.819 176.027 7061.258
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.81 176.027 7061.275
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.799 176.027 7061.294
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.792 176.027 7061.311
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.784 176.027 7061.327
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.799 176.027 7061.335
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.81 176.027 7061.318
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.818 176.027 7061.302
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.826 176.027 7061.285
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.838 176.027 7061.271
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.854 176.027 7061.278
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.842 176.027 7061.297
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.835 176.027 7061.311
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.825 176.027 7061.331
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.813 176.027 7061.356
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.827 176.027 7061.363
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.838 176.027 7061.343
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.848 176.027 7061.322
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.86 176.027 7061.302
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.872 176.027 7061.281
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.888 176.027 7061.294
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.875 176.027 7061.315
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.868 176.028 7061.332
+  angleX 89.972
+  angleY 13.348
+ }
+ {
+  coords 4809.854 176.027 7061.36
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.837 176.027 7061.395
+  angleX 90
+  angleY -166.652
+  angleZ -180
+ }
+ {
+  coords 4809.761 176.03 7061.405
+  angleX 6.663
+  angleY 13.348
+ }
 }
 GenericEntity : "{B47EB5AC921214EE}Prefabs/Props/Construction/CableReel/CableReelMetal_01.et" {
  coords 5839.124 4.562 9815.567
@@ -232,8 +782,60 @@ GenericEntity : "{C51A49ACBB2EF063}Prefabs/Props/Construction/ContainerMetal_01/
  coords 5830.565 4.562 9815.343
  angleY 113.962
 }
+$grp GenericEntity : "{DD1BCD7922BBB516}Prefabs/Weapons/Rifles/Carl Gustaf M45/BC_Rifle_Carl_Gustaf_M45.et" {
+ {
+  coords 4812.515 176.132 7063.39
+  angleY 78.406
+  angleZ 90
+ }
+ {
+  coords 4812.174 176.117 7063.04
+  angleY 78.406
+  angleZ 90
+ }
+ {
+  coords 4811.678 176.125 7062.867
+  angleX 0.328
+  angleY -94.459
+  angleZ 89.71
+ }
+}
 GenericEntity : "{DE658AC78172D02E}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Short.et" {
  coords 5836.066 4.562 9815.629
+}
+$grp GenericEntity : "{EC52017B865C2AD0}Prefabs/Characters/Vests/Vest_M69/Vest_M69_UK_OD.et" {
+ {
+  coords 4815.643 175.674 7065.049
+  angleY 152.414
+ }
+ {
+  coords 4815.166 175.661 7064.797
+  angleY 152.414
+ }
+ {
+  coords 4814.726 175.658 7064.566
+  angleY 152.414
+ }
+ {
+  coords 4814.215 175.664 7064.305
+  angleY 152.414
+ }
+ {
+  coords 4814.21 176.113 7064.289
+  angleY 152.414
+ }
+ {
+  coords 4814.686 176.11 7064.531
+  angleY 152.414
+ }
+ {
+  coords 4815.119 176.117 7064.764
+  angleY 152.414
+ }
+ {
+  coords 4815.654 176.113 7065.031
+  angleY 152.414
+ }
 }
 GenericEntity : "{F4BB6B6A0486F797}Prefabs/Props/Industrial/BarrelMetal_01_military.et" {
  coords 5834.441 4.562 9816.873

@@ -3,8 +3,23 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 5849.818 8.199 9892.188
- m_bSafestartInstantlyEnabled 0
+ m_iTimeLimitMinutes 30
+ m_iFactionOneRatio 6
+ m_sFactionOneKey "IND"
+ m_sFactionTwoKey "BLU"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_FAMILY_subArma.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{3A02559F5E0205A2}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_CIV_subArma.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{2779555E9C6E3158}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_HOSTAGE_subArma.conf"
  }
 }
