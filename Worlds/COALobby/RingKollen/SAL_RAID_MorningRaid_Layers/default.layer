@@ -1,0 +1,68 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 801.08 377.832 2432.171
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RaidGamemodeComponent "{66711105B581F7C7}" {
+  }
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_bTeamspeakChecks 0
+  }
+ }
+ coords 800.152 377.89 2436.824
+ m_bSafestartInstantlyEnabled 0
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp BaseGameTriggerEntity {
+ DefenderRespawn {
+  coords 803.379 377.818 2430.365
+ }
+ IndependentRespawn {
+  coords 802.776 377.95 2438.795
+ }
+}
+GenericEntity : "{5DF32BDA2A8C5A3D}Prefabs/Props/Military/Camps/PalletAmmo_01_US_camo.et" {
+ components {
+  CRF_RaidItemComponent "{667111024EB71D9C}" {
+   m_iPointsEarnedWhenDestroyed 100
+  }
+  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+   Enabled 1
+  }
+  RplComponent "{5624A88DC2D9928D}" {
+   Enabled 1
+   "Parent Node From Parent Entity" 0
+  }
+ }
+ coords 796.211 377.781 2430.855
+}
+SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+ coords 796.887 377.596 2412.127
+}
+SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+ coords 809.148 378.021 2443.639
+}
