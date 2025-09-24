@@ -68,10 +68,23 @@ Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
    shouldHandleObstruction 0
    AttachType InventoryStorageSlot UPK23 {
     Offset -0.8244 1.1362 0.6783
+    Angles -1 0 0
     DisablePhysicsInteraction 1
     DeactivatePhysicsOnAtaching 1
    }
    WeaponTemplate "{8C6ECF623291A958}Prefabs/Weapons/Rifles/Thompson M1928A1/BC_Rifle_Thompson_M1928A1_INF.et"
+  }
+  WeaponSlotComponent "{66715A3A6C5C154C}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{66715A3A45D29314}" {
+   }
+   WeaponType MachineGun
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot "{66715A3A534DD81A}" {
+    Offset 0.8158 1.1362 0.6783
+    DisablePhysicsInteraction 1
+    DeactivatePhysicsOnAtaching 1
+   }
+   WeaponTemplate "{3265C13DC700E7FE}Prefabs/Weapons/Launchers/MAW_84MM/Launcher_84mm_MAW.et"
   }
  }
 }

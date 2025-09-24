@@ -64,7 +64,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
    shouldHandleObstruction 0
    AttachType InventoryStorageSlot UPK23 {
     Offset -0.2427 0.3783 2.8532
-    Angles 0 0 50
+    Angles 1 0 50
     DisablePhysicsInteraction 1
     DeactivatePhysicsOnAtaching 1
    }
