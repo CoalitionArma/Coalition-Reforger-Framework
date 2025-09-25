@@ -432,20 +432,11 @@ class CRF_VehicleDepot : ScriptComponent
 		FactionKey factionKey = playerFaction.GetFactionKey();
 		
 		// Get tickets from CRF_Gamemode based on faction
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (!gamemode)
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (!respawnManager)
 			return false;
 			
-		int currentTickets = 0;
-		if (factionKey == "BLUFOR")
-			currentTickets = gamemode.m_iBLUFORTickets;
-		else if (factionKey == "OPFOR")
-			currentTickets = gamemode.m_iOPFORTickets;
-		else if (factionKey == "INDFOR")
-			currentTickets = gamemode.m_iINDFORTickets;
-		else if (factionKey == "CIV")
-			currentTickets = gamemode.m_iCIVTickets;
-		
+		int currentTickets = respawnManager.GetFactionTickets(factionKey);
 		return currentTickets >= cost;
 	}
 	
@@ -546,21 +537,12 @@ class CRF_VehicleDepot : ScriptComponent
 		if (factionKey.IsEmpty())
 			return 0;
 			
-		// Use the private method through reflection or find public access
-		// For now, assume we can access faction tickets directly from gamemode
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (!gamemode)
+		// Get tickets from respawn manager which now handles ticket replication
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (!respawnManager)
 			return 0;
 			
-		switch (factionKey)
-		{
-			case "BLUFOR": return gamemode.m_iBLUFORTickets;
-			case "OPFOR": return gamemode.m_iOPFORTickets;
-			case "INDFOR": return gamemode.m_iINDFORTickets;
-			case "CIV": return gamemode.m_iCIVTickets;
-		}
-		
-		return 0;
+		return respawnManager.GetFactionTickets(factionKey);
 	}
 	
 	//------------------------------------------------------------------------------------------------
