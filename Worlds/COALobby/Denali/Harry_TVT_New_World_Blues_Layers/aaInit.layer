@@ -48,14 +48,14 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{9DBEDA8422882CAF}Configs/Gearscripts/Custom/Harry/Korean/CRF_GS_US_Early_Korean.conf"
   m_bEnableLeadershipRadios 0
-  m_bEnableRTORadios 0
   m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{BF4D77559431BF3F}Configs/Gearscripts/Custom/Harry/Korean/CRF_GS_RU_Early_Korean.conf"
   m_bEnableLeadershipRadios 0
-  m_bEnableRTORadios 0
   m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  {
   SCR_FactionManager "6654F9912DAC9440" {

@@ -32,9 +32,9 @@ void GrassCheck()
 		GetGame().UserSettingsChanged();
 	};
 	
-	if (grassDistance < 200)
+	if (grassDistance < 400)
 	{
-		GetGame().GetEngineUserSettings().GetModule("GrassMaterialSettings").Set("Distance",200);
+		GetGame().GetEngineUserSettings().GetModule("GrassMaterialSettings").Set("Distance",400);
 		GetGame().UserSettingsChanged();
 	}
 	

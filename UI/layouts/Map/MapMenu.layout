@@ -28,7 +28,7 @@ FrameWidgetClass {
       SizeY 0
       OffsetBottom 0
      }
-     Opacity 0.2
+     Opacity 0.3
      Color 0.1758 0.1734 0.1734 0.784
     }
     OverlayWidgetClass "{663841462272B53C}" : "{94CAAE4A601195D3}UI/layouts/ListBox/ListBox.layout" {
