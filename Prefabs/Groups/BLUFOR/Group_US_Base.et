@@ -1,0 +1,4 @@
+SCR_AIGroup : "{000CD338713F2B5A}Prefabs/AI/Groups/Group_Base.et" {
+ ID "0000000000000001"
+ m_bSnapToTerrain 0
+}
