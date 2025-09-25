@@ -86,13 +86,13 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     Position -413.297 0 -33.35
    }
    ShapePoint "{666E5CDB8B274A75}" {
-    Position -231.626 -0 34.713
+    Position -231.626 0 34.713
    }
    ShapePoint "{666E5CDB8A22303B}" {
-    Position -209.903 -0 165.151
+    Position -209.903 0 165.151
    }
    ShapePoint "{666E5CDB89675A4F}" {
-    Position -159.129 -0 326.887
+    Position -159.129 0 326.887
    }
    ShapePoint "{666E5CDB8C1BA29B}" {
     Position -91.942 0 343.146
@@ -104,22 +104,22 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     Position -16.256 0 200.809
    }
    ShapePoint "{666E5CDB80FE7BEF}" {
-    Position 100.294 -0 74.604
+    Position 100.294 0 74.604
    }
    ShapePoint "{666E5CDB8059B2B6}" {
-    Position 160.227 -0 84.633
+    Position 160.227 0 84.633
    }
    ShapePoint "{666E5CDB86ECA29B}" {
-    Position 247.126 -0 69.498
+    Position 247.126 0 69.498
    }
    ShapePoint "{666E5CDB85AC20A6}" {
-    Position 299.566 -0 147.882
+    Position 299.566 0 147.882
    }
    ShapePoint "{666E5CDB84380F4A}" {
-    Position 341.552 -0 129.497
+    Position 341.552 0 129.497
    }
    ShapePoint "{666E5CDB9ADBD4F5}" {
-    Position 426.765 -0 60.284
+    Position 426.765 0 60.284
    }
    ShapePoint "{666E5CDB992BEC3C}" {
     Position 313.742 0 -60.575
@@ -128,25 +128,25 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     Position 248.542 0 -6.698
    }
    ShapePoint "{666E5CDB9D0E2F64}" {
-    Position 209.432 -0 -26.763
+    Position 209.432 0 -26.763
    }
    ShapePoint "{666E5CDB9C8493A9}" {
-    Position 152.902 -0 -31.14
+    Position 152.902 0 -31.14
    }
    ShapePoint "{666E5CDB934D41DB}" {
-    Position 47.745 -0 -132.479
+    Position 47.745 0 -132.479
    }
    ShapePoint "{666E5CDB926F69CD}" {
-    Position -75.242 -0 -160.371
+    Position -75.242 0 -160.371
    }
    ShapePoint "{666E5CDB915B4C69}" {
-    Position -175.35 -0 -121.271
+    Position -175.35 0 -121.271
    }
    ShapePoint "{666E5CDB90E996D9}" {
-    Position -231.587 -0 -157.976
+    Position -231.587 0 -157.976
    }
    ShapePoint "{666E5CDB97095CA1}" {
-    Position -427.545 -0 -146.047
+    Position -427.545 0 -146.047
    }
   }
   {
@@ -154,12 +154,21 @@ $grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBound
     ID "658635BEF7631DCD"
     components {
      CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
-      m_Material "{A909725C357E5D04}Assets/Editor/VirtualArea/GameBoundryHard.emat"
+      m_Material "{6E3B1A4109AAE4B0}Assets/Editor/VirtualArea/GameBoundryHardBanana.emat"
      }
     }
    }
   }
  }
+}
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 4781.838 169.309 6992.521
+ angleY 0
+ m_MarkerColor 1 1 0 1
+ m_fWorldSize 60
+ m_sDescription "SECURE THE CHURCH"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
 }
 CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
  coords 4735.752 163.296 7328.397

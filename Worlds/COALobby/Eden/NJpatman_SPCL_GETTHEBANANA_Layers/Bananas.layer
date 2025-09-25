@@ -1,6 +1,6 @@
 $grp GenericEntity : "{181B4ADA65725D59}Prefabs/Items/Core/ACE_Banana.et" {
  {
-  coords 4719.277 343.098 6949.278
+  coords 4790.157 293.017 6985.095
   angleX 32.895
   scale 1000
  }
