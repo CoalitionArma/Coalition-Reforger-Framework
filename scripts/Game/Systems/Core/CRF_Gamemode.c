@@ -277,25 +277,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Process player statistics data
 			ProcessStats(dataCollector,player);
 
-			// Skip players already in spectator
-			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(player)))
-				continue;
-
-			// Set player health to zero (kill them)
 			IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(player);
 			if (!playerEntity)
 				continue;
-				
-			SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(
-				playerEntity.FindComponent(SCR_CharacterDamageManagerComponent)
-			);
 			
-			if (!damageManager)
-				continue;
-				
-			HitZone defaultHitZone = damageManager.GetDefaultHitZone();
-			if (defaultHitZone)
-				defaultHitZone.SetHealth(0);
+			// Check if player is already dead/spectating
+			bool isPlayerAlreadyDead = CRF_GamemodeManager.IsSpectator(playerEntity);
+			
+			// Move all players to spectator mode for AAR interface and communication
+			// This preserves their actual alive/dead status while allowing AAR participation
+			if (!isPlayerAlreadyDead)
+			{
+				// Player is alive - force into spectator for AAR without marking as dead
+				ForcePlayerToSpectatorForAAR(player, playerEntity);
+			}
+			// Players already in spectator mode don't need repositioning
 		}
 		
 		// Stores player profiles who havent disconnected
@@ -565,6 +561,55 @@ class CRF_Gamemode : SCR_BaseGameMode
 		location[3] = locationThree;
 		
 		m_GamemodeManager.InitilizePlayer(playerId, location);
+	}
+	
+	/**
+	 * Forces a living player to die and enter spectator mode for AAR without permanently marking their slot as dead
+	 * This allows proper death handling while preserving their alive status for AAR display
+	 * @param playerId The player ID to kill and move to spectator
+	 * @param playerEntity The player's current entity
+	 */
+	void ForcePlayerToSpectatorForAAR(int playerId, IEntity playerEntity)
+	{
+		if (!playerEntity || playerId <= 0)
+			return;
+		
+		// Get the player's slot ID before killing them
+		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
+		if (slotId == -1)
+			return;
+		
+		// Store original alive state (should be false since they're alive)
+		bool originalDeadState = m_SlottingManager.IsPlayerConsideredDead(playerId);
+		
+		// Kill the player to trigger proper death handling and spectator transition
+		// This will automatically handle the transition to spectator mode
+		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(
+			playerEntity.FindComponent(SCR_CharacterDamageManagerComponent)
+		);
+		
+		if (!damageManager)
+			return;
+			
+		HitZone defaultHitZone = damageManager.GetDefaultHitZone();
+		if (defaultHitZone)
+			defaultHitZone.SetHealth(0);
+		
+		// Schedule restoration of original alive status after death processing completes
+		// This ensures the player shows as alive in AAR even though they were killed for transition
+		GetGame().GetCallqueue().CallLater(RestorePlayerAliveStatusForAAR, 3000, false, slotId, originalDeadState);
+	}
+	
+	/**
+	 * Restores a player's original alive/dead status after they've been moved to spectator for AAR
+	 * @param slotId The slot ID of the player
+	 * @param originalDeadState The player's original dead state before AAR
+	 */
+	void RestorePlayerAliveStatusForAAR(int slotId, bool originalDeadState)
+	{
+		// Restore the player's original alive/dead status
+		// This ensures the AAR display shows their actual mission-end status
+		m_SlottingManager.UpdateSlotDeathState(slotId, originalDeadState);
 	}
 }
 
