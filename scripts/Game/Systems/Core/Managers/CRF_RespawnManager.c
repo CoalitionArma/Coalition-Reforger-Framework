@@ -9,6 +9,16 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp()]
 	ref array<RplId> m_RespawnPointsRplID = {}; // Used for clients
 	
+	// Ticket System - Moved from CRF_Gamemode for efficient replication
+	[RplProp()]
+	int m_iBLUFORTickets;
+	[RplProp()]
+	int m_iOPFORTickets;
+	[RplProp()]
+	int m_iINDFORTickets;
+	[RplProp()]
+	int m_iCIVTickets;
+	
 	// Internal flag to prevent redundant replication updates
 	protected bool m_bSuppressReplication = false;
 	
@@ -49,6 +59,7 @@ class CRF_RespawnManager : ScriptComponent
 		if (!Replication.IsServer())
 			return;
 
+		InitializeTicketsFromGamemode();
 		InitializeRespawnTimers();
 	}
 	
@@ -75,6 +86,19 @@ class CRF_RespawnManager : ScriptComponent
 		if (m_Gamemode.m_bWaveRespawn && RplSession.Mode() != RplMode.Client)
 			GetGame().GetCallqueue().CallLater(WaveRespawnTimer, 1000, true);
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	private void InitializeTicketsFromGamemode()
+	{
+		if (!m_Gamemode)
+			return;
+			
+		// Copy ticket values from gamemode attributes to local replicated properties
+		m_iBLUFORTickets = m_Gamemode.m_iBLUFORTickets;
+		m_iOPFORTickets = m_Gamemode.m_iOPFORTickets;
+		m_iINDFORTickets = m_Gamemode.m_iINDFORTickets;
+		m_iCIVTickets = m_Gamemode.m_iCIVTickets;
+	}
 
 	//------------------------------------------------------------------------------------------------
 	bool TicketsRemaining(string faction)
@@ -88,10 +112,10 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		switch (faction)
 		{
-			case "BLUFOR": return m_Gamemode.m_iBLUFORTickets;
-			case "OPFOR": return m_Gamemode.m_iOPFORTickets;
-			case "INDFOR": return m_Gamemode.m_iINDFORTickets;
-			case "CIV": return m_Gamemode.m_iCIVTickets;
+			case "BLUFOR": return m_iBLUFORTickets;
+			case "OPFOR": return m_iOPFORTickets;
+			case "INDFOR": return m_iINDFORTickets;
+			case "CIV": return m_iCIVTickets;
 		}
 		return 0;
 	}
@@ -127,10 +151,10 @@ class CRF_RespawnManager : ScriptComponent
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_Gamemode.m_iBLUFORTickets -= amount; break;
-			case "OPFOR": m_Gamemode.m_iOPFORTickets -= amount; break;
-			case "INDFOR": m_Gamemode.m_iINDFORTickets -= amount; break;
-			case "CIV": m_Gamemode.m_iCIVTickets -= amount; break;
+			case "BLUFOR": m_iBLUFORTickets -= amount; break;
+			case "OPFOR": m_iOPFORTickets -= amount; break;
+			case "INDFOR": m_iINDFORTickets -= amount; break;
+			case "CIV": m_iCIVTickets -= amount; break;
 		}
 		
 		return true;
@@ -167,10 +191,10 @@ class CRF_RespawnManager : ScriptComponent
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_Gamemode.m_iBLUFORTickets += amount; break;
-			case "OPFOR": m_Gamemode.m_iOPFORTickets += amount; break;
-			case "INDFOR": m_Gamemode.m_iINDFORTickets += amount; break;
-			case "CIV": m_Gamemode.m_iCIVTickets += amount; break;
+			case "BLUFOR": m_iBLUFORTickets += amount; break;
+			case "OPFOR": m_iOPFORTickets += amount; break;
+			case "INDFOR": m_iINDFORTickets += amount; break;
+			case "CIV": m_iCIVTickets += amount; break;
 		}
 		
 		return true;
