@@ -82,7 +82,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "“Boss, a Soviet Spetsnaz platoon has been sighted in the Central Highlands of Vietnam. Their commander’s directing counter-insurgency against local guerrillas. If he isn’t removed, the Soviets will gain a foothold here."\
+   m_sTextData "[READ THE ADMIN TAB]"\
+   ""\
+   "“Boss, a Soviet Spetsnaz platoon has been sighted in the Central Highlands of Vietnam. Their commander’s directing counter-insurgency against local guerrillas. If he isn’t removed, the Soviets will gain a foothold here."\
    "Your mission is to capture that commander alive. You’ll lead one of our platoons, while Ocelot takes a section from the Security Team. But remember—the Security Team’s still on Soviet radios, your unit’s on American. You won’t be able to talk to each other directly in the field."\
    "Intel says the commander will have an extraction in forty minutes. If you don’t secure him before then, we'll have to intercept him on his way out."\
    ""\
@@ -362,7 +364,7 @@ $grp SCR_BaseTriggerEntity {
   "		float currentTime = GetGame().GetWorld().GetWorldTime();"\
   "		float millis = m_SafestartManager.m_iTimeMissionEnds - currentTime;"\
   "		int totalSeconds = (millis * 0.001);"\
-  "		if (totalSeconds <= 1200 && m_SelectedExtraction == -1)"\
+  "		if (totalSeconds <= 1800 && m_SelectedExtraction == -1)"\
   "			SelectExtraction();"\
   "	"
  }
