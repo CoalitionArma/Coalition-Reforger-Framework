@@ -20,9 +20,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	//---------------------------------------------------------------------
 	// Game Systems
 	//---------------------------------------------------------------------
-	protected CRF_Gamemode m_Gamemode;          // Reference to the current gamemode
-	protected CRF_MenuManager m_MenuManager;    // Reference to the menu manager
-	protected SCR_ChatPanel m_ChatPanel;        // Reference to the chat panel
+	protected CRF_Gamemode m_Gamemode;          		// Reference to the current gamemode
+	protected CRF_MenuManager m_MenuManager;   	 		// Reference to the menu manager
+	protected SCR_ChatPanel m_ChatPanel;        		// Reference to the chat panel
+	protected SCR_PlayerController m_PlayerController;	// Reference to the player controller
+	protected SCR_VONController m_VONController;		// Reference to the VON Controlle;
 	
 	//---------------------------------------------------------------------
 	// UI Components
@@ -107,8 +109,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	 */
 	protected void SetupInputListeners()
 	{
-		GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			GetGame().GetInputManager().AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		GetGame().GetInputManager().AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
@@ -132,6 +137,10 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		// Store local slotting state
 		m_LocalSlottingState = m_Gamemode.m_SlottingState;
+		
+		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		
+		m_VONController = SCR_VONController.Cast(GetGame().GetPlayerController().FindComponent(SCR_VONController));
 		
 		// Setup mission info text
 		SetupMissionInfo();
@@ -412,8 +421,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Remove(UpdateSlots);
 		
 		// Remove all input action listeners
-		GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			GetGame().GetInputManager().RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		GetGame().GetInputManager().RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		GetGame().GetInputManager().RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}
@@ -947,7 +959,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	{
 		int selectedSlotId = m_cSlotListBoxComponent.GetCRFElementComponent(
 			m_cSlotListBoxComponent.GetSelectedItem()).m_iSlotId;
-		CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(selectedSlotId, 0);
+		// Use batched RPC to remove player from slot
+		CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(selectedSlotId, 0, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 	}
 	
 	/**
@@ -984,10 +997,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		{
 			CRF_RplToAuthorityManager.GetInstance().UpdateGroupLockedState(groupRplID, false);
 			
-			// Unlock all slots in group
+			// Unlock all slots in group using batched updates
 			foreach(int slotId : slotsInGroup)
 			{
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(slotId, false);	
+				// Use batched RPC to unlock slot
+				CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(slotId, -1, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 			}
 		}
 		// If group is currently unlocked, lock it
@@ -995,11 +1009,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		{
 			CRF_RplToAuthorityManager.GetInstance().UpdateGroupLockedState(groupRplID, true);
 			
-			// Lock all slots in group
+			// Lock all slots in group using batched updates
 			foreach(int slotId : slotsInGroup)
 			{
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(slotId, true);	
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);	
+				// Use batched RPC: lock slot and remove player in one call
+				CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(slotId, 0, RplId.Invalid(), RplId.Invalid(), "", "", true, false);
 			}
 		}
 	}
@@ -1027,11 +1041,13 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		
 		bool isCurrentlyLocked = CRF_SlottingManager.GetInstance().GetSlotData(selectedSlotId).GetIsLockedSlot();
 		
-		// Toggle slot lock state
+		// Toggle slot lock state using batched updates
 		if(isCurrentlyLocked)
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(selectedSlotId, false);
+			// Use batched RPC to unlock slot
+			CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(selectedSlotId, -1, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 		else
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotLockedState(selectedSlotId, true);
+			// Use batched RPC to lock slot
+			CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(selectedSlotId, -1, RplId.Invalid(), RplId.Invalid(), "", "", true, false);
 	}
 	
 	/**
@@ -1204,8 +1220,21 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		SetPlayerStatusColor(playerId, comp);
 		
 		// Highlight players who are talking
-		if (m_MenuManager.m_aPlayersTalking.Contains(playerId))
-			comp.SetTalking();
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			if (m_MenuManager.m_aPlayersTalking.Contains(playerId))
+				comp.SetTalking();
+		}
+		else
+		{
+			if (playerId == SCR_PlayerController.GetLocalPlayerId())
+			{
+				if (m_VONController.m_bIsBroadcasting)
+					comp.SetTalking();
+			}
+			if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+				comp.SetTalking();
+		}
 	}
 	
 	/**
@@ -1427,7 +1456,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// If selected player is already in this slot, unslot them
 		if (currentPlayerId == m_iSelectedplayerId)
 		{
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);
+			// Use batched RPC to remove player from slot
+			CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(slotId, 0, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 			m_iSelectedplayerId = 0;
 			m_cPlayerListBoxComponent.SetItemSelected(m_cPlayerListBoxComponent.GetSelectedItem(), false, false, false);
 		} 
@@ -1438,11 +1468,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			if (slottingManager.IsPlayerInASlot(m_iSelectedplayerId))
 			{
 				int currentSlotId = slottingManager.GetPlayerSlotID(m_iSelectedplayerId);
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(currentSlotId, 0);
+				// Use batched RPC to remove player from current slot
+				CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(currentSlotId, 0, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 			}
 			
-			// Move player to the new slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, m_iSelectedplayerId);
+			// Move player to the new slot using batched RPC
+			CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(slotId, m_iSelectedplayerId, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 			
 			// Reset selection
 			m_iSelectedplayerId = 0;
@@ -1467,7 +1498,8 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		// If player is already in this slot, unslot them
 		if (currentPlayerId == localPlayerId)
 		{
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, 0);
+			// Use batched RPC to remove player from slot
+			CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(slotId, 0, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 		} 
 		// If slot is empty, move player to this slot
 		else if (currentPlayerId == 0) 
@@ -1476,11 +1508,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			if (slottingManager.IsPlayerInASlot(localPlayerId))
 			{
 				int currentSlotId = slottingManager.GetPlayerSlotID(localPlayerId);
-				CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(currentSlotId, 0);
+				// Use batched RPC to remove player from current slot
+				CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(currentSlotId, 0, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 			}
 			
-			// Move player to the new slot
-			CRF_RplToAuthorityManager.GetInstance().UpdateSlotPlayerID(slotId, localPlayerId);
+			// Move player to the new slot using batched RPC
+			CRF_RplToAuthorityManager.GetInstance().BatchUpdateSlot(slotId, localPlayerId, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
 		}
 	}
 	
@@ -1490,16 +1523,16 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	void Action_VONon()
 	{
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		
+
 		// Get VON component and configure for transmission
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(
 			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
-			
+
 		von.SetTransmitRadio(GetVoNTransiver());
 		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
 		von.SetCapture(true);
 	}
-	
+
 	/**
 	 * Gets a radio transceiver for VON communication
 	 * @return RadioTransceiver object configured for voice communication
@@ -1510,11 +1543,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 		IEntity playerEntity = GetGame().GetPlayerController().GetControlledEntity();
 		SCR_InventoryStorageManagerComponent inventory = SCR_InventoryStorageManagerComponent.Cast(
 			playerEntity.FindComponent(SCR_InventoryStorageManagerComponent));
-		
+
 		// Get all items in inventory
 		array<IEntity> items = {};
 		inventory.GetItems(items);
-		
+
 		// Find radio entity
 		IEntity radioEntity;
 		foreach(IEntity item: items)
@@ -1522,19 +1555,19 @@ class CRF_SlottingMenu: ChimeraMenuBase
 			if(item.FindComponent(BaseRadioComponent))
 				radioEntity = item;
 		}
-		
+
 		// Configure radio
 		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
 		radio.SetPower(true);
-		
+
 		// Configure and return transceiver
 		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
 		if (transceiver)
 			transceiver.SetFrequency(10000);
-		
+
 		return transceiver;
 	}
-	
+
 	/**
 	 * Delayed function to disable VON
 	 * Called after push-to-talk button is released
@@ -1543,11 +1576,11 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	{
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(
 			GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
-			
+
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
 	}
-	
+
 	/**
 	 * Disables VON when push-to-talk button is released
 	 */

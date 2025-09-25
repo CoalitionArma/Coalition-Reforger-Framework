@@ -443,19 +443,33 @@ class CRF_Gamemode : SCR_BaseGameMode
 			}
 		}
 		
-		// Apply gearscript if in play mode and not on client
-		if (GetGame().InPlayMode() && RplSession.Mode() != RplMode.Client && entity && entity.GetPrefabData() && !m_GamemodeManager.IsSpectator(entity) && m_GamemodeState == CRF_EGamemodeState.GAME)
+		// Apply gearscript/identity if in play mode and not on client
+		if (GetGame().InPlayMode() && entity && entity.GetPrefabData() && !m_GamemodeManager.IsSpectator(entity) && m_GamemodeState == CRF_EGamemodeState.GAME)
 		{
 			// Ensure gearscript manager is available
 			if (!m_GearscriptManager)
 				m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 			
-			// Schedule gear setup with appropriate delay
+			// Schedule gearscript identity setup with appropriate delay
 			GetGame().GetCallqueue().Call(
-				m_GearscriptManager.SetEntityGear, 
-				entity, 
-				entity.GetPrefabData().GetPrefabName()
+				m_GearscriptManager.SetEntityIdentity, 
+				entity
 			);
+		
+			// Apply gearscript if not on client
+			if (RplSession.Mode() != RplMode.Client)
+			{
+				// Ensure gearscript manager is available
+				if (!m_GearscriptManager)
+					m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+				
+				// Schedule gear setup with appropriate delay
+				GetGame().GetCallqueue().Call(
+					m_GearscriptManager.SetEntityGear, 
+					entity, 
+					entity.GetPrefabData().GetPrefabName()
+				);
+			};
 		}
 	}
 

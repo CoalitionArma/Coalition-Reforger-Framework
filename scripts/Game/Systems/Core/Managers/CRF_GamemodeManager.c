@@ -17,6 +17,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	[RplProp()]
 	protected string m_sServerWorldTime;
 	
+	// Internal flag to prevent redundant replication updates
+	protected bool m_bSuppressReplication = false;
+	
 	static ref CRF_GearScriptRolesConfig m_RolesConfig;
 	
 	protected CRF_Gamemode m_Gamemode;
@@ -87,7 +90,11 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	 */
 	protected void LoadConfigurations()
 	{
-		const ResourceName rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		ResourceName rolesConfigPath;
+		if (!CVON_VONGameModeComponent.GetInstance())
+			  rolesConfigPath = "{4388548E9F600148}Configs/Gearscripts/CRF_Global_Roles_Config.conf";
+		else
+			rolesConfigPath = "{F04F02DBFC65553E}Configs/Gearscripts/CRF_CVON_Global_Roles_Config.conf";
 		
 		m_RolesConfig = CRF_GearScriptRolesConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(rolesConfigPath).GetResource().ToBaseContainer()));
@@ -398,8 +405,19 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	*/
 	void SetServerWorldTime(string input)
 	{
+		SetServerWorldTimeSilent(input);
+		if (!m_bSuppressReplication)
+			Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Set the server world time without triggering replication
+	* @param input Time string to set
+	*/
+	protected void SetServerWorldTimeSilent(string input)
+	{
 		m_sServerWorldTime = input;
-		Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -412,8 +430,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		float millis = m_SafestartManager.m_iTimeSafeStartBegan - currentTime;
 		int totalSeconds = (millis * 0.001);
 
-		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
-		Replication.BumpMe();
+		SetServerWorldTimeSilent(SCR_FormatHelper.FormatTime(totalSeconds));
+		if (!m_bSuppressReplication)
+			Replication.BumpMe();
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -426,14 +445,15 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		float millis = m_SafestartManager.m_iTimeMissionEnds - currentTime;
 		int totalSeconds = (millis * 0.001);
 
-		m_sServerWorldTime = SCR_FormatHelper.FormatTime(totalSeconds);
+		SetServerWorldTimeSilent(SCR_FormatHelper.FormatTime(totalSeconds));
 
 		if (totalSeconds == 0) {
 			GetGame().GetCallqueue().Remove(UpdateMissionEndTimer);
-			m_sServerWorldTime = "Mission Time Expired!";
+			SetServerWorldTimeSilent("Mission Time Expired!");
 		}
 
-		Replication.BumpMe();
+		if (!m_bSuppressReplication)
+			Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -452,18 +472,120 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		if (m_aModerators.Contains(playerId) || m_aDonators.Contains(playerId))
 			return;
 		
+		bool statusChanged = false;
 		switch (role) {
 			case "mod": {
 				m_aModerators.Insert(playerId);
+				statusChanged = true;
 				break;
 			}
 			case "don": {
 				m_aDonators.Insert(playerId);
+				statusChanged = true;
 				break;
 			}
 		}
 			
-		Replication.BumpMe();
+		if (statusChanged && !m_bSuppressReplication)
+			Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Set multiple player statuses in a batch to optimize replication
+	* @param playerStatuses Array of player status updates {playerId, role}
+	*/
+	void BatchSetPlayerStatus(array<ref array<string>> playerStatuses)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		bool anyChanged = false;
+		m_bSuppressReplication = true;
+		
+		foreach (ref array<string> statusUpdate : playerStatuses)
+		{
+			if (statusUpdate.Count() < 2)
+				continue;
+				
+			int playerId = statusUpdate[0].ToInt();
+			string role = statusUpdate[1];
+			
+			if (m_aModerators.Contains(playerId) || m_aDonators.Contains(playerId))
+				continue;
+				
+			switch (role) {
+				case "mod": {
+					m_aModerators.Insert(playerId);
+					anyChanged = true;
+					break;
+				}
+				case "don": {
+					m_aDonators.Insert(playerId);
+					anyChanged = true;
+					break;
+				}
+			}
+		}
+		
+		m_bSuppressReplication = false;
+		if (anyChanged)
+			Replication.BumpMe();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	* Batch update multiple gamemode properties to minimize replication calls
+	* @param newWorldTime Optional new world time string  
+	* @param playerStatuses Optional array of player status updates
+	*/
+	void BatchUpdateGamemodeState(string newWorldTime = "", array<ref array<string>> playerStatuses = null)
+	{
+		if (!Replication.IsServer())
+			return;
+			
+		bool anyChanged = false;
+		m_bSuppressReplication = true;
+		
+		// Update world time if provided
+		if (newWorldTime != "" && newWorldTime != m_sServerWorldTime)
+		{
+			SetServerWorldTimeSilent(newWorldTime);
+			anyChanged = true;
+		}
+		
+		// Update player statuses if provided
+		if (playerStatuses)
+		{
+			foreach (ref array<string> statusUpdate : playerStatuses)
+			{
+				if (statusUpdate.Count() < 2)
+					continue;
+					
+				int playerId = statusUpdate[0].ToInt();
+				string role = statusUpdate[1];
+				
+				if (m_aModerators.Contains(playerId) || m_aDonators.Contains(playerId))
+					continue;
+					
+				switch (role) {
+					case "mod": {
+						m_aModerators.Insert(playerId);
+						anyChanged = true;
+						break;
+					}
+					case "don": {
+						m_aDonators.Insert(playerId);
+						anyChanged = true;
+						break;
+					}
+				}
+			}
+		}
+		
+		m_bSuppressReplication = false;
+		if (anyChanged)
+			Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -1,0 +1,202 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 2851.02 64.063 707.023
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{66449975B9B3C69D}" {
+   m_iMCOMsPerZone 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6644997153EB4651}" {
+     m_sWeatherPresetName "Rainy"
+    }
+   }
+  }
+ }
+ coords 2851.501 64.13 710.91
+ m_iTimeLimitMinutes 70
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "In the early moring A CO, 45 Commando, 3 BDE made breach across the Ruha river under the guise of rain. The plan to breakthrough and secure the Ruha airfield to cutoff soviet air resupply within the region. A COs sister B and C CO are covering the salient flanks from enemy counter attack. "\
+   ""\
+   "Soviet elements from 1PLT, 1CO, 170 GMRR are staged in defense of the airfield. Early in the moring at 0745L, reports from forward reconaissance assets reported a Company of British Forces massing east of the Ruha River. They have been tasked with holding the airfield at all costs until reinforcments can arrive in 70 minutes."\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   "1 Gun Truck per Squad"\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets:"\
+   "1 BTR Per Squad"\
+   "1 MMG"\
+   ""\
+   "Time:"\
+   "70 Minutes"\
+   ""\
+   "Weather:"\
+   "Rainy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "- Secure Zone A-C to win."\
+   ""
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "- Ensure Zone C is not captured before 70 minutes."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "There are more BTRs, trucks and Gun Trucks placed down for reinforcements only. If a BTR/GT Truck has not died, do not take another one."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{D8798CBDB67BC164}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_UK80s_FAL_M79.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{E22DAC2682656C91}Configs/Gearscripts/Custom/fluff/CRF_GS_80sUSSRklmk.conf"
+ }
+ {
+  SCR_FactionManager "6644996A55793DE3" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{664499671D8F6DEA}" {
+        m_sCallsign "GUN TRUCK 1"
+       }
+       SCR_CallsignInfo "{664499670663AB92}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{6644996702D62116}" {
+        m_sCallsign "GUN TRUCK 2"
+       }
+       SCR_CallsignInfo "{66449967794D81CD}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{664499677803E639}" {
+        m_sCallsign "GUN TRUCK 3"
+       }
+       SCR_CallsignInfo "{6644996760202EBF}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{664499675C6BEAC3}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{664499675BA80825}" {
+        m_sCallsign "GUN TRUCK 4"
+       }
+       SCR_CallsignInfo "{66449967519CA667}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{6644996752B6038F}" {
+        m_sCallsign "GUN TRUCK 5"
+       }
+       SCR_CallsignInfo "{664499674B0F55B8}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{66449967448951FE}" {
+        m_sCallsign "GUN TRUCK 6"
+       }
+      }
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{66449968307D97C3}" {
+        m_aGroupNames {
+         "GUN TRUCK 1"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR" "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{664499681D384E9E}" {
+        m_aGroupNames {
+         "GUN TRUCK 2"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR" "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{664499681C22BF1B}" {
+        m_aGroupNames {
+         "GUN TRUCK 3"
+        }
+        m_aLRFrequencies {
+         "1PLT ARMOR" "1PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{664499681AB7828D}" {
+        m_aGroupNames {
+         "GUN TRUCK 4"
+        }
+        m_aLRFrequencies {
+         "2PLT ARMOR" "2PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{66449968130E941C}" {
+        m_aGroupNames {
+         "GUN TRUCK 5"
+        }
+        m_aLRFrequencies {
+         "2PLT ARMOR" "2PLT"
+        }
+       }
+       CVON_GroupFrequencyContainer "{6644996812125E9B}" {
+        m_aGroupNames {
+         "GUN TRUCK 6"
+        }
+        m_aLRFrequencies {
+         "2PLT ARMOR" "2PLT"
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Armor 1 (BTR-70)"
+       }
+       SCR_CallsignInfo "{66449968B18074E5}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66449968B219D8F4}" {
+        m_sCallsign "Armor 2 (BTR-70)"
+       }
+       SCR_CallsignInfo "{664499776BCB22D0}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{664499776A73DB14}" {
+        m_sCallsign "Armor 3 (BTR-70)"
+       }
+       SCR_CallsignInfo "{664499774CFC18E8}" {
+        m_sCallsign "MMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

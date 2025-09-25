@@ -1,0 +1,99 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1672.369 336.156 3542.322
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Airfield Radio Tower"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4132.662 437.759 5716.31
+  angleY -124.971
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Blufor Reinforcements"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4218.035 428.89 5545.294
+  angleY -124.971
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Blufor Reinforcements"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4067.841 490.989 5888.937
+  angleY -124.971
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Blufor Reinforcements"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4267.162 578.889 5384.322
+  angleY -114.057
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Blufor Reinforcements"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 478.819 405.246 2407.626
+  angleY 53.119
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1044.973 263.406 1752.796
+  angleY 18.94
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2320.598 235.385 1496.135
+  angleY -26.835
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 321.652 345.522 3851.204
+  angleY 107.178
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1091.15 389.089 4716.788
+  angleY 158.213
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor Ingress"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

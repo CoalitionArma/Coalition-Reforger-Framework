@@ -10,27 +10,38 @@ class CRF_RadioPhaseManager: ScriptComponent
 	FactionKey interactingSide;
 	
 	[Attribute("false", "auto", "The object with the script")]
-	bool respawnInteracting;
+	bool respawnBlufor;
 	
 	[Attribute("false", "auto", "The object with the script")]
-	bool respawnAll;
+	bool respawnOpfor;
+	
+	[Attribute("false", "auto", "The object with the script")]
+	bool respawnIndfor;
+	
+	[Attribute("false", "auto", "The object with the script")]
+	bool respawnCiv;
 		
 	void fireTrigger()
 	{
-
-		if (respawnInteracting)
+		
+		if (respawnBlufor)
 		{
-			CRF_RplToAuthorityManager.GetInstance().RespawnFaction(interactingSide, false);
+			CRF_RplToAuthorityManager.GetInstance().RespawnFaction("BLUFOR", false);
 		}
 		
-		if (respawnAll)
+		if (respawnOpfor)
 		{
-			array<FactionKey> factionKeys = {"OPFOR", "BLUFOR", "INDFOR", "CIV"};
-			
-			foreach (FactionKey key : factionKeys)
-			{
-				CRF_RplToAuthorityManager.GetInstance().RespawnFaction(key, false);
-			}
+			CRF_RplToAuthorityManager.GetInstance().RespawnFaction("OPFOR", false);
+		}
+		
+		if (respawnIndfor)
+		{
+			CRF_RplToAuthorityManager.GetInstance().RespawnFaction("INDFOR", false);
+		}
+		
+		if (respawnCiv)
+		{
+			CRF_RplToAuthorityManager.GetInstance().RespawnFaction("CIV", false);
 		}
 	}
 	

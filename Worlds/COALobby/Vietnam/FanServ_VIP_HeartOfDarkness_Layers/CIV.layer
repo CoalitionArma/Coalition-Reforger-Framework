@@ -1,0 +1,11 @@
+Vehicle M151A2_transport1 : "{47D94E1193A88497}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport.et" {
+ coords 1430.878 25.626 1724.635
+ angleX 355
+ angleY 35
+}
+SCR_AIGroup : "{B57F271D229B3074}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_VIP_P.et" {
+ coords 635.619 4.437 1696.35
+ m_aUnitPrefabSlots {
+  "{66A37C085C2B2873}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_COY_P.et"
+ }
+}
