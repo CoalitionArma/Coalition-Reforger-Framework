@@ -259,30 +259,10 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 	{
 		int tickets = -1;
 		
-		// Get ticket count for the specified faction
-		switch(faction)
-		{			
-			case "BLUFOR":
-			{
-				tickets = CRF_Gamemode.GetInstance().m_iBLUFORTickets;
-				break;
-			}
-			case "OPFOR":
-			{
-				tickets = CRF_Gamemode.GetInstance().m_iOPFORTickets;
-				break;
-			}
-			case "INDFOR":
-			{
-				tickets = CRF_Gamemode.GetInstance().m_iINDFORTickets;
-				break;
-			}
-			case "CIV":
-			{
-				tickets = CRF_Gamemode.GetInstance().m_iCIVTickets;
-				break;
-			}
-		}
+		// Get ticket count from respawn manager
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (respawnManager)
+			tickets = respawnManager.GetFactionTickets(faction);
 		
 		// Display "INF" for infinite tickets (-1) or the actual count
 		if (tickets == -1)
@@ -350,10 +330,15 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 			m_wBackground.SetOpacity(1);
 			
 			// Determine if tickets should be shown
-			bool hasAnyTickets = (CRF_Gamemode.GetInstance().m_iBLUFORTickets > -1 || 
-									CRF_Gamemode.GetInstance().m_iOPFORTickets > -1 || 
-									CRF_Gamemode.GetInstance().m_iINDFORTickets > -1 || 
-									CRF_Gamemode.GetInstance().m_iCIVTickets > -1);
+			CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+			bool hasAnyTickets = false;
+			if (respawnManager)
+			{
+				hasAnyTickets = (respawnManager.GetFactionTickets("BLUFOR") > -1 || 
+								respawnManager.GetFactionTickets("OPFOR") > -1 || 
+								respawnManager.GetFactionTickets("INDFOR") > -1 || 
+								respawnManager.GetFactionTickets("CIV") > -1);
+			}
 			
 			if (hasAnyTickets)
 			{
