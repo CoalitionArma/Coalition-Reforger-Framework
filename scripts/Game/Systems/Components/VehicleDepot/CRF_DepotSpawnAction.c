@@ -13,7 +13,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 	// Text refresh throttling for optimization
 	protected string m_sCachedDisplayText = "";
 	protected float m_fLastTextUpdate = 0;
-	protected float m_fTextUpdateInterval = 2; // Update every 500ms instead of every frame
+	protected float m_fTextUpdateInterval = 1.0; // Update every 1 second for live supply updates
 	
 	//------------------------------------------------------------------------------------------------
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
@@ -47,6 +47,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 				if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] SETUP: %1 vehicles configured.", vehicles.Count(), vehicles.Count()));
 			}
 		}
+
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -137,11 +138,18 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 			return true;
 		}
 		
-		// Throttle text updates to prevent excessive network calls and improve performance
+		// For supply-based vehicles, refresh more frequently to show live aggregated amounts
+		float updateInterval = m_fTextUpdateInterval;
+		if (m_Vehicle.m_eCostType == CRF_EVehicleDepotCostType.SUPPLIES)
+		{
+			updateInterval = 0.5; // Update every 500ms for live supply detection when menu is active
+		}
+		
+		// Throttle text updates to prevent excessive calls but allow live supply updates
 		float currentTime = GetGame().GetWorld().GetWorldTime() * 0.001; // Convert to seconds
 		
 		// Only update text if enough time has passed or cache is empty
-		if (currentTime - m_fLastTextUpdate >= m_fTextUpdateInterval || m_sCachedDisplayText.IsEmpty())
+		if (currentTime - m_fLastTextUpdate >= updateInterval || m_sCachedDisplayText.IsEmpty())
 		{
 			m_sCachedDisplayText = m_DepotComponent.GetCachedActionText(m_iVehicleIndex, m_Vehicle);
 			m_fLastTextUpdate = currentTime;
@@ -155,7 +163,10 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 	//------------------------------------------------------------------------------------------------
 	override bool CanBeShownScript(IEntity user)
 	{
-		return m_DepotComponent && m_Vehicle;
+		if (!m_DepotComponent || !m_Vehicle)
+			return false;
+			
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
