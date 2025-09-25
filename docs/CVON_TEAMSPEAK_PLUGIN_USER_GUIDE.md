@@ -43,9 +43,9 @@ The base implementation of the VON (voice over network) system in reforger has i
 
 ### Step 1: Download the Plugin
 
-1. **Download the plugin** from the Coalition website:
+1. **Download the plugin** from the Github Release page:
    ```
-   https://coalitiongroup.net/files/Coalition_Teamspeak_PluginV1.8.ts3_plugin
+   https://github.com/CoalitionArma/Coalition-VON/releases/
    ```
 
 2. **Save the file** to a location you can easily find (e.g., Downloads folder)
@@ -260,7 +260,7 @@ If you continue to experience issues:
 - **Plugin Version**: 1.8
 - **Compatible with**: TeamSpeak 3 Client
 - **Last Updated**: Check Coalition website for latest version
-- **Download Link**: https://coalitiongroup.net/files/Coalition_Teamspeak_PluginV1.8.ts3_plugin
+- **Download Link**: https://coalitiongroup.net/files/Coalition_Teamspeak_PluginV1.9.ts3_plugin
 
 ---
 

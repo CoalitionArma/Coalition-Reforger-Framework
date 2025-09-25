@@ -71,6 +71,11 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 	private Faction m_Faction;
 	private CRF_Gamemode m_GM;
 	
+	// Winner tracking variables
+	private FactionKey m_sWinningFaction = "";
+	private string m_sWinnerMethod = ""; // "automatic", "manual", "timeout", "inconclusive"
+	private bool m_bWinnerDetermined = false;
+	
 	// Singleton instance
 	private static CRF_LoggingManager s_Instance;
 	
@@ -618,5 +623,88 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 			return;
 		
 		LogORBAT();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FACTION WINNER LOGGING SYSTEM
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Set the winning faction for this mission
+	 * @param factionKey The faction key that won (BLUFOR, OPFOR, INDFOR, CIV)
+	 * @param method The method used to determine the winner (manual, automatic, timeout, etc.)
+	 */
+	void SetWinningFaction(FactionKey factionKey, string method = "manual")
+	{
+		if (RplSession.Mode() != RplMode.Dedicated && RplSession.Mode() != RplMode.Listen)
+			return;
+		
+		// Validate faction key
+		if (factionKey.IsEmpty())
+		{
+			Print("[CRF_LoggingManager] Warning: Empty faction key provided to SetWinningFaction", LogLevel.WARNING);
+			return;
+		}
+		
+		// Normalize faction key to uppercase
+		factionKey.ToUpper();
+		
+		// Validate faction key is one of the supported factions
+		if (factionKey != "BLUFOR" && factionKey != "OPFOR" && factionKey != "INDFOR" && factionKey != "CIV")
+		{
+			Print(string.Format("[CRF_LoggingManager] Warning: Invalid faction key '%1' provided to SetWinningFaction", factionKey), LogLevel.WARNING);
+			return;
+		}
+		
+		m_sWinningFaction = factionKey;
+		m_sWinnerMethod = method;
+		m_bWinnerDetermined = true;
+		
+		// Log immediately to ensure it's captured
+		LogWinner();
+		
+		Print(string.Format("[CRF_LoggingManager] Winner set: %1 (method: %2)", factionKey, method), LogLevel.NORMAL);
+	}
+	
+	/**
+	 * Get the currently determined winning faction
+	 * @return FactionKey of the winning faction, empty string if not determined
+	 */
+	FactionKey GetWinningFaction()
+	{
+		return m_sWinningFaction;
+	}
+	
+	/**
+	 * Check if a winner has been determined
+	 * @return true if winner has been set, false otherwise
+	 */
+	bool IsWinnerDetermined()
+	{
+		return m_bWinnerDetermined;
+	}
+	
+	/**
+	 * Get the method used to determine the winner
+	 * @return string describing how the winner was determined
+	 */
+	string GetWinnerMethod()
+	{
+		return m_sWinnerMethod;
+	}
+	
+	/**
+	 * Private method to write winner information to log file
+	 */
+	protected void LogWinner()
+	{
+		if (!m_LogFileHandle)
+			return;
+		
+		// Format: mission_winner,FACTION,METHOD,MISSION_NAME
+		string winnerLine = string.Format("mission_winner%1%2%1%3%1%4", 
+			SEPARATOR, m_sWinningFaction, m_sWinnerMethod, m_sMissionName);
+		
+		m_LogFileHandle.WriteLine(winnerLine);
 	}
 }

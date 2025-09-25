@@ -645,11 +645,107 @@ class CRF_PlayerControllerManager : ScriptComponent
 	}
 	
 	/**
-	 * Callback for advancing gamemode state
+	 * Callback for advancing gamemode state with optional faction winner parameter
+	 * Usage: /aar [faction]
+	 * Examples: /aar, /aar blufor, /aar blu, /aar opfor, /aar opf, /aar indfor, /aar ind, /aar civ
 	 */
 	void Advance_Callback(SCR_ChatPanel panel, string data)
 	{
-		m_RplToAuthorityManager.RequestAdvanceGamemodeState(true);
+		// Check if admin privileges are required
+		if (!SCR_Global.IsAdmin())
+		{
+			if (panel)
+			{
+				SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+				if (chatComponent)
+					chatComponent.ShowMessage("You need admin privileges to use the /aar command.");
+			}
+			return;
+		}
+		
+		// Parse faction parameter if provided
+		if (data && data.Length() > 0)
+		{
+			// Clean up the input - remove extra spaces and convert to uppercase
+			data.Trim();
+			data.ToUpper();
+			
+			// Map short faction names to full names
+			FactionKey winningFaction = "";
+			switch (data)
+			{
+				case "BLUFOR":
+				case "BLU":
+				case "B":
+				case "BLUE":
+					winningFaction = "BLUFOR";
+					break;
+					
+				case "OPFOR":
+				case "OPF":
+				case "O":
+				case "RED":
+					winningFaction = "OPFOR";
+					break;
+					
+				case "INDFOR":
+				case "IND":
+				case "I":
+				case "INDEPENDENT":
+				case "GREEN":
+					winningFaction = "INDFOR";
+					break;
+					
+				case "CIV":
+				case "C":
+				case "CIVILIAN":
+					winningFaction = "CIV";
+					break;
+					
+				default:
+					// Invalid faction specified
+					if (panel)
+					{
+						SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+						if (chatComponent)
+						{
+							string validOptions = "Valid faction options: blufor (blu), opfor (opf), indfor (ind), civ";
+							chatComponent.ShowMessage(string.Format("Invalid faction '%1'. %2", data, validOptions));
+						}
+					}
+					return;
+			}
+			
+			// Set the winning faction in the logging manager
+			CRF_LoggingManager loggingManager = CRF_LoggingManager.GetInstance();
+			if (loggingManager)
+			{
+				loggingManager.SetWinningFaction(winningFaction, "manual");
+				
+				// Show confirmation message
+				if (panel)
+				{
+					SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+					if (chatComponent)
+						chatComponent.ShowMessage(string.Format("Winner set to %1. Advancing to AAR...", winningFaction));
+				}
+			}
+
+			// Advance to AAR state
+			m_RplToAuthorityManager.RequestAdvanceGamemodeState(true);
+		}
+		else
+		{
+			// No faction specified - show current usage
+			if (panel)
+			{
+				SCR_ChatComponent chatComponent = SCR_ChatComponent.Cast(GetGame().GetPlayerController().FindComponent(SCR_ChatComponent));
+				if (chatComponent)
+					chatComponent.ShowMessage("Usage: /aar [faction] - Examples: /aar blufor, /aar opfor, /aar indfor, /aar civ");
+					
+			}
+			return;
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

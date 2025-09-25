@@ -7,27 +7,29 @@ GenericEntity {
     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
      m_sVehicleName "Civilian Car"
      m_sVehiclePrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
-     m_iCost 5
-    }
-    CRF_VehicleDepotVehicle "{664C7C244FBD81B6}" {
-     m_sVehicleName "UAZ Van"
-     m_sVehiclePrefab "{988A61BA68420AFE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_base.et"
      m_eCostType SUPPLIES
      m_iCost 50
     }
-    CRF_VehicleDepotVehicle "{664C7C24443502E4}" {
-     m_sVehicleName "Humvee"
-     m_sVehiclePrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
-     m_eCostType USES
-     m_iCost 1
-    }
    }
+   m_bEnableDebugLogging 0
   }
   MeshObject "{664B076A9B68EF5E}" {
    Object "{A5B43FE12B863CFB}Assets/Structures/Signs/Military/SignRectangle_01_75x45_double.xob"
+   Materials {
+    MaterialAssignClass "{665823603A23A499}" {
+     SourceMaterial "SignRectangle_01_75x45_double"
+     AssignedMaterial "{14489FC6B62CC10E}Assets/Structures/Signs/Military/Data/Sign_VehicleRepair_COAL_01.emat"
+    }
+    MaterialAssignClass "{665823603A23A4AC}" {
+     SourceMaterial "SignRectangle_01_75x45_double_MLOD"
+     AssignedMaterial "{14489FC6B62CC10E}Assets/Structures/Signs/Military/Data/Sign_VehicleRepair_COAL_01.emat"
+    }
+   }
   }
   RigidBody "{664B076A8751587E}" {
+   ResponseIndex "MediumDestructible"
    ModelGeometry 1
+   Static 1
   }
   ActionsManagerComponent "{664B076A73DE68BD}" {
    ActionContexts {
