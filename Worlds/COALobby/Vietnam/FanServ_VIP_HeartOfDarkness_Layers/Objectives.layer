@@ -1,0 +1,45 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 1431.437 25.658 1724.027
+  m_sQuadName "pick-up"
+  m_fWorldSize 150
+  m_sDescription "Escape Vehicle"
+  m_aVisibleForFactions {
+   "OPFOR" "CIV"
+  }
+ }
+ {
+  coords 1831.971 6.781 1998.271
+  m_fWorldSize 150
+  m_sDescription "Colonel's Extraction"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1259.441 92.897 2693.13
+  m_fWorldSize 150
+  m_sDescription "MACV-SOG Extraction"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 940.001 37.295 1751.227
+  angleY 75
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "direction-of-attack"
+  m_fWorldSize 200
+  m_sDescription "Colonel's Path"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 1413.852 58.36 1589.508
+  angleY 353
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "direction-of-attack"
+  m_fWorldSize 200
+  m_sDescription "MACV-SOG Path"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+}
