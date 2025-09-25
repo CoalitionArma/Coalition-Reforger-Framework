@@ -1852,10 +1852,14 @@ class CRF_AdminMenu : ChimeraMenuBase
 		TextWidget civTicketText = TextWidget.Cast(ticketCounters.FindWidget("CivTicketCount"));
 		
 		// Update Ticket Counters
-		bluforTicketText.SetText(CRF_Gamemode.GetInstance().m_iBLUFORTickets.ToString());
-		opforTicketText.SetText(CRF_Gamemode.GetInstance().m_iOPFORTickets.ToString());
-		indforTicketText.SetText(CRF_Gamemode.GetInstance().m_iINDFORTickets.ToString());
-		civTicketText.SetText(CRF_Gamemode.GetInstance().m_iCIVTickets.ToString());
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (respawnManager)
+		{
+			bluforTicketText.SetText(respawnManager.GetFactionTickets("BLUFOR").ToString());
+			opforTicketText.SetText(respawnManager.GetFactionTickets("OPFOR").ToString());
+			indforTicketText.SetText(respawnManager.GetFactionTickets("INDFOR").ToString());
+			civTicketText.SetText(respawnManager.GetFactionTickets("CIV").ToString());
+		}
 
 	}
 	
