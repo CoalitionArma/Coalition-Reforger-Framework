@@ -17,9 +17,22 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	CRF_SlottingManager m_SlottingManager;
 	int m_iCurrentPhase = 1;
 	
+	//Client Values
+	Widget m_wCurrentAlert;
+	int m_iWidgetChange = 0;
+	
 	void CRF_RaidGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
+	}
+	
+	void ~CRF_RaidGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		if (!GetGame().GetWorld())
+			return;
+		//Cleans it up on scernario reload if it's still there
+		if (m_wCurrentAlert)
+			delete m_wCurrentAlert;
 	}
 	
 	static CRF_RaidGamemodeComponent GetInstance()
@@ -93,6 +106,33 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		m_iPointsDestroyed += pointsDestroyed;
 		PointsCheck();
 		Replication.BumpMe();
+		float percent = (float)m_iPointsDestroyed/(float)m_iPointsToWin * 100;
+		Rpc(RpcDo_DrawPointUpdate, pointsDestroyed, percent);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_DrawPointUpdate(int pointsAdded, float currentPercent)
+	{
+		if (m_wCurrentAlert)
+			delete m_wCurrentAlert;
+		
+		m_iWidgetChange++;
+		m_wCurrentAlert = GetGame().GetWorkspace().CreateWidgets("{66DCB94B8F932419}UI/layouts/HUD/Raid/RaidPopUp.layout");
+		m_wCurrentAlert.SetOpacity(0);
+		AnimateWidget.StopAllAnimations(m_wCurrentAlert);
+		AnimateWidget.Opacity(m_wCurrentAlert, 1, 1);
+		TextWidget.Cast(m_wCurrentAlert.FindWidget("TotalAdded")).SetText("+ " + pointsAdded.ToString());
+		Print(currentPercent);
+		ProgressBarWidget.Cast(m_wCurrentAlert.FindWidget("Progress")).SetCurrent(currentPercent);
+		GetGame().GetCallqueue().CallLater(AnimatePointUpdateFade, 2000, false, m_iWidgetChange);
+	}
+	
+	void AnimatePointUpdateFade(int widgetChange)
+	{
+		if (widgetChange != m_iWidgetChange)
+			return;
+		
+		AnimateWidget.Opacity(m_wCurrentAlert, 0, 3);
 	}
 	
 	void PointsCheck()

@@ -1,0 +1,58 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{66723B4D98B769E4}" {
+   Name "BG"
+   Slot FrameWidgetSlot "{66723B4D98B7681E}" {
+    Anchor 1 0 1 0
+    PositionX -228.05
+    OffsetLeft -228.05
+    PositionY 28.911
+    OffsetTop 28.911
+    SizeX 196.74
+    OffsetRight 31.31
+    SizeY 108.488
+    OffsetBottom -137.399
+   }
+   Color 0.0497 0.0497 0.0497 0.6375
+  }
+  ProgressBarWidgetClass "{66723B4E4963B398}" {
+   Name "Progress"
+   Slot FrameWidgetSlot "{66723B4E4963B3BA}" {
+    Anchor 1 0 1 0
+    PositionX -216.98
+    OffsetLeft -216.98
+    PositionY 97.757
+    OffsetTop 97.757
+    SizeX 174.05
+    OffsetRight 42.93
+    SizeY 30
+    OffsetBottom -127.756
+   }
+   Color 0 0.502 0.1255 1
+   Current 0
+  }
+  TextWidgetClass "{66723B4E733B94D9}" {
+   Name "TotalAdded"
+   Slot FrameWidgetSlot "{66723B4E733B93F8}" {
+    Anchor 1 0 1 0
+    PositionX -223.72
+    OffsetLeft -223.72
+    PositionY 34.99
+    OffsetTop 34.99
+    SizeX 181.889
+    OffsetRight 41.831
+    SizeY 57.926
+    OffsetBottom -92.916
+   }
+   Text "+ 10"
+   "Font Size" 45
+   "Horizontal Alignment" Right
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66723B4E5E0DAEAD}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+    ShadowOffset 0 0
+   }
+  }
+ }
+}
