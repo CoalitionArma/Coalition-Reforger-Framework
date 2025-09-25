@@ -83,7 +83,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "BLUFOR Assets: 2x armed jeep"\
    ""\
    "OPFOR Composition: Inf"\
-   "OPFOR Assets: 1x armed BTR-70"\
+   "OPFOR Assets: "\
    ""\
    "Time: 45 min"\
    "Weather: Clear"
@@ -216,9 +216,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
        SCR_CallsignInfo "{665E12B4D4140B34}" {
         m_sCallsign "2-3"
-       }
-       SCR_CallsignInfo "{665E12B4D4D03822}" {
-        m_sCallsign "BTR-70"
        }
       }
      }
