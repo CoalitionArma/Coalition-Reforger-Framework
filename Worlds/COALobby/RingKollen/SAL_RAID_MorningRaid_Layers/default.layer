@@ -1,9 +1,7 @@
-SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
- coords 801.08 377.832 2432.171
-}
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  components {
   CRF_RaidGamemodeComponent "{66711105B581F7C7}" {
+   m_fPercentAttackersRetreat 0
   }
   CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
    m_bTeamspeakChecks 0
@@ -12,7 +10,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 800.152 377.89 2436.824
  m_bSafestartInstantlyEnabled 0
  {
-  SCR_FactionManager {
+  SCR_FactionManager "66723B738DECE4F1" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628CDE9209CA3FF9}" {
@@ -30,6 +28,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{58B2B630FDD64B50}" {
         m_sCallsign "Cell 4"
        }
+       SCR_CallsignInfo "{66723B76879F4680}" {
+        m_sCallsign "Cell 5"
+       }
+       SCR_CallsignInfo "{66723B7686656C37}" {
+        m_sCallsign "Cell 6"
+       }
       }
      }
     }
@@ -45,24 +49,34 @@ $grp BaseGameTriggerEntity {
   coords 802.776 377.95 2438.795
  }
 }
-GenericEntity : "{5DF32BDA2A8C5A3D}Prefabs/Props/Military/Camps/PalletAmmo_01_US_camo.et" {
- components {
-  CRF_RaidItemComponent "{667111024EB71D9C}" {
-   m_iPointsEarnedWhenDestroyed 100
-  }
-  SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
-   Enabled 1
-  }
-  RplComponent "{5624A88DC2D9928D}" {
-   Enabled 1
-   "Parent Node From Parent Entity" 0
-  }
- }
- coords 796.211 377.781 2430.855
-}
 SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
  coords 796.887 377.596 2412.127
 }
 SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
  coords 809.148 378.021 2443.639
+}
+GenericEntity : "{E2B01D303DD412D7}Prefabs/Props/Military/AmmoBoxes/AmmoBox_P150_Hydra_Container_US/AmmoBox_P150_Hydra_Container_Pallet_US.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{51E082CF9891AD6F}" {
+   Enabled 1
+   "Additional hit zones" {
+    SCR_HitZone Default {
+    }
+   }
+   m_fBaseHealth 2000
+  }
+  RplComponent "{62DCC78927DC7E3C}" {
+   "Parent Node From Parent Entity" 0
+  }
+ }
+ coords 798.235 377.771 2429.115
+}
+Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ components {
+  CRF_RaidItemComponent "{66723B747484DE26}" {
+   m_iPointsEarnedWhenDestroyed 100
+  }
+ }
+ coords 793.475 377.734 2429.477
+ angleY 31
 }

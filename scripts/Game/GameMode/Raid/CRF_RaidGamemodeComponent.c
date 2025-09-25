@@ -7,11 +7,15 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	static CRF_RaidGamemodeComponent m_sInstance;
 	
 	[Attribute("100")] int m_iPointsToWin;
+	[Attribute("50")] float m_fPercentAttackersRetreat;
 	[Attribute("OPFOR")] string m_sDefendingSide;
 	[Attribute("BLUFOR")] string m_sAttackingSide;
 	[Attribute("INDFOR")] string m_sIndependentFaction;
 	
 	[RplProp()] int m_iPointsDestroyed = 0;
+	
+	CRF_SlottingManager m_SlottingManager;
+	int m_iCurrentPhase = 1;
 	
 	void CRF_RaidGamemodeComponent(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -21,6 +25,67 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	static CRF_RaidGamemodeComponent GetInstance()
 	{
 		return m_sInstance;
+	}
+	
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+		SetEventMask(owner, EntityEvent.INIT);
+	}
+	
+	override void EOnInit(IEntity owner)
+	{
+		super.EOnInit(owner);
+		m_SlottingManager = CRF_SlottingManager.GetInstance();
+	}
+	
+	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnPlayerKilled(instigatorContextData);
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		if (m_iCurrentPhase == 2)
+			return;
+		
+		//Quick delay so we can make sure the players slot dead state is updated.
+		GetGame().GetCallqueue().CallLater(CheckAttackersDelay, 250, false);
+	}
+	
+	void CheckAttackersDelay()
+	{
+		if (IsAttackersBelowThreshold() && m_iCurrentPhase != 2)
+			NextPhase();
+	}
+	
+	//Checks to see if side is below percentage.
+	bool IsAttackersBelowThreshold()
+	{
+		int attackersSlotted = 0;
+		int attackersDead = 0;
+		foreach (int slotId, CRF_SlotDataContainer slotContainer: m_SlottingManager.GetSlotMap())
+		{
+			if (slotContainer.GetSlotCurrentPlayerId() == 0)
+				continue;
+			
+			if (slotContainer.GetSlotFactionKey() != m_sAttackingSide)
+				continue;
+			
+			attackersSlotted++;
+			if (slotContainer.GetIsDeadSlot())
+				attackersDead++;
+		}
+		
+		//No 0 division
+		if (attackersSlotted == 0 || attackersDead == 0)
+			return false;
+		
+		if ((attackersDead/attackersSlotted) * 10 < m_fPercentAttackersRetreat)
+			return true;
+		
+		return false;
 	}
 	
 	void OnObjectDestroyed(int pointsDestroyed)
@@ -56,6 +121,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	
 	void NextPhase()
 	{
+		m_iCurrentPhase = 2;
 		CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();
 		IEntity defendersRespawn = GetGame().GetWorld().FindEntityByName("DefenderRespawn");
 		EntitySpawnParams params = new EntitySpawnParams();
@@ -71,7 +137,6 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		
 		//Below is to sort and respawn the dead attackers into independent faction
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		CRF_SlottingManager slottingMan = CRF_SlottingManager.GetInstance();
 		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 		PlayerManager playerMan = GetGame().GetPlayerManager();
 		Faction indfor = factionMan.GetFactionByKey("INDFOR");
@@ -92,36 +157,28 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			if (!playerFaction)
 				continue;
 			
-			if (playerFaction.GetFactionKey() != "SPEC")
+			if (!m_SlottingManager.GetPlayerSlotFaction(playerId))
 				continue;
 			
-			if (!slottingMan.GetPlayerSlotFaction(playerId))
+			if (m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey() != m_sAttackingSide || !m_SlottingManager.GetPlayerSlotData(playerId).GetIsDeadSlot())
 				continue;
 			
-			if (slottingMan.GetPlayerSlotFaction(playerId).GetFactionKey() != m_sAttackingSide)
-				continue;
-			
-			CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(slottingMan.GetPlayerSlotResource(playerId));
+			CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(m_SlottingManager.GetPlayerSlotResource(playerId));
 			CRF_RoleConfig roleConfig = rolesConfig.FindRoleConfig(role);
 			if (roleConfig.m_SlottingType == CRF_ESlotType.SQUAD_LEADER || roleConfig.m_SlottingType == CRF_ESlotType.TEAM_LEADER)
 				leaders.Insert(playerId);
 			else
 				joes.Insert(playerId);
 			
-			SCR_PlayerFactionAffiliationComponent affiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(
-				playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)
-			);
 			
-			if (affiliationComponent)
-				affiliationComponent.RequestFaction(indfor);
-			
-			GetGame().GetCallqueue().CallLater(SpawnEntity, 2100, false, roleConfig, indParams, playerController);
+			GetGame().GetCallqueue().CallLater(AssignFactionToPlayer, 100, false, playerController, indfor);
+			GetGame().GetCallqueue().CallLater(SpawnEntity, 300, false, roleConfig, indParams, playerController);
 		}
 		
 		int joeSize = joes.Count();
-		int amountOfSquads = Math.Ceil(joeSize/8);
-		if (amountOfSquads == 0)
-			amountOfSquads = 1;
+		int amountOfSquads = 1;
+		if (joeSize > 0)
+			amountOfSquads = Math.Ceil(joeSize / 8.0);
 		ref array<SCR_AIGroup> groups = {};
 		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
 		//Create the groups for indfor players
@@ -137,25 +194,34 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			groups.Insert(newGroup);
 		}
 		
-		GetGame().GetCallqueue().CallLater(SCR_Faction.Cast(indfor).InitializeFactionChannels, 2000, false);
+		GetGame().GetCallqueue().CallLater(SCR_Faction.Cast(indfor).InitializeFactionChannels, 200, false);
 		
 		for (int i = 0; i < joeSize; i++)
 		{
-			int index = 0;
-			if (i > 0)
-			 index = Math.Floor(i/8);
+			int index = i % amountOfSquads;
 			SCR_AIGroup group = groups.Get(index);
-			GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 2200, false, group.GetGroupID(), joes.Get(i));
+			RplId groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
+			GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 700, false, group.GetGroupID(), joes.Get(i), groupId);
 		}
 		
 		for (int i = 0; i < leaders.Count(); i++)
 		{
-			int index = 0;
-			if (i >= amountOfSquads)
-				index = i % amountOfSquads;
+			int index = i % amountOfSquads;
 			SCR_AIGroup group = groups.Get(index);
-			GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 2000, false, group.GetGroupID(), leaders.Get(i));
+			RplId groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
+			GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 700, false, group.GetGroupID(), leaders.Get(i), groupId);
 		}
+		
+	}
+	
+	void AssignFactionToPlayer(PlayerController playerController, Faction faction)
+	{
+		SCR_PlayerFactionAffiliationComponent affiliationComponent = SCR_PlayerFactionAffiliationComponent.Cast(
+				playerController.FindComponent(SCR_PlayerFactionAffiliationComponent)
+			);
+			
+		if (affiliationComponent)
+			affiliationComponent.RequestFaction(faction);
 	}
 	
 	void SpawnEntity(CRF_RoleConfig roleConfig, EntitySpawnParams indParams, PlayerController playerController)
@@ -171,10 +237,15 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		GetGame().GetCallqueue().CallLater(CRF_RplBroadcastManager.GetInstance().InitilizePlayerBroadcast, 250, false, playerController.GetPlayerId(), playerRplComp.Id());
 	}
 	
-	void AssignPlayerToGroup(int groupId, int playerId)
+	void AssignPlayerToGroup(int groupId, int playerId, RplId groupRplId)
 	{
 		SCR_PlayerControllerGroupComponent groupComponent = SCR_PlayerControllerGroupComponent.GetPlayerControllerComponent(playerId);
 		if (groupComponent)
 			groupComponent.RequestJoinGroup(groupId);
+		CRF_SlotDataContainer currentData = m_SlottingManager.GetSlotData(m_SlottingManager.GetPlayerSlotID(playerId));
+		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		RplId characterRplId = RplComponent.Cast(character.FindComponent(RplComponent)).Id();
+		currentData.SetSlotFactionKey(m_sIndependentFaction);
+		m_SlottingManager.BatchUpdateSlot(m_SlottingManager.GetPlayerSlotID(playerId), playerId, groupRplId, characterRplId, character.GetPrefabData().GetPrefabName(), currentData.GetSlotName(), false, false);
 	}
 }
