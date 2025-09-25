@@ -28,16 +28,20 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Clear"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "The Department of Energy's Anti-Nuclear Terrorist Commando Task Force has been advised of a incoming attack on a Nuclear power plant and has been deployed to defuse the bombs, but has arrived earlier than expected and might be able to defend it prior to the attack. "
+   m_sTextData "The Department of Energy's Anti-Nuclear Terrorist Commando Task Force has been advised of a incoming attack on a Nuclear power plant and has been deployed to protect the location. You've arrived earlier than expected and have time to get to the location and set up before the attack. Be advised that the enemy has standard rifles and has an advantage in prolonged ranged engagements versus your submachine guns."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "The Three Mile Sons of Liberty are on a mission to liberate Nuclear energy from it's shackles inside the reactor. Detonate both emcoms to bring Nuclear power to the common man."\
+   m_sTextData "The Three Mile Sons of Liberty are on a mission to liberate Nuclear energy from it's shackles inside the reactor. Detonate both emcoms to bring Nuclear power to the common man. The government has deployed their forces to stop it and got here faster than anticpated, expect resistance but they're underequipped for ranged fights."\
    ""
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTextData "Reactor is active and will hurt you "
   }
  }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{F8083CE71EEDB1FA}Configs/Gearscripts/Custom/Owen7/CRF_GS_DeptEnergyAntiTerror.conf"
   m_bEnableRTORadios 0
@@ -67,10 +71,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-3"
        }
        SCR_CallsignInfo "{665F62AF41F5AA3F}" {
-        m_sCallsign "MMG"
+        m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{665F62AF44C49060}" {
-        m_sCallsign "Sniper"
+        m_sCallsign "MMG Team"
+       }
+       SCR_CallsignInfo "{6673406B6DC906EA}" {
+        m_sCallsign "Sniper Team"
        }
       }
      }
@@ -112,6 +119,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "2-3"
        }
        SCR_CallsignInfo "{665F62AFDA360566}" {
+        m_sCallsign "2-4"
+       }
+       SCR_CallsignInfo "{6673406B4D045A0E}" {
         m_sCallsign "GAZ PKP"
        }
       }

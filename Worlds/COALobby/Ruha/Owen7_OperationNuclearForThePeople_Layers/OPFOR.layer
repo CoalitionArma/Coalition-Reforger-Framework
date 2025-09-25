@@ -43,10 +43,14 @@ SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
               {
                coords 19.037 -1.078 3.601
                angleY -165.627
+              }
+              {
+               coords 13.681 -1.051 -4.245
+               angleY -157.966
                {
                 SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
-                 coords -64.275 0.027 1.721
-                 angleY 49.647
+                 coords -65.952 -0 -16.145
+                 angleY 41.986
                 }
                }
               }
