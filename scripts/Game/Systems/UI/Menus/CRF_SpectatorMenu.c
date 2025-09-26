@@ -152,8 +152,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		
 		// Find and cast main timer widgets
-		m_wTimer = TextWidget.Cast(m_wRoot.FindWidget("timeLeftTimer"));
-		m_wBackground = ImageWidget.Cast(m_wRoot.FindWidget("timeLeftBackground"));
+		m_wTimer = TextWidget.Cast(m_wRoot.FindAnyWidget("timeLeftTimer"));
+		m_wBackground = ImageWidget.Cast(m_wRoot.FindAnyWidget("timeLeftBackground"));
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
