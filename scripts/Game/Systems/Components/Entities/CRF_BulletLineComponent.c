@@ -14,7 +14,7 @@ class CRF_BulletLineComponent: ScriptComponent
 	
 	override void OnPostInit(IEntity owner)
 	{
-		#ifdef ENABLE_DIAG
+		#ifdef WORKBENCH
 		#else
 		if (System.IsConsoleApp())
 			return;
@@ -81,7 +81,7 @@ class CRF_BulletLineComponent: ScriptComponent
 	
 	void ~CRF_BulletLineComponent()
 	{
-		#ifdef ENABLE_DIAG
+		#ifdef WORKBENCH
 		#else
 		if (System.IsConsoleApp())
 			return;
@@ -90,30 +90,22 @@ class CRF_BulletLineComponent: ScriptComponent
 		if (!GetGame().GetWorld())
 			return;
 		
-		if (!m_PlayerController.m_bIsBulletTrackingEnabled)
+		if (!GetGame().GetPlayerController())
+			return;
+		
+		if (!SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled)
 			return;
 		
 		Shape line;
 		if (m_iCurrentPoint + 1 > 2)
+		{
 			line = Shape.CreateLines(m_iColor, ShapeFlags.VISIBLE, m_aPoints, m_iCurrentPoint);
-		
-		if (line)
-			GetGame().GetCallqueue().CallLater(DeleteLine, 500, false, line, 500);
+			GetGame().GetCallqueue().CallLater(DeleteLine, 3000, false, line);
+		}
 	}
 	
-	void DeleteLine(Shape line, int delay)
+	void DeleteLine(Shape line)
 	{
-		//We check every half second to see if the player turned off bullet tracking.
-		//This is because the object this is tied to has been destroyed so we not longer have acced to EONFrame.
-		if (delay >= 3000 || !SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled)
-		{
-			delete line;
-			return;
-		}
-		
-		delay += 500;
-		//Small safety net to avoid disaster
-		if (delay < 3000)
-			GetGame().GetCallqueue().CallLater(DeleteLine, delay, false, line, delay);
+		delete line;
 	}
 }
