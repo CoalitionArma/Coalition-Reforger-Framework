@@ -1,0 +1,27 @@
+SCR_DestructibleBuildingEntity : "{4EEE140BBF69CAB3}Prefabs/Structures/Culture/Castle/Castle Wooden Stairs.et" {
+ coords 9709.562 -0.011 5363.085
+ angleY 86.788
+}
+GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
+ components {
+  SCR_LampComponent "{5D2ABC12E93AB331}" {
+   m_eInitialLightState LIT_ON_SPAWN
+  }
+ }
+ coords 9718.806 34.871 5355.845
+}
+SCR_DestructibleBuildingEntity : "{7124EA81F33E40CE}Prefabs/Structures/Culture/Castle/Castle Tower 02.et" {
+ coords 9717.646 -0.182 5355.881
+}
+SCR_DestructibleBuildingEntity : "{AFD0F05F3FD48D6C}PrefabLibrary/Structures/Houses/Cottage_E_01.et" {
+ coords 9567.95 0 5208.643
+ angleY -3.236
+}
+GenericEntity : "{D255FB1F798CB6C3}Prefabs/Structures/Military/CamoNets/FIA/CamoNet_Large_FIA_01_V2.et" {
+ coords 9587.223 10.875 5211.765
+ angleY -41.471
+}
+GenericEntity : "{FB26A800AC01D85A}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_FIA_01.et" {
+ coords 9605.117 22.763 5260.122
+ angleY 66.211
+}

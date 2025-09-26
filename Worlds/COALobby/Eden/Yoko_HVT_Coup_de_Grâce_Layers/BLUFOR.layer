@@ -1,0 +1,35 @@
+$grp SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ {
+  coords 4894.399 28.594 11639.098
+ }
+ {
+  coords 4921.843 28.594 11639.098
+ }
+}
+$grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+ {
+  coords 4887.261 28.594 11632.216
+ }
+ {
+  coords 4887.261 28.594 11629.277
+ }
+ {
+  coords 4887.261 28.594 11626.907
+ }
+ {
+  coords 4916.107 28.594 11626.907
+ }
+ {
+  coords 4916.107 28.594 11629.306
+ }
+ {
+  coords 4916.107 28.594 11631.951
+ }
+}
+SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+ coords 4903.172 28.594 11623.146
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 4909.444 28.594 11644.318
+ angleY 172.609
+}

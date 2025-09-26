@@ -1,22 +1,64 @@
 $grp SCR_VehicleSpawn {
  {
-  coords 3236.911 10.749 2998.193
+  coords 3236.911 10.75 2998.193
   angleY -129.369
-  m_rnPrefab "{21E9A875C0A3C409}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HE.et"
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 3255.811 10.749 2975.158
+  coords 3244.703 10.75 2988.698
   angleY -129.369
-  m_rnPrefab "{0DAC69A0A52EFB4F}Prefabs/Vehicles/Helicopters/H47/CH47D_US.et"
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
   respawnDelay 10000
   firstSpawn 1
  }
  {
-  coords 3271.52 10.749 2956.012
+  coords 3252.009 10.75 2979.792
   angleY -129.369
-  m_rnPrefab "{0DAC69A0A52EFB4F}Prefabs/Vehicles/Helicopters/H47/CH47D_US.et"
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3264.844 10.75 2964.149
+  angleY -129.369
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3276.24 10.75 2950.26
+  angleY -129.369
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3287.291 10.75 2936.792
+  angleY -129.369
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3225.456 10.75 3012.154
+  angleY -129.369
+  m_rnPrefab "{DDDD9B51F1234DF3}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3215.344 10.75 3024.478
+  angleY -129.369
+  m_rnPrefab "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3200.769 10.75 3042.241
+  angleY -129.369
+  m_rnPrefab "{70BAEEFC2D3FEE64}Prefabs/Vehicles/Helicopters/UH1H/UH1H.et"
   respawnDelay 10000
   firstSpawn 1
  }

@@ -53,11 +53,47 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
    "BLUFOR"
   }
  }
+ {
+  coords 2374.231 119.383 750.081
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Possible Cache"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 1107.817 10.779 969.873
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Possible Cache"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 1217.046 52.006 566.991
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Possible Cache"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
+ {
+  coords 1258.021 78.759 1536.512
+  angleY 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Possible Cache"
+  m_aVisibleForFactions {
+   "BLUFOR"
+  }
+ }
 }
 $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
  CacheB {
-  coords 1837.007 21.964 1416.799
-  angleY 76.315
+  coords 1244.478 83.311 1540.921
+  angleY 17.819
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Bravo Cache destroyed\", duration: 10);"\
   "	"
@@ -74,8 +110,8 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   }
  }
  CacheA {
-  coords 2539.978 1.532 1647.965
-  angleY 77.493
+  coords 1222.07 56.825 545.315
+  angleY 129.201
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Alpha Cache destroyed\", duration: 10);"\
   "	"
@@ -92,7 +128,7 @@ $grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyS
   }
  }
  CacheC {
-  coords 1411.69 36.782 1114.039
+  coords 1425.371 36.535 1089.573
   angleY 69.224
   destructor ""\
   "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Charlie Cache destroyed\", duration: 10);"\

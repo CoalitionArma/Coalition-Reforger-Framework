@@ -1,0 +1,30 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 4943.141 28.563 11822.198
+  angleY 175.751
+  m_rnPrefab "{27E2E58E734A80EC}Prefabs/Vehicles/Wheeled/M998/M1025_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4937.651 28.563 11821.791
+  angleY 175.751
+  m_rnPrefab "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4933.206 28.563 11821.461
+  angleY 175.751
+  m_rnPrefab "{9C3269FB43F989A3}Prefabs/Vehicles/Wheeled/S105/S105_darkblue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4928.127 28.563 11821.835
+  angleY 175.751
+  m_rnPrefab "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

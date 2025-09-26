@@ -69,4 +69,11 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
   firstSpawn 1
  }
+ {
+  coords 1978.305 4.052 1168.564
+  angleY 47.639
+  m_rnPrefab "{FD109F3702AAB392}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_ZU23.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
 }

@@ -1,0 +1,62 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 4918.301 28.563 11652.792
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4931.928 28.563 11659.815
+  angleY 120.904
+  m_rnPrefab "{1E1DBD16A1156D09}Prefabs/Vehicles/Wheeled/IvecoLMV/OpenTop/IvecoLMV_Armed_Green_Shield.et"
+ }
+ {
+  coords 4945.716 28.563 11659.729
+  angleY 111.977
+  m_rnPrefab "{1E1DBD16A1156D09}Prefabs/Vehicles/Wheeled/IvecoLMV/OpenTop/IvecoLMV_Armed_Green_Shield.et"
+ }
+ {
+  coords 4918.051 28.563 11661.375
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4917.676 28.563 11670.148
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4940.972 28.563 11670.173
+  angleY 121.285
+  m_rnPrefab "{1E1DBD16A1156D09}Prefabs/Vehicles/Wheeled/IvecoLMV/OpenTop/IvecoLMV_Armed_Green_Shield.et"
+ }
+ {
+  coords 4906.82 28.563 11651.602
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4890.643 28.563 11650.908
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4889.827 28.563 11669.998
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4905.486 28.563 11671.348
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4905.865 28.563 11662.486
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+ {
+  coords 4890.239 28.563 11660.348
+  angleY 87.55
+  m_rnPrefab "{0B337F1E16EA2244}Prefabs/Vehicles/Wheeled/IvecoLMV/Unarmed/IvecoLMV_Unarmed_Green.et"
+ }
+}

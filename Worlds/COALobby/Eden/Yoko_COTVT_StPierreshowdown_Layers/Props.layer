@@ -1,0 +1,71 @@
+GenericEntity : "{0A6B5B1CC60EC137}Prefabs/Props/Wrecks/LAV25_wreck_static.et" {
+ coords 9561.684 28.87 1731.306
+ angleY 17.372
+}
+GenericEntity : "{1D0B32AA80873228}Prefabs/Props/Wrecks/LAV25_wreck.et" {
+ coords 9893.462 5.756 1605.099
+ angleY 56.98
+}
+GenericEntity : "{21B4CFCFAE632E30}PrefabsEditable/Auto/Props/Wrecks/E_T62_wreck.et" {
+ coords 9523.653 30.961 1767.702
+ angleY 139.562
+}
+GenericEntity : "{24B7F96197053B39}Prefabs/Compositions/Slotted/SlotRoadSmall/Barricade_S_US_01.et" {
+ coords 9559.179 28.827 1734.149
+ angleY -37.221
+}
+GenericEntity : "{25B265F3E7CBDFC8}Prefabs/Props/Wrecks/BMP1_wreck.et" {
+ coords 9516.111 32.244 1787.393
+ angleY -168.635
+}
+GenericEntity : "{2B24356C351A2538}Prefabs/Props/Wrecks/M113_wreck.et" {
+ coords 9702.628 22.553 1717.387
+ angleY -84.077
+}
+$grp GenericEntity : "{4ADCE267EC510331}PrefabsEditable/Auto/Props/Military/Sandbags/E_Sandbag_01_long_plastic.et" {
+ {
+  coords 9701.564 26.019 1725.895
+  angleY -45.27
+ }
+ {
+  coords 9703.794 26.019 1728.296
+  angleY -47.211
+ }
+ {
+  coords 9705.969 26.019 1730.594
+  angleY -49.493
+ }
+ {
+  coords 9701.78 26.019 1724.19
+  angleY -135.29
+ }
+}
+GenericEntity : "{77F237994998613F}Prefabs/Props/Wrecks/UH1H_wreck.et" {
+ coords 9723.235 10.814 1552.554
+ angleX 8.332
+ angleY -154.74
+ angleZ 19.94
+}
+GenericEntity : "{AF770C825EA592CF}Prefabs/Compositions/Slotted/SlotRoadLarge/Barricade_L_US_01.et" {
+ coords 9672.245 23.056 1727.409
+ angleY -59.271
+}
+GameEntity : "{B8508AD8AA5464E8}Prefabs/Structures/BuildingParts/Ladders/Ladder_DieselPowerPlant_01/Ladder_DieselPowerPlant_01_322_B.et" {
+ coords 9708.642 3.452 1731.691
+ angleY 40.816
+}
+$grp StaticModelEntity : "{C2ACB740ED1CEB46}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap_foundation_camonet.et" {
+ {
+  coords 9559.113 30.183 1724.291
+  angleY -44.328
+ }
+ {
+  coords 9441.239 45.637 1687.342
+  angleY 9.943
+ }
+}
+GenericEntity : "{C707F02B5A64AA08}Prefabs/Props/Wrecks/BRDM2_wreck.et" {
+ coords 9378.766 49.846 1747.475
+ angleX -4.803
+ angleY 122.402
+}

@@ -1,0 +1,11 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 5483.186 157.167 3293.617
+ "Map Geometry Data" "{4D13DC42EAA6321E}Terrain/WCS_Rostov_Conflict_NEvSW_Layout1.topo"
+ "Satellite background image" "{4CDC017532F1D3F5}UI/Textures/Map/Worlds/Rostov/Rostov.edds"
+}
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 5496.259 157.903 3319.241
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 5545.236 160.131 3315.423
+}
