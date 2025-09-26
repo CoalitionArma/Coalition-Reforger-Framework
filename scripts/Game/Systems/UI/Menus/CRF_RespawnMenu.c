@@ -92,6 +92,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		m_factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
 
 		// Populates spawnpoints list with players faction spawns entites and create their markers on the map
+		int index = 0;
 		foreach(RplId rplID : CRF_RespawnManager.GetInstance().m_RespawnPointsRplID)
 		{ 
 			IEntity point = CRF_RespawnManager.GetInstance().GetSpawnEntityFromRplID(rplID);
@@ -113,6 +114,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			
 			// Add option to menu and store the component with it
 			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName);
+			
+			if (respawnPointComponent.m_bIsDefaultRespawn)
+			{
+				m_wSpawnListBox.SetItemSelected(index, true, true, true);
+				GetGame().GetCallqueue().CallLater(UpdateSpawnSelection, 500, false);
+			}
+			index++;
 		}
 	}
 	
