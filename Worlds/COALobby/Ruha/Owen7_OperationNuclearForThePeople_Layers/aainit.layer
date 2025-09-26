@@ -1,0 +1,133 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 1252.742 66.665 3188.205
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_SearchAndDestroyGamemodeManager "{665F629E49A529C7}" {
+   attackingSide "OPFOR"
+   defendingSide "BLUFOR"
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_iSetWeatherConstant 1
+  }
+ }
+ coords 1542.322 71.09 3268.368
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "The Three Mile Sons of Liberty are at again and want to blow up a Nuclear Power Plant to \"bring nuclear energy to the common man\" and the Department of Energy's Anti-Nuclear Terrorist Commando Task Force has been deployed to stop them."\
+   ""\
+   "BLUFOR Composition: Infantry Platoon "\
+   "BLUFOR Assets: Sniper Team & MMG Team"\
+   ""\
+   "OPFOR Composition: Motorized Infantry Company"\
+   "OPFOR Assets: MMG Team & 2 Gaz MMGs & their mom's minivans"\
+   ""\
+   "Time: 1200"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "The Department of Energy's Anti-Nuclear Terrorist Commando Task Force has been advised of a incoming attack on a Nuclear power plant and has been deployed to protect the location. You've arrived earlier than expected and have time to get to the location and set up before the attack. Be advised that the enemy has standard rifles and has an advantage in prolonged ranged engagements versus your submachine guns."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "The Three Mile Sons of Liberty are on a mission to liberate Nuclear energy from it's shackles inside the reactor. Detonate both emcoms to bring Nuclear power to the common man. The government has deployed their forces to stop it and got here faster than anticpated, expect resistance but they're underequipped for ranged fights."\
+   ""
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Reactor is active and will hurt you "
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 3
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{F8083CE71EEDB1FA}Configs/Gearscripts/Custom/Owen7/CRF_GS_DeptEnergyAntiTerror.conf"
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F1A06F1B3E898570}Configs/Gearscripts/Custom/Owen7/CRF_GS_ThreeMileSonsconf.conf"
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "6660741934E2C6CD" {
+   ID "632A77473B3CC3A8"
+   coords 0.799 -31.245 0.974
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{665F62AF4D6F9580}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{665F62AF41F5AA3F}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{665F62AF44C49060}" {
+        m_sCallsign "MMG Team"
+       }
+       SCR_CallsignInfo "{6673406B6DC906EA}" {
+        m_sCallsign "Sniper Team"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Platoon 1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{665F62AF87FFDA5B}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{665F62AFFA987DAA}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{665F62AFFF2A7C09}" {
+        m_sCallsign "Gaz PKP"
+       }
+       SCR_CallsignInfo "{665F62AFE83E9726}" {
+        m_sCallsign "Platoon 2"
+       }
+       SCR_CallsignInfo "{665F62AFEDC87185}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{665F62AFE124EB5A}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{665F62AFE69C6DBB}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{665F62AFDA360566}" {
+        m_sCallsign "2-4"
+       }
+       SCR_CallsignInfo "{6673406B4D045A0E}" {
+        m_sCallsign "GAZ PKP"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

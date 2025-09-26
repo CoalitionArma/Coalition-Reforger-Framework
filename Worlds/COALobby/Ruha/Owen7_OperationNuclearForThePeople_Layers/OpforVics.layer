@@ -1,0 +1,86 @@
+$grp SCR_VehicleSpawn {
+ GazPKP {
+  coords 4015.613 54.047 4044.054
+  angleY -178.276
+  m_rnPrefab "{7BC76F92B882889D}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ GazPKP2 {
+  coords 4033.021 52.601 4035.571
+  angleY -161.203
+  m_rnPrefab "{6B7CD408BDFB94F5}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM_Green.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BlueBus {
+  coords 4040.736 52.499 4023.398
+  angleY -23.7
+  m_rnPrefab "{F77C41245A580FD1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_blue.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ RedBus {
+  coords 4010.415 54.406 4007.721
+  angleY -80.992
+  m_rnPrefab "{11A28C90DB40318D}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_red.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ SchoolBus {
+  coords 4027.271 52.705 4015.003
+  angleY -165.112
+  m_rnPrefab "{4C79EB5FADB89B7A}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_yellow.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BrownBus {
+  coords 4036.855 52.1 4020.371
+  angleY -55.129
+  m_rnPrefab "{ACED839A6C5BE657}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_brown.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ WhiteBus {
+  coords 4026.342 52.794 3988.61
+  angleY -133.832
+  m_rnPrefab "{23B8C20ACAEC164B}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_white.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ OrangeBus {
+  coords 4028.353 52.366 4005.403
+  angleY -76.806
+  m_rnPrefab "{BB84BDE1707A38EB}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_orange.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ RedCar {
+  coords 3990.979 54.391 3971.863
+  angleY -165.112
+  m_rnPrefab "{599DFCA424399DBF}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_red.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ AmbulanceFIA {
+  coords 3995.65 54.406 3981.117
+  angleY -165.112
+  m_rnPrefab "{F0EC3EFF70B174B0}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_FIA.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ GreyBus {
+  coords 4013.457 53.097 3985.729
+  angleY -133.832
+  m_rnPrefab "{780FA841BFE4077F}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_grey.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ AmbulanceReg {
+  coords 4013.084 52.585 3977.027
+  angleY -133.832
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+}
