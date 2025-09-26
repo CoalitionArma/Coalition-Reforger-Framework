@@ -9,6 +9,9 @@ class CRF_RespawnPointComponent: ScriptComponent
 
 	[Attribute("Base", "auto", "Nickname for the respawn point.")]
 	string m_sRespawnPointName;
+	
+	[Attribute("0", "auto", "Is this respawn point the default respawn point to be selected")]
+	bool m_bIsDefaultRespawn;
 
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)

@@ -1,0 +1,45 @@
+Projectile : "{9090159492A859AF}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_RPG_base.et" {
+ ID "DA5C6308000CDEF2"
+ components {
+  CollisionTriggerComponent "{5F26DE35B3825393}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{5F26DE324F15E0FB}" {
+     EffectPrefab "{98F98F5173529EBE}Prefabs/Weapons/Warheads/RPG/Warhead_HEAT_PG7VL_LS.et"
+    }
+   }
+  }
+  InventoryItemComponent "{526E87778842822F}" {
+   Attributes SCR_ItemAttributeCollection "{526E87778ACB229F}" {
+    ItemDisplayName UIInfo "{526E8777859BAACF}" {
+     Name "#RHS-Magazine_PG7VL_Name"
+     Description "#RHS-Magazine_PG7VL_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5F26DE359A9EC36C}" {
+     Weight 2.6
+     ItemDimensions 20 20 20
+     ItemVolume 1200
+    }
+   }
+  }
+  MagazineComponent "{50F6614BB5D5B0A8}" {
+   UIInfo MagazineUIInfo "{560AE4EBFA0176D4}" {
+    Name "#RHS-Magazine_PG7VL_Name"
+    Description "#RHS-Magazine_PG7VL_Description"
+    m_sAmmoType "#RHS-AmmoType_PG7VL"
+   }
+   ItemModel "{07418582E7DF2EA4}Assets/Weapons/Magazines/rpg7/PG7VL_Item.xob"
+  }
+  MeshObject "{851AA4A2AE0A56BF}" {
+   Object "{B453EC50E7F080C1}Assets/Weapons/Magazines/rpg7/PG7VL_Armed.xob"
+  }
+  MissileMoveComponent "{0EF36690881261EF}" {
+   InitSpeed 112
+   InitSpeedVariation 2.24
+   DispersionMultiplier 1.25
+   Mass 2.4
+   ForwardAirFriction 0.57
+  }
+ }
+ ProjectileModel "{B453EC50E7F080C1}Assets/Weapons/Magazines/rpg7/PG7VL_Armed.xob"
+ CartridgeModel "{07418582E7DF2EA4}Assets/Weapons/Magazines/rpg7/PG7VL_Item.xob"
+}
