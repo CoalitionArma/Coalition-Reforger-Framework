@@ -12,14 +12,22 @@ modded class SCR_EditorManagerEntity
 			return true;
 		}
 		
-		// If in photo mode and player is spectator, allow full editor capabilities
-		if ((GetCurrentMode() == EEditorMode.PHOTO) && CRF_GamemodeManager.IsSpectator())
+		// If in photo mode and player is spectator or moderator, allow full editor capabilities
+		if ((GetCurrentMode() == EEditorMode.PHOTO) && (CRF_GamemodeManager.IsSpectator() || CRF_GamemodeManager.GetInstance().IsModerator()))
 		{
 			SetIsLimited(false);
 			return true;
 		}
-		// If not admin, limit editor capabilities
-		else if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()))
+		
+		// If in admin mode and player is admin or moderator, allow full editor capabilities
+		if ((GetCurrentMode() == EEditorMode.ADMIN) && (SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) || CRF_GamemodeManager.GetInstance().IsModerator()))
+		{
+			SetIsLimited(false);
+			return true;
+		}
+		
+		// If not admin or moderator, limit editor capabilities
+		if (!SCR_Global.IsAdmin(SCR_PlayerController.GetLocalPlayerId()) && !CRF_GamemodeManager.GetInstance().IsModerator())
 		{
 			SetIsLimited(true);
 		}
