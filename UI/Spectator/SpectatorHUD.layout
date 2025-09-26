@@ -1041,15 +1041,15 @@ FrameWidgetClass {
   ImageWidgetClass "{64E05E71F1A66DDA}" {
    Name "timeLeftBackground"
    Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 1 0 1 0
-    PositionX -150.191
-    OffsetLeft -150.191
-    PositionY 6.45
-    OffsetTop 6.45
-    SizeX 145.268
-    OffsetRight 4.923
+    Anchor 0 1 0 1
+    PositionX 5.27
+    OffsetLeft 5.27
+    PositionY -322.056
+    OffsetTop -322.056
+    SizeX 145.27
+    OffsetRight -150.54
     SizeY 23.76
-    OffsetBottom -30.21
+    OffsetBottom 298.296
    }
    Color 0 0 0 0.333
    "Shadow Offset" 0.5 0.5
@@ -1057,15 +1057,15 @@ FrameWidgetClass {
   TextWidgetClass "{64E05E71F1A66A86}" {
    Name "timeLeftTimer"
    Slot FrameWidgetSlot "{612734D4E397B329}" {
-    Anchor 1 0 1 0
-    PositionX -149.55
-    OffsetLeft -149.55
-    PositionY 7.22
-    OffsetTop 7.22
-    SizeX 144.024
-    OffsetRight 5.526
+    Anchor 0 1 0 1
+    PositionX 5.91
+    OffsetLeft 5.91
+    PositionY -321.286
+    OffsetTop -321.286
+    SizeX 144.03
+    OffsetRight -149.94
     SizeY 22.21
-    OffsetBottom -29.43
+    OffsetBottom 299.076
    }
    Color 0.928 0.862 0.862 1
    Text "Game Not Live"
@@ -1078,6 +1078,158 @@ FrameWidgetClass {
     OutlineSize 1
     ShadowSize 2
     ShadowOffset 0.8 0.8
+   }
+  }
+  VerticalLayoutWidgetClass "{6674EDC46FDF30FE}" {
+   Name "TicketsVerticalLayout"
+   Slot FrameWidgetSlot "{6674EDC46FDF2F04}" {
+    Anchor 0 1 0 1
+    PositionX 5.86
+    OffsetLeft 5.86
+    PositionY -296.006
+    OffsetTop -296.006
+    SizeX 144.1
+    OffsetRight -149.96
+    SizeY 152.7
+    OffsetBottom 143.306
+   }
+   {
+    VerticalLayoutWidgetClass "{6674EDC6712D0976}" {
+     Name "BLUFORTickets"
+     Slot LayoutSlot "{6674EDC0CD0F91F5}" {
+      Padding 0 0 0 2
+     }
+     {
+      ImageWidgetClass "{6674EDC792D10BAA}" {
+       Name "BLUFORTicketsBG"
+       Slot LayoutSlot "{6674EDC2C99EA65D}" {
+        Padding 0 0 0 5
+       }
+       Color 0 0 0 0.333
+       "Shadow Offset" 0.5 0.5
+      }
+      TextWidgetClass "{6674EDC792D10A4E}" {
+       Name "BLUFORTicketsText"
+       Slot LayoutSlot "{6674EDC2C99EA64C}" {
+        Padding 0 -34 0 4
+       }
+       Color 0.016 0.552 0.9047 1
+       Text "BLUFOR Tickets: 0"
+       "Font Size" 16
+       "Min Font Size" 14
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{612734D416229D9E}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        OutlineSize 1
+        ShadowSize 2
+        ShadowOffset 0.8 0.8
+       }
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{6674EDC5BFB68402}" {
+     Name "OPFORTickets"
+     Slot LayoutSlot "{6674EDC0CD0F9032}" {
+      Padding 0 0 0 2
+     }
+     {
+      ImageWidgetClass "{6674EDC706727879}" {
+       Name "OPFORTicketsBG"
+       Slot LayoutSlot "{6674EDC2A0D91810}" {
+        Padding 0 0 0 5
+       }
+       Color 0 0 0 0.333
+       "Shadow Offset" 0.5 0.5
+      }
+      TextWidgetClass "{6674EDC70672776A}" {
+       Name "OPFORTicketsText"
+       Slot LayoutSlot "{6674EDC2A0D91806}" {
+        Padding 0 -34 0 4
+       }
+       Color 0.855 0.0308 0.0284 1
+       Text "OPFOR Tickets: 0"
+       "Font Size" 16
+       "Min Font Size" 14
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{612734D416229D9E}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        OutlineSize 1
+        ShadowSize 2
+        ShadowOffset 0.8 0.8
+       }
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{6674EDC591E2B458}" {
+     Name "INDFORTickets"
+     Slot LayoutSlot "{6674EDC0CD0F905E}" {
+      Padding 0 0 0 2
+     }
+     {
+      ImageWidgetClass "{6674EDC702440873}" {
+       Name "INDFORTicketsBG"
+       Slot LayoutSlot "{6674EDC22A587ED5}" {
+        Padding 0 0 0 5
+       }
+       Color 0 0 0 0.333
+       "Shadow Offset" 0.5 0.5
+      }
+      TextWidgetClass "{6674EDC7024408FB}" {
+       Name "INDFORTicketsText"
+       Slot LayoutSlot "{6674EDC22A587EC1}" {
+        Padding 0 -34 0 4
+       }
+       Color 0 0.4397 0.0782 1
+       Text "INDFOR Tickets: 0"
+       "Font Size" 16
+       "Min Font Size" 14
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{612734D416229D9E}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        OutlineSize 1
+        ShadowSize 2
+        ShadowOffset 0.8 0.8
+       }
+      }
+     }
+    }
+    VerticalLayoutWidgetClass "{6674EDC5927415EC}" {
+     Name "CIVTickets"
+     Slot LayoutSlot "{6674EDC0CD0F9065}" {
+      Padding 0 0 0 2
+     }
+     {
+      ImageWidgetClass "{6674EDC778D8EF33}" {
+       Name "CIVTicketsBG"
+       Slot LayoutSlot "{6674EDC20FB459B3}" {
+        Padding 0 0 0 5
+       }
+       Color 0 0 0 0.333
+       "Shadow Offset" 0.5 0.5
+      }
+      TextWidgetClass "{6674EDC778D8EE10}" {
+       Name "CIVTicketsText"
+       Slot LayoutSlot "{6674EDC20FB459B8}" {
+        Padding 0 -34 0 4
+       }
+       Color 0.3916 0.1559 0.624 1
+       Text "CIV Tickets: 0"
+       "Font Size" 16
+       "Min Font Size" 14
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{612734D416229D9E}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        OutlineSize 1
+        ShadowSize 2
+        ShadowOffset 0.8 0.8
+       }
+      }
+     }
+    }
    }
   }
  }

@@ -61,6 +61,21 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
+	// Ticket elements
+	protected CRF_RespawnManager m_RespawnManager;
+	protected Widget m_wBLUFORTickets;
+	protected TextWidget m_wBLUFORTicketsText;
+	protected bool m_bBLUFORTicketsActive;
+	protected Widget m_wOPFORTickets;
+	protected TextWidget m_wOPFORTicketsText;
+	protected bool m_bOPFORTicketsActive;
+	protected Widget m_wINDFORTickets;
+	protected TextWidget m_wINDFORTicketsText;
+	protected bool m_bINDFORTicketsActive;
+	protected Widget m_wCIVTickets;
+	protected TextWidget m_wCIVTicketsText;
+	protected bool m_bCIVTicketsActive;
+	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
 	//=================================================================================================
@@ -96,6 +111,17 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wPlayerSlotWidget = m_wRoot.FindAnyWidget("PlayerSlots");
 		m_wPlayerSlots = CRF_ListboxComponent.Cast(m_wPlayerSlotWidget.FindHandler(CRF_ListboxComponent));
 		m_wVONChannels = CRF_ListboxComponent.Cast(m_wRoot.FindAnyWidget("VONChannels").FindHandler(CRF_ListboxComponent));
+		
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
+		m_wBLUFORTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("BLUFORTicketsText"));
+		m_wOPFORTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("OPFORTicketsText"));
+		m_wINDFORTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("INDFORTicketsText"));
+		m_wCIVTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("CIVTicketsText"));
+		m_wBLUFORTickets = m_wRoot.FindAnyWidget("BLUFORTickets");
+		m_wOPFORTickets = m_wRoot.FindAnyWidget("OPFORTickets");
+		m_wINDFORTickets = m_wRoot.FindAnyWidget("INDFORTickets");
+		m_wCIVTickets = m_wRoot.FindAnyWidget("CIVTickets");
+		
 		
 		// Register input action listeners
 		RegisterActionListeners();
@@ -277,6 +303,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Update icons
 		UpdateIcons();
 		
+		//Hmm I wonder if this updates tickets
+		UpdateTickets();
+		
 		// Update chat if available
 		if (m_ChatPanel)
 			m_ChatPanel.OnUpdateChat(tDelta);
@@ -286,6 +315,59 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		sender.SetKillFeedTypeDeadLocal();
 		
 		UpdateTimer();
+	}
+	
+	//Used to update tickets
+	void UpdateTickets()
+	{
+		//BLUFOR LOGIC
+		if (m_RespawnManager.m_iBLUFORTickets > 0 && !m_bBLUFORTicketsActive) //Lets tickets stay on screen even if they reach 0 as they are considered an active faction.
+			m_bBLUFORTicketsActive = true;
+		
+		if (m_bBLUFORTicketsActive)
+		{
+			m_wBLUFORTickets.SetVisible(true);
+			m_wBLUFORTicketsText.SetText("BLUFOR Tickets: " + m_RespawnManager.m_iBLUFORTickets.ToString());
+		}
+		else
+			m_wBLUFORTickets.SetVisible(false);
+		
+		//OPFOR LOGIC
+		if (m_RespawnManager.m_iOPFORTickets > 0 && !m_bOPFORTicketsActive)
+			m_bOPFORTicketsActive = true;
+		
+		if (m_bOPFORTicketsActive)
+		{
+			m_wOPFORTickets.SetVisible(true);
+			m_wOPFORTicketsText.SetText("OPFOR Tickets: " + m_RespawnManager.m_iOPFORTickets.ToString());
+		}
+		else
+			m_wOPFORTickets.SetVisible(false);
+		
+		//INDFOR LOGIC
+		if (m_RespawnManager.m_iINDFORTickets > 0 && !m_bINDFORTicketsActive)
+			m_bINDFORTicketsActive = true;
+		
+		if (m_bINDFORTicketsActive)
+		{
+			m_wINDFORTickets.SetVisible(true);
+			m_wINDFORTicketsText.SetText("INDFOR Tickets: " + m_RespawnManager.m_iINDFORTickets.ToString());
+		}
+		else
+			m_wINDFORTickets.SetVisible(false);
+		
+		//CIV LOGIC
+		if (m_RespawnManager.m_iCIVTickets > 0 && !m_bCIVTicketsActive)
+			m_bCIVTicketsActive = true;
+		
+		if (m_bCIVTicketsActive)
+		{
+			m_wCIVTickets.SetVisible(true);
+			m_wCIVTicketsText.SetText("CIV Tickets: " + m_RespawnManager.m_iCIVTickets.ToString());
+		}
+		else
+			m_wCIVTickets.SetVisible(false);
+
 	}
 	
 	/**
