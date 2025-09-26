@@ -1,5 +1,6 @@
 modded class SCR_PlayerController
 {
+	bool m_bIsBulletTrackingEnabled = false;
 	/**
 	 * Called when the player controller updates (typically whenever a player joins/rejoins)
 	 */
