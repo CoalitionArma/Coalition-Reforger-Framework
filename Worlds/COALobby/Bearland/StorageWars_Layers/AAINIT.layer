@@ -12,7 +12,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 1001.167 7.866 1117.375
- m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "USSR forces are being deployed to destroy the docks and a nearby storage facility.  UK forces have become aware of the attack and established defensive positions around both targets."\
@@ -41,14 +40,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{D8798CBDB67BC164}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_UK80s_FAL_M79.conf"
  }
- m_bRespawnEnabled 1
- m_iBLUFORTickets 5
  {
   SCR_FactionManager "663AFC0773136BFA" {
    ID "632A77473B3CC3A8"
    Factions {
-    SCR_Faction "{607AA5C7A94496DA}" {
-    }
     SCR_Faction "{628B22E9B4056C88}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
       m_aSquadNames {
@@ -111,8 +106,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        }
       }
      }
-    }
-    SCR_Faction "{628CDE9209CA3FF9}" {
     }
    }
   }

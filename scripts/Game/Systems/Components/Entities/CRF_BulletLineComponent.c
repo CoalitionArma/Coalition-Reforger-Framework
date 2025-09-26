@@ -24,6 +24,7 @@ class CRF_BulletLineComponent: ScriptComponent
 	
 	override void EOnInit(IEntity owner)
 	{
+		m_PlayerController = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		GetPos();
 		m_ShellMoveComponent = ShellMoveComponent.Cast(owner.FindComponent(ShellMoveComponent));
 	}
@@ -97,11 +98,22 @@ class CRF_BulletLineComponent: ScriptComponent
 			line = Shape.CreateLines(m_iColor, ShapeFlags.VISIBLE, m_aPoints, m_iCurrentPoint);
 		
 		if (line)
-			GetGame().GetCallqueue().CallLater(DeleteLine, 3000, false, line);
+			GetGame().GetCallqueue().CallLater(DeleteLine, 500, false, line, 500);
 	}
 	
-	void DeleteLine(Shape line)
+	void DeleteLine(Shape line, int delay)
 	{
-		delete line;
+		//We check every half second to see if the player turned off bullet tracking.
+		//This is because the object this is tied to has been destroyed so we not longer have acced to EONFrame.
+		if (delay >= 3000 || !SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled)
+		{
+			delete line;
+			return;
+		}
+		
+		delay += 500;
+		//Small safety net to avoid disaster
+		if (delay < 3000)
+			GetGame().GetCallqueue().CallLater(DeleteLine, delay, false, line, delay);
 	}
 }

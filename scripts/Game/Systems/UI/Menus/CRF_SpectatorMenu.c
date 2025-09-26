@@ -161,12 +161,18 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
 		
 		m_wBulletPathButton.m_OnClicked.Insert(ToggleBulletPaths);
+		m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.RED));
 	}
 	
 	void ToggleBulletPaths()
 	{
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
 		pc.m_bIsBulletTrackingEnabled = !pc.m_bIsBulletTrackingEnabled;
+		
+		if (!pc.m_bIsBulletTrackingEnabled)
+			m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.RED));
+		else
+			m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.GREEN));
 	}
 	
 	/**
