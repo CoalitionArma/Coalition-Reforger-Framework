@@ -130,6 +130,35 @@ Vehicle : "{03A9FC4A02180281}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Bas
   }
  }
  {
+  $grp DecalEntity : "{7D2718ED6A430612}Prefabs/Decals/Dirt/Decal_HeliPad_01.et" {
+   {
+    ID "667365CE2C770D04"
+    coords -0.008 1.342 1.48
+    angleX -89.98
+    angleY -0
+    angleZ -179.608
+    scale 0.96
+    FarPlane 0.1
+   }
+   {
+    ID "667365CE2C770D41"
+    coords 0.847 0.958 0.47
+    angleX -0
+    angleY -90.842
+    angleZ -0.808
+    scale 0.527
+    FarPlane 0.1
+   }
+   {
+    ID "667365CE2C770D6C"
+    coords -0.846 0.948 0.453
+    angleX 0
+    angleY 89.158
+    angleZ -0.958
+    scale 0.515
+    FarPlane 0.1
+   }
+  }
   $grp GenericEntity : "{A3C0CF9F97FBCDDC}Prefabs/Structures/BuildingParts/Eletrical/HazardBeacon_01/HazardBeacon_01.et" {
    {
     ID "6668476072D97A3F"

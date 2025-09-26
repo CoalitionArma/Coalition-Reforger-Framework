@@ -2,6 +2,24 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  coords 5847.321 8.062 9896.502
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_aSharedFrequencies {
+    CVON_SharedFrequencyObject "{667365778236BD4B}" {
+     m_aFactionIds {
+      "INDFOR" "BLUFOR"
+     }
+     m_sSharedFrequency "BLUFOR"
+    }
+    CVON_SharedFrequencyObject "{66736577800CFF36}" {
+     m_aFactionIds {
+      "INDFOR" "OPFOR"
+     }
+     m_sSharedFrequency "OPFOR"
+    }
+   }
+  }
+ }
  coords 5849.818 8.199 9892.188
  m_iTimeLimitMinutes 30
  m_iFactionOneRatio 6
@@ -9,9 +27,15 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_sFactionTwoKey "BLU"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_FAMILY_subArma.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{3A02559F5E0205A2}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_CIV_subArma.conf"
@@ -21,5 +45,53 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{2779555E9C6E3158}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_HOSTAGE_subArma.conf"
+ }
+ {
+  SCR_FactionManager "667365EBD1B7CA89" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aGroupFrequencyOverrides {
+       CVON_GroupFrequencyContainer "{66736577C7E1FBA7}" {
+        m_aGroupNames {
+         "Strike Lead's Posse"
+        }
+        m_aLRFrequencies {
+         "OPFOR" "BLUFOR"
+        }
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Strike Lead's Posse"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Striker Group"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Striker Group"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Striker Group"
+       }
+       SCR_CallsignInfo "{66736577ECA023F1}" {
+        m_sCallsign "Striker Group"
+       }
+       SCR_CallsignInfo "{66736577ED2131E3}" {
+        m_sCallsign "Striker Group"
+       }
+       SCR_CallsignInfo "{66736577F84FA85E}" {
+        m_sCallsign "Striker Group"
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }
