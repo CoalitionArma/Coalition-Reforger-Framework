@@ -15,6 +15,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected Widget m_wSlotSelector;                        // Widget for selecting slots
 	protected FrameWidget m_wFrameSlots;                     // Frame for displaying slots
 	protected FrameWidget m_wFrameChannels;                  // Frame for displaying VON channels
+	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
 	
@@ -211,6 +212,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wFrameSlots = FrameWidget.Cast(m_wRoot.FindAnyWidget("FrameSlots"));
 		m_wSlotSelector = m_wRoot.FindAnyWidget("SlotSelector");
 		m_wFrameChannels = FrameWidget.Cast(m_wRoot.FindAnyWidget("VONSlots"));
+		m_wFrameGameInfo = FrameWidget.Cast(m_wRoot.FindAnyWidget("GameInfo"));
 		
 		// Register faction button click handlers
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wBluforButton).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(SelectFactionBlufor);
@@ -742,6 +744,33 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			FrameSlot.SetPosX(m_wFrameChannels, leftVONX);
 			m_wRoot.FindAnyWidget("SliderBGR").SetVisible(true);
 			m_wRoot.FindAnyWidget("ArrowR").SetVisible(true);
+		}
+		
+		// Update VON channels panel visibility
+		float leftGameInfoX = FrameSlot.GetPosX(m_wFrameGameInfo);
+		float leftGameInfoY = FrameSlot.GetPosY(m_wFrameGameInfo);
+		
+		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 150)
+		{
+			// Expand slots panel when cursor is over it
+			leftGameInfoX += tDelta * 2400.0;
+			if (leftGameInfoX > 0)
+				leftGameInfoX = 0;
+			
+			FrameSlot.SetPosX(m_wFrameGameInfo, leftGameInfoX);
+			m_wRoot.FindAnyWidget("SliderBGLL").SetVisible(false);
+			m_wRoot.FindAnyWidget("ArrowLL").SetVisible(false);
+		}
+		else
+		{
+			// Collapse slots panel when cursor moves away
+			leftGameInfoX -= tDelta * 2400.0;
+			if (leftGameInfoX < -150)
+				leftGameInfoX = -150;
+			
+			FrameSlot.SetPosX(m_wFrameGameInfo, leftGameInfoX);
+			m_wRoot.FindAnyWidget("SliderBGLL").SetVisible(true);
+			m_wRoot.FindAnyWidget("ArrowLL").SetVisible(true);
 		}
 	}
 	
