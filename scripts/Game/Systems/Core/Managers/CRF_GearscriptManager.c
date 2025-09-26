@@ -138,6 +138,15 @@ class CRF_GearscriptManager : ScriptComponent
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		GetGame().GetCallqueue().CallLater(ApplyWeapons, 285, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+		{
+			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
+			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, entity);
+			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, entity);
+			pc.InitializeRadioFromServer();
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
