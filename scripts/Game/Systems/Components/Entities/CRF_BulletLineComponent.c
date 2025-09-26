@@ -37,7 +37,7 @@ class CRF_BulletLineComponent: ScriptComponent
 	float m_fTimeBuffer = 1;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
-		if (!m_PlayerController.m_bIsBulletTrackingEnabled)
+		if (!m_PlayerController.m_bIsBulletTrackingEnabled || !CRF_GamemodeManager.IsSpectator(m_PlayerController.GetControlledEntity()))
 			return;
 		vector origin = owner.GetOrigin();
 		if (origin == "0 0 0")
@@ -54,8 +54,15 @@ class CRF_BulletLineComponent: ScriptComponent
 			if (!m_ShellMoveComponent.GetInstigator().GetInstigatorEntity())
 				return;
 			
-			m_vInitialPosition = m_ShellMoveComponent.GetInstigator().GetInstigatorEntity().GetOrigin();
-			m_vInitialPosition[1] = m_vInitialPosition[1] + 1.5;
+			if (owner.GetPrefabData().GetPrefabName().Contains("Spall"))
+			{
+				m_vInitialPosition = origin;
+			}
+			else
+			{
+				m_vInitialPosition = m_ShellMoveComponent.GetInstigator().GetInstigatorEntity().GetOrigin();
+				m_vInitialPosition[1] = m_vInitialPosition[1] + 1.5;
+			}
 			SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 			m_iColor = factionMan.GetPlayerFaction(m_ShellMoveComponent.GetInstigator().GetInstigatorPlayerID()).GetFactionColor().PackToInt();
 			DrawBullet(owner, m_vInitialPosition);
@@ -93,19 +100,18 @@ class CRF_BulletLineComponent: ScriptComponent
 		if (!GetGame().GetPlayerController())
 			return;
 		
-		if (!SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled)
+		if (!SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled || !CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalControlledEntity()))
 			return;
 		
 		Shape line;
 		if (m_iCurrentPoint + 1 > 2)
 		{
 			line = Shape.CreateLines(m_iColor, ShapeFlags.VISIBLE, m_aPoints, m_iCurrentPoint);
-			GetGame().GetCallqueue().CallLater(DeleteLine, 3000, false, line);
+			ref CRF_BulletTracerContainer container = new CRF_BulletTracerContainer();
+			container.m_Line = line;
+			container.m_fTimeAlive = 3;
+			
+			SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_aActiveTraces.Insert(container);
 		}
-	}
-	
-	void DeleteLine(Shape line)
-	{
-		delete line;
 	}
 }
