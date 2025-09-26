@@ -55,10 +55,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     "INDFOR"
    }
   }
-  CRF_MissionDescriptor "{6675399D2A78EFB4}" {
-   m_sTitle "Lore"
-   m_bShowForAnyFaction 1
-  }
  }
  m_iFactionOneRatio 2
  m_sFactionOneKey "BLU"
