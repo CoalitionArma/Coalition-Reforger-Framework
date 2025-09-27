@@ -74,10 +74,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "1-4"
        }
        SCR_CallsignInfo "{665F62AF44C49060}" {
-        m_sCallsign "MMG Team"
+        m_sCallsign "Sniper Team"
        }
        SCR_CallsignInfo "{6673406B6DC906EA}" {
-        m_sCallsign "Sniper Team"
+        m_sCallsign "MMG Team"
        }
       }
      }
