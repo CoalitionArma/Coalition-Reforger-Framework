@@ -143,7 +143,7 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
-			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, entity);
+			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 2000, false, playerId, entity);
 			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 2000, false, entity);
 			pc.InitializeRadioFromServer();
 		}
