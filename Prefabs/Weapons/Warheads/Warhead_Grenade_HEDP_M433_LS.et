@@ -1,0 +1,42 @@
+GenericEntity : "{7DA2AFFC7B4BE844}Prefabs/Weapons/Warheads/Warhead_Grenade_HE.et" {
+ ID "520EA1D2A9E0B759"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{567CBC1CFBB064A8}" : "{D0C33EDF0621598B}Prefabs/Weapons/Core/Damage/ExplosionContainer_HEDP.conf" {
+     ExplosionEffects {
+      ExplosionFragmentationEffect "{567CBC1D7AB652C7}" : "{9C98DE51B7C51300}Prefabs/Weapons/Core/Damage/FragmentationDamageEffect_HEDP.conf" {
+       GurneyConstant 2630
+       CaseWeight 184
+      }
+     }
+     ChargeWeight 45
+     TntEquivalent 1.6
+    }
+    SubmunitionEffect "{665B6B2516DFDEFF}" {
+     Prefab "{675D3E87D5F45FFD}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433_Penetrator.et"
+     Count 3
+     Dispersion 45
+    }
+    SubmunitionEffect "{665B6B2516DFDE89}" {
+     TriggerOnce 1
+     Prefab "{835D83AC6A7BEB59}Prefabs/Weapons/Ammo/Ammo_Spall_1_Hardest.et"
+     Count 20
+     Dispersion 90
+    }
+    SubmunitionEffect "{665B6B254E52964E}" {
+     TriggerOnce 1
+     Prefab "{CCEDD4BC6CA96630}Prefabs/Weapons/Ammo/Ammo_Spall_1_Med.et"
+     Count 15
+     Dispersion 240
+    }
+    SubmunitionEffect "{665B6B25EA07A538}" {
+     TriggerOnce 1
+     Prefab "{23257BAD4B95E569}Prefabs/Weapons/Ammo/Ammo_Spall_1_Light.et"
+     Count 20
+     Dispersion 360
+    }
+   }
+  }
+ }
+}
