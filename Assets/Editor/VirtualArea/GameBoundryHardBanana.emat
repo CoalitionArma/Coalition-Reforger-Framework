@@ -1,0 +1,8 @@
+MatCommon : "{E65E61D1541003E2}Assets/Editor/VirtualArea/VirtualArea.emat" {
+ Color 0.61 0.61 0.068 1
+ AlphaMul 1
+ AlbedoMapTexMat {
+  1 0 0 0
+  0 0.94 0 0
+ }
+}

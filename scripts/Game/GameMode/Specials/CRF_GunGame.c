@@ -128,6 +128,21 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	Widget m_wHUD;
 	Widget m_wHitmarker;
 	
+	void ~CRF_GunGame()
+	{
+		if (!GetGame().GetWorld())
+			return;
+		
+		if (m_wKillIcon)
+			delete m_wKillIcon;
+		
+		if (m_wHUD)
+			delete m_wHUD;
+		
+		if (m_wHitmarker)
+			delete m_wHitmarker;
+	}
+	
 	override void OnPostInit(IEntity owner)
 	{
 		SetEventMask(owner, EntityEvent.FRAME | EntityEvent.INIT);

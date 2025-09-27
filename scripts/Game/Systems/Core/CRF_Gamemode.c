@@ -267,6 +267,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		dataCollector.OnGameModeEnd(GetEndGameData());
 		array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
+		CRF_MenuManager menuManager = CRF_MenuManager.GetInstance();
 		
 		foreach (int player : players)
 		{
@@ -292,6 +293,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 				ForcePlayerToSpectatorForAAR(player, playerEntity);
 			}
 			// Players already in spectator mode don't need repositioning
+			
+			//Adds them to default channel
+			menuManager.AddPlayerToChannel(player, 1, false);
 		}
 		
 		// Stores player profiles who havent disconnected
