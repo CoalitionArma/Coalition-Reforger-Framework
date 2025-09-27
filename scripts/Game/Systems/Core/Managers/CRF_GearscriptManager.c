@@ -119,6 +119,13 @@ class CRF_GearscriptManager : ScriptComponent
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		ClearEntityGear(inventory, inventoryManager);
 
+		//Delay so when we clear gear, the client has enough time to actually clear it before getting new gear. This prevents animation bugs.
+		GetGame().GetCallqueue().CallLater(SetEntityGearDelay, 500, false, gearScriptResourceName, entity, role, inventory, inventoryManager, gearScriptSettings);
+	}
+	
+	void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
+	SCR_InventoryStorageManagerComponent inventoryManager, CRF_GearScriptContainer gearScriptSettings)
+	{
 		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		if (!gearConfig)
@@ -131,6 +138,15 @@ class CRF_GearscriptManager : ScriptComponent
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		GetGame().GetCallqueue().CallLater(ApplyWeapons, 285, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+		{
+			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
+			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, entity);
+			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, entity);
+			pc.InitializeRadioFromServer();
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

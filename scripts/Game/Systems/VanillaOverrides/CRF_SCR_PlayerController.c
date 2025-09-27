@@ -78,4 +78,15 @@ modded class SCR_PlayerController
 		
 		super.DisconnectFromGame();
 	}
+	
+	void InitializeRadioFromServer()
+	{
+		Rpc(RpcDo_InitializeRadioFromServer);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	void RpcDo_InitializeRadioFromServer()
+	{
+		GetGame().GetCallqueue().CallLater(InitializeRadios, 500, false, GetLocalControlledEntity());
+	}
 }

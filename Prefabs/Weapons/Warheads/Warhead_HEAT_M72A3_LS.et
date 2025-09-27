@@ -1,0 +1,27 @@
+GenericEntity : "{250CCD685336BC19}Prefabs/Weapons/Warheads/Warhead_HEAT_M72A3.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    SubmunitionEffect "{567CB8E002C26D97}" {
+     TriggerOnce 1
+     Count 3
+     Dispersion 30
+    }
+    SubmunitionEffect "{5D692C94EC533259}" {
+     TriggerOnce 1
+     Prefab "{835D83AC6A7BEB59}Prefabs/Weapons/Ammo/Ammo_Spall_1_Hardest.et"
+     Count 30
+     Dispersion 90
+    }
+    SubmunitionEffect "{6250AD86B27C732A}" {
+     Count 25
+    }
+    SubmunitionEffect "{6250AD86AF012A2E}" {
+     Count 25
+     Dispersion 240
+    }
+   }
+  }
+ }
+}
