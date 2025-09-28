@@ -34,7 +34,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "Note that on Vietnam, many buildings can't be destroyed."\
    ""\
-   "The radar arrays required at least a demo sized explosive."
+   "The radar arrays required at least a demo sized explosive."\
+   ""\
+   "Shaped charge fragmentation changes are in effect on this mission. "
   }
  }
  m_sFactionOneKey "BLU"
