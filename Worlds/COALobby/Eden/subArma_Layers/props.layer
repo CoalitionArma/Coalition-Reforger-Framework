@@ -6,6 +6,11 @@ GenericEntity : "{0174739265ED5155}Prefabs/Props/Crates/Crate_01_orange.et" {
  coords 2169.625 21.446 7428.99
  angleY 17.674
 }
+GenericEntity : "{02FF5C02B523C94C}Prefabs/Structures/BuildingParts/Signs/SignRooftop/SignRooftop_DieselPowerPlant_01.et" {
+ coords 5843.433 8.353 9823.153
+ angleY 3.538
+ scale 0.55
+}
 GenericEntity : "{05D871A0CEE5026F}Prefabs/Weapons/MachineGuns/BAR/BC_BAR_M1918A2.et" {
  coords 2169.553 21.931 7429.092
  angleY -57.079
@@ -81,6 +86,12 @@ $grp GenericEntity : "{1E7D876C06089E21}Prefabs/Weapons/Magazines/Magazine_9x19_
   angleZ 90
  }
 }
+StaticModelEntity : "{1F2567AEE4AA7550}Prefabs/MP/Campaign/RequestTable_USSR.et" {
+ coords 5827.875 7.659 9905.133
+ angleX -0.156
+ angleY 124.927
+ angleZ 0.016
+}
 GenericEntity : "{1F54D9E5E0F03152}Prefabs/Structures/BuildingParts/Graffiti/Graffiti_Pamatujeme_V1.et" {
  coords 5820.004 13.336 9782.277
  angleX -0.107
@@ -142,6 +153,149 @@ $grp GenericEntity : "{24FFA508861139C9}Prefabs/Weapons/Rifles/L42A1/Rifle_L8.et
   angleZ 7.798
  }
 }
+$grp GenericEntity : "{25C8B889A777399D}Prefabs/Props/Infrastructure/ConeTraffic/ConeTraffic_01_red.et" {
+ {
+  coords 5856.949 8.232 9883.576
+ }
+ {
+  coords 5841.483 7.864 9877.305
+ }
+ {
+  coords 5842.42 7.875 9877.596
+ }
+ {
+  coords 5854.834 8.203 9876.664
+ }
+ {
+  coords 5849.597 7.978 9878.577
+ }
+ {
+  coords 5849.764 7.969 9879.521
+ }
+ {
+  coords 5856.325 8.234 9879.711
+ }
+ {
+  coords 5850.101 8.158 9880.095
+  angleZ 105
+ }
+ {
+  coords 5824.171 8.422 9892.854
+ }
+ {
+  coords 5839.478 7.862 9877.177
+ }
+ {
+  coords 5833.722 7.858 9878.401
+  angleX 0.894
+  angleY 0.028
+  angleZ 1.79
+ }
+ {
+  coords 5815.485 9.085 9897.95
+ }
+ {
+  coords 5818.62 8.714 9892.09
+ }
+ {
+  coords 5817.695 8.714 9890.238
+ }
+ {
+  coords 5818.124 8.714 9891.083
+ }
+ {
+  coords 5809.917 9.742 9903.053
+ }
+ {
+  coords 5832.716 7.89 9878.822
+  angleX 1.789
+  angleY 0.028
+  angleZ 0.896
+ }
+ {
+  coords 5812.036 9.066 9891.158
+ }
+ {
+  coords 5830.43 8.165 9879.783
+ }
+ {
+  coords 5814.718 9.091 9896.664
+ }
+ {
+  coords 5812.579 9.469 9901.718
+ }
+ {
+  coords 5814.486 9.086 9895.726
+ }
+ {
+  coords 5808.329 9.39 9893.431
+ }
+ {
+  coords 5805.282 9.756 9895.608
+ }
+ {
+  coords 5815.489 9.142 9899.527
+ }
+ {
+  coords 5823.341 8.426 9891.342
+ }
+ {
+  coords 5856.763 8.249 9881.562
+ }
+ {
+  coords 5856.326 8.253 9878.415
+ }
+ {
+  coords 5857.433 8.326 9875.457
+ }
+ {
+  coords 5846.825 7.888 9878.781
+ }
+ {
+  coords 5823.707 8.428 9892.114
+ }
+ {
+  coords 4566.733 149.753 7049.953
+ }
+ {
+  coords 4566.791 149.823 7048.812
+ }
+ {
+  coords 4567.151 149.967 7047.547
+ }
+ {
+  coords 4567.612 150.083 7046.496
+ }
+ {
+  coords 4568.48 150.28 7045.216
+ }
+ {
+  coords 4569.244 150.471 7044.01
+ }
+ {
+  coords 4571.274 150.742 7042.433
+ }
+}
+$grp GenericEntity : "{27ED4B326F336CFD}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_Pair_A.et" {
+ {
+  coords 4472.624 131.535 7132.307
+  angleX 9.857
+  angleY 94.382
+  angleZ -1.018
+ }
+ {
+  coords 5843.967 7.439 9870.303
+  angleX 5.611
+  angleY -19.093
+  angleZ -2.879
+ }
+ {
+  coords 5833.203 8.196 9909.95
+  angleX 5.667
+  angleY 31.336
+  angleZ -0.727
+ }
+}
 GenericEntity : "{2A0F520584F7B112}Prefabs/Props/Industrial/CartSawmill_01_log.et" {
  coords 5830.47 4.563 9817.712
 }
@@ -189,6 +343,24 @@ $grp GenericEntity : "{2A9A50C23773AC87}Prefabs/Weapons/Magazines/Carl Gustaf M4
 }
 GenericEntity : "{2B26287DC5B7F9D0}Prefabs/Props/Industrial/ToolBox_01/ToolBox_01_red.et" {
  coords 5821.984 19.777 9789.453
+}
+$grp GenericEntity : "{2C166D8DBBA47738}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_base.et" {
+ {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{AC8120550DC6D979}Assets/Props/Fabric/Flags/Data/Flag_1_2_COA.emat"
+   }
+  }
+  coords 5835.99 7.971 9905.052
+ }
+ {
+  components {
+   SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+    m_sDefaultMaterial "{5A1B3B1C76F584C8}Assets/Props/Fabric/Flags/Data/Flag_1_2_Blue.emat"
+   }
+  }
+  coords 5831.854 7.824 9898.925
+ }
 }
 GenericEntity : "{2E93D634BF435971}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_item.et" {
  coords 4818.175 176.118 7065.556
@@ -376,6 +548,68 @@ GenericEntity : "{363032002DD275E4}Prefabs/Structures/BuildingParts/Graffiti/Gra
  angleY 1.424
  angleZ -3.943
  scale 2.968
+}
+$grp StaticModelEntity : "{39C308BBB5945B85}Prefabs/Props/Military/Furniture/ChairMilitary_US_02.et" {
+ {
+  coords 5828.65 7.615 9904.69
+  angleX -1.367
+  angleY -81.362
+  angleZ -2.921
+ }
+ {
+  coords 5830.477 7.731 9903.745
+  angleY -53.917
+ }
+ {
+  coords 5831.342 7.788 9900.806
+  angleY -53.917
+ }
+ {
+  coords 5831.765 7.77 9901.405
+  angleY -53.917
+ }
+ {
+  coords 5832.25 7.749 9902.072
+  angleY -53.917
+ }
+ {
+  coords 5830.026 7.713 9903.03
+  angleY -53.917
+ }
+ {
+  coords 5829.205 7.694 9901.861
+  angleY -53.917
+ }
+ {
+  coords 5831.258 7.712 9902.891
+  angleY -53.917
+ }
+ {
+  coords 5829.663 7.707 9902.504
+  angleY -53.917
+ }
+ {
+  coords 5830.919 7.803 9900.3
+  angleY -53.917
+ }
+ {
+  coords 5830.006 7.747 9901.111
+  angleY -53.917
+ }
+ {
+  coords 5830.419 7.644 9901.615
+  angleY -53.917
+ }
+ {
+  coords 5830.879 7.639 9902.27
+  angleY -53.917
+ }
+ {
+  coords 5827.737 7.696 9903.274
+  angleX -0.971
+  angleY -47.748
+  angleZ 2.57
+ }
 }
 GenericEntity : "{3A11F5367AB523AB}Prefabs/Structures/BuildingParts/Graffiti/Graffiti_Vole_V1.et" {
  coords 5816.393 13.711 9791.17
@@ -825,6 +1059,12 @@ $grp GenericEntity : "{458A4E8CD3590D92}Prefabs/Weapons/Shotguns/Remington 870/B
   angleZ -117.888
  }
 }
+GenericEntity : "{46FC7FBA9AD1F550}Prefabs/Props/Military/Compositions/US/PersonnelService_US_Large.et" {
+ coords 5826.986 7.658 9903.879
+ angleX -0.164
+ angleY 125.246
+ angleZ 0.015
+}
 $grp GenericEntity : "{49CB86DE0B2A2659}Prefabs/Props/Fabric/Flags/Flag_2_3_Everon_01.et" {
  {
   coords 5805.525 48.603 9767.413
@@ -848,6 +1088,30 @@ $grp GenericEntity : "{49CB86DE0B2A2659}Prefabs/Props/Fabric/Flags/Flag_2_3_Ever
 GenericEntity : "{4A34979DC19CA9ED}Prefabs/Props/Construction/ConcreteMixer_01.et" {
  coords 5840.475 4.562 9815.15
  angleY 78.446
+}
+Tree : "{4B176F8E58FA9D53}Prefabs/Vegetation/Tree/t_carpinus_betulus/t_carpinus_betulus_2f.et" {
+ coords 4482.033 0.013 7134.662
+ angleX 83.915
+}
+$grp GenericEntity : "{4BB97FD2D3F7E3D3}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_Pair_B.et" {
+ {
+  coords 5854.604 8.176 9879.913
+  angleX -1.974
+  angleY -72.827
+  angleZ 0.326
+ }
+ {
+  coords 4571.833 150.498 7047.25
+  angleX 4.486
+  angleY 91.298
+  angleZ -0.791
+ }
+ {
+  coords 4575.829 151.539 7037.732
+  angleX -5.112
+  angleY 49.563
+  angleZ -7.325
+ }
 }
 $grp GenericEntity : "{4BE795374BE3D67E}Prefabs/Props/Industrial/BarrelFuel_01_closed.et" {
  {
@@ -1078,6 +1342,9 @@ $grp GenericEntity : "{618FC913FB743625}Prefabs/Weapons/Handguns/M1911/Handgun_M
   angleZ 90
  }
 }
+GenericEntity : "{61B726B26987ED30}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_D.et" {
+ coords 5840.761 7.303 9869.629
+}
 $grp GenericEntity : "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_Clip_8rnd_M1_Garand.et" {
  {
   coords 2166.754 21.483 7430.136
@@ -1117,6 +1384,14 @@ $grp GenericEntity : "{6224DDAB578E96C0}Prefabs/Weapons/Magazines/M1 Garand/BC_C
 GenericEntity : "{6435D97D7A23D208}Prefabs/Props/Crates/Crate_01_white.et" {
  coords 4817.226 176.227 7066.116
  angleY -22.89
+}
+GenericEntity : "{6B5FF3BD6ABC9B90}Prefabs/Structures/BuildingParts/Mural/Murals_5x5_round_Family_V1.et" {
+ coords 5820.522 8.61 9791.416
+ scale 0.86
+}
+GenericEntity : "{6C581614C51F6D8C}Prefabs/Vegetation/Tree/Roots/Roots_01_big.et" {
+ coords 4481.813 133.773 7134.709
+ angleX 65.664
 }
 $grp GameEntity : "{6E14F80C250F85FC}Prefabs/Characters/HeadGear/Helmet_M1_01/Helmet_M1_01.et" {
  {
@@ -1200,6 +1475,12 @@ $grp GameEntity : "{76E4B06195684DCF}Prefabs/Weapons/Attachments/Bayonets/Bayone
   angleZ 90
  }
 }
+GenericEntity : "{7783AE4B44D3CF29}Prefabs/Props/Wrecks/M923A1_wreck.et" {
+ coords 4577.793 151.149 7044.492
+ angleX -3.614
+ angleY -127.827
+ angleZ 8.399
+}
 $grp GameEntity : "{7805DA34D73CCD62}Prefabs/Characters/HeadGear/Helmet_Mk5_01/Helmet_Mk5_01_base.et" {
  {
   coords 2168.555 22.395 7429.387
@@ -1260,9 +1541,27 @@ GenericEntity : "{7E9186C892E9F07F}Prefabs/Props/Garbage/Cardboard/Cardboard_01.
  angleY -62.541
  scale 0.97
 }
-GenericEntity : "{881558ACD5FC31C0}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x2.et" {
- coords 4820.914 175.218 7058.019
- angleY -22.281
+GameEntity : "{7FA3CFF37C2DD7C1}Prefabs/Characters/HeadGear/Hat_M88_01/Hat_M88_01_Police.et" {
+ coords 5830.342 8.253 9905.918
+ angleY -164.843
+}
+GenericEntity : "{859995D75C355384}Prefabs/Compositions/Misc/SubCompositions/CrateWooden_Cluttered_US_01.et" {
+ coords 5833.904 7.972 9905.064
+ angleX 2.81
+ angleY 76.109
+ angleZ 3.356
+}
+$grp GenericEntity : "{881558ACD5FC31C0}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x2.et" {
+ {
+  coords 4820.914 175.218 7058.019
+  angleY -22.281
+ }
+ {
+  coords 5828.538 7.953 9908.702
+  angleX 3.861
+  angleY 34.574
+  angleZ 0.162
+ }
 }
 GenericEntity : "{8B3C8FC588BD4D30}Prefabs/Structures/BuildingParts/Graffiti/Graffiti_Starka_V1.et" {
  coords 5816.332 17.967 9791.512
@@ -1522,6 +1821,10 @@ $grp GenericEntity : "{9D3FFAAB8243E0C8}Prefabs/Weapons/Rifles/M40A1/BC_Rifle_M4
   angleZ -180
  }
 }
+SCR_DestructibleBuildingEntity : "{A33B68467443EBAF}Prefabs/Structures/Industrial/Houses/Office_E_01/Office_E_01_ENP.et" {
+ coords 5800.483 0.214 9738.211
+ angleY -88.74
+}
 $grp GenericEntity : "{A419F4547954DA05}Prefabs/Props/Construction/CableReel/CableReelWooden_01.et" {
  {
   coords 5832.921 4.562 9816.146
@@ -1548,9 +1851,26 @@ GenericEntity : "{A7DA7AC6FEF7B643}Prefabs/Props/Military/Camps/WeaponRackCabine
  coords 4809.914 175.218 7060.457
  angleY 61.397
 }
+GenericEntity : "{A7E270C44D18B737}Prefabs/Vegetation/Tree/Roots/Roots_02_tiny.et" {
+ coords 4481.813 133.81 7135.043
+ angleX 59.362
+ angleY 180
+ angleZ -180
+ scale 3.77
+}
+GenericEntity : "{A9CF5E8C5D91C476}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Crate_01.et" {
+ coords 5824.085 7.567 9906.73
+}
 GenericEntity : "{AA3D2C0BB0D2B56B}Prefabs/Props/Crates/Crate_01_green.et" {
  coords 4818.347 176.118 7064.317
  angleY -26.059
+}
+GenericEntity : "{AB9F5821AA3F5C6F}Prefabs/Vegetation/Tree/Debris/dst_debris_con_03.et" {
+ coords 4484.255 133.316 7124.416
+ angleX 0.894
+ angleY -0.003
+ angleZ -13.189
+ scale 2.64
 }
 $grp GenericEntity : "{AD1B343E015F2D11}Prefabs/Weapons/Rifles/M3A1/BC_M3A1.et" {
  {
@@ -1629,6 +1949,42 @@ GenericEntity : "{AF46DED77614AB65}Prefabs/Props/Industrial/PotIndustrial_01/Pot
  coords 5832.251 4.563 9817.479
  angleX 90
  angleY 0
+}
+$grp DecalEntity : "{AF4AA779A4546D51}Prefabs/Decals/Dirt/Decal_Dirt_Patch_02.et" {
+ {
+  coords 5834.294 0 9905.014
+  angleX -90
+  angleY -180
+  angleZ -180
+  scale 5
+ }
+ {
+  coords 5826.358 0 9904.747
+  angleX -90
+  angleZ -168.493
+  scale 5
+ }
+ {
+  coords 5829.762 0 9904.688
+  angleX -90
+  angleY -180
+  angleZ -180
+  scale 5
+ }
+ {
+  coords 5830.895 0 9900.505
+  angleX -90
+  angleY -180
+  angleZ -180
+  scale 5
+ }
+ {
+  coords 5829.319 0.088 9908.509
+  angleX -90
+  angleY -180
+  angleZ -180
+  scale 5
+ }
 }
 $grp GenericEntity : "{B0DFDF7AAA9C5D39}Prefabs/Weapons/Magazines/BC_Shell_12ga_Buckshot.et" {
  {
@@ -2448,6 +2804,21 @@ GenericEntity : "{B4FFD63EDFCBD850}Prefabs/Compositions/Misc/SubCompositions/Cra
  coords 2167.765 21.19 7421.5
  angleY 26.153
 }
+$grp GenericEntity : "{B6C04EAD987A66B8}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_Stack_D.et" {
+ {
+  coords 5841.682 7.875 9888.211
+  angleY 56.647
+ }
+ {
+  coords 4693.426 160.225 7014.08
+  angleX 1.163
+  angleY -98.958
+  angleZ 1.628
+ }
+}
+GenericEntity : "{B8185BFEEFD58533}Prefabs/Props/Infrastructure/ConeTraffic/ConeTraffic_01_stack.et" {
+ coords 5826.715 8.234 9890.373
+}
 GenericEntity : "{B85D81962A3F85BA}Prefabs/Props/Fabric/Flags/Flag_1_2_Everon_01.et" {
  coords 5820.895 19.845 9791.465
  angleX 60.518
@@ -2457,6 +2828,32 @@ GenericEntity : "{B85D81962A3F85BA}Prefabs/Props/Fabric/Flags/Flag_1_2_Everon_01
 GenericEntity : "{B961EFD1A1CDBCE3}Prefabs/Structures/BuildingParts/Graffiti/Graffiti_Do_toho_V1.et" {
  coords 5821.045 17.773 9791.396
  scale 1.28
+}
+$grp GenericEntity : "{BDBC17B1749D2869}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_Group_B.et" {
+ {
+  coords 4475.246 132.019 7125.269
+  angleX 7.701
+  angleY 46.758
+  angleZ -4.774
+ }
+ {
+  coords 5825.481 7.925 9901.645
+  angleX -10.752
+  angleY 40.368
+  angleZ -1.006
+ }
+ {
+  coords 5831.596 7.358 9870.839
+  angleX 3.576
+  angleY -0.056
+  angleZ -0.897
+ }
+ {
+  coords 4690.006 160.408 7009.957
+  angleX -1.789
+  angleY 0.028
+  angleZ -0.896
+ }
 }
 GenericEntity : "{BFE79C383ABDE6D2}Prefabs/Weapons/Rifles/MP40/BC_MP40.et" {
  coords 2167.952 21.481 7422.4
@@ -2468,9 +2865,32 @@ GenericEntity : "{C1977A326F2AA011}Prefabs/Structures/Signs/Military/SignCheckpo
  coords 5825.806 8.337 9893.397
  angleY -59.559
 }
+GenericEntity : "{C38AC4E709E1F475}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_Stack.et" {
+ coords 5846.93 7.875 9887.22
+}
 GenericEntity : "{C51A49ACBB2EF063}Prefabs/Props/Construction/ContainerMetal_01/ContainerMetal_01_blue.et" {
  coords 5830.565 4.562 9815.343
  angleY 113.962
+}
+$grp StaticModelEntity : "{C6BFE324CCCFE6C4}Prefabs/Props/Military/Furniture/CotMilitary_USSR_01.et" {
+ {
+  coords 5829.505 7.938 9907.89
+  angleX -0.138
+  angleY -51.627
+  angleZ -3.145
+ }
+ {
+  coords 5830.826 7.843 9906.875
+  angleX 0.116
+  angleY -51.646
+  angleZ -4.466
+ }
+ {
+  coords 5832.078 7.923 9905.666
+  angleX 0.296
+  angleY -51.66
+  angleZ -4.473
+ }
 }
 GenericEntity : "{C8C36ADC9DFC5FBB}Prefabs/Props/Crates/Crate_01_red.et" {
  coords 4816.989 176.205 7066.565
@@ -2512,6 +2932,82 @@ $grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_0
   angleZ 90
   scale 1.51
  }
+ {
+  coords 5825.923 7.561 9905.205
+  angleX 0.521
+  angleY 35.581
+  angleZ -0.728
+ }
+ {
+  coords 5831.984 7.817 9905.59
+  angleX 4.466
+  angleY 35.596
+  angleZ -0.099
+ }
+ {
+  coords 5832.017 7.69 9900.91
+  angleX -1.455
+  angleY 35.606
+  angleZ -1.042
+ }
+ {
+  coords 5834.382 7.833 9904.036
+  angleX 4.466
+  angleY 35.596
+  angleZ -0.099
+ }
+ {
+  coords 5833.25 7.824 9904.75
+  angleX 4.466
+  angleY 35.596
+  angleZ -0.099
+ }
+ {
+  coords 5828.504 7.587 9903.316
+  angleX -2.703
+  angleY 35.597
+  angleZ -0.834
+ }
+ {
+  coords 5830.828 7.649 9901.633
+  angleX -0.935
+  angleY 35.59
+  angleZ -1.769
+ }
+ {
+  coords 5829.697 7.616 9902.405
+  angleX 1.041
+  angleY 35.543
+  angleZ -1.456
+ }
+ {
+  coords 5827.079 7.562 9904.313
+  angleY 35.606
+ }
+ {
+  coords 5830.628 7.819 9906.623
+  angleX 4.466
+  angleY 35.596
+  angleZ -0.099
+ }
+ {
+  coords 5829.441 7.828 9907.66
+  angleX 4.466
+  angleY 35.596
+  angleZ -0.099
+ }
+ {
+  coords 5828.152 7.836 9908.614
+  angleX 5.188
+  angleY 35.656
+  angleZ 0.425
+ }
+}
+GenericEntity : "{D1E82351C859A747}Prefabs/Props/Infrastructure/SnowBreakers/SnowBreaker_E_01_Group_A.et" {
+ coords 5824.026 7.742 9909.493
+ angleX 0.158
+ angleY -57.301
+ angleZ -5.203
 }
 $grp GenericEntity : "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et" {
  {
@@ -2583,9 +3079,17 @@ GenericEntity : "{E1893BF545D216A2}Prefabs/Structures/BuildingParts/Graffiti/Gra
  coords 5821.414 6.315 9791.301
  scale 1.66
 }
-GenericEntity : "{E4416C4C6938BEEE}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x1.et" {
- coords 4817.262 175.218 7066.407
- angleY 60.228
+$grp GenericEntity : "{E4416C4C6938BEEE}Prefabs/Props/Crates/CrateWooden_02/CrateWooden_02_1x1x1.et" {
+ {
+  coords 4817.262 175.218 7066.407
+  angleY 60.228
+ }
+ {
+  coords 5827.788 7.747 9907.56
+  angleX 3.881
+  angleY 12.668
+  angleZ -0.959
+ }
 }
 $grp GenericEntity : "{E93CAE6638538CA4}Prefabs/Weapons/Handguns/M1917/Handgun_M1917.et" {
  {
@@ -2667,6 +3171,12 @@ $grp GenericEntity : "{EC52017B865C2AD0}Prefabs/Characters/Vests/Vest_M69/Vest_M
   angleY 152.414
  }
 }
+GenericEntity : "{EECACC5F25A31B0F}Prefabs/Props/Civilian/LadderWooden_01_Long.et" {
+ coords 5819.678 4.665 9791.942
+ angleX 8.07
+ angleY 3.578
+ angleZ 0.169
+}
 $grp GenericEntity : "{F4BB6B6A0486F797}Prefabs/Props/Industrial/BarrelMetal_01_military.et" {
  {
   coords 5834.441 4.562 9816.873
@@ -2695,4 +3205,14 @@ $grp GenericEntity : "{F9ACDDE62D906D61}Prefabs/Characters/Vests/Vest_M69/Vest_M
   coords 2169.714 22.89 7429.046
   angleY -163.719
  }
+}
+GenericEntity : "{FA9066DE33E8E67D}Prefabs/Structures/Military/Camps/Canvas_Covers/US/CanvasCover_Large_US.et" {
+ coords 5830.278 8.086 9904.563
+ angleY -51.78
+}
+GenericEntity : "{FCBEDECB2A39B6BC}Prefabs/Props/Military/Generators/GeneratorPortable_USSR_01.et" {
+ coords 5832.208 7.819 9903.944
+ angleX 3.702
+ angleY -0.166
+ angleZ -2.57
 }

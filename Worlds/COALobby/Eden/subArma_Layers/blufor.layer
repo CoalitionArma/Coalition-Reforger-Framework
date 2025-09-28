@@ -1,3 +1,28 @@
+$grp Vehicle : "{33E306975481B2AA}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_SWB_Civvie_PoPo.et" {
+ _Series_SWB_Civvie_PoPo1 {
+  coords 5854.901 8.135 9887.901
+  angleY -165.564
+  {
+   DecalEntity {
+    ID "667365CE2C770D04"
+    components {
+     MeshObject "{66780A9036CE64C9}" {
+      PixelSizeScale 0.43
+     }
+    }
+   }
+  }
+ }
+ _Series_SWB_Civvie_PoPo2 {
+  coords 5835.854 7.874 9879.252
+  angleY 59.462
+  {
+   DecalEntity {
+    ID "667365CE2C770D04"
+   }
+  }
+ }
+}
 SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
  coords 5839.063 7.927 9893.198
  m_aUnitPrefabSlots {

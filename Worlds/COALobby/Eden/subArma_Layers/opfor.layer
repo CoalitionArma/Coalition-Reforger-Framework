@@ -2,16 +2,6 @@ Vehicle UAZ452_cargo_Black_SubArma1 : "{2D5D00E1BC6363D6}Prefabs/Vehicles/Wheele
  coords 2168.449 21.027 7424.871
  angleY 112.216
 }
-$grp Vehicle : "{33E306975481B2AA}Prefabs/Vehicles/Wheeled/LR_3Series/Civvie/3Series_SWB_Civvie_PoPo.et" {
- _Series_SWB_Civvie_PoPo1 {
-  coords 5854.901 8.135 9887.901
-  angleY -165.564
- }
- _Series_SWB_Civvie_PoPo2 {
-  coords 5836.382 7.874 9879.563
-  angleY 97.283
- }
-}
 SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
  coords 2244.806 19.02 7513.966
  m_aUnitPrefabSlots {
