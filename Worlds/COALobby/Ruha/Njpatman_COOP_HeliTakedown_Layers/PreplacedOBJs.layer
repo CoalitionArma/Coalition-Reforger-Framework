@@ -1,0 +1,180 @@
+GenericEntity : "{084825E68F0FAF86}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_Scoped_S_USSR_01.et" {
+ coords 6179.503 56.812 7136.009
+ angleY -10.159
+}
+$grp GenericEntity : "{114DE81321786CD9}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_01_PKM.et" {
+ {
+  coords 6147.494 56.625 7052.478
+  angleY 109.455
+ }
+ {
+  coords 5219.971 70.419 7703.404
+  angleY 119.25
+ }
+}
+GenericEntity : "{16148BF23770F1D3}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_02.et" {
+ coords 6278.066 54.815 7052.794
+ angleY 19.882
+}
+$grp Vehicle : "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et" {
+ Ural4320_transport1 {
+  coords 5879.055 53.003 7109.872
+  angleY 134.989
+ }
+ Ural4320_transport2 {
+  coords 5919.163 53.287 7104.444
+  angleY -75.352
+ }
+ Ural4320_transport3 {
+  coords 5936.038 53.096 7117.291
+  angleY -93.3
+ }
+}
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 5187.811 71.121 7802.765
+  angleY 71.876
+ }
+ {
+  coords 5188.408 71.31 7818.128
+  angleY 101.748
+ }
+ {
+  coords 5188.471 71.063 7722.05
+  angleY 117.539
+ }
+ {
+  coords 5187.684 70.92 7712.061
+  angleY 140.169
+ }
+}
+GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ coords 6107.41 56.36 6964.638
+ angleY 72.227
+}
+GenericEntity : "{3AE1A95C1023F894}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_04.et" {
+ coords 6144.878 57.758 7131.575
+}
+$grp GenericEntity : "{4093AE33DCEFAD67}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_USSR_01.et" {
+ {
+  coords 6117.225 56.625 7077.54
+  angleY 97.015
+ }
+ {
+  coords 5921.096 53.147 7100.024
+ }
+}
+GenericEntity : "{4510C273B794F3A9}Prefabs/Compositions/Slotted/SlotFlatMedium/VehicleMaintenance_M_USSR_01.et" {
+ coords 6131.882 56.625 7060.909
+ angleY 84.148
+}
+$grp Vehicle : "{4C81D7ED8F8C0D87}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker.et" {
+ Ural4320_tanker2 {
+  coords 5923.289 53.419 7139.311
+  angleY 95.137
+ }
+ Ural4320_tanker1 {
+  coords 6098.843 56.625 7040.748
+  angleY 56.545
+ }
+ Ural4320_tanker3 {
+  coords 6107.52 56.625 7067.445
+  angleY -128.237
+ }
+ Ural4320_tanker4 {
+  coords 6142.125 56.625 7079.263
+  angleY 147.396
+ }
+}
+$grp GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
+ {
+  coords 6130.509 56.625 7088.853
+  angleY 116.83
+ }
+ {
+  coords 6107.776 56.625 7029.129
+  angleY -54.87
+ }
+ {
+  coords 6099.805 56.625 7080.688
+  angleY 34.471
+ }
+ {
+  coords 6141.617 56.625 7036.316
+  angleY -136.483
+ }
+}
+$grp GenericEntity : "{68ED84218EA1BDC3}Prefabs/Compositions/Slotted/SlotFlatSmall/Antenna_S_USSR_01.et" {
+ {
+  coords 6110.301 56.625 7058.125
+  angleY -95.954
+ }
+ {
+  coords 5922.35 53.594 7128.311
+ }
+}
+GenericEntity : "{73604060A04CBB85}Prefabs/Compositions/Slotted/SlotFlatSmall/FuelStorage_S_USSR_01.et" {
+ coords 6123.364 56.625 7040.623
+}
+GenericEntity : "{7492BAA88AFCEDCE}Prefabs/Compositions/Slotted/SlotFlatSmall/Bunker_S_USSR_01.et" {
+ coords 6285.853 54.691 7044.854
+ angleY 57.265
+}
+$grp GenericEntity : "{7A40BF128BB47EFD}Prefabs/Compositions/Slotted/SlotFlatSmall/MachineGunNest_S_USSR_01.et" {
+ {
+  coords 6145.678 56.625 7080.695
+  angleY 49.924
+ }
+ {
+  coords 6323.583 56.043 6967.651
+  angleY 104.713
+ }
+ {
+  coords 6201.767 56.28 7123.938
+  angleY 51.038
+ }
+}
+$grp GenericEntity : "{8E1DF47DD56E69E6}Prefabs/Compositions/Slotted/SlotFlatSmall/SandbagPosition_S_USSR_01.et" {
+ {
+  coords 6337.969 55.694 6978.223
+  angleY 89.292
+ }
+ {
+  coords 6195.968 57.91 7114.14
+  angleY 74.639
+ }
+}
+Vehicle Ural4320_repair1 : "{A5647958579A4149}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_repair.et" {
+ coords 6126.516 56.625 7069.01
+ angleY 84.076
+}
+$grp Vehicle : "{DF5CCB7C0FF049F4}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_transport.et" {
+ Mi8MT_unarmed_transport1 {
+  coords 6106.169 56.626 7029.426
+  angleY -145.769
+ }
+ Mi8MT_unarmed_transport4 {
+  coords 6141.865 56.626 7033.481
+  angleY 135.279
+ }
+ Mi8MT_unarmed_transport2 {
+  coords 6130.7 56.626 7088.964
+  angleY 29.708
+ }
+ Mi8MT_unarmed_transport3 {
+  coords 6098.269 56.626 7082.136
+  angleY -56.213
+ }
+}
+GenericEntity : "{F68F3B7247F6E810}Prefabs/Compositions/Slotted/SlotFlatLarge/LivingArea_L_USSR_01.et" {
+ coords 5899.021 53.325 7123.188
+ angleY -159.123
+}
+$grp GenericEntity : "{FD952CFF9CAD3F2B}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_USSR_01.et" {
+ {
+  coords 6326.328 55.844 6989.874
+ }
+ {
+  coords 5934.006 53.013 7108.991
+ }
+}

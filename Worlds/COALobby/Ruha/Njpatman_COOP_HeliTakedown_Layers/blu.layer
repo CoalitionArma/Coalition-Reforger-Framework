@@ -1,0 +1,82 @@
+$grp Vehicle : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ M997_maxi_ambulance1 {
+  coords 6786.928 55.098 7976.271
+  angleX -1.763
+  angleY -169.99
+  angleZ -0.311
+ }
+ M997_maxi_ambulance2 {
+  coords 6791.989 55.103 7975.412
+  angleX -1.751
+  angleY -167.989
+  angleZ -0.372
+ }
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 6834.022 55.06 7979.195
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords -27.107 0.051 10.688
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords -3.801 0.784 -68.436
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 1.167 0.096 9.297
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 1.373 -0.112 -18.589
+         {
+          SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+           coords -20.738 0.655 18.743
+           angleX -1.789
+           angleY 0.028
+           angleZ -0.896
+           {
+            SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+             coords 0.568 -0.151 -9.196
+             angleX 1.79
+             angleZ 0.895
+             {
+              SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+               coords -0.47 0.182 -12.866
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 6764.891 54.95 7964.529
+}
+$grp Vehicle : "{81FDAD5EB644CC3D}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport_covered.et" {
+ M923A1_transport_covered1 {
+  coords 6811.22 55.087 7972.344
+  angleY -174
+ }
+ M923A1_transport_covered2 {
+  coords 6817.371 55.088 7971.809
+  angleY -174
+ }
+ M923A1_transport_covered3 {
+  coords 6823.333 55.197 7971.17
+  angleY -174
+ }
+ M923A1_transport_covered4 {
+  coords 6828.763 55.222 7970.775
+  angleY -174
+ }
+}
+GenericEntity : "{CDD0712FD6215F04}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ coords 6770.212 54.415 7978.545
+ angleY -173
+}
