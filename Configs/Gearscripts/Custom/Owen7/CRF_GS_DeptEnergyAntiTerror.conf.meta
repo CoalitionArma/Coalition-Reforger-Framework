@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{F8083CE71EEDB1FA}Configs/Gearscripts/Custom/RandAlThor/CRF_GS_ArmedPolice2.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

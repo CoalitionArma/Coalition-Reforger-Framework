@@ -58,7 +58,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Heavy Thunderstorm"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Your MACV-SOG platoon has been sent to assassinate a rogue U.S. Army Speecial Forces colonel. He is known to be in command of a ruthless militia group. Intercept his escape route around Hill 55 and terminate his command. When the mission is complete, return to base at Camp Checkmate."
+   m_sTextData "Your MACV-SOG platoon has been sent to assassinate a rogue U.S. Army Special Forces colonel. He is known to be in command of a ruthless militia group. Intercept his escape route around Hill 55 and terminate his command. When the mission is complete, return to base at Phuong."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "The God-King has ordered us to defend him with our lives, as his enemies have come to destroy him. We owe him our lives, for he has brought us victory and glory against the invaders. He has prepared a vehicle for his escape, but we have insisted that he walks the jungles with us."\
@@ -76,7 +76,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iFactionOneRatio 2
  m_iFactionTwoRatio 3
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
-  m_rGearScript "{CDC2D35E91FCCDF9}Configs/Gearscripts/Standard/Vietnam/CRF_GS_MACV_SOG.conf"
+  m_rGearScript "{21840F3401EF99D3}Configs/Gearscripts/Standard/Vietnam/CRF_GS_MACV_SOG.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{13C1F6BC6966A9B5}Configs/Gearscripts/Standard/Vietnam/CRF_GS_VC.conf"
@@ -95,6 +95,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds + {
+      "OPFOR"
+     }
      m_sFactionRadioEncryptionKey "coldBorscht"
      m_iFactionRadioFrequency 42000
     }
@@ -123,6 +126,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
      }
     }
     SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
      m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
       m_aSquadNames {
        SCR_CallsignInfo "{55CCB79287E901BC}" {

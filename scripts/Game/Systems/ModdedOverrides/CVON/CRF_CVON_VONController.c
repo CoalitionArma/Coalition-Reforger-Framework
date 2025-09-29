@@ -337,6 +337,8 @@ modded class SCR_VONController
 				container.m_fDistanceToSender = distance;
 			else
 				container.m_fDistanceToSender = -1;
+			
+			container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(container.m_iPlayerId);
 		}
 		
 
