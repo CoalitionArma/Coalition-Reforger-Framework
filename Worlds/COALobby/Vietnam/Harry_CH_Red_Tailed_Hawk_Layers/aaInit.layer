@@ -1,0 +1,168 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 3968.13 196.222 1456.05
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Cloudy"
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingMinutes 37
+   m_fDayTimeAcceleration 0.1
+   m_fNightTimeAcceleration 0.1
+  }
+ }
+ coords 3974.678 262.88 1448.895
+ userScript "	int stage = 0;"\
+ "	"\
+ "	void deleteFlags()"\
+ "	{"\
+ "		IEntity flag = GetGame().GetWorld().FindEntityByName(\"Spawn\");"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(flag);"\
+ "		"\
+ "		flag = GetGame().GetWorld().FindEntityByName(\"Phuoc_Thanh\");"\
+ "		SCR_EntityHelper.DeleteEntityAndChildren(flag);"\
+ ""\
+ "	}"
+ EOnFrame ""\
+ "		if (stage > 1)"\
+ "			return;"\
+ "		"\
+ "		bool safeStart = CRF_SafestartManager.GetInstance().GetSafestartStatus();"\
+ "		"\
+ "		if (safeStart && stage == 0)"\
+ "			stage = 1;"\
+ "		"\
+ "		if (stage == 1 && !safeStart)"\
+ "		{"\
+ "			stage = 2;"\
+ "			deleteFlags();"\
+ "		}"\
+ "	"
+ m_iTimeLimitMinutes 50
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "US forces are trying to degrade the ability of the VC to stage forces in this area by hunting down weapons caches, and destroying them. "\
+   ""\
+   "BLUFOR Composition: Air Assault"\
+   "BLUFOR Assets: 1 Armed Huey/PLT"\
+   ""\
+   "OPFOR Composition: Inf"\
+   "OPFOR Assets: MMG, HMG"\
+   ""\
+   "Time: 50"\
+   "Weather: Cloudy"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Find and destroy the caches. There is one cache in the area around the marked question symbols. "
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Scouts have warned us that US troops are beginning an offensive in the area. Move to and defend the marked caches. Teleport poles will be removed at the end of safe start. "
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "No GI radios."
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{AFF498D57B0702A3}Configs/Gearscripts/Custom/Harry/Vietnam/CRF_GS_US_Early_Harry_TLRadio_NoTLGL.conf"
+  m_bEnableRTORadios 0
+  m_bEnableGIRadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{FF52E30665770D4B}Configs/Gearscripts/Standard/Vietnam/Varients/CRF_GS_VC_BoltAction.conf"
+  m_bEnableRTORadios 0
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager "6644F4158867CBB2" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{664373845FECFF81}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{664373845EF6D1D3}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{664373845C344699}" {
+        m_sCallsign "Huey-1"
+       }
+       SCR_CallsignInfo "{664373845CB2CB19}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{664373845CD5AA54}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66437384A31E14F7}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66437384A3A579FC}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{66437384A3F7C851}" {
+        m_sCallsign "Huey-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{664373848F9C0FB6}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{664373848E253E86}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{664373848E18EEFB}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{664373848E770DE9}" {
+        m_sCallsign "1-6"
+       }
+       SCR_CallsignInfo "{664373848EAC450C}" {
+        m_sCallsign "1-7"
+       }
+       SCR_CallsignInfo "{664373849739CFE1}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66437384977DA53B}" {
+        m_sCallsign "HMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

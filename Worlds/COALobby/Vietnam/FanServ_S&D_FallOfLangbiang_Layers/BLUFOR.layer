@@ -1,0 +1,78 @@
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  components {
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{5D66ED1086234C38}" {
+     }
+    }
+   }
+  }
+  coords 3683.373 10.75 720.315
+  angleY 7
+ }
+ {
+  components {
+   ActionsManagerComponent "{5D66ED1096104FD8}" {
+    additionalActions {
+     SCR_CampaignBuildingDisassemblyUserAction "{5D66ED1086234C38}" {
+     }
+    }
+   }
+  }
+  coords 3301.597 1.344 693.196
+  angleY 7
+ }
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 3544.756 5.885 384.898
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords 15.923 3.826 60.15
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords -44.24 -6.555 -57
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 7.704 0 14.629
+       {
+        SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+         coords 35.703 4.336 -3.009
+         {
+          SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+           coords -9.152 -0.311 32.08
+           {
+            SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+             coords -17.558 -2.885 -10.274
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+Vehicle UAZ452_ambulance2 : "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" {
+ coords 3546.808 8.123 451.891
+ angleX 6
+ angleY 55
+}
+$grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+ {
+  coords 3695.294 10.598 719.102
+  angleX 0
+  angleY 5
+  angleZ 0
+ }
+ {
+  coords 3312.186 1.387 692.961
+  angleX 0
+  angleY 5
+  angleZ 0
+ }
+}

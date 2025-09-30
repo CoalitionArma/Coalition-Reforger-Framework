@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{EFFFA3D6F0F8D4B0}Prefabs/Characters/HeadGear/Helmet_MICH_ACH/Helmet_MICH2000_green_dark_balaclavas_goggles.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

@@ -596,7 +596,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
-		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rLeadershipRadiosPrefab;
+		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rLongRangeRadioPrefab;
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 
@@ -626,7 +626,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 			
 		// Get radio prefab and add item
 		string factionKey = playerGroup.GetFaction().GetFactionKey();
-		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rGIRadiosPrefab;
+		ResourceName radioPrefab = CRF_GearscriptManager.GetInstance().GetGearScriptSettings(factionKey).m_rShortRangeRadioPrefab;
 		CRF_RplToAuthorityManager.GetInstance().AddItem(playerId, radioPrefab, true);
 	}
 
@@ -1026,7 +1026,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 
 		// Get all players and groups
 		m_playerManager.GetPlayers(m_allPlayers);
-		m_groupManagerComponent.GetAllPlayableGroups(m_outGroups);
+		m_outGroups = CRF_SlottingManager.GetInstance().GetAllGroups();
 
 		// Populate Dead Players list
 		PopulateDeadPlayersList();
@@ -1106,6 +1106,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!playerList)
 			return;
 		
+		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
+		if (!groupList)
+			return;
+		
 		if (playerList.GetSelectedItem() < 0)
 			return;
 			
@@ -1114,25 +1118,12 @@ class CRF_AdminMenu : ChimeraMenuBase
 		int playerId = GetplayerIdFromName(playerName);
 		if (playerId == 0)
 			return;
-
-		// Request player's group from server
-		CRF_RplToAuthorityManager.GetInstance().RequestGroupIdFromServer(playerId, SCR_PlayerController.GetLocalPlayerId());
-	}
-
-	/**
-	 * Updates the selected group based on group ID from server
-	 * @param groupId The group ID to select
-	 */
-	void UpdateSpawnGroup(int groupId)
-	{
-		// Load List Boxes
-		SCR_ListBoxComponent groupList = GetListBox("GroupListBox0");
-		if (!groupList)
-			return;
+		
+		int selectedGroupID = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
 		
 		foreach (int i, SCR_AIGroup group : m_outGroups)
 		{
-			if (groupId == group.GetGroupID())
+			if (selectedGroupID == group.GetGroupID())
 			{
 				// Adjust index for client mode
 				int itemIndex = i;
@@ -1176,7 +1167,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		foreach (string name : playerNames)
 		{
 			int playerId = GetplayerIdFromName(name);
-			SCR_AIGroup playerGroup = m_groupManagerComponent.GetPlayerGroup(playerId);
+			SCR_AIGroup playerGroup = CRF_SlottingManager.GetInstance().GetPlayerSlotGroup(playerId);
 			
 			if (!playerGroup)
 				continue;
@@ -1861,10 +1852,14 @@ class CRF_AdminMenu : ChimeraMenuBase
 		TextWidget civTicketText = TextWidget.Cast(ticketCounters.FindWidget("CivTicketCount"));
 		
 		// Update Ticket Counters
-		bluforTicketText.SetText(CRF_Gamemode.GetInstance().m_iBLUFORTickets.ToString());
-		opforTicketText.SetText(CRF_Gamemode.GetInstance().m_iOPFORTickets.ToString());
-		indforTicketText.SetText(CRF_Gamemode.GetInstance().m_iINDFORTickets.ToString());
-		civTicketText.SetText(CRF_Gamemode.GetInstance().m_iCIVTickets.ToString());
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
+		if (respawnManager)
+		{
+			bluforTicketText.SetText(respawnManager.GetFactionTickets("BLUFOR").ToString());
+			opforTicketText.SetText(respawnManager.GetFactionTickets("OPFOR").ToString());
+			indforTicketText.SetText(respawnManager.GetFactionTickets("INDFOR").ToString());
+			civTicketText.SetText(respawnManager.GetFactionTickets("CIV").ToString());
+		}
 
 	}
 	
