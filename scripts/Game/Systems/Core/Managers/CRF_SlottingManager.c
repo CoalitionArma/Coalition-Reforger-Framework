@@ -579,9 +579,13 @@ class CRF_SlottingManager : ScriptComponent
 			spawnParams.Transform = playerSlotVector;
 		}
 
-		vector pos;
-		SCR_WorldTools.FindEmptyTerrainPosition(pos, spawnParams.Transform[3], 12);
-		spawnParams.Transform[3] = pos;
+		spawnParams.Transform[3][1] + spawnParams.Transform[3][1] + 0.5; //Go up 1 incase theres some weird slope, floor issue
+		vector surface;
+		SCR_TerrainHelper.SnapToGeometry(surface, spawnParams.Transform[3], {}, GetGame().GetWorld());
+		spawnParams.Transform[3] = surface;
+		SCR_TerrainHelper.OrientToTerrain(spawnParams.Transform);
+		
+		GetSafeSpawnTransform(spawnParams.Transform, 12, spawnParams.Transform);
 		
 		// Spawn the character
 		Resource resource = Resource.Load(resourceName);
@@ -609,6 +613,58 @@ class CRF_SlottingManager : ScriptComponent
 			playableCharComp.SetIsSlotSpawned();
 		
 		return playerCharacter;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void GetSafeSpawnTransform(vector baseTransform[4], float radius, out vector trasnformOut[4])
+	{
+	    vector candidate;
+	    vector surface;
+	    vector outTransform[4] = baseTransform;
+		
+		if (!IsOverlappingOtherPlayer(baseTransform[3]))
+		{
+			trasnformOut = baseTransform;
+			return;
+		}
+	
+	    for (int i = 0; i < 20; i++)
+	    {
+	        float angle = Math.RandomFloat01() * Math.PI2;
+	        float dist  = Math.RandomFloat01() * radius;
+	        vector offset = Vector(Math.Cos(angle) * dist, 0, Math.Sin(angle) * dist);
+	
+	        candidate = baseTransform[3] + offset;
+
+	        SCR_TerrainHelper.SnapToGeometry(surface, candidate, {}, GetGame().GetWorld());
+	
+	        if (surface != vector.Zero && !IsOverlappingOtherPlayer(surface))
+	        {
+	            outTransform[3] = surface;
+	
+	            SCR_TerrainHelper.OrientToTerrain(outTransform);
+	
+	            trasnformOut = outTransform;
+				return;
+	        }
+	    }
+	
+	    trasnformOut = baseTransform;
+	}
+
+	
+	//------------------------------------------------------------------------------------------------
+	bool IsOverlappingOtherPlayer(vector pos)
+	{
+		return !GetGame().GetWorld().QueryEntitiesBySphere(pos, 1.5, FilterEntities, null);
+	}
+	
+	bool FilterEntities(IEntity entity)
+	{
+		if (SCR_ChimeraCharacter.Cast(entity) || entity.FindComponent(CRF_RespawnPointComponent))
+			return false;
+			
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
