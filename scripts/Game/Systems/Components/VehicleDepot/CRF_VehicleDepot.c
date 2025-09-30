@@ -1151,19 +1151,31 @@ class CRF_VehicleDepot : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Show notification to player (replicated from server to client)
+	 * Show notification to player (replicated from server to client, with Workbench support)
 	 */
 	protected void ShowNotificationToPlayer(int playerId, string title, string message)
 	{
-		// Only send notification if running on server
+		// In Workbench or single-player testing, directly show the notification
+		#ifdef WORKBENCH
+		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+		if (localPlayerId == playerId)
+		{
+			SCR_PopUpNotification popUpNotification = SCR_PopUpNotification.GetInstance();
+			if (popUpNotification)
+			{
+				popUpNotification.PopupMsg(message, 3.0, title);
+			}
+		}
+		return;
+		#endif
+		
+		// Only send RPC notification if running on server in multiplayer
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
 		// Send RPC with player ID so client can filter
 		Rpc(RPC_ShowNotification, playerId, title, message);
 		
-		// Also log for server debugging
-		DebugPrint(string.Format("Notification sent to player %1: %2 - %3", playerId, title, message));
 	}
 
 	//================================================================================================
