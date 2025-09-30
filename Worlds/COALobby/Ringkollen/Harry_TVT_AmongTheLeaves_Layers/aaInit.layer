@@ -6,7 +6,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 2584.538 400.414 885.23
- m_iTimeLimitMinutes 60
+ m_iTimeLimitMinutes 70
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "It's sometime after the third great war. People have just lost count of when. Equipment is shoddy at best, and you can bet there are no radios. What little there is people fight tooth and nail over."\
@@ -19,7 +19,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "OPFOR Composition: Moto Inf"\
    "OPFOR Assets:"\
    ""\
-   "Time: 60 min"\
+   "Time: 70 min"\
    "Weather: Clear"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
