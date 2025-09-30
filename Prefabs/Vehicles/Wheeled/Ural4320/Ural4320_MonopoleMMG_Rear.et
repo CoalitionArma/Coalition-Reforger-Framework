@@ -14,6 +14,14 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
   SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
    MaxCumulativeVolume 100000
    MaxItemSize 40 40 40
+   MultiSlots {
+    MultiSlotConfiguration "{667B6C74C66F9668}" {
+     SlotTemplate InventoryStorageSlot ammo {
+      Prefab "{D22DF40D07DA4615}Prefabs/Weapons/Magazines/Box_762x51_GPMG_100rnd_4Ball_1Tracer.et"
+     }
+     NumSlots 5
+    }
+   }
   }
   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
    m_fVehicleDestroyDamage 17524
