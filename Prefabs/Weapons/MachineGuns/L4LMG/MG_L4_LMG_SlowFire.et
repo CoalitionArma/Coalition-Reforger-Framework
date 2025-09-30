@@ -1,0 +1,43 @@
+GenericEntity : "{CBD34D12DBF4372D}Prefabs/Weapons/MachineGuns/L4LMG/MG_L4_LMG_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07E1D123E9}" {
+     Name "Shoddy L4"
+     Description "An L4 with a much lower fire rate."
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E60421307}" {
+     AnimationIKPose "{999BDE1E96CBA106}Assets/Weapons/MachineGuns/L4LMG/anims/p_l4a1_ik.anm"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     FireModes {
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       MaxBurst 1
+       RoundsPerMinute 600
+       UIName "Single"
+      }
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+      Offset -0.0659 -0.1239 -0.3605
+      Angles 41.6813 23.8198 44.6527
+     }
+    }
+    WeaponAnimationComponent "{612D459F9198439A}" {
+     AnimGraph "{9844589E71371A42}Assets/Weapons/MachineGuns/Workspaces/l4lmg.agr"
+     AnimInjection AnimationAttachmentInfo "{612D459F91984398}" {
+      AnimGraph "{9844589E71371A42}Assets/Weapons/MachineGuns/Workspaces/l4lmg.agr"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Description "#BF-Weapon_L4_Description"
+   }
+  }
+ }
+ coords -0.329 1.059 -2.813
+}
