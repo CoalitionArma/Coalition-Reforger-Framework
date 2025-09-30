@@ -13,7 +13,27 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 	// Text refresh throttling for optimization
 	protected string m_sCachedDisplayText = "";
 	protected float m_fLastTextUpdate = 0;
-	protected float m_fTextUpdateInterval = 1.0; // Update every 1 second for live supply updates
+	protected float m_fTextUpdateInterval = 3.0; // Update every 3 seconds for live supply updates
+	
+	// Client-side throttling to prevent spamming
+	protected float m_fLastNotification = 0;
+	
+	//------------------------------------------------------------------------------------------------
+	//! Debug print wrapper to include consistent formatting
+	protected void DebugPrint(string message)
+	{
+		if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging)
+		{
+			string depotName = "";
+			if (m_DepotComponent)
+			{
+				string fullDepotName = m_DepotComponent.GetDepotName();
+				if (fullDepotName != "")
+					depotName = string.Format(" - %1", fullDepotName);
+			}
+			Print(string.Format("[CRF_DepotSpawnAction%1] %2", depotName, message));
+		}
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
@@ -36,7 +56,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 		{
 			m_Vehicle = vehicles[m_iVehicleIndex];
 			// Only show action registration in debug mode
-			if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Initialized action for vehicle %1: %2", m_iVehicleIndex, m_Vehicle.m_sVehicleName));
+			DebugPrint(string.Format("Initialized action for vehicle %1: %2", m_iVehicleIndex, m_Vehicle.m_sVehicleName));
 		}
 		else
 		{
@@ -44,7 +64,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 			if (m_iVehicleIndex == vehicles.Count() && m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging)
 			{
 				// Show brief summary with specific unused action range
-				if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] SETUP: %1 vehicles configured.", vehicles.Count(), vehicles.Count()));
+				DebugPrint(string.Format("SETUP: %1 vehicles configured.", vehicles.Count(), vehicles.Count()));
 			}
 		}
 
@@ -63,12 +83,12 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 		// Get player ID
 		int playerId = SCR_PlayerController.GetLocalPlayerId();
 		
-		if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Attempting to spawn %1 for player %2", m_Vehicle.m_sVehicleName, playerId));
+		DebugPrint(string.Format("Attempting to spawn %1 for player %2", m_Vehicle.m_sVehicleName, playerId));
 		
 		// Check if player can afford the vehicle
 		if (!m_DepotComponent.CanAffordVehicle(playerId, m_Vehicle, m_iVehicleIndex))
 		{
-			if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print("[CRF_DepotSpawnAction] Player cannot afford vehicle");
+			DebugPrint("Player cannot afford vehicle");
 			
 			// Log specific error message based on cost type for debugging
 			string errorMsg;
@@ -78,7 +98,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 					errorMsg = string.Format("Insufficient tickets! Need %1, have %2", m_Vehicle.m_iCost, m_DepotComponent.GetRemainingTickets(playerId));
 					break;
 				case CRF_EVehicleDepotCostType.SUPPLIES:
-					errorMsg = string.Format("Insufficient supplies! Need %1, have %2", m_Vehicle.m_iCost, m_DepotComponent.GetRemainingSupplies(playerId));
+					errorMsg = string.Format("Insufficient supplies! Need %1, have %2", m_Vehicle.m_iCost, m_DepotComponent.GetAggregatedSupplies());
 					break;
 				case CRF_EVehicleDepotCostType.USES:
 					errorMsg = string.Format("Insufficient uses! Need %1, have %2", m_Vehicle.m_iCost, m_DepotComponent.GetUsesRemaining());
@@ -86,7 +106,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 			}
 			
 			// Show error details only in debug mode
-			if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] %1", errorMsg));
+			DebugPrint(errorMsg);
 			
 			return;
 		}
@@ -95,37 +115,41 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 		CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
 		if (rplManager)
 		{
-			if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print("[CRF_DepotSpawnAction] RplManager found");
+			DebugPrint("RplManager found");
 			
 			// Get the depot entity's RplId for server communication
 			RplComponent rplComponent = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
 			if (rplComponent)
 			{
 				RplId depotRplId = rplComponent.Id();
-				if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Depot RplComponent found, RplId: %1", depotRplId));
+				DebugPrint(string.Format("Depot RplComponent found, RplId: %1", depotRplId));
 				
 				// Send RPC to server to spawn the vehicle - this ensures it works on dedicated servers
-				rplManager.RequestVehicleDepotSpawn(playerId, m_iVehicleIndex, depotRplId);
-				if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Sent vehicle depot spawn request via RPC for %1", m_Vehicle.m_sVehicleName));
+				rplManager.RequestVehicleDepotInteraction(playerId, m_iVehicleIndex, depotRplId);
+				DebugPrint(string.Format("Sent vehicle depot interaction request via RPC for %1", m_Vehicle.m_sVehicleName));
 			}
 			else
 			{
-				if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print("[CRF_DepotSpawnAction] Depot entity missing RplComponent - using fallback direct spawn");
+				DebugPrint("Depot entity missing RplComponent - using fallback direct spawn");
 				
 				// Fallback: direct spawn when no replication available
 				bool success = m_DepotComponent.SpawnVehicle(playerId, m_iVehicleIndex);
-				if (success && m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Fallback direct spawn successful: %1", m_Vehicle.m_sVehicleName));
-				else if (!success && m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Fallback direct spawn failed: %1", m_Vehicle.m_sVehicleName));
+				if (success)
+					DebugPrint(string.Format("Fallback direct spawn successful: %1", m_Vehicle.m_sVehicleName));
+				else
+					DebugPrint(string.Format("Fallback direct spawn failed: %1", m_Vehicle.m_sVehicleName));
 			}
 		}
 		else
 		{
-			if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print("[CRF_DepotSpawnAction] CRF_RplToAuthorityManager not available - fallback to direct spawn");
+			DebugPrint("CRF_RplToAuthorityManager not available - fallback to direct spawn");
 			
 			// Fallback: direct spawn (for local testing)
 			bool success = m_DepotComponent.SpawnVehicle(playerId, m_iVehicleIndex);
-			if (success && m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Direct spawn successful: %1", m_Vehicle.m_sVehicleName));
-			else if (!success && m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging) Print(string.Format("[CRF_DepotSpawnAction] Direct spawn failed: %1", m_Vehicle.m_sVehicleName));
+			if (success)
+				DebugPrint(string.Format("Direct spawn successful: %1", m_Vehicle.m_sVehicleName));
+			else
+				DebugPrint(string.Format("Direct spawn failed: %1", m_Vehicle.m_sVehicleName));
 		}
 	}
 	
@@ -138,20 +162,45 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 			return true;
 		}
 		
-		// For supply-based vehicles, refresh more frequently to show live aggregated amounts
-		float updateInterval = m_fTextUpdateInterval;
-		if (m_Vehicle.m_eCostType == CRF_EVehicleDepotCostType.SUPPLIES)
-		{
-			updateInterval = 0.5; // Update every 500ms for live supply detection when menu is active
-		}
-		
-		// Throttle text updates to prevent excessive calls but allow live supply updates
 		float currentTime = GetGame().GetWorld().GetWorldTime() * 0.001; // Convert to seconds
 		
-		// Only update text if enough time has passed or cache is empty
-		if (currentTime - m_fLastTextUpdate >= updateInterval || m_sCachedDisplayText.IsEmpty())
+		// CRITICAL: Notify depot of viewing player for supply refresh (only for supply-based vehicles)
+		if (m_Vehicle.m_eCostType == CRF_EVehicleDepotCostType.SUPPLIES)
 		{
-			m_sCachedDisplayText = m_DepotComponent.GetCachedActionText(m_iVehicleIndex, m_Vehicle);
+			// ! CLIENT SIDE SUPPLY UPDATE THROTTLE - Per-player clientside limit (fires every frame otherwise)
+			if (currentTime - m_fLastNotification >= 12.0)
+			{
+				m_fLastNotification = currentTime;
+				
+				// Use consolidated spawn RPC which now includes supply refresh functionality  
+				CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
+				if (rplManager)
+				{
+					RplComponent rplComponent = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
+					if (rplComponent)
+					{
+						RplId depotRplId = rplComponent.Id();
+						// Send viewing notification using interaction RPC with special index (-1 = refresh only)
+						rplManager.RequestVehicleDepotInteraction(-1, -1, depotRplId);
+						
+						DebugPrint("Notifying depot of viewer via consolidated RPC");
+					}
+				}
+			}
+		}
+		
+		// For supply-based vehicles, refresh text more frequently to show live aggregated amounts
+		float textUpdateInterval = m_fTextUpdateInterval;
+		if (m_Vehicle.m_eCostType == CRF_EVehicleDepotCostType.SUPPLIES)
+		{
+			textUpdateInterval = 1.0; // Update every 1 seconds for smoother supply amounts when menu is active
+		}
+		
+		// Only update text if enough time has passed or cache is empty
+		if (currentTime - m_fLastTextUpdate >= textUpdateInterval || m_sCachedDisplayText.IsEmpty())
+		{
+			// Use direct depot method for real-time display (server uses live supplies, client uses replicated)
+			m_sCachedDisplayText = m_DepotComponent.GetActionText(m_iVehicleIndex, m_Vehicle);
 			m_fLastTextUpdate = currentTime;
 		}
 		
@@ -176,6 +225,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 			return false;
 			
 		// Only allow if player can afford it
+		// Supply refresh is now handled in GetActionNameScript() for better timing
 		int playerId = SCR_PlayerController.GetLocalPlayerId();
 		return m_DepotComponent.CanAffordVehicle(playerId, m_Vehicle, m_iVehicleIndex);
 	}

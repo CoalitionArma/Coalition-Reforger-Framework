@@ -299,10 +299,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	// Vehicle depot management
-	void RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	void RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
-		Print(string.Format("[CRF_RplToAuthorityManager] Sending vehicle depot spawn RPC: player %1, vehicle index %2, depot RplId %3", playerId, vehicleIndex, depotRplId));
-		Rpc(RpcAsk_RequestVehicleDepotSpawn, playerId, vehicleIndex, depotRplId);
+		Rpc(RpcAsk_RequestVehicleDepotInteraction, playerId, vehicleIndex, depotRplId);
 	}
 	
 	void RespawnFaction(FactionKey faction, bool logAction)
@@ -642,7 +641,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	protected void RpcAsk_RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
 		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(depotRplId));
 		if (!rplComponent)
@@ -656,8 +655,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!depotComponent)
 			return;
 		
+		// Check if viewing/supply update (special values)
+		if (playerId == -1 || vehicleIndex == -1)
+		{
+			// Only refresh supplies for viewing notifications - spawning handles supply updates automatically
+			depotComponent.NotifyPlayerViewing();
+			return;
+		}
+		
+		// If not viewing/supply update, is spawnvehicle request
 		depotComponent.SpawnVehicle(playerId, vehicleIndex);
 	}
+
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RespawnFaction(FactionKey faction, bool logAction)
