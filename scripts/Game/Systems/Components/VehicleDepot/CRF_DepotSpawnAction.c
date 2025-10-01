@@ -18,8 +18,9 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 	// Client-side throttling to prevent spamming
 	protected float m_fLastNotification = 0;
 	
+	#ifdef WORKBENCH
 	//------------------------------------------------------------------------------------------------
-	//! Debug print wrapper to include consistent formatting
+	//! Debug print wrapper to include consistent formatting (Workbench only - zero runtime overhead)
 	protected void DebugPrint(string message)
 	{
 		if (m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging)
@@ -34,6 +35,7 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 			Print(string.Format("[CRF_DepotSpawnAction%1] %2", depotName, message));
 		}
 	}
+	#endif
 	
 	//------------------------------------------------------------------------------------------------
 	override void Init(IEntity pOwnerEntity, GenericComponent pManagerComponent)
@@ -55,17 +57,21 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 		if (m_iVehicleIndex >= 0 && m_iVehicleIndex < vehicles.Count())
 		{
 			m_Vehicle = vehicles[m_iVehicleIndex];
+			#ifdef WORKBENCH
 			// Only show action registration in debug mode
 			DebugPrint(string.Format("Initialized action for vehicle %1: %2", m_iVehicleIndex, m_Vehicle.m_sVehicleName));
+			#endif
 		}
 		else
 		{
+			#ifdef WORKBENCH
 			// Only show a condensed message for invalid indices (and only once) when debug is enabled
 			if (m_iVehicleIndex == vehicles.Count() && m_DepotComponent && m_DepotComponent.m_bEnableDebugLogging)
 			{
 				// Show brief summary with specific unused action range
-				DebugPrint(string.Format("SETUP: %1 vehicles configured.", vehicles.Count(), vehicles.Count()));
+				DebugPrint(string.Format("SETUP: %1 vehicles configured.", vehicles.Count()));
 			}
+			#endif
 		}
 
 	}
@@ -83,12 +89,16 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 		// Get player ID
 		int playerId = SCR_PlayerController.GetLocalPlayerId();
 		
+		#ifdef WORKBENCH
 		DebugPrint(string.Format("Attempting to spawn %1 for player %2", m_Vehicle.m_sVehicleName, playerId));
+		#endif
 		
 		// Check if player can afford the vehicle
 		if (!m_DepotComponent.CanAffordVehicle(playerId, m_Vehicle, m_iVehicleIndex))
 		{
+			#ifdef WORKBENCH
 			DebugPrint("Player cannot afford vehicle");
+			#endif
 			
 			// Log specific error message based on cost type for debugging
 			string errorMsg;
@@ -105,8 +115,10 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 					break;
 			}
 			
+			#ifdef WORKBENCH
 			// Show error details only in debug mode
 			DebugPrint(errorMsg);
+			#endif
 			
 			return;
 		}
@@ -115,41 +127,27 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 		CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
 		if (rplManager)
 		{
-			DebugPrint("RplManager found");
+
 			
 			// Get the depot entity's RplId for server communication
 			RplComponent rplComponent = RplComponent.Cast(GetOwner().FindComponent(RplComponent));
 			if (rplComponent)
 			{
 				RplId depotRplId = rplComponent.Id();
-				DebugPrint(string.Format("Depot RplComponent found, RplId: %1", depotRplId));
 				
 				// Send RPC to server to spawn the vehicle - this ensures it works on dedicated servers
 				rplManager.RequestVehicleDepotInteraction(playerId, m_iVehicleIndex, depotRplId);
-				DebugPrint(string.Format("Sent vehicle depot interaction request via RPC for %1", m_Vehicle.m_sVehicleName));
 			}
 			else
 			{
-				DebugPrint("Depot entity missing RplComponent - using fallback direct spawn");
-				
 				// Fallback: direct spawn when no replication available
 				bool success = m_DepotComponent.SpawnVehicle(playerId, m_iVehicleIndex);
-				if (success)
-					DebugPrint(string.Format("Fallback direct spawn successful: %1", m_Vehicle.m_sVehicleName));
-				else
-					DebugPrint(string.Format("Fallback direct spawn failed: %1", m_Vehicle.m_sVehicleName));
 			}
 		}
 		else
 		{
-			DebugPrint("CRF_RplToAuthorityManager not available - fallback to direct spawn");
-			
 			// Fallback: direct spawn (for local testing)
 			bool success = m_DepotComponent.SpawnVehicle(playerId, m_iVehicleIndex);
-			if (success)
-				DebugPrint(string.Format("Direct spawn successful: %1", m_Vehicle.m_sVehicleName));
-			else
-				DebugPrint(string.Format("Direct spawn failed: %1", m_Vehicle.m_sVehicleName));
 		}
 	}
 	
@@ -182,8 +180,6 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 						RplId depotRplId = rplComponent.Id();
 						// Send viewing notification using interaction RPC with special index (-1 = refresh only)
 						rplManager.RequestVehicleDepotInteraction(-1, -1, depotRplId);
-						
-						DebugPrint("Notifying depot of viewer via consolidated RPC");
 					}
 				}
 			}
@@ -225,7 +221,6 @@ class CRF_DepotSpawnAction : ScriptedUserAction
 			return false;
 			
 		// Only allow if player can afford it
-		// Supply refresh is now handled in GetActionNameScript() for better timing
 		int playerId = SCR_PlayerController.GetLocalPlayerId();
 		return m_DepotComponent.CanAffordVehicle(playerId, m_Vehicle, m_iVehicleIndex);
 	}

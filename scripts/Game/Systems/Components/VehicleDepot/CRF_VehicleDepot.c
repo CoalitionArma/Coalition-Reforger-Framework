@@ -140,7 +140,7 @@ class CRF_VehicleDepot : ScriptComponent
 		
 		if (!m_aVehicles)
 			m_aVehicles = {};
-			
+
 		// Initialize performance caches
 		m_aCachedSpawnPositions = {};
 		#ifdef WORKBENCH
@@ -192,7 +192,9 @@ class CRF_VehicleDepot : ScriptComponent
 			return;
 			
 		CacheSpawnPositions();
+		#ifdef WORKBENCH
 		DebugPrint("Spawn positions pre-cached during initialization");
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -210,7 +212,9 @@ class CRF_VehicleDepot : ScriptComponent
 			m_iAggregatedSupplies = newAggregatedSupplies;
 			Replication.BumpMe();
 			
+			#ifdef WORKBENCH
 			DebugPrint(string.Format("Server updated aggregated supplies to %1", m_iAggregatedSupplies));
+			#endif
 		}
 	}
 	
@@ -221,7 +225,9 @@ class CRF_VehicleDepot : ScriptComponent
 		if (!Replication.IsServer())
 			return;
 			
+		#ifdef WORKBENCH
 		DebugPrint("Player actively viewing depot menu");
+		#endif
 		
 		float currentTime = GetGame().GetWorld().GetWorldTime() * 0.001;
 		if (currentTime - m_fLastSupplyRefresh >= 10.0) // ! SERVER SIDE SUPPLY UPDATE THROTTLE - Prevents multiple clients overwhelming server
@@ -232,15 +238,13 @@ class CRF_VehicleDepot : ScriptComponent
 			int liveSupplies = GetLiveAggregatedSupplies();
 			if (liveSupplies != m_iAggregatedSupplies)
 			{
+				#ifdef WORKBENCH
 				DebugPrint(string.Format("Supply refresh: %1 to %2", m_iAggregatedSupplies, liveSupplies));
+				#endif
 					
 				m_iAggregatedSupplies = liveSupplies;
 				Replication.BumpMe();
 			}
-		}
-		else
-		{
-			DebugPrint("Throttled Supply Request (too soon since last refresh)");
 		}
 	}
 	
@@ -263,12 +267,6 @@ class CRF_VehicleDepot : ScriptComponent
 		
 		return false;
 	}
-	
-	// NOTE: Removed CreateProximityTrigger() method (old automatic proximity detection system)	
-	// NOTE: Removed StartProximityChecking() method (old CallQueue/CallLater based system)
-	// NOTE: Removed StopProximityChecking() method (old CallQueue cleanup)
-	// NOTE: Removed CheckProximityLoop() method (old 4-second interval player detection + supply updates)
-	// NOTE: Removed CheckPlayerCallback() method (old proximity detection callback)
 
 	//------------------------------------------------------------------------------------------------
 	//! Get list of vehicles for UI/interaction
@@ -378,16 +376,13 @@ class CRF_VehicleDepot : ScriptComponent
 	protected bool CanAffordSupplies(int cost, int liveSupplies = -1)
 	{
 		// For server-side spawn operations, use passed live supplies or get them if not provided
-		if (Replication.IsServer())
+		// BUT ONLY when explicitly provided (to avoid UI spam in Workbench)
+		if (Replication.IsServer() && liveSupplies != -1)
 		{
-			if (liveSupplies == -1)
-				liveSupplies = GetLiveAggregatedSupplies();
-				
-			DebugPrint(string.Format("Live supply check for spawn: %1 available, %2 needed", liveSupplies, cost));
 			return liveSupplies >= cost;
 		}
 		
-		// Use replicated aggregated amount for client-side UI display
+		// Always use replicated aggregated amount for UI display and Workbench testing
 		return m_iAggregatedSupplies >= cost;
 	}
 	
@@ -398,8 +393,10 @@ class CRF_VehicleDepot : ScriptComponent
 		if (!GetOwner() || RplSession.Mode() == RplMode.Client)
 			return 0;
 		
+		#ifdef WORKBENCH
 		if (m_fSupplySearchRadius)
 			DebugPrint(string.Format("Server searching for aggregated supplies in %1m radius...", m_fSupplySearchRadius));
+		#endif
 			
 		vector depotPos = GetOwner().GetOrigin();
 		
@@ -429,14 +426,18 @@ class CRF_VehicleDepot : ScriptComponent
 				// Get aggregated value - this represents the total from ALL connected supply sources
 				float aggregatedSupplies = consumer.GetAggregatedResourceValue();
 				
+				#ifdef WORKBENCH
 				DebugPrint(string.Format("Found consumer with %1 aggregated supplies (total network)", aggregatedSupplies));
+				#endif
 				
 				return (int)aggregatedSupplies;
 			}
 		}
 		
 		// No valid consumers found
+		#ifdef WORKBENCH
 		DebugPrint("No supply consumers found in radius");
+		#endif
 			
 		return 0;
 	}
@@ -543,7 +544,6 @@ class CRF_VehicleDepot : ScriptComponent
 		// Check for unlimited tickets (cost of -1)
 		if (amount == -1)
 		{
-			DebugPrint("Spawned unlimited ticket vehicle - no tickets deducted");
 			return;
 		}
 		
@@ -595,7 +595,9 @@ class CRF_VehicleDepot : ScriptComponent
 				bool consumptionSuccess = consumer.RequestConsumtion(amount);
 				if (consumptionSuccess)
 				{
+					#ifdef WORKBENCH
 					DebugPrint(string.Format("Successfully consumed %1 supplies from aggregated sources (had %2 available)", amount, aggregatedSupplies));
+					#endif
 					
 					// Use pre-calculated post-consumption value if provided, otherwise calculate
 					if (postConsumptionSupplies == -1)
@@ -609,15 +611,13 @@ class CRF_VehicleDepot : ScriptComponent
 					GetGame().GetCallqueue().Remove(UpdateAggregatedSupplies);
 					return; // Success - exit function
 				}
-				else
-				{
-					DebugPrint(string.Format("Failed to consume %1 supplies despite %2 being aggregated available", amount, aggregatedSupplies));
-				}
 			}
 		}
 		
 		// If we get here, no suitable consumer was found
+		#ifdef WORKBENCH
 		DebugPrint(string.Format("No suitable supply consumer found for %1 supplies", amount));
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -629,7 +629,6 @@ class CRF_VehicleDepot : ScriptComponent
 			// Check for unlimited uses (cost of -1)
 			if (vehicle.m_iCost == -1)
 			{
-				DebugPrint(string.Format("Spawned unlimited vehicle %1 - no cost deducted", vehicle.m_sVehicleName));
 				return;
 			}
 			
@@ -638,7 +637,9 @@ class CRF_VehicleDepot : ScriptComponent
 			if (m_iUsesRemaining >= cost)
 			{
 				m_iUsesRemaining -= cost;
+				#ifdef WORKBENCH
 				DebugPrint(string.Format("Deducted %1 uses from global pool, %2 remaining", cost, m_iUsesRemaining));
+				#endif
 				
 				// Trigger replication to update all clients immediately
 				Replication.BumpMe();
@@ -675,28 +676,23 @@ class CRF_VehicleDepot : ScriptComponent
 			if (m_bRestrictToLeadership && !HasRequiredLeadershipRole(playerId))
 			{
 				ShowNotificationToPlayer(playerId, "Access Denied", "You lack the required leadership role to spawn vehicles");
-				DebugPrint("Player lacks required leadership role!");
 			}
 			else if (vehicle.m_eCostType == CRF_EVehicleDepotCostType.SUPPLIES)
 			{
 				string message = string.Format("Insufficient supplies! Need %1, but only %2 available", vehicle.m_iCost, liveSupplies);
 				ShowNotificationToPlayer(playerId, "Spawn Failed", message);
-				DebugPrint(string.Format("Player cannot afford supplies! Need %1, have %2 live supplies", vehicle.m_iCost, liveSupplies));
 			}
 			else if (vehicle.m_eCostType == CRF_EVehicleDepotCostType.TICKETS)
 			{
 				ShowNotificationToPlayer(playerId, "Spawn Failed", string.Format("Insufficient tickets! Need %1 tickets", vehicle.m_iCost));
-				DebugPrint("Player cannot afford this vehicle!");
 			}
 			else if (vehicle.m_eCostType == CRF_EVehicleDepotCostType.USES)
 			{
 				ShowNotificationToPlayer(playerId, "Spawn Failed", string.Format("Insufficient uses! Need %1, but only %2 remaining", vehicle.m_iCost, m_iUsesRemaining));
-				DebugPrint("Player cannot afford this vehicle!");
 			}
 			else
 			{
 				ShowNotificationToPlayer(playerId, "Spawn Failed", "Cannot afford this vehicle");
-				DebugPrint("Player cannot afford this vehicle!");
 			}
 			return false;
 		}
@@ -705,19 +701,19 @@ class CRF_VehicleDepot : ScriptComponent
 		vector spawnPos = FindSpawnPosition();
 		if (spawnPos == vector.Zero)
 		{
-			DebugPrint("No valid spawn position found!");
 			ShowNotificationToPlayer(playerId, "No space available", "Vehicle spawning blocked by obstacles.");
 			return false;
 		}
 		
 		// Spawn the vehicle
+		#ifdef WORKBENCH
 		DebugPrint(string.Format("DEBUG: Vehicle name='%1', prefab='%2', cost=%3, costType=%4", 
 			vehicle.m_sVehicleName, vehicle.m_sVehiclePrefab, vehicle.m_iCost, vehicle.m_eCostType));
+		#endif
 			
 		Resource resource = Resource.Load(vehicle.m_sVehiclePrefab);
 		if (!resource)
 		{
-			DebugPrint("Failed to load vehicle prefab!");
 			return false;
 		}
 		
@@ -771,7 +767,6 @@ class CRF_VehicleDepot : ScriptComponent
 		IEntity spawnedVehicle = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams);
 		if (!spawnedVehicle)
 		{
-			DebugPrint("Failed to spawn vehicle!");
 			return false;
 		}
 		
@@ -782,7 +777,6 @@ class CRF_VehicleDepot : ScriptComponent
 		string costInfo = GetCostInfoText(vehicle);
 		string message = string.Format("Spawned %1 for %2", vehicle.m_sVehicleName, costInfo);
 		ShowNotificationToPlayer(playerId, "Vehicle Spawned", message);
-		DebugPrint(message);
 
 		return true;
 	}
@@ -794,7 +788,9 @@ class CRF_VehicleDepot : ScriptComponent
 		// Simple check without fallback - if not cached, something went wrong during init
 		if (!m_bSpawnPositionsCached || m_aCachedSpawnPositions.Count() == 0)
 		{
+			#ifdef WORKBENCH
 			DebugPrint("ERROR: Spawn positions not cached! Initialization failed.");
+			#endif
 			return vector.Zero;
 		}
 		
@@ -806,6 +802,7 @@ class CRF_VehicleDepot : ScriptComponent
 			// Check if position is clear
 			if (IsPositionClear(testPos, m_fCollisionRadius))
 			{
+				#ifdef WORKBENCH
 				string patternName;
 				if (m_eSpawnPattern == CRF_EVehicleDepotSpawnPattern.LINE)
 					patternName = "LINE";
@@ -814,14 +811,18 @@ class CRF_VehicleDepot : ScriptComponent
 				else
 					patternName = "GRID";
 				DebugPrint(string.Format("Found spawn position in %1 pattern at slot %2", patternName, i));
+				#endif
 				return testPos;
 			}
+			#ifdef WORKBENCH
 			else
 			{
 				DebugPrint(string.Format("Spawn slot %1 is blocked", i));
 			}
+			#endif
 		}
 		
+		#ifdef WORKBENCH
 		string patternName;
 		if (m_eSpawnPattern == CRF_EVehicleDepotSpawnPattern.LINE)
 			patternName = "behind";
@@ -830,6 +831,7 @@ class CRF_VehicleDepot : ScriptComponent
 		else
 			patternName = "in grid around";
 		DebugPrint(string.Format("All spawn slots %1 depot are blocked!", patternName));
+		#endif
 		return vector.Zero;
 	}
 	
@@ -871,7 +873,9 @@ class CRF_VehicleDepot : ScriptComponent
 		}
 		
 		m_bSpawnPositionsCached = true;
+		#ifdef WORKBENCH
 		DebugPrint(string.Format("Cached %1 spawn positions", m_aCachedSpawnPositions.Count()));
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -940,7 +944,9 @@ class CRF_VehicleDepot : ScriptComponent
 		m_bSpawnPositionsCached = false;
 		if (m_aCachedSpawnPositions)
 			m_aCachedSpawnPositions.Clear();
+		#ifdef WORKBENCH
 		DebugPrint("Spawn position cache invalidated - will recalculate on next use");
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -949,7 +955,9 @@ class CRF_VehicleDepot : ScriptComponent
 	{
 		// Directly recalculate without going through invalidate/cache cycle
 		CacheSpawnPositions();
+		#ifdef WORKBENCH
 		DebugPrint("Spawn positions forcibly recalculated");
+		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -982,7 +990,9 @@ class CRF_VehicleDepot : ScriptComponent
 		VehicleControllerComponent vehicleController = VehicleControllerComponent.Cast(entity.FindComponent(VehicleControllerComponent));
 		if (vehicleController)
 		{
+			#ifdef WORKBENCH
 			DebugPrint("Position blocked by vehicle");
+			#endif
 			m_bCollisionDetected = true;
 			return false; // Stop searching - position is blocked
 		}
@@ -991,7 +1001,9 @@ class CRF_VehicleDepot : ScriptComponent
 		CharacterControllerComponent characterController = CharacterControllerComponent.Cast(entity.FindComponent(CharacterControllerComponent));
 		if (characterController)
 		{
+			#ifdef WORKBENCH
 			DebugPrint("Position blocked by character");
+			#endif
 			m_bCollisionDetected = true;
 			return false; // Stop searching - position is blocked
 		}
@@ -1006,7 +1018,9 @@ class CRF_VehicleDepot : ScriptComponent
 			vector size = max - min;
 			if (size.Length() > 2.0) // Objects larger than 2m might block spawning
 			{
+				#ifdef WORKBENCH
 				DebugPrint(string.Format("Position blocked by static object: %1", entity.GetPrefabData().GetPrefabName()));
+				#endif
 				m_bCollisionDetected = true;
 				return false; // Stop searching - position is blocked
 			}
