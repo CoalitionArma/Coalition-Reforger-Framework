@@ -111,19 +111,25 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
     SCR_Faction "{628CDE9209CA3FF9}" {
      m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
       m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Rook"
+       }
        SCR_CallsignInfo "{58B2B630FDD64B53}" {
-        m_sCallsign "Med"
+        m_sCallsign "Cell Lead"
        }
        SCR_CallsignInfo "{58B2B630FDD64B51}" {
-        m_sCallsign "Cell 1"
+        m_sCallsign "MED"
        }
        SCR_CallsignInfo "{58B2B630FDD64B50}" {
-        m_sCallsign "Cell 2"
+        m_sCallsign "Cell 1"
        }
        SCR_CallsignInfo "{6675399D7D03821B}" {
-        m_sCallsign "MMG"
+        m_sCallsign "Cell 2"
        }
        SCR_CallsignInfo "{6675399D6407FC99}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66853A24C7D3D360}" {
         m_sCallsign "Sniper"
        }
       }
