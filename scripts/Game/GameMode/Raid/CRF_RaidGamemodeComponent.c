@@ -7,6 +7,7 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	static CRF_RaidGamemodeComponent m_sInstance;
 	
 	[Attribute("100")] int m_iPointsToWin;
+	[Attribute("30")] int m_iPercentToExtract;
 	[Attribute("50")] float m_fPercentAttackersRetreat;
 	[Attribute("OPFOR")] string m_sDefendingSide;
 	[Attribute("BLUFOR")] string m_sAttackingSide;
@@ -16,6 +17,11 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	
 	CRF_SlottingManager m_SlottingManager;
 	int m_iCurrentPhase = 1;
+	int m_iBluforSlotted = 0;
+	int m_iBLUFORAtExtract = 0;
+	bool m_bBroadcastedEndMessage = false;
+	
+	vector m_vExtractionLocation[4];
 	
 	//Client Values
 	Widget m_wCurrentAlert;
@@ -43,13 +49,75 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-		SetEventMask(owner, EntityEvent.INIT);
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		SetEventMask(owner, EntityEvent.INIT | EntityEvent.FRAME);
 	}
 	
 	override void EOnInit(IEntity owner)
 	{
 		super.EOnInit(owner);
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastMessage(string message)
+	{
+		SCR_PopUpNotification.GetInstance().PopupMsg(message);
+	}
+	
+	float m_fExtractionBuffer = 0;
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFrame(owner, timeSlice);
+		if (m_iCurrentPhase != 2)
+			return;
+		
+		if (m_fExtractionBuffer < 10)
+		{
+			m_fExtractionBuffer += 10;
+			return;
+		}
+		
+		m_fExtractionBuffer = 0;
+		if (CheckExtraction() && !m_bBroadcastedEndMessage)
+		{
+			Rpc(RpcDo_BroadcastMessage, "Attackers have extracted, Attacking victory!");
+			m_bBroadcastedEndMessage = true;
+		}
+	}
+	
+	bool CheckExtraction()
+	{
+		m_iBLUFORAtExtract = 0;
+		GetGame().GetWorld().QueryEntitiesBySphere(m_vExtractionLocation[3], 100, CheckExtractEntities);
+		if (m_iBLUFORAtExtract/m_iBluforSlotted * 100 > m_iPercentToExtract)
+			return true;
+		else
+			return false;
+	}
+	
+	bool CheckExtractEntities(IEntity entity)
+	{
+		if (ChimeraCharacter.Cast(entity))
+		{
+			if (FactionAffiliationComponent.Cast(entity.FindComponent(FactionAffiliationComponent)).GetDefaultFactionKey() != m_sAttackingSide)
+				return true;
+			//Is this character dead
+			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
+			if (damageManager)
+			{
+				if (damageManager.GetState() == EDamageState.DESTROYED)
+					return true;
+				else
+					m_iBLUFORAtExtract++;
+			}
+		}
+			
+		return true;
 	}
 	
 	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
@@ -70,7 +138,11 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	void CheckAttackersDelay()
 	{
 		if (IsAttackersBelowThreshold() && m_iCurrentPhase != 2)
+		{
+			Rpc(RpcDo_BroadcastMessage, "Attackers have taken too many casualties! They are retreating!");
 			NextPhase();
+		}	
+			
 	}
 	
 	//Checks to see if side is below percentage.
@@ -137,8 +209,11 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 	
 	void PointsCheck()
 	{
-		if (m_iPointsDestroyed >= m_iPointsToWin)
+		if (m_iPointsDestroyed >= m_iPointsToWin && m_iCurrentPhase != 2)
+		{
 			NextPhase();
+			Rpc(RpcDo_BroadcastMessage, "Attackers have destroyed enough equipment, they are beginning their retrograde!");
+		}	
 	}
 	
 	string GetRespawnResourceName(string side)
@@ -179,17 +254,16 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		CRF_GearScriptRolesConfig rolesConfig = CRF_GamemodeManager.RolesConfig();
 		PlayerManager playerMan = GetGame().GetPlayerManager();
-		Faction indfor = factionMan.GetFactionByKey("INDFOR");
+		Faction indfor = factionMan.GetFactionByKey(m_sIndependentFaction);
 		ref array<int> players = {};
 		ref array<int> leaders = {};
 		ref array<int> joes = {};
 		
-		IEntity independentRespawn = GetGame().GetWorld().FindEntityByName("IndependentRespawn");
 		
 		playerMan.GetPlayers(players);
-		
+		ChooseRetrograde();
 		EntitySpawnParams indParams = new EntitySpawnParams();
-		independentRespawn.GetTransform(indParams.Transform);
+		indParams.Transform = m_vExtractionLocation;
 		foreach (int playerId: players)
 		{	
 			Faction playerFaction = factionMan.GetPlayerFaction(playerId);
@@ -199,6 +273,10 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			
 			if (!m_SlottingManager.GetPlayerSlotFaction(playerId))
 				continue;
+			
+			//How many blufor are slotted when we switch phases, used for extraction logic.
+			if (m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey() == m_sAttackingSide)
+				m_iBluforSlotted++;
 			
 			if (m_SlottingManager.GetPlayerSlotFaction(playerId).GetFactionKey() != m_sAttackingSide || !m_SlottingManager.GetPlayerSlotData(playerId).GetIsDeadSlot())
 				continue;
@@ -252,6 +330,34 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 			GetGame().GetCallqueue().CallLater(AssignPlayerToGroup, 700, false, group.GetGroupID(), leaders.Get(i), groupId);
 		}
 		
+	}
+	
+	void ChooseRetrograde()
+	{
+		int amountOfExtractions = 0;
+		for (int i = 1; GetGame().GetWorld().FindEntityByName("Extraction" + i.ToString()) != null; i++)
+  			amountOfExtractions++;
+		
+		if (amountOfExtractions == 0)
+		{
+			Print("[CRF_RAID ERROR] NO EXTRACTIONS DEFINED");
+			return;
+		}
+		
+		RandomGenerator randomGen = new RandomGenerator();
+  		randomGen.SetSeed(System.GetTickCount());
+  		int selectedExtract = randomGen.RandInt(1, amountOfExtractions);
+		
+		GetGame().GetWorld().FindEntityByName("Extraction" + selectedExtract.ToString()).GetTransform(m_vExtractionLocation);
+		
+		SCR_MapMarkerManagerComponent markerMan = SCR_MapMarkerManagerComponent.GetInstance();
+		SCR_MapMarkerBase newMarker = new SCR_MapMarkerBase();
+		newMarker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
+		newMarker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.PICK_UP2);
+		newMarker.SetCustomText("Extraction");
+		newMarker.SetColorEntry(SCR_EScenarioFrameworkMarkerCustomColor.ORANGE);
+		newMarker.SetWorldPos(m_vExtractionLocation[3][0], m_vExtractionLocation[3][2]);
+		markerMan.InsertStaticMarker(newMarker, false, true);
 	}
 	
 	void AssignFactionToPlayer(PlayerController playerController, Faction faction)

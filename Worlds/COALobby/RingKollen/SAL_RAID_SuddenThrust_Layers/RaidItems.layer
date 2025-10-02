@@ -1,0 +1,433 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 884.265 386.687 2437.539
+  angleY -160.965
+  m_rVehicle "{D8A7B6778D21ACB7}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_RAID.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 880.427 386.475 2438.576
+  angleY -160.965
+  m_rVehicle "{D8A7B6778D21ACB7}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_RAID.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 876.555 386.213 2439.865
+  angleY -160.965
+  m_rVehicle "{D8A7B6778D21ACB7}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_RAID.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 873.166 386.07 2441.798
+  angleY -160.965
+  m_rVehicle "{D8A7B6778D21ACB7}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_tanker_RAID.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 797.011 377.719 2394.485
+  angleX -0.893
+  angleY -49.958
+  angleZ -2.684
+  m_rVehicle "{D784743477DB8E1E}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_command_RAID.et"
+  m_sFactionKey "OPFOR"
+ }
+}
+$grp GenericEntity : "{1AC31E2AF0C54F8A}Prefabs/Props/Military/Camps/PalletAmmo_01_Soviet_camo.et" {
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 816.104 381.204 2497.828
+  angleX 3.81
+  angleY 8.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 815.623 380.905 2495.543
+  angleX 3.81
+  angleY 8.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 819.675 381.109 2494.807
+  angleX 3.81
+  angleY 8.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 817.879 381.042 2495.052
+  angleX 3.81
+  angleY 8.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 819.965 381.215 2497.265
+  angleX 3.81
+  angleY 8.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 818.153 381.191 2497.478
+  angleX 3.81
+  angleY 8.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 833.515 378.315 2425.263
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 832.395 378.315 2423.653
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 831.911 378.315 2426.103
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 831.119 378.315 2424.629
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 784.451 377.469 2421.548
+  angleX 3.81
+  angleY 13.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 785.972 377.477 2420.581
+  angleX 3.81
+  angleY 13.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 782.512 377.448 2422.188
+  angleX 3.81
+  angleY 13.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 784.219 377.443 2420.152
+  angleX 3.81
+  angleY 13.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 782.333 377.41 2420.803
+  angleX 3.81
+  angleY 13.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 819.881 378.308 2404.212
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 818.281 378.308 2405.143
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 820.835 378.311 2405.745
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 819.332 378.311 2406.782
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{668333D68C8D95E1}" {
+    m_iPointsEarnedWhenDestroyed 2
+   }
+   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
+    Enabled 1
+    m_fBaseHealth 2000
+   }
+   RplComponent "{5624A88DC2D9928D}" {
+    Enabled 1
+   }
+  }
+  coords 821.189 378.308 2407.85
+  angleX 3.81
+  angleY 26.92
+  angleZ -1.211
+ }
+}
+GenericEntity : "{1D2887BB9A7D4670}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_CommandPost_USSR_01.et" {
+ coords 803.512 377.922 2394.702
+ angleX 0.028
+ angleY 0.908
+ angleZ -1.79
+}
+StaticModelEntity : "{B9AEDBE988F20A1A}Prefabs/Structures/Infrastructure/Towers/AntennaR404_01/AntennaR404_01.et" {
+ components {
+  CRF_RaidItemComponent "{668333D78A6B9AF1}" {
+   m_iPointsEarnedWhenDestroyed 20
+   m_sItemName "Antenna"
+  }
+  SCR_DestructionMultiPhaseComponent "{5A5ED31B16298711}" {
+   m_fBaseHealth 4000
+  }
+ }
+ coords 777.807 376.638 2389.775
+ angleY 50
+}
+$grp SCR_DestructibleBuildingEntity : "{D44E66C875C41446}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_01/FuelTank_01_green.et" {
+ {
+  components {
+   CRF_RaidItemComponent "{66833EB74D887A63}" {
+    m_sItemName "Fuel Tank"
+   }
+  }
+  coords 791.637 0 2425.511
+ }
+ {
+  components {
+   CRF_RaidItemComponent "{66833EB74D887A63}" {
+    m_sItemName "Fuel Tank"
+   }
+  }
+  coords 795.789 -0 2432.546
+ }
+}
