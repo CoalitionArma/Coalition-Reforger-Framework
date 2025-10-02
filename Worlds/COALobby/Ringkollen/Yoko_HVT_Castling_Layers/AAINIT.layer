@@ -19,7 +19,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Task Force Omega has located a key member of the domestic terrorist group called Oathbreakers. Task Force Omega has given this key member the codname Rook. Rook is to be killed to prevent any further terrorist attacks."\
+   m_sTextData "Task Force Omega has located a key member of the domestic terrorist group called Oathbreakers. Task Force Omega has given this key member the codename Rook. Rook is to be killed to prevent any further terrorist attacks."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
    "BLUFOR Assets: 1 STRYKER CROWS per PLT"\
