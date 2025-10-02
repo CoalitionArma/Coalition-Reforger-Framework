@@ -19,7 +19,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Task Force Omega has located a key member of the Oathbreakers named Rook in northern Europe. TFO is tasked with eliminating Rook."\
+   m_sTextData "Task Force Omega has located a key member of the domestic terrorist group called Oathbreakers. Task Force Omega has given this key member the codname Rook. Rook is to be killed to prevent any further terrorist attacks."\
    ""\
    "BLUFOR Composition: Motorized Infantry Company"\
    "BLUFOR Assets: 1 STRYKER CROWS per PLT"\
@@ -49,13 +49,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "When you spawn, on the rocks to your right is a bunch of folders please pick them up and do not drop them."\
    ""\
    "Stay within the purple area."\
-   ""\
-   "Be a coward or fight for your life."
+   ""
    m_aFactionKeys {
     "INDFOR"
    }
   }
  }
+ m_iFactionOneRatio 2
  m_sFactionOneKey "BLU"
  m_sFactionTwoKey "IND"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
@@ -114,45 +114,21 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Rook"
        }
        SCR_CallsignInfo "{58B2B630FDD64B53}" {
-        m_sCallsign "COY"
-       }
-       SCR_CallsignInfo "{58B2B630FDD64B51}" {
         m_sCallsign "MED"
        }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell Lead"
+       }
        SCR_CallsignInfo "{58B2B630FDD64B50}" {
-        m_sCallsign "1PLT"
+        m_sCallsign "Cell 1"
        }
        SCR_CallsignInfo "{665C184B5A270C76}" {
-        m_sCallsign "1-1"
+        m_sCallsign "Cell 2"
        }
        SCR_CallsignInfo "{665C184B41C63A4C}" {
-        m_sCallsign "1-2"
-       }
-       SCR_CallsignInfo "{665C184B432F42C9}" {
-        m_sCallsign "1-3"
-       }
-       SCR_CallsignInfo "{665C184B45626158}" {
-        m_sCallsign "1-4"
-       }
-       SCR_CallsignInfo "{665C184B6270838F}" {
-        m_sCallsign "2PLT"
-       }
-       SCR_CallsignInfo "{665C184B668FAD66}" {
-        m_sCallsign "2-1"
-       }
-       SCR_CallsignInfo "{665C184B68689139}" {
-        m_sCallsign "2-2"
-       }
-       SCR_CallsignInfo "{665C184B6DE031A1}" {
-        m_sCallsign "2-3"
-       }
-       SCR_CallsignInfo "{665C184B11999870}" {
-        m_sCallsign "2-4"
-       }
-       SCR_CallsignInfo "{665C184B1916BEC8}" {
         m_sCallsign "MMG"
        }
-       SCR_CallsignInfo "{665C184B1A7648A1}" {
+       SCR_CallsignInfo "{665C184B432F42C9}" {
         m_sCallsign "Sniper"
        }
       }
