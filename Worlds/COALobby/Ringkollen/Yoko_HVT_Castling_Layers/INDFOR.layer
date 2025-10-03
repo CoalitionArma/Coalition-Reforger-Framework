@@ -20,13 +20,13 @@ SCR_AIGroup : "{8B4D1DC201B68BB9}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDF
        coords 0.533 -0.263 15.756
        angleY 94.094
        m_aUnitPrefabSlots {
-        "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"
+        "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et"
        }
        {
         SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
          coords 0.001 -0.059 -1.579
          m_aUnitPrefabSlots {
-          "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{5305749FAC432544}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAT_P.et"
+          "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{2CCC80A8B667DF74}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AR_P.et" "{EED52618D358395A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AAR_P.et" "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et" "{911CD22FC97CC36A}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AT_P.et"
          }
          {
           SCR_AIGroup : "{0A56302C3814952B}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MMGTeam_p.et" {
