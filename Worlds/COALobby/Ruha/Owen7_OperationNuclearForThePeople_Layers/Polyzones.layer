@@ -1,0 +1,61 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 5046.342 50.153 4656.29
+ Points {
+  ShapePoint "{665F62AD75802ACA}" {
+   Position -4706.136 0 38.311
+  }
+  ShapePoint "{665F62AD4E7A6190}" {
+   Position 309.78 0 552.226
+  }
+  ShapePoint "{665F62ADABA9A702}" {
+   Position -1756.912 0 -4327.125
+  }
+  ShapePoint "{665F62ADA1BEB153}" {
+   Position -4627.615 0 -3283.043
+  }
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 778.425 82.724 3135.727
+ Points {
+  ShapePoint "{665F62AD817AF5E2}" {
+   Position 355.136 0 -406.913
+  }
+  ShapePoint "{665F62AD8449682F}" {
+   Position 241.014 0 412.393
+  }
+  ShapePoint "{665F62AD851C577B}" {
+   Position -355.339 0 310.638
+  }
+  ShapePoint "{665F62AD876CE5B8}" {
+   Position -243.734 0 -419.53
+  }
+ }
+ {
+  CRF_ManualMarker {
+   ID "65885ABE0B4CA07D"
+   coords 5.96 0 0
+  }
+  CRF_PolyZoneTrigger {
+   ID "65865377C721CCB7"
+   coords 74.41 0 0
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 3933.94 54.469 4014.597
+ Points {
+  ShapePoint "{665F62ADCEC997A5}" {
+   Position -267.054 0 -126.412
+  }
+  ShapePoint "{665F62ADCF98FF1A}" {
+   Position 3.641 0.811 435.397
+  }
+  ShapePoint "{665F62ADC01C3DCD}" {
+   Position 512.102 8.105 210.997
+  }
+  ShapePoint "{665F62ADC277BF86}" {
+   Position 390.13 0 -364.097
+  }
+ }
+}

@@ -1,0 +1,53 @@
+GameEntity : "{17F335BF60DD2550}Prefabs/Characters/Core/Headgear_Base.et" {
+ ID "5112706CD4157AC7"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{66631310D4D74CFC}" {
+    ItemDisplayName UIInfo "{66631310D4D74B13}" {
+     Name "Eyepatch"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{66631310D4D74B17}" {
+     Weight 0.17
+     SizeSetupStrategy Volume
+     ItemVolume 300
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{66631310D4D74B14}" {
+      CameraOrbitAngles -25 25 0
+      CameraDistanceToItem 2
+      FOV 10
+     }
+    }
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{27E946AE413FE0EF}Assets/Characters/HeadGear/Hat_Boonie_US_01/Hat_Boonie_US_01_item.xob"
+  }
+  SCR_ItemOutfitFactionComponent "{66631310D4D74B1C}" {
+   m_OutfitDataHolder SCR_OutfitFactionDataHolder "{66631310D4D74B07}" {
+    m_aOutfitFactionData {
+     SCR_OutfitFactionData "{66631310D4D74B05}" {
+      m_AffiliatedFactionKey "US"
+      m_iOutfitFactionValue 15
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   AreaType CGS_EyeArea "{66631310D4D74B09}" {
+   }
+   WornModel "{6A12B81FA9CFBE56}Assets/Eyepatch.xob"
+   ItemModel "{6A12B81FA9CFBE56}Assets/Eyepatch.xob"
+  }
+  ActionsManagerComponent "{5112706CD4157AC9}" {
+   ActionContexts {
+    UserActionContext "{5112706CD4157AF3}" {
+     Position PointInfo "{5112706CD4157AF0}" {
+      Offset 0 0.1 0
+     }
+    }
+   }
+  }
+ }
+ coords 0.594 1.202 -1.52
+}

@@ -87,14 +87,14 @@ FrameWidgetClass {
    Name "ChatHud"
    Slot FrameWidgetSlot "{58731DB272499DED}" {
     Anchor 0 0 1 1
-    PositionX 0
-    OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
-    SizeX -1920
-    OffsetRight 0
-    SizeY -746
-    OffsetBottom 0
+    PositionX 1.28
+    OffsetLeft 1.28
+    PositionY 11.09
+    OffsetTop 11.09
+    SizeX 0
+    OffsetRight -1.28
+    SizeY 0
+    OffsetBottom -11.09
    }
    {
     OverlayWidgetClass "{585F053862A9FD1C}" {
@@ -357,11 +357,11 @@ FrameWidgetClass {
       Anchor 0 0 1 1
       PositionX 153.057
       OffsetLeft 153.057
-      PositionY 160
+      PositionY 180
       OffsetTop 180
-      SizeX -121.847
+      SizeX -121.846
       OffsetRight -31.211
-      SizeY -320
+      SizeY -360
       OffsetBottom 180
      }
      Color 0.133 0.133 0.133 0.353
@@ -1000,12 +1000,12 @@ FrameWidgetClass {
        Name "Compass0"
        Slot FrameWidgetSlot "{6335338FD7906532}" {
         Anchor 0 0 1 1
-        PositionX -448.188
-        OffsetLeft -448.188
+        PositionX -450.048
+        OffsetLeft -450.048
         PositionY -0.306
         OffsetTop -0.306
-        SizeX -2661.9
-        OffsetRight 3110.08
+        SizeX -2661.89
+        OffsetRight 3111.94
         SizeY 0
         OffsetBottom 0.306
        }
@@ -1038,46 +1038,243 @@ FrameWidgetClass {
     }
    }
   }
-  ImageWidgetClass "{64E05E71F1A66DDA}" {
-   Name "timeLeftBackground"
-   Slot FrameWidgetSlot "{612734D48040FA7F}" {
-    Anchor 1 0 1 0
-    PositionX -150.191
-    OffsetLeft -150.191
-    PositionY 6.45
-    OffsetTop 6.45
-    SizeX 145.268
-    OffsetRight 4.923
-    SizeY 23.76
-    OffsetBottom -30.21
+  FrameWidgetClass "{6674EDCEE4E5CE44}" {
+   Name "GameInfo"
+   Slot FrameWidgetSlot "{6674EDCEE7E3879D}" {
+    PositionX -150
+    OffsetLeft -150
+    PositionY 803.7
+    OffsetTop 803.7
+    SizeX 170
+    OffsetRight -20
+    SizeY 150
+    OffsetBottom -953.7
    }
-   Color 0 0 0 0.333
-   "Shadow Offset" 0.5 0.5
-  }
-  TextWidgetClass "{64E05E71F1A66A86}" {
-   Name "timeLeftTimer"
-   Slot FrameWidgetSlot "{612734D4E397B329}" {
-    Anchor 1 0 1 0
-    PositionX -149.55
-    OffsetLeft -149.55
-    PositionY 7.22
-    OffsetTop 7.22
-    SizeX 144.024
-    OffsetRight 5.526
-    SizeY 22.21
-    OffsetBottom -29.43
-   }
-   Color 0.928 0.862 0.862 1
-   Text "Game Not Live"
-   "Font Size" 16
-   "Min Font Size" 14
-   "Horizontal Alignment" Center
-   "Vertical Alignment" Center
-   FontProperties FontProperties "{612734D416229D9E}" {
-    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
-    OutlineSize 1
-    ShadowSize 2
-    ShadowOffset 0.8 0.8
+   {
+    VerticalLayoutWidgetClass "{6674EDC46FDF30FE}" {
+     Name "TicketsVerticalLayout"
+     Slot FrameWidgetSlot "{6674EDC46FDF2F04}" {
+      Anchor 0 0 1 1
+      PositionX 5.86
+      PositionY -143.306
+      OffsetTop 10
+      SizeX 0
+      OffsetRight 25
+      SizeY 0
+      OffsetBottom 0
+     }
+     {
+      VerticalLayoutWidgetClass "{6674EDCE2E8A7852}" {
+       Name "TimerVerticalLayout"
+       Slot LayoutSlot "{6674EDCBB2814F42}" {
+        Padding 0 0 0 2
+       }
+       {
+        ImageWidgetClass "{64E05E71F1A66DDA}" {
+         Name "timeLeftBackground"
+         Slot LayoutSlot "{6674EDCBB2814F4E}" {
+          Padding 0 0 0 5
+         }
+         Color 0 0 0 0.333
+         "Shadow Offset" 0.5 0.5
+        }
+        TextWidgetClass "{64E05E71F1A66A86}" {
+         Name "timeLeftTimer"
+         Slot LayoutSlot "{6674EDCBB2814F78}" {
+          Padding 0 -34 0 4
+         }
+         Color 0.928 0.862 0.862 1
+         Text "Game Not Live"
+         "Font Size" 16
+         "Min Font Size" 14
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{612734D416229D9E}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+          OutlineSize 1
+          ShadowSize 2
+          ShadowOffset 0.8 0.8
+         }
+        }
+       }
+      }
+      VerticalLayoutWidgetClass "{6674EDC6712D0976}" {
+       Name "BLUFORTickets"
+       Slot LayoutSlot "{6674EDC0CD0F91F5}" {
+        Padding 0 0 0 2
+       }
+       {
+        ImageWidgetClass "{6674EDC792D10BAA}" {
+         Name "BLUFORTicketsBG"
+         Slot LayoutSlot "{6674EDC2C99EA65D}" {
+          Padding 0 0 0 5
+         }
+         Color 0 0 0 0.333
+         "Shadow Offset" 0.5 0.5
+        }
+        TextWidgetClass "{6674EDC792D10A4E}" {
+         Name "BLUFORTicketsText"
+         Slot LayoutSlot "{6674EDC2C99EA64C}" {
+          Padding 0 -34 0 4
+         }
+         Color 0.016 0.552 0.9047 1
+         Text "BLUFOR Tickets: 0"
+         "Font Size" 16
+         "Min Font Size" 14
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{612734D416229D9E}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+          OutlineSize 1
+          ShadowSize 2
+          ShadowOffset 0.8 0.8
+         }
+        }
+       }
+      }
+      VerticalLayoutWidgetClass "{6674EDC5BFB68402}" {
+       Name "OPFORTickets"
+       Slot LayoutSlot "{6674EDC0CD0F9032}" {
+        Padding 0 0 0 2
+       }
+       {
+        ImageWidgetClass "{6674EDC706727879}" {
+         Name "OPFORTicketsBG"
+         Slot LayoutSlot "{6674EDC2A0D91810}" {
+          Padding 0 0 0 5
+         }
+         Color 0 0 0 0.333
+         "Shadow Offset" 0.5 0.5
+        }
+        TextWidgetClass "{6674EDC70672776A}" {
+         Name "OPFORTicketsText"
+         Slot LayoutSlot "{6674EDC2A0D91806}" {
+          Padding 0 -34 0 4
+         }
+         Color 0.855 0.0308 0.0284 1
+         Text "OPFOR Tickets: 0"
+         "Font Size" 16
+         "Min Font Size" 14
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{612734D416229D9E}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+          OutlineSize 1
+          ShadowSize 2
+          ShadowOffset 0.8 0.8
+         }
+        }
+       }
+      }
+      VerticalLayoutWidgetClass "{6674EDC591E2B458}" {
+       Name "INDFORTickets"
+       Slot LayoutSlot "{6674EDC0CD0F905E}" {
+        Padding 0 0 0 2
+       }
+       {
+        ImageWidgetClass "{6674EDC702440873}" {
+         Name "INDFORTicketsBG"
+         Slot LayoutSlot "{6674EDC22A587ED5}" {
+          Padding 0 0 0 5
+         }
+         Color 0 0 0 0.333
+         "Shadow Offset" 0.5 0.5
+        }
+        TextWidgetClass "{6674EDC7024408FB}" {
+         Name "INDFORTicketsText"
+         Slot LayoutSlot "{6674EDC22A587EC1}" {
+          Padding 0 -34 0 4
+         }
+         Color 0 0.4397 0.0782 1
+         Text "INDFOR Tickets: 0"
+         "Font Size" 16
+         "Min Font Size" 14
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{612734D416229D9E}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+          OutlineSize 1
+          ShadowSize 2
+          ShadowOffset 0.8 0.8
+         }
+        }
+       }
+      }
+      VerticalLayoutWidgetClass "{6674EDC5927415EC}" {
+       Name "CIVTickets"
+       Slot LayoutSlot "{6674EDC0CD0F9065}" {
+        Padding 0 0 0 2
+       }
+       {
+        ImageWidgetClass "{6674EDC778D8EF33}" {
+         Name "CIVTicketsBG"
+         Slot LayoutSlot "{6674EDC20FB459B3}" {
+          Padding 0 0 0 5
+         }
+         Color 0 0 0 0.333
+         "Shadow Offset" 0.5 0.5
+        }
+        TextWidgetClass "{6674EDC778D8EE10}" {
+         Name "CIVTicketsText"
+         Slot LayoutSlot "{6674EDC20FB459B8}" {
+          Padding 0 -34 0 4
+         }
+         Color 0.3916 0.1559 0.624 1
+         Text "CIV Tickets: 0"
+         "Font Size" 16
+         "Min Font Size" 14
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{612734D416229D9E}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+          OutlineSize 1
+          ShadowSize 2
+          ShadowOffset 0.8 0.8
+         }
+        }
+       }
+      }
+     }
+    }
+    ImageWidgetClass "{6674EDCDDB11ACA7}" {
+     Name "SliderBGLL"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX 153.057
+      OffsetLeft 103
+      PositionY 160
+      OffsetTop 30
+      SizeX -121.847
+      OffsetRight -31.211
+      SizeY -320
+      OffsetBottom 30
+     }
+     Color 0.133 0.133 0.133 0.353
+     Texture "{123C22FEC78BBCF7}UI/data/tab.edds"
+     Size 640 360
+     "Transition width" 0.71
+     Progress 0.5
+    }
+    ImageWidgetClass "{6674EDCDDB11ACED}" {
+     Name "ArrowLL"
+     Slot FrameWidgetSlot "{647D7DAD3D82594A}" {
+      Anchor 0 0 1 1
+      PositionX 185.6
+      OffsetLeft 136
+      PositionY 206.409
+      OffsetTop 57
+      SizeX -169.788
+      OffsetRight -15.812
+      SizeY -413.809
+      OffsetBottom 57
+     }
+     Color 1 1 1 0.353
+     Rotation 270
+     Texture "{D45AE7F19DBF4021}UI/Textures/InventoryIcons/Medical/lines_UI.edds"
+     Size 64 64
+     "Transition width" 0.71
+     Progress 0.5
+    }
    }
   }
  }
