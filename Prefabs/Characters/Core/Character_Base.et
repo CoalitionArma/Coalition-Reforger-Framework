@@ -28,5 +28,11 @@ SCR_ChimeraCharacter {
     }
    }
   }
+  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Identity Identity "{5584CBC6363C648B}" {
+    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
+    }
+   }
+  }
  }
 }

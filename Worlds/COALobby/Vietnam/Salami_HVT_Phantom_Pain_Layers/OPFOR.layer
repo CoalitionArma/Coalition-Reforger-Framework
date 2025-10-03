@@ -1,0 +1,124 @@
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 1163.653 52 584.194
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   components {
+    AIFormationComponent "{507E9DC12F541FE6}" {
+     DefaultFormation "Column"
+    }
+   }
+   coords -15.24 0 -8.714
+   m_aUnitPrefabSlots {
+    "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Column"
+      }
+     }
+     coords 13.607 -0 0.989
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -3.335 0 0.088
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Column"
+          }
+         }
+         coords -2.961 -0 -0.342
+         {
+          SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Column"
+            }
+           }
+           coords -2.438 0 -0.446
+           {
+            SCR_AIGroup : "{2598DBB9C3E01AD3}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_IndirectTeam_p.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "Column"
+              }
+             }
+             coords -2.265 -0 0.033
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{CB56A2564414B7D6}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_USSR.et" {
+ {
+  coords 1247.313 49.469 472.494
+  angleY -16
+  {
+   GenericEntity {
+    ID "60B8D36A59BEEA13"
+    components {
+     SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{666469F735113B70}" {
+        m_eResourceRights ALL
+        m_eStorageType STORED
+        m_fResourceValueCurrent 2000
+        m_fResourceValueMax 2000
+        m_fResourceGain 0
+        m_fResourceGainTickrate 1
+        m_fResourceGainTimeout 0
+        m_fResourceDecay 34
+        m_fResourceDecayTickrate 60
+        m_fResourceDecayTimeout 1200
+        m_eOnEmptyBehavior HIDE
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ {
+  coords 1239.691 49.47 470.377
+  angleY -12
+  {
+   GenericEntity {
+    ID "60B8D36A59BEEA13"
+    components {
+     SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+      m_aContainers {
+       SCR_ResourceContainerVirtual "{666469F713F592E2}" {
+        m_eResourceRights ALL
+        m_eStorageType STORED
+        m_fResourceValueCurrent 2000
+        m_fResourceValueMax 2000
+        m_fResourceGain 0
+        m_fResourceGainTickrate 1
+        m_fResourceGainTimeout 0
+        m_fResourceDecay 34
+        m_fResourceDecayTickrate 60
+        m_fResourceDecayTimeout 1200
+        m_eOnEmptyBehavior HIDE
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

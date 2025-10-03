@@ -1,0 +1,76 @@
+SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+ coords 1971.622 52.727 3161.421
+ angleY -131.31
+ {
+  SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+   coords 13.453 0.626 3.03
+   {
+    SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+     coords 12.142 0.342 3.457
+     {
+      SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+       coords 14.211 0.411 3.115
+       {
+        $grp SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+         {
+          coords 16.424 0.715 5.377
+         }
+         {
+          coords 39.201 1.862 9.838
+         }
+         {
+          coords -30.159 -1.17 -25.682
+         }
+         {
+          coords -13.319 -0.415 -23.287
+         }
+         {
+          coords 4.117 0.322 -22.241
+         }
+         {
+          coords 21.21 1.059 -21.093
+         }
+         {
+          coords 39.011 2.016 -16.115
+         }
+         {
+          coords -17.067 -0.309 -41.038
+         }
+         {
+          coords 3.071 0.606 -38.789
+         }
+         {
+          coords 20.14 1.413 -37.292
+         }
+         {
+          coords 40.627 2.442 -35.354
+         }
+         {
+          coords -0.765 0.195 107.147
+          angleY 1.605
+         }
+         {
+          coords 14.732 -0.501 106.987
+          angleY 1.605
+         }
+         {
+          coords 29.052 -1.363 102.588
+          angleY 1.605
+         }
+         {
+          coords 45.125 0.02 96.154
+          angleY 1.605
+         }
+         {
+          coords -15.091 0.097 81.987
+          angleY 1.605
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

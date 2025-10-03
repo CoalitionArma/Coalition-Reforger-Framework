@@ -1,0 +1,71 @@
+SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+ coords 1275.285 39 2105.698
+ angleY -34.811
+ {
+  SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+   coords 13.893 0 -1.164
+   {
+    SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+     coords 13.808 0 -1.066
+     {
+      SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+       coords 17.461 0 -0.43
+       {
+        $grp SCR_AIGroup : "{679BC3454FEDD0EE}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_2manCrew_p.et" {
+         {
+          coords 22.143 0.01 -0.214
+         }
+         {
+          coords -43.724 0.01 -15.001
+         }
+         {
+          coords -28.218 0.01 -15.001
+         }
+         {
+          coords -15.702 0.01 -15.001
+         }
+         {
+          coords 1.398 0.01 -15.001
+         }
+         {
+          coords 23.403 0.01 -15.001
+         }
+         {
+          coords -41.59 0 -35.32
+         }
+         {
+          coords -26.478 0 -35.319
+         }
+         {
+          coords -14.45 0 -35.319
+         }
+         {
+          coords 1.308 0 -35.319
+         }
+         {
+          coords 20.821 0 -35.319
+         }
+         {
+          coords -38.137 0.971 -60.837
+         }
+         {
+          coords -24.767 0.993 -61.188
+         }
+         {
+          coords -13.035 1.094 -61.279
+         }
+         {
+          coords -0.084 1.125 -60.708
+         }
+         {
+          coords 16.044 0.833 -60.623
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
