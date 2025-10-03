@@ -15,7 +15,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_iStartingHours 7
   }
  }
- coords 646.284 392.576 1314.287
+ coords 1618.204 382.274 2015.589
  m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
@@ -32,7 +32,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "Weather: Overcast Rain"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Kill the HVT"\
+   m_sTextData "Kill the HVT before he can extract. We do not know where his extraction point is but we know it will be by helicoptor."\
    ""\
    "HVT's location will update every 5 minutes."\
    ""\
@@ -40,15 +40,15 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTextData "Protect the HVT"\
+   m_sTextData "Protect the HVT and extract him."\
    ""\
-   "The HVT has a limited area of movement as shown on the map."
+   "At the EVAC point is a helicoptor to get the HVT out of this place."
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
    m_sTitle "Important HVT info"
    m_sTextData "When you spawn, on the rocks to your right is a bunch of folders please pick them up and do not drop them."\
    ""\
-   "Stay within the purple area."\
+   "There is a helicoptor waiting for you at the EVAC point."\
    ""
    m_aFactionKeys {
     "INDFOR"
@@ -139,5 +139,5 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
 }
 SCR_BaseTriggerEntity INTEL {
- coords 890.529 417.401 1457.678
+ coords 972.415 388.575 2427.984
 }
