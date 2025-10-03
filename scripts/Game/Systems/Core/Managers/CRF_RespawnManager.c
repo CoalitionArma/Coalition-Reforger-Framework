@@ -151,10 +151,10 @@ class CRF_RespawnManager : ScriptComponent
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_iBLUFORTickets -= amount; break;
-			case "OPFOR": m_iOPFORTickets -= amount; break;
-			case "INDFOR": m_iINDFORTickets -= amount; break;
-			case "CIV": m_iCIVTickets -= amount; break;
+			case "BLUFOR": m_iBLUFORTickets -= amount; if (m_iBLUFORTickets < 0) m_iBLUFORTickets = 0; break;
+			case "OPFOR": m_iOPFORTickets -= amount; if (m_iOPFORTickets < 0) m_iOPFORTickets = 0; break;
+			case "INDFOR": m_iINDFORTickets -= amount; if (m_iINDFORTickets < 0) m_iINDFORTickets = 0; break;
+			case "CIV": m_iCIVTickets -= amount; if (m_iCIVTickets < 0) m_iCIVTickets = 0; break;
 		}
 		
 		return true;
@@ -410,7 +410,31 @@ class CRF_RespawnManager : ScriptComponent
 		
 		return sideRespawnPoints;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<RplId> GetFactionSpawnpointsRplIDs(FactionKey faction)
+	{
+		array<RplId> RplIDs = {};
+		foreach(RplId pointRplID : m_RespawnPointsRplID)
+		{
+			IEntity point = GetSpawnEntityFromRplID(pointRplID);
+			
+			CRF_RespawnPointComponent pointRespawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+			if (!pointRespawnComponent)
+				continue;
+			
+			if (pointRespawnComponent.m_sRespawnPointFaction != faction)
+				continue;
+			
+			if (!pointRespawnComponent.m_bActiveRespawnPoint)
+				continue;
 
+			RplIDs.Insert(pointRplID)
+		}
+		
+		return RplIDs;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	void RespawnAllSides()
 	{

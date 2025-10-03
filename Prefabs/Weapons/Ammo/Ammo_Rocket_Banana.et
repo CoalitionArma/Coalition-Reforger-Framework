@@ -1,0 +1,74 @@
+Projectile : "{C0BDA86B5AA5648C}Prefabs/Weapons/Core/Ammo_Rocket_Base.et" {
+ ID "DA5C6308000CDEF2"
+ components {
+  CollisionTriggerComponent "{666C00860BB0E858}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{666C00860BB0E84E}" {
+     EffectPrefab "{67E4401426C2220D}Prefabs/Systems/Explosions/BombWarhead_Large.et"
+     ParticleEffect "{307C1D79A37A0681}Prefabs/Systems/Explosions/Explosion_Large.ptc"
+     SoundEvent "SOUND_EXPLOSION"
+    }
+    AIExplosionEffect "{666C00860BB0E8B6}" {
+    }
+   }
+   SafetyDistance 5
+  }
+  InventoryItemComponent "{526E87778842822F}" {
+   Attributes SCR_ItemAttributeCollection "{526E87778ACB229F}" {
+    ItemDisplayName UIInfo "{526E8777859BAACF}" {
+     Name "BANANA ROCKET"
+     Description "MAN, IDK, ITS A BANANA ROCKET"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{666C00860BB0E8BD}" {
+     Weight 0
+     SizeSetupStrategy Manual
+     ItemDimensions 20 20 20
+     ItemVolume 12
+    }
+    m_SlotType SLOT_BACKPACK
+   }
+  }
+  MagazineComponent "{50F6614BB5D5B0A8}" {
+   MagazineWell MagazineWellRPG7 "{666C00860BB0E8A6}" {
+   }
+   UIInfo MagazineUIInfo "{560AE4EBFA0176D4}" {
+    Name "#AR-Magazine_PG7VM_Name"
+    Description "#AR-Magazine_PG7VM_Description"
+    m_sAmmoCaliber "#AR-AmmunitionID_70mm"
+    m_sAmmoType "#AR-AmmoType_PG7VM"
+    m_eAmmoTypeFlags HEAT
+   }
+   ItemModel "{DBE32115FB8473C1}Assets/Items/Food/ACE_Banana.xob"
+  }
+  MeshObject "{851AA4A2AE0A56BF}" {
+   Object "{DBE32115FB8473C1}Assets/Items/Food/ACE_Banana.xob"
+  }
+  MissileMoveComponent "{0EF36690881261EF}" {
+   InitSpeed 10
+   InitSpeedVariation 0
+   DispersionMultiplier 0
+   Mass 0.01
+   WindInfluenceMultiplier 0
+   TimeToLive 60
+   ProjectileEffects {
+    AIHitEffect "{666C00860BB0E8AB}" {
+    }
+   }
+   BallisticTableConfig "{04AC3D52618E810C}Configs/Weapons/AIBallisticTables/AIBT_Rocket_PG7VM.conf"
+   ThrustInitTime 0.1
+   ThrustTime 60
+   ThrustForce 0.35
+   SideAirFriction 0
+   AlignTorque 0.04
+   DistanceEnableGravitation 1000
+  }
+  RigidBody "{529E88841E9EDFB4}" {
+   Mass 10
+  }
+  RocketTraceEffectComponent "{666C00860BB0E895}" {
+   ParticleEffect "{0F364F4CD1D72350}Particles/Weapon/Trail_PG7VL.ptc"
+  }
+ }
+ ProjectileModel "{DBE32115FB8473C1}Assets/Items/Food/ACE_Banana.xob"
+ CartridgeModel "{DBE32115FB8473C1}Assets/Items/Food/ACE_Banana.xob"
+}

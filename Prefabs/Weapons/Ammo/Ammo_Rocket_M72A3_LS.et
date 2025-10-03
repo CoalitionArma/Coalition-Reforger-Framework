@@ -1,0 +1,19 @@
+Projectile : "{79FA751EEBE25DDE}Prefabs/Weapons/Ammo/Ammo_Rocket_M72A3.et" {
+ ID "DA5C6308000CDEF2"
+ components {
+  CollisionTriggerComponent "{5184AB9D098A0025}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{5184AB9D05324718}" {
+     EffectPrefab "{E20378BCAFED6A5B}Prefabs/Weapons/Warheads/Warhead_HEAT_M72A3_LS.et"
+    }
+   }
+  }
+  MissileMoveComponent "{0EF36690881261EF}" {
+   ProjectileEffects {
+    ProjectileDamage "{56829D01651CE9A7}" {
+     DamageValue 400
+    }
+   }
+  }
+ }
+}
