@@ -410,7 +410,31 @@ class CRF_RespawnManager : ScriptComponent
 		
 		return sideRespawnPoints;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<RplId> GetFactionSpawnpointsRplIDs(FactionKey faction)
+	{
+		array<RplId> RplIDs = {};
+		foreach(RplId pointRplID : m_RespawnPointsRplID)
+		{
+			IEntity point = GetSpawnEntityFromRplID(pointRplID);
+			
+			CRF_RespawnPointComponent pointRespawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+			if (!pointRespawnComponent)
+				continue;
+			
+			if (pointRespawnComponent.m_sRespawnPointFaction != faction)
+				continue;
+			
+			if (!pointRespawnComponent.m_bActiveRespawnPoint)
+				continue;
 
+			RplIDs.Insert(pointRplID)
+		}
+		
+		return RplIDs;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	void RespawnAllSides()
 	{
