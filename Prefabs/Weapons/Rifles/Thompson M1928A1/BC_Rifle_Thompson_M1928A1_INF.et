@@ -1,0 +1,240 @@
+GenericEntity : "{C63227C0E70EA62E}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{9C8AF2BD9535AC94}Sounds/Weapons/Rifles/Thompson/Weapons_Rifle_Thompson_Shot_2.acp" "{75CFF7EB0872A333}Sounds/Weapons/Rifles/Thompson/Weapons_Rifles_Thompson_Handling.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{07E8D425196745F4}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_Plastic.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp" "{E419B2CF55F4A389}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Bayonett.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{DE10E37CF701B6F2}Assets/Weapons/Rifles/Thompson M1928A1/bc_thompson_1928a1.xob"
+  }
+  RigidBody "{5534745C44D1EFF0}" {
+   CenterOfMass 0 0.05 -0.034
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "Thompson M1928A1"
+     Description ".45acp submachine gun. Uses M1928A1 drum or stick mags."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{5534745C44D1EFE1}" {
+     Weight 4.9
+     ItemDimensions 25 25 20
+     ItemVolume 1200
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     AnimationIKPose "{29CEA720A46E9DA8}Assets/Weapons/Rifles/Thompson M1928A1/Anims/anm/p_rfl_thompson_m1928a1_ik.anm"
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      DeploymentPoints {
+       PivotPointInfoItem "{5A8ABE3D0B1123A8}" {
+        "Point info" DeploymentPointInfo dp {
+         Offset 0 -0.0628 0.2136
+        }
+       }
+       PivotPointInfoItem "{666F4E159178B490}" {
+        "Point info" DeploymentPointInfo dp {
+         PivotID "Scene_Root"
+         Offset 0 -0.0628 0.2136
+        }
+        StabilizationSize 0.05 0.12 0.37
+       }
+      }
+     }
+     PreviewRenderAttributes "{52BAB5E48C906DB8}" {
+      LodModel 0
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{56DE9C900611C1AF}" {
+     Enabled 0
+     AttachmentSlot InventoryStorageSlot Handguard {
+      ChildPivotID "snap_hand_guard"
+      Prefab "{FB1A7F5BC7D935E2}Prefabs/Weapons/Attachments/Handguards/Handguard_M16A2/Handguard_M16.et"
+     }
+    }
+    AttachmentSlotComponent "{5F16E0B4B2D0D72C}" {
+     Enabled 0
+    }
+    SightsComponent "{666F4E159178B48E}" {
+     SightsPosition PointInfo "{666F4E159178B488}" {
+      PivotID "eye"
+     }
+     SightsRanges {
+      SightRangeInfo "{666F4E159178B4F5}" {
+       Range 0 50
+       WeaponPosition PointInfo "{666F4E159178B4F6}" {
+        Offset 0 -0.0021 0
+        Angles 0.20174 0 0
+       }
+      }
+      SightRangeInfo "{666F4E159178B4F1}" {
+       Range 0.33 100
+       WeaponPosition PointInfo "{666F4E159178B4F3}" {
+        Offset 0 -0.0047 0
+        Angles 0.5 0 0
+       }
+      }
+      SightRangeInfo "{666F4E159178B4FD}" {
+       Range 0.42 200
+       WeaponPosition PointInfo "{666F4E159178B4FE}" {
+        Offset 0 -0.0101 0
+        Angles 0.90049 0 0
+       }
+      }
+      SightRangeInfo "{666F4E159178B4F8}" {
+       Range 0.535 300
+       WeaponPosition PointInfo "{666F4E159178B4F9}" {
+        Offset 0 -0.0177 -0.00292
+        Angles 1.52007 0 0
+       }
+      }
+      SightRangeInfo "{666F4E159178B4FB}" {
+       Range 0.655 400
+       WeaponPosition PointInfo "{666F4E159178B4E4}" {
+        Offset 0 -0.0262 0
+        Angles 2.30554 0 0
+       }
+      }
+      SightRangeInfo "{666F4E159178B4E2}" {
+       Range 0.88 500
+       WeaponPosition PointInfo "{666F4E159178B4EC}" {
+        Offset 0 -0.039 0
+        Angles 3.5 0 0
+       }
+      }
+     }
+     SightsPointFront PointInfo "{666F4E159178B4EE}" {
+      PivotID "ironsight_front"
+     }
+     SightsPointRear PointInfo "{666F4E159178B4EB}" {
+      PivotID "ironsight_rear"
+     }
+     ADSTime 0.35
+     m_iOpticDOFDistanceScale -1
+     m_bForceSimpleDOF 1
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     Enabled 0
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{5D527627CCB8F756}" {
+       Enabled 0
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        ChildPivotID "snap_barrel_muzzle"
+        Prefab "{6288A1F1A5E3AC37}Prefabs/Weapons/Attachments/Muzzle/FlashHider_M16A2/FlashHider_M16.et"
+       }
+      }
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       ParticleEffect "{C8C0B00F66A2C6D2}Particles/Weapon/Casing_9x19.ptc"
+       EffectPosition EntitySlotInfo "{5122BA87B56F471A}" {
+        Offset 0.015 0.006 -0.0332
+       }
+      }
+      CaseEjectingEffectComponent "{666F4E159178B4DA}" {
+       ParticleEffect "{81FDB0E06C9B598D}Particles/Weapon/Smoke_M9.ptc"
+       EffectPosition EntitySlotInfo Chamber_smoke {
+        PivotID "barrel_chamber"
+        Offset 0 0.0023 -0.0263
+       }
+       WaterSurface 8100
+       HasSound 0
+      }
+      CaseEjectingEffectComponent "{666F4E159178B4DF}" {
+       ParticleEffect "{81FDB0E06C9B598D}Particles/Weapon/Smoke_M9.ptc"
+       EffectPosition EntitySlotInfo "{52C89337A55D0B87}" {
+        Offset 0 0 0
+        Angles 17.8118 0 0
+       }
+      }
+      SCR_MuzzleEffectComponent "{C9B3271BB22CDB68}" {
+       ParticleEffect "{1D5B550D90318F2B}Particles/Weapon/Muzzle_M9.ptc"
+      }
+     }
+     ChamberedAmmo 0
+     FireModes {
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       MaxBurst -1
+       BurstType Interruptable
+       RoundsPerMinute 800
+       UIName "Full Auto"
+      }
+      BaseFireMode "{619AB45BF76565F3}" {
+       MaxBurst 1
+       BurstType Uninterruptable
+       RoundsPerMinute 875
+       UIName "Single"
+      }
+     }
+     MagazineWell MagazineWellThompson "{666F4E159178B4CD}" {
+     }
+     WeaponAimModifiers {
+      RecoilWeaponAimModifier "{5584D01594F61795}" {
+       LinearData RecoilData "{58789524F404F395}" {
+        "Curve Magnitudes" 0.7 0.7 0.7
+       }
+       AngularData RecoilData "{58789524F4CD2BD3}" {
+        "Curve Y" {
+         0 0.5 0.038 0.796 0.07 0.88 0.127 0.89 0.222 0.765 0.349 0.571 0.529 0.508 1 0.5
+        }
+        "Curve Magnitudes" 0.7 0.9 0.7
+       }
+       TurnOffsetData RecoilData "{58789524F59F941B}" {
+        "Curve Magnitudes" 0.7 1 0
+        "Curve Mins" -1.5 5.5 0
+        "Curve Maxs" 1.5 7 0
+       }
+      }
+     }
+     UIInfo MuzzleUIInfo "{2FBBA72C906C627E}" {
+      m_MagIndicator SCR_MagazineIndicatorConfiguration "{565ECB55D6F6D63D}" {
+       m_sOutline "magazine-default-outline"
+       m_sBackground "magazine-default-background"
+       m_sProgress "magazine-default-fill"
+       m_sProgressAlphaMask "magazine-default-alpha"
+      }
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+      PivotID "slot_magazine"
+      Offset 0 0 0
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+     }
+     MagazineTemplate "{6584FDE3C82368B0}Prefabs/Weapons/Magazines/Thompson/BC_Magazine_M1928A1_45acp_Thompson_INF_Drum.et"
+    }
+    BC_ThompsonAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{C1E50D0211525849}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1.agr"
+     AnimInstance "{FCE21D8913D686F9}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{5534745C44D1EF5A}" {
+      AnimGraph "{C1E50D0211525849}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1.agr"
+      AnimInstance "{07BC8CB88BD7E215}Assets/Weapons/Rifles/workspaces/bc_thompson_m1928a1_player.asi"
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "Thompson M1928A1"
+    Description ".45acp submachine gun. Uses M1928A1 drum or stick mags."
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{565ECA2FE3F0F3FB}" {
+     m_bProgressBar 0
+    }
+   }
+   WeaponOffsetADS 0 0 0
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   additionalActions {
+    SCR_DetachMagazineUserAction "{5A1E58F790AF821D}" {
+     UIInfo SCR_ActionUIInfo "{5A1E58F788F40D95}" {
+      Name "Detach: "
+     }
+    }
+   }
+  }
+ }
+ coords 191.443 1 141.185
+}

@@ -1,0 +1,134 @@
+CRF_VehicleSpawner {
+ coords 1195.919 57.087 1570.388
+ angleY -137
+ m_rVehicle "{16A674FE31B0921C}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered.et"
+ m_sFactionKey "BLUFOR"
+}
+CRF_ManualMarker VehicleMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 1175.826 55.742 1551.646
+ m_MarkerColor 0.631 0.627 0.009 1
+ m_sQuadName "entry-point"
+ m_sDescription "Vehicles"
+ m_aVisibleForFactions {
+  "BLUFOR"
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ components {
+  CRF_PolyZone "{65865377C721CCB0}" {
+   m_aVisibleForFactions + {
+    "INDFOR"
+   }
+  }
+ }
+ coords 1221.631 60.554 1630.736
+ Points {
+  ShapePoint "{666469F184E20FAA}" {
+   Position 64.664 0 -17.472
+  }
+  ShapePoint "{666469F1873C0803}" {
+   Position 112.743 0 -76.891
+  }
+  ShapePoint "{666469F187F1BC95}" {
+   Position 89.485 0 -164.534
+  }
+  ShapePoint "{666469F187907755}" {
+   Position 35.471 0 -195.046
+  }
+  ShapePoint "{666469F18630E330}" {
+   Position -35.512 0 -199.575
+  }
+  ShapePoint "{666469F186D53E94}" {
+   Position -67.848 0 -127.055
+  }
+  ShapePoint "{666469F1817BB88F}" {
+   Position -73.489 0 -56.367
+  }
+  ShapePoint "{666469F1811C7486}" {
+   Position -3.659 0 -9.002
+  }
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 1141.359 21.544 862.494
+ Points {
+  ShapePoint "{666469F1D61CE2AD}" {
+   Position 110.783 0 -13.487
+  }
+  ShapePoint "{666469F1D6C209B5}" {
+   Position 227.354 0 -37.646
+  }
+  ShapePoint "{666469F1D14F1F26}" {
+   Position 291.693 0 -58.09
+  }
+  ShapePoint "{666469F1D1C9229C}" {
+   Position 355.228 0 0.765
+  }
+  ShapePoint "{666469F1D21106F9}" {
+   Position 427.337 0 62.96
+  }
+  ShapePoint "{666469F1D2CAD6ED}" {
+   Position 467.198 0 36.275
+  }
+  ShapePoint "{666469F1CD5AA04A}" {
+   Position 503.011 0 16.036
+  }
+  ShapePoint "{666469F1CDDAC5D2}" {
+   Position 550.659 0 -38.674
+  }
+  ShapePoint "{666469F1C4FB98C3}" {
+   Position 523.094 0 -160.034
+  }
+  ShapePoint "{666469F1C493BB2D}" {
+   Position 580.341 0 -326.683
+  }
+  ShapePoint "{666469F13DD882EB}" {
+   Position 656.823 0 -505.118
+  }
+  ShapePoint "{666469F13C48AFEC}" {
+   Position 609.346 0 -686.942
+  }
+  ShapePoint "{666469F13CFE37FC}" {
+   Position 558.508 0 -721.448
+  }
+  ShapePoint "{666469F13C9B1A13}" {
+   Position 414.797 0 -787.502
+  }
+  ShapePoint "{666469F13F3FF1A9}" {
+   Position 213.643 0 -803.341
+  }
+  ShapePoint "{666469F13EDD1DEE}" {
+   Position 12.807 0 -747.746
+  }
+  ShapePoint "{666469F1397AC135}" {
+   Position -226.494 0 -695.534
+  }
+  ShapePoint "{666469F13922B05C}" {
+   Position -418.699 0 -709.516
+  }
+  ShapePoint "{666469F139AA94D0}" {
+   Position -501.41 0 -461.297
+  }
+  ShapePoint "{666469F122C84DFA}" {
+   Position -492.305 0 -321.877
+  }
+  ShapePoint "{666469F1228DE587}" {
+   Position -436.773 0 -228.074
+  }
+  ShapePoint "{666469F11D17F642}" {
+   Position -346.272 0 -153.371
+  }
+  ShapePoint "{666469F11DBF6FBC}" {
+   Position -208.272 0 -124.247
+  }
+  ShapePoint "{666469F11C255448}" {
+   Position -90.231 0 -58.656
+  }
+  ShapePoint "{666469F11CAF23F7}" {
+   Position -11.639 0 -39.824
+  }
+  ShapePoint "{666469F11F1B4292}" {
+   Position 56.881 0 -1.992
+  }
+ }
+}

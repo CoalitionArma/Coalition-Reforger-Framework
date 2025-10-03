@@ -1,0 +1,74 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{667105F304193B61}" {
+     SourceMaterial "Ural_Body"
+     AssignedMaterial "{C7214956BAD54AB2}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_blue.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentUniqueName "pilot"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Vehicle_Skoda105_Name - #WCS-Weapon_M134_Name"
+    m_Image "{86B19DC95917B15B}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_wcs_M134.edds"
+    m_aAuthoredLabels + {
+     21
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      WCS_Armament_WeaponInfoVehicle "{667105F33BF41F1D}" {
+       m_LayoutPath "{2E427134219C809E}UI/layouts/HUD/WeaponInfo/WCS_WeaponInfo.layout"
+       m_aHandlers {
+        SCR_InfoDisplaySlotHandler "{667105F33BF41F1A}" {
+         m_bCanUpdate 1
+         m_sSlotName "Slot_WeaponInfo"
+        }
+       }
+       m_sInterfaceSettingName "m_bShowWeaponInfo"
+      }
+     }
+    }
+    BaseWeaponManagerComponent "{667105F33BF41F23}" {
+     DefaultWeaponIndex 0
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{667105F33BF41F2F}" {
+   m_ArmamentGroups {
+    WCS_ArmamentSlotGroup "{667105F33BF41F2B}" {
+    }
+   }
+  }
+  WCS_VehicleAimCameraComponent "{667105F33BF41F37}" {
+   m_Position PointInfo "{667105F33BF41F33}" {
+    Offset -0.3117 1.2527 0.5386
+   }
+  }
+  WeaponSlotComponent "{667105F33BF41F3C}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{667105F33BF41F3E}" {
+   }
+   WeaponType MachineGun
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot UPK23 {
+    Offset -0.2427 0.3783 2.8532
+    Angles 1 0 50
+    DisablePhysicsInteraction 1
+    DeactivatePhysicsOnAtaching 1
+   }
+   WeaponTemplate "{10183E46CD7CEF84}Prefabs/Weapons/AircraftWeapons/Miniguns/GAU19.et"
+  }
+ }
+}

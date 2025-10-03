@@ -1,0 +1,134 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{667A1E747BD8ECF9}" {
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+ }
+ coords 2584.538 400.414 885.23
+ m_iTimeLimitMinutes 70
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "It's sometime after the third great war. People have just lost count of when. Equipment is shoddy at best, and you can bet there are no radios. What little there is people fight tooth and nail over."\
+   ""\
+   "There's been bad blood in the gang. While the old general was away, a young'un has siezed control of the encampments hoping to force the old man out of power. However, they should know he'd see the whole thing burn before letting some snot nose punk push him out."\
+   ""\
+   "BLUFOR Composition: Moto Inf"\
+   "BLUFOR Assets: Armed Ural"\
+   ""\
+   "OPFOR Composition: Moto Inf"\
+   "OPFOR Assets:"\
+   ""\
+   "Time: 70 min"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy the MCOMs in order. You will receive a respawn wave when the first one has been destroyed."\
+   ""\
+   "Note that your trucks are a little bit away from your spawn, due to the tightness of the map."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the MCOMs in order. You will receive a respawn wave when the first one has been destroyed."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Shaped Charge Fragmentation changes are in place. "\
+   ""\
+   "Also, the Bren has had it's full auto removed for this mission."\
+   ""\
+   "No radios."
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{81281787124D22B3}Configs/Gearscripts/Custom/Harry/AmongTheLeaves/CRF_GS_Blu_Bolt.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{587819183D324AD7}Configs/Gearscripts/Custom/Harry/AmongTheLeaves/CRF_GS_Op_Bolt.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "667B6C73F7E33A3E" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{667B6C6E4BCC3B7E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{667B6C6E4F3B9B49}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{667B6C6E4FD88A26}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{667B6C6E4E7EA16E}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{667B6C6E4EF7DEDB}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{667B6C6E4D0EBF70}" {
+        m_sCallsign "MMG-2"
+       }
+       SCR_CallsignInfo "{667B6C6E4DA95DA6}" {
+        m_sCallsign "Armed Ural"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{667B6C6EBE842B4F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{667B6C6EBDD4693D}" {
+        m_sCallsign "MMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ mcom_a_trigger {
+  coords 1739.507 417.031 338.738
+ }
+ mcom_b_trigger {
+  coords 971.554 395.167 309.611
+  angleY -179.545
+ }
+}
