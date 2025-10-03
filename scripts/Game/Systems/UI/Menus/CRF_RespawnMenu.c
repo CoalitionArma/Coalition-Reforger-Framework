@@ -91,8 +91,11 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		m_factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
 
+		array<RplId> factionRespawnPoints = CRF_RespawnManager.GetInstance().GetFactionSpawnpointsRplIDs(m_factionKey);
+
 		// Populates spawnpoints list with players faction spawns entites and create their markers on the map
-		foreach(RplId rplID : CRF_RespawnManager.GetInstance().m_RespawnPointsRplID)
+		int index = 0;
+		foreach(RplId rplID : factionRespawnPoints)
 		{ 
 			IEntity point = CRF_RespawnManager.GetInstance().GetSpawnEntityFromRplID(rplID);
 			if (!point)
@@ -102,10 +105,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			if (!respawnPointComponent)
 				continue;
 			
-			// Ignore spawn point if not for player faction
-			if (respawnPointComponent.m_sRespawnPointFaction != m_factionKey)
-				continue;
-			
 			vector worldPos = point.GetOrigin();
 			
 			// Create map marker
@@ -113,6 +112,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			
 			// Add option to menu and store the component with it
 			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName);
+			
+			if (respawnPointComponent.m_bIsDefaultRespawn)
+			{
+				m_wSpawnListBox.SetItemSelected(index, true, true, true);
+				GetGame().GetCallqueue().CallLater(UpdateSpawnSelection, 500, false);
+			}
+			index++;
 		}
 	}
 	
@@ -121,13 +127,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	 */
 	protected void RegisterInputHandlers()
 	{
-		InputManager inputManager = GetGame().GetInputManager();
-		
-		// Voice communication handlers
-		inputManager.AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		inputManager.AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
-		
+		InputManager inputManager = GetGame().GetInputManager();		
 		// Menu navigation handlers
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			inputManager.AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			inputManager.AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		inputManager.AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}	
@@ -244,9 +250,11 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	protected void UnregisterInputHandlers()
 	{
 		InputManager inputManager = GetGame().GetInputManager();
-		
-		inputManager.RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		inputManager.RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			inputManager.RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			inputManager.RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
 		inputManager.RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 	}	
@@ -294,16 +302,16 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	void Action_VONon()
 	{
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		
+
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		if (!von)
 			return;
-			
+
 		von.SetTransmitRadio(GetVoNTransiver());
 		von.SetCommMethod(ECommMethod.SQUAD_RADIO);
 		von.SetCapture(true);
 	}
-	
+
 	/**
 	 * Retrieves the player's radio transceiver for voice communication
 	 * @return Radio transceiver entity
@@ -313,17 +321,17 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		IEntity entity = GetGame().GetPlayerController().GetControlledEntity();
 		if (!entity)
 			return null;
-			
+
 		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(
 			entity.FindComponent(SCR_InventoryStorageManagerComponent)
 		);
-		
+
 		if (!inventoryManager)
 			return null;
-			
+
 		ref array<IEntity> items = {};
 		inventoryManager.GetItems(items);
-		
+
 		IEntity radioEntity;
 		foreach(IEntity item: items)
 		{
@@ -333,20 +341,20 @@ class CRF_RespawnMenu: ChimeraMenuBase
 				break;
 			}
 		}
-		
+
 		if (!radioEntity)
 			return null;
-			
+
 		BaseRadioComponent radio = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
 		radio.SetPower(true);
-		
+
 		RadioTransceiver transceiver = RadioTransceiver.Cast(radio.GetTransceiver(0));
 		if (transceiver)
 			transceiver.SetFrequency(10000);
-			
+
 		return transceiver;
 	}
-	
+
 	/**
 	 * Deactivates voice communication when key is released
 	 */
@@ -355,7 +363,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		// Slight delay to avoid cutting off voice too abruptly
 		GetGame().GetCallqueue().CallLater(LobbyVoNDisableDelayed, 400);
 	}
-	
+
 	/**
 	 * Delayed function to disable voice communication
 	 */
@@ -364,7 +372,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		SCR_VoNComponent von = SCR_VoNComponent.Cast(GetGame().GetPlayerController().GetControlledEntity().FindComponent(SCR_VoNComponent));
 		if (!von)
 			return;
-			
+
 		von.SetCommMethod(ECommMethod.DIRECT);
 		von.SetCapture(false);
 	}
@@ -420,8 +428,11 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		if (!rm)
 			return;
 		
+		// Grab rplIDs for player faction
+		array<RplId> factionRespawnPointsRplIDs = rm.GetFactionSpawnpointsRplIDs(m_factionKey);
+		
 		// Grab the entity from the rplID
-		RplId rplID = rm.m_RespawnPointsRplID[m_wSpawnListBox.GetSelectedItem()];
+		RplId rplID = factionRespawnPointsRplIDs[m_wSpawnListBox.GetSelectedItem()];
 		IEntity point = rm.GetSpawnEntityFromRplID(rplID);
 		
 		// Pan the map to the spawn point

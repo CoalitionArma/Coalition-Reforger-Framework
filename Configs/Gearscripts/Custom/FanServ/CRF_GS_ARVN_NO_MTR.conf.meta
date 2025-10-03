@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{D41E2B3A64EE9D3B}Configs/Gearscripts/Standard/Vietnam/CRF_GS_ARVN_NO_MTR.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

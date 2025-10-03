@@ -1888,7 +1888,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			else
 			{
 				m_sMessageContent = "All zones cleared! Attackers have won!|60|Attacker Victory!";
-				HandleGameEnd(true); // Attackers won
 			}
 		}
 		
@@ -1979,18 +1978,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		
 		// Respawn players for zone advance
 		RespawnPlayersForZoneAdvance();
-	}
-	
-	/**
-	 * Handle game end conditions
-	 * @param attackersWon True if attackers won, false if defenders won
-	 */
-	protected void HandleGameEnd(bool attackersWon)
-	{
-		// Advance gamemode to AAR state
-		CRF_Gamemode gamemode = CRF_Gamemode.GetInstance();
-		if (gamemode)
-			GetGame().GetCallqueue().CallLater(gamemode.AdvanceGamemodeState, 3000, false, true);
 	}
 	
 	/**

@@ -1,0 +1,189 @@
+GenericEntity {
+ ID "6658CBE24069A753"
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_eSpawnPattern ROW
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Civilian Car"
+     m_sVehiclePrefab "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et"
+     m_eCostType SUPPLIES
+     m_iCost 50
+    }
+   }
+   m_bEnableDebugLogging 0
+  }
+  MeshObject "{664B076A9B68EF5E}" {
+   Object "{A5B43FE12B863CFB}Assets/Structures/Signs/Military/SignRectangle_01_75x45_double.xob"
+   Materials {
+    MaterialAssignClass "{665823603A23A499}" {
+     SourceMaterial "SignRectangle_01_75x45_double"
+     AssignedMaterial "{14489FC6B62CC10E}Assets/Structures/Signs/Military/Data/Sign_VehicleRepair_COAL_01.emat"
+    }
+    MaterialAssignClass "{665823603A23A4AC}" {
+     SourceMaterial "SignRectangle_01_75x45_double_MLOD"
+     AssignedMaterial "{14489FC6B62CC10E}Assets/Structures/Signs/Military/Data/Sign_VehicleRepair_COAL_01.emat"
+    }
+   }
+  }
+  RigidBody "{664B076A8751587E}" {
+   ResponseIndex "MediumDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+  ActionsManagerComponent "{664B076A73DE68BD}" {
+   ActionContexts {
+    UserActionContext "{664B076A99998888}" {
+     ContextName "default"
+     Position PointInfo "{664B076A99998889}" {
+      Offset 0 1.5 0
+     }
+     Radius 5
+     Height 3
+    }
+   }
+   additionalActions {
+    CRF_DepotSpawnAction "{664B076A6948034F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A69480350}" {
+     }
+     Duration 4
+     m_iVehicleIndex 0
+    }
+    CRF_DepotSpawnAction "{664B076A6E19528F}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6E195290}" {
+     }
+     Duration 4
+     m_iVehicleIndex 1
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF5726}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF5727}" {
+     }
+     Duration 4
+     m_iVehicleIndex 2
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF5728}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF5729}" {
+     }
+     Duration 4
+     m_iVehicleIndex 3
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF572A}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF572B}" {
+     }
+     Duration 4
+     m_iVehicleIndex 4
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF572C}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF572D}" {
+     }
+     Duration 4
+     m_iVehicleIndex 5
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF572E}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF572F}" {
+     }
+     Duration 4
+     m_iVehicleIndex 6
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF5730}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF5731}" {
+     }
+     Duration 4
+     m_iVehicleIndex 7
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF5732}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF5733}" {
+     }
+     Duration 4
+     m_iVehicleIndex 8
+    }
+    CRF_DepotSpawnAction "{664B076A6EEF5734}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{664B076A6EEF5735}" {
+     }
+     Duration 4
+     m_iVehicleIndex 9
+    }
+   }
+  }
+  RplComponent "{664B07581AC71C47}" {
+   Streamable Disabled
+  }
+ }
+ coords 1431.732 38 2922.052
+ {
+  GenericEntity : "{F39F7C209905A4C7}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V3_storage.et" {
+   ID "6658CBE24069A755"
+   components {
+    MeshObject "{5872F0EB7FA40561}" {
+     Enabled 0
+    }
+    RigidBody "{5872F0EB7DFB5A9D}" {
+     Enabled 0
+    }
+    SCR_ResourceComponent "{5D247A59598D71AE}" {
+     m_aContainers {
+      SCR_ResourceContainerVirtual "{5D3CDAE74F1A6127}" {
+       m_fResourceValueCurrent 0
+       m_fResourceValueMax 500
+       m_fResourceGain 0
+       m_fResourceGainTimeout 0
+      }
+     }
+     m_aConsumers {
+      SCR_ResourceConsumer "{5D3CDAE76719C077}" {
+       m_sDebugName "Vehicle Spawner - Consumer"
+       m_eResourceRights ALL
+       m_eGeneratorIdentifier DEFAULT
+       m_fResourceRange 20
+       m_fSellMultiplier 0
+       m_ContainerQueue SCR_ResourceConsumerContainerQueue "{5D3CDAE7127485AE}" {
+       }
+      }
+     }
+     m_aGenerators {
+      SCR_ResourceGenerator "{5D3CDAE701F5A224}" {
+       m_sDebugName "Vehicle Spawner - Generator"
+       m_eIdentifier DEFAULT
+       m_fResourceMultiplier 1
+       m_bIsIgnoringItself 0
+      }
+     }
+    }
+   }
+   coords -0.01 -0.159 -0.671
+   angleX 0.49
+   angleY -3.402
+   angleZ -1.34
+  }
+ }
+}

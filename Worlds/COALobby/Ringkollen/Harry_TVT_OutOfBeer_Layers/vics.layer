@@ -1,0 +1,30 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 62.852 213.544 2221.061
+  angleY -177.285
+  m_rnPrefab "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 63.157 213.544 2227.496
+  angleY -177.285
+  m_rnPrefab "{F6B23D17D5067C11}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1337.775 427.083 572.879
+  angleY -24.101
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 64.939 211.956 2250.703
+  angleY -177.285
+  m_rnPrefab "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

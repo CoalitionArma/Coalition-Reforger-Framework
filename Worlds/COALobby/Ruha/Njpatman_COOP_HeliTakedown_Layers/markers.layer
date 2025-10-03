@@ -1,0 +1,38 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 6118.004 56.625 7058.465
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "destroy"
+  m_fWorldSize 200
+  m_sDescription "HELIPORT"
+  m_aHideOnGameModeStates {
+  }
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 5246.29 68.809 7782.913
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "recon-outpost-2"
+  m_fWorldSize 200
+  m_sDescription "MORTARS"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3489.186 82.781 7149.771
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "flag-2"
+  m_fWorldSize 200
+  m_sDescription "HEADQUARTERS"
+  m_bShowForAnyFaction 1
+ }
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 6799.623 54.731 7969.113
+ angleY 90
+ m_fWorldSize 200
+ m_sDescription "BLUFOR BASE"
+ m_bShowForAnyFaction 1
+}

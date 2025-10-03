@@ -1,0 +1,46 @@
+GenericEntity : "{9B6B61BB3FE3DFB0}Prefabs/Items/Equipment/Radios/Radio_ANPRC77.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  BaseRadioComponent "{5A30BAE7673C63CA}" {
+   Enabled 0
+   "Encryption key" "royalCrown"
+   "Turned on" 1
+   Transceivers {
+    RadioTransceiver "{5EA4A89F0D06E18F}" {
+     "Transmitting Range" 2000
+    }
+   }
+  }
+  MeshObject "{5A30BAE7673C63D1}" {
+   Object "{07EFC9D262515802}Assets/Items/Equipment/Radios/PRC351/PRC351_Item_01.xob"
+  }
+  SCR_DeployableInventoryItemInventoryComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName UIInfo "{5222EB4D07D865FA}" {
+     Name "#BF-Item_Radio_PRC351_Name"
+     Description "#BF-Item_Radio_PRC351_Description"
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{5EA4A89F0D06E1A6}" {
+      CameraPreset Front
+      CameraOrbitAngles -25 25 0
+      CameraOffset 0 -0.05 0
+      PreviewModel "{76A4847CBE091314}Assets/Items/Equipment/Radios/PRC351/PRC351_Worn_01.xob"
+      LodModel 1
+     }
+    }
+   }
+  }
+  SCR_RestrictedDeployableSpawnPointComponent "{5EA4A89F0D06E1A8}" {
+   m_sReplacementPrefab "{83ECD6FA95E9DDEC}Prefabs/Systems/DeployableRadios/DeployableItemRadioReplacementUK.et"
+   m_FactionKey "UK"
+   m_fSuppliesValue 200
+  }
+  BaseLoadoutClothComponent "{5EA4A89F0D06E1DE}" {
+   WornModel "{76A4847CBE091314}Assets/Items/Equipment/Radios/PRC351/PRC351_Worn_01.xob"
+   ItemModel "{07EFC9D262515802}Assets/Items/Equipment/Radios/PRC351/PRC351_Item_01.xob"
+   DeflatedModel "{CD3C84273D24743E}Assets/Items/Equipment/Radios/PRC351/PRC351_Worn_Inflated_01.xob"
+  }
+ }
+ coords 0.462 0.947 -2.78
+}

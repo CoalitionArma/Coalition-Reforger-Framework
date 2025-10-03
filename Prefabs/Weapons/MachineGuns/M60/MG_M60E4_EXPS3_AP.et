@@ -1,0 +1,17 @@
+GenericEntity : "{AEC360C43F8F162C}Prefabs/Weapons/MachineGuns/M60/MG_M60E4_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{630E0B978990B0A6}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+      Prefab "{3D4B54552E600505}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_EotechEXPS3/Collim_EXPS3_BLK.et"
+     }
+    }
+    MuzzleComponent "{50F64C4591CD7AA6}" {
+     MagazineTemplate "{7800FE7DDFC898F1}Prefabs/Weapons/Magazines/762x51_M60_100rnd/Box_762x51_M60_100rnd_4AP_M61_M62.et"
+    }
+   }
+  }
+ }
+}
