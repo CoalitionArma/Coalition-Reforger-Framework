@@ -1,10 +1,41 @@
+class CRF_BulletTracerContainer
+{
+	ref Shape m_Line;
+	float m_fTimeAlive;
+}
+
 modded class SCR_PlayerController
 {
+	bool m_bIsBulletTrackingEnabled = false;
+	ref array<ref CRF_BulletTracerContainer> m_aActiveTraces = {};
+	
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		
+		super.EOnFrame(owner, timeSlice);
+		ref array<ref CRF_BulletTracerContainer> bulletsToDelete = {};
+		foreach (ref CRF_BulletTracerContainer bullet: m_aActiveTraces)
+		{
+			bullet.m_fTimeAlive -= timeSlice;
+			if (bullet.m_fTimeAlive <= 0 || !m_bIsBulletTrackingEnabled)
+				bulletsToDelete.Insert(bullet);
+		}
+		if (bulletsToDelete.Count() > 0)
+		{
+			foreach (ref CRF_BulletTracerContainer bullet: bulletsToDelete)
+			{
+				delete bullet.m_Line;
+				m_aActiveTraces.RemoveItem(bullet);
+			}
+		}
+	}
+	
 	/**
 	 * Called when the player controller updates (typically whenever a player joins/rejoins)
 	 */
 	override protected void UpdateLocalPlayerController()
 	{
+		
 		super.UpdateLocalPlayerController();
 		
 		if (RplSession.Mode() == RplMode.Dedicated || !CRF_Gamemode.GetInstance() || !CRF_PlayerControllerManager.GetInstance())

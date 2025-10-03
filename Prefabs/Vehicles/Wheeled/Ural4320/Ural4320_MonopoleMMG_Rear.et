@@ -1,0 +1,83 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "Ural ZU23"
+    Description "Temporary, hopefully"
+    m_Image "{19AD04D1091FD077}Assets/BaconZU23/ArmaReforgerWorkbenchSteam_QMlSFzzYcU.edds"
+    m_aAuthoredLabels + {
+     1001
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C58171230A92}" {
+   MaxCumulativeVolume 100000
+   MaxItemSize 40 40 40
+   MultiSlots {
+    MultiSlotConfiguration "{667B6C74C66F9668}" {
+     SlotTemplate InventoryStorageSlot ammo {
+      Prefab "{D22DF40D07DA4615}Prefabs/Weapons/Magazines/Box_762x51_GPMG_100rnd_4Ball_1Tracer.et"
+     }
+     NumSlots 5
+    }
+   }
+  }
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 17524
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo cannon {
+     Offset 0.024 1.4191 -3.5975
+     Angles 0 180 0
+     ChildPivotID "w_turret_base_mount"
+     Prefab "{19B8FEA4D767B3C7}Prefabs/Weapons/Tripods/Monopod_LouchPole_GPMG.et"
+     DisablePhysicsInteraction 1
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterControllers 1
+     RegisterWeapons 1
+     RegisterCompartments 1
+    }
+    RegisteringComponentSlotInfo cargo {
+     Prefab "{906D6A2A647ECC76}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_transport_noCargo.et"
+    }
+    RegisteringComponentSlotInfo leftSandbags {
+     Offset 0.3807 1.8358 -2.865
+     Angles -90 90 0
+     Prefab "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et"
+     DisablePhysicsInteraction 1
+    }
+    RegisteringComponentSlotInfo rightSandbags {
+     Offset -0.4265 1.8358 -2.8702
+     Angles 90 90 0
+     Prefab "{CFFEB23FBEA00322}Prefabs/Props/Military/Sandbags/Sandbag_01_short_burlap.et"
+     DisablePhysicsInteraction 1
+    }
+    RegisteringComponentSlotInfo garbage {
+     Offset 0.1772 1.4585 -1.176
+     Angles 0 43.6049 0
+     Prefab "{F60BDAFDAF677A65}PrefabLibrary/Props/Garbage/Junk_01_single_mattress.et"
+     DisablePhysicsInteraction 1
+    }
+    RegisteringComponentSlotInfo garbage2 {
+     Offset -0.7193 1.4855 -0.5486
+     Angles 0 121.26329 0
+     Prefab "{F12538ECDBE9D02F}PrefabLibrary/Props/Garbage/Litter_01_small.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+   SlotMappers {
+    CompartmentToSlotMapping cannon {
+     SlotName "cannon"
+     Coverage 0.001
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01" "TurretCompartment"
+     }
+    }
+   }
+  }
+ }
+ coords 0 -0.308 0.22
+}

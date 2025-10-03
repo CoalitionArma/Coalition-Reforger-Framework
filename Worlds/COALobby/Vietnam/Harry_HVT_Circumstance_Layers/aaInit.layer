@@ -1,0 +1,138 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 742.984 305.978 3543.042
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 9
+   m_iStartingMinutes 19
+  }
+ }
+ coords 739.352 285.651 3477.196
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "ION has been contracted to destroy a radar array in Dankai, being held by rebel forces. The rebel forces are outgunned, but have a strong defensive position. "\
+   ""\
+   "BLUFOR Composition: Modern ION"\
+   "BLUFOR Assets: Vehicle Depot, unarmed and armed GAZs"\
+   ""\
+   "OPFOR Composition: Modern Rebels"\
+   "OPFOR Assets: MMG"\
+   ""\
+   "Time: 60"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Destroy both of the marked radar arrays."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the marked radar arrays."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "The vehicle depot has a limited amount of supplies, and must be used by leadership."\
+   ""\
+   "Note that on Vietnam, many buildings can't be destroyed."\
+   ""\
+   "The radar arrays required at least a demo sized explosive."\
+   ""\
+   "Shaped charge fragmentation changes are in effect on this mission. "
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{FC53D269882191BC}Configs/Gearscripts/Custom/Harry/Circumstance/CRF_GS_RHSION_SCARs_Harry.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{34D63C05508C3BB1}Configs/Gearscripts/Custom/Harry/Circumstance/CRF_GS_Modern_Rebels_Harry.conf"
+ }
+ {
+  SCR_FactionManager "666EEDE4337ACF27" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{666D532525D05577}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{666D532529798425}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{666D53252F7F131E}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{666D53252F81C4E2}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{666D53252FC6B7F0}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{666D53252E1D6FDD}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{666D53252E54529A}" {
+        m_sCallsign "Sniper Team"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{666D53251EBB0609}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{666D53251EF06FCA}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{666D53251C9932AD}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{666D5325631140D8}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{666D532563981051}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{666D532563DFD1A6}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{666D53256217B942}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{666D5325628C4042}" {
+        m_sCallsign "MMG-2"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

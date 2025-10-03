@@ -18,6 +18,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
+	protected SCR_ButtonComponent m_wBulletPathButton;            // Button component for Toggling bullet paths
 	
 	// Game-related components
 	protected CRF_Gamemode m_Gamemode;                       // Reference to the gamemode instance
@@ -112,6 +113,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wPlayerSlotWidget = m_wRoot.FindAnyWidget("PlayerSlots");
 		m_wPlayerSlots = CRF_ListboxComponent.Cast(m_wPlayerSlotWidget.FindHandler(CRF_ListboxComponent));
 		m_wVONChannels = CRF_ListboxComponent.Cast(m_wRoot.FindAnyWidget("VONChannels").FindHandler(CRF_ListboxComponent));
+		m_wBulletPathButton = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("ToggleBullet").FindHandler(SCR_ButtonComponent));
 		
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_wBLUFORTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("BLUFORTicketsText"));
@@ -157,6 +159,20 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+		
+		m_wBulletPathButton.m_OnClicked.Insert(ToggleBulletPaths);
+		m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.RED));
+	}
+	
+	void ToggleBulletPaths()
+	{
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerController());
+		pc.m_bIsBulletTrackingEnabled = !pc.m_bIsBulletTrackingEnabled;
+		
+		if (!pc.m_bIsBulletTrackingEnabled)
+			m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.RED));
+		else
+			m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.GREEN));
 	}
 	
 	/**
@@ -750,7 +766,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		float leftGameInfoX = FrameSlot.GetPosX(m_wFrameGameInfo);
 		float leftGameInfoY = FrameSlot.GetPosY(m_wFrameGameInfo);
 		
-		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 150)
+		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 200)
 		{
 			// Expand slots panel when cursor is over it
 			leftGameInfoX += tDelta * 2400.0;
@@ -1373,6 +1389,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	{
 		// Call parent class cleanup
 		super.OnMenuClose();
+		
+		SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled = false;
 		
 		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
 		

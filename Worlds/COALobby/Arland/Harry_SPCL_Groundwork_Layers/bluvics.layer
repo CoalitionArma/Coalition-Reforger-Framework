@@ -1,0 +1,142 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 1329.847 39.01 2122.225
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1306.151 39 2081.001
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1320.135 39 2133.743
+  angleY -37.865
+  m_rnPrefab "{09E51C07162482CF}Prefabs/Vehicles/Wheeled/S105/armed/Ural_rally_armed_blue_cannon.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1338.438 39.01 2146.208
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1328.435 39 2096.495
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1347.914 39.01 2134.787
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1357.395 39 2116.63
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1305.531 39.01 2105.318
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1292.8 39.01 2096.466
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1315.807 39.01 2112.463
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1341.374 39 2105.491
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1305.554 39 2124.128
+  angleY -37.865
+  m_rnPrefab "{FDF86C42B791FAC4}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_minigun.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1281.537 39 2110.145
+  angleY -37.865
+  m_rnPrefab "{B0F0D79679C1442F}Prefabs/Vehicles/Wheeled/S105/armed/Ural_rally_armed_blue_gau.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1318.56 39 2089.628
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1293.608 39 2117.121
+  angleY -37.865
+  m_rnPrefab "{FDF86C42B791FAC4}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_minigun.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1323.555 39.971 2062.021
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1367.919 39.833 2093.127
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1344.417 40.094 2075.988
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1354.725 40.125 2083.851
+  angleY -37.865
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1334.733 39.993 2069.365
+  angleY -38.598
+  m_rnPrefab "{C39B9EF2603CD9AD}Prefabs/Vehicles/Wheeled/S105/armed/S105_rally_armed_blue_thompson.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}

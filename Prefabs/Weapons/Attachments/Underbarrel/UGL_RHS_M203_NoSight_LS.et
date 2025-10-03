@@ -1,0 +1,11 @@
+GameEntity : "{239CEF0C9AB5556E}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203.et" {
+ ID "50D6D3D8D7C645EE"
+ components {
+  MeshObject "{BB6A64F1D169741D}" {
+   Object "{F9F253A2DFEBB31A}Assets/Weapons/Rifles/m4a1/RHS_M203_nosights.xob"
+  }
+  MuzzleInMagComponent "{B3A264F493CC5A18}" {
+   AmmoTemplate "{2A8586964D22492A}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433_LS.et"
+  }
+ }
+}
