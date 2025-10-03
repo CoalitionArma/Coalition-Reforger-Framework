@@ -774,7 +774,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (playerId)
 		{
 			m_RplBroadcastManager.Closemap(playerId);
-			m_RplBroadcastManager.HolsterGun(playerId);
+			//Causes issues when trying to holster a weapon we are deleting.
+			//m_RplBroadcastManager.HolsterGun(playerId);
 		}
 		
 		CRF_GearscriptManager.GetInstance().SetEntityGear(entity, prefab);

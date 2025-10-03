@@ -9,20 +9,20 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   }
  }
  {
-  coords 1831.971 6.781 1998.271
+  coords 1905.547 15.234 1304.992
   m_fWorldSize 150
   m_sDescription "Colonel's Extraction"
   m_bShowForAnyFaction 1
  }
  {
-  coords 1259.441 92.897 2693.13
+  coords 1284.352 4.499 2143.385
   m_fWorldSize 150
   m_sDescription "MACV-SOG Extraction"
   m_bShowForAnyFaction 1
  }
  {
-  coords 940.001 37.295 1751.227
-  angleY 75
+  coords 823.265 4.608 1946.337
+  angleY 110
   m_MarkerColor 0.502 0 0 1
   m_sQuadName "direction-of-attack"
   m_fWorldSize 200

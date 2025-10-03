@@ -1,0 +1,180 @@
+CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ coords 4462.592 188.402 6893.472
+ angleY 97.609
+}
+$grp PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ {
+  components {
+   CRF_PolyZone "{65862E4575B86577}" {
+    m_cPolygonColor 1 1 0 1
+    m_cPolygonBorderColor 1 1 0 1
+    m_fPolygonBorderWidth 50
+   }
+  }
+  coords 4760.944 165.437 7039.076
+  Points {
+   ShapePoint "{666E5CD7E634FF80}" {
+    Position -630.705 0 -92.735
+   }
+   ShapePoint "{666E5CD7E5DB9EA3}" {
+    Position -900.837 0 65.939
+   }
+   ShapePoint "{666E5CD7E52C514D}" {
+    Position -920.921 0 160.554
+   }
+   ShapePoint "{666E5CD7E4960B80}" {
+    Position -621.38 0 238.815
+   }
+   ShapePoint "{666E5CD7FF74D6A6}" {
+    Position -231.121 0 283.855
+   }
+   ShapePoint "{666E5CD7FCBD1303}" {
+    Position 46.124 0 327.6
+   }
+   ShapePoint "{666E5CD7FC599E6E}" {
+    Position 201.342 0 376.532
+   }
+   ShapePoint "{666E5CD7F354489A}" {
+    Position 444.701 0 503.729
+   }
+   ShapePoint "{666E5CD7F3015591}" {
+    Position 647.127 0 710.65
+   }
+   ShapePoint "{666E5CD7F28A5423}" {
+    Position 938.59 0 1011.357
+   }
+   ShapePoint "{666E5CD7CB3F885E}" {
+    Position 1045.241 0 1004.456
+   }
+   ShapePoint "{666E5CD7C9E97830}" {
+    Position 867.484 0 427.573
+   }
+   ShapePoint "{666E5CD7C514702F}" {
+    Position 737.347 0 152.068
+   }
+   ShapePoint "{666E5CD7D9D88F7C}" {
+    Position 417.511 0 -140.783
+   }
+   ShapePoint "{666E5CD7D9110AC7}" {
+    Position 171.469 0 -247.492
+   }
+   ShapePoint "{666E5CD7D8BC0677}" {
+    Position -7.492 0 -260.417
+   }
+   ShapePoint "{666E5CD7DD838BD0}" {
+    Position -278.443 0 -240.449
+   }
+   ShapePoint "{666E5CD7DD17E49E}" {
+    Position -455.549 0 -179.795
+   }
+  }
+  {
+   CRF_PolyZoneTrigger {
+    ID "658635BEF7631DCD"
+   }
+  }
+ }
+ {
+  components {
+   CRF_PolyZone "{65862E4575B86577}" {
+    m_bReversed 0
+   }
+  }
+  coords 4813.884 170.13 7004.52
+  Points {
+   ShapePoint "{666E5CDBB0988C83}" {
+    Position -413.297 0 -33.35
+   }
+   ShapePoint "{666E5CDB8B274A75}" {
+    Position -231.626 0 34.713
+   }
+   ShapePoint "{666E5CDB8A22303B}" {
+    Position -209.903 0 165.151
+   }
+   ShapePoint "{666E5CDB89675A4F}" {
+    Position -159.129 0 326.887
+   }
+   ShapePoint "{666E5CDB8C1BA29B}" {
+    Position -91.942 0 343.146
+   }
+   ShapePoint "{666E5CDB838780D9}" {
+    Position -9.869 0 350.675
+   }
+   ShapePoint "{666E5CDB8235FAF3}" {
+    Position -16.256 0 200.809
+   }
+   ShapePoint "{666E5CDB80FE7BEF}" {
+    Position 100.294 0 74.604
+   }
+   ShapePoint "{666E5CDB8059B2B6}" {
+    Position 160.227 0 84.633
+   }
+   ShapePoint "{666E5CDB86ECA29B}" {
+    Position 247.126 0 69.498
+   }
+   ShapePoint "{666E5CDB85AC20A6}" {
+    Position 299.566 0 147.882
+   }
+   ShapePoint "{666E5CDB84380F4A}" {
+    Position 341.552 0 129.497
+   }
+   ShapePoint "{666E5CDB9ADBD4F5}" {
+    Position 426.765 0 60.284
+   }
+   ShapePoint "{666E5CDB992BEC3C}" {
+    Position 313.742 0 -60.575
+   }
+   ShapePoint "{666E5CDB987003F4}" {
+    Position 248.542 0 -6.698
+   }
+   ShapePoint "{666E5CDB9D0E2F64}" {
+    Position 209.432 0 -26.763
+   }
+   ShapePoint "{666E5CDB9C8493A9}" {
+    Position 152.902 0 -31.14
+   }
+   ShapePoint "{666E5CDB934D41DB}" {
+    Position 47.745 0 -132.479
+   }
+   ShapePoint "{666E5CDB926F69CD}" {
+    Position -75.242 0 -160.371
+   }
+   ShapePoint "{666E5CDB915B4C69}" {
+    Position -175.35 0 -121.271
+   }
+   ShapePoint "{666E5CDB90E996D9}" {
+    Position -231.587 0 -157.976
+   }
+   ShapePoint "{666E5CDB97095CA1}" {
+    Position -427.545 0 -146.047
+   }
+  }
+  {
+   CRF_PolyZoneTrigger {
+    ID "658635BEF7631DCD"
+    components {
+     CRF_PolyZoneMeshComponent "{658635BE82F382BC}" {
+      m_Material "{6E3B1A4109AAE4B0}Assets/Editor/VirtualArea/GameBoundryHardBanana.emat"
+     }
+    }
+   }
+  }
+ }
+}
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 4781.838 169.309 6992.521
+ angleY 0
+ m_MarkerColor 1 1 0 1
+ m_fWorldSize 60
+ m_sDescription "SECURE THE CHURCH"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}
+CRF_ManualMarker : "{C113055E29F43DAA}PrefabsEditable/Markers/INDFORSpawnMarker.et" {
+ coords 4735.752 163.296 7328.397
+ angleY 0
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 5142.076 193.671 7034.831
+ angleY 67.317
+}
