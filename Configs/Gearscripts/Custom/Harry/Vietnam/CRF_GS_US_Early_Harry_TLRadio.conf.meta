@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{5DEB072C5A1F718F}Configs/Gearscripts/Custom/Harry/Vietnam/CRF_GS_US_Early_Harry_TLRadio.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

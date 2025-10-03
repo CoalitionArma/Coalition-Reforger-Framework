@@ -15,6 +15,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected Widget m_wSlotSelector;                        // Widget for selecting slots
 	protected FrameWidget m_wFrameSlots;                     // Frame for displaying slots
 	protected FrameWidget m_wFrameChannels;                  // Frame for displaying VON channels
+	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
 	
@@ -61,6 +62,21 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
+	// Ticket elements
+	protected CRF_RespawnManager m_RespawnManager;
+	protected Widget m_wBLUFORTickets;
+	protected TextWidget m_wBLUFORTicketsText;
+	protected bool m_bBLUFORTicketsActive;
+	protected Widget m_wOPFORTickets;
+	protected TextWidget m_wOPFORTicketsText;
+	protected bool m_bOPFORTicketsActive;
+	protected Widget m_wINDFORTickets;
+	protected TextWidget m_wINDFORTicketsText;
+	protected bool m_bINDFORTicketsActive;
+	protected Widget m_wCIVTickets;
+	protected TextWidget m_wCIVTicketsText;
+	protected bool m_bCIVTicketsActive;
+	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
 	//=================================================================================================
@@ -97,6 +113,17 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wPlayerSlots = CRF_ListboxComponent.Cast(m_wPlayerSlotWidget.FindHandler(CRF_ListboxComponent));
 		m_wVONChannels = CRF_ListboxComponent.Cast(m_wRoot.FindAnyWidget("VONChannels").FindHandler(CRF_ListboxComponent));
 		
+		m_RespawnManager = CRF_RespawnManager.GetInstance();
+		m_wBLUFORTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("BLUFORTicketsText"));
+		m_wOPFORTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("OPFORTicketsText"));
+		m_wINDFORTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("INDFORTicketsText"));
+		m_wCIVTicketsText = TextWidget.Cast(m_wRoot.FindAnyWidget("CIVTicketsText"));
+		m_wBLUFORTickets = m_wRoot.FindAnyWidget("BLUFORTickets");
+		m_wOPFORTickets = m_wRoot.FindAnyWidget("OPFORTickets");
+		m_wINDFORTickets = m_wRoot.FindAnyWidget("INDFORTickets");
+		m_wCIVTickets = m_wRoot.FindAnyWidget("CIVTickets");
+		
+		
 		// Register input action listeners
 		RegisterActionListeners();
 		
@@ -110,7 +137,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		InitFactionButtons();
 		
 		// Initialize VON (Voice Over Network)
-		InitVON();
+		if (!CVON_VONGameModeComponent.GetInstance())
+			InitVON();
 		
 		// Update slots and register for slot updates
 		UpdateSlots();
@@ -124,8 +152,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		
 		// Find and cast main timer widgets
-		m_wTimer = TextWidget.Cast(m_wRoot.FindWidget("timeLeftTimer"));
-		m_wBackground = ImageWidget.Cast(m_wRoot.FindWidget("timeLeftBackground"));
+		m_wTimer = TextWidget.Cast(m_wRoot.FindAnyWidget("timeLeftTimer"));
+		m_wBackground = ImageWidget.Cast(m_wRoot.FindAnyWidget("timeLeftBackground"));
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
@@ -137,10 +165,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected void RegisterActionListeners()
 	{
 		InputManager inputManager = GetGame().GetInputManager();
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			inputManager.AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+			inputManager.AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+		}
 		inputManager.AddActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 		inputManager.AddActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
-		inputManager.AddActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-		inputManager.AddActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 		inputManager.AddActionListener("GadgetMap", EActionTrigger.DOWN, Action_ToggleMap);
 		inputManager.AddActionListener("ManualCameraTeleport", EActionTrigger.DOWN, Action_ManualCameraTeleport);
 		inputManager.AddActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
@@ -181,6 +212,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wFrameSlots = FrameWidget.Cast(m_wRoot.FindAnyWidget("FrameSlots"));
 		m_wSlotSelector = m_wRoot.FindAnyWidget("SlotSelector");
 		m_wFrameChannels = FrameWidget.Cast(m_wRoot.FindAnyWidget("VONSlots"));
+		m_wFrameGameInfo = FrameWidget.Cast(m_wRoot.FindAnyWidget("GameInfo"));
 		
 		// Register faction button click handlers
 		SCR_ButtonTextComponent.Cast(ButtonWidget.Cast(m_wBluforButton).FindHandler(SCR_ButtonTextComponent)).m_OnClicked.Insert(SelectFactionBlufor);
@@ -209,9 +241,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			SelectFactionCiv();
 	}
 	
-	/**
-	 * Initialize Voice Over Network
-	 */
 	protected void InitVON()
 	{
 		// Initialize VON with a slight delay to ensure proper setup
@@ -276,6 +305,9 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Update icons
 		UpdateIcons();
 		
+		//Hmm I wonder if this updates tickets
+		UpdateTickets();
+		
 		// Update chat if available
 		if (m_ChatPanel)
 			m_ChatPanel.OnUpdateChat(tDelta);
@@ -285,6 +317,59 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		sender.SetKillFeedTypeDeadLocal();
 		
 		UpdateTimer();
+	}
+	
+	//Used to update tickets
+	void UpdateTickets()
+	{
+		//BLUFOR LOGIC
+		if (m_RespawnManager.m_iBLUFORTickets > 0 && !m_bBLUFORTicketsActive) //Lets tickets stay on screen even if they reach 0 as they are considered an active faction.
+			m_bBLUFORTicketsActive = true;
+		
+		if (m_bBLUFORTicketsActive)
+		{
+			m_wBLUFORTickets.SetVisible(true);
+			m_wBLUFORTicketsText.SetText("BLUFOR Tickets: " + m_RespawnManager.m_iBLUFORTickets.ToString());
+		}
+		else
+			m_wBLUFORTickets.SetVisible(false);
+		
+		//OPFOR LOGIC
+		if (m_RespawnManager.m_iOPFORTickets > 0 && !m_bOPFORTicketsActive)
+			m_bOPFORTicketsActive = true;
+		
+		if (m_bOPFORTicketsActive)
+		{
+			m_wOPFORTickets.SetVisible(true);
+			m_wOPFORTicketsText.SetText("OPFOR Tickets: " + m_RespawnManager.m_iOPFORTickets.ToString());
+		}
+		else
+			m_wOPFORTickets.SetVisible(false);
+		
+		//INDFOR LOGIC
+		if (m_RespawnManager.m_iINDFORTickets > 0 && !m_bINDFORTicketsActive)
+			m_bINDFORTicketsActive = true;
+		
+		if (m_bINDFORTicketsActive)
+		{
+			m_wINDFORTickets.SetVisible(true);
+			m_wINDFORTicketsText.SetText("INDFOR Tickets: " + m_RespawnManager.m_iINDFORTickets.ToString());
+		}
+		else
+			m_wINDFORTickets.SetVisible(false);
+		
+		//CIV LOGIC
+		if (m_RespawnManager.m_iCIVTickets > 0 && !m_bCIVTicketsActive)
+			m_bCIVTicketsActive = true;
+		
+		if (m_bCIVTicketsActive)
+		{
+			m_wCIVTickets.SetVisible(true);
+			m_wCIVTicketsText.SetText("CIV Tickets: " + m_RespawnManager.m_iCIVTickets.ToString());
+		}
+		else
+			m_wCIVTickets.SetVisible(false);
+
 	}
 	
 	/**
@@ -660,6 +745,33 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_wRoot.FindAnyWidget("SliderBGR").SetVisible(true);
 			m_wRoot.FindAnyWidget("ArrowR").SetVisible(true);
 		}
+		
+		// Update VON channels panel visibility
+		float leftGameInfoX = FrameSlot.GetPosX(m_wFrameGameInfo);
+		float leftGameInfoY = FrameSlot.GetPosY(m_wFrameGameInfo);
+		
+		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 150)
+		{
+			// Expand slots panel when cursor is over it
+			leftGameInfoX += tDelta * 2400.0;
+			if (leftGameInfoX > 0)
+				leftGameInfoX = 0;
+			
+			FrameSlot.SetPosX(m_wFrameGameInfo, leftGameInfoX);
+			m_wRoot.FindAnyWidget("SliderBGLL").SetVisible(false);
+			m_wRoot.FindAnyWidget("ArrowLL").SetVisible(false);
+		}
+		else
+		{
+			// Collapse slots panel when cursor moves away
+			leftGameInfoX -= tDelta * 2400.0;
+			if (leftGameInfoX < -150)
+				leftGameInfoX = -150;
+			
+			FrameSlot.SetPosX(m_wFrameGameInfo, leftGameInfoX);
+			m_wRoot.FindAnyWidget("SliderBGLL").SetVisible(true);
+			m_wRoot.FindAnyWidget("ArrowLL").SetVisible(true);
+		}
 	}
 	
 	/**
@@ -687,7 +799,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Schedule radio frequency update after channel creation
 		// Use a longer delay to allow server replication and channel assignment to complete
-		GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 500, false);
+		if (!CVON_VONGameModeComponent.GetInstance())
+			GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 500, false);
 	}
 	
 	/**
@@ -802,17 +915,20 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Update local channel counter to match server state
 		m_iLocalChannelUpdates = m_MenuManager.m_iChannelChanges;
 		
-		// Toggle radio power based on whether player is in a channel
-		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
-		bool isInChannel = m_MenuManager.GetChannel(localPlayerId) != 0;
-		SetRadioPower(isInChannel);
-		
-		// Update radio frequency to match current channel assignment
-		// This ensures the radio frequency is correct after channel changes
-		if (isInChannel)
+		if (!CVON_VONGameModeComponent.GetInstance())
 		{
-			// Schedule frequency update after a small delay to ensure replication is complete
-			GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 100, false);
+			// Toggle radio power based on whether player is in a channel
+			int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
+			bool isInChannel = m_MenuManager.GetChannel(localPlayerId) != 0;
+			SetRadioPower(isInChannel);
+	
+			// Update radio frequency to match current channel assignment
+			// This ensures the radio frequency is correct after channel changes
+			if (isInChannel)
+			{
+				// Schedule frequency update after a small delay to ensure replication is complete
+				GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 100, false);
+			}
 		}
 	}
 	
@@ -862,9 +978,12 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			CRF_RplToAuthorityManager.GetInstance().JoinChannel(localPlayerId, channelId);
 		}
 		
-		// Schedule radio frequency update after channel join
-		// Use a delay to allow server replication to complete
-		GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 200, false);
+		if (!CVON_VONGameModeComponent.GetInstance())
+		{
+			// Schedule radio frequency update after channel join
+			// Use a delay to allow server replication to complete
+			GetGame().GetCallqueue().CallLater(UpdateRadioFrequency, 200, false);
+		}
 	}
 	
 	/**
@@ -1271,10 +1390,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		InputManager inputManager = GetGame().GetInputManager();
 		if (inputManager)
 		{
+			if (!CVON_VONGameModeComponent.GetInstance())
+			{
+				inputManager.RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
+				inputManager.RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
+			}
 			inputManager.RemoveActionListener("ChatToggle", EActionTrigger.DOWN, Action_OnChatToggleAction);
 			inputManager.RemoveActionListener("MenuBack", EActionTrigger.DOWN, Action_Exit);
-			inputManager.RemoveActionListener("VONDirect", EActionTrigger.DOWN, Action_VONon);
-			inputManager.RemoveActionListener("VONDirect", EActionTrigger.UP, Action_VONOff);
 			inputManager.RemoveActionListener("GadgetMap", EActionTrigger.DOWN, Action_ToggleMap);
 			inputManager.RemoveActionListener("ManualCameraTeleport", EActionTrigger.DOWN, Action_ManualCameraTeleport);
 			inputManager.RemoveActionListener("ShowScoreboard", EActionTrigger.DOWN, OnShowPlayerList);
@@ -1431,11 +1553,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			return Vector(centerX, centerY, 0);
 		}
 	}
-
+	
 	//=================================================================================================
 	// RADIO AND VOICE COMMUNICATION METHODS
 	//=================================================================================================
-	
+
 	/**
 	 * Retrieves the player's radio transceiver and configures it for voice communication
 	 * @return The configured RadioTransceiver object
@@ -1446,18 +1568,18 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
 		if (!playerEntity)
 			return null;
-		
+
 		// Get all items in player's inventory
 		ref array<IEntity> inventoryItems = {};
 		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(
 			playerEntity.FindComponent(SCR_InventoryStorageManagerComponent)
 		);
-		
+
 		if (!inventoryManager)
 			return null;
-			
+
 		inventoryManager.GetItems(inventoryItems);
-		
+
 		// Find the radio entity in inventory
 		IEntity radioEntity = null;
 		foreach (IEntity item : inventoryItems)
@@ -1468,31 +1590,31 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				break;
 			}
 		}
-		
+
 		if (!radioEntity)
 			return null;
-		
+
 		// Get radio component and power it on
 		BaseRadioComponent radioComponent = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
 		if (!radioComponent)
 			return null;
-			
+
 		radioComponent.SetPower(true);
-		
+
 		// Get transceiver and set frequency based on channel
 		RadioTransceiver transceiver = RadioTransceiver.Cast(radioComponent.GetTransceiver(0));
 		if (!transceiver)
 			return null;
-			
+
 		// Get the current player's channel with improved frequency calculation
 		int localPlayerId = SCR_PlayerController.GetLocalPlayerId();
 		int playerChannelId = CRF_MenuManager.GetInstance().GetChannel(localPlayerId);
-		
+
 		// Calculate unique frequency for the channel to prevent conflicts
 		// Use a base frequency of 10000 + (channelId * 1000) to ensure separation
 		// This prevents frequency collisions between different channels
 		float frequency = 10000.0 + (playerChannelId * 1000.0);
-		
+
 		// For custom channels (ID > 1), add additional offset based on channel name hash
 		// This ensures each custom channel gets a truly unique frequency
 		if (playerChannelId > 1 && m_MenuManager.m_aVONChannels.IsIndexValid(playerChannelId))
@@ -1500,7 +1622,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			string channelData = m_MenuManager.m_aVONChannels[playerChannelId];
 			ref array<string> channelParts = {};
 			channelData.Split("|", channelParts, true);
-			
+
 			if (channelParts.Count() > 0)
 			{
 				string channelName = channelParts[0];
@@ -1511,20 +1633,20 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				frequency += frequencyOffset;
 			}
 		}
-		
+
 		// Set the radio frequency using RadioHandlerComponent for proper replication
 		RadioHandlerComponent radioHandler = RadioHandlerComponent.Cast(
 			GetGame().GetPlayerController().FindComponent(RadioHandlerComponent)
 		);
-		
+
 		if (radioHandler)
 		{
 			radioHandler.SetFrequency(transceiver, frequency);
 		}
-		
+
 		return transceiver;
 	}
-	
+
 	/**
 	 * Sets the power state of the player's radio
 	 * @param input - true to power on, false to power off
@@ -1535,19 +1657,19 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
 		if (!playerEntity)
 			return;
-		
+
 		// Get inventory manager
 		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(
 			playerEntity.FindComponent(SCR_InventoryStorageManagerComponent)
 		);
-		
+
 		if (!inventoryManager)
 			return;
-		
+
 		// Get all inventory items
 		ref array<IEntity> inventoryItems = {};
 		inventoryManager.GetItems(inventoryItems);
-		
+
 		// Find radio in inventory
 		IEntity radioEntity = null;
 		foreach (IEntity item : inventoryItems)
@@ -1558,10 +1680,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 				break;
 			}
 		}
-		
+
 		if (!radioEntity)
 			return;
-		
+
 		// Set radio power state
 		BaseRadioComponent radioComponent = BaseRadioComponent.Cast(radioEntity.FindComponent(BaseRadioComponent));
 		if (radioComponent)
@@ -1569,7 +1691,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			radioComponent.SetPower(input);
 		}
 	}
-	
+
 	/**
 	 * Activates voice transmission when PTT key is pressed
 	 * Connects to the appropriate radio channel
@@ -1580,30 +1702,30 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		int playerChannel = CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId());
 		if (playerChannel == 0)
 			return;
-		
+
 		// Cancel any pending VoN disable calls
 		GetGame().GetCallqueue().Remove(LobbyVoNDisableDelayed);
-		
+
 		// Get VoN component from player entity
 		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
 		if (!playerEntity)
 			return;
-			
+
 		SCR_VoNComponent vonComponent = SCR_VoNComponent.Cast(playerEntity.FindComponent(SCR_VoNComponent));
 		if (!vonComponent)
 			return;
-		
+
 		// Configure and activate voice transmission
 		// Get fresh transceiver with updated frequency each time VON is activated
 		RadioTransceiver transceiver = GetVoNTransiver();
 		if (!transceiver)
 			return;
-			
+
 		vonComponent.SetTransmitRadio(transceiver);
 		vonComponent.SetCommMethod(ECommMethod.SQUAD_RADIO);
 		vonComponent.SetCapture(true);
 	}
-	
+
 	/**
 	 * Deactivates voice transmission when PTT key is released
 	 * Uses a delay to prevent audio cutoff
@@ -1614,11 +1736,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		int playerChannel = CRF_MenuManager.GetInstance().GetChannel(SCR_PlayerController.GetLocalPlayerId());
 		if (playerChannel == 0)
 			return;
-		
+
 		// Schedule delayed VoN deactivation to prevent audio cutoff
 		GetGame().GetCallqueue().Call(LobbyVoNDisableDelayed);
 	}
-	
+
 	/**
 	 * Delayed method to disable voice transmission
 	 * Used to prevent audio cutoff when releasing PTT key
@@ -1629,11 +1751,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		IEntity playerEntity = SCR_PlayerController.GetLocalMainEntity();
 		if (!playerEntity)
 			return;
-			
+
 		SCR_VoNComponent vonComponent = SCR_VoNComponent.Cast(playerEntity.FindComponent(SCR_VoNComponent));
 		if (!vonComponent)
 			return;
-		
+
 		// Reset communication method and stop capturing
 		vonComponent.SetCommMethod(ECommMethod.DIRECT);
 		vonComponent.SetCapture(false);

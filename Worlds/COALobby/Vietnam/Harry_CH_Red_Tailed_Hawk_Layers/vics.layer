@@ -1,0 +1,46 @@
+$grp GenericEntity : "{A13F6A7F82DF031B}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_US_01.et" {
+ {
+  coords 4003.507 1.477 1503.579
+  {
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+     SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+      m_aDisabledResourceTypes {
+       0
+      }
+     }
+    }
+   }
+   SCR_VehicleSpawn {
+    coords -0.74 0.796 -0.36
+    m_rnPrefab "{474B7D565A4A3F68}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_MoreAmmo.et"
+   }
+  }
+ }
+ {
+  coords 4003.323 1.437 1474.891
+  {
+   GenericEntity {
+    ID "5E6906884A85A3A3"
+    components {
+     SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+      "faction affiliation" "BLUFOR"
+     }
+     SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+      m_aDisabledResourceTypes {
+       0
+      }
+     }
+    }
+   }
+   SCR_VehicleSpawn {
+    coords -0.74 0.796 -0.36
+    m_rnPrefab "{474B7D565A4A3F68}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_MoreAmmo.et"
+   }
+  }
+ }
+}

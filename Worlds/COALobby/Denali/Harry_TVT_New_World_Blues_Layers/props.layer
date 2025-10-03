@@ -1,0 +1,28 @@
+$grp StaticModelEntity : "{3CB032367D650574}Prefabs/Structures/Agriculture/Barn/Barn_E_02/Dst/Tower_Ruin.et" {
+ {
+  coords 2181.438 375.13 2637.085
+  angleY -41.927
+  {
+   ParticleEffectEntity {
+    coords 0.186 1.262 -0.769
+    angleY 41.927
+    EffectPath "{4D5CD8B2B5DE8916}Particles/Vehicle/Vehicle_fire_engine_medium.ptc"
+   }
+  }
+ }
+ {
+  coords 897.582 431.973 3695.207
+  angleY -41.927
+  {
+   ParticleEffectEntity {
+    coords 0.186 1.262 -0.769
+    angleY 41.927
+    EffectPath "{4D5CD8B2B5DE8916}Particles/Vehicle/Vehicle_fire_engine_medium.ptc"
+   }
+  }
+ }
+}
+StaticModelEntity : "{69C51128071163C3}Prefabs/Compositions/Misc/SubCompositions/Tent_Medical_Cluttered_US_01.et" {
+ coords 1618.925 336.052 3586.456
+ angleY 0
+}

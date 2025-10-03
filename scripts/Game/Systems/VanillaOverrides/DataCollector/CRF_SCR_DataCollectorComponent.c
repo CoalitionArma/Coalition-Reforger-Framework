@@ -5,6 +5,15 @@ modded class SCR_DataCollectorComponent
 {
 	CRF_LoggingManager LM;
 	
+	// Event for tracking damage
+	protected ref ScriptInvoker m_OnPlayerDamageReceived = new ScriptInvoker();
+	
+	// Getter for the damage event invoker
+	ScriptInvoker GetOnPlayerDamageReceived()
+	{
+		return m_OnPlayerDamageReceived;
+	}
+	
 	override void OnPlayerAuditSuccess(int playerId)
 	{
 		//Print("[CRF] Player with id " + playerId + " was auditted succesfully and admitted on the Data Collector");
@@ -101,6 +110,26 @@ modded class SCR_DataCollectorComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Handle damage received by players to track weapons that cause damage
+	// This is called from CRF_SCR_CharacterDamageManagerComponent
+	// Must be accessible from other components
+	void OnPlayerDamageReceived(int victimId, IEntity killerEntity, int damageType)
+	{
+		// Make sure our logging manager instance is available
+		if (!LM)
+			LM = CRF_LoggingManager.GetInstance();
+			
+		if (!LM)
+			return;
+			
+		// Forward to the logging manager to track the weapon
+		LM.PlayerTookDamage(victimId, killerEntity, damageType);
+		
+		// Notify any listeners
+		m_OnPlayerDamageReceived.Invoke(victimId, killerEntity, damageType);
+	}
+	
 	override void OnPlayerKilled(notnull SCR_InstigatorContextData instigatorContextData)
 	{
 		int playerId = instigatorContextData.GetVictimPlayerID();
@@ -108,8 +137,13 @@ modded class SCR_DataCollectorComponent
 		IEntity killerEntity = instigatorContextData.GetKillerEntity();
 		Instigator instigator = instigatorContextData.GetInstigator();
 		
+		// Make sure our logging manager instance is available
+		if (!LM)
+			LM = CRF_LoggingManager.GetInstance();
+		
 		// Logging player kill to file
-		LM.GetInstance().LogPlayerKill(instigatorContextData);
+		if (LM)
+			LM.LogPlayerKill(instigatorContextData);
 		
 		if (instigatorContextData.GetVictimPlayerID() <= 0) {
 			OnAIKilledCRF(playerEntity,killerEntity,instigator,instigatorContextData);

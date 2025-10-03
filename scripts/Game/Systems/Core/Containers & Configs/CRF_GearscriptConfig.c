@@ -12,22 +12,22 @@ class CRF_GearScriptContainer
 	bool m_bEnableMiniArsenal;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_rLeadershipRadiosPrefab;
+	ResourceName m_rShortRangeRadioPrefab;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_rLongRangeRadioPrefab;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rRTORadiosPrefab;
-	
-	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
-	ResourceName m_rGIRadiosPrefab;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableLeadershipRadios;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableRTORadios;
+	bool m_bEnableGIRadios;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
-	bool m_bEnableGIRadios;
+	bool m_bEnableRTORadios;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -42,6 +42,9 @@ class CRF_GearScriptConfig
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "edds")]
 	ResourceName m_FactionIcon;
+	
+	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript Faction Identity", "conf class=CRF_CharacterIdentity")]
+	ResourceName m_FactionIdentity;
 	
 	[Attribute()]
 	ref CRF_Weapons m_FactionWeapons;
@@ -295,4 +298,40 @@ class CRF_Role_Custom_Gear
 	
 	[Attribute()]
 	ref array<ref CRF_Inventory_Item>  m_AdditionalInventoryItems;
+}
+
+//------------------------------------------------------------------------------------------------
+// CHARACTER IDENTITY
+//------------------------------------------------------------------------------------------------
+
+[BaseContainerProps(configRoot: true)]
+class CRF_CharacterIdentity
+{	
+	[Attribute()]
+	ref array<ref CRF_Character_Visual_Identity> m_VisualIdentityArray;
+	
+	[Attribute()]
+	ref array<ref CRF_Character_Sound_Identity> m_SoundIdentityArray;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps()]
+class CRF_Character_Visual_Identity
+{	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Head;
+	
+	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
+	ResourceName m_Body;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps()]
+class CRF_Character_Sound_Identity
+{	
+	[Attribute()]
+	int m_VoiceID;
+	
+	[Attribute()]
+	float m_VoicePitch;
 }

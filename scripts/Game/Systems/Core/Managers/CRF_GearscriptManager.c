@@ -2,7 +2,6 @@ class CRF_GearscriptManagerClass : ScriptComponentClass {}
 
 class CRF_GearscriptManager : ScriptComponent
 {
-	protected ref RandomGenerator m_RNG = new RandomGenerator();
 	protected CRF_Gamemode m_Gamemode;
 
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
@@ -120,6 +119,13 @@ class CRF_GearscriptManager : ScriptComponent
 		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(resourceNameToScan);
 		ClearEntityGear(inventory, inventoryManager);
 
+		//Delay so when we clear gear, the client has enough time to actually clear it before getting new gear. This prevents animation bugs.
+		GetGame().GetCallqueue().CallLater(SetEntityGearDelay, 500, false, gearScriptResourceName, entity, role, inventory, inventoryManager, gearScriptSettings);
+	}
+	
+	void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
+	SCR_InventoryStorageManagerComponent inventoryManager, CRF_GearScriptContainer gearScriptSettings)
+	{
 		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		if (!gearConfig)
@@ -132,6 +138,46 @@ class CRF_GearscriptManager : ScriptComponent
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		GetGame().GetCallqueue().CallLater(ApplyWeapons, 285, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+		{
+			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
+			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 2000, false, playerId, entity);
+			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 2000, false, entity);
+			pc.InitializeRadioFromServer();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Set identity for an entity
+	 * @param entity The entity to equip
+	 */
+	void SetEntityIdentity(IEntity entity)
+	{
+		ResourceName resourceNameToScan = entity.GetPrefabData().GetPrefabName();
+		
+		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
+			return;
+
+		// Determine faction from resource name
+		FactionKey factionKey = DetermineFactionKey(resourceNameToScan);
+		if (factionKey.IsEmpty())
+			return;
+
+		// Get gearscript resources
+		ResourceName gearScriptResourceName = GetGearScriptResource(factionKey);
+		if (gearScriptResourceName.IsEmpty())
+			return;
+
+		// Load gearscript config
+		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
+		if (!gearConfig)
+			return;
+		
+		// Apply gear
+		SetIdentity(gearConfig, entity)
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -212,6 +258,18 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
+	 * @brief Load gear script config from resource
+	 * @param resourceName Resource to load
+	 * @return Loaded config or null if failed
+	 */
+	protected CRF_CharacterIdentity LoadIdentityConfig(ResourceName resourceName)
+	{
+		return CRF_CharacterIdentity.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
 	 * @brief Create spawn parameters for entity
 	 * @param entity Entity to create parameters for
 	 * @return Spawn parameters
@@ -254,6 +312,55 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		return string.Empty;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Apply clothing to entity based on config
+	 * @param gearConfig Gear configuration
+	 * @param entity Entity to apply randomized head/body to from the identity config of the gear config
+	 */
+    protected void SetIdentity(CRF_GearScriptConfig gearConfig, IEntity entity)
+    {
+		CRF_Character_Visual_Identity gsVisIdentity;
+		CRF_Character_Sound_Identity gsSndIdentity;
+        SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));
+		
+		if (!identityComp)
+			return;
+		
+		// Get both sound and visual identities from the identity comp
+        VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();
+		SoundIdentity sndIdentity = identityComp.GetIdentity().GetSoundIdentity();
+		
+		if (!visIdentity || !sndIdentity)
+			return;
+		
+		CRF_CharacterIdentity gsCharIdentity = LoadIdentityConfig(gearConfig.m_FactionIdentity);
+		
+		if (gsCharIdentity)
+		{
+			if (!gsCharIdentity.m_VisualIdentityArray.IsEmpty())
+				gsVisIdentity = gsCharIdentity.m_VisualIdentityArray.GetRandomElement();
+			
+			if (!gsCharIdentity.m_SoundIdentityArray.IsEmpty())
+				gsSndIdentity = gsCharIdentity.m_SoundIdentityArray.GetRandomElement();
+			
+			if (gsVisIdentity)
+			{
+	        	visIdentity.SetHead(gsVisIdentity.m_Head);
+	        	visIdentity.SetBody(gsVisIdentity.m_Body);
+			};
+			
+			if (gsSndIdentity)
+			{
+	        	sndIdentity.SetVoiceID(gsSndIdentity.m_VoiceID);
+				sndIdentity.SetPitch(gsSndIdentity.m_VoicePitch);
+			};
+			
+			// Commit all changes to the identity comp
+	        identityComp.CommitChanges();
+		};
+    }
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -641,14 +748,14 @@ class CRF_GearscriptManager : ScriptComponent
 			{
 				switch (roleItem)
 				{
-					case CRF_EGearscriptItems.GI_RADIO:
+					case CRF_EGearscriptItems.SHORTRANGE_RADIO:
 						if (gearScriptSettings.m_bEnableGIRadios)
-							AddInventoryItem(gearScriptSettings.m_rGIRadiosPrefab, 1, spawnParams, inventory, inventoryManager);
+							AddInventoryItem(gearScriptSettings.m_rShortRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
 						break;
 					
-					case CRF_EGearscriptItems.LEADERSHIP_RADIO:
+					case CRF_EGearscriptItems.LONGRANGE_RADIO:
 						if (gearScriptSettings.m_bEnableLeadershipRadios)
-							AddInventoryItem(gearScriptSettings.m_rLeadershipRadiosPrefab, 1, spawnParams, inventory, inventoryManager);
+							AddInventoryItem(gearScriptSettings.m_rLongRangeRadioPrefab, 1, spawnParams, inventory, inventoryManager);
 						break;
 					
 					case CRF_EGearscriptItems.RTO_RADIO:
@@ -927,8 +1034,7 @@ class CRF_GearscriptManager : ScriptComponent
 		IEntity previousClothing = inventory.Get(slotInt);
 		
 		// Get random clothing from the array
-		int randomIndex = m_RNG.RandInt(0, clothingArray.Count() - 1);
-		ResourceName clothing = clothingArray[randomIndex];
+		ResourceName clothing = clothingArray.GetRandomElement();
 
 		// Process previous clothing and its contents
 		if (previousClothing != null)
