@@ -362,6 +362,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateTicket, action, faction, delta); 
 	}
 	
+	void MiniArsenalRequestNewItem(int playerId, string resourceName, int slotId)
+	{
+		Rpc(RpcAsk_MiniArsenalRequestNewItem, playerId, resourceName, slotId);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
@@ -925,5 +929,47 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		string logMessage = string.Format("%1 tickets was subtracted from %2", delta, faction);
 		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_MiniArsenalRequestNewItem(int playerId, string newResource, int slotId)
+	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		player.GetTransform(params.Transform);
+		
+		IEntity newItem = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);
+		
+		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
+		IEntity oldItem = invComponent.Get(slotId);
+		if (invManager.TryReplaceItem(newItem, invComponent, slotId))
+		{
+			BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
+			BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
+			if (oldStorageComp)
+			{
+				ref array<IEntity> items = {};
+				oldStorageComp.GetAll(items);
+				if (items.Count() > 0)
+				{
+					foreach (IEntity item: items)
+					{
+						invManager.TrySpawnPrefabToStorage(item.GetPrefabData().GetPrefabName(), newStorageComp);
+					}
+				}
+			}
+			GetGame().GetCallqueue().Call(SCR_EntityHelper.DeleteEntityAndChildren, oldItem);
+		}
+		else
+			GetGame().GetCallqueue().Call(SCR_EntityHelper.DeleteEntityAndChildren, newItem);
+	}
+	
+	void MiniArsenalInsertItems(BaseInventoryStorageComponent oldStorageComp, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int slotId)
+	{
+		
 	}
 };

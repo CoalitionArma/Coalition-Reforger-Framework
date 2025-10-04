@@ -1,0 +1,24 @@
+ButtonWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{6687290B3BE6D105}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 30
+  OffsetRight -30
+  OffsetBottom -30
+ }
+ Color 1 1 1 0
+ components {
+  CRF_MiniArsenalCategoryButton "{6687290608B4025B}" {
+  }
+ }
+ {
+  ImageWidgetClass "{6687290B2FA51181}" {
+   Name "CategoryIcon"
+   Slot ButtonWidgetSlot "{6687290B2FA511A6}" {
+   }
+   Texture "{92245C15E122EDB2}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_Jackets.edds"
+   Size 64 64
+  }
+ }
+}

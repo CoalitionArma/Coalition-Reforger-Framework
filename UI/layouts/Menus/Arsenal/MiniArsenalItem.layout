@@ -1,0 +1,61 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{66872908CE8F0651}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 300
+  OffsetRight -300
+  SizeY 100
+  OffsetBottom -100
+ }
+ {
+  ButtonWidgetClass "{668729143FFC10A7}" {
+   Name "ArsenalItemButton"
+   Slot FrameWidgetSlot "{668729143FFC10C1}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -26.194
+    OffsetRight 0
+    SizeY -4.113
+    OffsetBottom 0
+   }
+   Color 0.1559 0.1559 0.1559 0.5187
+   components {
+    CRF_MiniArsenalItemButton "{6687292A15C7C119}" {
+    }
+   }
+  }
+  ItemPreviewWidgetClass "{668729040F4E6BD0}" {
+   Name "ArsenalItemPreview"
+   Slot FrameWidgetSlot "{668729040F4E6BF6}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 96.508
+    OffsetRight -96.508
+    SizeY 99.957
+    OffsetBottom -99.957
+   }
+  }
+  TextWidgetClass "{668729082A629B92}" {
+   Name "ArsenalItemText"
+   Slot FrameWidgetSlot "{668729082A629B89}" {
+    PositionX 99.987
+    OffsetLeft 99.987
+    PositionY 33.008
+    OffsetTop 33.008
+    SizeX 196.594
+    OffsetRight -296.58
+    SizeY 30
+    OffsetBottom -63.008
+   }
+   Text "Alice Vest"
+   "Min Font Size" 10
+   "Vertical Alignment" Center
+  }
+ }
+}
