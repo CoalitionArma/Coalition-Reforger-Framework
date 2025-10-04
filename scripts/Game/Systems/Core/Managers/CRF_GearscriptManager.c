@@ -46,8 +46,17 @@ class CRF_GearscriptManager : ScriptComponent
 			PrintFormat("NO GEARSCRIPT ASSIGNED TO: %1", factionKey, LogLevel.WARNING);
 			return "";
 		}
+		
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		switch (factionKey)
+		{
+			case "BLUFOR": return gm.m_rBLUFORCurrentGearScript; break;
+			case "OPFOR": return gm.m_rOPFORCurrentGearScript; break;
+			case "INDFOR": return gm.m_rINDFORCurrentGearScript; break;
+			case "CIV": return gm.m_rCIVILIANCurrentGearScript; break;
+		}
 
-		return container.m_rGearScript;
+		return gm.m_rCIVILIANCurrentGearScript;
 	}
 
 	//------------------------------------------------------------------------------------------------

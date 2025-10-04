@@ -40,24 +40,17 @@ modded class SCR_Faction
 		if (!System.IsConsoleApp())
 			return;
 		#endif
-		ref array<SCR_AIGroup> groups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(this);
-		if (!groups)
+		if (GetFactionKey() == "CIV")
 			return;
-		if (groups.Count() == 0)
-			return;
+		ref array<ref SCR_CallsignInfo> squadCallsigns = {};
+		GetCallsignInfo().GetSquadArray(squadCallsigns);
 		CVON_VONGameModeComponent gamemodeComp = CVON_VONGameModeComponent.GetInstance();
 		if (!gamemodeComp.m_FreqConfig)
 			return;
 		
-		foreach (SCR_AIGroup group: groups)
+		foreach (SCR_CallsignInfo group: squadCallsigns)
 		{
-			string company;
-			string platoon;
-			string squad;
-			string character;
-			string format;
-			group.GetCallsigns(company, platoon, squad, character, format);
-			string groupName = squad;
+			string groupName = group.GetCallsign();
 			bool foundContainer = false;
 			if (GetCallsignInfo().m_aGroupFrequencyOverrides)
 			foreach (CVON_GroupFrequencyContainer container: GetCallsignInfo().m_aGroupFrequencyOverrides)
