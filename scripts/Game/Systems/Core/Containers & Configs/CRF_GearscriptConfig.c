@@ -43,7 +43,7 @@ class CRF_GearScriptConfig
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "edds")]
 	ResourceName m_FactionIcon;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript Faction Identity", "conf class=CRF_CharacterIdentity")]
+	[Attribute("{11CAD6C8909CE567}Configs/Identities/CRF_CharacterIdentity_European.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript Faction Identity", "conf class=CRF_CharacterIdentity")]
 	ResourceName m_FactionIdentity;
 	
 	[Attribute()]

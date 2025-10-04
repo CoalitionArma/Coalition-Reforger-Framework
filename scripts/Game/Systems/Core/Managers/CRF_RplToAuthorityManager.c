@@ -18,15 +18,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	
+	protected static CRF_RplToAuthorityManager m_sInstance;
+	
+	void CRF_RplToAuthorityManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// Returns the instance of the RplToAuthorityManager
 	static CRF_RplToAuthorityManager GetInstance()
 	{
-		PlayerController playerController = GetGame().GetPlayerController();
-		if (playerController)
-			return CRF_RplToAuthorityManager.Cast(playerController.FindComponent(CRF_RplToAuthorityManager));
-		
-		return null;
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------

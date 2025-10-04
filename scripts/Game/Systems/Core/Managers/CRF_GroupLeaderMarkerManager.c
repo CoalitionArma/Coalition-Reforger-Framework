@@ -87,9 +87,16 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	protected float m_fUpdateTimer = 0.0;
 	protected float m_fUpdateInterval = 1.0; // Check every second
 	
+	protected static CRF_GroupLeaderMarkerManager m_sInstance;
+	
 	//===================================================================================
 	// INITIALIZATION
 	//===================================================================================
+	
+	void CRF_GroupLeaderMarkerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
 	
 	/**
 	 * Initialize the manager
@@ -970,11 +977,7 @@ class CRF_GroupLeaderMarkerManager: SCR_BaseGameModeComponent
 	 */
 	static CRF_GroupLeaderMarkerManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_GroupLeaderMarkerManager.Cast(gameMode.FindComponent(CRF_GroupLeaderMarkerManager));
-		else
-			return null;
+		return m_sInstance;
 	}
 	
 	//===================================================================================
