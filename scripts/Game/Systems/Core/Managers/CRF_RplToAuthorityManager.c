@@ -365,6 +365,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateTicket, action, faction, delta); 
 	}
 	
+	void TogglePlayerListening(int playerId, bool input)
+	{
+		Rpc(RpcAsk_TogglePlayerLisntening, playerId, input);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
@@ -922,5 +926,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		string logMessage = string.Format("%1 tickets was subtracted from %2", delta, faction);
 		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
+	{
+		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
 	}
 };
