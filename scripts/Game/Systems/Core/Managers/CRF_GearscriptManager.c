@@ -56,7 +56,7 @@ class CRF_GearscriptManager : ScriptComponent
 			case "CIV": return gm.m_rCIVILIANCurrentGearScript; break;
 		}
 
-		return gm.m_rBLUFORCurrentGearScript;
+		return gm.m_rCIVILIANCurrentGearScript;
 	}
 
 	//------------------------------------------------------------------------------------------------
