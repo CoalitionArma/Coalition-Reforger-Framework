@@ -1,7 +1,3 @@
 Projectile {
  ID "DA5C6308000CDEF2"
- components {
-  CRF_BulletLineComponent "{6674EDD08FE5E32B}" {
-  }
- }
 }
