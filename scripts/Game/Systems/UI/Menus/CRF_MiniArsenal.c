@@ -109,6 +109,65 @@ class CRF_MiniArsenal: ChimeraMenuBase
 				itemButton.m_OnClicked.Insert(SelectItem);
 			}
 		}
+		
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
+		
+		foreach (CRF_Role_Custom_Gear customGear: m_GearScriptConfig.m_CustomFactionGear.m_RolesToSetCustomGear)
+		{
+			if (customGear.m_Role != role)
+				continue;
+			
+			foreach (CRF_Clothing clothing: customGear.m_Clothing)
+			{
+				if (clothing.m_iClothingType != miniArsnealCategory.m_iCategoryIndex)
+					continue;
+				
+				ItemPreviewManagerEntity manager = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetItemPreviewManager();
+				if (!manager)
+					return;
+				
+				foreach(ResourceName cloth: clothing.m_ClothingPrefabs)
+				{
+					if (m_addedItems.Contains(cloth))
+						continue;
+					
+					m_addedItems.Insert(cloth);
+					Widget item = GetGame().GetWorkspace().CreateWidgets("{2B983EDBF688480D}UI/layouts/Menus/Arsenal/MiniArsenalItem.layout", m_Items);
+					ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
+					manager.SetPreviewItemFromPrefab(itemPreview, cloth);
+					//Thank you random BI Forum from Arkensor
+					IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Resource.Load(cloth));
+					if (entitySource)
+					{
+					    for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+					    {
+					        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+					        if(componentSource.GetClassName().ToType().IsInherited(InventoryItemComponent))
+					        {
+					            BaseContainer attributesContainer = componentSource.GetObject("Attributes");
+					            if (attributesContainer)
+					            {
+					                BaseContainer itemDisplayNameContainer = attributesContainer.GetObject("ItemDisplayName");
+					                if (itemDisplayNameContainer)
+					                {
+					                    string name
+					                    itemDisplayNameContainer.Get("Name", name);
+					
+					                    TextWidget.Cast(item.FindWidget("ArsenalItemText")).SetText(name);
+					                    break;
+					                }
+					            }
+					        }
+					    }
+					}
+					
+					CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
+					itemButton.m_sResource = cloth;
+					itemButton.m_iSlotId = miniArsnealCategory.m_iCategoryIndex;
+					itemButton.m_OnClicked.Insert(SelectItem);
+				}
+			}
+		}
 	}
 	
 	void SelectItem(SCR_ButtonBaseComponent button)
