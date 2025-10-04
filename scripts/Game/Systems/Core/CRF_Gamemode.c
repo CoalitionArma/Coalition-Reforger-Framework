@@ -367,7 +367,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
 		{		
 			// Schedule initialization with a delay to ensure player controller is fully set up
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+			vector spawnVector[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, spawnVector);
 		}
 		// Initialize player if not in GAME state
 		else if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
