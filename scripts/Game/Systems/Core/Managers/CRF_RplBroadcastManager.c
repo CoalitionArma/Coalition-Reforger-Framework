@@ -10,21 +10,19 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
+	protected static CRF_RplBroadcastManager m_sInstance;
+	
+	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Get singleton instance of the broadcast manager
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-		{
-			return CRF_RplBroadcastManager.Cast(gameMode.FindComponent(CRF_RplBroadcastManager));
-		}
-		else
-		{
-			return null;
-		}
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------

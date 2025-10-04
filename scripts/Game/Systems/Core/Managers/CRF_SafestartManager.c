@@ -36,15 +36,18 @@ class CRF_SafestartManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	
+	protected static CRF_SafestartManager m_sInstance;
+	
+	void CRF_SafestartManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_SafestartManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_SafestartManager.Cast(gameMode.FindComponent(CRF_SafestartManager));
-		else
-			return null;
+		return m_sInstance;
 	}
 
 	//------------------------------------------------------------------------------------------------
