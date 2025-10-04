@@ -23,7 +23,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		SpawnCameraFacingPlayer();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_Categories = VerticalLayoutWidget.Cast(m_wRoot.FindWidget("CategoryButtons"));
-		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindWidget("ItemButtons"));
+		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("ItemButtons"));
 		
 		ResourceName gearResource = m_GearscriptManager.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
@@ -78,7 +78,8 @@ class CRF_MiniArsenal: ChimeraMenuBase
 				ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 				manager.SetPreviewItemFromPrefab(itemPreview, cloth);
 				//Thank you random BI Forum from Arkensor
-				IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Resource.Load(cloth));
+				Resource loadedCloth = Resource.Load(cloth);
+				IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedCloth);
 				if (entitySource)
 				{
 				    for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
@@ -136,7 +137,8 @@ class CRF_MiniArsenal: ChimeraMenuBase
 					ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 					manager.SetPreviewItemFromPrefab(itemPreview, cloth);
 					//Thank you random BI Forum from Arkensor
-					IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Resource.Load(cloth));
+					Resource loadedCloth = Resource.Load(cloth);
+					IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedCloth);
 					if (entitySource)
 					{
 					    for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)

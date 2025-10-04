@@ -8,8 +8,20 @@ class CRF_GearScriptContainer
 	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_GearScriptConfig")]
 	ResourceName m_rGearScript;
 	
+	[Attribute("{E6555DA2F31B0EC0}Configs/Gearscripts/CRF_Global_SightArsenal_Regular.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_SightArsenalConfig")]
+	ResourceName m_rSightArsenal;
+	
+	[Attribute("{9D8E5FA08331042D}Configs/Gearscripts/CRF_Global_SightArsenal_Magnified.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_SightArsenalConfig")]
+	ResourceName m_rMagnifiedSightArsenal;
+	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableMiniArsenal;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableSightArsenal;
+	
+	[Attribute("false", UIWidgets.CheckBox)]
+	bool m_bEnableMagnifiedOptics;
 	
 	[Attribute(uiwidget: "resourcePickerThumbnail", params: "et")]
 	ResourceName m_rShortRangeRadioPrefab;
@@ -334,4 +346,12 @@ class CRF_Character_Sound_Identity
 	
 	[Attribute()]
 	float m_VoicePitch;
+}
+
+//------------------------------------------------------------------------------------------------
+[BaseContainerProps(configRoot: true)]
+class CRF_SightArsenalConfig
+{	
+	[Attribute()]
+	ref array<ResourceName> m_aSights;
 }

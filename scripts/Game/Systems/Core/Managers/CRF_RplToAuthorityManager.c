@@ -370,6 +370,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_MiniArsenalRequestNewItem, playerId, resourceName, slotId);
 	}
 	
+	void SightArsenalRequestNewSight(int playerId, string resourceName, string type)
+	{
+		Rpc(RpcAsk_SightArsenalRequestNewSight, playerId, resourceName, type);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -731,13 +736,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_UpdateGearSet(string faction, ResourceName path)
 	{
 		// Update gearscript in the gamemode
-		switch (faction)
-		{
-			case "BLUFOR": CRF_Gamemode.GetInstance().m_BLUFORGearScriptSettings.m_rGearScript = path; break;
-			case "OPFOR": CRF_Gamemode.GetInstance().m_OPFORGearScriptSettings.m_rGearScript = path; break;
-			case "INDFOR": CRF_Gamemode.GetInstance().m_INDFORGearScriptSettings.m_rGearScript = path; break;
-			case "CIV": CRF_Gamemode.GetInstance().m_CIVILIANGearScriptSettings.m_rGearScript = path; break;
-		}
+		CRF_Gamemode.GetInstance().UpdateGearscriptResource(faction, path);
 
 		// Load the AI world
 		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
@@ -949,30 +948,55 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
 		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
 		IEntity oldItem = invComponent.Get(slotId);
-		if (invManager.TryReplaceItem(newItem, invComponent, slotId))
+		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
+		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
+		if (oldStorageComp)
 		{
-			BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
-			BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
-			if (oldStorageComp)
+			ref array<IEntity> items = {};
+			oldStorageComp.GetAll(items);
+			if (items.Count() > 0)
 			{
-				ref array<IEntity> items = {};
-				oldStorageComp.GetAll(items);
-				if (items.Count() > 0)
+				foreach (IEntity item: items)
 				{
-					foreach (IEntity item: items)
-					{
-						invManager.TrySpawnPrefabToStorage(item.GetPrefabData().GetPrefabName(), newStorageComp);
-					}
+					invManager.TrySpawnPrefabToStorage(item.GetPrefabData().GetPrefabName(), newStorageComp);
 				}
 			}
-			GetGame().GetCallqueue().Call(SCR_EntityHelper.DeleteEntityAndChildren, oldItem);
 		}
-		else
-			GetGame().GetCallqueue().Call(SCR_EntityHelper.DeleteEntityAndChildren, newItem);
+		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
+		invManager.TryReplaceItem(newItem, invComponent, slotId);
 	}
 	
-	void MiniArsenalInsertItems(BaseInventoryStorageComponent oldStorageComp, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int slotId)
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_SightArsenalRequestNewSight(int playerId, string newResource, string type)
 	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+		EntitySpawnParams params = new EntitySpawnParams();
+		player.GetTransform(params.Transform);
 		
+		IEntity newSight = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);
+		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		array<AttachmentSlotComponent> attachments = {};
+		charController.GetWeaponManagerComponent().GetCurrentWeapon().GetAttachments(attachments);
+		AttachmentSlotComponent sightAttachment;
+		foreach (AttachmentSlotComponent attachment: attachments)
+		{
+			if (!attachment.GetAttachmentSlotType())
+				continue;
+			if (type.ToType().IsInherited(attachment.GetAttachmentSlotType().Type()))
+				sightAttachment = attachment;
+		}
+		if (!sightAttachment)
+			return;
+		
+		IEntity oldSight = sightAttachment.GetAttachedEntity();
+		if (sightAttachment.CanSetAttachment(newSight))
+		{
+			if (oldSight)
+				delete oldSight;
+			
+			sightAttachment.SetAttachment(newSight);
+		}
 	}
 };

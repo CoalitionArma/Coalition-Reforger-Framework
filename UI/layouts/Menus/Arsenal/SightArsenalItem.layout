@@ -1,0 +1,58 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{6688DC46DCB01632}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 500
+  OffsetRight -500
+  SizeY 100
+  OffsetBottom -100
+ }
+ {
+  ButtonWidgetClass "{6688DC49B604E937}" {
+   Name "SightArsenalItemButton"
+   Slot FrameWidgetSlot "{668729143FFC10C1}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -26.194
+    OffsetRight 0
+    SizeY -4.113
+    OffsetBottom 0
+   }
+   Color 0.1559 0.1559 0.1559 0.5187
+   components {
+    CRF_SightArsenalItemButton "{6688FCC61C078F35}" {
+    }
+   }
+  }
+  ItemPreviewWidgetClass "{6688DC46D1AFF702}" {
+   Name "SightArsenalItemPreview"
+   Slot FrameWidgetSlot "{66883590D4483C44}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    OffsetRight -100
+    SizeY 100
+    OffsetBottom -100
+   }
+  }
+  TextWidgetClass "{6688DC46D3C9E78A}" {
+   Name "SightArsenalItemText"
+   Slot FrameWidgetSlot "{66883590CC1A54CD}" {
+    PositionX 105
+    OffsetLeft 105
+    PositionY 30
+    OffsetTop 30
+    SizeX 395
+    OffsetRight -500
+    SizeY 40
+    OffsetBottom -70
+   }
+   "Vertical Alignment" Center
+  }
+ }
+}

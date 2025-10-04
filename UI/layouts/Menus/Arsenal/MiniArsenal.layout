@@ -26,17 +26,26 @@ FrameWidgetClass {
     OffsetBottom -1080
    }
   }
-  VerticalLayoutWidgetClass "{6687290864A52BE6}" {
-   Name "ItemButtons"
-   Slot FrameWidgetSlot "{6687290864A52A06}" {
+  ScrollLayoutWidgetClass "{668835907AB2454E}" {
+   Name "ScrollLayout0"
+   Slot FrameWidgetSlot "{668835907AB24567}" {
     PositionX 80
     OffsetLeft 80
     PositionY 0
     OffsetTop 0
-    SizeX 300
-    OffsetRight -380
+    SizeX 350
+    OffsetRight -430
     SizeY 1080
     OffsetBottom -1080
+   }
+   {
+    VerticalLayoutWidgetClass "{6687290864A52BE6}" {
+     Name "ItemButtons"
+     Slot AlignableSlot "{6688359051EFF57B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
    }
   }
   ImageWidgetClass "{66872908F3BBC349}" {
@@ -46,8 +55,8 @@ FrameWidgetClass {
     OffsetLeft 80
     PositionY 0
     OffsetTop 0
-    SizeX 300
-    OffsetRight -380
+    SizeX 350
+    OffsetRight -430
     SizeY 1080
     OffsetBottom -1080
    }
