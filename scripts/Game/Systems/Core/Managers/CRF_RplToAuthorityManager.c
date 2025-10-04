@@ -736,7 +736,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_UpdateGearSet(string faction, ResourceName path)
 	{
 		// Update gearscript in the gamemode
-		CRF_Gamemode.GetInstance().UpdateGearscriptResource(faction, path);
+		switch (faction)
+		{
+			case "BLUFOR": CRF_Gamemode.GetInstance().m_BLUFORGearScriptSettings.m_rGearScript = path; break;
+			case "OPFOR": CRF_Gamemode.GetInstance().m_OPFORGearScriptSettings.m_rGearScript = path; break;
+			case "INDFOR": CRF_Gamemode.GetInstance().m_INDFORGearScriptSettings.m_rGearScript = path; break;
+			case "CIV": CRF_Gamemode.GetInstance().m_CIVILIANGearScriptSettings.m_rGearScript = path; break;
+		}
 
 		// Load the AI world
 		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
