@@ -37,16 +37,19 @@ class CRF_RespawnManager : ScriptComponent
 	protected CRF_SlottingManager m_SlottingManager;
 	
 	ref ScriptInvoker m_OnRespawnPointStateChanged = new ScriptInvoker();
+	
+	protected static CRF_RespawnManager m_sInstance;
 
+	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// Singleton accessor
 	static CRF_RespawnManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_RespawnManager.Cast(gameMode.FindComponent(CRF_RespawnManager));
+		return m_sInstance;
 	}
 
 	//------------------------------------------------------------------------------------------------

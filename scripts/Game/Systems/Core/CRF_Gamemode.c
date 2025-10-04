@@ -130,6 +130,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
+	
+	protected static CRF_Gamemode m_sInstance;
 
 	//===================================================================================
 	// STATIC METHODS
@@ -139,13 +141,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 * Returns the singleton instance of the CRF_Gamemode
 	 * @return CRF_Gamemode instance or null if not available
 	 */
+	
+	void CRF_Gamemode(IEntitySource src, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	static CRF_Gamemode GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_Gamemode.Cast(gameMode);
+		return m_sInstance;
 	}
 
 	//===================================================================================
@@ -367,7 +371,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
 		{		
 			// Schedule initialization with a delay to ensure player controller is fully set up
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+			vector spawnVector[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, spawnVector);
 		}
 		// Initialize player if not in GAME state
 		else if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
