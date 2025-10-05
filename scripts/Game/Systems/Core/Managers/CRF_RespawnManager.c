@@ -5,7 +5,7 @@ class CRF_RespawnManager : ScriptComponent
 	// Replicated Properties
 	[RplProp(onRplName: "WaveRespawnTimer")]
 	private int m_iRespawnWaveCurrentTime;
-	int m_iRespawnTimer;
+	float m_fRespawnTimer;
 	[RplProp()]
 	ref array<RplId> m_RespawnPointsRplID = {}; // Used for clients
 	
@@ -56,9 +56,8 @@ class CRF_RespawnManager : ScriptComponent
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-
 		InitializeManagers();
-		
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 		if (!Replication.IsServer())
 			return;
 
@@ -83,7 +82,7 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 			
 		m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
-		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
+		m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
 
 		// Start wave respawn timer if enabled and not in client mode
 		if (m_Gamemode.m_bWaveRespawn && RplSession.Mode() != RplMode.Client)
@@ -283,22 +282,36 @@ class CRF_RespawnManager : ScriptComponent
 			GetGame().GetMenuManager().CloseMenu(topMenu);
 		}
 	}
+	
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		#ifdef WORKBENCH
+		#else
+		if (System.IsConsoleApp())
+			return;
+		#endif
+		if (m_fRespawnTimer > 0)
+			RespawnTimer(timeSlice);
+	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnTimer()
+	void RespawnTimer(float timeSlice)
 	{
 		// Decrease the respawn timer
-		if (m_iRespawnTimer > 0)
-			m_iRespawnTimer--;
-
+		if (m_fRespawnTimer > 0)
+			m_fRespawnTimer -= timeSlice;
+		CloseSlottingMenu();
 		// Check if timer expired or we're in AAR
-		bool isTimerExpired = m_iRespawnTimer <= 0;
+		bool isTimerExpired = m_fRespawnTimer <= 0;
 		bool isGameInAARState = (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR);
 		
 		if (isTimerExpired || isGameInAARState)
 		{
 			// Check if Respawn Screen is open
 			MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+			if (!topMenu)
+				return;
 			if (topMenu.IsInherited(CRF_RespawnMenu))
 			{
 				// Check if respawn selection was confirmed in the UI
@@ -306,11 +319,10 @@ class CRF_RespawnManager : ScriptComponent
 				if (m_SelectedSpawnRplID != -1 && m_RespawnConfirmed)
 				{
 					// Reset the timer
-					m_iRespawnTimer = m_iRespawnWaveCurrentTime;
+					m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
 					// Only perform respawn if not in AAR state
 					if (!isGameInAARState)
 					{
-						GetGame().GetCallqueue().Remove(CloseSlottingMenu);
 						GetGame().GetMenuManager().CloseAllMenus();
 						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
 						
@@ -318,9 +330,7 @@ class CRF_RespawnManager : ScriptComponent
 						m_SelectedSpawnRplID = -1;
 						m_RespawnConfirmed = false; 
 					}
-		
-					// Remove this timer function from the callqueue
-					GetGame().GetCallqueue().Remove(RespawnTimer);
+	
 					return;
 				}
 			}

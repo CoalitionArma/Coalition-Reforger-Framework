@@ -373,6 +373,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void SightArsenalRequestNewSight(int playerId, string resourceName, string type)
 	{
 		Rpc(RpcAsk_SightArsenalRequestNewSight, playerId, resourceName, type);
+    
+	void TogglePlayerListening(int playerId, bool input)
+	{
+		Rpc(RpcAsk_TogglePlayerLisntening, playerId, input);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -998,5 +1002,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			
 			sightAttachment.SetAttachment(newSight);
 		}
+    
+	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
+	{
+		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
 	}
 };

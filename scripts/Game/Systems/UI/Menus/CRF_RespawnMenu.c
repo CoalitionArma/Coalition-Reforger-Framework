@@ -23,7 +23,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		if (!timerWidget)
 			return;
 			
-		timerWidget.SetText(SCR_FormatHelper.FormatTime(CRF_RespawnManager.GetInstance().m_iRespawnTimer));
+		timerWidget.SetText(SCR_FormatHelper.FormatTime((int)CRF_RespawnManager.GetInstance().m_fRespawnTimer));
 	}
 	
 	/**
