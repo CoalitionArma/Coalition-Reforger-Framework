@@ -1005,6 +1005,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		}
 	}
     
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
 	{
 		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
