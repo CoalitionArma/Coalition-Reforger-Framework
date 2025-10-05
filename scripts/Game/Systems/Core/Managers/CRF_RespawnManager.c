@@ -291,7 +291,6 @@ class CRF_RespawnManager : ScriptComponent
 		if (System.IsConsoleApp())
 			return;
 		#endif
-		Print(m_fRespawnTimer);
 		if (m_fRespawnTimer > 0)
 			RespawnTimer(timeSlice);
 	}
