@@ -13,6 +13,7 @@ FrameWidgetClass {
     SizeY 500
     OffsetBottom -790
    }
+   "Is Visible" 0
    {
     ImageWidgetClass "{668835936E5051FD}" {
      Name "SightArsenalBG"
