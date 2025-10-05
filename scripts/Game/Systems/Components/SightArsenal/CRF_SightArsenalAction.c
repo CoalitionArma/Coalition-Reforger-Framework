@@ -11,7 +11,8 @@ class CRF_SightArsenalAction: ScriptedUserAction
 	
 	override void PerformAction(IEntity pOwnerEntity, IEntity pUserEntity)
 	{
-		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SightArsenal);
+		CRF_SightArsenal sightMenu = CRF_SightArsenal.Cast(GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SightArsenal));
+		sightMenu.m_Sight = pOwnerEntity;
 	}
 	
 	override bool CanBeShownScript(IEntity user)

@@ -16,6 +16,10 @@ class CRF_SightArsenal: ChimeraMenuBase
 	
 	Widget m_wRoot;
 	VerticalLayoutWidget m_SightSlots;
+	Widget m_wSightFrame;
+	
+	IEntity m_Sight;
+	AttachmentSlotComponent m_SightSlot;
 	
 	ref array<ResourceName> m_aAddedSights = {};
 	
@@ -31,8 +35,51 @@ class CRF_SightArsenal: ChimeraMenuBase
 		m_MagnifiedSightArsenalConfig = CRF_SightArsenalConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 		BaseContainerTools.LoadContainer(m_GearScriptContainer.m_rMagnifiedSightArsenal).GetResource().ToBaseContainer()));
 		m_wRoot = GetRootWidget();
+		m_wSightFrame = m_wRoot.FindAnyWidget("SightFrame");
 		m_SightSlots = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("SightArsenalList"));
+		
 		PopulateSights();
+	}
+	
+	override void OnMenuUpdate(float tDelta)
+	{
+		if (!m_SightSlot)
+		{
+			if (!m_Sight)
+				return;
+			IEntity weapon = m_Sight.GetParent();
+			array<Managed> attachmentComponents = {};
+			weapon.FindComponents(AttachmentSlotComponent, attachmentComponents);
+			foreach (Managed component: attachmentComponents)
+			{
+				AttachmentSlotComponent slotComponent = AttachmentSlotComponent.Cast(component);
+				if (!slotComponent.GetAttachedEntity())
+					continue;
+				
+				if (slotComponent.GetAttachedEntity() == m_Sight)
+					m_SightSlot = slotComponent;
+			}
+		}
+		m_Sight = m_SightSlot.GetAttachedEntity();
+		if (!m_Sight)
+			return;
+	    vector origin  = m_Sight.GetOrigin();
+	    vector forward = m_Sight.GetWorldTransformAxis(2);
+	
+	    // anchor point 30 cm forward
+	    vector worldPos = origin + forward * 0.3;
+	
+	    // project to screen
+	    vector screenPos = GetGame().GetWorkspace().ProjWorldToScreenNative(worldPos, GetGame().GetWorld());
+	
+	    float uiX = screenPos[0];
+	    float uiY = screenPos[1];
+		
+		uiX += GetGame().GetWorkspace().DPIScale(-300);
+		uiY += GetGame().GetWorkspace().DPIScale(-350);
+	
+	    FrameSlot.SetPos(m_wSightFrame, uiX, uiY);
+		m_wSightFrame.SetVisible(true);
 	}
 	
 	void PopulateSights()
