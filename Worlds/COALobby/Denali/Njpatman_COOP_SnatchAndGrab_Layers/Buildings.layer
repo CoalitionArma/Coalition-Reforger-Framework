@@ -1,0 +1,46 @@
+StaticModelEntity : "{6A004A8F0571D456}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/TransmitterTower_01_small.et" {
+ coords 4319.022 398.287 5432.6
+}
+$grp GenericEntity : "{9A783CC8688290E1}Prefabs/Compositions/Slotted/SlotFlatLarge/COAL_Helipad_L_01.et" {
+ {
+  coords 682.474 220.363 350.227
+ }
+ {
+  coords 712.498 220.363 350.227
+ }
+ {
+  coords 653.697 220.363 350.227
+ }
+}
+$grp StaticModelEntity : "{DBCDEC45DB834E8A}Prefabs/Structures/Infrastructure/Towers/TransmitterTower_01/TransmitterTower_01.et" {
+ {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867E872E096D8}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 3
+      MaxHealth 5000
+      DamageReduction 20
+      DamageThreshold 400
+     }
+    }
+   }
+  }
+  coords 4223.278 346.208 3217.81
+ }
+ {
+  components {
+   SCR_DestructibleBuildingComponent "{5DA867E872E096D8}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      BaseDamageMultiplier 3
+      MaxHealth 5000
+      DamageReduction 20
+      DamageThreshold 400
+     }
+    }
+   }
+  }
+  coords 4276.288 401.232 5461.521
+ }
+}

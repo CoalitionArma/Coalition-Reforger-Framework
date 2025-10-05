@@ -46,8 +46,17 @@ class CRF_GearscriptManager : ScriptComponent
 			PrintFormat("NO GEARSCRIPT ASSIGNED TO: %1", factionKey, LogLevel.WARNING);
 			return "";
 		}
+		
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		switch (factionKey)
+		{
+			case "BLUFOR": return gm.m_rBLUFORCurrentGearScript; break;
+			case "OPFOR": return gm.m_rOPFORCurrentGearScript; break;
+			case "INDFOR": return gm.m_rINDFORCurrentGearScript; break;
+			case "CIV": return gm.m_rCIVILIANCurrentGearScript; break;
+		}
 
-		return container.m_rGearScript;
+		return gm.m_rCIVILIANCurrentGearScript;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -137,7 +146,7 @@ class CRF_GearscriptManager : ScriptComponent
 		// Apply gear
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
 		GetGame().GetCallqueue().CallLater(ApplyWeapons, 285, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
-		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		GetGame().GetCallqueue().CallLater(ApplyInventoryItems, 200, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
 		if (playerId > 0)
 		{
@@ -1206,8 +1215,7 @@ class CRF_GearscriptManager : ScriptComponent
 			// Try to equip attachable equipment
 			if (inventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
 			{
-				BaseInventoryStorageComponent storageComp = inventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
-				inventoryManager.EquipAny(storageComp, resourceSpawned, -1);
+				inventoryManager.TryInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
 				continue;
 			}
 

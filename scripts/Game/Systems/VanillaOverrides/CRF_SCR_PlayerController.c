@@ -8,6 +8,7 @@ modded class SCR_PlayerController
 {
 	bool m_bIsBulletTrackingEnabled = false;
 	ref array<ref CRF_BulletTracerContainer> m_aActiveTraces = {};
+	bool m_bIsListeningToSpec = false;
 	
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
