@@ -954,21 +954,28 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
 		IEntity oldItem = invComponent.Get(slotId);
 		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
-		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
-		if (oldStorageComp)
+		ref array<IEntity> pouches = {};
+		oldStorageComp.GetAll(pouches);
+		ref array<ResourceName> items = {};
+		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O
+		foreach (IEntity pouch: pouches)
 		{
-			ref array<IEntity> items = {};
-			oldStorageComp.GetAll(items);
-			if (items.Count() > 0)
+			if (!pouch.FindComponent(BaseInventoryStorageComponent))
+				continue;
+			
+			ref array<IEntity> tempItems = {};
+			BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent)).GetAll(tempItems);
+			foreach (IEntity tempItem: tempItems)
 			{
-				foreach (IEntity item: items)
-				{
-					invManager.TrySpawnPrefabToStorage(item.GetPrefabData().GetPrefabName(), newStorageComp);
-				}
+				items.Insert(tempItem.GetPrefabData().GetPrefabName());
 			}
 		}
 		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
-		invManager.TryReplaceItem(newItem, invComponent, slotId);
+		invManager.TryInsertItem(newItem);
+		foreach (ResourceName item: items)
+		{
+			invManager.TrySpawnPrefabToStorage(item);
+		}
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
