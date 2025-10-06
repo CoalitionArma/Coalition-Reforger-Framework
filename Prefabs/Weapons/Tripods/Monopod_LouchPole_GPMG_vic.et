@@ -1,0 +1,198 @@
+Turret : "{4E85DB460B656447}Prefabs/Weapons/Tripods/Monopod_LouchPole.et" {
+ ID "52D30EFBEBC74642"
+ components {
+  MeshObject "{51ACD09C4E0B7D16}" {
+   Object "{C87CAB3B5C8B4E96}Assets/Weapons/Tripods/LouchPole/LouchPole_01.xob"
+  }
+  RigidBody "{51ACD09C423F175F}" {
+   ModelGeometry 1
+   Static 1
+  }
+  ProcAnimComponent "{51ACD09DB14C45C0}" {
+   Parameters {
+    ProcAnimParams "{668B32E3560CCD89}" {
+     ResourceName "{F41BA441BB78161D}anims/proc/turret.pap"
+     BoneNames {
+      "w_weapon_holder_rotator" "w_weapon_holder_monopod"
+     }
+     SimulationDistance 1000
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   CompartmentSlots {
+    TurretCompartmentSlot TurretCompartment {
+     PassengerPositionInfo EntitySlotInfo "{51ACFBB1D6C27024}" {
+      Offset 0 0 -0.6
+     }
+     HeightAdjustmentLimits 50 240
+     HeightAdjustmentRayZOffset -0.4
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{58FE9E4F05DC95A3}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#BF-StaticWeapon_LouchPole_Name"
+    Icon "{C9E7C9C9DE28F3B7}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Turret_MachineGun.edds"
+    m_Image "{05DB97D4269EF1FB}UI/Textures/EditorPreviews/Weapons/Tripods/Tripod_M122_MG_M60.edds"
+    m_sFaction "UK"
+    m_aAuthoredLabels + {
+     7000 21 34
+    }
+    m_aAutoLabels {
+     121 55
+    }
+    m_aOccupantFillCompartmentTypes +{
+    }
+    m_aCrewEntityBudgetCost {
+     SCR_EntityBudgetValue "{668B32E3560CCD98}" {
+      m_BudgetType AI
+      m_Value 1
+     }
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{58FE9EDB211E20FD}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{668B32E3560CCDA2}" {
+     m_iParentID -1
+     m_Mesh "{C87CAB3B5C8B4E96}Assets/Weapons/Tripods/LouchPole/LouchPole_01.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{668B32E3560CCDAC}" {
+     m_iParentID 0
+     m_Mesh "{A4D9DB49AC7A3F5A}Assets/Weapons/MachineGuns/GPMG/L7A2GPMG_AA.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID "w_weapon_holder_monopod"
+     m_vScale 1 1 1
+     m_vPosition 0 -0.044 -0.301
+     m_vAngles 0 0 0
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{570EACF4F2F94F1B}" {
+   Attributes SCR_ItemAttributeCollection "{668B32E3560CCDB4}" {
+    ItemDisplayName WeaponUIInfo "{668B32E3560CCDB7}" {
+     Name "#AR-EditableEntity_Tripod_M122_MG_M60_Name"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{668B32E3560CCDB1}" {
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{668B32E3560CCDBD}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.85
+      CameraOffset 0.2 0.1 0
+      FOV 40
+      PreviewPrefab "{887DB60486A18575}Prefabs/Weapons/Tripods/Tripod_M122_MG_M60.et"
+     }
+    }
+    m_SlotType SLOT_WEAPONS_STORAGE
+    m_bDraggable 0
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 3000
+   MaxItemSize 15 15 15
+   InitialStorageSlots {
+    InventoryStorageSlot Magazine_1 {
+     Prefab "{B96D0983B475C226}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_1Ball_1Tracer.et"
+    }
+    InventoryStorageSlot Magazine_2 {
+     Prefab "{B96D0983B475C226}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_1Ball_1Tracer.et"
+    }
+    InventoryStorageSlot Magazine_3 {
+     Enabled 0
+     Prefab "{B96D0983B475C226}Prefabs/Weapons/Magazines/Box_762x51_GPMG_200rnd_1Ball_1Tracer.et"
+    }
+   }
+  }
+  TurretControllerComponent "{51ACD09C61C183E4}" {
+   LimitsHoriz -45 45
+   LimitsVert -10 40
+   TurretReloadPosition 500 30
+   TurretUnconsciousPosition 500 80
+  }
+  TurretComponent "{668B32E3560CCD40}" {
+   components {
+    SightsComponent "{668B32E3560CCD4D}" {
+     SightsPosition PointInfo "{668B32E3560CCD4F}" {
+      PivotID "w_weapon_holder_monopod"
+      Offset 0 0.1303 -0.4309
+      Angles -1.2531 0 0
+     }
+     SightsPointFront PointInfo "{668B32E3560CCD4E}" {
+      PivotID "w_weapon_holder_tripod"
+      Offset 0.0032 0.1382 0.5398
+     }
+     SightsPointRear PointInfo "{668B32E3560CCD49}" {
+      PivotID "w_weapon_holder_tripod"
+      Offset 0.0032 0.141 0.0078
+     }
+     ADSTime 0.8
+    }
+   }
+   SignalsSourceAccess SignalsSourceAccessClass "{668B32E3560CCD50}" {
+    signalsSuffix "Turret"
+   }
+   ProvideAimingType MainTurret
+   AimingMaxSpeed 6 6
+   AimingSpeedControls 0.1 0.1
+   ikTargets {
+    AnimationIKTargetInfo "{668B32E3560CCD52}" {
+     BindingName "LHandIKTarget"
+     PositionInfo PointInfo "{668B32E3560CCD5D}" {
+      PivotID "w_weapon_holder_monopod"
+      Offset -0.1955 0.0103 -0.1815
+      Angles 4.5076 -83.5336 90.5104
+     }
+    }
+    AnimationIKTargetInfo "{668B32E3560CCD5C}" {
+     BindingName "RHandIKTarget"
+     PositionInfo PointInfo "{668B32E3560CCD5F}" {
+      PivotID "w_weapon_holder_monopod"
+      Offset 0.02 -0.0714 -0.4476
+      Angles -180 90 90
+     }
+    }
+   }
+   TurretSpeed 100 120
+   TurretAcceleration 343.77 343.77
+   TurretDeceleration 687.54 687.54
+  }
+  WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
+   WeaponType MachineGun
+   AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
+    PivotID "w_weapon_holder_monopod"
+    Offset 0 -0.0441 -0.3005
+    ChildPivotID "w_tripod_holder_vertical"
+   }
+   WeaponTemplate "{09273562A35B3EB8}Prefabs/Weapons/MachineGuns/GPMG/MG_GPMG_L7A2_Mounted_AA.et"
+  }
+  ActionsManagerComponent "{51ACD09C7181BA0B}" {
+   ActionContexts {
+    UserActionContext "{51ACFBB064390C6E}" {
+     Position PointInfo "{51ACFBB061993925}" {
+      PivotID "w_weapon_holder_monopod"
+     }
+     Radius 0.5
+    }
+   }
+  }
+  BaseItemAnimationComponent "{5242E42C7B4B2CEE}" {
+   AnimGraph "{7366BF303C55429A}Assets/Weapons/MachineGuns/workspaces/M60_tripod.agr"
+   AnimInstance "{A21DB14BF0056E3A}Assets/Weapons/MachineGuns/workspaces/m60_weapon.asi"
+   AnimInjection AnimationAttachmentInfo "{5242E42C74AC2BF7}" {
+    AnimGraph "{7366BF303C55429A}Assets/Weapons/MachineGuns/workspaces/M60_tripod.agr"
+    AnimInstance "{DA76C757A8D77CEC}Assets/Weapons/MachineGuns/workspaces/M60_Player_tripod.asi"
+   }
+  }
+ }
+ coords -1.333 0.014 -0.263
+ angleY -130.591
+}

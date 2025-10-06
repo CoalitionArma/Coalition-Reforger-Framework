@@ -298,6 +298,15 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void RespawnTimer(float timeSlice)
 	{
+		if (GetFactionTickets(m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey()) <= 0)
+		{
+			GetGame().GetMenuManager().CloseAllMenus();
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
+			m_fRespawnTimer = 0;
+			m_SelectedSpawnRplID = -1;
+			m_RespawnConfirmed = false; 
+			return;
+		}
 		// Decrease the respawn timer
 		if (m_fRespawnTimer > 0)
 			m_fRespawnTimer -= timeSlice;
