@@ -110,36 +110,6 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition -6 0 -6
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC87}" {
-     m_iParentID 0
-     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
-     m_Flags 0
-     m_Shape PREFAB
-     m_iPivotID ""
-     m_vScale 1 1 1
-     m_vPosition 9 0 -9
-     m_vAngles 0 0 0
-    }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC8C}" {
-     m_iParentID 0
-     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
-     m_Flags 0
-     m_Shape PREFAB
-     m_iPivotID ""
-     m_vScale 1 1 1
-     m_vPosition -9 0 -9
-     m_vAngles 0 0 0
-    }
-    SCR_BasePreviewEntry "{668C2D6DF6F2EC8A}" {
-     m_iParentID 0
-     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
-     m_Flags 0
-     m_Shape PREFAB
-     m_iPivotID ""
-     m_vScale 1 1 1
-     m_vPosition 12 0 -12
-     m_vAngles 0 0 0
-    }
    }
   }
  }
