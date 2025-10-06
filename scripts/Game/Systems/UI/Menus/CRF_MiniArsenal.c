@@ -190,7 +190,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 				                BaseContainer itemDisplayNameContainer = attributesContainer.GetObject("ItemDisplayName");
 				                if (itemDisplayNameContainer)
 				                {
-				                    string name
+				                    string name;
 				                    itemDisplayNameContainer.Get("Name", name);
 				
 				                    TextWidget.Cast(item.FindWidget("ArsenalItemText")).SetText(name);
