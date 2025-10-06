@@ -953,7 +953,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
 		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
 		IEntity oldItem = invComponent.Get(slotId);
+		if (!oldItem)
+		{
+			invManager.TryInsertItem(newItem);
+			return;
+		}
 		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
+		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
 		ref array<IEntity> pouches = {};
 		oldStorageComp.GetAll(pouches);
 		ref array<ResourceName> items = {};
@@ -961,7 +967,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		foreach (IEntity pouch: pouches)
 		{
 			if (!pouch.FindComponent(BaseInventoryStorageComponent))
+			{
+				items.Insert(pouch.GetPrefabData().GetPrefabName());
 				continue;
+			}
 			
 			ref array<IEntity> tempItems = {};
 			BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent)).GetAll(tempItems);
@@ -972,9 +981,24 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		}
 		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
 		invManager.TryInsertItem(newItem);
-		foreach (ResourceName item: items)
+		for (int i = 0; i < items.Count(); i++)
 		{
-			invManager.TrySpawnPrefabToStorage(item);
+			if(!invManager.TrySpawnPrefabToStorage(items[i], newStorageComp))
+			{
+				ref array<IEntity> newPouches = {};
+				newStorageComp.GetAll(newPouches);
+				
+				foreach (IEntity pouch: newPouches)
+				{
+					if (!pouch.FindComponent(BaseInventoryStorageComponent))
+						continue;
+					
+					
+					BaseInventoryStorageComponent pouchStorage = BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent));
+					if(invManager.TrySpawnPrefabToStorage(items[i], pouchStorage))
+						break;
+				}
+			}
 		}
 	}
 	
