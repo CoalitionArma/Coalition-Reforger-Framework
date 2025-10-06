@@ -981,19 +981,17 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		AttachmentSlotComponent verifyAttachmentSlot = null;
 		IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachmentResource), GetGame().GetWorld(), spawnParams);
-		inventoryManager.TryInsertItem(attachmentSpawned, EStoragePurpose.PURPOSE_ATTACHMENT_PROXY);
-
+		BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(weapon.FindComponent(BaseInventoryStorageComponent));
+		IEntity oldSight = weaponStorageComp.FindSuitableSlotForItem(attachmentSpawned).GetAttachedEntity();
+		
 		foreach (AttachmentSlotComponent attachmentSlot : attachmentSlots)
 		{
 			if (attachmentSlot.CanSetAttachment(attachmentSpawned))
 			{
-				IEntity attachedEntity = attachmentSlot.GetAttachedEntity();
-				if (attachedEntity != null && attachedEntity != attachmentSpawned)
-				{
-					delete attachedEntity;
-				}
-
-				attachmentSlot.SetAttachment(attachmentSpawned);
+				if (oldSight)
+				delete oldSight;
+			
+				inventoryManager.TryInsertItemInStorage(attachmentSpawned, weaponStorageComp);
 				verifyAttachmentSlot = attachmentSlot;
 				break;
 			}
