@@ -1100,7 +1100,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				if (attachmentSlot.CanSetAttachment(attachmentSpawned))
 				{
 					if (oldSight)
-					delete oldSight;
+						delete oldSight;
 				
 					storageMan.TryInsertItemInStorage(attachmentSpawned, weaponStorageComp);
 					break;
