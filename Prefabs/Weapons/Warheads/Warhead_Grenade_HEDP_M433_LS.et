@@ -20,8 +20,8 @@ GenericEntity : "{7DA2AFFC7B4BE844}Prefabs/Weapons/Warheads/Warhead_Grenade_HE.e
     SubmunitionEffect "{665B6B2516DFDE89}" {
      TriggerOnce 1
      Prefab "{835D83AC6A7BEB59}Prefabs/Weapons/Ammo/Ammo_Spall_1_Hardest.et"
-     Count 20
-     Dispersion 30
+     Count 25
+     Dispersion 50
     }
     SubmunitionEffect "{665B6B254E52964E}" {
      TriggerOnce 1
