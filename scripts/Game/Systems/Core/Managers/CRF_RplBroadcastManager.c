@@ -726,7 +726,6 @@ class CRF_RplBroadcastManager : ScriptComponent
 		
 		// Set up respawn timers
 		m_RespawnManager.m_fRespawnTimer = (float)m_RespawnManager.GetCurrentWaveTimer();
-		GetGame().GetCallqueue().CallLater(m_RespawnManager.CloseSlottingMenu, 100, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
