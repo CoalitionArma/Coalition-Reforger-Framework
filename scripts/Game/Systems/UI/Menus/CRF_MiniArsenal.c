@@ -30,7 +30,16 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		ResourceName gearResource = m_GearscriptManager.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
 		
-		PopulateWeaponCategories();
+		Faction playerFaction = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
+		if (!playerFaction)
+			return;
+		
+		CRF_GearScriptContainer container = m_GearscriptManager.GetGearScriptSettings(playerFaction.GetFactionKey());
+		if (!container)
+			return;
+		
+		if (container.m_bEnableMiniWeaponArsenal)
+			PopulateWeaponCategories();
 		PopulateCategories();
 		
 		
