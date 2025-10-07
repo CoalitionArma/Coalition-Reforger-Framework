@@ -211,11 +211,31 @@ SCR_DestructibleBuildingEntity : "{7784C6A3B960D4DE}Prefabs/Models/tem_wagon_tan
  angleY -0.324
  angleZ -10.625
 }
-GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
- coords 3492.614 94.826 7187.529
- angleX 0.113
- angleY -61.063
- angleZ -1.217
+$grp GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
+ {
+  coords 3492.614 94.826 7187.529
+  angleX 0.113
+  angleY -61.063
+  angleZ -1.217
+ }
+ {
+  coords 3478.35 94.867 7185.852
+  angleX -0.666
+  angleY 46.67
+  angleZ 1.565
+ }
+ {
+  coords 3475.013 94.616 7191.288
+  angleX 3.037
+  angleY 86.363
+  angleZ -1.565
+ }
+ {
+  coords 3485.488 94.78 7208.363
+  angleX -0.526
+  angleY -147.525
+  angleZ 3.375
+ }
 }
 GenericEntity : "{7BA72CFDB168A8D2}Prefabs/Props/Furniture/CabinetMetal_01_grey_V2.et" {
  coords 3491.302 88.971 7177.667
@@ -413,24 +433,6 @@ $grp GenericEntity : "{AC49D9D23A2BD1D8}Prefabs/Props/Furniture/BunkBed_01_Doubl
  }
 }
 $grp GenericEntity : "{AC6DC9D2E040268A}Prefabs/Compositions/Misc/FreeRoamBuilding/SandbagRoundHighBurlap_S_USSR_01.et" {
- {
-  coords 3475.431 94.635 7191.438
-  angleY 79.392
- }
- {
-  coords 3478.722 94.859 7186.02
-  angleY 35.219
- }
- {
-  coords 3485.21 94.75 7208.99
-  {
-   GenericEntity {
-    ID "5D6CEB977773E465"
-    coords -0.017 0 -0.242
-    angleY -144.935
-   }
-  }
- }
  {
   coords 3464.814 82.781 7179.275
   angleY -137.393

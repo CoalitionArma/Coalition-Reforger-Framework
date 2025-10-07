@@ -27,6 +27,12 @@ $grp GenericEntity : "{62482F79CF1B97FD}Prefabs/Structures/BuildingParts/Lights/
 }
 $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3494.872 92.131 7196.971
   angleX -90
   angleY -180
@@ -36,6 +42,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3473.302 94.16 7182.218
   angleX -90
   angleZ 35.032
@@ -50,130 +62,11 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
  }
  {
   components {
-   StreetLampComponent "{55A0954A909C9109}" {
-    "Emissive Color" 0.5617 0.1191 0.1191 1
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
    }
   }
-  coords 3472.672 87.48 7184.932
-  angleX -90
-  angleZ 35.032
-  Color 0.5617 0.1191 0.1191 1
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  components {
-   StreetLampComponent "{55A0954A909C9109}" {
-    "Emissive Color" 0.5617 0.1191 0.1191 1
-   }
-  }
-  coords 3476.188 87.478 7192.99
-  angleX -90
-  angleZ 35.032
-  Color 0.5617 0.1191 0.1191 1
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  components {
-   StreetLampComponent "{55A0954A909C9109}" {
-    "Emissive Color" 0.5617 0.1191 0.1191 1
-   }
-  }
-  coords 3479.988 87.478 7191.362
-  angleX -90
-  angleZ 35.032
-  Color 0.5617 0.1191 0.1191 1
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  components {
-   StreetLampComponent "{55A0954A909C9109}" {
-    "Emissive Color" 0.5617 0.1191 0.1191 1
-   }
-  }
-  coords 3487.118 87.478 7188.227
-  angleX -90
-  angleZ 35.032
-  Color 0.5617 0.1191 0.1191 1
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  components {
-   StreetLampComponent "{55A0954A909C9109}" {
-    "Emissive Color" 0.5617 0.1191 0.1191 1
-   }
-  }
-  coords 3479.745 87.478 7200.992
-  angleX -90
-  angleZ 35.032
-  Color 0.5617 0.1191 0.1191 1
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  components {
-   StreetLampComponent "{55A0954A909C9109}" {
-    "Emissive Color" 0.5617 0.1191 0.1191 1
-   }
-  }
-  coords 3488.235 87.478 7197.302
-  angleX -90
-  angleZ 35.032
-  Color 0.5617 0.1191 0.1191 1
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  components {
-   StreetLampComponent "{55A0954A909C9109}" {
-    "Emissive Color" 0.5617 0.1191 0.1191 1
-   }
-  }
-  coords 3495.769 87.478 7194.023
-  angleX -90
-  angleZ 35.032
-  Color 0.5617 0.1191 0.1191 1
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  coords 3542.09 86.681 7233.684
-  angleX -90
-  angleZ 35.032
-  Color 0.6314 0.5563 0.4862 0
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  coords 3542.115 86.681 7237.585
-  angleX -90
-  angleZ 35.032
-  Color 0.6314 0.5563 0.4862 0
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
-  coords 3536.733 86.681 7237.202
-  angleX -90
-  angleZ 35.032
-  Color 0.6314 0.5563 0.4862 0
-  LV 6
-  SpotAngle 170
-  VolLightOffset 0
- }
- {
   coords 3483.269 87.578 7092.104
   angleX -90
   angleY -180
@@ -182,6 +75,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   LV 8
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3503.586 87.541 7082.233
   angleX -90
   angleY -180
@@ -190,6 +89,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   LV 8
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3535.867 87.583 7156.656
   angleX -90
   angleY -180
@@ -198,6 +103,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   LV 8
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3510.809 87.549 7168.484
   angleX -90
   angleY -180
@@ -206,15 +117,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   LV 8
  }
  {
-  coords 3484.109 86.438 7208.769
-  angleX -90
-  angleY -180
-  angleZ -180
-  Color 0.823 0.5263 0.2491 0
-  LV 8
-  SpotAngle 100
- }
- {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3481.205 92.704 7200.178
   angleX -90
   angleY -180
@@ -224,6 +132,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3478.902 92.754 7194.918
   angleX -90
   angleY -180
@@ -233,6 +147,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3476.609 92.731 7189.66
   angleX -90
   angleY -180
@@ -242,6 +162,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3471.18 91.588 7185.943
   angleX -44.795
   angleY 21.111
@@ -253,6 +179,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   LensFlareType Disabled
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3490.327 91.318 7177.242
   angleX -44.795
   angleY 21.111
@@ -264,6 +196,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   LensFlareType Disabled
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3493.062 92.461 7192.833
   angleX -90
   angleY -180
@@ -273,6 +211,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3488.209 92.621 7186.558
   angleX -90
   angleY -180
@@ -282,6 +226,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3489.439 92.693 7189.309
   angleX -90
   angleY -180
@@ -291,6 +241,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3490.766 92.719 7182.15
   angleX -90
   angleY -180
@@ -300,6 +256,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3482.724 92.653 7209.698
   angleX -90
   angleY -180
@@ -309,6 +271,12 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   Radius 6
  }
  {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
   coords 3487.232 90.968 7202.852
   angleX -28.778
   angleY -29.305
@@ -320,6 +288,36 @@ $grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/La
   VolLightOffset 0
   LensFlareType Disabled
  }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3491.477 92.622 7205.897
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3484.092 86.355 7208.763
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
 }
 $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/LightIndustrial_02.et" {
  {
@@ -327,6 +325,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY 23.047
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -343,6 +347,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY 113.047
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -360,6 +370,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY 113.047
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -377,6 +393,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY 113.047
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -394,6 +416,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY -66.953
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -411,6 +439,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY 23.047
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -427,6 +461,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY -66.953
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -443,6 +483,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY -66.953
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -459,6 +505,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY -66.953
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -475,6 +527,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY -66.953
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -492,6 +550,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY -66.953
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -509,6 +573,12 @@ $grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/
   angleY -66.953
   {
    LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
     coords -0.003 -0.037 0.111
     angleX 0
     angleY -0.009
@@ -1119,6 +1189,275 @@ $grp GameEntity : "{8FF50E5D4B417196}Prefabs/Props/Furniture/LampFluorescent/Lam
     Radius 8
     SpotAngle 170
     DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3542.135 86.755 7237.578
+  angleY 21.896
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3536.714 86.763 7237.194
+  angleY 111.896
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3542.097 86.759 7233.689
+  angleY 21.896
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3472.672 87.537 7184.934
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3476.196 87.534 7193.002
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3479.715 87.564 7201.017
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3488.24 87.543 7197.351
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 7
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3487.152 87.547 7188.228
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3479.973 87.559 7191.366
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3495.782 87.542 7194.036
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
    }
   }
  }
