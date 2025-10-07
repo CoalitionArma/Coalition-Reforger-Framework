@@ -31,7 +31,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
     RegisteringComponentSlotInfo cannon {
      Offset 0 1.4538 0
      ChildPivotID "w_turret_base_mount"
-     Prefab "{146166E10AD2E78C}Prefabs/Weapons/Tripods/Monopod_LouchPole_GPMG_vic.et"
+     Prefab "{3007BEE145545A26}Prefabs/Weapons/Tripods/Monopole_GPMG_vic.et"
      DisablePhysicsInteraction 1
      RegisterActions 1
      RegisterDamage 1

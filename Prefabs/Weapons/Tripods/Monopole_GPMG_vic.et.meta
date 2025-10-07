@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{146166E10AD2E78C}Prefabs/Weapons/Tripods/Monopod_LouchPole_GPMG_vic.et"
+ Name "{3007BEE145545A26}Prefabs/Weapons/Core/Monopole_GPMG_vic.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
