@@ -1,0 +1,563 @@
+SCR_AIWorld : "{E0A05C76552E7F58}Prefabs/AI/SCR_AIWorld.et" {
+ coords 1337.838 91.034 2682.431
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6664E652E65A377B}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 0
+    }
+   }
+  }
+ }
+ coords 1282.761 92.513 2696.722
+ userScript "	void SetVisIdentityBigBoss(IEntity entity)"\
+ "	{"\
+ "		SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));"\
+ "		VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();"\
+ "		visIdentity.SetHead(\"{2E6FBF3E40B7EF7F}Prefabs/Characters/Heads/Head_Sturrock.et\");"\
+ "		visIdentity.SetBody(\"{E7C1C23F782B7481}Prefabs/Characters/Basebody/BigBossBaseBody.et\");"\
+ "		identityComp.CommitChanges();"\
+ "		#ifdef WORKBENCH"\
+ "		#else"\
+ "		if (!System.IsConsoleApp())"\
+ "			return;"\
+ "		#endif"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		entity.GetTransform(spawnParams.Transform);"\
+ "		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{C7505F1DD25292B3}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Eyepatch.et\"), GetGame().GetWorld(), spawnParams);"\
+ "		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		inventoryManager.TryReplaceItem(resourceSpawned, inventory, 9);"\
+ "	}"\
+ "	"\
+ "	void SetVisIdentityOcelot(IEntity entity)"\
+ "	{"\
+ "		SCR_CharacterIdentityComponent identityComp = SCR_CharacterIdentityComponent.Cast(entity.FindComponent(SCR_CharacterIdentityComponent));"\
+ "		VisualIdentity visIdentity = identityComp.GetIdentity().GetVisualIdentity();"\
+ "		visIdentity.SetHead(\"{9611A700F48E869B}Prefabs/Characters/Heads/Head_WhiteHead_04.et\");"\
+ "		identityComp.CommitChanges();"\
+ "		#ifdef WORKBENCH"\
+ "		#else"\
+ "		if (!System.IsConsoleApp())"\
+ "			return;"\
+ "		#endif"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		entity.GetTransform(spawnParams.Transform);"\
+ "		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{E738B6B438B5A68F}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Ocelot_Scarf.et\"), GetGame().GetWorld(), spawnParams);"\
+ "		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		inventoryManager.TryReplaceItem(resourceSpawned, inventory, 12);"\
+ "	}"\
+ "	"\
+ "	void AddArmBand(IEntity entity)"\
+ "	{"\
+ "		EntitySpawnParams spawnParams = new EntitySpawnParams();"\
+ "		entity.GetTransform(spawnParams.Transform);"\
+ "		IEntity resourceSpawned = GetGame().SpawnEntityPrefab(Resource.Load(\"{BC431B58DB4BCEF8}Prefabs/Characters/Accessories/Armband/DiamondDogs_Armband.et\"), GetGame().GetWorld(), spawnParams);"\
+ "		SCR_InventoryStorageManagerComponent inventoryManager = SCR_InventoryStorageManagerComponent.Cast(entity.FindComponent(SCR_InventoryStorageManagerComponent));"\
+ "		SCR_CharacterInventoryStorageComponent inventory = SCR_CharacterInventoryStorageComponent.Cast(entity.FindComponent(SCR_CharacterInventoryStorageComponent));"\
+ "		inventoryManager.TryReplaceItem(resourceSpawned, inventory, 8);"\
+ "	}"
+ OnControllableSpawned ""\
+ "		super.OnControllableSpawned(entity);"\
+ "		if (entity.GetPrefabData().GetPrefabName() == \"{B3182F73DBEACB7B}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_COY_P.et\")"\
+ "			GetGame().GetCallqueue().Call(SetVisIdentityBigBoss, entity);"\
+ "		"\
+ "		if (entity.GetPrefabData().GetPrefabName() == \"{A53B8AB60784E018}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_COY_P.et\")"\
+ "			GetGame().GetCallqueue().Call(SetVisIdentityOcelot, entity);"\
+ "		"\
+ "		#ifdef WORKBENCH"\
+ "		#else"\
+ "		if (!System.IsConsoleApp())"\
+ "			return;"\
+ "		#endif"\
+ "		"\
+ "		if (entity.GetPrefabData().GetPrefabName().Contains(\"BLUFOR\") || entity.GetPrefabData().GetPrefabName().Contains(\"INDFOR\") )"\
+ "			GetGame().GetCallqueue().Call(AddArmBand, entity);"\
+ "	"
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "[READ THE ADMIN TAB]"\
+   ""\
+   "“Boss, a Soviet Spetsnaz platoon has been sighted in the Central Highlands of Vietnam. Their commander’s directing counter-insurgency against local guerrillas. If he isn’t removed, the Soviets will gain a foothold here."\
+   "Your mission is to capture that commander alive. You’ll lead one of our platoons, while Ocelot takes a section from the Security Team. But remember—the Security Team’s still on Soviet radios, your unit’s on American. You won’t be able to talk to each other directly in the field."\
+   "Intel says the commander will have an extraction in forty minutes. If you don’t secure him before then, we'll have to intercept him on his way out."\
+   ""\
+   "Bring him back, Boss.”"\
+   ""\
+   "BLUFOR Composition: Infantry"\
+   "BLUFOR Assets:"\
+   "MMG"\
+   "Recon Team"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets:"\
+   "Mortar"\
+   "MMG"\
+   ""\
+   "Time: 60"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "- Capture the Soviet Platoon Leader alive."\
+   "- Ensure he does not escape."\
+   ""\
+   "- Utilize the UAZs for your respawns to cut off the target if he tries to flee"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "- Do not let the Platoon Leader die."\
+   "- Do not let the Platoon Leader be captured."\
+   "- Defend until extraction. then get the PL out of here."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "- Capture the Soviet Platoon Leader alive."\
+   "- Ensure he does not escape."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "BLUFOR and INDFOR are friendly but have no comms together."\
+   ""\
+   "After 40 minutes an extraction location will appear on the map, you will have to prevent the HVT from reaching that area. There will be a respawn wave at 40 minutes when the HVT gets his extraction location."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{8CFDA0A357401938}Configs/Gearscripts/Custom/Salami/CRF_GS_DiamondDogs.conf"
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{BFA5C6642BC8BF8C}Configs/Gearscripts/Custom/Salami/CRF_GS_MGSSpetnaz.conf"
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{E4C04C01B99C8025}Configs/Gearscripts/Custom/Salami/CRF_GS_DiamondDogsSecurityTeam.conf"
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager "666469F3B77A660D" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+      "INDFOR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66632E9234B41A95}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66632E90931A568F}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66632E9231462FA6}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66632E9233F75225}" {
+        m_sCallsign "RECON"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{666469F26132ECBC}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{666469F263F0BB63}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{666469F25809DE7B}" {
+        m_sCallsign "MORTAR"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66632E9153B11CD4}" {
+        m_sCallsign "ENGI"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp SCR_BaseTriggerEntity {
+ Extraction0 {
+  coords 367.404 1.916 247.379
+  userScript "	const string HVT = \"{9613738A003FBAD2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_PL_P.et\";"\
+  "	bool m_bIsEntityInTrigger = false;"\
+  "	bool m_bIsExtraction = false;"\
+  "	ExtractionPicker_Class m_ExtractionPicker;"\
+  "	int m_iExtraction = -1;"\
+  "	bool m_bHasEscapePlayed = false;"\
+  "	bool m_bHasHVTEscapePlayed = false;"
+  EOnInit ""\
+  "		m_ExtractionPicker = ExtractionPicker_Class.Cast(GetGame().GetWorld().FindEntityByName(\"ExtractionPicker\"));"\
+  "		m_iExtraction = GetName().Get(10).ToInt();"\
+  "	"
+  TriggerShapeType Sphere
+  SphereRadius 54.3
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!System.IsConsoleApp())"\
+  "			return;"\
+  "		#endif"\
+  "		"\
+  "		if (m_iExtraction != m_ExtractionPicker.m_SelectedExtraction)"\
+  "			return;"\
+  "		"\
+  "		if (!m_bHasEscapePlayed)"\
+  "		{"\
+  "			vector origin = GetOrigin();"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT is trying to escape to Khu Du!\");"\
+  "			m_bHasEscapePlayed = true;"\
+  "			"\
+  "			"\
+  "			SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();"\
+  "			SCR_MapMarkerBase marker = new SCR_MapMarkerBase();"\
+  "			marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);"\
+  "			marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.PICK_UP2);"\
+  "			marker.SetCustomText(\"Extraction\");"\
+  "			marker.SetColorEntry(Color.RED);"\
+  "			marker.SetWorldPos(origin[0], origin[2]);"\
+  "			markerManager.InsertStaticMarker(marker, false, true);"\
+  "			"\
+  "			"\
+  "			EntitySpawnParams params = new EntitySpawnParams();"\
+  "			GetTransform(params.Transform);"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(\"{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et\"), GetGame().GetWorld(), params);"\
+  "			"\
+  "			CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();"\
+  "			GetGame().GetCallqueue().CallLater(respawnMan.RespawnAllSides, 1000, false);"\
+  "		}"\
+  "		"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(this.GetOrigin(), 60, null, EntityCheck);"\
+  "		"\
+  "		"\
+  "		if (!m_bIsEntityInTrigger)"\
+  "			return;"\
+  "		"\
+  "		if (!m_bHasHVTEscapePlayed)"\
+  "		{"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT has escaped!\");"\
+  "			m_bHasHVTEscapePlayed = true;"\
+  "		}"\
+  "		"\
+  "	}"\
+  "	"\
+  "	bool EntityCheck(IEntity entity)"\
+  "	{"\
+  "		if (entity.GetPrefabData().GetPrefabName() != HVT)"\
+  "			return false;"\
+  "		"\
+  "		m_bIsEntityInTrigger = true;"\
+  "		return true;"\
+  "	"
+ }
+ ExtractionPicker {
+  coords 1206.548 51.923 545.611
+  userScript "	int m_iAmountOfExtractions = 0;"\
+  "	CRF_SafestartManager m_SafestartManager;"\
+  "	CRF_Gamemode m_Gamemode;"\
+  "	int m_SelectedExtraction = -1;"\
+  "	bool m_bHasWoHoPlayed = false;"\
+  "	bool m_bHasInsertedScriptInvoker = false;"\
+  "	"\
+  "	void SelectExtraction()"\
+  "	{"\
+  "		RandomGenerator randomGen = new RandomGenerator();"\
+  "		randomGen.SetSeed(System.GetTickCount());"\
+  "		int random = randomGen.RandInt(0, m_iAmountOfExtractions);"\
+  "		m_SelectedExtraction = random;"\
+  "	}"
+  EOnInit ""\
+  "		m_Gamemode = CRF_Gamemode.GetInstance();"\
+  "		m_SafestartManager = CRF_SafestartManager.GetInstance();"\
+  "		GetGame().GetCallqueue().CallLater(PlayWoHo, 1000, true);"\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!System.IsConsoleApp())"\
+  "			return;"\
+  "		#endif"\
+  "		"\
+  "		for (int i = 0; GetGame().GetWorld().FindEntityByName(\"Extraction\" + i.ToString()) != null; i++)"\
+  "			m_iAmountOfExtractions++;"\
+  "	}"\
+  "	"\
+  "	void PlayWoHo()"\
+  "	{"\
+  "		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)"\
+  "			return;"\
+  "		if (!m_bHasWoHoPlayed)"\
+  "		{"\
+  "			GetGame().GetCallqueue().Remove(PlayWoHo);"\
+  "			AudioSystem.PlaySound(\"{E21A3879A55E640B}Sounds/WoHo.wav\");"\
+  "			m_bHasWoHoPlayed = true;"\
+  "		}"\
+  "	"
+  TriggerShapeType Sphere
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)"\
+  "			return;"\
+  "		"\
+  "		if (m_SafestartManager.GetSafestartStatus())"\
+  "			return;"\
+  "			"\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!System.IsConsoleApp())"\
+  "			return;"\
+  "		#endif"\
+  "		"\
+  "		float currentTime = GetGame().GetWorld().GetWorldTime();"\
+  "		float millis = m_SafestartManager.m_iTimeMissionEnds - currentTime;"\
+  "		int totalSeconds = (millis * 0.001);"\
+  "		if (totalSeconds <= 1800 && m_SelectedExtraction == -1)"\
+  "			SelectExtraction();"\
+  "	"
+ }
+ ExtractionBLU {
+  coords 1182.605 89.909 1842.003
+  userScript "	const string HVT = \"{9613738A003FBAD2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_PL_P.et\";"\
+  "	bool m_bIsEntityInTrigger = false;"\
+  "	bool m_bHasHVTEscapePlayed = false;"
+  TriggerShapeType Sphere
+  SphereRadius 99.7
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!System.IsConsoleApp())"\
+  "			return;"\
+  "		#endif"\
+  "		"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(GetOrigin(), 60, null, EntityCheck);"\
+  "		"\
+  "		if (!m_bIsEntityInTrigger)"\
+  "			return;"\
+  "		"\
+  "		if (!m_bHasHVTEscapePlayed)"\
+  "		{"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"Big Boss has captured the HVT\");"\
+  "			m_bHasHVTEscapePlayed = true;"\
+  "		}"\
+  "		"\
+  "	}"\
+  "	"\
+  "	bool EntityCheck(IEntity entity)"\
+  "	{"\
+  "		if (entity.GetPrefabData().GetPrefabName() != HVT)"\
+  "			return false;"\
+  "		"\
+  "		m_bIsEntityInTrigger = true;"\
+  "		return true;"\
+  "	"
+ }
+ Extraction2 {
+  coords 49.253 1.164 1047.881
+  angleX -1.779
+  angleY 0.139
+  angleZ -4.469
+  userScript "	const string HVT = \"{9613738A003FBAD2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_PL_P.et\";"\
+  "	bool m_bIsEntityInTrigger = false;"\
+  "	bool m_bIsExtraction = false;"\
+  "	ExtractionPicker_Class m_ExtractionPicker;"\
+  "	int m_iExtraction = -1;"\
+  "	bool m_bHasEscapePlayed = false;"\
+  "	bool m_bHasHVTEscapePlayed = false;"
+  EOnInit ""\
+  "		m_ExtractionPicker = ExtractionPicker_Class.Cast(GetGame().GetWorld().FindEntityByName(\"ExtractionPicker\"));"\
+  "		m_iExtraction = GetName().Get(10).ToInt();"\
+  "	"
+  TriggerShapeType Sphere
+  SphereRadius 54.3
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!System.IsConsoleApp())"\
+  "			return;"\
+  "		#endif"\
+  "		"\
+  "		if (m_iExtraction != m_ExtractionPicker.m_SelectedExtraction)"\
+  "			return;"\
+  "		"\
+  "		if (!m_bHasEscapePlayed)"\
+  "		{"\
+  "			vector origin = GetOrigin();"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT is trying to escape to Dak Ho!\");"\
+  "			m_bHasEscapePlayed = true;"\
+  "			"\
+  "			"\
+  "			SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();"\
+  "			SCR_MapMarkerBase marker = new SCR_MapMarkerBase();"\
+  "			marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);"\
+  "			marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.PICK_UP2);"\
+  "			marker.SetCustomText(\"Extraction\");"\
+  "			marker.SetColorEntry(Color.RED);"\
+  "			marker.SetWorldPos(origin[0], origin[2]);"\
+  "			markerManager.InsertStaticMarker(marker, false, true);"\
+  "			"\
+  "			"\
+  "			EntitySpawnParams params = new EntitySpawnParams();"\
+  "			GetTransform(params.Transform);"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(\"{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et\"), GetGame().GetWorld(), params);"\
+  "			"\
+  "			CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();"\
+  "			GetGame().GetCallqueue().CallLater(respawnMan.RespawnAllSides, 1000, false);"\
+  "		}"\
+  "		"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(this.GetOrigin(), 60, null, EntityCheck);"\
+  "		"\
+  "		"\
+  "		if (!m_bIsEntityInTrigger)"\
+  "			return;"\
+  "		"\
+  "		if (!m_bHasHVTEscapePlayed)"\
+  "		{"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT has escaped!\");"\
+  "			m_bHasHVTEscapePlayed = true;"\
+  "		}"\
+  "		"\
+  "	}"\
+  "	"\
+  "	bool EntityCheck(IEntity entity)"\
+  "	{"\
+  "		if (entity.GetPrefabData().GetPrefabName() != HVT)"\
+  "			return false;"\
+  "		"\
+  "		m_bIsEntityInTrigger = true;"\
+  "		return true;"\
+  "	"
+ }
+ Extraction1 {
+  coords 2258.062 1.439 91.768
+  angleY 90
+  userScript "	const string HVT = \"{9613738A003FBAD2}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_PL_P.et\";"\
+  "	bool m_bIsEntityInTrigger = false;"\
+  "	bool m_bIsExtraction = false;"\
+  "	ExtractionPicker_Class m_ExtractionPicker;"\
+  "	int m_iExtraction = -1;"\
+  "	bool m_bHasEscapePlayed = false;"\
+  "	bool m_bHasHVTEscapePlayed = false;"
+  EOnInit ""\
+  "		m_ExtractionPicker = ExtractionPicker_Class.Cast(GetGame().GetWorld().FindEntityByName(\"ExtractionPicker\"));"\
+  "		m_iExtraction = GetName().Get(10).ToInt();"\
+  "	"
+  TriggerShapeType Sphere
+  SphereRadius 54.3
+  PeriodicQueries 1
+  UpdatePeriod 10
+  OnQueryFinished ""\
+  "		#ifdef WORKBENCH"\
+  "		#else"\
+  "		if (!System.IsConsoleApp())"\
+  "			return;"\
+  "		#endif"\
+  "		"\
+  "		if (m_iExtraction != m_ExtractionPicker.m_SelectedExtraction)"\
+  "			return;"\
+  "		"\
+  "		if (!m_bHasEscapePlayed)"\
+  "		{"\
+  "			vector origin = GetOrigin();"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT is trying to escape to Lang Chu Lan!\");"\
+  "			m_bHasEscapePlayed = true;"\
+  "			"\
+  "			"\
+  "			SCR_MapMarkerManagerComponent markerManager = SCR_MapMarkerManagerComponent.GetInstance();"\
+  "			SCR_MapMarkerBase marker = new SCR_MapMarkerBase();"\
+  "			marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);"\
+  "			marker.SetIconEntry(SCR_EScenarioFrameworkMarkerCustom.PICK_UP2);"\
+  "			marker.SetCustomText(\"Extraction\");"\
+  "			marker.SetColorEntry(Color.RED);"\
+  "			marker.SetWorldPos(origin[0], origin[2]);"\
+  "			markerManager.InsertStaticMarker(marker, false, true);"\
+  "			"\
+  "			"\
+  "			EntitySpawnParams params = new EntitySpawnParams();"\
+  "			GetTransform(params.Transform);"\
+  "			GetGame().SpawnEntityPrefab(Resource.Load(\"{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et\"), GetGame().GetWorld(), params);"\
+  "			"\
+  "			CRF_RespawnManager respawnMan = CRF_RespawnManager.GetInstance();"\
+  "			GetGame().GetCallqueue().CallLater(respawnMan.RespawnAllSides, 1000, false);"\
+  "		}"\
+  "		"\
+  "		GetGame().GetWorld().QueryEntitiesBySphere(this.GetOrigin(), 60, null, EntityCheck);"\
+  "		"\
+  "		"\
+  "		if (!m_bIsEntityInTrigger)"\
+  "			return;"\
+  "		"\
+  "		if (!m_bHasHVTEscapePlayed)"\
+  "		{"\
+  "			CRF_RplBroadcastManager.GetInstance().BroadcastMessage(\"The HVT has escaped!\");"\
+  "			m_bHasHVTEscapePlayed = true;"\
+  "		}"\
+  "		"\
+  "	}"\
+  "	"\
+  "	bool EntityCheck(IEntity entity)"\
+  "	{"\
+  "		if (entity.GetPrefabData().GetPrefabName() != HVT)"\
+  "			return false;"\
+  "		"\
+  "		m_bIsEntityInTrigger = true;"\
+  "		return true;"\
+  "	"
+ }
+}

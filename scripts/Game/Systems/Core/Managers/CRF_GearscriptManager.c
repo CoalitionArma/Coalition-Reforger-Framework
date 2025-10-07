@@ -46,8 +46,17 @@ class CRF_GearscriptManager : ScriptComponent
 			PrintFormat("NO GEARSCRIPT ASSIGNED TO: %1", factionKey, LogLevel.WARNING);
 			return "";
 		}
+		
+		CRF_Gamemode gm = CRF_Gamemode.GetInstance();
+		switch (factionKey)
+		{
+			case "BLUFOR": return gm.m_rBLUFORCurrentGearScript; break;
+			case "OPFOR": return gm.m_rOPFORCurrentGearScript; break;
+			case "INDFOR": return gm.m_rINDFORCurrentGearScript; break;
+			case "CIV": return gm.m_rCIVILIANCurrentGearScript; break;
+		}
 
-		return container.m_rGearScript;
+		return gm.m_rCIVILIANCurrentGearScript;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -126,6 +135,10 @@ class CRF_GearscriptManager : ScriptComponent
 	void SetEntityGearDelay(string gearScriptResourceName, IEntity entity, CRF_EGearRole role, SCR_CharacterInventoryStorageComponent inventory,
 	SCR_InventoryStorageManagerComponent inventoryManager, CRF_GearScriptContainer gearScriptSettings)
 	{
+		// If entity was deleted or snapped up by the slotting manager
+		if(!entity)
+			return;
+		
 		// Load gearscript config
 		CRF_GearScriptConfig gearConfig = LoadGearScriptConfig(gearScriptResourceName);
 		if (!gearConfig)
@@ -136,8 +149,8 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		// Apply gear
 		ApplyClothing(gearConfig, role, spawnParams, inventory, inventoryManager);
-		GetGame().GetCallqueue().CallLater(ApplyWeapons, 285, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
-		ApplyInventoryItems(gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		GetGame().GetCallqueue().CallLater(ApplyWeapons, 375, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
+		GetGame().GetCallqueue().CallLater(ApplyInventoryItems, 250, false, gearConfig, role, gearScriptSettings, spawnParams, inventory, inventoryManager);
 		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
 		if (playerId > 0)
 		{
@@ -275,7 +288,7 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @return Spawn parameters
 	 */
 	protected EntitySpawnParams CreateSpawnParams(IEntity entity)
-	{
+	{	
 		EntitySpawnParams spawnParams = new EntitySpawnParams();
 		spawnParams.TransformMode = ETransformMode.WORLD;
 		spawnParams.Transform[3] = entity.GetOrigin();
@@ -412,6 +425,9 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void ApplyWeapons(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
+		if(!inventory || !inventoryManager)
+			return;
+		
 		bool customWeaponsSet = ApplyCustomWeapons(gearConfig, role, spawnParams, inventory, inventoryManager);
 		
 		// Apply default weapons if no custom weapons were set
@@ -724,6 +740,9 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void ApplyInventoryItems(CRF_GearScriptConfig gearConfig, CRF_EGearRole role, CRF_GearScriptContainer gearScriptSettings,
 		EntitySpawnParams spawnParams, SCR_CharacterInventoryStorageComponent inventory, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
+		if(!inventory || !inventoryManager)
+			return;
+		
 		// Apply custom gear first
 		if (gearConfig.m_CustomFactionGear)
 		{
@@ -911,7 +930,7 @@ class CRF_GearscriptManager : ScriptComponent
 	protected void AddAttachments(ResourceName weaponResource, array<ResourceName> attachmentResources, 
 		EntitySpawnParams spawnParams, SCR_InventoryStorageManagerComponent inventoryManager)
 	{
-		if (!inventoryManager || !attachmentResources || attachmentResources.IsEmpty())
+		if (!attachmentResources || attachmentResources.IsEmpty())
 			return;
 			
 		ChimeraCharacter character = ChimeraCharacter.Cast(inventoryManager.GetOwner());
@@ -972,19 +991,17 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		AttachmentSlotComponent verifyAttachmentSlot = null;
 		IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachmentResource), GetGame().GetWorld(), spawnParams);
-		inventoryManager.TryInsertItem(attachmentSpawned, EStoragePurpose.PURPOSE_ATTACHMENT_PROXY);
-
+		BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(weapon.FindComponent(BaseInventoryStorageComponent));
+		IEntity oldSight = weaponStorageComp.FindSuitableSlotForItem(attachmentSpawned).GetAttachedEntity();
+		
 		foreach (AttachmentSlotComponent attachmentSlot : attachmentSlots)
 		{
 			if (attachmentSlot.CanSetAttachment(attachmentSpawned))
 			{
-				IEntity attachedEntity = attachmentSlot.GetAttachedEntity();
-				if (attachedEntity != null && attachedEntity != attachmentSpawned)
-				{
-					delete attachedEntity;
-				}
-
-				attachmentSlot.SetAttachment(attachmentSpawned);
+				if (oldSight)
+				delete oldSight;
+			
+				inventoryManager.TryInsertItemInStorage(attachmentSpawned, weaponStorageComp);
 				verifyAttachmentSlot = attachmentSlot;
 				break;
 			}
@@ -1029,7 +1046,7 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		if (clothingArray.IsEmpty() || slotInt == -1)
 			return;
-
+		
 		array<IEntity> removedItems = {};
 		IEntity previousClothing = inventory.Get(slotInt);
 		
@@ -1206,8 +1223,7 @@ class CRF_GearscriptManager : ScriptComponent
 			// Try to equip attachable equipment
 			if (inventoryManager.CanInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT))
 			{
-				BaseInventoryStorageComponent storageComp = inventoryManager.FindStorageForItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
-				inventoryManager.EquipAny(storageComp, resourceSpawned, -1);
+				inventoryManager.TryInsertItem(resourceSpawned, EStoragePurpose.PURPOSE_EQUIPMENT_ATTACHMENT);
 				continue;
 			}
 

@@ -1,0 +1,66 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{66872908811FA180}" {
+   Name "CategoryBG"
+   Slot FrameWidgetSlot "{66872908811FA1A0}" {
+    OffsetLeft 0
+    OffsetTop 0
+    SizeX 80
+    OffsetRight -80
+    SizeY 1080
+    OffsetBottom -1080
+   }
+   Color 0.0494 0.0494 0.0494 0.425
+  }
+  VerticalLayoutWidgetClass "{6687290BF5351561}" {
+   Name "CategoryButtons"
+   Slot FrameWidgetSlot "{6687290BF53515AB}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 80
+    OffsetRight -80
+    SizeY 1080
+    OffsetBottom -1080
+   }
+  }
+  ScrollLayoutWidgetClass "{668835907AB2454E}" {
+   Name "ScrollLayout0"
+   Slot FrameWidgetSlot "{668835907AB24567}" {
+    PositionX 80
+    OffsetLeft 80
+    PositionY 0
+    OffsetTop 0
+    SizeX 350
+    OffsetRight -430
+    SizeY 1080
+    OffsetBottom -1080
+   }
+   {
+    VerticalLayoutWidgetClass "{6687290864A52BE6}" {
+     Name "ItemButtons"
+     Slot AlignableSlot "{6688359051EFF57B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
+   }
+  }
+  ImageWidgetClass "{66872908F3BBC349}" {
+   Name "ItemsBG"
+   Slot FrameWidgetSlot "{66872908811FA1A0}" {
+    PositionX 80
+    OffsetLeft 80
+    PositionY 0
+    OffsetTop 0
+    SizeX 350
+    OffsetRight -430
+    SizeY 1080
+    OffsetBottom -1080
+   }
+   Color 0.006 0.006 0.006 0.425
+  }
+ }
+}

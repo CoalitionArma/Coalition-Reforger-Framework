@@ -27,16 +27,19 @@ class CRF_SlottingManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	
+	protected static CRF_SlottingManager m_sInstance;
+	
+	void CRF_SlottingManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// INITIALIZATION
 	//------------------------------------------------------------------------------------------------
 	static CRF_SlottingManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_SlottingManager.Cast(gameMode.FindComponent(CRF_SlottingManager));
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------

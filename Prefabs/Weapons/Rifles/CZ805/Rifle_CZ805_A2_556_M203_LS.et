@@ -1,0 +1,32 @@
+GenericEntity : "{C8DF984E88ECE0D6}Prefabs/Weapons/Rifles/CZ805/Rifle_CZ805_A2_556_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{659710C425A6E743}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+      Prefab "{9C42803E49305273}Prefabs/Weapons/Attachments/Optics/exps/Optic_EXPS3-1.et"
+     }
+    }
+    AttachmentSlotComponent "{659710C425A6E745}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot TopRail {
+      PivotID "slot_ubgl"
+      Offset -0.0014 0.0296 -0.0306
+      ChildPivotID ""
+      Prefab "{A6A478BB9FC6D2C1}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight_LS.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{659710C425A6E73C}" {
+       AttachmentSlot InventoryStorageSlot Suppressor {
+        Prefab "{87E9B3028EA1C0DF}Prefabs/Weapons/Attachments/Muzzle/556x45/MuzzleBrake_SFProcomp_556.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+ coords -0.071 0 0.063
+}

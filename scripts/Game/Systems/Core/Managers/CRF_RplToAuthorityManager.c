@@ -18,15 +18,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	
+	protected static CRF_RplToAuthorityManager m_sInstance;
+	
+	void CRF_RplToAuthorityManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// Returns the instance of the RplToAuthorityManager
 	static CRF_RplToAuthorityManager GetInstance()
 	{
-		PlayerController playerController = GetGame().GetPlayerController();
-		if (playerController)
-			return CRF_RplToAuthorityManager.Cast(playerController.FindComponent(CRF_RplToAuthorityManager));
-		
-		return null;
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -299,10 +302,9 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	// Vehicle depot management
-	void RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	void RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
-		Print(string.Format("[CRF_RplToAuthorityManager] Sending vehicle depot spawn RPC: player %1, vehicle index %2, depot RplId %3", playerId, vehicleIndex, depotRplId));
-		Rpc(RpcAsk_RequestVehicleDepotSpawn, playerId, vehicleIndex, depotRplId);
+		Rpc(RpcAsk_RequestVehicleDepotInteraction, playerId, vehicleIndex, depotRplId);
 	}
 	
 	void RespawnFaction(FactionKey faction, bool logAction)
@@ -363,6 +365,20 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateTicket, action, faction, delta); 
 	}
 	
+	void MiniArsenalRequestNewItem(int playerId, string resourceName, int slotId)
+	{
+		Rpc(RpcAsk_MiniArsenalRequestNewItem, playerId, resourceName, slotId);
+	}
+	
+	void SightArsenalRequestNewSight(int playerId, string resourceName, string type)
+	{
+		Rpc(RpcAsk_SightArsenalRequestNewSight, playerId, resourceName, type);
+	}
+	
+	void TogglePlayerListening(int playerId, bool input)
+	{
+		Rpc(RpcAsk_TogglePlayerLisntening, playerId, input);
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
@@ -642,7 +658,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_RequestVehicleDepotSpawn(int playerId, int vehicleIndex, RplId depotRplId)
+	protected void RpcAsk_RequestVehicleDepotInteraction(int playerId, int vehicleIndex, RplId depotRplId)
 	{
 		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(depotRplId));
 		if (!rplComponent)
@@ -656,8 +672,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		if (!depotComponent)
 			return;
 		
+		// Check if viewing/supply update (special values)
+		if (playerId == -1 || vehicleIndex == -1)
+		{
+			// Only refresh supplies for viewing notifications - spawning handles supply updates automatically
+			depotComponent.NotifyPlayerViewing();
+			return;
+		}
+		
+		// If not viewing/supply update, is spawnvehicle request
 		depotComponent.SpawnVehicle(playerId, vehicleIndex);
 	}
+
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_RespawnFaction(FactionKey faction, bool logAction)
@@ -715,13 +741,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_UpdateGearSet(string faction, ResourceName path)
 	{
 		// Update gearscript in the gamemode
-		switch (faction)
-		{
-			case "BLUFOR": CRF_Gamemode.GetInstance().m_BLUFORGearScriptSettings.m_rGearScript = path; break;
-			case "OPFOR": CRF_Gamemode.GetInstance().m_OPFORGearScriptSettings.m_rGearScript = path; break;
-			case "INDFOR": CRF_Gamemode.GetInstance().m_INDFORGearScriptSettings.m_rGearScript = path; break;
-			case "CIV": CRF_Gamemode.GetInstance().m_CIVILIANGearScriptSettings.m_rGearScript = path; break;
-		}
+		CRF_Gamemode.GetInstance().UpdateGearscriptResource(faction, path);
 
 		// Load the AI world
 		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
@@ -916,5 +936,111 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		string logMessage = string.Format("%1 tickets was subtracted from %2", delta, faction);
 		m_RplBroadcastManager.GetInstance().LogAdminAction(logMessage, -1, false);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_MiniArsenalRequestNewItem(int playerId, string newResource, int slotId)
+	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		player.GetTransform(params.Transform);
+		
+		IEntity newItem = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);
+		
+		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		BaseInventoryStorageComponent invComponent = BaseInventoryStorageComponent.Cast(player.FindComponent(BaseInventoryStorageComponent));
+		IEntity oldItem = invComponent.Get(slotId);
+		if (!oldItem)
+		{
+			invManager.TryInsertItem(newItem);
+			return;
+		}
+		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
+		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
+		ref array<IEntity> pouches = {};
+		oldStorageComp.GetAll(pouches);
+		ref array<ResourceName> items = {};
+		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O
+		foreach (IEntity pouch: pouches)
+		{
+			if (!pouch.FindComponent(BaseInventoryStorageComponent))
+			{
+				items.Insert(pouch.GetPrefabData().GetPrefabName());
+				continue;
+			}
+			
+			ref array<IEntity> tempItems = {};
+			BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent)).GetAll(tempItems);
+			foreach (IEntity tempItem: tempItems)
+			{
+				items.Insert(tempItem.GetPrefabData().GetPrefabName());
+			}
+		}
+		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
+		invManager.TryInsertItem(newItem);
+		for (int i = 0; i < items.Count(); i++)
+		{
+			if(!invManager.TrySpawnPrefabToStorage(items[i], newStorageComp))
+			{
+				ref array<IEntity> newPouches = {};
+				newStorageComp.GetAll(newPouches);
+				
+				foreach (IEntity pouch: newPouches)
+				{
+					if (!pouch.FindComponent(BaseInventoryStorageComponent))
+						continue;
+					
+					
+					BaseInventoryStorageComponent pouchStorage = BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent));
+					if(invManager.TrySpawnPrefabToStorage(items[i], pouchStorage))
+						break;
+				}
+			}
+		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_SightArsenalRequestNewSight(int playerId, string newResource, string type)
+	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+		EntitySpawnParams params = new EntitySpawnParams();
+		player.GetTransform(params.Transform);
+		
+		IEntity newSight = GetGame().SpawnEntityPrefab(Resource.Load(newResource), null, params);
+		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		array<AttachmentSlotComponent> attachments = {};
+		charController.GetWeaponManagerComponent().GetCurrentWeapon().GetAttachments(attachments);
+		AttachmentSlotComponent sightAttachment;
+		SCR_InventoryStorageManagerComponent invManager = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		BaseInventoryStorageComponent weaponInv = BaseInventoryStorageComponent.Cast(charController.GetWeaponManagerComponent().GetCurrentWeapon().GetOwner().FindComponent(BaseInventoryStorageComponent));
+		foreach (AttachmentSlotComponent attachment: attachments)
+		{
+			if (!attachment.GetAttachmentSlotType())
+				continue;
+			if (type.ToType().IsInherited(attachment.GetAttachmentSlotType().Type()))
+				sightAttachment = attachment;
+		}
+		if (!sightAttachment)
+			return;
+		
+		IEntity oldSight = sightAttachment.GetAttachedEntity();
+		if (sightAttachment.CanSetAttachment(newSight))
+		{
+			if (oldSight)
+				delete oldSight;
+			
+			invManager.TryInsertItemInStorage(newSight, weaponInv);
+		}
+	}
+    
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
+	{
+		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
 	}
 };

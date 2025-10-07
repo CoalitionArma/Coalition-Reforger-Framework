@@ -1833,10 +1833,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 			string resourceName;
 			switch (faction)
 			{
-				case "BLUFOR" : resourceName = gm.m_BLUFORGearScriptSettings.m_rGearScript; break;
-				case "OPFOR" : resourceName = gm.m_OPFORGearScriptSettings.m_rGearScript; break;
-				case "INDFOR" : resourceName = gm.m_INDFORGearScriptSettings.m_rGearScript; break;
-				case "CIV" : resourceName = gm.m_CIVILIANGearScriptSettings.m_rGearScript; break;
+				case "BLUFOR" : resourceName = gm.m_rBLUFORCurrentGearScript; break;
+				case "OPFOR" : resourceName = gm.m_rOPFORCurrentGearScript; break;
+				case "INDFOR" : resourceName = gm.m_rINDFORCurrentGearScript; break;
+				case "CIV" : resourceName = gm.m_rCIVILIANCurrentGearScript; break;
 			}
 			
 			string gearSetName =  resourceName.Substring(resourceName.LastIndexOf("/") + 1, resourceName.LastIndexOf(".") - resourceName.LastIndexOf("/") - 1);

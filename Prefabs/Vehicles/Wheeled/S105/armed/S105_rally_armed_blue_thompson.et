@@ -1,0 +1,90 @@
+Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{631B4948527E5708}" {
+     SourceMaterial "Exterior02"
+     AssignedMaterial "{9A6DEA4C5AB75B67}Assets/Vehicles/Wheeled/S105/Data/S105_Rally_Exterior.emat"
+    }
+    MaterialAssignClass "{631B4948527E577F}" {
+     SourceMaterial "S105Body_mat"
+     AssignedMaterial "{AA2D0E22B50C22A1}Assets/Vehicles/Wheeled/S105/Data/S105Body_blue.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentUniqueName "pilot"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Vehicle_Skoda105_Name - #WCS-Weapon_M134_Name"
+    m_Image "{86B19DC95917B15B}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_wcs_M134.edds"
+    m_aAuthoredLabels + {
+     21
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      WCS_Armament_WeaponInfoVehicle "{667105FEB8496D73}" {
+       m_LayoutPath "{2E427134219C809E}UI/layouts/HUD/WeaponInfo/WCS_WeaponInfo.layout"
+       m_aHandlers {
+        SCR_InfoDisplaySlotHandler "{667105FEB8496D0F}" {
+         m_bCanUpdate 1
+         m_sSlotName "Slot_WeaponInfo"
+        }
+       }
+       m_sInterfaceSettingName "m_bShowWeaponInfo"
+      }
+     }
+    }
+    BaseWeaponManagerComponent "{667105FEB8496D17}" {
+     DefaultWeaponIndex 0
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{667105FEB8496D11}" {
+   m_ArmamentGroups {
+    WCS_ArmamentSlotGroup "{667105FEB8496D12}" {
+    }
+   }
+  }
+  WCS_VehicleAimCameraComponent "{667105FEB8496D1C}" {
+   m_Position PointInfo "{667105FEB8496D18}" {
+    Offset -0.3117 1.2527 0.5386
+   }
+  }
+  WeaponSlotComponent "{667105FEB8496D25}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{667105FEB8496D26}" {
+   }
+   WeaponType MachineGun
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot UPK23 {
+    Offset -0.8244 1.1362 0.6783
+    Angles -1 0 0
+    DisablePhysicsInteraction 1
+    DeactivatePhysicsOnAtaching 1
+   }
+   WeaponTemplate "{8C6ECF623291A958}Prefabs/Weapons/Rifles/Thompson M1928A1/BC_Rifle_Thompson_M1928A1_INF.et"
+  }
+  WeaponSlotComponent "{66715A3A6C5C154C}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{66715A3A45D29314}" {
+   }
+   WeaponType MachineGun
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot "{66715A3A534DD81A}" {
+    Offset 0.8158 1.1362 0.6783
+    DisablePhysicsInteraction 1
+    DeactivatePhysicsOnAtaching 1
+   }
+   WeaponTemplate "{3265C13DC700E7FE}Prefabs/Weapons/Launchers/MAW_84MM/Launcher_84mm_MAW.et"
+  }
+ }
+}

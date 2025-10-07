@@ -36,6 +36,13 @@ class CRF_AdminMenuManager : ScriptComponent
 	// Array of admin actions
 	private ref array<ref CRF_AdminActionLog> m_mAdminActions = new array<ref CRF_AdminActionLog>();
 	
+	protected static CRF_AdminMenuManager m_sInstance;
+	
+	void CRF_AdminMenuManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	* Returns the instance of CRF_AdminMenuManager from the current game mode
@@ -43,11 +50,7 @@ class CRF_AdminMenuManager : ScriptComponent
 	*/
 	static CRF_AdminMenuManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-		
-		return CRF_AdminMenuManager.Cast(gameMode.FindComponent(CRF_AdminMenuManager));
+		return m_sInstance;
 	}
 	
 	/**

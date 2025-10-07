@@ -1,0 +1,4 @@
+MatPBRBasic {
+ Color 0.254 0.136 0.08 1
+ NMOMap "{9F4A5902F0F21106}Assets/Characters/Uniforms/Shirt_CottonShirt_01/Data/Shirt_CottonShirt_01_Deflated_V1_NMO.edds"
+}

@@ -10,21 +10,19 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
+	protected static CRF_RplBroadcastManager m_sInstance;
+	
+	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Get singleton instance of the broadcast manager
 	//------------------------------------------------------------------------------------------------
 	static CRF_RplBroadcastManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-		{
-			return CRF_RplBroadcastManager.Cast(gameMode.FindComponent(CRF_RplBroadcastManager));
-		}
-		else
-		{
-			return null;
-		}
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -115,6 +113,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 			Rpc(RpcDo_TeleportPlayers, playerId1, playerId2, player2Origin, logAction);
 			#endif
 		};
+	}
+	
+	void BroadcastMessage(string message)
+	{
+		Rpc(RpcDo_BroadcastMessage, message);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -722,9 +725,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 		
 		// Set up respawn timers
-		m_RespawnManager.m_iRespawnTimer = m_RespawnManager.GetCurrentWaveTimer();
-		GetGame().GetCallqueue().CallLater(m_RespawnManager.RespawnTimer, 1000, true);
-		GetGame().GetCallqueue().CallLater(m_RespawnManager.CloseSlottingMenu, 100, true);
+		m_RespawnManager.m_fRespawnTimer = (float)m_RespawnManager.GetCurrentWaveTimer();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1177,5 +1178,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 		comp.SetPlayerText(requesterName + " requested to join");
 
 		Print(string.Format("[VON] Successfully created join request popup for %1", requesterName), LogLevel.NORMAL);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastMessage(string message)
+	{
+		SCR_PopUpNotification.GetInstance().PopupMsg(message);
 	}
 };

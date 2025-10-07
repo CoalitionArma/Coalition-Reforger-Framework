@@ -28,12 +28,11 @@ SCR_ChimeraCharacter {
     }
    }
   }
-  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
-   Slots {
-    LoadoutSlotInfo Hat {
+  SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Identity Identity "{5584CBC6363C648B}" {
+    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
     }
    }
   }
  }
- coords -0.539 -1.698 -0.088
 }

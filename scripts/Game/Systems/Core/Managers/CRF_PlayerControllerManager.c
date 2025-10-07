@@ -38,6 +38,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 	
 	// Map and Markers
 	ref array<string> m_aScriptedMarkers = {};  // Custom map markers
+	
+	protected static CRF_PlayerControllerManager m_sInstance;
 
 	//------------------------------------------------------------------------------------------------
 	// STATIC ACCESSORS
@@ -47,12 +49,15 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 * Returns the instance of this component from the player controller
 	 * @return CRF_PlayerControllerManager - The player controller component instance or null if unavailable
 	 */
+	
+	void CRF_PlayerControllerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	static CRF_PlayerControllerManager GetInstance()
 	{
-		if (GetGame().GetPlayerController())
-			return CRF_PlayerControllerManager.Cast(GetGame().GetPlayerController().FindComponent(CRF_PlayerControllerManager));
-		else
-			return null;
+		return m_sInstance;
 	}
 
 	//------------------------------------------------------------------------------------------------
