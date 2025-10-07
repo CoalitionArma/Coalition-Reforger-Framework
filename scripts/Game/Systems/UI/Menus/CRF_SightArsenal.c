@@ -13,6 +13,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 	ref CRF_GearScriptConfig m_GearScriptConfig;
 	ref CRF_SightArsenalConfig m_SightArsenalConfig;
 	ref CRF_SightArsenalConfig m_MagnifiedSightArsenalConfig;
+	CRF_SafestartManager m_SafeStart;
 	
 	Widget m_wRoot;
 	VerticalLayoutWidget m_SightSlots;
@@ -28,6 +29,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 		m_InputManager = GetGame().GetInputManager();
 		m_GearScriptManager = CRF_GearscriptManager.GetInstance();
 		m_GearScriptContainer = m_GearScriptManager.GetGearScriptSettings(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
+		m_SafeStart = CRF_SafestartManager.GetInstance();
 		ResourceName gearResource = m_GearScriptManager.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
 		m_SightArsenalConfig = CRF_SightArsenalConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
@@ -43,6 +45,8 @@ class CRF_SightArsenal: ChimeraMenuBase
 	
 	override void OnMenuUpdate(float tDelta)
 	{
+		if (!m_SafeStart.GetSafestartStatus())
+			Close();
 		if (!m_SightSlot)
 		{
 			if (!m_Sight)

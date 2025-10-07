@@ -11,6 +11,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	CameraBase m_OldCamera;
 	CRF_GearscriptManager m_GearscriptManager;
 	ref CRF_GearScriptConfig m_GearScriptConfig;
+	CRF_SafestartManager m_SafeStart;
 	
 	Widget m_wRoot;
 	VerticalLayoutWidget m_Categories;
@@ -26,6 +27,7 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_Categories = VerticalLayoutWidget.Cast(m_wRoot.FindWidget("CategoryButtons"));
 		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("ItemButtons"));
+		m_SafeStart = CRF_SafestartManager.GetInstance();
 		
 		ResourceName gearResource = m_GearscriptManager.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
@@ -48,6 +50,8 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	
 	override void OnMenuUpdate(float tDelta)
 	{
+		if (!m_SafeStart.GetSafestartStatus())
+			Close();
 		if (m_fArsenalTimeout > 0)
 			m_fArsenalTimeout -= tDelta;
 	}
