@@ -62,5 +62,102 @@ FrameWidgetClass {
    }
    Color 0.006 0.006 0.006 0.425
   }
+  FrameWidgetClass "{668D3AB71FAA7F0E}" {
+   Name "NotificationsLog"
+   Slot FrameWidgetSlot "{5D44B7C56EBEFDB6}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 0
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 1 1 1 1
+   components {
+    SCR_FadeUIComponent "{5878BB6DAB80F026}" {
+     m_fFadeInAnimationSpeed 4
+     m_fFadeOutAnimationSpeed 4
+    }
+    SCR_NotificationsLogComponent "{5D7C85B7BFBEF81E}" {
+     m_fNotificationDisplayTime 10
+    }
+   }
+   {
+    VerticalLayoutWidgetClass "{668D3AB71FAA7F31}" {
+     Name "VerticalLayout0"
+     Slot FrameWidgetSlot "{586AB611D4E07572}" {
+      Anchor 1 1 1 1
+      PositionX -8
+      OffsetLeft -8
+      OffsetTop 0
+      SizeX 200
+      OffsetRight -192
+      SizeY 324
+      OffsetBottom -324
+      Alignment 1 1
+      SizeToContent 1
+     }
+     {
+      VerticalLayoutWidgetClass "{668D3AB71FAA7F30}" {
+       Name "NotificationHolder"
+       Slot LayoutSlot "{586AB611D48FD660}" {
+        Padding 0 0 0 0
+       }
+       Color 1 1 1 1
+       "Fill Origin" Bottom
+      }
+      VerticalLayoutWidgetClass "{668D3AB71FAA7F37}" {
+       Name "PriorityNotificationHolder"
+       Slot LayoutSlot "{5D54BD019B7217AB}" {
+       }
+       "Fill Origin" Bottom
+      }
+      ButtonWidgetClass "{668D3AB71FAA7F36}" : "{4FCC876707BAE376}UI/layouts/HUD/Notifications/Notifications_Message_Sticky_GroupInvite.layout" {
+       Name "GroupInvite"
+       Slot LayoutSlot "{55D2800B3BCEEB11}" {
+       }
+       "Is Visible" 0
+       components {
+        SCR_GroupInviteStickyNotificationUIComponent "{5872CE48646F6381}" {
+         m_bInfluenceNotificationListSize 0
+        }
+       }
+       {
+        SizeLayoutWidgetClass "{586AB61182DC9F66}" {
+         Prefab "{586AB61182DC9F66}"
+         AllowMaxDesiredWidth 0
+         MaxDesiredWidth 0
+        }
+       }
+      }
+      ButtonWidgetClass "{668D3AB71FAA7F3A}" : "{79B40E157008F1FB}UI/layouts/HUD/Notifications/Notifications_Message_Sticky_VotePlayer.layout" {
+       Name "VotingPlayerInProgress"
+       Slot LayoutSlot "{55D2800B3BCEEB11}" {
+       }
+       "Is Visible" 0
+       components {
+        SCR_VotingStickyNotificationUIComponent "{5872CE486FF7916F}" {
+         m_bInfluenceNotificationListSize 0
+        }
+       }
+      }
+      ButtonWidgetClass "{668D3AB71FAA7F3F}" : "{9075BAAB89E243DE}UI/layouts/HUD/Notifications/Notifications_Message_Sticky_NoGM.layout" {
+       Name "NoGameMaster"
+       Slot LayoutSlot "{55D2800B3BCEEB11}" {
+       }
+       "Is Visible" 0
+       components {
+        SCR_NoGameMasterStickyNotificationUIComponent "{5874A1F43B4B31F5}" {
+         m_bInfluenceNotificationListSize 0
+        }
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }

@@ -1243,6 +1243,16 @@ class CRF_GearscriptManager : ScriptComponent
 		WeaponComponent weaponComp = WeaponComponent.Cast(entity.FindComponent(WeaponComponent));
 		return weaponComp && WEAPON_TYPES_THROWABLE.Contains(weaponComp.GetWeaponType());
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	/*
+	Public method to insert an item into a storage and keep the same storage it would usually be assigned to
+	*/
+	void InsertInventoryItemPublic(IEntity item, SCR_CharacterInventoryStorageComponent inventory, 
+		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0, bool isAssistant = false, bool isThrowable = false)
+	{
+		InsertInventoryItem(item, inventory, inventoryManager, role, isAssistant, isThrowable);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	/**
