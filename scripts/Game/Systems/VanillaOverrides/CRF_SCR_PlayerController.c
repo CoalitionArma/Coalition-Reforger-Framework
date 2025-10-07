@@ -119,6 +119,45 @@ modded class SCR_PlayerController
 	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
 	void RpcDo_InitializeRadioFromServer()
 	{
-		GetGame().GetCallqueue().CallLater(InitializeRadios, 2000, false, GetLocalControlledEntity());
+		GetGame().GetCallqueue().CallLater(InitializeRadios, 500, false, GetLocalControlledEntity());
+	}
+	
+	override void UpdateSettings()
+	{
+		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (CRF_GamemodeManager.IsSpectator(GetControlledEntity()))
+			return;
+		
+		//Still trying to update with a spectator radio. No clue why this happens as theres the check above by whatever.
+		foreach (IEntity radio: m_aRadios)
+		{
+			if (!radio)
+				continue;
+			
+			if (!radio.GetPrefabData())
+				continue;
+			
+			if (!radio.GetPrefabData().GetPrefabName())
+				continue;
+			
+			if (radio.GetPrefabData().GetPrefabName() == "{13A97D10A827AE01}Prefabs/Items/Equipment/Radios/SpecRadioBag.et")
+				return;
+		}
+		
+		m_aRadioSettings.Clear();
+		foreach (IEntity radio: m_aRadios)
+		{
+			if (!radio)
+				continue;
+			CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(radio.FindComponent(CVON_RadioComponent));
+			
+			if (radioComp.m_sFactionKey != "" && radioComp.m_sFactionKey != factionMan.GetPlayerFaction(GetPlayerId()).GetFactionKey())
+				return;
+			ref CVON_RadioSettingObject setting = new CVON_RadioSettingObject();
+			setting.m_sFreq = radioComp.m_sFrequency;
+			setting.m_Stereo = radioComp.m_eStereo;
+			setting.m_iVolume = radioComp.m_iVolume;
+			m_aRadioSettings.Insert(setting);
+		}
 	}
 }

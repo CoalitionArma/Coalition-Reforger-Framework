@@ -1000,6 +1000,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				}
 			}
 		}
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
+		GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
+		GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
+		pc.InitializeRadioFromServer();
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
