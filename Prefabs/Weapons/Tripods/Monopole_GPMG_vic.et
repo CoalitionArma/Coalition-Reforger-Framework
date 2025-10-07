@@ -1,12 +1,15 @@
-Turret : "{4E85DB460B656447}Prefabs/Weapons/Tripods/Monopod_LouchPole.et" {
- ID "52D30EFBEBC74642"
+Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
+ ID "51ACD0965653D003"
  components {
+  SoundComponent "{668E18D22A73E051}" {
+   Filenames {
+    "{CE8A9EE3A07FE9AC}Sounds/Weapons/Tripods/M122/Weapons_Tripod_M122.acp"
+   }
+   DistanceManagement 0
+   IncludeInactive 1
+  }
   MeshObject "{51ACD09C4E0B7D16}" {
    Object "{C87CAB3B5C8B4E96}Assets/Weapons/Tripods/LouchPole/LouchPole_01.xob"
-  }
-  RigidBody "{51ACD09C423F175F}" {
-   ModelGeometry 1
-   Static 1
   }
   ProcAnimComponent "{51ACD09DB14C45C0}" {
    Parameters {
@@ -20,13 +23,46 @@ Turret : "{4E85DB460B656447}Prefabs/Weapons/Tripods/Monopod_LouchPole.et" {
    }
   }
   SCR_BaseCompartmentManagerComponent "{51ACFBB07A14CFA6}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{668E18DDA878C516}" {
+     ContextName "default"
+     EntryPositionInfo PointInfo "{6084956E69304A14}" {
+      Offset 0 0 -1.5
+     }
+     ExitPositionInfo PointInfo "{6084956E6B8ADFE0}" {
+      Offset 0 0 -1
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     FakeDoor 1
+     StanceChangeOnExit "Change from turret height"
+    }
+   }
    CompartmentSlots {
     TurretCompartmentSlot TurretCompartment {
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D56867A46DBE769}" {
+      }
+      SCR_RemoveCasualtyUserAction "{61089D59F48D7BD2}" {
+      }
+     }
      PassengerPositionInfo EntitySlotInfo "{51ACFBB1D6C27024}" {
       Offset 0 0 -0.6
      }
+     ForcedFreeLook 0
+     EjectUnconsciousAndDeadCharacters 1
+     DoorInfoList {
+      0
+     }
+     BaseCoverage 0
+     AllowAiming 1
+     ProceduralSidesteppingAndHeightAdjustment 1
      HeightAdjustmentLimits 50 240
+     SidestepRayZOffset 0
      HeightAdjustmentRayZOffset -0.4
+     m_fFreelookAimLimitOverrideLeft -160
+     m_fFreelookAimLimitOverrideRight 160
+     m_fFreelookCameraNeckFollowTraverse 1
     }
    }
   }
@@ -36,13 +72,14 @@ Turret : "{4E85DB460B656447}Prefabs/Weapons/Tripods/Monopod_LouchPole.et" {
     Icon "{C9E7C9C9DE28F3B7}UI/Textures/Editor/EditableEntities/Vehicles/EditableEntity_Vehicle_Turret_MachineGun.edds"
     m_Image "{05DB97D4269EF1FB}UI/Textures/EditorPreviews/Weapons/Tripods/Tripod_M122_MG_M60.edds"
     m_sFaction "UK"
-    m_aAuthoredLabels + {
+    m_aAuthoredLabels {
      7000 21 34
     }
     m_aAutoLabels {
      121 55
     }
-    m_aOccupantFillCompartmentTypes +{
+    m_aOccupantFillCompartmentTypes {
+     1
     }
     m_aCrewEntityBudgetCost {
      SCR_EntityBudgetValue "{668B32E3560CCD98}" {
@@ -115,6 +152,8 @@ Turret : "{4E85DB460B656447}Prefabs/Weapons/Tripods/Monopod_LouchPole.et" {
   TurretControllerComponent "{51ACD09C61C183E4}" {
    LimitsHoriz -45 45
    LimitsVert -10 40
+   LimitsHorizProne -20 20
+   LimitsVertProne -10 15
    TurretReloadPosition 500 30
    TurretUnconsciousPosition 500 80
   }
@@ -179,8 +218,20 @@ Turret : "{4E85DB460B656447}Prefabs/Weapons/Tripods/Monopod_LouchPole.et" {
     UserActionContext "{51ACFBB064390C6E}" {
      Position PointInfo "{51ACFBB061993925}" {
       PivotID "w_weapon_holder_monopod"
+      Offset 0 0 0
      }
      Radius 0.5
+    }
+   }
+   additionalActions {
+    SCR_OpenTurretStorageAction "{668E18DF09F1E397}" {
+     ParentContextList {
+      "default"
+     }
+     UIInfo UIInfo "{668E18DF14EB7820}" {
+      Name "#AR-Inventory_Open"
+     }
+     m_bShowInside 0
     }
    }
   }
