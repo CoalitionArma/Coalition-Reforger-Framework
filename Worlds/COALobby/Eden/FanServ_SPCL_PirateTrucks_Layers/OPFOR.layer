@@ -1,0 +1,62 @@
+$grp SCR_AIGroup : "{E5143827D374F6DD}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_3manVehicleCrew_p.et" {
+ {
+  coords 5956.754 131.727 6078.002
+  angleY 300
+ }
+ {
+  coords 5955.118 134.648 6099.535
+  angleY 300
+ }
+ {
+  coords 5954.518 137.038 6119.364
+  angleY 300
+ }
+ {
+  coords 5950.546 139.647 6137.695
+  angleY 300
+ }
+ {
+  coords 5947.886 142.215 6159.134
+  angleY 300
+ }
+ {
+  coords 5948.728 144.704 6177.172
+  angleY 300
+ }
+ {
+  coords 5946.221 146.739 6195.002
+  angleY 300
+ }
+ {
+  coords 5945.141 148.036 6215.253
+  angleY 300
+ }
+ {
+  coords 5945.923 149.627 6237.037
+  angleY 300
+ }
+ {
+  coords 5946.21 150.677 6255.106
+  angleY 300
+ }
+ {
+  coords 5946.627 151.461 6269.854
+  angleY 300
+ }
+ {
+  coords 5945.822 151.771 6286.875
+  angleY 300
+ }
+ {
+  coords 5948.383 150.815 6305.154
+  angleY 300
+ }
+ {
+  coords 5951.88 150.207 6327.312
+  angleY 300
+ }
+ {
+  coords 5951.709 148.882 6352.115
+  angleY 300
+ }
+}

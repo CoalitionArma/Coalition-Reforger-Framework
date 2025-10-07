@@ -1,0 +1,12 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 5317.793 172.134 7212.233
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 5294.881 170.169 7198.791
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+ }
+}

@@ -1,0 +1,62 @@
+$grp SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+ {
+  coords 5474.184 188.355 7242.702
+  angleY 180
+ }
+ {
+  coords 5452.703 186.734 7239.313
+  angleY 180
+ }
+ {
+  coords 5434.321 184.959 7238.424
+  angleY 180
+ }
+ {
+  coords 5418.074 183.119 7239.735
+  angleY 180
+ }
+ {
+  coords 5399.858 180.9 7239.695
+  angleY 180
+ }
+ {
+  coords 5380.314 178.859 7240.454
+  angleY 180
+ }
+ {
+  coords 5359.989 175.505 7242.268
+  angleY 180
+ }
+ {
+  coords 5342.486 173.914 7242.914
+  angleY 180
+ }
+ {
+  coords 5325.206 172.357 7242.381
+  angleY 180
+ }
+ {
+  coords 5306.154 170.007 7244.321
+  angleY 180
+ }
+ {
+  coords 5288.866 167.903 7247.255
+  angleY 180
+ }
+ {
+  coords 5273.882 166.013 7249.251
+  angleY 180
+ }
+ {
+  coords 5255.958 164.691 7251.5
+  angleY 180
+ }
+ {
+  coords 5241.425 162.79 7254.208
+  angleY 180
+ }
+ {
+  coords 5227.25 161.147 7257.073
+  angleY 180
+ }
+}

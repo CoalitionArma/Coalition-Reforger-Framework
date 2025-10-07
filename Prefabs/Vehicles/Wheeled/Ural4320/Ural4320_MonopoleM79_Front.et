@@ -29,7 +29,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo cannon {
-     Offset 0.6 1.15 -2.25
+     Offset 0.8 1.1 -2.25
      Angles 0 90 0
      ChildPivotID "w_turret_base_mount"
      Prefab "{1D33BA42911BA0D6}Prefabs/Weapons/Tripods/Monopole_M79_vic.et"
@@ -41,7 +41,7 @@ Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
      RegisterCompartments 1
     }
     RegisteringComponentSlotInfo cannon2 {
-     Offset -0.6 1.15 -1.25
+     Offset -0.8 1.1 -1.25
      Angles 0 -90 0
      ChildPivotID "w_turret_base_mount"
      Prefab "{1D33BA42911BA0D6}Prefabs/Weapons/Tripods/Monopole_M79_vic.et"

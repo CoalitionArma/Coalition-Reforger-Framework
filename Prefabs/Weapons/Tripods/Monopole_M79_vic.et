@@ -205,7 +205,7 @@ Turret : "{4AD877DEA242E512}Prefabs/Weapons/Core/Turret_Base.et" {
    TurretDeceleration 687.54 687.54
   }
   WeaponSlotComponent "{51ACD09C6BFEEE6A}" {
-   WeaponType MachineGun
+   WeaponType GrenadeLauncher
    AttachType InventoryStorageSlot "{0AACE7470E421D82}" {
     PivotID "w_weapon_holder_monopod"
     Offset 0 -0.0441 -0.15

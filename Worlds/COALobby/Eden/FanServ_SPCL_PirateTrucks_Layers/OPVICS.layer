@@ -1,0 +1,107 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 5976.042 130.627 6072.26
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5969.725 134.108 6096.923
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5966.208 136.65 6116.36
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5963.946 139.346 6136.468
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5961.377 142.044 6159.928
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5960.69 144.777 6179.151
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5959.896 147.43 6197.754
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5958.139 148.97 6217.044
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5959.016 150.394 6237.275
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5960.618 151.202 6254.813
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5959.564 151.659 6271.023
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5959.992 151.841 6286.197
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5960.267 151.321 6302.995
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5964.157 150.696 6321.215
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5964.322 149.874 6348.725
+  angleY 300
+  m_rnPrefab "{57E46B152D65D7C3}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_MonopoleM79_Front.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
