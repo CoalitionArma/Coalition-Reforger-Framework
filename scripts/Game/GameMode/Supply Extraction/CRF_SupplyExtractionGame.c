@@ -72,17 +72,34 @@ class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 
 	//For checking to see if safestart is running
 	protected SCR_PopUpNotification m_PopUpNotification = null;
+	
+	protected bool m_bHasSafestartStarted = false;
+	protected bool m_bHasSafeStartEnded = false;
 
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
 	{
-		if (!GetGame().InPlayMode()) 
-			return;
-		
-		if (RplSession.Mode() == RplMode.Dedicated)
+		super.OnPostInit(owner);
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		if (m_fUpdateBuffer >= 1)
 		{
-			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
+			if (!m_bHasSafestartStarted)
+				m_bHasSafestartStarted = CRF_SafestartManager.GetInstance().GetSafestartStatus();
+			
+			if (m_bHasSafestartStarted)
+				m_bHasSafeStartEnded = !CRF_SafestartManager.GetInstance().GetSafestartStatus();
+			
+			if (m_bHasSafeStartEnded)
+				SupplyInit();
+			m_fUpdateBuffer = 0;
 		}
+		m_fUpdateBuffer += timeSlice;
 	}
 	
 	//Runs server side and checks the mission to see if any victory states have changed.
@@ -131,19 +148,6 @@ class CRF_SupplyExtractionGamemodeManager: SCR_BaseGameModeComponent
 			m_gameMessage2 = true;
 		}
 		
-	}
-	
-	//Waits till safestart is running on mission start
-	//Cause it starts not running and can fuck up some init code
-	void WaitTillGameStart()
-	{
-		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus()) 
-		{
-			m_extractionLocation = GetGame().GetWorld().FindEntityByName(m_extractionObject).GetOrigin();
-			GetGame().GetCallqueue().Remove(WaitTillGameStart);
-			GetGame().GetCallqueue().CallLater(SupplyInit, m_gameUpdateTime, true);
-		}
-		return;
 	}
 	
 	//Checks the supplies in depot

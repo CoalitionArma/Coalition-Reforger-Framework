@@ -83,10 +83,6 @@ class CRF_RespawnManager : ScriptComponent
 			
 		m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
 		m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
-
-		// Start wave respawn timer if enabled and not in client mode
-		if (m_Gamemode.m_bWaveRespawn && RplSession.Mode() != RplMode.Client)
-			GetGame().GetCallqueue().CallLater(WaveRespawnTimer, 1000, true);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -283,13 +279,30 @@ class CRF_RespawnManager : ScriptComponent
 		}
 	}
 	
+	float m_fUpdateBuffer = 0;
 	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
 		super.EOnFixedFrame(owner, timeSlice);
 		#ifdef WORKBENCH
+		if (m_fUpdateBuffer >= 1)
+		{
+			if (m_Gamemode.m_bWaveRespawn)
+				WaveRespawnTimer();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
 		#else
 		if (System.IsConsoleApp())
+		{
+			if (m_fUpdateBuffer >= 1)
+			{
+				if (m_Gamemode.m_bWaveRespawn)
+					WaveRespawnTimer();
+				m_fUpdateBuffer = 0;
+			}
+			m_fUpdateBuffer += timeSlice;
 			return;
+		}
 		#endif
 		if (m_fRespawnTimer > 0)
 			RespawnTimer(timeSlice);

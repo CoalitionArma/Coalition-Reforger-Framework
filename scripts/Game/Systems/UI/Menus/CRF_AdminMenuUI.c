@@ -235,9 +235,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		if (m_ChatPanel)
 			m_ChatPanel.SetAlwaysVisible(false);
-		
-		// Remove Gamemode updater
-		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
 
 	/**
@@ -354,9 +351,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_allPlayers.Clear();
 		m_factions.Clear();
 		m_selectableFactions.Clear();
-		
-		// Remove Gamemode updater
-		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
 
 	/**
@@ -429,12 +423,20 @@ class CRF_AdminMenu : ChimeraMenuBase
 	/**
 	 * Update chat while menu is active
 	 */
+	float m_fUpdateBuffer = 0;
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
 
 		if (m_ChatPanel)
 			m_ChatPanel.OnUpdateChat(tDelta);
+		
+		if (m_fUpdateBuffer >= 1)
+		{
+			GamemodeMenuUpdate();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += tDelta;
 	}
 	
 	/**
@@ -1684,8 +1686,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		// Update menu data
 		GamemodeMenuUpdate();
-
-		GetGame().GetCallqueue().CallLater(GamemodeMenuUpdate, 1000, true);
 	}
 	
 	void LoadGearConfigList()
