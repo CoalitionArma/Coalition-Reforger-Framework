@@ -351,6 +351,46 @@ $grp GenericEntity : "{36108DAFF38E0C07}PrefabsEditable/EffectsModules/Mine/Effe
   coords 5195.689 152.272 3258.301
   angleY 162.893
  }
+ {
+  coords 5027.978 139.673 4062.936
+  angleY 46.003
+  {
+   GenericEntity {
+    ID "616C96D8967A1736"
+    coords 0 -0.008 0
+   }
+  }
+ }
+ {
+  coords 5032.844 148.068 4065.094
+  angleY 46.003
+  {
+   GenericEntity {
+    ID "616C96D8967A1736"
+    coords 4.76 -7.073 -6.251
+   }
+  }
+ }
+ {
+  coords 5016.7 139.894 4070.51
+  angleY 46.003
+  {
+   GenericEntity {
+    ID "616C96D8967A1736"
+    coords 0 -0.008 0
+   }
+  }
+ }
+ {
+  coords 5024.064 139.629 4067.753
+  angleY 46.003
+  {
+   GenericEntity {
+    ID "616C96D8967A1736"
+    coords 0 -0.008 0
+   }
+  }
+ }
 }
 StaticModelEntity : "{3AFC5D02A6F56F5E}Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_NightStand_USSR_04.et" {
  coords 4097.135 112.091 4191.259
@@ -701,7 +741,7 @@ GenericEntity : "{75FEF1CA582431F3}Prefabs/Props/Wrecks/BTR70_wreck.et" {
  scale 1.31
 }
 StaticModelEntity : "{8A31FBB992F930E4}Prefabs/Structures/Agriculture/Manure/ManurePile_01/ManurePile_01.et" {
- coords 4570.542 0.284 4110.429
+ coords 4567.127 0.283 4108.823
  angleY 68.176
  scale 1.27
 }
@@ -748,7 +788,7 @@ $grp GenericEntity : "{96A3F39C918787E5}Prefabs/Props/Agriculture/Farm/HayBale_0
 }
 $grp SCR_DestructibleBuildingEntity : "{97305E5A67AACD6C}Prefabs/Models/tem_rails_bridge.et" {
  {
-  coords 2677.431 43.356 2837.098
+  coords 2677.418 43.021 2837.087
   angleX -2.815
   angleY 49.606
  }
@@ -833,23 +873,23 @@ SCR_DestructibleBuildingEntity : "{B57F81030DF62478}PrefabLibrary/Walls/Concrete
 }
 $grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Wide_Base.et" {
  {
-  coords 5408.184 155.213 3151.998
+  coords 5408.291 155.281 3151.252
   angleX -5.163
   angleY -8.155
   angleZ -1.308
  }
  {
-  coords 5383.185 154.633 3150.91
+  coords 5383.229 154.71 3150.043
   angleX -5.071
   angleY -2.902
   angleZ -1.243
  }
  {
-  coords 5357.287 153.188 3150.61
+  coords 5357.287 153.188 3150.034
   angleZ -2.501
  }
  {
-  coords 5332.684 150.739 3155.378
+  coords 5332.646 150.763 3155.188
   angleX -6.977
   angleY 11.185
   angleZ -4.402
@@ -899,17 +939,17 @@ $grp SCR_DestructibleBuildingEntity : "{D15C35F865541979}Prefabs/Structures/Infr
   angleZ -4.558
  }
  {
-  coords 5468.528 157.173 3184.492
+  coords 5468.854 157.173 3184.209
   angleY -49.15
   angleZ -2.988
  }
  {
-  coords 5485.479 158.526 3204.098
+  coords 5485.896 158.526 3203.739
   angleY -49.15
   angleZ -2.988
  }
  {
-  coords 5502.376 159.873 3223.602
+  coords 5502.814 159.873 3223.222
   angleY -49.15
   angleZ -2.988
   {
@@ -925,13 +965,13 @@ $grp SCR_DestructibleBuildingEntity : "{D15C35F865541979}Prefabs/Structures/Infr
   }
  }
  {
-  coords 5449.563 156.299 3168.285
+  coords 5449.935 156.346 3167.852
   angleX -4.719
   angleY -40.696
   angleZ -1.28
  }
  {
-  coords 5430.107 155.852 3154.106
+  coords 5430.497 155.909 3153.579
   angleX -4.971
   angleY -36.48
   angleZ -1.021

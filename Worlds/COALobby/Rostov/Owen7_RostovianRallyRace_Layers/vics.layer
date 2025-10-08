@@ -489,4 +489,67 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
   firstSpawn 1
  }
+ {
+  coords 3466.812 33.65 3809.719
+  angleY 161.15
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3500.097 48.965 3987.391
+  angleY 129.463
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3228.814 80.248 4209.011
+  angleY 101.699
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3192.166 61.57 3329.048
+  angleY -161.702
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3243.478 58.396 3444.806
+  angleY -161.702
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 4215.212 126.875 4158.789
+  angleY -75.168
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3501.723 49.679 4049.993
+  angleY 134.728
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3471.164 34.475 3831.008
+  angleY 167.094
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 3299.113 40.214 3677.708
+  angleY -177.22
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
 }
