@@ -9,4 +9,16 @@ SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 5539.626 160.101 3336.879
  m_iTimeLimitMinutes 20
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Rostov Needs these streets tore up. Get out there."\
+   ""\
+   ""\
+   "Composition: Racers"\
+   "Assets: Rally Cars"
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Shortcuts allowed but at your own risk. "
+  }
+ }
 }
