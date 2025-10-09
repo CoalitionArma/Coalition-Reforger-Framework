@@ -523,7 +523,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			factionKey = faction.GetFactionKey();
 
 		// Handle respawn if enabled and tickets available
-		if (m_bRespawnEnabled && 
+		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&

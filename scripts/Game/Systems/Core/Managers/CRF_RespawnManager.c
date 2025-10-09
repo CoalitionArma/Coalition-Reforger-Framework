@@ -19,6 +19,14 @@ class CRF_RespawnManager : ScriptComponent
 	[RplProp()]
 	int m_iCIVTickets;
 	
+	
+	//Respawn variables
+	[RplProp()] bool m_bCurrentRespawnEnabled;
+	[RplProp()] bool m_bCurrentWaveRespawn;
+	[RplProp()] int m_iCurrentTimeToRespawn;
+	int m_iLocalTimeToRespawn = 0;
+
+	
 	// Internal flag to prevent redundant replication updates
 	protected bool m_bSuppressReplication = false;
 	
@@ -39,6 +47,9 @@ class CRF_RespawnManager : ScriptComponent
 	ref ScriptInvoker m_OnRespawnPointStateChanged = new ScriptInvoker();
 	
 	protected static CRF_RespawnManager m_sInstance;
+	
+	protected bool m_bNeedsRespawn = false;
+	protected bool m_bRespawnInit = false;
 
 	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -62,7 +73,6 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 
 		InitializeTicketsFromGamemode();
-		InitializeRespawnTimers();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -77,12 +87,9 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	private void InitializeRespawnTimers()
 	{
-		// Skip if respawn is disabled
-		if (!m_Gamemode.m_bRespawnEnabled)
-			return;
-			
-		m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
+		m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
 		m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
+		m_bRespawnInit = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -96,6 +103,9 @@ class CRF_RespawnManager : ScriptComponent
 		m_iOPFORTickets = m_Gamemode.m_iOPFORTickets;
 		m_iINDFORTickets = m_Gamemode.m_iINDFORTickets;
 		m_iCIVTickets = m_Gamemode.m_iCIVTickets;
+		m_iCurrentTimeToRespawn = m_Gamemode.m_iTimeToRespawn;
+		m_bCurrentWaveRespawn = m_Gamemode.m_bWaveRespawn;
+		m_bCurrentRespawnEnabled = m_Gamemode.m_bRespawnEnabled;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -263,8 +273,11 @@ class CRF_RespawnManager : ScriptComponent
 		m_iRespawnWaveCurrentTime--;
 		
 		if (m_iRespawnWaveCurrentTime == 0)
-			m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
-
+		{
+			m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
+			m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+		}
+		
 		if (!m_bSuppressReplication)
 			Replication.BumpMe();
 	}
@@ -284,9 +297,11 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		super.EOnFixedFrame(owner, timeSlice);
 		#ifdef WORKBENCH
+		if (!m_bRespawnInit && m_bCurrentRespawnEnabled)
+			InitializeRespawnTimers();
 		if (m_fUpdateBuffer >= 1)
 		{
-			if (m_Gamemode.m_bWaveRespawn)
+			if (m_bCurrentWaveRespawn)
 				WaveRespawnTimer();
 			m_fUpdateBuffer = 0;
 		}
@@ -294,9 +309,11 @@ class CRF_RespawnManager : ScriptComponent
 		#else
 		if (System.IsConsoleApp())
 		{
+			if (!m_bRespawnInit && m_bCurrentRespawnEnabled)
+				InitializeRespawnTimers();
 			if (m_fUpdateBuffer >= 1)
 			{
-				if (m_Gamemode.m_bWaveRespawn)
+				if (m_bCurrentWaveRespawn)
 					WaveRespawnTimer();
 				m_fUpdateBuffer = 0;
 			}
@@ -304,25 +321,35 @@ class CRF_RespawnManager : ScriptComponent
 			return;
 		}
 		#endif
-		if (m_fRespawnTimer > 0)
+		if (m_fRespawnTimer > 0 || m_bNeedsRespawn)
 			RespawnTimer(timeSlice);
 	}
 
 	//------------------------------------------------------------------------------------------------
 	void RespawnTimer(float timeSlice)
 	{
-		if (GetFactionTickets(m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey()) <= 0)
+		if (GetFactionTickets(m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey()) <= 0 || !m_bCurrentRespawnEnabled)
 		{
 			GetGame().GetMenuManager().CloseAllMenus();
 			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
 			m_fRespawnTimer = 0;
 			m_SelectedSpawnRplID = -1;
 			m_RespawnConfirmed = false; 
+			m_bNeedsRespawn = false;
 			return;
 		}
+		if (!m_bNeedsRespawn)
+			m_bNeedsRespawn = true;
 		// Decrease the respawn timer
 		if (m_fRespawnTimer > 0)
 			m_fRespawnTimer -= timeSlice;
+		//Handles adding more time to the players UI if more time is added.
+		if (m_iLocalTimeToRespawn != m_iCurrentTimeToRespawn)
+		{
+			int timeToAdd = m_iCurrentTimeToRespawn - m_iLocalTimeToRespawn;
+			m_fRespawnTimer += (float)timeToAdd;
+			m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+		}
 		CloseSlottingMenu();
 		// Check if timer expired or we're in AAR
 		bool isTimerExpired = m_fRespawnTimer <= 0;
@@ -342,6 +369,8 @@ class CRF_RespawnManager : ScriptComponent
 				{
 					// Reset the timer
 					m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
+					m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+					m_bNeedsRespawn = false;
 					// Only perform respawn if not in AAR state
 					if (!isGameInAARState)
 					{
@@ -736,5 +765,25 @@ class CRF_RespawnManager : ScriptComponent
 	array<CRF_VehicleSpawner> GetVehicleSpawners()
 	{
 		return m_aVehicleSpawners;
+	}
+	
+	void ToggleRespawnWave()
+	{
+		m_bCurrentWaveRespawn = !m_bCurrentWaveRespawn;
+		m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
+		Replication.BumpMe();
+	}
+	
+	void SetRespawnTime(int seconds)
+	{
+		m_iCurrentTimeToRespawn = seconds;
+		m_iRespawnWaveCurrentTime = seconds;
+		Replication.BumpMe();
+	}
+	
+	void ToggleRespawn()
+	{
+		m_bCurrentRespawnEnabled = !m_bCurrentRespawnEnabled;
+		Replication.BumpMe();
 	}
 }

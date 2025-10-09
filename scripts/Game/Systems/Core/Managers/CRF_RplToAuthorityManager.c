@@ -385,6 +385,21 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_TogglePlayerLisntening, playerId, input);
 	}
 	
+	void ToggleWaveRespawn()
+	{
+		Rpc(RpcAsk_ToggleWaveRespawn);
+	}
+	
+	void ToggleRespawn()
+	{
+		Rpc(RpcAsk_ToggleRespawn);
+	}
+	
+	void SetRespawnTime(int seconds)
+	{
+		Rpc(RpcAsk_SetRespawnTime, seconds);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1154,5 +1169,23 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
 	{
 		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ToggleWaveRespawn()
+	{
+		CRF_RespawnManager.GetInstance().ToggleRespawnWave();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ToggleRespawn()
+	{
+		CRF_RespawnManager.GetInstance().ToggleRespawn();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SetRespawnTime(int seconds)
+	{
+		CRF_RespawnManager.GetInstance().SetRespawnTime(seconds);
 	}
 };
