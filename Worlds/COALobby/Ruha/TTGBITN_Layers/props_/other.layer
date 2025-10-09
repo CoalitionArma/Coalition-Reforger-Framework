@@ -1,3 +1,11 @@
+GenericEntity {
+ components {
+  MeshObject "{6692150CB8D4AEAE}" {
+   Object "{CC619CAF759D91D7}Assets/Props/Garbage/Medical/GarbageMedical_01/GarbageMedicalUSSR_01.xob"
+  }
+ }
+ coords 3493.447 82.904 7193.816
+}
 StaticModelEntity : "{00A32060CC5CAE03}Prefabs/Models/tem_tractor_open_wreck.et" {
  coords 3476.959 82.781 7155.299
  angleY 86.027
@@ -20,6 +28,9 @@ SCR_DestructibleBuildingEntity : "{0DB364ED28333396}Prefabs/Structures/Industria
  coords 3510.232 0 7096.087
  angleY 24.807
 }
+GenericEntity : "{1359D393ED1D1A3F}Prefabs/Props/Garbage/Medical/GarbageMedicalUSSR_01.et" {
+ coords 3494.464 83.356 7193.997
+}
 GenericEntity : "{14225F5BB48F0C00}Prefabs/Props/Construction/ContainerMetal_01/ContainerMetal_01_base.et" {
  coords 3514.64 82.781 7180.61
  angleY 29.974
@@ -30,7 +41,7 @@ Vehicle Ural4320_transport_CIV_forest1 : "{1449105FD658EDFB}Prefabs/Vehicles/Whe
    m_bIsLocked 1
   }
  }
- coords 3477.866 82.881 7188.776
+ coords 3476.267 82.881 7187.744
  angleY 23.759
 }
 $grp GenericEntity : "{158A49327BE741D9}Prefabs/Props/Furniture/BunkBed_01/BunkBed_01_Mattress.et" {
@@ -73,6 +84,9 @@ GenericEntity : "{23F9FE9EB696702E}Prefabs/Models/tem_Events_Sign1.et" {
  coords 3497.482 82.781 7188.409
  angleY 113.515
  scale 0.8
+}
+GenericEntity : "{27EA47994266D9DD}Prefabs/Props/Services/Healthcare/BinMedical_01.et" {
+ coords 3495.172 82.881 7193.708
 }
 $grp GenericEntity : "{2887E99075B9C928}Prefabs/Props/Garbage/Generic/Litter_01_long.et" {
  {
@@ -155,6 +169,10 @@ StaticModelEntity : "{4266901113B35A98}Prefabs/Structures/Industrial/Containers/
  coords 3511.653 0 7090.089
  angleY -65.884
 }
+GenericEntity : "{452C9FF31AAF2B82}Prefabs/Props/Services/Healthcare/CabinetMedical_01.et" {
+ coords 3493.123 82.881 7190.892
+ angleY 24.802
+}
 GenericEntity : "{476EBA1E8B1CAA05}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V3.et" {
  coords 3485.365 84.031 7195.928
  angleY 29.756
@@ -205,11 +223,26 @@ GenericEntity : "{75BA7BDED53291D3}Prefabs/Models/tem_ticketbooth.et" {
  coords 3417.898 83.191 7077.009
  angleY 84.501
 }
+$grp GenericEntity : "{76892C8AB5C677D3}Prefabs/Structures/Signs/Military/SignRectangle_01_140x100/Sign_FieldHospital_USSR_01.et" {
+ {
+  coords 3498.956 82.781 7192.603
+  angleY 112.818
+  scale 0.75
+ }
+ {
+  coords 3489.283 85.412 7194.661
+  angleY -67.182
+  scale 0.75
+ }
+}
 SCR_DestructibleBuildingEntity : "{7784C6A3B960D4DE}Prefabs/Models/tem_wagon_tanker.et" {
  coords 3574.654 0 7177.228
  angleX 1.729
  angleY -0.324
  angleZ -10.625
+}
+GenericEntity : "{7A93743E525734C5}Prefabs/Props/Recreation/Beach/BlanketFolded_01/BlanketFolded_01_green.et" {
+ coords 3494.48 83.358 7194.233
 }
 $grp GenericEntity : "{7AF4B627D5C90235}Prefabs/Props/Military/Sandbags/Sandbag_01_round_high_burlap.et" {
  {
@@ -293,6 +326,17 @@ SCR_DestructibleEntity : "{90180A1F8AED476F}Prefabs/Models/tem_tractor_open.et" 
  coords 3524.896 0 7186.604
  angleY 0
 }
+GenericEntity : "{90B7CEB4C665B1E2}Prefabs/Structures/Military/Flags/FlagPole_02/FlagPole_02_V1.et" {
+ components {
+  SCR_FlagComponent "{5E3C95A1E1EE9681}" {
+   m_sDefaultMaterial "{E7DBD6EDC8322256}Assets/Props/Fabric/Flags/Data/Flag_1_2_RedCross.emat"
+  }
+ }
+ coords 3498.487 84.781 7192.833
+ angleY -155.929
+ angleZ -49.096
+ scale 0.484
+}
 GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
  coords 3454.432 90.205 7118.935
  angleY -63.126
@@ -350,6 +394,38 @@ $grp GenericEntity : "{9C9C4BED9E19C374}Prefabs/Props/Military/Sandbags/Sandbag_
   angleY -65.105
  }
 }
+$grp GenericEntity : "{9DDD398F7463A42B}Prefabs/Items/Equipment/Kits/MedicalKit_01/MedicalKit_01_open.et" {
+ {
+  components {
+   MeshObject "{5CCCD4F57413F626}" {
+    Materials {
+     MaterialAssignClass "{6692150D58BEEFB7}" {
+      SourceMaterial "MedicalKit_01_US_EDCA56495B77DBB3"
+      AssignedMaterial "{E81F01ED56043780}Assets/Items/Equipment/Kits/MedicalKit_01/Data/MedicalKit_01_FIA.emat"
+     }
+    }
+   }
+  }
+  coords 3497.265 83.355 7193.184
+  angleY -84.036
+ }
+ {
+  components {
+   MeshObject "{5CCCD4F57413F626}" {
+    Materials {
+     MaterialAssignClass "{6692150D58BEEFB7}" {
+      SourceMaterial "MedicalKit_01_US_EDCA56495B77DBB3"
+      AssignedMaterial "{E81F01ED56043780}Assets/Items/Equipment/Kits/MedicalKit_01/Data/MedicalKit_01_FIA.emat"
+     }
+    }
+   }
+  }
+  coords 3494.881 83.488 7194.789
+  angleX -47.482
+  angleY 20.509
+  angleZ 180
+ }
+}
 GenericEntity : "{9FC6D3DFF295B459}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/FIA/EquipmentBoxStack_FIA_01_V5.et" {
  coords 3484.081 84.168 7198.891
  angleY 104.288
@@ -364,6 +440,10 @@ GenericEntity : "{A419F4547954DA05}Prefabs/Props/Construction/CableReel/CableRee
 GenericEntity : "{A52C57FE8549A13E}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_01_10ft_red.et" {
  coords 3452.904 82.781 7162.143
  angleY 26.008
+}
+GenericEntity : "{A67BC8B7352F5E69}Prefabs/Props/Services/Healthcare/ScaleMedical_01.et" {
+ coords 3492.684 82.881 7196.316
+ angleY 116.386
 }
 GenericEntity : "{A7DA7AC6FEF7B643}Prefabs/Props/Military/Camps/WeaponRackCabinet_01.et" {
  coords 3491.376 84.031 7198.782
@@ -467,9 +547,17 @@ $grp GenericEntity : "{AC6DC9D2E040268A}Prefabs/Compositions/Misc/FreeRoamBuildi
   }
  }
 }
+StaticModelEntity : "{ADC3CB9A7E9E68F2}Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_Medical_US_01.et" {
+ coords 3494.83 82.881 7190.473
+ angleY 0
+}
 StaticModelEntity : "{AF44CFF705C52B9B}Prefabs/Structures/Industrial/Containers/FuelTanks/FuelTank_02/FuelTank_02_grey.et" {
  coords 3475.855 -1.915 7207.299
  angleY -66.751
+}
+GenericEntity : "{AF87DF4E0C8C81C4}Prefabs/Props/Services/Healthcare/LampMedical_01.et" {
+ coords 3496.977 82.881 7194.551
+ angleY -121.55
 }
 GenericEntity : "{B3283803059E2750}Prefabs/Props/Crates/CrateWooden_01_plain.et" {
  coords 3478.605 90.778 7204.044
@@ -692,16 +780,20 @@ $grp StaticModelEntity : "{C6BFE324CCCFE6C4}Prefabs/Props/Military/Furniture/Cot
   angleY 21.729
  }
  {
-  coords 3493.161 82.904 7193.288
-  angleY 21.729
- }
- {
-  coords 3492.889 82.881 7195.423
+  coords 3492.13 82.881 7194.302
   angleY 111.729
  }
  {
-  coords 3496.842 82.881 7194.104
-  angleY 21.729
+  coords 3497.492 82.881 7193.759
+  angleY -67.666
+ }
+ {
+  coords 3496.32 82.881 7194.303
+  angleY -67.666
+ }
+ {
+  coords 3494.789 82.881 7194.751
+  angleY -67.666
  }
 }
 GenericEntity : "{C8684DCC4658226F}Prefabs/Props/Construction/ContainerMetal_01/ContainerMetal_01_grey.et" {
@@ -735,6 +827,29 @@ $grp GenericEntity : "{CB033C658E372CED}Prefabs/Props/Construction/PlankPile/Pla
  {
   coords 3433.581 82.781 7105.032
   angleY 28.336
+ }
+}
+StaticModelEntity : "{CB83AC8C81F20681}Prefabs/Compositions/Misc/SubCompositions/Furniture/Cabinet_Medical_FIA_01.et" {
+ coords 3494.043 82.881 7190.697
+ angleY 22.499
+ {
+  GenericEntity {
+   ID "620EE566B68D5368"
+   components {
+    SCR_ArsenalComponent "{589F01C9C8D4A475}" {
+     Enabled 0
+    }
+    SCR_FactionAffiliationComponent "{5A50E7650A1AE9EC}" {
+     Enabled 0
+    }
+    SCR_ResourceComponent "{5E5ABDF371AE8B21}" {
+     Enabled 0
+    }
+    SCR_ArsenalInventoryStorageManagerComponent "{58A0B19B1E191CC1}" {
+     Enabled 0
+    }
+   }
+  }
  }
 }
 $grp GenericEntity : "{CC5453CCC311603B}Prefabs/Props/Military/Sandbags/Sandbag_01_end_burlap.et" {
@@ -1020,6 +1135,13 @@ $grp GenericEntity : "{E4DA6CFFCE8E5940}Prefabs/Props/Construction/ContainerMeta
   angleY -62.159
  }
 }
+GenericEntity : "{E5EED95AE7D32F58}Prefabs/Props/Recreation/Beach/BlanketFolded_01/BlanketFolded_01_orange.et" {
+ coords 3496.051 83.356 7193.71
+ angleY 61.849
+}
+GenericEntity : "{E7A4AA1C549E2371}Prefabs/Structures/Military/Camps/Canvas_Covers/Soviet/CanvasCover_Folded_Soviet.et" {
+ coords 3497.652 83.372 7194.081
+}
 GenericEntity : "{EB21D26B8D5A3232}Prefabs/Items/Food/MRE.et" {
  coords 3488.022 84.031 7193.221
 }
@@ -1053,11 +1175,28 @@ SCR_DestructibleEntity : "{EFE0F920913BD7A6}Prefabs/Models/tem_tractor1.et" {
  coords 3501.723 0 7133.667
  angleY 31.867
 }
+GenericEntity : "{F161BC650B2BD9D4}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Heal.et" {
+ components {
+  SCR_HealSupportStationComponent "{5E1CF9211233B176}" {
+   m_fRange 5
+  }
+ }
+ coords 3494.545 82.756 7194.456
+}
 GenericEntity : "{F2C5628C6D12840C}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_HansaAtlantic.et" {
  coords 3573.174 85.534 7212.131
  angleX 14.933
  angleY 36.097
  angleZ -8.442
+}
+$grp GenericEntity : "{F4123D86F860B5E1}Prefabs/Props/Garbage/Medical/GarbageMedicalUSSR_02.et" {
+ {
+  coords 3496.233 82.881 7192.854
+ }
+ {
+  coords 3495.469 82.881 7195.3
+  angleY 73.461
+ }
 }
 GenericEntity : "{FD016719F98775F9}Prefabs/Props/Industrial/CargoContainers/CargoContainer_01/CargoContainer_02_20ft_SZD.et" {
  coords 3430.354 82.781 7097.331
