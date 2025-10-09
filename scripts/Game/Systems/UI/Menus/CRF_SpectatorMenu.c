@@ -154,8 +154,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
-		
-		m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.RED));
 	}
 	
 	/**
