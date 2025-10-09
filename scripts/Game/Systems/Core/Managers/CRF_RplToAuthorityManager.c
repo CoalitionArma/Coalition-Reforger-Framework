@@ -400,6 +400,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_SetRespawnTime, seconds);
 	}
 	
+	void ToggleEnableAIInGameState()
+	{
+		Rpc(RpcAsk_ToggleEnableAIInGameState);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1187,5 +1192,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RpcAsk_SetRespawnTime(int seconds)
 	{
 		CRF_RespawnManager.GetInstance().SetRespawnTime(seconds);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ToggleEnableAIInGameState()
+	{
+		CRF_Gamemode.GetInstance().ToggleEnableAIInGameState();
 	}
 };
