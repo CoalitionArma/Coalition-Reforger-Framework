@@ -93,6 +93,7 @@ modded class SCR_Faction
 		}
 		if (m_aActiveLRChannels.Count() == 0)
 			m_aActiveLRChannels.Insert(GetFactionKey() + "LR");
+		
 		SCR_FactionManager.Cast(GetGame().GetFactionManager()).UpdateFactionActiveChannelSR(GetFactionKey(), m_aActiveSRChannels);
 		SCR_FactionManager.Cast(GetGame().GetFactionManager()).UpdateFactionActiveChannelLR(GetFactionKey(), m_aActiveLRChannels);
 	}

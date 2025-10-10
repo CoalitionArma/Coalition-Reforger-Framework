@@ -145,10 +145,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		UpdateSlots();
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
 		
-		// Update player icons and spectator UI
-		//UpdatePlayerIcons();
-		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
-		
 		// Get game system references
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		
@@ -278,6 +274,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 * Called every frame to update the menu
 	 * @param tDelta - Time since last frame
 	 */
+	float m_fUpdateBuffer = 0;
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
@@ -320,6 +317,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		sender.SetKillFeedTypeDeadLocal();
 		
 		UpdateTimer();
+		
+		if (m_fUpdateBuffer >= 1)
+		{
+			UpdatePlayerIcons();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += tDelta;
 	}
 	
 	//Used to update tickets
@@ -1378,8 +1382,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		super.OnMenuClose();
 		
 		SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled = false;
-		
-		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
 		
 		// Unregister spectator camera frame event
 		UnregisterFrameEvent();

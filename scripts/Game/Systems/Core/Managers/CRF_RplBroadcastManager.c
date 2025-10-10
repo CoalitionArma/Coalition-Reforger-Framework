@@ -725,6 +725,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 
 		
 		// Set up respawn timers
+		m_RespawnManager.m_iLocalTimeToRespawn = m_RespawnManager.m_iCurrentTimeToRespawn;
 		m_RespawnManager.m_fRespawnTimer = (float)m_RespawnManager.GetCurrentWaveTimer();
 	}
 	
