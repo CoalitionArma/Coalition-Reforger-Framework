@@ -100,11 +100,11 @@ class CRF_SightArsenal: ChimeraMenuBase
 		
 		array<ResourceName> defaultAttachments = GetDefaultAttachments();
 		if (defaultAttachments.Count() > 0)
-			PopulateSightItems(attachmentTypes, defaultAttachments, magnified);
+			PopulateSightItems(attachmentTypes, defaultAttachments);
 		
 		if (magnified)
-			PopulateSightItems(attachmentTypes, m_MagnifiedSightArsenalConfig.m_aSights, magnified);
-		PopulateSightItems(attachmentTypes, m_SightArsenalConfig.m_aSights, magnified);
+			PopulateSightItems(attachmentTypes, m_MagnifiedSightArsenalConfig.m_aSights);
+		PopulateSightItems(attachmentTypes, m_SightArsenalConfig.m_aSights);
 	}
 	
 	//Gets all the default attachments on the prefab itself and assigned in the GS.
@@ -335,14 +335,14 @@ class CRF_SightArsenal: ChimeraMenuBase
 	
 	
 	//Used to populate the clickable items
-	void PopulateSightItems(array<ref BaseAttachmentType> attachmentTypes, array<ResourceName> sights, bool magnified)
+	void PopulateSightItems(array<ref BaseAttachmentType> attachmentTypes, array<ResourceName> sights)
 	{
 		foreach (ResourceName sight: sights)
 		{
 			if (m_aAddedSights.Contains(sight))
 				continue;
 			
-			bool isValid = IsSightValid(sight, magnified);
+			bool isValid = IsSightValid(sight);
 			if (!isValid)
 				continue;
 			
@@ -404,7 +404,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 		}
 	}
 	
-	bool IsSightValid(ResourceName sight, bool isMagnifiedAllowed)
+	bool IsSightValid(ResourceName sight)
 	{
 		Resource Sight = Resource.Load(sight);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Sight);
