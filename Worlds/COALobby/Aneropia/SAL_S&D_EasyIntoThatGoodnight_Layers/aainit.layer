@@ -358,18 +358,15 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Gun Truck 1 (ZU)"
        }
        SCR_CallsignInfo "{55CCB79287A4D7B6}" {
-        m_sCallsign "Gun Truck 2 (ZU)"
-       }
-       SCR_CallsignInfo "{6694E1E490DBB82E}" {
         m_sCallsign "1-1"
        }
-       SCR_CallsignInfo "{6694E1E490205FFE}" {
+       SCR_CallsignInfo "{6694E1E490DBB82E}" {
         m_sCallsign "1-2"
        }
-       SCR_CallsignInfo "{6694E1E49061E0BF}" {
+       SCR_CallsignInfo "{6694E1E490205FFE}" {
         m_sCallsign "1-3"
        }
-       SCR_CallsignInfo "{6694E1E49397F4A1}" {
+       SCR_CallsignInfo "{6694E1E49061E0BF}" {
         m_sCallsign "MMG"
        }
       }

@@ -36,7 +36,7 @@ $grp CRF_VehicleSpawner {
   angleX -4.348
   angleY 103.301
   angleZ -1.027
-  m_rVehicle "{72C04A6EABC12143}Prefabs/Vehicles/Helicopters/AH6M/AH6M_M134.et"
+  m_rVehicle "{6CA46BC65DE861A8}Prefabs/Vehicles/Helicopters/AH6M/AH6M_Armed_base.et"
   m_sFactionKey "BLUFOR"
  }
 }
