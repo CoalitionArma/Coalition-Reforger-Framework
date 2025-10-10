@@ -16,9 +16,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected FrameWidget m_wFrameSlots;                     // Frame for displaying slots
 	protected FrameWidget m_wFrameChannels;                  // Frame for displaying VON channels
 	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
+	protected FrameWidget m_wSlotWarning;                  	 // Frame for displaying the button to open slotting
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
-	protected SCR_ButtonComponent m_wBulletPathButton;            // Button component for Toggling bullet paths
+	protected SCR_ButtonComponent m_wBulletPathButton;       // Button component for Toggling bullet paths
+	protected SCR_ButtonComponent m_wDismissSlottingButton;       // Button component for Dismissing Slotting Warning
 	
 	// Game-related components
 	protected CRF_Gamemode m_Gamemode;                       // Reference to the gamemode instance
@@ -78,6 +80,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected TextWidget m_wCIVTicketsText;
 	protected bool m_bCIVTicketsActive;
 	
+	protected bool m_bWarningDismissed = false;
+	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
 	//=================================================================================================
@@ -110,6 +114,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Initialize UI components
 		m_wMapFrame = FrameWidget.Cast(m_wRoot.FindAnyWidget("MapFrame"));
+		m_wSlotWarning = FrameWidget.Cast(m_wRoot.FindAnyWidget("SlotWarning"));
 		m_wPlayerSlotWidget = m_wRoot.FindAnyWidget("PlayerSlots");
 		m_wPlayerSlots = CRF_ListboxComponent.Cast(m_wPlayerSlotWidget.FindHandler(CRF_ListboxComponent));
 		m_wVONChannels = CRF_ListboxComponent.Cast(m_wRoot.FindAnyWidget("VONChannels").FindHandler(CRF_ListboxComponent));
@@ -124,6 +129,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wINDFORTickets = m_wRoot.FindAnyWidget("INDFORTickets");
 		m_wCIVTickets = m_wRoot.FindAnyWidget("CIVTickets");
 		
+		m_wDismissSlottingButton = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("DismissWarning").FindHandler(SCR_ButtonComponent));
+		m_wDismissSlottingButton.m_OnClicked.Insert(DismissSlottingWarning);
 		
 		// Register input action listeners
 		RegisterActionListeners();
@@ -154,6 +161,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+	}
+	
+	void DismissSlottingWarning()
+	{
+		m_bWarningDismissed = true;
 	}
 	
 	/**
@@ -322,6 +334,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_fUpdateBuffer = 0;
 		}
 		m_fUpdateBuffer += tDelta;
+		
+		if (m_SafestartManager.GetSafestartStatus() && !m_bWarningDismissed)
+			m_wSlotWarning.SetVisible(true);
+		else
+			m_wSlotWarning.SetVisible(false);
 	}
 	
 	//Used to update tickets
