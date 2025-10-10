@@ -370,6 +370,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_MiniArsenalRequestNewItem, playerId, resourceName, slotId);
 	}
 	
+	void MiniArsenalRequestNewWeapon(int playerId, string weapon, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
+	{
+		Rpc(RpcAsk_MiniArsenalRequestNewWeapon, playerId, weapon, attachments, magazines, magazineCounts, isPistol);
+	}
+	
 	void SightArsenalRequestNewSight(int playerId, string resourceName, string type)
 	{
 		Rpc(RpcAsk_SightArsenalRequestNewSight, playerId, resourceName, type);
@@ -378,6 +383,26 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void TogglePlayerListening(int playerId, bool input)
 	{
 		Rpc(RpcAsk_TogglePlayerLisntening, playerId, input);
+	}
+	
+	void ToggleWaveRespawn()
+	{
+		Rpc(RpcAsk_ToggleWaveRespawn);
+	}
+	
+	void ToggleRespawn()
+	{
+		Rpc(RpcAsk_ToggleRespawn);
+	}
+	
+	void SetRespawnTime(int seconds)
+	{
+		Rpc(RpcAsk_SetRespawnTime, seconds);
+	}
+	
+	void ToggleEnableAIInGameState()
+	{
+		Rpc(RpcAsk_ToggleEnableAIInGameState);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1000,6 +1025,113 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				}
 			}
 		}
+		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
+		GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, player);
+		GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, player);
+		pc.InitializeRadioFromServer();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_MiniArsenalRequestNewWeapon(int playerId, string newWeaponResource, array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, bool isPistol)
+	{
+		IEntity player = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
+		if (!player)
+			return;
+		
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(player.GetPrefabData().GetPrefabName());
+		
+		EntitySpawnParams params = new EntitySpawnParams();
+		player.GetTransform(params.Transform);
+		
+		IEntity newWeapon = GetGame().SpawnEntityPrefab(Resource.Load(newWeaponResource), null, params);
+		
+		SCR_InventoryStorageManagerComponent storageMan = SCR_InventoryStorageManagerComponent.Cast(player.FindComponent(SCR_InventoryStorageManagerComponent));
+		SCR_CharacterInventoryStorageComponent storageComp = SCR_CharacterInventoryStorageComponent.Cast(player.FindComponent(SCR_CharacterInventoryStorageComponent));
+		SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(player.FindComponent(SCR_CharacterControllerComponent));
+		
+		array<IEntity> items = {};
+		storageMan.GetItems(items);
+		
+		array<WeaponSlotComponent> weaponSlots = {};
+		charController.GetWeaponManagerComponent().GetWeaponsSlots(weaponSlots);
+		IEntity weapon;
+		if (isPistol)
+			weapon = weaponSlots.Get(4).GetWeaponEntity();
+		else
+			weapon = weaponSlots.Get(2).GetWeaponEntity();
+		
+		WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
+		array<BaseMuzzleComponent> muzzles = {};
+		weaponComp.GetMuzzlesList(muzzles);
+		
+		array<BaseMagazineWell> magazineWells = {};
+		foreach (BaseMuzzleComponent muzzle: muzzles)
+		{
+			magazineWells.Insert(muzzle.GetMagazineWell());
+		}
+		//Delete all magazines related to the old weapon.
+		foreach (IEntity item: items)
+		{
+			if (!item.FindComponent(MagazineComponent))
+				continue;
+			MagazineComponent magComp = MagazineComponent.Cast(item.FindComponent(MagazineComponent));
+			if (!magComp.GetMagazineWell())
+				continue;
+			foreach (BaseMagazineWell magazineWell: magazineWells)
+			{
+				if (magComp.GetMagazineWell().Type() == magazineWell.Type())
+				{
+					delete item;
+					break;
+				}
+			}
+		}
+		
+		//Delete Old Weapon;
+		SCR_EntityHelper.DeleteEntityAndChildren(weapon);
+		GetGame().GetCallqueue().CallLater(MiniArsenalRequestNewWeaponDelay, 500, false, storageMan, storageComp, newWeapon, attachments, magazines, magazineCounts, role);
+	}
+	
+	void MiniArsenalRequestNewWeaponDelay(SCR_InventoryStorageManagerComponent storageMan, SCR_CharacterInventoryStorageComponent storageComp, IEntity newWeapon, 
+	array<ResourceName> attachments, array<ResourceName> magazines, array<int> magazineCounts, CRF_EGearRole role)
+	{
+		EntitySpawnParams params = new EntitySpawnParams();
+		newWeapon.GetTransform(params.Transform);
+		storageMan.TryInsertItem(newWeapon);
+		CRF_GearscriptManager gearScriptManager = CRF_GearscriptManager.GetInstance();
+		int currentMagazine = 0;
+		foreach (int magazineCount: magazineCounts)
+		{
+			for (int i = 0; i < magazineCount; i++)
+			{
+				IEntity newMagazine = GetGame().SpawnEntityPrefab(Resource.Load(magazines[currentMagazine]), null, params);
+				gearScriptManager.InsertInventoryItemPublic(newMagazine, storageComp, storageMan, role, false, false);
+			}
+			currentMagazine++;
+		}
+		
+		foreach (ResourceName attachment: attachments)
+		{
+			IEntity attachmentSpawned = GetGame().SpawnEntityPrefab(Resource.Load(attachment), GetGame().GetWorld(), params);
+			BaseInventoryStorageComponent weaponStorageComp = BaseInventoryStorageComponent.Cast(newWeapon.FindComponent(BaseInventoryStorageComponent));
+			IEntity oldSight = weaponStorageComp.FindSuitableSlotForItem(attachmentSpawned).GetAttachedEntity();
+			BaseWeaponComponent newWeaponComp = BaseWeaponComponent.Cast(newWeapon.FindComponent(BaseWeaponComponent));
+			array<AttachmentSlotComponent> attachmentSlots = {};
+			newWeaponComp.GetAttachments(attachmentSlots);
+			
+			foreach (AttachmentSlotComponent attachmentSlot : attachmentSlots)
+			{
+				if (attachmentSlot.CanSetAttachment(attachmentSpawned))
+				{
+					if (oldSight)
+						delete oldSight;
+				
+					storageMan.TryInsertItemInStorage(attachmentSpawned, weaponStorageComp);
+					break;
+				}
+			}
+		}
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1042,5 +1174,29 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected void RpcAsk_TogglePlayerLisntening(int playerId, bool input)
 	{
 		CVON_VONGameModeComponent.GetInstance().TogglePlayerListening(playerId, input);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ToggleWaveRespawn()
+	{
+		CRF_RespawnManager.GetInstance().ToggleRespawnWave();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ToggleRespawn()
+	{
+		CRF_RespawnManager.GetInstance().ToggleRespawn();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_SetRespawnTime(int seconds)
+	{
+		CRF_RespawnManager.GetInstance().SetRespawnTime(seconds);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_ToggleEnableAIInGameState()
+	{
+		CRF_Gamemode.GetInstance().ToggleEnableAIInGameState();
 	}
 };

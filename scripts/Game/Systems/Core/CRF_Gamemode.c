@@ -51,6 +51,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
 	
+	[RplProp()] bool m_bCurrentEnableAIInGameState = EnableAIInGameState;
+	
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
 	bool m_bDisableChat;
 
@@ -523,7 +525,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			factionKey = faction.GetFactionKey();
 
 		// Handle respawn if enabled and tickets available
-		if (m_bRespawnEnabled && 
+		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
@@ -634,6 +636,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
 			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
 		}
+		Replication.BumpMe();
+	}
+	
+	void ToggleEnableAIInGameState()
+	{
+		m_bCurrentEnableAIInGameState = !m_bCurrentEnableAIInGameState;
 		Replication.BumpMe();
 	}
 }

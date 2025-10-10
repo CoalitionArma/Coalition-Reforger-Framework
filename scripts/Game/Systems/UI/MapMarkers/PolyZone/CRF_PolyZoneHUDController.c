@@ -68,7 +68,19 @@ class CRF_PolyZoneHUDController: ScriptComponent
 		}
 		
 		if (Replication.IsServer())
-			GetGame().GetCallqueue().CallLater(UpdatePlayerHUD, 100, true, owner);
+			SetEventMask(owner, EntityEvent.FIXEDFRAME);
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		if (m_fUpdateBuffer >= 0.1)
+		{
+			UpdatePlayerHUD(owner);
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
 	}
 }
 class CRF_EffectsContainer

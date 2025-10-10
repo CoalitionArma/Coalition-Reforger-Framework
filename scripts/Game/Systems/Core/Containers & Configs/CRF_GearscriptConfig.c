@@ -18,6 +18,9 @@ class CRF_GearScriptContainer
 	bool m_bEnableMiniArsenal;
 	
 	[Attribute("true", UIWidgets.CheckBox)]
+	bool m_bEnableMiniWeaponArsenal;
+	
+	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableSightArsenal;
 	
 	[Attribute("false", UIWidgets.CheckBox)]

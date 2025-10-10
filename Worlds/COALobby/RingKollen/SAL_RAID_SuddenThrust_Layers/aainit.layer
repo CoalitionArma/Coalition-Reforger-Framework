@@ -1,0 +1,169 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RaidGamemodeComponent "{668333D715B454FB}" {
+  }
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_bTeamspeakChecks 0
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{66723B2266FBDA13}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 5
+    }
+   }
+  }
+ }
+ coords 888.32 385.894 2463.914
+ m_iTimeLimitMinutes 50
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "As the Bosnian war dragged into late 1992, NATO launched limited air patrols and aid convoys while Russia covertly funneled advisors and weapons to Serb forces. In January 1993 a NATO convoy near Tuzla was destroyed by artillery fire traced to a Russian coordination cell, killing British and French personnel. Moscow denied involvement but reinforced the site with Spetsnaz, prompting NATO to authorize a retaliatory strike. A Royal Marines raid on a fortified college outside Doboj was meant as a limited blow, but Russia declared it an attack on its servicemen and mobilized forces. Within days, isolated clashes spiraled, turning a Balkan flashpoint into open NATO–Russian war."\
+   ""\
+   "BLUFOR: 1PLT, C CO, 45 Commando, Royal Marines has been tasked with infiltrating and destroying a Russians logisitic hub outside Belgrade as well as pulling out their force for follow on operations within the city itself."\
+   ""\
+   "OPFOR: 2nd PLT, 2nd Motor Rifle Company, 1st Battalion, 56th Motor Rifle Regiment has been sent reward from the fighting within Belgrade to recover after losing half of its platoon in the urban fighting. They have been tasked with defending a reward supply hub. Should be an easy task as no one would dare infiltrate this far."\
+   ""\
+   "BLUFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "BLUFOR Assets:"\
+   "MMG"\
+   "MAT"\
+   "ENGI"\
+   ""\
+   "OPFOR Composition: Armored/Infantry/Mechanized/Etc.."\
+   "OPFOR Assets:"\
+   ""\
+   "Time: 50 Minutes"\
+   ""\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Phase 1:"\
+   "- Destroy 100 Points worth of equipment without going below 50% of your force."\
+   "Phase 2:"\
+   "- Pull out atleast 30% of your force to the randomly designated extraction point."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Phase 1:"\
+   "Prevent BLUFOR from destroying 100 points worth of equipment."\
+   "Phase 2:"\
+   "Hunt down BLUFOR and prevent them from extracting with more than 30% of their force."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Defend in place, BLUFOR does not pass you."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Phase 1:"\
+   "BLUFOR assaults and must destroy 100 points worth of equipment within losing more than 50% of their force. If either happens it triggers the 2nd Phase which is the retreat."\
+   "Phase 2: "\
+   "All dead BLUFOR spawn in as INDFOR on the extraction and must pevent BLUFOR from reaching the extraction. OPFOR Gets a respawn wave and must pursue BLUFOR to the extraction. "\
+   ""\
+   "The extraction point is randomly chosen and will be marked on everyones maps."\
+   ""\
+   "Defenders win if BLUFOR goes below 30% of it's force. "\
+   ""\
+   "Attackers win if BLUFOR reaches the extract with more than 30% of its force."
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{32AFD3FB95741E53}Configs/Gearscripts/Custom/Salami/CRF_GS_UK90s.conf"
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{FA82A9F5101BF159}Configs/Gearscripts/Custom/Salami/CRF_GS_RUS90s.conf"
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{4E686A7B35B6559B}Configs/Gearscripts/Custom/Salami/CRF_GS_RUSMilitia.conf"
+  m_bEnableLeadershipRadios 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "ENGINEER"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{66833E3FF721F175}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66833E3FF7E572A3}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66833E3FF794AEF2}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66833E3FEF13EF4F}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66833E3FEFE6A5DC}" {
+        m_sCallsign "MAT"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66833E291DE83496}" {
+        m_sCallsign "1-3"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{66833E290E8D4EBE}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{66833E2905B13D1F}" {
+        m_sCallsign "Cell 5"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp BaseGameTriggerEntity {
+ Extraction1 {
+  coords 1427.691 426.689 2628.687
+ }
+ DefenderRespawn {
+  coords 663.121 367.79 2114.432
+ }
+ Extraction2 {
+  coords 1214.196 401.429 1678.71
+ }
+ Extraction3 {
+  coords 1584.998 381.912 2067.785
+ }
+}
