@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4D7F0BBBDECD0B73}Assets/Weapons/Rifles/workspaces/l85_fix.agr"
+ Configurations {
+  AnimGraphResourceClass PC {
+  }
+  AnimGraphResourceClass XBOX_ONE : PC {
+  }
+  AnimGraphResourceClass XBOX_SERIES : PC {
+  }
+  AnimGraphResourceClass PS4 : PC {
+  }
+  AnimGraphResourceClass PS5 : PC {
+  }
+  AnimGraphResourceClass HEADLESS : PC {
+  }
+  AnimGraphResourceClass Xbox : PC {
+  }
+ }
+}

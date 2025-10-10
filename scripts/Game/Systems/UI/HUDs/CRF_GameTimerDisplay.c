@@ -39,6 +39,8 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 	protected string m_sServerWorldTime;
 	protected SCR_PopUpNotification m_PopUpNotification = null;
 	
+	protected bool m_bUpdateTimer = false;
+	
 	//-------------------------------------------------------------------------
 	// Initialization
 	//-------------------------------------------------------------------------
@@ -50,7 +52,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 			return;
 
 		// Set up periodic timer update every second
-		GetGame().GetCallqueue().CallLater(UpdateTimer, 1000, true);
+		m_bUpdateTimer = true;
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
@@ -64,6 +66,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 	 * @param timeSlice The time elapsed since the last update in seconds
 	 * @override Overrides the base class implementation to provide game timer specific display logic
 	 */
+	float m_fUpdateBuffer = 0;
 	override protected void DisplayUpdate(IEntity owner, float timeSlice)
 	{
 		super.DisplayUpdate(owner, timeSlice);
@@ -71,6 +74,14 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 		// Only fire if in-game
 		if (!GetGame().GetWorld().GetWorldTime() || !SCR_PlayerController.GetLocalControlledEntity())
 			return;
+		
+		if (m_fUpdateBuffer >= 1)
+		{
+			if (m_bUpdateTimer)
+				UpdateTimer();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
 		
 		// Initialize references if they don't exist
 		// This handles respawn support and first-time initialization
@@ -152,7 +163,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 		// Handle invalid time or end of mission
 		if (m_sServerWorldTime == "N/A") 
 		{
-			GetGame().GetCallqueue().Remove(UpdateTimer);
+			m_bUpdateTimer = false;
 			return;
 		}
 		
@@ -295,7 +306,7 @@ class CRF_GameTimerDisplay : SCR_InfoDisplayExtended
 			}
 			else if (m_sServerWorldTime == "Mission Time Expired!") 
 			{
-				GetGame().GetCallqueue().Remove(UpdateTimer);
+				m_bUpdateTimer = false;
 				m_PopUpNotification.PopupMsg(m_sServerWorldTime, 10);
 				m_wTimer.SetText(m_sServerWorldTime);
 				return;

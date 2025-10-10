@@ -2,7 +2,7 @@ PolylineShapeEntity : "{2150339CD6D25BF2}PrefabsEditable/PolyZone/CIVSafestartBo
  coords 3543.435 82.781 7084.525
  Points {
   ShapePoint "{667B7B70D8831359}" {
-   Position -34.351 -0 -51.443
+   Position -34.351 0 -51.443
   }
   ShapePoint "{667B7B70D9918C84}" {
    Position -52.844 -0.031 -86.71
@@ -31,7 +31,7 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
  coords 6607.655 96.656 1322.801
  Points {
   ShapePoint "{667B7B7088D3C215}" {
-   Position -262.565 -0 35.647
+   Position -262.565 0 35.647
   }
   ShapePoint "{667B7B708F51DE9A}" {
    Position -282.852 0.337 -94.273
@@ -102,6 +102,13 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestart
    Position -32.466 -22.796 14.307
   }
  }
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 3467.654 82.781 7148.172
+ angleY 0
+ m_sQuadName "point-of-interest"
+ m_fWorldSize 75
+ m_sDescription "Factory OBJ"
 }
 CRF_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
  coords 3537.631 86.402 7085.888

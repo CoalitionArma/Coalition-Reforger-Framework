@@ -40,6 +40,10 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 	
 	SCR_PopUpNotification m_PopUpNotification = null;
 	string m_PopUpNotificationMessage
+	
+	bool m_bHVTStateSet = false;
+	bool m_bGameInit = false;
+	bool m_bHasSafestartBegun = false;
 
 	//------------------------------------------------------------------------------------------------
 	
@@ -48,98 +52,115 @@ class CRF_HighValueTargetGamemodeManager: SCR_BaseGameModeComponent
 		if (!GetGame().InPlayMode()) 
 			return;
 		
-		GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
-		
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);		
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		if (m_fUpdateBuffer >= 1)
+		{
+			m_fUpdateBuffer = 0;
+			
+			if (!CRF_Gamemode.GetInstance().IsRunning())
+				return;
+			
+			if (!m_bHVTStateSet)
+			{
+				SetHVTAndState();
+				return;
+			}
+			
+			if (!m_bHasSafestartBegun)
+			{
+				m_bHasSafestartBegun = CRF_SafestartManager.GetInstance().GetSafestartStatus();
+				return;
+			}
+				
+			
+			if (!CRF_SafestartManager.GetInstance().GetSafestartStatus() && m_bHVTStateSet && !m_bGameInit)
+			{
+				GameInit();
+				return;
+			}	
+			
+			if (RplSession.Mode() == RplMode.Dedicated && m_bHVTStateSet && m_bGameInit)
+				transponderInit();
+		}
+		m_fUpdateBuffer += timeSlice;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Spawn HVT & Set State
 	//------------------------------------------------------------------------------------------------
-	void WaitTillGameStart()
+	void SetHVTAndState()
 	{
-		if (SCR_BaseGameMode.Cast(GetGame().GetGameMode()).IsRunning()) 
+		m_bHVTStateSet = true;
+		IEntity transponderEntity = GetGame().GetWorld().FindEntityByName(m_transponderEntity);
+		
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.TransformMode = ETransformMode.WORLD;
+		spawnParams.Transform[3] = transponderEntity.GetOrigin();
+		m_eHvtEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_hvtPrefab),GetGame().GetWorld(),spawnParams);
+		
+		if (RplSession.Mode() == RplMode.Dedicated)
 		{
-			GetGame().GetCallqueue().Remove(WaitTillGameStart);
-			GetGame().GetCallqueue().CallLater(WaitTillSafeStartEnds, 1000, true);
-			IEntity transponderEntity = GetGame().GetWorld().FindEntityByName(m_transponderEntity);
+			m_eHvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
 			
-			EntitySpawnParams spawnParams = new EntitySpawnParams();
-			spawnParams.TransformMode = ETransformMode.WORLD;
-			spawnParams.Transform[3] = transponderEntity.GetOrigin();
-			m_eHvtEntity = GetGame().SpawnEntityPrefab(Resource.Load(m_hvtPrefab),GetGame().GetWorld(),spawnParams);
+			SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(m_eHvtEntity.FindComponent(SCR_CharacterControllerComponent));
+			if (!characterController)
+			return;
 			
-			if (RplSession.Mode() == RplMode.Dedicated)
-			{
-				m_eHvtEntity.SetYawPitchRoll(m_hvtPrefabYaw);
-				
-				SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(m_eHvtEntity.FindComponent(SCR_CharacterControllerComponent));
-				if (!characterController)
+			characterController.m_OnPlayerDeathWithParam.Insert(HVTKilled);
+		}
+		
+		if (m_disableDamage && RplSession.Mode() == RplMode.Dedicated) 
+		{
+			SCR_CharacterDamageManagerComponent damangeMangerController = SCR_CharacterDamageManagerComponent.Cast(m_eHvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
+			if (!damangeMangerController)
 				return;
-				
-				characterController.m_OnPlayerDeathWithParam.Insert(HVTKilled);
-			}
 			
-			if (m_disableDamage && RplSession.Mode() == RplMode.Dedicated) 
-			{
-				SCR_CharacterDamageManagerComponent damangeMangerController = SCR_CharacterDamageManagerComponent.Cast(m_eHvtEntity.FindComponent(SCR_CharacterDamageManagerComponent));
-				if (!damangeMangerController)
-					return;
-				
-				damangeMangerController.EnableDamageHandling(false);
-			}
+			damangeMangerController.EnableDamageHandling(false);
+		}
+		
+		if (m_setUnconcious && RplSession.Mode() == RplMode.Dedicated) 
+		{			
+			SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(m_eHvtEntity.FindComponent(SCR_CharacterControllerComponent));
+			if (!characterController)
+				return;
 			
-			if (m_setUnconcious && RplSession.Mode() == RplMode.Dedicated) 
-			{			
-				SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(m_eHvtEntity.FindComponent(SCR_CharacterControllerComponent));
-				if (!characterController)
-					return;
-				
-				setHVTUnconcious();
-				characterController.m_OnLifeStateChanged.Insert(setHVTUnconcious);
-				
-			}	
+			setHVTUnconcious();
+			characterController.m_OnLifeStateChanged.Insert(setHVTUnconcious);
+			
 		}
 		return;
 	}
 	
-	//------------------------------------------------------------------------------------------------
-	// Scripted Marker
-	//------------------------------------------------------------------------------------------------	
-	
-	void WaitTillSafeStartEnds()
+	void GameInit()
 	{
-		if (!CRF_SafestartManager.GetInstance().GetSafestartStatus())
-		{	
-			GetGame().GetCallqueue().Remove(WaitTillSafeStartEnds);
-			if (RplSession.Mode() == RplMode.Dedicated)
-			{
-				GetGame().GetCallqueue().CallLater(transponderInit, 1000, true);
-			}
+		m_bGameInit = true;
+		CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
+			if (!gameModePlayerComponent) 
+				return;
 			
-			CRF_PlayerControllerManager gameModePlayerComponent = CRF_PlayerControllerManager.GetInstance();
-				if (!gameModePlayerComponent) 
-					return;
-				
-			if (m_filterFaction)
+		if (m_filterFaction)
+		{
+			SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+			if (!factionManager)
+				return;
+			
+			Faction faction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
+			if (!faction)
+				return;
+	        
+	        if (faction.GetFactionKey() == m_searcherFactionKey)  
 			{
-				SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-				if (!factionManager)
-					return;
-				
-				Faction faction = factionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
-				if (!faction)
-					return;
-		        
-		        if (faction.GetFactionKey() == m_searcherFactionKey)  
-				{
-					gameModePlayerComponent.AddScriptedMarker(m_transponderEntity, "0 0 0", m_timeBetweenPings, m_markerText, "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds", 50, ARGB(255, 0, 0, 225));
-				}
-			} else {
 				gameModePlayerComponent.AddScriptedMarker(m_transponderEntity, "0 0 0", m_timeBetweenPings, m_markerText, "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds", 50, ARGB(255, 0, 0, 225));
 			}
+		} else {
+			gameModePlayerComponent.AddScriptedMarker(m_transponderEntity, "0 0 0", m_timeBetweenPings, m_markerText, "{428583D4284BC412}UI/Textures/Editor/EditableEntities/Waypoints/EditableEntity_Waypoint_SearchAndDestroy.edds", 50, ARGB(255, 0, 0, 225));
 		}
-		return;
-
 	}
 	
 	//------------------------------------------------------------------------------------------------

@@ -1,0 +1,17 @@
+SCR_BaseTriggerEntity transponder {
+ coords 6446.001 183.693 3082.391
+ angleY 0.938
+}
+GenericEntity : "{A9CF5E8C5D91C476}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Crate_01.et" {
+ coords 7223.143 180.551 2747.36
+}
+GenericEntity : "{D4375F10B6F2BE81}Prefabs/MP/Campaign/Assets/Radio_Interactable.et" {
+ components {
+  CRF_RadioPhaseManager "{6605652AC71F4A2E}" {
+   requireHVT 1
+   respawnOpfor 1
+  }
+ }
+ coords 7223.222 181.483 2746.939
+ angleY 169.539
+}

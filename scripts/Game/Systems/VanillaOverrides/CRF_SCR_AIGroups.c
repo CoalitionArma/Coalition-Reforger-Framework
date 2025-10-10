@@ -24,7 +24,7 @@ modded class SCR_AIGroup
 			return;
 		
 		// In GAME state and AI is enabled in GAME state
-		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.EnableAIInGameState)
+		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.m_bCurrentEnableAIInGameState)
 		{
 			if (!IsAIActivated())
 				ActivateAI();
