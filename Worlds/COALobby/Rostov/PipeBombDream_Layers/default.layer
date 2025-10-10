@@ -18,28 +18,26 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 941.257 117.245 2942.479
- m_iTimeLimitMinutes 50
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "FIA assualt :) the airfield"\
-   ""\
+   m_sTextData "FIA forces with the support of 2 BRDMs assualt :) the USSR held ROstov Airport."\
    ""\
    ""\
    "INDFOR Composition: Infantry"\
    "INDFOR Assets: 2x BRDM"\
    ""\
-   "OPFOR Composition: Infantry"\
+   "OPFOR Composition: Infantry "\
    "OPFOR Assets: 1x MAT team, 1x MMG team"\
    ""\
-   "Time: 50m"\
+   "Time: 45m"\
    ""\
    "Weather: Sunny"
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "defend the dawggohne bomb sites"
+   m_sTextData "Defend the two bombsites at the airfield."
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTextData "blow up the dawggohne bombsites"
+   m_sTextData "Blow up the dawgohne bombsites at the airfield."
   }
  }
  m_iFactionOneRatio 3

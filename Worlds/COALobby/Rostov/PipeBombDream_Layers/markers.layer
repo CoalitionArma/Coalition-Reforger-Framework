@@ -111,10 +111,10 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestart
  coords 976.388 120.999 3061.811
  Points {
   ShapePoint "{669505F450FC8890}" {
-   Position 607.394 7.033 28.962
+   Position 369.801 4.032 26.547
   }
   ShapePoint "{669505F451A9693D}" {
-   Position 340.844 9.064 88.809
+   Position 227.456 8.374 63.385
   }
   ShapePoint "{669505F456BB311E}" {
    Position -9.897 8.899 52.984
@@ -141,7 +141,7 @@ PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestart
    Position 315.023 -6.096 -163.705
   }
   ShapePoint "{669505F45F9F6F5C}" {
-   Position 611.745 1.505 -130.639
+   Position 359.405 -3.444 -137.518
   }
  }
 }
