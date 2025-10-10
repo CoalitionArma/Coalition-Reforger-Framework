@@ -189,7 +189,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// Determine if player should be spectator or playable character
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
-			playerCharacter = CreateSpectatorEntity(spawnLocation);
+			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
 			RemovePlayerFromCurrentGroup(playerId);
