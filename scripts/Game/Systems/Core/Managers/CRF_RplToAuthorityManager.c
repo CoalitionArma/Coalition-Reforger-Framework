@@ -1004,8 +1004,13 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				items.Insert(tempItem.GetPrefabData().GetPrefabName());
 			}
 		}
+		if (!invManager.CanReplaceItem(newItem, invComponent, slotId))
+		{
+			SCR_EntityHelper.DeleteEntityAndChildren(newItem);
+			return;
+		}
+		invManager.TryReplaceItem(newItem, invComponent, slotId);
 		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
-		invManager.TryInsertItem(newItem);
 		for (int i = 0; i < items.Count(); i++)
 		{
 			if(!invManager.TrySpawnPrefabToStorage(items[i], newStorageComp))
