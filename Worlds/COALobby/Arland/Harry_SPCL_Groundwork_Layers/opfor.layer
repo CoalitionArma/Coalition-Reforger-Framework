@@ -1,69 +1,296 @@
 SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
- coords 1971.622 52.727 3161.421
- angleY -131.31
+ coords 1928.891 52.476 3043.757
+ angleY -136.452
  {
-  SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
-   coords 13.453 0.626 3.03
+  $grp SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
    {
-    SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
-     coords 12.142 0.342 3.457
-     {
-      SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
-       coords 14.211 0.411 3.115
-       {
-        $grp SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
-         {
-          coords 16.424 0.715 5.377
+    coords 13.453 1.471 3.03
+   }
+   {
+    coords 25.594 1.748 6.486
+    {
+     SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+      coords 14.211 0.524 3.115
+      {
+       $grp SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+        {
+         coords -9.013 -1.077 -125.25
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 39.201 1.862 9.838
+        }
+        {
+         coords 109.494 1.46 -126.284
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords -30.159 -1.17 -25.682
+        }
+        {
+         coords 109.982 2.697 -115.171
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords -13.319 -0.415 -23.287
+        }
+        {
+         coords -9.502 -1.105 -136.362
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 4.117 0.322 -22.241
+        }
+        {
+         coords 8.274 0.292 -162.418
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 21.21 1.059 -21.093
+        }
+        {
+         coords 12.438 0.174 -116.142
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 39.011 2.016 -16.115
+        }
+        {
+         coords 49.287 1.391 -145.009
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords -17.067 -0.309 -41.038
+        }
+        {
+         coords 29.1 0.5 -146.943
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 3.071 0.606 -38.789
+        }
+        {
+         coords 27.776 0.92 -161.655
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 20.14 1.413 -37.292
+        }
+        {
+         coords -12.323 -0.414 -162.031
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 40.627 2.442 -35.354
+        }
+        {
+         coords 9.598 -0.274 -147.707
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords -0.765 0.195 107.147
-          angleY 1.605
+        }
+        {
+         coords -8.159 -0.768 -115.755
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 14.732 -0.501 106.987
-          angleY 1.605
+        }
+        {
+         coords -10.999 -0.997 -147.32
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 29.052 -1.363 102.588
-          angleY 1.605
+        }
+        {
+         coords 30.598 0.479 -135.987
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords 45.125 0.02 96.154
-          angleY 1.605
+        }
+        {
+         coords 11.583 -0.199 -125.637
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
-         {
-          coords -15.091 0.097 81.987
-          angleY 1.605
+        }
+        {
+         coords 106.673 2.041 -151.954
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 52.127 1.061 -113.444
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 31.086 0.58 -124.874
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 11.096 -0.325 -136.75
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 31.94 0.734 -115.378
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 107.996 1.717 -137.243
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 91.205 1.167 -126.821
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 110.836 2.308 -105.676
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords -28.863 -1.64 -122.669
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords -28.008 -1.411 -113.174
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords -30.849 -1.796 -144.739
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords -32.172 -1.364 -159.451
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords -29.351 -1.767 -133.782
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 51.272 1.268 -122.939
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 92.546 2.675 -106.212
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 70.313 1.918 -130.721
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 70.801 2.141 -119.608
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 67.491 2.35 -156.39
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 68.814 1.964 -141.679
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 91.692 2.866 -115.708
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 71.655 1.942 -110.113
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 88.382 1.66 -152.49
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 89.706 1.359 -137.779
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 50.785 1.306 -134.052
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
+         }
+        }
+        {
+         coords 47.963 1.765 -159.72
+         angleY 5.142
+         m_aUnitPrefabSlots {
+          "{963759D86C79E753}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_VehLead_P.et"
          }
         }
        }

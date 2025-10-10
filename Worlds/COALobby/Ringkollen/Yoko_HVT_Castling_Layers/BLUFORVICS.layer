@@ -1,0 +1,23 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 2248.044 392.256 1502.874
+  angleY 25.884
+  m_rnPrefab "{4E3A86638BFF9FC6}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_USAF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 2274.26 387.163 1509.031
+  angleY -69.547
+  m_rnPrefab "{73C1BB5B830C9F05}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 2309.155 380.593 1508.127
+  angleY -81.032
+  m_rnPrefab "{73C1BB5B830C9F05}Prefabs/Vehicles/Wheeled/Stryker/M1126/CROWS/Stryker_CROWS_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
