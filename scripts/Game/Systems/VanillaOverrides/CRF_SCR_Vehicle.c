@@ -1,6 +1,30 @@
 modded class Vehicle
 {
+	string m_sFactionKey = "";
 	int m_iVehicleSpawnerIndex = -1;
+	
+	
+	void Vehicle(IEntitySource src, IEntity parent)
+	{
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		if (!GetGame().GetWorld())
+			return;
+		
+		GetGame().GetCallqueue().CallLater(SetVehicleGear, 500, false);
+	}
+	
+	void SetVehicleGear()
+	{
+		GetGame().GetCallqueue().CallLater(
+					CRF_GearscriptManager.GetInstance().SetVehicleGear, 2000, false,
+					this, m_sFactionKey
+				);
+	}
+	
 	void ~Vehicle()
 	{
 		#ifdef WORKBENCH

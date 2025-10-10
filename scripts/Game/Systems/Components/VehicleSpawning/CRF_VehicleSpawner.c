@@ -76,6 +76,7 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		this.GetTransform(params.Transform);
 		m_eVehicle = GetGame().SpawnEntityPrefab(Resource.Load(m_rVehicle), GetGame().GetWorld(), params);
 		Vehicle.Cast(m_eVehicle).m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
+		Vehicle.Cast(m_eVehicle).m_sFactionKey = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(m_sFactionKey).GetFactionKey();
 	}
 	
 	#ifdef WORKBENCH
