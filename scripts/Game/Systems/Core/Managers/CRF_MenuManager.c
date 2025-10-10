@@ -15,14 +15,17 @@ class CRF_MenuManager : ScriptComponent
 	private const string PLAYER_SEPARATOR = ",";
 	private const int DEFAULT_CHANNEL_COUNT = 2; // Deafen and Global
 	
+	protected static CRF_MenuManager m_sInstance;
+	
+	void CRF_MenuManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	static CRF_MenuManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_MenuManager.Cast(gameMode.FindComponent(CRF_MenuManager));
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------

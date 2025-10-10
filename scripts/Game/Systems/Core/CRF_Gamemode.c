@@ -51,6 +51,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
 	
+	[RplProp()] bool m_bCurrentEnableAIInGameState = EnableAIInGameState;
+	
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
 	bool m_bDisableChat;
 
@@ -82,15 +84,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
+	[RplProp()] ResourceName m_rBLUFORCurrentGearScript = m_BLUFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
+	[RplProp()] ResourceName m_rOPFORCurrentGearScript = m_OPFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
+	[RplProp()] ResourceName m_rINDFORCurrentGearScript = m_INDFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
+	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
 
 	// Respawn Settings
 	//------------------------------------------------------------------------------------
@@ -130,6 +136,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
+	
+	protected static CRF_Gamemode m_sInstance;
 
 	//===================================================================================
 	// STATIC METHODS
@@ -139,13 +147,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 * Returns the singleton instance of the CRF_Gamemode
 	 * @return CRF_Gamemode instance or null if not available
 	 */
+	
+	void CRF_Gamemode(IEntitySource src, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	static CRF_Gamemode GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_Gamemode.Cast(gameMode);
+		return m_sInstance;
 	}
 
 	//===================================================================================
@@ -267,6 +277,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 		dataCollector.OnGameModeEnd(GetEndGameData());
 		array<int> players = {};
 		GetGame().GetPlayerManager().GetAllPlayers(players);
+		CRF_MenuManager menuManager = CRF_MenuManager.GetInstance();
 		
 		foreach (int player : players)
 		{
@@ -277,25 +288,24 @@ class CRF_Gamemode : SCR_BaseGameMode
 			// Process player statistics data
 			ProcessStats(dataCollector,player);
 
-			// Skip players already in spectator
-			if (CRF_GamemodeManager.IsSpectator(GetGame().GetPlayerManager().GetPlayerControlledEntity(player)))
-				continue;
-
-			// Set player health to zero (kill them)
 			IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(player);
 			if (!playerEntity)
 				continue;
-				
-			SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(
-				playerEntity.FindComponent(SCR_CharacterDamageManagerComponent)
-			);
 			
-			if (!damageManager)
-				continue;
-				
-			HitZone defaultHitZone = damageManager.GetDefaultHitZone();
-			if (defaultHitZone)
-				defaultHitZone.SetHealth(0);
+			// Check if player is already dead/spectating
+			bool isPlayerAlreadyDead = CRF_GamemodeManager.IsSpectator(playerEntity);
+			
+			// Move all players to spectator mode for AAR interface and communication
+			// This preserves their actual alive/dead status while allowing AAR participation
+			if (!isPlayerAlreadyDead)
+			{
+				// Player is alive - force into spectator for AAR without marking as dead
+				ForcePlayerToSpectatorForAAR(player, playerEntity);
+			}
+			// Players already in spectator mode don't need repositioning
+			
+			//Adds them to default channel
+			menuManager.AddPlayerToChannel(player, 1, false);
 		}
 		
 		// Stores player profiles who havent disconnected
@@ -367,7 +377,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
 		{		
 			// Schedule initialization with a delay to ensure player controller is fully set up
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+			vector spawnVector[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, spawnVector);
 		}
 		// Initialize player if not in GAME state
 		else if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
@@ -514,7 +525,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			factionKey = faction.GetFactionKey();
 
 		// Handle respawn if enabled and tickets available
-		if (m_bRespawnEnabled && 
+		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
@@ -565,6 +576,73 @@ class CRF_Gamemode : SCR_BaseGameMode
 		location[3] = locationThree;
 		
 		m_GamemodeManager.InitilizePlayer(playerId, location);
+	}
+	
+	/**
+	 * Forces a living player to die and enter spectator mode for AAR without permanently marking their slot as dead
+	 * This allows proper death handling while preserving their alive status for AAR display
+	 * @param playerId The player ID to kill and move to spectator
+	 * @param playerEntity The player's current entity
+	 */
+	void ForcePlayerToSpectatorForAAR(int playerId, IEntity playerEntity)
+	{
+		if (!playerEntity || playerId <= 0)
+			return;
+		
+		// Get the player's slot ID before killing them
+		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
+		if (slotId == -1)
+			return;
+		
+		// Store original alive state (should be false since they're alive)
+		bool originalDeadState = m_SlottingManager.IsPlayerConsideredDead(playerId);
+		
+		// Kill the player to trigger proper death handling and spectator transition
+		// This will automatically handle the transition to spectator mode
+		SCR_CharacterDamageManagerComponent damageManager = SCR_CharacterDamageManagerComponent.Cast(
+			playerEntity.FindComponent(SCR_CharacterDamageManagerComponent)
+		);
+		
+		if (!damageManager)
+			return;
+			
+		HitZone defaultHitZone = damageManager.GetDefaultHitZone();
+		if (defaultHitZone)
+			defaultHitZone.SetHealth(0);
+		
+		// Schedule restoration of original alive status after death processing completes
+		// This ensures the player shows as alive in AAR even though they were killed for transition
+		GetGame().GetCallqueue().CallLater(RestorePlayerAliveStatusForAAR, 3000, false, slotId, originalDeadState);
+	}
+	
+	/**
+	 * Restores a player's original alive/dead status after they've been moved to spectator for AAR
+	 * @param slotId The slot ID of the player
+	 * @param originalDeadState The player's original dead state before AAR
+	 */
+	void RestorePlayerAliveStatusForAAR(int slotId, bool originalDeadState)
+	{
+		// Restore the player's original alive/dead status
+		// This ensures the AAR display shows their actual mission-end status
+		m_SlottingManager.UpdateSlotDeathState(slotId, originalDeadState);
+	}
+	
+	void UpdateGearscriptResource(string factionKey, string resource)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR" : m_rBLUFORCurrentGearScript = resource; break;
+			case "OPFOR" : m_rOPFORCurrentGearScript = resource; break;
+			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
+			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
+		}
+		Replication.BumpMe();
+	}
+	
+	void ToggleEnableAIInGameState()
+	{
+		m_bCurrentEnableAIInGameState = !m_bCurrentEnableAIInGameState;
+		Replication.BumpMe();
 	}
 }
 

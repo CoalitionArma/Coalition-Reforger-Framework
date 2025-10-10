@@ -1,0 +1,262 @@
+GenericEntity : "{923D948AB0D57A50}Prefabs/Weapons/Rifles/AK74/Rifle_AK74_long_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponSoundComponent "{5A8685198A9AEEDD}" {
+   Filenames {
+    "{D215AD161DFB5E1F}Sounds/Weapons/Launchers/M79/Weapons_M79_Shot.acp" "{635A802C7F96B519}Sounds/Weapons/Launchers/M79/BC_Weapons_M79_Handling.acp" "{68E023371FDD3B12}Sounds/Weapons/_SharedData/Drop/Weapons_Drop_Rifle_WoodMetal.acp" "{A84D9F22F2C0D9CE}Sounds/Weapons/_SharedData/PickUp/Weapons_PickUp_Rifle_WoodMetal.acp" "{332983CC95EE1E1E}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Rifle.acp" "{D8F675F3468362E2}Sounds/Weapons/_SharedData/Weapons_Sights_Actions.acp" "{10C1421961C34D26}Sounds/Weapons/_SharedData/Weapons_Deployment.acp" "{E419B2CF55F4A389}Sounds/Weapons/_SharedData/Melee/Weapons_Melee_Bayonett.acp" "{5D9EB1EFB7097850}Sounds/Weapons/Rifles/AK-74/Weapons_Rifles_AK-74_Shot_Suppressed_SuperSonic.acp"
+   }
+  }
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{50753567838E7A21}Assets/Weapons/Launchers/M79/BC_M79.xob"
+  }
+  RigidBody "{55349E9229B55E32}" {
+   CenterOfMass 0 0.068 0.041
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName WeaponUIInfo "{5222CB07CFF6712A}" {
+     Name "M79"
+     Description "40mm break-action grenade launcher."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{55349E9229B55E3D}" {
+     Weight 2.72
+     ItemVolume 1100
+    }
+    ItemAnimationAttributes ItemAnimationAttributes "{5284960E1D29F45C}" {
+     IkSettings {
+      ItemIKSettings "{5284960E1C7C18A7}" {
+       InAds 1
+      }
+      ItemIKSettings "{5D48CC48D8A46AE0}" {
+       InAds 1
+      }
+     }
+     AnimationInstance "{0350283642830782}anims/workspaces/player/player_main_rifle.asi"
+     AnimationIKPose "{CB4F52EAD9C02C67}Assets/Weapons/Launchers/M79/Anims/anm/p_bc_m79_erc_ik.anm"
+     AnimIKPoseStandOverride ""
+     AnimIKPoseCrouchOverride ""
+     OverrideDefaultIkBonesBlend 0
+    }
+    CustomAttributes {
+     AimingModifierAttributes "{566C7D15A071B88E}" {
+      ProneLimitsVertical -90 90
+      ProneDeploymentVerticalAimLimits -10 10
+      DeploymentPoints {
+       PivotPointInfoItem "{5A88DB44D1DE25C6}" {
+        "Point info" DeploymentPointInfo deploy {
+         Offset 0 0.0842 0.3688
+        }
+       }
+      }
+     }
+     PreviewRenderAttributes "{52BAB5E48C906DB8}" {
+      CameraDistanceToItem 0.8
+      LodModel 0
+     }
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{51F6738D2EC74BE1}" {
+     Enabled 0
+    }
+    AttachmentSlotComponent "{5F189C826D592450}" {
+     Enabled 0
+    }
+    SCR_MuzzleInMagComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{4E2B66CBA589F625}" {
+       Enabled 0
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{4A815EB8B824974A}Prefabs/Weapons/Attachments/Muzzle/FlashHider_AK74/FlashHider_AK74.et"
+       }
+      }
+      CaseEjectingEffectComponent "{5122AAD190FCA21D}" {
+       Enabled 0
+      }
+     }
+     MuzzleType UGLMuzzle
+     ProjectileSpawnPositions {
+      PointInfo "{50F64C476EC435CA}" {
+       PivotID "barrel_muzzle"
+       Offset 0 0 0
+       Angles -0.511 0 0.1407
+      }
+     }
+     FireModes {
+      BaseFireMode "{B80A64F4A8EF8333}" {
+       MaxBurst 1
+       RoundsPerMinute 650
+      }
+      BaseFireMode "{619AB45C30091E43}" {
+       RoundsPerMinute 650
+      }
+     }
+     MagazineWell MagazineWellUS_UGL "{55349E9229B55D96}" {
+     }
+     DispersionDiameter 0.8
+     DispersionRange 500
+     WeaponAimModifiers {
+      RecoilWeaponAimModifier "{55349E9229B55D9A}" {
+       LinearData RecoilData "{58789524E765774D}" {
+        "Curve Mins" -0.001 -0.002 -0.044
+        "Curve Maxs" 0.001 0.003 -0.036
+       }
+       AngularData RecoilData "{58789524E7CAB55F}" {
+        "Curve Y" {
+         0 0.5 0.038 0.796 0.093 1 0.263 0.771 0.403 0.529 0.576 0.502 1 0.5
+        }
+        "Curve Time Scale" 4.763
+        "Curve Magnitudes" 1.4 1 1
+        "Curve Mins" -1 10 1
+        "Curve Maxs" 1 11 1
+       }
+       TurnOffsetData RecoilData "{58789524E0951484}" {
+        "Curve Mins" -1.5 10 0
+        "Curve Maxs" 1.5 15 0
+       }
+      }
+     }
+     UIInfo MuzzleUIInfo "{2FBBA72C906C627E}" {
+      m_bShowFiremode 0
+      m_MagIndicator SCR_MagazineIndicatorConfiguration "{58689673C7B61A24}" {
+       m_sOutline "grenade-gl-m406"
+       m_bProgressBar 0
+      }
+     }
+     "LEFT HAND TARGET" DeploymentPointInfo lht {
+      PivotID "w_magazine"
+      Offset 0 0.0223 -0.0081
+     }
+     ProjectilePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+      AutoTransform 1
+     }
+     AmmoTemplate "{2A8586964D22492A}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433_LS.et"
+     MaxAmmo 1
+     AllowDetachingProjectile 1
+     InitialAmmo 1
+     ProjectileVisible 1
+    }
+    SightsComponent "{665E12ACF6AB517E}" {
+     SightsPosition PointInfo "{665E12ACF6AB510E}" {
+      PivotID "eye"
+     }
+     SightsRanges {
+      SightRangeInfo "{665E12ACF6AB5115}" {
+       Range 0 5
+       WeaponPosition PointInfo "{665E12ACF6AB5114}" {
+        Offset 0 0.011 0
+        Angles 1.27 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6AB5111}" {
+       Range 0 50
+       WeaponPosition PointInfo "{665E12ACF6AB5113}" {
+        Offset 0 0 0
+        Angles 3.15 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6AB5112}" {
+       Range 0.232 100
+       WeaponPosition PointInfo "{665E12ACF6AB511D}" {
+        Offset 0 -0.023 0
+        Angles 5.81748 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6AB511B}" {
+       Range 0.317 150
+       WeaponPosition PointInfo "{665E12ACF6AB511A}" {
+        Offset 0 -0.0385 -0.02202
+        Angles 8.78 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6AB5125}" {
+       Range 0.3905 200
+       WeaponPosition PointInfo "{665E12ACF6AB5124}" {
+        Offset 0 -0.0598 -0.03248
+        Angles 12.14 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6AB5126}" {
+       Range 0.47 250
+       WeaponPosition PointInfo "{665E12ACF6AB512E}" {
+        Offset 0 -0.0878 -0.04488
+        Angles 16.07 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6AB5128}" {
+       Range 0.5668 300
+       WeaponPosition PointInfo "{665E12ACF6AB512B}" {
+        Offset 0 -0.1345 -0.05939
+        Angles 21.02 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6AB5135}" {
+       Range 0.704 350
+       WeaponPosition PointInfo "{665E12ACF6AB5134}" {
+        Offset 0.002 -0.247 -0.07621
+        Angles 27.35 0 0
+       }
+      }
+      SightRangeInfo "{665E12ACF6ABADFD}" {
+       Range 0.8657 375
+       WeaponPosition PointInfo "{665E12ACF6ABADF8}" {
+        Offset 0.0016 -0.315 -0.13
+        Angles 32.32 0 0
+       }
+      }
+     }
+     SightsRangesDefaultIndex 1
+     ADSTime 0.35
+     SoundInt 9001
+     SightsPartialFreelookFactor 0
+     m_iOpticDOFDistanceScale -1
+    }
+    SightsComponent "{BB23A637957CFFF8}" {
+     Enabled 0
+    }
+    BC_M79WeaponAnimationComponent "{60B4EA76EB15F6E0}" {
+     AnimGraph "{380809F69E9F6DCC}Assets/Weapons/Launchers/workspaces/BC_M79.agr"
+     AnimInstance "{C5343BBFF319D0B4}Assets/Weapons/Launchers/workspaces/BC_M79_weapon.asi"
+     AnimInjection AnimationAttachmentInfo "{55349E9229B55D8A}" {
+      AnimGraph "{380809F69E9F6DCC}Assets/Weapons/Launchers/workspaces/BC_M79.agr"
+      AnimInstance "{3E6AAA8E6B18B458}Assets/Weapons/Launchers/workspaces/BC_M79_player.asi"
+     }
+     m_sCasingEjectionAnimation "{67C33844F96A7A4F}Particles/Weapons/shell_m79_eject.ptc"
+     m_sCasingPrefab "{1663496AE5B9F10B}Prefabs/Weapons/Ammo/Ammo_Grenade_HEDP_M433.et"
+     m_effectPosition1 PointInfo "{665E12ACF6ABADF7}" {
+      PivotID "slot_magazine"
+      Angles 90 90 90
+     }
+     m_sDoubleShellPrefab "{EE168254C36F5B4E}Prefabs/Weapons/Ammo/Particles/m79_spent_shell.et"
+     m_sShellMeshName "casing"
+    }
+   }
+   WeaponType GrenadeLauncher
+   shouldHandleObstruction 1
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "M79"
+    Description "40mm break-action grenade launcher."
+   }
+  }
+  ActionsManagerComponent "{A29AE67FF4D82B0F}" {
+   ActionContexts {
+    UserActionContext "{5A1E58F7B04F9BE5}" {
+     Position PointInfo "{5A1E5C47BC74199D}" {
+      Offset -0.0333 0 0
+     }
+     Radius 0.2
+    }
+   }
+   additionalActions {
+    SCR_DetachMagazineUserAction "{5A1E58F790AF821D}" {
+     UIInfo SCR_ActionUIInfo "{5A1E58F788F40D95}" {
+      Name "Detach: "
+     }
+    }
+   }
+  }
+ }
+ coords 4773.831 28.75 11070.132
+}

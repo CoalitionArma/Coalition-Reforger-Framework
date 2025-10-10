@@ -28,8 +28,15 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
+	protected static CRF_GamemodeManager m_sInstance;
+	
 	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
 	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
+	
+	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -67,11 +74,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	*/
 	static CRF_GamemodeManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-		
-		return CRF_GamemodeManager.Cast(gameMode.FindComponent(CRF_GamemodeManager));
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------

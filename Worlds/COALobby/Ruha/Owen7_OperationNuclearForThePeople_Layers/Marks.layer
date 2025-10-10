@@ -1,0 +1,62 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ Opforattack {
+  coords 4291.057 54.666 4382.98
+  angleY -86.993
+  m_MarkerColor 0.5 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 270
+  m_sDescription "OPFOR Direction Of Attack"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Opforattack2 {
+  coords 4224.67 61.078 3462.513
+  angleY -85.705
+  m_MarkerColor 0.5 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 270
+  m_sDescription "OPFOR Direction Of Attack"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Opforattack3 {
+  coords 3291.57 54.185 4796.863
+  angleY -136.347
+  m_MarkerColor 0.5 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 270
+  m_sDescription "OPFOR Direction Of Attack"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Bluforattack {
+  coords 398.667 66.826 3737.315
+  angleY 98.067
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 270
+  m_sDescription "BLUFOR Direction Of Attack"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Bluforattack2 {
+  coords 362.926 85.871 2559.497
+  angleY 74.085
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 270
+  m_sDescription "BLUFOR Direction Of Attack"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ Bluforattack3 {
+  coords 743.205 65.868 4472.026
+  angleY 103.253
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 270
+  m_sDescription "BLUFOR Direction Of Attack"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

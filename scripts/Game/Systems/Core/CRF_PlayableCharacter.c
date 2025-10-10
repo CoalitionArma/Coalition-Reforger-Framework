@@ -47,7 +47,7 @@ class CRF_PlayableCharacter : ScriptComponent
 			return false;
 		
 		if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && 
-			m_Gamemode.EnableAIInGameState && 
+			m_Gamemode.m_bCurrentEnableAIInGameState && 
 			!CRF_GamemodeManager.IsSpectator(owner))
 			return false;
 		

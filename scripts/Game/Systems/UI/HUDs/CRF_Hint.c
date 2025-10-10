@@ -55,6 +55,7 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 		// Play notification sound
 		AudioSystem.PlaySound("{A4D15A2A486BD70A}Sounds/UI/Samples/Editor/UI_E_Notification_Default.wav");
 		
+		//This CallLater is not bad, CallLater was made for usecases like these in HUDs so I am leaving it.
 		// Start monitoring hint duration with periodic checks
 		GetGame().GetCallqueue().CallLater(HintLoop, 1000, true);
 	}
@@ -107,5 +108,12 @@ class CRF_Hint : SCR_ScriptedWidgetComponent
 			GetGame().GetCallqueue().Remove(FadeAndDeleteHintLoop);
 			delete m_wMainWidget;
 		}
+	}
+	
+	//Added as if there is a hint on screen during scernario refresh it would linger without this.
+	void ~CRF_Hint()
+	{
+		if (m_wMainWidget)
+			delete m_wMainWidget;
 	}
 }

@@ -1,0 +1,43 @@
+GenericEntity : "{8C3C62C58D2DBEDA}Prefabs/Weapons/Warheads/RPG/Warhead_HEAT.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    ExplosionDamageContainer "{567CBC1D0F5B4AEA}" {
+     ExplosionEffects {
+      ExplosionFragmentationEffect "{567CBC1D7AB652C7}" {
+       DamageFragmentCount 150
+       GurneyConstant 2830
+       CaseWeight 1495
+      }
+     }
+     ChargeWeight 730
+     TntEquivalent 1.7
+    }
+    SubmunitionEffect "{567CB8E002C26D97}" {
+     TriggerOnce 1
+     Prefab "{8CB4A6E6FA1F2BF0}Prefabs/Weapons/Warheads/RPG/Penetrator/Ammo_Rocket_PG7VL_Penetrator.et"
+     Count 3
+     Dispersion 30
+    }
+    SubmunitionEffect "{5D692C94EC533259}" {
+     TriggerOnce 1
+     Prefab "{7CC1697D08638B5C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM_Spall.et"
+     Count 40
+    }
+    SubmunitionEffect "{665E12AC2DB13CAD}" {
+     Prefab "{CCEDD4BC6CA96630}Prefabs/Weapons/Ammo/Ammo_Spall_1_Med.et"
+     Count 20
+     Dispersion 200
+    }
+    SubmunitionEffect "{665E12ADC8CD7E59}" {
+     TriggerOnce 1
+     Prefab "{23257BAD4B95E569}Prefabs/Weapons/Ammo/Ammo_Spall_1_Light.et"
+     Count 25
+     Dispersion 360
+    }
+   }
+   TriggerOffset -0.2
+  }
+ }
+}

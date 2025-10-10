@@ -1,0 +1,78 @@
+Vehicle : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{631B4948527E5708}" {
+     SourceMaterial "Exterior02"
+     AssignedMaterial "{9A6DEA4C5AB75B67}Assets/Vehicles/Wheeled/S105/Data/S105_Rally_Exterior.emat"
+    }
+    MaterialAssignClass "{631B4948527E577F}" {
+     SourceMaterial "S105Body_mat"
+     AssignedMaterial "{5CDB0AADCE9CE2B3}Assets/Vehicles/Wheeled/S105/Data/S105Body_red.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentUniqueName "pilot"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Vehicle_Skoda105_Name - #WCS-Weapon_M134_Name"
+    m_Image "{86B19DC95917B15B}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_wcs_M134.edds"
+    m_aAuthoredLabels + {
+     21
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      WCS_Armament_WeaponInfoVehicle "{667105F90C93FA2C}" {
+       m_LayoutPath "{2E427134219C809E}UI/layouts/HUD/WeaponInfo/WCS_WeaponInfo.layout"
+       m_aHandlers {
+        SCR_InfoDisplaySlotHandler "{667105F90C93FA28}" {
+         m_bCanUpdate 1
+         m_sSlotName "Slot_WeaponInfo"
+        }
+       }
+       m_sInterfaceSettingName "m_bShowWeaponInfo"
+      }
+     }
+    }
+    BaseWeaponManagerComponent "{667105F90C93FA33}" {
+     DefaultWeaponIndex 0
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{667105F90C93FA3D}" {
+   m_ArmamentGroups {
+    WCS_ArmamentSlotGroup "{667105F90C93FA3F}" {
+    }
+   }
+  }
+  WCS_VehicleAimCameraComponent "{667105F90C93FA3E}" {
+   m_Position PointInfo "{667105F90C93FA3A}" {
+    Offset -0.3117 1.2527 0.5386
+   }
+  }
+  WeaponSlotComponent "{667105F90C93F9C6}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{667105F90C93F9C3}" {
+   }
+   WeaponType MachineGun
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot UPK23 {
+    Offset -0.5752 0.9269 1.316
+    Angles 0 0 -90
+    DisablePhysicsInteraction 1
+    DeactivatePhysicsOnAtaching 1
+   }
+   WeaponTemplate "{D495DCDE5D8148B8}Prefabs/Weapons/HeavyWeapons/M134/M134_Turret_Base.et"
+  }
+ }
+}

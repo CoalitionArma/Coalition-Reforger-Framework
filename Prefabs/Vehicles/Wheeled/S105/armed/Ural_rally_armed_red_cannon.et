@@ -1,0 +1,74 @@
+Vehicle : "{4597626AF36C0858}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320.et" {
+ ID "0000000000000001"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{667105ECD9B1895B}" {
+     SourceMaterial "Ural_Body"
+     AssignedMaterial "{FC8C86FE85CFCAA4}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_red.emat"
+    }
+   }
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentUniqueName "pilot"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#WCS-Vehicle_Skoda105_Name - #WCS-Weapon_M134_Name"
+    m_Image "{86B19DC95917B15B}UI/Textures/EditorPreviews/Vehicles/Wheeled/S105/S105_rally_wcs_M134.edds"
+    m_aAuthoredLabels + {
+     21
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    BaseHUDComponent "{37C2676694790BC7}" {
+     InfoDisplays {
+      WCS_Armament_WeaponInfoVehicle "{667105ECD61E2565}" {
+       m_LayoutPath "{2E427134219C809E}UI/layouts/HUD/WeaponInfo/WCS_WeaponInfo.layout"
+       m_aHandlers {
+        SCR_InfoDisplaySlotHandler "{667105ECD61E2567}" {
+         m_bCanUpdate 1
+         m_sSlotName "Slot_WeaponInfo"
+        }
+       }
+       m_sInterfaceSettingName "m_bShowWeaponInfo"
+      }
+     }
+    }
+    BaseWeaponManagerComponent "{667105ECD61E2568}" {
+     DefaultWeaponIndex 0
+    }
+   }
+  }
+  WCS_Armament_LoadoutComponent "{667105ECD61E256A}" {
+   m_ArmamentGroups {
+    WCS_ArmamentSlotGroup "{667105ECD61E2574}" {
+    }
+   }
+  }
+  WCS_VehicleAimCameraComponent "{667105ECD61E2576}" {
+   m_Position PointInfo "{667105ECD61E2571}" {
+    Offset -0.3117 1.2527 0.5386
+   }
+  }
+  WeaponSlotComponent "{667105ECD61E2573}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{667105ECD61E257C}" {
+   }
+   WeaponType MachineGun
+   shouldHandleObstruction 0
+   AttachType InventoryStorageSlot UPK23 {
+    Offset 0.054 -0.5977 -3.0167
+    Angles 0 -180 0
+    DisablePhysicsInteraction 1
+    DeactivatePhysicsOnAtaching 1
+   }
+   WeaponTemplate "{E3F865A4A17187DA}Prefabs/Vehicles/Tracked/2S1/VehParts/Turret/2S1_Turret.et"
+  }
+ }
+}

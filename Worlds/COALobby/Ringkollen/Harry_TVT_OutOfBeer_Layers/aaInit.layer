@@ -1,0 +1,166 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_aSharedFrequencies {
+    CVON_SharedFrequencyObject "{666028DA6AF1FA6A}" {
+     m_aFactionIds {
+      "CIV" "OPFOR"
+     }
+     m_sSharedFrequency "OPFOR"
+    }
+   }
+  }
+ }
+ coords 511.757 659.767 1224.544
+ m_bAllowEspionage 1
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "It's 1960, and RU forces have invaded Finland. An RU defector has stolen a radio, and fled to Norway. They were seen in a nearby town, purchasing groceries. RU forces need that HVT dead, and newly formed NATO forces badly want to bring him in alive. "\
+   ""\
+   "Both sides have accurate information about his location at all times."\
+   ""\
+   "BLUFOR Composition: Inf"\
+   "BLUFOR Assets: 2x armed jeep"\
+   ""\
+   "OPFOR Composition: Inf"\
+   "OPFOR Assets: "\
+   ""\
+   "Time: 45 min"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Secure the HVT, and protect them at all costs. The HVT is unaware of the coming danger, and won't leave their AO until BLUFOR or hears about the attack on their radio."\
+   ""\
+   "You win by moving the HVT to the marked extraction. "\
+   ""\
+   "Be advised that the HVT stole an OPFOR radio "
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Find, and kill the HVT defector. Be advised they stole a radio on their way out, and will be able to intercept your communications. The HVT is monitoring your communications, and will be spooked if they hear russian forces are hunting them. "\
+   ""\
+   "Blufor is tasked with moving the HVT to an extraction point you only have generalized knowledge of, and will win if they arrive there. "
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "HVT Objectives"
+   m_sTextData "You are enjoying an evening in your cabin after a beer run, unaware of the approaching danger. Stay in the AO limits until BLUFOR finds you, or you learn of OPFOR intending to find and kill you. That can either be by intercepted radio transmissions, or by being attacked. You want to stay alive, and BLUFOR will keep you alive. "\
+   ""\
+   "You stole an OPFOR radio when you defected, and can listen to their comms. "
+   m_aFactionKeys {
+    "CIV"
+   }
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "In this mission, AT tools which have a shaped charge will generate more forward facing projectiles, and less shrapnel around them. It is still very possible to die to lateral fragmentation, but the hope is that these tools incidentally wound more than kill. Because of the increased forward projectiles, shots on target will be more effective. "
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{A5E25D5040E8F34E}Configs/Gearscripts/Custom/Harry/Frag_test/CRF_GS_US_Alt_Vietnam.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{C90D84A4B48722C2}Configs/Gearscripts/Custom/Harry/Frag_test/CRF_GS_RU_Alt_Vietnam.conf"
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rShortRangeRadioPrefab "{D26BF3EB28C8B72C}Prefabs/Items/Equipment/Radios/Radio_R187.et"
+  m_rLongRangeRadioPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
+  m_bEnableLeadershipRadios 1
+  m_bEnableGIRadios 1
+ }
+ {
+  SCR_FactionManager "665EF9B2F26986A4" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+     m_aFriendlyFactionsIds {
+      "BLUFOR" "OPFOR"
+     }
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{665E12B446ED1FB6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{665E12B4450F2254}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{665E12B44FEAAF73}" {
+        m_sCallsign "Jeep 1"
+       }
+       SCR_CallsignInfo "{665E12B450E6CAEE}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{665E12B4597D94A7}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{665E12B45E90AD5E}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{665E12B4A1615BC6}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{665E12B4A556CAF7}" {
+        m_sCallsign "Jeep 2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{665E12B4D1C6D242}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{665E12B4D749B28D}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{665E12B4D56EB6CC}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{665E12B4D58A5FF5}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{665E12B4D5C07E28}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{665E12B4D4140B34}" {
+        m_sCallsign "2-3"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
