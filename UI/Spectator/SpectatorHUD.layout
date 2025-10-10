@@ -16,6 +16,7 @@ FrameWidgetClass {
     OffsetBottom -250
    }
    "Z Order" 99
+   "Is Visible" 0
    {
     PanelWidgetClass "{6694ADF1AE3F49B5}" {
      Name "Panel0"
