@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    }
   }
   SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
-   m_sInitialStartingWeatherId "Light Rain"
+   m_sInitialStartingWeatherId "Clear Fog"
    m_iSetWeatherConstant 1
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
@@ -132,7 +132,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "- A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. "\
    "- I'll give $20 to a winning commander other than CIV if they get their win condition and side objective on the first playthrough lmao. "\
    "- There can be multiple winners."\
-   "- Appearance of factory owner can be seen in the AAR, strikers wear random shit."\
+   "- Factory owner wears a brown suit, his appearance can be seen in AAR."\
    ""\
    "BLUFOR:"\
    "Win Condition - Bring the Factory Owner to safety at the Montignac PD building."\
@@ -146,7 +146,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{66780A81D5815248}" {
    m_sTitle "OPFOR OBJ"
    m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. I'll give $20 to a winning commander other than CIV if they get their win condition and side objective on the first playthrough lmao. There can be multiple winners."\
-   "Factory owner wears a brown suit and blue hat, strikers wear random shit."\
+   "Factory owner wears a brown suit, his appearance can be seen in AAR."\
    ""\
    "OPFOR:"\
    "Win Condtion - Capture the factory owner and make him pay"\
@@ -161,7 +161,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{66780A81EA3C9A80}" {
    m_sTitle "INDFOR OBJ"
    m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. I'll give $20 to a winning commander other than CIV if they get their win condition and side objective on the first playthrough lmao. There can be multiple winners."\
-   "Factory owner wears a brown suit and blue hat, strikers wear random shit."\
+   "Factory owner wears a brown suit, his appearance can be seen in AAR."\
    ""\
    "INDFOR:"\
    "Win Conditon - Maintain control of the main factory building"\
@@ -175,7 +175,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{66780A81EF24E8B9}" {
    m_sTitle "CIV OBJ"
    m_sTextData "A side wins if all win conditions are met and no lose conditions are met. (that means someone from your side HAS to survive to win) Side objectives are for RP and clout. I'll give $20 to a winning commander other than CIV if they get their win condition and side objective on the first playthrough lmao. There can be multiple winners."\
-   "Factory owner wears a brown suit and blue hat, strikers wear random shit."\
+   "Factory owner wears a brown suit, his appearance can be seen in AAR."\
    ""\
    "CIV:"\
    "Win Conditon - Survive"\
@@ -188,7 +188,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{66780A80130B4401}" {
    m_sTitle "CIV In-Depth Brief & Lore"
    m_sTextData "2 days ago your visit to your plant took a turn for the worse. It felt off when you walked in, but who could expect what has occured, much less an optimist such as yourself? Your former employees are now quite cruel, if they had only known of your humble beginnings, perhaps they would hold a little more respect for the harder working. Now they've just resigned you to shitting in a potted plant and pissing your pants which you find ungentlemanly, but one can figure it's better than death. "\
-   "You've got big ties to Governor Novotny from climbing the social ladder, and he has sent the police to get you back. The only forseeable way out of this is to get to them. Problem is the gun that seems to be held to your head around the clock. Trying to run is a death sentence, so it can only be recommended that you do as you are told. "\
+   "You've got big ties to Governor Novotny from climbing the social ladder, and he has sent the police to get you back. The only forseeable way out of this is to get to them. Problem is the gun  held to your head seemingly around the clock. Trying to run is a death sentence, so it can only be recommended that you do as you are told. "\
    ""\
    "A couple of hours ago, you had a quite forboding thought. You'd crossed some quite thick-accented Italians a couple times over the past few years, even ended up spending the night with one of their wives which forced you to take a spontaneous month-long trip to Paris. You'd all but forgotten about their small-time dealings until recently. The death threats you get in the mail never did stop coming you figure, only your servant got better at sorting them out. However, you decide you won't try anything stupid even if they get their greasy palms on you, biding time may well be the best option."\
    "You gave up praying many winters ago, but maybe you should consider taking it up again."
@@ -202,24 +202,36 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_sFactionTwoKey "BLU"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{A99B50B1852E6B38}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_evPoPo.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{F6CA88F828E00E27}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_FAMILY_subArma.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{3A02559F5E0205A2}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_CIV_subArma.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{2779555E9C6E3158}Configs/Gearscripts/Custom/fluff/subArma/CRF_GS_HOSTAGE_subArma.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
  }
  {
   SCR_FactionManager "667365EBD1B7CA89" {
