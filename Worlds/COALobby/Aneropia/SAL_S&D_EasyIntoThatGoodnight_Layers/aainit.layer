@@ -304,10 +304,19 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "MEDIC"
        }
        SCR_CallsignInfo "{55CCB792D1218E95}" {
-        m_sCallsign "TH Pilots (UH-6)"
+        m_sCallsign "TH 1 (UH-6)"
+       }
+       SCR_CallsignInfo "{6694E1EB2AD27886}" {
+        m_sCallsign "TH 2 (UH-6)"
+       }
+       SCR_CallsignInfo "{6694E1EB2BF4BA0E}" {
+        m_sCallsign "TH 3 (UH-6)"
+       }
+       SCR_CallsignInfo "{6694E1EB28AA400E}" {
+        m_sCallsign "TH 4 (UH-6)"
        }
        SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
-        m_sCallsign "AH Pilot (AH-6)"
+        m_sCallsign "AH 1 (AH-6)"
        }
        SCR_CallsignInfo "{6694E1E3985212E3}" {
         m_sCallsign "1PLT"
