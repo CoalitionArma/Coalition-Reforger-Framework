@@ -241,6 +241,17 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Set gear for a vehicle entity based on its faction key
+	 *
+	 * Attempts to find the correct faction for the vehicle. If no faction is provided,
+	 * it searches for the closest player within 200m to determine the faction. Then,
+	 * it applies the appropriate gear loadout to the vehicle, checking if it's a supply truck.
+	 *
+	 * @param vehicle The vehicle entity to equip with gear
+	 * @param factionKey The key identifying the faction to use for gear configuration
+	 */
 	void SetVehicleGear(IEntity vehicle, string factionKey)
 	{
 		//Lets find a faction, if there is none start looking for one in the loop.
@@ -302,6 +313,19 @@ class CRF_GearscriptManager : ScriptComponent
 		
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Configures a truck’s inventory and equipment loadout
+	 *
+	 * Clears existing inventory, applies the configured loadout, and spawns weapons,
+	 * magazines, grenades, smoke, and additional faction-specific items. Handles both
+	 * supply trucks and regular vehicles.
+	 *
+	 * @param truck The truck entity to configure
+	 * @param faction The faction object used to determine loadout
+	 * @param gsContainer The gear script container holding loadout data
+	 * @param isSupply Whether the truck is a supply truck (true) or a regular vehicle (false)
+	 */
 	void SetTruckGear(IEntity truck, Faction faction, CRF_GearScriptContainer gsContainer, bool isSupply)
 	{
 		ref CRF_GearScriptConfig gearSriptConfig = LoadGearScriptConfig(gsContainer.m_rGearScript);
@@ -446,6 +470,15 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Removes all existing items from a truck’s inventory
+	 *
+	 * Iterates through the truck’s inventory storage manager and deletes all entities found.
+	 *
+	 * @param truck The truck whose inventory will be cleared
+	 * @param invManager The truck’s inventory storage manager component
+	 */
 	void ClearTruckGear(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager)
 	{
 		array<IEntity> items = {};
@@ -459,6 +492,17 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Applies a predefined loadout to a truck, including turret weapons and ammo
+	 *
+	 * Loads the correct vehicle loadout (either overridden or default), then spawns
+	 * ammunition into the truck’s storage.
+	 *
+	 * @param truck The truck entity to configure
+	 * @param invManager The truck’s inventory storage manager component
+	 * @param gsContainer The gear script container holding vehicle loadout data
+	 */
 	void ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer)
 	{
 		ref CRF_VehicleGearScriptLoadout vehLoadout;
@@ -521,6 +565,19 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Spawns magazines into a vehicle’s inventory
+	 *
+	 * Loops until the requested amount of ammunition is added, distributing across
+	 * multiple magazine types.
+	 *
+	 * @param amountToSpawn Total number of bullets to distribute
+	 * @param magazineCounts Array of magazine capacities
+	 * @param magazinesToAdd Array of magazine resource names
+	 * @param invManager Vehicle’s inventory storage manager component
+	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
+	 */
 	void SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply = false)
 	{
 		int catch = 0;
@@ -537,6 +594,17 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Spawns items (e.g., grenades, disposable launchers) into a vehicle’s inventory
+	 *
+	 * Iterates through provided items and spawns them until the requested amount is added.
+	 *
+	 * @param amountToSpawn Number of items to spawn
+	 * @param itemsToSpawn Array of item resource names
+	 * @param invManager Vehicle’s inventory storage manager component
+	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
+	 */
 	void SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply)
 	{
 		int catch = 0;
@@ -553,6 +621,16 @@ class CRF_GearscriptManager : ScriptComponent
 		}
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Determines if an item is a grenade or smoke grenade
+	 *
+	 * Inspects the item’s components to identify if it is a grenade, and whether it is smoke.
+	 *
+	 * @param item The resource name of the item to check
+	 * @param isGrenade Outputs true if the item is a grenade
+	 * @param isSmoke Outputs true if the item is a smoke grenade
+	 */
 	void IsItemGrenade(ResourceName item, out bool isGrenade = false, out bool isSmoke = false)
 	{
 		Resource itemLoaded = Resource.Load(item);
@@ -577,6 +655,15 @@ class CRF_GearscriptManager : ScriptComponent
 		return;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a weapon is disposable
+	 *
+	 * Loads the weapon prefab and inspects components to determine if it is marked as disposable.
+	 *
+	 * @param weapon The resource name of the weapon to check
+	 * @return true if the weapon is disposable, false otherwise
+	 */
 	bool IsWeaponDisposable(ResourceName weapon)
 	{
 		Resource weaponLoaded = Resource.Load(weapon);
@@ -605,7 +692,15 @@ class CRF_GearscriptManager : ScriptComponent
 		return false;
 	}
 	
-	//Gets the bullets in a magazine
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Gets the maximum ammo count of a magazine resource
+	 *
+	 * Loads the magazine prefab and extracts its MaxAmmo property from the MagazineComponent.
+	 *
+	 * @param resource The magazine resource name
+	 * @return The maximum number of bullets in the magazine, or 0 if not found
+	 */
 	int GetMagazineCount(ResourceName resource)
 	{
 		Resource magazine = Resource.Load(resource);
@@ -626,6 +721,16 @@ class CRF_GearscriptManager : ScriptComponent
 		return 0;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Retrieves a list of standard weapons by index from the gear script config
+	 *
+	 * Uses an index to map to weapon categories such as rifles, carbines, pistols, etc.
+	 *
+	 * @param index The weapon category index
+	 * @param gearSriptConfig The gear script configuration to use
+	 * @return Array of weapon class references
+	 */
 	array<ref CRF_Weapon_Class> GetWeaponsByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
 	{
 		array<ref CRF_Weapon_Class> weapons = {};
@@ -660,6 +765,16 @@ class CRF_GearscriptManager : ScriptComponent
 		return weapons;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Retrieves a specific special weapon by index
+	 *
+	 * Uses an index to fetch special weapons such as ARs, MMGs, HMGs, AT, MAT, HAT, and AA.
+	 *
+	 * @param index The weapon type index
+	 * @param gearSriptConfig The gear script configuration to use
+	 * @return A special weapon class reference
+	 */
 	CRF_Spec_Weapon_Class GetSpecWeaponByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
 	{
 		CRF_Spec_Weapon_Class weapon;
@@ -699,6 +814,15 @@ class CRF_GearscriptManager : ScriptComponent
 		return weapon;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a grenade launcher round is a high-explosive (HE) type
+	 *
+	 * Loads the grenade launcher resource and inspects its components for a collision component(Only explosives have this enabled).
+	 *
+	 * @param glToCheck Resource name of the grenade launcher round
+	 * @return true if the round is HE, false otherwise
+	 */
 	bool IsGLHE(ResourceName glToCheck)
 	{
 		Resource glLoaded = Resource.Load(glToCheck);
@@ -720,6 +844,16 @@ class CRF_GearscriptManager : ScriptComponent
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a magazine belongs to a given special weapon
+	 *
+	 * Compares magazine wells between a weapon and magazine to determine compatibility.
+	 *
+	 * @param weaponToCheck The special weapon to check against
+	 * @param magazineToCheck The magazine resource name to check
+	 * @return true if the magazine is valid for the weapon, false otherwise
+	 */
 	bool IsSpecRegularMagazine(CRF_Spec_Weapon_Class weaponToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
@@ -764,6 +898,16 @@ class CRF_GearscriptManager : ScriptComponent
 		return false;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a magazine is compatible with a set of weapons
+	 *
+	 * Compares magazine wells between a magazine and each weapon in the array.
+	 *
+	 * @param weaponsToCheck Array of weapons to check against
+	 * @param magazineToCheck The magazine resource name to check
+	 * @return true if the magazine is compatible, false otherwise
+	 */
 	bool IsRegularMagazine(array<ref CRF_Weapon_Class> weaponsToCheck, ResourceName magazineToCheck)
 	{
 		BaseMagazineWell magazineWell;
@@ -811,6 +955,20 @@ class CRF_GearscriptManager : ScriptComponent
 		return false;
 	}
 	
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Gets the number of bullets allocated to a weapon type for a vehicle
+	 *
+	 * Looks up overrides or defaults in the vehicle gear script configuration,
+	 * based on a weapon type index.
+	 *
+	 * @param vehicle The vehicle entity
+	 * @param index The weapon type index
+	 * @param vehicleGearScript The vehicle gear script configuration
+	 * @param gearContainer The gear script container holding overrides
+	 * @return The number of bullets to allocate
+	 */
 	int GetBulletCountForWeapon(IEntity vehicle, int index, CRF_VehicleGearscriptConfig vehicleGearScript, CRF_GearScriptContainer gearContainer)
 	{
 		array<ref CRF_VehicleGearscriptOverride> gearOverides = {};
