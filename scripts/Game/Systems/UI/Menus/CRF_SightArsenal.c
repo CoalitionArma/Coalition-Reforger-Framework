@@ -92,6 +92,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 		array<AttachmentSlotComponent> attachments = {};
 		charController.GetWeaponManagerComponent().GetCurrentWeapon().GetAttachments(attachments);
 		ref array<ref BaseAttachmentType> attachmentTypes = {};
+		bool magnified = m_GearScriptContainer.m_bEnableMagnifiedOptics;
 		foreach (AttachmentSlotComponent attachment: attachments)
 		{
 			attachmentTypes.Insert(attachment.GetAttachmentSlotType());
@@ -101,7 +102,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 		if (defaultAttachments.Count() > 0)
 			PopulateSightItems(attachmentTypes, defaultAttachments);
 		
-		if (m_GearScriptContainer.m_bEnableMagnifiedOptics)
+		if (magnified)
 			PopulateSightItems(attachmentTypes, m_MagnifiedSightArsenalConfig.m_aSights);
 		PopulateSightItems(attachmentTypes, m_SightArsenalConfig.m_aSights);
 	}
@@ -341,6 +342,10 @@ class CRF_SightArsenal: ChimeraMenuBase
 			if (m_aAddedSights.Contains(sight))
 				continue;
 			
+			bool isValid = IsSightValid(sight);
+			if (!isValid)
+				continue;
+			
 			m_aAddedSights.Insert(sight);
 			Resource loadedSight = Resource.Load(sight);
 			IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedSight);
@@ -360,8 +365,8 @@ class CRF_SightArsenal: ChimeraMenuBase
 								if (itemAttributes.Get(i).GetClassName().ToType().IsInherited(WeaponAttachmentAttributes) 
 								&& !itemAttributes.Get(i).GetClassName().ToType().IsInherited(SCR_WeaponAttachmentObstructionAttributes))
 								{
+
 									BaseAttachmentType type;
-									
 									itemAttributes.Get(i).Get("AttachmentType", type);
 									foreach (BaseAttachmentType attachmentType: attachmentTypes)
 									{
@@ -397,6 +402,35 @@ class CRF_SightArsenal: ChimeraMenuBase
 			    }
 			}
 		}
+	}
+	
+	bool IsSightValid(ResourceName sight)
+	{
+		Resource Sight = Resource.Load(sight);
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Sight);
+		if (!entitySource)
+			return false;
+		
+		array<IEntityComponentSource> collimeters = {};
+		array<IEntityComponentSource> magnifiers = {};
+		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+		{
+	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+			bool collimeter = componentSource.GetClassName().ToType().IsInherited(SCR_CollimatorSightsComponent);
+			bool magnified = componentSource.GetClassName().ToType().IsInherited(SCR_2DOpticsComponent);
+	        if(!collimeter && !magnified)
+	        	continue;
+			else
+			{
+				if (collimeter)
+					return true;
+
+				if (magnified)
+					return false;
+			}
+		}
+		
+		return false;
 	}
 	
 	void SelectSight(SCR_ButtonBaseComponent button)

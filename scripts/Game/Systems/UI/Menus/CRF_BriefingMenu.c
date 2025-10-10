@@ -222,7 +222,7 @@ class CRF_PreviewMenu: ChimeraMenuBase
 	void InitializePlayer()
 	{
 		GetGame().GetMenuManager().CloseMenuByPreset(ChimeraMenuPreset.CRF_PreviewMenu);
-		CRF_RplToAuthorityManager.GetInstance().RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
+
 	}
 	
 	/**
