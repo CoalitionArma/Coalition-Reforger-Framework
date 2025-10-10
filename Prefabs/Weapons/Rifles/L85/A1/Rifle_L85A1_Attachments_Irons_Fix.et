@@ -1,0 +1,23 @@
+GenericEntity : "{EAD0C688A22AC7DC}Prefabs/Weapons/Rifles/L85/A1/Rifle_L85A1_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{5D9F3AF79EC9FBD4}" {
+     AttachmentSlot InventoryStorageSlot optics {
+      Prefab "{1A65771A9E7D37D7}Prefabs/Weapons/Attachments/Optics/Optic_L85_Irons/Optic_L85_Ironsight.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     MagazineTemplate "{E882742A33858D5A}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_RadwayGreen_Ball.et"
+    }
+    WeaponAnimationComponent "{5D9F3AF79EC9FBD7}" {
+     AnimGraph "{DCAAB1AE1C3DDA94}Assets/Weapons/Rifles/workspaces/l86.agr"
+     AnimInjection AnimationAttachmentInfo "{5D9F3AF79EC9FBD6}" {
+      AnimGraph "{DCAAB1AE1C3DDA94}Assets/Weapons/Rifles/workspaces/l86.agr"
+     }
+    }
+   }
+  }
+ }
+}

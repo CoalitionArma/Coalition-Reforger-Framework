@@ -18,23 +18,29 @@ modded class SCR_GroupsManagerComponent
 		if (!playerController)
 			return;
 		
+		int SRIndex = 0;
+		int LRIndex = 0;
+		array<IEntity> radiosDone = {};
 		if (playerController.m_aRadioSettings.Count() > 0)
 		{
 			foreach (IEntity radio: playerController.m_aRadios)
 			{
 				CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(radio.FindComponent(CVON_RadioComponent));
-				CVON_RadioSettingObject radioSetting = playerController.m_aRadioSettings.Get(playerController.m_aRadios.Find(radio));
-				
+				int index = playerController.m_aRadios.Find(radio);
+				if (playerController.m_aRadioSettings.Count() <= index)
+					break;
+				CVON_RadioSettingObject radioSetting = playerController.m_aRadioSettings.Get(index);
 				if (radioComp.m_aChannels.Contains(radioSetting.m_sFreq))
-						radioComp.UpdateChannelServer(radioComp.m_aChannels.Find(radioSetting.m_sFreq) + 1);
+				{
+					radioComp.UpdateChannelServer(radioComp.m_aChannels.Find(radioSetting.m_sFreq) + 1);
+					radioComp.UpdateFrequncyServer(radioSetting.m_sFreq, -1, false);
+					radiosDone.Insert(radio);
+					if (radioComp.m_eRadioType == 0)
+						SRIndex++;
 					else
-						radioComp.UpdateChannelServer(radioComp.m_aChannels.Count() + 1);
-				
-				radioComp.UpdateFrequncyServer(radioSetting.m_sFreq);
-				playerController.SetVolumeFromServer(radioSetting.m_iVolume, playerController.m_aRadios.Find(radio));
-				playerController.SetStereoFromServer(radioSetting.m_Stereo, playerController.m_aRadios.Find(radio));
+						LRIndex++;
+				}			
 			}
-			return;
 		}
 		
 		SCR_FactionManager factionMan = SCR_FactionManager.Cast(GetGame().GetFactionManager());
@@ -95,10 +101,10 @@ modded class SCR_GroupsManagerComponent
 			freqContainer.m_aLRFrequencies = {};
 			freqContainer.m_aLRFrequencies.Insert(factionMan.GetFactionActiveChannelLR(playerFaction.GetFactionKey()).Get(0));
 		}
-		int SRIndex = 0;
-		int LRIndex = 0;
 		for (int i = 0; i < playerController.m_aRadios.Count(); i++)
 		{
+			if (radiosDone.Contains(playerController.m_aRadios.Get(i)))
+				continue;
 			bool m_bFrequencyFound = false;
 			CVON_RadioComponent radioComp = CVON_RadioComponent.Cast(playerController.m_aRadios.Get(i).FindComponent(CVON_RadioComponent));
 			switch (radioComp.m_eRadioType)

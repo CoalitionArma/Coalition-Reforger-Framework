@@ -11,10 +11,13 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	CameraBase m_OldCamera;
 	CRF_GearscriptManager m_GearscriptManager;
 	ref CRF_GearScriptConfig m_GearScriptConfig;
+	CRF_SafestartManager m_SafeStart;
 	
 	Widget m_wRoot;
 	VerticalLayoutWidget m_Categories;
 	VerticalLayoutWidget m_Items;
+	
+	float m_fArsenalTimeout = 0;
 	
 	override void OnMenuOpen()
 	{
@@ -24,12 +27,33 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_Categories = VerticalLayoutWidget.Cast(m_wRoot.FindWidget("CategoryButtons"));
 		m_Items = VerticalLayoutWidget.Cast(m_wRoot.FindAnyWidget("ItemButtons"));
+		m_SafeStart = CRF_SafestartManager.GetInstance();
 		
 		ResourceName gearResource = m_GearscriptManager.GetGearScriptResource(SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey());
 		m_GearScriptConfig = CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(BaseContainerTools.LoadContainer(gearResource).GetResource().ToBaseContainer()));
+		
+		Faction playerFaction = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
+		if (!playerFaction)
+			return;
+		
+		CRF_GearScriptContainer container = m_GearscriptManager.GetGearScriptSettings(playerFaction.GetFactionKey());
+		if (!container)
+			return;
+		
+		if (container.m_bEnableMiniWeaponArsenal)
+			PopulateWeaponCategories();
 		PopulateCategories();
 		
+		
 		SelectCategory(SCR_ButtonBaseComponent.Cast(m_Categories.GetChildren().FindHandler(SCR_ButtonBaseComponent)));
+	}
+	
+	override void OnMenuUpdate(float tDelta)
+	{
+		if (!m_SafeStart.GetSafestartStatus())
+			Close();
+		if (m_fArsenalTimeout > 0)
+			m_fArsenalTimeout -= tDelta;
 	}
 	
 	void PopulateCategories()
@@ -53,12 +77,153 @@ class CRF_MiniArsenal: ChimeraMenuBase
 		}
 	}
 	
+	void PopulateWeaponCategories()
+	{
+		CRF_EGearRole role = CRF_RoleHelper.ResourceToRole(SCR_PlayerController.GetLocalControlledEntity().GetPrefabData().GetPrefabName());
+		CRF_RoleConfig rolesConfig = CRF_GamemodeManager.RolesConfig().FindRoleConfig(role);
+		foreach (CRF_EGearscriptWeapons weaponType : rolesConfig.m_aWeapons)
+		{
+			switch (weaponType)
+			{
+				case CRF_EGearscriptWeapons.RIFLE:
+					if(m_GearScriptConfig.m_FactionWeapons.m_Rifle && !m_GearScriptConfig.m_FactionWeapons.m_Rifle.IsEmpty())
+					{
+						Widget category = GetGame().GetWorkspace().CreateWidgets("{BC371ACC7C58B63E}UI/layouts/Menus/Arsenal/MiniArsenalCategory.layout", m_Categories);
+						ImageWidget categoryIcon = ImageWidget.Cast(category.FindWidget("CategoryIcon"));
+						categoryIcon.LoadImageTexture(0, "{71648F15B3984B87}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_AssaultRifles.edds");
+						categoryIcon.SetImage(0);
+						CRF_MiniArsenalCategoryButton button = CRF_MiniArsenalCategoryButton.Cast(category.FindHandler(CRF_MiniArsenalCategoryButton));
+						button.m_iCategoryIndex = 18;
+						button.m_OnClicked.Insert(SelectCategory);
+					
+						foreach (CRF_Weapon_Class weapons: m_GearScriptConfig.m_FactionWeapons.m_Rifle)
+						{
+							button.m_Weapons.Insert(weapons);
+						}
+					}
+					break;
+				
+				case CRF_EGearscriptWeapons.RIFLEUGL:
+					if(m_GearScriptConfig.m_FactionWeapons.m_RifleUGL && !m_GearScriptConfig.m_FactionWeapons.m_RifleUGL.IsEmpty())
+					{
+						Widget category = GetGame().GetWorkspace().CreateWidgets("{BC371ACC7C58B63E}UI/layouts/Menus/Arsenal/MiniArsenalCategory.layout", m_Categories);
+						ImageWidget categoryIcon = ImageWidget.Cast(category.FindWidget("CategoryIcon"));
+						categoryIcon.LoadImageTexture(0, "{71648F15B3984B87}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_AssaultRifles.edds");
+						categoryIcon.SetImage(0);
+						CRF_MiniArsenalCategoryButton button = CRF_MiniArsenalCategoryButton.Cast(category.FindHandler(CRF_MiniArsenalCategoryButton));
+						button.m_iCategoryIndex = 19;
+						button.m_OnClicked.Insert(SelectCategory);
+					
+						foreach (CRF_Weapon_Class weapons: m_GearScriptConfig.m_FactionWeapons.m_RifleUGL)
+						{
+							button.m_Weapons.Insert(weapons);
+						}
+					};
+					break;
+				
+				case CRF_EGearscriptWeapons.CARBINE:
+					if(m_GearScriptConfig.m_FactionWeapons.m_Carbine && !m_GearScriptConfig.m_FactionWeapons.m_Carbine.IsEmpty())
+					{
+						Widget category = GetGame().GetWorkspace().CreateWidgets("{BC371ACC7C58B63E}UI/layouts/Menus/Arsenal/MiniArsenalCategory.layout", m_Categories);
+						ImageWidget categoryIcon = ImageWidget.Cast(category.FindWidget("CategoryIcon"));
+						categoryIcon.LoadImageTexture(0, "{71648F15B3984B87}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_AssaultRifles.edds");
+						categoryIcon.SetImage(0);
+						CRF_MiniArsenalCategoryButton button = CRF_MiniArsenalCategoryButton.Cast(category.FindHandler(CRF_MiniArsenalCategoryButton));
+						button.m_iCategoryIndex = 20;
+						button.m_OnClicked.Insert(SelectCategory);
+					
+						foreach (CRF_Weapon_Class weapons: m_GearScriptConfig.m_FactionWeapons.m_Carbine)
+						{
+							button.m_Weapons.Insert(weapons);
+						}
+					};
+					break;
+
+				case CRF_EGearscriptWeapons.PISTOL:
+					if(m_GearScriptConfig.m_FactionWeapons.m_Pistol && !m_GearScriptConfig.m_FactionWeapons.m_Pistol.IsEmpty())
+					{
+						Widget category = GetGame().GetWorkspace().CreateWidgets("{BC371ACC7C58B63E}UI/layouts/Menus/Arsenal/MiniArsenalCategory.layout", m_Categories);
+						ImageWidget categoryIcon = ImageWidget.Cast(category.FindWidget("CategoryIcon"));
+						categoryIcon.LoadImageTexture(0, "{2EEBBBCA36DD775F}UI/Textures/Editor/Attributes/Arsenal/Attribute_Arsenal_Pistols.edds");
+						categoryIcon.SetImage(0);
+						CRF_MiniArsenalCategoryButton button = CRF_MiniArsenalCategoryButton.Cast(category.FindHandler(CRF_MiniArsenalCategoryButton));
+						button.m_iCategoryIndex = 22;
+						button.m_OnClicked.Insert(SelectCategory);
+						button.m_bIsPistol = true;
+					
+						foreach (CRF_Weapon_Class weapons: m_GearScriptConfig.m_FactionWeapons.m_Pistol)
+						{
+							button.m_Weapons.Insert(weapons);
+						}
+					};
+					break;
+			}
+		}
+	}
+	
 	void SelectCategory(SCR_ButtonBaseComponent button)
 	{
 		while (m_Items.GetChildren())
 			delete m_Items.GetChildren();
 		
 		CRF_MiniArsenalCategoryButton miniArsnealCategory = CRF_MiniArsenalCategoryButton.Cast(button);
+		if (miniArsnealCategory.m_iCategoryIndex >= 18)
+		{
+			ItemPreviewManagerEntity manager = ChimeraWorld.CastFrom(GetGame().GetWorld()).GetItemPreviewManager();
+			if (!manager)
+				return;
+			
+			foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
+			{
+				Widget item = GetGame().GetWorkspace().CreateWidgets("{2B983EDBF688480D}UI/layouts/Menus/Arsenal/MiniArsenalItem.layout", m_Items);
+				ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
+				manager.SetPreviewItemFromPrefab(itemPreview, weapon.m_Weapon);
+				
+				Resource loadedweapon = Resource.Load(weapon.m_Weapon);
+				IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
+				if (entitySource)
+				{
+				    for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+				    {
+				        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+				        if(componentSource.GetClassName().ToType().IsInherited(InventoryItemComponent))
+				        {
+				            BaseContainer attributesContainer = componentSource.GetObject("Attributes");
+				            if (attributesContainer)
+				            {
+				                BaseContainer itemDisplayNameContainer = attributesContainer.GetObject("ItemDisplayName");
+				                if (itemDisplayNameContainer)
+				                {
+				                    string name;
+				                    itemDisplayNameContainer.Get("Name", name);
+				
+				                    TextWidget.Cast(item.FindWidget("ArsenalItemText")).SetText(name);
+				                    break;
+				                }
+				            }
+				        }
+				    }
+				}
+				CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
+				itemButton.m_sResource = weapon.m_Weapon;
+				itemButton.m_iSlotId = miniArsnealCategory.m_iCategoryIndex;
+				itemButton.m_bIsPistol = miniArsnealCategory.m_bIsPistol;
+				
+				foreach (ResourceName attachment: weapon.m_Attachments)
+				{
+					itemButton.m_aAttachments.Insert(attachment);
+				}
+				
+				foreach (CRF_Magazine_Class ammo: weapon.m_MagazineArray)
+				{
+					itemButton.m_aMagazines.Insert(ammo.m_Magazine);
+					itemButton.m_aMagazineCounts.Insert(ammo.m_MagazineCount);
+				}
+				
+				itemButton.m_OnClicked.Insert(SelectWeapon);
+			}
+			return;
+		}
 		array<string> m_addedItems = {};
 		foreach (CRF_Clothing clothing: m_GearScriptConfig.m_DefaultFactionGear.m_DefaultClothing)
 		{
@@ -174,8 +339,29 @@ class CRF_MiniArsenal: ChimeraMenuBase
 	
 	void SelectItem(SCR_ButtonBaseComponent button)
 	{
+		if (m_fArsenalTimeout > 0)
+		{
+			SCR_NotificationsComponent.GetInstance().SendLocal(ENotification.ACTION_ON_COOLDOWN, m_fArsenalTimeout * 100);
+			return;
+		}	
+		m_fArsenalTimeout = 1;
+		
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(button);
 		CRF_RplToAuthorityManager.GetInstance().MiniArsenalRequestNewItem(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_iSlotId);
+	}
+	
+	void SelectWeapon(SCR_ButtonBaseComponent button)
+	{
+		if (m_fArsenalTimeout > 0)
+		{
+			SCR_NotificationsComponent.GetInstance().SendLocal(ENotification.ACTION_ON_COOLDOWN, m_fArsenalTimeout * 100);
+			return;
+		}
+		m_fArsenalTimeout = 1;
+		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(button);
+		CRF_RplToAuthorityManager.GetInstance().MiniArsenalRequestNewWeapon(SCR_PlayerController.GetLocalPlayerId(), itemButton.m_sResource, itemButton.m_aAttachments,
+		itemButton.m_aMagazines, itemButton.m_aMagazineCounts, itemButton.m_bIsPistol);
+	
 	}
 	
 	override void OnMenuClose()
