@@ -77,6 +77,8 @@ class CRF_AdminMenu : ChimeraMenuBase
 	// Gear Script List
 	protected ref CRF_GearScriptConfigStruct m_gearsetlist;
 	
+	protected bool m_bGameModeMenuOpen = false;
+	
 	//-----------------------------------------------------------------------------
 	// General UI Methods
 	//-----------------------------------------------------------------------------
@@ -235,9 +237,6 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		if (m_ChatPanel)
 			m_ChatPanel.SetAlwaysVisible(false);
-		
-		// Remove Gamemode updater
-		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
 	}
 
 	/**
@@ -354,9 +353,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		m_allPlayers.Clear();
 		m_factions.Clear();
 		m_selectableFactions.Clear();
-		
-		// Remove Gamemode updater
-		GetGame().GetCallqueue().Remove(GamemodeMenuUpdate);
+		m_bGameModeMenuOpen = false;
 	}
 
 	/**
@@ -429,12 +426,21 @@ class CRF_AdminMenu : ChimeraMenuBase
 	/**
 	 * Update chat while menu is active
 	 */
+	float m_fUpdateBuffer = 0;
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
 
 		if (m_ChatPanel)
 			m_ChatPanel.OnUpdateChat(tDelta);
+		
+		if (m_fUpdateBuffer >= 1)
+		{
+			if (m_bGameModeMenuOpen)
+				GamemodeMenuUpdate();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += tDelta;
 	}
 	
 	/**
@@ -1604,6 +1610,7 @@ class CRF_AdminMenu : ChimeraMenuBase
 		if (!m_wMenuContent)
 			return;
 		
+		m_bGameModeMenuOpen = true;
 		// Load Menu Sections
 		Widget gamerTimer = m_wMenuContent.FindAnyWidget("GameTimer");
 		Widget ticketCounters = m_wMenuContent.FindAnyWidget("Tickets");
@@ -1684,8 +1691,44 @@ class CRF_AdminMenu : ChimeraMenuBase
 		
 		// Update menu data
 		GamemodeMenuUpdate();
-
-		GetGame().GetCallqueue().CallLater(GamemodeMenuUpdate, 1000, true);
+		
+		//Toggle Respawn Wave Button
+		SCR_ButtonTextComponent toggleWaveRespawn = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("RespawnWaveButton").FindHandler(SCR_ButtonTextComponent));
+		toggleWaveRespawn.m_OnClicked.Insert(ToggleWaveRespawn);
+		
+		//Toggle Respawn Enabled Button
+		SCR_ButtonTextComponent toggleRespawn = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("EnableRespawnButton").FindHandler(SCR_ButtonTextComponent));
+		toggleRespawn.m_OnClicked.Insert(ToggleRespawn);
+		
+		//Setting Respawn Time Button
+		EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget("TicketsInput")).SetText(CRF_RespawnManager.GetInstance().m_iCurrentTimeToRespawn.ToString());
+		SCR_ButtonTextComponent setRespawnTime = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("SetRespawnTimeButton").FindHandler(SCR_ButtonTextComponent));
+		setRespawnTime.m_OnClicked.Insert(SetRespawnTime);
+		
+		//Setting AI Enabled Button
+		SCR_ButtonTextComponent toggleAI = SCR_ButtonTextComponent.Cast(m_wMenuContent.FindAnyWidget("EnableAIButton").FindHandler(SCR_ButtonTextComponent));
+		toggleAI.m_OnClicked.Insert(ToggleAI);
+	}
+	
+	void ToggleAI()
+	{
+		CRF_RplToAuthorityManager.GetInstance().ToggleEnableAIInGameState();
+	}
+	
+	void ToggleWaveRespawn()
+	{
+		CRF_RplToAuthorityManager.GetInstance().ToggleWaveRespawn();
+	}
+	
+	void ToggleRespawn()
+	{
+		CRF_RplToAuthorityManager.GetInstance().ToggleRespawn();
+	}
+	
+	void SetRespawnTime()
+	{
+		int respawnTime = EditBoxWidget.Cast(m_wMenuContent.FindAnyWidget("TicketsInput")).GetText().ToInt();
+		CRF_RplToAuthorityManager.GetInstance().SetRespawnTime(respawnTime);
 	}
 	
 	void LoadGearConfigList()
@@ -1833,10 +1876,10 @@ class CRF_AdminMenu : ChimeraMenuBase
 			string resourceName;
 			switch (faction)
 			{
-				case "BLUFOR" : resourceName = gm.m_BLUFORGearScriptSettings.m_rGearScript; break;
-				case "OPFOR" : resourceName = gm.m_OPFORGearScriptSettings.m_rGearScript; break;
-				case "INDFOR" : resourceName = gm.m_INDFORGearScriptSettings.m_rGearScript; break;
-				case "CIV" : resourceName = gm.m_CIVILIANGearScriptSettings.m_rGearScript; break;
+				case "BLUFOR" : resourceName = gm.m_rBLUFORCurrentGearScript; break;
+				case "OPFOR" : resourceName = gm.m_rOPFORCurrentGearScript; break;
+				case "INDFOR" : resourceName = gm.m_rINDFORCurrentGearScript; break;
+				case "CIV" : resourceName = gm.m_rCIVILIANCurrentGearScript; break;
 			}
 			
 			string gearSetName =  resourceName.Substring(resourceName.LastIndexOf("/") + 1, resourceName.LastIndexOf(".") - resourceName.LastIndexOf("/") - 1);
@@ -1860,7 +1903,48 @@ class CRF_AdminMenu : ChimeraMenuBase
 			indforTicketText.SetText(respawnManager.GetFactionTickets("INDFOR").ToString());
 			civTicketText.SetText(respawnManager.GetFactionTickets("CIV").ToString());
 		}
-
+		
+		Widget respawnWaveButton = m_wMenuContent.FindAnyWidget("RespawnWaveButton");
+		TextWidget respawnWaveButtonText = TextWidget.Cast(respawnWaveButton.FindWidget("ActionButtonText"));
+		bool respawnWave = CRF_RespawnManager.GetInstance().m_bCurrentWaveRespawn;
+		if (respawnWave)
+		{
+			respawnWaveButtonText.SetText("Respawn Wave Enabled");
+			respawnWaveButtonText.SetColorInt(Color.GREEN);
+		}
+		else
+		{
+			respawnWaveButtonText.SetText("Respawn Wave Disabled");
+			respawnWaveButtonText.SetColorInt(Color.RED);
+		}
+		
+		bool m_bRespawnEnabled = CRF_RespawnManager.GetInstance().m_bCurrentRespawnEnabled;
+		Widget respawnEnabledButton = m_wMenuContent.FindAnyWidget("EnableRespawnButton");
+		TextWidget respawnEnabledText = TextWidget.Cast(respawnEnabledButton.FindWidget("ActionButtonText"));
+		if (m_bRespawnEnabled)
+		{
+			respawnEnabledText.SetText("Respawns Enabled");
+			respawnEnabledText.SetColorInt(Color.GREEN);
+		}
+		else
+		{
+			respawnEnabledText.SetText("Respawns Disabled");
+			respawnEnabledText.SetColorInt(Color.RED);
+		}
+		
+		bool m_bAIEnabled = CRF_Gamemode.GetInstance().m_bCurrentEnableAIInGameState;
+		Widget AIEnabledButton = m_wMenuContent.FindAnyWidget("EnableAIButton");
+		TextWidget AIEnabledButtonText = TextWidget.Cast(AIEnabledButton.FindWidget("ActionButtonText"));
+		if (m_bAIEnabled)
+		{
+			AIEnabledButtonText.SetText("AI Enabled");
+			AIEnabledButtonText.SetColorInt(Color.GREEN);
+		}
+		else
+		{
+			AIEnabledButtonText.SetText("AI Disabled");
+			AIEnabledButtonText.SetColorInt(Color.RED);
+		}
 	}
 	
 	//-----------------------------------------------------------------------------

@@ -1369,5 +1369,219 @@ FrameWidgetClass {
     }
    }
   }
+  FrameWidgetClass "{66909C54719148EC}" {
+   Name "Respawns"
+   Slot FrameWidgetSlot "{659CDD578CE45868}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY -60.464
+    OffsetTop -60.464
+    SizeX 361.827
+    OffsetRight 430.173
+    SizeY 185.209
+    OffsetBottom -124.744
+   }
+   {
+    EditBoxWidgetClass "{66909C55F4CDE072}" {
+     Name "TicketsInput"
+     Slot FrameWidgetSlot "{66909C55F4CDE05D}" {
+      PositionX 12.867
+      OffsetLeft 12.867
+      PositionY 121.731
+      OffsetTop 121.731
+      SizeX 52.821
+      OffsetRight -65.688
+      SizeY 30
+      OffsetBottom -151.731
+     }
+     text "50"
+    }
+    TextWidgetClass "{66909C5471914713}" {
+     Name "RespawnTitle"
+     Slot FrameWidgetSlot "{659CDD570CAD5675}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 80
+      OffsetRight -80
+      SizeY 32
+      OffsetBottom -32
+     }
+     Clipping False
+     Text "Respawns"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+    ButtonWidgetClass "{66909C55A2E860CF}" {
+     Name "RespawnWaveButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      PositionX 12.172
+      OffsetLeft 12.172
+      PositionY 80.115
+      OffsetTop 80.115
+      SizeX 173.861
+      OffsetRight -186.032
+      SizeY 29.999
+      OffsetBottom -110.114
+     }
+     "Z Order" 5
+     Color 0.013 0.0152 0.0176 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{66909C55A2E860C0}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text "Enable Respawn Wave"
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+    ButtonWidgetClass "{66909C55ED4B9ECC}" {
+     Name "SetRespawnTimeButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      PositionX 68.818
+      OffsetLeft 68.818
+      PositionY 121.78
+      OffsetTop 121.78
+      SizeX 117.01
+      OffsetRight -185.828
+      SizeY 29.999
+      OffsetBottom -151.779
+     }
+     "Z Order" 5
+     Color 0.013 0.0152 0.0176 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{66909C55ED4B9ECD}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text "Set Respawn Time"
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+    ButtonWidgetClass "{66909CB2B26095DD}" {
+     Name "EnableRespawnButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      PositionX 12.172
+      OffsetLeft 12.172
+      PositionY 37.937
+      OffsetTop 37.937
+      SizeX 173.86
+      OffsetRight -186.032
+      SizeY 29.999
+      OffsetBottom -67.936
+     }
+     "Z Order" 5
+     Color 0.013 0.0152 0.0176 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{66909CB2B26095DE}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text "Enable Respawns"
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+   }
+  }
+  FrameWidgetClass "{66909C8EE843E3E6}" {
+   Name "Respawns0"
+   Slot FrameWidgetSlot "{659CDD578CE45868}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -792
+    OffsetLeft -792
+    PositionY 131.129
+    OffsetTop 131.129
+    SizeX 361.827
+    OffsetRight 430.173
+    SizeY 185.208
+    OffsetBottom -316.337
+   }
+   {
+    TextWidgetClass "{66909C8EE843E3D9}" {
+     Name "GameModeSettingText"
+     Slot FrameWidgetSlot "{659CDD570CAD5675}" {
+      PositionX 0
+      OffsetLeft 0
+      PositionY 0
+      OffsetTop 0
+      SizeX 80
+      OffsetRight -80
+      SizeY 32
+      OffsetBottom -32
+     }
+     Clipping False
+     Text "Gamemode"
+     "Font Size" 20
+     "Min Font Size" 10
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{629B0EA7D0E4BF47}" {
+     }
+     Offset 0 0
+    }
+    ButtonWidgetClass "{66909C8EE8425F03}" {
+     Name "EnableAIButton"
+     Slot FrameWidgetSlot "{62992E477A603216}" {
+      PositionX 12.172
+      OffsetLeft 12.172
+      PositionY 37.937
+      OffsetTop 37.937
+      SizeX 173.86
+      OffsetRight -186.032
+      SizeY 29.999
+      OffsetBottom -67.936
+     }
+     "Z Order" 5
+     Color 0.013 0.0152 0.0176 1
+     components {
+      SCR_ButtonTextComponent "{62993E178E05DA3C}" {
+       m_bCanBeToggled 1
+       m_sTextWidgetName ""
+      }
+     }
+     {
+      TextWidgetClass "{66909C8EE8425F00}" {
+       Name "ActionButtonText"
+       Slot ButtonWidgetSlot "{62992E44F11398F5}" {
+       }
+       Text "Enable AI"
+       "Font Size" 15
+       "Min Font Size" 15
+      }
+     }
+    }
+   }
+  }
  }
 }

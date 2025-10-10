@@ -18,6 +18,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
+	protected SCR_ButtonComponent m_wBulletPathButton;            // Button component for Toggling bullet paths
 	
 	// Game-related components
 	protected CRF_Gamemode m_Gamemode;                       // Reference to the gamemode instance
@@ -144,10 +145,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		UpdateSlots();
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
 		
-		// Update player icons and spectator UI
-		//UpdatePlayerIcons();
-		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
-		
 		// Get game system references
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		
@@ -157,6 +154,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+		
+		m_wRoot.FindAnyWidget("ToggleBulletText").SetColor(Color.FromInt(Color.RED));
 	}
 	
 	/**
@@ -275,6 +274,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 * Called every frame to update the menu
 	 * @param tDelta - Time since last frame
 	 */
+	float m_fUpdateBuffer = 0;
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
@@ -317,6 +317,13 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		sender.SetKillFeedTypeDeadLocal();
 		
 		UpdateTimer();
+		
+		if (m_fUpdateBuffer >= 1)
+		{
+			UpdatePlayerIcons();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += tDelta;
 	}
 	
 	//Used to update tickets
@@ -750,7 +757,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		float leftGameInfoX = FrameSlot.GetPosX(m_wFrameGameInfo);
 		float leftGameInfoY = FrameSlot.GetPosY(m_wFrameGameInfo);
 		
-		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 150)
+		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 200)
 		{
 			// Expand slots panel when cursor is over it
 			leftGameInfoX += tDelta * 2400.0;
@@ -1374,7 +1381,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Call parent class cleanup
 		super.OnMenuClose();
 		
-		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
+		SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled = false;
 		
 		// Unregister spectator camera frame event
 		UnregisterFrameEvent();

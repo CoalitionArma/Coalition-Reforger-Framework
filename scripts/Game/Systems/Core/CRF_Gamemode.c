@@ -51,6 +51,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
 	
+	[RplProp()] bool m_bCurrentEnableAIInGameState = EnableAIInGameState;
+	
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
 	bool m_bDisableChat;
 
@@ -82,15 +84,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
+	[RplProp()] ResourceName m_rBLUFORCurrentGearScript = m_BLUFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
+	[RplProp()] ResourceName m_rOPFORCurrentGearScript = m_OPFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
+	[RplProp()] ResourceName m_rINDFORCurrentGearScript = m_INDFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
+	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
 
 	// Respawn Settings
 	//------------------------------------------------------------------------------------
@@ -130,6 +136,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
+	
+	protected static CRF_Gamemode m_sInstance;
 
 	//===================================================================================
 	// STATIC METHODS
@@ -139,13 +147,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 * Returns the singleton instance of the CRF_Gamemode
 	 * @return CRF_Gamemode instance or null if not available
 	 */
+	
+	void CRF_Gamemode(IEntitySource src, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	static CRF_Gamemode GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_Gamemode.Cast(gameMode);
+		return m_sInstance;
 	}
 
 	//===================================================================================
@@ -367,7 +377,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
 		{		
 			// Schedule initialization with a delay to ensure player controller is fully set up
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+			vector spawnVector[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
+			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, spawnVector);
 		}
 		// Initialize player if not in GAME state
 		else if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
@@ -514,7 +525,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			factionKey = faction.GetFactionKey();
 
 		// Handle respawn if enabled and tickets available
-		if (m_bRespawnEnabled && 
+		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
@@ -614,6 +625,24 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Restore the player's original alive/dead status
 		// This ensures the AAR display shows their actual mission-end status
 		m_SlottingManager.UpdateSlotDeathState(slotId, originalDeadState);
+	}
+	
+	void UpdateGearscriptResource(string factionKey, string resource)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR" : m_rBLUFORCurrentGearScript = resource; break;
+			case "OPFOR" : m_rOPFORCurrentGearScript = resource; break;
+			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
+			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
+		}
+		Replication.BumpMe();
+	}
+	
+	void ToggleEnableAIInGameState()
+	{
+		m_bCurrentEnableAIInGameState = !m_bCurrentEnableAIInGameState;
+		Replication.BumpMe();
 	}
 }
 

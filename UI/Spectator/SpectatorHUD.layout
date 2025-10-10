@@ -438,6 +438,12 @@ FrameWidgetClass {
      }
      "Is Visible" 0
      {
+      ImageWidgetClass "{56527D6A507AC116}" {
+       Prefab "{56527D6A507AC116}"
+       Name "GLFadeRight"
+       Slot FrameWidgetSlot "{6675339CEDE787F6}" {
+       }
+      }
       ImageWidgetClass "{647D656FBD995174}" {
        Name "BG"
        Slot FrameWidgetSlot "{647D656FBD99516A}" {
@@ -1047,8 +1053,8 @@ FrameWidgetClass {
     OffsetTop 803.7
     SizeX 170
     OffsetRight -20
-    SizeY 150
-    OffsetBottom -953.7
+    SizeY 200
+    OffsetBottom -1003.7
    }
    {
     VerticalLayoutWidgetClass "{6674EDC46FDF30FE}" {
@@ -1243,11 +1249,11 @@ FrameWidgetClass {
       PositionX 153.057
       OffsetLeft 103
       PositionY 160
-      OffsetTop 30
+      OffsetTop 55
       SizeX -121.847
       OffsetRight -31.211
       SizeY -320
-      OffsetBottom 30
+      OffsetBottom 55
      }
      Color 0.133 0.133 0.133 0.353
      Texture "{123C22FEC78BBCF7}UI/data/tab.edds"
@@ -1262,11 +1268,11 @@ FrameWidgetClass {
       PositionX 185.6
       OffsetLeft 136
       PositionY 206.409
-      OffsetTop 57
+      OffsetTop 82
       SizeX -169.788
       OffsetRight -15.812
       SizeY -413.809
-      OffsetBottom 57
+      OffsetBottom 82
      }
      Color 1 1 1 0.353
      Rotation 270

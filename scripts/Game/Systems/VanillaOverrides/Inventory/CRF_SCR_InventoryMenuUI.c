@@ -1,5 +1,8 @@
 modded class SCR_InventoryMenuUI
 {
+	CRF_GearscriptManager m_GearscriptManager;
+	CRF_SafestartManager m_SafeStartManager;
+
 	override void OnItemAddedListener( IEntity item, notnull BaseInventoryStorageComponent storage )
 	{
 		super.OnItemAddedListener(item, storage);
@@ -21,5 +24,33 @@ modded class SCR_InventoryMenuUI
 			rplManager.LogAdminAction(name + "(" + slotData.GetSlotName() + ")" + " took a(n) " + string.Format(itemUiInfo.GetName()) + " from an arsenal", -1, false);
 		}
 		
+	}
+	
+	override void OnMenuOpen()
+	{
+		super.OnMenuOpen();
+		SCR_ButtonComponent.Cast(GetRootWidget().FindWidget("MiniArsenal").FindHandler(SCR_ButtonComponent)).m_OnClicked.Insert(OpenMiniArsenal);
+		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
+		m_SafeStartManager = CRF_SafestartManager.GetInstance();
+		
+		if (!m_GearscriptManager)
+			return;
+		
+		Faction playerFaction = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId());
+		if (!playerFaction)
+			return;
+		
+		CRF_GearScriptContainer container = m_GearscriptManager.GetGearScriptSettings(playerFaction.GetFactionKey());
+		if (!container)
+			return;
+		
+		if (!container.m_bEnableMiniArsenal || !m_SafeStartManager.GetSafestartStatus())
+			GetRootWidget().FindWidget("MiniArsenal").SetVisible(false);
+		
+	}
+	
+	void OpenMiniArsenal()
+	{
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_MiniArsenal);
 	}
 }
