@@ -1,0 +1,30 @@
+GenericEntity : "{84A36EE34ADF0944}Prefabs/Weapons/Rifles/XM7/Rifle_XM7_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222CB07CFF6712A}" {
+     Name "#WCS-Weapon_XM7_Name - #WCS-Camo_FDE"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{65E2E3F3AC909464}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot BayonetSlot {
+      Prefab ""
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{65E2E3F3AC900356}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{1217C6C1DD7FB658}Prefabs/Weapons/Attachments/Muzzle/68x51/Suppressor_XM7.et"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
