@@ -92,6 +92,7 @@ class CRF_SightArsenal: ChimeraMenuBase
 		array<AttachmentSlotComponent> attachments = {};
 		charController.GetWeaponManagerComponent().GetCurrentWeapon().GetAttachments(attachments);
 		ref array<ref BaseAttachmentType> attachmentTypes = {};
+		bool magnified = m_GearScriptContainer.m_bEnableMagnifiedOptics;
 		foreach (AttachmentSlotComponent attachment: attachments)
 		{
 			attachmentTypes.Insert(attachment.GetAttachmentSlotType());
@@ -99,11 +100,11 @@ class CRF_SightArsenal: ChimeraMenuBase
 		
 		array<ResourceName> defaultAttachments = GetDefaultAttachments();
 		if (defaultAttachments.Count() > 0)
-			PopulateSightItems(attachmentTypes, defaultAttachments);
+			PopulateSightItems(attachmentTypes, defaultAttachments, magnified);
 		
-		if (m_GearScriptContainer.m_bEnableMagnifiedOptics)
-			PopulateSightItems(attachmentTypes, m_MagnifiedSightArsenalConfig.m_aSights);
-		PopulateSightItems(attachmentTypes, m_SightArsenalConfig.m_aSights);
+		if (magnified)
+			PopulateSightItems(attachmentTypes, m_MagnifiedSightArsenalConfig.m_aSights, magnified);
+		PopulateSightItems(attachmentTypes, m_SightArsenalConfig.m_aSights, magnified);
 	}
 	
 	//Gets all the default attachments on the prefab itself and assigned in the GS.
@@ -334,11 +335,15 @@ class CRF_SightArsenal: ChimeraMenuBase
 	
 	
 	//Used to populate the clickable items
-	void PopulateSightItems(array<ref BaseAttachmentType> attachmentTypes, array<ResourceName> sights)
+	void PopulateSightItems(array<ref BaseAttachmentType> attachmentTypes, array<ResourceName> sights, bool magnified)
 	{
 		foreach (ResourceName sight: sights)
 		{
 			if (m_aAddedSights.Contains(sight))
+				continue;
+			
+			bool isValid = IsSightValid(sight, magnified);
+			if (!isValid)
 				continue;
 			
 			m_aAddedSights.Insert(sight);
@@ -360,8 +365,8 @@ class CRF_SightArsenal: ChimeraMenuBase
 								if (itemAttributes.Get(i).GetClassName().ToType().IsInherited(WeaponAttachmentAttributes) 
 								&& !itemAttributes.Get(i).GetClassName().ToType().IsInherited(SCR_WeaponAttachmentObstructionAttributes))
 								{
+
 									BaseAttachmentType type;
-									
 									itemAttributes.Get(i).Get("AttachmentType", type);
 									foreach (BaseAttachmentType attachmentType: attachmentTypes)
 									{
@@ -397,6 +402,35 @@ class CRF_SightArsenal: ChimeraMenuBase
 			    }
 			}
 		}
+	}
+	
+	bool IsSightValid(ResourceName sight, bool isMagnifiedAllowed)
+	{
+		Resource Sight = Resource.Load(sight);
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(Sight);
+		if (!entitySource)
+			return false;
+		
+		array<IEntityComponentSource> collimeters = {};
+		array<IEntityComponentSource> magnifiers = {};
+		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+		{
+	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+			bool collimeter = componentSource.GetClassName().ToType().IsInherited(SCR_CollimatorSightsComponent);
+			bool magnified = componentSource.GetClassName().ToType().IsInherited(SCR_2DOpticsComponent);
+	        if(!collimeter && !magnified)
+	        	continue;
+			else
+			{
+				if (collimeter)
+					return true;
+
+				if (magnified)
+					return false;
+			}
+		}
+		
+		return false;
 	}
 	
 	void SelectSight(SCR_ButtonBaseComponent button)
