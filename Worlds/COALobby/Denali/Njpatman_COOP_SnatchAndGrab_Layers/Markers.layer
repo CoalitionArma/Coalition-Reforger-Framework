@@ -1,0 +1,60 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 5137.122 397.344 1751.105
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "strong-point"
+  m_fWorldSize 180
+  m_sDescription "FOB"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4012.577 321.236 3101.3
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 180
+  m_sDescription "STATION GAMMA"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4298.405 399.905 5447.536
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "objective-marker"
+  m_fWorldSize 180
+  m_sDescription "STATION LIMA"
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 4857.763 345.093 1862.041
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 180
+  m_sDescription "DOCUMENTS"
+  m_bShowForAnyFaction 1
+ }
+}
+PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
+ coords 691.217 220.031 385.247
+ Points {
+  ShapePoint "{668AEB51AFB3EBD4}" {
+   Position -133.846 0 -164.338
+  }
+  ShapePoint "{668AEB51A8311A5E}" {
+   Position -206.764 0 144.275
+  }
+  ShapePoint "{668AEB51A8B42EC9}" {
+   Position 148.4 0 263.048
+  }
+  ShapePoint "{668AEB51A94A4B71}" {
+   Position 210.948 0 -86.919
+  }
+ }
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 618.517 220.031 401.674
+ angleY 0
+ m_bShowForAnyFaction 1
+}

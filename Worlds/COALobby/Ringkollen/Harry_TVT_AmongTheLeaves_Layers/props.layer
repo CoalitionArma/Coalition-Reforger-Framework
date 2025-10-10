@@ -1,0 +1,26 @@
+$grp GenericEntity : "{2ACE3A315F531CFD}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_USSR_01.et" {
+ {
+  coords 1741.878 417.239 359.321
+  angleX -0.827
+  angleY 157.473
+  angleZ 0.343
+ }
+ {
+  coords 996.38 397.367 296.387
+  angleX -6.776
+  angleY -69.944
+  angleZ 0.371
+ }
+}
+GenericEntity : "{F68F3B7247F6E810}Prefabs/Compositions/Slotted/SlotFlatLarge/LivingArea_L_USSR_01.et" {
+ coords 985.693 394.817 338.93
+ angleX -2.842
+ angleY -86.497
+ angleZ 2.512
+}
+GenericEntity : "{FD952CFF9CAD3F2B}Prefabs/Compositions/Slotted/SlotFlatSmall/LivingArea_S_USSR_01.et" {
+ coords 968.861 395.073 279.07
+ angleX 2.673
+ angleY -0.167
+ angleZ -3.58
+}

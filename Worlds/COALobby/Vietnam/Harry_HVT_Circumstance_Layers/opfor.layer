@@ -1,0 +1,89 @@
+SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Company_p.et" {
+ coords 775.895 42.771 3543.331
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords -13 0.01 14.93
+   angleY 85.737
+   {
+    SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+     coords 15.296 -0.031 7.541
+     angleY -85.737
+     {
+      $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       {
+        coords 18.311 0.005 20.097
+        angleY 80.142
+        m_aUnitPrefabSlots {
+         "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+        }
+       }
+       {
+        coords 14.868 0.005 19.499
+        angleY 80.142
+        m_aUnitPrefabSlots {
+         "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+        }
+       }
+       {
+        coords 11.656 0.005 18.941
+        angleY 80.142
+        m_aUnitPrefabSlots {
+         "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+        }
+        {
+         SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+          coords 0.143 0.026 -13.709
+          angleY -0.106
+          m_aUnitPrefabSlots {
+           "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"
+          }
+          {
+           SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+            coords 17.453 0 -4.014
+            angleY -80.036
+            {
+             $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+              {
+               coords 10.919 -0.026 19.765
+               angleY 80.142
+               m_aUnitPrefabSlots {
+                "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+               }
+              }
+              {
+               coords 8.508 -0.026 19.346
+               angleY 80.142
+               m_aUnitPrefabSlots {
+                "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+               }
+              }
+              {
+               coords 5.106 -0.026 18.755
+               angleY 80.142
+               m_aUnitPrefabSlots {
+                "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{FC0904D71EF8DB6A}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Rifleman_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{39339B4A6269FD3F}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AR_P.et" "{7C303B9DEA332DF9}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AAR_P.et" "{4E3013C12F58ED57}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_TL_P.et" "{84E3C9CD1D72E121}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AT_P.et"
+               }
+               {
+                SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+                 coords 0.149 0.026 -7.381
+                 angleY -0.106
+                 m_aUnitPrefabSlots {
+                  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

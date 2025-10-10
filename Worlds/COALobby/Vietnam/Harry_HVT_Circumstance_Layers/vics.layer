@@ -1,0 +1,50 @@
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ coords 163.113 1.437 2383.019
+ angleY 75.073
+}
+GenericEntity : "{02D89CB8A159DDF0}Prefabs/Systems/VehicleDepot/VehicleDepot_Cache.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 16
+   m_eSpawnPattern GRID
+   m_fVehicleFacingOffset 180
+   m_iGridColumns 8
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Unarmed GAZ"
+     m_sVehiclePrefab "{2C9B4D8196812513}Prefabs/Vehicles/Wheeled/TIGR/Unarmed/GAZ_TIGR_v2_Unarmed.et"
+    }
+    CRF_VehicleDepotVehicle "{666D53025AC94309}" {
+     m_sVehicleName "GAZ w/ Kord"
+     m_sVehiclePrefab "{AC12E5669B411D57}Prefabs/Vehicles/Wheeled/TIGR/KORD/GAZ_TIGR_v2_KORD.et"
+     m_eCostType SUPPLIES
+     m_iCost 600
+    }
+    CRF_VehicleDepotVehicle "{666EEDE34E94533F}" {
+     m_sVehicleName "GAZ w/ PKP"
+     m_sVehiclePrefab "{7BC76F92B882889D}Prefabs/Vehicles/Wheeled/TIGR/PKP/GAZ_TIGR_v2_PKM.et"
+     m_eCostType SUPPLIES
+     m_iCost 300
+    }
+   }
+   m_bRestrictToLeadership 1
+  }
+ }
+ coords 164.36 1.438 2421.648
+ angleY 0
+ {
+  GenericEntity {
+   ID "664C7C261783AF9D"
+   components {
+    SCR_ResourceComponent "{5D247A59598D71AE}" {
+     m_aContainers {
+      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+       m_fResourceValueCurrent 1000
+       m_fResourceValueMax 1000
+      }
+     }
+    }
+   }
+  }
+ }
+}

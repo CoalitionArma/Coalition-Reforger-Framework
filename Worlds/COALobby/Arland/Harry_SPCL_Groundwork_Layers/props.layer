@@ -1,0 +1,337 @@
+$grp SCR_DestructibleBuildingEntity : "{C526728F8920399A}Prefabs/Structures/Military/Bunkers/AircraftShelter_E_01/AircraftShelter_E_01_camo_v2.et" {
+ {
+  coords 1208.487 -0.359 2764.079
+  angleY 164.089
+  {
+   GenericEntity {
+    ID "570880A30752F475"
+    coords -6.871 0 0
+   }
+   GenericEntity {
+    ID "570880A30752F592"
+    coords 7.202 0 0
+   }
+  }
+ }
+ {
+  coords 1376.626 0.894 2857.849
+  angleY -16.421
+  {
+   GenericEntity {
+    ID "570880A30752F475"
+    coords -6.871 0 0
+   }
+   GenericEntity {
+    ID "570880A30752F592"
+    coords 7.202 0 0
+   }
+  }
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{CEF152812C79C4F2}Prefabs/Structures/Infrastructure/Bridges/ConcreteBridge_01/ConcreteBridge_01_Wide_Base.et" {
+ {
+  coords 1201.798 63.275 2668.445
+  angleY -14.966
+  scale 2.5
+ }
+ {
+  coords 1263.799 63.275 2685.019
+  angleY -14.966
+  scale 2.5
+ }
+ {
+  coords 1326.017 63.275 2701.651
+  angleY -14.966
+  scale 2.5
+ }
+ {
+  coords 1388.767 63.275 2718.425
+  angleY -14.966
+  scale 2.5
+ }
+ {
+  coords 1451.042 63.275 2735.073
+  angleY -14.966
+  scale 2.5
+ }
+ {
+  coords 1397.805 62.426 2341.083
+  angleY -54.739
+  scale 2.5
+ }
+ {
+  coords 1589.99 62.426 2513.941
+  angleY -74.187
+  scale 2.5
+ }
+ {
+  coords 1607.353 62.426 2575.246
+  angleY -74.187
+  scale 2.5
+ }
+ {
+  coords 1434.989 62.426 2393.675
+  angleY -54.739
+  scale 2.5
+ }
+ {
+  coords 1475.893 62.553 2468.554
+  angleY -150.651
+  scale 2.5
+ }
+ {
+  coords 1366.353 62.553 2530.149
+  angleY -150.651
+  scale 2.5
+ }
+ {
+  coords 1420.473 62.553 2499.717
+  angleY -150.651
+  scale 2.5
+ }
+ {
+  coords 1313.705 62.553 2559.753
+  angleY -150.651
+  scale 2.5
+ }
+ {
+  coords 1263.037 62.553 2588.243
+  angleY -150.651
+  scale 2.5
+ }
+ {
+  coords 1207.734 62.553 2619.34
+  angleY -150.651
+  scale 2.5
+ }
+ {
+  coords 1527.071 62.464 2488.416
+  angleY -81.415
+  scale 2.5
+ }
+ {
+  coords 1536.344 62.464 2549.837
+  angleY -81.415
+  scale 2.5
+ }
+ {
+  coords 1544.63 62.464 2604.724
+  angleY -81.415
+  scale 2.5
+ }
+ {
+  coords 1554.08 62.464 2667.318
+  angleY -81.415
+  scale 2.5
+ }
+ {
+  coords 1558.71 62.464 2697.987
+  angleY -81.415
+  scale 2.5
+ }
+ {
+  coords 895.521 62.778 2888.02
+  angleY -55.971
+  scale 2.5
+ }
+ {
+  coords 974.798 62.592 2973.54
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1035.182 62.592 2973.986
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1097.613 62.592 2974.448
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1159.1 62.592 2974.903
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1217.607 62.592 2975.335
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1275.92 62.592 2975.766
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1457.093 62.592 2977.105
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1518.742 62.592 2977.561
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1578.554 62.592 2978.003
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1637.103 62.592 2978.436
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1699.953 62.592 2978.901
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1753.049 62.592 2979.293
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1766.298 62.592 2979.391
+  angleY -0.424
+  scale 2.5
+ }
+ {
+  coords 1402.326 62.676 2973.732
+  angleY 55.507
+  scale 2.5
+ }
+ {
+  coords 1436.796 62.676 2923.564
+  angleY 55.507
+  scale 2.5
+ }
+ {
+  coords 1465.356 62.676 2881.998
+  angleY 55.507
+  scale 2.5
+ }
+ {
+  coords 1486.735 62.676 2850.884
+  angleY 55.507
+  scale 2.5
+ }
+ {
+  coords 1506.746 62.676 2821.76
+  angleY 55.507
+  scale 2.5
+ }
+ {
+  coords 1149.093 62.974 2651.636
+  angleY -55.516
+  scale 2.5
+ }
+ {
+  coords 1182.45 62.974 2700.2
+  angleY -55.516
+  scale 2.5
+ }
+ {
+  coords 1215.445 62.974 2748.236
+  angleY -55.516
+  scale 2.5
+ }
+ {
+  coords 1250.34 62.974 2799.039
+  angleY -55.516
+  scale 2.5
+ }
+ {
+  coords 1284.884 62.974 2849.331
+  angleY -55.516
+  scale 2.5
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{D505E03480D4606F}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_4m_90.et" {
+ {
+  coords 1100.639 0.027 2632.536
+  angleY -0.911
+ }
+ {
+  coords 1365.268 -54.91 2320.467
+  angleY -144.885
+  scale 20
+ }
+ {
+  coords 1491.899 -55.624 2469.958
+  angleY 13.168
+  scale 20
+ }
+ {
+  coords 1568.087 -57.139 2483.038
+  angleY -166.673
+  scale 20
+ }
+ {
+  coords 940.815 -53.868 2957.868
+  angleY -0.854
+  scale 20
+ }
+ {
+  coords 1329.727 -55.301 2941.331
+  angleY 124.074
+  scale 20
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{F885365EEA3AD315}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_End.et" {
+ {
+  coords 1010.067 -16.95 2615.425
+  angleY 164.802
+  scale 20
+ }
+ {
+  coords 1705.853 -16.95 2803.895
+  angleY -14.91
+  scale 20
+ }
+ {
+  coords 1776.862 -39.377 2822.802
+  angleY -14.91
+  scale 20
+ }
+ {
+  coords 1296.175 -17.495 2350.813
+  angleY -145.623
+  scale 20
+ }
+ {
+  coords 1634.429 -17.22 2675.616
+  angleY -75.702
+  scale 20
+ }
+ {
+  coords 874.395 -16.95 2855.629
+  angleY 124.163
+  scale 20
+ }
+ {
+  coords 1870.557 -17.03 2979.061
+  angleY 1.385
+  scale 20
+ }
+}
+$grp SCR_DestructibleBuildingEntity : "{FD1CE2903D41D4A7}Prefabs/Structures/Walls/Concrete/ConcreteRetainingWall_01/ConcreteRetainingWall_01_8m.et" {
+ {
+  coords 1125.248 -16.873 2647.1
+  angleY -15.493
+  scale 20
+ }
+ {
+  coords 1590.516 -16.873 2772.8
+  angleY 164.795
+  scale 20
+ }
+ {
+  coords 1380.185 -17.343 2976.37
+  angleY 179.329
+  scale 20
+ }
+}

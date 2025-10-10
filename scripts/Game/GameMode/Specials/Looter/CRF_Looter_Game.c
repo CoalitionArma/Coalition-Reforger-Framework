@@ -274,6 +274,8 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 
 	[Attribute(desc: "Misc loot entries (multiple random items)", category: "Loot Tables")]
 	ref array<ref CRF_MiscLootEntry> m_aMiscEntries;
+	
+	protected bool m_bSpawnLootBatch = false;
 
 	override void OnPostInit(IEntity owner)
 	{
@@ -281,9 +283,30 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		
 		if (!GetGame().InPlayMode())
 			return;
+		
+		//This was spawning loot, or atleast trying to on the client as well :/
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 
 		GetGame().GetCallqueue().CallLater(SpawnLoot, 3000, false);
 		Print("CRF_LooterGamemodeComponent: Spawning loot...");
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		if (m_fUpdateBuffer > 0.01)
+		{
+			if (m_bSpawnLootBatch)
+				SpawnLootBatch();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
 	}
 
 	// Storage for paced spawning
@@ -327,7 +350,7 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 
 		// Start paced spawning
 		m_iCurrentSpawnIndex = 1;
-		GetGame().GetCallqueue().CallLater(SpawnLootBatch, 10, true);
+		m_bSpawnLootBatch = true;
 	}
 	
 	// Spawn loot in small batches to prevent hitches
@@ -364,7 +387,7 @@ class CRF_LooterGamemodeComponent : SCR_BaseGameModeComponent
 		// Stop when all spawn points are processed
 		if (m_iCurrentSpawnIndex > m_iTotalSpawnPoints)
 		{
-			GetGame().GetCallqueue().Remove(SpawnLootBatch);
+			m_bSpawnLootBatch = false;
 			Print("CRF_LooterGamemodeComponent: Loot spawning completed.");
 		}
 	}

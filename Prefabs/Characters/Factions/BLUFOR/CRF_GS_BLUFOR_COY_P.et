@@ -34,8 +34,8 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
     IconSetName ""
     m_Image "{E5DECCCA6F4B7416}Images/UI/Zeus GearScript Factions/BLUFOR_NATO.edds"
     m_sFaction "BLUFOR"
-    m_aAuthoredLabels {
-     70 2 51870
+    m_aAuthoredLabels + {
+     2 51870
     }
     m_aAutoLabels {
      122 46
@@ -49,7 +49,10 @@ SCR_ChimeraCharacter : "{37578B1666981FCE}Prefabs/Characters/Core/Character_Base
    WeaponSlotIndex 1
   }
   SCR_CharacterIdentityComponent "{5584CBC63E092DBC}" {
+   Override 0
    Identity Identity "{5584CBC6363C648B}" {
+    VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
+    }
     Name "Patman"
     Alias "Was"
     Surname "Here"

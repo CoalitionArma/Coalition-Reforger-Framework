@@ -36,15 +36,27 @@ class CRF_SafestartManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	
+	protected static CRF_SafestartManager m_sInstance;
+	
+	protected bool m_bInitComplete = false;
+	protected bool m_bUpdatedServerWorldTime = false;
+	protected bool m_bUpdatePlayedFactions = false;
+	protected bool m_bActivateSafeStartEHs = false;
+	protected bool m_bCheckPlayersAlive = false;
+	protected bool m_bUpdateMissionEndTimer = false;
+	protected bool m_bCheckStartCountdown = false;
+	
+	
+	void CRF_SafestartManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
 
 	//------------------------------------------------------------------------------------------------
 	static CRF_SafestartManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (gameMode)
-			return CRF_SafestartManager.Cast(gameMode.FindComponent(CRF_SafestartManager));
-		else
-			return null;
+		return m_sInstance;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -67,23 +79,63 @@ class CRF_SafestartManager : ScriptComponent
 		{
 			// Initialize server components
 			m_Logging = CRF_LoggingManager.Cast(m_Gamemode.FindComponent(CRF_LoggingManager));
-			// TODO: Convert to script invoker
-			GetGame().GetCallqueue().CallLater(WaitTillGameStart, 1000, true);
+			SetEventMask(owner, EntityEvent.FIXEDFRAME);
 		}
 	}
-
-	//------------------------------------------------------------------------------------------------
-	// Polls for game start, then configures safestart based on gamemode settings
-	void WaitTillGameStart()
+	
+	float m_fUpdateBuffer = 0;
+	float m_fMediumUpdateBuffer = 0;
+	float m_fLongUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
 	{
-		if (m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-			return;
-
-		m_bSafeStartEnabled = !m_Gamemode.m_bSafestartInstantlyEnabled;
-		Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
-
-		GetGame().GetCallqueue().Remove(WaitTillGameStart);
-		GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_Gamemode.m_bSafestartInstantlyEnabled);
+		super.EOnFixedFrame(owner, timeSlice);
+		
+		if (m_fUpdateBuffer >= 1)
+		{
+			if (!m_bInitComplete)
+				if (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+				{
+					m_bSafeStartEnabled = !m_Gamemode.m_bSafestartInstantlyEnabled;
+					Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
+			
+					GetGame().GetCallqueue().CallLater(ToggleSafeStartServer, 1000, false, m_Gamemode.m_bSafestartInstantlyEnabled);
+					m_bInitComplete = true;
+				}
+			
+			if (m_bUpdatedServerWorldTime)
+				m_GamemodeManager.UpdateServerWorldTime();
+			
+			if (m_bUpdateMissionEndTimer)
+				m_GamemodeManager.UpdateMissionEndTimer();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
+		
+		if (m_fMediumUpdateBuffer >= 5)
+		{
+			if (m_bCheckStartCountdown)
+				if(FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
+					CheckStartCountDown();
+			m_fMediumUpdateBuffer = 0;
+		}
+		m_fMediumUpdateBuffer += timeSlice;
+		
+		if (m_fLongUpdateBuffer >= 10)
+		{
+			if (m_bActivateSafeStartEHs)
+			{
+				SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+				ActivateSafeStartEHs(aiWorld);
+			}
+			
+			if (m_bUpdatePlayedFactions)
+				UpdatePlayedFactions();
+			
+			if (m_bCheckPlayersAlive)
+				CheckPlayersAlive(CRF_Gamemode.GetInstance());
+			m_fLongUpdateBuffer = 0;	
+		}
+		m_fLongUpdateBuffer += timeSlice;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -210,10 +262,7 @@ class CRF_SafestartManager : ScriptComponent
 			m_RplBroadcastManager.PopUpNotification(3.25, message);
 			
 			UpdatePlayedFactions();
-			
-			if (GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
-				GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
-			
+			m_bCheckStartCountdown = true;
 			return;
 		}
 
@@ -274,9 +323,7 @@ class CRF_SafestartManager : ScriptComponent
 		m_RplBroadcastManager.PopUpNotification(3.25, message, "#Coal_SS_Countdown_Started_Subtext");
 		
 		UpdatePlayedFactions();
-		
-		if(GetGame().GetCallqueue().GetRemainingTime(CheckStartCountDown) <= 0 && FactionsReadyCount() != 0 && m_iPlayedFactionsCount != 0 && FactionsReadyCount() == m_iPlayedFactionsCount)
-			GetGame().GetCallqueue().CallLater(CheckStartCountDown, 5000, true);
+		m_bCheckStartCountdown = true;
 	};
 
 	//Call from server
@@ -300,7 +347,7 @@ class CRF_SafestartManager : ScriptComponent
 		{
 			message = "#Coal_SS_Countdown_Cancelled";
 			m_iSafeStartTimeRemaining = 35;
-			GetGame().GetCallqueue().Remove(CheckStartCountDown);
+			m_bCheckStartCountdown = false;
 			m_RplBroadcastManager.PopUpNotification(popupLife, message, submessage);
 			return;
 		}
@@ -314,7 +361,7 @@ class CRF_SafestartManager : ScriptComponent
 			// End safe start when countdown reaches zero
 			if (m_iSafeStartTimeRemaining == 0) {
 				ToggleSafeStartServer(false);
-				GetGame().GetCallqueue().Remove(CheckStartCountDown);
+				m_bCheckStartCountdown = false;
 				message = "#Coal_SS_Game_Live";
 				submessage = "#Coal_SS_SafeStart_Started_Subtext";
 				popupLife = 8;
@@ -363,17 +410,17 @@ class CRF_SafestartManager : ScriptComponent
 			m_bSafeStartEnabled = true;
 			m_iSafeStartTimeRemaining = 35;
 
-			GetGame().GetCallqueue().Remove(m_GamemodeManager.UpdateMissionEndTimer);
-			GetGame().GetCallqueue().Remove(CheckPlayersAlive);
+			m_bUpdateMissionEndTimer = false;
+			m_bCheckPlayersAlive = false;
 
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.UpdateServerWorldTime, 1000, true);
+			m_bUpdatedServerWorldTime = true;
 			
 			SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
 			ActivateSafeStartEHs(aiWorld);
-			GetGame().GetCallqueue().CallLater(ActivateSafeStartEHs, 15000, true, aiWorld);
+			m_bActivateSafeStartEHs = true;
 			
 			UpdatePlayedFactions();
-			GetGame().GetCallqueue().CallLater(UpdatePlayedFactions, 10000, true);
+			m_bUpdatePlayedFactions = true;
 
 			Replication.BumpMe();//Broadcast m_bSafeStartEnabled change
 
@@ -393,16 +440,16 @@ class CRF_SafestartManager : ScriptComponent
 			if(m_Gamemode.m_bLockSlotsAfterSafestart)
 				m_SlottingManager.LockAllOpenSlots();
 
-			GetGame().GetCallqueue().Remove(m_GamemodeManager.UpdateServerWorldTime);
-			GetGame().GetCallqueue().Remove(ActivateSafeStartEHs);
-			GetGame().GetCallqueue().Remove(UpdatePlayedFactions);
+			m_bUpdatedServerWorldTime = false;
+			m_bActivateSafeStartEHs = false;
+			m_bUpdatePlayedFactions = false;
 			
 			CRF_Gamemode gm = CRF_Gamemode.GetInstance();
-			GetGame().GetCallqueue().CallLater(CheckPlayersAlive, 10000, true, gm);
+			m_bCheckPlayersAlive = true;
 
 			if (m_Gamemode.m_iTimeLimitMinutes > 0) {
 				m_iTimeMissionEnds = GetGame().GetWorld().GetWorldTime() + (m_Gamemode.m_iTimeLimitMinutes * 60000);
-				GetGame().GetCallqueue().CallLater(m_GamemodeManager.UpdateMissionEndTimer, 1000, true);
+				m_bUpdateMissionEndTimer = true;
 			} else {
 				m_GamemodeManager.SetServerWorldTime("N/A");
 			};
@@ -442,13 +489,22 @@ class CRF_SafestartManager : ScriptComponent
 	void CheckPlayersAlive(CRF_Gamemode gm)
 	{
 		string message;
+		CRF_RespawnManager respawnManager = CRF_RespawnManager.GetInstance();
 		foreach (SCR_Faction faction : m_aPlayedFactionsArray)
 		{
+			FactionKey factionKey = faction.GetFactionKey();
+			int factionTickets;
+			if (respawnManager) {
+				factionTickets = respawnManager.GetFactionTickets(factionKey);
+			} else {
+				factionTickets = 0;
+			}
+			
 			switch (true) {
-				case(faction.GetFactionKey() == "BLUFOR" && faction.GetPlayerCount() == 0 && gm.m_iBLUFORTickets <= 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { message = "All Blufor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(faction.GetFactionKey() == "OPFOR" && faction.GetPlayerCount() == 0 && gm.m_iOPFORTickets <= 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { message = "All Opfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(faction.GetFactionKey() == "INDFOR" && faction.GetPlayerCount() == 0 && gm.m_iINDFORTickets <= 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { message = "All Indfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
-				case(faction.GetFactionKey() == "CIV" && faction.GetPlayerCount() == 0 && gm.m_iCIVTickets <= 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { message = "All Civilian Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "BLUFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[0] != "#Coal_SS_No_Faction") : { message = "All Blufor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "OPFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[1] != "#Coal_SS_No_Faction") : { message = "All Opfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "INDFOR" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[2] != "#Coal_SS_No_Faction") : { message = "All Indfor Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
+				case(factionKey == "CIV" && faction.GetPlayerCount() == 0 && factionTickets <= 0 && m_aFactionsStatusArray[3] != "#Coal_SS_No_Faction") : { message = "All Civilian Players Have Been Eliminated!"; GetGame().GetCallqueue().Remove(CheckPlayersAlive); break; };
 			};
 		};
 

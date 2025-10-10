@@ -80,7 +80,7 @@ SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR
                  DefaultFormation "Column"
                 }
                }
-               coords 0.075 -0.006 -22.347
+               coords 0.85 -0.006 -22.32
                angleY -2
                {
                 SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {

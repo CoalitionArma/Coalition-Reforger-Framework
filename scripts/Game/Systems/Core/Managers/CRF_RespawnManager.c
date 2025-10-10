@@ -5,9 +5,27 @@ class CRF_RespawnManager : ScriptComponent
 	// Replicated Properties
 	[RplProp(onRplName: "WaveRespawnTimer")]
 	private int m_iRespawnWaveCurrentTime;
-	int m_iRespawnTimer;
+	float m_fRespawnTimer;
 	[RplProp()]
 	ref array<RplId> m_RespawnPointsRplID = {}; // Used for clients
+	
+	// Ticket System - Moved from CRF_Gamemode for efficient replication
+	[RplProp()]
+	int m_iBLUFORTickets;
+	[RplProp()]
+	int m_iOPFORTickets;
+	[RplProp()]
+	int m_iINDFORTickets;
+	[RplProp()]
+	int m_iCIVTickets;
+	
+	
+	//Respawn variables
+	[RplProp()] bool m_bCurrentRespawnEnabled;
+	[RplProp()] bool m_bCurrentWaveRespawn;
+	[RplProp()] int m_iCurrentTimeToRespawn;
+	int m_iLocalTimeToRespawn = 0;
+
 	
 	// Internal flag to prevent redundant replication updates
 	protected bool m_bSuppressReplication = false;
@@ -27,29 +45,34 @@ class CRF_RespawnManager : ScriptComponent
 	protected CRF_SlottingManager m_SlottingManager;
 	
 	ref ScriptInvoker m_OnRespawnPointStateChanged = new ScriptInvoker();
+	
+	protected static CRF_RespawnManager m_sInstance;
+	
+	protected bool m_bNeedsRespawn = false;
+	protected bool m_bRespawnInit = false;
 
+	void CRF_RespawnManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// Singleton accessor
 	static CRF_RespawnManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_RespawnManager.Cast(gameMode.FindComponent(CRF_RespawnManager));
+		return m_sInstance;
 	}
 
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-
 		InitializeManagers();
-		
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 		if (!Replication.IsServer())
 			return;
 
-		InitializeRespawnTimers();
+		InitializeTicketsFromGamemode();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -64,16 +87,25 @@ class CRF_RespawnManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	private void InitializeRespawnTimers()
 	{
-		// Skip if respawn is disabled
-		if (!m_Gamemode.m_bRespawnEnabled)
+		m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
+		m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
+		m_bRespawnInit = true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	private void InitializeTicketsFromGamemode()
+	{
+		if (!m_Gamemode)
 			return;
 			
-		m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
-		m_iRespawnTimer = m_iRespawnWaveCurrentTime;
-
-		// Start wave respawn timer if enabled and not in client mode
-		if (m_Gamemode.m_bWaveRespawn && RplSession.Mode() != RplMode.Client)
-			GetGame().GetCallqueue().CallLater(WaveRespawnTimer, 1000, true);
+		// Copy ticket values from gamemode attributes to local replicated properties
+		m_iBLUFORTickets = m_Gamemode.m_iBLUFORTickets;
+		m_iOPFORTickets = m_Gamemode.m_iOPFORTickets;
+		m_iINDFORTickets = m_Gamemode.m_iINDFORTickets;
+		m_iCIVTickets = m_Gamemode.m_iCIVTickets;
+		m_iCurrentTimeToRespawn = m_Gamemode.m_iTimeToRespawn;
+		m_bCurrentWaveRespawn = m_Gamemode.m_bWaveRespawn;
+		m_bCurrentRespawnEnabled = m_Gamemode.m_bRespawnEnabled;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -88,10 +120,10 @@ class CRF_RespawnManager : ScriptComponent
 	{
 		switch (faction)
 		{
-			case "BLUFOR": return m_Gamemode.m_iBLUFORTickets;
-			case "OPFOR": return m_Gamemode.m_iOPFORTickets;
-			case "INDFOR": return m_Gamemode.m_iINDFORTickets;
-			case "CIV": return m_Gamemode.m_iCIVTickets;
+			case "BLUFOR": return m_iBLUFORTickets;
+			case "OPFOR": return m_iOPFORTickets;
+			case "INDFOR": return m_iINDFORTickets;
+			case "CIV": return m_iCIVTickets;
 		}
 		return 0;
 	}
@@ -127,10 +159,10 @@ class CRF_RespawnManager : ScriptComponent
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_Gamemode.m_iBLUFORTickets -= amount; break;
-			case "OPFOR": m_Gamemode.m_iOPFORTickets -= amount; break;
-			case "INDFOR": m_Gamemode.m_iINDFORTickets -= amount; break;
-			case "CIV": m_Gamemode.m_iCIVTickets -= amount; break;
+			case "BLUFOR": m_iBLUFORTickets -= amount; if (m_iBLUFORTickets < 0) m_iBLUFORTickets = 0; break;
+			case "OPFOR": m_iOPFORTickets -= amount; if (m_iOPFORTickets < 0) m_iOPFORTickets = 0; break;
+			case "INDFOR": m_iINDFORTickets -= amount; if (m_iINDFORTickets < 0) m_iINDFORTickets = 0; break;
+			case "CIV": m_iCIVTickets -= amount; if (m_iCIVTickets < 0) m_iCIVTickets = 0; break;
 		}
 		
 		return true;
@@ -167,10 +199,10 @@ class CRF_RespawnManager : ScriptComponent
 		// Update the appropriate faction's tickets
 		switch (faction)
 		{
-			case "BLUFOR": m_Gamemode.m_iBLUFORTickets += amount; break;
-			case "OPFOR": m_Gamemode.m_iOPFORTickets += amount; break;
-			case "INDFOR": m_Gamemode.m_iINDFORTickets += amount; break;
-			case "CIV": m_Gamemode.m_iCIVTickets += amount; break;
+			case "BLUFOR": m_iBLUFORTickets += amount; break;
+			case "OPFOR": m_iOPFORTickets += amount; break;
+			case "INDFOR": m_iINDFORTickets += amount; break;
+			case "CIV": m_iCIVTickets += amount; break;
 		}
 		
 		return true;
@@ -241,8 +273,11 @@ class CRF_RespawnManager : ScriptComponent
 		m_iRespawnWaveCurrentTime--;
 		
 		if (m_iRespawnWaveCurrentTime == 0)
-			m_iRespawnWaveCurrentTime = m_Gamemode.m_iTimeToRespawn;
-
+		{
+			m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
+			m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+		}
+		
 		if (!m_bSuppressReplication)
 			Replication.BumpMe();
 	}
@@ -256,22 +291,76 @@ class CRF_RespawnManager : ScriptComponent
 			GetGame().GetMenuManager().CloseMenu(topMenu);
 		}
 	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		#ifdef WORKBENCH
+		if (!m_bRespawnInit && m_bCurrentRespawnEnabled)
+			InitializeRespawnTimers();
+		if (m_fUpdateBuffer >= 1)
+		{
+			if (m_bCurrentWaveRespawn)
+				WaveRespawnTimer();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
+		#else
+		if (System.IsConsoleApp())
+		{
+			if (!m_bRespawnInit && m_bCurrentRespawnEnabled)
+				InitializeRespawnTimers();
+			if (m_fUpdateBuffer >= 1)
+			{
+				if (m_bCurrentWaveRespawn)
+					WaveRespawnTimer();
+				m_fUpdateBuffer = 0;
+			}
+			m_fUpdateBuffer += timeSlice;
+			return;
+		}
+		#endif
+		if (m_fRespawnTimer > 0 || m_bNeedsRespawn)
+			RespawnTimer(timeSlice);
+	}
 
 	//------------------------------------------------------------------------------------------------
-	void RespawnTimer()
+	void RespawnTimer(float timeSlice)
 	{
+		if (GetFactionTickets(m_SlottingManager.GetPlayerSlotFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey()) <= 0 || !m_bCurrentRespawnEnabled)
+		{
+			GetGame().GetMenuManager().CloseAllMenus();
+			GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_SpectatorMenu);
+			m_fRespawnTimer = 0;
+			m_SelectedSpawnRplID = -1;
+			m_RespawnConfirmed = false; 
+			m_bNeedsRespawn = false;
+			return;
+		}
+		if (!m_bNeedsRespawn)
+			m_bNeedsRespawn = true;
 		// Decrease the respawn timer
-		if (m_iRespawnTimer > 0)
-			m_iRespawnTimer--;
-
+		if (m_fRespawnTimer > 0)
+			m_fRespawnTimer -= timeSlice;
+		//Handles adding more time to the players UI if more time is added.
+		if (m_iLocalTimeToRespawn != m_iCurrentTimeToRespawn)
+		{
+			int timeToAdd = m_iCurrentTimeToRespawn - m_iLocalTimeToRespawn;
+			m_fRespawnTimer += (float)timeToAdd;
+			m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+		}
+		CloseSlottingMenu();
 		// Check if timer expired or we're in AAR
-		bool isTimerExpired = m_iRespawnTimer <= 0;
+		bool isTimerExpired = m_fRespawnTimer <= 0;
 		bool isGameInAARState = (m_Gamemode.m_GamemodeState == CRF_EGamemodeState.AAR);
 		
 		if (isTimerExpired || isGameInAARState)
 		{
 			// Check if Respawn Screen is open
 			MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+			if (!topMenu)
+				return;
 			if (topMenu.IsInherited(CRF_RespawnMenu))
 			{
 				// Check if respawn selection was confirmed in the UI
@@ -279,11 +368,12 @@ class CRF_RespawnManager : ScriptComponent
 				if (m_SelectedSpawnRplID != -1 && m_RespawnConfirmed)
 				{
 					// Reset the timer
-					m_iRespawnTimer = m_iRespawnWaveCurrentTime;
+					m_fRespawnTimer = (float)m_iRespawnWaveCurrentTime;
+					m_iLocalTimeToRespawn = m_iCurrentTimeToRespawn;
+					m_bNeedsRespawn = false;
 					// Only perform respawn if not in AAR state
 					if (!isGameInAARState)
 					{
-						GetGame().GetCallqueue().Remove(CloseSlottingMenu);
 						GetGame().GetMenuManager().CloseAllMenus();
 						CRF_RplToAuthorityManager.GetInstance().RespawnPlayer(SCR_PlayerController.GetLocalPlayerId(), m_SelectedSpawnRplID);
 						
@@ -291,9 +381,7 @@ class CRF_RespawnManager : ScriptComponent
 						m_SelectedSpawnRplID = -1;
 						m_RespawnConfirmed = false; 
 					}
-		
-					// Remove this timer function from the callqueue
-					GetGame().GetCallqueue().Remove(RespawnTimer);
+	
 					return;
 				}
 			}
@@ -386,7 +474,31 @@ class CRF_RespawnManager : ScriptComponent
 		
 		return sideRespawnPoints;
 	}
+	
+	//------------------------------------------------------------------------------------------------
+	array<RplId> GetFactionSpawnpointsRplIDs(FactionKey faction)
+	{
+		array<RplId> RplIDs = {};
+		foreach(RplId pointRplID : m_RespawnPointsRplID)
+		{
+			IEntity point = GetSpawnEntityFromRplID(pointRplID);
+			
+			CRF_RespawnPointComponent pointRespawnComponent = CRF_RespawnPointComponent.Cast(point.FindComponent(CRF_RespawnPointComponent));
+			if (!pointRespawnComponent)
+				continue;
+			
+			if (pointRespawnComponent.m_sRespawnPointFaction != faction)
+				continue;
+			
+			if (!pointRespawnComponent.m_bActiveRespawnPoint)
+				continue;
 
+			RplIDs.Insert(pointRplID)
+		}
+		
+		return RplIDs;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	void RespawnAllSides()
 	{
@@ -653,5 +765,25 @@ class CRF_RespawnManager : ScriptComponent
 	array<CRF_VehicleSpawner> GetVehicleSpawners()
 	{
 		return m_aVehicleSpawners;
+	}
+	
+	void ToggleRespawnWave()
+	{
+		m_bCurrentWaveRespawn = !m_bCurrentWaveRespawn;
+		m_iRespawnWaveCurrentTime = m_iCurrentTimeToRespawn;
+		Replication.BumpMe();
+	}
+	
+	void SetRespawnTime(int seconds)
+	{
+		m_iCurrentTimeToRespawn = seconds;
+		m_iRespawnWaveCurrentTime = seconds;
+		Replication.BumpMe();
+	}
+	
+	void ToggleRespawn()
+	{
+		m_bCurrentRespawnEnabled = !m_bCurrentRespawnEnabled;
+		Replication.BumpMe();
 	}
 }

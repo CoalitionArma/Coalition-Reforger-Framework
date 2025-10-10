@@ -23,7 +23,7 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		if (!timerWidget)
 			return;
 			
-		timerWidget.SetText(SCR_FormatHelper.FormatTime(CRF_RespawnManager.GetInstance().m_iRespawnTimer));
+		timerWidget.SetText(SCR_FormatHelper.FormatTime((int)CRF_RespawnManager.GetInstance().m_fRespawnTimer));
 	}
 	
 	/**
@@ -33,9 +33,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();
-
-		// Start timer update loop
-		GetGame().GetCallqueue().CallLater(UpdateTimer, 1000, true);
 		
 		// Set up Respawn Selection
 		InitializeSpawnpointSelection();
@@ -91,8 +88,11 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		
 		m_factionKey = CRF_SlottingManager.GetInstance().GetPlayerSlotFaction(playerID).GetFactionKey();
 
+		array<RplId> factionRespawnPoints = CRF_RespawnManager.GetInstance().GetFactionSpawnpointsRplIDs(m_factionKey);
+
 		// Populates spawnpoints list with players faction spawns entites and create their markers on the map
-		foreach(RplId rplID : CRF_RespawnManager.GetInstance().m_RespawnPointsRplID)
+		int index = 0;
+		foreach(RplId rplID : factionRespawnPoints)
 		{ 
 			IEntity point = CRF_RespawnManager.GetInstance().GetSpawnEntityFromRplID(rplID);
 			if (!point)
@@ -102,10 +102,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			if (!respawnPointComponent)
 				continue;
 			
-			// Ignore spawn point if not for player faction
-			if (respawnPointComponent.m_sRespawnPointFaction != m_factionKey)
-				continue;
-			
 			vector worldPos = point.GetOrigin();
 			
 			// Create map marker
@@ -113,6 +109,13 @@ class CRF_RespawnMenu: ChimeraMenuBase
 			
 			// Add option to menu and store the component with it
 			m_wSpawnListBox.AddItem(respawnPointComponent.m_sRespawnPointName);
+			
+			if (respawnPointComponent.m_bIsDefaultRespawn)
+			{
+				m_wSpawnListBox.SetItemSelected(index, true, true, true);
+				GetGame().GetCallqueue().CallLater(UpdateSpawnSelection, 500, false);
+			}
+			index++;
 		}
 	}
 	
@@ -209,6 +212,8 @@ class CRF_RespawnMenu: ChimeraMenuBase
 
 		if (m_MapEntity)
 			GetGame().GetInputManager().ActivateContext("MapContext");
+		
+		UpdateTimer();
 	}
 	
 	/**
@@ -217,9 +222,6 @@ class CRF_RespawnMenu: ChimeraMenuBase
 	override void OnMenuClose()
 	{
 		super.OnMenuClose();
-		
-		// Stop timer updates
-		GetGame().GetCallqueue().Remove(UpdateTimer);
 		
 		// Remove input handlers
 		UnregisterInputHandlers();
@@ -422,8 +424,11 @@ class CRF_RespawnMenu: ChimeraMenuBase
 		if (!rm)
 			return;
 		
+		// Grab rplIDs for player faction
+		array<RplId> factionRespawnPointsRplIDs = rm.GetFactionSpawnpointsRplIDs(m_factionKey);
+		
 		// Grab the entity from the rplID
-		RplId rplID = rm.m_RespawnPointsRplID[m_wSpawnListBox.GetSelectedItem()];
+		RplId rplID = factionRespawnPointsRplIDs[m_wSpawnListBox.GetSelectedItem()];
 		IEntity point = rm.GetSpawnEntityFromRplID(rplID);
 		
 		// Pan the map to the spawn point

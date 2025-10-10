@@ -51,6 +51,8 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 	[RplProp()]
 	bool countDownActive = false;
 	
+	bool m_bMapMarkersAdded = false;
+	
 	//------------------------------------------------------------------------------------------------
 	override protected void OnWorldPostProcess(World world)
 	{
@@ -58,6 +60,26 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 			return;
 	
 		InitBombSites();
+	}
+	
+	override void OnPostInit(IEntity owner)
+	{
+		super.OnPostInit(owner);
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		if (m_fUpdateBuffer >= 1)
+		{
+			if (countDownActive)
+				StartCountdown();
+			if (!hideMapMarkers && !m_bMapMarkersAdded)
+				CheckAddMarkers();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -83,12 +105,6 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 		bSite = GetGame().SpawnEntityPrefab(Resource.Load(bombSitePrefab),GetGame().GetWorld(),spawnParams);
 		bSite.SetYawPitchRoll(bSiteYawPitchRoll);
 		bSiteID = bSite.GetID();
-		
-		if (!hideMapMarkers)
-		{
-			GetGame().GetCallqueue().CallLater(CheckAddMarkers, 1, true);
-		}
-		
 	}
 	
 	
@@ -102,11 +118,9 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 		gameModePlayerComponent.AddScriptedMarker("aSiteTrigger", "0 0 0", 1, "Bomb Site A", "{21A2A457BD0E42C1}UI\Objectives\A.edds", 50, ARGB(255, 225, 225, 225));
 		gameModePlayerComponent.AddScriptedMarker("bSiteTrigger", "0 0 0", 1, "Bomb Site B", "{7F4A8D140283CCCE}UI\Objectives\B.edds", 50, ARGB(255, 225, 225, 225));
 		
-		GetGame().GetCallqueue().Remove(CheckAddMarkers);
+		m_bMapMarkersAdded = true;
 	}
 	
-
-	// Acts as a loop method spawned via calllater, every 1 sec
 	//------------------------------------------------------------------------------------------------
 	void StartCountdown()
 	{
@@ -138,7 +152,6 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 			};
 			
 			// Remove timer
-			GetGame().GetCallqueue().Remove(StartCountdown);
 			countDownActive = false;
 			
 			// Destroy site
@@ -185,7 +198,6 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 		m_SoundString = "{E23715DAF7FE2E8A}Sounds/Items/Equipment/Radios/Samples/Items_Radio_Turn_On.wav";
 		if (!togglePlanted) 
 		{
-			GetGame().GetCallqueue().Remove(StartCountdown);
 			countDownActive = false;
 			if (aSitePlanted) {
 				aSitePlanted = false;
@@ -204,9 +216,6 @@ class CRF_SearchAndDestroyGamemodeManager: SCR_BaseGameModeComponent
 				bSitePlanted = true;
 				m_sMessageContent = "Attackers Have Placed a Bomb at Site B!|15|";
 			};
-		
-			// Spawn countdown thread
-			GetGame().GetCallqueue().CallLater(StartCountdown, 1000, true);
 		};
 		
 		Replication.BumpMe();

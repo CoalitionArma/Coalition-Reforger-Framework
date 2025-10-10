@@ -1,0 +1,76 @@
+FrameWidgetClass {
+ {
+  FrameWidgetClass "{00000000709246E1}" {
+   Prefab "{00000000709246E1}"
+   {
+    FrameWidgetClass "{6689592415CAFB40}" {
+     Name "ListeningFrame"
+     Slot FrameWidgetSlot "{6689592415CAFB88}" {
+      PositionX -2.636
+      OffsetLeft -2.636
+      PositionY 144.954
+      OffsetTop 144.954
+      SizeX 79.541
+      OffsetRight -76.905
+      SizeY 70.918
+      OffsetBottom -215.872
+     }
+     "Z Order" 99
+     {
+      ButtonWidgetClass "{6689592413895C11}" {
+       Name "ListenButton"
+       Slot FrameWidgetSlot "{6689592413895C09}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 1 1 1 0
+       components {
+        SCR_ButtonComponent "{668959245BB32539}" {
+        }
+       }
+      }
+      ImageWidgetClass "{668959240999B3AF}" {
+       Name "Listening"
+       Slot FrameWidgetSlot "{668959240999B3C6}" {
+        Anchor 0 0 1 1
+        PositionX 11.705
+        OffsetLeft 11.705
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight -11.705
+        SizeY 0
+        OffsetBottom 0
+       }
+       Texture "{4AF05B122604E49B}UI/data/ListeningIcon.edds"
+       Size 512 512
+      }
+      ImageWidgetClass "{668959247F6254C0}" {
+       Name "ListeningCross"
+       Slot FrameWidgetSlot "{668959240999B3C6}" {
+        Anchor 0 0 1 1
+        PositionX 11.219
+        OffsetLeft 11.219
+        PositionY 8.791
+        OffsetTop 8.791
+        SizeX -19.72
+        OffsetRight 8.501
+        SizeY -17.582
+        OffsetBottom 8.791
+       }
+       Texture "{BA29CA05FF6FE474}UI/data/cross.edds"
+       Size 528 528
+      }
+     }
+    }
+   }
+  }
+ }
+}

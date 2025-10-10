@@ -1,32 +1,32 @@
 SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Company_p.et" {
- coords 750.862 4.287 1676.619
+ coords 533.21 2.668 2119.817
  {
   SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
-   coords -68.973 1.052 15.174
+   coords -9.151 -0.73 -9.366
    {
     SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
-     coords 56.734 -0.759 -9.419
+     coords 1.163 1.301 18.501
      {
       SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
-       coords -16.351 0.651 5.141
+       coords -51.616 0.871 9.99
        {
         SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
-         coords -12.828 0.263 4.115
+         coords -2.67 0.343 -11.797
          {
           SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
-           coords -13.933 -0.002 4.547
+           coords 53.062 -0.077 11.367
            {
             SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
-             coords 36.767 -0.578 -8.821
+             coords -0.872 -2.279 -19.86
              {
               SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
-               coords -25.696 0.213 -7.319
+               coords -61.905 1.638 -23.141
                {
                 SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
-                 coords -11.818 -0.017 1.371
+                 coords -28.712 -0.184 53.451
                  {
                   SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
-                   coords -10.089 -0.071 0.51
+                   coords -2.906 -1.662 -10.726
                   }
                  }
                 }

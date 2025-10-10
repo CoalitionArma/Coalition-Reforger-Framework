@@ -4243,6 +4243,35 @@ FrameWidgetClass {
     }
    }
   }
+  ButtonWidgetClass "{668729090E73E5E1}" {
+   Name "MiniArsenal"
+   Slot FrameWidgetSlot "{668729090E73E418}" {
+    PositionX 1659
+    OffsetLeft 1659
+    PositionY 16.869
+    OffsetTop 16.869
+    SizeX 154.18
+    OffsetRight -1813.18
+    SizeY 30
+    OffsetBottom -46.869
+   }
+   "Z Order" 99
+   Color 0.0953 0.0953 0.0953 0.6437
+   components {
+    SCR_ButtonComponent "{6687290EBC68F5A1}" {
+    }
+   }
+   {
+    TextWidgetClass "{6687290952A13910}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{6687290952A13933}" {
+     }
+     Text "Open Mini Arsenal"
+     "Font Size" 19
+     "Min Font Size" 19
+    }
+   }
+  }
   FrameWidgetClass "{60DCC8DF2787CC88}" {
    Prefab "{60DCC8DF2787CC88}"
    Slot FrameWidgetSlot "{5D8AB8F2DCC3C881}" {
