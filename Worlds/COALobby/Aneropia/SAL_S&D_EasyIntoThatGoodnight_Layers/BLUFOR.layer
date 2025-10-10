@@ -48,6 +48,18 @@ $grp CRF_VehicleSpawner {
   m_sFactionKey "BLUFOR"
  }
 }
+$grp CRF_ManualMarker : "{10F92A3FD09DA1C5}PrefabsEditable/Markers/OPFORSpawnMarker.et" {
+ {
+  coords 1037.166 14.355 1142.141
+  m_sQuadName "point-of-interest"
+  m_sDescription "Static ZU"
+ }
+ {
+  coords 1195.88 14.801 918.458
+  m_sQuadName "point-of-interest"
+  m_sDescription "Static ZU"
+ }
+}
 SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
  coords 3832.045 161.146 3336.803
  angleX 3.948
