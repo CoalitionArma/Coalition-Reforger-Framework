@@ -1,3 +1,6 @@
+SCR_MapEntity MapEntity_Rostov1 : "{FDC3842C6A17F2D9}Prefabs/World/Game/Rostov/MapEntity_Rostov.et" {
+ coords 991.401 116.772 2965.462
+}
 SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
  coords 933.126 116.174 2940.835
 }
@@ -60,7 +63,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableRTORadios 0
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "6695189E4FAE6F06" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628C2D2BFC8C6447}" {
