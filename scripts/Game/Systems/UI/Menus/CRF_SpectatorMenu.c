@@ -16,9 +16,10 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected FrameWidget m_wFrameSlots;                     // Frame for displaying slots
 	protected FrameWidget m_wFrameChannels;                  // Frame for displaying VON channels
 	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
+	protected FrameWidget m_wSlotWarning;                  	 // Frame for displaying the button to open slotting
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
-	protected SCR_ButtonComponent m_wBulletPathButton;            // Button component for Toggling bullet paths
+	protected SCR_ButtonComponent m_wBulletPathButton;       // Button component for Toggling bullet paths
 	
 	// Game-related components
 	protected CRF_Gamemode m_Gamemode;                       // Reference to the gamemode instance
@@ -110,6 +111,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Initialize UI components
 		m_wMapFrame = FrameWidget.Cast(m_wRoot.FindAnyWidget("MapFrame"));
+		m_wSlotWarning = FrameWidget.Cast(m_wRoot.FindAnyWidget("SlotWarning"));
 		m_wPlayerSlotWidget = m_wRoot.FindAnyWidget("PlayerSlots");
 		m_wPlayerSlots = CRF_ListboxComponent.Cast(m_wPlayerSlotWidget.FindHandler(CRF_ListboxComponent));
 		m_wVONChannels = CRF_ListboxComponent.Cast(m_wRoot.FindAnyWidget("VONChannels").FindHandler(CRF_ListboxComponent));
@@ -322,6 +324,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_fUpdateBuffer = 0;
 		}
 		m_fUpdateBuffer += tDelta;
+		
+		if (m_SafestartManager.GetSafestartStatus())
+			m_wSlotWarning.SetVisible(true);
+		else
+			m_wSlotWarning.SetVisible(false);
 	}
 	
 	//Used to update tickets
