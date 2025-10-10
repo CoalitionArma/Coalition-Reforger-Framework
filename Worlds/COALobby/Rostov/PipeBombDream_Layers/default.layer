@@ -20,8 +20,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  coords 941.257 117.245 2942.479
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "FIA forces with the support of 2 BRDMs assualt :) the USSR held ROstov Airport."\
-   ""\
+   m_sTextData "FIA forces with the support of 2 BRDMs assualt the USSR held Rostov Airport on a windy morning to solidify their control over the region."\
    ""\
    "INDFOR Composition: Infantry"\
    "INDFOR Assets: 2x BRDM"\
