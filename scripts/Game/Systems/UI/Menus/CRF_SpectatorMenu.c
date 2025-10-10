@@ -20,6 +20,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
 	protected SCR_ButtonComponent m_wBulletPathButton;       // Button component for Toggling bullet paths
+	protected SCR_ButtonComponent m_wDismissSlottingButton;       // Button component for Dismissing Slotting Warning
 	
 	// Game-related components
 	protected CRF_Gamemode m_Gamemode;                       // Reference to the gamemode instance
@@ -79,6 +80,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected TextWidget m_wCIVTicketsText;
 	protected bool m_bCIVTicketsActive;
 	
+	protected bool m_bWarningDismissed = false;
+	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
 	//=================================================================================================
@@ -126,6 +129,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wINDFORTickets = m_wRoot.FindAnyWidget("INDFORTickets");
 		m_wCIVTickets = m_wRoot.FindAnyWidget("CIVTickets");
 		
+		m_wDismissSlottingButton = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("DismissWarning").FindHandler(SCR_ButtonComponent));
+		m_wDismissSlottingButton.m_OnClicked.Insert(DismissSlottingWarning);
 		
 		// Register input action listeners
 		RegisterActionListeners();
@@ -156,6 +161,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+	}
+	
+	void DismissSlottingWarning()
+	{
+		m_bWarningDismissed = true;
 	}
 	
 	/**
@@ -325,7 +335,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		}
 		m_fUpdateBuffer += tDelta;
 		
-		if (m_SafestartManager.GetSafestartStatus())
+		if (m_SafestartManager.GetSafestartStatus() && !m_bWarningDismissed)
 			m_wSlotWarning.SetVisible(true);
 		else
 			m_wSlotWarning.SetVisible(false);
