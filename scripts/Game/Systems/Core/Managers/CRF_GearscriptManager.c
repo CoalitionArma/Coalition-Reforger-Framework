@@ -243,13 +243,8 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	void SetVehicleGear(IEntity vehicle, string factionKey)
 	{
-		Print("Setting vehicle gear");
 		//Lets find a faction, if there is none start looking for one in the loop.
-		Print(vehicle);
-		Print(factionKey);
 		Faction faction = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(factionKey);
-		if (faction)
-			Print(faction.GetFactionKey());
 		if (!faction)
 		{
 			array<int> playerIds = {};
@@ -309,13 +304,13 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	void SetTruckGear(IEntity truck, Faction faction, CRF_GearScriptContainer gsContainer, bool isSupply)
 	{
-		Print("Setting Truck Gear");
 		ref CRF_GearScriptConfig gearSriptConfig = LoadGearScriptConfig(gsContainer.m_rGearScript);
 		ref CRF_VehicleGearscriptConfig vehicleGearScriptConfig = LoadVehicleGearScriptConfig(gsContainer.m_rVehicleGearscriptValues);
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
 			return;
 		ClearTruckGear(truck, invManager);
+		ApplyTruckLoadout(truck, invManager, gsContainer);
 		array<ResourceName> heGLsToAdd = {};
 		array<ResourceName> glsToAdd = {};
 		for (int i = 0; i <= 11; i++)
@@ -323,7 +318,7 @@ class CRF_GearscriptManager : ScriptComponent
 			//Regular Weapons
 			if (i <= 4 || i == 11)
 			{
-				int bulletForWeapon = GetBulletCountForWeapon(i, vehicleGearScriptConfig, gsContainer);
+				int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
 				array<ResourceName> magazinesToAdd = {};
 				array<int> magazineCounts = {};
 				array<ref CRF_Weapon_Class> weapons = GetWeaponsByIndex(i, gearSriptConfig);
@@ -357,7 +352,7 @@ class CRF_GearscriptManager : ScriptComponent
 			//Spec Weapons
 			else
 			{
-				int bulletForWeapon = GetBulletCountForWeapon(i, vehicleGearScriptConfig, gsContainer);
+				int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
 				array<ResourceName> magazinesToAdd = {};
 				array<int> magazineCounts = {};
 				CRF_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, gearSriptConfig);
@@ -408,36 +403,41 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		if (grenadesToAdd.Count() > 0)
 		{
-			int grenades = GetBulletCountForWeapon(12, vehicleGearScriptConfig, gsContainer);
+			int grenades = GetBulletCountForWeapon(truck, 12, vehicleGearScriptConfig, gsContainer);
 			SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, isSupply);
 		}
 		
 		if (smokesToAdd.Count() > 0)
 		{
-			int grenades = GetBulletCountForWeapon(13, vehicleGearScriptConfig, gsContainer);
+			int grenades = GetBulletCountForWeapon(truck, 13, vehicleGearScriptConfig, gsContainer);
 			SpawnItemsToVehicle(grenades, smokesToAdd, invManager, isSupply);
 		}
 		
 		//Add misc items
 		if (heGLsToAdd.Count() > 0)
 		{
-			int glsToSpawn = GetBulletCountForWeapon(14, vehicleGearScriptConfig, gsContainer);
+			int glsToSpawn = GetBulletCountForWeapon(truck, 14, vehicleGearScriptConfig, gsContainer);
 			SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, isSupply);
 		}
 		
 		if (glsToAdd.Count() > 0)
 		{
-			int glsToSpawn = GetBulletCountForWeapon(15, vehicleGearScriptConfig, gsContainer);
+			int glsToSpawn = GetBulletCountForWeapon(truck, 15, vehicleGearScriptConfig, gsContainer);
 			SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, isSupply);
 		}
 		
-		foreach (CRF_VehicleGearScriptAdditionalItem item: gsContainer.m_aAdditionalVehicleItems)
+		array<ref CRF_VehicleGearScriptAdditionalItem> additionalItems = {};
+		if (Vehicle.Cast(truck).m_aAdditionalVehicleItems.Count() > 0)
+			additionalItems = Vehicle.Cast(truck).m_aAdditionalVehicleItems;
+		else
+			additionalItems = gsContainer.m_aAdditionalVehicleItems;
+		foreach (CRF_VehicleGearScriptAdditionalItem item: additionalItems)
 		{
 			array<ResourceName> holder = {item.m_Prefab};
 			if (isSupply)
-				SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, isSupply);
+				SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, true);
 			else
-				SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, isSupply);
+				SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, true);
 		}
 	}
 	
@@ -445,7 +445,6 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		array<IEntity> items = {};
 		invManager.GetItems(items);
-		
 		foreach (IEntity item: items)
 		{
 			if (!item)
@@ -457,12 +456,15 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	void ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer)
 	{
-		ref CRF_VehicleGearScriptLoadout vehLoadout = gsContainer.m_VehicleLoadout;
+		ref CRF_VehicleGearScriptLoadout vehLoadout;
+		if (Vehicle.Cast(truck).m_OverridedVehicleLoadout)
+			vehLoadout = Vehicle.Cast(truck).m_OverridedVehicleLoadout;
+		else
+			vehLoadout = gsContainer.m_VehicleLoadout;
 		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
 		array<BaseCompartmentSlot> turrets = {};
 		array<IEntity> weapons = {};
 		compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
-		//Get the magazine wells of the weapons on the vehicle so we know what ammo not to delete from the inventory.
 		foreach (BaseCompartmentSlot turret: turrets)
 		{
 			TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
@@ -482,7 +484,7 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		foreach (IEntity weapon: weapons)
 		{
-			if (weapon.FindComponent(WeaponComponent))
+			if (!weapon.FindComponent(WeaponComponent))
 				continue;
 			
 			int bulletsToAdd = 0;
@@ -492,6 +494,25 @@ class CRF_GearscriptManager : ScriptComponent
 				bulletsToAdd = vehLoadout.m_iAmountofAutoCannonAmmo;
 			else
 				bulletsToAdd = vehLoadout.m_iAmountofMachineGunAmmo;
+			
+			array<BaseMuzzleComponent> muzzles = {};
+			weaponComp.GetMuzzlesList(muzzles);
+			array<ResourceName> magazinesToAdd = {};
+			array<int> magazineCount = {};
+			foreach (BaseMuzzleComponent muzzle: muzzles)
+			{
+				BaseMagazineComponent mag = muzzle.GetMagazine();
+				if (!mag)
+					continue;
+				
+				magazinesToAdd.Insert(mag.GetOwner().GetPrefabData().GetPrefabName());
+				magazineCount.Insert(mag.GetMaxAmmoCount());
+			}
+			
+			if (magazinesToAdd.Count() == 0)
+				continue;
+			
+			SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, true);
 		}
 	}
 	
@@ -785,9 +806,14 @@ class CRF_GearscriptManager : ScriptComponent
 		return false;
 	}
 	
-	int GetBulletCountForWeapon(int index, CRF_VehicleGearscriptConfig vehicleGearScript, CRF_GearScriptContainer gearContainer)
+	int GetBulletCountForWeapon(IEntity vehicle, int index, CRF_VehicleGearscriptConfig vehicleGearScript, CRF_GearScriptContainer gearContainer)
 	{
-		foreach (CRF_VehicleGearscriptOverride vehicleOverride: gearContainer.m_aVehicleGearscriptOverrides)
+		array<ref CRF_VehicleGearscriptOverride> gearOverides = {};
+		if (Vehicle.Cast(vehicle).m_aVehicleGearscriptOverrides.Count() > 0)
+			gearOverides = Vehicle.Cast(vehicle).m_aVehicleGearscriptOverrides;
+		else
+			gearOverides = gearContainer.m_aVehicleGearscriptOverrides;
+		foreach (CRF_VehicleGearscriptOverride vehicleOverride: gearOverides)
 		{
 			if (vehicleOverride.m_VehicleAmmoType == index)
 				return vehicleOverride.m_iAmountOfBullets;

@@ -1,5 +1,14 @@
 modded class Vehicle
 {
+	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout")]
+	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
+	
+	[Attribute()] 
+	ref array<ref CRF_VehicleGearscriptOverride> m_aVehicleGearscriptOverrides;
+	
+	[Attribute()]
+	ref array<ref CRF_VehicleGearScriptAdditionalItem> m_aAdditionalVehicleItems;
+	
 	string m_sFactionKey = "";
 	int m_iVehicleSpawnerIndex = -1;
 	

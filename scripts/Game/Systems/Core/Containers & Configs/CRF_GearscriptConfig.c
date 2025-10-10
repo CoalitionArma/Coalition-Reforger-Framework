@@ -14,10 +14,10 @@ class CRF_GearScriptContainer
 	[Attribute("{9D8E5FA08331042D}Configs/Gearscripts/CRF_Global_SightArsenal_Magnified.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all entities on this faction", "conf class=CRF_SightArsenalConfig")]
 	ResourceName m_rMagnifiedSightArsenal;
 	
-	[Attribute("{2E2626C733070162}Configs/Gearscripts/CRF_Global_VehicleGearscriptValues.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all vehicles on this faction", "conf class=CRF_SightArsenalConfig")]
+	[Attribute("{2E2626C733070162}Configs/Gearscripts/CRF_Global_VehicleGearscriptValues.conf", UIWidgets.ResourceNamePicker, desc: "Gearscript applied to all vehicles on this faction", "conf class=CRF_VehicleGearscriptConfig")]
 	ResourceName m_rVehicleGearscriptValues;
 	
-	[Attribute("", UIWidgets.ResourceNamePicker, desc: "Loadout values applied to all vehicles in this faction", "conf class=CRF_SightArsenalConfig")]
+	[Attribute("", desc: "Loadout values applied to all vehicles in this faction", "conf class=CRF_VehicleGearScriptLoadout")]
 	ref CRF_VehicleGearScriptLoadout m_VehicleLoadout;
 	
 	[Attribute()] 
