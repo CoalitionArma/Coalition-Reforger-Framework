@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{D9A9F7A9A004F124}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_COMMAND_PUSH.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}
