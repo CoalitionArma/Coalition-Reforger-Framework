@@ -46,3 +46,13 @@ PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestar
   }
  }
 }
+CRF_ManualMarker : "{FC557CF9344FF7A7}PrefabsEditable/Markers/GameZoneMarker_OPFOR.et" {
+ coords 1152.322 2.36 1015.105
+ angleY 0
+ m_sQuadName "objective-marker"
+ m_sDescription "Objective"
+ m_aVisibleForFactions {
+  "SPEC"
+ }
+ m_bShowForAnyFaction 0
+}

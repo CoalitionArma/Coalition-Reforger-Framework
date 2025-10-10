@@ -2,6 +2,15 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  components {
   CRF_SearchAndDestroyGamemodeManager "{6694E1E78AE83405}" {
   }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_aStartingWeatherAndTime {
+    SCR_TimeAndWeatherState "{6694E1E84897BFC4}" {
+     m_sWeatherPresetName "Clear"
+     m_iStartingHour 19
+    }
+   }
+  }
  }
  coords 2951.631 113.512 163.262
  m_iTimeLimitMinutes 50
