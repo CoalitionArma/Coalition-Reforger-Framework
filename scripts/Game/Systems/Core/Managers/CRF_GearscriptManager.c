@@ -326,6 +326,11 @@ class CRF_GearscriptManager : ScriptComponent
 					continue;
 				foreach (CRF_Weapon_Class weapon: weapons)
 				{
+					if (!weapon)
+						continue;
+					
+					if (!weapon.m_MagazineArray)
+						continue;
 					foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
 					{
 						if (!IsRegularMagazine(weapons, magazine.m_Magazine) && i == 1)
