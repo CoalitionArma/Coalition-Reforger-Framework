@@ -1,0 +1,14 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 4852.405 345.64 1829.836
+  angleY 76.371
+  m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 4848.882 345.64 1876.232
+  angleY 92.46
+  m_rVehicle "{7BD282AF716ED639}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_armed.et"
+  m_sFactionKey "OPFOR"
+ }
+}
