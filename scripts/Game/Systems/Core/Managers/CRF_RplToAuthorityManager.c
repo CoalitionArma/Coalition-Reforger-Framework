@@ -405,6 +405,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_ToggleEnableAIInGameState);
 	}
 	
+	void CleanUpBodies()
+	{
+		Rpc(RpcAsk_CleanUpBodies);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1218,5 +1223,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RpcAsk_ToggleEnableAIInGameState()
 	{
 		CRF_Gamemode.GetInstance().ToggleEnableAIInGameState();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_CleanUpBodies()
+	{
+		CRF_GamemodeManager.GetInstance().CleanUpBodies();
 	}
 };
