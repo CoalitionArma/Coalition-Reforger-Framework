@@ -340,7 +340,7 @@ class CRF_GearscriptManager : ScriptComponent
 		for (int i = 0; i <= 11; i++)
 		{
 			//Regular Weapons
-			if (i <= 4 || i == 11)
+			if (i < 4 || i == 11)
 			{
 				int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
 				array<ResourceName> magazinesToAdd = {};
