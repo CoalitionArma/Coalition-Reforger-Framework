@@ -1,0 +1,127 @@
+SCR_MapEntity SCR_MapEntity1 {
+ coords 7172.633 252.745 2757.538
+ "Map Geometry Data" "{4D13DC42EAA6321E}Terrain/WCS_Rostov_Conflict_NEvSW_Layout1.topo"
+ "Satellite background image" "{4CDC017532F1D3F5}UI/Textures/Map/Worlds/Rostov/Rostov.edds"
+}
+SCR_AIWorld : "{998834C2F010C11A}Prefabs/AI/SCR_AIWorld_Rostov.et" {
+ coords 7204.129 493.678 2426.001
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_HighValueTargetGamemodeManager "{668EF1218D251A20}" {
+   m_timeBetweenPings 300
+   m_filterFaction 1
+   m_hvtPrefab "{D9A9F7A9A004F124}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_COMMAND_PUSH.et"
+  }
+ }
+ coords 7167.574 464.447 2485.062
+ m_iTimeLimitMinutes 40
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "This is a new gamemode, Push. Blufor must bring the command truck to the transmission tower, and then activate the radio there. Opfor will receive a respawn wave once the radio is activated, and Blufor must then defend the truck during the counterattack. The command truck can be penned but not destroyed."\
+   ""\
+   "BLUFOR Composition: Moto inf"\
+   "BLUFOR Assets: Vehicle Depot, weapons teams"\
+   ""\
+   "OPFOR Composition: Inf"\
+   "OPFOR Assets: MMG"\
+   ""\
+   "Time: 40"\
+   "Weather: Clear"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Bring the command truck to the marked transmission tower, trigger the radio there, and then defend the truck during the counterattack."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Prevent the command truck from being brought to the marked transmission tower, then counterattack once the radio has been triggered."
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{CD3912ACF67CA7E5}Configs/Gearscripts/Custom/Harry/push/CRF_GS_RHSUSArmyMC_CLS.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{35262EC7910CA8D8}Configs/Gearscripts/Custom/Harry/push/CRF_GS_RHSION_Urban_NoOptics_AP_CLS.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{668F693CA12D4FEC}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{668F693CA1D0AF14}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{668F693CA073308F}" {
+        m_sCallsign "MMG-1"
+       }
+       SCR_CallsignInfo "{668F693CA095C8AE}" {
+        m_sCallsign "Humvee-1"
+       }
+       SCR_CallsignInfo "{668F693CA7061551}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{668F693CA65FF34C}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{668F693CA6EFBD0D}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{668F693CA50C8711}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{668F693CA5F36521}" {
+        m_sCallsign "MMG-2"
+       }
+       SCR_CallsignInfo "{668F693CA41F2C68}" {
+        m_sCallsign "Humvee-2"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{668F693C8C6FA82B}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{668F693C924B9C5D}" {
+        m_sCallsign "MMG"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

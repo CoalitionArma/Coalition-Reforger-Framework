@@ -1,0 +1,7 @@
+CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 7216.821 180.585 2745.672
+ m_MarkerColor 0 0 0 1
+ m_sDescription "Transmission Tower"
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

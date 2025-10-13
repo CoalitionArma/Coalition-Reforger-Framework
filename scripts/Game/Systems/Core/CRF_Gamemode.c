@@ -124,6 +124,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// Generic spawn point for spectator camera (handles entity streaming)
 	[RplProp()]
 	vector m_vGenericSpawn[4];
+	bool m_bGenericSpawnSet = false;
 	
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------
@@ -371,23 +372,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
-		// Check if player is reconnecting and should be automatically re-initialized
-		if (m_GamemodeState == CRF_EGamemodeState.GAME && 
-			m_SlottingManager.IsPlayerInASlot(iPlayerID) && 
-			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
-		{		
-			// Schedule initialization with a delay to ensure player controller is fully set up
-			vector spawnVector[4] = CRF_GamemodeManager.ZERO_SPAWN_VECTOR;
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, spawnVector);
-		}
-		// Initialize player if not in GAME state
-		else if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
-			m_GamemodeState == CRF_EGamemodeState.SLOTTING || 
-			m_GamemodeState == CRF_EGamemodeState.AAR)
-		{
-			m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
-		}
-		
+		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+
 		// Check if player is a moderator/donator and set privileges
 		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
 		if (!playerIdentity.IsEmpty()) {
@@ -435,10 +421,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		super.OnControllableSpawned(entity);
 		
 		// Check if we are not in the "GAME" state
-		if (m_GamemodeState != CRF_EGamemodeState.GAME)
+		if (m_GamemodeState != CRF_EGamemodeState.GAME && !m_bGenericSpawnSet && !CRF_GamemodeManager.IsSpectator(entity))
+		{
 			// Update generic spawnpoint for spectator cameras
 			entity.GetWorldTransform(m_vGenericSpawn);
-		
+			m_bGenericSpawnSet = true;
+		}
+			
 		// Handle initial entity race condition fix
 		if (entity && entity.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
 		{
