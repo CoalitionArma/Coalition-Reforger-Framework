@@ -33,9 +33,65 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
 	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
 	
+	ref array<IEntity> m_aDeadBodies = {};
+	
 	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
 	{
 		m_sInstance = this;
+	}
+	
+	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnControllableDestroyed(instigatorContextData);
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		
+		m_aDeadBodies.Insert(instigatorContextData.GetVictimEntity());
+	}
+	
+	void CleanUpBodies()
+	{
+		array<IEntity> bodiesToRemove = {};
+		foreach (IEntity body: m_aDeadBodies)
+		{
+			if (!body)
+				continue;
+			
+			if (!GetGame().GetWorld().QueryEntitiesBySphere(body.GetOrigin(), 30, CleanUpBodyCallback, null))
+				continue;
+
+			bodiesToRemove.Insert(body);
+		}
+		
+		int delay = 1;
+		foreach (IEntity body: bodiesToRemove)
+		{
+			m_aDeadBodies.RemoveItem(body);
+			//Lets not delete 100s of entities in one frame now
+			GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100 * delay, false, body);
+			delay++;
+		}
+	}
+	
+	bool CleanUpBodyCallback(IEntity entity)
+	{
+		if (ChimeraCharacter.Cast(entity))
+		{
+			//Is this character dead
+			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
+			if (damageManager)
+			{
+				if (damageManager.GetState() == EDamageState.DESTROYED)
+					return true;
+				else
+					return false;
+			}
+		}
+			
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------

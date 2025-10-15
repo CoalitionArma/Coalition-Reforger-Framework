@@ -405,6 +405,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_ToggleEnableAIInGameState);
 	}
 	
+	void CleanUpBodies()
+	{
+		Rpc(RpcAsk_CleanUpBodies);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1009,8 +1014,18 @@ class CRF_RplToAuthorityManager : ScriptComponent
 			SCR_EntityHelper.DeleteEntityAndChildren(newItem);
 			return;
 		}
-		invManager.TryReplaceItem(newItem, invComponent, slotId);
 		SCR_EntityHelper.DeleteEntityAndChildren(oldItem);
+		GetGame().GetCallqueue().CallLater(AddVestDelay, 250, false, newItem, invComponent, slotId, oldItem, items, invManager, newStorageComp, playerId, player);
+	}
+	
+	void AddVestDelay(IEntity newItem, BaseInventoryStorageComponent invComponent, int slotId, IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	{
+		invManager.TryReplaceItem(newItem, invComponent, slotId);
+		GetGame().GetCallqueue().CallLater(AddItemDelay, 275, false, oldItem, items, invManager, newStorageComp, playerId, player);
+	}
+	
+	void AddItemDelay(IEntity oldItem, array<ResourceName> items, SCR_InventoryStorageManagerComponent invManager, BaseInventoryStorageComponent newStorageComp, int playerId, IEntity player)
+	{
 		for (int i = 0; i < items.Count(); i++)
 		{
 			if(!invManager.TrySpawnPrefabToStorage(items[i], newStorageComp))
@@ -1018,16 +1033,21 @@ class CRF_RplToAuthorityManager : ScriptComponent
 				ref array<IEntity> newPouches = {};
 				newStorageComp.GetAll(newPouches);
 				
+				bool itemInserted = false;
 				foreach (IEntity pouch: newPouches)
 				{
 					if (!pouch.FindComponent(BaseInventoryStorageComponent))
 						continue;
 					
-					
 					BaseInventoryStorageComponent pouchStorage = BaseInventoryStorageComponent.Cast(pouch.FindComponent(BaseInventoryStorageComponent));
 					if(invManager.TrySpawnPrefabToStorage(items[i], pouchStorage))
+					{
+						itemInserted = true;
 						break;
+					}
 				}
+				if (!itemInserted)
+					invManager.TrySpawnPrefabToStorage(items[i]);
 			}
 		}
 		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
@@ -1203,5 +1223,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RpcAsk_ToggleEnableAIInGameState()
 	{
 		CRF_Gamemode.GetInstance().ToggleEnableAIInGameState();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_CleanUpBodies()
+	{
+		CRF_GamemodeManager.GetInstance().CleanUpBodies();
 	}
 };

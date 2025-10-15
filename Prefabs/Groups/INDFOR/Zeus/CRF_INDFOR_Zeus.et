@@ -12,13 +12,13 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      72
     }
     m_EntityChildrenBudgetCost {
-     SCR_EntityBudgetValue "{669897172B725573}" {
+     SCR_EntityBudgetValue "{669897175EA0DD70}" {
       m_BudgetType AI
       m_Value 1
      }
     }
     m_bUseUIInfoName 1
-    m_MilitarySymbol SCR_MilitarySymbol "{669897172B725564}" {
+    m_MilitarySymbol SCR_MilitarySymbol "{669897175EA0DD6F}" {
      m_Identity BLUFOR
      m_Dimension LAND
      m_Icons INFANTRY
@@ -35,7 +35,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
    m_bRuntime 0
    m_aEntries {
-    SCR_BasePreviewEntry "{669897172B72555D}" {
+    SCR_BasePreviewEntry "{669897175EA0DD5B}" {
      m_iParentID -1
      m_Mesh ""
      m_Flags 3
@@ -45,7 +45,7 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
      m_vPosition 0 0 0
      m_vAngles 0 0 0
     }
-    SCR_BasePreviewEntry "{669897172B725558}" {
+    SCR_BasePreviewEntry "{669897175EA0DD46}" {
      m_iParentID 0
      m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
      m_Flags 0
@@ -59,9 +59,9 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
   }
  }
  coords 0 0 0
- m_faction "CIV"
+ m_faction "INDFOR"
  m_aUnitPrefabSlots {
-  "{23EA338821A78D20}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Zeus_P.et" "{23EA338821A78D20}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Zeus_P.et" "{23EA338821A78D20}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Zeus_P.et"
+  "{AF2F4AC6DAE0ED0F}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Zeus_P.et" "{AF2F4AC6DAE0ED0F}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Zeus_P.et" "{AF2F4AC6DAE0ED0F}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Zeus_P.et"
  }
  m_bDeleteWhenEmpty 0
  m_iMaxMembers 12

@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{A2FC590C090D9693}Prefabs/Groups/BLUFOR/Zeus/CRF_CIV_Zeus.et"
+ Name "{5F7803C22B322823}Prefabs/Weapons/MachineGuns/M249/MG_M249_PIP_NoSight.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }
