@@ -1,0 +1,33 @@
+SCR_AIGroup : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standard/Command/CRF_INDFOR_Platoon_p.et" {
+ coords 1721.853 81.066 771.266
+ angleY -132.171
+ {
+  SCR_AIGroup : "{35D9448A4ED99223}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MedicTeam_p.et" {
+   coords -0.115 0 3.896
+   {
+    $grp SCR_AIGroup : "{ADF09DD7FCCA37C3}Prefabs/Groups/INDFOR/Standard/Infantry/CRF_INDFOR_RifleSquad_p.et" {
+     {
+      coords -26.527 0 47.227
+      angleY 56.135
+     }
+     {
+      coords -30.12 0 44.735
+      angleY 41.145
+     }
+     {
+      coords -26.429 1.501 35.927
+      angleY 173.316
+     }
+     {
+      coords -23.617 1.372 31.264
+      angleY 173.316
+     }
+     {
+      coords -22.717 0.05 27.341
+      angleY -171.694
+     }
+    }
+   }
+  }
+ }
+}
