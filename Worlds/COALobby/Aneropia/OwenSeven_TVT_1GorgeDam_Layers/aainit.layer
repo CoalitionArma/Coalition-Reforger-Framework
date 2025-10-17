@@ -1,6 +1,5 @@
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 1220.373 94.544 3138.817
- m_bLockSlotsAfterSafestart 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "British Armed Forces have been deployed to destroy the 1 Gorge Dam and flood the valley. A PMC has been hired to protect it. There's only 1 objective, but some assets in the AO that can act as force multiplyers."\
