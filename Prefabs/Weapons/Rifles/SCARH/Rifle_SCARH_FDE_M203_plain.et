@@ -1,0 +1,32 @@
+GenericEntity : "{EC0B2A922E4AD1AB}Prefabs/Weapons/Rifles/SCARH/Rifle_SCARH_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{61785E090D534961}" {
+     AttachmentSlot InventoryStorageSlot Foregrip {
+      Offset 0 0.0324 -0.12
+      Prefab "{852FB88E8AD446C8}Prefabs/Weapons/Attachments/Underbarrel/UGL_RHS_M203_NoSight.et"
+     }
+    }
+    AttachmentSlotComponent "{61785E090D53496B}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot TopRail {
+     }
+    }
+    AttachmentSlotComponent "{61785E090D53496F}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{626E2147F1287008}" {
+       AttachmentSlot InventoryStorageSlot "{626E2147FFDB258A}" {
+       }
+      }
+     }
+     MagazineTemplate "{C27B62CD736C267A}Prefabs/Weapons/Magazines/762x51_SCARH_FDE_20rnd/Magazine_762x51_SCARH_FDE_20rnd_4Ball_1Tracer_M80A1_M62.et"
+    }
+   }
+  }
+ }
+}

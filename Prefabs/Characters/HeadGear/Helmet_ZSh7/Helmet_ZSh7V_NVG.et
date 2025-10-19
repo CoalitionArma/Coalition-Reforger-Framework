@@ -1,3 +1,12 @@
 GameEntity : "{569234269E1D33FC}Prefabs/Characters/HeadGear/Helmet_ZSh7/Helmet_ZSh7_base.et" {
  ID "50D485E1435D6C72"
+ components {
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo NVG {
+     Prefab "{08051B7C4144F631}Prefabs/Items/Equipment/Nightvision/NVG_GEO-ONV1-01/NVG_GEO-ONV1-01.et"
+    }
+   }
+  }
+ }
 }
