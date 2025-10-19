@@ -162,6 +162,8 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 	// Performance: cache entity references to avoid repeated FindEntityByName calls
 	protected ref map<string, IEntity> m_mBoundaryEntityCache;
 	
+	protected bool m_bUpdateStageTimer = false;
+	
 	//------------------------------------------------------------------------------------------------
 	override protected void OnPostInit(IEntity owner)
 	{
@@ -183,10 +185,24 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 		// Delay initialization to ensure world is fully loaded
 		GetGame().GetCallqueue().CallLater(InitializeBoundaries, 3000, false);
 		// Start monitoring safestart (single call, not repeating)
 		GetGame().GetCallqueue().CallLater(MonitorSafestart, 5000, false);
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		if (m_fUpdateBuffer >= 1)
+		{
+			if (m_bUpdateStageTimer)
+				UpdateStageTimer();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
 	}
 	
 	//-----------------------------------------------------------------------------------------------
@@ -387,7 +403,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 		// Clear any existing timer before starting new one
 		if (countDownActive)
 		{
-			GetGame().GetCallqueue().Remove(UpdateStageTimer);
+			m_bUpdateStageTimer = false;
 			countDownActive = false;
 			if (m_bDebugEnabled) Print("[CRF_MapStagingComponent] Cleared existing timer in StartStaging");
 		}
@@ -408,7 +424,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 			m_iCurrentStage + 1, m_sStageText, m_iCurrentTimer));
 		
 		Replication.BumpMe();
-		GetGame().GetCallqueue().CallLater(UpdateStageTimer, 1000, true); // Simplified timer call
+		m_bUpdateStageTimer = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -423,7 +439,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 			
 		if (!countDownActive)
 		{
-			GetGame().GetCallqueue().Remove(UpdateStageTimer);
+			m_bUpdateStageTimer = false;
 			return;
 		}
 
@@ -437,7 +453,7 @@ class CRF_MapStagingComponent : SCR_BaseGameModeComponent
 
 		if (m_iCurrentTimer <= 0)
 		{
-			GetGame().GetCallqueue().Remove(UpdateStageTimer);
+			m_bUpdateStageTimer = false;
 			countDownActive = false;
 			m_sTimerText = ""; // Clear timer text when stage completes
 			Replication.BumpMe();

@@ -1,0 +1,91 @@
+GameEntity : "{ABCD327C7E4EEE01}Prefabs/Characters/HeadGear/Helmet_LShZ/Helmet_LShZ_base.et" {
+ ID "50D485E1435D6C72"
+ components {
+  InventoryItemComponent "{5244E4431E28A759}" {
+   Attributes SCR_ItemAttributeCollection "{52C8D601873E6784}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_LShZ_3_mod3_Name"
+    }
+   }
+  }
+  MeshObject "{5112706CD4157AE0}" {
+   Object "{E4FA432359C4BB6E}Assets/Characters/HeadGear/Helmet_Kiver_RSP/kiver_rsp_item.xob"
+  }
+  RHS_HelmetNodeStorageComponent "{5DB13C5777E6E695}" {
+   Attributes SCR_ItemAttributeCollection "{5DB13C5760610D64}" {
+    ItemDisplayName UIInfo "{5DB13C575E2AFE37}" {
+     Name "#RHS-Headgear_kiver_rsp_Name"
+     Description "#RHS-Headgear_kiver_rsp_Description"
+    }
+    CustomAttributes {
+     RHS_CustomAttributes "{5DB8F5B9ACB547EA}" {
+      m_sShortName "#RHS-Headgear_kiver_rsp_Name"
+     }
+    }
+   }
+  }
+  SCR_ItemOutfitFactionComponent "{618AD7BB075F1045}" {
+   m_OutfitDataHolder SCR_OutfitFactionDataHolder "{61A8D96650B5696D}" {
+    m_aOutfitFactionData {
+     SCR_OutfitFactionData "{61A8D96650441EDE}" {
+      m_AffiliatedFactionKey "RHS_AFRF"
+     }
+    }
+   }
+  }
+  BaseLoadoutClothComponent "{5112706CD4157AF8}" {
+   Slots {
+    RHS_LoadoutSlotInfo MeshCover {
+     Enabled 1
+     AreaType RHS_LoadoutKiverCoverSlotArea "{663E3E1D592C9BA3}" {
+     }
+    }
+    RHS_LoadoutSlotInfo Masks {
+     Prefab "{1D5FE5C1F89787E4}Prefabs/Characters/HeadGear/Mask_6B49/Mask_6b49_Collar_CDFSpec.et"
+    }
+    RHS_LoadoutSlotInfo BackVelcro {
+     PivotID "Head"
+     Offset 0 0.0962 0.1179
+     Angles 2.8677 1 0.1005
+     Prefab "{4C5535098D6DAC7C}Prefabs/Items/Equipment/Nightvision/Vlite/vlite.et"
+     m_eSlotState UNAVAILABLE
+     m_fMorphValue 0.7
+    }
+    RHS_LoadoutSlotInfo NVG {
+     Offset -0.001 0.1461 -0.1517
+     Angles -9.6365 180 0
+     Prefab "{B7BA7694F821F556}Prefabs/Items/Equipment/Nightvision/PVS14/NVG_PVS14Dual.et"
+    }
+    RHS_LoadoutSlotInfo Headset {
+     Offset 0 -0.0103 0.0026
+    }
+    RHS_LoadoutSlotInfo Rail_Right {
+     Offset -0.1099 0.1306 -0.0233
+     Angles 0 180 -3.0925
+    }
+    RHS_LoadoutSlotInfo Rail_Left {
+     Offset 0.1175 0.1375 -0.0217
+    }
+    RHS_LoadoutSlotInfo TopVelcro {
+     Offset 0 0.2093 -0.0052
+     Prefab "{8F54EE49D3317266}Prefabs/Items/Equipment/Nightvision/VipLight/VipLight.et"
+     m_eSlotState UNAVAILABLE
+    }
+    RHS_LoadoutSlotInfo LeftVelcro {
+     Offset 0.0769 0.179 -0.0071
+     Angles 41.1276 88.109 0.0334
+     m_eSlotState UNAVAILABLE
+     m_fMorphValue 0.3
+    }
+    RHS_LoadoutSlotInfo RightVelcro {
+     Offset -0.0794 0.1788 -0.0093
+     Angles 39.7153 -89.56229 0.3021
+     m_eSlotState UNAVAILABLE
+     m_fMorphValue 0.3
+    }
+   }
+   WornModel "{7C007C9A626F48A9}Assets/Characters/HeadGear/Helmet_Kiver_RSP/kiver_rsp.xob"
+   ItemModel "{E4FA432359C4BB6E}Assets/Characters/HeadGear/Helmet_Kiver_RSP/kiver_rsp_item.xob"
+  }
+ }
+}

@@ -60,6 +60,12 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	int m_iTimeToWinIteratorInt = m_iTimeToWin;
 	int m_iInitialTimeIteratorInt = m_iInitialTime;
 	
+	bool m_bStartGame = false;
+	bool m_bInitialMarkerCheck = false;
+	bool m_bZoneUpdateChecks = false;
+	int m_iZoneIndex;
+	int m_iZoneIndex2;
+	
 	//------------------------------------------------------------------------------------------------
 
 	// override/static functions
@@ -86,16 +92,35 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	override protected void OnPostInit(IEntity owner)
 	{
 		super.OnPostInit(owner);
-		
-		GetGame().GetCallqueue().CallLater(CheckAddInitialMarkers, 1000, true);
+		SetEventMask(owner, EntityEvent.FIXEDFRAME);
 
 		//--- Server only
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 		
 		SetupZoneStatus();
-		GetGame().GetCallqueue().CallLater(UpdateZones, 1000, true);
-		GetGame().GetCallqueue().CallLater(StartGame, 1000, true);
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		if (m_fUpdateBuffer >= 1)
+		{
+			m_fUpdateBuffer = 0;
+			
+			if (!m_bInitialMarkerCheck)
+				CheckAddInitialMarkers();
+			if (RplSession.Mode() == RplMode.Client)
+				return;
+			UpdateZones();
+			if (!m_bStartGame)
+				StartGame();
+			if (m_bZoneUpdateChecks)
+				UnlockZone(m_iZoneIndex, m_iZoneIndex2);
+		}
+		m_fUpdateBuffer += timeSlice;
+		
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -114,7 +139,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		
 		gameModePlayerComponent.UpdateMapMarkers(m_aZonesStatus, m_aZoneObjectNames, m_BluforSide, m_OpforSide);
 		
-		GetGame().GetCallqueue().Remove(CheckAddInitialMarkers);
+		m_bInitialMarkerCheck = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -162,9 +187,9 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 		UpdateClients();
 		Replication.BumpMe();
 		
-		GetGame().GetCallqueue().Remove(StartGame);
-		
 		GetGame().GetCallqueue().CallLater(ResetMessage, 10000);
+		
+		m_bStartGame = true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -410,7 +435,9 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 	//------------------------------------------------------------------------------------------------
 	void UnlockZoneDelay(int zoneIndex, int zoneIndexTwo)
 	{	
-		GetGame().GetCallqueue().CallLater(UnlockZone, 1000, true, zoneIndex, zoneIndexTwo);
+		m_iZoneIndex = zoneIndex;
+		m_iZoneIndex2 = zoneIndexTwo;
+		m_bZoneUpdateChecks = true;
 	};
 	
 	//------------------------------------------------------------------------------------------------
@@ -455,7 +482,7 @@ class CRF_FrontlineGamemodeManager: SCR_BaseGameModeComponent
 			
 			UpdateClients();
 			Replication.BumpMe();
-			GetGame().GetCallqueue().Remove(UnlockZone);
+			m_bZoneUpdateChecks = false;
 			return;
 		};
 

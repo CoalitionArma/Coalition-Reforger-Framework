@@ -156,8 +156,8 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 			SCR_GroupsManagerComponent groupsMan = SCR_GroupsManagerComponent.GetInstance();
-			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 2000, false, playerId, entity);
-			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 2000, false, entity);
+			GetGame().GetCallqueue().CallLater(groupsMan.TuneFreqDelayWithPresets, 500, false, playerId, entity);
+			GetGame().GetCallqueue().CallLater(pc.InitializeRadios, 500, false, entity);
 			pc.InitializeRadioFromServer();
 		}
 	}
@@ -1242,6 +1242,16 @@ class CRF_GearscriptManager : ScriptComponent
 	{
 		WeaponComponent weaponComp = WeaponComponent.Cast(entity.FindComponent(WeaponComponent));
 		return weaponComp && WEAPON_TYPES_THROWABLE.Contains(weaponComp.GetWeaponType());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/*
+	Public method to insert an item into a storage and keep the same storage it would usually be assigned to
+	*/
+	void InsertInventoryItemPublic(IEntity item, SCR_CharacterInventoryStorageComponent inventory, 
+		SCR_InventoryStorageManagerComponent inventoryManager, CRF_EGearRole role = 0, bool isAssistant = false, bool isThrowable = false)
+	{
+		InsertInventoryItem(item, inventory, inventoryManager, role, isAssistant, isThrowable);
 	}
 
 	//------------------------------------------------------------------------------------------------
