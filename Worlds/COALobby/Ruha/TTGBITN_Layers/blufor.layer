@@ -1,0 +1,67 @@
+Vehicle MH47G_Block1 : "{03300A0463827C4B}Prefabs/Vehicles/Helicopters/H47/MH47G_Block2.et" {
+ components {
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo RightGun {
+     Prefab "{4D4071494DDE66DD}Prefabs/Vehicles/Helicopters/H47/WeapSystems/H47_M134_gunner_right_LaserDes.et"
+    }
+    RegisteringComponentSlotInfo LeftGun {
+     Prefab "{5B4FE5E19DE64D74}Prefabs/Vehicles/Helicopters/H47/WeapSystems/H47_M134_gunner_left_LaserDes.et"
+    }
+    RegisteringComponentSlotInfo AftRightGun {
+     Enabled 0
+    }
+    RegisteringComponentSlotInfo AftLeftGun {
+     Enabled 0
+     Prefab ""
+    }
+   }
+  }
+ }
+ coords 6506.095 96.689 1292.336
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 6523.56 96.656 1251.927
+ m_aUnitPrefabSlots + {
+  "{E3D72085967E1840}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_JTAC_P.et"
+ }
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords -0.76 10.579 -4.026
+   m_aUnitPrefabSlots {
+    "{D206D6B07F9B34F7}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MO_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et" "{4F201B6446013397}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Medic_P.et"
+   }
+   {
+    SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     coords 0.883 -10.579 -9.795
+     m_aUnitPrefabSlots {
+      "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{690B6588C8F675A4}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AR_P.et" "{F8F683DD0F361239}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAR_P.et" "{244B3033D92FF7D0}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMAT_P.et" "{1E08ED0385C765CC}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_TL_P.et" "{D4DB370FB7ED69BA}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AT_P.et" "{4526D15A702D0E27}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AAT_P.et" "{DCA2E07271574B14}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Sniper_P.et" "{85CCCDA106719506}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Demo_P.et"
+     }
+     {
+      SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       coords 0.513 0 -4.799
+       m_aUnitPrefabSlots {
+        "{478FBA09EDDFC439}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehLead_P.et" "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{9E133FF6147DCF5A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HAT_P.et" "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et" "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et" "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et" "{B6AEA6F0469C66DD}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HMG_P.et" "{B6AEA6F0469C66DD}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HMG_P.et" "{997F8FE3C2C23C6C}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHMG_P.et" "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et"
+       }
+       {
+        SCR_AIGroup : "{ABEBD4386CA25E24}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_AirCrew_p.et" {
+         coords 29.953 0 23.445
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{7BDAD0F4A6195C01}PrefabsEditable/SupportStationSystems/E_SupportStationSystem_Repair_Helipad_BoundingBox.et" {
+ {
+  coords 6555.417 96.689 1275.666
+  scale 1.25
+ }
+ {
+  coords 6505.395 96.689 1292.581
+  scale 1.25
+ }
+}

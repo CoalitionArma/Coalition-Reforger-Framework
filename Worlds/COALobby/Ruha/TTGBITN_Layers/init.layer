@@ -1,0 +1,120 @@
+SCR_AIWorld : "{65DEC16960498027}Prefabs/AI/SCR_AIWorld_Ruha.et" {
+ coords 3466.149 82.781 7126.081
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Overcast"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 1
+  }
+ }
+ coords 3474.706 82.781 7126.906
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Leftover guerillas from the 2009 Civil War in this backwoods region of Chernarus have been left to their own devices for too long and have overstayed their welcome. They recently kidnapped a cabinet member of the government as he was passing through the region and are holding him hostage in their sawmill-turned fortress. Time on the ransom is running out, and a detachment from the 3rd Regiment of Internal Defense has been dispatched to rescue the official and stomp out the guerillas in this region, for once and for all."\
+   ""\
+   "BLUFOR Composition: Air Assualt SpecialOps"\
+   "BLUFOR Assets: 1x MH47 Minigun"\
+   ""\
+   "OPFOR Composition: Infantry"\
+   "OPFOR Assets: None"\
+   ""\
+   "Time: 45m"\
+   ""\
+   "Weather: Overcast"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Rescue the hostage by gaining possesion over him and moving him away from the sawmill to safety."\
+   ""\
+   "Watch your fire, if the hostage is killed, the mission is over."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Defend the hostage without killing him. The hostage cannot leave the sawmill walls. "\
+   "If OPFOR kills the hostage, it's an instant loss."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Please set month to January in gamemaster and the date to a night that has a new moon to make it dark. The darkness is an integral part of the mission balance and it'll be thrown off if it's a normal bright reforger night."\
+   ""\
+   "OPFOR can obviously have squads removed to fit player count. BLUFOR will need members of the squads, riflemen or other less important positions shaved off to hit target player count."
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{667B7B66AA36C949}" {
+   m_sTitle "CIV Objectives"
+   m_sTextData "Cooperate with OPFOR forces, but only as much as neccesary to survive. You cannot leave the sawmill walls, even if ordered to, if you are in the posession of OPFOR. "\
+   "Cooperate with BLUFOR forces for your rescue, if you are in their posession you can leave the walls of the compound."
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{9C77704256E7CA8D}Configs/Gearscripts/Custom/fluff/Chernarussian/CRF_GS_CDF_SPECOPS_v2.conf"
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{F0EA113B002D62AD}Configs/Gearscripts/Custom/fluff/Chernarussian/CRF_GS_CHDKZ_NIGHT.conf"
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{754530435487E471}Configs/Gearscripts/Custom/fluff/CRF_GS_CIV_TTGB_CM_fluff.conf"
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "STANDOFF TEAM"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "ASSUALT TEAM"
+       }
+       SCR_CallsignInfo "{667B7B68690AE6A8}" {
+        m_sCallsign "TH1"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "MEDIC"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{667B7B684AB31CC7}" {
+        m_sCallsign "Cell 3"
+       }
+       SCR_CallsignInfo "{667B7B684B7B1C8B}" {
+        m_sCallsign "Cell 4"
+       }
+       SCR_CallsignInfo "{667B7B684B4BBB50}" {
+        m_sCallsign "Cell 5"
+       }
+       SCR_CallsignInfo "{667B7B684B4C2423}" {
+        m_sCallsign "Cell 6"
+       }
+       SCR_CallsignInfo "{667B7B685FB62F6A}" {
+        m_sCallsign "Cell 7"
+       }
+       SCR_CallsignInfo "{667B7B685F8533F8}" {
+        m_sCallsign "Cell 8"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

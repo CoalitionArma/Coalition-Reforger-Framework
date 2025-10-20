@@ -1,0 +1,73 @@
+GenericEntity : "{D495DCDE5D8148B8}Prefabs/Weapons/HeavyWeapons/M134/M134_Turret_Base.et" {
+ ID "629D584AB4B5971F"
+ components {
+  SCR_BaseCompartmentManagerComponent "{667B7B6274C5EF3A}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{667B7B6274C5EF3E}" {
+     ContextName "Gunner"
+     OpenDoorAction SCR_GetInUserAction "{667B7B6274C5EF3C}" {
+      ParentContextList {
+       "gunner" "right_gun"
+      }
+      UIInfo SCR_ActionContextUIInfo "{667B7B6274C5F0C1}" {
+      }
+     }
+     CloseDoorAction SCR_GetOutAction "{667B7B6274C5F0C7}" {
+      ParentContextList {
+       "rearm_weapon"
+      }
+      UIInfo SCR_ActionContextUIInfo "{667B7B6274C5F0C6}" {
+      }
+     }
+     EntryPositionInfo PointInfo "{667B7B6274C5F0CB}" {
+      Offset 0 -0.5894 -0.787
+     }
+     ExitPositionInfo PointInfo "{667B7B6274C5F0CA}" {
+      Offset 0 -0.5894 -0.787
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     FakeDoor 1
+     AccessibilitySettings CompartmentAccessibilityContext "{667B7B6274C5F0CF}" {
+      BBHalfExtents 0.1 0.1 0.005
+      TraceOffset 0 0.2 0.5
+      ExcludePhysicsLayer 50331648
+     }
+    }
+   }
+   CompartmentSlots {
+    TurretCompartmentSlot Gunner {
+     CompartmentAction SCR_GetInUserAction "{667B7B6274C5F0D1}" {
+      ParentContextList {
+       "rearm_weapon"
+      }
+      UIInfo SCR_ActionContextUIInfo "{667B7B6274C5F0D7}" {
+      }
+     }
+     GetOutAction SCR_GetOutAction "{667B7B6274C5F0D6}" {
+      UIInfo SCR_ActionContextUIInfo "{667B7B6274C5F0D5}" {
+      }
+     }
+     JumpOutAction SCR_JumpOutAction "{667B7B6274C5F0DD}" {
+      ParentContextList {
+       "rearm_weapon"
+      }
+      UIInfo SCR_ActionContextUIInfo "{667B7B6274C5F0DC}" {
+      }
+     }
+    }
+   }
+  }
+  WeaponComponent "{629D584A845F8B28}" {
+   components {
+    AttachmentSlotComponent "{667B7B627EA345F8}" {
+     AttachmentSlot InventoryStorageSlot LaserDes {
+      Offset 0 0.36 0.07
+      Angles 0 0 20
+      Prefab "{0FFFB0BCE1A21A2E}Prefabs/Weapons/Attachments/Lasers/anpeq16/Laser_ANPEQ16.et"
+     }
+    }
+   }
+  }
+ }
+}
