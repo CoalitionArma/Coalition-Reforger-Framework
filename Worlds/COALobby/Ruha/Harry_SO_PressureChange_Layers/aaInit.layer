@@ -15,7 +15,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Competing seperatist groups are vying for contorl in the area. Blufor has deployed recon teams to find, and destroy two targets in the area by calling in indirect fire. "\
+   m_sTextData "Competing separatist groups are vying for control in the area. Blufor has deployed recon teams to find, and destroy two targets in the area by calling in indirect fire. "\
    ""\
    "BLUFOR Composition: Inf"\
    "BLUFOR Assets: MMGs, Mortars, Eng Trucks"\
