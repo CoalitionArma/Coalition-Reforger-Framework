@@ -1112,6 +1112,16 @@ GenericEntity DamPallets1 : "{1112756E8A13445B}Prefabs/Props/Industrial/Pallets/
  coords 1735.109 90 707.765
  angleY 0
 }
+GenericEntity : "{14225F5BB48F0C00}Prefabs/Props/Construction/ContainerMetal_01/ContainerMetal_01_base.et" {
+ coords 1723.393 83.533 639.446
+ angleY -87.667
+}
+GenericEntity : "{1A1CE09F7BCA6650}Prefabs/Props/Wrecks/S105_wreck_static.et" {
+ coords 1763.435 86.586 586.39
+ angleX 6.905
+ angleY -2.952
+ angleZ -18.19
+}
 DecalEntity CrashFireDecal : "{1B64597BC875F398}Prefabs/Decals/Logistics/Explosion/Decal_Logistics_Fire_Tire_01.et" {
  coords 2179.885 -0.019 839.48
  angleX -89.972
@@ -1125,8 +1135,33 @@ DecalEntity CrashBloodDecal2 : "{1DC3A792132D86CB}Prefabs/Decals/Blood/BloodStai
  angleZ 174.359
  scale 2.19
 }
-GenericEntity DamMREs : "{207B5E830AB77CB8}Prefabs/Compositions/Misc/SubCompositions/Decorations/CardboardBox_MRE_US_01.et" {
- coords 1728.469 83.208 685.249
+$grp GenericEntity : "{207B5E830AB77CB8}Prefabs/Compositions/Misc/SubCompositions/Decorations/CardboardBox_MRE_US_01.et" {
+ DamMREs {
+  coords 1728.469 83.208 685.249
+ }
+ DamMREs2 {
+  coords 1699.163 83.074 666.213
+  angleY -179.918
+  {
+   GenericEntity {
+    ID "5CB0F584A9457E98"
+    coords -0.181 0.907 1.911
+   }
+   GenericEntity {
+    ID "5CB0F584A9457E92"
+    coords -0.13 0.823 1.869
+   }
+  }
+ }
+}
+GenericEntity : "{25D05A17E3C163F7}Prefabs/Compositions/Misc/CustomEntities/DestructionEntities/BarrelFuel_01_closed_old_CompositionDestruction.et" {
+ components {
+  Hierarchy "{5CB0D990CB813A4F}" {
+   Enabled 1
+  }
+ }
+ coords 1699.355 83.074 670.185
+ angleY 133.598
 }
 DecalEntity CrashOilDecal1 : "{2840BA559B15F6F2}Prefabs/Decals/Fluids/Decal_PetrolStain_01_V3.et" {
  coords 2180.759 -0.019 837.381
@@ -1134,9 +1169,18 @@ DecalEntity CrashOilDecal1 : "{2840BA559B15F6F2}Prefabs/Decals/Fluids/Decal_Petr
  angleZ 91.714
  scale 3
 }
-GenericEntity DamBoxes : "{2BE613DDC7EA3851}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V4_base.et" {
- coords 1725.334 83.327 678.426
- angleY 48.728
+GenericEntity : "{2B24356C351A2538}Prefabs/Props/Wrecks/M113_wreck.et" {
+ coords 1800.31 83.328 713.413
+}
+$grp GenericEntity : "{2BE613DDC7EA3851}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V4_base.et" {
+ DamBoxes {
+  coords 1725.334 83.327 678.426
+  angleY 48.728
+ }
+ DamBoxes3 {
+  coords 1702.308 83.635 673.031
+  angleY -131.19
+ }
 }
 StaticModelEntity DamManhole : "{2D9FE00A724CD81B}Prefabs/Structures/Infrastructure/Sewage/ManholeCover_E_01/ManholeCover_E_01.et" {
  coords 1730.954 83.073 698.101
@@ -1170,17 +1214,50 @@ $grp GenericEntity : "{31A455F7FD8DCE84}Prefabs/Props/Military/Sandbags/Sandbag_
   coords 1729.067 83.21 663.834
   angleY 89.875
  }
+ DamSandbags10 {
+  coords 1698.562 83.073 680.977
+  angleY -90.043
+ }
+ DamSandbags11 {
+  coords 1698.565 83.073 677.715
+  angleY -90.043
+ }
+ DamSandbags13 {
+  coords 1698.261 83.073 669.483
+  angleY -90.043
+ }
+ DamSandbags12 {
+  coords 1698.263 83.073 666.247
+  angleY -90.043
+ }
+ DamSandbags14 {
+  coords 1698.265 83.073 663.164
+  angleY -90.043
+ }
 }
 StaticModelEntity GuardGooner : "{31F69EA0C0143F1D}Prefabs/Compositions/Misc/SubCompositions/Furniture/Bed_Notebook_US_01.et" {
  coords 1722.762 83.084 713.257
  angleY -177.504
 }
+GenericEntity : "{342E852E9A1847EA}Prefabs/Props/Industrial/Repair/VehicleGarbage_01_pile_medium.et" {
+ coords 1838.71 85.126 731.822
+ angleX 7.841
+ scale 1.54
+}
 GenericEntity TinyChapelClimb1 : "{36E65E74067C13F1}Prefabs/Props/Industrial/Pallets/MarsBoxContainer_01_dst.et" {
  coords 1735.468 88.503 707.802
  scale 1.12
 }
+GenericEntity : "{388B774519BD6294}Prefabs/Props/Wrecks/T62_wreck.et" {
+ coords 1748.327 83.666 576.504
+ angleZ -8.121
+}
 GenericEntity DamBoxes2 : "{39C4DF0581F3283F}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/EquipmentBoxStack_01_V1_base.et" {
  coords 1720.126 83.254 685.408
+}
+GenericEntity : "{40EB9EC77389727C}Prefabs/Props/Wrecks/BMP1_door.et" {
+ coords 1799.927 85.267 736.739
+ angleX 7.322
 }
 GenericEntity BeachBlanket : "{47AE94F99DF6445F}Prefabs/Props/Recreation/Beach/BlanketBeach_01/BlanketBeach_01_brown.et" {
  coords 1772.596 77.456 685.775
@@ -1191,6 +1268,21 @@ GenericEntity BeachBlanket : "{47AE94F99DF6445F}Prefabs/Props/Recreation/Beach/B
 StaticModelEntity DamSiren : "{48BD7D41CEBA6E0D}Prefabs/Structures/Military/Sirens/SirenMilitary_E_01/SirenMilitary_E_01.et" {
  coords 1725.156 4.556 712.984
 }
+GenericEntity : "{4A0EB5570B2BB36C}Prefabs/Props/Wrecks/Ural4320_wreck.et" {
+ coords 1759.304 82.026 618.503
+ angleX -4.429
+ angleY -73.393
+ angleZ 19.325
+}
+GenericEntity : "{4BE795374BE3D67E}Prefabs/Props/Industrial/BarrelFuel_01_closed.et" {
+ components {
+  Hierarchy "{5CB0D990CB813AB7}" {
+   Enabled 1
+  }
+ }
+ coords 1699.35 83.074 670.822
+ angleY -171.237
+}
 $grp GenericEntity : "{4F602EFD9A6384AD}Prefabs/Compositions/Misc/SubCompositions/Utility/Tire_Stack_Sign_01.et" {
  DamStop1 {
   coords 1710.31 82.619 723.025
@@ -1200,6 +1292,9 @@ $grp GenericEntity : "{4F602EFD9A6384AD}Prefabs/Compositions/Misc/SubComposition
   coords 1715.219 84.082 638.235
   angleY -5.76
  }
+}
+GenericEntity : "{50A752B7D5E679A2}Prefabs/Props/Industrial/Repair/GasWelder_01.et" {
+ coords 1809.449 84.426 723.855
 }
 StaticModelEntity DamPipeManhole : "{56CF791F12BB17B0}Prefabs/Structures/Infrastructure/Piping/DieselPipe_01_terminator_low.et" {
  coords 1734.539 81.965 698.939
@@ -1253,6 +1348,36 @@ $grp SCR_DestructibleBuildingEntity : "{5D25659F51FD20D3}Prefabs/Structures/Infr
   scale 0.46
  }
 }
+$grp GenericEntity : "{5D54B7840F14178E}Prefabs/Props/VehicleParts/Tires/Tire_M998.et" {
+ {
+  components {
+   Hierarchy "{5CB0D990CB813A47}" {
+    Enabled 1
+   }
+  }
+  coords 1699.396 83.237 669.592
+  angleX -47.082
+  angleY -166.824
+  angleZ 0.081
+ }
+ {
+  components {
+   Hierarchy "{5CB0D990CB813A42}" {
+    Enabled 1
+   }
+  }
+  coords 1699.305 83.958 670.81
+  angleX -0.058
+  angleY -162.732
+  angleZ 0.055
+ }
+}
+GenericEntity : "{630C2872BB87F44F}Prefabs/Props/Construction/ConcretePipe/ConcretePipe_01_Short_Pile.et" {
+ coords 1743.018 82.232 709.873
+ angleX 9.578
+ angleZ 3.557
+ scale 1.51
+}
 $grp GenericEntity : "{64C9C1D1C2C1B38D}Prefabs/Props/Infrastructure/Roadblocks/RoadBlock_01.et" {
  DamRoadblockGate1 {
   coords 1710.469 82.668 719.958
@@ -1285,6 +1410,18 @@ DecalEntity CrashBloodDecal1 : "{71979372AFE909E5}Prefabs/Decals/Blood/BloodStai
  angleZ 91.714
  scale 1.5
 }
+GenericEntity : "{84CBCE9163176B3E}Prefabs/Props/Wrecks/S105_wreck.et" {
+ coords 1757.661 85.165 583.558
+ angleX -15.198
+ angleY -115.059
+}
+GenericEntity : "{8751F77B1038FC72}Prefabs/Props/Industrial/Repair/VehicleGarbage_01_pile_large.et" {
+ coords 1812.04 84.609 726.588
+ angleY -35.381
+}
+GenericEntity : "{88DB208DB565CA68}Prefabs/Models/tem_forklift.et" {
+ coords 1722.415 83.474 670.764
+}
 GenericEntity ObjWarningSign5 : "{8C6FFB9A4FF77DA3}Prefabs/Props/Signs/Industrial/SignIndustrial_10x30_1_Electricity.et" {
  components {
   SCR_DestructionMultiPhaseComponent "{5624A88D86EFE8BA}" {
@@ -1307,11 +1444,27 @@ GenericEntity DamRadarActual : "{A528F04F41F2A2D0}Prefabs/Structures/Military/Ra
  coords 1727.914 88.954 721.356
  angleY -175.282
 }
+GenericEntity : "{A9B2231FF6B31E8D}PrefabLibrary/Props/Forest/WoodPile_01_End_B.et" {
+ coords 1815.921 84.753 728.723
+ angleX 1.105
+ angleY 54.204
+ angleZ -0.236
+}
 GenericEntity DamPalletAmmo : "{AE0FFC699F429214}Prefabs/Props/Military/Camps/PalletAmmo_01_US.et" {
  coords 1719.851 83.442 675.088
 }
 GenericEntity DamDrums : "{B350840088390760}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Stack_01.et" {
  coords 1727.939 83.25 674.749
+ {
+  GenericEntity {
+   ID "5E64C0FA62CC25F7"
+   coords 0.415 0.373 1.013
+  }
+  GenericEntity {
+   ID "5E64C0FA62CC72A9"
+   coords 0.415 0.932 -0.657
+  }
+ }
 }
 $grp GenericEntity : "{B3BCE4B6920ED5C0}Prefabs/Structures/Signs/Military/Sign_AmmoStorage_US_01.et" {
  AmmoSign {
@@ -1333,10 +1486,31 @@ $grp GenericEntity : "{B3BCE4B6920ED5C0}Prefabs/Structures/Signs/Military/Sign_A
 GenericEntity DamDrumsTires : "{B423187F6C8DEFFD}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Group_Tire_01.et" {
  coords 1727.983 83.219 681.545
  angleY -75.594
+ {
+  GenericEntity {
+   ID "5CB0D990CB813A99"
+   coords -0.317 -0.099 -0.041
+  }
+  GenericEntity {
+   ID "5CB0D990CB813A9D"
+   coords 0.044 0.864 0.051
+  }
+ }
+}
+GenericEntity : "{B557358F8F64AE31}Prefabs/Props/Industrial/Repair/HydraulicCarJack_01.et" {
+ coords 1812.452 84.468 723.995
 }
 StaticModelEntity AmmoAntenna : "{B9AEDBE988F20A1A}Prefabs/Structures/Infrastructure/Towers/AntennaR404_01/AntennaR404_01.et" {
  coords 1697.791 85.879 482.828
  angleY -27.047
+}
+SCR_DestructibleBuildingEntity : "{BFF05C886ECC53BB}Prefabs/Structures/Commercial/FuelStations/FuelStation_E_01/FuelStation_E_01_V1_ruha.et" {
+ coords 1714.472 1.274 825.058
+ angleY 19.796
+}
+GenericEntity : "{C707F02B5A64AA08}Prefabs/Props/Wrecks/BRDM2_wreck.et" {
+ coords 1801.585 84.055 725.605
+ angleX 2.347
 }
 GenericEntity DamDrumRadio : "{C8A9F7FDDF3CE851}Prefabs/Compositions/Misc/SubCompositions/Decorations/Barrel_Radio_01.et" {
  coords 1729.017 83.219 679.015
@@ -1347,6 +1521,9 @@ DecalEntity CrashCigarButtsDecal : "{CA8AB522F7C90A28}Prefabs/Decals/Miscellaneo
  angleX -90
  angleY 0
  angleZ 91.714
+}
+GenericEntity : "{CB033C658E372CED}Prefabs/Props/Construction/PlankPile/PlankPile_01_Large.et" {
+ coords 1729.054 83.22 644.638
 }
 $grp GenericEntity : "{CE65A38CDE9653A8}Prefabs/Structures/Recreation/Beach/WaterSlide_01.et" {
  DamSlide {
@@ -1365,16 +1542,36 @@ StaticModelEntity AmmoHelipad : "{CF1FFB7BAA1A0769}Prefabs/Structures/Military/C
 SCR_DestructibleEntity DamWire : "{CF2D97841C514559}Prefabs/Compositions/Misc/SubCompositions/Decorations/BarbedCoil_Light_USSR_01.et" {
  coords 1727.274 0.012 665.645
 }
+GenericEntity : "{DA861447E6D426AE}Prefabs/Props/Industrial/Repair/VehicleGarbage_01_pile_small.et" {
+ coords 1837.011 84.715 729.449
+}
 SCR_DestructibleBuildingEntity AmmoDump : "{DAC148D18C3835B9}Prefabs/Structures/Military/Bunkers/ShelterMilitary_E_01/ShelterMilitary_E_01_long.et" {
  coords 1792.039 -0.091 469.977
  angleY -154.945
  scale 1.048
 }
-GenericEntity DamDrumPallet : "{DB4F61D5F37432F7}Prefabs/Props/Military/Camps/PalletFuel_01.et" {
- coords 1725.355 83.272 670.994
+$grp GenericEntity : "{DB4F61D5F37432F7}Prefabs/Props/Military/Camps/PalletFuel_01.et" {
+ DamDrumPallet {
+  coords 1725.355 83.307 670.994
+ }
+ DamDrumPallet3 {
+  coords 1698.632 83.073 689.499
+ }
+ DamDrumPallet2 {
+  coords 1698.61 83.073 691.577
+ }
 }
-GenericEntity DamHellfires : "{E2B01D303DD412D7}Prefabs/Props/Military/AmmoBoxes/AmmoBox_P150_Hydra_Container_US/AmmoBox_P150_Hydra_Container_Pallet_US.et" {
- coords 1727.81 83.168 691.598
+GenericEntity : "{DEB57429CD49782D}Prefabs/Props/Construction/GravelPile_01/SandPile_01.et" {
+ coords 1719.407 83.6 634.13
+}
+$grp GenericEntity : "{E2B01D303DD412D7}Prefabs/Props/Military/AmmoBoxes/AmmoBox_P150_Hydra_Container_US/AmmoBox_P150_Hydra_Container_Pallet_US.et" {
+ DamHellfires {
+  coords 1727.81 83.168 691.598
+ }
+ DamHellfires2 {
+  coords 1699.813 81.963 659.863
+  angleY -179.918
+ }
 }
 $grp GenericEntity : "{E86E2C320BF1F524}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_base.et" {
  DamBunker1 {
