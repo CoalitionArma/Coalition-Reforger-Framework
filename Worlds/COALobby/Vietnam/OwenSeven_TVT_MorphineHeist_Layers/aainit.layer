@@ -13,18 +13,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  }
  coords 3176.985 0.342 565.634
  m_iTimeLimitMinutes 40
- m_bLockSlotsAfterSafestart 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "A local criminal gang needs to destroy evidence located in the police evidence lock-up."\
+   m_sTextData "A local criminal gang needs to destroy evidence located in the police evidence lock-up and escape back to their bar. "\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    ""\
-   "OPFOR Composition: Infantry Platoon"\
-   ""\
-   "Time:"\
-   ""\
-   "Weather:"
+   "OPFOR Composition: Infantry Platoon"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTextData "Defend the evidence cache and don't let them escape if they manage to destroy it. "
