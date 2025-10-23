@@ -1,0 +1,198 @@
+$grp SCR_DestructibleEntity : "{3848EA33A0EAB8F6}Prefabs/Structures/BuildingParts/Industrial/ConcretePlant_E_01_Wall.et" {
+ {
+  coords 3822.33 0.466 585.477
+  angleY 177.532
+ }
+ {
+  coords 3823.941 0.466 585.623
+  angleY -2.132
+ }
+ {
+  coords 3824.87 0.466 569.798
+  angleY -2.763
+ }
+ {
+  coords 3823.26 0.466 569.648
+  angleY 177.12
+ }
+ {
+  coords 3815.886 0.466 578.123
+  angleY -92.538
+ }
+ {
+  coords 3816.01 0.466 576.511
+  angleY 87.579
+ }
+ {
+  coords 3824.198 3.325 585.619
+  angleX -0.046
+  angleY -3.832
+  angleZ -89.73
+  scale 0.91
+ }
+ {
+  coords 3825.258 3.338 569.787
+  angleX -0.046
+  angleY -3.832
+  angleZ -89.73
+  scale 0.91
+ }
+ {
+  coords 3815.91 3.309 577.987
+  angleX 0.27
+  angleY -93.814
+  angleZ -89.954
+  scale 0.88
+ }
+}
+$grp GenericEntity : "{571F3532D1177DA1}Prefabs/Props/Military/Arsenal/WeaponRacks/US/WeaponRackStandArsenal_US.et" {
+ BoltRack {
+  components {
+   SCR_ArsenalDisplayComponent "{589E95D89A024D21}" {
+    m_bArsenalEnabled 0
+   }
+  }
+  coords 3818.375 11.507 569.502
+  angleY -2.996
+ }
+ PumpShotgunRack {
+  components {
+   SCR_ArsenalDisplayComponent "{589E95D89A024D21}" {
+    m_bArsenalEnabled 0
+   }
+  }
+  coords 3816.469 11.507 571.184
+  angleY 86.19
+ }
+ RifleVarietyRack {
+  components {
+   SCR_ArsenalDisplayComponent "{589E95D89A024D21}" {
+    m_bArsenalEnabled 0
+   }
+  }
+  coords 3815.75 11.507 583.173
+  angleY 87.688
+ }
+ DoubleBarrelShotgunRack {
+  components {
+   SCR_ArsenalDisplayComponent "{589E95D89A024D21}" {
+    m_bArsenalEnabled 0
+   }
+  }
+  coords 3817.455 11.507 585.059
+  angleY 176.873
+ }
+}
+GenericEntity : "{76EC4B4AD945FAD3}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_03/LampStreet_E_03_base_addon.et" {
+ coords 3820.737 -2.068 576.583
+}
+$grp GenericEntity : "{78AAA6575E980AE4}Prefabs/Structures/BuildingParts/Doors/DoorSet_PrisonCell_L_EXT_B.et" {
+ {
+  coords 3823.148 11.507 585.542
+  angleY -3.336
+ }
+ {
+  coords 3824.051 11.507 569.74
+  angleY 175.916
+  {
+   GenericEntity {
+    ID "568ABA5656ABBD13"
+   }
+  }
+ }
+ {
+  coords 3815.972 11.507 577.33
+  angleY -93.742
+ }
+}
+SCR_DestructibleBuildingEntity : "{B5963E922C972A4A}Prefabs/Structures/Infrastructure/Landlines/PhoneBooth_E/PhoneBooth_E_01.et" {
+ coords 3339.852 0.292 683.63
+ angleY -7.546
+}
+$grp GenericEntity : "{B61A08FB644D2050}Prefabs/Props/Furniture/LampFluorescent/LampFluorescent_01_exterior.et" {
+ {
+  coords 3823.663 15.256 577.484
+  angleY -2.829
+ }
+ {
+  coords 3327.816 6.849 686.081
+  angleY -1.537
+ }
+ {
+  coords 3324.719 11.144 680.012
+  angleY -93.358
+ }
+ {
+  coords 3327.733 6.831 676.507
+  angleY -5.972
+ }
+ {
+  coords 3323.807 6.826 680.233
+  angleY -3.878
+  {
+   GameEntity {
+    ID "5F0AF54F02189810"
+    coords 0 0 0
+   }
+  }
+ }
+}
+GenericEntity BackwallRack : "{BF01609BADFB3B42}Prefabs/Props/Military/Arsenal/WeaponRacks/US/WeaponRackCabinetArsenal_US.et" {
+ components {
+  SCR_ArsenalDisplayComponent "{589F01C8E2FEDEE5}" {
+   m_bArsenalEnabled 0
+  }
+ }
+ coords 3835.232 11.507 578.573
+ angleY -91.131
+}
+$grp GenericEntity : "{DB6A6F1554219C14}PrefabLibrary/Infrastructure/Lamps/LampStreet_E_03_single/LampStreet_E_03_single.et" {
+ {
+  coords 3584.558 0 706.883
+  angleX 1.559
+  angleY -178.942
+  angleZ -3.676
+ }
+ {
+  coords 3518.333 0 719.994
+  angleX 3.266
+  angleY -147.038
+  angleZ -2.297
+ }
+ {
+  coords 3658.869 0 687.428
+  angleX -1.933
+  angleY 7.031
+  angleZ 3.494
+ }
+ {
+  coords 3711.992 0 688.539
+  angleX 3.27
+  angleY -146.955
+  angleZ -2.293
+ }
+ {
+  coords 3527.505 0 623.038
+  angleX -3.761
+  angleY 48.537
+  angleZ 1.337
+ }
+}
+SCR_DestructibleBuildingEntity : "{DD6953233EB10B88}Prefabs/Structures/Commercial/Pubs/PubVillage_E_1L01/PubVillage_E_1L01.et" {
+ coords 3323.994 0.997 680.555
+ angleY 86.08
+}
+$grp GenericEntity : "{E021E2FFF02ADF0C}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_01/LampStreet_E_01_4m.et" {
+ {
+  coords 3339.173 0.002 676.078
+  scale 1.13
+ }
+ {
+  coords 3371.514 0 736.816
+  scale 1.13
+ }
+ {
+  coords 3396.122 0 634.77
+  scale 1.13
+ }
+}
