@@ -4,5 +4,11 @@ GenericEntity : "{158F912CFD723FC1}Prefabs/Characters/Vests/Vest_PCGen_III/Vest_
   RHS_ClothNodeStorageComponent "{5DEB2A8AB559C576}" {
    MaxCumulativeVolume 1000
   }
+  BaseLoadoutClothComponent "{5312D798A71DFBB1}" {
+   Slots {
+    LoadoutSlotInfo zip {
+    }
+   }
+  }
  }
 }

@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{8491543B6ECABCC7}Assets/Characters/HeadGear/Mask_6B49/Data/rhs_6b49_mask_CDFSpec.emat"
+ Configurations {
+  EMATResourceClass PC {
+  }
+  EMATResourceClass XBOX_ONE : PC {
+  }
+  EMATResourceClass XBOX_SERIES : PC {
+  }
+  EMATResourceClass PS4 : PC {
+  }
+  EMATResourceClass PS5 : PC {
+  }
+  EMATResourceClass HEADLESS : PC {
+  }
+  EMATResourceClass Xbox : PC {
+  }
+ }
+}

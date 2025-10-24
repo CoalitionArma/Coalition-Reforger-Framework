@@ -1,0 +1,133 @@
+GameEntity : "{966B4E5523D2F166}Prefabs/Weapons/Attachments/Optics/WeaponOptic_Base.et" {
+ ID "4BA426CBAED42A14"
+ components {
+  InventoryItemComponent "{52627A1F45CD4EB6}" {
+   Attributes SCR_ItemAttributeCollection "{52627A1EBB0698FD}" {
+    ItemDisplayName UIInfo "{667B7B7768F56CE8}" {
+     Name "#WCS-Optic_OKP7_Name"
+     Description "#WCS-Optic_OKP7_Description"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{667B7B7768F56CC7}" {
+     Weight 0.3
+     SizeSetupStrategy Manual
+     ItemDimensions 3 3 3
+     ItemVolume 100
+     RestingUP Right
+    }
+    CustomAttributes {
+     WeaponAttachmentAttributes "{5284D858FFF9BE66}" {
+      AttachmentType AttachmentOpticsRIS1913Short "{667B7B7768F56CD3}" {
+      }
+     }
+     PreviewRenderAttributes "{52D69389645B4E4D}" {
+      CameraPreset Right
+      CameraDistanceToItem 0.62
+      FOV 18
+     }
+     CharacterModifierAttributes "{667B7B7768F56CDE}" {
+      SpeedLimit 6
+      ADSSpeedLimit 4
+      SpeedLimitHighready 1.7
+     }
+    }
+    m_Size SLOT_1x1
+   }
+  }
+  MeshObject "{5D0CC83435B55858}" {
+   Object "{B56DEBB97702FDD1}Assets/Weapons/Attachments/Optics/OKP-7/OKP7_picatinny.xob"
+  }
+  ParametricMaterialInstanceComponent "{667B7B7768F56C2D}" {
+   UseUserParamAlpha 0
+  }
+  RHS_CollimatorSightsComponent "{667B7B7768F56C31}" {
+   components {
+    SCR_CollimatorControllerComponent "{667B7B7768F56C39}" {
+    }
+   }
+   SightsPosition PointInfo "{667B7B7768F56C3E}" {
+    PivotID "eye"
+    Angles 0 180 0
+   }
+   SightsPointFront PointInfo "{667B7B7768F56C06}" {
+    PivotID "eye"
+   }
+   SightsPointRear PointInfo "{667B7B7768F56C0A}" {
+    PivotID "center"
+    Offset 0 0 0.0065
+   }
+   ADSTime 0.3
+   CameraRecoilAmount 0.118
+   SightsPriority 1
+   SoundInt 10001
+   CollimatorTopLeft PointInfo "{667B7B7768F56C0E}" {
+    PivotID "TL"
+   }
+   CollimatorBottomRight PointInfo "{667B7B7768F56C0F}" {
+    PivotID "BR"
+   }
+   CollimatorCenter PointInfo "{667B7B7768F56C12}" {
+    PivotID "center"
+    Offset 0.0005 0 0
+   }
+   ReticleDefaultAngularSize 0.8
+   ReticleDefaultTexturePortion 0.3
+   ADSDeactivationPercentage 0.25
+   ReticleColors {
+    BaseCollimatorReticleColor "{667B7B7768F56C66}" {
+     ReticleColor 0.5776 0.0725 0.4527 1
+     GlowColor 0.5776 0.0725 0.4527 1
+    }
+   }
+   ReticleInfos {
+    BaseCollimatorReticleInfo "{667B7B7768F56C6C}" {
+     ReticleIndex 1
+    }
+   }
+   ReticleAutoBright 1
+   ReticleAutoToggle 1
+   m_bIsNVGCompatible 1
+   m_bIsConfiguratedForRHSNVG 1
+   m_fDaylightBrightness 7.25
+   m_fNightBrightness 0.01
+  }
+  RigidBody "{5D0CC83435B55857}" {
+   LayerPreset "ItemFireView"
+  }
+  SCR_2DPIPSightsComponent "{5D0CC83435B55855}" {
+   Enabled 0
+  }
+  ActionsManagerComponent "{5284E0EFF569AD07}" {
+   ActionContexts {
+    UserActionContext "{5284E0EFF4E818E9}" {
+     Position PointInfo "{5284E0EFC526E6F0}" {
+      Offset 0 0.0152 0.006
+     }
+     Radius 0.1
+    }
+   }
+   additionalActions {
+    SCR_AttachItemFromInventoryAction "{5D0CC83435B55B88}" {
+     ParentContextList {
+      "optic"
+     }
+     UIInfo SCR_ActionUIInfo "{667B7B7768F56C48}" {
+     }
+    }
+    RHS_SlideAttachmentAction "{667B7B7768F56C4B}" {
+     ParentContextList {
+      "user"
+     }
+     UIInfo UIInfo "{667B7B7768F56C52}" {
+      Name "#RHS-Action_Slide"
+     }
+     Duration -1
+     PerformPerFrame 1
+     m_fAdjustmentStep 0.01
+     m_bManualAdjustment 1
+     m_fBaseHalfLength 0.025
+    }
+   }
+  }
+ }
+ Flags 4194307
+}

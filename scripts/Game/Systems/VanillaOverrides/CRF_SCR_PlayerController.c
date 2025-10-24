@@ -9,6 +9,7 @@ modded class SCR_PlayerController
 	bool m_bIsBulletTrackingEnabled = false;
 	ref array<ref CRF_BulletTracerContainer> m_aActiveTraces = {};
 	bool m_bIsListeningToSpec = false;
+	vector m_vPlayersLastDeath[4];
 	
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -31,6 +32,17 @@ modded class SCR_PlayerController
 		}
 	}
 	
+	override void OnControlledEntityChanged(IEntity from, IEntity to)
+	{
+		super.OnControlledEntityChanged(from, to);
+		if (from)
+		{
+			SCR_CharacterControllerComponent charController = SCR_CharacterControllerComponent.Cast(from.FindComponent(SCR_CharacterControllerComponent));
+			if (charController.IsDead())
+				from.GetTransform(m_vPlayersLastDeath);
+		}
+	}
+	
 	/**
 	 * Called when the player controller updates (typically whenever a player joins/rejoins)
 	 */
@@ -43,47 +55,6 @@ modded class SCR_PlayerController
 			return;
 		
 		CRF_PlayerControllerManager.GetInstance().InitilizePlayerControllerComp();
-	}
-	
-	/**
-	 * Called when the entity controlled by this player controller changes
-	 * @param from The previous entity being controlled
-	 * @param to The new entity being controlled
-	 */
-	override void OnControlledEntityChanged(IEntity from, IEntity to)
-	{	
-		// Check if gamemode instance exists, if not, exit early
-		if (!CRF_Gamemode.GetInstance())
-		{
-			// Call the parent implementation
-			super.OnControlledEntityChanged(from, to);
-			return;
-		};
-		
-		// Get the CRF player controller comp
-		CRF_PlayerControllerManager playerControllerComp = CRF_PlayerControllerManager.GetInstance();
-
-		// Handle race condition: If player is being assigned initial entity when they should have a playable character
-		if (to && to.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource() && 
-			CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)
-		{
-			int playerId = GetPlayerId();
-			CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-			
-			// Check if this player should have a proper character instead of initial entity
-			if (slottingManager && slottingManager.IsPlayerInASlot(playerId) && !slottingManager.IsPlayerConsideredDead(playerId))
-			{
-				// Request re-initialization from server to fix race condition
-				CRF_RplToAuthorityManager rplManager = CRF_RplToAuthorityManager.GetInstance();
-				if (rplManager)
-				{
-					GetGame().GetCallqueue().CallLater(rplManager.RequestInitilizePlayer, 250, false, playerId);
-				}
-			}
-		}
-
-		// Call the parent implementation
-		super.OnControlledEntityChanged(from, to);
 	}
 
 	/**
