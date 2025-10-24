@@ -1,0 +1,62 @@
+SCR_AIGroup : "{5BFC01F79A5A8C68}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Company_p.et" {
+ coords 1211.714 91.287 3267.204
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords -14.544 -4.341 16.017
+   {
+    SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+     coords 11.971 2.575 -8.803
+     {
+      $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       {
+        coords -12.198 -2.093 3.355
+       }
+       {
+        coords -12.198 -2.093 -0.611
+        {
+         SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+          coords -16.196 -0.29 -4.711
+          m_aUnitPrefabSlots {
+           "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"
+          }
+          {
+           SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+            coords 30.18 1.613 10.833
+            {
+             $grp SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+              {
+               coords -13.984 -1.323 -14.464
+              }
+              {
+               coords -13.984 -1.323 -21.115
+               {
+                SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+                 coords -16.784 1.221 -3.771
+                 m_aUnitPrefabSlots {
+                  "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{A7E13866EA953B26}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MMG_P.et" "{75876A55FD810645}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AMMG_P.et"
+                 }
+                 {
+                  SCR_AIGroup : "{F703D0D434EF9A1A}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_HMGTeam_p.et" {
+                   coords 16.829 0.443 -8.025
+                   m_aUnitPrefabSlots {
+                    "{9CB623C7B62F4955}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_SL_P.et" "{32681EB0A399591D}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_HMG_P.et" "{4100FF2BAF7A9D91}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_AHMG_P.et"
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
