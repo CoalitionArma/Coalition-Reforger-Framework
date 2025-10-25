@@ -1,0 +1,25 @@
+GenericEntity OBJECTIVEALPHA : "{AFCF8DC050744C4E}Prefabs/Structures/BuildingParts/Eletrical/ControlPanel_01/ControlPanel_01-OBJ.et" {
+ components {
+  SCR_DestructionMultiPhaseComponent "{58F896B4CD371A8B}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     "Explosive multiplier" 10
+    }
+   }
+   m_DestroySpawnObjects {
+    SCR_PrefabSpawnable "{669C1429792157B0}" {
+    }
+   }
+   m_bDeleteAfterFinalPhase 1
+   m_aDamagePhases {
+    SCR_DamagePhaseData "{5F1082FC9CB658AB}" {
+    }
+   }
+  }
+ }
+ coords 1734.234 83.285 709.262
+ angleY 1.106
+ destructor ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"British Forces Have Destroyed The Dam Controls and Water Floods the Valley\", 10);"\
+ "	"
+}

@@ -1,0 +1,103 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 5917.68 55.534 7989.495
+  m_rnPrefab "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 5924.909 55.507 7989.097
+  m_rnPrefab "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6019.331 54.818 7952.254
+  angleY 179.303
+  m_rnPrefab "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 6011.372 54.916 7951.688
+  angleY 179.303
+  m_rnPrefab "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 6019.077 54.19 8018.77
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords -41.66 0.104 -1.586
+   {
+    SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+     coords 41.514 -0.138 5.953
+     {
+      $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       {
+        coords -16.201 0.125 -6.721
+       }
+       {
+        coords -16.201 0.125 -4.034
+        {
+         SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+          coords -16.856 0.063 12.888
+          m_aUnitPrefabSlots {
+           "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et" "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et"
+          }
+          {
+           SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+            coords 33.604 -0.178 -5.357
+            {
+             $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+              {
+               coords -16.747 0.115 0.606
+              }
+              {
+               coords -16.747 0.115 4.265
+               {
+                SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+                 coords -15.158 0.032 -9.937
+                 m_aUnitPrefabSlots {
+                  "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et" "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et"
+                 }
+                 {
+                  SCR_AIGroup : "{3CF105AFDCEA45A3}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_IndirectTeam_p.et" {
+                   coords -10.016 0.044 6.331
+                   {
+                    $grp SCR_AIGroup : "{677549B9DAF416D1}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_SniperTeam_p.et" {
+                     {
+                      coords 35.741 -0.129 15.334
+                      m_aUnitPrefabSlots {
+                       "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{49CC52FEE609771E}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Spotter_P.et"
+                      }
+                     }
+                     {
+                      coords 28.083 -0.101 14.344
+                      m_aUnitPrefabSlots {
+                       "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et" "{49CC52FEE609771E}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Spotter_P.et"
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

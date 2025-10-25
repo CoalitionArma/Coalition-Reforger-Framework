@@ -1,0 +1,82 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 988.745 92.137 2811.841
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Cache A Aprx."
+  m_aVisibleForFactions {
+   "BLUFOR" "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1070.95 91.368 3051.759
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Cache B Aprx."
+  m_aVisibleForFactions {
+   "BLUFOR" "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+ {
+  coords 1338.776 93.654 2963.888
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_sDescription "Cache C Aprx."
+  m_aVisibleForFactions {
+   "BLUFOR" "SPEC"
+  }
+  m_bVisibleForEmptyFaction 1
+ }
+}
+$grp GenericEntity : "{CDFDEF05A1055D8D}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/cacheHuntObj.et" {
+ cacheA {
+  coords 1093.644 98.523 2786.237
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache A has been destroyed.\", 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -2.289 0.004 0.705
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache A"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+ cacheB {
+  coords 1129.665 92.616 3090.398
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache B has been destroyed.\", 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -2.289 0.004 0.705
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache B"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+ cacheC {
+  coords 1378.964 93.331 3000.711
+  destructor ""\
+  "		SCR_PopUpNotification.GetInstance().PopupMsg(\"Cache C has been destroyed.\", 10);"\
+  "	"
+  {
+   CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+    coords -2.289 0.004 0.705
+    m_MarkerColor 0 0 0 1
+    m_sDescription "Cache C"
+    m_aVisibleForFactions {
+     "OPFOR"
+    }
+   }
+  }
+ }
+}

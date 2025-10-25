@@ -1,0 +1,7 @@
+SCR_VehicleSpawn IndAmbulance {
+ coords 1727.259 82.273 762.145
+ angleY -54.875
+ m_rnPrefab "{F0EC3EFF70B174B0}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance_FIA.et"
+ respawnDelay 10000
+ firstSpawn 2.1
+}

@@ -1,0 +1,19 @@
+GenericEntity : "{C0B432254088B2D4}Prefabs/Structures/BuildingParts/Eletrical/ControlPanel_01/ControlPanel_01_base.et" {
+ ID "5111E74D4E7A8DB6"
+ components {
+  MeshObject "{5111E74D5E891458}" {
+   Object "{637AC84FD5E339A0}Assets/Structures/BuildingsParts/Electrical/ControlPanel_01/Dst/ControlPanel_01_dst_01.xob"
+  }
+  SCR_DestructionMultiPhaseComponent "{58F896B4CD371A8B}" {
+   "Additional hit zones" {
+    SCR_HitZone Default {
+     DamageReduction 150
+     DamageThreshold 1600
+     "Melee multiplier" 0
+     "Kinetic multiplier" 0
+    }
+   }
+   m_fBaseHealth 2000
+  }
+ }
+}

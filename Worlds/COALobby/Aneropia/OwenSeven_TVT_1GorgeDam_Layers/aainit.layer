@@ -1,0 +1,122 @@
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ coords 1220.373 94.544 3138.817
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "British Armed Forces have been deployed to destroy the 1 Gorge Dam and flood the valley. A PMC has been hired to protect it. There's only 1 objective, but some assets in the AO that can act as force multiplyers."\
+   ""\
+   "BLUFOR Composition: Paratrooper Infantry Company & Combat Pilots "\
+   "BLUFOR Assets: Recoverable Helicopter"\
+   ""\
+   "OPFOR Composition: PMC Infantry Platoon"\
+   ""\
+   "Time: Noon"\
+   ""\
+   "Weather: Raining"\
+   ""
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "The King needs that Dam taken out. Destroy the control panel to force the flow gates open and flood the valley. Recovering the downed out of fuel helicopter should help."\
+   ""\
+   "Notably, intelligence reports a peculiar vehicle was impounded at the South Police Station and some high grade weapons consfiscated at the North Police Station. "
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Mercs R Us has been hired to defend the Dam and specifically the destroyable control panel, which if destroyed will flood the valley."\
+   ""\
+   "Intelligence reports some high grade weapons consfiscated at the North Police Station but the British have a downed helicopter they might try to recover and use."\
+   ""
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "There are no specality slots but there are specality assets in the AO. Please consider this as Company/Platoon Lead."\
+   ""
+  }
+ }
+ m_iFactionOneRatio 3
+ m_sFactionOneKey "BLU"
+ m_iFactionTwoRatio 2
+ m_sFactionTwoKey "IND"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{488E051B0666D6DF}Configs/Gearscripts/Custom/Owen7/CRF_GS_UK_MODERN.conf"
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{F3FF214BDE0E57A2}Configs/Gearscripts/Custom/Owen7/CRF_GS_PMC1.conf"
+ }
+ {
+  SCR_FactionManager "669C928EDB643EB9" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Company"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1st Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{66A0E7297B12136E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66A0E7297CD34685}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66A0E7297CA64FEA}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66A0E7297C752F9A}" {
+        m_sCallsign "2nd Platoon"
+       }
+       SCR_CallsignInfo "{66A0E7297C72E9F8}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66A0E7297C41EE05}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66A0E7297C4FCA02}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{66A0E7297C18A5FC}" {
+        m_sCallsign "2-4"
+       }
+       SCR_CallsignInfo "{66A0E72963B915D8}" {
+        m_sCallsign "Blackhawk Crew"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Platoon"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Medical"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{669C39D02A54CD67}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{669C39D6D32AF3A1}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66A0C3B36437F5ED}" {
+        m_sCallsign "1-5"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
