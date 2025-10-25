@@ -34,6 +34,8 @@ class CRF_Radio_Interact : ScriptedUserAction
 		
 		rp.fireTrigger();
 		
+		SCR_PopUpNotification.GetInstance().PopupMsg("Radio has been triggered", duration: 10);
+		
 		m_fired = true;
 		
 		super.PerformAction(pOwnerEntity, pUserEntity);
