@@ -1,0 +1,69 @@
+SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
+ coords 3645.034 124.761 641.639
+ angleY 53.278
+ {
+  SCR_AIGroup : "{D0B17EDF43465305}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MedicTeam_p.et" {
+   coords -0.053 0.317 13.687
+   angleY 143.713
+   {
+    SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+     coords 20.581 -0.104 19.614
+     angleY -83.485
+     {
+      $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+       {
+        coords -35.07 0.146 17.021
+        angleY 70.719
+       }
+       {
+        coords -22.981 -0.005 12.204
+        angleY -113.506
+        {
+         SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+          coords 6.128 -0.062 5.653
+          {
+           SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+            coords -6.249 0.137 -8.065
+            angleY 70.719
+            {
+             SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+              coords -4.214 -0.454 -7.177
+              angleY 113.506
+              {
+               $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+                {
+                 coords 4.559 0.312 18.475
+                 angleY 10.491
+                }
+                {
+                 coords -12.01 0 -1.783
+                }
+                {
+                 coords -7.693 0.699 -0.116
+                 angleY 175.775
+                }
+                {
+                 coords 1485.91 -11.529 -39.884
+                 angleY 175.775
+                 {
+                  SCR_AIGroup : "{ABEBD4386CA25E24}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_AirCrew_p.et" {
+                   coords 1463.615 11.148 -171.829
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

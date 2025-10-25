@@ -374,11 +374,11 @@ class CRF_ManualMarker : GenericEntity
 		writer.WriteString(m_sImageSet);
 		writer.WriteString(m_sImageSetGlow);
 		writer.WriteString(m_sQuadName);
-		writer.WriteInt(m_MarkerColor.PackToInt());
-		writer.WriteFloat(m_fWorldSize);
+		writer.Write(m_MarkerColor.PackToInt(), 32);
+		writer.Write(m_fWorldSize, 32);
 		writer.WriteString(m_sDescription);
-		writer.WriteBool(m_bUseWorldScale);
-		writer.WriteBool(m_bVisibleForEmptyFaction);
+		writer.Write(m_bUseWorldScale, 1);
+		writer.Write(m_bVisibleForEmptyFaction, 1);
 		
 		string factions = "";
 		foreach (FactionKey factionKey: m_aVisibleForFactions)
@@ -397,12 +397,12 @@ class CRF_ManualMarker : GenericEntity
 		reader.ReadString(m_sImageSetGlow);
 		reader.ReadString(m_sQuadName);
 		int colorI; // This break flow, where is Color serealization? :(
-		reader.ReadInt(colorI);
+		reader.Read(colorI, 32);
 		m_MarkerColor = Color.FromInt(colorI);
-		reader.ReadFloat(m_fWorldSize);
+		reader.Read(m_fWorldSize, 32);
 		reader.ReadString(m_sDescription);
-		reader.ReadBool(m_bUseWorldScale);
-		reader.ReadBool(m_bVisibleForEmptyFaction);
+		reader.Read(m_bUseWorldScale, 1);
+		reader.Read(m_bVisibleForEmptyFaction, 1);
 		
 		string factions;
 		reader.ReadString(factions);

@@ -352,101 +352,101 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	bool RplSave(ScriptBitWriter writer)
 	{
-		writer.WriteVector(m_vSlotVectorOne);
-		writer.WriteVector(m_vSlotVectorTwo);
-		writer.WriteVector(m_vSlotVectorThree);
-		writer.WriteVector(m_vSlotVectorFour);
-		
-		writer.WriteInt(m_iSlotCurrentPlayerId);
-		writer.WriteRplId(m_iSlotCurrentGroup);
-		writer.WriteRplId(m_iSlotCurrentCharacter);
-		writer.WriteInt(m_iSlotType);
-		
-		writer.WriteString(m_sSlotName);
-		writer.WriteString(m_rSlotIconResource);
-		writer.WriteString(m_rSlotResource);
-		writer.WriteString(m_SlotFactionKey);
-		
-		writer.WriteBool(m_bIsLockedSlot);
-		writer.WriteBool(m_bIsDeadSlot);
-		
-		return true;
+	    // Vectors = 3 * 32 bits = 96
+	    writer.Write(m_vSlotVectorOne, 96);
+	    writer.Write(m_vSlotVectorTwo, 96);
+	    writer.Write(m_vSlotVectorThree, 96);
+	    writer.Write(m_vSlotVectorFour, 96);
+	
+	    // Integers = 32 bits
+	    writer.Write(m_iSlotCurrentPlayerId, 32);
+	    writer.Write(m_iSlotCurrentGroup, 32);
+	    writer.Write(m_iSlotCurrentCharacter, 32);
+	    writer.Write(m_iSlotType, 32);
+	
+	    // Strings use the proto directly (cannot replace with raw Write)
+	    writer.WriteString(m_sSlotName);
+	    writer.WriteString(m_rSlotIconResource);
+	    writer.WriteString(m_rSlotResource);
+	    writer.WriteString(m_SlotFactionKey);
+	
+	    // Bools = 1 bit
+	    writer.Write(m_bIsLockedSlot, 1);
+	    writer.Write(m_bIsDeadSlot, 1);
+	
+	    return true;
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	bool RplLoad(ScriptBitReader reader)
 	{
-		reader.ReadVector(m_vSlotVectorOne);
-		reader.ReadVector(m_vSlotVectorTwo);
-		reader.ReadVector(m_vSlotVectorThree);
-		reader.ReadVector(m_vSlotVectorFour);
-		
-		reader.ReadInt(m_iSlotCurrentPlayerId);
-		reader.ReadRplId(m_iSlotCurrentGroup);
-		reader.ReadRplId(m_iSlotCurrentCharacter);
-		reader.ReadInt(m_iSlotType);
-		
-		reader.ReadString(m_sSlotName);
-		reader.ReadString(m_rSlotIconResource);
-		reader.ReadString(m_rSlotResource);
-		reader.ReadString(m_SlotFactionKey);
-		
-		reader.ReadBool(m_bIsLockedSlot);
-		reader.ReadBool(m_bIsDeadSlot);
-		
-		return true;
+	    reader.Read(m_vSlotVectorOne, 96);
+	    reader.Read(m_vSlotVectorTwo, 96);
+	    reader.Read(m_vSlotVectorThree, 96);
+	    reader.Read(m_vSlotVectorFour, 96);
+	
+	    reader.Read(m_iSlotCurrentPlayerId, 32);
+	    reader.Read(m_iSlotCurrentGroup, 32);
+	    reader.Read(m_iSlotCurrentCharacter, 32);
+	    reader.Read(m_iSlotType, 32);
+	
+	    reader.ReadString(m_sSlotName);
+	    reader.ReadString(m_rSlotIconResource);
+	    reader.ReadString(m_rSlotResource);
+	    reader.ReadString(m_SlotFactionKey);
+	
+	    reader.Read(m_bIsLockedSlot, 1);
+	    reader.Read(m_bIsDeadSlot, 1);
+	
+	    return true;
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	static bool Extract(CRF_SlotDataContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
-		snapshot.SerializeVector(instance.m_vSlotVectorOne);
-		snapshot.SerializeVector(instance.m_vSlotVectorTwo);
-		snapshot.SerializeVector(instance.m_vSlotVectorThree);
-		snapshot.SerializeVector(instance.m_vSlotVectorFour);
-		
-		snapshot.SerializeInt(instance.m_iSlotCurrentPlayerId);
-		snapshot.SerializeInt(instance.m_iSlotCurrentGroup);
-		snapshot.SerializeInt(instance.m_iSlotCurrentCharacter);
-		snapshot.SerializeInt(instance.m_iSlotType);
-		
-		snapshot.SerializeString(instance.m_sSlotName);
-		snapshot.SerializeString(instance.m_rSlotIconResource);
-		snapshot.SerializeString(instance.m_rSlotResource);
-		snapshot.SerializeString(instance.m_SlotFactionKey);
-		
-		snapshot.SerializeBool(instance.m_bIsLockedSlot);
-		snapshot.SerializeBool(instance.m_bIsDeadSlot);
-		return true;
+	    snapshot.SerializeBytes(instance.m_vSlotVectorOne, 12);
+	    snapshot.SerializeBytes(instance.m_vSlotVectorTwo, 12);
+	    snapshot.SerializeBytes(instance.m_vSlotVectorThree, 12);
+	    snapshot.SerializeBytes(instance.m_vSlotVectorFour, 12);
+	
+	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
+	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
+	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
+	    snapshot.SerializeBytes(instance.m_iSlotType, 4);
+	
+	    snapshot.SerializeString(instance.m_sSlotName);
+	    snapshot.SerializeString(instance.m_rSlotIconResource);
+	    snapshot.SerializeString(instance.m_rSlotResource);
+	    snapshot.SerializeString(instance.m_SlotFactionKey);
+	
+	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
+	    snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
+	    return true;
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_SlotDataContainer instance)
 	{
-		snapshot.SerializeVector(instance.m_vSlotVectorOne);
-		snapshot.SerializeVector(instance.m_vSlotVectorTwo);
-		snapshot.SerializeVector(instance.m_vSlotVectorThree);
-		snapshot.SerializeVector(instance.m_vSlotVectorFour);
-		
-		snapshot.SerializeInt(instance.m_iSlotCurrentPlayerId);
-		snapshot.SerializeInt(instance.m_iSlotCurrentGroup);
-		snapshot.SerializeInt(instance.m_iSlotCurrentCharacter);
-		snapshot.SerializeInt(instance.m_iSlotType);
-		
-		snapshot.SerializeString(instance.m_sSlotName);
-		snapshot.SerializeString(instance.m_rSlotIconResource);
-		snapshot.SerializeString(instance.m_rSlotResource);
-		snapshot.SerializeString(instance.m_SlotFactionKey);
-		
-		snapshot.SerializeBool(instance.m_bIsLockedSlot);
-		snapshot.SerializeBool(instance.m_bIsDeadSlot);
-		return true;
+	    snapshot.SerializeBytes(instance.m_vSlotVectorOne, 12);
+	    snapshot.SerializeBytes(instance.m_vSlotVectorTwo, 12);
+	    snapshot.SerializeBytes(instance.m_vSlotVectorThree, 12);
+	    snapshot.SerializeBytes(instance.m_vSlotVectorFour, 12);
+	
+	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
+	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
+	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
+	    snapshot.SerializeBytes(instance.m_iSlotType, 4);
+	
+	    snapshot.SerializeString(instance.m_sSlotName);
+	    snapshot.SerializeString(instance.m_rSlotIconResource);
+	    snapshot.SerializeString(instance.m_rSlotResource);
+	    snapshot.SerializeString(instance.m_SlotFactionKey);
+	
+	    snapshot.SerializeBytes(instance.m_bIsLockedSlot, 4);
+	    snapshot.SerializeBytes(instance.m_bIsDeadSlot, 4);
+	    return true;
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
 	{
-		snapshot.EncodeVector(packet);
+	    snapshot.EncodeVector(packet);
 		snapshot.EncodeVector(packet);
 		snapshot.EncodeVector(packet);
 		snapshot.EncodeVector(packet);
@@ -465,10 +465,9 @@ class CRF_SlotDataContainer
 		snapshot.EncodeBool(packet);
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
 	{
-		snapshot.DecodeVector(packet);
+	    snapshot.DecodeVector(packet);
 		snapshot.DecodeVector(packet);
 		snapshot.DecodeVector(packet);
 		snapshot.DecodeVector(packet);
@@ -485,44 +484,43 @@ class CRF_SlotDataContainer
 		
 		snapshot.DecodeBool(packet);
 		snapshot.DecodeBool(packet);
-		return true;
+	
+	    return true;
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
 	{
-		return lhs.CompareSnapshots(rhs, 12)
-			&& lhs.CompareSnapshots(rhs, 12)
-			&& lhs.CompareSnapshots(rhs, 12)
-			&& lhs.CompareSnapshots(rhs, 12)
-			&& lhs.CompareSnapshots(rhs, 4)
-			&& lhs.CompareSnapshots(rhs, 4)
-			&& lhs.CompareSnapshots(rhs, 4)
-			&& lhs.CompareSnapshots(rhs, 4)
-			&& lhs.CompareStringSnapshots(rhs)
-			&& lhs.CompareStringSnapshots(rhs)
-			&& lhs.CompareStringSnapshots(rhs)
-			&& lhs.CompareStringSnapshots(rhs)
-			&& lhs.CompareSnapshots(rhs, 4)
-			&& lhs.CompareSnapshots(rhs, 4);
+	    return lhs.CompareSnapshots(rhs, 12)
+	        && lhs.CompareSnapshots(rhs, 12)
+	        && lhs.CompareSnapshots(rhs, 12)
+	        && lhs.CompareSnapshots(rhs, 12)
+	        && lhs.CompareSnapshots(rhs, 4)
+	        && lhs.CompareSnapshots(rhs, 4)
+	        && lhs.CompareSnapshots(rhs, 4)
+	        && lhs.CompareSnapshots(rhs, 4)
+	        && lhs.CompareStringSnapshots(rhs)
+	        && lhs.CompareStringSnapshots(rhs)
+	        && lhs.CompareStringSnapshots(rhs)
+	        && lhs.CompareStringSnapshots(rhs)
+	        && lhs.CompareSnapshots(rhs, 4)
+	        && lhs.CompareSnapshots(rhs, 4);
 	}
 	
-	//------------------------------------------------------------------------------------------------
 	static bool PropCompare(CRF_SlotDataContainer instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
 	{
-		return snapshot.Compare(instance.m_vSlotVectorOne, 12)
-			&& snapshot.Compare(instance.m_vSlotVectorTwo, 12)
-			&& snapshot.Compare(instance.m_vSlotVectorThree, 12)
-			&& snapshot.Compare(instance.m_vSlotVectorFour, 12)
-			&& snapshot.CompareInt(instance.m_iSlotCurrentPlayerId)
-			&& snapshot.CompareInt(instance.m_iSlotCurrentGroup)
-			&& snapshot.CompareInt(instance.m_iSlotCurrentCharacter)
-			&& snapshot.CompareInt(instance.m_iSlotType)
-			&& snapshot.CompareString(instance.m_sSlotName)
-			&& snapshot.CompareString(instance.m_rSlotIconResource)
-			&& snapshot.CompareString(instance.m_rSlotResource)
-			&& snapshot.CompareString(instance.m_SlotFactionKey)
-			&& snapshot.CompareBool(instance.m_bIsLockedSlot)
-			&& snapshot.CompareBool(instance.m_bIsDeadSlot);
+	    return snapshot.Compare(instance.m_vSlotVectorOne, 12)
+	        && snapshot.Compare(instance.m_vSlotVectorTwo, 12)
+	        && snapshot.Compare(instance.m_vSlotVectorThree, 12)
+	        && snapshot.Compare(instance.m_vSlotVectorFour, 12)
+	        && snapshot.Compare(instance.m_iSlotCurrentPlayerId, 4)
+	        && snapshot.Compare(instance.m_iSlotCurrentGroup, 4)
+	        && snapshot.Compare(instance.m_iSlotCurrentCharacter, 4)
+	        && snapshot.Compare(instance.m_iSlotType, 4)
+	        && snapshot.CompareString(instance.m_sSlotName)
+	        && snapshot.CompareString(instance.m_rSlotIconResource)
+	        && snapshot.CompareString(instance.m_rSlotResource)
+	        && snapshot.CompareString(instance.m_SlotFactionKey)
+	        && snapshot.Compare(instance.m_bIsLockedSlot, 4)
+	        && snapshot.Compare(instance.m_bIsDeadSlot, 4);
 	}
 }

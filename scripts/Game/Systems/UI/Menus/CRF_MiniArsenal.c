@@ -175,6 +175,9 @@ class CRF_MiniArsenal: ChimeraMenuBase
 			
 			foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
 			{
+				if (weapon.m_Weapon == "")
+					continue;
+				
 				Widget item = GetGame().GetWorkspace().CreateWidgets("{2B983EDBF688480D}UI/layouts/Menus/Arsenal/MiniArsenalItem.layout", m_Items);
 				ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 				manager.SetPreviewItemFromPrefab(itemPreview, weapon.m_Weapon);
@@ -235,6 +238,9 @@ class CRF_MiniArsenal: ChimeraMenuBase
 				return;
 			foreach(ResourceName cloth: clothing.m_ClothingPrefabs)
 			{
+				if (cloth == "")
+					continue;
+				
 				if (m_addedItems.Contains(cloth))
 					continue;
 				
@@ -294,6 +300,9 @@ class CRF_MiniArsenal: ChimeraMenuBase
 				
 				foreach(ResourceName cloth: clothing.m_ClothingPrefabs)
 				{
+					if (cloth == "")
+						continue;
+					
 					if (m_addedItems.Contains(cloth))
 						continue;
 					

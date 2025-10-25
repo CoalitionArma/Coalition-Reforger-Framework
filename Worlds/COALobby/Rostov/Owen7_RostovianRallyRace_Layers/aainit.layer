@@ -11,14 +11,26 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 20
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "Rostov Needs these streets tore up. Get out there."\
+   m_sTextData "Rostov needs these streets tore up. Get out there. Cowardice will be met with landmines. The slow will be met with the Hammer or the Dozer"\
    ""\
    ""\
    "Composition: Racers"\
    "Assets: Rally Cars"
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "Shortcuts allowed but at your own risk. "
+   m_sTextData "Drive"
+  }
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_rGearScript "{F5AAAC65C41A436B}Configs/Gearscripts/Custom/Owen7/CRF_GS_O7CIVRALLY.conf"
+ }
+ {
+  SCR_FactionManager "66A6DA3627B9F56E" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{607AA5C7A94496DA}" {
+    }
+   }
   }
  }
 }
