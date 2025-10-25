@@ -25,7 +25,9 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    "Rifleman demo have had their satchels removed and been given a second detonator."\
    ""\
-   "Blufor maps are out of date, and may not mirror on the ground 1-1. "
+   "Blufor maps are out of date, and may not mirror on the ground 1-1. "\
+   ""\
+   "Balance suggestion is to close defender HMG unless both gun trucks are crewed. "
    m_bShowForAnyFaction 1
   }
  }
