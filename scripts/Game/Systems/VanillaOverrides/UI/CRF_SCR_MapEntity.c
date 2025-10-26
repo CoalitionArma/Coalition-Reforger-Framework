@@ -9,8 +9,11 @@ modded class SCR_MapEntity
 		//When you close the map and open again it seems to then actually load the right markers instead of all.
 		//This just gives that effect of closing the map and opening it again.
 		if (SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()))
-			if (m_sFactionKey != SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() && !CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalControlledEntity()))
+			if (m_sFactionKey != SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() && SCR_PlayerController.GetLocalControlledEntity())
 			{
+				if (CRF_GamemodeManager.IsSpectator(SCR_PlayerController.GetLocalControlledEntity()))
+					return;
+			
 				m_sFactionKey = SCR_FactionManager.SGetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey();
 				CloseMap();
 				SCR_GadgetManagerComponent gadgetMgr = SCR_GadgetManagerComponent.GetGadgetManager(GetGame().GetPlayerController().GetControlledEntity());
