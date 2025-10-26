@@ -1,0 +1,3687 @@
+Vehicle {
+ ID "66B4D3266CA9AC28"
+ components {
+  EventHandlerManagerComponent "{66B4D32661F254FA}" {
+   EventHandlers {
+    BaseEventHandler "{66B4D32661F254F6}" {
+     EventName "OnCompartmentEntered"
+    }
+    BaseEventHandler "{66B4D32661F254FC}" {
+     EventName "OnCompartmentLeft"
+    }
+   }
+  }
+  SignalsManagerComponent "{66B4D32661F254E2}" {
+  }
+  SCR_VehicleSoundComponent "{66B4D32661F25321}" {
+   Filenames {
+    "{85F281A95869A467}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Animations.acp" "{B336B7891256DA17}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Engine.acp" "{5767E5671BFDBF00}Sounds/Vehicles/_SharedData/Crashes/Truck/Vehicles_Crashes_Truck.acp" "{96BD767BD8F90909}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Dampers.acp" "{C5C2F46ECAB7B1DB}Sounds/Vehicles/Wheeled/M923A1/Vehicles_M923A1_Horn.acp" "{BA8A5BD290F5FB34}Sounds/Vehicles/_SharedData/Destruction/Vehicles_Destruction.acp" "{1D5DCA291E5C5106}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Rain.acp" "{D2DF25DD8B4A4B62}Sounds/Destruction/Multiphase/Destruction_Multiphase_Vehicle.acp" "{F1030E91E4B33E24}Sounds/Vehicles/_SharedData/WaterInteractions/Vehicles_WaterInteractions.acp" "{9DD9C6279F4489B4}Sounds/SupportStations/SupportStations_Vehicles.acp" "{F41C3D53A2B69D85}Sounds/Vehicles/_SharedData/Destruction/Vehicles_Destruction_Fires.acp"
+   }
+   ScriptCallbacks 1
+   DistanceManagement 0
+   IncludeInactive 1
+   SoundPoints {
+    SoundPointInfo Rain_Window_Front {
+     Offset 0 2.2 2.5
+    }
+    SoundPointInfo Engine {
+     Offset 0 1.2 2.8
+    }
+    SoundPointInfo Supplies {
+     Offset 0 2 -2.5
+    }
+    SoundPointInfo FuelTank {
+     Offset 0 1.4 -1
+    }
+    SoundPointInfo Horn {
+     Offset 0 1.4 2.5
+    }
+    SoundPointInfo MHQ_Deployment {
+     Offset 0 2.1233 -2.5594
+    }
+   }
+   Wheels {
+    VehicleWheelSound L_01 {
+     Filename "{58B4EAD8230C865B}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Wheel_l_1.acp"
+     SoundPoint PointInfo "{66B4D32661F25517}" {
+      PivotID "v_wheel_L01"
+     }
+    }
+    VehicleWheelSound R_01 {
+     Filename "{18D4C82EFFAAFD6D}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Wheel_r_1.acp"
+     SoundPoint PointInfo "{66B4D32661F2551D}" {
+      PivotID "v_wheel_R01"
+     }
+    }
+    VehicleWheelSound L_02 {
+     Filename "{C1AA53413EEBB7CB}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Wheel_l_2.acp"
+     SoundPoint PointInfo "{66B4D32661F25502}" {
+      PivotID "v_wheel_L02"
+     }
+    }
+    VehicleWheelSound R_02 {
+     Filename "{81CA71B7E24DCCFD}Sounds/Vehicles/Wheeled/Ural4320/Vehicles_Ural4320_Wheel_r_2.acp"
+     SoundPoint PointInfo "{66B4D32661F25509}" {
+      PivotID "v_wheel_R02"
+     }
+    }
+   }
+   m_aHitZoneStateSignalData {
+    SCR_HitZoneStateSignalData "{66B4D32661F25564}" {
+     m_sSignalName "EngineDamageState"
+     m_aHitZoneNames {
+      "Engine_01"
+     }
+    }
+    SCR_HitZoneStateSignalData "{66B4D32661F2556C}" {
+     m_sSignalName "GearboxDamageState"
+     m_aHitZoneNames {
+      "Gearbox_01"
+     }
+    }
+   }
+  }
+  AIKnowledgeComponent "{66B4D32661F2532C}" {
+  }
+  BaseLightManagerComponent "{66B4D32661F268A6}" {
+   LightSlots {
+    SCR_LightSlot "{66B4D32661F25387}" {
+     LightType Head
+     LightPositionInfo EntitySlotInfo "{51DAAC8FC2824EEC}" {
+      Offset -0.7975 1.231 3.7147
+      Angles -25 -3 0
+     }
+     LightPrefab "{3C701943E88034DD}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_VehicleLight_Head.et"
+     IsPresenceLight 1
+     ParentSurface "LHeadlight"
+    }
+    SCR_LightSlot "{66B4D32661F253CE}" {
+     LightType Head
+     LightPositionInfo EntitySlotInfo "{51DAAC8FC2824EEC}" {
+      Offset 0.8359 1.231 3.7151
+      Angles -25 10 0
+     }
+     LightPrefab "{3C701943E88034DD}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_VehicleLight_Head.et"
+     LightRadiusOverride 70
+     IsPresenceLight 1
+     ParentSurface "RHeadlight"
+    }
+    SCR_LightSlot "{66B4D32661F25077}" {
+     LightType HiBeam
+     LightPositionInfo EntitySlotInfo "{51E17746999D1D6E}" {
+      Offset -0.7374 1.2744 3.7147
+      Angles -17 7 0
+     }
+     LightPrefab "{7AA3CB3B37BDA0FE}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_VehicleLight_HiBeam.et"
+     LightCastShadowsOverride 0
+     ParentSurface "LHeadlight"
+    }
+    SCR_LightSlot "{66B4D32661F250B5}" {
+     LightType HiBeam
+     LightPositionInfo EntitySlotInfo "{51E17746999D1D6E}" {
+      Offset 0.763 1.2744 3.7157
+      Angles -17 -2 0
+     }
+     LightPrefab "{7AA3CB3B37BDA0FE}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_VehicleLight_HiBeam.et"
+     LightCastShadowsOverride 0
+     ParentSurface "RHeadlight"
+    }
+    SCR_LightSlot "{66B4D32661F250DF}" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset -0.943 1.45 3.35
+     }
+     LightPrefab "{87AE759CDAF94393}Prefabs/Vehicles/Core/Lights/VehicleLight_Hazard_Base.et"
+     LightRadiusOverride 0
+     LightCastShadowsOverride 0
+     LightShouldTick 1
+     LightSide 0
+     ParentSurface "LFIndicator"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{66B4D32661F25106}" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset -1.115 1.6 2.285
+      Angles 90 0 0
+     }
+     LightPrefab "{87AE759CDAF94393}Prefabs/Vehicles/Core/Lights/VehicleLight_Hazard_Base.et"
+     LightRadiusOverride 0.25
+     LightCastShadowsOverride 0
+     LightShouldTick 1
+     LightSide 0
+     ParentSurface "LSIndicator"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{66B4D32661F251B6}" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset 0.943 1.45 3.35
+     }
+     LightPrefab "{87AE759CDAF94393}Prefabs/Vehicles/Core/Lights/VehicleLight_Hazard_Base.et"
+     LightCastShadowsOverride 0
+     LightShouldTick 1
+     LightSide 1
+     ParentSurface "RFIndicator"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{66B4D32661F251FA}" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset 1.115 1.6 2.285
+      Angles 90 0 0
+     }
+     LightPrefab "{87AE759CDAF94393}Prefabs/Vehicles/Core/Lights/VehicleLight_Hazard_Base.et"
+     LightRadiusOverride 0.25
+     LightCastShadowsOverride 0
+     LightShouldTick 1
+     LightSide 1
+     ParentSurface "RSIndicator"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{66B4D32661F26E2C}" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset -0.2575 2.65 1.71
+      Angles 80 0 0
+     }
+     LightPrefab "{87AE759CDAF94393}Prefabs/Vehicles/Core/Lights/VehicleLight_Hazard_Base.et"
+     LightCastShadowsOverride 0
+     LightShouldTick 1
+     ParentSurface "Positionlight"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{66B4D32661F26E53}" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset 0 2.65 1.71
+      Angles 80 0 0
+     }
+     LightPrefab "{87AE759CDAF94393}Prefabs/Vehicles/Core/Lights/VehicleLight_Hazard_Base.et"
+     LightCastShadowsOverride 0
+     LightShouldTick 1
+     ParentSurface "Positionlight"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{66B4D32661F26E9C}" {
+     LightType Hazard
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset 0.2575 2.65 1.71
+      Angles 80 0 0
+     }
+     LightPrefab "{87AE759CDAF94393}Prefabs/Vehicles/Core/Lights/VehicleLight_Hazard_Base.et"
+     LightCastShadowsOverride 0
+     LightShouldTick 1
+     ParentSurface "Positionlight"
+     m_sLightOnEventName "SOUND_TURNSIGNAL_ON"
+     m_sLightOffEventName "SOUND_TURNSIGNAL_OFF"
+    }
+    SCR_LightSlot "{66B4D32661F26EDA}" {
+     LightType Dashboard
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset 0 2.6 0.97
+      Angles -80 0 0
+     }
+     LightPrefab "{4FCA594DEA0E741C}Prefabs/Vehicles/Core/Lights/VehicleLight_Dashboard_Base.et"
+     LightRadiusOverride 1.5
+     LightConeAngleOverride 160
+     LightCastShadowsOverride 0
+    }
+    SCR_LightSlot "{66B4D32661F26F19}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E210F3C28C768C}" {
+      Offset -1.005 2.08 2.0144
+      Angles 0 2 0
+     }
+     LightPrefab "{354FD1DA18DA9383}Prefabs/Vehicles/Core/Lights/VehicleLight_Searchlight_Base.et"
+     ParentSurface "Searchlight"
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot LHeadlight {
+     Prefab "{4B1D1D709C55746A}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Headlight_L.et"
+     RegisterDamage 1
+     LightType 522
+     LightSide 0
+     EmissiveOnMultiplier 5
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26F51}" {
+       ForLightType 2
+       Priority 1
+       EmissiveMultiplier 40
+      }
+      SurfaceLightConfigItem "{66B4D32661F26F4C}" {
+       ForLightType 512
+       EmissiveMultiplier 120
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot RHeadlight {
+     Prefab "{22AD6325B0438CFA}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Headlight_R.et"
+     RegisterDamage 1
+     LightType 522
+     LightSide 1
+     EmissiveOnMultiplier 5
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26FE7}" {
+       ForLightType 2
+       Priority 1
+       EmissiveMultiplier 40
+      }
+      SurfaceLightConfigItem "{66B4D32661F26FD7}" {
+       ForLightType 512
+       EmissiveMultiplier 120
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot LFIndicator {
+     Prefab "{8B270C1B200C6E4E}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Front_Indicator_L.et"
+     RegisterDamage 1
+     LightType 256
+     LightSide 0
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26C01}" {
+       ForLightType 256
+       Priority 1
+       EmissiveMultiplier 10
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot RFIndicator {
+     Prefab "{FDB087BC48343B92}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Front_Indicator_R.et"
+     RegisterDamage 1
+     LightType 256
+     LightSide 1
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26CBB}" {
+       ForLightType 256
+       Priority 1
+       EmissiveMultiplier 10
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot LSIndicator {
+     Prefab "{3E50EF9BB83BB862}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Side_Indicator_L.et"
+     RegisterDamage 1
+     LightType 256
+     LightSide 0
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26CD7}" {
+       ForLightType 256
+       Priority 1
+       EmissiveMultiplier 10
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot RSIndicator {
+     Prefab "{48C7643CD003EDBE}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Side_Indicator_R.et"
+     RegisterDamage 1
+     LightType 256
+     LightSide 1
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26D04}" {
+       ForLightType 256
+       Priority 1
+       EmissiveMultiplier 10
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot Positionlight {
+     Prefab "{A7716D564620D63C}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Positionlight_F.et"
+     RegisterDamage 1
+     LightType 256
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26DBE}" {
+       ForLightType 256
+       Priority 1
+       EmissiveMultiplier 10
+      }
+     }
+    }
+    SCR_EmissiveLightSurfaceSlot Searchlight {
+     Prefab "{A400DFADB7BAA0AD}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Searchlight_F.et"
+     RegisterDamage 1
+     LightType 1024
+     EmissiveOnMultiplier 30
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26DD0}" {
+       ForLightType 1024
+       EmissiveMultiplier 30
+      }
+     }
+    }
+    EmissiveLightSurfaceSlot Interior {
+     Prefab "{7B3D6E530158ABCA}Prefabs/Vehicles/Wheeled/Ural4320/Lights/Ural4320_ES_Interior_F.et"
+     LightType 128
+     ConfigurationsOverride {
+      SurfaceLightConfigItem "{66B4D32661F26A00}" {
+       ForLightType 128
+       EmissiveColorTint 0.13 0.125 0.063 1
+      }
+     }
+    }
+   }
+   LightAction {
+    SCR_LightsPresenceUserAction "{66B4D32661F26AC0}" {
+     ParentContextList {
+      "light_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F26A95}" {
+      Name "#AR-UserAction_Lights"
+      m_sIconName "veh_dipped_light"
+     }
+     "Sort Priority" 1
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_LightsHiBeamsUserAction "{66B4D32661F26B09}" {
+     ParentContextList {
+      "light_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F26B26}" {
+      Name "#AR-UserAction_HighBeams"
+      m_sIconName "veh_beam_light"
+     }
+     "Sort Priority" 2
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_LightsSearchLightUserAction "{66B4D32661F26BBA}" {
+     ParentContextList {
+      "light_spotlight_cabin_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F26B6A}" {
+      Name "#AR-UserAction_Searchlight"
+      m_sIconName "veh_beam_light"
+     }
+     "Sort Priority" 3
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_LightsDashboardUserAction "{66B4D32661F26BE7}" {
+     ParentContextList {
+      "light_spotlight_cabin_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F26B90}" {
+      Name "#AR-UserAction_DashboardLight"
+      m_sIconName "light"
+     }
+     "Sort Priority" 5
+     m_bPilotOnly 0
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_LightsHazardUserAction "{66B4D32661F26825}" {
+     ParentContextList {
+      "light_hazard_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F26BD1}" {
+      Name "#AR-UserAction_HazardLights"
+      m_sIconName "veh_hazard-lights"
+     }
+     "Sort Priority" 4
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_LightsTurnLeftUserAction "{66B4D32661F26879}" {
+     UIInfo SCR_ActionUIInfo "{66B4D32661F26813}" {
+      Name "#AR-UserAction_LeftSignal"
+      m_sIconName "veh_dipped_light"
+     }
+     "Sort Priority" 6
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_LightsTurnRightUserAction "{66B4D32661F268B3}" {
+     UIInfo UIInfo "{66B4D32661F26860}" {
+      Name "#AR-UserAction_RightSignal"
+     }
+     "Sort Priority" 7
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+   }
+  }
+  BaseRadioComponent "{66B4D32661F26885}" {
+   "Turned on" 1
+   Transceivers {
+    RelayTransceiver "{66B4D32661F26891}" {
+     "Transmitting Range" 2000
+    }
+   }
+  }
+  CRF_RespawnPointComponent "{66B4D32492C2A154}" {
+   m_sRespawnPointFaction "INDFOR"
+   m_sRespawnPointName "MSP"
+   m_bIsDefaultRespawn 1
+  }
+  ChimeraAIPathfindingComponent "{66B4D32661F268D0}" {
+   NavmeshProject "BTRlike"
+   IgnoreFlags 16
+   "Use Road Network" 1
+   "Turn radius" 15
+  }
+  ColliderHistoryComponent "{66B4D32661F268DB}" {
+  }
+  ControllersManagerComponent "{66B4D32661F268C7}" {
+  }
+  LM_SuppressionExplosionComponent "{66B4D32661F2693D}" {
+   m_fForceMultiplier 0.8
+   m_fExplosionRangeMin 6
+   m_fExplosionRangeMax 18
+   m_bApplyOnInit 0
+  }
+  LM_SuppressionVehicleComponent "{66B4D32661F2691A}" {
+   m_aSuppressionDefinitions {
+    LM_SuppressionVehicleSuppressionData "{66B4D32661F26913}" {
+     m_fDampenProjectile 0.4
+     m_fDampenProjectileGunner 0.9
+     m_fDampenExplosion 0.5
+     m_bCanFlyby 0
+    }
+    LM_SuppressionVehicleSuppressionData "{66B4D32661F2691E}" {
+     m_iCompartmentSection 1
+     m_fDampenProjectile 0.3
+     m_fDampenProjectileGunner 0.9
+     m_fDampenExplosion 0.5
+    }
+   }
+  }
+  MeshObject "{66B4D32661F2663A}" {
+   Object "{06C865EC0B9277E5}Assets/Vehicles/Wheeled/Ural4320/Ural_4320_base.xob"
+   Materials {
+    MaterialAssignClass "{66B4D32661F26975}" {
+     SourceMaterial "Ural_Body"
+     AssignedMaterial "{0ABA717F21E466CE}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Body_FIA.emat"
+    }
+    MaterialAssignClass "{66B4D32661F2697E}" {
+     SourceMaterial "Ural_Details"
+     AssignedMaterial "{C798CD16F802F339}Assets/Vehicles/Wheeled/Ural4320/Data/Ural_4320_Details_FIA.emat"
+    }
+   }
+   LODFactors {
+    4 1 0.5 0.1 0.1
+   }
+  }
+  RHS_GroupMaterialController "{66B4D32661F26615}" {
+   m_aGroups {
+    RHS_MaterialGroupProperties "{66B4D32661F26616}" {
+     m_sGroupName "LABELS"
+     m_iNumberOfTextures 13
+     m_bRandomize 1
+    }
+   }
+  }
+  RHS_RadioSourceComponent "{66B4D32661F2661F}" {
+   m_iSignalType Static
+  }
+  RigidBody "{66B4D32661F2665E}" {
+   Mass 7970
+   CenterOfMass 0 0.15 0.7
+   LinearSleepingThreashold 0.4
+   AngularSleepingThreashold 0.4
+   ResponseIndex "Vehicle"
+   ModelGeometry 1
+  }
+  SCR_AIVehicleUsageComponent "{66B4D32661F2664F}" {
+   m_eVehicleType GROUND_VEHICLE_WHEELED
+  }
+  SCR_BaseCompartmentManagerComponent "{66B4D32661F27FBA}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{66B4D32661F266EB}" {
+     ContextName "door_l01"
+     OpenDoorAction SCR_OpenVehicleDoorUserAction "{66B4D32661F26698}" {
+      ParentContextList {
+       "door_l01" "door_l01_int"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F2669A}" {
+       Name "#AR-UserAction_Open"
+       m_sIconName "veh_door"
+      }
+      "Sort Priority" 13
+     }
+     CloseDoorAction SCR_CloseVehicleDoorUserAction "{66B4D32661F266F0}" {
+      ParentContextList {
+       "door_l01" "door_l01_int"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F266F2}" {
+       Name "#AR-UserAction_Close"
+       m_sIconName "veh_door"
+      }
+      "Sort Priority" 11
+     }
+     EntryPositionInfo PointInfo "{66B4D32661F266FB}" {
+      PivotID "driver_getIn"
+     }
+     ExitPositionInfo PointInfo "{66B4D32661F266E7}" {
+      PivotID "driver_getOut"
+     }
+     AccessibilitySettings CompartmentAccessibilityContext "{66B4D32661F266ED}" {
+      BBHalfExtents 0.5 0.5 0.005
+      TraceOffset -0.25 1 1
+     }
+    }
+    CompartmentDoorInfo "{66B4D32661F2672C}" {
+     AnimDoorIndex 1
+     ContextName "door_r01"
+     OpenDoorAction SCR_OpenVehicleDoorUserAction "{66B4D32661F266CB}" {
+      ParentContextList {
+       "door_r01" "door_r01_int"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F266CC}" {
+       Name "#AR-UserAction_Open"
+       m_sIconName "veh_door"
+      }
+      "Sort Priority" 13
+     }
+     CloseDoorAction SCR_CloseVehicleDoorUserAction "{66B4D32661F26738}" {
+      ParentContextList {
+       "door_r01" "door_r01_int"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F26739}" {
+       Name "#AR-UserAction_Close"
+       m_sIconName "veh_door"
+      }
+      "Sort Priority" 11
+     }
+     EntryPositionInfo PointInfo "{66B4D32661F26725}" {
+      PivotID "codriver_getIn"
+     }
+     ExitPositionInfo PointInfo "{66B4D32661F26721}" {
+      PivotID "codriver_getOut"
+     }
+     AccessibilitySettings CompartmentAccessibilityContext "{66B4D32661F2672D}" {
+      BBHalfExtents 0.5 0.5 0.005
+      TraceOffset 0.5 1 0.5
+     }
+    }
+   }
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     CompartmentAction SCR_GetInUserAction "{66B4D32661F2676C}" {
+      ParentContextList {
+       "door_l01" "driver_openDoor"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F26772}" {
+       Name "#AR-UserAction_GetIn"
+       Icon "{75062509D78E720C}UI/Textures/UserActions/getindriveraction.edds"
+       m_sIconName "mountAsDriverCommand"
+      }
+      "Sort Priority" 1
+     }
+     GetOutAction SCR_GetOutAction "{66B4D32661F267B6}" {
+      ParentContextList {
+       "door_l01_int"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F26747}" {
+       Name "#AR-UserAction_GetOut"
+       m_sIconName "getOutCommand"
+      }
+      "Sort Priority" 12
+     }
+     JumpOutAction SCR_JumpOutAction "{66B4D32661F26792}" {
+      UIInfo SCR_ActionUIInfo "{66B4D32661F267A2}" {
+       Name "#AR-Keybind_Eject"
+       m_sIconName "getOutCommand"
+      }
+      "Sort Priority" 12
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{66B4D32661F267ED}" {
+      ParentContextList {
+       "driver"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F2678C}" {
+       Name "#AR-UserAction_SwitchSeat"
+       m_sIconName "mountAsDriverCommand"
+      }
+      Duration 0.5
+      "Sort Priority" 1
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{66B4D32661F2643A}" {
+       ParentContextList {
+        "driver"
+       }
+       UIInfo SCR_ActionUIInfo "{66B4D32661F267C4}" {
+        Name "#AR-UserAction_RemoveCasualty"
+        m_sIconName "use"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 0
+       m_bInteriorOnly 1
+      }
+      SCR_RemoveCasualtyUserAction "{66B4D32661F2640F}" {
+       ParentContextList {
+        "door_l01" "driver"
+       }
+       UIInfo SCR_ActionUIInfo "{66B4D32661F26417}" {
+        Name "#AR-UserAction_RemoveCasualty"
+        m_sIconName "use"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 0
+       m_bExteriorOnly 1
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{A1CB25848A3D93A8}" {
+      PivotID "driver_idle"
+     }
+     ForcedFreeLook 1
+     DoorInfoList {
+      0
+     }
+     UIInfo UIInfo "{66B4D32661F2645E}" {
+      Name "#AR-VehiclePosition_Driver"
+     }
+     BaseCoverage 0.15
+     m_DefaultOccupantData SCR_DefaultOccupantData "{66B4D32661F26442}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+     m_ScreenShakeData SCR_BaseScreenShakeData "{66B4D32661F264A6}" {
+     }
+    }
+    CargoCompartmentSlot Passenger_r01 {
+     CompartmentAction SCR_GetInUserAction "{66B4D32661F2651E}" {
+      ParentContextList {
+       "door_r01" "passenger_r01_openDoor"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F26520}" {
+       Name "#AR-UserAction_GetIn"
+       Icon "{04EF6B438A9F69A1}UI/Textures/UserActions/getinaction.edds"
+       m_sIconName "mountAsPassengerCommand"
+      }
+      CanAggregate 1
+      "Sort Priority" 9
+     }
+     GetOutAction SCR_GetOutAction "{66B4D32661F2657B}" {
+      ParentContextList {
+       "door_r01_int"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F2650C}" {
+       Name "#AR-UserAction_GetOut"
+       m_sIconName "getOutCommand"
+      }
+      "Sort Priority" 12
+     }
+     JumpOutAction SCR_JumpOutAction "{66B4D32661F2655B}" {
+      UIInfo SCR_ActionUIInfo "{66B4D32661F2656B}" {
+       Name "#AR-Keybind_Eject"
+       m_sIconName "getOutCommand"
+      }
+      "Sort Priority" 12
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{66B4D32661F265AF}" {
+      ParentContextList {
+       "passenger_r01"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F26549}" {
+       Name "#AR-UserAction_SwitchSeat"
+       m_sIconName "mountAsPassengerCommand"
+      }
+      Duration 0.5
+      CanAggregate 1
+      "Sort Priority" 9
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{66B4D32661F265FC}" {
+       ParentContextList {
+        "passenger_r01"
+       }
+       UIInfo SCR_ActionUIInfo "{66B4D32661F26585}" {
+        Name "#AR-UserAction_RemoveCasualty"
+        m_sIconName "use"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 10
+       m_bInteriorOnly 1
+      }
+      SCR_RemoveCasualtyUserAction "{66B4D32661F265CD}" {
+       ParentContextList {
+        "door_r01" "passenger_r01_openDoor"
+       }
+       UIInfo SCR_ActionUIInfo "{66B4D32661F265D4}" {
+        Name "#AR-UserAction_RemoveCasualty"
+        m_sIconName "use"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 10
+       m_bExteriorOnly 1
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "codriver_01_idle"
+      Offset 0 0 0
+     }
+     ForcedFreeLook 1
+     SeatType 1
+     DoorInfoList {
+      1
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F26214}" {
+      Name "#AR-VehiclePosition_Passenger"
+      m_sIconName "mountAsPassengerCommand"
+     }
+     BaseCoverage 0.15
+     ContextName "passenger_r01"
+     m_DefaultOccupantData SCR_DefaultOccupantData "{66B4D32661F2621A}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+     m_ScreenShakeData SCR_BaseScreenShakeData "{66B4D32661F26274}" {
+     }
+    }
+    CargoCompartmentSlot Passenger_m01 {
+     CompartmentAction SCR_GetInUserAction "{66B4D32661F26289}" {
+      ParentContextList {
+       "door_r01" "passenger_r01_openDoor"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F2629A}" {
+       Name "#AR-UserAction_GetIn"
+       Icon "{04EF6B438A9F69A1}UI/Textures/UserActions/getinaction.edds"
+       m_sIconName "mountAsPassengerCommand"
+      }
+      CanAggregate 1
+      "Sort Priority" 9
+     }
+     GetOutAction SCR_GetOutAction "{66B4D32661F262EA}" {
+      ParentContextList {
+       "door_r01_int"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F262FA}" {
+       Name "#AR-UserAction_GetOut"
+       m_sIconName "getOutCommand"
+      }
+      "Sort Priority" 12
+     }
+     JumpOutAction SCR_JumpOutAction "{66B4D32661F262CD}" {
+      UIInfo SCR_ActionUIInfo "{66B4D32661F262DD}" {
+       Name "#AR-Keybind_Eject"
+       m_sIconName "getOutCommand"
+      }
+      "Sort Priority" 12
+     }
+     SwitchSeatAction SCR_SwitchSeatAction "{66B4D32661F26314}" {
+      ParentContextList {
+       "passenger_m01"
+      }
+      UIInfo SCR_ActionUIInfo "{66B4D32661F2633D}" {
+       Name "#AR-UserAction_SwitchSeat"
+       m_sIconName "mountAsPassengerCommand"
+      }
+      Duration 0.5
+      CanAggregate 1
+      "Sort Priority" 9
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{66B4D32661F26366}" {
+       ParentContextList {
+        "passenger_m01"
+       }
+       UIInfo SCR_ActionUIInfo "{66B4D32661F2630E}" {
+        Name "#AR-UserAction_RemoveCasualty"
+        m_sIconName "use"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 10
+       m_bInteriorOnly 1
+      }
+      SCR_RemoveCasualtyUserAction "{66B4D32661F2634B}" {
+       ParentContextList {
+        "door_r01" "passenger_r01_openDoor"
+       }
+       UIInfo SCR_ActionUIInfo "{66B4D32661F26352}" {
+        Name "#AR-UserAction_RemoveCasualty"
+        m_sIconName "use"
+       }
+       Duration 1
+       CanAggregate 1
+       "Sort Priority" 10
+       m_bExteriorOnly 1
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{699366C6D607AD06}" {
+      PivotID "codriver_02_idle"
+      Offset 0 0 0
+     }
+     ForcedFreeLook 1
+     SeatType 4
+     DoorInfoList {
+      1
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F263A9}" {
+      Name "#AR-VehiclePosition_Passenger"
+      m_sIconName "mountAsPassengerCommand"
+     }
+     BaseCoverage 0.15
+     ContextName "passenger_m01"
+     m_DefaultOccupantData SCR_DefaultOccupantData "{66B4D32661F26392}" {
+      m_sDefaultOccupantPrefab "{84B40583F4D1B7A3}Prefabs/Characters/Factions/INDFOR/FIA/Character_FIA_Rifleman.et"
+     }
+     m_ScreenShakeData SCR_BaseScreenShakeData "{66B4D32661F2638D}" {
+     }
+    }
+   }
+  }
+  SCR_BaseLockComponent "{66B4D32661F27F9F}" {
+  }
+  SCR_EditableVehicleComponent "{66B4D32661F27D33}" {
+   m_EntityType VEHICLE
+   m_UIInfo SCR_EditableVehicleUIInfo "{66B4D32661F27CAE}" {
+    Name "INDFOR MSP"
+    Icon "{B3FBE7D84E42508A}UI/Textures/Editor/EditableEntities/Systems/EditableEntity_System_Respawn.edds"
+    m_Image "{EFA0BA63504B1230}Images/UI/Zeus GearScript Factions/INDFOR_NATO.edds"
+    m_sFaction "INDFOR"
+    m_aAuthoredLabels {
+     3 35 280 210
+    }
+    m_aAutoLabels {
+     51872 122 54
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{66B4D32661F27C37}" {
+      m_BudgetType VEHICLES
+      m_Value 1
+     }
+     SCR_EntityBudgetValue "{66B4D32661F27C2F}" {
+      m_BudgetType CAMPAIGN
+      m_Value 420
+     }
+     SCR_EntityBudgetValue "{66B4D32661F27C2A}" {
+      m_BudgetType COOLDOWN
+      m_Value 1
+     }
+    }
+    m_aOccupantFillCompartmentTypes {
+     0 2
+    }
+    m_aCrewEntityBudgetCost {
+     SCR_EntityBudgetValue "{66B4D32661F27C1A}" {
+      m_BudgetType AI
+      m_Value 1
+     }
+    }
+    m_aPassengerEntityBudgetCost {
+     SCR_EntityBudgetValue "{66B4D32661F27C01}" {
+      m_BudgetType AI
+      m_Value 2
+     }
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_vIconPos 0 1 0
+   m_Flags 5
+  }
+  SCR_FuelConsumptionComponent "{66B4D32661F27D15}" {
+   m_fFuelConsumption 51
+   m_fFuelConsumptionIdle 1.8
+  }
+  SCR_FuelManagerComponent "{66B4D32661F27D43}" {
+   FuelNodes {
+    SCR_FuelNode "{66B4D32661F27D69}" {
+     FuelType Diesel
+     MaxFuel 300
+     FuelCapPosition EntitySlotInfo "{566ADD16103400B1}" {
+      Offset -1.3138 1.22 0.6
+      Angles -77.427 90 0
+     }
+     m_fInitialFuelTankState 225
+     m_MaxFlowCapacityOut MANUAL
+     m_MaxFlowCapacityIn VEHICLE_MEDIUM
+     m_iFuelTankID 1
+    }
+    SCR_FuelNode "{66B4D32661F27D59}" {
+     FuelType Diesel
+     MaxFuel 60
+     FuelCapPosition EntitySlotInfo "{566ADD176462F2F9}" {
+      Offset -0.589 1.69 0.58
+      Angles -54.816 -90 -180
+     }
+     m_fInitialFuelTankState 45
+     m_MaxFlowCapacityIn VEHICLE_MEDIUM
+     m_iFuelTankID 2
+    }
+   }
+  }
+  SCR_ImpactEffectComponent "{66B4D32661F27DBE}" {
+   m_aDefaultParticles {
+    "{CD49B367ABBC3629}Particles/Blasts/Blast_tiny_solid.ptc" "{8EBF8E59595FEE07}Particles/Blasts/Blast_small_solid.ptc" "{221D90B0BA708D94}Particles/Blasts/Blast_medium_solid.ptc"
+   }
+   m_aWaterParticles {
+    "{9D503745552183CA}Particles/Blasts/Blast_small_water.ptc" "{17B0A4FD3711AACF}Particles/Blasts/Blast_medium_water.ptc" "{CE71E5096FB46F45}Particles/Blasts/Blast_big_water.ptc" "{A41454FFE3AC88A0}Particles/Blasts/Blast_huge_water.ptc"
+   }
+  }
+  SCR_MotorExhaustEffectGeneralComponent "{66B4D32661F27D9E}" {
+   ParticleEffect "{E60F6CCD3E871566}Particles/Vehicle/Vehicle_smoke_car_exhaust_normal.ptc"
+   RPMSignal "engineRPM"
+   ThrustSignal "engineThrust"
+   EffectPosition EntitySlotInfo "{2122A74D57AC235C}" {
+    PivotID "fx_exhaust"
+    Offset 0 0 0
+    Angles 15 -90 0
+   }
+   m_fStartupTime 2
+  }
+  SCR_PowerComponent "{66B4D32661F27D8A}" {
+   Enabled 0
+   m_bShouldApplyNoPowerPenalty 0
+  }
+  SCR_UniversalInventoryStorageComponent "{66B4D32661F27AD5}" {
+   Attributes SCR_ItemAttributeCollection "{66B4D32661F27A46}" {
+    ItemDisplayName SCR_InventoryUIInfo "{66B4D32661F27A69}" {
+     Name "#AR-Inventory_Trunk"
+     m_aItemHints {
+      SCR_SupplyAvailableItemHintUIInfo "{66B4D32661F27A22}" {
+       Name "#AR-Item_SupplyConsumer_Hint1"
+       Icon "{8EB808BFA227C080}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesStored.edds"
+       m_bHideInArsenal 1
+      }
+      SCR_SupplyStoredItemHintUIInfo "{66B4D32661F27A04}" {
+       Name "#AR-Item_SupplyStorage_Hint1"
+       Icon "{8EB808BFA227C080}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesStored.edds"
+       m_bHideInArsenal 1
+      }
+      SCR_SupplyMoveItemHintUIInfo "{66B4D32661F27A6A}" {
+       Name "#AR-Item_SupplyStorage_Hint2"
+       Icon "{307100AF2FD9AA65}UI/Textures/Icons/InventoryHints/InventoryHint_SuppliesMove.edds"
+       m_eShowWithInputDevice KEYBOARD_MOUSE_ONLY
+       m_bHideInArsenal 1
+      }
+     }
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{66B4D32661F27A58}" {
+      CameraOrbitAngles -15 -35 0
+      CameraDistanceToItem 10
+      CameraOffset -0.75 0 0
+      FOV 40
+     }
+    }
+    m_Size SLOT_3x3
+    m_bStackable 0
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 100000
+   MaxItemSize 35 35 35
+   MultiSlots {
+    MultiSlotConfiguration "{66B4D32661F27ABD}" {
+     SlotTemplate InventoryStorageSlot Bandages {
+      Prefab "{C3F1FA1E2EC2B345}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_USSR_01.et"
+     }
+     NumSlots 2
+    }
+   }
+   m_fMaxWeight 5000
+  }
+  SCR_VehicleBuoyancyComponent "{66B4D32661F27AC6}" {
+   Buoyancy 0.5
+   HydrodynamicScaleLinear 4 4 4
+   SpeedToSteering 0.3
+  }
+  SCR_VehicleCameraDataComponent "{66B4D32661F27BB2}" {
+   m_fHeight 1.4
+   m_fBobScale 0
+   m_fShakeScale 0
+   m_fDist_Max 7.6
+   m_fDist_Min 6
+   m_fDist_Desired 6.8
+   m_3rdPersonRollFactor 1
+   m_pCameraAlignData SCR_VehicleCameraAlignment "{66B4D32661F27B3A}" {
+    m_bEnableGamepad 0
+   }
+   m_pPivot PointInfo "{66B4D32661F27B22}" {
+    Offset 0 0.5 0
+   }
+  }
+  SCR_VehicleDamageManagerComponent "{66B4D32661F27428}" {
+   "Additional hit zones" {
+    SCR_FlammableHitZone Hull {
+     HZDefault 1
+     MaxHealth 4000
+     DamageReduction 10
+     DamageThreshold 2
+     "Melee multiplier" 0.01
+     "Kinetic multiplier" 0.01
+     "Fragmentation multiplier" 0
+     "Explosive multiplier" 0.33
+     "Incendiary multiplier" 0.7
+     "DamageState threshold" {
+      0.7 0.4 0.2
+     }
+     m_pDestructionHandler SCR_DestructionBaseHandler "{66B4D32661F27BE2}" {
+      m_sWreckModel "{0B4E7FFBE8E39BBA}Assets/Vehicles/Wheeled/Ural4320/Ural_4320_wreck.xob"
+      m_iWreckDelay 250
+     }
+     m_sDestructionSoundEvent "SOUND_VEHICLE_DESTRUCTION"
+     m_sDestructionParticle "{3528DFF4EE2BBD7C}Particles/Vehicle/Vehicle_explosion_medium_01.ptc"
+     m_vParticleOffset 0 1.3 2.4
+     m_eHitZoneGroup HULL
+     m_fIncendiaryReduction 2.6
+     m_fIncendiaryThreshold 0.1
+     m_fMinFireBurningTime 40
+     m_fMaxFireBurningTime 160
+     m_sDamagedParticle "{2AEA0DCC3EDDCCFB}Particles/Vehicle/Vehicle_smoke_damaged_low_01.ptc"
+     m_sDamagedParticleHeavy "{3F7B398D4D154CC9}Particles/Vehicle/Vehicle_smoke_damaged_medium_01.ptc"
+     m_sBurningParticle "{4D5CD8B2B5DE8916}Particles/Vehicle/Vehicle_fire_engine_medium.ptc"
+     m_sBurningGroundParticle "{A9259561960FD620}Particles/Vehicle/Vehicle_fire_ground_medium.ptc"
+     m_sFireStateSignal "EngineFireState"
+    }
+    SCR_EngineHitZone Engine_01 {
+     ColliderNames {
+      "UCX_FG_Engine_01"
+     }
+     MaxHealth 600
+     DamageReduction 5
+     "Collision multiplier" 0.25
+     "Kinetic multiplier" 5
+     "Fragmentation multiplier" 0.2
+     "Explosive multiplier" 0.8
+     "Incendiary multiplier" 0
+     "DamageState threshold" {
+      0.7 0.4 0.2
+     }
+     m_aDamagePassRules {
+      SCR_DamagePassRule "{66B4D32661F278C4}" {
+       m_aDamageStates {
+        2 5
+       }
+       m_aSourceDamageTypes {
+        1 3
+       }
+       m_eOutputDamageType INCENDIARY
+       m_fMultiplier 0.07
+       m_bPassToRoot 1
+      }
+      SCR_DamagePassRule "{66B4D32661F278CA}" {
+       m_aSourceDamageTypes {
+        6
+       }
+       m_eOutputDamageType INCENDIARY
+       m_fMultiplier 5
+       m_bPassToRoot 1
+      }
+     }
+     m_eHitZoneGroup ENGINE
+    }
+    SCR_GearboxHitZone Gearbox_01 {
+     ColliderNames {
+      "UCX_FG_Gearbox" "UCS_FG_Driveshaft_01" "UCS_FG_Driveshaft_02" "UCS_FG_Driveshaft_03" "UCX_FG_Differential_01" "UCX_FG_Differential_02" "UCX_FG_Differential_03"
+     }
+     MaxHealth 600
+     DamageReduction 8
+     DamageThreshold 0
+     "Collision multiplier" 0.4
+     "Kinetic multiplier" 5
+     "Fragmentation multiplier" 0.05
+     "Explosive multiplier" 0.2
+     "Incendiary multiplier" 0
+     "DamageState threshold" {
+      0.7 0.4 0.2
+     }
+     m_aDamagePassRules {
+      SCR_DamagePassRule "{66B4D32661F2794E}" {
+       m_aDamageStates {
+        2 5
+       }
+       m_aSourceDamageTypes {
+        1 3
+       }
+       m_eOutputDamageType INCENDIARY
+       m_fMultiplier 0.004
+       m_bPassToRoot 1
+      }
+     }
+     m_eHitZoneGroup DRIVE_TRAIN
+    }
+    SCR_FuelHitZone FuelTank_01 {
+     ColliderNames {
+      "UCX_FG_Fueltank_01"
+     }
+     MaxHealth 450
+     DamageReduction 4
+     "Collision multiplier" 0.25
+     "Melee multiplier" 0
+     "Kinetic multiplier" 5
+     "Fragmentation multiplier" 0.2
+     "Explosive multiplier" 0.8
+     "Incendiary multiplier" 0
+     "DamageState threshold" {
+      0.7 0.4 0.2
+     }
+     m_aDamagePassRules {
+      SCR_DamagePassRule "{66B4D32661F27626}" {
+       m_aDamageStates {
+        2
+       }
+       m_aSourceDamageTypes {
+        1 3
+       }
+       m_eOutputDamageType INCENDIARY
+       m_fMultiplier 0.1
+       m_bPassToRoot 1
+      }
+      SCR_DamagePassRule "{66B4D32661F2761B}" {
+       m_aSourceDamageTypes {
+        6
+       }
+       m_eOutputDamageType INCENDIARY
+       m_fMultiplier 8
+       m_bPassToRoot 1
+      }
+     }
+     m_SecondaryExplosionPoint PointInfo "{66B4D32661F27602}" {
+      Offset -0.8581 0.9292 0.3148
+     }
+    }
+    SCR_BatteryHitZone Battery_01 {
+     ColliderNames {
+      "UBX_FG_Battery_01"
+     }
+     IgnoreExplosions 1
+     MaxHealth 100
+     DamageReduction 3
+     "Collision multiplier" 0
+     "DamageState threshold" {
+      0.7 0.4 0.2
+     }
+     m_aDamagePassRules {
+      SCR_DamagePassRule "{66B4D32661F276A9}" {
+       m_aSourceDamageTypes {
+        6
+       }
+       m_eOutputDamageType INCENDIARY
+       m_fMultiplier 5
+       m_bPassToRoot 1
+      }
+     }
+     m_eHitZoneGroup DRIVE_TRAIN
+    }
+    SCR_BatteryHitZone Battery_02 {
+     ColliderNames {
+      "UBX_FG_Battery_02"
+     }
+     IgnoreExplosions 1
+     MaxHealth 100
+     DamageReduction 3
+     "Collision multiplier" 0
+     "DamageState threshold" {
+      0.7 0.4 0.2
+     }
+     m_aDamagePassRules {
+      SCR_DamagePassRule "{66B4D32661F276C1}" {
+       m_aSourceDamageTypes {
+        6
+       }
+       m_eOutputDamageType INCENDIARY
+       m_fMultiplier 5
+       m_bPassToRoot 1
+      }
+     }
+     m_eHitZoneGroup DRIVE_TRAIN
+    }
+   }
+   m_SecondaryExplosions SCR_SecondaryExplosions "{66B4D32661F27790}" {
+    m_aSecondaryExplosionTypes {
+     SCR_SecondaryExplosionType "{66B4D32661F2774A}" {
+      m_eSecondaryExplosionType RESOURCE
+      m_eResourceType SUPPLIES
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F27750}" {
+        m_fMinValue 1200
+        m_eSecondaryExplosionScale LARGE
+        m_sSecondaryExplosionPrefab "{72BEEF40AF179763}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Large.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F2775C}" {
+        m_fMinValue 1000
+        m_eSecondaryExplosionScale LARGE
+        m_sSecondaryExplosionPrefab "{BCE4E0823FCFBCB7}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Large.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F27747}" {
+        m_fMinValue 850
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{564D57EA34A75775}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Medium.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F27743}" {
+        m_fMinValue 550
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{7E091BB73AC18ED0}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Medium.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F27741}" {
+        m_fMinValue 250
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{2F690C7C59FB4DBF}Prefabs/Weapons/Warheads/Explosions/Explosion_Tnt_Small.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F2774C}" {
+        m_fMinValue 100
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{6BB2F747B4896E02}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Small.et"
+       }
+      }
+     }
+     SCR_SecondaryExplosionType "{66B4D32661F277B9}" {
+      m_eSecondaryExplosionType AMMO
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F277B1}" {
+        m_fMinValue 400
+        m_eSecondaryExplosionScale LARGE
+        m_sSecondaryExplosionPrefab "{BCE4E0823FCFBCB7}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Large.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277BE}" {
+        m_fMinValue 250
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{7E091BB73AC18ED0}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Medium.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277BA}" {
+        m_fMinValue 100
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{6BB2F747B4896E02}Prefabs/Weapons/Warheads/Explosions/Explosion_AmmoRack_Small.et"
+       }
+      }
+     }
+     SCR_SecondaryExplosionType "{66B4D32661F277A9}" {
+      m_eSecondaryExplosionType FUEL
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F277A1}" {
+        m_fMinValue 1250
+        m_eSecondaryExplosionScale LARGE
+        m_sSecondaryExplosionPrefab "{8BC4C95E01FC9BD3}Prefabs/Weapons/Warheads/Explosions/Explosion_Fuel_Large.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277AE}" {
+        m_fMinValue 500
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{B7C039735B4254A5}Prefabs/Weapons/Warheads/Explosions/Explosion_Fuel_Medium.et"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277AA}" {
+        m_fMinValue 0
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{E8FF2FD6E1EF4C37}Prefabs/Weapons/Warheads/Explosions/Explosion_Fuel_Small.et"
+       }
+      }
+     }
+     SCR_SecondaryExplosionType "{66B4D32661F27791}" {
+      m_eSecondaryExplosionType BATTERY
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F27793}" {
+        m_fMinValue 1
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{5389A7993D65A0ED}Prefabs/Weapons/Warheads/Explosions/Explosion_Battery.et"
+       }
+      }
+     }
+    }
+   }
+   m_SecondaryFires SCR_SecondaryExplosions "{66B4D32661F277CD}" {
+    m_aSecondaryExplosionTypes {
+     SCR_SecondaryExplosionType "{66B4D32661F277F2}" {
+      m_eSecondaryExplosionType RESOURCE
+      m_eResourceType SUPPLIES
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F2778A}" {
+        m_fMinValue 400
+        m_eSecondaryExplosionScale LARGE
+        m_sSecondaryExplosionPrefab "{B44691D651158B52}Prefabs/Weapons/Warheads/Fires/Fire_Ammo_Large.et"
+        m_sSecondaryFireParticles "{4325B2EB1B7E9A45}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_Large.ptc"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277F7}" {
+        m_fMinValue 150
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{2B494C6AC3A56452}Prefabs/Weapons/Warheads/Fires/Fire_Ammo_Medium.et"
+        m_sSecondaryFireParticles "{B073169BAA0BDD62}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_Medium.ptc"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277F3}" {
+        m_fMinValue 30
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{221BB3A567DBF231}Prefabs/Weapons/Warheads/Fires/Fire_Ammo_Small.et"
+        m_sSecondaryFireParticles "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+       }
+      }
+     }
+     SCR_SecondaryExplosionType "{66B4D32661F277E1}" {
+      m_eSecondaryExplosionType AMMO
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F277FA}" {
+        m_fMinValue 120
+        m_eSecondaryExplosionScale LARGE
+        m_sSecondaryExplosionPrefab "{B44691D651158B52}Prefabs/Weapons/Warheads/Fires/Fire_Ammo_Large.et"
+        m_sSecondaryFireParticles "{4325B2EB1B7E9A45}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_Large.ptc"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277E6}" {
+        m_fMinValue 60
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{2B494C6AC3A56452}Prefabs/Weapons/Warheads/Fires/Fire_Ammo_Medium.et"
+        m_sSecondaryFireParticles "{B073169BAA0BDD62}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_Medium.ptc"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277E2}" {
+        m_fMinValue 6
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{221BB3A567DBF231}Prefabs/Weapons/Warheads/Fires/Fire_Ammo_Small.et"
+        m_sSecondaryFireParticles "{0EDE755E5A808E81}Particles/Logistics/Fire/Ammunition_Fire/Ammunition_Fire_small.ptc"
+       }
+      }
+     }
+     SCR_SecondaryExplosionType "{66B4D32661F277D1}" {
+      m_eSecondaryExplosionType FUEL
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F277EA}" {
+        m_fMinValue 120
+        m_eSecondaryExplosionScale LARGE
+        m_sSecondaryExplosionPrefab "{342AA153837E89E5}Prefabs/Weapons/Warheads/Fires/Fire_Generic_Large.et"
+        m_sSecondaryFireParticles "{93CAB5E5559B5C32}Particles/Vehicle/Vehicle_fire_engine_big.ptc"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277D6}" {
+        m_fMinValue 30
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{D4D4E341EA4371A3}Prefabs/Weapons/Warheads/Fires/Fire_Generic_Medium.et"
+        m_sSecondaryFireParticles "{4D5CD8B2B5DE8916}Particles/Vehicle/Vehicle_fire_engine_medium.ptc"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277D3}" {
+        m_fMinValue 1
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{69FD426F75925339}Prefabs/Weapons/Warheads/Fires/Fire_Generic_Small.et"
+        m_sSecondaryFireParticles "{79DD3A5F1F3069CD}Particles/Vehicle/Vehicle_fire_engine_small.ptc"
+       }
+      }
+     }
+     SCR_SecondaryExplosionType "{66B4D32661F277C0}" {
+      m_eSecondaryExplosionType TIRE
+      m_aSecondaryExplosions {
+       SCR_SecondaryExplosion "{66B4D32661F277C5}" {
+        m_fMinValue 650
+        m_eSecondaryExplosionScale MEDIUM
+        m_sSecondaryExplosionPrefab "{C23E191F6E3A0EF4}Prefabs/Weapons/Warheads/Fires/Fire_Tire_Large.et"
+        m_sSecondaryFireParticles "{EBFD65A6258EB919}Particles/Logistics/Fire/Tire/Fire_wheel_big.ptc"
+       }
+       SCR_SecondaryExplosion "{66B4D32661F277C1}" {
+        m_fMinValue 1
+        m_eSecondaryExplosionScale SMALL
+        m_sSecondaryExplosionPrefab "{9FE9FA2398D6D428}Prefabs/Weapons/Warheads/Fires/Fire_Tire_Small.et"
+        m_sSecondaryFireParticles "{48E90427E75C84C7}Particles/Logistics/Fire/Tire/Fire_wheel_small.ptc"
+       }
+      }
+     }
+    }
+   }
+   m_RepairConfig SCR_RepairConfig "{66B4D32661F27425}" {
+    m_aSmokeRemovalHealthPercentage {
+     SCR_HealthAndBurn "{66B4D32661F2743C}" {
+      m_fSmokeThreshold 0.95
+      m_eTargetBurnState NONE
+     }
+     SCR_HealthAndBurn "{66B4D32661F27427}" {
+      m_fSmokeThreshold 0.75
+      m_eTargetBurnState SMOKING_LIGHT
+     }
+    }
+   }
+   m_fVehicleDestroyDamage 11360.7
+  }
+  SCR_VehicleDustPerWheel "{66B4D32661F2740D}" {
+   m_aWheels {
+    0 1 2 3 4 5
+   }
+   m_fDustTopSpeed 60
+  }
+  SCR_VehicleFactionAffiliationComponent "{66B4D32661F2747F}" {
+   "faction affiliation" "INDFOR"
+  }
+  SCR_VehicleSpawnProtectionComponent "{66B4D32661F2747B}" {
+  }
+  VehicleWheeledSimulation "{66B4D32661F270B0}" {
+   SignalsSourceAccess SignalsSourceAccessClass "{66B4D32661F27455}" {
+   }
+   Simulation Wheeled "{66B4D32661F270B7}" {
+    Engine Engine Engine {
+     Inertia 1.85
+     MaxPower 176
+     MaxTorque 883
+     RpmMaxPower 2100
+     RpmMaxTorque 1250
+     Steepness 75
+     Friction 195
+     RpmIdle 600
+     RpmRedline 2600
+     RpmMax 4000
+     Output "Clutch"
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 1400
+     Output "Gearbox"
+    }
+    Gearbox Gearbox Gearbox {
+     Forward {
+      5.07 3.4 2.25 1.48 1
+     }
+     Reverse 5.2
+     Output "Diff_C"
+    }
+    Differentials {
+     Differential Diff_C {
+      Type LSD
+      Ratio 6.34
+      "Anti slip" 3000
+      "Anti slip torque" 6000
+      Output0 "Diff_01"
+      Output1 "Diff_02_03"
+     }
+     Differential Diff_02_03 {
+      Type LSD
+      "Anti slip" 6000
+      "Anti slip torque" 12000
+      Output0 "Diff_02"
+      Output1 "Diff_03"
+     }
+    }
+    Axles {
+     Axle "{66B4D32661F275B3}" {
+      TorqueShare 0.3
+      Differential Differential Diff_01 {
+       Type LSD
+       Ratio 6.34
+       "Anti slip" 3000
+       "Anti slip torque" 12000
+       Output0 "Wheel_L01"
+       Output1 "Wheel_R01"
+      }
+      Suspension Suspension "{66B4D32661F2753D}" {
+       MaxSteeringAngle 26
+       SpringRate 120
+       CompressionDamper 6100
+       RelaxationDamper 8500
+       MaxTravelUp 0.2
+       MaxTravelDown 0.21
+      }
+      Wheel Wheel "{66B4D32661F27507}" {
+       Mass 180
+       BrakeTorque 3500
+      }
+      Tyre Tyre "{66B4D32661F27553}" {
+       Roughness 0.45
+       LongitudinalFriction 1.55
+       LateralFriction 1.9
+       RollingResistance 4.6
+       RollingDrag 1
+       Tread 1
+      }
+      WheelPositions {
+       WheelPosition Wheel_L01 {
+        PivotID "v_wheel_L01"
+        Offset -0.15 0 0
+       }
+       WheelPosition Wheel_R01 {
+        PivotID "v_wheel_R01"
+        Offset 0.15 0 0
+       }
+      }
+     }
+     Axle "{66B4D32661F275D8}" {
+      TorqueShare 0.35
+      HasHandbrake 0
+      Differential Differential Diff_02 {
+       Type LSD
+       Ratio 6.34
+       Strength 0.6
+       "Anti slip" 3000
+       "Anti slip torque" 12000
+       Output0 "Wheel_L02"
+       Output1 "Wheel_R02"
+      }
+      Suspension Suspension "{66B4D32661F275A9}" {
+       SpringRate 60
+       CompressionDamper 4100
+       RelaxationDamper 3000
+       MaxTravelUp 0.17
+       MaxTravelDown 0.22
+      }
+      Wheel Wheel "{66B4D32661F27583}" {
+       Mass 180
+       BrakeTorque 9000
+      }
+      Tyre Tyre "{66B4D32661F275EE}" {
+       Roughness 0.45
+       LongitudinalFriction 1.55
+       LateralFriction 1.9
+       RollingResistance 4.6
+       RollingDrag 1
+       Tread 1
+      }
+      WheelPositions {
+       WheelPosition Wheel_L02 {
+        PivotID "v_wheel_L02"
+       }
+       WheelPosition Wheel_R02 {
+        PivotID "v_wheel_R02"
+       }
+      }
+     }
+     Axle "{66B4D32661F2738B}" {
+      TorqueShare 0.35
+      HasHandbrake 1
+      Differential Differential Diff_03 {
+       Type LSD
+       Ratio 6.34
+       Strength 0.6
+       "Anti slip" 3000
+       "Anti slip torque" 12000
+       Output0 "Wheel_L03"
+       Output1 "Wheel_R03"
+      }
+      Suspension Suspension "{66B4D32661F27237}" {
+       SpringRate 60
+       CompressionDamper 4100
+       RelaxationDamper 3000
+       MaxTravelUp 0.17
+       MaxTravelDown 0.22
+      }
+      Wheel Wheel "{66B4D32661F273A5}" {
+       Mass 180
+       BrakeTorque 9000
+      }
+      Tyre Tyre "{66B4D32661F27383}" {
+       Roughness 0.45
+       LongitudinalFriction 1.55
+       LateralFriction 1.9
+       RollingResistance 4.6
+       RollingDrag 1
+       Tread 1
+      }
+      WheelPositions {
+       WheelPosition Wheel_L03 {
+        PivotID "v_wheel_L03"
+       }
+       WheelPosition Wheel_R03 {
+        PivotID "v_wheel_R03"
+       }
+      }
+     }
+    }
+    InertiaOverrideEnabled 1
+    InertiaOverride 51000 48000 10700
+    Aerodynamics Aerodynamics "{66B4D32661F273F3}" {
+     ReferenceArea 7
+     DragCoefficient 0.7
+    }
+    Pacejka Pacejka "{66B4D32661F27050}" {
+     Longitudinal PacejkaLongitudinal "{66B4D32661F27030}" {
+      b0 1.65
+      b1 -110
+      b2 2500
+      b3 15
+      b4 250
+      b5 0.075
+      b6 0
+      b7 0.055
+      b8 -0.024
+      b9 0.014
+      b10 0.26
+     }
+     Lateral PacejkaLateral "{66B4D32661F2706F}" {
+      a0 1.2
+      a1 -55
+      a2 1750
+      a3 1900
+      a4 7.2
+      a5 0.014
+      a6 -0.24
+      a7 1
+      a8 -0.03
+      a9 -0.001
+      a10 -0.15
+      a11 -8.5
+      a12 -0.29
+      a13 17.8
+      a14 -2.4
+     }
+     Aligning PacejkaAligning "{66B4D32661F27051}" {
+      c0 2.2
+      c1 -4.3
+      c2 -4.4
+      c3 -1.9
+      c4 -9.6
+      c5 0.023
+      c6 0
+      c7 0.044
+      c8 -0.58
+      c9 0.18
+      c10 0.043
+      c11 0.048
+      c12 -0.004
+      c13 -0.18
+      c14 0.14
+      c16 -1.029
+      c17 0.27
+      c18 -1.1
+     }
+    }
+    RaycastLayer "VehicleCast"
+    LiquidsLayers "Liquids"
+    NoiseSteerSensitivity 0.8
+    RoughnessSensitivity 0.8
+   }
+  }
+  BaseFlattenGrassComponent "{66B4D32661F2708D}" {
+   ParametersCollection {
+    FlattenGrassParametersObject "{66B4D32661F2709B}" {
+     SideX 8.5
+     SideZ 3.6
+     Offset 0
+     TimeDown 0
+     MaxHeight 1
+     ShapeOfGrassFlattening "Rect"
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{66B4D32661F209AB}" {
+   components {
+    ControllersManagerComponent "{66B4D32661F270FE}" {
+    }
+    SCR_BaseHUDComponent "{66B4D32661F20AB8}" {
+     InfoDisplays {
+      SCR_InfoDisplay "{66B4D32661F20AB0}" {
+       InfoDisplays {
+        SCR_AnalogGauge "{66B4D32661F20EF3}" {
+         InfoDisplays {
+          SCR_HandBrakeInfo "{66B4D32661F2710D}" {
+           m_bShowWhenCreated 0
+           m_sParentSlot "Slot-GaugeInfo"
+           m_bAdaptiveOpacity 0
+           m_bIsEnabled 0
+           m_eShow 7
+           m_sInterfaceSettingName "m_bShowVehicleInfo"
+           m_sIcon "veh_handbrake"
+          }
+          SCR_LightManagerInfo "{66B4D32661F271A4}" {
+           m_bShowWhenCreated 0
+           m_sParentSlot "Slot-GaugeInfoBottomLeft"
+           m_bAdaptiveOpacity 0
+           m_bIsEnabled 0
+           m_eShow IN_3RD_PERSON
+           m_sInterfaceSettingName "m_bShowVehicleInfo"
+           m_sIcon "veh_dipped_light"
+           m_eColor GREEN
+           m_fWidgetScale 0.7
+           m_eLightType Head
+           m_eSuppressedBy HiBeam
+          }
+          SCR_LightManagerInfo "{66B4D32661F271E3}" {
+           m_bShowWhenCreated 0
+           m_sParentSlot "Slot-GaugeInfoBottomRight"
+           m_bAdaptiveOpacity 0
+           m_bIsEnabled 0
+           m_eShow IN_3RD_PERSON
+           m_sInterfaceSettingName "m_bShowVehicleInfo"
+           m_sIcon "veh_beam_light"
+           m_eColor BLUE
+           m_fWidgetScale 0.7
+           m_eLightType HiBeam
+          }
+          SCR_LightManagerInfo "{66B4D32661F20E20}" {
+           m_bShowWhenCreated 0
+           m_sParentSlot "Slot-GaugeInfoTopLeft"
+           m_bAdaptiveOpacity 0
+           m_bIsEnabled 0
+           m_eShow 7
+           m_sInterfaceSettingName "m_bShowVehicleInfo"
+           m_sIcon "veh_left"
+           m_eColor ORANGE
+           m_eLightType Hazard
+           m_iLightSide Left
+          }
+          SCR_LightManagerInfo "{66B4D32661F20E62}" {
+           m_bShowWhenCreated 0
+           m_sParentSlot "Slot-GaugeInfoTopRight"
+           m_bAdaptiveOpacity 0
+           m_bIsEnabled 0
+           m_eShow 7
+           m_sInterfaceSettingName "m_bShowVehicleInfo"
+           m_sIcon "veh_right"
+           m_eColor ORANGE
+           m_eLightType Hazard
+           m_iLightSide Right
+          }
+         }
+         m_sParentSlot "Slot-GaugeSpeed"
+         m_bAdaptiveOpacity 0
+         m_eShow IN_3RD_PERSON
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sInfoText "#AR-VehicleInfoLabel_Speed_UC"
+         m_sInfo2Text "#AR-VehicleInfo_KMH"
+        }
+        SCR_AnalogGauge "{66B4D32661F20F66}" {
+         InfoDisplays {
+          SCR_GearShiftInfo "{66B4D32661F20F31}" {
+           m_bShowWhenCreated 0
+           m_sParentSlot "Slot-GaugeInfo"
+           m_bAdaptiveOpacity 0
+           m_bIsEnabled 0
+           m_eShow IN_3RD_PERSON
+           m_sInterfaceSettingName "m_bShowVehicleInfo"
+           m_fWidgetScale 0.7
+          }
+         }
+         m_sParentSlot "Slot-GaugeRPM"
+         m_bAdaptiveOpacity 0
+         m_eShow IN_3RD_PERSON
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sInfoText "#AR-VehicleInfo_RPMx100"
+         m_sInfo2Text "#AR-VehicleInfoMult_x1000"
+         m_fLabelValueMultiplier 0.01
+         m_fValueMax 4000
+         m_fSectionEveryNthValue 1000
+         m_iSectionSubdivisions 5
+         m_iLabelEveryNthSection 1
+         m_sSignalName "engineRPM"
+        }
+        SCR_AnalogGaugeMultiSignal "{66B4D32661F20FE2}" {
+         m_sParentSlot "Slot-GaugeFuel"
+         m_bAdaptiveOpacity 0
+         m_eShow IN_3RD_PERSON
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_fWidgetRange 140
+         m_fLabelValueMultiplier 0.02
+         m_bShowLabel0 0
+         m_bShowLabelMax 0
+         m_bShowLabelMin 0
+         m_fValueMax 300
+         m_fSectionEveryNthValue 150
+         m_sSignalName "fuel1"
+         m_sOverlay "SmallGaugeOverlay_Fuel"
+         m_sSignalNamePrefix "fuel"
+        }
+        SCR_HandBrakeInfo "{66B4D32661F20C31}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-HandBrake"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_handbrake"
+        }
+        SCR_GearShiftInfo "{66B4D32661F20C03}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-GearShift"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+        }
+        SCR_LightManagerInfo "{66B4D32661F20C45}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-LightsHazardLeft"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_left"
+         m_eColor ORANGE
+         m_eLightType Hazard
+         m_iLightSide Left
+        }
+        SCR_LightManagerInfo "{66B4D32661F20C98}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-LightsHazardRight"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_right"
+         m_eColor ORANGE
+         m_eLightType Hazard
+         m_iLightSide Right
+        }
+        SCR_HitZoneInfo "{66B4D32661F20CD3}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-DmgHull"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_damage"
+         m_bShowGhost 0
+        }
+        SCR_FuelTankInfo "{66B4D32661F20D1E}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-DmgFuelTank"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_fuel"
+         m_bShowGhost 0
+        }
+        SCR_EngineHitZoneInfo "{66B4D32661F20D4C}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-DmgEngine"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_engine_damage"
+         m_bShowGhost 0
+         m_aHitZoneNames {
+          "Engine" "Engine_01" "Engine_02"
+         }
+        }
+        SCR_GearboxHitZoneInfo "{66B4D32661F20DF1}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-DmgGearbox"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_transmission"
+         m_bShowGhost 0
+         m_aHitZoneNames {
+          "Gearbox" "Gearbox_01" "Gearbox_02"
+         }
+        }
+        SCR_WheelHitZoneInfo "{66B4D32661F20A05}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-DmgWheels"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_wheel"
+         m_bShowGhost 0
+         m_aHitZoneNames {
+          "Wheel" "Wheel_L01" "Wheel_R01" "Wheel_L02" "Wheel_R02" "Wheel_L03" "Wheel_R03" "Wheel_L04" "Wheel_R04"
+         }
+        }
+        SCR_LightManagerInfoMulti "{66B4D32661F20A7D}" {
+         m_bShowWhenCreated 0
+         m_sParentSlot "Slot-LightsHeadAndBeam"
+         m_bAdaptiveOpacity 0
+         m_eShow 7
+         m_sInterfaceSettingName "m_bShowVehicleInfo"
+         m_sIcon "veh_dipped_light"
+         m_aLights {
+          SCR_LightManagerInfoEntry "{66B4D32661F20A72}" {
+           m_eLightType HiBeam
+           m_sIcon "veh_beam_light"
+           m_eColor BLUE
+          }
+          SCR_LightManagerInfoEntry "{66B4D32661F20A7E}" {
+           m_eLightType Head
+           m_sIcon "veh_dipped_light"
+           m_eColor GREEN
+          }
+         }
+        }
+       }
+       m_LayoutPath "{7F1AEBBC1FAD35F5}UI/layouts/HUD/VehicleInfo/VehicleHUD_wheeled.layout"
+       m_sContentWidget "Content"
+       m_aHandlers {
+        SCR_InfoDisplaySlotHandler "{66B4D32661F20A61}" {
+         m_bCanUpdate 1
+         m_sSlotName "Slot_Vehicle"
+        }
+       }
+      }
+     }
+    }
+    SCR_CarControllerComponent "{66B4D32661F209A6}" {
+     MaxStartupTime 1.2
+     MaxStartupAttempts 10
+     EngineStartupChance 100
+     MaxWantsToStartTime 0
+     AirIntakes {
+      PointInfo "{66B4D32661F20A81}" {
+       Offset 1.0219 2.2583 1.9408
+      }
+     }
+     MaxLightsTime 1
+     ShutdownTime 600
+     Type Automatic
+     SteeringForwardSpeed {
+      0 21 2 18 16 24 40 21 60 18 80 12 100 3
+     }
+     SteeringBackwardSpeed {
+      0 21 2 18 16 33 40 40 60 41 80 35 100 26
+     }
+     SteeringCenterSpeed {
+      2 0 16 9 40 19 60 23
+     }
+     ThrottleCurve {
+      2080 0.8 2600 0.5 4000 0
+     }
+     ReverseCurve {
+      1000 0.8 1250 0.5 1500 0
+     }
+     ThrottleEffect GamepadTriggerEffect "{66B4D32661F20B03}" {
+      Name "Accelerate"
+      ContextName "Forward"
+      TriggerEffectType Rumble
+      TriggerEffectCurve {
+       0.889 0 1 0.128
+      }
+      "Variable Frequency" 1
+      "Frequency Delta" 50
+      "Variable Amplitude" 1
+      "Amplitude Delta" 1
+     }
+     ThrottleEffectReverse GamepadTriggerEffect "{66B4D32661F20B4F}" {
+      Name "AccelerateReverse"
+      ContextName "Reverse"
+      TriggerType Left
+      TriggerEffectType Rumble
+      TriggerEffectCurve {
+       0.889 0 1 0.128
+      }
+      "Variable Frequency" 1
+      "Frequency Delta" 50
+      "Variable Amplitude" 1
+      "Amplitude Delta" 1
+     }
+     BrakingCurve {
+      0 0 0.3 0.4 0.7 0.4 1 0.7 1.7 0.7 2 1
+     }
+     BrakeEffect GamepadTriggerEffect "{66B4D32661F20B89}" {
+      Name "Brake"
+      ContextName "Forward"
+      Priority 10
+      TriggerType Left
+      TriggerEffectCurve {
+       0.111 0 1 1
+      }
+     }
+     BrakeEffectReverse GamepadTriggerEffect "{66B4D32661F20BC1}" {
+      Name "BrakeReverse"
+      ContextName "Reverse"
+      Priority 10
+      TriggerEffectCurve {
+       0.111 0 1 1
+      }
+     }
+     ClutchUncoupleTime 0.5
+     ClutchCoupleTime 0.25
+     ClutchFeedbackRpm 1300
+     ClutchUncoupleRpm 1250
+     ClutchCoupleRpm 1510
+     Latency 1
+     UpShiftFactor 2.4
+     UpShiftRpm 1450
+     DownShiftFactor 2.2
+     DownShiftRpm 1275
+     TurboShiftFactor 1.1
+    }
+   }
+  }
+  ChimeraAIVehicleControlComponent "{66B4D32661F20699}" {
+   components {
+    AICarMovementComponent "{66B4D32661F206B4}" {
+     "Min Speed" 6
+     "Max Stuck Time" 4
+     "Min Prediction Distance" 3
+     "Max Prediction Distance" 4
+     "Using Railroad" 0
+     CruiseVehicleSpeedKmh 60
+     FrictionCoefficient 0.08
+     MaxReverseTravelDistance 15
+     MaxSteeringChangeS 4
+     SteeringPID 14 0.07 1
+     ThrottlePID 5 0.1 0
+     "Collision detection layers preset" "BasicVehicleObstacles"
+    }
+   }
+   Agenttemplate "{3C04D2994CF9F7EF}AI/AIAgents/ChimeraAIAgentVehicle.et"
+   EnableAI 0
+  }
+  SCR_VehiclePerceivableComponent "{66B4D32661F2076B}" {
+   "Additional aim points" {
+    AimPoint "{66B4D32661F206EA}" {
+     AimPointPosition PointInfo "{66B4D32661F206FD}" {
+      Offset 0 1.3988 -0.3357
+     }
+     AimpointChecked 1
+     VsibilityChecked 1
+     Dimension 0.5
+    }
+    AimPoint "{66B4D32661F206CE}" {
+     AimPointPosition PointInfo "{66B4D32661F206DF}" {
+      Offset 0 1.354 -3.022
+     }
+     AimpointChecked 1
+     VsibilityChecked 1
+     Dimension 0.5
+    }
+    AimPoint "{66B4D32661F2072E}" {
+     AimPointPosition PointInfo "{66B4D32661F20734}" {
+      Offset 0 2.0477 1.291
+     }
+     Dimension 0.5
+     AimPointType Weak
+    }
+    AimPoint "{66B4D32661F20702}" {
+     AimPointPosition PointInfo "{66B4D32661F20714}" {
+      Offset 0 1.5541 2.7128
+     }
+     Dimension 0.5
+     AimPointType Weak
+    }
+   }
+   IlluminationLvPerLight 4
+   UnitType VehicleUnarmored
+   SoundPowerRpmMultiplierDb 28
+   HornSoundPowerDb 70
+  }
+  CarProcAnimComponent "{66B4D32661F207A8}" {
+   Parameters {
+    ProcAnimParams "{66B4D32661F20747}" {
+     ResourceName "{CCE4D4889B1BB408}anims/proc/wheel_rotation.pap"
+     BoneNames {
+      "v_wheel_L01"
+     }
+    }
+    ProcAnimParams "{66B4D32661F20743}" {
+     ResourceName "{CCE4D4889B1BB408}anims/proc/wheel_rotation.pap"
+     BoneNames {
+      "v_wheel_R01"
+     }
+    }
+    ProcAnimParams "{66B4D32661F2074F}" {
+     ResourceName "{CCE4D4889B1BB408}anims/proc/wheel_rotation.pap"
+     BoneNames {
+      "v_wheel_L02"
+     }
+    }
+    ProcAnimParams "{66B4D32661F20749}" {
+     ResourceName "{CCE4D4889B1BB408}anims/proc/wheel_rotation.pap"
+     BoneNames {
+      "v_wheel_R02"
+     }
+    }
+    ProcAnimParams "{66B4D32661F207B4}" {
+     ResourceName "{CCE4D4889B1BB408}anims/proc/wheel_rotation.pap"
+     BoneNames {
+      "v_wheel_L03"
+     }
+    }
+    ProcAnimParams "{66B4D32661F207BF}" {
+     ResourceName "{CCE4D4889B1BB408}anims/proc/wheel_rotation.pap"
+     BoneNames {
+      "v_wheel_R03"
+     }
+    }
+    ProcAnimParams "{66B4D32661F207A6}" {
+     ResourceName "{746644896005DE86}Assets/Vehicles/Wheeled/Ural4320/Ural4320_dashboard.pap"
+     BoneNames {
+      "v_dashboard_speed" "v_dashboard_fuel" "v_dashboard_rpm" "v_dashboard_oil_pressure" "v_dashboard_gauge_pressure_01" "v_dashboard_gauge_pressure_02" "v_dashboard_coolant_temp" "v_dashboard_tire_pressure" "v_dashboard_ammeter"
+     }
+     SimulationDistance 15
+    }
+    ProcAnimParams "{66B4D32661F207A1}" {
+     ResourceName "{FAF66D16D6E25948}Assets/Vehicles/Wheeled/Ural4320/Ural4320_suspension.pap"
+     BoneNames {
+      "v_axle_01" "v_axle_02" "v_axle_03" "v_wheel_L01_rotator" "v_wheel_R01_rotator"
+     }
+    }
+   }
+  }
+  WCS_Armament_GroundVehicleInfraredEmitterComponent "{66B4D32661F20787}" {
+   m_vPosition 0 1.566 2.671
+  }
+  WCS_Armament_RadarReflectorComponent "{66B4D32661F2078F}" {
+  }
+  SlotManagerComponent "{66B4D32661F20528}" {
+   Slots {
+    RegisteringComponentSlotInfo window_01 {
+     Prefab "{CAAB01E9EBE78047}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_01.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_02 {
+     PivotID "v_door_l01"
+     Prefab "{A6FF350957230F69}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_02.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_03 {
+     PivotID "v_door_l01"
+     Prefab "{436379F05BC69802}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_03.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_04 {
+     Prefab "{7E575CC82EAA1135}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_04.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_05 {
+     Prefab "{9BCB1031224F865E}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_05.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_06 {
+     Prefab "{F79F24D19E8B0970}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_06.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_07 {
+     Prefab "{12036828926E9E1B}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_07.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_08 {
+     PivotID "v_door_r01"
+     Prefab "{8DF76EA174521B1E}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_08.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo window_09 {
+     PivotID "v_door_r01"
+     Prefab "{686B225878B78C75}Prefabs/Vehicles/Wheeled/Ural4320/Dst/Ural4320_window_09.et"
+     DeactivatePhysicsOnAtaching 1
+     RegisterDamage 1
+    }
+    EntitySlotInfo ShadowAO {
+     PivotID "v_body"
+     Offset 0 -1 -0.65
+     Angles 90 0 0
+     Prefab "{D6AC0E5559BCAC83}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_shadow.et"
+    }
+    RegisteringComponentSlotInfo TireHolder {
+     MergePhysics 1
+     Enabled 0
+     Prefab "{0884AC9E538EF729}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_sparetire_holder.et"
+     RegisterDamage 1
+    }
+    SCR_WheelSlotInfo Wheel_L01 {
+     PivotID "v_wheel_L01"
+     Offset -0.1377 0 0
+     MergePhysics 1
+     Prefab "{69FDF3B29064F40F}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Wheels/Ural4320_wheel_left_01.et"
+     RegisterDamage 1
+     m_iWheelIndex 0
+    }
+    SCR_WheelSlotInfo Wheel_L02 {
+     PivotID "v_wheel_L02"
+     MergePhysics 1
+     Prefab "{69FDF3B29064F40F}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Wheels/Ural4320_wheel_left_01.et"
+     RegisterDamage 1
+     m_iWheelIndex 2
+    }
+    SCR_WheelSlotInfo Wheel_L03 {
+     PivotID "v_wheel_L03"
+     MergePhysics 1
+     Prefab "{69FDF3B29064F40F}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Wheels/Ural4320_wheel_left_01.et"
+     RegisterDamage 1
+     m_iWheelIndex 4
+    }
+    SCR_WheelSlotInfo Wheel_R01 {
+     PivotID "v_wheel_R01"
+     Offset 0.1377 0 0
+     MergePhysics 1
+     Prefab "{05A9C7522CA07B21}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Wheels/Ural4320_wheel_right_01.et"
+     RegisterDamage 1
+     m_iWheelIndex 1
+    }
+    SCR_WheelSlotInfo Wheel_R02 {
+     PivotID "v_wheel_R02"
+     MergePhysics 1
+     Prefab "{05A9C7522CA07B21}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Wheels/Ural4320_wheel_right_01.et"
+     RegisterDamage 1
+     m_iWheelIndex 3
+    }
+    SCR_WheelSlotInfo Wheel_R03 {
+     PivotID "v_wheel_R03"
+     MergePhysics 1
+     Prefab "{05A9C7522CA07B21}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Wheels/Ural4320_wheel_right_01.et"
+     RegisterDamage 1
+     m_iWheelIndex 5
+    }
+    EntitySlotInfo Label_L {
+     PivotID "v_door_L01"
+     Offset -0.0439 -0.2538 -0.5293
+     Angles 0 2.9668 0.4822
+     Prefab "{0D546D2B04CF870A}Prefabs/Vehicles/Shared/decal_vehicle_label.et"
+    }
+    EntitySlotInfo Label_R {
+     PivotID "v_door_R01"
+     Offset 0.0437 -0.2435 -0.5293
+     Angles 0 178.03102 0
+     Prefab "{0D546D2B04CF870A}Prefabs/Vehicles/Shared/decal_vehicle_label.et"
+    }
+    RegisteringComponentSlotInfo Radio {
+     MergePhysics 1
+     Prefab "{392FBE246E9CF91C}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/FIA/Ural4320_FIA_combox.et"
+     RegisterActions 1
+     RegisterDamage 1
+     RegisterCompartments 1
+     RegisterLights 1
+    }
+    RegisteringComponentSlotInfo Arsenal {
+     Prefab "{8A239DEA19509B1B}Prefabs/Vehicles/Core/VirtualSlots/Radio_VirtualArsenalSlot.et"
+     DisablePhysicsInteraction 1
+    }
+    RegisteringComponentSlotInfo FIA_CoatOfArms_decal {
+     Prefab "{DA7286CAAB5338C5}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/FIA/Ural4320_FIA_CoatOfArms_decal.et"
+     InheritParentSkeleton 1
+    }
+    EntitySlotInfo Flag {
+     Offset -1.136 4.6568 0.8945
+     Prefab "{8C743CB2D8E074D5}Prefabs/Props/Fabric/Flags/INDFOR_FLAG.et"
+     DisablePhysicsInteraction 1
+    }
+    EntitySlotInfo Light1 {
+     Offset 0.5362 3.1763 0.5012
+     Angles 90 -45 135
+     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     DisablePhysicsInteraction 1
+    }
+    EntitySlotInfo Light2 {
+     Offset -0.4704 3.1763 0.5012
+     Angles 90 -45 135
+     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     DisablePhysicsInteraction 1
+    }
+    EntitySlotInfo Light3 {
+     Offset -0.6261 3.2043 -3.4906
+     Angles 90 180 -180
+     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     DisablePhysicsInteraction 1
+    }
+    EntitySlotInfo Light4 {
+     Offset 0.6268 3.2083 -3.4906
+     Angles 90 180 -180
+     Prefab "{954774A4B062F1FC}PrefabLibrary/Props/Airport/RunwayLightPortable_01/RunwayLightPortable_01_red.et"
+     DisablePhysicsInteraction 1
+    }
+    EntitySlotInfo Antenna {
+     Offset -1.1417 3.5382 0.8807
+     Prefab "{717F88E65A921861}Prefabs/Structures/BuildingParts/Misc/TvAntenna_02.et"
+     DisablePhysicsInteraction 1
+    }
+   }
+   SlotMappers {
+    CompartmentToSlotMapping Window_01 {
+     SlotName "window_01"
+     Coverage 0.02
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_02 {
+     SlotName "window_02"
+     Coverage 0.01
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_03 {
+     SlotName "window_03"
+     Coverage 0.01
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_04 {
+     SlotName "window_04"
+     Coverage 0.01
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_05 {
+     SlotName "window_05"
+     Coverage 0.03
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_06 {
+     SlotName "window_06"
+     Coverage 0.03
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_07 {
+     SlotName "window_07"
+     Coverage 0.01
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_08 {
+     SlotName "window_08"
+     Coverage 0.01
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+    CompartmentToSlotMapping Window_09 {
+     SlotName "window_09"
+     Coverage 0.02
+     Compartments {
+      "PilotCompartment" "Passenger_r01" "Passenger_m01"
+     }
+    }
+   }
+  }
+  SCR_VehicleInventoryStorageManagerComponent "{66B4D32661F20512}" {
+  }
+  ActionsManagerComponent "{66B4D32661F327C0}" {
+   ActionContexts {
+    UserActionContext "{66B4D32661F2057C}" {
+     ContextName "flip"
+     Position PointInfo "{66B4D32661F2057F}" {
+      Offset 0 0.5 0
+     }
+     Radius 1
+     Height 1
+    }
+    UserActionContext "{66B4D32661F20593}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F2055B}" {
+     }
+     ContextName "Unflipper"
+     Position PointInfo "{66B4D32661F2054B}" {
+      Offset 0 1.8 -0.5
+      Angles 0 0 90
+     }
+     Radius 5
+     Height 9
+    }
+    UserActionContext "{66B4D32661F205F6}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F2058C}" {
+     }
+     ContextName "door_l01"
+     Position PointInfo "{66B4D32661F20588}" {
+      PivotID "v_door_l01_handle"
+      Offset 0 0 0.3517
+      Angles 0 -90 0
+     }
+     Radius 0.45
+     Omnidirectional 0
+     FilterActionsUsingCache 0
+    }
+    UserActionContext "{66B4D32661F205EC}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F205E1}" {
+     }
+     ContextName "door_r01"
+     Position PointInfo "{66B4D32661F205ED}" {
+      PivotID "v_door_r01_handle"
+      Offset 0 0 0.3517
+      Angles 0 90 0
+     }
+     Radius 0.45
+     Omnidirectional 0
+     FilterActionsUsingCache 0
+    }
+    UserActionContext "{66B4D32661F205C1}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F205C6}" {
+     }
+     ContextName "hood_front"
+     Position PointInfo "{66B4D32661F205C3}" {
+      Offset 0 1.9 3.3
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F2023B}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F20230}" {
+     }
+     ContextName "fuel_cap_l"
+     Position PointInfo "{66B4D32661F2023C}" {
+      Offset -1.18 1.22 0.6
+      Angles 0 -90 0
+     }
+     Radius 0.2
+     Omnidirectional 1
+    }
+    UserActionContext "{66B4D32661F20214}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F20217}" {
+     }
+     ContextName "fuel_cap_m"
+     Position PointInfo "{66B4D32661F20215}" {
+      Offset -0.55 1.69 0.58
+      Angles 0 -90 0
+     }
+     Radius 0.3
+     Omnidirectional 1
+    }
+    UserActionContext "{66B4D32661F2020C}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F20201}" {
+     }
+     ContextName "tow_hook"
+     Position PointInfo "{66B4D32661F2020D}" {
+      Offset 0 1 -3.7
+      Angles 0 180 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F20265}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F2027A}" {
+     }
+     ContextName "wheel_l01"
+     Position PointInfo "{66B4D32661F20266}" {
+      PivotID "v_wheel_L01"
+      Offset -0.4 0 0
+      Angles 0 -90 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F20259}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F20251}" {
+     }
+     ContextName "wheel_r01"
+     Position PointInfo "{66B4D32661F2025A}" {
+      PivotID "v_wheel_R01"
+      Offset 0.4 0 0
+      Angles 0 90 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F202B0}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F202B5}" {
+     }
+     ContextName "wheel_l02"
+     Position PointInfo "{66B4D32661F202B1}" {
+      PivotID "v_wheel_L02"
+      Offset -0.25 0 0
+      Angles 0 -90 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F202AA}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F202AF}" {
+     }
+     ContextName "wheel_r02"
+     Position PointInfo "{66B4D32661F202AB}" {
+      PivotID "v_wheel_R02"
+      Offset 0.25 0 0
+      Angles 0 90 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F20280}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F20298}" {
+     }
+     ContextName "wheel_l03"
+     Position PointInfo "{66B4D32661F20282}" {
+      PivotID "v_wheel_L03"
+      Offset -0.25 0 0
+      Angles 0 -90 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F23B73}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F202FF}" {
+     }
+     ContextName "wheel_r03"
+     Position PointInfo "{66B4D32661F202FB}" {
+      PivotID "v_wheel_R03"
+      Offset 0.25 0 0
+      Angles 0 90 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F23B59}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23B5F}" {
+     }
+     ContextName "wheel_spare"
+     Position PointInfo "{66B4D32661F23B5A}" {
+      PivotID "v_wheel_spare_tire_01"
+      Offset 0 0 -0.15
+      Angles 0 180 0
+     }
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F23B43}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23B47}" {
+     }
+     ContextName "driver"
+     Position PointInfo "{66B4D32661F23B44}" {
+      PivotID "driver_idle"
+      Offset 0 0.1 0
+     }
+     Radius 0.2
+    }
+    UserActionContext "{66B4D32661F23AB8}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23ABC}" {
+     }
+     ContextName "driver_openDoor"
+     Position PointInfo "{66B4D32661F23AB9}" {
+      PivotID "driver_idle"
+      Offset -0.1415 -0.0269 0
+     }
+     Radius 0.25
+     Height 0
+    }
+    UserActionContext "{66B4D32661F23AA2}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23AA6}" {
+     }
+     ContextName "passenger_r01"
+     Position PointInfo "{66B4D32661F23AA3}" {
+      PivotID "codriver_01_idle"
+      Offset 0 0.1 0
+     }
+     Radius 0.2
+    }
+    UserActionContext "{66B4D32661F23A99}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23A9D}" {
+     }
+     ContextName "passenger_r01_openDoor"
+     Position PointInfo "{66B4D32661F23A9A}" {
+      PivotID "codriver_01_idle"
+      Offset 0.0628 -0.0096 0
+     }
+     Height 0
+    }
+    UserActionContext "{66B4D32661F23A81}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23A85}" {
+     }
+     ContextName "passenger_m01"
+     Position PointInfo "{66B4D32661F23A82}" {
+      PivotID "codriver_02_idle"
+      Offset 0 0.1 0
+     }
+     Radius 0.2
+    }
+    UserActionContext "{66B4D32661F23AEA}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23AEF}" {
+     }
+     ContextName "door_l01_int"
+     Position PointInfo "{66B4D32661F23AEB}" {
+      PivotID "v_door_l01_handle_interior"
+      Angles 0 90 0
+     }
+     Radius 0.2
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F23AE0}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23AE4}" {
+     }
+     ContextName "door_l01_int_handle"
+     Position PointInfo "{66B4D32661F23AE1}" {
+      PivotID "v_door_l01_handle_interior"
+      Offset 0 0.1007 -0.1635
+      Angles 0 90 0
+     }
+     Radius 0.2
+     Height 0
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F23ACB}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23ACE}" {
+     }
+     ContextName "door_r01_int"
+     Position PointInfo "{66B4D32661F23ACC}" {
+      PivotID "v_door_r01_handle_interior"
+      Angles 0 -90 0
+     }
+     Radius 0.2
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F23AC1}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23AC5}" {
+     }
+     ContextName "door_r01_int_handle"
+     Position PointInfo "{66B4D32661F23AC2}" {
+      PivotID "v_door_r01_handle_interior"
+      Offset 0 0.0849 -0.1806
+      Angles 0 -90 0
+     }
+     Radius 0.2
+     Height 0
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F2AEFE}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F23A30}" {
+     }
+     ContextName "starter_switch"
+     Position PointInfo "{66B4D32661F23A2C}" {
+      PivotID "v_starter_switch"
+      Offset 0 0 -0.01
+      Angles 0 180 0
+     }
+     Radius 0.25
+     Omnidirectional 0
+     VisibilityAngle 60
+    }
+    UserActionContext "{66B4D32661F2AEC4}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F2AEC9}" {
+     }
+     ContextName "handbrake"
+     Position PointInfo "{66B4D32661F2AEC5}" {
+      PivotID "v_handbrake"
+      Offset 0 0.1109 0.1896
+      Angles 0 -90 0
+     }
+     Radius 0.2
+    }
+    UserActionContext "{66B4D32661F34E4C}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F2AEC2}" {
+     }
+     ContextName "handbrake_openDoor"
+     Position PointInfo "{66B4D32661F2AEDF}" {
+      PivotID "v_handbrake"
+      Offset 0 0.1923 0.3431
+      Angles 0 -90 0
+     }
+     Height 0
+    }
+    UserActionContext "{66B4D32661F34E39}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F34E3D}" {
+     }
+     ContextName "light_switch"
+     Position PointInfo "{66B4D32661F34E38}" {
+      Offset -0.1175 1.83 1.77
+      Angles 0 180 0
+     }
+     Radius 0.25
+     Omnidirectional 0
+     VisibilityAngle 60
+    }
+    UserActionContext "{66B4D32661F34E22}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F34E26}" {
+     }
+     ContextName "light_turn_signal_switch"
+     Position PointInfo "{66B4D32661F34E25}" {
+      Offset -0.71 2.005 1.64
+      Angles 0 180 0
+     }
+     Radius 0.15
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F34E0F}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F34E13}" {
+     }
+     ContextName "light_spotlight_cabin_switch"
+     Position PointInfo "{66B4D32661F34E0E}" {
+      Offset -0.06 2 1.78
+      Angles 0 180 0
+     }
+     Radius 0.25
+     Omnidirectional 0
+     VisibilityAngle 60
+    }
+    UserActionContext "{66B4D32661F34DF9}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F34DFD}" {
+     }
+     ContextName "light_hazard_switch"
+     Position PointInfo "{66B4D32661F34DF8}" {
+      Offset -0.0675 1.82 1.79
+      Angles 0 180 0
+     }
+     Radius 0.25
+     Omnidirectional 0
+     VisibilityAngle 60
+    }
+    UserActionContext "{66B4D32661F3468E}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F34DE6}" {
+     }
+     ContextName "light_dashboard_switch"
+     Position PointInfo "{66B4D32661F34DE5}" {
+      Offset -0.825 1.825 1.77
+      Angles 0 180 0
+     }
+     Radius 0.05
+    }
+    UserActionContext "{66B4D32661F346A4}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F346BB}" {
+     }
+     ContextName "wipers_switch"
+     Position PointInfo "{66B4D32661F346A5}" {
+      Offset -0.665 1.825 1.785
+      Angles 0 180 0
+     }
+     Radius 0.06
+     Omnidirectional 0
+     VisibilityAngle 47.571
+    }
+    UserActionContext "{66B4D32661F346D2}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F346D6}" {
+     }
+     ContextName "horn"
+     Position PointInfo "{66B4D32661F346D3}" {
+      PivotID "v_steering_wheel"
+      Angles 90 0 0
+     }
+     Radius 0.1
+     Omnidirectional 0
+    }
+    UserActionContext "{66B4D32661F346CA}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F346CF}" {
+     }
+     ContextName "window_crank_l01"
+     Position PointInfo "{66B4D32661F346CB}" {
+      PivotID "v_door_l01_handle_glass"
+      Angles 0 90 0
+     }
+     Radius 0.1
+     Omnidirectional 0
+     VisibilityAngle 60.429
+    }
+    UserActionContext "{66B4D32661F346E0}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F346E4}" {
+     }
+     ContextName "window_crank_r01"
+     Position PointInfo "{66B4D32661F346E1}" {
+      PivotID "v_door_r01_handle_glass"
+      Angles 0 -90 0
+     }
+     Radius 0.1
+     Omnidirectional 0
+     VisibilityAngle 57.857
+    }
+    UserActionContext "{66B4D32661F3461B}" {
+     UIInfo SCR_ActionContextUIInfo "{66B4D32661F3461F}" {
+     }
+     ContextName "hood_repair"
+     Position PointInfo "{66B4D32661F34618}" {
+      Offset 0 1.5 3.6
+     }
+     Omnidirectional 0
+    }
+   }
+   additionalActions {
+    SCR_RefuelAtSupportStationAction "{66B4D32661F347D5}" {
+     ParentContextList {
+      "fuel_cap_l"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F34625}" {
+      Name "#AR-SupportStation_Fuel_ActionName_Refuel"
+      m_sIconName "veh_fuel"
+     }
+     VisibilityRange 1.5
+     Duration -0.5
+     PerformPerFrame 1
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_iGadgetAnimationCommand 2
+     m_aFuelTankIDs {
+      1
+     }
+    }
+    SCR_ResourceEntityRefundAction "{66B4D32661F34707}" {
+     ParentContextList {
+      "hood_repair"
+     }
+     UIInfo UIInfo "{66B4D32661F347C5}" {
+      Name "#AR-Supplies_Refund_Action_Object"
+     }
+     Duration 1.5
+     "Sort Priority" 30
+     m_bLoopAction 0
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+    }
+    SCR_RepairAtSupportStationAction "{66B4D32661F35820}" {
+     ParentContextList {
+      "hood_repair"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F34730}" {
+      Name "#AR-SupportStation_Repair_ActionName"
+      m_sIconName "repair"
+     }
+     Duration -5
+     PerformPerFrame 1
+     "Sort Priority" -100
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_sInvalidRangeActionReason "#AR-SupportStation_Repair_ActionInvalid_Needs_SupportStation_Emergency"
+     m_iGadgetAnimationCommand 1
+     m_DamageIntensityHolder SCR_DamageIntensityHolder "{66B4D32661F34775}" {
+      m_aDamageIntensityEntries {
+       SCR_DamageIntensityEntry "{66B4D32661F34754}" {
+        m_UiInfo SCR_UIName "{66B4D32661F34755}" {
+         Name "#AR-SupportStation_Repair_ActionInvalid_NoDamage"
+        }
+        m_fMaxValue 10
+        m_fMinValue 1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F3475F}" {
+        m_eDamageIntensityType LOW
+        m_UiInfo SCR_UIName "{66B4D32661F3475C}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Low"
+        }
+        m_fMaxValue 1
+        m_fMinValue 0.75
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F34744}" {
+        m_eDamageIntensityType MEDIUM
+        m_UiInfo SCR_UIName "{66B4D32661F34745}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Medium"
+        }
+        m_fMaxValue 0.75
+        m_fMinValue 0.3
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F34742}" {
+        m_eDamageIntensityType HIGH
+        m_UiInfo SCR_UIName "{66B4D32661F34743}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_High"
+        }
+        m_fMaxValue 0.3
+        m_fMinValue 0.1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F3474A}" {
+        m_eDamageIntensityType CRITICAL
+        m_UiInfo SCR_UIName "{66B4D32661F3474B}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Critical"
+        }
+        m_fMaxValue 0.1
+       }
+      }
+     }
+     m_aHitZoneGroups {
+      30
+     }
+     m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32661F358BD}" {
+      m_aHitZoneGroupNames {
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3477A}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Wheel"
+        m_eVehicleHitZoneGroup WHEELS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F34767}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_FuelTank"
+        m_eVehicleHitZoneGroup FUEL_TANKS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F34763}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Engine"
+        m_eVehicleHitZoneGroup ENGINE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3476C}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_DriveTrain"
+        m_eVehicleHitZoneGroup DRIVE_TRAIN
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F34768}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Hull"
+        m_eVehicleHitZoneGroup HULL
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F35895}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Cargo"
+        m_eVehicleHitZoneGroup CARGO
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F35896}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_AmmoStorage"
+        m_eVehicleHitZoneGroup AMMO_STORAGE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F35893}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Turret"
+        m_eVehicleHitZoneGroup TURRET
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3589C}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_RotorAssembly"
+        m_eVehicleHitZoneGroup ROTOR_ASSEMBLY
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F35898}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_TailRotor"
+        m_eVehicleHitZoneGroup TAIL_ROTOR
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F35884}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Optics"
+        m_eVehicleHitZoneGroup OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F35881}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_NightOptics"
+        m_eVehicleHitZoneGroup NIGHT_OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F35882}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Viewport"
+        m_eVehicleHitZoneGroup VIEWPORT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3588F}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Propeller"
+        m_eVehicleHitZoneGroup PROPELLER
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3588B}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Instruments"
+        m_eVehicleHitZoneGroup INSTRUMENTS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F358B7}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Controls"
+        m_eVehicleHitZoneGroup CONTROLS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F358B0}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Light"
+        m_eVehicleHitZoneGroup LIGHT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F358B2}" {
+        m_sHitZoneGroupName "!Error!"
+        m_eVehicleHitZoneGroup VIRTUAL
+       }
+      }
+     }
+    }
+    SCR_RepairAtSupportStationAction "{66B4D32661F32145}" {
+     ParentContextList {
+      "hood_repair"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F35858}" {
+      Name "#AR-SupportStation_Repair_ActionName"
+      m_sIconName "repair"
+     }
+     Duration -5
+     PerformPerFrame 1
+     "Sort Priority" -120
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_sInvalidRangeActionReason "#AR-SupportStation_Repair_ActionInvalid_Needs_SupportStation_Emergency"
+     m_iGadgetAnimationCommand 1
+     m_DamageIntensityHolder SCR_DamageIntensityHolder "{66B4D32661F36BFA}" {
+      m_aDamageIntensityEntries {
+       SCR_DamageIntensityEntry "{66B4D32661F35848}" {
+        m_UiInfo SCR_UIName "{66B4D32661F35849}" {
+         Name "#AR-SupportStation_Repair_ActionInvalid_NoDamage"
+        }
+        m_fMaxValue 10
+        m_fMinValue 1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F35872}" {
+        m_eDamageIntensityType LOW
+        m_UiInfo SCR_UIName "{66B4D32661F35873}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Low"
+        }
+        m_fMaxValue 1
+        m_fMinValue 0.75
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F35878}" {
+        m_eDamageIntensityType MEDIUM
+        m_UiInfo SCR_UIName "{66B4D32661F35879}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Medium"
+        }
+        m_fMaxValue 0.75
+        m_fMinValue 0.3
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F36A0D}" {
+        m_eDamageIntensityType HIGH
+        m_UiInfo SCR_UIName "{66B4D32661F35861}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_High"
+        }
+        m_fMaxValue 0.3
+        m_fMinValue 0.1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F36BF8}" {
+        m_eDamageIntensityType CRITICAL
+        m_UiInfo SCR_UIName "{66B4D32661F36A06}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Critical"
+        }
+        m_fMaxValue 0.1
+       }
+      }
+     }
+     m_aHitZoneGroups {
+      10
+     }
+     m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32661F321C3}" {
+      m_aHitZoneGroupNames {
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BF2}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Wheel"
+        m_eVehicleHitZoneGroup WHEELS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BF4}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_FuelTank"
+        m_eVehicleHitZoneGroup FUEL_TANKS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BE8}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Engine"
+        m_eVehicleHitZoneGroup ENGINE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BED}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_DriveTrain"
+        m_eVehicleHitZoneGroup DRIVE_TRAIN
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BE1}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Hull"
+        m_eVehicleHitZoneGroup HULL
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BE5}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Cargo"
+        m_eVehicleHitZoneGroup CARGO
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BE6}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_AmmoStorage"
+        m_eVehicleHitZoneGroup AMMO_STORAGE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BDB}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Turret"
+        m_eVehicleHitZoneGroup TURRET
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BD1}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_RotorAssembly"
+        m_eVehicleHitZoneGroup ROTOR_ASSEMBLY
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BD5}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_TailRotor"
+        m_eVehicleHitZoneGroup TAIL_ROTOR
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BD6}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Optics"
+        m_eVehicleHitZoneGroup OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BCB}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_NightOptics"
+        m_eVehicleHitZoneGroup NIGHT_OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BCE}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Viewport"
+        m_eVehicleHitZoneGroup VIEWPORT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BC2}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Propeller"
+        m_eVehicleHitZoneGroup PROPELLER
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BC7}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Instruments"
+        m_eVehicleHitZoneGroup INSTRUMENTS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BB8}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Controls"
+        m_eVehicleHitZoneGroup CONTROLS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BBA}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Light"
+        m_eVehicleHitZoneGroup LIGHT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F36BBE}" {
+        m_sHitZoneGroupName "!Error!"
+        m_eVehicleHitZoneGroup VIRTUAL
+       }
+      }
+     }
+    }
+    SCR_RepairAtSupportStationAction "{66B4D32661F32232}" {
+     ParentContextList {
+      "fuel_cap_l"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F3215C}" {
+      Name "#AR-SupportStation_Repair_ActionName"
+      m_sIconName "repair"
+     }
+     Duration -5
+     PerformPerFrame 1
+     "Sort Priority" -90
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_sInvalidRangeActionReason "#AR-SupportStation_Repair_ActionInvalid_Needs_SupportStation_Emergency"
+     m_iGadgetAnimationCommand 1
+     m_DamageIntensityHolder SCR_DamageIntensityHolder "{66B4D32661F3217A}" {
+      m_aDamageIntensityEntries {
+       SCR_DamageIntensityEntry "{66B4D32661F32167}" {
+        m_UiInfo SCR_UIName "{66B4D32661F32166}" {
+         Name "#AR-SupportStation_Repair_ActionInvalid_NoDamage"
+        }
+        m_fMaxValue 10
+        m_fMinValue 1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F3216D}" {
+        m_eDamageIntensityType LOW
+        m_UiInfo SCR_UIName "{66B4D32661F3216C}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Low"
+        }
+        m_fMaxValue 1
+        m_fMinValue 0.75
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F3216B}" {
+        m_eDamageIntensityType MEDIUM
+        m_UiInfo SCR_UIName "{66B4D32661F3216A}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Medium"
+        }
+        m_fMaxValue 0.75
+        m_fMinValue 0.3
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F32171}" {
+        m_eDamageIntensityType HIGH
+        m_UiInfo SCR_UIName "{66B4D32661F32170}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_High"
+        }
+        m_fMaxValue 0.3
+        m_fMinValue 0.1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F32179}" {
+        m_eDamageIntensityType CRITICAL
+        m_UiInfo SCR_UIName "{66B4D32661F32178}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Critical"
+        }
+        m_fMaxValue 0.1
+       }
+      }
+     }
+     m_aHitZoneGroups {
+      40
+     }
+     m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32661F322BD}" {
+      m_aHitZoneGroupNames {
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32281}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Wheel"
+        m_eVehicleHitZoneGroup WHEELS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32283}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_FuelTank"
+        m_eVehicleHitZoneGroup FUEL_TANKS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3228F}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Engine"
+        m_eVehicleHitZoneGroup ENGINE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3228A}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_DriveTrain"
+        m_eVehicleHitZoneGroup DRIVE_TRAIN
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32296}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Hull"
+        m_eVehicleHitZoneGroup HULL
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32291}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Cargo"
+        m_eVehicleHitZoneGroup CARGO
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3229C}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_AmmoStorage"
+        m_eVehicleHitZoneGroup AMMO_STORAGE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3229E}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Turret"
+        m_eVehicleHitZoneGroup TURRET
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32299}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_RotorAssembly"
+        m_eVehicleHitZoneGroup ROTOR_ASSEMBLY
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322A5}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_TailRotor"
+        m_eVehicleHitZoneGroup TAIL_ROTOR
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322A0}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Optics"
+        m_eVehicleHitZoneGroup OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322A3}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_NightOptics"
+        m_eVehicleHitZoneGroup NIGHT_OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322AE}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Viewport"
+        m_eVehicleHitZoneGroup VIEWPORT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322A8}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Propeller"
+        m_eVehicleHitZoneGroup PROPELLER
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322AB}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Instruments"
+        m_eVehicleHitZoneGroup INSTRUMENTS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322B6}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Controls"
+        m_eVehicleHitZoneGroup CONTROLS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322B0}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Light"
+        m_eVehicleHitZoneGroup LIGHT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F322BC}" {
+        m_sHitZoneGroupName "!Error!"
+        m_eVehicleHitZoneGroup VIRTUAL
+       }
+      }
+     }
+     m_aHitZoneAdditionalIDs {
+      1
+     }
+    }
+    SCR_RepairAtSupportStationAction "{66B4D32661F3231E}" {
+     ParentContextList {
+      "hood_repair"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F3224C}" {
+      Name "#AR-SupportStation_Repair_ActionName"
+      m_sIconName "repair"
+     }
+     Duration -5
+     PerformPerFrame 1
+     "Sort Priority" -110
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_sInvalidRangeActionReason "#AR-SupportStation_Repair_ActionInvalid_Needs_SupportStation_Emergency"
+     m_iGadgetAnimationCommand 1
+     m_DamageIntensityHolder SCR_DamageIntensityHolder "{66B4D32661F32269}" {
+      m_aDamageIntensityEntries {
+       SCR_DamageIntensityEntry "{66B4D32661F32257}" {
+        m_UiInfo SCR_UIName "{66B4D32661F32256}" {
+         Name "#AR-SupportStation_Repair_ActionInvalid_NoDamage"
+        }
+        m_fMaxValue 10
+        m_fMinValue 1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F3225D}" {
+        m_eDamageIntensityType LOW
+        m_UiInfo SCR_UIName "{66B4D32661F3225C}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Low"
+        }
+        m_fMaxValue 1
+        m_fMinValue 0.75
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F3225B}" {
+        m_eDamageIntensityType MEDIUM
+        m_UiInfo SCR_UIName "{66B4D32661F3225A}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Medium"
+        }
+        m_fMaxValue 0.75
+        m_fMinValue 0.3
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F32261}" {
+        m_eDamageIntensityType HIGH
+        m_UiInfo SCR_UIName "{66B4D32661F32260}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_High"
+        }
+        m_fMaxValue 0.3
+        m_fMinValue 0.1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F32268}" {
+        m_eDamageIntensityType CRITICAL
+        m_UiInfo SCR_UIName "{66B4D32661F3226F}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Critical"
+        }
+        m_fMaxValue 0.1
+       }
+      }
+     }
+     m_aHitZoneGroups {
+      20
+     }
+     m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32661F323A2}" {
+      m_aHitZoneGroupNames {
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32277}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Wheel"
+        m_eVehicleHitZoneGroup WHEELS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32272}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_FuelTank"
+        m_eVehicleHitZoneGroup FUEL_TANKS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3227D}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Engine"
+        m_eVehicleHitZoneGroup ENGINE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3227F}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_DriveTrain"
+        m_eVehicleHitZoneGroup DRIVE_TRAIN
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3227B}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Hull"
+        m_eVehicleHitZoneGroup HULL
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32386}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Cargo"
+        m_eVehicleHitZoneGroup CARGO
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32381}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_AmmoStorage"
+        m_eVehicleHitZoneGroup AMMO_STORAGE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3238C}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Turret"
+        m_eVehicleHitZoneGroup TURRET
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3238E}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_RotorAssembly"
+        m_eVehicleHitZoneGroup ROTOR_ASSEMBLY
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3238B}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_TailRotor"
+        m_eVehicleHitZoneGroup TAIL_ROTOR
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32395}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Optics"
+        m_eVehicleHitZoneGroup OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32390}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_NightOptics"
+        m_eVehicleHitZoneGroup NIGHT_OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32393}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Viewport"
+        m_eVehicleHitZoneGroup VIEWPORT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3239E}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Propeller"
+        m_eVehicleHitZoneGroup PROPELLER
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32398}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Instruments"
+        m_eVehicleHitZoneGroup INSTRUMENTS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3239B}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Controls"
+        m_eVehicleHitZoneGroup CONTROLS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F323A6}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Light"
+        m_eVehicleHitZoneGroup LIGHT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F323A1}" {
+        m_sHitZoneGroupName "!Error!"
+        m_eVehicleHitZoneGroup VIRTUAL
+       }
+      }
+     }
+    }
+    WCS_FlipVehicleUserAction "{66B4D32661F32321}" {
+     ParentContextList {
+      "flip"
+     }
+     VisibilityRange -1
+     Duration 5
+     m_bLoopAction 0
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+    }
+    WCS_PushVehicleUserAction "{66B4D32661F3232A}" {
+     ParentContextList {
+      "flip"
+     }
+     Duration 2.5
+     m_bLoopAction 0
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+    }
+    SCR_UnflipVehicleAction "{66B4D32661F3248D}" {
+     ParentContextList {
+      "Unflipper"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F3233D}" {
+      Name "#AR-UserAction_UnflipVehiclePush_XY_Users"
+      m_sIconName "use"
+     }
+     Duration -1
+     CanAggregate 1
+     PerformPerFrame 1
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_fMassToForce 3
+     m_fForceLimit 100000
+     m_fSuggestedUsersMultiplier 1.5
+    }
+    SCR_UnflipVehicleAction "{66B4D32661F324DF}" {
+     ParentContextList {
+      "Unflipper"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F32497}" {
+      Name "#AR-UserAction_UnflipVehiclePull_XY_Users"
+      m_sIconName "use"
+     }
+     Duration -1
+     CanAggregate 1
+     PerformPerFrame 1
+     "Sort Priority" 1
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_fMassToForce 3
+     m_fForceLimit 100000
+     m_bPull 1
+     m_fSuggestedUsersMultiplier 1.5
+    }
+    SCR_PushVehicleAction "{66B4D32661F3242E}" {
+     ParentContextList {
+      "hood_repair" "tow_hook"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F324E3}" {
+      Name "#AR-UserAction_UnflipVehiclePush"
+      m_sIconName "use"
+     }
+     Duration -1
+     PerformPerFrame 1
+     "Sort Priority" 20
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_fMassToForce 2.5
+     m_fForceLimit 100000
+    }
+    SCR_ToggleHandbrakeAction "{66B4D32661F3245B}" {
+     ParentContextList {
+      "handbrake_openDoor"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F3243C}" {
+      Name "#AR-ControlsHint_Handbrake"
+      Description "#AR-ControlsHint_HandbrakeCancel"
+      m_sIconName "veh_handbrake"
+     }
+     m_bLoopAction 0
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_bSameVehicleOnly 0
+    }
+    SCR_ToggleHandbrakeAction "{66B4D32661F32599}" {
+     ParentContextList {
+      "handbrake"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F3246C}" {
+      Name "#AR-ControlsHint_Handbrake"
+      Description "#AR-ControlsHint_HandbrakeCancel"
+      m_sIconName "veh_handbrake"
+     }
+     m_bLoopAction 0
+     m_eShownInVehicleState IN_VEHICLE_ANY
+     m_aDefinedCompartmentSectionsOnly {
+      0
+     }
+    }
+    SCR_RepairAtSupportStationAction "{66B4D32661F32695}" {
+     ParentContextList {
+      "fuel_cap_m"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F325B5}" {
+      Name "#AR-SupportStation_Repair_ActionName"
+      m_sIconName "repair"
+     }
+     Duration -5
+     PerformPerFrame 1
+     "Sort Priority" -90
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_sInvalidRangeActionReason "#AR-SupportStation_Repair_ActionInvalid_Needs_SupportStation_Emergency"
+     m_iGadgetAnimationCommand 1
+     m_DamageIntensityHolder SCR_DamageIntensityHolder "{66B4D32661F325D3}" {
+      m_aDamageIntensityEntries {
+       SCR_DamageIntensityEntry "{66B4D32661F325B8}" {
+        m_UiInfo SCR_UIName "{66B4D32661F325BF}" {
+         Name "#AR-SupportStation_Repair_ActionInvalid_NoDamage"
+        }
+        m_fMaxValue 10
+        m_fMinValue 1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F325C6}" {
+        m_eDamageIntensityType LOW
+        m_UiInfo SCR_UIName "{66B4D32661F325C5}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Low"
+        }
+        m_fMaxValue 1
+        m_fMinValue 0.75
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F325CC}" {
+        m_eDamageIntensityType MEDIUM
+        m_UiInfo SCR_UIName "{66B4D32661F325C3}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Medium"
+        }
+        m_fMaxValue 0.75
+        m_fMinValue 0.3
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F325CA}" {
+        m_eDamageIntensityType HIGH
+        m_UiInfo SCR_UIName "{66B4D32661F325C9}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_High"
+        }
+        m_fMaxValue 0.3
+        m_fMinValue 0.1
+       }
+       SCR_DamageIntensityEntry "{66B4D32661F325D2}" {
+        m_eDamageIntensityType CRITICAL
+        m_UiInfo SCR_UIName "{66B4D32661F325D1}" {
+         Name "#AR-Vehicle_DamageInfo_Damage_Critical"
+        }
+        m_fMaxValue 0.1
+       }
+      }
+     }
+     m_aHitZoneGroups {
+      40
+     }
+     m_HitZoneGroupNames SCR_HitZoneGroupNameHolder "{66B4D32661F32510}" {
+      m_aHitZoneGroupNames {
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325DB}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Wheel"
+        m_eVehicleHitZoneGroup WHEELS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325E6}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_FuelTank"
+        m_eVehicleHitZoneGroup FUEL_TANKS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325E1}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Engine"
+        m_eVehicleHitZoneGroup ENGINE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325ED}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_DriveTrain"
+        m_eVehicleHitZoneGroup DRIVE_TRAIN
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325EA}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Hull"
+        m_eVehicleHitZoneGroup HULL
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325F4}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Cargo"
+        m_eVehicleHitZoneGroup CARGO
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325F7}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_AmmoStorage"
+        m_eVehicleHitZoneGroup AMMO_STORAGE
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325F2}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Turret"
+        m_eVehicleHitZoneGroup TURRET
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325FC}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_RotorAssembly"
+        m_eVehicleHitZoneGroup ROTOR_ASSEMBLY
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325F9}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_TailRotor"
+        m_eVehicleHitZoneGroup TAIL_ROTOR
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F325FB}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Optics"
+        m_eVehicleHitZoneGroup OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32506}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_NightOptics"
+        m_eVehicleHitZoneGroup NIGHT_OPTICS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32501}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Viewport"
+        m_eVehicleHitZoneGroup VIEWPORT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3250C}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Propeller"
+        m_eVehicleHitZoneGroup PROPELLER
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3250F}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Instruments"
+        m_eVehicleHitZoneGroup INSTRUMENTS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F3250A}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Controls"
+        m_eVehicleHitZoneGroup CONTROLS
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32515}" {
+        m_sHitZoneGroupName "#AR-Vehicle_HitZoneGroup_Light"
+        m_eVehicleHitZoneGroup LIGHT
+       }
+       SCR_VehicleHitZoneGroupName "{66B4D32661F32517}" {
+        m_sHitZoneGroupName "!Error!"
+        m_eVehicleHitZoneGroup VIRTUAL
+       }
+      }
+     }
+     m_aHitZoneAdditionalIDs {
+      2
+     }
+    }
+    SCR_RefuelAtSupportStationAction "{66B4D32661F3261C}" {
+     ParentContextList {
+      "fuel_cap_m"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F326A6}" {
+      Name "#AR-SupportStation_Fuel_ActionName_Refuel"
+      m_sIconName "veh_fuel"
+     }
+     VisibilityRange 1.5
+     Duration -0.5
+     PerformPerFrame 1
+     m_bLowerWeaponOnUse 1
+     m_eShownInVehicleState NOT_IN_VEHICLE
+     m_iGadgetAnimationCommand 2
+     m_aFuelTankIDs {
+      2
+     }
+    }
+    SCR_EngineAction "{66B4D32661F3265C}" {
+     ParentContextList {
+      "starter_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F32623}" {
+      Name "#AR-UserAction_EngineStart"
+      m_sIconName "veh_engine_damage"
+     }
+     Duration -2
+     PerformPerFrame 1
+     m_bIsToggle 0
+     m_sActionStateOn ""
+     m_sActionStateOff ""
+    }
+    SCR_EngineAction "{66B4D32661F3278E}" {
+     ParentContextList {
+      "starter_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F32665}" {
+      Name "#AR-UserAction_EngineStop"
+      m_sIconName "veh_engine_damage"
+     }
+     m_bIsToggle 0
+     m_bTargetState 0
+     m_sActionStateOn ""
+     m_sActionStateOff ""
+    }
+    SCR_OpenVehicleStorageAction "{66B4D32661F327B0}" {
+     ParentContextList {
+      "door_l01" "door_r01"
+     }
+     UIInfo SCR_ActionUIInfo "{66B4D32661F32792}" {
+      Name "#AR-Inventory_OpenTrunk"
+      m_sIconName "veh_trunk"
+     }
+     "Sort Priority" 100
+     m_bShowInside 0
+    }
+   }
+   AllowCrossHierarchy 1
+  }
+  VehicleAnimationComponent "{66B4D32661F3270B}" {
+   AnimGraph "{509522ED511E9EFE}Assets/Vehicles/Wheeled/Ural4320/workspaces/URAL.agr"
+   AnimInstance "{20E1A6B9A07E4CFD}Assets/Vehicles/Wheeled/Ural4320/workspaces/URAL_vehicle.asi"
+   StartNode "VehicleMasterControl"
+   AnimInjection AnimationAttachmentInfo "{66B4D32661F327E2}" {
+    AnimGraph "{509522ED511E9EFE}Assets/Vehicles/Wheeled/Ural4320/workspaces/URAL.agr"
+    AnimInstance "{D8F84469B3F2854B}Assets/Vehicles/Wheeled/Ural4320/workspaces/URAL_player.asi"
+    BindingName "Vehicle"
+   }
+   AutoVariablesBind 1
+   DeactivationDelay 2
+  }
+  VehicleGamepadEffectsManagerComponent "{66B4D32661F32711}" {
+  }
+  NwkCarMovementComponent "{66B4D32661F3272C}" {
+  }
+  RplComponent "{66B4D32661F32736}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+ }
+ coords 0 0 0
+ m_eVehicleType COMM_TRUCK
+}
