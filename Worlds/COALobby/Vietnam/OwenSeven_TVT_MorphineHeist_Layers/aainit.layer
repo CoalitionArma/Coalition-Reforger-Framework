@@ -15,7 +15,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 40
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "A local criminal gang needs to destroy evidence located in the police evidence lock-up and escape back to their bar. "\
+   m_sTextData "A Russian backed syndicate has been given some additional surplus gear in exchange for getting rid of some evidence in the police evidence lock-up. Local paramilitary SWAT has been alerted and is ready for them. "\
    ""\
    "BLUFOR Composition: Infantry Platoon"\
    ""\
