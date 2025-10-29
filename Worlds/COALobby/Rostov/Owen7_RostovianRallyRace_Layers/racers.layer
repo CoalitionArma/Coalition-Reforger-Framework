@@ -212,15 +212,31 @@ $grp SCR_AIGroup : "{7EF1B92B982EF78F}Prefabs/Groups/Special/Rally/CRF_CIV_Rally
   angleY -6.687
  }
  {
-  coords 5695.075 153.354 3793.487
-  angleY -6.687
+  coords 5692.951 153.354 3791.302
+  angleY -0.836
  }
  {
   coords 5688.354 153.704 3792.983
   angleY -6.687
- }
- {
-  coords 5681.89 154.072 3792.165
-  angleY -6.687
+  {
+   SCR_AIGroup : "{7EF1B92B982EF78F}Prefabs/Groups/Special/Rally/CRF_CIV_RallyTeam_p.et" {
+    coords -23.169 0.368 -4.443
+    angleY -167.472
+    {
+     SCR_AIGroup : "{B57F271D229B3074}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_VIP_P.et" {
+      coords -13.019 -1.685 -30.015
+      angleY 174.159
+      {
+       SCR_AIGroup : "{1782AE1B90B5A492}Prefabs/Groups/CIV/Standard/Dev/CRF_CIV_DevGI_p.et" {
+        coords 3.376 -0.587 -0.62
+        m_aUnitPrefabSlots {
+         "{19854386F78A1A01}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_JTAC_P.et" "" "" "" "" "" "" "" ""
+        }
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }

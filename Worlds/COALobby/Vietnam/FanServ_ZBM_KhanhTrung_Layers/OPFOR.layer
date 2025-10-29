@@ -1,0 +1,93 @@
+SCR_AIGroup : "{56D7BF9AC5BB837D}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_Large_p.et" {
+ coords 279.4 1.928 1349.861
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords 63.265 0.249 2.181
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords -61.117 -0.341 15.949
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords 0.84 -0.302 23.823
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords 21.698 0.656 -49.739
+         {
+          SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+           coords 3.123 0.11 20
+           {
+            SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+             coords 55.268 -0.238 -24.154
+             {
+              SCR_AIGroup : "{803383BB28D07BB9}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_2manVehicleCrew_p.et" {
+               coords 1.972 0.063 16.071
+               {
+                SCR_AIGroup : "{67CF9BB46BE94DF0}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_AirCrew_p.et" {
+                 coords 2.017 -0.055 19.411
+                 {
+                  SCR_AIGroup : "{67CF9BB46BE94DF0}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_AirCrew_p.et" {
+                   coords 2.171 0.024 15.524
+                   {
+                    SCR_AIGroup : "{2A01769C204DED43}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_AATeam_p.et" {
+                     coords -58.831 -0.158 -3.039
+                     {
+                      SCR_AIGroup : "{2E159CDF28FA27ED}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_EngiTeam_p.et" {
+                       coords 16.121 0.311 -46.069
+                       {
+                        SCR_AIGroup : "{B59DD6C21C181C43}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_HATTeam_p.et" {
+                         coords 3.339 0.108 17.344
+                         {
+                          SCR_AIGroup : "{F703D0D434EF9A1A}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_HMGTeam_p.et" {
+                           coords 2.069 -0.126 14.127
+                           {
+                            SCR_AIGroup : "{2598DBB9C3E01AD3}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_IndirectTeam_p.et" {
+                             coords 1.5 -0.18 13.49
+                             {
+                              SCR_AIGroup : "{3B670BD33F8C55D8}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_LogiTeam_p.et" {
+                               coords 0.081 -0.113 14.38
+                               {
+                                SCR_AIGroup : "{A1BDE5C4CC62ACAC}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MATTeam_p.et" {
+                                 coords 7.291 0.235 -62.554
+                                 {
+                                  SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+                                   coords 5.032 -0.035 31.318
+                                   {
+                                    SCR_AIGroup : "{F1CCAEAE38D65D9E}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_SniperTeam_p.et" {
+                                     coords 2.113 -0.082 13.221
+                                    }
+                                   }
+                                  }
+                                 }
+                                }
+                               }
+                              }
+                             }
+                            }
+                           }
+                          }
+                         }
+                        }
+                       }
+                      }
+                     }
+                    }
+                   }
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

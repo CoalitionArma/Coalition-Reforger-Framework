@@ -1,0 +1,32 @@
+GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
+ ID "52D6D6DB69F982D9"
+ coords 845.952 7.862 1472.917
+ angleY 37
+ {
+  GenericEntity {
+   ID "568ED76844F05A2F"
+   components {
+    ActionsManagerComponent "{6698DAEDB93D3A45}" {
+     ActionContexts {
+      UserActionContext "{6698DAEDBA5F607F}" {
+       ContextName "default"
+       Position PointInfo "{6698DAEDB687CDAD}" {
+        Offset 0 1.2463 0.1023
+       }
+      }
+     }
+     additionalActions {
+      CRF_VehicleArsenalAction "{6698DAEDA5C57C05}" {
+       ParentContextList {
+        "default"
+       }
+       UIInfo UIInfo "{6698DAEDA0658C73}" {
+        Name "Open Supply Arsenal"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

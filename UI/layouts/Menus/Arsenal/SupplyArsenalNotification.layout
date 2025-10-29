@@ -1,0 +1,63 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ Slot FrameWidgetSlot "{66872908CE8F0651}" {
+  OffsetLeft 0
+  OffsetTop 0
+  SizeX 300
+  OffsetRight -300
+  OffsetBottom -30
+ }
+ components {
+  CRF_SupplyNotification "{6698DAE127AA33F4}" {
+  }
+ }
+ {
+  ImageWidgetClass "{6698DAFD94128E56}" {
+   Name "Image0"
+   Slot FrameWidgetSlot "{6698DAFD94128E4C}" {
+    Anchor 0 0 1 1
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX -200
+    OffsetRight 0
+    SizeY 0
+    OffsetBottom 0
+   }
+   Color 0.2588 0.3647 0.6863 1
+  }
+  ItemPreviewWidgetClass "{6698DAFDAA9D4723}" {
+   Name "ArsenalItemPreview"
+   Slot FrameWidgetSlot "{668729040F4E6BF6}" {
+    PositionX 0
+    OffsetLeft 0
+    PositionY 0
+    OffsetTop 0
+    SizeX 30
+    OffsetRight -30
+    OffsetBottom -30
+   }
+  }
+  TextWidgetClass "{6698DAFDAA9D4722}" {
+   Name "ArsenalItemText"
+   Slot FrameWidgetSlot "{668729082A629B89}" {
+    PositionX 34.135
+    OffsetLeft 34.135
+    PositionY 0.082
+    OffsetTop 0.082
+    SizeX 261.594
+    OffsetRight -295.729
+    SizeY 30
+    OffsetBottom -30.082
+   }
+   components {
+    ACE_SettingsSubMenu "{6698DAFFFD5F52C3}" {
+    }
+   }
+   Text "Added x5 Penits"
+   "Min Font Size" 10
+   "Vertical Alignment" Center
+  }
+ }
+}

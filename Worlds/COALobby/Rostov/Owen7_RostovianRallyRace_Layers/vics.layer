@@ -776,4 +776,67 @@ $grp SCR_VehicleSpawn {
   respawnDelay 10000
   firstSpawn 1
  }
+ RouteCarsSpawn48 {
+  coords 5070.496 141.039 4062.504
+  angleY -109.903
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ RouteCarsSpawn49 {
+  coords 5065.201 136.375 4119.863
+  angleY -81.768
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ RouteCarsSpawn50 {
+  coords 4485.402 128.44 4062.539
+  angleY -34.279
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ RouteCarsSpawn51 {
+  coords 4489.277 128.138 4092.356
+  angleY -106.676
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ RouteCarsSpawn52 {
+  coords 4410.545 124.088 4121.91
+  angleY -108.198
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ RouteCarsSpawn53 {
+  coords 4399.161 123.621 4104.494
+  angleY -66.413
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ RouteCarsSpawn54 {
+  coords 3957.657 107.215 4222.721
+  angleY -60.547
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ InitialCarSpawn65 {
+  coords 5693.33 142.793 3944.071
+  angleY 178.293
+  m_rnPrefab "{0C139EE580E03990}Prefabs/Vehicles/Wheeled/K17/APC_K17_unarmed_tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ InitialCarSpawn66 {
+  coords 5699.066 142.419 3944.04
+  angleY 178.293
+  m_rnPrefab "{2551B455EA37BFD8}Prefabs/Vehicles/Wheeled/Stryker/M1126/Stryker_APC_Tan.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
 }

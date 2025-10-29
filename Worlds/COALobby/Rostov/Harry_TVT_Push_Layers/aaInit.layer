@@ -36,20 +36,19 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_sTextData "Prevent the command truck from being brought to the marked transmission tower, then counterattack once the radio has been triggered."
   }
  }
- m_iFactionOneRatio 3
+ m_iFactionOneRatio 2
  m_sFactionOneKey "BLU"
- m_iFactionTwoRatio 2
  m_sFactionTwoKey "OPF"
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{CD3912ACF67CA7E5}Configs/Gearscripts/Custom/Harry/push/CRF_GS_RHSUSArmyMC_CLS.conf"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
-  m_rGearScript "{35262EC7910CA8D8}Configs/Gearscripts/Custom/Harry/push/CRF_GS_RHSION_Urban_NoOptics_AP_CLS.conf"
+  m_rGearScript "{2BF2F4A9EFC7826E}Configs/Gearscripts/Custom/Harry/push/CRF_GS_RHSION_Light_NoOptics_AP_CLS.conf"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "66B2ED380D9E5EA9" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {
