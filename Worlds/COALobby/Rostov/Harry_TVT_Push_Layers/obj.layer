@@ -8,7 +8,6 @@ GenericEntity : "{A9CF5E8C5D91C476}Prefabs/Compositions/Misc/SubCompositions/Dec
 GenericEntity : "{D4375F10B6F2BE81}Prefabs/MP/Campaign/Assets/Radio_Interactable.et" {
  components {
   CRF_RadioPhaseManager "{6605652AC71F4A2E}" {
-   requireHVT 1
    respawnOpfor 1
   }
  }

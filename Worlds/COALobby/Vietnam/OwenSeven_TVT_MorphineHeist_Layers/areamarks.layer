@@ -1,0 +1,25 @@
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ Lockup {
+  coords 3821.218 12.28 605.925
+  angleY 90
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Police Evidence Lock-Up"\
+  ""
+  m_bShowForAnyFaction 1
+ }
+ Bar {
+  coords 3323.649 2.087 695.931
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sDescription "Criminal Bar"
+  m_bShowForAnyFaction 1
+ }
+ PoliceStation {
+  coords 3792.85 18.337 715.212
+  angleY 90
+  m_MarkerColor 0 0.125 0.502 1
+  m_sDescription "Police Station"\
+  ""
+  m_bShowForAnyFaction 1
+ }
+}

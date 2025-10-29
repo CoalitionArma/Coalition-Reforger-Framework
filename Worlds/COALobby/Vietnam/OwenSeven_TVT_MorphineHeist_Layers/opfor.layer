@@ -1,0 +1,24 @@
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 3348.853 3.048 676.895
+ angleY -76.157
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords 3.494 1.799 -5.979
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     coords -0.028 0.008 -0.115
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       coords -0.059 0.007 -0.06
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         coords -0.232 0.023 -0.107
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

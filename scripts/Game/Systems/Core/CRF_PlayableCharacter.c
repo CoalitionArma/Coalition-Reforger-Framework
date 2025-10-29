@@ -315,7 +315,7 @@ class CRF_PlayableCharacter : ScriptComponent
 	* @param maxRadius Maximum radius in meters to spread entities (default 500m)
 	* @return New spawn position within the spread radius
 	*/
-	protected vector GenerateRandomSpreadPosition(vector centerPosition, float maxRadius = 500.0)
+	static vector GenerateRandomSpreadPosition(vector centerPosition, float maxRadius = 500.0)
 	{
 		// Generate random angle (0-360 degrees)
 		float randomAngle = Math.RandomFloat(0, 2 * Math.PI);

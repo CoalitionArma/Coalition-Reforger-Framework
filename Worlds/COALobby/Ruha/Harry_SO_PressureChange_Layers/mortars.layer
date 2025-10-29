@@ -1,0 +1,394 @@
+$grp GenericEntity : "{2323F9E4C524F047}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_US_01.et" {
+ {
+  coords 5888.07 55.469 8007.125
+  angleY 177.271
+ }
+ {
+  coords 5899.276 55.443 8007.66
+  angleY 175.802
+ }
+}
+$grp GenericEntity : "{52E67D46C7855822}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/SupplyStack_Large_01_storage_US_covered.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 5893.777 55.44 8009.626
+  angleY -88.7
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 5894.916 55.44 8004.593
+  angleY -88.7
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 5893.854 55.44 8006.927
+  angleY -88.7
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 500
+      m_fResourceValueMax 500
+     }
+    }
+   }
+  }
+  coords 5893.602 55.44 8003.377
+  angleY -88.7
+  {
+   GenericEntity {
+    ID "5D3085BCA5EF72EE"
+    coords 0 0 0
+   }
+  }
+ }
+}
+$grp GenericEntity : "{73F8306941E09593}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V6_storage_US_covered.et" {
+ {
+  coords 5894.954 55.44 8009.604
+  angleY -88.7
+  {
+   GenericEntity {
+    ID "5D30E783815E7DC1"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 5892.669 55.44 8008.304
+  angleY 93.266
+  {
+   GenericEntity {
+    ID "5D30E783815E7DC1"
+    coords 0 0 0
+   }
+  }
+ }
+ {
+  coords 5892.852 55.44 8005.741
+  angleY 94.848
+  {
+   GenericEntity {
+    ID "5D30E783815E7DC1"
+    coords 0 0 0
+   }
+  }
+ }
+}
+$grp StaticModelEntity : "{94FB3A1BFFFF1A19}Prefabs/Structures/Military/Camps/TentUS_01/TentUS_01_Assembled_foundation.et" {
+ {
+  coords 5880.318 55.44 8036.762
+  angleY 14.352
+ }
+ {
+  coords 5871.73 55.44 8039.3
+  angleY 14.352
+ }
+}
+$grp GenericEntity : "{A2CBA1E941BC1EA5}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V2.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 5892.757 55.44 8010.819
+  angleY 95.329
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 5892.645 55.44 8006.958
+  angleY 95.329
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 5894.988 55.44 8007.005
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 5892.907 55.44 8004.619
+  angleY 95.329
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 100
+      m_fResourceValueMax 100
+     }
+    }
+   }
+  }
+  coords 5894.929 55.44 8005.823
+  angleY -88.7
+ }
+}
+GenericEntity : "{CDD0712FD6215F04}Prefabs/Compositions/Slotted/SlotFlatMedium/FieldHospital_M_US_01.et" {
+ coords 5937.765 55.688 7964.854
+ angleY -96.59
+}
+$grp GenericEntity : "{CE9F9509FD78918B}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V1.et" {
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5894.802 55.44 8003.449
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5893.834 55.44 8005.704
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5893.779 55.44 8008.282
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5892.705 55.44 8007.018
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5892.652 55.44 8008.346
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5892.651 55.44 8009.655
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5892.893 55.44 8005.729
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5893.828 55.44 8005.599
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5893.779 55.44 8008.282
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5894.927 55.44 8005.802
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5893.779 55.44 8008.282
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5893.847 55.44 8004.587
+  angleY -88.7
+ }
+ {
+  components {
+   SCR_ResourceComponent "{5D247A59598D71AE}" {
+    m_aContainers {
+     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+      m_fResourceValueCurrent 400
+      m_fResourceValueMax 400
+     }
+    }
+   }
+  }
+  coords 5893.803 55.44 8010.773
+  angleY -88.7
+ }
+}
