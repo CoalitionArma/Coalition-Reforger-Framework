@@ -1,0 +1,17 @@
+GenericEntity : "{6C6D4CF5F88AE48D}Prefabs/Vehicles/Core/Vehicle_AmmoBox_Base.et" {
+ ID "4B42E71698F5739C"
+ components {
+  ActionsManagerComponent "{5CDEFA7984EAC4E2}" {
+   additionalActions {
+    CRF_VehicleArsenalAction "{6698D2C6F32753DC}" {
+     ParentContextList {
+      "door_rear"
+     }
+     UIInfo UIInfo "{6698D2C6EE7316A1}" {
+      Name "Open Supply Menu"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,100 @@
+AnimSrcGraph {
+ AnimSetTemplate "{57466E37361F3FF7}Assets/Weapons/Rifles/workspaces/l85.ast"
+ ControlTemplate AnimSrcGCT "{5194A02EE251AD40}" {
+  Variables {
+   AnimSrcGCTVarBool TriggerPulled {
+    DefaultValue 0
+   }
+   AnimSrcGCTVarInt Stance {
+    DefaultValue 0
+    MinValue 0
+    MaxValue 2
+   }
+   AnimSrcGCTVarBool Firing {
+    DefaultValue 0
+   }
+   AnimSrcGCTVarBool LastBullet {
+    DefaultValue 0
+   }
+   AnimSrcGCTVarBool Empty {
+    DefaultValue 0
+   }
+   AnimSrcGCTVarBool Cocked {
+    DefaultValue 0
+   }
+   AnimSrcGCTVarInt State {
+    DefaultValue 0
+    MinValue -1
+    MaxValue 2
+   }
+   AnimSrcGCTVarFloat AimX {
+    DefaultValue 0
+    MinValue -180
+    MaxValue 180
+   }
+   AnimSrcGCTVarFloat AimY {
+    DefaultValue 0
+    MinValue -90
+    MaxValue 90
+   }
+   AnimSrcGCTVarFloat SightElevation {
+    DefaultValue 0.1
+    MaxValue 1
+   }
+   AnimSrcGCTVarBool Low {
+   }
+   AnimSrcGCTVarInt WeaponInspectionState {
+    MinValue -2
+    MaxValue 2
+   }
+   AnimSrcGCTVarBool WeaponDeployed {
+   }
+   AnimSrcGCTVarFloat ADSAdjust {
+    DefaultValue 1
+    MaxValue 1
+   }
+  }
+  Commands {
+   AnimSrcGCTCmd CMD_Weapon_Action_Interrupt {
+   }
+   AnimSrcGCTCmd CMD_Weapon_Reload {
+   }
+  }
+  IkChains {
+   AnimSrcGCTIkChain RightArmProp {
+    Joints {
+     "rightarm"
+     "rightarmtwist"
+     "rightforearm"
+     "rightforearmtwist"
+     "righthand"
+     "righthandprop"
+    }
+    MiddleJoint "rightforearm"
+    ChainAxis "-y"
+   }
+   AnimSrcGCTIkChain LeftArm {
+    Joints {
+     "leftarm"
+     "leftarmtwist"
+     "leftforearm"
+     "leftforearmtwist"
+     "lefthand"
+    }
+    MiddleJoint "leftforearm"
+    ChainAxis "+y"
+   }
+  }
+  GlobalTags {
+   "WEAPON"
+   "RIFLE"
+   "M16"
+  }
+ }
+ Debug AnimSrcGD "{51A0B15C27BD0D2B}" {
+ }
+ GraphFilesResourceNames {
+  "{6ABA168D9F798234}Assets/Weapons/Rifles/workspaces/l85.agf"
+ }
+ DefaultRunNode "MasterControl"
+}

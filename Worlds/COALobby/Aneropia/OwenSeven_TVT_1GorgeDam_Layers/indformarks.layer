@@ -1,0 +1,9 @@
+CRF_ManualMarker MilitaryVehicleMarkerIND : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ coords 2182.097 97.847 840.832
+ m_MarkerColor 0 0.502 0.125 1
+ m_sQuadName "point-of-interest"
+ m_sDescription "Military Vehicle Crash"
+ m_aVisibleForFactions {
+  "INDFOR"
+ }
+}

@@ -1,0 +1,58 @@
+$grp SCR_VehicleSpawn {
+ BluAmbulance {
+  coords 3624.962 124.62 633.427
+  angleY -84.684
+  m_rnPrefab "{3B1EB924602C7A07}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance_MERDC.et"
+  respawnDelay 10000
+  firstSpawn 2.1
+ }
+ BluTransportT1 {
+  coords 3616.725 124.656 633.877
+  angleY -89.336
+  m_rnPrefab "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BluTransportT2 {
+  coords 3608.806 124.638 633.497
+  angleY -111.186
+  m_rnPrefab "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BluTransportT3 {
+  coords 3603.288 124.456 629.736
+  angleY -133.288
+  m_rnPrefab "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BluTransportT4 {
+  coords 3594.816 123.952 617.62
+  angleY -164.16
+  m_rnPrefab "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BluTransportT5 {
+  coords 3592.57 123.448 609.993
+  angleY 176.334
+  m_rnPrefab "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BluTransportT6 {
+  coords 3594.207 122.715 600.238
+  angleY 142.986
+  m_rnPrefab "{FDDB4A5C62272B16}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Transport_Variant_2.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ BluCommand {
+  coords 3598.512 124.261 624.951
+  angleY -148.158
+  m_rnPrefab "{37E409E5C8E39405}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_SWB_Transport_Variant_2.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+}

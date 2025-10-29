@@ -1,0 +1,50 @@
+GenericEntity : "{4093AE33DCEFAD67}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_USSR_01.et" {
+ coords 4855.518 345.094 1853.809
+ angleY 58.473
+}
+$grp GenericEntity : "{525C793E1943EA05}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_USSR_01.et" {
+ {
+  coords 4847.24 344.977 1876.796
+  angleY 176.071
+ }
+ {
+  coords 4850.449 344.977 1830.078
+  angleY 176.071
+ }
+}
+$grp GenericEntity : "{5E6CBF60621C39CD}Prefabs/Props/Military/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Ammunition_USSR.et" {
+ {
+  coords 4855.276 345.587 1869.505
+ }
+ {
+  coords 4856.316 345.587 1837.99
+ }
+}
+$grp GenericEntity : "{7C93700E1AC4C387}Prefabs/Props/Military/Arsenal/AmmoBoxes/USSR/AmmoBoxArsenal_Medical_USSR.et" {
+ {
+  coords 4854.136 345.536 1869.541
+ }
+ {
+  coords 4857.444 345.565 1837.975
+ }
+}
+GenericEntity : "{D2FAA54116D41ABA}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Medium_A_USSR_01.et" {
+ coords 4844.377 344.715 1853.807
+ angleX 0
+ angleY 0
+ angleZ 0
+}
+$grp GenericEntity : "{DC82213D62A2F621}Prefabs/Compositions/Misc/SubCompositions/Tents/Tent_Supply_Large_USSR_01.et" {
+ {
+  coords 4844.405 344.856 1846.832
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+ {
+  coords 4844.071 345.058 1860.682
+  angleX 0
+  angleY 0
+  angleZ 0
+ }
+}

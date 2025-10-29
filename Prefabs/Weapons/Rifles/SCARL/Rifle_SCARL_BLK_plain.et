@@ -1,0 +1,43 @@
+GenericEntity : "{FBDC258D83013B73}Prefabs/Weapons/Rifles/SCARL/Rifle_SCARL_Base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Materials {
+    MaterialAssignClass "{66B2ED389ACD25BA}" {
+     SourceMaterial "SCARL_buttstock"
+     AssignedMaterial "{DCE8228038C7621E}Assets/Weapons/Rifles/SCAR/Data/BLK/SCARL_buttstock_BLK.emat"
+    }
+    MaterialAssignClass "{66B2ED389ACD25A5}" {
+     SourceMaterial "SCARL_receiver"
+     AssignedMaterial "{DB14FA484F078179}Assets/Weapons/Rifles/SCAR/Data/BLK/SCARL_receiver_BLK.emat"
+    }
+    MaterialAssignClass "{66B2ED389ACD25A2}" {
+     SourceMaterial "pistol_grip_A2"
+     AssignedMaterial "{1323E022549572CF}Assets/Weapons/Rifles/SCAR/Data/BLK/pistol_grip_A2_BLK.emat"
+    }
+   }
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{61785E090D534942}" {
+     Name "#WCS-Weapon_SCARL_Name - #WCS-Camo_Black"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{61785E090D534961}" {
+     AttachmentSlot InventoryStorageSlot Foregrip {
+     }
+    }
+    AttachmentSlotComponent "{61785E090D53496F}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+     }
+    }
+   }
+   UIInfo WeaponUIInfo "{CC3BA6A2C42F09F4}" {
+    Name "#WCS-Weapon_SCARL_Name #WCS-Camo_Black"
+   }
+  }
+ }
+}

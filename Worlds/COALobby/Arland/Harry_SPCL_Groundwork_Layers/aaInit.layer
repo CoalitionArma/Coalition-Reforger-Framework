@@ -3,6 +3,7 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
  coords 1728.82 40.716 2719.64
+ m_bLockSlotsAfterSafestart 0
  m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
@@ -78,6 +79,78 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
        SCR_CallsignInfo "{667105EE465872EE}" {
         m_sCallsign "Little 'Uns"
        }
+       SCR_CallsignInfo "{668B3D18CF0D44A2}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CF7B8907}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CFA99027}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CFA02323}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CFEF5C0B}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CFDF2E12}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CE0FFE71}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CE7F2352}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CE774147}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CEA7BBF5}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CE954F9A}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CEED925C}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CEDDE87D}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CED43D06}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CD042360}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CD1B2587}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CD4B7AD8}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CD43C2B3}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CDB33C78}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CD8B74B7}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CDFA814F}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CDF29087}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CC22C4D2}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D18CC3AFFD9}" {
+        m_sCallsign "Little 'Uns"
+       }
       }
      }
     }
@@ -142,6 +215,78 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
         m_sCallsign "Little 'Uns"
        }
        SCR_CallsignInfo "{667105EEBFCD78C3}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D19321456A2}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D19324374E0}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1932B17C27}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D19328951A5}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1932F832ED}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1932F0EBD3}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D19313CBE39}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1931334E6B}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D193162ECE2}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D19317AEF19}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1931A87418}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1931A0990E}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1931EE622D}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1931E6BB52}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1931D5E87E}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D193004809C}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D193072231D}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1930E90DCE}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1930D72628}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D193707A642}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1937762D7D}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1937A46A5A}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1937946B4F}" {
+        m_sCallsign "Little 'Uns"
+       }
+       SCR_CallsignInfo "{668B3D1937C4BFA8}" {
         m_sCallsign "Little 'Uns"
        }
       }

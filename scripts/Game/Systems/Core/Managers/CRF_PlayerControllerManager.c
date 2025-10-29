@@ -135,10 +135,13 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void InitilizeLocalSpectator(IEntity playerCharacter)
 	{
 		vector cameraPos[4];
-		playerCharacter.GetWorldTransform(cameraPos);
+		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
 		
+		//If Respawns are enabled, everybody goes to the debug zone
+		if (CRF_RespawnManager.GetInstance().m_bCurrentRespawnEnabled)
+			cameraPos[3] = CRF_PlayableCharacter.GenerateRandomSpreadPosition("0 10000 0", 500.0);
 		// Use provided death position if available
-		if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
+		else if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
 			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
 		}
 		// Use stored camera position if available
@@ -407,9 +410,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 		if (topMenu)
 			topMenu.Close();
 		GetGame().GetMenuManager().CloseAllMenus();
-		
-		if(!SCR_PlayerController.GetLocalMainEntity())
-			m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
 		
 		// Open appropriate menu based on gamemode state
 		switch (m_Gamemode.m_GamemodeState)
