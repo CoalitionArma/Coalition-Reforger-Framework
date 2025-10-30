@@ -1,5 +1,6 @@
 class CRF_MiniArsenalItemButton: SCR_ButtonComponent
 {
+	Widget m_wButtonRoot;
 	string m_sResource;
 	int m_iSlotId;
 	ref array<ResourceName> m_aAttachments = {};
