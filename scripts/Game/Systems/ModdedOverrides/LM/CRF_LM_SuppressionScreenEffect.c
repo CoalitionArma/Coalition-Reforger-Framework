@@ -1,4 +1,4 @@
-modded class LM_SuppressionScreenEffect
+/*modded class LM_SuppressionScreenEffect
 {
 	/**
 	 * Checks if the local player entity is valid and not in spectator mode
@@ -46,4 +46,4 @@ modded class LM_SuppressionScreenEffect
 			FlinchEffect();
 		}
 	}
-}
+}*/
