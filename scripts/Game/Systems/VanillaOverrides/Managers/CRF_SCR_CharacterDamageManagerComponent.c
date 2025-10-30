@@ -1,7 +1,7 @@
-/**
+ /*
  * CRF_SCR_CharacterDamageManagerComponent
  * Tracks damage events for weapon logging to fix issues with incorrect weapons being reported
-
+ */
 modded class SCR_CharacterDamageManagerComponent
 {
 	protected void CRF_HandleDamageTracking(notnull BaseDamageContext damageContext)
@@ -64,4 +64,4 @@ modded class SCR_CharacterDamageManagerComponent
 		// Track damage for weapon logging
 		CRF_HandleDamageTracking(damageContext);
 	}
-} */
+}
