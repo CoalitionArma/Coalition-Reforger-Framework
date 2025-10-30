@@ -26,6 +26,8 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	IEntity m_ArsenalPoint;
 	IEntity m_ClosestTruck;
 	
+	map<string, int> m_SupplyCosts = {};
+	
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();
@@ -394,6 +396,37 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		if (!manager)
 			return;
 		
+		array<ResourceName> itemsToBeAdded = {};
+		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
+		{
+			itemsToBeAdded.Insert(weapon.m_Weapon);
+			
+			foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+			{
+				itemsToBeAdded.Insert(magazine.m_Magazine);
+			}
+		}
+		foreach (CRF_Spec_Weapon_Class specWeapon: miniArsnealCategory.m_SpecWeapons)
+		{
+			itemsToBeAdded.Insert(specWeapon.m_Weapon);
+			
+			foreach (CRF_Magazine_Class magazine: specWeapon.m_MagazineArray)
+			{
+				itemsToBeAdded.Insert(magazine.m_Magazine);
+			}
+		}
+		foreach (CRF_Inventory_Item item: miniArsnealCategory.m_Items)
+		{
+			itemsToBeAdded.Insert(item.m_sItemPrefab);
+		}
+		
+		array<int> supplyCosts = m_GearscriptManager.GetSupplyValuesForItems(itemsToBeAdded);
+		m_SupplyCosts.Clear();
+		for (int i = 0; i < itemsToBeAdded.Count(); i ++)
+		{
+			m_SupplyCosts.Insert(itemsToBeAdded[i], supplyCosts[i]);
+		}
+		
 		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
 		{
 			DrawWeaponItem(weapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
@@ -424,6 +457,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{ADD28B3C4F9377B1}UI/layouts/Menus/Arsenal/SupplyArsenalItem.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, weapon.m_Weapon);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(weapon.m_Weapon));
 			
 		Resource loadedweapon = Resource.Load(weapon.m_Weapon);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
@@ -462,6 +496,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{DE9732402EA37142}UI/layouts/Menus/Arsenal/SupplyArsenalMagazine.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, magazine.m_Magazine);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(magazine.m_Magazine));
 			
 		Resource loadedweapon = Resource.Load(magazine.m_Magazine);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
@@ -500,6 +535,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{DE9732402EA37142}UI/layouts/Menus/Arsenal/SupplyArsenalMagazine.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, itemObject.m_sItemPrefab);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(itemObject.m_sItemPrefab));
 			
 		Resource loadedweapon = Resource.Load(itemObject.m_sItemPrefab);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
@@ -538,6 +574,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{ADD28B3C4F9377B1}UI/layouts/Menus/Arsenal/SupplyArsenalItem.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, weapon.m_Weapon);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(weapon.m_Weapon));
 			
 		Resource loadedweapon = Resource.Load(weapon.m_Weapon);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);

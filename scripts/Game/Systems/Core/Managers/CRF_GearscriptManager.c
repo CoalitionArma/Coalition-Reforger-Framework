@@ -39,6 +39,49 @@ class CRF_GearscriptManager : ScriptComponent
 		SetEventMask(owner, EntityEvent.FRAME);
 	}
 	
+	array<int> GetSupplyValuesForItems(array<ResourceName> items)
+	{
+		array<int> itemSupply = {};
+		foreach(ResourceName item: items)
+		{
+			itemSupply.Insert(0);
+		}
+		
+		array<SCR_Faction> factions = {};
+		FactionManager factionManager = GetGame().GetFactionManager();
+		
+		if (!factionManager)
+			return;
+		
+		factionManager.GetFactionsList(factions);
+		
+		array<ref SCR_EntityCatalog> itemCatalogs = {};
+		
+		foreach (SCR_Faction faction: factions)
+		{
+			array<ref SCR_EntityCatalog> catalogs = faction.GetEntityCatalogs();
+			foreach (SCR_EntityCatalog catalog: catalogs)
+			{
+				if (catalog.GetCatalogType() == EEntityCatalogType.ITEM)
+					itemCatalogs.Insert(catalog);
+			}
+		}
+		
+		foreach (SCR_EntityCatalog catalog: itemCatalogs)
+		{
+			for (int i = 0; i < itemSupply.Count(); i++)
+			{
+				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(items.Get(i));
+				if (!entry)
+					continue;
+				
+				SCR_ArsenalItem data = SCR_ArsenalItem.Cast(entry.GetEntityDataOfType(SCR_ArsenalItem));
+				itemSupply.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, true));
+			}
+		}
+		
+	}
+	
 	float m_fUpdateBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
