@@ -1,0 +1,139 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 6295.428 37.149 8015.492
+  angles 0 82.16 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+ }
+ {
+  coords 6329.862 37.625 8005.941
+  angles 0 -16.004 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+ }
+ {
+  coords 6294.723 37.113 8019.63
+  angles 0 82.16 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+ }
+ {
+  coords 6295.886 37.149 8011.097
+  angles 0 82.16 0
+  m_rVehicle "{0B4DEA8078B78A9B}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM.et"
+ }
+ {
+  coords 6318.267 37.625 8002.615
+  angles 0 -16.004 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+ }
+ {
+  coords 6322.321 37.625 8003.778
+  angles 0 -16.004 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+ }
+ {
+  coords 6314.878 37.625 8001.643
+  angles 0 -16.004 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+ }
+ {
+  coords 6326.256 37.625 8004.907
+  angles 0 -16.004 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+ }
+ {
+  coords 7112.922 314.723 6054.544
+  angles 0 160.672 0
+  m_rVehicle "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+ }
+ {
+  coords 7127.186 314.723 6059.547
+  angles 0 160.672 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+ }
+ {
+  coords 7146.575 314.723 6034.01
+  angles 0 -95.908 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+ {
+  coords 7146.986 314.723 6030.042
+  angles 0 -95.908 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+ {
+  coords 7131.126 314.723 6060.929
+  angles 0 160.672 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+ }
+ {
+  coords 7108.459 314.723 6052.979
+  angles 0 160.672 0
+  m_rVehicle "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+ }
+ {
+  coords 7122.079 314.723 6057.756
+  angles 0 160.672 0
+  m_rVehicle "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et"
+ }
+ {
+  coords 7146.008 314.723 6039.491
+  angles 0 -95.908 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+ {
+  coords 7145.435 314.723 6045.024
+  angles 0 -95.908 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+ {
+  coords 7144.842 314.723 6050.752
+  angles 0 -95.908 0
+  m_rVehicle "{2CCD539A7AB35B2F}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_camo1.et"
+ }
+ {
+  coords 7117.211 314.723 6056.049
+  angles 0 160.672 0
+  m_rVehicle "{22B327C6752EC4D4}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_PKM_FIA.et"
+ }
+ {
+  coords 4364.104 57 3131.455
+  m_rVehicle "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+ }
+ {
+  coords 4343.29 57 3159.666
+  angles 0 91.9 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4355.1 57 3131.455
+  m_rVehicle "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et"
+ }
+ {
+  coords 4343.138 57 3155.092
+  angles 0 91.9 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4343.009 57 3151.204
+  angles 0 91.9 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4342.875 57 3147.168
+  angles 0 91.9 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+ {
+  coords 4359.405 57 3131.455
+  m_rVehicle "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+ }
+ {
+  coords 4345.992 57.232 3136.823
+  angles 0 62.292 0
+  m_rVehicle "{3EA6F47D95867114}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB.et"
+ }
+ {
+  coords 4343.511 57.359 3142.953
+  angles 0 91.9 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+ }
+}
