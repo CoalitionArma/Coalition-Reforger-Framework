@@ -319,6 +319,7 @@ class CRF_SafeStartDisplay : SCR_InfoDisplayExtended
 	 */
 	protected void StartMission()
 	{
+		CRF_PlayerControllerManager.GetInstance().DisplayTitleCard();
 		// Hide timer elements
 		m_wTimerDescription.SetOpacity(0);
 		m_wTimerText.SetOpacity(0);
