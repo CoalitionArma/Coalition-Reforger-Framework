@@ -359,20 +359,22 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "OPFOR Assets: 1 IFV or APC per squad, armed UAZ's"\
    ""\
    "Time: 50 min"\
-   "Weather: Day Overcast Lightning"
+   "Weather: Day Clear"
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
-   m_sTextData "Bring the ambulance to Indfor, and evacuate the wounded POWs. Because of their state, they can only be transported in your ambulance. The ambulance cannot be destroyed, but the crew can be killed. "\
+   m_sTextData "Bring the ambulance to Indfor, and evacuate the wounded POWs. Because of their state, they can only be transported in your ambulance. The ambulance cannot be destroyed, but the crew can be killed. NPCs may not leave the NPC AO border unless in an ambulance."\
+   ""\
+   "Note: Extra seats have been removed from the UH1H. "\
    ""\
    "Secondary obj: There is a mortar FOB at the top of PikPobedy that we could use, or the enemy could use on us."
   }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
-   m_sTextData "Find, and kill the ambush survivors, and deny them the POWs. Because of their state, the POWs can only be transported in the ambulance. The ambulance cannot be destroyed, but the crew can be killed. "\
+   m_sTextData "Find, and kill the ambush survivors, and deny them the POWs. Because of their state, the POWs can only be transported in the ambulance. The ambulance cannot be destroyed, but the crew can be killed. NPCs may not leave the NPC AO border unless in an ambulance."\
    ""\
    "Secondary obj: There is a mortar FOB at the top of PikPobedy that we could use, or the enemy could use on us."
   }
   CRF_MissionDescriptor "{644250519BE30999}" {
-   m_sTextData "Survive, and extract the POWs to the blufor spawn. "\
+   m_sTextData "Survive, and extract the POWs to the blufor spawn. You've been given some sandbags in a nearby box."\
    ""\
    "The NPC's may not leave the marked NPC AO except in an ambulance."
   }
@@ -397,7 +399,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_rGearScript "{E617393F9CA52064}Configs/Gearscripts/Custom/Harry/BackToBasics/CRF_GS_UK80s_BackToBasics.conf"
  }
  {
-  SCR_FactionManager {
+  SCR_FactionManager "66BEFB8476CED546" {
    ID "632A77473B3CC3A8"
    Factions {
     SCR_Faction "{628B22E9B4056C88}" {

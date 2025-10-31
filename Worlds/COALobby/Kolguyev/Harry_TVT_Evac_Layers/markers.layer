@@ -2,18 +2,25 @@ $grp CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarke
  {
   coords 3005.406 229.865 6512.333
   angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "AO Limit (NPCs)"
  }
  {
   coords 3032.252 229.781 7189.516
   angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "AO Limit (NPCs)"
  }
  {
   coords 3553.465 239.652 7086.504
   angles 0 0 0
+  m_MarkerColor 0 0 0 1
+  m_sDescription "AO Limit (NPCs)"
  }
  {
   coords 3548.081 312.936 6578.861
   angles 0 0 0
+  m_MarkerColor 0 0 0 1
   m_sDescription "AO Limit (NPCs)"
  }
 }
@@ -85,4 +92,28 @@ $grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMark
   m_bVisibleForEmptyFaction 1
   m_bShowForAnyFaction 1
  }
+}
+GenericEntity : "{EADC4F4E4E5F413D}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/NATO_Attacking_Box.et" {
+ components {
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   MultiSlots {
+    MultiSlotConfiguration "{662B06256ECE4538}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{662B06256ECE44CD}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{662B06256ECE44C9}" {
+     NumSlots 0
+    }
+    MultiSlotConfiguration "{66BEFB8573EBAD5F}" {
+     SlotTemplate InventoryStorageSlot sandbags {
+      Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+     }
+     NumSlots 150
+    }
+   }
+  }
+ }
+ coords 3349.787 268.235 6828.955
 }

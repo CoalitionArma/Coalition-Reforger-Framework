@@ -2,10 +2,10 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestar
  coords 3404.13 270.285 6753.456
  Points {
   ShapePoint "{66BE29A6E3DA9CD2}" {
-   Position -404.026 0 -264.829
+   Position -513.285 0 -299.743
   }
   ShapePoint "{66BE29A6E2593B42}" {
-   Position -260.119 0 503.121
+   Position -496.695 0 518.011
   }
   ShapePoint "{66BE29A6E10C2677}" {
    Position 306.421 0 341.023

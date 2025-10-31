@@ -1,6 +1,8 @@
 GenericEntity : "{02D89CB8A159DDF0}Prefabs/Systems/VehicleDepot/VehicleDepot_Cache.et" {
  components {
   CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 9
+   m_eSpawnPattern GRID
    m_aVehicles {
     CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
      m_sVehicleName "Truck"
@@ -32,6 +34,7 @@ GenericEntity : "{02D89CB8A159DDF0}Prefabs/Systems/VehicleDepot/VehicleDepot_Cac
      m_iCost 100
     }
    }
+   m_bRestrictToLeadership 1
   }
  }
  coords 5913.946 2.594 8283.42
