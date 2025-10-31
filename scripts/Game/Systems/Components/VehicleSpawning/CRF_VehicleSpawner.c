@@ -7,14 +7,27 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 {
 	[Attribute("", desc: "Vehicle that will spawn in", category: "CRF Vehicle Spawning")] 
 	ResourceName m_rVehicle;
+	
 	[Attribute("", desc: "VFaction this spawner belongs to", category: "CRF Vehicle Spawning")] 
 	string m_sFactionKey;
+	
 	[Attribute("1", desc: "Whenever a side respawns should this vehicle respawn with it. (Ignores the timer)", category: "CRF Vehicle Spawning")] 
 	bool m_bShouldRespawnOnSideRespawn;
+	
 	[Attribute("300", desc: "How long until the vehicle respawns after its death in seconds", category: "CRF Vehicle Spawning")] 
 	int m_iRespawnTimer;
+	
 	[Attribute("10", desc: "How many tickets is drained every time this spawns", category: "CRF Vehicle Spawning")] 
 	int m_iTicketsPerRespawn;
+	
+	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout", category: "CRF Vehicle Spawning")] 
+	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
+	
+	[Attribute(category: "CRF Vehicle Spawning")] 
+	ref array<ref CRF_VehicleGearscriptOverride> m_aVehicleGearscriptOverrides;
+	
+	[Attribute(category: "CRF Vehicle Spawning")] 
+	ref array<ref CRF_VehicleGearScriptAdditionalItem> m_aAdditionalVehicleItems;
 	
 	CRF_RespawnManager m_RespawnManager;
 	Faction m_Faction;
@@ -75,7 +88,15 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		params.TransformMode = ETransformMode.WORLD;
 		this.GetTransform(params.Transform);
 		m_eVehicle = GetGame().SpawnEntityPrefab(Resource.Load(m_rVehicle), GetGame().GetWorld(), params);
-		Vehicle.Cast(m_eVehicle).m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
+		Vehicle vehicle = Vehicle.Cast(m_eVehicle);
+		vehicle.m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
+		vehicle.m_sFactionKey = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(m_sFactionKey).GetFactionKey();
+		if (m_OverridedVehicleLoadout)
+			vehicle.m_OverridedVehicleLoadout = m_OverridedVehicleLoadout;
+		if (m_aVehicleGearscriptOverrides.Count() > 0)
+			vehicle.m_aVehicleGearscriptOverrides = m_aVehicleGearscriptOverrides;
+		if (m_aAdditionalVehicleItems.Count() > 0)
+			vehicle.m_aAdditionalVehicleItems = m_aAdditionalVehicleItems;
 	}
 	
 	#ifdef WORKBENCH

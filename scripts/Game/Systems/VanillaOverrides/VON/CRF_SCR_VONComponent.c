@@ -61,34 +61,34 @@ modded class SCR_VoNComponent
 	//------------------------------------------------------------------------------------------------
 	// Called when receiving voice from another player
 	//------------------------------------------------------------------------------------------------
-	override protected event void OnReceive(int playerId, BaseTransceiver receiver, int frequency, float quality)
-	{
-		if (!CVON_VONGameModeComponent.GetInstance())
-		{
-			// Filter spectator direct speech based on channel membership
-			if (!m_Gamemode || m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
-			{
-				// Check if this is direct speech (no radio receiver) in spectator mode
-				if (!receiver && IsSpectatorDirectSpeechFiltered(playerId))
-				{
-					// Block direct speech reception by not calling parent
-					// Only register for UI display purposes
-					AddPlayerTalking(playerId);
-					return;
-				}
-			}
-			
-			// Call parent implementation to maintain core functionality
-			super.OnReceive(playerId, receiver, frequency, quality);
-			
-			// Skip processing during active gameplay to prevent FPS impact
-			if (!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
-				return;
-			
-			// Register the remote player as currently talking
-			AddPlayerTalking(playerId);
-		}
-	}
+//	override protected event void OnReceive(int playerId, BaseTransceiver receiver, int frequency, float quality)
+//	{
+//		if (!CVON_VONGameModeComponent.GetInstance())
+//		{
+//			// Filter spectator direct speech based on channel membership
+//			if (!m_Gamemode || m_Gamemode.m_GamemodeState != CRF_EGamemodeState.GAME)
+//			{
+//				// Check if this is direct speech (no radio receiver) in spectator mode
+//				if (!receiver && IsSpectatorDirectSpeechFiltered(playerId))
+//				{
+//					// Block direct speech reception by not calling parent
+//					// Only register for UI display purposes
+//					AddPlayerTalking(playerId);
+//					return;
+//				}
+//			}
+//			
+//			// Call parent implementation to maintain core functionality
+//			super.OnReceive(playerId, receiver, frequency, quality);
+//			
+//			// Skip processing during active gameplay to prevent FPS impact
+//			if (!m_Gamemode || m_Gamemode.m_GamemodeState == CRF_EGamemodeState.GAME)
+//				return;
+//			
+//			// Register the remote player as currently talking
+//			AddPlayerTalking(playerId);
+//		}
+//	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Adds a player to the list of currently talking players

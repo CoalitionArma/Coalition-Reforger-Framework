@@ -1,6 +1,39 @@
 modded class Vehicle
 {
+	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout")]
+	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
+	
+	[Attribute()] 
+	ref array<ref CRF_VehicleGearscriptOverride> m_aVehicleGearscriptOverrides;
+	
+	[Attribute()]
+	ref array<ref CRF_VehicleGearScriptAdditionalItem> m_aAdditionalVehicleItems;
+	
+	string m_sFactionKey = "";
 	int m_iVehicleSpawnerIndex = -1;
+	
+	
+	void Vehicle(IEntitySource src, IEntity parent)
+	{
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		if (!GetGame().GetWorld())
+			return;
+		
+		GetGame().GetCallqueue().CallLater(SetVehicleGear, 500, false);
+	}
+	
+	void SetVehicleGear()
+	{
+		GetGame().GetCallqueue().CallLater(
+					CRF_GearscriptManager.GetInstance().SetVehicleGear, 2000, false,
+					this, m_sFactionKey
+				);
+	}
+	
 	void ~Vehicle()
 	{
 		#ifdef WORKBENCH

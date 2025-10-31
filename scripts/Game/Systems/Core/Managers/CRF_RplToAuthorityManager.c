@@ -410,6 +410,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_CleanUpBodies);
 	}
 	
+	void AddItemToTruck(RplId truckId, ResourceName resource, int amount)
+	{
+		Rpc(RpcAsk_AddItemToTruck, truckId, resource, amount);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1229,5 +1234,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RpcAsk_CleanUpBodies()
 	{
 		CRF_GamemodeManager.GetInstance().CleanUpBodies();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_AddItemToTruck(RplId truckId, ResourceName item, int amount)
+	{
+		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
+		if (!truck)
+			return;
+		
+		SCR_VehicleInventoryStorageManagerComponent vehInventory = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		for (int i = 0; i < amount; i++)
+		{
+			vehInventory.TrySpawnPrefabToStorage(item);
+		}
 	}
 };

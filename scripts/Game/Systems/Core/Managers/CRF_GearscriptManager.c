@@ -5,6 +5,7 @@ class CRF_GearscriptManager : ScriptComponent
 	protected CRF_Gamemode m_Gamemode;
 
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
+	ref array<IEntity> m_VehiclesInQueue = {};
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -30,6 +31,84 @@ class CRF_GearscriptManager : ScriptComponent
 			return;
 		
 		m_Gamemode = CRF_Gamemode.GetInstance();
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		SetEventMask(owner, EntityEvent.FRAME);
+	}
+	
+	float m_fUpdateBuffer = 0;
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		if (m_fUpdateBuffer >= 5)
+		{
+			array<IEntity> vehiclesToRemove = {};
+			foreach (IEntity vehice: m_VehiclesInQueue)
+			{
+				if(FindFactionByClosestPlayer(vehice))
+					vehiclesToRemove.Insert(vehice);
+			}
+			
+			foreach (IEntity vehice: vehiclesToRemove)
+			{
+				m_VehiclesInQueue.RemoveItem(vehice);
+			}
+			
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += timeSlice;
+		super.EOnFrame(owner, timeSlice);
+	}
+	
+	bool FindFactionByClosestPlayer(IEntity vehicle)
+	{
+		array<int> playerIds = {};
+		PlayerManager playerManager = GetGame().GetPlayerManager();
+		playerManager.GetPlayers(playerIds);
+		
+		float closestPlayerDistance;
+		IEntity closestPlayer;
+		int closestPlayerId;
+		foreach (int playerId: playerIds)
+		{
+			IEntity player = playerManager.GetPlayerControlledEntity(playerId);
+			if (!player)
+				continue;
+			
+			if (CRF_GamemodeManager.IsSpectator(player))
+				continue;
+			
+			if (!closestPlayer)
+			{
+				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				if (closestPlayerDistance > 200)
+					continue;
+				closestPlayer = player;
+				closestPlayerId = playerId;
+				continue;
+			}
+			
+			float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+			if (playerDistance > closestPlayerDistance || playerDistance > 200)
+				continue;
+			
+			closestPlayer = player;
+			closestPlayerDistance = playerDistance;
+			closestPlayerId = playerId;
+		}
+		
+		//There's no players
+		if (!closestPlayer)
+			return false;
+		
+		Vehicle.Cast(vehicle).m_sFactionKey = SCR_FactionManager.SGetPlayerFaction(closestPlayerId).GetFactionKey();
+		GetGame().GetCallqueue().CallLater(
+					CRF_GearscriptManager.GetInstance().SetVehicleGear, 500, false,
+					vehicle, Vehicle.Cast(vehicle).m_sFactionKey
+				);
+		return true;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -164,6 +243,771 @@ class CRF_GearscriptManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	/**
+	 * @brief Set gear for a vehicle entity based on its faction key
+	 *
+	 * Attempts to find the correct faction for the vehicle. If no faction is provided,
+	 * it searches for the closest player within 200m to determine the faction. Then,
+	 * it applies the appropriate gear loadout to the vehicle, checking if it's a supply truck.
+	 *
+	 * @param vehicle The vehicle entity to equip with gear
+	 * @param factionKey The key identifying the faction to use for gear configuration
+	 */
+	void SetVehicleGear(IEntity vehicle, string factionKey)
+	{
+		//Lets find a faction, if there is none start looking for one in the loop.
+		Faction faction = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(factionKey);
+		if (!faction)
+		{
+			array<int> playerIds = {};
+			PlayerManager playerManager = GetGame().GetPlayerManager();
+			playerManager.GetPlayers(playerIds);
+			
+			float closestPlayerDistance;
+			IEntity closestPlayer;
+			int closestPlayerId;
+			foreach (int playerId: playerIds)
+			{
+				IEntity player = playerManager.GetPlayerControlledEntity(playerId);
+				if (!player)
+					continue;
+				
+				if (CRF_GamemodeManager.IsSpectator(player))
+					continue;
+				
+				if (!closestPlayer)
+				{
+					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+					if (closestPlayerDistance > 200)
+						continue;
+					closestPlayer = player;
+					closestPlayerId = playerId;
+					continue;
+				}
+				
+				float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				if (playerDistance > closestPlayerDistance || playerDistance > 200)
+					continue;
+				
+				closestPlayer = player;
+				closestPlayerDistance = playerDistance;
+				closestPlayerId = playerId;
+			}
+			
+			//There's no players
+			if (!closestPlayer)
+			{
+				m_VehiclesInQueue.Insert(vehicle);
+				return;
+			}
+
+			
+			faction = SCR_FactionManager.SGetPlayerFaction(closestPlayerId);
+			Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
+		}
+		
+		ref CRF_GearScriptContainer gsContainer = GetGearScriptSettings(faction.GetFactionKey());
+		if (gsContainer.m_aSupplyTrucks.Contains(vehicle.GetPrefabData().GetPrefabName()))
+			SetTruckGear(vehicle, faction, gsContainer, true);
+		else
+			SetTruckGear(vehicle, faction, gsContainer, false);
+		
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Configures a truck’s inventory and equipment loadout
+	 *
+	 * Clears existing inventory, applies the configured loadout, and spawns weapons,
+	 * magazines, grenades, smoke, and additional faction-specific items. Handles both
+	 * supply trucks and regular vehicles.
+	 *
+	 * @param truck The truck entity to configure
+	 * @param faction The faction object used to determine loadout
+	 * @param gsContainer The gear script container holding loadout data
+	 * @param isSupply Whether the truck is a supply truck (true) or a regular vehicle (false)
+	 */
+	void SetTruckGear(IEntity truck, Faction faction, CRF_GearScriptContainer gsContainer, bool isSupply)
+	{
+		ref CRF_GearScriptConfig gearSriptConfig = LoadGearScriptConfig(gsContainer.m_rGearScript);
+		ref CRF_VehicleGearscriptConfig vehicleGearScriptConfig = LoadVehicleGearScriptConfig(gsContainer.m_rVehicleGearscriptValues);
+		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		if (!invManager)
+			return;
+		ClearTruckGear(truck, invManager);
+		ApplyTruckLoadout(truck, invManager, gsContainer);
+		array<ResourceName> heGLsToAdd = {};
+		array<ResourceName> glsToAdd = {};
+		for (int i = 0; i <= 11; i++)
+		{
+			//Regular Weapons
+			if (i < 4 || i == 11)
+			{
+				int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
+				array<ResourceName> magazinesToAdd = {};
+				array<int> magazineCounts = {};
+				array<ref CRF_Weapon_Class> weapons = GetWeaponsByIndex(i, gearSriptConfig);
+				if (weapons.Count() == 0)
+					continue;
+				foreach (CRF_Weapon_Class weapon: weapons)
+				{
+					if (!weapon)
+						continue;
+					
+					if (!weapon.m_MagazineArray)
+						continue;
+					foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+					{
+						if (!IsRegularMagazine(weapons, magazine.m_Magazine) && i == 1)
+						{
+							if (IsGLHE(magazine.m_Magazine))
+								heGLsToAdd.Insert(magazine.m_Magazine);
+							else
+								glsToAdd.Insert(magazine.m_Magazine);
+							continue;
+						}
+						
+						int magazineCount = GetMagazineCount(magazine.m_Magazine);
+						if (magazineCount <= 0)
+							continue;
+						magazinesToAdd.Insert(magazine.m_Magazine);
+						magazineCounts.Insert(magazineCount);
+					}
+				}				
+				if (magazinesToAdd.Count() == 0)
+					continue;
+				
+				SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+			}
+			//Spec Weapons
+			else
+			{
+				int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
+				array<ResourceName> magazinesToAdd = {};
+				array<int> magazineCounts = {};
+				CRF_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, gearSriptConfig);
+				if (!weapon)
+					continue;
+				bool isDisposable = IsWeaponDisposable(weapon.m_Weapon);
+				if (isDisposable)
+				{
+					magazinesToAdd.Insert(weapon.m_Weapon);
+					SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, isSupply);
+				}
+				else
+				{
+					foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+					{
+						if (!IsSpecRegularMagazine(weapon, magazine.m_Magazine))
+							continue;
+						
+						int magazineCount = GetMagazineCount(magazine.m_Magazine);
+						if (magazineCount <= 0)
+							continue;
+						magazinesToAdd.Insert(magazine.m_Magazine);
+						magazineCounts.Insert(magazineCount);
+					}
+					if (magazinesToAdd.Count() == 0)
+						continue;
+					
+					SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+				}
+			}
+		}
+				
+		array<ResourceName> grenadesToAdd = {};
+		array<ResourceName> smokesToAdd = {};
+		foreach (CRF_Inventory_Item item: gearSriptConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
+		{
+			bool isGrenade;
+			bool isSmoke;
+			IsItemGrenade(item.m_sItemPrefab, isGrenade, isSmoke);
+			if (isGrenade)
+			{
+				if (isSmoke)
+					smokesToAdd.Insert(item.m_sItemPrefab);
+				else
+					grenadesToAdd.Insert(item.m_sItemPrefab);
+			}
+		}
+		
+		if (grenadesToAdd.Count() > 0)
+		{
+			int grenades = GetBulletCountForWeapon(truck, 12, vehicleGearScriptConfig, gsContainer);
+			SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, isSupply);
+		}
+		
+		if (smokesToAdd.Count() > 0)
+		{
+			int grenades = GetBulletCountForWeapon(truck, 13, vehicleGearScriptConfig, gsContainer);
+			SpawnItemsToVehicle(grenades, smokesToAdd, invManager, isSupply);
+		}
+		
+		//Add misc items
+		if (heGLsToAdd.Count() > 0)
+		{
+			int glsToSpawn = GetBulletCountForWeapon(truck, 14, vehicleGearScriptConfig, gsContainer);
+			SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, isSupply);
+		}
+		
+		if (glsToAdd.Count() > 0)
+		{
+			int glsToSpawn = GetBulletCountForWeapon(truck, 15, vehicleGearScriptConfig, gsContainer);
+			SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, isSupply);
+		}
+		
+		array<ref CRF_VehicleGearScriptAdditionalItem> additionalItems = {};
+		if (Vehicle.Cast(truck).m_aAdditionalVehicleItems.Count() > 0)
+			additionalItems = Vehicle.Cast(truck).m_aAdditionalVehicleItems;
+		else
+			additionalItems = gsContainer.m_aAdditionalVehicleItems;
+		foreach (CRF_VehicleGearScriptAdditionalItem item: additionalItems)
+		{
+			array<ResourceName> holder = {item.m_Prefab};
+			if (isSupply)
+				SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, true);
+			else
+				SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, true);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Removes all existing items from a truck’s inventory
+	 *
+	 * Iterates through the truck’s inventory storage manager and deletes all entities found.
+	 *
+	 * @param truck The truck whose inventory will be cleared
+	 * @param invManager The truck’s inventory storage manager component
+	 */
+	void ClearTruckGear(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager)
+	{
+		array<IEntity> items = {};
+		invManager.GetItems(items);
+		foreach (IEntity item: items)
+		{
+			if (!item)
+				continue;
+			
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Applies a predefined loadout to a truck, including turret weapons and ammo
+	 *
+	 * Loads the correct vehicle loadout (either overridden or default), then spawns
+	 * ammunition into the truck’s storage.
+	 *
+	 * @param truck The truck entity to configure
+	 * @param invManager The truck’s inventory storage manager component
+	 * @param gsContainer The gear script container holding vehicle loadout data
+	 */
+	void ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer)
+	{
+		ref CRF_VehicleGearScriptLoadout vehLoadout;
+		if (Vehicle.Cast(truck).m_OverridedVehicleLoadout)
+			vehLoadout = Vehicle.Cast(truck).m_OverridedVehicleLoadout;
+		else
+			vehLoadout = gsContainer.m_VehicleLoadout;
+		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
+		array<BaseCompartmentSlot> turrets = {};
+		array<IEntity> weapons = {};
+		compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
+		foreach (BaseCompartmentSlot turret: turrets)
+		{
+			TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
+			if (!turretController)
+				continue;
+			
+			array<IEntity> weaponsToAdd = {};
+			BaseWeaponManagerComponent weaponManager = turretController.GetWeaponManager();
+			if (weaponManager)
+				weaponManager.GetWeaponsList(weaponsToAdd);
+		
+			foreach (IEntity weapon: weaponsToAdd)
+			{
+				weapons.Insert(weapon);
+			}
+		}
+		
+		foreach (IEntity weapon: weapons)
+		{
+			if (!weapon.FindComponent(WeaponComponent))
+				continue;
+			
+			int bulletsToAdd = 0;
+			WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
+			EWeaponType type = weaponComp.GetWeaponType();
+			if (type == EWeaponType.WT_AUTOCANNON)
+				bulletsToAdd = vehLoadout.m_iAmountofAutoCannonAmmo;
+			else
+				bulletsToAdd = vehLoadout.m_iAmountofMachineGunAmmo;
+			
+			array<BaseMuzzleComponent> muzzles = {};
+			weaponComp.GetMuzzlesList(muzzles);
+			array<ResourceName> magazinesToAdd = {};
+			array<int> magazineCount = {};
+			foreach (BaseMuzzleComponent muzzle: muzzles)
+			{
+				BaseMagazineComponent mag = muzzle.GetMagazine();
+				if (!mag)
+					continue;
+				
+				magazinesToAdd.Insert(mag.GetOwner().GetPrefabData().GetPrefabName());
+				magazineCount.Insert(mag.GetMaxAmmoCount());
+			}
+			
+			if (magazinesToAdd.Count() == 0)
+				continue;
+			
+			SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, true);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Spawns magazines into a vehicle’s inventory
+	 *
+	 * Loops until the requested amount of ammunition is added, distributing across
+	 * multiple magazine types.
+	 *
+	 * @param amountToSpawn Total number of bullets to distribute
+	 * @param magazineCounts Array of magazine capacities
+	 * @param magazinesToAdd Array of magazine resource names
+	 * @param invManager Vehicle’s inventory storage manager component
+	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
+	 */
+	void SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply = false)
+	{
+		int catch = 0;
+		if (!isSupply)
+			amountToSpawn /= 4;
+		while (amountToSpawn > 0 && catch < 200)
+		{
+			for (int i = 0; i < magazinesToAdd.Count(); i++)
+			{
+				invManager.TrySpawnPrefabToStorage(magazinesToAdd[i]);
+				amountToSpawn -= magazineCounts[i];
+			}
+			catch++;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Spawns items (e.g., grenades, disposable launchers) into a vehicle’s inventory
+	 *
+	 * Iterates through provided items and spawns them until the requested amount is added.
+	 *
+	 * @param amountToSpawn Number of items to spawn
+	 * @param itemsToSpawn Array of item resource names
+	 * @param invManager Vehicle’s inventory storage manager component
+	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
+	 */
+	void SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply)
+	{
+		int catch = 0;
+		if (!isSupply)
+			amountToSpawn /= 4;
+		while (amountToSpawn > 0 && catch < 1000)
+		{
+			foreach (ResourceName item: itemsToSpawn)
+			{
+				invManager.TrySpawnPrefabToStorage(item);
+				amountToSpawn--;
+			}
+			catch++;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Determines if an item is a grenade or smoke grenade
+	 *
+	 * Inspects the item’s components to identify if it is a grenade, and whether it is smoke.
+	 *
+	 * @param item The resource name of the item to check
+	 * @param isGrenade Outputs true if the item is a grenade
+	 * @param isSmoke Outputs true if the item is a smoke grenade
+	 */
+	void IsItemGrenade(ResourceName item, out bool isGrenade = false, out bool isSmoke = false)
+	{
+		Resource itemLoaded = Resource.Load(item);
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(itemLoaded);
+		if (!entitySource)
+			return;
+		
+		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+	    {
+	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+	        if(componentSource.GetClassName().ToType().IsInherited(GrenadeMoveComponent))
+				isGrenade = true;
+			
+			if (componentSource.GetClassName().ToType().IsInherited(WeaponComponent))
+			{
+				EWeaponType type;
+				componentSource.Get("WeaponType", type);
+				if (type == EWeaponType.WT_SMOKEGRENADE)
+					isSmoke = true;
+			}
+		}
+		return;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a weapon is disposable
+	 *
+	 * Loads the weapon prefab and inspects components to determine if it is marked as disposable.
+	 *
+	 * @param weapon The resource name of the weapon to check
+	 * @return true if the weapon is disposable, false otherwise
+	 */
+	bool IsWeaponDisposable(ResourceName weapon)
+	{
+		Resource weaponLoaded = Resource.Load(weapon);
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
+		if (!entitySource)
+			return false;
+		
+		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+	    {
+	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+	        if(!componentSource.GetClassName().ToType().IsInherited(WeaponComponent))
+		        continue;
+			
+            BaseContainerList attachmentComponents = componentSource.GetObjectArray("components");
+			for (int i = 0; i < attachmentComponents.Count(); i++)
+			{
+				IEntityComponentSource attachmentComponent = attachmentComponents.Get(i);
+				if (!attachmentComponent.GetClassName().ToType().IsInherited(SCR_MuzzleInMagComponent))
+					continue;
+				
+				bool disposable = false;
+				attachmentComponent.Get("Disposable", disposable);
+				return disposable;
+			}
+	    }
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Gets the maximum ammo count of a magazine resource
+	 *
+	 * Loads the magazine prefab and extracts its MaxAmmo property from the MagazineComponent.
+	 *
+	 * @param resource The magazine resource name
+	 * @return The maximum number of bullets in the magazine, or 0 if not found
+	 */
+	int GetMagazineCount(ResourceName resource)
+	{
+		Resource magazine = Resource.Load(resource);
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(magazine);
+		if (!entitySource)
+			return 0;
+		
+		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+	    {
+	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+	        if(componentSource.GetClassName().ToType().IsInherited(MagazineComponent))
+	        {
+	            int maxAmmo = 0;
+				componentSource.Get("MaxAmmo", maxAmmo);
+				return maxAmmo;
+	        }
+	    }
+		return 0;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Retrieves a list of standard weapons by index from the gear script config
+	 *
+	 * Uses an index to map to weapon categories such as rifles, carbines, pistols, etc.
+	 *
+	 * @param index The weapon category index
+	 * @param gearSriptConfig The gear script configuration to use
+	 * @return Array of weapon class references
+	 */
+	array<ref CRF_Weapon_Class> GetWeaponsByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
+	{
+		array<ref CRF_Weapon_Class> weapons = {};
+		CRF_Weapons weaponConfig = gearSriptConfig.m_FactionWeapons;
+		switch(index)
+		{
+			case 0:
+			foreach (CRF_Weapon_Class weapon: weaponConfig.m_Rifle)
+				weapons.Insert(weapon);
+			break;
+			
+			case 1:
+			foreach (CRF_Weapon_Class weapon: weaponConfig.m_RifleUGL)
+				weapons.Insert(weapon);
+			break;
+			
+			case 2:
+			foreach (CRF_Weapon_Class weapon: weaponConfig.m_Carbine)
+				weapons.Insert(weapon);
+			break;
+			
+			case 3:
+			foreach (CRF_Weapon_Class weapon: weaponConfig.m_Pistol)
+				weapons.Insert(weapon);
+			break;
+				
+			case 11:
+			weapons.Insert(weaponConfig.m_Sniper);
+			break;
+		}
+		
+		return weapons;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Retrieves a specific special weapon by index
+	 *
+	 * Uses an index to fetch special weapons such as ARs, MMGs, HMGs, AT, MAT, HAT, and AA.
+	 *
+	 * @param index The weapon type index
+	 * @param gearSriptConfig The gear script configuration to use
+	 * @return A special weapon class reference
+	 */
+	CRF_Spec_Weapon_Class GetSpecWeaponByIndex(int index, CRF_GearScriptConfig gearSriptConfig)
+	{
+		CRF_Spec_Weapon_Class weapon;
+		CRF_Weapons weaponConfig = gearSriptConfig.m_FactionWeapons;
+		
+		switch (index)
+		{
+			case 4:
+			weapon = weaponConfig.m_AR;
+			break;
+			
+			case 5:
+			weapon = weaponConfig.m_MMG;
+			break;
+			
+			case 6:
+			weapon = weaponConfig.m_HMG;
+			break;
+			
+			case 7:
+			weapon = weaponConfig.m_AT;
+			break;
+			
+			case 8:
+			weapon = weaponConfig.m_MAT;
+			break;
+			
+			case 9:
+			weapon = weaponConfig.m_HAT;
+			break;
+			
+			case 10:
+			weapon = weaponConfig.m_AA;
+			break;
+		}
+		
+		return weapon;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a grenade launcher round is a high-explosive (HE) type
+	 *
+	 * Loads the grenade launcher resource and inspects its components for a collision component(Only explosives have this enabled).
+	 *
+	 * @param glToCheck Resource name of the grenade launcher round
+	 * @return true if the round is HE, false otherwise
+	 */
+	bool IsGLHE(ResourceName glToCheck)
+	{
+		Resource glLoaded = Resource.Load(glToCheck);
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(glLoaded);
+		if (!entitySource)
+			return false;
+		
+		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+	    {
+	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+	        if(!componentSource.GetClassName().ToType().IsInherited(CollisionTriggerComponent))
+				continue;
+			
+			bool enabled = false;
+			componentSource.Get("Enabled", enabled);
+			return enabled;
+					
+	    }
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a magazine belongs to a given special weapon
+	 *
+	 * Compares magazine wells between a weapon and magazine to determine compatibility.
+	 *
+	 * @param weaponToCheck The special weapon to check against
+	 * @param magazineToCheck The magazine resource name to check
+	 * @return true if the magazine is valid for the weapon, false otherwise
+	 */
+	bool IsSpecRegularMagazine(CRF_Spec_Weapon_Class weaponToCheck, ResourceName magazineToCheck)
+	{
+		BaseMagazineWell magazineWell;
+		Resource magazine = Resource.Load(magazineToCheck);
+		IEntitySource magazineEntitySource = SCR_BaseContainerTools.FindEntitySource(magazine);
+		if (!magazineEntitySource)
+			return false;
+		
+		for(int nComponent, componentCount = magazineEntitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+	    {
+	        IEntityComponentSource componentSource = magazineEntitySource.GetComponent(nComponent);
+	        if(componentSource.GetClassName().ToType().IsInherited(MagazineComponent))
+				componentSource.Get("MagazineWell", magazineWell);
+	    }
+		
+		Resource weaponLoaded = Resource.Load(weaponToCheck.m_Weapon);
+		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
+		if (!entitySource)
+			return false;
+		
+		for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+	    {
+	        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+	        if(!componentSource.GetClassName().ToType().IsInherited(WeaponComponent))
+		        continue;
+			
+            BaseContainerList attachmentComponents = componentSource.GetObjectArray("components");
+			for (int i = 0; i < attachmentComponents.Count(); i++)
+			{
+				IEntityComponentSource attachmentComponent = attachmentComponents.Get(i);
+				if (!attachmentComponent.GetClassName().ToType().IsInherited(MuzzleComponent) && !attachmentComponent.GetClassName().ToType().IsInherited(SCR_MuzzleInMagComponent))
+					continue;
+				
+				BaseMagazineWell weaponMagazineWell;
+				attachmentComponent.Get("MagazineWell", weaponMagazineWell);
+				if (magazineWell.Type() == weaponMagazineWell.Type())
+					return true;
+				else
+					return false;
+			}
+	    }
+		return false;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Checks if a magazine is compatible with a set of weapons
+	 *
+	 * Compares magazine wells between a magazine and each weapon in the array.
+	 *
+	 * @param weaponsToCheck Array of weapons to check against
+	 * @param magazineToCheck The magazine resource name to check
+	 * @return true if the magazine is compatible, false otherwise
+	 */
+	bool IsRegularMagazine(array<ref CRF_Weapon_Class> weaponsToCheck, ResourceName magazineToCheck)
+	{
+		BaseMagazineWell magazineWell;
+		Resource magazine = Resource.Load(magazineToCheck);
+		IEntitySource magazineEntitySource = SCR_BaseContainerTools.FindEntitySource(magazine);
+		if (!magazineEntitySource)
+			return false;
+		
+		for(int nComponent, componentCount = magazineEntitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+	    {
+	        IEntityComponentSource componentSource = magazineEntitySource.GetComponent(nComponent);
+	        if(componentSource.GetClassName().ToType().IsInherited(MagazineComponent))
+				componentSource.Get("MagazineWell", magazineWell);
+	    }
+		
+		foreach (CRF_Weapon_Class weapon: weaponsToCheck)
+		{
+			Resource weaponLoaded = Resource.Load(weapon.m_Weapon);
+			IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
+			if (!entitySource)
+				return false;
+			
+			for(int nComponent, componentCount = entitySource.GetComponentCount(); nComponent < componentCount; nComponent++)
+		    {
+		        IEntityComponentSource componentSource = entitySource.GetComponent(nComponent);
+		        if(!componentSource.GetClassName().ToType().IsInherited(WeaponComponent))
+			        continue;
+				
+	            BaseContainerList attachmentComponents = componentSource.GetObjectArray("components");
+				for (int i = 0; i < attachmentComponents.Count(); i++)
+				{
+					IEntityComponentSource attachmentComponent = attachmentComponents.Get(i);
+					if (!attachmentComponent.GetClassName().ToType().IsInherited(MuzzleComponent))
+						continue;
+					
+					BaseMagazineWell weaponMagazineWell;
+					attachmentComponent.Get("MagazineWell", weaponMagazineWell);
+					if (magazineWell.Type() == weaponMagazineWell.Type())
+						return true;
+					else
+						return false;
+				}
+		    }
+		}
+		return false;
+	}
+	
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Gets the number of bullets allocated to a weapon type for a vehicle
+	 *
+	 * Looks up overrides or defaults in the vehicle gear script configuration,
+	 * based on a weapon type index.
+	 *
+	 * @param vehicle The vehicle entity
+	 * @param index The weapon type index
+	 * @param vehicleGearScript The vehicle gear script configuration
+	 * @param gearContainer The gear script container holding overrides
+	 * @return The number of bullets to allocate
+	 */
+	int GetBulletCountForWeapon(IEntity vehicle, int index, CRF_VehicleGearscriptConfig vehicleGearScript, CRF_GearScriptContainer gearContainer)
+	{
+		array<ref CRF_VehicleGearscriptOverride> gearOverides = {};
+		if (Vehicle.Cast(vehicle).m_aVehicleGearscriptOverrides.Count() > 0)
+			gearOverides = Vehicle.Cast(vehicle).m_aVehicleGearscriptOverrides;
+		else
+			gearOverides = gearContainer.m_aVehicleGearscriptOverrides;
+		foreach (CRF_VehicleGearscriptOverride vehicleOverride: gearOverides)
+		{
+			if (vehicleOverride.m_VehicleAmmoType == index)
+				return vehicleOverride.m_iAmountOfBullets;
+		}
+		//There's definitely a better way to do this
+		//At least it's fast
+		switch(index)
+		{
+			case 0: return vehicleGearScript.m_iAmountOfBulletsRifles; 		break;
+			case 1: return vehicleGearScript.m_iAmountOfBulletsRifleUGLs; 	break;
+			case 2: return vehicleGearScript.m_iAmountOfBulletsCarbines; 	break;
+			case 3: return vehicleGearScript.m_iAmountOfBulletsPistols; 	break;
+			case 4: return vehicleGearScript.m_iAmountOfBulletsAR; 			break;
+			case 5: return vehicleGearScript.m_iAmountOfBulletsMMG; 		break;
+			case 6: return vehicleGearScript.m_iAmountOfBulletsHMG; 		break;
+			case 7: return vehicleGearScript.m_iAmountOfDisposables; 		break;
+			case 8: return vehicleGearScript.m_iAmountOfRocketsAT; 			break;
+			case 9: return vehicleGearScript.m_iAmountOfRocketsMAT;			break;
+			case 10: return vehicleGearScript.m_iAmountOfRocketsAA; 		break;
+			case 11: return vehicleGearScript.m_iAmountOfBulletsSniper;		break;
+			case 12: return vehicleGearScript.m_iAmountOfGrenades;			break;
+			case 13: return vehicleGearScript.m_iAmountOfSmokeGrenades;		break;
+			case 14: return vehicleGearScript.m_iAmountOfHEGLs;				break;
+			case 15: return vehicleGearScript.m_iAmountOfSmokeGLs;			break;
+		}
+		
+		return 0;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
 	 * @brief Set identity for an entity
 	 * @param entity The entity to equip
 	 */
@@ -266,6 +1110,18 @@ class CRF_GearscriptManager : ScriptComponent
 	protected CRF_GearScriptConfig LoadGearScriptConfig(ResourceName resourceName)
 	{
 		return CRF_GearScriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
+			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	/**
+	 * @brief Load vehicle gear script config from resource
+	 * @param resourceName Resource to load
+	 * @return Loaded config or null if failed
+	 */
+	protected CRF_VehicleGearscriptConfig LoadVehicleGearScriptConfig(ResourceName resourceName)
+	{
+		return CRF_VehicleGearscriptConfig.Cast(BaseContainerTools.CreateInstanceFromContainer(
 			BaseContainerTools.LoadContainer(resourceName).GetResource().ToBaseContainer()));
 	}
 	
