@@ -54,6 +54,44 @@ FrameWidgetClass {
    Text "Alice Vest"
    "Min Font Size" 10
    "Vertical Alignment" Center
+   FontProperties FontProperties "{66BD386FB1F03B93}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  TextWidgetClass "{66BD3843D17D0BF6}" {
+   Name "Supply"
+   Slot FrameWidgetSlot "{668729082A629B89}" {
+    PositionX 264.589
+    OffsetLeft 264.589
+    PositionY 0.082
+    OffsetTop 0.082
+    SizeX 34.011
+    OffsetRight -298.6
+    SizeY 30
+    OffsetBottom -30.082
+   }
+   Text "100"
+   "Min Font Size" 10
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BD386FB4A6BB34}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  ImageWidgetClass "{66BD384339CBF3C8}" {
+   Name "Image0"
+   Slot FrameWidgetSlot "{66BD384339CBF3D1}" {
+    Anchor 0 0 0 0
+    PositionX 231.956
+    OffsetLeft 232
+    PositionY 0
+    OffsetTop 0
+    SizeX 30
+    OffsetRight -262
+    SizeY 30
+    OffsetBottom -30
+   }
+   Texture "{4AFE878E3AF05849}UI/Textures/Editor/EditableEntities/Supplies/AR_icon_supply_full.edds"
+   Size 64 64
   }
  }
 }

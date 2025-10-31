@@ -47,28 +47,25 @@ class CRF_GearscriptManager : ScriptComponent
 			itemSupply.Insert(0);
 		}
 		
-		array<SCR_Faction> factions = {};
+		array<Faction> factions = {};
 		FactionManager factionManager = GetGame().GetFactionManager();
 		
 		if (!factionManager)
-			return;
+			return itemSupply;
 		
 		factionManager.GetFactionsList(factions);
 		
 		array<ref SCR_EntityCatalog> itemCatalogs = {};
-		
-		foreach (SCR_Faction faction: factions)
+		SCR_EntityCatalogManagerComponent catalogMan = SCR_EntityCatalogManagerComponent.GetInstance();
+		foreach (Faction faction: factions)
 		{
-			array<ref SCR_EntityCatalog> catalogs = faction.GetEntityCatalogs();
-			foreach (SCR_EntityCatalog catalog: catalogs)
-			{
-				if (catalog.GetCatalogType() == EEntityCatalogType.ITEM)
-					itemCatalogs.Insert(catalog);
-			}
+			SCR_EntityCatalog catalog = catalogMan.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, faction.GetFactionKey(), false);
+			itemCatalogs.Insert(catalog);
 		}
 		
 		foreach (SCR_EntityCatalog catalog: itemCatalogs)
 		{
+			Print(catalog);
 			for (int i = 0; i < itemSupply.Count(); i++)
 			{
 				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(items.Get(i));
@@ -76,10 +73,11 @@ class CRF_GearscriptManager : ScriptComponent
 					continue;
 				
 				SCR_ArsenalItem data = SCR_ArsenalItem.Cast(entry.GetEntityDataOfType(SCR_ArsenalItem));
-				itemSupply.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, true));
+				itemSupply.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, false));
 			}
 		}
 		
+		return itemSupply;
 	}
 	
 	float m_fUpdateBuffer = 0;

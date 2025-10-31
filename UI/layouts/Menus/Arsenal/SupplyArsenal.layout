@@ -5,14 +5,14 @@ FrameWidgetClass {
    Name "ItemsBG1"
    Slot FrameWidgetSlot "{66872908811FA1A0}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -375.252
-    OffsetLeft -375.252
-    PositionY -250
-    OffsetTop -250
-    SizeX 327.803
-    OffsetRight 47.449
-    SizeY 500
-    OffsetBottom -250
+    PositionX -375.158
+    OffsetLeft -375.158
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 421.35
+    OffsetRight -46.193
+    SizeY 499.821
+    OffsetBottom -248.99
    }
    Color 0.006 0.006 0.006 0.2188
   }
@@ -77,8 +77,8 @@ FrameWidgetClass {
     OffsetLeft -375.158
     PositionY -250.831
     OffsetTop -250.831
-    SizeX 327.892
-    OffsetRight 47.266
+    SizeX 421.35
+    OffsetRight -46.193
     SizeY 499.821
     OffsetBottom -248.99
    }
@@ -116,6 +116,9 @@ FrameWidgetClass {
      Slot ButtonWidgetSlot "{6698D2C29E07A33C}" {
      }
      Text "Add Item"
+     FontProperties FontProperties "{66BD386F9E68B2B7}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
     }
    }
   }
@@ -137,17 +140,20 @@ FrameWidgetClass {
    Name "Amount"
    Slot FrameWidgetSlot "{6698D2C28AF746A5}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX 229.42
-    OffsetLeft 229.42
+    PositionX 228.184
+    OffsetLeft 228.184
     PositionY -15
     OffsetTop -15
     SizeX 46.175
-    OffsetRight -275.595
+    OffsetRight -274.359
     SizeY 30
     OffsetBottom -15
    }
    text "1"
    "Horizontal alignment" Center
+   FontProperties FontProperties "{66BD386FA253E0DC}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
   }
   TextWidgetClass "{6698D2C2F0EDEEA5}" {
    Name "AmountText"
@@ -164,6 +170,9 @@ FrameWidgetClass {
    }
    Text "Amount:"
    "Horizontal Alignment" Right
+   FontProperties FontProperties "{66BD386FA6C493C7}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
   }
   ScrollLayoutWidgetClass "{6698DAFA407912C1}" {
    Name "ScrollLayout2"
@@ -186,6 +195,26 @@ FrameWidgetClass {
       VerticalAlign 3
      }
     }
+   }
+  }
+  TextWidgetClass "{66BD386872F1A52E}" {
+   Name "CurrentSupplies"
+   Slot FrameWidgetSlot "{66BD386872EE7A4E}" {
+    PositionX 1212.89
+    OffsetLeft 1212.89
+    PositionY 303.903
+    OffsetTop 303.903
+    SizeX 184.96
+    OffsetRight -1397.85
+    SizeY 30
+    OffsetBottom -333.903
+   }
+   Text "Current Supplies: 0"
+   "Font Size" 33
+   "Min Font Size" 16
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BD386FAAACD32E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
    }
   }
  }
