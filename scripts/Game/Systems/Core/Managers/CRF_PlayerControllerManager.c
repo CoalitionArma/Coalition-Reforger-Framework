@@ -859,4 +859,18 @@ class CRF_PlayerControllerManager : ScriptComponent
 			AddScriptedMarker(zoneName, "0 0 0", 0, "", imageTexture, 45, imageColor);
 		}
 	}
+	
+	void DisplayTitleCard()
+	{
+		Widget titleCard = GetGame().GetWorkspace().CreateWidgets("{4D2AE199F111C14A}UI/layouts/HUD/Intro/CRF_Intro.layout");
+		AudioSystem.PlaySound("{932C08A5A988F96A}Sounds/Intro/cinematicBoom.wav");
+		GetGame().GetCallqueue().CallLater(RemoveWidget, 4000, false, titleCard);
+	}
+	
+		
+	static void RemoveWidget(Widget widget)
+	{
+		if (widget)
+			widget.RemoveFromHierarchy();
+	}
 }

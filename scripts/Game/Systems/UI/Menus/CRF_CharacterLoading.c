@@ -20,21 +20,7 @@ class CRF_CharacterLoading: ChimeraMenuBase
 		super.OnMenuClose();
 		
 		GetGame().GetCallqueue().Remove(ActivateFailsafe);
-		DisplayTitleCard();
 	};
-	
-	void DisplayTitleCard()
-	{
-		Widget titleCard = GetGame().GetWorkspace().CreateWidgets("{4D2AE199F111C14A}UI/layouts/HUD/Intro/CRF_Intro.layout");
-		AudioSystem.PlaySound("{932C08A5A988F96A}Sounds/Intro/cinematicBoom.wav");
-		GetGame().GetCallqueue().CallLater(RemoveTitleCard, 3000, false, titleCard);
-	}
-	
-	void RemoveTitleCard(Widget widget)
-	{
-		if (widget)
-			delete widget;
-	}
 	
 	/**
 	 * Updates the menu state during each frame
