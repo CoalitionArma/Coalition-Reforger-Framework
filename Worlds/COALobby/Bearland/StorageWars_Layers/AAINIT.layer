@@ -12,6 +12,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 1001.167 7.866 1117.375
+ m_bSafestartInstantlyEnabled 0
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
    m_sTextData "USSR forces are being deployed to destroy the docks and a nearby storage facility.  UK forces have become aware of the attack and established defensive positions around both targets."\

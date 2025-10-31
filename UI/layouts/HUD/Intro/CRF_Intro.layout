@@ -1,0 +1,26 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  TextWidgetClass "{66BECC467C5F1E6E}" {
+   Name "TitleText"
+   Slot FrameWidgetSlot "{66BECC467C5F1E8A}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -900
+    OffsetLeft -900
+    PositionY -150
+    OffsetTop -150
+    SizeX 1800
+    OffsetRight -900
+    SizeY 300
+    OffsetBottom -150
+   }
+   Text "STORAGE WARS"
+   "Font Size" 400
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BECC4669BF8CC2}" {
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+   }
+  }
+ }
+}

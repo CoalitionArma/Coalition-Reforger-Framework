@@ -304,12 +304,12 @@ FrameWidgetClass {
     Anchor 0.467 0.486 0.538 0.499
     PositionX 0
     OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
+    PositionY 318.55
+    OffsetTop 318.55
     SizeX 0
     OffsetRight 0
     SizeY 0
-    OffsetBottom 0
+    OffsetBottom -318.55
    }
    Opacity 0
    Text "Safe Start Ended"
@@ -328,12 +328,12 @@ FrameWidgetClass {
     Anchor 0.467 0.5 0.538 0.514
     PositionX 0
     OffsetLeft 0
-    PositionY 0
-    OffsetTop 0
+    PositionY 318.55
+    OffsetTop 318.55
     SizeX 0
     OffsetRight 0
     SizeY 0
-    OffsetBottom 0
+    OffsetBottom -318.55
    }
    Opacity 0
    Color 0.502 0 0 1
