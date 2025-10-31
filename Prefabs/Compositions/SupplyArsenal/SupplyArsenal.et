@@ -1,7 +1,11 @@
 GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/SupplyStorage_S_US_01.et" {
  ID "52D6D6DB69F982D9"
+ components {
+  CRF_SupplyArsenalComponent "{66BD386F19EE1745}" {
+  }
+ }
  coords 845.952 7.862 1472.917
- angleY 37
+ angles 0 37 0
  {
   GenericEntity {
    ID "568ED76844F05A2F"

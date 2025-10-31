@@ -39,6 +39,47 @@ class CRF_GearscriptManager : ScriptComponent
 		SetEventMask(owner, EntityEvent.FRAME);
 	}
 	
+	array<int> GetSupplyValuesForItems(array<ResourceName> items)
+	{
+		array<int> itemSupply = {};
+		foreach(ResourceName item: items)
+		{
+			itemSupply.Insert(0);
+		}
+		
+		array<Faction> factions = {};
+		FactionManager factionManager = GetGame().GetFactionManager();
+		
+		if (!factionManager)
+			return itemSupply;
+		
+		factionManager.GetFactionsList(factions);
+		
+		array<ref SCR_EntityCatalog> itemCatalogs = {};
+		SCR_EntityCatalogManagerComponent catalogMan = SCR_EntityCatalogManagerComponent.GetInstance();
+		foreach (Faction faction: factions)
+		{
+			SCR_EntityCatalog catalog = catalogMan.GetFactionEntityCatalogOfType(EEntityCatalogType.ITEM, faction.GetFactionKey(), false);
+			itemCatalogs.Insert(catalog);
+		}
+		
+		foreach (SCR_EntityCatalog catalog: itemCatalogs)
+		{
+			Print(catalog);
+			for (int i = 0; i < itemSupply.Count(); i++)
+			{
+				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(items.Get(i));
+				if (!entry)
+					continue;
+				
+				SCR_ArsenalItem data = SCR_ArsenalItem.Cast(entry.GetEntityDataOfType(SCR_ArsenalItem));
+				itemSupply.Set(i, data.GetSupplyCost(SCR_EArsenalSupplyCostType.DEFAULT, false));
+			}
+		}
+		
+		return itemSupply;
+	}
+	
 	float m_fUpdateBuffer = 0;
 	override void EOnFrame(IEntity owner, float timeSlice)
 	{
@@ -868,6 +909,9 @@ class CRF_GearscriptManager : ScriptComponent
 	        if(componentSource.GetClassName().ToType().IsInherited(MagazineComponent))
 				componentSource.Get("MagazineWell", magazineWell);
 	    }
+		
+		if (!magazineWell)
+			return false;
 		
 		Resource weaponLoaded = Resource.Load(weaponToCheck.m_Weapon);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);

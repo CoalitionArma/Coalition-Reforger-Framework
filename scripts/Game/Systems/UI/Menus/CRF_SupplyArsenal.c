@@ -8,6 +8,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	Widget m_wRoot;
 	CRF_GearscriptManager m_GearscriptManager;
 	CRF_GearScriptContainer m_GearScriptContainer;
+	CRF_SupplyArsenalComponent m_SupplyArsnealComponent;
 	ref CRF_GearScriptConfig m_GearScriptConfig;
 	
 	VerticalLayoutWidget m_Notifications;
@@ -26,6 +27,8 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	IEntity m_ArsenalPoint;
 	IEntity m_ClosestTruck;
 	
+	ref map<string, int> m_SupplyCosts = new map<string, int>;
+	
 	override void OnMenuOpen()
 	{
 		super.OnMenuOpen();
@@ -43,6 +46,13 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		m_AddItem = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("AddSupplyButton").FindHandler(SCR_ButtonComponent));
 		m_AddItem.m_OnClicked.Insert(SpawnItem);
 		PopulateCategories();
+		GetGame().GetCallqueue().CallLater(UpdateArsenal, 500, false);
+	}
+	
+	void UpdateArsenal()
+	{
+		m_SupplyArsnealComponent = CRF_SupplyArsenalComponent.Cast(m_ArsenalPoint.FindComponent(CRF_SupplyArsenalComponent));
+		CRF_RplToAuthorityManager.GetInstance().UpdateSupplyArsneal(RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
 	}
 	
 	override void OnMenuUpdate(float tDelta)
@@ -68,6 +78,9 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			m_aNotifications.RemoveItem(notification);
 			delete notification;
 		}
+		
+		if (m_SupplyArsnealComponent)
+			TextWidget.Cast(m_wRoot.FindAnyWidget("CurrentSupplies")).SetText("Current Supplies: " + m_SupplyArsnealComponent.GetCurrentSupply().ToString());
 	}
 	
 	void PopulateCategories()
@@ -394,6 +407,37 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		if (!manager)
 			return;
 		
+		array<ResourceName> itemsToBeAdded = {};
+		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
+		{
+			itemsToBeAdded.Insert(weapon.m_Weapon);
+			
+			foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+			{
+				itemsToBeAdded.Insert(magazine.m_Magazine);
+			}
+		}
+		foreach (CRF_Spec_Weapon_Class specWeapon: miniArsnealCategory.m_SpecWeapons)
+		{
+			itemsToBeAdded.Insert(specWeapon.m_Weapon);
+			
+			foreach (CRF_Magazine_Class magazine: specWeapon.m_MagazineArray)
+			{
+				itemsToBeAdded.Insert(magazine.m_Magazine);
+			}
+		}
+		foreach (CRF_Inventory_Item item: miniArsnealCategory.m_Items)
+		{
+			itemsToBeAdded.Insert(item.m_sItemPrefab);
+		}
+		
+		array<int> supplyCosts = m_GearscriptManager.GetSupplyValuesForItems(itemsToBeAdded);
+		m_SupplyCosts.Clear();
+		for (int i = 0; i < itemsToBeAdded.Count(); i ++)
+		{
+			m_SupplyCosts.Insert(itemsToBeAdded[i], supplyCosts[i]);
+		}
+		
 		foreach (CRF_Weapon_Class weapon: miniArsnealCategory.m_Weapons)
 		{
 			DrawWeaponItem(weapon, manager, miniArsnealCategory).m_OnClicked.Insert(SelectItem);
@@ -424,6 +468,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{ADD28B3C4F9377B1}UI/layouts/Menus/Arsenal/SupplyArsenalItem.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, weapon.m_Weapon);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(weapon.m_Weapon).ToString());
 			
 		Resource loadedweapon = Resource.Load(weapon.m_Weapon);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
@@ -454,6 +499,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
 		itemButton.m_wButtonRoot = item;
 		itemButton.m_sResource = weapon.m_Weapon;
+		itemButton.m_iSupplyCost = m_SupplyCosts.Get(weapon.m_Weapon);
 		return itemButton;
 	}
 	
@@ -462,6 +508,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{DE9732402EA37142}UI/layouts/Menus/Arsenal/SupplyArsenalMagazine.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, magazine.m_Magazine);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(magazine.m_Magazine).ToString());
 			
 		Resource loadedweapon = Resource.Load(magazine.m_Magazine);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
@@ -492,6 +539,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
 		itemButton.m_wButtonRoot = item;
 		itemButton.m_sResource = magazine.m_Magazine;
+		itemButton.m_iSupplyCost = m_SupplyCosts.Get(magazine.m_Magazine);
 		return itemButton;
 	}
 	
@@ -500,6 +548,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{DE9732402EA37142}UI/layouts/Menus/Arsenal/SupplyArsenalMagazine.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, itemObject.m_sItemPrefab);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(itemObject.m_sItemPrefab).ToString());
 			
 		Resource loadedweapon = Resource.Load(itemObject.m_sItemPrefab);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
@@ -530,6 +579,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
 		itemButton.m_wButtonRoot = item;
 		itemButton.m_sResource = itemObject.m_sItemPrefab;
+		itemButton.m_iSupplyCost = m_SupplyCosts.Get(itemObject.m_sItemPrefab);
 		return itemButton;
 	}
 	
@@ -538,6 +588,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		Widget item = GetGame().GetWorkspace().CreateWidgets("{ADD28B3C4F9377B1}UI/layouts/Menus/Arsenal/SupplyArsenalItem.layout", m_Items);
 		ItemPreviewWidget itemPreview = ItemPreviewWidget.Cast(item.FindWidget("ArsenalItemPreview"));
 		manager.SetPreviewItemFromPrefab(itemPreview, weapon.m_Weapon);
+		TextWidget.Cast(item.FindAnyWidget("Supply")).SetText(m_SupplyCosts.Get(weapon.m_Weapon).ToString());
 			
 		Resource loadedweapon = Resource.Load(weapon.m_Weapon);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(loadedweapon);
@@ -568,6 +619,7 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(item.FindWidget("ArsenalItemButton").FindHandler(CRF_MiniArsenalItemButton));
 		itemButton.m_wButtonRoot = item;
 		itemButton.m_sResource = weapon.m_Weapon;
+		itemButton.m_iSupplyCost = m_SupplyCosts.Get(weapon.m_Weapon);
 		return itemButton;
 	}
 	
@@ -581,11 +633,82 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		if (!m_SelectedButton)
 			return;
 		
+		if (!m_SupplyArsnealComponent)
+			m_SupplyArsnealComponent = CRF_SupplyArsenalComponent.Cast(m_ArsenalPoint.FindComponent(CRF_SupplyArsenalComponent));
+		
 		CRF_MiniArsenalItemButton itemButton = CRF_MiniArsenalItemButton.Cast(m_SelectedButton);
+		
+		int supplyNeeded = itemButton.m_iSupplyCost;
+		
+		int totalAvailable = 0;
+		foreach (int supply : m_SupplyArsnealComponent.m_aSupplyCounts)
+		    totalAvailable += supply;
+		
+		if (totalAvailable < supplyNeeded)
+		{
+		    NoSupplyNotification();
+		    return;
+		}
+		
+		array<IEntity> supplyObjects = {};
+		array<int> supplyToSubtract = {};
+		
+		while (supplyNeeded > 0)
+		{
+		    IEntity supplyObject = null;
+		    int minSupply = int.MAX;
+		    int minIndex = -1;
+		
+		    // Find the supply object with the *smallest* nonzero count
+		    for (int i = 0; i < m_SupplyArsnealComponent.GetEntityArray().Count(); i++)
+		    {
+		        int count = m_SupplyArsnealComponent.m_aSupplyCounts[i];
+		        if (count <= 0)
+		            continue;
+		
+		        if (count < minSupply)
+		        {
+		            minSupply = count;
+		            supplyObject = m_SupplyArsnealComponent.GetEntityArray()[i];
+		            minIndex = i;
+		        }
+		    }
+		
+		    // If no supply was found, break out
+		    if (minIndex == -1)
+		        break;
+		
+		    // Decide how much to subtract
+		    int subtractAmount;
+		    if (supplyNeeded < minSupply)
+		    {
+		        subtractAmount = supplyNeeded;
+		        supplyNeeded = 0;
+		    }
+		    else
+		    {
+		        subtractAmount = minSupply;
+		        supplyNeeded -= minSupply;
+		    }
+		
+		    // Store results
+		    supplyObjects.Insert(supplyObject);
+		    supplyToSubtract.Insert(subtractAmount);
+		
+		    // Reduce the count of that supply item
+		    m_SupplyArsnealComponent.m_aSupplyCounts.Get(minIndex) -= subtractAmount;
+		}
+		
+		array<RplId> supplyObjectRplId = {};
+		foreach (IEntity supplyObject: supplyObjects)
+		{
+			supplyObjectRplId.Insert(RplComponent.Cast(supplyObject.FindComponent(RplComponent)).Id());
+		}
+		
 		IEntity truck = GetNearestVehicle();
 		if (!truck)
 			return;
-		CRF_RplToAuthorityManager.GetInstance().AddItemToTruck(RplComponent.Cast(truck.FindComponent(RplComponent)).Id(), itemButton.m_sResource, m_wEditBox.GetText().ToInt());
+		CRF_RplToAuthorityManager.GetInstance().AddItemToTruck(RplComponent.Cast(truck.FindComponent(RplComponent)).Id(), itemButton.m_sResource, m_wEditBox.GetText().ToInt(), supplyObjectRplId, supplyToSubtract, RplComponent.Cast(m_ArsenalPoint.FindComponent(RplComponent)).Id());
 		AddNotification(TextWidget.Cast(itemButton.m_wButtonRoot.FindAnyWidget("ArsenalItemText")).GetText(), m_wEditBox.GetText().ToInt());
 	}
 	
@@ -593,6 +716,14 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 	{
 		GetGame().GetWorld().QueryEntitiesBySphere(m_ArsenalPoint.GetOrigin(), 50, FindTruckCallback, null);
 		return m_ClosestTruck;
+	}
+	
+	void NoSupplyNotification()
+	{
+		Widget item = GetGame().GetWorkspace().CreateWidgets("{8DE299D2A550FAFB}UI/layouts/Menus/Arsenal/SupplyArsenalNotification.layout", m_Notifications);
+		TextWidget.Cast(item.FindAnyWidget("ArsenalItemText")).SetText(string.Format("Not Enough Supply Nearby"));
+		item.FindAnyWidget("Image0").SetColor(Color.FromInt(Color.RED));
+		m_aNotifications.Insert(item);
 	}
 	
 	void AddNotification(string name, int amount)

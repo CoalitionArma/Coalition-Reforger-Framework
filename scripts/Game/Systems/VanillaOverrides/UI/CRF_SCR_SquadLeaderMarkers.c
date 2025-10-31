@@ -14,6 +14,7 @@ modded class SCR_MapMarkerSquadLeader
 			return;
 		
 		// Set this squad leader marker to be visible to the local player
-		SetLocalVisible(true);
+		if (m_Group && m_Group.m_bBlueForceTrackerEnabled)
+			SetLocalVisible(true);
 	}
 }
