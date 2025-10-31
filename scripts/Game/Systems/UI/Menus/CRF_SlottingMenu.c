@@ -764,64 +764,71 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	{
 		int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
 		
-		foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
-		{	
-			// Skip slots not in this group or faction
-			if (slotData.GetSlotCurrentGroup() != groupId || 
-				GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
-				continue;
-			
-			// Skip locked slots for non-admins
-			if (slotData.GetIsLockedSlot() && !isAdmin && slotData.GetSlotCurrentPlayerId() <= 0)
-				continue;
-			
-			// Track dead slots but don't display them
-			if (slotData.GetIsDeadSlot())
-			{
-				deadPlayersInGroup++;
-				continue;
-			}
-			
-			// Skip dead empty slots
-			if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
-				continue;
-			
-			// Add slot to UI
-			int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
-			
-			// Count players
-			if (slotData.GetSlotCurrentPlayerId() >= 0)
-				playersInGroup++;
-			
-			// Set player text if slot is taken
-			if (slotData.GetSlotCurrentPlayerId() > 0)
-			{
-				string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
-				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
+		foreach (ResourceName prefab: group.m_aGroupSlots)
+		{
+			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
+			{	
+				if (slotData.GetSlotResource() != prefab)
+					continue;
+				// Skip slots not in this group or faction
+				if (slotData.GetSlotCurrentGroup() != groupId || 
+					GetGame().GetFactionManager().GetFactionByKey(slotData.GetSlotFactionKey()) != m_fSelectedFaction)
+					continue;
 				
-				// Show disconnect indicator if player not connected
-				if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
-					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetDisconnectWidget().SetVisible(true);
+				// Skip locked slots for non-admins
+				if (slotData.GetIsLockedSlot() && !isAdmin && slotData.GetSlotCurrentPlayerId() <= 0)
+					continue;
+				
+				// Track dead slots but don't display them
+				if (slotData.GetIsDeadSlot())
+				{
+					deadPlayersInGroup++;
+					continue;
+				}
+				
+				// Skip dead empty slots
+				if (slotData.GetSlotCurrentPlayerId() == 0 && slotData.GetIsDeadSlot())
+					continue;
+				
+				// Add slot to UI
+				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
+				
+				// Count players
+				if (slotData.GetSlotCurrentPlayerId() >= 0)
+					playersInGroup++;
+				
+				// Set player text if slot is taken
+				if (slotData.GetSlotCurrentPlayerId() > 0)
+				{
+					string playerName = GetGame().GetPlayerManager().GetPlayerName(slotData.GetSlotCurrentPlayerId());
+					m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).SetPlayerText(playerName);
+					
+					// Show disconnect indicator if player not connected
+					if(!GetGame().GetPlayerManager().IsPlayerConnected(slotData.GetSlotCurrentPlayerId()))
+						m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetDisconnectWidget().SetVisible(true);
+				}
+				
+				// Add click handler
+				m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlotButton().m_OnClicked.Insert(SelectSlotDelay);				
+				
+				CRF_ESlotType slotType = slotData.GetSlotType();
+				
+				// Add leaders/medics to ORBAT view
+				if ((slotType == CRF_ESlotType.TEAM_LEADER 
+					|| slotType == CRF_ESlotType.SQUAD_LEADER 
+					|| slotType == CRF_ESlotType.MEDIC) 
+					&& slotData.GetSlotCurrentPlayerId() > 0)
+				{
+					AddLeaderToOrbat(slotData, slotId, orbatGroupIndex, leadersInGroup);
+					leadersInGroup++;
+				}
+				
+				// Add admin-only slot controls
+				if (isAdmin)
+					SetupAdminSlotControls(slotIndex, slotData);
+				
+				break;
 			}
-			
-			// Add click handler
-			m_cSlotListBoxComponent.GetCRFElementComponent(slotIndex).GetSlotButton().m_OnClicked.Insert(SelectSlotDelay);				
-			
-			CRF_ESlotType slotType = slotData.GetSlotType();
-			
-			// Add leaders/medics to ORBAT view
-			if ((slotType == CRF_ESlotType.TEAM_LEADER 
-				|| slotType == CRF_ESlotType.SQUAD_LEADER 
-				|| slotType == CRF_ESlotType.MEDIC) 
-				&& slotData.GetSlotCurrentPlayerId() > 0)
-			{
-				AddLeaderToOrbat(slotData, slotId, orbatGroupIndex, leadersInGroup);
-				leadersInGroup++;
-			}
-			
-			// Add admin-only slot controls
-			if (isAdmin)
-				SetupAdminSlotControls(slotIndex, slotData);
 		}
 	}
 	
