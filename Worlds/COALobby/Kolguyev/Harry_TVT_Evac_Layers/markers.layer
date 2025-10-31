@@ -1,0 +1,88 @@
+$grp CRF_ManualMarker : "{75C8FEC653BE08CB}PrefabsEditable/Markers/GameZoneMarker_INDFOR.et" {
+ {
+  coords 3005.406 229.865 6512.333
+  angles 0 0 0
+ }
+ {
+  coords 3032.252 229.781 7189.516
+  angles 0 0 0
+ }
+ {
+  coords 3553.465 239.652 7086.504
+  angles 0 0 0
+ }
+ {
+  coords 3548.081 312.936 6578.861
+  angles 0 0 0
+  m_sDescription "AO Limit (NPCs)"
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 3311.724 268.994 6847.965
+  m_MarkerColor 0 0 0 1
+  m_sDescription "Ambush Location"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2390.391 0 4389.946
+  angles 0 11.254 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Blufor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2888.32 0 4213.957
+  angles 0 -0.69 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Blufor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3435.285 21.45 4283.383
+  angles 0 -7.497 0
+  m_MarkerColor 0 0.125 0.502 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Blufor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6627.09 145.909 7803.708
+  angles 0 -114.41 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6397.918 39.041 8339.537
+  angles 0 -121.792 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6089.834 0 8754.341
+  angles 0 -134.887 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 180
+  m_sDescription "Opfor DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
