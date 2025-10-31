@@ -1,4 +1,20 @@
 SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{ACBE49C3E71A9E65}worlds/GameMaster/Navmeshes/GM_Cain.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{27D8B11BF4E78009}worlds/GameMaster/Navmeshes/GM_Cain_vehicles.nmn"
+    }
+   }
+  }
+ }
  coords 5060.533 698.236 6320.615
 }
 CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
