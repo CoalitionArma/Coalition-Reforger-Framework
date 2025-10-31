@@ -6,8 +6,13 @@ modded class SCR_AIGroup
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
 	protected CRF_EFlagType m_FlagType;
 	
+	[Attribute("1", category: "Group")]
+	bool m_bBlueForceTrackerEnabled;
+	
 	protected bool m_bIsPlayableGroup;
 	protected SCR_AIGroup m_NewGroup;
+	
+	[RplProp()] ref array<ResourceName> m_aGroupSlots = {};
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when the entity is initialized
@@ -35,6 +40,14 @@ modded class SCR_AIGroup
 			GetOnAllDelayedEntitySpawned().Insert(AllMembersSpawned);
 			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false); // DO NOT CHANGE. RPL JIP ERROR IF NOT INIT'd AFTER (LOL FUCK THIS ENGINE)
 		};
+		
+		
+	}
+	
+	void SetGroupSlots(array<ResourceName> slots)
+	{
+		m_aGroupSlots = slots;
+		Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -65,6 +78,8 @@ modded class SCR_AIGroup
 		m_NewGroup.SetDeleteWhenEmpty(false);
 		m_NewGroup.SetMaxMembers(GetMaxMembers());
 		m_NewGroup.SetIsPlayableGroup();
+		
+		m_NewGroup.SetGroupSlots(m_aUnitPrefabSlots);
 	}
 	
 	//------------------------------------------------------------------------------------------------

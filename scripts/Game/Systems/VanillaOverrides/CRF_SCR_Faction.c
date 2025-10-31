@@ -3,6 +3,11 @@ modded class SCR_Faction
 	ref array<string> m_aActiveSRChannels = {};
 	ref array<string> m_aActiveLRChannels = {};
 	
+	array<ref SCR_EntityCatalog> GetEntityCatalogs()
+	{
+		return m_aEntityCatalogs;
+	}
+	
 	static string NormalizeCallsign(string callsign)
 	{
 		ref array<string> callsignSplit = {};
