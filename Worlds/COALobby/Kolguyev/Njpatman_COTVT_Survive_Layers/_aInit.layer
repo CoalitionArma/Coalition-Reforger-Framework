@@ -9,8 +9,8 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    m_iRangeHoursEnd 0
    m_bUsePredefineStartingTimeAndWeather 1
    m_bFogOverride 1
-   m_fFogAmount 0.65
-   m_fFogHeightDensity 0.385
+   m_fFogAmount 0.95
+   m_fFogHeightDensity 0.935
   }
  }
  coords 5059.846 698.468 6322.237
@@ -46,13 +46,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    ""\
    ""\
    ""
-  }
-  CRF_MissionDescriptor "{66BEA45F7C7E0D13}" {
-   m_sTitle "Rules/Information For This Mission:"
-   m_sTextData "- Faction Intercoperability is encouraged, but as always, your objectives come first."\
-   ""\
-   "- The more Noise you make, the more contact you have to deal with, Vehicles are a magnet so ensure you have enough protection with them."
-   m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{64425051F2E00216}" {
    m_sTitle "BLUFOR Brief"
@@ -92,13 +85,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "> ALLIANCES WITH OTHER NATIONS HAVE BEEN AUTHORIZED"\
    "> TRUST NO ONE"
   }
-  CRF_MissionDescriptor "{66BEA443B3460C50}" {
-   m_sTextData "> HEAD TO SITE THETA AND RETRIVE INTEL PACKET"\
-   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
-   "> NUCLEAR DETONATION HAS BEEN RULED AS NECESSARY"\
-   "> ALLIANCES WITH OTHER NATIONS HAVE BEEN AUTHORIZED"\
-   "> TRUST NO ONE"
-  }
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTitle "OPFOR Brief"
    m_sTextData "// - USSR COMMAND TO ALL FORCES ON KOLGUYEV:"\
@@ -111,10 +97,6 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
    "> GLORY TO THE USSR"
   }
-  CRF_MissionDescriptor "{66BEA443B7482FFA}" {
-   m_sTextData "> INVESTIGATE SITE, SECURE ANY INFORMATION OR INTELIGENCE"\
-   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"
-  }
   CRF_MissionDescriptor "{644250519BE30999}" {
    m_sTitle "INDFOR Brief"
    m_sTextData "TO ALL FIA FORCES ON KOLGUYEV:"\
@@ -126,13 +108,10 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "> SECURE FUEL AT A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
    ""
   }
-  CRF_MissionDescriptor "{66BEA443B0DADA86}" {
-   m_sTextData "> SECURE ANY INTEL AT CAMP VOLGA AND/OR THE MILITARY SITE"\
-   "> SECURE FUEL AT A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
-   ""
-  }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "All Sites will need to be built up manually, for the depots, jsut throw down some sandbags and various vehicles/arsenals with supply"\
+   m_sTextData "Respawns are enabled initially and should be disabled after the first 20-30 minutes."\
+   ""\
+   "All Sites will need to be built up manually, for the depots, jsut throw down some sandbags and various vehicles/arsenals with supply"\
    ""\
    "Site Theta (the one everyone is going toward) should be a handily large US military site that is overrun. There should be a intel packet in Site Theta somewhere."\
    ""\
@@ -141,9 +120,32 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "You may select a fuel depot early on to spawn the fuel trucks, if players attempt to take the fuel trucks too early, swarm em."\
    ""\
    "There should be ONLY 2 Civillian MI-8 helicopters at the airfield."
-   m_aFactionKeys +{
+   m_aFactionKeys {
     "CIV"
    }
+  }
+  CRF_MissionDescriptor "{66BEA45F7C7E0D13}" {
+   m_sTitle "Rules/Information For This Mission:"
+   m_sTextData "- Faction Intercoperability is encouraged, but as always, your objectives come first."\
+   ""\
+   "- The more Noise you make, the more contact you have to deal with, Vehicles are a magnet so ensure you have enough protection with them."
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{66BEA443B3460C50}" {
+   m_sTextData "> HEAD TO SITE THETA AND RETRIVE INTEL PACKET"\
+   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   "> NUCLEAR DETONATION HAS BEEN RULED AS NECESSARY"\
+   "> ALLIANCES WITH OTHER NATIONS HAVE BEEN AUTHORIZED"\
+   "> TRUST NO ONE"
+  }
+  CRF_MissionDescriptor "{66BEA443B7482FFA}" {
+   m_sTextData "> INVESTIGATE SITE, SECURE ANY INFORMATION OR INTELIGENCE"\
+   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"
+  }
+  CRF_MissionDescriptor "{66BEA443B0DADA86}" {
+   m_sTextData "> SECURE ANY INTEL AT CAMP VOLGA AND/OR THE MILITARY SITE"\
+   "> SECURE FUEL AT A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   ""
   }
  }
  m_sFactionOneKey "BLU"
