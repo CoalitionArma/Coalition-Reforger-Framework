@@ -338,6 +338,19 @@ class CRF_RespawnManager : ScriptComponent
 			m_bNeedsRespawn = false;
 			return;
 		}
+		
+		// Check if player is actually dead/needs respawn
+		bool playerIsDead = m_SlottingManager.IsPlayerConsideredDead(SCR_PlayerController.GetLocalPlayerId());
+		if (!playerIsDead)
+		{
+			// Player is alive, reset respawn state and allow slotting menu
+			m_bNeedsRespawn = false;
+			m_fRespawnTimer = 0;
+			m_SelectedSpawnRplID = -1;
+			m_RespawnConfirmed = false;
+			return;
+		}
+		
 		if (!m_bNeedsRespawn)
 			m_bNeedsRespawn = true;
 		// Decrease the respawn timer
