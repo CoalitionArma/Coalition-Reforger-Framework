@@ -30,6 +30,22 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
  coords 5059.846 698.468 6322.237
+ userScript "	// code here"\
+ "	// user script"\
+ "	// code here"\
+ "	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)"\
+ "	{"\
+ "		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);"\
+ "		int playerId = instigatorContextData.GetVictimPlayerID();"\
+ "		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();"\
+ "		CRF_SlotDataContainer slotData = sm.GetPlayerSlotData(playerId);"\
+ "		if (slotData.GetSlotFactionKey() == \"BLUFOR\" || slotData.GetSlotFactionKey() == \"OPFOR\" || slotData.GetSlotFactionKey() == \"INDFOR\") {"\
+ "			slotData.SetSlotFactionKey(\"CIV\");"\
+ "			slotData.SetSlotResource(\"{1C7A4720A7B2239C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Unarmed_P.et\");"\
+ "		}"\
+ "		"\
+ "		super.OnControllableDestroyed(entity, killerEntity, instigator);"\
+ "	}"
  m_iTimeLimitMinutes 100
  EnableAIInGameState 1
  m_bLockSlotsAfterSafestart 0
@@ -121,11 +137,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
    "> CAMP VOLGA HAS BEEN DEEMED PRIORITY"\
    "> VOLGA WAS INVESTIAGTING A LOCAL US MILITARY SITE BUT HAS GONE SILENT SINCE THE EARTHQUAKE"\
    "> SECURE ANY INTEL AT CAMP VOLGA AND/OR THE MILITARY SITE"\
+   "> ESCORT ANY CIVILIANS TO EXTRACTION"\
    "> SECURE FUEL AT A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
    ""
   }
   CRF_MissionDescriptor "{6442505149CF6C93}" {
-   m_sTextData "Respawns are enabled initially and should be disabled after the first 20-30 minutes."\
+   m_sTextData "Players will automatically join the CIV Faction after death"\
    ""\
    "All Sites will need to be built up manually, for the depots, jsut throw down some sandbags and various vehicles/arsenals with supply"\
    ""\
@@ -142,26 +159,47 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
   CRF_MissionDescriptor "{66BEA45F7C7E0D13}" {
    m_sTitle "Rules/Information For This Mission:"
-   m_sTextData "- Faction Intercoperability is encouraged, but as always, your objectives come first."\
+   m_sTextData "- Faction Intercoperability is encouraged, but your objectives come first."\
    ""\
    "- The more Noise you make, the more contact you have to deal with, Vehicles are a magnet so ensure you have enough protection with them."
    m_bShowForAnyFaction 1
   }
   CRF_MissionDescriptor "{66BEA443B3460C50}" {
+   m_sTitle "BLUFOR Objectives"
    m_sTextData "> HEAD TO SITE THETA AND RETRIVE INTEL PACKET"\
+   "	- intel will come in the form of a physical intel folder you can pick up"\
+   ""\
    "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   ""\
    "> NUCLEAR DETONATION HAS BEEN RULED AS NECESSARY"\
    "> ALLIANCES WITH OTHER NATIONS HAVE BEEN AUTHORIZED"\
    "> TRUST NO ONE"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
   }
   CRF_MissionDescriptor "{66BEA443B7482FFA}" {
+   m_sTitle "OPFOR Objectives"
    m_sTextData "> INVESTIGATE SITE, SECURE ANY INFORMATION OR INTELIGENCE"\
+   "	- intel will come in the form of a physical intel folder you can pick up"\
+   ""\
    "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"
+   m_aFactionKeys {
+    "OPFOR"
+   }
   }
   CRF_MissionDescriptor "{66BEA443B0DADA86}" {
+   m_sTitle "INDFOR Objectives"
    m_sTextData "> SECURE ANY INTEL AT CAMP VOLGA AND/OR THE MILITARY SITE"\
+   "	- intel will come in the form of a physical intel folder you can pick up"\
+   ""\
    "> SECURE FUEL AT A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
-   ""
+   ""\
+   "> SECURE AND ESCORT ANY CIVILIANS YOU COME ACROSS"\
+   "> TRUST NO ONE BUT OUR COUNTRY MEN"
+   m_aFactionKeys {
+    "INDFOR"
+   }
   }
  }
  m_sFactionOneKey "BLU"
@@ -191,17 +229,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   m_bEnableRTORadios 0
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
-  m_rGearScript "{F528876B88A01733}Configs/Gearscripts/Custom/RandAlThor/CRF_GS_CIVWithGuns.conf"
   m_bEnableMiniArsenal 0
   m_bEnableMiniWeaponArsenal 0
   m_bEnableSightArsenal 0
  }
  m_bRespawnEnabled 1
- m_bWaveRespawn 1
- m_iTimeToRespawn 240
- m_iBLUFORTickets 50
- m_iOPFORTickets 50
- m_iINDFORTickets 50
+ m_iTimeToRespawn 30
+ m_iCIVTickets 999
  {
   SCR_FactionManager "66BE6889BC7C169A" {
    ID "632A77473B3CC3A8"

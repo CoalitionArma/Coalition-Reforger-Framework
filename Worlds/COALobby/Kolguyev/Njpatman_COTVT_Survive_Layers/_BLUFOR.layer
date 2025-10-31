@@ -93,11 +93,3 @@ SCR_AIGroup Survivors_Blu_Plt : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standar
   }
  }
 }
-GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
- components {
-  CRF_RespawnPointComponent "{645A31042AA16609}" {
-   m_sRespawnPointName "FOB GAMMA"
-  }
- }
- coords 4356.019 56.999 3152.057
-}

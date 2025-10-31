@@ -94,11 +94,3 @@ SCR_AIGroup Survivors_Ind_Plt : "{96DB67CD45DC5F85}Prefabs/Groups/INDFOR/Standar
   }
  }
 }
-GenericEntity : "{A8C13E34C9597EA4}Prefabs/Structures/FlagPoles/RespawnPoles/INDFOR_Respawn.et" {
- components {
-  CRF_RespawnPointComponent "{645A3104263E67EF}" {
-   m_sRespawnPointName "FOB SLEZI"
-  }
- }
- coords 7132.077 314.336 6037.768
-}
