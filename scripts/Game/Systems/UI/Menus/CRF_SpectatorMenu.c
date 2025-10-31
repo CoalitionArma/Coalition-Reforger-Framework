@@ -1656,15 +1656,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			}
 		}
 
-		// Set the radio frequency using RadioHandlerComponent for proper replication
-		RadioHandlerComponent radioHandler = RadioHandlerComponent.Cast(
-			GetGame().GetPlayerController().FindComponent(RadioHandlerComponent)
-		);
-
-		if (radioHandler)
-		{
-			radioHandler.SetFrequency(transceiver, frequency);
-		}
+		transceiver.SetFrequency(frequency);
 
 		return transceiver;
 	}

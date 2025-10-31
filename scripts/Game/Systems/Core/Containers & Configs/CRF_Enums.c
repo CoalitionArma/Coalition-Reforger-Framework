@@ -341,3 +341,26 @@ enum CRF_EPolyZoneEffectHUDType
 	ScreenBlure,
 	TriggerCapture,
 }
+
+//------------------------------------------------------------------------------------
+// Enumeration for vehicle gear script
+//------------------------------------------------------------------------------------
+enum CRF_EVehicleGearScriptType
+{
+	Rifle,
+	RifleUGL,
+	Carbine,
+	Pistol,
+	AR,
+	MMG,
+	HMG,
+	AT,
+	MAT,
+	HAT,
+	AA,
+	Sniper,
+	HEGrenade,
+	SmokeGrenade,
+	HEGL,
+	SmokeGl
+}

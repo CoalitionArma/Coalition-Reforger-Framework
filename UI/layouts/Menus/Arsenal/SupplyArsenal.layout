@@ -1,0 +1,221 @@
+FrameWidgetClass {
+ Name "rootFrame"
+ {
+  ImageWidgetClass "{6698D0D3CD8EAC6B}" {
+   Name "ItemsBG1"
+   Slot FrameWidgetSlot "{66872908811FA1A0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -375.158
+    OffsetLeft -375.158
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 421.35
+    OffsetRight -46.193
+    SizeY 499.821
+    OffsetBottom -248.99
+   }
+   Color 0.006 0.006 0.006 0.2188
+  }
+  ImageWidgetClass "{6698D0D3D466F499}" {
+   Name "ItemsBG0"
+   Slot FrameWidgetSlot "{66872908811FA1A0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -450
+    OffsetLeft -450
+    PositionY -250
+    OffsetTop -250
+    SizeX 74.216
+    OffsetRight 375.784
+    SizeY 500
+    OffsetBottom -250
+   }
+   Color 0.006 0.006 0.006 0.425
+  }
+  ImageWidgetClass "{6698D0D39664CC86}" {
+   Name "ItemsBG"
+   Slot FrameWidgetSlot "{66872908811FA1A0}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -450
+    OffsetLeft -450
+    PositionY -250
+    OffsetTop -250
+    SizeX 900
+    OffsetRight -450
+    SizeY 500
+    OffsetBottom -250
+   }
+   Color 0.006 0.006 0.006 0.425
+  }
+  ScrollLayoutWidgetClass "{6698D0D39F026674}" {
+   Name "ScrollLayout0"
+   Slot FrameWidgetSlot "{668835907AB24567}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -450.212
+    OffsetLeft -450.212
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 74.398
+    OffsetRight 375.814
+    SizeY 499.821
+    OffsetBottom -248.99
+   }
+   {
+    VerticalLayoutWidgetClass "{6698D0D39F02667A}" {
+     Name "CategoryButtons"
+     Slot AlignableSlot "{6688359051EFF57B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
+   }
+  }
+  ScrollLayoutWidgetClass "{6698D0D3CA678E03}" {
+   Name "ScrollLayout1"
+   Slot FrameWidgetSlot "{668835907AB24567}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX -375.158
+    OffsetLeft -375.158
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 421.35
+    OffsetRight -46.193
+    SizeY 499.821
+    OffsetBottom -248.99
+   }
+   {
+    VerticalLayoutWidgetClass "{6698D0D3CA678E02}" {
+     Name "ItemButtons"
+     Slot AlignableSlot "{6688359051EFF57B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
+   }
+  }
+  ButtonWidgetClass "{6698D2C2B0D2710F}" {
+   Name "AddSupplyButton"
+   Slot FrameWidgetSlot "{6698D2C2B0D27120}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 286.72
+    OffsetLeft 286.7
+    PositionY -15
+    OffsetTop -15
+    SizeX 100
+    OffsetRight -386.7
+    SizeY 30
+    OffsetBottom -15
+   }
+   Color 0.2629 0.2629 0.2629 1
+   components {
+    SCR_ButtonComponent "{6698DAFA087C4DAC}" {
+    }
+   }
+   {
+    TextWidgetClass "{6698D2C29E07A300}" {
+     Name "Text0"
+     Slot ButtonWidgetSlot "{6698D2C29E07A33C}" {
+     }
+     Text "Add Item"
+     FontProperties FontProperties "{66BD386F9E68B2B7}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+     }
+    }
+   }
+  }
+  PanelWidgetClass "{6698D2C2C49E5090}" {
+   Name "Panel0"
+   Slot FrameWidgetSlot "{6698D2C2C49E50A1}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 229.42
+    OffsetLeft 229.42
+    PositionY -15
+    OffsetTop -15
+    SizeX 46.175
+    OffsetRight -275.595
+    SizeY 30
+    OffsetBottom -15
+   }
+  }
+  EditBoxWidgetClass "{6698D2C28AF746B3}" {
+   Name "Amount"
+   Slot FrameWidgetSlot "{6698D2C28AF746A5}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 228.184
+    OffsetLeft 228.184
+    PositionY -15
+    OffsetTop -15
+    SizeX 46.175
+    OffsetRight -274.359
+    SizeY 30
+    OffsetBottom -15
+   }
+   text "1"
+   "Horizontal alignment" Center
+   FontProperties FontProperties "{66BD386FA253E0DC}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  TextWidgetClass "{6698D2C2F0EDEEA5}" {
+   Name "AmountText"
+   Slot FrameWidgetSlot "{6698D2C2F0EDEEDC}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 122.819
+    OffsetLeft 122.819
+    PositionY -15
+    OffsetTop -15
+    SizeX 100
+    OffsetRight -222.819
+    SizeY 30
+    OffsetBottom -15
+   }
+   Text "Amount:"
+   "Horizontal Alignment" Right
+   FontProperties FontProperties "{66BD386FA6C493C7}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+  ScrollLayoutWidgetClass "{6698DAFA407912C1}" {
+   Name "ScrollLayout2"
+   Slot FrameWidgetSlot "{668835907AB24567}" {
+    Anchor 0.5 0.5 0.5 0.5
+    PositionX 461.044
+    OffsetLeft 461.044
+    PositionY -250.831
+    OffsetTop -250.831
+    SizeX 327.892
+    OffsetRight -788.936
+    SizeY 499.821
+    OffsetBottom -248.99
+   }
+   {
+    VerticalLayoutWidgetClass "{6698DAFA407912C0}" {
+     Name "Notifications"
+     Slot AlignableSlot "{6688359051EFF57B}" {
+      HorizontalAlign 3
+      VerticalAlign 3
+     }
+    }
+   }
+  }
+  TextWidgetClass "{66BD386872F1A52E}" {
+   Name "CurrentSupplies"
+   Slot FrameWidgetSlot "{66BD386872EE7A4E}" {
+    PositionX 1212.89
+    OffsetLeft 1212.89
+    PositionY 303.903
+    OffsetTop 303.903
+    SizeX 184.96
+    OffsetRight -1397.85
+    SizeY 30
+    OffsetBottom -333.903
+   }
+   Text "Current Supplies: 0"
+   "Font Size" 33
+   "Min Font Size" 16
+   "Vertical Alignment" Center
+   FontProperties FontProperties "{66BD386FAAACD32E}" {
+    Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+   }
+  }
+ }
+}

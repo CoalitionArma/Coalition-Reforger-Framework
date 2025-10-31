@@ -383,7 +383,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
 			// Run datacollector for stats
 			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-			dc.OnPlayerSpawned(playerId, playerCharacter);
+			//Tanaka TODO
+			//dc.OnPlayerSpawnFinalize_S(playerId, playerCharacter);
 		}
 			
 		return playerCharacter;

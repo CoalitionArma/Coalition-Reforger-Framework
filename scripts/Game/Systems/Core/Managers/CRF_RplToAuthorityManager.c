@@ -410,6 +410,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_CleanUpBodies);
 	}
 	
+	void AddItemToTruck(RplId truckId, ResourceName resource, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
+	{
+		Rpc(RpcAsk_AddItemToTruck, truckId, resource, amount, supplyItems, supplyCounts, supplyArsenalId);
+	}
+	
+	void UpdateSupplyArsneal(RplId supplyArsnealId)
+	{
+		Rpc(RpcAsk_UpdateSupplyArsneal, supplyArsnealId);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1229,5 +1239,40 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RpcAsk_CleanUpBodies()
 	{
 		CRF_GamemodeManager.GetInstance().CleanUpBodies();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_AddItemToTruck(RplId truckId, ResourceName item, int amount, array<RplId> supplyItems, array<int> supplyCounts, RplId supplyArsenalId)
+	{
+		for (int i = 0; i < supplyItems.Count(); i++)
+		{
+			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
+			SCR_ResourceComponent resComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
+			SCR_ResourceSystemHelper.GetStorageConsumer(resComponent).RequestConsumtion(((float)supplyCounts.Get(i)));
+		}
+		
+		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
+		if (!truck)
+			return;
+		
+		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
+		
+		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
+		supplyComp.UpdateCurrentSupply();
+		
+		SCR_VehicleInventoryStorageManagerComponent vehInventory = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		for (int i = 0; i < amount; i++)
+		{
+			vehInventory.TrySpawnPrefabToStorage(item);
+		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_UpdateSupplyArsneal(RplId supplyArsenalId)
+	{
+		IEntity supplyArsenal = RplComponent.Cast(Replication.FindItem(supplyArsenalId)).GetEntity();
+		
+		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
+		supplyComp.UpdateCurrentSupply();
 	}
 };

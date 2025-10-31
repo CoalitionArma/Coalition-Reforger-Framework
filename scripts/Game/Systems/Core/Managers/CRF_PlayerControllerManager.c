@@ -307,9 +307,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		// Set frequency based on group
 		if (pc && group)
 		{
-			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
-			if (rhc)
-				rhc.SetFrequency(grpTsv, group.GetRadioFrequency());
+			grpTsv.SetFrequency(group.GetRadioFrequency());
 		}
 
 		// Set up Voice over Network component
