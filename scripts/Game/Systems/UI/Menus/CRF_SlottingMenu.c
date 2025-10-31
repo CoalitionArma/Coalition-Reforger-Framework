@@ -764,11 +764,12 @@ class CRF_SlottingMenu: ChimeraMenuBase
 	{
 		int groupId = RplComponent.Cast(group.FindComponent(RplComponent)).Id();
 		
+		array<int> slotStored = {};
 		foreach (ResourceName prefab: group.m_aGroupSlots)
 		{
 			foreach(int slotId, CRF_SlotDataContainer slotData : slotMap)
 			{	
-				if (slotData.GetSlotResource() != prefab)
+				if (slotData.GetSlotResource() != prefab || slotStored.Contains(slotId))
 					continue;
 				// Skip slots not in this group or faction
 				if (slotData.GetSlotCurrentGroup() != groupId || 
@@ -792,6 +793,7 @@ class CRF_SlottingMenu: ChimeraMenuBase
 				
 				// Add slot to UI
 				int slotIndex = m_cSlotListBoxComponent.AddItemSlot(null, slotId);
+				slotStored.Insert(slotId);
 				
 				// Count players
 				if (slotData.GetSlotCurrentPlayerId() >= 0)
