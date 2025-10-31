@@ -16,8 +16,10 @@ FrameWidgetClass {
    }
    Text "STORAGE WARS"
    "Font Size" 400
+   "Horizontal Alignment" Center
+   "Vertical Alignment" Center
    FontProperties FontProperties "{66BECC4669BF8CC2}" {
-    Font "{5C6AC5486C0CFE9A}UI/Fonts/Adventor_100.fnt"
+    Font "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
    }
   }
  }
