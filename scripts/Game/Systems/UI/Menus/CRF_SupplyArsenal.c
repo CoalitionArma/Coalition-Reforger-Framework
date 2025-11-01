@@ -194,6 +194,19 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 			}
 		}
 		
+		foreach (ResourceName item: m_GearScriptContainer.m_aAdditonalItemsForSupplyArsenal)
+		{
+			switch (GetEquipmentType(item))
+			{
+				case -1: continue; break;
+				case 0: miscItems.Insert(item); break;
+				case 1: explosiveItems.Insert(item); break;
+				case 2: grenadeItems.Insert(item); break;
+				case 3: radioItems.Insert(item); break;
+				case 4: medicalItems.Insert(item); break;
+			}	
+		}
+		
 		foreach (CRF_Inventory_Item item: m_GearScriptConfig.m_DefaultFactionGear.m_DefaultMedicMedicalItems)
 		{
 			medicalItems.Insert(item.m_sItemPrefab);
@@ -202,7 +215,6 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 		radioItems.Insert(m_GearScriptContainer.m_rShortRangeRadioPrefab);
 		radioItems.Insert(m_GearScriptContainer.m_rLongRangeRadioPrefab);
 		radioItems.Insert(m_GearScriptContainer.m_rRTORadiosPrefab);
-		
 		
 		if (miscItems.Count() > 0)
 			PopulateInventoryItems(miscItems, 0);
