@@ -35,6 +35,10 @@ modded class SCR_MapMarkerSquadLeader
 		SCR_GroupsManagerComponent groupManager = SCR_GroupsManagerComponent.GetInstance();
 		if (!groupManager)
 			return;
+		
+		if (m_Group && !m_Group.m_bBlueForceTrackerEnabled)
+			SetLocalVisible(false);
+			return;
 
 		SCR_AIGroup localPlayerGroup = groupManager.GetPlayerGroup(pController.GetPlayerId());
 		if (!localPlayerGroup)
