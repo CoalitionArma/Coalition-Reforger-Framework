@@ -910,6 +910,9 @@ class CRF_GearscriptManager : ScriptComponent
 				componentSource.Get("MagazineWell", magazineWell);
 	    }
 		
+		if (!magazineWell)
+			return false;
+		
 		Resource weaponLoaded = Resource.Load(weaponToCheck.m_Weapon);
 		IEntitySource entitySource = SCR_BaseContainerTools.FindEntitySource(weaponLoaded);
 		if (!entitySource)

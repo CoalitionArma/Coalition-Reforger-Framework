@@ -1,0 +1,185 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 6795.085 431.814 6501.769
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{66BE2BF2BCD8295C}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "INDFOR"
+   m_bHideMapMarkers 1
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 18
+   m_iStartingMinutes 15
+  }
+ }
+ coords 6784.293 432.286 6492.711
+ m_iTimeLimitMinutes 50
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "Soviet Forces continue their operation to capture Kolguyev from local militia"\
+   ""\
+   "INDFOR Composition: Infantry - DEFENDING"\
+   "BLUFOR Assets: N/A"\
+   ""\
+   "OPFOR Composition: Motorized - ATTACKING"\
+   "OPFOR Assets: BTRs, Trucks"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Attack the MCOMs in linear order. The MCOM positions are unknown and should be recon'd prior to movement."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTextData "Defend your MCOM objectives in linear order. "\
+   ""\
+   "An arsenal box with mines, mortars, and sandbags is near the first MCOM."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Respawns happen after MCOM destruction. One MCOM wave."
+   m_bShowForAnyFaction 1
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "IND"
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_bEnableGIRadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_bEnableGIRadios 0
+ }
+ {
+  SCR_FactionManager {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{66BE374E97780E21}" {
+        m_sCallsign "1-4"
+       }
+       SCR_CallsignInfo "{66BE374E9733F44D}" {
+        m_sCallsign "1-5"
+       }
+       SCR_CallsignInfo "{66BE374E97E21102}" {
+        m_sCallsign "IFV A"
+       }
+       SCR_CallsignInfo "{66BE374E97A76D5A}" {
+        m_sCallsign "IFV B"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "C6"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "MED"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "C1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "C2"
+       }
+       SCR_CallsignInfo "{66BE374D4E019031}" {
+        m_sCallsign "C3"
+       }
+       SCR_CallsignInfo "{66BE374D6A63ACC8}" {
+        m_sCallsign "C4"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 6783.656 431.478 6473.798
+}
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 6430.248 435.42 6294.4
+ Points {
+  ShapePoint "{66BD1BCDCE9B875B}" {
+   Position 424.624 0 76.081
+  }
+  ShapePoint "{66BD1BCDC72269F0}" {
+   Position 346.081 0 348.901
+  }
+  ShapePoint "{66BD1BCDC611A8C6}" {
+   Position 192.071 0 150.788
+  }
+  ShapePoint "{66BD1BCDC4C89B55}" {
+   Position 127.905 0 96.334
+  }
+  ShapePoint "{66BD1BCDF9AC029E}" {
+   Position -238.341 0 170.18
+  }
+  ShapePoint "{66BD1BCDFC4AD6FF}" {
+   Position -1227.984 0 243.84
+  }
+  ShapePoint "{66BD1BCDF207FE82}" {
+   Position -1771.321 0 250.709
+  }
+  ShapePoint "{66BD1BCDF002FC35}" {
+   Position -1740.728 0 -257.359
+  }
+  ShapePoint "{66BD1BCDF6FE760A}" {
+   Position -1123.979 0 -329.562
+  }
+  ShapePoint "{66BD1BCDF5AAD631}" {
+   Position -596.608 0 -188.745
+  }
+  ShapePoint "{66BD1BCDEB0BD8BE}" {
+   Position -100.432 0 -233.709
+  }
+ }
+}
+PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestartBoundry.et" {
+ coords 5736.036 451.338 6273.939
+ Points {
+  ShapePoint "{66BD1BCDE1116217}" {
+   Position 453.336 0 177.668
+  }
+  ShapePoint "{66BD1BCDE05D750A}" {
+   Position 398.036 0 -174.01
+  }
+  ShapePoint "{66BD1BCDE5652E9C}" {
+   Position 102.943 0 -141.673
+  }
+  ShapePoint "{66BD1BCDE4318D4B}" {
+   Position -416.687 0 -272.919
+  }
+  ShapePoint "{66BD1BCD1B749E20}" {
+   Position -982.623 0 -217.023
+  }
+  ShapePoint "{66BD1BCD199D6120}" {
+   Position -1027.485 0 245.843
+  }
+ }
+}
+GenericEntity : "{A8C13E34C9597EA4}Prefabs/Structures/FlagPoles/RespawnPoles/INDFOR_Respawn.et" {
+ coords 5033.344 690.009 6345.417
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 6779.667 431.912 6470.862
+ Points {
+  ShapePoint "{66BE2BF2940068EB}" {
+   Position 20.585 0 74.824
+  }
+  ShapePoint "{66BE2BF28B2128D2}" {
+   Position -61.561 0 57.929
+  }
+  ShapePoint "{66BE2BF289ED7912}" {
+   Position -5.258 0 -69.152
+  }
+  ShapePoint "{66BE2BF288540D67}" {
+   Position 53.888 -0.18 -40.839
+  }
+ }
+}

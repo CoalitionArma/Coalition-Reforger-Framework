@@ -6,10 +6,10 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
     Name "ZEUS"
     m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
     m_aAuthoredLabels {
-     4 51870 25 34 38
+     ENTITYTYPE_GROUP FACTION_CRF_BLUFOR TRAIT_ARMORPIERCING TRAIT_SUPPRESSIVE TRAIT_EXPLOSIVE
     }
     m_aAutoLabels {
-     72
+     GROUPSIZE_LARGE
     }
     m_EntityChildrenBudgetCost {
      SCR_EntityBudgetValue "{669897172B725573}" {
@@ -68,4 +68,5 @@ SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
  m_bPlayable 0
  m_bDeleteIfNoPlayer 0
  m_bIsPlayable 1
+ m_bBlueForceTrackerEnabled 0
 }

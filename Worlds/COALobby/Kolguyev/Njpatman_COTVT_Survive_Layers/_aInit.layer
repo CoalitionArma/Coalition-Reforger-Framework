@@ -1,0 +1,330 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F9E52831}" {
+     NavmeshFile "{ACBE49C3E71A9E65}worlds/GameMaster/Navmeshes/GM_Cain.nmn"
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{60B8A297F3B4EE8A}" {
+     NavmeshFile "{27D8B11BF4E78009}worlds/GameMaster/Navmeshes/GM_Cain_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 5060.533 698.236 6320.615
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 22
+   m_iRangeHoursStart 0
+   m_iRangeHoursEnd 0
+   m_bUsePredefineStartingTimeAndWeather 1
+   m_bFogOverride 1
+   m_fFogAmount 0.95
+   m_fFogHeightDensity 0.935
+  }
+ }
+ coords 5059.846 698.468 6322.237
+ userScript "	// code here"\
+ "	// user script"\
+ "	// code here"\
+ "	protected override void OnControllableDestroyed(IEntity entity, IEntity killerEntity, notnull Instigator instigator)"\
+ "	{"\
+ "		SCR_InstigatorContextData instigatorContextData = new SCR_InstigatorContextData(-1, entity, killerEntity, instigator);"\
+ "		int playerId = instigatorContextData.GetVictimPlayerID();"\
+ "		CRF_SlottingManager sm = CRF_SlottingManager.GetInstance();"\
+ "		CRF_SlotDataContainer slotData = sm.GetPlayerSlotData(playerId);"\
+ "		if (slotData.GetSlotFactionKey() == \"BLUFOR\" || slotData.GetSlotFactionKey() == \"OPFOR\" || slotData.GetSlotFactionKey() == \"INDFOR\") {"\
+ "			slotData.SetSlotFactionKey(\"CIV\");"\
+ "			slotData.SetSlotResource(\"{1C7A4720A7B2239C}Prefabs/Characters/Factions/CIV/CRF_GS_CIV_Unarmed_P.et\");"\
+ "		}"\
+ "		"\
+ "		super.OnControllableDestroyed(entity, killerEntity, instigator);"\
+ "	}"
+ m_iTimeLimitMinutes 100
+ EnableAIInGameState 1
+ m_bLockSlotsAfterSafestart 0
+ m_bSafestartInstantlyEnabled 0
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "// - EMSC EARTHQUAKE MONITORING STATION 157:"\
+   "> ANOMALY DETECTED"\
+   "> EMSC DETECTS MAG 8.9 EARTHQUAKE NEAR KOLGUYEV ISLAND"\
+   "> INFORMING US EUCOM"\
+   "> INFORMING SITE *CLASSIFIED*"\
+   ""\
+   "// - US FACILITY *CLASSIFIED* AUTOMATED COMMUNICATIONS:"\
+   "> ENCRYPTION DISABLED"\
+   "> ANOMALY DETECTED"\
+   "> PRIMARY CONTAINMENT CENTER BREACHED"\
+   "> SECONDARY CONTAINMENT CENTER BREACHED"\
+   "> ACTIVATING CONTAINMENT PROTOCOL \"THOR\""\
+   "> RECIVED COMMUNICATIONS FROM EMSC STATION 157"\
+   "> ENCRYPTION ENABLED"\
+   "> ..."\
+   "> &#ASD*#@$HELP*(@)&$#US&$#@*()"\
+   ""\
+   "// - US EU SIGNAL INTELEGENCE STATION 54:"\
+   "> UNENCRYPTED TRANSMISSION DETECTED FROM SITE THETA"\
+   "> TRANSMISSION READS: \"&#ASD*#@$HELP*(@)&$#US&$#@*()\""\
+   "> WARNING: USSR STATION 9 IN RANGE OF TRANSMISSION"\
+   "> ALERTING US EUCOM"\
+   "> MAY GOD HAVE MERCY ON US ALL"\
+   ""\
+   ""\
+   ""
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTitle "BLUFOR Brief"
+   m_sTextData "// - US FACILITY *CLASSIFIED* AUTOMATED COMMUNICATIONS:"\
+   "> ANOMALY DETECTED"\
+   "> PRIMARY CONTAINMENT CENTER BREACHED"\
+   "> SECONDARY CONTAINMENT CENTER BREACHED"\
+   "> ACTIVATING CONTAINMENT PROTOCOL \"THOR\""\
+   "> RECIVED COMMUNICATIONS FROM EMSC STATION 157"\
+   "> EVACUATION AND PURGE ORDERED"\
+   "> PURGE ACTIVATED"\
+   "> ..."\
+   "> MANUAL OVERRIDE OF SURFACE DOOR 1"\
+   "> WARNING: SUBJECT 12 HAS BREACHED CONTAINMENT"\
+   "> WARNING: SUBJECT 8 HAS BREACHED CONTAINMENT"\
+   "> WARNING: SUBJECT 48 HAS BREACHED CONTAINMENT"\
+   "> WARNING: SUBJECT 1 HAS BREACHED CONTAINMENT"\
+   "> PURGE FAILED"\
+   "> ACTIVATING NUCLEAR DEVICE \"SNUGGLES\""\
+   "> DETONATION IN:"\
+   "> 5"\
+   "> 4"\
+   "> MANUAL INPUT ENABLED"\
+   "> &#ASD*#@$HELP*(@)&$#US&$#@*()"\
+   "> DETONATION EXTENDED"\
+   "> DETONATION IN:"\
+   "> 6000"\
+   "> 5999"\
+   "> 5998"\
+   ""\
+   "// - US EUCOM TO ALL FORCES ON KOLGUYEV:"\
+   "> EARTHQUAKE FOLLOWED BY EMP DETECTED ON ISLAND"\
+   "> DAMGE DEEMED SEVERE, EVACUATION ORDERED"\
+   "> HEAD TO SITE THETA AND RETRIVE INTEL PACKET"\
+   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   "> NUCLEAR DETONATION HAS BEEN RULED AS NECESSARY"\
+   "> ALLIANCES WITH OTHER NATIONS HAVE BEEN AUTHORIZED"\
+   "> TRUST NO ONE"
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTitle "OPFOR Brief"
+   m_sTextData "// - USSR COMMAND TO ALL FORCES ON KOLGUYEV:"\
+   "> UNENCRYPTED TRANSMITTION FROM 'UNKOWN FACILITY\""\
+   "> MAG 8.9 EARTHQUAKE REGISTERED SHORTLY AFTER"\
+   "> EMP REGISTERED SHORTLY AFTER"\
+   "> INVESTIGATE SITE, SECURE ANY INFORMATION OR INTELIGENCE"\
+   "> DAMAGE TO EQUIPMENT AND BASES ON KOLGUYEV DEEMED UNRECOVERABLE"\
+   "> EVACUATION ORDERED"\
+   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   "> GLORY TO THE USSR"
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Brief"
+   m_sTextData "TO ALL FIA FORCES ON KOLGUYEV:"\
+   "> DEVASTATING EARTHQUAKE DETECTED"\
+   "> EVACUATION ORDER HAS BEEN GIVEN"\
+   "> CAMP VOLGA HAS BEEN DEEMED PRIORITY"\
+   "> VOLGA WAS INVESTIAGTING A LOCAL US MILITARY SITE BUT HAS GONE SILENT SINCE THE EARTHQUAKE"\
+   "> SECURE ANY INTEL AT CAMP VOLGA AND/OR THE MILITARY SITE"\
+   "> ESCORT ANY CIVILIANS TO EXTRACTION"\
+   "> SECURE FUEL AT A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   ""
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData "Players will automatically join the CIV Faction after death"\
+   ""\
+   "All Sites will need to be built up manually, for the depots, jsut throw down some sandbags and various vehicles/arsenals with supply"\
+   ""\
+   "Site Theta (the one everyone is going toward) should be a handily large US military site that is overrun. There should be a intel packet in Site Theta somewhere."\
+   ""\
+   "There is also a INDFOR camp to the east of Site Theta that should be overrun. There should be a intel packet in here to. "\
+   ""\
+   "You may select a fuel depot early on to spawn the fuel trucks, if players attempt to take the fuel trucks too early, swarm em."\
+   ""\
+   "There should be ONLY 2 Civillian MI-8 helicopters at the airfield."
+   m_aFactionKeys {
+    "CIV"
+   }
+  }
+  CRF_MissionDescriptor "{66BEA45F7C7E0D13}" {
+   m_sTitle "Rules/Information For This Mission:"
+   m_sTextData "- Faction Intercoperability is encouraged, but your objectives come first."\
+   ""\
+   "- The more Noise you make, the more contact you have to deal with, Vehicles are a magnet so ensure you have enough protection with them."
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{66BEA443B3460C50}" {
+   m_sTitle "BLUFOR Objectives"
+   m_sTextData "> HEAD TO SITE THETA AND RETRIVE INTEL PACKET"\
+   "	- intel will come in the form of a physical intel folder you can pick up"\
+   ""\
+   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   ""\
+   "> NUCLEAR DETONATION HAS BEEN RULED AS NECESSARY"\
+   "> ALLIANCES WITH OTHER NATIONS HAVE BEEN AUTHORIZED"\
+   "> TRUST NO ONE"
+   m_aFactionKeys {
+    "BLUFOR"
+   }
+  }
+  CRF_MissionDescriptor "{66BEA443B7482FFA}" {
+   m_sTitle "OPFOR Objectives"
+   m_sTextData "> INVESTIGATE SITE, SECURE ANY INFORMATION OR INTELIGENCE"\
+   "	- intel will come in the form of a physical intel folder you can pick up"\
+   ""\
+   "> SECURE FUEL FROM A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"
+   m_aFactionKeys {
+    "OPFOR"
+   }
+  }
+  CRF_MissionDescriptor "{66BEA443B0DADA86}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "> SECURE ANY INTEL AT CAMP VOLGA AND/OR THE MILITARY SITE"\
+   "	- intel will come in the form of a physical intel folder you can pick up"\
+   ""\
+   "> SECURE FUEL AT A FUEL DEPOT AND EXTRACT VIA THE AIRFIELD"\
+   ""\
+   "> SECURE AND ESCORT ANY CIVILIANS YOU COME ACROSS"\
+   "> TRUST NO ONE BUT OUR COUNTRY MEN"
+   m_aFactionKeys {
+    "INDFOR"
+   }
+  }
+ }
+ m_sFactionOneKey "BLU"
+ m_sFactionTwoKey "OPF"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{C0A5FB8A51AB788F}Configs/Gearscripts/Custom/Njpatman/Survivors/CRF_GS_US80s_Survivors.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_rGearScript "{A65A6ECB0BB3F3B4}Configs/Gearscripts/Custom/Njpatman/Survivors/CRF_GS_USSR80s_Survivors.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
+  m_rGearScript "{E3B7AFE9E406F577}Configs/Gearscripts/Custom/Njpatman/Survivors/CRF_GS_FIA_Survivors.conf"
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+  m_bEnableGIRadios 0
+  m_bEnableRTORadios 0
+ }
+ m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
+  m_bEnableMiniArsenal 0
+  m_bEnableMiniWeaponArsenal 0
+  m_bEnableSightArsenal 0
+ }
+ m_bRespawnEnabled 1
+ m_iTimeToRespawn 30
+ m_iCIVTickets 999
+ {
+  SCR_FactionManager "66BE6889BC7C169A" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "Survivors Platoon"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883B5A48BD6}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883B6382580}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883B682AA9E}" {
+        m_sCallsign "Survivors"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "Survivors Platoon"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883B87BD300}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883B899CD0D}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883B8BD58FA}" {
+        m_sCallsign "Survivors"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Survivors Platoon"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883D7E77201}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883D0084B92}" {
+        m_sCallsign "Survivors"
+       }
+       SCR_CallsignInfo "{66BE6883D02F6F0D}" {
+        m_sCallsign "Survivors"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_AIGroup : "{A2FC590C090D9693}Prefabs/Groups/CIV/Zeus/CRF_CIV_Zeus.et" {
+ coords 2863.588 26.955 5110.865
+}

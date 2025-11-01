@@ -1163,7 +1163,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Get slot and group data
 		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
+		
+		array<SCR_AIGroup> factionGroups = {};
+		
+		if (m_fSelectedFaction)
+			factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
 			return;
