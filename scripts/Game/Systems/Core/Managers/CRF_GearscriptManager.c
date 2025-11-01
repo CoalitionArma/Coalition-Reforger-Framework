@@ -86,15 +86,20 @@ class CRF_GearscriptManager : ScriptComponent
 		if (m_fUpdateBuffer >= 5)
 		{
 			array<IEntity> vehiclesToRemove = {};
-			foreach (IEntity vehice: m_VehiclesInQueue)
+			foreach (IEntity vehicle: m_VehiclesInQueue)
 			{
-				if(FindFactionByClosestPlayer(vehice))
-					vehiclesToRemove.Insert(vehice);
+				if (!vehicle)
+				{
+					vehiclesToRemove.Insert(vehicle);
+					continue;
+				}
+				if(FindFactionByClosestPlayer(vehicle))
+					vehiclesToRemove.Insert(vehicle);
 			}
 			
-			foreach (IEntity vehice: vehiclesToRemove)
+			foreach (IEntity vehicle: vehiclesToRemove)
 			{
-				m_VehiclesInQueue.RemoveItem(vehice);
+				m_VehiclesInQueue.RemoveItem(vehicle);
 			}
 			
 			m_fUpdateBuffer = 0;
@@ -595,6 +600,13 @@ class CRF_GearscriptManager : ScriptComponent
 				if (!mag)
 					continue;
 				
+				if (type == EWeaponType.WT_AUTOCANNON)
+				{
+					if (mag.GetMaxAmmoCount() < bulletsToAdd)
+						PrintFormat("[CRF_GEARSCRIPT ERROR] Magazine: %1 does not have the proper max ammo set for the gearscript! Current: %2 | Needs: %3", WidgetManager.Translate(mag.GetUIInfo().GetName()), mag.GetMaxAmmoCount(), bulletsToAdd);
+					mag.SetAmmoCount(bulletsToAdd);
+					continue;
+				}
 				magazinesToAdd.Insert(mag.GetOwner().GetPrefabData().GetPrefabName());
 				magazineCount.Insert(mag.GetMaxAmmoCount());
 			}
@@ -602,7 +614,9 @@ class CRF_GearscriptManager : ScriptComponent
 			if (magazinesToAdd.Count() == 0)
 				continue;
 			
-			SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, true);
+			if (type != EWeaponType.WT_AUTOCANNON)
+				SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, true);
+				
 		}
 	}
 	
