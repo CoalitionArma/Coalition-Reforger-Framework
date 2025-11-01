@@ -78,7 +78,7 @@ FrameWidgetClass {
    }
   }
   ImageWidgetClass "{66BD384339CBF3C8}" {
-   Name "Image0"
+   Name "SupplyImage"
    Slot FrameWidgetSlot "{66BD384339CBF3D1}" {
     Anchor 0 0 0 0
     PositionX 231.956
