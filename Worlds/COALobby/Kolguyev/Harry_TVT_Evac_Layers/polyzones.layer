@@ -16,19 +16,19 @@ PolylineShapeEntity : "{36DDFCD0D6C43000}PrefabsEditable/PolyZone/INDFORSafestar
  }
 }
 PolylineShapeEntity : "{8AE1D02BC25C93C5}PrefabsEditable/PolyZone/BLUFORSafestartBoundry.et" {
- coords 3043.01 24.219 4800.835
+ coords 4374.33 55.187 3218.418
  Points {
-  ShapePoint "{66BE29A68A7043BC}" {
-   Position 157.356 0 -86.945
+  ShapePoint "{66C23D1B29342BD7}" {
+   Position -198.417 -0 -209.048
   }
-  ShapePoint "{66BE29A68AF123A2}" {
-   Position -62.021 0 -247.845
+  ShapePoint "{66C23D1B294E7439}" {
+   Position -194.849 -0 300.12
   }
-  ShapePoint "{66BE29A689F26DF8}" {
-   Position -212.879 0 -51.784
+  ShapePoint "{66C23D1B287325B9}" {
+   Position 259.856 0 195.897
   }
-  ShapePoint "{66BE29A688898C92}" {
-   Position 6.91 0 146.273
+  ShapePoint "{66C23D1B28C6B895}" {
+   Position 232.564 0 -229.849
   }
  }
 }

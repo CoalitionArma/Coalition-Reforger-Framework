@@ -20,7 +20,7 @@ $grp SCR_ChimeraCharacter : "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR
     PhysicsLayer 0x100011 0
    }
    SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
-    "faction affiliation" "INDFOR"
+    "faction affiliation" "CIV"
    }
    ActionsManagerComponent "{520EA1D2F659CE02}" {
     additionalActions {
@@ -83,7 +83,7 @@ $grp SCR_ChimeraCharacter : "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR
     PhysicsLayer 0x100011 0
    }
    SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
-    "faction affiliation" "INDFOR"
+    "faction affiliation" "CIV"
    }
    ActionsManagerComponent "{520EA1D2F659CE02}" {
     additionalActions {
@@ -146,7 +146,7 @@ $grp SCR_ChimeraCharacter : "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR
     PhysicsLayer 0x100011 0
    }
    SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
-    "faction affiliation" "INDFOR"
+    "faction affiliation" "CIV"
    }
    ActionsManagerComponent "{520EA1D2F659CE02}" {
     additionalActions {
@@ -209,7 +209,7 @@ $grp SCR_ChimeraCharacter : "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR
     PhysicsLayer 0x100011 0
    }
    SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
-    "faction affiliation" "INDFOR"
+    "faction affiliation" "CIV"
    }
    ActionsManagerComponent "{520EA1D2F659CE02}" {
     additionalActions {
@@ -272,7 +272,7 @@ $grp SCR_ChimeraCharacter : "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR
     PhysicsLayer 0x100011 0
    }
    SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
-    "faction affiliation" "INDFOR"
+    "faction affiliation" "CIV"
    }
    ActionsManagerComponent "{520EA1D2F659CE02}" {
     additionalActions {
@@ -335,7 +335,7 @@ $grp SCR_ChimeraCharacter : "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR
     PhysicsLayer 0x100011 0
    }
    SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
-    "faction affiliation" "INDFOR"
+    "faction affiliation" "CIV"
    }
    ActionsManagerComponent "{520EA1D2F659CE02}" {
     additionalActions {
