@@ -3,6 +3,31 @@ GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/Su
  components {
   CRF_SupplyArsenalComponent "{66BD386F19EE1745}" {
   }
+  FactionAffiliationComponent "{56E0D915F82EB4E8}" {
+   "faction affiliation" "BLUFOR"
+  }
+  SCR_EditableEntityComponent "{66C33BAA23D04887}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{66C33BAA5C3D6E43}" {
+    Name "Supply Arsenal"
+    Icon "{4AFE878E3AF05849}UI/Textures/Editor/EditableEntities/Supplies/AR_icon_supply_full.edds"
+    m_Image "{DB9BCA1FFFB590DA}UI/Textures/EditorPreviews/Auto/Compositions/Slotted/SlotFlatSmall/E_SupplyStorage_S_US_01.edds"
+    m_sFaction "BLUFOR"
+    m_aAuthoredLabels {
+     ENTITYTYPE_SYSTEM FACTION_CRF_BLUFOR
+    }
+    m_aAutoLabels {
+     ENTITYTYPE_SYSTEM
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{64904260E3C6B087}" {
+      m_BudgetType SYSTEMS
+      m_Value 1
+     }
+    }
+   }
+   m_bStatic 1
+   m_Flags 5
+  }
  }
  coords 845.952 7.862 1472.917
  angles 0 37 0
