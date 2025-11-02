@@ -420,6 +420,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateSupplyArsneal, supplyArsnealId);
 	}
 	
+	void CreateCache(RplId truckId, RplId playerId)
+	{
+		Rpc(RpcAsk_CreateCache, truckId, playerId);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1274,5 +1279,66 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
 		supplyComp.UpdateCurrentSupply();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_CreateCache(RplId truckId, RplId playerId)
+	{
+		if (!Replication.FindItem(truckId) || !Replication.FindItem(playerId))
+			return;
+		
+		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
+		IEntity player = RplComponent.Cast(Replication.FindItem(playerId)).GetEntity();
+		truck = truck.GetRootParent();
+		Print(truck);
+		SCR_VehicleInventoryStorageManagerComponent vehInventory = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		array<IEntity> items = {};
+		vehInventory.GetItems(items);
+		if (items.Count() == 0)
+			return;
+		
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.Transform[3] = GetSpawn(player);
+		
+		ResourceName prefab;
+		if (Vehicle.Cast(truck).m_sFactionKey == "BLUFOR")
+			prefab = "{0E3A25C772CDDC95}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/US/CRF_BLUFOR_Cache.et";
+		else
+			prefab = "{F636545E6893F50B}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/CRF_OPFOR_Cache.et";
+		
+		IEntity cache = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
+		Print(cache.GetOrigin());
+		GetGame().GetCallqueue().CallLater(CreateCacheDelay, 100, false, cache, items);
+	}
+	
+	vector GetSpawn(IEntity player)
+	{
+		if (!player)
+			return "0 0 0";
+	
+		// Get player transform (position + orientation)
+		vector mat[4];
+		player.GetTransform(mat);
+	
+		// Direction player is facing (normalized forward vector)
+		vector forwardDir = mat[2];
+	
+		// Calculate new position 0.5 meters behind the player
+		vector behindPos = mat[3] - (forwardDir * 0.5);
+		return behindPos;
+	}
+	
+	void CreateCacheDelay(IEntity cache, array<IEntity> items)
+	{
+		SCR_InventoryStorageManagerComponent invComp = SCR_InventoryStorageManagerComponent.Cast(cache.FindComponent(SCR_InventoryStorageManagerComponent));
+		
+			
+		foreach (IEntity item: items)
+		{
+			if (!item)
+				continue;
+			invComp.TrySpawnPrefabToStorage(item.GetPrefabData().GetPrefabName());
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
+		}
 	}
 };

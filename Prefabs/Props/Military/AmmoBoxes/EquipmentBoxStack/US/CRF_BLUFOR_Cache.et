@@ -1,0 +1,13 @@
+GenericEntity : "{F636545E6893F50B}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/CRF_OPFOR_Cache.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SlotManagerComponent "{66C46EEAB4EF179C}" {
+   Slots {
+    EntitySlotInfo Cover {
+     Prefab "{1C7AF06422134BDE}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/US/EquipmentBoxStack_US_01_V5_cover.et"
+    }
+   }
+  }
+ }
+ coords 605.1 3.768 1520.023
+}
