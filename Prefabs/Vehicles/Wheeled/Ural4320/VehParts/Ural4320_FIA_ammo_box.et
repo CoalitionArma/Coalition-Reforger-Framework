@@ -18,6 +18,11 @@ GenericEntity : "{03FFD2B45BEE8A17}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ur
      }
      "Sort Priority" -1
     }
+    CRF_CacheCreateAction "{66C48705DC3AEC45}" {
+     UIInfo UIInfo "{66C48705DE3CBB9B}" {
+     }
+     Duration 5
+    }
    }
   }
  }
