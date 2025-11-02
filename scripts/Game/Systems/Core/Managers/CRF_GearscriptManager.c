@@ -7,6 +7,11 @@ class CRF_GearscriptManager : ScriptComponent
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	ref array<IEntity> m_VehiclesInQueue = {};
 	
+	bool m_bHasLogiTruckSupplyCalculated[4] = {0, 0, 0, 0};
+	bool m_bHasRegularTruckSupplyCalculated[4] = {0, 0, 0, 0};
+	[RplProp()] int m_iSupplyNeededForLogiTruck[4] = {0, 0, 0, 0};
+	[RplProp()] int m_iSupplyNeededForRegularTruck[4] = {0, 0, 0, 0};
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Get singleton instance of the GearscriptManager
@@ -38,6 +43,13 @@ class CRF_GearscriptManager : ScriptComponent
 		#endif
 		SetEventMask(owner, EntityEvent.FRAME);
 	}
+	
+	int GetSupplyValueForTruckResupply(map<string, int> currentItems)
+	{
+		
+	}
+	
+	
 	
 	array<int> GetSupplyValuesForItems(array<ResourceName> items)
 	{
@@ -374,8 +386,10 @@ class CRF_GearscriptManager : ScriptComponent
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
 			return;
+		
+		int suppliesNeeded = 0;
 		ClearTruckGear(truck, invManager);
-		ApplyTruckLoadout(truck, invManager, gsContainer);
+		suppliesNeeded += ApplyTruckLoadout(truck, invManager, gsContainer, faction.GetFactionKey(), isSupply);
 		array<ResourceName> heGLsToAdd = {};
 		array<ResourceName> glsToAdd = {};
 		for (int i = 0; i <= 11; i++)
@@ -417,7 +431,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (magazinesToAdd.Count() == 0)
 					continue;
 				
-				SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+				suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply);
 			}
 			//Spec Weapons
 			else
@@ -432,7 +446,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (isDisposable)
 				{
 					magazinesToAdd.Insert(weapon.m_Weapon);
-					SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, isSupply);
+					suppliesNeeded += SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply);
 				}
 				else
 				{
@@ -450,7 +464,7 @@ class CRF_GearscriptManager : ScriptComponent
 					if (magazinesToAdd.Count() == 0)
 						continue;
 					
-					SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+					suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply);
 				}
 			}
 		}
@@ -474,26 +488,26 @@ class CRF_GearscriptManager : ScriptComponent
 		if (grenadesToAdd.Count() > 0)
 		{
 			int grenades = GetBulletCountForWeapon(truck, 12, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, faction.GetFactionKey(), isSupply);
 		}
 		
 		if (smokesToAdd.Count() > 0)
 		{
 			int grenades = GetBulletCountForWeapon(truck, 13, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(grenades, smokesToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(grenades, smokesToAdd, invManager, faction.GetFactionKey(), isSupply);
 		}
 		
 		//Add misc items
 		if (heGLsToAdd.Count() > 0)
 		{
 			int glsToSpawn = GetBulletCountForWeapon(truck, 14, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, faction.GetFactionKey(), isSupply);
 		}
 		
 		if (glsToAdd.Count() > 0)
 		{
 			int glsToSpawn = GetBulletCountForWeapon(truck, 15, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, faction.GetFactionKey(), isSupply);
 		}
 		
 		array<ref CRF_VehicleGearScriptAdditionalItem> additionalItems = {};
@@ -505,9 +519,9 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			array<ResourceName> holder = {item.m_Prefab};
 			if (isSupply)
-				SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, true);
+				suppliesNeeded += SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, faction.GetFactionKey(), true);
 			else
-				SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, true);
+				suppliesNeeded += SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, faction.GetFactionKey(), true);
 		}
 	}
 	
@@ -544,9 +558,11 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager The truck’s inventory storage manager component
 	 * @param gsContainer The gear script container holding vehicle loadout data
 	 */
-	void ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer)
+	int ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer, string factionKey, bool isSupply)
 	{
 		ref CRF_VehicleGearScriptLoadout vehLoadout;
+		int suppliesNeeded = 0;
+		bool calculateSupplies = HasSupplyBeenCalculated(factionKey, isSupply);
 		if (Vehicle.Cast(truck).m_OverridedVehicleLoadout)
 			vehLoadout = Vehicle.Cast(truck).m_OverridedVehicleLoadout;
 		else
@@ -591,6 +607,7 @@ class CRF_GearscriptManager : ScriptComponent
 			array<int> magazineCount = {};
 			foreach (BaseMuzzleComponent muzzle: muzzles)
 			{
+				//TODO: Support new autocanon
 				BaseMagazineComponent mag = muzzle.GetMagazine();
 				if (!mag)
 					continue;
@@ -602,8 +619,17 @@ class CRF_GearscriptManager : ScriptComponent
 			if (magazinesToAdd.Count() == 0)
 				continue;
 			
-			SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, true);
+			if (calculateSupplies)
+			{	
+				array<int> supplies = GetSupplyValuesForItems(magazinesToAdd);
+				for (int i = 0; i < supplies.Count(); i++)
+				{
+					suppliesNeeded += supplies[i] * magazineCount[i];
+				}
+			}
+			suppliesNeeded += SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, factionKey, true);
 		}
+		return suppliesNeeded;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -619,20 +645,39 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager Vehicle’s inventory storage manager component
 	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	 */
-	void SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply = false)
+	int SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply = false)
 	{
+		int suppliesNeeded = 0;
 		int catch = 0;
 		if (!isSupply)
 			amountToSpawn /= 4;
+		array<int> magazinesAdded = {};
+		for (int i = 0; i < magazinesToAdd.Count(); i++)
+		{
+			magazinesAdded.Insert(0);
+		}
 		while (amountToSpawn > 0 && catch < 200)
 		{
 			for (int i = 0; i < magazinesToAdd.Count(); i++)
 			{
 				invManager.TrySpawnPrefabToStorage(magazinesToAdd[i]);
 				amountToSpawn -= magazineCounts[i];
+				magazinesAdded.Set(i, magazinesAdded.Get(i) + 1);
+					
 			}
 			catch++;
 		}
+		
+		if (HasSupplyBeenCalculated(factionKey, isSupply))
+		{
+			array<int> supplies = GetSupplyValuesForItems(magazinesToAdd);
+			for (int i = 0; i < supplies.Count(); i++)
+			{
+				suppliesNeeded += supplies[i] * magazinesAdded[i];
+			}
+		}
+		
+		return suppliesNeeded;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -646,8 +691,9 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager Vehicle’s inventory storage manager component
 	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	 */
-	void SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply)
+	int SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply)
 	{
+		int suppliesNeeded = 0;
 		int catch = 0;
 		if (!isSupply)
 			amountToSpawn /= 4;
@@ -660,6 +706,50 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 			catch++;
 		}
+		
+		if (HasSupplyBeenCalculated(factionKey, isSupply))
+		{
+			array<int> supplies = GetSupplyValuesForItems(itemsToSpawn);
+			for (int i = 0; i < supplies.Count(); i++)
+			{
+				suppliesNeeded += supplies[i] * amountToSpawn;
+			}
+		}
+		
+		return suppliesNeeded;
+	}
+	
+	bool HasSupplyBeenCalculated(string factionKey, bool isSupply)
+	{
+		bool calculateSupplies = true;
+		switch(factionKey)
+		{
+			case "BLUFOR": 
+			if (isSupply)
+				calculateSupplies = m_bHasLogiTruckSupplyCalculated[0];
+			else
+				calculateSupplies = m_bHasRegularTruckSupplyCalculated[0];
+			break;
+			case "OPFOR": 
+			if (isSupply)
+				calculateSupplies = m_bHasLogiTruckSupplyCalculated[1];
+			else
+				calculateSupplies = m_bHasRegularTruckSupplyCalculated[1];
+			break;
+			case "INDFOR": 
+			if (isSupply)
+				calculateSupplies = m_bHasLogiTruckSupplyCalculated[2];
+			else
+				calculateSupplies = m_bHasRegularTruckSupplyCalculated[2];
+			break;
+			case "CIV": 
+			if (isSupply)
+				calculateSupplies = m_bHasLogiTruckSupplyCalculated[3];
+			else
+				calculateSupplies = m_bHasRegularTruckSupplyCalculated[3];
+			break;
+		}
+		return calculateSupplies;
 	}
 	
 	//------------------------------------------------------------------------------------------------
