@@ -5,11 +5,11 @@ FrameWidgetClass {
    Name "ItemsBG1"
    Slot FrameWidgetSlot "{66872908811FA1A0}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -184.646
-    OffsetLeft -184.646
+    PositionX -374.304
+    OffsetLeft -374.304
     PositionY -250.831
     OffsetTop -250.831
-    SizeX 230.839
+    SizeX 420.497
     OffsetRight -46.193
     SizeY 499.821
     OffsetBottom -248.99
@@ -20,11 +20,11 @@ FrameWidgetClass {
    Name "ItemsBG"
    Slot FrameWidgetSlot "{66872908811FA1A0}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -184.492
-    OffsetLeft -184.492
+    PositionX -374.15
+    OffsetLeft -374.15
     PositionY -250
     OffsetTop -250
-    SizeX 445.713
+    SizeX 635.371
     OffsetRight -261.221
     SizeY 500
     OffsetBottom -250
@@ -35,11 +35,11 @@ FrameWidgetClass {
    Name "ScrollLayout1"
    Slot FrameWidgetSlot "{668835907AB24567}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -184.915
-    OffsetLeft -184.915
+    PositionX -374.573
+    OffsetLeft -374.573
     PositionY -250.831
     OffsetTop -250.831
-    SizeX 231.108
+    SizeX 420.766
     OffsetRight -46.193
     SizeY 499.821
     OffsetBottom -248.99
@@ -132,14 +132,14 @@ FrameWidgetClass {
    Name "RefreshButton"
    Slot FrameWidgetSlot "{6698D2C2B0D27120}" {
     Anchor 0.5 0.5 0.5 0.5
-    PositionX -69.599
-    OffsetLeft -69.599
-    PositionY -235.329
-    OffsetTop -235.329
+    PositionX 59.245
+    OffsetLeft 59.245
+    PositionY -195.13
+    OffsetTop -195.13
     SizeX 100
-    OffsetRight -30.401
+    OffsetRight -159.245
     SizeY 30
-    OffsetBottom 205.329
+    OffsetBottom 165.13
    }
    Color 0.2629 0.2629 0.2629 1
    components {
