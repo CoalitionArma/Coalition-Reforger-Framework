@@ -420,6 +420,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateSupplyArsneal, supplyArsnealId);
 	}
 	
+	void RequestVehicleSupplies(RplId truckId)
+	{
+		Rpc(RpcAsk_RequestVehicleSupplies, truckId);
+	}
+	
+	void RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
+	{
+		Rpc(RpcAsk_RearmVehicle, truckId, supplyItems, supplyCounts, rearmTruckId);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1274,5 +1284,39 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
 		supplyComp.UpdateCurrentSupply();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RequestVehicleSupplies(RplId truckId)
+	{
+		if (!Replication.FindItem(truckId))
+			return;
+		
+		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
+		
+		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_GearscriptManager.GetInstance().GetSuppliesInTruck(truck));
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
+	{
+		if (!Replication.FindItem(truckId))
+			return;
+		
+		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
+		
+		CRF_GearscriptManager.GetInstance().SetVehicleGear(truck, Vehicle.Cast(truck).m_sFactionKey);
+		for (int i = 0; i < supplyItems.Count(); i++)
+		{
+			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
+			SCR_ResourceComponent resComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
+			SCR_ResourceSystemHelper.GetStorageConsumer(resComponent).RequestConsumtion(((float)supplyCounts.Get(i)));
+		}
+		
+		IEntity rearmTruck = RplComponent.Cast(Replication.FindItem(rearmTruckId)).GetEntity();
+		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(rearmTruck.FindComponent(CRF_SupplyArsenalComponent));
+		supplyComp.UpdateCurrentSupply();
+		
+		Vehicle.Cast(truck).UpdateVehicleSupplies(CRF_GearscriptManager.GetInstance().GetSuppliesInTruck(truck));
 	}
 };

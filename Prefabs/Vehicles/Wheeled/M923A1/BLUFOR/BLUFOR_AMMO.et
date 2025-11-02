@@ -1,6 +1,10 @@
 Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
  ID "BBCBA43A9778AE21"
  components {
+  CRF_SupplyArsenalComponent "{66C449059CE1682C}" {
+  }
+  CRF_VehicleRearmComponent "{66C4490710864540}" {
+  }
   RigidBody "{51DAA09FECF52BBF}" {
    Mass 11402
    CenterOfMass 0 0.2 -1.4
@@ -15,10 +19,10 @@ Vehicle : "{9A0D72816DFFDB7F}Prefabs/Vehicles/Wheeled/M923A1/M923A1.et" {
     m_Image "{4C3B89AE70636D52}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_ammo.edds"
     m_sFaction "BLUFOR"
     m_aAuthoredLabels + {
-     27 280 210
+     TRAIT_REARMING TRAIT_ARSENAL TRAIT_SUPPLYSTORAGE_LARGE
     }
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {

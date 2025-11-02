@@ -10,12 +10,11 @@ GenericEntity : "{6C6D4CF5F88AE48D}Prefabs/Vehicles/Core/Vehicle_AmmoBox_Base.et
   }
   ActionsManagerComponent "{5CDEFA7984EAC4E2}" {
    additionalActions {
-    CRF_VehicleRearmAction "{66C377A8F7F34D93}" {
+    CRF_VehicleRearmAction "{66C44D528D660432}" {
      ParentContextList {
       "door_rear"
      }
-     UIInfo UIInfo "{66C377A8F0DBC146}" {
-      Name "Open Rearm Vehicle Menu"
+     UIInfo UIInfo "{66C44D528E2D0DFD}" {
      }
      "Sort Priority" -1
     }

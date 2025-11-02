@@ -1,4 +1,4 @@
-GenericEntity : "{6C6D4CF5F88AE48D}Prefabs/Vehicles/Core/Vehicle_AmmoBox_Base.et" {
+GenericEntity : "{03FFD2B45BEE8A17}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_ammo_box.et" {
  ID "4B42E71698F5739C"
  components {
   SCR_ResourceComponent "{5D82E3A3588C0389}" {
@@ -10,12 +10,11 @@ GenericEntity : "{6C6D4CF5F88AE48D}Prefabs/Vehicles/Core/Vehicle_AmmoBox_Base.et
   }
   ActionsManagerComponent "{5CDEFA7984EAC4E2}" {
    additionalActions {
-    CRF_VehicleRearmAction "{66C377A8F7F34D93}" {
+    CRF_VehicleRearmAction "{66C44D515510A198}" {
      ParentContextList {
       "door_rear"
      }
-     UIInfo UIInfo "{66C377A8F0DBC146}" {
-      Name "Open Rearm Vehicle Menu"
+     UIInfo UIInfo "{66C44D51506E1E7D}" {
      }
      "Sort Priority" -1
     }
