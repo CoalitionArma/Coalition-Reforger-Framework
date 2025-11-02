@@ -1,5 +1,7 @@
 modded class Vehicle
 {
+	[RplProp()] int m_iCurrentSupplies;
+	
 	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout")]
 	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
 	
@@ -12,6 +14,11 @@ modded class Vehicle
 	string m_sFactionKey = "";
 	int m_iVehicleSpawnerIndex = -1;
 	
+	void UpdateVehicleSupplies(int supply)
+	{
+		m_iCurrentSupplies = supply;
+		Replication.BumpMe();
+	}
 	
 	void Vehicle(IEntitySource src, IEntity parent)
 	{

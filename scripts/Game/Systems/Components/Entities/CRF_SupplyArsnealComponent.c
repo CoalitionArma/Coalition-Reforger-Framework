@@ -4,6 +4,7 @@ class CRF_SupplyArsenalComponentClass: ScriptComponentClass
 
 class CRF_SupplyArsenalComponent: ScriptComponent
 {
+	[Attribute("1")] bool m_bSupplyEnabled;
 	[RplProp()] ref array<RplId> m_aSupplyItems = {};
 	[RplProp()] ref array<int> m_aSupplyCounts = {};
 	

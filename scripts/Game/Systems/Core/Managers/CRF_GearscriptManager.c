@@ -7,6 +7,9 @@ class CRF_GearscriptManager : ScriptComponent
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	ref array<IEntity> m_VehiclesInQueue = {};
 	
+	[RplProp()] ref array<ResourceName> m_aVehicleResourceName = {};
+	[RplProp()] ref array<int> m_aVehicleSupplyCost = {};
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Get singleton instance of the GearscriptManager
@@ -37,7 +40,7 @@ class CRF_GearscriptManager : ScriptComponent
 			return;
 		#endif
 		SetEventMask(owner, EntityEvent.FRAME);
-	}
+	}	
 	
 	array<int> GetSupplyValuesForItems(array<ResourceName> items)
 	{
@@ -65,7 +68,6 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		foreach (SCR_EntityCatalog catalog: itemCatalogs)
 		{
-			Print(catalog);
 			for (int i = 0; i < itemSupply.Count(); i++)
 			{
 				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(items.Get(i));
@@ -155,6 +157,49 @@ class CRF_GearscriptManager : ScriptComponent
 					vehicle, Vehicle.Cast(vehicle).m_sFactionKey
 				);
 		return true;
+	}
+	
+	int GetSuppliesInTruck(IEntity truck)
+	{
+		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		if (!invManager)
+			return 0;
+		
+		array<IEntity> items = {};
+		invManager.GetItems(items);
+		array<ResourceName> itemToScan = {};
+		array<int> amountOfItem = {};
+		foreach (IEntity item: items)
+		{
+			string prefab = item.GetPrefabData().GetPrefabName();
+			if (itemToScan.Contains(prefab))
+			{
+				int index = itemToScan.Find(prefab);
+				amountOfItem.Set(index, amountOfItem.Get(index) + 1);
+				continue;
+			}
+			itemToScan.Insert(prefab);
+			amountOfItem.Insert(1);
+		}
+		
+		array<int> supplies = GetSupplyValuesForItems(itemToScan);
+		
+		int suppliesNeeded = 0;
+		for (int i = 0; i < supplies.Count(); i++)
+		{
+			suppliesNeeded += supplies[i] * amountOfItem[i];
+		}
+		
+		return suppliesNeeded;
+	}
+	
+	int GetTruckResupplyCost(ResourceName resource)
+	{
+		int index = m_aVehicleResourceName.Find(resource);
+		if (index == -1)
+			return 0;
+		
+		return m_aVehicleSupplyCost.Get(index);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -359,6 +404,12 @@ class CRF_GearscriptManager : ScriptComponent
 		
 	}
 	
+	bool IsSupplyTruck(IEntity truck, string factionKey)
+	{
+		ref CRF_GearScriptContainer gsContainer = GetGearScriptSettings(factionKey);
+		return gsContainer.m_aSupplyTrucks.Contains(truck.GetPrefabData().GetPrefabName());
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Configures a truck’s inventory and equipment loadout
@@ -379,8 +430,10 @@ class CRF_GearscriptManager : ScriptComponent
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
 			return;
+		
+		int suppliesNeeded = 0;
 		ClearTruckGear(truck, invManager);
-		ApplyTruckLoadout(truck, invManager, gsContainer);
+		suppliesNeeded += ApplyTruckLoadout(truck, invManager, gsContainer, faction.GetFactionKey(), isSupply);
 		array<ResourceName> heGLsToAdd = {};
 		array<ResourceName> glsToAdd = {};
 		for (int i = 0; i <= 11; i++)
@@ -422,7 +475,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (magazinesToAdd.Count() == 0)
 					continue;
 				
-				SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+				suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 			}
 			//Spec Weapons
 			else
@@ -437,7 +490,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (isDisposable)
 				{
 					magazinesToAdd.Insert(weapon.m_Weapon);
-					SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, isSupply);
+					suppliesNeeded += SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 				}
 				else
 				{
@@ -455,7 +508,7 @@ class CRF_GearscriptManager : ScriptComponent
 					if (magazinesToAdd.Count() == 0)
 						continue;
 					
-					SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+					suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 				}
 			}
 		}
@@ -479,26 +532,26 @@ class CRF_GearscriptManager : ScriptComponent
 		if (grenadesToAdd.Count() > 0)
 		{
 			int grenades = GetBulletCountForWeapon(truck, 12, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		if (smokesToAdd.Count() > 0)
 		{
 			int grenades = GetBulletCountForWeapon(truck, 13, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(grenades, smokesToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(grenades, smokesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		//Add misc items
 		if (heGLsToAdd.Count() > 0)
 		{
 			int glsToSpawn = GetBulletCountForWeapon(truck, 14, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		if (glsToAdd.Count() > 0)
 		{
 			int glsToSpawn = GetBulletCountForWeapon(truck, 15, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		array<ref CRF_VehicleGearScriptAdditionalItem> additionalItems = {};
@@ -510,9 +563,17 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			array<ResourceName> holder = {item.m_Prefab};
 			if (isSupply)
-				SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, true);
+				suppliesNeeded += SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, faction.GetFactionKey(), isSupply, true, truck.GetPrefabData().GetPrefabName());
 			else
-				SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, true);
+				suppliesNeeded += SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, faction.GetFactionKey(), isSupply, true, truck.GetPrefabData().GetPrefabName());
+		}
+		
+		
+		if (!m_aVehicleResourceName.Contains(truck.GetPrefabData().GetPrefabName()))
+		{
+			m_aVehicleResourceName.Insert(truck.GetPrefabData().GetPrefabName());
+			m_aVehicleSupplyCost.Insert(suppliesNeeded);
+			Replication.BumpMe();
 		}
 	}
 	
@@ -549,9 +610,11 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager The truck’s inventory storage manager component
 	 * @param gsContainer The gear script container holding vehicle loadout data
 	 */
-	void ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer)
+	int ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer, string factionKey, bool isSupply)
 	{
 		ref CRF_VehicleGearScriptLoadout vehLoadout;
+		int suppliesNeeded = 0;
+		bool calculateSupplies = HasSupplyBeenCalculated(truck.GetPrefabData().GetPrefabName());
 		if (Vehicle.Cast(truck).m_OverridedVehicleLoadout)
 			vehLoadout = Vehicle.Cast(truck).m_OverridedVehicleLoadout;
 		else
@@ -596,12 +659,15 @@ class CRF_GearscriptManager : ScriptComponent
 			array<int> magazineCount = {};
 			foreach (BaseMuzzleComponent muzzle: muzzles)
 			{
+				//TODO: Support new autocanon
 				BaseMagazineComponent mag = muzzle.GetMagazine();
 				if (!mag)
 					continue;
 				
 				if (type == EWeaponType.WT_AUTOCANNON)
 				{
+					if (!calculateSupplies)
+						suppliesNeeded += mag.GetMaxAmmoCount() - mag.GetAmmoCount();
 					if (mag.GetMaxAmmoCount() < bulletsToAdd)
 						PrintFormat("[CRF_GEARSCRIPT ERROR] Magazine: %1 does not have the proper max ammo set for the gearscript! Current: %2 | Needs: %3", WidgetManager.Translate(mag.GetUIInfo().GetName()), mag.GetMaxAmmoCount(), bulletsToAdd);
 					mag.SetAmmoCount(bulletsToAdd);
@@ -614,10 +680,9 @@ class CRF_GearscriptManager : ScriptComponent
 			if (magazinesToAdd.Count() == 0)
 				continue;
 			
-			if (type != EWeaponType.WT_AUTOCANNON)
-				SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, true);
-				
+			suppliesNeeded += SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, factionKey, isSupply, true, truck.GetPrefabData().GetPrefabName());
 		}
+		return suppliesNeeded;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -633,20 +698,39 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager Vehicle’s inventory storage manager component
 	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	 */
-	void SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply = false)
+	int SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply, bool divide, string truckResource)
 	{
+		int suppliesNeeded = 0;
 		int catch = 0;
-		if (!isSupply)
+		if (!divide)
 			amountToSpawn /= 4;
+		array<int> magazinesAdded = {};
+		for (int i = 0; i < magazinesToAdd.Count(); i++)
+		{
+			magazinesAdded.Insert(0);
+		}
 		while (amountToSpawn > 0 && catch < 200)
 		{
 			for (int i = 0; i < magazinesToAdd.Count(); i++)
 			{
 				invManager.TrySpawnPrefabToStorage(magazinesToAdd[i]);
 				amountToSpawn -= magazineCounts[i];
+				magazinesAdded.Set(i, magazinesAdded.Get(i) + 1);
+					
 			}
 			catch++;
 		}
+		
+		if (!HasSupplyBeenCalculated(truckResource))
+		{
+			array<int> supplies = GetSupplyValuesForItems(magazinesToAdd);
+			for (int i = 0; i < supplies.Count(); i++)
+			{
+				suppliesNeeded += supplies[i] * magazinesAdded[i];
+			}
+		}
+		
+		return suppliesNeeded;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -660,20 +744,44 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager Vehicle’s inventory storage manager component
 	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	 */
-	void SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply)
+	int SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply, bool divide, string truckResource)
 	{
+		int suppliesNeeded = 0;
 		int catch = 0;
-		if (!isSupply)
+		if (!divide)
 			amountToSpawn /= 4;
+		
+		array<int> itemsAdded = {};
+		for (int i = 0; i < itemsToSpawn.Count(); i++)
+		{
+			itemsAdded.Insert(0);
+		}
 		while (amountToSpawn > 0 && catch < 1000)
 		{
-			foreach (ResourceName item: itemsToSpawn)
+			for (int i = 0; i < itemsToSpawn.Count(); i++)
 			{
-				invManager.TrySpawnPrefabToStorage(item);
+				invManager.TrySpawnPrefabToStorage(itemsToSpawn.Get(i));
+				itemsAdded.Set(i, itemsAdded.Get(i) + 1);
 				amountToSpawn--;
 			}
 			catch++;
 		}
+		
+		if (!HasSupplyBeenCalculated(truckResource))
+		{
+			array<int> supplies = GetSupplyValuesForItems(itemsToSpawn);
+			for (int i = 0; i < supplies.Count(); i++)
+			{
+				suppliesNeeded += supplies[i] * itemsAdded[i];
+			}
+		}
+		
+		return suppliesNeeded;
+	}
+	
+	bool HasSupplyBeenCalculated(ResourceName resource)
+	{
+		return m_aVehicleResourceName.Contains(resource);
 	}
 	
 	//------------------------------------------------------------------------------------------------

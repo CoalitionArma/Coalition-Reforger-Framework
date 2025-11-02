@@ -29,6 +29,9 @@ class CRF_GearScriptContainer
 	[Attribute()] 
 	ref array<ResourceName> m_aSupplyTrucks;
 	
+	[Attribute()] 
+	ref array<ResourceName> m_aAdditonalItemsForSupplyArsenal;
+	
 	[Attribute("true", UIWidgets.CheckBox)]
 	bool m_bEnableMiniArsenal;
 	

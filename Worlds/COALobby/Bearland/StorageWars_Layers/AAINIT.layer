@@ -112,3 +112,21 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
+GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_S_FIA_03_Campaign.et" {
+ coords 840.799 7.34 1463.335
+}
+Vehicle OPFOR_AMMO1 : "{8759EDBCF78920B7}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_AMMO.et" {
+ coords 851.849 7.22 1472.164
+ angles 0 -144 0
+}
+Vehicle BLUFOR_AMMO1 : "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et" {
+ coords 846.313 7.219 1476.024
+ angles 0 -135 0
+}
+Vehicle M1025_armed_M2HB_MERDC1 : "{DD774A8FD0989A78}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_MERDC.et" {
+ coords 844.749 7.219 1482.341
+}
+Vehicle INDFOR_AMMO1 : "{DF75A01974E8FD17}Prefabs/Vehicles/Wheeled/Ural4320/INDFOR/INDFOR_AMMO.et" {
+ coords 849.106 7.219 1474.146
+ angles 0 -139 0
+}
