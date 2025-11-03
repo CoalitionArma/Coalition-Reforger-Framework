@@ -111,47 +111,57 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	bool FindFactionByClosestPlayer(IEntity vehicle)
-	{
-		array<int> playerIds = {};
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		playerManager.GetPlayers(playerIds);
-		
+	{	
 		float closestPlayerDistance;
 		IEntity closestPlayer;
-		int closestPlayerId;
-		foreach (int playerId: playerIds)
+		string factionKey = "";
+		
+		array<AIAgent> agents = {};
+		GetGame().GetAIWorld().GetAIAgents(agents);
+		
+		foreach (AIAgent agent: agents)
 		{
-			IEntity player = playerManager.GetPlayerControlledEntity(playerId);
-			if (!player)
+			IEntity aiPlayer = agent.GetControlledEntity();
+			if (!aiPlayer)
 				continue;
 			
-			if (CRF_GamemodeManager.IsSpectator(player))
+			if (!ChimeraCharacter.Cast(aiPlayer))
 				continue;
 			
 			if (!closestPlayer)
 			{
-				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 				if (closestPlayerDistance > 200)
 					continue;
-				closestPlayer = player;
-				closestPlayerId = playerId;
+				closestPlayer = aiPlayer;
+				if (aiPlayer.FindComponent(FactionAffiliationComponent))
+				{
+					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
 				continue;
 			}
 			
-			float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+			float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 			if (playerDistance > closestPlayerDistance || playerDistance > 200)
 				continue;
 			
-			closestPlayer = player;
+			closestPlayer = aiPlayer;
 			closestPlayerDistance = playerDistance;
-			closestPlayerId = playerId;
+			if (aiPlayer.FindComponent(FactionAffiliationComponent))
+				{
+					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
 		}
 		
 		//There's no players
 		if (!closestPlayer)
 			return false;
 		
-		Vehicle.Cast(vehicle).m_sFactionKey = SCR_FactionManager.SGetPlayerFaction(closestPlayerId).GetFactionKey();
+		Vehicle.Cast(vehicle).m_sFactionKey = factionKey;
 		GetGame().GetCallqueue().CallLater(
 					CRF_GearscriptManager.GetInstance().SetVehicleGear, 500, false,
 					vehicle, Vehicle.Cast(vehicle).m_sFactionKey
@@ -348,40 +358,50 @@ class CRF_GearscriptManager : ScriptComponent
 		//Lets find a faction, if there is none start looking for one in the loop.
 		Faction faction = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(factionKey);
 		if (!faction)
-		{
-			array<int> playerIds = {};
-			PlayerManager playerManager = GetGame().GetPlayerManager();
-			playerManager.GetPlayers(playerIds);
-			
+		{	
 			float closestPlayerDistance;
 			IEntity closestPlayer;
-			int closestPlayerId;
-			foreach (int playerId: playerIds)
+			factionKey = "";
+			array<AIAgent> agents = {};
+			
+			GetGame().GetAIWorld().GetAIAgents(agents);
+			
+			foreach (AIAgent agent: agents)
 			{
-				IEntity player = playerManager.GetPlayerControlledEntity(playerId);
-				if (!player)
+				IEntity aiPlayer = agent.GetControlledEntity();
+				if (!aiPlayer)
 					continue;
 				
-				if (CRF_GamemodeManager.IsSpectator(player))
+				if (!ChimeraCharacter.Cast(aiPlayer))
 					continue;
 				
 				if (!closestPlayer)
 				{
-					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 					if (closestPlayerDistance > 200)
 						continue;
-					closestPlayer = player;
-					closestPlayerId = playerId;
+					closestPlayer = aiPlayer;
+					if (aiPlayer.FindComponent(FactionAffiliationComponent))
+					{
+						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
 					continue;
 				}
 				
-				float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 				if (playerDistance > closestPlayerDistance || playerDistance > 200)
 					continue;
 				
-				closestPlayer = player;
+				closestPlayer = aiPlayer;
 				closestPlayerDistance = playerDistance;
-				closestPlayerId = playerId;
+				if (aiPlayer.FindComponent(FactionAffiliationComponent))
+					{
+						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
 			}
 			
 			//There's no players
@@ -392,7 +412,7 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 
 			
-			faction = SCR_FactionManager.SGetPlayerFaction(closestPlayerId);
+			faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
 			Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
 		}
 		
