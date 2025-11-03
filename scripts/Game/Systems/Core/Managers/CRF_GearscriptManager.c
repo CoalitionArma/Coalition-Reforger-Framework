@@ -1900,6 +1900,45 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		// Add attachments after a delay to ensure weapon is fully initialized
 		GetGame().GetCallqueue().CallLater(AddAttachments, 1000, false, weaponResource, attachmentResources, spawnParams, inventoryManager);
+		GetGame().GetCallqueue().CallLater(SelectWeapon, 500, false, inventory.GetOwner()); 
+	}
+	
+	void SelectWeapon(IEntity entity)
+	{
+		if (!ChimeraCharacter.Cast(entity))
+			return;
+		
+		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(entity).GetWeaponManager());
+		if (!weaponMan)
+			return;
+		
+		CharacterControllerComponent charController = CharacterControllerComponent.Cast(ChimeraCharacter.Cast(entity).GetCharacterController());
+		if (!charController)
+			return;
+		
+		array<WeaponSlotComponent> outSlots = {};
+		weaponMan.GetWeaponsSlots(outSlots);
+		WeaponSlotComponent weapon;
+		foreach (WeaponSlotComponent outSlot: outSlots)
+		{
+			if (!outSlot.GetWeaponEntity())
+				continue;
+			
+			if (outSlot.GetWeaponEntity().FindComponent(GrenadeMoveComponent))
+				continue;
+			
+			weapon = outSlot;
+			break;
+		}
+		
+		if (!weapon)
+			return;
+		
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+			SCR_ChimeraCharacter.Cast(entity).SelectPrimaryWeapon();
+		else
+			charController.SelectWeapon(weapon);
 	}
 	
 	//------------------------------------------------------------------------------------------------
