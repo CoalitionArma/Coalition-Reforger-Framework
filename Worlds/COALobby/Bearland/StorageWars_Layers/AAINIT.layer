@@ -112,6 +112,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
+CRF_VehicleSpawner {
+ coords 852.164 7.219 1485.258
+ m_rVehicle "{B55C6990A6A9411B}Prefabs/Vehicles/Wheeled/M998/M998_covered.et"
+ m_sFactionKey "BLUFOR"
+ m_bShouldRespawnOnSideRespawn 0
+ m_iRespawnTimer 5
+}
 GenericEntity : "{47789BA6E9CA2928}Prefabs/MP/Campaign/SupplyDepots/SupplyCache_S_FIA_03_Campaign.et" {
  coords 840.799 7.34 1463.335
 }
