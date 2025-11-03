@@ -100,14 +100,17 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		this.GetTransform(params.Transform);
 		m_eVehicle = GetGame().SpawnEntityPrefab(Resource.Load(m_rVehicle), GetGame().GetWorld(), params);
 		Vehicle vehicle = Vehicle.Cast(m_eVehicle);
-		vehicle.m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
-		vehicle.m_sFactionKey = m_sFactionKey;
-		if (m_OverridedVehicleLoadout)
-			vehicle.m_OverridedVehicleLoadout = m_OverridedVehicleLoadout;
-		if (m_aVehicleGearscriptOverrides.Count() > 0)
-			vehicle.m_aVehicleGearscriptOverrides = m_aVehicleGearscriptOverrides;
-		if (m_aAdditionalVehicleItems.Count() > 0)
-			vehicle.m_aAdditionalVehicleItems = m_aAdditionalVehicleItems;
+		if (vehicle)
+		{
+			vehicle.m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
+			vehicle.m_sFactionKey = m_sFactionKey;
+			if (m_OverridedVehicleLoadout)
+				vehicle.m_OverridedVehicleLoadout = m_OverridedVehicleLoadout;
+			if (m_aVehicleGearscriptOverrides.Count() > 0)
+				vehicle.m_aVehicleGearscriptOverrides = m_aVehicleGearscriptOverrides;
+			if (m_aAdditionalVehicleItems.Count() > 0)
+				vehicle.m_aAdditionalVehicleItems = m_aAdditionalVehicleItems;
+		}
 	}
 	
 	#ifdef WORKBENCH
