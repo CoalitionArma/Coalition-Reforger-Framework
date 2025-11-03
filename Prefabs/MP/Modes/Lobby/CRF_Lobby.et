@@ -323,14 +323,15 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_iKillFeedType DISABLED
   }
-  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
-   Enabled 0
-  }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
    }
+   m_sLoadingLayout ""
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
   }
  }
  coords 2049.433 45.156 2065.633
@@ -571,7 +572,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
       m_sCallsignGroupFormat "%3"
      }
-     m_sFactionRadioEncryptionKey "chickenNuggets"
     }
     SCR_Faction "{5978B9CE6585BBE8}" {
      UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
@@ -628,7 +628,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       m_sNameUpper "INDFOR"
      }
      m_iOrder 4
-     m_sFactionRadioEncryptionKey "candleSauce"
     }
     SCR_Faction "{61500924662B6062}" {
      FactionKey "SPEC"
@@ -691,7 +690,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      m_aFriendlyFactionsIds {
       "USSR" "FIA"
      }
-     m_sFactionRadioEncryptionKey "Sandbox"
      m_iFactionRadioFrequency 58000
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{607A9A9FE55EDF5F}" {
@@ -790,7 +788,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        }
       }
      }
-     m_sFactionRadioEncryptionKey "chickenNuggets"
      m_iFactionRadioFrequency 48000
      m_aRanks {
       SCR_CharacterRank "{528E9D967C251E5F}" {
@@ -984,7 +981,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        }
       }
      }
-     m_sFactionRadioEncryptionKey "coldBorscht"
      m_iFactionRadioFrequency 42000
      m_aRanks {
       SCR_CharacterRank "{528E9D9FAAB617C6}" {
@@ -1188,7 +1184,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        }
       }
      }
-     m_sFactionRadioEncryptionKey "candleSauce"
      m_iFactionRadioFrequency 52000
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{5C68A0EABE8B7B2A}" {
@@ -1216,7 +1211,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
    }
   }
-  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Systems/Radio/RadioManager.et" {
    ID "632771FB44BBF8E1"
    coords -26.061 38.454 -1.92
   }
@@ -1229,10 +1224,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    ID "632771FB44BBD90B"
    coords 0.828 -0.125 0.558
    m_bIsUnlimitedEditorLegal 1
-  }
-  SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
-   ID "632771FB44BBFB1C"
-   coords 0.828 -0.125 0.558
   }
   SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutManager_Editor.et" {
    ID "632771FB44BBFB73"

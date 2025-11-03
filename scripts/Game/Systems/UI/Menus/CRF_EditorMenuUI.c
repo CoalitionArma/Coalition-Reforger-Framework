@@ -15,6 +15,9 @@ modded class EditorMenuUI
 		m_wCrossWidget = GetRootWidget().FindAnyWidget("ListeningCross");
 		m_ButtonComponent.m_OnClicked.Insert(ToggleListen);
 		
+		if (SCR_EditorManagerEntity.GetInstance().GetCurrentMode() != EEditorMode.EDIT)
+			GetRootWidget().FindAnyWidget("DeadBodyCleanupFrame").SetVisible(false);
+		
 		m_CleanUpBodiesButton = SCR_ButtonComponent.Cast(GetRootWidget().FindAnyWidget("DeadBodyCleanupButton").FindHandler(SCR_ButtonComponent));
 		m_CleanUpBodiesButton.m_OnClicked.Insert(ConfirmAction);
 	}

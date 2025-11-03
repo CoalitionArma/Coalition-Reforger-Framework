@@ -1163,7 +1163,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Get slot and group data
 		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
+		
+		array<SCR_AIGroup> factionGroups = {};
+		
+		if (m_fSelectedFaction)
+			factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
 			return;
@@ -1656,15 +1660,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			}
 		}
 
-		// Set the radio frequency using RadioHandlerComponent for proper replication
-		RadioHandlerComponent radioHandler = RadioHandlerComponent.Cast(
-			GetGame().GetPlayerController().FindComponent(RadioHandlerComponent)
-		);
-
-		if (radioHandler)
-		{
-			radioHandler.SetFrequency(transceiver, frequency);
-		}
+		transceiver.SetFrequency(frequency);
 
 		return transceiver;
 	}

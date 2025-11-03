@@ -7,4 +7,6 @@ class CRF_MiniArsenalItemButton: SCR_ButtonComponent
 	ref array<ResourceName> m_aMagazines = {};
 	ref array<int> m_aMagazineCounts = {};
 	bool m_bIsPistol = false;
+	int m_iSupplyCost;
+	RplId m_iEntityId;
 }

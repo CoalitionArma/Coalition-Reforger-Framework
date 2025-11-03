@@ -39,11 +39,12 @@ modded class SCR_DataCollectorComponent
 		return playerData;
 	}
 	
-	override void OnPlayerSpawned(int playerId, IEntity controlledEntity)
+	override void OnPlayerSpawnFinalize_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, IEntity entity)
 	{
+		int playerId = requestComponent.GetPlayerId();
 		foreach (SCR_DataCollectorModule module : m_aModules)
 		{
-			module.OnPlayerSpawned(playerId, controlledEntity);
+			module.OnPlayerSpawned(playerId, entity);
 		}
 	}
 	

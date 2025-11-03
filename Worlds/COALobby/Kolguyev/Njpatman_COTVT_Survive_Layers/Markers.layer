@@ -1,0 +1,271 @@
+PolylineShapeEntity : "{318DDE6633C34CF1}PrefabsEditable/PolyZone/GameBoundry.et" {
+ coords 5059.14 698.515 6320.702
+ Points {
+  ShapePoint "{66BE688132EDE4BD}" {
+   Position -2018.4 0 -3429.41
+  }
+  ShapePoint "{66BE68813C9ABFD1}" {
+   Position -2809.272 0 -2168.986
+  }
+  ShapePoint "{66BE68813D7A40D8}" {
+   Position -3352.79 0 -1419.448
+  }
+  ShapePoint "{66BE68813E7F5CE4}" {
+   Position -3726.465 0 -816.125
+  }
+  ShapePoint "{66BE68813805998C}" {
+   Position -3902.081 0 -248.687
+  }
+  ShapePoint "{66BE688139C9EC08}" {
+   Position -4199.164 0 613.939
+  }
+  ShapePoint "{66BE68813A443DA3}" {
+   Position -4136.872 0 763.612
+  }
+  ShapePoint "{66BE68813B7EDF8D}" {
+   Position -3933.687 0 1211.942
+  }
+  ShapePoint "{66BE688124449636}" {
+   Position -3756.898 0 1829.61
+  }
+  ShapePoint "{66BE688126116E9F}" {
+   Position -3370.812 0 1711.555
+  }
+  ShapePoint "{66BE688126F7E060}" {
+   Position -3245.355 0 1760.264
+  }
+  ShapePoint "{66BE688127D82944}" {
+   Position -3018.819 0 1773.074
+  }
+  ShapePoint "{66BE688120E1CB32}" {
+   Position -2516.682 0 2088.064
+  }
+  ShapePoint "{66BE6881221A2375}" {
+   Position -1846.234 0 1961.653
+  }
+  ShapePoint "{66BE68812304FD3D}" {
+   Position -1224.977 0 2017.342
+  }
+  ShapePoint "{66BE688123F7535D}" {
+   Position -645.671 0 2225.368
+  }
+  ShapePoint "{66BE68812CDDFA31}" {
+   Position 17.477 0 2219.454
+  }
+  ShapePoint "{66BE68812E1EF572}" {
+   Position 574.759 0 2486.331
+  }
+  ShapePoint "{66BE68812EFAD1F9}" {
+   Position 1050.739 0 2652.058
+  }
+  ShapePoint "{66BE68812FC8703A}" {
+   Position 1504.121 0 2657.569
+  }
+  ShapePoint "{66BE688128927341}" {
+   Position 1833.259 0 2821.294
+  }
+  ShapePoint "{66BE688129AF4436}" {
+   Position 2259.573 0 2994.494
+  }
+  ShapePoint "{66BE68812BA1679D}" {
+   Position 2486.066 0 3192.125
+  }
+  ShapePoint "{66BE68815479B985}" {
+   Position 2848.449 0 3287.28
+  }
+  ShapePoint "{66BE688155FBA6E0}" {
+   Position 3210.071 0 3128.206
+  }
+  ShapePoint "{66BE688156E5EB90}" {
+   Position 3514.323 0 3054.397
+  }
+  ShapePoint "{66BE688157E7FBF4}" {
+   Position 3810.255 0 3042.223
+  }
+  ShapePoint "{66BE6881511EFCAE}" {
+   Position 4080.573 0 2824.709
+  }
+  ShapePoint "{66BE68815CAC3A9E}" {
+   Position 4199.208 0 2659.531
+  }
+  ShapePoint "{66BE68815DB45DC2}" {
+   Position 4223.629 0 2402.577
+  }
+  ShapePoint "{66BE68815ED6BE29}" {
+   Position 4196.449 0 2016.565
+  }
+  ShapePoint "{66BE68815FCF0062}" {
+   Position 4210.829 0 1755.693
+  }
+  ShapePoint "{66BE688158C2F5EC}" {
+   Position 4394.207 0 1447.746
+  }
+  ShapePoint "{66BE68815A2692F6}" {
+   Position 4272.453 0 971.595
+  }
+  ShapePoint "{66BE68815B6B62E5}" {
+   Position 4163.852 0 322.517
+  }
+  ShapePoint "{66BE688144C75F0B}" {
+   Position 4154.026 0 -343.291
+  }
+  ShapePoint "{66BE688145E37C4D}" {
+   Position 3923.847 0 -1251.199
+  }
+  ShapePoint "{66BE68814733B94E}" {
+   Position 3653.23 0 -1951.598
+  }
+  ShapePoint "{66BE688140262640}" {
+   Position 3224.048 0 -2459.332
+  }
+  ShapePoint "{66BE688141104ABA}" {
+   Position 2852.989 0 -2942.044
+  }
+  ShapePoint "{66BE688142434D2A}" {
+   Position 2164.514 0 -3650.322
+  }
+  ShapePoint "{66BE6881434261C1}" {
+   Position 1591.596 0 -4022.683
+  }
+  ShapePoint "{66BE68814C6BF0EF}" {
+   Position 879.778 0 -4140.675
+  }
+  ShapePoint "{66BE68814D31C39B}" {
+   Position 229.622 0 -4236.209
+  }
+  ShapePoint "{66BE68814E3DF176}" {
+   Position -520.765 0 -4036.936
+  }
+  ShapePoint "{66BE68814F254001}" {
+   Position -1359.977 0 -3795.27
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 7665.106 23.108 5067.092
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 400
+  m_sDescription "Potential Fuel Depot"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6434.586 4.303 3240.81
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 400
+  m_sDescription "Potential Fuel Depot"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2666.166 24.219 5494.141
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_fWorldSize 500
+  m_sDescription "Air Transport"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 8020.787 182.719 7755.924
+  angles 0 90 0
+  m_MarkerColor 0.071 0.192 0.561 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 500
+  m_sDescription "SITE THETA"
+  m_aVisibleForFactions {
+   "BLUFOR"
+   "CIV"
+  }
+ }
+ {
+  coords 8030.257 182.715 7756.188
+  angles 0 90 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 500
+  m_sDescription "UNKOWN SITE"
+  m_aVisibleForFactions {
+   "OPFOR"
+  }
+ }
+ {
+  coords 8025.455 182.687 7747.514
+  angles 0 90 0
+  m_MarkerColor 0.128 0.479 0.128 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 500
+  m_sDescription "US MILITARY SITE"
+  m_aVisibleForFactions {
+   "INDFOR"
+  }
+ }
+ {
+  coords 8291.701 107.088 7601.625
+  angles 0 90 0
+  m_MarkerColor 0.128 0.479 0.128 1
+  m_sQuadName "point-of-interest"
+  m_fWorldSize 500
+  m_sDescription "CAMP VOLGA"
+  m_aVisibleForFactions {
+   "INDFOR"
+   "CIV"
+  }
+ }
+ {
+  coords 7545.901 27.366 4774.025
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest-2"
+  m_fWorldSize 400
+  m_sDescription "Vehicle Depot"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6926.93 436.687 6741.3
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest-2"
+  m_fWorldSize 400
+  m_sDescription "Vehicle Depot"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6047.359 180.709 4541.19
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest-2"
+  m_fWorldSize 400
+  m_sDescription "Supply Depot"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2693.791 220.994 6989.798
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "point-of-interest-2"
+  m_fWorldSize 400
+  m_sDescription "Supply Depot"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3677.247 1.676 7930.158
+  angles 0 90 0
+  m_MarkerColor 0 0 0 1
+  m_sQuadName "mark-question"
+  m_fWorldSize 400
+  m_sDescription "Potential Fuel Depot"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
