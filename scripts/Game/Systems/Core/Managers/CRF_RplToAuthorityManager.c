@@ -1011,7 +1011,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
 		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
 		ref array<IEntity> pouches = {};
-		oldStorageComp.GetAll(pouches);
+		if (oldStorageComp)
+			oldStorageComp.GetAll(pouches);
 		ref array<ResourceName> items = {};
 		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O
 		foreach (IEntity pouch: pouches)
