@@ -190,6 +190,50 @@ class CRF_GearscriptManager : ScriptComponent
 			suppliesNeeded += supplies[i] * amountOfItem[i];
 		}
 		
+		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
+		array<BaseCompartmentSlot> turrets = {};
+		array<IEntity> weapons = {};
+		compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
+		foreach (BaseCompartmentSlot turret: turrets)
+		{
+			TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
+			if (!turretController)
+				continue;
+			
+			array<IEntity> weaponsToAdd = {};
+			BaseWeaponManagerComponent weaponManager = turretController.GetWeaponManager();
+			if (weaponManager)
+				weaponManager.GetWeaponsList(weaponsToAdd);
+		
+			foreach (IEntity weapon: weaponsToAdd)
+			{
+				weapons.Insert(weapon);
+			}
+		}
+		
+		foreach (IEntity weapon: weapons)
+		{
+			if (!weapon.FindComponent(WeaponComponent))
+				continue;
+			
+			WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
+			EWeaponType type = weaponComp.GetWeaponType();
+			
+			array<BaseMuzzleComponent> muzzles = {};
+			weaponComp.GetMuzzlesList(muzzles);
+			array<ResourceName> magazinesToAdd = {};
+			array<int> magazineCount = {};
+			foreach (BaseMuzzleComponent muzzle: muzzles)
+			{
+				BaseMagazineComponent mag = muzzle.GetMagazine();
+				if (!mag)
+					continue;
+				
+				if (type == EWeaponType.WT_AUTOCANNON)
+					suppliesNeeded += mag.GetAmmoCount();
+			}
+		}
+		
 		return suppliesNeeded;
 	}
 	
@@ -659,7 +703,6 @@ class CRF_GearscriptManager : ScriptComponent
 			array<int> magazineCount = {};
 			foreach (BaseMuzzleComponent muzzle: muzzles)
 			{
-				//TODO: Support new autocanon
 				BaseMagazineComponent mag = muzzle.GetMagazine();
 				if (!mag)
 					continue;
@@ -667,7 +710,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (type == EWeaponType.WT_AUTOCANNON)
 				{
 					if (!calculateSupplies)
-						suppliesNeeded += mag.GetMaxAmmoCount() - mag.GetAmmoCount();
+						suppliesNeeded += mag.GetMaxAmmoCount();
 					if (mag.GetMaxAmmoCount() < bulletsToAdd)
 						PrintFormat("[CRF_GEARSCRIPT ERROR] Magazine: %1 does not have the proper max ammo set for the gearscript! Current: %2 | Needs: %3", WidgetManager.Translate(mag.GetUIInfo().GetName()), mag.GetMaxAmmoCount(), bulletsToAdd);
 					mag.SetAmmoCount(bulletsToAdd);
