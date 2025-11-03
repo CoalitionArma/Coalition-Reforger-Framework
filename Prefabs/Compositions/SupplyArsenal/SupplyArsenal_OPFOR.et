@@ -53,7 +53,17 @@ GenericEntity : "{69131FD53AF6C044}Prefabs/Compositions/Slotted/SlotFlatSmall/Su
         Name "Open Supply Arsenal"
        }
       }
+      CRF_VehicleRearmAction "{66C6552D931DE916}" {
+      }
      }
+    }
+   }
+  }
+  GenericEntity {
+   ID "58C28EA16E7B7C58"
+   components {
+    ActionsManagerComponent "{5476B36C403D4CC0}" {
+     Enabled 0
     }
    }
   }
