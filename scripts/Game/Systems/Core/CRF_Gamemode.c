@@ -40,6 +40,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[RplProp()]
 	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
 	
+	//AI Settings
+	[Attribute("1", "auto", "Disables AI Crouching", category: "CRF AI Settings")]
+	bool m_bDisableAICrouching;
+	
 	// General Gamemode Settings
 	//------------------------------------------------------------------------------------
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
@@ -61,9 +65,6 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("true", "auto", "If safestart turns on instantly after the lobby screen.", category: "CRF Gamemode General")]
 	bool m_bSafestartInstantlyEnabled;
-	
-	[Attribute("1", "auto", "Disables AI Crouching", category: "CRF Gamemode General")]
-	bool m_bDisableAICrouching;
 
 	// Mission Descriptors (shown in briefing)
 	[Attribute("", category: "CRF Gamemode General")]
