@@ -420,6 +420,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateSupplyArsneal, supplyArsnealId);
 	}
 	
+	void MoveSpecCamToSlot(int slotID, int playerID)
+	{
+		Rpc(RpcAsk_MoveSpecCamToSlot, slotID, playerID);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1274,5 +1279,25 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
 		supplyComp.UpdateCurrentSupply();
+	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
+	{
+		// Get slot data from the slotting manager
+		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
+		if (!slotData)
+			return;
+		
+		// Find the entity associated with the slot and set it as the spectator target
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(slotData.GetSlotCurrentCharacter()));
+		if (!rplComponent)
+			return;
+		
+		// Get slot origin
+		IEntity slotEntity = rplComponent.GetEntity();
+		vector slotPos = slotEntity.GetOrigin();
+				
+		m_RplBroadcastManager.MoveSpecCamToSlot(slotPos, playerId);
 	}
 };
