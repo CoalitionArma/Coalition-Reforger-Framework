@@ -1,6 +1,8 @@
 Vehicle : "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et" {
  ID "BBCBA43A9778AE21"
  components {
+  CRF_SupplyArsenalComponent "{66C45982893B73C5}" {
+  }
   MeshObject "{51DAA09FEFBFC0E7}" {
    Materials {
     MaterialAssignClass "{65990AF0D903AE60}" {
@@ -15,7 +17,7 @@ Vehicle : "{92264FF932676C13}Prefabs/Vehicles/Wheeled/M923A1/M923A1_ammo.et" {
     m_Image "{52ADF02CE596BA43}UI/Textures/EditorPreviews/Vehicles/Wheeled/M923A1/M923A1_ammo_MERDC.edds"
     m_sFaction "BLUFOR"
     m_aAutoLabels {
-     51870 122 54
+     FACTION_CRF_BLUFOR SIZE_M VEHICLE_TRUCK
     }
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EF07CF434919DE2}" {

@@ -71,7 +71,7 @@ FrameWidgetClass {
     SizeY 30
     OffsetBottom -30.082
    }
-   Text "100"
+   Text "0"
    "Min Font Size" 10
    "Vertical Alignment" Center
    FontProperties FontProperties "{66BD386FB2B1C37C}" {
@@ -79,7 +79,7 @@ FrameWidgetClass {
    }
   }
   ImageWidgetClass "{66BD38428F886481}" {
-   Name "Image0"
+   Name "SupplyImage"
    Slot FrameWidgetSlot "{66BD384339CBF3D1}" {
     Anchor 0 0 0 0
     PositionX 267
