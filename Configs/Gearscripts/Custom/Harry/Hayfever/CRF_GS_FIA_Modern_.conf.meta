@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{AC1CC557967D9ACA}Configs/Gearscripts/Standard/80s/Variants/CRF_GS_FIA_Modern_.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}
