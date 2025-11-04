@@ -139,6 +139,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_LoggingManager m_LoggingManager;
 	
 	protected static CRF_Gamemode m_sInstance;
+	
+	protected ref array<Vehicle> m_aSpawnedVehicles = {};
 
 	//===================================================================================
 	// STATIC METHODS
@@ -213,6 +215,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 
 		m_GamemodeState += 1;
+		if (m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			foreach (Vehicle vehicle: m_aSpawnedVehicles)
+			{
+				if (!vehicle)
+					continue;
+				
+				vehicle.SpawnVehiclePassengers();
+			}
+		}
 		Replication.BumpMe();
 		OnGamemodeStateChanged();
 	}
@@ -632,6 +644,21 @@ class CRF_Gamemode : SCR_BaseGameMode
 	{
 		m_bCurrentEnableAIInGameState = !m_bCurrentEnableAIInGameState;
 		Replication.BumpMe();
+	}
+	
+	void AddVehicleToArray(Vehicle vehicle)
+	{
+		if (m_aSpawnedVehicles.Contains(vehicle))
+			return;
+		
+		m_aSpawnedVehicles.Insert(vehicle);
+	}
+	
+	void RemoveVehicleFromArray(Vehicle vehicle)
+	{
+		if (!m_aSpawnedVehicles.Contains(vehicle))
+			return;
+		m_aSpawnedVehicles.RemoveItem(vehicle);
 	}
 }
 
