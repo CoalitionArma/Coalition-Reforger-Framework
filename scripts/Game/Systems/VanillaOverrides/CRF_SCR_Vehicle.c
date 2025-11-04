@@ -1,5 +1,7 @@
 modded class Vehicle
 {
+	[RplProp()] int m_iCurrentSupplies;
+	
 	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout")]
 	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
 	
@@ -12,6 +14,11 @@ modded class Vehicle
 	string m_sFactionKey = "";
 	int m_iVehicleSpawnerIndex = -1;
 	
+	void UpdateVehicleSupplies(int supply)
+	{
+		m_iCurrentSupplies = supply;
+		Replication.BumpMe();
+	}
 	
 	void Vehicle(IEntitySource src, IEntity parent)
 	{
@@ -24,6 +31,12 @@ modded class Vehicle
 			return;
 		
 		GetGame().GetCallqueue().CallLater(SetVehicleGear, 500, false);
+		CRF_Gamemode.GetInstance().AddVehicleToArray(this);
+	}
+	
+	void SpawnVehiclePassengers()
+	{
+		SCR_BaseCompartmentManagerComponent.Cast(this.FindComponent(SCR_BaseCompartmentManagerComponent)).AddAIToVehicle();
 	}
 	
 	void SetVehicleGear()
@@ -43,6 +56,8 @@ modded class Vehicle
 		#endif
 		if (!GetGame().GetWorld())
 			return;
+		
+		CRF_Gamemode.GetInstance().RemoveVehicleFromArray(this);
 		
 		if (m_iVehicleSpawnerIndex == -1)
 			return;

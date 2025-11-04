@@ -48,7 +48,10 @@ modded class SCR_Faction
 		if (GetFactionKey() == "CIV")
 			return;
 		ref array<ref SCR_CallsignInfo> squadCallsigns = {};
-		GetCallsignInfo().GetSquadArray(squadCallsigns);
+		SCR_FactionCallsignInfo callsignInfo = GetCallsignInfo();
+		if (!callsignInfo)
+			return;
+		callsignInfo.GetSquadArray(squadCallsigns);
 		CVON_VONGameModeComponent gamemodeComp = CVON_VONGameModeComponent.GetInstance();
 		if (!gamemodeComp.m_FreqConfig)
 			return;

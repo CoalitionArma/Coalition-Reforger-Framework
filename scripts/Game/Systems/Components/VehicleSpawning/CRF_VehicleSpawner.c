@@ -37,6 +37,11 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	protected bool m_bWaitingToRespawn = false;
 	override void EOnInit(IEntity owner)
 	{
+		if (!m_sFactionKey && CRF_Gamemode.GetInstance())
+		{
+			Debug.Error("No Faction Key set on " + m_rVehicle + " spawner");
+			return;
+		}
 		Print("Init");
 		#ifdef WORKBENCH
 		#else
@@ -44,7 +49,8 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 			return;
 		#endif
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
-		m_iVehicleSpawnerIndex = m_RespawnManager.InsertVehicle(this);
+		if (m_RespawnManager)
+			m_iVehicleSpawnerIndex = m_RespawnManager.InsertVehicle(this);
 		SpawnVehicle();
 		SetEventMask(EntityEvent.FIXEDFRAME);
 	}
@@ -74,6 +80,11 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	
 	void SpawnVehicle()
 	{
+		if (!m_sFactionKey)
+		{
+			Debug.Error("No Faction Key set on " + m_rVehicle + " spawner");
+			return;
+		}
 		//Do not spawn the vehicle if the faction doesn't have the tickets
 		//Handles subtracting tickets from kills that are on a timer. This means tickets are subtracted WHEN the vehicle is spawned
 		if (m_bWaitingToRespawn && !m_bShouldRespawnOnSideRespawn)
@@ -89,14 +100,17 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		this.GetTransform(params.Transform);
 		m_eVehicle = GetGame().SpawnEntityPrefab(Resource.Load(m_rVehicle), GetGame().GetWorld(), params);
 		Vehicle vehicle = Vehicle.Cast(m_eVehicle);
-		vehicle.m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
-		vehicle.m_sFactionKey = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(m_sFactionKey).GetFactionKey();
-		if (m_OverridedVehicleLoadout)
-			vehicle.m_OverridedVehicleLoadout = m_OverridedVehicleLoadout;
-		if (m_aVehicleGearscriptOverrides.Count() > 0)
-			vehicle.m_aVehicleGearscriptOverrides = m_aVehicleGearscriptOverrides;
-		if (m_aAdditionalVehicleItems.Count() > 0)
-			vehicle.m_aAdditionalVehicleItems = m_aAdditionalVehicleItems;
+		if (vehicle)
+		{
+			vehicle.m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
+			vehicle.m_sFactionKey = m_sFactionKey;
+			if (m_OverridedVehicleLoadout)
+				vehicle.m_OverridedVehicleLoadout = m_OverridedVehicleLoadout;
+			if (m_aVehicleGearscriptOverrides.Count() > 0)
+				vehicle.m_aVehicleGearscriptOverrides = m_aVehicleGearscriptOverrides;
+			if (m_aAdditionalVehicleItems.Count() > 0)
+				vehicle.m_aAdditionalVehicleItems = m_aAdditionalVehicleItems;
+		}
 	}
 	
 	#ifdef WORKBENCH

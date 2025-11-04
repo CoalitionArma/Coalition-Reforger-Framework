@@ -7,6 +7,9 @@ class CRF_GearscriptManager : ScriptComponent
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	ref array<IEntity> m_VehiclesInQueue = {};
 	
+	[RplProp()] ref array<ResourceName> m_aVehicleResourceName = {};
+	[RplProp()] ref array<int> m_aVehicleSupplyCost = {};
+	
 	//------------------------------------------------------------------------------------------------
 	/**
 	 * @brief Get singleton instance of the GearscriptManager
@@ -37,7 +40,7 @@ class CRF_GearscriptManager : ScriptComponent
 			return;
 		#endif
 		SetEventMask(owner, EntityEvent.FRAME);
-	}
+	}	
 	
 	array<int> GetSupplyValuesForItems(array<ResourceName> items)
 	{
@@ -65,7 +68,6 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		foreach (SCR_EntityCatalog catalog: itemCatalogs)
 		{
-			Print(catalog);
 			for (int i = 0; i < itemSupply.Count(); i++)
 			{
 				SCR_EntityCatalogEntry entry = catalog.GetEntryWithPrefab(items.Get(i));
@@ -86,15 +88,20 @@ class CRF_GearscriptManager : ScriptComponent
 		if (m_fUpdateBuffer >= 5)
 		{
 			array<IEntity> vehiclesToRemove = {};
-			foreach (IEntity vehice: m_VehiclesInQueue)
+			foreach (IEntity vehicle: m_VehiclesInQueue)
 			{
-				if(FindFactionByClosestPlayer(vehice))
-					vehiclesToRemove.Insert(vehice);
+				if (!vehicle)
+				{
+					vehiclesToRemove.Insert(vehicle);
+					continue;
+				}
+				if(FindFactionByClosestPlayer(vehicle))
+					vehiclesToRemove.Insert(vehicle);
 			}
 			
-			foreach (IEntity vehice: vehiclesToRemove)
+			foreach (IEntity vehicle: vehiclesToRemove)
 			{
-				m_VehiclesInQueue.RemoveItem(vehice);
+				m_VehiclesInQueue.RemoveItem(vehicle);
 			}
 			
 			m_fUpdateBuffer = 0;
@@ -104,52 +111,149 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	bool FindFactionByClosestPlayer(IEntity vehicle)
-	{
-		array<int> playerIds = {};
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		playerManager.GetPlayers(playerIds);
-		
+	{	
 		float closestPlayerDistance;
 		IEntity closestPlayer;
-		int closestPlayerId;
-		foreach (int playerId: playerIds)
+		string factionKey = "";
+		
+		array<AIAgent> agents = {};
+		GetGame().GetAIWorld().GetAIAgents(agents);
+		
+		foreach (AIAgent agent: agents)
 		{
-			IEntity player = playerManager.GetPlayerControlledEntity(playerId);
-			if (!player)
+			IEntity aiPlayer = agent.GetControlledEntity();
+			if (!aiPlayer)
 				continue;
 			
-			if (CRF_GamemodeManager.IsSpectator(player))
+			if (!ChimeraCharacter.Cast(aiPlayer))
 				continue;
 			
 			if (!closestPlayer)
 			{
-				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 				if (closestPlayerDistance > 200)
 					continue;
-				closestPlayer = player;
-				closestPlayerId = playerId;
+				closestPlayer = aiPlayer;
+				if (aiPlayer.FindComponent(FactionAffiliationComponent))
+				{
+					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
 				continue;
 			}
 			
-			float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+			float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 			if (playerDistance > closestPlayerDistance || playerDistance > 200)
 				continue;
 			
-			closestPlayer = player;
+			closestPlayer = aiPlayer;
 			closestPlayerDistance = playerDistance;
-			closestPlayerId = playerId;
+			if (aiPlayer.FindComponent(FactionAffiliationComponent))
+				{
+					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
 		}
 		
 		//There's no players
 		if (!closestPlayer)
 			return false;
 		
-		Vehicle.Cast(vehicle).m_sFactionKey = SCR_FactionManager.SGetPlayerFaction(closestPlayerId).GetFactionKey();
+		Vehicle.Cast(vehicle).m_sFactionKey = factionKey;
 		GetGame().GetCallqueue().CallLater(
 					CRF_GearscriptManager.GetInstance().SetVehicleGear, 500, false,
 					vehicle, Vehicle.Cast(vehicle).m_sFactionKey
 				);
 		return true;
+	}
+	
+	int GetSuppliesInTruck(IEntity truck)
+	{
+		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		if (!invManager)
+			return 0;
+		
+		array<IEntity> items = {};
+		invManager.GetItems(items);
+		array<ResourceName> itemToScan = {};
+		array<int> amountOfItem = {};
+		foreach (IEntity item: items)
+		{
+			string prefab = item.GetPrefabData().GetPrefabName();
+			if (itemToScan.Contains(prefab))
+			{
+				int index = itemToScan.Find(prefab);
+				amountOfItem.Set(index, amountOfItem.Get(index) + 1);
+				continue;
+			}
+			itemToScan.Insert(prefab);
+			amountOfItem.Insert(1);
+		}
+		
+		array<int> supplies = GetSupplyValuesForItems(itemToScan);
+		
+		int suppliesNeeded = 0;
+		for (int i = 0; i < supplies.Count(); i++)
+		{
+			suppliesNeeded += supplies[i] * amountOfItem[i];
+		}
+		
+		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
+		array<BaseCompartmentSlot> turrets = {};
+		array<IEntity> weapons = {};
+		compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
+		foreach (BaseCompartmentSlot turret: turrets)
+		{
+			TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
+			if (!turretController)
+				continue;
+			
+			array<IEntity> weaponsToAdd = {};
+			BaseWeaponManagerComponent weaponManager = turretController.GetWeaponManager();
+			if (weaponManager)
+				weaponManager.GetWeaponsList(weaponsToAdd);
+		
+			foreach (IEntity weapon: weaponsToAdd)
+			{
+				weapons.Insert(weapon);
+			}
+		}
+		
+		foreach (IEntity weapon: weapons)
+		{
+			if (!weapon.FindComponent(WeaponComponent))
+				continue;
+			
+			WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
+			EWeaponType type = weaponComp.GetWeaponType();
+			
+			array<BaseMuzzleComponent> muzzles = {};
+			weaponComp.GetMuzzlesList(muzzles);
+			array<ResourceName> magazinesToAdd = {};
+			array<int> magazineCount = {};
+			foreach (BaseMuzzleComponent muzzle: muzzles)
+			{
+				BaseMagazineComponent mag = muzzle.GetMagazine();
+				if (!mag)
+					continue;
+				
+				if (type == EWeaponType.WT_AUTOCANNON)
+					suppliesNeeded += mag.GetAmmoCount();
+			}
+		}
+		
+		return suppliesNeeded;
+	}
+	
+	int GetTruckResupplyCost(ResourceName resource)
+	{
+		int index = m_aVehicleResourceName.Find(resource);
+		if (index == -1)
+			return 0;
+		
+		return m_aVehicleSupplyCost.Get(index);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -298,40 +402,50 @@ class CRF_GearscriptManager : ScriptComponent
 		//Lets find a faction, if there is none start looking for one in the loop.
 		Faction faction = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(factionKey);
 		if (!faction)
-		{
-			array<int> playerIds = {};
-			PlayerManager playerManager = GetGame().GetPlayerManager();
-			playerManager.GetPlayers(playerIds);
-			
+		{	
 			float closestPlayerDistance;
 			IEntity closestPlayer;
-			int closestPlayerId;
-			foreach (int playerId: playerIds)
+			factionKey = "";
+			array<AIAgent> agents = {};
+			
+			GetGame().GetAIWorld().GetAIAgents(agents);
+			
+			foreach (AIAgent agent: agents)
 			{
-				IEntity player = playerManager.GetPlayerControlledEntity(playerId);
-				if (!player)
+				IEntity aiPlayer = agent.GetControlledEntity();
+				if (!aiPlayer)
 					continue;
 				
-				if (CRF_GamemodeManager.IsSpectator(player))
+				if (!ChimeraCharacter.Cast(aiPlayer))
 					continue;
 				
 				if (!closestPlayer)
 				{
-					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 					if (closestPlayerDistance > 200)
 						continue;
-					closestPlayer = player;
-					closestPlayerId = playerId;
+					closestPlayer = aiPlayer;
+					if (aiPlayer.FindComponent(FactionAffiliationComponent))
+					{
+						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
 					continue;
 				}
 				
-				float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 				if (playerDistance > closestPlayerDistance || playerDistance > 200)
 					continue;
 				
-				closestPlayer = player;
+				closestPlayer = aiPlayer;
 				closestPlayerDistance = playerDistance;
-				closestPlayerId = playerId;
+				if (aiPlayer.FindComponent(FactionAffiliationComponent))
+					{
+						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
 			}
 			
 			//There's no players
@@ -342,7 +456,7 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 
 			
-			faction = SCR_FactionManager.SGetPlayerFaction(closestPlayerId);
+			faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
 			Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
 		}
 		
@@ -352,6 +466,12 @@ class CRF_GearscriptManager : ScriptComponent
 		else
 			SetTruckGear(vehicle, faction, gsContainer, false);
 		
+	}
+	
+	bool IsSupplyTruck(IEntity truck, string factionKey)
+	{
+		ref CRF_GearScriptContainer gsContainer = GetGearScriptSettings(factionKey);
+		return gsContainer.m_aSupplyTrucks.Contains(truck.GetPrefabData().GetPrefabName());
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -374,8 +494,10 @@ class CRF_GearscriptManager : ScriptComponent
 		SCR_VehicleInventoryStorageManagerComponent invManager = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
 		if (!invManager)
 			return;
+		
+		int suppliesNeeded = 0;
 		ClearTruckGear(truck, invManager);
-		ApplyTruckLoadout(truck, invManager, gsContainer);
+		suppliesNeeded += ApplyTruckLoadout(truck, invManager, gsContainer, faction.GetFactionKey(), isSupply);
 		array<ResourceName> heGLsToAdd = {};
 		array<ResourceName> glsToAdd = {};
 		for (int i = 0; i <= 11; i++)
@@ -417,7 +539,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (magazinesToAdd.Count() == 0)
 					continue;
 				
-				SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+				suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 			}
 			//Spec Weapons
 			else
@@ -432,7 +554,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (isDisposable)
 				{
 					magazinesToAdd.Insert(weapon.m_Weapon);
-					SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, isSupply);
+					suppliesNeeded += SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 				}
 				else
 				{
@@ -450,7 +572,7 @@ class CRF_GearscriptManager : ScriptComponent
 					if (magazinesToAdd.Count() == 0)
 						continue;
 					
-					SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, isSupply);
+					suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 				}
 			}
 		}
@@ -474,26 +596,26 @@ class CRF_GearscriptManager : ScriptComponent
 		if (grenadesToAdd.Count() > 0)
 		{
 			int grenades = GetBulletCountForWeapon(truck, 12, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		if (smokesToAdd.Count() > 0)
 		{
 			int grenades = GetBulletCountForWeapon(truck, 13, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(grenades, smokesToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(grenades, smokesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		//Add misc items
 		if (heGLsToAdd.Count() > 0)
 		{
 			int glsToSpawn = GetBulletCountForWeapon(truck, 14, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		if (glsToAdd.Count() > 0)
 		{
 			int glsToSpawn = GetBulletCountForWeapon(truck, 15, vehicleGearScriptConfig, gsContainer);
-			SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, isSupply);
+			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 		}
 		
 		array<ref CRF_VehicleGearScriptAdditionalItem> additionalItems = {};
@@ -505,9 +627,17 @@ class CRF_GearscriptManager : ScriptComponent
 		{
 			array<ResourceName> holder = {item.m_Prefab};
 			if (isSupply)
-				SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, true);
+				suppliesNeeded += SpawnItemsToVehicle(item.m_iAmountOfItemSupplyTruck, holder, invManager, faction.GetFactionKey(), isSupply, true, truck.GetPrefabData().GetPrefabName());
 			else
-				SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, true);
+				suppliesNeeded += SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, faction.GetFactionKey(), isSupply, true, truck.GetPrefabData().GetPrefabName());
+		}
+		
+		
+		if (!m_aVehicleResourceName.Contains(truck.GetPrefabData().GetPrefabName()))
+		{
+			m_aVehicleResourceName.Insert(truck.GetPrefabData().GetPrefabName());
+			m_aVehicleSupplyCost.Insert(suppliesNeeded);
+			Replication.BumpMe();
 		}
 	}
 	
@@ -544,9 +674,11 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager The truck’s inventory storage manager component
 	 * @param gsContainer The gear script container holding vehicle loadout data
 	 */
-	void ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer)
+	int ApplyTruckLoadout(IEntity truck, SCR_VehicleInventoryStorageManagerComponent invManager, CRF_GearScriptContainer gsContainer, string factionKey, bool isSupply)
 	{
 		ref CRF_VehicleGearScriptLoadout vehLoadout;
+		int suppliesNeeded = 0;
+		bool calculateSupplies = HasSupplyBeenCalculated(truck.GetPrefabData().GetPrefabName());
 		if (Vehicle.Cast(truck).m_OverridedVehicleLoadout)
 			vehLoadout = Vehicle.Cast(truck).m_OverridedVehicleLoadout;
 		else
@@ -595,6 +727,15 @@ class CRF_GearscriptManager : ScriptComponent
 				if (!mag)
 					continue;
 				
+				if (type == EWeaponType.WT_AUTOCANNON)
+				{
+					if (!calculateSupplies)
+						suppliesNeeded += mag.GetMaxAmmoCount();
+					if (mag.GetMaxAmmoCount() < bulletsToAdd)
+						PrintFormat("[CRF_GEARSCRIPT ERROR] Magazine: %1 does not have the proper max ammo set for the gearscript! Current: %2 | Needs: %3", WidgetManager.Translate(mag.GetUIInfo().GetName()), mag.GetMaxAmmoCount(), bulletsToAdd);
+					mag.SetAmmoCount(bulletsToAdd);
+					continue;
+				}
 				magazinesToAdd.Insert(mag.GetOwner().GetPrefabData().GetPrefabName());
 				magazineCount.Insert(mag.GetMaxAmmoCount());
 			}
@@ -602,8 +743,9 @@ class CRF_GearscriptManager : ScriptComponent
 			if (magazinesToAdd.Count() == 0)
 				continue;
 			
-			SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, true);
+			suppliesNeeded += SpawnMagazinesToVehicle(bulletsToAdd, magazineCount, magazinesToAdd, invManager, factionKey, isSupply, true, truck.GetPrefabData().GetPrefabName());
 		}
+		return suppliesNeeded;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -619,20 +761,39 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager Vehicle’s inventory storage manager component
 	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	 */
-	void SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply = false)
+	int SpawnMagazinesToVehicle(int amountToSpawn, array<int> magazineCounts, array<ResourceName> magazinesToAdd, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply, bool divide, string truckResource)
 	{
+		int suppliesNeeded = 0;
 		int catch = 0;
-		if (!isSupply)
+		if (!divide)
 			amountToSpawn /= 4;
+		array<int> magazinesAdded = {};
+		for (int i = 0; i < magazinesToAdd.Count(); i++)
+		{
+			magazinesAdded.Insert(0);
+		}
 		while (amountToSpawn > 0 && catch < 200)
 		{
 			for (int i = 0; i < magazinesToAdd.Count(); i++)
 			{
 				invManager.TrySpawnPrefabToStorage(magazinesToAdd[i]);
 				amountToSpawn -= magazineCounts[i];
+				magazinesAdded.Set(i, magazinesAdded.Get(i) + 1);
+					
 			}
 			catch++;
 		}
+		
+		if (!HasSupplyBeenCalculated(truckResource))
+		{
+			array<int> supplies = GetSupplyValuesForItems(magazinesToAdd);
+			for (int i = 0; i < supplies.Count(); i++)
+			{
+				suppliesNeeded += supplies[i] * magazinesAdded[i];
+			}
+		}
+		
+		return suppliesNeeded;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -646,20 +807,44 @@ class CRF_GearscriptManager : ScriptComponent
 	 * @param invManager Vehicle’s inventory storage manager component
 	 * @param isSupply Whether this is a supply vehicle (full load) or not (reduced load)
 	 */
-	void SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, bool isSupply)
+	int SpawnItemsToVehicle(int amountToSpawn, array<ResourceName> itemsToSpawn, SCR_VehicleInventoryStorageManagerComponent invManager, string factionKey, bool isSupply, bool divide, string truckResource)
 	{
+		int suppliesNeeded = 0;
 		int catch = 0;
-		if (!isSupply)
+		if (!divide)
 			amountToSpawn /= 4;
+		
+		array<int> itemsAdded = {};
+		for (int i = 0; i < itemsToSpawn.Count(); i++)
+		{
+			itemsAdded.Insert(0);
+		}
 		while (amountToSpawn > 0 && catch < 1000)
 		{
-			foreach (ResourceName item: itemsToSpawn)
+			for (int i = 0; i < itemsToSpawn.Count(); i++)
 			{
-				invManager.TrySpawnPrefabToStorage(item);
+				invManager.TrySpawnPrefabToStorage(itemsToSpawn.Get(i));
+				itemsAdded.Set(i, itemsAdded.Get(i) + 1);
 				amountToSpawn--;
 			}
 			catch++;
 		}
+		
+		if (!HasSupplyBeenCalculated(truckResource))
+		{
+			array<int> supplies = GetSupplyValuesForItems(itemsToSpawn);
+			for (int i = 0; i < supplies.Count(); i++)
+			{
+				suppliesNeeded += supplies[i] * itemsAdded[i];
+			}
+		}
+		
+		return suppliesNeeded;
+	}
+	
+	bool HasSupplyBeenCalculated(ResourceName resource)
+	{
+		return m_aVehicleResourceName.Contains(resource);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1778,6 +1963,45 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		// Add attachments after a delay to ensure weapon is fully initialized
 		GetGame().GetCallqueue().CallLater(AddAttachments, 1000, false, weaponResource, attachmentResources, spawnParams, inventoryManager);
+		GetGame().GetCallqueue().CallLater(SelectWeapon, 500, false, inventory.GetOwner()); 
+	}
+	
+	void SelectWeapon(IEntity entity)
+	{
+		if (!ChimeraCharacter.Cast(entity))
+			return;
+		
+		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(entity).GetWeaponManager());
+		if (!weaponMan)
+			return;
+		
+		CharacterControllerComponent charController = CharacterControllerComponent.Cast(ChimeraCharacter.Cast(entity).GetCharacterController());
+		if (!charController)
+			return;
+		
+		array<WeaponSlotComponent> outSlots = {};
+		weaponMan.GetWeaponsSlots(outSlots);
+		WeaponSlotComponent weapon;
+		foreach (WeaponSlotComponent outSlot: outSlots)
+		{
+			if (!outSlot.GetWeaponEntity())
+				continue;
+			
+			if (outSlot.GetWeaponEntity().FindComponent(GrenadeMoveComponent))
+				continue;
+			
+			weapon = outSlot;
+			break;
+		}
+		
+		if (!weapon)
+			return;
+		
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+			SCR_ChimeraCharacter.Cast(entity).SelectPrimaryWeapon();
+		else
+			charController.SelectWeapon(weapon);
 	}
 	
 	//------------------------------------------------------------------------------------------------
