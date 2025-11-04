@@ -1,0 +1,29 @@
+ParticleEffectEntity {
+ ID "66C81E832CBAEC78"
+ coords 1290.436 26.745 785.967
+ UseFrameEvent 1
+ DeleteWhenStopped 1
+ EffectPath "{D7322075D4C80DC0}Prefabs/Systems/Explosions/Explosion_SmallNuke.ptc"
+ {
+  $grp ParticleEffectEntity {
+   {
+    ID "66C81E832CBA9F50"
+    UseFrameEvent 1
+    DeleteWhenStopped 1
+    EffectPath "{6FE902FEFFE2C35B}Prefabs/Systems/Explosions/Explosion_SmallNuke_Warhead.ptc"
+   }
+   {
+    ID "66C81E832CBAEC7E"
+    UseFrameEvent 1
+    DeleteWhenStopped 1
+    EffectPath "{ADE6B4A53E2C7E61}Prefabs/Systems/Explosions/Explosion_SmallNuke_Top.ptc"
+   }
+   {
+    ID "66C81E832CBAEC7F"
+    UseFrameEvent 1
+    DeleteWhenStopped 1
+    EffectPath "{DC3B4035A24472CA}Prefabs/Systems/Explosions/Explosion_SmallNuke_1000m.ptc"
+   }
+  }
+ }
+}
