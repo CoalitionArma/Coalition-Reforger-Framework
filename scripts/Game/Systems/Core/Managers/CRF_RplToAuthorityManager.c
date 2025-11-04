@@ -435,6 +435,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_RearmVehicle, truckId, supplyItems, supplyCounts, rearmTruckId);
 	}
 	
+	void MoveSpecCamToSlot(int slotID, int playerID)
+	{
+		Rpc(RpcAsk_MoveSpecCamToSlot, slotID, playerID);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	// SERVER-SIDE RPC HANDLERS - Executed on the authority (server)
 	//------------------------------------------------------------------------------------------------
@@ -1016,7 +1021,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
 		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
 		ref array<IEntity> pouches = {};
-		oldStorageComp.GetAll(pouches);
+		if (oldStorageComp)
+			oldStorageComp.GetAll(pouches);
 		ref array<ResourceName> items = {};
 		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O
 		foreach (IEntity pouch: pouches)
@@ -1262,8 +1268,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
 			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
-			SCR_ResourceComponent resComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
-			SCR_ResourceSystemHelper.GetStorageConsumer(resComponent).RequestConsumtion(((float)supplyCounts.Get(i)));
+			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
+            if (!resourceComponent)
+                continue;
+                
+            SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT_STORAGE, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				return;
+
+           	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
 		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
@@ -1289,6 +1306,26 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
 		supplyComp.UpdateCurrentSupply();
+	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
+	{
+		// Get slot data from the slotting manager
+		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
+		if (!slotData)
+			return;
+		
+		// Find the entity associated with the slot and set it as the spectator target
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(slotData.GetSlotCurrentCharacter()));
+		if (!rplComponent)
+			return;
+		
+		// Get slot origin
+		IEntity slotEntity = rplComponent.GetEntity();
+		vector slotPos = slotEntity.GetOrigin();
+				
+		m_RplBroadcastManager.MoveSpecCamToSlot(slotPos, playerId);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
@@ -1375,8 +1412,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
 			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
-			SCR_ResourceComponent resComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
-			SCR_ResourceSystemHelper.GetStorageConsumer(resComponent).RequestConsumtion(((float)supplyCounts.Get(i)));
+			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
+            if (!resourceComponent)
+                continue;
+                
+            SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT_STORAGE, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				return;
+
+           	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
 		IEntity rearmTruck = RplComponent.Cast(Replication.FindItem(rearmTruckId)).GetEntity();

@@ -31,6 +31,12 @@ modded class Vehicle
 			return;
 		
 		GetGame().GetCallqueue().CallLater(SetVehicleGear, 500, false);
+		CRF_Gamemode.GetInstance().AddVehicleToArray(this);
+	}
+	
+	void SpawnVehiclePassengers()
+	{
+		SCR_BaseCompartmentManagerComponent.Cast(this.FindComponent(SCR_BaseCompartmentManagerComponent)).AddAIToVehicle();
 	}
 	
 	void SetVehicleGear()
@@ -50,6 +56,8 @@ modded class Vehicle
 		#endif
 		if (!GetGame().GetWorld())
 			return;
+		
+		CRF_Gamemode.GetInstance().RemoveVehicleFromArray(this);
 		
 		if (m_iVehicleSpawnerIndex == -1)
 			return;
