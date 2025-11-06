@@ -2585,4 +2585,45 @@ class CRF_GearscriptManager : ScriptComponent
 			   SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent)) ||
 			   SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
 	}
+	
+	void SpawnVehicle(CRF_VehicleSpawner spawner)
+	{
+		if (!spawner.m_sFactionKey)
+		{
+			Debug.Error("No Faction Key set on " + spawner.m_rVehicle + " spawner");
+			return;
+		}
+		//Do not spawn the vehicle if the faction doesn't have the tickets
+		//Handles subtracting tickets from kills that are on a timer. This means tickets are subtracted WHEN the vehicle is spawned
+		if (spawner.m_bWaitingToRespawn && !spawner.m_bShouldRespawnOnSideRespawn)
+		{
+			if (spawner.m_RespawnManager.GetFactionTickets(spawner.m_sFactionKey) != 0 && spawner.m_RespawnManager.GetFactionTickets(spawner.m_sFactionKey) < spawner.m_iTicketsPerRespawn)
+				return;
+		
+			if (spawner.m_RespawnManager.TicketsRemaining(spawner.m_sFactionKey))
+				spawner.m_RespawnManager.SubtractTicket(spawner.m_sFactionKey, spawner.m_iTicketsPerRespawn);
+		}
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		spawner.GetTransform(params.Transform);
+		IEntity vehicle = GetGame().SpawnEntityPrefab(Resource.Load(spawner.m_rVehicle), GetGame().GetWorld(), params);
+		GetGame().GetCallqueue().CallLater(SetVehicle, 1000, false, vehicle, spawner);
+	}
+	
+	void SetVehicle(IEntity vehicleEntity, CRF_VehicleSpawner spawner)
+	{
+		spawner.m_eVehicle = vehicleEntity;
+		Vehicle vehicle = Vehicle.Cast(spawner.m_eVehicle);
+		if (vehicle)
+		{
+			vehicle.m_iVehicleSpawnerIndex = spawner.m_iVehicleSpawnerIndex;
+			vehicle.m_sFactionKey = spawner.m_sFactionKey;
+			if (spawner.m_OverridedVehicleLoadout)
+				vehicle.m_OverridedVehicleLoadout = spawner.m_OverridedVehicleLoadout;
+			if (spawner.m_aVehicleGearscriptOverrides.Count() > 0)
+				vehicle.m_aVehicleGearscriptOverrides = spawner.m_aVehicleGearscriptOverrides;
+			if (spawner.m_aAdditionalVehicleItems.Count() > 0)
+				vehicle.m_aAdditionalVehicleItems = spawner.m_aAdditionalVehicleItems;
+		}
+	}
 };

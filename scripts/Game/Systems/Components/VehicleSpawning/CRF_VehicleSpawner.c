@@ -34,7 +34,7 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	IEntity m_eVehicle;
 	float m_fTimer = 0;
 	int m_iVehicleSpawnerIndex = -1;
-	protected bool m_bWaitingToRespawn = false;
+	bool m_bWaitingToRespawn = false;
 	override void EOnInit(IEntity owner)
 	{
 		if (!m_sFactionKey && CRF_Gamemode.GetInstance())
@@ -51,11 +51,11 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		if (m_RespawnManager)
 			m_iVehicleSpawnerIndex = m_RespawnManager.InsertVehicle(this);
-		SpawnVehicle();
-		SetEventMask(EntityEvent.FIXEDFRAME);
+		CRF_GearscriptManager.GetInstance().SpawnVehicle(this);
+		SetEventMask(EntityEvent.FRAME);
 	}
 	
-	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		#ifdef WORKBENCH
 		#else
@@ -67,7 +67,7 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		
 		if (m_bWaitingToRespawn && m_fTimer <= 0)
 		{
-			SpawnVehicle();
+			CRF_GearscriptManager.GetInstance().SpawnVehicle(this);
 			m_bWaitingToRespawn = false;
 		}
 	}
@@ -76,41 +76,6 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	{
 		m_fTimer = m_iRespawnTimer;
 		m_bWaitingToRespawn = true;
-	}
-	
-	void SpawnVehicle()
-	{
-		if (!m_sFactionKey)
-		{
-			Debug.Error("No Faction Key set on " + m_rVehicle + " spawner");
-			return;
-		}
-		//Do not spawn the vehicle if the faction doesn't have the tickets
-		//Handles subtracting tickets from kills that are on a timer. This means tickets are subtracted WHEN the vehicle is spawned
-		if (m_bWaitingToRespawn && !m_bShouldRespawnOnSideRespawn)
-		{
-			if (m_RespawnManager.GetFactionTickets(m_sFactionKey) != 0 && m_RespawnManager.GetFactionTickets(m_sFactionKey) < m_iTicketsPerRespawn)
-				return;
-		
-			if (m_RespawnManager.TicketsRemaining(m_sFactionKey))
-				m_RespawnManager.SubtractTicket(m_sFactionKey, m_iTicketsPerRespawn);
-		}
-		EntitySpawnParams params = new EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
-		this.GetTransform(params.Transform);
-		m_eVehicle = GetGame().SpawnEntityPrefab(Resource.Load(m_rVehicle), GetGame().GetWorld(), params);
-		Vehicle vehicle = Vehicle.Cast(m_eVehicle);
-		if (vehicle)
-		{
-			vehicle.m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
-			vehicle.m_sFactionKey = m_sFactionKey;
-			if (m_OverridedVehicleLoadout)
-				vehicle.m_OverridedVehicleLoadout = m_OverridedVehicleLoadout;
-			if (m_aVehicleGearscriptOverrides.Count() > 0)
-				vehicle.m_aVehicleGearscriptOverrides = m_aVehicleGearscriptOverrides;
-			if (m_aAdditionalVehicleItems.Count() > 0)
-				vehicle.m_aAdditionalVehicleItems = m_aAdditionalVehicleItems;
-		}
 	}
 	
 	#ifdef WORKBENCH
