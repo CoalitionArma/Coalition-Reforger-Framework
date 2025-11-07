@@ -1,0 +1,15 @@
+GenericEntity : "{20EFA9ACB024108F}Prefabs/Weapons/Explosives/Mine_PMN4/Mine_PMN4_base.et" {
+ ID "5968D2B6A82C6019"
+ components {
+  BaseTriggerComponent "{59E4E69D8E9B4323}" {
+   PROJECTILE_EFFECTS {
+    ExplosionEffect "{648EC8EA2431DE1D}" {
+     EffectPrefab "{F09DF869A83C4AD6}Prefabs/Weapons/Warheads/Warhead_Flare_Mine.et"
+    }
+    ExplosionEffect "{66C71EE84AF4F966}" {
+     EffectPrefab "{8431C8CB8D63AFCE}PrefabsEditable/EffectsModules/Flares/EffectModule_UGL_Flare_Red.et"
+    }
+   }
+  }
+ }
+}

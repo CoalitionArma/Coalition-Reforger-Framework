@@ -40,6 +40,8 @@ modded class SCR_VONController
 		IEntity senderBuilding;
 		bool isSenderInBuilding = IsInBuildingOrVehicle(senderEntity, senderBuilding);
 		bool isPlayerInBuilding = IsInBuildingOrVehicle(player, receiverBuilding);
+		if (CheckIfInSameVehicle(senderEntity, player))
+			return false;
 		
 		if (!isSenderInBuilding && !isPlayerInBuilding)
 			return false;
@@ -215,7 +217,6 @@ modded class SCR_VONController
 		
 		ref array<int> playerIds = {};
 		m_PlayerManager.GetPlayers(playerIds);
-		int maxDistance = m_PlayerController.m_aVolumeValues.Get(4);
 		bool isLocalSpectator = IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId());
 		bool isListeningToSpectator = m_PlayerController.m_bIsListeningToSpec;
 		
@@ -290,6 +291,7 @@ modded class SCR_VONController
 				else
 					continue;
 			float distance = vector.Distance(player.GetOrigin(), camera.GetOrigin());
+			int maxDistance = m_VONGameModeComponent.GetPlayerVolume(playerId);
 			if (distance > maxDistance)
 			{
 				
@@ -355,6 +357,7 @@ modded class SCR_VONController
 				continue;
 
 			float distance = vector.Distance(container.m_SoundSource.GetOrigin(), camera.GetOrigin());
+			int maxDistance = m_VONGameModeComponent.GetPlayerVolume(container.m_iPlayerId);
 			if (distance < maxDistance || (isLocalSpectator || isListeningToSpectator))
 				container.m_fDistanceToSender = distance;
 			else

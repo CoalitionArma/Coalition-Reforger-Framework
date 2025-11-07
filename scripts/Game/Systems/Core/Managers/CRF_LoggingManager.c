@@ -611,6 +611,8 @@ class CRF_LoggingManager: SCR_BaseGameModeComponent
 		}
 		
 		// Range
+		if (!instiContext.GetKillerEntity())
+			return;
 		m_fRange = vector.Distance(instiContext.GetVictimEntity().GetOrigin(),instiContext.GetKillerEntity().GetOrigin());
 		
 		// Time

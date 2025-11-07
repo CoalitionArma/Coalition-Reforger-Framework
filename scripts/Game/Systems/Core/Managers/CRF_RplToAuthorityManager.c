@@ -433,6 +433,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		Rpc(RpcAsk_UpdateSupplyArsneal, supplyArsnealId);
 	}
 	
+	void CreateCache(RplId truckId, RplId playerId)
+	{
+		Rpc(RpcAsk_CreateCache, truckId, playerId);
+	}
+	
 	void RequestVehicleSupplies(RplId truckId)
 	{
 		Rpc(RpcAsk_RequestVehicleSupplies, truckId);
@@ -441,6 +446,11 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void RearmVehicle(RplId truckId, array<RplId> supplyItems, array<int> supplyCounts, RplId rearmTruckId)
 	{
 		Rpc(RpcAsk_RearmVehicle, truckId, supplyItems, supplyCounts, rearmTruckId);
+	}
+	
+	void MoveSpecCamToSlot(int slotID, int playerID)
+	{
+		Rpc(RpcAsk_MoveSpecCamToSlot, slotID, playerID);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1048,7 +1058,8 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		BaseInventoryStorageComponent oldStorageComp = BaseInventoryStorageComponent.Cast(oldItem.FindComponent(BaseInventoryStorageComponent));
 		BaseInventoryStorageComponent newStorageComp = BaseInventoryStorageComponent.Cast(newItem.FindComponent(BaseInventoryStorageComponent));
 		ref array<IEntity> pouches = {};
-		oldStorageComp.GetAll(pouches);
+		if (oldStorageComp)
+			oldStorageComp.GetAll(pouches);
 		ref array<ResourceName> items = {};
 		//Wow I hate this, gotta scan through all the pouchs cause GetAll, in fact, does not get all :O
 		foreach (IEntity pouch: pouches)
@@ -1294,8 +1305,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
 			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
-			SCR_ResourceComponent resComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
-			SCR_ResourceSystemHelper.GetStorageConsumer(resComponent).RequestConsumtion(((float)supplyCounts.Get(i)));
+			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
+            if (!resourceComponent)
+                continue;
+                
+            SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT_STORAGE, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				return;
+
+           	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
 		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
@@ -1321,8 +1343,89 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		
 		CRF_SupplyArsenalComponent supplyComp = CRF_SupplyArsenalComponent.Cast(supplyArsenal.FindComponent(CRF_SupplyArsenalComponent));
 		supplyComp.UpdateCurrentSupply();
+	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_MoveSpecCamToSlot(int slotID, int playerId)
+	{
+		// Get slot data from the slotting manager
+		CRF_SlotDataContainer slotData = CRF_SlottingManager.GetInstance().GetSlotData(slotID);
+		if (!slotData)
+			return;
+		
+		// Find the entity associated with the slot and set it as the spectator target
+		RplComponent rplComponent = RplComponent.Cast(Replication.FindItem(slotData.GetSlotCurrentCharacter()));
+		if (!rplComponent)
+			return;
+		
+		// Get slot origin
+		IEntity slotEntity = rplComponent.GetEntity();
+		vector slotPos = slotEntity.GetOrigin();
+				
+		m_RplBroadcastManager.MoveSpecCamToSlot(slotPos, playerId);
 	}
 	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	void RpcAsk_CreateCache(RplId truckId, RplId playerId)
+	{
+		if (!Replication.FindItem(truckId) || !Replication.FindItem(playerId))
+			return;
+		
+		IEntity truck = RplComponent.Cast(Replication.FindItem(truckId)).GetEntity();
+		IEntity player = RplComponent.Cast(Replication.FindItem(playerId)).GetEntity();
+		truck = truck.GetRootParent();
+		Print(truck);
+		SCR_VehicleInventoryStorageManagerComponent vehInventory = SCR_VehicleInventoryStorageManagerComponent.Cast(truck.FindComponent(SCR_VehicleInventoryStorageManagerComponent));
+		array<IEntity> items = {};
+		vehInventory.GetItems(items);
+		if (items.Count() == 0)
+			return;
+		
+		EntitySpawnParams spawnParams = new EntitySpawnParams();
+		spawnParams.Transform[3] = GetSpawn(player);
+		
+		ResourceName prefab;
+		if (Vehicle.Cast(truck).m_sFactionKey == "BLUFOR")
+			prefab = "{0E3A25C772CDDC95}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/US/CRF_BLUFOR_Cache.et";
+		else
+			prefab = "{F636545E6893F50B}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/CRF_OPFOR_Cache.et";
+		
+		IEntity cache = GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
+		Print(cache.GetOrigin());
+		GetGame().GetCallqueue().CallLater(CreateCacheDelay, 100, false, cache, items);
+	}
+	
+	vector GetSpawn(IEntity player)
+	{
+		if (!player)
+			return "0 0 0";
+	
+		// Get player transform (position + orientation)
+		vector mat[4];
+		player.GetTransform(mat);
+	
+		// Direction player is facing (normalized forward vector)
+		vector forwardDir = mat[2];
+	
+		// Calculate new position 0.5 meters behind the player
+		vector behindPos = mat[3] - (forwardDir * 0.5);
+		return behindPos;
+	}
+	
+	void CreateCacheDelay(IEntity cache, array<IEntity> items)
+	{
+		SCR_InventoryStorageManagerComponent invComp = SCR_InventoryStorageManagerComponent.Cast(cache.FindComponent(SCR_InventoryStorageManagerComponent));
+		
+			
+		foreach (IEntity item: items)
+		{
+			if (!item)
+				continue;
+			invComp.TrySpawnPrefabToStorage(item.GetPrefabData().GetPrefabName());
+			SCR_EntityHelper.DeleteEntityAndChildren(item);
+		}
+	}
+
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	void RpcAsk_RequestVehicleSupplies(RplId truckId)
 	{
@@ -1346,8 +1449,19 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		for (int i = 0; i < supplyItems.Count(); i++)
 		{
 			IEntity supplyDepot = RplComponent.Cast(Replication.FindItem(supplyItems[i])).GetEntity();
-			SCR_ResourceComponent resComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
-			SCR_ResourceSystemHelper.GetStorageConsumer(resComponent).RequestConsumtion(((float)supplyCounts.Get(i)));
+			SCR_ResourceComponent resourceComponent = SCR_ResourceComponent.Cast(supplyDepot.FindComponent(SCR_ResourceComponent));
+            if (!resourceComponent)
+                continue;
+                
+            SCR_ResourceConsumer consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT_STORAGE, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				consumer = resourceComponent.GetConsumer(EResourceGeneratorID.DEFAULT, EResourceType.SUPPLIES);
+			
+			if (!consumer)
+				return;
+
+           	consumer.RequestConsumtion(supplyCounts[i]);
 		}
 		
 		IEntity rearmTruck = RplComponent.Cast(Replication.FindItem(rearmTruckId)).GetEntity();

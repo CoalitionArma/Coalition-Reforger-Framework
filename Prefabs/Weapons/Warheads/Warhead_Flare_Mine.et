@@ -1,0 +1,29 @@
+GenericEntity : "{9B5FF7EECAD376FA}Prefabs/Weapons/Warheads/Warhead_Base.et" {
+ ID "9D9BE68EA2672F76"
+ components {
+  SignalsManagerComponent "{C572A75F88B55309}" {
+   Enabled 1
+  }
+  SoundComponent "{D092A75ECEFAE456}" {
+   Enabled 1
+   Filenames {
+    "{0E5A823BF630FF25}Sounds/Weapons/Grenades/Weapons_Grenade_WP_NoShrapnell.acp"
+   }
+  }
+  BaseTriggerComponent "{55129E81CBAA1390}" {
+   PROJECTILE_EFFECTS {
+    SpawnParticleEffect "{66C71EE8282F4D29}" {
+     ParticleEffect "{6FBF925362CD6AAD}Particles/Weapon/Muzzle_RPG7V1_02.ptc"
+    }
+    SubmunitionEffect "{66C71EF7CA395148}" {
+     Prefab "{DE1FF1F45E8B66B0}Prefabs/Weapons/Ammo/Shrapnel/Ammo_Shrapnel_Light.et"
+     Count 6
+     Dispersion 360
+    }
+   }
+  }
+  HitEffectComponent "{9D9BE68D6F65A10F}" {
+   ParticleEffect "{728768DE31C8D1DE}Particles/Weapon/Explosion_VOG25.ptc"
+  }
+ }
+}

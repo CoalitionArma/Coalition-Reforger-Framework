@@ -1,0 +1,12 @@
+CRF_NukeSpawner {
+ ID "66C84221A92FBC61"
+ components {
+  RplComponent "{66C84269ECFAC651}" {
+   "Rpl State Override" Runtime
+   "Parent Node From Parent Entity" 0
+  }
+  Hierarchy "{66C84269EA5AA580}" {
+  }
+ }
+ coords 850.451 7.219 1488.271
+}

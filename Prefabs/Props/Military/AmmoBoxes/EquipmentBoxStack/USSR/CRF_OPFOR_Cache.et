@@ -1,0 +1,45 @@
+GenericEntity : "{5CA39ACB3F74625B}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/NSVCache.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  MeshObject "{5872F0EB7FA40561}" {
+   Object "{CFABE5292A62A945}Assets/Props/Military/AmmoBox/EquipmentBoxStack/EquipmentBoxStack_01_V5.xob"
+  }
+  SCR_UniversalInventoryStorageComponent "{5476A2F100DF4EFF}" {
+   Attributes SCR_ItemAttributeCollection "{5476CDB2EAD8225E}" {
+    ItemDisplayName SCR_InventoryUIInfo "{54F48AF1F3C103C1}" {
+     Name "Supply Cache"
+     Description ""
+    }
+   }
+   UseCapacityCoefficient 0
+   MaxCumulativeVolume 100000000
+   MaxItemSize 99999 99999 99999
+   MultiSlots {
+    MultiSlotConfiguration "{65753B3B2F5C2B9A}" {
+     SlotTemplate EquipmentStorageSlot Rifle {
+      Enabled 0
+     }
+    }
+    MultiSlotConfiguration "{65753B3B2F5C2BA1}" {
+     SlotTemplate EquipmentStorageSlot RPK {
+      Enabled 0
+     }
+    }
+   }
+   m_fMaxWeight 100000000
+  }
+  RplComponent "{5476B36C54387F41}" {
+   "Rpl State Override" Runtime
+  }
+  SCR_InventoryStorageManagerComponent "{66C46EEBE319D084}" {
+  }
+  SlotManagerComponent "{66C46EEAB4EF179C}" {
+   Slots {
+    EntitySlotInfo Cover {
+     Prefab "{E98B1DE2DBE52D2C}Prefabs/Props/Military/AmmoBoxes/EquipmentBoxStack/USSR/EquipmentBoxStack_USSR_01_V5_cover.et"
+    }
+   }
+  }
+ }
+ coords 846.93 7.219 1474.268
+}

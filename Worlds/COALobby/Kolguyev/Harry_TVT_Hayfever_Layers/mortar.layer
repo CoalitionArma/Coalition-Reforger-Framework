@@ -1,0 +1,48 @@
+GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 8000
+     m_fResourceValueMax 8000
+    }
+   }
+  }
+ }
+ coords 1910.317 127.085 7378.235
+}
+$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ {
+  coords 1914.605 130.065 7375.071
+  angles 0 116.06 0
+ }
+ {
+  coords 1905.456 130.065 7380.857
+  angles 0 116.06 0
+ }
+}
+$grp GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
+ {
+  coords 1908.237 130.228 7381.874
+ }
+ {
+  coords 1916.518 130.231 7373.01
+ }
+ {
+  coords 1911.306 132.118 7390.041
+ }
+}
+$grp GenericEntity : "{DE658AC78172D02E}Prefabs/Props/Construction/GarbageStack_01/GarbageStack_01_Short.et" {
+ {
+  coords 1911.795 130.125 7389.568
+  angles 0 37.425 0
+ }
+ {
+  coords 1912.117 131.095 7389.295
+  angles 0 36.562 0
+ }
+ {
+  coords 1911.347 130.125 7388.282
+  angles 0 34.925 0
+ }
+}
