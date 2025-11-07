@@ -30,6 +30,7 @@ modded class Vehicle
 		if (!GetGame().GetWorld())
 			return;
 		
+		GetGame().GetCallqueue().CallLater(SetVehicleGear, 500, false);
 		GetGame().GetCallqueue().CallLater(CheckIfSpawnPassenger, 500, false);
 		CRF_Gamemode.GetInstance().AddVehicleToArray(this);
 	}

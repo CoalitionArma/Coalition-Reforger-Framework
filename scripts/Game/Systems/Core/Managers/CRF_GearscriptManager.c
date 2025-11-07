@@ -128,18 +128,18 @@ class CRF_GearscriptManager : ScriptComponent
 			if (!ChimeraCharacter.Cast(aiPlayer))
 				continue;
 			
+			if (!aiPlayer.FindComponent(FactionAffiliationComponent))
+				continue;
+			
 			if (!closestPlayer)
 			{
-				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
-				if (closestPlayerDistance > 200)
+				int distance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
+				if (distance > 200)
 					continue;
+				
+				closestPlayerDistance = distance;
 				closestPlayer = aiPlayer;
-				if (aiPlayer.FindComponent(FactionAffiliationComponent))
-				{
-					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
-				}
-				else
-					factionKey = "CIV";
+				factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
 				continue;
 			}
 			
@@ -149,12 +149,7 @@ class CRF_GearscriptManager : ScriptComponent
 			
 			closestPlayer = aiPlayer;
 			closestPlayerDistance = playerDistance;
-			if (aiPlayer.FindComponent(FactionAffiliationComponent))
-				{
-					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
-				}
-				else
-					factionKey = "CIV";
+			factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
 		}
 		
 		//There's no players
@@ -243,7 +238,6 @@ class CRF_GearscriptManager : ScriptComponent
 					suppliesNeeded += mag.GetAmmoCount();
 			}
 		}
-		
 		return suppliesNeeded;
 	}
 	
