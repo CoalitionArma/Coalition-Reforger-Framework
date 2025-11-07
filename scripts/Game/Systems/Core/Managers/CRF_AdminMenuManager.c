@@ -5,6 +5,58 @@ class CRF_TicketMessageData
 	string sender;
 	string msg;
 	string timestamp;
+	
+	//------------------------------------------------------------------------------------------------
+	// REPLICATION STUFF
+	//------------------------------------------------------------------------------------------------
+	
+	static bool Extract(CRF_TicketMessageData instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	{	
+		snapshot.SerializeString(instance.sender);
+		snapshot.SerializeString(instance.msg);
+		snapshot.SerializeString(instance.timestamp);
+		
+		return true;
+	}
+	
+	static bool Inject(SSnapSerializerBase snapshot, ScriptCtx ctx, CRF_TicketMessageData instance)
+	{
+		snapshot.SerializeString(instance.sender);
+		snapshot.SerializeString(instance.msg);
+		snapshot.SerializeString(instance.timestamp);
+		
+		return true;
+	}
+	
+	static void Encode(SSnapSerializerBase snapshot, ScriptCtx ctx, ScriptBitSerializer packet)
+	{
+		snapshot.EncodeString(packet);
+		snapshot.EncodeString(packet);
+		snapshot.EncodeString(packet);
+	}
+	
+	static bool Decode(ScriptBitSerializer packet, ScriptCtx ctx, SSnapSerializerBase snapshot)
+	{
+		snapshot.DecodeString(packet);
+		snapshot.DecodeString(packet);
+		snapshot.DecodeString(packet);
+		
+		return true;
+	}
+	
+	static bool SnapCompare(SSnapSerializerBase lhs, SSnapSerializerBase rhs, ScriptCtx ctx)
+	{
+		return lhs.CompareStringSnapshots(rhs)  
+		&& lhs.CompareStringSnapshots(rhs)
+		&& lhs.CompareStringSnapshots(rhs);
+	}
+	
+	static bool PropCompare(CRF_TicketMessageData instance, SSnapSerializerBase snapshot, ScriptCtx ctx)
+	{
+		return snapshot.CompareString(instance.sender)
+		&& snapshot.CompareString(instance.msg)
+		&& snapshot.CompareString(instance.timestamp);
+	}
 }
 
 class CRF_AdminActionLog
@@ -16,10 +68,11 @@ class CRF_AdminActionLog
 class CRF_Ticket
 {
 	int ticketID; // ID of the player who requested help
-	ref array<ref CRF_TicketMessageData> messages; // Array of messages from the player since they asked for help
+	int adminID; // Admin assigned to the ticket
+	ref array<ref CRF_TicketMessageData> messages = new array<ref CRF_TicketMessageData>(); // Array of messages from the player since they asked for help
 	
 	void AddMessage(string sender, string msg)
-	{
+	{	
 		CRF_TicketMessageData message = new CRF_TicketMessageData;
 		message.sender = sender;
 		message.msg = msg;
@@ -29,7 +82,7 @@ class CRF_Ticket
 }
 
 class CRF_AdminMenuManager : ScriptComponent
-{
+{	
 	// Map of player tickets
 	private ref map<int, ref CRF_Ticket> m_mTickets = new map<int, ref CRF_Ticket>();
 	
@@ -83,7 +136,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		m_mAdminActions.Insert(log);
 		
 		// Refresh Lists if admin menu is open
-		RefreshLists();
+		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 	
 	/**
@@ -129,7 +182,33 @@ class CRF_AdminMenuManager : ScriptComponent
 		ticket.AddMessage(sender, data);
 		
 		// Refresh Lists if admin menu is open
-		RefreshLists();
+		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
+	}
+		
+	/**
+	* Keeps track of the admin that helping with this ticket
+	* @param ticketID ID of the ticket (ID of the player that initially opened the ticket)
+	* @param admin ID of the admin that will be helpign the player
+	*/
+	void AssignAdminTicket(int ticketID, int adminID)
+	{		
+		CRF_Ticket ticket;
+		
+		// Check if player already has ticket open
+		if (!m_mTickets.Contains(ticketID))
+			return;
+
+		m_mTickets.Find(ticketID, ticket);
+		
+		// Check if admin is already assigned
+		if (ticket.adminID)
+			return;
+		
+		// Add the new message to the ticket
+		ticket.adminID = adminID;
+		
+		// Refresh Lists if admin menu is open
+		CRF_RplBroadcastManager.GetInstance().AssignAdminTicket(ticketID, adminID, true);
 	}
 	
 	/**
@@ -138,15 +217,19 @@ class CRF_AdminMenuManager : ScriptComponent
 	*/
 	array<int> GetOpenTickets()
 	{
-		array<int> playerIDs = {};
+		array<int> ticketIDs = {};
 		
 		// Gather list of playerIDs for tickets that are open
 		foreach (int id, ref CRF_Ticket ticket : m_mTickets)
 		{
-			playerIDs.Insert(ticket.ticketID);
+			bool assigned = true;
+			if (!ticket.adminID)
+				assigned = false;
+			
+			ticketIDs.Insert(ticket.ticketID);
 		}
 		
-		return playerIDs;
+		return ticketIDs;
 	}
 	
 	/**
@@ -175,7 +258,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		m_mTickets.Remove(ticketID);
 		
 		// Refresh Lists if admin menu is open
-		RefreshLists();
+		CRF_RplBroadcastManager.GetInstance().RefreshAdminMenuLists();
 	}
 	
 	/**
@@ -195,8 +278,8 @@ class CRF_AdminMenuManager : ScriptComponent
 		CRF_AdminMenu adminMenu = CRF_AdminMenu.Cast(topMenu);
 		if (adminMenu.GetCurrentOpenTab() == "Tickets")
 		{
-			adminMenu.PopulateTicketMessages();
-			adminMenu.PopulateOpenTicketList();
+			adminMenu.GetTicketMessages();
+			adminMenu.GetOpenTickets();
 		}
 		
 		adminMenu.PopulateAdminActionsList();

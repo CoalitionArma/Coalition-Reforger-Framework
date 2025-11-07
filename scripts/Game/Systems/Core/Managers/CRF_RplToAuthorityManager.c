@@ -14,8 +14,10 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	protected CRF_GamemodeManager m_GamemodeManager;
 	protected CRF_SlottingManager m_SlottingManager;
 	protected CRF_SafestartManager m_SafestartManager;
+	protected CRF_AdminMenuManager m_AdminMenuManager;
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
+	
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	
 	protected static CRF_RplToAuthorityManager m_sInstance;
@@ -53,6 +55,7 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		m_GamemodeManager = CRF_GamemodeManager.GetInstance();
 		m_SlottingManager = CRF_SlottingManager.GetInstance();
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
+		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_GroupsManagerComponent = SCR_GroupsManagerComponent.GetInstance();
@@ -266,6 +269,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
 	{
 		Rpc(RpcAsk_AssignAdminTicket, ticketID, adminID, logAction); 
+	}
+	
+	void GetOpenTickets(int playerID)
+	{
+		Rpc(RpcAsk_GetOpenTickets, playerID); 
+	}
+	
+	void GetTicketMessages(int playerID, int ticketID)
+	{
+		Rpc(RpcAsk_GetTicketMessages, playerID, ticketID); 
 	}
 	
 	// Player management functions
@@ -590,25 +603,49 @@ class CRF_RplToAuthorityManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SendAdminMessage(string data, int playerID)
 	{
-		m_RplBroadcastManager.SendAdminMessage(data, playerID);
+		// Broadcast a new ticket/message to admins
+		m_RplBroadcastManager.SendAdminMessage(data, playerID, m_AdminMenuManager.TicketExists(playerID));
+		
+		// Create a new ticket or/and add reply to existing ticket if not a admin/mod
+		if (!SCR_Global.IsAdmin(playerID) && !m_GamemodeManager.IsModerator(playerID))
+			m_AdminMenuManager.NewTicketMessage(playerID, playerID, data);
 	}
 
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
+		// Create a new ticket or/and add reply to existing ticket
+		m_AdminMenuManager.NewTicketMessage(playerId, playerId, data);
+		
+		// Broadcast to the reply to the player
 		m_RplBroadcastManager.ReplyAdminMessage(data, playerId, adminID, logAction);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
-		m_RplBroadcastManager.CloseAdminTicket(ticketID, adminID, logAction);
+		m_AdminMenuManager.CloseTicket(ticketID);
+		
+		// Broadcast to admins that ticket was clsoed
+		m_RplBroadcastManager.CloseAdminTicket(ticketID, adminID, true);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_AssignAdminTicket(int ticketID, int adminID, bool logAction)
 	{
-		m_RplBroadcastManager.AssignAdminTicket(ticketID, adminID, logAction);
+		m_AdminMenuManager.AssignAdminTicket(ticketID, adminID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_GetOpenTickets(int playerID)
+	{
+		m_RplBroadcastManager.GetOpenTickets(playerID);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_GetTicketMessages(int playerID, int ticketID)
+	{
+		m_RplBroadcastManager.GetTicketMessages(playerID, ticketID);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
