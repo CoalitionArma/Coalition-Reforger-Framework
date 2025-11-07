@@ -1,4 +1,4 @@
-modded class CSI_Compass
+modded class CSI_HUD
 {
 	/**
 	 * Updates the compass visibility based on player state.
@@ -15,20 +15,19 @@ modded class CSI_Compass
 			return;
 		
 		// Get references
-		Widget rootWidget = GetRootWidget();
 		bool isSpectator = CRF_GamemodeManager.IsSpectator();
-		bool isWidgetVisible = rootWidget.IsVisible();
+		bool isWidgetVisible = m_wRoot.IsVisible();
 		
 		// Handle visibility based on player state:
 		// - Hide compass when in spectator mode
 		// - Show compass when in normal player mode
 		if (isSpectator && isWidgetVisible)
 		{
-			rootWidget.SetVisible(false);
+			m_wRoot.SetVisible(false);
 		}
 		else if (!isSpectator && !isWidgetVisible)
 		{
-			rootWidget.SetVisible(true);
+			m_wRoot.SetVisible(true);
 		}
 	}
 }
