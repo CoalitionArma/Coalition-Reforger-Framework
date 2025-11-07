@@ -188,7 +188,7 @@ class CRF_AdminMenuManager : ScriptComponent
 	/**
 	* Keeps track of the admin that helping with this ticket
 	* @param ticketID ID of the ticket (ID of the player that initially opened the ticket)
-	* @param admin ID of the admin that will be helpign the player
+	* @param admin ID of the admin that will be helping the player
 	*/
 	void AssignAdminTicket(int ticketID, int adminID)
 	{		
@@ -204,7 +204,7 @@ class CRF_AdminMenuManager : ScriptComponent
 		if (ticket.adminID)
 			return;
 		
-		// Add the new message to the ticket
+		// Assign the admin to the ticket
 		ticket.adminID = adminID;
 		
 		// Refresh Lists if admin menu is open
@@ -222,10 +222,6 @@ class CRF_AdminMenuManager : ScriptComponent
 		// Gather list of playerIDs for tickets that are open
 		foreach (int id, ref CRF_Ticket ticket : m_mTickets)
 		{
-			bool assigned = true;
-			if (!ticket.adminID)
-				assigned = false;
-			
 			ticketIDs.Insert(ticket.ticketID);
 		}
 		

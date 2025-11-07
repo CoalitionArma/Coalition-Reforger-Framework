@@ -643,7 +643,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!chatComponent)
 			return;
 		
-		// Display a admin closed a ticket
+		// Display an admin closed a ticket
 		chatComponent.ShowMessage(string.Format("%1 closed %2's ticket", adminName, playerName));
 	}
 	
@@ -664,7 +664,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (!chatComponent)
 			return;
 
-		// Display a admin assigned them self to the ticket
+		// Display an admin assigned them self to the ticket
 		chatComponent.ShowMessage(string.Format("%1 assigned to %2's ticket", adminName, playerName));
 	}
 	//------------------------------------------------------------------------------------------------
