@@ -40,6 +40,8 @@ modded class SCR_VONController
 		IEntity senderBuilding;
 		bool isSenderInBuilding = IsInBuildingOrVehicle(senderEntity, senderBuilding);
 		bool isPlayerInBuilding = IsInBuildingOrVehicle(player, receiverBuilding);
+		if (CheckIfInSameVehicle(senderEntity, player))
+			return false;
 		
 		if (!isSenderInBuilding && !isPlayerInBuilding)
 			return false;
