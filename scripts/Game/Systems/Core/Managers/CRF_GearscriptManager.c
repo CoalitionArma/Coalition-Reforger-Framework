@@ -111,47 +111,57 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	bool FindFactionByClosestPlayer(IEntity vehicle)
-	{
-		array<int> playerIds = {};
-		PlayerManager playerManager = GetGame().GetPlayerManager();
-		playerManager.GetPlayers(playerIds);
-		
+	{	
 		float closestPlayerDistance;
 		IEntity closestPlayer;
-		int closestPlayerId;
-		foreach (int playerId: playerIds)
+		string factionKey = "";
+		
+		array<AIAgent> agents = {};
+		GetGame().GetAIWorld().GetAIAgents(agents);
+		
+		foreach (AIAgent agent: agents)
 		{
-			IEntity player = playerManager.GetPlayerControlledEntity(playerId);
-			if (!player)
+			IEntity aiPlayer = agent.GetControlledEntity();
+			if (!aiPlayer)
 				continue;
 			
-			if (CRF_GamemodeManager.IsSpectator(player))
+			if (!ChimeraCharacter.Cast(aiPlayer))
 				continue;
 			
 			if (!closestPlayer)
 			{
-				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 				if (closestPlayerDistance > 200)
 					continue;
-				closestPlayer = player;
-				closestPlayerId = playerId;
+				closestPlayer = aiPlayer;
+				if (aiPlayer.FindComponent(FactionAffiliationComponent))
+				{
+					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
 				continue;
 			}
 			
-			float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+			float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 			if (playerDistance > closestPlayerDistance || playerDistance > 200)
 				continue;
 			
-			closestPlayer = player;
+			closestPlayer = aiPlayer;
 			closestPlayerDistance = playerDistance;
-			closestPlayerId = playerId;
+			if (aiPlayer.FindComponent(FactionAffiliationComponent))
+				{
+					factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+				}
+				else
+					factionKey = "CIV";
 		}
 		
 		//There's no players
 		if (!closestPlayer)
 			return false;
 		
-		Vehicle.Cast(vehicle).m_sFactionKey = SCR_FactionManager.SGetPlayerFaction(closestPlayerId).GetFactionKey();
+		Vehicle.Cast(vehicle).m_sFactionKey = factionKey;
 		GetGame().GetCallqueue().CallLater(
 					CRF_GearscriptManager.GetInstance().SetVehicleGear, 500, false,
 					vehicle, Vehicle.Cast(vehicle).m_sFactionKey
@@ -188,6 +198,50 @@ class CRF_GearscriptManager : ScriptComponent
 		for (int i = 0; i < supplies.Count(); i++)
 		{
 			suppliesNeeded += supplies[i] * amountOfItem[i];
+		}
+		
+		SCR_BaseCompartmentManagerComponent compartmentMan = SCR_BaseCompartmentManagerComponent.Cast(truck.FindComponent(SCR_BaseCompartmentManagerComponent));
+		array<BaseCompartmentSlot> turrets = {};
+		array<IEntity> weapons = {};
+		compartmentMan.GetCompartmentsOfType(turrets, ECompartmentType.TURRET);
+		foreach (BaseCompartmentSlot turret: turrets)
+		{
+			TurretControllerComponent turretController = TurretControllerComponent.Cast(turret.GetController());
+			if (!turretController)
+				continue;
+			
+			array<IEntity> weaponsToAdd = {};
+			BaseWeaponManagerComponent weaponManager = turretController.GetWeaponManager();
+			if (weaponManager)
+				weaponManager.GetWeaponsList(weaponsToAdd);
+		
+			foreach (IEntity weapon: weaponsToAdd)
+			{
+				weapons.Insert(weapon);
+			}
+		}
+		
+		foreach (IEntity weapon: weapons)
+		{
+			if (!weapon.FindComponent(WeaponComponent))
+				continue;
+			
+			WeaponComponent weaponComp = WeaponComponent.Cast(weapon.FindComponent(WeaponComponent));
+			EWeaponType type = weaponComp.GetWeaponType();
+			
+			array<BaseMuzzleComponent> muzzles = {};
+			weaponComp.GetMuzzlesList(muzzles);
+			array<ResourceName> magazinesToAdd = {};
+			array<int> magazineCount = {};
+			foreach (BaseMuzzleComponent muzzle: muzzles)
+			{
+				BaseMagazineComponent mag = muzzle.GetMagazine();
+				if (!mag)
+					continue;
+				
+				if (type == EWeaponType.WT_AUTOCANNON)
+					suppliesNeeded += mag.GetAmmoCount();
+			}
 		}
 		
 		return suppliesNeeded;
@@ -348,40 +402,50 @@ class CRF_GearscriptManager : ScriptComponent
 		//Lets find a faction, if there is none start looking for one in the loop.
 		Faction faction = SCR_FactionManager.Cast(GetGame().GetFactionManager()).GetFactionByKey(factionKey);
 		if (!faction)
-		{
-			array<int> playerIds = {};
-			PlayerManager playerManager = GetGame().GetPlayerManager();
-			playerManager.GetPlayers(playerIds);
-			
+		{	
 			float closestPlayerDistance;
 			IEntity closestPlayer;
-			int closestPlayerId;
-			foreach (int playerId: playerIds)
+			factionKey = "";
+			array<AIAgent> agents = {};
+			
+			GetGame().GetAIWorld().GetAIAgents(agents);
+			
+			foreach (AIAgent agent: agents)
 			{
-				IEntity player = playerManager.GetPlayerControlledEntity(playerId);
-				if (!player)
+				IEntity aiPlayer = agent.GetControlledEntity();
+				if (!aiPlayer)
 					continue;
 				
-				if (CRF_GamemodeManager.IsSpectator(player))
+				if (!ChimeraCharacter.Cast(aiPlayer))
 					continue;
 				
 				if (!closestPlayer)
 				{
-					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+					closestPlayerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 					if (closestPlayerDistance > 200)
 						continue;
-					closestPlayer = player;
-					closestPlayerId = playerId;
+					closestPlayer = aiPlayer;
+					if (aiPlayer.FindComponent(FactionAffiliationComponent))
+					{
+						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
 					continue;
 				}
 				
-				float playerDistance = vector.Distance(vehicle.GetOrigin(), player.GetOrigin());
+				float playerDistance = vector.Distance(vehicle.GetOrigin(), aiPlayer.GetOrigin());
 				if (playerDistance > closestPlayerDistance || playerDistance > 200)
 					continue;
 				
-				closestPlayer = player;
+				closestPlayer = aiPlayer;
 				closestPlayerDistance = playerDistance;
-				closestPlayerId = playerId;
+				if (aiPlayer.FindComponent(FactionAffiliationComponent))
+					{
+						factionKey = FactionAffiliationComponent.Cast(aiPlayer.FindComponent(FactionAffiliationComponent)).GetAffiliatedFactionKey();
+					}
+					else
+						factionKey = "CIV";
 			}
 			
 			//There's no players
@@ -392,7 +456,7 @@ class CRF_GearscriptManager : ScriptComponent
 			}
 
 			
-			faction = SCR_FactionManager.SGetPlayerFaction(closestPlayerId);
+			faction = GetGame().GetFactionManager().GetFactionByKey(factionKey);
 			Vehicle.Cast(vehicle).m_sFactionKey = faction.GetFactionKey();
 		}
 		
@@ -659,7 +723,6 @@ class CRF_GearscriptManager : ScriptComponent
 			array<int> magazineCount = {};
 			foreach (BaseMuzzleComponent muzzle: muzzles)
 			{
-				//TODO: Support new autocanon
 				BaseMagazineComponent mag = muzzle.GetMagazine();
 				if (!mag)
 					continue;
@@ -667,7 +730,7 @@ class CRF_GearscriptManager : ScriptComponent
 				if (type == EWeaponType.WT_AUTOCANNON)
 				{
 					if (!calculateSupplies)
-						suppliesNeeded += mag.GetMaxAmmoCount() - mag.GetAmmoCount();
+						suppliesNeeded += mag.GetMaxAmmoCount();
 					if (mag.GetMaxAmmoCount() < bulletsToAdd)
 						PrintFormat("[CRF_GEARSCRIPT ERROR] Magazine: %1 does not have the proper max ammo set for the gearscript! Current: %2 | Needs: %3", WidgetManager.Translate(mag.GetUIInfo().GetName()), mag.GetMaxAmmoCount(), bulletsToAdd);
 					mag.SetAmmoCount(bulletsToAdd);
@@ -1900,6 +1963,45 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		// Add attachments after a delay to ensure weapon is fully initialized
 		GetGame().GetCallqueue().CallLater(AddAttachments, 1000, false, weaponResource, attachmentResources, spawnParams, inventoryManager);
+		GetGame().GetCallqueue().CallLater(SelectWeapon, 500, false, inventory.GetOwner()); 
+	}
+	
+	void SelectWeapon(IEntity entity)
+	{
+		if (!ChimeraCharacter.Cast(entity))
+			return;
+		
+		BaseWeaponManagerComponent weaponMan = BaseWeaponManagerComponent.Cast(ChimeraCharacter.Cast(entity).GetWeaponManager());
+		if (!weaponMan)
+			return;
+		
+		CharacterControllerComponent charController = CharacterControllerComponent.Cast(ChimeraCharacter.Cast(entity).GetCharacterController());
+		if (!charController)
+			return;
+		
+		array<WeaponSlotComponent> outSlots = {};
+		weaponMan.GetWeaponsSlots(outSlots);
+		WeaponSlotComponent weapon;
+		foreach (WeaponSlotComponent outSlot: outSlots)
+		{
+			if (!outSlot.GetWeaponEntity())
+				continue;
+			
+			if (outSlot.GetWeaponEntity().FindComponent(GrenadeMoveComponent))
+				continue;
+			
+			weapon = outSlot;
+			break;
+		}
+		
+		if (!weapon)
+			return;
+		
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);
+		if (playerId > 0)
+			SCR_ChimeraCharacter.Cast(entity).SelectPrimaryWeapon();
+		else
+			charController.SelectWeapon(weapon);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -2482,5 +2584,46 @@ class CRF_GearscriptManager : ScriptComponent
 			   SCR_MineWeaponComponent.Cast(item.FindComponent(SCR_MineWeaponComponent)) ||
 			   SCR_RepairSupportStationComponent.Cast(item.FindComponent(SCR_RepairSupportStationComponent)) ||
 			   SCR_HealSupportStationComponent.Cast(item.FindComponent(SCR_HealSupportStationComponent));
+	}
+	
+	void SpawnVehicle(CRF_VehicleSpawner spawner)
+	{
+		if (!spawner.m_sFactionKey)
+		{
+			Debug.Error("No Faction Key set on " + spawner.m_rVehicle + " spawner");
+			return;
+		}
+		//Do not spawn the vehicle if the faction doesn't have the tickets
+		//Handles subtracting tickets from kills that are on a timer. This means tickets are subtracted WHEN the vehicle is spawned
+		if (spawner.m_bWaitingToRespawn && !spawner.m_bShouldRespawnOnSideRespawn)
+		{
+			if (spawner.m_RespawnManager.GetFactionTickets(spawner.m_sFactionKey) != 0 && spawner.m_RespawnManager.GetFactionTickets(spawner.m_sFactionKey) < spawner.m_iTicketsPerRespawn)
+				return;
+		
+			if (spawner.m_RespawnManager.TicketsRemaining(spawner.m_sFactionKey))
+				spawner.m_RespawnManager.SubtractTicket(spawner.m_sFactionKey, spawner.m_iTicketsPerRespawn);
+		}
+		EntitySpawnParams params = new EntitySpawnParams();
+		params.TransformMode = ETransformMode.WORLD;
+		spawner.GetTransform(params.Transform);
+		IEntity vehicle = GetGame().SpawnEntityPrefab(Resource.Load(spawner.m_rVehicle), GetGame().GetWorld(), params);
+		GetGame().GetCallqueue().CallLater(SetVehicle, 1000, false, vehicle, spawner);
+	}
+	
+	void SetVehicle(IEntity vehicleEntity, CRF_VehicleSpawner spawner)
+	{
+		spawner.m_eVehicle = vehicleEntity;
+		Vehicle vehicle = Vehicle.Cast(spawner.m_eVehicle);
+		if (vehicle)
+		{
+			vehicle.m_iVehicleSpawnerIndex = spawner.m_iVehicleSpawnerIndex;
+			vehicle.m_sFactionKey = spawner.m_sFactionKey;
+			if (spawner.m_OverridedVehicleLoadout)
+				vehicle.m_OverridedVehicleLoadout = spawner.m_OverridedVehicleLoadout;
+			if (spawner.m_aVehicleGearscriptOverrides.Count() > 0)
+				vehicle.m_aVehicleGearscriptOverrides = spawner.m_aVehicleGearscriptOverrides;
+			if (spawner.m_aAdditionalVehicleItems.Count() > 0)
+				vehicle.m_aAdditionalVehicleItems = spawner.m_aAdditionalVehicleItems;
+		}
 	}
 };

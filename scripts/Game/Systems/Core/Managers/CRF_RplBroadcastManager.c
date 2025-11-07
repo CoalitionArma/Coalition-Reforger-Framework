@@ -382,6 +382,17 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	void MoveSpecCamToSlot(vector slotPos, int playerId)
+	{	
+		#ifdef WORKBENCH
+		RpcDo_MoveSpecCamToSlot(slotPos, playerId);
+		#else
+		Rpc(RpcDo_MoveSpecCamToSlot, slotPos, playerId);
+		#endif
+	}
+	
+	
 	//================================================================================================
 	// CLIENT RPC HANDLERS
 	// These methods execute on client machines when receiving server RPCs
@@ -1185,5 +1196,38 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void RpcDo_BroadcastMessage(string message)
 	{
 		SCR_PopUpNotification.GetInstance().PopupMsg(message);
+	}	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_MoveSpecCamToSlot(vector slotPos, int targetPlayerId)
+	{		
+		if (!IsLocalPlayer(targetPlayerId))
+			return;
+		
+		// Get the current camera
+		SCR_ManualCamera camera = SCR_ManualCamera.Cast(GetGame().GetCameraManager().CurrentCamera());
+		if (!camera)
+			return;
+
+		// Find the teleport component and use it to move the camera
+		SCR_TeleportToCursorManualCameraComponent teleportComponent = SCR_TeleportToCursorManualCameraComponent.Cast(
+			camera.FindCameraComponent(SCR_TeleportToCursorManualCameraComponent)
+		);
+		
+		if (teleportComponent)
+		{
+			teleportComponent.TeleportCamera(slotPos, true, false);
+		}
+		
+		// Try attach spec cam again
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (!topMenu)
+			return;
+			
+		if (!topMenu.IsInherited(CRF_SpectatorMenu))
+			return;
+			
+		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(topMenu);
+		spectatorMenu.SelectSpec();
 	}
 };

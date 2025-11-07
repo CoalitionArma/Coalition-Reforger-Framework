@@ -1363,6 +1363,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			m_eSpecEntity = rplComponent.GetEntity();
 		}
+		else
+		{
+			int playerId = SCR_PlayerController.GetLocalPlayerId();
+			CRF_RplToAuthorityManager.GetInstance().MoveSpecCamToSlot(selectedComponent.m_iSlotId, playerId);
+		}
 	}
 	
 	/**

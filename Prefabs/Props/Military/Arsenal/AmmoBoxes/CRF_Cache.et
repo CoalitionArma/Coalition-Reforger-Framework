@@ -1,0 +1,177 @@
+GenericEntity : "{BE99D77D1155B127}Prefabs/Props/Military/Arsenal/ArsenalBoxes/US/ArsenalBox_US.et" {
+ ID "56F2C6D6F7C6DAFA"
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   Enabled 0
+   m_eSupportedArsenalItemTypes 493046
+   m_eSupportedArsenalItemModes 94
+   m_eEditableAttributeGroups 22
+   m_OverwriteArsenalConfig SCR_ArsenalItemListConfig "{66C46130387D7A70}" {
+    m_aArsenalItems {
+     SCR_ArsenalItemStandalone "{66C46130387D7A00}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{5A987A8A13763769}Prefabs/Weapons/Rifles/M16/Rifle_M16A2_M203.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D7A06}" {
+      m_eItemType MACHINE_GUN
+      m_iSupplyCost 0
+      m_ItemResourceName "{D2B48DEBEF38D7D7}Prefabs/Weapons/MachineGuns/M249/MG_M249.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D7A04}" {
+      m_eItemType PISTOL
+      m_eItemMode WEAPON
+      m_iSupplyCost 0
+      m_ItemResourceName "{1353C6EAD1DCFE43}Prefabs/Weapons/Handguns/M9/Handgun_M9.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D7A1B}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{83CE659F2C763F28}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_carbine_suppressor_OliveGreen_Sand_Stripes.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D7A19}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{81EB948E6414BD6F}Prefabs/Weapons/Rifles/M14/Rifle_M21_ARTII.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D7A18}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{627255315038152A}Prefabs/Weapons/Magazines/Magazine_762x51_M14_20rnd_SpecialBall.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8EE1}" {
+      m_eItemType WEAPON_ATTACHMENT
+      m_iSupplyCost 0
+      m_ItemResourceName "{BD496EE1B40DC510}Prefabs/Weapons/Attachments/Optics/Scopes/Optic_4x20/Optic_4x20.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8EE4}" {
+      m_eItemType EQUIPMENT
+      m_iSupplyCost 0
+      m_ItemResourceName "{D8F2CA92583B23D3}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_M855_M856_Last_5Tracer.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8EE5}" {
+      m_eItemType HEAL
+      m_iSupplyCost 0
+      m_ItemResourceName "{A81F501D3EF6F38E}Prefabs/Items/Medicine/FieldDressing_01/FieldDressing_US_01.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8EEA}" {
+      m_eItemType HEADWEAR
+      m_iSupplyCost 0
+      m_ItemResourceName "{E12126CDE731EED5}Prefabs/Characters/HeadGear/Hat_Boonie_US_01/Hat_Boonie_US_01.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8EEB}" {
+      m_eItemType HEADWEAR
+      m_iSupplyCost 0
+      m_ItemResourceName "{E685A8D337D36204}Prefabs/Characters/HeadGear/Helmet_PASGT_01/Helmet_PASGT_01_cover_w_goggles.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8EE8}" {
+      m_eItemType BACKPACK
+      m_iSupplyCost 0
+      m_ItemResourceName "{5C5C6EE05EE2FF1A}Prefabs/Items/Equipment/Backpacks/Backpack_ALICE_Medium_assembled.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8E06}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{4FCBBDF274FD2157}Prefabs/Weapons/Magazines/Box_556x45_M249_200rnd_Ball.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8E07}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{A827B610B7CD4158}Prefabs/Weapons/Magazines/Vz58/Magazine_762x39_Vz58_30rnd_Last_5Tracer.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8E04}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8E05}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{5375FA7CB1F68573}Prefabs/Weapons/Ammo/Ammo_Grenade_HE_M406.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8E0A}" {
+      m_eItemType PISTOL
+      m_iSupplyCost 0
+      m_ItemResourceName "{9C05543A503DB80E}Prefabs/Weapons/Magazines/Magazine_9x19_M9_15rnd_Ball.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387D8E0B}" {
+      m_eItemType ROCKET_LAUNCHER
+      m_iSupplyCost 0
+      m_ItemResourceName "{9C5C20FB0E01E64F}Prefabs/Weapons/Launchers/M72/Launcher_M72A3.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C0416}" {
+      m_eItemType HEAL
+      m_iSupplyCost 0
+      m_ItemResourceName "{D70216B1B2889129}Prefabs/Items/Medicine/Tourniquet_01/Tourniquet_US_01.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C0415}" {
+      m_eItemType HEAL
+      m_iSupplyCost 0
+      m_ItemResourceName "{00E36F41CA310E2A}Prefabs/Items/Medicine/SalineBag_01/SalineBag_US_01.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C0414}" {
+      m_eItemType HEAL
+      m_iSupplyCost 0
+      m_ItemResourceName "{0D9A5DCF89AE7AA9}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C0413}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{EDE7F2CE157306AD}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_carbine_AP2k_OliveGreen_Sand_Stripes.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C0412}" {
+      m_iSupplyCost 0
+      m_ItemResourceName "{22529BCDC9439FCD}Prefabs/Weapons/Rifles/M16/Variants/Rifle_M16A2_M203_OliveGreen_Sand_Stripes.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C0422}" {
+      m_eItemType EXPLOSIVES
+      m_iSupplyCost 0
+      m_ItemResourceName "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C5971}" {
+      m_eItemType EXPLOSIVES
+      m_iSupplyCost 0
+      m_ItemResourceName "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C5972}" {
+      m_eItemType WEAPON_ATTACHMENT
+      m_iSupplyCost 0
+      m_ItemResourceName "{ADDF08D09F1877A4}Prefabs/Weapons/Attachments/Muzzle/Suppressor_M16/Suppressor_M16_OliveGreen_Sand_Stripes.et"
+     }
+     SCR_ArsenalItemStandalone "{66C46130387C5973}" {
+      m_eItemType WEAPON_ATTACHMENT
+      m_iSupplyCost 0
+      m_ItemResourceName "{E52C9791E1554A5F}Prefabs/Weapons/Attachments/Muzzle/Suppressor_M16/Suppressor_M16.et"
+     }
+    }
+   }
+   m_eArsenalSaveType NO_RESTRICTIONS
+  }
+  SCR_ResourceComponent "{5D7D07D2F7A252D2}" {
+   Enabled 0
+   m_aContainers {
+    SCR_ResourceContainerVirtual "{66C46130387C5968}" {
+     m_eResourceRights FACTION
+     m_eStorageType STORED
+     m_fResourceValueCurrent 10000
+     m_fResourceValueMax 1000
+     m_bEnableResourceGain 1
+     m_fResourceGain 100
+     m_fResourceGainTickrate 1
+    }
+   }
+   m_aDisabledResourceTypes {
+    SUPPLIES
+   }
+  }
+  SCR_ResupplySupportStationComponent "{5E2CE1BAE058CADC}" {
+   Enabled 0
+  }
+  SCR_ServicePointComponent "{5C7489C20C7B5D4B}" {
+   Enabled 0
+  }
+  UniversalInventoryStorageComponent "{56F2C6D15FE6C4CE}" {
+   Attributes SCR_ItemAttributeCollection "{56F2C6D6A36680FB}" {
+    ItemDisplayName SCR_InventoryUIInfo "{56F2C6D6A229E091}" {
+     Name "Supply Cache"
+     Description ""
+    }
+   }
+  }
+  SCR_ArsenalInventoryStorageManagerComponent "{56F2C6D1431ADBA8}" {
+   m_bNegateItemWeightAndVolume 0
+  }
+ }
+ coords 2540.327 74.473 1223.931
+}

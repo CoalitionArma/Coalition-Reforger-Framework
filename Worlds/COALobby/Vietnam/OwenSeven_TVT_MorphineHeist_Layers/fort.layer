@@ -1,3 +1,39 @@
+$grp GenericEntity : "{181B4ADA65725D59}Prefabs/Items/Core/ACE_Banana.et" {
+ {
+  coords 3327.719 3.943 673.46
+  angleZ -89.909
+ }
+ {
+  coords 3327.989 3.943 673.46
+  angleX -0.07
+  angleY 50.508
+  angleZ -89.942
+ }
+ {
+  coords 3328.418 3.942 673.46
+  angleX -0.029
+  angleY 18.808
+  angleZ -89.914
+ }
+ {
+  coords 3328.769 3.941 673.46
+  angleX 0.011
+  angleY -6.721
+  angleZ -89.91
+ }
+ {
+  coords 3329.195 3.94 673.51
+  angleX 0.011
+  angleY -6.721
+  angleZ -89.91
+ }
+ {
+  coords 3329.535 3.939 673.55
+  angleX 0.011
+  angleY -6.721
+  angleZ -89.91
+ }
+}
 $grp SCR_DestructibleEntity : "{3848EA33A0EAB8F6}Prefabs/Structures/BuildingParts/Industrial/ConcretePlant_E_01_Wall.et" {
  {
   coords 3822.33 0.466 585.477
@@ -103,6 +139,23 @@ $grp GenericEntity : "{78AAA6575E980AE4}Prefabs/Structures/BuildingParts/Doors/D
  {
   coords 3815.972 11.507 577.33
   angleY -93.742
+ }
+}
+$grp GenericEntity : "{9310D03C4A62286F}Prefabs/Weapons/Grenades/ACE_FragBanana.et" {
+ {
+  coords 3327.254 3.461 677.442
+  angleY 25.252
+  angleZ 90
+ }
+ {
+  coords 3329.101 3.461 677.15
+  angleY 25.252
+  angleZ 90
+ }
+ {
+  coords 3327.278 3.461 673.68
+  angleY 25.252
+  angleZ 90
  }
 }
 SCR_DestructibleBuildingEntity : "{B5963E922C972A4A}Prefabs/Structures/Infrastructure/Landlines/PhoneBooth_E/PhoneBooth_E_01.et" {

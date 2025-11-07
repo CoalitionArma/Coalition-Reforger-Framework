@@ -18,6 +18,11 @@ GenericEntity : "{6C6D4CF5F88AE48D}Prefabs/Vehicles/Core/Vehicle_AmmoBox_Base.et
      }
      "Sort Priority" -1
     }
+    CRF_CacheCreateAction "{66C48705EF8C2204}" {
+     UIInfo UIInfo "{66C48705E55080DC}" {
+     }
+     Duration 5
+    }
    }
   }
  }
