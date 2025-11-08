@@ -110,7 +110,13 @@ class CRF_SupplyArsenal: ChimeraMenuBase
 				
 				foreach (CRF_Weapon_Class weapon: weapons)
 				{
+					if (!weapon)
+						continue;
 					button.m_Weapons.Insert(weapon);
+					if (!weapon.m_MagazineArray)
+						continue;
+					if (weapon.m_MagazineArray.Count() == 0)
+						continue;
 					foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
 					{
 						button.m_Magazines.Insert(magazine);
