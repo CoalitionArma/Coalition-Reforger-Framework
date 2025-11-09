@@ -25,9 +25,5 @@ modded class CSI_HUD
 		{
 			m_wRoot.SetVisible(false);
 		}
-		else if (!isSpectator && !isWidgetVisible)
-		{
-			m_wRoot.SetVisible(true);
-		}
 	}
 }

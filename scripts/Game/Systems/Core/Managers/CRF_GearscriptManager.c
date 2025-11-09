@@ -1236,6 +1236,9 @@ class CRF_GearscriptManager : ScriptComponent
 	 */
 	void SetEntityIdentity(IEntity entity)
 	{
+		if (!entity)
+			return;
+		
 		ResourceName resourceNameToScan = entity.GetPrefabData().GetPrefabName();
 		
 		if (!CRF_RoleHelper.IsValidGearscriptResource(resourceNameToScan) || !entity)
