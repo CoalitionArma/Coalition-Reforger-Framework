@@ -3,28 +3,19 @@ GenericEntity : "{190CC54D175F52CB}Prefabs/Props/Military/SupplyBox/SupplyShippi
   SCR_ResourceComponent "{5D247A59598D71AE}" {
    m_aContainers {
     SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_fResourceValueCurrent 8000
-     m_fResourceValueMax 8000
+     m_fResourceValueCurrent 4000
+     m_fResourceValueMax 4000
     }
    }
   }
  }
- coords 1910.317 127.085 7378.235
+ coords 1916.643 127.085 7374.932
 }
-$grp GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
- {
-  coords 1914.605 130.065 7375.071
-  angles 0 116.06 0
- }
- {
-  coords 1905.456 130.065 7380.857
-  angles 0 116.06 0
- }
+GenericEntity : "{28D63631873AA636}Prefabs/Compositions/Slotted/SlotFlatSmall/MortarPlacement_S_USSR_01.et" {
+ coords 1914.605 130.065 7375.071
+ angles 0 116.06 0
 }
 $grp GameEntity : "{50E6A3845C9F20FD}Prefabs/Props/Military/Camps/LanternMilitary_US_01.et" {
- {
-  coords 1908.237 130.228 7381.874
- }
  {
   coords 1916.518 130.231 7373.01
  }
