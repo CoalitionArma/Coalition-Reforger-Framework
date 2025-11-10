@@ -10,6 +10,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
+	protected CRF_BandwidthTelemetryManager m_TelemetryManager;
 	protected static CRF_RplBroadcastManager m_sInstance;
 	
 	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
@@ -41,6 +42,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
+		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Log RPC call to telemetry system (server-side only)
+	//------------------------------------------------------------------------------------------------
+	protected void LogTelemetry(string rpcName, int estimatedBytes)
+	{
+		if (!Replication.IsServer())
+			return;
+			
+		if (!m_TelemetryManager)
+			m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+			
+		if (m_TelemetryManager)
+			m_TelemetryManager.LogRPC(rpcName, estimatedBytes);
 	}
 	
 	//================================================================================================
@@ -51,6 +68,15 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void PopUpNotification(float life, string titleText, string subtitleText = "", string sound = "", string titleTextParam1 = "", string titleTextParam2 = "")
 	{
+		// Telemetry: float + 5 strings
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Float();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(titleText);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(subtitleText);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(sound);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(titleTextParam1);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(titleTextParam2);
+		LogTelemetry("PopUpNotification", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_PopUpNotification(life, titleText, subtitleText, sound, titleTextParam1, titleTextParam2);
 		#else
@@ -397,6 +423,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateGunGamePlayerStats(int playerId, int level, int killsThisLevel, int totalKills)
 	{
+		// Telemetry: 4 ints = 16 bytes
+		LogTelemetry("UpdateGunGamePlayerStats", 16);
+		
 		#ifdef WORKBENCH
 		RpcDo_UpdateGunGamePlayerStats(playerId, level, killsThisLevel, totalKills);
 		#else
@@ -409,6 +438,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateFactionChannelsSR(string factionId, array<string> channels)
 	{
+		// Telemetry: factionId string + array of strings
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(factionId);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_StringArray(channels);
+		LogTelemetry("UpdateFactionChannelsSR", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_UpdateFactionChannelsSR(factionId, channels);
 		#else
@@ -421,6 +455,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void UpdateFactionChannelsLR(string factionId, array<string> channels)
 	{
+		// Telemetry: factionId string + array of strings
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(factionId);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_StringArray(channels);
+		LogTelemetry("UpdateFactionChannelsLR", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_UpdateFactionChannelsLR(factionId, channels);
 		#else
@@ -433,6 +472,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
 	{
+		// Telemetry: ResourceName string + int
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_ResourceName(vehicleResource);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("AddVehicleSupplyCost", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_AddVehicleSupplyCost(vehicleResource, supplyCost);
 		#else
