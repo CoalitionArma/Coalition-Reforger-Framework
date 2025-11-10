@@ -189,21 +189,28 @@ class CRF_BandwidthTelemetryManager : SCR_BaseGameModeComponent
 		
 		// Print top bandwidth consumers
 		Print("Top RPC Bandwidth Consumers:", LogLevel.NORMAL);
-		Print(string.Format("%-40s %8s %12s %8s %8s %8s", 
-			"RPC Name", "Calls", "Total (KB)", "Avg", "Min", "Max"), LogLevel.NORMAL);
+		Print("RPC Name                                    Calls    Total (KB)      Avg      Min      Max", LogLevel.NORMAL);
 		Print("----------------------------------------", LogLevel.NORMAL);
 		
 		int displayCount = Math.Min(15, sortedData.Count());
 		for (int i = 0; i < displayCount; i++)
 		{
 			CRF_RPCTelemetryData data = sortedData[i];
-			Print(string.Format("%-40s %8d %12.2f %8d %8d %8d",
-				data.m_sRPCName,
-				data.m_iCallCount,
-				data.m_iTotalBytes / 1024.0,
-				data.GetAverageBytes(),
-				data.m_iMinBytes,
-				data.m_iMaxBytes), LogLevel.NORMAL);
+			
+			// Pad RPC name to 40 characters
+			string paddedName = data.m_sRPCName;
+			while (paddedName.Length() < 40)
+				paddedName += " ";
+			if (paddedName.Length() > 40)
+				paddedName = paddedName.Substring(0, 40);
+			
+			Print(string.Format("%1 %2 %3 %4 %5 %6",
+				paddedName,
+				data.m_iCallCount.ToString(),
+				(data.m_iTotalBytes / 1024.0).ToString(),
+				data.GetAverageBytes().ToString(),
+				data.m_iMinBytes.ToString(),
+				data.m_iMaxBytes.ToString()), LogLevel.NORMAL);
 		}
 		
 		Print("========================================", LogLevel.NORMAL);
