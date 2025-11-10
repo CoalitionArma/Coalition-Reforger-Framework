@@ -204,8 +204,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
-		m_SlottingManager.RequestSlottingUpdate();
-		Replication.BumpMe();
+		Replication.BumpMe();  // m_SlottingState is [RplProp()] - auto-synced to clients
+		
+		// Note: Individual slot updates are sent via RPC (BroadcastSlotUpdate)
+		// No need to resend all slots when slotting state changes
 	}
 
 	/**

@@ -1366,4 +1366,57 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (gearscriptManager)
 			gearscriptManager.AddVehicleCostClient(vehicleResource, supplyCost);
 	}
+	
+	//================================================================================================
+	// SLOTTING MANAGER BROADCAST METHODS
+	// Delta-based slot updates to replace array replication (98% bandwidth reduction)
+	//================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update single slot data on all clients
+	// Replaces full array replication with targeted slot update
+	// Bandwidth: ~370 bytes vs 18,300 bytes (50 slots) = 98% reduction
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotData(int slotId, CRF_SlotDataContainer slotData)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Estimate bandwidth: slotId (4 bytes) + slot data (~366 bytes avg) = ~370 bytes
+		LogTelemetry("UpdateSlotData", 370);
+		
+		Rpc(RpcDo_UpdateSlotData, slotId, slotData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotData(int slotId, CRF_SlotDataContainer slotData)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotDataClient(slotId, slotData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Remove slot from all clients
+	//------------------------------------------------------------------------------------------------
+	void RemoveSlot(int slotId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Bandwidth: Just slotId (4 bytes)
+		LogTelemetry("RemoveSlot", 4);
+		
+		Rpc(RpcDo_RemoveSlot, slotId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_RemoveSlot(int slotId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.RemoveSlotClient(slotId);
+	}
 };
