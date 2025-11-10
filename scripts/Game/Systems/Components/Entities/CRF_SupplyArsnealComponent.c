@@ -27,6 +27,34 @@ class CRF_SupplyArsenalComponent: ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// Get supply counts array (server-side only - used for calculations)
+	array<int> GetSupplyCounts()
+	{
+		// This method is server-side only
+		if (!Replication.IsServer())
+		{
+			Print("WARNING: GetSupplyCounts() called on client - this is server-side only!", LogLevel.WARNING);
+			return {};
+		}
+		
+		return m_aSupplyCounts;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Get supply items array (server-side only - used for operations)
+	array<RplId> GetSupplyItems()
+	{
+		// This method is server-side only
+		if (!Replication.IsServer())
+		{
+			Print("WARNING: GetSupplyItems() called on client - this is server-side only!", LogLevel.WARNING);
+			return {};
+		}
+		
+		return m_aSupplyItems;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	// Get full entity array (server-side only - used for supply operations)
 	array<IEntity> GetEntityArray()
 	{

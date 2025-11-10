@@ -2637,8 +2637,8 @@ class CRF_GearscriptManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// JIP SYNC: Send entire vehicle supply catalog to newly connected players
-	void OnPlayerConnected(int playerId)
+	// Public method: Send all vehicle supply costs (called by JIP sync manager)
+	void SyncVehicleCostsToPlayer(int playerId)
 	{
 		// Only server sends JIP sync
 		if (!Replication.IsServer())

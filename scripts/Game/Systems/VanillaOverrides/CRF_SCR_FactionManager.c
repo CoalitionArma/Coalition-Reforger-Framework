@@ -173,48 +173,4 @@ modded class SCR_FactionManager
 				break;
 		}
 	}
-	
-	//------------------------------------------------------------------------------------------------
-	// JIP SYNC: Send player's faction radio configuration to newly connected player
-	override void OnPlayerConnected(int playerId)
-	{
-		super.OnPlayerConnected(playerId);
-		
-		// Only server sends JIP sync
-		if (!Replication.IsServer())
-			return;
-		
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
-		if (!broadcastManager)
-			return;
-		
-		// Get the player's faction
-		SCR_Faction playerFaction = SCR_Faction.Cast(GetPlayerFaction(playerId));
-		if (!playerFaction)
-			return;
-		
-		string factionKey = playerFaction.GetFactionKey();
-		
-		// Send only the player's faction radio configs to reduce bandwidth
-		// Player only needs channels for their own faction
-		switch (factionKey)
-		{
-			case "BLUFOR":
-				broadcastManager.UpdateFactionChannelsSR("BLUFOR", m_aBLUFORActiveSRChannels);
-				broadcastManager.UpdateFactionChannelsLR("BLUFOR", m_aBLUFORActiveLRChannels);
-				break;
-			case "OPFOR":
-				broadcastManager.UpdateFactionChannelsSR("OPFOR", m_aOPFORActiveSRChannels);
-				broadcastManager.UpdateFactionChannelsLR("OPFOR", m_aOPFORActiveLRChannels);
-				break;
-			case "INDFOR":
-				broadcastManager.UpdateFactionChannelsSR("INDFOR", m_aINDFORActiveSRChannels);
-				broadcastManager.UpdateFactionChannelsLR("INDFOR", m_aINDFORActiveLRChannels);
-				break;
-			case "CIV":
-				broadcastManager.UpdateFactionChannelsSR("CIV", m_aCIVFORActiveSRChannels);
-				broadcastManager.UpdateFactionChannelsLR("CIV", m_aCIVFORActiveLRChannels);
-				break;
-		}
-	}
 }

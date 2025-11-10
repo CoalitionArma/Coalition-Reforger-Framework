@@ -1296,7 +1296,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_UpdateFactionChannelsSR(string factionId, array<string> channels)
 	{
-		CRF_SCR_FactionManager factionManager = CRF_SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		if (factionManager)
 			factionManager.UpdateChannelsSRClient(factionId, channels);
 	}
@@ -1307,7 +1307,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RpcDo_UpdateFactionChannelsLR(string factionId, array<string> channels)
 	{
-		CRF_SCR_FactionManager factionManager = CRF_SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		if (factionManager)
 			factionManager.UpdateChannelsLRClient(factionId, channels);
 	}
