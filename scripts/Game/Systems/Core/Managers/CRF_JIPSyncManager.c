@@ -2,10 +2,15 @@
 * Join-In-Progress (JIP) Synchronization Manager
 * Centralizes all JIP sync logic to ensure late-joining players receive complete game state
 * 
-* This manager coordinates JIP syncs for:
-* - GunGame player stats and scoreboard
-* - Faction radio channel configurations  
-* - Vehicle supply cost catalog
+* This manager coordinates JIP syncs for systems that require explicit RPC calls:
+* - Faction radio channel configurations (faction-specific optimization)
+* - Vehicle supply cost catalog (sends entire catalog via RPCs)
+* - Rush gamemode 3D marker states (requires delayed player-specific setup)
+* - GunGame player stats (handled by GunGame's own OnPlayerConnected)
+* 
+* NOTE: Gamemodes using RplProp variables don't need manual JIP sync here.
+* The Enfusion replication system automatically syncs RplProp to late-joiners when
+* the component calls Replication.BumpMe() during normal gameplay.
 */
 
 [ComponentEditorProps(category: "CRF JIP Sync Manager", description: "Handles Join-In-Progress synchronization for late-joining players")]
@@ -41,10 +46,14 @@ class CRF_JIPSyncManager : SCR_BaseGameModeComponent
 		
 		Print(string.Format("[CRF_JIPSyncManager] Player %1 connected, sending JIP sync data", playerId), LogLevel.NORMAL);
 		
-		// Sync all game state to the newly connected player
+		// Sync systems that use explicit RPCs (not auto-synced by RplProp)
 		SyncFactionRadioChannels(playerId);
 		SyncGunGameStats(playerId);
 		SyncVehicleSupplyCosts(playerId);
+		SyncRush3DMarkers(playerId);
+		
+		// NOTE: S&D, MapStaging, and Raid use RplProp variables that auto-sync via Replication.BumpMe()
+		// during normal gameplay. They don't need manual JIP sync here.
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -119,5 +128,20 @@ class CRF_JIPSyncManager : SCR_BaseGameModeComponent
 		
 		// Call GearscriptManager's public sync method
 		gearscriptManager.SyncVehicleCostsToPlayer(playerId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// JIP SYNC: Rush gamemode - Send 3D marker states for active zones
+	protected void SyncRush3DMarkers(int playerId)
+	{
+		CRF_RushGamemodeManager rushGamemode = CRF_RushGamemodeManager.Cast(GetGame().GetGameMode().FindComponent(CRF_RushGamemodeManager));
+		if (!rushGamemode)
+			return; // Rush not active, skip
+		
+		Print(string.Format("[CRF_JIPSyncManager] Syncing Rush 3D markers to player %1", playerId), LogLevel.VERBOSE);
+		
+		// Rush requires 3-second delay for player controller initialization
+		// This calls the gamemode's setup method which uses the RplProp toggle trick
+		GetGame().GetCallqueue().CallLater(rushGamemode.SetupMarkersForPlayer, 3000, false, playerId);
 	}
 }

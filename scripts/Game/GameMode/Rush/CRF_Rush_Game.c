@@ -271,8 +271,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	/**
 	 * Setup markers for a specific player
 	 * @param playerId The player ID to setup markers for
+	 * NOTE: Public so CRF_JIPSyncManager can call this for centralized JIP sync
 	 */
-	protected void SetupMarkersForPlayer(int playerId)
+	void SetupMarkersForPlayer(int playerId)
 	{
 		// For new players connecting, trigger replication update to ensure they get current marker state
 		if (Replication.IsServer())
