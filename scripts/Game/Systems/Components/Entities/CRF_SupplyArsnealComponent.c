@@ -23,10 +23,14 @@ class CRF_SupplyArsenalComponent: ScriptComponent
 		array<IEntity> entityArray = {};
 		foreach (RplId entityId: m_aSupplyItems)
 		{
-			if (!Replication.FindItem(entityId))
+			// Safely get the RplComponent - might be null if item was deleted or streamed out
+			RplComponent rplComp = RplComponent.Cast(Replication.FindItem(entityId));
+			if (!rplComp)
 				continue;
 			
-			entityArray.Insert(RplComponent.Cast(Replication.FindItem(entityId)).GetEntity());
+			IEntity itemEntity = rplComp.GetEntity();
+			if (itemEntity)
+				entityArray.Insert(itemEntity);
 		}
 		
 		return entityArray;
@@ -34,6 +38,10 @@ class CRF_SupplyArsenalComponent: ScriptComponent
 	
 	void UpdateCurrentSupply()
 	{
+		// Only authority should modify replicated state
+		if (!Replication.IsServer())
+			return;
+			
 		m_aSupplyItems.Clear();
 		m_aSupplyCounts.Clear();
 		GetGame().GetWorld().QueryEntitiesBySphere(GetOwner().GetOrigin(), 50, FindSupplyCallback, null);
@@ -53,7 +61,13 @@ class CRF_SupplyArsenalComponent: ScriptComponent
 			return true;
 		
 		storedResources = resConsumer.GetAggregatedResourceValue();
-		m_aSupplyItems.Insert(RplComponent.Cast(entity.FindComponent(RplComponent)).Id());
+		
+		// Safely get RplComponent - entity might not be replicated
+		RplComponent rplComp = RplComponent.Cast(entity.FindComponent(RplComponent));
+		if (!rplComp)
+			return true;
+			
+		m_aSupplyItems.Insert(rplComp.Id());
 		m_aSupplyCounts.Insert((int)storedResources);
 			
 		return true;

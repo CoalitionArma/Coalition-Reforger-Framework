@@ -46,6 +46,10 @@ modded class SCR_AIGroup
 	
 	void SetGroupSlots(array<ResourceName> slots)
 	{
+		// Only authority should modify replicated state
+		if (!Replication.IsServer())
+			return;
+			
 		m_aGroupSlots = slots;
 		Replication.BumpMe();
 	}
@@ -95,10 +99,21 @@ modded class SCR_AIGroup
 		if (m_bIsPlayableGroup)
 			return;
 		
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-		RplId newRplId = RplComponent.Cast(m_NewGroup.FindComponent(RplComponent)).Id();
-		RplId oldRplId = RplComponent.Cast(this.FindComponent(RplComponent)).Id();
+		// Safely get RplIds - prevent crashes if groups don't have RplComponent
+		RplId newRplId, oldRplId;
+		if (!CRF_ReplicationHelpers.GetRplId(m_NewGroup, newRplId))
+		{
+			Print("[SCR_AIGroup] ERROR: New group has no RplComponent", LogLevel.ERROR);
+			return;
+		}
 		
+		if (!CRF_ReplicationHelpers.GetRplId(this, oldRplId))
+		{
+			Print("[SCR_AIGroup] ERROR: Old group has no RplComponent", LogLevel.ERROR);
+			return;
+		}
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		array<int> slotIdsForOldGroup = slottingManager.GetAllSlotIDsForGroup(oldRplId);
 		
 		foreach(int slotId : slotIdsForOldGroup)
