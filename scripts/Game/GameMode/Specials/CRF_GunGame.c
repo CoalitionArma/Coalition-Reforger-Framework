@@ -175,7 +175,9 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	int GetPlayerLevel(int playerId)
 	{
 		CRF_GunGamePlayerStats stats = m_mPlayerStats.Get(playerId);
-		return stats ? stats.m_iLevel : 0;
+		if (stats)
+			return stats.m_iLevel;
+		return 0;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -183,7 +185,9 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	int GetPlayerKills(int playerId)
 	{
 		CRF_GunGamePlayerStats stats = m_mPlayerStats.Get(playerId);
-		return stats ? stats.m_iTotalKills : 0;
+		if (stats)
+			return stats.m_iTotalKills;
+		return 0;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -191,7 +195,9 @@ class CRF_GunGame: SCR_BaseGameModeComponent
 	int GetPlayerKillsThisLevel(int playerId)
 	{
 		CRF_GunGamePlayerStats stats = m_mPlayerStats.Get(playerId);
-		return stats ? stats.m_iKillsThisLevel : 0;
+		if (stats)
+			return stats.m_iKillsThisLevel;
+		return 0;
 	}
 	
 	//------------------------------------------------------------------------------------------------
