@@ -1,11 +1,6 @@
 //Used because I can't store the active channels for frequency automation in SCR_Faction as you can't have replicated items in there.
 modded class SCR_FactionManager
 {
-	// REPLICATION FIX: Removed [RplProp()] from arrays
-	// Radio channels update infrequently, but strings are large data types
-	// Using RPC-based updates to send only changed faction's channels instead of all 8 arrays
-	// Old: ~500+ bytes per update (all channels for all factions)
-	// New: ~100-200 bytes per update (only changed faction's channels)
 	protected ref array<string> m_aBLUFORActiveSRChannels = {};
 	protected ref array<string> m_aBLUFORActiveLRChannels = {};
 	protected ref array<string> m_aOPFORActiveSRChannels  = {};
