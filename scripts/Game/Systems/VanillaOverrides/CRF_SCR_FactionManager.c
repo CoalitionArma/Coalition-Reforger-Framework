@@ -1,15 +1,22 @@
 //Used because I can't store the active channels for frequency automation in SCR_Faction as you can't have replicated items in there.
 modded class SCR_FactionManager
 {
-	[RplProp()] ref array<string> m_aBLUFORActiveSRChannels = {};
-	[RplProp()] ref array<string> m_aBLUFORActiveLRChannels = {};
-	[RplProp()] ref array<string> m_aOPFORActiveSRChannels  = {};
-	[RplProp()] ref array<string> m_aOPFORActiveLRChannels  = {};
-	[RplProp()] ref array<string> m_aINDFORActiveSRChannels = {};
-	[RplProp()] ref array<string> m_aINDFORActiveLRChannels = {};
-	[RplProp()] ref array<string> m_aCIVFORActiveSRChannels = {};
-	[RplProp()] ref array<string> m_aCIVFORActiveLRChannels = {};
+	// REPLICATION FIX: Removed [RplProp()] from arrays
+	// Radio channels update infrequently, but strings are large data types
+	// Using RPC-based updates to send only changed faction's channels instead of all 8 arrays
+	// Old: ~500+ bytes per update (all channels for all factions)
+	// New: ~100-200 bytes per update (only changed faction's channels)
+	protected ref array<string> m_aBLUFORActiveSRChannels = {};
+	protected ref array<string> m_aBLUFORActiveLRChannels = {};
+	protected ref array<string> m_aOPFORActiveSRChannels  = {};
+	protected ref array<string> m_aOPFORActiveLRChannels  = {};
+	protected ref array<string> m_aINDFORActiveSRChannels = {};
+	protected ref array<string> m_aINDFORActiveLRChannels = {};
+	protected ref array<string> m_aCIVFORActiveSRChannels = {};
+	protected ref array<string> m_aCIVFORActiveLRChannels = {};
 	
+	//------------------------------------------------------------------------------------------------
+	// Getters (unchanged)
 	array<string> GetFactionActiveChannelSR(string factionId)
 	{
 		switch(factionId)
@@ -36,8 +43,14 @@ modded class SCR_FactionManager
 		return m_aBLUFORActiveLRChannels;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Server: Update SR channels and replicate to clients
 	void UpdateFactionActiveChannelSR(string factionId, array<string> input)
 	{
+		// Only server should modify state
+		if (!Replication.IsServer())
+			return;
+		
 		switch (factionId)
 		{
 			case "BLUFOR" :
@@ -65,11 +78,19 @@ modded class SCR_FactionManager
 				break;
 			}
 		}
-		Replication.BumpMe();
+		
+		// Send only this faction's channels to all clients (not all 8 arrays)
+		Rpc(RpcDo_UpdateChannelsSR, factionId, input);
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Server: Update LR channels and replicate to clients
 	void UpdateFactionActiveChannelLR(string factionId, array<string> input)
 	{
+		// Only server should modify state
+		if (!Replication.IsServer())
+			return;
+		
 		switch (factionId)
 		{
 			case "BLUFOR" :
@@ -97,6 +118,62 @@ modded class SCR_FactionManager
 				break;
 			}
 		}
-		Replication.BumpMe();
+		
+		// Send only this faction's channels to all clients (not all 8 arrays)
+		Rpc(RpcDo_UpdateChannelsLR, factionId, input);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RPC: Update SR channels on all clients
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_UpdateChannelsSR(string factionId, array<string> channels)
+	{
+		// Update only the specified faction's channels
+		switch (factionId)
+		{
+			case "BLUFOR":
+				m_aBLUFORActiveSRChannels.Clear();
+				m_aBLUFORActiveSRChannels.InsertAll(channels);
+				break;
+			case "OPFOR":
+				m_aOPFORActiveSRChannels.Clear();
+				m_aOPFORActiveSRChannels.InsertAll(channels);
+				break;
+			case "INDFOR":
+				m_aINDFORActiveSRChannels.Clear();
+				m_aINDFORActiveSRChannels.InsertAll(channels);
+				break;
+			case "CIV":
+				m_aCIVFORActiveSRChannels.Clear();
+				m_aCIVFORActiveSRChannels.InsertAll(channels);
+				break;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RPC: Update LR channels on all clients
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_UpdateChannelsLR(string factionId, array<string> channels)
+	{
+		// Update only the specified faction's channels
+		switch (factionId)
+		{
+			case "BLUFOR":
+				m_aBLUFORActiveLRChannels.Clear();
+				m_aBLUFORActiveLRChannels.InsertAll(channels);
+				break;
+			case "OPFOR":
+				m_aOPFORActiveLRChannels.Clear();
+				m_aOPFORActiveLRChannels.InsertAll(channels);
+				break;
+			case "INDFOR":
+				m_aINDFORActiveLRChannels.Clear();
+				m_aINDFORActiveLRChannels.InsertAll(channels);
+				break;
+			case "CIV":
+				m_aCIVFORActiveLRChannels.Clear();
+				m_aCIVFORActiveLRChannels.InsertAll(channels);
+				break;
+		}
 	}
 }

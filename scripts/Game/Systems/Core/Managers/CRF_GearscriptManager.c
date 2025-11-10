@@ -7,8 +7,7 @@ class CRF_GearscriptManager : ScriptComponent
 	const ref array<EWeaponType> WEAPON_TYPES_THROWABLE = {EWeaponType.WT_FRAGGRENADE, EWeaponType.WT_SMOKEGRENADE};
 	ref array<IEntity> m_VehiclesInQueue = {};
 	
-	[RplProp()] ref array<ResourceName> m_aVehicleResourceName = {};
-	[RplProp()] ref array<int> m_aVehicleSupplyCost = {};
+	protected ref map<ResourceName, int> m_mVehicleSupplyCosts = new map<ResourceName, int>;
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -241,13 +240,11 @@ class CRF_GearscriptManager : ScriptComponent
 		return suppliesNeeded;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Get vehicle resupply cost from map
 	int GetTruckResupplyCost(ResourceName resource)
 	{
-		int index = m_aVehicleResourceName.Find(resource);
-		if (index == -1)
-			return 0;
-		
-		return m_aVehicleSupplyCost.Get(index);
+		return m_mVehicleSupplyCosts.Get(resource);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -626,13 +623,25 @@ class CRF_GearscriptManager : ScriptComponent
 				suppliesNeeded += SpawnItemsToVehicle(item.m_iAmountOfItemRegularVehicle, holder, invManager, faction.GetFactionKey(), isSupply, true, truck.GetPrefabData().GetPrefabName());
 		}
 		
-		
-		if (!m_aVehicleResourceName.Contains(truck.GetPrefabData().GetPrefabName()))
+		// Server: Add vehicle to catalog and replicate to clients
+		if (!m_mVehicleSupplyCosts.Contains(truck.GetPrefabData().GetPrefabName()))
 		{
-			m_aVehicleResourceName.Insert(truck.GetPrefabData().GetPrefabName());
-			m_aVehicleSupplyCost.Insert(suppliesNeeded);
-			Replication.BumpMe();
+			if (!Replication.IsServer())
+				return;
+				
+			m_mVehicleSupplyCosts.Set(truck.GetPrefabData().GetPrefabName(), suppliesNeeded);
+			
+			// Send only this vehicle's data to clients (not entire catalog)
+			Rpc(RpcDo_AddVehicleCost, truck.GetPrefabData().GetPrefabName(), suppliesNeeded);
 		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RPC: Add vehicle cost entry on all clients
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	protected void RpcDo_AddVehicleCost(ResourceName vehicleResource, int supplyCost)
+	{
+		m_mVehicleSupplyCosts.Set(vehicleResource, supplyCost);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -836,9 +845,11 @@ class CRF_GearscriptManager : ScriptComponent
 		return suppliesNeeded;
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// Check if vehicle supply cost has been calculated
 	bool HasSupplyBeenCalculated(ResourceName resource)
 	{
-		return m_aVehicleResourceName.Contains(resource);
+		return m_mVehicleSupplyCosts.Contains(resource);
 	}
 	
 	//------------------------------------------------------------------------------------------------
