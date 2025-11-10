@@ -392,6 +392,54 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#endif
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	// GunGame: Update player stats
+	//------------------------------------------------------------------------------------------------
+	void UpdateGunGamePlayerStats(int playerId, int level, int killsThisLevel, int totalKills)
+	{
+		#ifdef WORKBENCH
+		RpcDo_UpdateGunGamePlayerStats(playerId, level, killsThisLevel, totalKills);
+		#else
+		Rpc(RpcDo_UpdateGunGamePlayerStats, playerId, level, killsThisLevel, totalKills);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update SR radio channels
+	//------------------------------------------------------------------------------------------------
+	void UpdateFactionChannelsSR(string factionId, array<string> channels)
+	{
+		#ifdef WORKBENCH
+		RpcDo_UpdateFactionChannelsSR(factionId, channels);
+		#else
+		Rpc(RpcDo_UpdateFactionChannelsSR, factionId, channels);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update LR radio channels
+	//------------------------------------------------------------------------------------------------
+	void UpdateFactionChannelsLR(string factionId, array<string> channels)
+	{
+		#ifdef WORKBENCH
+		RpcDo_UpdateFactionChannelsLR(factionId, channels);
+		#else
+		Rpc(RpcDo_UpdateFactionChannelsLR, factionId, channels);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GearscriptManager: Add vehicle supply cost
+	//------------------------------------------------------------------------------------------------
+	void AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
+	{
+		#ifdef WORKBENCH
+		RpcDo_AddVehicleSupplyCost(vehicleResource, supplyCost);
+		#else
+		Rpc(RpcDo_AddVehicleSupplyCost, vehicleResource, supplyCost);
+		#endif
+	}
+	
 	
 	//================================================================================================
 	// CLIENT RPC HANDLERS
@@ -1229,5 +1277,49 @@ class CRF_RplBroadcastManager : ScriptComponent
 			
 		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(topMenu);
 		spectatorMenu.SelectSpec();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GunGame: Update player stats on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateGunGamePlayerStats(int playerId, int level, int killsThisLevel, int totalKills)
+	{
+		CRF_GunGame gunGame = CRF_GunGame.Cast(GetGame().GetGameMode().FindComponent(CRF_GunGame));
+		if (gunGame)
+			gunGame.UpdatePlayerStatsClient(playerId, level, killsThisLevel, totalKills);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update SR channels on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateFactionChannelsSR(string factionId, array<string> channels)
+	{
+		CRF_SCR_FactionManager factionManager = CRF_SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (factionManager)
+			factionManager.UpdateChannelsSRClient(factionId, channels);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update LR channels on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateFactionChannelsLR(string factionId, array<string> channels)
+	{
+		CRF_SCR_FactionManager factionManager = CRF_SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (factionManager)
+			factionManager.UpdateChannelsLRClient(factionId, channels);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GearscriptManager: Add vehicle supply cost on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
+	{
+		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
+		if (gearscriptManager)
+			gearscriptManager.AddVehicleCostClient(vehicleResource, supplyCost);
 	}
 };

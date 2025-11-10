@@ -74,8 +74,10 @@ modded class SCR_FactionManager
 			}
 		}
 		
-		// Send only this faction's channels to all clients (not all 8 arrays)
-		Rpc(RpcDo_UpdateChannelsSR, factionId, input);
+		// Send only this faction's channels to all clients via broadcast manager
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		if (broadcastManager)
+			broadcastManager.UpdateFactionChannelsSR(factionId, input);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -114,14 +116,15 @@ modded class SCR_FactionManager
 			}
 		}
 		
-		// Send only this faction's channels to all clients (not all 8 arrays)
-		Rpc(RpcDo_UpdateChannelsLR, factionId, input);
+		// Send only this faction's channels to all clients via broadcast manager
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		if (broadcastManager)
+			broadcastManager.UpdateFactionChannelsLR(factionId, input);
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// RPC: Update SR channels on all clients
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void RpcDo_UpdateChannelsSR(string factionId, array<string> channels)
+	// Client-side: Update SR channels (called by RPC handler in broadcast manager)
+	void UpdateChannelsSRClient(string factionId, array<string> channels)
 	{
 		// Update only the specified faction's channels
 		switch (factionId)
@@ -146,9 +149,8 @@ modded class SCR_FactionManager
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// RPC: Update LR channels on all clients
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void RpcDo_UpdateChannelsLR(string factionId, array<string> channels)
+	// Client-side: Update LR channels (called by RPC handler in broadcast manager)
+	void UpdateChannelsLRClient(string factionId, array<string> channels)
 	{
 		// Update only the specified faction's channels
 		switch (factionId)
@@ -168,6 +170,50 @@ modded class SCR_FactionManager
 			case "CIV":
 				m_aCIVFORActiveLRChannels.Clear();
 				m_aCIVFORActiveLRChannels.InsertAll(channels);
+				break;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// JIP SYNC: Send player's faction radio configuration to newly connected player
+	override void OnPlayerConnected(int playerId)
+	{
+		super.OnPlayerConnected(playerId);
+		
+		// Only server sends JIP sync
+		if (!Replication.IsServer())
+			return;
+		
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		if (!broadcastManager)
+			return;
+		
+		// Get the player's faction
+		SCR_Faction playerFaction = SCR_Faction.Cast(GetPlayerFaction(playerId));
+		if (!playerFaction)
+			return;
+		
+		string factionKey = playerFaction.GetFactionKey();
+		
+		// Send only the player's faction radio configs to reduce bandwidth
+		// Player only needs channels for their own faction
+		switch (factionKey)
+		{
+			case "BLUFOR":
+				broadcastManager.UpdateFactionChannelsSR("BLUFOR", m_aBLUFORActiveSRChannels);
+				broadcastManager.UpdateFactionChannelsLR("BLUFOR", m_aBLUFORActiveLRChannels);
+				break;
+			case "OPFOR":
+				broadcastManager.UpdateFactionChannelsSR("OPFOR", m_aOPFORActiveSRChannels);
+				broadcastManager.UpdateFactionChannelsLR("OPFOR", m_aOPFORActiveLRChannels);
+				break;
+			case "INDFOR":
+				broadcastManager.UpdateFactionChannelsSR("INDFOR", m_aINDFORActiveSRChannels);
+				broadcastManager.UpdateFactionChannelsLR("INDFOR", m_aINDFORActiveLRChannels);
+				break;
+			case "CIV":
+				broadcastManager.UpdateFactionChannelsSR("CIV", m_aCIVFORActiveSRChannels);
+				broadcastManager.UpdateFactionChannelsLR("CIV", m_aCIVFORActiveLRChannels);
 				break;
 		}
 	}

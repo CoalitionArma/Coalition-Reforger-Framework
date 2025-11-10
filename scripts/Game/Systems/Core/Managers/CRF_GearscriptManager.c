@@ -631,15 +631,16 @@ class CRF_GearscriptManager : ScriptComponent
 				
 			m_mVehicleSupplyCosts.Set(truck.GetPrefabData().GetPrefabName(), suppliesNeeded);
 			
-			// Send only this vehicle's data to clients (not entire catalog)
-			Rpc(RpcDo_AddVehicleCost, truck.GetPrefabData().GetPrefabName(), suppliesNeeded);
+			// Send only this vehicle's data to clients via broadcast manager
+			CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+			if (broadcastManager)
+				broadcastManager.AddVehicleSupplyCost(truck.GetPrefabData().GetPrefabName(), suppliesNeeded);
 		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// RPC: Add vehicle cost entry on all clients
-	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	protected void RpcDo_AddVehicleCost(ResourceName vehicleResource, int supplyCost)
+	// Client-side: Add vehicle cost entry (called by RPC handler in broadcast manager)
+	void AddVehicleCostClient(ResourceName vehicleResource, int supplyCost)
 	{
 		m_mVehicleSupplyCosts.Set(vehicleResource, supplyCost);
 	}
@@ -2632,6 +2633,26 @@ class CRF_GearscriptManager : ScriptComponent
 				vehicle.m_aVehicleGearscriptOverrides = spawner.m_aVehicleGearscriptOverrides;
 			if (spawner.m_aAdditionalVehicleItems.Count() > 0)
 				vehicle.m_aAdditionalVehicleItems = spawner.m_aAdditionalVehicleItems;
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// JIP SYNC: Send entire vehicle supply catalog to newly connected players
+	void OnPlayerConnected(int playerId)
+	{
+		// Only server sends JIP sync
+		if (!Replication.IsServer())
+			return;
+		
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		if (!broadcastManager)
+			return;
+		
+		// Send all vehicle supply costs to all clients via broadcast manager
+		// This ensures they immediately see correct costs for all spawned vehicles
+		foreach (ResourceName vehicleResource, int supplyCost : m_mVehicleSupplyCosts)
+		{
+			broadcastManager.AddVehicleSupplyCost(vehicleResource, supplyCost);
 		}
 	}
 };
