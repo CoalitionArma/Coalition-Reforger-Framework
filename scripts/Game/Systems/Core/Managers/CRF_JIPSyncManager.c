@@ -44,7 +44,7 @@ class CRF_JIPSyncManager : SCR_BaseGameModeComponent
 		if (!Replication.IsServer())
 			return;
 		
-		Print(string.Format("[CRF_JIPSyncManager] Player %1 connected, sending JIP sync data", playerId), LogLevel.NORMAL);
+		//Print(string.Format("[CRF_JIPSyncManager] Player %1 connected, sending JIP sync data", playerId), LogLevel.NORMAL);
 		
 		// Sync systems that use explicit RPCs (not auto-synced by RplProp)
 		SyncFactionRadioChannels(playerId);
