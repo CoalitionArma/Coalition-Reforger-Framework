@@ -70,6 +70,21 @@ class CRF_SlottingManager : ScriptComponent
 			m_RplBroadcastManager.UpdateSlotData(slotId, slotData);
 	}
 	
+	void UpdateSlotPlayerID(int slotId, int playerId = -1)
+	{
+		GetSlotData(slotId).SetSlotCurrentPlayerIdSilent(isLocked);
+		
+		SlottingUpdate();
+	}
+	
+	void UpdateSlotLocked(int slotId, bool isLocked = false)
+	{
+		GetSlotData(slotId).SetIsLockedSlot(isLocked);
+		
+		SlottingUpdate();
+	}
+	
+	
 	//------------------------------------------------------------------------------------------------
 	// Optimized batch update method that minimizes replication calls
 	bool BatchUpdateSlot(int slotId, int playerId = -1, RplId groupId = RplId.Invalid(), RplId charId = RplId.Invalid(), 
@@ -458,29 +473,6 @@ class CRF_SlottingManager : ScriptComponent
 			
 		return slotData.GetIsDeadSlot();
 	}
-
-	//------------------------------------------------------------------------------------------------
-	// SLOT UPDATE METHODS
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotLockedState(int slotId, bool input)
-	{
-		// Use optimized batch update method
-		BatchUpdateSlot(slotId, -1, RplId.Invalid(), RplId.Invalid(), "", "", input, false);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotDeathState(int slotId, bool input)
-	{
-		// Use optimized batch update method  
-		BatchUpdateSlot(slotId, -1, RplId.Invalid(), RplId.Invalid(), "", "", false, input);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotPlayerID(int slotId, int playerId)
-	{
-		// Use optimized batch update method (includes automatic cleanup for player removal)
-		BatchUpdateSlot(slotId, playerId, RplId.Invalid(), RplId.Invalid(), "", "", false, false);
-	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Helper method to clean up character from slot
@@ -502,56 +494,6 @@ class CRF_SlottingManager : ScriptComponent
 			SCR_EntityHelper.DeleteEntityAndChildren(character);
 			
 		slotData.SetSlotCurrentCharacter(RplId.Invalid());
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotGroup(int slotId, RplId groupId)
-	{
-		// Use optimized batch update method
-		BatchUpdateSlot(slotId, -1, groupId, RplId.Invalid(), "", "", false, false);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotResource(int slotId, ResourceName resource)
-	{
-		// Use optimized batch update method
-		BatchUpdateSlot(slotId, -1, RplId.Invalid(), RplId.Invalid(), resource, "", false, false);
-	}
-
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotIcon(int slotId, ResourceName icon)
-	{
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		if (!slotData)
-			return;
-			
-		slotData.SetSlotIcon(icon);
-		BroadcastSlotUpdate(slotId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotType(int slotId, CRF_ESlotType type)
-	{
-		CRF_SlotDataContainer slotData = m_mSlotsMap.Get(slotId);
-		if (!slotData)
-			return;
-			
-		slotData.SetSlotType(type);
-		BroadcastSlotUpdate(slotId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotName(int slotId, string name)
-	{
-		// Use optimized batch update method
-		BatchUpdateSlot(slotId, -1, RplId.Invalid(), RplId.Invalid(), "", name, false, false);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void UpdateSlotCharacter(int slotId, RplId charId)
-	{
-		// Use optimized batch update method
-		BatchUpdateSlot(slotId, -1, RplId.Invalid(), charId, "", "", false, false);
 	}
 
 	//------------------------------------------------------------------------------------------------

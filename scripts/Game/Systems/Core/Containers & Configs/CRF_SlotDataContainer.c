@@ -22,15 +22,37 @@ class CRF_SlotDataContainer
 	protected ref ScriptInvoker m_OnDataUpdate;
 	
 	//------------------------------------------------------------------------------------------------
-	// SCRIPT INVOKER
-	//------------------------------------------------------------------------------------------------
+	/**
+	 * Replaces or sets the internal CRF_SlotDataContainer record for the slot.
+	 * If newData is non-null, the slot's data is updated with the provided instance.
+	 *
+	 * @param slotID: ID of the slot whose data should be updated.
+	 * @param newData: Pointer/reference to the new CRF_SlotDataContainer to apply.
+	 */
+	void DataUpdate(CRF_SlotDataContainer newSlotData = null)
+	{	
+		if(newSlotData)	
+		{
+			SetSlotVector(newSlotData.GetSlotVector());
+			SetSlotCurrentPlayerId(newSlotData.GetSlotCurrentPlayerId());
+			SetSlotCurrentGroup(newSlotData.GetSlotCurrentGroup());
+			SetSlotCurrentCharacter(newSlotData.GetSlotCurrentCharacter());
+			SetSlotType(newSlotData.GetSlotType());
+			SetSlotName(newSlotData.GetSlotName());
+			SetSlotIcon(newSlotData.GetSlotIconResource());
+			SetSlotResource(newSlotData.GetSlotResource());
+			SetSlotFactionKey(newSlotData.GetSlotFactionKey());
+			SetIsLockedSlot(newSlotData.GetIsLockedSlot());
+			SetIsDeadSlot(newSlotData.GetIsDeadSlot());
+			
+			if (m_OnDataUpdate)
+				m_OnDataUpdate.Invoke();
+		};
+	}
 	
 	//------------------------------------------------------------------------------------------------
-	void InvokeDataUpdate()
-	{
-		if (m_OnDataUpdate)
-			m_OnDataUpdate.Invoke();
-	}
+	// SCRIPT INVOKER
+	//------------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------------
 	ScriptInvoker GetOnDataUpdate()
@@ -52,194 +74,66 @@ class CRF_SlotDataContainer
 		m_vSlotVectorTwo = tempVec[1];
 		m_vSlotVectorThree = tempVec[2];
 		m_vSlotVectorFour = tempVec[3];
-		
-		InvokeDataUpdate();
 	}	
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentPlayerId(int playerId)
 	{
 		m_iSlotCurrentPlayerId = playerId;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentGroup(RplId groupRplId)
 	{
 		m_iSlotCurrentGroup = groupRplId;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentCharacter(RplId characterRplId)
 	{
 		m_iSlotCurrentCharacter = characterRplId;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotType(CRF_ESlotType slotType)
 	{
 		m_iSlotType = slotType;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotName(string name)
 	{
 		m_sSlotName = name;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotIcon(ResourceName icon)
 	{
 		m_rSlotIconResource = icon;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotResource(ResourceName resource)
 	{
 		m_rSlotResource = resource;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotFactionKey(FactionKey faction)
 	{
 		m_SlotFactionKey = faction;
-	
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetIsLockedSlot(bool lockedState)
 	{
 		m_bIsLockedSlot = lockedState;
-		
-		InvokeDataUpdate();
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetIsDeadSlot(bool deadState)
 	{
 		m_bIsDeadSlot = deadState;
-		
-		InvokeDataUpdate();
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// SILENT SETTERS - No InvokeDataUpdate() calls for batch operations
-	//------------------------------------------------------------------------------------------------
-	
-	//------------------------------------------------------------------------------------------------
-	void SetSlotCurrentPlayerIdSilent(int playerId)
-	{
-		m_iSlotCurrentPlayerId = playerId;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetSlotCurrentGroupSilent(RplId groupRplId)
-	{
-		m_iSlotCurrentGroup = groupRplId;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetSlotCurrentCharacterSilent(RplId characterRplId)
-	{
-		m_iSlotCurrentCharacter = characterRplId;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetSlotResourceSilent(ResourceName resource)
-	{
-		m_rSlotResource = resource;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetSlotNameSilent(string name)
-	{
-		m_sSlotName = name;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetIsLockedSlotSilent(bool lockedState)
-	{
-		m_bIsLockedSlot = lockedState;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	void SetIsDeadSlotSilent(bool deadState)
-	{
-		m_bIsDeadSlot = deadState;
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// BATCH UPDATE METHOD - Single InvokeDataUpdate() call for multiple property changes
-	//------------------------------------------------------------------------------------------------
-	
-	//------------------------------------------------------------------------------------------------
-	bool BatchUpdateSlotData(int playerId = -1, RplId groupId = RplId.Invalid(), RplId charId = RplId.Invalid(), 
-	                        ResourceName resource = "", string name = "", bool isLocked = false, bool isDead = false)
-	{
-		bool hasChanges = false;
-		
-		// Only update values that are different from defaults or current values
-		if (playerId != -1 && m_iSlotCurrentPlayerId != playerId)
-		{
-			m_iSlotCurrentPlayerId = playerId;
-			hasChanges = true;
-		}
-		
-		if (groupId != RplId.Invalid() && m_iSlotCurrentGroup != groupId)
-		{
-			m_iSlotCurrentGroup = groupId;
-			hasChanges = true;
-		}
-		
-		if (charId != RplId.Invalid() && m_iSlotCurrentCharacter != charId)
-		{
-			m_iSlotCurrentCharacter = charId;
-			hasChanges = true;
-		}
-		
-		if (!resource.IsEmpty() && m_rSlotResource != resource)
-		{
-			m_rSlotResource = resource;
-			hasChanges = true;
-		}
-		
-		if (!name.IsEmpty() && m_sSlotName != name)
-		{
-			m_sSlotName = name;
-			hasChanges = true;
-		}
-		
-		if (m_bIsLockedSlot != isLocked)
-		{
-			m_bIsLockedSlot = isLocked;
-			hasChanges = true;
-		}
-		
-		if (m_bIsDeadSlot != isDead)
-		{
-			m_bIsDeadSlot = isDead;
-			hasChanges = true;
-		}
-		
-		// Only trigger replication if something actually changed
-		if (hasChanges)
-			InvokeDataUpdate();
-			
-		return hasChanges;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -350,54 +244,46 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	
 	//------------------------------------------------------------------------------------------------
-	bool RplSave(ScriptBitWriter writer)
+	void Save(ScriptBitWriter writer)
 	{
-	    // Vectors = 3 * 32 bits = 96
-	    writer.Write(m_vSlotVectorOne, 96);
-	    writer.Write(m_vSlotVectorTwo, 96);
-	    writer.Write(m_vSlotVectorThree, 96);
-	    writer.Write(m_vSlotVectorFour, 96);
+	    writer.WriteVector(m_vSlotVectorOne);
+	    writer.WriteVector(m_vSlotVectorTwo);
+	    writer.WriteVector(m_vSlotVectorThree);
+	    writer.WriteVector(m_vSlotVectorFour);
 	
-	    // Integers = 32 bits
-	    writer.Write(m_iSlotCurrentPlayerId, 32);
-	    writer.Write(m_iSlotCurrentGroup, 32);
-	    writer.Write(m_iSlotCurrentCharacter, 32);
-	    writer.Write(m_iSlotType, 32);
+	    writer.WriteInt(m_iSlotCurrentPlayerId);
+	    writer.WriteRplId(m_iSlotCurrentGroup);
+	    writer.WriteRplId(m_iSlotCurrentCharacter);
+	    writer.WriteInt(m_iSlotType);
 	
-	    // Strings use the proto directly (cannot replace with raw Write)
 	    writer.WriteString(m_sSlotName);
 	    writer.WriteString(m_rSlotIconResource);
 	    writer.WriteString(m_rSlotResource);
 	    writer.WriteString(m_SlotFactionKey);
 	
-	    // Bools = 1 bit
-	    writer.Write(m_bIsLockedSlot, 1);
-	    writer.Write(m_bIsDeadSlot, 1);
-	
-	    return true;
+	    writer.WriteBool(m_bIsLockedSlot);
+	    writer.WriteBool(m_bIsDeadSlot);
 	}
 	
-	bool RplLoad(ScriptBitReader reader)
+	void Load(ScriptBitReader reader)
 	{
-	    reader.Read(m_vSlotVectorOne, 96);
-	    reader.Read(m_vSlotVectorTwo, 96);
-	    reader.Read(m_vSlotVectorThree, 96);
-	    reader.Read(m_vSlotVectorFour, 96);
+	    reader.ReadVector(m_vSlotVectorOne, 96);
+	    reader.ReadVector(m_vSlotVectorTwo, 96);
+	    reader.ReadVector(m_vSlotVectorThree, 96);
+	    reader.ReadVector(m_vSlotVectorFour, 96);
 	
-	    reader.Read(m_iSlotCurrentPlayerId, 32);
-	    reader.Read(m_iSlotCurrentGroup, 32);
-	    reader.Read(m_iSlotCurrentCharacter, 32);
-	    reader.Read(m_iSlotType, 32);
+	    reader.ReadInt(m_iSlotCurrentPlayerId);
+	    reader.ReadRplId(m_iSlotCurrentGroup);
+	    reader.ReadRplId(m_iSlotCurrentCharacter);
+	    reader.ReadInt(m_iSlotType);
 	
 	    reader.ReadString(m_sSlotName);
 	    reader.ReadString(m_rSlotIconResource);
 	    reader.ReadString(m_rSlotResource);
 	    reader.ReadString(m_SlotFactionKey);
 	
-	    reader.Read(m_bIsLockedSlot, 1);
-	    reader.Read(m_bIsDeadSlot, 1);
-	
-	    return true;
+	    reader.ReadBool(m_bIsLockedSlot);
+	    reader.ReadBool(m_bIsDeadSlot);
 	}
 	
 	static bool Extract(CRF_SlotDataContainer instance, ScriptCtx ctx, SSnapSerializerBase snapshot)
