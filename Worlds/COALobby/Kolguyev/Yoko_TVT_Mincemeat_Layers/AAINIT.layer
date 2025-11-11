@@ -21,7 +21,7 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
  m_iTimeLimitMinutes 60
  m_aMissionDescriptors {
   CRF_MissionDescriptor "{644250503DF684C0}" {
-   m_sTextData "US Forces in Kolguyev have made a quick and devastating push across the island's southern coast. Their push was so effective, they were able to steal a BMP. Now Russian Forces have regrouped and are going to retaliate, but will they be successfully?"\
+   m_sTextData "US Forces in Kolguyev have made a quick and devastating push across the island's southern coast. Their push was so effective, they were able to steal a BMP. Now, Russian Forces have regrouped and are going to retaliate, but will they be successful?"\
    ""\
    "BLUFOR Composition: Motorized Infantry Platoon"\
    "BLUFOR Assets: 1x Stolen BMP and 1x MMG"\
