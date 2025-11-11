@@ -1,0 +1,74 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 7114.804 314.515 6041.467
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7118.755 314.575 6044.399
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7122.976 314.665 6047.531
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7126.976 314.711 6050.498
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7130.574 314.728 6053.166
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7134.41 314.719 6056.011
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7137.771 314.144 6027.413
+  angles 0 7.621 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7128.44 314.293 6029.001
+  angles 0 7.621 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7147.9 313.981 6026.397
+  angles 0 7.621 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7143.024 314.078 6027.047
+  angles 0 7.621 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7123.707 314.345 6029.634
+  angles 0 7.621 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+ {
+  coords 7132.835 314.233 6028.071
+  angles 0 7.621 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+ }
+}

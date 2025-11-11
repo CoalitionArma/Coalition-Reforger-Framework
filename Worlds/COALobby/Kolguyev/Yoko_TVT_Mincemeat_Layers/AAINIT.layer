@@ -1,0 +1,141 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 7105.244 313.341 5999.833
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_RushGamemodeManager "{66D57E1FEF93267F}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Heavy Thunderstorm"
+   m_iSetWeatherConstant 1
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 12
+  }
+ }
+ coords 5960.402 85.673 3798.878
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "US Forces in Kolguyev have made a quick and devastating push across the island's southern coast. Their push was so effective, they were able to steal a BMP. Now Russian Forces have regrouped and are going to retaliate, but will they be successfully?"\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 1x Stolen BMP and 1x MMG"\
+   ""\
+   "OPFOR Composition: Motorized Infantry Company"\
+   "OPFOR Assets: 1x MMG and 1x MATT"\
+   ""\
+   "Time: 12:00pm"\
+   ""\
+   "Weather: Heavy Thunderstorm"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Defend the MCOMs."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Destroy the MCOMs."
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData ""
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "BLU"
+ {
+  SCR_FactionManager "66D60C8973BA3290" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       }
+       SCR_CallsignInfo "{66D60C863A15C373}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66D60C8D3DB4A4DD}" {
+        m_sCallsign "BMP"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66D60C8D2D41665F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66D60C8D2C85DE88}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{66D60C8D2CDC69C9}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66D60C92D552DE8E}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66D60C92D681EED0}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{66D60C92D8FE038C}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66D60C92DFBBF339}" {
+        m_sCallsign "MATT"
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 7779.707 85.43 5492.859
+  angles 0 -156.979 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 160
+  m_sDescription "OPFOR DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 7307.027 333.099 5704.116
+  angles 0 -172.475 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 160
+  m_sDescription "OPFOR DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6516.284 392.356 5763.042
+  angles 0 168.979 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 160
+  m_sDescription "OPFOR DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
