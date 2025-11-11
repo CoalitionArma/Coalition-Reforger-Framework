@@ -32,6 +32,13 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   CRF_MissionDescriptor "{64425051B9B5AF67}" {
    m_sTextData "Attack the MCOM's in order. The MCOM is toggled to be planted with an explosive, or defused at the radio on it. There will be a respawn wave after MCOM A is taken. "
   }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTitle "Armed Compositions"
+   m_sTextData "The HMG team may place HMG emplacements using the engineering truck, but only the HMG team may crew an emplacement. "
+   m_aFactionKeys +{
+    "SPEC"
+   }
+  }
  }
  m_iFactionOneRatio 4
  m_sFactionOneKey "BLU"
