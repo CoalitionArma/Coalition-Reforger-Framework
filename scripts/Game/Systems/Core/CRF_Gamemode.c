@@ -145,6 +145,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected static CRF_Gamemode m_sInstance;
 	
 	protected ref array<Vehicle> m_aSpawnedVehicles = {};
+	
+	bool m_bIsInEndCredits = false;
 
 	//===================================================================================
 	// STATIC METHODS
