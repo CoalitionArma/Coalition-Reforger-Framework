@@ -59,6 +59,54 @@ $grp CRF_VehicleSpawner {
    }
   }
  }
+ {
+  coords 7425.092 23.539 4987.166
+  angles 0 -178.74 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66DB5C66BB834FDA}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+   }
+  }
+ }
+ {
+  coords 7411.403 23.598 4987.104
+  angles 0 -178.74 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66DB5C66BB834FDA}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+   }
+  }
+ }
+ {
+  coords 7417.735 23.52 4986.308
+  angles 0 -178.74 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66DB5C66BB834FDA}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+   }
+  }
+ }
+ {
+  coords 7402.128 23.715 4987.125
+  angles 0 -178.74 0
+  m_rVehicle "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  m_sFactionKey "BLUFOR"
+  m_aAdditionalVehicleItems {
+   CRF_VehicleGearScriptAdditionalItem "{66DB5C66BB834FDA}" {
+    m_Prefab "{1742632597955A55}Prefabs/Items/Misc/Sandbags/Part_Sandbag_Plastic.et"
+    m_iAmountOfItemSupplyTruck 200
+   }
+  }
+ }
 }
 SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Company_p.et" {
  coords 7381.158 26.972 4972.476
