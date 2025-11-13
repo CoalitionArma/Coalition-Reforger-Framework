@@ -46,6 +46,9 @@ class CRF_Gamemode : SCR_BaseGameMode
 	
 	// General Gamemode Settings
 	//------------------------------------------------------------------------------------
+	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Gamemode General")]
+	bool m_bUseAAR;
+	
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
 	int m_iTimeLimitMinutes;
 
@@ -308,26 +311,32 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 			// Process player statistics data
 			ProcessStats(dataCollector,player);
-
-			IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(player);
-			if (!playerEntity)
-				continue;
 			
-			// Check if player is already dead/spectating
-			bool isPlayerAlreadyDead = CRF_GamemodeManager.IsSpectator(playerEntity);
-			
-			// Move all players to spectator mode for AAR interface and communication
-			// This preserves their actual alive/dead status while allowing AAR participation
-			if (!isPlayerAlreadyDead)
+			if (m_bUseAAR)
 			{
-				// Player is alive - force into spectator for AAR without marking as dead
-				ForcePlayerToSpectatorForAAR(player, playerEntity);
+				IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(player);
+				if (!playerEntity)
+					continue;
+				
+				// Check if player is already dead/spectating
+				bool isPlayerAlreadyDead = CRF_GamemodeManager.IsSpectator(playerEntity);
+				
+				// Move all players to spectator mode for AAR interface and communication
+				// This preserves their actual alive/dead status while allowing AAR participation
+				if (!isPlayerAlreadyDead)
+				{
+					// Player is alive - force into spectator for AAR without marking as dead
+					ForcePlayerToSpectatorForAAR(player, playerEntity);
+				}
+				// Players already in spectator mode don't need repositioning
+				
+				//Adds them to default channel
+				menuManager.AddPlayerToChannel(player, 1, false);
 			}
-			// Players already in spectator mode don't need repositioning
-			
-			//Adds them to default channel
-			menuManager.AddPlayerToChannel(player, 1, false);
 		}
+		
+		if (!m_bUseAAR)
+			CRF_RplBroadcastManager.GetInstance().BroadcastOutro();
 		
 		// Stores player profiles who havent disconnected
 		dataCollector.OnGameEnd();

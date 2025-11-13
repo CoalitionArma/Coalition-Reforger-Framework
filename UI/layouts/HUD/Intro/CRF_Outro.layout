@@ -29,7 +29,7 @@ FrameWidgetClass {
     SizeY 300
     OffsetBottom -150
    }
-   Text "NORTHERN FLIGHT"
+   Text "STORAGE WARS"
    "Font Size" 400
    "Horizontal Alignment" Center
    "Vertical Alignment" Center
@@ -73,7 +73,7 @@ FrameWidgetClass {
     OffsetBottom -396.597
    }
    "Is Visible" 0
-   Text "You May Now Leave The Server!"
+   Text "Please wait for server restart for the next mission!"
    "Font Size" 30
    "Horizontal Alignment" Center
    "Vertical Alignment" Center

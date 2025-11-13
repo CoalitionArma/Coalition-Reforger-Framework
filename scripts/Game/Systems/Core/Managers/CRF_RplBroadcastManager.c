@@ -1421,4 +1421,25 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if (slottingManager)
 			slottingManager.RemoveSlotClient(slotId);
 	}
+	
+	void BroadcastOutro()
+	{
+		#ifdef WORKBENCH
+		RpcDo_BroadcastOutro();
+		#else
+		Rpc(RpcDo_BroadcastOutro);
+		#endif
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_BroadcastOutro()
+	{
+		AudioSystem.PlaySound("{3D7F63CCD32B2F17}Sounds/Intro/outroCrescendo.wav");
+		GetGame().GetCallqueue().CallLater(OpenOutro, 2831, false);
+	}
+	
+	void OpenOutro()
+	{
+		GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_Outro);
+	}
 };

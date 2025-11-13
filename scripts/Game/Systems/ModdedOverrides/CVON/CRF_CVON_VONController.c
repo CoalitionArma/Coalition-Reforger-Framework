@@ -11,6 +11,16 @@ modded class SCR_VONController
 		(m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC" && m_VONGameModeComponent.IsPlayerListening(playerId));
 	}
 	
+	override void ActivateCVON(CVON_EVONTransmitType transmitType = CVON_EVONTransmitType.NONE)
+	{
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu)
+			if(topMenu.IsInherited(CRF_Outro))
+				return;
+		
+		super.ActivateCVON(transmitType);
+	}
+	
 	bool IsPlayerSpectator(int playerId)
 	{
 		if (playerId == 0)
@@ -85,6 +95,12 @@ modded class SCR_VONController
 	    bool    normalizePeak  = true
 	)
 	{
+		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		{
+			outLeft = 0;
+			outRight = 0;
+			return;
+		}
 		float specLeft;
 		float specRight;
 		if (SpectatorLRCheck(playerId, specLeft, specRight))
