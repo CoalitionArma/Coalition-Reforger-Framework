@@ -17,9 +17,9 @@ SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
          coords -6.901 -0.03 -5.66
          angles 0 16.336 0
          {
-          SCR_AIGroup : "{E5143827D374F6DD}Prefabs/Groups/OPFOR/Standard/Vehicle/CRF_OPFOR_3manVehicleCrew_p.et" {
-           coords 11.97 -0.096 2.991
-           angles 0 0.834 0
+          SCR_AIGroup : "{5804AD2759E17E13}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_3manCrew_p.et" {
+           coords -14.751 0.14 21.874
+           angles 0 125.587 0
           }
          }
         }

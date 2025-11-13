@@ -1,74 +1,158 @@
 $grp CRF_VehicleSpawner {
  {
-  coords 7114.804 314.515 6041.467
+  coords 6601.299 216.23 5398.258
   angles 0 143.432 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7118.755 314.575 6044.399
+  coords 6605.25 215.635 5401.19
   angles 0 143.432 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7122.976 314.665 6047.531
+  coords 6609.471 215.039 5404.322
   angles 0 143.432 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7126.976 314.711 6050.498
+  coords 6613.471 214.526 5407.289
   angles 0 143.432 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7130.574 314.728 6053.166
+  coords 6617.069 214.049 5409.957
   angles 0 143.432 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7134.41 314.719 6056.011
+  coords 6620.905 213.583 5412.803
   angles 0 143.432 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7137.771 314.144 6027.413
-  angles 0 7.621 0
+  coords 6636.159 210.818 5390.77
+  angles 0 137.239 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7128.44 314.293 6029.001
-  angles 0 7.621 0
+  coords 6626.62 210.942 5382.109
+  angles 0 135.73 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7147.9 313.981 6026.397
-  angles 0 7.621 0
+  coords 6612.561 213.132 5368.404
+  angles 0 135.73 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7143.024 314.078 6027.047
-  angles 0 7.621 0
+  coords 6616.083 212.605 5371.839
+  angles 0 135.73 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7123.707 314.345 6029.634
-  angles 0 7.621 0
+  coords 6630.039 210.426 5385.442
+  angles 0 135.73 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
  {
-  coords 7132.835 314.233 6028.071
-  angles 0 7.621 0
+  coords 6623.176 211.462 5379.225
+  angles 0 135.73 0
   m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
   m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+  }
  }
 }
