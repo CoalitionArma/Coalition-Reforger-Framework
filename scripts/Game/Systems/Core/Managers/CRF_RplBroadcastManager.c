@@ -1377,24 +1377,25 @@ class CRF_RplBroadcastManager : ScriptComponent
 	// Replaces full array replication with targeted slot update
 	// Bandwidth: ~370 bytes vs 18,300 bytes (50 slots) = 98% reduction
 	//------------------------------------------------------------------------------------------------
-	void UpdateSlotData(int slotId, CRF_SlotDataContainer slotData)
+	void UpdateSlotData(CRF_SlotDataContainer slotData)
 	{
 		if (!Replication.IsServer())
 			return;
 		
-		// Estimate bandwidth: slotId (4 bytes) + slot data (~366 bytes avg) = ~370 bytes
-		LogTelemetry("UpdateSlotData", 370);
+		// Estimate bandwidth: slot data (~366 bytes avg)
+		LogTelemetry("UpdateSlotData", 366);
 		
-		Rpc(RpcDo_UpdateSlotData, slotId, slotData);
+		RpcDo_UpdateSlotData(slotData);
+		Rpc(RpcDo_UpdateSlotData, slotData);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RpcDo_UpdateSlotData(int slotId, CRF_SlotDataContainer slotData)
+	void RpcDo_UpdateSlotData(CRF_SlotDataContainer slotData)
 	{
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
-			slottingManager.UpdateSlotDataClient(slotId, slotData);
+			slottingManager.UpdateSlotDataClient(slotData);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1408,6 +1409,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 		// Bandwidth: Just slotId (4 bytes)
 		LogTelemetry("RemoveSlot", 4);
 		
+		RpcDo_RemoveSlot(slotId);
 		Rpc(RpcDo_RemoveSlot, slotId);
 	}
 	

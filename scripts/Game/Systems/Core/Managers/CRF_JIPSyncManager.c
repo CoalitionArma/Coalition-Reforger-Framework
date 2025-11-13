@@ -51,7 +51,6 @@ class CRF_JIPSyncManager : SCR_BaseGameModeComponent
 		SyncGunGameStats(playerId);
 		SyncVehicleSupplyCosts(playerId);
 		SyncRush3DMarkers(playerId);
-		SyncSlottingData(playerId);
 		
 		// NOTE: S&D, MapStaging, and Raid use RplProp variables that auto-sync via Replication.BumpMe()
 		// during normal gameplay. They don't need manual JIP sync here.
@@ -144,37 +143,5 @@ class CRF_JIPSyncManager : SCR_BaseGameModeComponent
 		// Rush requires 3-second delay for player controller initialization
 		// This calls the gamemode's setup method which uses the RplProp toggle trick
 		GetGame().GetCallqueue().CallLater(rushGamemode.SetupMarkersForPlayer, 3000, false, playerId);
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	// JIP SYNC: Slotting Manager - Send all slot data to late-joiners
-	// Uses targeted RPCs to avoid overwhelming new player connection
-	//------------------------------------------------------------------------------------------------
-	protected void SyncSlottingData(int playerId)
-	{
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-		if (!slottingManager)
-			return;
-		
-		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
-		if (!broadcastManager)
-			return;
-		
-		Print(string.Format("[CRF_JIPSyncManager] Syncing slotting data to player %1", playerId), LogLevel.VERBOSE);
-		
-		// Get all slots
-		array<int> allSlotIds = slottingManager.GetAllSlotIds();
-		
-		Print(string.Format("[CRF_JIPSyncManager] Sending %1 slots to player %2", allSlotIds.Count(), playerId), LogLevel.VERBOSE);
-		
-		// Send each slot via targeted RPC
-		// Note: Could batch these in future optimization, but individual RPCs are already
-		// 98% more efficient than old full-array replication
-		foreach (int slotId : allSlotIds)
-		{
-			CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
-			if (slotData)
-				broadcastManager.UpdateSlotData(slotId, slotData);
-		}
 	}
 }

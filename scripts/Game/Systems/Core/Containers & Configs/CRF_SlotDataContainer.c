@@ -1,10 +1,11 @@
 class CRF_SlotDataContainer
-{
+{	
 	protected vector m_vSlotVectorOne;
 	protected vector m_vSlotVectorTwo;
 	protected vector m_vSlotVectorThree;
 	protected vector m_vSlotVectorFour;
 	
+	protected int m_iSlotId;
 	protected int m_iSlotCurrentPlayerId;
 	protected RplId m_iSlotCurrentGroup = RplId.Invalid();
 	protected RplId m_iSlotCurrentCharacter = RplId.Invalid();
@@ -33,7 +34,12 @@ class CRF_SlotDataContainer
 	{	
 		if(newSlotData)	
 		{
-			SetSlotVector(newSlotData.GetSlotVector());
+			SetSlotId(newSlotData.GetSlotId());
+			
+			vector vec[4];
+			newSlotData.GetSlotVector(vec);
+			SetSlotVector(vec);
+			
 			SetSlotCurrentPlayerId(newSlotData.GetSlotCurrentPlayerId());
 			SetSlotCurrentGroup(newSlotData.GetSlotCurrentGroup());
 			SetSlotCurrentCharacter(newSlotData.GetSlotCurrentCharacter());
@@ -77,9 +83,18 @@ class CRF_SlotDataContainer
 	}	
 	
 	//------------------------------------------------------------------------------------------------
+	void SetSlotId(int slotId)
+	{
+		m_iSlotId = slotId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentPlayerId(int playerId)
 	{
 		m_iSlotCurrentPlayerId = playerId;
+		
+		if (playerId <= 0)
+				CRF_SlottingManager.GetInstance().CleanupCharacterFromSlot(this);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -150,18 +165,21 @@ class CRF_SlotDataContainer
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	int GetSlotId()
+	{
+		return m_iSlotId;
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	int GetSlotCurrentPlayerId()
 	{
-		if(!m_iSlotCurrentPlayerId)
-			return 0;
-		else
-			return m_iSlotCurrentPlayerId;
+		return m_iSlotCurrentPlayerId;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	RplId GetSlotCurrentGroup()
 	{
-		if(!m_iSlotCurrentGroup)
+		if(!m_iSlotCurrentGroup || m_iSlotCurrentGroup == RplId.Invalid())
 			return RplId.Invalid();
 		else
 			return m_iSlotCurrentGroup;
@@ -170,7 +188,7 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	RplId GetSlotCurrentCharacter()
 	{
-		if(!m_iSlotCurrentCharacter)
+		if(!m_iSlotCurrentCharacter || m_iSlotCurrentGroup == RplId.Invalid())
 			return RplId.Invalid();
 		else
 			return m_iSlotCurrentCharacter;
@@ -179,10 +197,7 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	CRF_ESlotType GetSlotType()
 	{
-		if(!m_iSlotType)
-			return CRF_ESlotType.GENERAL_INFANTRY;
-		else
-			return m_iSlotType;
+		return m_iSlotType;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -197,46 +212,31 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotIconResource()
 	{
-		if(!m_rSlotIconResource)
-			return "";
-		else
-			return m_rSlotIconResource;
+		return m_rSlotIconResource;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	ResourceName GetSlotResource()
 	{
-		if(!m_rSlotResource)
-			return "";
-		else
-			return m_rSlotResource;
+		return m_rSlotResource;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	FactionKey GetSlotFactionKey()
 	{
-		if(!m_SlotFactionKey)
-			return "";
-		else
-			return m_SlotFactionKey;
+		return m_SlotFactionKey;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	bool GetIsLockedSlot()
 	{
-		if(!m_bIsLockedSlot)
-			return false;
-		else
-			return m_bIsLockedSlot;
+		return m_bIsLockedSlot;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	bool GetIsDeadSlot()
 	{
-		if(!m_bIsDeadSlot)
-			return false;
-		else
-			return m_bIsDeadSlot;
+		return m_bIsDeadSlot;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -251,6 +251,7 @@ class CRF_SlotDataContainer
 	    writer.WriteVector(m_vSlotVectorThree);
 	    writer.WriteVector(m_vSlotVectorFour);
 	
+		writer.WriteInt(m_iSlotId);
 	    writer.WriteInt(m_iSlotCurrentPlayerId);
 	    writer.WriteRplId(m_iSlotCurrentGroup);
 	    writer.WriteRplId(m_iSlotCurrentCharacter);
@@ -267,11 +268,12 @@ class CRF_SlotDataContainer
 	
 	void Load(ScriptBitReader reader)
 	{
-	    reader.ReadVector(m_vSlotVectorOne, 96);
-	    reader.ReadVector(m_vSlotVectorTwo, 96);
-	    reader.ReadVector(m_vSlotVectorThree, 96);
-	    reader.ReadVector(m_vSlotVectorFour, 96);
+	    reader.ReadVector(m_vSlotVectorOne);
+	    reader.ReadVector(m_vSlotVectorTwo);
+	    reader.ReadVector(m_vSlotVectorThree);
+	    reader.ReadVector(m_vSlotVectorFour);
 	
+		reader.ReadInt(m_iSlotId);
 	    reader.ReadInt(m_iSlotCurrentPlayerId);
 	    reader.ReadRplId(m_iSlotCurrentGroup);
 	    reader.ReadRplId(m_iSlotCurrentCharacter);
@@ -293,6 +295,7 @@ class CRF_SlotDataContainer
 	    snapshot.SerializeBytes(instance.m_vSlotVectorThree, 12);
 	    snapshot.SerializeBytes(instance.m_vSlotVectorFour, 12);
 	
+		snapshot.SerializeBytes(instance.m_iSlotId, 4);
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
@@ -315,6 +318,7 @@ class CRF_SlotDataContainer
 	    snapshot.SerializeBytes(instance.m_vSlotVectorThree, 12);
 	    snapshot.SerializeBytes(instance.m_vSlotVectorFour, 12);
 	
+		snapshot.SerializeBytes(instance.m_iSlotId, 4);
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentPlayerId, 4);
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentGroup, 4);
 	    snapshot.SerializeBytes(instance.m_iSlotCurrentCharacter, 4);
@@ -341,6 +345,7 @@ class CRF_SlotDataContainer
 		snapshot.EncodeInt(packet);
 		snapshot.EncodeInt(packet);
 		snapshot.EncodeInt(packet);
+		snapshot.EncodeInt(packet);
 		
 		snapshot.EncodeString(packet);
 		snapshot.EncodeString(packet);
@@ -358,6 +363,7 @@ class CRF_SlotDataContainer
 		snapshot.DecodeVector(packet);
 		snapshot.DecodeVector(packet);
 		
+		snapshot.DecodeInt(packet);
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeInt(packet);
 		snapshot.DecodeInt(packet);
@@ -380,6 +386,7 @@ class CRF_SlotDataContainer
 	        && lhs.CompareSnapshots(rhs, 12)
 	        && lhs.CompareSnapshots(rhs, 12)
 	        && lhs.CompareSnapshots(rhs, 12)
+			&& lhs.CompareSnapshots(rhs, 4)
 	        && lhs.CompareSnapshots(rhs, 4)
 	        && lhs.CompareSnapshots(rhs, 4)
 	        && lhs.CompareSnapshots(rhs, 4)
@@ -398,6 +405,7 @@ class CRF_SlotDataContainer
 	        && snapshot.Compare(instance.m_vSlotVectorTwo, 12)
 	        && snapshot.Compare(instance.m_vSlotVectorThree, 12)
 	        && snapshot.Compare(instance.m_vSlotVectorFour, 12)
+			&& snapshot.Compare(instance.m_iSlotId, 4)
 	        && snapshot.Compare(instance.m_iSlotCurrentPlayerId, 4)
 	        && snapshot.Compare(instance.m_iSlotCurrentGroup, 4)
 	        && snapshot.Compare(instance.m_iSlotCurrentCharacter, 4)
