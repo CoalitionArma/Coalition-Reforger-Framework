@@ -10,6 +10,48 @@ $grp CRF_VehicleSpawner {
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
    }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
   }
  }
  {
@@ -22,6 +64,48 @@ $grp CRF_VehicleSpawner {
    }
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
    }
   }
  }
@@ -36,6 +120,48 @@ $grp CRF_VehicleSpawner {
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
    }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
   }
  }
  {
@@ -48,6 +174,48 @@ $grp CRF_VehicleSpawner {
    }
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
    }
   }
  }
@@ -62,6 +230,48 @@ $grp CRF_VehicleSpawner {
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
    }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
   }
  }
  {
@@ -74,6 +284,48 @@ $grp CRF_VehicleSpawner {
    }
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
    }
   }
  }
@@ -88,6 +340,48 @@ $grp CRF_VehicleSpawner {
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
    }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
   }
  }
  {
@@ -100,6 +394,48 @@ $grp CRF_VehicleSpawner {
    }
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
    }
   }
  }
@@ -114,6 +450,48 @@ $grp CRF_VehicleSpawner {
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
    }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
   }
  }
  {
@@ -126,6 +504,48 @@ $grp CRF_VehicleSpawner {
    }
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
    }
   }
  }
@@ -140,6 +560,48 @@ $grp CRF_VehicleSpawner {
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
    }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
   }
  }
  {
@@ -152,6 +614,48 @@ $grp CRF_VehicleSpawner {
    }
    CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
     m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
    }
   }
  }
