@@ -488,125 +488,128 @@ class CRF_GearscriptManager : ScriptComponent
 		
 		int suppliesNeeded = 0;
 		ClearTruckGear(truck, invManager);
-		suppliesNeeded += ApplyTruckLoadout(truck, invManager, gsContainer, faction.GetFactionKey(), isSupply);
-		array<ResourceName> heGLsToAdd = {};
-		array<ResourceName> glsToAdd = {};
-		for (int i = 0; i <= 11; i++)
+		if (Vehicle.Cast(truck).m_bShouldAddAmmo)
 		{
-			//Regular Weapons
-			if (i < 4 || i == 11)
+			suppliesNeeded += ApplyTruckLoadout(truck, invManager, gsContainer, faction.GetFactionKey(), isSupply);
+			array<ResourceName> heGLsToAdd = {};
+			array<ResourceName> glsToAdd = {};
+			for (int i = 0; i <= 11; i++)
 			{
-				int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
-				array<ResourceName> magazinesToAdd = {};
-				array<int> magazineCounts = {};
-				array<ref CRF_Weapon_Class> weapons = GetWeaponsByIndex(i, gearSriptConfig);
-				if (weapons.Count() == 0)
-					continue;
-				foreach (CRF_Weapon_Class weapon: weapons)
+				//Regular Weapons
+				if (i < 4 || i == 11)
 				{
-					if (!weapon)
+					int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
+					array<ResourceName> magazinesToAdd = {};
+					array<int> magazineCounts = {};
+					array<ref CRF_Weapon_Class> weapons = GetWeaponsByIndex(i, gearSriptConfig);
+					if (weapons.Count() == 0)
 						continue;
-					
-					if (!weapon.m_MagazineArray)
-						continue;
-					foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+					foreach (CRF_Weapon_Class weapon: weapons)
 					{
-						if (!IsRegularMagazine(weapons, magazine.m_Magazine) && i == 1)
+						if (!weapon)
+							continue;
+						
+						if (!weapon.m_MagazineArray)
+							continue;
+						foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
 						{
-							if (IsGLHE(magazine.m_Magazine))
-								heGLsToAdd.Insert(magazine.m_Magazine);
-							else
-								glsToAdd.Insert(magazine.m_Magazine);
-							continue;
+							if (!IsRegularMagazine(weapons, magazine.m_Magazine) && i == 1)
+							{
+								if (IsGLHE(magazine.m_Magazine))
+									heGLsToAdd.Insert(magazine.m_Magazine);
+								else
+									glsToAdd.Insert(magazine.m_Magazine);
+								continue;
+							}
+							
+							int magazineCount = GetMagazineCount(magazine.m_Magazine);
+							if (magazineCount <= 0)
+								continue;
+							magazinesToAdd.Insert(magazine.m_Magazine);
+							magazineCounts.Insert(magazineCount);
 						}
-						
-						int magazineCount = GetMagazineCount(magazine.m_Magazine);
-						if (magazineCount <= 0)
-							continue;
-						magazinesToAdd.Insert(magazine.m_Magazine);
-						magazineCounts.Insert(magazineCount);
-					}
-				}				
-				if (magazinesToAdd.Count() == 0)
-					continue;
-				
-				suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
-			}
-			//Spec Weapons
-			else
-			{
-				int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
-				array<ResourceName> magazinesToAdd = {};
-				array<int> magazineCounts = {};
-				CRF_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, gearSriptConfig);
-				if (!weapon)
-					continue;
-				bool isDisposable = IsWeaponDisposable(weapon.m_Weapon);
-				if (isDisposable)
-				{
-					magazinesToAdd.Insert(weapon.m_Weapon);
-					suppliesNeeded += SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
-				}
-				else
-				{
-					foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
-					{
-						if (!IsSpecRegularMagazine(weapon, magazine.m_Magazine))
-							continue;
-						
-						int magazineCount = GetMagazineCount(magazine.m_Magazine);
-						if (magazineCount <= 0)
-							continue;
-						magazinesToAdd.Insert(magazine.m_Magazine);
-						magazineCounts.Insert(magazineCount);
-					}
+					}				
 					if (magazinesToAdd.Count() == 0)
 						continue;
 					
 					suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
 				}
-			}
-		}
-				
-		array<ResourceName> grenadesToAdd = {};
-		array<ResourceName> smokesToAdd = {};
-		foreach (CRF_Inventory_Item item: gearSriptConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
-		{
-			bool isGrenade;
-			bool isSmoke;
-			IsItemGrenade(item.m_sItemPrefab, isGrenade, isSmoke);
-			if (isGrenade)
-			{
-				if (isSmoke)
-					smokesToAdd.Insert(item.m_sItemPrefab);
+				//Spec Weapons
 				else
-					grenadesToAdd.Insert(item.m_sItemPrefab);
+				{
+					int bulletForWeapon = GetBulletCountForWeapon(truck, i, vehicleGearScriptConfig, gsContainer);
+					array<ResourceName> magazinesToAdd = {};
+					array<int> magazineCounts = {};
+					CRF_Spec_Weapon_Class weapon = GetSpecWeaponByIndex(i, gearSriptConfig);
+					if (!weapon)
+						continue;
+					bool isDisposable = IsWeaponDisposable(weapon.m_Weapon);
+					if (isDisposable)
+					{
+						magazinesToAdd.Insert(weapon.m_Weapon);
+						suppliesNeeded += SpawnItemsToVehicle(bulletForWeapon, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
+					}
+					else
+					{
+						foreach (CRF_Magazine_Class magazine: weapon.m_MagazineArray)
+						{
+							if (!IsSpecRegularMagazine(weapon, magazine.m_Magazine))
+								continue;
+							
+							int magazineCount = GetMagazineCount(magazine.m_Magazine);
+							if (magazineCount <= 0)
+								continue;
+							magazinesToAdd.Insert(magazine.m_Magazine);
+							magazineCounts.Insert(magazineCount);
+						}
+						if (magazinesToAdd.Count() == 0)
+							continue;
+						
+						suppliesNeeded += SpawnMagazinesToVehicle(bulletForWeapon, magazineCounts, magazinesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
+					}
+				}
 			}
-		}
-		
-		if (grenadesToAdd.Count() > 0)
-		{
-			int grenades = GetBulletCountForWeapon(truck, 12, vehicleGearScriptConfig, gsContainer);
-			suppliesNeeded += SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
-		}
-		
-		if (smokesToAdd.Count() > 0)
-		{
-			int grenades = GetBulletCountForWeapon(truck, 13, vehicleGearScriptConfig, gsContainer);
-			suppliesNeeded += SpawnItemsToVehicle(grenades, smokesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
-		}
-		
-		//Add misc items
-		if (heGLsToAdd.Count() > 0)
-		{
-			int glsToSpawn = GetBulletCountForWeapon(truck, 14, vehicleGearScriptConfig, gsContainer);
-			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
-		}
-		
-		if (glsToAdd.Count() > 0)
-		{
-			int glsToSpawn = GetBulletCountForWeapon(truck, 15, vehicleGearScriptConfig, gsContainer);
-			suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
+					
+			array<ResourceName> grenadesToAdd = {};
+			array<ResourceName> smokesToAdd = {};
+			foreach (CRF_Inventory_Item item: gearSriptConfig.m_DefaultFactionGear.m_DefaultInventoryItems)
+			{
+				bool isGrenade;
+				bool isSmoke;
+				IsItemGrenade(item.m_sItemPrefab, isGrenade, isSmoke);
+				if (isGrenade)
+				{
+					if (isSmoke)
+						smokesToAdd.Insert(item.m_sItemPrefab);
+					else
+						grenadesToAdd.Insert(item.m_sItemPrefab);
+				}
+			}
+			
+			if (grenadesToAdd.Count() > 0)
+			{
+				int grenades = GetBulletCountForWeapon(truck, 12, vehicleGearScriptConfig, gsContainer);
+				suppliesNeeded += SpawnItemsToVehicle(grenades, grenadesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
+			}
+			
+			if (smokesToAdd.Count() > 0)
+			{
+				int grenades = GetBulletCountForWeapon(truck, 13, vehicleGearScriptConfig, gsContainer);
+				suppliesNeeded += SpawnItemsToVehicle(grenades, smokesToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
+			}
+			
+			//Add misc items
+			if (heGLsToAdd.Count() > 0)
+			{
+				int glsToSpawn = GetBulletCountForWeapon(truck, 14, vehicleGearScriptConfig, gsContainer);
+				suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, heGLsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
+			}
+			
+			if (glsToAdd.Count() > 0)
+			{
+				int glsToSpawn = GetBulletCountForWeapon(truck, 15, vehicleGearScriptConfig, gsContainer);
+				suppliesNeeded += SpawnItemsToVehicle(glsToSpawn, glsToAdd, invManager, faction.GetFactionKey(), isSupply, isSupply, truck.GetPrefabData().GetPrefabName());
+			}
 		}
 		
 		array<ref CRF_VehicleGearScriptAdditionalItem> additionalItems = {};
@@ -2633,6 +2636,8 @@ class CRF_GearscriptManager : ScriptComponent
 				vehicle.m_aVehicleGearscriptOverrides = spawner.m_aVehicleGearscriptOverrides;
 			if (spawner.m_aAdditionalVehicleItems.Count() > 0)
 				vehicle.m_aAdditionalVehicleItems = spawner.m_aAdditionalVehicleItems;
+			if (!spawner.m_bShouldAddAmmo)
+				vehicle.m_bShouldAddAmmo = false;
 		}
 	}
 	

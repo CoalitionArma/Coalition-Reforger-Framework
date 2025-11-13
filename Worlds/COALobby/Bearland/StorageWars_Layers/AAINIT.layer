@@ -111,3 +111,12 @@ CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et
   }
  }
 }
+Vehicle Ural4320_transport_covered1 : "{D9B91FAB817A6033}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_covered.et" {
+ coords 852.357 7.219 1486.493
+ m_bShoulAddAmmo 0
+ m_aAdditionalVehicleItems {
+  CRF_VehicleGearScriptAdditionalItem "{66DB7010CB525B06}" {
+   m_Prefab "{E8F00BF730225B00}Prefabs/Weapons/Grenades/Grenade_M67.et"
+  }
+ }
+}

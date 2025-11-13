@@ -20,6 +20,9 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	[Attribute("10", desc: "How many tickets is drained every time this spawns", category: "CRF Vehicle Spawning")] 
 	int m_iTicketsPerRespawn;
 	
+	[Attribute("1", desc: "Should we add ammo to this vehicle", category: "CRF Vehicle Spawning")] 
+	bool m_bShouldAddAmmo;
+	
 	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout", category: "CRF Vehicle Spawning")] 
 	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
 	
