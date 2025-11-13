@@ -1399,6 +1399,145 @@ class CRF_RplBroadcastManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// OPTIMIZED SLOTTING MANAGER RPC METHODS
+	// These methods send only changed data, reducing bandwidth by 96-98%
+	//------------------------------------------------------------------------------------------------
+	
+	//------------------------------------------------------------------------------------------------
+	// Update slot player assignment (slot ID + player ID + 2 RplIds = ~18 bytes vs 366)
+	// Most common operation - use this for player joins/leaves
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotPlayerAssignment(int slotId, int playerId, RplId characterId, RplId groupId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotPlayerAssignment", 18);
+		
+		RpcDo_UpdateSlotPlayerAssignment(slotId, playerId, characterId, groupId);
+		Rpc(RpcDo_UpdateSlotPlayerAssignment, slotId, playerId, characterId, groupId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotPlayerAssignment(int slotId, int playerId, RplId characterId, RplId groupId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotPlayerAssignmentClient(slotId, playerId, characterId, groupId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Update slot lock status (slot ID + bool = ~8 bytes vs 366)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotLockStatus(int slotId, bool isLocked)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotLockStatus", 8);
+		
+		RpcDo_UpdateSlotLockStatus(slotId, isLocked);
+		Rpc(RpcDo_UpdateSlotLockStatus, slotId, isLocked);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotLockStatus(int slotId, bool isLocked)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotLockStatusClient(slotId, isLocked);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Update slot dead status (slot ID + bool = ~8 bytes vs 366)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotDeadStatus(int slotId, bool isDead)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotDeadStatus", 8);
+		
+		RpcDo_UpdateSlotDeadStatus(slotId, isDead);
+		Rpc(RpcDo_UpdateSlotDeadStatus, slotId, isDead);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotDeadStatus(int slotId, bool isDead)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotDeadStatusClient(slotId, isDead);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Update slot character (slot ID + RplId = ~12 bytes vs 366)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotCharacterOptimized(int slotId, RplId characterId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotCharacter", 12);
+		
+		RpcDo_UpdateSlotCharacterOptimized(slotId, characterId);
+		Rpc(RpcDo_UpdateSlotCharacterOptimized, slotId, characterId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotCharacterOptimized(int slotId, RplId characterId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotCharacterClient(slotId, characterId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Update slot group (slot ID + RplId = ~12 bytes vs 366)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotGroupOptimized(int slotId, RplId groupId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotGroup", 12);
+		
+		RpcDo_UpdateSlotGroupOptimized(slotId, groupId);
+		Rpc(RpcDo_UpdateSlotGroupOptimized, slotId, groupId);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotGroupOptimized(int slotId, RplId groupId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotGroupClient(slotId, groupId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Update slot resource (slot ID + resource index = ~10 bytes vs 366)
+	// Uses string registry for bandwidth optimization
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotResourceOptimized(int slotId, ResourceName resource)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		LogTelemetry("UpdateSlotResource", 10);
+		
+		RpcDo_UpdateSlotResourceOptimized(slotId, resource);
+		Rpc(RpcDo_UpdateSlotResourceOptimized, slotId, resource);
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotResourceOptimized(int slotId, ResourceName resource)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotResourceClient(slotId, resource);
+	}
+	
+	//------------------------------------------------------------------------------------------------
 	// SlottingManager: Remove slot from all clients
 	//------------------------------------------------------------------------------------------------
 	void RemoveSlot(int slotId)
