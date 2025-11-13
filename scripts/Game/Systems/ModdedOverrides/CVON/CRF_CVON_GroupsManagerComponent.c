@@ -99,7 +99,13 @@ modded class SCR_GroupsManagerComponent
 			freqContainer.m_aSRFrequencies = {};
 			freqContainer.m_aSRFrequencies.Insert(playersGroupName);
 			freqContainer.m_aLRFrequencies = {};
-			freqContainer.m_aLRFrequencies.Insert(factionMan.GetFactionActiveChannelLR(playerFaction.GetFactionKey()).Get(0));
+			
+			// Safety check: Ensure LR channels exist before accessing
+			array<string> lrChannels = factionMan.GetFactionActiveChannelLR(playerFaction.GetFactionKey());
+			if (lrChannels && lrChannels.Count() > 0)
+				freqContainer.m_aLRFrequencies.Insert(lrChannels.Get(0));
+			else
+				freqContainer.m_aLRFrequencies.Insert("55500"); // Fallback frequency
 		}
 		for (int i = 0; i < playerController.m_aRadios.Count(); i++)
 		{
@@ -144,7 +150,14 @@ modded class SCR_GroupsManagerComponent
 						break;
 					if (freqContainer.m_aLRFrequencies.Count() < LRIndex + 1)
 					{
-						string freq = factionMan.GetFactionActiveChannelLR(playerFaction.GetFactionKey()).Get(0);
+						// Safety check: Ensure LR channels exist before accessing
+						array<string> lrChannels = factionMan.GetFactionActiveChannelLR(playerFaction.GetFactionKey());
+						string freq;
+						if (lrChannels && lrChannels.Count() > 0)
+							freq = lrChannels.Get(0);
+						else
+							freq = "55500"; // Fallback frequency
+						
 						LRIndex++;
 						radioComp.UpdateChannelServer(radioComp.m_aChannels.Find(freq) + 1);
 						radioComp.UpdateFrequncyServer(freq);
