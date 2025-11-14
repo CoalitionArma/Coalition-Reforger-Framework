@@ -392,6 +392,11 @@ class CRF_RaidGamemodeComponent: SCR_BaseGameModeComponent
 		IEntity character = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);
 		RplId characterRplId = RplComponent.Cast(character.FindComponent(RplComponent)).Id();
 		currentData.SetSlotFactionKey(m_sIndependentFaction);
-		m_SlottingManager.BatchUpdateSlot(m_SlottingManager.GetPlayerSlotID(playerId), playerId, groupRplId, characterRplId, character.GetPrefabData().GetPrefabName(), currentData.GetSlotName(), false, false);
+		currentData.SetSlotCurrentPlayerId(playerId);
+		currentData.SetSlotCurrentGroup(groupRplId);
+		currentData.SetSlotCurrentCharacter(characterRplId);
+		currentData.SetSlotResource(character.GetPrefabData().GetPrefabName());
+		
+		CRF_RplBroadcastManager.GetInstance().UpdateSlotData(currentData);
 	}
 }

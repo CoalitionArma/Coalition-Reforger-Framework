@@ -10,6 +10,7 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected CRF_RespawnManager m_RespawnManager;
 	protected CRF_MenuManager m_MenuManager;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
+	protected CRF_BandwidthTelemetryManager m_TelemetryManager;
 	protected static CRF_RplBroadcastManager m_sInstance;
 	
 	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
@@ -41,6 +42,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
 		m_MenuManager = CRF_MenuManager.GetInstance();
 		m_AdminMenuManager = CRF_AdminMenuManager.GetInstance();
+		m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Log RPC call to telemetry system (server-side only)
+	//------------------------------------------------------------------------------------------------
+	protected void LogTelemetry(string rpcName, int estimatedBytes)
+	{
+		if (!Replication.IsServer())
+			return;
+			
+		if (!m_TelemetryManager)
+			m_TelemetryManager = CRF_BandwidthTelemetryManager.GetInstance();
+			
+		if (m_TelemetryManager)
+			m_TelemetryManager.LogRPC(rpcName, estimatedBytes);
 	}
 	
 	//================================================================================================
@@ -51,6 +68,15 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void PopUpNotification(float life, string titleText, string subtitleText = "", string sound = "", string titleTextParam1 = "", string titleTextParam2 = "")
 	{
+		// Telemetry: float + 5 strings
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Float();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(titleText);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(subtitleText);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(sound);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(titleTextParam1);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(titleTextParam2);
+		LogTelemetry("PopUpNotification", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_PopUpNotification(life, titleText, subtitleText, sound, titleTextParam1, titleTextParam2);
 		#else
@@ -389,6 +415,72 @@ class CRF_RplBroadcastManager : ScriptComponent
 		RpcDo_MoveSpecCamToSlot(slotPos, playerId);
 		#else
 		Rpc(RpcDo_MoveSpecCamToSlot, slotPos, playerId);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GunGame: Update player stats
+	//------------------------------------------------------------------------------------------------
+	void UpdateGunGamePlayerStats(int playerId, int level, int killsThisLevel, int totalKills)
+	{
+		// Telemetry: 4 ints = 16 bytes
+		LogTelemetry("UpdateGunGamePlayerStats", 16);
+		
+		#ifdef WORKBENCH
+		RpcDo_UpdateGunGamePlayerStats(playerId, level, killsThisLevel, totalKills);
+		#else
+		Rpc(RpcDo_UpdateGunGamePlayerStats, playerId, level, killsThisLevel, totalKills);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update SR radio channels
+	//------------------------------------------------------------------------------------------------
+	void UpdateFactionChannelsSR(string factionId, array<string> channels)
+	{
+		// Telemetry: factionId string + array of strings
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(factionId);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_StringArray(channels);
+		LogTelemetry("UpdateFactionChannelsSR", bytes);
+		
+		#ifdef WORKBENCH
+		RpcDo_UpdateFactionChannelsSR(factionId, channels);
+		#else
+		Rpc(RpcDo_UpdateFactionChannelsSR, factionId, channels);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update LR radio channels
+	//------------------------------------------------------------------------------------------------
+	void UpdateFactionChannelsLR(string factionId, array<string> channels)
+	{
+		// Telemetry: factionId string + array of strings
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(factionId);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_StringArray(channels);
+		LogTelemetry("UpdateFactionChannelsLR", bytes);
+		
+		#ifdef WORKBENCH
+		RpcDo_UpdateFactionChannelsLR(factionId, channels);
+		#else
+		Rpc(RpcDo_UpdateFactionChannelsLR, factionId, channels);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GearscriptManager: Add vehicle supply cost
+	//------------------------------------------------------------------------------------------------
+	void AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
+	{
+		// Telemetry: ResourceName string + int
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_ResourceName(vehicleResource);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("AddVehicleSupplyCost", bytes);
+		
+		#ifdef WORKBENCH
+		RpcDo_AddVehicleSupplyCost(vehicleResource, supplyCost);
+		#else
+		Rpc(RpcDo_AddVehicleSupplyCost, vehicleResource, supplyCost);
 		#endif
 	}
 	
@@ -1229,5 +1321,104 @@ class CRF_RplBroadcastManager : ScriptComponent
 			
 		CRF_SpectatorMenu spectatorMenu = CRF_SpectatorMenu.Cast(topMenu);
 		spectatorMenu.SelectSpec();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GunGame: Update player stats on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateGunGamePlayerStats(int playerId, int level, int killsThisLevel, int totalKills)
+	{
+		CRF_GunGame gunGame = CRF_GunGame.Cast(GetGame().GetGameMode().FindComponent(CRF_GunGame));
+		if (gunGame)
+			gunGame.UpdatePlayerStatsClient(playerId, level, killsThisLevel, totalKills);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update SR channels on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateFactionChannelsSR(string factionId, array<string> channels)
+	{
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (factionManager)
+			factionManager.UpdateChannelsSRClient(factionId, channels);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// FactionManager: Update LR channels on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateFactionChannelsLR(string factionId, array<string> channels)
+	{
+		SCR_FactionManager factionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		if (factionManager)
+			factionManager.UpdateChannelsLRClient(factionId, channels);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// GearscriptManager: Add vehicle supply cost on all clients
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_AddVehicleSupplyCost(ResourceName vehicleResource, int supplyCost)
+	{
+		CRF_GearscriptManager gearscriptManager = CRF_GearscriptManager.GetInstance();
+		if (gearscriptManager)
+			gearscriptManager.AddVehicleCostClient(vehicleResource, supplyCost);
+	}
+	
+	//================================================================================================
+	// SLOTTING MANAGER BROADCAST METHODS
+	// Delta-based slot updates to replace array replication (98% bandwidth reduction)
+	//================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update single slot data on all clients
+	// Replaces full array replication with targeted slot update
+	// Bandwidth: ~370 bytes vs 18,300 bytes (50 slots) = 98% reduction
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotData(CRF_SlotDataContainer slotData)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Estimate bandwidth: slot data (~366 bytes avg)
+		LogTelemetry("UpdateSlotData", 366);
+		
+		RpcDo_UpdateSlotData(slotData);
+		Rpc(RpcDo_UpdateSlotData, slotData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotData(CRF_SlotDataContainer slotData)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.UpdateSlotDataClient(slotData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Remove slot from all clients
+	//------------------------------------------------------------------------------------------------
+	void RemoveSlot(int slotId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Bandwidth: Just slotId (4 bytes)
+		LogTelemetry("RemoveSlot", 4);
+		
+		RpcDo_RemoveSlot(slotId);
+		Rpc(RpcDo_RemoveSlot, slotId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_RemoveSlot(int slotId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (slottingManager)
+			slottingManager.RemoveSlotClient(slotId);
 	}
 };

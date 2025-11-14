@@ -16,8 +16,11 @@ class CRF_RespawnPointComponent: ScriptComponent
 	//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
 	{
-		super.OnPostInit(owner);	
-		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client) return;
+		super.OnPostInit(owner);
+		
+		// Only server should register respawn points
+		if (!GetGame().InPlayMode() || !Replication.IsServer())
+			return;
 		
 		if(CRF_RespawnManager.GetInstance())
 			CRF_RespawnManager.GetInstance().RegisterRespawnPoint(owner);
@@ -26,7 +29,10 @@ class CRF_RespawnPointComponent: ScriptComponent
 	override void OnDelete(IEntity owner)
 	{		
 		super.OnDelete(owner);
-		if (!GetGame().InPlayMode() || RplSession.Mode() == RplMode.Client) return;
+		
+		// Only server should unregister respawn points
+		if (!Replication.IsServer())
+			return;
 		
 		if (CRF_RespawnManager.GetInstance())
 			CRF_RespawnManager.GetInstance().UnRegisterRespawnPoint(owner);
@@ -34,12 +40,22 @@ class CRF_RespawnPointComponent: ScriptComponent
 	
 	void SetRespawnActiveState(bool active)
 	{
+		// Only authority should modify replicated state
+		if (!Replication.IsServer())
+			return;
+			
 		m_bActiveRespawnPoint = active;
 		Replication.BumpMe();
 	}
 	
 	void OnRespawnPointStateChanged()
 	{
+		// Only server should broadcast updates when replicated value changes
+		// This callback is invoked on proxies when they receive updates,
+		// but we only want the authority to send the broadcast
+		if (!Replication.IsServer())
+			return;
+			
 		IEntity respawnPoint = GetOwner();
 		
 		RplComponent rplComp = RplComponent.Cast(respawnPoint.FindComponent(RplComponent));

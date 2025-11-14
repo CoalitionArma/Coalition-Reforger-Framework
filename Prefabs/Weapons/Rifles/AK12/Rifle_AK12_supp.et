@@ -1,0 +1,45 @@
+GenericEntity : "{DE95B0C3CA5F9D5D}Prefabs/Weapons/Rifles/AK12/Rifle_AK12_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{62263262948B3EE4}" {
+     AttachmentSlot InventoryStorageSlot underbarrel {
+      Prefab "{B474F5CF43FCBACC}Prefabs/Weapons/Attachments/Foregrips/RK_Foregrips/Foregrip_RK0.et"
+     }
+    }
+    AttachmentSlotComponent "{628C5CF94D587E7B}" {
+     AttachmentSlot InventoryStorageSlot Buttstock {
+      Prefab "{0ECA70851C2F5D16}Prefabs/Weapons/Attachments/Buttstocks/Buttstock_AK12.et"
+     }
+    }
+    AttachmentSlotComponent "{6550045D9D925401}" {
+     AttachmentSlot InventoryStorageSlot Handguard {
+      Prefab "{5EAB424D6475E443}Prefabs/Weapons/Attachments/Handguards/Handguard_AK12.et"
+     }
+    }
+    AttachmentSlotComponent "{6550045DD551E733}" {
+     AttachmentSlot InventoryStorageSlot Stock {
+      Offset 0 -0.0006 0.0019
+      Prefab "{7C5627DF173F8FD5}Prefabs/Weapons/Attachments/Buttstocks/Buttstock_AK12_Adapter.et"
+     }
+    }
+    AttachmentSlotComponent "{6550045DFC69B0F9}" {
+     AttachmentSlot InventoryStorageSlot Pistolgrip {
+      Prefab "{E62B9F0E53519A41}Prefabs/Weapons/Attachments/PistolGrips/pistolgrip_ak12.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{62263262948B3ED6}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{11D838FCDDF91842}Prefabs/Weapons/Attachments/Muzzle/545x39/Suppressor_PBS4_base.et"
+        InspectionWidgetOffset 0 0.0693 0.5002
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
