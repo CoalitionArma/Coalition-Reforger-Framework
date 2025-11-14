@@ -1,0 +1,1044 @@
+$grp SCR_ChimeraCharacter : "{035F8F1CEF3B187F}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_4.et" {
+ hostage1 {
+  coords 6596.352 25.063 3874.823
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage4 {
+  coords 6554.892 24.75 3727.986
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage3 {
+  coords 6573.442 22.126 3689.367
+  angles 0 114.69 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage2 {
+  coords 6684.577 27.856 3713.302
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage5 {
+  coords 6527.57 29.677 3899.869
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage6 {
+  coords 6569.103 30.709 3949.303
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage7 {
+  coords 6677.169 35.266 4027.238
+  angles 0 -153.485 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage8 {
+  coords 6834.038 32.364 4084.252
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage9 {
+  coords 6880.848 22.779 4021.363
+  angles 0 172.941 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage10 {
+  coords 6359.185 16.044 3480.472
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage11 {
+  coords 6469.357 58.131 4033.819
+  angles 0 -48.623 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage12 {
+  coords 7565.159 22.963 4023.066
+  angles 0 143.045 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage13 {
+  coords 6437.549 23.914 3847.543
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage14 {
+  coords 6489.858 29.45 3681.686
+  angles 0 -70.261 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage15 {
+  coords 6586.697 24.656 3762.667
+  angles 0 -121.796 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage16 {
+  coords 6757.054 27.465 3752.937
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage17 {
+  coords 6769.057 2.874 3559.136
+  angles 0 -50.851 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage18 {
+  coords 6841.904 27.431 4053.603
+  angles 0 47.213 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage19 {
+  coords 6390.999 23.292 3774.132
+  angles 0 152.739 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage20 {
+  coords 6859.323 31.048 4171.221
+  angles 0 32.535 0
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage21 {
+  coords 6606.709 3.325 3486.6
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage22 {
+  coords 6339.133 11.694 3185.721
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage23 {
+  coords 6226.643 6.146 3112.294
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage24 {
+  coords 6539.764 29.677 3910.446
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage25 {
+  coords 6488.899 24.348 3846.146
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+}
+GenericEntity : "{0B3312C6940005B9}Prefabs/Structures/FlagPoles/RespawnPoles/OPFOR_Respawn.et" {
+ coords 5398.307 23.358 3110.59
+}
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 7470.296 22.415 4941.99
+}
