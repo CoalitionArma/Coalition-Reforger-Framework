@@ -78,7 +78,7 @@ $grp CRF_VehicleSpawner {
  {
   coords 12103.072 2.156 10470.646
   angles 0 -108.629 0
-  m_rVehicle "{C4ED6708B5B79777}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer_BLUFOR.et"
+  m_rVehicle "{57FE9BCA625CA0E3}Prefabs/Vehicles/Wheeled/LR_3Series/3Series_LWB_Recce_M2HB.et"
   m_sFactionKey "BLUFOR"
   m_iTicketsPerRespawn 0
   m_aVehicleGearscriptOverrides {
@@ -169,9 +169,9 @@ SCR_AIGroup : "{EE91BF23FBC94408}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUF
                 SCR_AIGroup : "{6D99AA48CB29BF78}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_HMGTeam_p.et" {
                  coords 7.438 -0.001 1.667
                  m_aUnitPrefabSlots {
-                  "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
-                  "{B6AEA6F0469C66DD}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_HMG_P.et"
-                  "{997F8FE3C2C23C6C}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AHMG_P.et"
+                  "{478FBA09EDDFC439}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehLead_P.et"
+                  "{88611B14BF2B14B1}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehDriver_P.et"
+                  "{5915E51A1AABB9D2}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_VehGunner_P.et"
                  }
                 }
                }
