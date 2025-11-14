@@ -87,6 +87,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendAdminMessage(string data, int playerID)
 	{
+		// Telemetry: string + int
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("SendAdminMessage", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_SendAdminMessage(data, playerID);
 		#else
@@ -97,6 +102,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void ReplyAdminMessage(string data, int playerId, int adminID, bool logAction)
 	{
+		// Telemetry: string + 2 ints + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+		LogTelemetry("ReplyAdminMessage", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_ReplyAdminMessage(data, playerId, adminID, logAction);
 		#else
@@ -107,6 +118,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void CloseAdminTicket(int ticketID, int adminID, bool logAction)
 	{
+		// Telemetry: 2 ints + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+		LogTelemetry("CloseAdminTicket", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_CloseAdminTicket(ticketID, adminID, logAction);
 		#else
@@ -117,6 +133,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void AssignAdminTicket(int ticketID, int adminID, bool logAction)
 	{
+		// Telemetry: 2 ints + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+		LogTelemetry("AssignAdminTicket", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_AssignAdminTicket(ticketID, adminID, logAction);
 		#else
@@ -132,6 +153,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 		if(player2Char)
 		{
 			vector player2Origin = player2Char.GetOrigin();
+			
+			// Telemetry: 2 ints + vector + bool
+			int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
+			bytes += CRF_BandwidthTelemetryManager.EstimateSize_Vector();
+			bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+			LogTelemetry("TeleportPlayers", bytes);
 		
 			#ifdef WORKBENCH
 			RpcDo_TeleportPlayers(playerId1, playerId2, player2Origin, logAction);
@@ -143,12 +170,19 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	void BroadcastMessage(string message)
 	{
+		// Telemetry: string
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(message);
+		LogTelemetry("BroadcastMessage", bytes);
+		
 		Rpc(RpcDo_BroadcastMessage, message);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void Closemap(int playerID)
 	{
+		// Telemetry: int
+		LogTelemetry("Closemap", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_Closemap(playerID);
 		#else
@@ -159,6 +193,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void HolsterGun(int playerID)
 	{
+		// Telemetry: int
+		LogTelemetry("HolsterGun", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_HolsterGun(playerID);
 		#else
@@ -169,6 +206,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendHint(string data, int playerId = -1, string factionKey = "")
 	{
+		// Telemetry: 2 strings + int
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(factionKey);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("SendHint", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_SendHint(data, playerId, factionKey);
 		#else
@@ -179,6 +222,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void LogAdminAction(string data, int playerId, bool sendToPlayer)
 	{
+		// Telemetry: string + int + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(data);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+		LogTelemetry("LogAdminAction", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_LogAdminAction(data, playerId, sendToPlayer);
 		#else
@@ -189,6 +238,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendRespawnScreenUpdate(RplId rplID, bool active)
 	{
+		// Telemetry: RplId + bool
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_RplId();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Bool();
+		LogTelemetry("SendRespawnScreenUpdate", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_SendRespawnScreenUpdate(rplID, active);
 		#else
@@ -199,6 +253,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendRespawnScreen(int playerId)
 	{
+		// Telemetry: int
+		LogTelemetry("SendRespawnScreen", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_SendRespawnScreen(playerId);
 		#else
@@ -209,6 +266,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void SendCharacterLoadingScreen(int playerId)
 	{
+		// Telemetry: int
+		LogTelemetry("SendCharacterLoadingScreen", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_SendCharacterLoadingScreen(playerId);
 		#else
@@ -219,6 +279,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void InitilizePlayerBroadcast(int playerId, RplId playerCharID)
 	{
+		// Telemetry: int + RplId
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_RplId();
+		LogTelemetry("InitilizePlayerBroadcast", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_InitilizePlayerBroadcast(playerId, playerCharID);
 		#else
@@ -239,6 +304,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 			return;
 		}
 		
+		// Telemetry: 3 ints
+		LogTelemetry("SendRequest", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 3);
+		
 		// Send RPC specifically to the target player
 		Rpc(RpcDo_SendRequest, playerId, requestId, channel);
 	}
@@ -247,6 +315,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	void NotifyChannelJoinRequest(int targetPlayerId, int requesterId, int channel)
 	{
 		Print(string.Format("[VON] Server notifying player %1 of join request from player %2 for channel %3", targetPlayerId, requesterId, channel), LogLevel.NORMAL);
+		
+		// Telemetry: 3 ints
+		LogTelemetry("NotifyChannelJoinRequest", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 3);
 		
 		#ifdef WORKBENCH
 		RpcDo_NotifyChannelJoinRequest(targetPlayerId, requesterId, channel);
@@ -258,6 +329,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void TestTargetedBroadcast(int targetPlayerId, int testValue)
 	{
+		// Telemetry: 2 ints
+		LogTelemetry("TestTargetedBroadcast", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2);
+		
 		#ifdef WORKBENCH
 		RpcDo_TestTargetedBroadcast(targetPlayerId, testValue);
 		#else
@@ -268,6 +342,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void TestChannelCreatorRPC(int creatorPlayerId)
 	{
+		// Telemetry: int
+		LogTelemetry("TestChannelCreatorRPC", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_TestChannelCreatorRPC(creatorPlayerId);
 		#else
@@ -278,6 +355,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void TestBroadcastConnectivity(int testId)
 	{
+		// Telemetry: int
+		LogTelemetry("TestBroadcastConnectivity", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_TestBroadcastConnectivity(testId);
 		#else
@@ -288,6 +368,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void ConfirmRequestReceived(int requestId, int channel)
 	{
+		// Telemetry: 2 ints
+		LogTelemetry("ConfirmRequestReceived", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2);
+		
 		#ifdef WORKBENCH
 		RpcDo_ConfirmRequestReceived(requestId, channel);
 		#else
@@ -298,6 +381,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void Deny(int playerId, int requestId)
 	{
+		// Telemetry: 2 ints
+		LogTelemetry("Deny", CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2);
+		
 		#ifdef WORKBENCH
 		RpcDo_Deny(playerId, requestId);
 		#else
@@ -308,6 +394,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void NotifyRequestAccepted(int requesterId)
 	{
+		// Telemetry: int
+		LogTelemetry("NotifyRequestAccepted", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_NotifyRequestAccepted(requesterId);
 		#else
@@ -318,6 +407,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void NotifyRequestDenied(int requesterId)
 	{
+		// Telemetry: int
+		LogTelemetry("NotifyRequestDenied", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_NotifyRequestDenied(requesterId);
 		#else
@@ -328,6 +420,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void PlayRushMCOMSound(string soundEvent, vector position)
 	{
+		// Telemetry: string + vector
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Vector();
+		LogTelemetry("PlayRushMCOMSound", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_PlayRushMCOMSound(soundEvent, position);
 		#else
@@ -338,6 +435,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void StopRushMCOMSound(string soundEvent, vector position)
 	{
+		// Telemetry: string + vector
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(soundEvent);
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Vector();
+		LogTelemetry("StopRushMCOMSound", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_StopRushMCOMSound(soundEvent, position);
 		#else
@@ -348,6 +450,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void CreateGroupLeaderMarker(int playerId, string groupName)
 	{
+		// Telemetry: int + string
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(groupName);
+		LogTelemetry("CreateGroupLeaderMarker", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_CreateGroupLeaderMarker(playerId, groupName);
 		#else
@@ -358,16 +465,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void RemoveGroupLeaderMarker(int playerId)
 	{
+		// Telemetry: int
+		LogTelemetry("RemoveGroupLeaderMarker", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_RemoveGroupLeaderMarker(playerId);
 		#else
-		Rpc(RpcDo_RemoveGroupLeaderMarker, playerId);
+		Rpc(RpcDo_RemoveGroupLeaderMarker(playerId);
 		#endif
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void ClearAllGroupLeaderMarkers()
 	{
+		// Telemetry: no parameters
+		LogTelemetry("ClearAllGroupLeaderMarkers", 0);
+		
 		#ifdef WORKBENCH
 		RpcDo_ClearAllGroupLeaderMarkers();
 		#else
@@ -378,6 +491,9 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void RequestGroupLeaderMarkerState()
 	{
+		// Telemetry: int
+		LogTelemetry("RequestGroupLeaderMarkerState", CRF_BandwidthTelemetryManager.EstimateSize_Int());
+		
 		#ifdef WORKBENCH
 		RpcDo_RequestGroupLeaderMarkerState(SCR_PlayerController.GetLocalPlayerId());
 		#else
@@ -388,6 +504,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void CreateGroupLeaderMarkerForPlayer(int targetPlayerId, int leaderPlayerId, string groupName)
 	{
+		// Telemetry: 2 ints + string
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Int() * 2;
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_String(groupName);
+		LogTelemetry("CreateGroupLeaderMarkerForPlayer", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_CreateGroupLeaderMarkerForPlayer(targetPlayerId, leaderPlayerId, groupName);
 		#else
@@ -400,6 +521,10 @@ class CRF_RplBroadcastManager : ScriptComponent
 	{
 		if (!Replication.IsServer())
 			return;
+		
+		// Telemetry: string
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_String(mcomIdentifier);
+		LogTelemetry("DeleteRushMCOMEntity", bytes);
 			
 		#ifdef WORKBENCH
 		RpcDo_DeleteRushMCOMEntity(mcomIdentifier);
@@ -410,7 +535,12 @@ class CRF_RplBroadcastManager : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	void MoveSpecCamToSlot(vector slotPos, int playerId)
-	{	
+	{
+		// Telemetry: vector + int
+		int bytes = CRF_BandwidthTelemetryManager.EstimateSize_Vector();
+		bytes += CRF_BandwidthTelemetryManager.EstimateSize_Int();
+		LogTelemetry("MoveSpecCamToSlot", bytes);
+		
 		#ifdef WORKBENCH
 		RpcDo_MoveSpecCamToSlot(slotPos, playerId);
 		#else
