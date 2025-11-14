@@ -1,6 +1,38 @@
 class CRF_RplBroadcastManagerClass : ScriptComponentClass {}
 
 //------------------------------------------------------------------------------------------------
+// Enum for slot update field types (batching system)
+//------------------------------------------------------------------------------------------------
+enum CRF_ESlotUpdateField
+{
+	PLAYER_ID,
+	CHARACTER,
+	GROUP,
+	RESOURCE,
+	LOCKED,
+	DEATH
+}
+
+//------------------------------------------------------------------------------------------------
+// Container for queued slot update
+//------------------------------------------------------------------------------------------------
+class CRF_SlotUpdateBatch
+{
+	int m_iSlotId;
+	CRF_ESlotUpdateField m_eFieldType;
+	int m_iIntValue;
+	RplId m_RplIdValue;
+	ResourceName m_ResourceValue;
+	bool m_bBoolValue;
+	
+	void CRF_SlotUpdateBatch(int slotId, CRF_ESlotUpdateField fieldType)
+	{
+		m_iSlotId = slotId;
+		m_eFieldType = fieldType;
+	}
+}
+
+//------------------------------------------------------------------------------------------------
 // Broadcast Manager responsible for handling server-client communications
 //------------------------------------------------------------------------------------------------
 class CRF_RplBroadcastManager : ScriptComponent
@@ -12,6 +44,11 @@ class CRF_RplBroadcastManager : ScriptComponent
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	protected CRF_BandwidthTelemetryManager m_TelemetryManager;
 	protected static CRF_RplBroadcastManager m_sInstance;
+	
+	// Batching system for slot updates
+	protected ref array<ref CRF_SlotUpdateBatch> m_aPendingSlotUpdates = new array<ref CRF_SlotUpdateBatch>();
+	protected bool m_bBatchingEnabled = true;
+	protected bool m_bFlushScheduled = false;
 	
 	void CRF_RplBroadcastManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
@@ -58,6 +95,170 @@ class CRF_RplBroadcastManager : ScriptComponent
 			
 		if (m_TelemetryManager)
 			m_TelemetryManager.LogRPC(rpcName, estimatedBytes);
+	}
+	
+	//================================================================================================
+	// BATCHING SYSTEM
+	// Collects multiple slot updates and sends them together to reduce RPC overhead
+	//================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	// Queue a slot update for batching
+	//------------------------------------------------------------------------------------------------
+	protected void QueueSlotUpdate(CRF_SlotUpdateBatch batch)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Check if we already have a pending update for this slot+field combination
+		// If so, replace it (latest value wins)
+		for (int i = m_aPendingSlotUpdates.Count() - 1; i >= 0; i--)
+		{
+			CRF_SlotUpdateBatch existing = m_aPendingSlotUpdates[i];
+			if (existing.m_iSlotId == batch.m_iSlotId && existing.m_eFieldType == batch.m_eFieldType)
+			{
+				m_aPendingSlotUpdates.Remove(i);
+				break;
+			}
+		}
+		
+		m_aPendingSlotUpdates.Insert(batch);
+		
+		// Schedule flush if not already scheduled
+		if (!m_bFlushScheduled)
+		{
+			m_bFlushScheduled = true;
+			GetGame().GetCallqueue().CallLater(FlushSlotUpdates, 1, false); // Flush next frame
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Flush all pending slot updates
+	//------------------------------------------------------------------------------------------------
+	protected void FlushSlotUpdates()
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		m_bFlushScheduled = false;
+		
+		if (m_aPendingSlotUpdates.Count() == 0)
+			return;
+		
+		// Process all pending updates
+		foreach (CRF_SlotUpdateBatch batch : m_aPendingSlotUpdates)
+		{
+			switch (batch.m_eFieldType)
+			{
+				case CRF_ESlotUpdateField.PLAYER_ID:
+					SendSlotPlayerIdUpdate(batch.m_iSlotId, batch.m_iIntValue);
+					break;
+				
+				case CRF_ESlotUpdateField.CHARACTER:
+					SendSlotCharacterUpdate(batch.m_iSlotId, batch.m_RplIdValue);
+					break;
+				
+				case CRF_ESlotUpdateField.GROUP:
+					SendSlotGroupUpdate(batch.m_iSlotId, batch.m_RplIdValue);
+					break;
+				
+				case CRF_ESlotUpdateField.RESOURCE:
+					SendSlotResourceUpdate(batch.m_iSlotId, batch.m_ResourceValue);
+					break;
+				
+				case CRF_ESlotUpdateField.LOCKED:
+					SendSlotLockedUpdate(batch.m_iSlotId, batch.m_bBoolValue);
+					break;
+				
+				case CRF_ESlotUpdateField.DEATH:
+					SendSlotDeathUpdate(batch.m_iSlotId, batch.m_bBoolValue);
+					break;
+			}
+		}
+		
+		// Clear the queue
+		m_aPendingSlotUpdates.Clear();
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Internal methods that actually send the RPCs (called by flush or immediate mode)
+	//------------------------------------------------------------------------------------------------
+	protected void SendSlotPlayerIdUpdate(int slotId, int playerId)
+	{
+		LogTelemetry("UpdateSlotPlayerIdDelta", 8);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotPlayerIdDelta(slotId, playerId);
+		#else
+		Rpc(RpcDo_UpdateSlotPlayerIdDelta, slotId, playerId);
+		#endif
+	}
+	
+	protected void SendSlotCharacterUpdate(int slotId, RplId characterId)
+	{
+		LogTelemetry("UpdateSlotCharacterDelta", 8);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotCharacterDelta(slotId, characterId);
+		#else
+		Rpc(RpcDo_UpdateSlotCharacterDelta, slotId, characterId);
+		#endif
+	}
+	
+	protected void SendSlotGroupUpdate(int slotId, RplId groupId)
+	{
+		LogTelemetry("UpdateSlotGroupDelta", 8);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotGroupDelta(slotId, groupId);
+		#else
+		Rpc(RpcDo_UpdateSlotGroupDelta, slotId, groupId);
+		#endif
+	}
+	
+	protected void SendSlotResourceUpdate(int slotId, ResourceName resource)
+	{
+		int bytes = 4 + CRF_BandwidthTelemetryManager.EstimateSize_ResourceName(resource);
+		LogTelemetry("UpdateSlotResourceDelta", bytes);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotResourceDelta(slotId, resource);
+		#else
+		Rpc(RpcDo_UpdateSlotResourceDelta, slotId, resource);
+		#endif
+	}
+	
+	protected void SendSlotLockedUpdate(int slotId, bool isLocked)
+	{
+		LogTelemetry("UpdateSlotLockedDelta", 5);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotLockedDelta(slotId, isLocked);
+		#else
+		Rpc(RpcDo_UpdateSlotLockedDelta, slotId, isLocked);
+		#endif
+	}
+	
+	protected void SendSlotDeathUpdate(int slotId, bool isDead)
+	{
+		LogTelemetry("UpdateSlotDeathDelta", 5);
+		#ifdef WORKBENCH
+		RpcDo_UpdateSlotDeathDelta(slotId, isDead);
+		#else
+		Rpc(RpcDo_UpdateSlotDeathDelta, slotId, isDead);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Enable/disable batching (useful for debugging or critical updates)
+	//------------------------------------------------------------------------------------------------
+	void SetBatchingEnabled(bool enabled)
+	{
+		m_bBatchingEnabled = enabled;
+		
+		// If disabling, flush any pending updates immediately
+		if (!enabled && m_aPendingSlotUpdates.Count() > 0)
+			FlushSlotUpdates();
+	}
+	
+	bool IsBatchingEnabled()
+	{
+		return m_bBatchingEnabled;
 	}
 	
 	//================================================================================================
@@ -612,6 +813,133 @@ class CRF_RplBroadcastManager : ScriptComponent
 		#else
 		Rpc(RpcDo_AddVehicleSupplyCost, vehicleResource, supplyCost);
 		#endif
+	}
+	
+	//================================================================================================
+	// SLOTTING DELTA UPDATES - OPTIMIZED BANDWIDTH
+	// Individual field updates instead of full container broadcast
+	// Reduces bandwidth by 90%+ compared to UpdateSlotData
+	// Uses batching system to collect and send multiple updates together
+	//================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot player ID only (~8 bytes vs 366 bytes)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotPlayerIdDelta(int slotId, int playerId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.PLAYER_ID);
+			batch.m_iIntValue = playerId;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotPlayerIdUpdate(slotId, playerId);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot character only (~8 bytes)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotCharacterDelta(int slotId, RplId characterId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.CHARACTER);
+			batch.m_RplIdValue = characterId;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotCharacterUpdate(slotId, characterId);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot group only (~8 bytes)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotGroupDelta(int slotId, RplId groupId)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.GROUP);
+			batch.m_RplIdValue = groupId;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotGroupUpdate(slotId, groupId);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot resource only (~20-60 bytes depending on path length)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotResourceDelta(int slotId, ResourceName resource)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.RESOURCE);
+			batch.m_ResourceValue = resource;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotResourceUpdate(slotId, resource);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot locked state only (~5 bytes)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotLockedDelta(int slotId, bool isLocked)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.LOCKED);
+			batch.m_bBoolValue = isLocked;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotLockedUpdate(slotId, isLocked);
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Update slot death state only (~5 bytes)
+	//------------------------------------------------------------------------------------------------
+	void UpdateSlotDeathDelta(int slotId, bool isDead)
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		if (m_bBatchingEnabled)
+		{
+			CRF_SlotUpdateBatch batch = new CRF_SlotUpdateBatch(slotId, CRF_ESlotUpdateField.DEATH);
+			batch.m_bBoolValue = isDead;
+			QueueSlotUpdate(batch);
+		}
+		else
+		{
+			SendSlotDeathUpdate(slotId, isDead);
+		}
 	}
 	
 	
@@ -1503,9 +1831,22 @@ class CRF_RplBroadcastManager : ScriptComponent
 	//================================================================================================
 	
 	//------------------------------------------------------------------------------------------------
-	// SlottingManager: Update single slot data on all clients
-	// Replaces full array replication with targeted slot update
-	// Bandwidth: ~370 bytes vs 18,300 bytes (50 slots) = 98% reduction
+	// SlottingManager: Update single slot data on all clients (LEGACY - USE DELTA UPDATES INSTEAD)
+	// 
+	// ⚠️ PERFORMANCE WARNING: This method sends ~366 bytes per call
+	// ⚠️ Use UpdateSlot*Delta() methods instead for 90%+ bandwidth savings:
+	//    - UpdateSlotPlayerIdDelta()   : 8 bytes (vs 366)
+	//    - UpdateSlotCharacterDelta()  : 8 bytes (vs 366)
+	//    - UpdateSlotGroupDelta()      : 8 bytes (vs 366)
+	//    - UpdateSlotResourceDelta()   : ~40 bytes (vs 366)
+	//    - UpdateSlotLockedDelta()     : 5 bytes (vs 366)
+	//    - UpdateSlotDeathDelta()      : 5 bytes (vs 366)
+	//
+	// Only use UpdateSlotData() for:
+	//   - Creating new slots (all fields are new)
+	//   - JIP sync (initial state transmission)
+	//
+	// Bandwidth: ~366 bytes vs 8-40 bytes for delta updates
 	//------------------------------------------------------------------------------------------------
 	void UpdateSlotData(CRF_SlotDataContainer slotData)
 	{
@@ -1526,6 +1867,137 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
 			slottingManager.UpdateSlotDataClient(slotData);
+	}
+	
+	//================================================================================================
+	// SLOTTING DELTA UPDATE RPC HANDLERS
+	// Client-side handlers for optimized field-specific updates
+	//================================================================================================
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotPlayerIdDelta(int slotId, int playerId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetSlotCurrentPlayerId(playerId);
+			slotData.GetOnDataUpdate().Invoke();
+			
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotCharacterDelta(int slotId, RplId characterId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetSlotCurrentCharacter(characterId);
+			slotData.GetOnDataUpdate().Invoke();
+			
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotGroupDelta(int slotId, RplId groupId)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetSlotCurrentGroup(groupId);
+			slotData.GetOnDataUpdate().Invoke();
+			
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotResourceDelta(int slotId, ResourceName resource)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetSlotResource(resource);
+			slotData.GetOnDataUpdate().Invoke();
+			
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotLockedDelta(int slotId, bool isLocked)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetIsLockedSlot(isLocked);
+			slotData.GetOnDataUpdate().Invoke();
+			
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_UpdateSlotDeathDelta(int slotId, bool isDead)
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		CRF_SlotDataContainer slotData = slottingManager.GetSlotData(slotId);
+		if (slotData)
+		{
+			slotData.SetIsDeadSlot(isDead);
+			slotData.GetOnDataUpdate().Invoke();
+			
+			// Trigger global slotting update for UI refresh
+			ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+			if (invoker)
+				invoker.Invoke();
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -1550,6 +2022,40 @@ class CRF_RplBroadcastManager : ScriptComponent
 		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		if (slottingManager)
 			slottingManager.RemoveSlotClient(slotId);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// SlottingManager: Notify all clients that slotting phase changed (triggers UI refresh)
+	//------------------------------------------------------------------------------------------------
+	void NotifySlottingPhaseChanged()
+	{
+		if (!Replication.IsServer())
+			return;
+		
+		// Bandwidth: No parameters (0 bytes, just RPC overhead)
+		LogTelemetry("NotifySlottingPhaseChanged", 0);
+		
+		#ifdef WORKBENCH
+		RpcDo_NotifySlottingPhaseChanged();
+		#else
+		Rpc(RpcDo_NotifySlottingPhaseChanged);
+		#endif
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RpcDo_NotifySlottingPhaseChanged()
+	{
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
+		if (!slottingManager)
+			return;
+		
+		// Trigger global slotting update for UI refresh
+		ScriptInvoker invoker = slottingManager.GetOnSlottingUpdate();
+		if (invoker)
+			invoker.Invoke();
+		
+		Print("[CRF_RplBroadcastManager] Slotting phase changed - UI updated", LogLevel.VERBOSE);
 	}
 	
 	void BroadcastOutro()

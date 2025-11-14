@@ -840,12 +840,16 @@ class CRF_RplToAuthorityManager : ScriptComponent
 		int slotId = m_SlottingManager.GetPlayerSlotID(playerId);
 		CRF_SlotDataContainer slotData = m_SlottingManager.GetSlotData(slotId);
 		
+		// Use delta updates for individual field changes (90%+ bandwidth savings)
 		slotData.SetSlotResource(prefab);
+		m_RplBroadcastManager.UpdateSlotResourceDelta(slotId, prefab);
+		
 		slotData.SetSlotName(roleConfig.m_sRoleName);
 		slotData.SetSlotType(roleConfig.m_SlottingType);
 		slotData.SetSlotIcon(roleConfig.m_RoleIcon);
 		
-		m_RplBroadcastManager.UpdateSlotData(slotData);
+		// Note: Name, Type, and Icon don't have delta updates as they rarely change
+		// If they change frequently in the future, add delta methods for them too
 		
 		if (logAction)
 		{

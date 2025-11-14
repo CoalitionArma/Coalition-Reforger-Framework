@@ -211,8 +211,10 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_SlottingState += 1;
 		Replication.BumpMe();  // m_SlottingState is [RplProp()] - auto-synced to clients
 		
-		// Note: Individual slot updates are sent via RPC (BroadcastSlotUpdate)
-		// No need to resend all slots when slotting state changes
+		// Notify all clients to refresh their slotting UI
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		if (broadcastManager)
+			broadcastManager.NotifySlottingPhaseChanged();
 	}
 
 	/**

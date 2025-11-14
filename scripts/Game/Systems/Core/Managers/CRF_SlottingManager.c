@@ -54,7 +54,7 @@ class CRF_SlottingManager : ScriptComponent
 		if (slotData)
 		{
 			slotData.SetSlotCurrentCharacter(charId);
-			m_RplBroadcastManager.UpdateSlotData(slotData);
+			m_RplBroadcastManager.UpdateSlotCharacterDelta(slotId, charId);
 		};
 	}
 	
@@ -65,7 +65,7 @@ class CRF_SlottingManager : ScriptComponent
 		if (slotData)
 		{
 			slotData.SetSlotResource(resource);
-			m_RplBroadcastManager.UpdateSlotData(slotData);
+			m_RplBroadcastManager.UpdateSlotResourceDelta(slotId, resource);
 		};
 	}
 	
@@ -76,7 +76,7 @@ class CRF_SlottingManager : ScriptComponent
 		if (slotData)
 		{
 			slotData.SetIsDeadSlot(input);
-			m_RplBroadcastManager.UpdateSlotData(slotData);
+			m_RplBroadcastManager.UpdateSlotDeathDelta(slotId, input);
 		};
 	}
 	
@@ -87,7 +87,7 @@ class CRF_SlottingManager : ScriptComponent
 		if (slotData)
 		{
 			slotData.SetSlotCurrentGroup(group);
-			m_RplBroadcastManager.UpdateSlotData(slotData);
+			m_RplBroadcastManager.UpdateSlotGroupDelta(slotId, group);
 		};
 	}
 	
@@ -98,7 +98,7 @@ class CRF_SlottingManager : ScriptComponent
 		if (slotData)
 		{
 			slotData.SetSlotCurrentPlayerId(playerId);
-			m_RplBroadcastManager.UpdateSlotData(slotData);
+			m_RplBroadcastManager.UpdateSlotPlayerIdDelta(slotId, playerId);
 		};
 	}
 	
@@ -112,7 +112,7 @@ class CRF_SlottingManager : ScriptComponent
 			if (isLocked)
 				slotData.SetSlotCurrentPlayerId(0);
 			
-			m_RplBroadcastManager.UpdateSlotData(slotData);
+			m_RplBroadcastManager.UpdateSlotLockedDelta(slotId, isLocked);
 		};
 	}
 	

@@ -91,6 +91,10 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentPlayerId(int playerId)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_iSlotCurrentPlayerId == playerId)
+			return;
+		
 		m_iSlotCurrentPlayerId = playerId;
 		
 		if (playerId <= 0)
@@ -100,54 +104,90 @@ class CRF_SlotDataContainer
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentGroup(RplId groupRplId)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_iSlotCurrentGroup == groupRplId)
+			return;
+		
 		m_iSlotCurrentGroup = groupRplId;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotCurrentCharacter(RplId characterRplId)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_iSlotCurrentCharacter == characterRplId)
+			return;
+		
 		m_iSlotCurrentCharacter = characterRplId;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotType(CRF_ESlotType slotType)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_iSlotType == slotType)
+			return;
+		
 		m_iSlotType = slotType;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotName(string name)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_sSlotName == name)
+			return;
+		
 		m_sSlotName = name;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotIcon(ResourceName icon)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_rSlotIconResource == icon)
+			return;
+		
 		m_rSlotIconResource = icon;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotResource(ResourceName resource)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_rSlotResource == resource)
+			return;
+		
 		m_rSlotResource = resource;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetSlotFactionKey(FactionKey faction)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_SlotFactionKey == faction)
+			return;
+		
 		m_SlotFactionKey = faction;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetIsLockedSlot(bool lockedState)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_bIsLockedSlot == lockedState)
+			return;
+		
 		m_bIsLockedSlot = lockedState;
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	void SetIsDeadSlot(bool deadState)
 	{
+		// Dirty flag check: only update if value actually changed
+		if (m_bIsDeadSlot == deadState)
+			return;
+		
 		m_bIsDeadSlot = deadState;
 	}
 	
