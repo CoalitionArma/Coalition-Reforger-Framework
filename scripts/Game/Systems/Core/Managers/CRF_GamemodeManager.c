@@ -54,7 +54,9 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	
 	void CleanUpBodies()
 	{
-		array<IEntity> bodiesToRemove = {};
+		array<IEntity> bodiesToRemove = new array<IEntity>();
+		bodiesToRemove.Reserve(m_aDeadBodies.Count()); // Pre-allocate capacity for performance
+		
 		foreach (IEntity body: m_aDeadBodies)
 		{
 			if (!body)
