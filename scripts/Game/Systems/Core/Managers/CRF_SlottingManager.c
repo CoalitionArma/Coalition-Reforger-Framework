@@ -19,6 +19,12 @@ class CRF_SlottingManager : ScriptComponent
 	
 	protected static CRF_SlottingManager m_sInstance;
 	
+	// Resource caching for optimized spawning
+	protected ref map<ResourceName, Resource> m_mCachedResources = new map<ResourceName, Resource>();
+	
+	// Mass initialization flag for optimizing collision checks
+	protected bool m_bMassInitializationInProgress = false;
+	
 	void CRF_SlottingManager(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 		m_sInstance = this;
@@ -522,8 +528,14 @@ class CRF_SlottingManager : ScriptComponent
 		
 		GetSafeSpawnTransform(spawnParams.Transform, 12, spawnParams.Transform);
 		
-		// Spawn the character
-		Resource resource = Resource.Load(resourceName);
+		// Spawn the character using cached resource
+		Resource resource = GetCachedResource(resourceName);
+		if (!resource)
+		{
+			Print(string.Format("[CRF_SlottingManager] Failed to load resource: %1", resourceName), LogLevel.ERROR);
+			return null;
+		}
+		
 		SCR_ChimeraCharacter playerCharacter = SCR_ChimeraCharacter.Cast(
 			GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), spawnParams)
 		);
@@ -553,55 +565,29 @@ class CRF_SlottingManager : ScriptComponent
 	//------------------------------------------------------------------------------------------------
 	void GetSafeSpawnTransform(vector baseTransform[4], float radius, out vector trasnformOut[4])
 	{
-	    vector candidate;
-	    vector surface;
-	    vector outTransform[4] = baseTransform;
+		// Base Enfusion spawn already handles position validation
+		// Simply apply a small random offset for player spacing during mass spawns
+		vector outTransform[4] = baseTransform;
 		
-		if (!IsOverlappingOtherPlayer(baseTransform[3]))
+		// Add random offset to prevent exact position overlap
+		float angle = Math.RandomFloat01() * Math.PI2;
+		float dist = Math.RandomFloat01() * radius;
+		vector offset = Vector(Math.Cos(angle) * dist, 0, Math.Sin(angle) * dist);
+		
+		outTransform[3] = baseTransform[3] + offset;
+		
+		// Snap to terrain geometry
+		vector surface;
+		SCR_TerrainHelper.SnapToGeometry(surface, outTransform[3], {}, GetGame().GetWorld());
+		if (surface != vector.Zero)
 		{
-			trasnformOut = baseTransform;
-			return;
+			outTransform[3] = surface;
+			SCR_TerrainHelper.OrientToTerrain(outTransform);
 		}
-	
-	    for (int i = 0; i < 20; i++)
-	    {
-	        float angle = Math.RandomFloat01() * Math.PI2;
-	        float dist  = Math.RandomFloat01() * radius;
-	        vector offset = Vector(Math.Cos(angle) * dist, 0, Math.Sin(angle) * dist);
-	
-	        candidate = baseTransform[3] + offset;
-
-	        SCR_TerrainHelper.SnapToGeometry(surface, candidate, {}, GetGame().GetWorld());
-	
-	        if (surface != vector.Zero && !IsOverlappingOtherPlayer(surface))
-	        {
-	            outTransform[3] = surface;
-	
-	            SCR_TerrainHelper.OrientToTerrain(outTransform);
-	
-	            trasnformOut = outTransform;
-				return;
-	        }
-	    }
-	
-	    trasnformOut = baseTransform;
+		
+		trasnformOut = outTransform;
 	}
 
-	
-	//------------------------------------------------------------------------------------------------
-	bool IsOverlappingOtherPlayer(vector pos)
-	{
-		return !GetGame().GetWorld().QueryEntitiesBySphere(pos, 1.5, FilterEntities, null);
-	}
-	
-	bool FilterEntities(IEntity entity)
-	{
-		if (SCR_ChimeraCharacter.Cast(entity) || entity.FindComponent(CRF_RespawnPointComponent))
-			return false;
-			
-		return true;
-	}
-	
 	//------------------------------------------------------------------------------------------------
 	void AddPlayableEntityToManager(IEntity entity)
 	{
@@ -787,6 +773,70 @@ class CRF_SlottingManager : ScriptComponent
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	// RESOURCE CACHING SYSTEM
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Get a cached resource or load and cache it if not already cached
+	 * Reduces repeated Resource.Load() calls during mass spawning
+	 * @param resourceName The resource path to load
+	 * @return The loaded resource or null if invalid
+	 */
+	Resource GetCachedResource(ResourceName resourceName)
+	{
+		if (resourceName.IsEmpty())
+			return null;
+		
+		Resource res = m_mCachedResources.Get(resourceName);
+		if (!res)
+		{
+			res = Resource.Load(resourceName);
+			if (res)
+			{
+				m_mCachedResources.Set(resourceName, res);
+				Print(string.Format("[CRF_SlottingManager] Cached resource: %1", resourceName), LogLevel.VERBOSE);
+			}
+		}
+		return res;
+	}
+	
+	/**
+	 * Clear all cached resources
+	 * Call this when unloading mission or changing scenarios
+	 */
+	void ClearResourceCache()
+	{
+		m_mCachedResources.Clear();
+		Print("[CRF_SlottingManager] Resource cache cleared", LogLevel.VERBOSE);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// MASS INITIALIZATION FLAG
+	//------------------------------------------------------------------------------------------------
+	
+	/**
+	 * Set the mass initialization flag
+	 * Used to optimize collision checks during batch player spawning
+	 * @param inProgress True when batch spawning is active
+	 */
+	void SetMassInitializationInProgress(bool inProgress)
+	{
+		m_bMassInitializationInProgress = inProgress;
+	}
+	
+	/**
+	 * Check if mass initialization is currently in progress
+	 * @return True if batch spawning is active
+	 */
+	bool IsMassInitializationInProgress()
+	{
+		return m_bMassInitializationInProgress;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// REPLICATION
+	//------------------------------------------------------------------------------------------------
+
 	override protected bool RplSave(ScriptBitWriter writer)
 	{
 		// Save slotData

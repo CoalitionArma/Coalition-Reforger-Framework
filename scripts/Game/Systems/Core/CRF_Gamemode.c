@@ -150,6 +150,14 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected ref array<Vehicle> m_aSpawnedVehicles = {};
 	
 	bool m_bIsInEndCredits = false;
+	
+	// Staggered Player Initialization System
+	//------------------------------------------------------------------------------------
+	protected ref array<int> m_aPendingPlayerInitializations = {};
+	protected bool m_bProcessingInitializations = false;
+	protected const int PLAYERS_PER_BATCH = 8;        // Players spawned per batch
+	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
+	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
 
 	//===================================================================================
 	// STATIC METHODS
@@ -196,6 +204,34 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
+		
+		// Enable frame events for batch processing
+		SetEventMask(EntityEvent.FRAME);
+	}
+	
+	//===================================================================================
+	// FRAME UPDATES
+	//===================================================================================
+	
+	/**
+	 * Frame update for batch processing player initializations
+	 * More reliable than CallLater for time-critical operations
+	 */
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		// Only process if we have pending initializations
+		if (!m_bProcessingInitializations || m_aPendingPlayerInitializations.IsEmpty())
+			return;
+		
+		// Accumulate time
+		m_fBatchTimer += timeSlice * 1000; // Convert to milliseconds
+		
+		// Check if enough time has passed for next batch
+		if (m_fBatchTimer >= BATCH_INTERVAL_MS)
+		{
+			ProcessPlayerBatch();
+			m_fBatchTimer = 0.0; // Reset timer
+		}
 	}
 	
 	//===================================================================================
@@ -678,6 +714,97 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (!m_aSpawnedVehicles.Contains(vehicle))
 			return;
 		m_aSpawnedVehicles.RemoveItem(vehicle);
+	}
+	
+	//===================================================================================
+	// STAGGERED PLAYER INITIALIZATION SYSTEM
+	//===================================================================================
+	
+	/**
+	 * Queue a player for staggered initialization
+	 * Prevents server overload by batching player spawns
+	 * @param playerId ID of the player to initialize
+	 */
+	void QueuePlayerInitialization(int playerId)
+	{
+		// Don't queue if already pending
+		if (m_aPendingPlayerInitializations.Contains(playerId))
+			return;
+		
+		m_aPendingPlayerInitializations.Insert(playerId);
+		
+		// Start processing if not already running
+		if (!m_bProcessingInitializations)
+		{
+			m_bProcessingInitializations = true;
+			m_fBatchTimer = 0.0; // Reset timer
+			
+			// Notify slotting manager that mass initialization is starting
+			if (m_SlottingManager)
+				m_SlottingManager.SetMassInitializationInProgress(true);
+			
+			Print(string.Format("[CRF] Starting batch initialization for %1 players", 
+				m_aPendingPlayerInitializations.Count()), LogLevel.NORMAL);
+		}
+	}
+	
+	/**
+	 * Process a batch of pending player initializations
+	 * Called by EOnFrame when timer interval is reached
+	 * Spawns players in small groups to distribute server load
+	 */
+	protected void ProcessPlayerBatch()
+	{
+		if (m_aPendingPlayerInitializations.IsEmpty())
+		{
+			m_bProcessingInitializations = false;
+			
+			// Notify slotting manager that mass initialization is complete
+			if (m_SlottingManager)
+				m_SlottingManager.SetMassInitializationInProgress(false);
+			
+			Print("[CRF] Player initialization queue complete", LogLevel.NORMAL);
+			return;
+		}
+		
+		// Process a batch of players
+		int playersToProcess = Math.Min(PLAYERS_PER_BATCH, m_aPendingPlayerInitializations.Count());
+		
+		Print(string.Format("[CRF] Processing batch: %1 players (%2 remaining)", 
+			playersToProcess, m_aPendingPlayerInitializations.Count()), LogLevel.VERBOSE);
+		
+		for (int i = 0; i < playersToProcess; i++)
+		{
+			int playerId = m_aPendingPlayerInitializations[0];
+			m_aPendingPlayerInitializations.Remove(0);
+			
+			// Initialize the player immediately
+			if (m_GamemodeManager)
+				m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+		}
+	}
+	
+	/**
+	 * Clear all pending player initializations
+	 * Used when resetting game state
+	 */
+	void ClearPlayerInitializationQueue()
+	{
+		m_aPendingPlayerInitializations.Clear();
+		m_bProcessingInitializations = false;
+		
+		if (m_SlottingManager)
+			m_SlottingManager.SetMassInitializationInProgress(false);
+	}
+	
+	/**
+	 * Check if a player is waiting in the initialization queue
+	 * @param playerId Player to check
+	 * @return True if player is queued for initialization
+	 */
+	bool IsPlayerQueuedForInitialization(int playerId)
+	{
+		return m_aPendingPlayerInitializations.Contains(playerId);
 	}
 }
 
