@@ -244,6 +244,18 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 		InitializeMCOMSites();
 	}
 	
+	float m_fUpdateBuffer = 0;
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		super.EOnFixedFrame(owner, timeSlice);
+		if (m_fUpdateBuffer >= 1)
+		{
+			m_fUpdateBuffer = 0;
+			CountdownTimer();
+		}
+		m_fUpdateBuffer += timeSlice;
+	}
+	
 	/**
 	 * Handle player connection events
 	 * Ensure each player gets the current marker state
@@ -259,8 +271,9 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	/**
 	 * Setup markers for a specific player
 	 * @param playerId The player ID to setup markers for
+	 * NOTE: Public so CRF_JIPSyncManager can call this for centralized JIP sync
 	 */
-	protected void SetupMarkersForPlayer(int playerId)
+	void SetupMarkersForPlayer(int playerId)
 	{
 		// For new players connecting, trigger replication update to ensure they get current marker state
 		if (Replication.IsServer())
@@ -1334,9 +1347,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				string zoneName = GetZoneDisplayName(mcomIdentifier);
 				string siteName = GetSiteDisplayName(mcomIdentifier);
 				m_sMessageContent = string.Format("Attackers have armed %1 MCOM %2!|15|", zoneName, siteName);
-				
-				// Start countdown timer
-				GetGame().GetCallqueue().CallLater(CountdownTimer, 1000, true);
 			}
 			else
 			{
@@ -1346,9 +1356,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 				// Stop countdown
 				m_bCountdownActive = false;
 				m_sActiveMCOM = "";
-				
-				// Remove countdown timer
-				GetGame().GetCallqueue().Remove(CountdownTimer);
 				
 				// Stop global bomb ticking sound
 				StopBombTickingSound();
@@ -1467,10 +1474,7 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 	{
 		// Check if countdown should continue
 		if (!m_bCountdownActive || m_sActiveMCOM.IsEmpty()) 
-		{
-			GetGame().GetCallqueue().Remove(CountdownTimer);
 			return;
-		}
 		
 		// Decrement timer
 		m_iCountdownTimeRemaining--;
@@ -1489,7 +1493,6 @@ class CRF_RushGamemodeManager: SCR_BaseGameModeComponent
 			// Stop countdown
 			m_bCountdownActive = false;
 			m_sActiveMCOM = "";
-			GetGame().GetCallqueue().Remove(CountdownTimer);
 		}
 		
 		Replication.BumpMe();

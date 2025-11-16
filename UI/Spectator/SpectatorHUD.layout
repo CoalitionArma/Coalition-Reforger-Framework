@@ -2,6 +2,103 @@ FrameWidgetClass {
  Name "SpectatorMenu"
  "Z Order" 10
  {
+  FrameWidgetClass "{66948BF1F0B197B5}" {
+   Name "SlotWarning"
+   Slot FrameWidgetSlot "{66948BF1F0B197E0}" {
+    Anchor 0.5 0 0.5 0
+    PositionX -370
+    OffsetLeft -370
+    PositionY 100
+    OffsetTop 100
+    SizeX 800
+    OffsetRight -430
+    SizeY 150
+    OffsetBottom -250
+   }
+   "Z Order" 99
+   "Is Visible" 0
+   {
+    PanelWidgetClass "{6694ADF1AE3F49B5}" {
+     Name "Panel0"
+     Slot FrameWidgetSlot "{6694ADF1AE3F49D1}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX 265.285
+      OffsetLeft 265.285
+      PositionY -68.43
+      OffsetTop -68.43
+      SizeX 134.739
+      OffsetRight -400.024
+      SizeY 50
+      OffsetBottom 18.43
+     }
+     Color 0.0908 0.0908 0.0908 1
+    }
+    TextWidgetClass "{66948BF1C605874F}" {
+     Name "SlotWarningText"
+     Slot FrameWidgetSlot "{66948BF1C6058761}" {
+      Anchor 0 0 1 1
+      PositionX 0
+      OffsetLeft 5
+      PositionY 0
+      OffsetTop 50
+      SizeX 0
+      OffsetRight 60
+      SizeY 0
+      OffsetBottom 0
+     }
+     Color 1 0.5427 0.0513 1
+     Text "Hold U to Open Slotting Menu"
+     "Font Size" 237
+     "Horizontal Alignment" Center
+     "Vertical Alignment" Center
+     FontProperties FontProperties "{66948BF11C112235}" {
+      Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+      OutlineSize 2
+      ShadowSize 16
+      ShadowOffset 0 0
+      ShadowOpacity 0.7
+     }
+    }
+    ButtonWidgetClass "{6694ADF4EF5BF52F}" {
+     Name "DismissWarning"
+     Slot FrameWidgetSlot "{6694ADF4EF5BF54D}" {
+      Anchor 0.5 0.5 0.5 0.5
+      PositionX 265.285
+      OffsetLeft 265.285
+      PositionY -68.43
+      OffsetTop -68.43
+      SizeX 134.739
+      OffsetRight -400.024
+      SizeY 50
+      OffsetBottom 18.43
+     }
+     Color 0.0343 0.0343 0.0343 0
+     components {
+      SCR_ButtonComponent "{6694ADF439D3B23B}" {
+      }
+     }
+     {
+      TextWidgetClass "{6694ADF6D9BF4115}" {
+       Name "Text0"
+       Slot ButtonWidgetSlot "{6694ADF6D9BF4130}" {
+        HorizontalAlign 3
+        VerticalAlign 3
+       }
+       Text "Dismiss"
+       "Font Size" 34
+       "Horizontal Alignment" Center
+       "Vertical Alignment" Center
+       FontProperties FontProperties "{6694ADF619F03E7D}" {
+        Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+        ShadowSize 16
+        ShadowOffset 0 0
+        ShadowOpacity 0.7
+       }
+      }
+     }
+    }
+   }
+  }
   FrameWidgetClass "{64841DF9BC770635}" {
    Name "LogoFrame"
    Slot FrameWidgetSlot "{64841DF9BC770615}" {
@@ -438,6 +535,12 @@ FrameWidgetClass {
      }
      "Is Visible" 0
      {
+      ImageWidgetClass "{56527D6A507AC116}" {
+       Prefab "{56527D6A507AC116}"
+       Name "GLFadeRight"
+       Slot FrameWidgetSlot "{6675339CEDE787F6}" {
+       }
+      }
       ImageWidgetClass "{647D656FBD995174}" {
        Name "BG"
        Slot FrameWidgetSlot "{647D656FBD99516A}" {
@@ -1047,8 +1150,8 @@ FrameWidgetClass {
     OffsetTop 803.7
     SizeX 170
     OffsetRight -20
-    SizeY 150
-    OffsetBottom -953.7
+    SizeY 200
+    OffsetBottom -1003.7
    }
    {
     VerticalLayoutWidgetClass "{6674EDC46FDF30FE}" {
@@ -1243,11 +1346,11 @@ FrameWidgetClass {
       PositionX 153.057
       OffsetLeft 103
       PositionY 160
-      OffsetTop 30
+      OffsetTop 55
       SizeX -121.847
       OffsetRight -31.211
       SizeY -320
-      OffsetBottom 30
+      OffsetBottom 55
      }
      Color 0.133 0.133 0.133 0.353
      Texture "{123C22FEC78BBCF7}UI/data/tab.edds"
@@ -1262,11 +1365,11 @@ FrameWidgetClass {
       PositionX 185.6
       OffsetLeft 136
       PositionY 206.409
-      OffsetTop 57
+      OffsetTop 82
       SizeX -169.788
       OffsetRight -15.812
       SizeY -413.809
-      OffsetBottom 57
+      OffsetBottom 82
      }
      Color 1 1 1 0.353
      Rotation 270

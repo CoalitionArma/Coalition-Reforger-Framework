@@ -5,7 +5,11 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    components {
     CRF_AdminMenuManager "{6544E589C41BEFA8}" {
     }
+    CRF_BandwidthTelemetryManager "{66D522D8D6A2859C}" {
+    }
     CRF_GearscriptManager "{652A3313EF7B772C}" {
+    }
+    CRF_JIPSyncManager "{66D522DD5658CFEC}" {
     }
     CRF_LoggingManager "{65654A2C50A1F78D}" {
     }
@@ -323,14 +327,15 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_iKillFeedType DISABLED
   }
-  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
-   Enabled 0
-  }
   SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
    }
+   m_sLoadingLayout ""
   }
   SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
   }
  }
  coords 2049.433 45.156 2065.633
@@ -421,24 +426,41 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  }
  m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
   m_rGearScript "{D3B6188EF875E2C4}Configs/Gearscripts/Standard/80s/CRF_GS_US80s.conf"
+  m_VehicleLoadout CRF_VehicleGearScriptLoadout "{66949415A1D79F8B}" {
+  }
+  m_aSupplyTrucks {
+   "{C8D62059548EC894}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_AMMO.et" "{0CA6F84C835A080E}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/MERDC/BLUFOR_AMMO_MERDC.et" "{FF65607D073A8981}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/BLUFOR_ARSENAL.et" "{FC3AB83990745796}Prefabs/Vehicles/Wheeled/M923A1/BLUFOR/MERDC/BLUFOR_ARSENAL_MERDC.et"
+  }
   m_rShortRangeRadioPrefab "{E82129A6CC014808}Prefabs/Items/Equipment/Radios/Radio_ANPRC152.et"
   m_rLongRangeRadioPrefab "{C204374F722D5229}Prefabs/Items/Equipment/Radios/Radio_ANPRC117.et"
   m_rRTORadiosPrefab "{C204374F722D5229}Prefabs/Items/Equipment/Radios/Radio_ANPRC117.et"
  }
  m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
   m_rGearScript "{83E186D97FF79DCF}Configs/Gearscripts/Standard/80s/CRF_GS_USSR80s.conf"
+  m_VehicleLoadout CRF_VehicleGearScriptLoadout "{66949415A257C198}" {
+  }
+  m_aSupplyTrucks {
+   "{8759EDBCF78920B7}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_AMMO.et" "{3927510D48AB7EB5}Prefabs/Vehicles/Wheeled/Ural4320/OPFOR/OPFOR_ARSENAL.et"
+  }
   m_rShortRangeRadioPrefab "{D26BF3EB28C8B72C}Prefabs/Items/Equipment/Radios/Radio_R187.et"
   m_rLongRangeRadioPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
   m_rRTORadiosPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
  }
  m_INDFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9AE1C9ED}" {
   m_rGearScript "{9F4A0C3FCDF3F6DE}Configs/Gearscripts/Standard/80s/CRF_GS_FIA.conf"
+  m_VehicleLoadout CRF_VehicleGearScriptLoadout "{669494159DB67D8D}" {
+  }
+  m_aSupplyTrucks {
+   "{DF75A01974E8FD17}Prefabs/Vehicles/Wheeled/Ural4320/INDFOR/INDFOR_AMMO.et" "{9712B926F1FD286E}Prefabs/Vehicles/Wheeled/Ural4320/INDFOR/INDFOR_ARSENAL.et"
+  }
   m_rShortRangeRadioPrefab "{D26BF3EB28C8B72C}Prefabs/Items/Equipment/Radios/Radio_R187.et"
   m_rLongRangeRadioPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
   m_rRTORadiosPrefab "{421001C003F947AF}Prefabs/Items/Equipment/Radios/Radio_R168.et"
  }
  m_CIVILIANGearScriptSettings CRF_GearScriptContainer "{64570ACB9A9C5C52}" {
   m_rGearScript "{6FFD426FE0C1079B}Configs/Gearscripts/Standard/80s/CRF_GS_CIV.conf"
+  m_VehicleLoadout CRF_VehicleGearScriptLoadout "{669494159C990589}" {
+  }
   m_bEnableLeadershipRadios 0
   m_bEnableGIRadios 0
   m_bEnableRTORadios 0
@@ -554,7 +576,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
       m_sCallsignGroupFormat "%3"
      }
-     m_sFactionRadioEncryptionKey "chickenNuggets"
     }
     SCR_Faction "{5978B9CE6585BBE8}" {
      UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
@@ -611,7 +632,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
       m_sNameUpper "INDFOR"
      }
      m_iOrder 4
-     m_sFactionRadioEncryptionKey "candleSauce"
     }
     SCR_Faction "{61500924662B6062}" {
      FactionKey "SPEC"
@@ -674,7 +694,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
      m_aFriendlyFactionsIds {
       "USSR" "FIA"
      }
-     m_sFactionRadioEncryptionKey "Sandbox"
      m_iFactionRadioFrequency 58000
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{607A9A9FE55EDF5F}" {
@@ -773,7 +792,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        }
       }
      }
-     m_sFactionRadioEncryptionKey "chickenNuggets"
      m_iFactionRadioFrequency 48000
      m_aRanks {
       SCR_CharacterRank "{528E9D967C251E5F}" {
@@ -967,7 +985,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        }
       }
      }
-     m_sFactionRadioEncryptionKey "coldBorscht"
      m_iFactionRadioFrequency 42000
      m_aRanks {
       SCR_CharacterRank "{528E9D9FAAB617C6}" {
@@ -1171,7 +1188,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
        }
       }
      }
-     m_sFactionRadioEncryptionKey "candleSauce"
      m_iFactionRadioFrequency 52000
      m_aEntityCatalogs {
       SCR_EntityCatalogMultiList "{5C68A0EABE8B7B2A}" {
@@ -1199,7 +1215,7 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
     }
    }
   }
-  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Systems/Radio/RadioManager.et" {
    ID "632771FB44BBF8E1"
    coords -26.061 38.454 -1.92
   }
@@ -1212,10 +1228,6 @@ CRF_Gamemode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
    ID "632771FB44BBD90B"
    coords 0.828 -0.125 0.558
    m_bIsUnlimitedEditorLegal 1
-  }
-  SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
-   ID "632771FB44BBFB1C"
-   coords 0.828 -0.125 0.558
   }
   SCR_LoadoutManager : "{B54D08AEA74A5354}Prefabs/MP/Managers/Loadouts/LoadoutManager_Editor.et" {
    ID "632771FB44BBFB73"

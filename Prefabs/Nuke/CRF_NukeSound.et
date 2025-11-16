@@ -1,0 +1,14 @@
+GenericEntity : "{93FC2145F05A1EEE}Prefabs/Systems/Sound/sound_airraidsiren.et" {
+ ID "5C969C4C4AF59215"
+ components {
+  SoundComponent "{5C969C4EA43250A6}" {
+   Filenames {
+    "{6457E1E7422DF6FC}Prefabs/Systems/Explosions/GMFX_Explosion_TacNuke.acp"
+   }
+  }
+  Bacon_PlaySoundComponent "{5C969C4E98100BF1}" {
+   m_soundEventName "SOUND_EXPLOSION"
+  }
+ }
+ coords 1022.708 4.063 1712.425
+}

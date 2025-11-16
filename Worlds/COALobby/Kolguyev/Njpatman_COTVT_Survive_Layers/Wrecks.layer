@@ -1,0 +1,245 @@
+$grp GenericEntity : "{0A6B5B1CC60EC137}Prefabs/Props/Wrecks/LAV25_wreck/LAV25_wreck_static.et" {
+ {
+  coords 4803.94 406.647 5237.826
+  angles 24.27 -69.834 -3.673
+ }
+ {
+  coords 4856.451 304.648 6972.163
+  angles -29.805 80.736 -4.846
+ }
+}
+$grp GenericEntity : "{3386EAA823BE462E}Prefabs/Props/Wrecks/UAZ469_wreck/UAZ469_wreck_static.et" {
+ {
+  coords 3345.763 267.604 6906.096
+ }
+ {
+  coords 6735.184 191.758 5412.583
+  angles 0 174.87 0
+ }
+ {
+  coords 3339.472 267.863 6895.938
+  angles 8.088 -86.112 0
+ }
+}
+GenericEntity : "{6BE5C753730DBFED}Prefabs/Props/Wrecks/M923A1_wreck/M923A1_wreck_static.et" {
+ coords 4115.726 380.263 6554.574
+ angles 21.194 167.014 3.472
+}
+GenericEntity : "{74DCE1AEC6832E18}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_static.et" {
+ coords 6341.317 280.789 5442.828
+ angles 10.546 0 0
+}
+$grp ParticleEffectEntity : "{899360C930DA3EE3}Prefabs/Particles/Campfire_burning.et" {
+ {
+  coords 4805.293 407.996 5237.919
+ }
+ {
+  coords 4803.003 408.733 5237.739
+ }
+ {
+  coords 3345.424 268.311 6905.694
+ }
+ {
+  coords 4115.688 382.405 6553.707
+  angles -21.464 -22.513 0
+ }
+ {
+  coords 4114.833 380.516 6556.309
+  angles -21.464 -22.513 0
+ }
+ {
+  coords 6341.921 282.146 5445.178
+ }
+ {
+  coords 6340.848 282.094 5442.092
+ }
+ {
+  coords 6341.247 282.653 5439.984
+ }
+ {
+  coords 5464.617 443.544 5953.184
+ }
+ {
+  coords 5464.776 446.442 5956.476
+ }
+ {
+  coords 5464.261 444.881 5960.161
+ }
+ {
+  coords 5463.735 446.071 5956.398
+ }
+ {
+  coords 5866.353 326.994 7307.183
+ }
+ {
+  coords 5866.163 327.034 7308.144
+ }
+ {
+  coords 5865.301 324.38 7307.355
+ }
+ {
+  coords 5869.823 327.086 7309.295
+ }
+ {
+  coords 6079.77 418.436 6161.823
+ }
+ {
+  coords 6079.096 419.692 6160.029
+ }
+ {
+  coords 6082.069 418.31 6166.565
+ }
+ {
+  coords 5615.392 408.803 5546.786
+ }
+ {
+  coords 5612.355 410.057 5544.534
+ }
+ {
+  coords 5613.241 410.502 5546.163
+ }
+ {
+  coords 5620.384 409.999 5546.666
+ }
+ {
+  coords 5281.233 381.246 4973.504
+ }
+ {
+  coords 5280.382 381.665 4973.516
+ }
+ {
+  coords 5278.534 381.166 4973.593
+ }
+ {
+  coords 4341.865 419.937 5826.819
+ }
+ {
+  coords 4337.542 419.844 5829.677
+ }
+ {
+  coords 4343.941 419.967 5831.303
+ }
+ {
+  coords 5488.424 157.005 4026.29
+ }
+ {
+  coords 5493.535 157.065 4024.86
+ }
+ {
+  coords 5490.904 156.51 4029.301
+ }
+ {
+  coords 5493.018 159.23 4023.149
+ }
+ {
+  coords 3696.808 182.129 5265.541
+ }
+ {
+  coords 3697.953 180.869 5270.507
+ }
+ {
+  coords 5089.735 690.901 6343.368
+ }
+ {
+  coords 5090.995 689.609 6348.49
+ }
+ {
+  coords 5090.746 691.042 6345.554
+ }
+ {
+  coords 4856.659 306.992 6972.362
+ }
+ {
+  coords 4855.514 306.941 6971.145
+ }
+ {
+  coords 4854.813 306.878 6973.184
+ }
+ {
+  coords 4288.205 178.712 7474.106
+ }
+ {
+  coords 4288.435 178.594 7472.873
+ }
+ {
+  coords 3993.661 321.462 5690.954
+ }
+ {
+  coords 3992.609 322.375 5693.37
+ }
+ {
+  coords 6735.269 192.596 5411.984
+ }
+ {
+  coords 6735.423 192.486 5413.981
+ }
+ {
+  coords 3418.319 213.418 5806.481
+ }
+ {
+  coords 3413.137 213.507 5807.831
+ }
+ {
+  coords 3415.233 213.186 5806.087
+ }
+ {
+  coords 3339.165 268.722 6896.017
+ }
+ {
+  coords 3340.521 268.448 6895.741
+ }
+}
+$grp GenericEntity : "{9668B6C528DCECBD}Prefabs/Props/Wrecks/Mi8MT_wreck/Mi8MT_wreck_static.et" {
+ {
+  coords 5465.285 443.177 5956.896
+  angles 5.976 -2.025 -18.762
+ }
+ {
+  coords 5867.703 324.104 7308.152
+  angles 27.091 74.927 0
+ }
+}
+$grp GenericEntity : "{AE300E34EA8FF40C}Prefabs/Props/Wrecks/Ural4320_wreck/Ural4320_wreck_static.et" {
+ {
+  coords 6078.569 418.045 6159.784
+  angles 0 97.37 0
+ }
+ {
+  coords 5281.193 379.924 4973.978
+  angles 5.014 -122.519 0
+ }
+ {
+  coords 4289.52 177.94 7472.664
+  angles -31.3 -37.512 5.868
+ }
+ {
+  coords 3994.837 320.958 5691.203
+  angles -5.39 -34.93 -22.678
+ }
+}
+GenericEntity : "{AE57C45CB32D6168}Prefabs/Props/Wrecks/M113_wreck/M113_wreck_static.et" {
+ coords 5614.022 408.58 5545.092
+ angles 0 -78.513 0
+}
+$grp GenericEntity : "{B90E5414AB7C325B}Prefabs/Props/Wrecks/BTR70_Wreck/BTR70_wreck_static.et" {
+ {
+  coords 4340.137 418.132 5827.935
+  angles 0 132.937 0
+ }
+ {
+  coords 5491.354 155.272 4025.441
+  angles 0 110.757 0
+ }
+ {
+  coords 3415.181 211.704 5807.237
+  angles 0 -83.627 0
+ }
+}
+$grp GenericEntity : "{E98385D7F126474C}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_02_static.et" {
+ {
+  coords 3694.001 180.031 5270.234
+ }
+ {
+  coords 5086.958 688.753 6348.091
+ }
+}

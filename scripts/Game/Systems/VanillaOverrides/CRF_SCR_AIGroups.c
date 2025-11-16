@@ -6,8 +6,13 @@ modded class SCR_AIGroup
 	[Attribute("0", UIWidgets.SearchComboBox, enums: ParamEnumArray.FromEnum(CRF_EFlagType), category: "Group")]
 	protected CRF_EFlagType m_FlagType;
 	
+	[Attribute("1", category: "Group")]
+	bool m_bBlueForceTrackerEnabled;
+	
 	protected bool m_bIsPlayableGroup;
 	protected SCR_AIGroup m_NewGroup;
+	
+	[RplProp()] ref array<ResourceName> m_aGroupSlots = {};
 	
 	//------------------------------------------------------------------------------------------------
 	//! Called when the entity is initialized
@@ -24,7 +29,7 @@ modded class SCR_AIGroup
 			return;
 		
 		// In GAME state and AI is enabled in GAME state
-		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.EnableAIInGameState)
+		if (gamemode && groupsManager && gamemode.m_GamemodeState == CRF_EGamemodeState.GAME && gamemode.m_bCurrentEnableAIInGameState)
 		{
 			if (!IsAIActivated())
 				ActivateAI();
@@ -35,6 +40,18 @@ modded class SCR_AIGroup
 			GetOnAllDelayedEntitySpawned().Insert(AllMembersSpawned);
 			GetGame().GetCallqueue().CallLater(CreateNewGroup, 150, false); // DO NOT CHANGE. RPL JIP ERROR IF NOT INIT'd AFTER (LOL FUCK THIS ENGINE)
 		};
+		
+		
+	}
+	
+	void SetGroupSlots(array<ResourceName> slots)
+	{
+		// Only authority should modify replicated state
+		if (!Replication.IsServer())
+			return;
+			
+		m_aGroupSlots = slots;
+		Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -65,6 +82,8 @@ modded class SCR_AIGroup
 		m_NewGroup.SetDeleteWhenEmpty(false);
 		m_NewGroup.SetMaxMembers(GetMaxMembers());
 		m_NewGroup.SetIsPlayableGroup();
+		
+		m_NewGroup.SetGroupSlots(m_aUnitPrefabSlots);
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -80,10 +99,21 @@ modded class SCR_AIGroup
 		if (m_bIsPlayableGroup)
 			return;
 		
-		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
-		RplId newRplId = RplComponent.Cast(m_NewGroup.FindComponent(RplComponent)).Id();
-		RplId oldRplId = RplComponent.Cast(this.FindComponent(RplComponent)).Id();
+		// Safely get RplIds - prevent crashes if groups don't have RplComponent
+		RplId newRplId, oldRplId;
+		if (!CRF_ReplicationHelpers.GetRplId(m_NewGroup, newRplId))
+		{
+			Print("[SCR_AIGroup] ERROR: New group has no RplComponent", LogLevel.ERROR);
+			return;
+		}
 		
+		if (!CRF_ReplicationHelpers.GetRplId(this, oldRplId))
+		{
+			Print("[SCR_AIGroup] ERROR: Old group has no RplComponent", LogLevel.ERROR);
+			return;
+		}
+		
+		CRF_SlottingManager slottingManager = CRF_SlottingManager.GetInstance();
 		array<int> slotIdsForOldGroup = slottingManager.GetAllSlotIDsForGroup(oldRplId);
 		
 		foreach(int slotId : slotIdsForOldGroup)

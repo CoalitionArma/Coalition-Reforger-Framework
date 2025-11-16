@@ -1,0 +1,75 @@
+GenericEntity : "{62865C82AB534D91}Prefabs/Structures/FlagPoles/RespawnPoles/BLUFOR_Respawn.et" {
+ coords 2310.501 61.313 1596.938
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 3201.998 68.313 2825.688
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_fWorldSize 125
+  m_sDescription "MORTARS"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 1820.147 64.344 3466.811
+  angleY 0
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "cross"
+  m_fWorldSize 180
+  m_sDescription "POWER STATION"
+  m_aVisibleForFactions {
+   ""
+  }
+  m_bVisibleForEmptyFaction 1
+  m_iZOrder 0
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3349.813 68.313 4033.779
+  angleY 90
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "mark-exclamation"
+  m_fWorldSize 125
+  m_sDescription "VEHICLE DEPOT"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2663.525 68.313 4643.688
+  angleY -180
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack"
+  m_fWorldSize 125
+  m_sDescription "COUNTER ATTACK DIRECTION"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 2017.275 68.313 4643.688
+  angleY 173.923
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack"
+  m_fWorldSize 125
+  m_sDescription "COUNTER ATTACK DIRECTION"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 3445.429 68.313 4577.847
+  angleY -165.228
+  m_MarkerColor 0.502 0 0 1
+  m_sQuadName "attack"
+  m_fWorldSize 125
+  m_sDescription "COUNTER ATTACK DIRECTION"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}
+CRF_ManualMarker : "{E256B56F799AEB41}PrefabsEditable/Markers/BLUFORSpawnMarker.et" {
+ coords 2313.224 61.387 1580.471
+ angleY 90
+ m_bVisibleForEmptyFaction 1
+ m_bShowForAnyFaction 1
+}

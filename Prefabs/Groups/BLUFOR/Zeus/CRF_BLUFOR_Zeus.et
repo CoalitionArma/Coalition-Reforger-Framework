@@ -1,0 +1,72 @@
+SCR_AIGroup : "{EACD97CF4A702FAE}Prefabs/Groups/BLUFOR/Group_US_Base.et" {
+ ID "0000000000000001"
+ components {
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "ZEUS"
+    m_Image "{B7385DA4504BD4D5}CRF Images/crflogo.edds"
+    m_aAuthoredLabels {
+     ENTITYTYPE_GROUP FACTION_CRF_BLUFOR TRAIT_ARMORPIERCING TRAIT_SUPPRESSIVE TRAIT_EXPLOSIVE
+    }
+    m_aAutoLabels {
+     GROUPSIZE_LARGE
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{66981BA2842B522A}" {
+      m_BudgetType AI
+      m_Value 1
+     }
+    }
+    m_bUseUIInfoName 1
+    m_MilitarySymbol SCR_MilitarySymbol "{66981BA2842B521D}" {
+     m_Identity BLUFOR
+     m_Dimension LAND
+     m_Icons INFANTRY
+     m_Amplifier SQUAD
+    }
+   }
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Identity UNKNOWN
+    m_Dimension NONE
+   }
+  }
+  SCR_PreviewEntityComponent "{5636898C25429AD9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{66981BA2842B5270}" {
+     m_iParentID -1
+     m_Mesh ""
+     m_Flags 3
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{66981BA2842B527A}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ m_faction "BLUFOR"
+ m_aUnitPrefabSlots {
+  "{15992AA89FF4475A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Zeus_P.et" "{15992AA89FF4475A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Zeus_P.et" "{15992AA89FF4475A}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_Zeus_P.et"
+ }
+ m_bDeleteWhenEmpty 0
+ m_iMaxMembers 12
+ m_bPlayable 0
+ m_bDeleteIfNoPlayer 0
+ m_bIsPlayable 1
+ m_bBlueForceTrackerEnabled 0
+}

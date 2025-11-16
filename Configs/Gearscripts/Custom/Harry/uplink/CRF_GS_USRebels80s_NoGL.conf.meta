@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{7464317B57A655F6}Configs/Gearscripts/Custom/Harry/uplink/CRF_GS_USRebels80s_NoGL.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

@@ -1,0 +1,29 @@
+GenericEntity : "{03FFD2B45BEE8A17}Prefabs/Vehicles/Wheeled/Ural4320/VehParts/Ural4320_ammo_box.et" {
+ ID "4B42E71698F5739C"
+ components {
+  SCR_ResourceComponent "{5D82E3A3588C0389}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D82E3A35A90CF86}" {
+     m_fResourceValueMax 1500
+    }
+   }
+  }
+  ActionsManagerComponent "{5CDEFA7984EAC4E2}" {
+   additionalActions {
+    CRF_VehicleRearmAction "{66C44D515510A198}" {
+     ParentContextList {
+      "door_rear"
+     }
+     UIInfo UIInfo "{66C44D51506E1E7D}" {
+     }
+     "Sort Priority" -1
+    }
+    CRF_CacheCreateAction "{66C48705DC3AEC45}" {
+     UIInfo UIInfo "{66C48705DE3CBB9B}" {
+     }
+     Duration 5
+    }
+   }
+  }
+ }
+}

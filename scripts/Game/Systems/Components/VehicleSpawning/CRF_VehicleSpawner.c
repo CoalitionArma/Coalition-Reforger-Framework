@@ -7,23 +7,44 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 {
 	[Attribute("", desc: "Vehicle that will spawn in", category: "CRF Vehicle Spawning")] 
 	ResourceName m_rVehicle;
+	
 	[Attribute("", desc: "VFaction this spawner belongs to", category: "CRF Vehicle Spawning")] 
 	string m_sFactionKey;
+	
 	[Attribute("1", desc: "Whenever a side respawns should this vehicle respawn with it. (Ignores the timer)", category: "CRF Vehicle Spawning")] 
 	bool m_bShouldRespawnOnSideRespawn;
+	
 	[Attribute("300", desc: "How long until the vehicle respawns after its death in seconds", category: "CRF Vehicle Spawning")] 
 	int m_iRespawnTimer;
+	
 	[Attribute("10", desc: "How many tickets is drained every time this spawns", category: "CRF Vehicle Spawning")] 
 	int m_iTicketsPerRespawn;
+	
+	[Attribute("1", desc: "Should we add ammo to this vehicle", category: "CRF Vehicle Spawning")] 
+	bool m_bShouldAddAmmo;
+	
+	[Attribute("", desc: "Loadout values applied to this vehicle", "conf class=CRF_VehicleGearScriptLoadout", category: "CRF Vehicle Spawning")] 
+	ref CRF_VehicleGearScriptLoadout m_OverridedVehicleLoadout;
+	
+	[Attribute(category: "CRF Vehicle Spawning")] 
+	ref array<ref CRF_VehicleGearscriptOverride> m_aVehicleGearscriptOverrides;
+	
+	[Attribute(category: "CRF Vehicle Spawning")] 
+	ref array<ref CRF_VehicleGearScriptAdditionalItem> m_aAdditionalVehicleItems;
 	
 	CRF_RespawnManager m_RespawnManager;
 	Faction m_Faction;
 	IEntity m_eVehicle;
 	float m_fTimer = 0;
 	int m_iVehicleSpawnerIndex = -1;
-	protected bool m_bWaitingToRespawn = false;
+	bool m_bWaitingToRespawn = false;
 	override void EOnInit(IEntity owner)
 	{
+		if (!m_sFactionKey && CRF_Gamemode.GetInstance())
+		{
+			Debug.Error("No Faction Key set on " + m_rVehicle + " spawner");
+			return;
+		}
 		Print("Init");
 		#ifdef WORKBENCH
 		#else
@@ -31,12 +52,13 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 			return;
 		#endif
 		m_RespawnManager = CRF_RespawnManager.GetInstance();
-		m_iVehicleSpawnerIndex = m_RespawnManager.InsertVehicle(this);
-		SpawnVehicle();
-		SetEventMask(EntityEvent.FIXEDFRAME);
+		if (m_RespawnManager)
+			m_iVehicleSpawnerIndex = m_RespawnManager.InsertVehicle(this);
+		CRF_GearscriptManager.GetInstance().SpawnVehicle(this);
+		SetEventMask(EntityEvent.FRAME);
 	}
 	
-	override void EOnFixedFrame(IEntity owner, float timeSlice)
+	override void EOnFrame(IEntity owner, float timeSlice)
 	{
 		#ifdef WORKBENCH
 		#else
@@ -48,7 +70,7 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 		
 		if (m_bWaitingToRespawn && m_fTimer <= 0)
 		{
-			SpawnVehicle();
+			CRF_GearscriptManager.GetInstance().SpawnVehicle(this);
 			m_bWaitingToRespawn = false;
 		}
 	}
@@ -57,25 +79,6 @@ class CRF_VehicleSpawner: BaseGameTriggerEntity
 	{
 		m_fTimer = m_iRespawnTimer;
 		m_bWaitingToRespawn = true;
-	}
-	
-	void SpawnVehicle()
-	{
-		//Do not spawn the vehicle if the faction doesn't have the tickets
-		//Handles subtracting tickets from kills that are on a timer. This means tickets are subtracted WHEN the vehicle is spawned
-		if (m_bWaitingToRespawn && !m_bShouldRespawnOnSideRespawn)
-		{
-			if (m_RespawnManager.GetFactionTickets(m_sFactionKey) != 0 && m_RespawnManager.GetFactionTickets(m_sFactionKey) < m_iTicketsPerRespawn)
-				return;
-		
-			if (m_RespawnManager.TicketsRemaining(m_sFactionKey))
-				m_RespawnManager.SubtractTicket(m_sFactionKey, m_iTicketsPerRespawn);
-		}
-		EntitySpawnParams params = new EntitySpawnParams();
-		params.TransformMode = ETransformMode.WORLD;
-		this.GetTransform(params.Transform);
-		m_eVehicle = GetGame().SpawnEntityPrefab(Resource.Load(m_rVehicle), GetGame().GetWorld(), params);
-		Vehicle.Cast(m_eVehicle).m_iVehicleSpawnerIndex = m_iVehicleSpawnerIndex;
 	}
 	
 	#ifdef WORKBENCH

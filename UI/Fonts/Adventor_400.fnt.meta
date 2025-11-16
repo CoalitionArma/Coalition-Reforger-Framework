@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4385359EB63DEA13}UI/Fonts/Adventor_400.fnt"
+ Configurations {
+  FNTResourceClass PC {
+  }
+  FNTResourceClass XBOX_ONE : PC {
+  }
+  FNTResourceClass XBOX_SERIES : PC {
+  }
+  FNTResourceClass PS4 : PC {
+  }
+  FNTResourceClass PS5 : PC {
+  }
+  FNTResourceClass HEADLESS : PC {
+  }
+  FNTResourceClass Xbox : PC {
+  }
+ }
+}

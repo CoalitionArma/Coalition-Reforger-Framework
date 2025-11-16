@@ -1,0 +1,1494 @@
+$grp GenericEntity : "{5EF5C5129B116115}Prefabs/Structures/BuildingParts/Lights/LampIndustrial_02.et" {
+ {
+  coords 3484.104 86.463 7208.769
+ }
+ {
+  coords 3490.738 92.863 7182.152
+ }
+}
+$grp GenericEntity : "{62482F79CF1B97FD}Prefabs/Structures/BuildingParts/Lights/LampIndustrial_01.et" {
+ {
+  coords 3471.071 91.68 7185.75
+  angleY 25.455
+  scale 0.7
+ }
+ {
+  coords 3490.232 91.427 7177.059
+  angleY 25.455
+  scale 0.7
+ }
+ {
+  coords 3487.319 90.997 7202.632
+  angleX 15.96
+  angleY -24.702
+  angleZ 1.351
+  scale 0.7
+ }
+}
+$grp LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3494.872 92.131 7196.971
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3473.302 94.16 7182.218
+  angleX -90
+  angleZ 35.032
+  Color 0.6314 0.5563 0.4862 0
+  LV 6
+  Enabled 0
+  Radius 10
+  SpotAngle 170
+  DistanceAttenuation 2.5
+  VolLightOffset 0
+  LensFlareType Disabled
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3483.269 87.578 7092.104
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 8
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3503.586 87.541 7082.233
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 8
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3535.867 87.583 7156.656
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 8
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3510.809 87.549 7168.484
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 8
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3481.205 92.704 7200.178
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3478.902 92.754 7194.918
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3476.609 92.731 7189.66
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3471.18 91.588 7185.943
+  angleX -44.795
+  angleY 21.111
+  Color 0.1569 0.2745 0.6235 1
+  LV 4
+  Radius 5
+  SpotAngle 140
+  VolLightOffset 0
+  LensFlareType Disabled
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3490.327 91.318 7177.242
+  angleX -44.795
+  angleY 21.111
+  Color 0.1569 0.2745 0.6235 1
+  LV 4
+  Radius 5
+  SpotAngle 140
+  VolLightOffset 0
+  LensFlareType Disabled
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3493.062 92.461 7192.833
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3488.209 92.621 7186.558
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3489.439 92.693 7189.309
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3490.766 92.719 7182.15
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3482.724 92.653 7209.698
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3487.232 90.968 7202.852
+  angleX -28.778
+  angleY -29.305
+  angleZ 0.116
+  Color 0.1569 0.2745 0.6235 1
+  LV 4
+  Radius 5
+  SpotAngle 140
+  VolLightOffset 0
+  LensFlareType Disabled
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3491.477 92.622 7205.897
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    m_fBaseHealth 1
+    m_bDeleteAfterFinalPhase 1
+   }
+  }
+  coords 3484.092 86.355 7208.763
+  angleX -90
+  angleY -180
+  angleZ -180
+  Color 0.823 0.5263 0.2491 0
+  LV 6
+  Radius 6
+ }
+}
+$grp GenericEntity : "{8F17372BAB5A9CF8}Prefabs/Structures/BuildingParts/Lights/LightIndustrial_02.et" {
+ {
+  coords 3481.43 84.566 7183.941
+  angleY 23.047
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.6566 0.596 0.3202 1
+    LV 4
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3477.726 95.691 7180.632
+  angleY 113.047
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.5608 0.0706 0.0706 1
+    LV 4
+    Radius 10
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3477.823 91.109 7180.93
+  angleY 113.047
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.5608 0.0706 0.0706 1
+    LV 4
+    Radius 10
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3477.843 86.088 7180.963
+  angleY 113.047
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.5608 0.0706 0.0706 1
+    LV 4
+    Radius 10
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3484.256 84.598 7179.089
+  angleY -66.953
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.5608 0.0706 0.0706 1
+    LV 4
+    Radius 10
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3481.063 97.11 7184.015
+  angleY 23.047
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.5608 0.0706 0.0706 1
+    LV 4
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3443.569 84.522 7146.365
+  angleY -66.953
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.6566 0.596 0.3202 1
+    LV 4
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3441.364 84.484 7141.351
+  angleY -66.953
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.6566 0.596 0.3202 1
+    LV 4
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3439.185 84.544 7136.354
+  angleY -66.953
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.6566 0.596 0.3202 1
+    LV 4
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3494.79 90.427 7207.926
+  angleY -66.953
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.6566 0.596 0.3202 1
+    LV 5
+    Radius 4.13
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3487.469 90.67 7191.439
+  angleY -66.953
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.6566 0.596 0.3202 1
+    LV 5
+    Radius 4.13
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+ {
+  coords 3485.528 90.684 7187.001
+  angleY -66.953
+  {
+   LightEntity : "{8351F4F8AB128B7B}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_02/LightPrefabs/LampStreet_E_02_light.et" {
+    components {
+     SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+      m_fBaseHealth 1
+      m_bDeleteAfterFinalPhase 1
+     }
+    }
+    coords -0.003 -0.037 0.111
+    angleX 0
+    angleY -0.009
+    Color 0.6566 0.596 0.3202 1
+    LV 5
+    Radius 4.13
+    SpotAngle 170
+    VolLightOffset 0
+    LensFlareType Disabled
+   }
+  }
+ }
+}
+$grp GameEntity : "{8FF50E5D4B417196}Prefabs/Props/Furniture/LampFluorescent/LampFluorescent_01_glass.et" {
+ {
+  coords 3442.257 89.833 7119.162
+  angleY 23.085
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    Radius 8
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3450.081 89.805 7115.97
+  angleY 23.085
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    Radius 8
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3442.268 86.646 7119.153
+  angleY 23.085
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    Radius 8
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3450.078 86.634 7115.978
+  angleY 23.085
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    Radius 8
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3491.54 86.816 7085.166
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3493.757 86.809 7089.729
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3499.412 86.792 7086.983
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3497.191 86.806 7082.386
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3520.695 86.778 7161.123
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3515.044 86.788 7163.903
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3517.261 86.781 7168.466
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3522.916 86.764 7165.72
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3447.674 88.428 7056.132
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3451.772 88.419 7054.059
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3455.916 88.423 7052.027
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3460.014 88.414 7049.953
+  angleY 27.195
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3464.103 88.426 7047.879
+  angleY -152.805
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3472.345 88.431 7043.773
+  angleY -152.805
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3468.201 88.435 7045.805
+  angleY -152.805
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3460.085 88.759 7216.33
+  angleY 112.652
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3461.771 88.767 7220.391
+  angleY 112.652
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3458.304 88.762 7212.03
+  angleY 112.652
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3454.76 88.77 7203.462
+  angleY 112.652
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3452.979 88.773 7199.162
+  angleY 112.652
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3456.446 88.778 7207.523
+  angleY 112.652
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3451.236 88.763 7194.971
+  angleY 112.652
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.3796 0.4633 0.6314 0
+    LV 6
+    Radius 20
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  coords 3450.768 89.805 7120.083
+  angleY 23.085
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    Radius 8
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3542.135 86.755 7237.578
+  angleY 21.896
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3536.714 86.763 7237.194
+  angleY 111.896
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  coords 3542.097 86.759 7233.689
+  angleY 21.896
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.749 0.6549 0.3765 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -89.98
+    angleY 0
+    angleZ 1.447
+    Color 0.749 0.6549 0.3765 1
+    LV 6
+    SpotAngle 170
+    DistanceAttenuation 2.5
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3472.672 87.537 7184.934
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3476.196 87.534 7193.002
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3479.715 87.564 7201.017
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3488.24 87.543 7197.351
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 7
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3487.152 87.547 7188.228
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3479.973 87.559 7191.366
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+ {
+  components {
+   ParametricMaterialInstanceComponent "{58D69D7A3782772B}" {
+    ColorAlbedo 0.5617 0.1191 0.1191 1
+    ColorEmissive 0.5617 0.1191 0.1191 1
+   }
+  }
+  coords 3495.782 87.542 7194.036
+  angleY 23.637
+  {
+   LightEntity {
+    ID "58D69D7BA124BCB0"
+    components {
+     StreetLampComponent "{55A0954A909C9109}" {
+      "Emissive Color" 0.5617 0.1191 0.1191 1
+     }
+    }
+    coords 0 -0.095 0
+    angleX -90
+    angleY 0
+    angleZ 25.339
+    Color 0.5617 0.1191 0.1191 1
+    LV 6
+    Radius 12
+    NearPlane 0.1
+    SpotAngle 170
+   }
+  }
+ }
+}
+$grp GenericEntity : "{B3CF0487BB36323B}Prefabs/Props/Furniture/LampFluorescent/LampFluorescent_01.et" {
+ {
+  coords 3447.679 88.432 7056.14
+  angleY -153.693
+ }
+ {
+  coords 3468.224 88.432 7045.792
+  angleY -154.145
+ }
+ {
+  coords 3472.321 88.432 7043.746
+  angleY -154.342
+ }
+ {
+  coords 3451.777 88.432 7054.067
+  angleY -152.009
+ }
+ {
+  coords 3460.014 88.432 7049.934
+  angleY -154.454
+ }
+ {
+  coords 3464.097 88.432 7047.878
+  angleY -152.367
+ }
+ {
+  coords 3455.907 88.432 7052.01
+  angleY -154.446
+ }
+}

@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{754530435487E471}Configs/Gearscripts/Custom/fluff/CRF_GS_CIV_TTGB_CM_fluff.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+  CONFResourceClass Xbox : PC {
+  }
+ }
+}

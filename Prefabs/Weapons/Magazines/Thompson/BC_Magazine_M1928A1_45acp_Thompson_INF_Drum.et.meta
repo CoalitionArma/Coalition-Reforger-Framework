@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{6584FDE3C82368B0}Prefabs/Weapons/Magazines/Thompson/BC_Magazine_M1928A1_45acp_Thompson_INF_Drum.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

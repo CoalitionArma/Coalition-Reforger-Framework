@@ -28,8 +28,71 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	protected SCR_GroupsManagerComponent m_GroupsManagerComponent;
 	protected CRF_AdminMenuManager m_AdminMenuManager;
 	
+	protected static CRF_GamemodeManager m_sInstance;
+	
 	// NEVER EVER SPAWN AN ENT WITH A PURE 0 WORLD VECTOR OR ELSE I WILL CASTRATE YOU I STG - Njpatman
 	static const vector ZERO_SPAWN_VECTOR[4] = { "1 0 0", "0 1 0", "0 0 1", "0 0 0" };
+	
+	ref array<IEntity> m_aDeadBodies = {};
+	
+	void CRF_GamemodeManager(IEntityComponentSource src, IEntity ent, IEntity parent)	
+	{
+		m_sInstance = this;
+	}
+	
+	override void OnControllableDestroyed(notnull SCR_InstigatorContextData instigatorContextData)
+	{
+		super.OnControllableDestroyed(instigatorContextData);
+		#ifdef WORKBENCH
+		#else
+		if (!System.IsConsoleApp())
+			return;
+		#endif
+		
+		m_aDeadBodies.Insert(instigatorContextData.GetVictimEntity());
+	}
+	
+	void CleanUpBodies()
+	{
+		array<IEntity> bodiesToRemove = {};
+		foreach (IEntity body: m_aDeadBodies)
+		{
+			if (!body)
+				continue;
+			
+			if (!GetGame().GetWorld().QueryEntitiesBySphere(body.GetOrigin(), 30, CleanUpBodyCallback, null))
+				continue;
+
+			bodiesToRemove.Insert(body);
+		}
+		
+		int delay = 1;
+		foreach (IEntity body: bodiesToRemove)
+		{
+			m_aDeadBodies.RemoveItem(body);
+			//Lets not delete 100s of entities in one frame now
+			GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 100 * delay, false, body);
+			delay++;
+		}
+	}
+	
+	bool CleanUpBodyCallback(IEntity entity)
+	{
+		if (ChimeraCharacter.Cast(entity))
+		{
+			//Is this character dead
+			SCR_DamageManagerComponent damageManager = SCR_DamageManagerComponent.GetDamageManager(entity);
+			if (damageManager)
+			{
+				if (damageManager.GetState() == EDamageState.DESTROYED)
+					return true;
+				else
+					return false;
+			}
+		}
+			
+		return true;
+	}
 	
 	//------------------------------------------------------------------------------------------------
 	/**
@@ -67,11 +130,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 	*/
 	static CRF_GamemodeManager GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-		
-		return CRF_GamemodeManager.Cast(gameMode.FindComponent(CRF_GamemodeManager));
+		return m_sInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -186,7 +245,7 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 		// Determine if player should be spectator or playable character
 		if (!m_SlottingManager.IsPlayerInASlot(playerId) || m_SlottingManager.IsPlayerConsideredDead(playerId))
 		{
-			playerCharacter = CreateSpectatorEntity(spawnLocation);
+			playerCharacter = CreateSpectatorEntity(CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
 			faction = GetGame().GetFactionManager().GetFactionByKey("SPEC");
 			
 			RemovePlayerFromCurrentGroup(playerId);
@@ -324,7 +383,8 @@ class CRF_GamemodeManager : SCR_BaseGameModeComponent
 			playerCharacter = m_SlottingManager.SpawnPlayableEntity(playerId, overrideLocation);
 			// Run datacollector for stats
 			SCR_DataCollectorComponent dc = GetGame().GetDataCollector();
-			dc.OnPlayerSpawned(playerId, playerCharacter);
+			//Tanaka TODO
+			//dc.OnPlayerSpawnFinalize_S(playerId, playerCharacter);
 		}
 			
 		return playerCharacter;

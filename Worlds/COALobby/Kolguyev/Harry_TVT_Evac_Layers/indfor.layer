@@ -1,0 +1,394 @@
+SCR_AIGroup : "{0A56302C3814952B}Prefabs/Groups/INDFOR/Standard/Support/CRF_INDFOR_MMGTeam_p.et" {
+ coords 3339.579 268.189 6831.905
+ m_aUnitPrefabSlots {
+  "{8949382562216B1E}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_SL_P.et"
+  "{23546266D23BBE77}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Medic_P.et"
+  "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et"
+  "{350425E3D3FE2F85}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MMG_P.et"
+  "{85BCB18428923941}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AMMG_P.et"
+  "{5BCF0823FB56CF1C}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_TL_P.et"
+  "{1DB9BCE5811F8602}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_MAT_P.et"
+  "{AD0128827A7390C6}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_AMAT_P.et"
+  "{C4F92D98246A62C5}Prefabs/Characters/Factions/INDFOR/CRF_GS_INDFOR_Gren_P.et"
+ }
+}
+$grp SCR_ChimeraCharacter : "{928DC9882A0AC79D}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sergeant.et" {
+ hostage1 {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    EnableAI 1
+    PhysicsLayer 0x100011 0
+   }
+   SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
+    "faction affiliation" "CIV"
+   }
+   ActionsManagerComponent "{520EA1D2F659CE02}" {
+    additionalActions {
+     ACE_Captives_ReleaseCaptiveUserAction "{64D908D36A98FF2D}" {
+      ParentContextList {
+       ""
+       ""
+      }
+      UIInfo SCR_ActionContextUIInfo "{64D908D299781BB6}" {
+       Name ""
+      }
+     }
+    }
+   }
+  }
+  coords 3345.644 268.156 6835.777
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage2 {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    EnableAI 1
+    PhysicsLayer 0x100011 0
+   }
+   SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
+    "faction affiliation" "CIV"
+   }
+   ActionsManagerComponent "{520EA1D2F659CE02}" {
+    additionalActions {
+     ACE_Captives_ReleaseCaptiveUserAction "{64D908D36A98FF2D}" {
+      ParentContextList {
+       ""
+       ""
+      }
+      UIInfo SCR_ActionContextUIInfo "{64D908D299781BB6}" {
+       Name ""
+      }
+     }
+    }
+   }
+  }
+  coords 3342.802 268.159 6835.817
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage3 {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    EnableAI 1
+    PhysicsLayer 0x100011 0
+   }
+   SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
+    "faction affiliation" "CIV"
+   }
+   ActionsManagerComponent "{520EA1D2F659CE02}" {
+    additionalActions {
+     ACE_Captives_ReleaseCaptiveUserAction "{64D908D36A98FF2D}" {
+      ParentContextList {
+       ""
+       ""
+      }
+      UIInfo SCR_ActionContextUIInfo "{64D908D299781BB6}" {
+       Name ""
+      }
+     }
+    }
+   }
+  }
+  coords 3340.318 268.156 6836.178
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage4 {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    EnableAI 1
+    PhysicsLayer 0x100011 0
+   }
+   SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
+    "faction affiliation" "CIV"
+   }
+   ActionsManagerComponent "{520EA1D2F659CE02}" {
+    additionalActions {
+     ACE_Captives_ReleaseCaptiveUserAction "{64D908D36A98FF2D}" {
+      ParentContextList {
+       ""
+       ""
+      }
+      UIInfo SCR_ActionContextUIInfo "{64D908D299781BB6}" {
+       Name ""
+      }
+     }
+    }
+   }
+  }
+  coords 3342.852 268.159 6838.636
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage5 {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    EnableAI 1
+    PhysicsLayer 0x100011 0
+   }
+   SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
+    "faction affiliation" "CIV"
+   }
+   ActionsManagerComponent "{520EA1D2F659CE02}" {
+    additionalActions {
+     ACE_Captives_ReleaseCaptiveUserAction "{64D908D36A98FF2D}" {
+      ParentContextList {
+       ""
+       ""
+      }
+      UIInfo SCR_ActionContextUIInfo "{64D908D299781BB6}" {
+       Name ""
+      }
+     }
+    }
+   }
+  }
+  coords 3340.368 268.156 6838.997
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+ hostage6 {
+  components {
+   ChimeraAIControlComponent "{520EA1D2DB109F34}" {
+    EnableAI 1
+    PhysicsLayer 0x100011 0
+   }
+   SCR_CharacterFactionAffiliationComponent "{520EC9618276DF23}" {
+    "faction affiliation" "CIV"
+   }
+   ActionsManagerComponent "{520EA1D2F659CE02}" {
+    additionalActions {
+     ACE_Captives_ReleaseCaptiveUserAction "{64D908D36A98FF2D}" {
+      ParentContextList {
+       ""
+       ""
+      }
+      UIInfo SCR_ActionContextUIInfo "{64D908D299781BB6}" {
+       Name ""
+      }
+     }
+    }
+   }
+  }
+  coords 3345.694 268.156 6838.596
+  userScript "	int state = 0;"\
+  "	"\
+  "	void SetState()"\
+  "	{"\
+  "		SCR_CharacterControllerComponent characterController = SCR_CharacterControllerComponent.Cast(this.FindComponent(SCR_CharacterControllerComponent));"\
+  "		if (!characterController)"\
+  "			return;"\
+  "		"\
+  "		SCR_CharacterDamageManagerComponent damageManagerController = SCR_CharacterDamageManagerComponent.Cast(this.FindComponent(SCR_CharacterDamageManagerComponent));"\
+  "		if (!damageManagerController)"\
+  "			return;"\
+  "		"\
+  "		characterController.ACE_Captives_SetCaptive(true);"\
+  "		characterController.ACE_Captives_SetIsCaptive(true);"\
+  "	}"\
+  "	"\
+  "	void safeStartCheck()"\
+  "	{"\
+  "		if (state == 1)"\
+  "			return;"\
+  "		"\
+  "		CRF_SafestartManager safestart = CRF_SafestartManager.GetInstance();"\
+  "        if(safestart.GetSafestartStatus()|| CRF_Gamemode.GetInstance().m_GamemodeState == CRF_EGamemodeState.GAME)"\
+  "		{"\
+  "         	GetGame().GetCallqueue().CallLater(SetState, 1, false);"\
+  "			state = 1;"\
+  "			return;"\
+  "		}"\
+  "		"\
+  "		else"\
+  "		{"\
+  "			GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "		}"\
+  "	}"
+  EOnInit ""\
+  "		super.EOnInit(owner);"\
+  "		GetGame().GetCallqueue().CallLater(safeStartCheck, 3000, false);"\
+  "	"
+ }
+}

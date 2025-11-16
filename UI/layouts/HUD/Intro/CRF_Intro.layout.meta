@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{4D2AE199F111C14A}UI/layouts/HUD/Intro/CRF_Intro.layout"
+ Configurations {
+  LayoutResourceClass PC {
+  }
+  LayoutResourceClass XBOX_ONE : PC {
+  }
+  LayoutResourceClass XBOX_SERIES : PC {
+  }
+  LayoutResourceClass PS4 : PC {
+  }
+  LayoutResourceClass PS5 : PC {
+  }
+  LayoutResourceClass HEADLESS : PC {
+  }
+  LayoutResourceClass Xbox : PC {
+  }
+ }
+}

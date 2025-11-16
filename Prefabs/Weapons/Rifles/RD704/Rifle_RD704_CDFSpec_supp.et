@@ -1,0 +1,34 @@
+GenericEntity : "{963C30104F042642}Prefabs/Weapons/Rifles/RD704/Rifle_RD704_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{61C7623B766D3CC7}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot BayonetSlot {
+      Prefab "{24D49447F9024616}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_OKP-7/Collim_OKP-7_CDF.et"
+     }
+    }
+    AttachmentSlotComponent "{61C7623B766D3CCF}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot underbarrel {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{61C849840F72E3D3}" {
+     AttachmentSlot InventoryStorageSlot Foregrip {
+      Prefab "{B474F5CF43FCBACC}Prefabs/Weapons/Attachments/Foregrips/RK_Foregrips/Foregrip_RK0.et"
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{61C7623B766D3CBB}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{3832C568BB5D133B}Prefabs/Weapons/Attachments/Muzzle/762x39/Suppressor_PBS1.et"
+       }
+      }
+     }
+     MagazineTemplate "{419D8DAAB2ACE1E8}Prefabs/Weapons/Magazines/762x39_AKM_FAB_FDE_30rnd/Magazine_762x39_AKM_FAB_FDE_30rnd_Tracer_57T231P.et"
+    }
+   }
+  }
+ }
+}

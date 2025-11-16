@@ -1,0 +1,662 @@
+$grp CRF_VehicleSpawner {
+ {
+  coords 6601.299 216.23 5398.258
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6605.25 215.635 5401.19
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6609.471 215.039 5404.322
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6613.471 214.526 5407.289
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6617.069 214.049 5409.957
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6620.905 213.583 5412.803
+  angles 0 143.432 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6636.159 210.818 5390.77
+  angles 0 137.239 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6626.62 210.942 5382.109
+  angles 0 135.73 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6612.561 213.132 5368.404
+  angles 0 135.73 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6616.083 212.605 5371.839
+  angles 0 135.73 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6630.039 210.426 5385.442
+  angles 0 135.73 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+ {
+  coords 6623.176 211.462 5379.225
+  angles 0 135.73 0
+  m_rVehicle "{16C1F16C9B053801}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport.et"
+  m_sFactionKey "OPFOR"
+  m_aVehicleGearscriptOverrides {
+   CRF_VehicleGearscriptOverride "{66D9775CC9C306C0}" {
+   }
+   CRF_VehicleGearscriptOverride "{66D9775C0E9E1508}" {
+    m_VehicleAmmoType RifleUGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3F4AB62}" {
+    m_VehicleAmmoType Carbine
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3222786}" {
+    m_VehicleAmmoType Pistol
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3482BCF}" {
+    m_VehicleAmmoType AR
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B3729FA1}" {
+    m_VehicleAmmoType MMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B29D1A40}" {
+    m_VehicleAmmoType HMG
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2B14CF4}" {
+    m_VehicleAmmoType AT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2D73A2F}" {
+    m_VehicleAmmoType MAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B2EBD924}" {
+    m_VehicleAmmoType HAT
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B20CAB58}" {
+    m_VehicleAmmoType AA
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799B21A77FF}" {
+    m_VehicleAmmoType Sniper
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6E8303F}" {
+    m_VehicleAmmoType HEGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A6614BC0}" {
+    m_VehicleAmmoType SmokeGrenade
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A99F4B99}" {
+    m_VehicleAmmoType HEGL
+   }
+   CRF_VehicleGearscriptOverride "{66DB5799A9BEB44A}" {
+    m_VehicleAmmoType SmokeGl
+   }
+  }
+ }
+}

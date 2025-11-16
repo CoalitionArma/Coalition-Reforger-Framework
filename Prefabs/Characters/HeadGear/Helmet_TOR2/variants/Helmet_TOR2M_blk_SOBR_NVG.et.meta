@@ -1,0 +1,19 @@
+MetaFileClass {
+ Name "{58AEDC229724D4C2}Prefabs/Characters/HeadGear/Helmet_TOR2/variants/Helmet_TOR2M_blk_SOBR_NVG.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+  EntityTemplateResourceClass Xbox : PC {
+  }
+ }
+}

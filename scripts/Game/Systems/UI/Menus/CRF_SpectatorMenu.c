@@ -16,8 +16,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected FrameWidget m_wFrameSlots;                     // Frame for displaying slots
 	protected FrameWidget m_wFrameChannels;                  // Frame for displaying VON channels
 	protected FrameWidget m_wFrameGameInfo;                  // Frame for displaying Game Info
+	protected FrameWidget m_wSlotWarning;                  	 // Frame for displaying the button to open slotting
 	protected CRF_ListboxComponent m_wPlayerSlots;           // Listbox component for player slots
 	protected CRF_ListboxComponent m_wVONChannels;           // Listbox component for VON channels
+	protected SCR_ButtonComponent m_wBulletPathButton;       // Button component for Toggling bullet paths
+	protected SCR_ButtonComponent m_wDismissSlottingButton;       // Button component for Dismissing Slotting Warning
 	
 	// Game-related components
 	protected CRF_Gamemode m_Gamemode;                       // Reference to the gamemode instance
@@ -77,6 +80,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	protected TextWidget m_wCIVTicketsText;
 	protected bool m_bCIVTicketsActive;
 	
+	protected bool m_bWarningDismissed = false;
+	
 	//=================================================================================================
 	// MENU LIFECYCLE METHODS
 	//=================================================================================================
@@ -109,6 +114,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		
 		// Initialize UI components
 		m_wMapFrame = FrameWidget.Cast(m_wRoot.FindAnyWidget("MapFrame"));
+		m_wSlotWarning = FrameWidget.Cast(m_wRoot.FindAnyWidget("SlotWarning"));
 		m_wPlayerSlotWidget = m_wRoot.FindAnyWidget("PlayerSlots");
 		m_wPlayerSlots = CRF_ListboxComponent.Cast(m_wPlayerSlotWidget.FindHandler(CRF_ListboxComponent));
 		m_wVONChannels = CRF_ListboxComponent.Cast(m_wRoot.FindAnyWidget("VONChannels").FindHandler(CRF_ListboxComponent));
@@ -123,6 +129,8 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		m_wINDFORTickets = m_wRoot.FindAnyWidget("INDFORTickets");
 		m_wCIVTickets = m_wRoot.FindAnyWidget("CIVTickets");
 		
+		m_wDismissSlottingButton = SCR_ButtonComponent.Cast(m_wRoot.FindAnyWidget("DismissWarning").FindHandler(SCR_ButtonComponent));
+		m_wDismissSlottingButton.m_OnClicked.Insert(DismissSlottingWarning);
 		
 		// Register input action listeners
 		RegisterActionListeners();
@@ -144,10 +152,6 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		UpdateSlots();
 		CRF_SlottingManager.GetInstance().GetOnSlottingUpdate().Insert(UpdateSlots);
 		
-		// Update player icons and spectator UI
-		//UpdatePlayerIcons();
-		GetGame().GetCallqueue().CallLater(UpdatePlayerIcons, 1000, true);
-		
 		// Get game system references
 		m_SafestartManager = CRF_SafestartManager.GetInstance();
 		
@@ -157,6 +161,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 
 		// Get notification system reference
 		m_PopUpNotification = SCR_PopUpNotification.GetInstance();
+	}
+	
+	void DismissSlottingWarning()
+	{
+		m_bWarningDismissed = true;
 	}
 	
 	/**
@@ -275,6 +284,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	 * Called every frame to update the menu
 	 * @param tDelta - Time since last frame
 	 */
+	float m_fUpdateBuffer = 0;
 	override void OnMenuUpdate(float tDelta)
 	{
 		super.OnMenuUpdate(tDelta);
@@ -317,6 +327,18 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		sender.SetKillFeedTypeDeadLocal();
 		
 		UpdateTimer();
+		
+		if (m_fUpdateBuffer >= 1)
+		{
+			UpdatePlayerIcons();
+			m_fUpdateBuffer = 0;
+		}
+		m_fUpdateBuffer += tDelta;
+		
+		if (m_SafestartManager.GetSafestartStatus() && !m_bWarningDismissed)
+			m_wSlotWarning.SetVisible(true);
+		else
+			m_wSlotWarning.SetVisible(false);
 	}
 	
 	//Used to update tickets
@@ -530,7 +552,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// ALL SLOT-BASED CHARACTERS
 		//------------------------------------------------------------------------------------------------
 		
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		if (slotMap && !slotMap.IsEmpty())
 		{
@@ -750,7 +772,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		float leftGameInfoX = FrameSlot.GetPosX(m_wFrameGameInfo);
 		float leftGameInfoY = FrameSlot.GetPosY(m_wFrameGameInfo);
 		
-		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 150)
+		if (x <= leftGameInfoX + 170 && y >= leftGameInfoY && y <= leftGameInfoY + 200)
 		{
 			// Expand slots panel when cursor is over it
 			leftGameInfoX += tDelta * 2400.0;
@@ -1056,7 +1078,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 	void InitSlots()
 	{
 		// Get all slots from the slotting manager
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
 		
 		// Process each slot to count by faction
 		foreach (int slotId, CRF_SlotDataContainer slotData : slotMap)
@@ -1140,8 +1162,12 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			m_iAliveCivSlots, m_iCivSlots);
 		
 		// Get slot and group data
-		map<int, CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
-		array<SCR_AIGroup> factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
+		map<int, ref CRF_SlotDataContainer> slotMap = CRF_SlottingManager.GetInstance().GetSlotMap();
+		
+		array<SCR_AIGroup> factionGroups = {};
+		
+		if (m_fSelectedFaction)
+			factionGroups = CRF_SlottingManager.GetInstance().GetAllGroups(m_fSelectedFaction.GetFactionKey());
 		
 		if (factionGroups.IsEmpty())
 			return;
@@ -1337,6 +1363,11 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		{
 			m_eSpecEntity = rplComponent.GetEntity();
 		}
+		else
+		{
+			int playerId = SCR_PlayerController.GetLocalPlayerId();
+			CRF_RplToAuthorityManager.GetInstance().MoveSpecCamToSlot(selectedComponent.m_iSlotId, playerId);
+		}
 	}
 	
 	/**
@@ -1374,7 +1405,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 		// Call parent class cleanup
 		super.OnMenuClose();
 		
-		GetGame().GetCallqueue().Remove(UpdatePlayerIcons);
+		SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_bIsBulletTrackingEnabled = false;
 		
 		// Unregister spectator camera frame event
 		UnregisterFrameEvent();
@@ -1634,15 +1665,7 @@ class CRF_SpectatorMenu: ChimeraMenuBase
 			}
 		}
 
-		// Set the radio frequency using RadioHandlerComponent for proper replication
-		RadioHandlerComponent radioHandler = RadioHandlerComponent.Cast(
-			GetGame().GetPlayerController().FindComponent(RadioHandlerComponent)
-		);
-
-		if (radioHandler)
-		{
-			radioHandler.SetFrequency(transceiver, frequency);
-		}
+		transceiver.SetFrequency(frequency);
 
 		return transceiver;
 	}

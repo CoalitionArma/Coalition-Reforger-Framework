@@ -3,6 +3,11 @@ modded class SCR_Faction
 	ref array<string> m_aActiveSRChannels = {};
 	ref array<string> m_aActiveLRChannels = {};
 	
+	array<ref SCR_EntityCatalog> GetEntityCatalogs()
+	{
+		return m_aEntityCatalogs;
+	}
+	
 	static string NormalizeCallsign(string callsign)
 	{
 		ref array<string> callsignSplit = {};
@@ -40,24 +45,20 @@ modded class SCR_Faction
 		if (!System.IsConsoleApp())
 			return;
 		#endif
-		ref array<SCR_AIGroup> groups = SCR_GroupsManagerComponent.GetInstance().GetPlayableGroupsByFaction(this);
-		if (!groups)
+		if (GetFactionKey() == "CIV")
 			return;
-		if (groups.Count() == 0)
+		ref array<ref SCR_CallsignInfo> squadCallsigns = {};
+		SCR_FactionCallsignInfo callsignInfo = GetCallsignInfo();
+		if (!callsignInfo)
 			return;
+		callsignInfo.GetSquadArray(squadCallsigns);
 		CVON_VONGameModeComponent gamemodeComp = CVON_VONGameModeComponent.GetInstance();
 		if (!gamemodeComp.m_FreqConfig)
 			return;
 		
-		foreach (SCR_AIGroup group: groups)
+		foreach (SCR_CallsignInfo group: squadCallsigns)
 		{
-			string company;
-			string platoon;
-			string squad;
-			string character;
-			string format;
-			group.GetCallsigns(company, platoon, squad, character, format);
-			string groupName = squad;
+			string groupName = group.GetCallsign();
 			bool foundContainer = false;
 			if (GetCallsignInfo().m_aGroupFrequencyOverrides)
 			foreach (CVON_GroupFrequencyContainer container: GetCallsignInfo().m_aGroupFrequencyOverrides)
@@ -100,6 +101,7 @@ modded class SCR_Faction
 		}
 		if (m_aActiveLRChannels.Count() == 0)
 			m_aActiveLRChannels.Insert(GetFactionKey() + "LR");
+		
 		SCR_FactionManager.Cast(GetGame().GetFactionManager()).UpdateFactionActiveChannelSR(GetFactionKey(), m_aActiveSRChannels);
 		SCR_FactionManager.Cast(GetGame().GetFactionManager()).UpdateFactionActiveChannelLR(GetFactionKey(), m_aActiveLRChannels);
 	}

@@ -23,12 +23,22 @@ modded class SCR_VONController
 		ResetVON();
 	}
 	
+	override protected bool ActivateVON(notnull SCR_VONEntry entry, EVONTransmitType transmitType = EVONTransmitType.NONE)
+	{
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu)
+			if(topMenu.IsInherited(CRF_Outro))
+				return false;
+		return super.ActivateVON(entry, transmitType);
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	//! Set transmission method depending on entry type when starting VON transmit
 	//! @param entry The VON entry to set as active transmitter
 	//------------------------------------------------------------------------------------------------
 	override protected void SetActiveTransmit(notnull SCR_VONEntry entry)
 	{        
+		
 		if (!CVON_VONGameModeComponent.GetInstance())
 		{
 			// Early return if VON component is not available

@@ -1,0 +1,582 @@
+$grp SCR_VehicleSpawn {
+ CivCar1 {
+  coords 2023.073 94.057 552.628
+  angleY -0.633
+  m_rnPrefab "{AD80FB47D868C775}Prefabs/Vehicles/Wheeled/S105/S105_green.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivCar2 {
+  coords 2106.988 96.219 689.812
+  angleY 82.514
+  m_rnPrefab "{54C3CC22DEBD57BE}Prefabs/Vehicles/Wheeled/S105/S105_beige.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivCar3 {
+  coords 2197.647 98.08 666.442
+  angleY 28.915
+  m_rnPrefab "{85F0BD6AF0F42D6D}Prefabs/Vehicles/Wheeled/S105/S105_red.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivCar4 {
+  coords 2221.392 98.898 645.45
+  angleY -132.409
+  m_rnPrefab "{8000A0F649FB4B0D}Prefabs/Vehicles/Wheeled/S105/S105_darkred.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ FireStationAmbulance {
+  coords 2325.099 100 644.763
+  angleY -3.094
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivCar5 {
+  coords 1986.867 92.965 502.091
+  angleY 2.988
+  m_rnPrefab "{DA79E34823120087}Prefabs/Vehicles/Wheeled/S105/S105_base.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ RallyCar1 {
+  coords 2209.032 98.173 761.694
+  angleY -53.625
+  m_rnPrefab "{F0C7FABE5E0F7D8B}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ RallyCar2 {
+  coords 2223.901 98.652 771.63
+  angleY -135.865
+  m_rnPrefab "{A30DB2DB4BAC3921}Prefabs/Vehicles/Wheeled/S105/S105_rally_Mlada_Boleslav_TF.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ SchoolBus1 {
+  coords 2220.323 99.003 775.802
+  angleY 31.352
+  m_rnPrefab "{4C79EB5FADB89B7A}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_yellow.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar1 {
+  coords 2297.928 100.005 753.978
+  angleY 23.864
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar2 {
+  coords 2300.336 99.024 752.448
+  angleY 23.864
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar3 {
+  coords 2303.654 99.068 750.803
+  angleY 23.864
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar4 {
+  coords 2339.928 99.531 759.477
+  angleY -164.884
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar5 {
+  coords 2344.603 99.531 757.745
+  angleY -166.74
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar6 {
+  coords 2419.91 99.781 491.601
+  angleY 179.751
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar7 {
+  coords 2423.385 99.781 491.448
+  angleY 175.146
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar8 {
+  coords 2427.128 99.781 491.946
+  angleY -179.641
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ PoliceCar9 {
+  coords 2433.126 99.841 499.358
+  angleY -153.503
+  m_rnPrefab "{691223CB63E03573}Prefabs/Vehicles/Wheeled/S105/S105_police.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ StrykerBase {
+  coords 2412.257 99.781 486.792
+  angleY -2.666
+  m_rnPrefab "{DDC7044EF2E24467}Prefabs/Vehicles/Wheeled/Stryker/Stryker_Base.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ AmmoAmbulance1 {
+  coords 1815.785 89.625 438.459
+  angleY -130.098
+  m_rnPrefab "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+  respawnDelay 10000
+  firstSpawn 2.1
+ }
+ AmmoUAZ {
+  coords 1765.238 87.773 506.425
+  angleY -57.349
+  m_rnPrefab "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivUAZ {
+  coords 1867.665 94.091 224.583
+  angleY 1.105
+  m_rnPrefab "{A4D16A62B432451A}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_red.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivUAZ2 {
+  coords 1994.099 94.544 397.411
+  angleY 87.124
+  m_rnPrefab "{B2CC137FE424B129}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_VAK.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivUAZ3 {
+  coords 1887.454 89.476 683.571
+  angleY 122.829
+  m_rnPrefab "{B6D330E7E40FE7DD}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_forest.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivUAZ4 {
+  coords 1920.21 89.516 680.304
+  angleY -172.275
+  m_rnPrefab "{5070B3749C7782D8}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_JZD.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivUAZ5 {
+  coords 1756.138 67.179 1070.079
+  angleY -10.809
+  m_rnPrefab "{BDFB2377B6B4ABBB}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_PTS.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivCar6 {
+  coords 1660.363 80.968 568.931
+  angleY -67.006
+  m_rnPrefab "{A6B0D2923262E755}Prefabs/Vehicles/Wheeled/S105/S105_yellow.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+ CivCar7 {
+  coords 1629.46 75.778 813.07
+  angleY -119.775
+  m_rnPrefab "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et"
+  respawnDelay 10000
+  firstSpawn 2
+ }
+}
+CRF_SatchelEntity : "{00515E7AAAFD9CB6}Prefabs/Weapons/Explosives/Explosive_Satchels/INDFOR_Satchel.et" {
+ coords 1791.464 89.478 466.663
+}
+$grp GenericEntity : "{1BBC135B17B2FEB3}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_US_ammo.et" {
+ {
+  coords 1859.463 85.438 697.404
+  angleX 4.454
+  angleY 42.54
+ }
+ {
+  coords 1864.134 86.007 701.946
+  angleX 4.436
+  angleY 47.714
+  angleZ 0.401
+ }
+}
+Vehicle FuelNATO : "{2BE1F8B9299B67C1}Prefabs/Vehicles/Wheeled/M923A1/M923A1_tanker.et" {
+ coords 2585.717 102.125 611.412
+ angleY -178.857
+}
+$grp Projectile : "{32E12D322E107F1C}Prefabs/Weapons/Ammo/Ammo_Rocket_PG7VM.et" {
+ RPGHEAT1 {
+  coords 1752.553 67.465 1052.252
+  angleX 65.272
+  angleY 26.145
+  angleZ -0.001
+ }
+ RPGHEAT2 {
+  coords 1750.617 67.465 1053.278
+  angleX 65.272
+  angleY 26.145
+  angleZ -0.001
+ }
+ RPGHEAT3 {
+  coords 1748.7 67.465 1054.17
+  angleX 65.272
+  angleY 26.145
+  angleZ -0.001
+ }
+}
+$grp GenericEntity : "{33CBDE73AB48172A}Prefabs/Weapons/Explosives/DemoBlock_M112/DemoBlock_M112.et" {
+ {
+  coords 1791.068 89.478 467.229
+ }
+ {
+  coords 1791.085 89.478 466.887
+ }
+ {
+  coords 2425.271 101.856 505.903
+ }
+ {
+  coords 2425.264 101.854 506.286
+ }
+ {
+  coords 2425.579 101.847 506.086
+ }
+ {
+  coords 2425.887 101.859 506.264
+ }
+ {
+  coords 1791.734 89.478 467.204
+ }
+ {
+  coords 1790.965 89.478 466.45
+ }
+}
+GenericEntity ChurchSniiper : "{39255AA37FC5A4B6}Prefabs/Weapons/Rifles/M40A1/BC_Rifle_M40a1.et" {
+ coords 2301.391 111.623 475.914
+ angleX 11.452
+}
+$grp GenericEntity : "{3BF82FD68BBC845C}Prefabs/Weapons/Explosives/Mine_M15AT/Mine_M15AT_base.et" {
+ {
+  coords 1791.322 89.478 467.525
+ }
+ {
+  coords 1791.684 89.478 468.015
+ }
+ {
+  coords 1791.139 89.478 468.243
+ }
+}
+Vehicle MiniGunHumvee : "{3D1C342715FDCFC3}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M134_Tan.et" {
+ coords 2181.61 92.29 835.815
+ angleY 33.323
+}
+$grp GenericEntity : "{3DF204EEE0534EF2}Prefabs/Weapons/Launchers/FIM92_Stinger/Launcher_FIM92_Stinger.et" {
+ MayoralStinger {
+  coords 2106.561 97.865 689.675
+ }
+ AmmoStinger {
+  coords 1792.837 90.638 465.687
+  angleY -89.239
+ }
+}
+SCR_DestructibleBuildingEntity : "{3E7CF4C5E180F5D1}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Windows.et" {
+ coords 1735.592 0.067 739.652
+ angleY 84.761
+}
+GenericEntity : "{3F0D0593590519DA}Prefabs/Props/Garbage/Tires/TirePile_01_medium.et" {
+ coords 1806.094 82.414 697.339
+ angleY 100.734
+ angleZ 8.42
+}
+GenericEntity PKP_PoliceStation : "{47E3A3CF2643245F}Prefabs/Weapons/MachineGuns/PKP/MG_PKP_BLK.et" {
+ coords 2292.004 101.64 738.008
+ angleY 106.363
+}
+Vehicle BlackhawkDowned : "{48F288F5BFF10D8B}Prefabs/Vehicles/Helicopters/AUS_MH60/AUS_UH60_armed.et" {
+ components {
+  SCR_FuelManagerComponent "{5622A70CD78A9E2C}" {
+   FuelNodes {
+    SCR_FuelNode "{5622A70CD4036C5A}" {
+     m_fInitialFuelTankState 0
+    }
+    SCR_FuelNode "{5E9AE02488359898}" {
+     m_fInitialFuelTankState 0
+    }
+    SCR_FuelNode "{5E9AE0248D00D20B}" {
+     m_fInitialFuelTankState 0
+    }
+    SCR_FuelNode "{5E9AE0248101059B}" {
+     m_fInitialFuelTankState 0
+    }
+   }
+  }
+ }
+ coords 2603.297 109.063 277.791
+ angleX -2.735
+ angleY -77.352
+}
+Projectile RPGFRAG1 : "{4A3B196E4EA820E9}Prefabs/Weapons/Ammo/RPG/RHS_AmmoRocket_OG7V.et" {
+ coords 1754.774 67.601 1051.262
+ angleY -57.542
+}
+SCR_DestructibleBuildingEntity : "{4B2072D6C07CC8C1}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Chimney.et" {
+ coords 1735.764 0.022 734.653
+ angleY -91.245
+}
+$grp GenericEntity : "{541E6C7E6AF67A89}Prefabs/Weapons/Magazines/BC_Magazine_762x51_M40a1.et" {
+ ChurchSniperAmmo {
+  coords 2301.237 111.484 476.326
+ }
+ ChurchSniperAmmo2 {
+  coords 2301.301 111.484 476.365
+  angleY -8.713
+ }
+ ChurchSniperAmmo3 {
+  coords 2301.3 111.484 476.3
+  angleY -169.466
+ }
+ ChurchSniperAmmo4 {
+  coords 2301.205 111.484 476.386
+  angleY -173.108
+ }
+ ChurchSniperAmmo5 {
+  coords 2301.36 111.484 476.412
+  angleY 31.116
+ }
+ ChurchSniperAmmo6 {
+  coords 2301.343 111.484 476.322
+  angleY -6.553
+ }
+ ChurchSniperAmmo7 {
+  coords 2301.293 111.484 476.482
+  angleX -0.395
+  angleY 21.038
+ }
+ ChurchSniperAmmo8 {
+  coords 2301.287 111.484 476.487
+  angleX -0.395
+  angleY 17.559
+ }
+ ChurchSniperAmmo9 {
+  coords 2301.358 111.484 476.421
+  angleY 27.637
+ }
+ ChurchSniperAmmo10 {
+  coords 2301.347 111.484 476.33
+  angleY -10.032
+ }
+ ChurchSniperAmmo11 {
+  coords 2301.305 111.484 476.306
+  angleY -172.945
+ }
+ ChurchSniperAmmo12 {
+  coords 2301.302 111.484 476.371
+  angleY -12.192
+ }
+ ChurchSniperAmmo13 {
+  coords 2301.241 111.484 476.328
+  angleY -3.479
+ }
+ ChurchSniperAmmo14 {
+  coords 2301.204 111.484 476.386
+  angleY -176.587
+ }
+ ChurchSniperAmmo15 {
+  coords 2301.436 111.484 476.356
+  angleX -0.395
+  angleY 17.559
+ }
+ ChurchSniperAmmo16 {
+  coords 2301.507 111.484 476.29
+  angleY 27.637
+ }
+ ChurchSniperAmmo17 {
+  coords 2301.496 111.484 476.199
+  angleY -10.032
+ }
+ ChurchSniperAmmo18 {
+  coords 2301.454 111.484 476.175
+  angleY -172.945
+ }
+ ChurchSniperAmmo19 {
+  coords 2301.451 111.484 476.24
+  angleY -12.192
+ }
+ ChurchSniperAmmo20 {
+  coords 2301.389 111.484 476.197
+  angleY -3.479
+ }
+ ChurchSniperAmmo21 {
+  coords 2301.353 111.484 476.255
+  angleY -176.587
+ }
+ ChurchSniperAmmo22 {
+  coords 2301.335 111.484 476.231
+  angleX -0.395
+  angleY 17.559
+ }
+ ChurchSniperAmmo23 {
+  coords 2301.406 111.484 476.165
+  angleY 27.637
+ }
+ ChurchSniperAmmo24 {
+  coords 2301.396 111.484 476.074
+  angleY -10.032
+ }
+ ChurchSniperAmmo25 {
+  coords 2301.353 111.484 476.05
+  angleY -172.945
+ }
+ ChurchSniperAmmo26 {
+  coords 2301.35 111.484 476.115
+  angleY -12.192
+ }
+ ChurchSniperAmmo27 {
+  coords 2301.289 111.484 476.072
+  angleY -3.479
+ }
+ ChurchSniperAmmo28 {
+  coords 2301.252 111.484 476.13
+  angleY -176.587
+ }
+}
+$grp CRF_SatchelEntity : "{55641F140F92FDCD}Prefabs/Weapons/Explosives/Explosive_Satchels/BLUFOR_Satchel.et" {
+ {
+  coords 2424.817 101.84 506.128
+ }
+ {
+  coords 2426.259 101.858 505.959
+ }
+}
+GenericEntity AK50 : "{628F43AC403E9373}Prefabs/Weapons/Rifles/AK50/Rifle_AK50.et" {
+ coords 2291.422 100.816 739.449
+ angleX 58.239
+ angleY -64.82
+}
+GenericEntity : "{687A661759E0249B}Prefabs/Props/Military/SupplyBox/SupplyShippingContainers/SupplyShippingContainers_01/SupplyShippingContainers_01_10ft_Base.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 1000
+     m_fResourceValueMax 1000
+    }
+   }
+  }
+ }
+ coords 2349.373 116.83 1027.632
+}
+GenericEntity RPG : "{7A82FE978603F137}Prefabs/Weapons/Launchers/RPG7/Launcher_RPG7.et" {
+ coords 1753.369 67.434 1053.487
+ angleX 53.985
+ angleY -151.968
+}
+Vehicle Mi8Civ : "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et" {
+ coords 1772.212 91.453 423.171
+ angleY 25.881
+}
+$grp GenericEntity : "{9ECEEDA5494340CD}Prefabs/Weapons/Magazines/762x54_PKP_100rnd/Box_762x54_PKP_100rnd_4AP_1Tracer_7N13_7T2.et" {
+ PKPBelt2 {
+  coords 2291.555 101.521 738.399
+ }
+ PKPBelt3 {
+  coords 2292.17 101.521 738.308
+ }
+ PKPbelt4 {
+  coords 2290.772 101.521 738.621
+  angleY 50.209
+ }
+ PKPBelt5 {
+  coords 2291.104 101.521 738.262
+  angleY 11.491
+ }
+ PKPBelt {
+  coords 2291.167 101.521 738.595
+  angleY 11.491
+ }
+}
+Vehicle RepairTruck : "{A328BB5480B25F14}Prefabs/Vehicles/Wheeled/M923A1/M923A1_repair_Tan.et" {
+ coords 2038.848 94.433 563.815
+ angleY -16.827
+}
+Vehicle FuelKamazIndfor : "{A48AE67A91A9AEC5}Prefabs/Vehicles/Wheeled/KamAZ5350/Camo/Kamaz5350_Fuel_Camo.et" {
+ coords 1787.946 89.504 418.708
+ angleY 19.436
+}
+Vehicle Humvee_NoArmor : "{A972C28400CAB3E3}Prefabs/Vehicles/Wheeled/M998/M998_covered_long_Tan.et" {
+ coords 2180.477 92.281 839.702
+ angleY 129.839
+}
+SCR_DestructibleBuildingEntity : "{AAB9EC1130878E02}Prefabs/Structures/Ruins/HouseRuins/HouseRuin_01/HouseRuin_01_Corner.et" {
+ coords 1733.033 0.725 732.026
+}
+$grp GenericEntity : "{B42A863BBA4271EA}Prefabs/Weapons/Magazines/127x99_AK50_10rnd/Magazine_127x99_AK50_10rnd_Tracer_Green_M10.et" {
+ AK50Mag2 {
+  coords 2291.537 100.609 739.723
+ }
+ AK50Mag3 {
+  coords 2291.538 100.609 739.889
+ }
+ AK50Mag4 {
+  coords 2291.429 100.609 739.888
+ }
+ AK50Mag5 {
+  coords 2291.442 100.61 739.708
+ }
+ AK50Mag6 {
+  coords 2291.291 100.609 739.879
+ }
+ AK50Mag {
+  coords 2291.269 100.609 739.679
+ }
+}
+GenericEntity : "{B6370564C0BBAD45}Prefabs/Props/Military/Fuel/MobileWaterTank_FIA_01_fuel.et" {
+ coords 1856.842 85.03 692.832
+ angleY -172.544
+}
+GenericEntity MortarPit : "{B8BADFA9530C38F4}Prefabs/Compositions/Misc/SubCompositions/Foundation_Mortar_US.et" {
+ coords 2354.615 116.958 1028.333
+ angleY 176.409
+ {
+  GenericEntity {
+   ID "6186D3A8CE3D2672"
+  }
+ }
+}
+GenericEntity : "{C1868B74D5A0C96E}Prefabs/Props/Military/CargoContainers/CargoContainer_01_20ft_USSR_ammo.et" {
+ coords 1870.274 87.086 705.176
+ angleX 10.585
+ angleY 69.779
+}
+$grp GenericEntity : "{CE0AF733722B3978}Prefabs/Items/Equipment/Detonators/BlastingMachine_M34/BlastingMachine_M34.et" {
+ {
+  coords 1790.825 89.495 467.363
+  angleX 88.391
+  angleY 180
+  angleZ -180
+ }
+ {
+  coords 1792.079 89.492 467.041
+  angleX 89.368
+ }
+}
+Vehicle AmmoLogi : "{CE4BB0D5134151AB}Prefabs/Vehicles/Wheeled/KamAZ5350/Camo/Kamaz5350_Transport_Camo.et" {
+ coords 1785.153 88.872 457.083
+ angleY -152.821
+}
+Vehicle FuelKamazBlufor : "{FB6C7B5D52B8BFB5}Prefabs/Vehicles/Wheeled/KamAZ5350/Green/Kamaz5350_Fuel.et" {
+ coords 2723.63 115.354 844.953
+ angleX -2.794
+ angleY -86.868
+}

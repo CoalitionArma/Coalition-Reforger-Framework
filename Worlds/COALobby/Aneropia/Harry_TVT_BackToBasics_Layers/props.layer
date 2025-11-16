@@ -1,0 +1,279 @@
+$grp SCR_VehicleSpawn {
+ {
+  coords 1369.386 94.806 2952.75
+  angleY 8.422
+  m_rnPrefab "{F1FBD0972FA5FE09}Prefabs/Vehicles/Wheeled/M923A1/M923A1_transport.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1258.778 91.156 2859.991
+  angleY 179.997
+  m_rnPrefab "{54C3CC22DEBD57BE}Prefabs/Vehicles/Wheeled/S105/S105_beige.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 860.248 82.762 3003.449
+  angleY 1.982
+  m_rnPrefab "{8000A0F649FB4B0D}Prefabs/Vehicles/Wheeled/S105/S105_darkred.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1123.817 92.313 3078.358
+  angleY 5.121
+  m_rnPrefab "{23B8C20ACAEC164B}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_white.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1164.644 94.754 2987.075
+  angleY -76.435
+  m_rnPrefab "{A6B0D2923262E755}Prefabs/Vehicles/Wheeled/S105/S105_yellow.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 989.963 89.568 3057.805
+  angleY -76.435
+  m_rnPrefab "{F77C41245A580FD1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_blue.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+ {
+  coords 1409.849 98.031 3212.749
+  angleY -93.239
+  m_rnPrefab "{321016E0F9361A22}Prefabs/Vehicles/Wheeled/S105/S105_lightgreen.et"
+  respawnDelay 10000
+  firstSpawn 1
+ }
+}
+SCR_DestructibleBuildingEntity : "{09B93C0C22B3656C}Prefabs/Structures/Cultural/Churches/Church_01/Church_01_yellow_nocellar.et" {
+ coords 1030.008 0.351 2749.585
+ angleY 82.535
+}
+SCR_DestructibleBuildingEntity : "{7BE9DE15EE9823C2}PrefabLibrary/Structures/Houses/House_Village_E_1I06.et" {
+ coords 940.461 1.072 2872.136
+ angleY 108.661
+}
+SCR_DestructibleBuildingEntity : "{9B4EE2EF2E6F986D}PrefabLibrary/Structures/Industrial/FactoryHall_E_01.et" {
+ coords 1311.302 91.308 3063.493
+ angleY 97.529
+}
+$grp GenericEntity : "{CAF8666F26CEB7AD}Prefabs/Structures/BuildingParts/Entry/ConcreteStairs_02_Narrow.et" {
+ {
+  coords 1329.719 91.394 3058.481
+  angleY 97.104
+ }
+ {
+  coords 1330.462 91.394 3064.441
+  angleY 97.104
+ }
+ {
+  coords 1330.264 91.394 3062.85
+  angleY 97.104
+ }
+ {
+  coords 1329.917 91.394 3060.072
+  angleY 97.104
+ }
+ {
+  coords 1314.379 91.364 3083.548
+  angleY 9.15
+ }
+ {
+  coords 1323.454 91.473 3078.095
+  angleY 9.15
+ }
+ {
+  coords 1309.916 91.376 3043.744
+  angleY -172.675
+ }
+ {
+  coords 1308.326 91.376 3043.948
+  angleY -172.675
+ }
+}
+$grp GenericEntity : "{CC66836BF4E211F9}Prefabs/Props/Military/Camps/Duckboard_01.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1326.654 93.455 3050.882
+  angleX 0.707
+  angleY 8.512
+  angleZ 86.776
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1326.541 94.812 3050.882
+  angleX -4.916
+  angleY 8.977
+  angleZ 89.201
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1328.809 93.385 3068.283
+  angleX -4.916
+  angleY 8.977
+  angleZ 87.815
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1305.466 99.76 3071.302
+  angleX -4.755
+  angleY -171.89
+  angleZ 88.516
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1304.288 93.103 3062.636
+  angleX 0.889
+  angleY -172.88
+  angleZ 90.769
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1304.274 94.367 3062.658
+  angleX 0.889
+  angleY -172.88
+  angleZ 90.769
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1302.564 99.601 3049.493
+  angleX 3.745
+  angleY -172.842
+  angleZ 90.77
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1303.131 99.31 3054.005
+  angleX -0.778
+  angleY -172.903
+  angleZ 90.768
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1303.112 100.569 3053.99
+  angleX -0.778
+  angleY -172.903
+  angleZ 90.768
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1309.406 92.435 3045.79
+  angleX 0.732
+  angleY 97.745
+  angleZ 87.698
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{5EAEA75B0523F392}" {
+    "Additional hit zones" {
+     SCR_HitZone Default {
+      DamageReduction 500
+      DamageThreshold 500
+     }
+    }
+   }
+  }
+  coords 1309.397 93.665 3045.841
+  angleX 0.732
+  angleY 97.745
+  angleZ 87.698
+ }
+}
+SCR_DestructibleBuildingEntity : "{E889E8CCCA21EC6C}PrefabLibrary/Structures/Commercial/PubVillage_E_2L01.et" {
+ coords 1215.273 0.692 2988.358
+ angleY 104.328
+}

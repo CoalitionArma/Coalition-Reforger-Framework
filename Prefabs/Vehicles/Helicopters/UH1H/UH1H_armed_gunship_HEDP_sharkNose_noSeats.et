@@ -1,0 +1,37 @@
+Vehicle : "{CB4D4CF7E887B2D0}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP.et" {
+ ID "5DB688595BAB2FD7"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{66BEFB86967513DA}" {
+     SourceMaterial "UH_1H_Body01_6224CA051369DE45"
+     AssignedMaterial "{9E8011EADCCC2F32}Assets/Vehicles/Helicopters/UH1H/Data/UH_1H_Body01_Shark.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    m_Image "{9DEE4B4C42E77177}UI/Textures/EditorPreviews/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose.edds"
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5E1E994304F0E0D3}" {
+   MultiSlots {
+    MultiSlotConfiguration "{60F686523ED8885E}" {
+     NumSlots 6
+    }
+    MultiSlotConfiguration "{66BEFB86FDDC7E8F}" {
+     SlotTemplate InventoryStorageSlot wrench {
+      Prefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Seat_Cargo {
+     Enabled 0
+    }
+   }
+  }
+ }
+}

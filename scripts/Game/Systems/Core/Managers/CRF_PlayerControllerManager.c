@@ -38,6 +38,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 	
 	// Map and Markers
 	ref array<string> m_aScriptedMarkers = {};  // Custom map markers
+	
+	protected static CRF_PlayerControllerManager m_sInstance;
 
 	//------------------------------------------------------------------------------------------------
 	// STATIC ACCESSORS
@@ -47,12 +49,15 @@ class CRF_PlayerControllerManager : ScriptComponent
 	 * Returns the instance of this component from the player controller
 	 * @return CRF_PlayerControllerManager - The player controller component instance or null if unavailable
 	 */
+	
+	void CRF_PlayerControllerManager(IEntityComponentSource src, IEntity ent, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	static CRF_PlayerControllerManager GetInstance()
 	{
-		if (GetGame().GetPlayerController())
-			return CRF_PlayerControllerManager.Cast(GetGame().GetPlayerController().FindComponent(CRF_PlayerControllerManager));
-		else
-			return null;
+		return m_sInstance;
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -130,10 +135,13 @@ class CRF_PlayerControllerManager : ScriptComponent
 	void InitilizeLocalSpectator(IEntity playerCharacter)
 	{
 		vector cameraPos[4];
-		playerCharacter.GetWorldTransform(cameraPos);
+		cameraPos = SCR_PlayerController.Cast(GetGame().GetPlayerController()).m_vPlayersLastDeath;
 		
+		//If Respawns are enabled, everybody goes to the debug zone
+		if (CRF_RespawnManager.GetInstance().m_bCurrentRespawnEnabled)
+			cameraPos[3] = CRF_PlayableCharacter.GenerateRandomSpreadPosition("0 10000 0", 500.0);
 		// Use provided death position if available
-		if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
+		else if (CRF_GamemodeManager.IsValidSpawnVector(cameraPos[3])) {
 			cameraPos[3][1] = cameraPos[3][1] + 1.5; // Elevate camera slightly above death position
 		}
 		// Use stored camera position if available
@@ -299,9 +307,7 @@ class CRF_PlayerControllerManager : ScriptComponent
 		// Set frequency based on group
 		if (pc && group)
 		{
-			RadioHandlerComponent rhc = RadioHandlerComponent.Cast(pc.FindComponent(RadioHandlerComponent));
-			if (rhc)
-				rhc.SetFrequency(grpTsv, group.GetRadioFrequency());
+			grpTsv.SetFrequency(group.GetRadioFrequency());
 		}
 
 		// Set up Voice over Network component
@@ -403,9 +409,6 @@ class CRF_PlayerControllerManager : ScriptComponent
 			topMenu.Close();
 		GetGame().GetMenuManager().CloseAllMenus();
 		
-		if(!SCR_PlayerController.GetLocalMainEntity())
-			m_RplToAuthorityManager.RequestInitilizePlayer(SCR_PlayerController.GetLocalPlayerId());
-		
 		// Open appropriate menu based on gamemode state
 		switch (m_Gamemode.m_GamemodeState)
 		{
@@ -426,7 +429,8 @@ class CRF_PlayerControllerManager : ScriptComponent
 			}
 			case CRF_EGamemodeState.AAR: 
 			{
-				GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
+				if (CRF_Gamemode.GetInstance().m_bUseAAR)
+					GetGame().GetMenuManager().OpenMenu(ChimeraMenuPreset.CRF_AARMenu);
 				break;
 			}
 		}
@@ -855,5 +859,44 @@ class CRF_PlayerControllerManager : ScriptComponent
 			// Add zone marker
 			AddScriptedMarker(zoneName, "0 0 0", 0, "", imageTexture, 45, imageColor);
 		}
+	}
+	
+	string SanitizeMissionName(string fullName)
+	{
+	    array<string> parts = {};
+		
+	    fullName.Split(" ", parts, true);
+	
+	    // Remove the first two tokens like "CRF" and "CO50"/"COTVT55"
+	    if (parts.Count() > 2)
+	    {
+	        string cleanName;
+	        for (int i = 2; i < parts.Count(); i++)
+	        {
+	            if (i > 2)
+	                cleanName += " ";
+	            cleanName += parts[i];
+	        }
+			cleanName.ToUpper();
+	        return cleanName;
+	    }
+	
+		fullName.ToUpper();
+	    return fullName; // fallback if unexpected format
+	}
+	
+	void DisplayTitleCard()
+	{
+		Widget titleCard = GetGame().GetWorkspace().CreateWidgets("{4D2AE199F111C14A}UI/layouts/HUD/Intro/CRF_Intro.layout");
+		TextWidget.Cast(titleCard.FindAnyWidget("TitleText")).SetText(SanitizeMissionName(GetGame().GetMissionName()));
+		AudioSystem.PlaySound("{932C08A5A988F96A}Sounds/Intro/cinematicBoom.wav");
+		GetGame().GetCallqueue().CallLater(RemoveWidget, 4000, false, titleCard);
+	}
+	
+		
+	static void RemoveWidget(Widget widget)
+	{
+		if (widget)
+			widget.RemoveFromHierarchy();
 	}
 }

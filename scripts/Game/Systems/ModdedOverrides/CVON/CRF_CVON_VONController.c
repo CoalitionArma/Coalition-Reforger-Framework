@@ -5,7 +5,20 @@ modded class SCR_VONController
 		if (playerId == 0)
 			return false;
 		
-		return m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC" && m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC";
+		return (m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC" 
+		&& m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC") ||
+		(m_FactionManager.GetPlayerFaction(playerId).GetFactionKey() == "SPEC" && m_PlayerController.m_bIsListeningToSpec) ||
+		(m_FactionManager.GetPlayerFaction(SCR_PlayerController.GetLocalPlayerId()).GetFactionKey() == "SPEC" && m_VONGameModeComponent.IsPlayerListening(playerId));
+	}
+	
+	override void ActivateCVON(CVON_EVONTransmitType transmitType = CVON_EVONTransmitType.NONE)
+	{
+		MenuBase topMenu = GetGame().GetMenuManager().GetTopMenu();
+		if (topMenu)
+			if(topMenu.IsInherited(CRF_Outro))
+				return;
+		
+		super.ActivateCVON(transmitType);
 	}
 	
 	bool IsPlayerSpectator(int playerId)
@@ -37,6 +50,8 @@ modded class SCR_VONController
 		IEntity senderBuilding;
 		bool isSenderInBuilding = IsInBuildingOrVehicle(senderEntity, senderBuilding);
 		bool isPlayerInBuilding = IsInBuildingOrVehicle(player, receiverBuilding);
+		if (CheckIfInSameVehicle(senderEntity, player))
+			return false;
 		
 		if (!isSenderInBuilding && !isPlayerInBuilding)
 			return false;
@@ -80,6 +95,12 @@ modded class SCR_VONController
 	    bool    normalizePeak  = true
 	)
 	{
+		if (CRF_Gamemode.GetInstance().m_bIsInEndCredits)
+		{
+			outLeft = 0;
+			outRight = 0;
+			return;
+		}
 		float specLeft;
 		float specRight;
 		if (SpectatorLRCheck(playerId, specLeft, specRight))
@@ -212,8 +233,8 @@ modded class SCR_VONController
 		
 		ref array<int> playerIds = {};
 		m_PlayerManager.GetPlayers(playerIds);
-		int maxDistance = m_PlayerController.m_aVolumeValues.Get(4);
 		bool isLocalSpectator = IsPlayerSpectator(SCR_PlayerController.GetLocalPlayerId());
+		bool isListeningToSpectator = m_PlayerController.m_bIsListeningToSpec;
 		
     	//When a player disconnects, they are no longer in the players array, so it just leaves an empty container.
 		//This removes that container as when they reconnect they will no longer be heard.
@@ -235,11 +256,31 @@ modded class SCR_VONController
 			if (playerId == SCR_PlayerController.GetLocalPlayerId())
 				continue;
 			
+			bool isOtherSpectator = IsPlayerSpectator(playerId);
+			bool isOtherListening = m_VONGameModeComponent.IsPlayerListening(playerId);
 			//Not usual an issue but when the player is listening to an entity and he swaps to spectator, he goes into null space until he clicks game.
 			//Meaning unless we remove his direct voice line here it just stays and he'll never be heard on spectator.
 			IEntity player = m_PlayerManager.GetPlayerControlledEntity(playerId);
 			if (!player)
 			{
+				//Sometimes spectators and players listening are not in eachothers Rpl bubble.
+				if ((isLocalSpectator || isListeningToSpectator) && (isOtherSpectator || isOtherListening))
+				{
+					if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
+						continue;
+					else
+					{
+						CVON_VONContainer container = new CVON_VONContainer();
+						container.m_eVonType = CVON_EVONType.DIRECT;
+						container.m_iVolume = m_VONGameModeComponent.GetPlayerVolume(playerId);
+						container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
+						container.m_iPlayerId = playerId;
+						container.m_bIsSpectator = (isOtherSpectator || isOtherListening);
+						m_PlayerController.m_aLocalActiveVONEntries.Insert(container);
+						m_PlayerController.m_aLocalActiveVONEntriesIds.Insert(playerId);
+						continue;
+					}
+				}
 				if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
 				{
 					//If this VON Transmission is radio, don't do shit
@@ -265,14 +306,13 @@ modded class SCR_VONController
 				}
 				else
 					continue;
-			
-			bool isOtherSpectator = IsPlayerSpectator(playerId);
 			float distance = vector.Distance(player.GetOrigin(), camera.GetOrigin());
+			int maxDistance = m_VONGameModeComponent.GetPlayerVolume(playerId);
 			if (distance > maxDistance)
 			{
 				
 				
-				if (isLocalSpectator && isOtherSpectator)
+				if ((isLocalSpectator || isListeningToSpectator) && (isOtherSpectator || isOtherListening))
 				{
 					if (m_PlayerController.m_aLocalActiveVONEntriesIds.Contains(playerId))
 						continue;
@@ -284,7 +324,7 @@ modded class SCR_VONController
 						container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
 						container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 						container.m_iPlayerId = playerId;
-						container.m_bIsSpectator = isOtherSpectator;
+						container.m_bIsSpectator = (isOtherSpectator || isOtherListening);
 						m_PlayerController.m_aLocalActiveVONEntries.Insert(container);
 						m_PlayerController.m_aLocalActiveVONEntriesIds.Insert(playerId);
 						continue;
@@ -316,7 +356,7 @@ modded class SCR_VONController
 					container.m_SenderRplId = RplComponent.Cast(player.FindComponent(RplComponent)).Id();
 					container.m_iClientId = m_PlayerController.GetPlayersTeamspeakClientId(playerId);
 					container.m_iPlayerId = playerId;
-					container.m_bIsSpectator = isOtherSpectator;
+					container.m_bIsSpectator = (isOtherSpectator || isOtherListening);
 					m_PlayerController.m_aLocalActiveVONEntries.Insert(container);
 					m_PlayerController.m_aLocalActiveVONEntriesIds.Insert(playerId);
 				}
@@ -333,7 +373,8 @@ modded class SCR_VONController
 				continue;
 
 			float distance = vector.Distance(container.m_SoundSource.GetOrigin(), camera.GetOrigin());
-			if (distance < maxDistance || isLocalSpectator)
+			int maxDistance = m_VONGameModeComponent.GetPlayerVolume(container.m_iPlayerId);
+			if (distance < maxDistance || (isLocalSpectator || isListeningToSpectator))
 				container.m_fDistanceToSender = distance;
 			else
 				container.m_fDistanceToSender = -1;

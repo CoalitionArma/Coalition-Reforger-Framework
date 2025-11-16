@@ -1,9 +1,9 @@
-modded class LM_SuppressionScreenEffect
+/*modded class LM_SuppressionScreenEffect
 {
 	/**
 	 * Checks if the local player entity is valid and not in spectator mode
 	 * @return True if the player exists and is not a spectator
-	 */
+	 
 	private bool IsValidLocalPlayer()
 	{
 		// Check if player controller exists
@@ -25,7 +25,7 @@ modded class LM_SuppressionScreenEffect
 	/**
 	 * Override: Gets the current suppression amount for the local player
 	 * @return Suppression amount or 0 if player is invalid or spectating
-	 */
+	 
 	override private float GetSuppressionAmount()
 	{
 		if (IsValidLocalPlayer())
@@ -38,7 +38,7 @@ modded class LM_SuppressionScreenEffect
 	/**
 	 * Override: Handles suppression flinch effect
 	 * Only applies the effect if player is valid and not spectating
-	 */
+	 
 	override private void OnSuppressionFlinch()
 	{
 		if (IsValidLocalPlayer())
@@ -46,4 +46,4 @@ modded class LM_SuppressionScreenEffect
 			FlinchEffect();
 		}
 	}
-}
+}*/

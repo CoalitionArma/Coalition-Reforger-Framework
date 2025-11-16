@@ -1,0 +1,70 @@
+GenericEntity : "{D36B63749768F2B5}Prefabs/Weapons/Rifles/PP19/Rifle_PP19_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222CB07CFF6712A}" {
+     Name "#WCS-Weapon_PP19_Name '#WCS-WeaponVariant_Zenit_Name'"
+     Description "#WCS-Weapon_PP19_Description #WCS-WeaponVariant_Zenit_Description"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{646436FA28CFBF65}" {
+     AttachmentSlot InventoryStorageSlot Buttpad {
+     }
+    }
+    AttachmentSlotComponent "{646436FA28CFBF75}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot BayonetSlot {
+      Prefab "{24D49447F9024616}Prefabs/Weapons/Attachments/Optics/Collimators/Optic_OKP-7/Collim_OKP-7_CDF.et"
+     }
+    }
+    AttachmentSlotComponent "{646436FD7B6E1ECD}" {
+     AttachmentSlot InventoryStorageSlot PistolGrip {
+      Prefab "{70623120E996EA9A}Prefabs/Weapons/Attachments/PistolGrips/pistolgrip_RK3.et"
+     }
+    }
+    AttachmentSlotComponent "{64655554A374BE89}" {
+     AttachmentSlot InventoryStorageSlot Buttstock {
+      Offset 0.0004 0.0046 -0.0053
+      Prefab "{BB1173BD42722C74}Prefabs/Weapons/Attachments/Buttstocks/Buttstock_ZenitcoPT1.et"
+     }
+    }
+    AttachmentSlotComponent "{646555552ED72735}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Left_RIS {
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+     }
+    }
+    AttachmentSlotComponent "{64655556F598F703}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Right_RIS {
+     }
+    }
+    AttachmentSlotComponent "{65556674937D9470}" {
+     AttachmentSlot InventoryStorageSlot handguard {
+      Prefab "{DC27C618E921B2A3}Prefabs/Weapons/Attachments/Handguards/Handguard_pp19.et"
+     }
+    }
+    AttachmentSlotComponent "{667B7B7686B62C67}" {
+     AttachmentSlot InventoryStorageSlot Foregrip {
+      PivotID "snap_hand_left"
+      Offset 0 0 0.069
+      Prefab "{6CDC9C0E3A75A490}Prefabs/Weapons/Attachments/Foregrips/RK_Foregrips/Foregrip_RK6.et"
+     }
+     AttachmentType AttachmentUnderbarrelRIS1913Short "{667B7B76A1A2985E}" {
+     }
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     components {
+      AttachmentSlotComponent "{646436FA28CFBF37}" {
+       AttachmentSlot InventoryStorageSlot Muzzle {
+        Prefab "{E5BDE3E05332677B}Prefabs/Weapons/Attachments/Muzzle/9x19/Suppressor_SIGSRD9.et"
+       }
+      }
+     }
+     MagazineTemplate "{2476502862A3FE02}Prefabs/Weapons/Magazines/9x19_PP19_30rnd/Magazine_9x19_PP19_30rnd_Tracer_7T15.et"
+    }
+   }
+  }
+ }
+}

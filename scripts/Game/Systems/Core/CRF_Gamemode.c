@@ -40,8 +40,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	[RplProp()]
 	int m_SlottingState = CRF_ESlottingState.LEADERSANDMEDICS;
 	
+	//AI Settings
+	[Attribute("1", "auto", "Disables AI Crouching", category: "CRF AI Settings")]
+	bool m_bDisableAICrouching;
+	
 	// General Gamemode Settings
 	//------------------------------------------------------------------------------------
+	[Attribute("0", "auto", "Should this mission go to AAR after)", category: "CRF Gamemode General")]
+	bool m_bUseAAR;
+	
 	[Attribute("45", "auto", "Mission Time (set to -1 to disable)", category: "CRF Gamemode General")]
 	int m_iTimeLimitMinutes;
 
@@ -50,6 +57,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 
 	[Attribute("false", "auto", "Enables AI autonomy while in GAME state", category: "CRF Gamemode General")]
 	bool EnableAIInGameState;
+	
+	[RplProp()] bool m_bCurrentEnableAIInGameState = EnableAIInGameState;
 	
 	[Attribute("true", "auto", "Disable chat messages except tickets & messages from admins/mods", category: "CRF Gamemode General")]
 	bool m_bDisableChat;
@@ -82,15 +91,19 @@ class CRF_Gamemode : SCR_BaseGameMode
 	//------------------------------------------------------------------------------------
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all blufor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_BLUFORGearScriptSettings;
+	[RplProp()] ResourceName m_rBLUFORCurrentGearScript = m_BLUFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all opfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_OPFORGearScriptSettings;
+	[RplProp()] ResourceName m_rOPFORCurrentGearScript = m_OPFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all indfor players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_INDFORGearScriptSettings;
+	[RplProp()] ResourceName m_rINDFORCurrentGearScript = m_INDFORGearScriptSettings.m_rGearScript;
 
 	[Attribute("", UIWidgets.Auto, desc: "Gearscript applied to all civ players", category: "CRF Gamemode Gearscript")]
 	ref CRF_GearScriptContainer m_CIVILIANGearScriptSettings;
+	[RplProp()] ResourceName m_rCIVILIANCurrentGearScript = m_CIVILIANGearScriptSettings.m_rGearScript;
 
 	// Respawn Settings
 	//------------------------------------------------------------------------------------
@@ -118,6 +131,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 	// Generic spawn point for spectator camera (handles entity streaming)
 	[RplProp()]
 	vector m_vGenericSpawn[4];
+	bool m_bGenericSpawnSet = false;
 	
 	// Manager References and System Components
 	//------------------------------------------------------------------------------------
@@ -130,6 +144,20 @@ class CRF_Gamemode : SCR_BaseGameMode
 	protected CRF_GearscriptManager m_GearscriptManager;
 	protected CRF_RplBroadcastManager m_RplBroadcastManager;
 	protected CRF_LoggingManager m_LoggingManager;
+	
+	protected static CRF_Gamemode m_sInstance;
+	
+	protected ref array<Vehicle> m_aSpawnedVehicles = {};
+	
+	bool m_bIsInEndCredits = false;
+	
+	// Staggered Player Initialization System
+	//------------------------------------------------------------------------------------
+	protected ref array<int> m_aPendingPlayerInitializations = {};
+	protected bool m_bProcessingInitializations = false;
+	protected const int PLAYERS_PER_BATCH = 8;        // Players spawned per batch
+	protected const int BATCH_INTERVAL_MS = 150;      // Milliseconds between batches
+	protected float m_fBatchTimer = 0.0;              // Timer for batch processing
 
 	//===================================================================================
 	// STATIC METHODS
@@ -139,13 +167,15 @@ class CRF_Gamemode : SCR_BaseGameMode
 	 * Returns the singleton instance of the CRF_Gamemode
 	 * @return CRF_Gamemode instance or null if not available
 	 */
+	
+	void CRF_Gamemode(IEntitySource src, IEntity parent)
+	{
+		m_sInstance = this;
+	}
+	
 	static CRF_Gamemode GetInstance()
 	{
-		BaseGameMode gameMode = GetGame().GetGameMode();
-		if (!gameMode)
-			return null;
-			
-		return CRF_Gamemode.Cast(gameMode);
+		return m_sInstance;
 	}
 
 	//===================================================================================
@@ -174,6 +204,34 @@ class CRF_Gamemode : SCR_BaseGameMode
 		m_GearscriptManager = CRF_GearscriptManager.GetInstance();
 		m_RplBroadcastManager = CRF_RplBroadcastManager.GetInstance();
 		m_LoggingManager = CRF_LoggingManager.GetInstance();
+		
+		// Enable frame events for batch processing
+		SetEventMask(EntityEvent.FRAME);
+	}
+	
+	//===================================================================================
+	// FRAME UPDATES
+	//===================================================================================
+	
+	/**
+	 * Frame update for batch processing player initializations
+	 * More reliable than CallLater for time-critical operations
+	 */
+	override void EOnFrame(IEntity owner, float timeSlice)
+	{
+		// Only process if we have pending initializations
+		if (!m_bProcessingInitializations || m_aPendingPlayerInitializations.IsEmpty())
+			return;
+		
+		// Accumulate time
+		m_fBatchTimer += timeSlice * 1000; // Convert to milliseconds
+		
+		// Check if enough time has passed for next batch
+		if (m_fBatchTimer >= BATCH_INTERVAL_MS)
+		{
+			ProcessPlayerBatch();
+			m_fBatchTimer = 0.0; // Reset timer
+		}
 	}
 	
 	//===================================================================================
@@ -187,8 +245,12 @@ class CRF_Gamemode : SCR_BaseGameMode
 	void AdvanceSlottingState()
 	{
 		m_SlottingState += 1;
-		m_SlottingManager.RequestSlottingUpdate();
-		Replication.BumpMe();
+		Replication.BumpMe();  // m_SlottingState is [RplProp()] - auto-synced to clients
+		
+		// Notify all clients to refresh their slotting UI
+		CRF_RplBroadcastManager broadcastManager = CRF_RplBroadcastManager.GetInstance();
+		if (broadcastManager)
+			broadcastManager.NotifySlottingPhaseChanged();
 	}
 
 	/**
@@ -202,6 +264,16 @@ class CRF_Gamemode : SCR_BaseGameMode
 			return;
 
 		m_GamemodeState += 1;
+		if (m_GamemodeState == CRF_EGamemodeState.GAME)
+		{
+			foreach (Vehicle vehicle: m_aSpawnedVehicles)
+			{
+				if (!vehicle)
+					continue;
+				
+				vehicle.SpawnVehiclePassengers();
+			}
+		}
 		Replication.BumpMe();
 		OnGamemodeStateChanged();
 	}
@@ -277,26 +349,32 @@ class CRF_Gamemode : SCR_BaseGameMode
 			
 			// Process player statistics data
 			ProcessStats(dataCollector,player);
-
-			IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(player);
-			if (!playerEntity)
-				continue;
 			
-			// Check if player is already dead/spectating
-			bool isPlayerAlreadyDead = CRF_GamemodeManager.IsSpectator(playerEntity);
-			
-			// Move all players to spectator mode for AAR interface and communication
-			// This preserves their actual alive/dead status while allowing AAR participation
-			if (!isPlayerAlreadyDead)
+			if (m_bUseAAR)
 			{
-				// Player is alive - force into spectator for AAR without marking as dead
-				ForcePlayerToSpectatorForAAR(player, playerEntity);
+				IEntity playerEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(player);
+				if (!playerEntity)
+					continue;
+				
+				// Check if player is already dead/spectating
+				bool isPlayerAlreadyDead = CRF_GamemodeManager.IsSpectator(playerEntity);
+				
+				// Move all players to spectator mode for AAR interface and communication
+				// This preserves their actual alive/dead status while allowing AAR participation
+				if (!isPlayerAlreadyDead)
+				{
+					// Player is alive - force into spectator for AAR without marking as dead
+					ForcePlayerToSpectatorForAAR(player, playerEntity);
+				}
+				// Players already in spectator mode don't need repositioning
+				
+				//Adds them to default channel
+				menuManager.AddPlayerToChannel(player, 1, false);
 			}
-			// Players already in spectator mode don't need repositioning
-			
-			//Adds them to default channel
-			menuManager.AddPlayerToChannel(player, 1, false);
 		}
+		
+		if (!m_bUseAAR)
+			CRF_RplBroadcastManager.GetInstance().BroadcastOutro();
 		
 		// Stores player profiles who havent disconnected
 		dataCollector.OnGameEnd();
@@ -361,22 +439,8 @@ class CRF_Gamemode : SCR_BaseGameMode
 		if (RplSession.Mode() == RplMode.Client)
 			return;
 			
-		// Check if player is reconnecting and should be automatically re-initialized
-		if (m_GamemodeState == CRF_EGamemodeState.GAME && 
-			m_SlottingManager.IsPlayerInASlot(iPlayerID) && 
-			!m_SlottingManager.IsPlayerConsideredDead(iPlayerID))
-		{		
-			// Schedule initialization with a delay to ensure player controller is fully set up
-			GetGame().GetCallqueue().CallLater(m_GamemodeManager.InitilizePlayer, 500, false, iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
-		}
-		// Initialize player if not in GAME state
-		else if (m_GamemodeState == CRF_EGamemodeState.BRIEFING || 
-			m_GamemodeState == CRF_EGamemodeState.SLOTTING || 
-			m_GamemodeState == CRF_EGamemodeState.AAR)
-		{
-			m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
-		}
-		
+		m_GamemodeManager.InitilizePlayer(iPlayerID, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+
 		// Check if player is a moderator/donator and set privileges
 		string playerIdentity = GetGame().GetBackendApi().GetPlayerIdentityId(iPlayerID);
 		if (!playerIdentity.IsEmpty()) {
@@ -424,10 +488,13 @@ class CRF_Gamemode : SCR_BaseGameMode
 		super.OnControllableSpawned(entity);
 		
 		// Check if we are not in the "GAME" state
-		if (m_GamemodeState != CRF_EGamemodeState.GAME)
+		if (m_GamemodeState != CRF_EGamemodeState.GAME && !m_bGenericSpawnSet && !CRF_GamemodeManager.IsSpectator(entity))
+		{
 			// Update generic spawnpoint for spectator cameras
 			entity.GetWorldTransform(m_vGenericSpawn);
-		
+			m_bGenericSpawnSet = true;
+		}
+			
 		// Handle initial entity race condition fix
 		if (entity && entity.GetPrefabData().GetPrefabName() == CRF_GamemodeManager.GetSpectatorResource())
 		{
@@ -514,7 +581,7 @@ class CRF_Gamemode : SCR_BaseGameMode
 			factionKey = faction.GetFactionKey();
 
 		// Handle respawn if enabled and tickets available
-		if (m_bRespawnEnabled && 
+		if (m_RespawnManager.m_bCurrentRespawnEnabled && 
 			!CRF_GamemodeManager.IsSpectator(entity) && 
 			m_GamemodeState != CRF_EGamemodeState.AAR && 
 			m_RespawnManager.TicketsRemaining(factionKey) &&
@@ -614,6 +681,130 @@ class CRF_Gamemode : SCR_BaseGameMode
 		// Restore the player's original alive/dead status
 		// This ensures the AAR display shows their actual mission-end status
 		m_SlottingManager.UpdateSlotDeathState(slotId, originalDeadState);
+	}
+	
+	void UpdateGearscriptResource(string factionKey, string resource)
+	{
+		switch (factionKey)
+		{
+			case "BLUFOR" : m_rBLUFORCurrentGearScript = resource; break;
+			case "OPFOR" : m_rOPFORCurrentGearScript = resource; break;
+			case "INDFOR" : m_rINDFORCurrentGearScript = resource; break;
+			case "CIV" : m_rCIVILIANCurrentGearScript = resource; break;
+		}
+		Replication.BumpMe();
+	}
+	
+	void ToggleEnableAIInGameState()
+	{
+		m_bCurrentEnableAIInGameState = !m_bCurrentEnableAIInGameState;
+		Replication.BumpMe();
+	}
+	
+	void AddVehicleToArray(Vehicle vehicle)
+	{
+		if (m_aSpawnedVehicles.Contains(vehicle))
+			return;
+		
+		m_aSpawnedVehicles.Insert(vehicle);
+	}
+	
+	void RemoveVehicleFromArray(Vehicle vehicle)
+	{
+		if (!m_aSpawnedVehicles.Contains(vehicle))
+			return;
+		m_aSpawnedVehicles.RemoveItem(vehicle);
+	}
+	
+	//===================================================================================
+	// STAGGERED PLAYER INITIALIZATION SYSTEM
+	//===================================================================================
+	
+	/**
+	 * Queue a player for staggered initialization
+	 * Prevents server overload by batching player spawns
+	 * @param playerId ID of the player to initialize
+	 */
+	void QueuePlayerInitialization(int playerId)
+	{
+		// Don't queue if already pending
+		if (m_aPendingPlayerInitializations.Contains(playerId))
+			return;
+		
+		m_aPendingPlayerInitializations.Insert(playerId);
+		
+		// Start processing if not already running
+		if (!m_bProcessingInitializations)
+		{
+			m_bProcessingInitializations = true;
+			m_fBatchTimer = 0.0; // Reset timer
+			
+			// Notify slotting manager that mass initialization is starting
+			if (m_SlottingManager)
+				m_SlottingManager.SetMassInitializationInProgress(true);
+			
+			Print(string.Format("[CRF] Starting batch initialization for %1 players", 
+				m_aPendingPlayerInitializations.Count()), LogLevel.NORMAL);
+		}
+	}
+	
+	/**
+	 * Process a batch of pending player initializations
+	 * Called by EOnFrame when timer interval is reached
+	 * Spawns players in small groups to distribute server load
+	 */
+	protected void ProcessPlayerBatch()
+	{
+		if (m_aPendingPlayerInitializations.IsEmpty())
+		{
+			m_bProcessingInitializations = false;
+			
+			// Notify slotting manager that mass initialization is complete
+			if (m_SlottingManager)
+				m_SlottingManager.SetMassInitializationInProgress(false);
+			
+			Print("[CRF] Player initialization queue complete", LogLevel.NORMAL);
+			return;
+		}
+		
+		// Process a batch of players
+		int playersToProcess = Math.Min(PLAYERS_PER_BATCH, m_aPendingPlayerInitializations.Count());
+		
+		Print(string.Format("[CRF] Processing batch: %1 players (%2 remaining)", 
+			playersToProcess, m_aPendingPlayerInitializations.Count()), LogLevel.VERBOSE);
+		
+		for (int i = 0; i < playersToProcess; i++)
+		{
+			int playerId = m_aPendingPlayerInitializations[0];
+			m_aPendingPlayerInitializations.Remove(0);
+			
+			// Initialize the player immediately
+			if (m_GamemodeManager)
+				m_GamemodeManager.InitilizePlayer(playerId, CRF_GamemodeManager.ZERO_SPAWN_VECTOR);
+		}
+	}
+	
+	/**
+	 * Clear all pending player initializations
+	 * Used when resetting game state
+	 */
+	void ClearPlayerInitializationQueue()
+	{
+		m_aPendingPlayerInitializations.Clear();
+		m_bProcessingInitializations = false;
+		
+		if (m_SlottingManager)
+			m_SlottingManager.SetMassInitializationInProgress(false);
+	}
+	
+	/**
+	 * Check if a player is waiting in the initialization queue
+	 * @param playerId Player to check
+	 * @return True if player is queued for initialization
+	 */
+	bool IsPlayerQueuedForInitialization(int playerId)
+	{
+		return m_aPendingPlayerInitializations.Contains(playerId);
 	}
 }
 

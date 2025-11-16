@@ -1,0 +1,173 @@
+$grp Turret : "{1A407760EEAE4156}Prefabs/Vehicles/Static/BaconZU23/BaconZU23_Turret_Deployed.et" {
+ {
+  coords 1037.401 13.818 1142.298
+  angleX 0.408
+  angleY -22.874
+  angleZ -7.926
+ }
+ {
+  coords 1198.73 11.076 914.64
+  angleY 153.126
+ }
+}
+SCR_AIGroup : "{6524B6A6C69BD3EE}Prefabs/Groups/OPFOR/Standard/Command/CRF_OPFOR_Platoon_p.et" {
+ coords 1214.59 2.969 1011.299
+ {
+  SCR_AIGroup : "{24DA56B34E727840}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MedicTeam_p.et" {
+   coords 0.26 0.031 -7.167
+   angleY 0.433
+   m_aUnitPrefabSlots {
+    "{823E2872D504BC6C}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_MO_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et" "{9E37DD66E77861A4}Prefabs/Characters/Factions/OPFOR/CRF_GS_OPFOR_Medic_P.et"
+   }
+   m_aUnitPrefabColorTeams {
+    "None" "Blue" "Blue" "Yellow"
+   }
+   {
+    SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+     components {
+      AIFormationComponent "{507E9DC12F541FE6}" {
+       DefaultFormation "Column"
+      }
+     }
+     coords -6.767 -0.013 6.548
+     {
+      SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+       components {
+        AIFormationComponent "{507E9DC12F541FE6}" {
+         DefaultFormation "Column"
+        }
+       }
+       coords -3.294 0.012 -0.15
+       {
+        SCR_AIGroup : "{92F50F60726EB86D}Prefabs/Groups/OPFOR/Standard/Infantry/CRF_OPFOR_RifleSquad_p.et" {
+         components {
+          AIFormationComponent "{507E9DC12F541FE6}" {
+           DefaultFormation "Column"
+          }
+         }
+         coords -2.781 0 -0.051
+         {
+          SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+           components {
+            AIFormationComponent "{507E9DC12F541FE6}" {
+             DefaultFormation "Column"
+            }
+           }
+           coords -1.681 0 0.261
+           angleY -0.433
+           {
+            SCR_AIGroup : "{E323E3D2E4952AF5}Prefabs/Groups/OPFOR/Standard/Support/CRF_OPFOR_MMGTeam_p.et" {
+             components {
+              AIFormationComponent "{507E9DC12F541FE6}" {
+               DefaultFormation "Column"
+              }
+             }
+             coords -1.925 7.742 -91.699
+             angleY -0.433
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+$grp GenericEntity : "{B90CA0BEF3CC1D19}Prefabs/Structures/Military/CamoNets/Soviet/CamoNet_Medium_Soviet.et" {
+ {
+  coords 1039.055 13.106 1139.084
+  angleY -27
+ }
+ {
+  coords 1196.018 10.74 917.767
+  angleY 143
+ }
+}
+$grp GenericEntity : "{D7F69BF7D2DCA0A8}Prefabs/Props/Industrial/Pallets/Pallet_01.et" {
+ {
+  coords 1198.833 10.741 913.673
+  angleY -31
+ }
+ {
+  coords 1198.833 10.741 915.823
+  angleY -31
+ }
+ {
+  coords 1198.854 10.873 915.812
+  angleY -31
+ }
+ {
+  coords 1197.798 10.873 915.136
+  angleY -31
+ }
+ {
+  coords 1199.787 10.873 914.261
+  angleY -31
+ }
+ {
+  coords 1197.823 10.741 915.127
+  angleY -31
+ }
+ {
+  coords 1199.728 10.74 914.289
+  angleY -31
+ }
+ {
+  coords 1198.798 10.873 913.742
+  angleY -31
+ }
+}
+PolylineShapeEntity : "{D8E7812AC12E29EB}PrefabsEditable/PolyZone/OPFORSafestartBoundry.et" {
+ coords 1363.042 30.652 1119.307
+ Points {
+  ShapePoint "{6694E1E441ACAF81}" {
+   Position 95.198 0 -118.926
+  }
+  ShapePoint "{6694E1E4415E07C5}" {
+   Position 293.336 0 -265.652
+  }
+  ShapePoint "{6694E1E440C30931}" {
+   Position 358.095 0 -298.67
+  }
+  ShapePoint "{6694E1E4402F736E}" {
+   Position -1.72 0 -258.189
+  }
+  ShapePoint "{6694E1E443B637CC}" {
+   Position -113.741 0 -285.462
+  }
+  ShapePoint "{6694E1E4431A2716}" {
+   Position -179.936 0 -394.603
+  }
+  ShapePoint "{6694E1E443776418}" {
+   Position -283.491 0 -365.652
+  }
+  ShapePoint "{6694E1E442E50CE2}" {
+   Position -413.18 0 -280.581
+  }
+  ShapePoint "{6694E1E7BD1E30CF}" {
+   Position -476.587 0 -235.399
+  }
+  ShapePoint "{6694E1E7BD659D3D}" {
+   Position -563.54 0 -65.625
+  }
+  ShapePoint "{6694E1E7BCB43756}" {
+   Position -562.622 0 72.072
+  }
+  ShapePoint "{6694E1E7BC0B5770}" {
+   Position -523.274 0 147.353
+  }
+  ShapePoint "{6694E1E7BC4D61AB}" {
+   Position -427.651 0 175.42
+  }
+  ShapePoint "{6694E1E7BE830D83}" {
+   Position -150.906 0 260.703
+  }
+  ShapePoint "{6694E1E7BE208C50}" {
+   Position 12.657 0 180.349
+  }
+ }
+}

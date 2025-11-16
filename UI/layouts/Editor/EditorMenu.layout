@@ -1,0 +1,146 @@
+FrameWidgetClass {
+ {
+  FrameWidgetClass "{00000000709246E1}" {
+   Prefab "{00000000709246E1}"
+   {
+    FrameWidgetClass "{6698870C72982DAB}" {
+     Name "DeadBodyCleanupFrame"
+     Slot FrameWidgetSlot "{66948BF1F0B197E0}" {
+      Anchor 0.5 0 0.5 0
+      PositionX -520.764
+      OffsetLeft -520.764
+      PositionY 7.517
+      OffsetTop 7.517
+      SizeX 136.407
+      OffsetRight 384.357
+      SizeY 29.799
+      OffsetBottom -37.316
+     }
+     "Z Order" 99
+     {
+      PanelWidgetClass "{6698870C72982DAA}" {
+       Name "Panel0"
+       Slot FrameWidgetSlot "{6694ADF1AE3F49D1}" {
+        Anchor 0 0 1 1
+        PositionX 639.97
+        PositionY 11.316
+        SizeX -614.632
+        OffsetRight 0
+        SizeY -109.493
+        OffsetBottom 0
+       }
+       Color 0.0908 0.0908 0.0908 1
+      }
+      ButtonWidgetClass "{6698870C72982DA8}" {
+       Name "DeadBodyCleanupButton"
+       Slot FrameWidgetSlot "{6694ADF4EF5BF54D}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 0.0343 0.0343 0.0343 0
+       components {
+        SCR_ButtonComponent "{6694ADF439D3B23B}" {
+        }
+       }
+       {
+        TextWidgetClass "{6698870C72987D1A}" {
+         Name "Text0"
+         Slot ButtonWidgetSlot "{6694ADF6D9BF4130}" {
+          HorizontalAlign 3
+          VerticalAlign 3
+          Padding 5 0 5 0
+         }
+         Text "Cleanup Dead Bodies"
+         "Font Size" 33
+         "Min Font Size" 14
+         "Horizontal Alignment" Center
+         "Vertical Alignment" Center
+         FontProperties FontProperties "{6694ADF619F03E7D}" {
+          Font "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt"
+          ShadowSize 16
+          ShadowOffset 0 0
+          ShadowOpacity 0.7
+         }
+        }
+       }
+      }
+     }
+    }
+    FrameWidgetClass "{6689592415CAFB40}" {
+     Name "ListeningFrame"
+     Slot FrameWidgetSlot "{6689592415CAFB88}" {
+      PositionX -2.636
+      OffsetLeft -2.636
+      PositionY 144.954
+      OffsetTop 144.954
+      SizeX 79.541
+      OffsetRight -76.905
+      SizeY 70.918
+      OffsetBottom -215.872
+     }
+     "Z Order" 99
+     {
+      ButtonWidgetClass "{6689592413895C11}" {
+       Name "ListenButton"
+       Slot FrameWidgetSlot "{6689592413895C09}" {
+        Anchor 0 0 1 1
+        PositionX 0
+        OffsetLeft 0
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight 0
+        SizeY 0
+        OffsetBottom 0
+       }
+       Color 1 1 1 0
+       components {
+        SCR_ButtonComponent "{668959245BB32539}" {
+        }
+       }
+      }
+      ImageWidgetClass "{668959240999B3AF}" {
+       Name "Listening"
+       Slot FrameWidgetSlot "{668959240999B3C6}" {
+        Anchor 0 0 1 1
+        PositionX 11.705
+        OffsetLeft 11.705
+        PositionY 0
+        OffsetTop 0
+        SizeX 0
+        OffsetRight -11.705
+        SizeY 0
+        OffsetBottom 0
+       }
+       Texture "{4AF05B122604E49B}UI/data/ListeningIcon.edds"
+       Size 512 512
+      }
+      ImageWidgetClass "{668959247F6254C0}" {
+       Name "ListeningCross"
+       Slot FrameWidgetSlot "{668959240999B3C6}" {
+        Anchor 0 0 1 1
+        PositionX 11.219
+        OffsetLeft 11.219
+        PositionY 8.791
+        OffsetTop 8.791
+        SizeX -19.72
+        OffsetRight 8.501
+        SizeY -17.582
+        OffsetBottom 8.791
+       }
+       Texture "{BA29CA05FF6FE474}UI/data/cross.edds"
+       Size 528 528
+      }
+     }
+    }
+   }
+  }
+ }
+}

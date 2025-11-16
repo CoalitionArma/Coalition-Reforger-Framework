@@ -1,0 +1,128 @@
+GenericEntity : "{E7886C036D8FF4EC}Prefabs/Weapons/Rifles/ASVAL/Rifle_ASVAL_base.et" {
+ ID "CFBAA4B725411E45"
+ components {
+  MeshObject "{CFBAA4B701F95D69}" {
+   Object "{186C703B60326F5C}Assets/Weapons/Rifles/ASVAL/ASVAL_MOD.xob"
+  }
+  SCR_WeaponAttachmentsStorageComponent "{51F080D5CE45A1A2}" {
+   Attributes SCR_ItemAttributeCollection "{51F080D5C64F12C5}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222CB07CFF6712A}" {
+     Description "#WCS-Weapon_ASVALMOD_Description"
+    }
+   }
+  }
+  WeaponComponent "{CFBAA4B706BA66E8}" {
+   components {
+    AttachmentSlotComponent "{60973E8AEE59D2FE}" {
+     AttachmentSlot InventoryStorageSlot Optics {
+      Offset -0.0167 0.0505 0.0392
+      Prefab "{FE2896D202FE7449}Prefabs/Weapons/Attachments/Optics/1p63/Optic_1P63.et"
+     }
+    }
+    AttachmentSlotComponent "{663C472C348EB802}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot RIS_Right {
+      PivotID "Scene_Root"
+      Offset 0.0315 0.0543 0.2659
+      Angles 0 0 90
+      InspectionWidgetOffset 0.0397 0.0544 0.2616
+      m_fMaximumPositiveSlideOffset 0.04
+      m_fMaximumNegativeSlideOffset -0.04
+     }
+     AttachmentType AttachmentRIS1913Short "{663C472C348EB804}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{663C472C348EB80F}" {
+     Enabled 0
+     AttachmentSlot RHS_SlidingInventoryStorageSlot Optic {
+      PivotID "Scene_Root"
+      Offset 0.0025 0.1201 0.0021
+      InspectionWidgetOffset 0 0.1307 0.011
+      m_fMaximumPositiveSlideOffset 0.11
+      m_fMaximumNegativeSlideOffset -0.07
+     }
+     AttachmentType AttachmentOpticsRIS1913Medium "{663C472C348EB800}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{663C472C348EB815}" {
+     AttachmentSlot InventoryStorageSlot FrontRIS_Top {
+      PivotID "Scene_Root"
+      Offset 0 0.0811 0.4443
+      Prefab "{9A185BC14F1166B4}Prefabs/Weapons/Attachments/Lasers/anpeq15/Laser_ANPEQ15_tan.et"
+      InspectionWidgetOffset 0 0.0884 0.4401
+     }
+     AttachmentType AttachmentRIS1913Short "{663C472C348EB817}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{663C472C348EB816}" {
+     AttachmentSlot InventoryStorageSlot Stock {
+      PivotID "Scene_Root"
+      Offset -0.0032 0.0478 -0.1705
+      Prefab "{6B1743F71BE2DE76}Prefabs/Weapons/Attachments/Buttstocks/buttstock_CTR.et"
+      DeactivatePhysicsOnAtaching 1
+     }
+     AttachmentType WCS_M4A1_Buttstock "{663C472C348EB80D}" {
+     }
+    }
+    AttachmentSlotComponent "{663C472C348EB81F}" {
+     AttachmentSlot InventoryStorageSlot FrontRIS_Right {
+      PivotID "Scene_Root"
+      Offset 0.027 0.0541 0.481
+      Angles 0 0 90
+      InspectionWidgetOffset 0.0343 0.0547 0.4767
+     }
+     AttachmentType AttachmentRIS1913Short "{663C472C348EB813}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{663C472C348EB834}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot RIS_Bottom {
+      PivotID "Scene_Root"
+      Offset -0.0009 0.0237 0.2619
+      Angles 0 0 180
+      InspectionWidgetOffset 0 0.0184 0.2611
+      m_fMaximumPositiveSlideOffset 0.04
+      m_fMaximumNegativeSlideOffset -0.04
+     }
+     AttachmentType AttachmentRIS1913Short "{663C472C348EB836}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{663C472C348EB839}" {
+     AttachmentSlot InventoryStorageSlot Foregrip {
+      PivotID "Scene_Root"
+      Offset -0.0007 0.0234 0.2556
+      Prefab "{699BE1F583F55657}Prefabs/Weapons/Attachments/Foregrips/RK_Foregrips/Foregrip_RK0_ASVAL.et"
+      InspectionWidgetOffset 0 -0.0148 0.2557
+     }
+     AttachmentType WCS_ASVAL_Foregrip "{663C472C348EB832}" {
+     }
+     ShowInInspection 1
+    }
+    AttachmentSlotComponent "{663C472C348EB9EC}" {
+     AttachmentSlot RHS_SlidingInventoryStorageSlot RIS_Left {
+      PivotID "Scene_Root"
+      Offset -0.0315 0.0543 0.2659
+      Angles 0 0 270
+      InspectionWidgetOffset -0.0397 0.0544 0.2616
+      m_fMaximumPositiveSlideOffset 0.04
+      m_fMaximumNegativeSlideOffset -0.04
+     }
+     AttachmentType AttachmentRIS1913Short "{663C472C348EB81D}" {
+     }
+     ShowInInspection 1
+    }
+    MuzzleComponent "{CA6BE4D6B867541F}" {
+     "LEFT HAND TARGET" DeploymentPointInfo "{6166DC3972CF8A97}" {
+      Offset 0 0 0
+      Angles 0 0 0
+     }
+     MagazinePosition InventoryStorageSlot "{B80A64F4C834E9CB}" {
+     }
+    }
+   }
+  }
+ }
+}

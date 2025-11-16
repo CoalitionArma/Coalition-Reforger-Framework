@@ -1,0 +1,852 @@
+SCR_AIWorld : "{672531FAC0834C06}Prefabs/AI/SCR_AIWorld_Cain.et" {
+ coords 7105.244 313.341 5999.833
+}
+CRF_Gamemode CRF_Lobby1 : "{6A996BBFCEB37E78}Prefabs/MP/Modes/Lobby/CRF_Lobby.et" {
+ components {
+  CRF_GamemodeManager "{652A3313EC014E7F}" {
+  }
+  CRF_RushGamemodeManager "{66D57E1FEF93267F}" {
+   m_AttackingSide "OPFOR"
+   m_DefendingSide "BLUFOR"
+   m_iNumberOfZones 2
+   m_iMCOMsPerZone 1
+  }
+  CVON_VONGameModeComponent "{6624E607CC6D4CC8}" {
+   m_sFreqConfig "{8FE52CD7F8502E24}Configs/FreqConfigs/CFCFrequencyConfig.conf"
+  }
+  SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
+   m_bEnableTeamKillPunishment 0
+  }
+  SCR_CampaignBuildingManagerComponent "{658AF40C733F4E98}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_iCompositionRefundPercentage 100
+   m_bSameFactionDisassembleOnly 1
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{658AF40D99169532}" {
+    m_sSlotFlatSmallLayout "{7FD4E6A668B4537A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFLatSmall.et"
+    m_sSlotFlatMediumLayout "{579FF731013436B5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotFlatMedium.et"
+    m_sSlotFlatLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
+    m_sSlotRoadSmallLayout "{8DBA7E7BF662A393}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadSmall.et"
+    m_sSlotRoadMediumLayout "{3A5E87ADA26C6940}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadMedium.et"
+    m_sSlotRoadLargeLayout "{D06D9D47008E794F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SlotRoadLarge.et"
+    m_aCompositionLayouts {
+     SCR_CampaignBuildingCompositionOutline "{5D72F02746156600}" {
+      m_sEditableEntity "{DA1772BDB575BB5A}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D34D092A3936AEF}" {
+      m_sEditableEntity "{9E4FAFB289C2EA68}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundHighBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D62992D16358CB8}" {
+      m_sEditableEntity "{977FF11A13375BEB}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D66BBDB8EC3B5AB}" {
+      m_sEditableEntity "{93C99155F356A38A}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongHighBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D6C8153F1E8DE35}" {
+      m_sEditableEntity "{BBA9E7B2D06B7E3E}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallSolidBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D6C90E24B82ACDA}" {
+      m_sEditableEntity "{AACF7C732B82F6B2}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallBurlap_S_USSR_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70BA35862CBAFA}" {
+      m_sEditableEntity "{1C551075D2A439D8}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetSmall_S_USSR_01.et"
+      m_sCompositionLayout "{81CCDB622DCA0182}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Small_USSR.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E0D34990A444}" {
+      m_sEditableEntity "{E0E71FDE7F9F7555}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetMedium_S_USSR_01.et"
+      m_sCompositionLayout "{D26E030AD2BF514F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNetMedium_USSR.et"
+      m_iBuildingValue 40
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E6DFBDA31CD7}" {
+      m_sEditableEntity "{A8FD282C1C15E427}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetLarge_M_USSR_01.et"
+      m_sCompositionLayout "{DC1B385EDB26DB5E}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Large_USSR.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D70E6DFBD43B548}" {
+      m_sEditableEntity "{7419CCE202790CBB}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundPlastic_S_US_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF17063959}" {
+      m_sEditableEntity "{C90548D80CB6F09A}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagRoundHighPlastic_S_US_01.et"
+      m_sCompositionLayout "{A407FE596AB356EE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_01_Round.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF1720B169}" {
+      m_sEditableEntity "{2C8BC8352CE10EE2}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongPlastic_S_US_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D7279EF08F63D30}" {
+      m_sEditableEntity "{1CFE263700517700}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagLongHighPlastic_S_US_01.et"
+      m_sCompositionLayout "{1EC6725681D75742}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Long.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72CCC764A2F661}" {
+      m_sEditableEntity "{FD726FB018BC4169}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallSolidPlastic_S_US_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E04FAF9C}" {
+      m_sEditableEntity "{CC778DF86D8A69F5}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_SandbagWallPlastic_S_US_01.et"
+      m_sCompositionLayout "{F470194B53F2A4F2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Sandbag_Solid.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E39D1C18}" {
+      m_sEditableEntity "{C1641825486E3697}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetSmall_S_US_01.et"
+      m_sCompositionLayout "{347608996C687A02}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Small_US.et"
+      m_iBuildingValue 30
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72D426E3AD6268}" {
+      m_sEditableEntity "{EA8CDB3A64FC1181}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetMedium_S_US_01.et"
+      m_sCompositionLayout "{A90C5CF19DF184B9}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Medium_US.et"
+      m_iBuildingValue 40
+     }
+     SCR_CampaignBuildingCompositionOutline "{5D72F0241E59B4E6}" {
+      m_sEditableEntity "{7C7C67CD404E794D}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_CamoNetLarge_M_US_01.et"
+      m_sCompositionLayout "{DC1B385EDB26DB5E}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_CamoNet_Large_USSR.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64B54CA767DC45}" {
+      m_sEditableEntity "{AB1E83746BDF76D1}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_BarbedTapeTriple_S_USSR_01.et"
+      m_sCompositionLayout "{9721D32C8E5CDE9C}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_BarbedTapeKnifeRest.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64CB149EC493F2}" {
+      m_sEditableEntity "{AEC16F21B733AD5E}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_FloodlightGenerator_S_US_01.et"
+      m_sCompositionLayout "{C96F58B66745C08B}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FloodLight.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E64CB1491E75290}" {
+      m_sEditableEntity "{76EE6AC7AB210D1F}PrefabsEditable/Auto/Compositions/Misc/FreeRoamBuilding/E_FloodlightGenerator_S_USSR_01.et"
+      m_sCompositionLayout "{C96F58B66745C08B}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FloodLight.et"
+      m_iBuildingValue 20
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E76DD003E31C9B9}" {
+      m_sEditableEntity "{B8138FFE79F61D33}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_01.et"
+      m_sCompositionLayout "{4CB404D199F6C2E7}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B741B345270B}" {
+      m_sEditableEntity "{9BC88E502B836DBF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_01.et"
+      m_sCompositionLayout "{4CB404D199F6C2E7}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B741F2EDD817}" {
+      m_sEditableEntity "{D447BB1EC532921D}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_02.et"
+      m_sCompositionLayout "{8EB9FE4B4A24F0D8}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_US_S_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84B928D2DC9B20}" {
+      m_sEditableEntity "{F79CBAB09747E291}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_02.et"
+      m_sCompositionLayout "{F33B37DFDC5CDF75}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_USSR_S_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84C8B46847646C}" {
+      m_sEditableEntity "{31DBF7E7C9D70576}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_03.et"
+      m_sCompositionLayout "{C57C7CC829D7DAA2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_03.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84C8B4680E1AE5}" {
+      m_sEditableEntity "{1200F6499BA275FB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_03.et"
+      m_sCompositionLayout "{C57C7CC829D7DAA2}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_03.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84D70A8FCD3C63}" {
+      m_sEditableEntity "{0CEFD2DFBCBB8C41}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_US_04.et"
+      m_sCompositionLayout "{F84859F05CBB5395}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_04.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84D70A8FEA660C}" {
+      m_sEditableEntity "{2F34D371EECEFCCD}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_SandbagPosition_S_USSR_04.et"
+      m_sCompositionLayout "{F84859F05CBB5395}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_SandbagPosition_S_04.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE08853459C4}" {
+      m_sEditableEntity "{D7B8408B96F4DF79}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadSmall/E_Barricade_S_US_01.et"
+      m_sCompositionLayout "{501EE308E7CD554A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0885209F52}" {
+      m_sEditableEntity "{17B68DA54A970140}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadSmall/E_Barricade_S_USSR_01.et"
+      m_sCompositionLayout "{501EE308E7CD554A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0886C48CC7}" {
+      m_sEditableEntity "{6FE74C9C75DA8A52}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadMedium/E_Barricade_M_US_01.et"
+      m_sCompositionLayout "{EEC12B161BCF255F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0886EA1694}" {
+      m_sEditableEntity "{1236588FCEA4848F}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadMedium/E_Barricade_M_USSR_01.et"
+      m_sCompositionLayout "{EEC12B161BCF255F}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE088695C569}" {
+      m_sEditableEntity "{DAEC7898BE11C117}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadLarge/E_Barricade_L_US_01.et"
+      m_sCompositionLayout "{290DBB8BEE996653}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_L_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E84DE0CF28B4478}" {
+      m_sEditableEntity "{3FB42D0A5589A530}PrefabsEditable/Auto/Compositions/Slotted/SlotRoadLarge/E_Barricade_L_USSR_01.et"
+      m_sCompositionLayout "{290DBB8BEE996653}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Barricade_L_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98DBC39DC37}" {
+      m_sEditableEntity "{02C9F8198A7B9897}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_US_01.et"
+      m_sCompositionLayout "{33A2B437003B14DB}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98DBDDCE7AB}" {
+      m_sEditableEntity "{047B9C8AAB50CE0F}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_USSR_01.et"
+      m_sCompositionLayout "{33A2B437003B14DB}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98BB2A97FE4}" {
+      m_sEditableEntity "{6E9DCCF936BF17B9}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_US_02.et"
+      m_sCompositionLayout "{5FF680D7BCFF9BF5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B98BB2558DB9}" {
+      m_sEditableEntity "{682FA86A17944120}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_MachineGunNest_S_USSR_02.et"
+      m_sCompositionLayout "{5FF680D7BCFF9BF5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_MachineGunNest_02.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B9874A7B27EA}" {
+      m_sEditableEntity "{E87F2E0B5C56A1C3}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_Bunker_S_US_01.et"
+      m_sCompositionLayout "{E9CCAD99622A35F5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Bunker_US_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E86B9874A0B7600}" {
+      m_sEditableEntity "{4885DEA01D687DB3}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_Bunker_S_USSR_01.et"
+      m_sCompositionLayout "{02291E93335E0856}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_Bunker_USSR_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AECC1CA3}" {
+      m_sEditableEntity "{CDE540ACD9415078}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_AmmoStorage_S_FIA_01.et"
+      m_sCompositionLayout "{8E350990D5F5ABB5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_AmmoStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AE8B0AAD}" {
+      m_sEditableEntity "{1BED8F81D2FA2137}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_AmmoStorage_S_US_01.et"
+      m_sCompositionLayout "{8E350990D5F5ABB5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_AmmoStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B055AE171BE0}" {
+      m_sEditableEntity "{CD9004C6229D900B}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_AmmoStorage_S_USSR_01.et"
+      m_sCompositionLayout "{8E350990D5F5ABB5}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_AmmoStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A7701A2A8}" {
+      m_sEditableEntity "{543C31BC05F032B6}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_VehicleMaintenance_S_US_01.et"
+      m_sCompositionLayout "{B2EAAF9C153CAFDE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A77205ED6}" {
+      m_sEditableEntity "{DA380948C0CE5990}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_VehicleMaintenance_S_USSR_01.et"
+      m_sCompositionLayout "{B2EAAF9C153CAFDE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B04A5552879A}" {
+      m_sEditableEntity "{DA1AF79DD1C79E83}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_VehicleMaintenance_S_FIA_01.et"
+      m_sCompositionLayout "{B2EAAF9C153CAFDE}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B0489E3AA298}" {
+      m_sEditableEntity "{DB7F01C68EACBEC0}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_LivingArea_S_US_01.et"
+      m_sCompositionLayout "{0828F87137D2F0C0}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B0489FDBAB79}" {
+      m_sEditableEntity "{BE3988DF6E3CD0B2}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_LivingArea_S_USSR_01.et"
+      m_sCompositionLayout "{0828F87137D2F0C0}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F1D6FD63}" {
+      m_sEditableEntity "{B6CF358D07FFC99F}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_FuelStorage_S_FIA_01.et"
+      m_sCompositionLayout "{AA991650F6F3ADFD}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FuelStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F1F57EA3}" {
+      m_sEditableEntity "{6D2A35DA74224780}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_FuelStorage_S_US_01.et"
+      m_sCompositionLayout "{AA991650F6F3ADFD}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FuelStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B046F18FA42C}" {
+      m_sEditableEntity "{C2D040BB21F15A20}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatSmall/E_FuelStorage_S_USSR_01.et"
+      m_sCompositionLayout "{AA991650F6F3ADFD}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FuelStorage_S_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B07DCA32C81F}" {
+      m_sEditableEntity "{41A21CF37593EC91}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_VehicleMaintenance_M_USSR_01.et"
+      m_sCompositionLayout "{F28A8D6AC99AD4E8}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_M_01.et"
+      m_iBuildingValue 100
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E88B07DCBD32DB3}" {
+      m_sEditableEntity "{C0B1ABD67607623A}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_VehicleMaintenance_M_US_01.et"
+      m_sCompositionLayout "{F28A8D6AC99AD4E8}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_VehicleMaintenance_M_01.et"
+      m_iBuildingValue 100
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E1480BD64}" {
+      m_sEditableEntity "{D0281DAF0B131742}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_FieldHospital_M_US_01.et"
+      m_sCompositionLayout "{B3EB9207435EEE1A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FieldHospital_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E14A6F5FF}" {
+      m_sEditableEntity "{505F78512FE8B698}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatMedium/E_FieldHospital_M_USSR_01.et"
+      m_sCompositionLayout "{B3EB9207435EEE1A}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_FieldHospital_M_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E760349A1}" {
+      m_sEditableEntity "{74B740B56C82C0CF}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_LivingArea_L_US_01.et"
+      m_sCompositionLayout "{6F40C26A3C08E3C0}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_L_US_01.et"
+     }
+     SCR_CampaignBuildingCompositionOutline "{5E8A722E77DFEFBE}" {
+      m_sEditableEntity "{85E7D977EFAC11CB}PrefabsEditable/Auto/Compositions/Slotted/SlotFlatLarge/E_LivingArea_L_USSR_01.et"
+      m_sCompositionLayout "{2862411B0FB84CF7}Prefabs/Compositions/Misc/FreeRoamBuilding/Layouts/FRB_LivingArea_L_USSR_01.et"
+     }
+    }
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+   m_sPrefabToHoldSupplyOnRefund "{4BBE0A784C01900E}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_FreeRoamBuilding.et"
+  }
+  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
+   m_aModules {
+    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
+    }
+   }
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_fDOTScale 0.5
+   m_fRegenScale 0.75
+   m_bPermitUnconsciousVON 0
+   m_fRegenerationDelay 30
+   m_fRegenerationScale 0.6
+  }
+  SCR_InitWeatherComponent "{64427EEC0AFF43EE}" {
+   m_sInitialStartingWeatherId "Heavy Thunderstorm"
+   m_iSetWeatherConstant 1
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NightModeGameModeComponent "{5D50E84688D5A408}" {
+   m_bAllowGlobalNightMode 1
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_SpawnLogic "{5D36888CC966608A}" {
+   }
+   m_sLoadingLayout ""
+  }
+  SCR_TimeAndWeatherHandlerComponent "{64427EEC304DD9A0}" {
+   m_iStartingHours 12
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+ }
+ coords 5960.402 85.673 3798.878
+ m_iTimeLimitMinutes 60
+ m_aMissionDescriptors {
+  CRF_MissionDescriptor "{632771FB5C619E1C}" {
+   m_sTitle "Welcome / How to Play"
+   m_sTextData "Welcome to a COALITION Session."\
+   ""\
+   "If this is your first time here, please join the discord:"\
+   "Escape -> Server Message -> Join Discord"\
+   ""\
+   "COALITION hosts one-life missions every Friday. Each session will have, at minimum, 3 missions a night."\
+   ""\
+   "Anyone can join the mission, but after a mission starts, join in progress (JIP) is disabled and you must wait until the next mission to take part."\
+   ""\
+   "If the mission has not started yet, please take time to familiarize yourself with the rest of the briefing and then hold U to select a slot."\
+   ""\
+   ""\
+   ""
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{64425053BDE568A1}" {
+   m_sTitle "Custom Controls"
+   m_sTextData "Custom Controls (Keyboard/Controller)"\
+   ""\
+   "WHILE ALIVE:"\
+   "Hold U / Hold View - Open Lobby"\
+   "HOME / Menu + D-pad Right - Squad Settings"\
+   "CTRL + Home / Menu + D-pad Left - Personal Squad Settings"\
+   "F9 / Menu + D-pad Up - Toggle Side Ready"\
+   "LCtrl + Space / RB + A Button - Place Static Weapon"\
+   "LCtrl + X / RB + B Button - Cancel Static Weapon"\
+   ""\
+   "IN SPECTATOR:"\
+   "L / Y Button - Toggle spectator/alive chat"\
+   "N / 2x D-pad Right - Enable night vision "\
+   ""\
+   "CHAT COMMANDS:"\
+   "/a <message> - Message admins"
+   m_bShowForAnyFaction 1
+  }
+  CRF_MissionDescriptor "{644250503DF684C0}" {
+   m_sTextData "US Forces in Kolguyev have made a quick and devastating push across the island's southern coast. Their push was so effective, they were able to steal a BMP. Now, Russian Forces have regrouped and are going to retaliate, but will they be successful?"\
+   ""\
+   "BLUFOR Composition: Motorized Infantry Platoon"\
+   "BLUFOR Assets: 1x Stolen BMP and 1x MMG"\
+   ""\
+   "OPFOR Composition: Motorized Infantry Company"\
+   "OPFOR Assets: 1x MMG and 1x MATT"\
+   ""\
+   "Time: 12:00pm"\
+   ""\
+   "Weather: Heavy Thunderstorm"
+  }
+  CRF_MissionDescriptor "{64425051F2E00216}" {
+   m_sTextData "Defend the MCOMs."
+  }
+  CRF_MissionDescriptor "{64425051B9B5AF67}" {
+   m_sTextData "Destroy the MCOMs."
+  }
+  CRF_MissionDescriptor "{644250519BE30999}" {
+   m_sTitle "INDFOR Objectives"
+   m_sTextData "If INDFOR is playable, add mission objectives in bullet point list. Add details for each if you feel necessary, but keep it concise."
+   m_aFactionKeys +{
+   }
+  }
+  CRF_MissionDescriptor "{6442505149CF6C93}" {
+   m_sTextData ""
+  }
+ }
+ m_iFactionOneRatio 2
+ m_sFactionOneKey "OPF"
+ m_sFactionTwoKey "BLU"
+ m_BLUFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B419A7B}" {
+  m_rGearScript "{62EC603C54DF3BCE}Configs/Gearscripts/Custom/Yoko/CRF_GS_US80s_Sandbags.conf"
+  m_bEnableSightArsenal 0
+ }
+ m_OPFORGearScriptSettings CRF_GearScriptContainer "{64570ACB9B11EAAD}" {
+  m_bEnableSightArsenal 0
+ }
+ {
+  SCR_FactionManager "66D60C8973BA3290" {
+   ID "632A77473B3CC3A8"
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     UIInfo SCR_FactionUIInfo "{528C961236B7DCD3}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
+      SocialIdentity SocialIdentity "{56E4EBD9F0C03530}" {
+       NamesConfig +{
+       }
+       AliasesConfig +{
+       }
+       SurnamesConfig +{
+       }
+      }
+     }
+     m_iOrder 10
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D3C2E623}" {
+     UIInfo SCR_FactionUIInfo "{528C96127F8B6B08}" {
+      Name "OPFOR"
+      m_sNameUpper "OPFOR"
+     }
+     m_iOrder 9
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{56DEAC40D132400B}" {
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "INDFOR"
+      Icon "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+      m_sNameUpper "INDFOR"
+     }
+     m_iOrder 8
+     m_sFactionFlag "{FB266CDD4502D60B}UI/Textures/Editor/EditableEntities/Factions/EditableEntity_Faction_Fia.edds"
+     m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Cell Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{607AA5C7A94496DA}" {
+     UIInfo SCR_FactionUIInfo "{56B49118D8D0A9C5}" {
+      Icon "{C8565602E0F422C5}Images/UI/Zeus GearScript Factions/CIV_NATO.edds"
+     }
+     "Identity of soldiers" FactionIdentity "{60DCEDE56D10632C}" : "{7BE453211ACB5F01}Configs/Identities/FactionIdentity_COAL.conf" {
+     }
+     m_iOrder 7
+     m_sFactionFlag "{C8565602E0F422C5}Images/UI/Zeus GearScript Factions/CIV_NATO.edds"
+     m_FactionFlagMaterial "{936E6C67A71A9421}Assets/Props/Fabric/Flags/Data/Flag_2_3_White.emat"
+     m_CallsignInfo SCR_FactionCallsignInfo "{607A9A9E40D70F6E}" {
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5978B9CE6585BBE8}" {
+     UIInfo SCR_FactionUIInfo "{5977478D568C0938}" {
+      Name "OPFOR"
+      m_sNameUpper "OPFOR"
+     }
+     m_iOrder 6
+     m_CallsignInfo SCR_FactionCallsignInfo "{5977478D568C093C}" {
+      m_bIsAssignedRandomly 0
+      m_aSquadNames {
+       SCR_CallsignInfo "{5977478D568C092E}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{5977478D568C092D}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{5977478D568D935E}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{5977478D568D935F}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{5CC8DE37E1FF0F7A}" {
+     UIInfo SCR_FactionUIInfo "{5CC8B5EDA0CDBD62}" {
+      Name "BLUFOR"
+      m_sNameUpper "BLUFOR"
+     }
+     m_iOrder 5
+     m_CallsignInfo SCR_FactionCallsignInfo "{5CC8BB97E017CDBC}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+        m_sCallsign "1-3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+     }
+    }
+    SCR_Faction "{623962205CE2B89C}" {
+     UIInfo SCR_FactionUIInfo "{62394AA4B52816D2}" {
+      Name "INDFOR"
+      m_sNameUpper "INDFOR"
+     }
+     m_iOrder 4
+    }
+    SCR_Faction "{61500924662B6062}" {
+     FactionKey "SPEC"
+     FactionColor 0.392 0.157 0.624 1
+     UIInfo SCR_FactionUIInfo "{615009275A4B9FE7}" {
+      Name "Spectator"
+      Icon "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
+      m_sNameUpper "SPECTATOR"
+     }
+     "Identity of soldiers" FactionIdentity "{570D128F4022EF5A}" {
+      VisualIdentityArray {
+       VisualIdentity "{570CE64C784286B5}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC06CAAD480}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC05A2BFCE8}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CE64C790A3C7D}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC037CCBCD3}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570CFDC1C8B17A43}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{570EDB838B8AC563}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{588508C19AA51746}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+       VisualIdentity "{588508C199AD5966}" {
+        Head "{2FC2A1CE68435471}Prefabs/Characters/Heads/Head_Invisible.et"
+        Body "{E25DCEC549E17067}Prefabs/Characters/Basebody/CharacterBasebody_Invisible.et"
+       }
+      }
+     }
+     m_iOrder 3
+     m_OutlineFactionColor 0.392 0.157 0.624 1
+     m_NotificationFactionColor 0.392 0.157 0.624 1
+     m_NotificationTextFactionColor 0.392 0.157 0.624 1
+     m_bIsPlayable 0
+     m_bShowInWelcomeScreenIfNonPlayable 0
+     m_bIsMilitary 0
+     m_sFactionFlag "{BB790255945032F8}UI/data/Spec_Eye_BCR.edds"
+     m_FactionFlagMaterial "{E3BB2EF7F600DD28}Assets/Props/Fabric/Flags/Data/Flag_2_3_CIVILIAN.emat"
+     m_FactionLabel FACTION_CIV
+     m_aFriendlyFactionsIds +{
+     }
+     m_iFactionRadioFrequency 58000
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{607A9A9FE55EDF5F}" {
+       m_eEntityCatalogType ITEM
+      }
+      SCR_EntityCatalogMultiList "{607A9A9FFA54DFE9}" {
+       m_eEntityCatalogType CHARACTER
+      }
+      SCR_EntityCatalogMultiList "{61C8ED1193902596}" {
+       m_eEntityCatalogType VEHICLE
+      }
+      SCR_EntityCatalogMultiList "{61C8ED1182211903}" {
+       m_eEntityCatalogType GROUP
+      }
+      SCR_EntityCatalogMultiList "{607A9A9FFBDA2F92}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
+     }
+     m_sGroupFlagsImageSet "{D7E06968B5F9FC92}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian.imageset"
+     m_sGroupFlagsImageSetOutlines "{824ADD5E7A28B03E}UI/Textures/GroupManagement/FlagIcons/GroupFlagsCivilian-outline.imageset"
+     m_aFlagNames +{
+     }
+     m_sFactionBackground "{781301447441F404}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_Civilian.imageset"
+    }
+    SCR_Faction "{628B22E9B4056C88}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A6677ADA9E}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB792D10AD8F4}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB792D13759D8}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB792D1218E95}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{55CCB792D0C8B3CE}" {
+       }
+       SCR_CallsignInfo "{66D60C863A15C373}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66D60C8D3DB4A4DD}" {
+        m_sCallsign "BMP"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628C2D2BFC8C6447}" {
+     m_CallsignInfo SCR_FactionCallsignInfo "{5DA0F2A67DFB8809}" {
+      m_aSquadNames {
+       SCR_CallsignInfo "{55CCB79287E901BC}" {
+        m_sCallsign "COY"
+       }
+       SCR_CallsignInfo "{55CCB79287936EBD}" {
+        m_sCallsign "1PLT"
+       }
+       SCR_CallsignInfo "{55CCB79287BAFBD6}" {
+        m_sCallsign "1-1"
+       }
+       SCR_CallsignInfo "{55CCB79287A4D7B6}" {
+        m_sCallsign "1-2"
+       }
+       SCR_CallsignInfo "{66D60C8D2D41665F}" {
+        m_sCallsign "1-3"
+       }
+       SCR_CallsignInfo "{66D60C8D2C85DE88}" {
+        m_sCallsign "2PLT"
+       }
+       SCR_CallsignInfo "{66D60C8D2CDC69C9}" {
+        m_sCallsign "2-1"
+       }
+       SCR_CallsignInfo "{66D60C92D552DE8E}" {
+        m_sCallsign "2-2"
+       }
+       SCR_CallsignInfo "{66D60C92D681EED0}" {
+        m_sCallsign "2-3"
+       }
+       SCR_CallsignInfo "{66D60C92D8FE038C}" {
+        m_sCallsign "MMG"
+       }
+       SCR_CallsignInfo "{66D60C92DFBBF339}" {
+        m_sCallsign "MATT"
+       }
+      }
+     }
+    }
+    SCR_Faction "{628CDE9209CA3FF9}" {
+     FactionKey "INDFOR"
+     FactionColor 0 0.44 0.078 1
+     UIInfo SCR_FactionUIInfo "{5570936866E0AD08}" {
+      Name "INDFOR"
+      Icon "{EFA0BA63504B1230}Images/UI/Zeus GearScript Factions/INDFOR_NATO.edds"
+      m_sNameUpper "INDFOR"
+     }
+     "Identity of soldiers" FactionIdentity "{62D8F84F08F0FEAC}" : "{7BE453211ACB5F01}Configs/Identities/FactionIdentity_COAL.conf" {
+     }
+     m_iOrder 2
+     m_OutlineFactionColor 0.001 0.082 0.023 1
+     m_NotificationFactionColor 0 0.44 0.078 1
+     m_NotificationTextFactionColor 0 0.296 0.055 1
+     m_bIsPlayable 0
+     m_sFactionFlag "{EFA0BA63504B1230}Images/UI/Zeus GearScript Factions/INDFOR_NATO.edds"
+     m_FactionFlagMaterial "{B7A02313829700F9}Assets/Props/Fabric/Flags/Data/Flag_1_2_Green.emat"
+     m_FactionLabel FACTION_FIA
+     m_CallsignInfo SCR_FactionCallsignInfo "{60A6B21E18F28741}" {
+      m_bIsAssignedRandomly 0
+      m_aCompanyNames {
+       SCR_CallsignInfo "{58B2B630FDD64B73}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7A}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B78}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7E}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B7C}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B63}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B61}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B67}" {
+       }
+      }
+      m_aPlatoonNames {
+       SCR_CallsignInfo "{58B2B630FDD64B65}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6B}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B69}" {
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B6F}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8ABED54}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8E1FFD7}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD8255922}" {
+       }
+       SCR_CallsignInfo "{61C8F1ACD876D68B}" {
+       }
+       SCR_CallsignInfo "{61C8F1AC8D5F6E16}" {
+       }
+      }
+      m_aSquadNames {
+       SCR_CallsignInfo "{58B2B630FDD64B6D}" {
+        m_sCallsign "Cell Lead"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B53}" {
+        m_sCallsign "Cell 1"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B51}" {
+        m_sCallsign "Cell 2"
+       }
+       SCR_CallsignInfo "{58B2B630FDD64B50}" {
+        m_sCallsign "Cell 3"
+       }
+      }
+      m_sCallsignGroupFormat "%3"
+      m_sCallsignCharacterFormat "%1-%2%3%4"
+      m_sCallsignCharacterWithRoleFormat "%1-%2%3 %4"
+      m_aCharacterRoleCallsigns {
+       SCR_PlayerLeaderRoleCallsign "{5D9E9ECA7323CF3E}" {
+       }
+      }
+     }
+     m_iFactionRadioFrequency 52000
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0EABE8B7B2A}" {
+       m_eEntityCatalogType ITEM
+      }
+      SCR_EntityCatalog "{62AD6CEE79E1F794}" {
+       m_eEntityCatalogType CHARACTER
+      }
+      SCR_EntityCatalog "{62AD6CEE7975FCA2}" {
+       m_eEntityCatalogType VEHICLE
+      }
+      SCR_EntityCatalog "{62AD6CEE7ECC0787}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
+      SCR_EntityCatalog "{62AD6CEE7DED463C}" {
+       m_eEntityCatalogType GROUP
+      }
+     }
+     m_sGroupFlagsImageSet "{301FC1A2A46D3E0D}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor.imageset"
+     m_sGroupFlagsImageSetOutlines "{C07D82625600BA21}UI/Textures/GroupManagement/FlagIcons/GroupFlagsIndfor-outline.imageset"
+     m_aFlagNames +{
+     }
+     m_sFactionBackground "{81BF3B1DCC106577}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_FIA.imageset"
+    }
+   }
+  }
+ }
+}
+$grp CRF_ManualMarker : "{7B677FB61E410D0D}PrefabsEditable/Markers/ObjectiveMarker.et" {
+ {
+  coords 7759.739 85.43 5401.293
+  angles 0 -144.59 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 160
+  m_sDescription "OPFOR DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 7314.504 333.099 5665.724
+  angles 0 -172.475 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 160
+  m_sDescription "OPFOR DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+ {
+  coords 6523.762 392.356 5724.649
+  angles 0 168.979 0
+  m_MarkerColor 1 0 0 1
+  m_sQuadName "attack-main"
+  m_fWorldSize 160
+  m_sDescription "OPFOR DOA"
+  m_bVisibleForEmptyFaction 1
+  m_bShowForAnyFaction 1
+ }
+}

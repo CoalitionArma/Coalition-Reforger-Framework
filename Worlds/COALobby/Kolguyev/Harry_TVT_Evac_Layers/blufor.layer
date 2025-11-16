@@ -1,0 +1,94 @@
+CRF_VehicleSpawner {
+ coords 4390.154 49.733 3322.951
+ angles 0 -38.037 0
+ m_rVehicle "{A3142A7084A99719}Prefabs/Vehicles/Helicopters/UH1H/UH1H_armed_gunship_HEDP_sharkNose_noSeats.et"
+ m_sFactionKey "BLUFOR"
+}
+Vehicle M997_maxi_ambulance1 : "{00C9BBE426F7D459}Prefabs/Vehicles/Wheeled/M998/M997_maxi_ambulance.et" {
+ components {
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   EnableDamage 0
+  }
+ }
+ coords 4390.202 56.674 3181.754
+}
+GenericEntity : "{02D89CB8A159DDF0}Prefabs/Systems/VehicleDepot/VehicleDepot_Cache.et" {
+ components {
+  CRF_VehicleDepot "{664C7C2465880153}" {
+   m_iSpawnPointCount 9
+   m_eSpawnPattern GRID
+   m_aVehicles {
+    CRF_VehicleDepotVehicle "{664C7C2458016B5B}" {
+     m_sVehicleName "Humvee"
+     m_sVehiclePrefab "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et"
+     m_iCost 20
+    }
+   }
+  }
+ }
+ coords 4383.049 55.188 3219.169
+ angles 0 88.176 0
+ {
+  GenericEntity {
+   ID "664C7C261783AF9D"
+   components {
+    SCR_ResourceComponent "{5D247A59598D71AE}" {
+     m_aContainers {
+      SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+       m_fResourceValueCurrent 500
+      }
+     }
+    }
+   }
+  }
+ }
+}
+SCR_AIGroup : "{3D4D53B053964445}Prefabs/Groups/BLUFOR/Standard/Command/CRF_BLUFOR_Platoon_p.et" {
+ coords 4395.596 55.188 3218.496
+ angles 0 -32.742 0
+ {
+  SCR_AIGroup : "{ABEBD4386CA25E24}Prefabs/Groups/BLUFOR/Standard/Vehicle/CRF_BLUFOR_AirCrew_p.et" {
+   coords -3.148 0 -1.378
+   angles 0 17.145 0
+   {
+    $grp SCR_AIGroup : "{9C45BAF40F909576}Prefabs/Groups/BLUFOR/Standard/Infantry/CRF_BLUFOR_RifleSquad_p.et" {
+     {
+      coords 2.953 -0.631 -6.429
+      angles 0 -2.116 0
+      m_aUnitPrefabSlots +{
+      }
+     }
+     {
+      coords 3.075 -0.752 -9.717
+      angles 0 -2.116 0
+      m_aUnitPrefabSlots +{
+      }
+     }
+     {
+      coords 3.181 -0.837 -12.525
+      angles 0 -2.116 0
+      m_aUnitPrefabSlots +{
+      }
+      {
+       SCR_AIGroup : "{2F07AC5EE3DE3921}Prefabs/Groups/BLUFOR/Standard/Support/CRF_BLUFOR_MMGTeam_p.et" {
+        coords -4.104 0.412 -8.057
+        angles 0 -4.255 0
+        m_aUnitPrefabSlots {
+         "{CC8EDD051CB0C1CE}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_SL_P.et"
+         "{232780260F9004E6}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MMG_P.et"
+         "{0CF6A9358BCE5E57}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMMG_P.et"
+         "{0B9A19205D71AD61}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_MAT_P.et"
+         "{244B3033D92FF7D0}Prefabs/Characters/Factions/BLUFOR/CRF_GS_BLUFOR_AMAT_P.et"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
+GenericEntity : "{A13F6A7F82DF031C}Prefabs/Compositions/Slotted/SlotFlatLarge/Helipad_L_Conflict_US_01.et" {
+ coords 4391.251 49.125 3323.623
+ angles 0 -35.319 0
+}

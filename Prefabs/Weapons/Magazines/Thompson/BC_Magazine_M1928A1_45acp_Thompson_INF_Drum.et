@@ -1,0 +1,70 @@
+GenericEntity : "{11B9CC1FB4AEE740}Prefabs/Weapons/Magazines/Magazine_556x45_STANAG_30rnd_Base.et" {
+ ID "CA6BE4D6BB2D1077"
+ components {
+  InventoryMagazineComponent "{51EED12B803954CC}" {
+   Attributes SCR_ItemAttributeCollection "{51EED12B86960275}" {
+    ItemDisplayName UIInfo "{51FEE38527BFEA5B}" {
+     Name "Thompson M1928A1 50rnd Drum Mag"
+     Description "Magazine loaded with .45acp cartridges. Only compatible with M11928A1 Thompson."
+    }
+    ItemPhysAttributes ItemPhysicalAttributes PhysicalAttributes {
+     Weight 0.4
+     ItemDimensions 10 10 10
+     ItemVolume 500
+    }
+    CustomAttributes {
+     PreviewRenderAttributes "{52D2D34338621F08}" {
+      LodModel 0
+     }
+    }
+   }
+   WeightPerAmmo 0.021
+  }
+  MagazineComponent "{CA6BE4D6B4DAFD69}" {
+   MagazineWell MagazineWellThompson "{666F4E15E374431B}" {
+   }
+   UIInfo MagazineUIInfo "{57126733AA401586}" {
+    Name "Thompson M1928A1 50rnd Drum Mag"
+    Description "Magazine loaded with .45acp cartridges. Only compatible with M11928A1 Thompson."
+    m_bShowAmmoTypeText 1
+    m_MagIndicator SCR_MagazineIndicatorConfiguration "{5866951DE2665916}" {
+     m_sOutline "magazine-default-outline"
+     m_sBackground "magazine-default-background"
+     m_sProgress "magazine-default-fill"
+     m_sProgressAlphaMask "magazine-default-alpha"
+    }
+   }
+   MaxAmmo 10000
+   AmmoConfig "{4417F1E2825E042A}Configs/Weapons/Ammo/Ammo_45acp_thompson.conf"
+   AmmoMapping {
+    0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+   }
+  }
+  MeshObject "{CA6BE4D6A23F8EF0}" {
+   Object "{66994605B0102335}Assets/Weapons/Magazines/Thompson/bc_thompson_drum mag.xob"
+  }
+  ActionsManagerComponent "{F092E6B0537754FD}" {
+   additionalActions {
+    SCR_AttachItemFromInventoryAction "{5A1E58F7D9256374}" {
+     UIInfo SCR_ActionUIInfo "{5A1E58F7D137DE75}" {
+      Name "Attach: "
+     }
+    }
+   }
+  }
+  MagazineAnimationComponent "{666F4E15E3744362}" {
+   AnimGraph "{D4215101FC1DE588}Assets/Weapons/Magazines/workspaces/thompson_Drum_50.agr"
+   AnimInstance "{394B04DAE014B766}Assets/Weapons/Magazines/workspaces/thompson_Drum_50.asi"
+   AlwaysActive 0
+   AutoCommandBind 1
+   AnimCommandsToBind {
+   }
+   AutoVariablesBind 1
+   AnimVariablesToBind {
+   }
+   DeactivationDelay 0
+   AnimatedMesh "{66994605B0102335}Assets/Weapons/Magazines/Thompson/bc_thompson_drum mag.xob"
+  }
+ }
+ coords 170.536 1 109.353
+}
